@@ -17,7 +17,7 @@ RudderStack Server is released under the [AGPLv3 license](https://www.gnu.org/li
 {% endhint %}
 
 {% hint style="success" %}
-For more information on RudderStack and its features, please check our [Get Started](https://docs.rudderstack.com/get-started) section.
+For more information on RudderStack and its features, please check our [Get Started](https://docs.rudderstack.com/get-started) section
 {% endhint %}
 
 ## **Quick References** <a id="get-started"></a>
