@@ -1,0 +1,82 @@
+---
+description: >-
+  Detailed description of the ecommerce lifecycle events related to the
+  customer's product sharing activity
+---
+
+# Sharing
+
+## Introduction
+
+The product sharing activities allow customers to share interesting products to their friends or colleagues, or on various social media platforms.
+
+## Product Shared
+
+This event is triggered whenever a customer shares a product. The following properties are supported by this event:
+
+| **Property Name** | **Type** | **Description of the Property** |
+| :--- | :--- | :--- |
+| `share_via` | String | Contains information on the method of sharing the product |
+| `share_message` | String | Contains the message sent by the customer |
+| `recipient` | String | Contains information on the recipient with whom the product is shared |
+| `product_id` | String | Contains the Database ID of the product being shared |
+| `sku` | String | Contains the SKU of the product |
+| `category` | String | Contains the category of the product |
+| `name` | String | Contains the name of the product |
+| `brand` | String | Contains the brand associated with the product |
+| `variant` | String | Contains the variant associated with the product |
+| `price` | Number | Contains the price of the product \(in USD\) |
+| `url` | String | Contains the URL of the product's page |
+| `image_url` | String | Contains the image URL of the product |
+
+An example of the **Product Shared** event is as shown:
+
+```javascript
+rudderanalytics.track('Product Shared', {
+  share_via: 'SMS',
+  share_message: 'Check this',
+  recipient: 'name@friendsemail.com',
+  product_id: '12345872254426',
+  sku: 'F-13',
+  category: 'Games',
+  name: 'Cards',
+  brand: 'Maples',
+  variant: '150s',
+  price: 15.99,
+  url: 'https://www.myecommercewebsite.com/product/prod',
+  image_url: 'https://www.myecommercewebsite.com/product/prod.jpg'
+});
+```
+
+## Cart Shared
+
+This event is triggered whenever a customer shares a shopping cart. The following properties are supported by this event:
+
+| **Property Name** | **Type** | **Description of the Property** |
+| :--- | :--- | :--- |
+| `share_via` | String | Contains information on the method of sharing the cart |
+| `share_message` | String | Contains the message sent by the customer |
+| `recipient` | String | Contains information of the recipient |
+| `cart_id` | String | Contains the ID of the shopping cart that is being shared |
+| `products` | Array | Contains the list of products shared with the recipient |
+| `products.$.product_id` | String | Contains the product ID displayed on the list |
+
+An example of the **Cart Shared** event is as shown below:
+
+```javascript
+rudderanalytics.track('Cart Shared', {
+  share_via: 'SMS',
+  share_message: 'Check this',
+  recipient: 'friend@friendsemail.com',
+  cart_id: '1234df2ddss',
+  products: [
+    { product_id: '125' },
+    { product_id: '297' }
+  ]
+});
+```
+
+## Contact Us
+
+To know more about the RudderStack eCommerce spec, feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action.
+
