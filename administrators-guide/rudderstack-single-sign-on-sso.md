@@ -22,7 +22,7 @@ The [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial) no
 
 * Search and select **RudderStack**.
 
-![](../.gitbook/assets/image%20%2874%29.png)
+![](../.gitbook/assets/image%20%2875%29.png)
 
 * Then, click the **Save** button in the top-right corner, as shown:
 
@@ -30,7 +30,7 @@ The [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial) no
 
 * Choose **Configuration** from the menu on the left, as shown:
 
-![Configuration Menu](../.gitbook/assets/image%20%2857%29.png)
+![Configuration Menu](../.gitbook/assets/image%20%2859%29.png)
 
 * Provide a login URL in the following format:**`https://auth.rudderstack.com/v1/start_sso?domain=example.com`** . Here, replace **`example.com`** with the domain you use for your employee email addresses. For example, if your employee email address is **`john@mywebsite.com`**, enter **`mywebsite.com`**.
 * Click on **Save** in the top right corner as shown above.

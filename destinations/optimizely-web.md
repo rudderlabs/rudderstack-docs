@@ -35,7 +35,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Select the destination as **Optimizely Web** to your source. Give your destination a name and then click on **Next**. You should see the following screen:
 
-![Connection Settings for RudderStack Web](../.gitbook/assets/image%20%2865%29.png)
+![Connection Settings for RudderStack Web](../.gitbook/assets/image%20%2867%29.png)
 
 * In the **Connection Settings**, ****configure the settings you want to apply for the destination. The settings are explained in more detail below: 
   * **Send experiment data to other tools:** By enabling this setting, you can send your experiment or campaign data to other destinations configured by you, such as Google Analytics.

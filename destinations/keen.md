@@ -33,7 +33,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Connection Settings for Keen in RudderStack](../.gitbook/assets/image%20%2855%29.png)
+![Connection Settings for Keen in RudderStack](../.gitbook/assets/image%20%2857%29.png)
 
 * Please enter the **Project ID** and **Write Key**. 
 * You can enable the **Use native SDK to send events** setting to send events through Keen's native JavaScript SDK.
@@ -53,7 +53,7 @@ If enabled, RudderStack attaches the following Keen add-ons to the events, which
 Note: We only pass the IP, page and referrer add-ons to Keen if the event contains a valid `ip`, `page`, `URL` and `referrer` property.
 {% endhint %}
 
-![Keen add-ons settings in RudderStack](../.gitbook/assets/image%20%2811%29.png)
+![Keen add-ons settings in RudderStack](../.gitbook/assets/image%20%2837%29.png)
 
 * Once you have finalized all the settings, click on **Next** to complete the configuration. Keen will now be added as a destination in RudderStack.
 

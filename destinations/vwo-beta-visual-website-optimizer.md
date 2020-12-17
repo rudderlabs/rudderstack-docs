@@ -37,7 +37,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * After naming the destination, click on **Next**. You should see the following screen:
 
-![](../.gitbook/assets/image%20%2843%29.png)
+![](../.gitbook/assets/image%20%2844%29.png)
 
 You can configure the settings such as enabling **Single Page Application**, setting **Library Tolerance** and **Settings Tolerance**, and **Use Existing jQuery** while initializing the VWO SDK. Send experiment viewed as track or identify traits can also be configured. To complete the configuration, click on **Next**.
 

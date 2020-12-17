@@ -33,7 +33,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![](../.gitbook/assets/image%20%2895%29.png)
+![](../.gitbook/assets/image%20%2897%29.png)
 
 ![TVSquared Connection Settings in the RudderStack Dashboard](../.gitbook/assets/image%20%2835%29.png)
 

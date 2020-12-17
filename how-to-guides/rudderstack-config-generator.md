@@ -32,7 +32,7 @@ In order to set up the RudderStack Config Generator, you will need to run the fo
 
 On successful setup, you should be able to see the following UI:
 
-![RudderStack Config Generator](../.gitbook/assets/image%20%2853%29.png)
+![RudderStack Config Generator](../.gitbook/assets/image%20%2855%29.png)
 
 ## Exporting Workspace Configuration
 

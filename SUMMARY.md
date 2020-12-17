@@ -111,6 +111,7 @@
   * [Snowflake](data-warehouse-integrations/snowflake.md)
   * [PostgreSQL](data-warehouse-integrations/postgresql.md)
 * [Migration Guides](migration-guides/README.md)
+  * [Migrating from Blendo to RudderStack](migration-guides/blendo-rudderstack-migration.md)
   * [How to Migrate from Segment to RudderStack](migration-guides/rudderstack-migration-guide.md)
   * [How to Migrate Your Warehouse Destination from Segment to RudderStack](migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack.md)
 * [Administrator's Guides](administrators-guide/README.md)

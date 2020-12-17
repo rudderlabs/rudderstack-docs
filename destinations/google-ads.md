@@ -37,7 +37,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Connection Settings for Google Ads in RudderStack](../.gitbook/assets/image%20%2840%29.png)
+![Connection Settings for Google Ads in RudderStack](../.gitbook/assets/image%20%2841%29.png)
 
 * Please enter the **Conversion ID** of your Google Ads account. You can also configure **Page load Conversions** for multiple instances, as well as and **Click Event Conversions** by providing the corresponding **Conversion Label** and **Name** of that conversion.
 * Click on **Next** to finish the configuration. Google Ads will now be added and enabled as a destination in RudderStack.

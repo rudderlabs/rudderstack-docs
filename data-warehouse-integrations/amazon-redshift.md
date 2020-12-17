@@ -45,7 +45,7 @@ Please follow the steps below in order to create a new Redshift cluster:
 
 * Enter the number of nodes for your cluster. This will primarily depend on the amount of data you expect to work with.
 
-![](../.gitbook/assets/4%20%281%29.png)
+![](../.gitbook/assets/4.png)
 
 * Enter the database name, and create the admin user with the name of your choice.
 

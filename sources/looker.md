@@ -44,7 +44,7 @@ To enable any of the above actions, go to its **Settings** page where you need t
 
 In addition, you also need to specify the **Rudder Server URL** to which the RudderStack actions will be forwarding the user looks data:
 
-![Configuring the Write Key and the RudderStack Server URL](../.gitbook/assets/image%20%2812%29.png)
+![Configuring the Write Key and the RudderStack Server URL](../.gitbook/assets/image%20%2811%29.png)
 
 Once the connection is successful, you should start seeing the RudderStack actions.
 

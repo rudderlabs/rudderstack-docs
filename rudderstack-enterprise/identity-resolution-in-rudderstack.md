@@ -24,29 +24,29 @@ After integrating RudderStack, you can collect events from sources to build a pr
 
 First, Alice searches for the latest iPhone in her mobile app, and signs up with her phone number.
 
-![](../.gitbook/assets/image%20%2878%29.png)
+![](../.gitbook/assets/image%20%2880%29.png)
 
 Later, she signs up on the website with her email, verifies her mobile number and then purchases the iPhone. The flow of events is as shown:
 
-![](../.gitbook/assets/image%20%2891%29.png)
+![](../.gitbook/assets/image%20%2894%29.png)
 
 Alice then reports an issue via her phone and a ticket for the same is created using Zendesk. This ticket confirmation email is sent to Alice using CustomerIO. 
 
 This data can be collected using the RudderStack cloud sources, as shown:
 
-![](../.gitbook/assets/image%20%2813%29.png)
+![](../.gitbook/assets/image%20%2812%29.png)
 
 RudderStack has a **merge API** which takes two different identities and connects them. For example, Stripe is integrated for payments and you would want to merge Alice's Stripe identifier with your internal identifier.
 
 This gives you the flexibility to run your own algorithms or machine learning models internally and send the final identity merge events to RudderStack.
 
-![](../.gitbook/assets/image%20%2885%29.png)
+![](../.gitbook/assets/image%20%2887%29.png)
 
 RudderStack then applies the identity merges on all events and generates a table that includes the identity mappings of all users. A `rudder_id` is the unique identifier for all merged identities.
 
 The following `rudder_identity_mappings` table is an example of how the identity mappings look like in Alice's user journey:
 
-![](../.gitbook/assets/image%20%2862%29.png)
+![](../.gitbook/assets/image%20%2864%29.png)
 
 ## Querying with Identities
 
