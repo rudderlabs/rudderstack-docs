@@ -113,7 +113,7 @@
 * [Migration Guides](migration-guides/README.md)
   * [Migrating from Blendo to RudderStack](migration-guides/blendo-rudderstack-migration.md)
   * [Migrating from Segment to RudderStack](migration-guides/rudderstack-migration-guide.md)
-  * [How to Migrate Your Warehouse Destination from Segment to RudderStack](migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack.md)
+  * [Migrating Your Warehouse Destination from Segment to RudderStack](migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack.md)
 * [Administrator's Guides](administrators-guide/README.md)
   * [RudderStack Single Sign-On \(SSO\)](administrators-guide/rudderstack-single-sign-on-sso.md)
   * [Software Releases](administrators-guide/software-releases.md)

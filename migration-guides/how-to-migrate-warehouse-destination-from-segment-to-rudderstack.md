@@ -4,7 +4,7 @@ description: >-
   RudderStack.
 ---
 
-# How to Migrate Your Warehouse Destination from Segment to RudderStack
+# Migrating Your Warehouse Destination from Segment to RudderStack
 
 The RudderStack warehouse table schemas are fully compatible with Segment. You can start routing new events to your existing warehouse tables  through RudderStack, without losing any historical data.
 
