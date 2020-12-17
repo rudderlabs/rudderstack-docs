@@ -2,7 +2,7 @@
 description: Step-by-step guide to migrating from Segment to RudderStack
 ---
 
-# How to Migrate from Segment to RudderStack
+# Migrating from Segment to RudderStack
 
 ## Introduction
 
