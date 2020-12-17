@@ -115,6 +115,8 @@ client.identify({
 
 In the example above, we'll be updating the `Contact` object in Salesforce with `id` as `sf-contact-id` and send the `traits` object to Salesforce.
 
+You can use this [sample user transformation](https://github.com/rudderlabs/sample-user-transformers/blob/master/SalesforceObjectTrackConversion.js) to convert a `track` call to an `identify` event that supports Salesforce Objects create or update operations.
+
 {% hint style="info" %}
 By default we'll create `Lead` objects to Salesforce and map the `traits` as mentioned above. For other objects we don't modify the `traits` object and sent to Salesforce as it is.
 {% endhint %}
