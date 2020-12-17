@@ -372,7 +372,15 @@ You can configure your client based on the following parameters using `RudderCon
 | `configRefreshInterval` | `int` | It will fetch the config from `dashboard` after this many hours. | `2` |
 | `trackLifecycleEvents` | `boolean` | Whether SDK will capture application life cycle events automatically. | `true` |
 | `recordScreenViews` | `boolean` | Whether SDK will capture screen view events automatically. | `false` |
-| `controlPlaneUrl` | `string` | If you are using our open-source config generator, use this option to point to your hosted `sourceConfig`. SDK will add `/sourceConfig` along with this URL | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+
+### Self-Hosted Control Plane
+
+If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the RudderStack Config Generator to host your own Control Plane, then follow [this guide](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
+
+{% hint style="warning" %}
+You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using the dashboard from [https://app.rudderstack.com](https://app.rudderstack.com). This parameter is supported only if you are using our open-source [RudderStack Config Generator](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator).
+{% endhint %}
 
 ## Setting Android Device Token
 
