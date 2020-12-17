@@ -4,7 +4,7 @@ description: Step-by-step guide to set up Salesforce as a destination in RudderS
 
 # Salesforce
 
-[Salesforce](https://www.salesforce.com/in/?ir=1) is an industry leader in enterprise CRM. It offers a suite of enterprise applications revolving around marketing automation, customer engagement and support, application development as well as analytics. 
+[Salesforce](https://www.salesforce.com/in/?ir=1) is an industry leader in enterprise CRM. It offers a suite of enterprise applications revolving around marketing automation, customer engagement and support, application development as well as analytics.
 
 RudderStack allows you to integrate your source to Salesforce in order to identify your leads without having to use the REST APIs.
 
@@ -43,13 +43,13 @@ To create a new account, please go to **Setup** - **Administration Setup** - **U
 
 ## Identify
 
-RudderStack makes it very easy for you to get your leads from your website or mobile app into Salesforce through our `identify` call. 
+RudderStack makes it very easy for you to get your leads from your website or mobile app into Salesforce through our `identify` call.
 
 ### Identifying a potential lead
 
 The following code snippet demonstrates a sample `identify` call in RudderStack:
 
-```text
+```javascript
 rudderanalytics.identify('userid', {
   name: 'John Doe',
   title: 'CEO',
@@ -82,10 +82,41 @@ When the `identify` method is called, RudderStack checks if the lead already exi
 
 If you wish to update custom fields in Salesforce using RudderStack, please ensure you create those lead fields in Salesforce before you send the data through RudderStack. As `lastName` and `company` are needed by the [Salesforce Leads API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_lead.htm), absence of either of these fields will result in RudderStack automatically appending the `'n/a'`string to both the fields - even if they have been specified in some previous request.
 
-As an example, if you wish to collect a custom trait in RudderStack named `newProp`, create a field label named `newProp`. This will generate an API name as `newProp__c`. RudderStack automatically appends the `__c` to any custom trait. 
+As an example, if you wish to collect a custom trait in RudderStack named `newProp`, create a field label named `newProp`. This will generate an API name as `newProp__c`. RudderStack automatically appends the `__c` to any custom trait.
 
 {% hint style="info" %}
 Make sure you are consistent with your casing. If the custom fields are created in camelCase, please make sure sure that you send the traits to RudderStack in camelCase. If you're creating custom fields in snake\_case, ensure you send the traits in the same format.
+{% endhint %}
+
+## Updating Salesforce Objects
+
+You can create or update any [Salesforce Object](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_list.htm) using the `identify` event. To specify the object type follow the schema below.
+
+We'll look for the key `externalId` under `context` and determine the Salesforce Object type by removing the part `Salesforce-` from the field `type`. We'll make a `PATCH` request if there is an `id` present in the request to update the record. We'll create the record otherwise. You can pass multiple object types in a single request and we'll create that many requests to Salesforce.
+
+```javascript
+client.identify({
+  userId: '123456',
+  traits: {
+    FirstName: "John",
+    LastName: "Gibbs",
+    Email: "john@peterson.com"
+  },
+  context: {
+    externalId: [
+      {
+        type: "Salesforce-Contact",
+        id: "sf-contact-id"
+      }
+    ]
+  }
+});
+```
+
+In the example above, we'll be updating the `Contact` object in Salesforce with `id` as `sf-contact-id` and send the `traits` object to Salesforce.
+
+{% hint style="info" %}
+By default we'll create `Lead` objects to Salesforce and map the `traits` as mentioned above. For other objects we don't modify the `traits` object and sent to Salesforce as it is.
 {% endhint %}
 
 ## FAQs
