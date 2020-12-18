@@ -42,6 +42,7 @@
 * [Sources Guides](sources/README.md)
   * [Google Sheets](sources/google-sheets.md)
   * [Data Warehouse as a Source](sources/data-warehouse-as-a-source.md)
+  * [Google Analytics](sources/google-analytics.md)
   * [Zendesk](sources/zendesk.md)
   * [Salesforce](sources/salesforce.md)
   * [Auth0](sources/auth0.md)

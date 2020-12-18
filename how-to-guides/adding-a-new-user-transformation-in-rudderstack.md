@@ -29,7 +29,7 @@ Please follow the steps mentioned below:
 
 * Click on the **Create New** option as shown:
 
-![Create New option on the Transformations page](../.gitbook/assets/2%20%281%29.png)
+![Create New option on the Transformations page](../.gitbook/assets/2%20%283%29.png)
 
 * In the following screen, please enter the name you would like to assign to the custom transformation. Enter the transformation function's code in the **Transformation** window, as shown in the figure below:
 
