@@ -105,7 +105,7 @@ This procedure works for **EC2-VPC**. However, **EC2-Classic** works similarly.
 
 * Go to EC2 from the services on AWS console,  as shown:
 
-![](../.gitbook/assets/7%20%282%29.png)
+![](../.gitbook/assets/7%20%283%29.png)
 
 * Go to **Security Groups** under **Network & Security** and click on **Create Security Group**.
 
