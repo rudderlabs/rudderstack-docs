@@ -46,7 +46,7 @@ If you have already connected RudderStack to your Google Analytics account, your
 ![](../.gitbook/assets/screen-shot-2020-12-15-at-4.07.31-pm.png)
 
 {% hint style="warning" %}
-Not all **Dimensions** and **Metrics** can be queried together. Only those dimensions and metrics combinations that follow Google’s compatibility rules can be used for querying. Read the Valid Dimensions and Metrics section below for more information.
+Not all **Dimensions** and **Metrics** can be queried together. Only those dimensions and metrics combinations that follow Google’s compatibility rules can be used for querying. Read the [Valid Dimensions and Metrics](https://docs.rudderstack.com/sources/google-analytics#valid-dimensions-and-metrics-combinations) section below for more information.
 {% endhint %}
 
 {% hint style="warning" %}
