@@ -83,7 +83,7 @@ Once you have installed and set up RudderStack on your target machine, please fo
 The **write key** is different from your **workspace token**. The former is associated with the source, while the latter is for your RudderStack account.
 {% endhint %}
 
-![Workspace token vs Write Key](../.gitbook/assets/write-key-vs-token%20%282%29.png)
+![Workspace token vs Write Key](../.gitbook/assets/write-key-vs-token%20%282%29%20%281%29.png)
 
 * You can then login to your Google Analytics account and verify that events are delivered. Go to `MainPage` -&gt; `RealTime` -&gt; `Events`. _RealTime_ view is important as the other dashboards can sometimes take 24 to 48 hours to refresh.
 * You can use our [JavaScript](../rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), [Android](../rudderstack-sdk-integration-guides/rudderstack-android-sdk/), or [iOS](../rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md) SDKs for sending events from your app.

@@ -31,7 +31,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a suitable name to the destination, and then click on **Next**. You should then see the following screen:
 
-![Mailchimp Connection Settings screen](../.gitbook/assets/image%20%2896%29.png)
+![Mailchimp Connection Settings screen](../.gitbook/assets/image%20%2895%29.png)
 
 * Enter the relevant information in the fields such as the **Mailchimp API Key**, **Audience ID** and **DataCenter ID**. Then, click on **Next**.
 

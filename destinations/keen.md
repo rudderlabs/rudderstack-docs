@@ -53,7 +53,7 @@ If enabled, RudderStack attaches the following Keen add-ons to the events, which
 Note: We only pass the IP, page and referrer add-ons to Keen if the event contains a valid `ip`, `page`, `URL` and `referrer` property.
 {% endhint %}
 
-![Keen add-ons settings in RudderStack](../.gitbook/assets/image%20%2837%29.png)
+![Keen add-ons settings in RudderStack](../.gitbook/assets/image%20%2838%29.png)
 
 * Once you have finalized all the settings, click on **Next** to complete the configuration. Keen will now be added as a destination in RudderStack.
 

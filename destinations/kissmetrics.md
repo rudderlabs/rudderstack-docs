@@ -33,7 +33,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to your destination, and then click on **Next**. You should see the following screen:
 
-![Connection Settings for Kissmetrics in RudderStack](../.gitbook/assets/image%20%2825%29.png)
+![Connection Settings for Kissmetrics in RudderStack](../.gitbook/assets/image%20%2824%29.png)
 
 * Please enter the **API Key** in the **Connection Settings**. You may also enable the **Use native SDK to send events** setting to send events through Kissmetrics' native JavaScript SDK.
 
@@ -185,7 +185,7 @@ Here is a sample `screen` call in using RudderStack iOS SDK:
 
 You can obtain the Kissmetrics API Key by logging into your Kissmetrics account, and navigating to the [Product Settings](https://www.kissmetrics.com/settings). Please refer to the following screenshot for more details:
 
-![Kissmetrics API Key](../.gitbook/assets/image%20%2815%29.png)
+![Kissmetrics API Key](../.gitbook/assets/image%20%2813%29.png)
 
 ## Contact Us
 

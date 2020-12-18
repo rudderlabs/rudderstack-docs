@@ -31,7 +31,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Google Pub/Sub Connection Settings](../.gitbook/assets/image%20%2879%29.png)
+![Google Pub/Sub Connection Settings](../.gitbook/assets/image%20%2878%29.png)
 
 * Enter the following details:
   * **Connection Settings**
@@ -45,7 +45,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
     * Enter the **Event Name** as well as the corresponding **Topic ID**. You can get the topic id from your topics page, as shown:
 
-![Google Pub/Sub Topic ID and Name](../.gitbook/assets/image%20%2848%29.png)
+![Google Pub/Sub Topic ID and Name](../.gitbook/assets/image%20%2846%29.png)
 
 {% hint style="info" %}
 You can send an event `type` like `page,` `identify,` `track`.   

@@ -25,7 +25,7 @@ Please follow the steps mentioned below:
 * Log into your [RudderStack dashboard](https://app.rudderstack.com/)
 * Click on the [Transformations](https://app.rudderstack.com/transformations) Link at the bottom of the left panel in the dashboard, as shown:
 
-![Transformations option on the RudderStack dashboard](../.gitbook/assets/1%20%287%29.png)
+![Transformations option on the RudderStack dashboard](../.gitbook/assets/1%20%288%29.png)
 
 * Click on the **Create New** option as shown:
 

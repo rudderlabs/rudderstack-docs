@@ -32,7 +32,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 * Give a name to the destination and click on **Next**. You should then see the following screen.
 * Fill up the details and click on **Next** to complete the configuration. Firehose should now be added and enabled as a destination in RudderStack.
 
-![Add Firehose as destination](../.gitbook/assets/image%20%2891%29.png)
+![Add Firehose as destination](../.gitbook/assets/image%20%2888%29.png)
 
 **Details to be filled:**
 

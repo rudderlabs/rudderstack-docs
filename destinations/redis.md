@@ -133,7 +133,7 @@ Set Common Name to `localhost` while generating CA certificate and server certif
 
 Set the TLS endpoint of the `redis-stunnel` container as the address in the RudderStack Redis destination settings. Eg. `127.0.0.1:6380` while running containers locally with defaults. Set the `ca.pem` file generated above as the CA certificate in the settings
 
-![](../.gitbook/assets/image%20%2839%29.png)
+![](../.gitbook/assets/image%20%2837%29.png)
 
 ## Contact Us <a id="contact-us"></a>
 

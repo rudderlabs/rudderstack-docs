@@ -52,7 +52,7 @@ If RudderStack keeps crashing while processing the events, it enters the degrade
 
 In the degraded mode, RudderStack receives events and stores them. It will not forward to destinations. 
 
-![Degraded Mode](../.gitbook/assets/rudderstack2x_-13-.png)
+![Degraded Mode](../.gitbook/assets/rudderstack2x_-13-%20%281%29.png)
 
 {% hint style="info" %}
 In this mode, all your events are completely safe and will be sent to destination maintaining the order.
