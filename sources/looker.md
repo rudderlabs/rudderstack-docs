@@ -36,7 +36,7 @@ The RudderStack Action Hub Server can be found at [https://looker-action-hub.rud
 `75805209b45a55494d0c27d4eb91fbf6bc7fb1a63dfcd9260fe65daee584737b/ea4e074e71c1af9c07bf71f69c1addf7b9a30d458bd7aea4b4e60d6a6a122277b59210186edb7cf21a5ff53a29c68fb89ff5aaf5019570c8a5131484a11e2e3e`
 {% endhint %}
 
-![RudderStack-hosted Action Hub](../.gitbook/assets/image%20%2828%29.png)
+![RudderStack-hosted Action Hub](../.gitbook/assets/image%20%2829%29.png)
 
 To enable any of the above actions, go to its **Settings** page where you need to give the **Rudder Write Key** from your [RudderStack](https://app.rudderstack.com) [dashboard](https://app.rudderstack.com/), which can be obtained as shown:
 

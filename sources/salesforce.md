@@ -15,11 +15,11 @@ To set up Salesforce as a source on the RudderStack dashboard, follow these step
 * Sign into your RudderStack dashboard.
 * Click on **Sources** on the left panel of your dashboard. Select **Salesforce**, and then click on **Next**.
 
-![](../.gitbook/assets/1%20%285%29.png)
+![](../.gitbook/assets/1%20%284%29%20%281%29.png)
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/2%20%287%29.png)
+![](../.gitbook/assets/2%20%284%29%20%281%29.png)
 
 * Next, you will be required to connect your Salesforce account with RudderStack. To do so, click on **Connect with Salesforce**.  After allowing the necessary permissions, your account should be successfully connected to RudderStack and visible on the dashboard. Then, click on **Next**. 
 
@@ -31,7 +31,7 @@ If you have already logged into your Salesforce account previously, clicking on 
 
 * In the next window, select the suitable **Run Frequency**. This configuration controls how often RudderStack will pull data from your Salesforce integration. Then, click on **Next**.
 
-![](../.gitbook/assets/4%20%286%29.png)
+![](../.gitbook/assets/4%20%284%29.png)
 
 {% hint style="info" %}
 Please note that loading to your data warehouse could take a little bit longer than the specified frequency.
@@ -43,11 +43,11 @@ Salesforce’s API strictly enforces a limit on its usage. A high **Run Frequenc
 
 * Finally, specify the Salesforce data you want to import via RudderStack, and click on **Next**. You can choose to import selected Salesforce resources or all of them.
 
-![](../.gitbook/assets/5%20%285%29.png)
+![](../.gitbook/assets/5%20%283%29%20%281%29.png)
 
 That's it! Salesforce is now successfully configured as a source on your RudderStack dashboard. RudderStack will start ingesting data at the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown: 
 
-![](../.gitbook/assets/6%20%284%29.png)
+![](../.gitbook/assets/6%20%283%29%20%281%29.png)
 
 ## How RudderStack Syncs Salesforce Data
 

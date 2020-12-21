@@ -31,7 +31,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to your destination, and then click on **Next**. You should see the following screen:
 
-![Hotjar Connection Settings in RudderStack](../.gitbook/assets/image%20%2842%29.png)
+![Hotjar Connection Settings in RudderStack](../.gitbook/assets/image%20%2843%29.png)
 
 * Please provide the `Site ID`.  You will get your `Site ID` under **Settings** - **Sites & Organizations** after logging into your Hotjar account.
 * You can enable or disable native SDK to send your events as per your preference. Finally, click on **Next** to complete the configuration. 

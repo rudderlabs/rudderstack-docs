@@ -31,7 +31,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Salesforce Connection Settings](../.gitbook/assets/image%20%2841%29.png)
+![Salesforce Connection Settings](../.gitbook/assets/image%20%2842%29.png)
 
 * Please provide your Salesforce username and password here, along with the access token. Then, click on **Next**. Salesforce will be enabled as a destination in RudderStack.
 

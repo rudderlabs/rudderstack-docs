@@ -35,7 +35,7 @@ To properly configure the Unity SDK, you will need the following:
 * Download `rudder-sdk-unity.unitypackage` from our [Github Repository](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/SDK/rudder-sdk-unity.unitypackage).
 * Import the downloaded package to your project. From the **Assets** menu, go to **Import Package** - **Custom Package...** as shown in the following screenshot:
 
-![Importing the downloaded package](../.gitbook/assets/unity1.png)
+![Importing the downloaded package](../.gitbook/assets/unity1%20%281%29%20%281%29.png)
 
 * Select `rudder-sdk-unity.unitypackage` from the location where you have downloaded it and click on **Open**:
 

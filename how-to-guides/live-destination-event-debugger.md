@@ -47,7 +47,7 @@ To view the destination live events, please follow these steps:
 * The **Live Events** button can be found on the top right of your destination page
 * Click on the Live Events button and give your consent to stream the data for viewing purposes
 
-![](../.gitbook/assets/image%20%2833%29.png)
+![](../.gitbook/assets/image%20%2834%29.png)
 
 * Ingest the data into RudderStack through a source connected to this destination. You should be able to see the destination responses in real-time. 
 

@@ -57,7 +57,7 @@ Similar to the example given above, let's assume you want to send your event dat
 
  If you enable the `Native SDK` option on the RudderStack dashboard, the RudderStack SDK will download the Firebase SDK, transform the events and will send them to Firebase for analytics.
 
-![How Device Mode Works](../.gitbook/assets/image%20%2829%29.png)
+![How Device Mode Works](../.gitbook/assets/image%20%2830%29.png)
 
 {% hint style="success" %}
 Device mode integrations will send data to the destinations directly from your client \(browser or mobile application\).

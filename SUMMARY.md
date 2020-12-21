@@ -41,6 +41,7 @@
   * [PHP](rudderstack-sdk-integration-guides/php.md)
 * [Sources Guides](sources/README.md)
   * [Data Warehouse as a Source](sources/data-warehouse-as-a-source.md)
+  * [Google Search Console](sources/google-search-console.md)
   * [Google Sheets](sources/google-sheets.md)
   * [Google Analytics](sources/google-analytics.md)
   * [Zendesk](sources/zendesk.md)
