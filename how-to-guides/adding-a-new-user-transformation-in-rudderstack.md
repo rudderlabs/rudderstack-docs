@@ -25,15 +25,15 @@ Please follow the steps mentioned below:
 * Log into your [RudderStack dashboard](https://app.rudderstack.com/)
 * Click on the [Transformations](https://app.rudderstack.com/transformations) Link at the bottom of the left panel in the dashboard, as shown:
 
-![Transformations option on the RudderStack dashboard](../.gitbook/assets/1%20%287%29%20%281%29.png)
+![Transformations option on the RudderStack dashboard](../.gitbook/assets/1%20%2813%29.png)
 
 * Click on the **Create New** option as shown:
 
-![Create New option on the Transformations page](../.gitbook/assets/2%20%281%29.png)
+![Create New option on the Transformations page](../.gitbook/assets/2%20%285%29.png)
 
 * In the following screen, please enter the name you would like to assign to the custom transformation. Enter the transformation function's code in the **Transformation** window, as shown in the figure below:
 
-![](../.gitbook/assets/3%20%281%29.png)
+![](../.gitbook/assets/3%20%282%29.png)
 
 * You need to add your user transformation's code within the `transform` function in the **Transformation** window. You can also add other functions and call them from within `transform`. 
 

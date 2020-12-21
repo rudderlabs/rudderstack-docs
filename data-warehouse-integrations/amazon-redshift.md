@@ -37,11 +37,11 @@ Please follow the steps below in order to create a new Redshift cluster:
 
 * Click on the **Create Cluster** option as shown:
 
-![](../.gitbook/assets/2%20%282%29%20%281%29.png)
+![](../.gitbook/assets/2%20%286%29.png)
 
 * Enter the cluster details**.** First, fill in the **Cluster identifier** and choose the instance type as shown:
 
-![Redshift cluster configuration settings](../.gitbook/assets/3%20%284%29.png)
+![Redshift cluster configuration settings](../.gitbook/assets/3%20%285%29.png)
 
 * Enter the number of nodes for your cluster. This will primarily depend on the amount of data you expect to work with.
 
@@ -49,7 +49,7 @@ Please follow the steps below in order to create a new Redshift cluster:
 
 * Enter the database name, and create the admin user with the name of your choice.
 
-![](../.gitbook/assets/5%20%284%29%20%281%29.png)
+![](../.gitbook/assets/5%20%287%29.png)
 
 {% hint style="warning" %}
 For security purposes, we recommend that you choose a strong password.
@@ -105,11 +105,11 @@ This procedure works for **EC2-VPC**. However, **EC2-Classic** works similarly.
 
 * Go to EC2 from the services on AWS console,  as shown:
 
-![](../.gitbook/assets/7%20%281%29%20%281%29.png)
+![](../.gitbook/assets/7%20%284%29.png)
 
 * Go to **Security Groups** under **Network & Security** and click on **Create Security Group**.
 
-![](../.gitbook/assets/8%20%281%29.png)
+![](../.gitbook/assets/8%20%282%29.png)
 
 * Enter the details of the security group. The **Security group name** will be used to select the group later.
 

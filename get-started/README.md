@@ -39,7 +39,7 @@ Do you have any questions about RudderStack? Please join our [Slack](https://res
 
 ## UI Pages
 
-![RudderStack Connections Page](../.gitbook/assets/image%20%2893%29.png)
+![RudderStack Connections Page](../.gitbook/assets/image%20%2892%29.png)
 
 ![RudderStack Events Page](../.gitbook/assets/image%20%283%29.png)
 

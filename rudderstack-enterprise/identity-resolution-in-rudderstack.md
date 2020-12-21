@@ -28,7 +28,7 @@ First, Alice searches for the latest iPhone in her mobile app, and signs up with
 
 Later, she signs up on the website with her email, verifies her mobile number and then purchases the iPhone. The flow of events is as shown:
 
-![](../.gitbook/assets/image%20%2894%29.png)
+![](../.gitbook/assets/image%20%2893%29.png)
 
 Alice then reports an issue via her phone and a ticket for the same is created using Zendesk. This ticket confirmation email is sent to Alice using CustomerIO. 
 

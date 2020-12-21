@@ -31,7 +31,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Fill the required fields such as API Key and Site ID as shown in the screenshot below:
 
-![Customer.io Connection Settings](../.gitbook/assets/image%20%2847%29.png)
+![Customer.io Connection Settings](../.gitbook/assets/image%20%2846%29.png)
 
 Once the destination is enabled, events from our SDK will start to flow to Customer.io.
 
