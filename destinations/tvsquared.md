@@ -35,7 +35,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ![](../.gitbook/assets/image%20%2896%29.png)
 
-![TVSquared Connection Settings in the RudderStack Dashboard](../.gitbook/assets/image%20%2835%29.png)
+![TVSquared Connection Settings in the RudderStack Dashboard](../.gitbook/assets/image%20%2834%29.png)
 
 * The above connection settings are explained in more detail below: 
   * **Brand Id \(Site ID\)**: This is a unique identifier that indicates the TVSquared client to which the traffic belongs. This parameter will always carry the form of `TV-XXXXXXX-1` with a variable-length numeric value replacing the `X`.

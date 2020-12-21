@@ -19,11 +19,11 @@ To set up Salesforce as a source on the RudderStack dashboard, follow these step
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/2%20%288%29.png)
+![](../.gitbook/assets/2%20%287%29.png)
 
 * Next, you will be required to connect your Salesforce account with RudderStack. To do so, click on **Connect with Salesforce**.  After allowing the necessary permissions, your account should be successfully connected to RudderStack and visible on the dashboard. Then, click on **Next**. 
 
-![](../.gitbook/assets/3%20%288%29.png)
+![](../.gitbook/assets/3%20%285%29.png)
 
 {% hint style="success" %}
 If you have already logged into your Salesforce account previously, clicking on the **Connect with Salesforce** option will automatically connect that account to RudderStack. To connect RudderStack to a different account, you will have to log out of your Salesforce account.
@@ -31,7 +31,7 @@ If you have already logged into your Salesforce account previously, clicking on 
 
 * In the next window, select the suitable **Run Frequency**. This configuration controls how often RudderStack will pull data from your Salesforce integration. Then, click on **Next**.
 
-![](../.gitbook/assets/4%20%287%29.png)
+![](../.gitbook/assets/4%20%286%29.png)
 
 {% hint style="info" %}
 Please note that loading to your data warehouse could take a little bit longer than the specified frequency.

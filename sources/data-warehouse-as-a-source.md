@@ -42,7 +42,7 @@ To configure your data warehouse as a source on the RudderStack dashboard, follo
 
 * Assign a name to your source. Then, click on the **Create credentials from scratch** button, if you are configuring your data warehouse in the RudderStack dashboard for the first time.
 
-![](../.gitbook/assets/2%20%283%29.png)
+![](../.gitbook/assets/2%20%281%29%20%281%29.png)
 
 {% hint style="info" %}
 If you have previously configured your data warehouse as a source on the RudderStack dashboard, you can simply use the existing credentials and proceed. 
@@ -60,7 +60,7 @@ RudderStack currently supports **Google BigQuery**, **Amazon Redshift**, and **S
 
 * Next, enter the data warehouse schema and the table name. RudderStack will collect the data from this table.
 
-![](../.gitbook/assets/4%20%288%29.png)
+![](../.gitbook/assets/4%20%287%29.png)
 
 {% hint style="warning" %}
 Please note that your source table must include at least one of the following columns for it to be considered a valid source:
@@ -76,9 +76,9 @@ Please note that your source table must include at least one of the following co
 
 * You can also filter, select and edit the column names of the table to be included as the data source, as shown:
 
-![](../.gitbook/assets/6%20%288%29.png)
+![](../.gitbook/assets/6%20%286%29.png)
 
-![](../.gitbook/assets/7%20%283%29.png)
+![](../.gitbook/assets/7%20%282%29%20%281%29.png)
 
 * Once you've selected all the the required table columns, click on **Next**.
 

@@ -14,7 +14,7 @@ In order to add Customer.io as a source in RudderStack, please follow these step
 
 * From your [RudderStack dashboard](https://app.rudderlabs.com/), click on **Add Source**. From the list of sources, select **Customer.io**, as shown:
 
-![](../.gitbook/assets/image%20%2821%29.png)
+![](../.gitbook/assets/image%20%2820%29%20%281%29.png)
 
 * Enter the name of your source.
 
@@ -44,7 +44,7 @@ Make sure to add the `writeKey` as query parameter to the URL. This is required 
 
 A sample figure highlighting this step is as shown:
 
-![Webhook Settings](../.gitbook/assets/image%20%2831%29.png)
+![Webhook Settings](../.gitbook/assets/image%20%2830%29.png)
 
 * Finally, save the webhook.
 

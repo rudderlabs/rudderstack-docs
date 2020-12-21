@@ -38,7 +38,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and select the source to connect to this destination. Then, click on **Next**. You should see the following screen:
 
-![Lotame Destination Settings on the RudderStack dashboard](../.gitbook/assets/image%20%2826%29.png)
+![Lotame Destination Settings on the RudderStack dashboard](../.gitbook/assets/image%20%2825%29.png)
 
 You can provide multiple BCP and DSP URL templates in the settings dashboard by clicking on the **ADD MORE** option as seen above. Once specified, RudderStack includes these sources of image pixels in the web app. To provide the URLs, please use the below template:
 

@@ -240,7 +240,7 @@ The Checkout steps feature is a key difference between the regular E-Commerce an
 
 You can configure the checkout funnel in the Google Analytics admin interface as shown below:
 
-![](../.gitbook/assets/image%20%2822%29.png)
+![](../.gitbook/assets/image%20%2821%29.png)
 
 The checkout flow can be implemented by calling `track` with **`checkout step viewed`** and **`checkout step completed`** for the steps you have added in Google Analytics. 
 
@@ -525,7 +525,7 @@ In your Google Analytics account, enable **Site search Tracking** and put the pa
 
 If the query is `abc.com/s=xyz`the setting should be as follows:
 
-![](../.gitbook/assets/image%20%2819%29.png)
+![](../.gitbook/assets/image%20%2818%29%20%281%29.png)
 
 ### Optimize
 
@@ -537,7 +537,7 @@ You can set the content group mapping in the RudderStack dashboard and Google An
 
 ![Content Group Mapping in RudderStack](../.gitbook/assets/image%20%2886%29.png)
 
-![Content Grouping Settings in Google Analytics](../.gitbook/assets/image%20%2827%29.png)
+![Content Grouping Settings in Google Analytics](../.gitbook/assets/image%20%2826%29.png)
 
 
 
@@ -579,7 +579,7 @@ If the specified dimension is set in the properties of the `page` call, it will 
 
 The tracking ID can be found in your Google Analytics account:
 
-![](../.gitbook/assets/image%20%2845%29.png)
+![](../.gitbook/assets/image%20%2844%29.png)
 
 Navigate to your account and go to Apps. The tracking ID will be present there.
 

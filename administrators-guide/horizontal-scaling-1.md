@@ -42,7 +42,7 @@ The Enterprise version of RudderStack makes horizontal scaling seamless, while m
 
 RudderStack Enterprise has a proxy service that implements a routing algorithm. It forwards a given set of user events to the same RudderStack node every time. Each node then guarantees the event ordering while delivering to the specified destinations. This proxy service is highly available and scalable.
 
-![Event Ordering in RudderStack Enterprise](../.gitbook/assets/image%20%2828%29.png)
+![Event Ordering in RudderStack Enterprise](../.gitbook/assets/image%20%2827%29.png)
 
 ### Scale Down
 
