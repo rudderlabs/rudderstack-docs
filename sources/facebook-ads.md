@@ -17,7 +17,7 @@ To add Facebook Ads as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/1%20%2812%29.png)
+![](../.gitbook/assets/1%20%2812%29%20%283%29.png)
 
 * Next, select **Facebook Ads** from the list of **Cloud Sources**, and click on **Next**.
 
@@ -51,7 +51,7 @@ RudderStack will not sync the data which is older than the selected timeframes.
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Facebook Ads account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
-![](../.gitbook/assets/6%20%286%29.png)
+![](../.gitbook/assets/6%20%287%29.png)
 
 ### Specifying the Data to Import
 

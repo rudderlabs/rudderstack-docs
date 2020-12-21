@@ -15,7 +15,7 @@ To add Google Search Console as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/1%20%2810%29.png)
+![](../.gitbook/assets/1%20%2812%29.png)
 
 * Next, select **Google Search Console** from the list of **Cloud Sources**, and click on **Next**.
 
@@ -43,7 +43,7 @@ If you have already connected RudderStack to your Google Search Console account,
 
 In the **Site URL**, make sure to use the **exact URL** of the website as specified in your Google Search Console. Read [this guide](https://support.google.com/webmasters/answer/34592?hl=en) for more information.
 
-![](../.gitbook/assets/image%20%2813%29.png)
+![](../.gitbook/assets/image%20%2813%29%20%281%29.png)
 
 {% hint style="success" %}
 The available dimensions that you can query are **country**, **device**, ****and **page**. 

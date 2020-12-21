@@ -40,7 +40,7 @@ To ensure loading data from cloud storage to BigQuery, please make sure to co-lo
   * Add `BigQuery Job User` and `BigQuery Data Owner` roles to the account. Note: If a dataset with the name \(configurable by the setting: namespace in destination settings\) already exists, role of `BigQuery Data Editor` would suffice instead of BigQuery Data Owner
   * Create a key for the service account with JSON as the type and store it.
 
-![Service account permissions](../.gitbook/assets/screenshot-2020-04-08-at-12.09.07-pm%20%281%29.png)
+![Service account permissions](../.gitbook/assets/screenshot-2020-04-08-at-12.09.07-pm%20%281%29%20%281%29.png)
 
 * Create and download the private JSON key which will be required while configuring BigQuery as a destination in RudderStack, as shown:
 

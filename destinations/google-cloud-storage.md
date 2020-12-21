@@ -34,7 +34,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Once you have set up the source, select **Google Cloud Storage** from the list of destinations. ****Give your destination a name, and then click on **Next**. You will then see the following **Connection Settings** screen:
 
-![Connection settings for Google Cloud Storage in RudderStack](../.gitbook/assets/image%20%2814%29.png)
+![Connection settings for Google Cloud Storage in RudderStack](../.gitbook/assets/image%20%2814%29%20%281%29.png)
 
 * Enter your **Google Cloud Storage Bucket Name**, as well as the content of the JSON key file \(refer to the [Setting up Google Cloud Storage](https://docs.rudderstack.com/destinations-guides/google-cloud-storage#setting-up-google-cloud-storage) section above\) in the **Credentials** field.
 * If you need any transformation choose one from the list. Else, click **Next**.

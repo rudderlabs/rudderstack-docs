@@ -23,7 +23,7 @@ To set up the RudderStack React Native SDK, there are a few prerequisites as men
 
 * You will also need your `Data-Plane URL`. The following screenshot shows the data plane URL for the managed hosting mode:
 
-![Data Plane URL](../.gitbook/assets/android-2%20%281%29%20%281%29.png)
+![Data Plane URL](../.gitbook/assets/android-2%20%281%29%20%281%29%20%282%29.png)
 
 * It would help if you also had the [React Native Development Environment](https://reactnative.dev/docs/environment-setup) setup on your system.
 
