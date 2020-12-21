@@ -18,7 +18,7 @@ This event is triggered whenever a visitor clicks on a product. The following pr
 | :--- | :--- | :--- |
 | `product_id` | String | Contains the database ID of the product being viewed |
 | `sku` | String | Contains the SKU of the product |
-| `category` | String | Contains the category of the product  |
+| `category` | String | Contains the category of the product |
 | `name` | String | Contains the name of the product being viewed |
 | `brand` | String | Contains the name of the brand associated with the product |
 | `variant` | String | Contains information of the variant associated with the product |
@@ -56,7 +56,7 @@ This event is triggered whenever a visitor views a product. The following proper
 | :--- | :--- | :--- |
 | `product_id` | String | Contains the database ID of the product being viewed |
 | `sku` | String | Contains the SKU of the product |
-| `category` | String | Contains the category of the product  |
+| `category` | String | Contains the category of the product |
 | `name` | String | Contains the name of the product being viewed |
 | `brand` | String | Contains the name of the brand associated with the product |
 | `variant` | String | Contains information of the variant associated with the product |
@@ -97,7 +97,7 @@ This event is triggered whenever a visitor/customer adds a product to their shop
 | `cart_id` | String | Contains the cart ID of the cart to which the product was added |
 | `product_id` | String | Contains the database ID of the product being viewed |
 | `sku` | String | Contains the SKU of the product |
-| `category` | String | Contains the category of the product  |
+| `category` | String | Contains the category of the product |
 | `name` | String | Contains the name of the product being viewed |
 | `brand` | String | Contains the name of the brand associated with the product |
 | `variant` | String | Contains information of the variant associated with the product |
@@ -136,7 +136,7 @@ This event is triggered whenever a product is removed from the shopping cart by 
 | `cart_id` | String | Contains the cart ID of the cart to which the product was added |
 | `product_id` | String | Contains the database ID of the product being viewed |
 | `sku` | String | Contains the SKU of the product |
-| `category` | String | Contains the category of the product  |
+| `category` | String | Contains the category of the product |
 | `name` | String | Contains the name of the product being viewed |
 | `brand` | String | Contains the name of the brand associated with the product |
 | `variant` | String | Contains information of the variant associated with the product |

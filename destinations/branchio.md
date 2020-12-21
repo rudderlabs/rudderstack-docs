@@ -18,7 +18,7 @@ Before getting started, please determine whether the platform you are sending yo
 | **Cloud mode** | - | **Supported** | - |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 In order to start sending data to Branch, you will first need to add it as a destination to the source from which you are sending the event data.
@@ -51,7 +51,7 @@ Depending on the platform of integration follow the steps below to integrate wit
 pod 'Rudder-Branch', '0.1.3'
 ```
 
-followed by 
+followed by
 
 ```text
 $ pod install
@@ -106,7 +106,7 @@ val rudderClient: RudderClient = RudderClient.getInstance(
 {% endtab %}
 {% endtabs %}
 
-Now follow the instructions below to send events to Branch. 
+Now follow the instructions below to send events to Branch.
 
 ## Identify
 
@@ -162,8 +162,7 @@ rudderanalytics.track('Product Added', {
 });
 ```
 
-  
-All the trackable events in RudderStack are divided into three major Branch event categories: 
+All the trackable events in RudderStack are divided into three major Branch event categories:
 
 * Commerce Events
 * Content Events

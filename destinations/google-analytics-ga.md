@@ -25,7 +25,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Google Analytics, perform the steps below:
 
-To enable sending data to Google Analytics, you will first need to add it as a destination to the source from which you are sending the event data. 
+To enable sending data to Google Analytics, you will first need to add it as a destination to the source from which you are sending the event data.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -101,11 +101,11 @@ rudderanalytics.page("home", {
         title: "title",
         search: "search",
         referrer: "referrer"
-}); 
+});
 ```
 
 {% hint style="info" %}
-For a server-side screen call, the application name is passed from RudderStack's `context.app.name` as **`an`**, otherwise the event will be rejected by GA. 
+For a server-side screen call, the application name is passed from RudderStack's `context.app.name` as **`an`**, otherwise the event will be rejected by GA.
 
 If **Include the Querystring in Page Views** option is turned on under Advanced options of RudderStack destination settings \(please refer to the settings in the Getting Started section above\), then the whole URL with query string will be sent as **`dp`** \(Document Path\). Otherwise, the query string will be removed from the URL.
 {% endhint %}
@@ -135,7 +135,7 @@ You can call `identify` once in order to set the `userId` and `user traits`for a
 
 In Google Analytics, we can configure custom dimensions in the [Admin](https://support.google.com/analytics/answer/6132368?hl=en) page.
 
-There are multiple scopes for custom dimensions, such as `hits`, `session`, `user`, and `products` \(If Enhanced eCommerce is enabled\). Once these are set up in Google Analytics, the traits and properties can be mapped to custom dimensions as set by the user in the RudderStack destination settings page \(as seen in the Getting Started section\). 
+There are multiple scopes for custom dimensions, such as `hits`, `session`, `user`, and `products` \(If Enhanced eCommerce is enabled\). Once these are set up in Google Analytics, the traits and properties can be mapped to custom dimensions as set by the user in the RudderStack destination settings page \(as seen in the Getting Started section\).
 
 A custom dimension should be set as `dimension{index}` . For example, `dimension1` and it will map accordingly when the user sets the dimension in GA settings as shown below.
 
@@ -191,13 +191,13 @@ The following properties are sent to the Google Analytics event:
 | Property | Value |
 | :--- | :--- |
 | Event Category | `category` |
-| Event Action  | `Track me` |
+| Event Action | `Track me` |
 | Event Label | `label` |
 | Event Value | `value` |
 
 ## Non-Interaction Events
 
-If the non-interaction setting is enabled in the RudderStack destination settings, `nonInteraction` with value `1` will be sent. 
+If the non-interaction setting is enabled in the RudderStack destination settings, `nonInteraction` with value `1` will be sent.
 
 ```text
 {
@@ -242,7 +242,7 @@ You can configure the checkout funnel in the Google Analytics admin interface as
 
 ![](../.gitbook/assets/image%20%2821%29.png)
 
-The checkout flow can be implemented by calling `track` with **`checkout step viewed`** and **`checkout step completed`** for the steps you have added in Google Analytics. 
+The checkout flow can be implemented by calling `track` with **`checkout step viewed`** and **`checkout step completed`** for the steps you have added in Google Analytics.
 
 An example of this is as shown:
 
@@ -448,7 +448,7 @@ On the client-side tracking, the IP address of the HTTP request is sent automati
 
 ## UTM Parameters
 
-The UTM parameters need to be passed manually to the server. 
+The UTM parameters need to be passed manually to the server.
 
 UTM parameters are passed in the context object in `context.campaign`. `campaign.name` and `campaign.mediums` must be sent together to show up in the report. Also, `campaign.term` and `campaign.content` are optional.
 
@@ -458,12 +458,12 @@ There are some other important features associated with Google Analytics integra
 
 ### Named Tracker
 
-If you turn on the named tracker in RudderStack destination setting under the **Other Settings** option, Rudder will push the events to a GA tracker named as `rudderGATracker`  instead of the default tracker.  
+If you turn on the named tracker in RudderStack destination setting under the **Other Settings** option, Rudder will push the events to a GA tracker named as `rudderGATracker` instead of the default tracker.  
 For more information on creating trackers please follow:
 
 [https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers)
 
-If it is turned off default tracker which is internally given the name `t0` will be set. 
+If it is turned off default tracker which is internally given the name `t0` will be set.
 
 #### Multiple Trackers
 
@@ -478,7 +478,7 @@ window.rudderanalytics.ready(() => {
       window.ga('create', 'UA-XXXXXXX-1', 'auto');
       window.ga('send', 'pageview');
 });
-      
+
 // with a tracker name
 window.rudderanalytics.ready(() => {
       console.log("we are all set!!!");
@@ -498,7 +498,7 @@ You can turn on **Anonymize IP Address** in the RudderStack destination settings
 
 ### Cookie Domain Name
 
-The default value of this is set to `auto` . However, you can change it in the destination settings. You can get more information on this feature by referring to  [Google documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/domains). 
+The default value of this is set to `auto` . However, you can change it in the destination settings. You can get more information on this feature by referring to [Google documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/domains).
 
 ### Cross-domain Tracking
 
@@ -529,7 +529,7 @@ If the query is `abc.com/s=xyz`the setting should be as follows:
 
 ### Optimize
 
-Add your **Optimize Container ID** in destinations settings. 
+Add your **Optimize Container ID** in destinations settings.
 
 ### Content Groupings
 
@@ -538,8 +538,6 @@ You can set the content group mapping in the RudderStack dashboard and Google An
 ![Content Group Mapping in RudderStack](../.gitbook/assets/image%20%2886%29.png)
 
 ![Content Grouping Settings in Google Analytics](../.gitbook/assets/image%20%2826%29.png)
-
-
 
 When you use `rudderanalytics.page(name, properties)` with the custom properties, RudderStack will use the value of the property you designate as the value of the specified content grouping.
 
@@ -555,7 +553,7 @@ This feature specifies what percentage of users should be tracked. The default v
 
 This feature defines the sample size for Site Speed data collection. The default value is set to 1.
 
-### Server-side Identification 
+### Server-side Identification
 
 If enabled, the `identify` calls will be made only from the server-side.
 
@@ -606,8 +604,6 @@ Yes, you can. Please check the Real-time reports in Google Analytics. A sample d
 ### How do I view the already processed events for a particular day?
 
 Please adjust the Google Analytics' default reporting time frame from a month ago to **the required date**, in order to view the processed events of that day.
-
-
 
 ![Changing the website URL from HTTP to HTTPS](../.gitbook/assets/faq1.png)
 

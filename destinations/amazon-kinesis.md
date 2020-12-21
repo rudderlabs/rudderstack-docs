@@ -18,7 +18,7 @@ In order to enable dumping data to Amazon Kinesis, you will first need to add it
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to Kinesis, perform the steps below:
@@ -31,7 +31,7 @@ To do so, please follow these steps:
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-* Next, in the **Connection Settings**, ****fill all the fields with the relevant information and click **Next**
+* Next, in the **Connection Settings**, **\*\*fill all the fields with the relevant information and click** Next\*\*
 
 ![Add Kinesis as destination](../.gitbook/assets/image%20%287%29.png)
 

@@ -17,7 +17,7 @@ This document describes the various configuration parameters for the [**`config.
       <th style="text-align:left">Parameter name</th>
       <th style="text-align:left">Type</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
+      <th style="text-align:left">Default</th>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +29,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">Number of parallel threads used in server. Should be set to number of
         cores.</td>
-      <td style="text-align:center">12</td>
+      <td style="text-align:left">12</td>
     </tr>
     <tr>
       <td style="text-align:left">2</td>
@@ -43,7 +43,7 @@ This document describes the various configuration parameters for the [**`config.
         <p>The amount of time events are stored in gateway database after they have
           been processed</p>
       </td>
-      <td style="text-align:center">0</td>
+      <td style="text-align:left">0</td>
     </tr>
     <tr>
       <td style="text-align:left">3</td>
@@ -57,7 +57,7 @@ This document describes the various configuration parameters for the [**`config.
         <p>The amount of time events are stored in router database after they have
           been processed</p>
       </td>
-      <td style="text-align:center">0</td>
+      <td style="text-align:left">0</td>
     </tr>
     <tr>
       <td style="text-align:left">4</td>
@@ -67,7 +67,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">A boolean that enables or disables the processor module. Will be set to
         false when running in degraded mode</td>
-      <td style="text-align:center">true</td>
+      <td style="text-align:left">true</td>
     </tr>
     <tr>
       <td style="text-align:left">5</td>
@@ -77,7 +77,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">A boolean that enables or disables the router module. Will be set to false
         when running in degraded mode</td>
-      <td style="text-align:center">true</td>
+      <td style="text-align:left">true</td>
     </tr>
     <tr>
       <td style="text-align:left">6</td>
@@ -86,7 +86,7 @@ This document describes the various configuration parameters for the [**`config.
       <td style="text-align:left"><code>bool</code>
       </td>
       <td style="text-align:left">A boolean that enables or disables stats.</td>
-      <td style="text-align:center">true</td>
+      <td style="text-align:left">true</td>
     </tr>
   </tbody>
 </table>
@@ -100,7 +100,7 @@ This document describes the various configuration parameters for the [**`config.
       <th style="text-align:left">Parameter name</th>
       <th style="text-align:left">Type</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
+      <th style="text-align:left">Default</th>
     </tr>
   </thead>
   <tbody>
@@ -111,7 +111,7 @@ This document describes the various configuration parameters for the [**`config.
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">The port on which the server runs.</td>
-      <td style="text-align:center">8080</td>
+      <td style="text-align:left">8080</td>
     </tr>
     <tr>
       <td style="text-align:left">2</td>
@@ -121,7 +121,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">As requests come in to the gateway and are batched, <code>maxDBWriterProcess</code> writers
         are run to send these batches to db and config-backend</td>
-      <td style="text-align:center">64</td>
+      <td style="text-align:left">64</td>
     </tr>
     <tr>
       <td style="text-align:left">3</td>
@@ -130,8 +130,8 @@ This document describes the various configuration parameters for the [**`config.
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">For creation of a job in jobsDB, <code>CustomVal</code> i.e.<code>GW</code> will
-        be assigned for the <code>CustomVal </code>column in jobsDB</td>
-      <td style="text-align:center">&quot;GW&quot;</td>
+        be assigned for the <code>CustomVal</code> column in jobsDB</td>
+      <td style="text-align:left">&quot;GW&quot;</td>
     </tr>
     <tr>
       <td style="text-align:left">4</td>
@@ -139,9 +139,9 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left"><code>int</code>
       </td>
-      <td style="text-align:left">Batch size used in Gateway. Requests are batched up to size <code>maxBatchSize </code>before
+      <td style="text-align:left">Batch size used in Gateway. Requests are batched up to size <code>maxBatchSize</code> before
         writing to DB.</td>
-      <td style="text-align:center">32</td>
+      <td style="text-align:left">32</td>
     </tr>
     <tr>
       <td style="text-align:left">5</td>
@@ -155,7 +155,7 @@ This document describes the various configuration parameters for the [**`config.
         <p>In case the request batches do not meet the <code>maxBatchSize</code>,
           every 20 milliseconds these request batches are are sent to db and config-backend.</p>
       </td>
-      <td style="text-align:center">20</td>
+      <td style="text-align:left">20</td>
     </tr>
     <tr>
       <td style="text-align:left">6</td>
@@ -166,7 +166,7 @@ This document describes the various configuration parameters for the [**`config.
       <td style="text-align:left">One example where an error message (&quot;Request size exceeds max limit&quot;)
         is thrown for a particular request is when its size in KB crosses <code>maxReqSizeInKB</code><em>.</em>
       </td>
-      <td style="text-align:center">100000</td>
+      <td style="text-align:left">100000</td>
     </tr>
     <tr>
       <td style="text-align:left">7</td>
@@ -176,7 +176,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">Enable or disable deduplication of events. We use <code>message_id</code> to
         de-dup. Duplicate events are dropped at the gateway.</td>
-      <td style="text-align:center">false</td>
+      <td style="text-align:left">false</td>
     </tr>
     <tr>
       <td style="text-align:left">8</td>
@@ -190,7 +190,7 @@ This document describes the various configuration parameters for the [**`config.
         <p>Events with the same message_id with in this time frame are considered
           duplicate and are dropped</p>
       </td>
-      <td style="text-align:center">86400</td>
+      <td style="text-align:left">86400</td>
     </tr>
     <tr>
       <td style="text-align:left">9</td>
@@ -200,7 +200,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">Rate limit the number of requests accepted by the gateway. Used for running
         hosted service</td>
-      <td style="text-align:center">false</td>
+      <td style="text-align:left">false</td>
     </tr>
   </tbody>
 </table>
@@ -214,7 +214,7 @@ This document describes the various configuration parameters for the [**`config.
       <th style="text-align:left">Parameter name</th>
       <th style="text-align:left">Type</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
+      <th style="text-align:left">Default</th>
     </tr>
   </thead>
   <tbody>
@@ -225,7 +225,7 @@ This document describes the various configuration parameters for the [**`config.
       <td style="text-align:left"><code>bool</code>
       </td>
       <td style="text-align:left">A bool to enable or disable event schema upload.</td>
-      <td style="text-align:center">false</td>
+      <td style="text-align:left">false</td>
     </tr>
     <tr>
       <td style="text-align:left">2</td>
@@ -235,7 +235,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">Maximum size of the live events batch sent to config-backend.</td>
       <td
-      style="text-align:center">32</td>
+      style="text-align:left">32</td>
     </tr>
     <tr>
       <td style="text-align:left">3</td>
@@ -244,7 +244,7 @@ This document describes the various configuration parameters for the [**`config.
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Maximum size of the live events queue in the memory.</td>
-      <td style="text-align:center">1024</td>
+      <td style="text-align:left">1024</td>
     </tr>
     <tr>
       <td style="text-align:left">4</td>
@@ -254,7 +254,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">Maximum number of attempts by the server to upload the request batches,
         in case of errors.</td>
-      <td style="text-align:center">3</td>
+      <td style="text-align:left">3</td>
     </tr>
     <tr>
       <td style="text-align:left">5</td>
@@ -268,7 +268,7 @@ This document describes the various configuration parameters for the [**`config.
         <p>In case the request batches do not meet the <code>maxBatchSize</code>,
           every 2 seconds these request batches are uploaded to config-backend.</p>
       </td>
-      <td style="text-align:center">2</td>
+      <td style="text-align:left">2</td>
     </tr>
     <tr>
       <td style="text-align:left">6</td>
@@ -280,10 +280,10 @@ This document describes the various configuration parameters for the [**`config.
         <p><code>Time in milliseconds</code>
         </p>
         <p>In case of error while uploading the request batches, the server instead
-          of retrying continuously for <code>maxRetry </code>times will sleep for
-          100 milliseconds before retrying.</p>
+          of retrying continuously for <code>maxRetry</code> times will sleep for 100
+          milliseconds before retrying.</p>
       </td>
-      <td style="text-align:center">100</td>
+      <td style="text-align:left">100</td>
     </tr>
   </tbody>
 </table>
@@ -297,7 +297,7 @@ This document describes the various configuration parameters for the [**`config.
       <th style="text-align:left">Parameter name</th>
       <th style="text-align:left">Type</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
+      <th style="text-align:left">Default</th>
     </tr>
   </thead>
   <tbody>
@@ -307,9 +307,9 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left"><code>float64</code>
       </td>
-      <td style="text-align:left">If (<code>deletedJobsCount </code>/ <code>totalJobsCount</code>) &gt; <code>jobDoneMigrateThres</code>,
+      <td style="text-align:left">If (<code>deletedJobsCount</code> / <code>totalJobsCount</code>) &gt; <code>jobDoneMigrateThres</code>,
         migrate the table of the jobs that have been processed.</td>
-      <td style="text-align:center">0.8</td>
+      <td style="text-align:left">0.8</td>
     </tr>
     <tr>
       <td style="text-align:left">2</td>
@@ -318,10 +318,10 @@ This document describes the various configuration parameters for the [**`config.
       <td style="text-align:left"><code>float64</code>
       </td>
       <td style="text-align:left">
-        <p>If (<code>statusCount </code>/ <code>totalCount</code>) &gt; <code>jobStatusMigrateThres</code>,</p>
+        <p>If (<code>statusCount</code> / <code>totalCount</code>) &gt; <code>jobStatusMigrateThres</code>,</p>
         <p>migrate the table of jobs that have been processed.</p>
       </td>
-      <td style="text-align:center">5</td>
+      <td style="text-align:left">5</td>
     </tr>
     <tr>
       <td style="text-align:left">3</td>
@@ -331,7 +331,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">The maximum size of a table. If the maximum size is reached, migrate all
         the jobs in that table.</td>
-      <td style="text-align:center">100000</td>
+      <td style="text-align:left">100000</td>
     </tr>
     <tr>
       <td style="text-align:left">4</td>
@@ -340,7 +340,7 @@ This document describes the various configuration parameters for the [**`config.
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">The maximum number of tables that can be migrated together.</td>
-      <td style="text-align:center">10</td>
+      <td style="text-align:left">10</td>
     </tr>
     <tr>
       <td style="text-align:left">5</td>
@@ -350,7 +350,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">Maximum size of tables in MB. Tables are migrated if they cross this limit.</td>
       <td
-      style="text-align:center">300</td>
+      style="text-align:left">300</td>
     </tr>
     <tr>
       <td style="text-align:left">6</td>
@@ -358,9 +358,9 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left"><code>int64</code>
       </td>
-      <td style="text-align:left"><code>Time in seconds </code>
+      <td style="text-align:left"><code>Time in seconds</code>
         <br />Time to sleep before migrating datasets.</td>
-      <td style="text-align:center">30</td>
+      <td style="text-align:left">30</td>
     </tr>
     <tr>
       <td style="text-align:left">7</td>
@@ -370,7 +370,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">The maximum number of tables probed to find if they can be migrated.</td>
       <td
-      style="text-align:center">10</td>
+      style="text-align:left">10</td>
     </tr>
     <tr>
       <td style="text-align:left">8</td>
@@ -378,9 +378,9 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left"><code>int64</code>
       </td>
-      <td style="text-align:left"><code>Time in seconds </code>
+      <td style="text-align:left"><code>Time in seconds</code>
         <br />Time to sleep before adding a dataset.</td>
-      <td style="text-align:center">5</td>
+      <td style="text-align:left">5</td>
     </tr>
     <tr>
       <td style="text-align:left">9</td>
@@ -388,10 +388,10 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left"><code>int64</code>
       </td>
-      <td style="text-align:left"><code>Time in seconds </code>
+      <td style="text-align:left"><code>Time in seconds</code>
         <br />Time interval to sleep before checking if a dataset needs backing up or
         not.</td>
-      <td style="text-align:center">2</td>
+      <td style="text-align:left">2</td>
     </tr>
     <tr>
       <td style="text-align:left">10</td>
@@ -401,7 +401,7 @@ This document describes the various configuration parameters for the [**`config.
       </td>
       <td style="text-align:left">Enables/Disables backup. This is set to false in degraded mode.</td>
       <td
-      style="text-align:center">true</td>
+      style="text-align:left">true</td>
     </tr>
   </tbody>
 </table>
@@ -412,9 +412,9 @@ This document describes the various configuration parameters for the [**`config.
 | :--- | :--- | :--- | :--- | :---: |
 | 1 | `jobQueryBatchSize` | `int` | The size of a batch of jobs to get from database. A list of retry list, processing list or unprocessed list or executed list. | 10000 |
 | 2 | `updateStatusBatchSize` | `int` | The minimum size needed to update the status of a batch of jobs. | 1000 |
-| 3 | `readSleepInMS` | `int64` | `Time in milliseconds`  The time to wait for before the next iteration of the loop.  In case the length of unprocessed and retry list is zero, sleep for 10  __milliseconds. Else add it to another list.  | 10 |
-| 4 | `noOfWorkers` | `int` | The total number of workers that are started to send events to destinations.  | 64 |
-| 5 | `noOfJobsPerChannel` | `int`  | The number of jobs a channel in each worker can contain. So, each worker gets 1000 jobs. | 1000 |
+| 3 | `readSleepInMS` | `int64` | `Time in milliseconds`  The time to wait for before the next iteration of the loop.  In case the length of unprocessed and retry list is zero, sleep for 10  \_\_milliseconds. Else add it to another list. | 10 |
+| 4 | `noOfWorkers` | `int` | The total number of workers that are started to send events to destinations. | 64 |
+| 5 | `noOfJobsPerChannel` | `int` | The number of jobs a channel in each worker can contain. So, each worker gets 1000 jobs. | 1000 |
 | 6 | `ser` | `int` |  | 3 |
 | 7 | `maxSleepInS` | `int64` | `Time in seconds`  The time to sleep when response status code is not 200. This is to give time before the next retry. | 60 |
 | 8 | `minSleepInS` | `int64` | `Time in seconds`  Time to sleep when response status code is 200. | 0 |
@@ -432,15 +432,13 @@ This document describes the various configuration parameters for the [**`config.
 | :--- | :--- | :--- | :--- | :---: |
 | 1 | `mainLoopSleepInS` | `int64` | Timeout in seconds while running main loop. | 30 |
 | 2 | `noOfWorkers` | `int` | The number of workers to batch jobs before deletion. | 8 |
-| 3 | `jobQueryBatchSize` | `int` | Number of events picked up from batch router's jobsdb in each query  | 100000 |
+| 3 | `jobQueryBatchSize` | `int` | Number of events picked up from batch router's jobsdb in each query | 100000 |
 | 4 | `uploadFreqInS` | `int` | The Frequency with which batch router dumps events to storage destinations. | 30 |
 | 5 | `maxFailedCountForJob` | `int` | The maximum number of times a job can fail before marking it as aborted. | 128 |
 
 ## \[Warehouse\]
 
 You can ignore these settings if you don't have any warehouses \(like redshift, bigquery, etc.\) enabled in your config.
-
-
 
 <table>
   <thead>
@@ -449,7 +447,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <th style="text-align:left">Parameter name</th>
       <th style="text-align:left">Type</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
+      <th style="text-align:left">Default</th>
     </tr>
   </thead>
   <tbody>
@@ -459,7 +457,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">Table name of staging files.</td>
-      <td style="text-align:center">wh_staging_files</td>
+      <td style="text-align:left">wh_staging_files</td>
     </tr>
     <tr>
       <td style="text-align:left">2</td>
@@ -467,7 +465,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">Table name of load files.</td>
-      <td style="text-align:center">wh_load_files</td>
+      <td style="text-align:left">wh_load_files</td>
     </tr>
     <tr>
       <td style="text-align:left">3</td>
@@ -475,7 +473,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">Table name of uploads.</td>
-      <td style="text-align:center">wh_uploads</td>
+      <td style="text-align:left">wh_uploads</td>
     </tr>
     <tr>
       <td style="text-align:left">4</td>
@@ -483,7 +481,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">Table name of schemas.</td>
-      <td style="text-align:center">wh_schemas</td>
+      <td style="text-align:left">wh_schemas</td>
     </tr>
     <tr>
       <td style="text-align:left">5</td>
@@ -491,7 +489,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Frequency of upload in seconds</td>
-      <td style="text-align:center">1800</td>
+      <td style="text-align:left">1800</td>
     </tr>
     <tr>
       <td style="text-align:left">6</td>
@@ -499,7 +497,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Number of concurrent writes to the warehouse</td>
-      <td style="text-align:center">8</td>
+      <td style="text-align:left">8</td>
     </tr>
     <tr>
       <td style="text-align:left">7</td>
@@ -507,11 +505,11 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">
-        <p><code>Time in Seconds</code> 
+        <p><code>Time in Seconds</code>
         </p>
         <p>Time to wait between multiple warehouse writes</p>
       </td>
-      <td style="text-align:center">600</td>
+      <td style="text-align:left">600</td>
     </tr>
     <tr>
       <td style="text-align:left">8</td>
@@ -519,7 +517,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Batch size of staging files</td>
-      <td style="text-align:center">240</td>
+      <td style="text-align:left">240</td>
     </tr>
   </tbody>
 </table>
@@ -533,7 +531,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <th style="text-align:left">Variable name</th>
       <th style="text-align:left">Type</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
+      <th style="text-align:left">Default</th>
     </tr>
   </thead>
   <tbody>
@@ -549,7 +547,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
         <p>In case the length of user jobs process queue is zero or the sum of unprocessed
           and retry list is empty, sleep for 10 milliseconds is called.</p>
       </td>
-      <td style="text-align:center">10</td>
+      <td style="text-align:left">10</td>
     </tr>
     <tr>
       <td style="text-align:left">2</td>
@@ -558,7 +556,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>int64</code>
       </td>
       <td style="text-align:left">Max processor loop sleep time in milli seconds</td>
-      <td style="text-align:center">5000</td>
+      <td style="text-align:left">5000</td>
     </tr>
     <tr>
       <td style="text-align:left">2</td>
@@ -568,7 +566,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       </td>
       <td style="text-align:left">The total number of events to get as a batch from the database.</td>
       <td
-      style="text-align:center">10000</td>
+      style="text-align:left">10000</td>
     </tr>
     <tr>
       <td style="text-align:left">3</td>
@@ -578,7 +576,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       </td>
       <td style="text-align:left">Batch size of events added to request queue before sending to transformation
         server.</td>
-      <td style="text-align:center">10</td>
+      <td style="text-align:left">10</td>
     </tr>
     <tr>
       <td style="text-align:left">4</td>
@@ -589,7 +587,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left">Batch size of events added to request queue before sending to custom transformation
         server. Only used when user transformation functions are connected to a
         destination.</td>
-      <td style="text-align:center">200</td>
+      <td style="text-align:left">200</td>
     </tr>
     <tr>
       <td style="text-align:left">5</td>
@@ -598,7 +596,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">The minimum number of events needed to be process further.</td>
-      <td style="text-align:center">20</td>
+      <td style="text-align:left">20</td>
     </tr>
     <tr>
       <td style="text-align:left">6</td>
@@ -606,9 +604,9 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       </td>
       <td style="text-align:left"><code>int64</code>
       </td>
-      <td style="text-align:left"><code>Time in seconds </code>
+      <td style="text-align:left"><code>Time in seconds</code>
         <br />Minimum time needed before a new session is created.</td>
-      <td style="text-align:center">10</td>
+      <td style="text-align:left">10</td>
     </tr>
     <tr>
       <td style="text-align:left">7</td>
@@ -618,7 +616,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       </td>
       <td style="text-align:left">The maximum channel size for request and response queue in transformer.</td>
       <td
-      style="text-align:center">2048</td>
+      style="text-align:left">2048</td>
     </tr>
     <tr>
       <td style="text-align:left">8</td>
@@ -626,18 +624,18 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       </td>
       <td style="text-align:left"><code>bool</code>
       </td>
-      <td style="text-align:left">If <code>processSessions </code>is marked true, the status of the job in
+      <td style="text-align:left">If <code>processSessions</code> is marked true, the status of the job in
         db is updated.</td>
-      <td style="text-align:center">false</td>
+      <td style="text-align:left">false</td>
     </tr>
     <tr>
       <td style="text-align:left">9</td>
       <td style="text-align:left"><code>numTransformWorker</code>
       </td>
-      <td style="text-align:left"><code>int</code> 
+      <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">The number of go transform workers.</td>
-      <td style="text-align:center">8</td>
+      <td style="text-align:left">8</td>
     </tr>
     <tr>
       <td style="text-align:left">10</td>
@@ -647,7 +645,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       </td>
       <td style="text-align:left">The maximum number of times a transformer can retry hitting the API in
         case of an error</td>
-      <td style="text-align:center">30</td>
+      <td style="text-align:left">30</td>
     </tr>
     <tr>
       <td style="text-align:left">11</td>
@@ -658,7 +656,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>Time in milliseconds</code>
         <br />Sleep time in case of an error by transformer while hitting the API, before
         trying to hit the API again</td>
-      <td style="text-align:center">100</td>
+      <td style="text-align:left">100</td>
     </tr>
   </tbody>
 </table>
@@ -667,7 +665,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
 
 | No. | Variable name | Type | Description | Default |
 | :--- | :--- | :--- | :--- | :---: |
-| 1 | `pollIntervalInS` | `int64` | `Time in seconds` Frequency of updating data from config-backend .  | 5 |
+| 1 | `pollIntervalInS` | `int64` | `Time in seconds` Frequency of updating data from config-backend . | 5 |
 | 2 | `configFromFile` | `bool` | Reads backend workspace config from a JSON file instead of fetching form api. | false |
 | 3 | `configJSONPath` | `string` | Path of the JSON file which contains the backend workspace config | ./workspaceConfig.json |
 
@@ -680,7 +678,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <th style="text-align:left">Variable name</th>
       <th style="text-align:left">Type</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
+      <th style="text-align:left">Default</th>
     </tr>
   </thead>
   <tbody>
@@ -691,7 +689,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>int64</code>
       </td>
       <td style="text-align:left">Max number of events to be allowed in a time interval</td>
-      <td style="text-align:center">1000</td>
+      <td style="text-align:left">1000</td>
     </tr>
     <tr>
       <td style="text-align:left">2</td>
@@ -700,11 +698,11 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       <td style="text-align:left"><code>int32</code>
       </td>
       <td style="text-align:left">
-        <p><code>Time in minutes</code> 
+        <p><code>Time in minutes</code>
         </p>
         <p>Rolling time interval used to limit number of events allowed</p>
       </td>
-      <td style="text-align:center">60</td>
+      <td style="text-align:left">60</td>
     </tr>
     <tr>
       <td style="text-align:left">3</td>
@@ -714,7 +712,7 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
       </td>
       <td style="text-align:left">Number of buckets <code>rateLimitWindowInMins</code> is broken down into</td>
       <td
-      style="text-align:center">12</td>
+      style="text-align:left">12</td>
     </tr>
   </tbody>
 </table>

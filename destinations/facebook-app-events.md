@@ -109,7 +109,7 @@ val rudderClient = RudderClient.getInstance(
 
 ## Identify
 
-The `identify` call from RudderStack sets the `userId` through the `setUserID` method from `AppEventsLogger` . 
+The `identify` call from RudderStack sets the `userId` through the `setUserID` method from `AppEventsLogger` .
 
 RudderStack sets the following properties \(if available\) using the `setUserData` method.
 
@@ -155,7 +155,7 @@ RudderStack performs the same task for the automatically recorded `screen` calls
 
 ### Where do I get the Facebook App Id?
 
-You can find the **Facebook App Id** by logging into your Facebook Developer account, and navigating to the **Home** page of your Application dashboard. 
+You can find the **Facebook App Id** by logging into your Facebook Developer account, and navigating to the **Home** page of your Application dashboard.
 
 ## Contact Us
 

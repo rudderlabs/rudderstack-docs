@@ -16,10 +16,10 @@ RudderStack also provides a powerful transformation framework to process your ev
 **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 {% endhint %}
 
-RudderStack's backend is written in Go, with a rich UI written in React.js. 
+RudderStack's backend is written in Go, with a rich UI written in React.js.
 
 {% hint style="info" %}
-For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. ****
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. _\*\*_
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID you used to sign up for RudderStack.
@@ -56,6 +56,4 @@ Do you have any questions about RudderStack? Please join our [Slack](https://res
 If you want to know more about RudderStack, feel free to [contact us](mailto:%20contact@rudderstack.com) . You can also see [RudderStack in action](https://app.rudderstack.com/signup?type=freetrial) to check out all the cool features the platform has to offer.
 
 For community support, you can always start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you!
-
-
 

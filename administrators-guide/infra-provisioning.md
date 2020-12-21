@@ -11,9 +11,9 @@ This is a brief overview of the stats that we captured by running Backend on dif
 
 ## Load Test Results
 
-All tests are done using db.m4.xlarge Amazon RDS instance for hosting the postgres database 
+All tests are done using db.m4.xlarge Amazon RDS instance for hosting the postgres database
 
-### Gateway 
+### Gateway
 
 <table>
   <thead>
@@ -94,8 +94,6 @@ Backend migrates and drops tables that have a threshold of jobs processed. Gatew
 Load is an approximation since it depends on the maching configuration where the [genload.go script](https://github.com/rudderlabs/rudder-server/blob/master/tests/load/genload.go) is run from. We ran it on a m5ad.xLarge machine with the approxiamtion that input of 50 users \(50 go routines\) gives a input load of 2.5K/s
 {% endhint %}
 
-
-
 ### Transformer
 
 <table>
@@ -146,8 +144,6 @@ Load is an approximation since it depends on the maching configuration where the
 {% hint style="warning" %}
 Transformer is a NodeJS/Koa server launced as cluster of node processes, processses count equal to the number of cores of the machine. Choosingan instance with lower number of core the number of cores in instance processor might reduce the throughput of transformer
 {% endhint %}
-
-
 
 ### Batch Router - S3 Destination
 
@@ -232,28 +228,28 @@ $$
 totalStoragePerHour = 3600 * \sum_{firstSource}^{lastSource} (gatewayStorage + routerStorage)
 $$
 
-In the above production example, after substituting the values, _totalStoragePerHour_  adds up to _**120 GB**_
+In the above production example, after substituting the values, _totalStoragePerHour_ adds up to _**120 GB**_
 
-Sample your peak load in production to estimate the storage requirements and substitute your values to get an estimate of the storage needed per 1 hour of data. 
+Sample your peak load in production to estimate the storage requirements and substitute your values to get an estimate of the storage needed per 1 hour of data.
 
 {% hint style="info" %}
 Event data and tables are ephemeral. In a happy path, we would have only a few minutes of event data being stored.
 
 We recommend at least 10 hours worth of event storage computed above to gracefully handle destinations going down for a few hours.
 
-If you want to prepare for a destination going for down for days, accommodate them into your storage capacity. 
+If you want to prepare for a destination going for down for days, accommodate them into your storage capacity.
 {% endhint %}
 
 ### Estimating Connections
 
-Rudder batches requests efficiently to write data. Under heavy load, backend can be configured \(`batchTimeoutInMS`  and `maxBatchSize` \) to batch more requests to limit concurrent connections to the database. If write latencies to the database are not in permissible thresholds, a new data set needs to be added i.e., backend server and database server.
+Rudder batches requests efficiently to write data. Under heavy load, backend can be configured \(`batchTimeoutInMS` and `maxBatchSize` \) to batch more requests to limit concurrent connections to the database. If write latencies to the database are not in permissible thresholds, a new data set needs to be added i.e., backend server and database server.
 
 Rudder reads the data back from the database at a constant rate. A sudden spike in user traffic will not result in more read DB requests.
 
 ## RAM Requirements
 
-Rudder does not cache aggressively and hence does not need huge amount of memory. Load tests were performed on 4 GB and 8 GB memory instances.  
-  
+Rudder does not cache aggressively and hence does not need huge amount of memory. Load tests were performed on 4 GB and 8 GB memory instances.
+
 Rudder caches active user events by default to form configurable user sessions server side. The length of any user session can be configured with `sessionThresholdInS` and `sessionThresholdEvents`. Once a user's session is formed, that user events are cleared from the cache. If you don't need sessions, this can be disabled by setting `processSessions` to _false_.
 
 | Variable | Description | Sample data |
@@ -266,8 +262,7 @@ $$
 memoryNeeded = numActiveUsers * userEventsInThreshold * avgGwEventSize
 $$
 
-Memory required in the above example would be 840 MB.   
-
+Memory required in the above example would be 840 MB.
 
 {% hint style="info" %}
 The memory estimate does not include the default RAM required for running the OS and the required processes.

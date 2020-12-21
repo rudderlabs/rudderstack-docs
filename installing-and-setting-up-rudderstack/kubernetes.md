@@ -4,7 +4,7 @@ description: Detailed instructions for deploying RudderStack on Kubernetes
 
 # Kubernetes
 
-You can deploy RudderStack on your [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager. 
+You can deploy RudderStack on your [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 The repository for this Helm chart can be found [here](https://github.com/rudderlabs/rudderstack-helm).
 

@@ -102,7 +102,7 @@ In the example above, we override the default `listId` with the `listId` as `esf
 
 ### Updating the subscription status
 
-RudderStack gives you the option of manually updating the subscription status of a user. Simply pass on an additional parameter to Mailchimp called `subscriptionStatus`. 
+RudderStack gives you the option of manually updating the subscription status of a user. Simply pass on an additional parameter to Mailchimp called `subscriptionStatus`.
 
 An example of how to do this is as shown in the code snippet below:
 
@@ -134,7 +134,7 @@ To get the Mailchimp API Key, log in to Mailchimp, and go to **Account** - **Ext
 
 ### Where do I get the Mailchimp Audience ID?
 
-You can find the Mailchimp Audience ID by logging in to Mailchimp and navigating to **Audience** - **Manage Audience** - **Settings** - **Audience name and defaults** 
+You can find the Mailchimp Audience ID by logging in to Mailchimp and navigating to **Audience** - **Manage Audience** - **Settings** - **Audience name and defaults**
 
 ### Where do I get the Mailchimp DataCenter ID?
 

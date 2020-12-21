@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest event data from Segment into RudderSta
 
 # Segment
 
-[Segment](https://segment.com) is a Customer Data Platform \(CDP\) that allows you to collect your customer data, while giving you complete control over how you use it. It is a popular tool that is used by many businesses to collect and send event data to various platforms, including but not limited to -  Zendesk, Optimizely, and Google Analytics. Segment is a good option for companies that are sending data to several databases, and integrating with lots of different marketing tools.
+[Segment](https://segment.com) is a Customer Data Platform \(CDP\) that allows you to collect your customer data, while giving you complete control over how you use it. It is a popular tool that is used by many businesses to collect and send event data to various platforms, including but not limited to - Zendesk, Optimizely, and Google Analytics. Segment is a good option for companies that are sending data to several databases, and integrating with lots of different marketing tools.
 
 This guide is aimed at setting up Segment as a source in RudderStack in the easiest possible way. You can simply add a webhook destination in your Segment dashboard that points to RudderStack. This way, you can send events to RudderStack whenever Segment gets an event.
 

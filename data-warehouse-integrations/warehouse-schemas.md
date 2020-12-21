@@ -6,13 +6,13 @@ description: >-
 
 # Warehouse Schemas
 
-With RudderStack, you need not define a schema for your event data before sending it from your source device. RudderStack automatically does that for you, before dumping the data into the warehouse. 
+With RudderStack, you need not define a schema for your event data before sending it from your source device. RudderStack automatically does that for you, before dumping the data into the warehouse.
 
 This document covers the structure of this warehouse schema in detail, and the columns created in different tables based on different events.
 
 ## Schema
 
-The source name \(written in snake case, e.g. `source_name`\) is used by RudderStack to create a schema in the warehouse \(called dataset in case of BigQuery\). 
+The source name \(written in snake case, e.g. `source_name`\) is used by RudderStack to create a schema in the warehouse \(called dataset in case of BigQuery\).
 
 Below is a comprehensive list of tables that are created for each RudderStack source which is connected to the warehouse:
 
@@ -58,7 +58,6 @@ Below are the list of the standard properties set on all the tables mentioned ab
       </td>
       <td style="text-align:left">
         <p>Unique message ID of the event, except for the <code>users</code> table.</p>
-        <p></p>
         <p>The field will be the user ID in case of <code>users</code> table.</p>
       </td>
     </tr>
@@ -172,7 +171,7 @@ Event table `add_to_cart` has all the columns as `tracks` table in addition to t
 
 ### Identify
 
-Every `identify` call made results in one record  in `identifies` table and upsert record in `users` table based on `user_id`. Shown below is the schema created in the tables for an identify call made from JavaScript SDK.
+Every `identify` call made results in one record in `identifies` table and upsert record in `users` table based on `user_id`. Shown below is the schema created in the tables for an identify call made from JavaScript SDK.
 
 **Sample Event:**
 
@@ -192,10 +191,7 @@ rudderanalytics.identify(
     anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619"
   }
 );
-
 ```
-
-
 
 #### **Table: `identifies`**
 
@@ -216,8 +212,6 @@ rudderanalytics.identify(
 | `age` | int | 35 |  |
 | `uuid_ts` | timestamp | eg. 2020-04-26 07:31:54:735 | Added by RudderStack for debugging purposes. Can be ignored for analytics purposes |
 
-
-
 #### **Table: `users`**
 
 | Column | Data type | Value | Note |
@@ -233,16 +227,14 @@ rudderanalytics.identify(
 | `uuid_ts` | timestamp | eg. 2020-04-26 07:31:54:735 | Added by RudderStack for debugging purposes. Can be ignored for analytics purposes |
 
 {% hint style="info" %}
-`users` table has the properties from the latest `identify` call made for an user.  It only has the `id` column \(same as `user_id` in `identifies` table\)  and does not have `anonymous_id` column. To get at a user’s anonymous\_id's, you’ll need to query the identifies table by grouping on `user_id` column.
+`users` table has the properties from the latest `identify` call made for an user. It only has the `id` column \(same as `user_id` in `identifies` table\) and does not have `anonymous_id` column. To get at a user’s anonymous\_id's, you’ll need to query the identifies table by grouping on `user_id` column.
 {% endhint %}
-
-
 
 ### Page & Screen
 
 Every `page/screen` call made results in a record in `pages/screens` table.
 
-#### Sample Event: 
+#### Sample Event:
 
 ```javascript
 rudderanalytics.page(
@@ -262,8 +254,6 @@ rudderanalytics.page(
 );
 ```
 
-
-
 #### **Table: `pages/screens`**
 
 | Column | Data type | Value | Note |
@@ -282,8 +272,6 @@ rudderanalytics.page(
 | `title` | string | Shopping Cart |  |
 | `url` | string | [https://rudderstack.com](https://rudderstack.com) |  |
 | `uuid_ts` | timestamp | eg. 2020-04-26 07:31:54:735 | Added by RudderStack for debugging purposes. Can be ignored for analytics purposes |
-
-### 
 
 ### Group
 
@@ -308,8 +296,6 @@ rudderanalytics.group(
   }
 );
 ```
-
-
 
 #### **Table: `groups`**
 
@@ -339,7 +325,7 @@ A subset of the ISO 8601 timestamp formats are recognized as timestamp. Anything
 
 ## Reserved Keywords
 
-There are some limitations when it comes to using reserved words in a schema, table, or column names. If such words are used in event names, traits or properties, they will be prefixed with a `_`when RudderStack creates tables or columns for them in your schema. 
+There are some limitations when it comes to using reserved words in a schema, table, or column names. If such words are used in event names, traits or properties, they will be prefixed with a `_`when RudderStack creates tables or columns for them in your schema.
 
 Besides, integers are not allowed at the start of the schema or table name. Hence, such schema, column or table names will be prefixed with a `_`.
 
@@ -396,7 +382,7 @@ A column in a table once recognized and set as a specific data type by RudderSta
 
 The `row_id` is the column which users can use to join with original table and update it as required. It is set to `messageId` for all tables except `users` table where it corresponds to `userId`
 
- Below is an example event whose properties are discarded due to mismatch in data types with the previous events. 
+Below is an example event whose properties are discarded due to mismatch in data types with the previous events.
 
 ```javascript
 // intial track call using JavaScript SDK

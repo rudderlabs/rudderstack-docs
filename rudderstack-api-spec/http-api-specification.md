@@ -14,7 +14,7 @@ RudderStack HTTP API is compatible with Segment.
 
 ## 1. RudderStack Data Plane
 
-To send HTTP requests, you should have a RudderStack server configured with your workspace token. Please refer to [this section](https://docs.rudderstack.com/getting-started/installing-and-setting-up-rudderstack) for setting up and running RudderStack.  The RudderStack's HTTP server should be accessible from your HTTP client.
+To send HTTP requests, you should have a RudderStack server configured with your workspace token. Please refer to [this section](https://docs.rudderstack.com/getting-started/installing-and-setting-up-rudderstack) for setting up and running RudderStack. The RudderStack's HTTP server should be accessible from your HTTP client.
 
 ## 2. Postman Collection
 
@@ -25,13 +25,13 @@ Import the Postman collection using this [URL](https://www.postman.com/collectio
 RudderStack uses Basic Authentication for authenticating all the HTTP requests. HTTP Basic Authentication requires a user name and password.
 
 {% hint style="success" %}
-`writeKey`is the _user name_ 
+`writeKey`is the _user name_
 
 `""` is the _password \(empty string\)_
 {% endhint %}
 
-All the popular HTTP clients \(eg. CURL, Postman, HTTPie\) have default support for Basic Authentication.  
-  
+All the popular HTTP clients \(eg. CURL, Postman, HTTPie\) have default support for Basic Authentication.
+
 If your`writeKey` is `1Xk5DChfJAol3xtW7qNnK1apo5p`, your HTTP request must have the following HTTP header `Authorization: Basic MVhrNURDaGZKQW9sM3h0VzdxTm5LMWFwbzVwOg==`
 
 This is a sample [basic auth header generator](https://www.blitter.se/utils/basic-authentication-header-generator/) to verify your header.
@@ -85,7 +85,7 @@ As a best practice, please make sure`identify`is called at the start of every se
 ```bash
 curl -u <your_write_key>: -X POST https://your-data-plane/v1/identify \
 -d @identify.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -111,7 +111,7 @@ For more details, please refer to the payload related to the `identify` call.
 
 ## 7. Track
 
-The `track` call allows you to record the customer events, i.e. the actions that they perform, along with their associated properties. 
+The `track` call allows you to record the customer events, i.e. the actions that they perform, along with their associated properties.
 
 ### 7.1. `track` Payload
 
@@ -143,7 +143,7 @@ The `track` call allows you to record the customer events, i.e. the actions that
 ```bash
 curl -u <your_write_key>: -X POST https://your-data-plane/v1/track \
 -d @track.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -202,7 +202,7 @@ The `page` call allows you to record your website's page views, with the additio
 ```bash
 curl -u <your_write_key>: -X POST https://your-data-plane/v1/page \
 -d @page.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -260,7 +260,7 @@ The `screen` call allows you to record whenever a mobile app user sees the scree
 ```bash
 curl -u <your_write_key>: -X POST https://your-data-plane/v1/screen \
 -d @screen.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -283,7 +283,7 @@ http -a <your_write_key>: https://your-data-plane/v1/screen < screen.json
 | `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer` |
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
 
-For more details, please refer to the payload related to the `screen` call. 
+For more details, please refer to the payload related to the `screen` call.
 
 ## 10. Group
 
@@ -322,7 +322,7 @@ The `group` call lets you associate a particular identified user with a group, s
 ```bash
 curl -u <your_write_key>: -X POST https://your-data-plane/v1/group \
 -d @group.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -347,7 +347,7 @@ http -a <your_write_key>: https://your-data-plane/v1/group < group.json
 
 ## 11. Alias
 
-The alias call allows you to associate one user identity with another. This is quite useful in case of some destinations such as Mixpanel \(associating `anonymousId` with an identified user on signup\)  or Kissmetrics \(when the user switches IDs\).
+The alias call allows you to associate one user identity with another. This is quite useful in case of some destinations such as Mixpanel \(associating `anonymousId` with an identified user on signup\) or Kissmetrics \(when the user switches IDs\).
 
 ### 11.1. `alias` Payload
 
@@ -377,7 +377,7 @@ The alias call allows you to associate one user identity with another. This is q
 ```bash
 curl -u <your_write_key>: -X POST https://your-data-plane/v1/alias \
 -d @alias.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -523,7 +523,7 @@ As mentioned earlier, RudderStack sets a maximum limit of `500KB` per batch requ
 ```bash
 curl -u <your_write_key>: -X POST https://your-data-plane/v1/batch \
 -d @batch.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -544,7 +544,7 @@ http -a <your_write_key>: https://your-data-plane/v1/batch < batch.json
 
 ## 13. Historical Imports
 
-RudderStack allows you to import any historical data by simply adding the `timestamp` argument to any of your API calls. However, this can be done only for the destinations that accept historical, time-stamped data, such as Amplitude, Mixpanel, etc. 
+RudderStack allows you to import any historical data by simply adding the `timestamp` argument to any of your API calls. However, this can be done only for the destinations that accept historical, time-stamped data, such as Amplitude, Mixpanel, etc.
 
 {% hint style="warning" %}
 In case you are tracking current events, it is advisable to leave out the `timestamp` field. RudderStack will automatically add the timestamps to the event requests.

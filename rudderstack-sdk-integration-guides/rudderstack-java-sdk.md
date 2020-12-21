@@ -27,7 +27,7 @@ To install the RudderStack Java SDK, add the following lines of code to `pom.xml
 
 <dependency>
    <groupId>com.rudderstack.sdk.java</groupId>
-	 <artifactId>rudderanalytics-client</artifactId>
+     <artifactId>rudderanalytics-client</artifactId>
    <version>1.0.1</version>
 </dependency>
 ```
@@ -113,8 +113,6 @@ Map<String, Object> properties = new LinkedHashMap<>();
 );
 ```
 
-
-
 The `track` method parameters are as described below:
 
 | Name | Type | Presence | Description |
@@ -129,7 +127,7 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed. 
+The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
 
 {% hint style="info" %}
 For a detailed explanation of the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
@@ -257,13 +255,13 @@ The `alias` method parameters are as mentioned below:
 For a detailed explanation of the `alias` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
-## Block Flush 
+## Block Flush
 
 {% hint style="info" %}
 Only available on version `1.0.1` onwards.
 {% endhint %}
 
-If  you want to block the `flush` until all the events are uploaded , JAVA SDK has one builder method `synchronize()` with default value `false` . It needs to be set as `true` . 
+If you want to block the `flush` until all the events are uploaded , JAVA SDK has one builder method `synchronize()` with default value `false` . It needs to be set as `true` .
 
 An example for Blocking the `flush` is shown:
 
@@ -290,7 +288,7 @@ analytics.shutdown(); // Shut down after the flush is complete.
 
 ## FAQ
 
-#### Can I use the ImmutableMap class?
+### Can I use the ImmutableMap class?
 
 Yes. You need to use the Guava library. You can use plain old Java Maps instead.
 

@@ -4,7 +4,7 @@ description: Step-by-step guide to set up Lotame as a destination in RudderStack
 
 # Lotame
 
-[Lotame](https://www.lotame.com/) is a popular data management and enrichment platform, used mainly for digital advertising. Its unique data solutions allow you to find new customers, improve engagement with them, and grow your revenue. 
+[Lotame](https://www.lotame.com/) is a popular data management and enrichment platform, used mainly for digital advertising. Its unique data solutions allow you to find new customers, improve engagement with them, and grow your revenue.
 
 RudderStack supports syncing Lotame's **BCP Pixel** and **DSP Pixel** through our `page` and `identify` call.
 
@@ -85,7 +85,7 @@ val rudderClient = RudderClient.getInstance(
 ```
 
 {% hint style="warning" %}
-If your Lotame URLs follow the HTTP protocol, you need to allow **`ClearTextTraffic`** for your app.  To do so, add **`android:usesCleartextTraffic="true"`** in the **`<application>`** tag of your app's `Android Manifest` file. After adding this, the file should look like the following:
+If your Lotame URLs follow the HTTP protocol, you need to allow **`ClearTextTraffic`** for your app. To do so, add **`android:usesCleartextTraffic="true"`** in the **`<application>`** tag of your app's `Android Manifest` file. After adding this, the file should look like the following:
 
 ```markup
 <application
@@ -107,7 +107,7 @@ If your Lotame URLs follow the HTTP protocol, you need to allow **`ClearTextTraf
 pod 'Rudder-Lotame'
 ```
 
-followed by 
+followed by
 
 ```text
 $ pod install
@@ -140,13 +140,13 @@ rudderanalytics.identify("12345", {
 );
 ```
 
-The above identify call will sync the ****DSP Pixel, modify the template to place the `userId` in the source URL where required, and use it as `{{userId}}` in the template, as shown: 
+The above identify call will sync the _\*\*_DSP Pixel, modify the template to place the `userId` in the source URL where required, and use it as `{{userId}}` in the template, as shown:
 
 ```text
 http://ab.cdef.com/getapi?http://sync.crwdcntrl.net/map/c={{clientId}}/rand={{random}}/tpid={{userId}}/tp={{clientIdSpace}}
 ```
 
-RudderStack will replace the `{{userId}}` expression with the `userId` provided in the [`identify`](https://docs.rudderstack.com/getting-started/rudderstack-api-spec#identifypayload) call.We will also replace `{{random}}` with a random value. The rest of the expression's values \(`{{clientId}}` , `{{clientIdSpace}}` \) are to be provided in the mapping fields section, i.e. **Map all the fields** section in the Destination Settings, as covered in the Getting Started section. 
+RudderStack will replace the `{{userId}}` expression with the `userId` provided in the [`identify`](https://docs.rudderstack.com/getting-started/rudderstack-api-spec#identifypayload) call.We will also replace `{{random}}` with a random value. The rest of the expression's values \(`{{clientId}}` , `{{clientIdSpace}}` \) are to be provided in the mapping fields section, i.e. **Map all the fields** section in the Destination Settings, as covered in the Getting Started section.
 
 #### Important Notes
 
@@ -155,9 +155,9 @@ RudderStack will replace the `{{userId}}` expression with the `userId` provided 
 
 ## Page
 
-For each `page` call, RudderStack will load the BCP ****Pixels. A `page` call with a payload having `userId` triggers the syncing of DSP Pixels once in every **7 days** too. So, a[`page`](https://docs.rudderstack.com/getting-started/rudderstack-api-spec#page-payload) call serves the purpose of loading BCP Pixels and syncing DSP Pixels.
+For each `page` call, RudderStack will load the BCP **\*\*Pixels. A `page` call with a payload having `userId` triggers the syncing of DSP Pixels once in every** 7 days\*\* too. So, a[`page`](https://docs.rudderstack.com/getting-started/rudderstack-api-spec#page-payload) call serves the purpose of loading BCP Pixels and syncing DSP Pixels.
 
-A sample `page` call is as shown: 
+A sample `page` call is as shown:
 
 ```javascript
 rudderanalytics.page();
@@ -165,9 +165,9 @@ rudderanalytics.page();
 
 ## Screen
 
-For each `screen` call, RudderStack will send `GET` requests for BCP ****Pixels. A `screen` call with a payload having `userId` triggers the syncing of DSP Pixels once in every **7 days** too. So, a[`screen`](https://docs.rudderstack.com/getting-started/rudderstack-api-spec#screen-payload) call serves the purpose of sending requests for BCP Pixels and syncing DSP Pixels.
+For each `screen` call, RudderStack will send `GET` requests for BCP **\*\*Pixels. A `screen` call with a payload having `userId` triggers the syncing of DSP Pixels once in every** 7 days\*\* too. So, a[`screen`](https://docs.rudderstack.com/getting-started/rudderstack-api-spec#screen-payload) call serves the purpose of sending requests for BCP Pixels and syncing DSP Pixels.
 
-A sample `screen` call is as shown: 
+A sample `screen` call is as shown:
 
 ```objectivec
 [[RSClient sharedInstance] screen];
@@ -175,11 +175,11 @@ A sample `screen` call is as shown:
 
 ## Sync Pixel Callback
 
-To get a track of every sync Pixel call \(once in every 7 days\), you may register a function that will be executed when the syncing of DSP Pixels takes place from the SDK. 
+To get a track of every sync Pixel call \(once in every 7 days\), you may register a function that will be executed when the syncing of DSP Pixels takes place from the SDK.
 
 {% tabs %}
 {% tab title="Web" %}
-Use the web SDK [`ready` A](https://github.com/rudderlabs/rudder-sdk-js#step-4-check-ready-state)[PI](https://github.com/rudderlabs/rudder-sdk-js#step-4-check-ready-state) to register the callback.  We execute the function provided in `LOTAME_SYNCH_CALLBACK` ****window object after calling the sync pixels.
+Use the web SDK [`ready` A](https://github.com/rudderlabs/rudder-sdk-js#step-4-check-ready-state)[PI](https://github.com/rudderlabs/rudder-sdk-js#step-4-check-ready-state) to register the callback. We execute the function provided in `LOTAME_SYNCH_CALLBACK` _\*\*_window object after calling the sync pixels.
 
 An example of the above is as shown:
 
@@ -199,7 +199,7 @@ The above callback triggers a call to RudderStack SDK's [`track` ](https://docs.
 {% tab title="Android" %}
 Use the `onIntegrationReady` method to register the `onSync` callback \(which will be called every time the DSP URLs are synced\).
 
-You'll get notified for all the sync pixels through this callback. You'll receive the type of the pixel and the final compiled URL through the callback. 
+You'll get notified for all the sync pixels through this callback. You'll receive the type of the pixel and the final compiled URL through the callback.
 
 ```kotlin
 rudderClient!!.onIntegrationReady("Lotame Mobile") {
@@ -227,11 +227,11 @@ Register your callback to get notified when the pixel has been synced
 
 ### How and when does the syncing of DSP Pixels take place?
 
-Syncing of DSP Pixels happens in each `identify` call, and once in 7 days for `page` calls having `userId` in payload. RudderStack stores the sync timestamp in storage. So, in every `page` call for web and in every `screen` call for mobile platform, RudderStack checks for the identified user \(i.e. payload having `userId`\) and the last syncing timestamp. If it is before 7 days or more, RudderStack automatically triggers the syncing. 
+Syncing of DSP Pixels happens in each `identify` call, and once in 7 days for `page` calls having `userId` in payload. RudderStack stores the sync timestamp in storage. So, in every `page` call for web and in every `screen` call for mobile platform, RudderStack checks for the identified user \(i.e. payload having `userId`\) and the last syncing timestamp. If it is before 7 days or more, RudderStack automatically triggers the syncing.
 
 ### How do we validate the Pixels on Mobile devices?
 
-You can validate the Pixels in two ways on Mobile devices. 
+You can validate the Pixels in two ways on Mobile devices.
 
 1. You can register a [Sync Callback](lotame.md#sync-pixel-callback) with `rudderClient` and you'll get the type of the pixel which is getting fired along with the compiled URL with values replaced. We replace the `userId` and `advertisingId` automatically. For other values, you can use the settings on the [dashboard](https://app.rudderstack.com).
 2. You can turn on `DEBUG` log in your `rudderClient` initialization. It'll also set the `DEBUG` logging in Lotame implementation. And you can check logs generated by the SDK. It'll help you to understand the steps taken by the SDK.

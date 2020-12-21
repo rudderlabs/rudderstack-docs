@@ -10,7 +10,7 @@ description: >-
 
 There are two main modes of routing your event data to the required destinations:
 
-* **Cloud Mode**: Our web and mobile SDKs provide APIs that can be called in case of events like `identify` ,`page` ,`screen` ,`track` etc. The SDK formats the data and sends to the Data Plane. The Data Plane transforms the data, and routes the events to the destination. RudderStack [**Transformers**](https://github.com/rudderlabs/rudder-transformer) transform the event payload to a destination-specific payload. ****
+* **Cloud Mode**: Our web and mobile SDKs provide APIs that can be called in case of events like `identify` ,`page` ,`screen` ,`track` etc. The SDK formats the data and sends to the Data Plane. The Data Plane transforms the data, and routes the events to the destination. RudderStack [**Transformers**](https://github.com/rudderlabs/rudder-transformer) transform the event payload to a destination-specific payload. _\*\*_
 * **Device Mode**: Another way to send events to the destinations is with their client libraries. RudderStack SDKs can initialize and transform the events, and call into the required destination APIs to route your events. These destination libraries once initialized can auto-track events without any explicit call from RudderStack.  For example - the destination **Hotjar**, once initialized through RudderStack, starts capturing all forms of event data.
 
 ## Destination Setup
@@ -37,41 +37,40 @@ class SampleIntegration {
   // Provides an iife for downloading and initializing the destination library/javascript
   // Once initialized, the destination object will be available for making a call and pushing event data
   init() {
-    
+
   }
 
   // rudderElement.message contains event data
   // Add custom implementation here
   identify(rudderElement) {
-  
+
     // sd('set', 'userId', rudderElement.message.anonymous_id);
   }
 
   // rudderElement.message contains event data
   // Add custom implementation here
   track(rudderElement) {
-  
+
     // sd('send', 'event', rudderElement.message.event);
   }
 
   // rudderElement.message contains event data
   // Add custom implementation here
   page(rudderElement) {
-    
+
     // sd('set', 'page', rudderElement.properties.path);
     // sd ('send', 'pageview');
   }
-  
+
   // Depend on the destination, where it enlists how to ensure if
   // the destination is ready
   isLoaded() {
-  
+
     return !!window.sdplugins;
   }
 }
 
 export { SampleIntegration };
-
 ```
 
 ## Where to Add Your Integration
@@ -87,7 +86,7 @@ The exported integration object must be under the **key name that matches the co
 
 ![This exports the GoogleAds integration](../../.gitbook/assets/screenshot-2019-12-10-at-7.22.25-pm.png)
 
-Get the config specific to your integration from the config object fetched by the [base RudderStack SDK](https://github.com/rudderlabs/rudder-sdk-js/) from the config plane and construct your integration object with the related configs. 
+Get the config specific to your integration from the config object fetched by the [base RudderStack SDK](https://github.com/rudderlabs/rudder-sdk-js/) from the config plane and construct your integration object with the related configs.
 
 ## Reference
 
@@ -108,16 +107,16 @@ class GA {
   }
 
   init() {
-  
+
     // iife that initailizes the destination
-    
+
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       //window.ga_debug = {trace: true};
-      
+
       ga('create', this.trackingID, 'auto');
       ga('send', 'pageview');
 
@@ -137,7 +136,7 @@ class GA {
     if(rudderElement.message.properties){
       eventValue = rudderElement.message.properties.value ? rudderElement.message.properties.value : rudderElement.message.properties.revenue
     }
-    
+
     var payLoad = {
       hitType: 'event',
       eventCategory : eventCategory,
@@ -165,10 +164,9 @@ class GA {
 }
 
 export { GA };
-
 ```
 
-The following is the code for `index.js`  under `integrations/GA/index.js` :
+The following is the code for `index.js` under `integrations/GA/index.js` :
 
 ```javascript
 // index.js
@@ -180,7 +178,6 @@ import { GANode } from "./node";
 import { GA } from "./browser";
 
 export default process.browser ? GA : GANode;
-
 ```
 
 {% hint style="info" %}
@@ -207,7 +204,7 @@ export { integrations };
 
 ## Native Integration Methods
 
-The native integrations should have the following  methods for initializing the destination global object and forwarding event data.
+The native integrations should have the following methods for initializing the destination global object and forwarding event data.
 
 | Function | Description |
 | :--- | :--- |
@@ -219,7 +216,7 @@ The native integrations should have the following  methods for initializing the 
 | `track` | This method is called to pass the `track` event data. |
 
 {% hint style="info" %}
-RudderStack JavaScript SDK makes a call to the config plane to fetch all native SDK-enabled destinations, before constructing and initializing the integration object with the fetched configuration. The **`isLoadedz`**method should return true when the destination is ready to accept events. 
+RudderStack JavaScript SDK makes a call to the config plane to fetch all native SDK-enabled destinations, before constructing and initializing the integration object with the fetched configuration. The **`isLoadedz`**method should return true when the destination is ready to accept events.
 {% endhint %}
 
 ## Contact Us

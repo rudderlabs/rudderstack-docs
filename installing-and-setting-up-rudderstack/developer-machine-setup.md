@@ -15,7 +15,6 @@ createdb jobsdb
 createuser --superuser rudder
 psql "jobsdb" -c "alter user rudder with encrypted password 'rudder'";
 psql "jobsdb" -c "grant all privileges on database jobsdb to rudder";
-
 ```
 
 * Go to the [RudderStack dashboard](https://app.rudderlabs.com/signup) and set up your account. Copy your workspace token from the top of the home page.

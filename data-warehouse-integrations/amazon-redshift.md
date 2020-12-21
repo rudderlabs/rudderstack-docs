@@ -45,7 +45,7 @@ Please follow the steps below in order to create a new Redshift cluster:
 
 * Enter the number of nodes for your cluster. This will primarily depend on the amount of data you expect to work with.
 
-![](../.gitbook/assets/4%20%281%29%20%281%29.png)
+![](../.gitbook/assets/4%20%281%29.png)
 
 * Enter the database name, and create the admin user with the name of your choice.
 
@@ -70,7 +70,7 @@ The following sections describe creating a database user, setting up the network
 ### Creating a Database User
 
 {% hint style="info" %}
-The  username and password we provided earlier while creating the Redshift cluster should be strictly used for administration purposes. We will create a different user to enable RudderStack access to Redshift. This also helps us keep the queries separate as well as maintain an audit log.
+The username and password we provided earlier while creating the Redshift cluster should be strictly used for administration purposes. We will create a different user to enable RudderStack access to Redshift. This also helps us keep the queries separate as well as maintain an audit log.
 {% endhint %}
 
 * Click on the **Editor** option visible in the left pane. You can run the queries to create a new user to access the Redshift cluster in the **Query editor**, as shown in the image below:
@@ -95,7 +95,7 @@ The newly created user credentials should be used while configuring Redshift as 
 
 ### Setting up Network & Security
 
-The Redshift cluster needs to whitelist the RudderStack IPs to enable network access to it. This section explains how to add a security group and assign it to Redshift. 
+The Redshift cluster needs to whitelist the RudderStack IPs to enable network access to it. This section explains how to add a security group and assign it to Redshift.
 
 {% hint style="info" %}
 This procedure works for **EC2-VPC**. However, **EC2-Classic** works similarly.
@@ -133,7 +133,7 @@ This procedure works for **EC2-VPC**. However, **EC2-Classic** works similarly.
 
 ### Configuring Redshift as a destination in RudderStack
 
-In order to enable RudderStack to send data to Redshift, you will first need to add Redshift as a destination to the source from which you are sending the events. 
+In order to enable RudderStack to send data to Redshift, you will first need to add Redshift as a destination to the source from which you are sending the events.
 
 To do so, please follow these steps:
 
@@ -205,9 +205,8 @@ You need to edit your bucket policy to allow RudderStack to write to your bucket
 }
 ```
 
- 2. Create an IAM user with programmatic access keys and attach the above created IAM policy. Copy the ARN of this user.
-
-3. Edit your bucket policy to allow the data plane to write to your bucket with the following JSON. Make sure you edit the account id and user ARN with your AWS Account ID and the above created user ARN:
+1. Create an IAM user with programmatic access keys and attach the above created IAM policy. Copy the ARN of this user.
+2. Edit your bucket policy to allow the data plane to write to your bucket with the following JSON. Make sure you edit the account id and user ARN with your AWS Account ID and the above created user ARN:
 
 ```javascript
 {
@@ -233,7 +232,7 @@ You need to edit your bucket policy to allow RudderStack to write to your bucket
 }
 ```
 
-4. Add the programmatic access credentials to the environment of your data plane.
+1. Add the programmatic access credentials to the environment of your data plane.
 
 ```bash
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<above created user access key>
@@ -248,7 +247,7 @@ Compression encoding specifies the type of compression that is applied to a colu
 
 ### How are reserved words handled?
 
-There are some limitations when it comes to using [reserved words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in a schema, table, or column names. If such words are used in event names, traits or properties, they will be prefixed with a `_`when RudderStack creates tables or columns for them in your schema. 
+There are some limitations when it comes to using [reserved words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in a schema, table, or column names. If such words are used in event names, traits or properties, they will be prefixed with a `_`when RudderStack creates tables or columns for them in your schema.
 
 Besides, integers are not allowed at the start of the schema or table name. Hence, such schema, column or table names will be prefixed with a `_`.
 

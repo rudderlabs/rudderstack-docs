@@ -4,7 +4,7 @@ description: Step-by-step guide to set up Google BigQuery as a destination in Ru
 
 # Google BigQuery
 
-\*\*\*\*[Google BigQuery](https://cloud.google.com/bigquery) ****is an industry-leading, fully-managed cloud data warehouse that allows you to store and analyze petabytes of data in no time.
+\*\*\*\*[Google BigQuery](https://cloud.google.com/bigquery) _\*\*_is an industry-leading, fully-managed cloud data warehouse that allows you to store and analyze petabytes of data in no time.
 
 RudderStack allows you to dump your customer event data into Google BigQuery by adding it as a destination to the source of your choice.
 
@@ -29,7 +29,7 @@ Ensure that [billing](https://cloud.google.com/billing/docs/how-to/modify-projec
 * Create a new Google Cloud Storage \(**GCS**\) bucket, or provide an existing one to store files before loading data into your BigQuery.
 
 {% hint style="warning" %}
-To ensure loading data from cloud storage to BigQuery, please make sure to co-locate your GCS storage bucket with BigQuery. More information can be found [here](https://cloud.google.com/bigquery/docs/loading-data-cloud-storage#data-locations). 
+To ensure loading data from cloud storage to BigQuery, please make sure to co-locate your GCS storage bucket with BigQuery. More information can be found [here](https://cloud.google.com/bigquery/docs/loading-data-cloud-storage#data-locations).
 {% endhint %}
 
 ## Setting up the Service Account for RudderStack
@@ -40,19 +40,19 @@ To ensure loading data from cloud storage to BigQuery, please make sure to co-lo
   * Add `BigQuery Job User` and `BigQuery Data Owner` roles to the account. Note: If a dataset with the name \(configurable by the setting: namespace in destination settings\) already exists, role of `BigQuery Data Editor` would suffice instead of BigQuery Data Owner
   * Create a key for the service account with JSON as the type and store it.
 
-![Service account permissions](../.gitbook/assets/screenshot-2020-04-08-at-12.09.07-pm%20%281%29.png)
+![Service account permissions](../.gitbook/assets/screenshot-2020-04-08-at-12.09.07-pm%20%281%29%20%281%29.png)
 
 * Create and download the private JSON key which will be required while configuring BigQuery as a destination in RudderStack, as shown:
 
 ![JSON key required for the RudderStack UI](../.gitbook/assets/screenshot-2020-04-08-at-12.09.32-pm%20%281%29.png)
 
 {% hint style="warning" %}
-Make sure that you create the service account in the same project as BigQuery 
+Make sure that you create the service account in the same project as BigQuery
 {% endhint %}
 
 ## **Configuring Google BigQuery in RudderStack**
 
-In order to enable sending data to Google BigQuery, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to BigQuery. 
+In order to enable sending data to Google BigQuery, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to BigQuery.
 
 To do so, please follow these steps:
 
@@ -77,7 +77,7 @@ The source name \(written in snake case, e.g. `source_name`\) is used by RudderS
 
 RudderStack creates ingestion-time partition tables based on the load date, so that users can take advantage of it to query a subset of data. More details about BigQuery partitioned tables [here](https://cloud.google.com/bigquery/docs/partitioned-tables) and how we create it on load can be found [here](https://cloud.google.com/bigquery/docs/creating-partitioned-tables#creating_an_ingestion-time_partitioned_table_when_loading_data).
 
-In addition to tables, a [view](https://cloud.google.com/bigquery/docs/views-intro) \(`<table_name>_view`\) is created for every table for de-duplication purposes. We recommend that you use the corresponding view \(contains events from last 60 days\) to avoid duplicate events in query results. Since BigQuery [views](https://cloud.google.com/bigquery/docs/views-intro#view_pricing) are merely logical views and are not cached, you can create a native table from it to save money by avoiding running the query that defines the view each time.   
+In addition to tables, a [view](https://cloud.google.com/bigquery/docs/views-intro) \(`<table_name>_view`\) is created for every table for de-duplication purposes. We recommend that you use the corresponding view \(contains events from last 60 days\) to avoid duplicate events in query results. Since BigQuery [views](https://cloud.google.com/bigquery/docs/views-intro#view_pricing) are merely logical views and are not cached, you can create a native table from it to save money by avoiding running the query that defines the view each time.
 
 {% hint style="info" %}
 Users can modify the view query to change the time window of the view. The default value is set to **60 days**.
@@ -95,6 +95,5 @@ For instance, `'25dollarpurchase`' will be changed to `'_25dollarpurchase`'.
 
 ## Contact Us
 
-If you come across any issues while configuring Google BigQuery with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.  
-
+If you come across any issues while configuring Google BigQuery with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 

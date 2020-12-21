@@ -6,7 +6,7 @@ description: >-
 
 # Data Warehouse as a Source
 
-RudderStack provides an infrastructure to track, capture, transform, and route your customer event data to your preferred destinations. However, this data can be quite raw in nature - comprising mainly of customer interactions with your website, mobile apps, or other digital assets. 
+RudderStack provides an infrastructure to track, capture, transform, and route your customer event data to your preferred destinations. However, this data can be quite raw in nature - comprising mainly of customer interactions with your website, mobile apps, or other digital assets.
 
 While the customer event data is important to reconstruct your customers' behavior, there is scope to further enrich customer profiles by processing the other customer-related data residing in every company's main data infrastructure - the **Data Warehouse**.
 
@@ -45,7 +45,7 @@ To configure your data warehouse as a source on the RudderStack dashboard, follo
 ![](../.gitbook/assets/2%20%281%29.png)
 
 {% hint style="info" %}
-If you have previously configured your data warehouse as a source on the RudderStack dashboard, you can simply use the existing credentials and proceed. 
+If you have previously configured your data warehouse as a source on the RudderStack dashboard, you can simply use the existing credentials and proceed.
 {% endhint %}
 
 * Next, enter the connection credentials to configure your data warehouse connection with RudderStack, as shown:

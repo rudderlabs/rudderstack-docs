@@ -10,7 +10,7 @@ Any service can go down because of a hardware failure or a software bug. This do
 
 We leverage Kubernetes and auto-scaling groups to handle hardware failures and stay highly available.
 
-To recover from node failures, we recommend provisioning the nodes with an auto-scaling group. 
+To recover from node failures, we recommend provisioning the nodes with an auto-scaling group.
 
 This is how a standard RudderStack production deployment looks like:
 
@@ -38,7 +38,7 @@ If RudderStack is not available, our web and mobile SDKs cache the events on the
 
 ### RudderStack Server Running Modes
 
-RudderStack supports two running modes - **normal and degraded** 
+RudderStack supports two running modes - **normal and degraded**
 
 #### Normal Mode
 
@@ -50,7 +50,7 @@ In the normal mode, RudderStack receives events and forwards them to the destina
 
 If RudderStack keeps crashing while processing the events, it enters the degraded mode after a threshold number of restarts is reached.
 
-In the degraded mode, RudderStack receives events and stores them. It will not forward to destinations. 
+In the degraded mode, RudderStack receives events and stores them. It will not forward to destinations.
 
 ![Degraded Mode](../.gitbook/assets/rudderstack2x_-13-%20%281%29.png)
 

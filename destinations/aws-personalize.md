@@ -4,7 +4,7 @@ description: Step-by-step guide to set up AWS Personalize as a destination in Ru
 
 # AWS Personalize
 
-[Amazon Personalize](https://aws.amazon.com/personalize/), also called as AWS Personalize, is a machine learning service by Amazon. It enables you to create high-quality content recommendations, personalized product and marketing promotions, and much more. With Amazon Personalize, you can boost your customer engagement and overall business revenue in no time at all. 
+[Amazon Personalize](https://aws.amazon.com/personalize/), also called as AWS Personalize, is a machine learning service by Amazon. It enables you to create high-quality content recommendations, personalized product and marketing promotions, and much more. With Amazon Personalize, you can boost your customer engagement and overall business revenue in no time at all.
 
 RudderStack allows you to configure Amazon Personalize as a destination to which you can send your event data seamlessly, for personalized recommendation and effective product marketing.
 
@@ -18,7 +18,7 @@ In order to enable dumping data to Amazon Personalize, you will first need to ad
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to Amazon Personalize, perform the steps below:
@@ -39,16 +39,14 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ![](../.gitbook/assets/image%20%2858%29.png)
 
-* Next, in the **Settings** section, ****fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
+* Next, in the **Settings** section, **\*\*fill all the fields with the relevant information and click** Next.\*\* A brief description of each of these fields is mentioned below:
   * **Connection Credentials**
     * **Access Key ID**: The access key ID of your AWS account goes here.
     * **Secret Access Key**: Enter the secret access key of your AWS account.
     * **Region**: Please enter the region associated with your AWS account here.
   * **Information on Dataset Group**
-
     * **TrackingId**: Enter the tracking ID that you generated in the first step 
     * **Type Of Event**: Enter the type of event you want to send for this destination.
-
   * **Map all the fields**: In this section, enter the **Schema Field** you have used to create the schema in AWS Personalize \(for e.g. `USER_ID`, `TIMESTAMP`, `ITEM_ID`, etc.\). Also, enter the corresponding **Mapped Field** from which the value will be taken from your event payload.
 
 ## Contact Us

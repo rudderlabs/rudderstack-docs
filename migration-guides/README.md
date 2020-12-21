@@ -12,5 +12,3 @@ This section contains the following guides:
 
 {% page-ref page="how-to-migrate-warehouse-destination-from-segment-to-rudderstack.md" %}
 
-
-

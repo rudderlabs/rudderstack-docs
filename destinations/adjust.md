@@ -18,7 +18,7 @@ Before configuring your source and destination on the RudderStack app, please ch
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to Adjust, perform the steps below:
@@ -150,7 +150,7 @@ Here is an example:
 
 ## Track
 
-When you make the `track` call, RudderStack maps the `eventName` with the pre-defined list of custom events from Adjust. 
+When you make the `track` call, RudderStack maps the `eventName` with the pre-defined list of custom events from Adjust.
 
 {% hint style="warning" %}
 You **must** define the map of Adjust `eventToken` to `eventName` in the dashboard. If you don't define the mapping Adjust will not accept the event.
@@ -158,7 +158,7 @@ You **must** define the map of Adjust `eventToken` to `eventName` in the dashboa
 
 We add all the properties as `callbackParameter` in the Adjust event.
 
-The following snippet is a simple demonstration of the `track`call: 
+The following snippet is a simple demonstration of the `track`call:
 
 ```objectivec
 [[RudderClient sharedInstance] track:@"test_event"

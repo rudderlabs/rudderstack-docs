@@ -83,18 +83,13 @@ To add Braze to your Android project, please follow these steps:
   }
   ```
 
-* Add the following  under `dependencies` section:
+* Add the following under `dependencies` section:
 
-  ```text
-  implementation 'com.rudderstack.android.sdk:core:1.0.1'
-  implementation 'com.rudderstack.android.integration:braze:0.1.1'
-  implementation 'com.appboy:android-sdk-ui:6.0.+'
+  \`\`\`text implementation 'com.rudderstack.android.sdk:core:1.0.1' implementation 'com.rudderstack.android.integration:braze:0.1.1' implementation 'com.appboy:android-sdk-ui:6.0.+'
 
+// if you don't have Gson included already implementation 'com.google.code.gson:gson:2.8.6'
 
-  // if you don't have Gson included already
-  implementation 'com.google.code.gson:gson:2.8.6'
-  ```
-
+```text
 * Finally change the initialization of the SDK to the following:
 
   ```text
@@ -107,7 +102,7 @@ To add Braze to your Android project, please follow these steps:
           .withFactory(BrazeIntegrationFactory.FACTORY)
           .build()
   )
-  ```
+```
 {% endtab %}
 {% endtabs %}
 
@@ -122,7 +117,7 @@ RudderTraits traits = new RudderTraits();
 traits.putAge("21");
 traits.putEmail("test@test.com");
 traits.putId("customer_id");
- 
+
 rudderClient.identify(traits);
 ```
 
@@ -132,7 +127,7 @@ Ideally, the `identify` method is called when the user registers to the app for 
 
 ## Track
 
-The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**. For more information on the `track` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) guide. 
+The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**. For more information on the `track` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) guide.
 
 A sample `track` call looks like the following code snippet:
 
@@ -185,13 +180,13 @@ rudderanalytics.track('Order Completed', {
 
 ### Order Completed
 
-When you call the `track` method for an event with the name `Order Completed` using the  eCommerce API, RudderStack sends the products listed in the event to Braze as purchases.
+When you call the `track` method for an event with the name `Order Completed` using the eCommerce API, RudderStack sends the products listed in the event to Braze as purchases.
 
 ## Page
 
 The `page` call allows you to record your website's page views, with the additional relevant information about the page being viewed. For more information on the `page` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) guide.
 
-A sample`page` call is as shown below: 
+A sample`page` call is as shown below:
 
 ```text
 rudderanalytics.page("PublicFacingCategory",'HomePage',

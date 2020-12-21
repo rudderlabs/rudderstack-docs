@@ -18,7 +18,7 @@ To enable sending data to Firehose, you will first need to add it as a destinati
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to Firehose, perform the steps below:
@@ -38,7 +38,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * **AWS Credentials**
   * **AWS Region**: Enter the AWS region here.
-  * The **AWS Access Key ID** and **AWS Secret Access Key** are required ****to authorize RudderStack to write to your stream.
+  * The **AWS Access Key ID** and **AWS Secret Access Key** are required _\*\*_to authorize RudderStack to write to your stream.
 
 {% hint style="success" %}
 Please note that if the AWS credentials are **already configured** on your machine where the RudderStack server is set up, you will **not** need the security credentials.
@@ -47,7 +47,7 @@ Please note that if the AWS credentials are **already configured** on your machi
 * Enter the **Event Name** as well as the corresponding **Delivery Stream**.
 
 {% hint style="info" %}
-You can send an event `type` like `page,` `identify,` `track`.   
+You can send an event `type` like `page,` `identify,` `track`.  
 For `track` events you can specify the event name based on the `event` name in the payload.
 
 For example:
@@ -63,8 +63,6 @@ If you want to send all the events to a particular stream irrespective of the ty
 {% hint style="warning" %}
 The **delivery stream** name is **case sensitive** and has to be exactly as named in AWS. On the other hand, the **event name** is **case insensitive**, and thus Page or page both will be considered.
 {% endhint %}
-
-
 
 The following snippet shows an example of a permissions policy that allows a user to put event data into Firehose:
 
@@ -105,7 +103,7 @@ To configure the Firehose destination with RudderStack correctly, a delivery str
 
 Then all events should go to the one mapped with `product added`.
 
-##  Contact Us
+## Contact Us
 
 If you come across any issues while configuring Kinesis Firehose with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

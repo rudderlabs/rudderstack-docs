@@ -6,7 +6,7 @@ description: >-
 
 # How to Debug Live Destination Events
 
-[RudderStack](https://rudderstack.com) is an open-source platform for collecting and routing your customer event data \(commonly known as **Customer Data Infrastructure** or a CDI platform\). Our most recent release introduces a new feature called  **Live Destination Event Debugger** that allows you to debug the events sent to the destination flowing through RudderStack in real-time.
+[RudderStack](https://rudderstack.com) is an open-source platform for collecting and routing your customer event data \(commonly known as **Customer Data Infrastructure** or a CDI platform\). Our most recent release introduces a new feature called **Live Destination Event Debugger** that allows you to debug the events sent to the destination flowing through RudderStack in real-time.
 
 In this document, we dive deeper into the technical aspects of this feature.
 
@@ -52,8 +52,7 @@ To view the destination live events, please follow these steps:
 * Ingest the data into RudderStack through a source connected to this destination. You should be able to see the destination responses in real-time. 
 
 {% hint style="info" %}
-Make sure your destination is configured in the cloud mode.  
-****
+Make sure your destination is configured in the cloud mode.
 {% endhint %}
 
 We hope that this Destination Live Events Debugger feature of RudderStack will reduce your overall troubleshooting time, and allow you to focus more on product development rather than debugging.
@@ -61,8 +60,4 @@ We hope that this Destination Live Events Debugger feature of RudderStack will r
 ## **Contact Us**
 
 If you want to know more about the features of RudderStack, we’re happy to talk to you! [Get in touch with us](mailto:%20contact@rudderstack.com). You can also [request a free demo](https://rudderstack.com/request-a-demo/) to better understand how RudderStack can help you collect and route your customer event data securely. To know more about the new features in the latest RudderStack release, talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
-
-
 

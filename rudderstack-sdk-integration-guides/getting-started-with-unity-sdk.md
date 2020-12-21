@@ -22,7 +22,7 @@ To properly configure the Unity SDK, you will need the following:
 * Your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events. 
 
 {% hint style="info" %}
- To get the **Data Plane URL**: ****
+To get the **Data Plane URL**: _\*\*_
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
@@ -35,7 +35,7 @@ To properly configure the Unity SDK, you will need the following:
 * Download `rudder-sdk-unity.unitypackage` from our [Github Repository](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/SDK/rudder-sdk-unity.unitypackage).
 * Import the downloaded package to your project. From the **Assets** menu, go to **Import Package** - **Custom Package...** as shown in the following screenshot:
 
-![Importing the downloaded package](../.gitbook/assets/unity1.png)
+![Importing the downloaded package](../.gitbook/assets/unity1%20%281%29.png)
 
 * Select `rudder-sdk-unity.unitypackage` from the location where you have downloaded it and click on **Open**:
 
@@ -72,7 +72,7 @@ RudderClient rudderClient = RudderClient.GetInstance(
 ```
 
 {% hint style="warning" %}
- If you are building an iOS project, `RudderClient.SerializeSqlite()` is important to handle races with SQLite.
+If you are building an iOS project, `RudderClient.SerializeSqlite()` is important to handle races with SQLite.
 {% endhint %}
 
 ## Track
@@ -135,7 +135,7 @@ rudderClient.Reset();
 
 ## Upgrading the SDK
 
-Remove all the files related to RudderStack SDK from the `Plugins`  folder. Also remove the `RudderUnityPlugin` folder completely before importing the newer version of the SDK.
+Remove all the files related to RudderStack SDK from the `Plugins` folder. Also remove the `RudderUnityPlugin` folder completely before importing the newer version of the SDK.
 
 The following is the list of files in `Plugins` folder for RudderStack SDK:
 

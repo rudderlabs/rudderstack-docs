@@ -27,7 +27,7 @@ The following are some things to keep in mind while coding your transformation f
   * `rl_properties`
   * `rl_user_properties`
 * The transformation function iterates through the collection and for each message, generates one or more messages \(keeping the structure unchanged\) for further processing.
-* You can import and use any JavaScript library within your code as long as the license associated with said library permits the special use as applicable in the case of authoring a transformation function __on the RudderStack platform.
+* You can import and use any JavaScript library within your code as long as the license associated with said library permits the special use as applicable in the case of authoring a transformation function \_\_on the RudderStack platform.
 * You **must not** alter the structure of the event messages. There is a possibility that the message might get rejected in case the required fields are missing.
 * You must maintain the **semantic integrity** of the message payload.
 * You should **ideally** leave the structures like `rl_context` and `rl_traits` **unchanged** as they are concerned with the application and are user-specific. Manipulating them may lead to erroneous results. That said, there can be specific requirements for undertaking such manipulation. For example, a business might be interested to find out the distribution of their customers across Android OS variants. In such case, if the `os_name` is `Android` and `os_version` is anything between 5.0 and 5.1.1 – then the developer might want to replace the `os_version` with just `Lollipop`

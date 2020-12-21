@@ -7,7 +7,7 @@ description: >-
 
 # How to Implement a Native JavaScript SDK Integration
 
-### Basic functionality  
+## Basic functionality
 
 > We will be using the integration and destination term loosely and interchangeably
 
@@ -32,7 +32,7 @@ The **isLoaded** method return true when the global destination object is ready.
 The input to identify, page, track methods/property of the integration object is the entire event data object constructed by utility methods of the core analytics object.
 {% endhint %}
 
-### Code Structure
+## Code Structure
 
 ![This exports the list of all native integrations](../../.gitbook/assets/screenshot-2019-12-10-at-7.21.35-pm.png)
 
@@ -40,11 +40,9 @@ The input to identify, page, track methods/property of the integration object is
 
 To add a new integration, add the above said methods to a JS object and export that object to be picked up by the **integrations** map.
 
-This map is iterated and matched against the config fetched from the control plane to construct only those enabled integrations. This is matched against the `name` property of the integration object and destination config `name` . 
+This map is iterated and matched against the config fetched from the control plane to construct only those enabled integrations. This is matched against the `name` property of the integration object and destination config `name` .
 
 `All the activities of fetching configs and constructing and event forwarding to integrations is handled by the core analytics object.`
-
-
 
 > Refer the existing integrations in case of any parameter reference.  
 > For adding destination JS snippet, use the init method of the new integration.

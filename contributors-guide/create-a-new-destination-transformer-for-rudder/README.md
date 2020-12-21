@@ -8,8 +8,8 @@ description: >-
 
 ## What are destination transformers? <a id="what-are-destination-transformers"></a>
 
-The core promise of platforms like RudderStack is **generate-once-analyse-anywhere**.   
-  
+The core promise of platforms like RudderStack is **generate-once-analyse-anywhere**.
+
 This essentially means that organizations need to transmit an event once to the RudderStack platform and the platform would suitably **transform** and **route** the event data to the various target analytics platforms. This is where **destination transformers** come into action.
 
 Every analytics platform defines its own protocol for communication along with semantics for the business objects that can be included in a message sent to the platform. **Destination transformers** are responsible for ingesting the RudderStack canonical object and emit a payload that provides the subsequent **router** programs in the data pipeline along with the information regarding:
@@ -55,7 +55,7 @@ module.exports = {
     },
     post: async function(req, res, body) {
         console.log("ga:post() starting");
-        
+
         var requestJson = JSON.parse(body);
         return gat.process(jsonQ(requestJson));
 
@@ -84,14 +84,14 @@ Following is an excerpt of the entry point into the main transformation routine 
 ```javascript
 //Iterate over input batch and generate response for each message
 function process (jsonQobj){
-	var respList = [];
-	var counter = 0;
-	jsonQobj.find("message").parent().each(function (index, path, value){
-		result = processSingleMessage(jsonQ(value));
-		respList.push(result);
-		
-	});
-	return respList;
+    var respList = [];
+    var counter = 0;
+    jsonQobj.find("message").parent().each(function (index, path, value){
+        result = processSingleMessage(jsonQ(value));
+        respList.push(result);
+
+    });
+    return respList;
 }
 
 exports.process = process;
@@ -119,77 +119,77 @@ The canonical object attributes would get mapped to destination payload fields d
 //depending on message type and event type where applicable
   function processSingleMessage(jsonQobj){
 
-	//Route to appropriate process depending on type of message received
-	var messageType = String(jsonQobj.find('type').value()).toLowerCase();
+    //Route to appropriate process depending on type of message received
+    var messageType = String(jsonQobj.find('type').value()).toLowerCase();
 
-	switch (messageType){
-		case 'page':
-			//console.log('processing page');
-			return   processPageviews(jsonQobj);
-		case 'screen':
-			//console.log('processing screen');
-			return   processScreenviews(jsonQobj);
-		case 'track':
-			var eventType = String(jsonQobj.find('event').value()).toLowerCase();
-			//console.log(eventType);	
-			//There can be both ECommerce as well as Non-ECommerce 'track' events
-			//Need to handle individually
-			switch (eventType){
-				case 'product list viewed':
-				case 'product list filtered':	
-				case 'product list clicked':
-					return   processProductListEvent(jsonQobj);
-					break;
-				case 'promotion viewed':
-				case 'promotion clicked':
-					return   processPromotionEvent(jsonQobj);
-					break;
-				case 'product clicked':
-				case 'product viewed':
-				case 'product added':
-				case 'wishlist product added to cart':	
-				case 'product removed':
-				case 'product removed from wishlist':
-				case 'product added to wishlist':	
-					return   processProductEvent(jsonQobj);
-					break;
-				case 'checkout started':
-				case 'order updated':
-				case 'order completed':	
-				case 'order cancelled':
-					return   processTransactionEvent(jsonQobj);
-					break;
-				case 'checkout step viewed':
-				case 'checkout step completed':
-				case 'payment info entered':
-					return   processPaymentRelatedEvent(jsonQobj);
-					break;
-				case 'order refunded':
-					return   processRefundEvent(jsonQobj);
-					break;
-				case 'product shared':
-				case 'cart shared':	
-					return   processSharingEvent(jsonQobj);
-					break;
-				case 'cart viewed':
-				case 'coupon entered':
-				case 'coupon applied':
-				case 'coupon denied':
-				case 'coupon removed':
-				case 'product reviewed':
-				case 'products searched':	
-					return   processEComGenericEvent(jsonQobj);	
-					break;
-				default:
-					return   processNonEComGenericEvent(jsonQobj);		
-			}
-		default:
-			console.log('could not determine type');
-			//throw new RangeError('Unexpected value in type field');
-			var events = []
-			events.push("{\"error\":\"message type not supported\"}");
-			return events;
-	}
+    switch (messageType){
+        case 'page':
+            //console.log('processing page');
+            return   processPageviews(jsonQobj);
+        case 'screen':
+            //console.log('processing screen');
+            return   processScreenviews(jsonQobj);
+        case 'track':
+            var eventType = String(jsonQobj.find('event').value()).toLowerCase();
+            //console.log(eventType);    
+            //There can be both ECommerce as well as Non-ECommerce 'track' events
+            //Need to handle individually
+            switch (eventType){
+                case 'product list viewed':
+                case 'product list filtered':    
+                case 'product list clicked':
+                    return   processProductListEvent(jsonQobj);
+                    break;
+                case 'promotion viewed':
+                case 'promotion clicked':
+                    return   processPromotionEvent(jsonQobj);
+                    break;
+                case 'product clicked':
+                case 'product viewed':
+                case 'product added':
+                case 'wishlist product added to cart':    
+                case 'product removed':
+                case 'product removed from wishlist':
+                case 'product added to wishlist':    
+                    return   processProductEvent(jsonQobj);
+                    break;
+                case 'checkout started':
+                case 'order updated':
+                case 'order completed':    
+                case 'order cancelled':
+                    return   processTransactionEvent(jsonQobj);
+                    break;
+                case 'checkout step viewed':
+                case 'checkout step completed':
+                case 'payment info entered':
+                    return   processPaymentRelatedEvent(jsonQobj);
+                    break;
+                case 'order refunded':
+                    return   processRefundEvent(jsonQobj);
+                    break;
+                case 'product shared':
+                case 'cart shared':    
+                    return   processSharingEvent(jsonQobj);
+                    break;
+                case 'cart viewed':
+                case 'coupon entered':
+                case 'coupon applied':
+                case 'coupon denied':
+                case 'coupon removed':
+                case 'product reviewed':
+                case 'products searched':    
+                    return   processEComGenericEvent(jsonQobj);    
+                    break;
+                default:
+                    return   processNonEComGenericEvent(jsonQobj);        
+            }
+        default:
+            console.log('could not determine type');
+            //throw new RangeError('Unexpected value in type field');
+            var events = []
+            events.push("{\"error\":\"message type not supported\"}");
+            return events;
+    }
 
 }
 ```
@@ -204,13 +204,13 @@ The sample below is that of a direct field-mapping configuration for a generic R
 
 ```javascript
 {
-	"anonymousId":"cid",	
-	"userId":"cid",
-	"event":"ea",
-	"properties.category":"ec",
-	"properties.label":"el",
-	"properties.value":"ev",
-	"properties.title":"cd1"
+    "anonymousId":"cid",    
+    "userId":"cid",
+    "event":"ea",
+    "properties.category":"ec",
+    "properties.label":"el",
+    "properties.value":"ev",
+    "properties.title":"cd1"
 }
 ```
 
@@ -236,41 +236,41 @@ var nonEcomGenericEventConfigJson = JSON.parse(nonEcomGenericEventConfigFile);
 //the field mapping and credentials JSONs
 function responseBuilderSimple (parameterMap, jsonQobj, hitType, mappingJson, credsJson){
 
-	//Other code 
-	
-	//Iterate through each key mapping 
-	//the source keys are provided in the format a.b.c.d which means
-	//structure a contains structure b contains structure c contains
-	//element d. So the path is reconstructed by spltting the source key by dot
-	jsonQ.each(mappingJson, function(sourceKey, destinationKey){
-		//The structure for page messages is the root, so we have to reset the reference
-		//point before traversing for every key
-		var tempObj = jsonQobj.find('context').parent();
-		
+    //Other code 
 
-		//console.log(tempObj.length)
+    //Iterate through each key mapping 
+    //the source keys are provided in the format a.b.c.d which means
+    //structure a contains structure b contains structure c contains
+    //element d. So the path is reconstructed by spltting the source key by dot
+    jsonQ.each(mappingJson, function(sourceKey, destinationKey){
+        //The structure for page messages is the root, so we have to reset the reference
+        //point before traversing for every key
+        var tempObj = jsonQobj.find('context').parent();
 
-		var pathElements = sourceKey.split('.');
-		
-		//console.log(loopCounter++);
 
-		//Now take each path element and traverse the structure
-		for (var i=0; i<pathElements.length; i++) {
-			//console.log(pathElements[i]);
-			tempObj = tempObj.find(pathElements[i]);	
-		}
+        //console.log(tempObj.length)
 
-		//Once the entry for the source key has been found, the value needs to be mapped 
-		//to the destination key
-				
-		tempObj.each(function (index, path, value){
-			//Add the derived key-value pair to the response JSON
-			parameterMap.set(String(destinationKey),String(value));
-		});
-		
-	});
-	
-	//Other code
+        var pathElements = sourceKey.split('.');
+
+        //console.log(loopCounter++);
+
+        //Now take each path element and traverse the structure
+        for (var i=0; i<pathElements.length; i++) {
+            //console.log(pathElements[i]);
+            tempObj = tempObj.find(pathElements[i]);    
+        }
+
+        //Once the entry for the source key has been found, the value needs to be mapped 
+        //to the destination key
+
+        tempObj.each(function (index, path, value){
+            //Add the derived key-value pair to the response JSON
+            parameterMap.set(String(destinationKey),String(value));
+        });
+
+    });
+
+    //Other code
 }
 ```
 
@@ -279,39 +279,39 @@ While the above code snippet captures the direct field-mapping implementation, l
 ```javascript
 //Function for processing order refund events
 function processRefundEvent(jsonQobj){
-	var parameterMap = new Map();
-	parameterMap.set("pa","refund"); //pre-populate
+    var parameterMap = new Map();
+    parameterMap.set("pa","refund"); //pre-populate
 
-	//First we need to check whether we're dealing with full refund or partial refund
-	//In case of partial refund, product array will be present in payload
-	var productArray = jsonQobj.find("properties").find("products").find("product_id").parent();	
-	if (productArray.length > 0){ //partial refund
-		//console.log(productArray.length);
-		//Now iterate through the products and add parameters accordingly
-		var prodIndex = 1; 
-		productArray.each(function(index, path, value){
-			//If product_id is not provided, then SKU will be used in place of id
-			if (!value.product_id || 0 === value.product_id.length){
-				parameterMap.set("pr"+prodIndex+"id",value.sku);
-			} else {
-				parameterMap.set("pr"+prodIndex+"id",value.product_id);
-			}
-			
-			parameterMap.set("pr"+prodIndex+"nm",value.name);
-			parameterMap.set("pr"+prodIndex+"ca",value.category);
-			parameterMap.set("pr"+prodIndex+"br",value.brand);
-			parameterMap.set("pr"+prodIndex+"va",value.variant);
-			parameterMap.set("pr"+prodIndex+"cc",value.coupon);
-			parameterMap.set("pr"+prodIndex+"ps",value.position);
-			parameterMap.set("pr"+prodIndex+"pr",value.price);
-			parameterMap.set("pr"+prodIndex+"qt",value.quantity);
-			prodIndex++;
-		});
-	} else { //full refund, only populate order_id
-		parameterMap.set("ti",String(jsonQobj.find("order_id").value()));
-	} 
-	//Finally fill up with mandatory and directly mapped fields
-	 return responseBuilderSimple(parameterMap,jsonQobj,'transaction',refundEventConfigJson, customerCredentialsConfigJson);
+    //First we need to check whether we're dealing with full refund or partial refund
+    //In case of partial refund, product array will be present in payload
+    var productArray = jsonQobj.find("properties").find("products").find("product_id").parent();    
+    if (productArray.length > 0){ //partial refund
+        //console.log(productArray.length);
+        //Now iterate through the products and add parameters accordingly
+        var prodIndex = 1; 
+        productArray.each(function(index, path, value){
+            //If product_id is not provided, then SKU will be used in place of id
+            if (!value.product_id || 0 === value.product_id.length){
+                parameterMap.set("pr"+prodIndex+"id",value.sku);
+            } else {
+                parameterMap.set("pr"+prodIndex+"id",value.product_id);
+            }
+
+            parameterMap.set("pr"+prodIndex+"nm",value.name);
+            parameterMap.set("pr"+prodIndex+"ca",value.category);
+            parameterMap.set("pr"+prodIndex+"br",value.brand);
+            parameterMap.set("pr"+prodIndex+"va",value.variant);
+            parameterMap.set("pr"+prodIndex+"cc",value.coupon);
+            parameterMap.set("pr"+prodIndex+"ps",value.position);
+            parameterMap.set("pr"+prodIndex+"pr",value.price);
+            parameterMap.set("pr"+prodIndex+"qt",value.quantity);
+            prodIndex++;
+        });
+    } else { //full refund, only populate order_id
+        parameterMap.set("ti",String(jsonQobj.find("order_id").value()));
+    } 
+    //Finally fill up with mandatory and directly mapped fields
+     return responseBuilderSimple(parameterMap,jsonQobj,'transaction',refundEventConfigJson, customerCredentialsConfigJson);
 }
 ```
 
@@ -332,87 +332,87 @@ The **responseBuilderSimple** method, shown briefly before, is where the direct 
 //the field mapping and credentials JSONs
 function responseBuilderSimple (parameterMap, jsonQobj, hitType, mappingJson, credsJson){
 
-	//We'll keep building a simple key-value JSON structure which will be finally returned
-	//We add the static parts as well as the direct mappings from config JSON
-	//There will be three keys - endpoint, request-format and payload
-	//The payload will be another JSON containing the key-value pairs to be sent
-	//finally as query parameters
-	
-	//Create a final map to be used for response and populate the static parts first
-	var responseMap = new Map();	
-	responseMap.set("endpoint","https://www.google-analytics.com/collect");
-	//responseMap.set("request-format","PARAMS");
+    //We'll keep building a simple key-value JSON structure which will be finally returned
+    //We add the static parts as well as the direct mappings from config JSON
+    //There will be three keys - endpoint, request-format and payload
+    //The payload will be another JSON containing the key-value pairs to be sent
+    //finally as query parameters
 
-	var requestConfigMap = new Map();
+    //Create a final map to be used for response and populate the static parts first
+    var responseMap = new Map();    
+    responseMap.set("endpoint","https://www.google-analytics.com/collect");
+    //responseMap.set("request-format","PARAMS");
+
+    var requestConfigMap = new Map();
     requestConfigMap.set("request-format","PARAMS");
-	requestConfigMap.set("request_method","GET");
-	
-	responseMap.set("request_config", mapToObj(requestConfigMap));
+    requestConfigMap.set("request_method","GET");
 
-	responseMap.set("header",{});
+    responseMap.set("request_config", mapToObj(requestConfigMap));
 
-	//Need to set user_id outside of payload
-	//Check userId - if not there then check anonymousId
-	if(jsonQobj.find('userId').value()[0]){
-		responseMap.set("user_id",jsonQobj.find('userId').value()[0]);
-	} else if (jsonQobj.find('anonymousId').value()[0]){
-		responseMap.set("user_id",jsonQobj.find('anonymousId').value()[0]);
-	}
-	
-	//Now add static parameters to the parameter map
-	parameterMap.set("v","1");
-	parameterMap.set("t",String(hitType));
+    responseMap.set("header",{});
 
-	jsonQobj.find("destination").each((i, p, value) => {
-		parameterMap.set("tid", String(value.Config.trackingId));
-	  });
-	  //   Add the customer credentials
-	  //   jsonQ.each(credsJson, function(key, value) {
-	  //     parameterMap.set('tid', String(value));
-	  //   });
+    //Need to set user_id outside of payload
+    //Check userId - if not there then check anonymousId
+    if(jsonQobj.find('userId').value()[0]){
+        responseMap.set("user_id",jsonQobj.find('userId').value()[0]);
+    } else if (jsonQobj.find('anonymousId').value()[0]){
+        responseMap.set("user_id",jsonQobj.find('anonymousId').value()[0]);
+    }
 
-	var loopCounter = 1;
-	//Iterate through each key mapping of pageview type messges
-	//the source keys are provided in the format a.b.c.d which means
-	//structure a contains structure b contains structure c contains
-	//element d. So the path is reconstructed by spltting the source key by dot
-	jsonQ.each(mappingJson, function(sourceKey, destinationKey){
-		//The structure for page messages is the root, so we have to reset the reference
-		//point before traversing for every key
-		var tempObj = jsonQobj.find('context').parent();
-		
+    //Now add static parameters to the parameter map
+    parameterMap.set("v","1");
+    parameterMap.set("t",String(hitType));
 
-		//console.log(tempObj.length)
+    jsonQobj.find("destination").each((i, p, value) => {
+        parameterMap.set("tid", String(value.Config.trackingId));
+      });
+      //   Add the customer credentials
+      //   jsonQ.each(credsJson, function(key, value) {
+      //     parameterMap.set('tid', String(value));
+      //   });
 
-		var pathElements = sourceKey.split('.');
-		
-		//console.log(loopCounter++);
+    var loopCounter = 1;
+    //Iterate through each key mapping of pageview type messges
+    //the source keys are provided in the format a.b.c.d which means
+    //structure a contains structure b contains structure c contains
+    //element d. So the path is reconstructed by spltting the source key by dot
+    jsonQ.each(mappingJson, function(sourceKey, destinationKey){
+        //The structure for page messages is the root, so we have to reset the reference
+        //point before traversing for every key
+        var tempObj = jsonQobj.find('context').parent();
 
-		//Now take each path element and traverse the structure
-		for (var i=0; i<pathElements.length; i++) {
-			//console.log(pathElements[i]);
-			tempObj = tempObj.find(pathElements[i]);	
-		}
 
-		//Once the entry for the source key has been found, the value needs to be mapped 
-		//to the destination key
-				
-		tempObj.each(function (index, path, value){
-			//Add the derived key-value pair to the response JSON
-			parameterMap.set(String(destinationKey),String(value));
-		});
-		
-	});
+        //console.log(tempObj.length)
 
-	//Assign parameter map against payload key
-	responseMap.set("payload",mapToObj(parameterMap));
+        var pathElements = sourceKey.split('.');
 
-	//Convert response map to JSON
-	var responseJson = JSON.stringify(mapToObj(responseMap));
+        //console.log(loopCounter++);
 
-	var events = []
-	events.push(responseJson);
-	return events;
+        //Now take each path element and traverse the structure
+        for (var i=0; i<pathElements.length; i++) {
+            //console.log(pathElements[i]);
+            tempObj = tempObj.find(pathElements[i]);    
+        }
+
+        //Once the entry for the source key has been found, the value needs to be mapped 
+        //to the destination key
+
+        tempObj.each(function (index, path, value){
+            //Add the derived key-value pair to the response JSON
+            parameterMap.set(String(destinationKey),String(value));
+        });
+
+    });
+
+    //Assign parameter map against payload key
+    responseMap.set("payload",mapToObj(parameterMap));
+
+    //Convert response map to JSON
+    var responseJson = JSON.stringify(mapToObj(responseMap));
+
+    var events = []
+    events.push(responseJson);
+    return events;
 }
 ```
 

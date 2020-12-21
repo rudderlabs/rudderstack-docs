@@ -114,7 +114,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [RSClient getInstance:WRITE_KEY config:[builder build]];
 ```
 
-* Add a **Privacy - Photo Library Usage Description** entry to your `Info.plist`. ****This is [required by Apple](https://developer.apple.com/library/content/qa/qa1937/_index.html) for applications that can access the photo library.
+* Add a **Privacy - Photo Library Usage Description** entry to your `Info.plist`. _\*\*_This is [required by Apple](https://developer.apple.com/library/content/qa/qa1937/_index.html) for applications that can access the photo library.
 
 {% hint style="info" %}
 Users will be prompted for the permission to access the photo library only when they tap the button to upload their image/s.
@@ -163,9 +163,9 @@ The following RudderStack properties are matched to Intercom's properties -
 
 ### Collect Context
 
-On enabling the **Collect Context** option in the RudderStack dashboard for Intercom, events are collected through the mobile libraries \(if available\).  
-  
-The collected events are : -  `device.type` ,   `device.model`,   `device.manufacturer`,   `os.name,`   `os.version` ,   `app.name`, and  `app.version` 
+On enabling the **Collect Context** option in the RudderStack dashboard for Intercom, events are collected through the mobile libraries \(if available\).
+
+The collected events are : - `device.type` , `device.model`, `device.manufacturer`, `os.name,` `os.version` , `app.name`, and `app.version`
 
 ## Track
 
@@ -189,8 +189,8 @@ All the traits provided in the `track` call will be converted as per [Intercom's
 
 ## Page
 
-The `page` call contains information such as the URL or the web page visited by the user. For more information, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.  
-  
+The `page` call contains information such as the URL or the web page visited by the user. For more information, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
+
 The `page` call works only through our `rudderanalytics.js` and is not supported by other sources. It works by triggering Intercom's `update` method, which looks for a list of new conversations that are open and should be displayed to the current user.
 
 A sample `page` call in RudderStack looks like the following code snippet:

@@ -6,7 +6,7 @@ description: >-
 
 # Webhooks
 
-Webhooks allow you to send events generated via the RudderStack SDK to your own backend. It is useful for cases where you want to apply some custom logic on the payload before sending it to the destination platforms of your choice. 
+Webhooks allow you to send events generated via the RudderStack SDK to your own backend. It is useful for cases where you want to apply some custom logic on the payload before sending it to the destination platforms of your choice.
 
 Once enabled, RudderStack forwards the SDK events to your configured webhook endpoint.
 
@@ -34,7 +34,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **Webhook** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Connection Settings**, ****fill all the fields with the relevant information and click **Next**
+* Next, in the **Connection Settings**, **\*\*fill all the fields with the relevant information and click** Next\*\*
 
 ![](../.gitbook/assets/screenshot-2020-08-24-at-10.24.37-am.png)
 
@@ -42,7 +42,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 * **URL Method:** This is the HTTP method of the request that would be sent to the configured endpoint. Supported methods - `POST` and `GET`. The default method is `POST`.
 * **Headers:** Add custom headers for your events, these headers will be added to the request made from [RudderStack](https://github.com/rudderlabs/rudder-server) to your webhook. It by default adds the following headers for a `POST` request:
 
-|   Key | Value |
+| Key | Value |
 | :--- | :--- |
 | `User-Agent` | `RudderLabs` |
 | `Content-Type` | `application/json` |
@@ -91,7 +91,6 @@ A sample `identify` payload is as shown:
   "integrations": { "All": true },
   "sentAt": "2020-04-22T08:06:20.337Z"
 }
-
 ```
 
 For each identify call, we send the request in the following manner\(depending on the URL Method you configured earlier\):
@@ -145,7 +144,6 @@ A sample `page` payload is as shown:
   "integrations": { "All": true },
   "sentAt": "2020-04-22T08:06:20.334Z"
 }
-
 ```
 
 For each page call, we send the request in the following manner\(depending on the URL Method you configured earlier\):

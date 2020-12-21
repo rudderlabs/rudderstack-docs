@@ -6,7 +6,7 @@ description: >-
 
 # Migrating Your Warehouse Destination from Segment to RudderStack
 
-The RudderStack warehouse table schemas are fully compatible with Segment. You can start routing new events to your existing warehouse tables  through RudderStack, without losing any historical data.
+The RudderStack warehouse table schemas are fully compatible with Segment. You can start routing new events to your existing warehouse tables through RudderStack, without losing any historical data.
 
 This guide lists the steps and best practices for switching over your warehouse destinations from Segment to RudderStack.
 
@@ -36,7 +36,7 @@ If both Segment and RudderStack try to write to the same tables at the same time
 
 ## Migrating Client-side Sources
 
-There could be a scenario where some clients which are still using the old version of your application \(e.g. Android / iOS\) and sending the events to Segment. 
+There could be a scenario where some clients which are still using the old version of your application \(e.g. Android / iOS\) and sending the events to Segment.
 
 Follow the below steps to easily migrate to RudderStack and storing the event data in the same tables as Segment.
 

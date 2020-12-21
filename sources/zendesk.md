@@ -51,9 +51,9 @@ If you've already configured Zendesk as a source before, you can choose the acco
 
 ![](../.gitbook/assets/6%20%283%29.png)
 
-That's it! Zendesk is now successfully configured as a source on your RudderStack dashboard. 
+That's it! Zendesk is now successfully configured as a source on your RudderStack dashboard.
 
-RudderStack will start ingesting data from Zendesk as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown: 
+RudderStack will start ingesting data from Zendesk as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
 ![](../.gitbook/assets/7.png)
 

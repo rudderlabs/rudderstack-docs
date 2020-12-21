@@ -64,7 +64,7 @@ rudderanalytics.page();
 
 ## Track
 
-The `track` call lets you track custom events as they occur in your web application. 
+The `track` call lets you track custom events as they occur in your web application.
 
 A sample call looks like the following code snippet:
 
@@ -126,13 +126,13 @@ In the dashboard, the legacy conversion Pixel ids can be filled. The events whic
 
 ## Custom Events
 
-Custom events are used to send any event that does not appear in any of the mappings. 
+Custom events are used to send any event that does not appear in any of the mappings.
 
 ## Timestamps
 
-Facebook Pixel uses ISO 8601 timestamp without the timezone information. 
+Facebook Pixel uses ISO 8601 timestamp without the timezone information.
 
-Facebook expects them to be sent as : 
+Facebook expects them to be sent as :
 
 `"checkinDate", "checkoutDate", "departingArrivalDate", "departingDepartureDate", "returningArrivalDate", "returningDepartureDate", "travelEnd", "travelStart"`
 
@@ -142,7 +142,7 @@ Facebook expects them to be sent as :
 
 The Facebook Pixel ID can be found in [Pixels tab in Facebook Ads Manager](https://www.facebook.com/ads/manager/pixel/facebook_pixel).
 
-##  Contact Us
+## Contact Us
 
 If you come across any issues while configuring Facebook Pixel with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

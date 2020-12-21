@@ -109,11 +109,11 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 {% endtabs %}
 
 {% hint style="info" %}
-The RudderStack SDKs store the `traits` information from the `identify` call in `SharedPreference` and `NSUserDefaults` for Android and iOS respectively. If RudderStack detects the `userId` in the persisted traits information, it starts the native SDK along with the `userId` . On the other hand, if it can't find the `userId` , it starts the SDK normally without it. This activity helps to build a better session. 
+The RudderStack SDKs store the `traits` information from the `identify` call in `SharedPreference` and `NSUserDefaults` for Android and iOS respectively. If RudderStack detects the `userId` in the persisted traits information, it starts the native SDK along with the `userId` . On the other hand, if it can't find the `userId` , it starts the SDK normally without it. This activity helps to build a better session.
 
 The code for Android is the same as below:
 
-`Leanplum.start(applicationContext, userId)` for a persisted `userId` and `Leanplum.start(applicationContext)` if it is not present. 
+`Leanplum.start(applicationContext, userId)` for a persisted `userId` and `Leanplum.start(applicationContext)` if it is not present.
 
 RudderStack follows a similar pattern for iOS as well.
 
@@ -122,7 +122,7 @@ While searching for `userId` in the persisted traits, RudderStack looks for eith
 
 ## Identify
 
-RudderStack sets the `userId` of the user to the Leanplum SDK via the `setUserId` method, and passes all the properties under `context.traits` to the `setUserAttributes` method, to get populated in Leanplum. 
+RudderStack sets the `userId` of the user to the Leanplum SDK via the `setUserId` method, and passes all the properties under `context.traits` to the `setUserAttributes` method, to get populated in Leanplum.
 
 The following is an example of an `identify`call:
 
@@ -133,7 +133,7 @@ The following is an example of an `identify`call:
 
 ## Track
 
-Leanplum accepts any free-flowing property and event name. So, we forward the event as is to the Leanplum SDK without any modification to the payload, as long as the  `eventName` is not `null`. 
+Leanplum accepts any free-flowing property and event name. So, we forward the event as is to the Leanplum SDK without any modification to the payload, as long as the `eventName` is not `null`.
 
 The following is an example of a `track` call in RudderStack:
 
@@ -147,7 +147,7 @@ The following is an example of a `track` call in RudderStack:
 
 ## Screen
 
-Leanplum supports tracking the user-states. We use the `screen` calls to advance the states of the user to LeanPlum. For every `screen` event we are calling the `advanceTo` method of LeanPlum SDK along with the screen name and the `properties` along with it. 
+Leanplum supports tracking the user-states. We use the `screen` calls to advance the states of the user to LeanPlum. For every `screen` event we are calling the `advanceTo` method of LeanPlum SDK along with the screen name and the `properties` along with it.
 
 We also send the automatically tracked `screen` events to LeanPlum.
 

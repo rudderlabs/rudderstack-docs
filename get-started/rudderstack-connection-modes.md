@@ -41,7 +41,7 @@ While the above example uses the JavaScript SDK, our [Android](https://docs.rudd
 In the Cloud Mode, you get the flexibility to use transformations to enrich the events, or filter selective events to forward to destinations.
 {% endhint %}
 
-Some of the other destinations that currently support only cloud mode are ****[Amplitude](https://docs.rudderstack.com/destinations/amplitude), [Kochava](https://docs.rudderstack.com/destinations/kochava), [Mailchimp](https://docs.rudderstack.com/destinations/mailchimp), [Mixpanel](https://docs.rudderstack.com/destinations/mixpanel), [Salesforce](https://docs.rudderstack.com/destinations/salesforce), and [Zendesk](https://docs.rudderstack.com/destinations/zendesk). Our [Data Warehouse Integrations](https://docs.rudderstack.com/data-warehouse-integrations) also support only cloud mode.
+Some of the other destinations that currently support only cloud mode are _\*\*_[Amplitude](https://docs.rudderstack.com/destinations/amplitude), [Kochava](https://docs.rudderstack.com/destinations/kochava), [Mailchimp](https://docs.rudderstack.com/destinations/mailchimp), [Mixpanel](https://docs.rudderstack.com/destinations/mixpanel), [Salesforce](https://docs.rudderstack.com/destinations/salesforce), and [Zendesk](https://docs.rudderstack.com/destinations/zendesk). Our [Data Warehouse Integrations](https://docs.rudderstack.com/data-warehouse-integrations) also support only cloud mode.
 
 {% hint style="warning" %}
 Please note that all our server-side SDKs \([Java](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-java-sdk), [Python](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-python-sdk), [Node.js](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [Go](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-go-sdk), [Ruby](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk)\) support only **Cloud Mode**. This is because our server-side SDKs operate in the RudderStack backend, and cannot load any additional destination-specific SDKs.
@@ -55,7 +55,7 @@ Another way you can send your events to the preferred destinations is through us
 
 Similar to the example given above, let's assume you want to send your event data from your source mobile apps to Firebase through RudderStack's mobile SDK \([Android](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-android-sdk), [iOS](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk), or [Unity](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk), depending on your requirement\). You can start by [adding a source and a Firebase destination](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) in the RudderStack dashboard.
 
- If you enable the `Native SDK` option on the RudderStack dashboard, the RudderStack SDK will download the Firebase SDK, transform the events and will send them to Firebase for analytics.
+If you enable the `Native SDK` option on the RudderStack dashboard, the RudderStack SDK will download the Firebase SDK, transform the events and will send them to Firebase for analytics.
 
 ![How Device Mode Works](../.gitbook/assets/image%20%2829%29.png)
 
@@ -63,7 +63,7 @@ Similar to the example given above, let's assume you want to send your event dat
 Device mode integrations will send data to the destinations directly from your client \(browser or mobile application\).
 {% endhint %}
 
-Some of the destinations that currently support only device mode are [Adjust](https://docs.rudderstack.com/destinations/adjust), [Firebase](https://docs.rudderstack.com/destinations/firebase), [Hotjar](https://docs.rudderstack.com/destinations/hotjar), [AppsFlyer](https://docs.rudderstack.com/destinations/appsflyer), [Chartbeat](https://docs.rudderstack.com/destinations/chartbeat), [Google Ads](https://docs.rudderstack.com/destinations/google-ads), and [Facebook Pixel](https://docs.rudderstack.com/destinations/fb-pixel). 
+Some of the destinations that currently support only device mode are [Adjust](https://docs.rudderstack.com/destinations/adjust), [Firebase](https://docs.rudderstack.com/destinations/firebase), [Hotjar](https://docs.rudderstack.com/destinations/hotjar), [AppsFlyer](https://docs.rudderstack.com/destinations/appsflyer), [Chartbeat](https://docs.rudderstack.com/destinations/chartbeat), [Google Ads](https://docs.rudderstack.com/destinations/google-ads), and [Facebook Pixel](https://docs.rudderstack.com/destinations/fb-pixel).
 
 ### Support for Cloud Mode and Device Mode Both
 
@@ -85,8 +85,4 @@ The easiest way to check if a destination supports Cloud mode, Device mode, or b
 ## Contact Us
 
 To learn more about the connection modes supported by RudderStack, or if you come across any issues while using them with any of our SDKs, feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
-
-
-
-
 

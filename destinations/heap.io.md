@@ -10,7 +10,7 @@ RudderStack supports Heap.io as a destination to which you can send your event d
 
 ## Getting Started
 
-To enable sending data to Heap.io, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Heap. 
+To enable sending data to Heap.io, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Heap.
 
 Before configuring your source and destination on the RudderStack, verify if the source platform is supported by Heap, by referring to the table below:
 
@@ -83,7 +83,7 @@ rudderanalytics.track("Order Completed", {
 
 ## FAQs
 
-#### How do I get my Heap App ID?
+### How do I get my Heap App ID?
 
 You can procure your Heap ID by logging into your Heap account and navigate to App - Settings - Projects, and copying the required development or production App ID. Click [here](https://heapanalytics.com/app/settings/projects) to go to your Heap dashboard and get the App ID.
 

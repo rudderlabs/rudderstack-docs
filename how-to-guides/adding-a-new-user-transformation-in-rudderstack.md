@@ -8,12 +8,12 @@ description: >-
 
 ## Introduction
 
-With RudderStack, you can now implement your own custom transformation functions that leverage the event data, to implement specific use-cases based on your business requirements.  You can find more information on these user transformation functions in our [GitHub repository](https://github.com/rudderlabs/sample-user-transformers).
+With RudderStack, you can now implement your own custom transformation functions that leverage the event data, to implement specific use-cases based on your business requirements. You can find more information on these user transformation functions in our [GitHub repository](https://github.com/rudderlabs/sample-user-transformers).
 
 In this guide, we walk you through the steps involved in creating and testing your user transformation functions in RudderStack.
 
 {% hint style="warning" %}
-**Please note that the user transformations only work for the cloud mode destinations.** 
+**Please note that the user transformations only work for the cloud mode destinations.**
 
 **To know more about the cloud mode in RudderStack, check out the** [**RudderStack Connection Modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) **guide.**
 {% endhint %}
@@ -40,7 +40,7 @@ Please follow the steps mentioned below:
 ![](../.gitbook/assets/5%20%281%29.png)
 
 {% hint style="info" %}
- You can copy-paste the entire code of any of the functions in [this repository](https://github.com/rudderlabs/sample-user-transformers) into the **Transformation** window. Do remember to delete the pre-populated `transform` function in such cases, before pasting your code.
+You can copy-paste the entire code of any of the functions in [this repository](https://github.com/rudderlabs/sample-user-transformers) into the **Transformation** window. Do remember to delete the pre-populated `transform` function in such cases, before pasting your code.
 {% endhint %}
 
 * You can also test your transformation function by running a test, as shown:
@@ -51,8 +51,7 @@ Please follow the steps mentioned below:
 
 RudderStack injects a function `metadata(event)` into your transformations. This allows you to access environment variables that will help in customizing your transformations.
 
-`metadata()` takes the event as input and returns the metadata of the event.   
-
+`metadata()` takes the event as input and returns the metadata of the event.
 
 The following are the properties, if available, present in the metadata response:
 
@@ -106,7 +105,7 @@ function transform(events) {
 
 ## External API requests
 
-You can make any external API requests in your transformer functions and use the response to enrich your events data. RudderStack injects an asynchronous `fetch(url)` function into your transformations. It makes an API call to the given url and returns the response in JSON format. 
+You can make any external API requests in your transformer functions and use the response to enrich your events data. RudderStack injects an asynchronous `fetch(url)` function into your transformations. It makes an API call to the given url and returns the response in JSON format.
 
 Examples of how to use `fetch` function in transformations are as shown:
 

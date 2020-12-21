@@ -15,7 +15,7 @@ Since the AMP source sends the data directly to the RudderStack data plane, we s
 ## Getting Started
 
 {% hint style="info" %}
-You can learn more about the AMP project from their [official website](https://amp.dev/) if you are new to this domain. To get started and set up your AMP project, you might want to check out their [Quick Start guide](https://amp.dev/documentation/guides-and-tutorials/start/create/). 
+You can learn more about the AMP project from their [official website](https://amp.dev/) if you are new to this domain. To get started and set up your AMP project, you might want to check out their [Quick Start guide](https://amp.dev/documentation/guides-and-tutorials/start/create/).
 {% endhint %}
 
 Once you are done with the initial setup of your AMP project, follow the steps below to start sending your event data to RudderStack:

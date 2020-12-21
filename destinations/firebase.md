@@ -48,7 +48,6 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.3'
     }
 }
-
 ```
 
 * Once you have completed the steps above, you can add the `plugins` and `dependencies` to your `app/build.gradle` file as shown:
@@ -196,7 +195,6 @@ Follow these steps to add Firebase to your ReactNative project:
           classpath 'com.google.gms:google-services:4.3.3'
       }
   }
-
   ```
 
   * Once you have completed the steps above, you can add the `plugins` and `dependencies` to your `app/build.gradle` file as shown:
@@ -242,7 +240,7 @@ The `track` call from RudderStack is mapped to the appropriate standard events o
 | :--- | :--- |
 | `Payment Info Entered` | `add_payment_info` |
 | `Product Added` | `add_to_cart` |
-| `Application Opened`  | `app_open` |
+| `Application Opened` | `app_open` |
 | `Checkout Started` | `begin_checkout` |
 | `Order Completed` | `ecommerce_purchase` |
 | `Order Refunded` | `purchase_refund` |
@@ -255,7 +253,7 @@ The `track` call from RudderStack is mapped to the appropriate standard events o
 | `Product Clicked` | `select_content` |
 | `Promotion Viewed` | `present_offer` |
 
-Apart form the above mentioned events, the following standard events of Firebase are not mapped from any RudderStack event. You can mention the exact names from the following list to be perceived as the standard event in Firebase. 
+Apart form the above mentioned events, the following standard events of Firebase are not mapped from any RudderStack event. You can mention the exact names from the following list to be perceived as the standard event in Firebase.
 
 * `campaign_details` 
 * `generate_lead` 
@@ -315,7 +313,7 @@ A sample `track` call from the iOS SDK will look like the below
 
 ## Screen
 
-RudderStack does not send the screen view events to Firebase from the Firebase SDK, as automatic screens views work out of the box from the SDK. There is no option to turn off this feature in Android. 
+RudderStack does not send the screen view events to Firebase from the Firebase SDK, as automatic screens views work out of the box from the SDK. There is no option to turn off this feature in Android.
 
 ## Debugging
 

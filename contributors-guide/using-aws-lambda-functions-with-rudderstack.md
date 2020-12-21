@@ -6,7 +6,7 @@ description: >-
 
 # How to Use AWS Lambda Functions with RudderStack
 
-AWS Lambda helps you leverage the full potential of **AWS Serverless Compute**, allowing you to run your code without having to manage or provision servers. 
+AWS Lambda helps you leverage the full potential of **AWS Serverless Compute**, allowing you to run your code without having to manage or provision servers.
 
 ## Key Features of AWS Lambda
 
@@ -53,14 +53,14 @@ const Analytics = require("@rudderstack/rudder-sdk-node");
 //
 module.exports.helloWorld = (event, context, callback) => {
     const response = {
-   	 statusCode: 200,
-   	 headers: {
-   		 'Access-Control-Allow-Origin': '*', // Required for CORS support to work
-   	 },
-   	 body: JSON.stringify({
-   		 message: 'Go Serverless v1.0! Your function executed successfully!',
-   		 input: event,
-   	 }),
+        statusCode: 200,
+        headers: {
+            'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+        },
+        body: JSON.stringify({
+            message: 'Go Serverless v1.0! Your function executed successfully!',
+            input: event,
+        }),
     };
 ```
 

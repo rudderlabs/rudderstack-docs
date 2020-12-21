@@ -17,7 +17,7 @@ Please follow these steps to set up MinIO before adding it as a destination in R
 * You will need to provide `access key ID` and `secret access key` to authorize RudderStack to write to your bucket.
 
 {% hint style="info" %}
- `access key ID` is the user ID that uniquely identifies your MinIO account, and `secret access key` is the password to your account.
+`access key ID` is the user ID that uniquely identifies your MinIO account, and `secret access key` is the password to your account.
 {% endhint %}
 
 * Make a note of both the `access key ID` and `secret access key` as these will be required while configuring MinIO as a destination.
@@ -35,7 +35,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **MinIO** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Connection Settings**, ****fill all the fields with the relevant information \(please refer to the [Setting up MinIO](https://docs.rudderstack.com/destinations/minio#setting-up-minio) section above\) and click on **Next**.
+* Next, in the **Connection Settings**, **\*\*fill all the fields with the relevant information \(please refer to the** [**Setting up MinIO**](https://docs.rudderstack.com/destinations/minio#setting-up-minio) **section above\) and click on** Next\*\*.
 
 ![MinIO connection settings](../.gitbook/assets/screenshot-2020-02-26-at-7.22.29-pm.png)
 

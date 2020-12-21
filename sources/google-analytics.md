@@ -63,7 +63,7 @@ If a combination of **Dimensions** and **Metrics** chosen by you is invalid, Rud
 
 ![](../.gitbook/assets/screen-shot-2020-12-15-at-4.24.10-pm.png)
 
-That's it! Google Analytics is now successfully configured as a source on your RudderStack dashboard. 
+That's it! Google Analytics is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start importing data from Google Analytics as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
@@ -71,7 +71,7 @@ RudderStack will start importing data from Google Analytics as per the specified
 
 ## Valid Dimensions and Metrics Combinations
 
-Not all the dimensions and metrics can be queried together in Google Analytics. Only those dimensions-metrics combinations that follow Google's compatibility rules can be used together for querying. 
+Not all the dimensions and metrics can be queried together in Google Analytics. Only those dimensions-metrics combinations that follow Google's compatibility rules can be used together for querying.
 
 {% hint style="success" %}
 Check out the valid combinations in the [Google Dimensions & Metrics Explorer](https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/).

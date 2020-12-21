@@ -10,7 +10,7 @@ This document explains the step-by-step process of migrating from [Segment](http
 
 ## Migrating the Workspace
 
-Start with creating an account on the RudderStack [dashboard](https://app.rudderlabs.com/signup?type=freetrial). Similar to Segment, you will need to create sources and destinations in the dashboard. This will help you create the necessary connections for the event data to flow from your sources to the destination. 
+Start with creating an account on the RudderStack [dashboard](https://app.rudderlabs.com/signup?type=freetrial). Similar to Segment, you will need to create sources and destinations in the dashboard. This will help you create the necessary connections for the event data to flow from your sources to the destination.
 
 {% hint style="info" %}
 You can also check our guide on how to [add sources and destinations in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack).
@@ -18,7 +18,7 @@ You can also check our guide on how to [add sources and destinations in RudderSt
 
 ## Setting up the RudderStack Data Plane
 
-RudderStack requires a data plane for the events to flow through. You can choose to set it up yourself within your cloud computing environment. Please check our [installation guide](https://docs.rudderstack.com/administrators-guide/installing-and-setting-up-rudderstack) to set up RudderStack. 
+RudderStack requires a data plane for the events to flow through. You can choose to set it up yourself within your cloud computing environment. Please check our [installation guide](https://docs.rudderstack.com/administrators-guide/installing-and-setting-up-rudderstack) to set up RudderStack.
 
 We also offer a version of the data plane where we host it within our VPC. You can turn on the **RudderStack Hosted Service** button on the **Connections** page of your dashboard to get started with it. ‌
 
@@ -111,25 +111,25 @@ You can use the rest of your code as is, as RudderStack SDK is API compatible wi
 
 ```markup
 <script>
-	rudderanalytics = window.rudderanalytics = [];
-	
-	var methods = [
-		"load",
-		"page",
-		"track",
-		"identify",
-		"reset"
-	];
-	for (var i=0; i<methods.length; i++) {
-		var method = methods[i];
-		rudderanalytics[method] = function(methodName) {
-			return function() {
-				rudderanalytics.push([methodName, ...arguments]);
-			}
-		} (method)
-	}
-	rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URI>);
-	rudderanalytics.page();
+    rudderanalytics = window.rudderanalytics = [];
+
+    var methods = [
+        "load",
+        "page",
+        "track",
+        "identify",
+        "reset"
+    ];
+    for (var i=0; i<methods.length; i++) {
+        var method = methods[i];
+        rudderanalytics[method] = function(methodName) {
+            return function() {
+                rudderanalytics.push([methodName, ...arguments]);
+            }
+        } (method)
+    }
+    rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URI>);
+    rudderanalytics.page();
 </script>
 <script src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>
 ```

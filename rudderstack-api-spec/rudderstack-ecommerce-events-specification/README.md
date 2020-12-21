@@ -80,7 +80,7 @@ The following actions are associated with the user's sharing activity when they 
 | **User Action** | **Context** |
 | :--- | :--- |
 | Product Shared | When the user shares the product link with one or more friends |
-| Cart Shared | When the user shares their existing shopping cart with one or more friends  |
+| Cart Shared | When the user shares their existing shopping cart with one or more friends |
 
 ### Reviewing
 
@@ -93,6 +93,4 @@ The following actions are associated with the reviewing activity of the user:
 ## Contact Us
 
 To know more about the RudderStack eCommerce spec, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) community - we will be happy to talk to you.
-
-
 

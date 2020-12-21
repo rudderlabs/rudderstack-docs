@@ -12,13 +12,13 @@ Real-time alerts are critical to every system. You need to be notified if the sy
 
 The open-source version of RudderStack has support for the following alerts:
 
-### RudderStack Crash Alerts 
+### RudderStack Crash Alerts
 
 If you configure the variable `BUGSNAG_KEY` environment variable, the crashes are automatically sent to the Bugsnag destination.
 
 ### RudderStack Running Mode Alert
 
-If the RudderStack server starts in a degraded or maintenance mode, you will be alerted. We support [**PagerDuty**](https://www.pagerduty.com/) and [**VictorOps**](https://victorops.com/) integrations for this alert. 
+If the RudderStack server starts in a degraded or maintenance mode, you will be alerted. We support [**PagerDuty**](https://www.pagerduty.com/) and [**VictorOps**](https://victorops.com/) integrations for this alert.
 
 {% hint style="info" %}
 To learn more about the different running modes in RudderStack, please check our guide on the [RudderStack Server Running Modes](https://docs.rudderstack.com/administrators-guide/high-availability#normal-mode).
@@ -106,8 +106,4 @@ Enterprise alerting has native integrations with various third-party incident ma
 ## Contact Us
 
 To know more about the alerting feature of RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see the feature in action, or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
-
-
-
-
 

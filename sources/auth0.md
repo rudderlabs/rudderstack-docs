@@ -50,7 +50,7 @@ Make sure to add the `writeKey` as query parameter to the URL. This is required 
 
 ## RudderStack Event Transformation
 
-The webhook event from Auth0 is ingested into RudderStack after converting it into the format of a RudderStack event. The `user_id` set by Auth0 is set as `userId` . 
+The webhook event from Auth0 is ingested into RudderStack after converting it into the format of a RudderStack event. The `user_id` set by Auth0 is set as `userId` .
 
 Also, we populate following properties from Auth0 event payload directly to the RudderStack event:
 

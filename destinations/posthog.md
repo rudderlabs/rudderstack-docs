@@ -62,11 +62,11 @@ rudderanalytics.identify("name123", {
 });
 ```
 
-We pass the user traits passed along with the `identify` call to PostHog under the `$set` key according to  [PostHog Identify API](https://posthog.com/docs/api/post-only-endpoints#identify) .
+We pass the user traits passed along with the `identify` call to PostHog under the `$set` key according to [PostHog Identify API](https://posthog.com/docs/api/post-only-endpoints#identify) .
 
 ## Page
 
-The `page` call allows you to record information whenever a user sees a web page, along with the associated optional properties of that page. 
+The `page` call allows you to record information whenever a user sees a web page, along with the associated optional properties of that page.
 
 ```javascript
 rudderanalytics.page({
@@ -79,14 +79,14 @@ rudderanalytics.page({
 ```
 
 {% hint style="info" %}
-For page call, we send `$pageview` as an event to PostHog according to  [PostHog Page API](https://posthog.com/docs/api/post-only-endpoints#page) 
+For page call, we send `$pageview` as an event to PostHog according to [PostHog Page API](https://posthog.com/docs/api/post-only-endpoints#page)
 {% endhint %}
 
 In the above sample, we capture information related to the page being viewed such as the category of the page \(`Category`\), as well as the name of the page \(`Sample`\) along with the unique user ID.
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. 
+The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties.
 
 {% hint style="info" %}
 The `screen` call is similar to the `page` call, but it is exclusive to your mobile device.
@@ -100,7 +100,7 @@ A sample `screen` call using Rudder iOS SDK:
 ```
 
 {% hint style="info" %}
-For screen call we send `$screen` as an event to PostHog according to  [PostHog Screen API](https://posthog.com/docs/api/post-only-endpoints#screen) 
+For screen call we send `$screen` as an event to PostHog according to [PostHog Screen API](https://posthog.com/docs/api/post-only-endpoints#screen)
 {% endhint %}
 
 In the above snippet, we capture information related to the screen being viewed, such as the name and category.
@@ -147,7 +147,7 @@ PostHog support`track` call as type`capture.` It sends user behaviour/action as 
 
 ## Alias
 
-Calling `rudderanalytics.alias()` ****passes an `alias`call with `userId` and `previousId` to the PostHog queue.
+Calling `rudderanalytics.alias()` _\*\*_passes an `alias`call with `userId` and `previousId` to the PostHog queue.
 
 The following code snippet shows a sample `alias` call in RudderStack:
 

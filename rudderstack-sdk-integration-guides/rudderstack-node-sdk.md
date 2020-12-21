@@ -26,7 +26,7 @@ To use the SDK, run the following code snippet:
 const Analytics = require("@rudderstack/rudder-sdk-node");
 
 // we need the batch endpoint of the Rudder server you are running
-const client = new Analytics(WRITE_KEY, DATA_PLANE_URL/v1/batch); 
+const client = new Analytics(WRITE_KEY, DATA_PLANE_URL/v1/batch);
 ```
 
 ## Identify
@@ -97,7 +97,7 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed. 
+The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
 
 {% hint style="info" %}
 For a detailed explanation of the `page` call, please refer to our RudderStack API specification guide.

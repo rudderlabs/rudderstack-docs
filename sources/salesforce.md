@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest event data from Salesforce into Rudder
 
 # Salesforce
 
-[Salesforce](https://www.salesforce.com/in/?ir=1) is an industry leader in enterprise CRM. It offers a suite of enterprise applications revolving around marketing automation, customer engagement and support, application development as well as analytics. 
+[Salesforce](https://www.salesforce.com/in/?ir=1) is an industry leader in enterprise CRM. It offers a suite of enterprise applications revolving around marketing automation, customer engagement and support, application development as well as analytics.
 
 This guide is aimed at helping you set up Salesforce as a source in RudderStack in the easiest possible way. With this integration, you can send your Salesforce data to RudderStack as events, which can then be further routed to your preferred third-party destinations.
 
@@ -45,7 +45,7 @@ Salesforce’s API strictly enforces a limit on its usage. A high **Run Frequenc
 
 ![](../.gitbook/assets/5%20%285%29.png)
 
-That's it! Salesforce is now successfully configured as a source on your RudderStack dashboard. RudderStack will start ingesting data at the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown: 
+That's it! Salesforce is now successfully configured as a source on your RudderStack dashboard. RudderStack will start ingesting data at the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
 ![](../.gitbook/assets/6%20%284%29.png)
 
@@ -55,7 +55,7 @@ The following sections will help you better understand the overall replication p
 
 ### Historical Import
 
-When RudderStack first connects to your Salesforce data source, it will pull **all** your historical data. 
+When RudderStack first connects to your Salesforce data source, it will pull **all** your historical data.
 
 ### Sync Schedule
 
@@ -63,7 +63,7 @@ RudderStack synchronizes with your Salesforce data source based on the schedule 
 
 ### Replication Process
 
-The first time RudderStack syncs with your Salesforce data, it performs a full replication - as mentioned above. After that, your Salesforce data is replicated incrementally. This means that RudderStack will replicate only the new and updated rows to your destination. 
+The first time RudderStack syncs with your Salesforce data, it performs a full replication - as mentioned above. After that, your Salesforce data is replicated incrementally. This means that RudderStack will replicate only the new and updated rows to your destination.
 
 {% hint style="info" %}
 **Note that RudderStack will only read your data**.
@@ -71,14 +71,14 @@ The first time RudderStack syncs with your Salesforce data, it performs a full r
 
 ## Sync Time and Salesforce API Quota
 
-Salesforce imposes a strict API quota that regulates its API usage. This quota corresponds to the total number of API requests that can be made over a period of time. 
+Salesforce imposes a strict API quota that regulates its API usage. This quota corresponds to the total number of API requests that can be made over a period of time.
 
 {% hint style="info" %}
 **The Salesforce API usage includes RudderStack and any other apps you may use.**
 {% endhint %}
 
 {% hint style="warning" %}
-Because of Salesforce's API quotas and the data volume to be synchronized, the initial data sync could take some time. 
+Because of Salesforce's API quotas and the data volume to be synchronized, the initial data sync could take some time.
 {% endhint %}
 
 Here's how RudderStack handles these API quotas:

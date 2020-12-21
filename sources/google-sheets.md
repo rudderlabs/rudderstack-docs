@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest data from Google Sheets into RudderSta
 
 # Google Sheets
 
-[Google Sheets](https://www.google.com/sheets/about/) is a popular spreadsheet program that is bundled as a part of the free, cloud-based office suite offered by Google. With Google Sheets you can seamlessly create spreadsheets that update and save automatically and are easy to access from your Google Drive. 
+[Google Sheets](https://www.google.com/sheets/about/) is a popular spreadsheet program that is bundled as a part of the free, cloud-based office suite offered by Google. With Google Sheets you can seamlessly create spreadsheets that update and save automatically and are easy to access from your Google Drive.
 
 With the RudderStack-Google Sheets integration, you can send your spreadsheet data residing within Google Sheets to your preferred data warehouse or third-party destinations via RudderStack.
 
@@ -21,7 +21,7 @@ To set up Google Sheets as a source on the RudderStack dashboard, follow these s
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2851%29.png)
+![](../.gitbook/assets/image%20%2897%29%20%281%29.png)
 
 * Next, select **Google Sheets**, and click on **Next**.
 
@@ -44,7 +44,7 @@ If you've already configured Google Sheets as a source before, you can choose th
 * Next, choose the Google Spreadsheet and the worksheet to be used as the data source. You will also need to specify the **Header row**. This is the row that contains the sheet’s headers and column names. 
 
 {% hint style="info" %}
-By default, RudderStack uses the first row ****of the sheet as the header row.
+By default, RudderStack uses the first row _\*\*_of the sheet as the header row.
 {% endhint %}
 
 ![](../.gitbook/assets/4.png)
@@ -65,7 +65,7 @@ By default, RudderStack uses the row that follows the header as the first data r
 
 ![](../.gitbook/assets/5%20%284%29.png)
 
-That's it! Your Google Sheet is now successfully configured as a source. RudderStack will start ingesting data from the sheet as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown: 
+That's it! Your Google Sheet is now successfully configured as a source. RudderStack will start ingesting data from the sheet as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
 ![](../.gitbook/assets/6%20%285%29.png)
 

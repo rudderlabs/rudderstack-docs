@@ -49,7 +49,3 @@ That's it! You have successfully added Microsoft Azure Blob Storage as a destina
 
 If you come across any issues while configuring or using Azure Blob Storage with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
-
-
-
-

@@ -31,24 +31,22 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Google Pub/Sub Connection Settings](../.gitbook/assets/image%20%2878%29.png)
+![Google Pub/Sub Connection Settings](../.gitbook/assets/image%20%2879%29.png)
 
 * Enter the following details:
   * **Connection Settings**
     * **Project ID** and the **Credentials**: Follow these steps to obtain the project ID as well as the required credentials:
-
       * Create a service account from Google Cloud Console.
       * You can get the **Project ID** when you log in to your Google Cloud Console.
       * Use the **Select a role** dropdown to add the **Pub/Sub Publisher** role.
       * Create a key as JSON and download it.
       * Paste this downloaded JSON in the **Credentials** field
-
     * Enter the **Event Name** as well as the corresponding **Topic ID**. You can get the topic id from your topics page, as shown:
 
-![Google Pub/Sub Topic ID and Name](../.gitbook/assets/image%20%2846%29.png)
+![Google Pub/Sub Topic ID and Name](../.gitbook/assets/image%20%2848%29.png)
 
 {% hint style="info" %}
-You can send an event `type` like `page,` `identify,` `track`.   
+You can send an event `type` like `page,` `identify,` `track`.  
 For the `track` events you can specify the event name based on the `event` name in the payload.
 
 For example:
@@ -130,14 +128,14 @@ rudderanalytics.track("Track me", {
 * If an event is set with a topic id, the payload will be sent to Pub/Sub to that particular topic id.
 
 {% hint style="info" %}
-If you have set all event type, event and \* for mapping the priority will be given to `event` ,   
+If you have set all event type, event and \* for mapping the priority will be given to `event` ,  
 then `type` , followed by \*.
 {% endhint %}
 
 Eg.  
 Let the type of event be track,  
 Event name be product added.  
-And the mapping is done as: 
+And the mapping is done as:
 
 ![](../.gitbook/assets/screenshot-2020-09-09-at-6.56.02-pm.png)
 

@@ -43,15 +43,15 @@ There are three settings to configure.
 
 | Name | Description |
 | :--- | :--- |
-| `Event Name` | The event name or regex expression to match the rudder event name.  |
-| `Event Channel` | The slack channel to send the event to, specify `#channel_name` or `@user_name`  |
+| `Event Name` | The event name or regex expression to match the rudder event name. |
+| `Event Channel` | The slack channel to send the event to, specify `#channel_name` or `@user_name` |
 | `Regex Matching` | Enable it if the event name is a regex in the first parameter. |
 
 {% hint style="warning" %}
 Add the regex expression without the global\(`g`\) parameter. It is added by Rudder implicitly.
 {% endhint %}
 
-* Identify Template ****
+* Identify Template _\*\*_
 
 Provide the template that you want the identify event to be transformed to when sent to slack. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is, `Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`  
 where the traits key and value are the key-value pairs in the traits object of [Identify](https://docs.rudderstack.com/getting-started/rudderstack-api-spec#identifypayload) payload. The `name` field in the template is determined from either of the following:
@@ -65,7 +65,7 @@ where the traits key and value are the key-value pairs in the traits object of [
 7. `Anonymous user anonymousId`
 
 {% hint style="info" %}
-The **whitelisted traits** list is given priority when building the  identify template. Only the traits there will be part of the template, else all the traits will be sent to Slack.
+The **whitelisted traits** list is given priority when building the identify template. Only the traits there will be part of the template, else all the traits will be sent to Slack.
 {% endhint %}
 
 * Event Templates
@@ -75,12 +75,12 @@ There are three settings to configure.
 | Name | Description |
 | :--- | :--- |
 | `Event Name` | The event name or regex expression to match the rudder event name |
-| `Event Template` | The template for the above event name/names matching the regex. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is `{{name}} did {{event}}` . `name` is determined by the same criteria as above.  |
+| `Event Template` | The template for the above event name/names matching the regex. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is `{{name}} did {{event}}` . `name` is determined by the same criteria as above. |
 | `Regex Matching` | Enable it, if the event name is a regex |
 
 * Webhook URL
 
-  ****Add your slack's incoming [Webhook URL](https://my.slack.com/services/new/incoming-webhook/).
+  _\*\*_Add your slack's incoming [Webhook URL](https://my.slack.com/services/new/incoming-webhook/).
 
 ## Identify
 
@@ -101,7 +101,7 @@ you will see the message as below:
 
 ## Track
 
-For a template like  ****`{{name}} performed {{event}} with  {{properties.key1}} {{properties.key2}}` ****and the following track call, after being `identified` as above:
+For a template like **`{{name}} performed {{event}} with {{properties.key1}} {{properties.key2}}`** and the following track call, after being `identified` as above:
 
 ```text
 window.rudderanalytics.track("test_event", {

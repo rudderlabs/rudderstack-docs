@@ -6,9 +6,9 @@ description: >-
 
 # Monitoring and Metrics
 
-The backend uses [statsd](https://github.com/statsd/statsd) client to log stats. These stats can be collected by any statsd server such as Graphite, CloudWatch, etc. For example,  [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html) can be used to collect stats to Amazon CloudWatch.
+The backend uses [statsd](https://github.com/statsd/statsd) client to log stats. These stats can be collected by any statsd server such as Graphite, CloudWatch, etc. For example, [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html) can be used to collect stats to Amazon CloudWatch.
 
- Note that the collection of stats can be disabled using `enableStats` in [config.toml](https://docs.rudderstack.com/administrators-guide/config-parameters).
+Note that the collection of stats can be disabled using `enableStats` in [config.toml](https://docs.rudderstack.com/administrators-guide/config-parameters).
 
 {% hint style="info" %}
 Every metric has a dimension called **`instanceName`** that can be used to filter metrics. This can be helpful in case of multi-node deployments.
@@ -18,7 +18,7 @@ Every metric has a dimension called **`instanceName`** that can be used to filte
 
 ### Recovery Mode
 
-The backend usually runs in normal mode. If backend crashes and restarts multiple times in a short span, it is started in either **degraded** or **maintenance** mode. In degraded mode, events are collected and stored by the backend gateway, but are not sent to destinations. In maintenance mode, existing database is set aside for further inspection and a new database is used. So, it is important that recovery mode is monitored and appropriate action is taken when backend enters either degraded or maintenance mode. 
+The backend usually runs in normal mode. If backend crashes and restarts multiple times in a short span, it is started in either **degraded** or **maintenance** mode. In degraded mode, events are collected and stored by the backend gateway, but are not sent to destinations. In maintenance mode, existing database is set aside for further inspection and a new database is used. So, it is important that recovery mode is monitored and appropriate action is taken when backend enters either degraded or maintenance mode.
 
 {% hint style="warning" %}
 This is the most important metric to monitor as it directly indicates the health of the application.
@@ -40,8 +40,8 @@ This is the most important metric to monitor as it directly indicates the health
       </td>
       <td style="text-align:left">
         <p>has a value of :</p>
-        <p> <b>1 </b>when running in normal mode</p>
-        <p><b> 0</b> when running in degraded or maintenance mode</p>
+        <p> <b>1</b> when running in normal mode</p>
+        <p> <b>0</b> when running in degraded or maintenance mode</p>
       </td>
     </tr>
   </tbody>
@@ -62,7 +62,7 @@ This is the most important metric to monitor as it directly indicates the health
 
 ### Processor
 
-| Name  | Type | Description |
+| Name | Type | Description |
 | :--- | :--- | :--- |
 | `processor.active_users` | `Gauge` | Number of active users. This is based on the most recent events received. Useful for monitoring real time traffic. |
 | `processor.gateway_db_read` | `Counter` | Number of events read from database for processing. |
@@ -86,8 +86,6 @@ This is the most important metric to monitor as it directly indicates the health
 >
 > \*\* Number of events picked in each iteration can be configured using `noOfJobsPerChannel` from [config.toml](https://docs.rudderstack.com/administrators-guide/config-parameters).
 
-
-
 ### BatchRouter
 
 Destinations such as **S3**, **MinIO**, where raw events are dumped, are handled by Batch Router.
@@ -101,7 +99,7 @@ Destinations such as **S3**, **MinIO**, where raw events are dumped, are handled
 
 ### JobsDB
 
-These are the backend's implementation-specific metrics that can be used to analyze the performance based on traffic. JobsDB maintains active events and their statuses. For optimizing db operations, we periodically add new tables in the db and migrate rows from older tables.  
+These are the backend's implementation-specific metrics that can be used to analyze the performance based on traffic. JobsDB maintains active events and their statuses. For optimizing db operations, we periodically add new tables in the db and migrate rows from older tables.
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
@@ -110,7 +108,7 @@ These are the backend's implementation-specific metrics that can be used to anal
 | `jobsdb.brt_tables_count` | `Gauge` | Number of batch router tables in JobsDB |
 
 {% hint style="info" %}
-Ideally, the above tables count should not be ever growing. Ever growing tables, 
+Ideally, the above tables count should not be ever growing. Ever growing tables,
 
 * Indicate events not getting processed and delivered in time
 

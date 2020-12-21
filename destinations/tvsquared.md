@@ -10,7 +10,7 @@ RudderStack supports TVSquared as a destination to which you can send your event
 
 ## Getting Started
 
-To enable sending data to TVSquared, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from the RudderStack SDK will automatically start flowing to TVSquared. 
+To enable sending data to TVSquared, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from the RudderStack SDK will automatically start flowing to TVSquared.
 
 Before configuring your source and destination on the RudderStack, verify if the source platform is supported by TVSquared, by referring to the table below:
 
@@ -37,7 +37,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ![TVSquared Connection Settings in the RudderStack Dashboard](../.gitbook/assets/image%20%2834%29.png)
 
-* The above connection settings are explained in more detail below: 
+* The above connection settings are explained in more detail below:
   * **Brand Id \(Site ID\)**: This is a unique identifier that indicates the TVSquared client to which the traffic belongs. This parameter will always carry the form of `TV-XXXXXXX-1` with a variable-length numeric value replacing the `X`.
   * **Client Id \(Collector Id\)**: The Client ID allows us to distribute the traffic and manage the load on our servers effectively. It is numeric and can contain one or more values.
   * **Event Whitelist**: You can add the events you want to send to TVSquared in this field. If the list is empty, all the events will be sent. Otherwise, only the events mentioned in this whitelist will be sent.
@@ -51,7 +51,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
       shipping: 13.99,
       tax: 20.99,
       products: [
-    
+
       ]
     });
     ```
@@ -59,7 +59,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ## Page
 
-When a `page` call occurs, RudderStack makes a call to TVSquared to record a page view. 
+When a `page` call occurs, RudderStack makes a call to TVSquared to record a page view.
 
 For more information on the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 
@@ -74,7 +74,7 @@ rudderanalytics.page('new category',
 
 ## Track
 
-Calling the `track` method causes TVSquared's  `Action Tracker` method to be triggered.
+Calling the `track` method causes TVSquared's `Action Tracker` method to be triggered.
 
 For more information on how the `track` call works, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 
@@ -100,7 +100,7 @@ rudderanalytics.track('Order Completed',
   shipping: 13.99,
   tax: 20.99,
   products: [
-    
+
   ],
   promotion_id: 'PROMO_1234'
 });
@@ -109,10 +109,4 @@ rudderanalytics.track('Order Completed',
 ## Contact Us
 
 If you come across any issues while configuring TVSquared with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
-
-
-
-
-
 

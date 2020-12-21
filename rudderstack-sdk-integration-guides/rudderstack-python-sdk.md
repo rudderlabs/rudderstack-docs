@@ -100,7 +100,7 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed. 
+The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
 
 {% hint style="info" %}
 For a detailed explanation of the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.

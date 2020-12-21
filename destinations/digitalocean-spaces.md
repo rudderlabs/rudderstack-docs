@@ -19,8 +19,6 @@ Please follow these steps to set up Spaces before adding it as a destination in 
 * You will need to provide `access key ID` and `secret access key` to authorise RudderStack to write to your bucket.
 * Make a note of both the `access key ID` and `secret access key` as these will be required while configuring Spaces as a destination.
 
-
-
 ## **Configuring** Spaces **in RudderStack**
 
 In order to enable dumping data to Spaces bucket, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Spaces bucket. You will start seeing the files created in your Spaces bucket.
@@ -34,11 +32,9 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **Spaces** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Connection Settings**, ****fill all the fields with the relevant information \(please refer to the [Setting up Spaces](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MENL7MCfgJKc4EqjP-S/destinations/digitalocean-spaces) section above\) and click on **Next**.
+* Next, in the **Connection Settings**, **\*\*fill all the fields with the relevant information \(please refer to the** [**Setting up Spaces**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MENL7MCfgJKc4EqjP-S/destinations/digitalocean-spaces) **section above\) and click on** Next\*\*.
 
 ![Spaces connection settings](../.gitbook/assets/screenshot-2020-08-10-at-6.38.46-pm.png)
-
-
 
 * If you need any transformation, choose one from the list. Else, click on **Next**.
 
@@ -47,6 +43,4 @@ That's it! You have successfully added Spaces as a destination in RudderStack. O
 ## Contact Us
 
 If you come across any issues while configuring DigitalOcean Spaces with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
-
 

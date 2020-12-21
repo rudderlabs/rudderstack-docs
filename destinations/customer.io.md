@@ -64,7 +64,7 @@ current timestamp value.
 
 ## Page
 
-If you are using a native SDK, the Customer.io JavaScript snippet is loaded and it captures the `page` view automatically. However, if you want to pass additional properties, you can call `rudderanalytics.page()` ****that sends the `page`event with the associated properties that you pass along with the call.
+If you are using a native SDK, the Customer.io JavaScript snippet is loaded and it captures the `page` view automatically. However, if you want to pass additional properties, you can call `rudderanalytics.page()` _\*\*_that sends the `page`event with the associated properties that you pass along with the call.
 
 Here is a sample of a `page` call in RudderStack:
 
@@ -94,7 +94,7 @@ The above event will be transformed as `Viewed Main Screen` in your dashboard.
 
 ## Track
 
-The `track` call ****will pass the event properties to Customer.io. You may call `rudderanalytics.track()`with or without the event properties. For more information on how `track`call works, please refer to our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
+The `track` call _\*\*_will pass the event properties to Customer.io. You may call `rudderanalytics.track()`with or without the event properties. For more information on how `track`call works, please refer to our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
 
 The following code snippet shows how a sample `track` call is made in RudderStack:
 
@@ -108,7 +108,7 @@ rudderanalytics.track("Track me", {
 
 ## Device Token Registration
 
-We register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events. 
+We register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events.
 
 * `Application Installed`
 * `Application Opened`

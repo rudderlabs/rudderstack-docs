@@ -28,14 +28,14 @@ Once you have confirmed that the platform supports sending events to MoEngage, p
 * From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **MoEngage**.
 
 {% hint style="info" %}
- Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
 ![](../.gitbook/assets/screenshot-2020-11-11-at-11.11.28-am.png)
 
-In the Connection Settings on the RudderStack dashboard, please enter the MoEngage **API ID**, **API Key**, and **Region**, as shown above. 
+In the Connection Settings on the RudderStack dashboard, please enter the MoEngage **API ID**, **API Key**, and **Region**, as shown above.
 
 By turning on the native SDK switch under Android SDK Settings on the RudderStack dashboard you can enable Rudder Stack Device Mode for **Android** Sources. Similarly for **Web** Under Web SDK Settings and **IOS** under iOS SDK Settings.
 
@@ -155,9 +155,9 @@ To identify a user to MoEngage, you need to call the `identify` API.
 For information on the `identify` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
-MoEngage needs a unique identifier to identify a user. So, if you provide `userId` in your `identify` call, RudderStack passes it as that `customer_id` . Otherwise, it sends an `anonymousId` if a `userId` is not present. 
+MoEngage needs a unique identifier to identify a user. So, if you provide `userId` in your `identify` call, RudderStack passes it as that `customer_id` . Otherwise, it sends an `anonymousId` if a `userId` is not present.
 
-You can also create  a new user property or update existing user properties of the users using the `identify` API.
+You can also create a new user property or update existing user properties of the users using the `identify` API.
 
 A sample identify call is as shown:
 
@@ -196,9 +196,9 @@ You may create custom properties but you should not create properties with the f
 
 ### Identifying a Device to MoEngage
 
-You can also identify a device to MoEngage , using the `identify` API. With this API, you can create new properties  or update the existing properties of the device.
+You can also identify a device to MoEngage , using the `identify` API. With this API, you can create new properties or update the existing properties of the device.
 
-A sample call for identifying device is as shown: 
+A sample call for identifying device is as shown:
 
 ```javascript
 rudderanalytics.identify("name123", {
@@ -217,7 +217,7 @@ rudderanalytics.identify("name123", {
 
 ## Track
 
-To track your users' actions, you can use the RudderStack `track` API. You can call `track` with `eventname` and the associated properties. 
+To track your users' actions, you can use the RudderStack `track` API. You can call `track` with `eventname` and the associated properties.
 
 {% hint style="info" %}
 For information on the `track` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
@@ -257,7 +257,7 @@ rudderanalytics.track("Order Completed", {
 
 ## Alias
 
-The Alias api is used to merge two different profiles of a same user into a single profile. 
+The Alias api is used to merge two different profiles of a same user into a single profile.
 
 Alias call can be done only through mobile sdks.
 
@@ -347,7 +347,7 @@ val moEngage = MoEngage.Builder(this, "XXXXXXXX")
 MoEngage.initialise(moEngage)
 ```
 
-For showing Push notifications there are 2 important things 
+For showing Push notifications there are 2 important things
 
 1. Registration for Push, i.e. generating push token.
 2. Receiving the Push payload from Firebase Cloud Messaging\(FCM\) service and showing the notification on the device. The above can either be handled by the application or MoEngage SDK. There is some configuration required based on whether the above-mentioned things are handled by the application or SDK.
@@ -406,7 +406,7 @@ Add the below code in your manifest file within the application tag
 ```
 
 When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.  
-An application can get this callback by implementing `FirebaseEventListener` and registering for a callback in the Application class'  `onCreate()`using `MoEFireBaseHelper.getInstance().setEventListener()`
+An application can get this callback by implementing `FirebaseEventListener` and registering for a callback in the Application class' `onCreate()`using `MoEFireBaseHelper.getInstance().setEventListener()`
 
 ### In-App messaging:
 
@@ -424,9 +424,9 @@ In-app messaging is a type of mobile messaging where the notification is display
 importScripts("https://cdn.moengage.com/webpush/releases/serviceworker_cdn.min.latest.js");
 ```
 
-* HTTP : Select a sub-domain. 
+* HTTP : Select a sub-domain.
 
- For more details please follow the [guidelines from MoEngage](https://docs.moengage.com/docs/setting-up-chrome-push).
+  For more details please follow the [guidelines from MoEngage](https://docs.moengage.com/docs/setting-up-chrome-push).
 {% endtab %}
 {% endtabs %}
 
@@ -438,16 +438,16 @@ From the RudderStack [dashboard](htps://app.rudderstack.com), turn on the debug 
 
 ### Track
 
-MoEngage allows sending the t[ime at which the event occurred](https://docs.moengage.com/docs/data-import-apis#event-api) and calculates the user local time by taking two parameters. `current_time` and `user_timezone_offset` where the `current_time` is **UTC** Time at which the event happened, and `user_timezone_offset` is the difference in seconds between the **user local time and UTC.** 
+MoEngage allows sending the t[ime at which the event occurred](https://docs.moengage.com/docs/data-import-apis#event-api) and calculates the user local time by taking two parameters. `current_time` and `user_timezone_offset` where the `current_time` is **UTC** Time at which the event happened, and `user_timezone_offset` is the difference in seconds between the **user local time and UTC.**
 
 {% hint style="info" %}
-The RudderStack transformer maps the _**current\_time** to **timestamp or originalTimestamp**_   
+The RudderStack transformer maps the _**current\_time** to **timestamp or originalTimestamp**_  
 value from the event payload sent to Rudder server. This value should be passed in **UTC.**
 {% endhint %}
 
 {% hint style="info" %}
 The _**user\_timezone\_offset**_ is mapped to _**timezone**_ field present under the _**context**_ object of the event payload. This value should be passed as **tz** string.  
-Rudder mobile SDKs populate the timezone field by itself. But for other sources like server like SDKs, HTTP api,  the timezone needs to be set explicitly in every request.
+Rudder mobile SDKs populate the timezone field by itself. But for other sources like server like SDKs, HTTP api, the timezone needs to be set explicitly in every request.
 {% endhint %}
 
 Example payload:
@@ -482,7 +482,7 @@ Example payload:
 MoEngage accepts user creation time for its [user endpoint](https://docs.moengage.com/docs/data-import-apis#user-api). This is reflected as `first_Seen` in their dashboard.
 
 {% hint style="info" %}
-The RudderStack transformer maps the _**created\_time**_ from the _**createdAt**_  spec'd traits in our payload. The value should be in the **ISO 8601** format.  
+The RudderStack transformer maps the _**created\_time**_ from the _**createdAt**_ spec'd traits in our payload. The value should be in the **ISO 8601** format.  
 If the value is not in proper format or not present, MoEngage will put in the value by itself.
 {% endhint %}
 
@@ -528,9 +528,9 @@ An example payload is as shown:
 
 You can find your MoEngage API ID and API KEY in your [moengage.com](https://www.moengage.com/) account under **Settings** &gt; **APIs** &gt; [**DATA API Settings**](https://app.moengage.com/v3/#/settings/1/0).
 
-#### Where can I see the events that are going to MoEngage? 
+#### Where can I see the events that are going to MoEngage?
 
-If your app is in debug mode then you can see under Test otherwise you can see under Live.   
+If your app is in debug mode then you can see under Test otherwise you can see under Live.  
 Go to For developers --&gt; Recent Events.
 
 ## Contact Us

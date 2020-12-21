@@ -4,13 +4,13 @@ description: Step-by-step guide to send your event data from RudderStack to Lyti
 
 # Lytics
 
-[Lytics](https://www.lytics.com/) is a popular customer data platform, built for marketers. It allows you to efficiently leverage your first-party customer data to deliver tailored customer journeys. With Lytics, you can better engage with your customers through personalized messages and automated, AI-driven marketing campaigns. 
+[Lytics](https://www.lytics.com/) is a popular customer data platform, built for marketers. It allows you to efficiently leverage your first-party customer data to deliver tailored customer journeys. With Lytics, you can better engage with your customers through personalized messages and automated, AI-driven marketing campaigns.
 
 RudderStack supports Lytics as a destination to which you can send your event data in real-time.
 
 ## Getting Started
 
-To enable sending data to Lytics, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Lytics. 
+To enable sending data to Lytics, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Lytics.
 
 Before configuring your source and destination on the RudderStack, verify if the source platform is supported by Lytics, by referring to the table below:
 
@@ -50,7 +50,7 @@ To get the API Key, go to your Lytics dashboard, and navigate to **Account** - *
 
 ## Page
 
-With the `page` method, RudderStack makes a call to Lytics to record a page view. 
+With the `page` method, RudderStack makes a call to Lytics to record a page view.
 
 {% hint style="info" %}
 For more information on the `page` method, refer to our guide on [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec).
@@ -121,7 +121,7 @@ rudderanalytics.identify("abc123", {
 
 ## FAQs
 
-#### Where do I get the Lytics API Key? 
+### Where do I get the Lytics API Key?
 
 Go to your Lytics dashboard, and navigate to **Account** - **Manage Accounts** - **Account Settings** - **API Token**. You can create an API token here, which can be used to configure the destination on the RudderStack dashboard.
 

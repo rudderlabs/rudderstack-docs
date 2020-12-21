@@ -13,14 +13,14 @@ This section contains solutions to some of the commonly faced issues you are lik
 1. Check if the server is running in _normal_ mode in the file `/tmp/recovery_data.json` .
 2. If the server is in "degraded" or "maintenance" mode, RudderStack just stores the events and will not process them.
 
-##  My Data Plane does not start. What should I do?
+## My Data Plane does not start. What should I do?
 
 1. Check if you have provided the right backend token
 2. Check if the Control Plane is up \([https://api.rudderlabs.com/health](https://api.rudderlabs.com/health)\)
 
 ## I can't access the Control Plane. What should I do?
 
-Check your internal firewall rules and edit if needed. You need access to outbound HTTP. 
+Check your internal firewall rules and edit if needed. You need access to outbound HTTP.
 
 {% hint style="success" %}
 If the control plane is accessible from your network but is down, we are already working to fix it. Do leave us a note.
@@ -62,7 +62,7 @@ If you have sessions enabled, RudderStack caches the session information. Please
 
 ## Gateway tables are not getting dumped
 
-* If there are tables that start with __`pre_drop_`but if you don't see them being removed, verify the access credentials to your object storage like S3
+* If there are tables that start with _\_\`pre\_drop_\`but if you don't see them being removed, verify the access credentials to your object storage like S3
 * If you have multiple instances of Data Plane, each table dump will be inside a specific folder named after the `INSTANCE_NAME`
 
 ## How do I check the health of RudderStack daily?

@@ -20,7 +20,7 @@ Before configuring your source and destination on [RudderStack](https://app.rudd
 | **Cloud Mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to Confluent Cloud, perform the steps mentioned below:
@@ -32,7 +32,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **Confluent Cloud**. Give your destination a name, and then click on **Next**.
-* In the **Connection Settings**, ****fill the required fields with the relevant information and click **Next.**
+* In the **Connection Settings**, **\*\*fill the required fields with the relevant information and click** Next.\*\*
 
 ![Confluent Cloud connection settings](../.gitbook/assets/screenshot-2020-11-27-at-1.28.49-pm.png)
 
@@ -45,7 +45,7 @@ The required fields are as follows:
 
 ## Partition Key
 
-RudderStack uses `userId` as the partition key of a given message. 
+RudderStack uses `userId` as the partition key of a given message.
 
 {% hint style="info" %}
 If `userId` is not present in the payload, then `anonymousId` is used.

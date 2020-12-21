@@ -58,11 +58,11 @@ import (
 func main() {
     // Instantiates a client to use send messages to the Rudder API.
     client, _ := analytics.NewWithConfig(WRITE_KEY, DATA_PLANE_URL,
-		analytics.Config{
-			Interval:  30 * time.Second,
-			BatchSize: 100,
-			Verbose:   true,
-		})
+        analytics.Config{
+            Interval:  30 * time.Second,
+            BatchSize: 100,
+            Verbose:   true,
+        })
 
     // Enqueues a track event that will be sent asynchronously.
     client.Enqueue(analytics.Track{
@@ -140,7 +140,7 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed. 
+The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
 
 {% hint style="info" %}
 For a detailed explanation of the `page` call, please refer to our [RudderStack API specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.

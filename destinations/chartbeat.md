@@ -33,7 +33,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![Connection Settings for Chartbeat](../.gitbook/assets/image%20%2853%29.png)
 
- Each field is as explained below:
+Each field is as explained below:
 
 * **Domain** - Enter the domain name with which your Chartbeat account was configured. Don't append any extra url parameters to it. For example: `rudderstack-test.com`
 * **UID -** Enter your Chartbeat UID here. You can find the UID on the Chartbeat [Adding The Code](https://chartbeat.com/docs/adding_the_code/) page.
@@ -47,7 +47,7 @@ If this setting is enabled and the category is not set, RudderStack only sends t
 
 ## Page
 
-Making a call to the `page` API will send out an object to Chartbeat containing the information of your page and its related properties. 
+Making a call to the `page` API will send out an object to Chartbeat containing the information of your page and its related properties.
 
 A sample `page` call is shown below:
 

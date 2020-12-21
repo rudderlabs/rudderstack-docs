@@ -74,7 +74,7 @@ If the AWS credentials are **already configured** on your instance where the Rud
 The above approach will only work if you are using managed RudderStack
 {% endhint %}
 
-If you are hosting RudderStack on your instances and don't want to follow option 1, then you have to create your IAM user with programmatic access and attach the below policy. 
+If you are hosting RudderStack on your instances and don't want to follow option 1, then you have to create your IAM user with programmatic access and attach the below policy.
 
 ```bash
 {
@@ -132,7 +132,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **Amazon S3** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Connection Settings**, ****fill all the fields with the relevant information \(please refer to the Setting up Amazon S3 section above\) and click on **Next**.
+* Next, in the **Connection Settings**, **\*\*fill all the fields with the relevant information \(please refer to the Setting up Amazon S3 section above\) and click on** Next\*\*.
 
 ![S3 Destination Settings](../.gitbook/assets/screenshot-2020-06-01-at-2.29.13-pm.png)
 
@@ -146,11 +146,11 @@ That's it! You have successfully added Amazon S3 as a destination in RudderStack
 
 ## Encryption
 
-Amazon S3 provides encryption at rest. Object gets encrypted while saving it to S3 and gets decrypted before downloading from S3. S3 provides a way to set the default encryption behavior for a bucket. You can set the default encryption on a bucket from its properties. The objects are encrypted using server-side encryption with either Amazon S3-managed keys \(SSE-S3\) or AWS Key Management Service \(AWS KMS\) customer master keys \(CMKs\). 
+Amazon S3 provides encryption at rest. Object gets encrypted while saving it to S3 and gets decrypted before downloading from S3. S3 provides a way to set the default encryption behavior for a bucket. You can set the default encryption on a bucket from its properties. The objects are encrypted using server-side encryption with either Amazon S3-managed keys \(SSE-S3\) or AWS Key Management Service \(AWS KMS\) customer master keys \(CMKs\).
 
 ### Server-Side Encryption: Using AWS KMS \(SSE-KMS\) <a id="sse"></a>
 
-RudderStack can write to S3 buckets when default encryption is set to AWS-KMS. Objects are encrypted using customer managed keys \(CMK\) when uploaded to the bucket. CMK can be  created in your AWS Key Management Service \(KMS\). Follow the steps below to enable encryption using AWS KMS Managed Keys:
+RudderStack can write to S3 buckets when default encryption is set to AWS-KMS. Objects are encrypted using customer managed keys \(CMK\) when uploaded to the bucket. CMK can be created in your AWS Key Management Service \(KMS\). Follow the steps below to enable encryption using AWS KMS Managed Keys:
 
 * Create a new customer managed key in Key Management Services \(KMS\) and add your IAM user in the key usage permission section. This will allow the IAM user to use the key for cryptographic operations
 * Choose the above created CMK when you set AWS-KMS in the default Encryption property for the bucket

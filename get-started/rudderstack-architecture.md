@@ -6,17 +6,17 @@ description: >-
 
 # RudderStack Architecture
 
-RudderStack is an independent, stand-alone system with dependency only on the database \(**PostgreSQL**\). 
+RudderStack is an independent, stand-alone system with dependency only on the database \(**PostgreSQL**\).
 
 {% hint style="success" %}
-**Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack.** [**Sign up**](https://app.rudderlabs.com/signup?type=freetrial) **for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.** 
+**Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack.** [**Sign up**](https://app.rudderlabs.com/signup?type=freetrial) **for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 {% endhint %}
 
 RudderStack's architecture consists of 2 major components, namely the **Control Plane**, and **Data Plane**. A broad, high-level view of RudderStack’s architecture is as shown in the diagram below:
 
 ![RudderStack Architecture](../.gitbook/assets/rudderstack-architecture.png)
 
-Let us look at each of the above major components in a bit more detail: ****
+Let us look at each of the above major components in a bit more detail: _\*\*_
 
 * **RudderStack Control Plane**: The control plane mainly consists of the UI to configure the source and destination of the event data. The control plane is further divided into 2 major components:
   * **Web App**: This is the front-end application that allows you to set up your data routing with RudderStack.
@@ -62,7 +62,7 @@ The processor fetches the data from the Gateway and forwards it to the Transform
 
 ### **Router**
 
-The Router sends the processed and transformed event data received from the Processor to the desired destinations, such as Google Analytics, Amplitude, and more. There is also a provision of sending data dumps to Amazon S3, or warehouses such as Amazon Redshift. 
+The Router sends the processed and transformed event data received from the Processor to the desired destinations, such as Google Analytics, Amplitude, and more. There is also a provision of sending data dumps to Amazon S3, or warehouses such as Amazon Redshift.
 
 ### **Transformation Module**
 

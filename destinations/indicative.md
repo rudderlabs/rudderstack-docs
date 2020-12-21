@@ -32,7 +32,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 {% endhint %}
 
 * Select the destination as **Indicative** to your source. Give your destination a name and then click on **Next**.
-* On the **Connection Settings** page, ****fill all the fields with the relevant information and click **Next.**
+* On the **Connection Settings** page, **\*\*fill all the fields with the relevant information and click** Next.\*\*
 
 ![Indicative Connection Settings in RudderStack](../.gitbook/assets/indicative.png)
 
@@ -67,7 +67,7 @@ We pass the user traits passed along with the `identify` call to Indicative as `
 
 ## Page
 
-When the `page` method is called, the RudderStack server sends a track event to Indicative with the `userId`, and `eventName` parameters. 
+When the `page` method is called, the RudderStack server sends a track event to Indicative with the `userId`, and `eventName` parameters.
 
 A sample `page` call is as shown in the snippet below:
 

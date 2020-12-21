@@ -4,7 +4,7 @@ description: Step-by-step guide to send event data from RudderStack to Kissmetri
 
 # Kissmetrics
 
-[Kissmetrics](https://www.kissmetricshq.com/) is a product analytics platform to help you increase conversion, as well as drive customer engagement and retention. 
+[Kissmetrics](https://www.kissmetricshq.com/) is a product analytics platform to help you increase conversion, as well as drive customer engagement and retention.
 
 RudderStack supports sending your events from cloud mode S2S \(Server to Server\) and Web Native SDKs by calling our APIs.
 
@@ -39,7 +39,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ### Prefix Properties
 
-Enabling this setting will add the event name to all the properties of the event. This works for `page` ****and `track` ****properties**.**
+Enabling this setting will add the event name to all the properties of the event. This works for `page` **and `track`** properties**.**
 
 {% hint style="info" %}
 You will need to enable this setting while building reports in Kissmetrics.
@@ -49,7 +49,7 @@ You will need to enable this setting while building reports in Kissmetrics.
 
 ## Identify
 
-Calling `rudderanalytics.identify()` ****pushes an `identify`  call with the `userId` ****and ****`set` _****_ ****with the `user-traits` to the Kissmetrics queue object while using the the Native SDK. For more information on the `identify` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.identify()` **pushes an `identify` call with the `userId`** and **`set` \_**\_ _\*\*_with the `user-traits` to the Kissmetrics queue object while using the the Native SDK. For more information on the `identify` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
 For sending data through the API's cloud mode, we call the [http://trk.kissmetrics.com/s](https://trk.kissmetrics.com/s) end-point for registering users and their traits.
 
@@ -79,12 +79,12 @@ will pass the following to the `_kmq kissmetrics` object.
 ```
 
 {% hint style="info" %}
-Nested objects are flattened as `a.b.c` ****for input data ****`{a:{b:c}}` before sending the data to Kissmetrics, as it is unable to parse nested objects.
+Nested objects are flattened as `a.b.c` **for input data** `{a:{b:c}}` before sending the data to Kissmetrics, as it is unable to parse nested objects.
 {% endhint %}
 
 ## Page
 
-Calling `rudderanalytics.page()` ****will record the page  properties for event `Viewed <category> <name> page`. For more information on the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.page()` _\*\*_will record the page properties for event `Viewed <category> <name> page`. For more information on the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
 A sample page event is as shown:
 
@@ -108,7 +108,7 @@ The above snippet will pass the following to the `_kmq kissmetrics` object:
         title: "title",
         search: "search",
         referrer: "referrer"
-}] 
+}]
 ```
 
 {% hint style="info" %}
@@ -117,11 +117,11 @@ Automatically-tracked Kissmetrics events such as **Visited a site**, etc. will f
 
 ## Track
 
-Calling `rudderanalytics.track()` pushes a record with the event name and the associated properties _****_when using the native SDK integration. For more information on the `track` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.track()` pushes a record with the event name and the associated properties \__\*\*_\_when using the native SDK integration. For more information on the `track` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
 For sending data through the API's cloud mode, we call the [http://trk.kissmetrics.com/e](http://trk.kissmetrics.com/e) end-point for registering the event and its associated properties.
 
- A sample `track` call is as shown:
+A sample `track` call is as shown:
 
 ```text
 rudderanalytics.track("Track me", {
@@ -141,7 +141,7 @@ will pass the following to the `_kmq kissmetrics` object.
  }]
 ```
 
- An event sent to RudderStack with a property called `revenue` , is passed on to Kissmetrics as `Billing amount` as well as `revenue`.
+An event sent to RudderStack with a property called `revenue` , is passed on to Kissmetrics as `Billing amount` as well as `revenue`.
 
 {% hint style="info" %}
 In order to send eCommerce events that have a product array as one of their `track` properties, RudderStack sends each product property to the `/s` endpoint from the cloud mode, or pushes it as `['set', {id:, sku: ...}]` from the native SDK.
@@ -151,8 +151,8 @@ Please check the [Kissmetrics eCommerce documentation](http://support.kissmetric
 
 ## Alias
 
-Calling `rudderanalytics.alias()` ****passes an `alias`call with `userId` and `previousId` to the Kissmetrics queue, when used as a Native SDK integration.  
-  
+Calling `rudderanalytics.alias()` _\*\*_passes an `alias`call with `userId` and `previousId` to the Kissmetrics queue, when used as a Native SDK integration.
+
 While passing data using the cloud mode, we call the [http://trk.kissmetrics.com/a](http://trk.kissmetrics.com/a) endpoint to alias user identities.
 
 The following code snippet shows a sample `alias` call in RudderStack:

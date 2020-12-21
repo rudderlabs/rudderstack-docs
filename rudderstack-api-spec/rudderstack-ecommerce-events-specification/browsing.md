@@ -79,7 +79,7 @@ rudderanalytics.track('Product List Viewed', {
 
 ## Product List Filtered
 
-This event is triggered whenever a visitor filters a  list or category of products on your website or app. The following properties are supported by this event:
+This event is triggered whenever a visitor filters a list or category of products on your website or app. The following properties are supported by this event:
 
 | **Property Name** | **Type** | **Description of the Property** |
 | :--- | :--- | :--- |

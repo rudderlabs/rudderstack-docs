@@ -20,7 +20,7 @@ In order to enable dumping data to Amazon EventBridge, you will first need to ad
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to EventBridge, perform the steps below:
@@ -32,13 +32,13 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 {% endhint %}
 
 * Select the destination as **Amazon EventBridge** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Settings** section, ****fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
+* Next, in the **Settings** section, **\*\*fill all the fields with the relevant information and click** Next.\*\* A brief description of each of these fields is mentioned below:
 
 ![EventBridge Destination Settings on the RudderStack Dashboard](../.gitbook/assets/image%20%2891%29.png)
 
 * **AWS Credentials**
   * **AWS Region**: Enter the AWS region in which you have created the EventBridge bus.This is a **required** field.
-  * The **AWS Access Key ID** and **AWS Secret Access Key** are required ****to authorize RudderStack in order to write to the configured event bus.
+  * The **AWS Access Key ID** and **AWS Secret Access Key** are required _\*\*_to authorize RudderStack in order to write to the configured event bus.
 
 {% hint style="info" %}
 To authorize RudderStack, you will need to create an IAM policy that provides the required permission to write to your event bus. Please refer to the [Using Identity-Based Policies \(IAM Policies\) for EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/iam-identity-based-access-control-eventbridge.html) guide to know the applicable policies.
@@ -89,7 +89,7 @@ We map a RudderStack event to an EventBridge event in the following manner:
 
 ### Why are the events not visible on my EventBridge target?
 
-Verify that you are sending the events in the **Live Events** tab of your source. 
+Verify that you are sending the events in the **Live Events** tab of your source.
 
 ![Live Events in Source Details Page](../.gitbook/assets/source.png)
 

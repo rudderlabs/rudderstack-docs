@@ -58,7 +58,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ### **How are reserved words handled by RudderStack?**
 
-There are some limitations when it comes to using [reserved words](https://www.postgresql.org/docs/current/sql-keywords-appendix.html) in a schema, table, or column names. If such words are used as event names, traits or properties, they will be prefixed with a `_` when  RudderStack creates tables or columns for them in your schema.
+There are some limitations when it comes to using [reserved words](https://www.postgresql.org/docs/current/sql-keywords-appendix.html) in a schema, table, or column names. If such words are used as event names, traits or properties, they will be prefixed with a `_` when RudderStack creates tables or columns for them in your schema.
 
 Also, it is important to note that integers are not allowed at the start of the schema or table name. Hence, RudderStack prefixes such schema, column or table names with a `_`.
 

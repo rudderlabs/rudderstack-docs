@@ -4,13 +4,13 @@ description: Step-by-step guide to send event data from RudderStack to Google Ad
 
 # Google Ads
 
-[Google Ads](https://ads.google.com/) is Google's premier online advertising platform. It can be used for efficient marketing strategies such as product listing, service offerings, as well as activities such as conversion tracking. 
+[Google Ads](https://ads.google.com/) is Google's premier online advertising platform. It can be used for efficient marketing strategies such as product listing, service offerings, as well as activities such as conversion tracking.
 
 RudderStack's Google Ads SDK uses a global site tag \(`gtag.js`\) that is a JavaScript tagging framework, and an API that allows you to send event data to Google Ads.
 
 ## Getting Started
 
-To enable sending data to Google Ads, you will first need to add it as a destination to the source from which you are sending the event data. Once the destination is enabled, events from our JavaScript SDK will start to flow to Google Ads. 
+To enable sending data to Google Ads, you will first need to add it as a destination to the source from which you are sending the event data. Once the destination is enabled, events from our JavaScript SDK will start to flow to Google Ads.
 
 {% hint style="info" %}
 You can use our SDK to send **Page Load Conversions** as well as **Click Conversions**. However, you can send this data only through our JavaScript SDK.
@@ -46,7 +46,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 You can make a `page` call with the conversion name to our RudderStack SDK for a **Page Load Conversion**. The SDK will send this data to Google Ads.
 
-A sample `page` call is as shown: 
+A sample `page` call is as shown:
 
 ```text
 rudderanalytics.page('page view');
@@ -56,7 +56,7 @@ rudderanalytics.page('page view');
 
 You can make a track call with the conversion name to our RudderStack for a Click Event Conversion, which will in turn send the data to Google Ads.
 
-RudderStack maps the `properties.value`, `properties.currency` or `properties.order_id` to the supported `value`, `currency`, and `transaction_id` fields of Google Ads, respectively. RudderStack also maps `properties.revenue` to `value`. 
+RudderStack maps the `properties.value`, `properties.currency` or `properties.order_id` to the supported `value`, `currency`, and `transaction_id` fields of Google Ads, respectively. RudderStack also maps `properties.revenue` to `value`.
 
 A sample track call is as shown:
 

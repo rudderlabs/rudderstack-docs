@@ -18,7 +18,7 @@ Before configuring your source and destination on the RudderStack app, please ch
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to Amplitude, perform the steps below:
@@ -56,13 +56,13 @@ To successfully configure Amplitude as a destination, you will need to configure
 * **Traits Settings:** This setting is for configuring the traits to Amplitude in `identify` call.
   * **Traits to increment:** If this setting is enabled, the value of the corresponding trait will be incremented at Amplitude, with the value provided against the trait in an `identify` call.
   * **Traits to Set Once:** If this setting is enabled, the value of the corresponding trait will be set once at Amplitude with the value provided against the trait in an `identify` call.
-  * **Traits to Append:**  If this setting is enabled, the value of the corresponding trait will be appended to the corresponding trait array at Amplitude. ****If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are appended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value appended. ****
+  * **Traits to Append:**  If this setting is enabled, the value of the corresponding trait will be appended to the corresponding trait array at Amplitude. **If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are appended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value appended.** 
 
 {% hint style="info" %}
 This feature is currently available as part of RudderStack Mobile SDK's only.
 {% endhint %}
 
-* **Traits to Prepend:** If this setting is enabled, the value of the corresponding trait will be prepended to the corresponding trait array at Amplitude. ****If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are prepended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value prepended. ****
+* **Traits to Prepend:** If this setting is enabled, the value of the corresponding trait will be prepended to the corresponding trait array at Amplitude. **If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are prepended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value prepended.** 
 
 {% hint style="info" %}
 This feature is currently available as part of RudderStack Mobile SDK's only.
@@ -130,7 +130,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [RSClient getInstance:WRITE_KEY config:[builder build]];
 ```
 
-*  Add the below logic just after initializing `RudderClient` in `AppDelegate.m` if you would like to send `IDFA` of iOS device as `device id` to Amplitude  
+* Add the below logic just after initializing `RudderClient` in `AppDelegate.m` if you would like to send `IDFA` of iOS device as `device id` to Amplitude  
 
 {% hint style="warning" %}
 Make sure that you enable `use IDFA as device id` under `iOS SDK settings` on dashboard.
@@ -156,7 +156,7 @@ Make sure that you enable `use IDFA as device id` under `iOS SDK settings` on da
 {% endtab %}
 
 {% tab title="Android" %}
-To add Amplitude to your Android Project  please follow these steps :
+To add Amplitude to your Android Project please follow these steps :
 
 * Open your `app/build.gradle` \(Module: app\) file, and add the following under the `dependencies` section :
 
@@ -254,15 +254,15 @@ rudderanalytics.track("Track me")
 
 ### Revenue Events
 
-Amplitude allows for tracking of revenue events. 
+Amplitude allows for tracking of revenue events.
 
 {% hint style="warning" %}
-To track a revenue event, you must include a `revenue` and `revenue_type` key in the event. Both the keys are required to have the event counted as a revenue event to send data through the RudderStack cloud mode. 
+To track a revenue event, you must include a `revenue` and `revenue_type` key in the event. Both the keys are required to have the event counted as a revenue event to send data through the RudderStack cloud mode.
 {% endhint %}
 
 Additionally, for cloud mode, if you send `price` and `quantity` with the revenue key, the revenue will be calculated in Amplitude as `price * quantity`
 
-You can also set a `product_id`, but only if `revenue` has been set as well. 
+You can also set a `product_id`, but only if `revenue` has been set as well.
 
 A sample revenue track call looks like the following:
 
@@ -310,7 +310,7 @@ rudderanalytics.track("Order Completed",{
 The above call will generate one `Order Completed` event, 2 individual `Product purchased` events and 2 revenue events \(one with `$price` as `15` and `$quantity` as `2` and the other one with `$price` as `20` and `$quantity` as `1` \) at Amplitude, provided that in the destination settings dashboard: `Track revenue per product settings` is enabled.
 
 {% hint style="info" %}
-**\(Mobile Only\)**  If **** a property with the name`optOutOfSession`and value`true`then this track call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
+**\(Mobile Only\)** If _\*\*_ a property with the name`optOutOfSession`and value`true`then this track call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
 {% endhint %}
 
 ## Identify
@@ -338,7 +338,7 @@ A sample dashboard after making the above `identify`, `page`, and `track` calls 
 ![User properties dashboard](../.gitbook/assets/screenshot-2020-02-17-at-5.49.05-pm.png)
 
 {% hint style="info" %}
-**\(Mobile Only\)**  If **** a trait with the name `optOutOfSession` and value `true` then this `identify` call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
+**\(Mobile Only\)** If _\*\*_ a trait with the name `optOutOfSession` and value `true` then this `identify` call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
 {% endhint %}
 
 ## Group
@@ -359,7 +359,7 @@ Even if you are not having an enterprise account or groups add-on, RudderStack w
 
 Let' say you had defined `Group name trait` as `company_id` and `Group value trait` as `company_name` and made the above call then the user would be associated with a Group name : `RS` and a Group Value : `RudderStack` and you can also see that a user property with type `RS` and value `RudderStack` on user's profile.
 
-## Reset 
+## Reset
 
 {% hint style="info" %}
 This feature is currently available as a part of RudderStack Mobile SDK's only

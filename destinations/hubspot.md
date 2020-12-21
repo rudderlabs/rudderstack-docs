@@ -35,7 +35,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![Connection Settings for HubSpot in RudderStack](../.gitbook/assets/hubspot.png)
 
-* Provide your HubSpot **API key** and **Hub ID** in the required fields. Please find [**API Key**](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key) and  [**Hub ID**](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id) ****in your Hubspot Account.
+* Provide your HubSpot **API key** and **Hub ID** in the required fields. Please find [**API Key**](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key) and  [**Hub ID**](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id) _\*\*_in your Hubspot Account.
 
 {% hint style="warning" %}
 API Key is mandatory if you need to send data to Hubspot using `cloud-mode`
@@ -57,7 +57,7 @@ The `page` call is not supported in cloud mode for HubSpot.
 {% endtab %}
 
 {% tab title="Device Mode" %}
-To send the data to HubSpot, an initial `page` call is required.  For more information on the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+To send the data to HubSpot, an initial `page` call is required. For more information on the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
 The following snippet is an example of a `page` call:
 
@@ -71,15 +71,15 @@ rudderanalytics.page();
 
 The `identify` call is used to create or update a contact in HubSpot.
 
-You need to provide an email id of that user under the `traits` of the `identify` call. 
+You need to provide an email id of that user under the `traits` of the `identify` call.
 
 {% tabs %}
 {% tab title="Cloud Mode" %}
- In cloud mode, the `identify` call will create or update a contact in HubSpot. You are not required to call `page` or `track` after to create the contact. 
+In cloud mode, the `identify` call will create or update a contact in HubSpot. You are not required to call `page` or `track` after to create the contact.
 {% endtab %}
 
 {% tab title="Device Mode" %}
-In Device mode, you must call either `page` or `track` after the identify call to create a contact. Previous `page` and `track` calls will also become associated with that contact once identified. 
+In Device mode, you must call either `page` or `track` after the identify call to create a contact. Previous `page` and `track` calls will also become associated with that contact once identified.
 {% endtab %}
 {% endtabs %}
 
@@ -116,7 +116,7 @@ HubSpot supports the following traits as special fields:
 
 ### Custom properties
 
-Hubspot also supports custom properties. You can update values of the `contact` property that you have created in HubSpot. 
+Hubspot also supports custom properties. You can update values of the `contact` property that you have created in HubSpot.
 
 {% hint style="warning" %}
 * Note that when you provide any custom property, it automatically converts to lower case and any space will be replaced with an underscore. HubSpot does not accept properties in upper case and spaces.
@@ -129,7 +129,7 @@ For sending properties of type `date` send the date as the epoch time, or as a `
 
 ## Track
 
-A `track` call is used to record any action the user performs. For more information on the `track` call,  refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
+A `track` call is used to record any action the user performs. For more information on the `track` call, refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 
 To associate a `track` call with a user, you need to specify the user's `email` under `traits` under `context` . Additionally, we associate the `track` events called after an `identify` request with the same contact.
 
@@ -157,7 +157,7 @@ rudderanalytics.track(
 
 ### Revenue events
 
-For revenue events, a `value` or `revenue` key should be included in the properties of the event to be recorded in Hubspot. 
+For revenue events, a `value` or `revenue` key should be included in the properties of the event to be recorded in Hubspot.
 
 ## Screen
 

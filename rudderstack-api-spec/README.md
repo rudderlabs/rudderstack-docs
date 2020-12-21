@@ -21,12 +21,12 @@ These APIs send a set of common information about the user, which helps you get 
 ## How the RudderStack API Calls Work
 
 1. The RudderStack API calls send the event data to the RudderStack Server.
-2.  The server then transforms this data into formats specific to various destination platforms.
+2. The server then transforms this data into formats specific to various destination platforms.
 3. The transformed data is then forwarded to the desired destinations such as Google Analytics, Amplitude, MixPanel, and more.
 
 ## Event Data Format
 
-The event data sent to the RudderStack Server has a `JSON` structure, which has common fields and an API-specific payload. Both of these formats are described in the subsequent sections. 
+The event data sent to the RudderStack Server has a `JSON` structure, which has common fields and an API-specific payload. Both of these formats are described in the subsequent sections.
 
 ### Common Fields
 
@@ -80,7 +80,6 @@ The common fields define the core structure of the event data. These fields also
   "type": "track",
   "sentAt": "2020-01-09T10:02:03.257Z"
 }
-
 ```
 
 A detailed description of the common fields is documented in the table below:

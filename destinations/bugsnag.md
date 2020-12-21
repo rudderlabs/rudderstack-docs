@@ -118,15 +118,15 @@ Along with user-specific information, you can also use Bugsnag to track handled 
 
 ## FAQ
 
-#### Where do I find the API Key? <a id="api-key"></a>
+### Where do I find the API Key? <a id="api-key"></a>
 
 You can find your API Key on your Bugsnag [Project Settings page](https://bugsnag.com/dashboard).
 
-#### What is meant by Release Stage? <a id="release-stage"></a>
+### What is meant by Release Stage? <a id="release-stage"></a>
 
 You can distinguish errors that happen in different stages of your app’s release process e.g `production`, `development`, etc.
 
-#### Do I need to use SSL? <a id="use-ssl"></a>
+### Do I need to use SSL? <a id="use-ssl"></a>
 
 You should definitely use SSL When Sending Data to Bugsnag specifically from JS source.
 

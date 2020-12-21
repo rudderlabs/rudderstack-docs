@@ -8,7 +8,7 @@ description: >-
 
 ## What is the RudderStack React Native SDK?
 
-The RudderStack React Native SDK allows you to track event data from your app. It can be easily integrated into your React Native application. After integrating this SDK, you will also send the event data to your preferred analytics destination/s, such as Google Analytics, Amplitude, and more. 
+The RudderStack React Native SDK allows you to track event data from your app. It can be easily integrated into your React Native application. After integrating this SDK, you will also send the event data to your preferred analytics destination/s, such as Google Analytics, Amplitude, and more.
 
 You can check the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-react-native) if you want to get more hands-on or keen to know more about the SDK architecture.
 
@@ -23,7 +23,7 @@ To set up the RudderStack React Native SDK, there are a few prerequisites as men
 
 * You will also need your `Data-Plane URL`. The following screenshot shows the data plane URL for the managed hosting mode:
 
-![Data Plane URL](../.gitbook/assets/android-2%20%281%29%20%281%29.png)
+![Data Plane URL](../.gitbook/assets/android-2%20%281%29%20%281%29%20%282%29.png)
 
 * It would help if you also had the [React Native Development Environment](https://reactnative.dev/docs/environment-setup) setup on your system.
 
@@ -116,7 +116,7 @@ The `track` method has the following signature:
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `name` | `string` | Yes | Name of the event you want to track |
-| `property` | `JSON Object` | No | Extra data properties you want to send along with the event  |
+| `property` | `JSON Object` | No | Extra data properties you want to send along with the event |
 | `options` | `JSON Object` | No | Extra event options |
 
 {% hint style="info" %}
@@ -249,7 +249,7 @@ You can configure your client based on the following parameters by passing them 
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Minimum waiting time to flush the events to the server.</td>
-      <td style="text-align:left"><code>10 seconds</code> 
+      <td style="text-align:left"><code>10 seconds</code>
       </td>
     </tr>
     <tr>
@@ -297,12 +297,12 @@ You can configure your client based on the following parameters by passing them 
 
 ## Debugging
 
-If you run into any issues regarding the RudderStack React Native SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is. 
+If you run into any issues regarding the RudderStack React Native SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
 
 First, make sure you modify your import statement to include `RUDDER_LOG_LEVEL` with:
 
 ```typescript
-import rudderClient, { RUDDER_LOG_LEVEL } from '@rudderstack/rudder-sdk-react-native'  
+import rudderClient, { RUDDER_LOG_LEVEL } from '@rudderstack/rudder-sdk-react-native'
 ```
 
 Then to turn on the logging, change your `RudderClient` initialization to the following:

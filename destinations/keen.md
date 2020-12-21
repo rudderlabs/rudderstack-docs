@@ -59,7 +59,7 @@ Note: We only pass the IP, page and referrer add-ons to Keen if the event contai
 
 ## Identify
 
-Calling `rudderanalytics.identify()` **** has no effect on Keen whatsoever, when called from the server-side SDKs. However, when called from client-side SDKs, RudderStack calls the Keen `extendEvents`with a user object `userId`and traits passed in from the `identify` call.
+Calling `rudderanalytics.identify()` _\*\*_ has no effect on Keen whatsoever, when called from the server-side SDKs. However, when called from client-side SDKs, RudderStack calls the Keen `extendEvents`with a user object `userId`and traits passed in from the `identify` call.
 
 Calling `extendEvents` adds the user object to all subsequent`recordEvent` calls to Keen. Hence, to view the `identify` data , you will have to make a subsequent `page` and `track` call from RudderStack.
 
@@ -85,12 +85,12 @@ user: {
     country: "Belgium",
     email: "tintin@herge.com"
   }
-} 
+}
 ```
 
 ## Page
 
-Calling `rudderanalytics.page()` ****will pass the `page` properties to the Keen collection `Viewed <category> <name> page`. To know more about the `page`call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.page()` _\*\*_will pass the `page` properties to the Keen collection `Viewed <category> <name> page`. To know more about the `page`call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
 A sample `page` call is as shown in the snippet below:
 
@@ -102,7 +102,7 @@ rudderanalytics.page("home", {
         title: "title",
         search: "search",
         referrer: "referrer"
-}); 
+});
 ```
 
 This will send the following properties to the Keen `Viewed Home Page` collection:
@@ -117,7 +117,7 @@ This will send the following properties to the Keen `Viewed Home Page` collectio
 
 ## Track
 
-Calling `rudderanalytics.track()` ****will pass the event properties to Keen on the collection `event-name`. To know more about the `track`call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.track()` _\*\*_will pass the event properties to Keen on the collection `event-name`. To know more about the `track`call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
 An example `track` call is as shown:
 

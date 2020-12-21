@@ -6,7 +6,7 @@ description: >-
 
 # Warehouse FAQs
 
-### When does Rudderstack load data into the data warehouse/s? 
+### When does Rudderstack load data into the data warehouse/s?
 
 Rudderstack gives you the flexibility to choose when to sync the latest data into the warehouse. The default option is 30 minutes, but you can choose to extend this value to go up to 24 hours. You can also configure the time at which the data is to be loaded.
 
@@ -27,7 +27,7 @@ The warehouse upload status can be viewed in Live Events section of the destinat
 
 ### How can I change the schema and the namespace name of my data warehouse?
 
-The default namespace will be the source name with some modifications to the name. However, RudderStack also provides an option in the dashboard to change the namespace of the dataset. 
+The default namespace will be the source name with some modifications to the name. However, RudderStack also provides an option in the dashboard to change the namespace of the dataset.
 
 Please refer to the warehouse-specific destination settings for configuring the namespace in the RudderStack UI.
 
@@ -79,7 +79,7 @@ If you are using the hosted RudderStack service, the following IPs need to be wh
       <td style="text-align:left">8</td>
     </tr>
     <tr>
-      <td style="text-align:left">[k8s] <code>warehouse_slave.replicaCount</code> 
+      <td style="text-align:left">[k8s] <code>warehouse_slave.replicaCount</code>
       </td>
       <td style="text-align:left">
         <p>Number of warehouse slaves (responsible for load file generation) when
@@ -103,5 +103,5 @@ If you are using the hosted RudderStack service, the following IPs need to be wh
 
 ## Contact Us
 
-In case you have any other queries related to using the RudderStack data warehouse integrations, please feel free to [contact us](mailto:%20contact@rudderstack.com) . You can also join our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel and start a conversation with us any time. We will be happy to help you. 
+In case you have any other queries related to using the RudderStack data warehouse integrations, please feel free to [contact us](mailto:%20contact@rudderstack.com) . You can also join our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel and start a conversation with us any time. We will be happy to help you.
 

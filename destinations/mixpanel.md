@@ -36,7 +36,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 We need your Mixpanel’s `Token`, please provide it into the Connection Settings in Rudder. Currently, we do not support sending events through the native SDK.
 
 {% hint style="info" %}
-Choose **EU** in Data Residency settings to send your event data to the Mixpanel EU server. 
+Choose **EU** in Data Residency settings to send your event data to the Mixpanel EU server.
 {% endhint %}
 
 ## Page
@@ -49,7 +49,7 @@ rudderanalytics.page();
 
 ## Identify
 
-To identify a user to Mixpanel, you need to call the `identify` API. Mixpanel needs a unique identifier to identify a user. So, if you provide `userId` in your `identify` call, RudderStack will pass it as that `distinct_id` . Otherwise, it will send an `anonymousId` if `userId` is not present, and set the traits that you have provided as the properties corresponding to the distinct ID. 
+To identify a user to Mixpanel, you need to call the `identify` API. Mixpanel needs a unique identifier to identify a user. So, if you provide `userId` in your `identify` call, RudderStack will pass it as that `distinct_id` . Otherwise, it will send an `anonymousId` if `userId` is not present, and set the traits that you have provided as the properties corresponding to the distinct ID.
 
 After making this request, RudderStack makes a `$merge` of `anonymousId` and `userId` as a `distinct_id` and the new `userId` is mapped to `alias` so that both of these users are mapped to a single entity in the Mixpanel dashboard.
 
@@ -95,9 +95,9 @@ rudderanalytics.track("track event", {
 
 ### Tracking Revenue
 
-As Mixpanel also tracks revenue, if you send **revenue** as a key in `properties` in `track` call, then RudderStack will track it as a revenue event. 
+As Mixpanel also tracks revenue, if you send **revenue** as a key in `properties` in `track` call, then RudderStack will track it as a revenue event.
 
-Revenue tracking is done with `distinct_id` \(that is `userId` that you provide in your `identify` call, if `userId` is not present then it will be associated with `anonymousId`.\) 
+Revenue tracking is done with `distinct_id` \(that is `userId` that you provide in your `identify` call, if `userId` is not present then it will be associated with `anonymousId`.\)
 
 A sample revenue `track` call is as shown:
 

@@ -6,7 +6,7 @@ description: >-
 
 # User Suppression in RudderStack
 
-RudderStack's User Suppression feature allows you to suppress user data identified by a `userId`.  It will block all the user data on all the sources as well as destinations in the RudderStack workspace.
+RudderStack's User Suppression feature allows you to suppress user data identified by a `userId`. It will block all the user data on all the sources as well as destinations in the RudderStack workspace.
 
 This guide covers the user suppression feature in detail.
 
@@ -18,7 +18,7 @@ For all the requests mentioned in this guide, we use the basic HTTP authorizatio
 
 ## What is User Suppression?
 
-RudderStack is completely GDPR and CCPA compliant. We respect the users' privacy and are committed to keeping their data secure at all times. 
+RudderStack is completely GDPR and CCPA compliant. We respect the users' privacy and are committed to keeping their data secure at all times.
 
 When a user is suppressed, RudderStack will drop the events from that user. Those events will not be shown in any of the debuggers, will not be forwarded to any destinations and will not be backed up.
 
@@ -39,11 +39,11 @@ All the popular HTTP clients \(e.g. CURL, Postman, HTTPie\) have default support
 
 ## Create a Suppress Regulation
 
-To suppress a given user's data, you will need to create a suppress regulation. 
+To suppress a given user's data, you will need to create a suppress regulation.
 
 A sample payload looks like the following snippet. You can provide a list of user IDs in the `values` array, as shown:
 
-#### Payload
+### Payload
 
 {% code title="suppress.json" %}
 ```javascript
@@ -60,7 +60,7 @@ A sample payload looks like the following snippet. You can provide a list of use
 ```
 {% endcode %}
 
-#### Usage
+### Usage
 
 {% tabs %}
 {% tab title="curl" %}
@@ -68,7 +68,7 @@ A sample payload looks like the following snippet. You can provide a list of use
 curl -u <your_workspace_token>: \
 -X POST https://api.rudderlabs.com/workspaces/regulations \
 -d @suppress.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -85,7 +85,7 @@ https://api.rudderlabs.com/workspaces/regulations < suppress.json
 To get a regulation, you can send a `GET` request as shown:
 
 {% hint style="info" %}
-Pass `regulation_id` in the URL. The  `regulation_id` is received in the response when a regulation is created.
+Pass `regulation_id` in the URL. The `regulation_id` is received in the response when a regulation is created.
 {% endhint %}
 
 {% tabs %}
@@ -97,7 +97,7 @@ https://api.rudderlabs.com/workspaces/regulations/<regulation_id>
 {% endtab %}
 
 {% tab title="httpie" %}
-```
+```text
 http -a <your_workspace_token>: \
 https://api.rudderlabs.com/workspaces/regulations/<regulation_id>
 ```
@@ -117,7 +117,7 @@ https://api.rudderlabs.com/workspaces/regulations?start=0&limit=10
 {% endtab %}
 
 {% tab title="httpie" %}
-```
+```text
 http -a <your_workspace_token>: \
 https://api.rudderlabs.com/workspaces/regulations?start=0&limit=10
 ```
@@ -126,10 +126,10 @@ https://api.rudderlabs.com/workspaces/regulations?start=0&limit=10
 
 ## Delete a Regulation
 
-To delete a regulation, you can send a `DELETE` request as shown below: 
+To delete a regulation, you can send a `DELETE` request as shown below:
 
 {% hint style="info" %}
-Pass the `regulation_id` in the URL. The  `regulation_id` is received in the response when a regulation is created.
+Pass the `regulation_id` in the URL. The `regulation_id` is received in the response when a regulation is created.
 {% endhint %}
 
 {% tabs %}
@@ -141,22 +141,22 @@ curl -u <your_workspace_token>: \
 {% endtab %}
 
 {% tab title="httpie" %}
-```
+```text
 http -a <your_workspace_token>: DELETE \
 https://api.rudderlabs.com/workspaces/regulations/<regulation_id>
 ```
 {% endtab %}
 {% endtabs %}
 
-## Create a Suppress Regulation on a Source 
+## Create a Suppress Regulation on a Source
 
-You can suppress a user's data on a particular source too. A  sample payload is as shown in the snippet below: 
+You can suppress a user's data on a particular source too. A sample payload is as shown in the snippet below:
 
 {% hint style="info" %}
 You need to pass `source_id` in the URL. You can provide a list of user ids in the `values` array.
 {% endhint %}
 
-#### Payload
+### Payload
 
 {% code title="suppress.json" %}
 ```javascript
@@ -173,7 +173,7 @@ You need to pass `source_id` in the URL. You can provide a list of user ids in t
 ```
 {% endcode %}
 
-#### Usage
+### Usage
 
 {% tabs %}
 {% tab title="curl" %}
@@ -181,7 +181,7 @@ You need to pass `source_id` in the URL. You can provide a list of user ids in t
 curl -u <your_workspace_token>: \
 -X POST https://api.rudderlabs.com/workspaces/sources/<source_id>/regulations \
 -d @suppress.json \
---header "Content-Type: application/json" 
+--header "Content-Type: application/json"
 ```
 {% endtab %}
 
@@ -196,8 +196,4 @@ https://api.rudderlabs.com/workspaces/sources/<source_id>/regulations < suppress
 ## Contact Us
 
 To know more about the HTTP API spec, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
-
-
-
-
 

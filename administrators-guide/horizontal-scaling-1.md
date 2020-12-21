@@ -6,7 +6,7 @@ description: >-
 
 # Horizontal Scaling
 
-RudderStack makes it easier for you to add more nodes to your Kubernetes cluster, to process the events in a timely and effective manner. This guide shows you how to effectively configure your [Helm charts](https://github.com/rudderlabs/rudderstack-helm) to trigger a horizontal scale up/down, based on the version of RudderStack you are using. 
+RudderStack makes it easier for you to add more nodes to your Kubernetes cluster, to process the events in a timely and effective manner. This guide shows you how to effectively configure your [Helm charts](https://github.com/rudderlabs/rudderstack-helm) to trigger a horizontal scale up/down, based on the version of RudderStack you are using.
 
 ## RudderStack Open-source Version
 
@@ -20,7 +20,7 @@ There are, however, a couple of challenges in scaling up or down this way.
 
 ### Event Ordering
 
-In a single-node cluster, all events are routed to the same RudderStack node. This guarantees the  ordering of all events it has received for a given user. In case of a multi-node cluster, since the events of a same user can go to different nodes, the event ordering is not guaranteed by the cluster.
+In a single-node cluster, all events are routed to the same RudderStack node. This guarantees the ordering of all events it has received for a given user. In case of a multi-node cluster, since the events of a same user can go to different nodes, the event ordering is not guaranteed by the cluster.
 
 ![Event Ordering While Scaling Up from 1 Node to 2 Nodes](../.gitbook/assets/image%20%2852%29.png)
 

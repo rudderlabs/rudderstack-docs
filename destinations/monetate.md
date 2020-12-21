@@ -6,8 +6,8 @@ description: Step-by-step guide to send your event data from RudderStack to Mone
 
 [Monetate](https://monetate.com/) is a personalization platform that allows you to create unique customer experiences. Its state-of-the-art features allow you to increase customer engagement, boost conversion rates, and improve overall sales.
 
-Monetate is a unique, all-in-one personalization solution aimed especially at marketers. Its intelligent personalization engine makes it very easy for you to test, optimize, segment, and create 1-to-1 customer experiences. The engine also gives you the ability to personalize content, product recommendations, offers, and a lot more.  
-  
+Monetate is a unique, all-in-one personalization solution aimed especially at marketers. Its intelligent personalization engine makes it very easy for you to test, optimize, segment, and create 1-to-1 customer experiences. The engine also gives you the ability to personalize content, product recommendations, offers, and a lot more.
+
 RudderStack allows you to send your event data from your client-side or server-side components to Monetate. This guide will help you set up, configure, and use Monetate for your project.
 
 ## Getting Started
@@ -44,7 +44,7 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 
 For each `track` call you make, we send the data to Monetate using Monetate's Engine API.
 
-The table below summarizes the various Monetate events and properties sent by RudderStack: 
+The table below summarizes the various Monetate events and properties sent by RudderStack:
 
 {% hint style="info" %}
 The Monetate event is sent only if the corresponding RudderStack key is present.
@@ -73,7 +73,7 @@ RudderStack sends an additional event to Monetate for the following E-commerce e
 | `Cart Viewed` | `monetate:context:Cart` |
 | `Order Completed` | `monetate:context:Purchase` |
 
-The code snippet below shows a sample `track` call : 
+The code snippet below shows a sample `track` call :
 
 ```javascript
 rudderanalytics.track("Form Submitted", {
@@ -94,7 +94,7 @@ For each `screen` call, RudderStack sends the following events to Monetate:
 Note that RudderStack sends the Monetate event only if the corresponding RudderStack key is present.
 {% endhint %}
 
-The code snippet below shows a sample `screen` call : 
+The code snippet below shows a sample `screen` call :
 
 ```objectivec
 [[RudderClient sharedInstance] screen:@"Main" 
@@ -114,7 +114,7 @@ For each `page` call, RudderStack sends the following events to Monetate:
 Note that RudderStack sends the Monetate event only if the corresponding RudderStack key is present.
 {% endhint %}
 
-The code snippet below shows a sample `page` call : 
+The code snippet below shows a sample `page` call :
 
 ```javascript
 rudderanalytics.page("HomePage", {
