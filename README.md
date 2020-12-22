@@ -12,6 +12,10 @@ RudderStack is fully enterprise-ready; and allows you to collect, and route your
 
 RudderStack Server is released under the [AGPLv3 license](https://www.gnu.org/licenses/agpl-3.0-standalone.html).
 
+| Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for [RudderStack Cloud Free](https://app.rudderlabs.com/signup?type=freetrial) today. |  |
+| :--- | :--- |
+|  |  |
+
 {% hint style="success" %}
 **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 {% endhint %}

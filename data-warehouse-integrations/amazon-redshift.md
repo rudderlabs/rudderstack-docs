@@ -41,7 +41,7 @@ Please follow the steps below in order to create a new Redshift cluster:
 
 * Enter the cluster details**.** First, fill in the **Cluster identifier** and choose the instance type as shown:
 
-![Redshift cluster configuration settings](../.gitbook/assets/3%20%284%29%20%281%29.png)
+![Redshift cluster configuration settings](../.gitbook/assets/3%20%284%29%20%281%29%20%281%29.png)
 
 * Enter the number of nodes for your cluster. This will primarily depend on the amount of data you expect to work with.
 

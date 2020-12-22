@@ -18,7 +18,7 @@ The [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial) no
 
 * Click the **Add App** button in the top-right hand corner, as shown:
 
-![Add App Option in OneLogin](../.gitbook/assets/3%20%282%29.png)
+![Add App Option in OneLogin](../.gitbook/assets/3%20%282%29%20%281%29.png)
 
 * Search and select **RudderStack**.
 
@@ -49,7 +49,7 @@ This **SSO** section contains information which you will be required to share wi
 
 * Retrieve the certificate by clicking on **Download**. It should start with **`-----BEGIN CERTIFICATE-----`** and end with **`-----END CERTIFICATE-----`** , as shown:
 
-![](../.gitbook/assets/5%20%288%29%20%281%29.png)
+![](../.gitbook/assets/5%20%288%29%20%281%29%20%281%29.png)
 
 * Please share the **Issuer URL**, **SAML 2.0 Endpoint \(HTTP\)** and **X.509 Certificate** with us. We will then enable SSO for your organization and get back to you.
 

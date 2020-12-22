@@ -17,7 +17,7 @@ To add Facebook Ads as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/1%20%284%29%20%283%29.png)
+![](../.gitbook/assets/1%20%284%29%20%283%29%20%283%29.png)
 
 * Next, select **Facebook Ads** from the list of **Cloud Sources**, and click on **Next**.
 
@@ -25,7 +25,7 @@ To add Facebook Ads as a source in RudderStack, follow these steps:
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/3.png)
+![](../.gitbook/assets/3%20%282%29.png)
 
 ### Setting Up the Connection
 
@@ -41,7 +41,7 @@ If you have already connected RudderStack to your Facebook Ads account, your cre
 
 * In the next screen, choose the **Page** from where you want RudderStack to import the data. Also, select the **Historical data** as well as the **Attribution window** timeframe, and click on **Next**.
 
-![](../.gitbook/assets/5%20%288%29.png)
+![](../.gitbook/assets/5%20%288%29%20%281%29.png)
 
 {% hint style="info" %}
 RudderStack will not sync the data which is older than the selected timeframes.
