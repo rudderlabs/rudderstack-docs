@@ -12,21 +12,15 @@ RudderStack is **fully enterprise-ready**. It allows you to collect, and route y
 
 Questions? Please join our [Slack channel](https://resources.rudderstack.com/join-rudderstack-slack) or read about us on [Product Hunt](https://www.producthunt.com/posts/rudderstack).
 
-## **Quick References** <a id="get-started"></a>
+## Quick References
 
-{% page-ref page="get-started/rudderstack-architecture.md" %}
-
-{% page-ref page="installing-and-setting-up-rudderstack/" %}
-
-{% page-ref page="rudderstack-sdk-integration-guides/" %}
-
-{% page-ref page="rudderstack-api-spec/" %}
-
-{% page-ref page="destinations/" %}
-
-{% page-ref page="faqs.md" %}
-
-{% page-ref page="how-to-guides/" %}
+- [**RudderStack Architecture**](https://docs.rudderstack.com/get-started/rudderstack-architecture)
+- [**Installing and Setting Up RudderStack**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/installing-and-setting-up-rudderstack)
+- [**SDK Integration Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/rudderstack-sdk-integration-guides)
+- [**Sources Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/sources)
+- [**Destinations Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/destinations)
+- [**How-to Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/how-to-guides)
+- [**FAQs**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/faqs)
 
 ## License
 
@@ -50,7 +44,7 @@ We would love to see you contribute to RudderStack. Get more information on how 
 
 ## Our Supporters
 
-[![Stargazers repo roster for @rudderlabs/rudder-server](https://reporoster.com/stars/rudderlabs/rudder-repo-template)](https://github.com/rudderlabs/rudder-repo-template/stargazers)
+[![Stargazers repo roster for @rudderlabs/rudderstack-docs](https://reporoster.com/stars/rudderlabs/rudderstack-docs)](https://github.com/rudderlabs/rudderstack-docs/stargazers)
 
-[![Forkers repo roster for @rudderlabs/rudder-server](https://reporoster.com/forks/rudderlabs/rudder-repo-template)](https://github.com/rudderlabs/rudder-repo-template/network/members)
+[![Forkers repo roster for @rudderlabs/rudderstack-docs](https://reporoster.com/forks/rudderlabs/rudderstack-docs)](https://github.com/rudderlabs/rudderstack-docs/network/members)
 
