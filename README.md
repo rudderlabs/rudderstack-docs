@@ -1,9 +1,3 @@
----
-description: >-
-  Technical documentation on using RudderStack to collect, route and manage your
-  event data securely
----
-
 <p align="center"><a href="https://rudderstack.com"><img src="https://raw.githubusercontent.com/rudderlabs/rudder-server/master/resources/RudderStack.png" alt="RudderStack - An Open Source Customer Data Platform" height="90"/></a></p>
 <h1 align="center"></h1>
 <p align="center"><b>The warehouse-first customer data platform built for devs</b></p>
