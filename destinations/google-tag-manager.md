@@ -49,7 +49,7 @@ It is also possible to load RudderStack as a custom tag in Google Tag Manager. H
 
 The following screenshot shows how to add RudderStack as a custom HTML tag which can then be called through Google Tag Manager:
 
-![Adding RudderStack as a tag in Google Tag Manager](../.gitbook/assets/image%20%2868%29.png)
+![Adding RudderStack as a tag in Google Tag Manager](../.gitbook/assets/image%20%2851%29.png)
 
 ## Page
 

@@ -101,7 +101,7 @@ tasks:
 
 Enterprise alerting has native integrations with various third-party incident management tools like PagerDuty, VictorOps and OpsGenie, as well as notification tools such as Slack and Mattermost. It also supports webhooks, so that you can easily integrate any third-party tool that has HTTP API endpoints.
 
-![A Sample Enterprise Alert Integrated with Slack](../.gitbook/assets/image%20%2873%29.png)
+![A Sample Enterprise Alert Integrated with Slack](../.gitbook/assets/image%20%2856%29.png)
 
 ## Contact Us
 

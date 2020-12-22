@@ -33,7 +33,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Connection Settings for Keen in RudderStack](../.gitbook/assets/image%20%2857%29.png)
+![Connection Settings for Keen in RudderStack](../.gitbook/assets/image%20%2824%29.png)
 
 * Please enter the **Project ID** and **Write Key**. 
 * You can enable the **Use native SDK to send events** setting to send events through Keen's native JavaScript SDK.

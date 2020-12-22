@@ -31,7 +31,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * In the Connection Settings page, please enter the relevant information in the fields shown in the following screen:
 
-![Connection Settings for Chartbeat](../.gitbook/assets/image%20%2853%29.png)
+![Connection Settings for Chartbeat](../.gitbook/assets/image%20%2818%29.png)
 
  Each field is as explained below:
 

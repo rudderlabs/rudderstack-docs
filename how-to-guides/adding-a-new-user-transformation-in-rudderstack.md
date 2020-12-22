@@ -102,7 +102,7 @@ function transform(events) {
 }
 ```
 
-![Source Details](../.gitbook/assets/image%20%2883%29.png)
+![Source Details](../.gitbook/assets/image%20%2863%29.png)
 
 ## External API requests
 

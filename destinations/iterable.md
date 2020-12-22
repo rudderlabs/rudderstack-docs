@@ -34,7 +34,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 * Select the destination as **Iterable** to your source. Give your destination a name and then click on **Next**.
 * On the **Connection Settings** page, ****fill all the fields with the relevant information and click **Next.**
 
-![Iterable Connection Settings in RudderStack](../.gitbook/assets/image%20%2874%29.png)
+![Iterable Connection Settings in RudderStack](../.gitbook/assets/image%20%2857%29.png)
 
 ### Configurable settings
 

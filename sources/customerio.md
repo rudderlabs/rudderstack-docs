@@ -24,11 +24,11 @@ If you wish to connect this source to our warehouse destinations, the source nam
 
 * Once you have entered the name of your source, click on **Next** and save the source.
 
-![](../.gitbook/assets/image%20%2881%29.png)
+![](../.gitbook/assets/image%20%2861%29.png)
 
 * Head over to your Customer.io account and navigate to the **Integrations** page from the sidebar. Look for the integration **Reporting Webhooks**, as shown:
 
-![](../.gitbook/assets/image%20%2882%29.png)
+![](../.gitbook/assets/image%20%2862%29.png)
 
 * Click on **Add Webhook** and add a webhook pointing to the URL in the following format:`<your_dataplane_url>/v1/webhook?writeKey=<your_customer_io_source_write_key>`
 

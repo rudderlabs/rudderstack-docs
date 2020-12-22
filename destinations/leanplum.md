@@ -33,7 +33,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Leanplum Connection Settings in RudderStack](../.gitbook/assets/image%20%2832%29%20%281%29%20%281%29%20%281%29.png)
+![Leanplum Connection Settings in RudderStack](../.gitbook/assets/image%20%2832%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 * Enter the Leanplum **Application ID** as well as **Client Key**.  
 * Click on **Next** to complete the configuration. 

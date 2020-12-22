@@ -1,8 +1,6 @@
-<p align="center"><a href="https://rudderstack.com"><img src="https://raw.githubusercontent.com/rudderlabs/rudder-server/master/resources/RudderStack.png" alt="RudderStack - An Open Source Customer Data Platform" height="90"/></a></p>
-<h1 align="center"></h1>
-<br/>
+# Home
 
-# What is RudderStack?
+## What is RudderStack?
 
 RudderStack is an open-source, warehouse-first, customer data platform for developers.
 
@@ -14,25 +12,25 @@ RudderStack is **fully enterprise-ready**. It allows you to collect, and route y
 
 Questions? Please join our [Slack channel](https://resources.rudderstack.com/join-rudderstack-slack) or read about us on [Product Hunt](https://www.producthunt.com/posts/rudderstack).
 
-# Quick References
+## Quick References
 
-- [**RudderStack Architecture**](https://docs.rudderstack.com/get-started/rudderstack-architecture)
-- [**Installing and Setting Up RudderStack**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/installing-and-setting-up-rudderstack)
-- [**SDK Integration Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/rudderstack-sdk-integration-guides)
-- [**Sources Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/sources)
-- [**Destinations Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/destinations)
-- [**How-to Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/how-to-guides)
-- [**FAQs**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/faqs)
+* [**RudderStack Architecture**](https://docs.rudderstack.com/get-started/rudderstack-architecture)
+* [**Installing and Setting Up RudderStack**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/installing-and-setting-up-rudderstack)
+* [**SDK Integration Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/rudderstack-sdk-integration-guides)
+* [**Sources Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/sources)
+* [**Destinations Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/destinations)
+* [**How-to Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/how-to-guides)
+* [**FAQs**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/faqs)
 
-# License
+## License
 
 RudderStack is released under the [AGPLv3 License](https://www.gnu.org/licenses/agpl-3.0-standalone.html).
 
-# Contribute
+## Contribute
 
 We would love to see you contribute to RudderStack. Get more information on how to contribute [here](https://github.com/rudderlabs/rudderstack-docs/blob/master/CODE_OF_CONDUCT.md).
 
-# Follow Us
+## Follow Us
 
 * [RudderStack Blog](https://rudderstack.com/blog/)
 * [Slack](https://resources.rudderstack.com/join-rudderstack-slack)
@@ -44,7 +42,7 @@ We would love to see you contribute to RudderStack. Get more information on how 
 * [HackerNews](https://news.ycombinator.com/item?id=21081756)
 * [Product Hunt](https://www.producthunt.com/posts/rudderstack)
 
-# Our Supporters
+## Our Supporters
 
 [![Stargazers repo roster for @rudderlabs/rudderstack-docs](https://reporoster.com/stars/rudderlabs/rudderstack-docs)](https://github.com/rudderlabs/rudderstack-docs/stargazers)
 
