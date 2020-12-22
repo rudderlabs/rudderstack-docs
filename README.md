@@ -1,7 +1,7 @@
 ---
 description: >-
-  Technical documentation on using sRudderStack to collect, route and manage
-  your event data securely
+  Technical documentation on using RudderStack to collect, route and manage your
+  event data securely
 ---
 
 # RudderStack Docs: Home
