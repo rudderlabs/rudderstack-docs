@@ -1,5 +1,3 @@
-# Home
-
 ## What is RudderStack?
 
 RudderStack is an open-source, warehouse-first, customer data platform for developers.
