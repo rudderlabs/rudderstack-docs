@@ -44,7 +44,7 @@ We would love to see you contribute to RudderStack. Get more information on how 
 
 ## Our Supporters
 
-[![Stargazers repo roster for @rudderlabs/rudderstack-docs](https://reporoster.com/stars/rudderlabs/rudderstack-docs)](https://github.com/rudderlabs/rudderstack-docs/stargazers)
+[![Stargazers repo roster for @rudderlabs/rudder-server](https://reporoster.com/stars/rudderlabs/rudder-server)](https://github.com/rudderlabs/rudder-server/stargazers)
 
-[![Forkers repo roster for @rudderlabs/rudderstack-docs](https://reporoster.com/forks/rudderlabs/rudderstack-docs)](https://github.com/rudderlabs/rudderstack-docs/network/members)
+[![Forkers repo roster for @rudderlabs/rudder-server](https://reporoster.com/forks/rudderlabs/rudder-server)](https://github.com/rudderlabs/rudder-server/network/members)
 
