@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Home](README.md)
+* [RudderStack Docs: Home](README.md)
 * [Get Started](get-started/README.md)
   * [RudderStack Architecture](get-started/rudderstack-architecture.md)
   * [RudderStack Cloud Mode vs. Device Mode](get-started/rudderstack-connection-modes.md)
