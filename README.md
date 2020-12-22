@@ -8,13 +8,14 @@ RudderStack is an open-source, warehouse-first, customer data platform for devel
 
 RudderStack is **fully enterprise-ready**. It allows you to collect, and route your customer event data to your data warehouse and dozens of other tools. With RudderStack, you also get a powerful transformation framework to process your event data on the fly.
 
-RudderStack Server is released under the [AGPLv3 license](https://www.gnu.org/licenses/agpl-3.0-standalone.html).
-
 > **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
+
 
 > **For more information on RudderStack and its features, please check our [Get Started](https://docs.rudderstack.com/get-started) section.**
 
-## **Quick References** <a id="get-started"></a>
+Questions? Please join our [Slack channel](https://resources.rudderstack.com/join-rudderstack-slack) or read about us on [Product Hunt](https://www.producthunt.com/posts/rudderstack).
+
+# **Quick References** <a id="get-started"></a>
 
 {% page-ref page="get-started/rudderstack-architecture.md" %}
 
@@ -30,13 +31,42 @@ RudderStack Server is released under the [AGPLv3 license](https://www.gnu.org/li
 
 {% page-ref page="how-to-guides/" %}
 
-## Contact Us
+# License
 
-If you have any questions about RudderStack, please feel free to [get in touch](mailto:contact@rudderstack.com) with us. You can also start a conversation with us on any of the below channels:
+RudderStack is released under the [AGPLv3 License][agplv3_license].
 
-* [Slack](https://resources.rudderstack.com/join-rudderstack-slack)
-* [LinkedIn](https://www.linkedin.com/company/rudderlabs/)
-* [Twitter](https://twitter.com/rudderstack)
-* [HackerNews](https://news.ycombinator.com/item?id=21081756)
-* [RudderStack Blog](https://rudderstack.com/blog/)
+# Contribute
+
+We would love to see you contribute to RudderStack. Get more information on how to contribute [here](CONTRIBUTING.md).
+
+# Follow Us
+
+- [RudderStack Blog][rudderstack-blog]
+- [Slack][slack]
+- [Twitter][twitter]
+- [LinkedIn][linkedin]
+- [dev.to][devto]
+- [Medium][medium]
+- [YouTube][youtube]
+- [HackerNews][hackernews]
+- [Product Hunt][producthunt]
+
+# Our Supporters
+
+[![Stargazers repo roster for @rudderlabs/rudder-server](https://reporoster.com/stars/rudderlabs/rudder-repo-template)](https://github.com/rudderlabs/rudder-repo-template/stargazers)
+
+[![Forkers repo roster for @rudderlabs/rudder-server](https://reporoster.com/forks/rudderlabs/rudder-repo-template)](https://github.com/rudderlabs/rudder-repo-template/network/members)
+
+<!----variables---->
+
+[slack]: https://resources.rudderstack.com/join-rudderstack-slack
+[twitter]: https://twitter.com/rudderstack
+[linkedin]: https://www.linkedin.com/company/rudderlabs/
+[devto]: https://dev.to/rudderstack
+[medium]: https://rudderstack.medium.com/
+[youtube]: https://www.youtube.com/channel/UCgV-B77bV_-LOmKYHw8jvBw
+[rudderstack-blog]: https://rudderstack.com/blog/
+[hackernews]: https://news.ycombinator.com/item?id=21081756
+[producthunt]: https://www.producthunt.com/posts/rudderstack
+[agplv3_license]: https://www.gnu.org/licenses/agpl-3.0-standalone.html
 
