@@ -30,7 +30,7 @@ RudderStack is released under the [AGPLv3 License](https://www.gnu.org/licenses/
 
 # Contribute
 
-We would love to see you contribute to RudderStack. Get more information on how to contribute [here](https://github.com/rudderlabs/rudderstack-docs/tree/3f1604edc7135e44f833cb9a3599f9d42c376671/CONTRIBUTING.md).
+We would love to see you contribute to RudderStack. Get more information on how to contribute [here](https://github.com/rudderlabs/rudderstack-docs/blob/master/CODE_OF_CONDUCT.md).
 
 # Follow Us
 
