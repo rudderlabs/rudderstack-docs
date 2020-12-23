@@ -4,7 +4,7 @@ description: Step-by-step guide to send event data from RudderStack to Marketo.
 
 # Marketo
 
-[Marketo](https://marketo.com) is most often used by medium-sized businesses and offers bundles for focusing on lead management, email marketing, consumer marketing, customer base marketing and mobile marketing. It offers customized products for several industries, including technology, healthcare, media, higher education and manufacturing.
+[Marketo](https://marketo.com) is a leading marketing automation platform that allows you to identify the right audiences through effective behavioral tracking, and deliver automated, personalized marketing campaigns to enhance their overall product experience. It also offers cutting-edge email marketing, lead management, and revenue attribution solutions. With Marketo, you can deliver enhanced customer experiences and build customized products for businesses across all spectrum - including tech, healthcare, media, manufacturing, and education.
 
 RudderStack allows you to seamlessly configure Marketo as a destination to which you can send your event data seamlessly.
 
@@ -16,7 +16,7 @@ Before configuring your source and destination on the RudderStack, please verify
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
-| **Device mode** | **-** | - | - |
+| **Device mode** | **-** | **-** | **-** |
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
@@ -36,7 +36,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ![Marketo Connection Settings in RudderStack](../.gitbook/assets/marketo-connection.png)
 
-### Configurable settings
+### Configurable Settings
 
 The following are the settings to be configured:
 
@@ -104,16 +104,16 @@ rudderanalytics.identify("name123", {
 
 ## FAQs
 
-### Why my request are failing saying Lookup failed?
+### Why are my requests failing with the message "Lookup failed"?
 
-Please make sure that you've created two fields in Marketo with the names `userId` and `anonymousId` so that we can lookup the Lead database for `leadId` with the `userId` passed along with the event.
+Please make sure that you've created two fields in Marketo with the names `userId` and `anonymousId` so that RudderStack can lookup the `Lead` database for `leadId` with the `userId` passed along with the event.
 
-### Why my track events are failing?
+### Why are my track events failing?
 
-Please check whether you've turned off the `Track Anonymous Id` settings on the dashboard. If the setting is turned off, and you are not sending an `userId` along with your event the events will fail.
+Please check whether you've turned off the `Track Anonymous Id` settings on the dashboard. If the setting is turned off and you are not sending an `userId` along with your event, the events will fail.
 
 ## Contact Us
 
-If you come across any issues while configuring or using Indicative with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring or using Marketo with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
 
