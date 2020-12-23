@@ -219,7 +219,7 @@ The native integrations should have the following  methods for initializing the 
 | `track` | This method is called to pass the `track` event data. |
 
 {% hint style="info" %}
-RudderStack JavaScript SDK makes a call to the config plane to fetch all native SDK-enabled destinations, before constructing and initializing the integration object with the fetched configuration. The **`isLoadedz`**method should return true when the destination is ready to accept events. 
+RudderStack JavaScript SDK makes a call to the config plane to fetch all native SDK-enabled destinations, before constructing and initializing the integration object with the fetched configuration. The **`isLoaded`**method should return true when the destination is ready to accept events.
 {% endhint %}
 
 ## Contact Us
