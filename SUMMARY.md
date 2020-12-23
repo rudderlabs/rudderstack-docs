@@ -94,6 +94,7 @@
   * [Lotame](destinations/lotame.md)
   * [Lytics](destinations/lytics.md)
   * [Mailchimp](destinations/mailchimp.md)
+  * [Marketo](destinations/marketo.md)
   * [MinIO](destinations/minio.md)
   * [Mixpanel](destinations/mixpanel.md)
   * [MoEngage](destinations/moengage.md)

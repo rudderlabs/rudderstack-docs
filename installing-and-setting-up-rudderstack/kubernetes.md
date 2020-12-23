@@ -26,7 +26,7 @@ $ helm install my-release ./ --set rudderWorkspaceToken="<workspace token from t
 * Helm installed
 * Workspace token from the [RudderStack](https://app.rudderlabs.com/signup) [dashboard](https://app.rudderlabs.com/signup). Set up your account and copy your workspace token from the top of the home page.
 
-![Workspace Token](../.gitbook/assets/write-key-vs-token%20%282%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29.png)
+![Workspace Token](../.gitbook/assets/write-key-vs-token%20%282%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29.png)
 
 ## Installing the Chart
 
