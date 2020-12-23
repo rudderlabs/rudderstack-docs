@@ -44,7 +44,7 @@ The following are the settings to be configured:
 * **Client ID**: To get the ID navigate to the LaunchPoint page under Integration on your Admin settings page. Then select the API service and click on "View Details".
 * **Client Secret**: You can find the secret next to the ID from the previous step
 
-{% hint style="warning" %}
+{% hint style="info" %}
 You need to create two fields in Marketo with API names exactly as `userId` and `anonymousId`. We lookup the Lead objects using these properties. Without these two fields all the events will fail.
 {% endhint %}
 
@@ -73,18 +73,18 @@ We create or update a Lead object in Marketo through an `identify` request. By d
 | Marketo Field Name | RudderStack Trait Name |
 | :--- | :--- |
 | `City` | `address.city` |
-| `Company` | `company.name |
+| `Company` | `company.name` |
 | `Country` | `address.country` |
 | `Email` | `email` |
 | `FirstName` | `firstName` |
 | `Industry` | `company.industry` |
 | `LastName` | `lastName` |
-| `OriginalSourceInfo` | `leadSource |
+| `OriginalSourceInfo` | `leadSource` |
 | `NumberOfEmployees` | `company.employee_count` |
 | `Phone` | `phone` |
-| `PostalCode` | `address.zip |
+| `PostalCode` | `address.zip` |
 | `Rating` | `rating` |
-| `State` | `address.state |
+| `State` | `address.state` |
 | `Address` | `address.street` |
 | `Title` | `title` |
 | `DateofBirth` | `birthday` |
