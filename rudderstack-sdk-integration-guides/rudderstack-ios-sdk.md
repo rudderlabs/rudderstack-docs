@@ -8,7 +8,7 @@ description: >-
 
 ## What is the RudderStack iOS SDK?
 
-The RudderStack iOS SDK allows you to integrate RudderStack to your iOS application in order to track event data from your app. After integrating this SDK, you will also be able to send this data to your preferred analytics destination/s such as Google Analytics, Amplitude, and more. 
+The RudderStack iOS SDK allows you to integrate RudderStack to your iOS application in order to track event data from your app. After integrating this SDK, you will also be able to send this data to your preferred analytics destination/s such as Google Analytics, Amplitude, and more.
 
 {% hint style="success" %}
 You can check the [codebase on GitHub](https://github.com/rudderlabs/rudder-sdk-ios)  if you want to get more hands-on information or are keen to know the SDK architecture.
@@ -25,10 +25,10 @@ To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned be
 
 ![iOS source writeKey on the RudderStack Dashboard](../.gitbook/assets/ios.png)
 
-* You will also need your Data Plane URL.  Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events. 
+* You will also need your Data Plane URL.  Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
- To get the **Data Plane URL**: ****
+ To get the **Data Plane URL**:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
@@ -103,10 +103,10 @@ A shared instance of `RSClient` is accesible after the initialization by `RSClie
 {% hint style="info" %}
 We automatically track the following optional events:
 
-1. `Application Installed` 
+1. `Application Installed`
 2. `Application Updated`
-3. `Application Opened` 
-4. `Application Backgrounded`  
+3. `Application Opened`
+4. `Application Backgrounded`
 
 You can disable these events using the`withTrackLifecycleEvents` method of `RSConfigBuilder` and passing `false`. However, it is highly recommended to keep them enabled.
 {% endhint %}
@@ -150,6 +150,10 @@ The `track` method accepts the following parameters:
 ## Identify
 
 We capture `deviceId` and use that as `anonymousId` for identifying the user. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+
+{% hint style="info" %}
+According to Apple [documentation](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor), if the device has multiple apps from the same vendors, all those Apps will receive same `deviceId`. If all the applications from a vendor are uninstalled then on next install the app will receive a new `deviceId`.
+{% endhint %}
 
 An example `identify` event is as shown:
 
@@ -274,7 +278,7 @@ Alternatively, you can use the following method signature
 | `newId` | `String` | Yes | The new `userId` you want to assign to the user |
 | `options` | `RudderOption` | No | Event level option |
 
-We replace the old `userId` with the `newUserId` and we persist that identification across the sessions. 
+We replace the old `userId` with the `newUserId` and we persist that identification across the sessions.
 
 ## Reset
 
@@ -330,7 +334,7 @@ Follow the instructions below:
 
 ## Advertisement ID
 
-We have kept IDFA collection completely separate from the Core library so that the developer has better control over the same. You can pass the IDFA to `putAdvertisementId` method to set it under `context.device.advertisingId` 
+We have kept IDFA collection completely separate from the Core library so that the developer has better control over the same. You can pass the IDFA to `putAdvertisementId` method to set it under `context.device.advertisingId`
 
 Follow the instructions below:
 
@@ -343,9 +347,9 @@ Follow the instructions below:
     RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
     [builder withDataPlaneURL:[[NSURL alloc] initWithString:DATA_PLANE_URL]];
     [RSClient getInstance:WRITE_KEY config:[builder build]];
-    
+
     [[[RSClient sharedInstance] getContext] putAdvertisementId:[self getIDFA]];
-    
+
     return YES;
 }
 
@@ -359,7 +363,7 @@ Follow the instructions below:
 We use the `deviceId` as `anonymousId` by default. You can use the following method to override and use your own `anonymousId` with the SDK.
 
 {% hint style="warning" %}
-You need to call `setAnonymousId` method before calling `getInstance` 
+You need to call `setAnonymousId` method before calling `getInstance`
 {% endhint %}
 
 An example of setting the `anonymousId` is as below
@@ -370,7 +374,7 @@ An example of setting the `anonymousId` is as below
 
 ## External ID
 
-You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request. 
+You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
 
 ```bash
 RSOption *identifyOptions = [[RSOption alloc] init];
