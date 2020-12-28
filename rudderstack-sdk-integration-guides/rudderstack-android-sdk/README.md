@@ -26,7 +26,7 @@ To set up the RudderStack Android SDK, there are a few prerequisites as mentione
 * You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
- To get the **Data Plane URL**:
+To get the **Data Plane URL**:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
@@ -158,7 +158,7 @@ Follow the method signature as below:
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `name` | `String` | Yes | Name of the event you want to track |
-| `property` | `RudderProperty` or `Map<String, Object>` | No | Extra data properties you want to send along with the event  |
+| `property` | `RudderProperty` or `Map<String, Object>` | No | Extra data properties you want to send along with the event |
 | `options` | `RudderOption` | No | Extra event options |
 
 ## Identify
@@ -166,7 +166,7 @@ Follow the method signature as below:
 We capture `deviceId` and use that as `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
 {% hint style="info" %}
-On Android devices, the `deviceId` is assigned during first booting. So, it’s consistent across applications and installs. It changes only after factory reset.
+On the Android devices, the `deviceId` is assigned during the first boot. It remains consistent across the applications and installs. It changes only after factory reset.
 {% endhint %}
 
 An example `identify` event is as shown:
@@ -313,7 +313,7 @@ Follow the method signatures below:
 | :--- | :--- | :--- | :--- |
 | `groupId` | `String` | Yes | An ID of the organization with which you want to associate your user |
 | `traits` | `RudderTraits` | No | Any other property of the organization you want to pass along with the call |
-| `options` | `RudderOption` | No | Event level options  |
+| `options` | `RudderOption` | No | Event level options |
 
 We don't persist the traits for the group across the sessions
 
@@ -368,11 +368,11 @@ You can configure your client based on the following parameters using `RudderCon
 
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
-| `logLevel` | `int` | Controls how much of the log you want to see from the SDK.  | `RudderLogger.RudderLogLevel.NONE` |
+| `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RudderLogger.RudderLogLevel.NONE` |
 | `endPointUri` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
-| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server.  | `10 seconds`  |
+| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
 | `configRefreshInterval` | `int` | It will fetch the config from `dashboard` after this many hours. | `2` |
 | `trackLifecycleEvents` | `boolean` | Whether SDK will capture application life cycle events automatically. | `true` |
 | `recordScreenViews` | `boolean` | Whether SDK will capture screen view events automatically. | `false` |

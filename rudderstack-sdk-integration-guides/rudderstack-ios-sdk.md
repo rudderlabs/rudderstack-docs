@@ -11,7 +11,7 @@ description: >-
 The RudderStack iOS SDK allows you to integrate RudderStack to your iOS application in order to track event data from your app. After integrating this SDK, you will also be able to send this data to your preferred analytics destination/s such as Google Analytics, Amplitude, and more.
 
 {% hint style="success" %}
-You can check the [codebase on GitHub](https://github.com/rudderlabs/rudder-sdk-ios)  if you want to get more hands-on information or are keen to know the SDK architecture.
+You can check the [codebase on GitHub](https://github.com/rudderlabs/rudder-sdk-ios) if you want to get more hands-on information or are keen to know the SDK architecture.
 {% endhint %}
 
 [![Version](https://img.shields.io/cocoapods/v/Rudder.svg?style=flat)](https://cocoapods.org/pods/Rudder)
@@ -28,7 +28,7 @@ To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned be
 * You will also need your Data Plane URL.  Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
- To get the **Data Plane URL**:
+To get the **Data Plane URL**:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
@@ -38,7 +38,7 @@ To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned be
 
 ## Installing the RudderStack iOS SDK
 
-We distribute our iOS SDK through [Cocoapods](https://cocoapods.org). The recommended and easiest way to add the SDK to your project is through `Podfile`.  Follow these steps:
+We distribute our iOS SDK through [Cocoapods](https://cocoapods.org). The recommended and easiest way to add the SDK to your project is through `Podfile`. Follow these steps:
 
 1. Add the RudderStack SDK to your `Podfile`
 
@@ -46,7 +46,7 @@ We distribute our iOS SDK through [Cocoapods](https://cocoapods.org). The recomm
 pod 'Rudder'
 ```
 
-2. Then, run the following command:
+1. Then, run the following command:
 
 ```bash
 pod install
@@ -144,7 +144,7 @@ The `track` method accepts the following parameters:
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `eventName` | `NSString` | Yes | Name of the event you want to track |
-| `properties` | `NSDictionary` | No | Extra data properties you want to send along with the event  |
+| `properties` | `NSDictionary` | No | Extra data properties you want to send along with the event |
 | `options` | `RudderOption` | No | Extra event options |
 
 ## Identify
@@ -152,7 +152,7 @@ The `track` method accepts the following parameters:
 We capture `deviceId` and use that as `anonymousId` for identifying the user. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
 {% hint style="info" %}
-According to Apple [documentation](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor), if the device has multiple apps from the same vendors, all those Apps will receive same `deviceId`. If all the applications from a vendor are uninstalled then on next install the app will receive a new `deviceId`.
+According to the Apple [documentation](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor), if the device has multiple apps from the same vendors, all those apps will be assigned the same `deviceId`. If all the applications from a vendor are uninstalled, then on next install the app will be assigned a new `deviceId`.
 {% endhint %}
 
 An example `identify` event is as shown:
@@ -249,7 +249,7 @@ Alternatively, you can use the following method signature
 | :--- | :--- | :--- | :--- |
 | `groupId` | `String` | Yes | An ID of the organization with which you want to associate your user |
 | `traits` | `NSDictionary` | No | Any other property of the organization you want to pass along with the call |
-| `options` | `RudderOption` | No | Event level options  |
+| `options` | `RudderOption` | No | Event level options |
 
 We don't persist the traits for the group across the sessions.
 
@@ -304,11 +304,11 @@ You can configure your client based on the following parameters using `RudderCon
 
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
-| `logLevel` | `int` | Controls how much of the log you want to see from the SDK.  | `RSLogLevelNone` |
+| `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RSLogLevelNone` |
 | `dataPlaneUrl` | `string` | URL of your `data-plane`. | [https://hosted.rudderlabs.com](https://hosted.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request sent to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
-| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server . | `10 seconds`  |
+| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server . | `10 seconds` |
 | `configRefreshInterval` | `int` | Fetches the config from `dashboard` after the specified time \(in hours\). | `2` |
 | `trackLifecycleEvents` | `boolean` | Specify whether the SDK will capture application life cycle events automatically. | `true` |
 | `recordScreenViews` | `boolean` | Specify whether the SDK will capture screen view events automatically. | `false` |
