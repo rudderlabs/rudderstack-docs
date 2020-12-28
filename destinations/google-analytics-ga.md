@@ -525,7 +525,7 @@ In your Google Analytics account, enable **Site search Tracking** and put the pa
 
 If the query is `abc.com/s=xyz`the setting should be as follows:
 
-![](../.gitbook/assets/image%20%2818%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
+![](../.gitbook/assets/image%20%2818%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 ### Optimize
 

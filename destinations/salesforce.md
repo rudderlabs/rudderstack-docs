@@ -143,7 +143,7 @@ Salesforce has a very strict API limit. Moreover, RudderStack by default does no
 
 ### What does the error `Failed with status code 400` mean?
 
-We request Salesforce for `Authentication token` from our event transformation module with the credentials provided in the dashboard. If your credentials are incorrect the request will fail with the error mentioned above.
+RudderStack requests Salesforce for an `Authentication token` from its event transformation module with the credentials provided in the dashboard. If your credentials are incorrect, the request will fail with the error mentioned above.
 
 ## Contact Us
 

@@ -34,7 +34,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 * Select the destination as **Azure Event Hubs**. Give your destination a name, and then click on **Next**.
 * In the **Connection Settings**, ****fill the required fields with the relevant information and click **Next.**
 
-![Azure Event Hubs Connection Settings](../.gitbook/assets/image%20%28100%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
+![Azure Event Hubs Connection Settings](../.gitbook/assets/image%20%28100%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 The required fields are as follows:
 
