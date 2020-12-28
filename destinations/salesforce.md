@@ -141,6 +141,10 @@ To check the number of Salesforce API calls, go to **Setup** - **Administration 
 
 Salesforce has a very strict API limit. Moreover, RudderStack by default does not send identify calls to Salesforce. If you don't include `'Salesforce':true` in your `identify` call payload, the call will simply be ignored.
 
+### What does the error `Failed with status code 400` mean?
+
+We request Salesforce for `Authentication token` from our event transformation module with the credentials provided in the dashboard. If your credentials are incorrect the request will fail with the error mentioned above.
+
 ## Contact Us
 
 If you come across any issues while configuring Salesforce with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
