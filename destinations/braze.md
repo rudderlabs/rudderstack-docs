@@ -83,18 +83,13 @@ To add Braze to your Android project, please follow these steps:
   }
   ```
 
-* Add the following  under `dependencies` section:
+* Add the following under `dependencies` section:
 
-  ```text
-  implementation 'com.rudderstack.android.sdk:core:1.0.1'
-  implementation 'com.rudderstack.android.integration:braze:0.1.1'
-  implementation 'com.appboy:android-sdk-ui:6.0.+'
+  \`\`\`text implementation 'com.rudderstack.android.sdk:core:1.0.1' implementation 'com.rudderstack.android.integration:braze:0.1.1' implementation 'com.appboy:android-sdk-ui:6.0.+'
 
+// if you don't have Gson included already implementation 'com.google.code.gson:gson:2.8.6'
 
-  // if you don't have Gson included already
-  implementation 'com.google.code.gson:gson:2.8.6'
-  ```
-
+```text
 * Finally change the initialization of the SDK to the following:
 
   ```text
@@ -107,7 +102,7 @@ To add Braze to your Android project, please follow these steps:
           .withFactory(BrazeIntegrationFactory.FACTORY)
           .build()
   )
-  ```
+```
 {% endtab %}
 {% endtabs %}
 
@@ -192,7 +187,7 @@ rudderanalytics.track("Order Completed", {
 
 ### Order Completed
 
-When you call the `track` method for an event with the name `Order Completed` using the  eCommerce API, RudderStack sends the products listed in the event to Braze as purchases.
+When you call the `track` method for an event with the name `Order Completed` using the eCommerce API, RudderStack sends the products listed in the event to Braze as purchases.
 
 ## Page
 
@@ -212,14 +207,17 @@ The above call is made through the RudderStack JavaScript SDK, and sent to Braze
 
 ## Group
 
-The `group` call is made to associate the user with a group. The example of a group call is as shown below:
+The `group` call is made to associate the user with a group. The example of a `group` call is as shown below:
 
 ```javascript
 rudderanalytics.group("test_group_id", {
   name: "Group Name"
 });
 ```
-Once you send the `group` event we'll send a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` where `groupId` is the ID you've passed in the group call and will set the value to be `true`. For example, if the `groupId` is `test_group_id` then we will create a custom attribute to Braze with the name `ab_rudder_group_test_group_id` and set the value to be `true`.
+
+Once you send the `group` event, RudderStack will send a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` where `groupId` is the ID you've passed in the `group` call, and will set the value to `true`. 
+
+For example, if the `groupId` is `test_group_id` then RudderStack will create a custom attribute to Braze with the name `ab_rudder_group_test_group_id` and set the value to `true`.
 
 ## Contact Us
 
