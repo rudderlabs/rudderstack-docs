@@ -51,5 +51,5 @@ public class MainApplication extends Application {
 
 ## Contact Us
 
-In case of any queries, you can always [reach out to us](mailto:%20contact@rudderstack.com), or feel free to open an issue on our [GitHub Issues](https://github.com/rudderlabs/rudder-sdk-android/issues) page if you come across any error or discrepancy.
+In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue on our [GitHub Issues](https://github.com/rudderlabs/rudder-sdk-android/issues) page if you come across any error or discrepancy.
 

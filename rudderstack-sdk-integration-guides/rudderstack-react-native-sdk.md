@@ -342,7 +342,7 @@ You can use the `setAnonymousId` method to pass your `anonymousId` and the SDK w
 
 * `id` : Your `anonymousId`
 
-Example Usage:
+An example of this method's usage is as shown:
 
 ```typescript
 rudderClient.setAnonymousId(ANONYMOUS_ID);
@@ -368,5 +368,5 @@ Please try using Android Studio to build your application. This should fix most 
 
 ## Contact us
 
-In case of any queries, you can always [reach out to us](mailto:%20contact@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

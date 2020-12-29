@@ -253,5 +253,5 @@ The code snippet below demonstrates how to enable this feature.
 
 ## Contact us
 
-In case of any queries, please feel free to [reach out to us](mailto:%20contact@rudderstack.com). In case of any bugs or discrepancies, please feel free to open an issue on our [GitHub Issues](https://github.com/rudderlabs/rudder-sdk-amp/issues) page, or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+In case of any queries, please feel free to [contact us](mailto:%20docs@rudderstack.com). In case of any bugs or discrepancies, please open an issue on our [GitHub Issues](https://github.com/rudderlabs/rudder-sdk-amp/issues) page, or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 

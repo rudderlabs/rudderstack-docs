@@ -1,7 +1,7 @@
 ---
 description: >-
   Detailed technical documentation on the RudderStack’s JavaScript SDK to send
-  data from your website to the destinations, through RudderStack
+  data from your website to your destinations via RudderStack
 ---
 
 # JavaScript
@@ -788,7 +788,7 @@ rudderanalytics.getAnonymousId();
 
 ## Contact Us
 
-To know more about the RudderStack JavaScript SDK or to see it in action, you can [contact us](mailto:%20contact@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+To know more about the RudderStack JavaScript SDK or to see it in action, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
 In case you come across any issues while using this SDK, please feel free to submit them on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-js/issues).
 
