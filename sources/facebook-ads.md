@@ -77,5 +77,5 @@ RudderStack will start importing data from Facebook Ads as per the specified fre
 
 ## Contact Us
 
-If you come across any issues while configuring Facebook Ads as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Facebook Ads as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
