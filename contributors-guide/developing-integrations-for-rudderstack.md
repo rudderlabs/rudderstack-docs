@@ -49,5 +49,5 @@ Coming soon!
 
 ## Contact us <a id="docs-internal-guid-a89efda1-7fff-16e0-53f3-fc73af7d3e3a"></a>
 
-To know more about how to develop Integrations or any queries related to them, feel free to [get in touch](mailto:%20contact@rudderstack.com) with us. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you!
+To know more about how to develop Integrations or any queries related to them, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you!
 

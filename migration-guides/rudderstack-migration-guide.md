@@ -148,5 +148,5 @@ You can use the rest of your code as is, as the RudderStack SDK is fully API-com
 
 ## Contact Us
 
-Are you stuck somewhere in the migration process? Feel free to [contact us](mailto:%20contact@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+Are you stuck somewhere in the migration process? Feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 

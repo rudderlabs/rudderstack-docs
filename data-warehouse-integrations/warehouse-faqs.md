@@ -103,5 +103,5 @@ If you are using the hosted RudderStack service, the following IPs need to be wh
 
 ## Contact Us
 
-In case you have any other queries related to using the RudderStack data warehouse integrations, please feel free to [contact us](mailto:%20contact@rudderstack.com) . You can also join our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel and start a conversation with us any time. We will be happy to help you. 
+In case you have any other queries related to using the RudderStack data warehouse integrations, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also join our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel and start a conversation with us any time. We will be happy to help you. 
 

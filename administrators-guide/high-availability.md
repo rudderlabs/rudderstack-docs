@@ -78,5 +78,5 @@ Even during an unexpected downtime, all your events are safe and will be deliver
 
 ## Contact Us
 
-If you want to know more about the RudderStack High Availability feature, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action.
+If you want to know more about the RudderStack High Availability feature, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action.
 

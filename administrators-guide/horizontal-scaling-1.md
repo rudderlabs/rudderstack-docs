@@ -52,5 +52,5 @@ RudderStack Enterprise includes a separate process named **Jobs DB Migrator**. T
 
 ## Contact Us
 
-If you want to know more about horizontal scaling in RudderStack, or if you have any queries or concerns on how to implement it effectively, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see the feature in action, or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel to know more about this feature.
+If you want to know more about horizontal scaling in RudderStack, or if you have any queries or concerns on how to implement it effectively, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel to know more about this feature.
 

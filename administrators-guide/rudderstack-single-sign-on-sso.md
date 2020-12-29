@@ -55,5 +55,5 @@ This **SSO** section contains information which you will be required to share wi
 
 ## Contact Us
 
-If you need more clarity in following any of the steps in the guide, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+If you need more clarity in following any of the steps in the guide, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 

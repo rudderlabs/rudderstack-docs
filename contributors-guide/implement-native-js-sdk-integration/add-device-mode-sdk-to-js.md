@@ -221,5 +221,5 @@ RudderStack JavaScript SDK makes a call to the config plane to fetch all native 
 
 ## Contact Us
 
-In case you come across any queries, please feel free to [reach out](mailto:%20contact@rudderstack.com) to us. You can also [raise an issue](https://github.com/rudderlabs/rudder-sdk-js/issues) on our GitHub repository, if you come across any bugs.
+In case you come across any queries, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also [raise an issue](https://github.com/rudderlabs/rudder-sdk-js/issues) on our GitHub repository, if you come across any bugs.
 

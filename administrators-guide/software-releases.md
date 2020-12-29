@@ -41,5 +41,5 @@ We release native binaries for the following architectures:
 
 ## Contact Us
 
-For more information on the software releases or if you need the latest binaries, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+For more information on the software releases or if you need the latest binaries, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 

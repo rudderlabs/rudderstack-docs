@@ -66,7 +66,7 @@ We're currently working on adding more functionalities to make the migration fro
 
 ## Contact Us
 
-For more information on any of the incompatibilities listed above, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to talk to you.
+For more information on any of the incompatibilities listed above, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to talk to you.
 
 
 
