@@ -12,7 +12,7 @@ This documentation describes all of the available calls in the Data Governance A
 
 ## Getting Started - Obtaining the Credentials
 
-You can start your RudderStack backend \(data plane\) with the environment variables `RUDDER_ADMIN_USER` and `RUDDER_ADMIN_PASSWORD` . If you are using the RudderStack-managed hosting service, [contact us](mailto:%20contact@rudderstack.com) for the necessary credentials.
+You can start your RudderStack backend \(data plane\) with the environment variables `RUDDER_ADMIN_USER` and `RUDDER_ADMIN_PASSWORD` . If you are using the RudderStack-managed hosting service, [contact us](mailto:%20docs@rudderstack.com) for the necessary credentials.
 
 Anyone with these credentials can use the same Data Governance API. In case it is compromised, please restart your data plane with different credentials.
 
@@ -580,7 +580,7 @@ curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/sch
 
 ## Contact Us
 
-For more information on the RudderStack Data Governance API, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+For more information on the RudderStack Data Governance API, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 
 
 

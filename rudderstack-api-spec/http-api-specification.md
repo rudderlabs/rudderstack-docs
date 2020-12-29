@@ -54,7 +54,7 @@ RudderStack allows a maximum of `32KB` message size per call, while the batch en
 The `identify` call allows you to associate a visiting user to their actions. It also lets you record the traits associated with them.
 
 {% hint style="info" %}
-As a best practice, please make sure`identify`is called at the start of every session or page load for logged-in users, if possible. This will ensure all the latest traits are captured.
+As a best practice, please make sure that the `identify`call is made at the start of every session or page load for logged-in users, if possible. This will ensure all the latest traits are captured.
 {% endhint %}
 
 ### 6.1. `identify` Payload
@@ -552,5 +552,5 @@ In case you are tracking current events, it is advisable to leave out the `times
 
 ## Contact Us
 
-To know more about the HTTP API spec, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+To know more about the HTTP API spec, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 
