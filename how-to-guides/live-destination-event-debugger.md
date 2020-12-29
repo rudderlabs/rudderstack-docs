@@ -60,7 +60,7 @@ We hope that this Destination Live Events Debugger feature of RudderStack will r
 
 ## **Contact Us**
 
-If you want to know more about the features of RudderStack, we’re happy to talk to you! [Get in touch with us](mailto:%20contact@rudderstack.com). You can also [request a free demo](https://rudderstack.com/request-a-demo/) to better understand how RudderStack can help you collect and route your customer event data securely. To know more about the new features in the latest RudderStack release, talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you want to know more about the features of RudderStack, [contact us](mailto:%20docs@rudderstack.com). To know more about the new features in the latest RudderStack release, talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
 
 

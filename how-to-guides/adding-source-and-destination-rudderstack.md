@@ -70,5 +70,5 @@ And that's it! You have successfully added a destination and configured it to re
 
 ## Contact Us
 
-Have you encountered any issues while configuring your source and destination? Please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+Have you encountered any issues while configuring your source and destination? Please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
 
