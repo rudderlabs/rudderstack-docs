@@ -17,7 +17,7 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | - | **Supported** | - |
-| **Cloud mode** | - | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
  To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -200,6 +200,19 @@ A Sample `track` call for an iOS application will look like the below.
 For all the `screen` calls from the SDK, RudderStack calls the `trackEvent` method of the AppsFlyer SDK with the `eventName` as `screen` . Then, all the properties are passed to AppsFlyer as is.
 
 RudderStack performs the same task for the automatically recorded `screen` calls as well. For those calls, a Boolean property called `automatic` is obtained in the properties.
+
+## Cloud Mode
+
+For all cloud mode calls, the `externalId` key must be included and must include the id, as well as the type of `appsFlyerExternalId` as shown below:
+
+```javascript
+"externalId": [
+  {
+    "id": "some_other2345_sample_external_id",
+    "type": "appsflyerExternalId"
+  }
+]
+```
 
 ## Debugging
 
