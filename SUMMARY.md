@@ -103,7 +103,6 @@
   * [Optimizely Web](destinations/optimizely-web.md)
   * [Pendo](destinations/pendo.md)
   * [PostHog](destinations/posthog.md)
-  * [PostHog](destinations/posthog-1.md)
   * [Redis](destinations/redis.md)
   * [Salesforce](destinations/salesforce.md)
   * [Slack](destinations/slack.md)
