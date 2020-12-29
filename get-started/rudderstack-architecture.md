@@ -92,5 +92,5 @@ We saw how the RudderStack data plane plays a crucial role in receiving, storing
 
 ## Contact Us
 
-To know more about RudderStack's architecture or the platform in general, please feel free to [reach out](mailto:%20contact@rudderstack.com) to us. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, or even see RudderStack [in action](https://rudderstack.com/request-a-demo/).
+To know more about RudderStack's architecture or the platform in general, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, or even see RudderStack [in action](https://rudderstack.com/request-a-demo/).
 

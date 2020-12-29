@@ -6,7 +6,7 @@ description: >-
 
 # Install and Set Up RudderStack
 
-This guide is aimed at helping you install and set up RudderStack correctly on a variety of platforms. Please feel free to [reach out to us](https://rudderstack.com/contact/) in case you are stuck anywhere in the process, or want more information on any of the topics covered below.
+This guide is aimed at helping you install and set up RudderStack correctly on a variety of platforms. Please feel free to [contact us](mailto:%20docs@rudderstack.com) in case you are stuck anywhere in the process, or want more information on any of the topics covered below.
 
 {% hint style="success" %}
 The easiest way to get started with RudderStack is to [sign up for free](https://app.rudderlabs.com/signup?type=freetrial) on [**RudderStack Cloud** **Free**](https://app.rudderlabs.com/signup?type=freetrial).
@@ -90,7 +90,7 @@ The **write key** is different from your **workspace token**. The former is asso
 
 ## Contact Us
 
-To know more about installing and setting up RudderStack, please feel free to [reach out to us](https://resources.rudderstack.com/join-rudderstack-slack). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to talk to you.
+To know more about installing and setting up RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to talk to you.
 
 
 
