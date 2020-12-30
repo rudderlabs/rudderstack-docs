@@ -4,7 +4,9 @@ description: Step-by-step guide to send event data from RudderStack to Google An
 
 # Google Analytics 4
 
-[Google Analytics 4](https://analytics.google.com/) (GA4, formerly known as “App + Web) is a new Google Analytics property, with different instrumentation and reports than what used to be Universal Analytics properties. With Google Analytics 4 property you can use it for a website, an app, or both together whereas Universal Analytics properties only support websites. RudderStack supports the `gtag` way of tagging in websites.
+[Google Analytics 4](https://analytics.google.com/) (formerly known as "App + Web") is a new Google Analytics property, with different instrumentation and reports than the Universal Analytics properties. Google Analytics 4 (GA4) can be used for a websites, apps, or both together - whereas Universal Analytics properties only support websites. 
+
+RudderStack supports the `gtag` way of tagging in websites.
 
 ## Getting Started
 
@@ -38,15 +40,13 @@ In the **Connection Settings**, please enter your **Measurement Id** as shown ab
 
 ## Identify
 
-User-ID is an advanced feature that lets Analytics present a cross-platform, cross-device view of your users' behavior.
-Google Analytics 4 uses user id and device id (GA's cid value from Universal Analytics terminology) to identify users.
+User-ID is an advanced feature that lets Analytics present a cross-device, cross-platform view of your customers' behavior. Google Analytics 4 uses user id and device id (GA's `cid` value from Universal Analytics terminology) to identify users.
 
-Google Analytics 4 allows you to set a user ID to the identified visitors if **Send User ID** **to GA** is enabled in the destination settings page in RudderStack app.
-RudderStack will send the identified user id according to [this](https://developers.google.com/analytics/devguides/collection/ga4/cookies-user-id#set_user_id)
+Google Analytics 4 also allows you to set a user ID to the identified visitors if **Send User ID** **to GA** is enabled in the destination settings page in the RudderStack app. RudderStack will send the identified user id according to [this guide](https://developers.google.com/analytics/devguides/collection/ga4/cookies-user-id#set_user_id).
 
 A sample `identify` call is as shown:
 
-```bash
+```javascript
 rudderanalytics.identify("I am User"{
   name: "My name is",
   email: "myemailaddressis@gmail.com"
@@ -72,7 +72,7 @@ We send following properties by default:
 
 You can also make `page()` call with any custom and standard properties as shown below:
 
-```bash
+```javascript
 rudderanalytics.page({
   path: "/test_browser.html",
   url: "http://localhost/test_browser.html?param1=true",
@@ -83,13 +83,15 @@ rudderanalytics.page({
 ```
 
 #### Extend Page View Property
-GA4 has a limit on number of unique properties per event name. The default `page_view` event supports the above properties as mentioned [here](https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484).
-If **Extend Page View Property** config is enabled then we send the following properties along with any other custom property passed to page call of Rudder SDK:
+
+GA4 has a limit on the number of unique properties per event name. The default `page_view` event supports the above properties as mentioned [in this guide](https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484).
+If the **Extend Page View Property** config is enabled, then RudderStack sends the following properties along with any other custom property passed to `page` call of the RudderStack SDK:
 
 * `url`
 * `search`
 
 #### Block Page View Event
+
 When this config is enabled we disable sending GA4 `page_view` events on load, instead you can explicitly send a `page_view` event by calling Rudder SDK **page()** api.
 
 ## Track
@@ -101,17 +103,17 @@ A sample `track` call looks like the following:
 ```javascript
 rudderanalytics.track("Track me");
 ```
-Rudder SDK will send the track event name and any properties as custom properties to GA4.
+RudderStack's SDK will send the track event name and any properties as custom properties to GA4.
 
 {% hint style="info" %}
 For properties that are nested and not a standard GA4 property, RudderStack SDK will flatten them before sending to Google Analytics
 {% endhint %}
 
-## E-Commerce
+## eCommerce
 
-RudderStack supports E-Commerce tracking for GA4. Use the e-commerce [spec](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) of sending events while instrumenting your site with Rudder SDK.
+RudderStack supports eCommerce tracking for GA4. Use the [RudderStack eCommerce spec](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) of sending events while instrumenting your site with Rudder SDK.
 
-Below are some examples of the track event names that are passed to GA4 specific e-commerce event name
+Below are some examples of the track event names that are passed to GA4 specific eCommerce event name:
 
 | RudderStack event name | GA4 event name |
 | -- | -- | -- |
@@ -142,4 +144,4 @@ For each product in the order, there must be an `id` and `name`. More info on GA
 
 ## Contact Us
 
-If you come across any issues while configuring Google Analytics 4 with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+If you come across any issues while configuring Google Analytics 4 with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
