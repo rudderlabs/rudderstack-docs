@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Appc
 
 # Appcues
 
-[Appcues](https://www.appcues.com/) makes it easy to deliver exceptional user experiences at scale, leading to happier customers and accelerated business growth. Using our Product-Led Growth Platform, anybody can publish beautiful and personalized in-product experiences in minutes, measure the impact on key business results, and know when and how to intervene with a human touchpoint.
+[Appcues](https://www.appcues.com/) is a popular product marketing platform that makes it easy for you to deliver scalable user experiences and accelerate your business growth. With Appcues' cutting-edge growth platform, you can effectively monitor your customers' product behavior, and design personalized customer experiences and in no time.
 
 RudderStack supports sending your event data to Appcues from our native web SDKs, to help you understand your customers better.
 
@@ -33,10 +33,10 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![](../.gitbook/assets/appcues.png)
 
-* Enter the relevant details and click on **Next** to complete the setup. To get the **API key** & **Account ID** field, please login to Appcues and navigate to **Settings** - **Account**. Here, copy the values of both API key & Account ID.
+* Enter the relevant details and click on **Next** to complete the setup. To get the **API key** & **Account ID** field, please login to Appcues and navigate to **Settings** - **Account**. Here, copy the values of both your API key and the Account ID.
 
 {% hint style="info" %}
-You need to make an identify call before making any call for Appcues
+You need to make an `identify` call before making any call to Appcues.
 {% endhint %}
 
 ## Identify
@@ -49,13 +49,15 @@ A sample `identify` call looks like the following snippet:
 rudderanalytics.identify("userId", userVars); // userVars is a JSON object
 ```
 
+{% hint style="info" %}
 The above call is directly passed on to Appcues via its `Appcues.identify(userId,[properties])` call.
+{% endhint %}
 
 ## Track
 
 A `track` call lets you track custom events as they occur in your web application. For more information on the `track` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
-A sample `track` call looks like the following snippet:
+A sample `track` call looks like the following:
 
 ```text
 rudderanalytics.track("Clicked button", {
@@ -64,11 +66,13 @@ rudderanalytics.track("Clicked button", {
 });
 ```
 
+{% hint style="info" %}
 The above call is directly passed on to Appcues via its `Appcues.track(eventName, [eventProperties])` call.
+{% endhint %}
 
 ## Page
 
-A page call contains information such as the URL or the name of the web page visited by the user. For more information, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+A `page` call contains information such as the URL or the name of the web page visited by the user. For more information on the `page` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
 A sample `page` call looks like the following:
 
@@ -76,11 +80,13 @@ A sample `page` call looks like the following:
 rudderanalytics.page("homepage");
 ```
 
+{% hint style="info" %}
 The above call is directly passed on to Appcues via its `Appcues.page()` call.
+{% endhint %}
 
 Any additional properties passed to the `page` call are also passed on to Appcues.
 
-Appcues will check to see if a user qualifies for an experience every time the page changes. When you first call page using rudderanalytics, Appcues checks if there are any current flows for the user and loads them if necessary.
+Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call using `rudderanalytics`, Appcues checks if there are any current flows for the user and loads them if necessary.
 
 ## FAQs
 
