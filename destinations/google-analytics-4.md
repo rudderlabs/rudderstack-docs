@@ -4,9 +4,7 @@ description: Step-by-step guide to send event data from RudderStack to Google An
 
 # Google Analytics 4
 
-[Google Analytics 4](https://analytics.google.com/) (formerly known as “App + Web) is a new kind of property, with different reports than what you're used to seeing in Universal Analytics properties.  With Google Analytics 4 property you can use it for a website, an app, or both a website and app together whereas Universal Analytics properties only support websites.
-
-It helps you get better ROI from your marketing for the long term. It has machine learning at its core to automatically surface helpful insights and gives you a complete understanding of your customers across devices and platforms. It’s privacy-centric by design, so you can rely on Analytics even as industry changes like restrictions on cookies and identifiers create gaps in your data. The new Google Analytics will give you the essential insights you need to be ready for what’s next.
+[Google Analytics 4](https://analytics.google.com/) (GA4, formerly known as “App + Web) is a new Google Analytics property, with different instrumentation and reports than what used to be Universal Analytics properties. With Google Analytics 4 property you can use it for a website, an app, or both together whereas Universal Analytics properties only support websites. RudderStack supports the `gtag` way of tagging in websites.
 
 ## Getting Started
 
@@ -41,9 +39,10 @@ In the **Connection Settings**, please enter your **Measurement Id** as shown ab
 ## Identify
 
 User-ID is an advanced feature that lets Analytics present a cross-platform, cross-device view of your users' behavior.
-When you load rudder-sdk we a unique id is generated and consistently assign those IDs to your users, and include the IDs along with the data you send to Analytics. thus, GA creates a single user journey from all the data that is associated with the same user ID.
+Google Analytics 4 uses user id and device id (GA's cid value from Universal Analytics terminology) to identify users.
 
-Google Analytics 4 allows you to set a user ID to the identified visitors if **Send User ID** **to GA** is enabled in the destination settings by the user.
+Google Analytics 4 allows you to set a user ID to the identified visitors if **Send User ID** **to GA** is enabled in the destination settings page in RudderStack app.
+RudderStack will send the identified user id according to [this](https://developers.google.com/analytics/devguides/collection/ga4/cookies-user-id#set_user_id)
 
 A sample `identify` call is as shown:
 
@@ -57,19 +56,21 @@ rudderanalytics.identify("I am User"{
 In the above snippet, the `userid` will be set to `I am User` for Google Analytics and the name and email will be set as `user_properties` in GA. 
 
 If **Send User ID** **to GA** is disabled then we do not set user Id instead we only send user traits to set as `user_properties` in GA.
+The user properties are set on the `gtag` client according to [this](https://developers.google.com/analytics/devguides/collection/ga4/user-properties)
+
 
 ## Page
 
-We measures `page_view` event to Google Analytics by default everytime our sdk is loaded.
-You can also send `pageview` event to google analytics whenever you make a **`page()`** call.
+GA4 gtag sends a `page_view` event to Google Analytics by default every-time it is loaded.
+You can also send `page_view` event to google analytics whenever you make an explicit **`page()`** call to Rudder SDK.
 
 We send following properties by default:
 
-* `path`
-* `title`
-* `referrer`
+* `path` mapped to `page_location`
+* `title` mapped to `page_title`
+* `referrer` mapped to `page_referrer`
 
-You can also make `page()` call with properties as shown below:
+You can also make `page()` call with any custom and standard properties as shown below:
 
 ```bash
 rudderanalytics.page({
@@ -81,19 +82,15 @@ rudderanalytics.page({
 });
 ```
 
-### Flag Specific Page Event
+#### Extend Page View Property
+GA4 has a limit on number of unique properties per event name. The default `page_view` event supports the above properties as mentioned [here](https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484).
+If **Extend Page View Property** config is enabled then we send the following properties along with any other custom property passed to page call of Rudder SDK:
 
-* Extend Page View Property
-If **Extend Page View Property** config is enabled then we send following properties:
-
-* `path`
 * `url`
-* `title`
 * `search`
-* `referrer`
 
-* Block Page View Event
-When this config is enabled we disable sending `page_view` events on load, instead now you can control when to send this event by simply calling rudder **page()** payload.
+#### Block Page View Event
+When this config is enabled we disable sending GA4 `page_view` events on load, instead you can explicitly send a `page_view` event by calling Rudder SDK **page()** api.
 
 ## Track
 
@@ -104,74 +101,30 @@ A sample `track` call looks like the following:
 ```javascript
 rudderanalytics.track("Track me");
 ```
+Rudder SDK will send the track event name and any properties as custom properties to GA4.
 
 ## E-Commerce
 
-RudderStack supports basic E-Commerce tracking for Google Analytics.
+RudderStack supports E-Commerce tracking for GA4. Use the e-commerce [spec](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) of sending events while instrumenting your site with Rudder SDK.
 
-The required steps are:
+Below are some examples of the track event names that are passed to GA4 specific e-commerce event name
 
-* For each product in the order, there must be an `id` and `name`. Other properties are optional.
-
-Here are few E-Commerce sample payload.
-
-### Products Searched
-```bash
-rudderanalytics.track("Products Searched", {
-  query: "HDMI cable",
-});
-```
-
-### Product Clicked
-```bash
-rudderanalytics.track("Product Clicked", {
-  product_id: "123",
-  sku: "F15",
-  category: "Games",
-  name: "Game",
-  brand: "Gamepro",
-  variant: "111",
-  price: 13.49,
-  quantity: 11,
-  coupon: "DISC21",
-  position: 1,
-  url: "https://www.website.com/product/path",
-  image_url: "https://www.website.com/product/path.png",
-});
-
-```
-
-### Product List Viewed
-```bash
-rudderanalytics.track("Product List Viewed", {
-  list_id: "list1",
-  category: "What's New",
-  products: [
-    {
-      product_id: "223344ffdds3ff3",
-      sku: "12345",
-      name: "Just Another Game",
-      price: 22,
-      position: 2,
-      category: "Games and Entertainment",
-      url: "https://www.myecommercewebsite.com/product",
-      image_url: "https://www.myecommercewebsite.com/product/path.jpg",
-    },
-    {
-      product_id: "343344ff5567ff3",
-      sku: "12346",
-      name: "Wrestling Trump Cards",
-      price: 4,
-      position: 21,
-      category: "Card Games",
-    },
-  ],
-});
-```
+| RudderStack event name | GA4 event name |
+| -- | -- | -- |
+| products | searched search |
+| product list viewed | view_item_list |
+| promotion viewed | view_promotion |
+| product clicked | select_item |
+| product added to wishlist | add_to_wishlist |
+| product added | add_to_cart |
+| cart shared | share |
+| checkout started | begin_checkout |
+| order completed | purchase |
 
 {% hint style="info" %}
-For more information, please check our guide on the [RudderStack E-Commerce Events Specification](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification).
+For each product in the order, there must be an `id` and `name`. More info on GA4 e-commerce event and corresponding properties [here](https://developers.google.com/gtagjs/reference/ga4-events#view_item_list)
 {% endhint %}
+
 
 ## FAQs
 
@@ -186,4 +139,3 @@ For more information, please check our guide on the [RudderStack E-Commerce Even
 ## Contact Us
 
 If you come across any issues while configuring Google Analytics 4 with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
-
