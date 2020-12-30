@@ -109,6 +109,11 @@ RudderStack's SDK will send the track event name and any properties as custom pr
 For properties that are nested and not a standard GA4 property, RudderStack SDK will flatten them before sending to Google Analytics
 {% endhint %}
 
+{% hint style="info" %}
+There are limits on the number of custom properties per event that can be sent to GA4. RudderStack SDK `doesn't drop` the payload based on these limits.
+If the events are not showing up in **debug view or reports on Google Analytics dashboard**, please refer [this](https://support.google.com/analytics/answer/9237506?hl=en) for collection limits.
+{% endhint %}
+
 ## eCommerce
 
 RudderStack supports eCommerce tracking for GA4. Use the [RudderStack eCommerce spec](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) of sending events while instrumenting your site with Rudder SDK.
