@@ -103,6 +103,10 @@ rudderanalytics.track("Track me");
 ```
 Rudder SDK will send the track event name and any properties as custom properties to GA4.
 
+{% hint style="info" %}
+For properties that are nested and not a standard GA4 property, RudderStack SDK will flatten them before sending to Google Analytics
+{% endhint %}
+
 ## E-Commerce
 
 RudderStack supports E-Commerce tracking for GA4. Use the e-commerce [spec](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) of sending events while instrumenting your site with Rudder SDK.
