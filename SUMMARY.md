@@ -78,6 +78,7 @@
   * [FullStory](destinations/fullstory.md)
   * [Google Ads](destinations/google-ads.md)
   * [Google Analytics](destinations/google-analytics-ga.md)
+  * [Google Analytics 4](destinations/google-analytics-4.md)
   * [Google Cloud Storage](destinations/google-cloud-storage.md)
   * [Google Pub/Sub](destinations/google-pub-sub.md)
   * [Google Tag Manager](destinations/google-tag-manager.md)
