@@ -4,7 +4,7 @@ description: Step-by-step guide to send event data from RudderStack to Google An
 
 # Google Analytics 4
 
-[Google Analytics 4](https://analytics.google.com/) (formerly known as "App + Web") is a new Google Analytics property, with different instrumentation and reports than the Universal Analytics properties. Google Analytics 4 can be used for a websites, apps, or both together - whereas Universal Analytics properties only support websites.
+[Google Analytics 4](https://analytics.google.com/) \(formerly known as "App + Web"\) is a new Google Analytics property, with different instrumentation and reports than the Universal Analytics properties. Google Analytics 4 can be used for websites, apps, or both together - whereas Universal Analytics properties only support websites.
 
 RudderStack supports the `gtag` way of tagging in websites.
 
@@ -40,7 +40,7 @@ In the **Connection Settings**, please enter your **Measurement Id** as shown ab
 
 ## Identify
 
-User-ID is an advanced feature that lets Analytics present a cross-device, cross-platform view of your customers' behavior. Google Analytics 4 uses userId and deviceId (GA's `cid` value from Universal Analytics terminology) to identify users.
+User-ID is an advanced feature that lets Analytics present a cross-device, cross-platform view of your customers' behavior. Google Analytics 4 uses userId and deviceId \(GA's `cid` value from Universal Analytics terminology\) to identify users.
 
 Google Analytics 4 also allows you to set a user ID to the identified visitors if **Send User ID to GA** is enabled in the destination settings page in the RudderStack app. RudderStack will send the identified `userId` according to [this guide](https://developers.google.com/analytics/devguides/collection/ga4/cookies-user-id#set_user_id).
 
@@ -81,15 +81,14 @@ rudderanalytics.page({
 
 #### Extend Page View Property
 
-Google Analytics 4 has a limit on the number of unique properties per event name. The default `page_view` event supports the above properties as mentioned [in this guide](https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484).
-If the **Extend Page View Property** config is enabled, then RudderStack sends the following properties along with any other custom property passed to `page` call of the RudderStack SDK:
+Google Analytics 4 has a limit on the number of unique properties per event name. The default `page_view` event supports the above properties as mentioned [in this guide](https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484). If the **Extend Page View Property** config is enabled, then RudderStack sends the following properties along with any other custom property passed to `page` call of the RudderStack SDK:
 
 * `url`
 * `search`
 
 #### Block Page View Event
 
-When this config is enabled we disable sending Google Analytics 4 `page_view` events on load, instead you can explicitly send a `page_view` event by calling Rudder SDK **page()** API.
+When this config is enabled we disable sending Google Analytics 4 `page_view` events on load, instead you can explicitly send a `page_view` event by calling Rudder SDK **page\(\)** API.
 
 ## Track
 
@@ -100,6 +99,7 @@ A sample `track` call looks like the following:
 ```javascript
 rudderanalytics.track("Track me");
 ```
+
 RudderStack's SDK will send the track event name and any properties as custom properties to Google Analytics 4.
 
 {% hint style="info" %}
@@ -107,8 +107,7 @@ For properties that are nested and not a standard Google Analytics 4 property, R
 {% endhint %}
 
 {% hint style="info" %}
-There are limits on the number of custom properties per event that can be sent to Google Analytics 4. RudderStack SDK `doesn't drop` the payload based on these limits.
-If the events are not showing up in **debug view or reports on Google Analytics dashboard**, please refer [this](https://support.google.com/analytics/answer/9237506?hl=en) for collection limits.
+There are limits on the number of custom properties per event that can be sent to Google Analytics 4. RudderStack SDK `doesn't drop` the payload based on these limits. If the events are not showing up in **debug view or reports on Google Analytics dashboard**, please refer [this](https://support.google.com/analytics/answer/9237506?hl=en) for collection limits.
 {% endhint %}
 
 ## eCommerce
@@ -118,21 +117,20 @@ RudderStack supports eCommerce tracking for Google Analytics 4. Use the [RudderS
 Below are some examples of the track event names that are passed to Google Analytics 4 specific eCommerce event name:
 
 | RudderStack event name | Google Analytics 4 event name |
-| -- | -- | -- |
+| :--- | :--- |
 | Products Searched | search |
-| Product List Viewed | view_item_list |
-| Promotion Viewed | view_promotion |
-| Product Clicked | select_item |
-| Product Added To Wishlist | add_to_wishlist |
-| Product Added | add_to_cart |
+| Product List Viewed | view\_item\_list |
+| Promotion Viewed | view\_promotion |
+| Product Clicked | select\_item |
+| Product Added To Wishlist | add\_to\_wishlist |
+| Product Added | add\_to\_cart |
 | Cart Shared | share |
-| Checkout Started | begin_checkout |
+| Checkout Started | begin\_checkout |
 | Order Completed | purchase |
 
 {% hint style="info" %}
 For each product in the order, there must be an `id` and `name`. More info on Google Analytics 4 e-commerce event and corresponding properties [here](https://developers.google.com/gtagjs/reference/ga4-events#view_item_list)
 {% endhint %}
-
 
 ## FAQs
 
@@ -147,3 +145,4 @@ For each product in the order, there must be an `id` and `name`. More info on Go
 ## Contact Us
 
 If you come across any issues while configuring Google Analytics 4 with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+
