@@ -23,7 +23,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Appcues, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and select **Appcues** from the list of destinations.
+* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and select **Appcues** from the list of destinations.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -31,9 +31,9 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Name your destination, and click on **Next**. You should be able to see the following screen:
 
-![](../.gitbook/assets/appcues.png)
+![Connection settings for Appcues destination](../.gitbook/assets/appcues.png)
 
-* Enter the relevant details and click on **Next** to complete the setup. To get the **API key** & **Account ID** field, please login to Appcues and navigate to **Settings** - **Account**. Here, copy the values of both your API key and the Account ID.
+* Enter the relevant details and click on **Next** to complete the setup. To get the **API Key** & **Account ID** field, please login to Appcues and navigate to **Settings** - **Account**. Here, copy the values of both your API key and the Account ID.
 
 {% hint style="info" %}
 You need to make an `identify` call before making any call to Appcues.
@@ -45,13 +45,24 @@ The `identify` call is used to uniquely identify a user in Appcues. For more inf
 
 A sample `identify` call looks like the following snippet:
 
-```text
-rudderanalytics.identify("userId", userVars); // userVars is a JSON object
+```javascript
+rudderanalytics.identify("userId", {
+  name: "John Doe",
+  title: "CEO",
+  email: "name.surname@domain.com",
+  company: "Company123",
+  phone: "123-456-7890",
+  state: "Texas",
+  rating: "Hot",
+  city: "Austin",
+  postalCode: "12345",
+  country: "US",
+  street: "Sample Address",
+  state: "TX",
+});
 ```
 
-{% hint style="info" %}
 The above call is directly passed on to Appcues via its `Appcues.identify(userId,[properties])` call.
-{% endhint %}
 
 ## Track
 
@@ -59,10 +70,10 @@ A `track` call lets you track custom events as they occur in your web applicatio
 
 A sample `track` call looks like the following:
 
-```text
+```javascript
 rudderanalytics.track("Clicked button", {
-    color: "red",
-    buttonText: "Get started"
+  color: "red",
+  buttonText: "Get started",
 });
 ```
 
@@ -76,7 +87,7 @@ A `page` call contains information such as the URL or the name of the web page v
 
 A sample `page` call looks like the following:
 
-```text
+```javascript
 rudderanalytics.page("homepage");
 ```
 
@@ -100,4 +111,6 @@ You can find the Appcues Account Id on the [Appcues Settings Page](https://studi
 
 ## Contact Us
 
-If you come across any issues while configuring Appcues with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Appcues with RudderStack, please feel free to [contact us](mailto:%doc@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+
+
