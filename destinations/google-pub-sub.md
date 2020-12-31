@@ -134,14 +134,11 @@ If you have set all event type, event and \* for mapping the priority will be gi
 then `type` , followed by \*.
 {% endhint %}
 
-Eg.  
-Let the type of event be track,  
-Event name be product added.  
-And the mapping is done as: 
+For example, let the type of event be `track`, the event name be `product added`. The mapping is done as: 
 
 ![](../.gitbook/assets/screenshot-2020-09-09-at-6.56.02-pm.png)
 
-Then all events should go to the one mapped with product added.
+Now all the events should go to the topic mapped with **`product added`**.
 
 ## Contact Us
 

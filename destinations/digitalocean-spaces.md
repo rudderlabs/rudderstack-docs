@@ -6,7 +6,7 @@ description: >-
 
 # DigitalOcean Spaces
 
-Spaces is an S3-compatible object storage service that lets you store and serve large amounts of data. Each Space is a bucket for you to store and serve files. The free, built-in Spaces CDN minimises page load times, improves performance, and reduces bandwidth and infrastructure costs.
+DigitalOcean Spaces is an S3-compatible object storage service that lets you store and serve large amounts of data. Each Space is a bucket for you to store and serve files. The free, built-in Spaces CDN minimizes page load times, improves performance, and reduces bandwidth and infrastructure costs.
 
 RudderStack allows you to configure Spaces as a destination to which you can dump your event data seamlessly.
 
@@ -16,10 +16,8 @@ Please follow these steps to set up Spaces before adding it as a destination in 
 
 * Login to your DigitalOcean Spaces service
 * Create a new bucket. Alternatively, you can also use an already existing bucket.
-* You will need to provide `access key ID` and `secret access key` to authorise RudderStack to write to your bucket.
+* You will need to provide `access key ID` and `secret access key` to authorize RudderStack to write to your bucket.
 * Make a note of both the `access key ID` and `secret access key` as these will be required while configuring Spaces as a destination.
-
-
 
 ## **Configuring** Spaces **in RudderStack**
 
@@ -46,7 +44,7 @@ That's it! You have successfully added Spaces as a destination in RudderStack. O
 
 ## Contact Us
 
-If you come across any issues while configuring DigitalOcean Spaces with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring DigitalOcean Spaces with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
 
 

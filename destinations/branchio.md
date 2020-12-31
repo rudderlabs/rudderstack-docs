@@ -245,9 +245,9 @@ The following table lists the mapping of the accepted property keys common to al
 
 ### Where can I get the Branch Key from?
 
-You can retrieve the Branch key from the settings page of the [Branch dashboard](https://dashboard.branch.io/#/settings). For more information, please check the Getting Started section above.
+You can retrieve the Branch key from the settings page of the [Branch dashboard](https://dashboard.branch.io/#/settings). For more information, please check the [Getting Started](https://docs.rudderstack.com/destinations/branchio#getting-started) section above.
 
 ## Contact Us
 
-If you come across any issues while configuring Branch with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). . You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Branch with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

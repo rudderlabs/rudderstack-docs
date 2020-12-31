@@ -581,7 +581,7 @@ The tracking ID can be found in your Google Analytics account:
 
 ![](../.gitbook/assets/image%20%2844%29.png)
 
-Navigate to your account and go to Apps. The tracking ID will be present there.
+Navigate to your account and go to **Apps**. The tracking ID will be present there.
 
 ### What are custom metrics and custom dimensions?
 
@@ -622,5 +622,5 @@ The RudderStack JavaScript SDK provides a way of detecting how many page view re
 
 ## Contact Us
 
-If you come across any issues while configuring Google Analytics with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Google Analytics with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

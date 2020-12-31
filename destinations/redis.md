@@ -137,5 +137,5 @@ Set the TLS endpoint of the `redis-stunnel` container as the address in the Rudd
 
 ## Contact Us <a id="contact-us"></a>
 
-If you come across any issues while configuring Redis with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Redis with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

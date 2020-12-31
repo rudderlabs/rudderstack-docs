@@ -99,5 +99,5 @@ You can also check for any delivery failures in the **Live Events** tab of your 
 
 ## Contact Us
 
-If you come across any issues while configuring AWS EventBridge as a destination with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring AWS EventBridge as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

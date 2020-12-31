@@ -89,5 +89,5 @@ You can procure your Heap ID by logging into your Heap account and navigate to A
 
 ## Contact Us
 
-To know more about the Heap.io integration and how to use it, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+To know more about the Heap.io integration and how to use it, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 

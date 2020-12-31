@@ -41,7 +41,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 Leanplum should now be added and enabled as a destination in RudderStack.
 
 {% hint style="warning" %}
-If you choose to keep the `Use in Development Environment` flag `ON` then please put your `developmentKey` in the `Client Key` field. Failing to do so will result to faulty initialization of the SDK and events will not be passed.
+If you choose to keep the **Use in Development Environment** flag as on, then please put your `developmentKey` in the `Client Key` field. Failing to do so will result to faulty initialization of the SDK and events will not be passed.
 {% endhint %}
 
 ## Adding Leanplum to your project
@@ -179,5 +179,5 @@ You can find your **Application ID** and **Client Key** by logging on to your Le
 
 ## Contact Us
 
-If you come across any issues while configuring Leanplum with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Leanplum with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

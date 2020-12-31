@@ -20,7 +20,7 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to AppsFlyer, perform the steps below:
@@ -139,7 +139,7 @@ rudderClient.setup(WRITE_KEY, config);
 
 ## Identify
 
-The `identify` call from RudderStack sets the `userId` through the `setCustomerUserId` method from `AppsFlyerLib` . 
+The `identify` call from RudderStack sets the `userId` through the `setCustomerUserId` method from `AppsFlyerLib` .
 
 RudderStack sets the `email` from `RudderTraits` to AppsFlyer using the `setUserEmails` method from the native SDK.
 
@@ -150,7 +150,7 @@ RudderStack sets the `email` from `RudderTraits` to AppsFlyer using the `setUser
 
 ## Track
 
-The `track` call from RudderStack is mapped to the appropriate standard events of AppsFlyer wherever possible. 
+The `track` call from RudderStack is mapped to the appropriate standard events of AppsFlyer wherever possible.
 
 We map the events as per the following table:
 
@@ -181,7 +181,7 @@ Along with the above event mapping, the event property mapping is done as well, 
 | `product_id` | `af_content_id` |
 | `category` | `af_content_type` |
 | `currency` | `af_currency` |
-| `products` | We formulate the list as per List View [specification](https://support.appsflyer.com/hc/en-us/articles/115005544169#verticals-list-view) and pass it to the property `af_content_list`  |
+| `products` | We formulate the list as per List View [specification](https://support.appsflyer.com/hc/en-us/articles/115005544169#verticals-list-view) and pass it to the property `af_content_list` |
 | `quantity` | `af_quantity` |
 | `order_id` | `af_receipt_id` |
 
@@ -222,7 +222,7 @@ We set the `logLevel` in AppsFlyer based on the `logLevel` set for the `RudderCl
 
 ### Where do I get the AppsFlyer Dev Key?
 
-You can find the **AppsFlyer Dev Key** by logging into your AppsFlyer account and navigating to the **Apps Settings** page in your dashboard. 
+You can find the **AppsFlyer Dev Key** by logging into your AppsFlyer account and navigating to the **Apps Settings** page in your dashboard.
 
 ### Getting an error saying "Build input file cannot be found" for iOS device mode?
 
@@ -234,5 +234,5 @@ pod 'Rudder-Appsflyer',' 1.0.0'
 
 ## Contact Us
 
-If you come across any issues while configuring AppsFlyer with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring AppsFlyer with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

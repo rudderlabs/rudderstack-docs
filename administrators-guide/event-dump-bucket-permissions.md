@@ -46,7 +46,7 @@ For RudderStack to backup events to cloud provider buckets, we need the followin
 
 * Create a service account as follows :- 1. Give a name to this service account 2. Add the role created above. 3. Create key with key type json and save the file locally.
 
-![](../.gitbook/assets/screenshot-2020-08-05-at-11.40.12-am%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![](../.gitbook/assets/screenshot-2020-08-05-at-11.40.12-am%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 
 

@@ -10,7 +10,9 @@ RudderStack allows you to configure Amazon Personalize as a destination to which
 
 ## **Getting Started**
 
-In order to enable dumping data to Amazon Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Personalize. Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon Personalize. Refer to the table below:
+In order to enable dumping data to Amazon Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Personalize. 
+
+Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon Personalize. Refer to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -53,5 +55,5 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ## Contact Us
 
-If you come across any issues while configuring AWS Personalize as a destination with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring AWS Personalize as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

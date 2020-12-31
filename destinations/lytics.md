@@ -127,5 +127,5 @@ Go to your Lytics dashboard, and navigate to **Account** - **Manage Accounts** -
 
 ## Contact Us
 
-To know more about the Lytics integration and how to use it, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+To know more about the Lytics integration and how to use it, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 
