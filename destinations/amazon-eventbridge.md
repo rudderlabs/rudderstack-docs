@@ -34,7 +34,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 * Select the destination as **Amazon EventBridge** to your source. Give your destination a name and then click on **Next**.
 * Next, in the **Settings** section, ****fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
 
-![EventBridge Destination Settings on the RudderStack Dashboard](../.gitbook/assets/image%20%2891%29.png)
+![EventBridge Destination Settings on the RudderStack Dashboard](../.gitbook/assets/image%20%2870%29.png)
 
 * **AWS Credentials**
   * **AWS Region**: Enter the AWS region in which you have created the EventBridge bus.This is a **required** field.
@@ -99,5 +99,5 @@ You can also check for any delivery failures in the **Live Events** tab of your 
 
 ## Contact Us
 
-If you come across any issues while configuring AWS EventBridge as a destination with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring AWS EventBridge as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

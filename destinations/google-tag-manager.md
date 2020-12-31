@@ -37,7 +37,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * In the configuration settings, please add the **Container ID** which you can find in the Admin section of your [GTM dashboard](https://tagmanager.google.com/#/admin/).
 
-![](../.gitbook/assets/image%20%2817%29%20%281%29.png)
+![](../.gitbook/assets/image%20%2817%29%20%281%29%20%281%29.png)
 
 That's it! Google Tag Manager will now load on any page where the RudderStack snippet is initialized, and `rudderanalytics.page` is called on the client-side. 
 
@@ -49,7 +49,7 @@ It is also possible to load RudderStack as a custom tag in Google Tag Manager. H
 
 The following screenshot shows how to add RudderStack as a custom HTML tag which can then be called through Google Tag Manager:
 
-![Adding RudderStack as a tag in Google Tag Manager](../.gitbook/assets/image%20%2868%29.png)
+![Adding RudderStack as a tag in Google Tag Manager](../.gitbook/assets/image%20%2851%29.png)
 
 ## Page
 
@@ -122,5 +122,5 @@ You can find the Container ID in the admin section of your [GTM dashboard](https
 
 ## Contact Us
 
-If you come across any issues while configuring Google Tag Manager with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Google Tag Manager with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

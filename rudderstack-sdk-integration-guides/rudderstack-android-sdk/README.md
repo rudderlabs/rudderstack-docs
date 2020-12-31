@@ -8,7 +8,7 @@ description: >-
 
 ## What is the RudderStack Android SDK?
 
-The RudderStack Android SDK allows you to track event data from your app. It can be easily integrated into your Android application. After integrating this SDK, you will also be able to send the event data to your preferred analytics destination/s such as Google Analytics, Amplitude, and more. 
+The RudderStack Android SDK allows you to track event data from your app. It can be easily integrated into your Android application. After integrating this SDK, you will also be able to send the event data to your preferred analytics destination/s such as Google Analytics, Amplitude, and more.
 
 You can check the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-android) if you want to get more hands-on or keen to know the SDK architecture.
 
@@ -23,10 +23,10 @@ To set up the RudderStack Android SDK, there are a few prerequisites as mentione
 
 ![Android source WriteKey after adding the source](../../.gitbook/assets/android-1.png)
 
-* You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events. 
+* You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
- To get the **Data Plane URL**: ****
+To get the **Data Plane URL**:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
@@ -117,10 +117,10 @@ RudderClient rudderClient = RudderClient.getInstance(
 {% hint style="info" %}
 We automatically track the following optional events:
 
-1. `Application Installed` 
+1. `Application Installed`
 2. `Application Updated`
-3. `Application Opened` 
-4. `Application Backgrounded`  
+3. `Application Opened`
+4. `Application Backgrounded`
 
 You can disable these events using the `withTrackLifecycleEvents` method and passing `false`. But it is highly recommended to keep them enabled.
 {% endhint %}
@@ -145,7 +145,7 @@ rudderClient.track(
 {% tab title="JAVA" %}
 ```java
 rudderClient.track(
-        "Product Added", 
+        "Product Added",
         new RudderProperty()
                 .putValue("product_id", "product_001")
 );
@@ -158,12 +158,16 @@ Follow the method signature as below:
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `name` | `String` | Yes | Name of the event you want to track |
-| `property` | `RudderProperty` or `Map<String, Object>` | No | Extra data properties you want to send along with the event  |
+| `property` | `RudderProperty` or `Map<String, Object>` | No | Extra data properties you want to send along with the event |
 | `options` | `RudderOption` | No | Extra event options |
 
 ## Identify
 
-Capture `deviceId` and use that as `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+We capture `deviceId` and use that as `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+
+{% hint style="info" %}
+On the Android devices, the `deviceId` is assigned during the first boot. It remains consistent across the applications and installs. It changes only after factory reset.
+{% endhint %}
 
 An example `identify` event is as shown:
 
@@ -309,7 +313,7 @@ Follow the method signatures below:
 | :--- | :--- | :--- | :--- |
 | `groupId` | `String` | Yes | An ID of the organization with which you want to associate your user |
 | `traits` | `RudderTraits` | No | Any other property of the organization you want to pass along with the call |
-| `options` | `RudderOption` | No | Event level options  |
+| `options` | `RudderOption` | No | Event level options |
 
 We don't persist the traits for the group across the sessions
 
@@ -338,7 +342,7 @@ Alternatively, you can use the following method signature
 | `newId` | `String` | Yes | The new `userId` you want to assign to the user |
 | `options` | `RudderOption` | No | Event level option |
 
-We replace the old `userId` with the `newUserId` and we persist that identification across the sessions. 
+We replace the old `userId` with the `newUserId` and we persist that identification across the sessions.
 
 ## Reset
 
@@ -364,11 +368,11 @@ You can configure your client based on the following parameters using `RudderCon
 
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
-| `logLevel` | `int` | Controls how much of the log you want to see from the SDK.  | `RudderLogger.RudderLogLevel.NONE` |
+| `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RudderLogger.RudderLogLevel.NONE` |
 | `endPointUri` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
-| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server.  | `10 seconds`  |
+| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
 | `configRefreshInterval` | `int` | It will fetch the config from `dashboard` after this many hours. | `2` |
 | `trackLifecycleEvents` | `boolean` | Whether SDK will capture application life cycle events automatically. | `true` |
 | `recordScreenViews` | `boolean` | Whether SDK will capture screen view events automatically. | `false` |
@@ -406,10 +410,10 @@ rudderClient.putDeviceToken("your_device_token");
 
 We collect the `advertisementId` if it is enabled by the user and the App has the Google Play services Ads SDK embedded in the application. We set the `gaid` under `context.device.advertisementId`.
 
-Apart from it, if you want to set the `advertisingId` by yourself, you can do so using the `updateWithAdvertisingId` method and passing the `advertisingId`. 
+Apart from it, if you want to set the `advertisingId` by yourself, you can do so using the `updateWithAdvertisingId` method and passing the `advertisingId`.
 
 {% hint style="warning" %}
-You need to call `updateWithAdvertisingId` method before calling `getInstance` 
+You need to call `updateWithAdvertisingId` method before calling `getInstance`
 {% endhint %}
 
 An example of setting the `advertisingId` is as below
@@ -423,7 +427,7 @@ RudderClient.updateWithAdvertisingId(<ADVERTISING_ID>);
 We use the `deviceId` as `anonymousId` by default. You can use the following method to override and use your own `anonymousId` with the SDK.
 
 {% hint style="warning" %}
-You need to call `setAnonymousId` method before calling `getInstance` 
+You need to call `setAnonymousId` method before calling `getInstance`
 {% endhint %}
 
 An example of setting the `anonymousId` is as below
@@ -434,7 +438,7 @@ RudderClient.setAnonymousId(<ANONYMOUS_ID>);
 
 ## External ID
 
-You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request. 
+You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
 
 ```bash
 rudderClient.identify(
@@ -501,7 +505,7 @@ Please refer to the [Setting the Android Permission](https://docs.rudderstack.co
 
 ### Can I use the library with Maven?
 
-Yes, you can use the library with `maven`. 
+Yes, you can use the library with `maven`.
 
 ```markup
 <dependency>
@@ -521,7 +525,7 @@ adb logcat -s RudderSDK:V \
     -v tag -e "EventRepository: dump: message:"
 ```
 
-## Contact us
+## Contact Us
 
-In case of any queries, you can always [reach out to us](mailto:%20contact@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy.
+In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy.
 

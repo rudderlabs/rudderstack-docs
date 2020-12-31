@@ -15,7 +15,7 @@ Alternatively, you can use the search feature at the top-right hand side of this
 {% endhint %}
 
 {% hint style="info" %}
-If you come across any issue that is not listed in this guide, please feel free to [reach out](https://rudderstack.com/contact/) to us. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+If you come across any issue that is not listed in this guide, please feel free to  [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 {% endhint %}
 
 ## RudderStack Setup
@@ -87,7 +87,7 @@ Please note that these are conservative numbers. A single RudderStack Node can h
 
 #### I created an account with RudderStack but did not find any server-side sources, only client-side sources. Is this in the roadmap?
 
-Yes, you are right. We don't explicitly list out any server-side sources, though all sources are pretty much the same. When you create a source, you get a `writeKey` which you can use to send events to RudderStack Data Plane. The`writeKey`is what identifies the source, the name \(iOS, Android, or JavaScript\) and can be used by the server-side SDKs. We kept the sources separate mainly to be consistent with Segment.
+Yes, you are right. We don't explicitly list out any server-side sources, though all sources are pretty much the same. When you create a source, you get a `writeKey` which you can use to send events to RudderStack Data Plane. The `writeKey`is what identifies the source, the name \(iOS, Android, or JavaScript\) and can be used by the server-side SDKs. We kept the sources separate mainly to be consistent with Segment.
 
 #### Is there any solution to speed up the number of events?
 
@@ -244,7 +244,7 @@ userLevelTimeWindowInS = 1
 
 ## Contact Us
 
-If you come across any issue that is not listed in this guide, please feel free to [reach out](mailto:%20contact@rudderstack.com) to us. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+If you come across any issue that is not listed in this guide, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 
 
 

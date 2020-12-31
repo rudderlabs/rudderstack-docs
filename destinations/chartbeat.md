@@ -31,7 +31,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * In the Connection Settings page, please enter the relevant information in the fields shown in the following screen:
 
-![Connection Settings for Chartbeat](../.gitbook/assets/image%20%2853%29.png)
+![Connection Settings for Chartbeat](../.gitbook/assets/image%20%2818%29.png)
 
  Each field is as explained below:
 
@@ -87,5 +87,5 @@ You can find your Chartbeat UID on Chartbeat's [Adding The Code](https://chartbe
 
 ## Contact Us
 
-If you come across any issues while configuring Chartbeat with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Chartbeat with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

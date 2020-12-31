@@ -83,18 +83,13 @@ To add Braze to your Android project, please follow these steps:
   }
   ```
 
-* Add the following  under `dependencies` section:
+* Add the following under `dependencies` section:
 
-  ```text
-  implementation 'com.rudderstack.android.sdk:core:1.0.1'
-  implementation 'com.rudderstack.android.integration:braze:0.1.1'
-  implementation 'com.appboy:android-sdk-ui:6.0.+'
+  \`\`\`text implementation 'com.rudderstack.android.sdk:core:1.0.1' implementation 'com.rudderstack.android.integration:braze:0.1.1' implementation 'com.appboy:android-sdk-ui:6.0.+'
 
+// if you don't have Gson included already implementation 'com.google.code.gson:gson:2.8.6'
 
-  // if you don't have Gson included already
-  implementation 'com.google.code.gson:gson:2.8.6'
-  ```
-
+```text
 * Finally change the initialization of the SDK to the following:
 
   ```text
@@ -107,7 +102,7 @@ To add Braze to your Android project, please follow these steps:
           .withFactory(BrazeIntegrationFactory.FACTORY)
           .build()
   )
-  ```
+```
 {% endtab %}
 {% endtabs %}
 
@@ -117,13 +112,21 @@ The `identify` call is used to associate a user to their actions. Apart from cap
 
 A sample `identify`call captured from the RudderStack Android SDK looks like the following code snippet:
 
-```text
-RudderTraits traits = new RudderTraits();
-traits.putAge("21");
-traits.putEmail("test@test.com");
-traits.putId("customer_id");
- 
-rudderClient.identify(traits);
+```javascript
+rudderanalytics.identify("userid", {
+  name: "John Doe",
+  title: "CEO",
+  email: "name.surname@domain.com",
+  company: "Company123",
+  phone: "123-456-7890",
+  state: "Texas",
+  rating: "Hot",
+  city: "Austin",
+  postalCode: "12345",
+  country: "US",
+  street: "Sample Address",
+  state: "TX",
+});
 ```
 
 {% hint style="info" %}
@@ -132,78 +135,91 @@ Ideally, the `identify` method is called when the user registers to the app for 
 
 ## Track
 
-The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**. For more information on the `track` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) guide. 
+The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**. For more information on the `track` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) guide.
 
 A sample `track` call looks like the following code snippet:
 
-```text
-RudderProperty rudderProperty = new RudderProperty();
-rudderProperty.putValue("review_id", "review_id_1");
-rudderProperty.putValue("product_id", "product_id_1");
-rudderProperty.putValue("rating", 2.0);
-rudderProperty.putValue("review_body", "Sample Review Body");
-
-rudderClient.track("Product Reviewed",rudderProperty);
+```javascript
+rudderanalytics.track("Track me", {
+  category: "category",
+  label: "label",
+  value: "value",
+});
 ```
 
 For example, consider the following code snippet for a `track` event `Order Completed` from your JavaScript SDK:
 
-```text
-rudderanalytics.track('Order Completed', { 
-        checkout_id: 'fksdjfsdjfisjf9sdfjsd9f',
-        order_id: '50314b8e9bcf000000000000',
-        affiliation: 'Google Store',
-        total: 27.50,
-        subtotal: 22.50,
-        revenue: 25.00,
-        shipping: 3,
-        tax: 2,
-        discount: 2.5,
-        coupon: 'hasbros',
-        currency: 'USD',
-        products: [{
-                product_id: '507f1f77bcf86cd799439011',
-                sku: '45790-32',
-                name: 'Monopoly: 3rd Edition',
-                price: 19,
-                quantity: 1,
-                category: 'Games',
-                url: 'https://www.example.com/product/path',
-                image_url: 'https:///www.example.com/product/path.jpg'
-            },
-            {
-                product_id: '505bd76785ebb509fc183733',
-                sku: '46493-32',
-                name: 'Uno Card Game',
-                price: 3,
-                quantity: 2,
-                category: 'Games'
-            }
-        ]
+```javascript
+rudderanalytics.track("Order Completed", {
+  checkout_id: "fksdjfsdjfisjf9sdfjsd9f",
+  order_id: "50314b8e9bcf000000000000",
+  affiliation: "Google Store",
+  total: 27.5,
+  subtotal: 22.5,
+  revenue: 25.0,
+  shipping: 3,
+  tax: 2,
+  discount: 2.5,
+  coupon: "hasbros",
+  currency: "USD",
+  products: [
+    {
+      product_id: "507f1f77bcf86cd799439011",
+      sku: "45790-32",
+      name: "Monopoly: 3rd Edition",
+      price: 19,
+      quantity: 1,
+      category: "Games",
+      url: "https://www.example.com/product/path",
+      image_url: "https:///www.example.com/product/path.jpg",
+    },
+    {
+      product_id: "505bd76785ebb509fc183733",
+      sku: "46493-32",
+      name: "Uno Card Game",
+      price: 3,
+      quantity: 2,
+      category: "Games",
+    },
+  ],
 });
 ```
 
 ### Order Completed
 
-When you call the `track` method for an event with the name `Order Completed` using the  eCommerce API, RudderStack sends the products listed in the event to Braze as purchases.
+When you call the `track` method for an event with the name `Order Completed` using the eCommerce API, RudderStack sends the products listed in the event to Braze as purchases.
 
 ## Page
 
 The `page` call allows you to record your website's page views, with the additional relevant information about the page being viewed. For more information on the `page` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) guide.
 
-A sample`page` call is as shown below: 
+A sample`page` call is as shown below:
 
-```text
-rudderanalytics.page("PublicFacingCategory",'HomePage',
-    {"title": "Welcome RudderStack",
-    "url": "http://www.rudderstack.com",
-    'time':'2020-02-11T13:16:23.858+05:30' 
-    });
+```javascript
+rudderanalytics.page("PublicFacingCategory", "HomePage", {
+  title: "Welcome RudderStack",
+  url: "http://www.rudderstack.com",
+  time: "2020-02-11T13:16:23.858Z",
+});
 ```
 
 The above call is made through the RudderStack JavaScript SDK, and sent to Braze as a track event with name set to the page name.
 
+## Group
+
+The `group` call is made to associate the user with a group. The example of a `group` call is as shown below:
+
+```javascript
+rudderanalytics.group("test_group_id", {
+  name: "Group Name"
+});
+```
+
+Once you send the `group` event, RudderStack will send a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` where `groupId` is the ID you've passed in the `group` call, and will set the value to `true`. 
+
+For example, if the `groupId` is `test_group_id` then RudderStack will create a custom attribute to Braze with the name `ab_rudder_group_test_group_id` and set the value to `true`.
+
 ## Contact Us
 
-If you come across any issues while configuring Braze with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Braze with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

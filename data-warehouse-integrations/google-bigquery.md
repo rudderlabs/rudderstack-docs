@@ -40,7 +40,7 @@ To ensure loading data from cloud storage to BigQuery, please make sure to co-lo
   * Add `BigQuery Job User` and `BigQuery Data Owner` roles to the account. Note: If a dataset with the name \(configurable by the setting: namespace in destination settings\) already exists, role of `BigQuery Data Editor` would suffice instead of BigQuery Data Owner
   * Create a key for the service account with JSON as the type and store it.
 
-![Service account permissions](../.gitbook/assets/screenshot-2020-04-08-at-12.09.07-pm%20%281%29%20%281%29%20%281%29.png)
+![Service account permissions](../.gitbook/assets/screenshot-2020-04-08-at-12.09.07-pm%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 * Create and download the private JSON key which will be required while configuring BigQuery as a destination in RudderStack, as shown:
 
@@ -64,7 +64,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Once you have set up the source, select **Google BigQuery** from the list of destinations. Give your destination a name, and then click on **Next**. You will then see the following **Connection Credentials** screen:
 
-![Google BigQuery Configuration Settings in RudderStack](../.gitbook/assets/image%20%2869%29.png)
+![Google BigQuery Configuration Settings in RudderStack](../.gitbook/assets/image%20%2852%29.png)
 
 * Add your project ID and bucket name, as specified in the [Setting up Google BigQuery](https://docs.rudderstack.com/destinations/google-bigquery#setting-up-google-bigquery) section
 * Copy the contents of the credentials JSON file you created and stored, in the section above.
@@ -95,6 +95,6 @@ For instance, `'25dollarpurchase`' will be changed to `'_25dollarpurchase`'.
 
 ## Contact Us
 
-If you come across any issues while configuring Google BigQuery with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.  
+If you come across any issues while configuring Google BigQuery with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.  
 
 

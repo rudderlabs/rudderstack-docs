@@ -39,7 +39,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 In the **Connection Settings**, please enter your **Team API Key** and **Your-Instance** URL as shown above.
 
 {% hint style="info" %}
-If you’re hosting your own PostHog instance, add the URL of your instance without the trailing slash in the **PostHog instance** setting. So, the URL will look something like**`https://[your-instance].com`**
+If you’re hosting your own PostHog instance, add the URL of your instance without the trailing slash in the **PostHog instance** setting. So, the URL will look something like**`https://[your-instance].com`**`.`
 {% endhint %}
 
 ## Identify
@@ -47,7 +47,7 @@ If you’re hosting your own PostHog instance, add the URL of your instance with
 To identify a user to PostHog, you need to call the `identify` API.
 
 {% hint style="info" %}
-For information on the identify call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
+For information on the `identify` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
 A sample `identify` call is as shown below:
@@ -62,7 +62,7 @@ rudderanalytics.identify("name123", {
 });
 ```
 
-We pass the user traits passed along with the `identify` call to PostHog under the `$set` key according to  [PostHog Identify API](https://posthog.com/docs/api/post-only-endpoints#identify) .
+We pass the user traits passed along with the `identify` call to PostHog under the `$set` key according to the [PostHog Identify API](https://posthog.com/docs/api/post-only-endpoints#identify) .
 
 ## Page
 
@@ -79,7 +79,7 @@ rudderanalytics.page({
 ```
 
 {% hint style="info" %}
-For page call, we send `$pageview` as an event to PostHog according to  [PostHog Page API](https://posthog.com/docs/api/post-only-endpoints#page) 
+For the `page` call, we send `$pageview` as an event to PostHog according to the  [PostHog Page API](https://posthog.com/docs/api/post-only-endpoints#page).
 {% endhint %}
 
 In the above sample, we capture information related to the page being viewed such as the category of the page \(`Category`\), as well as the name of the page \(`Sample`\) along with the unique user ID.
@@ -92,7 +92,7 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 The `screen` call is similar to the `page` call, but it is exclusive to your mobile device.
 {% endhint %}
 
-A sample `screen` call using Rudder iOS SDK:
+A sample `screen` call using RudderStack's iOS SDK is as shown:
 
 ```javascript
 [[RudderClient sharedInstance] screen:@"Main" 
@@ -100,7 +100,7 @@ A sample `screen` call using Rudder iOS SDK:
 ```
 
 {% hint style="info" %}
-For screen call we send `$screen` as an event to PostHog according to  [PostHog Screen API](https://posthog.com/docs/api/post-only-endpoints#screen) 
+For screen call we send `$screen` as an event to PostHog according to  [PostHog Screen API](https://posthog.com/docs/api/post-only-endpoints#screen).
 {% endhint %}
 
 In the above snippet, we capture information related to the screen being viewed, such as the name and category.
@@ -142,7 +142,7 @@ rudderanalytics.track("Order Completed", {
 ```
 
 {% hint style="info" %}
-PostHog support`track` call as type`capture.` It sends user behaviour/action as an event. We send it to PostHog according to [PostHog Capture API](https://posthog.com/docs/api/post-only-endpoints#capture)
+PostHog support`track` call as type`capture.` It sends the user behavior/action as an event. This information is sent to PostHog according to the [PostHog Capture API](https://posthog.com/docs/api/post-only-endpoints#capture).
 {% endhint %}
 
 ## Alias
@@ -159,14 +159,16 @@ rudderanalytics.alias("newUserId");
 For alias call, we send $create\_alias as an event to PostHog according to [PostHog Alias API](https://posthog.com/docs/api/post-only-endpoints#alias).
 {% endhint %}
 
+{% hint style="info" %}
 Here, `previousUserId` gets mapped to _distinct id_ and `newUserId` to _alias_ in PostHog.
+{% endhint %}
 
 ## Group
 
-The `group` call lets you associate a particular identified user with a group, such as a company, organisation, or an account.
+The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
 
 {% hint style="info" %}
-The group call sends $group as an event to PostHog according to [PostHog Group API](https://posthog.com/docs/api/post-only-endpoints#group).
+The group call sends `$group` as an event to PostHog according to the [PostHog Group API](https://posthog.com/docs/api/post-only-endpoints#group).
 {% endhint %}
 
 ```javascript
@@ -184,13 +186,15 @@ rudderanalytics.group("sample_group_id", {
 * Go to the **Settings** tab under the **Project** section on the left sidebar.
 * You will find your key written as **Project API Key** or **Team API Key**. 
 
-### What general properties are sent to PostHog with every API call?
+### Which general properties are sent to PostHog with every API call?
 
-We try to map most of the PostHog Native SDKs collected contextual `properties`. Following are the list of `properties` we send .
+RudderStack tries to map most of the PostHog Native SDKs collected contextual `properties`. 
 
-* `$os`,`$current_url`,`$host`,`$pathname`,`$screen_height`,`$screen_width`,`$lib`,`$lib_version`,`$insert_id`,`$time`,`$device_id`,`$ip`,`$timestamp`,`$anon_distinct_id`,`distinct_id`,`$screen_density`,`$device_manufacturer`,`$os_version`,`$timezone`,`$locale`,`$user_agent`,`$app_version`,`$device_name`,`$network_carrier`,`$app_name`,`$device_model`,`$app_namespace`,`$app_build`
+The following are the `properties` sent to PostHog :
+
+`$os`,`$current_url`,`$host`,`$pathname`,`$screen_height`,`$screen_width`,`$lib`,`$lib_version`,`$insert_id`,`$time`,`$device_id`,`$ip`,`$timestamp`,`$anon_distinct_id`,`distinct_id`,`$screen_density`,`$device_manufacturer`,`$os_version`,`$timezone`,`$locale`,`$user_agent`,`$app_version`,`$device_name`,`$network_carrier`,`$app_name`,`$device_model`,`$app_namespace`,`$app_build`
 
 ## Contact Us
 
-If you come across any issues while configuring PostHog with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+If you come across any issues while configuring PostHog with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 

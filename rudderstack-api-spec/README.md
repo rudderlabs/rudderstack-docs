@@ -16,7 +16,7 @@ RudderStack Client SDKs support the following API calls:
 4. **`screen`**: Captures details related to the screen being viewed by the user
 5. **`reset`**: Resets the previously identified user.
 
-These APIs send a set of common information about the user, which helps you get a better context of the user and the associated activities.
+These APIs send a set of common information about the user, which helps you get a better context of the user and their associated activities.
 
 ## How the RudderStack API Calls Work
 
@@ -28,7 +28,7 @@ These APIs send a set of common information about the user, which helps you get 
 
 The event data sent to the RudderStack Server has a `JSON` structure, which has common fields and an API-specific payload. Both of these formats are described in the subsequent sections. 
 
-### Common Fields
+## Common Fields
 
 The common fields define the core structure of the event data. These fields also describe the user identity and other vital information about your app or website.
 
@@ -98,7 +98,7 @@ A detailed description of the common fields is documented in the table below:
 | `type` | `String` | Yes | Captures the type of API. Values can be either one of the `track`,`screen`,`identify`,`page` events |
 | `sentAt` | `Timestamp` | Yes | Captures the time when the event was sent to the RudderStack Server from the client |
 
-### Contextual Fields
+## Contextual Fields
 
 | Name | Data Type | Description |
 | :--- | :--- | :--- |
@@ -113,11 +113,11 @@ A detailed description of the common fields is documented in the table below:
 | `traits` | `Object` | Contains detailed information of the user. We fill in the `anonymousId` for you. You can add more details here using `identify` call from the SDK |
 | `userAgent` | `String` | The user agent of the device that you are tracking |
 
-### Sample Payload Structures
+## Sample Payload Structures
 
 This section demonstrates some sample payloads for the various RudderStack API calls:
 
-#### `identify` payload
+### `identify`
 
 {% hint style="info" %}
 As a best practice, please make sure `identify` is called at the start of every session or page load for logged-in users, if possible. This will ensure all the latest traits are captured.
@@ -159,7 +159,7 @@ A sample payload for the `identify` event after removing the common fields menti
 }
 ```
 
-#### `track` payload
+### `track`
 
 A sample payload for the `Product Reviewed` event after removing the common fields is as shown:
 
@@ -175,7 +175,7 @@ A sample payload for the `Product Reviewed` event after removing the common fiel
 }
 ```
 
-#### `Page` payload
+### `page`
 
 The following code snippet demonstrates a sample payload for the `page` call after removing the common fields:
 
@@ -189,7 +189,7 @@ The following code snippet demonstrates a sample payload for the `page` call aft
 }
 ```
 
-#### `Screen` payload
+### `screen`
 
 A sample payload for `screen`call after removing the common fields is as follows:
 
@@ -210,5 +210,5 @@ A sample payload for `screen`call after removing the common fields is as follows
 
 ## Contact Us
 
-If you want to know more about the RudderStack API specs, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action, or join our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) community for more support.
+If you want to know more about the RudderStack API specs, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action, or join our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) community for more support.
 

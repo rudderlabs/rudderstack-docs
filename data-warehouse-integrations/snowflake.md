@@ -312,5 +312,5 @@ Detailed instructions can be found [here](https://docs.snowflake.com/en/user-gui
 
 ## Contact Us
 
-If you come across any issues while configuring Snowflake with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+If you come across any issues while configuring Snowflake with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 

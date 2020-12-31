@@ -189,5 +189,5 @@ You can obtain the Kissmetrics API Key by logging into your Kissmetrics account,
 
 ## Contact Us
 
-If you come across any issues while configuring Kissmetrics with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Kissmetrics with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

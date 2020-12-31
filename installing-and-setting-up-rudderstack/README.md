@@ -6,7 +6,7 @@ description: >-
 
 # Install and Set Up RudderStack
 
-This guide is aimed at helping you install and set up RudderStack correctly on a variety of platforms. Please feel free to [reach out to us](https://rudderstack.com/contact/) in case you are stuck anywhere in the process, or want more information on any of the topics covered below.
+This guide is aimed at helping you install and set up RudderStack correctly on a variety of platforms. Please feel free to [contact us](mailto:%20docs@rudderstack.com) in case you are stuck anywhere in the process, or want more information on any of the topics covered below.
 
 {% hint style="success" %}
 The easiest way to get started with RudderStack is to [sign up for free](https://app.rudderlabs.com/signup?type=freetrial) on [**RudderStack Cloud** **Free**](https://app.rudderlabs.com/signup?type=freetrial).
@@ -83,14 +83,14 @@ Once you have installed and set up RudderStack on your target machine, please fo
 The **write key** is different from your **workspace token**. The former is associated with the source, while the latter is for your RudderStack account.
 {% endhint %}
 
-![Workspace token vs Write Key](../.gitbook/assets/write-key-vs-token%20%282%29%20%281%29%20%282%29%20%283%29%20%281%29.png)
+![Workspace token vs Write Key](../.gitbook/assets/write-key-vs-token%20%282%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
 
 * You can then login to your Google Analytics account and verify that events are delivered. Go to `MainPage` -&gt; `RealTime` -&gt; `Events`. _RealTime_ view is important as the other dashboards can sometimes take 24 to 48 hours to refresh.
 * You can use our [JavaScript](../rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), [Android](../rudderstack-sdk-integration-guides/rudderstack-android-sdk/), or [iOS](../rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md) SDKs for sending events from your app.
 
 ## Contact Us
 
-To know more about installing and setting up RudderStack, please feel free to [reach out to us](https://resources.rudderstack.com/join-rudderstack-slack). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to talk to you.
+To know more about installing and setting up RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to talk to you.
 
 
 

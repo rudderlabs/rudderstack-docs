@@ -35,7 +35,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Select the destination as **Optimizely Web** to your source. Give your destination a name and then click on **Next**. You should see the following screen:
 
-![Connection Settings for RudderStack Web](../.gitbook/assets/image%20%2867%29.png)
+![Connection Settings for RudderStack Web](../.gitbook/assets/image%20%2850%29.png)
 
 * In the **Connection Settings**, ****configure the settings you want to apply for the destination. The settings are explained in more detail below: 
   * **Send experiment data to other tools:** By enabling this setting, you can send your experiment or campaign data to other destinations configured by you, such as Google Analytics.
@@ -150,5 +150,5 @@ While defining the custom event, you need to provide an `API Name` and while usi
 
 ## Contact Us
 
-If you come across any issues while configuring Optimizely Web with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Optimizely Web with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

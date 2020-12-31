@@ -92,7 +92,7 @@ The following actions are associated with the reviewing activity of the user:
 
 ## Contact Us
 
-To know more about the RudderStack eCommerce spec, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) community - we will be happy to talk to you.
+To know more about the RudderStack eCommerce spec, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) community - we will be happy to talk to you.
 
 
 

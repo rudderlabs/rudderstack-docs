@@ -9,7 +9,9 @@ description: >-
 
 ### Basic functionality  
 
-> We will be using the integration and destination term loosely and interchangeably
+{% hint style="info" %}
+We will be using the terms **integration** and **destination** interchangeably. 
+{% endhint %}
 
 RudderStack JS SDK reads the config data from the control plane to fetch the native integrations. The native integrations must have the following methods/attributes defined by you as shown below. RudderStack JS SDK calls these for initializing the destination global object and forwarding event data namely identify, page and track.
 

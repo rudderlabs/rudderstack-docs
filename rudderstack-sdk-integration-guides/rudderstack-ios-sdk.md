@@ -8,10 +8,10 @@ description: >-
 
 ## What is the RudderStack iOS SDK?
 
-The RudderStack iOS SDK allows you to integrate RudderStack to your iOS application in order to track event data from your app. After integrating this SDK, you will also be able to send this data to your preferred analytics destination/s such as Google Analytics, Amplitude, and more. 
+The RudderStack iOS SDK allows you to integrate RudderStack to your iOS application in order to track event data from your app. After integrating this SDK, you will also be able to send this data to your preferred analytics destination/s such as Google Analytics, Amplitude, and more.
 
 {% hint style="success" %}
-You can check the [codebase on GitHub](https://github.com/rudderlabs/rudder-sdk-ios)  if you want to get more hands-on information or are keen to know the SDK architecture.
+You can check the [codebase on GitHub](https://github.com/rudderlabs/rudder-sdk-ios) if you want to get more hands-on information or are keen to know the SDK architecture.
 {% endhint %}
 
 [![Version](https://img.shields.io/cocoapods/v/Rudder.svg?style=flat)](https://cocoapods.org/pods/Rudder)
@@ -25,10 +25,10 @@ To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned be
 
 ![iOS source writeKey on the RudderStack Dashboard](../.gitbook/assets/ios.png)
 
-* You will also need your Data Plane URL.  Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events. 
+* You will also need your Data Plane URL.  Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
- To get the **Data Plane URL**: ****
+To get the **Data Plane URL**:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
@@ -38,7 +38,7 @@ To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned be
 
 ## Installing the RudderStack iOS SDK
 
-We distribute our iOS SDK through [Cocoapods](https://cocoapods.org). The recommended and easiest way to add the SDK to your project is through `Podfile`.  Follow these steps:
+We distribute our iOS SDK through [Cocoapods](https://cocoapods.org). The recommended and easiest way to add the SDK to your project is through `Podfile`. Follow these steps:
 
 1. Add the RudderStack SDK to your `Podfile`
 
@@ -46,7 +46,7 @@ We distribute our iOS SDK through [Cocoapods](https://cocoapods.org). The recomm
 pod 'Rudder'
 ```
 
-2. Then, run the following command:
+1. Then, run the following command:
 
 ```bash
 pod install
@@ -103,10 +103,10 @@ A shared instance of `RSClient` is accesible after the initialization by `RSClie
 {% hint style="info" %}
 We automatically track the following optional events:
 
-1. `Application Installed` 
+1. `Application Installed`
 2. `Application Updated`
-3. `Application Opened` 
-4. `Application Backgrounded`  
+3. `Application Opened`
+4. `Application Backgrounded`
 
 You can disable these events using the`withTrackLifecycleEvents` method of `RSConfigBuilder` and passing `false`. However, it is highly recommended to keep them enabled.
 {% endhint %}
@@ -144,12 +144,16 @@ The `track` method accepts the following parameters:
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `eventName` | `NSString` | Yes | Name of the event you want to track |
-| `properties` | `NSDictionary` | No | Extra data properties you want to send along with the event  |
+| `properties` | `NSDictionary` | No | Extra data properties you want to send along with the event |
 | `options` | `RudderOption` | No | Extra event options |
 
 ## Identify
 
 We capture `deviceId` and use that as `anonymousId` for identifying the user. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+
+{% hint style="info" %}
+According to the Apple [documentation](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor), if the device has multiple apps from the same vendors, all those apps will be assigned the same `deviceId`. If all the applications from a vendor are uninstalled, then on next install the app will be assigned a new `deviceId`.
+{% endhint %}
 
 An example `identify` event is as shown:
 
@@ -245,7 +249,7 @@ Alternatively, you can use the following method signature
 | :--- | :--- | :--- | :--- |
 | `groupId` | `String` | Yes | An ID of the organization with which you want to associate your user |
 | `traits` | `NSDictionary` | No | Any other property of the organization you want to pass along with the call |
-| `options` | `RudderOption` | No | Event level options  |
+| `options` | `RudderOption` | No | Event level options |
 
 We don't persist the traits for the group across the sessions.
 
@@ -274,7 +278,7 @@ Alternatively, you can use the following method signature
 | `newId` | `String` | Yes | The new `userId` you want to assign to the user |
 | `options` | `RudderOption` | No | Event level option |
 
-We replace the old `userId` with the `newUserId` and we persist that identification across the sessions. 
+We replace the old `userId` with the `newUserId` and we persist that identification across the sessions.
 
 ## Reset
 
@@ -300,11 +304,11 @@ You can configure your client based on the following parameters using `RudderCon
 
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
-| `logLevel` | `int` | Controls how much of the log you want to see from the SDK.  | `RSLogLevelNone` |
+| `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RSLogLevelNone` |
 | `dataPlaneUrl` | `string` | URL of your `data-plane`. | [https://hosted.rudderlabs.com](https://hosted.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request sent to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
-| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server . | `10 seconds`  |
+| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server . | `10 seconds` |
 | `configRefreshInterval` | `int` | Fetches the config from `dashboard` after the specified time \(in hours\). | `2` |
 | `trackLifecycleEvents` | `boolean` | Specify whether the SDK will capture application life cycle events automatically. | `true` |
 | `recordScreenViews` | `boolean` | Specify whether the SDK will capture screen view events automatically. | `false` |
@@ -330,7 +334,7 @@ Follow the instructions below:
 
 ## Advertisement ID
 
-We have kept IDFA collection completely separate from the Core library so that the developer has better control over the same. You can pass the IDFA to `putAdvertisementId` method to set it under `context.device.advertisingId` 
+We have kept IDFA collection completely separate from the Core library so that the developer has better control over the same. You can pass the IDFA to `putAdvertisementId` method to set it under `context.device.advertisingId`
 
 Follow the instructions below:
 
@@ -343,9 +347,9 @@ Follow the instructions below:
     RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
     [builder withDataPlaneURL:[[NSURL alloc] initWithString:DATA_PLANE_URL]];
     [RSClient getInstance:WRITE_KEY config:[builder build]];
-    
+
     [[[RSClient sharedInstance] getContext] putAdvertisementId:[self getIDFA]];
-    
+
     return YES;
 }
 
@@ -359,7 +363,7 @@ Follow the instructions below:
 We use the `deviceId` as `anonymousId` by default. You can use the following method to override and use your own `anonymousId` with the SDK.
 
 {% hint style="warning" %}
-You need to call `setAnonymousId` method before calling `getInstance` 
+You need to call `setAnonymousId` method before calling `getInstance`
 {% endhint %}
 
 An example of setting the `anonymousId` is as below
@@ -370,7 +374,7 @@ An example of setting the `anonymousId` is as below
 
 ## External ID
 
-You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request. 
+You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
 
 ```bash
 RSOption *identifyOptions = [[RSOption alloc] init];
@@ -451,5 +455,5 @@ Update the usage of the following classes as per the table below.
 
 ## Contact us
 
-In case of any queries, you can always [reach out to us](mailto:%20contact@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-ios/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-ios/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

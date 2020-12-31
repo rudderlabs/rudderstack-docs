@@ -102,7 +102,7 @@ function transform(events) {
 }
 ```
 
-![Source Details](../.gitbook/assets/image%20%2883%29.png)
+![Source Details](../.gitbook/assets/image%20%2863%29.png)
 
 ## External API requests
 
@@ -180,5 +180,5 @@ Take into account the memory and time limits when adding a new user transformati
 
 ## Contact Us
 
-If you want to know more about user transformations in RudderStack, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you want to know more about user transformations in RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 

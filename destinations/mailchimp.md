@@ -31,7 +31,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a suitable name to the destination, and then click on **Next**. You should then see the following screen:
 
-![Mailchimp Connection Settings screen](../.gitbook/assets/image%20%2895%29.png)
+![Mailchimp Connection Settings screen](../.gitbook/assets/image%20%2872%29.png)
 
 * Enter the relevant information in the fields such as the **Mailchimp API Key**, **Audience ID** and **DataCenter ID**. Then, click on **Next**.
 
@@ -142,5 +142,5 @@ You can find the Mailchimp Audience ID by logging in to Mailchimp and navigating
 
 ## Contact Us
 
-If you come across any issues while configuring Mailchimp with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Mailchimp with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

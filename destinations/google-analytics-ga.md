@@ -141,9 +141,9 @@ A custom dimension should be set as `dimension{index}` . For example, `dimension
 
 Similar activity is to be done for metrics.A
 
-![Custom Dimensions and Metrics Settings in RudderStack](../.gitbook/assets/image%20%2876%29.png)
+![Custom Dimensions and Metrics Settings in RudderStack](../.gitbook/assets/image%20%2859%29.png)
 
-![Custom Dimensions Settings in Google Analytics](../.gitbook/assets/image%20%2860%29.png)
+![Custom Dimensions Settings in Google Analytics](../.gitbook/assets/image%20%2836%29.png)
 
 An `identify` call with custom dimensions will be recorded after the next `track` or `page` call.
 
@@ -525,7 +525,7 @@ In your Google Analytics account, enable **Site search Tracking** and put the pa
 
 If the query is `abc.com/s=xyz`the setting should be as follows:
 
-![](../.gitbook/assets/image%20%2818%29%20%281%29%20%281%29.png)
+![](../.gitbook/assets/image%20%2818%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 ### Optimize
 
@@ -535,7 +535,7 @@ Add your **Optimize Container ID** in destinations settings.
 
 You can set the content group mapping in the RudderStack dashboard and Google Analytics, as shown in the images below:
 
-![Content Group Mapping in RudderStack](../.gitbook/assets/image%20%2886%29.png)
+![Content Group Mapping in RudderStack](../.gitbook/assets/image%20%2867%29.png)
 
 ![Content Grouping Settings in Google Analytics](../.gitbook/assets/image%20%2826%29.png)
 
@@ -581,7 +581,7 @@ The tracking ID can be found in your Google Analytics account:
 
 ![](../.gitbook/assets/image%20%2844%29.png)
 
-Navigate to your account and go to Apps. The tracking ID will be present there.
+Navigate to your account and go to **Apps**. The tracking ID will be present there.
 
 ### What are custom metrics and custom dimensions?
 
@@ -595,7 +595,7 @@ Please refer to the [Getting Started](https://docs.rudderstack.com/destinations-
 
 Yes. In the **Property Setup**, please change the website URL from HTTP \(default\) to HTTPS as shown:
 
-![Changing the website URL from HTTP to HTTPS](../.gitbook/assets/image%20%2866%29.png)
+![Changing the website URL from HTTP to HTTPS](../.gitbook/assets/image%20%2849%29.png)
 
 ### Can I view real-time reports of my event data?
 
@@ -622,5 +622,5 @@ The RudderStack JavaScript SDK provides a way of detecting how many page view re
 
 ## Contact Us
 
-If you come across any issues while configuring Google Analytics with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Google Analytics with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

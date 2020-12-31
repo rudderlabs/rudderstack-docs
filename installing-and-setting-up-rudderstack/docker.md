@@ -21,5 +21,5 @@ Please follow these steps to set up RudderStack on Docker:
 
 ## Contact Us
 
-In case you have any queries or come across any issues while setting up RudderStack on your hosted demo account, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+In case you have any queries or come across any issues while setting up RudderStack on your hosted demo account, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 

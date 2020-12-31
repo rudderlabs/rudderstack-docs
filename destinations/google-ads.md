@@ -58,7 +58,7 @@ You can make a track call with the conversion name to our RudderStack for a Clic
 
 RudderStack maps the `properties.value`, `properties.currency` or `properties.order_id` to the supported `value`, `currency`, and `transaction_id` fields of Google Ads, respectively. RudderStack also maps `properties.revenue` to `value`. 
 
-A sample track call is as shown:
+A sample `track` call is as shown:
 
 ```text
 rudderanalytics.track('track conversion', {
@@ -80,5 +80,5 @@ You can find the value of the **Conversion Label** from your event snippet. The 
 
 ## Contact Us
 
-If you come across any issues while configuring Google Ads with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Google Ads with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

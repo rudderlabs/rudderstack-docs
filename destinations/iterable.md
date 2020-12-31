@@ -34,7 +34,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 * Select the destination as **Iterable** to your source. Give your destination a name and then click on **Next**.
 * On the **Connection Settings** page, ****fill all the fields with the relevant information and click **Next.**
 
-![Iterable Connection Settings in RudderStack](../.gitbook/assets/image%20%2874%29.png)
+![Iterable Connection Settings in RudderStack](../.gitbook/assets/image%20%2857%29.png)
 
 ### Configurable settings
 
@@ -233,5 +233,5 @@ If this setting is enabled, only the pages having a category will be tracked.
 
 ## Contact Us
 
-If you come across any issues while configuring or using Iterable with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring or using Iterable with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

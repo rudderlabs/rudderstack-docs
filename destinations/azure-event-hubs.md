@@ -34,7 +34,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 * Select the destination as **Azure Event Hubs**. Give your destination a name, and then click on **Next**.
 * In the **Connection Settings**, ****fill the required fields with the relevant information and click **Next.**
 
-![Azure Event Hubs Connection Settings](../.gitbook/assets/image%20%28100%29%20%281%29.png)
+![Azure Event Hubs Connection Settings](../.gitbook/assets/image%20%28100%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
 The required fields are as follows:
 
@@ -80,5 +80,5 @@ You need to create a policy to write to the Event Hub with a `Send` permission, 
 
 ## Contact Us
 
-If you come across any issues while configuring or using Azure Event Hubs with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring or using Azure Event Hubs with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

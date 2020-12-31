@@ -44,7 +44,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 * After choosing a source, select **PostgreSQL** from the list of destinations.
 * Give your destination a name and then click on **Next**. You should then see the following screen:
 
-![PostgreSQL Destination Settings on the RudderStack dashboard](../.gitbook/assets/image%20%2890%29.png)
+![PostgreSQL Destination Settings on the RudderStack dashboard](../.gitbook/assets/image%20%2869%29.png)
 
 * Add the required credentials in the **Connection Settings** as mentioned below:
   * **Host -** The host name of your PostgreSQL service.
@@ -70,5 +70,5 @@ RudderStack converts the event keys into lower case before exporting the data in
 
 ## Contact Us
 
-If you come across any issues while configuring PostgreSQL with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+If you come across any issues while configuring PostgreSQL with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 

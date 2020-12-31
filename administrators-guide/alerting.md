@@ -101,11 +101,11 @@ tasks:
 
 Enterprise alerting has native integrations with various third-party incident management tools like PagerDuty, VictorOps and OpsGenie, as well as notification tools such as Slack and Mattermost. It also supports webhooks, so that you can easily integrate any third-party tool that has HTTP API endpoints.
 
-![A Sample Enterprise Alert Integrated with Slack](../.gitbook/assets/image%20%2873%29.png)
+![A Sample Enterprise Alert Integrated with Slack](../.gitbook/assets/image%20%2856%29.png)
 
 ## Contact Us
 
-To know more about the alerting feature of RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also [request a demo](https://rudderstack.com/request-a-demo/) to see the feature in action, or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+To know more about the alerting feature of RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 
 
 

@@ -33,7 +33,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![](../.gitbook/assets/image%20%2896%29.png)
+![](../.gitbook/assets/image%20%2873%29.png)
 
 ![TVSquared Connection Settings in the RudderStack Dashboard](../.gitbook/assets/image%20%2834%29.png)
 
@@ -108,7 +108,7 @@ rudderanalytics.track('Order Completed',
 
 ## Contact Us
 
-If you come across any issues while configuring TVSquared with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring TVSquared with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
 
 

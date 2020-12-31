@@ -39,7 +39,7 @@ Do you have any questions about RudderStack? Please join our [Slack](https://res
 
 ## UI Pages
 
-![RudderStack Connections Page](../.gitbook/assets/image%20%2892%29.png)
+![RudderStack Connections Page](../.gitbook/assets/image%20%2871%29.png)
 
 ![RudderStack Events Page](../.gitbook/assets/image%20%283%29.png)
 
@@ -53,7 +53,7 @@ Do you have any questions about RudderStack? Please join our [Slack](https://res
 
 ## Contact Us
 
-If you want to know more about RudderStack, feel free to [contact us](mailto:%20contact@rudderstack.com) . You can also see [RudderStack in action](https://app.rudderstack.com/signup?type=freetrial) to check out all the cool features the platform has to offer.
+If you want to know more about RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com) . You can also see [RudderStack in action](https://app.rudderstack.com/signup?type=freetrial) to check out all the cool features the platform has to offer.
 
 For community support, you can always start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you!
 

@@ -109,5 +109,5 @@ If your system is hitting TCP limits and returning HTTP errors, the above config
 
 ## Contact Us
 
-For any other issues or bugs that you might encounter, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help!
+For any other issues or bugs that you might encounter, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help!
 

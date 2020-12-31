@@ -10,7 +10,9 @@ RudderStack allows you to configure Amazon Personalize as a destination to which
 
 ## **Getting Started**
 
-In order to enable dumping data to Amazon Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Personalize. Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon Personalize. Refer to the table below:
+In order to enable dumping data to Amazon Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Personalize. 
+
+Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon Personalize. Refer to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -37,7 +39,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Select the destination as **AWS Personalize**. Give your destination a name and then click on **Next**. You should then see the following screen:
 
-![](../.gitbook/assets/image%20%2858%29.png)
+![](../.gitbook/assets/image%20%2831%29.png)
 
 * Next, in the **Settings** section, ****fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
   * **Connection Credentials**
@@ -53,5 +55,5 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ## Contact Us
 
-If you come across any issues while configuring AWS Personalize as a destination with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring AWS Personalize as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

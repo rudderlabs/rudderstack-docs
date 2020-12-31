@@ -10,12 +10,6 @@ description: >-
 
 Sources are the specified tools or platforms from which the event data can be ingested into RudderStack. This event data can then be routed \(with or without transformation\) into your preferred destinations for the purpose of analytics.
 
-{% hint style="info" %}
-RudderStack currently supports Customer.io, Auth0, Looker and Segment as sources, from which it ingests the data.
-
-We will be adding more sources in the coming days, so stay tuned!
-{% endhint %}
-
 If you wish to contribute to developing more source integrations for RudderStack, please refer to the contributing guide [here](https://github.com/rudderlabs/rudder-server/blob/master/CONTRIBUTING.md).
 
 ## Useful Links

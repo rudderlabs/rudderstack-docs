@@ -25,7 +25,7 @@ Before configuring your source and destination on the RudderStack, please verify
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-Once you have confirmed that the platform supports sending events to Facebook, perform the steps below:
+Once you have confirmed that the platform supports sending events to Facebook App Events, perform the steps below:
 
 * From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Facebook**.
 
@@ -57,13 +57,13 @@ To add Facebook to your iOS project:
 pod 'Rudder-Facebook', '0.1.1'
 ```
 
-* After adding the dependency, you must register the `RudderFacebookFactory` with your `RudderClient` initialisation as a `factory` of `RudderConfig`. To do this, run the following command to import the `RudderFacebookFactory.h` file in your `AppDelegate.m` file.
+* After adding the dependency, you must register the `RudderFacebookFactory` with your `RudderClient` initialization as a `factory` of `RudderConfig`. To do this, run the following command to import the `RudderFacebookFactory.h` file in your `AppDelegate.m` file.
 
 ```text
 #import <Rudder-Facebook/RudderFacebookFactory.h>
 ```
 
-* Then, change the SDK initialisation to the following:
+* Then, change the SDK initialization to the following:
 
 ```text
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
@@ -159,5 +159,5 @@ You can find the **Facebook App Id** by logging into your Facebook Developer acc
 
 ## Contact Us
 
-If you come across any issues while configuring Facebook App Events with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com) . You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Facebook App Events with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

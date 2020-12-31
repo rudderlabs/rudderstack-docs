@@ -127,5 +127,5 @@ WHERE
 
 ## Contact Us
 
-For more information on identity mapping and how we have implemented it at RudderStack, feel free to [reach out to us](https://rudderstack.com/contact/). You can also contact us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+For more information on identity mapping and how we have implemented it at RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also contact us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
 

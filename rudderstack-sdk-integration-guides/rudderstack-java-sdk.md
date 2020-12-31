@@ -263,9 +263,9 @@ For a detailed explanation of the `alias` call, please refer to our [RudderStack
 Only available on version `1.0.1` onwards.
 {% endhint %}
 
-If  you want to block the `flush` until all the events are uploaded , JAVA SDK has one builder method `synchronize()` with default value `false` . It needs to be set as `true` . 
+If  you want to block `flush` until all the events are uploaded , the Java SDK has a builder method called `synchronize()` with default value `false` which needs to be set to `true` . 
 
-An example for Blocking the `flush` is shown:
+An example for blocking the `flush` is shown:
 
 ```java
 RudderAnalytics analytics = RudderAnalytics.builder(
@@ -292,11 +292,9 @@ analytics.shutdown(); // Shut down after the flush is complete.
 
 #### Can I use the ImmutableMap class?
 
-Yes. You need to use the Guava library. You can use plain old Java Maps instead.
+Yes. You need to use the Guava library. You can also use the plain old Java Maps instead.
 
 ## Contact Us
 
-To know more about the RudderStack Java SDK, you can [contact us](mailto:%20contact@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
-In case you come across any issues while using this SDK, please feel free to contact us.
+To know more about the RudderStack Java SDK, you can [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

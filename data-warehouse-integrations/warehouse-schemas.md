@@ -446,5 +446,5 @@ Records created in `rudder_discards` table for the discarded properties from the
 
 ## Contact Us
 
-For any issues or queries that you might come across, please feel free to [contact us](mailto:%20contact@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+For any issues or queries that you might come across, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 
