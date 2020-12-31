@@ -111,9 +111,9 @@ There are limits on the number of custom properties per event that can be sent t
 If the events are not showing up in **debug view or reports on Google Analytics dashboard**, please refer [this](https://support.google.com/analytics/answer/9237506?hl=en) for collection limits.
 {% endhint %}
 
-## E-Commerce
+## eCommerce
 
-RudderStack supports E-Commerce tracking for Google Analytics 4. Use the [RudderStack eCommerce spec](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) of sending events while instrumenting your site with Rudder SDK.
+RudderStack supports eCommerce tracking for Google Analytics 4. Use the [RudderStack eCommerce spec](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) of sending events while instrumenting your site with Rudder SDK.
 
 Below are some examples of the track event names that are passed to Google Analytics 4 specific eCommerce event name:
 
