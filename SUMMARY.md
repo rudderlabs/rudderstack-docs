@@ -61,6 +61,7 @@
   * [AWS Personalize](destinations/aws-personalize.md)
   * [Amplitude](destinations/amplitude.md)
   * [Apache Kafka](destinations/kafka.md)
+  * [Appcues](destinations/appcues.md)
   * [AppsFlyer](destinations/appsflyer.md)
   * [Autopilot](destinations/autopilot.md)
   * [Azure Blob Storage](destinations/microsoft-azure-blob-storage.md)
