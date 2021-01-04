@@ -95,9 +95,7 @@ rudderanalytics.page("homepage");
 The above call is directly passed on to Appcues via its `Appcues.page()` call.
 {% endhint %}
 
-Any additional properties passed to the `page` call are also passed on to Appcues.
-
-Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call using `rudderanalytics`, Appcues checks if there are any current flows for the user and loads them if necessary.
+Any additional properties passed to the `page` call are also passed on to Appcues. Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call using `rudderanalytics`, Appcues checks if there are any current flows for the user and loads them if necessary.
 
 ## FAQs
 
@@ -112,5 +110,3 @@ You can find the Appcues Account Id on the [Appcues Settings Page](https://studi
 ## Contact Us
 
 If you come across any issues while configuring Appcues with RudderStack, please feel free to [contact us](mailto:%doc@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
-
