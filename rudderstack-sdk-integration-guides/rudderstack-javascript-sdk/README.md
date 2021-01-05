@@ -193,9 +193,9 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 
 For more information, please check the [How to Filter Selective Destinations](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data) section.
 
-## 3.2. Identify 
+## 3.2. Identify
 
-This method allows you to link the users and their actions to a specific `userid`.
+This method allows you to link the users and their actions to a specific `userid`. You can also add additional information as `traits` to a user. Once you set the `identify` information to the user, those will be passed to the successive `track` or `page` calls. To reset the user identification, you can use the `reset` method.
 
 The `identify()` method definition is as follows:
 
