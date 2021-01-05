@@ -502,7 +502,7 @@ curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/sch
 }
 ```
 
-### schemas/event-model/{EventID}/key-count
+### schemas/event-model/{EventID}/key-counts
 
 | **Description** | **Arguments** | **Supported Method Types** |
 | :--- | :--- | :--- |
