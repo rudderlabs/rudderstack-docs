@@ -41,7 +41,11 @@ NOTE: Userlist does not support tracking of anonymous users. So, make sure you c
 
 The `identify` call sends the event data to Userlist along with the properties that you pass as the RudderStack traits. For more information on the `identify` call, please refer our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
 
-If the `userId` is already known, it’ll update the user record, otherwise it’ll create a new one. Userlist will only process messages with a `userId`. Messages with only an `anonymousId` will be ignored.
+If the `userId` is already known, Userlist will update the user record, otherwise it’ll create a new one. 
+
+{% hint style="info" %}
+Userlist will only process messages with a `userId`. Messages with only an `anonymousId` will be ignored.
+{% endhint %}
 
 The following code snippet is an example of an `identify` call in RudderStack:
 
