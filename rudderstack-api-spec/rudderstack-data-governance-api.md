@@ -502,7 +502,7 @@ curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/sch
 }
 ```
 
-### schemas/event-model/{EventID}/keys-count
+### schemas/event-model/{EventID}/key-count
 
 | **Description** | **Arguments** | **Supported Method Types** |
 | :--- | :--- | :--- |
@@ -513,7 +513,7 @@ curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/sch
 To get the key-wise counts for any given event-model, run the following command:
 
 ```text
-curl -u <RUDDER_ADMIN_USER>:<DATA_PLANE_URL> https://<your-data-plane-url>/schemas/event-model/ad00285b-f49f-4d4f-88e0-8ec293bbd5c7/keys-count
+curl -u <RUDDER_ADMIN_USER>:<DATA_PLANE_URL> https://<your-data-plane-url>/schemas/event-model/ad00285b-f49f-4d4f-88e0-8ec293bbd5c7/key-counts
 ```
 
 **Example Response**
