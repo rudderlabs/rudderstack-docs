@@ -15,10 +15,14 @@ Before configuring your source and destination on the RudderStack, please check 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | **Supported** | - | - |
-| **Cloud mode** | - | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+{% endhint %}
+
+{% hint style="info" %}
+If you would like to use the entire functionality of Appcues like displaying flows, checklists & surveys please use Appcues device mode and not cloud mode.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to Appcues, perform the steps below:
@@ -92,18 +96,15 @@ rudderanalytics.page("homepage");
 ```
 
 {% hint style="info" %}
-The above call is directly passed on to Appcues via its `Appcues.page()` call.
+ In device mode the above call is directly passed on to Appcues via its `Appcues.page()` call along with any additional properties passed to it.
+ Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call using `rudderanalytics`, Appcues checks if there are any current flows for the user and loads them if necessary.
 {% endhint %}
 
-Any additional properties passed to the `page` call are also passed on to Appcues.
-
-Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call using `rudderanalytics`, Appcues checks if there are any current flows for the user and loads them if necessary.
+{% hint style="info" %}
+ In cloud mode the above call is sent as a track event with name `Viewed a Page` along with any additional properties passed to it.
+{% endhint %}
 
 ## FAQs
-
-### How do I get the Appcues API Key?
-
-You can find the Appcues API key on the [Appcues Settings Page](https://studio.appcues.com/settings/account).
 
 ### How do I get the Appcues Account Id?
 
