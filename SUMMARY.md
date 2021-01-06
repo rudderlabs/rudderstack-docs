@@ -113,6 +113,7 @@
   * [Salesforce](destinations/salesforce.md)
   * [Slack](destinations/slack.md)
   * [TVSquared](destinations/tvsquared.md)
+  * [Userlist](destinations/userlist.md)
   * [VWO \(Visual Website Optimizer\)](destinations/vwo-beta-visual-website-optimizer.md)
   * [Webhooks](destinations/webhooks.md)
   * [Zendesk](destinations/zendesk.md)

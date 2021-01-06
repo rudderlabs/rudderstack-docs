@@ -8,6 +8,10 @@ Userlist allows you to send behavior-based messages to your SaaS users. It’s g
 
 RudderStack supports sending your events to Userlist from the cloud mode S2S \(Server to Server\) by calling the relevant RudderStack APIs.
 
+{% hint style="success" %}
+This destination is supported by Userlist team.
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported. You can refer the following table to do so:
@@ -29,6 +33,10 @@ Once you have confirmed that the platform supports sending events to Userlist, p
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
+* Name your destination, and click on **Next**. You should be able to see the following screen:
+
+![Connection settings for Userlist destination](../.gitbook/assets/userlist.png)
+
 * Enter the “Push API Key” which you can find from your [Userlist Push API settings](https://app.userlist.com/settings/push).
 
 * Once the destination is enabled, events from the RudderStack SDK will start to flow to Userlist.
@@ -41,7 +49,7 @@ NOTE: Userlist does not support tracking of anonymous users. So, make sure you c
 
 The `identify` call sends the event data to Userlist along with the properties that you pass as the RudderStack traits. For more information on the `identify` call, please refer our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
 
-If the `userId` is already known, Userlist will update the user record, otherwise it’ll create a new one. 
+If the `userId` is already known, Userlist will update the user record, otherwise it’ll create a new one.
 
 {% hint style="info" %}
 Userlist will only process messages with a `userId`. Messages with only an `anonymousId` will be ignored.
