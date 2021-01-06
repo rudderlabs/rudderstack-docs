@@ -43,6 +43,7 @@
 * [Sources Guides](sources/README.md)
   * [Data Warehouse as a Source](sources/data-warehouse-as-a-source.md)
   * [PostgreSQL](sources/postgresql.md)
+  * [Google BigQuery](sources/google-bigquery.md)
   * [Segment](sources/segment.md)
   * [Auth0](sources/auth0.md)
   * [Customer.io](sources/customerio.md)
