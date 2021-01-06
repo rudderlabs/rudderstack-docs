@@ -4,6 +4,8 @@ description: Answers to the generally asked questions related to the RudderStack
 
 # SDK FAQs
 
+## FAQs
+
 ### How does RudderStack handle **`anonymousId` ?**
 
 The following are the different ways in which RudderStack handles **`anonymousId`** across different SDKs:
@@ -81,4 +83,8 @@ rudderanalytics.ready(
 	}
 );
 ```
+
+## Contact Us
+
+For more information on the RudderStack SDKs, you can [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to help you!
 
