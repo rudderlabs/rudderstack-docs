@@ -39,6 +39,7 @@
   * [Ruby](rudderstack-sdk-integration-guides/rudderstack-ruby-sdk.md)
   * [.NET](rudderstack-sdk-integration-guides/.net.md)
   * [PHP](rudderstack-sdk-integration-guides/php.md)
+  * [SDK FAQs](rudderstack-sdk-integration-guides/sdk-faqs.md)
 * [Sources Guides](sources/README.md)
   * [Data Warehouse as a Source](sources/data-warehouse-as-a-source.md)
   * [Segment](sources/segment.md)
