@@ -104,6 +104,25 @@ rudderanalytics.page("homepage");
  In cloud mode the above call is sent as a track event with name `Viewed a Page` along with any additional properties passed to it.
 {% endhint %}
 
+## Screen
+
+{% hint style="info" %}
+Screen call was available only in cloud mode.
+{% endhint %}
+
+The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties.
+
+A sample `screen` call looks like the following code snippet:
+
+```javascript
+rudderanalytics.screen({
+  userId: "user_id",
+  category: "Category",
+  name: "Sample",
+})
+```
+
+In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
 ## FAQs
 
 ### How do I get the Appcues Account Id?
