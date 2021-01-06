@@ -8,9 +8,11 @@ description: >-
 
 ## What are Sources in RudderStack?
 
-Sources are the specified tools or platforms from which the event data can be ingested into RudderStack. This event data can then be routed \(with or without transformation\) into your preferred destinations for the purpose of analytics.
+Sources are the tools or platforms from which the event data can be ingested into RudderStack. This event data can then be routed \(with or without transformation\) into your data warehouse or preferred destinations for analytics or other activation use-cases.
 
+{% hint style="success" %}
 If you wish to contribute to developing more source integrations for RudderStack, please refer to the contributing guide [here](https://github.com/rudderlabs/rudder-server/blob/master/CONTRIBUTING.md).
+{% endhint %}
 
 ## Useful Links
 
