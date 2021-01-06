@@ -57,7 +57,7 @@ The **Dimensions** and **Metrics** combination cannot be changed after the sourc
 If a combination of **Dimensions** and **Metrics** chosen by you is invalid, RudderStack will notify you.
 {% endhint %}
 
-## Setting the Data Update Schedule
+### Setting the Data Update Schedule
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Google Analytics account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
