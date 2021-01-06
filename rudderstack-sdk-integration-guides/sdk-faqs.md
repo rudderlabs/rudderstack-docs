@@ -67,13 +67,13 @@ Users sometimes try to directly use the browser APIs to get or set the value for
 It is, therefore, always advisable to use RudderStack's `getAnonymousId` and `setAnonymousId` methods to update the cookie value.
 {% endhint %}
 
-The set anonymousId, use the `setAnonymousId` call after the SDK snippet as below:
+To set `anonymousId`, use the `setAnonymousId` call after the SDK snippet as below:
 
 ```text
 rudderanalytics.setAnonymousId("my-anon-id");
 ```
 
-To get the anonymousId stored in Rudder cookie, use the `getAnonymousId` call inside the ready callback, this ensures that the method is available and returns the previously set anonymousId value.
+To get the `anonymousId` stored in a RudderStack cookie, use the `getAnonymousId` call inside the `ready` callback - this ensures that the method is available and returns the previously set `anonymousId` value.
 
 ```text
 rudderanalytics.ready(
