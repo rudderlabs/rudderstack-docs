@@ -14,16 +14,6 @@ Sources are the tools or platforms from which the event data can be ingested int
 If you wish to contribute to developing more source integrations for RudderStack, please refer to the contributing guide [here](https://github.com/rudderlabs/rudder-server/blob/master/CONTRIBUTING.md).
 {% endhint %}
 
-## Useful Links
-
-{% page-ref page="customerio.md" %}
-
-{% page-ref page="auth0.md" %}
-
-{% page-ref page="looker.md" %}
-
-{% page-ref page="segment.md" %}
-
 ## Contact Us
 
 For more information on the RudderStack sources or the platform in general, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
