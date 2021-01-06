@@ -42,6 +42,7 @@
   * [SDK FAQs](rudderstack-sdk-integration-guides/sdk-faqs.md)
 * [Sources Guides](sources/README.md)
   * [Data Warehouse as a Source](sources/data-warehouse-as-a-source.md)
+  * [Amazon Redshift](sources/amazon-redshift.md)
   * [PostgreSQL](sources/postgresql.md)
   * [Google BigQuery](sources/google-bigquery.md)
   * [Segment](sources/segment.md)

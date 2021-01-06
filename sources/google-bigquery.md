@@ -1,5 +1,5 @@
 ---
-description: Step-by-step guide to set up PostgreSQL as a source in RudderStack
+description: Step-by-step guide to set up Google BigQuery as a source in RudderStack
 ---
 
 # Google BigQuery
@@ -61,7 +61,7 @@ Your table must include one of the following columns - `email`, `user_id`, or `a
 
 That's it! BigQuery is now successfully configured as a source on your RudderStack dashboard. 
 
-RudderStack will start importing data from your BigQuery instance as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+RudderStack will start importing data from your BigQuery instance as per the specified frequency. You can further connect this source to your preferred destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
 ![](../.gitbook/assets/screen-shot-2021-01-06-at-2.55.24-pm%20%281%29.png)
 
