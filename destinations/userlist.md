@@ -4,12 +4,12 @@ description: Step-by-step guide to send your event data from RudderStack to User
 
 # Userlist
 
-Userlist allows you to send behavior-based messages to your SaaS users. It’s great for onboarding your users as well as nurturing them throughout their journey.
+[Userlist](https://userlist.com) allows you to send behavior-based messages to your SaaS users. It’s great for onboarding your users as well as nurturing them throughout their journey.
 
 RudderStack supports sending your events to Userlist from the cloud mode S2S \(Server to Server\) by calling the relevant RudderStack APIs.
 
 {% hint style="success" %}
-This destination is supported by Userlist team.
+This destination is supported by Userlist team. Feel free to contact Userlist via [support@userlist.com](mailto:support@userlist.com). 
 {% endhint %}
 
 ## Getting Started
