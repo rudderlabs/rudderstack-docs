@@ -23,12 +23,12 @@ You can also set up and use RudderStack on your platform of choice:
 If you are planning to use RudderStack in production, we strongly recommend using the [Kubernetes](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/kubernetes) Helm charts. We update our Docker images with bug fixes more frequently than our GitHub repository \(where we release once a month\).
 {% endhint %}
 
-{% hint style="info" %}
+## What is a Data Plane URL? Where do I get it?
+
 For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. ****Here's how to get the data plane URL:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by installing and setting up RudderStack in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID you used to sign up for RudderStack.
-{% endhint %}
 
 ## How to Check the Status of Your Data Plane
 
