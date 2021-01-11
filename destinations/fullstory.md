@@ -33,7 +33,9 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![](../.gitbook/assets/screenshot-2020-02-26-at-3.41.29-pm.png)
 
-* Enter the relevant details and click on **Next**. To get the **FS ORG \*** field, please login to FullStory and navigate to **Settings** - **General**. Here, copy the value present on the following line: `window['_fs_org'] = 'fullstory_org_here';`
+Enter the relevant details and click on **Next**. To get the **FS ORG** field, please login to FullStory and navigate to **Settings** - **General**. Here, copy the value present on the following line: `window['_fs_org'] = 'fullstory_org_id';`
+* In this example **FS ORG** would be `fullstory_org_id`
+
 
 {% hint style="info" %}
 To enable FullStory debugging, you can enable the **FS debug mode** option.
@@ -45,14 +47,17 @@ The `identify` call is used to uniquely identify a user in FullStory. For more i
 
 A sample `identify` call looks like the following snippet:
 
-```text
-rudderanalytics.identify("userId", userVars); // userVars is a JSON object
+```javascript
+rudderanalytics.identify("userId", {
+  name: "John",
+  email: "john@xyz.com"
+  });
 ```
 
 The above call is translated to a FullStory `identify` call as follows:
 
 * `userId` is sent as the `uid` .
-* The JSON object`userVars` is passed on as is.
+* The remaining traits are passed on as is.
 
 {% hint style="info" %}
 If the `userId` is not explicitly provided, the `anonymousId` of the user is sent as the `uid` instead.
@@ -60,24 +65,20 @@ If the `userId` is not explicitly provided, the `anonymousId` of the user is sen
 
 ### `displayName` and `email`
 
-`displayName` and `email` are both **optional** traits that can passed on to FullStory, which handles them in a special manner. Once these traits are specified in the `identify` call, they will show up automatically the next time the user list is browsed in FullStory.
+`displayName` and `email` are both **optional** traits that can passed on to FullStory, and are treated specially. Once these traits are specified in the `identify` call, they will show up automatically the next time the user list is browsed in FullStory.
 
 A sample `identify` call using the above traits is as shown:
 
-```text
+```javascript
 rudderanalytics.identify("1234", {
-    displayName: "John Falko",
-    email: "john@xyz.com",
-    country: "UK"
+  displayName: "John Falko",
+  email: "john@xyz.com",
+  country: "UK"
 });
 ```
 
 {% hint style="info" %}
 For more information on the `displayName` and `email` traits, please refer to the [FullStory documentation](https://help.fullstory.com/hc/en-us/articles/360020828113).
-{% endhint %}
-
-{% hint style="info" %}
-Any additional traits provided in the `identify` call, such as `country` ,will also be passed on to FullStory.
 {% endhint %}
 
 ## Track
@@ -86,11 +87,11 @@ A `track` call lets you track custom events as they occur in your web applicatio
 
 A sample `track` call looks like the following snippet:
 
-```text
-rudderanalytics.track("Order Completed",{
-    orderId: "1234567",
-    price: "567",
-    currency: "USD"
+```javascript
+rudderanalytics.track("Order Completed", {
+  orderId: "1234567",
+  price: "567",
+  currency: "USD"
 });
 ```
 
@@ -102,13 +103,13 @@ A page call contains information such as the URL or the name of the web page vis
 
 By default, all `page` calls are sent to FullStory as events. A sample `page` call looks like the following:
 
-```text
+```javascript
 rudderanalytics.page("homepage");
 ```
 
-The above call sends an event to FullStory with a name `Viewed a Page` .It also sends the following properties with the event :
+The above call sends an event to FullStory with a name `Viewed a Page`. It also sends the following properties with the event:
 
-* `name`: If provided \(`homepage` in the sample example above\)
+* `name` \*if provided \(`homepage` in the sample example above\)
 * `path`
 * `referrer`
 * `search`
