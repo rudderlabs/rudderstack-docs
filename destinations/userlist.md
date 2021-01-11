@@ -4,12 +4,12 @@ description: Step-by-step guide to send your event data from RudderStack to User
 
 # Userlist
 
-[Userlist](https://userlist.com) allows you to send behavior-based messages to your SaaS users. It’s great for onboarding your users as well as nurturing them throughout their journey.
+[Userlist](https://userlist.com) is a popular behavior-based messaging platform that lets you engage with your SaaS users effectively through targeted, behavior-based campaigns. It’s great for onboarding your users as well as nurturing them throughout their journey.
 
 RudderStack supports sending your events to Userlist from the cloud mode S2S \(Server to Server\) by calling the relevant RudderStack APIs.
 
 {% hint style="success" %}
-This destination is supported by Userlist team. Feel free to contact Userlist via [support@userlist.com](mailto:support@userlist.com). 
+This destination is supported by the Userlist team. Feel free to contact Userlist via [support@userlist.com](mailto:support@userlist.com).
 {% endhint %}
 
 ## Getting Started
@@ -37,21 +37,20 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![Connection settings for Userlist destination](../.gitbook/assets/userlist.png)
 
-* Enter the “Push API Key” which you can find from your [Userlist Push API settings](https://app.userlist.com/settings/push).
-
+* Enter the **Userlist Pus Key** which you can find from your [Userlist Push API settings](https://app.userlist.com/settings/push).
 * Once the destination is enabled, events from the RudderStack SDK will start to flow to Userlist.
 
-{% hint style="info" %}
-NOTE: Userlist does not support tracking of anonymous users. So, make sure you call `identify` before calling `track`.
+{% hint style="warning" %}
+Userlist does not support tracking of anonymous users. So, make sure you call `identify` before calling `track`.
 {% endhint %}
 
 ## Identify
 
 The `identify` call sends the event data to Userlist along with the properties that you pass as the RudderStack traits. For more information on the `identify` call, please refer our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
 
-If the `userId` is already known, Userlist will update the user record, otherwise it’ll create a new one.
+If the `userId` is already known, Userlist will update the user record. Otherwise, it’ll create a new one.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Userlist will only process messages with a `userId`. Messages with only an `anonymousId` will be ignored.
 {% endhint %}
 
@@ -70,7 +69,7 @@ rudderanalytics.identify("test-user-id", {
 
 The `group` call is made to associate the user with a company in Userlist. For more information on the `group` call, please refer our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
 
-An example of a `group` call is as shown below:
+An example of a `group` call is as shown:
 
 ```javascript
 rudderanalytics.group("test-group-id", {
@@ -80,9 +79,11 @@ rudderanalytics.group("test-group-id", {
 });
 ```
 
+{% hint style="info" %}
 Userlist supports adding properties to the relationship between user and group. As this isn't officially supported by RudderStack's message format, you can specify the relationship properties by providing additional data for Userlist specifically.
+{% endhint %}
 
-The following example will associate the currently identified user with the given group (company) and set their `role` for that particular group (company) to `owner`.
+The following example will associate the currently identified user with the given group \(company\) and set their `role` for that particular group \(company\) to `owner`.
 
 ```javascript
 rudderanalytics.group("test-group-id", {
@@ -116,10 +117,12 @@ rudderanalytics.track("Project created", {
 ```
 
 {% hint style="info" %}
-Note that every `track` call will be sent to Userlist as a new event. You may send additional properties to describe the event in more detail. Both the event name and additional properties will be stored with the event and normalized to snake case (`project_created` and `project_name`) automatically within Userlist.
+Note that every `track` call will be sent to Userlist as a new event. You may send additional properties to describe the event in more detail. 
+
+Both the event name and additional properties will be stored with the event and normalized to snake case \(`project_created` and `project_name`\) automatically within Userlist.
 {% endhint %}
 
-To track an event in the context of a group (company), you need to specify the `groupId` in the `context`, as shown:
+To track an event in the context of a group \(company\), you need to specify the `groupId` in the `context`, as shown:
 
 ```javascript
 rudderanalytics.track("Project created", {
@@ -133,3 +136,4 @@ rudderanalytics.track("Project created", {
 ## Contact Us
 
 If you come across any issues while configuring Userlist with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+

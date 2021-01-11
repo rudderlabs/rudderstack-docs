@@ -15,11 +15,11 @@ To set up PostgreSQL as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2875%29.png)
+![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 * Scroll down to the **Warehouse Sources** and select **PostgreSQL**. Then, click on **Next**.
 
-![](../.gitbook/assets/screen-shot-2021-01-05-at-3.18.17-pm%20%281%29.png)
+![](../.gitbook/assets/screen-shot-2021-01-05-at-3.18.17-pm%20%281%29%20%281%29.png)
 
 ### Setting Up the Connection
 
