@@ -4,7 +4,7 @@ description: >-
   to your specified destination platforms
 ---
 
-# Destinations Guides
+# RudderStack Destinations
 
 ## What are Destinations in RudderStack?
 
