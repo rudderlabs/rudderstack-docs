@@ -34,8 +34,8 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 ![](../.gitbook/assets/screenshot-2020-02-26-at-3.41.29-pm.png)
 
 Enter the relevant details and click on **Next**. To get the **FS ORG** field, please login to FullStory and navigate to **Settings** - **General**. Here, copy the value present on the following line: `window['_fs_org'] = 'fullstory_org_id';`
-* In this example **FS ORG** would be `fullstory_org_id`
 
+* In this example **FS ORG** would be `fullstory_org_id`
 
 {% hint style="info" %}
 To enable FullStory debugging, you can enable the **FS debug mode** option.

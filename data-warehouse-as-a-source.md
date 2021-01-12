@@ -1,16 +1,16 @@
 ---
 description: >-
-  Detailed technical description of RudderStack's Data Warehouse as a Source
-  feature, with step-by-step instructions for configuration.
+  Detailed technical description of RudderStack's Warehouse Actions feature,
+  with step-by-step instructions for configuration.
 ---
 
-# Data Warehouse as a Source
+# RudderStack Warehouse Actions
 
 RudderStack provides an infrastructure to track, capture, transform, and route your customer event data to your preferred destinations. However, this data can be quite raw in nature - comprising mainly of customer interactions with your website, mobile apps, or other digital assets. 
 
 While the customer event data is important to reconstruct your customers' behavior, there is scope to further enrich customer profiles by processing the other customer-related data residing in every company's main data infrastructure - the **Data Warehouse**.
 
-With RudderStack's **Warehouse as a Source** feature, you can leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations.
+With RudderStack's **Warehouse Actions** feature, you can leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations.
 
 {% hint style="success" %}
 **With this feature, you can configure your data warehouse as a source on the** [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial)**, select the right data and then sync this data to all the destinations that are supported by RudderStack.**
@@ -20,10 +20,10 @@ With RudderStack's **Warehouse as a Source** feature, you can leverage the alrea
 **RudderStack currently supports Google BigQuery, Amazon Redshift, PostgreSQL, ClickHouse, and Snowflake as sources.**
 {% endhint %}
 
-## Configuring Data Warehouse as a Source on RudderStack
+## Configuring Warehouse Actions on RudderStack
 
 {% hint style="info" %}
-Configuring a data warehouse as a source on the RudderStack dashboard involves the following steps:
+Configuring a warehouse actions on the RudderStack dashboard involves the following steps:
 
 1. Setting a name for the source and providing connection credentials for RudderStack to access the data warehouse.
 2. Defining the data that should be pulled out of the data warehouse and subsequently sent to the specified destinations through RudderStack.
@@ -36,13 +36,13 @@ To configure your data warehouse as a source on the RudderStack dashboard, follo
 * Navigate to **Sources**, present in the left panel of the dashboard.
 * Choose your preferred data warehouse which you want to configure as a source, as shown. Then, click on **Next**.
 
-![](../.gitbook/assets/1%20%288%29.png)
+![](.gitbook/assets/1%20%288%29.png)
 
 ### Specifying Connection Credentials
 
 * Assign a name to your source. Then, click on the **Create credentials from scratch** button, if you are configuring your data warehouse in the RudderStack dashboard for the first time.
 
-![](../.gitbook/assets/2%20%281%29%20%281%29.png)
+![](.gitbook/assets/2%20%281%29%20%281%29.png)
 
 {% hint style="info" %}
 If you have previously configured your data warehouse as a source on the RudderStack dashboard, you can simply use the existing credentials and proceed. 
@@ -50,17 +50,17 @@ If you have previously configured your data warehouse as a source on the RudderS
 
 * Next, enter the connection credentials to configure your data warehouse connection with RudderStack, as shown:
 
-![](../.gitbook/assets/screen-shot-2020-12-08-at-9.37.06-pm.png)
+![](.gitbook/assets/screen-shot-2020-12-08-at-9.37.06-pm.png)
 
 {% hint style="warning" %}
-RudderStack currently supports **Google BigQuery**, **Amazon Redshift**, and **Snowflake** as sources. The connection settings will vary according to each warehouse.
+RudderStack currently supports **Google BigQuery**, **PostgreSQL**, **ClickHouse**, **Amazon Redshift**, and **Snowflake** as sources. The connection settings will vary according to each warehouse.
 {% endhint %}
 
 ### Specifying Warehouse Schema and Table
 
 * Next, enter the data warehouse schema and the table name. RudderStack will collect the data from this table.
 
-![](../.gitbook/assets/4%20%287%29.png)
+![](.gitbook/assets/4%20%287%29.png)
 
 {% hint style="warning" %}
 Please note that your source table must include at least one of the following columns for it to be considered a valid source:
@@ -72,13 +72,13 @@ Please note that your source table must include at least one of the following co
 
 * If the table is valid, you can then preview a snippet of the data, as shown:
 
-![](../.gitbook/assets/5.png)
+![](.gitbook/assets/5.png)
 
 * You can also filter, select and edit the column names of the table to be included as the data source, as shown:
 
-![](../.gitbook/assets/6%20%286%29.png)
+![](.gitbook/assets/6%20%286%29.png)
 
-![](../.gitbook/assets/7%20%282%29%20%281%29.png)
+![](.gitbook/assets/7%20%282%29%20%281%29.png)
 
 * Once you've selected all the the required table columns, click on **Next**.
 
@@ -86,11 +86,11 @@ Please note that your source table must include at least one of the following co
 
 * RudderStack also allows you to specify the data update frequency and set a data synchronization time as per your requirement.
 
-![](../.gitbook/assets/8.png)
+![](.gitbook/assets/8.png)
 
 That's it! Your data warehouse is now configured and added as a RudderStack source.
 
-![](../.gitbook/assets/9.png)
+![](.gitbook/assets/9.png)
 
 {% hint style="info" %}
 Currently all events sent to RudderStack via warehouse as a source will be `identify()` events
@@ -100,11 +100,11 @@ Now you can connect this source to any RudderStack destination of your choice. R
 
 ## FAQs
 
-### What type of events are supported by Warehouse as a Source?
+### What type of events are supported by the RudderStack Warehouse Actions?
 
-Currently all events from Warehouse as a Source are `identify()` events.
+Currently all events from the RudderStack warehouse actions are `identify()` events.
 
 ## Contact Us
 
-To know more about the **Data Warehouse as a Source** feature, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also see this feature in action by [requesting a demo](https://resources.rudderstack.com/request-a-demo?_ga=2.47794151.1545771517.1607313913-1655106949.1598281099).
+To know more about RudderStack's Warehouse Actions feature, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also see this feature in action by [requesting a demo](https://resources.rudderstack.com/request-a-demo?_ga=2.47794151.1545771517.1607313913-1655106949.1598281099).
 
