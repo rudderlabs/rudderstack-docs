@@ -4,7 +4,7 @@ description: >-
   specified source into RudderStack
 ---
 
-# RudderStack Cloud Sources
+# RudderStack Cloud Extract
 
 ## What are Sources in RudderStack?
 

@@ -1,12 +1,12 @@
 ---
-description: Step-by-step guide to set up PostgreSQL as a source in RudderStack
+description: Step-by-step guide to ingest your data from PostgreSQL into RudderStack.
 ---
 
 # PostgreSQL
 
 PostgreSQL is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution to deliver efficient analytics and user insights. A myriad of other analytical tools in the market also integrate seamlessly with PostgreSQL. In fact, Amazon Redshift's design is inspired from PostgreSQL.
 
-RudderStack allows you to configure PostgreSQL as a source from which you can route data to your desired destinations through RudderStack.
+This guide will help you configure PostgreSQL as a source from which you can route event data to your desired destinations through RudderStack.
 
 ## Getting Started
 

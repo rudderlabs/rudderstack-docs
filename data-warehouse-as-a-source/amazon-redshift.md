@@ -1,12 +1,12 @@
 ---
-description: Step-by-step guide to set up Amazon Redshift as a source in RudderStack.
+description: Step-by-step guide to ingest your data from Amazon Redshift into RudderStack.
 ---
 
 # Amazon Redshift
 
 [Amazon Redshift](https://aws.amazon.com/redshift/) is the world's fastest cloud data warehouse. It allows you to handle large analytical workloads with best-in-class performance, speed, and efficiency. With Redshift, you don't have to worry about the scale of your data or the cost of running queries on them.
 
-RudderStack allows you to configure Redshift as a source from which you can route event data to your desired destinations, through RudderStack.
+This guide will help you configure Redshift as a source from which you can route event data to your desired destinations through RudderStack.
 
 ## Getting Started
 
