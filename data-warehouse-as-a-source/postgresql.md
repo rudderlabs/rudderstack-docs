@@ -64,6 +64,10 @@ RudderStack will start importing data from your PostgreSQL database as per the s
 
 ![](../.gitbook/assets/screen-shot-2021-01-05-at-3.23.18-pm.png)
 
+{% hint style="info" %}
+If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
+{% endhint %}
+
 ## Contact Us
 
 If you come across any issues while configuring PostgreSQL as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

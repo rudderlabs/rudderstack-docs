@@ -42,6 +42,7 @@
   * [SDK FAQs](rudderstack-sdk-integration-guides/sdk-faqs.md)
 * [RudderStack Warehouse Actions](data-warehouse-as-a-source/README.md)
   * [Amazon Redshift](data-warehouse-as-a-source/amazon-redshift.md)
+  * [Amazon S3](data-warehouse-as-a-source/amazon-s3.md)
   * [PostgreSQL](data-warehouse-as-a-source/postgresql.md)
   * [ClickHouse](data-warehouse-as-a-source/clickhouse.md)
   * [Google BigQuery](data-warehouse-as-a-source/google-bigquery.md)
