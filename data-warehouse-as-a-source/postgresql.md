@@ -27,6 +27,10 @@ To set up PostgreSQL as a source in RudderStack, follow these steps:
 
 ![](../.gitbook/assets/screen-shot-2021-01-05-at-3.19.33-pm.png)
 
+{% hint style="success" %}
+If you've already configured PostgreSQL as a source before, your existing credentials will automatically appear under **Use Existing Credentials**.
+{% endhint %}
+
 * The connection credentials are as follows:
   * **Host -** The host name of your PostgreSQL service.
   * **Database -** The database name in your PostgreSQL instance where the data is loaded.
