@@ -42,7 +42,7 @@ To enable any of the above actions, go to its **Settings** page where you need t
 
 ![Looker Source Write Key](../.gitbook/assets/screen-shot-2020-12-04-at-11.02.19-am.png)
 
-In addition, you also need to specify the **Rudder Server URL** to which the RudderStack actions will be forwarding the user looks data: **https://hosted.rudderlabs.com/v1/batch**
+In addition, you also need to specify the **Rudder Server URL** to which the RudderStack actions will be forwarding the user looks data: https://hosted.rudderlabs.com/v1/batch
 
 ![Configuring the Write Key and the RudderStack Server URL](../.gitbook/assets/image%20%2811%29.png)
 
