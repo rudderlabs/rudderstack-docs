@@ -40,7 +40,7 @@ Make sure to add the `writeKey` as query parameter to the URL. This is required 
 
 You can validate the endpoint using the **Send Test** button.
 
-![Endpoint Configuration](../.gitbook/assets/iAF_src_sendtest.png)
+![Endpoint Configuration](../.gitbook/assets/AF_src_sendtest.png)
 
 * Finally, save the endpoint.
 
