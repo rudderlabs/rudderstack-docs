@@ -1,12 +1,12 @@
 ---
-description: Step-by-step guide to ingest event data from AppsFlyer into RudderStack
+description: Step-by-step guide to ingest your event data from AppsFlyer into RudderStack.
 ---
 
 # AppsFlyer
 
-[AppsFlyer](https://www.appsflyer.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers exciting features to understand your customers better, through intuitive dashboards, real-time data reports, and a unique deep linking technology.
+[AppsFlyer](https://www.appsflyer.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers exciting features to understand your customers better through intuitive dashboards, real-time data reports, and a unique deep linking technology.
 
-This document guides you in setting up AppsFlyer as a source in RudderStack. By adding an endpoint in AppsFlyer's Push API Section under API Access under Integration in AppsFlyer dashboard, you can send events to RudderStack. The endpoint should point to Rudderstack. Events such as Re-engagememt, Re-attribution, Install in-app events and etc. are captured and sent to RudderStack.
+This document guides you in setting up AppsFlyer as a source in RudderStack. You can send your AppsFlyer events by simply adding an endpoint that points to RudderStack, in AppsFlyer's **Push API** section. With this integration, you can also capture and send events such as re-engagement, reattribution, in-app install events, etc. to RudderStack.
 
 ## Getting Started
 
@@ -16,29 +16,29 @@ In order to add AppsFlyer as a source in RudderStack, please follow these steps:
 
 ![Choose AppsFlyer as a source](../.gitbook/assets/AF_choose_src.png)
 
-* Enter the name of your source.
+* Enter the name of your source, and click on **Next**.
 
 ![Provide source name](../.gitbook/assets/AF_src_name.png)
 
-* Once you have entered the name of your source, click on **Next** and save the source.
-
-* Head over to your AppsFlyer account and navigate to the **API Access** section under **Integration** from the sidebar. Look for the **Push API**, as shown:
+* Head over to your AppsFlyer account and navigate to the **API Access** section under **Integration** from the sidebar. Look for the **Push API** section, as shown:
 
 ![](../.gitbook/assets/AF_Dashboard.png)
 
-* Under the **Endpoint Configuration** add an endpoint URL pointing to the URL in the following format:`<your_dataplane_url>/v1/webhook?writeKey=<your_AppsFlyer_source_write_key>`
+* Under the **Endpoint Configuration**, add an endpoint URL pointing to RudderStack in the following format:`<DATA_PLANE_URL>/v1/webhook?writeKey=<your_AppsFlyer_source_write_key>`
 
-An example URL would like the following:
+An example URL should like the following:
 
 ```http
 https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
 ```
 
 {% hint style="warning" %}
-Make sure to add the `writeKey` as query parameter to the URL. This is required to prevent the webhook from failing for the lack of a valid write key.
+Make sure you add the `writeKey` as query parameter to the URL. This is required to prevent the webhook from failing for the lack of a valid write key.
 {% endhint %}
 
+{% hint style="info" %}
 You can validate the endpoint using the **Send Test** button.
+{% endhint %}
 
 ![Endpoint Configuration](../.gitbook/assets/AF_src_sendtest.png)
 
@@ -46,9 +46,9 @@ You can validate the endpoint using the **Send Test** button.
 
 ## RudderStack Event Transformation
 
-The Push events from AppsFlyer are ingested into RudderStack after converting it into the format of a RudderStack event. For example, the `customer_user_id` set by AppsFlyer is set as `userId` . 
+The Push events from AppsFlyer are ingested into RudderStack after converting it into the RudderStack event format. For example, the `customer_user_id` set by AppsFlyer is set as `userId` . 
 
-Also, we populate following properties from AppsFlyer event payload to the RudderStack event:
+Also, RudderStack populates the following properties from AppsFlyer event payload to the RudderStack event:
 
 | AppsFlyer Property | RudderStack Property |
 | :--- | :--- |
