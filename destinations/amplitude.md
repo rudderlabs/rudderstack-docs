@@ -257,10 +257,10 @@ rudderanalytics.track("Track me")
 Amplitude allows for tracking of revenue events. 
 
 {% hint style="warning" %}
-To track a revenue event, you must include a `revenue` and `revenue_type` key in the event. Both the keys are required to have the event counted as a revenue event to send data through the RudderStack cloud mode. 
+To track a revenue event, you must include a `revenue` key in the event. This key is required to have the event counted as a revenue event to send data through the RudderStack cloud mode. 
 {% endhint %}
 
-Additionally, for cloud mode, if you send `price` and `quantity` with the revenue key, the revenue will be calculated in Amplitude as `price * quantity`
+Additionally, if you send `price` and `quantity` with the revenue key, the revenue will be calculated in Amplitude as `price * quantity`
 
 You can also set a `product_id`, but only if `revenue` has been set as well. 
 
@@ -307,7 +307,11 @@ rudderanalytics.track("Order Completed",{
 });
 ```
 
-The above call will generate one `Order Completed` event, 2 individual `Product purchased` events and 2 revenue events \(one with `$price` as `15` and `$quantity` as `2` and the other one with `$price` as `20` and `$quantity` as `1` \) at Amplitude, provided that in the destination settings dashboard: `Track revenue per product settings` is enabled.
+The above call will generate one `Order Completed` event, 2 individual `Product purchased` events and 2 revenue events \(one with `$price` as `15` and `$quantity` as `2` and the other one with `$price` as `20` and `$quantity` as `1` \) at Amplitude, provided that in the destination settings dashboard: `Track revenue per product settings` is enabled. The two separate revenue events are generated for device mode. For cloud mode, revenue will be tracked along with the 2 `Product purchased` events.
+
+{% hint style="info" %}
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+{% endhint %}
 
 {% hint style="info" %}
 **\(Mobile Only\)**  If **** a property with the name`optOutOfSession`and value`true`then this track call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
