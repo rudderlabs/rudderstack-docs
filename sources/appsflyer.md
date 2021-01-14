@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest your event data from AppsFlyer into Ru
 
 [AppsFlyer](https://www.appsflyer.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers exciting features to understand your customers better through intuitive dashboards, real-time data reports, and a unique deep linking technology.
 
-This document guides you in setting up AppsFlyer as a source in RudderStack. You can send your AppsFlyer events by simply adding an endpoint that points to RudderStack, in AppsFlyer's **Push API** section. With this integration, you can also capture and send events such as re-engagement, reattribution, in-app install events, etc. to RudderStack.
+This document guides you in setting up AppsFlyer as a source in RudderStack. You can send your AppsFlyer events by simply adding an endpoint that points to RudderStack, with AppsFlyer's **Push API** option. With this integration, you can also capture and send events such as re-engagement, reattribution, in-app install events, etc. to RudderStack.
 
 ## Getting Started
 
