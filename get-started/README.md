@@ -8,9 +8,9 @@ description: >-
 
 ## What is RudderStack?
 
-[RudderStack](https://rudderstack.com/) is an open-source, warehouse-first Customer Data Platform built for developers**.** With RudderStack, you can collect and route your customer event data securely to your data warehouse and dozens of other tools.
+[RudderStack](https://rudderstack.com/) is a **customer data infrastructure platform** for collecting, routing and processing data from your website, apps, data warehouse and cloud apps. It is enterprise-ready, developer-friendly, and provides a powerful transformation framework to process your event data on the fly.
 
-RudderStack also provides a powerful transformation framework to process your event data on the fly.
+With RudderStack, you can collect and route your customer event data securely to your data warehouse and dozens of other tools.
 
 {% hint style="success" %}
 **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
