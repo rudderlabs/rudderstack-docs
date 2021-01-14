@@ -48,6 +48,7 @@
   * [Google BigQuery](data-warehouse-as-a-source/google-bigquery.md)
 * [RudderStack Cloud Extract](sources/README.md)
   * [Segment](sources/segment.md)
+  * [AppsFlyer](sources/appsflyer.md)
   * [Auth0](sources/auth0.md)
   * [Customer.io](sources/customerio.md)
   * [Facebook Ads](sources/facebook-ads.md)
