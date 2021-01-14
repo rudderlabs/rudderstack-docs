@@ -6,12 +6,12 @@ description: >-
 
 # RudderStack Cloud Mode vs. Device Mode
 
-[RudderStack](https://rudderstack.com/) is an open source **Customer Data Platform \(CDP\)** that allows you to collect your customer event data from a variety of sources, and route it securely to your preferred data warehouse, analytics tools, and dozens of other destinations.
+[RudderStack](https://rudderstack.com/) is a **customer data infrastructure platform** for collecting, routing and processing data from your website, apps, data warehouse and cloud apps.
 
 The underlying principle is quite simple - RudderStack receives the event data from a variety of **Sources**, and routes this data to the **Destinations**.
 
 {% hint style="success" %}
-RudderStack currently supports over 60 destinations. You can find them in our [Destinations Guides](https://docs.rudderstack.com/destinations). You can also check our [Sources Guides](https://docs.rudderstack.com/sources) to get a list of the sources through which you can send your event data to RudderStack.
+RudderStack currently supports over 70 destinations. You can find them in our [Destinations Guides](https://docs.rudderstack.com/destinations). You can also check our [Sources Guides](https://docs.rudderstack.com/sources) to get a list of the sources through which you can send your event data to RudderStack.
 {% endhint %}
 
 ## Connection Modes in RudderStack

@@ -6,7 +6,7 @@ description: >-
 
 # RudderStack API Specification
 
-This RudderStack API specification guide gives you an idea of how to plan your event data, as well as the various options available for tracking your events. We have a unified event semantic for different destination platforms.
+This **RudderStack API specification** guide gives you an idea of how to plan your event data, as well as the various options available for tracking your events. We have a unified event semantic for different destination platforms.
 
 RudderStack Client SDKs support the following API calls:
 
