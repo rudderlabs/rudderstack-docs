@@ -12,7 +12,7 @@ This document guides you in setting up AppsFlyer as a source in RudderStack. You
 
 In order to add AppsFlyer as a source in RudderStack, please follow these steps:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), click on **Add Source**. From the list of sources, select **AppsFlyer**, as shown:
+* From your [RudderStack dashboard](https://app.rudderstack.com/), click on **Add Source**. From the list of sources, select **AppsFlyer**, as shown:
 
 ![Choose AppsFlyer as a source](../.gitbook/assets/AF_choose_src.png)
 
@@ -46,7 +46,7 @@ You can validate the endpoint using the **Send Test** button.
 
 ## RudderStack Event Transformation
 
-The Push events from AppsFlyer are ingested into RudderStack after converting it into the RudderStack event format. For example, the `customer_user_id` set by AppsFlyer is set as `userId` . 
+The Push events from AppsFlyer are ingested into RudderStack after converting it into the RudderStack event format. For example, the `customer_user_id` set by AppsFlyer is set as `userId` .
 
 Also, RudderStack populates the following properties from AppsFlyer event payload to the RudderStack event:
 
