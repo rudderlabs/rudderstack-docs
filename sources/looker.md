@@ -52,7 +52,7 @@ Once the connection is successful, you should start seeing the RudderStack actio
 
 Once configured, RudderStack Actions support sending query results to RudderStack.
 
-When defining your columns for the Looker models attached to the look that you will be sending to RudderStack, it's important to tag the user identifier column as `email` **or** `user_id` **or** `rudder_anonymous_id`. Additionally, to use the **RudderStack Group** action, you need to tag your group identifier column as `rudder_group_id`.\*\*
+When defining your columns for the Looker models attached to the look that you will be sending to RudderStack, it's important to tag the user identifier column as `email` **or** `user_id` **or** `rudder_anonymous_id`. Additionally, to use the **RudderStack Group** action, you need to tag your group identifier column as `rudder_group_id`.
 
 {% hint style="info" %}
 In **some** specific cases - e.g. Redis - the `user_id` field always needs to be present, even if the `email` field is present.
