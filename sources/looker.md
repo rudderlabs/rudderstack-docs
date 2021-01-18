@@ -13,7 +13,7 @@ You can now use Looker as a source of data, where it can be used to send user-re
 After creating your views in Looker, you need to set-up [Looker actions](https://docs.looker.com/admin-options/platform/actions). Go to your Looker Actions dashboard to do this.
 
 {% hint style="warning" %}
-While RudderStack supports teams and individual workspaces in its **Enterprise** **edition** - Looker does not allow for individual Action Hub configurations for different members of the same organization.
+While RudderStack supports teams and individual workspaces in its **Enterprise edition** - Looker does not allow for individual Action Hub configurations for different members of the same organization.
 {% endhint %}
 
 {% hint style="info" %}
@@ -24,7 +24,7 @@ One can enable [RudderStack Actions](https://github.com/rudderlabs/actions) on L
 
 ### **Adding RudderStack Action Hub Server**
 
-RudderStack hosts a Looker [Action Hub Server](https://docs.looker.com/sharing-and-publishing/action-hub#writing_an_action) that communicates with your Looker instance. Once you connect the Action Hub Server to your Looker instance by clicking on the **Add Action Hub** button present at the bottom of Looker Actions dashboard, you can start viewing the three RudderStack actions as above**.**
+RudderStack hosts a Looker [Action Hub Server](https://docs.looker.com/sharing-and-publishing/action-hub#writing_an_action) that communicates with your Looker instance. Once you connect the Action Hub Server to your Looker instance by clicking on the **Add Action Hub** button present at the bottom of Looker Actions dashboard, you can start viewing the three RudderStack actions as above.
 
 {% hint style="info" %}
 The RudderStack Action Hub Server can be found at [https://looker-action-hub.rudderstack.com](https://looker-action-hub.rudderstack.com)
@@ -52,7 +52,7 @@ Once the connection is successful, you should start seeing the RudderStack actio
 
 Once configured, RudderStack Actions support sending query results to RudderStack.
 
-When defining your columns for the Looker models attached to the look that you will be sending to RudderStack, it's important to tag the user identifier column as `email` **or `user_id`** or **\*\*`rudder_anonymous_id`**. **Additionally, to use the** RudderStack Group **action, you need to tag your group identifier column as `rudder_group_id`**.\*\*
+When defining your columns for the Looker models attached to the look that you will be sending to RudderStack, it's important to tag the user identifier column as `email` **or** `user_id` **or** `rudder_anonymous_id`. Additionally, to use the **RudderStack Group** action, you need to tag your group identifier column as `rudder_group_id`.\*\*
 
 {% hint style="info" %}
 In **some** specific cases - e.g. Redis - the `user_id` field always needs to be present, even if the `email` field is present.
@@ -62,7 +62,7 @@ In **some** specific cases - e.g. Redis - the `user_id` field always needs to be
 The other user and activity columns will be sent as traits or properties along with the payload that is being sent to RudderStack by the above three actions.
 {% endhint %}
 
-A sample `track` payload from the look's row data sent by the **RudderStack Track** action _\*\*_is as below:
+A sample `track` payload from the look's row data sent by the **RudderStack Track** action is as below:
 
 ```javascript
 {
@@ -104,7 +104,7 @@ A sample `track` payload from the look's row data sent by the **RudderStack Trac
 ```
 
 {% hint style="info" %}
-The column names in your looks are transformed as `<Looker view name>.<column name>`  
+The column names in your looks are transformed as `<Looker view name>.<column name>`
 in the payload sent to RudderStack by the RudderStack actions. If you want to change the names to your end destination needs, you can use our User-Transformer feature to transform them.
 {% endhint %}
 
