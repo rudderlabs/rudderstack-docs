@@ -143,6 +143,9 @@ The current mapping is as follows:
 
 We assume that there is always an `identify` call before any `group` call with userId is made. If `groupId` and `userId` both are present in the payload of a group call, then, we will find the user with the **email** present in the traits, if not present, we will create the user. We also find the organization by the `groupId` that you provide. If that is not present, we create that too and after that, we do the association.
 
+If the user exists the organisation id will be attached to the user and all the user informations will be sent for this call.
+The traits under message containts the group informations but when the identify call is being made during the group call the user informations will be fetched from under the context.traits.
+
 ## Settings
 
 The following are the settings for Zendesk:
