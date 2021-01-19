@@ -1,15 +1,17 @@
 ---
-description: Step-by-step guide to send your event data from RudderStack to Active Campaign
+description: Step-by-step guide to send your event data from RudderStack to ActiveCampaign
 ---
 
-# Active Campaign
+# ActiveCampaign
 
-[Active Campaign](https://www.activecampaign.com/) is a popular platform which provides email marketing, marketing automation and CRM tools platform that makes it easy for you to deliver scalable customer experiences and accelerate your business growth. With Active Campaign all-in-one growth platform, you can effectively monitor your customers' product behavior, and design personalized customer experiences and in no time.
+[ActiveCampaign](https://www.activecampaign.com/) is a popular marketing automation and CRM platform that makes it easy for you to drive customer engagement and retention. With ActiveCampaign's all-in-one email marketing and growth platform, you can easily monitor your customers' product behavior and use the insights to design and drive highly personalized customer experiences.
+
+You can now send your event data directly to ActiveCampaign through RudderStack.
 
 
 ## Getting Started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Active Campaign. Please refer the following table to do so:
+Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by ActiveCampaign. Please refer the following table to do so:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -20,9 +22,9 @@ Before configuring your source and destination on the RudderStack, please check 
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-Once you have confirmed that the platform supports sending events to Active Campaign, perform the steps below:
+Once you have confirmed that the platform supports sending events to ActiveCampaign, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and Active Campaign as a destination.
+* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and ActiveCampaign as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -34,20 +36,20 @@ Do not add native Adjust SDK to your project as it will prevent you from success
 
 ![Configuration Settings for Adjust](../.gitbook/assets/Active_Campaign.png)
 
-## Active Campaign Configuration Settings on the RudderStack Dashboard
+## ActiveCampaign Configuration Settings on the RudderStack Dashboard
 
-To successfully configure Amplitude as a destination, you will need to configure the following settings:
+To successfully configure ActiveCampaign as a destination, you will need to configure the following settings:
 
-* **API Url:** Your API URL is the unique url generated against your account and it can be found in your account on the Settings page under the "Developer" tab.
-* **API Key:** Your API key can be found in your account on the Settings page under the "Developer" tab. Each user in your ActiveCampaign account has their own unique API key.
-* **Event Key:** This value is unique to your ActiveCampaign account and can be found named "Event Key" on Settings > Tracking > Event Tracking inside your ActiveCampaign account.
-* **ActID:** This value is unique to your ActiveCampaign account and can be found named "actid" on Settings > Tracking > Event Tracking API.
+* **API URL:** Your API URL is the unique URL generated against your account. It can be found in your account on the **Settings** page under the **Developer** tab.
+* **API Key:** Your API key can be found in your account on the **Settings** page under the **Developer** tab. Each user in your ActiveCampaign account has their own unique API key.
+* **Event Key:** This value is unique to your ActiveCampaign account and can be found as the **Event Key** in **Settings** - **Tracking** - **Event Tracking**, in your ActiveCampaign account.
+* **ActID:** This value is unique to your ActiveCampaign account, and can be found as **actid** in **Settings** - **Tracking** - **Event Tracking API**.
 
 ## Page
 
 The `page` call allows you to record information whenever a user sees a web page, along with the associated optional properties of that page. This method must be called at least once per page load.
 
-When you call page, we will send that event to ActiveCampaign as a `site tracking event`. This will add your domain to whitelist for tracking.
+When you call `page`, RudderStack will send that event to ActiveCampaign as a `site tracking event`. This will add your domain to whitelist for tracking purposes.
 
 A sample `page` call looks like the following:
 
@@ -60,10 +62,10 @@ rudderanalytics.page("home", {
         referrer: "referrer"
 });
 ```
-In the above sample, we capture information related to the page being viewed, the url `property` will is used to whiltelist the website in the destination
+In the above sample, RudderStack captures the information related to the page being viewed, the URL `property` is used to whiltelist the website in the destination.
 
 {% hint style="info" %}
-A Page call will only work if `Site Tracking is enabled`. You can enable this by visiting the Tracking tab on the Settings page in your ActiveCampaign account.
+A `page` call will only work if **Site Tracking** is enabled. You can enable this by visiting the **Tracking** tab in the settings page of your ActiveCampaign account.
 {% endhint %}
 
 ## Screen
@@ -82,7 +84,7 @@ rudderanalytics.screen("Screen Viewed", {
  });
 ```
 
-In the above snippet, we capture information related to the screen being viewed, and info about that screen view event.
+In the above snippet, RudderStack captures information related to the screen being viewed, along with any additional info on that screen view event.
 
 ## Track
 
@@ -98,7 +100,7 @@ rudderanalytics.track("Product Purchased", {
  });
 ```
 
-In the above snippet, we capture information related to the `Product Purchased` event, and info about that event, like name of that event.
+In the above snippet, RudderStack captures the information related to the `Product Purchased` event, along with any additional info about that event - in this case the name of the product.
 
 ## Identify
 
@@ -117,15 +119,16 @@ rudderanalytics.identify({
   }
 })
 ```
-In the above snippet, we capture informations about a user.
+In the above snippet, RudderStack captures relevant information about the user such as the `userId` as well as the associated traits such as `email`, `phone`, and `name` of that user.
 
 {% hint style="info" %}
-The `email` trait is a mandatory trait for mapping a user to Active Campaign. If user already exists the user will be updated with new values.
+The `email` trait is a mandatory trait for mapping a user to ActiveCampaign. If a user already exists, the new values will be updated for that user.
 {% endhint %}
 
 ### Custom tags
 
-You can associate a user with custom tags by passing in `tags` trait
+You can associate a user with custom tags by passing in the `tags` trait, as shown:
+
 ```javascript
 rudderanalytics.identify({
   "userId": "userid",
@@ -139,12 +142,14 @@ rudderanalytics.identify({
 })
 ```
 {% hint style="info" %}
-The `tags` property should contain an array of tags which you want to associate with the user. If any tag is already created previously in the destination Rudder will skip creation of that tag automatically.
+The `tags` property should contain an array of tags which you want to associate with the user. If any tag is already created in the destination previously, RudderStack will automatically skip the creation of that tag.
 {% endhint %}
 
 ### Custom fields
 
-ActiveCampaign also supports updating a contact’s custom fields with this integration. To send custom fields to ActiveCampaign you need to create the custom field first in ActiveCampaign for each custom field you want to send. Then when you call identify with keys that match those traits, those custom fields for the contact will be updated. Use the `fieldInfo` trait to set values to custom fields.
+ActiveCampaign also supports updating a contact’s custom fields with this RudderStack integration. 
+
+To send custom fields to ActiveCampaign, you will need to first create the custom fields in ActiveCampaign for each custom field that you want to send. Then when you call `identify` with keys that match those traits, the custom fields for that contact will be updated. You can use the `fieldInfo` trait to set values to the custom fields.
 
 ```javascript
 rudderanalytics.identify({
@@ -164,10 +169,10 @@ rudderanalytics.identify({
 ```
 
 {% hint style="info" %}
-The `fieldInfo` property contains the value of  filed information you want to store for that contact. For using this feature you have to create the fields from the dashboard (Example - `Interest, Country`) before passing in values for a user.
+The `fieldInfo` property contains the value of the field information that you want to store for that contact. For using this feature, you have to create the fields from your ActiveCampaign dashboard (For example - `Interest, Country`) before passing in the values for the given user.
 {% endhint %}
 
 
 ## Contact Us
 
-If you come across any issues while configuring Amplitude with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring ActiveCampaign with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
