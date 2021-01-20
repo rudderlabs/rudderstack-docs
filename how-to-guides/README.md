@@ -12,7 +12,7 @@ description: >-
 
 {% page-ref page="live-destination-event-debugger.md" %}
 
-{% page-ref page="adding-source-and-destination-rudderstack.md" %}
+{% page-ref page="../get-started/adding-source-and-destination-rudderstack.md" %}
 
 ## Contact Us
 

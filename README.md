@@ -6,7 +6,7 @@
 
 With RudderStack, you can build customer data pipelines that connect your whole customer data stack and then make them smarter by triggering enrichment and activation in customer tools based on analysis in your data warehouse.
 
-RudderStack's easy-to-use SDKs and source integrations, Cloud Extract integrations, transformations, and expansive library of destination and warehouse integrations makes building customer data pipelines for both event streaming and cloud-to-warehouse ELT simple.
+RudderStack's easy-to-use [SDKs](https://docs.rudderstack.com/rudderstack-sdk-integration-guides), [Cloud Extract integrations](https://docs.rudderstack.com/sources), transformations, and expansive library of [destinations](https://docs.rudderstack.com/destinations) and [warehouse actions](https://docs.rudderstack.com/rudderstack-warehouse-actions) makes building customer data pipelines for both event streaming and cloud-to-warehouse ELT simple.
 
 > **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 >

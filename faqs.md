@@ -161,7 +161,7 @@ You should use the `track` method in the SDK instead. For JavaScript SDK's `trac
 
 ## RudderStack Integrations
 
-RudderStack currently supports integrations with over 40 marketing and analytics platforms. This section aims to address the commonly asked questions about these integrations.
+RudderStack currently supports integrations with over 70 marketing and analytics platforms. This section aims to address the commonly asked questions about these integrations.
 
 #### Would a destination connected with a source work if connected to a new source? Or would we need to do anything else for that?
 
@@ -175,14 +175,12 @@ You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` 
 
 #### What sort of hardening is in place to ensure up-times with a single RudderStack node?
 
-* At the infrastructure layer, we run on a multi-availability zone EKS cluster. So hardware failures, if any, are handled by Kubernetes by relocating pods, and so on.
-* At the application level, RudderStack has a couple of failure modes:
-
-  * **Normal** mode is where everything is normal.
-  * If for reason it fails \(e.g. because of a bug\), we bring the system in a **Degraded** mode, where it processes incoming requests but doesn't send it to destinations. 
-  * If that fails too \(e.g. internal database corruption\), we bring the system in a **Maintenance** mode where we save the previous state \(which can be debugged and processed\) and start from scratch - still receiving requests. 
-
-* All our SDKs also have failure handling. They can store events in local storage and retry on failure.
+* At the infrastructure layer, RudderStack runs on a multi-availability zone EKS cluster. So hardware failures, if any, are handled by Kubernetes by relocating pods.
+* At an application level, RudderStack operates in either of the following 3 modes:
+  * **Normal** mode, where everything is normal and there are no issues.
+  * If for some reason the system fails \(e.g. because of a bug\), it enters the **Degraded** mode, where RudderStack processes incoming requests but doesn't send it to destinations. 
+  * If the system continues to fail to process the data \(e.g. internal database corruption\), it enters the **Maintenance** mode where we save the previous state \(which can be debugged and processed\) and start from scratch - still receiving requests. 
+* All of RudderStack's SDKs also have failure handling. They can store events in local storage and retry on failure.
 * RudderStack provides isolation between the data and control planes. For example, if the control plane \(where you manage the source and destination configurations\) goes offline, the data plane continues to operate.
 
 All this is done to ensure that RudderStack can always receive events, and no events are lost.
