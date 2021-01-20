@@ -107,20 +107,21 @@ The event properties object should only contain the values of type String and Nu
 
 The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
 
-A sample `screen` call looks like the following code snippet:
+A sample `screen` call using our Android SDK looks like the following code snippet:
 
 ```javascript
-rudderanalytics.screen({
-  userId: "user_id",
-  category: "Category",
-  name: "Sample",
-});
+rudderClient.screen(
+    "MainActivity",
+    "HomeScreen",
+    new RudderProperty().putValue("foo", "bar"),
+    null
+);
 ```
 
 In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
 
 {% hint style="info" %}
-The above screen call is directly passed on to Appcenter as a `track` event via its `trackEvent` api with event name as `Viewed a Screen` along with the its properties.
+The above screen call is directly passed on to Appcenter as a `track` event via its `trackEvent` api with event name as `Viewed {screen name} screen` along with the its properties. The above example will be sent as a `track` event with name `Viewed MainActivity screen` along with its properties.
 {% endhint %}
 
 ## FAQs
