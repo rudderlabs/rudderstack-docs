@@ -4,7 +4,7 @@ description: >-
   to your specified data warehouse platforms
 ---
 
-# Data Warehouse Integration Guides
+# Data Warehouse Destinations
 
 RudderStack currently supports data warehouse integrations for Snowflake, Redshift, Google BigQuery, and PostgreSQL.
 
