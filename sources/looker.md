@@ -104,8 +104,7 @@ A sample `track` payload from the look's row data sent by the **RudderStack Trac
 ```
 
 {% hint style="info" %}
-The column names in your looks are transformed as `<Looker view name>.<column name>`
-in the payload sent to RudderStack by the RudderStack actions. If you want to change the names to your end destination needs, you can use our User-Transformer feature to transform them.
+The column names in your looks are transformed as `<Looker view name>.<column name>` in the payload sent to RudderStack by the RudderStack actions. If you want to change the names to your end destination needs, you can use our User-Transformer feature to transform them.
 {% endhint %}
 
 ## Contact Us

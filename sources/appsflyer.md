@@ -71,8 +71,7 @@ Also, RudderStack populates the following properties from AppsFlyer event payloa
 | `os_version` | `context.os.version` |
 | `city` | `traits.address.city`, `context.traits.address.city` |
 | `postal_code` | `traits.address.zip`, `context.traits.address.zip` |
-| `country_code` | `traits.address.country`, `context.traits.address.country`
-
+| `country_code` | `traits.address.country`, `context.traits.address.country` |
 
 ## Contact Us
 
