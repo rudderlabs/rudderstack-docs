@@ -78,6 +78,34 @@ val rudderClient = RudderClient.getInstance(
 {% endtab %}
 
 {% tab title="iOS" %}
+Follow these steps to add Appcenter to your iOS project:
+
+* Go your `Podfile` and add the `Rudder-AppCenter` extension
+
+```text
+pod 'Rudder-AppCenter'
+```
+
+* After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
+
+```text
+#import <RudderAppCenterFactory.h>
+```
+
+* Finally, change the initialization of your `RudderClient` as shown:
+
+```text
+RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
+[builder withDataPlaneUrl:<YOUR_DATA_PLANE_URL>];
+[builder withFactory:[RudderAppCenterFactory instance]];
+[RudderClient getInstance:<YOUR_WRITE_KEY> config:[builder build]];
+```
+```text
+The following requirements must be met to use App Center :
+
+Your iOS project is set up in Xcode 11 or later on macOS version 10.14.4 or later.
+You're targeting devices running on iOS 9.0 or later.
+```
 
 {% endtab %}
 {% endtabs %}
