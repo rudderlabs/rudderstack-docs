@@ -1,16 +1,16 @@
 ---
-description: Step-by-step guide to send your event data from RudderStack to Appcenter
+description: Step-by-step guide to send your event data from RudderStack to App Center
 ---
 
-# Appcenter
+# App Center
 
-[Appcenter](https://appcenter.ms/) lets you automate and manage the lifecycle of your iOS, Android, Windows, and macOS apps. Ship apps more frequently, at higher-quality, and with greater confidence. Connect your repo and within minutes automate your builds, test on real devices in the cloud, distribute apps to beta testers, and monitor real-world usage with crash and analytics data. All in one place.
+[App Center](https://appcenter.ms/) is Microsoft's cross-platform build automation and management platform that lets you seamlessly manage your app's lifecycle. With App Center, you can easily manage and automate your builds, effectively test your apps in the cloud, and monitor their real-time usage with the help of crash data and analytics.
 
-RudderStack supports sending your event data to Appcenter from our native web SDKs, to help you understand your customers better.
+RudderStack lets you send your event data to App Center via its native web SDKs.
 
 ## Getting Started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Appcenter. Please refer the following table to do so:
+Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by App Center. Please refer the following table to do so:
 
 | **Connection Mode** | **Web** | **Mobile**    | **Server** |
 | :------------------ | :------ | :------------ | :--------- |
@@ -21,9 +21,9 @@ Before configuring your source and destination on the RudderStack, please check 
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-Once you have confirmed that the platform supports sending events to Appcenter, perform the steps below:
+Once you have confirmed that the platform supports sending events to App Center, perform the steps below:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and select **Appcenter** from the list of destinations.
+- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and select **App Center** from the list of destinations.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -31,13 +31,13 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 - Name your destination, and click on **Next**. You should be able to see the following screen:
 
-![Connection settings for Appcenter destination](../.gitbook/assets/appcenter.png)
+![Connection settings for App Center destination](../.gitbook/assets/App Center.png)
 
-- Enter the relevant details and click on **Next** to complete the setup. The **Api Secret Key** can be found as **App Secret** on the Getting Started page or Settings page on the App Center portal.
+- Enter the relevant details and click on **Next** to complete the setup. The **API Secret Key** can be found as **App Secret** on the **Getting Started** page or **Settings** page on the App Center portal.
 
 {% tabs %}
 {% tab title="Android" %}
-Follow these steps to add Appcenter to your Android project:
+Follow these steps to add App Center to your Android project:
 
 - Add the following `dependencies` to your `app/build.gradle` file as shown:
 
@@ -47,7 +47,7 @@ implementation 'com.rudderstack.android.integration:appcenter:1.0.0'
 implementation 'com.google.code.gson:gson:2.8.6'
 ```
 
-- also add the App center `analytics` depedencies to your `app/build.gradle` as shown below:
+- Also add the App Center `analytics` depedencies to your `app/build.gradle` as shown below:
 
 ```text
 def appCenterSdkVersion = '4.1.0'
@@ -62,7 +62,7 @@ defaultConfig {
 }
 ```
 
-- Finally change the initialization of your `RudderClient` in your `Application` class.
+- Finally, change the initialization of your `RudderClient` in your `Application` class, as shown:
 
 ```text
 val rudderClient = RudderClient.getInstance(
@@ -78,7 +78,7 @@ val rudderClient = RudderClient.getInstance(
 {% endtab %}
 
 {% tab title="iOS" %}
-Follow these steps to add Appcenter to your iOS project:
+Follow these steps to add App Center to your iOS project:
 
 * Go your `Podfile` and add the `Rudder-AppCenter` extension
 
@@ -86,7 +86,7 @@ Follow these steps to add Appcenter to your iOS project:
 pod 'Rudder-AppCenter'
 ```
 
-* After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
+* After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file, as shown:
 
 ```text
 #import <RudderAppCenterFactory.h>
@@ -101,6 +101,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [RudderClient getInstance:<YOUR_WRITE_KEY> config:[builder build]];
 ```
 ```text
+
 The following requirements must be met to use App Center :
 
 Your iOS project is set up in Xcode 11 or later on macOS version 10.14.4 or later.
@@ -124,18 +125,18 @@ rudderanalytics.track("Clicked button", {
 ```
 
 {% hint style="info" %}
-The above track call is directly passed on to Appcenter via its `trackEvent` api in both `Android` & `iOS` sdk's.
+The above track call is directly passed on to App Center via its `trackEvent` api in both the RudderStack `Android` & `iOS` SDKs.
 {% endhint %}
 
 {% hint style="info" %}
-The event properties object should only contain the values of type String and Number and the other types are simply ignored if sent.
+The event properties object should only contain the values of type `String` and `Number`- the other property types will be simply ignored, if sent.
 {% endhint %}
 
 ## Screen
 
 The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
 
-A sample `screen` call using our Android SDK looks like the following code snippet:
+A sample `screen` call using the RudderStack Android SDK looks like the following code snippet:
 
 ```javascript
 rudderClient.screen(
@@ -146,22 +147,22 @@ rudderClient.screen(
 );
 ```
 
-In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
+In the above snippet, RudderStack captures the information related to the screen being viewed, such as screen's name and category.
 
 {% hint style="info" %}
-The above screen call is directly passed on to Appcenter as a `track` event via its `trackEvent` api with event name as `Viewed {screen name} screen` along with the its properties. The above example will be sent as a `track` event with name `Viewed MainActivity screen` along with its properties.
+The above `screen` call is directly passed on to App Center as a `track` event via its `trackEvent` API, with event name as `Viewed {screen name} screen` along with the its properties. The above example will be sent as a `track` event with name `Viewed MainActivity screen` along with its properties.
 {% endhint %}
 
 ## FAQs
 
-### How do I get the Appcenter API secret?
+### How do I get the App Center API secret?
 
-The **Api Secret Key** can be found as **App Secret** on the Getting Started page or Settings page on the App Center portal.
+The **API Secret Key** can be found as **App Secret** on the **Getting Started** page or **Settings** page on your App Center portal.
 
 ### What is transmission interval?
 
-The App Center SDK uploads logs in a batch of 50 and if the SDK doesn't have 50 logs to send, it will still send logs after 3 seconds (by default). There can be a maximum of three batches sent in parallel. Here this 3 seconds interval is the transmission interval and value must be between 3 seconds and 86400 seconds (one day).
+The App Center SDK uploads logs in a batch of 50. If the SDK doesn't have 50 logs to send, it will still send logs after 3 seconds (set by default). There can be a maximum of 3 batches sent in parallel. In this case, this interval of 3 seconds is the **transmission interval**. Note that the value of this transmission interval must always be between 3 seconds and 86400 seconds (one day).
 
 ## Contact Us
 
-If you come across any issues while configuring Appcenter with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring App Center with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
