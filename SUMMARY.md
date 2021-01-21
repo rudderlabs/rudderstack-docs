@@ -60,7 +60,7 @@
   * [Salesforce](sources/salesforce.md)
   * [Zendesk](sources/zendesk.md)
 * [RudderStack Destinations](destinations/README.md)
-  * [Active Campaign](destinations/active-campaign.md)
+  * [ActiveCampaign](destinations/active-campaign.md)
   * [Adjust](destinations/adjust.md)
   * [Amazon EventBridge](destinations/amazon-eventbridge.md)
   * [Amazon Kinesis](destinations/amazon-kinesis.md)

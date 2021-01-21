@@ -30,7 +30,7 @@ Once you have confirmed that the platform supports sending events to ActiveCampa
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-![Configuration Settings for Adjust](../.gitbook/assets/Active_Campaign.png)
+![Configuration Settings for ActiveCampaign](../.gitbook/assets/Active_Campaign.png)
 
 ## ActiveCampaign Configuration Settings on the RudderStack Dashboard
 
@@ -143,7 +143,7 @@ The `tags` property should contain an array of tags which you want to associate 
 
 ### Custom fields
 
-ActiveCampaign also supports updating a contact’s custom fields with this RudderStack integration. 
+ActiveCampaign also supports updating a contact’s custom fields with this RudderStack integration.
 
 To send custom fields to ActiveCampaign, you will need to first create the custom fields in ActiveCampaign for each custom field that you want to send. Then when you call `identify` with keys that match those traits, the custom fields for that contact will be updated. You can use the `fieldInfo` trait to set values to the custom fields.
 
