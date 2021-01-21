@@ -30,10 +30,6 @@ Once you have confirmed that the platform supports sending events to ActiveCampa
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-{% hint style="warning" %}
-Do not add native Adjust SDK to your project as it will prevent you from successful integration. Please refer to the screenshot below for more details:
-{% endhint %}
-
 ![Configuration Settings for Adjust](../.gitbook/assets/Active_Campaign.png)
 
 ## ActiveCampaign Configuration Settings on the RudderStack Dashboard
