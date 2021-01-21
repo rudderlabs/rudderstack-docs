@@ -35,7 +35,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![Connection Settings for HubSpot in RudderStack](../.gitbook/assets/hubspot.png)
 
-* Provide your HubSpot **API key** and **Hub ID** in the required fields. Please find [**API Key**](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key) and  [**Hub ID**](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id) ****in your Hubspot Account.
+* Provide your HubSpot **API key** and **Hub ID** in the required fields. Please find [**API Key**](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key) and  [**Hub ID**](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id) in your Hubspot Account.
 
 {% hint style="warning" %}
 API Key is mandatory if you need to send data to Hubspot using `cloud-mode`
@@ -71,15 +71,15 @@ rudderanalytics.page();
 
 The `identify` call is used to create or update a contact in HubSpot.
 
-You need to provide an email id of that user under the `traits` of the `identify` call. 
+You need to provide an email id of that user under the `traits` of the `identify` call.
 
 {% tabs %}
 {% tab title="Cloud Mode" %}
- In cloud mode, the `identify` call will create or update a contact in HubSpot. You are not required to call `page` or `track` after to create the contact. 
+ In cloud mode, the `identify` call will create or update a contact in HubSpot. You are not required to call `page` or `track` after to create the contact.
 {% endtab %}
 
 {% tab title="Device Mode" %}
-In Device mode, you must call either `page` or `track` after the identify call to create a contact. Previous `page` and `track` calls will also become associated with that contact once identified. 
+In Device mode, you must call either `page` or `track` after the identify call to create a contact. Previous `page` and `track` calls will also become associated with that contact once identified.
 {% endtab %}
 {% endtabs %}
 
@@ -116,7 +116,7 @@ HubSpot supports the following traits as special fields:
 
 ### Custom properties
 
-Hubspot also supports custom properties. You can update values of the `contact` property that you have created in HubSpot. 
+Hubspot also supports custom properties. You can update values of the `contact` property that you have created in HubSpot.
 
 {% hint style="warning" %}
 * Note that when you provide any custom property, it automatically converts to lower case and any space will be replaced with an underscore. HubSpot does not accept properties in upper case and spaces.
@@ -157,7 +157,7 @@ rudderanalytics.track(
 
 ### Revenue events
 
-For revenue events, a `value` or `revenue` key should be included in the properties of the event to be recorded in Hubspot. 
+For revenue events, a `value` or `revenue` key should be included in the properties of the event to be recorded in Hubspot.
 
 ## Screen
 
@@ -165,9 +165,39 @@ The `screen` call records the screen views of the user in your App. If you have 
 
 Here is a sample `screen` call in using RudderStack iOS SDK:
 
-```text
-[[RSClient sharedInstance] screen:@"Main" 
+```xcode
+[[RSClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
+```
+
+## HubSpot CRM Custom Object
+
+We support [HubSpot CRM Custom Object](https://developers.hubspot.com/docs/api/crm/crm-custom-objects) thorugh our `identify` call. We expect an object with the name `hubspot` and following properties under it.
+- `contactId`
+- `qualifiedName`
+- `objects`
+
+The `objects` should be an array containing the objects with two properties, `objectId` and `objectType`. Also, the `contactId` is the HubSpot ID of your HubSpot contact. We associate the contact with the objects you provided in the `objects` array.
+
+Here is an example of the `identify` call for HubSpot CRM Custom Object
+
+```javascript
+rudderanalytics.identify(
+  "userId",
+   {
+     email: "name@domain.com",
+     hubspot: {
+       contactId: "512",
+       qualifiedName: "p99688696_car",
+       objects: [
+         {
+           objectId: "32921360",
+           objectType: "car"
+         }
+       ]
+     }
+   }
+);
 ```
 
 ## FAQs
