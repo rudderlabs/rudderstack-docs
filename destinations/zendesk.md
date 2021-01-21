@@ -36,7 +36,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ## Identify
 
-The `identify` call creates or updates a user in Zendesk. We use the `email` in `traits` for those actions. Thus, we recommend you to send the email address of your user in the identify call. 
+The `identify` call creates or updates a user in Zendesk. We use the `email` in `traits` for those actions. Thus, we recommend you to send the email address of your user in the identify call.
 
 ```javascript
 rudderanalytics.identify("12345678", {
@@ -93,7 +93,7 @@ This `identify` call updates the user as well as remove it from the organization
 
 ## Track
 
-Zendesk expects an `userId` for every `track` call. You can set the `userId` by producing an `identify` call before sending any `track` event. We affix the user details from the `identify` call, to the subsequent calls. 
+Zendesk expects an `userId` for every `track` call. You can set the `userId` by producing an `identify` call before sending any `track` event. We affix the user details from the `identify` call, to the subsequent calls.
 
 Here is a sample `track` call
 
@@ -106,7 +106,7 @@ rudderanalytics.track("Track me", {
 ```
 
 {% hint style="info" %}
-**IMPORTANT:** We use [Zendesk Sunshine Events API](https://developer.zendesk.com/rest_api/docs/sunshine/events_api) for `track` call. You need to meet the following criteria to make the `track` events successful. 
+**IMPORTANT:** We use [Zendesk Sunshine Events API](https://developer.zendesk.com/rest_api/docs/sunshine/events_api) for `track` call. You need to meet the following criteria to make the `track` events successful.
 
 * You've signed up for the Events API early access program
 * A `userId` is passed along with the `track` call
@@ -126,9 +126,9 @@ rudderanalytics.group("123456789", {
 });
 ```
 
-The group call connects the user to the organization.‌ You can incapacitate this feature by disabling the "**Send Group Calls without User ID"** on the dashboard. We create or update the organization if no user is associated with the event. 
+The group call connects the user to the organization.‌ You can incapacitate this feature by disabling the "**Send Group Calls without User ID"** on the dashboard. We create or update the organization if no user is associated with the event.
 
-Currently, RudderStack maps the group traits to a subset of the standard organization attributes of Zendesk. We'll create a new custom field for any unmapped attributes. 
+Currently, RudderStack maps the group traits to a subset of the standard organization attributes of Zendesk. We'll create a new custom field for any unmapped attributes.
 
 The current mapping is as follows:
 
@@ -143,8 +143,8 @@ The current mapping is as follows:
 
 We assume that there is always an `identify` call before any `group` call with userId is made. If `groupId` and `userId` both are present in the payload of a group call, then, we will find the user with the **email** present in the traits, if not present, we will create the user. We also find the organization by the `groupId` that you provide. If that is not present, we create that too and after that, we do the association.
 
-If the user exists the organisation id will be attached to the user and all the user informations will be sent for this call.
-The traits under message containts the group informations but when the identify call is being made during the group call the user informations will be fetched from under the context.traits.
+If the user exists the `organizationId` will be attached to the user and all the user information will be sent for this call.
+The `traits` under `message` containts the group information but when the `identify` call is being made during the `group` call the user informations will be fetched from the `context.traits`.
 
 ## Settings
 
