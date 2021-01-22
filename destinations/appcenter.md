@@ -128,10 +128,9 @@ rudderanalytics.track("Clicked button", {
 The above track call is directly passed on to App Center via its `trackEvent` api in both the RudderStack `Android` & `iOS` SDKs.
 {% endhint %}
 
-The event properties object should only contain the values of type `String` and `Number`- the other property types will be simply ignored, if sent.
+The `eventProperties` object should only contain the values of type `String` and `Number`- the other property types will be simply ignored, if sent.
 
-For example:
-If eventProperties is set as 
+For example, if eventProperties is set as: 
 
 ```javascript
 {
@@ -144,7 +143,7 @@ If eventProperties is set as
 }
 ```
 
-then it will be sent to appcentre as 
+then it will be sent to App Center as: 
 
 ```javascript
 {
