@@ -128,10 +128,30 @@ rudderanalytics.track("Clicked button", {
 The above track call is directly passed on to App Center via its `trackEvent` api in both the RudderStack `Android` & `iOS` SDKs.
 {% endhint %}
 
-{% hint style="info" %}
 The event properties object should only contain the values of type `String` and `Number`- the other property types will be simply ignored, if sent.
-{% endhint %}
 
+For example:
+If eventProperties is set as 
+
+```javascript
+{
+  "colours": [
+    "red",
+    "black"
+  ],
+  "city": "varkala",
+  "state": "kerala"
+}
+```
+
+then it will be sent to appcentre as 
+
+```javascript
+{
+  "city": "varkala",
+  "state": "kerala"
+}
+```
 ## Screen
 
 The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
