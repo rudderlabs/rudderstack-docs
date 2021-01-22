@@ -31,7 +31,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 - Name your destination, and click on **Next**. You should be able to see the following screen:
 
-![Connection settings for App Center destination](../.gitbook/assets/App Center.png)
+![Connection settings for App Center destination](../.gitbook/assets/appcenter.png)
 
 - Enter the relevant details and click on **Next** to complete the setup. The **API Secret Key** can be found as **App Secret** on the **Getting Started** page or **Settings** page on the App Center portal.
 
@@ -125,7 +125,7 @@ The above track call is directly passed on to App Center via its `trackEvent` ap
 
 The `eventProperties` object should only contain the values of type `String` and `Number`- the other property types will be simply ignored, if sent.
 
-For example, if eventProperties is set as: 
+For example, if eventProperties is set as:
 
 ```javascript
 {
@@ -138,7 +138,7 @@ For example, if eventProperties is set as:
 }
 ```
 
-then it will be sent to App Center as: 
+then it will be sent to App Center as:
 
 ```javascript
 {
