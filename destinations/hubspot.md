@@ -57,7 +57,7 @@ The `page` call is not supported in cloud mode for HubSpot.
 {% endtab %}
 
 {% tab title="Device Mode" %}
-To send the data to HubSpot, an initial `page` call is required.  For more information on the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+To send the data to HubSpot, an initial `page` call is required. For more information on the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
 The following snippet is an example of a `page` call:
 
@@ -75,7 +75,7 @@ You need to provide an email id of that user under the `traits` of the `identify
 
 {% tabs %}
 {% tab title="Cloud Mode" %}
- In cloud mode, the `identify` call will create or update a contact in HubSpot. You are not required to call `page` or `track` after to create the contact.
+In cloud mode, the `identify` call will create or update a contact in HubSpot. You are not required to call `page` or `track` after to create the contact.
 {% endtab %}
 
 {% tab title="Device Mode" %}
@@ -129,7 +129,7 @@ For sending properties of type `date` send the date as the epoch time, or as a `
 
 ## Track
 
-A `track` call is used to record any action the user performs. For more information on the `track` call,  refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
+A `track` call is used to record any action the user performs. For more information on the `track` call, refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 
 To associate a `track` call with a user, you need to specify the user's `email` under `traits` under `context` . Additionally, we associate the `track` events called after an `identify` request with the same contact.
 
@@ -165,7 +165,7 @@ The `screen` call records the screen views of the user in your App. If you have 
 
 Here is a sample `screen` call in using RudderStack iOS SDK:
 
-```xcode
+```text
 [[RSClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
 ```
@@ -173,9 +173,10 @@ Here is a sample `screen` call in using RudderStack iOS SDK:
 ## HubSpot CRM Custom Object
 
 We support [HubSpot CRM Custom Object](https://developers.hubspot.com/docs/api/crm/crm-custom-objects) thorugh our `identify` call. We expect an object with the name `hubspot` and following properties under it.
-- `contactId`
-- `qualifiedName`
-- `objects`
+
+* `contactId`
+* `qualifiedName`
+* `objects`
 
 The `objects` should be an array containing the objects with two properties, `objectId` and `objectType`. Also, the `contactId` is the HubSpot ID of your HubSpot contact. We associate the contact with the objects you provided in the `objects` array.
 
