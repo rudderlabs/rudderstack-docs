@@ -41,7 +41,7 @@ Follow these steps to add App Center to your Android project:
 
 - Add the following `dependencies` to your `app/build.gradle` file as shown:
 
-```text
+```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
 implementation 'com.rudderstack.android.integration:appcenter:1.0.0'
 implementation 'com.google.code.gson:gson:2.8.6'
@@ -49,22 +49,22 @@ implementation 'com.google.code.gson:gson:2.8.6'
 
 - Also add the App Center `analytics` depedencies to your `app/build.gradle` as shown below:
 
-```text
+```groovy
 def appCenterSdkVersion = '4.1.0'
 implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
 ```
 
 - Make sure that the `minSdkVersion` in your `app/build.gradle` is atleast `21`.
 
-```text
+```groovy
 defaultConfig {
-        minSdkVersion 21
+  minSdkVersion 21
 }
 ```
 
 - Finally, change the initialization of your `RudderClient` in your `Application` class, as shown:
 
-```text
+```kotlin
 val rudderClient = RudderClient.getInstance(
     this,
     <YOUR_WRITE_KEY>,
@@ -82,32 +82,27 @@ Follow these steps to add App Center to your iOS project:
 
 * Go your `Podfile` and add the `Rudder-AppCenter` extension
 
-```text
+```ruby
 pod 'Rudder-AppCenter'
 ```
 
 * After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file, as shown:
 
-```text
+```xcode
 #import <RudderAppCenterFactory.h>
 ```
 
 * Finally, change the initialization of your `RudderClient` as shown:
 
-```text
-RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
+```xcode
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:<YOUR_DATA_PLANE_URL>];
 [builder withFactory:[RudderAppCenterFactory instance]];
-[RudderClient getInstance:<YOUR_WRITE_KEY> config:[builder build]];
+[RSClient getInstance:<YOUR_WRITE_KEY> config:[builder build]];
 ```
-```text
-
-The following requirements must be met to use App Center :
-
-Your iOS project is set up in Xcode 11 or later on macOS version 10.14.4 or later.
-You're targeting devices running on iOS 9.0 or later.
-```
-
+{% hint style="info" %}
+The following requirements must be met to use App Center: Your iOS project is set up in Xcode 11 or later on macOS version 10.14.4 or later. You're targeting devices running on iOS 9.0 or later.
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
@@ -117,11 +112,11 @@ A `track` call lets you track custom events as they occur in your web applicatio
 
 A sample `track` call looks like the following:
 
-```javascript
-rudderanalytics.track("Clicked button", {
-  color: "red",
-  buttonText: "Get started",
-});
+```xcode
+[[RSClient sharedInstance] track:@"Product Clicked" properties:@{
+    @"product_id" : @"pr01",
+    @"name" : @"Cadbury"
+}];
 ```
 
 {% hint style="info" %}
@@ -157,13 +152,10 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 
 A sample `screen` call using the RudderStack Android SDK looks like the following code snippet:
 
-```javascript
-rudderClient.screen(
-    "MainActivity",
-    "HomeScreen",
-    new RudderProperty().putValue("foo", "bar"),
-    null
-);
+```xcode
+[[RSClient sharedInstance] screen:@"Home" properties:@{
+    @"category" : @"launcher"
+}];
 ```
 
 In the above snippet, RudderStack captures the information related to the screen being viewed, such as screen's name and category.
