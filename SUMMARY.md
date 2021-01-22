@@ -70,6 +70,7 @@
   * [AWS Personalize](destinations/aws-personalize.md)
   * [Amplitude](destinations/amplitude.md)
   * [Apache Kafka](destinations/kafka.md)
+  * [App Center](destinations/appcenter.md)
   * [Appcues](destinations/appcues.md)
   * [AppsFlyer](destinations/appsflyer.md)
   * [Autopilot](destinations/autopilot.md)
