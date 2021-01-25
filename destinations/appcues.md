@@ -115,11 +115,7 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 A sample `screen` call looks like the following code snippet:
 
 ```javascript
-rudderanalytics.screen({
-  userId: "user_id",
-  category: "Category",
-  name: "Sample",
-});
+[[RSClient sharedInstance] screen:@"Main" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
 In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
