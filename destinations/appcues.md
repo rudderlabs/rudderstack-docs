@@ -12,10 +12,14 @@ RudderStack supports sending your event data to Appcues from our native web SDKs
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Appcues. Please refer the following table to do so:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **Supported** | - | - |
-| **Cloud mode** | - | - | - |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | **Supported** | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
+{% hint style="info" %}
+If you would like to use the entire functionality of Appcues like displaying flows, checklists, and surveys, please use Appcues **device mode** and not **cloud mode**.
+{% endhint %}
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -23,17 +27,17 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Appcues, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and select **Appcues** from the list of destinations.
+- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and select **Appcues** from the list of destinations.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-* Name your destination, and click on **Next**. You should be able to see the following screen:
+- Name your destination, and click on **Next**. You should be able to see the following screen:
 
 ![Connection settings for Appcues destination](../.gitbook/assets/appcues.png)
 
-* Enter the relevant details and click on **Next** to complete the setup. To get the **API Key** & **Account ID** field, please login to Appcues and navigate to **Settings** - **Account**. Here, copy the values of both your API key and the Account ID.
+- Enter the relevant details and click on **Next** to complete the setup. To get the **API Key** & **Account ID** field, please login to Appcues and navigate to **Settings** - **Account**. Here, copy the values of both your API key and the Account ID.
 
 {% hint style="info" %}
 You need to make an `identify` call before making any call to Appcues.
@@ -92,18 +96,35 @@ rudderanalytics.page("homepage");
 ```
 
 {% hint style="info" %}
-The above call is directly passed on to Appcues via its `Appcues.page()` call.
+In device mode, the `page` call is directly passed on to Appcues via its `Appcues.page()` call, along with any additional properties passed to it.
+Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call via RudderStack’s `rudderanalytics` object, Appcues checks if there are any current flows associated with the given user and loads them, if necessary.
 {% endhint %}
 
-Any additional properties passed to the `page` call are also passed on to Appcues.
+{% hint style="info" %}
+In cloud mode, the above call is sent as a `track` event with the name as `Visited a Page`, along with any additional properties passed to it.
+{% endhint %}
 
-Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call using `rudderanalytics`, Appcues checks if there are any current flows for the user and loads them if necessary.
+## Screen
+
+{% hint style="info" %}
+The `screen` call is available only in the RudderStack Cloud mode.
+{% endhint %}
+
+The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties.
+
+A sample `screen` call looks like the following code snippet:
+
+```javascript
+[[RSClient sharedInstance] screen:@"Main" properties:@{@"prop_key" : @"prop_value"}];
+```
+
+In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
+
+{% hint style="info" %}
+The above call is sent as a `track` event with the name `Viewed a Screen`, along with any additional properties passed to it.
+{% endhint %}
 
 ## FAQs
-
-### How do I get the Appcues API Key?
-
-You can find the Appcues API key on the [Appcues Settings Page](https://studio.appcues.com/settings/account).
 
 ### How do I get the Appcues Account Id?
 
@@ -112,4 +133,3 @@ You can find the Appcues Account Id on the [Appcues Settings Page](https://studi
 ## Contact Us
 
 If you come across any issues while configuring Appcues with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
