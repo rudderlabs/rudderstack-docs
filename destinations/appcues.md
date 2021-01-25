@@ -18,11 +18,11 @@ Before configuring your source and destination on the RudderStack, please check 
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+If you would like to use the entire functionality of Appcues like displaying flows, checklists, and surveys, please use Appcues **device mode** and not **cloud mode**.
 {% endhint %}
 
 {% hint style="info" %}
-If you would like to use the entire functionality of Appcues like displaying flows, checklists & surveys please use Appcues device mode and not cloud mode.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that the platform supports sending events to Appcues, perform the steps below:
@@ -96,18 +96,18 @@ rudderanalytics.page("homepage");
 ```
 
 {% hint style="info" %}
-In device mode the above call is directly passed on to Appcues via its `Appcues.page()` call along with any additional properties passed to it.
-Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call using `rudderanalytics`, Appcues checks if there are any current flows for the user and loads them if necessary.
+In device mode, the `page` call is directly passed on to Appcues via its `Appcues.page()` call, along with any additional properties passed to it.
+Appcues will check to see if a user qualifies for an experience every time the page changes. When you first make the `page` call via RudderStack’s `rudderanalytics` object, Appcues checks if there are any current flows associated with the given user and loads them, if necessary.
 {% endhint %}
 
 {% hint style="info" %}
-In cloud mode the above call is sent as a track event with name `Visited a Page` along with any additional properties passed to it.
+In cloud mode, the above call is sent as a `track` event with the name as `Visited a Page`, along with any additional properties passed to it.
 {% endhint %}
 
 ## Screen
 
 {% hint style="info" %}
-Screen call was available only in cloud mode.
+The `screen` call is available only in the RudderStack Cloud mode.
 {% endhint %}
 
 The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties.
@@ -121,7 +121,7 @@ A sample `screen` call looks like the following code snippet:
 In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
 
 {% hint style="info" %}
-The above call is sent as a track event with name `Viewed a Screen` along with any additional properties passed to it.
+The above call is sent as a `track` event with the name `Viewed a Screen`, along with any additional properties passed to it.
 {% endhint %}
 
 ## FAQs
