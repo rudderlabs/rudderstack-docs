@@ -101,7 +101,7 @@ Appcues will check to see if a user qualifies for an experience every time the p
 {% endhint %}
 
 {% hint style="info" %}
-In cloud mode, the above call is sent as a `track` event with the name as `Visited a Page`, along with any additional properties passed to it.
+In cloud mode, the above call is sent as a `track` event with the name as `Visited a Page`, along with any additional properties passed to it and also updates the following properties on the user profile like `User ID`, `Last Browser Language`, `Updated At`, `User Agent`, `Current Page URL`, `Current Page Title` .
 {% endhint %}
 
 ## Screen
