@@ -8,7 +8,6 @@ description: Step-by-step guide to send your event data from RudderStack to Acti
 
 You can now send your event data directly to ActiveCampaign through RudderStack.
 
-
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by ActiveCampaign. Please refer the following table to do so:
@@ -58,6 +57,7 @@ rudderanalytics.page("home", {
         referrer: "referrer"
 });
 ```
+
 In the above sample, RudderStack captures the information related to the page being viewed, the URL `property` is used to whiltelist the website in the destination.
 
 {% hint style="info" %}
@@ -115,6 +115,7 @@ rudderanalytics.identify({
   }
 })
 ```
+
 In the above snippet, RudderStack captures relevant information about the user such as the `userId` as well as the associated traits such as `email`, `phone`, and `name` of that user.
 
 {% hint style="info" %}
@@ -137,6 +138,7 @@ rudderanalytics.identify({
   }
 })
 ```
+
 {% hint style="info" %}
 The `tags` property should contain an array of tags which you want to associate with the user. If any tag is already created in the destination previously, RudderStack will automatically skip the creation of that tag.
 {% endhint %}
@@ -159,6 +161,7 @@ rudderanalytics.identify({
     "fieldInfo": {
         "Interest": "Electronics",
         "Country": "USA",
+        "Hobbies": ["Cricket","Tennis"]
       }
   }
 })
@@ -168,6 +171,45 @@ rudderanalytics.identify({
 The `fieldInfo` property contains the value of the field information that you want to store for that contact. For using this feature, you have to create the fields from your ActiveCampaign dashboard (For example - `Interest, Country`) before passing in the values for the given user.
 {% endhint %}
 
+{% hint style="info" %}
+To send in multichoice field values for fields having checkbox, or listvalues as input you need to send the values as array (For example `"Hobbies": ["Cricket","Tennis"]`, for Date fields the date format should be `YYYY-MM-DD`, and for sending values for date-time fields the format should be ISO Date-Time format `yyyy-MM-dd'T'HH:mm:ss. SSSXXX`.
+{% endhint %}
+
+### List
+
+You can subscribe a contact to or unsubscribe a contact from any number of lists by passing in a trait called `lists`. As shown in the example below, this trait should be an array, with each element having an `id` and a `status`. The value of status must be either `subscribe` or `unsubscribe`.
+
+```javascript
+rudderanalytics.identify({
+  "userId": "userid",
+  "anonymousId": "d80b66d5-b33d-412d-866f-r4fft5841af",
+  "traits": {
+    "email": "name@surname.com",
+    "name": "John Doe",
+    "phone": "2364556",
+    "tags": ["Returning User", "Coupon Used"],
+    "fieldInfo": {
+        "Interest": "Electronics",
+        "Country": "USA",
+        "Hobbies": ["Cricket","Tennis"]
+      },
+    "lists": [
+        {
+          "id": 2,
+          "status": "subscribe"
+        },
+        {
+          "id": 3,
+          "status": "unsubscribe"
+        }
+      ]
+  }
+})
+```
+
+{% hint style="info" %}
+For associating a contact to any field you need to create the list from Active Campaign and use the `id` for mapping with contact.
+{% endhint %}
 
 ## Contact Us
 
