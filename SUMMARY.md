@@ -62,6 +62,7 @@
   * [Salesforce](cloud-extract-sources/salesforce.md)
   * [Zendesk](cloud-extract-sources/zendesk.md)
 * [RudderStack Destinations](destinations/README.md)
+  * [ActiveCampaign](destinations/active-campaign.md)
   * [Adjust](destinations/adjust.md)
   * [Amazon EventBridge](destinations/amazon-eventbridge.md)
   * [Amazon Kinesis](destinations/amazon-kinesis.md)
@@ -158,4 +159,3 @@
   * [How to Add User Transformations in RudderStack](how-to-guides/adding-a-new-user-transformation-in-rudderstack.md)
   * [How to Debug Live Destination Events](how-to-guides/live-destination-event-debugger.md)
 * [FAQs](faqs.md)
-
