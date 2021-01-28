@@ -23,7 +23,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to ActiveCampaign, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and ActiveCampaign as a destination.
+* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and ActiveCampaign as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -50,11 +50,11 @@ A sample `page` call looks like the following:
 
 ```javascript
 rudderanalytics.page("home", {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer"
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer",
 });
 ```
 
@@ -72,12 +72,12 @@ A sample `screen` call looks like the following code snippet:
 
 ```javascript
 rudderanalytics.screen("Screen Viewed", {
-        category: "category",
-        label: "label",
-        value: "value",
-        url: "www.rudderlabs.com",
-        info:"Rudder_Event_Screen_Test"
- });
+  category: "category",
+  label: "label",
+  value: "value",
+  url: "www.rudderlabs.com",
+  info: "Rudder_Event_Screen_Test",
+});
 ```
 
 In the above snippet, RudderStack captures information related to the screen being viewed, along with any additional info on that screen view event.
@@ -90,10 +90,10 @@ A sample `track` call looks like the following:
 
 ```javascript
 rudderanalytics.track("Product Purchased", {
-      category: "category",
-      label: "label",
-      name: "Rubik's Cube"
- });
+  category: "category",
+  label: "label",
+  name: "Rubik's Cube",
+});
 ```
 
 In the above snippet, RudderStack captures the information related to the `Product Purchased` event, along with any additional info about that event - in this case the name of the product.
@@ -106,14 +106,14 @@ A sample `identify` call looks like the following:
 
 ```javascript
 rudderanalytics.identify({
-  "userId": "userid",
-  "anonymousId": "d80b66d5-b33d-412d-866f-r4fft5841af",
-  "traits": {
-    "email": "name@surname.com",
-    "name": "John Doe",
-    "phone": "2364556"
-  }
-})
+  userId: "userid",
+  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
+  traits: {
+    email: "name@surname.com",
+    name: "John Doe",
+    phone: "2364556",
+  },
+});
 ```
 
 In the above snippet, RudderStack captures relevant information about the user such as the `userId` as well as the associated traits such as `email`, `phone`, and `name` of that user.
@@ -128,15 +128,15 @@ You can associate a user with custom tags by passing in the `tags` trait, as sho
 
 ```javascript
 rudderanalytics.identify({
-  "userId": "userid",
-  "anonymousId": "d80b66d5-b33d-412d-866f-r4fft5841af",
-  "traits": {
-    "email": "name@surname.com",
-    "name": "John Doe",
-    "phone": "2364556",
-    "tags": ["Returning User", "Coupon Used"]
-  }
-})
+  userId: "userid",
+  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
+  traits: {
+    email: "name@surname.com",
+    name: "John Doe",
+    phone: "2364556",
+    tags: ["Returning User", "Coupon Used"],
+  },
+});
 ```
 
 {% hint style="info" %}
@@ -151,20 +151,20 @@ To send custom fields to ActiveCampaign, you will need to first create the custo
 
 ```javascript
 rudderanalytics.identify({
-  "userId": "userid",
-  "anonymousId": "d80b66d5-b33d-412d-866f-r4fft5841af",
-  "traits": {
-    "email": "name@surname.com",
-    "name": "John Doe",
-    "phone": "2364556",
-    "tags": ["Returning User", "Coupon Used"],
-    "fieldInfo": {
-        "Interest": "Electronics",
-        "Country": "USA",
-        "Hobbies": ["Cricket","Tennis"]
-      }
-  }
-})
+  userId: "userid",
+  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
+  traits: {
+    email: "name@surname.com",
+    name: "John Doe",
+    phone: "2364556",
+    tags: ["Returning User", "Coupon Used"],
+    fieldInfo: {
+      Interest: "Electronics",
+      Country: "USA",
+      Hobbies: ["Cricket", "Tennis"],
+    },
+  },
+});
 ```
 
 {% hint style="info" %}
@@ -181,30 +181,30 @@ You can subscribe or unsubscribe a contact from any number of lists by passing i
 
 ```javascript
 rudderanalytics.identify({
-  "userId": "userid",
-  "anonymousId": "d80b66d5-b33d-412d-866f-r4fft5841af",
-  "traits": {
-    "email": "name@surname.com",
-    "name": "John Doe",
-    "phone": "2364556",
-    "tags": ["Returning User", "Coupon Used"],
-    "fieldInfo": {
-        "Interest": "Electronics",
-        "Country": "USA",
-        "Hobbies": ["Cricket","Tennis"]
+  userId: "userid",
+  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
+  traits: {
+    email: "name@surname.com",
+    name: "John Doe",
+    phone: "2364556",
+    tags: ["Returning User", "Coupon Used"],
+    fieldInfo: {
+      Interest: "Electronics",
+      Country: "USA",
+      Hobbies: ["Cricket", "Tennis"],
+    },
+    lists: [
+      {
+        id: 2,
+        status: "subscribe",
       },
-    "lists": [
-        {
-          "id": 2,
-          "status": "subscribe"
-        },
-        {
-          "id": 3,
-          "status": "unsubscribe"
-        }
-      ]
-  }
-})
+      {
+        id: 3,
+        status: "unsubscribe",
+      },
+    ],
+  },
+});
 ```
 
 {% hint style="info" %}
@@ -213,4 +213,4 @@ For associating a contact to any field, you need to create the list from ActiveC
 
 ## Contact Us
 
-If you come across any issues while configuring ActiveCampaign with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring ActiveCampaign with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
