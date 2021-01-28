@@ -143,7 +143,7 @@ rudderanalytics.identify({
 The `tags` property should contain an array of tags which you want to associate with the user. If any tag is already created in the destination previously, RudderStack will automatically skip the creation of that tag.
 {% endhint %}
 
-### Custom fields
+### Custom Fields
 
 ActiveCampaign also supports updating a contact’s custom fields with this RudderStack integration.
 
@@ -172,12 +172,12 @@ The `fieldInfo` property contains the value of the field information that you wa
 {% endhint %}
 
 {% hint style="info" %}
-To send in multichoice field values for fields having checkbox, or listvalues as input you need to send the values as array (For example `"Hobbies": ["Cricket","Tennis"]`, for Date fields the date format should be `YYYY-MM-DD`, and for sending values for date-time fields the format should be ISO Date-Time format `yyyy-MM-dd'T'HH:mm:ss. SSSXXX`.
+To send in multichoice field values for fields having a checkbox, or list values as input, you need to send the values as an array. For example: `"Hobbies": ["Cricket","Tennis"]`. Note that for date field, the date format should be `YYYY-MM-DD`. Also, the values for the date-time field should be in a ISO Date-Time format, such as  `yyyy-MM-dd'T'HH:mm:ss. SSSXXX`.
 {% endhint %}
 
 ### List
 
-You can subscribe a contact to or unsubscribe a contact from any number of lists by passing in a trait called `lists`. As shown in the example below, this trait should be an array, with each element having an `id` and a `status`. The value of status must be either `subscribe` or `unsubscribe`.
+You can subscribe or unsubscribe a contact from any number of lists by passing in a trait called `lists`. As shown in the example below, this trait should be an array, with each element having an `id` and a `status`. The value of status must be either `subscribe` or `unsubscribe`.
 
 ```javascript
 rudderanalytics.identify({
@@ -208,7 +208,7 @@ rudderanalytics.identify({
 ```
 
 {% hint style="info" %}
-For associating a contact to any field you need to create the list from Active Campaign and use the `id` for mapping with contact.
+For associating a contact to any field, you need to create the list from ActiveCampaign and use the `id` parameter for mapping that contact.
 {% endhint %}
 
 ## Contact Us
