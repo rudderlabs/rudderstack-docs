@@ -18,7 +18,7 @@ To send HTTP requests, you should have a RudderStack server configured with your
 
 ## 2. Postman Collection
 
-Import the Postman collection using this [URL](https://www.postman.com/collections/e81f677838c960595105) and edit the variables `source_write_key` and `data_plane_url`with your write key and RudderStack data plane URL. Now you can test all supported requests.
+Import the Postman collection using this [**URL**](https://www.postman.com/collections/bebbf0d3715abe3ed5ef) and edit the variables `source_write_key` and `data_plane_url`with your write key and RudderStack data plane URL. Now you can test all supported requests.
 
 ## 3. HTTP Authorization
 
