@@ -10,7 +10,7 @@ This section contains solutions to some of the commonly faced issues you are lik
 
 ## The SDK returns success, but I don't see any events in my destination. What **should I do?**
 
-1. Check if the server is running in _normal_ mode in the file `/tmp/recovery_data.json` .
+1. Check if the server is running in _normal_ mode in the file `/data/rudderstack/recovery_data.json` .
 2. If the server is in "degraded" or "maintenance" mode, RudderStack just stores the events and will not process them.
 
 ##  My Data Plane does not start. What should I do?
