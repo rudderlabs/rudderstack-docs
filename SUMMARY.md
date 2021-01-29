@@ -59,7 +59,8 @@
   * [Google Search Console](cloud-extract-sources/google-search-console.md)
   * [Google Sheets](cloud-extract-sources/google-sheets.md)
   * [Looker](cloud-extract-sources/looker.md)
-  * [Salesforce](cloud-extract-sources/salesforce.md)
+  * [Salesforce](cloud-extract-sources/salesforce/README.md)
+    * [Schema Comparison: RudderStack vs. Segment](cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment.md)
   * [Zendesk](cloud-extract-sources/zendesk.md)
 * [RudderStack Destinations](destinations/README.md)
   * [ActiveCampaign](destinations/active-campaign.md)
@@ -159,3 +160,4 @@
   * [How to Add User Transformations in RudderStack](how-to-guides/adding-a-new-user-transformation-in-rudderstack.md)
   * [How to Debug Live Destination Events](how-to-guides/live-destination-event-debugger.md)
 * [FAQs](faqs.md)
+

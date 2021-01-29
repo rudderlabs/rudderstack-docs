@@ -15,7 +15,7 @@ Before configuring your source and destination on the RudderStack, please check 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | - | - | - |
-| **Cloud mode** | **Supported**  | **Supported**  | **Supported**  |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -168,11 +168,11 @@ rudderanalytics.identify({
 ```
 
 {% hint style="info" %}
-The `fieldInfo` property contains the value of the field information that you want to store for that contact. For using this feature, you have to create the fields from your ActiveCampaign dashboard (For example - `Interest, Country`) before passing in the values for the given user.
+The `fieldInfo` property contains the value of the field information that you want to store for that contact. For using this feature, you have to create the fields from your ActiveCampaign dashboard \(For example - `Interest, Country`\) before passing in the values for the given user.
 {% endhint %}
 
 {% hint style="info" %}
-To send in multichoice field values for fields having a checkbox, or list values as input, you need to send the values as an array. For example: `"Hobbies": ["Cricket","Tennis"]`. Note that for date field, the date format should be `YYYY-MM-DD`. Also, the values for the date-time field should be in a ISO Date-Time format, such as  `yyyy-MM-dd'T'HH:mm:ss. SSSXXX`.
+To send in multichoice field values for fields having a checkbox, or list values as input, you need to send the values as an array. For example: `"Hobbies": ["Cricket","Tennis"]`. Note that for date field, the date format should be `YYYY-MM-DD`. Also, the values for the date-time field should be in a ISO Date-Time format, such as `yyyy-MM-dd'T'HH:mm:ss. SSSXXX`.
 {% endhint %}
 
 ### List
@@ -214,3 +214,4 @@ For associating a contact to any field, you need to create the list from ActiveC
 ## Contact Us
 
 If you come across any issues while configuring ActiveCampaign with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+

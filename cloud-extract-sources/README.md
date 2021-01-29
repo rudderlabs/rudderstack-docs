@@ -20,7 +20,7 @@ The raw data from RudderStack Cloud Extract can then be routed to your preferred
 
 {% page-ref page="segment.md" %}
 
-{% page-ref page="salesforce.md" %}
+{% page-ref page="salesforce/" %}
 
 {% page-ref page="zendesk.md" %}
 
