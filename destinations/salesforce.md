@@ -8,6 +8,10 @@ description: Step-by-step guide to set up Salesforce as a destination in RudderS
 
 RudderStack allows you to integrate your source to Salesforce in order to identify your leads without having to use the REST APIs.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/salesforce)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Salesforce by referring to the table below:

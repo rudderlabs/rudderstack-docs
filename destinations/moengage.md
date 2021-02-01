@@ -10,6 +10,10 @@ With MoEngage, you can effectively deliver personalized communication to your cu
 
 RudderStack now supports MoEngage as a destination to seamlessly send your event data in real-time.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/moengage)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by MoEngage, by referring to the table below:

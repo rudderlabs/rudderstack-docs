@@ -8,6 +8,10 @@ description: Step-by-step guide to add people to your Mailchimp list using Rudde
 
 RudderStack allows you to add people to your Mailchimp list via a simple `identify` call.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mailchimp)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring Mailchimp as a destination in RudderStack, please make sure that the source platform is supported by Mailchimp. You can refer to the following table to do so:

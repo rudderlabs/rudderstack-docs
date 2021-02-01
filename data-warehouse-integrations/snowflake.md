@@ -12,6 +12,10 @@ RudderStack allows you to configure Snowflake as a destination to dump your even
 Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse-integration-guides/warehouse-schemas) guide to know how events are mapped to the tables in Snowflake.
 {% endhint %}
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snowflake)**.**
+{% endhint %}
+
 ## Snowflake User Setup
 
 To enable RudderStack access, please make sure you have an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS`.

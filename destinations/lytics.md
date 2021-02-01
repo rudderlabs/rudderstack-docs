@@ -8,6 +8,10 @@ description: Step-by-step guide to send your event data from RudderStack to Lyti
 
 RudderStack supports Lytics as a destination to which you can send your event data in real-time.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/lytics)**.**
+{% endhint %}
+
 ## Getting Started
 
 To enable sending data to Lytics, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Lytics. 

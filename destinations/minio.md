@@ -8,6 +8,10 @@ description: Step-by-step guide to set up MinIO as a destination in RudderStack.
 
 RudderStack allows you to configure MinIO as a destination to which you can dump your event data seamlessly.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/minio)**.**
+{% endhint %}
+
 ## Setting up MinIO
 
 Please follow these steps to set up MinIO before adding it as a destination in RudderStack:

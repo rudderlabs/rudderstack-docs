@@ -10,6 +10,10 @@ Monetate is a unique, all-in-one personalization solution aimed especially at ma
   
 RudderStack allows you to send your event data from your client-side or server-side components to Monetate. This guide will help you set up, configure, and use Monetate for your project.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/monetate)**.**
+{% endhint %}
+
 ## Getting Started
 
 To get started, check whether the platform you are working with is supported by RudderStack for Monetate. The following table lists the supported connection modes across various platforms:

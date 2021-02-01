@@ -8,6 +8,10 @@ description: Step-by-step guide to send event data from RudderStack to HubSpot
 
 RudderStack supports HubSpot as a destination to send your event data through our APIs.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/hs)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination in RudderStack, please check whether the platform you are working on is supported by HubSpot. Refer the table below:

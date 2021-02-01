@@ -8,6 +8,10 @@ description: Step-by-step guide to send your event data from RudderStack to Adju
 
 RudderStack allows you to configure your mobile devices with our SDKs to send your customer event data to Adjust - without any hassle. You can check the code for Adjust destination on our GitHub for [Android](https://github.com/rudderlabs/rudder-integration-adjust-android) and [iOS](https://github.com/rudderlabs/rudder-integration-adjust-ios).
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/adj)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Adjust. Refer to the table below:

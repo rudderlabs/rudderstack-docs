@@ -8,6 +8,10 @@ description: Step-by-step guide to send your event data from RudderStack to Acti
 
 You can now send your event data directly to ActiveCampaign through RudderStack.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/active_campaign)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by ActiveCampaign. Please refer the following table to do so:

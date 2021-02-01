@@ -8,6 +8,10 @@ Mixpanel is an analytics platform that helps you to track user actions with your
 
 RudderStack supports Mixpanel as a destination to send your event data through our APIs.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mp)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Mixpanel by referring to the table below:

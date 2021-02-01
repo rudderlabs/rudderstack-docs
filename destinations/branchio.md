@@ -8,6 +8,10 @@ description: Step-by-step guide to send your event data from RudderStack to Bran
 
 RudderStack supports sending events from RudderStack SDKs to Branch through our data plane via the S2S \(Server to Server\) connection mode. You can also opt for the device mode as well for Android and iOS. Branch SDK is wrapped inside Rudder SDK in case of device mode.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/branch)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before getting started, please determine whether the platform you are sending your event data from is supported. Refer to the following table for more the supported source types and connection modes:

@@ -10,6 +10,10 @@ Google Analytics is the world's most popular analytics service that allows you t
 
 RudderStack supports sending events from RudderStack SDKs to the Google Analytics endpoints. We support the connection mode **S2S** **\(Server-to-Server\)** through our data plane, making requests to Google Analytics endpoints through Google Analytics' **Measurement Protocol** specification.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Google Analytics. Refer to the table below:

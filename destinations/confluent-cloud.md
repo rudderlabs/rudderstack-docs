@@ -8,6 +8,10 @@ description: Step-by-step guide to set up Confluent Cloud as a destination in Ru
 
 RudderStack allows you to seamlessly configure Confluent Cloud as a destination to send your event data.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/confluent_cloud)**.**
+{% endhint %}
+
 ## Configuring Confluent Cloud in RudderStack
 
 To enable sending data to Confluent Cloud, you will first need to add it as a destination to the source you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to Confluent Cloud.

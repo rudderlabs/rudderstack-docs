@@ -8,6 +8,10 @@ description: Step-by-step guide to send event data from RudderStack to Kochava.
 
 RudderStack allows you to send relevant events to Kochava through a S2S \(Server-to-Server\) integration with the platform.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kochava)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Kochava. Refer the table below:

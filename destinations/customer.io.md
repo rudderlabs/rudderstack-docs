@@ -8,6 +8,10 @@ description: Step-by-step guide to send your event data from RudderStack to Cust
 
 RudderStack supports sending your events to CustomerIO from the cloud mode S2S \(Server to Server\) and native web SDKs by calling the relevant RudderStack APIs.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/customerio)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported. You can refer the following table to do so:

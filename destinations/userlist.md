@@ -12,6 +12,10 @@ RudderStack supports sending your events to Userlist from the cloud mode S2S \(S
 This destination is supported by the Userlist team. Feel free to contact Userlist via [support@userlist.com](mailto:support@userlist.com).
 {% endhint %}
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/userlist)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported. You can refer the following table to do so:

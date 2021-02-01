@@ -8,6 +8,10 @@ description: Step-by-step guide to send event data from RudderStack to Google Pu
 
 RudderStack allows you to configure Google Pub/Sub as a destination and send your event data to it directly.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/googlepubsub)**.**
+{% endhint %}
+
 ## Getting Started
 
 To enable sending data to Google Pub/Sub, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Google Pub/Sub.

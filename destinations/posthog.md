@@ -8,6 +8,10 @@ description: Step-by-step guide to send event data from RudderStack to PostHog.
 
 RudderStack allows you to seamlessly configure PostHog as a destination to which you can send your event data seamlessly.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/posthog)**.**
+{% endhint %}
+
 ## Getting Started
 
 To enable sending data to **PostHog**, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to PostHog.

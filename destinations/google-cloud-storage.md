@@ -10,6 +10,10 @@ description: >-
 
 RudderStack allows you to add Google Cloud Storage as a destination to which you can send your event data from any source reliably.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/gcs)**.**
+{% endhint %}
+
 ## Setting up Google Cloud Storage
 
 Follow these steps to set up Google Cloud Storage before adding it as a destination in RudderStack:

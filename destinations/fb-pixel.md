@@ -8,6 +8,10 @@ description: Step-by-step guide to send event data from RudderStack to Facebook 
 
 You can now send your event data directly to Facebook Pixel through RudderStack.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/facebook_pixel)**.**
+{% endhint %}
+
 ## Getting Started
 
 To enable sending your event data to Facebook Pixel, you will first need to add it as a destination to the source from which you are sending your event data.

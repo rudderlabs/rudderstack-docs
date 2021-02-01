@@ -10,6 +10,10 @@ DigitalOcean Spaces is an S3-compatible object storage service that lets you sto
 
 RudderStack allows you to configure Spaces as a destination to which you can dump your event data seamlessly.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/digital_ocean_spaces)**.**
+{% endhint %}
+
 ## Setting up Spaces
 
 Please follow these steps to set up Spaces before adding it as a destination in RudderStack:

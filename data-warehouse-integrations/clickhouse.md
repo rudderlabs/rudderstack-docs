@@ -12,6 +12,10 @@ You can now integrate RudderStack with ClickHouse seamlessly and store your cust
 Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse-integration-guides/warehouse-schemas) guide to know how events are mapped to the tables in ClickHouse.
 {% endhint %}
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clickhouse)**.**
+{% endhint %}
+
 ## Setting ClickHouse Permissions 
 
 You to need to set `date_time_input_format` to `best_effort` for ClickHouse to parse all the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time formats. For example, `'2018-06-08T01:02:03.000Z'`.

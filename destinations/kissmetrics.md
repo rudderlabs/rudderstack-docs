@@ -8,6 +8,10 @@ description: Step-by-step guide to send event data from RudderStack to Kissmetri
 
 RudderStack supports sending your events from cloud mode S2S \(Server to Server\) and Web Native SDKs by calling our APIs.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kissmetrics)**.**
+{% endhint %}
+
 ## Getting Started
 
 To enable sending data to Kissmetrics, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from our SDKs will start to flow to Kissmetrics.

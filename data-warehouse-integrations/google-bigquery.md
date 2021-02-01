@@ -12,6 +12,10 @@ RudderStack allows you to dump your customer event data into Google BigQuery by 
 Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse-integration-guides/warehouse-schemas) guide to know how events are mapped to the tables in BigQuery.
 {% endhint %}
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/bq)**.**
+{% endhint %}
+
 ## **Setting up Google BigQuery**
 
 Follow these steps to set up Google BigQuery before adding it as a destination in RudderStack:

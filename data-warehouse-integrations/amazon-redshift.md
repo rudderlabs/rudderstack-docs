@@ -12,6 +12,10 @@ You can integrate RudderStack with Redshift seamlessly and store your customer e
 Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse-integration-guides/warehouse-schemas) guide to know how events are mapped to the tables in Redshift.
 {% endhint %}
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/rs)**.**
+{% endhint %}
+
 ## Setting Up a Redshift Cluster
 
 Before adding Redshift as a destination in RudderStack, it is recommended that you create a new Redshift cluster depending on the type of instance needed. The following sections give you step-by-step instructions on how to do so.

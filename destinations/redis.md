@@ -13,7 +13,11 @@ Redis destination only processes **`identify`** API calls. Other event types are
 {% endhint %}
 
 {% hint style="warning" %}
-It is highly recommended that you keep your Redis instance inside a private network and make it accessible to RudderStack. 
+It is highly recommended that you keep your Redis instance inside a private network and make it accessible to RudderStack.
+{% endhint %}
+
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/redis)**.**
 {% endhint %}
 
 ## Getting Started

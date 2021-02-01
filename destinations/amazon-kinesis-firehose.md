@@ -8,6 +8,10 @@ description: Step-by-step guide to send event data from RudderStack to Kinesis F
 
 RudderStack allows you to configure Kinesis Firehose as a destination and send your event data to it directly.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/firehose)**.**
+{% endhint %}
+
 ## Getting Started
 
 To enable sending data to Firehose, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Firehose.

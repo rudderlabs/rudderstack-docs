@@ -8,6 +8,10 @@ description: Step-by-step guide to set up Amazon Kinesis as a destination in Rud
 
 RudderStack allows you to configure Amazon Kinesis as a destination to which you can send your event data seamlessly.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kinesis)**.**
+{% endhint %}
+
 ## **Getting Started**
 
 In order to enable dumping data to Amazon Kinesis, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Kinesis. Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon Kinesis. Refer to the table below:

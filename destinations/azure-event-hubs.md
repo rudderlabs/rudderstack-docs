@@ -8,6 +8,10 @@ description: Step-by-step guide to set up Azure Event Hubs as a destination in R
 
 RudderStack allows you to seamlessly configure Azure Event Hubs as a destination to which you can send your event data seamlessly.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_event_hub)**.**
+{% endhint %}
+
 ## Configuring Azure Event Hubs in RudderStack
 
 In order to enable sending data to Azure Event Hubs, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Azure Event Hubs. 

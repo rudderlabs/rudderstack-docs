@@ -4,11 +4,21 @@ description: Step-by-step guide to set up Zendesk as a destination in RudderStac
 
 # Zendesk
 
+[Zendesk](https://www.zendesk.com/) is a popular CRM and customer support service suite that ensures cutting-edge sales and support across various business domains. It allows you to tend to your customers in the best way possible, and satisfactorily resolve all their queries and concerns. Zendesk also offers features such as live chat, call center software capabilities, and a smart knowledge base so that your executives have a handy solution to any customer query at hand.
+
+RudderStack supports integration with Zendesk and allows you to send your customer data to Zendesk seamlessly.
+
+This document lays out the steps to follow for sending your event data to Zendesk. 
+
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/zendesk)**.**
+{% endhint %}
+
 ## Getting Started
 
-This document lays out the steps to follow for sending your event data to Zendesk. As a first step, you need to add it as a destination to the source on the dashboard. Once the destination is enabled, your event data starts flowing to Zendesk.
+As a first step, you need to add Zendesk as a destination to the source on the dashboard. Once the destination is enabled, your event data will start flowing to Zendesk.
 
-Before configuring your source and destination on RudderStack, please verify if the Zendesk destination supports the source platform. Please refer to the table below:
+Before configuring your source and destination on RudderStack, please verify if the Zendesk destination supports the source platform. Refer to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |

@@ -12,6 +12,10 @@ RudderStack allows you to configure PostgreSQL as a destination to which you can
 Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse-integration-guides/warehouse-schemas) guide to know how events are mapped to the tables in PostgreSQL.
 {% endhint %}
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/postgres)**.**
+{% endhint %}
+
 ## Setting PostgreSQL User Permissions
 
 After setting up your PostgreSQL database, create a user. You should also assign privileges to the created user in order to create schemas and temporary tables on the specified database.

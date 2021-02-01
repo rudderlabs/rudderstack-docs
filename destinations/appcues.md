@@ -8,6 +8,10 @@ description: Step-by-step guide to send your event data from RudderStack to Appc
 
 RudderStack supports sending your event data to Appcues from our native web SDKs, to help you understand your customers better.
 
+{% hint style="success" %}
+Find the open-source transformer code for this destination in our [GitHub repo](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/appcues).
+{% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Appcues. Please refer the following table to do so:

@@ -10,6 +10,10 @@ description: >-
 
 RudderStack allows you to send your event data from a source to Microsoft Azure Blob Storage, and dump it in their container.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_blob)**.**
+{% endhint %}
+
 ## Setting up Azure Blob Storage
 
 Follow these steps to set up Azure Blog Storage before adding it as a destination in RudderStack:

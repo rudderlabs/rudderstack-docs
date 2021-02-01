@@ -12,6 +12,10 @@ RudderStack allows you to send your event data from a variety of sources to Inte
 **Please note that this documentation is written for Intercom v1.4.**
 {% endhint %}
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/intercom)**.**
+{% endhint %}
+
 ## Getting Started
 
 To enable sending events to Intercom, you will first need to add it as a destination to the source from which you are sending event data. Please check if the source platform is supported by Intercom by referring to the table below:

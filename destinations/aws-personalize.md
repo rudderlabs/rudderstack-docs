@@ -8,6 +8,10 @@ description: Step-by-step guide to set up AWS Personalize as a destination in Ru
 
 RudderStack allows you to configure Amazon Personalize as a destination to which you can send your event data seamlessly, for personalized recommendation and effective product marketing.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/personalize)**.**
+{% endhint %}
+
 ## **Getting Started**
 
 In order to enable dumping data to Amazon Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Personalize. 

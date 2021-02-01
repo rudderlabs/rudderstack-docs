@@ -61,14 +61,16 @@ defaultConfig {
   minSdkVersion 21
 }
 ```
-- Also add the below `repositories` tag in your `app/build.gradle` as shown:
-```groovy
-repositories {
+
+* Also add the below `repositories` tag in your `app/build.gradle` as shown:
+
+  ```groovy
+  repositories {
     maven {
         url  "https://dl.bintray.com/rudderstack/rudderstack"
     }
-}
-```
+  }
+  ```
 
 * Finally, change the initialization of your `RudderClient` in your `Application` class, as shown:
 

@@ -10,6 +10,10 @@ description: >-
 
 RudderStack supports sending your event data to Facebook App Events by adding it as a destination.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/fb)**.**
+{% endhint %}
+
 ## Getting Started
 
 To enable sending your event data to Facebook, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Facebook.

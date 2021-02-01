@@ -8,6 +8,10 @@ Braze is an industry-leading customer engagement platform. It allows you to bett
 
 With RudderStack's SDK for mobile and web platforms, you can send your in-app event data to Braze directly for contextual analysis.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/braze)**.**
+{% endhint %}
+
 ## Getting Started
 
 Before getting started, please determine whether the platform you are sending your event data from is supported. Refer to the following table for the supported source types and connection modes:

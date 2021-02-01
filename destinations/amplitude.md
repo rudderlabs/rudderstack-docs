@@ -8,6 +8,10 @@ description: Step-by-step guide to send your event data from RudderStack to Ampl
 
 RudderStack supports sending events from the RudderStack SDKs to Amplitude through our data plane and Web connection mode.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/am)**.**
+{% endhint %}
+
 ## Getting started
 
 Before configuring your source and destination on the RudderStack app, please check whether Amplitude supports the platform you are working on. Refer to the table below:

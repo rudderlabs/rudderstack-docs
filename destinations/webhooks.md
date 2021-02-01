@@ -10,6 +10,10 @@ Webhooks allow you to send events generated via the RudderStack SDK to your own 
 
 Once enabled, RudderStack forwards the SDK events to your configured webhook endpoint.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/webhook)**.**
+{% endhint %}
+
 ## Getting Started
 
 In order to collect your events at the webhook endpoint, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from [RudderStack](https://github.com/rudderlabs/rudder-server) will start to flow to the webhook endpoint.

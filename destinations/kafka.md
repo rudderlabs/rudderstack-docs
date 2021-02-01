@@ -8,6 +8,10 @@ Apache Kafka is a popular distributed streaming platform. It allows you to handl
 
 RudderStack allows you to configure Apache Kafka as a destination to which you can send your event data seamlessly.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kafka)**.**
+{% endhint %}
+
 ## Getting Started
 
 In order to enable dumping data to Kafka, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start flowing to Kafka. 
