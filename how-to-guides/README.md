@@ -10,9 +10,9 @@ description: >-
 
 {% page-ref page="../migration-guides/rudderstack-migration-guide.md" %}
 
-{% page-ref page="integrate-rudderstack-with-a-gatsby-site.md" %}
-
 {% page-ref page="live-destination-event-debugger.md" %}
+
+{% page-ref page="integrate-rudderstack-with-a-gatsby-site.md" %}
 
 {% page-ref page="../get-started/adding-source-and-destination-rudderstack.md" %}
 
