@@ -159,5 +159,6 @@
   * [How to Use the RudderStack Config Generator](how-to-guides/rudderstack-config-generator.md)
   * [How to Add User Transformations in RudderStack](how-to-guides/adding-a-new-user-transformation-in-rudderstack.md)
   * [How to Debug Live Destination Events](how-to-guides/live-destination-event-debugger.md)
+  * [How to Integrate Rudderstack with a Gatsby Website](how-to-guides/integrate-rudderstack-with-a-gatsby-site.md.md)
 * [FAQs](faqs.md)
 
