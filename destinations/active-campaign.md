@@ -76,11 +76,7 @@ A sample `screen` call looks like the following code snippet:
 
 ```javascript
 rudderanalytics.screen("Screen Viewed", {
-  category: "category",
-  label: "label",
-  value: "value",
-  url: "www.rudderlabs.com",
-  info: "Rudder_Event_Screen_Test",
+  name: "Sample value"
 });
 ```
 
@@ -94,13 +90,15 @@ A sample `track` call looks like the following:
 
 ```javascript
 rudderanalytics.track("Product Purchased", {
-  category: "category",
-  label: "label",
-  name: "Rubik's Cube",
+  name: "Rubik's Cube"
 });
 ```
 
 In the above snippet, RudderStack captures the information related to the `Product Purchased` event, along with any additional info about that event - in this case the name of the product.
+
+{% hint style="info" %}
+If you want to set value to the `screen` and `track` type event you need to pass the `name` property in event properties, like the above example.
+{% endhint %}
 
 ## Identify
 
