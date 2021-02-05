@@ -5,30 +5,28 @@ description: >-
 
 # How to Integrate Rudderstack with a Gatsby Website
 
-Here is how you can quickly and easily get Rudderstack up and running in your Gatsby application.
-
-Questions? Please join our [Slack channel](https://resources.rudderstack.com/join-rudderstack-slack) or read about us on [Product Hunt](https://www.producthunt.com/posts/rudderstack).
-
-# Why Use This plugin
+You can quickly and easily get Rudderstack up and running in your Gatsby application via our team backed Gatbsy plugin!
 
 This plugin makes it easy to integrate your Gatsby website with the Rudderstack API and easily track events.
 
-# Key Features
+## Key Features of the Gatsby Plugin
 
 - use multiple write keys (one for prod env, another optional one for dev)
 - disable page view tracking (just in case you want to add it later manually)
 - up to date (Rudderstack team maintained)
 
-## Install
+## Install The Plugin
 
 - NPM: `$ npm install --save gatsby-plugin-rudderstack`
 - YARN: `$ yarn add gatsby-plugin-rudderstack`
 
-# [](https://github.com/rudderlabs/gatsby-plugin-rudderstack/blob/master/README.md#setup) Setup
+## Setup
 
-## [](https://github.com/rudderlabs/gatsby-plugin-rudderstack/blob/master/README.md#step-1-configure-gatsby) Step 1: Configure Your Gatsby Config File
+## Step 1: Configure Your Gatsby Config File
 
-In your gatsby-config.js file:
+In your gatsby-config.js file you first need to add your write key from your account. You can find this in your Rudderstack dashboard. 
+
+### The configuration Options
 
 ```javascript
 plugins: [
@@ -134,7 +132,7 @@ In the above example, information such as the user ID, email along with contextu
 
 > **NOTE**: There is no need to call `identify()` for anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`.
 
-## [](https://github.com/rudderlabs/rudder-sdk-js/blob/master/README.md#step-3-track-your-users-actions-using-the-track-method)Step 3: Track Your Users’ Actions With the `track()` Method
+## Step 3: Track Your Users’ Actions With the `track()` Method
 
 The `track()` method allows you to track any actions that your users might perform.
 
@@ -187,7 +185,7 @@ exports.onRouteUpdate = () => {
 
 You’ve now successfully installed `rudder-analytics.js` tracking. You can enable and use any event destination to send your event data via RudderStack, in no time at all!
 
-## [](https://github.com/rudderlabs/rudder-sdk-js/blob/master/README.md#step-4-check-ready-state)Step 4: Check Ready State
+## Step 4: Check Ready State
 
 **There are cases when you may want to tap into the features provide by end destination SDKs to enhance tracking and other functionalities.** RudderStack's JavaScript SDK exposes a `ready` API with a `callback` parameter, that fires when the SDK is done initializing itself and other third-party native SDK destinations.
 
@@ -202,7 +200,7 @@ window.rudderanalytics.ready(() => {
 | **For detailed technical documentation and troubleshooting guide on the RudderStack’s JavaScript SDK, check out our [docs](https://docs.rudderlabs.com/sdk-integration-guide/getting-started-with-javascript-sdk).** |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
-# [](https://github.com/rudderlabs/rudder-sdk-js/blob/master/README.md#querystring-api)Querystring API
+## Using the Querystring API
 
 RudderStack's Querystring API allows you to trigger `track`, `identify` calls using query parameters. If you pass the following parameters in the URL, then it will trigger the corresponding SDK API call.
 
@@ -232,7 +230,7 @@ You may use the below parameters as querystring parameter and trigger the corres
 
 `ajs_trait_<trait>` : If `ajs_uid` is provided as querysting, value of this parameter will populate the `traits` of the `identify` call made.
 
-# [](https://github.com/rudderlabs/rudder-sdk-js/blob/master/README.md#adding-callbacks-to-standard-methods)Adding Callbacks to Standard Methods
+## Adding Callbacks to Standard Methods
 
 You can also define callbacks to the common methods of the `rudderanalytics` object.
 
@@ -267,15 +265,15 @@ rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL, {
 });
 ```
 
-# License
+## License
 
 RudderStack **gatsby-plugin-rudderstack** is released under the [AGPLv3 License][agplv3_license].
 
-# Contribute
+## Contribute
 
 We would love to see you contribute to RudderStack. Get more information on how to contribute [here](CONTRIBUTING.md).
 
-# Follow Us
+## Follow Us
 
 - [RudderStack Blog][rudderstack-blog]
 - [Slack][slack]
@@ -287,7 +285,7 @@ We would love to see you contribute to RudderStack. Get more information on how 
 - [HackerNews][hackernews]
 - [Product Hunt][producthunt]
 
-# :clap: Our Supporters
+## :clap: Our Supporters
 
 [![Stargazers repo roster for @rudderlabs/rudder-server](https://reporoster.com/stars/rudderlabs/gatsby-plugin-rudderstack)](https://github.com/rudderlabs/gatsby-plugin-rudderstack/stargazers)
 [![Forkers repo roster for @rudderlabs/rudder-server](https://reporoster.com/forks/rudderlabs/gatsby-plugin-rudderstack)](https://github.com/rudderlabs/gatsby-plugin-rudderstack/network/members)
