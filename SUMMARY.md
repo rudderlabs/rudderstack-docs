@@ -139,7 +139,7 @@
   * [Migrating Your Warehouse Destination from Segment to RudderStack](migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack.md)
 * [Administrator's Guides](administrators-guide/README.md)
   * [RudderStack Single Sign-On \(SSO\)](administrators-guide/rudderstack-single-sign-on-sso.md)
-  * [Understanding the RudderStack Dashboard](administrators-guide/understanding-the-rudderstack-dashboard.md)
+  * [Understanding the RudderStack Dashboard](administrators-guide/rudderstack-dashboard.md)
   * [Software Releases](administrators-guide/software-releases.md)
   * [High Availability](administrators-guide/high-availability.md)
   * [Horizontal Scaling](administrators-guide/horizontal-scaling-1.md)
