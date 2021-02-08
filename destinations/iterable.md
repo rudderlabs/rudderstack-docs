@@ -17,7 +17,7 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | **-** | - | - |
-| **Cloud mode** | **-** | **Supported** | **Supported** |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -71,7 +71,7 @@ A sample `identify` call is as shown:
 
 If the `deviceToken` for Push Notification is present in `context` of the payload then a mapping will be done for the user with the device to register for push. This will add the data if it doesn't exist yet. It will also update data fields on the device.
 
-We use [mobile device registration](https://api.iterable.com/api/docs#users_registerDeviceToken) API for sending the token information from a device. We set the `platform` parameter as `APNS` and `GCM` for iOS and Android devices respectively. Similarly, we use the [browser token registration](https://api.iterable.com/api/docs#users_registerBrowserToken) API for Web platform. 
+We use [mobile device registration](https://api.iterable.com/api/docs#users_registerDeviceToken) API for sending the token information from a device. We set the `platform` parameter as `APNS` and `GCM` for iOS and Android devices respectively. Similarly, we use the [browser token registration](https://api.iterable.com/api/docs#users_registerBrowserToken) API for Web platform.
 
 {% hint style="info" %}
 To understand more about Push Notification registration check the Iterable guides for [Android](https://support.iterable.com/hc/en-us/articles/115000331943#_2-create-a-mobile-app-in-iterable) and [iOS](https://support.iterable.com/hc/en-us/articles/115000315806#_4-create-a-mobile-app-in-iterable).
@@ -79,7 +79,7 @@ To understand more about Push Notification registration check the Iterable guide
 
 ## Page
 
-When the `page` method is called, the RudderStack server sends a track event to Iterable with the `userId`, `emailId`, and `eventName` parameters. 
+When the `page` method is called, the RudderStack server sends a track event to Iterable with the `userId`, `emailId`, and `eventName` parameters.
 
 If the user does not already exist in Iterable, RudderStack will add the user to the system as long as `email` is present in the call. If email is not present, Iterable will reject the event.
 
@@ -126,7 +126,7 @@ When the `track` call is made, the [track API endpoint](https://api.iterable.com
 A sample`track` call is as shown:
 
 ```objectivec
-[[RSClient sharedInstance] track:@"Accepted Terms of Service" 
+[[RSClient sharedInstance] track:@"Accepted Terms of Service"
                           properties:@{
                                   @"foo": @"bar",
                               @"foo_int": @134
@@ -134,7 +134,7 @@ A sample`track` call is as shown:
 ```
 
 {% hint style="info" %}
-If a user does not exist in Iterable, the `track` call for the user event will add the user in Iterable. 
+If a user does not exist in Iterable, the `track` call for the user event will add the user in Iterable.
 {% endhint %}
 
 ## E-Commerce
@@ -225,7 +225,7 @@ You can get the Iterable API key under the **API Configuration Settings** sectio
 
 ### What does the **Track Named Pages** setting imply?
 
-If this setting is enabled in the RudderStack dashboard, only the pages having a name will be tracked. 
+If this setting is enabled in the RudderStack dashboard, only the pages having a name will be tracked.
 
 ### What does the **Track Categorized Pages** imply?
 
