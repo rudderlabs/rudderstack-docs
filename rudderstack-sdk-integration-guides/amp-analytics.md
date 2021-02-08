@@ -253,7 +253,7 @@ The code snippet below demonstrates how to enable this feature.
 </body>
 ```
 
-You can also use the query parameter from the decorated outgoing link from an AMP cache page to a non-AMP page on your domain by using the **RudderStack JavaScript SDK API**.
+You can also use the query parameter from the decorated outgoing link from an AMP cache page to a non-AMP page on your domain by using the [**RudderStack JavaScript SDK API**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#3-2-4-1-amp-analytics).
 
 ## Contact us
 

@@ -314,7 +314,7 @@ originalTimestamp: ISO 8601 date string,
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
 | **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
 | **`<other keys>: <value>`** | - | Merged with the event's contextual information |
 
@@ -498,7 +498,7 @@ originalTimestamp: ISO 8601 date string,
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
 | **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
 | **`<other keys>: <value>`** | - | Merged with the event's contextual information |
 
@@ -574,7 +574,7 @@ originalTimestamp: ISO 8601 date string,
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
 | **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
 | **`<other keys>: <value>`** | - | Merged with the event's contextual information |
 
@@ -640,7 +640,7 @@ originalTimestamp: ISO 8601 date string,
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
 | **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
 | **`<other keys>: <value>`** | - | Merged with the event's contextual information |
 
@@ -708,7 +708,7 @@ originalTimestamp: ISO 8601 date string,
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
 | **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
 | **`<other keys>: <value>`** | - | This info is merged with the event's contextual information |
 
