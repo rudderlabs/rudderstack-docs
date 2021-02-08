@@ -18,13 +18,13 @@ The raw data from RudderStack Cloud Extract can then be routed to your preferred
 
 ## Popular Cloud Extract Sources
 
-{% page-ref page="segment.md" %}
+{% page-ref page="../rudderstack-event-streams/segment.md" %}
 
 {% page-ref page="salesforce/" %}
 
 {% page-ref page="zendesk.md" %}
 
-{% page-ref page="customerio.md" %}
+{% page-ref page="../rudderstack-event-streams/customerio.md" %}
 
 {% page-ref page="google-analytics.md" %}
 
