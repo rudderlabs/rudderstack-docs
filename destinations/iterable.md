@@ -32,7 +32,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 {% endhint %}
 
 * Select the destination as **Iterable** to your source. Give your destination a name and then click on **Next**.
-* On the **Connection Settings** page, ****fill all the fields with the relevant information and click **Next.**
+* On the **Connection Settings** page, fill all the fields with the relevant information and click **Next.**
 
 ![Iterable Connection Settings in RudderStack](../.gitbook/assets/image%20%2857%29.png)
 
@@ -63,8 +63,8 @@ A sample `identify` call is as shown:
                              traits:@{@"foo": @"bar",
                                       @"foo1": @"bar1",
                                       @"email": @"test@gmail.com",
-                                      @"key_1" : @"value_1",
-                                      @"key_2" : @"value_2"
+                                      @"key_1": @"value_1",
+                                      @"key_2": @"value_2"
                              }
 ];
 ```
@@ -97,12 +97,12 @@ A sample `page` call is as shown:
 
 ```javascript
 rudderanalytics.page({
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer"
- });
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer"
+});
 ```
 
 ## Screen
