@@ -141,6 +141,17 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
   * **S3 bucket name** - This is your unique S3 bucket name
   * **AWS Access Key ID** - This can be obtained from the AWS Console. 
   * **AWS Secret Access Key** -  This can be obtained from AWS Console. Please refer to the [Setting Up Amazon S3](https://docs.rudderstack.com/destinations-guides/amazon-s3#setting-up-amazon-s3) section for more details.
+    - please grant the following permissions to the IAM user
+      ```text
+      "Effect": "Allow",
+      "Action": [ 
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:ListBucket"
+      ]
+      ```
+
 
 ## Configuring Snowflake Integration
 
