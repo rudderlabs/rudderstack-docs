@@ -171,9 +171,74 @@ The `load()`method is defined as follows:
 **NOTE**: You need to replace `<YOUR_WRITE_KEY>` with the write key in the RudderStack Control Plane and `<DATA_PLANE_URL>` with the URL of the RudderStack Server.
 {% endhint %}
 
-The `options` parameter in the above `load` call includes one of the following arguments:
+### 3.1.1. Load Options
 
-### 3.1.**1**. Self-hosted Control Plane
+The `options` parameter in the above `load` call looks like the following:
+
+```text
+{
+ logLevel: "DEBUG" | "INFO" | "WARN", 
+ integrations: IntegrationOpts,
+ configUrl: string,  // defaults to https://api.rudderlabs.com
+ queueOptions: QueueOpts,
+ loadIntegration: boolean // defaults to true.
+}
+```
+
+It includes the following details:
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`logLevel`** | String | Options include **`DEBUG`**, **`INFO`**, and **`WARN`** |
+| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. |
+| **`configUrl`** | String | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
+| **`queueOpts`** | - | Refer to **`QueueOpts`** |
+| **`loadIntegration`** | Boolean | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**. |
+
+* The structure of **`IntegrationOpts`** looks like the following:
+
+```javascript
+IntegrationOpts {
+ All: boolean, // default true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
+| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+
+{% hint style="info" %}
+More information on the Load **`IntegrationOpts`** option can be found here: 
+
+* [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
+* [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
+{% endhint %}
+
+* The structure of **`QueueOpts`** looks like the following:
+
+```text
+QueueOpts {
+ maxRetryDelay: 360000, // Upper cap on maximum delay for an event
+ minRetryDelay: 1000, // minimum delay before sending an event
+ backoffFactor: 2, // exponentional base
+ maxAttempts: 10, // max attempts
+ maxItems: 100,  // max number of events in storage
+}
+```
+
+| Parameter | Description |
+| :--- | :--- |
+| **`maxRetryDelay`** | Corresponds to the upper limit on the maximum delay for an event. Default value is set as 36000ms.  |
+| **`minRetryDelay`** | Corresponds to the minimum delay expected before sending an event. Default value is set to 1000ms. |
+| **`backoffFactor`** | Refers to the exponential base. Default value is set to 2. |
+| **`maxAttempts`** | Refers to the maximum attempts to send the event to the destination. Default value is set to 10. |
+| **`maxItems`** | Refers to the maximum number of events kept in the storage. Default value is set to 100. |
+
+### 3.1.**2**. Self-hosted Control Plane
 
 If you are self-hosting the Control Plane, your `load` call will look like the following:
 
@@ -181,7 +246,7 @@ If you are self-hosting the Control Plane, your `load` call will look like the f
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {configUrl: CONTROL_PLANE_URL});
 ```
 
-### 3.1.2. Selective Destinations
+### 3.1.3. Selective Destinations
 
 RudderStack allows you to load selective destinations as specified by you and disable sending events to the remaining destinations. You can specify these destinations through the `load` call, as shown:
 
@@ -233,6 +298,49 @@ The above `identify` call has the following parameters:
 | **`options`** | This dictionary is also **optional**, and provides information such as context, integrations, and `anonymousId`. Specific user traits can be provided as the context as well |
 | **`callback`** | This function gets executed after successful execution of the **`identify()`** method. |
 
+### 3.2.1. The `options` parameter
+
+The options parameter in the `identify` call looks like the following:
+
+```text
+    {
+integrations: IntegrationOpts,
+anonymousId: string,
+originalTimestamp: ISO 8601 date string,
+<other keys>: <value> // merged with event's contextual information
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
+| **`<other keys>: <value>`** | - | Merged with the event's contextual information |
+
+* The structure of **`IntegrationOpts`** looks like the following:
+
+```javascript
+IntegrationOpts {
+ All: boolean, // default true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
+| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+
+{% hint style="info" %}
+More information on the **`IntegrationOpts`** option can be found here: 
+
+* [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
+* [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
+{% endhint %}
+
 {% hint style="info" %}
 **NOTE**: The `anonymousId` is a **UUID** **\(Universally Unique Identifier\)** generated to uniquely identify the user. Also, if it is provided by the user using the `setAnonymousId` method, the user-specified `anonymousId` overrides the SDK-generated one.
 {% endhint %}
@@ -241,7 +349,7 @@ The above `identify` call has the following parameters:
 There is no need to call`identify()`for anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`
 {% endhint %}
 
-### 3.2.1. `identify` Options
+### 3.2.2. `identify` Options
 
 The JavaScript SDK generates one unique `anonymousId` , stores it in a cookie named `rl_anonymous_id` , and attaches to every subsequent event. This helps in identifying the users from other sites that hosted under a sub-domain.
 
@@ -253,7 +361,7 @@ If you identify a user with your application's unique identifier like email, dat
 
 There are two options that you can use to identify users when using the JavaScript SDK:
 
-### 3.2.2. Overriding `anonymousID` in the `options` parameter
+### 3.2.3. Overriding `anonymousID` in the `options` parameter
 
 There can be scenarios where you may want to provide your own `anonymousID` instead of an auto-generated ID by the SDK. To do so, you can provide the `anonymousId` in the `options` parameter of the `identify` call, as mentioned above. This will send the value provided by you in the `anonymousId` key of the event.
 
@@ -276,9 +384,9 @@ rudderanalytics.identify(
 );js
 ```
 
-### 3.2.3. Overriding the `anonymousID` for all future events using `setAnonymousId`
+### 3.2.4. Overriding the `anonymousId` for all future events using `setAnonymousId`
 
-You can also override the `anonymousID` for all the future events using the `rudderAnanlytics.setAnonymousId` method.
+You can also override the `anonymousId` for all the future events using the `rudderAnanlytics.setAnonymousId` method.
 
 An example of this is shown in the code snippet below:
 
@@ -292,7 +400,19 @@ rudderanalytics.identify("userId", { email1: "name@domain.com" }, () => {
 });
 ```
 
-### 3.2.4. Identifying New Users
+#### 3.2.4.1. AMP Analytics
+
+You can call the following method to parse the AMP Linker ID and set the **`anonymousId`** as shown:
+
+```text
+setAnonymousId(null, "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>...")
+```
+
+Here, the second parameter is the AMP Linker ID format in accordance with the [specified structure](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [RudderStack Linker parameter](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/amp-analytics#amp-linker), the **`<idName1>`** value will be **`rs_amp_id`**.
+
+Calling the above method will parse the Linker ID and set the **`anonymousId`** as the value of the **`rs_amp_id`** key.
+
+### 3.2.5. Identifying New Users
 
 To identify new users in scenarios like a new login, you can take one of the following approaches:
 
@@ -362,6 +482,49 @@ The above code snippet has the following parameters:
 | **`options`** | An **optional** dictionary that provides information such as context, integrations, `anonymousId`, etc. Specific user traits can be provided as the context as well |
 | **`callback`** | This function gets executed after successful execution of the **`page()`** method |
 
+### 3.3.1. The `options` parameter
+
+The `options` parameter in the `page` call looks like the following:
+
+```text
+    {
+integrations: IntegrationOpts,
+anonymousId: string,
+originalTimestamp: ISO 8601 date string,
+<other keys>: <value> // merged with event's contextual information
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
+| **`<other keys>: <value>`** | - | Merged with the event's contextual information |
+
+* The structure of **`IntegrationOpts`** looks like the following:
+
+```javascript
+IntegrationOpts {
+ All: boolean, // default true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
+| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+
+{% hint style="info" %}
+More information on the **`IntegrationOpts`** option can be found here: 
+
+* [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
+* [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
+{% endhint %}
+
 ## 3.4. Track
 
 This method allows you to track any actions that your users might perform. Each of these actions is commonly referred to as an **event**.
@@ -395,6 +558,49 @@ The above code snippet has the following parameters:
 | **`options`** | An **optional** dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well |
 | **`callback`** | This function gets executed after successful execution of the **`track`** call |
 
+### 3.4.1. The `options` parameter
+
+The `options` parameter in the `track` call looks like the following:
+
+```text
+    {
+integrations: IntegrationOpts,
+anonymousId: string,
+originalTimestamp: ISO 8601 date string,
+<other keys>: <value> // merged with event's contextual information
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
+| **`<other keys>: <value>`** | - | Merged with the event's contextual information |
+
+* The structure of **`IntegrationOpts`** looks like the following:
+
+```javascript
+IntegrationOpts {
+ All: boolean, // default true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
+| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+
+{% hint style="info" %}
+More information on the **`IntegrationOpts`** option can be found here: 
+
+* [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
+* [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
+{% endhint %}
+
 ## 3.5.  Alias
 
 Many destination platforms need an explicit `alias` call for mapping the already identified users to a new identifier that you may want to use, to track the users in the future. The RudderStack `alias` API allows you to implement this functionality.
@@ -417,6 +623,49 @@ The above `alias` call has the following parameters:
 | **`from`** | Optional | Denotes the old identifier which will be an alias for the `to` parameter.  If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
 | **`options`** | Optional | This dictionary provides additional context to the event payload. |
 | **`callback`** | Optional | This function gets executed after successful execution of the **`alias()`** method. |
+
+### 3.5.1. The `options` parameter
+
+The `options` parameter in the `alias` call looks like the following:
+
+```text
+    {
+integrations: IntegrationOpts,
+anonymousId: string,
+originalTimestamp: ISO 8601 date string,
+<other keys>: <value> // merged with event's contextual information
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
+| **`<other keys>: <value>`** | - | Merged with the event's contextual information |
+
+* The structure of **`IntegrationOpts`** looks like the following:
+
+```javascript
+IntegrationOpts {
+ All: boolean, // default true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
+| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+
+{% hint style="info" %}
+More information on the **`IntegrationOpts`** option can be found here: 
+
+* [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
+* [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
+{% endhint %}
 
 A sample example of how to use the `alias()` method is as shown:
 
@@ -442,6 +691,49 @@ The above `group` call has the following parameters:
 | **`traits`** | Optional | Denotes the traits of the group. RudderStack will pass these traits to the destination to enhance the group properties. |
 | **`options`** | Optional | This dictionary provides additional context to the event payload. |
 | **`callback`** | Optional | This function gets executed after successful execution of the **`group()`** method. |
+
+### 3.6.1. The `options` parameter
+
+The `options` parameter in the `group` call looks like the following:
+
+```text
+    {
+integrations: IntegrationOpts,
+anonymousId: string,
+originalTimestamp: ISO 8601 date string,
+<other keys>: <value> // merged with event's contextual information
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`** | String | Overrides the current event anonymousId at the top level |
+| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
+| **`<other keys>: <value>`** | - | This info is merged with the event's contextual information |
+
+* The structure of **`IntegrationOpts`** looks like the following:
+
+```javascript
+IntegrationOpts {
+ All: boolean, // default true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
+| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+
+{% hint style="info" %}
+More information on the **`IntegrationOpts`** option can be found here: 
+
+* [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
+* [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
+{% endhint %}
 
 An example of how to use the `group` call is as shown below:
 
@@ -519,7 +811,7 @@ As seen in the above code snippet, RudderStack will send the event data to all t
 
 ### 4.1. Specifying Selective Destinations in the `load` Method
 
-You can also choose to load selective destinations by modifying the [`load`](https://docs.rudderstack.com/sdk-integration-guide/getting-started-with-javascript-sdk#load) method to take a third argument. You can pass an`integrations`dictionary containing the destination names in the format specified [above](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/getting-started-with-javascript-sdk#how-to-filter-selective-destinations-to-send-event-data). RudderStack loads only those destinations that are marked as enabled with the boolean value `true` .
+You can also choose to load selective destinations by modifying the [`load`](https://docs.rudderstack.com/sdk-integration-guide/getting-started-with-javascript-sdk#load) method to take a third argument. You can pass an`integrations` dictionary containing the destination names in the format specified [above](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/getting-started-with-javascript-sdk#how-to-filter-selective-destinations-to-send-event-data). RudderStack loads only those destinations that are marked as enabled with the boolean value `true` .
 
 ### 4.2. Common Destination Names
 

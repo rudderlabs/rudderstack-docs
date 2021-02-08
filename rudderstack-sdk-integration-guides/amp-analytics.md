@@ -228,7 +228,9 @@ An example of using `extraUrlParams` is as shown:
 
 ## AMP Linker
 
-You can use the [AMP Linker](https://amp.dev/documentation/examples/advertising-analytics/joining_analytics_sessions/) feature to ensure a merged session for users navigating from cached AMP pages\(on an AMP cache\) to AMP pages on your domain. When a user navigates from a cached AMP page to an AMP page on your domain, the linker forwards\(sends\) the current `AMP ClientID` by adding a URL parameter to the outgoing link. The AMP page on your domain receives this parameter and uses it to set a first-party cookie. Once this cookie is set, both AMP and NON-AMP pages on your domain would use this cookie's value to identify the user uniquely. In this way, the same AMP Client ID\(set by the cached AMP page\) is used to identify the user in all contexts.
+You can use the [AMP Linker](https://amp.dev/documentation/examples/advertising-analytics/joining_analytics_sessions/) feature to ensure a merged session for users navigating from cached AMP pages\(on an AMP cache\) to AMP pages on your domain. When a user navigates from a cached AMP page to an AMP page on your domain, the linker forwards\(sends\) the current `AMP ClientID` by adding a URL parameter to the outgoing link. The AMP page on your domain receives this parameter and uses it to set a first-party cookie. 
+
+Once this cookie is set, both AMP and NON-AMP pages on your domain would use this cookie's value to identify the user uniquely. In this way, the same AMP Client ID \(set by the cached AMP page\) is used to identify the user in all contexts.
 
 The code snippet below demonstrates how to enable this feature.
 
@@ -250,6 +252,8 @@ The code snippet below demonstrates how to enable this feature.
   </amp-analytics>
 </body>
 ```
+
+You can also use the query parameter from the decorated outgoing link from an AMP cache page to a non-AMP page on your domain by using the **RudderStack JavaScript SDK API**.
 
 ## Contact us
 
