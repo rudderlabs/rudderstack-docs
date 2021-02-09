@@ -36,7 +36,7 @@ Please note that the base URL for all the API requests will be your RudderStack 
 
 | **Description** | **Arguments** | **Supported Method Types** |
 | :--- | :--- | :--- |
-| Gets the event models for your data plane | None required. **\*\*You may** optionally **add** `writeKey`\*\* as a query parameter to get event-models for only one source | `GET` |
+| Gets the event models for your data plane | None required. **\*\*You may** optionally **add** `WriteKey`\*\* as a query parameter to get event-models for only one source | `GET` |
 
 #### **Example Request**
 
@@ -108,7 +108,7 @@ curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/sch
 To get all event models for a specific source, pass the write key as a query parameter, as shown:
 
 ```text
-curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/schemas/event-models?writeKey=1Xbp2IIhsZcwqENLgSEJusU70GH
+curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/schemas/event-models?WriteKey=1Xbp2IIhsZcwqENLgSEJusU70GH
 ```
 
 **Example Response**
