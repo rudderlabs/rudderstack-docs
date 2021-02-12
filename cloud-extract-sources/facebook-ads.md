@@ -25,13 +25,13 @@ To add Facebook Ads as a source in RudderStack, follow these steps:
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/3%20%282%29.png)
+![](../.gitbook/assets/screen-shot-2021-02-08-at-1.21.12-pm.png)
 
 ### Setting Up the Connection
 
 * Click on **Connect with Facebook Ads** and give RudderStack the required access permissions. Then, click on **Next**.
 
-![](../.gitbook/assets/4%20%283%29.png)
+![](../.gitbook/assets/screen-shot-2021-02-08-at-1.23.21-pm%20%281%29.png)
 
 {% hint style="info" %}
 If you have already connected RudderStack to your Facebook Ads account, your credentials should appear automatically under **Use existing credentials**.
@@ -41,7 +41,7 @@ If you have already connected RudderStack to your Facebook Ads account, your cre
 
 * In the next screen, choose the **Page** from where you want RudderStack to import the data. Also, select the **Historical data** as well as the **Attribution window** timeframe, and click on **Next**.
 
-![](../.gitbook/assets/5%20%288%29%20%281%29.png)
+![](../.gitbook/assets/screen-shot-2021-02-08-at-1.22.07-pm.png)
 
 {% hint style="info" %}
 RudderStack will not sync the data which is older than the selected timeframes.
@@ -57,13 +57,13 @@ RudderStack will not sync the data which is older than the selected timeframes.
 
 * Finally, select the data from the Facebook Ads page that you want RudderStack to import. You can choose to import data from select columns, or import all the data by clicking on **Select All**. Then, click on **Next**.
 
-![](../.gitbook/assets/7%20%282%29.png)
+![](../.gitbook/assets/screen-shot-2021-02-08-at-1.24.13-pm.png)
 
 That's it! Facebook Ads is now successfully configured as a source on your RudderStack dashboard. 
 
 RudderStack will start importing data from Facebook Ads as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
-![](../.gitbook/assets/8%20%281%29.png)
+![](../.gitbook/assets/screen-shot-2021-02-08-at-1.24.32-pm.png)
 
 ## What Facebook Ads Data does RudderStack Import?
 

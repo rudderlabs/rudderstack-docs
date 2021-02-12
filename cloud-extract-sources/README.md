@@ -12,9 +12,7 @@ Sources are the tools or platforms from which the event data can be ingested int
 
 ## RudderStack Cloud Extract
 
-With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [Facebook Ads](https://www.facebook.com/business/ads), [Google Ads](https://ads.google.com/), [Google Analytics](https://analytics.google.com/), [Google Search Console](https://search.google.com/search-console/welcome), [Marketo](https://www.marketo.com/), [HubSpot](https://www.hubspot.com/), and more.  
-  
-The raw data from RudderStack Cloud Extract can then be routed to your preferred data warehouses \(Snowflake, Google BigQuery, Amazon Redshift, ClickHouse, and PostgreSQL\) for further analysis.
+With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [Facebook Ads](https://www.facebook.com/business/ads), [Google Ads](https://ads.google.com/), [Google Analytics](https://analytics.google.com/), [Google Search Console](https://search.google.com/search-console/welcome), [Marketo](https://www.marketo.com/), [HubSpot](https://www.hubspot.com/), and more. You can then build efficient ELT pipelines from these cloud applications to your data warehouse.
 
 ## Popular Cloud Extract Sources
 
