@@ -22,6 +22,8 @@ This section contains detailed technical coverage of these SDKs, and how to use 
 
 {% page-ref page="rudderstack-react-native-sdk.md" %}
 
+{% page-ref page="rudderstack-flutter-sdk.md" %}
+
 ## Contact Us
 
 For more information on the RudderStack SDKs or the platform in general, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to talk to you.
