@@ -39,10 +39,10 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![AppsFlyer Connection Settings in RudderStack](../.gitbook/assets/screenshot-2020-03-03-at-11.17.42-am.png)
 
-* Enter the **AppsFlyer Dev Key**. 
+* Enter the **AppsFlyer Dev Key**.
 * **Apple App ID** is the iTunes Application ID, and it is mandatory for iOS applications.
 * Turn on the `Use native SDK to send events` button so that we can send data to AppsFlyer using the native SDK.
-* Click on **Next** to complete the configuration. 
+* Click on **Next** to complete the configuration.
 
 AppsFlyer should now be added and enabled as a destination in RudderStack.
 
@@ -54,7 +54,7 @@ Depending on your platform of integration, follow these steps below to add AppsF
 {% tab title="iOS" %}
 To add AppsFlyer to your iOS project:
 
-* Add the following line to your [CocoaPods](https://cocoapods.org/) `Podfile` 
+* Add the following line to your [CocoaPods](https://cocoapods.org/) `Podfile`
 
 ```text
 pod 'Rudder-Appsflyer'
@@ -121,7 +121,7 @@ Add the RudderStack-AppsFlyer module to your app using :
 
 ```bash
 npm install @rudderstack/rudder-integration-appsflyer-react-native
-// OR // 
+// OR //
 yarn add @rudderstack/rudder-integration-appsflyer-react-native
 ```
 
@@ -188,11 +188,12 @@ Along with the above event mapping, the event property mapping is done as well, 
 | `products` | We formulate the list as per List View [specification](https://support.appsflyer.com/hc/en-us/articles/115005544169#verticals-list-view) and pass it to the property `af_content_list` |
 | `quantity` | `af_quantity` |
 | `order_id` | `af_receipt_id` |
+| `revenue` | `af_revenue` |
 
 A Sample `track` call for an iOS application will look like the below.
 
 ```text
-[[RSClient sharedInstance] track:@"Accepted Terms of Service" 
+[[RSClient sharedInstance] track:@"Accepted Terms of Service"
                           properties:@{
                                   @"foo": @"bar",
                               @"foo_int": @134
