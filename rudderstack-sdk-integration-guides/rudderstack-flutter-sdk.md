@@ -62,7 +62,6 @@ After adding the SDK as a dependency, you need to set up the SDK.
   RudderConfigBuilder builder = RudderConfigBuilder();
   builder.withDataPlaneUrl(DATA_PLANE_URL);
   builder.withTrackLifecycleEvents(true);
-  builder.withRecordScreenViews(true);
   RudderClient.getInstance(WRITE_KEY,config: builder.build());
 ```
 
@@ -175,11 +174,6 @@ The `screen` method has the following signature:
 | `screenName` | `String` | Yes | Name of the screen viewed. |
 | `properties` | `RudderProperty` | No | Extra property object that you want to pass along with the `screen` call. |
 | `options` | `RudderOption` | No | Extra options to be passed along with `screen` event. |
-
-{% hint style="info" %}
-You can disable these events by calling `withRecordScreenViews(true)` on `RudderConfigBuilder` object while initializing `RudderClient`.
-The default value for `recordScreenViews` is `false`.
-{% endhint %}
 
 ## Group
 
@@ -299,7 +293,6 @@ You can configure your client based on the following parameters by passing them 
 | `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
 | `configRefreshInterval` | `int` | It will fetch the config from `dashboard` after this many hours. | `2` |
 | `trackLifecycleEvents` | `boolean` | Whether SDK will capture application life cycle events automatically. | `true` |
-| `recordScreenViews` | `boolean` | Whether SDK will capture screen view events automatically. | `false` |
 | `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 ### Self-Hosted Control Plane
 
