@@ -20,7 +20,7 @@ Before configuring your source and destination on the RudderStack, please verify
 
 | **Connection Mode** | Web | Mobile | Server |
 | :--- | :--- | :--- | :--- |
-| **Device Mode** | **-** | **-** | **-** |
+| **Device Mode** | **Supported** | **-** | **-** |
 | **Cloud Mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
@@ -45,6 +45,18 @@ In the **Connection Settings**, please enter your **Team API Key** and **Your-In
 {% hint style="info" %}
 If you’re hosting your own PostHog instance, add the URL of your instance without the trailing slash in the **PostHog instance** setting. So, the URL will look something like**`https://[your-instance].com`**`.`
 {% endhint %}
+
+
+## Web Settings
+
+![PostHog Web Settings in RudderStack](../.gitbook/assets/posthog-web.png)
+
+* **Use native SDK to send events** - This will send event data using the [Posthog JavaScript SDK](https://posthog.com/docs/integrations/js-integration).
+* **Enable autocapture with PostHog** - Enable this option to allow PostHog to send [auto-captured](https://posthog.com/docs/integrations/js-integration#usage) events.
+* **Allow PostHog to automatically capture pageview events** - This allows PostHog Javascript SDK to send a pageview event each time it is loaded on page.
+* **Disable session recoding** - Turning this to enabled will stop PostHog from recording user sessions. Find more info on this option [here](https://posthog.com/docs/features/session-recording).
+* **Additional headers to pass with XHR requests to PostHog API** - Add a list of key-value pairs, RudderStack Javascript SDK will forward these headers on the event  requests sent to PostHog server.
+* **Property black list** - Add a list of traits or event properties that you want the PostHog SDK to filter.
 
 ## Identify
 
@@ -181,6 +193,56 @@ rudderanalytics.group("sample_group_id", {
   location: "USA",
 });
 ```
+
+## Super Properties in Web
+
+To pass [super properties](https://posthog.com/docs/integrations/js-integration#super-properties) to PostHog JavaScript SDK, pass the key-value pairs as below:
+
+```
+This will set {superKey1: "value1", superKey2: "value2"} as super properties to PostHog SDK
+rudderanalytics.track("event", {prop: "value"}, {
+  integrations: {
+    POSTHOG: {
+      superProperties: {
+        superKey1: "value1",
+        superKey2: "value2"
+      }
+    }
+  }
+})
+```
+
+```
+This will set {superKey3: "value3"} as set once super properties to PostHog SDK
+rudderanalytics.track("event", {prop: "value"}, {
+  integrations: {
+    POSTHOG: {
+      setOnceProperties: {
+        superKey3: "value3"
+      }
+    }
+  }
+})
+```
+
+```
+This will unset super properties superKey1, superKey2, superKey3 to PostHog SDK
+rudderanalytics.track("event", {prop: "value"}, {
+  integrations: {
+    POSTHOG: {
+      unsetProperties: [
+        superKey1,
+        superKey2,
+        superKey3
+      ]
+    }
+  }
+})
+```
+{% hint style="info" %}
+Super properties related info can be passed to any of `track`, `page` and `identify` calls to the RudderStack JavaScript SDK.
+{% endhint %}
+
 
 ## FAQs
 
