@@ -91,6 +91,7 @@ Follow these steps:
   * **JavaScript SDK**: Instructions [here](https://github.com/rudderlabs/rudder-sdk-js#self-hosted-config-plane). 
   * **Android SDK**: Instructions [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-android-sdk#configuring-your-rudderstack-client). 
   * **iOS SDK**: Instructions [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk#configuring-the-rudderstack-client).
+  * **Flutter SDK**: Instructions [here](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk#configuring-the-rudderstack-client).
 
 {% hint style="info" %}
 RudderStack SDKs fetch the configuration by appending the `/sourceConfig` path to the base URL provided above.

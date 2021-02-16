@@ -36,6 +36,7 @@
   * [Java](rudderstack-sdk-integration-guides/rudderstack-java-sdk.md)
   * [Python](rudderstack-sdk-integration-guides/rudderstack-python-sdk.md)
   * [Node.js](rudderstack-sdk-integration-guides/rudderstack-node-sdk.md)
+  * [Flutter](rudderstack-sdk-integration-guides/rudderstack-flutter-sdk.md)
   * [Go](rudderstack-sdk-integration-guides/rudderstack-go-sdk.md)
   * [Ruby](rudderstack-sdk-integration-guides/rudderstack-ruby-sdk.md)
   * [.NET](rudderstack-sdk-integration-guides/.net.md)
