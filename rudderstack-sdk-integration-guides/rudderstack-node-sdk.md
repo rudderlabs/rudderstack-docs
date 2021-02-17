@@ -197,6 +197,10 @@ For a detailed explanation of the `alias` call, please refer to our RudderStack 
 
 ## Node SDK data persistence
 
+{% hint style="info" %}
+This feature is still in beta. [Contact Us](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-node-sdk#contact-us) for any issue
+{% endhint %}
+
 Presently, Node SDK retries event delivery for `n` times if it fails to deliver the event data to Rudder server.
 
 Since, the data is in-memory, it is expected that `n` needs to be small, which then leads to data loss if the Rudder server is available for larger duration.
