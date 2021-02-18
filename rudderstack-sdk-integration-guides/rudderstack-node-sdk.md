@@ -205,9 +205,9 @@ Presently, the Node.js SDK retries event delivery for `n` times, if it fails to 
 
 Since the data is in-memory, it is expected that `n` is a small number, failing which there is a possibility of data loss in case RudderStack is not available for larger duration.
 
-To prevent data loss from the SDK to the RudderStack server while the server is not ready to accept data, or if it is is temporarily not reachable, we have introduced a feature to persist the event data in Redis. This will lead to better event delivery guarantees. Also, the retries can now be done multiple times as the queue is maintained in a different process space (in this case, Redis).
+To prevent data loss from the SDK to the RudderStack server while the server is not ready to accept data, or if it is temporarily not reachable, we have introduced a feature to persist the event data in Redis. This will lead to better event delivery guarantees. Also, the retries can now be done multiple times as the queue is maintained in a different process space (in this case, Redis).
 
-To leverage this feature, you will, therefore, need to host a Redis server and use that one as the intermediary data storage queue. We recommend using [Bull](https://github.com/OptimalBits/bull) as the interface layer between the Node.js SDK and Redis.
+To leverage this feature, you will, therefore, need to host a Redis server and use that one as the intermediary data storage queue. We are using [Bull](https://github.com/OptimalBits/bull) as the interface layer between the Node.js SDK and Redis.
 
 The initialization of the SDK is as follows:
 
@@ -262,9 +262,13 @@ callback: function(error) || function()
 
 Calling the `createPersistenceQueue` api will initialize a Redis list by calling [Bull's](https://github.com/OptimalBits/bull) utility methods. It will also add a *single* job processor for processing(making requests to the RudderStack server) jobs that are pushed into the list. Error in doing this will lead to calling the callback with the error parameter. 
 
+{% hint style="info" %}
 **Note**: It is recommended to retry calling `createPersistenceQueue` with backoff, if the callback returns with an error.
+{% endhint %}
 
+{% hint style="info" %}
 **If the `createPersistenceQueue` method is not called after initializing the SDK by the user, the SDK will work with no persistence and the behaviour will be the same as at present.**
+{% hint style="info" %}
 
 ### **Flow**
 
@@ -278,7 +282,7 @@ Calling the `createPersistenceQueue` api will initialize a Redis list by calling
 
 5. If the node process dies with the jobs still in active state (not completed nor failed but in the process of sending/retrying, since the RudderStack SDK has only **one processor for sending events**, and this count should always be 1), the next time the SDK is initialized and `createPersistenceQueue` is called, the ***jobs will be picked up first by the processor to get processed to maintain event ordering based on the `QueueOpts.isMultiProcessor` value***.
 
-6. For multiple servers(SDK) connecting to the same queue (`QueueOpts.queueName`), there will be multiple processors fetching events from the same queue, event ordering won’t be implemented and hence `QueueOpts.isMultiProcessor` should be set to **`*true*`.**
+6. For multiple servers(SDK) connecting to the same queue (`QueueOpts.queueName`), there will be multiple processors fetching events from the same queue, event ordering won’t be implemented and hence `QueueOpts.isMultiProcessor` should be set to **`true`.**
 
 
 ### **Important Configurable Parameters**
