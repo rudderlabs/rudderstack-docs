@@ -203,7 +203,7 @@ This feature is still in beta. Contact us on our [Slack](https://resources.rudde
 
 Presently, the Node.js SDK retries event delivery for `n` times, if it fails to deliver the event data to RudderStack.
 
-Since the data is in-memory, it is expected that `n` is a small number, failing which there is a possibility of data loss in case RudderStack is available for larger duration.
+Since the data is in-memory, it is expected that `n` is a small number, failing which there is a possibility of data loss in case RudderStack is not available for larger duration.
 
 To prevent data loss from the SDK to the RudderStack server while the server is not ready to accept data, or if it is is temporarily not reachable, we have introduced a feature to persist the event data in Redis. This will lead to better event delivery guarantees. Also, the retries can now be done multiple times as the queue is maintained in a different process space (in this case, Redis).
 
