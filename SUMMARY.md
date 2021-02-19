@@ -165,6 +165,6 @@
   * [How to Use the RudderStack Config Generator](how-to-guides/rudderstack-config-generator.md)
   * [How to Debug Live Destination Events](how-to-guides/live-destination-event-debugger.md)
   * [How to Integrate Rudderstack with a Gatsby Website](how-to-guides/how-to-integrate-rudderstack-with-a-gatsby-website.md)
-  * [Custom Domains](how-to-guides/custom-domains.md)
+  * [How to use Custom Domains](how-to-guides/custom-domains.md)
 * [FAQs](faqs.md)
 
