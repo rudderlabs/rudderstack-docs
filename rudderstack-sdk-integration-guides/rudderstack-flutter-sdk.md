@@ -29,21 +29,21 @@ To set up the RudderStack Flutter SDK, there are a few prerequisites as mentione
 
 ## Installing the RudderStack Flutter SDK
 
-The recommended way to install the Flutter SDK is through [`pub`](https://url_to_be_added_after_publishing).
+The recommended way to install the Flutter SDK is through [`pub`](https://pub.dev/packages/rudder_sdk_flutter).
 
 To add the SDK as a dependency, perform the following steps:
 
 * Open `pubspec.yaml`  and add `rudder_sdk_flutter` under `dependencies` section:
 
 ```groovy
-  dependencies:
-    rudder_sdk_flutter: ^1.0.0
+dependencies:
+  rudder_sdk_flutter: ^1.0.0
 ```
 
 * Navigate to your Application's root folder and install all the required dependencies with:
 
 ```bash
-  flutter pub get
+flutter pub get
 ```
 
 * If the `AndroidManifest.xml` of your Flutter application contains `android:name` attribute in the `<application>` tag then please remove it from there and it at `<manifest>` tag as following:
@@ -65,16 +65,16 @@ After adding the SDK as a dependency, you need to set up the SDK.
 * Make sure to import the SDK wherever you use it with:
 
 ```dart
-  import 'package:rudder_sdk_flutter/RudderClient.dart';
+import 'package:rudder_sdk_flutter/RudderClient.dart';
 ```
 
 * Add the following code somewhere in your application.
 
 ```dart
-  RudderConfigBuilder builder = RudderConfigBuilder();
-  builder.withDataPlaneUrl(DATA_PLANE_URL);
-  builder.withTrackLifecycleEvents(true);
-  RudderClient.getInstance(WRITE_KEY,config: builder.build());
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withDataPlaneUrl(DATA_PLANE_URL);
+builder.withTrackLifecycleEvents(true);
+RudderClient.getInstance(WRITE_KEY,config: builder.build());
 ```
 
 The `setup` method has the following signature:
@@ -93,12 +93,12 @@ You can record the users' activity through the `track` method. Every action perf
 An example of the `track` event is as shown:
 
 ```dart
-  RudderProperty property = RudderProperty();
-  property.put("test_key_1", "test_key_1");
-  RudderProperty childProperty = RudderProperty();
-  childProperty.put("test_child_key_1", "test_child_value_1");
-  property.put("test_key_2",childProperty);
-  RudderClient.track("test_track_event", properties: property);
+RudderProperty property = RudderProperty();
+property.put("test_key_1", "test_key_1");
+RudderProperty childProperty = RudderProperty();
+childProperty.put("test_child_key_1", "test_child_value_1");
+property.put("test_key_2",childProperty);
+RudderClient.track("test_track_event", properties: property);
 ```
 
 The `track` method has the following signature:
@@ -135,27 +135,27 @@ On the iOS devices, According to the Apple [documentation](https://developer.app
 An example `identify` event is as shown:
 
 ```dart
-  RudderTraits traits = RudderTraits();
-  traits.putBirthdayDate(new DateTime.now());
-  traits.putEmail("abc@123.com");
-  traits.putFirstName("First");
-  traits.putLastName("Last");
-  traits.putGender("m");
-  traits.putPhone("5555555555");
+RudderTraits traits = RudderTraits();
+traits.putBirthdayDate(new DateTime.now());
+traits.putEmail("abc@123.com");
+traits.putFirstName("First");
+traits.putLastName("Last");
+traits.putGender("m");
+traits.putPhone("5555555555");
 
-  Address address = Address();
-  address.putCity("City");
-  address.putCountry("USA");
-  traits.putAddress(address);
+Address address = Address();
+address.putCity("City");
+address.putCountry("USA");
+traits.putAddress(address);
 
-  traits.put("boolean", true);
-  traits.put("integer", 50);
-  traits.put("float", 120.4);
-  traits.put("long", 1234);
-  traits.put("string", "hello");
-  traits.put("date", new DateTime.now().millisecondsSinceEpoch);
+traits.put("boolean", true);
+traits.put("integer", 50);
+traits.put("float", 120.4);
+traits.put("long", 1234);
+traits.put("string", "hello");
+traits.put("date", new DateTime.now().millisecondsSinceEpoch);
 
-  RudderClient.identify("test_user_id", traits: traits, options: null);
+RudderClient.identify("test_user_id", traits: traits, options: null);
 ```
 
 The `identify` method has the following signature:
@@ -173,10 +173,10 @@ You can use the `screen` call to record whenever the user sees a screen on the m
 An example of the `screen` event is as shown:
 
 ```dart
-  RudderProperty screenProperty = new RudderProperty();
-  screenProperty.put("foo", "bar");
-  RudderClient.screen("Main Activity",
-      properties: screenProperty, options: null);
+RudderProperty screenProperty = new RudderProperty();
+screenProperty.put("foo", "bar");
+RudderClient.screen("Main Activity",
+    properties: screenProperty, options: null);
 ```
 
 The `screen` method has the following signature:
@@ -194,11 +194,11 @@ The `group` call associates a user to a specific organization.
 An example of `group` event is as shown:
 
 ```dart
-  RudderTraits groupTraits = RudderTraits();
-  groupTraits.put("foo", "bar");
-  groupTraits.put("foo1", "bar1");
-  RudderClient.group("sample_group_id",
-      groupTraits: groupTraits, options: null);
+RudderTraits groupTraits = RudderTraits();
+groupTraits.put("foo", "bar");
+groupTraits.put("foo1", "bar1");
+RudderClient.group("sample_group_id",
+    groupTraits: groupTraits, options: null);
 ```
 
 The `group` method has the following signature:
@@ -218,7 +218,7 @@ The `alias` call associates the user with a new identification.
 An example of `alias` event is as shown:
 
 ```dart
-  RudderClient.alias("new_user_id", options: null);
+RudderClient.alias("new_user_id", options: null);
 ```
 
 The `alias` method has the following signature:
@@ -235,7 +235,7 @@ We replace the old `userId` with the `newUserId` and we persist that identificat
 You can use the `reset` method to clear the persisted `traits` for the `identify` call. This is required for `Logout` operations.
 
 ```dart
-  RudderClient.reset();
+RudderClient.reset();
 ```
 
 ## External ID
@@ -243,9 +243,9 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
 
 ```dart
-  RudderOption option = RudderOption();
-  option.putExternalId("externalId", "some_external_id_1");
-  RudderClient.identify("testUserId", options: option);
+RudderOption option = RudderOption();
+option.putExternalId("externalId", "some_external_id_1");
+RudderClient.identify("testUserId", options: option);
 ```
 
 ## Anonymous ID
@@ -259,7 +259,7 @@ You need to call `setAnonymousId` method before calling `getInstance`
 An example of setting the `anonymousId` is as below
 
 ```dart
-  RudderClient.setAnonymousId(<ANONYMOUS_ID>);
+RudderClient.setAnonymousId(<ANONYMOUS_ID>);
 ```
 
 ## Advertising ID
@@ -275,11 +275,11 @@ On `Android` device you need to call `setAdvertisingId` method before calling `g
 Example Usage:
 
 ```dart
-  RudderClient.setAdvertisingId(<ADVERTISING_ID>);
+RudderClient.setAdvertisingId(<ADVERTISING_ID>);
 ```
 
 {% hint style="info" %}
- The `id` parameter you pass to the above method is assigned as `AAID` if you are on `android` device and as `IDFA` if you are on a `iOS` device. 
+ The `id` parameter you pass to the above method is assigned as `AAID` if you are on `android` device and as `IDFA` if you are on a `iOS` device.
 {% endhint %}
 
 ## Setting Device Token
@@ -289,7 +289,7 @@ You can pass your `device-token` for Push Notifications to be passed to the dest
 An example of setting the `device-token` is as below
 
 ```dart
-  RudderClient.putDeviceToken(<DEVICE_TOKEN>);
+RudderClient.putDeviceToken(<DEVICE_TOKEN>);
 ```
 
 ## Configuring your RudderStack Client
@@ -327,11 +327,11 @@ import 'package:rudder_sdk_flutter/RudderLogger.dart';
 Then to turn on the logging, change your `RudderClient` initialization to the following:
 
 ```dart
-  RudderConfigBuilder builder = RudderConfigBuilder();
-  builder.withDataPlaneUrl(DATA_PLANE_URL);
-  builder.withLogLevel(RudderLogger.VERBOSE);
-  RudderClient.getInstance(WRITE_KEY,
-                            config: builder.build());
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withDataPlaneUrl(DATA_PLANE_URL);
+builder.withLogLevel(RudderLogger.VERBOSE);
+RudderClient.getInstance(WRITE_KEY,
+                          config: builder.build());
 ```
 
 You can set the log level to one of the following values:
