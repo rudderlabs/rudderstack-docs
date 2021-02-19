@@ -218,6 +218,7 @@ For all cloud mode calls, the `externalId` key must be included and must include
   }
 ]
 ```
+We expect the `externalId` under `context`.
 
 ## Debugging
 
