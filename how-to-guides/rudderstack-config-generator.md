@@ -27,7 +27,7 @@ In order to set up the RudderStack Config Generator, you will need to run the fo
 3. `npm start`
 
 {% hint style="info" %}
- The RudderStack Config Generator can be accessed at [http://localhost:3000](https://github.com/ameypv-rudder/rudder-server/wiki/RudderStack-Config-Generator) by default.
+The RudderStack Config Generator can be accessed at [http://localhost:3000](https://github.com/ameypv-rudder/rudder-server/wiki/RudderStack-Config-Generator) by default.
 {% endhint %}
 
 On successful setup, you should be able to see the following UI:
@@ -42,7 +42,7 @@ After you add the required sources and destinations in the dashboard as shown ab
 To know how to add your sources and destinations in RudderStack, please refer to our documentation on [Adding a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack).
 {% endhint %}
 
- To read the workspace configuration from the exported JSON file, you can update the config variables `configFromFile` and `configJSONPath`.
+To read the workspace configuration from the exported JSON file, you can update the config variables `configFromFile` and `configJSONPath`.
 
 ## Starting RudderStack with the Workspace Configuration File
 
@@ -70,10 +70,10 @@ If you have set up [RudderStack on a developer machine](https://docs.rudderstack
 To know more about the difference between **Cloud mode** and **Device mode** in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-RudderStack's [web](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [android](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [iOS](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk)  SDKs expect the source configurations and the associated [device mode](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) destination configurations for initialization. 
+RudderStack's [web](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [android](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [iOS](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) SDKs expect the source configurations and the associated [device mode](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) destination configurations for initialization.
 
 {% hint style="info" %}
-By default, RudderStack SDKs fetch the source config \(for the write key provided during the initialization of RudderStack SDKs\) from [**https://api.rudderlabs.com/sourceConfig**](https://api.rudderlabs.com/sourceConfig). 
+By default, RudderStack SDKs fetch the source config \(for the write key provided during the initialization of RudderStack SDKs\) from [**https://api.rudderlabs.com/sourceConfig**](https://api.rudderlabs.com/sourceConfig).
 {% endhint %}
 
 ### What is the Control Plane URL?
@@ -180,6 +180,4 @@ This solution assumes that you have already set up RudderStack locally and are h
 ## Contact Us
 
 In case you come across any issues while setting up or using the RudderStack Config Generator, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you!
-
-
 

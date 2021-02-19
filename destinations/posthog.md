@@ -46,7 +46,6 @@ In the **Connection Settings**, please enter your **Team API Key** and **Your-In
 If you’re hosting your own PostHog instance, add the URL of your instance without the trailing slash in the **PostHog instance** setting. So, the URL will look something like**`https://[your-instance].com`**`.`
 {% endhint %}
 
-
 ## Web Settings
 
 ![PostHog Web Settings in RudderStack](../.gitbook/assets/posthog-web.png)
@@ -82,7 +81,7 @@ We pass the user traits passed along with the `identify` call to PostHog under t
 
 ## Page
 
-The `page` call allows you to record information whenever a user sees a web page, along with the associated optional properties of that page. 
+The `page` call allows you to record information whenever a user sees a web page, along with the associated optional properties of that page.
 
 ```javascript
 rudderanalytics.page({
@@ -95,14 +94,14 @@ rudderanalytics.page({
 ```
 
 {% hint style="info" %}
-For the `page` call, we send `$pageview` as an event to PostHog according to the  [PostHog Page API](https://posthog.com/docs/api/post-only-endpoints#page).
+For the `page` call, we send `$pageview` as an event to PostHog according to the [PostHog Page API](https://posthog.com/docs/api/post-only-endpoints#page).
 {% endhint %}
 
 In the above sample, we capture information related to the page being viewed such as the category of the page \(`Category`\), as well as the name of the page \(`Sample`\) along with the unique user ID.
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. 
+The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties.
 
 {% hint style="info" %}
 The `screen` call is similar to the `page` call, but it is exclusive to your mobile device.
@@ -116,7 +115,7 @@ A sample `screen` call using RudderStack's iOS SDK is as shown:
 ```
 
 {% hint style="info" %}
-For screen call we send `$screen` as an event to PostHog according to  [PostHog Screen API](https://posthog.com/docs/api/post-only-endpoints#screen).
+For screen call we send `$screen` as an event to PostHog according to [PostHog Screen API](https://posthog.com/docs/api/post-only-endpoints#screen).
 {% endhint %}
 
 In the above snippet, we capture information related to the screen being viewed, such as the name and category.
@@ -163,7 +162,7 @@ PostHog support`track` call as type`capture.` It sends the user behavior/action 
 
 ## Alias
 
-Calling `rudderanalytics.alias()` ****passes an `alias`call with `userId` and `previousId` to the PostHog queue.
+Calling `rudderanalytics.alias()` _\*\*_passes an `alias`call with `userId` and `previousId` to the PostHog queue.
 
 The following code snippet shows a sample `alias` call in RudderStack:
 
@@ -198,7 +197,7 @@ rudderanalytics.group("sample_group_id", {
 
 To pass [super properties](https://posthog.com/docs/integrations/js-integration#super-properties) to PostHog JavaScript SDK, pass the key-value pairs as below:
 
-```
+```text
 This will set {superKey1: "value1", superKey2: "value2"} as super properties to PostHog SDK
 rudderanalytics.track("event", {prop: "value"}, {
   integrations: {
@@ -212,7 +211,7 @@ rudderanalytics.track("event", {prop: "value"}, {
 })
 ```
 
-```
+```text
 This will set {superKey3: "value3"} as set once super properties to PostHog SDK
 rudderanalytics.track("event", {prop: "value"}, {
   integrations: {
@@ -225,7 +224,7 @@ rudderanalytics.track("event", {prop: "value"}, {
 })
 ```
 
-```
+```text
 This will unset super properties superKey1, superKey2, superKey3 to PostHog SDK
 rudderanalytics.track("event", {prop: "value"}, {
   integrations: {
@@ -239,10 +238,10 @@ rudderanalytics.track("event", {prop: "value"}, {
   }
 })
 ```
+
 {% hint style="info" %}
 Super properties related info can be passed to any of `track`, `page` and `identify` calls to the RudderStack JavaScript SDK.
 {% endhint %}
-
 
 ## FAQs
 
@@ -254,7 +253,7 @@ Super properties related info can be passed to any of `track`, `page` and `ident
 
 ### Which general properties are sent to PostHog with every API call?
 
-RudderStack tries to map most of the PostHog Native SDKs collected contextual `properties`. 
+RudderStack tries to map most of the PostHog Native SDKs collected contextual `properties`.
 
 The following are the `properties` sent to PostHog :
 

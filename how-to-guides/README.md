@@ -12,13 +12,9 @@ description: >-
 
 {% page-ref page="live-destination-event-debugger.md" %}
 
-{% page-ref page="integrate-rudderstack-with-a-gatsby-site.md" %}
-
 {% page-ref page="../get-started/adding-source-and-destination-rudderstack.md" %}
 
 ## Contact Us
 
 For more information on any of the guides in this section, feel free to [contact us](mailto:%20docs@rudderstack.com), or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
 

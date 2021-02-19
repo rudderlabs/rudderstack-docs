@@ -28,7 +28,7 @@ Destination Transformers are REST services developed using Node.js that
 * Map the inputs from the canonical object model to the fields of the payload intelligible to the destination
 * Emit an enriched payload as described in points a\), b\) and c\) above
 
-## How data flows to the destination transformer? <a id="how-data-flows-to-the-destination-transformer"></a>
+## How data flows to the destination transformer <a id="how-data-flows-to-the-destination-transformer"></a>
 
 The **processor** component of the RudderStack server routes individual messages to the transformation ecosystem. Essentially, the processor would make POST request with a JSON payload to endpoints like **http\(s\)://&lt;IP&gt;:9090/v0/ga.** Here, **v0** signifies version of the transformer to be used and **ga** represents the destination.
 
@@ -36,9 +36,9 @@ There can be situations wherein a target analytics platform updates/upgrades its
 
 The concept of version comes in handy to deal with such situations. Depending on the configurations in the RudderStack **control plane**, messages for one organization can get routed to one version of the transformer, while those for another organization can get routed to another version.
 
-The **transformerServer** is the entry point to the transformation ecosystem. It leverages the **transformerRouter,** which routes the message to the intended recipient following the **&lt;version&gt;/&lt;destination acronym&gt;** component of the endpoint URL described above. Essentially, transformerRouter would look for a file ga.js \(say\) under a sub-directory v0 relative to its own directory.
+The **transformerServer** is the entry point to the transformation ecosystem. It leverages the **transformerRouter,** which routes the message to the intended recipient following the **&lt;version&gt;/&lt;destination acronym&gt;** component of the endpoint URL described above. Essentially, transformerRouter would look for a file `ga.js` under a sub-directory v0 relative to its own directory.
 
-So a new transformer entry point code needs to be in a file that should be named &lt;transformer acronym&gt;.js and placed under a &lt;version&gt; sub-directory relative to the path where transformerServer.js and transformerRouter.js are located. Sample below:
+So a new transformer entry point code needs to be in a file that should be named `<transformer acronym>.js` and placed under a `<version>` sub-directory relative to the path where `transformerServer.js` and `transformerRouter.js` are located. Sample below:
 
 ```javascript
 var jsonQ = require('jsonq');
@@ -77,7 +77,7 @@ module.exports = {
 };
 ```
 
-Above sample uses [jsonQ](http://ignitersworld.com/lab/jsonQ.html) for JSON parsing. However, libraries like [json-ptr](https://github.com/flitbit/json-ptr#readme) can also be used. Core logic for transformation is included in the GATransform.js file in the above sample.
+Above sample uses [jsonQ](http://ignitersworld.com/lab/jsonQ.html) for JSON parsing. However, libraries like [json-ptr](https://github.com/flitbit/json-ptr#readme) can also be used. Core logic for transformation is included in the `GATransform.js` file in the above sample.
 
 Following is an excerpt of the entry point into the main transformation routine - the **process** method
 

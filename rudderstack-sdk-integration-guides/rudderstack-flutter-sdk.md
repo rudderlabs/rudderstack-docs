@@ -1,7 +1,7 @@
 ---
 description: >-
-  Detailed technical documentation on RudderStack’s Flutter SDK to send
-  events from your Flutter application to various destinations.
+  Detailed technical documentation on RudderStack’s Flutter SDK to send events
+  from your Flutter application to various destinations.
 ---
 
 # Flutter
@@ -47,7 +47,7 @@ flutter pub get
 ```
 
 * If the `AndroidManifest.xml` of your Flutter application contains `android:name` attribute in the `<application>` tag then please remove it from there and it at `<manifest>` tag as following:
- 
+
 ```bash
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
    package="YOUR_PACKAGE_NAME"
@@ -56,6 +56,7 @@ flutter pub get
    android:name="YOUR_APPLICATION_NAME"
    >
 ```
+
 Make sure you add both `xmlns:tools` & `tools:replace` keys in your `<manifest>` tag along with `android:name` key.
 
 ## Initializing the RudderStack Client
@@ -106,7 +107,7 @@ The `track` method has the following signature:
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `name` | `String` | Yes | Name of the event you want to track |
-| `properties` | `RudderProperty` | No | Extra data properties you want to send along with the event  |
+| `properties` | `RudderProperty` | No | Extra data properties you want to send along with the event |
 | `options` | `RudderOption` | No | Extra event options |
 
 {% hint style="info" %}
@@ -266,7 +267,7 @@ RudderClient.setAnonymousId(<ANONYMOUS_ID>);
 
 You can use the `setAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `setAdvertisingId` method accepts a `string` argument :
 
-* `id` : Your Android `advertisingId` \(AAID\) (or) Your iOS `advertisingId` \(IDFA\)
+* `id` : Your Android `advertisingId` \(AAID\) \(or\) Your iOS `advertisingId` \(IDFA\)
 
 {% hint style="warning" %}
 On `Android` device you need to call `setAdvertisingId` method before calling `getInstance`
@@ -279,7 +280,7 @@ RudderClient.setAdvertisingId(<ADVERTISING_ID>);
 ```
 
 {% hint style="info" %}
- The `id` parameter you pass to the above method is assigned as `AAID` if you are on `android` device and as `IDFA` if you are on a `iOS` device.
+The `id` parameter you pass to the above method is assigned as `AAID` if you are on `android` device and as `IDFA` if you are on a `iOS` device.
 {% endhint %}
 
 ## Setting Device Token
@@ -306,6 +307,7 @@ You can configure your client based on the following parameters by passing them 
 | `configRefreshInterval` | `int` | It will fetch the config from `dashboard` after this many hours. | `2` |
 | `trackLifecycleEvents` | `boolean` | Whether SDK will capture application life cycle events automatically. | `true` |
 | `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+
 ### Self-Hosted Control Plane
 
 If you are using a device mode destination like Adjust, Firebase, etc., the Flutter SDK needs to fetch the required configuration from the Control Plane. If you are using the RudderStack Config Generator to host your own Control Plane, then follow [this guide](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
@@ -346,3 +348,4 @@ You can set the log level to one of the following values:
 ## Contact us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-flutter/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+

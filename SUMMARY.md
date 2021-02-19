@@ -137,6 +137,7 @@
   * [Google BigQuery](data-warehouse-integrations/google-bigquery.md)
   * [Snowflake](data-warehouse-integrations/snowflake.md)
   * [PostgreSQL](data-warehouse-integrations/postgresql.md)
+* [User Transformations in RudderStack](adding-a-new-user-transformation-in-rudderstack.md)
 * [Migration Guides](migration-guides/README.md)
   * [Migrating from Blendo to RudderStack](migration-guides/blendo-rudderstack-migration.md)
   * [Migrating from Segment to RudderStack](migration-guides/rudderstack-migration-guide.md)
@@ -162,8 +163,7 @@
     * [How to Add a Device Mode SDK to RudderStack JavaScript SDK](contributors-guide/implement-native-js-sdk-integration/add-device-mode-sdk-to-js.md)
 * [How-to Guides](how-to-guides/README.md)
   * [How to Use the RudderStack Config Generator](how-to-guides/rudderstack-config-generator.md)
-  * [How to Add User Transformations in RudderStack](how-to-guides/adding-a-new-user-transformation-in-rudderstack.md)
   * [How to Debug Live Destination Events](how-to-guides/live-destination-event-debugger.md)
-  * [How to Integrate Rudderstack with a Gatsby Website](how-to-guides/integrate-rudderstack-with-a-gatsby-site.md.md)
+  * [How to Integrate Rudderstack with a Gatsby Website](how-to-guides/how-to-integrate-rudderstack-with-a-gatsby-website.md)
 * [FAQs](faqs.md)
 
