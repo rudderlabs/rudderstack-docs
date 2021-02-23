@@ -19,7 +19,7 @@ To set up Netsuite as a source on the RudderStack dashboard, follow these steps:
 
 * Next, select **Netsuite** from the list of **Cloud Sources**, and click on **Next**.
 
-![](../.gitbook/assets/2%20%2814%29.png)
+![](../.gitbook/assets/2%20%2815%29.png)
 
 * Assign a name to your source, and click on **Next**.
 

@@ -61,6 +61,7 @@
   * [Netsuite](cloud-extract-sources/netsuite.md)
   * [Salesforce](cloud-extract-sources/salesforce/README.md)
     * [Schema Comparison: RudderStack vs. Segment](cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment.md)
+  * [Xero](cloud-extract-sources/xero.md)
   * [Zendesk](cloud-extract-sources/zendesk.md)
   * [Zendesk Chat](cloud-extract-sources/zendesk-chat.md)
 * [RudderStack Warehouse Actions](warehouse-actions/README.md)
