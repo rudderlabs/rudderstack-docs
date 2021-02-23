@@ -38,7 +38,7 @@ More details on how to find your Zendesk Chat subdomain can be found [here](http
 {% endhint %}
 
 {% hint style="info" %}
-If you've already configured Zendesk as a source before, you can choose the account visible under the **Use existing credentials** tab, as shown above.
+If you've already configured Zendesk Chat as a source before, you can choose the account visible under the **Use existing credentials** tab, as shown above.
 {% endhint %}
 
 ### Setting the Data Update Schedule
