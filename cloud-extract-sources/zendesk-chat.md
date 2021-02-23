@@ -21,7 +21,7 @@ To set up Zendesk Chat as a source on the RudderStack dashboard, follow these st
 
 * Next, select **Zendesk Chat** from the list of **Cloud Sources**, and click on **Next**.
 
-![](../.gitbook/assets/2%20%2812%29.png)
+![](../.gitbook/assets/2%20%2813%29.png)
 
 * Assign a name to your source, and click on **Next**.
 
@@ -31,7 +31,7 @@ To set up Zendesk Chat as a source on the RudderStack dashboard, follow these st
 
 * Next, enter your Zendesk Chat credentials. Enter your Zendesk Chat subdomain, and click on **Connect with Zendesk Chat**. You will be required to authenticate RudderStack on your Zendesk Chat account.
 
-![](../.gitbook/assets/4%20%2810%29.png)
+![](../.gitbook/assets/4%20%2811%29.png)
 
 {% hint style="info" %}
 More details on how to find your Zendesk Chat subdomain can be found [here](https://support.zendesk.com/hc/en-us/articles/221682747-Where-can-I-find-my-Zendesk-subdomain-).
@@ -45,7 +45,7 @@ If you've already configured Zendesk as a source before, you can choose the acco
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Zendesk Chat account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
-![](../.gitbook/assets/5%20%2811%29.png)
+![](../.gitbook/assets/5%20%2812%29.png)
 
 ### Selecting the Data to Import
 
@@ -57,7 +57,7 @@ That's it! Zendesk Chat is now successfully configured as a source on your Rudde
 
 RudderStack will start ingesting data from Zendesk Chat as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown: 
 
-![](../.gitbook/assets/7%20%287%29.png)
+![](../.gitbook/assets/7%20%288%29.png)
 
 ## FAQs
 

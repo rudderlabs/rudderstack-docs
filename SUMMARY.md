@@ -54,6 +54,7 @@
   * [Google Analytics](cloud-extract-sources/google-analytics.md)
   * [Google Search Console](cloud-extract-sources/google-search-console.md)
   * [Google Sheets](cloud-extract-sources/google-sheets.md)
+  * [Intercom](cloud-extract-sources/intercom.md)
   * [Pipedrive](cloud-extract-sources/pipedrive.md)
   * [Mixpanel](cloud-extract-sources/mixpanel.md)
   * [Marketo](cloud-extract-sources/marketo.md)
