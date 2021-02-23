@@ -21,7 +21,7 @@ To set up Zendesk Chat as a source on the RudderStack dashboard, follow these st
 
 * Next, select **Zendesk Chat** from the list of **Cloud Sources**, and click on **Next**.
 
-![](../.gitbook/assets/2%20%2811%29.png)
+![](../.gitbook/assets/2%20%2812%29.png)
 
 * Assign a name to your source, and click on **Next**.
 
