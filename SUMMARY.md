@@ -60,6 +60,7 @@
   * [Salesforce](cloud-extract-sources/salesforce/README.md)
     * [Schema Comparison: RudderStack vs. Segment](cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment.md)
   * [Zendesk](cloud-extract-sources/zendesk.md)
+  * [Zendesk Chat](cloud-extract-sources/zendesk-chat.md)
 * [RudderStack Warehouse Actions](warehouse-actions/README.md)
   * [Amazon Redshift](warehouse-actions/amazon-redshift.md)
   * [Amazon S3](warehouse-actions/amazon-s3.md)
