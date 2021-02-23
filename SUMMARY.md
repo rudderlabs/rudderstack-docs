@@ -58,6 +58,7 @@
   * [Pipedrive](cloud-extract-sources/pipedrive.md)
   * [Mixpanel](cloud-extract-sources/mixpanel.md)
   * [Marketo](cloud-extract-sources/marketo.md)
+  * [Netsuite](cloud-extract-sources/netsuite.md)
   * [Salesforce](cloud-extract-sources/salesforce/README.md)
     * [Schema Comparison: RudderStack vs. Segment](cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment.md)
   * [Zendesk](cloud-extract-sources/zendesk.md)
