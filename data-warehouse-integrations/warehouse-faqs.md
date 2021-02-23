@@ -38,6 +38,8 @@ If you are using the hosted RudderStack service, the following IPs need to be wh
 * **`3.216.35.97`**
 * **`34.198.90.241`**
 * **`54.147.40.62`**
+* **`23.20.96.9`**
+* **`18.214.35.254`**
 
 ### How can I speed-up my warehouse uploads
 

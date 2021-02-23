@@ -105,7 +105,9 @@ The Redshift cluster needs to whitelist the RudderStack IPs to enable network ac
 This procedure works for **EC2-VPC**. However, **EC2-Classic** works similarly.
 {% endhint %}
 
-**The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` and `54.147.40.62`.**
+{% hint style="info" %}
+**The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` , `54.147.40.62`** , **`23.20.96.9`,** and  **`18.214.35.254`**.
+{% endhint %}
 
 * Go to EC2 from the services on AWS console,  as shown:
 
