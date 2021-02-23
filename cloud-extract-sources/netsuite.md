@@ -1,5 +1,5 @@
 ---
-description: Step-by-step guide to ingest data from Intercom into RudderStack.
+description: Step-by-step guide to ingest data from Netsuite into RudderStack.
 ---
 
 # Netsuite
