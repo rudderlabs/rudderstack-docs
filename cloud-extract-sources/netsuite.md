@@ -65,7 +65,7 @@ To get the RudderStack Restlet URL, you need to first install [this script](http
 
 ### Selecting the Data to Import
 
-* Finally, choose the Netsuite data that you wish to ingest via RudderStack. You can either select all the data, or choose specific Intercom data attributes, as per your requirement.
+* Finally, choose the Netsuite data that you wish to ingest via RudderStack. You can either select all the data, or choose specific Netsuite data attributes, as per your requirement.
 
 {% hint style="warning" %}
 Note that none of the resources are selected by default, so you will have to do the selection manually.
