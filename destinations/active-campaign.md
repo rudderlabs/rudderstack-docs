@@ -97,7 +97,7 @@ rudderanalytics.track("Product Purchased", {
 In the above snippet, RudderStack captures the information related to the `Product Purchased` event, along with any additional info about that event - in this case the name of the product.
 
 {% hint style="info" %}
-If you want to set value to the `screen` and `track` type event you need to pass the `name` property in event properties, like the above example.
+If you want to set a value for the `screen` and `track` type event, you need to pass the `name` property in the event properties, as shown in the above example.
 {% endhint %}
 
 ## Identify
