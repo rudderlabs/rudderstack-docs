@@ -8,9 +8,9 @@ description: >-
 
 ## What is the RudderStack Flutter SDK?
 
-The RudderStack Flutter SDK allows you to track event data from your app. It can be easily integrated into your Flutter application. After integrating this SDK, you will also send the event data to your preferred analytics destination/s, such as Google Analytics, Amplitude, and more.
+The RudderStack Flutter SDK allows you to track event data from your Flutter app. After integrating this SDK with your app, you will also be able to send the event data to your preferred destination platforms supported by RudderStack. 
 
-You can check the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-flutter) if you want to get more hands-on or keen to know more about the SDK architecture.
+You can check the SDK's [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-flutter) to get a more hands-on understanding of the SDK's architecture and working.
 
 ## SDK Setup Requirements
 
@@ -25,7 +25,7 @@ To set up the RudderStack Flutter SDK, there are a few prerequisites as mentione
 
 ![Data Plane URL](../.gitbook/assets/android-2%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
-* It would help if you also had the [Flutter Development Environment](https://flutter.dev/docs/get-started/install) setup on your system.
+* It would also help if you have the [Flutter Development Environment](https://flutter.dev/docs/get-started/install) set up on your system.
 
 ## Installing the RudderStack Flutter SDK
 
@@ -106,9 +106,9 @@ The `track` method has the following signature:
 
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
-| `name` | `String` | Yes | Name of the event you want to track |
-| `properties` | `RudderProperty` | No | Extra data properties you want to send along with the event |
-| `options` | `RudderOption` | No | Extra event options |
+| `name` | `String` | Yes | Contains the name of the event you want to track |
+| `properties` | `RudderProperty` | No | Contains the extra data properties you want to send along with the event |
+| `options` | `RudderOption` | No | Contains the extra event options |
 
 {% hint style="info" %}
 We automatically track the following optional events:
@@ -118,12 +118,14 @@ We automatically track the following optional events:
 3. `Application Opened`
 4. `Application Backgrounded`
 
-You can disable these events by calling `withTrackLifeCycleEvents(false)` on `RudderConfigBuilder` object while initializing `RudderClient`. But it is highly recommended to keep them enabled.
+You can disable these events by calling `withTrackLifeCycleEvents(false)` on `RudderConfigBuilder` object while initializing the `RudderClient`. However, it is highly recommended to keep them enabled.
 {% endhint %}
 
 ## Identify
 
-We capture `deviceId` and use that as `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+We capture `deviceId` and use that as the `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. 
+
+Once you set the `identify` information to the user, it will also be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
 {% hint style="info" %}
 On the Android devices, the `deviceId` is assigned during the first boot. It remains consistent across the applications and installs. It changes only after factory reset.
@@ -163,8 +165,8 @@ The `identify` method has the following signature:
 
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
-| `userId` | `String` | Yes | Developer identity for the user |
-| `traits` | `RudderTraits` | No | Traits information for user |
+| `userId` | `String` | Yes | Includes the developer identity for the user |
+| `traits` | `RudderTraits` | No | Contains information related to the user traits |
 | `options` | `RudderOption` | No | Extra options for the `identify` event |
 
 ## Screen
@@ -207,10 +209,12 @@ The `group` method has the following signature:
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `groupId` | `String` | Yes | An ID of the organization with which you want to associate your user |
-| `groupTraits` | `RudderTraits` | No | Any other traits of the organization you want to pass along with the `group` call |
+| `groupTraits` | `RudderTraits` | No | Any other traits of the organization you want to pass along with the `group` call. |
 | `options` | `RudderOption` | No | Extra options to be passed along with `group` event. |
 
-We don't persist the traits for the group across the sessions.
+{% hint style="info" %}
+RudderStack doesn't persist the traits for the group across the sessions.
+{% endhint %}
 
 ## Alias
 
@@ -273,7 +277,7 @@ You can use the `setAdvertisingId` method to pass your Android and iOS AAID and 
 On `Android` device you need to call `setAdvertisingId` method before calling `getInstance`
 {% endhint %}
 
-Example Usage:
+An example of how to use `setAdvertisingId` is as shown:
 
 ```dart
 RudderClient.setAdvertisingId(<ADVERTISING_ID>);
@@ -285,9 +289,9 @@ The `id` parameter you pass to the above method is assigned as `AAID` if you are
 
 ## Setting Device Token
 
-You can pass your `device-token` for Push Notifications to be passed to the destinations which support Push Notification. We set the `token` under `context.device.token`.
+You can pass your `device-token` for push notifications to be passed to the destinations which support the Push Notification feature. We set the `token` under `context.device.token`.
 
-An example of setting the `device-token` is as below
+An example of setting the `device-token` is as below:
 
 ```dart
 RudderClient.putDeviceToken(<DEVICE_TOKEN>);
@@ -299,7 +303,7 @@ You can configure your client based on the following parameters by passing them 
 
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
-| `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RudderLogger.RudderLogLevel.NONE` |
+| `logLevel` | `int` | Controls how much of the log you want to see from the Flutter SDK. | `RudderLogger.RudderLogLevel.NONE` |
 | `endPointUri` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |

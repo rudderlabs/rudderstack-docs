@@ -116,7 +116,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 * After choosing a source, select **Snowflake** from the list of destinations.
 * Give your destination a name and then click on **Next**. You should then see the following screen:
 
-![](../.gitbook/assets/4%20%283%29%20%282%29%20%282%29.png)
+![](../.gitbook/assets/4%20%283%29%20%282%29%20%282%29%20%281%29.png)
 
 ![Connection Settings for configuring Snowflake as a Destination](../.gitbook/assets/5%20%282%29.png)
 
