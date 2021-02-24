@@ -10,7 +10,7 @@ This section contains solutions to some of the commonly faced issues you are lik
 
 ## The SDK returns success, but I don't see any events in my destination. What **should I do?**
 
-1. Check if the server is running in _normal_ mode in the file `/tmp/recovery_data.json` .
+1. Check if the server is running in _normal_ mode in the file `/data/rudderstack/recovery_data.json` or `/tmp/recovery_data.json`.
 2. If the server is in "degraded" or "maintenance" mode, RudderStack just stores the events and will not process them.
 
 ##  My Data Plane does not start. What should I do?
@@ -43,13 +43,13 @@ If the control plane is accessible from your network but is down, we are already
 When RudderStack enters "degraded" mode, it will only log the event and not process the event. If the issue why the server entered the degraded mode is temporary \(Transformer is down\), then fix the issue and restart the server in the normal mode.
 
 {% hint style="success" %}
-You can restart the server in the normal mode by updating the `/tmp/recovery_data.json`. Set Mode to "normal"
+You can restart the server in the normal mode by updating the `/data/rudderstack/recovery_data.json` or `/tmp/recovery_data.json`. Set Mode to "normal"
 {% endhint %}
 
 ## RudderStack has entered the maintenance mode. What should I do?
 
 When RudderStack enters "maintenance" mode, we take a back up of the old database and create a new database in the "degraded" mode. RudderStack will only log the event and not process the event in this case. If the issue is fixed, start another instance of RudderStack server in normal mode but in a different port \(say 8081\) pointing to the old DB. That will drain all the events in the old DB.  
-Then restart the actual server in the normal mode by updating the `/tmp/recovery_data.json`. Set the mode to "normal"_._ It will resume routing pending events and the ordering of the events is guaranteed.
+Then restart the actual server in the normal mode by updating the `/data/rudderstack/recovery_data.json` or `/tmp/recovery_data.json`. Set the mode to "normal"_._ It will resume routing pending events and the ordering of the events is guaranteed.
 
 ## The disk usage is increasing. What should I do?
 
