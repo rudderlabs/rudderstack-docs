@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Klav
 
 # Klaviyo
 
-[Klaviyo](https://www.klaviyo.com/) is a powerful email eCommerce platform that allows you to boost your business revenue. It supports unique features such as category-based segmentation and various event triggers based on page views, purchases, email engagement, and more. With Klaviyo, you can easily track and measure all your user activity and the resulting revenue, as well as get a breakdown of this revenue based on custom attributes like campaign type or revenue per recipient. It also offers features such as trend reports, cohort analysis and various options for boosting customer engagement such as personalized newsletters, product recommendations, in-app push notifications, and more.
+[Klaviyo](https://www.klaviyo.com/) is a powerful eCommerce platform that allows you to boost your business revenue. It supports unique features such as category-based segmentation and various event triggers based on page views, purchases, email engagement, and more. With Klaviyo, you can easily track and measure all your user activity and the resulting revenue and get a breakdown of this revenue based on custom attributes like campaign type or revenue per recipient. It also offers features such as trend reports, cohort analysis, and various options for boosting customer engagement, such as personalized newsletters, product recommendations, in-app push notifications, and more.
 
 You can now send your event data directly to Klaviyo through RudderStack.
 
