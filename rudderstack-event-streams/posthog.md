@@ -25,7 +25,7 @@ In order to add PostHog as a source in RudderStack, please follow these steps:
 
 ![](https://lh6.googleusercontent.com/75vmkKpFW__QIMSJzvmeHAPJCd0pDQirRKqVPTNaD8I6e2kpExhzBt-tXikuLkbMaLtXOhPS_7VPG1GsU3a-mSOAlv4-qMVr0EzxKUpoZAbPyIdcagZlbBEymNfIlr4FdW34UcR6)
 
-* In the Connection Settings screen, enter your PostHog credentials and complete the source configuration. Once you've successfully set up the source, you should see the following screen:
+* In the **Connection Settings** screen, enter your PostHog credentials and complete the source configuration. Once you've successfully set up the source, you should see the following screen:
 
 ![](https://lh6.googleusercontent.com/5CFx_A3Y22COve2AV4VlCGCce72Zgxk-CJpmF3JQhWFP0_9kc61JxBY4xETvocm5cuU17TqTCF0KgqW_SNQ2U6pI02Lj8np_RDN1Omwp1gjq4Ckuk6_ZYVmczIg28W_E5Tj6NUQQ)
 
