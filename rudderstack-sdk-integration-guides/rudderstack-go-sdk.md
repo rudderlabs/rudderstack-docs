@@ -79,10 +79,10 @@ The `Config` object parameters are as described below:
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `Interval` | time.Duration | Optional | Messages will be sent when this flushing interval time triggers |
-| `BatchSize` | int | Optional| Total number of messages to be sent in a single batch. |
-| `Verbose` | bool | Optional | When set to true,client will send more frequent and detailed messages to its logger. |
-| `RetryAfter` | time.Duration | Optional | This can be used to set up how long the failed messages can be retried. |
-| `maxConcurrentRequests` | int | Optional | The maximum number of parallel goroutines which will be spawned . |
+| `BatchSize` | int | Optional| Total number of messages to be sent in a single batch |
+| `Verbose` | bool | Optional | When set to true, the client will send more frequent and detailed messages to its logger |
+| `RetryAfter` | time.Duration | Optional | This can be used to set up how long the failed messages can be retried |
+| `maxConcurrentRequests` | int | Optional | The maximum number of parallel goroutines which will be spawned  |
 | `noProxySupport` | bool | Optional | Setting this variable to true will disable making calls to cluster-info end point  |
 
 
