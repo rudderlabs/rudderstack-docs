@@ -82,8 +82,8 @@ The `Config` object parameters are as described below:
 | `BatchSize` | int | Optional| Total number of messages to be sent in a single batch |
 | `Verbose` | bool | Optional | When set to true, the client will send more frequent and detailed messages to its logger |
 | `RetryAfter` | time.Duration | Optional | This can be used to set up how long the failed messages can be retried |
-| `maxConcurrentRequests` | int | Optional | The maximum number of parallel goroutines which will be spawned  |
-| `noProxySupport` | bool | Optional | Setting this variable to true will disable making calls to cluster-info end point  |
+| `maxConcurrentRequests` | int | Optional | The maximum number of parallel goroutines which will be spawned |
+| `noProxySupport` | bool | Optional | Setting this variable to true will disable making calls to cluster-info end point |
 
 
 ## Identify
