@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Klav
 
 # Klaviyo
 
-[Klaviyo](https://www.klaviyo.com/) is a powerful email eCommerce platform that allows you to boost your business revenue. It supports unique features such as category-based segmentation and various event triggers based on page views, purchases, email engagement, and more. With Klaviyo, you can easily track and measure all your user activity and the resulting revenue, as well as get a breakdown of this revenue based on custom attributes like campaign type or revenue per recipient. It also offers features such as trend reports, cohort analysis and various options for boosting customer engagement such as personalized newsletters, product recommendations, in-app push notifications, and more.
+[Klaviyo](https://www.klaviyo.com/) is a powerful eCommerce platform that allows you to boost your business revenue. It supports unique features such as category-based segmentation and various event triggers based on page views, purchases, email engagement, and more. With Klaviyo, you can easily track and measure all your user activity and the resulting revenue and get a breakdown of this revenue based on custom attributes like campaign type or revenue per recipient. It also offers features such as trend reports, cohort analysis, and various options for boosting customer engagement, such as personalized newsletters, product recommendations, in-app push notifications, and more.
 
 You can now send your event data directly to Klaviyo through RudderStack.
 
@@ -49,7 +49,9 @@ To successfully configure Klaviyo as a destination, you will need to configure t
 
 ## Page
 
-Page call allows you track which web-page the user is viewing, take a look to understand what the Page method does. An example call would look like:
+The `page` call allows you the web page that a user is viewing, along with its associated properties.
+
+An example `page` call would look like:
 
 ```javascript
 rudderanalytics.page();
@@ -75,7 +77,7 @@ rudderanalytics.page(
 ```
 
 {% hint style="info" %}
-NOTE: page calls are only supported device-mode integration.
+Note that `page` calls are only supported in the RudderStack device mode integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 ## Screen
@@ -120,7 +122,7 @@ rudderanalytics.screen(
 In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event.
 
 {% hint style="info" %}
-NOTE: screen calls are only supported cloud-mode integration.
+Note that `screen` calls are only supported in the RudderStack cloud mode integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 ## Track
@@ -144,7 +146,7 @@ If you want to set a specific value to the `screen` and `track` type event, you 
 {% endhint %}
 
 {% hint style="info" %}
-If you are sending `track`/ `screen` type event using some sdk which does not persist user context info after `identify` you need to pass the user info in `context.traits`.
+If you are sending `track`/ `screen` type event using some SDK which does not persist user context info after `identify`, you need to pass the user info in `context.traits`.
 {% endhint %}
 
 ## Identify
@@ -180,15 +182,15 @@ rudderanalytics.identify("userid", {
 In the above snippet, RudderStack captures relevant information about the user such as the `email`, `phone` as well as the associated traits of that user.
 
 {% hint style="info" %}
-The `email` or `phone` trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user . You can further add the user to the list by adding `listId` in the `properties` within the `traits`, this will override the `listId` you used in Control-Plane for this event. You can also subscribe the user to a list by setting `subscribe` option to `true`.
+The `email` or `phone` trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user . You can further add the user to the list by adding `listId` in the `properties` within the `traits`, this will override the `listId` you used in the RudderStack control plane for this event. You can also subscribe the user to a list by setting `subscribe` option to `true`.
 {% endhint %}
 
 {% hint style="info" %}
-Similar to `listId` adding `consent` and `smsConsent` property will override the value stored in Control-Plane fot the specific event.
+Similar to `listId` adding `consent` and `smsConsent` property will override the value stored in the control plane for the specific event.
 {% endhint %}
 
 {% hint style="info" %}
-NOTE: Adding or Subscribing users to specific list is only available in cloud-mode integration.
+Adding or subscribing users to specific list is only available in cloud-mode integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 ## Group
@@ -221,11 +223,11 @@ Apart from either `email` or `phone`, the other fields are not mandatory.
 {% endhint %}
 
 {% hint style="info" %}
-Adding `consent` and `smsConsent` property will override the value stored in Control-Plane fot the specific event.
+Adding `consent` and `smsConsent` property will override the value stored in control plane for the specific event.
 {% endhint %}
 
 {% hint style="info" %}
-NOTE: using group event to Add or Subscribe users to specific list is only available in cloud-mode integration.
+You can add or subscribe users to a specific list via the `group` event only in the cloud mode. This feature is not available in the device mode. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 ## Contact Us
