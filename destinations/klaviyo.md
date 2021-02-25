@@ -33,7 +33,7 @@ Once you have confirmed that the platform supports sending events to Klaviyo, pe
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-![Configuration Settings for ActiveCampaign](../.gitbook/assets/Klaviyo_conf.png)
+![Configuration Settings for ActiveCampaign](../.gitbook/assets/klaviyo_conf.png)
 
 ## Klaviyo Configuration Settings on the RudderStack Dashboard
 
@@ -43,7 +43,9 @@ To successfully configure Klaviyo as a destination, you will need to configure t
 - **Private API Key:** Your Private API key can be generated for your account on the **Account** section under the **Settings** tab. This key allows you to add users to list or subscribe them using personalised emails/sms.
 - **List Id:** Your default List Id to which you want to add/subscribe identified users.
 - **Consent:** If you are a GDPR-compliant business, you will need to include `consent` in your API call,`consent` is a Klaviyo-specific property and only accepts the following values: `email`, `web`, `sms`, `directmail`, and `mobile`.
-- **SMS Consent:** If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile (for double opt-in lists), include an `smsConsent` key in the properties with a value of `true` or `false`.
+- **SMS Consent:** If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile (for double opt-in lists), include an `smsConsent` key in the properties with a value of `true` or `false`
+- **Send Page As Track:** If you wish send page events as track events, along with `name` and `category` you need to enable this option.
+- **Additional Page info:** If you are sending page events as track, you can also choose to send in additional `properties` for the event by enabling this field..
 
 ## Page
 
@@ -53,21 +55,18 @@ Page call allows you track which web-page the user is viewing, take a look to un
 rudderanalytics.page();
 ```
 
-If you want to send additional info in the page evnent you can do it so by adding the `additionalInfo` key in the page event properties along with other `pageInfo` object which you want to associate with the page-view event, check out the example below.
+If you want to send `name` and `category` info in the page event you can do it so by adding the `Send Page As Track` key in the Control-Plane. If you also want to associate `properties` with the page-view event, you can do so by enabling `Additional Page info` property in Control-Plane.
 
 ```javascript
 rudderanalytics.page(
   "Cart",
   "Cart Viewed",
   {
-    additionalInfo: true,
-    pageInfo: {
-      path: "/cart",
-      referrer: "test.com",
-      search: "term",
-      title: "test_item",
-      url: "http://test.in",
-    }
+    path: "/cart",
+    referrer: "test.com",
+    search: "term",
+    title: "test_item",
+    url: "http://test.in",
   },
   () => {
     console.log("in page call");
@@ -131,14 +130,11 @@ The `track` call allows you to capture any action that the user might perform, a
 A sample `track` call looks like the following:
 
 ```javascript
-rudderanalytics.track(
-  "Checked Out",
-  {
-    Clicked_Rush_delivery_Button: true,
-    total_value: 2000,
-    Odered: ["T-Shirt", "jacket"],
-  }
-);
+rudderanalytics.track("Checked Out", {
+  Clicked_Rush_delivery_Button: true,
+  total_value: 2000,
+  Odered: ["T-Shirt", "jacket"],
+});
 ```
 
 In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the name of the product.
@@ -194,7 +190,6 @@ Similar to `listId` adding `consent` and `smsConsent` property will override the
 {% hint style="info" %}
 NOTE: Adding or Subscribing users to specific list is only available in cloud-mode integration.
 {% endhint %}
-
 
 ## Group
 
