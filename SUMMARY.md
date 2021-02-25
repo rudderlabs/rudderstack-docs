@@ -47,6 +47,7 @@
   * [Auth0](rudderstack-event-streams/auth0.md)
   * [Customer.io](rudderstack-event-streams/customerio.md)
   * [Looker](rudderstack-event-streams/looker.md)
+  * [PostHog](rudderstack-event-streams/posthog.md)
   * [Segment](rudderstack-event-streams/segment.md)
 * [RudderStack Cloud Extract Sources](cloud-extract-sources/README.md)
   * [Facebook Ads](cloud-extract-sources/facebook-ads.md)
