@@ -86,7 +86,7 @@ A sample `screen` call looks like the following code snippet:
 
 ```javascript
 MainApplication.rudderClient.screen(
-  "Screen Name: ",
+  "Sample Screen Name: ",
   "Screen Category",
   RudderProperty()
     .putValue("url", "https://gana.com")
@@ -97,7 +97,7 @@ MainApplication.rudderClient.screen(
 );
 ```
 
-In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event.
+In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In destination the above screen call will be shown as -  "Sample Screen Name: " along with the properties.
 
 {% hint style="info" %}
 Note that `screen` calls are only supported in the RudderStack cloud mode integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
