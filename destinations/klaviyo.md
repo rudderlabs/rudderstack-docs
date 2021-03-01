@@ -49,7 +49,7 @@ To successfully configure Klaviyo as a destination, you will need to configure t
 - **Use Native SDK to send Events:** If you want to send events using device mode.
 
 {% hint style="info" %}
-Note that in case of absence of `userId` rudderstack will try to fallback on `anonymousId` for mapping the user with an unique identifier. In case of absence of `userId` and `anonymousId`, `email` or `phone` will be considered as primary identifier for the user.
+Note that in case of absence of `userId` rudderstack will try to fallback on `anonymousId` for mapping the user with an unique identifier. In case of absence of `userId` and `anonymousId` then `email` or `phone` will be considered as primary identifier for the user.
 {% endhint %}
 
 ## Page
@@ -176,7 +176,6 @@ rudderanalytics.identify("userid", {
   Flagged: false,
   Residence: "Shibuya",
   properties: {
-    addToList: true,
     listId: "XUepkK",
     subscribe: true,
     consent: "email",
@@ -188,7 +187,7 @@ rudderanalytics.identify("userid", {
 In the above snippet, RudderStack captures relevant information about the user such as the `email`, `phone` as well as the associated traits of that user.
 
 {% hint style="info" %}
-The `userId`,`email` or `phone` trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user . You can further add the user to the list by marking `addToList` as `true` (**This mandatory for adding user to any List**) and adding `listId` in the `properties` within the `traits`, this will override the `listId` you used in the RudderStack control plane for this event. You can also subscribe the user to a list by setting `subscribe` option to `true`.
+The `userId`,`email` or `phone` trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user . You can further add the user to the list if default `listId` is present in Rudderstack control-plane  or by adding `listId` in the `properties` within the `traits`, this will override the `listId` you used in the control plane for this event. You can also subscribe the user to a list by setting `subscribe` option to `true`.
 {% endhint %}
 
 {% hint style="info" %}
