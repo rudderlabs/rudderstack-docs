@@ -45,7 +45,12 @@ To successfully configure Klaviyo as a destination, you will need to configure t
 - **Consent:** If you are a GDPR-compliant business, you will need to include `consent` in your API call,`consent` is a Klaviyo-specific property and only accepts the following values: `email`, `web`, `sms`, `directmail`, and `mobile`.
 - **SMS Consent:** If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile (for double opt-in lists), include an `smsConsent` key in the properties with a value of `true` or `false`
 - **Send Page As Track:** If you wish send page events as track events, along with `name` and `category` you need to enable this option.
-- **Additional Page info:** If you are sending page events as track, you can also choose to send in additional `properties` for the event by enabling this field..
+- **Additional Page info:** If you are sending page events as track, you can also choose to send in additional `properties` for the event by enabling this field.
+- **Use Native SDK to send Events:** If you want to send events using device mode.
+
+{% hint style="info" %}
+Note that in case of absence of `userId` rudderstack will try to fallback on `anonymousId` for mapping the user with an unique identifier. In case of absence of `userId` and `anonymousId`, `email` or `phone` will be considered as primary identifier for the user.
+{% endhint %}
 
 ## Page
 
@@ -60,20 +65,13 @@ rudderanalytics.page();
 If you want to send `name` and `category` info in the page event you can do it so by adding the `Send Page As Track` key in the Control-Plane. If you also want to associate `properties` with the page-view event, you can do so by enabling `Additional Page info` property in Control-Plane.
 
 ```javascript
-rudderanalytics.page(
-  "Cart",
-  "Cart Viewed",
-  {
-    path: "/cart",
-    referrer: "test.com",
-    search: "term",
-    title: "test_item",
-    url: "http://test.in",
-  },
-  () => {
-    console.log("in page call");
-  }
-);
+rudderanalytics.page("Cart", "Cart Viewed", {
+  path: "/cart",
+  referrer: "test.com",
+  search: "term",
+  title: "test_item",
+  url: "http://test.in",
+});
 ```
 
 {% hint style="info" %}
@@ -84,38 +82,18 @@ Note that `page` calls are only supported in the RudderStack device mode integra
 
 The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
 
-It is required that you associate the event with an user. If the user is not already identified, a new user will be created with `email` or `phone` as the identifier. If the user is already identified, the activity of the user will be updated with the event. It is therefore essential to either provide `email` or `phone` in order to associate with the user.
-
 A sample `screen` call looks like the following code snippet:
 
 ```javascript
-rudderanalytics.screen(
-  "Screen Viewed",
-  {
-    Clicked_Corner_Button": true,
-    ViewTime: 2000,
-    Checked: ["Home Page", "About"],
-  },
-  {
-    traits: {
-      id: "name",
-      age: "22",
-      name: "Name",
-      email: "name@website.com",
-      phone: "123456789",
-      userId: "userid",
-      city: "city",
-      state: "state",
-      street: "street",
-      country: "country",
-      postalcode: "123456",
-      birthday: "2021-01-01",
-      lastname: "lastname",
-      firstname: "name",
-      anonymousId: "9c6bd77ea9da3e68",
-      description: "Sample description",
-    },
-  }
+MainApplication.rudderClient.screen(
+  "Screen Name: ",
+  "Screen Category",
+  RudderProperty()
+    .putValue("url", "https://gana.com")
+    .putValue("title", "Screen Title")
+    .putValue("referrer", "https://screen.com")
+    .putValue("path", "/home"),
+  null
 );
 ```
 
@@ -127,7 +105,7 @@ Note that `screen` calls are only supported in the RudderStack cloud mode integr
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event. It is similar to `screen` event, and the user has to be associated with an event either by using `email` or `phone`.
+The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event. It is similar to `screen` event, and the user has to be associated with an event either by using `userId`, `email` or `phone`.
 
 A sample `track` call looks like the following:
 
@@ -136,17 +114,44 @@ rudderanalytics.track("Checked Out", {
   Clicked_Rush_delivery_Button: true,
   total_value: 2000,
   Odered: ["T-Shirt", "jacket"],
+  revenue: 2000,
 });
 ```
 
 In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the name of the product.
 
-{% hint style="info" %}
-If you want to set a specific value to the `screen` and `track` type event, you need to pass the `event` related property in event properties.
-{% endhint %}
+A sample server-side `track` call along with user-info looks like th following:
+
+```javascript
+client.track({
+  userId: "user2",
+  event: "Item Purcahsed",
+  properties: {
+    revenue: 97.5,
+    products: [
+      {
+        productId: "pro1",
+        price: 32.5,
+        quantity: 3,
+      },
+    ],
+  },
+  context: {
+    traits: {
+      email: "user2@gmail.com",
+    },
+  },
+});
+```
+
+In the above snippet, RudderStack captures the information related to the `Item Purchased` event, along with any additional info about that event in `properties` - in this case the revenue, along with product information. Moreover since this event is captured usinng server-side sdk we are passing user information in `context`, along with an unique `userId`.
 
 {% hint style="info" %}
 If you are sending `track`/ `screen` type event using some SDK which does not persist user context info after `identify`, you need to pass the user info in `context.traits`.
+{% endhint %}
+
+{% hint style="info" %}
+If you want to set a specific value to the `screen` and `track` type event, you need to pass the `event` related property in event properties, aslo you can send `revenue` property in track we will map it to klaviyo special property `$value`.
 {% endhint %}
 
 ## Identify
@@ -171,6 +176,7 @@ rudderanalytics.identify("userid", {
   Flagged: false,
   Residence: "Shibuya",
   properties: {
+    addToList: true,
     listId: "XUepkK",
     subscribe: true,
     consent: "email",
@@ -182,7 +188,7 @@ rudderanalytics.identify("userid", {
 In the above snippet, RudderStack captures relevant information about the user such as the `email`, `phone` as well as the associated traits of that user.
 
 {% hint style="info" %}
-The `email` or `phone` trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user . You can further add the user to the list by adding `listId` in the `properties` within the `traits`, this will override the `listId` you used in the RudderStack control plane for this event. You can also subscribe the user to a list by setting `subscribe` option to `true`.
+The `userId`,`email` or `phone` trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user . You can further add the user to the list by marking `addToList` as `true` (**This mandatory for adding user to any List**) and adding `listId` in the `properties` within the `traits`, this will override the `listId` you used in the RudderStack control plane for this event. You can also subscribe the user to a list by setting `subscribe` option to `true`.
 {% endhint %}
 
 {% hint style="info" %}
@@ -201,12 +207,13 @@ A sample `group` call looks like the following:
 
 ```javascript
 rudderanalytics.group(
-  "XUepkK",
+  "listId",
   {
     subscribe: "true",
   },
   {
     traits: {
+      userId: "userID",
       email: "name@website.com",
       phone: "+12 345 678 900",
       consent: "email",
@@ -219,11 +226,11 @@ rudderanalytics.group(
 In the above snippet, the user with the associated traits is added to list, and also subscribed using the `subscribe` flag.
 
 {% hint style="info" %}
-Apart from either `email` or `phone`, the other fields are not mandatory.
+Apart from either `userId`,`email` or `phone`, the other fields are not mandatory.
 {% endhint %}
 
 {% hint style="info" %}
-Adding `consent` and `smsConsent` property will override the value stored in control plane for the specific event.
+Adding `consent` and `smsConsent` property in user traits will override the value stored in control plane for the specific event.
 {% endhint %}
 
 {% hint style="info" %}
