@@ -74,18 +74,6 @@ func main() {
     client.Close()
 }
 ```
-For Users who do not use a proxy can make the NoProxySupport to true while initialising Config , this will avoid making calls to the proxy for fetching the total number of nodes in case of multi-node setup
-
-```go
-    // Instantiates a client to use send messages to the Rudder API.
-    client, _ := analytics.NewWithConfig(WRITE_KEY, DATA_PLANE_URL,
-		analytics.Config{
-			Interval:  30 * time.Second,
-			BatchSize: 100,
-			NoProxySupport:   true,
-		})
-```
-
 
 The `Config` object parameters are as described below:
 
@@ -98,6 +86,17 @@ The `Config` object parameters are as described below:
 | `maxConcurrentRequests` | int | Optional | The maximum number of parallel goroutines which will be spawned |
 | `NoProxySupport` | bool | Optional | Setting this variable to true will disable making calls to cluster-info end point |
 
+For Users who do not use a proxy can make the NoProxySupport to true while initialising Config , this will avoid making calls to the proxy for fetching the total number of nodes in case of multi-node setup
+
+```go
+    // Instantiates a client to use send messages to the Rudder API.
+    client, _ := analytics.NewWithConfig(WRITE_KEY, DATA_PLANE_URL,
+		analytics.Config{
+			Interval:  30 * time.Second,
+			BatchSize: 100,
+			NoProxySupport:   true,
+		})
+```
 
 ## Identify
 
@@ -164,7 +163,7 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed. 
+The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
 
 {% hint style="info" %}
 For a detailed explanation of the `page` call, please refer to our [RudderStack API specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
