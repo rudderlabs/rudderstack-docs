@@ -75,6 +75,29 @@ func main() {
 }
 ```
 
+The `Config` object parameters are as described below:
+
+| **Field** | **Type** | **Presence** | **Description** |
+| :--- | :--- | :--- | :--- |
+| `Interval` | time.Duration | Optional | Messages will be sent when this flushing interval time triggers |
+| `BatchSize` | int | Optional| Total number of messages to be sent in a single batch |
+| `Verbose` | bool | Optional | When set to true, the client will send more frequent and detailed messages to its logger |
+| `RetryAfter` | time.Duration | Optional | This can be used to set up how long the failed messages can be retried |
+| `maxConcurrentRequests` | int | Optional | The maximum number of parallel goroutines which will be spawned |
+| `NoProxySupport` | bool | Optional | Setting this variable to true will disable making calls to cluster-info end point |
+
+For Users who do not use a proxy can make the NoProxySupport to true while initialising Config , this will avoid making calls to the proxy for fetching the total number of nodes in case of multi-node setup
+
+```go
+    // Instantiates a client to use send messages to the Rudder API.
+    client, _ := analytics.NewWithConfig(WRITE_KEY, DATA_PLANE_URL,
+		analytics.Config{
+			Interval:  30 * time.Second,
+			BatchSize: 100,
+			NoProxySupport:   true,
+		})
+```
+
 ## Identify
 
 The `identify` call lets you associate a user to their actions as well as captures the relevant traits or properties related to that user.
@@ -140,7 +163,7 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed. 
+The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
 
 {% hint style="info" %}
 For a detailed explanation of the `page` call, please refer to our [RudderStack API specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
