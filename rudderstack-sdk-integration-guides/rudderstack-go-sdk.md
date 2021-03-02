@@ -77,13 +77,6 @@ func main() {
 For Users who do not use a proxy can make the NoProxySupport to true while initialising Config , this will avoid making calls to the proxy for fetching the total number of nodes in case of multi-node setup
 
 ```go
-package main
-
-import (
-    "github.com/rudderlabs/analytics-go"
-)
-
-func main() {
     // Instantiates a client to use send messages to the Rudder API.
     client, _ := analytics.NewWithConfig(WRITE_KEY, DATA_PLANE_URL,
 		analytics.Config{
@@ -91,16 +84,6 @@ func main() {
 			BatchSize: 100,
 			NoProxySupport:   true,
 		})
-
-    // Enqueues a track event that will be sent asynchronously.
-    client.Enqueue(analytics.Track{
-        UserId: "test-user",
-        Event:  "test-snippet",
-    })
-
-    // Flushes any queued messages and closes the client.
-    client.Close()
-}
 ```
 
 
