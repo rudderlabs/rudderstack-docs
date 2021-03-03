@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Klav
 
 # Klaviyo
 
-[Klaviyo](https://www.klaviyo.com/) is a powerful eCommerce platform that allows you to boost your business revenue. It supports unique features such as category-based segmentation and various event triggers based on page views, purchases, email engagement, and more. With Klaviyo, you can easily track and measure all your user activity and the resulting revenue and get a breakdown of this revenue based on custom attributes like campaign type or revenue per recipient. It also offers features such as trend reports, cohort analysis, and various options for boosting customer engagement, such as personalized newsletters, product recommendations, in-app push notifications, and more.
+[Klaviyo](https://www.klaviyo.com/) is a powerful eCommerce platform that allows you to boost your business revenue. It supports unique features such as category-based segmentation and various event triggers based on page views, purchases, email engagement, etc. With Klaviyo, you can easily track and measure all your user activity and the resulting revenue and get a breakdown of this revenue based on custom attributes like campaign type or revenue per recipient. It also offers features such as trend reports, cohort analysis, and various options for boosting customer engagement, such as personalized newsletters, product recommendations, in-app push notifications, and more.
 
 You can now send your event data directly to Klaviyo through RudderStack.
 
@@ -41,12 +41,12 @@ To successfully configure Klaviyo as a destination, you will need to configure t
 
 - **Public API Key:** Your Public API Key is the unique key generated against your account. It can be found in your account on the **Account** section under the **Settings** tab.
 - **Private API Key:** Your Private API key can be generated for your account on the **Account** section under the **Settings** tab. This key allows you to add users to list or subscribe them using personalised emails/sms.
-- **List Id:** Your default List Id to which you want to add/subscribe identified users.
-- **Consent:** If you are a GDPR-compliant business, you will need to include `consent` in your API call,`consent` is a Klaviyo-specific property and only accepts the following values: `email`, `web`, `sms`, `directmail`, and `mobile`.
-- **SMS Consent:** If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile (for double opt-in lists), include an `smsConsent` key in the properties with a value of `true` or `false`
-- **Send Page As Track:** If you wish send page events as track events, along with `name` and `category` you need to enable this option.
-- **Additional Page info:** If you are sending page events as track, you can also choose to send in additional `properties` for the event by enabling this field.
-- **Use Native SDK to send Events:** If you want to send events using device mode.
+- **List ID:** Your default List ID to which you want to add/subscribe identified users.
+- **Consent:** If you are a GDPR-compliant business, you will need to include `consent` in your API call.`consent` is a Klaviyo-specific property and only accepts the following values: `email`, `web`, `sms`, `directmail`, and `mobile`.
+- **SMS Consent:** If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile (for double opt-in lists), include an `smsConsent` key in the properties with a value of `true` or `false`.
+- **Send Page As Track:** Enable this option if you wish send `page` events as `track` events along with `name` and `category`.
+- **Additional Page info:** In case you are sending `page` events as `track` events, you can also choose to send in additional `properties` for the event by enabling this field.
+- **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
 
 {% hint style="info" %}
 Note that in case of absence of `userId` rudderstack will try to fallback on `anonymousId` for mapping the user with an unique identifier. In case of absence of `userId` and `anonymousId` then `email` or `phone` will be considered as primary identifier for the user.
@@ -62,7 +62,7 @@ An example `page` call would look like:
 rudderanalytics.page();
 ```
 
-If you want to send `name` and `category` info in the page event you can do it so by adding the `Send Page As Track` key in the Control-Plane. If you also want to associate `properties` with the page-view event, you can do so by enabling `Additional Page info` property in Control-Plane.
+If you want to send `name` and `category` info in the page event you can do it so by adding the `Send Page As Track` key in the control plane. If you also want to associate `properties` with the page-view event, you can do so by enabling `Additional Page info` property in control plane.
 
 ```javascript
 rudderanalytics.page("Cart", "Cart Viewed", {
@@ -120,12 +120,12 @@ rudderanalytics.track("Checked Out", {
 
 In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the details of the `Checked out` event.
 
-A sample server-side `track` call along with user-info looks like th following:
+A sample server-side `track` call along with user information looks like the following:
 
 ```javascript
 client.track({
   userId: "user2",
-  event: "Item Purcahsed",
+  event: "Item Purchased",
   properties: {
     revenue: 97.5,
     products: [
