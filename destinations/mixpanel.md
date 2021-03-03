@@ -112,19 +112,57 @@ rudderanalytics.track("Purchase", {
 });
 ```
 
+## **Group**
+
+{% hint style="info" %}
+For more information ****on how `group` call works in Mixpanel, check out Mixpanel's [Group Analytics documentation](https://help.mixpanel.com/hc/en-us/articles/360025333632-Group-Analytics).
+{% endhint %}
+
+RudderStack allows you to record the custom traits associated with the group such as name of the organization, number of employees, etc., and send this information to Mixpanel.
+
+A sample `group` call is as shown:
+
+```text
+{
+  "userId": "user123",
+  "traits": {
+    "name": "Company",
+    "industry": "Industry",
+    "employees": 123
+  },
+  "context": {
+    "traits": {
+       "trait1": "new-val"  
+    },
+    "library": {
+        "name": "http"
+    }
+  },
+  "timestamp": "2020-01-21T00:21:34.208Z"
+}
+```
+
+RudderStack sends `group` calls to Mixpanel only if one or more group keys are specified during the destination configuration in RudderStack, as shown:
+
+![Mixpanel Group Key Settings](../.gitbook/assets/1%20%2812%29.png)
+
+{% hint style="warning" %}
+You should also have created the group key/s of the same name in Mixpanel's [project settings](https://help.mixpanel.com/hc/en-us/articles/360025333632-Group-Analytics#implementation). To administer group keys, simply navigate to your project settings and click on **Add Group Key** under the **Group Keys** section.
+{% endhint %}
+
 ## **Sending Historic Events**
 
 Mixpanel supports historical event data import. But the timestamp of the event should be within the **last 5 years**. Mixpanel rejects any data older than this duration. To send historic events, you need to provide the timestamp at the `timestamp` field in the message. RudderStack will then send the event with the same timestamp to Mixpanel.
 
 ## Mapping of RudderStack properties to Mixpanel properties
 
-Below is the mapping of some of Mixpanel properties with the Rudder properties that we send over their HTTP API.
+Below is the mapping of some of Mixpanel properties with the RudderStack properties that we send over their HTTP API.
 
 {% hint style="info" %}
-We map these fields only in `identify` requests
+We map these fields only in `identify` requests.
 {% endhint %}
 
-| Mixpanel properties | Rudder properties |
+| Mixpanel properties | RudderStack properties |
 | :--- | :--- |
 | `$created` | `traits.createdAt` |
 | `$email` | `traits.email` |
