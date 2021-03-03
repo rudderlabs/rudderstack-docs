@@ -118,7 +118,7 @@ rudderanalytics.track("Checked Out", {
 });
 ```
 
-In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the name of the product.
+In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the details of the `Checked out` event.
 
 A sample server-side `track` call along with user-info looks like th following:
 
@@ -202,24 +202,29 @@ Adding or subscribing users to specific list is only available in cloud-mode int
 
 The `group` call lets you associate a user with a list. You can also subscribe a user to the list. If you haven't already added or subscribed the user using the `identify` call, you can do so by using `group` call.
 
-A sample `group` call looks like the following:
+A sample server-side `group` call looks like the following:
 
 ```javascript
-rudderanalytics.group(
-  "listId",
-  {
-    subscribe: "true",
+client.group({
+  anonymousId: 'userId',
+  groupId: 'listId',
+  traits: {
+    subscribe: true
   },
-  {
+  context:{
     traits: {
-      userId: "userID",
-      email: "name@website.com",
-      phone: "+12 345 678 900",
+      email: "user.test@gmail.com",
+      city: "city",
+      country: "country",
+      zip: "213456",
+      age: 23,
+      plan: "free",
       consent: "email",
-      smsConsent: true,
-    },
+      phone: '1-617-555-1333',
+      smsConsent: true
+    }
   }
-);
+});
 ```
 
 In the above snippet, the user with the associated traits is added to list, and also subscribed using the `subscribe` flag.
