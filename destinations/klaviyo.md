@@ -206,7 +206,7 @@ A sample server-side `group` call looks like the following:
 
 ```javascript
 client.group({
-  anonymousId: 'userId',
+  userId: 'userId',
   groupId: 'listId',
   traits: {
     subscribe: true
