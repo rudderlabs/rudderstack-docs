@@ -21,7 +21,7 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | **Supported** | - | - |
-| **Cloud mode** | **Supported** | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -43,13 +43,63 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![](../.gitbook/assets/screen-shot-2021-03-03-at-1.09.54-pm.png)
 
-* Enter your Facebook Pixel ID. If you have a Business Access Token, enter that as well.
+The connection settings are:
+
+* Enter your **Facebook Pixel ID** \(Required for both Device Mode and Cloud Mode\) If you have a **Business Access Token \(**required for Cloud Mode\), enter that as well.
 
 {% hint style="info" %}
 More information on how to find your Facebook Pixel ID and Business Access Token can be found in our FAQs below.
 {% endhint %}
 
-* Click on **Next** to complete the configuration.
+* Some other important settings are: 
+  * **Value Field Identifier**: You can set this field to `properties.price` or `properties.value` and will be assigned to the value field of the Facebook payload. 
+  * **Blacklist PII Properties**:  The PII properties mentioned in this field will not be sent to Facebook if **Blacklist PII Hash Property** is not enabled. If it is enabled, the property will be hashed by SHA256 and sent to Facebook. 
+  * **Whitelist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. 
+  * **Standard Events Custom Properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, those properties should be mentioned in this setting. 
+  * **Limited Data Usage**: If enabled, RudderStack will take the data processing information from the payload and send it to Facebook. The data in the RudderStack payload should be as follows:
+
+```javascript
+"context": {
+  "dataProcessingOptions": [
+    [
+      "LDU"
+    ],
+    1,
+    1000
+  ],
+  "fbc": "fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890",
+  "fbp": "fb.1.1554763741205.234567890",
+  "fb_login_id": "fb_id",
+  "lead_id": "lead_id",
+  "device": {
+    "id": "df16bffa-5c3d-4fbb-9bce-3bab098129a7R",
+    "manufacturer": "Xiaomi",
+    "model": "Redmi 6",
+    "name": "xiaomi"
+  },
+  "network": {
+    "carrier": "Banglalink"
+  },
+  "os": {
+    "name": "android",
+    "version": "8.1.0"
+  },
+  "screen": {
+    "height": "100",
+    "density": 50
+  },
+  "traits": {
+    "email": "abc@gmail.com",
+    "anonymousId": "c82cbdff-e5be-4009-ac78-cdeea09ab4b1"
+  }
+}
+```
+
+{% hint style="info" %}
+The `context.dataProcessingOptions` will be mapped to **`data_processing_options`** in Facebook as is mentioned in the [Facebook developer docs](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event#data-processing-options). 
+{% endhint %}
+
+* Finally, click on **Next** to complete the configuration.
 
 ## Identify
 
@@ -127,11 +177,15 @@ The mapping is done as follows in RudderStack:
 | `Products Searched` | `Search` |
 | `Checkout Started` | `InitiateCheckout` |
 
-In Pixel, a currency for **Purchase** events is required to be specified. If not provided the default will be set to USD.
+In Pixel, a currency for **Purchase** events is required to be specified. If not provided the default will be set to **`USD`**.
 
 ## Legacy Events
 
-In the dashboard, the legacy conversion Pixel ids can be filled. The events which appear in the mapping are sent to Pixel with the mapped Pixel id. Conversion events only support currency and value as their event properties.
+In the dashboard, the legacy conversion Pixel IDs can be filled. The events which appear in the mapping are sent to Pixel with the mapped Pixel ID. The conversion events only support currency and value as their event properties.
+
+{% hint style="info" %}
+This is only available for device mode.
+{% endhint %}
 
 ## Custom Events
 
@@ -141,7 +195,7 @@ Custom events are used to send any event that does not appear in any of the mapp
 
 Facebook Pixel uses ISO 8601 timestamp without the timezone information. 
 
-Facebook expects them to be sent as : 
+Facebook expects them to be sent in the following format: 
 
 `"checkinDate", "checkoutDate", "departingArrivalDate", "departingDepartureDate", "returningArrivalDate", "returningDepartureDate", "travelEnd", "travelStart"`
 
