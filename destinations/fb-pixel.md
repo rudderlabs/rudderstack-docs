@@ -1,5 +1,5 @@
 ---
-description: Step-by-step guide to send event data from RudderStack to Facebook Pixel
+description: Step-by-step guide to send event data from RudderStack to Facebook Pixel.
 ---
 
 # Facebook Pixel
@@ -21,7 +21,7 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | **Supported** | - | - |
-| **Cloud mode** | - | - | - |
+| **Cloud mode** | **Supported** | - | - |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -37,14 +37,19 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![](../.gitbook/assets/screenshot-2020-05-06-at-7.15.02-pm.png)
+![](../.gitbook/assets/screen-shot-2021-03-03-at-1.09.06-pm.png)
 
-![](../.gitbook/assets/screenshot-2020-05-06-at-7.15.14-pm.png)
+![](../.gitbook/assets/screen-shot-2021-03-03-at-1.09.38-pm.png)
 
-![](../.gitbook/assets/screenshot-2020-05-06-at-7.15.19-pm.png)
+![](../.gitbook/assets/screen-shot-2021-03-03-at-1.09.54-pm.png)
 
-* Enter the **Pixel Id** \(required\)
-* Click on **Next** to complete the configuration 
+* Enter your Facebook Pixel ID. If you have a Business Access Token, enter that as well.
+
+{% hint style="info" %}
+More information on how to find your Facebook Pixel ID and Business Access Token can be found in our FAQs below.
+{% endhint %}
+
+* Click on **Next** to complete the configuration.
 
 ## Identify
 
@@ -144,7 +149,26 @@ Facebook expects them to be sent as :
 
 **Where can i find the Pixel ID?**
 
-The Facebook Pixel ID can be found in [Pixels tab in Facebook Ads Manager](https://www.facebook.com/ads/manager/pixel/facebook_pixel).
+To get your Pixel ID, go to your Facebook Ads Manager account. On the left navigation bar, select Business Tools, and click on **Events Manager** under **Manage Business**. 
+
+![](../.gitbook/assets/screen-shot-2021-03-03-at-1.22.01-pm.png)
+
+In the Data Sources, you should be able to see your Pixel ID underneath your site name.
+
+![](../.gitbook/assets/screen-shot-2021-03-03-at-1.19.03-pm.png)
+
+#### Where can I find the Business Access Token?
+
+In order to use the Facebook Conversions API, you need to generate an access token. We recommend using the Facebook Events Manager to do so, by following these steps:
+
+* Choose the relevant Facebook Pixel and click on the **Settings** tab.
+* In the Conversions API section, click on **Generate access token** under the **Set up manually** section, as shown:
+
+![](../.gitbook/assets/screen-shot-2021-03-03-at-1.44.33-pm.png)
+
+{% hint style="info" %}
+For more information on how to use this access token, or to generate your access token via your own app, check out Facebook's [developer documentation](https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/#via-events-manager).
+{% endhint %}
 
 ##  Contact Us
 
