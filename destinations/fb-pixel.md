@@ -103,7 +103,7 @@ The `context.dataProcessingOptions` will be mapped to **`data_processing_options
 
 ## Identify
 
-In Facebook Pixel, the immediate updating of user properties via the `identify` call is not supported. If the advanced mapping setting is turned on in the dashboard, then the `identify` call will update Facebook Pixel with the user information.
+In Facebook Pixel, the immediate updating of user properties via the `identify` call is not supported. If the **Enable Advanced Matching** is turned on in the dashboard, then the `identify` call will update Facebook Pixel with the user information.
 
 The following snippet highlights the use of the `identify` call:
 
