@@ -115,9 +115,9 @@ The following requirements must be met to use App Center: Your iOS project is se
 {% endhint %}
 {% endtab %}
 {% tab title="React Native" %}
-To add AppCenter to your ReactNative project:
+To add AppCenter to your React Native project:
 
-Add the RudderStack-AppsCenter module to your app using :
+Add the RudderStack-App Center module to your app using :
 
 ```bash
 npm install @rudderstack/rudder-integration-appcenter-react-native
@@ -125,7 +125,7 @@ npm install @rudderstack/rudder-integration-appcenter-react-native
 yarn add @rudderstack/rudder-integration-appcenter-react-native
 ```
 
-Import the module you added above and add it to your SDK initialization code in the following manner:
+Import the module you added above and add it to your SDK initialization code as shown below:
 
 ```typescript
 import rudderClient from '@rudderstack/rudder-sdk-react-native';
