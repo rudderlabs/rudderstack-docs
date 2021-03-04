@@ -125,11 +125,17 @@ npm install @rudderstack/rudder-integration-appcenter-react-native
 yarn add @rudderstack/rudder-integration-appcenter-react-native
 ```
 
+{% hint style="info" %}
+  Make sure the `minSdkVersion` of your `build.gradle` in the root of `android` directory is atleast `21`
+{% endhint %}
+
+Run `pod install` inside the `ios` directory of your project adding `@rudderstack/rudder-integration-appcenter-react-native` to your project.
+
 Import the module you added above and add it to your SDK initialization code as shown below:
 
 ```typescript
 import rudderClient from '@rudderstack/rudder-sdk-react-native';
-import appscenter from "@rudderstack/rudder-integration-appcenter-react-native";
+import appcenter from "@rudderstack/rudder-integration-appcenter-react-native";
 
 const config = {
     dataPlaneUrl: DATA_PLANE_URL,
