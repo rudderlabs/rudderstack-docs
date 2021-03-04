@@ -114,6 +114,31 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 The following requirements must be met to use App Center: Your iOS project is set up in Xcode 11 or later on macOS version 10.14.4 or later. You're targeting devices running on iOS 9.0 or later.
 {% endhint %}
 {% endtab %}
+{% tab title="React Native" %}
+To add AppCenter to your React Native project:
+
+Add the RudderStack-App Center module to your app using :
+
+```bash
+npm install @rudderstack/rudder-integration-appcenter-react-native
+// OR //
+yarn add @rudderstack/rudder-integration-appcenter-react-native
+```
+
+Import the module you added above and add it to your SDK initialization code as shown below:
+
+```typescript
+import rudderClient from '@rudderstack/rudder-sdk-react-native';
+import appscenter from "@rudderstack/rudder-integration-appcenter-react-native";
+
+const config = {
+    dataPlaneUrl: DATA_PLANE_URL,
+    trackAppLifecycleEvents: true,
+    withFactories: [appcenter]
+};
+rudderClient.setup(WRITE_KEY, config);
+```
+{% endtab %}
 {% endtabs %}
 
 ## Track
