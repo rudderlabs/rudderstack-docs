@@ -19,10 +19,10 @@ You can check the [Unity SDK codebase on GitHub](https://github.com/rudderlabs/r
 To properly configure the Unity SDK, you will need the following:
 
 * You will need a [RudderStack account](https://app.rudderlabs.com/login). Your source `writeKey` should appear on the dashboard once you have signed up.
-* Your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events. 
+* Your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
- To get the **Data Plane URL**: ****
+ To get the **Data Plane URL**:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
@@ -135,11 +135,11 @@ rudderClient.Reset();
 
 ## Upgrading the SDK
 
-Remove all the files related to RudderStack SDK from the `Plugins`  folder. Also remove the `RudderUnityPlugin` folder completely before importing the newer version of the SDK.
+Remove all the files related to RudderStack SDK from the `Plugins`  folder. Also remove the `Rudder` folder completely before importing the newer version of the SDK.
 
 The following is the list of files in `Plugins` folder for RudderStack SDK:
 
-* `Plugins/Android/rudder-sdk-unity-plugin-android-release.aar`
+* `Plugins/Android/unity-plugin-release.aar`
 * `Plugins/iOS/RudderSDKUnity`
 
 ## Contact us
