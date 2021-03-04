@@ -121,7 +121,7 @@ Add the RudderStack-App Center module to your app using :
 
 ```bash
 npm install @rudderstack/rudder-integration-appcenter-react-native
-// OR //
+## OR ##
 yarn add @rudderstack/rudder-integration-appcenter-react-native
 ```
 
