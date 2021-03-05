@@ -29,7 +29,7 @@ You can either use Postman, Fiddler or any other API client to make your request
 ```markup
 Request URL: https://api.rudderstack.com/accessToken
 Request METHOD: POST
-Response Headers:
+Response Body:
 {
   "success": true,
   "data": {
@@ -41,20 +41,7 @@ Response Headers:
 If your workspace token is 1Xk5DChfJAol3xtW7qNnK1apo5p, your HTTP Request Header will be
 Authorization: Basic Base64Enc(1Xk5DChfJAol3xtW7qNnK1apo5p).
 
-## 3. Errors
-
-Rudderstack uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in 2xx range indicate success, codes in 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted), and codes in the 5xx range indicates an error with Rudderstack's server (these are rare).
-
-| **Http Response Code**          | **Description**                                                            |
-| :------------------------------ | :------------------------------------------------------------------------- |
-| **200 - OK**                    | **Everything worked as expected**                                          |
-| **400 - Bad Request**           | **The request was unacceptable, often due to a missing required field**    |
-| **401 – Unauthorized**          | **No valid API key provided or user doesn’t have access to the resource.** |
-| **403 – Forbidden**             | **User doesn’t have permission to create/access data**                     |
-| **404 - Not Found**             | **The requested resource doesn’t exist**                                   |
-| **500 - Internal Server Error** | **Something went wrong on Rudderstack's end**                              |
-
-## 4 Basic Authentication
+## 3. Basic Authentication
 
 You will authenticate your account when using the API by including your secret AccessToken in the password fields in Authorization, if using POSTMAN. The API is authenticated via HTTP Basic Auth.
 API requests without authentication will also fail.
@@ -62,38 +49,84 @@ API requests without authentication will also fail.
 You can also pass your AccessToken in Authorization Headers.
 
 ```markup
-Authorization: Basic {Base64Encoded(AccessToken)}
+Authorization: Basic {Base64Encoded(:AccessToken)}
 ```
 
 {% hint style="success" %}
 To make a successfull request all of upcoming endpoints should include this headers
 {% endhint %}
 
-## 5. Transformations
+## 4. Operations on AccessToken
+
+We also provide CRUD operations on your AccessToken. You can also update and delete your accesstoken.
+
+{% hint style="warning" %}
+We strongly recommend to generate your accesstoken before you make any API calls.
+{% endhint %}
+
+### 4.1 Retrieve your AccessToken
+
+```markup
+Request URL: https://api.rudderstack.com/accessToken
+Request METHOD: GET
+Response Body:
+{
+    "description": "",
+    "accessToken": "1pI2Qp2l6xfxASwoFpQJNpiHWYG",
+    "userId": "1pHd4eqnCfzBbssUxGxwBjDfhn7",
+    "createdAt": "2021-03-04T05:41:09.887Z",
+    "updatedAt": "2021-03-04T05:41:09.887Z"
+}
+```
+
+### 4.2 Delete your AccessToken
+
+```markup
+Request URL: https://api.rudderstack.com/accessToken
+Request METHOD: DELETE
+Response Body:
+{
+    success: true
+}
+```
+
+## 5. Errors
+
+Rudderstack uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in 2xx range indicate success, codes in 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted), and codes in the 5xx range indicates an error with Rudderstack's server (these are rare).
+
+| **Http Response Code**          | **Description**                                                                 |
+| :------------------------------ | :------------------------------------------------------------------------------ |
+| **200 - OK**                    | **Everything worked as expected**                                               |
+| **400 - Bad Request**           | **The request was unacceptable, often due to a missing required field**         |
+| **401 – Unauthorized**          | **No valid Access Token provided or user doesn’t have access to the resource.** |
+| **403 – Forbidden**             | **User doesn’t have permission to create/access data**                          |
+| **404 - Not Found**             | **The requested resource doesn’t exist**                                        |
+| **500 - Internal Server Error** | **Something went wrong on Rudderstack's end**                                   |
+
+## 6. Transformations
 
 The transformation is responsible for converting the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript. We also supports user-specific transformations for real-time operations, such as aggregation and sampling. Transformer helps you to create a user defined code that will route your events in the way you wish to see it on your destinations.
 
 ```markup
-Authorization: Basic {Base64Encoded(AccessToken)}
+Authorization: Basic {Base64Encoded(:AccessToken)}
 URL: https://api.rudderstack.com/transformations
 ```
 
 ### Transformer Payload:
 
-| **Field**      | **Type** | **Presence** | **Description**                                                                                                                                        |
-| :------------- | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`         | String   | Required     | Sets the name of Transformer.                                                                                                                          |
-| `description`  | String   | Optional     | Gives a description for a transformer.                                                                                                                 |
-| `code`         | String   | Optional     | User defined code that maps events data to destinations as defined by user.                                                                            |
-| `createdBy`    | Date     | Optional     | The timestamp of the transformer created.                                                                                                              |
-| `modifiedBy`   | Date     | Optional     | The timestamp of the transformer updated.                                                                                                              |
-| `isPublished`  | Boolean  | Optional     | By default this flag is false. If set to true then that is latest transformer through which all events gets processed before reaching to destinations. |
-| `codeVersion`  | Integer  | Optional     | If you wish to use API you must set this latest version i.e, 1.                                                                                        |
-| `versionId`    | String   | Optional     | Maintains a version of transformer everytime it is updated.                                                                                            |
-| `workspace`    | Object   | Optional     | Dictionary of information that provides workspace data where any transformation is used.                                                               |
-| `destinations` | Array    | Optional     | List of all destinations where current transformer is used.                                                                                            |
+| **Field**      | **Type** | **Presence** | **Description**                                                                                                                                                   |
+| :------------- | :------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| `name`         | String   | Required     | Sets the name of Transformer.                                                                                                                                     |
+| `description`  | String   | Optional     | Gives a description for a transformer.                                                                                                                            |
+| `code`         | String   | Optional     | User defined code that maps events data to destinations as defined by user.                                                                                       |
+| `createdBy`    | Date     | Optional     | The timestamp of the transformer created.                                                                                                                         |
+| `modifiedBy`   | Date     | Optional     | The timestamp of the transformer updated.                                                                                                                         |
+| `isPublished`  | Boolean  | Optional     | By default it is false and this only creates a draft for your transformation. If set to true, this code will be saved and also be made live for incoming traffic. |     |
+| `versionId`    | String   | Optional     | Maintains a version of transformer everytime it is updated.                                                                                                       |
+| `workspace`    | Object   | Optional     | Dictionary of information that provides workspace data where any transformation is used.                                                                          |
+| `destinations` | Array    | Optional     | List of all Destination IDs to which we want to connect this transformation.                                                                                      |
 
-### 5.1. Create a Transformation
+### 6.1. Create a Transformation
 
 Creates a transformer and send its object as response.
 
@@ -105,7 +138,7 @@ Request Body:
     "name": "Update Transformations and Publish",
     "code": "function transform(events) { return events; } ",
 }
-Response Headers:
+Response Body:
 {
     "name": "Update Transformations and Publish",
     "description": "",
@@ -153,12 +186,12 @@ Response Headers:
 }
 ```
 
-### 5.2. Retrieve a Transformation
+### 6.2. Retrieve a Transformation
 
 ```markup
 Request URL: https://api.rudderstack.com/transformations/{id}
 Request METHOD: GET
-Response Headers:
+Response Body:
 {
     "transformations": {
         "id": "swderftgy",
@@ -176,12 +209,12 @@ Response Headers:
 }
 ```
 
-### 5.3. List all Transformation
+### 6.3. List all Transformation
 
 ```markup
 Request URL: https://api.rudderstack.com/transformations
 Request METHOD: GET
-Response Headers:
+Response Body:
 {
     "transformations": [
         {
@@ -214,7 +247,7 @@ Response Headers:
 }
 ```
 
-### 5.4. Update a Transformation
+### 6.4. Update a Transformation
 
 ```markup
 Request URL: https://api.rudderstack.com/transformations/{id}
@@ -224,7 +257,7 @@ Request Body:
     "code": "export default function cube(x) { return x * x ; }",
     "description": "Hey I am updated"
 }
-Response Headers:
+Response Body:
 {
     "id": "1pHw1RmzAqKpRCNupzHjTGfTrPJ",
     "versionId": "1pIfjTI5cOMnSgutkXjTRldt1n3",
@@ -249,7 +282,7 @@ Request Body:
     "code": "export default function cube(x) { return x * x ; }",
     "description": "Hey I am updated"
 }
-Response Headers:
+Response Body:
 {
     "id": "1pHw1RmzAqKpRCNupzHjTGfTrPJ",
     "versionId": "1pIfjTI5cOMnSgutkXjTRldt1n3",
@@ -262,19 +295,19 @@ Response Headers:
 }
 ```
 
-### 5.5. Delete a Transformation
+### 6.5. Delete a Transformation
 
 Request URL: https://api.rudderstack.com/transformations/{id}
 Request METHOD: DELETE
-Response Headers:
+Response Body:
 OK
 
-### 5.6. List all Transformation Versions
+### 6.6. List all Transformation Versions
 
 ```markup
 Request URL: https://api.rudderstack.com/transformations/{id}/versions
 Request METHOD: GET
-Response Headers:
+Response Body:
 {
     "transformations": [
         {
@@ -299,12 +332,12 @@ Response Headers:
 }
 ```
 
-### 5.7. Retrieve a single Transformation Version
+### 6.7. Retrieve a single Transformation Version
 
 ```markup
 Request URL: https://api.rudderstack.com/transformations/{id}/versions/{versionId}
 Request METHOD: GET
-Response Headers:
+Response Body:
 {
     "transformations": {
         "id": "1pIYoILGZTNYZP4YYkeyNIKlitl",
@@ -318,7 +351,7 @@ Response Headers:
 }
 ```
 
-## 6. Libraries
+## 8. Libraries
 
 Libraries are javascript code that you write and export to be used in your transformations. It gives you flexibility of code reusability and maintainibility at different versions.
 Suppose you write a aggregation function sum and difference. One can export them and use it within different transformers just by importing that module by library name.
@@ -337,11 +370,11 @@ URL: https://api.rudderstack.com/libraries
 | `code`        | String   | Optional     | User defined code.                                                                                                                                                         |
 | `createdBy`   | Date     | Optional     | The timestamp of the transformer created.                                                                                                                                  |
 | `modifiedBy`  | Date     | Optional     | The timestamp of the transformer updated.                                                                                                                                  |
-| `isPublished` | Boolean  | Optional     | By default this flag is false. If set to true then that is latest libraries all published transformer will use if it is present in that transformer.                       |
+| `isPublished` | Boolean  | Optional     | By default it is false and this only creates a draft for your transformation. If set to true, this code will be saved and also be made live for incoming traffic.          |
 | `versionId`   | String   | Optional     | Maintains a version of library everytime it is updated.                                                                                                                    |
 | `workspace`   | Object   | Optional     | Dictionary of information that provides workspace data where any transformation is used.                                                                                   |
 
-### 6.1. Create a Library
+### 8.1. Create a Library
 
 ```markup
 Request URL: https://api.rudderstack.com/libraries
@@ -352,7 +385,7 @@ Request Body:
     "code": "    export default function cube(x) { return x * x * x; }",
     "description": "First Library using apiCall"
 }
-Response Headers:
+Response Body:
 {
     "name": "getCube",
     "description": "First Library using apiCall",
@@ -389,12 +422,12 @@ Response Headers:
 }
 ```
 
-### 6.2. Retrieve a Library
+### 8.2. Retrieve a Library
 
 ```markup
 Request URL: https://api.rudderstack.com/libraries/{id}
 Request METHOD: GET
-Response Headers:
+Response Body:
 {
     "libraries": {
         "id": "1pHxUHNwf6gj7duaQgPdRMi1Rj1",
@@ -407,12 +440,12 @@ Response Headers:
 }
 ```
 
-### 6.3. List all Libraries
+### 8.3. List all Libraries
 
 ```markup
 Request URL: https://api.rudderstack.com/libraries
 Request METHOD: GET
-Response Headers:
+Response Body:
 {
     "libraries": [
         {
@@ -435,7 +468,7 @@ Response Headers:
 }
 ```
 
-### 6.4. Update a Library
+### 8.4. Update a Library
 
 ```markup
 Request URL: https://api.rudderstack.com/libraries/{id}
@@ -445,7 +478,7 @@ Request Headers:
     "name": "getCube",
     "code": "export default function cube(x) { return x * x ; }"
 }
-Response Headers:
+Response Body:
 {
     "id": "1pHx15j5rXvmmQUIMBaQdIyrpr2",
     "versionId": "1pHxdlGL8IyoP7WfvRil4Qs88cp",
@@ -470,7 +503,7 @@ Request Body:
     "name": "getCube",
     "code": "export default function cube(x) { return x * x ; }"
 }
-Response Headers:
+Response Body:
 {
     "id": "1pHx15j5rXvmmQUIMBaQdIyrpr2",
     "versionId": "1pHxdlGL8IyoP7WfvRil4Qs88cp",
@@ -482,12 +515,12 @@ Response Headers:
 }
 ```
 
-### 6.5. List all Library Versions
+### 8.5. List all Library Versions
 
 ```markup
 Request URL: https://api.rudderstack.com/transformations/{id}/versions
 Request METHOD: GET
-Response Headers:
+Response Body:
 {
     "libraries": [
         {
@@ -521,12 +554,12 @@ Response Headers:
 }
 ```
 
-### 6.6. Retrieve a single Library Version
+### 8.6. Retrieve a single Library Version
 
 ```markup
 Request URL: https://api.rudderstack.com/libraries/{id}/versions/{versionId}
 Request METHOD: GET
-Response Headers:
+Response Body:
 {
     "libraries": {
         "id": "1pHx15j5rXvmmQUIMBaQdIyrpr2",
@@ -540,37 +573,7 @@ Response Headers:
 }
 ```
 
-## 7 AccessToken
-
-We also provide CRUD operations on your AccessToken. You can also update and delete your accesstoken.
-
-### 7.1 Retrieve your AccessToken
-
-```markup
-Request URL: https://api.rudderstack.com/accessToken
-Request METHOD: GET
-Response Headers:
-{
-    "description": "",
-    "accessToken": "1pI2Qp2l6xfxASwoFpQJNpiHWYG",
-    "userId": "1pHd4eqnCfzBbssUxGxwBjDfhn7",
-    "createdAt": "2021-03-04T05:41:09.887Z",
-    "updatedAt": "2021-03-04T05:41:09.887Z"
-}
-```
-
-### 7.2 Delete your AccessToken
-
-```markup
-Request URL: https://api.rudderstack.com/accessToken
-Request METHOD: DELETE
-Response Headers:
-{
-    success: true
-}
-```
-
-## 8 Publish API
+## 9 Publish API
 
 What is publish ???
 
@@ -607,7 +610,7 @@ Request Body:
         "qy612344Fl6tqMOfeipobm556tb"
     ]
 }
-Response Headers:
+Response Body:
 {
     "published": true
 }
