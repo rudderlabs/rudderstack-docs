@@ -43,6 +43,7 @@
   * [PHP](rudderstack-sdk-integration-guides/php.md)
   * [SDK FAQs](rudderstack-sdk-integration-guides/sdk-faqs.md)
 * [RudderStack Event Streams](rudderstack-event-streams/README.md)
+  * [App Center](rudderstack-event-streams/appcenter.md)
   * [AppsFlyer](rudderstack-event-streams/appsflyer.md)
   * [Auth0](rudderstack-event-streams/auth0.md)
   * [Customer.io](rudderstack-event-streams/customerio.md)
