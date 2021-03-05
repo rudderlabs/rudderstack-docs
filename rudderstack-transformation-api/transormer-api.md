@@ -12,8 +12,6 @@ TRANSFORMATION HTTP API allows you to create, read, update and delete transforma
 
 To consume Transformations API you need Access to it. If you don't have an access to it, you can [contact us](mailto:%20docs@rudderstack.com) or you can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
-Your AccessToken carry many privileges, so be sure to keep them secret.
-
 ## 2. Generate AccessToken
 
 In order to use the Transformation API you will need an AccessToken associated with your account. You can create your own AccessToken by following steps below.
@@ -39,7 +37,11 @@ Response Body:
 ```
 
 If your workspace token is 1Xk5DChfJAol3xtW7qNnK1apo5p, your HTTP Request Header will be
-Authorization: Basic Base64Enc(1Xk5DChfJAol3xtW7qNnK1apo5p).
+Authorization: Basic Base64Encoded(:1Xk5DChfJAol3xtW7qNnK1apo5p).
+
+{% hint style="warning" %}
+Your AccessToken carry many privileges, so be sure to keep them secret.
+{% endhint %}
 
 ## 3. Basic Authentication
 
@@ -357,7 +359,7 @@ Libraries are javascript code that you write and export to be used in your trans
 Suppose you write a aggregation function sum and difference. One can export them and use it within different transformers just by importing that module by library name.
 
 ```markup
-Authorization: Basic {Base64Encoded(AccessToken)}
+Authorization: Basic {Base64Encoded(:AccessToken)}
 URL: https://api.rudderstack.com/libraries
 ```
 
@@ -584,7 +586,7 @@ What is publish ???
 - This is where our _Publish API_ comes into play.
 
 ```markup
-Authorization: Basic {Base64Encoded(AccessToken)}
+Authorization: Basic {Base64Encoded(:AccessToken)}
 URL: https://api.rudderstack.com/transformations/libraries/publish
 ```
 
