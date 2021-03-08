@@ -113,6 +113,7 @@
   * [Iterable](destinations/iterable.md)
   * [Keen](destinations/keen.md)
   * [Kissmetrics](destinations/kissmetrics.md)
+  * [Klaviyo](destinations/klaviyo.md)
   * [Kochava](destinations/kochava.md)
   * [Leanplum](destinations/leanplum.md)
   * [Lotame](destinations/lotame.md)
