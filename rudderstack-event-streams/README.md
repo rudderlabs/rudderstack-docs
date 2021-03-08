@@ -16,8 +16,6 @@ RudderStack's Event Streams allow you to collect your event data from all of you
 
 ## Popular Event Streams
 
-{% page-ref page="appcenter.md" %}
-
 {% page-ref page="appsflyer.md" %}
 
 {% page-ref page="customerio.md" %}

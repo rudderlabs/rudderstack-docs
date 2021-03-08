@@ -51,7 +51,7 @@ You can validate the endpoint using the **Send Test** button.
 
 The events from App Center are ingested into RudderStack after converting it into the RudderStack event format. For example, the `app_name` set by App Center is set as `context.app.name`.
 
-The event sent by App Center on various events are converted into a Rudderstack `track` call with a designated name and its properties as the entire event recieved from App Center. 
+The event sent by App Center on various events are converted into a Rudderstack `track` call with a designated name and its properties as the entire event recieved from App Center.
 You can look at the table below to understand how various events from App Center are converted into Rudderstack track calls.
 
 | App Center Event | RudderStack Track Event Name |
@@ -67,9 +67,9 @@ Also, RudderStack populates the following properties from App Center event paylo
 | :--- | :--- |
 | `app_name`, `app_display_name` | `context.app.name` |
 | `build_id` | `context.app.build` |
-| `os`, `platform` | `context.device.type`, `context.network.carrier`, `context.os.name` |
-| `start_time` | `originalTimeStamp` | 
-| `sent_at` | `sentAt` | 
+| `os`, `platform` | `context.device.type`, `context.os.name` |
+| `start_time` | `originalTimeStamp` |
+| `sent_at` | `sentAt` |
 | `short_version`, `app_version` | `context.app.version` |
 | `bundle_identifier` | `context.app.namespace` |
 
