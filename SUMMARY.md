@@ -129,6 +129,7 @@
   * [PostHog](destinations/posthog.md)
   * [Redis](destinations/redis.md)
   * [Salesforce](destinations/salesforce.md)
+  * [Salesforce Marketing Cloud](destinations/sfmc.md)
   * [Slack](destinations/slack.md)
   * [TVSquared](destinations/tvsquared.md)
   * [Userlist](destinations/userlist.md)
