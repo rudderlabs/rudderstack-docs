@@ -108,7 +108,8 @@ rudderanalytics.identify('userid', {
   postalCode: '12345',
   country: 'US',
   street: 'Sample Address',
-  state: 'TX'
+  state: 'TX',
+  createdAt: new Date().toJSON().slice(0,10).replace(/-/g,'/')
 }
 });
 ```
@@ -128,7 +129,7 @@ SFMC does not allow colon characters (“:”) in the Contact Key field, so you 
 
 SFMC doesn’t handle nested objects gracefully.
 
-SFMC accepts ISO-8601-formatted dates, and rejects any calls that include dates not in that format. Make sure you send all dates in ISO format. Eg: new Date().toJSON().slice(0,10).replace(/-/g,'/')
+SFMC accepts ISO-8601-formatted dates, and rejects any calls that include dates not in that format. Make sure you send all dates in ISO format. Eg: createdAt trait in the above snippet.
 
 ## Track
 
