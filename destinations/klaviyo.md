@@ -14,7 +14,7 @@ You can now send your event data directly to Klaviyo through RudderStack.
 
 ## Getting Started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by ActiveCampaign. Please refer the following table to do so:
+Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Klaviyo. Please refer the following table to do so:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -33,7 +33,7 @@ Once you have confirmed that the platform supports sending events to Klaviyo, pe
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-![Configuration Settings for ActiveCampaign](../.gitbook/assets/klaviyo_conf.png)
+![Configuration Settings for Klaviyo](../.gitbook/assets/klaviyo_conf.png)
 
 ## Klaviyo Configuration Settings on the RudderStack Dashboard
 
@@ -41,6 +41,7 @@ To successfully configure Klaviyo as a destination, you will need to configure t
 
 - **Public API Key:** Your Public API Key is the unique key generated against your account. It can be found in your account on the **Account** section under the **Settings** tab.
 - **Private API Key:** Your Private API key can be generated for your account on the **Account** section under the **Settings** tab. This key allows you to add users to list or subscribe them using personalised emails/sms.
+- **Enforce Email as Primary Identifier:** If this option is enabled, we will never set `$id` field to your `userId` when you send events. Instead, we will only set a custom attribute `_id` and only set `$email` as the primary identifier with your `traits.email` or `properties.email`. You should be careful when enabling this option and understand its full implications. This should only be enabled if you are experiencing an issue with duplicate profiles being created inside Klaviyo.
 - **List Id:** Your default List Id to which you want to add/subscribe identified users.
 - **Consent:** If you are a GDPR-compliant business, you will need to include `consent` in your API call,`consent` is a Klaviyo-specific property and only accepts the following values: `email`, `web`, `sms`, `directmail`, and `mobile`.
 - **SMS Consent:** If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile (for double opt-in lists), include an `smsConsent` key in the properties with a value of `true` or `false`
@@ -56,13 +57,9 @@ Note that in case of absence of `userId` rudderstack will try to fallback on `an
 
 The `page` call allows you the web page that a user is viewing, along with its associated properties.
 
-An example `page` call would look like:
+To send `name` and `category` info in the page event, you can do so by switching on the `Send Page As Track` button on the RudderStack dashboard. And, to associate `properties` with the page-view event, you can do so by enabling the `Additional Page info` property on the RudderStack dashboard.
 
-```javascript
-rudderanalytics.page();
-```
-
-If you want to send `name` and `category` info in the page event you can do it so by adding the `Send Page As Track` key in the Control-Plane. If you also want to associate `properties` with the page-view event, you can do so by enabling `Additional Page info` property in Control-Plane.
+An example of such `page` call is shown below.
 
 ```javascript
 rudderanalytics.page("Cart", "Cart Viewed", {
@@ -75,7 +72,7 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 ```
 
 {% hint style="info" %}
-Note that `page` calls are only supported in the RudderStack device mode integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+Note that **`page` calls are only supported in the RudderStack device mode** integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 ## Screen
@@ -85,22 +82,13 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 A sample `screen` call looks like the following code snippet:
 
 ```javascript
-MainApplication.rudderClient.screen(
-  "Sample Screen Name: ",
-  "Screen Category",
-  RudderProperty()
-    .putValue("url", "https://gana.com")
-    .putValue("title", "Screen Title")
-    .putValue("referrer", "https://screen.com")
-    .putValue("path", "/home"),
-  null
-);
+[[RSClient sharedInstance] screen:@"Sample Screen Name" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
 In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In destination the above screen call will be shown as -  "Sample Screen Name: " along with the properties.
 
 {% hint style="info" %}
-Note that `screen` calls are only supported in the RudderStack cloud mode integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+Note that **`screen` calls are only supported in the RudderStack cloud mode** integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 ## Track
@@ -147,16 +135,16 @@ client.track({
 In the above snippet, RudderStack captures the information related to the `Item Purchased` event, along with any additional info about that event in `properties` - in this case the revenue, along with product information. Moreover since this event is captured usinng server-side sdk we are passing user information in `context`, along with an unique `userId`.
 
 {% hint style="info" %}
-If you are sending `track`/ `screen` type event using some SDK which does not persist user context info after `identify`, you need to pass the user info in `context.traits`.
+To send `track` or `screen` type event using an SDK that does not persist user context info after `identify`, you need to pass the user info in `context.traits`.
 {% endhint %}
 
 {% hint style="info" %}
-If you want to set a specific value to the `screen` and `track` type event, you need to pass the `event` related property in event properties, aslo you can send `revenue` property in track we will map it to klaviyo special property `$value`.
+To set a specific value to the `screen` or `track` type event, you need to pass the `event` related property in the `properties` field. Also, you can send `revenue` property in `track` event and we will map it to Klaviyo's special property `$value`..
 {% endhint %}
 
 ## Identify
 
-The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as name, email address, etc.
+The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as `name`, `email`, etc.
 
 A sample `identify` call looks like the following:
 
@@ -187,15 +175,15 @@ rudderanalytics.identify("userid", {
 In the above snippet, RudderStack captures relevant information about the user such as the `email`, `phone` as well as the associated traits of that user.
 
 {% hint style="info" %}
-The `userId`,`email` or `phone` trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user . You can further add the user to the list if default `listId` is present in Rudderstack control-plane  or by adding `listId` in the `properties` within the `traits`, this will override the `listId` you used in the control plane for this event. You can also subscribe the user to a list by setting `subscribe` option to `true`.
+The `userId`, `email`, or `phone` trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user. You can further add the user to the list if default `listId` is present on the RudderStack dashboard. You can also do so by adding `listId` in the `properties` within the `traits`, this will override the `listId` you used on the dashboard for that particular event. You can also subscribe the user to a list by setting `subscribe` option to `true`.
 {% endhint %}
 
 {% hint style="info" %}
-Similar to `listId` adding `consent` and `smsConsent` property will override the value stored in the control plane for the specific event.
+Similar to `listId` adding `consent` and `smsConsent` property will override the settings on the RudderStack dashboard for the specific event.
 {% endhint %}
 
 {% hint style="info" %}
-Adding or subscribing users to specific list is only available in cloud-mode integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+**Adding or subscribing users to a specific list is only available in cloud-mode** integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 ## Group
@@ -230,11 +218,11 @@ client.group({
 In the above snippet, the user with the associated traits is added to list, and also subscribed using the `subscribe` flag.
 
 {% hint style="info" %}
-Apart from either `userId`,`email` or `phone`, the other fields are not mandatory.
+Apart from either `userId`, `email` or `phone`, the other fields are not mandatory.
 {% endhint %}
 
 {% hint style="info" %}
-Adding `consent` and `smsConsent` property in user traits will override the value stored in control plane for the specific event.
+Adding `consent` and `smsConsent` property in user traits will override the settings on the RudderStack dashboard for the specific event.
 {% endhint %}
 
 {% hint style="info" %}

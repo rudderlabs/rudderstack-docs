@@ -75,9 +75,7 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 A sample `screen` call looks like the following code snippet:
 
 ```javascript
-rudderanalytics.screen("Screen Viewed", {
-  name: "Sample value"
-});
+[[RSClient sharedInstance] screen:@"Sample Screen Viewed" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
 In the above snippet, RudderStack captures information related to the screen being viewed, along with any additional info on that screen view event.
