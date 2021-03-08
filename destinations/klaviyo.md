@@ -33,7 +33,7 @@ Once you have confirmed that the platform supports sending events to Klaviyo, pe
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-![Configuration Settings for Klaviyo](../.gitbook/assets/klaviyo_conf.png)
+![Configuration Settings for Klaviyo](../.gitbook/assets/Klaviyo_conf.png)
 
 ## Klaviyo Configuration Settings on the RudderStack Dashboard
 
