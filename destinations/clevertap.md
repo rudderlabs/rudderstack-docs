@@ -105,7 +105,7 @@ To set a specific value to the `screen` or `track` type event, you need to pass 
 
 ### Order Completed
 
-When you track an event using the server-side destination with the name `Order Completed` using the tracking API, we will map that event to CleverTap’s `Charged` event.
+When you track an event using the server-side destination with the name `Order Completed` using the tracking API, we will map that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
 
 A sample `Order Completed` event looks like the following:
 
