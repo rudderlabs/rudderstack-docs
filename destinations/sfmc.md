@@ -47,19 +47,19 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 -  Click Add Component and select API Integration.
 -  Select the Server-to-Server Integration Type.
 -  The following permissions are needed; otherwise, you'll see insufficient Privileges error from SFMC will be shown.
-   - Email: Read, Write
-   - Web: Read, Write
-   - Automations: Read, Write, Execute
-   - Journeys: Read
-   - List And Subscribers: Read, Write
-   - Data Extensions: Read, Write
-   - Tracking Events: Read
-   - Webhooks: Read, Write
+   - `Email`: Read, Write
+   - `Web`: Read, Write
+   - `Automations`: Read, Write, Execute
+   - `Journeys`: Read
+   - `List And Subscribers`: Read, Write
+   - `Data Extensions`: Read, Write
+   - `Tracking Events`: Read
+   - `Webhooks`: Read, Write
 -  Click Save.
 
 **Subdomain:** From the URI received, eg: https://mxxxxxxxxxxxxxxxxxxxx.rest.marketingcloudapis.com/ , mxxxxxxxxxxxxxxxxxxxx is the subdomain.
 
-**Do not create or update contacts:** To disable creating or updating contacts during an identify call, set this option to true.
+**Do not create or update contacts:** To disable creating or updating contacts during an identify call, set this option to `true`.
 
 **Identify Data External Key:** Use this setting if you would like RudderStack to send `identify` events for creating or updating Data Extensions in Salesforce Marketing. The External Key of the Data Extension is needed for mapping the data. This can be found in the SFMC interface by going to Data & Analytics, then Contact Builder, then Data Extensions. The extension's name can be found in the External Key column.
 
@@ -128,29 +128,29 @@ To use `context` properties, attributes in the Data Extensions with specific nam
 
 | **Rudder context Properties** | **SFMC Attribute name** |
 | :--- | :--- |
-| app.name | App Name |
-| app.version | App Version |
-| app.build | App Build |
-| campaign.name | UTM Campaign |
-| campaign.source | UTM Source |
-| campaign.medium | UTM Medium |
-| campaign.term | UTM Term |
-| campaign.content | UTM Content |
-| locale | Locale |
-| userAgent | User Agent |
-| ip | IP Address |
-| device.adTrackingEnabled | Ad Tracking Enabled |
-| device.manufacturer | Device Manufacturer |
-| device.model| Device-model |
-| device.name | Device Name |
-| device.type | Device Type |
-| network.bluetooth | Bluetooth Enabled |
-| network.carrier | Network Carrier |
-| network.cellular| Cellular Enabled |
-| network.wifi | Wifi Enabled |
-| screen.density | Screen Density |
-| screen.height | Screen Height |
-| screen.width | Screen Width |
+| `app.name` | `App Name` |
+| `app.version` | `App Version` |
+| `app.build` | `App Build` |
+| `campaign.name` | `UTM Campaign` |
+| `campaign.source` | `UTM Source` |
+| `campaign.medium` | `UTM Medium` |
+| `campaign.term` | `UTM Term` |
+| `campaign.content` | `UTM Content` |
+| `locale` | `Locale` |
+| `userAgent` | `User Agent` |
+| `ip` | `IP Address` |
+| `device.adTrackingEnabled` | `Ad Tracking Enabled` |
+| `device.manufacturer` | `Device Manufacturer` |
+| `device.mode`l| `Device-model` |
+| `device.name` | `Device Name` |
+| `device.type` | `Device Type` |
+| `network.bluetooth` | `Bluetooth Enabled` |
+| `network.carrier` | `Network Carrier` |
+| `network.cellula`r| `Cellular Enabled` |
+| `network.wifi` | `Wifi Enabled` |
+| `screen.density` | `Screen Density` |
+| `screen.height` | `Screen Height` |
+| `screen.width` | `Screen Width` |
 
 ## Contact Us
 
