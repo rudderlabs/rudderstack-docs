@@ -41,27 +41,32 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 * Settings:
 
 **Client Id, Client Secret:** To get the `clientId` and `clientSecret`, you need to follow these steps.
-1. After logging in to your Salesforce marketing account, go to the setup page.
-2. Under Platform Tools, you will find Apps where you can select Installed Packages.
-3. Click New to create a new package. We recommend giving it a name like "RudderStack".
-4. Click Add Component and select API Integration.
-5. Select the Server-to-Server Integration Type.
-6. The following permissions are needed; otherwise, you'll see insufficient Privileges error from SFMC will be shown.
-    - Email: Read, Write
-    - Web: Read, Write
-    - Automations: Read, Write, Execute
-    - Journeys: Read
-    - List And Subscribers: Read, Write
-    - Data Extensions: Read, Write
-    - Tracking Events: Read
-    - Webhooks: Read, Write
-7. Click Save.
+-  After logging in to your Salesforce marketing account, go to the setup page.
+-  Under Platform Tools, you will find Apps where you can select Installed Packages.
+-  Click New to create a new package. We recommend giving it a name like "RudderStack".
+-  Click Add Component and select API Integration.
+-  Select the Server-to-Server Integration Type.
+-  The following permissions are needed; otherwise, you'll see insufficient Privileges error from SFMC will be shown.
+   - Email: Read, Write
+   - Web: Read, Write
+   - Automations: Read, Write, Execute
+   - Journeys: Read
+   - List And Subscribers: Read, Write
+   - Data Extensions: Read, Write
+   - Tracking Events: Read
+   - Webhooks: Read, Write
+-  Click Save.
 
-**Subdomain:** From the URI received, eg: https://mxxxxxxxxxxxxxxxxxxxx.rest.marketingcloudapis.com/ , mxxxxxxxxxxxxxxxxxxxx is the subdomain
+**Subdomain:** From the URI received, eg: https://mxxxxxxxxxxxxxxxxxxxx.rest.marketingcloudapis.com/ , mxxxxxxxxxxxxxxxxxxxx is the subdomain.
+
 **Do not create or update contacts:** To disable creating or updating contacts during an identify call, set this option to true.
+
 **Identify Data External Key:** Use this setting if you would like RudderStack to send `identify` events for creating or updating Data Extensions in Salesforce Marketing. The External Key of the Data Extension is needed for mapping the data. This can be found in the SFMC interface by going to Data & Analytics, then Contact Builder, then Data Extensions. The extension's name can be found in the External Key column.
+
 **Map events to External Key:** Use this setting if you would like RudderStack `track` events for creating or updating Data Extensions in Salesforce Marketing. The External Key of the Data Extension is needed for mapping the data. You can find this in the Salesforce Marketing interface by going to Data & Analytics, then Contact Builder, then Data Extensions. The extension's name can be found in the External Key column.
+
 **Map events to Primary Key:** The target Data Extension's Primary Key. If a value is not provided, it defaults to Contact Key. You can add multiple primary keys by separating them with commas.
+
 **Event Name to UUID:** If this is checked, we will generate a UUID and pass it through to SMC as the value for Primary Key for this event called 'Uuid'. It will override the above Primary Key field.
 
 ## Creating Data Extensions in SFMC
