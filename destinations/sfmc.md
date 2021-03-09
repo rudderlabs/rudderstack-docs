@@ -37,7 +37,7 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 
 ![Salesforce Connection Settings](../.gitbook/assets/sfmc-1.png)
 
-## Settings:
+## Settings
 
 **Client Id, Client Secret:** To get the `clientId` and `clientSecret`, you need to follow these steps.
 -  After logging in to your Salesforce marketing account, go to the setup page.
