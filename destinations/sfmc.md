@@ -141,12 +141,12 @@ To use `context` properties, attributes in the Data Extensions with specific nam
 | `ip` | `IP Address` |
 | `device.adTrackingEnabled` | `Ad Tracking Enabled` |
 | `device.manufacturer` | `Device Manufacturer` |
-| `device.mode`l| `Device-model` |
+| `device.model` | `Device-model` |
 | `device.name` | `Device Name` |
 | `device.type` | `Device Type` |
 | `network.bluetooth` | `Bluetooth Enabled` |
 | `network.carrier` | `Network Carrier` |
-| `network.cellula`r| `Cellular Enabled` |
+| `network.cellular` | `Cellular Enabled` |
 | `network.wifi` | `Wifi Enabled` |
 | `screen.density` | `Screen Density` |
 | `screen.height` | `Screen Height` |
