@@ -36,7 +36,6 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
 ![Salesforce Connection Settings](../.gitbook/assets/sfmc-1.png)
-![](../.gitbook/assets/sfmc-2.png)
 
 * Settings:
 
@@ -62,6 +61,8 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 **Do not create or update contacts:** To disable creating or updating contacts during an identify call, set this option to `true`.
 
 **Identify Data External Key:** Use this setting if you would like RudderStack to send `identify` events for creating or updating Data Extensions in Salesforce Marketing. The External Key of the Data Extension is needed for mapping the data. This can be found in the SFMC interface by going to Data & Analytics, then Contact Builder, then Data Extensions. The extension's name can be found in the External Key column.
+
+![Salesforce Connection Settings for Track](../.gitbook/assets/sfmc-2.png)
 
 **Map events to External Key:** Use this setting if you would like RudderStack `track` events for creating or updating Data Extensions in Salesforce Marketing. The External Key of the Data Extension is needed for mapping the data. You can find this in the Salesforce Marketing interface by going to Data & Analytics, then Contact Builder, then Data Extensions. The extension's name can be found in the External Key column.
 
@@ -121,7 +122,6 @@ rudderanalytics.identify("Event Name", {
 Enter your external key, the primary key against each event. If no primary key is set, the default value of the Contact Key is taken. Multiple primary keys can be set by separating them with commas. You can turn on UUID for particular events if it is on set UUID as a primary key in your data extensions. The `messageId` is set as the UUID.
 
 ## Data Formatting and Mapping
-
 
 The Rudder SDKs and libraries will automatically collect context properties which can be passed as properties in SFMC as attributes for the data extension.
 To use `context` properties, attributes in the Data Extensions with specific naming conventions should be set. The table below lists the Rudder context properties available for SFMC and the Data Extension attribute names they map to. Camel cases and snake cases will be formatted to title cases.
