@@ -50,9 +50,9 @@ Note: All server-side destination requests require either a `anonymousId` or a `
 
 ## Page
 
-The `page` call allows you the web page that a user is viewing, along with its associated properties.
+The `page` call allows you to record information whenever a user sees a web page, along with its associated properties.
 
-When you send a `page` event , RudderStack sends that event to CleverTap as a Web Page Viewed `Page Name` event.
+When you send a `page` event , RudderStack sends that event to CleverTap as a **"Web Page Viewed `Page Name`** event.
 
 An example of a `page` call is shown below:
 
@@ -76,7 +76,7 @@ A sample `screen` call looks like the following code snippet:
 [[RSClient sharedInstance] screen:@"Sample Screen Name" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In Clevertap, the above `screen` call will be shown as - **"Sample Screen Name: "** along with the properties.
+In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In Clevertap, the above `screen` call will be shown as - **"Screen Viewed: `Sample Screen Name` "** along with the properties.
 
 {% hint style="info" %}
 Note that **`screen` calls are only supported in the RudderStack cloud mode** integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -105,34 +105,65 @@ To set a specific value to the `screen` or `track` type event, you need to pass 
 
 ### Order Completed
 
-When you track an event using the server-side destination with the name `Order Completed` using the tracking API, RudderStack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
+When you track an event with the name `Order Completed` using the using Rudderstack's [e-commerce](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification/ordering#order-completed) tracking API , Rudderstack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
+
+A number of Rudderstack's specific fields map to CleverTap’s standard `Charged` event fields
+| **Rudderstack** | **Clevertap** |
+|---|---|
+|`checkout_id` | `Charged ID`|
+|`revenue` | `Amount` |
+|`products` | `Items` |
 
 A sample `Order Completed` event looks like the following:
 
 ```javascript
-rudderanalytics.track("Order Completed", {
-      Amount: 500,
-      "Payment mode": "Debit Card",
-      "Charged ID": 123456,
-      Items: [
+ rudderanalytics.track("Order Completed", {
+      checkout_id: "12345",
+      order_id: "1234",
+      affiliation: "Apple Store",
+      'Payment mode': "Credit Card",
+      total: 20,
+      revenue: 15.0,
+      shipping: 22,
+      tax: 1,
+      discount: 1.5,
+      coupon: "Games",
+      currency: "USD",
+      products: [
         {
-          Category: "Books",
-          "Book name": "The Millionaire next door",
-          Quantity: 1,
+          product_id: "123",
+          sku: "G-32",
+          name: "Monopoly",
+          price: 14,
+          quantity: 1,
+          category: "Games",
+          url: "https://www.website.com/product/path",
+          image_url: "https://www.website.com/product/path.jpg",
         },
         {
-          Category: "Books",
-          "Book name": "Achieving inner zen",
-          Quantity: 1,
+          product_id: "345",
+          sku: "F-32",
+          name: "UNO",
+          price: 3.45,
+          quantity: 2,
+          category: "Games",
         },
         {
-          Category: "Books",
-          "Book name": "Chuck it, let's do it",
-          Quantity: 5,
+          product_id: "125",
+          sku: "S-32",
+          name: "Ludo",
+          price: 14,
+          quantity: 7,
+          category: "Games",
+          brand: "Ludo King"
         },
       ],
     });
 ```
+
+{% hint style="info" %}
+The `Order Completed` E-Commerce event is free flowing event, if you are setting extra fields for example: `discount`, `coupon` `currency` etc these will be automatically set to `Charged` event properties.
+{% endhint %}
 
 ## Identify
 
@@ -153,7 +184,7 @@ A number of Rudderstack's special traits map to CleverTap’s standard user prof
 |`married` | `Married` |
 |`customerType` | `Customer Type` |
 
-All other traits will be sent to CleverTap as custom attributes. Please also note that the default logic will lower case and snake_case any user traits - custom or special - passed to CleverTap.
+All other traits will be sent to CleverTap as custom attributes.
 
 A sample `identify` call looks like the following:
 
@@ -173,6 +204,7 @@ rudderanalytics.identify("userid", {
   zip: "100-0001",
   Flagged: false,
   Residence: "Shibuya",
+  MSG-email: false
 });
 ```
 
