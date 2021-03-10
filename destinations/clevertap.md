@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Clev
 
 # Clevertap
 
-[Clevertap](https://clevertap.com/) is a customer engagement and retention platform that provides the functionality to integrate app analytics and marketing it helps you build valuable, long-term relationships with your customers by giving you access to real-time behavioral analytics so you know who they are, and a platform with which you can engage users on the right channels, at the right time, and with a message that resonates. With Clevertap you can easily track actions users are taking and analyzes how people are using your product, It also gives you the ability to easily Segment users based on their actions and run targeted campaigns to these segments, and analyze each campaign to understand their effect on user engagement and business metrics.
+[Clevertap](https://clevertap.com/) is a popular customer engagement and retention platform. Its in-app analytics and marketing capabilities allow you to get real-time insights into your customers and build valuable, long-term relationships with them. With Clevertap, you can easily your users' actions and understand how they are using your product. You can also segment users based on their behavior and run targeted campaigns to boost your user engagement and retention metrics.
 
 You can now send your event data directly to Clevertap through RudderStack.
 
@@ -14,7 +14,7 @@ You can now send your event data directly to Clevertap through RudderStack.
 
 ## Getting Started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Klaviyo. Please refer the following table to do so:
+Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Clevertap. Please refer the following table to do so:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -35,14 +35,14 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![Configuration Settings for Clevertap](../.gitbook/assets/clevertap-settings.png)
 
-## Klaviyo Configuration Settings on the RudderStack Dashboard
+## Clevertap Configuration Settings in RudderStack
 
-To successfully configure Klaviyo as a destination, you will need to configure the following settings:
+To successfully configure Clevertap as a destination, you will need to configure the following settings:
 
-- **Account ID:** Your Account ID is an unique ID generated against your account. It can be found in your account on the **Settings** as **Project ID**.
-- **Passcode:** Your Account Passcode is an unique code generated for your account. It can be found in the **Settings** as **Passcode**.
-- **Region:** Server Only: Your dedicated Clevertap region.
-- **Use Native SDK to send Events:** Enable this option if you want to send events using device mode
+- **Account ID:** Your account ID is an unique ID generated for your account. It can be found in your account in the **Settings** as your **Project ID**.
+- **Passcode:** Your account passcode is an unique code generated for your account. It can be found in the **Settings** as **Passcode**.
+- **Region:** Server Only: This is your dedicated Clevertap region.
+- **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
 
 {% hint style="info" %}
 Note: All server-side destination requests require either a `anonymousId` or a `userId` in the payload.
@@ -52,9 +52,9 @@ Note: All server-side destination requests require either a `anonymousId` or a `
 
 The `page` call allows you the web page that a user is viewing, along with its associated properties.
 
-When you send a page event , we will send that event to CleverTap as a Web Page Viewed `Page Name` event.
+When you send a `page` event , RudderStack sends that event to CleverTap as a Web Page Viewed `Page Name` event.
 
-An example of such `page` call is shown below.
+An example of a `page` call is shown below:
 
 ```javascript
 rudderanalytics.page("Cart", "Cart Viewed", {
@@ -76,7 +76,7 @@ A sample `screen` call looks like the following code snippet:
 [[RSClient sharedInstance] screen:@"Sample Screen Name" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In destination the above screen call will be shown as - "Sample Screen Name: " along with the properties.
+In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In Clevertap, the above `screen` call will be shown as - **"Sample Screen Name: "** along with the properties.
 
 {% hint style="info" %}
 Note that **`screen` calls are only supported in the RudderStack cloud mode** integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -84,7 +84,7 @@ Note that **`screen` calls are only supported in the RudderStack cloud mode** in
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event. It is similar to `screen` event, and the user is by default associated with `userId` or `anonymousId`.
+The `track` call allows you to capture any action that the user might perform, along with the properties associated with that action. Each action is considered to be an event. It is similar to `screen` event, and the user is by default associated with `userId` or `anonymousId`.
 
 A sample `track` call looks like the following:
 
@@ -105,7 +105,7 @@ To set a specific value to the `screen` or `track` type event, you need to pass 
 
 ### Order Completed
 
-When you track an event using the server-side destination with the name `Order Completed` using the tracking API, we will map that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
+When you track an event using the server-side destination with the name `Order Completed` using the tracking API, RudderStack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
 
 A sample `Order Completed` event looks like the following:
 
@@ -113,7 +113,7 @@ A sample `Order Completed` event looks like the following:
 rudderanalytics.track("Order Completed", {
       Amount: 500,
       "Payment mode": "Debit Card",
-      "Charged ID": 24052121,
+      "Charged ID": 123456,
       Items: [
         {
           Category: "Books",
@@ -138,7 +138,8 @@ rudderanalytics.track("Order Completed", {
 
 The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as `name`, `email`, etc.
 
-A number of Rudderstack's special traits map to CleverTap’s standard user profile fields. You’ll pass the key on the left into Rudderstack and we will transform it to the key on the right before sending to CleverTap.
+A number of Rudderstack's special traits map to CleverTap’s standard user profile fields, as shown in the table below. You will be required to pass the key on the left into Rudderstack and RudderStack will transform it to the key on the right before sending to CleverTap.
+
 | **Rudderstack** | **Clevertap** |
 |---|---|
 |`name` | `Name`|
@@ -178,11 +179,11 @@ rudderanalytics.identify("userid", {
 In the above snippet, RudderStack captures relevant information about the user such as the `email`, `phone` as well as the associated traits of that user.
 
 {% hint style="info" %}
-If a user already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` (or `anoymousId`) to Clevertap User's `identity`.
+If a user already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` (or `anoymousId`) to Clevertap user's `identity`.
 {% endhint %}
 
 {% hint style="info" %}
-Profile properties `MSG-email`, `MSG-push`, `MSG-sms` and `MSG-whatsapp` are used to set the Do-Not-Disturb status for the user. Unless these are explicitly set to false, they are always true
+Profile properties `MSG-email`, `MSG-push`, `MSG-sms` and `MSG-whatsapp` are used to set the Do-Not-Disturb status for the user. Unless these are explicitly set to `false`, they are always `true`.
 
 Example: To disable push notifications for a user, set `MSG-push` to `false`
 {% endhint %}
