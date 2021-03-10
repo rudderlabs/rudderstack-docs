@@ -4,9 +4,11 @@ description: Step-by-step guide to ingest your event data from App Center into R
 
 # App Center
 
-[App Center](https://appcenter.ms/) is Microsoft's cross-platform build automation and management platform that lets you seamlessly manage your app's lifecycle. With App Center, you can easily manage and automate your builds, effectively test your apps in the cloud, and monitor their real-time usage with the help of crash data and analytics.
+[App Center](https://appcenter.ms/) is Microsoft's cross-platform build automation and management platform. It allows you to manage your app's lifecycle seamlessly. With App Center, you can automate your builds, test your apps in the cloud effectively and monitor their real-time usage with the help of crash data and analytics.
 
-This document guides you in setting up App Center as a source in RudderStack. App Center can send various events that you trigger to Rudderstack by simply adding a webhook endpoint that points to RudderStack. App Center sends events to the Rudderstack on a Build Success (or) Failure, on release of new version of an app, on an app crash and it also lets you to configure what events to be sent as per you wish on the its dashboard.
+This document guides you in setting up App Center as a source in RudderStack. 
+
+You can send your App Center events to RudderStack by simply adding a webhook pointing to RudderStack. These events include build success or failure, release of new version of an app, or an app crash. You can also configure what events to send as per your requirement on their dashboard.
 
 ## Getting Started
 
@@ -20,13 +22,11 @@ In order to add App Center as a source in RudderStack, please follow these steps
 
 ![Provide source name](../.gitbook/assets/AppcenterCreation.png)
 
-* Head over to your App Center account and select the `app` you wanted to configure and then navigate to the **Webhooks** section under **Settings** from the sidebar and then create a new Webhook in the view as shown below:
+* Head over to your App Center account and select the `app` you wanted to configure. Then, navigate to the **Webhooks** section under **Settings** from the sidebar and then create a new Webhook in the view as shown below:
 
 ![](../.gitbook/assets/AppcenterWebhookConfig.png)
 
-* In the **URL** textbox, add an URL pointing to RudderStack in the following format:`<DATA_PLANE_URL>/v1/webhook?writeKey=<your_App Center_source_write_key>`
-
-
+* In the **URL** text box, add a URL pointing to RudderStack in the following format:  `<DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_APP CENTER_SOURCE_WRITE_KEY>`
 
 An example URL should like the following:
 
@@ -46,13 +46,13 @@ You can validate the endpoint using the **Send Test** button.
 
 * Finally, save the endpoint.
 
-
 ## RudderStack Event Transformation
 
 The events from App Center are ingested into RudderStack after converting it into the RudderStack event format. For example, the `app_name` set by App Center is set as `context.app.name`.
 
-The event sent by App Center on various events are converted into a Rudderstack `track` call with a designated name and its properties as the entire event recieved from App Center.
-You can look at the table below to understand how various events from App Center are converted into Rudderstack track calls.
+The events sent by App Center are converted into a Rudderstack `track` call with a designated name and properties as the entire event received from App Center. 
+
+Refer to the table below to understand how various events from App Center are converted into Rudderstack `track` calls:
 
 | App Center Event | RudderStack Track Event Name |
 | :--- | :--- |
@@ -72,7 +72,6 @@ Also, RudderStack populates the following properties from App Center event paylo
 | `sent_at` | `sentAt` |
 | `short_version`, `app_version` | `context.app.version` |
 | `bundle_identifier` | `context.app.namespace` |
-
 
 ## Contact Us
 
