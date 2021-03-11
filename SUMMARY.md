@@ -93,6 +93,7 @@
   * [Braze](destinations/braze.md)
   * [Bugsnag](destinations/bugsnag.md)
   * [Chartbeat](destinations/chartbeat.md)
+  * [CleverTap](destinations/clevertap.md)
   * [Confluent Cloud](destinations/confluent-cloud.md)
   * [Customer.io](destinations/customer.io.md)
   * [DigitalOcean Spaces](destinations/digitalocean-spaces.md)
