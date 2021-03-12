@@ -207,6 +207,79 @@ In the above snippet, RudderStack captures the information related to the screen
 The above `screen` call is directly passed on to App Center as a `track` event via its `trackEvent` API, with event name as `Viewed {screen name} screen` along with the its properties. The above example will be sent as a `track` event with name `Viewed MainActivity screen` along with its properties.
 {% endhint %}
 
+## Opt-in & Opt-out
+
+Any users visting your app can express his consent over sending data to App Center and based on his consent you can either Opt in or Opt out that user's data from sending to App Center.
+
+Please refer to the below section for more details on how to use this feature
+
+{% tabs %}
+{% tab title="Android" %}
+Firstly import Appcenter's `Analytics` Module as shown below:
+``groovy
+import com.microsoft.appcenter.analytics.Analytics;
+```
+Then add the below script just after the initialization of the Android SDK:
+```kotlin
+rudderClient.onIntegrationReady("App Center") {
+    // have your own logic to get the user consent
+    if (userConsent) {
+        // enabling appcenter's analytics module  
+        Analytics.setEnabled(true);
+    } else {
+        // disabling appcenter's analytics module  
+        Analytics.setEnabled(false);
+    }
+}
+```
+{% endtab %}
+{% tab title="iOS" %}
+Firstly import the Appcenter's `Analytics` Module as shown below:
+```objectivec
+@import AppCenterAnalytics;
+```
+Then add the below script just after the initialization of the iOS SDK:
+```objectivec
+if(userConsent)
+{
+    // enabling appcenter's analytics module  
+    [MSACAnalytics setEnabled:true];
+}
+else
+{
+    // disabling appcenter's analytics module   
+    [MSACAnalytics setEnabled:false];
+}
+```
+
+{% endtab %}
+{% tab title="React Native" %}
+Firstly import the `AppCenterIntegrationFactory` as shown below:
+```javascript
+import AppcenterIntegrationFactory from 'rudder-integration-appcenter-react-native/src/bridge';
+```
+Then add the below script just after the initalization of the React Native SDK:
+```javascript
+ const integrationReady = await rc.checkIntegrationReady('App Center');
+    if(integrationReady)
+    {
+      if(userConsent)
+      {
+        // enabling appcenter's analytics module
+        AppcenterIntegrationFactory.enableAnalytics()
+      }
+      else
+      {
+        // disabling appcenter's analytics module
+        AppcenterIntegrationFactory.disableAnalytics()
+      }
+    }
+```
+{% endtab %}
+{% endtabs %}
+
+
+
 ## FAQs
 
 ### How do I get the App Center API secret?
