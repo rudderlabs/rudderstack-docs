@@ -224,10 +224,10 @@ Then add the below script just after the initialization of the Android SDK:
 rudderClient.onIntegrationReady("App Center") {
     // have your own logic to get the user consent
     if (userConsent) {
-        // enabling appcenter's analytics module  
+        // enabling appcenter's analytics module
         Analytics.setEnabled(true);
     } else {
-        // disabling appcenter's analytics module  
+        // disabling appcenter's analytics module
         Analytics.setEnabled(false);
     }
 }
@@ -242,12 +242,12 @@ Then add the below script just after the initialization of the iOS SDK:
 ```objectivec
 if(userConsent)
 {
-    // enabling appcenter's analytics module  
+    // enabling appcenter's analytics module
     [MSACAnalytics setEnabled:true];
 }
 else
 {
-    // disabling appcenter's analytics module   
+    // disabling appcenter's analytics module
     [MSACAnalytics setEnabled:false];
 }
 ```
@@ -277,8 +277,6 @@ Then add the below script just after the initalization of the React Native SDK:
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
 ## FAQs
 
