@@ -41,6 +41,7 @@ To successfully configure Clevertap as a destination, you will need to configure
 
 - **Account ID:** Your account ID is an unique ID generated for your account. It can be found in your account in the **Settings** as your **Project ID**.
 - **Passcode:** Your account passcode is an unique code generated for your account. It can be found in the **Settings** as **Passcode**.
+- **Enable track for anonymous user:** You can enable this option to track anonymous users in Clevertap.
 - **Region:** Server Only: This is your dedicated Clevertap region.
 - **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
 
@@ -92,7 +93,6 @@ A sample `track` call looks like the following:
 rudderanalytics.track("Checked Out", {
   Clicked_Rush_delivery_Button: true,
   total_value: 2000,
-  Odered: ["T-Shirt", "jacket"],
   revenue: 2000,
 });
 ```
@@ -101,6 +101,10 @@ In the above snippet, RudderStack captures the information related to the `Check
 
 {% hint style="info" %}
 To set a specific value to the `screen` or `track` type event, you need to pass the `event` related property in the `properties` field.
+{% endhint %}
+
+{% hint style="info" %}
+Note: For `track`, `page` and `screen` events CleverTap does not support arrays or nested objects for custom event properties.
 {% endhint %}
 
 ### Order Completed
@@ -212,6 +216,10 @@ In the above snippet, RudderStack captures relevant information about the user s
 
 {% hint style="info" %}
 If a user already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` (or `anoymousId`) to Clevertap user's `identity`.
+{% endhint %}
+
+{% hint style="info" %}
+Note: For `identify` events CleverTap does not support nested objects for user's `traits`.
 {% endhint %}
 
 {% hint style="info" %}
