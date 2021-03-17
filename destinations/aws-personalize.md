@@ -62,6 +62,17 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
   * **Map all the fields**: In this section, enter the **Schema Field** you have used to create the schema in AWS Personalize \(for e.g. `USER_ID`, `TIMESTAMP`, `ITEM_ID`, etc.\). Also, enter the corresponding **Mapped Field** from which the value will be taken from your event payload.
 
+  The following snippet shows an example of sending track event, with mapped field specified in the [RudderStack dashboard](https://app.rudderlabs.com/):
+
+  ```javascript
+  rudderanalytics.track(
+             'PRODUCT ADDED',{
+                 typeOfSdk:"javascript",
+                 numberOfRatings: "12",
+                 itemId : "item 1" 
+             }    
+           );
+
 ## Contact Us
 
 If you come across any issues while configuring AWS Personalize as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
