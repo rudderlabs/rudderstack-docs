@@ -35,7 +35,11 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Fill the required fields such as API Key and Site ID as shown in the screenshot below:
 
-![Customer.io Connection Settings](../.gitbook/assets/image%20%2845%29.png)
+![Customer.io Connection Settings](../.gitbook/assets/photo-17-03-2021.png)
+
+{% hint style="info" %}
+In case your account based in EU region then you must turn on the following option **Account based in the EU data center?** else do nothing. For more information read the [Customer.io Documentation](https://customer.io/docs/api/?region=eu#section/Overview).
+{% endhint %}
 
 Once the destination is enabled, events from our SDK will start to flow to Customer.io.
 
