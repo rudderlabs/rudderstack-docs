@@ -4,7 +4,7 @@ description: >-
   your own domain.
 ---
 
-# How to use Custom Domains
+# How to Use Custom Domains
 
 ## Overview
 
