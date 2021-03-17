@@ -52,13 +52,12 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
   * **Information on Dataset Group**
 
     * **TrackingId**: Enter the tracking ID that you generated in the first step 
-    * **Type Of Event**: Enter the name of event you want to send for this destination.
    
-     {% hint style="info" %}
+  {% hint style="info" %}
 
-     As event name is a mandatory field here, you can only send `track` events. 
+      The value of the `event` field in the payload will be sent as `EVENT_TYPE`, as it is a mandatory field in aws personalize schema structure. Therefore you can only send `track` events.
 
-     {% endhint %}
+   {% endhint %}
 
 
   * **Map all the fields**: In this section, enter the **Schema Field** you have used to create the schema in AWS Personalize \(for e.g. `USER_ID`, `TIMESTAMP`, `ITEM_ID`, etc.\). Also, enter the corresponding **Mapped Field** from which the value will be taken from your event payload.
