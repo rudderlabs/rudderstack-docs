@@ -43,8 +43,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Select the destination as **AWS Personalize**. Give your destination a name and then click on **Next**. You should then see the following screen:
 
-![](../.gitbook/assets/image%20%2831%29.png)
-
+![](../.gitbook/assets/personalize.png)
 * Next, in the **Settings** section, ****fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
   * **Connection Credentials**
     * **Access Key ID**: The access key ID of your AWS account goes here.
@@ -57,7 +56,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
    
      {% hint style="info" %}
 
-     As event name is a mandatory field here, that means you can only send `track` events. Also remember that, inside the payload you have to specify the **same** event name, which you have used while configuring the destination in [RudderStack dashboard](https://app.rudderlabs.com/)
+     As event name is a mandatory field here, you can only send `track` events. 
 
      {% endhint %}
 
