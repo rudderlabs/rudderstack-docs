@@ -215,10 +215,9 @@ Please refer to the below section for more details on how to use this feature
 
 {% tabs %}
 {% tab title="Android" %}
-Firstly import Appcenter's `Analytics` Module as shown below:
-``groovy
-import com.microsoft.appcenter.analytics.Analytics;
-```
+Firstly import Appcenter's `Analytics` Module as shown below: \`\`groovy import com.microsoft.appcenter.analytics.Analytics;
+
+```text
 Then add the below script just after the initialization of the Android SDK:
 ```kotlin
 rudderClient.onIntegrationReady("App Center") {
@@ -233,12 +232,16 @@ rudderClient.onIntegrationReady("App Center") {
 }
 ```
 {% endtab %}
+
 {% tab title="iOS" %}
 Firstly import the Appcenter's `Analytics` Module as shown below:
+
 ```objectivec
 @import AppCenterAnalytics;
 ```
+
 Then add the below script just after the initialization of the iOS SDK:
+
 ```objectivec
 if(userConsent)
 {
@@ -251,14 +254,17 @@ else
     [MSACAnalytics setEnabled:false];
 }
 ```
-
 {% endtab %}
+
 {% tab title="React Native" %}
 Firstly import the `AppCenterIntegrationFactory` as shown below:
+
 ```javascript
 import AppcenterIntegrationFactory from 'rudder-integration-appcenter-react-native/src/bridge';
 ```
+
 Then add the below script just after the initalization of the React Native SDK:
+
 ```javascript
  const integrationReady = await rc.checkIntegrationReady('App Center');
     if(integrationReady)

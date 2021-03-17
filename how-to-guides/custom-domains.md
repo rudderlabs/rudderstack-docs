@@ -1,6 +1,6 @@
 ---
 description: >-
-  Use your own domain to serve the RudderStack javascript SDK and send events to
+  Use your own domain to serve the RudderStack Javascript SDK and send events to
   your own domain.
 ---
 
@@ -12,7 +12,7 @@ If you wish to use your own domain to route your events and/or proxy our JavaScr
 
 The 3 endpoints are:
 
-1. `cdn.rudderlabs.com` for loading the javascript sdk
+1. `cdn.rudderlabs.com` for loading the Javascript SDK
 2. `api.rudderlabs.com` for fetching the source configuration based on your `writeKey`
 3. `events.rudderlabs.com` for sending events to the RudderStack server
 
@@ -22,7 +22,7 @@ To use your own domain for these, you’ll need to route traffic through your CD
 Note that you will incur CDN charges for this traffic if you choose to use your own domain.
 {% endhint %}
 
-For each endpoint, you'll need to create a CDN distribution and add a CNAME record on your domain for the distribution domain. The examples below are using cloudfront, but the settings should be similar regardless of your CDN.
+For each endpoint, you'll need to create a CDN distribution and add a CNAME record on your domain for the distribution domain. The examples below are using CloudFront, but the settings should be similar regardless of your CDN.
 
 ## Setup for serving SDK
 
@@ -30,15 +30,15 @@ You'll start by creating a new distribution for serving the JavaScript SDK.
 
 ### Settings
 
-![](../.gitbook/assets/screen-shot-2021-02-19-at-3.01.03-pm%20%282%29%20%282%29%20%282%29.png)
+![](../.gitbook/assets/screen-shot-2021-02-19-at-3.01.03-pm%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
 ![](../.gitbook/assets/screen-shot-2021-02-19-at-2.59.05-pm.png)
 
-![](../.gitbook/assets/screen-shot-2021-02-19-at-3.01.03-pm%20%282%29%20%282%29%20%281%29.png)
+![](../.gitbook/assets/screen-shot-2021-02-19-at-3.01.03-pm%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 | Field | Setting |
 | :--- | :--- |
-| Origin Domain Name | cdn.rudderlabs.com |
+| Origin Domain Name | `cdn.rudderlabs.com` |
 | Origin Protocol Policy | HTTPS Only |
 
 **Default Cache Behavior Settings**
@@ -46,7 +46,7 @@ You'll start by creating a new distribution for serving the JavaScript SDK.
 | **Field** | Setting |
 | :--- | :--- |
 | Viewer Protocol Policy | Redirect HTTP to HTTPS |
-| Allowed HTTP Methods | GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE |
+| Allowed HTTP Methods | `GET`, `HEAD`, `OPTIONS`, `PUT`, `POST`, `PATCH`, `DELETE` |
 | Cache and origin request settings | Use legacy cache settings |
 | Forward Cookies | All |
 | Query String Forwarding and Caching | Forward all, cache based on all |
@@ -55,11 +55,11 @@ You'll start by creating a new distribution for serving the JavaScript SDK.
 
 | Field | Setting |
 | :--- | :--- |
-| Alternate Domain Names \(CNAMEs\) | &lt;subdomain.yourdomain.com&gt; |
+| Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
 | SSL Certificate | Custom SSL Certificate \(more info\) |
 | Custom SSL Client Support | Clients that support SNI |
 
-**Click Create Distribution and wait for Cloudfront to be deployed.**
+**Click Create Distribution and wait for CloudFront to be deployed.**
 
 ![](../.gitbook/assets/screen-shot-2021-02-16-at-3.00.43-pm.png)
 
@@ -69,13 +69,13 @@ Once your distribution is deployed, you’ll need to create a CNAME record on yo
 
 | **Name** | Value |
 | :--- | :--- |
-| Subdomain you wish to use \(which was used in the creation of the distribution\). This will vary based on your DNS provider but will typically be just the subdomain. Example: for cdn.yourdomain.com you would use `cdn` | This will be the cdn url for the distribution created. Example: `d3jlkfchu4u.cloudfront.net` |
+| Subdomain you wish to use \(which was used in the creation of the distribution\). This will vary based on your DNS provider but will typically be just the subdomain. Example: for `cdn.yourdomain.com` you would use `cdn` | The CDN URL for the distribution created. Example: `d3jlkfchu4u.cloudfront.net` |
 
 ![](../.gitbook/assets/screen-shot-2021-02-19-at-12.31.51-pm.png)
 
 ### Serving the SDK
 
-Once setup and DNS propagation has completed, you’ll be able to change the url for the sdk.
+Once setup and DNS propagation has completed, you’ll be able to change the URL for the SDK.
 
 Before:
 
@@ -91,7 +91,7 @@ After:
 
 ## Setup for Sending Events
 
-Normally all events are sent to `events.rudderlabs.com`. To have events routed through your own domain, you’ll need to setup a proxy to that and then use your own url for `DATA_PLANE_URL` when initializing the sdk.
+Normally all events are sent to `events.rudderlabs.com`. To have events routed through your own domain, you’ll need to setup a proxy to that and then use your own url for `DATA_PLANE_URL` when initializing the SDK.
 
 ### Settings
 
@@ -99,8 +99,8 @@ The settings for sending events will be the same as the settings for serving the
 
 | Field | Setting |
 | :--- | :--- |
-| Origin Domain Name | events.rudderlabs.com |
-| Alternate Domain Names \(CNAMEs\) | &lt;subdomain.yourdomain.com&gt; |
+| Origin Domain Name | `events.rudderlabs.com` |
+| Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
 
 ### **Add CNAME Record to DNS**
 
@@ -136,8 +136,8 @@ The settings for sending events will be the same as the settings for serving the
 
 | Field | Setting |
 | :--- | :--- |
-| Origin Domain Name | api.rudderlabs.com |
-| Alternate Domain Names \(CNAMEs\) | &lt;subdomain.yourdomain.com&gt; |
+| Origin Domain Name | `api.rudderlabs.com` |
+| Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
 
 We also need to add a Whitelisting for the Authorization headers in **Default Cache Behavior Settings**.
 
@@ -159,7 +159,7 @@ The settings for the CNAME record will be the same as the settings for serving t
 
 ### Fetching the sourceConfig
 
-To use a custom url to fetch the sourceConfig, we need to add it as an option when loading the JavaScript SDK.
+To use a custom URL to fetch the sourceConfig, we need to add it as an option when loading the JavaScript SDK.
 
 ```javascript
 rudderanalytics.load("1iYTYFYkfteuXxTj3eEt5CmeLvO", "https://hosted.rudderlabs.com", 
@@ -171,13 +171,19 @@ rudderanalytics.load("1iYTYFYkfteuXxTj3eEt5CmeLvO", "https://hosted.rudderlabs.c
 
 ## Custom SSL Certificates
 
-To use your own domain, you'll need to Request or Import a certificate with your CDN provider. The following are the steps to use AWS Certificate Manager with Cloudfront. When choosing your SSL certificate on cloudfront, you'll be given the option to do so:
+To use your own domain, you'll need to Request or Import a certificate with your CDN provider. The following are the steps to use AWS Certificate Manager with CloudFront:
+
+When choosing your SSL certificate on CloudFront, you'll be given the option to do so:
 
 ![](../.gitbook/assets/screen-shot-2021-02-19-at-3.56.01-pm.png)
 
-From there you'll choose your subdomain or use a wildcard domain \(\*.yourdomain.com\) to be able to setup multiple subdomains. 
+From there you'll choose your subdomain or use a wildcard domain \(`*.yourdomain.com`\) to be able to setup multiple subdomains. 
 
-ACM will guide you through verifying by email or DNS TXT records and you'll be able to choose your own domain for SSL certificates once verified. 
+ACM will guide you through verifying by email or DNS TXT records and you'll be able to choose your own domain for SSL certificates once verified.
+
+## Contact Us
+
+For more information on any of the sections in this guide, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, we will be happy to help you.
 
 
 

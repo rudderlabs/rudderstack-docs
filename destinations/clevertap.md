@@ -16,10 +16,10 @@ You can now send your event data directly to CleverTap through RudderStack.
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by CleverTap. Please refer the following table to do so:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | **Supported** | -             | -             |
-| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | **Supported** | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,7 +27,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to CleverTap, perform the steps below:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and CleverTap as a destination.
+* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and CleverTap as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -39,11 +39,11 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 To successfully configure CleverTap as a destination, you will need to configure the following settings:
 
-- **Account ID:** Your account ID is an unique ID generated for your account. It can be found in your account in the **Settings** as your **Project ID**.
-- **Passcode:** Your account passcode is an unique code generated for your account. It can be found in the **Settings** as **Passcode**.
-- **Enable track for anonymous user:** Enable this option to track anonymous users in CleverTap.
-- **Region:** Server Only: This is your dedicated CleverTap region.
-- **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
+* **Account ID:** Your account ID is an unique ID generated for your account. It can be found in your account in the **Settings** as your **Project ID**.
+* **Passcode:** Your account passcode is an unique code generated for your account. It can be found in the **Settings** as **Passcode**.
+* **Enable track for anonymous user:** Enable this option to track anonymous users in CleverTap.
+* **Region:** Server Only: This is your dedicated CleverTap region.
+* **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
 
 {% hint style="info" %}
 Note: All server-side destination requests require either a `anonymousId` or a `userId` in the payload.
@@ -73,7 +73,7 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 
 A sample `screen` call looks like the following code snippet:
 
-```xcode
+```text
 [[RSClient sharedInstance] screen:@"Sample Screen Name" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
@@ -112,11 +112,12 @@ Note: For `track`, `page` and `screen` events CleverTap does not support arrays 
 When you track an event with the name `Order Completed` using the using Rudderstack's [e-commerce](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification/ordering#order-completed) tracking API , Rudderstack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
 
 A number of Rudderstack's specific fields map to CleverTap’s standard `Charged` event fields
+
 | **Rudderstack** | **CleverTap** |
-|---|---|
-|`checkout_id` | `Charged ID`|
-|`revenue` | `Amount` |
-|`products` | `Items` |
+| :--- | :--- |
+| `checkout_id` | `Charged ID` |
+| `revenue` | `Amount` |
+| `products` | `Items` |
 
 A sample `Order Completed` event looks like the following:
 
@@ -176,17 +177,17 @@ The `identify` call lets you associate a user with their actions and capture all
 A number of Rudderstack's special traits map to CleverTap’s standard user profile fields, as shown in the table below. You will be required to pass the key on the left into Rudderstack and RudderStack will transform it to the key on the right before sending to CleverTap.
 
 | **Rudderstack** | **Clevertap** |
-|---|---|
-|`name` | `Name`|
-|`birthday` | `DOB` |
-|`avatar` | `Photo` |
-|`gender` | `Gender` |
-|`phone` | `Phone` |
-|`email` | `Email` |
-|`employed` | `Employed` |
-|`education` | `Education` |
-|`married` | `Married` |
-|`customerType` | `Customer Type` |
+| :--- | :--- |
+| `name` | `Name` |
+| `birthday` | `DOB` |
+| `avatar` | `Photo` |
+| `gender` | `Gender` |
+| `phone` | `Phone` |
+| `email` | `Email` |
+| `employed` | `Employed` |
+| `education` | `Education` |
+| `married` | `Married` |
+| `customerType` | `Customer Type` |
 
 All other traits will be sent to CleverTap as custom attributes.
 
@@ -215,7 +216,7 @@ rudderanalytics.identify("userid", {
 In the above snippet, RudderStack captures relevant information about the user such as the `email`, `phone` as well as the associated traits of that user.
 
 {% hint style="info" %}
-If a user already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` (or `anoymousId`) to CleverTap user's `identity`.
+If a user already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` \(or `anoymousId`\) to CleverTap user's `identity`.
 {% endhint %}
 
 {% hint style="info" %}
@@ -231,3 +232,4 @@ Example: To disable push notifications for a user, set `MSG-push` to `false`
 ## Contact Us
 
 If you come across any issues while configuring CleverTap with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+
