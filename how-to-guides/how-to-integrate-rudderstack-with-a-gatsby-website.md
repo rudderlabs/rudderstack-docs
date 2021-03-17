@@ -94,7 +94,7 @@ plugins: [
 ];
 ```
 
-### Step 2: Identify Your Users With the `identify()` Method:
+### Step 2: Identify your users with the `identify()` method:
 
 The `identify()` method allows you to link users and their actions to a specific user ID.
 
@@ -130,7 +130,7 @@ In the above example, information such as the user ID, email along with contextu
 There is no need to call `identify()` for anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`.
 {% endhint %}
 
-### Step 3: Track Your Users’ Actions With the `track()` Method
+### Step 3: Track your users' actions with the `track()` method
 
 The `track()` method allows you to track any actions that your users might perform. A sample example of how the `track()` method works is as shown:
 
@@ -168,7 +168,7 @@ window.rudderanalytics.track(
 );
 ```
 
-#### Track Pageviews
+#### Tracking pageviews
 
 If you want to track pageviews automatically, set `trackPage` to `true` in your `gatsby-config.js` file. What we mean by _**automatically**_ is that whenever there is a route change, RudderStack leverages Gatsby's `onRouteUpdate` API in the `gatsby-browser.js` file \([link](https://www.gatsbyjs.org/docs/browser-apis/#onRouteUpdate)\) to invoke `window.rudderanalytics.page()` on each route change. 
 
@@ -183,7 +183,7 @@ exports.onRouteUpdate = () => {
 
 You’ve now successfully installed `rudder-analytics.js` tracking. You can enable and use any event destination to send your event data via RudderStack, in no time at all!
 
-### Step 4: Check Ready State
+### Step 4: Check ready state
 
 There are cases when you may want to tap into the features provided by end destination SDKs to enhance tracking and other functionalities. 
 
@@ -199,7 +199,7 @@ window.rudderanalytics.ready(() => {
 For detailed technical documentation and troubleshooting guide on the RudderStack’s JavaScript SDK, check out our [docs](https://docs.rudderlabs.com/sdk-integration-guide/getting-started-with-javascript-sdk).
 {% endhint %}
 
-### Using the Querystring API
+## Using the Querystring API
 
 RudderStack's Querystring API allows you to trigger `track`, `identify` calls using query parameters. 
 
@@ -280,7 +280,7 @@ You may use the below parameters as a querystring parameter and trigger the corr
   </tbody>
 </table>
 
-### Adding Callbacks to Standard Methods
+## Adding callbacks to standard methods
 
 You can also define callbacks to the common methods of the `rudderanalytics` object.
 
