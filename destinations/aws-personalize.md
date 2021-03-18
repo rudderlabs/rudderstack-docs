@@ -4,9 +4,9 @@ description: Step-by-step guide to set up AWS Personalize as a destination in Ru
 
 # AWS Personalize
 
-[AWS Personalize](https://aws.amazon.com/personalize/), also called as AWS Personalize, is a machine learning service by Amazon. It enables you to create high-quality content recommendations, personalized product and marketing promotions, and much more. With Amazon Personalize, you can boost your customer engagement and overall business revenue in no time at all.
+[AWS Personalize](https://aws.amazon.com/personalize/), also called as AWS Personalize, is a machine learning service by Amazon. It enables you to create high-quality content recommendations, personalized product and marketing promotions, and much more. With AWS Personalize, you can boost your customer engagement and overall business revenue in no time at all.
 
-RudderStack allows you to configure Amazon Personalize as a destination to which you can send your event data seamlessly, for personalized recommendation and effective product marketing.
+RudderStack allows you to configure AWS Personalize as a destination to which you can send your event data seamlessly, for personalized recommendation and effective product marketing.
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/personalize)**.**
@@ -14,9 +14,9 @@ RudderStack allows you to configure Amazon Personalize as a destination to which
 
 ## **Getting Started**
 
-In order to enable dumping data to Amazon Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Personalize.
+In order to enable dumping data to AWS Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to AWS Personalize.
 
-Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon Personalize. Refer to the table below:
+Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by AWS Personalize. Refer to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -35,7 +35,7 @@ Once you have confirmed that the platform supports sending events to AWS Persona
 Keep this Tracking ID handy as it is used later to configure AWS Personalize as a destination.
 {% endhint %}
 
-* Next, go to the [RudderStack dashboard](https://app.rudderstack.com/), and choose a source to which you would like to add Amazon Personalize as a destination.
+* Next, go to the [RudderStack dashboard](https://app.rudderstack.com/), and choose a source to which you would like to add AWS Personalize as a destination.
 
 {% hint style="info" %}
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack) guide to know how to add a source in RudderStack.
