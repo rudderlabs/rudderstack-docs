@@ -117,6 +117,7 @@
   * [Kissmetrics](destinations/kissmetrics.md)
   * [Klaviyo](destinations/klaviyo.md)
   * [Kochava](destinations/kochava.md)
+  * [Kustomer](destinations/kustomer.md)
   * [Leanplum](destinations/leanplum.md)
   * [Lotame](destinations/lotame.md)
   * [Lytics](destinations/lytics.md)
