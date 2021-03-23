@@ -16,6 +16,7 @@ You can also set up and use RudderStack on your platform of choice:
 
 * Instructions for [Docker](docker.md)
 * Instructions for [Kubernetes](kubernetes.md)
+* Instructions for [Qovery](qovery.md)
 * Instructions for a [Native Installation](native-installation.md)
 * Instructions for a [Developer Machine Setup](developer-machine-setup.md)
 
