@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Kust
 
 # Kustomer
 
-[Kustomer](https://www.kustomer.com/) is a new-age customer engagement platform. designed for people-first enterprise. It allows you to provide next-gen customer support with holistic view of customers giving you the power to engage in meaningfull interactions with your customers.
+[Kustomer](https://www.kustomer.com/) is a modern customer engagement platform designed for enterprises. It gives you a holistic view of your users and customer base, lets you provide best-in-class support, and engage with your customers through meaningful interactions.
 
 You can now send your event data directly to Kustomer through RudderStack.
 
@@ -39,10 +39,10 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 To successfully configure Kustomer as a destination, you will need to configure the following settings:
 
-- **API Key:** Your API Key is an unique Key which can be generated for your account. It can be found in your account in the **Settings** under **Security** section as **API Keys**.
+- **API Key:** Your API Key is an unique Key which can be generated for your account. It can be found in your account under **Settings** , by navigating to **Security** - **API Keys**.
 
 {% hint style="info" %}
-Note: Relevant `roles` are required for an **API Key** to successfully access Kustomer endpoints. Please check [Kustomer Docs](https://support.kustomer.com/api-keys-SJs5YTIWX) for further information on this  
+Note: Relevant `roles` are required for an **API Key** to successfully access Kustomer endpoints. Please check the [Kustomer Docs](https://support.kustomer.com/api-keys-SJs5YTIWX) for further information on how to do this.  
 {% endhint %}
 
 {% hint style="info" %}
@@ -69,7 +69,7 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 });
 ```
 
-If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for that page event, as per the [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 ## Screen
 
@@ -83,7 +83,7 @@ A sample `screen` call looks like the following code snippet:
 [[RSClient sharedInstance] screen:@"Sample Screen Name" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for the page event, as per the [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 ## Track
 
@@ -99,12 +99,12 @@ rudderanalytics.track("Checked Out", {
 });
 ```
 
-In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the details of the `Checked out` event.
+In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional information about that event - in this case, the details of the `Checked out` event.
 
-If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for the page event, as per the [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 {% hint style="info" %}
-Note: For `track`, `page` and `screen` events Kustomer supports only `number`, `string` and `string` with `date-time` format for custom event properties. Please Refer to [Official Kustomer Documentation](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
+Note: For `track`, `page` and `screen` events, Kustomer supports only `number`, `string`, and `string` with `date-time` format for custom event properties. Please refer to the [official Kustomer Documentation](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
 {% endhint %}
 
 ## Identify
@@ -134,7 +134,7 @@ A number of Rudderstack's special traits map to Kustomer’s standard user profi
 | `urls`                   | `website`                            | `string`             |
 | `locations`              | `address`                            | `string` or `object` |
 
-For more info on supported traits checkout [Official Kustomer Documentation](https://apidocs.kustomer.com/#07bd1072-4d4b-4875-b526-8369d711e811)
+For more info on supported traits, check out the [official Kustomer Documentation](https://apidocs.kustomer.com/#07bd1072-4d4b-4875-b526-8369d711e811)
 
 A sample `identify` call looks like the following:
 
@@ -181,7 +181,7 @@ rudderanalytics.identify("userId", {
 ```
 
 {% hint style="info" %}
-If a customer already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` \(or `anoymousId`\) to Customer's `externalId` in Kustomer.
+If a customer already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` \(or `anoymousId`\) to the customer's `externalId` in Kustomer.
 {% endhint %}
 
 ## Contact Us
