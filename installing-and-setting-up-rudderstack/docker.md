@@ -12,11 +12,11 @@ Please follow these steps to set up RudderStack on Docker:
 
 * Go to the [RudderStack dashboard](https://app.rudderlabs.com/signup) and set up your account. Copy your workspace token from the top of the page.
 
+![Workspace Token](../.gitbook/assets/wspace-token.png)
+
 {% hint style="info" %}
 **Why do I need this?** RudderStack's dashboard (control plane) is where you can setup sources, destinations, and transformations. RudderStack hosts the control plane and is free for OSS users. You can also use our open-source [config-generator](https://github.com/rudderlabs/config-generator) if you don't want to use the hosted control plane (the config generator lacks certain features like Transformations and LiveDebugger.)
 {% endhint %}
-
-![Workspace Token](../.gitbook/assets/wspace-token.png)
 
 * Download the `rudder-docker.yml` [docker-compose](https://raw.githubusercontent.com/rudderlabs/rudder-server/master/rudder-docker.yml) file.
 * Replace `<your_workspace_token>` in the above file with your token.

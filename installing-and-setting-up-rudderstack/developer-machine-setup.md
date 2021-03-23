@@ -19,6 +19,11 @@ psql "jobsdb" -c "grant all privileges on database jobsdb to rudder";
 ```
 
 * Go to the [RudderStack dashboard](https://app.rudderlabs.com/signup) and set up your account. Copy your workspace token from the top of the home page.
+
+{% hint style="info" %}
+**Why do I need this?** RudderStack's dashboard (control plane) is where you can setup sources, destinations, and transformations. RudderStack hosts the control plane and is free for OSS users. You can also use our open-source [config-generator](https://github.com/rudderlabs/config-generator) if you don't want to use the hosted control plane (the config generator lacks certain features like Transformations and LiveDebugger.)
+{% endhint %}
+
 * Clone the [RudderStack server](https://github.com/rudderlabs/rudder-server) repository. Run `git submodule init` and `git submodule update` to fetch the `rudder-transformer` repository. Then, navigate to the transformer directory using the following command:
 
 ```bash

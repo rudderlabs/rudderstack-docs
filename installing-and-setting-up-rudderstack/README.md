@@ -61,7 +61,7 @@ For more information on the RudderStack Server running modes, refer to our [High
 
 ## How to Send Test Events
 
-Before sending test events to verify your RudderStack installation, you will first need to clone our Github repository using the following command: 
+Before sending test events to verify your RudderStack installation, you will first need to clone our Github repository using the following command:
 
 ```bash
 git clone https://github.com/rudderlabs/rudder-server.git
@@ -87,6 +87,14 @@ The **write key** is different from your **workspace token**. The former is asso
 
 * You can then login to your Google Analytics account and verify that events are delivered. Go to `MainPage` -&gt; `RealTime` -&gt; `Events`. _RealTime_ view is important as the other dashboards can sometimes take 24 to 48 hours to refresh.
 * You can use our [JavaScript](../rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), [Android](../rudderstack-sdk-integration-guides/rudderstack-android-sdk/), or [iOS](../rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md) SDKs for sending events from your app.
+
+## Why do I need a RudderStack account?
+
+A RudderStack account is not required, but our dashboard (control plane) is the easeist way to setup sources, destinations and transformations. RudderStack hosts the control plane free for Open Source users. You can also choose to use our open-source [config-generator](https://github.com/rudderlabs/config-generator) if you don't want to use the hosted control plane, but the config generator lacks certain features like Transformations and LiveDebugger.
+
+{% hint style="info" %}
+The hosted control plane is only used for configuration and does not have access to your data or data plane. The LiveDebugger can temporarily stream events from your data plane for debugging but only for a limited time, and it does not persist your data.
+{% endhint %}
 
 ## Contact Us
 
