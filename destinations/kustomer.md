@@ -64,12 +64,12 @@ rudderanalytics.page("Cart", "Cart Viewed", {
   search: "term",
   title: "test_item",
   url: "http://test.in",
-  kustomer_session_id: "kSession",
-  kustomer_tracking_id: "ktracking",
+  kustomerSessionId: "kSession",
+  kustomerTrackingId: "ktracking",
 });
 ```
 
-If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 ## Screen
 
@@ -83,7 +83,7 @@ A sample `screen` call looks like the following code snippet:
 [[RSClient sharedInstance] screen:@"Sample Screen Name" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 ## Track
 
@@ -101,7 +101,7 @@ rudderanalytics.track("Checked Out", {
 
 In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the details of the `Checked out` event.
 
-If the `kustomer_session_id` or `kustomer_tracking_id` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties` we will map it as `sessionId` and `trackingId` for the page event, as per [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 {% hint style="info" %}
 Note: For `track`, `page` and `screen` events Kustomer supports only `number`, `string` and `string` with `date-time` format for custom event properties. Please Refer to [Official Kustomer Documentation](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
@@ -119,20 +119,20 @@ A number of Rudderstack's special traits map to Kustomer’s standard user profi
 | `externalId`             | `userId` or `anonymousId`            | `string`             |
 | `username`               | `userName`                           | `string`             |
 | `company`                | `company`                            | `string`             |
-| `signedUpAt`             | `signedUpAt`                         | `string date-time`   |
+| `signedUpAt`             | `createdAt`                          | `string date-time`   |
 | `lastActivityAt`         | `lastActivityAt`                     | `string date-time`   |
 | `lastCustomerActivityAt` | `lastCustomerActivityAt`             | `string date-time`   |
 | `lastSeenAt`             | `lastSeenAt`                         | `string date-time`   |
 | `avatarUrl`              | `avatar`                             | `string`             |
 | `gender`                 | `gender`                             | `string`             |
 | `tags`                   | `tags`                               | `array`              |
-| `locale`                 | `locale`                             | `string`             |
 | `emails`                 | `emails` or `email`                  | `array` or `string`  |
 | `phones`                 | `phones` or `phone`                  | `array` or `string`  |
 | `socials`                | `socials`                            | `array`              |
 | `birthdayAt`             | `birthday`                           | `string date-time`   |
 | `urls`                   | `website`                            | `string`             |
 | `locations`              | `address`                            | `string` or `object` |
+| `locale`                 | `context.locale`                     | `string`             |
 
 For more info on supported traits checkout [Official Kustomer Documentation](https://apidocs.kustomer.com/#07bd1072-4d4b-4875-b526-8369d711e811)
 
@@ -182,6 +182,10 @@ rudderanalytics.identify("userId", {
 
 {% hint style="info" %}
 If a customer already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` \(or `anoymousId`\) to Customer's `externalId` in Kustomer.
+{% endhint %}
+
+{% hint style="info" %}
+If you choose to send Customer's `id` in `context.externalId` (example `context.externalId: {type:kustomerId, id:uniqueId}`) we will skip looking-up the Customer using `email`/`userId`/`anonymousId`and directly update the Customer against that`id` with new attributes.
 {% endhint %}
 
 ## Contact Us
