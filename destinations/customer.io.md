@@ -38,7 +38,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 ![Customer.io Connection Settings](../.gitbook/assets/photo-17-03-2021.png)
 
 {% hint style="info" %}
-In case your account based in EU region then you must turn on the following option **Account based in the EU data center?** else do nothing. For more information read the [Customer.io Documentation](https://customer.io/docs/api/?region=eu#section/Overview).
+In case your account based in the EU region, you must enable the option **Account based in the EU data center?**. For more information read the [Customer.io Documentation](https://customer.io/docs/api/?region=eu#section/Overview).
 {% endhint %}
 
 Once the destination is enabled, events from our SDK will start to flow to Customer.io.
