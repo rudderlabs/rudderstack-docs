@@ -98,6 +98,34 @@ Currently all events sent to RudderStack via warehouse as a source will be `iden
 
 Now you can connect this source to any RudderStack destination of your choice. RudderStack will collect the enriched customer data from the specified table columns in your warehouse source and send it to the destination for your activation use-cases.
 
+## Warehouse Actions Constants
+
+Constants give you the ability to add new fields to each event with a pre-defined value. The **key** of a Warehouse Actions constant has the same functionality as modifying an existing column, and is in the format \(**test.value, test.value\[0\]**\).
+
+### How to add a Warehouse Actions constant
+
+Adding a new constant when configuring a Warehouse Actions source is very easy: 
+
+* Click on the **Add Constant** button as shown below, while [mapping your table](https://docs.rudderstack.com/warehouse-actions#specifying-warehouse-schema-and-table):
+
+![](../.gitbook/assets/image%20%2877%29.png)
+
+* Add your preferred key and value for the constant, select **Ok** and then click on **Confirm**, as shown:
+
+![](../.gitbook/assets/image%20%2876%29.png)
+
+* The new constant appears in the table and also in the JSON preview inside the traits, as shown:
+
+![](../.gitbook/assets/screenshot_2021-03-18_at_3.51.11_pm.png)
+
+* You can also use dot notation to define a Warehouse Actions constant, as shown below:
+
+![](../.gitbook/assets/screenshot_2021-03-18_at_3.52.00_pm.png)
+
+* The result would look something like:
+
+![](../.gitbook/assets/screenshot_2021-03-18_at_3.52.26_pm.png)
+
 ## FAQs
 
 ### What type of events are supported by the RudderStack Warehouse Actions?
