@@ -75,6 +75,14 @@ RudderStack will start importing data from Facebook Ads as per the specified fre
 | **Ads** | **`ads`** | This table contains information about your Facebook Ads. |
 | **Ad Creatives** | **`ad_creatives`** | This table contains the creative content for your Facebook Ads account that you can use in your ads. |
 
+## FAQs
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is. 
+
+We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
 ## Contact Us
 
 If you come across any issues while configuring Facebook Ads as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

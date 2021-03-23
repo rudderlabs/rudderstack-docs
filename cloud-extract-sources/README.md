@@ -14,6 +14,14 @@ Sources are the tools or platforms from which the event data can be ingested int
 
 With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [Facebook Ads](https://www.facebook.com/business/ads), [Google Ads](https://ads.google.com/), [Google Analytics](https://analytics.google.com/), [Google Search Console](https://search.google.com/search-console/welcome), [Marketo](https://www.marketo.com/), [HubSpot](https://www.hubspot.com/), and more. You can then build efficient ELT pipelines from these cloud applications to your data warehouse.
 
+## FAQs
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is. 
+
+We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
 ## Popular Cloud Extract Sources
 
 {% page-ref page="../rudderstack-event-streams/segment.md" %}

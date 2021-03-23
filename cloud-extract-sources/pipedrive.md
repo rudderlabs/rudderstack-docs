@@ -61,6 +61,14 @@ RudderStack will start importing data from Pipedrive as per the specified freque
 
 ![](../.gitbook/assets/screen-shot-2021-02-09-at-5.09.24-pm.png)
 
+## FAQs
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is. 
+
+We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
 ## Contact Us
 
 If you come across any issues while configuring Pipedrive as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
