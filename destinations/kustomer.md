@@ -185,7 +185,7 @@ If a customer already exists, the new values will be updated for that user. Rudd
 {% endhint %}
 
 {% hint style="info" %}
-If you choose to send Customer's `id` in `context.externalId` (example `context.externalId: {type:kustomerId, id:uniqueId}`) we will skip looking-up the Customer using `email`/`userId`/`anonymousId`and directly update the Customer against that`id` with new attributes.
+If you choose to send Customer's `id` in `context.externalId` (example `context.externalId: {type:kustomerExternalId, id:uniqueId}`) we will skip looking-up the Customer using `email`/`userId`/`anonymousId`and directly update the Customer against that`id` with new attributes.
 {% endhint %}
 
 ## Contact Us
