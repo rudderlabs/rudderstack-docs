@@ -42,7 +42,7 @@ To successfully configure Kustomer as a destination, you will need to configure 
 - **API Key:** Your API Key is an unique Key which can be generated for your account. It can be found in your account under **Settings** , by navigating to **Security** - **API Keys**.
 
 {% hint style="info" %}
-Note: Relevant `roles` are required for an **API Key** to successfully access Kustomer endpoints. Please check the [Kustomer Docs](https://support.kustomer.com/api-keys-SJs5YTIWX) for further information on how to do this.  
+Note: Relevant `roles` are required for an **API Key** to successfully access Kustomer endpoints. Please check the [Kustomer Docs](https://support.kustomer.com/api-keys-SJs5YTIWX) for further information on how to do this.
 {% endhint %}
 
 {% hint style="info" %}
@@ -157,7 +157,7 @@ rudderanalytics.identify("userId", {
   lastCustomerActivityAt: "date-time",
   lastSeenAt: "date-time",
   avatar: "avatar-url",
-  gender: "gender",
+  gender: "male",
   tags: ["tag1", "tag2"],
   locale: "en_US",
   website: "www.website.com",
@@ -187,25 +187,25 @@ rudderanalytics.identify("userId", {
   emails: [
       {
         "type": "home",
-        "email": "homeEmail"
+        "email": "home@email.com"
       },
       {
         "type": "work",
-        "email": "workEmail"
+        "email": "work@email.com"
       }
     ],
   phones: [
       {
         "type": "home",
-        "phone": "homePhone"
+        "phone": "+188890987"
       },
       {
         "type": "work",
-        "phone": "workPhone"
+        "phone": "+1676330984"
       }
     ],
-  birthday: "birthday",
-  name: "full name",
+  birthday: "20-09-1980",
+  name: "John Doe",
   address: "street city state zip"
   userName: "userName",
   company: "company"
