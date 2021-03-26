@@ -40,6 +40,8 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 To successfully configure Kustomer as a destination, you will need to configure the following settings:
 
 - **API Key:** Your API Key is an unique Key which can be generated for your account. It can be found in your account under **Settings** , by navigating to **Security** - **API Keys**.
+- **Enable generic title for Page events:**  Enable this option to track all Page events with generic name `Web-Page-Viewed`
+- **Enable generic title for Screen events:**  Enable this option to track all Screen events with generic name `Screen-Viewed`
 
 {% hint style="info" %}
 Note: Relevant `roles` are required for an **API Key** to successfully access Kustomer endpoints. Please check the [Kustomer Docs](https://support.kustomer.com/api-keys-SJs5YTIWX) for further information on how to do this.
@@ -219,7 +221,7 @@ If a customer already exists, the new values will be updated for that user. Rudd
 {% endhint %}
 
 {% hint style="info" %}
-If you choose to send Customer's `id` in `context.externalId` (example `context.externalId: {type:kustomerExternalId, id:uniqueId}`) we will skip looking-up the Customer using `email`/`userId`/`anonymousId`and directly update the Customer against that`id` with new attributes.
+If you choose to send Customer's `id` in `context.externalId` (example `context.externalId: [{type:kustomerId, id:uniqueId}]`) we will skip looking-up the Customer using `email`/`userId`/`anonymousId`and directly update the Customer against that`id` with new attributes.
 {% endhint %}
 
 ## Contact Us
