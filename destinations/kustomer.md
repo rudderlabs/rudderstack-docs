@@ -180,6 +180,40 @@ rudderanalytics.identify("userId", {
 });
 ```
 
+An `identify` call with multiple `emails`, and `phones` along with an `address` with string `value` looks like the following:
+
+```javascript
+rudderanalytics.identify("userId", {
+  emails: [
+      {
+        "type": "home",
+        "email": "homeEmail"
+      },
+      {
+        "type": "work",
+        "email": "workEmail"
+      }
+    ],
+  phones: [
+      {
+        "type": "home",
+        "phone": "homePhone"
+      },
+      {
+        "type": "work",
+        "phone": "workPhone"
+      }
+    ],
+  birthday: "birthday",
+  name: "full name",
+  address: "street city state zip"
+  userName: "userName",
+  company: "company"
+  locale: "en_US",
+  website: "www.website.com"
+});
+```
+
 {% hint style="info" %}
 If a customer already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` \(or `anoymousId`\) to the customer's `externalId` in Kustomer.
 {% endhint %}
