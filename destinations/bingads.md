@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Bing
 
 # Bing Ads
 
-[Bing Ads](https://www.activecampaign.com/) is a service that provides pay per click advertising on both the Bing and Yahoo! search engines. Bing Ads enables Marketers to track and monitor campaigns, clicks, CTRs, spend and budget. With Bing Ads you can also retarget ads to customers after they complete an action like leaving a shopping cart or viewing a product without purchasing. Click to know more about [Bing Ads](https://advertise.bingads.microsoft.com/en-us/resources/training/what-is-bing-ads).
+[Bing Ads](https://ads.microsoft.com/) is a service that provides pay per click advertising on both the Bing and Yahoo! search engines. Bing Ads enables Marketers to track and monitor campaigns, clicks, CTRs, spend and budget. With Bing Ads you can also retarget ads to customers after they complete an action like leaving a shopping cart or viewing a product without purchasing. Click to know more about [Bing Ads](https://advertise.bingads.microsoft.com/en-us/resources/training/what-is-bing-ads).
 
 
 ## Getting Started
@@ -32,7 +32,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Configuration Settings for ActiveCampaign](../.gitbook/assets/Bing_Ads.PNG)
+![Configuration Settings for Bing Ads](../.gitbook/assets/Bing_Ads.PNG)
 
 * Please enter the **Tag ID** of your Bing Ads account.
 * Click on **Save** to finish the configuration. Bing Ads will now be added and enabled as a destination in RudderStack.
