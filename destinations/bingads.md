@@ -39,7 +39,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ## Page
 
-You can make a `page` call to Bing Ads to record a page view. The SDK will send this data to Bing Ads.
+You can make a `page` call to Bing Ads to record a page view. The SDK will send this data to Bing Ads with event type pageLoad.
 
 A sample `page` call is as shown:
 
