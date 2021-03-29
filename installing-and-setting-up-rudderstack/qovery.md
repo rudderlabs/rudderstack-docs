@@ -16,13 +16,17 @@ Visit the [Qovery dashboard](https://console.qovery.com) to create an account if
 
 ### 2. Create a project
 
-Click on "Create a new project" and give a name to your project. 
+Click on "Create a new project" and give a name to your project.
 
 Click on "Next".
 
 ### 3. Add an application
 
-Click on "Create an application" then choose "I have an application" and select your GitHub or GitLab repository where your app is located.
+Click on "Create an application" then choose "I have an application"
+![existing app](https://github.com/Qovery/public-resources/raw/master/deploy/default/existing-app.png)
+
+Select your GitHub or GitLab repository where your app is located.
+![existing app](https://github.com/Qovery/public-resources/raw/master/deploy/default/existing-app.png)
 
 Click on "Next".
 
