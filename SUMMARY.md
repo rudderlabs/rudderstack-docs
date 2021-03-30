@@ -47,6 +47,7 @@
   * [AppsFlyer](rudderstack-event-streams/appsflyer.md)
   * [Auth0](rudderstack-event-streams/auth0.md)
   * [Customer.io](rudderstack-event-streams/customerio.md)
+  * [Extole](rudderstack-event-streams/extole.md)
   * [Looker](rudderstack-event-streams/looker.md)
   * [PostHog](rudderstack-event-streams/posthog.md)
   * [Segment](rudderstack-event-streams/segment.md)
