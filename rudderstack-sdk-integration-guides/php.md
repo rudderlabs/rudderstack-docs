@@ -5,23 +5,29 @@ description: >-
 ---
 
 # PHP
+
 RudderStack’s PHP SDK allows you to track your customer event data from your PHP code. Once enabled, the event requests hit the RudderStack servers. RudderStack then routes the events to the specified destination platforms as configured by you.
 
 You can find this SDK in our [GitHub repository](https://github.com/rudderlabs/rudder-php-sdk).
 
 ## Installing the RudderStack PHP SDK
+
 Install the RudderStack PHP SDK using the [composer](https://packagist.org/packages/rudderstack/rudder-php-sdk). You can also do so by running the following command:
+
 ```bash
 git clone https://github.com/rudderlabs/rudder-php-sdk /my/app/folders/
 ```
 
 You can use composer to install the SDK. Use the following command.
+
 ```bash
 composer require rudderstack/rudder-php-sdk
 ```
 
 ## Initializing the RudderStack Client
+
 To initialize the RudderStack client, run the following code snippet:
+
 ```php
 require_once("/path/to/lib/Rudder.php");
 
@@ -35,7 +41,9 @@ Rudder::init(WRITE_KEY, array(
 ```
 
 ## Sending Events from RudderStack
+
 Once the RudderStack client is initialized, you can use it to send relevant customer events from the RudderStack client. An example `track` call is as shown in the following code snippet:
+
 ```php
 Rudder::track(array(
   "userId" => "f4ca124298",
@@ -47,12 +55,15 @@ Rudder::track(array(
 ```
 
 ## Identify
+
 The `identify` call lets you associate a user to their actions as well as captures the relevant traits or properties related to that user.
+
 {% hint style="info" %}
 For a detailed explanation of the `identify` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
 An example `identify` call is as shown:
+
 ```php
 Rudder::identify(array(
   "userId" => "2sfjej334",
@@ -65,6 +76,7 @@ Rudder::identify(array(
 ```
 
 The `identify` method parameters are as described below:
+
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
@@ -77,11 +89,13 @@ The `identify` method parameters are as described below:
 ## Track
 
 The `track` call lets you record the users' actions along with their associated properties. Each triggered action is called as an 'event'.
+
 {% hint style="info" %}
 For a detailed explanation of the `track` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
 An example `track` call is as shown:
+
 ```php
 Rudder::track(array(
   "userId" => "f4ca124298",
@@ -95,6 +109,7 @@ Rudder::track(array(
 ```
 
 The `track` method parameters are as described below:
+
 | Name | Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
 | `user_id` | String | Required | The developer identification for your user |
@@ -106,12 +121,15 @@ The `track` method parameters are as described below:
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
 
 ## Page
+
 The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
+
 {% hint style="info" %}
 For a detailed explanation of the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
 An example `page` call is as shown:
+
 ```php
 Rudder::page(array(
   "userId" => "f4ca124298",
@@ -124,6 +142,7 @@ Rudder::page(array(
 ```
 
 The `page` method parameters are as described below:
+
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
@@ -135,12 +154,15 @@ The `page` method parameters are as described below:
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
 
 ## Screen
+
 The `screen` call is the mobile equivalent of the page call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
+
 {% hint style="info" %}
 For a detailed explanation of the `screen` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
 An example `screen` call is as shown:
+
 ```php
 Rudder::screen(array(
   "userId" => "f4ca124298",
@@ -153,6 +175,7 @@ Rudder::screen(array(
 ```
 
 The `screen` method parameters are as described below:
+
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
@@ -164,12 +187,15 @@ The `screen` method parameters are as described below:
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
 
 ## Group
+
 The `group` call allows you to associate an identified user to a group - either a company, project or a team. You can also record custom traits or properties associated with that group.
+
 {% hint style="info" %}
 For a detailed explanation of the `group` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
 An example `group` call is as shown:
+
 ```php
 Rudder::group(array(
   "userId" => "2sfjej334",
@@ -183,6 +209,7 @@ Rudder::group(array(
 ```
 
 The `group` method parameters are as follows:
+
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
@@ -194,12 +221,15 @@ The `group` method parameters are as follows:
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
 
 ## Alias
+
 The `alias` call allows you to associate one identity with another.
+
 {% hint style="info" %}
 `alias` is an advanced method. However, it is required when managing user identities in some destinations.
 {% endhint %}
 
 An example `alias` call is as shown:
+
 ```php
 Rudder::alias(array(
   "previousId" => "previousId",
@@ -208,6 +238,7 @@ Rudder::alias(array(
 ```
 
 The `alias` method parameters are as mentioned below:
+
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `userId` | String | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database. |
@@ -222,6 +253,8 @@ For a detailed explanation of the `alias` call, please refer to our [RudderStack
 {% endhint %}
 
 ## Contact Us
+
 To know more about the RudderStack PHP SDK, you can [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
 In case you come across any issues while using this SDK, please feel free to start a new issue on our [GitHub repository](https://github.com/rudderlabs/rudder-php-sdk).
+

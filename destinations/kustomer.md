@@ -16,10 +16,10 @@ You can now send your event data directly to Kustomer through RudderStack.
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Kustomer. Please refer the following table to do so:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | -             | -             | -             |
-| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | - | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,7 +27,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Kustomer, perform the steps below:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and Kustomer as a destination.
+* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and Kustomer as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -39,9 +39,9 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 To successfully configure Kustomer as a destination, you will need to configure the following settings:
 
-- **API Key:** Your API Key is an unique Key which can be generated for your account. It can be found in your account under **Settings** , by navigating to **Security** - **API Keys**.
-- **Enable generic title for Page events:**  Enable this option to track all Page events with generic name `Web-Page-Viewed`
-- **Enable generic title for Screen events:**  Enable this option to track all Screen events with generic name `Screen-Viewed`
+* **API Key:** Your API Key is an unique Key which can be generated for your account. It can be found in your account under **Settings** , by navigating to **Security** - **API Keys**.
+* **Enable generic title for Page events:**  Enable this option to track all Page events with generic name `Web-Page-Viewed`
+* **Enable generic title for Screen events:**  Enable this option to track all Screen events with generic name `Screen-Viewed`
 
 {% hint style="info" %}
 Note: Relevant `roles` are required for an **API Key** to successfully access Kustomer endpoints. Please check the [Kustomer Docs](https://support.kustomer.com/api-keys-SJs5YTIWX) for further information on how to do this.
@@ -115,26 +115,26 @@ The `identify` call lets you associate a user with their actions and capture all
 
 A number of Rudderstack's special traits map to Kustomer’s standard user profile fields, as shown in the table below.
 
-| **Kustomer**             | **Rudderstack**                      | **Type Supported**   |
-| :----------------------- | :----------------------------------- | :------------------- |
-| `name`                   | `name` or `firstName` and `lastName` | `string`             |
-| `externalId`             | `userId` or `anonymousId`            | `string`             |
-| `username`               | `userName`                           | `string`             |
-| `company`                | `company`                            | `string`             |
-| `signedUpAt`             | `createdAt`                          | `string date-time`   |
-| `lastActivityAt`         | `lastActivityAt`                     | `string date-time`   |
-| `lastCustomerActivityAt` | `lastCustomerActivityAt`             | `string date-time`   |
-| `lastSeenAt`             | `lastSeenAt`                         | `string date-time`   |
-| `avatarUrl`              | `avatar`                             | `string`             |
-| `gender`                 | `gender`                             | `string`             |
-| `tags`                   | `tags`                               | `array`              |
-| `emails`                 | `emails` or `email`                  | `array` or `string`  |
-| `phones`                 | `phones` or `phone`                  | `array` or `string`  |
-| `socials`                | `socials`                            | `array`              |
-| `birthdayAt`             | `birthday`                           | `string date-time`   |
-| `urls`                   | `website`                            | `string`             |
-| `locations`              | `address`                            | `string` or `object` |
-| `locale`                 | `context.locale`                     | `string`             |
+| **Kustomer** | **Rudderstack** | **Type Supported** |
+| :--- | :--- | :--- |
+| `name` | `name` or `firstName` and `lastName` | `string` |
+| `externalId` | `userId` or `anonymousId` | `string` |
+| `username` | `userName` | `string` |
+| `company` | `company` | `string` |
+| `signedUpAt` | `createdAt` | `string date-time` |
+| `lastActivityAt` | `lastActivityAt` | `string date-time` |
+| `lastCustomerActivityAt` | `lastCustomerActivityAt` | `string date-time` |
+| `lastSeenAt` | `lastSeenAt` | `string date-time` |
+| `avatarUrl` | `avatar` | `string` |
+| `gender` | `gender` | `string` |
+| `tags` | `tags` | `array` |
+| `emails` | `emails` or `email` | `array` or `string` |
+| `phones` | `phones` or `phone` | `array` or `string` |
+| `socials` | `socials` | `array` |
+| `birthdayAt` | `birthday` | `string date-time` |
+| `urls` | `website` | `string` |
+| `locations` | `address` | `string` or `object` |
+| `locale` | `context.locale` | `string` |
 
 For more info on supported traits, check out the [official Kustomer Documentation](https://apidocs.kustomer.com/#07bd1072-4d4b-4875-b526-8369d711e811)
 
@@ -221,9 +221,10 @@ If a customer already exists, the new values will be updated for that user. Rudd
 {% endhint %}
 
 {% hint style="info" %}
-If you choose to send Customer's `id` in `context.externalId` (example `context.externalId: [{type:kustomerId, id:uniqueId}]`) we will skip looking-up the Customer using `email`/`userId`/`anonymousId`and directly update the Customer against that`id` with new attributes.
+If you choose to send Customer's `id` in `context.externalId` \(example `context.externalId: [{type:kustomerId, id:uniqueId}]`\) we will skip looking-up the Customer using `email`/`userId`/`anonymousId`and directly update the Customer against that`id` with new attributes.
 {% endhint %}
 
 ## Contact Us
 
 If you come across any issues while configuring Kustomer with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+

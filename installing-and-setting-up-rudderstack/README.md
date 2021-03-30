@@ -25,7 +25,7 @@ If you are planning to use RudderStack in production, we strongly recommend usin
 
 ## What is a Data Plane URL? Where do I get it?
 
-For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. ****Here's how to get the data plane URL:
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. _\*\*_Here's how to get the data plane URL:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by installing and setting up RudderStack in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID you used to sign up for RudderStack.
@@ -71,7 +71,7 @@ Once you have installed and set up RudderStack on your target machine, please fo
 
 * If you already have a Google Analytics account, keep the tracking ID handy. If not, please create one and get the tracking ID. The Google Analytics account needs to have a `Web`Property \(`Web+App` doesn't seem to work\)
 * Create one source \(Android or iOS\) and configure a Google Analytics destination for the same with the above tracking ID
-*  We have bundled a shell script that can generate test events. Get the source **`writeKey`** from the [RudderStack dashboard](https://app.rudderlabs.com/signup) and then run the following command:
+* We have bundled a shell script that can generate test events. Get the source **`writeKey`** from the [RudderStack dashboard](https://app.rudderlabs.com/signup) and then run the following command:
 
 ```bash
 ./scripts/generate-event <YOUR_WRITE_KEY> https://hosted.rudderlabs.com/v1/batch
@@ -83,14 +83,14 @@ Once you have installed and set up RudderStack on your target machine, please fo
 The **write key** is different from your **workspace token**. The former is associated with the source, while the latter is for your RudderStack account.
 {% endhint %}
 
-![Workspace token vs Write Key](../.gitbook/assets/write-key-vs-token%20%282%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
+![Workspace token vs Write Key](../.gitbook/assets/write-key-vs-token%20%282%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%285%29.png)
 
 * You can then login to your Google Analytics account and verify that events are delivered. Go to `MainPage` -&gt; `RealTime` -&gt; `Events`. _RealTime_ view is important as the other dashboards can sometimes take 24 to 48 hours to refresh.
 * You can use our [JavaScript](../rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), [Android](../rudderstack-sdk-integration-guides/rudderstack-android-sdk/), or [iOS](../rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md) SDKs for sending events from your app.
 
 ## Why do I need a RudderStack account?
 
-A RudderStack account is not required, but our dashboard (control plane) is the easeist way to setup sources, destinations and transformations. RudderStack hosts the control plane free for Open Source users. You can also choose to use our open-source [config-generator](https://github.com/rudderlabs/config-generator) if you don't want to use the hosted control plane, but the config generator lacks certain features like Transformations and LiveDebugger.
+A RudderStack account is not required, but our dashboard \(control plane\) is the easeist way to setup sources, destinations and transformations. RudderStack hosts the control plane free for Open Source users. You can also choose to use our open-source [config-generator](https://github.com/rudderlabs/config-generator) if you don't want to use the hosted control plane, but the config generator lacks certain features like Transformations and LiveDebugger.
 
 {% hint style="info" %}
 The hosted control plane is only used for configuration and does not have access to your data or data plane. The LiveDebugger can temporarily stream events from your data plane for debugging but only for a limited time, and it does not persist your data.
@@ -99,6 +99,4 @@ The hosted control plane is only used for configuration and does not have access
 ## Contact Us
 
 To know more about installing and setting up RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to talk to you.
-
-
 
