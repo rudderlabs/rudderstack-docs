@@ -91,6 +91,7 @@
   * [Autopilot](destinations/autopilot.md)
   * [Azure Blob Storage](destinations/microsoft-azure-blob-storage.md)
   * [Azure Event Hubs](destinations/azure-event-hubs.md)
+  * [Bing Ads](destinations/bingads.md)
   * [Branch](destinations/branchio.md)
   * [Braze](destinations/braze.md)
   * [Bugsnag](destinations/bugsnag.md)
