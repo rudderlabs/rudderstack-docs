@@ -25,7 +25,7 @@ To add Pardot as a source in RudderStack, follow these steps:
 
 * Under **Create new account**, click on **Create Credentials from Scratch** to fill in the relevant connection credentials.
 
-![](../.gitbook/assets/3%20%2813%29.png)
+![](../.gitbook/assets/3%20%2815%29.png)
 
 * Enter the connection settings as shown:
 
