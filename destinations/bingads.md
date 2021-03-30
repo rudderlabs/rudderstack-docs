@@ -1,15 +1,17 @@
 ---
-description: Step-by-step guide to send your event data from RudderStack to BingAds
+description: Step-by-step guide to send your event data from RudderStack to Bing Ads
 ---
 
 # Bing Ads
 
-[Bing Ads](https://ads.microsoft.com/) is a service that provides pay per click advertising on both the Bing and Yahoo! search engines. Bing Ads enables Marketers to track and monitor campaigns, clicks, CTRs, spend and budget. With Bing Ads you can also retarget ads to customers after they complete an action like leaving a shopping cart or viewing a product without purchasing. Click to know more about [Bing Ads](https://advertise.bingads.microsoft.com/en-us/resources/training/what-is-bing-ads).
+[Bing Ads](https://ads.microsoft.com/) is a pay per click (PPC) advertising platform that works on both Bing and Yahoo search engines. It allows marketers to track and monitor their ad campaigns, resulting clicks, CTRs, and more. With Bing Ads, you can also implement efficient ad retargeting for your customers who have completed actions like adding product to a cart or view a product without purchasing it.
+
+RudderStack supports Bing Ads as a destination to which you can send your real-time event data seamlessly.
 
 
 ## Getting Started
 
-To enable sending data to Bing Ads, you will first need to add it as a destination to the source from which you are sending the event data. Once the destination is enabled, events from our JavaScript SDK will start to flow to Bing Ads.
+To enable sending data to Bing Ads, you will first need to add it as a destination to the source from which you are sending the event data. Once the destination is enabled, events from our JavaScript SDK will start flowing to Bing Ads.
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Bing Ads. Please refer the following table to do so:
 
@@ -39,7 +41,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ## Page
 
-You can make a `page` call to Bing Ads to record a page view. The SDK will send this data to Bing Ads with event type pageLoad.
+You can make a `page` call to Bing Ads to record a page view. The SDK will send this data to Bing Ads with event type `pageLoad`.
 
 A sample `page` call is as shown:
 
@@ -51,9 +53,11 @@ rudderanalytics.page();
 
 The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event.
 
-RudderStack maps the properties.category and properties.currency to the supported category and currency fields of Bing Ads, respectively. RudderStack also maps properties.total, properties.revenue or properties.value to Variable revenue. 
+RudderStack maps the `properties.category` and `properties.currency` fields to the corresponding category and currency fields of Bing Ads, respectively. RudderStack also maps `properties.total` and `properties.revenue` or `properties.value` to the variable `revenue`. 
 
-Only the event name is required - other properties are optional. A sample `track` call looks like the following:
+To use this call, only the event name is required - all other properties are optional. 
+
+A sample `track` call looks like the following:
 
 ```javascript
 rudderanalytics.track("Item Purchased", {
@@ -69,11 +73,11 @@ rudderanalytics.track("Item Purchased", {
 Priority of properties.total is higher followed by properties.revenue followed by properties.value.
 {% endhint %}
 
-## Configuring UET tag
+## Configuring the UET tag
 
-Before you can track conversions or target audiences, you need to create a UET tag in Bing Ads and then add it to the Connection Settings. Follow the steps within [the Bing Ads documentation to create a UET tag](https://about.ads.microsoft.com/en-us/resources/training/universal-event-tracking).
+Before you can track conversions or target audiences, you need to create a UET tag in Bing Ads and then add it to the **Connection Settings**. Follow the steps mentioned in the [Bing Ads documentation](https://about.ads.microsoft.com/en-us/resources/training/universal-event-tracking) to create a UET tag.
 
-UET tag could be created after logging in the Bing Ads -> Tools -> Conversion Tracking -> UET tag -> Create UET tag.
+The UET tag can be created after logging into your Bing Ads account and navigating to **Tools** - **Conversion Tracking** - **UET tag** - **Create UET tag**.
 
 ## Contact Us
 
