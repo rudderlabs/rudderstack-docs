@@ -40,6 +40,12 @@ Rudder::init(WRITE_KEY, array(
 ));
 ```
 
+{% hint style="warning" %}
+We append the protocol to `DATA_PLANE_URL` before sending the events to RudderStack server.
+
+For example if your dataPlaneUrl is `https://example.dataplane.com` mention only `example.dataplane.com`
+{% endhint %}
+
 ## Sending Events from RudderStack
 
 Once the RudderStack client is initialized, you can use it to send relevant customer events from the RudderStack client. An example `track` call is as shown in the following code snippet:
