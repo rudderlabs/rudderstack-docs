@@ -33,6 +33,14 @@ GRANT CREATE, TEMPORARY ON DATABASE <enter database name here> TO <user name>;
 If you don't grant the `CREATE, TEMPORARY` privileges the events don't get exported to PostgreSQL.
 {% endhint %}
 
+## Setting Up the Network Access
+
+You will need to whitelist the RudderStack IPs to enable network access to it.
+
+{% hint style="info" %}
+**The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` , `54.147.40.62`** , **`23.20.96.9`,** and  **`18.214.35.254`**.
+{% endhint %}
+
 ## Configuring PostgreSQL in RudderStack
 
 In order to enable dumping data to PostgreSQL, you will first need to add it as a destination to the source from which you are sending the event data. Once the destination is enabled, events from RudderStack will automatically start to flow to PostgreSQL.

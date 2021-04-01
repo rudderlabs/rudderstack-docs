@@ -25,15 +25,23 @@ set date_time_input_format = 'best_effort';
 ```
 
 {% hint style="info" %}
-We use `UInt8` datatype to set Boolean values and map`UInt8`to Boolean internally. So when we fetch schema from ClickHouse, we treat`UInt8`as Boolean. 
+We use `UInt8` datatype to set Boolean values and map `UInt8`to Boolean internally. So when we fetch schema from ClickHouse, we treat `UInt8`as Boolean. 
 {% endhint %}
 
 {% hint style="info" %}
-Make sure your Clickhouse User has read access to `system.columns` table for fetching table schema's
+Make sure your ClickHouse User has read access to `system.columns` table for fetching table schema's
 {% endhint %}
 
 {% hint style="warning" %}
-If you are creating tables in the same database where RudderStack loads, we highly recommend not using`UInt8`as a datatype except for boolean values \(0,1\).
+If you are creating tables in the same database where RudderStack loads, we highly recommend not using `UInt8`as a datatype except for boolean values \(0,1\).
+{% endhint %}
+
+## Setting Up the Network Access
+
+You will need to whitelist the RudderStack IPs to enable network access to it.
+
+{% hint style="info" %}
+**The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` , `54.147.40.62`** , **`23.20.96.9`,** and  **`18.214.35.254`**.
 {% endhint %}
 
 ## Configuring ClickHouse in RudderStack

@@ -4,10 +4,9 @@ description: Step-by-step guide to send your event data from RudderStack to Bing
 
 # Bing Ads
 
-[Bing Ads](https://ads.microsoft.com/) is a pay per click (PPC) advertising platform that works on both Bing and Yahoo search engines. It allows marketers to track and monitor their ad campaigns, resulting clicks, CTRs, and more. With Bing Ads, you can also implement efficient ad retargeting for your customers who have completed actions like adding product to a cart or view a product without purchasing it.
+[Bing Ads](https://ads.microsoft.com/) is a pay per click \(PPC\) advertising platform that works on both Bing and Yahoo search engines. It allows marketers to track and monitor their ad campaigns, resulting clicks, CTRs, and more. With Bing Ads, you can also implement efficient ad retargeting for your customers who have completed actions like adding product to a cart or view a product without purchasing it.
 
 RudderStack supports Bing Ads as a destination to which you can send your real-time event data seamlessly.
-
 
 ## Getting Started
 
@@ -53,9 +52,9 @@ rudderanalytics.page();
 
 The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event.
 
-RudderStack maps the `properties.category` and `properties.currency` fields to the corresponding category and currency fields of Bing Ads, respectively. RudderStack also maps `properties.total` and `properties.revenue` or `properties.value` to the variable `revenue`. 
+RudderStack maps the `properties.category` and `properties.currency` fields to the corresponding category and currency fields of Bing Ads, respectively. RudderStack also maps `properties.total` and `properties.revenue` or `properties.value` to the variable `revenue`.
 
-To use this call, only the event name is required - all other properties are optional. 
+To use this call, only the event name is required - all other properties are optional.
 
 A sample `track` call looks like the following:
 

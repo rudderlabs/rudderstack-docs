@@ -37,7 +37,7 @@ If you have already connected RudderStack to your Stripe account, your credentia
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Stripe account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option, as shown:
 
-![](../.gitbook/assets/3%20%2814%29.png)
+![](../.gitbook/assets/3%20%2814%29%20%281%29.png)
 
 {% hint style="success" %}
 You can also set a **Table Prefix** for the warehouse table where you want to send this data.

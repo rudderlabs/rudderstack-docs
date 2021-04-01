@@ -54,6 +54,14 @@ To ensure loading data from cloud storage to BigQuery, please make sure to co-lo
 Make sure that you create the service account in the same project as BigQuery 
 {% endhint %}
 
+## Setting Up the Network Access
+
+You will need to whitelist the RudderStack IPs to enable network access to it.
+
+{% hint style="info" %}
+**The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` , `54.147.40.62`** , **`23.20.96.9`,** and  **`18.214.35.254`**.
+{% endhint %}
+
 ## **Configuring Google BigQuery in RudderStack**
 
 In order to enable sending data to Google BigQuery, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to BigQuery. 

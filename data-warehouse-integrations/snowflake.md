@@ -323,6 +323,14 @@ Detailed instructions can be found [here](https://docs.snowflake.com/en/user-gui
 {% endtab %}
 {% endtabs %}
 
+## Setting Up the Network Access
+
+You will need to whitelist the RudderStack IPs to enable network access to it.
+
+{% hint style="info" %}
+**The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` , `54.147.40.62`** , **`23.20.96.9`,** and  **`18.214.35.254`**.
+{% endhint %}
+
 ## Contact Us
 
 If you come across any issues while configuring Snowflake with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
