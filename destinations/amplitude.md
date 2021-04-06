@@ -47,7 +47,7 @@ To successfully configure Amplitude as a destination, you will need to configure
 * **Group Settings:**
   * **Group name trait:** The trait that we will use as `groupType` in the `group` call.
   * **Group value trait:** The trait that we will use as `groupValue` in the `group` call.
-* **Track Pages:** This setting is for tracking web pages, but is currently available only in the web SDK.
+* **Track Pages:** This setting is for tracking web pages, but is currently available only in the web and mobile SDK's only.
   * **Track all pages:** If this setting is enabled, an event named `Loaded a page`  / `Loaded a Screen` will be sent to Amplitude.
   * **Track Categorized pages:** If this setting is enabled and if `category`  is present in a `page` / `screen` call, then an event named `Viewed {category} page` / `Viewed {category} Screen` will be sent to Amplitude.
   * **Track Named pages:** If this setting is on and the `name` is present in a `page` call, then an event named `Viewed {name} page` will be sent to Amplitude.
@@ -63,27 +63,17 @@ To successfully configure Amplitude as a destination, you will need to configure
   * **Traits to Append:**  If this setting is enabled, the value of the corresponding trait will be appended to the corresponding trait array at Amplitude. **If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are appended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value appended.** 
 
 {% hint style="info" %}
-This feature is currently available as part of RudderStack Mobile SDK's only.
+This feature is not applicable for RudderStack web device mode integrations.
 {% endhint %}
 
 * **Traits to Prepend:** If this setting is enabled, the value of the corresponding trait will be prepended to the corresponding trait array at Amplitude. **If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are prepended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value prepended.** 
 
 {% hint style="info" %}
-This feature is currently available as part of RudderStack Mobile SDK's only.
+This feature is not applicable for RudderStack web device mode integrations.
 {% endhint %}
 
 * **Track Products once:** If this setting is on, and if the event payload contains an array of products, the event is tracked with the original event name and all the products as its property, else each product is tracked with event `Product purchase` .  
-
-{% hint style="info" %}
-This feature is currently available as part of the RudderStack JavaScript, Mobile SDK only.
-{% endhint %}
-
 * **Track Revenue per product:** If this setting is on, and if the event payload contains multiple products, each product's revenue is tracked individually.
-
-{% hint style="info" %}
-This feature is currently available as part of the RudderStack JavaScript, Mobile SDK only.
-{% endhint %}
-
 * **Batch events:** If this setting is enabled, the events are batched together and uploaded by the Amplitude SDK only when the number of queued events is greater than or equal to `eventUploadThreshold` or `eventUploadPeriodMillis` milliseconds, since the first unsent event is queued.
 * **Event upload period millis:** If the `batch events` settings is enabled, this is the amount of time that the SDK waits to upload the events.
 * **Event upload threshold:** If the `batch events` settings is enabled, this is the minimum number of events to batch together by the Amplitude SDK.
@@ -96,7 +86,7 @@ This feature is currently available as part of the RudderStack JavaScript, Mobil
 * **Track UTM properties:** If this setting is enabled, the Amplitude SDK parses the UTM parameters in the query string or `_utmz` cookie and includes them as user properties in all uploaded events.
 * **Save Referrer, URL Params, GCLID once per session:** If this setting is enabled, the corresponding tracking of `gclid`, referrer, UTM parameters will be done once per session. If you always want to capture new values, please set this to False.
 * **Unset param referrer on new session:** If this setting is disabled, the existing `referrer` and `utm_parameter` values will be passed to each new session. If enabled, `referrer` and `utm_parameter` properties will be set to `null` upon instantiating new session. This only works if `Track referrer` and `Track UTM properties` are enabled.
-* **Enable location listening \(Mobile only\):** If the user grants your app location permissions, the SDK will also grab the user's location. Amplitude will never prompt the user for location permissions, and this will have to be done by your app.
+* **Enable location listening \(Android only\):** If the user grants your app location permissions, the SDK will also grab the user's location. Amplitude will never prompt the user for location permissions, and this will have to be done by your app.
 * **Track session events \(Mobile only\):** If this setting is enabled, `[Amplitude] Start Session` and `[Amplitude] End Session` events will be sent to the Amplitude at the starting and end of the session.
 * **Use advertising id as device id \(Android only\):**  If this setting is enabled, the `advertising id` assigned by Google Play Store to a user device will be sent as `device id` to the Amplitude.
 * **Use IDFA as device id \(iOS only\):** If this setting is enabled, the `Identifier for Advertisers (IDFA)` assigned by Apple to a user device will be sent as  `device id` to the Amplitude.
