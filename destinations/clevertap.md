@@ -52,7 +52,7 @@ Note: All server-side destination requests require either a `anonymousId` or a `
 ## Adding Device Mode Integration
 {% tabs %}
 {% tab title="Android" %}
-To add CleverTap to your Android Project and enable its full functionality like push notifications, please follow these steps :
+To add CleverTap to your Android project and enable functionalities like push notifications, follow these steps :
 
 * Open your `app/build.gradle` (Module: app) file, and add the following:
 
@@ -63,7 +63,7 @@ repositories {
 
 ```
 
-* and add the following under the dependencies section
+* Also, add the following under the `dependencies` section:
 
 ```kotlin
 // ruddder core sdk
@@ -77,7 +77,7 @@ implementation 'com.google.code.gson:gson:2.8.6'
 
 ```
 
-* Initialize the Rudder SDK in the `Application` class's `onCreate()` method as following:
+* Initialize the RudderStack SDK in the `Application` class's `onCreate()` method as shown:
 
 ```kotlin
 import com.rudderstack.android.integrations.clevertap.CleverTapIntegrationFactory
@@ -101,7 +101,7 @@ val rudderClient = RudderClient.getInstance(
 
 Follow these steps to add CleverTap to your iOS project:
 
-* Go your `Podfile` and add the `Rudder-CleverTap` extension
+* Go your `Podfile` and add the `Rudder-CleverTap` extension as shown below:
 
 ```objectivec
 pod 'Rudder-CleverTap'
@@ -306,12 +306,14 @@ Example: To disable push notifications for a user, set `MSG-push` to `false`
 
 ## Configuring Push Notifications
 
+The steps to configure push notifications for CleverTap for the platform of your choice are as mentioned below:
+
 {% tabs %}
 {% tab title="Android" %}
 
-1. Register push notifications for android devices on clevertap dashboard either by uploading your FCM credentials or any other supported credentials inside settings -> Channels -> Mobile Push -> Android.
+1. Register push notifications for Android devices on your CleverTap dashboard either by uploading your FCM credentials or any other supported credentials by navigating to **Settings** - **Channels** - **Mobile Push** - **Android**.
 
-2. Add the below dependency in your project level `build.gradle` file inside the `buildscript`
+2. Add the following dependency in your project level `build.gradle` file inside the `buildscript`:
 
 ```groovy
 dependencies {
@@ -319,7 +321,7 @@ dependencies {
  }
 ```
 
-3. Add the below dependencies and plugin to your app level `build.gradle` file 
+3. Next, add the following dependencies and plugin to your app level `build.gradle` file:
 
 ```groovy
 dependencies {
@@ -330,9 +332,9 @@ dependencies {
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. Place the `google-services.json` you had downloaded from the `Firebase console` into the root folder of your `app`
+4. Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
 
-5. Add your  `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your  `app's`  `AndroidManifest.xml`  as below: 
+5. Add your  `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your  app's  `AndroidManifest.xml`, as below: 
 
 ```xml
 <meta-data
@@ -349,7 +351,7 @@ apply plugin: 'com.google.gms.google-services'
 </service>
 ```
 
-6. Create a Notification channel anywhere inside your application using the following block of code and you can use this `channel Id` while creating any campaign's on the CleverTap Dashboard.
+6. Finally, create a notification channel anywhere in your application using the following block of code. You can then use this `channel Id` while creating any campaign on your CleverTap Dashboard.
 
 ```kotlin
 CleverTapAPI.createNotificationChannel(getApplicationContext(), "yourChannelId", "Your Channel Name", "Your Channel Description", NotificationManager.IMPORTANCE_MAX, true);
@@ -357,11 +359,11 @@ CleverTapAPI.createNotificationChannel(getApplicationContext(), "yourChannelId",
 {% endtab %}
 {% tab title="iOS" %}
 
-1. Add Push Notification as a Capability in Target-> `Signing & Capabilities` of your app when opened in Xcode.
+1. Add Push Notification as a capability by navigating to Target - `Signing & Capabilities` of your app when opened in Xcode.
 
-2. Register push notifications for iOS devices on clevertap dashboard either by uploading Auth Key or APNS Push Certificate inside settings -> Channels -> Mobile Push -> iOS.
+2. Register the push notifications for the iOS devices on your CleverTap dashboard either by uploading Auth Key or APNS Push Certificate by navigating to **Settings** - **Channels** - **Mobile Push** - **iOS**.
 
-3. Then inside your app add the below code just after initializing rudder-ios sdk to register for push notifications.
+3. Then, add the following code in your app just after initializing RudderStack's iOS SDK to register the push notifications.
 
 ```objectivec
 #import <UserNotifications/UserNotifications.h>
@@ -378,7 +380,7 @@ CleverTapAPI.createNotificationChannel(getApplicationContext(), "yourChannelId",
     }];
 ```
 
-4. Then add the below handlers to handle the tokens and push notifications accordingly
+4. Finally, add the below handlers to handle the tokens and push notifications accordingly:
 
 ```objectivec
 #import "RudderCleverTapIntegration.h"
