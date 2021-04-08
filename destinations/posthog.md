@@ -243,6 +243,43 @@ rudderanalytics.track("event", {prop: "value"}, {
 Super properties related info can be passed to any of `track`, `page` and `identify` calls to the RudderStack JavaScript SDK.
 {% endhint %}
 
+## Property Mapping
+
+RudderStack tries to map most of the PostHog Native SDKs collected contextual `properties`.
+
+The following are the `properties` sent to PostHog :
+
+| Standard Rudder Name | Standard Posthog Name |
+| :--- | :--- |
+| `context.os.name` | `$os` |
+| `context.page.url` | `$current_url` |
+| `url` | `$host` |
+| `context.page.path` | `$pathname` |
+| `context.screen.height` | `$screen_height` |
+| `context.screen.width` | `$screen_width` |
+| `context.library.name` | `$lib` |
+| `context.library.version` | `$lib_version` |
+| `originalTimestamp`,`timestamp` | `$time` |
+| `context.device.id` | `$device_id` |
+| `request_ip`,`context.ip` | `$ip` |
+| `timestamp`,`originalTimestamp` | `$timestamp` |
+| `anonymousId` | `$anon_distinct_id` |
+| `userId`,`anonymousId` | `distinct_id` |
+| `context.screen.density` | `$screen_density` |
+| `context.device.manufacturer` | `$device_manufacturer` |
+| `context.os.version` | `$os_version` |
+| `context.timezone` | `$timezone` |
+| `context.locale` | `$locale` |
+| `context.userAgent` | `$user_agent` |
+| `context.app.version` | `$app_version` |
+| `context.device.name` | `$device_name` |
+| `context.network.carrier` | `$network_carrier` |
+| `context.app.name` | `$app_name` |
+| `context.device.model` | `$device_model` |
+| `context.app.namespace` | `$app_namespace` |
+| `context.app.build` | `$app_build` |
+
+
 ## FAQs
 
 ### **How do you get the PostHog Team API Key?**
@@ -250,14 +287,6 @@ Super properties related info can be passed to any of `track`, `page` and `ident
 * Login to PostHog dashboard.
 * Go to the **Settings** tab under the **Project** section on the left sidebar.
 * You will find your key written as **Project API Key** or **Team API Key**. 
-
-### Which general properties are sent to PostHog with every API call?
-
-RudderStack tries to map most of the PostHog Native SDKs collected contextual `properties`.
-
-The following are the `properties` sent to PostHog :
-
-`$os`,`$current_url`,`$host`,`$pathname`,`$screen_height`,`$screen_width`,`$lib`,`$lib_version`,`$insert_id`,`$time`,`$device_id`,`$ip`,`$timestamp`,`$anon_distinct_id`,`distinct_id`,`$screen_density`,`$device_manufacturer`,`$os_version`,`$timezone`,`$locale`,`$user_agent`,`$app_version`,`$device_name`,`$network_carrier`,`$app_name`,`$device_model`,`$app_namespace`,`$app_build`
 
 ## Contact Us
 
