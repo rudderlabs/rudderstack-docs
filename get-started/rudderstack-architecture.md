@@ -74,17 +74,17 @@ As discussed previously, RudderStack also supports user-specific transformation 
 
 The following flow explains the working of the backend:
 
-1. Client SDK sends events to the Gateway
-2. Gateway then: 
-   1. Stores the event data to the database \(PostgreSQL\)
-   2. Sends an HTTP 200 status acknowledging receipt of the data
-3. The Processor picks the data from the Gateway and forwards the event data to the Transformation module
-4. The Transformation module sends the transformed data back to the Processor
-5. The Processor saves the Transformer data in the Router database and deletes it from the Gateway database
-6. Router then: 
-   1. Forwards the transformed event data to the desired destinations 
-   2. Stores the information in a separate table in the database
-7. Once the transformed data reaches the destination, the event data from the router database is deleted by the Router
+1. Client SDK sends events to the Gateway.
+2. The Gateway then: 
+   1. Stores the event data to the database \(PostgreSQL\).
+   2. Sends an HTTP 200 status acknowledging receipt of the data.
+3. The Processor picks the data from the Gateway and forwards the event data to the Transformation module.
+4. The Transformation module sends the transformed data back to the Processor.
+5. Once the event is transformed and sent to the Router, it is deleted from the Gateway store.
+6. The Router then: 
+   1. Forwards the transformed event data to the desired destinations.
+   2. Stores the information in a separate table in the database.
+7. Once the transformed data reaches the destination, the event data from the router database is deleted by the Router.
 
 ## **Summary**
 
