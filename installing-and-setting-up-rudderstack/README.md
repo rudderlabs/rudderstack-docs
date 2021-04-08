@@ -70,7 +70,12 @@ git clone https://github.com/rudderlabs/rudder-server.git
 Once you have installed and set up RudderStack on your target machine, please follow the steps below to test your RudderStack installation:
 
 * If you already have a Google Analytics account, keep the tracking ID handy. If not, please create one and get the tracking ID. The Google Analytics account needs to have a `Web`Property \(`Web+App` doesn't seem to work\)
-* Create one source \(Android or iOS\) and configure a Google Analytics destination for the same with the above tracking ID
+* Create one source and a Google Analytics destination for the same with the above tracking ID.
+
+{% hint style="info" %}
+Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+{% endhint %}
+
 * We have bundled a shell script that can generate test events. Get the source **`writeKey`** from the [RudderStack dashboard](https://app.rudderlabs.com/signup) and then run the following command:
 
 ```bash
