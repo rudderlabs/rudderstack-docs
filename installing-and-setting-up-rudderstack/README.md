@@ -95,7 +95,7 @@ The **write key** is different from your **workspace token**. The former is asso
 
 ## Why do I need a RudderStack account?
 
-A RudderStack account is not required, but our dashboard \(control plane\) is the easeist way to setup sources, destinations and transformations. RudderStack hosts the control plane free for Open Source users. You can also choose to use our open-source [config-generator](https://github.com/rudderlabs/config-generator) if you don't want to use the hosted control plane, but the config generator lacks certain features like Transformations and LiveDebugger.
+A RudderStack account is not required, but our dashboard \(control plane\) is the easiest way to setup sources, destinations and transformations. RudderStack hosts the control plane free for Open Source users. You can also choose to use our open-source [config-generator](https://github.com/rudderlabs/config-generator) if you don't want to use the hosted control plane, but the config generator lacks certain features like Transformations and Live Debugger.
 
 {% hint style="info" %}
 The hosted control plane is only used for configuration and does not have access to your data or data plane. The LiveDebugger can temporarily stream events from your data plane for debugging but only for a limited time, and it does not persist your data.
