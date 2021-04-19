@@ -161,11 +161,17 @@ Now all the events should go to the Tab mapped with **`product added`**.
 
 ### I have added my Service Account Credentials, still my events are not sent to Google-Sheets?
 
-- Verify if you have enabled Google-API in the project of your service.
+- Verify if you have enabled Google-API in the project of your service account.
 
 - Verify if you have added edit access to your Sheet with your service account.
 
 - Verfiy if you have added correct Sheet-Id and Tab names in RudderStack dashboard.
+
+### Where do I find my Google-Sheet-ID?
+
+- You can find the Google-Sheet-Id within the Google-Sheet-Url
+
+![Google Sheet ID](../.gitbook/assets/Google-Sheet-ID.png)
 
 ## Contact Us
 
