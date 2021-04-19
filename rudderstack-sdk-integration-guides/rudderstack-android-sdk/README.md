@@ -436,6 +436,16 @@ An example of setting the `anonymousId` is as below
 RudderClient.setAnonymousId(<ANONYMOUS_ID>);
 ```
 
+To retrieve the `anonymousId` you can use the following method
+
+```java
+RudderClient.getAnonymousId();
+```
+
+{% hint style="hint" %}
+The method `getAnonymousId` is available from v1.0.11 onwards
+{% endhint %}
+
 ## External ID
 
 You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
