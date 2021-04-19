@@ -110,6 +110,7 @@
   * [Google Analytics 4](destinations/google-analytics-4.md)
   * [Google Cloud Storage](destinations/google-cloud-storage.md)
   * [Google Pub/Sub](destinations/google-pub-sub.md)
+  * [Google Sheets](destinations/google-sheets.md)
   * [Google Tag Manager](destinations/google-tag-manager.md)
   * [Heap.io](destinations/heap.io.md)
   * [Hotjar](destinations/hotjar.md)
