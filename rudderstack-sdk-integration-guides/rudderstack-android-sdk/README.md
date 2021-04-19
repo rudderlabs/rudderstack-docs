@@ -436,14 +436,14 @@ An example of setting the `anonymousId` is as below
 RudderClient.setAnonymousId(<ANONYMOUS_ID>);
 ```
 
-To retrieve the `anonymousId` you can use the following method
+To retrieve the `anonymousId` you can use the following method:
 
 ```java
 RudderClient.getAnonymousId();
 ```
 
 {% hint style="hint" %}
-The method `getAnonymousId` is available from v1.0.11 onwards
+The method `getAnonymousId` is available from v1.0.11 onwards.
 {% endhint %}
 
 ## External ID
