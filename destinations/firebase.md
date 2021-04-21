@@ -48,7 +48,6 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.3'
     }
 }
-
 ```
 
 * Once you have completed the steps above, you can add the `plugins` and `dependencies` to your `app/build.gradle` file as shown:
@@ -196,7 +195,6 @@ Follow these steps to add Firebase to your ReactNative project:
           classpath 'com.google.gms:google-services:4.3.3'
       }
   }
-
   ```
 
   * Once you have completed the steps above, you can add the `plugins` and `dependencies` to your `app/build.gradle` file as shown:
@@ -242,7 +240,7 @@ The `track` call from RudderStack is mapped to the appropriate standard events o
 | :--- | :--- |
 | `Payment Info Entered` | `add_payment_info` |
 | `Product Added` | `add_to_cart` |
-| `Application Opened`  | `app_open` |
+| `Application Opened` | `app_open` |
 | `Checkout Started` | `begin_checkout` |
 | `Order Completed` | `ecommerce_purchase` |
 | `Order Refunded` | `purchase_refund` |

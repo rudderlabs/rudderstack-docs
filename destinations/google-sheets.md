@@ -16,11 +16,10 @@ RudderStack allows you to configure Google Sheets as a destination and send your
 
 To enable sending data to Google Sheets, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Google Sheets.
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| Device mode         | **-**         | **-**         | **-**         |
-| Cloud mode          | **Supported** | **Supported** | **Supported** |
-
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| Device mode | **-** | **-** | **-** |
+| Cloud mode | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -28,39 +27,34 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Google Sheets, perform the steps below:
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Google Sheets.**
+* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Google Sheets.**
 
 {% hint style="info" %}
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack) guide to add a source and destination in RudderStack.
 {% endhint %}
 
-- Give a name to the destination and click on **Next**. You should then see the following screen:
+* Give a name to the destination and click on **Next**. You should then see the following screen:
 
 ![Google Sheets Connection Settings](../.gitbook/assets/sheets-config.png)
 
-- Enter the following details:
-
-  - **Connection Settings**
-
-    - **Credentials**: Follow these steps to obtain the credentials for connecting Google Sheets:
-
-      - Create a service account in from your Google Cloud Console account.
-      - A JSON file with the credentials will be generated against your service account.
-      - Paste this downloaded JSON in the **Credentials** field.
-
-    - **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You need add the email address of the service account as an editor for that specific Google Sheet.
-    - Enter the **Event Name** as well as the corresponding **Google Sheet Tab**. You can create multiple tabs within a single sheet as shown below:
+* Enter the following details:
+  * **Connection Settings**
+    * **Credentials**: Follow these steps to obtain the credentials for connecting Google Sheets:
+      * Create a service account in from your Google Cloud Console account.
+      * A JSON file with the credentials will be generated against your service account.
+      * Paste this downloaded JSON in the **Credentials** field.
+    * **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You need add the email address of the service account as an editor for that specific Google Sheet.
+    * Enter the **Event Name** as well as the corresponding **Google Sheet Tab**. You can create multiple tabs within a single sheet as shown below:
 
 ![Google Sheets Tab](../.gitbook/assets/sheet-tabs.png)
 
 {% hint style="info" %}
-
 You can send `page`, `identify`, and `track` events with this integration. For the `track` events, you can specify the event name based on the `event` name in the payload.
 
 For example:
 
-- If the event name is **`page`**, it will send all the calls with the `type` page.
-- If the event name is **`product added`** , it will send all the `track` events with the **`event`** as **`product added`**.
+* If the event name is **`page`**, it will send all the calls with the `type` page.
+* If the event name is **`product added`** , it will send all the `track` events with the **`event`** as **`product added`**.
 {% endhint %}
 
 {% hint style="success" %}
@@ -71,7 +65,7 @@ If you want to send all the events to a particular Tab in your Google Sheet irre
 The **Tab** is **case-sensitive** and has to be exactly as seen in Google Sheets. On the other hand, the **event name** is **case insensitive**, and thus `Page` or `page` will both be considered as valid.
 {% endhint %}
 
-- Finally, click on **Next** to complete the configuration. 
+* Finally, click on **Next** to complete the configuration. 
 
 Google Sheets should now be added and enabled as a destination in RudderStack.
 
@@ -145,8 +139,8 @@ A sample `screen` call looks like the following code snippet:
 
 ### How does event mapping work with the Tabs in A Google Sheet?
 
-- If there is no Tab set for an event, the event will not be sent.
-- If an event is set with a Tab, the payload will be sent to Google Sheets to that particular Tab.
+* If there is no Tab set for an event, the event will not be sent.
+* If an event is set with a Tab, the payload will be sent to Google Sheets to that particular Tab.
 
 {% hint style="info" %}
 If you have set all of the event `type`, `event` and \* for mapping, the priority will be given to `event` ,  
@@ -161,18 +155,17 @@ Now all the events should go to the Tab mapped with **`product added`**.
 
 ### I have added my Service Account Credentials, still my events are not sent to Google-Sheets?
 
-- Verify if you have enabled Google-API in the project of your service account.
-
-- Verify if you have added edit access to your Sheet with your service account.
-
-- Verfiy if you have added correct Sheet-Id and Tab names in RudderStack dashboard.
+* Verify if you have enabled Google-API in the project of your service account.
+* Verify if you have added edit access to your Sheet with your service account.
+* Verfiy if you have added correct Sheet-Id and Tab names in RudderStack dashboard.
 
 ### Where do I find my Google-Sheet-ID?
 
-- You can find the Google-Sheet-Id within the Google-Sheet-Url
+* You can find the Google-Sheet-Id within the Google-Sheet-Url
 
 ![Google Sheet ID](../.gitbook/assets/Google-Sheet-ID.png)
 
 ## Contact Us
 
 If you come across any issues while configuring or using Google Sheets with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+
