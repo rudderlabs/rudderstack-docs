@@ -52,7 +52,7 @@ repositories {
 
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1+'
-// add the follwing line if you don't have Gson included already
+// add the following line if you don't have Gson included already
 implementation 'com.google.code.gson:gson:2+'
 ```
 
@@ -105,7 +105,7 @@ RudderClient rudderClient = RudderClient.getInstance(
         this,
         WRITE_KEY,
         new RudderConfig.Builder()
-                .withEndPointUri(DATA_PLANE_URL)
+                .withDataPlaneUrl(DATA_PLANE_URL)
                 .withTrackLifecycleEvents(true)
                 .withRecordScreenViews(true)
                 .build()
@@ -144,7 +144,7 @@ rudderClient.track(
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.track(
+rudderClient.with(this).track(
         "Product Added",
         new RudderProperty()
                 .putValue("product_id", "product_001")
@@ -220,7 +220,7 @@ traits.put("long", 1234L);
 traits.put("string", "hello");
 traits.put("date", new Date(System.currentTimeMillis()));
 
-rudderClient.identify("test_user_id", traits, null);
+rudderClient.with(this).identify("test_user_id", traits, null;
 ```
 {% endtab %}
 {% endtabs %}
@@ -260,7 +260,7 @@ rudderClient.screen(
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.screen(
+rudderClient.with(this).screen(
     "MainActivity",
     "HomeScreen",
     new RudderProperty().putValue("foo", "bar"),
@@ -297,7 +297,7 @@ rudderClient.group(
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.group(
+rudderClient.with(this).group(
     "sample_group_id",
     new RudderTraits().putAge("24")
         .putName("Test Group Name")
@@ -330,7 +330,7 @@ rudderClient.alias("test_new_id")
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.alias("test_new_id");
+rudderClient.with(this).alias("test_new_id");
 ```
 {% endtab %}
 {% endtabs %}
@@ -357,7 +357,7 @@ rudderClient.reset()
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.reset();
+rudderClient.with(this).reset();
 ```
 {% endtab %}
 {% endtabs %}
@@ -369,7 +369,7 @@ You can configure your client based on the following parameters using `RudderCon
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
 | `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RudderLogger.RudderLogLevel.NONE` |
-| `endPointUri` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+| `dataPlaneUrl` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
 | `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
@@ -401,7 +401,7 @@ rudderClient.putDeviceToken("your_device_token")
 
 {% tab title="JAVA" %}
 ```bash
-rudderClient.putDeviceToken("your_device_token");
+rudderClient.with(this).putDeviceToken("your_device_token");
 ```
 {% endtab %}
 {% endtabs %}
@@ -473,7 +473,7 @@ RudderClient rudderClient = RudderClient.getInstance(
     this,
     YOUR_WRITE_KEY,
     new RudderConfig.Builder()
-        .withEndPointUri(DATA_PLANE_URL)
+        .withDataPlaneUrl(DATA_PLANE_URL)
         .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
         .build()
 );
