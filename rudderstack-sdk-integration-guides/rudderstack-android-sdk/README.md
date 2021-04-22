@@ -36,12 +36,14 @@ To get the **Data Plane URL**:
 
 ## Installing the SDK
 
-We distribute our Android SDK through [Maven Central](https://search.maven.org) and [Bintray](https://bintray.com). The recommended way to use our SDK is through the Android Gradle build system. It's the easiest way to add the SDK to your project. 
+{% hint style="info" %}
+**As Bintray has a sunset from 1st may, we're moving our SDK to Maven Central". All the versions, 1.0.10 onwards are available in Maven Central only.**
+{% endhint %}
+
+We distribute our Android SDK through [Maven Central](https://search.maven.org). The recommended way to use our SDK is through the Android Gradle build system. It's the easiest way to add the SDK to your project. 
 
 Follow these steps: 
 
-{% tabs %}
-{% tab title="Maven Central" %}
 * Open your project level `build.gradle` file, and add the following lines of code:
 
 ```groovy
@@ -64,25 +66,6 @@ implementation 'com.rudderstack.android.sdk:core:1+'
 // add the following line if you don't have Gson included already
 implementation 'com.google.code.gson:gson:2+'
 ```
-{% endtab %}
-{% tab title="Bintray" %}
-* Open your `app/build.gradle (Module: app)` file, and add the following lines of code:
-
-```groovy
-repositories {
-    maven { url  "https://dl.bintray.com/rudderstack/rudderstack" }
-}
-```
-
-* Add the dependency under `dependencies` as shown:
-
-```groovy
-implementation 'com.rudderstack.android.sdk:core:1+'
-// add the following line if you don't have Gson included already
-implementation 'com.google.code.gson:gson:2+'
-```
-{% endtab %}
-{% endtabs %}
 
 {% hint style="info" %}
 It is recommended to use the Core Android SDK without any `device-mode` destination SDKs as you will have a better view on the captured data from the SDK.
@@ -172,7 +155,7 @@ rudderClient.track(
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.with(this).track(
+rudderClient.track(
         "Product Added",
         new RudderProperty()
                 .putValue("product_id", "product_001")
@@ -248,7 +231,7 @@ traits.put("long", 1234L);
 traits.put("string", "hello");
 traits.put("date", new Date(System.currentTimeMillis()));
 
-rudderClient.with(this).identify("test_user_id", traits, null;
+rudderClient.identify("test_user_id", traits, null;
 ```
 {% endtab %}
 {% endtabs %}
@@ -288,7 +271,7 @@ rudderClient.screen(
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.with(this).screen(
+rudderClient.screen(
     "MainActivity",
     "HomeScreen",
     new RudderProperty().putValue("foo", "bar"),
@@ -325,7 +308,7 @@ rudderClient.group(
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.with(this).group(
+rudderClient.group(
     "sample_group_id",
     new RudderTraits().putAge("24")
         .putName("Test Group Name")
@@ -358,7 +341,7 @@ rudderClient.alias("test_new_id")
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.with(this).alias("test_new_id");
+rudderClient.alias("test_new_id");
 ```
 {% endtab %}
 {% endtabs %}
@@ -385,7 +368,7 @@ rudderClient.reset()
 
 {% tab title="JAVA" %}
 ```java
-rudderClient.with(this).reset();
+rudderClient.reset();
 ```
 {% endtab %}
 {% endtabs %}
@@ -429,7 +412,7 @@ rudderClient.putDeviceToken("your_device_token")
 
 {% tab title="JAVA" %}
 ```bash
-rudderClient.with(this).putDeviceToken("your_device_token");
+rudderClient.putDeviceToken("your_device_token");
 ```
 {% endtab %}
 {% endtabs %}
