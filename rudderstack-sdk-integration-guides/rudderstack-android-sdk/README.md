@@ -36,10 +36,36 @@ To get the **Data Plane URL**:
 
 ## Installing the SDK
 
-We distribute our Android SDK through [Bintray](https://bintray.com/). This is the recommended way to use our SDK is through the Android Gradle build system. It's the easiest way to add the SDK to your project.
+We distribute our Android SDK through [Maven Central](https://search.maven.org) and [Bintray](https://bintray.com). The recommended way to use our SDK is through the Android Gradle build system. It's the easiest way to add the SDK to your project. 
 
-To add the dependencies, perform the following steps:
+Follow these steps: 
 
+{% tabs %}
+{% tab title="Maven Central" %}
+* Open your project level `build.gradle` file, and add the following lines of code:
+
+```groovy
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+```
+* Then open your `app/build.gradle` and add the dependency under `dependencies` as shown below:
+
+```groovy
+implementation 'com.rudderstack.android.sdk:core:1+'
+// add the following line if you don't have Gson included already
+implementation 'com.google.code.gson:gson:2+'
+```
+{% endtab %}
+{% tab title="Bintray" %}
 * Open your `app/build.gradle (Module: app)` file, and add the following lines of code:
 
 ```groovy
@@ -55,6 +81,8 @@ implementation 'com.rudderstack.android.sdk:core:1+'
 // add the following line if you don't have Gson included already
 implementation 'com.google.code.gson:gson:2+'
 ```
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
 It is recommended to use the Core Android SDK without any `device-mode` destination SDKs as you will have a better view on the captured data from the SDK.
