@@ -49,6 +49,88 @@ To successfully configure CleverTap as a destination, you will need to configure
 Note: All server-side destination requests require either a `anonymousId` or a `userId` in the payload.
 {% endhint %}
 
+## Adding Device Mode Integration
+{% tabs %}
+{% tab title="Android" %}
+To add CleverTap to your Android project and enable functionalities like push notifications, follow these steps :
+
+* Open your project level `build.gradle` file, and add the following:
+
+```groovy
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+```
+
+* Also, add the following under the `dependencies` section:
+
+```kotlin
+// ruddder core sdk
+implementation 'com.rudderstack.android.sdk:core:1.+'
+// rudder-clevertap integration
+implementation 'com.rudderstack.android.integration:clevertap:1.0.0'
+// clevertap native sdk
+implementation 'com.clevertap.android:clevertap-android-sdk:4.0.0'
+// if you don't have Gson included already
+implementation 'com.google.code.gson:gson:2.8.6'
+
+```
+
+* Initialize the RudderStack SDK in the `Application` class's `onCreate()` method as shown:
+
+```kotlin
+import com.rudderstack.android.integrations.clevertap.CleverTapIntegrationFactory
+import com.rudderstack.android.sdk.core.RudderClient
+import com.rudderstack.android.sdk.core.RudderConfig
+
+// initializing Rudder SDK
+val rudderClient = RudderClient.getInstance(
+    this,
+    WRITE_KEY,
+    RudderConfig.Builder()
+        .withDataPlaneUrl(DATA_PLANE_URL)
+        .withFactory(CleverTapIntegration.FACTORY)
+        .build()
+)
+```
+
+{% endtab %}
+
+{% tab title="iOS" %}
+
+Follow these steps to add CleverTap to your iOS project:
+
+* Go your `Podfile` and add the `Rudder-CleverTap` extension as shown below:
+
+```objectivec
+pod 'Rudder-CleverTap'
+```
+
+* After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
+
+```objectivec
+#import "RudderCleverTapFactory.h"
+```
+
+* Finally, change the initialization of your `RudderClient` as shown:
+
+```objectivec
+RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
+[builder withDataPlaneUrl:DATA_PLANE_URL];
+[builder withFactory:[RudderCleverTapFactory instance]];
+[RudderClient getInstance:WRITE_KEY config:[builder build]];
+```
+{% endtab %}
+{% endtabs %}
+
 ## Page
 
 The `page` call allows you to record information whenever a user sees a web page, along with its associated properties.
@@ -228,6 +310,107 @@ Profile properties `MSG-email`, `MSG-push`, `MSG-sms` and `MSG-whatsapp` are use
 
 Example: To disable push notifications for a user, set `MSG-push` to `false`
 {% endhint %}
+
+## Configuring Push Notifications
+
+The steps to configure push notifications for CleverTap for the platform of your choice are as mentioned below:
+
+{% tabs %}
+{% tab title="Android" %}
+
+1. Register push notifications for Android devices on your CleverTap dashboard either by uploading your FCM credentials or any other supported credentials by navigating to **Settings** - **Channels** - **Mobile Push** - **Android**.
+
+2. Add the following dependency in your project level `build.gradle` file inside the `buildscript`:
+
+```groovy
+dependencies {
+        classpath 'com.google.gms:google-services:4.3.5'
+ }
+```
+
+3. Next, add the following dependencies and plugin to your app level `build.gradle` file:
+
+```groovy
+dependencies {
+// for push notifications
+    implementation 'com.clevertap.android:clevertap-android-sdk:4.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+}
+apply plugin: 'com.google.gms.google-services'
+```
+
+4. Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
+
+5. Add your  `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your  app's  `AndroidManifest.xml`, as below:
+
+```xml
+<meta-data
+          android:name="CLEVERTAP_ACCOUNT_ID"
+          android:value="XXX-XXX-XXXX"/>
+<meta-data
+          android:name="CLEVERTAP_TOKEN"
+          android:value="XXX-XXX"/>
+<service
+          android:name="com.clevertap.android.sdk.pushnotification.fcm.FcmMessageListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+</service>
+```
+
+6. Finally, create a notification channel anywhere in your application using the following block of code. You can then use this `channel Id` while creating any campaign on your CleverTap Dashboard.
+
+```kotlin
+CleverTapAPI.createNotificationChannel(getApplicationContext(), "yourChannelId", "Your Channel Name", "Your Channel Description", NotificationManager.IMPORTANCE_MAX, true);
+```
+{% endtab %}
+{% tab title="iOS" %}
+
+1. Add Push Notification as a capability by navigating to Target - `Signing & Capabilities` of your app when opened in Xcode.
+
+2. Register the push notifications for the iOS devices on your CleverTap dashboard either by uploading Auth Key or APNS Push Certificate by navigating to **Settings** - **Channels** - **Mobile Push** - **iOS**.
+
+3. Then, add the following code in your app just after initializing RudderStack's iOS SDK to register the push notifications.
+
+```objectivec
+#import <UserNotifications/UserNotifications.h>
+// register for push notifications
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)
+                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            dispatch_async(dispatch_get_main_queue(), ^(void) {
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            });
+        }
+    }];
+```
+
+4. Finally, add the below handlers to handle the tokens and push notifications accordingly:
+
+```objectivec
+#import "RudderCleverTapIntegration.h"
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[RudderCleverTapIntegration alloc] registeredForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [[RudderCleverTapIntegration alloc] receivedRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNoData);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    [[RudderCleverTapIntegration alloc] receivedRemoteNotification:response.notification.request.content.userInfo];
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ## Contact Us
 
