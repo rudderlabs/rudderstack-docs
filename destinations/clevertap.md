@@ -129,32 +129,6 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [RudderClient getInstance:WRITE_KEY config:[builder build]];
 ```
 {% endtab %}
-{% tab title="React Native"%}
-To add CleverTap to your React Native project:
-
-Add the RudderStack-CleverTap module to your app using :
-
-```bash
-npm install @rudderstack/rudder-integration-clevertap-react-native
-## OR ##
-yarn add @rudderstack/rudder-integration-clevertap-react-native
-```
-Run `pod install` inside the `ios` directory of your project adding `@rudderstack/rudder-integration-clevertap-react-native` to your project.
-
-Import the module you added above and add it to your SDK initialization code as shown below:
-
-```typescript
-import rudderClient from '@rudderstack/rudder-sdk-react-native';
-import clevertap from "@rudderstack/rudder-integration-clevertap-react-native";
-
-const config = {
-    dataPlaneUrl: DATA_PLANE_URL,
-    trackAppLifecycleEvents: true,
-    withFactories: [clevertap]
-};
-rudderClient.setup(WRITE_KEY, config);
-```
-{% endtab %}
 {% endtabs %}
 
 ## Page
@@ -367,7 +341,7 @@ apply plugin: 'com.google.gms.google-services'
 
 4. Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
 
-5. Add your  `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your  app's  `AndroidManifest.xml`, as below: 
+5. Add your  `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your  app's  `AndroidManifest.xml`, as below:
 
 ```xml
 <meta-data
