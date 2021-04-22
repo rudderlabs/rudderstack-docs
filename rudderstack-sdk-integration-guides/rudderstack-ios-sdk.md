@@ -42,17 +42,21 @@ We distribute our iOS SDK through [Cocoapods](https://cocoapods.org) and [Cartha
 
 {% tabs %}
 {% tab title="CocoaPods" %}
-1. Add the RudderStack SDK to your `Podfile`
+
+1. Add the RudderStack SDK to your `Podfile`, as shown:
+
 ```ruby
 pod 'Rudder'
 ```
+
 2. Then, run the following command:
+
 ```bash
 pod install
 ```
 {% endtab %}
 {% tab title="Carthage" %}
-1. Add the RudderStack SDK to your `Podfile`
+1. Add the RudderStack SDK to your `Podfile`, as shown:
 ```ruby
 github "rudderlabs/rudder-sdk-ios" "carthage-support"
 ```
@@ -60,7 +64,7 @@ github "rudderlabs/rudder-sdk-ios" "carthage-support"
 ```bash
 carthage update
 ```
-If you're facing an issue with Carthage and XCode 12, you can follow the [steps from carthage team](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md).
+If you're facing an issue with Carthage and XCode 12, you can follow the [steps from Carthage team](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md).
 {% endtab %}
 {% endtabs %}
 
