@@ -54,11 +54,18 @@ Note: All server-side destination requests require either a `anonymousId` or a `
 {% tab title="Android" %}
 To add CleverTap to your Android project and enable functionalities like push notifications, follow these steps :
 
-* Open your `app/build.gradle` (Module: app) file, and add the following:
+* Open your project level `build.gradle` file, and add the following:
 
 ```groovy
-repositories {
-    maven { url 'https://dl.bintray.com/rudderstack/rudderstack' }
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
 ```
@@ -120,6 +127,32 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withFactory:[RudderCleverTapFactory instance]];
 [RudderClient getInstance:WRITE_KEY config:[builder build]];
+```
+{% endtab %}
+{% tab title="React Native"%}
+To add CleverTap to your React Native project:
+
+Add the RudderStack-CleverTap module to your app using :
+
+```bash
+npm install @rudderstack/rudder-integration-clevertap-react-native
+## OR ##
+yarn add @rudderstack/rudder-integration-clevertap-react-native
+```
+Run `pod install` inside the `ios` directory of your project adding `@rudderstack/rudder-integration-clevertap-react-native` to your project.
+
+Import the module you added above and add it to your SDK initialization code as shown below:
+
+```typescript
+import rudderClient from '@rudderstack/rudder-sdk-react-native';
+import clevertap from "@rudderstack/rudder-integration-clevertap-react-native";
+
+const config = {
+    dataPlaneUrl: DATA_PLANE_URL,
+    trackAppLifecycleEvents: true,
+    withFactories: [clevertap]
+};
+rudderClient.setup(WRITE_KEY, config);
 ```
 {% endtab %}
 {% endtabs %}
