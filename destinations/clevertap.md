@@ -18,7 +18,7 @@ Before configuring your source and destination on the RudderStack, please check 
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
-| **Device mode** | **Supported** | - | - |
+| **Device mode** | **Supported** | **Supported** | - |
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
