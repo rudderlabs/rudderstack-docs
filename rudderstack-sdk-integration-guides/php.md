@@ -8,14 +8,20 @@ description: >-
 
 RudderStack’s PHP SDK allows you to track your customer event data from your PHP code. Once enabled, the event requests hit the RudderStack servers. RudderStack then routes the events to the specified destination platforms as configured by you.
 
-You can find this SDK in our [GitHub repository](https://github.com/rudderlabs/rudder-sdk-php).
+You can find this SDK in our [GitHub repository](https://github.com/rudderlabs/rudder-php-sdk).
 
 ## Installing the RudderStack PHP SDK
 
-Install the RudderStack PHP SDK using the [composer](https://packagist.org/packages/rudderstack/rudder-sdk-php). You can also do so by running the following command:
+Install the RudderStack PHP SDK using the [composer](https://packagist.org/packages/rudderstack/rudder-php-sdk). You can also do so by running the following command:
 
 ```bash
-git clone https://github.com/rudderlabs/rudder-sdk-php /my/app/folders/
+git clone https://github.com/rudderlabs/rudder-php-sdk /my/app/folders/
+```
+
+You can use composer to install the SDK. Use the following command.
+
+```bash
+composer require rudderstack/rudder-php-sdk
 ```
 
 ## Initializing the RudderStack Client
@@ -33,6 +39,12 @@ Rudder::init(WRITE_KEY, array(
   "batch_size"     => 100
 ));
 ```
+
+{% hint style="warning" %}
+We append the protocol to `DATA_PLANE_URL` before sending the events to RudderStack server.
+
+For example if your dataPlaneUrl is `https://example.dataplane.com` mention only `example.dataplane.com`
+{% endhint %}
 
 ## Sending Events from RudderStack
 
@@ -116,7 +128,7 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed. 
+The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
 
 {% hint style="info" %}
 For a detailed explanation of the `page` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
@@ -248,7 +260,7 @@ For a detailed explanation of the `alias` call, please refer to our [RudderStack
 
 ## Contact Us
 
-To know more about the RudderStack PHP SDK, you can [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+To know more about the RudderStack PHP SDK, you can [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
-In case you come across any issues while using this SDK, please feel free to start a new issue on our [GitHub repository](https://github.com/rudderlabs/rudder-sdk-php).
+In case you come across any issues while using this SDK, please feel free to start a new issue on our [GitHub repository](https://github.com/rudderlabs/rudder-php-sdk).
 

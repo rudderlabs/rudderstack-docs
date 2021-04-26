@@ -48,7 +48,6 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.3'
     }
 }
-
 ```
 
 * Once you have completed the steps above, you can add the `plugins` and `dependencies` to your `app/build.gradle` file as shown:
@@ -69,8 +68,8 @@ repositories {
 * Add the RudderStack-Firebase SDK extension along with `core` SDK under `dependencies`:
 
 ```text
-implementation 'com.rudderstack.android.sdk:core:1.0.1'
-implementation 'com.rudderstack.android.integration:firebase:0.1.1'
+implementation 'com.rudderstack.android.sdk:core:1.+'
+implementation 'com.rudderstack.android.integration:firebase:1.+'
 ```
 
 * Then, add the necessary `permissions` under `AndroidManifest.xml`
@@ -130,7 +129,7 @@ RudderStack will bundle the `Firebase/Core` and `FirebaseAnalytics` by default w
 Follow these steps to add Firebase to your Unity project:
 
 * Register your project in [Firebase Console](https://console.firebase.google.com). We support only `Android` and `iOS` for Unity.
-* After adding the project, Firebase will prompt you to download the `google-services.json` for Android and `GoogleServices-Info.plist` for iOS. 
+* After adding the project, Firebase will prompt you to download the `google-services.json` for Android and `GoogleServices-Info.plist` for iOS.
 * Add those two files to your `Assets` folder.
 * Integrate the RudderStack `core` SDK with your project. To know more, please refer to our [Getting Started with Unity SDK](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk) guide.
 * Download and import the Firebase Unity SDK and follow these instructions on [adding Firebase SDK to your project](https://firebase.google.com/docs/unity/setup). Specifically `FirebaseAnalytics.unitypackage`.
@@ -162,7 +161,7 @@ Follow these steps to add Firebase to your ReactNative project:
 
   ```text
   npm install @rudderstack/rudder-integration-firebase-react-native
-  // OR // 
+  // OR //
   yarn add @rudderstack/rudder-integration-firebase-react-native
   ```
 
@@ -196,7 +195,6 @@ Follow these steps to add Firebase to your ReactNative project:
           classpath 'com.google.gms:google-services:4.3.3'
       }
   }
-
   ```
 
   * Once you have completed the steps above, you can add the `plugins` and `dependencies` to your `app/build.gradle` file as shown:
@@ -242,7 +240,7 @@ The `track` call from RudderStack is mapped to the appropriate standard events o
 | :--- | :--- |
 | `Payment Info Entered` | `add_payment_info` |
 | `Product Added` | `add_to_cart` |
-| `Application Opened`  | `app_open` |
+| `Application Opened` | `app_open` |
 | `Checkout Started` | `begin_checkout` |
 | `Order Completed` | `ecommerce_purchase` |
 | `Order Refunded` | `purchase_refund` |
@@ -255,24 +253,24 @@ The `track` call from RudderStack is mapped to the appropriate standard events o
 | `Product Clicked` | `select_content` |
 | `Promotion Viewed` | `present_offer` |
 
-Apart form the above mentioned events, the following standard events of Firebase are not mapped from any RudderStack event. You can mention the exact names from the following list to be perceived as the standard event in Firebase. 
+Apart form the above mentioned events, the following standard events of Firebase are not mapped from any RudderStack event. You can mention the exact names from the following list to be perceived as the standard event in Firebase.
 
-* `campaign_details` 
-* `generate_lead` 
-* `join_group` 
-* `level_end` 
-* `level_start` 
-* `level_up` 
-* `login` 
-* `post_score` 
-* `sign_up` 
-* `spend_virtual_currency` 
-* `tutorial_begin` 
-* `tutorial_complete` 
-* `unlock_achievement` 
-* `view_search_results` 
-* `earn_virtual_currency` 
-* `set_checkout_option` 
+* `campaign_details`
+* `generate_lead`
+* `join_group`
+* `level_end`
+* `level_start`
+* `level_up`
+* `login`
+* `post_score`
+* `sign_up`
+* `spend_virtual_currency`
+* `tutorial_begin`
+* `tutorial_complete`
+* `unlock_achievement`
+* `view_search_results`
+* `earn_virtual_currency`
+* `set_checkout_option`
 
 We pass all the `properties` from the event to Firebase. The nested value in the properties are converted to JSON using [GSON](https://github.com/google/gson).
 
@@ -299,7 +297,7 @@ Along with the above list of the standard property key names, we do the followin
 
 * Convert names to lower case
 * Trim the white spaces from the start and the end.
-* Replace `space` with `underscore` 
+* Replace `space` with `underscore`
 * If the length of the key is more than 40, we take the substring of length 40 from the beginning
 
 Firebase enforces to have the value of length less than 100. RudderStack takes the substring of length 100 from the beginning if the length exceeds the permitted value.
@@ -315,7 +313,7 @@ A sample `track` call from the iOS SDK will look like the below
 
 ## Screen
 
-RudderStack does not send the screen view events to Firebase from the Firebase SDK, as automatic screens views work out of the box from the SDK. There is no option to turn off this feature in Android. 
+RudderStack does not send the screen view events to Firebase from the Firebase SDK, as automatic screens views work out of the box from the SDK. There is no option to turn off this feature in Android.
 
 ## Debugging
 

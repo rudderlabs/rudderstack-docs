@@ -35,7 +35,11 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Fill the required fields such as API Key and Site ID as shown in the screenshot below:
 
-![Customer.io Connection Settings](../.gitbook/assets/image%20%2845%29.png)
+![Customer.io Connection Settings](../.gitbook/assets/photo-17-03-2021.png)
+
+{% hint style="info" %}
+In case your account based in the EU region, you must enable the option **Account based in the EU data center?**. For more information read the [Customer.io Documentation](https://customer.io/docs/api/?region=eu#section/Overview).
+{% endhint %}
 
 Once the destination is enabled, events from our SDK will start to flow to Customer.io.
 
@@ -68,7 +72,7 @@ current timestamp value.
 
 ## Page
 
-If you are using a native SDK, the Customer.io JavaScript snippet is loaded and it captures the `page` view automatically. However, if you want to pass additional properties, you can call `rudderanalytics.page()` ****that sends the `page`event with the associated properties that you pass along with the call.
+If you are using a native SDK, the Customer.io JavaScript snippet is loaded and it captures the `page` view automatically. However, if you want to pass additional properties, you can call `rudderanalytics.page()` _\*\*_that sends the `page`event with the associated properties that you pass along with the call.
 
 Here is a sample of a `page` call in RudderStack:
 
@@ -98,7 +102,7 @@ The above event will be transformed as `Viewed Main Screen` in your dashboard.
 
 ## Track
 
-The `track` call ****will pass the event properties to Customer.io. You may call `rudderanalytics.track()`with or without the event properties. For more information on how `track`call works, please refer to our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
+The `track` call _\*\*_will pass the event properties to Customer.io. You may call `rudderanalytics.track()`with or without the event properties. For more information on how `track`call works, please refer to our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
 
 The following code snippet shows how a sample `track` call is made in RudderStack:
 
@@ -112,7 +116,7 @@ rudderanalytics.track("Track me", {
 
 ## Device Token Registration
 
-We register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events. 
+We register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events.
 
 * `Application Installed`
 * `Application Opened`

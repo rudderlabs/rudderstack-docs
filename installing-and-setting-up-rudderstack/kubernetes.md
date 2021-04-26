@@ -4,7 +4,7 @@ description: Detailed instructions for deploying RudderStack on Kubernetes
 
 # Kubernetes
 
-You can deploy RudderStack on your [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager. 
+You can deploy RudderStack on your [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 The repository for this Helm chart can be found [here](https://github.com/rudderlabs/rudderstack-helm).
 
@@ -27,6 +27,10 @@ $ helm install my-release ./ --set rudderWorkspaceToken="<workspace token from t
 * Workspace token from the [RudderStack](https://app.rudderlabs.com/signup) [dashboard](https://app.rudderlabs.com/signup). Set up your account and copy your workspace token from the top of the home page.
 
 ![Workspace Token](../.gitbook/assets/write-key-vs-token%20%282%29%20%281%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%283%29.png)
+
+{% hint style="info" %}
+**Why do I need this?** RudderStack's dashboard \(control plane\) is where you can setup sources, destinations, and transformations. RudderStack hosts the control plane and is free for OSS users. You can also use our open-source [config-generator](https://github.com/rudderlabs/config-generator) if you don't want to use the hosted control plane \(the config generator lacks certain features like Transformations and LiveDebugger.\)
+{% endhint %}
 
 ## Installing the Chart
 

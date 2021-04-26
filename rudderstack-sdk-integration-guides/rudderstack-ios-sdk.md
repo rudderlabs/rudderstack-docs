@@ -38,22 +38,38 @@ To get the **Data Plane URL**:
 
 ## Installing the RudderStack iOS SDK
 
-We distribute our iOS SDK through [Cocoapods](https://cocoapods.org). The recommended and easiest way to add the SDK to your project is through `Podfile`. Follow these steps:
+We distribute our iOS SDK through [Cocoapods](https://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). The recommended and easiest way to add the SDK to your project is through `Podfile`. Follow these steps:
 
-1. Add the RudderStack SDK to your `Podfile`
+{% tabs %}
+{% tab title="CocoaPods" %}
+
+1. Add the RudderStack SDK to your `Podfile`, as shown:
 
 ```ruby
 pod 'Rudder'
 ```
 
-1. Then, run the following command:
+2. Then, run the following command:
 
 ```bash
 pod install
 ```
+{% endtab %}
+{% tab title="Carthage" %}
+1. Add the RudderStack SDK to your `Podfile`, as shown:
+```ruby
+github "rudderlabs/rudder-sdk-ios" "carthage-support"
+```
+2. Then, run the following command:
+```bash
+carthage update
+```
+If you're facing an issue with Carthage and XCode 12, you can follow the [steps from Carthage team](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md).
+{% endtab %}
+{% endtabs %}
 
 {% hint style="warning" %}
-**Important**: Remember to include the following code in all `.m` and `.h` files where you want to refer to or use RudderStack SDK classes.
+**Important**: Remember to include the following code in all `.m` and `.h` files or your `.swift` files where you want to refer to or use RudderStack SDK classes.
 {% endhint %}
 
 {% tabs %}

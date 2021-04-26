@@ -59,6 +59,14 @@ RudderStack will start importing data from Xero as per the specified frequency. 
 
 ![](../.gitbook/assets/screen-shot-2021-02-23-at-6.28.27-pm.png)
 
+## FAQs
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is. 
+
+We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
 ## Contact Us <a id="contact-us"></a>
 
 If you come across any issues while configuring Xero as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you![  

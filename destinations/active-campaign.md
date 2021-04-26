@@ -74,14 +74,8 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 
 A sample `screen` call looks like the following code snippet:
 
-```javascript
-rudderanalytics.screen("Screen Viewed", {
-  category: "category",
-  label: "label",
-  value: "value",
-  url: "www.rudderlabs.com",
-  info: "Rudder_Event_Screen_Test",
-});
+```text
+[[RSClient sharedInstance] screen:@"Sample Screen Viewed" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
 In the above snippet, RudderStack captures information related to the screen being viewed, along with any additional info on that screen view event.
@@ -94,13 +88,15 @@ A sample `track` call looks like the following:
 
 ```javascript
 rudderanalytics.track("Product Purchased", {
-  category: "category",
-  label: "label",
-  name: "Rubik's Cube",
+  name: "Rubik's Cube"
 });
 ```
 
 In the above snippet, RudderStack captures the information related to the `Product Purchased` event, along with any additional info about that event - in this case the name of the product.
+
+{% hint style="info" %}
+If you want to set a value for the `screen` and `track` type event, you need to pass the `name` property in the event properties, as shown in the above example.
+{% endhint %}
 
 ## Identify
 

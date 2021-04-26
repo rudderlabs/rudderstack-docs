@@ -85,6 +85,14 @@ Google also has a limit on the number of dimensions and metrics that you can def
 Read more about these limits in Google's [Core Reporting API](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics) documentation.
 {% endhint %}
 
+## FAQs
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is. 
+
+We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
 ## Contact Us
 
 If you come across any issues while configuring Google Analytics as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

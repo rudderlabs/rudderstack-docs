@@ -56,7 +56,7 @@ Please follow these steps to add Braze to your iOS project:
 * Open the `Podfile` of your project and add the following line:
 
   ```text
-  pod 'Rudder-Braze', '0.1.3'
+  pod 'Rudder-Braze'
   ```
 
   followed by the command as shown:
@@ -219,7 +219,7 @@ rudderanalytics.group("test_group_id", {
 });
 ```
 
-Once you send the `group` event, RudderStack will send a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` where `groupId` is the ID you've passed in the `group` call, and will set the value to `true`. 
+Once you send the `group` event, RudderStack will send a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` where `groupId` is the ID you've passed in the `group` call, and will set the value to `true`.
 
 For example, if the `groupId` is `test_group_id` then RudderStack will create a custom attribute to Braze with the name `ab_rudder_group_test_group_id` and set the value to `true`.
 
