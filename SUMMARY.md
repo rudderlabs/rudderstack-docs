@@ -12,6 +12,7 @@
   * [Developer Machine Setup](installing-and-setting-up-rudderstack/developer-machine-setup.md)
 * [RudderStack API Specification](rudderstack-api-spec/README.md)
   * [HTTP API Specification](rudderstack-api-spec/http-api-specification.md)
+  * [Pixel API Specification](rudderstack-api-spec/pixel-api-spec.md)
   * [RudderStack Transformation  API](rudderstack-api-spec/rudderstack-transformation-api/README.md)
     * [Access Token](rudderstack-api-spec/rudderstack-transformation-api/api-access-token.md)
   * [RudderStack Data Governance API](rudderstack-api-spec/rudderstack-data-governance-api.md)
