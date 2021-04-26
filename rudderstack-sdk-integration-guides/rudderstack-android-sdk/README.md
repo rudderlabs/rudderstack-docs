@@ -40,7 +40,7 @@ To get the **Data Plane URL**:
 **As Bintray has a sunset from 1st may, we're moving our SDK to Maven Central". All the versions, 1.0.10 onwards are available in Maven Central only.**
 {% endhint %}
 
-We distribute our Android SDK through [Maven Central](https://search.maven.org). The recommended way to use our SDK is through the Android Gradle build system. It's the easiest way to add the SDK to your project. 
+We distribute our Android SDK through [Maven Central](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Android Gradle build system. 
 
 Follow these steps: 
 
