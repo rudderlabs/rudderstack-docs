@@ -50,6 +50,7 @@ Note: All server-side destination requests require either a `anonymousId` or a `
 {% endhint %}
 
 ## Adding Device Mode Integration
+
 {% tabs %}
 {% tab title="Android" %}
 To add CleverTap to your Android project and enable functionalities like push notifications, follow these steps :
@@ -67,10 +68,9 @@ allprojects {
         mavenCentral()
     }
 }
-
 ```
-* Ensure that `android.useAndroidX` is set to `true` in your `gradle.properties` file.
 
+* Ensure that `android.useAndroidX` is set to `true` in your `gradle.properties` file.
 * Also, add the following under the `dependencies` section:
 
 ```kotlin
@@ -82,7 +82,6 @@ implementation 'com.rudderstack.android.integration:clevertap:1.0.0'
 implementation 'com.clevertap.android:clevertap-android-sdk:4.0.0'
 // if you don't have Gson included already
 implementation 'com.google.code.gson:gson:2.8.6'
-
 ```
 
 * Initialize the RudderStack SDK in the `Application` class's `onCreate()` method as shown:
@@ -102,11 +101,9 @@ val rudderClient = RudderClient.getInstance(
         .build()
 )
 ```
-
 {% endtab %}
 
 {% tab title="iOS" %}
-
 Follow these steps to add CleverTap to your iOS project:
 
 * Go your `Podfile` and add the `Rudder-CleverTap` extension as shown below:
@@ -130,7 +127,8 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [RudderClient getInstance:WRITE_KEY config:[builder build]];
 ```
 {% endtab %}
-{% tab title="React Native"%}
+
+{% tab title="React Native" %}
 To add CleverTap to your React Native project:
 
 Add the RudderStack-CleverTap module to your app using :
@@ -140,6 +138,7 @@ npm install @rudderstack/rudder-integration-clevertap-react-native
 ## OR ##
 yarn add @rudderstack/rudder-integration-clevertap-react-native
 ```
+
 Run `pod install` inside the `ios` directory of your project adding `@rudderstack/rudder-integration-clevertap-react-native` to your project.
 
 Import the module you added above and add it to your SDK initialization code as shown below:
@@ -344,9 +343,7 @@ The steps to configure push notifications for CleverTap for the platform of your
 
 {% tabs %}
 {% tab title="Android" %}
-
 * Register push notifications for Android devices on your CleverTap dashboard either by uploading your FCM credentials or any other supported credentials by navigating to **Settings** - **Channels** - **Mobile Push** - **Android**.
-
 * Add the following dependency in your project level `build.gradle` file inside the `buildscript`:
 
 ```groovy
@@ -367,10 +364,9 @@ apply plugin: 'com.google.gms.google-services'
 ```
 
 * Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
+* Add your `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your app's `AndroidManifest.xml`, as below:
 
-* Add your  `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your  app's  `AndroidManifest.xml`, as below: 
-
-```xml
+```markup
 <meta-data
           android:name="CLEVERTAP_ACCOUNT_ID"
           android:value="XXX-XXX-XXXX"/>
@@ -394,14 +390,11 @@ import com.clevertap.android.sdk.CleverTapAPI;
 CleverTapAPI.createNotificationChannel(getApplicationContext(), "yourChannelId", "Your Channel Name", "Your Channel Description", NotificationManager.IMPORTANCE_MAX, true);
 ```
 {% endtab %}
+
 {% tab title="iOS" %}
-
 * Add Push Notification as a capability by navigating to Target - `Signing & Capabilities` of your app when opened in Xcode.
-
-* Enable `Background Modes/Remote notifications` by navigating to **Targets** -> **Your App** -> **Capabilities** -> **Background Modes** and then check `Remote notifications`
-
-* Register the push notifications for the iOS devices on your CleverTap dashboard either by uploading Auth Key or APNS Push Certificate by navigating to **Settings** -> **Channels** -> **Mobile Push** -> **iOS**.
-
+* Enable `Background Modes/Remote notifications` by navigating to **Targets** -&gt; **Your App** -&gt; **Capabilities** -&gt; **Background Modes** and then check `Remote notifications`
+* Register the push notifications for the iOS devices on your CleverTap dashboard either by uploading Auth Key or APNS Push Certificate by navigating to **Settings** -&gt; **Channels** -&gt; **Mobile Push** -&gt; **iOS**.
 * Then, add the following code in your app just after initializing RudderStack's iOS SDK to register the push notifications.
 
 ```objectivec
@@ -442,9 +435,10 @@ CleverTapAPI.createNotificationChannel(getApplicationContext(), "yourChannelId",
 }
 ```
 {% endtab %}
-{% tab title="React Native"%}
-* Open `android` folder of your React Native app and do follow all the steps mentioned in `Android` tab of [Configuring Push Notifications](#configuring-push-notifications)  
-* Open `ios` folder of your React Native app and do follow all the steps mentioned in `iOS` tab of [Configuring Push Notifications](#configuring-push-notifications)
+
+{% tab title="React Native" %}
+* Open `android` folder of your React Native app and do follow all the steps mentioned in `Android` tab of [Configuring Push Notifications](clevertap.md#configuring-push-notifications)  
+* Open `ios` folder of your React Native app and do follow all the steps mentioned in `iOS` tab of [Configuring Push Notifications](clevertap.md#configuring-push-notifications)
 {% endtab %}
 {% endtabs %}
 

@@ -1,136 +1,255 @@
+---
+description: >-
+  Detailed technical description of the RudderStack Pixel API to track and
+  capture event data efficiently.
+---
+
 # Pixel API Specification
 
-The RudderStack Pixel API allows you to track your customer event data from anywhere and route it to your desired destinations. This API is very useful in scenarios where making a POST request is not possible. Some examples include tracking email addresses and page views where POST requests don't add or append any value.
+The RudderStack Pixel API allows you to track your customer event data from anywhere and route it to your desired destinations. 
+
+This API is very useful in scenarios where making a POST request is not possible. Some examples include tracking email addresses and page views where POST requests don't add or append any value.
 
 ## Sending a `page` call to RudderStack
 
-- **URL**
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">URL</td>
+      <td style="text-align:left"><em><code>/pixel/v1/page</code></em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Method</td>
+      <td style="text-align:left"><code>GET</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>URL Parameters:</b>
+      </td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Required</td>
+      <td style="text-align:left">
+        <p></p>
+        <p><code>writeKey=${writeKey}</code>
+        </p>
+        <p><code>anonymousId=${anonymousId}</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Optional</td>
+      <td style="text-align:left">
+        <p></p>
+        <p><code>userId=${userId}</code>
+        </p>
+        <p><code>name=${page_name}</code>
+        </p>
+        <p><code>context.library.name</code>
+        </p>
+        <p><code>context.library.version</code>
+        </p>
+        <p><code>context.platform</code>
+        </p>
+        <p><code>context.locale</code>
+        </p>
+        <p><code>context.userAgent</code>
+        </p>
+        <p><code>context.screen.width</code>
+        </p>
+        <p><code>context.screen.height</code>
+        </p>
+        <p><code>context.page.path</code>
+        </p>
+        <p><code>context.page.url</code>
+        </p>
+        <p><code>context.page.referrer</code>
+        </p>
+        <p><code>context.page.title</code>
+        </p>
+        <p><code>properties.&lt;*key1*&gt;=${value}</code>
+        </p>
+        <p><code>properties.&lt;*key2*&gt;=${value}</code>
+        </p>
+        <p><code>properties. ...</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Data Parameters</td>
+      <td style="text-align:left">None</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Success Response</td>
+      <td style="text-align:left">
+        <ul>
+          <li>Code: <code>200</code>
+          </li>
+          <li>Content: <code>OK</code>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Error Response</td>
+      <td style="text-align:left">
+        <ul>
+          <li>Code: <code>400 Bad Request</code>
+          </li>
+          <li>Content: <code>error string</code>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    *<data_plane_url>/pixel/v1/page*
+A sample call is as shown below:
 
-- **Method:**
+```text
+https://hosted.rudderlabs.com/pixel/v1/page?writeKey=${writeKey}&context.library.name=Rudderstack AMP SDK&context.library.version=1.0.0&context.platform=AMP&anonymousId=${anonymousId}&context.locale=${browserLanguage}&context.userAgent=${userAgent}&context.page.path=${canonicalPath}&context.page.url=${canonicalUrl}&context.page.referrer=${documentReferrer}&context.page.title=${title}&context.screen.width=${screenWidth}&context.screen.height=${screenHeight}&properties.path=${canonicalPath}&properties.url=${canonicalUrl}&properties.referrer=${documentReferrer}&properties.title=${title}&name=${pageName}
+```
 
-    `GET`
+{% hint style="warning" %}
+For this endpoint, RudderStack expects that the basic page view properties like `path`, `url`, `referrer`, `title` be passed either with `context.page.<page_basic_properties>` or with `properties.<page_basic_properties>`.
+{% endhint %}
 
-- **URL Params**
+{% hint style="info" %}
+The dot ****\(`.`\) separated query parameters are mapped by RudderStack to a familiar [`page`](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#8-1-page-payload) payload before sending them to the destinations.
+{% endhint %}
 
-    **Required:**
-
-    `writeKey=${writeKey}`
-
-    `anonymousId=${anonymousId}`
-
-    **Optional:** 
-
-    `userId=${userId}`
-
-    `name=${page_name}`
-
-    `context.library.name`
-
-    `context.library.version`
-
-    `context.platform`
-
-    `context.locale`
-
-    `context.userAgent`
-
-    `context.screen.width`
-
-    `context.screen.height`
-
-    `context.page.path`
-
-    `context.page.url`
-
-    `context.page.referrer`
-
-    `context.page.title`
-
-    `properties.<*key1*>=${value}`
-
-    `properties.<*key2*>=${value}`
-
-    `properties. ...`
-
-**Note:** For this endpoint, RudderStack expects that the basic page view properties like `path`, `url`, `referrer`, `title` be passed either with `context.page.<page_basic_properties>` or with `properties.<page_basic_properties>`. 
-
-The dot(`.`) separated query parameters is mapped by RudderStack to a [familiar `page` payload](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#8-1-page-payload) before sending the event to the destinations. 
-
-Note that we don't currently support overriding the `integration` key for sending data to selective destinations, for this endpoint.
-
-- **Data Params**
-
-    None
-
-- **Success Response:**
-    - **Code:** 200 **Content:** `OK`
-- **Error Response:**
-    - **Code:** 400 Bad Request       **Content:** `error string`
-- **Sample Call:**
-
-    `https://hosted.rudderlabs.com/pixel/v1/page?writeKey=${writeKey}&context.library.name=Rudderstack AMP SDK&context.library.version=1.0.0&context.platform=AMP&anonymousId=${anonymousId}&context.locale=${browserLanguage}&context.userAgent=${userAgent}&context.page.path=${canonicalPath}&context.page.url=${canonicalUrl}&context.page.referrer=${documentReferrer}&context.page.title=${title}&context.screen.width=${screenWidth}&context.screen.height=${screenHeight}&properties.path=${canonicalPath}&properties.url=${canonicalUrl}&properties.referrer=${documentReferrer}&properties.title=${title}&name=${pageName}`
+{% hint style="warning" %}
+Note that for this endpoint, RudderStack does not currently support overriding the `integration` key for sending data to selective destinations.
+{% endhint %}
 
 ## Sending a `track` call to RudderStack
 
- - **URL**: *<data_plane_url>/pixel/v1/track*
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">URL</td>
+      <td style="text-align:left"><em><code>/pixel/v1/track</code></em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Method</td>
+      <td style="text-align:left"><code>GET</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>URL Parameters:</b>
+      </td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Required</td>
+      <td style="text-align:left">
+        <p></p>
+        <p><code>writeKey=${writeKey}</code>
+        </p>
+        <p><code>anonymousId=${anonymousId}</code>
+        </p>
+        <p><code>event=${event_name}</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Optional</td>
+      <td style="text-align:left">
+        <p><code>userId=${userId}</code>
+        </p>
+        <p><code>context.library.name</code>
+        </p>
+        <p><code>context.library.version</code>
+        </p>
+        <p><code>context.platform</code>
+        </p>
+        <p><code>context.locale</code>
+        </p>
+        <p><code>context.userAgent</code>
+        </p>
+        <p><code>context.screen.width</code>
+        </p>
+        <p><code>context.screen.height</code>
+        </p>
+        <p><code>context.page.path</code>
+        </p>
+        <p><code>context.page.url</code>
+        </p>
+        <p><code>context.page.referrer</code>
+        </p>
+        <p><code>context.page.title</code>
+        </p>
+        <p><code>properties.&lt;*key1*&gt;=${value}</code>
+        </p>
+        <p><code>properties.&lt;*key2*&gt;=${value}</code>
+        </p>
+        <p><code>properties. ...</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Data Parameters</td>
+      <td style="text-align:left">None</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Success Response</td>
+      <td style="text-align:left">
+        <ul>
+          <li>Code: <code>200</code>
+          </li>
+          <li>Content: <code>OK</code>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Error Response</td>
+      <td style="text-align:left">
+        <ul>
+          <li>Code: <code>400 Bad Request</code>
+          </li>
+          <li>Content: <code>error string</code>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
- - **Method**: `GET`
+A sample call is as shown below:
 
- - **URL Params**:
+```text
+https://hosted.rudderlabs.com/pixel/v1/track?writeKey=${writeKey}&context.library.name=Rudderstack AMP SDK&context.library.version=1.0.0&context.platform=AMP&anonymousId=${anonymousId}&context.locale=${browserLanguage}&context.userAgent=${userAgent}&context.page.path=${canonicalPath}&context.page.url=${canonicalUrl}&context.page.referrer=${documentReferrer}&context.page.title=${title}&context.screen.width=${screenWidth}&context.screen.height=${screenHeight}&event=${eventName}&properties.key1=value1&properties.key2=value2
+```
 
-    **Required:**
-    
-        `writeKey=${writeKey}`
+{% hint style="warning" %}
+For this endpoint, RudderStack expects the basic `page` view properties like `path`, `url`, `referrer`, and `title` to be passed with `context.page.<page_basic_properties>`. The event-related properties should be sent as `properties.<*key1*>=${value}`.
+{% endhint %}
 
-        `anonymousId=${anonymousId}`
+{% hint style="info" %}
+The dot \(`.`\) separated query parameters are mapped by RudderStack to a familiar [`track`](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#7-2-track-usage) payload before being sent to destinations. 
+{% endhint %}
 
-        `event=${event_name}`
+{% hint style="warning" %}
+Note that for this endpoint, RudderStack currently does not support overriding the `integration` key for sending the data to selective destination.
+{% endhint %}
 
-    **Optional:** 
+## Contact Us
 
-        `userId=${userId}`
+To know more about the Pixel API spec, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 
-        `context.library.name`
-
-        `context.library.version`
-
-        `context.platform`
-
-        `context.locale`
-
-        `context.userAgent`
-
-        `context.screen.width`
-
-        `context.screen.height`
-
-        `context.page.path`
-
-        `context.page.url`
-
-        `context.page.referrer`
-
-        `context.page.title`
-
-        `properties.<*key1*>=${value}`
-
-        `properties.<*key2*>=${value}`
-
-        `properties. ...`
-
-    **Note:** For this endpoint, we expect the basic `page` view properties like `path`, `url`, `referrer`, and `title` to be passed with `context.page.<page_basic_properties>`. The event-related properties should be sent as `properties.<*key1*>=${value}`.
-
-The dot(`.`) separated query params is being mapped by RudderStack to a [familiar `track` payload](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#7-2-track-usage) before being sent to destinations. Currently, we don't support overriding the `integration` key for sending the data to selective destination for this endpoint.
-
-  - **Data Params**: None
-
-  - **Success Response:**
-      - **Code:** 200 **Content:** `OK`
-  - **Error Response:**
-      - **Code:** 400 Bad Request       **Content:** `error string`
-  
-  - **Sample Call:**
-
-        `https://hosted.rudderlabs.com/pixel/v1/track?writeKey=${writeKey}&context.library.name=Rudderstack AMP SDK&context.library.version=1.0.0&context.platform=AMP&anonymousId=${anonymousId}&context.locale=${browserLanguage}&context.userAgent=${userAgent}&context.page.path=${canonicalPath}&context.page.url=${canonicalUrl}&context.page.referrer=${documentReferrer}&context.page.title=${title}&context.screen.width=${screenWidth}&context.screen.height=${screenHeight}&event=${eventName}&properties.key1=value1&properties.key2=value2`

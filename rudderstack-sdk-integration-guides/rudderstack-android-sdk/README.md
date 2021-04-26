@@ -442,7 +442,7 @@ To retrieve the `anonymousId` you can use the following method:
 RudderClient.getAnonymousId();
 ```
 
-{% hint style="hint" %}
+{% hint style="info" %}
 The method `getAnonymousId` is available from v1.0.11 onwards.
 {% endhint %}
 
