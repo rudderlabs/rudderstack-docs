@@ -123,7 +123,7 @@ The RudderStack transformation module converts the received event data into a su
 
 #### The transformation functions are given a list of events, but the events are also pushed out in real-time. What's the logic behind that?
 
-The batching is done on a per end-user level. All the events from a given end-user are batched and then sent to the transformation function. The batching process is controlled via the following three parameters in `config.toml`:
+The batching is done on a per end-user level. All the events from a given end-user are batched and then sent to the transformation function. The batching process is controlled via the following three parameters in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml)\( or `config.toml` in case of older RudderStack deployments\):
 
 * `processSessions = False` \(make it `True` for batching\) 
 * `sessionThresholdEvents = 100` 
@@ -169,7 +169,7 @@ Yes, you can use the same destination. It should work without any problem.
 
 #### How to force RudderStack to push all the data to a data warehouse in real-time with no delay? During the implementation, it would be better to see how the data is collected in real-time, rather than 30 minutes later.
 
-You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` to true in [`config.toml`](https://github.com/rudderlabs/rudder-server/blob/403adb3576eb57b65dcab3111d1e40caa99ef2af/config/config.toml) \(this also can be done through the `env` variable as described in `config.toml` comments\). You can set your desired frequency by changing the `uploadFreqInS` parameter.
+You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` to true in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or `config.toml`, in case you don't have an older RudderStack deployment\). You can set your desired frequency by changing the `uploadFreqInS` parameter.
 
 ## RudderStack Failover, Hardening and Security
 
@@ -201,7 +201,7 @@ The final downstream destination APIs \(Amplitude, Braze etc\) can be unavailabl
 | 429 | Retry for a time window of 3 hours with exponential backoff and a minimum of 3 times |
 | 4XX | Retry for a minimum of 3 times without any backoff  |
 
-The above behavior is configurable via config variables in `config.toml` \(Refer [here](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/administrators-guide/config-parameters#router)\)
+The above behavior is configurable via config variables in `config.yaml` \(Refer [here](https://docs.rudderstack.com/administrators-guide/config-parameters#router)\)
 
 ```c
 [Router]
@@ -226,7 +226,7 @@ Some examples are:
 * [https://customer.io/docs/api/\#api-documentationlimits](https://customer.io/docs/api/#api-documentationlimits)
 * [https://help.amplitude.com/hc/en-us/articles/360032842391-HTTP-API-V2\#upload-limit](https://help.amplitude.com/hc/en-us/articles/360032842391-HTTP-API-V2#upload-limit)
 
-These limits can also be configured using config variables in `config.toml` or using environment variables as described in comments [here](https://github.com/rudderlabs/rudder-server/blob/master/config/config.toml#L1-L32)
+These limits can also be configured using config variables in `config.yaml` or using environment variables as described in comments [here](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml#L1-L32).
 
 ```c
 # Below configuration throttles request to Amplitude at 1000 req/s for the account 

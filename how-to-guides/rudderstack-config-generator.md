@@ -62,7 +62,7 @@ For a [Native RudderStack Installation](https://docs.rudderstack.com/get-started
 
 If you have set up [RudderStack on a developer machine](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup):
 
-* Open `config/config.toml`. Look for `configFromFile` and `configJSONPath` under `[BackendConfig]`. Set `configFromFile` to true and `configJSONPath` to the absolute path of the downloaded workspace configuration file location.
+* Open `config/config.yaml`. Look for `configFromFile` and `configJSONPath` under `[BackendConfig]`. Set `configFromFile` to true and `configJSONPath` to the absolute path of the downloaded workspace configuration file location.
 
 ## Using RudderStack Config Generator for Device Mode Destinations
 

@@ -6,7 +6,11 @@ description: >-
 
 # Configuration Parameters
 
-This document describes the various configuration parameters for the [**`config.toml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.toml) file. You can fine-tune them to suit your application's needs.
+This document describes the various configuration parameters for the [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) file. You can fine-tune them to suit your application's needs.
+
+{% hint style="info" %}
+These configuration parameters are also applicable for the **`config.toml`** file, in case you have an older RudderStack deployment.
+{% endhint %}
 
 ## Global Parameters
 
@@ -438,7 +442,7 @@ This document describes the various configuration parameters for the [**`config.
 
 ## \[Warehouse\]
 
-You can ignore these settings if you don't have any warehouses \(like redshift, bigquery, etc.\) enabled in your config.
+You can ignore these settings if you don't have any warehouses \(like Redshift, BigQuery, etc.\) enabled in your config.
 
 
 
@@ -455,7 +459,8 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
   <tbody>
     <tr>
       <td style="text-align:left">1</td>
-      <td style="text-align:left">stagingFilesTable</td>
+      <td style="text-align:left"><code>stagingFilesTable</code>
+      </td>
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">Table name of staging files.</td>
@@ -463,7 +468,8 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
     </tr>
     <tr>
       <td style="text-align:left">2</td>
-      <td style="text-align:left">loadFilesTable</td>
+      <td style="text-align:left"><code>loadFilesTable</code>
+      </td>
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">Table name of load files.</td>
@@ -471,7 +477,8 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
     </tr>
     <tr>
       <td style="text-align:left">3</td>
-      <td style="text-align:left">uploadsTable</td>
+      <td style="text-align:left"><code>uploadsTable</code>
+      </td>
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">Table name of uploads.</td>
@@ -479,7 +486,8 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
     </tr>
     <tr>
       <td style="text-align:left">4</td>
-      <td style="text-align:left">schemasTable</td>
+      <td style="text-align:left"><code>schemasTable</code>
+      </td>
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">Table name of schemas.</td>
@@ -487,7 +495,8 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
     </tr>
     <tr>
       <td style="text-align:left">5</td>
-      <td style="text-align:left">uploadFreqInS</td>
+      <td style="text-align:left"><code>uploadFreqInS</code>
+      </td>
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Frequency of upload in seconds</td>
@@ -495,7 +504,8 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
     </tr>
     <tr>
       <td style="text-align:left">6</td>
-      <td style="text-align:left">noOfWorkers</td>
+      <td style="text-align:left"><code>noOfWorkers</code>
+      </td>
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Number of concurrent writes to the warehouse</td>
@@ -503,7 +513,8 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
     </tr>
     <tr>
       <td style="text-align:left">7</td>
-      <td style="text-align:left">mainLoopSleepInS</td>
+      <td style="text-align:left"><code>mainLoopSleepInS</code>
+      </td>
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">
@@ -515,7 +526,8 @@ You can ignore these settings if you don't have any warehouses \(like redshift, 
     </tr>
     <tr>
       <td style="text-align:left">8</td>
-      <td style="text-align:left">stagingFilesBatchSize</td>
+      <td style="text-align:left"><code>stagingFilesBatchSize</code>
+      </td>
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Batch size of staging files</td>

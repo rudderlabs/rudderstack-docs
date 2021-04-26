@@ -58,12 +58,12 @@ Check if your system is in the **degraded** or **maintenance** mode. This could 
 ## The memory usage keeps increasing. What should I do?
 
 Ideally, this should not happen. Restarting the service is recommended in such a scenario.  
-If you have sessions enabled, RudderStack caches the session information. Please configure `sessionThreshold` and `sessionEvents` in `config.toml`
+If you have sessions enabled, RudderStack caches the session information. Please configure `sessionThreshold` and `sessionEvents` in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml).
 
 ## Gateway tables are not getting dumped
 
-* If there are tables that start with _\_\`pre\_drop_\`but if you don't see them being removed, verify the access credentials to your object storage like S3
-* If you have multiple instances of Data Plane, each table dump will be inside a specific folder named after the `INSTANCE_NAME`
+* If there are tables that start with _``_`pre_drop```_ but if you don't see them being removed, verify the access credentials to your object storage like S3.
+* If you have multiple instances of Data Plane, each table dump will be inside a specific folder named after the `INSTANCE_NAME`.
 
 ## How do I check the health of RudderStack daily?
 

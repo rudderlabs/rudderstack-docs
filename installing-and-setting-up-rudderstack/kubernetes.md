@@ -86,8 +86,8 @@ $ helm install --name my-release \
 {% hint style="info" %}
 Configuration specific to:
 
-* The backend can be edited in [`rudder-config.toml`](https://docs.rudderlabs.com/administrators-guide/config-parameters)
-* PostgreSQL can be configured in `pg_hba.conf`, and `postgresql.conf`
+* The backend can be edited in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml).
+* PostgreSQL can be configured in `pg_hba.conf`, and `postgresql.conf`.
 {% endhint %}
 
 ## Components

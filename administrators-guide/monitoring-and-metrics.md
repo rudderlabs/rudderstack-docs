@@ -8,7 +8,7 @@ description: >-
 
 The backend uses [statsd](https://github.com/statsd/statsd) client to log stats. These stats can be collected by any statsd server such as Graphite, CloudWatch, etc. For example,  [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html) can be used to collect stats to Amazon CloudWatch.
 
- Note that the collection of stats can be disabled using `enableStats` in [config.toml](https://docs.rudderstack.com/administrators-guide/config-parameters).
+ Note that the collection of stats can be disabled using `enableStats` in [`config.yaml`](https://docs.rudderstack.com/administrators-guide/config-parameters).
 
 {% hint style="info" %}
 Every metric has a dimension called **`instanceName`** that can be used to filter metrics. This can be helpful in case of multi-node deployments.
@@ -84,7 +84,7 @@ This is the most important metric to monitor as it directly indicates the health
 
 > \* These metrics are each destination type such as GA, AMP, etc. All the different Google Analytics destinations are grouped under a single metric \(e.g: router.GA\_worker\_network\). Useful for monitoring if there are failures or delays in delivering to a particular destination.
 >
-> \*\* Number of events picked in each iteration can be configured using `noOfJobsPerChannel` from [config.toml](https://docs.rudderstack.com/administrators-guide/config-parameters).
+> \*\* Number of events picked in each iteration can be configured using `noOfJobsPerChannel` from [config.yaml](https://docs.rudderstack.com/administrators-guide/config-parameters).
 
 
 
@@ -110,9 +110,9 @@ These are the backend's implementation-specific metrics that can be used to anal
 | `jobsdb.brt_tables_count` | `Gauge` | Number of batch router tables in JobsDB |
 
 {% hint style="info" %}
-Ideally, the above tables count should not be ever growing. Ever growing tables, 
+Ideally, the above tables count should not be ever growing. Ever growing tables: 
 
-* Indicate events not getting processed and delivered in time
+* Indicate events not getting processed and delivered in time.
 
 Or
 
