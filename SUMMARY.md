@@ -13,6 +13,7 @@
 * [RudderStack API Specification](rudderstack-api-spec/README.md)
   * [RudderStack Data Governance API](rudderstack-api-spec/rudderstack-data-governance-api.md)
   * [HTTP API Specification](rudderstack-api-spec/http-api-specification.md)
+  * [Pixel API Specification](rudderstack-api-spec/pixel-api-spec.md)
   * [E-Commerce Events Specification](rudderstack-api-spec/rudderstack-ecommerce-events-specification/README.md)
     * [Browsing](rudderstack-api-spec/rudderstack-ecommerce-events-specification/browsing.md)
     * [Promotions](rudderstack-api-spec/rudderstack-ecommerce-events-specification/promotions.md)
