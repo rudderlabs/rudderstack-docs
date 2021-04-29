@@ -41,7 +41,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Select the destination as **Split.io**. Give your destination a name and then click on **Next**. You should then see the following screen:
 
-![Destination Settings for Split.io](../.gitbook/assets/SplitIO.png)
+![Destination Settings for Split.io](../.gitbook/assets/splitio.png)
 
 * Next, in the **Settings** section, fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
 
