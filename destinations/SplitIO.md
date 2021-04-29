@@ -122,9 +122,6 @@ In the above snippet, we capture information related to the screen being viewed,
 The above call is sent with the name `Viewed_Screen_name_screen`, along with any additional properties passed to it.
 {% endhint %}
 
-
-
-
 ## Contact Us
 
 If you come across any issues while configuring Split.io as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
