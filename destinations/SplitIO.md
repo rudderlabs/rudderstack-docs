@@ -41,7 +41,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Select the destination as **Split.io**. Give your destination a name and then click on **Next**. You should then see the following screen:
 
-![Destination Settings for Split.io](../.gitbook/assets/splitio.png)
+![Destination Settings for Split.io](../.gitbook/assets/splitioconfig.png)
 
 * Next, in the **Settings** section, fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
 
@@ -71,6 +71,10 @@ rudderanalytics.identify("userId", {
 });
 ```
 
+{% hint style="info" %}
+In the cloud mode, the above `identify` call is sent with the name as `identify`, along with any additional properties passed to it.
+{% endhint %}
+
 ## Track
 
 A `track` call lets you track custom events as they occur in your web application. For more information on the `track` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
@@ -83,6 +87,10 @@ rudderanalytics.track("Clicked button", {
   buttonText: "Get started",
 });
 ```
+
+{% hint style="info" %}
+In the cloud mode, the above `track` call is sent with the name as `Clicked_button`, along with any additional properties passed to it.
+{% endhint %}
 
 ## Page
 
@@ -101,9 +109,8 @@ rudderanalytics.page("homepage",
 );
 ```
 
-
 {% hint style="info" %}
-In the cloud mode, the above `page` call is sent with the name as `Viewed_Page_name_page`, along with any additional properties passed to it.
+In the cloud mode, the above `page` call is sent with the name as `Viewed_home_page`, along with any additional properties passed to it.
 {% endhint %}
 
 ## Screen
@@ -119,9 +126,22 @@ A sample `screen` call looks like the following code snippet:
 In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
 
 {% hint style="info" %}
-The above call is sent with the name `Viewed_Screen_name_screen`, along with any additional properties passed to it.
+The above call is sent with the name `Viewed_Main_screen`, along with any additional properties passed to it.
 {% endhint %}
 
+## Group
+
+The `group` call associates a user to a specific organization.
+
+A sample `group` call looks like the following code snippet:
+
+```javascript
+rudderanalytics.group("groupId", traits, options, callback);
+```
+
+{% hint style="info" %}
+The above call is sent with the name `group`, along with any additional properties passed to it.
+{% endhint %}
 ## Contact Us
 
 If you come across any issues while configuring Split.io as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
