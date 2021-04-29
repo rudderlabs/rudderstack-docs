@@ -38,6 +38,41 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * In the **Connection Settings**, please enter your **Tag Id** as shown above.
 
+## Enable Enhanced Match
+
+Rudderstack supports Pinterest Enhanced Match in two scenarios:
+
+* Where a user is identified everytime they visit your site.
+* When a user visits your site anonymously but is identified at some later point by making an `identify()` call.
+
+To support Pinterest Enhanced Match, go to the Pinterest Tag destination settings in the Rudderstack web app, turn on  **Enable Enhanced Match on Page Load**. 
+
+### Enable Enhanced Match on Page Load
+
+When turned `on` this configuration will attach the hashed email address on the initial page load.
+Now any call made to Pinterest will be an Enhanced Match.
+
+When turned `off` all visits made to your site will be an anonymous. But you can identify any user at later point by making our `identify()` calls. 
+
+If you use Rudderstack's identify() method to enable Pinterest’s Enhanced Match, you only collect this information for successive events. Pinterest does not retroactively update values for past events.
+
+## Identify
+
+When you make an identify() call with the user’s email address and traits, we trigger a Pinterest set() method. This saves the identification parameters so they can be sent with the next events, so it’s important to set the values as early as possible. 
+If you make an identify call without email then identification parameter will not be set.
+
+```javascript
+rudderanalytics.identify("sample_user_id", {
+  name: "Test name",
+  email: "test@emai.com"
+});
+```
+This call will set the identification parameters to `test@emai.com` and any successive calls made will be an Enhanced Match. 
+
+{% hint style="info" %}
+ Nothing appears in the network tab in your browser or in the tag helper extension after identify() is called. However, a hashed value for an 'em' parameter is added in the next event call, in a JSON object encoded in the URL.
+{% endhint %}
+
 ## Track
 
 The `track` call allows you to capture any action that the user might perform, along with the properties that are associated with that action. Each action is considered to be an event.
@@ -71,6 +106,8 @@ rudderanalytics.track("custom");
 
 If you wish to map your event to Pinterest event you can do so by adding it in our config section at **Map Your Events To Pinterest Events**. 
 
+### Map Your Events To Pinterest Events
+
 Pinterest supports following 9 standard events that one can map and track them for reporting.
 
 * `Checkout`
@@ -83,7 +120,7 @@ Pinterest supports following 9 standard events that one can map and track them f
 * `ViewCategory`
 * `Custom`
 
-Apart from that if the event sent is not found in our list we pass those events and Pinterest treats them as user-defined events. Note, these custom events aren’t available for conversion reporting.
+Apart from that if the event sent is not found in our list we pass those events and Pinterest treats them as user-defined events. Note, these events aren’t available for conversion reporting.
 
 ## Properties Mapping
 
@@ -113,6 +150,12 @@ Following properties are nested within e-commerce products array :
 | brand | `product_brand` |
 
 If you wish to pass any extra properties other than what we support, you can use our **Custom Properties** configuration. 
+
+### Custom Properties
+
+If you wish to send your defined properties to pinterest, you can do so by using our custom properties settings.
+Just add those properties in the given field and you are good to go. Here is an example shown of how it works.
+
 ```javascript
 rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'})
 ```
@@ -136,7 +179,7 @@ rudderanalytics.page("I am new page", "new page category", {
   testDimension: "true",
 });
 ```
-This example will map to Pinterest `ViewCategory` event.
+This above example will map to Pinterest `ViewCategory` event.
 
 ```javascript
 rudderanalytics.page("I am new page with no name", {
@@ -145,32 +188,14 @@ rudderanalytics.page("I am new page with no name", {
 ```
 This example will map to Pinterest `PageVisit` event.
 
-
-## Identify
-
-To support the second scenario, where a user visits your site anonymously, but is identified at a later point, you do not need to change any of the Pinterest destination settings. Instead, you can make an identify() call with the user’s email address, which triggers a Pinterest set() method. This saves the identification parameters so they can be sent with the next event, so it’s important to set the values as early as possible.
-
-Note: Nothing appears in the network tab in your browser or in the tag helper extension after set() is called. However, a hashed value for an 'em' parameter is added in the next event call, in a JSON object encoded in the URL. You can also see the email box in the tag helper extension.
-A sample `identify` call is as shown:
-
-```javascript
-rudderanalytics.identify("sample_user_id", {
-  name: "Test name",
-  email: "test@emai.com"
-});
-```
-
-
-
 ## FAQs
 
 ### **How do you get the Pinterest Tag Id?**
 
 * Login to Pinterest Ads dashboard.
-* Go to the **Admin** section from the left sidebar.
-* Select the account and then property from the drop down for which you wish to get the id.
-* Now click on data streams and select the stream for which you wish to get the id.
-* Copy the measurement id by clicking on copy to clipboard icon.
+* Click on Ads dropdown and go to Conversions. It will open Pinterest Tag Manager.
+* Now click on generate pinterest tag and you must see your TagId.
+* Your Tag Id should be 10 to 15 digit number.
 
 ## Contact Us
 
