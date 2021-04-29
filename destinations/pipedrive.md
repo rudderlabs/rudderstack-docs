@@ -47,7 +47,9 @@ To successfully configure Pipedrive as a destination, you will need to configure
 `GroupId Token` and `UserId Token` fields are related to Custom Field tokens in Pipedrive.{% endhint %}
 
 {% hint style="info" %}
-**Note:** Pipedrive does not support mapping userId or groupId. Instead they create id's internally. So, in order for rudderstack calls to work with Pipedrive, user needs to create custom fields for userId, groupId in Pipedrive to which the provided userId and groupId values would be mapped to.{% endhint %}
+**Note:** Pipedrive does not support mapping userId or groupId. Instead they create id's internally. So, in order for rudderstack calls to work with Pipedrive, user needs to create custom fields for userId, groupId in Pipedrive to which the provided userId and groupId values would be mapped to.{% endhint %}.
+
+Rudderstack will use these Custom Fields to map userId value, groupId value, etc.
 
 {% hint style="info" %} **Note:** `GroupId Token` and `UserId Token` are required only if calls like identify, group, etc. will be made. In that case, rudderstack needs a way to map provided userId's and groupId's in the destination.{% endhint %}
 
