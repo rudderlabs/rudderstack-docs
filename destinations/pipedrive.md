@@ -179,8 +179,9 @@ Sample alias call
 ```
 rudderanalytics.alias("to", "from", options, callback);
 ```
+Note: `to` denotes the new identifier and is required.
 
-**Note:** Both the user id's in alias should be valid, i.e both the users should be already existing Pipedrive `Persons`.
+If both users exist, then the Pipedrive merge endpoint is called.
 
 ### Track
 
