@@ -4,9 +4,9 @@ description: Step-by-step guide to set up Split.io as a destination in RudderSta
 
 # Split.io
 
-[Split.io](https://www.split.io/), enables you to maximize the impact of any development by combining feature flags and data. It ensures data privacy, resilience and performance, turning ideas to successful features by measuring the impact through rigorous A/B testing.
+[Split.io](https://www.split.io/) is a feature experimentation and continuous delivery tool that enables you to maximize the impact of your product features by combining feature flags and data. With Split, you can test new features through rigorous A/B testing and deploy them seamlessly while ensuring data privacy and maximum performance.
 
-RudderStack allows you to configure Split.io as a destination to which you can send your event data seamlessly, for building better software with data.
+RudderStack allows you to configure Split.io as a destination to which you can send your event data for building better software.
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/splitio)**.**
@@ -33,7 +33,7 @@ Once you have confirmed that the platform supports sending events to Split.io, p
 Keep the API Key of the particular workspace in your Split.io dashboard handy as it is used later to configure Split.io as a destination.
 {% endhint %}
 
-* Next, go to the [RudderStack dashboard](https://app.rudderstack.com/), and choose a source to which you would like to add Split.io as a destination.
+* Go to the [RudderStack dashboard](https://app.rudderstack.com/), and choose a source to which you would like to add Split.io as a destination.
 
 {% hint style="info" %}
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack) guide to know how to add a source in RudderStack.
@@ -44,21 +44,23 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 ![Destination Settings for Split.io](../.gitbook/assets/SplitIO.png)
 
 * Next, in the **Settings** section, fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
+
   * **Connection Credentials**
-    * **API Key**: The API Key for the appropriate workspace goes here.
-    * **Environment**: Enter the corresponding environment available in the dashboard. Although it is not mandatory.
+    * **API Key**: Enter the API Key for the appropriate workspace.
+    * **Environment**: Enter the corresponding environment available in the dashboard. Note that this field is not mandatory.
+ 
   * **Information on Traffic**
-    * **Traffic Type**: Enter the correct traffic type listed in your account
+    * **Traffic Type**: Enter the correct traffic type listed in your account.
 
 {% hint style="info" %}
-All the calls are sent as an `event`
+All the calls are sent as an `event` to Split.io.
 {% endhint %}
 
 ## Identify
 
 The `identify` call is used to uniquely identify a user. For more information on the `identify` call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
 
-A sample `identify` call looks like the following snippet:
+A sample `identify` call looks like the following:
 
 ```javascript
 rudderanalytics.identify("userId", {
@@ -125,5 +127,5 @@ The above call is sent with the name `Viewed_Screen_name_screen`, along with any
 
 ## Contact Us
 
-If you come across any issues while configuring AWS Personalize as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Split.io as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
