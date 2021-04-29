@@ -27,7 +27,7 @@ Before configuring your source and destination on the RudderStack, please check 
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-Once you have confirmed that the platform supports sending events to CleverTap, perform the steps below:
+Once you have confirmed that the platform supports sending events to Pipedrive, perform the steps below:
 
 * From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and Pipedrive as a destination.
 
@@ -184,13 +184,7 @@ rudderanalytics.alias("to", "from", options, callback);
 
 ### Track
 
-This method allows you to track any actions that your users might perform. Each of these actions is commonly referred to as an event. Track events are mapped to [Leads](https://developers.pipedrive.com/docs/api/v1/#!/Leads/addLead) object in Pipedrive.
-
-The track() method definition is as follows:
-
-```
-rudderanalytics.track(event,[properties],[options],[callback]);
-```
+This method allows you to track potential leads/deals. More details on `Leads` can be found in [Pipedrive docs](https://developers.pipedrive.com/docs/api/v1/#!/Leads/addLead).
 
 A sample example of how to use the track() method is as shown:
 
@@ -254,7 +248,11 @@ Fields supported in this method are as follows:
 * currency
 * quantity
 
-**Note**: Provide both price and currency for it to be mapped to `prices` field in Pipedrive Product.
+**Note**:
+
+* Provide both price and currency for it to be mapped to `prices` field in Pipedrive Product.
+
+* The Event name is mapped to the Pipedrive Product Lead title for this event.
 
 {% hint type="success" %}
 Custom Fields are supported. Provide the mapping in Rudderstack dahsboard.
@@ -268,39 +266,70 @@ A sample example of the `Order Completed` event is shown below:
 
 ```
 rudderanalytics.track("Order Completed", {
-        checkout_id: "12346",
-        order_id: "1235",
-        total: 20,
-        revenue: 15.0,
-        shipping: 22,
-        tax: 1,
-        currency: "USD",
-        products: [
-          {
-            product_id: "124",
-            sku: "G-33",
-            name: "Note 10 pro",
-            price: 400
-          },
-          {
-            product_id: "346",
-            sku: "F-33",
-            name: "11 ultra",
-            price: 800
-          },
-        ],
-      });
+  checkout_id: "12346",
+  order_id: "1235",
+  total: 20,
+  revenue: 15.0,
+  shipping: 22,
+  tax: 1,
+  currency: "USD",
+  products: [
+    {
+      product_id: "124",
+      name: "Note 10 pro",
+      price: 400
+    },
+    {
+      product_id: "346",
+      name: "11 ultra",
+      price: 800
+    },
+  ],
+});
 
 ```
 
 For the above call, each product in the `products` list is added as a Pipedrive Product.
 
-{% hint type="info" %}
-**Note:** The `products` array is required. If, not provided or empty, the event will be dropped. This is because, the Order Related info cannot otherwise be mapped with Pipedrive.
-Provide both the currency and price for it to be mapped to `prices` in Product.
-{% endhint %}
+**Note:**
+
+* The `products` array is required and should not be empty. This is because, Order Related info cannot otherwise be mapped with Pipedrive. Only the items in products array are added.
+
+* Provide both the currency and price for it to be mapped to `prices` in Product.
 
 More details about `Product` in Pipedrive can be found [here](https://developers.pipedrive.com/docs/api/v1/#!/Products/addProduct).
+
+For `Order Completed` event, add Custom Fields to the item inside products array.
+
+An example with custom field is shown below:
+
+```
+rudderanalytics.track("Order Completed", {
+  checkout_id: "12346",
+  order_id: "1235",
+  total: 20,
+  revenue: 15.0,
+  shipping: 22,
+  tax: 1,
+  currency: "USD",
+  products: [
+    {
+      product_id: "124",
+      name: "Note 10 pro",
+      price: 400,
+      "rating": 4
+    },
+    {
+      product_id: "346",
+      name: "11 ultra",
+      price: 800,
+      "rating": 5
+    },
+  ],
+});
+```
+
+In the above example, `rating` is a Custom Field. Create the Custom Field under Pipedrive Products and add the mapping in Rudderstack dashboard.
 
 ## Contact Us
 
