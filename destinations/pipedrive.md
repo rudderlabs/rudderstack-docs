@@ -37,7 +37,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![Configuration Settings for Pipedrive](../.gitbook/assets/pipedrive-main-settings.png)
 
-## Connection Settings
+## Pipedrive Configuration Settings in RudderStack
 
 To successfully configure Pipedrive as a destination, you will need to configure the following settings:
 
