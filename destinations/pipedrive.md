@@ -8,6 +8,8 @@ description: Step-by-step guide to send your event data from RudderStack to Pipe
 
 You can now send your event data directly to Pipedrive through RudderStack.
 
+To visit Pipedrive API documentation, click [here](https://developers.pipedrive.com/docs/api/v1/#/).
+
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/dest-pipedrive)**.**
 {% endhint %}
@@ -69,6 +71,10 @@ In order to create custom fields and provide the mappings in Rudderstack, please
 * For `userId` and `groupId` tokens, create a Custom Field under Persons and Organizations respectively.
 * In the dashboard, just provide the Tokens. The actual field name can be anything and is not required by Rudderstack.
 * For all other cases, provide both the exact Field name and token in the dashboard.
+
+{% hint type="info"%}
+Pipedrive allows passing in owner_id in most cases. However, that owner_id is related to the Pipedrive account owner and not a user. So, owner_fields are not taken by Rudderstack for any of the events.
+{% endhint %}
 
 ## Supported Events
 
@@ -137,6 +143,32 @@ rudderanalytics.identify(
 ```
 The `role` field and corresponding Pipedrive api key is provided in Rudderstack dashboard.
 
+### Group
+
+The group call associates a user to a specific organization.
+
+The format of a group call is as shown:
+
+```
+rudderanalytics.group("groupId", traits, options, callback);
+```
+
+{% hint style="info" %} For a group call, a Person object in Pipedrive is added to an organization. {% endhint %}
+
+**Note:** `GroupId` token is required for group call. Please provide the token in Rudderstack dashboard under `Connection Settings`.
+
+{% hint style="info" %}
+This Custom Group Id field is required by Rudderstack to map the groupId with Pipedrive's internal org_id.
+{% endhint %}
+
+Fields that can be passed in group method are as follows:
+
+* name
+* add_time
+* visible_to
+
+Custom Fields can also be passed. Provide the Custom Field name and token under the `Organization Field Mapping` section in Rudderstack dashboard.
+
 ### Alias
 
 Alias method is used to merge to users.
@@ -147,3 +179,127 @@ rudderanalytics.alias("to", "from", options, callback);
 ```
 
 **Note:** Both the user id's in alias should be valid, i.e both the users should be already existing Pipedrive `Persons`.
+
+### Track
+
+This method allows you to track any actions that your users might perform. Each of these actions is commonly referred to as an event. Track events are mapped to [Leads](https://developers.pipedrive.com/docs/api/v1/#!/Leads/addLead) object in Pipedrive.
+
+The track() method definition is as follows:
+
+```
+rudderanalytics.track(event,[properties],[options],[callback]);
+```
+
+A sample example of how to use the track() method is as shown:
+
+```
+rudderanalytics.track(
+  "Potential Lead",
+  {
+    "value": 1000,
+    "currency": "USD",
+    "expected_close_date": "2021-04-27"
+  },
+);
+```
+
+Fields that can be passed in track method are as follows:
+
+* currency
+* expected_close_date
+* label_ids
+* revenue/value/total/amount
+
+Custom Fields can also be passed. Provide the Custom Field name and token under the `Leads Field Mapping` section in Rudderstack dashboard.
+
+{% hint style="info"%}
+**Note:** Pipedrive requires a valid person_id or organization_id (these are Pipedrive side id's) for a Lead creation. So, in order to map the track event to a Lead object correctly, a valid userId is required with the track event, i.e A user should exist for the userId.
+{% endhint %}
+
+### Ecommerce Events
+
+For Pipedrive, Rudderstack is supporting two Ecommerce events:
+
+* Product Viewed
+* Order Completed
+
+{% hint type="info" %}
+The Product object in Pipedrive is created for these two Events.
+{% endhint %}
+
+**Note:** The `Product` object in Pipedrive is related to `inventory`. Pipedrive does not have any associated user field with the Product object.
+
+### Product Viewed
+
+A sample example of the `Product Viewed` event is shown below:
+
+```
+rudderanalytics.track('Product Viewed', {
+  "product_id": "sample-product-id",
+  "name": "Bike",
+  "price": 400000,
+  "currency": "INR"
+});
+```
+
+This will add a Product object in Piprdrive.
+
+Fields supported in this method are as follows:
+
+* product_id
+* sku
+* price
+* currency
+* quantity
+
+**Note**: Provide both price and currency for it to be mapped to `prices` field in Pipedrive Product.
+
+{% hint type="success" %}
+Custom Fields are supported. Provide the mapping in Rudderstack dahsboard.
+{% endhint %}
+
+More details about `Product` in Pipedrive can be found [here](https://developers.pipedrive.com/docs/api/v1/#!/Products/addProduct).
+
+### Order Completed
+
+A sample example of the `Order Completed` event is shown below:
+
+```
+rudderanalytics.track("Order Completed", {
+        checkout_id: "12346",
+        order_id: "1235",
+        total: 20,
+        revenue: 15.0,
+        shipping: 22,
+        tax: 1,
+        currency: "USD",
+        products: [
+          {
+            product_id: "124",
+            sku: "G-33",
+            name: "Note 10 pro",
+            price: 400
+          },
+          {
+            product_id: "346",
+            sku: "F-33",
+            name: "11 ultra",
+            price: 800
+          },
+        ],
+      });
+
+```
+
+For the above call, each product in the `products` list is added as a Pipedrive Product.
+
+{% hint type="info" %}
+**Note:** The `products` array is required. If, not provided or empty, the event will be dropped. This is because, the Order Related info cannot otherwise be mapped with Pipedrive.
+Provide both the currency and price for it to be mapped to `prices` in Product.
+{% endhint %}
+
+More details about `Product` in Pipedrive can be found [here](https://developers.pipedrive.com/docs/api/v1/#!/Products/addProduct).
+
+## Contact Us
+
+If you come across any issues while configuring Pipedrive with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
