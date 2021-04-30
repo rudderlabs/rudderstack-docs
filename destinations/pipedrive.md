@@ -47,9 +47,7 @@ To successfully configure Pipedrive as a destination, you will need to configure
 `GroupId Token` and `UserId Token` fields are related to Custom Field tokens in Pipedrive.{% endhint %}
 
 {% hint style="info" %}
-**Note:** Pipedrive does not support mapping userId or groupId. Instead they create id's internally. So, in order for rudderstack calls to work with Pipedrive, user needs to create custom fields for userId, groupId in Pipedrive to which the provided userId and groupId values would be mapped to.{% endhint %}.
-
-Rudderstack will use these Custom Fields to map userId value, groupId value, etc.
+**Note:** Pipedrive does not support mapping userId or groupId. Instead they create id's internally. So, in order for RudderStack calls to work with Pipedrive, create custom fields for userId, groupId in Pipedrive to which the provided userId and groupId values would be mapped to.{% endhint %}.
 
 {% hint style="info" %} **Note:** `GroupId Token` and `UserId Token` are required only if calls like identify, group, etc. will be made. In that case, rudderstack needs a way to map provided userId's and groupId's in the destination.{% endhint %}
 
@@ -173,7 +171,7 @@ Custom Fields can also be passed. Provide the Custom Field name and token under 
 
 ### Alias
 
-Alias method is used to merge to users.
+Alias method is used to merge two users or mapping an already identified user to a new identifier.
 
 Sample alias call
 ```
@@ -181,7 +179,7 @@ rudderanalytics.alias("to", "from", options, callback);
 ```
 Note: `to` denotes the new identifier and is required.
 
-If both users exist, then the Pipedrive merge endpoint is called.
+If both users exist, then the [Pipedrive merge](https://developers.pipedrive.com/docs/api/v1/#!/Persons/mergePersons) endpoint is called.
 
 ### Track
 
@@ -203,7 +201,7 @@ rudderanalytics.track(
 Fields that can be passed in track method are as follows:
 
 * currency
-* expected_close_date
+* expected_close_date (In ISO 8601 format: YYYY-MM-DD)
 * label_ids
 * revenue/value/total/amount
 
