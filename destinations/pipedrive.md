@@ -80,15 +80,15 @@ Pipedrive allows passing in owner_id in most cases. However, that owner_id is re
 
 The following events are supported by Rudderstack for Pipedrive destionation.
 
-* Identify
-* Alias
-* Group
-* Track
+* [Identify](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#6-identify)
+* [Alias](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#11-alias)
+* [Group](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#10-group)
+* [Track](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#7-track)
 
 The following Ecommerce events are also supported:
 
-* Product Viewed
-* Order Completed
+* [Product Viewed](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification/ordering#product-viewed)
+* [Order Completed](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification/ordering#order-completed)
 
 {% hint style="info" %}
 **More details on the Ecommerce events can be found in the Rudderstack* [**Ecommerce Events Specification**](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification/ordering)**.**
