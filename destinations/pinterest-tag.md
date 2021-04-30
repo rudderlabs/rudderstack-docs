@@ -2,9 +2,9 @@
 description: Step-by-step guide to send your event data from RudderStack to Pinterest.
 ---
 
-# Pinterest Tag
+# Pinterest
 
-The [Pinterest Tag](https://ads.pinterest.com/advertiser/549762398656/conversions/tag/) is a piece of code that, when added to your website, allows Pinterest to track your visitors as well as their actions. It gives you a detailed conversion report related to any and all customer activities like signups or buying a product.
+The [Pinterest Tag](https://ads.pinterest.com/) is a piece of code that, when added to your website, allows Pinterest to track your visitors as well as their actions. It gives you a detailed conversion report related to any and all customer activities like signups or buying a product.
 
 RudderStack supports Pinterest as a destination to which you can send your customer events in real-time, through Pinterest's `pintrk` conversion tag.
 
@@ -43,19 +43,19 @@ Rudderstack supports Pinterest Enhanced Match in the following two scenarios:
 * Where a user is identified everytime they visit your site.
 * When a user visits your site anonymously but is identified at some later point by making an `identify()` call.
 
-To support Pinterest Enhanced Match, go to the Pinterest Tag destination settings in the Rudderstack dashboard and turn on the **Enable Enhanced Match on Page Load** option. 
+To support Pinterest Enhanced Match, go to the Pinterest Tag destination settings in the RudderStack dashboard and turn on the **Enable Enhanced Match on Page Load** option. 
 
 ### Enable Enhanced Match on Page Load
 
-When turned `on` this configuration will attach the hashed email address on the initial page load. Now any call made to Pinterest will be an Enhanced Match.
+When enabled, this configuration will attach the hashed email address on the initial page load. Now any call made to Pinterest will be an Enhanced Match.
 
-When turned `off` all visits made to your site will be an anonymous. But you can identify any user at later point by making our `identify()` calls. 
+If this setting is not enabled, all the visits made to your site will be anonymous. But you can still identify any user by making the `identify()` call. 
 
 If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Match, you can only collect this information for successive events. Pinterest does not update the values for the past events retroactively.
 
 ## Identify
 
-When you make an `identify()` call with the user’s email address and traits, RudderStack triggers a Pinterest `set()` method. This saves the identification parameters so they can be sent with the next events, so it’s important to set the values as early as possible. 
+When you make an `identify()` call with the user’s email address and traits, RudderStack triggers a Pinterest `set()` method. This saves the identification parameters to be sent with the next events, so it’s important to set the values as early as possible. 
 
 If you make an `identify` call without the email, then the identification parameter will not be set.
 
@@ -83,7 +83,7 @@ rudderanalytics.track("Track me");
 
 RudderStack's SDK will send the `track` event name and any properties as custom properties to Pinterest.
 
-## eCommerce
+## E-Commerce
 
 RudderStack supports eCommerce conversion tracking for Pinterest. Use the [RudderStack eCommerce Specification](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) for sending the events while instrumenting your site with the RudderStack SDK.
 
@@ -91,7 +91,6 @@ Below are some examples of the `track` event names that are passed to the Pinter
 
 | RudderStack event name | Pinterest event name |
 | :--- | :--- |
-| Order Completed | `Checkout` |
 | Order Completed | `Checkout` |
 | Product Added | `AddToCart` |
 | Products Searched | `Search` |
@@ -158,7 +157,10 @@ If you wish to send your defined properties to Pinterest, you can do so by using
 Here is an example of how it all works:
 
 ```javascript
-rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'})
+rudderanalytics.track('Event', {
+  customProperty: { customValue: 2 },
+  someRandomMailId: 'user@gmail.com'
+  });
 ```
 
 For streaming the above properties in Pinterest, you will need to add the following two properties:
@@ -205,5 +207,5 @@ The above example will map the event to Pinterest `PageVisit` event.
 
 ## Contact Us
 
-If you come across any issues while configuring Pinterest Tag with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+If you come across any issues while configuring Pinterest with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 
