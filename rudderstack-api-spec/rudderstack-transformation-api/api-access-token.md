@@ -66,16 +66,22 @@ A sample request is as shown:
 {% tabs %}
 {% tab title="Curl" %}
 ```text
-curl --location --request POST 'https://api.rudderstack.com/accessToken' \
---header -u WORKSPACE_TOKEN: \
---data-raw ''
+curl --location -X POST 'https://api.rudderstack.com/accessTokens' \
+-H 'Authorization: Basic Base64Enc(workspacetoken:)' \
+-H 'Content-Type: application/json' \
+-d '{
+    "name": "some-test-access-token",
+    "description": "some-description"
+}'
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```text
-http  --follow --timeout 3600 POST 'https://api.rudderstack.com/accessToken' \
- -a WORKSPACE_TOKEN:
+ http POST 'https://api.rudderstack.com/accessTokens' \
+ name=some-test-access-token description=some-description \
+ Authorization:'Basic MXBUbGc2MlpZcUgycWtDMDVmc1hUZlJQRWZyOg==' \
+ Content-Type:'application/json'
 ```
 {% endtab %}
 {% endtabs %}
@@ -149,16 +155,15 @@ Here you will get a list of objects. Note that RudderStack does not send your ac
 {% tabs %}
 {% tab title="Curl" %}
 ```text
-curl --location --request GET 'https://api.rudderstack.com/accessToken' \
---header -u WORKSPACE_TOKEN: \
---data-raw ''
+curl --location -X GET 'https://api.rudderstack.com/accessTokens' \
+-H 'Authorization: Basic MXBUbGc2MlpZcUgycWtDMDVmc1hUZlJQRWZyOg==' \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```text
-http  --follow --timeout 3600 GET 'https://api.rudderstack.com/accessToken' \
- -a WORKSPACE_TOKEN:
+http GET 'https://api.rudderstack.com/accessTokens' \
+'Authorization: Basic Base64Enc(workspacetoken:)'
 ```
 {% endtab %}
 {% endtabs %}
@@ -206,15 +211,15 @@ All access token will be deleted with given name.
 {% tabs %}
 {% tab title="Curl" %}
 ```text
-curl --location --request DELETE 'http://localhost:5000/accessToken?name=sdc' \
---header -u WORKSPACE_TOKEN: \
+curl --location -X DELETE 'https://api.rudderstack.com/accessTokens?name=some-test-access-token' \
+-H 'Authorization: Basic MXBUbGc2MlpZcUgycWtDMDVmc1hUZlJQRWZyOg==' \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```text
-http --follow --timeout 3600 DELETE 'http://localhost:5000/accessToken?name=sdc' \
- -a WORKSPACE_TOKEN:
+http DELETE 'http://api.rudderstack.com/accessTokens?name=sdc' \
+'Authorization: Basic Base64Enc(workspacetoken:)'
 ```
 {% endtab %}
 {% endtabs %}

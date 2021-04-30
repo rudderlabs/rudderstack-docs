@@ -10,7 +10,7 @@ This guide describes the various API operations, related request and response st
 
 ## Key Features of the RudderStack Transformation API
 
-* Organized around REST
+* Organised around REST
 * Predictable, resource-oriented URLs
 * Uses HTTP response codes to indicate any API errors
 * Uses built-in HTTP features like HTTP authentication and HTTP verbs, which are understood by off-the-shelf clients
@@ -203,10 +203,10 @@ An example is as shown:
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request POST 'https://api.rudderstack.com/transformations' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --location -X POST 'https://api.rudderstack.com/transformations' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
+-d '{
     "name": "Create Transformation Tested-4",
     "code": "function transformEvent(events) { return events; } ",
     "description": "Descriptrion 1"
@@ -216,12 +216,9 @@ curl --location --request POST 'https://api.rudderstack.com/transformations' \
 
 {% tab title="Httpie" %}
 ```markup
-printf '{
-    "name": "Create Transformation Tested-4",
-    "code": "function transformEvent(events) { return events; } ",
-    "description": "Descriptrion 1"
-}'| http  --follow --timeout 3600 POST 'https://api.rudderstack.com/transformations' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
+ http POST 'https://api.rudderstack.com/transformations' \
+ name='Create Transformation Tested-4' code='function transformEvent(events) { return events; }' description='Descriptrion 1' \
+ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
  Content-Type:'application/json'
 ```
 {% endtab %}
@@ -281,23 +278,22 @@ This will give an array of published transformations.
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request GET 'https://api.rudderstack.com/transformations' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---data-raw ''
+curl --location -X GET 'https://api.rudderstack.com/transformations' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
-http  --follow --timeout 3600 GET 'https://api.rudderstack.com/transformations' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN
+```
+ http GET 'https://api.rudderstack.com/transformations' \
+ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 ```
 {% endtab %}
 {% endtabs %}
 
 {% api-method method="get" host="https://api.rudderstack.com" path="/transformations/{id}" %}
 {% api-method-summary %}
-Retrieve a transformation
+Retrieve a single Transformation
 {% endapi-method-summary %}
 
 {% api-method-description %}
@@ -334,16 +330,15 @@ This will give a transformation object on basis of the ID.
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request GET 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---data-raw ''
+curl --location -X GET 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```markup
-http  --follow --timeout 3600 GET 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
- -a :EMAIL_ADDRESS:ACCESS_TOKEN
+http GET 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 ```
 {% endtab %}
 {% endtabs %}
@@ -408,10 +403,10 @@ An example request is as shown:
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request POST 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --location -X POST 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
+-d  '{
     "name": "name updated"
 }'
 ```
@@ -419,10 +414,9 @@ curl --location --request POST 'https://api.rudderstack.com/transformations/1pSv
 
 {% tab title="Httpie" %}
 ```markup
-printf '{
-    "name": "name updated"
-}'| http  --follow --timeout 3600 POST 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
+ http POST 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
+ name='name updated'
+ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
  Content-Type:'application/json'
 ```
 {% endtab %}
@@ -459,16 +453,15 @@ Delete a **published** transformations by ID. Note that RudderStack never delete
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request DELETE 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---data-raw ''
+curl --location -X DELETE 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```markup
-http  --follow --timeout 3600 DELETE 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN
+http DELETE 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 ```
 {% endtab %}
 {% endtabs %}
@@ -537,16 +530,15 @@ An example request is as shown:
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions' \
---header '-u EMAIL_ADDRESS:ACCESS_TOKEN \
---data-raw ''
+curl --location -X GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```markup
-http  --follow --timeout 3600 GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN
+http GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 ```
 {% endtab %}
 {% endtabs %}
@@ -590,15 +582,14 @@ This gets a single transformation version.
 {% tab title="Curl" %}
 ```markup
 curl --location --request GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions/1pIhxFXd7NR7XDA914rLAn5f7wq' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---data-raw ''
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```markup
-http  --follow --timeout 3600 GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions/1pIhxFXd7NR7XDA914rLAn5f7wq' \
--a EMAIL_ADDRESS:ACCESS_TOKEN
+http GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions/1pIhxFXd7NR7XDA914rLAn5f7wq' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 ```
 {% endtab %}
 {% endtabs %}
@@ -684,10 +675,10 @@ The `publish` flag for a library works in the same way as for destinations.
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request POST 'https://api.rudderstack.com/libraries' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --location -X POST 'https://api.rudderstack.com/libraries' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
+-d '{
     "name": "User Defined Library",
     "description": "Get User context",
     "code": "export default function cube(x) { return x * x * x; }"
@@ -697,12 +688,9 @@ curl --location --request POST 'https://api.rudderstack.com/libraries' \
 
 {% tab title="Httpie" %}
 ```markup
-printf '{
-    "name": "User Defined Library",
-    "description": "Get User context",
-    "code": "    export default function cube(x) { return x * x * x; }"
-}'| http  --follow --timeout 3600 POST 'https://api.rudderstack.com/libraries' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
+ http POST 'https://api.rudderstack.com/libraries' \
+ name='User Defined Library' description='Get User context' code='export default function cube(x) { return x * x * x; }' \ 
+ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
  Content-Type:'application/json'
 ```
 {% endtab %}
@@ -760,18 +748,17 @@ Get all the **published** libraries.
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request GET 'https://api.rudderstack.com/libraries' \
---header '-u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw ''
+curl --location -X GET 'https://api.rudderstack.com/libraries' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```markup
-http  --follow --timeout 3600 GET 'https://api.rudderstack.com/libraries' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
- Content-Type:'application/json'
+http GET 'https://api.rudderstack.com/libraries' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Content-Type:'application/json'
 ```
 {% endtab %}
 {% endtabs %}
@@ -814,18 +801,17 @@ Get a single **published** library by ID.
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw ''
+curl --location -X GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```markup
-http  --follow --timeout 3600 GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
- Content-Type:'application/json'
+http GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Content-Type:'application/json'
 ```
 {% endtab %}
 {% endtabs %}
@@ -890,10 +876,10 @@ A sample request is as shown:
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request POST 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --location -X POST 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
+-d '{
     "description": "Get Divisible by 2",
     "code": "export default function cube(x) { return 2 * x; }"
 }'
@@ -902,12 +888,10 @@ curl --location --request POST 'https://api.rudderstack.com/libraries/1pT7933tHR
 
 {% tab title="Httpie" %}
 ```markup
-printf '{
-    "description": "Get Divisible by 2",
-    "code": "export default function cube(x) { return 2 * x; }"
-}'| http  --follow --timeout 3600 POST 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
- Content-Type:'application/json'
+description='Get Divisible by 2' code='export default function cube(x) { return 2 * x; }'
+http POST 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Content-Type:'application/json'
 ```
 {% endtab %}
 {% endtabs %}
@@ -975,17 +959,16 @@ You can pass it either as **ASC** to get an ascending order or **DESC** for desc
 {% tab title="Curl" %}
 ```markup
 curl --location --request GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw ''
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```markup
-http  --follow --timeout 3600 GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
- Content-Type:'application/json'
+http GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Content-Type:'application/json'
 ```
 {% endtab %}
 {% endtabs %}
@@ -1028,17 +1011,16 @@ Get a single library revision.
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions/1pT8KDAD66mQxnaUQxJpNs9qLFn' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw ''
+curl --location -X GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions/1pT8KDAD66mQxnaUQxJpNs9qLFn' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
 ```markup
-| http  --follow --timeout 3600 GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions/1pT8KDAD66mQxnaUQxJpNs9qLFn' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
+ http GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions/1pT8KDAD66mQxnaUQxJpNs9qLFn' \
+ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
  Content-Type:'application/json'
 ```
 {% endtab %}
@@ -1140,10 +1122,10 @@ Request Payload ::
 {% tabs %}
 {% tab title="Curl" %}
 ```markup
-curl --location --request POST 'https://api.rudderstack.com/transformations/libraries/publish' \
---header -u EMAIL_ADDRESS:ACCESS_TOKEN \
---header 'Content-Type: application/json' \
---data-raw '{
+curl --location -X POST 'https://api.rudderstack.com/transformations/libraries/publish' \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Content-Type: application/json' \
+-d '{
   transformations: [
     {
       versionId: publishTransformerVersionId,
@@ -1172,32 +1154,10 @@ curl --location --request POST 'https://api.rudderstack.com/transformations/libr
 
 {% tab title="Httpie" %}
 ```markup
-printf '{
-  transformations: [
-    {
-      versionId: publishTransformerVersionId,
-      testInput:
-        '[
-          {
-            "anonymousId":"8d872292709c6fbe",
-            "channel":"mobile"
-          },
-          {
-            "anonymousId":"8d872292709c6fbe",
-            "channel":"mobile"
-          }
-        ],
-  libraries: [
-    {
-      versionId: publishLibraryVersionId1,
-    },
-    {
-      versionId: publishLibraryVersionId1,
-    }
-  ]
-}'| http  --follow --timeout 3600 POST 'https://api.rudderstack.com/transformations/libraries/publish' \
- -a EMAIL_ADDRESS:ACCESS_TOKEN \
- Content-Type:'application/json'
+http POST 'https://api.rudderstack.com/transformations/libraries/publish' \
+transformations='[{versionId: publishTransformerVersionId, testInput:'[{"anonymousId":"8d872292709c6fbe","channel":"mobile"},{"anonymousId":"8d872292709c6fbe","channel":"mobile"}] libraries='[{versionId: publishLibraryVersionId1,},{versionId: publishLibraryVersionId1}]' \ 
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Content-Type:'application/json'
 ```
 {% endtab %}
 {% endtabs %}
