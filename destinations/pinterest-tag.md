@@ -158,9 +158,11 @@ Here is an example of how it all works:
 
 ```javascript
 rudderanalytics.track('Event', {
-  customProperty: { customValue: 2 },
-  someRandomMailId: 'user@gmail.com'
-  });
+  "customProperty": {
+    "customValue": 2
+  },
+  "someRandomMailId": "user@gmail.com"
+});
 ```
 
 For streaming the above properties in Pinterest, you will need to add the following two properties:
