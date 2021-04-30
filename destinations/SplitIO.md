@@ -4,7 +4,7 @@ description: Step-by-step guide to set up Split.io as a destination in RudderSta
 
 # Split.io
 
-[Split.io](https://www.split.io/) is a feature experimentation and continuous delivery tool that enables you to maximize the impact of your product features by combining feature flags and data. With Split, you can test new features through rigorous A/B testing and deploy them seamlessly while ensuring data privacy and maximum performance.
+[Split.io](https://www.split.io/) is a feature experimentation and continuous delivery tool. It enables you to maximize the impact of your product features by combining feature flags and data. With Split, you can test new features through rigorous A/B testing and deploy them seamlessly while ensuring data privacy and maximum performance.
 
 RudderStack allows you to configure Split.io as a destination to which you can send your event data for building better software.
 
@@ -53,7 +53,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
     * **Traffic Type**: Enter the correct traffic type listed in your account.
 
 {% hint style="info" %}
-All the calls are sent as an `event` to Split.io.
+Each of the calls is sent as an `event` to Split.io.
 {% endhint %}
 
 ## Identify
@@ -133,7 +133,7 @@ The above call is sent with the name `Viewed_Main_screen`, along with any additi
 
 The `group` call associates a user to a specific organization.
 
-A sample `group` call looks like the following code snippet:
+A sample `group` call looks like the following:
 
 ```javascript
 rudderanalytics.group("groupId", traits, options, callback);
@@ -142,6 +142,7 @@ rudderanalytics.group("groupId", traits, options, callback);
 {% hint style="info" %}
 The above call is sent with the name `group`, along with any additional properties passed to it.
 {% endhint %}
+
 ## Contact Us
 
 If you come across any issues while configuring Split.io as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
