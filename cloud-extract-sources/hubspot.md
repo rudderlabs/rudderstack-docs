@@ -37,7 +37,7 @@ If you've already configured HubSpot as a source before, you can choose the acco
 
 ### Setting the Table Prefix, Run Frequency and Data Update Schedule
 
-* Next, you will be required to set the **Table Prefix**. RudderStack will create a table in your warehouse with this prefix name and load all your HubSpot data into this table. 
+* Next, you will be required to set the **Table Prefix**. RudderStack will create a table in your warehouse with this prefix name and load all your HubSpot data into it. 
 * Also, set the **Run Frequency** to schedule the data import from your HubSpot account to RudderStack. Optionally, you can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
 ![](../.gitbook/assets/5%20%2815%29.png)
