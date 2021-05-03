@@ -56,6 +56,7 @@
   * [Segment](rudderstack-event-streams/segment.md)
 * [RudderStack Cloud Extract Sources](cloud-extract-sources/README.md)
   * [Facebook Ads](cloud-extract-sources/facebook-ads.md)
+  * [Freshdesk](cloud-extract-sources/freshdesk.md)
   * [Google AdWords](cloud-extract-sources/google-adwords.md)
   * [Google Analytics](cloud-extract-sources/google-analytics.md)
   * [Google Search Console](cloud-extract-sources/google-search-console.md)
