@@ -4,9 +4,9 @@ description: Step-by-step guide to send your event data from RudderStack to Pint
 
 # Pinterest Ads
 
-The [Pinterest Tag](https://ads.pinterest.com/) is a piece of code that, when added to your website, allows Pinterest to track your visitors as well as their actions. It gives you a detailed conversion report related to any and all customer activities like signups or buying a product.
+The [Pinterest Ads Tag](https://ads.pinterest.com/) is a piece of code that, when added to your website, allows Pinterest Ads to track your visitors as well as their actions. It gives you a detailed conversion report related to any and all customer activities like signups or buying a product.
 
-RudderStack supports Pinterest as a destination to which you can send your customer events in real-time, through Pinterest's `pintrk` conversion tag.
+RudderStack supports Pinterest Ads as a destination to which you can send your customer events in real-time, through Pinterest's `pintrk` conversion tag.
 
 {% hint style="info" %}
 Find the implementation of this integration on our [GitHub](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/PinterestTag).
