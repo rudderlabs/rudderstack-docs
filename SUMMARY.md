@@ -140,7 +140,7 @@
   * [Optimizely Full Stack](destinations/optimizely-full-stack.md)
   * [Optimizely Web](destinations/optimizely-web.md)
   * [Pendo](destinations/pendo.md)
-  * [Pinterest Ads](destinations/pinterest-tag.md)
+  * [Pinterest Ads](destinations/pinterest-ads.md)
   * [PostHog](destinations/posthog.md)
   * [Redis](destinations/redis.md)
   * [Salesforce](destinations/salesforce.md)
