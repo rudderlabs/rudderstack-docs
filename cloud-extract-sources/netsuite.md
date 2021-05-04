@@ -85,9 +85,13 @@ Note that none of the resources are selected by default, so you will have to do 
 
 That's it! Netsuite is now successfully configured as a source on your RudderStack dashboard. 
 
-RudderStack will start ingesting data from Netsuite as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+RudderStack will start ingesting data from Netsuite as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
 ![](../.gitbook/assets/image%20%2875%29.png)
+
+{% hint style="success" %}
+Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
+{% endhint %}
 
 ## FAQs
 

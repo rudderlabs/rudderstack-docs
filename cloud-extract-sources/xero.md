@@ -55,9 +55,13 @@ If you have already connected RudderStack to your Xero account, your credentials
 
 That's it! Xero is now successfully configured as a source on your RudderStack dashboard.
 
-RudderStack will start importing data from Xero as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+RudderStack will start importing data from Xero as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
 ![](../.gitbook/assets/screen-shot-2021-02-23-at-6.28.27-pm.png)
+
+{% hint style="success" %}
+Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
+{% endhint %}
 
 ## FAQs
 

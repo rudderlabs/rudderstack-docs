@@ -65,9 +65,13 @@ If a combination of **Dimensions** and **Metrics** chosen by you is invalid, Rud
 
 That's it! Google Analytics is now successfully configured as a source on your RudderStack dashboard. 
 
-RudderStack will start importing data from Google Analytics as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+RudderStack will start importing data from Google Analytics as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
 ![](../.gitbook/assets/screen-shot-2020-12-15-at-4.26.30-pm.png)
+
+{% hint style="success" %}
+Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
+{% endhint %}
 
 ## Valid Dimensions and Metrics Combinations
 

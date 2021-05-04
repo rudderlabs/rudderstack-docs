@@ -61,9 +61,13 @@ Please note that this **Start from date** is valid only for the first \(historic
 
 That's it! Google Search Console is now successfully configured as a source on your RudderStack dashboard. 
 
-RudderStack will start importing data from Google Search Console as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+RudderStack will start importing data from Google Search Console as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
 ![](../.gitbook/assets/screen-shot-2020-12-18-at-11.01.14-am%20%281%29.png)
+
+{% hint style="success" %}
+Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
+{% endhint %}
 
 ## Data Synchronization
 

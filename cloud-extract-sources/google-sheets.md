@@ -65,9 +65,15 @@ By default, RudderStack uses the row that follows the header as the first data r
 
 ![](../.gitbook/assets/5%20%284%29.png)
 
-That's it! Your Google Sheet is now successfully configured as a source. RudderStack will start ingesting data from the sheet as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown: 
+That's it! Your Google Sheet is now successfully configured as a source. 
+
+RudderStack will start ingesting data from your Google Sheets source as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
 ![](../.gitbook/assets/6%20%285%29.png)
+
+{% hint style="success" %}
+Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
+{% endhint %}
 
 ## FAQs
 

@@ -61,9 +61,13 @@ RudderStack will not sync the data which is older than the selected timeframes.
 
 That's it! Facebook Ads is now successfully configured as a source on your RudderStack dashboard. 
 
-RudderStack will start importing data from Facebook Ads as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+RudderStack will start importing data from Facebook Ads as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
 ![](../.gitbook/assets/screen-shot-2021-02-08-at-1.24.32-pm.png)
+
+{% hint style="success" %}
+Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
+{% endhint %}
 
 ## What Facebook Ads Data does RudderStack Import?
 

@@ -45,9 +45,13 @@ Salesforce’s API strictly enforces a limit on its usage. A high **Run Frequenc
 
 ![](../../.gitbook/assets/5%20%285%29.png)
 
-That's it! Salesforce is now successfully configured as a source on your RudderStack dashboard. RudderStack will start ingesting data at the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown: 
+That's it! Salesforce is now successfully configured as a source on your RudderStack dashboard. RudderStack will start ingesting data at the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown: 
 
 ![](../../.gitbook/assets/6%20%284%29.png)
+
+{% hint style="success" %}
+Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
+{% endhint %}
 
 ## How RudderStack Syncs Salesforce Data
 

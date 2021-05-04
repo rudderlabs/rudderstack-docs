@@ -50,9 +50,13 @@ If you've already configured HubSpot as a source before, you can choose the acco
 
 That's it! HubSpot is now successfully configured as a source on your RudderStack dashboard. 
 
-RudderStack will start ingesting data from HubSpot as per the specified frequency. You can further connect this source to your data warehouse or other third-party destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+RudderStack will start ingesting data from HubSpot as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
 ![](../.gitbook/assets/7%20%289%29.png)
+
+{% hint style="success" %}
+Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
+{% endhint %}
 
 ## FAQs
 
