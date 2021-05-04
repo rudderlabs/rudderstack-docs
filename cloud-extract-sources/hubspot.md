@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from HubSpot into RudderStack.
 
 [HubSpot](https://www.hubspot.com/) is a leading marketing and sales platform that helps you track leads, as well as inbound marketing and sales. It offers state-of-the-art tools for efficient marketing, tracking sales, and offering better customer support.
 
-This document guides you in setting up HubSpot as a source in RudderStack. Once configured, RudderStack automatically ingests your specified HubSpot data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up HubSpot as a source in RudderStack. Once configured, RudderStack automatically ingests your specified HubSpot data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

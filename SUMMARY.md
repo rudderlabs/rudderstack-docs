@@ -68,6 +68,7 @@
   * [Marketo](cloud-extract-sources/marketo.md)
   * [Netsuite](cloud-extract-sources/netsuite.md)
   * [Pipedrive](cloud-extract-sources/pipedrive.md)
+  * [QuickBooks](cloud-extract-sources/quickbooks.md)
   * [Salesforce](cloud-extract-sources/salesforce/README.md)
     * [Schema Comparison: RudderStack vs. Segment](cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment.md)
   * [Salesforce Pardot](cloud-extract-sources/salesforce-pardot.md)

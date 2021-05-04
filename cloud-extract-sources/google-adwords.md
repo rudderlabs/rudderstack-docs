@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest your Google AdWords data into RudderSt
 
 [Google AdWords](https://ads.google.com/intl/en_in/home/) is Google's premier online advertising platform. It allows advertisers to display their advertisements, as well as service offerings and product listings to prospective customers. With AdWords, you can place your ads within Google's search results, and also on your websites, mobile apps and videos. Google Adwords offers these advertisement services under a PPC \(pay per click\) model.
 
-This document guides you in setting up Google AdWords as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google AdWords data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Google AdWords as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google AdWords data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

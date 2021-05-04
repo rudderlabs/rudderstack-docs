@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from Netsuite into RudderStack.
 
 [Netsuite](https://www.netsuite.com/portal/home.shtml) is a popular business management suite, delivering ERP, CRM, and eCommerce solutions to nearly 25000 customers worldwide. With NetSuite, you get a unified, real-time business management platform to manage all your ERP, automation, analytics, and marketing operations effortlessly, and at a fraction of a cost of the traditional on-premise ERP tools.
 
-This document guides you in setting up Netsuite as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Netsuite data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Netsuite as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Netsuite data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

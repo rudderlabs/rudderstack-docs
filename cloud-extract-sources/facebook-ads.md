@@ -8,7 +8,7 @@ description: >-
 
 [Facebook Ads](https://www.facebook.com/business/ads) is an online advertising platform that lets you create and run cross-device marketing campaigns, and track their performance with easy to read reports. With Facebook Ads, you can create, publish and purchase ads across all Facebook platforms - including Facebook, Instagram, Facebook Messenger, and Audience Network.
 
-This document guides you in setting up Facebook Ads as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Facebook Ads data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Facebook Ads as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Facebook Ads data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

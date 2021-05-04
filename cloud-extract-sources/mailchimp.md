@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from Mailchimp into RudderStack.
 
 [Mailchimp](https://mailchimp.com/) is a popular email marketing automation platform used worldwide by thousands of businesses. Built specially for eCommerce and retail, Mailchimp allows you to build your audience and send them personalized campaign and marketing messages through web or mobile.
 
-This document guides you in setting up Mailchimp as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Mailchimp data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Mailchimp as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Mailchimp data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 
@@ -23,7 +23,7 @@ To set up Mailchimp as a source on the RudderStack dashboard, follow these steps
 * From the list of sources, click on **Mailchimp**.
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/3%20%2817%29.png)
+![](../.gitbook/assets/3%20%2818%29.png)
 
 ### Specifying Connection Credentials
 
@@ -37,7 +37,7 @@ If you've already configured Mailchimp as a source before, you can choose the ac
 
 * Authorize RudderStack to access your Mailchimp account, as shown:
 
-![](../.gitbook/assets/5%20%2817%29.png)
+![](../.gitbook/assets/5%20%2818%29.png)
 
 ### Configuring the Mailchimp Source
 

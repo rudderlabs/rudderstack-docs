@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest event data from Salesforce into Rudder
 
 [Salesforce](https://www.salesforce.com/in/?ir=1) is an industry leader in enterprise CRM. It offers a suite of enterprise applications revolving around marketing automation, customer engagement and support, application development as well as analytics. 
 
-This guide is aimed at helping you set up Salesforce as a source in RudderStack in the easiest possible way. With this integration, you can send your Salesforce data to RudderStack as events, which can then be further routed to your preferred third-party destinations.
+This guide is aimed at helping you set up Salesforce as a source in RudderStack in the easiest possible way. With this integration, you can send your Salesforce data to RudderStack as events, which can then be further routed to your preferred data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

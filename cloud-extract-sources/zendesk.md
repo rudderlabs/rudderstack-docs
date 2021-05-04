@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from Zendesk into RudderStack
 
 [Zendesk](https://www.zendesk.com/) is a popular customer support, sales and service platform that lets you serve and engage with your customers effectively. Zendesk offers integrated customer support, a modern sales CRM, as well as a smart, self-serve knowledge base. In addition, its analytics and reporting capabilities lets you understand your customers better. In addition, you can also engage with them more effectively through Zendesk's personalized live chats and messaging service.
 
-This document guides you in setting up Zendesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Zendesk data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Zendesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Zendesk data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

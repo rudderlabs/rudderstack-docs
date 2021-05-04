@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from Xero into RudderStack.
 
 [Xero](https://www.xero.com/us/) is a popular cloud-based accounting software, ideal for small and medium-sized businesses, accountants, and book-keepers. It allows you to simplify your accounting and everyday business-related tasks, including bill payments, bank connections, and claiming expenses.
 
-This document guides you in setting up Xero as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Xero data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Xero as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Xero data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started <a id="getting-started"></a>
 

@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from Pipedrive into RudderStack.
 
 [Pipedrive](https://www.pipedrive.com/) is a popular sales CRM and pipeline management tool that lets you manage your leads, track all your customer communications, automate administrative tasks, and do so much more. With Pipedrive, you can efficiently track and manage your sales funnel, and also integrate it with hundreds of popular apps like Slack, Mailchimp, and more.
 
-This document guides you in setting up Pipedrive as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Pipedrive data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Pipedrive as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Pipedrive data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

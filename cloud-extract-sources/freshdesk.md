@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from Freshdesk into RudderStack.
 
 [Freshdesk](https://freshdesk.com/) is a popular customer support software. It provides cutting-edge, cross-channel customer support features including bots and various other self-service solutions. You can track and manage your customer support tickets, set deadlines for their response, and bring together all your customer communications via different channels into a single platform.
 
-This document guides you in setting up Freshdesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Freshdesk data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Freshdesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Freshdesk data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

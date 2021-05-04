@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest your Google Analytics data into Rudder
 
 [Google Analytics](https://analytics.google.com/analytics/web/#/) is the world's most popular analytics service that allows you to track and report your website traffic across a variety of sources. It lets you measure your advertising ROI, as well as set up tracking code to perform data collection based on the type of your website.
 
-This document guides you in setting up Google Analytics as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google Analytics data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Google Analytics as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google Analytics data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

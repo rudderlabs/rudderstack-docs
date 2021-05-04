@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from your Mixpanel account into R
 
 [Mixpanel](https://mixpanel.com/) is an analytics platform that helps you to track user actions with your application. It also provides specific tools for targeted business communication and engagement with your customers. In-app A/B testing, user survey forms, and custom reports to measure customer retention are some of the other features offered by Mixpanel.
 
-This document guides you in setting up Mixpanel as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Mixpanel data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Mixpanel as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Mixpanel data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

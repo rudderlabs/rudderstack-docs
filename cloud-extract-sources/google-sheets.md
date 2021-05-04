@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from Google Sheets into RudderSta
 
 [Google Sheets](https://www.google.com/sheets/about/) is a popular spreadsheet program that is bundled as a part of the free, cloud-based office suite offered by Google. With Google Sheets you can seamlessly create spreadsheets that update and save automatically and are easy to access from your Google Drive. 
 
-With the RudderStack-Google Sheets integration, you can send your spreadsheet data residing within Google Sheets to your preferred data warehouse or third-party destinations via RudderStack.
+With the RudderStack-Google Sheets integration, you can send your spreadsheet data residing within Google Sheets to your preferred data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

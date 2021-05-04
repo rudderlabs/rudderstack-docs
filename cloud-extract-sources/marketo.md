@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from your Marketo account into Ru
 
 [Marketo](https://marketo.com) is a leading marketing automation platform that allows you to identify the right audiences through effective behavioral tracking, and deliver automated, personalized marketing campaigns to enhance their overall product experience. It also offers cutting-edge email marketing, lead management, and revenue attribution solutions. With Marketo, you can deliver enhanced customer experiences and build customized products for businesses across all spectrum - including tech, healthcare, media, manufacturing, and education.
 
-This document guides you in setting up Marketo as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Marketo data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Marketo as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Marketo data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

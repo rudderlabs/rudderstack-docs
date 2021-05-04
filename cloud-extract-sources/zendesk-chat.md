@@ -8,7 +8,7 @@ description: >-
 
 Zendesk Chat is a cross-platform live chat software that allows you to reach out to your customers  in real-time via live chats and instant messaging. It also gives you the flexibility to have instant access to your ongoing as well as historical chats to get a full context of your conversations with your customers at all times. With Zendesk Chat, you can deliver rich, personalized user experiences across web and mobile. In addition, it is very easy to automate, and highly scalable for all your customer needs.
 
-This document guides you in setting up Zendesk Chat as a Cloud Extract source in RudderStack. Once configured, RudderStack automatically ingests your specified Zendesk Chat data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Zendesk Chat as a Cloud Extract source in RudderStack. Once configured, RudderStack automatically ingests your specified Zendesk Chat data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 

@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest data from Intercom into RudderStack.
 
 [Intercom](https://www.intercom.com/) is an industry-leading, real-time business messaging platform, that allows you to bring together and manage all your customer life cycle activities on a single platform.
 
-This document guides you in setting up Intercom as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Intercom data, which can then be routed to your data warehouse or any other third-party destination supported by RudderStack.
+This document guides you in setting up Intercom as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Intercom data, which can then be routed to your data warehouse destination supported by RudderStack.
 
 ## Getting Started
 
