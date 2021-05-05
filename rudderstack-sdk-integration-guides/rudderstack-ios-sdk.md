@@ -486,7 +486,7 @@ rudder?.track("track_with_props", properties: [
 
 
 {% hint style="info" %}
-If you specify the custom destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
+If you specify the custom destinations both while initializing the SDK as well as making an event call, then the destinations specified at the event level only will be considered.
 {% endhint %}
 
 ## External ID
