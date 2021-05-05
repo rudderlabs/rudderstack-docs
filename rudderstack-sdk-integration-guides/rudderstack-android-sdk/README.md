@@ -457,8 +457,10 @@ You can specify your custom integrations by creating a `RudderOption` object as 
 ```kotlin
 val option = RudderOption()
 option.putIntegration("All", false) //default value for `All` is true
+// adding custom integration by specifying its display name
 option.putIntegration("Google Analytics", true)
 option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>)
+// adding custom integration by using its Factory object
 option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
 option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 ```
@@ -467,8 +469,10 @@ option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 ```java
 RudderOption option = new RudderOption();
 option.putIntegration("All", false); // default value for `All` is true
+// adding custom integration by specifying its display name
 option.putIntegration("Google Analytics", true);
 option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>);
+// adding custom integration by using its Factory object
 option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
 option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 ```
