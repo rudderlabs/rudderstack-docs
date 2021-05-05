@@ -446,11 +446,9 @@ RudderClient.getAnonymousId();
 The method `getAnonymousId` is available from v1.0.11 onwards.
 {% endhint %}
 
-## Custom Integrations
+## Enabling / Disabling Events for Specific Destinations
 
-With the custom Integrations feature you can easily enable or disable the events from flowing to any particular destination (or) all the destinations the source is connected to.
-
-You can specify your custom integrations by creating a `RudderOption` object as shown below:
+The RudderStack Android SDK allows you to enable or disable events flowing to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating a `RudderOption` object as shown:
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -480,27 +478,27 @@ option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 {% endtabs %}
 
 {% hint style="info" %}
-The keyword `All` in the above snippet represents all the destinations the source is connected with and its default value is `true`.
+The keyword `All` in the above snippet represents all the destinations the source is connected to. Its value is set to `true` by default.
 {% endhint %}
 
 {% hint style="info" %}
-Make sure the `destination display name` you pass while specifying the custom integrations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
+Make sure the `destination display name` that you pass while specifying the destinations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
 {% endhint %}
 
-You can pass the custom integrations created in the above snippet to the SDK in two ways:
+You can pass the list of integration(s) created in the above snippet to the SDK in two ways:
 
-i) Passing custom integrations while initializing the SDK:
+### 1. Passing the destinations while initializing the SDK:
 
-This is helpful when you want to apply the same set of custom integrations across all the event calls you make using the SDK.
+This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the custom destination(s).
 
 {% tabs %}
 {% tab title="Kotlin" %}
 ```kotlin
 var rudderClient = RudderClient.getInstance(
             this,
-            WRITE_KEY,
+            <WRITE_KEY>,
             RudderConfig.Builder()
-                .withDataPlaneUrl(DATA_PLANE_URL)
+                .withDataPlaneUrl(<DATA_PLANE_URL>)
                 .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
                 .withTrackLifecycleEvents(false)
                 .withRecordScreenViews(false)
@@ -513,9 +511,9 @@ var rudderClient = RudderClient.getInstance(
 ```java
 RudderClient client = RudderClient.getInstance(
                 this,
-                WRITE_KEY,
+                <WRITE_KEY>,
                 new RudderConfig.Builder()
-                        .withEndPointUri(END_POINT_URL)
+                        .withEndPointUri(<END_POINT_URL>)
                         .build(),
                 option // passing the rudderoption object containing custom integrations here
         );
@@ -523,9 +521,9 @@ RudderClient client = RudderClient.getInstance(
 {% endtab %}
 {% endtabs %}
 
-ii) Passing custom integrations while making any event call:
+### 2. Passing the destinations while making any event call:
 
-This is helpful when you want to apply a set of custom integrations only to a particular event (or) if you want to override the custom integrations passed with the initialization of SDK for a particular event.
+This approach is helpful when you want to send only a particular event to the specified destination(s) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -551,7 +549,7 @@ rudderClient.track(
 {% endtabs %}
 
 {% hint style="info" %}
-If you pass custom integrations both while initializing the sdk as well as while making an event call then the custom integrations passed at the event level will only be considered.
+If you specify the custom destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
 {% endhint %}
 
 ## External ID
