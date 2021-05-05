@@ -159,6 +159,7 @@
   * [Amazon Redshift](data-warehouse-integrations/amazon-redshift.md)
   * [ClickHouse](data-warehouse-integrations/clickhouse.md)
   * [Google BigQuery](data-warehouse-integrations/google-bigquery.md)
+  * [Microsoft SQL Server](data-warehouse-integrations/microsoft-sql-server.md)
   * [Snowflake](data-warehouse-integrations/snowflake.md)
   * [PostgreSQL](data-warehouse-integrations/postgresql.md)
 * [User Transformations in RudderStack](adding-a-new-user-transformation-in-rudderstack.md)
