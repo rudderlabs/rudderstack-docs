@@ -394,17 +394,18 @@ An example of setting the `anonymousId` is as below
 
 ## Enabling / Disabling Events for Specific Destinations
 
-The RudderStack iOS SDK allows you to enable or disable events flowing to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating a `RSOption` object as shown:
+The RudderStack iOS SDK allows you to enable or disable event flow to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating a `RSOption` object as shown:
 
 {% tabs %}
 {% tab title="Objective-C" %}
 ```objectivec
 RSOption *option = [[RSOption alloc]init];
-// adding custom integration by specifying its display name
+//default value for `All` is true
 [option putIntegration:@"All" isEnabled:YES];
+// specifying destination by its display name
 [option putIntegration:@"Amplitude" isEnabled:YES];
 [option putIntegration:@"<destination display name>" isEnabled:<BOOL>];
-// adding custom integration by using its Factory 
+// specifying destination by its Factory instance
 [option putIntegrationWithFactory:[RudderMoengageFactory instance] isEnabled:NO];
 [option putIntegrationWithFactory:[<RudderIntegrationFactory> instance] isEnabled:<BOOL>];
 ```
@@ -412,13 +413,14 @@ RSOption *option = [[RSOption alloc]init];
 {% tab title="Swift" %}
 ```swift
 let option:RSOption = RSOption();
-// adding custom integration by specifying its display name 
+//default value for `All` is true
 option.putIntegration("All", isEnabled:true)
+// specifying destination by its display name
 option.putIntegration("Amplitude", isEnabled:true)
 option.putIntegration(<DESTINATION DISPLAY NAME>, isEnabled:<BOOL>)
-// adding custom integration by using its Factory 
+// specifying destination by its Factory instance
 option.putIntegration(with: RudderMoengageFactory.instance(), isEnabled: true);
-option.putIntegration(with: RudderIntegrationFactory.instance(), isEnabled:<BOOL>);
+option.putIntegration(with: <RudderIntegrationFactory>.instance(), isEnabled:<BOOL>);
 ```
 {% endtab %}
 {% endtabs %}
@@ -431,7 +433,7 @@ The keyword `All` in the above snippet represents all the destinations the sourc
 Make sure the `destination display name` you pass while specifying the custom destinations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
 {% endhint %}
 
-You can pass the custom destinations created in the above snippet to the SDK in two ways:
+You can pass the destination(s) specified in the above snippet to the SDK in two ways:
 
 ### 1. Passing the destinations while initializing the SDK:
 
@@ -445,7 +447,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withLoglevel:RSLogLevelDebug];
 [builder withTrackLifecycleEvens:YES];
 [builder withRecordScreenViews:YES;
-[RSClient getInstance:WRITE_KEY config:[builder build] options:option]; // passing the rudderoption object containing custom integrations here
+[RSClient getInstance:WRITE_KEY config:[builder build] options:option]; // passing the rudderoption object containing the list of destination(s) you specified
 ```
 {% endtab %}
 {% tab title="Swift" %}
@@ -455,14 +457,14 @@ let builder: RSConfigBuilder = RSConfigBuilder()
             .withDataPlaneUrl(DATA_PLANE_URL)
             .withTrackLifecycleEvens(true)
             .withRecordScreenViews(true)
-RSClient.getInstance(WRITE_KEY, config: builder.build(),options: option)// passing the rudderoption object containing custom integrations here
+RSClient.getInstance(WRITE_KEY, config: builder.build(),options: option)// passing the rudderoption object containing the list of destination(s) you specified
 ```
 {% endtab %}
 {% endtabs %}
 
-### 2. Passing custom destinations while making any event call:
+### 2. Passing the destinations while making any event call:
 
-This approach is helpful when you want to send only a particular event to the custom destination(s) or if you want to override the destinations passed with the SDK initialization for a particular event.
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination(s) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
 
 {% tabs %}
 {% tab title="Objective-C" %}
@@ -470,7 +472,7 @@ This approach is helpful when you want to send only a particular event to the cu
 [[RSClient sharedInstance] track:@"simple_track_with_props" properties:@{
         @"key_1" : @"value_1",
         @"key_2" : @"value_2"
-    } options:option]; // passing the rudderoption object containing custom integrations here
+    } options:option]; // passing the rudderoption object containing the list of destination(s) you specified
 ```
 {% endtab %}
 {% tab title="Swift" %}
@@ -479,14 +481,14 @@ let rudder: RSClient? = RSClient.sharedInstance()
 rudder?.track("track_with_props", properties: [
             "key_1": "value_1",
             "key_2": "value_2",
-        ],options:option) // passing the rudderoption object containing custom integrations here
+        ],options:option) // passing the rudderoption object containing the list of destination(s) you specified
 ```
 {% endtab %}
 {% endtabs %}
 
 
 {% hint style="info" %}
-If you specify the custom destinations both while initializing the SDK as well as making an event call, then the destinations specified at the event level only will be considered.
+If you specify the destinations both while initializing the SDK as well as making an event call, then the destinations specified at the event level only will be considered.
 {% endhint %}
 
 ## External ID

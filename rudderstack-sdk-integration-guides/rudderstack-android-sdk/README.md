@@ -448,17 +448,18 @@ The method `getAnonymousId` is available from v1.0.11 onwards.
 
 ## Enabling / Disabling Events for Specific Destinations
 
-The RudderStack Android SDK allows you to enable or disable events flowing to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating a `RudderOption` object as shown:
+The RudderStack Android SDK allows you to enable or disable event flow to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating a `RudderOption` object as shown:
 
 {% tabs %}
 {% tab title="Kotlin" %}
 ```kotlin
 val option = RudderOption()
-option.putIntegration("All", false) //default value for `All` is true
-// adding custom integration by specifying its display name
+//default value for `All` is true
+option.putIntegration("All", false) 
+// specifying destination by its display name
 option.putIntegration("Google Analytics", true)
 option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>)
-// adding custom integration by using its Factory object
+// specifying destination by its Factory object
 option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
 option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 ```
@@ -466,11 +467,12 @@ option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 {% tab title="Java" %}
 ```java
 RudderOption option = new RudderOption();
-option.putIntegration("All", false); // default value for `All` is true
-// adding custom integration by specifying its display name
+// default value for `All` is true
+option.putIntegration("All", false); 
+// specifying destination by its display name
 option.putIntegration("Google Analytics", true);
 option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>);
-// adding custom integration by using its Factory object
+// specifying destination by its Factory object
 option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
 option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 ```
@@ -485,11 +487,11 @@ The keyword `All` in the above snippet represents all the destinations the sourc
 Make sure the `destination display name` that you pass while specifying the destinations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
 {% endhint %}
 
-You can pass the list of integration(s) created in the above snippet to the SDK in two ways:
+You can pass the destination(s) specified in the above snippet to the SDK in two ways:
 
 ### 1. Passing the destinations while initializing the SDK:
 
-This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the custom destination(s).
+This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination(s).
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -503,7 +505,7 @@ var rudderClient = RudderClient.getInstance(
                 .withTrackLifecycleEvents(false)
                 .withRecordScreenViews(false)
                 .build(), 
-            option // passing the rudderoption object containing custom integrations here
+            option // passing the rudderoption object containing the list of destination(s) you specified
         )
 ```
 {% endtab %}
@@ -515,7 +517,7 @@ RudderClient client = RudderClient.getInstance(
                 new RudderConfig.Builder()
                         .withEndPointUri(<END_POINT_URL>)
                         .build(),
-                option // passing the rudderoption object containing custom integrations here
+                option // passing the rudderoption object containing the list of destination(s) you specified
         );
 ```
 {% endtab %}
@@ -523,7 +525,7 @@ RudderClient client = RudderClient.getInstance(
 
 ### 2. Passing the destinations while making any event call:
 
-This approach is helpful when you want to send only a particular event to the specified destination(s) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination(s) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -532,7 +534,7 @@ rudderClient.track(
                     "Product Added",
                     RudderProperty()
                             .putValue("product_id", "product_001"),
-                    option // passing the rudderoption object containing custom integrations here
+                    option // passing the rudderoption object containing the list of destination you specified
             )
 ```
 {% endtab %}
@@ -542,14 +544,14 @@ rudderClient.track(
                 "Product Added",
                 new RudderProperty()
                         .putValue("product_id", "product_001"), 
-                option // passing the rudderoption object containing custom integrations here
+                option // passing the rudderoption object containing the list of destination(s) you specified
         );
 ```
 {% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
-If you specify the custom destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
+If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
 {% endhint %}
 
 ## External ID
