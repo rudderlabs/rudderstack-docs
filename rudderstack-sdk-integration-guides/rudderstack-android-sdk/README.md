@@ -446,6 +446,110 @@ RudderClient.getAnonymousId();
 The method `getAnonymousId` is available from v1.0.11 onwards.
 {% endhint %}
 
+## Custom Integrations
+
+With the custom Integrations feature you can easily enable or disable the events from flowing to any particular destination (or) all the destinations the source is connected to.
+
+You can specify your custom integrations by creating a `RudderOption` object as shown below:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+val option = RudderOption()
+option.putIntegration("All", false) //default value for `All` is true
+option.putIntegration("Google Analytics", true)
+option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>)
+option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
+option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
+```
+{% endtab %}
+{% tab title="Java" %}
+```java
+RudderOption option = new RudderOption();
+option.putIntegration("All", false); // default value for `All` is true
+option.putIntegration("Google Analytics", true);
+option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>);
+option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
+option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The keyword `All` in the above snippet represents all the destinations the source is connected with and its default value is `true`.
+{% endhint %}
+
+{% hint style="info" %}
+Make sure the `destination display name` you pass while specifying the custom integrations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
+{% endhint %}
+
+You can pass the custom integrations created in the above snippet to the SDK in two ways:
+
+i) Passing custom integrations while initializing the SDK:
+
+This is helpful when you want to apply the same set of custom integrations across all the event calls you make using the SDK.
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+var rudderClient = RudderClient.getInstance(
+            this,
+            WRITE_KEY,
+            RudderConfig.Builder()
+                .withDataPlaneUrl(DATA_PLANE_URL)
+                .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
+                .withTrackLifecycleEvents(false)
+                .withRecordScreenViews(false)
+                .build(), 
+            option // passing the rudderoption object containing custom integrations here
+        )
+```
+{% endtab %}
+{% tab title="Java" %}
+```java
+RudderClient client = RudderClient.getInstance(
+                this,
+                WRITE_KEY,
+                new RudderConfig.Builder()
+                        .withEndPointUri(END_POINT_URL)
+                        .build(),
+                option // passing the rudderoption object containing custom integrations here
+        );
+```
+{% endtab %}
+{% endtabs %}
+
+ii) Passing custom integrations while making any event call:
+
+This is helpful when you want to apply a set of custom integrations only to a particular event (or) if you want to override the custom integrations passed with the initialization of SDK for a particular event.
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.track(
+                    "Product Added",
+                    RudderProperty()
+                            .putValue("product_id", "product_001"),
+                    option // passing the rudderoption object containing custom integrations here
+            )
+```
+{% endtab %}
+{% tab title="Java" %}
+```java
+rudderClient.track(
+                "Product Added",
+                new RudderProperty()
+                        .putValue("product_id", "product_001"), 
+                option // passing the rudderoption object containing custom integrations here
+        );
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+If you pass custom integrations both while initializing the sdk as well as while making an event call then the custom integrations passed at the event level will only be considered.
+{% endhint %}
+
 ## External ID
 
 You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
