@@ -57,7 +57,8 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
       {% endhint %}
 
 {% hint style="info" %}
-You can send `page`, `identify`, and `track` events with this integration.
+For mapping `attributes` from event `properties` or `traits`/`context.traits` we also support absolute mapping Example: adding `context.traits.firstName` will map the same value as adding `firstName`.
+**Note: We advise you to map with absolute path as it resolves the ambiguity when you have same `attribute` name in `traits`, `context.traits` or `properties`**
 {% endhint %}
 
 {% hint style="warning" %}
