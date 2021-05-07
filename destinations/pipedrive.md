@@ -47,9 +47,66 @@ To successfully configure Pipedrive as a destination, you will need to configure
 `GroupId Token` and `UserId Token` fields are related to Custom Field tokens in Pipedrive.{% endhint %}
 
 {% hint style="info" %}
-**Note:** Pipedrive does not support mapping userId or groupId. Instead they create id's internally. So, in order for RudderStack calls to work with Pipedrive, create custom fields for userId, groupId in Pipedrive to which the provided userId and groupId values would be mapped to.{% endhint %}.
+**Note:** Pipedrive does not support mapping userId or groupId. Instead they create id's internally. So, in order for RudderStack calls to work with Pipedrive, create custom fields for userId, groupId in Pipedrive to which the provided userId and groupId values would be mapped to.
+{% endhint %}.
+
+**Note:** For cases where user already has the list of pipedrive id's, events can be sent using those id's as external Id. Details have been mentioned below. Go to the section `Using External Id`.
 
 {% hint style="info" %} **Note:** `GroupId Token` and `UserId Token` are required only if calls like identify, group, etc. will be made. In that case, rudderstack needs a way to map provided userId's and groupId's in the destination.{% endhint %}
+
+**Note:** For creating `Leads` or `Organization` in Pipedrive, `person_id` is required. Anonymous tracking is not available. Hence, UserId or External Id is required for all events.
+
+## Enable User Creation
+
+If User Creation flag is turned on, Rudderstack will create new user with the provided userId value (if user with userId value does not already exist). This will work for identify, track and group calls.
+
+{% hint style="info" %}
+**Note:** For identify calls, to create a new user, keep this flag on. Otherwise, new users will not be created.
+If turned off, Rudderstack will search and update existing user, if present.
+{% endhint %}
+
+![Configuration Settings for Pipedrive](../.gitbook/assets/pipedrive-flag.png)
+
+## Using External Id
+
+Already existing Pipedrive Id's can also be used with Rudderstack. In that case, provide the Pipedrive Id in `context.enternalId` in the required format.
+
+Example of payload with external id:
+```
+{
+    "userId": "sample-user-id",
+    "anonymousId": "sample-anon-id",
+    "context": {
+        "externalId": [
+            {
+                "type": "person_id",
+                "id": 261
+            }
+        ],
+        "traits": {
+            "name": " New User",
+            "email": "user@email.com"
+        },
+        "ip": "0.0.0.0",
+        "library": {
+            "name": "http"
+        }
+    },
+    "timestamp": "2020-02-02T00:23:09.544Z"
+}
+```
+{% hint style="info" %}
+**Note:** External Id can be provided for `Person` and `Group` only. External Id can also be provided for alias  calls.
+{% endhint %}
+
+* For `Person` externalId type is `person_id`
+* For `Group` externalId type is `org_id`
+* For RudderStack `alias` call, external Id's can be provided. The mapping is shown below.
+
+| **RudderStack Key** | **External Id Key**
+| :--- | :--- |
+| previousId| prev_person_id|
+| userId | curr_person_id |
 
 ## Using Custom Fields
 
@@ -76,6 +133,8 @@ In order to create custom fields and provide the mappings in Rudderstack, please
 Pipedrive allows passing in owner_id in most cases. However, that owner_id is related to the Pipedrive account owner and not a user. So, owner_fields are not taken by Rudderstack for any of the events.
 {% endhint %}
 
+**Note:** `External Id's` are given the `highest Precedence`, i.e if both external Id and custom Id's are provided, external id will be used for that event.
+
 ## Supported Events
 
 The following events are supported by Rudderstack for Pipedrive destionation.
@@ -84,15 +143,6 @@ The following events are supported by Rudderstack for Pipedrive destionation.
 * [Alias](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#11-alias)
 * [Group](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#10-group)
 * [Track](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#7-track)
-
-The following Ecommerce events are also supported:
-
-* [Product Viewed](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification/ordering#product-viewed)
-* [Order Completed](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification/ordering#order-completed)
-
-{% hint style="info" %}
-**More details on the Ecommerce events can be found in the Rudderstack* [**Ecommerce Events Specification**](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification/ordering)**.**
-{% endhint %}
 
 ### Identify
 
@@ -179,7 +229,37 @@ rudderanalytics.alias("to", "from", options, callback);
 ```
 Note: `to` denotes the new identifier and is required.
 
-If both users exist, then the [Pipedrive merge](https://developers.pipedrive.com/docs/api/v1/#!/Persons/mergePersons) endpoint is called.
+External Id's can also be supplied in Alias.
+Sample example is shown below:
+```
+{
+    "anonymousId": "sample-anon-id",
+    "previousId": "",
+    "userId": "",
+    "context": {
+        "externalId": [
+            {
+                "type": "prev_person_id",
+                "id": 271
+            },
+            {
+                "type": "curr_person_id",
+                "id": 272
+            }
+        ],
+        "traits": {
+            "name": "Updated Username"
+        },
+        "ip": "14.5.67.21",
+        "library": {
+            "name": "http"
+        }
+    },
+    "timestamp": "2020-01-21T00:21:34.208Z"
+}
+```
+
+Note: In cases where both the previous and current users exist, the [Pipedrive merge](https://developers.pipedrive.com/docs/api/v1/#!/Persons/mergePersons) endpoint is called.
 
 ### Track
 
@@ -210,125 +290,6 @@ Custom Fields can also be passed. Provide the Custom Field name and token under 
 {% hint style="info"%}
 **Note:** Pipedrive requires a valid person_id or organization_id (these are Pipedrive side id's) for a Lead creation. So, in order to map the track event to a Lead object correctly, a valid userId is required with the track event, i.e A user should exist for the userId.
 {% endhint %}
-
-### Ecommerce Events
-
-For Pipedrive, Rudderstack is supporting two Ecommerce events:
-
-* Product Viewed
-* Order Completed
-
-{% hint type="info" %}
-The Product object in Pipedrive is created for these two Events.
-{% endhint %}
-
-**Note:** The `Product` object in Pipedrive is related to `inventory`. Pipedrive does not have any associated user field with the Product object.
-
-### Product Viewed
-
-A sample example of the `Product Viewed` event is shown below:
-
-```
-rudderanalytics.track('Product Viewed', {
-  "product_id": "sample-product-id",
-  "name": "Bike",
-  "price": 400000,
-  "currency": "INR"
-});
-```
-
-This will add a Product object in Piprdrive.
-
-Fields supported in this method are as follows:
-
-* product_id
-* sku
-* price
-* currency
-* quantity
-
-**Note**:
-
-* Provide both price and currency for it to be mapped to `prices` field in Pipedrive Product.
-
-* The Event name is mapped to the Pipedrive Product Lead title for this event.
-
-{% hint type="success" %}
-Custom Fields are supported. Provide the mapping in Rudderstack dahsboard.
-{% endhint %}
-
-More details about `Product` in Pipedrive can be found [here](https://developers.pipedrive.com/docs/api/v1/#!/Products/addProduct).
-
-### Order Completed
-
-A sample example of the `Order Completed` event is shown below:
-
-```
-rudderanalytics.track("Order Completed", {
-  checkout_id: "12346",
-  order_id: "1235",
-  total: 20,
-  revenue: 15.0,
-  shipping: 22,
-  tax: 1,
-  currency: "USD",
-  products: [
-    {
-      product_id: "124",
-      name: "Note 10 pro",
-      price: 400
-    },
-    {
-      product_id: "346",
-      name: "11 ultra",
-      price: 800
-    },
-  ],
-});
-
-```
-
-For the above call, each product in the `products` list is added as a Pipedrive Product.
-
-**Note:**
-
-* The `products` array is required and should not be empty. This is because, Order Related info cannot otherwise be mapped with Pipedrive. Only the items in products array are added.
-
-* Provide both the currency and price for it to be mapped to `prices` in Product.
-
-More details about `Product` in Pipedrive can be found [here](https://developers.pipedrive.com/docs/api/v1/#!/Products/addProduct).
-
-For `Order Completed` event, add Custom Fields to the item inside products array.
-
-An example with custom field is shown below:
-
-```
-rudderanalytics.track("Order Completed", {
-  checkout_id: "12346",
-  order_id: "1235",
-  total: 20,
-  revenue: 15.0,
-  shipping: 22,
-  tax: 1,
-  currency: "USD",
-  products: [
-    {
-      product_id: "124",
-      name: "Note 10 pro",
-      price: 400,
-      "rating": 4
-    },
-    {
-      product_id: "346",
-      name: "11 ultra",
-      price: 800,
-      "rating": 5
-    },
-  ],
-});
-```
-
-In the above example, `rating` is a Custom Field. Create the Custom Field under Pipedrive Products and add the mapping in Rudderstack dashboard.
 
 ## Contact Us
 
