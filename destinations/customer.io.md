@@ -114,6 +114,11 @@ rudderanalytics.track("Track me", {
  });
 ```
 
+{% hint style="info" %}
+For anonymous users, customer.io does not allow an event name more than the size of 100 bytes. That is why the event names bigger than the above size get trimmed from our end.
+{% endhint %}
+
+
 ## Device Token Registration
 
 We register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events.
