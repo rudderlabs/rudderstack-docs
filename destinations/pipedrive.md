@@ -59,20 +59,20 @@ To successfully configure Pipedrive as a destination, you will need to configure
 
 ## Enable User Creation
 
-If User Creation flag is turned on, Rudderstack will create new user with the provided userId value (if user with userId value does not already exist). This will work for identify, track and group calls.
+If the **Enable User Creation** option is enabled, Rudderstack will create a new user with the provided userId value, in case the user does not already exist. This will work for `identify`, `track`, and `group` calls.
 
 {% hint style="info" %}
-**Note:** For identify calls, to create a new user, keep this flag on. Otherwise, new users will not be created.
-If turned off, Rudderstack will search and update existing user, if present.
+**Note:** For `identify` calls, it is recommended to enable this option to enable RudderStack to create new users. In case this option is disabled, Rudderstack will only search for and update the existing users.
 {% endhint %}
 
 ![Configuration Settings for Pipedrive](../.gitbook/assets/pipedrive-flag.png)
 
-## Using External Id
+## Using External ID
 
-Already existing Pipedrive Id's can also be used with Rudderstack. In that case, provide the Pipedrive Id in `context.enternalId` in the required format.
+Already existing Pipedrive IDs can also be used with Rudderstack. In this case, provide the Pipedrive ID in `context.enternalId` in the required format.
 
-Example of payload with external id:
+An example of a payload with `externalId` present is as shown:
+
 ```
 {
     "userId": "sample-user-id",
@@ -97,14 +97,14 @@ Example of payload with external id:
 }
 ```
 {% hint style="info" %}
-**Note:** External Id can be provided for `Person` and `Group` only. External Id can also be provided for alias  calls.
+An External ID can be provided for `alias` calls, and can be associated with a `Person`or a `Group` only.
 {% endhint %}
 
-* For `Person` externalId type is `person_id`
-* For `Group` externalId type is `org_id`
-* For RudderStack `alias` call, external Id's can be provided. The mapping is shown below.
+* For `Person`, the `externalId` type is `person_id`.
+* For `Group`, the `externalId` type is `org_id`.
+* For the RudderStack `alias` call, the external IDs are mapped as shown in the table below:
 
-| **RudderStack Key** | **External Id Key**
+| **RudderStack Key** | **External ID Key**
 | :--- | :--- |
 | previousId| prev_person_id|
 | userId | curr_person_id |
@@ -138,7 +138,7 @@ Pipedrive allows passing in owner_id in most cases. However, that owner_id is re
 
 ## Supported Events
 
-The following events are supported by Rudderstack for Pipedrive destionation.
+RudderStack supports the following events for Pipedrive:
 
 * [Identify](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#6-identify)
 * [Alias](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#11-alias)
@@ -147,19 +147,19 @@ The following events are supported by Rudderstack for Pipedrive destionation.
 
 ### Identify
 
-This method allows you to link the users and their actions to a specific userid. You can also add additional information as traits to a user. Once you set the identify information to the user, those will be passed to the successive track or page calls. To reset the user identification, you can use the reset method.
+The `identify` method allows you to link the users and their actions to a specific user ID. You can also add additional information as traits to that user. Once you associate the `identify` information to the user, it will also be passed to the subsequent `track` or `page` calls. To reset the user identification, you can use the `reset` method.
 
-The identify() method definition is as follows:
+The `identify()` method definition is as follows:
 
 ``` 
 rudderanalytics.identify([userid], [traits], [options], [callback]);
 ```
 
 {% hint style="info" %}
-For an identify call, a `Person` object is create in Pipedrive.
+For an `identify` call, a `Person` object is created in Pipedrive.
 {% endhint %}
 
-Sample identify call:
+A sample `identify` call is as shown:
 
 ```
 rudderanalytics.identify(
@@ -170,19 +170,20 @@ rudderanalytics.identify(
 });
 ```
 
-Fields that can be passed in identify method are as follows:
+The fields that can be passed in the `identify` method are as follows:
 
-* name
-* email
-* phone
-* visible_to
-* add_time
+* `name`
+* `email`
+* `phone`
+* `visible_to`
+* `add_time`
 
-Custom Fields can also be passed in the method. However, provide the field name and token in Rudderstack dashboard under `Persons` section. Otherwise, random-key value pairs are dropped.
+You can also pass custom fields in the `identify` call. However, make sure that you provide the field name and token in the Rudderstack dashboard under the **Persons** section. Otherwise, the random-key value pairs will be dropped.
 
-**Note:** For identify, userId token is required. Please refer to the Connection settings section for more details.
+Note that for the `identify` call, the userId token is required. Please refer to the **Connection Settings** section above for more details.
 
-Example of identify method with Custom Fields:
+An example of the `identify` method with custom fields included is as shown:
+
 ```
 rudderanalytics.identify(
 "sample-user-id",
@@ -192,46 +193,49 @@ rudderanalytics.identify(
   "role": "Software Developer"
 });
 ```
-The `role` field and corresponding Pipedrive api key is provided in Rudderstack dashboard.
+The `role` field and corresponding Pipedrive API key needs to be provided in the Rudderstack dashboard while configuring the Pipedrive destination.
 
 ### Group
 
-The group call associates a user to a specific organization.
+The `group` call associates a user to a specific organization.
 
-The format of a group call is as shown:
+The format of a `group` call is as shown:
 
 ```
 rudderanalytics.group("groupId", traits, options, callback);
 ```
 
-{% hint style="info" %} For a group call, a Person object in Pipedrive is added to an organization. {% endhint %}
-
-**Note:** `GroupId` token is required for group call. Please provide the token in Rudderstack dashboard under `Connection Settings`.
-
-{% hint style="info" %}
-This Custom Group Id field is required by Rudderstack to map the groupId with Pipedrive's internal org_id.
+{% hint style="info" %} For a `group` call, the `Person` object in Pipedrive is added to an organization. 
 {% endhint %}
 
-Fields that can be passed in group method are as follows:
+Note that a `GroupId` token is required for `group` call. Please provide the token in Rudderstack dashboard under `Connection Settings`.
 
-* name
-* add_time
-* visible_to
+{% hint style="info" %}
+This Custom Group Id field is required by Rudderstack to map `groupId` with Pipedrive's `internal org_id` field.
+{% endhint %}
 
-Custom Fields can also be passed. Provide the Custom Field name and token under the `Organization Field Mapping` section in Rudderstack dashboard.
+The fields that can be passed in the `group` method are:
+
+* `name`
+* `add_time`
+* `visible_to`
+
+You can also pass custom fields in the `group` call. Simply provide the custom field name and token under the **Organization Field Mapping** section in Rudderstack dashboard while configuring your Pipedrive destination.
 
 ### Alias
 
-Alias method is used to merge two users or mapping an already identified user to a new identifier.
+The `alias` method is used to merge two users, or map an already identified user to a new identifier.
 
-Sample alias call
+A sample `alias` call is as shown:
+
 ```
 rudderanalytics.alias("to", "from", options, callback);
 ```
+
 Note: `to` denotes the new identifier and is required.
 
-External Id's can also be supplied in Alias.
-Sample example is shown below:
+You can also supply external IDs your `alias` call, as shown:
+
 ```
 {
     "anonymousId": "sample-anon-id",
@@ -260,13 +264,13 @@ Sample example is shown below:
 }
 ```
 
-Note: In cases where both the previous and current users exist, the [Pipedrive merge](https://developers.pipedrive.com/docs/api/v1/#!/Persons/mergePersons) endpoint is called.
+Note that in cases where both the previous and current users exist, the [Pipedrive merge](https://developers.pipedrive.com/docs/api/v1/#!/Persons/mergePersons) endpoint is called.
 
 ### Track
 
-This method allows you to track potential leads/deals. More details on `Leads` can be found in [Pipedrive docs](https://developers.pipedrive.com/docs/api/v1/#!/Leads/addLead).
+The `track` method allows you to track potential leads/deals and send this information to Pipedrive. More details on how to work with leads in Pipedrive can be found in the [Pipedrive docs](https://developers.pipedrive.com/docs/api/v1/#!/Leads/addLead).
 
-A sample example of how to use the track() method is as shown:
+A sample example of how to use the `track()` method is as shown:
 
 ```
 rudderanalytics.track(
@@ -279,17 +283,17 @@ rudderanalytics.track(
 );
 ```
 
-Fields that can be passed in track method are as follows:
+The fields that can be passed in the `track` method are:
 
-* currency
-* expected_close_date (In ISO 8601 format: YYYY-MM-DD)
-* label_ids
-* revenue/value/total/amount
+* `currency`
+* `expected_close_date` (In ISO 8601 format: YYYY-MM-DD)
+* `label_ids`
+* `revenue`/`value`/`total`/`amount`
 
-Custom Fields can also be passed. Provide the Custom Field name and token under the `Leads Field Mapping` section in Rudderstack dashboard.
+You can also pass custom fields in your `track`call. Simply provide the name of the custom field and the token in the **Leads Field Mapping** section while configuring your Pipedrive destination in the RudderStack dashboard.
 
 {% hint style="info"%}
-**Note:** Pipedrive requires a valid person_id or organization_id (these are Pipedrive side id's) for a Lead creation. So, in order to map the track event to a Lead object correctly, a valid userId is required with the track event, i.e A user should exist for the userId.
+**Note:** Pipedrive requires valid `person_id` or `organization_id` ID fields to be present for lead creation. So, in order to map the track event to a Lead object correctly, a valid `userId` is required with the `track event`, i.e a user should exist for that `userId`.
 {% endhint %}
 
 ## Contact Us
