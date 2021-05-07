@@ -4,11 +4,11 @@ description: Step-by-step guide to send your event data from RudderStack to Pipe
 
 # Pipedrive
 
-[Pipedrive](https://www.pipedrive.com/) is a CRM platform made for salespeople, by salespeople. It provides its users with solutions that are  designed to help SMBs efficiently manage the sales process and grow their business.
+[Pipedrive](https://www.pipedrive.com/) is a popular sales CRM and pipeline management tool that lets you manage your leads, track all your customer communications, automate administrative tasks, and more. With Pipedrive, you can efficiently track and manage your sales funnel, and also integrate it with hundreds of popular apps like Slack, Mailchimp, etc.
 
 You can now send your event data directly to Pipedrive through RudderStack.
 
-To visit Pipedrive API documentation, click [here](https://developers.pipedrive.com/docs/api/v1/#/).
+To check the Pipedrive API documentation, click [here](https://developers.pipedrive.com/docs/api/v1/#/).
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/dest-pipedrive)**.**
@@ -16,7 +16,7 @@ To visit Pipedrive API documentation, click [here](https://developers.pipedrive.
 
 ## Getting Started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported. Please refer the following table to do so:
+Before configuring your source and destination on the RudderStack, please check the supported connection modes by referring to the following table:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Pipedrive, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and Pipedrive as a destination.
+* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and select **Pipedrive** as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -41,20 +41,21 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 To successfully configure Pipedrive as a destination, you will need to configure the following settings:
 
-* **Api Token:** Your api token is a unique token generated for your account. It can be found in your account in the **Company Settings**-->**Personal Preferances** --> **API**.
+* **Api Token:** Your API token is a unique token generated for your account. It can be found in your Pipedrive account by navigating to **Company Settings**-->**Personal Preferances** --> **API**.
 
 {% hint style="info" %}
-`GroupId Token` and `UserId Token` fields are related to Custom Field tokens in Pipedrive.{% endhint %}
+`GroupId Token` and `UserId Token` fields are related to the Custom Field tokens in Pipedrive.{% endhint %}
 
 {% hint style="info" %}
-**Note:** Pipedrive does not support mapping userId or groupId. Instead they create id's internally. So, in order for RudderStack calls to work with Pipedrive, create custom fields for userId, groupId in Pipedrive to which the provided userId and groupId values would be mapped to.
+**Note:** Pipedrive does not support mapping userId or groupId. Instead they create these IDs internally. Therefore, in order for RudderStack calls to work with Pipedrive, you will need to create custom fields for `userId` and `groupId` in Pipedrive to which the provided userId and groupId values will be mapped.
 {% endhint %}.
 
-**Note:** For cases where user already has the list of pipedrive id's, events can be sent using those id's as external Id. Details have been mentioned below. Go to the section `Using External Id`.
+**Note:** For cases where user already has the list of pipedrive IDs, events can be sent using those IDs as as external IDs. For more details, refer the section **Using External IDs** section.
 
-{% hint style="info" %} **Note:** `GroupId Token` and `UserId Token` are required only if calls like identify, group, etc. will be made. In that case, rudderstack needs a way to map provided userId's and groupId's in the destination.{% endhint %}
+{% hint style="info" %} **Note:** `GroupId Token` and `UserId Token` are required only if calls like `identify`, `group`, etc. are made. In that case, RudderStack needs a way to map the provided `userId` and `groupId` in the destination.
+{% endhint %}
 
-**Note:** For creating `Leads` or `Organization` in Pipedrive, `person_id` is required. Anonymous tracking is not available. Hence, UserId or External Id is required for all events.
+**Note:** For creating `Leads` or `Organization` in Pipedrive, the `person_id` parameter is required. Since anonymous tracking is not available, UserId or External Id is required for all events.
 
 ## Enable User Creation
 
