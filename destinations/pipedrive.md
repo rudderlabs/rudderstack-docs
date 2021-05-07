@@ -41,7 +41,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 To successfully configure Pipedrive as a destination, you will need to configure the following settings:
 
-* **Api Token:** Your API token is a unique token generated for your account. It can be found in your Pipedrive account by navigating to **Company Settings**-->**Personal Preferances** --> **API**.
+* **API Token:** Your API token is a unique token generated for your account. It can be found in your Pipedrive account by navigating to **Company Settings** -**Personal Preferences** - **API**.
 
 {% hint style="info" %}
 `GroupId Token` and `UserId Token` fields are related to the Custom Field tokens in Pipedrive.{% endhint %}
