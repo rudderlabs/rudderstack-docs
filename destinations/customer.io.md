@@ -51,14 +51,14 @@ We primarily need the properties API Key and Site ID to start sending events to 
 
 The `identify` call sends the event data to Customer.io along with the properties that you pass as the RudderStack traits. For more information on the identify call, please refer our [RudderStack API specification](https://docs.rudderstack.com/getting-started/rudderstack-api-spec) documentation.
 
-RudderStack sends the `createdAt` field as `created_at` field to Customer.io to register user `sign up` time in the dashboard. If you don't send that field, we'll fill that field with the `timestamp` from the `identify` event.
+RudderStack sends the `createdAt` field as `created_at` field to Customer.io to register user `sign up` time in the dashboard. If you don't send that field, `created_at` will not be sent to Customer IO.
 
 `userId` is a mandatory field for Customer.io and if it is not provided, we use `anonymousId` in place of that.
 
 The following code snippet is an example of an `identify` call in RudderStack:
 
 ```text
-// a sample identify 
+// a sample identify
 rudderanalytics.identify("my-userID", {
         name: "Tintin",
         city: "Brussels",
@@ -77,7 +77,7 @@ If you are using a native SDK, the Customer.io JavaScript snippet is loaded and 
 Here is a sample of a `page` call in RudderStack:
 
 ```text
-// "home" is the name of the page. 
+// "home" is the name of the page.
 rudderanalytics.page("home", {
         path: "path",
         url: "url",
@@ -94,7 +94,7 @@ The `screen` call records the screen views of the user in your App. If you have 
 Here is a sample `screen` call in using RudderStack iOS SDK:
 
 ```text
-[[RudderClient sharedInstance] screen:@"Main" 
+[[RudderClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
 ```
 
@@ -114,13 +114,18 @@ rudderanalytics.track("Track me", {
  });
 ```
 
+{% hint style="info" %}
+For anonymous users, customer.io does not allow an event name more than the size of 100 bytes. That is why the event names bigger than the above size get trimmed from our end.
+{% endhint %}
+
+
 ## Device Token Registration
 
 We register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events.
 
 * `Application Installed`
 * `Application Opened`
-* `Application Unistalled` 
+* `Application Unistalled`
 
 To use this feature, you've to turn on the feature `trackApplicationLifecycleEvents` in your mobile SDK implementation code. Moreover, you have to register your `deviceToken` after initializing the SDK.
 
