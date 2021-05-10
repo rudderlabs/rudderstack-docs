@@ -35,7 +35,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Google Sheets Connection Settings](../.gitbook/assets/google-sheetsv2-config.png)
+![Google Sheets Connection Settings](../.gitbook/assets/google-sheets-config.png)
 
 - Enter the following details:
 
