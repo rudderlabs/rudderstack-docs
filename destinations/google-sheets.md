@@ -161,7 +161,7 @@ To ensure that your events are sent to Google Sheets, verify if you have taken t
 
 ### Where do I find my Google-Sheet-ID?
 
-- You can find the Google-Sheet-Id within the Google-Sheet-Url
+- You can find the Google-Sheet-Id within the Google Sheet URL, as highlighted below:
 
 ![Google Sheet ID](../.gitbook/assets/Google-Sheet-ID.png)
 
