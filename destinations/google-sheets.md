@@ -14,7 +14,8 @@ RudderStack allows you to configure Google Sheets as a destination and send your
 
 ## Getting Started
 
-To enable sending data to Google Sheets, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Google Sheets.
+To enable sending data to Google Sheets, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to Google Sheets.
+
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -27,42 +28,54 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Google Sheets, perform the steps below:
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Google Sheets.**
+- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. From the list of destinations, select **Google Sheets.**
 
 {% hint style="info" %}
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack) guide to add a source and destination in RudderStack.
 {% endhint %}
 
-- Give a name to the destination and click on **Next**. You should then see the following screen:
+- Assign a name to the destination and click on **Next**. You should then see the following screen:
 
 ![Google Sheets Connection Settings](../.gitbook/assets/google-sheets-config.png)
 
-- Enter the following details:
+- Then, enter the following details under **Connection Settings**:
 
-  - **Connection Settings**
+    - **Credentials**: Follow these steps to obtain the credentials for configuring Google Sheets as a destination:
 
-    - **Credentials**: Follow these steps to obtain the credentials for connecting Google Sheets:
-
-      - Create a service account in from your Google Cloud Console account.![Create Service Account](../.gitbook/assets/service-account.png)
-      - A JSON file with the credentials will be generated against your service account.![Credentials](../.gitbook/assets/credentials.png)
-      - Paste this downloaded JSON in the **Credentials** field.
-        {% hint style="warning" %}Once you have completed the conncetion, make sure you have enabled [Google-Sheets-API](https://console.cloud.google.com/apis/library/sheets.googleapis.com?q=sheets&id=739c20c5-5641-41e8-a938-e55ddc082ad1&project=rudder-integration&supportedpurview=project) in the project of your service account
+      - Create a service account in from your Google Cloud Console account, as shown below:
+      
+      ![Create Service Account](../.gitbook/assets/service-account.png)
+      
+      - A JSON file with the required credentials will be generated against this service account.
+      
+      ![Credentials](../.gitbook/assets/credentials.png)
+      
+      - Paste this downloaded JSON in the **Credentials** field in the RudderStack dashboard.
+  
+        {% hint style="warning" %}Once you have completed the conncetion, make sure you have enabled [Google-Sheets-API](https://console.cloud.google.com/apis/library/sheets.googleapis.com?q=sheets&id=739c20c5-5641-41e8-a938-e55ddc082ad1&project=rudder-integration&supportedpurview=project) in the project of your service account.
         {% endhint %}
 
-    - **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You need add the email address of the service account as an editor for that specific Google Sheet.
-    - **Sheet Name**: Add the Sheet Name to which you want to send your data, you can find the Sheet-Name at the bottom left corner the spreadsheet as shown below: ![Google Sheets Sheet](../.gitbook/assets/sheet-name.png)
+    - **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You will also need to assign **Editor** privileges to the email address of the service account for that specific Google Sheet.
 
-    - Enter the **Event Properties** corresponding to **Column Name**. For mapping `attributes` from `traits` or `properties` you can directly enter the `attribute` name (Example: `productName`, `firstName`, or `address.city`) and map it to desired Column, for other `contextual` `attributes` you need to enter the absolute path to the `attribute` using dot notation. (Example `context.app.build`)
-      {% hint style="warning" %} If you have **Nested Attributes** inside `properties` or `traits` please use **dot** notation for mapping to respective Column (Example: `address.zip`, `address.city`..)
-      {% endhint %}
+    - **Sheet Name**: Add the Sheet Name to which you want to send your data. You can find the sheet name at the bottom left corner the spreadsheet as shown below: 
 
-{% hint style="info" %}
-For mapping `attributes` from event `properties` or `traits`/`context.traits` we also support absolute mapping Example: adding `context.traits.firstName` will map the same value as adding `firstName`.
-**Note: We advise you to map with absolute path as it resolves the ambiguity when you have same `attribute` name in `traits`, `context.traits` or `properties`**
-{% endhint %}
-
+  ![Google Sheets Sheet](../.gitbook/assets/sheet-name.png)
+  
 {% hint style="warning" %}
 The **Sheet Name** is **case-sensitive** and has to be exactly as seen in Google Sheets.
+{% endhint %}
+
+   - Next, enter the **Event Properties** corresponding to **Column Name** under the **Map Event to Google Sheets section**.
+
+**Note**: For mapping `attributes` from `traits` or `properties`, you can directly enter the `attribute` name (for e.g. `productName`, `firstName`, or `address.city`) and map it to desired **Column**. For other contextual attributes, you will need to enter the absolute path to the `attribute` using dot notation. (for e.g. `context.app.build`)
+
+{% hint style="warning" %} If you have **Nested Attributes** inside `properties` or `traits`, please use the **dot notation** for mapping to respective **Column** (For e.g.: `address.zip`, `address.city`..)
+{% endhint %}
+
+{% hint style="info" %}
+For mapping `attributes` from event `properties` or `traits`/`context.traits`, RudderStack also supports absolute mapping. For example: adding `context.traits.firstName` will map the same value as adding `firstName`.
+
+**Note**: We advise you to map with absolute path as it resolves the ambiguity when you have same `attribute` name in `traits`, `context.traits` or `properties`.
 {% endhint %}
 
 - Finally, click on **Next** to complete the configuration.
@@ -137,11 +150,13 @@ A sample `screen` call looks like the following code snippet:
 
 ## FAQs <a id="faqs"></a>
 
-### I have added my Service Account Credentials, still my events are not sent to Google-Sheets?
+### I have added my Service Account Credentials. Why are my events still not sent to Google-Sheets?
+
+To ensure that your events are sent to Google Sheets:
 
 - Verify if you have enabled Google-Sheets-API in the project of your service account.
 
-- Verify if you have added edit access to your Sheet with your service account.
+- Verify if you have assigned **Editor** access to your service account acccessing the Google Sheet.
 
 - Verfiy if you have added correct Sheet-Id and Sheet name in RudderStack dashboard.
 
