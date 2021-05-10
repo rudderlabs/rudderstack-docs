@@ -37,26 +37,29 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ![Google Sheets Connection Settings](../.gitbook/assets/google-sheets-config.png)
 
-* Then, enter the following details under **Connection Settings**:
+### **Obtaining the Credentials**
 
-  * **Credentials**: Follow these steps to obtain the credentials for configuring Google Sheets as a destination:
+Before you add Google Sheets as a destination in RudderStack, follow these steps to get the **Google Cloud Service Account credentials** required for the configuration:
 
-    * Create a service account in from your Google Cloud Console account, as shown below:
+* Create a service account in from your Google Cloud Console account, as shown below:
 
-    ![Create Service Account](../.gitbook/assets/service-account.png)
+![](../.gitbook/assets/image%20%2884%29.png)
 
-    * A JSON file with the required credentials will be generated against this service account.
+* A JSON file with the required credentials will be generated against this service account, as shown:
 
-    ![Credentials](../.gitbook/assets/credentials.png)
+![](../.gitbook/assets/image%20%2883%29.png)
 
-    * Paste this downloaded JSON in the **Credentials** field in the RudderStack dashboard.
+{% hint style="warning" %}
+Once you have completed the connection, make sure you have enabled [Google-Sheets-API](https://console.cloud.google.com/apis/library/sheets.googleapis.com?q=sheets&id=739c20c5-5641-41e8-a938-e55ddc082ad1&project=rudder-integration&supportedpurview=project) in the project of your service account.
+{% endhint %}
 
-      Once you have completed the conncetion, make sure you have enabled [Google-Sheets-API](https://console.cloud.google.com/apis/library/sheets.googleapis.com?q=sheets&id=739c20c5-5641-41e8-a938-e55ddc082ad1&project=rudder-integration&supportedpurview=project) in the project of your service account.
+Then, enter the following details under **Connection Settings** in the RudderStack dashboard.
 
-  * **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You will also need to assign **Editor** privileges to the email address of the service account for that specific Google Sheet.
-  * **Sheet Name**: Add the Sheet Name to which you want to send your data. You can find the sheet name at the bottom left corner the spreadsheet as shown below:
+* **Credentials**: Paste the downloaded JSON in the **Credentials** field in the RudderStack dashboard. 
+* **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You will also need to assign **Editor** privileges to the email address of the service account for that specific Google Sheet. 
+* **Sheet Name**: Add the Sheet Name to which you want to send your data. You can find the sheet name at the bottom left corner the spreadsheet as shown below:
 
-  ![Google Sheets Sheet](../.gitbook/assets/sheet-name.png)
+![](../.gitbook/assets/image%20%2885%29.png)
 
 {% hint style="warning" %}
 The **Sheet Name** is **case-sensitive** and has to be exactly as seen in Google Sheets.
@@ -154,14 +157,14 @@ To ensure that your events are sent to Google Sheets, verify if you have taken t
 
 * Enabled Google-Sheets-API in the project of your service account.
 * Added correct Sheet-Id and Sheet name in RudderStack dashboard.
-* Assigned **Editor** access to your service account for acccessing the Google Sheet.
+* Assigned **Editor** access to your service account for accessing the Google Sheet.
 * Added the event `attribute` mapping for the Sheet.
 
 ### Where do I find my Google-Sheet-ID?
 
 * You can find the Google-Sheet-Id within the Google Sheet URL, as highlighted below:
 
-![Google Sheet ID](../.gitbook/assets/Google-Sheet-ID.png)
+![Google Sheet ID \(underlined in yellow\)](../.gitbook/assets/Google-Sheet-ID.png)
 
 ## Contact Us
 
