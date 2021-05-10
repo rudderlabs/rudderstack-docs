@@ -152,15 +152,12 @@ A sample `screen` call looks like the following code snippet:
 
 ### I have added my Service Account Credentials. Why are my events still not sent to Google-Sheets?
 
-To ensure that your events are sent to Google Sheets:
+To ensure that your events are sent to Google Sheets, verify if you have taken the following steps:
 
-- Verify if you have enabled Google-Sheets-API in the project of your service account.
-
-- Verify if you have assigned **Editor** access to your service account acccessing the Google Sheet.
-
-- Verfiy if you have added correct Sheet-Id and Sheet name in RudderStack dashboard.
-
-- Verify if you have added event `attribute` mapping for the Sheet.
+- Enabled Google-Sheets-API in the project of your service account.
+- Added correct Sheet-Id and Sheet name in RudderStack dashboard.
+- Assigned **Editor** access to your service account for acccessing the Google Sheet.
+- Added the event `attribute` mapping for the Sheet.
 
 ### Where do I find my Google-Sheet-ID?
 
