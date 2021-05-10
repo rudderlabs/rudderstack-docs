@@ -16,11 +16,10 @@ RudderStack allows you to configure Google Sheets as a destination and send your
 
 To enable sending data to Google Sheets, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to Google Sheets.
 
-
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| Device mode         | **-**         | **-**         | **-**         |
-| Cloud mode          | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| Device mode | **-** | **-** | **-** |
+| Cloud mode | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -28,48 +27,47 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Google Sheets, perform the steps below:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. From the list of destinations, select **Google Sheets.**
+* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. From the list of destinations, select **Google Sheets.**
 
 {% hint style="info" %}
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack) guide to add a source and destination in RudderStack.
 {% endhint %}
 
-- Assign a name to the destination and click on **Next**. You should then see the following screen:
+* Assign a name to the destination and click on **Next**. You should then see the following screen:
 
 ![Google Sheets Connection Settings](../.gitbook/assets/google-sheets-config.png)
 
-- Then, enter the following details under **Connection Settings**:
+* Then, enter the following details under **Connection Settings**:
 
-    - **Credentials**: Follow these steps to obtain the credentials for configuring Google Sheets as a destination:
+  * **Credentials**: Follow these steps to obtain the credentials for configuring Google Sheets as a destination:
 
-      - Create a service account in from your Google Cloud Console account, as shown below:
-      
-      ![Create Service Account](../.gitbook/assets/service-account.png)
-      
-      - A JSON file with the required credentials will be generated against this service account.
-      
-      ![Credentials](../.gitbook/assets/credentials.png)
-      
-      - Paste this downloaded JSON in the **Credentials** field in the RudderStack dashboard.
-  
-        {% hint style="warning" %}Once you have completed the conncetion, make sure you have enabled [Google-Sheets-API](https://console.cloud.google.com/apis/library/sheets.googleapis.com?q=sheets&id=739c20c5-5641-41e8-a938-e55ddc082ad1&project=rudder-integration&supportedpurview=project) in the project of your service account.
-        {% endhint %}
+    * Create a service account in from your Google Cloud Console account, as shown below:
 
-    - **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You will also need to assign **Editor** privileges to the email address of the service account for that specific Google Sheet.
+    ![Create Service Account](../.gitbook/assets/service-account.png)
 
-    - **Sheet Name**: Add the Sheet Name to which you want to send your data. You can find the sheet name at the bottom left corner the spreadsheet as shown below: 
+    * A JSON file with the required credentials will be generated against this service account.
+
+    ![Credentials](../.gitbook/assets/credentials.png)
+
+    * Paste this downloaded JSON in the **Credentials** field in the RudderStack dashboard.
+
+      Once you have completed the conncetion, make sure you have enabled [Google-Sheets-API](https://console.cloud.google.com/apis/library/sheets.googleapis.com?q=sheets&id=739c20c5-5641-41e8-a938-e55ddc082ad1&project=rudder-integration&supportedpurview=project) in the project of your service account.
+
+  * **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You will also need to assign **Editor** privileges to the email address of the service account for that specific Google Sheet.
+  * **Sheet Name**: Add the Sheet Name to which you want to send your data. You can find the sheet name at the bottom left corner the spreadsheet as shown below:
 
   ![Google Sheets Sheet](../.gitbook/assets/sheet-name.png)
-  
+
 {% hint style="warning" %}
 The **Sheet Name** is **case-sensitive** and has to be exactly as seen in Google Sheets.
 {% endhint %}
 
-   - Next, enter the **Event Properties** corresponding to **Column Name** under the **Map Event to Google Sheets section**.
+* Next, enter the **Event Properties** corresponding to **Column Name** under the **Map Event to Google Sheets section**.
 
-**Note**: For mapping `attributes` from `traits` or `properties`, you can directly enter the `attribute` name (for e.g. `productName`, `firstName`, or `address.city`) and map it to desired **Column**. For other contextual attributes, you will need to enter the absolute path to the `attribute` using dot notation. (for e.g. `context.app.build`)
+**Note**: For mapping `attributes` from `traits` or `properties`, you can directly enter the `attribute` name \(for e.g. `productName`, `firstName`, or `address.city`\) and map it to desired **Column**. For other contextual attributes, you will need to enter the absolute path to the `attribute` using dot notation. \(for e.g. `context.app.build`\)
 
-{% hint style="warning" %} If you have **Nested Attributes** inside `properties` or `traits`, please use the **dot notation** for mapping to respective **Column** (For e.g.: `address.zip`, `address.city`..)
+{% hint style="warning" %}
+If you have **Nested Attributes** inside `properties` or `traits`, please use the **dot notation** for mapping to respective **Column** \(For e.g.: `address.zip`, `address.city`..\)
 {% endhint %}
 
 {% hint style="info" %}
@@ -78,7 +76,7 @@ For mapping `attributes` from event `properties` or `traits`/`context.traits`, R
 **Note**: We advise you to map with absolute path as it resolves the ambiguity when you have same `attribute` name in `traits`, `context.traits` or `properties`.
 {% endhint %}
 
-- Finally, click on **Next** to complete the configuration.
+* Finally, click on **Next** to complete the configuration.
 
 Google Sheets should now be added and enabled as a destination in RudderStack.
 
@@ -154,17 +152,18 @@ A sample `screen` call looks like the following code snippet:
 
 To ensure that your events are sent to Google Sheets, verify if you have taken the following steps:
 
-- Enabled Google-Sheets-API in the project of your service account.
-- Added correct Sheet-Id and Sheet name in RudderStack dashboard.
-- Assigned **Editor** access to your service account for acccessing the Google Sheet.
-- Added the event `attribute` mapping for the Sheet.
+* Enabled Google-Sheets-API in the project of your service account.
+* Added correct Sheet-Id and Sheet name in RudderStack dashboard.
+* Assigned **Editor** access to your service account for acccessing the Google Sheet.
+* Added the event `attribute` mapping for the Sheet.
 
 ### Where do I find my Google-Sheet-ID?
 
-- You can find the Google-Sheet-Id within the Google Sheet URL, as highlighted below:
+* You can find the Google-Sheet-Id within the Google Sheet URL, as highlighted below:
 
 ![Google Sheet ID](../.gitbook/assets/Google-Sheet-ID.png)
 
 ## Contact Us
 
 If you come across any issues while configuring or using Google Sheets with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+

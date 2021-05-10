@@ -2,7 +2,7 @@
 description: Step-by-step guide to set up Split.io as a destination in RudderStack.
 ---
 
-# Split.io (Beta)
+# Split.io
 
 [Split.io](https://www.split.io/) is a feature experimentation and continuous delivery tool. It enables you to maximize the impact of your product features by combining feature flags and data. With Split, you can test new features through rigorous A/B testing and deploy them seamlessly while ensuring data privacy and maximum performance.
 
@@ -11,6 +11,8 @@ RudderStack allows you to configure Split.io as a destination to which you can s
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/splitio)**.**
 {% endhint %}
+
+![](../.gitbook/assets/image%20%2881%29.png)
 
 ## **Getting Started**
 
@@ -44,11 +46,9 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 ![Destination Settings for Split.io](../.gitbook/assets/splitioconfig.png)
 
 * Next, in the **Settings** section, fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
-
   * **Connection Credentials**
     * **API Key**: Enter the API Key for the appropriate workspace.
     * **Environment**: Enter the corresponding environment available in the dashboard. Note that this field is not mandatory.
- 
   * **Information on Traffic**
     * **Traffic Type**: Enter the correct traffic type listed in your account.
 

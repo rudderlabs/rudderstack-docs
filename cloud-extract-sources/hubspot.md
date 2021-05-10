@@ -14,7 +14,7 @@ To set up HubSpot as a source on the RudderStack dashboard, follow these steps:
 
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 
-![](../.gitbook/assets/1%20%2814%29.png)
+![](../.gitbook/assets/1%20%2815%29%20%281%29.png)
 
 * Then, click on the **Directory** option on the left navigation bar and go to **Cloud Extract** under **Sources**.
 

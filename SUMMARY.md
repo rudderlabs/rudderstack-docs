@@ -148,7 +148,7 @@
   * [Salesforce](destinations/salesforce.md)
   * [Salesforce Marketing Cloud](destinations/sfmc.md)
   * [Slack](destinations/slack.md)
-  * [Split.io](destinations/SplitIO.md)
+  * [Split.io](destinations/splitio.md)
   * [TVSquared](destinations/tvsquared.md)
   * [Userlist](destinations/userlist.md)
   * [VWO \(Visual Website Optimizer\)](destinations/vwo-beta-visual-website-optimizer.md)
