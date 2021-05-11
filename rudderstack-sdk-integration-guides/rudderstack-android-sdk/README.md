@@ -36,23 +36,34 @@ To get the **Data Plane URL**:
 
 ## Installing the SDK
 
-We distribute our Android SDK through [Bintray](https://bintray.com/). This is the recommended way to use our SDK is through the Android Gradle build system. It's the easiest way to add the SDK to your project.
+{% hint style="info" %}
+**As Bintray has a sunset from 1st may, we're moving our SDK to Maven Central". All the versions, 1.0.10 onwards are available in Maven Central only.**
+{% endhint %}
 
-To add the dependencies, perform the following steps:
+We distribute our Android SDK through [Maven Central](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Android Gradle build system. 
 
-* Open your `app/build.gradle (Module: app)` file, and add the following lines of code:
+Follow these steps: 
+
+* Open your project level `build.gradle` file, and add the following lines of code:
 
 ```groovy
-repositories {
-    maven { url  "https://dl.bintray.com/rudderstack/rudderstack" }
+buildscript {
+    repositories {
+        mavenCentral()
+    }
 }
-```
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
 
-* Add the dependency under `dependencies` as shown:
+```
+* Then open your `app/build.gradle` and add the dependency under `dependencies` as shown below:
 
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1+'
-// add the follwing line if you don't have Gson included already
+// add the following line if you don't have Gson included already
 implementation 'com.google.code.gson:gson:2+'
 ```
 
@@ -105,7 +116,7 @@ RudderClient rudderClient = RudderClient.getInstance(
         this,
         WRITE_KEY,
         new RudderConfig.Builder()
-                .withEndPointUri(DATA_PLANE_URL)
+                .withDataPlaneUrl(DATA_PLANE_URL)
                 .withTrackLifecycleEvents(true)
                 .withRecordScreenViews(true)
                 .build()
@@ -220,7 +231,7 @@ traits.put("long", 1234L);
 traits.put("string", "hello");
 traits.put("date", new Date(System.currentTimeMillis()));
 
-rudderClient.identify("test_user_id", traits, null);
+rudderClient.identify("test_user_id", traits, null;
 ```
 {% endtab %}
 {% endtabs %}
@@ -369,7 +380,7 @@ You can configure your client based on the following parameters using `RudderCon
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
 | `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RudderLogger.RudderLogLevel.NONE` |
-| `endPointUri` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+| `dataPlaneUrl` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
 | `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
@@ -591,7 +602,7 @@ RudderClient rudderClient = RudderClient.getInstance(
     this,
     YOUR_WRITE_KEY,
     new RudderConfig.Builder()
-        .withEndPointUri(DATA_PLANE_URL)
+        .withDataPlaneUrl(DATA_PLANE_URL)
         .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
         .build()
 );
