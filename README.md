@@ -2,7 +2,7 @@
 
 ## What is RudderStack?
 
-[RudderStack](https://rudderstack.com/) is a **customer data infrastructure platform** for collecting, routing and processing data from your website, apps, data warehouse and cloud apps.
+[RudderStack](https://rudderstack.com/) is a **customer data pipeline platform** for collecting, routing and processing data from your website, apps, data warehouse and cloud apps.
 
 With RudderStack, you can build customer data pipelines that connect your whole customer data stack and then make them smarter by triggering enrichment and activation in customer tools based on analysis in your data warehouse.
 

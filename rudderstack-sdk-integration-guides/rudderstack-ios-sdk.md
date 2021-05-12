@@ -410,6 +410,7 @@ RSOption *option = [[RSOption alloc]init];
 [option putIntegrationWithFactory:[<RudderIntegrationFactory> instance] isEnabled:<BOOL>];
 ```
 {% endtab %}
+
 {% tab title="Swift" %}
 ```swift
 let option:RSOption = RSOption();
@@ -433,11 +434,11 @@ The keyword `All` in the above snippet represents all the destinations the sourc
 Make sure the `destination display name` you pass while specifying the custom destinations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
 {% endhint %}
 
-You can pass the destination(s) specified in the above snippet to the SDK in two ways:
+You can pass the destination\(s\) specified in the above snippet to the SDK in two ways:
 
 ### 1. Passing the destinations while initializing the SDK:
 
-This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination(s).
+This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination\(s\).
 
 {% tabs %}
 {% tab title="Objective-C" %}
@@ -450,6 +451,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [RSClient getInstance:WRITE_KEY config:[builder build] options:option]; // passing the rudderoption object containing the list of destination(s) you specified
 ```
 {% endtab %}
+
 {% tab title="Swift" %}
 ```swift
 let builder: RSConfigBuilder = RSConfigBuilder()
@@ -464,7 +466,7 @@ RSClient.getInstance(WRITE_KEY, config: builder.build(),options: option)// passi
 
 ### 2. Passing the destinations while making any event call:
 
-This approach is helpful when you want to enable/disable sending only a particular event to the specified destination(s) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
 
 {% tabs %}
 {% tab title="Objective-C" %}
@@ -475,6 +477,7 @@ This approach is helpful when you want to enable/disable sending only a particul
     } options:option]; // passing the rudderoption object containing the list of destination(s) you specified
 ```
 {% endtab %}
+
 {% tab title="Swift" %}
 ```swift
 let rudder: RSClient? = RSClient.sharedInstance()
@@ -485,7 +488,6 @@ rudder?.track("track_with_props", properties: [
 ```
 {% endtab %}
 {% endtabs %}
-
 
 {% hint style="info" %}
 If you specify the destinations both while initializing the SDK as well as making an event call, then the destinations specified at the event level only will be considered.

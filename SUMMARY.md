@@ -5,6 +5,7 @@
   * [RudderStack Architecture](get-started/rudderstack-architecture.md)
   * [RudderStack Cloud Mode vs. Device Mode](get-started/rudderstack-connection-modes.md)
   * [How to Add a Source and Destination in RudderStack](get-started/adding-source-and-destination-rudderstack.md)
+* [Connections](connections.md)
 * [Install and Set Up RudderStack](installing-and-setting-up-rudderstack/README.md)
   * [Docker](installing-and-setting-up-rudderstack/docker.md)
   * [Kubernetes](installing-and-setting-up-rudderstack/kubernetes.md)

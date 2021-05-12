@@ -40,9 +40,9 @@ To get the **Data Plane URL**:
 **As Bintray has a sunset from 1st may, we're moving our SDK to Maven Central". All the versions, 1.0.10 onwards are available in Maven Central only.**
 {% endhint %}
 
-We distribute our Android SDK through [Maven Central](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Android Gradle build system. 
+We distribute our Android SDK through [Maven Central](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Android Gradle build system.
 
-Follow these steps: 
+Follow these steps:
 
 * Open your project level `build.gradle` file, and add the following lines of code:
 
@@ -57,8 +57,8 @@ allprojects {
         mavenCentral()
     }
 }
-
 ```
+
 * Then open your `app/build.gradle` and add the dependency under `dependencies` as shown below:
 
 ```groovy
@@ -475,6 +475,7 @@ option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
 option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 ```
 {% endtab %}
+
 {% tab title="Java" %}
 ```java
 RudderOption option = new RudderOption();
@@ -498,11 +499,11 @@ The keyword `All` in the above snippet represents all the destinations the sourc
 Make sure the `destination display name` that you pass while specifying the destinations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
 {% endhint %}
 
-You can pass the destination(s) specified in the above snippet to the SDK in two ways:
+You can pass the destination\(s\) specified in the above snippet to the SDK in two ways:
 
 ### 1. Passing the destinations while initializing the SDK:
 
-This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination(s).
+This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination\(s\).
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -520,6 +521,7 @@ var rudderClient = RudderClient.getInstance(
         )
 ```
 {% endtab %}
+
 {% tab title="Java" %}
 ```java
 RudderClient client = RudderClient.getInstance(
@@ -536,7 +538,7 @@ RudderClient client = RudderClient.getInstance(
 
 ### 2. Passing the destinations while making any event call:
 
-This approach is helpful when you want to enable/disable sending only a particular event to the specified destination(s) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -549,6 +551,7 @@ rudderClient.track(
             )
 ```
 {% endtab %}
+
 {% tab title="Java" %}
 ```java
 rudderClient.track(

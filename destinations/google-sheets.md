@@ -43,7 +43,7 @@ Before you add Google Sheets as a destination in RudderStack, follow these steps
 
 * Create a service account in from your Google Cloud Console account, as shown below:
 
-![](../.gitbook/assets/image%20%2884%29.png)
+![](../.gitbook/assets/image%20%2884%29%20%281%29.png)
 
 * A JSON file with the required credentials will be generated against this service account, as shown:
 

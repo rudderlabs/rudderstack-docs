@@ -137,11 +137,9 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
   * **Password** - This is the password, as created in [Creating a User](https://docs.rudderstack.com/destinations/snowflake#creating-a-user) section.
 
 * The following settings are applicable if you are using an Amazon S3 bucket for object storage:
-
   * **S3 bucket name** - This is your unique S3 bucket name.
   * **AWS Access Key ID** - This can be obtained from the AWS Console. 
   * **AWS Secret Access Key** -  This can be obtained from AWS Console. Please refer to the [Setting Up Amazon S3](https://docs.rudderstack.com/destinations-guides/amazon-s3#setting-up-amazon-s3) section for more details.
-
 * Please grant the following permissions to the IAM user:
 
   ```text
@@ -329,7 +327,7 @@ Detailed instructions can be found [here](https://docs.snowflake.com/en/user-gui
 You will need to whitelist the RudderStack IPs to enable network access to it.
 
 {% hint style="info" %}
-**The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` , `54.147.40.62`** , **`23.20.96.9`,** and  **`18.214.35.254`**.
+**The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` , `54.147.40.62`** , **`23.20.96.9`,** and **`18.214.35.254`**.
 {% endhint %}
 
 ## Contact Us
