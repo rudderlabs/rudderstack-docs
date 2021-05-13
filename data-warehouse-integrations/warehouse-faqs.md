@@ -12,7 +12,7 @@ Rudderstack gives you the flexibility to choose when to sync the latest data int
 
 ### Is there a way to force my data load into the warehouses?
 
-Yes, there is! You could do that by configuring below values in `config.toml` file.
+Yes, there is! You could do that by configuring below values in `config.yaml` file.
 
 ```text
 warehouseSyncFreqIgnore = true #if set true this will ignore syncFrequency and syncStartingAt values which are configured in UI. By default this is false
