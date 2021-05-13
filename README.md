@@ -10,7 +10,7 @@ RudderStack's easy-to-use [SDKs](https://docs.rudderstack.com/rudderstack-sdk-in
 
 > **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 >
-> **For more information on RudderStack and its features, please check our** [**Get Started**](https://docs.rudderstack.com/get-started) **section.**
+> **For more information on RudderStack and its features, please check our** [**Get Started**](get-started/) **section.**
 
 Questions? Please join our [Slack channel](https://resources.rudderstack.com/join-rudderstack-slack) or read about us on [Product Hunt](https://www.producthunt.com/posts/rudderstack).
 
