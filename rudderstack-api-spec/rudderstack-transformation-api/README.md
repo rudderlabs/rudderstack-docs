@@ -4,17 +4,9 @@ description: API Specification to manage your RudderStack Transformations and Li
 
 # RudderStack Transformation  API
 
-RudderStack's Transformation API allows you to create, read, update and delete transformations and libraries programmatically, simply by making HTTP API calls. 
+RudderStack's Transformation API allows you to create, read, update and delete transformations and libraries programmatically by making HTTP calls. 
 
-This guide describes the various API operations, related request and response structures, and error codes associated with the Transformation API. 
-
-## Key Features of the RudderStack Transformation API
-
-* Organised around REST
-* Predictable, resource-oriented URLs
-* Uses HTTP response codes to indicate any API errors
-* Uses built-in HTTP features like HTTP authentication and HTTP verbs, which are understood by off-the-shelf clients
-* All API responses, including errors, return a JSON
+This guide describes the various API operations, related request and response structures, and error codes associated with the Transformation API.
 
 ## Basic Authentication
 
