@@ -8,7 +8,18 @@ description: Step-by-step guide to ingest your data from Amazon Redshift into Ru
 
 This guide will help you configure Redshift as a source from which you can route event data to your desired destinations through RudderStack.
 
-## Getting Started
+## Granting Permissions
+
+Run the following SQL queries to grant the necessary permissions for warehouse action
+
+```text
+CREATE USER RUDDER WITH PASSWORD 'strong_unique_password'
+GRANT USAGE ON SCHEMA "testschema" TO RUDDER;
+GRANT SELECT ON TABLE "testschema"."testtable" to RUDDER;
+GRANT CREATE ON SCHEMA "testschema" to RUDDER;
+```
+
+## Set Up as Source
 
 To set up Amazon Redshift as a source in RudderStack, follow these steps:
 
@@ -75,17 +86,6 @@ RudderStack will start importing data from your Redshift instance as per the spe
 {% hint style="info" %}
 If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
 {% endhint %}
-
-## Granting Permissions
-
-Run the following SQL queries to grant the necessary permissions for warehouse action
-
-```text
-CREATE USER RUDDER WITH PASSWORD 'strong_unique_password'
-GRANT USAGE ON SCHEMA "testschema" TO RUDDER;
-GRANT SELECT ON TABLE "testschema"."testtable" to RUDDER;
-GRANT CREATE ON SCHEMA "testschema" to RUDDER;
-```
 
 ## Contact Us
 
