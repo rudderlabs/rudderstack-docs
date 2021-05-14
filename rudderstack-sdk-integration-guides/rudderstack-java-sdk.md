@@ -12,19 +12,15 @@ You can find this SDK in our [GitHub repository](https://github.com/rudderlabs/r
 
 ## Installing the RudderStack Java SDK
 
+{% hint style="info" %}
+**As Bintray has a sunset from 1st may, we're moving our SDK to Maven Central". All the versions, 1.0.1 onwards are available in Maven Central only.**
+{% endhint %}
+
+We distribute our Java SDK through [Maven Central](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Maven build system.
+
 To install the RudderStack Java SDK, add the following lines of code to `pom.xml`:
 
 ```markup
-<repositories>
-   <repository>
-       <id>bintray</id>
-       <name>rudderstack</name>
-       <url>https://dl.bintray.com/rudderstack/rudderstack</url>
-   </repository>
-</repositories>
-
-...
-
 <dependency>
    <groupId>com.rudderstack.sdk.java</groupId>
 	 <artifactId>rudderanalytics-client</artifactId>
