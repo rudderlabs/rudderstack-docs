@@ -76,6 +76,17 @@ RudderStack will start importing data from your Redshift instance as per the spe
 If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
 {% endhint %}
 
+## Granting Permissions
+
+Run the following SQL queries to grant the necessary permissions for warehouse action
+
+```text
+CREATE USER RUDDER WITH PASSWORD 'strong_unique_password'
+GRANT USAGE ON SCHEMA "testschema" TO RUDDER;
+GRANT SELECT ON TABLE "testschema"."testtable" to RUDDER;
+GRANT CREATE ON SCHEMA "testschema" to RUDDER;
+```
+
 ## Contact Us
 
 If you come across any issues while configuring Amazon Redshift as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

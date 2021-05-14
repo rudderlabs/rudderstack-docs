@@ -82,6 +82,23 @@ RudderStack will start importing data from your Snowflake instance as per the sp
 If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
 {% endhint %}
 
+## Granting Permissions
+
+Run the following SQL queries to grant the necessary permissions for warehouse action
+
+```text
+CREATE ROLE RUDDER_ROLE;
+SHOW ROLES;
+CREATE OR REPLACE USER RUDDER PASSWORD = 'strong_unique_password' DEFAULT_ROLE = 'RUDDER_ROLE';
+SHOW USERS;
+GRANT ROLE RUDDER_ROLE TO USER RUDDER;
+GRANT USAGE ON WAREHOUSE TESTWAREHOUSE TO ROLE RUDDER_ROLE; 
+GRANT USAGE ON DATABASE TESTDATABASE TO ROLE RUDDER_ROLE; 
+GRANT USAGE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
+GRANT CREATE TABLE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
+GRANT SELECT ON TABLE TESTDATABASE.TESTSCHEMA.TESTTABLE TO ROLE RUDDER_ROLE;
+```
+
 ## Contact Us
 
 If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
