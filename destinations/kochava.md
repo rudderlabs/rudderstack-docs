@@ -68,7 +68,6 @@ buildscript {
 }
 allprojects {
     repositories {
-        google()
         mavenCentral()
     }
 }
@@ -81,6 +80,8 @@ allprojects {
 implementation 'com.rudderstack.android.sdk:core:1.+'
 // rudder-kochava integration
 implementation 'com.rudderstack.android.integration:kochava:1.0.0'
+// Kochava native sdk
+implementation 'com.kochava.base:tracker:3.10.0'
 // if you don't have Gson included already
 implementation 'com.google.code.gson:gson:2.8.6'
 ```
@@ -204,33 +205,31 @@ dependencies {
 ```groovy
 dependencies {
 // for push notifications
-    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
 }
 apply plugin: 'com.google.gms.google-services'
 ```
 
 * Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
 
-* Finally, add the below handlers for push notifications:
+* Passing the new Push Token received fron FCM to the Kochava-sdk. For more information, look into the sample-kotlin app.
 
 ```text
-package com.rudderstack.android.sample.kotlin
-
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.rudderstack.android.integrations.kochava.KochavaIntegrationFactory.registeredForPushNotificationsWithFCMToken
 
+// Extending FirebaseMessagingService class
 class MyFirebaseMessagingService : FirebaseMessagingService() {
+
+    // The onNewToken callback fires whenever a new token is generated.
     override fun onNewToken(token: String) {
         super.onNewToken(token)
+
+        // Method to pass the push token to the Kochava native sdk
         registeredForPushNotificationsWithFCMToken(token)
     }
 }
 ```
-
-{% hint style="info" %}
-For generation of push notification `token`, app should be freshly installed on device else first uninstall the existing app and then reinstall.
-{% endhint %}
-
 {% endtab %}
 
 {% tab title="iOS" %}
