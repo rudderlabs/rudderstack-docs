@@ -19,7 +19,7 @@ RudderStack's Connections feature allows you to seamlessly build efficient data 
 A **source** refers to a platform or an application \(web, mobile, server-side, or a third-party cloud app\) where you want RudderStack to track and collect your event data. 
 
 {% hint style="success" %}
-We recommend creating a source for every unique source of data. You can also create multiple sources for each website or application from you want to track the data from.
+We recommend creating a source for every unique source of data. You can also create multiple sources for each website or application from which you want to track the data.
 {% endhint %}
 
 To view all the configured sources in your RudderStack dashboard, click on **Sources** in the left navigation bar, as shown:
