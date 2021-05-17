@@ -266,18 +266,6 @@ Detailed instructions can be found [here](https://docs.snowflake.com/en/user-gui
 {% tab title="Azure" %}
 If you have Microsoft Azure as your cloud provider and want to leverage Azure Blob Storage as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration.
 
-Detailed instructions can be found [here](https://docs.snowflake.com/en/user-guide/data-load-gcs-config.html#configuring-an-integration-for-google-cloud-storage).
-
-From the above instructions, make sure you perform the below steps:
-
-* Create a storage integration on Snowflake with `STORAGE_ALLOWED_LOCATIONS` that includes the bucket you provided in the [Configuring Snowflake in RudderStack](https://docs.rudderstack.com/data-warehouse-integration-guides/snowflake#configuring-snowflake-in-rudderstack) section
-* The service account associated with the Snowflake integration created in the step above has Data Loading permissions \(`storage.buckets.get`, `storage.objects.get`, `storage.objects.list`\) configured already. This is, however, different from the service account provided in RudderStack-Snowflake configuration which also needs to have the `storage.objects.create`  permission for GCP bucket
-* Grant usage on the integration created to the Snowflake role provided in the [Configuring Snowflake in RudderStack](https://docs.rudderstack.com/data-warehouse-integration-guides/snowflake#configuring-snowflake-in-rudderstack) section above.
-{% endtab %}
-
-{% tab title="GCP" %}
-If you have Google Cloud Platform \(GCP\) as your cloud provider and want to leverage Google Cloud Storage as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration.
-
 Detailed instructions can be found [here](https://docs.snowflake.com/en/user-guide/data-load-azure-config.html#option-1-configuring-a-snowflake-storage-integration).
 
 **Configuring snowflake integration with Azure -**
@@ -319,6 +307,18 @@ Detailed instructions can be found [here](https://docs.snowflake.com/en/user-gui
 
    `<integration_name>` is the integration created in the Step 4.  
    `<sf_role>` is the role in Snowflake you want to grant access to.
+{% endtab %}
+
+{% tab title="GCP" %}
+If you have Google Cloud Platform \(GCP\) as your cloud provider and want to leverage Google Cloud Storage as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration.
+
+Detailed instructions can be found [here](https://docs.snowflake.com/en/user-guide/data-load-gcs-config.html#configuring-an-integration-for-google-cloud-storage).
+
+From the above instructions, make sure you perform the below steps:
+
+* Create a storage integration on Snowflake with `STORAGE_ALLOWED_LOCATIONS` that includes the bucket you provided in the [Configuring Snowflake in RudderStack](https://docs.rudderstack.com/data-warehouse-integration-guides/snowflake#configuring-snowflake-in-rudderstack) section
+* The service account associated with the Snowflake integration created in the step above has Data Loading permissions \(`storage.buckets.get`, `storage.objects.get`, `storage.objects.list`\) configured already. This is, however, different from the service account provided in RudderStack-Snowflake configuration which also needs to have the `storage.objects.create`  permission for GCP bucket
+* Grant usage on the integration created to the Snowflake role provided in the [Configuring Snowflake in RudderStack](https://docs.rudderstack.com/data-warehouse-integration-guides/snowflake#configuring-snowflake-in-rudderstack) section above.
 {% endtab %}
 {% endtabs %}
 
