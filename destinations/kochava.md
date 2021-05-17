@@ -68,6 +68,7 @@ buildscript {
 }
 allprojects {
     repositories {
+        google()
         mavenCentral()
     }
 }
@@ -128,6 +129,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 ```
 {% endtab %}
 {% endtabs %}
+
 ## Track
 
 The `track` event captures information related to the actions performed by the user. For more information, refer to the the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
@@ -163,6 +165,25 @@ A sample `track` event for sending event data to Kochava looks like the followin
 
 According to the table above, this will change the `Product Added` event to `Add to Cart` event in Kochava dashboard and pass the properties along with this.
 
+## Screen
+
+The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
+
+A sample `screen` call looks like the following code snippet:
+
+```text
+MainApplication.rudderClient.screen("Tracking Page",
+            RudderProperty()
+                .putValue("url","www.kochava.com")
+                .putValue("referer","Rudderstack"))
+```
+
+In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In Kochava, the above `screen` call will be shown as - **"Screen View `Sample Screen Name` "** along with the properties.
+
+{% hint style="info" %}
+Note that `screen` call will send the event as custom events.
+{% endhint %}
+
 ## Configuring Push Notifications
 
 The steps to configure push notifications for Kochava for the platform of your choice are as mentioned below:
@@ -183,12 +204,32 @@ dependencies {
 ```groovy
 dependencies {
 // for push notifications
-    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
 }
 apply plugin: 'com.google.gms.google-services'
 ```
 
 * Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
+
+* Finally, add the below handlers for push notifications:
+
+```text
+package com.rudderstack.android.sample.kotlin
+
+import com.google.firebase.messaging.FirebaseMessagingService
+import com.rudderstack.android.integrations.kochava.KochavaIntegrationFactory.registeredForPushNotificationsWithFCMToken
+
+class MyFirebaseMessagingService : FirebaseMessagingService() {
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+        registeredForPushNotificationsWithFCMToken(token)
+    }
+}
+```
+
+{% hint style="info" %}
+For generation of push notification `token`, app should be freshly installed on device else first uninstall the existing app and then reinstall.
+{% endhint %}
 
 {% endtab %}
 
