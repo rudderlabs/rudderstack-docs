@@ -1,10 +1,10 @@
 ---
 description: >-
-  Detailed technical description of the RudderStack HTTP Tracking API for
-  recording your event data from any website or application.
+  Detailed technical description of the RudderStack HTTP API for recording your
+  event data from any website or application.
 ---
 
-# HTTP API Specification
+# HTTP API
 
 The RudderStack HTTP API allows you to track your customer event data from anywhere, and route it to your desired destinations. We recommend using our SDKs for automatic tagging of the `identify` context, batching the events, and retrying the functionality. If you cannot use our SDKs, it is possible to send your event data using the HTTP API.
 

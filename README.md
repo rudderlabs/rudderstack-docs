@@ -1,12 +1,10 @@
 # Home
 
-## What is RudderStack?
-
 [RudderStack](https://rudderstack.com/) is a **customer data pipeline platform** for collecting, routing and processing data from your website, apps, data warehouse and cloud apps.
 
 With RudderStack, you can build customer data pipelines that connect your whole customer data stack and then make them smarter by triggering enrichment and activation in customer tools based on analysis in your data warehouse.
 
-RudderStack's easy-to-use [SDKs](https://docs.rudderstack.com/rudderstack-sdk-integration-guides), [Cloud Extract integrations](https://docs.rudderstack.com/sources), transformations, and expansive library of [destinations](https://docs.rudderstack.com/destinations) and [warehouse actions](https://docs.rudderstack.com/rudderstack-warehouse-actions) makes building customer data pipelines for both event streaming and cloud-to-warehouse ELT simple.
+RudderStack's easy-to-use [SDKs](stream-sources/rudderstack-sdk-integration-guides/), [Cloud Extract integrations](https://docs.rudderstack.com/sources), transformations, and expansive library of [destinations](destinations/) and [warehouse actions](warehouse-actions/) makes building customer data pipelines for both event streaming and cloud-to-warehouse ELT simple.
 
 > **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 >
@@ -16,12 +14,13 @@ Questions? Please join our [Slack channel](https://resources.rudderstack.com/joi
 
 ## Quick References
 
-* [**RudderStack Architecture**](https://docs.rudderstack.com/get-started/rudderstack-architecture)
-* [**Installing and Setting Up RudderStack**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/installing-and-setting-up-rudderstack)
-* [**SDK Integration Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/rudderstack-sdk-integration-guides)
-* [**Sources Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/sources)
-* [**Destinations Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/destinations)
-* [**How-to Guides**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/how-to-guides)
+* \*\*\*\*[**RudderStack Architecture**](get-started/rudderstack-architecture.md)\*\*\*\*
+* \*\*\*\*[**Install and Set Up RudderStack**](get-started/installing-and-setting-up-rudderstack/)\*\*\*\*
+* \*\*\*\*[**Cloud Extract Sources**](cloud-extract-sources/)\*\*\*\*
+* \*\*\*\*[**Warehouse Actions Sources**](warehouse-actions/)\*\*\*\*
+* \*\*\*\*[**Stream** ](stream-sources/)\*\*\*\*[**Sources**](stream-sources/)\*\*\*\*
+* [**Destinations**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/destinations)
+* \*\*\*\*[**User Guides**](user-guides/)\*\*\*\*
 * [**FAQs**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/faqs)
 
 ## License

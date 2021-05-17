@@ -33,7 +33,7 @@ Simply put, the Data Plane URL is used to connect to the RudderStack backend for
 {% hint style="info" %}
  To get the **Data Plane URL**: ****
 
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
+* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](get-started/installing-and-setting-up-rudderstack/) in your preferred dev environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
 {% endhint %}
 
@@ -59,7 +59,7 @@ The token is when you use the hosted control plane. It is a unique identifier fo
 
 #### Can I generate a token on my own? Can I self-host RudderStack?
 
-Yes, you can. Many people who don't want to sign up on our SaaS control plane use the [RudderStack Config Generator](https://github.com/rudderlabs/rudder-server/wiki/RudderStack-Config-Generator) to configure their sources and destinations. Please follow this [setup guide](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack) to install and set up RudderStack in no time.
+Yes, you can. Many people who don't want to sign up on our SaaS control plane use the [RudderStack Config Generator](https://github.com/rudderlabs/rudder-server/wiki/RudderStack-Config-Generator) to configure their sources and destinations. Please follow this [setup guide](get-started/installing-and-setting-up-rudderstack/) to install and set up RudderStack in no time.
 
 #### I don't want to configure my API keys and secrets with RudderStack's control plane. But I want to use its features like Transformations. What should I do?
 

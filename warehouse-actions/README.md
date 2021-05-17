@@ -4,7 +4,7 @@ description: >-
   with step-by-step instructions for configuration.
 ---
 
-# RudderStack Warehouse Actions
+# Warehouse Actions Sources
 
 RudderStack provides an infrastructure to track, capture, transform, and route your customer event data to your preferred destinations. However, this data can be quite raw in nature - comprising mainly of customer interactions with your website, mobile apps, or other digital assets. 
 

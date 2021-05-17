@@ -1,7 +1,7 @@
 ---
 description: >-
   A quick tour of RudderStack’s architecture, with a special focus on the data
-  plane
+  plane.
 ---
 
 # RudderStack Architecture
@@ -18,21 +18,30 @@ RudderStack's architecture consists of 2 major components, namely the **Control 
 
 Let us look at each of the above major components in a bit more detail: ****
 
-* **RudderStack Control Plane**: The control plane mainly consists of the UI to configure the source and destination of the event data. The control plane is further divided into 2 major components:
-  * **Web App**: This is the front-end application that allows you to set up your data routing with RudderStack.
-  * **Configuration Backend**: The backend gives you the options to configure your event data sources, destinations, and connections.
-* **RudderStack Data Plane**: The data plane is the core engine that is responsible for:
-  * Receiving and buffering the event data
-  * Transforming them into the required destination format, and finally
-  * Relaying it to the destination
+## **Control Plane**
+
+The control plane mainly consists of the UI to configure the source and destination of the event data. The control plane is further divided into 2 major components:
+
+* **Web App**: This is the front-end application that allows you to set up your data routing with RudderStack.
+* **Configuration Backend**: The backend gives you the options to configure your event data sources, destinations, and connections.
+
+## **Data Plane**
+
+The data plane is RudderStack's ****core engine that is responsible for:
+
+* Receiving and buffering the event data
+* Transforming them into the required destination format
+* Relaying it to the destination
 
 {% hint style="info" %}
 As mentioned earlier, the data plane uses PostgreSQL as a streaming database for the event data. We will dive more into the data plane later in this post.
 {% endhint %}
 
-* **RudderStack Transformation**: The transformation module is responsible for converting the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript. RudderStack also supports user-specific transformations for real-time operations, such as aggregation and sampling.
+## **Transformation** 
 
-## **RudderStack’s Data Plane Architecture**
+RudderStack's Transformations feature is responsible for converting the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript. RudderStack also supports user-specific transformations for real-time operations, such as aggregation, filtering, and sampling.
+
+## **Data Plane Architecture**
 
 RudderStack’s data plane is responsible for receiving, transforming, and routing the transformed event data to its destination in the required format. To do so, it receives the event data from sources that include web apps or Android/iOS devices. RudderStack’s backend is written in Go.
 

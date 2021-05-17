@@ -4,7 +4,7 @@ description: >-
   capture event data efficiently.
 ---
 
-# Pixel API Specification
+# Pixel API
 
 The RudderStack Pixel API allows you to track your customer event data from anywhere and route it to your desired destinations. 
 

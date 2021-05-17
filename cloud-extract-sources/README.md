@@ -4,11 +4,7 @@ description: >-
   specified cloud extract sources into RudderStack.
 ---
 
-# RudderStack Cloud Extract Sources
-
-## What are Sources in RudderStack?
-
-Sources are the tools or platforms from which the event data can be ingested into RudderStack. This event data can then be routed \(with or without transformation\) into your data warehouse or preferred destinations for analytics or other activation use-cases.
+# Cloud Extract Sources
 
 ## RudderStack Cloud Extract
 
@@ -24,13 +20,13 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 
 ## Popular Cloud Extract Sources
 
-{% page-ref page="../rudderstack-event-streams/segment.md" %}
+{% page-ref page="../stream-sources/rudderstack-event-streams/segment.md" %}
 
 {% page-ref page="salesforce/" %}
 
 {% page-ref page="zendesk.md" %}
 
-{% page-ref page="../rudderstack-event-streams/customerio.md" %}
+{% page-ref page="../stream-sources/rudderstack-event-streams/customerio.md" %}
 
 {% page-ref page="google-analytics.md" %}
 

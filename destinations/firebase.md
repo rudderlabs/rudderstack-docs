@@ -156,7 +156,7 @@ Follow these steps to add Firebase to your ReactNative project:
 
 * Register your Android and iOS applications in the [Firebase console](https://console.firebase.google.com/).
 * Once you have successfully created the applications in the Firebase console, you will be prompted to download the `google-services.json` and `GoogleServices-Info.plist` files.
-* Add the RudderStack react native SDK to your app - refer  [Getting Started with the ReactNative SDK](../rudderstack-sdk-integration-guides/rudderstack-react-native-sdk.md).
+* Add the RudderStack react native SDK to your app - refer  [Getting Started with the ReactNative SDK](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk.md).
 * Add the RudderStack-Firebase react native module to your app using :
 
   ```text
