@@ -19,7 +19,7 @@ In reality, however, as multiple stakeholders define and implement the event spe
 RudderStack's [**Data Governance API**](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-data-governance-api) gives you the ability to access all your events and their metadata programmatically. This includes vital information related to the event schema, event payload versions, data types, and more.
 
 {% hint style="info" %}
-**Refer to the** [**RudderStack Data Governance API Reference**](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-data-governance-api#api-reference) **for the technical documentation.**
+**Refer to the** [**RudderStack Data Governance API**](rudderstack-data-governance-api.md) **reference for the detailed technical documentation.**
 {% endhint %}
 
 By leveraging the Data Governance API, the data engineering team can narrow down the specific nature and source of any event data inconsistencies. With these insights, they update the instrumentation or leverage [**RudderStack Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) to clean the incoming events.
