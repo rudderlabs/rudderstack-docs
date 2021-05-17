@@ -2,15 +2,15 @@
 description: API Specification to manage your RudderStack Transformations and Libraries.
 ---
 
-# Transformation  API
+# Transformations  API
 
-RudderStack's Transformation API allows you to create, read, update and delete transformations and libraries programmatically by making HTTP calls.
+RudderStack's Transformations API allows you to create, read, update and delete transformations and libraries programmatically by making HTTP calls.
 
-This guide describes the various API operations, related request and response structures, and error codes associated with the Transformation API.
+This guide describes the various API operations, related request and response structures, and error codes associated with this API.
 
 ## Basic Authentication
 
-The Transformation API is authenticated via HTTP Basic Authentication. 
+The Transformations API is authenticated via HTTP Basic Authentication. 
 
 You can authenticate your account when using the API by including your **email address** in the username field and the secret **access token** in the password field in Authorization, if you're using POSTMAN.
 
@@ -22,7 +22,7 @@ It is mandatory to generate your access token before you make any API calls. If 
 Any API requests without the authentication will fail.
 {% endhint %}
 
-You can also pass your access token in the Authorization Headers, as shown:
+You can also pass your access token in the authorization headers, as shown:
 
 ```markup
 Authorisation: Basic {Base64Encoded(emailaddress:AccessToken)}
@@ -1170,5 +1170,5 @@ In case if your publish is failing, make sure to check your transformation code 
 
 ## Contact Us
 
-To know more about the RudderStack Transformation API, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
+To know more about the Transformations API, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
 

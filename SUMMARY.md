@@ -154,7 +154,7 @@
 * [Data Governance](data-governance/README.md)
   * [Data Governance API](data-governance/rudderstack-data-governance-api.md)
 * [Transformations](adding-a-new-user-transformation-in-rudderstack/README.md)
-  * [Transformation  API](adding-a-new-user-transformation-in-rudderstack/rudderstack-transformation-api/README.md)
+  * [Transformations  API](adding-a-new-user-transformation-in-rudderstack/rudderstack-transformation-api/README.md)
     * [Access Token](adding-a-new-user-transformation-in-rudderstack/rudderstack-transformation-api/api-access-token.md)
   * [FAQ](adding-a-new-user-transformation-in-rudderstack/faq.md)
 * [RudderStack API](rudderstack-api-spec/README.md)
