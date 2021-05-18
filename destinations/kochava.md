@@ -173,13 +173,12 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 A sample `screen` call looks like the following code snippet:
 
 ```text
-MainApplication.rudderClient.screen("Tracking Page",
+MainApplication.rudderClient.screen("Sample Screen Name",
             RudderProperty()
-                .putValue("url","www.kochava.com")
-                .putValue("referer","Rudderstack"))
+                .putValue("prop_key","prop_value"));
 ```
 
-In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In Kochava, the above `screen` call will be shown as - **"Screen View `Sample Screen Name` "** along with the properties.
+In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In Kochava, the above `screen` call will be shown as - **"screen view `Sample Screen Name` "** along with the properties.
 
 {% hint style="info" %}
 Note that `screen` call will send the event as custom events.
