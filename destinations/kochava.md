@@ -278,7 +278,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 ### Where do I get the Kochava APP GUID?
 
-In order to obtain the Kochava API key, please follow these steps:
+In order to obtain the Kochava APP GUID, please follow these steps:
 
 1. [Log in to Kochava](https://go.kochava.com/session) and select the desired account and app for the specific campaign.
 2. Under **Apps & Assets**, select **All Apps**
