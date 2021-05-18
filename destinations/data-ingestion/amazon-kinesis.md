@@ -1,0 +1,76 @@
+---
+description: Step-by-step guide to set up Amazon Kinesis as a destination in RudderStack.
+---
+
+# Amazon Kinesis
+
+[Amazon Kinesis](https://aws.amazon.com/kinesis/) enables you to ingest, buffer and process streaming data in real-time. It can handle any amount of streaming data and process data from hundreds of thousands of sources with very low latencies along with the flexibility to choose the tools that best suit the requirements of your application.
+
+RudderStack allows you to configure Amazon Kinesis as a destination to which you can send your event data seamlessly.
+
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kinesis)**.**
+{% endhint %}
+
+## **Getting Started**
+
+In order to enable dumping data to Amazon Kinesis, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Kinesis. Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon Kinesis. Refer to the table below:
+
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | - | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+
+{% hint style="info" %}
+ To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+{% endhint %}
+
+Once you have confirmed that the platform supports sending events to Kinesis, perform the steps below:
+
+To do so, please follow these steps:
+
+* Add **Amazon Kinesis** as a destination.
+
+{% hint style="info" %}
+Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+{% endhint %}
+
+* Next, in the **Connection Settings**, ****fill all the fields with the relevant information and click **Next**
+
+![Add Kinesis as destination](../../.gitbook/assets/image%20%287%29.png)
+
+* **Region**: AWS Region in which you have created the Kinesis stream
+* **Stream name:** The name of your Kinesis stream
+* **Credentials:** AWS Access Key ID and Secret Access Key to authorize RudderStack to write to your stream. For that, you need to create an IAM Policy that will provide permission to write to your data stream. Please refer to [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html) for the applicable policies. A sample policy is as below: 
+
+```javascript
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["kinesis:PutRecord"],
+      "Resource": ["arn:aws:kinesis:{region}:{account-id}:stream/{stream-name}"]
+    }
+  ]
+}
+```
+
+{% hint style="info" %}
+If the AWS credentials are **already configured** on your machine where the RudderStack server is set up, you will **not** need the security credentials.
+{% endhint %}
+
+* There is an option of `messageId` being used as a **Partition Key**. By default, we will use `userId` \( if `userId` is not present in the payload, then `anonymousId` \) as a partition key, but if you enable this, we will use `messageId` as the partition key. This enables your data to be more evenly distributed across the shards in the Kinesis stream.
+
+## FAQs
+
+### Why are the events not published to my Kinesis stream
+
+Verify that you are sending the events in the **Live Events** tab of your source.
+
+Check if there are any delivery failures in the **Live Events** tab of your destination.
+
+## Contact us
+
+In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+

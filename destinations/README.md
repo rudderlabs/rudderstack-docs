@@ -16,15 +16,15 @@ This section gives you detailed guidance on how to integrate RudderStack with th
 
 ## Popular Destinations
 
-{% page-ref page="google-analytics-ga.md" %}
+{% page-ref page="analytics/google-analytics-ga.md" %}
 
-{% page-ref page="amazon-s3.md" %}
+{% page-ref page="storage-platforms/amazon-s3.md" %}
 
-{% page-ref page="amplitude.md" %}
+{% page-ref page="analytics/amplitude.md" %}
 
 {% page-ref page="webhooks.md" %}
 
-{% page-ref page="hotjar.md" %}
+{% page-ref page="analytics/hotjar.md" %}
 
 ## Contact Us
 
