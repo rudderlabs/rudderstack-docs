@@ -42,15 +42,17 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 To successfully configure Kochava as a destination, you will need to configure the following settings:
 
-* **App GUID:** App GUID is an unique ID generated for your app by Kochava. It can be found in your account Under **Apps & Assets** -> **All Apps** and then select your app to view `App GUID`.
+* **App GUID:** Kochava generates a unique ID for your application, called the **App GUID**. You can find this ID by going to your Kochava account and navigating to **Apps & Assets** - **All Apps**. You can then select your app to the view the App GUID.
+
+**NOTE**: The following two settings are applicable for `iOS Device Mode` only:
+
+* **Enable AppTrackingTransparency (ATT):** Enable this setting if you want to enable the `AppTrackingTransparency` feature provided by the Kochava iOS SDK.
 
 {% hint style="info" %}
-The below two settings are applicable for `iOS Device Mode` only.
+Make sure you include the key `NSUserTrackingUsageDescription` in your `info.plist` along with a string value explaining why you are requesting authorization to track. 
 {% endhint %}
 
-* **Enable AppTrackingTransparency (ATT):** Turn this on if you want to enable the `AppTrackingTransparency` feature provided by Kochava iOS SDK. Make sure to include in your info.plist the key `NSUserTrackingUsageDescription` and a string value explaining why you are requesting authorization to track. 
-
-* **Enable skAdNetwork:** Turn this on if you want to enable the `skAdNetwork` feature provided by Kochava iOS SDK.
+* **Enable skAdNetwork:** Enable this setting if you want to enable the `skAdNetwork` feature provided by the Kochava iOS SDK.
 
 ## Adding Device Mode Integration
 
@@ -86,7 +88,7 @@ implementation 'com.kochava.base:tracker:3.10.0'
 implementation 'com.google.code.gson:gson:2.8.6'
 ```
 
-* Initialize the RudderStack SDK in the `Application` class's `onCreate()` method as shown:
+* Initialize the RudderStack SDK in the `Application` class' `onCreate()` method as shown:
 
 ```kotlin
 import com.rudderstack.android.integrations.kochava.KochavaIntegrationFactory
@@ -168,7 +170,7 @@ According to the table above, this will change the `Product Added` event to `Add
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
+The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but exclusive to your mobile device.
 
 A sample `screen` call looks like the following code snippet:
 
@@ -178,19 +180,19 @@ MainApplication.rudderClient.screen("Sample Screen Name",
                 .putValue("prop_key","prop_value"));
 ```
 
-In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In Kochava, the above `screen` call will be shown as - **"screen view `Sample Screen Name` "** along with the properties.
+In the above snippet, RudderStack captures all the information related to the viewed screen, along with any additional info associated with that event. In Kochava, the above `screen` call will be shown as - **"screen view `Sample Screen Name` "** along with the properties.
 
 {% hint style="info" %}
-Note that `screen` call will send the event as custom events.
+Note that `screen` call will be sent to Kochava as a custom event.
 {% endhint %}
 
 ## Configuring Push Notifications
 
-The steps to configure push notifications for Kochava for the platform of your choice are as mentioned below:
+Follow these steps to configure push notifications for Kochava for the platform of your choice:
 
 {% tabs %}
 {% tab title="Android" %}
-* Register push notifications for Android devices on your Kochava dashboard.
+* Register push notifications for your Android device in the Kochava dashboard.
 * Add the following dependency in your project level `build.gradle` file inside the `buildscript`:
 
 ```groovy
@@ -211,7 +213,7 @@ apply plugin: 'com.google.gms.google-services'
 
 * Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
 
-* Passing the new Push Token received fron FCM to the Kochava-sdk. For more information, look into the sample-kotlin app.
+* Passing the new Push Token received from FCM to the Kochava SDK. For more information, look into the **sample-kotlin** app.
 
 ```text
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -232,9 +234,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 {% endtab %}
 
 {% tab title="iOS" %}
-* Add Push Notification as a capability by navigating to Target - `Signing & Capabilities` of your app when opened in Xcode.
-* Enable `Background Modes/Remote notifications` by navigating to **Targets** -&gt; **Your App** -&gt; **Capabilities** -&gt; **Background Modes** and then check `Remote notifications`
-* Register the push notifications for the iOS devices on your Kochava dashboard.
+* Add Push Notification as a capability by navigating to **Target** - **Signing & Capabilities** of your app when opened in Xcode.
+* Enable **Background Modes/Remote notifications** by navigating to **Targets** - **Your App** - **Capabilities** - **Background Modes** and then check `Remote notifications`
+* Register the push notifications for the iOS devices in your Kochava dashboard.
 * Then, add the following code in your app just after initializing RudderStack's iOS SDK to register the push notifications.
 
 ```objectivec
@@ -276,14 +278,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 {% endtabs %}
 ## FAQs
 
-### Where do I get the Kochava APP GUID?
+### Where do I get the Kochava App GUID?
 
-In order to obtain the Kochava APP GUID, please follow these steps:
+To get your Kochava app GUID, please follow these steps:
 
-1. [Log in to Kochava](https://go.kochava.com/session) and select the desired account and app for the specific campaign.
+1. [Log in to Kochava](https://go.kochava.com/session). Then, go to your account and select the application for the specific campaign.
 2. Under **Apps & Assets**, select **All Apps**
-3. Click on the desired app for which you want the procure the APP GUID
-4. You will be able to see the APP GUID under the title of the app, within the details.
+3. Click on the desired app for which you want the procure the App GUID.
+4. You will be able to see the App GUID under the title of your application, within the details.
 
 For more information, please check the [Kochava support guide](https://support.kochava.com/reference-information/locating-an-app-guid/).
 
