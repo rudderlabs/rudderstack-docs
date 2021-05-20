@@ -105,7 +105,7 @@
     * [Iterable](destinations/marketing/iterable.md)
     * [Appcues](destinations/marketing/appcues.md)
     * [Userlist](destinations/marketing/userlist.md)
-    * [ActiveCampaign](destinations/marketing/active-campaign.md)
+    * [ActiveCampaign](destinations/marketing/activecampaign.md)
     * [Klaviyo](destinations/marketing/klaviyo.md)
   * [Attribution](destinations/attribution/README.md)
     * [Adjust](destinations/attribution/adjust.md)
