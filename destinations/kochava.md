@@ -142,7 +142,7 @@ RudderStack transforms the following events to Kochava's Standard Events, as sho
 | RudderStack Event Name | Kochava Standard Event |
 | :--- | :--- |
 | `Product Added` | `Add to Cart` |
-| `Add To Wishlist` | `Add to Wishlist` |
+| `Product Added to Wishlist` | `Add to Wishlist` |
 | `Checkout Started` | `Checkout Start` |
 | `Order Completed` | `Purchase` |
 | `Product Reviewed` | `Rating` |
