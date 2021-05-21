@@ -36,7 +36,7 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 
 - Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-![Salesforce Connection Settings](../.gitbook/assets/trengo-config.png)
+![Trengo Connection Settings](../.gitbook/assets/trengo-config.png)
 
 ### Connection Settings
 
@@ -63,7 +63,7 @@ When you are using an `externalId` to override _channelId_ , make sure that the 
 
 ### Effects on the Identify events
 
-Disabling the option **Enable deduplication for Contacts** will have the following consequences:
+Disabling the option **Enable deduplication for Contacts** will have the following consequences on the `identify` events:
 
 - Rudderstack will not update exising contacts with the same `identifier`.
 
@@ -72,6 +72,7 @@ Disabling the option **Enable deduplication for Contacts** will have the followi
   - If a contact is present with the same `phone`number as an identifier, it will be duplicated.
 
   - If you want to store multiple contacts for a particular `phone` number as an identifier for different channels (where the `channel identifiers` are **phone** too), you will need to disable the `deduplication` option from Rudderstack dashboard.
+
 
 - For the channel identifier **email**:
   
@@ -94,9 +95,13 @@ A sample `identify` call looks like the following:
 rudderanalytics.identify("userid", {
   firstName: "Name",
   lastName: "Surname",
-  email: "name@website.com"
+  email: "name@website.com",
 });
 ```
+
+{% hint style="info" %}
+**Note:** If you already have Trengo `contactId` you can pass it in `externalId`, `(example context.externalId: [{type:trengoContactId, id:channelId}])`, in that case will we avoid searching for `contactId` using `identifier(email/phone)` before updating.
+{% endhint %}
 
 ## Track
 
@@ -116,11 +121,11 @@ rudderanalytics.track("Product Purchased", {
 
 The following table demonstrates the use of the **Map events with template:** option for your `track` events:
 
-| **Event Name** | **Event Template** | **Subject Generated** |
-| :--- | :--- | :--- |
-| `Product Purchased` | `{{ event }} from our store` | `Product Purchased from our store` |
-| `Added to cart` | `Product was of value:{{ revenue }}` | `Product was of value:2000` |
-| `Checked Out` | `Cart was checked out` | `Cart was checked out` |
+| **Event Name**      | **Event Template**                   | **Subject Generated**              |
+| :------------------ | :----------------------------------- | :--------------------------------- |
+| `Product Purchased` | `{{ event }} from our store`         | `Product Purchased from our store` |
+| `Added to cart`     | `Product was of value:{{ revenue }}` | `Product was of value:2000`        |
+| `Checked Out`       | `Cart was checked out`               | `Cart was checked out`             |
 
 A few things to note while using this option:
 
@@ -134,5 +139,4 @@ For lodging your `track` events to Trengo, it is mandatory to add the `event` na
 {% endhint %}
 
 ## Contact Us
-
 If you come across any issues while configuring Trengo with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you.
