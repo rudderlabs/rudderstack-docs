@@ -2,7 +2,7 @@
 description: Step-by-step guide to send your event data from RudderStack to Gainsight
 ---
 
-# Gaisight CS
+# Gainsight
 
 [Gainsight CS](https://www.gainsight.com/customer-success/) makes customers a growth engine. With the help of Gainsight CS, get a comprehensive view of your customers, understand trends and risks, and empower your team to scale with proven actions that deliver outcomes.
 
