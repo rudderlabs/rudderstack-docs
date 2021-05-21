@@ -214,6 +214,27 @@ The required settings are:
 * **Contract ID**: This field is optional. If a user subscribes to a contract, only those subscribers associated with this contract will get the event.
 * **Topic Name**: This is a required field. The events are grouped under topic.
 
+`ContractId` can be provided in the RudderStack dashboard or in the `track` payload as `externalId`. If both are present, the `externalId` will get the higher precedence.
+
+Following is an example for sending `contractId` via track call.
+```
+rudderanalytics.track(
+  "Ticket Closure",
+  {
+    name: "John Doe",
+    status: "resolved"
+  },
+  {
+    externalId: [
+      {
+        type: "gainsightEventContractId",
+        id: "sample-contract-id"
+      }
+    ]
+  },
+  () => console.log("track callback")
+);
+```
 
 ### Using RudderStack's `track` call with Gainsight Events
 
