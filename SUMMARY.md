@@ -118,6 +118,7 @@
     * [Intercom](destinations/business-messaging/intercom.md)
     * [Slack](destinations/business-messaging/slack.md)
     * [Kustomer](destinations/business-messaging/kustomer.md)
+    * [Trengo](destinations/business-messaging/trengo.md)
   * [Advertising](destinations/advertising/README.md)
     * [Google Ads](destinations/advertising/google-ads.md)
     * [Facebook App Events](destinations/advertising/facebook-app-events.md)
