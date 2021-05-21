@@ -57,7 +57,7 @@ For a particular event the **Channel ID** can be overriden using `externalId`, F
 {% endhint %}
 
 {% hint style="warning" %}
-When you are using an `externalId` to override _channelId_ , make sure that the **Channel Identifier** of that specific channel matches with the **Channel Identifier** you have selected in Rudderstack dashboard.
+When using an `externalId` to override _channelId_ , make sure that the **Channel Identifier** of that specific channel matches with the **Channel Identifier** you have selected in Rudderstack dashboard.
 {% endhint %}
 
 
