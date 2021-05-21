@@ -35,7 +35,7 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Salesforce Connection Settings](../.gitbook/assets/trengo-config.png)
+![Trengo Connection Settings](../.gitbook/assets/trengo-config.png)
 
 ## Settings
 
@@ -46,9 +46,10 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 - **Map events with template:** To send `track` events to Trengo you need to add the `event` to the _Event Name_ field. If you wish to customize the subject for the event you can do so by adding _template_.
 
 {% hint style="info" %}
-For a particular event the **Channel Id** can be overriden using `externalId`, `(example context.externalId: [{type:trengo, id:channelId}])`
+For a particular event the **Channel Id** can be overriden using `externalId`, `(example context.externalId: [{type:trengoChannelId, id:channelId}])`
 
 **Caution**: When you are using `externalId` to override _channelId_ be mindful that **channel identifier** of that specific channel matches with the **Channel Identifier** selected in Rudderstack Dashboard
+
 {% endhint %}
 
 {% hint style="warning" %}
@@ -65,7 +66,7 @@ Disabling the option **Enable deduplication for Contacts** consequences:
   - If you want to store multiple `contacts` for particular _phone_ number as identifier, for different _channels_ (where the `channel identifiers` are phone) you need to disable `deduplication` option from Rudderstack dashboard
 
 - Channel identifier: **email**
-  
+
   - For _identify_ events even if `contact` is present with same _email_ address as identifier it will not be duplucated. (_This is a destination behaviour_)
 
   - For creating multiple contacts with _email_ address as identifer you need unique email address to do so.
@@ -84,9 +85,13 @@ A sample `identify` call looks like the following:
 rudderanalytics.identify("userid", {
   firstName: "Name",
   lastName: "Surname",
-  email: "name@website.com"
+  email: "name@website.com",
 });
 ```
+
+{% hint style="info" %}
+**Note:** If you already have Trengo `contactId` you can pass it in `externalId`, `(example context.externalId: [{type:trengoContactId, id:channelId}])`, in that case will we avoid searching for `contactId` using `identifier(email/phone)` before updating.
+{% endhint %}
 
 ## Track
 
@@ -105,11 +110,11 @@ rudderanalytics.track("Product Purchased", {
 {% hint style="info" %}
 Using **Map events with template:** for `track` events
 
-| **Event Name** | **Event Template** | **Subject Generated** |
-| :--- | :--- | :--- |
-| `Product Purchased` | `{{ event }} from our store` | `Product Purchased from our store` |
-| `Added to cart` | `Product was of value:{{ revenue }}` | `Product was of value:2000` |
-| `Checked Out` | `Cart was checked out` | `Cart was checked out` |
+| **Event Name**      | **Event Template**                   | **Subject Generated**              |
+| :------------------ | :----------------------------------- | :--------------------------------- |
+| `Product Purchased` | `{{ event }} from our store`         | `Product Purchased from our store` |
+| `Added to cart`     | `Product was of value:{{ revenue }}` | `Product was of value:2000`        |
+| `Checked Out`       | `Cart was checked out`               | `Cart was checked out`             |
 
 **Note:** For particular Event Name, Event Template is optional, if left blank subject will not generated using Template. (_Subjects are generally used for creating tickets in channels where channel identifier is `email`_)
 
@@ -119,3 +124,7 @@ channel `phone` is a mandatory field in the event.
 **Caution:** For lodging your `track` events to trengo it is mandatory to add the `event` name in `Event Name` field. If the `event` name is not present, those particular `track` events will not flow through.
 
 {% endhint %}
+
+## Contact Us
+
+If you come across any issues while configuring Trengo with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
