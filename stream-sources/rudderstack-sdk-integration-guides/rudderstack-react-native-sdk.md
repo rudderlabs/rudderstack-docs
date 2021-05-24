@@ -49,13 +49,6 @@ yarn add @rudderstack/rudder-sdk-react-native
 {% endtab %}
 {% endtabs %}
 
-* Navigate to your Application's `Android` folder and add the following to your application's `build.gradle` file:
-
-```groovy
-maven { 
-    url { "https://dl.bintray.com/rudderstack/rudderstack" }
-}
-```
 
 * Navigate to your Application's iOS folder and install all the required pods with:
 
@@ -188,6 +181,54 @@ await rudderClient.reset()
 It is highly recommended to use the `await` keyword with the reset call.
 {% endhint %}
 
+## Enabling / Disabling Events for Specific Destinations
+
+The RudderStack React Native SDK allows you to enable or disable event flow to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown below:
+
+```typescript
+const options = {
+    integrations: {
+        //default value for `All` is true
+        All: false,
+        // specifying destination by its display name
+        Amplitude: true,
+        Mixpanel: false
+    }
+}
+```
+
+{% hint style="info" %}
+The keyword `All` in the above snippet represents all the destinations the source is connected to. Its value is set to `true` by default.
+{% endhint %}
+
+{% hint style="info" %}
+Make sure the `destination display name` that you pass while specifying the destinations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
+{% endhint %}
+
+You can pass the destination\(s\) specified in the above snippet to the SDK in two ways:
+
+### 1. Passing the destinations while initializing the SDK:
+
+This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination\(s\).
+
+```typescript
+rudderClient.setup(WRITE_KEY, config, options);
+```
+### 2. Passing the destinations while making any event call:
+
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
+
+```typescript
+rudderClient.track("test_track_event", {
+    "test_key_1": "test_value_1"
+}, options)
+```
+
+{% hint style="info" %}
+If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
+{% endhint %}
+
+
 ## External ID
 
 You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
@@ -200,7 +241,7 @@ const options = {
         }
     ]
 }
-await rudderClient.identify("test_userId", {
+rudderClient.identify("test_userId", {
     "email":"testuser@example.com",
     "location":"UK"
 }, options);
