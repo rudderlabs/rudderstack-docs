@@ -53,7 +53,7 @@ In the **Connection Settings**, you will see the following options:
 - **Map events with template:** To send `track` events to Trengo, you need to add the `event` to the _Event Name_ field. If you wish to customize the subject for the event, you can do so by adding a _template_.
 
 {% hint style="info" %}
-For a particular event the **Channel ID** can be overriden using `externalId`, For example: `(context.externalId: [{type:trengo, id:channelId}])`.
+For a particular event the **Channel ID** can be overriden using `externalId`, For example: `(context.externalId: [{type:trengoChannelId, id:channelId}])`.
 {% endhint %}
 
 {% hint style="warning" %}
