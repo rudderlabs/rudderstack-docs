@@ -46,7 +46,7 @@ To successfully configure Kochava as a destination, you will need to configure t
 
 **NOTE**: The following two settings are applicable for `iOS Device Mode` only:
 
-* **Enable AppTrackingTransparency (ATT):** Enable this setting if you want to enable the `AppTrackingTransparency` feature provided by the Kochava iOS SDK.
+* **Enable AppTrackingTransparency \(ATT\):** Enable this setting if you want to enable the `AppTrackingTransparency` feature provided by the Kochava iOS SDK.
 
 {% hint style="info" %}
 Make sure you include the key `NSUserTrackingUsageDescription` in your `info.plist` along with a string value explaining why you are requesting authorization to track.
@@ -212,7 +212,6 @@ apply plugin: 'com.google.gms.google-services'
 ```
 
 * Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
-
 * Passing the new Push Token received from FCM to the Kochava SDK. For more information, look into the **sample-kotlin** app.
 
 ```text
@@ -276,6 +275,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 ```
 {% endtab %}
 {% endtabs %}
+
 ## FAQs
 
 ### Where do I get the Kochava App GUID?
