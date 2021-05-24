@@ -188,6 +188,24 @@ await rudderClient.reset()
 It is highly recommended to use the `await` keyword with the reset call.
 {% endhint %}
 
+## External ID
+
+You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
+
+```typescript
+const options = {
+    externalIds: [{
+            id: "some_external_id_1",
+            type: "brazeExternalId"
+        }
+    ]
+}
+await rudderClient.identify("test_userId", {
+    "email":"testuser@example.com",
+    "location":"UK"
+}, options);
+```
+
 ## Configuring your RudderStack Client
 
 You can configure your client based on the following parameters by passing them in the `configuration` object of your `setup` call.
