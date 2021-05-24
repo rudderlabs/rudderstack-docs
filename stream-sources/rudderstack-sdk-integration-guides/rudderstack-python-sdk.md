@@ -212,6 +212,30 @@ The `alias` method parameters are as mentioned below:
 For a detailed explanation of the `alias` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
+## Error Handling
+
+To handle errors that may occur when sending these events via `rudder_analytics` you can declare a callback called `on_error`.
+
+```text
+def on_error(error, events):
+    print("Error response:", error)
+
+rudder_analytics.on_error = on_error
+```
+
+{% hint style="info" %}
+**Note:** this will only return errors that may occur with the HTTP request to the Gateway. Any errors that occur downstream will not be returned via this callback.
+{% endhint %}
+
+Common request responses from the Gateway are as follows
+
+| Status | Code |
+| :--- | :--- |
+| Ok | 200 |
+| Request neither has anonymousId nor userId | 400 |
+| Invalid Write Key | 401 |
+| Invalid JSON | 400 |
+
 ## Contact Us
 
 To know more about the RudderStack Python SDK, you can [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you.
