@@ -244,7 +244,7 @@ RudderClient.reset();
 ```
 ## Enabling / Disabling Events for Specific Destinations
 
-The RudderStack Flutter SDK allows you to enable or disable event flow to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown below:
+The Flutter SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:
 
 ```dart
 RudderOption options = new RudderOption();
@@ -261,14 +261,14 @@ The keyword `All` in the above snippet represents all the destinations the sourc
 {% endhint %}
 
 {% hint style="info" %}
-Make sure the `destination display name` that you pass while specifying the destinations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
+Make sure the destination name that you pass while specifying the destinations should exactly match the destination name as listed [here](https://app.rudderstack.com/directory).
 {% endhint %}
 
-You can pass the destination\(s\) specified in the above snippet to the SDK in two ways:
+You can pass the destination(s) specified in the above snippet to the SDK in two ways:
 
 ### 1. Passing the destinations while initializing the SDK:
 
-This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination\(s\).
+This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination(s).
 
 ```dart
 RudderClient.getInstance(WRITE_KEY,
@@ -276,7 +276,7 @@ RudderClient.getInstance(WRITE_KEY,
 ```
 ### 2. Passing the destinations while making any event call:
 
-This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination(s) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
 
 ```dart
 RudderProperty property = RudderProperty();
