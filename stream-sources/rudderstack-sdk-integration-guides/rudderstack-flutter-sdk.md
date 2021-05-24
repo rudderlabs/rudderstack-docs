@@ -248,7 +248,7 @@ The RudderStack Flutter SDK allows you to enable or disable event flow to a spec
 
 ```dart
 RudderOption options = new RudderOption();
-//default value for `All` is true
+// default value for `All` is true
 options.putIntegration("All", false);
 // specifying destination by its display name
 options.putIntegration("Mixpanel", false);
