@@ -412,7 +412,15 @@ Here, the second parameter is the AMP Linker ID format in accordance with the [s
 
 Calling the above method will parse the Linker ID and set the **`anonymousId`** as the value of the **`rs_amp_id`** key.
 
-### 3.2.5. Identifying New Users
+### 3.2.5 Setting `userid` to Empty
+
+If you would like to set the `userid` to be empty, pass an empty string or `""`. A common use case for this is if an anonymous user was identified with a `userid` and then logs out of their account. You can then `identify("", {isLoggedIn: false})` and the user will continue to be identified by their `anonymousId` for future events.
+
+{% hint style="warning" %}
+Do **not** identify with `null`, as this will not allow you to pass a traits object and it will keep the current `userid`.
+{% endhint %}
+
+### 3.2.6. Identifying New Users
 
 To identify new users in scenarios like a new login, you can take one of the following approaches:
 
