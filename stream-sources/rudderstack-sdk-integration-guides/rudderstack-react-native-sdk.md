@@ -188,7 +188,7 @@ The RudderStack React Native SDK allows you to enable or disable event flow to a
 ```typescript
 const options = {
     integrations: {
-        //default value for `All` is true
+        // default value for `All` is true
         All: false,
         // specifying destination by its display name
         Amplitude: true,
