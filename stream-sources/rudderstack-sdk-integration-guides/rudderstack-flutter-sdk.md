@@ -257,11 +257,11 @@ options.putIntegrationWithFactory(Appcenter(), true);
 ```
 
 {% hint style="info" %}
-The keyword `All` in the above snippet represents all the destinations the source is connected to. Its value is set to `true` by default.
+The keyword `All` in the above snippet represents all the destinations to which the source is connected. Its value is set to `true` by default.
 {% endhint %}
 
 {% hint style="info" %}
-Make sure the destination name that you pass while specifying the destinations should exactly match the destination name as listed [here](https://app.rudderstack.com/directory).
+Make sure the destination names that you pass while specifying the destinations should exactly match the names as listed [here](https://app.rudderstack.com/directory).
 {% endhint %}
 
 You can pass the destination(s) specified in the above snippet to the SDK in two ways:
