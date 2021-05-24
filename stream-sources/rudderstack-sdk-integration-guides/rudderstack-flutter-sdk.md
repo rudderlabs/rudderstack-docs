@@ -242,6 +242,52 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 ```dart
 RudderClient.reset();
 ```
+## Enabling / Disabling Events for Specific Destinations
+
+The RudderStack Flutter SDK allows you to enable or disable event flow to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown below:
+
+```dart
+RudderOption options = new RudderOption();
+//default value for `All` is true
+options.putIntegration("All", false);
+// specifying destination by its display name
+options.putIntegration("Mixpanel", false);
+// specifying destination by its Factory object
+options.putIntegrationWithFactory(Appcenter(), true);
+```
+
+{% hint style="info" %}
+The keyword `All` in the above snippet represents all the destinations the source is connected to. Its value is set to `true` by default.
+{% endhint %}
+
+{% hint style="info" %}
+Make sure the `destination display name` that you pass while specifying the destinations should exactly match the destination name as shown [here](https://app.rudderstack.com/directory).
+{% endhint %}
+
+You can pass the destination\(s\) specified in the above snippet to the SDK in two ways:
+
+### 1. Passing the destinations while initializing the SDK:
+
+This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination\(s\).
+
+```dart
+RudderClient.getInstance(WRITE_KEY,
+                    config: builder.build(),options: options);
+```
+### 2. Passing the destinations while making any event call:
+
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
+
+```dart
+RudderProperty property = RudderProperty();
+property.put("test_key_1", "test_key_1");
+RudderClient.track("test_track_event", properties: property, options: options);
+```
+
+{% hint style="info" %}
+If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
+{% endhint %}
+
 
 ## External ID
 
