@@ -51,10 +51,32 @@ The connection settings are:
 More information on how to find your Facebook Pixel ID and Business Access Token can be found in our FAQs below.
 {% endhint %}
 
-* Some other important settings are: 
+* Some other important settings are:  
+
+
   * **Value Field Identifier**: You can set this field to `properties.price` or `properties.value` and will be assigned to the value field of the Facebook payload. 
-  * **Blacklist PII Properties**:  The PII properties mentioned in this field will not be sent to Facebook if **Blacklist PII Hash Property** is not enabled. If it is enabled, the property will be hashed by SHA256 and sent to Facebook. 
-  * **Whitelist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. 
+  * **Blacklist PII Properties**:  The PII properties mentioned in this field will not be sent to Facebook if **Blacklist PII Hash Property** is not enabled. If it is enabled, the property will be hashed by SHA256 and sent to Facebook. The properties listed below are the default blacklisted properties. If you would still like to send one of these properties but instead hashed by SHA256, you will need to enter the property name in the field and enable the **Blacklist PII Hash Property** toggle.
+
+  ```text
+  Default Blacklisted PII
+  -----------------------
+  "email", 
+  "firstName", 
+  "lastName", 
+  "firstname", 
+  "lastname", 
+  "first_name", 
+  "last_name", 
+  "gender", 
+  "city", 
+  "country", 
+  "phone", 
+  "state", 
+  "zip", 
+  "birthday"
+  ```
+
+  * **Whitelist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. This is only necessary for properties that match the **Default Blacklisted PII** properties above. 
   * **Standard Events Custom Properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, those properties should be mentioned in this setting. 
   * **Limited Data Usage**: If enabled, RudderStack will take the data processing information from the payload and send it to Facebook. The data in the RudderStack payload should be as follows:
 
