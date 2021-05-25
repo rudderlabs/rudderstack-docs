@@ -1,5 +1,5 @@
 ---
-description: Step-by-step guide to send event data from RudderStack to Keen
+description: Step-by-step guide to send event data from RudderStack to Keen.
 ---
 
 # Keen

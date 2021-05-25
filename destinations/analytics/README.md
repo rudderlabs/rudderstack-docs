@@ -6,7 +6,15 @@ RudderStack supports sending your customer event data to various analytics platf
 
 ## Popular Destinations
 
+{% page-ref page="../../cloud-extract-sources/google-analytics.md" %}
 
+{% page-ref page="amplitude.md" %}
+
+{% page-ref page="hotjar.md" %}
+
+{% page-ref page="firebase.md" %}
+
+{% page-ref page="google-analytics-4.md" %}
 
 ## Contact Us
 
