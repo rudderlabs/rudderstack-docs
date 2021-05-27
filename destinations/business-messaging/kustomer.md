@@ -51,6 +51,64 @@ Note: Relevant `roles` are required for an **API Key** to successfully access Ku
 Note: All server-side destination requests require either a `anonymousId` or a `userId` in the payload.
 {% endhint %}
 
+## Kustomer Payload Restrictions
+
+For `page`, `screen`, and `track` events being sent to Kustomer, there are restrictions on some of the components of the event payload.
+
+### Event Name
+
+The `event name` being sent in the `page`, `screen`, and `track` events cannot include any spaces.
+
+| Result | Event Name Example |
+| :--- | :--- |
+| ❌  Will Result in Error | `Cart Viewed` |
+| ✅  Will Be Successful | `Cart-Viewed` / `Cart_Viewed` |
+
+### Meta Object
+
+For `page`, `screen`, and `track` events, all of the data from the `properties` parameter will be sent to the Kustomer api through the `meta` object. However, there are certain restrictions in place on the key-value pairs within the `meta` object.
+
+#### String Values
+
+For key-value pairs where the value has a type of `string`, the key must not end with the characters `Num` or `At`.
+
+| Result | String Key Name Example |
+| :--- | :--- |
+| ❌  Will Result in Error | `{ first_nameNum: 'John' }` |
+| ❌  Not Semantically Correct | `{ first_nameAt: 'John' }` |
+| ✅  Will Be Successful | `{ first_name: 'John' }` |
+
+#### Date-time String Values
+
+For key-value pairs where the value has a type of `date-time string`, the key must end with the characters `At`.
+
+| Result | Date-time String Key Name Example |
+| :--- | :--- |
+| ❌  Not Semantically Correct | `{ birthday: '2020-05-25' }` |
+| ✅  Will Be Successful | `{ birthdayAt: '2020-05-25' }` |
+
+#### Number Values
+
+For key-value pairs where the value has a type of `number`, the key must end with the characters `Num`.
+
+| Result | Number Key Name Example |
+| :--- | :--- |
+| ❌  Will Result in Error | `{ age: 30 }` |
+| ✅  Will Be Successful | `{ ageNum: 30 }` |
+
+#### Object or Array Values
+
+The values for all keys in the `meta` object must be 'flat' meaning they cannot be nested `objects` or `arrays`.
+
+| Result | Value Example |
+| :--- | :--- |
+| ❌  Will Result in Error | `{ items: { price: 32, name: 'dinner plate' } }` |
+| ❌  Will Result in Error | `{ items: [ 'dinner plate', 'fork', 'spoon' ] }` |
+
+{% hint style="info" %}
+Note: For `track`, `page` and `screen` events, Kustomer supports only `number, string,`and `string` with `date-time` format for custom event properties. Please refer to the [official Kustomer Documentation](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
+{% endhint %}
+
 ## Page
 
 The `page` call allows you to record information whenever a user sees a web page, along with its associated properties.
@@ -72,7 +130,7 @@ rudderanalytics.page("Cart", "Cart-Viewed", {
 ```
 
 {% hint style="warning" %}
-The `event name` must not include any spaces or the event will fail with the error `"Invalid Event name provided"`
+The `event name` must not include any spaces or the event will fail.
 {% endhint %}
 
 If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for that page event, as per the [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
@@ -90,7 +148,7 @@ A sample `screen` call looks like the following code snippet:
 ```
 
 {% hint style="warning" %}
-The `event name` must not include any spaces or the event will fail with the error `"Invalid Event name provided"`
+The `event name` must not include any spaces or the event will fail.
 {% endhint %}
 
 If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for the page event, as per the [Kustomer **Tracking Event** Reference](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
@@ -110,7 +168,7 @@ rudderanalytics.track("Checked-Out", {
 ```
 
 {% hint style="warning" %}
-The `event name` must not include any spaces or the event will fail with the error `"Invalid Event name provided"`
+The `event name` must not include any spaces or the event will fail.
 {% endhint %}
 
 In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional information about that event - in this case, the details of the `Checked out` event.

@@ -40,6 +40,8 @@ If you have already connected RudderStack to your Facebook Ads account, your cre
 ### Configuring the Source
 
 * In the next screen, choose the **Page** from where you want RudderStack to import the data. Also, select the **Historical data** as well as the **Attribution window** timeframe, and click on **Next**.
+  * **Historical Data** - this sets the range for the first sync, and can be used to fetch the historical pull
+  * **Attribution window** - this sets the date range for any subsequent sync
 
 ![](../.gitbook/assets/screen-shot-2021-02-08-at-1.22.07-pm.png)
 
