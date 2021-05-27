@@ -141,7 +141,7 @@ SFMC only accepts ISO-8601 type dates and rejects any other types if the attribu
 The following code snippet demonstrates a sample `track` call in RudderStack:
 
 ```javascript
-rudderanalytics.track("Event Name", {
+rudderanalytics.identify("Event Name", {
   Plan: "plan value",
 });
 ```
@@ -190,5 +190,5 @@ Note that camel cases and snake cases will be formatted to title cases.
 
 ## Contact Us
 
-If you come across any issues while configuring Salesforce Marketing Cloud with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Salesforce with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

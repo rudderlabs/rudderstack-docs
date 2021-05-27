@@ -25,7 +25,7 @@ To integrate the RudderStack JavaScript SDK with your website, place either the 
 rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load(<YOUR_WRITE_KEY>,<DATA_PLANE_URL>),rudderanalytics.page();
 </script>
 
-<script src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>
+<script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
 ```
 
 {% hint style="info" %}
@@ -72,12 +72,13 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 
 {% hint style="success" %}
 **NOTE**: The above code snippet will load `rudder-analytics.js` on to your page synchronously. To load the SDK asynchronously to keep your page load time unaffected, use the following instead:  
-`<script async src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>`
+  
+**`<script async src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>`**
 {% endhint %}
 
-```javascript
-// Combining the initialization and the above async script together 
+Combining the initialization and the above async script together, we get:
 
+```javascript
 <script type="text/javascript"> 
 !function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
  e.load(WRITE_KEY, DATA_PLANE_URL), e.page()}(); 
