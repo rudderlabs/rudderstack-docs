@@ -8,7 +8,18 @@ PostgreSQL is an enterprise-grade, open source database management system. It su
 
 This guide will help you configure PostgreSQL as a source from which you can route event data to your desired destinations through RudderStack.
 
-## Getting Started
+## Granting Permissions
+
+Run the following SQL queries to grant the necessary permissions for warehouse action
+
+```text
+CREATE USER RUDDER WITH PASSWORD 'strong_unique_password'
+GRANT USAGE ON SCHEMA "testschema" TO RUDDER;
+GRANT SELECT ON TABLE "testschema"."testtable" to RUDDER;
+GRANT CREATE ON SCHEMA "testschema" to RUDDER;
+```
+
+## Set Up as Source
 
 To set up PostgreSQL as a source in RudderStack, follow these steps:
 

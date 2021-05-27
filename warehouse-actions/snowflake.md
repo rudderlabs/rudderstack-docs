@@ -8,7 +8,24 @@ description: Step-by-step guide to ingest your data from Snowflake into RudderSt
 
 This guide will help you configure Snowflake as a source from which you can route event data to your desired destinations through RudderStack.
 
-## Getting Started
+## Granting Permissions
+
+Run the following SQL queries to grant the necessary permissions for warehouse action
+
+```text
+CREATE ROLE RUDDER_ROLE;
+SHOW ROLES;
+CREATE OR REPLACE USER RUDDER PASSWORD = 'strong_unique_password' DEFAULT_ROLE = 'RUDDER_ROLE';
+SHOW USERS;
+GRANT ROLE RUDDER_ROLE TO USER RUDDER;
+GRANT USAGE ON WAREHOUSE TESTWAREHOUSE TO ROLE RUDDER_ROLE; 
+GRANT USAGE ON DATABASE TESTDATABASE TO ROLE RUDDER_ROLE; 
+GRANT USAGE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
+GRANT CREATE TABLE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
+GRANT SELECT ON TABLE TESTDATABASE.TESTSCHEMA.TESTTABLE TO ROLE RUDDER_ROLE;
+```
+
+## Set Up as Source
 
 To set up Snowflake as a source in RudderStack, follow these steps:
 

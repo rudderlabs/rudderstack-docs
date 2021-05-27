@@ -415,7 +415,7 @@ RSOption *option = [[RSOption alloc]init];
 ```swift
 let option:RSOption = RSOption();
 //default value for `All` is true
-option.putIntegration("All", isEnabled:true)
+option.putIntegration("All", isEnabled:false)
 // specifying destination by its display name
 option.putIntegration("Amplitude", isEnabled:true)
 option.putIntegration(<DESTINATION DISPLAY NAME>, isEnabled:<BOOL>)
