@@ -10,7 +10,7 @@ RudderStack supports various marketing platforms to which you can send your even
 
 {% page-ref page="marketo.md" %}
 
-{% page-ref page="hubspot.md" %}
+{% page-ref page="../crm/hubspot.md" %}
 
 {% page-ref page="mailchimp.md" %}
 
