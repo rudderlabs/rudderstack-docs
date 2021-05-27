@@ -76,7 +76,7 @@ Alternatively, you can also click on the **Destinations** option in the left nav
 
 * Configure the destination with the relevant connection settings. Refer to the specific [**destination documentation**](../destinations/) ****for more ****details. 
 
-![](../.gitbook/assets/screen-shot-2021-05-19-at-4.55.08-pm.png)
+![](../.gitbook/assets/screen-shot-2021-05-19-at-4.55.08-pm%20%281%29%20%281%29.png)
 
 * RudderStack allows you to transform your source events in a destination-specific format through the [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**. 
 

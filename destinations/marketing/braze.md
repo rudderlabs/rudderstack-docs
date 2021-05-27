@@ -35,15 +35,23 @@ Please follow these steps once you have added a source in the RudderStack app:
 
 ![RudderStack connection settings for adding Braze as a destination](../../.gitbook/assets/braze.png)
 
-* Once you have added the source, please register on Braze complete the setup.
-* You should then be able to access the Braze API key in your Braze dashboard under **App Settings** - **Manage App Group**
-* A REST API key needs to be created in the Braze dashboard under App Settings - Developer Console - API Settings. You can find the detailed instructions [here](https://www.braze.com/docs/api/basics/?redirected=true#creating-and-managing-rest-api-keys).
-
 {% hint style="info" %}
-For the above App Group REST API Key, you will only need to select the **users.track**, **users.identify**, and **users.alias.new** endpoints under **User Data**
+When creating a new Braze Rest API Key for your app, you will only need to select the **users.track**, **users.identify**, and **users.alias.new** endpoints under the **User Data** permissions
 {% endhint %}
 
-* Please enter the **Data Center** details provided by Braze. It is of the format **INSTANCE**, as explained clearly in this [Braze Instances](https://www.braze.com/docs/user_guide/administrative/access_braze/braze_instances/) guide. An example of a Data Instance would be `US-01`.
+* Once you have added the source, configure the Braze settings to complete the setup.
+* Both the **App Key**  and the **Rest Api Key** can be found in the **Developer Console** underneath the **Settings** section in your Braze dashboard \(left-side menu\)
+* In the **Developer Console** under the **API Settings** tab, there should be 4 sections.
+* To get the **App Key**, go to the **Identification** section and look up your **App Name**. The key will then be the associated **Identifier** string. You can find more information [here](https://www.braze.com/docs/api/api_key/#where-can-i-find-it-1).
+* To get the **Rest Api Key**, go to the **Rest API Keys** section and look for the **API Key Name** that you created. The key will then be the associated **Identifier** string. You can find more information [here](https://www.braze.com/docs/api/api_key/#where-can-i-find-it).
+* To get the correct **Data Center** details, you can follow this very clear [Braze Instances](https://www.braze.com/docs/user_guide/administrative/access_braze/braze_instances/) guide. An example of a Data Instance would be `US-01`. The easiest way to get your **Data Center** details is to simply log in to your Braze account and look at your URL. Your URL will map to what **Data Center** you will enter.
+
+| URL | Data Center Input |
+| :--- | :--- |
+| https://dashboard-01.braze.com | US-01 |
+| https://dashboard-03.braze.com | US-03 |
+| https://dashboard-01.braze.eu | EU-01 |
+| etc. | etc. |
 
 ## Adding Device Mode Integration
 

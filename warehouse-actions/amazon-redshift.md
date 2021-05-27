@@ -26,7 +26,7 @@ To set up Amazon Redshift as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%281%29.png)
+![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%281%29%20%283%29.png)
 
 * Scroll down to the **Warehouse Sources** and select **Redshift**. Then, click on **Next**.
 
@@ -77,7 +77,7 @@ Your table must include one of the following columns - `email`, `user_id`, or `a
 
 ![](../.gitbook/assets/screen-shot-2021-01-06-at-4.05.51-pm%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
 
-That's it! Redshift is now successfully configured as a source on your RudderStack dashboard. 
+That's it! Redshift is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start importing data from your Redshift instance as per the specified frequency. You can further connect this source to your preferred destination by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
