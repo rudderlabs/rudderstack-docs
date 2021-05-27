@@ -127,7 +127,7 @@
     * [Facebook Pixel](destinations/advertising/fb-pixel.md)
     * [Lotame](destinations/advertising/lotame.md)
     * [Bing Ads](destinations/advertising/bingads.md)
-    * [Pinterest Ads](destinations/advertising/pinterest-ads.md)
+    * [Pinterest Tag](destinations/advertising/pinterest-ads.md)
   * [Customer Data Platform](destinations/customer-data-platform/README.md)
     * [Segment](destinations/customer-data-platform/segment.md)
   * [Data Ingestion](destinations/data-ingestion/README.md)
