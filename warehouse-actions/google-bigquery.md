@@ -8,7 +8,36 @@ description: Step-by-step guide to ingest your data from Google BigQuery into Ru
 
 This guide will help you configure BigQuery as a source from which you can route event data to your desired destinations through RudderStack.
 
-## Getting Started
+## Granting Permissions
+
+Follow these steps below to grant the necessary permissions for warehouse actions. For BigQuery, use the BigQuery Console.
+
+* Go to [https://console.cloud.google.com/iam-admin/roles](https://console.cloud.google.com/iam-admin/roles) and click on “CREATE ROLE”.
+* Fill it in as shown below. 
+
+![](../.gitbook/assets/image1.png)
+
+* Click on “ADD PERMISSIONS” and add the permissions mentioned below.
+
+![](../.gitbook/assets/image3.png)
+
+* Click on “CREATE”.
+* Now, move to [https://console.cloud.google.com/iam-admin/serviceaccounts](https://console.cloud.google.com/iam-admin/serviceaccounts) and select the project which has the dataset or table you want to share.
+* Click on “CREATE SERVICE ACCOUNT”.
+* Fill in the details in Step 1 and click CREATE:
+
+![](../.gitbook/assets/image2.png)
+
+* Fill in the details in Step 2 and click CONTINUE:
+
+![](../.gitbook/assets/image4.png)
+
+* After filling in steps 1 and 2 click DONE.
+* This will move you to the list of service accounts. Now, click on the “3 dots” for the service account that just created, and select “Manage keys”.
+* Click on ADD KEY and select "Create new key". In the pop up select JSON and click CREATE. 
+* Download this json file and use its data while creating a BQ source on RudderStack.
+
+## Set Up as Source
 
 To set up Google BigQuery as a source in RudderStack, follow these steps:
 
