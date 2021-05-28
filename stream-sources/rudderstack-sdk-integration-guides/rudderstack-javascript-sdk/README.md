@@ -769,62 +769,10 @@ rudderanalytics.reset();
 
 ## 4. How to Filter Selective Destinations to Send Event Data
 
-RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. You can do so by passing an integrations object in the **options** parameter of the `identify()`, `page()`, and `track()` methods.
+RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. You can do so by passing an integrations object in the **options** parameter of the `identify()`, `page()`, and `track()` methods. Please refer to the [How to Filter Selective Destinations](https://docs.rudderstack.com/how-to-guides/how-to-filter-selective-destinations-to-send-event-data) section.
 
-The following is an example of how to send a sample message **only** to Google Analytics and Intercom:
-
-```javascript
-rudderanalytics.identify(
-  "samplename",
-  {
-    email: "name@email.org",
-    name: "Samplename",
-  },
-  {
-    integrations: {
-      All: false,
-      "Google Analytics": true,
-      "Intercom": true,
-    },
-  }
-);
-```
-
-{% hint style="info" %}
-The line **`All: false`** instructs RudderStack **not** to send the event data to any destinations **by default,** unless they are explicitly listed as **`true`** in the subsequent lines.
-{% endhint %}
-
-You can also disable sending event data to certain destinations. In this case, the event data is sent to **all the other destinations** except the specified ones. An example of this is as shown:
-
-```javascript
-rudderanalytics.identify(
-  "samplename",
-  {
-    email: "name@email.org",
-    name: "Samplename",
-  },
-  {
-    integrations: {
-      "Google Analytics": false,
-      "Intercom": false,
-    },
-  }
-);
-```
-
-As seen in the above code snippet, RudderStack will send the event data to all the destinations except Google Analytics and Intercom.
-
-{% hint style="success" %}
-**NOTE**: Unless explicitly defined otherwise, `'All'` is always set to `true`. This means that sending events to all destinations is enabled by default.
-{% endhint %}
-
-### 4.1. Specifying Selective Destinations in the `load` Method
-
-You can also choose to load selective destinations by modifying the [`load`](https://docs.rudderstack.com/sdk-integration-guide/getting-started-with-javascript-sdk#load) method to take a third argument. You can pass an`integrations` dictionary containing the destination names in the format specified [above](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/getting-started-with-javascript-sdk#how-to-filter-selective-destinations-to-send-event-data). RudderStack loads only those destinations that are marked as enabled with the boolean value `true` .
-
-### 4.2. Common Destination Names
-
-RudderStack supports the following destination names for sending the event data through the `load` method as described above:
+### 4.1. Common Destination Names
+Below shows some of the supported names that RudderStack can intake for each destination when sending the event data through the event method as described above (please note that not all destinations are listed below):
 
 | Destination | Supported Common Names |
 | :--- | :--- |
@@ -881,15 +829,27 @@ RudderStack supports the following destination names for sending the event data 
 | AWS Personalize | `AWS Personalize` |
 | Amazon Kinesis | `Amazon Kinesis` |
 
+{% hint style="info" %}
+**NOTE:** You can also refer to [this section](https://docs.rudderstack.com/how-to-guides/how-to-filter-selective-destinations-to-send-event-data#destination-naming-convention) for more information on the naming convention of the `destinations names`. 
+{% endhint %}
+
+### 4.2. Specifying Selective Destinations in the `load` Method
+
+You can also choose to load selective destinations by modifying the [`load`](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#3-1-load) method to take a third argument. You can pass an`integrations` object containing the destination names in the format specified [here](https://docs.rudderstack.com/how-to-guides/how-to-filter-selective-destinations-to-send-event-data#destination-naming-convention). RudderStack loads only those destinations that are marked as enabled with the boolean value `true` .
+
 A sample RudderStack load method with integration names passed as arguments will look like the following snippet:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-  integrations: { All: false, destination_name: true },
+  integrations: { All: false, <destination_name>: true },
 });
 ```
 
-Where `<destination name>` is the name of the destination as per the above list of common names.
+Where `<destination_name>` is the name of the destination. 
+
+{% hint style="info" %}
+Please refer to the section above for the common destinations names or refer to [this section](https://docs.rudderstack.com/how-to-guides/how-to-filter-selective-destinations-to-send-event-data#destination-naming-convention) for destination naming convention.
+{% endhint %}
 
 An example of the `load` method is as shown:
 
