@@ -226,6 +226,32 @@ Check out the [Clearbit enrichment example](https://github.com/rudderlabs/sample
 We recommend using `batch` API requests instead of a separate API request for each event whenever possible for improved performance.
 {% endhint %}
 
+## Debugging with logs
+
+You can access logs while running a test by including `log()` function in transformation code wherever required. 
+
+An example of this is as shown below:
+
+```javascript
+export function transformEvent(event, metadata) {
+  const meta = metadata(event);
+  event.sourceId = meta.sourceId
+  
+  log("Event Name is", event.event, ";", "Message Id is", event.messageId);
+  log("Source Id is", meta.sourceId);
+  
+  return event;
+}
+```
+
+Upon running a test on above code, you can see above logs in **Logs** **section** as shown below: 
+
+![](../.gitbook/assets/image%20%28103%29.png)
+
+{% hint style="info" %}
+ Arguments to `log` function can be a String, Number or Object
+{% endhint %}
+
 ## Limits
 
 You should take into account the memory and time limits when adding a new user transformation. Each invocation of the user transformation should not exceed these limits.
