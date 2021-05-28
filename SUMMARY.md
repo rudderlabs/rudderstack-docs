@@ -84,6 +84,7 @@
     * [Kissmetrics](destinations/analytics/kissmetrics.md)
     * [Heap.io](destinations/analytics/heap.io.md)
     * [Keen](destinations/analytics/keen.md)
+    * [Kubit](destinations/analytics/kubit.md)
     * [AWS Personalize](destinations/analytics/aws-personalize.md)
     * [Indicative](destinations/analytics/indicative.md)
     * [Pendo](destinations/analytics/pendo.md)
