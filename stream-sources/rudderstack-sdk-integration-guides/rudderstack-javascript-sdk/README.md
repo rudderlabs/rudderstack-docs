@@ -352,7 +352,7 @@ There is no need to call`identify()`for anonymous visitors to your website. Such
 
 ### 3.2.2. `identify` Options
 
-The JavaScript SDK generates one unique `anonymousId` , stores it in a cookie named `rl_anonymous_id` , and attaches to every subsequent event. This helps in identifying the users from other sites that hosted under a sub-domain.
+The JavaScript SDK generates one unique `anonymousId` , stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps in identifying the users from other sites that are hosted under a sub-domain.
 
 {% hint style="info" %}
 As an example, if you include the RudderStack JavaScript SDK in both **admin.samplewebsite.com** and **app.samplewebsite.com**, the SDK will store the cookie in the top-level domain **samplewebsite.com**.
