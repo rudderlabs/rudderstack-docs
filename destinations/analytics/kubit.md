@@ -4,10 +4,10 @@ description: Step-by-step guide to send your event data from RudderStack to Kubi
 
 # Kubit
 
-[Kubit](https://www.kubit.ai/) is a self-service product analytics platform that facilitates efficient data discovery. With Kubit, you can better understand your users' behavior and use the insights to drive customer retention and your product growth.
+[Kubit](https://www.kubit.ai/) is a Self-Service product analytics platform with No-Code integration that facilitates efficient data discovery. With Kubit, you can better understand your users' behavior and use the insights to drive customer retention and your product growth.
 
 {% hint style="success" %}
-Kubit consumes data from your data warehouse directly, so you don't have to configure it as a destination in RudderStack separately.
+Kubit can also consume data from your cloud data warehouse directly, so you don't have to configure it as a destination in RudderStack separately.
 
 For more information, check out their [docs](https://www.kubit.ai/doc).
 {% endhint %}
