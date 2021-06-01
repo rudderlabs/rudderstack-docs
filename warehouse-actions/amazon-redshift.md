@@ -75,7 +75,7 @@ Your table must include one of the following columns - `email`, `user_id`, or `a
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Redshift instance to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option. Then, click on **Next**.
 
-![](../.gitbook/assets/screen-shot-2021-01-06-at-4.05.51-pm%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
+![](../.gitbook/assets/screen-shot-2021-01-06-at-4.05.51-pm%20%281%29%20%281%29%20%281%29%20%281%29%20%282%29%20%281%29.png)
 
 That's it! Redshift is now successfully configured as a source on your RudderStack dashboard.
 

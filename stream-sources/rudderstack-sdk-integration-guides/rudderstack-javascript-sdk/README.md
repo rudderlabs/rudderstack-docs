@@ -71,8 +71,8 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 ```
 
 {% hint style="success" %}
-**NOTE**: The above code snippet will load `rudder-analytics.js` on to your page synchronously. To load the SDK asynchronously to keep your page load time unaffected, use the following instead:  
-  
+**NOTE**: The above code snippet will load `rudder-analytics.js` on to your page synchronously. To load the SDK asynchronously to keep your page load time unaffected, use the following instead:
+
 **`<script async src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>`**
 {% endhint %}
 
@@ -213,7 +213,7 @@ IntegrationOpts {
 | **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
 
 {% hint style="info" %}
-More information on the Load **`IntegrationOpts`** option can be found here: 
+More information on the Load **`IntegrationOpts`** option can be found here:
 
 * [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
 * [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
@@ -233,7 +233,7 @@ QueueOpts {
 
 | Parameter | Description |
 | :--- | :--- |
-| **`maxRetryDelay`** | Corresponds to the upper limit on the maximum delay for an event. Default value is set as 36000ms.  |
+| **`maxRetryDelay`** | Corresponds to the upper limit on the maximum delay for an event. Default value is set as 36000ms. |
 | **`minRetryDelay`** | Corresponds to the minimum delay expected before sending an event. Default value is set to 1000ms. |
 | **`backoffFactor`** | Refers to the exponential base. Default value is set to 2. |
 | **`maxAttempts`** | Refers to the maximum attempts to send the event to the destination. Default value is set to 10. |
@@ -336,7 +336,7 @@ IntegrationOpts {
 | **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
 
 {% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here: 
+More information on the **`IntegrationOpts`** option can be found here:
 
 * [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
 * [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
@@ -528,7 +528,7 @@ IntegrationOpts {
 | **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
 
 {% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here: 
+More information on the **`IntegrationOpts`** option can be found here:
 
 * [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
 * [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
@@ -604,7 +604,7 @@ IntegrationOpts {
 | **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
 
 {% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here: 
+More information on the **`IntegrationOpts`** option can be found here:
 
 * [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
 * [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
@@ -670,7 +670,7 @@ IntegrationOpts {
 | **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
 
 {% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here: 
+More information on the **`IntegrationOpts`** option can be found here:
 
 * [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
 * [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
@@ -738,7 +738,7 @@ IntegrationOpts {
 | **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
 
 {% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here: 
+More information on the **`IntegrationOpts`** option can be found here:
 
 * [Specifying Selective Destinations in the `load` Method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-1-specifying-selective-destinations-in-the-load-method)
 * [Common Destination Names for sending events through the `load` method](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-2-common-destination-names)
