@@ -44,7 +44,7 @@ In the **Connection Settings**, please enter your **API Key** as shown above.
 
 ## Web Settings
 
-- **Custom Fields Mapping** - This will map any RudderStack event to Recurly Event. To do successful mapping make sure you have created a custom fields in your recurly dashboard. If you wish to map rudder properties to Recurly Custom fields then list them here. These properties are case-sensitive, and can be nested. For example, you have created paymentValue and personalMailId in your Recurly dashboard now if you want to send rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'}) then input these two property customProperty.customValue and someRandomMailId in rudder payload and paymentValue and personalMailId in Recurly payload
+- **Custom Fields Mapping** - This will map any RudderStack event to a Recurly Event. To do successful mapping make sure you have created a custom field on your Recurly dashboard. If you wish to map RudderStack properties to Recurly Custom fields then list them here. These properties are case-sensitive and can be nested. For example, you have created `paymentValue` and `personalMailId` in your Recurly dashboard now if you want to send `rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'})` then input these two property `customProperty.customValue` and `someRandomMailId` in RudderStack payload and `paymentValue` and `personalMailId` in Recurly payload.
 
 ```javascript
 rudderanalytics.track("Event", {
@@ -83,10 +83,10 @@ rudderanalytics.identify("name123", {
 });
 ```
 
-When you make an identify call with new userId, we create a new account.
-When you make an identify call with existing userId, we update the existing account with new traits passed.
+When you make an `identify` call with the new `userId`, we create a new account.
+When you make an `identify` call with an existing `userId`, we update the existing account with new traits passed.
 
-Following property mapping happens when you make an identify calls ::
+Following property mapping happens when you make an identify calls :
 
 | Standard RudderStack Field  | Standard Recurly Field |
 | :-------------------------- | :--------------------- |
@@ -106,10 +106,10 @@ Following property mapping happens when you make an identify calls ::
 
 ## Track
 
-The `track` call to recurly is supported only for two of our ecommerce event.
+The `track` call to Recurly is supported only for two of our e-commerce events.
 
-- checkout started
-- order completed
+- Checkout Started
+- Order Completed
 
 A sample `track` call looks like the following:
 
@@ -137,11 +137,11 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
-- To make a successful track call, an account must be present in recurly. Our `track` calls gets mapped to `line_items` for that account in recurly.
-- Any `products` that you send in payload is associated with `items` in recurly.
-- If a products is not present in recurly dashboard, we create a new `items` for that product and associated it with `line_items`.
+- To make a successful track call, an account must be present in Recurly. Our `track` calls get mapped to `line_items` for that account in Recurly.
+- All the `products` that you send in the payload are associated with `items` in Recurly.
+- If a product is not present in Recurly dashboard, we create new `items` for that product and associate it with `line_items`.
 
-Following property mapping happens when you make a track calls ::
+Following property mapping happens when you make an identify calls :
 
 | Standard RudderStack Field | Standard Recurly Field   |
 | :------------------------- | :----------------------- |
