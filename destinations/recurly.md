@@ -44,7 +44,7 @@ In the **Connection Settings**, please enter your **API Key** as shown above.
 
 ## Web Settings
 
-- **Custom Fields Mapping** - This will map any RudderStack event to Recurly Event. To do successful mapping make sure you have created a custom fields in your recurly dashboard. If you wish to map rudder properties to Recurly Custom fields then list them here. But the recurly property must be created in your Recurly dashboard, otherwise events streaming will fail. These properties are case-sensitive, and can be nested. For example, you have created paymentValue and personalMailId in your Recurly dashboard now if you want to send rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'}) then input these two property customProperty.customValue and someRandomMailId in rudder payload and paymentValue and personalMailId in Recurly payload
+- **Custom Fields Mapping** - This will map any RudderStack event to Recurly Event. To do successful mapping make sure you have created a custom fields in your recurly dashboard. If you wish to map rudder properties to Recurly Custom fields then list them here. These properties are case-sensitive, and can be nested. For example, you have created paymentValue and personalMailId in your Recurly dashboard now if you want to send rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'}) then input these two property customProperty.customValue and someRandomMailId in rudder payload and paymentValue and personalMailId in Recurly payload
 
 ```javascript
 rudderanalytics.track("Event", {
