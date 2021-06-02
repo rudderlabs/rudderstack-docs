@@ -8,7 +8,7 @@ description: >-
 
 ## What is the RudderStack Flutter SDK?
 
-The RudderStack Flutter SDK allows you to track event data from your Flutter app. After integrating this SDK with your app, you will also be able to send the event data to your preferred destination platforms supported by RudderStack. 
+The RudderStack Flutter SDK allows you to track event data from your Flutter app. After integrating this SDK with your app, you will also be able to send the event data to your preferred destination platforms supported by RudderStack.
 
 You can check the SDK's [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-flutter) to get a more hands-on understanding of the SDK's architecture and working.
 
@@ -45,6 +45,7 @@ dependencies:
 ```bash
 flutter pub get
 ```
+
 ## Initializing the RudderStack Client
 
 After adding the SDK as a dependency, you need to set up the SDK.
@@ -110,7 +111,7 @@ You can disable these events by calling `withTrackLifeCycleEvents(false)` on `Ru
 
 ## Identify
 
-We capture `deviceId` and use that as the `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. 
+We capture `deviceId` and use that as the `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method.
 
 Once you set the `identify` information to the user, it will also be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
@@ -229,6 +230,7 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 ```dart
 RudderClient.reset();
 ```
+
 ## Enabling / Disabling Events for Specific Destinations
 
 The Flutter SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:
@@ -251,19 +253,20 @@ The keyword `All` in the above snippet represents all the destinations to which 
 Make sure the destination names that you pass while specifying the destinations should exactly match the names as listed [here](https://app.rudderstack.com/directory).
 {% endhint %}
 
-You can pass the destination(s) specified in the above snippet to the SDK in two ways:
+You can pass the destination\(s\) specified in the above snippet to the SDK in two ways:
 
 ### 1. Passing the destinations while initializing the SDK:
 
-This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination(s).
+This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination\(s\).
 
 ```dart
 RudderClient.getInstance(WRITE_KEY,
                     config: builder.build(),options: options);
 ```
+
 ### 2. Passing the destinations while making any event call:
 
-This approach is helpful when you want to enable/disable sending only a particular event to the specified destination(s) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
 
 ```dart
 RudderProperty property = RudderProperty();
@@ -274,7 +277,6 @@ RudderClient.track("test_track_event", properties: property, options: options);
 {% hint style="info" %}
 If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
 {% endhint %}
-
 
 ## External ID
 

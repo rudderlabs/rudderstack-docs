@@ -138,6 +138,7 @@ const config = {
 rudderClient.setup(WRITE_KEY, config);
 ```
 {% endtab %}
+
 {% tab title="Flutter" %}
 To add AppCenter to your Flutter project, add the RudderStack-App Center module to your app by following these steps:
 
@@ -168,10 +169,10 @@ builder.withFactory(Appcenter());
 RudderClient.getInstance(WRITE_KEY,
     config: builder.build());
 ```
+
 {% hint style="info" %}
 Make sure the `minSdkVersion` of your `build.gradle` in the root of `android` directory is atleast `21`.
 {% endhint %}
-
 {% endtab %}
 {% endtabs %}
 

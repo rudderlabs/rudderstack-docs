@@ -267,10 +267,8 @@ Calling the `createPersistenceQueue` api will initialize a Redis list by calling
 {% endhint %}
 
 {% hint style="info" %}
-
-**If the `createPersistenceQueue` method is not called after initializing the SDK by the user, the SDK will work with no persistence and the behaviour will be the same as at present.**
-
-{% hint style="info" %}
+**If the `createPersistenceQueue` method is not called after initializing the SDK by the user, the SDK will work with no persistence and the behavior will be the same as at present.**
+{% endhint %}
 
 ### **Flow**
 
