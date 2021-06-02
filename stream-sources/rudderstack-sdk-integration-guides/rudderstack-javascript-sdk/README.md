@@ -32,7 +32,7 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 **You can find your source write key and the data plane URL on your RudderStack dashboard.**
 {% endhint %}
 
-![Source write key and Data Plane URL](../../../.gitbook/assets/workspace-token%20%284%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29%20%281%29%20%284%29.png)
+![Source write key and Data Plane URL](../../../.gitbook/assets/workspace-token%20%284%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29%20%281%29%20%282%29.png)
 
 ### **2.2. Non-minified Code**
 

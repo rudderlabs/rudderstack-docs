@@ -67,10 +67,10 @@ pod install
    ```bash
    carthage update
    ```
-{% hint style="warning" %}
-   If you're facing an issue with Carthage and XCode 12, you can follow the [steps from Carthage team](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md).
-{% endhint %}
 
+{% hint style="warning" %}
+If you're facing an issue with Carthage and XCode 12, you can follow the [steps from Carthage team](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md).
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
