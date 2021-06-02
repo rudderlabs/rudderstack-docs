@@ -321,6 +321,16 @@ You can configure your client based on the following parameters by passing them 
         </td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>deviceModeCallBackThreshold</code>
+      </td>
+      <td style="text-align:left"><code>int</code>
+      </td>
+      <td style="text-align:left">Number of seconds the SDK would wait for a device mode integration callback to be triggered. This is useful when you want to perform an operation once a device mode integration is initialized successfully.</td>
+      <td
+      style="text-align:left"><code>5</code>
+        </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>trackLifecycleEvents</code>
       </td>
       <td style="text-align:left"><code>boolean</code>
