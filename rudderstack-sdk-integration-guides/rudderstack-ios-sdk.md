@@ -59,7 +59,7 @@ pod install
 1. Add the RudderStack SDK to your `Podfile`, as shown:
 
    ```ruby
-   github "rudderlabs/rudder-sdk-ios" "carthage-support"
+   github "rudderlabs/rudder-sdk-ios"
    ```
 
 2. Then, run the following command:
@@ -68,7 +68,9 @@ pod install
    carthage update
    ```
 
+{% hint style="warning" %}
    If you're facing an issue with Carthage and XCode 12, you can follow the [steps from Carthage team](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md).
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
