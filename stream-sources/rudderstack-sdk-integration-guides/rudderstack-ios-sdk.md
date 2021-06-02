@@ -56,7 +56,7 @@ pod install
 {% endtab %}
 
 {% tab title="Carthage" %}
-1. Add the RudderStack SDK to your `Podfile`, as shown:
+1. Add the RudderStack SDK to your `Cartfile`, as shown:
 
    ```ruby
    github "rudderlabs/rudder-sdk-ios"
