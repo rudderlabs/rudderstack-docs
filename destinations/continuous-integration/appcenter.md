@@ -139,9 +139,7 @@ rudderClient.setup(WRITE_KEY, config);
 ```
 {% endtab %}
 {% tab title="Flutter" %}
-To add AppCenter to your Flutter project:
-
-Add the RudderStack-App Center module to your app using :
+To add AppCenter to your Flutter project, add the RudderStack-App Center module to your app by following these steps:
 
 * Open `pubspec.yaml`  and add `rudder_integration_appcenter_flutter` under `dependencies` section:
 
@@ -150,13 +148,13 @@ dependencies:
   rudder_integration_appcenter_flutter: ^1.0.0
 ```
 
-* Navigate to your Application's root folder and install all the required dependencies with:
+* Navigate to your application's root folder and install all the required dependencies as shown:
 
 ```bash
 flutter pub get
 ```
 
-Import the module you added above and add it to your SDK initialization code as shown below:
+* Import the module you added above and add it to your SDK initialization code as shown:
 
 ```typescript
 import 'package:rudder_sdk_flutter/RudderClient.dart';
@@ -171,7 +169,7 @@ RudderClient.getInstance(WRITE_KEY,
     config: builder.build());
 ```
 {% hint style="info" %}
-Make sure the `minSdkVersion` of your `build.gradle` in the root of `android` directory is atleast `21`
+Make sure the `minSdkVersion` of your `build.gradle` in the root of `android` directory is atleast `21`.
 {% endhint %}
 
 {% endtab %}
