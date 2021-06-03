@@ -1,10 +1,10 @@
 ---
-description: Step-by-step guide to send event data from RudderStack to Recurly.
+description: Step-by-step guide to send your event data from RudderStack to Recurly.
 ---
 
 # Recurly
 
-[Recurly](https://recurly.com/) is the subscription management platform delivering unrivaled results to smart brands worldwide. Recurly makes subscriptions a competitive advantage for leading brands worldwide. Growing subscription businesses such as Sling TV, BarkBox, Asana, FabFitFun, Cinemark and Fubo.tv depend on Recurly to harness the power of the subscription model and drive recurring revenue growth. Recurly provides several facility like subscription billing, recurring billing, saas billing, cloud billing, recurring payments, business intelligence, and business analytics
+[Recurly](https://recurly.com/) is a popular subscription management and billing platform. It offers features such as SaaS and cloud billing, recurring billing, and analytics to optimize your revenue and boost your user subscription rate.
 
 RudderStack allows you to seamlessly configure Recurly as a destination to which you can send your event data seamlessly.
 
@@ -14,9 +14,9 @@ RudderStack allows you to seamlessly configure Recurly as a destination to which
 
 ## Getting Started
 
-To enable sending data to **Recurly**, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to Recurly.
+To enable sending data to Recurly, you will first need to add it as a destination in the RudderStack dashboard. Once the destination is configured and enabled, events from RudderStack will start flowing to Recurly.
 
-Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Recurly, by referring to the table below:
+Before configuring Recurly as a destination, verify if the source platform supports sending events to RudderStack, by referring to the table below:
 
 | **Connection Mode** | Web           | Mobile        | Server        |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -29,22 +29,26 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Recurly, please perform the steps below:
 
-- Choose a source to which you would like to add Recurly as a destination.
+- Add a source in RudderStack.
 
 {% hint style="info" %}
-Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) guide to add a source in RudderStack.
+Follow our [Adding a Source and Destination](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) guide for more information on adding a source in RudderStack.
 {% endhint %}
 
-- Select the destination as **Recurly** to your source. Give your destination a name and then click on **Next**.
-- On the **Connection Settings** page, fill all the fields with the relevant information and click **Next**.
+- From the list of destinations, select **Recurly**. Assign a name for your destination and then click on **Next**.
+- In the **Connection Settings** page, fill all the relevant connection settings including the **Recurly API Key**. Then, click on **Next**.
 
 ![Recurly Connection Settings in RudderStack](../.gitbook/assets/recurly.png)
 
-In the **Connection Settings**, please enter your **API Key** as shown above.
+### Web Settings
 
-## Web Settings
+- **Custom Fields Mapping** - This field lets you map any RudderStack event to a Recurly Event. To do successful mapping, make sure you have created a custom field on your Recurly dashboard. You can then map the RudderStack properties to Recurly's custom fields by listing them in this section. 
 
-- **Custom Fields Mapping** - This will map any RudderStack event to a Recurly Event. To do successful mapping make sure you have created a custom field on your Recurly dashboard. If you wish to map RudderStack properties to Recurly Custom fields then list them here. These properties are case-sensitive and can be nested. For example, you have created `paymentValue` and `personalMailId` in your Recurly dashboard now if you want to send `rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'})` then input these two property `customProperty.customValue` and `someRandomMailId` in RudderStack payload and `paymentValue` and `personalMailId` in Recurly payload.
+{% hint style="info" %}
+Note that these properties are case-sensitive and can be nested. For example, if you have created `paymentValue` and `personalMailId` in your Recurly dashboard and you want to send `rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'})`, then input these two properties `customProperty.customValue` and `someRandomMailId` under the the RudderStack field and `paymentValue` and `personalMailId` in the Recurly field.
+{% endhint %}
+
+
 
 ```javascript
 rudderanalytics.track("Event", {
@@ -55,10 +59,10 @@ rudderanalytics.track("Event", {
 
 ## Identify
 
-To create an account in Recurly, you need to call the `identify` API.
+To create an account in Recurly, you need to call the `identify` method.
 
 {% hint style="info" %}
-For information on the `identify` call, please refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
+For information on the `identify` call, refer to our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 {% endhint %}
 
 A sample `identify` call is as shown below:
@@ -83,12 +87,15 @@ rudderanalytics.identify("name123", {
 });
 ```
 
-When you make an `identify` call with the new `userId`, we create a new account.
-When you make an `identify` call with an existing `userId`, we update the existing account with new traits passed.
+{% hint style="info" %}
+- When you make an `identify` call with the new `userId`, RudderStack creates a new account.
+- When you make an `identify` call with an existing `userId`, RudderStack will update the existing account with the new traits.
+{% endhint %}
 
-Following property mapping happens when you make an identify calls :
 
-| Standard RudderStack Field  | Standard Recurly Field |
+RudderStack maps the following properties to Recurly when you make an `identify` call:
+
+| **Standard RudderStack Field**  | **Standard Recurly Field** |
 | :-------------------------- | :--------------------- |
 | `userId`                    | `code`                 |
 | `email`                     | `email`                |
@@ -104,9 +111,10 @@ Following property mapping happens when you make an identify calls :
 | `traits.address.postalCode` | `address.postal_code`  |
 | `traits.address.country`    | `address.country`      |
 
+
 ## Track
 
-The `track` call to Recurly is supported only for two of our e-commerce events.
+The `track` call to Recurly is supported only for the following two ECommerce events.
 
 - Checkout Started
 - Order Completed
@@ -137,11 +145,13 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
-- To make a successful track call, an account must be present in Recurly. Our `track` calls get mapped to `line_items` for that account in Recurly.
-- All the `products` that you send in the payload are associated with `items` in Recurly.
-- If a product is not present in Recurly dashboard, we create new `items` for that product and associate it with `line_items`.
+Note that:
 
-Following property mapping happens when you make an identify calls :
+- To make a successful `track` call, an account must be present in Recurly. The RudderStack `track` calls get mapped to `line_items` for that account in Recurly.
+- All the `products` that you send in the payload are associated with `items` in Recurly.
+- If a product is not present in the Recurly dashboard, RudderStack creates new `items` for that product and associates it with `line_items`.
+
+RudderStack maps the following properties to Recurly during a `track` call:
 
 | Standard RudderStack Field | Standard Recurly Field   |
 | :------------------------- | :----------------------- |
@@ -154,16 +164,16 @@ Following property mapping happens when you make an identify calls :
 | `properties.currency`      | `currency`               |
 
 {% hint style="warning" %}
-**Note**: Recurly only allows string with numbers, lowercase letters, dashes, pluses, and underscores when mapping `product_id` to `code`.
+Recurly only allows a string with numbers, lowercase letters, dashes, pluses, and underscores when mapping `product_id` to `code`.
 {% endhint %}
 
 ## FAQs
 
 ### **How do you get the Recurly API Key?**
 
-- Login to Recurly dashboard.
-- Go to the **Integrations** tab and then click on **API Credentials** on the left sidebar.
-- You will find your key written as **Private API Key**.
+- Login to the Recurly dashboard.
+- Go to the **Integrations** tab and then click on the **API Credentials** on the left sidebar.
+- You will find your API key listed as **Private API Key**.
 
 ## Contact Us
 
