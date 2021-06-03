@@ -210,6 +210,7 @@
     * [How to Use Custom Domains](user-guides/how-to-guides/custom-domains.md)
     * [How to Use AWS Lambda Functions with RudderStack](user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack.md)
     * [How to Debug Live Destination Events](user-guides/how-to-guides/live-destination-event-debugger.md)
+    * [How to Filter Selective Destinations](user-guides/how-to-guides/how-to-filter-selective-destinations.md)
     * [How to Create a New Destination Transformation for RudderStack](user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/README.md)
       * [Best Practices for Coding Transformation Functions in JavaScript](user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript.md)
     * [How to Implement a Native JavaScript SDK Integration](user-guides/how-to-guides/implement-native-js-sdk-integration/README.md)
