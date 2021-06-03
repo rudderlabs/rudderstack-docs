@@ -139,6 +139,8 @@
     * [Azure Event Hubs](destinations/data-ingestion/azure-event-hubs.md)
     * [Confluent Cloud](destinations/data-ingestion/confluent-cloud.md)
     * [Google Pub/Sub](destinations/data-ingestion/google-pub-sub.md)
+  * [Billing Platforms](destinations/billing-platforms/README.md)
+    * [Recurly](destinations/billing-platforms/recurly.md)
   * [Storage Platforms](destinations/storage-platforms/README.md)
     * [Amazon S3](destinations/storage-platforms/amazon-s3.md)
     * [MinIO](destinations/storage-platforms/minio.md)
