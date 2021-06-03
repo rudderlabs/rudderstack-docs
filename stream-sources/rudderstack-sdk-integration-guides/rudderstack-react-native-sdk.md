@@ -8,7 +8,7 @@ description: >-
 
 ## What is the RudderStack React Native SDK?
 
-The RudderStack React Native SDK allows you to track event data from your app. It can be easily integrated into your React Native application. After integrating this SDK, you will also send the event data to your preferred analytics destination/s, such as Google Analytics, Amplitude, and more. 
+The RudderStack React Native SDK allows you to track event data from your app. It can be easily integrated into your React Native application. After integrating this SDK, you will also send the event data to your preferred analytics destination/s, such as Google Analytics, Amplitude, and more.
 
 You can check the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-react-native) if you want to get more hands-on or keen to know more about the SDK architecture.
 
@@ -48,14 +48,6 @@ yarn add @rudderstack/rudder-sdk-react-native
 ```
 {% endtab %}
 {% endtabs %}
-
-* Navigate to your Application's `Android` folder and add the following to your application's `build.gradle` file:
-
-```groovy
-maven { 
-    url { "https://dl.bintray.com/rudderstack/rudderstack" }
-}
-```
 
 * Navigate to your Application's iOS folder and install all the required pods with:
 
@@ -116,7 +108,7 @@ The `track` method has the following signature:
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `name` | `string` | Yes | Name of the event you want to track |
-| `property` | `JSON Object` | No | Extra data properties you want to send along with the event  |
+| `property` | `JSON Object` | No | Extra data properties you want to send along with the event |
 | `options` | `JSON Object` | No | Extra event options |
 
 {% hint style="info" %}
@@ -188,6 +180,72 @@ await rudderClient.reset()
 It is highly recommended to use the `await` keyword with the reset call.
 {% endhint %}
 
+## Enabling / Disabling Events for Specific Destinations
+
+The React Native SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:
+
+```typescript
+const options = {
+    integrations: {
+        // default value for `All` is true
+        All: false,
+        // specifying destination by its display name
+        Amplitude: true,
+        Mixpanel: false
+    }
+}
+```
+
+{% hint style="info" %}
+The keyword `All` in the above snippet represents all the destinations the source is connected to. Its value is set to `true` by default.
+{% endhint %}
+
+{% hint style="info" %}
+Make sure the destination names that you pass while specifying the destinations should exactly match the names listed [here](https://app.rudderstack.com/directory).
+{% endhint %}
+
+There are two methods in which you can pass the destinations specified in the above snippet to the SDK:
+
+### 1. Passing the destinations while initializing the SDK:
+
+This is helpful when you want to enable or disable sending the events across all the event calls made using the SDK to the specified destinations.
+
+```typescript
+rudderClient.setup(WRITE_KEY, config, options);
+```
+
+### 2. Passing the destinations while making any event call:
+
+This approach is helpful when you want to enable or disable sending only a particular event to the specified destinations, or if you want to override the specified destinations passed with the SDK initialization \(as described in the method above\) for a particular event.
+
+```typescript
+rudderClient.track("test_track_event", {
+    "test_key_1": "test_value_1"
+}, options)
+```
+
+{% hint style="info" %}
+If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
+{% endhint %}
+
+## External ID
+
+You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
+
+```typescript
+const options = {
+    externalIds: [{
+            id: "some_external_id_1",
+            type: "brazeExternalId"
+        }
+    ]
+}
+rudderClient.identify("test_userId", {
+    "email":"testuser@example.com",
+    "location":"UK"
+}, options);
+```
+
 ## Configuring your RudderStack Client
 
 You can configure your client based on the following parameters by passing them in the `configuration` object of your `setup` call.
@@ -249,7 +307,7 @@ You can configure your client based on the following parameters by passing them 
       <td style="text-align:left"><code>int</code>
       </td>
       <td style="text-align:left">Minimum waiting time to flush the events to the server.</td>
-      <td style="text-align:left"><code>10 seconds</code> 
+      <td style="text-align:left"><code>10 seconds</code>
       </td>
     </tr>
     <tr>
@@ -261,6 +319,17 @@ You can configure your client based on the following parameters by passing them 
       <td
       style="text-align:left"><code>2</code>
         </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>deviceModeCallBackThreshold</code>
+      </td>
+      <td style="text-align:left"><code>int</code>
+      </td>
+      <td style="text-align:left">Number of seconds the SDK would wait for a device mode integration callback
+        to be triggered. This is useful when you want to perform an operation once
+        a device mode integration is initialized successfully.</td>
+      <td style="text-align:left"><code>5</code>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><code>trackLifecycleEvents</code>
@@ -297,12 +366,12 @@ You can configure your client based on the following parameters by passing them 
 
 ## Debugging
 
-If you run into any issues regarding the RudderStack React Native SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is. 
+If you run into any issues regarding the RudderStack React Native SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
 
 First, make sure you modify your import statement to include `RUDDER_LOG_LEVEL` with:
 
 ```typescript
-import rudderClient, { RUDDER_LOG_LEVEL } from '@rudderstack/rudder-sdk-react-native'  
+import rudderClient, { RUDDER_LOG_LEVEL } from '@rudderstack/rudder-sdk-react-native'
 ```
 
 Then to turn on the logging, change your `RudderClient` initialization to the following:

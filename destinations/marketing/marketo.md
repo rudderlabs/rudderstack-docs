@@ -44,17 +44,31 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 The following are the settings to be configured:
 
-* **Munchkin Account ID**: You can find the ID on the Munchkin page under Integration on your Admin settings page.
-* **Client ID**: To get the ID navigate to the LaunchPoint page under Integration on your Admin settings page. Then select the API service and click on "View Details".
+* **Munchkin Account ID**: You can find the Munchkin Account ID on the Munchkin page by clicking on Admin in the navigation bar. Then, in the menu on the left, under Integration, click on Munchkin. The Munchkin Account Id will be listed in the Tracking Code section on the main screen.
+* **Client ID**: To get the Client ID, go to the your Admin settings page following the instructions above. Then, in the menu on the left, under Integration, click on LaunchPoint. Then select the API service and click on "View Details".
 * **Client Secret**: You can find the secret next to the ID from the previous step
 
 {% hint style="info" %}
 You need to create two fields in Marketo with API names exactly as `userId` and `anonymousId`. We lookup the Lead objects using these properties. Without these two fields all the events will fail.
 {% endhint %}
 
+For configuring the **Custom Activity Settings**, see the instructions below in the Track section.
+
 ## Track
 
-We register a custom activity to Marketo for the `track` calls. You need to create the map of the events you want to send through RudderStack to the custom activity ID you have received on your Marketo dashboard. For every custom activity, Marketo needs a Primary Key value. You need to create the map of `properties` field and the event name where you intend to send the value of the Primary Key for that event. For the other `properties` you need to create a mapping between the name you want to send to marketo and your `properties` field name from your source.
+We register a custom activity to Marketo for the `track` calls. Before configuring with RudderStack, create the Custom Activities in Marketo.
+
+* Go to your Admin Settings page, then under Database Management, select Marketo Custom Activities.
+* Click New Custom Activity and give your activity a Display Name, and a Filter and Trigger.
+* When the Primary Field form shows up, enter in a Display Name and confirm the API Name. Then you can press Submit to create the Custom Activity. You will also need to approve the activity in order to get the Custom Activity ID.
+
+Now you can configure the settings in the RudderStack Dashboard.
+
+![](../../.gitbook/assets/screen-shot-2021-06-02-at-11.51.32-am.png)
+
+* For the **Map events to Marketo Activity ID** input, you will map the event name that you call in your app to the Activity ID that you just created in the steps above.
+* For the **Map event properties to Marketo property name** input, you will match the property names of the source's track call, with the associated Marketo property name from the fields listed in your Custom Activity created above.
+* Finally, for the **Map event name to Marketo primary key** input, you will match the source's track event name to the Marketo Primary Key for the associated Custom Activity you created above.
 
 A sample `track` call is as shown in the snippet below:
 

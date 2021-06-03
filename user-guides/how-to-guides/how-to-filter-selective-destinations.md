@@ -27,6 +27,7 @@ rudderanalytics.identify(
   }
 );
 ```
+
 {% hint style="success" %}
 **NOTE**: Unless explicitly defined otherwise, `'All'` is always set to `true`. This means that sending events to all destinations is enabled by default.
 {% endhint %}
@@ -117,4 +118,4 @@ These destination names are case sensitive!
 
 ## Contact Us
 
-For more information on any of the sections in this guide, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+For more information on any of the sections in this guide, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!

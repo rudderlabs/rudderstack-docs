@@ -31,6 +31,16 @@ The default namespace will be the source name with some modifications to the nam
 
 Please refer to the warehouse-specific destination settings for configuring the namespace in the RudderStack UI.
 
+### How can I achieve Identity Resolution with multiple sources connected to one warehouse destination?
+
+The default namespace will be the source name with some modifications to the name. This will cause issues while trying to create mappings for Identity Resolution across different sources, leading to multiple `RUDDER_ID` being created for the same user.
+
+To avoid this, simply match the `Namespace` for each source in the Source Settings Config.
+
+![](../.gitbook/assets/screenshot-2021-04-21-at-6.08.10-am.png)
+
+Doing this will ensure that the mapping will be on the consistent Namespace and only one `RUDDER_ID` will be created for each user no matter how many sources are connected to your warehouse destination.
+
 ### Which IPs should be whitelisted?
 
 If you are using the hosted RudderStack service, the following IPs need to be whitelisted in your destination's security configuration:

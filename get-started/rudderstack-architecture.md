@@ -1,12 +1,12 @@
 ---
 description: >-
-  A quick tour of RudderStack’s architecture, with a special focus on the data
+  A quick tour of RudderStack’s architecture with a special focus on the data
   plane.
 ---
 
 # RudderStack Architecture
 
-RudderStack is an independent, stand-alone system with dependency only on the database \(**PostgreSQL**\). 
+RudderStack is an independent, stand-alone system with dependency only on the database \(**PostgreSQL**\). Its backend is written in Go, with a rich UI written in React.js.
 
 {% hint style="success" %}
 **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack.** [**Sign up**](https://app.rudderlabs.com/signup?type=freetrial) **for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.** 

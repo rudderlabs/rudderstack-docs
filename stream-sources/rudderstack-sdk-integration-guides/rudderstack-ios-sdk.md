@@ -56,10 +56,10 @@ pod install
 {% endtab %}
 
 {% tab title="Carthage" %}
-1. Add the RudderStack SDK to your `Podfile`, as shown:
+1. Add the RudderStack SDK to your `Cartfile`, as shown:
 
    ```ruby
-   github "rudderlabs/rudder-sdk-ios" "carthage-support"
+   github "rudderlabs/rudder-sdk-ios"
    ```
 
 2. Then, run the following command:
@@ -67,8 +67,6 @@ pod install
    ```bash
    carthage update
    ```
-
-   If you're facing an issue with Carthage and XCode 12, you can follow the [steps from Carthage team](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md).
 {% endtab %}
 {% endtabs %}
 
@@ -530,6 +528,10 @@ RSClient.getInstance(<WRITE_KEY>, config: builder.build())
 {% endtabs %}
 
 ## FAQ
+
+### I'm facing issues building with Carthage on XCode 12. What should I do?
+
+If you're facing an issue with Carthage and XCode 12, you can follow the [steps from Carthage team](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md).
 
 ### How do I migrate from v1.0.2?
 

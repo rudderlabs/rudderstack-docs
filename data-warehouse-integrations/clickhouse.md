@@ -65,7 +65,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
   * **Host** - ****The host name of your ClickHouse Database.
   * **Port** - The TCP port of your ClickHouse Host. ex: 9000. if you want the connection to be secure use TCP secure port 9440. [reference](https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/#server_configuration_parameters-tcp_port)
   * **Database -** The database name in your ClickHouse instance where the data gets loaded.
-  * **Cluster** - The name of your ClickHouse cluster
+  * **Cluster** - The name of your ClickHouse cluster _**Please note: Leave this blank if you are running a single host ClickHouse Cluster**_
   * **User** - The username which has the required read/write access to the above database.
   * **Password** - The password for the above user.
   * **Secure** - To establish secure connection.

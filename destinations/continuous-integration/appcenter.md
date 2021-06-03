@@ -64,16 +64,6 @@ defaultConfig {
 }
 ```
 
-* Also add the below `repositories` tag in your `app/build.gradle` as shown:
-
-  ```groovy
-  repositories {
-    maven {
-        url  "https://dl.bintray.com/rudderstack/rudderstack"
-    }
-  }
-  ```
-
 * Finally, change the initialization of your `RudderClient` in your `Application` class, as shown:
 
 ```kotlin
@@ -147,6 +137,42 @@ const config = {
 };
 rudderClient.setup(WRITE_KEY, config);
 ```
+{% endtab %}
+
+{% tab title="Flutter" %}
+To add AppCenter to your Flutter project, add the RudderStack-App Center module to your app by following these steps:
+
+* Open `pubspec.yaml`  and add `rudder_integration_appcenter_flutter` under `dependencies` section:
+
+```groovy
+dependencies:
+  rudder_integration_appcenter_flutter: ^1.0.0
+```
+
+* Navigate to your application's root folder and install all the required dependencies as shown:
+
+```bash
+flutter pub get
+```
+
+* Import the module you added above and add it to your SDK initialization code as shown:
+
+```typescript
+import 'package:rudder_sdk_flutter/RudderClient.dart';
+import 'package:rudder_sdk_flutter/RudderConfig.dart';
+import 'package:rudder_integration_appcenter_flutter/Appcenter.dart';
+
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withDataPlaneUrl(DATA_PLANE_URL);
+builder.withTrackLifecycleEvents(true);
+builder.withFactory(Appcenter());
+RudderClient.getInstance(WRITE_KEY,
+    config: builder.build());
+```
+
+{% hint style="info" %}
+Make sure the `minSdkVersion` of your `build.gradle` in the root of `android` directory is atleast `21`.
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
