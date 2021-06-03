@@ -288,26 +288,21 @@ else
 Firstly import the `AppCenterIntegrationFactory` as shown below:
 
 ```javascript
-import AppcenterIntegrationFactory from 'rudder-integration-appcenter-react-native/src/bridge';
+import AppcenterIntegrationFactory from '@rudderstack/rudder-integration-appcenter-react-native/src/bridge';
 ```
 
 Then add the below script just after the initalization of the React Native SDK:
 
 ```javascript
- const integrationReady = await rc.checkIntegrationReady('App Center');
-    if(integrationReady)
-    {
-      if(userConsent)
-      {
+await rudderClient.registerCallback('App Center', () => {
+    if (userconsent) {
         // enabling appcenter's analytics module
         AppcenterIntegrationFactory.enableAnalytics()
-      }
-      else
-      {
+    } else {
         // disabling appcenter's analytics module
         AppcenterIntegrationFactory.disableAnalytics()
-      }
     }
+})
 ```
 {% endtab %}
 {% endtabs %}

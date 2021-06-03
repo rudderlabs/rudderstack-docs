@@ -180,6 +180,25 @@ await rudderClient.reset()
 It is highly recommended to use the `await` keyword with the reset call.
 {% endhint %}
 
+## Registering Callbacks:
+
+The React Native SDK lets you trigger a callback once any device-mode integration is successful. You can use this callback to perform any operation that you wanted to do once a device-integration is successful.
+
+An example of registering a callback for `App Center` is as shown:
+
+```typescript
+await rc.registerCallback('App Center', () => {
+      console.log("App Center is ready");
+    })
+```
+The `registerCallback` method has the following signatures:
+
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `destinationName` | `string` | Yes | Display name of the device-mode destination. |
+| `callback` | `Function` | Yes |  Callback function to be triggered once device-mode integration is successful. |
+
+
 ## Enabling / Disabling Events for Specific Destinations
 
 The React Native SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:
@@ -227,6 +246,8 @@ rudderClient.track("test_track_event", {
 {% hint style="info" %}
 If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
 {% endhint %}
+
+
 
 ## External ID
 
