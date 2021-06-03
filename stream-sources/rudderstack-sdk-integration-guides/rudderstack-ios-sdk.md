@@ -57,10 +57,13 @@ pod install
 
 {% tab title="Carthage" %}
 1. Add the RudderStack SDK to your `Cartfile`, as shown:
+
    ```ruby
    github "rudderlabs/rudder-sdk-ios"
    ```
+
 2. Then, run the following command:
+
    ```bash
    carthage update
    ```

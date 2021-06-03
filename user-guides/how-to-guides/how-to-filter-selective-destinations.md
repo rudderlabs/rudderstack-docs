@@ -1,9 +1,10 @@
 ---
 description: >-
-  An easy-to-follow guide on filtering selective destinations while sending event data in RudderStack
+  An easy-to-follow guide on filtering selective destinations while sending
+  event data in RudderStack
 ---
 
-# How to Filter Selective Destinations to Send Event Data
+# How to Filter Selective Destinations
 
 RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. For the JavaScript SDK, you can do so by passing an integrations object in the **options** parameter of the event method. For most of the other SDK's you can use the **integrations** object parameter for the associated event. The filter destination feature is currently only supported for cloud mode integrations.
 
@@ -27,6 +28,7 @@ rudderanalytics.identify(
   }
 );
 ```
+
 {% hint style="success" %}
 **NOTE**: Unless explicitly defined otherwise, `'All'` is always set to `true`. This means that sending events to all destinations is enabled by default.
 {% endhint %}
@@ -59,7 +61,7 @@ As seen in the above code snippet, RudderStack will send the event data to all t
 
 ## Examples
 
-The following are examples for the same `track()` call from a variety of SDK's. 
+The following are examples for the same `track()` call from a variety of SDK's.
 
 {% hint style="info" %}
 Please Note: Some of the SDK's follow their own convention that is different than the examples below. The notable SDK's with different convention are IOS and Android. Please read the respective `SDK Integration Guide` section for your given SDK to find the correct format to filter selective destinations.
@@ -118,3 +120,4 @@ These destination names are case sensitive.
 ## Contact Us
 
 For more information on any of the sections in this guide, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+
