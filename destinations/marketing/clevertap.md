@@ -158,6 +158,124 @@ rudderClient.setup(WRITE_KEY, config);
 {% endtab %}
 {% endtabs %}
 
+## Configuring Push Notifications and In-App Messages
+
+The steps to configure push notifications for CleverTap for the platform of your choice are as mentioned below:
+
+{% tabs %}
+{% tab title="Android" %}
+* Register push notifications for Android devices on your CleverTap dashboard either by uploading your FCM credentials or any other supported credentials by navigating to **Settings** - **Channels** - **Mobile Push** - **Android**.
+* Add the following dependency in your project level `build.gradle` file inside the `buildscript`:
+
+```groovy
+dependencies {
+  classpath 'com.google.gms:google-services:4.3.5'
+}
+```
+
+* Next, add the following dependencies and plugin to your app level `build.gradle` file:
+
+```groovy
+dependencies {
+  // for push notifications
+  implementation 'com.clevertap.android:clevertap-android-sdk:4.0.0'
+  implementation 'com.google.firebase:firebase-messaging:20.2.4'
+}
+apply plugin: 'com.google.gms.google-services'
+```
+
+* Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
+* Add your `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your app's `AndroidManifest.xml`, as below:
+
+```markup
+<meta-data
+  android:name="CLEVERTAP_ACCOUNT_ID"
+  android:value="XXX-XXX-XXXX"/>
+<meta-data
+  android:name="CLEVERTAP_TOKEN"
+  android:value="XXX-XXX"/>
+<service android:name="com.clevertap.android.sdk.pushnotification.fcm.FcmMessageListenerService">
+  <intent-filter>
+    <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+  </intent-filter>
+</service>
+```
+
+* Finally, create a notification channel anywhere in your application using the following block of code. You can then use this `channel Id` while creating any campaign on your CleverTap Dashboard.
+
+```kotlin
+import android.app.Application;
+import com.clevertap.android.sdk.CleverTapAPI;
+
+CleverTapAPI.createNotificationChannel(
+    getApplicationContext(),
+    "yourChannelId",
+    "Your Channel Name",
+    "Your Channel Description",
+    NotificationManager.IMPORTANCE_MAX,
+    true
+);
+```
+
+{% hint style="info" %}
+For the Push Notification and In-App messages function correctly, CleverTap needs to know the `Application` status as early as possible. You can either set the `android:name` in your `AndroidManifest.xml` tag to `com.clevertap.android.sdk.Application`. Or, if you have a custom Application class, call `ActivityLifecycleCallback.register(this);` before `super.onCreate()` in your Application class.
+
+To know more on this you can check the [CleverTap documentation on push notifications](https://github.com/CleverTap/clevertap-android-sdk#setup-the-lifecycle-callback---important).
+{% endhint %}
+{% endtab %}
+
+{% tab title="iOS" %}
+* Add Push Notification as a capability by navigating to Target - `Signing & Capabilities` of your app when opened in Xcode.
+* Enable `Background Modes/Remote notifications` by navigating to **Targets** -&gt; **Your App** -&gt; **Capabilities** -&gt; **Background Modes** and then check `Remote notifications`
+* Register the push notifications for the iOS devices on your CleverTap dashboard either by uploading Auth Key or APNS Push Certificate by navigating to **Settings** -&gt; **Channels** -&gt; **Mobile Push** -&gt; **iOS**.
+* Then, add the following code in your app just after initializing RudderStack's iOS SDK to register the push notifications.
+
+```objectivec
+#import <UserNotifications/UserNotifications.h>
+
+// register for push notifications
+UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+center.delegate = self;
+[center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)
+completionHandler:^(BOOL granted, NSError * _Nullable error) {
+  if (granted) {
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        });
+  }
+}];
+```
+
+* Finally, add the below handlers to handle the tokens and push notifications accordingly:
+
+```objectivec
+#import "RudderCleverTapIntegration.h"
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [[RudderCleverTapIntegration alloc] registeredForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  [[RudderCleverTapIntegration alloc] receivedRemoteNotification:userInfo];
+  completionHandler(UIBackgroundFetchResultNoData);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+  completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+  [[RudderCleverTapIntegration alloc] receivedRemoteNotification:response.notification.request.content.userInfo];
+}
+```
+{% endtab %}
+
+{% tab title="React Native" %}
+* Open `android` folder of your React Native app and do follow all the steps mentioned in `Android` tab of [Configuring Push Notifications](clevertap.md#configuring-push-notifications)
+* Open `ios` folder of your React Native app and do follow all the steps mentioned in `iOS` tab of [Configuring Push Notifications](clevertap.md#configuring-push-notifications)
+{% endtab %}
+{% endtabs %}
+
 ## Page
 
 The `page` call allows you to record information whenever a user sees a web page, along with its associated properties.
@@ -338,124 +456,6 @@ Profile properties `MSG-email`, `MSG-push`, `MSG-sms` and `MSG-whatsapp` are use
 
 Example: To disable push notifications for a user, set `MSG-push` to `false`
 {% endhint %}
-
-## Configuring Push Notifications
-
-The steps to configure push notifications for CleverTap for the platform of your choice are as mentioned below:
-
-{% tabs %}
-{% tab title="Android" %}
-* Register push notifications for Android devices on your CleverTap dashboard either by uploading your FCM credentials or any other supported credentials by navigating to **Settings** - **Channels** - **Mobile Push** - **Android**.
-* Add the following dependency in your project level `build.gradle` file inside the `buildscript`:
-
-```groovy
-dependencies {
-  classpath 'com.google.gms:google-services:4.3.5'
-}
-```
-
-* Next, add the following dependencies and plugin to your app level `build.gradle` file:
-
-```groovy
-dependencies {
-  // for push notifications
-  implementation 'com.clevertap.android:clevertap-android-sdk:4.0.0'
-  implementation 'com.google.firebase:firebase-messaging:20.2.4'
-}
-apply plugin: 'com.google.gms.google-services'
-```
-
-* Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
-* Add your `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your app's `AndroidManifest.xml`, as below:
-
-```markup
-<meta-data
-  android:name="CLEVERTAP_ACCOUNT_ID"
-  android:value="XXX-XXX-XXXX"/>
-<meta-data
-  android:name="CLEVERTAP_TOKEN"
-  android:value="XXX-XXX"/>
-<service android:name="com.clevertap.android.sdk.pushnotification.fcm.FcmMessageListenerService">
-  <intent-filter>
-    <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-  </intent-filter>
-</service>
-```
-
-* Finally, create a notification channel anywhere in your application using the following block of code. You can then use this `channel Id` while creating any campaign on your CleverTap Dashboard.
-
-```kotlin
-import android.app.Application;
-import com.clevertap.android.sdk.CleverTapAPI;
-
-CleverTapAPI.createNotificationChannel(
-    getApplicationContext(),
-    "yourChannelId",
-    "Your Channel Name",
-    "Your Channel Description",
-    NotificationManager.IMPORTANCE_MAX,
-    true
-);
-```
-
-{% hint style="info" %}
-For the Push Notification and In-App messages function correctly, CleverTap needs to know the `Application` status as early as possible. You can either set the `android:name` in your `AndroidManifest.xml` tag to `com.clevertap.android.sdk.Application`. Or, if you have a custom Application class, call `ActivityLifecycleCallback.register(this);` before `super.onCreate()` in your Application class.
-
-To know more on this you can check the [CleverTap documentation on push notifications](https://github.com/CleverTap/clevertap-android-sdk#setup-the-lifecycle-callback---important).
-{% endhint %}
-{% endtab %}
-
-{% tab title="iOS" %}
-* Add Push Notification as a capability by navigating to Target - `Signing & Capabilities` of your app when opened in Xcode.
-* Enable `Background Modes/Remote notifications` by navigating to **Targets** -&gt; **Your App** -&gt; **Capabilities** -&gt; **Background Modes** and then check `Remote notifications`
-* Register the push notifications for the iOS devices on your CleverTap dashboard either by uploading Auth Key or APNS Push Certificate by navigating to **Settings** -&gt; **Channels** -&gt; **Mobile Push** -&gt; **iOS**.
-* Then, add the following code in your app just after initializing RudderStack's iOS SDK to register the push notifications.
-
-```objectivec
-#import <UserNotifications/UserNotifications.h>
-
-// register for push notifications
-UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
-center.delegate = self;
-[center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)
-completionHandler:^(BOOL granted, NSError * _Nullable error) {
-  if (granted) {
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        });
-  }
-}];
-```
-
-* Finally, add the below handlers to handle the tokens and push notifications accordingly:
-
-```objectivec
-#import "RudderCleverTapIntegration.h"
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  [[RudderCleverTapIntegration alloc] registeredForRemoteNotificationsWithDeviceToken:deviceToken];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-  [[RudderCleverTapIntegration alloc] receivedRemoteNotification:userInfo];
-  completionHandler(UIBackgroundFetchResultNoData);
-}
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
-  completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
-}
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
-  [[RudderCleverTapIntegration alloc] receivedRemoteNotification:response.notification.request.content.userInfo];
-}
-```
-{% endtab %}
-
-{% tab title="React Native" %}
-* Open `android` folder of your React Native app and do follow all the steps mentioned in `Android` tab of [Configuring Push Notifications](clevertap.md#configuring-push-notifications)
-* Open `ios` folder of your React Native app and do follow all the steps mentioned in `iOS` tab of [Configuring Push Notifications](clevertap.md#configuring-push-notifications)
-{% endtab %}
-{% endtabs %}
 
 ## Contact Us
 
