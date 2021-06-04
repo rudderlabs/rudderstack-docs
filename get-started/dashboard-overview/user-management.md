@@ -93,7 +93,7 @@ This role has the following permissions:
 See the following guides to learn more about these features:
 
 * [Connections](../../connections/)
-* [Transformations](../../adding-a-new-user-transformation-in-rudderstack/)
+* [Transformations]()
 {% endhint %}
 
 | Option | View | Add | Modify | Delete |
@@ -155,7 +155,7 @@ A user with the read-write role has all the permissions associated with a view-o
 See the following guides for more information on these options:
 
 * [Connections](../../connections/)
-* [Transformations](../../adding-a-new-user-transformation-in-rudderstack/)
+* [Transformations]()
 {% endhint %}
 
 Other permissions for this role include:
@@ -201,7 +201,7 @@ The permissions for this role are as listed below:
 See the following guides for more information on these options:
 
 * [Connections](../../connections/)
-* [Transformations](../../adding-a-new-user-transformation-in-rudderstack/)
+* [Transformations]()
 {% endhint %}
 
 #### Live Events

@@ -62,7 +62,7 @@ For more information on sources in RudderStack, check out the [**Connections**](
 * Configure the destination by entering the relevant connection settings. For detailed information on the required settings, refer to that destination's [**documentation**](../destinations/).
 
 {% hint style="success" %}
-You can transform your events in RudderStack before sending them to the specified destinations. Read our [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) guide for more information on this feature.
+You can transform your events in RudderStack before sending them to the specified destinations. Read our [**Transformations**]() guide for more information on this feature.
 {% endhint %}
 
 ## Useful Links

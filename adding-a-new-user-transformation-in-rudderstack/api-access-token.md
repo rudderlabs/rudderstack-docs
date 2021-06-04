@@ -94,7 +94,7 @@ We use Basic Auth consisting of three parts:
 
 You can get the workspace token by logging into your RudderStack dashboard, as shown:
 
-![](../../.gitbook/assets/1-copy.png)
+![](../.gitbook/assets/1-copy.png)
 
 **An example is as shown :** 
 

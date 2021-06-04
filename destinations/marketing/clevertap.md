@@ -397,6 +397,7 @@ CleverTapAPI.createNotificationChannel(
     true
 );
 ```
+
 {% hint style="info" %}
 For the Push Notification and In-App messages function correctly, CleverTap needs to know the `Application` status as early as possible. You can either set the `android:name` in your `AndroidManifest.xml` tag to `com.clevertap.android.sdk.Application`. Or, if you have a custom Application class, call `ActivityLifecycleCallback.register(this);` before `super.onCreate()` in your Application class.
 
@@ -459,3 +460,4 @@ completionHandler:^(BOOL granted, NSError * _Nullable error) {
 ## Contact Us
 
 If you come across any issues while configuring CleverTap with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+

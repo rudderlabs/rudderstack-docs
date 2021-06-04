@@ -49,7 +49,7 @@ This options lists all the available sources and destinations supported by Rudde
 With this option, you can write your own JavaScript functions to transform your events in a destination-specific format. You can also create your own libraries - a RudderStack feature that allows you to reuse the code written for a transformation in other transformations.
 
 {% hint style="info" %}
-See the [Transformations](../../adding-a-new-user-transformation-in-rudderstack/) section to learn more about this feature. 
+See the [Transformations]() section to learn more about this feature. 
 {% endhint %}
 
 ![](../../.gitbook/assets/5%20%2821%29.png)

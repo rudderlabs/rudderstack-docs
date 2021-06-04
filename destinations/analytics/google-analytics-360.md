@@ -50,7 +50,7 @@ Follow the guide on [How to Add a Source and Destination in RudderStack](https:/
 * To add a transformation, click on **Create New Transformation**. Otherwise, click on **Next**.
 
 {% hint style="info" %}
-See the [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) guide for more details on this feature.
+See the [**Transformations**]() guide for more details on this feature.
 {% endhint %}
 
 * The destination is now configured and enabled.

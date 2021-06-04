@@ -78,7 +78,7 @@ Alternatively, you can also click on the **Destinations** option in the left nav
 
 ![](../.gitbook/assets/screen-shot-2021-05-19-at-4.55.08-pm%20%281%29%20%281%29.png)
 
-* RudderStack allows you to transform your source events in a destination-specific format through the [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**. 
+* RudderStack allows you to transform your source events in a destination-specific format through the [**Transformations**]() feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**. 
 
 ![](../.gitbook/assets/screen-shot-2021-05-19-at-5.01.56-pm.png)
 

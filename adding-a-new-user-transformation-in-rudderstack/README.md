@@ -73,7 +73,7 @@ export function transformBatch(events, metadata) {
 {% hint style="danger" %}
 **Disclaimer for using `transformBatch`**
 
-Make sure you pass on the `messageID` from the input event onto the output event. If the `messageID` is passed on, the order of delivery of events is preserved. **Without it, this order may not be maintained**.   
+Make sure you pass on the `messageID` from the input event onto the output event. If the `messageID` is passed on, the order of delivery of events is preserved. **Without it, this order may not be maintained**.
 
 It is highly recommended to use `transformEvent` in every possible case as it ensures event ordering in all cases.
 
@@ -99,7 +99,7 @@ To create a library, follow these steps:
 ![](../.gitbook/assets/image%20%2895%29.png)
 
 {% hint style="warning" %}
-RudderStack does not support the deletion of libraries as of now.   
+RudderStack does not support the deletion of libraries as of now.
 
 This is so that you don't break any existing transformations that use the library that you might be trying to delete.
 {% endhint %}
@@ -156,7 +156,7 @@ An example of this is as shown below:
 export function transformEvent(event, metadata){
   const meta = metadata(event);
   event.sourceId = meta.sourceId
-  
+
   return event;
 }
 ```
@@ -226,7 +226,7 @@ We recommend using `batch` API requests instead of a separate API request for ea
 
 ## Debugging with logs
 
-You can access logs while running a test by including `log()` function in transformation code wherever required. 
+You can access logs while running a test by including `log()` function in transformation code wherever required.
 
 An example of this is as shown below:
 
@@ -234,20 +234,20 @@ An example of this is as shown below:
 export function transformEvent(event, metadata) {
   const meta = metadata(event);
   event.sourceId = meta.sourceId
-  
+
   log("Event Name is", event.event, ";", "Message Id is", event.messageId);
   log("Source Id is", meta.sourceId);
-  
+
   return event;
 }
 ```
 
-Upon running a test on above code, you can see above logs in **Logs** **section** as shown below: 
+Upon running a test on above code, you can see above logs in **Logs** **section** as shown below:
 
 ![](../.gitbook/assets/image%20%28103%29%20%281%29.png)
 
 {% hint style="info" %}
- Arguments to `log` function can be a String, Number or Object
+Arguments to `log` function can be a String, Number or Object
 {% endhint %}
 
 ## Limits
@@ -268,3 +268,4 @@ The user transformation fails if these limits are exceeded.
 ## Contact Us
 
 If you want to know more about transformations and libraries in RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
