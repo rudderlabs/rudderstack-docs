@@ -1,5 +1,5 @@
 ---
-description: Detailed instructions for deploying RudderStack on Kubernetes
+description: Step-by-step instructions for deploying RudderStack on Kubernetes.
 ---
 
 # Kubernetes
