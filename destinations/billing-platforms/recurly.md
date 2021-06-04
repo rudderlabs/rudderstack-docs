@@ -38,17 +38,17 @@ Follow our [Adding a Source and Destination](https://docs.rudderstack.com/how-to
 - From the list of destinations, select **Recurly**. Assign a name for your destination and then click on **Next**.
 - In the **Connection Settings** page, fill all the relevant connection settings including the **Recurly API Key**. Then, click on **Next**.
 
-![Recurly Connection Settings in RudderStack](../.gitbook/assets/recurly.png)
+![Recurly Connection Settings in RudderStack](../../.gitbook/assets/recurly.png)
 
 ### Web Settings
 
-- **Custom Fields Mapping** - This field lets you map any RudderStack event to a Recurly Event. To do successful mapping, make sure you have created a custom field on your Recurly dashboard. You can then map the RudderStack properties to Recurly's custom fields by listing them in this section. 
+- **Custom Fields Mapping** - This field lets you map any RudderStack event to a Recurly Event. To do successful mapping, make sure you have created a custom field on your Recurly dashboard. You can then map the RudderStack properties to Recurly's custom fields by listing them in this section.
 
 {% hint style="info" %}
 Note that these properties are case-sensitive and can be nested. For example, if you have created `paymentValue` and `personalMailId` in your Recurly dashboard and you want to send `rudderanalytics.track('Event', {customProperty: { customValue: 2 }, someRandomMailId: 'user@gmail.com'})`, then input these two properties `customProperty.customValue` and `someRandomMailId` under the the RudderStack field and `paymentValue` and `personalMailId` in the Recurly field.
 {% endhint %}
 
-
+A sample `track` event which demonstrates this is as shown below:
 
 ```javascript
 rudderanalytics.track("Event", {
@@ -88,29 +88,28 @@ rudderanalytics.identify("name123", {
 ```
 
 {% hint style="info" %}
+
 - When you make an `identify` call with the new `userId`, RudderStack creates a new account.
 - When you make an `identify` call with an existing `userId`, RudderStack will update the existing account with the new traits.
-{% endhint %}
-
+  {% endhint %}
 
 RudderStack maps the following properties to Recurly when you make an `identify` call:
 
-| **Standard RudderStack Field**  | **Standard Recurly Field** |
-| :-------------------------- | :--------------------- |
-| `userId`                    | `code`                 |
-| `email`                     | `email`                |
-| `firstName`                 | `first_name`           |
-| `lastName`                  | `last_name`            |
-| `context.locale`            | `preferred_locale`     |
-| `traits.company.name`       | `company`              |
-| `context.campaign.name`     | `acquisition.campaign` |
-| `phone`                     | `address.phone`        |
-| `traits.address.street`     | `address.street1`      |
-| `traits.address.city`       | `address.city`         |
-| `traits.address.state`      | `address.region`       |
-| `traits.address.postalCode` | `address.postal_code`  |
-| `traits.address.country`    | `address.country`      |
-
+| **Standard RudderStack Field** | **Standard Recurly Field** |
+| :----------------------------- | :------------------------- |
+| `userId`                       | `code`                     |
+| `email`                        | `email`                    |
+| `firstName`                    | `first_name`               |
+| `lastName`                     | `last_name`                |
+| `context.locale`               | `preferred_locale`         |
+| `traits.company.name`          | `company`                  |
+| `context.campaign.name`        | `acquisition.campaign`     |
+| `phone`                        | `address.phone`            |
+| `traits.address.street`        | `address.street1`          |
+| `traits.address.city`          | `address.city`             |
+| `traits.address.state`         | `address.region`           |
+| `traits.address.postalCode`    | `address.postal_code`      |
+| `traits.address.country`       | `address.country`          |
 
 ## Track
 
@@ -174,6 +173,13 @@ Recurly only allows a string with numbers, lowercase letters, dashes, pluses, an
 - Login to the Recurly dashboard.
 - Go to the **Integrations** tab and then click on the **API Credentials** on the left sidebar.
 - You will find your API key listed as **Private API Key**.
+
+### **How do you create the Recurly Custom Fields?**
+
+- Login to the Recurly dashboard.
+- Go to the **Configuration** tab and then click on the **Custom Fields** on the left sidebar.
+- Click on **Create Custom Fields** on top left.
+- Give name of field in **API FIELD NAME**. Select **RECURLY OBJECT** as Account and **ADMIN CONSOLE FIELD NAME** as name to appear in console.
 
 ## Contact Us
 
