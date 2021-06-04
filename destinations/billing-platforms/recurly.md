@@ -72,7 +72,7 @@ rudderanalytics.identify("name123", {
   name: "name1",
   email: "google@gmail.com",
   plan: "Enterprise",
-  phone: "9007197654",
+  phone: "123456789",
   company: {
     id: "abc123",
     name: "Companyname",
@@ -174,12 +174,16 @@ Recurly only allows a string with numbers, lowercase letters, dashes, pluses, an
 - Go to the **Integrations** tab and then click on the **API Credentials** on the left sidebar.
 - You will find your API key listed as **Private API Key**.
 
-### **How do you create the Recurly Custom Fields?**
+### **How do you create custom fields in Recurly?**
+
+To create custom fields in Recurly:
 
 - Login to the Recurly dashboard.
 - Go to the **Configuration** tab and then click on the **Custom Fields** on the left sidebar.
 - Click on **Create Custom Fields** on top left.
-- Give name of field in **API FIELD NAME**. Select **RECURLY OBJECT** as Account and **ADMIN CONSOLE FIELD NAME** as name to appear in console.
+- You can add the name of the custom field in **API FIELD NAME**. Select **RECURLY OBJECT** as Account and **ADMIN CONSOLE FIELD NAME** as the name to appear in the console.
+
+For more information on custom fields in Recurly, refer to their [documentation](https://docs.recurly.com/docs/custom-fields).
 
 ## Contact Us
 
