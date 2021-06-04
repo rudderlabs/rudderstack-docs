@@ -191,13 +191,13 @@ await rc.registerCallback('App Center', () => {
       console.log("App Center is ready");
     })
 ```
+
 The `registerCallback` method has the following signatures:
 
 | Name | Data Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `destinationName` | `string` | Yes | Display name of the device-mode destination. |
-| `callback` | `Function` | Yes |  Callback function to be triggered once device-mode integration is successful. |
-
+| `callback` | `Function` | Yes | Callback function to be triggered once device-mode integration is successful. |
 
 ## Enabling / Disabling Events for Specific Destinations
 
@@ -246,8 +246,6 @@ rudderClient.track("test_track_event", {
 {% hint style="info" %}
 If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
 {% endhint %}
-
-
 
 ## External ID
 
