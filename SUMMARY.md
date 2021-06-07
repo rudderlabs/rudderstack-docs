@@ -12,7 +12,7 @@
     * [User Management](get-started/dashboard-overview/user-management.md)
 * [Connections](connections/README.md)
   * [How to Add a Source and Destination in RudderStack](connections/adding-source-and-destination-rudderstack.md)
-  * [RudderStack Connection Modes: Cloud vs. Device Mode](connections/rudderstack-connection-modes.md)
+  * [RudderStack Connection Modes: Cloud Mode vs. Device Mode](connections/rudderstack-connection-modes.md)
 * [Stream Sources](stream-sources/README.md)
   * [SDKs](stream-sources/rudderstack-sdk-integration-guides/README.md)
     * [JavaScript](stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/README.md)

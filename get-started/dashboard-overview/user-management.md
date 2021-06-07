@@ -4,10 +4,10 @@ description: Detailed description of the Teammates option on the RudderStack das
 
 # User Management
 
-RudderStack's user management feature allows you to add and manage other users in your current workspace, allowing for better and easier collaboration between you and other members of your team or organization.
+RudderStack's user management feature lets you add and manage other users in your current workspace and enables easier collaboration between you and other members of your team or organization.
 
 {% hint style="info" %}
-You can invite up to 3 users in your [RudderStack Cloud Free](https://app.rudderlabs.com/signup?type=freetrial) plan. You can increase this limit by upgrading to a Pro or Enterprise plan. 
+You can invite up to 3 users in your [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) plan. You can increase this limit by upgrading to a Pro or Enterprise plan. 
 {% endhint %}
 
 Refer to the table below for specifics on the number of teammates you can add to your current workspace in each plan:
@@ -19,7 +19,7 @@ Refer to the table below for specifics on the number of teammates you can add to
 | **RudderStack Cloud Enterprise** | Unlimited |
 
 {% hint style="success" %}
-Check our [pricing](https://rudderstack.com/pricing/) page for a complete list of the supported features or [log in](http://app.rudderstack.com/upgrade) to upgrade now.
+Check our [**pricing**](https://rudderstack.com/pricing/) page for a complete list of the supported features or [**log in**](http://app.rudderstack.com/upgrade) to upgrade now.
 {% endhint %}
 
 ## How to Invite a User
@@ -81,7 +81,7 @@ An invited user can be assigned one of the following three roles:
 
 The detailed permissions for each of the above roles are listed in the following sections.
 
-### View-only
+### View-only User
 
 A user with this role has read-only access to all the RudderStack workspace features.
 
@@ -92,8 +92,8 @@ This role has the following permissions:
 {% hint style="success" %}
 See the following guides to learn more about these features:
 
-* [Connections](../../connections/)
-* [Transformations]()
+* \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
+* \*\*\*\*[**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/)\*\*\*\*
 {% endhint %}
 
 | Option | View | Add | Modify | Delete |
@@ -138,7 +138,7 @@ View-only users can look at events that might contain sensitive information, lik
 * Can view all the members of the team and their roles.
 * Cannot invite new users to the team or change the role/permissions of any existing user.
 
-### Read-Write
+### Read-Write User
 
 A user with the read-write role has all the permissions associated with a view-only user. They also have some additional permissions related to different workspace features and options, as mentioned below:
 
@@ -154,8 +154,8 @@ A user with the read-write role has all the permissions associated with a view-o
 {% hint style="success" %}
 See the following guides for more information on these options:
 
-* [Connections](../../connections/)
-* [Transformations]()
+* \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
+* \*\*\*\*[**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/)\*\*\*\*
 {% endhint %}
 
 Other permissions for this role include:
@@ -200,8 +200,8 @@ The permissions for this role are as listed below:
 {% hint style="success" %}
 See the following guides for more information on these options:
 
-* [Connections](../../connections/)
-* [Transformations]()
+* \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
+* \*\*\*\*[**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/)\*\*\*\*
 {% endhint %}
 
 #### Live Events
@@ -228,7 +228,7 @@ See the following guides for more information on these options:
 
 ## Contact Us
 
-For more information on this feature, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, we will be happy to help you.
+For more information on this feature, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel, we will be happy to help you.
 
 
 

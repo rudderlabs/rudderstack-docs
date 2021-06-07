@@ -397,10 +397,11 @@ Follow the instructions below:
 ```
 
 Following are the available options you can pass to the `putAppTrackingConsent` method.
-- `RSATTNotDetermined`
-- `RSATTRestricted`
-- `RSATTDenied`
-- `RSATTAuthorize`
+
+* `RSATTNotDetermined`
+* `RSATTRestricted`
+* `RSATTDenied`
+* `RSATTAuthorize`
 
 ## Anonymous ID
 

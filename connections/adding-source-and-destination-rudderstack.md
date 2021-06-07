@@ -14,7 +14,7 @@ Refer to the [**Connections**](./) guide to read more about sources and destinat
 
 Follow these steps to add an event data source in RudderStack:
 
-* Log in to the [RudderStack app](https://app.rudderlabs.com/login).
+* Log in to the [**RudderStack app**](https://app.rudderlabs.com/login).
 * Once logged in, you should see the following dashboard:
 
 ![](../.gitbook/assets/1%20%2821%29.png)
@@ -78,7 +78,7 @@ Alternatively, you can also click on the **Destinations** option in the left nav
 
 ![](../.gitbook/assets/screen-shot-2021-05-19-at-4.55.08-pm%20%281%29%20%281%29.png)
 
-* RudderStack allows you to transform your source events in a destination-specific format through the [**Transformations**]() feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**. 
+* RudderStack allows you to transform your source events in a destination-specific format through the [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**. 
 
 ![](../.gitbook/assets/screen-shot-2021-05-19-at-5.01.56-pm.png)
 
@@ -98,5 +98,5 @@ Before deleting a destination, make sure it is disconnected from the source.
 
 ## Contact Us
 
-For more information or support on adding a source and destination in RudderStack, [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+For more information or support on adding a source and destination in RudderStack, [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
 
