@@ -13,7 +13,7 @@
 * Stuck somewhere? Refer to our up-to-date [**user guides**](user-guides/) or check out the [**FAQs**](faqs.md).
 
 {% hint style="success" %}
-For community support, you can always start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) **channel** and ask any questions you might have about RudderStack.
+For community support, you can always start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel ****and ask any questions you might have about RudderStack.
 {% endhint %}
 
 ## License

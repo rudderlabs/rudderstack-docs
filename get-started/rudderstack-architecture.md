@@ -1,7 +1,7 @@
 ---
 description: >-
-  A quick tour of RudderStack’s architecture with a special focus on the data
-  plane.
+  Detailed documentation on RudderStack’s architecture with a special focus on
+  the Data Plane.
 ---
 
 # RudderStack Architecture
@@ -9,97 +9,125 @@ description: >-
 RudderStack is an independent, stand-alone system with dependency only on the database \(**PostgreSQL**\). Its backend is written in Go, with a rich UI written in React.js.
 
 {% hint style="success" %}
-**Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack.** [**Sign up**](https://app.rudderlabs.com/signup?type=freetrial) **for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.** 
+**Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack.** [**Sign up**](https://app.rudderlabs.com/signup?type=freetrial) **for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 {% endhint %}
 
-RudderStack's architecture consists of 2 major components, namely the **Control Plane**, and **Data Plane**. A broad, high-level view of RudderStack’s architecture is as shown in the diagram below:
+A high-level view of RudderStack’s architecture is as shown:
 
 ![RudderStack Architecture](../.gitbook/assets/rudderstack-architecture.png)
 
-Let us look at each of the above major components in a bit more detail: ****
+RudderStack's architecture consists of 2 major components, namely the **Control Plane** and **Data Plane**.
 
 ## **Control Plane**
 
-The control plane mainly consists of the UI to configure the source and destination of the event data. The control plane is further divided into 2 major components:
+The Control Plane offers an intuitive UI to configure your event data sources and destinations. It comprises of:
 
-* **Web App**: This is the front-end application that allows you to set up your data routing with RudderStack.
-* **Configuration Backend**: The backend gives you the options to configure your event data sources, destinations, and connections.
+* **RudderStack Web App**: This is the [**front-end application**](https://app.rudderlabs.com/signup?type=freetrial) that lets you set up your data pipelines in RudderStack. 
+* **Configuration Backend**: The configuration backend gives you the options to configure your event data sources, destinations, and connections.
 
 ## **Data Plane**
 
-The data plane is RudderStack's ****core engine that is responsible for:
+The Data Plane is RudderStack's ****core engine responsible for:
 
 * Receiving and buffering the event data
-* Transforming them into the required destination format
-* Relaying it to the destination
+* Transforming the events in the required destination format
+* Relaying the events to the destination
 
 {% hint style="info" %}
-As mentioned earlier, the data plane uses PostgreSQL as a streaming database for the event data. We will dive more into the data plane later in this post.
+The RudderStack Data Plane uses PostgreSQL as a streaming database for the event data. Refer to the **Data Plane Architecture** section below for more information.
 {% endhint %}
 
 ## **Transformation** 
 
-RudderStack's Transformations feature is responsible for converting the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript. RudderStack also supports user-specific transformations for real-time operations, such as aggregation, filtering, and sampling.
+RudderStack's Transformations module transforms the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript. 
+
+RudderStack also supports user-specific transformations for real-time operations, such as aggregation, filtering, and sampling.
+
+{% hint style="success" %}
+Refer to the [**RudderStack Transformations**](../adding-a-new-user-transformation-in-rudderstack/) guide for more information on this feature.
+{% endhint %}
 
 ## **Data Plane Architecture**
 
-RudderStack’s data plane is responsible for receiving, transforming, and routing the transformed event data to its destination in the required format. To do so, it receives the event data from sources that include web apps or Android/iOS devices. RudderStack’s backend is written in Go.
+RudderStack's Data Plane is responsible for receiving, transforming, and routing the event data to the destination. To do so, it receives the event data from sources that include websites, mobile apps, server-side applications, cloud apps, and data warehouses.
 
-A basic, simplified version of the RudderStack Backend architecture is demonstrated in the figure below:
+A simplified version of the RudderStack Data Plane architecture is as shown:
 
 ![RudderStack Data Plane Architecture](https://lh4.googleusercontent.com/cI7FcmudLVOedkLXA2AwV0tWVI3fZtA66v3Mt8WYGEZnhC8_D-pW53twoh-BbfEBHGw-dvg5tCllbE0xwvGj1b1uPN3KpZU2PAWi0IAS36XzrrzYTm2jcSmjegti_Z57Ca9hZRn4)
 
-Let us now dive deep into the components of the RudderStack Backend**:**
+The following sections give a detailed overview of each of the components of the RudderStack Data Plane**:**
 
 ### **Gateway**
 
-The Gateway is primarily responsible for receiving and forwarding the event data for transformation.
+The Gateway is primarily responsible for receiving and forwarding the event data for processing and transformation.
 
-It accepts the event requests and sends an acknowledgement back to the source depending on the acceptance \(an HTTP 200 response\) or rejection of the event data. The event data is rejected in case of the following scenarios:
+It accepts the event requests and sends an acknowledgement back to the source depending on the acceptance \(an HTTP 200 response\) or rejection of the event data. 
+
+The event data is rejected in case of the following scenarios:
 
 * Invalid JSON
 * Invalid write key
-* Improper Request size
+* Improper request size
 
-The source event can come from an iOS/Android device or a web application. In case of a successful receipt, the events are then forwarded for transformation.
+The source event can come from a web, mobile, or server-side app. In case of successful receipt, the events are then forwarded for transformation.
 
-The gateway also temporarily stores all the received event data into PostgreSQL before sending the acknowledgment of a successful receipt. Once the event is transformed and sent to the destination, the stored data in the database is then deleted by the Processor.
+The Gateway also temporarily stores all the received event data into PostgreSQL before sending the acknowledgment of a successful receipt. Once the event is sent to the destination, the Processor deletes the data stored in the database.
 
 ### **Processor**
 
-The processor fetches the data from the Gateway and forwards it to the Transformation module. Once the event data is transformed, the Processor forwards it to the Router, so that it can be sent to the required destination.
+The Processor fetches the data from the Gateway and forwards it to the Transformation module. Once the event data is transformed, the Processor forwards it to the Router module that sends it to the required destination.
 
 ### **Router**
 
-The Router sends the processed and transformed event data received from the Processor to the desired destinations, such as Google Analytics, Amplitude, and more. There is also a provision of sending data dumps to Amazon S3, or warehouses such as Amazon Redshift. 
+The Router sends the processed and transformed event data from the Processor to the desired destinations, including marketing and analytics platforms, CRMs, data warehouses, etc.
 
 ### **Transformation Module**
 
-The Transformation Module takes the event data from the Processor and converts the event data in the required destination format. It then sends this transformed event data back to the Processor, so that it can be forwarded to the Router and eventually the desired destination.
+The Transformation module takes the event data from the Processor and converts the event data into the required destination format. It then sends this transformed data back to the Processor. The Processor then forwards the data to the Router, which then routes it to the desired destination.
 
-As discussed previously, RudderStack also supports user-specific transformation where event data can be transformed using specific functions such as modifying the events, performing aggregation of the events, sampling, etc.
+{% hint style="success" %}
+RudderStack supports user-defined transformations where event data can be transformed using custom JavaScript functions. Some common use-cases include modifying the events, performing event aggregation, sampling, etc. 
 
-## **The Backend Workflow**
+Check out the [**GitHub repository**](https://github.com/rudderlabs/sample-user-transformers) for more information related to these functions.
+{% endhint %}
 
-The following flow explains the working of the backend:
+## **Data Plane Workflow**
 
-1. Client SDK sends events to the Gateway.
-2. The Gateway then: 
-   1. Stores the event data to the database \(PostgreSQL\).
-   2. Sends an HTTP 200 status acknowledging receipt of the data.
-3. The Processor picks the data from the Gateway and forwards the event data to the Transformation module.
-4. The Transformation module sends the transformed data back to the Processor.
-5. Once the event is transformed and sent to the Router, it is deleted from the Gateway store.
-6. The Router then: 
-   1. Forwards the transformed event data to the desired destinations.
-   2. Stores the information in a separate table in the database.
-7. Once the transformed data reaches the destination, the event data from the router database is deleted by the Router.
+The RudderStack backend workflow is detailed in the following steps:
 
-## **Summary**
+1. The Gateway receives the event from the source. 
+2. The Gateway then:  
 
-We saw how the RudderStack data plane plays a crucial role in receiving, storing, and transforming the source events and delivering them reliably to the destination. The backend engine can be customized with a variety of configuration options. Some of these options include backing up events to S3, rejecting malicious requests by defining the maximum size of the event, and more. Although the default configuration works just fine for most of the companies, RudderStack gives you the flexibility to customize it, if required.
+
+   i.  Stores the event data to the Router database \(PostgreSQL\).
+
+   ii. Sends an **HTTP 200** status acknowledging receipt of the data.  
+
+3. The Processor picks the data from the Gateway and forwards the event data to the Transformation module. 
+4. The Transformation module transforms the event and sends it back to the Processor. 
+5. Once the event is transformed and sent to the Router, it is deleted from the Gateway store. 
+6. The Router then:  
+ 
+
+   i.  Forwards the transformed event data to the desired destinations.
+
+   ii. Stores the information in a separate table in the database.  
+
+7. Once the transformed data reaches the destination, the event data from the Router database is deleted by the Router.
+
+![RudderStack Backend Workflow](../.gitbook/assets/screen-shot-2021-06-07-at-1.25.57-pm.png)
+
+## **Notes**
+
+The RudderStack backend can be customized with a variety of configuration options. Some of these options include backing up events to S3, rejecting malicious requests by defining the maximum size of the event, and more. 
+
+Although the default configuration works just fine for most use-cases, RudderStack gives you the flexibility to customize it by tweaking the [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) file to suit your application's needs.
+
+{% hint style="info" %}
+Refer to the [**Configuration Parameters**](../user-guides/administrators-guide/config-parameters.md) guide for more information on these configuration options.
+{% endhint %}
 
 ## Contact Us
 
-To know more about RudderStack's architecture or the platform in general, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, or even see RudderStack [in action](https://rudderstack.com/request-a-demo/).
+To know more about RudderStack's architecture, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also [**request a demo**](https://rudderstack.com/request-a-demo/) to see RudderStack in action.
 
