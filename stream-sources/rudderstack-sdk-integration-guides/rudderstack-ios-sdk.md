@@ -346,7 +346,7 @@ You can pass your `device-token` for Push Notifications to be passed to the dest
 
 Follow the instructions below:
 
-```bash
+```objectivec
 [[[RSClient sharedInstance] getContext] putDeviceToken:@"your_device_token"];
 ```
 
@@ -356,7 +356,7 @@ We have kept IDFA collection completely separate from the Core library so that t
 
 Follow the instructions below:
 
-```bash
+```objectivec
 #import <AdSupport/ASIdentifierManager.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -375,6 +375,32 @@ Follow the instructions below:
     return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 }
 ```
+
+## ATTrackingManager Authorization Consent
+
+You can pass the [ATTrackingManager.trackingAuthorizationStatus](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/3547038-trackingauthorizationstatus) to RudderStack and we'll pass it along to the relevant destinatins whereever needed. For example AppsFlyer accpets this parameter for the attribution to work in their [S2S mode](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#att-3).
+
+Follow the instructions below:
+
+```objectivec
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    // Override point for customization after application launch.
+    RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+    [builder withDataPlaneURL:[[NSURL alloc] initWithString:DATA_PLANE_URL]];
+    [RSClient getInstance:WRITE_KEY config:[builder build]];
+
+    [[[RSClient sharedInstance] getContext] putAppTrackingConsent:RSATTAuthorize];
+
+    return YES;
+}
+```
+
+Following are the available options you can pass to the `putAppTrackingConsent` method.
+- `RSATTNotDetermined`
+- `RSATTRestricted`
+- `RSATTDenied`
+- `RSATTAuthorize`
 
 ## Anonymous ID
 
@@ -495,7 +521,7 @@ If you specify the destinations both while initializing the SDK as well as makin
 
 You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
 
-```bash
+```objectivec
 RSOption *identifyOptions = [[RSOption alloc] init];
 [identifyOptions putExternalId:@"brazeExternalId" withId:@"some_external_id_1"];
 [[RSClient sharedInstance] identify:@"testUserId"
