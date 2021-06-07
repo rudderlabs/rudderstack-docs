@@ -6,7 +6,7 @@ description: >-
 
 # Connections
 
-RudderStack lets you set up connections between your preferred event data sources and destinations. With this feature, you can build efficient data pipelines across your entire customer data stack.
+RudderStack's Connections feature allows you to seamlessly build efficient data pipelines across your entire customer data stack.
 
 {% hint style="success" %}
 **With RudderStack, you can bring together all your event data across your web, mobile, server-side, and cloud apps and route this data reliably to your data warehouse and other third-party platforms of your choice.**
@@ -16,7 +16,7 @@ RudderStack lets you set up connections between your preferred event data source
 
 ## Sources
 
-A **source** refers to a platform or an application \(web, mobile, server-side, or a third-party cloud app\) from where RudderStack tracks and collects your event data. 
+A **source** refers to a platform or an application \(web, mobile, server-side, or a third-party cloud app\) where you want RudderStack to track and collect your event data. 
 
 {% hint style="success" %}
 We recommend creating a source for every unique source of data. You can also create multiple sources for each website or application from which you want to track the data.
@@ -27,7 +27,7 @@ To view all the configured sources in your RudderStack dashboard, click on **Sou
 ![](../.gitbook/assets/3%20%2820%29.png)
 
 {% hint style="success" %}
-You can add a new source by simply clicking on the **Add Source** button. For more details on adding a source in RudderStack, refer to the guide on [**Adding a Source and Destination in RudderStack**](adding-source-and-destination-rudderstack.md). 
+You can add a new source by simply clicking on the **Add Source** button. For more details on adding a source in RudderStack, refer to the guide on [Adding a Source and Destination in RudderStack](adding-source-and-destination-rudderstack.md). 
 {% endhint %}
 
 ### Source Details
@@ -36,13 +36,11 @@ To get more details on the configured source, click on it. You should then see t
 
 ![](../.gitbook/assets/4%20%2820%29.png)
 
-The options you see in this page are as follows:
-
 * **Source ID**: The unique identifier associated with your source.
-* **Write Key**: The write key is required to send the data from your source.
+* **Write Key**: The write key associated with your source, which is required to send the data from your source.
 
 {% hint style="success" %}
-As an example, you can load [**RudderStack's JavaScript SDK**](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your web pages to track and collect the events by running the following:  
+As an example, you can load [RudderStack's JavaScript SDK](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your web pages to track and collect the events by running the following snippet:  
   
 `rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URL>, options);`
 {% endhint %}
@@ -68,9 +66,7 @@ Before you delete a source, make sure there are no active destinations enabled f
 A destination is a tool or application where you want to send the data via RudderStack.
 
 {% hint style="success" %}
-RudderStack currently supports over 80 destinations. These include [**data warehouses**](https://docs.rudderstack.com/data-warehouse-integrations), [**analytics**](https://docs.rudderstack.com/destinations/analytics) platforms,  [**CRMs**](https://docs.rudderstack.com/destinations/crm), [**marketing**](https://docs.rudderstack.com/destinations/marketing) platforms, and more.
-
-Check out the [**Destinations**](../destinations/) guide for the complete list of supported destinations.
+RudderStack currently supports over 80 destinations - from data warehouses and analytics tools to customer support, CRM, and marketing platforms.
 {% endhint %}
 
 To view all the configured destinations in your RudderStack dashboard, click on **Destinations** in the left navigation bar, as shown:
@@ -78,7 +74,7 @@ To view all the configured destinations in your RudderStack dashboard, click on 
 ![](../.gitbook/assets/7%20%2813%29.png)
 
 {% hint style="success" %}
-You can add a new destination by clicking on the **Add Destination** button. For more details on adding a source in RudderStack, refer to the guide on [**Adding a Source and Destination in RudderStack**](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack).
+You can add a new destination by clicking on the **Add Destination** button. For more details on adding a source in RudderStack, refer to the guide on [Adding a Source and Destination in RudderStack](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack).
 {% endhint %}
 
 ### Destination Details
@@ -87,13 +83,11 @@ To get more details on the configured destination, click on it. You should then 
 
 ![](../.gitbook/assets/6%20%2819%29.png)
 
-You will see the following options:
-
 * **Destination ID**: The unique identifier associated with your destination.
 * **Transformation**: RudderStack allows you to transform your events before routing them across to your destination. 
 
 {% hint style="success" %}
-Read more about RudderStack's [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature.
+Read more about RudderStack's Transformation feature [here](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack).
 {% endhint %}
 
 * **Settings**: You can change the settings of your configured destination by clicking on this button.
@@ -152,5 +146,5 @@ You can also send your data from one source to multiple destinations, as shown:
 
 ## Contact Us
 
-To know more about connections in RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also see this feature in action by [**requesting a demo**](https://resources.rudderstack.com/request-a-demo?_ga=2.47794151.1545771517.1607313913-1655106949.1598281099).
+To know more about connections in RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also see this feature in action by [requesting a demo](https://resources.rudderstack.com/request-a-demo?_ga=2.47794151.1545771517.1607313913-1655106949.1598281099).
 
