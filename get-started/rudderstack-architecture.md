@@ -4,7 +4,7 @@ description: >-
   the Data Plane.
 ---
 
-# RudderStack Architecture
+# Architecture
 
 RudderStack is an independent, stand-alone system with dependency only on the database \(**PostgreSQL**\). Its backend is written in Go, with a rich UI written in React.js.
 

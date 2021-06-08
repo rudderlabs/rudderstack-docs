@@ -1,18 +1,18 @@
 ---
 description: >-
-  Step-by-step guide on using the RudderStack Config Generator to set up your
-  self-hosted Control Plane.
+  Step-by-step guide to set up your self-hosted Control Plane using RudderStack
+  Config Generator.
 ---
 
-# How to Use the RudderStack Config Generator
+# Config Generator
 
 RudderStack's Control Plane manages the configuration of your sources and destinations.
 
 {% hint style="info" %}
-For more information on the Control Plane, refer to RudderStack's [**architecture**](../../get-started/rudderstack-architecture.md).
+For more information on the Control Plane, refer to RudderStack's [**architecture**](rudderstack-architecture.md).
 {% endhint %}
 
-The easiest way to manage these configurations is through RudderStack's [**self-hosted Control Plane**](https://app.rudderstack.com/). It is free, requires no setup, and has some advanced features like [**Live Events Debugger**](live-destination-event-debugger.md) and [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/).
+The easiest way to manage these configurations is through RudderStack's [**self-hosted Control Plane**](https://app.rudderstack.com/). It is free, requires no setup, and has some advanced features like [**Live Events Debugger**](../user-guides/how-to-guides/live-destination-event-debugger.md) and [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/).
 
 However, if you want to self-host these configurations, you can use the open-source RudderStack Config Generator to set up your Control Plane. You can then manage the source and destination configurations locally by exporting to or importing them from a JSON file.
 
@@ -38,14 +38,14 @@ The Config Generator can be accessed at [**http://localhost:3000**](https://gith
 
 On successful setup, you should be able to see the following UI:
 
-![Control Plane set up using Config Generator](../../.gitbook/assets/image%20%2822%29.png)
+![Control Plane set up using Config Generator](../.gitbook/assets/image%20%2822%29.png)
 
 ## Exporting Workspace Configuration
 
 After adding the required sources and destinations in the dashboard shown above, you can export your workspace configuration by simply clicking the **EXPORT** button.
 
 {% hint style="info" %}
-For more information on adding sources and destinations in RudderStack, refer to the [**How to Add a Source and Destination in RudderStack**](../../connections/adding-source-and-destination-rudderstack.md) guide.
+For more information on adding sources and destinations in RudderStack, refer to the [**How to Add a Source and Destination in RudderStack**](../connections/adding-source-and-destination-rudderstack.md) guide.
 {% endhint %}
 
 The configuration is then exported and saved as a JSON file. This workspace configuration is required to start the RudderStack server.
@@ -104,7 +104,7 @@ To do so, follow these steps:
 * Set up your Control Plane using the RudderStack Config Generator by following the steps [**here**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#setting-up-the-rudderstack-config-generator). 
 * Go to the Config Generator UI and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button, as shown below:
 
-![](../../.gitbook/assets/screenshot-2020-10-12-at-4.51.52-pm.png)
+![](../.gitbook/assets/screenshot-2020-10-12-at-4.51.52-pm.png)
 
 * Host the exported file on your own server at `/sourceConfig`. Provide the base URL of your server that is serving this file in SDK initialization code snippet:  
   * **JavaScript SDK**: Instructions [**here**](https://github.com/rudderlabs/rudder-sdk-js#self-hosted-config-plane). 
@@ -193,7 +193,7 @@ To use the Control Plane URL to initialize your SDKs, follow these steps:
 * Host the exported file on your own server such that the config is available at  `<CONTROL_PLANE_URL>/sourceConfig`. 
 
 {% hint style="info" %}
-This solution assumes that you have already [**set up RudderStack**](../../get-started/installing-and-setting-up-rudderstack/) locally and are hosting your own RudderStack backend \(Data Plane\).
+This solution assumes that you have already [**set up RudderStack**](installing-and-setting-up-rudderstack/) locally and are hosting your own RudderStack backend \(Data Plane\).
 {% endhint %}
 
 ## Contact Us
