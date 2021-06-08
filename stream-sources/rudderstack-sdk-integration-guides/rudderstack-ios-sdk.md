@@ -378,7 +378,7 @@ Follow the instructions below:
 
 ## ATTrackingManager Authorization Consent
 
-You can pass the [ATTrackingManager.trackingAuthorizationStatus](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/3547038-trackingauthorizationstatus) to RudderStack and we'll pass it along to the relevant destinatins whereever needed. For example AppsFlyer accpets this parameter for the attribution to work in their [S2S mode](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#att-3).
+You can pass the [ATTrackingManager.trackingAuthorizationStatus](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/3547038-trackingauthorizationstatus) to RudderStack and we'll pass it along to the relevant destinations wherever needed. For example AppsFlyer accepts this parameter for the attribution to work in their [S2S mode](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#att-3).
 
 Follow the instructions below:
 
