@@ -35,7 +35,7 @@ git clone https://github.com/rudderlabs/rudder-server.git
 
 Once you have installed and set up RudderStack on your target machine, follow the steps below to test your RudderStack installation:
 
-* Set up a source and a destination in RudderStack by following this [**guide**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-Mb5yxpxqbNFpW0kL53k/connections/adding-source-and-destination-rudderstack). 
+* Set up a source and a destination in RudderStack by following this [**guide**](../../connections/adding-source-and-destination-rudderstack.md). 
 * Get the source write key from the RudderStack dashboard, as shown below:
 
 ![](../../.gitbook/assets/screen-shot-2021-06-01-at-3.45.51-pm.png)
@@ -46,7 +46,8 @@ The **write key** is different from your **workspace token**. The write key is a
 
 ![Workspace Token vs Write Key](../../.gitbook/assets/image%20%28102%29.png)
 
-* We have bundled a shell script that can generate test events. Navigate to the folder where RudderStack is installed using the `cd` command. Then, run the following command after replacing `<YOUR_WRITE_KEY>` with the source write key copied above:
+* We have bundled a shell script that can generate test events. Navigate to the folder where RudderStack is installed using the `cd` command.  
+* Then, run the following command after replacing `<YOUR_WRITE_KEY>` with the source write key copied above:
 
 ```bash
 ./scripts/generate-event <YOUR_WRITE_KEY> https://hosted.rudderlabs.com/v1/batch
