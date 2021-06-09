@@ -1,6 +1,6 @@
 # Home
 
-[**RudderStack**](https://rudderstack.com/) is a **customer data pipeline** platform to capture, process, and sync all of your event, product, and warehouse data to all the tools across your customer data stack.
+[**RudderStack**](https://rudderstack.com/) is a **customer data platform for developers.**  Our tooling makes it easy to capture, process, and activate all of your event, product, and warehouse data to all the tools across your customer data stack.
 
 > **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 
