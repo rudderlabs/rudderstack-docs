@@ -40,28 +40,31 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![Kafka Connection Settings](../../.gitbook/assets/screenshot-2020-05-17-at-4.34.38-pm.png)
 
-* **Host Name**: Your Kafka server broker's host name goes here
-* **Port:** The port to connect to the broker
-* **Topic Name**: Please provide the topic name, to which you want to send data
-* **SSL Enabled**: Please enable this option if you have enabled SSL to connect to your broker
-* **CA Certificate**: If you have enabled SSL, then please provide the CA certificate in this field
+* **Host Name**: Your Kafka server broker's host name goes here.
+* **Port:** The port to connect to the broker goes here.
+* **Topic Name**: Provide the topic name, to which you want to send data.
+* **SSL Enabled**: Enable this option if you have enabled SSL to connect to your broker.
+* **CA Certificate**: If you have enabled SSL, provide the CA certificate in this field.
 * **Enable SASL with SSL**: If you have enabled SSL, you can optionally use SASL for client authentication.
-* **Username**: Please provide the username as configured in Kafka for authenticating clients with SASL.
-* **Password**: Please provide the password as configured in Kafka for authenticating clients with SASL.
+* **Username**: Provide the username as configured in Kafka for authenticating clients with SASL.
+* **Password**: Provide the password as configured in Kafka for authenticating clients with SASL.
 
 {% hint style="info" %}
-**Note:** Please enable SSL to use SASL authentication, i.e use SASL_SSL.
+Enable SSL to use SASL authentication, i.e use SASL_SSL.
 {% endhint %}
 
 ![SASL Connection Settings](../../.gitbook/assets/kafka-sasl.png)
 
-We currently support the following SASL types:
+RudderStack currently supports the following SASL types:
 
 * **PLAIN**
 * **SCRAM SHA-256**
 * **SCRAM SHA-512**
 
-For more information on Kafka SASL Authentication, please visit the [official docs](https://kafka.apache.org/documentation/#security_sasl).
+{% hint style="info" %}
+For more information on the Apache Kafka SASL authentication, visit the [official docs](https://kafka.apache.org/documentation/#security_sasl).
+{% endhint %}
+
 
 ## Partition Key
 
@@ -180,7 +183,7 @@ listener.security.protocol.map=INTERNAL:PLAINTEXT,EXTERNAL:SSL
 
 **Is SASL_PLAINTEXT supported?**
 
-SASL_PLAINTEXT is not supported. You can use SASL_SSL instead. The Kafka official documentation recommends using SASL with SSL in production.
+RudderStack does not support **SASL_PLAINTEXT**. You can use **SASL_SSL** instead. The [official Kafka documentation](https://kafka.apache.org/documentation/#security_sasl) recommends using SASL with SSL in production.
 
 ## Contact Us
 
