@@ -1,6 +1,6 @@
 ---
 description: >-
-  Step-by-step guide to send your event data from RudderStack to Adobe Analytics
+  Step-by-step guide to send your event data from RudderStack to Adobe Analytics.
 ---
 
 # Adobe Analytics
