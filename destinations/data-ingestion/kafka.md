@@ -45,6 +45,23 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 * **Topic Name**: Please provide the topic name, to which you want to send data
 * **SSL Enabled**: Please enable this option if you have enabled SSL to connect to your broker
 * **CA Certificate**: If you have enabled SSL, then please provide the CA certificate in this field
+* **Enable SASL with SSL**: If you have enabled SSL, you can optionally use SASL for client authentication.
+* **Username**: Please provide the username as configured in Kafka for authenticating clients with SASL.
+* **Password**: Please provide the password as configured in Kafka for authenticating clients with SASL.
+
+{% hint style="info" %}
+**Note:** Please enable SSL to use SASL authentication, i.e use SASL_SSL.
+{% endhint %}
+
+![SASL Connection Settings](../../.gitbook/assets/kafka-sasl.png)
+
+We currently support the following SASL types:
+
+* **PLAIN**
+* **SCRAM SHA-256**
+* **SCRAM SHA-512**
+
+For more information on Kafka SASL Authentication, please visit the [official docs](https://kafka.apache.org/documentation/#security_sasl).
 
 ## Partition Key
 
@@ -160,6 +177,10 @@ advertised.listeners=INTERNAL://kafka-0.kafka-headless.kafka-test-1.svc.cluster.
 # Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
 listener.security.protocol.map=INTERNAL:PLAINTEXT,EXTERNAL:SSL
 ```
+
+**Is SASL_PLAINTEXT supported?**
+
+SASL_PLAINTEXT is not supported. You can use SASL_SSL instead. The Kafka official documentation recommends using SASL with SSL in production.
 
 ## Contact Us
 
