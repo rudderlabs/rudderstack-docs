@@ -1,179 +1,225 @@
-## Settings
+---
+description: >-
+  Step-by-Step guide to set up Adobe Analytics as a destination in RudderStack.
+---
 
-1. Tracking Server URL
+# Setting Up Adobe Analytics in RudderStack
 
-The trackingServer variable determines the location an image request is sent. If this variable is not defined correctly, your implementation can experience data loss
-For more Info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/config-vars/trackingserver.html?lang=en
+To enable sending data to Adobe Analytics, you will first need to add it as a destination in RudderStack. Once the destination is configured and enabled, events from RudderStack will start flowing to Adobe Analytics.
 
-2. Tracking Server Secure URL
+Before configuring Adobe Analytics as a destination, verify if the source platform supports sending events to RudderStack, by referring to the table below:
 
-The trackingServerSecure variable determines the location an image request is sent over HTTPS. If this variable is not defined correctly, your implementation can experience data loss
-For more Info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/config-vars/trackingserversecure.html?lang=en
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device Mode** | **Supported** | **Supported** | **Supported** |
+| **Cloud Mode** | **Supported** | **Supported** | **Supported** |
 
-3. Report Suite ID(s)
 
-Report Suite ID can be found in your Adobe Analytics Settings page.
-Multiple report suite ids can be separated by commas: ab.cd,ef.gh,ij.kl.
+{% hint style="info" %}
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+{% endhint %}
 
-4. Check for Heartbeat calls to be made over https
 
-If this is on and Heartbeat Tracking Server URL is present ssl value will be set as true so that calls go over https.
+Once you've confirmed that the source platform supports sending data to Adobe Analytics, follow these steps:
 
-5. Heartbeat Tracking Server URL
+* Choose a source for which you would like to add Adobe Analytics as a destination.
 
-If a value is present here this will be used as tracking server url instead of the value in Tracking Server URL. 
-Rudder will set all heartbeat configurations if this value is present.
+{% hint style="info" %}
+Follow the guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details.
+{% endhint %}
 
-For more Info: https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/setup-overview.html?lang=en
+* From the list of destinations, select **Adobe Analytics**. Assign a name to the destination and click on **Next**.
 
-6. Adobe Heartbeat Settings
+* Enter the relevant **Connection Settings** by referring to the following section.
 
-Map your rudder events (video) to Adobe Heartbeat Events.
-More information on how the mapping is done is under adobe analytics heartbeat information page.
 
-7. Identity Resolution
-   a. Marketing Cloud Organization Id
-      If you want to use visitorAPI.js please enter this field. 
-      It will be something like'99887766ABC@AdobeOrg'.
-   b. Drop Visitor Id
-      If this is on It does not set userId to visitorID.
+## Connection Settings
+
+This section lists all the relevant connection settings to successfully set up Adobe Analytics as a destination in RudderStack.
+
+
+* **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. 
+
+{% hint style="warning" %}
+If this variable is not defined correctly, your implementation can experience data loss.
+{% endhint %}
+
+
+{% hint style="info" %}
+For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/config-vars/trackingserver.html?lang=en).
+{% endhint %}
+
+* **Tracking Server Secure URL**: The `trackingServerSecure` variable determines the location an image request is sent over HTTPS. If this variable is not defined correctly, your implementation can experience data loss.
+
+{% hint style="info" %}
+For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/config-vars/trackingserversecure.html?lang=en).
+{% endhint %}
+
+
+* **Report Suite ID**(s): The Report Suite ID can be found in your Adobe Analytics Settings page. Multiple IDs can be separated by commas. For example: `ab.cd`,`ef.gh`,`ij.kl`.
+
+
+* **Check for Heartbeat calls to be made over HTTPS**: If this setting is enabled and the Heartbeat Tracking Server URL is present, the SSL value will be set to `true` so that the calls go over HTTPs.
+
+
+* **Heartbeat Tracking Server URL**: If assigned, this will be used as tracking server URL instead of the URL assigned in the **Tracking Server URL** field. 
+RudderStack will set all heartbeat configurations if this URL is present.
+
+
+{% hint style="info" %}
+For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/setup-overview.html?lang=en).
+{% endhint %}
+ 
+
+* **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [Adobe Analytics Heartbeat Measurement]() page.
+
+
+### Identity Resolution
+
+* **Marketing Cloud Organization ID**: If you want to use `visitorAPI.js`, enter this field. For example: `99887766ABC@AdobeOrg`.
+
+* **Drop Visitor ID**: If enabled, RudderStack does not assign the `userId` to `visitorID`.
+
+{% hint style="info" %}
+For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/id-service/using/implementation/setup-analytics.html?lang=en#section-6053a6b7c16c466a9f9fdbf9cb9db3df).
+{% endhint %}
+
+
+### Timestamps
+
+* **Timestamp Option**: Adobe Analytics has Report Suites that accepts timestamped, non-timestamped or hybrid data. Note that `window.s.timestamp` will be affected. Also depending on this value, `visitorID` will be set if the drop visitor id is off.
+
+{% hint style="info" %}
+- If the timestamp option is disabled, then `visitorID` will be set.
+- If timestamp option is set to hybrid and the Prefer Visitor ID setting is on, then `visitorID` will be set.
+- For all other cases, RudderStack does not set a `visitorID`.
+
+Also note the following regarding timestamps:
+
+- If the timestamp option is enabled, then timestamp will be set.
+- If the timestamp option is hybrid and Prefer Visitor ID is off, then timestamp will be set.
+{% endhint %}
     
-   For more Info: https://experienceleague.adobe.com/docs/id-service/using/implementation/setup-analytics.html?lang=en#section-6053a6b7c16c466a9f9fdbf9cb9db3df
 
-8. Timestamps
-   a. Timestamp Option
-    Adobe Analytics  have Report Suites that can accept timestamped, non-timestamped or hybrid data. 
-    window.s.timestamp will be affected and also depending on this visitorID will be set if drop visitor id is off.
+* **Prefer Visitor ID**: Adobe does not allow sending both `visitorID` and timestamp. Hence, this option is used when the timestamp option is set as hybrid. Also, note that if this option is enabled, `visitorID` will be set. If disabled, the timestamp value will be set.
 
-    If timestamp option is disabled visitorID will be set.
-    If timestamp option is hybrid and prefer visitor id is on then also visitorID will be set.
-    For all othr cases visitorID will not be set.
 
-    If timestamp option is enabled timestamp will be set. 
-    If timestamp option is hybrid and prefer visitor id is off then also timestamp will be set.
+{% hint style="info" %}
+For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/timestamp.html?lang=en).
+{% endhint %}
 
-   b. Prefer Visitor Id
-      
-      As Adobe does not allow to send both visitorID and timestamp this option will be used when the timestamp option is set as hybrid. 
-      If this is on visitorID will be set otherwise timestamp will be set.
-   
-   For more Info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/timestamp.html?lang=en
 
-9. Enable pageName for Track Events
-   
-   Only track events by sending pageName when this is on.
+* **Enable pageName for Track Events**: When enabled, RudderStack only tracks events by sending a `pageName`.
 
-10. Mappings
-    a. Map Rudder Events to Adobe Custom Eevnts
 
-       Add one event or many events for adobe custom events separated by comma.
-       Eg: RudderEvent --> event1,event2,event3
+### Mappings
 
-    b. Map Rudder Context data to Adobe Context Data
-       
-       Context data variables let you define custom variables on each page that processing rules can read. Instead of explicitly assigning values to Analytics variables in your code, you can send data in context data variables. Processing rules then take context data variable values and pass them into respective Analytics variables.
 
-       Map the key which will be present under context of rudder message to the property name you want to send to adobe context data.
+* **Map Rudder Events to Adobe Custom Events**: This setting allows you to add one or multiple custom Adobe events separated by comma.
 
-       Eg: 
-       ```JSON
+
+* **Map Rudder Context data to Adobe Context Data**: Context data variables allow you to you define custom variables on each page that the processing rules apply and can read. Instead of explicitly assigning values to the analytics variables, you can send your data in via these context data variables. The processing rules take the values from the context data variables and pass them into the respective analytics variables.
+
+This setting allows you to map the key present under the context of the RudderStack message to the property name you want to send to the Adobe context data. An example is as shown below:
+
+```JSON
        "context":{
            "contextProperties": {
                "prop1": "val1",
                "prop2": "val2"
            }
        }
-       ```
+```
 
-       If you want to set prop1 to adobe context data property1 
-       Map with contextProperties.prop1 -- > property1
+If you want to set `prop1` to Adobe's context data `property1`, then map with `contextProperties.prop1` --> `property1`.
 
-       For more Info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/contextdata.html?lang=en
+{% hint style="info" %}
+For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/contextdata.html?lang=en).
+{% endhint %}
 
-    c. Add Prefix for Context Data
-      
-       If you would like to prefix your Rudder properties before sending them as contextData you can enter a prefix here which will be appended.
 
-    d. Map Rudder Properties to Adobe eVars
+* **Add Prefix for Context Data**: If you would like to prefix your RudderStack properties before sending them as `contextData`, you can enter a prefix here which will be automatically appended.
 
-       eVars are custom variables that you can use however you’d like.
-       Each eVar is a string that contains custom values specific to your organization. Their max length is 255 bytes; values longer than 255 bytes are automatically truncated when sent to Adobe.
 
-       Map any rudder property with the eVar you want to set it to.
-       Only enter the index number of the eVar you want to set.
-       
-       For more info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar.html?lang=en
-    e. Map Rudder Properties to Adobe Hierarchy properties
-       
-       Hierarchy variables are custom variables that let you see a site’s structure.
-       Adobe supports up to 5 hierarchy variables in your implementation.
+* **Map Rudder Properties to Adobe eVars**: eVars are custom variables that you can use as per your requirement. Each eVar is a string containing custom values specific to your organization, with a maximum length of 255 bytes. Note that values longer than 255 bytes are automatically truncated when sent to Adobe.
 
-       Map any rudder property with the hier you want to set it to.
-       Only enter the index number of the hier you want to set.
+This setting lets you map any RudderStack property with the eVar you want.
 
-       For more info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/hier.html?lang=en
+{% hint style="info" %}
+Only enter the index number of the eVar you want to set.
+{% endhint %}
 
-    f. Map Rudder Properties to Adobe list properties
-       
-       List variables are custom variables that you can use however you’d like. They work similarly to eVars, except they can contain multiple values in the same hit. List variables do not have a character limit.
+{% hint style="info" %}
+For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar.html?lang=en).
+{% endhint %}
 
-       Map any rudder property with the list you want to set it to.
-       Only enter the index number of the list you want to set.
 
-       The list properties should be an array/string separated by commas otherwise it will be dropped.
+* **Map Rudder Properties to Adobe Hierarchy properties**: Hierarchy variables are the custom variables that allow you to see a site’s structure. By default, Adobe supports up to 5 hierarchy variables in your implementation.
 
-       For more info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/list.html?lang=en
+This setting lets you map any RudderStack property with the hierarchy variable you want.
 
-    g. Map Rudder Property with Delimiters for list properties
-       
-       List variables needs to be sent as string so if there is a list of properties it need to be delimited. You can set any of the delimiters from , ; / : | 
+{% hint style="info" %}
+Only enter the index number of the hierarchy variable that you want to set.
+{% endhint %}
 
-    h. Map Rudder Properties to Adobe Custom properties
+{% hint style="info" %}
+For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/hier.html?lang=en).
+{% endhint %}
 
-       Props are custom variables that you can use however you’d like. They do not persist beyond the hit that they are set.
 
-       Map any rudder property with the prop you want to set it to.
-       Only enter the index number of the prop you want to set.
+* **Map Rudder Properties to Adobe list properties**: List variables are custom variables that you can use as per your requirement. They work similarly to eVars, except they can contain multiple values. Also, list variables do not have a character limit.
 
-       For more info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en
+This setting lets you map any RudderStack property with the list you want.
 
-    i. Map Rudder Property with Delimiters for Adobe Custom properties
-       
-       Prop variables needs to be sent as string so if there is a list of properties it need to be delimited. You can set any of the delimiters from , ; / : | 
+{% hint style="info" %}
+Enter only the index number of the list you want to set to. The list properties should be an array/string separated by commas. Otherwise, they will be dropped.
 
-11. Merchandise Event Level Settings
-    a. Map Rudder Events to Adobe Merchandise events
-       
-       Map the rudder event with a currency/purchase type of adobe event eg. event5.
+For more information, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/list.html?lang=en)
+{% endhint %}
 
-    b. Increment or Currency Properties to add to merchandise events at event level
-       
-       Rudder property that has currency/counter value should be added.
-       This will be used to create the event string like "pruchase,event5=19.9".
-       Rudder sets the currencyCode value. (Default value is USD). 
 
-    For more info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en
+* **Map Rudder Property with Delimiters for list properties**: The list variables need to be sent as a string. So if there is a list of properties, it needs to be delimited. RudderStack lets you set any of the delimiters from `, ; / : | `.
+ 
 
-12. Merchandise Product Level Settings
-    a. Map Rudder Events to Adobe Merchandise events
-       
-       Map the rudder event with a currency/purchase type of adobe event eg. event5.
+* **Map Rudder Properties to Adobe Custom properties**: Props are custom variables that you can use as per your requirement. This setting lets you map any RudderStack property with the prop you want to set it to.
 
-    b. Properties to add to merchandise events at product level
-       
-       Rudder property that has currency/counter value should be added.
-       This will be used to create the product string like [category][item][quantity][total][incrementor][merchString]
+{% hint style="info" %}
+Enter only the index number of the prop you want to set.
 
-    c. Map Rudder Properties to eVars at product level
-       
-       Map the rudder properties you want to set to eVars. 
-       Set only the index.
-       These eVars will be appended with | and sent along with the product string as mentioned above
+For more information, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en)
+{% endhint %}
 
-       For more info: https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar-merchandising.html?lang=en
 
-    d. Product Identifier
-       
-       Only a single product identifier is accepted by Adobe Analytics.
-       You can choose from sku/id/name of the products.
+* **Map Rudder Property with Delimiters for Adobe Custom properties**: The property variables need to be sent as a string. So if there is a list of properties, it needs to be delimited. RudderStack lets you set any of the delimiters from `, ; / : | `.
+
+
+### Merchandise Event Level Settings
+
+* **Map Rudder Events to Adobe Merchandise events**: This setting lets you map the RudderStack event with the currency/purchase type of the Adobe event. For example: `event5`.
+
+* **Increment or Currency Properties to add to merchandise events at event level**: The RudderStack property that has a currency/counter value should be added here. This will then be used to create the event string like `purchase,event5=19.9`. RudderStack automatically sets the `currencyCode` value. (The default value is USD).
+
+{% hint style="info" %}
+For more information, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en)
+{% endhint %}
+
+
+### Merchandise Product Level Settings
+
+* **Map Rudder Events to Adobe Merchandise events**: This setting lets you map a RudderStack event with a currency/purchase type of an Adobe event.
+
+
+* **Properties to add to merchandise events at product level**: With this setting, the RudderStack property that has a currency/counter value should be added. This will be used to create a product string like `[category][item][quantity][total][incrementor][merchString]`.
+
+
+* **Map Rudder Properties to eVars at product level**: Lets you map the RudderStack properties you want to set to eVars.
+
+{% hint style="info" %}
+Set only the index. The eVars will be appended with `|` and sent along with the product string.
+
+For more information, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar-merchandising.html?lang=en)
+{% endhint %}
+
+
+* **Product Identifier**: Adobe Analytics accepts only a single product identifier. This setting lets you choose from a SKU/ID/Name of the product.
     
