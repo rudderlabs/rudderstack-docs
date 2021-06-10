@@ -181,6 +181,7 @@ advertised.listeners=INTERNAL://kafka-0.kafka-headless.kafka-test-1.svc.cluster.
 listener.security.protocol.map=INTERNAL:PLAINTEXT,EXTERNAL:SSL
 ```
 
+
 **Is SASL_PLAINTEXT supported?**
 
 RudderStack does not support **SASL_PLAINTEXT**. You can use **SASL_SSL** instead. The [official Kafka documentation](https://kafka.apache.org/documentation/#security_sasl) recommends using SASL with SSL in production.
