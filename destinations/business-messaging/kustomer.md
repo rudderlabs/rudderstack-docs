@@ -85,8 +85,8 @@ For key-value pairs where the value has a type of `date-time string`, the key mu
 
 | Result                      | Date-time String Key Name Example |
 | :-------------------------- | :-------------------------------- |
-| ❌ Not Semantically Correct | `{ purchased: '2020-05-25' }`     |
-| ✅ Will Be Successful       | `{ purchasedAt: '2020-05-25' }`   |
+| ❌ Not Semantically Correct | `{ purchased: '2020-02-02T00:23:09.544Z' }`     |
+| ✅ Will Be Successful       | `{ purchasedAt: '2020-02-02T00:23:09.544Z' }`   |
 
 #### Number Values
 
@@ -107,7 +107,7 @@ The values for all keys in the `meta` object must be 'flat' meaning they cannot 
 | ❌ Will Result in Error | `{ items: [ 'dinner plate', 'fork', 'spoon' ] }` |
 
 {% hint style="info" %}
-Note: For `track`, `page` and `screen` events, Kustomer supports only `number, string,`and `string` with `date-time` format for custom event properties. Please refer to the [official Kustomer Documentation](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
+Note: For `track`, `page` and `screen` events, Kustomer supports only `number, string,`and `string` with `date-time (ISO)` format for custom event properties. Please refer to the [official Kustomer Documentation](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
 {% endhint %}
 
 
@@ -117,9 +117,9 @@ When the Advanced Kustomer Transformation option is enabled Rudderstack will upd
 
 - Event name having white spaces `Ex: Order Completed` will be converted to `Order-Completed`. While Event Names, without white space like `OrderCompleted` or `Order-Completed`, etc we will keep it as it is.
 
-- Event Property with `number` type value, if the property name does not end with `Num` will be appended with `Num` in the end. Example `income:500` will become `incomeNum:500`  while for `income-Num`, `income_Num` will be not be changed. With white spaces in properties, Rudderstack will replace with `-` Example: `income gap:500`  will be converted to `income-gap:500`
+- Event Property with `number` type value, if the property name does not end with `Num` will be appended with `Num` in the end. Example `income:500` will become `incomeNum:500`  while for `income-Num`, `income_Num` will be not be changed. With white spaces in properties, Rudderstack will replace with `-` Example: `income Num:500`  will be converted to `income-Num:500`
 
-- Event Property with `date-time string` type value, if the property name does not end with `At` will be appended with `At` in the end. Example `created:2020-05-25` will become `createdAt:2020-05-25`  while for `created-At`, `created_At` will be not be changed. With white spaces in properties, Rudderstack will replace with `-` Example: `created at:500`  will be converted to `created-At:500`
+- Event Property with `date-time string` type value, if the property name does not end with `At` will be appended with `At` in the end. Example `created:2020-05-25` will become `createdAt:2020-05-25`  while for `created-At`, `created_At` will be not be changed. With white spaces in properties, Rudderstack will replace with `-` Example: `created At:500`  will be converted to `created-At:500`
 
 - Event property with `string` type value if white space exists Rudderstack will replace it with `-`. Example: `my property: someValue` will be converted to `my-property: someValue`.
 
