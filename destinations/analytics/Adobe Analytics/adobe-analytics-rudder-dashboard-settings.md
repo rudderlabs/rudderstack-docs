@@ -41,7 +41,7 @@ This section lists all the relevant connection settings to successfully set up A
 * **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. 
 
 {% hint style="warning" %}
-If this variable is not defined correctly, your implementation can experience data loss.
+**If this variable is defined incorrectly, your implementation may experience data loss.**
 {% endhint %}
 
 
