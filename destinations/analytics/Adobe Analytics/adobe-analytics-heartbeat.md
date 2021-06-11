@@ -14,7 +14,7 @@ For sending the heartbeat events to Adobe Analytics, you will need the Heartbeat
 {% endhint %}
 
 {% hint style="info" %}
-The [RudderStack dashboard settings]() also has a toggle for SSL which, if enabled, will send the Heartbeat Tracking URL in the HTTPS mode.
+The [RudderStack dashboard settings](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-rudder-dashboard-settings) also has a toggle for SSL which, if enabled, will send the Heartbeat Tracking URL in the HTTPS mode.
 {% endhint %}
 
 
