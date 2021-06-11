@@ -9,16 +9,6 @@ description: >-
 
 RudderStack supports sending real-time customer events to Adobe Analytics.
 
-This documentation is split into the following sections:
-
-{% page-ref page="analytics/Adobe%20Analytics/adobe-analytics-rudder-dashboard-settings.md" %}
-
-{% page-ref page="analytics/Adobe%20Analytics/adobe-analytics-web-device-mode.md" %}
-
-{% page-ref page="analytics/Adobe%20Analytics/adobe-analytics-heartbeat.md" %}
-
-{% page-ref page="analytics/Adobe%20Analytics/adobe-analytics-ecomm.md" %}
-
 
 ## Contact Us
 If you come across any issues while configuring Adobe Analytics with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
