@@ -71,7 +71,7 @@ For more information on this setting, refer to the [**Adobe Analytics documentat
 {% endhint %}
  
 
-* **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [Adobe Analytics Heartbeat Measurement]() page.
+* **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [Adobe Analytics Heartbeat Measurement](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat) page.
 
 
 ### Identity Resolution
