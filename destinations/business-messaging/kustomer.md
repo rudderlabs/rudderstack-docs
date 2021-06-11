@@ -45,7 +45,7 @@ To successfully configure Kustomer as a destination, you will need to configure 
 - **Enable generic title for Screen events:** Enable this option to track all Screen events with generic name `Screen-Viewed`
 
 {% hint style="info" %}
-Note: Relevant `roles` are required for an **API Key** to successfully access Kustomer endpoints. Please check the [Kustomer Docs](https://support.kustomer.com/api-keys-SJs5YTIWX) for further information on how to do this.
+Note: Relevant `roles` [org.permission.customer.create, org.permission.customer.read, org.permission.customer.update, org.tracking] are required for an **API Key** to successfully access Kustomer endpoints. Please check the [Kustomer Docs](https://support.kustomer.com/api-keys-SJs5YTIWX) for further information on how to do this.
 {% endhint %}
 
 {% hint style="info" %}
