@@ -76,7 +76,7 @@
     * [Google Analytics](destinations/analytics/google-analytics-ga.md)
     * [Google Analytics 4](destinations/analytics/google-analytics-4.md)
     * [Google Analytics 360](destinations/analytics/google-analytics-360.md)
-    * [Adobe Analytics](destinations/analytics/adobe-analytics/README.md)
+    * [Adobe Analytics](destinations/analytics/Adobe%20Analytics/README.md)
       * [Setting Up Adobe Analytics in RudderStack](destinations/analytics/adobe-analytics/adobe-analytics-rudder-dashboard-settings.md)
       * [Web Device Mode Settings](destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode.md)
       * [Adobe Analytics Heartbeat Measurement](destinations/analytics/adobe-analytics/adobe-analytics-heartbeat.md)
