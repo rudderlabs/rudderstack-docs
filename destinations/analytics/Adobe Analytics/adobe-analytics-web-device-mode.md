@@ -16,7 +16,7 @@ We initialize [`appmeasurement.js`](https://cdn.rudderlabs.com/adobe-analytics-j
 RudderStack first checks if any global properties are set in `window.s_account` or `window.s objects`. If already present, they will be used. Otherwise, RudderStack uses the Report Suite IDs, Tracking Server URL, and Tracking Server Secure URl (optional) as set in the RudderStack dashboard.
 
 {% hint style="info" %}
-Refer to the [**Dashboard Settings**]() guide for more information on these settings.
+Refer to the [**Dashboard Settings**](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-rudder-dashboard-settings) guide for more information on these settings.
 {% endhint %}
 
 If Marketing Cloud Organization ID is set in the dashboard, RudderStack initialises `visitorApi.js` and sets the ID in `window.Visitor.getInstance(<Your Marketing Cloud Org Id>)`.
