@@ -108,7 +108,7 @@ RudderStack broadly classifies the E-commerce events (Merchandising) in the foll
 
 1. The channel, campaign, state, and zip window properties are updated.
 
-2. RudderStack sets the timestamp according to the [**dashboard settings**](https://docs.rudderstack.com/destinations/analytics/Adobe Analytics/adobe-analytics-ecomm).
+2. RudderStack sets the timestamp according to the [**dashboard settings**](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-rudder-dashboard-settings).
 
 3. The `currencyCode` window property is set.
 
