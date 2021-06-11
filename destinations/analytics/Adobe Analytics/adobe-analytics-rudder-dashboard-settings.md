@@ -11,8 +11,8 @@ Before configuring Adobe Analytics as a destination, verify if the source platfo
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
-| **Device Mode** | **Supported** | **Supported** | **Supported** |
-| **Cloud Mode** | **Supported** | **Supported** | **Supported** |
+| **Device Mode** | **Supported** |  |  |
+| **Cloud Mode** |  |  |  |
 
 
 {% hint style="info" %}
@@ -29,6 +29,14 @@ Follow the guide on [**How to Add a Source and Destination in RudderStack**](htt
 {% endhint %}
 
 * From the list of destinations, select **Adobe Analytics**. Assign a name to the destination and click on **Next**.
+
+![](../../.gitbook/assets/Adobe-1.png)
+![](../../.gitbook/assets/Adobe-2.png)
+![](../../.gitbook/assets/Adobe-3.png)
+![](../../.gitbook/assets/Adobe-4.png)
+![](../../.gitbook/assets/Adobe-5.png)
+![](../../.gitbook/assets/Adobe-6.png)
+![](../../.gitbook/assets/Adobe-7.png)
 
 * Enter the relevant **Connection Settings** by referring to the following section.
 
