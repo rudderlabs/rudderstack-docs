@@ -28,13 +28,14 @@ RudderStack sends a page view event to Adobe Analytics whenever you make a **`pa
 A sample `page` call is as shown:
 
 ```javascript
+
 // Passing page category, name and properties
 rudderanalytics.page("category", "name", {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer"
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer"
 });
 ```
 
@@ -83,14 +84,12 @@ A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track("Track me", {
-        category: "category",
-        label: "label",
-        value: "value"
- });
+  category: "category",
+  label: "label",
+  value: "value"
+});
 ```
 
 ## Contact Us
 
 For more information on any of the sections mentioned in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
