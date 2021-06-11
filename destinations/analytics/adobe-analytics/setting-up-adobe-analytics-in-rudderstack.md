@@ -25,29 +25,14 @@ Once you've confirmed that the source platform supports sending data to Adobe An
 Follow the guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details.
 {% endhint %}
 
-* From the list of destinations, select **Adobe Analytics**. Assign a name to the destination and click on **Next**. You will then see the following **Connections Settings** screen:
-
-![](../../../.gitbook/assets/adobe-1.png)
-
-![](../../../.gitbook/assets/adobe-2.png)
-
-![](../../../.gitbook/assets/adobe-3.png)
-
-![](../../../.gitbook/assets/adobe-4.png)
-
-![](../../../.gitbook/assets/adobe-5.png)
-
-![](../../../.gitbook/assets/adobe-6.png)
-
-![](../../../.gitbook/assets/adobe-7.png)
-
-![](https://github.com/rudderlabs/rudderstack-docs/tree/1d5b781e7d9a2f5fc00ac866611442d9a848b235/destinations/.gitbook/assets/Adobe-1.png) ![](https://github.com/rudderlabs/rudderstack-docs/tree/1d5b781e7d9a2f5fc00ac866611442d9a848b235/destinations/.gitbook/assets/Adobe-2.png) ![](https://github.com/rudderlabs/rudderstack-docs/tree/1d5b781e7d9a2f5fc00ac866611442d9a848b235/destinations/.gitbook/assets/Adobe-3.png) ![](https://github.com/rudderlabs/rudderstack-docs/tree/1d5b781e7d9a2f5fc00ac866611442d9a848b235/destinations/.gitbook/assets/Adobe-4.png) ![](https://github.com/rudderlabs/rudderstack-docs/tree/1d5b781e7d9a2f5fc00ac866611442d9a848b235/destinations/.gitbook/assets/Adobe-5.png) ![](https://github.com/rudderlabs/rudderstack-docs/tree/1d5b781e7d9a2f5fc00ac866611442d9a848b235/destinations/.gitbook/assets/Adobe-6.png) ![](https://github.com/rudderlabs/rudderstack-docs/tree/1d5b781e7d9a2f5fc00ac866611442d9a848b235/destinations/.gitbook/assets/Adobe-7.png)
-
+* From the list of destinations, select **Adobe Analytics**. Assign a name to the destination and click on **Next**. 
 * Enter the relevant **Connection Settings** by referring to the following section.
 
 ## Connection Settings
 
 This section lists all the relevant connection settings to successfully set up Adobe Analytics as a destination in RudderStack.
+
+![](../../../.gitbook/assets/adobe-1.png)
 
 * **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. Eg: If url is [`http://abc.a.b`](http://abc.a.b) ,the tracking server URL will be `abc.a.b`.
 
@@ -76,6 +61,8 @@ For more information on this setting, refer to the [**Adobe Analytics documentat
 * **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [**Adobe Analytics Heartbeat Measurement**](adobe-analytics-heartbeat.md) page.
 
 ### Identity Resolution
+
+![](../../../.gitbook/assets/image%20%28110%29.png)
 
 * **Marketing Cloud Organization ID**: If you want to use `visitorAPI.js`, enter this field. For example: `99887766ABC@AdobeOrg`.
 * **Drop Visitor ID**: If enabled, RudderStack does not assign the `userId` to `visitorID`.
@@ -108,6 +95,8 @@ For more information on this setting, refer to the [**Adobe Analytics documentat
 * **Enable pageName for Track Events**: When enabled, RudderStack only tracks events by sending a `pageName`.
 
 ### Mappings
+
+![](../../../.gitbook/assets/image%20%28111%29.png)
 
 * **Map Rudder Events to Adobe Custom Events**: This setting allows you to add one or multiple custom Adobe events separated by comma. 
 * **Map Rudder Context data to Adobe Context Data**: Context data variables allow you to you define custom variables on each page that the processing rules apply and can read. Instead of explicitly assigning values to the analytics variables, you can send your data in via these context data variables. The processing rules take the values from the context data variables and pass them into the respective analytics variables.
@@ -144,6 +133,8 @@ Only enter the index number of the eVar you want to set.
 For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar.html?lang=en).
 {% endhint %}
 
+![](../../../.gitbook/assets/image%20%28108%29.png)
+
 * **Map Rudder Properties to Adobe Hierarchy properties**: Hierarchy variables are the custom variables that allow you to see a site’s structure. By default, Adobe supports up to 5 hierarchy variables in your implementation.
 
 This setting lets you map any RudderStack property with the hierarchy variable you want.
@@ -166,7 +157,10 @@ Enter only the index number of the list you want to set to. The list properties 
 For more information, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/list.html?lang=en)
 {% endhint %}
 
-* **Map Rudder Property with Delimiters for list properties**: The list variables need to be sent as a string. So if there is a list of properties, it needs to be delimited. RudderStack lets you set any of the delimiters from `, ; / : |`.
+* **Map Rudder Property with Delimiters for list properties**: The list variables need to be sent as a string. So if there is a list of properties, it needs to be delimited. RudderStack lets you set any of the delimiters from `, ; / : |`. 
+
+![](../../../.gitbook/assets/image%20%28109%29.png)
+
 * **Map Rudder Properties to Adobe Custom properties**: Props are custom variables that you can use as per your requirement. This setting lets you map any RudderStack property with the prop you want to set it to.
 
 {% hint style="info" %}
@@ -188,8 +182,13 @@ For more information, refer to the [**Adobe Analytics documentation**](https://e
 
 ### Merchandise Product Level Settings
 
+![](../../../.gitbook/assets/image%20%28107%29.png)
+
 * **Map Rudder Events to Adobe Merchandise events**: This setting lets you map a RudderStack event with a currency/purchase type of an Adobe event. 
-* **Properties to add to merchandise events at product level**: With this setting, the RudderStack property that has a currency/counter value should be added. This will be used to create a product string like `[category][item][quantity][total][incrementor][merchString]`. 
+* **Properties to add to merchandise events at product level**: With this setting, the RudderStack property that has a currency/counter value should be added. This will be used to create a product string like `[category][item][quantity][total][incrementor][merchString]`.
+
+![](../../../.gitbook/assets/image%20%28105%29.png)
+
 * **Map Rudder Properties to eVars at product level**: Lets you map the RudderStack properties you want to set to eVars.
 
 {% hint style="info" %}
