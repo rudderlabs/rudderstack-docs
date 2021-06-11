@@ -25,7 +25,9 @@ For sending video heartbeat events to Adobe Analytics through RudderStack's Web 
 To stop triggering this event for every second, the playhead to the window needs to be set. This can be done by setting `window.rudderHBPlayheads` to the key-value pair of the current content’s `session_id` and `position` as shown:
 
 ```
-window.rudderHBPlayheads = { "session_id": position value }
+window.rudderHBPlayheads = {
+  "session_id": position value
+}
 ```
 
 RudderStack sends the Adobe heartbeat events as per the following categories:
