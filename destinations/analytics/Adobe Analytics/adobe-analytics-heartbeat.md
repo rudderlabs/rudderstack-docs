@@ -400,3 +400,6 @@ The following RudderStack properties must also be sent for mapping to the standa
 | `channel`| `MediaHeartbeat.VideoMetadataKeys.NETWORK` |
 | `rating` | `MediaHeartbeat.VideoMetadataKeys.RATING` |
            
+## Contact Us
+
+For more information on any of the sections covered in this documentation, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
