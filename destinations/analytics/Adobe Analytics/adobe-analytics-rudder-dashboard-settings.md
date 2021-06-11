@@ -38,7 +38,7 @@ Follow the guide on [**How to Add a Source and Destination in RudderStack**](htt
 This section lists all the relevant connection settings to successfully set up Adobe Analytics as a destination in RudderStack.
 
 
-* **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. 
+* **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. Eg: If url is http://abc.a.b ,the tracking server url will be abc.a.b.
 
 {% hint style="warning" %}
 If this variable is not defined correctly, your implementation can experience data loss.
@@ -120,7 +120,7 @@ For more information on this setting, refer to the [**Adobe Analytics documentat
 
 * **Map Rudder Context data to Adobe Context Data**: Context data variables allow you to you define custom variables on each page that the processing rules apply and can read. Instead of explicitly assigning values to the analytics variables, you can send your data in via these context data variables. The processing rules take the values from the context data variables and pass them into the respective analytics variables.
 
-This setting allows you to map the key present under the context of the RudderStack message to the property name you want to send to the Adobe context data. An example is as shown below:
+This setting allows you to map the key present under the context/properties of the RudderStack message to the property name you want to send to the Adobe context data. An example is as shown below:
 
 ```JSON
        "context":{
@@ -132,6 +132,8 @@ This setting allows you to map the key present under the context of the RudderSt
 ```
 
 If you want to set `prop1` to Adobe's context data `property1`, then map with `contextProperties.prop1` --> `property1`.
+
+If you want to send top level properties `anonymousId`, `messageId`, `event` then simply enter the key.
 
 {% hint style="info" %}
 For more information on this setting, refer to the [**Adobe Analytics documentation**](https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/contextdata.html?lang=en).
