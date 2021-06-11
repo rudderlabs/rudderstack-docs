@@ -83,10 +83,10 @@ For key-value pairs where the value has a type of `string`, the key must not end
 
 For key-value pairs where the value has a type of `date-time string`, the key must end with the characters `At`.
 
-| Result                      | Date-time String Key Name Example |
-| :-------------------------- | :-------------------------------- |
-| ❌ Not Semantically Correct | `{ purchased: '2020-02-02T00:23:09.544Z' }`     |
-| ✅ Will Be Successful       | `{ purchasedAt: '2020-02-02T00:23:09.544Z' }`   |
+| Result                      | Date-time String Key Name Example             |
+| :-------------------------- | :-------------------------------------------- |
+| ❌ Not Semantically Correct | `{ purchased: '2020-02-02T00:23:09.544Z' }`   |
+| ✅ Will Be Successful       | `{ purchasedAt: '2020-02-02T00:23:09.544Z' }` |
 
 #### Number Values
 
@@ -110,18 +110,51 @@ The values for all keys in the `meta` object must be 'flat' meaning they cannot 
 Note: For `track`, `page` and `screen` events, Kustomer supports only `number, string,`and `string` with `date-time (ISO)` format for custom event properties. Please refer to the [official Kustomer Documentation](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
 {% endhint %}
 
-
 ## Advanced Kustomer Transformations
 
 When the Advanced Kustomer Transformation option is enabled Rudderstack will update the payload as per Kustomer requirements. Following behaviour is expected.
 
-- Event name having white spaces `Ex: Order Completed` will be converted to `Order-Completed`. While Event Names, without white space like `OrderCompleted` or `Order-Completed`, etc we will keep it as it is.
+| Event Name        | With Advanced Transformation Enabled | Transformed? |
+| :---------------- | :----------------------------------- | :----------- |
+| `Order Completed` | `Order-Completed`                    | ✅           |
+| `OrderCompleted`  | `OrderCompleted`                     | ❌           |
+| `Order-Completed` | `Order-Completed`                    | ❌           |
 
-- Event Property with `number` type value, if the property name does not end with `Num` will be appended with `Num` in the end. Example `income:500` will become `incomeNum:500`  while for `income-Num`, `income_Num` will be not be changed. With white spaces in properties, Rudderstack will replace with `-` Example: `income Num:500`  will be converted to `income-Num:500`
+{% hint style="info" %}
+Event name with white-spaces will be replaced with `-`
+{% endhint %}
 
-- Event Property with `date-time string` type value, if the property name does not end with `At` will be appended with `At` in the end. Example `created:2020-05-25` will become `createdAt:2020-05-25`  while for `created-At`, `created_At` will be not be changed. With white spaces in properties, Rudderstack will replace with `-` Example: `created At:500`  will be converted to `created-At:500`
+| Event Property | Value | With Advanced Transformation Enabled | Transformed? |
+| :------------- | :---- | :----------------------------------- | :----------- |
+| `income`       | `500` | `incomeNum`                          | ✅           |
+| `income Num`   | `500` | `income-Num`                         | ✅           |
+| `income-Num`   | `500` | `income-Num`                         | ❌           |
+| `income_Num`   | `500` | `income_Num`                         | ❌           |
 
-- Event property with `string` type value if white space exists Rudderstack will replace it with `-`. Example: `my property: someValue` will be converted to `my-property: someValue`.
+{% hint style="info" %}
+For event properties with `numeric` values will be appended with `Num` if not already present, white-spaces will be replaced with `-`
+{% endhint %}
+
+| Event Property | Value                         | With Advanced Transformation Enabled | Transformed? |
+| :------------- | :---------------------------- | :----------------------------------- | :----------- |
+| `created`      | `'2020-02-02T00:23:09.544Z' ` | `created`                            | ✅           |
+| `created At`   | `'2020-02-02T00:23:09.544Z' ` | `created-At`                         | ✅           |
+| `created-At`   | `'2020-02-02T00:23:09.544Z' ` | `created-At`                         | ❌           |
+| `created_At`   | `'2020-02-02T00:23:09.544Z' ` | `created_At`                         | ❌           |
+
+{% hint style="info" %}
+For event properties with `date-time string` values will be appended with `At` if not already present, white-spaces will be replaced with `-`
+{% endhint %}
+
+| Event Name  | Value       | With Advanced Transformation Enabled | Transformed? |
+| :---------- | :---------- | :----------------------------------- | :----------- |
+| `Cart Name` | `Test Cart` | `Cart-Name`                          | ✅           |
+| `CartName`  | `Test Cart` | `CartName`                           | ❌           |
+| `Cart-Name` | `Test Cart` | `Cart-Name`                          | ❌           |
+
+{% hint style="info" %}
+For event properties with `string` values, white-spaces will be replaced with `-`
+{% endhint %}
 
 ## Page
 
