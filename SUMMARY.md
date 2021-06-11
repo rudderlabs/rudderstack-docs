@@ -188,6 +188,7 @@
     * [Wishlist](rudderstack-api-spec/rudderstack-ecommerce-events-specification/wishlisting.md)
     * [Sharing](rudderstack-api-spec/rudderstack-ecommerce-events-specification/sharing.md)
     * [Reviewing](rudderstack-api-spec/rudderstack-ecommerce-events-specification/reviewing.md)
+  * [Video Specification](rudderstack-api-spec/video-specification.md)
   * [User Suppression API](rudderstack-api-spec/user-suppression.md)
 * [User Guides](user-guides/README.md)
   * [Migration Guides](user-guides/migration-guides/README.md)

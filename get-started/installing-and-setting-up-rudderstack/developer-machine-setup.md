@@ -25,7 +25,7 @@ psql "jobsdb" -c "grant all privileges on database jobsdb to rudder";
 
 * Sign up and log into the [**RudderStack dashboard**](https://app.rudderlabs.com/signup). Copy your workspace **Token** from the top of the page, as shown:
 
-![](../../.gitbook/assets/image%20%28105%29%20%281%29.png)
+![](../../.gitbook/assets/image%20%28105%29%20%281%29%20%281%29.png)
 
 {% hint style="info" %}
 **Why do I need to sign up on RudderStack?** 

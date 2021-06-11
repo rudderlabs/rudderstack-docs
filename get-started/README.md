@@ -8,7 +8,7 @@ description: >-
 
 ## What is RudderStack?
 
-[**RudderStack**](https://rudderstack.com/) is a **customer data pipeline** platform to capture, process, and sync all of your event, product, and warehouse data to all the tools across your customer data stack.
+[**RudderStack**](https://rudderstack.com/) is a **customer data platform** to capture, process, and sync all of your event, product, and warehouse data to all the tools across your customer data stack.
 
 RudderStack's backend is written in Go, with a simple, user-friendly UI written in React.js. 
 
