@@ -11,10 +11,14 @@ RudderStack supports sending real-time customer events to Adobe Analytics.
 
 This documentation is split into the following sections:
 
-* [Setting Up Adobe Analytics in RudderStack]()
-* [Web Device Mode Settings]()
-* [Adobe Analytics Heartbeat Measurement]()
-* [E-Commerce Events]()
+{% page-ref page="analytics/adobe-analytics/adobe-analytics-rudder-dashboard-settings.md" %}
+
+{% page-ref page="analytics/adobe-analytics/adobe-analytics-web-device-mode.md" %}
+
+{% page-ref page="analytics/adobe-analytics/adobe-analytics-heartbeat.md" %}
+
+{% page-ref page="analytics/adobe-analytics/adobe-analytics-ecomm.md" %}
+
 
 ## Contact Us
 If you come across any issues while configuring Adobe Analytics with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.

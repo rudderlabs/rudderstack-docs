@@ -108,7 +108,7 @@ RudderStack broadly classifies the E-commerce events (Merchandising) in the foll
 
 1. The channel, campaign, state, and zip window properties are updated.
 
-2. RudderStack sets the timestamp according to the [dashboard settings]().
+2. RudderStack sets the timestamp according to the [**dashboard settings**](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-rudder-dashboard-settings).
 
 3. The `currencyCode` window property is set.
 
@@ -122,10 +122,10 @@ RudderStack broadly classifies the E-commerce events (Merchandising) in the foll
 
 9. The mapped Adobe event is set.
 
-10. Finally, `tl()` is called. The `tl()` method is an important core component of Adobe Analytics. It takes all the analytics variables defined in the page, compiles them into an image request, and sends that data to the Adobe data collection servers. It works similarly to the `t()` method, however this method does not increment page views. 
+10. Finally, `tl()` is called. The `tl()` method is a core component of Adobe Analytics. It takes all the analytics variables defined in the page, compiles them into an image request, and sends that data to the Adobe data collection servers. It works similarly to the `t()` method, except this method does not increment page views. 
 
 {% hint style="info" %}
-The `tl()` method is useful for tracking links and other elements that would not be otherwise considered in a full page load.
+The `tl()` method is useful for tracking links and other elements that would not otherwise be considered in a full page load.
 {% endhint %}
 
 ## Contact Us

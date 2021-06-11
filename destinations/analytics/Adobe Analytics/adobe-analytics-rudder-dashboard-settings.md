@@ -41,7 +41,7 @@ This section lists all the relevant connection settings to successfully set up A
 * **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. Eg: If url is http://abc.a.b ,the tracking server url will be abc.a.b.
 
 {% hint style="warning" %}
-If this variable is not defined correctly, your implementation can experience data loss.
+**If this variable is defined incorrectly, your implementation may experience data loss.**
 {% endhint %}
 
 
@@ -71,7 +71,7 @@ For more information on this setting, refer to the [**Adobe Analytics documentat
 {% endhint %}
  
 
-* **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [Adobe Analytics Heartbeat Measurement]() page.
+* **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [Adobe Analytics Heartbeat Measurement](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat) page.
 
 
 ### Identity Resolution
@@ -123,12 +123,12 @@ For more information on this setting, refer to the [**Adobe Analytics documentat
 This setting allows you to map the key present under the context/properties of the RudderStack message to the property name you want to send to the Adobe context data. An example is as shown below:
 
 ```JSON
-       "context":{
-           "contextProperties": {
-               "prop1": "val1",
-               "prop2": "val2"
-           }
-       }
+"context": {
+  "contextProperties": {
+    "prop1": "val1",
+    "prop2": "val2"
+  }
+}
 ```
 
 If you want to set `prop1` to Adobe's context data `property1`, then map with `contextProperties.prop1` --> `property1`.
@@ -208,6 +208,7 @@ For more information, refer to the [**Adobe Analytics documentation**](https://e
 
 ### Merchandise Product Level Settings
 
+
 * **Map Rudder Events to Adobe Merchandise events**: This setting lets you map a RudderStack event with a currency/purchase type of an Adobe event.
 
 
@@ -224,4 +225,7 @@ For more information, refer to the [**Adobe Analytics documentation**](https://e
 
 
 * **Product Identifier**: Adobe Analytics accepts only a single product identifier. This setting lets you choose from a SKU/ID/Name of the product.
-    
+
+## Contact Us
+
+For more information on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
