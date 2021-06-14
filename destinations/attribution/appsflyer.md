@@ -37,11 +37,14 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![AppsFlyer Connection Settings in RudderStack](../../.gitbook/assets/screenshot-2020-03-03-at-11.17.42-am.png)
+![](../../.gitbook/assets/screen-shot-2021-06-08-at-4.01.45-pm.png)
 
 * Enter the **AppsFlyer Dev Key**.
-* **Apple App ID** is the iTunes Application ID, and it is mandatory for iOS applications.
-* Turn on the `Use native SDK to send events` button so that we can send data to AppsFlyer using the native SDK.
+* **Sharing Filter** is set to `all` by default. For more information on this field please visit the AppsFlyer docs [here](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16)
+* If you are setting up an **Android**, **iOS**, or **React Native SDK**, you must enter the respective **App ID** for each SDK.
+  * **Android App ID** is the application id used in your `app/build.gradle` file
+  * **Apple App ID** is the iTunes Application ID, and it is mandatory for iOS applications.
+* By default, the `Use native SDK to send events` button will be toggles to on. If you would like to change this default behavior, select the toggle to choose between **Cloud Mode** and **Device Mode**.
 * Click on **Next** to complete the configuration.
 
 AppsFlyer should now be added and enabled as a destination in RudderStack.
@@ -141,6 +144,21 @@ rudderClient.setup(WRITE_KEY, config);
 {% endtab %}
 {% endtabs %}
 
+## Cloud Mode
+
+For all cloud mode calls, the `externalId` key must be included and must include the id, as well as the type of `appsFlyerExternalId` as shown below:
+
+```javascript
+"externalId": [
+  {
+    "id": "some_other2345_sample_external_id",
+    "type": "appsflyerExternalId"
+  }
+]
+```
+
+We expect the `externalId` under `context`.
+
 ## Identify
 
 The `identify` call from RudderStack sets the `userId` through the `setCustomerUserId` method from `AppsFlyerLib` .
@@ -206,20 +224,30 @@ For all the `screen` calls from the SDK, RudderStack calls the `trackEvent` meth
 
 RudderStack performs the same task for the automatically recorded `screen` calls as well. For those calls, a Boolean property called `automatic` is obtained in the properties.
 
-## Cloud Mode
+## Mobile SDK ID for Advertisers
 
-For all cloud mode calls, the `externalId` key must be included and must include the id, as well as the type of `appsFlyerExternalId` as shown below:
+#### Advertising ID
 
-```javascript
-"externalId": [
-  {
-    "id": "some_other2345_sample_external_id",
-    "type": "appsflyerExternalId"
-  }
-]
-```
+If the advertising ID is set according to the associated docs, RudderStack will utilize them appropriately for the AppsFlyer destination. They should be found in `context.device.advertisementId`
 
-We expect the `externalId` under `context`.
+* For iOS: [Advertisement ID Documentation](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk#advertisement-id)
+* For Android: [Advertisment ID Documentation](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk#advertisement-id)
+
+#### ATTrackingManager
+
+If the `ATTrackingManager.trackingAuthorizationStatus` is passed appropriately according to [this documentation](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk#attrackingmanager-authorization-consent), RudderStack will utilize it for the AppsFlyer destination. It should be found in `context.device.attTrackingStatus`
+
+## Error Messages
+
+The following are possible error messages you may encounter.
+
+#### `Invalid platform or required androidAppId or appleAppId missing`
+
+This message will occur when either the `OS Name` is not set or your respective `appId` is not set. You can set the `appId` in your settings config \(see the **Getting Started** section above\). The `OS Name` should be set by the SDK automatically and it should be present at `context.os.name`
+
+#### `Appsflyer id is not set. Rejecting the event`
+
+This message will occur when the `appsflyerExternalId` is not set. Please refer to the **Cloud Mode** section above to see how to properly set the `appsflyerExternalId`.
 
 ## Debugging
 
