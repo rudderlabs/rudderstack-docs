@@ -41,7 +41,7 @@ To successfully configure Kustomer as a destination, you will need to configure 
 
 - **API Key:** Your API Key is an unique key generated for your account. It can be found in your Kustomer account under **Settings** by navigating to **Security** - **API Keys**.
 
-- **Enable advanced Kustomer transformations:** Enabling this option will result in RudderStack handling the payload nuances for Kustomer. Check the **section name** below for detailed description.
+- **Enable advanced Kustomer transformations:** Enabling this option will result in RudderStack handling the payload nuances for Kustomer. Check the **Advanced Kustomer Transformations** section below for the detailed description.
 
 - **Enable generic title for Page events:** Enable this option to track all `page` events with the generic name `Web-Page-Viewed`.
 
