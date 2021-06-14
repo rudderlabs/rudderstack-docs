@@ -166,6 +166,7 @@
   * [Warehouse FAQs](data-warehouse-integrations/warehouse-faqs.md)
   * [Warehouse Schemas](data-warehouse-integrations/warehouse-schemas.md)
   * [Amazon Redshift](data-warehouse-integrations/amazon-redshift.md)
+  * [Azure Synapse](data-warehouse-integrations/azure-synapse.md)
   * [ClickHouse](data-warehouse-integrations/clickhouse.md)
   * [Google BigQuery](data-warehouse-integrations/google-bigquery.md)
   * [Microsoft SQL Server](data-warehouse-integrations/microsoft-sql-server.md)
