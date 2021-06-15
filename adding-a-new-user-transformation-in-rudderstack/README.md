@@ -244,7 +244,7 @@ export function transformEvent(event, metadata) {
 
 Upon running a test on above code, you can see above logs in **Logs** **section** as shown below:
 
-![](../.gitbook/assets/image%20%28103%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![](../.gitbook/assets/image%20%28103%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29.png)
 
 {% hint style="info" %}
 Arguments to `log` function can be a String, Number or Object
