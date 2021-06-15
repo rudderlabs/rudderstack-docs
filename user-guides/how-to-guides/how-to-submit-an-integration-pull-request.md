@@ -109,9 +109,9 @@ The `config-generator` repository allows the user to upload the necessary settin
 
 Please note the following when creating the config generator:
 
-* Documentation should be in `.md` format
+* Your documentation should be in the `.md` format
 * Include proper `regex` validation rules for all of the text input fields.
-* The Icon file must be an `svg`.
+* The icon file must be an `svg`.
 
 ## RudderStack Documentation
 
