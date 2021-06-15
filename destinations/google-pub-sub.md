@@ -79,9 +79,9 @@ You can send attributes to Google Pub/Sub along with the message. In order to se
 
 The following are some examples:
 
-* If the `event` is  **`Product Viewed`** and the `key` is **`coupon`**, RudderStack will add the `coupon` key-value pair from the message to the Attributes metadata object.
+* If the `event` is  **`Product Viewed`** and the `key` is **`coupon`**, RudderStack will add the `coupon` key-value pair from the message to the `Attributes` metadata object.
 
-* If multiple mappings are provided for  **`Product Viewed`**, all such key-value pairs from the message body will be added to Attributes metadata object.
+* If multiple mappings are provided for  **`Product Viewed`**, all such key-value pairs from the message body will be added to `Attributes` metadata object.
 
 * If the event name is **`page`** it will send all the calls with the `type` page.
 
