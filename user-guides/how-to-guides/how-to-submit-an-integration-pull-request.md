@@ -120,7 +120,7 @@ Please note the following when creating the config generator:
 The `rudderstack-docs` repository houses all the relevant documentation for instructing the users on using the integration you have created. Remember to be thorough with your documentation to avoid confusion and any errors. Although we will review the documentation and get in touch with you in case of any clarification, it will certainly be very helpful to ensure clear, concise steps on setting up, configuring, and using your integration.
 
 {% hint style="warning" %}
-Please do not include any of your screenshots. We will include them after merging the changes.
+Please do not include screenshots. We will include them after merging the changes.
 {% endhint %}
 
 ## Contact Us
