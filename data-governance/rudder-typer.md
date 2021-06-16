@@ -8,6 +8,8 @@ description: >-
 
 **RudderTyper** is a tool for generating strongly-typed [**RudderStack**](https://rudderstack.com/) analytics libraries based on your pre-defined tracking plan spec. 
 
+**Note**: This is still in beta mode
+
 ![RudderTyper Usage](../.gitbook/assets/readme-example.gif)
 
 ## Features
