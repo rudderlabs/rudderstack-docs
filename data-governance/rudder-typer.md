@@ -6,9 +6,15 @@ description: >-
 
 # RudderTyper
 
-**RudderTyper** is a tool for generating strongly-typed [**RudderStack**](https://rudderstack.com/) analytics libraries based on your pre-defined tracking plan spec. 
+**RudderTyper** is a tool for generating strongly-typed [**RudderStack**](https://rudderstack.com/) analytics library wrappers based on your pre-defined tracking plan spec.
 
 ![RudderTyper Usage](../.gitbook/assets/readme-example.gif)
+
+{% hint style="info" %}
+**This feature is currently in a closed beta. If you're interested, please contact your account representative for more information.**
+{% endhint %}
+
+![](https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github)
 
 ## Features
 
