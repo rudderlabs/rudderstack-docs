@@ -67,6 +67,7 @@ You can transform your events in RudderStack before sending them to the specifie
 
 ## Useful Links
 
+* Check out some [**sample applications**](https://github.com/rudderlabs/rudder-samples/) that demonstrate various RudderStack use-cases. 
 * Read more about RudderStack's underlying architecture and familiarize yourself with RudderStack's core backend and terms such as **Control Plane** and **Data Plane**.
 
 {% page-ref page="rudderstack-architecture.md" %}
