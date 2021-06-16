@@ -176,7 +176,7 @@
   * [Microsoft SQL Server](data-warehouse-integrations/microsoft-sql-server.md)
   * [Snowflake](data-warehouse-integrations/snowflake.md)
   * [PostgreSQL](data-warehouse-integrations/postgresql.md)
-* [RudderTyper](rudder-typer/README.md)
+* [RudderTyper](rudder-typer.md)
 * [Data Governance](data-governance/README.md)
   * [Data Governance API](data-governance/rudderstack-data-governance-api.md)
 * [Transformations](adding-a-new-user-transformation-in-rudderstack/README.md)

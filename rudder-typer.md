@@ -1,39 +1,29 @@
 # RudderTyper
 
-**RudderTyper** is a tool for generating strongly-typed [**RudderStack**](https://rudderstack.com/) analytics libraries based on your pre-defined 
-tracking plan spec.
-<br>
-<br>
-<p align="center">
-<img src="../.gitbook/assets/readme-example.gif" alt="RudderTyper GIF Example" width="80%"/>
-</p>
-<br>
+**RudderTyper** is a tool for generating strongly-typed [**RudderStack**](https://rudderstack.com/) analytics libraries based on your pre-defined tracking plan spec. 
 
-## Features 
+![RudderTyper GIF Example](.gitbook/assets/readme-example.gif)
 
-- **Strongly Typed Clients**: Generates strongly-typed [RudderStack](http://rudderstack.com) clients that provide compile-time errors along with IntelliSense for events and property names, types, and descriptions.
+## Features
 
-- **Analytics Testing and Validation**: Lets you validate if your instrumentation matches your spec before deploying to production, so you can fail your CI builds without a manual QA process.
-
-- **Cross-Language Support**: Supports native clients for [**Javascript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk).
-
-- **RudderStack Tracking Plans**: Built-in support to sync your `ruddertyper` clients with your centralized RudderStack tracking plans.
-<br>
+* **Strongly Typed Clients**: Generates strongly-typed [RudderStack](http://rudderstack.com) clients that provide compile-time errors along with IntelliSense for events and property names, types, and descriptions.
+* **Analytics Testing and Validation**: Lets you validate if your instrumentation matches your spec before deploying to production, so you can fail your CI builds without a manual QA process.
+* **Cross-Language Support**: Supports native clients for [**Javascript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk).
+* **RudderStack Tracking Plans**: Built-in support to sync your `ruddertyper` clients with your centralized RudderStack tracking plans. 
 
 ## Get Started
 
-To fire up a quickstart wizard to create a `ruddertyper.yml` and generate your first client with the specified configuration details, run the following command:
+To fire up a quick start wizard to create a `ruddertyper.yml` and generate your first client with the specified configuration details, run the following command:
 
-```sh
+```bash
 $ npx rudder-typer init | initialize | quickstart
 ```
-
 
 ## Other Commands
 
 ### Update
 
-```sh
+```bash
 $ npx rudder-typer update | u | *   (default)
 ```
 
@@ -41,62 +31,62 @@ This command syncs `plan.json` with RudderStack to pull the latest changes in yo
 
 ### Build
 
-```sh
-$ npx rudder-typer build | b | d | dev | development                    
+```bash
+$ npx rudder-typer build | b | d | dev | development
 ```
 
 This command generates a development client from `plan.json`.
 
 ### Production
 
-```sh
-$ npx rudder-typer prod | p | production                    
+```bash
+$ npx rudder-typer prod | p | production
 ```
 
 This command generates a production client from `plan.json`.
 
 ### Token
 
-```sh
-$ npx rudder-typer token | tokens | t                    
+```bash
+$ npx rudder-typer token | tokens | t
 ```
+
 This command prints the local RudderStack API token configuration.
 
 ### Version
 
-```sh
-$ npx rudder-typer version                    
+```bash
+$ npx rudder-typer version
 ```
+
 This command prints the RudderTyper CLI version.
 
 ### Help
 
-```sh
+```bash
 $ npx rudder-typer help
 ```
 
 This command prints the help message describing different commands available with RudderTyper.
 
-
 ## CLI Arguments
 
 | Argument | Type | Description |
 | :--- | :--- | :--- |
-| `config` | `string` | An optional path to a `ruddertyper.yml` (or a directory with `ruddertyper.yml`). |
-| `debug` | `boolean` | An optional (hidden) flag for enabling Ink debug mode. |
+| `config` | `string` | An optional path to a `ruddertyper.yml` \(or a directory with `ruddertyper.yml`\). |
+| `debug` | `boolean` | An optional \(hidden\) flag for enabling Ink debug mode. |
 | `version` | `boolean` | Standard `--version` flag to print the version of this CLI. |
 | `v` | `boolean` | Standard `-v` flag to print the version of this CLI. |
 | `help` | `boolean` | Standard `--help` flag to print help on a command. |
 | `h` | `boolean` | Standard `-h` flag to print help on a command. |
 
-
 ## Configuration Reference
 
-RudderTyper stores its configuration in a `ruddertyper.yml` file in the root of your repository. 
+RudderTyper stores its configuration in a `ruddertyper.yml` file in the root of your repository.
 
 A sample configuration looks like the following:
 
-```sh
+```bash
 # RudderStack RudderTyper Configuration Reference (https://github.com/rudderlabs/rudder-typer)
 # Just run `npx rudder-typer` to re-generate a client with the latest versions of these events.
 
@@ -129,7 +119,7 @@ trackingPlans:
   - id: rs_QhWHOgp7xg8wkYxilH3scd2uRID
     workspaceSlug: rudderstack-demo
     path: ./analytics
-  ```
+```
 
 ## How to integrate RudderTyper-generated client with your app?
 
@@ -138,7 +128,6 @@ This section includes steps to integrate your RudderTyper-generated client with 
 ### RudderStack Android SDK
 
 * Import all the files in the client generated by RudderTyper as a package in your project.
-
 * Then, you can directly make the calls using the RudderTyper client as shown below:
 
 ```java
@@ -162,7 +151,7 @@ import com.rudderstack.generated.*
 
 * Then, you can directly make the calls using the RudderTyper client as shown:
 
-```obj-c
+```text
 // Import your auto-generated RudderTyper client:
 #import "RSRudderTyperAnalytics.h"
 
@@ -173,7 +162,6 @@ import com.rudderstack.generated.*
 ### RudderStack JavaScript SDK
 
 * Import the RudderTyper-generated client using `require()` and make the calls if your framework supports them. Otherwise, you can use [**Browserify**](https://browserify.org/) to generate a bundle that supports your implementation. The implementation for each of the alternatives mentioned above will be as shown:
-
 
 #### Using the `require()`method
 
@@ -198,13 +186,13 @@ rudderTyper.orderCompleted({
 
 * Execute the following command to generate a bundle from the RudderTyper client:
 
-```sh
+```bash
 browserify rudderTyperClient.js --standalone rudderTyper >  rudderTyperBundle.js
 ```
 
 * Now you can make calls from your `html` file as shown:
 
-```html
+```markup
 <head>
   <script>
     rudderanalytics = window.rudderanalytics = [];
@@ -238,7 +226,7 @@ browserify rudderTyperClient.js --standalone rudderTyper >  rudderTyperBundle.js
 </script>
 ```
 
-### RudderStack Node.js SDK:
+### RudderStack Node.js SDK
 
 * Import the the RudderTyper-generated client and start making calls using RudderTyper as shown:
 
@@ -260,9 +248,10 @@ ruddertyper.orderCompleted({
 
 ## Contribute
 
-- To submit a bug report or feature request, file an issue [**here**](issues).
-- To develop on `ruddertyper` or propose support for a new language, see our [**contributors documentation**](./.github/CONTRIBUTING.md).
+* To submit a bug report or feature request, file an issue [**here**](https://github.com/rudderlabs/rudderstack-docs/tree/aee350883b1b21d2ec987a2d873c2bb4247ce5d7/rudder-typer/issues/README.md).
+* To develop on `ruddertyper` or propose support for a new language, see our [**contributors documentation**](https://github.com/rudderlabs/rudderstack-docs/tree/aee350883b1b21d2ec987a2d873c2bb4247ce5d7/rudder-typer/.github/CONTRIBUTING.md).
 
 ## Contact Us
 
-For queries on any of the sections in this guide, start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel. 
+For queries on any of the sections in this guide, start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
