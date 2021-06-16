@@ -1,8 +1,14 @@
+---
+description: >-
+  Detailed technical documentation on RudderTyper - focusing on the supported
+  commands, configuration reference, and using it with your app.
+---
+
 # RudderTyper
 
 **RudderTyper** is a tool for generating strongly-typed [**RudderStack**](https://rudderstack.com/) analytics libraries based on your pre-defined tracking plan spec. 
 
-![RudderTyper GIF Example](.gitbook/assets/readme-example.gif)
+![RudderTyper Usage](.gitbook/assets/readme-example.gif)
 
 ## Features
 
