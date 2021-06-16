@@ -11,7 +11,7 @@ tracking plan spec.
 
 ## Features 
 
-- **Strongly Typed Clients**: Generates strongly-typed [RudderStack](http://rudderstack.com) clients that provide compile-time errors, along with intellisense for events and property names, types and descriptions.
+- **Strongly Typed Clients**: Generates strongly-typed [RudderStack](http://rudderstack.com) clients that provide compile-time errors along with IntelliSense for events and property names, types, and descriptions.
 
 - **Analytics Testing and Validation**: Lets you validate if your instrumentation matches your spec before deploying to production, so you can fail your CI builds without a manual QA process.
 
