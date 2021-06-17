@@ -71,6 +71,24 @@ The **topic ID** is **case-sensitive** and has to be exactly as seen in Google P
 
 * Finally, click on **Next** to complete the configuration. Pub/Sub should now be added and enabled as a destination in RudderStack.
 
+## Attributes
+
+You can send attributes to Google Pub/Sub along with the message. 
+In order to send Attributes, provide the Attribute Mapping in the RudderStack dashboard as seen below.
+
+![Google Pub/Sub Attributes Map](../../.gitbook/assets/pubsub-attribute-map.png)
+
+**For example:**
+
+* If the `event` is  **`Product Viewed`** and the `key` is **`coupon`** it will add the `coupon` key-value pair from the message to the Attributes metadata object.
+
+* If multiple mappings are provided for  **`Product Viewed`**, all such key-value pairs from the message body will be added to Attributes metadata object.
+
+* If the event name is **`page`** it will send all the calls with the `type` page.
+
+{% hint style="warning" %}
+For the `key` fields provided in the Attributes Map, the `key` is searched in the message body in the **`root`**, **`properties`**, **`traits`** and **`context.traits`** in that specific order.
+{% endhint %}
 ## Page
 
 The `page` call contains information related to the page, such as the URL of the web page visited by the user.
@@ -144,6 +162,11 @@ For example, let the type of event be `track`, the event name be `product added`
 
 Now all the events should go to the topic mapped with **`product added`**.
 
+### How do I provide multiple Attribute mapping for a particular event? <a id="how-do-I-provide-multiple-attribute-mapping"></a>
+
+In order to send multiple Attribute keys for a particular event, simple provide multiple mappings in the dashboard as seen in the image below.
+
+![](../../.gitbook/assets/multiple-mapping.png)
 ## Contact Us
 
 If you come across any issues while configuring or using Google Pub/Sub with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
