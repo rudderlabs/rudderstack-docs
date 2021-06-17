@@ -6,22 +6,29 @@ description: >-
 
 # RudderTyper
 
-**RudderTyper** is a tool for generating strongly-typed [**RudderStack**](https://rudderstack.com/) analytics library wrappers based on your pre-defined tracking plan spec.
+\*\*\*\*[**RudderTyper**](https://github.com/rudderlabs/rudder-typer) is a tool that lets you generate strongly-typed [**RudderStack**](https://rudderstack.com/) analytics library wrappers based on your [**Tracking Plan**](https://documenter.getpostman.com/view/16242548/TzeWFT6D) spec. 
 
-![RudderTyper Usage](../.gitbook/assets/readme-example.gif)
+Simply put, it uses an event from your specified tracking plan and generates an analytics call in the supported languages.
+
+{% hint style="success" %}
+RudderTyper currently generates native clients for the [**JavaScript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk), and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) ****SDKs**.**
+{% endhint %}
+
+![](../.gitbook/assets/readme-example.gif)
+
+## Key Features
+
+Some key features of RudderTyper include:
+
+* Allows you to contextualize your analytics instrumentation and validate it with your event spec, before deploying to production.
+* You can access and validate your event names, properties, types, etc. using IntelliSense.
+* It provides compile-time errors and warns you about any missing required properties, data mismatch, and any issues in the JSON schema configured in your tracking plan.
 
 {% hint style="info" %}
 **This feature is currently in a closed beta. If you're interested, please contact your account representative for more information.**
 {% endhint %}
 
 ![](https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github)
-
-## Features
-
-* **Strongly Typed Clients**: Generates strongly-typed [**RudderStack**](http://rudderstack.com) clients that provide compile-time errors along with IntelliSense for events and property names, types, and descriptions.
-* **Analytics Testing and Validation**: Lets you validate your instrumentation with your event spec to make sure it matches, before deploying to production. This way, you can fail your CI builds without a manual QA process.
-* **Cross-Language Support**: Supports native clients for [**JavaScript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk), and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk).
-* **RudderStack Tracking Plans**: Built-in support to sync your `ruddertyper` clients with your centralized RudderStack ****[**tracking plans**](https://documenter.getpostman.com/view/16242548/TzeWFT6D)**.** 
 
 ## Get Started
 
