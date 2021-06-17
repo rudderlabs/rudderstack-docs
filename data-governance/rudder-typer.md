@@ -18,10 +18,10 @@ RudderTyper currently generates native clients for the [**JavaScript**](https://
 
 ## Key Features
 
-Some key features of RudderTyper include:
+Some key features of RudderTyper are:
 
 * Allows you to contextualize your analytics instrumentation and validate it with your event spec, before deploying to production.
-* You can access and validate your event names, properties, types, etc. using IntelliSense.
+* You can access and validate your event names, properties, types, etc.
 * It provides compile-time errors and warns you about any missing required properties, data mismatch, and any issues in the JSON schema configured in your tracking plan.
 
 {% hint style="info" %}
