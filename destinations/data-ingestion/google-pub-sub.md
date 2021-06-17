@@ -40,19 +40,17 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 * Enter the following details:
   * **Connection Settings**
     * **Project ID** and the **Credentials**: Follow these steps to obtain the project ID as well as the required credentials:
-
       * Create a service account from Google Cloud Console.
       * You can get the **Project ID** when you log in to your Google Cloud Console.
       * Use the **Select a role** dropdown to add the **Pub/Sub Publisher** role.
       * Create a key as JSON and download it.
       * Paste this downloaded JSON in the **Credentials** field
-
     * Enter the **Event Name** as well as the corresponding **Topic ID**. You can get the topic id from your topics page, as shown:
 
 ![Google Pub/Sub Topic ID and Name](../../.gitbook/assets/image%20%2848%29.png)
 
 {% hint style="info" %}
-You can send an event `type` like `page,` `identify,` `track`.   
+You can send an event `type` like `page,` `identify,` `track`.  
 For the `track` events you can specify the event name based on the `event` name in the payload.
 
 For example:
@@ -73,22 +71,20 @@ The **topic ID** is **case-sensitive** and has to be exactly as seen in Google P
 
 ## Attributes
 
-You can send attributes to Google Pub/Sub along with the message. 
-In order to send Attributes, provide the Attribute Mapping in the RudderStack dashboard as seen below.
+You can send attributes to Google Pub/Sub along with the message. In order to send the attributes, enter the required attribute mapping in the RudderStack dashboard as seen below:
 
-![Google Pub/Sub Attributes Map](../../.gitbook/assets/pubsub-attribute-map.png)
+![](../../.gitbook/assets/image%20%28113%29.png)
 
-**For example:**
+The following are some examples:
 
-* If the `event` is  **`Product Viewed`** and the `key` is **`coupon`** it will add the `coupon` key-value pair from the message to the Attributes metadata object.
-
-* If multiple mappings are provided for  **`Product Viewed`**, all such key-value pairs from the message body will be added to Attributes metadata object.
-
+* If the `event` is **`Product Viewed`** and the `key` is **`coupon`**, RudderStack will add the `coupon` key-value pair from the message to the `Attributes` metadata object.
+* If multiple mappings are provided for **`Product Viewed`**, all such key-value pairs from the message body will be added to `Attributes` metadata object.
 * If the event name is **`page`** it will send all the calls with the `type` page.
 
 {% hint style="warning" %}
-For the `key` fields provided in the Attributes Map, the `key` is searched in the message body in the **`root`**, **`properties`**, **`traits`** and **`context.traits`** in that specific order.
+For the `key` fields provided in the attributes map, the `key` is searched in the message body in **`root`**, **`properties`**, **`traits`** and **`context.traits`** - in that specific order.
 {% endhint %}
+
 ## Page
 
 The `page` call contains information related to the page, such as the URL of the web page visited by the user.
@@ -152,11 +148,11 @@ rudderanalytics.track("Track me", {
 * If an event is set with a topic id, the payload will be sent to Pub/Sub to that particular topic id.
 
 {% hint style="info" %}
-If you have set all event type, event and \* for mapping the priority will be given to `event` ,   
+If you have set all event type, event and \* for mapping the priority will be given to `event` ,  
 then `type` , followed by \*.
 {% endhint %}
 
-For example, let the type of event be `track`, the event name be `product added`. The mapping is done as: 
+For example, let the type of event be `track`, the event name be `product added`. The mapping is done as:
 
 ![](../../.gitbook/assets/screenshot-2020-09-09-at-6.56.02-pm.png)
 
@@ -164,9 +160,10 @@ Now all the events should go to the topic mapped with **`product added`**.
 
 ### How do I provide multiple Attribute mapping for a particular event? <a id="how-do-I-provide-multiple-attribute-mapping"></a>
 
-In order to send multiple Attribute keys for a particular event, simple provide multiple mappings in the dashboard as seen in the image below.
+In order to send multiple attribute keys for a particular event, enter the required mappings in the RudderStack dashboard as seen below:
 
-![](../../.gitbook/assets/multiple-mapping.png)
+![](../../.gitbook/assets/image%20%28112%29.png)
+
 ## Contact Us
 
 If you come across any issues while configuring or using Google Pub/Sub with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
