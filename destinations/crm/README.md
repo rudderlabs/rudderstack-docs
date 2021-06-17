@@ -4,7 +4,7 @@ CRM platforms unify services across different verticals like marketing, analytic
 
 ## Popular Destinations
 
-{% page-ref page="../../cloud-extract-sources/salesforce/" %}
+{% page-ref page="salesforce.md" %}
 
 {% page-ref page="zendesk.md" %}
 

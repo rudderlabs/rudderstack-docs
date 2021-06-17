@@ -2,9 +2,9 @@
 description: Step-by-step guide to set up Azure Synapse as a destination in RudderStack.
 ---
 
-# Azure Synapse Analytics
+# Azure Synapse
 
-[**Azure Synapse Analytics**](https://azure.microsoft.com/en-in/services/synapse-analytics/) is an analytics service that combines data warehousing capabilities with Big Data analytics. If offers a unified data engineering platform to ingest, explore, manage, and serve your data for analytics and Business Intelligence. You can query data on your own terms, using either serverless or dedicated computing resources based on your requirements. 
+[**Azure Synapse Analytics**](https://azure.microsoft.com/en-in/services/synapse-analytics/) is an analytics service that combines data warehousing capabilities with Big Data analytics. If offers a unified data engineering platform to ingest, explore, manage, and serve your data for analytics and Business Intelligence. You can query data on your own terms, using either serverless or dedicated computing resources based on your requirements.
 
 RudderStack lets you configure Azure Synapse as a destination to which you can send your event data seamlessly.
 
@@ -33,26 +33,17 @@ Please follow our [**Adding a Source and Destination**](https://docs.rudderstack
 {% endhint %}
 
 * After choosing a source, click on the **Add Destination** button and select **Azure Synapse** from the list of destinations.
-
 * Assign a name to your destination and then click on **Next**. You should then see the following screen:
 
 ![](../.gitbook/assets/azure-synapse-connection.png)
 
-
 * Enter the following credentials in the **Connection Settings**:
-
   * **Host -** Enter the host name of your Azure Synapse service.
-
   * **Database -** The database name in your Azure Synapse instance where the data is to be sent goes here.
-
   * **User** - Enter the user name which has the required read/write access to the above database.
-
   * **Port** - Enter the port number associated with the Azure Synapse database instance.
-
   * **Password** - The password for the above user goes here.
-
   * **SSL Mode** - Enter the SSL modes for connecting to your Azure Synapse instance.
-
   * **Bucket Provider** - Select the intermediate storage for storing the staging files. RudderStack currently supports Amazon S3, MinIO, Google Cloud Storage, and Azure Blob Storage.
 
 {% hint style="success" %}
@@ -63,7 +54,7 @@ You can also set the **Sync Frequency** to set the frequency of the data import 
 
 ### **How are reserved words handled by RudderStack?**
 
-There are some limitations when it comes to using [**reserved words**](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/reserved-keywords-transact-sql?view=sql-server-ver15) in a schema, table, or column names. If such words are used as event names, traits or properties, they will be prefixed with a `_` when  RudderStack creates tables or columns for them in your schema.
+There are some limitations when it comes to using [**reserved words**](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/reserved-keywords-transact-sql?view=sql-server-ver15) in a schema, table, or column names. If such words are used as event names, traits or properties, they will be prefixed with a `_` when RudderStack creates tables or columns for them in your schema.
 
 Also, note that integers are not allowed at the start of the schema or table name. Hence, RudderStack prefixes such schema, column or table names with a `_`.
 
