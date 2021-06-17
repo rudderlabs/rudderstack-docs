@@ -19,8 +19,8 @@ description: >-
 ## Features
 
 * **Strongly Typed Clients**: Generates strongly-typed [**RudderStack**](http://rudderstack.com) clients that provide compile-time errors along with IntelliSense for events and property names, types, and descriptions.
-* **Analytics Testing and Validation**: Lets you validate if your instrumentation matches your spec before deploying to production, so you can fail your CI builds without a manual QA process.
-* **Cross-Language Support**: Supports native clients for [**JavaScript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk).
+* **Analytics Testing and Validation**: Lets you validate if your instrumentation matches your event spec before deploying to production. This way, you can fail your CI builds without a manual QA process.
+* **Cross-Language Support**: Supports native clients for [**JavaScript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk), and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk).
 * **RudderStack Tracking Plans**: Built-in support to sync your `ruddertyper` clients with your centralized RudderStack ****[**tracking plans**](https://documenter.getpostman.com/view/16242548/TzeWFT6D)**.** 
 
 ## Get Started
