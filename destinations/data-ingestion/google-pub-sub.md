@@ -101,7 +101,7 @@ rudderanalytics.track("Track me", {
 
 For the above track call, you can specify an Attribute mapping for `metadataID` as mentioned below.
 
-| **Event** | **Key** |
+| **Event** | **Field** |
 | :--- | :--- |
 | Track me | `metadata.metadataId` |
 
