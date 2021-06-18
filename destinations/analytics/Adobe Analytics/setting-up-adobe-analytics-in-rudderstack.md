@@ -81,6 +81,8 @@ For more information on this setting, refer to the [**Adobe Analytics documentat
 
 * **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [Adobe Analytics Heartbeat Measurement](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat) page.
 
+* **Adobe Analytics Javascript SDK URL/Heartbeat SDK URL**: Add your proxy url where you will be hosting the adobe analytics js and heartbeat js. By default we host them at https://cdn.rudderlabs.com/adobe-analytics-js/adobe-analytics-js.js and https://cdn.rudderlabs.com/adobe-analytics-js/adobe-analytics-js-heartbeat.js respectively.
+
 
 ### Identity Resolution
 
