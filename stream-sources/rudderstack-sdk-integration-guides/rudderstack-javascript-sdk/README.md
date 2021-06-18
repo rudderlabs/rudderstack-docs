@@ -772,7 +772,8 @@ rudderanalytics.reset();
 RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. You can do so by passing an integrations object in the **options** parameter of the `identify()`, `page()`, and `track()` methods. Please refer to the [How to Filter Selective Destinations](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations-to-send-event-data) section.
 
 ### 4.1. Common Destination Names
-Below shows some of the supported names that RudderStack can intake for each destination when sending the event data through the event method as described above (please note that not all destinations are listed below):
+
+Below shows some of the supported names that RudderStack can intake for each destination when sending the event data through the event method as described above \(please note that not all destinations are listed below\):
 
 | Destination | Supported Common Names |
 | :--- | :--- |
@@ -830,7 +831,7 @@ Below shows some of the supported names that RudderStack can intake for each des
 | Amazon Kinesis | `Amazon Kinesis` |
 
 {% hint style="info" %}
-**NOTE:** You can also refer to [this section](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention) for more information on the naming convention of the `destinations names`. 
+**NOTE:** You can also refer to [this section](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention) for more information on the naming convention of the `destinations names`.
 {% endhint %}
 
 ### 4.2. Specifying Selective Destinations in the `load` Method
@@ -845,7 +846,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 });
 ```
 
-Where `<destination_name>` is the name of the destination. 
+Where `<destination_name>` is the name of the destination.
 
 {% hint style="info" %}
 Please refer to the section above for the common destinations names or refer to [this section](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention) for destination naming convention.
