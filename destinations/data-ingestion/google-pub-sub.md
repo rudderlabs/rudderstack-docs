@@ -85,6 +85,33 @@ The following are some examples:
 For the `key` fields provided in the attributes map, the `key` is searched in the message body in **`root`**, **`properties`**, **`traits`** and **`context.traits`** - in that specific order.
 {% endhint %}
 
+**Note: You can also specify key path in payload using dotted notation.**
+
+For example:
+```
+rudderanalytics.track("Track me", {
+        category: "category",
+        label: "label",
+        value: "value",
+        metadata: {
+          metadataId: "sample-id"
+        }
+ });
+```
+
+For the above track call, you can specify an Attribute mapping for `metadataID` as mentioned below.
+
+| **Event** | **Key** |
+| :--- | :--- |
+| Track me | `metadata.metadataId` |
+
+This will create the below attribute metadata object.
+```
+{
+   metadataId: "sample-id"
+}
+```
+
 ## Page
 
 The `page` call contains information related to the page, such as the URL of the web page visited by the user.
