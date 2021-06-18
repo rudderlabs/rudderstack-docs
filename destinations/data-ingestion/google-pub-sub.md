@@ -77,13 +77,41 @@ You can send attributes to Google Pub/Sub along with the message. In order to se
 
 The following are some examples:
 
-* If the `event` is **`Product Viewed`** and the `key` is **`coupon`**, RudderStack will add the `coupon` key-value pair from the message to the `Attributes` metadata object.
-* If multiple mappings are provided for **`Product Viewed`**, all such key-value pairs from the message body will be added to `Attributes` metadata object.
+* If the `event` is **`Product Viewed`** and the `key` is **`coupon`**, RudderStack will add the `coupon` key-value pair from the message to the attributes' metadata object.
+* If multiple mappings are provided for **`Product Viewed`**, all such key-value pairs from the message body will be added to attributes' metadata object.
 * If the event name is **`page`** it will send all the calls with the `type` page.
 
 {% hint style="warning" %}
 For the `key` fields provided in the attributes map, the `key` is searched in the message body in **`root`**, **`properties`**, **`traits`** and **`context.traits`** - in that specific order.
 {% endhint %}
+
+**Note: You can also specify the key path in the payload using the dot notation.**
+
+For example:
+```
+rudderanalytics.track("Track me", {
+  category: "category",
+  label: "label",
+  value: "value",
+  metadata: {
+    metadataId: "sample-id"
+  }
+});
+```
+
+For the above `track` call, you can specify an attribute mapping for `metadataID` as shown below:
+
+| **Event** | **Field** |
+| :--- | :--- |
+| Track me | `metadata.metadataId` |
+
+This will create the below attribute metadata object:
+
+```
+{
+   metadataId: "sample-id"
+}
+```
 
 ## Page
 
