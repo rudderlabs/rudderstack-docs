@@ -27,6 +27,10 @@ To set up the RudderStack Flutter SDK, there are a few prerequisites as mentione
 
 * It would also help if you have the [Flutter Development Environment](https://flutter.dev/docs/get-started/install) set up on your system.
 
+{% hint style="info" %}
+** We have migrated RudderStack Flutter SDK to Null Safety starting from version 1.0.2 **
+{% endhint %}
+
 ## Installing the RudderStack Flutter SDK
 
 The recommended way to install the Flutter SDK is through [`pub`](https://pub.dev/packages/rudder_sdk_flutter).
@@ -37,7 +41,7 @@ To add the SDK as a dependency, perform the following steps:
 
 ```groovy
 dependencies:
-  rudder_sdk_flutter: ^1.0.0
+  rudder_sdk_flutter: ^1.0.2
 ```
 
 * Navigate to your Application's root folder and install all the required dependencies with:
