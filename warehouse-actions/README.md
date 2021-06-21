@@ -134,6 +134,8 @@ Currently all events from the RudderStack warehouse actions are `identify()` eve
 
 ## Popular Sources
 
+{% page-ref page="amazon-s3.md" %}
+
 {% page-ref page="snowflake.md" %}
 
 {% page-ref page="amazon-redshift.md" %}
