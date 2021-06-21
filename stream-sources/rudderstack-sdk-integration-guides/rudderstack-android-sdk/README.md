@@ -659,7 +659,7 @@ adb logcat -s RudderSDK:V \
 
 ### How do I get the user `traits` after making the `identify` call?
 
-You can get traits of a user after making an identify call as shown below:
+You can get the user traits after making an `identify` call as shown:
 
 % tabs %}
 {% tab title="Kotlin" %}
