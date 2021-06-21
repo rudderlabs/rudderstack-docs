@@ -20,7 +20,7 @@ You can connect only one destination to a Warehouse Actions source. If you want 
 You cannot connect a Warehouse Actions source to a warehouse destination in RudderStack.
 {% endhint %}
 
-Here's a walkthrough of the Warehouse Actions feature:
+Here's a detailed walkthrough of the Warehouse Actions feature:
 
 {% embed url="https://www.youtube.com/watch?v=krFbHHjX-AU" %}
 
