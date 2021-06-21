@@ -4,7 +4,7 @@ description: Detailed technical documentation on RudderStack's Transformations f
 
 # Transformations
 
-Transformations is one of RudderStack's key features. It allows you to leverage custom JavaScript functions to transform the events in a destination-specific format. These transformations can be used across your Event Stream, Warehouse Actions, and Cloud Extract pipelines, and help you implement a variety of use-cases, like:
+**Transformations** is one of RudderStack's key features. It allows you to leverage custom JavaScript functions to transform the events in a destination-specific format. These transformations can be used across your Event Stream, Warehouse Actions, and Cloud Extract pipelines, and help you implement a variety of use-cases, like:
 
 * Filtering and/or sampling events.
 * Enriching events by implementing static logic or by leveraging an external API.
@@ -13,8 +13,12 @@ Transformations is one of RudderStack's key features. It allows you to leverage 
 * Data aggregation / rolling-up at a micro-batch level.
 * Implementing external actions on the events in the stream by means of an API.
 
+Here's a quick 2-minute walkthrough of this feature:
+
+{% embed url="https://www.youtube.com/watch?v=-1F4YeJCXU8" %}
+
 {% hint style="success" %}
-Our [Sample User Transformations](https://github.com/rudderlabs/sample-user-transformers) GitHub repository contains some useful templates that you can use to create your own user transformations.
+Our [**Sample User Transformations**](https://github.com/rudderlabs/sample-user-transformers) GitHub repository contains some useful templates that you can use to create your own user transformations.
 {% endhint %}
 
 {% hint style="info" %}

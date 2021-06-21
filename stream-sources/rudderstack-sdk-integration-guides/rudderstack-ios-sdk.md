@@ -621,8 +621,7 @@ let traits = RSClient.sharedInstance()?.getContext().traits
 {% endtab %}
 {% endtabs %}
 
-
-NSDictionary* traits =  [[RSClient sharedInstance] getContext].traits;
+NSDictionary\* traits = \[\[RSClient sharedInstance\] getContext\].traits;
 
 ## Contact Us
 

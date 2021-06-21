@@ -4,6 +4,8 @@
 
 > **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your customer data stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 
+{% embed url="https://www.youtube.com/watch?v=vOaw9pKn6\_M" %}
+
 ## Quick Start
 
 * Read more about RudderStack's architecture and key features. [**Get Started**](get-started/). 
