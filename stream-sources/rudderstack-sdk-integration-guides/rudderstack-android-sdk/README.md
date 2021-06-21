@@ -661,7 +661,7 @@ adb logcat -s RudderSDK:V \
 
 You can get the user traits after making an `identify` call as shown:
 
-% tabs %}
+{% tabs %}
 {% tab title="Kotlin" %}
 ```kotlin
 val traits = rudderClient!!.getRudderContext().getTraits()
