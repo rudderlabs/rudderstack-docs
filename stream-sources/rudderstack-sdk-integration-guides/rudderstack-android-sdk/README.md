@@ -657,6 +657,24 @@ adb logcat -s RudderSDK:V \
     -v tag -e "EventRepository: dump: message:"
 ```
 
+### How do I get the user `traits` after making the `identify` call?
+
+You can get the user traits after making an `identify` call as shown:
+
+% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+val traits = rudderClient!!.getRudderContext().getTraits()
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
+```
+{% endtab %}
+{% endtabs %}
+
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy.
