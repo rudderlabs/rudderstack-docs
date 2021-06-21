@@ -657,7 +657,7 @@ adb logcat -s RudderSDK:V \
     -v tag -e "EventRepository: dump: message:"
 ```
 
-### How do I get the user traits after making the identify call?
+### How do I get the user `traits` after making the `identify` call?
 
 You can get traits of a user after making an identify call as shown below:
 

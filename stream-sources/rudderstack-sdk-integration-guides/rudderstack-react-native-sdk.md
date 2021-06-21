@@ -443,7 +443,7 @@ The functions exposed by the SDK are asynchronous in nature. If you want synchro
 
 Please try using Android Studio to build your application. This should fix most of the errors.
 
-### How do I get the user traits after making an identify call?
+### How do I get the user `traits` after making an `identify` call?
 
 You can get traits of a user after making an identify call as shown below:
 

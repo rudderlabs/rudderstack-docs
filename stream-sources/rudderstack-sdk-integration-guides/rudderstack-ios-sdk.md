@@ -603,7 +603,7 @@ Update the usage of the following classes as per the table below.
   </tbody>
 </table>
 
-### How do I get the user traits after making the identify call?
+### How do I get the user `traits` after making the `identify` call?
 
 You can get traits of a user after making an identify call as shown below:
 
