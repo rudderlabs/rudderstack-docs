@@ -603,6 +603,27 @@ Update the usage of the following classes as per the table below.
   </tbody>
 </table>
 
+### How do I get the user traits after making the identify call?
+
+You can get traits of a user after making an identify call as shown below:
+
+% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+NSDictionary* traits =  [[RSClient sharedInstance] getContext].traits;
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+let traits = RSClient.sharedInstance()?.getContext().traits
+```
+{% endtab %}
+{% endtabs %}
+
+
+NSDictionary* traits =  [[RSClient sharedInstance] getContext].traits;
+
 ## Contact us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-ios/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

@@ -443,6 +443,16 @@ The functions exposed by the SDK are asynchronous in nature. If you want synchro
 
 Please try using Android Studio to build your application. This should fix most of the errors.
 
+### How do I get the user traits after making an identify call?
+
+You can get traits of a user after making an identify call as shown below:
+
+```typescript
+await rc.getRudderContext((context) => {
+    console.log("Traits are :" + JSON.stringify(context.traits));
+});
+```
+
 ## Contact us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

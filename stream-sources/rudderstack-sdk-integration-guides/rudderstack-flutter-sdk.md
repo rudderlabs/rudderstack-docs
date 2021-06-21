@@ -388,6 +388,18 @@ You can set the log level to one of the following values:
 5. `DEBUG`
 6. `VERBOSE`
 
+## FAQ:
+
+### How do I get the user traits after making an identify call?
+
+You can get traits of a user after making an identify call as shown below:
+
+```dart
+Map context = await RudderClient.getRudderContext();
+print(context["traits"]);
+```
+
+
 ## Contact us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-flutter/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
