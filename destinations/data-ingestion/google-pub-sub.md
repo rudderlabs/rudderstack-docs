@@ -35,7 +35,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Google Pub/Sub Connection Settings](../../.gitbook/assets/image%20%2879%29%20%282%29.png)
+![Google Pub/Sub Connection Settings](../../.gitbook/assets/image%20%2879%29%20%282%29%20%282%29%20%282%29.png)
 
 * Enter the following details:
   * **Connection Settings**
@@ -88,7 +88,8 @@ For the `key` fields provided in the attributes map, the `key` is searched in th
 **Note: You can also specify the key path in the payload using the dot notation.**
 
 For example:
-```
+
+```text
 rudderanalytics.track("Track me", {
   category: "category",
   label: "label",
@@ -107,7 +108,7 @@ For the above `track` call, you can specify an attribute mapping for `metadataID
 
 This will create the below attribute metadata object:
 
-```
+```text
 {
    metadataId: "sample-id"
 }

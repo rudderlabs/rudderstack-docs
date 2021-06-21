@@ -28,7 +28,7 @@ To set up the RudderStack Flutter SDK, there are a few prerequisites as mentione
 * It would also help if you have the [Flutter Development Environment](https://flutter.dev/docs/get-started/install) set up on your system.
 
 {% hint style="info" %}
-** We have migrated RudderStack Flutter SDK to Null Safety starting from version 1.0.2 **
+ **We have migrated RudderStack Flutter SDK to Null Safety starting from version 1.0.2** 
 {% endhint %}
 
 ## Installing the RudderStack Flutter SDK

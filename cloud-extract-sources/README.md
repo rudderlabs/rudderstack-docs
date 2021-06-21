@@ -20,13 +20,13 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 
 ## Popular Cloud Extract Sources
 
-{% page-ref page="../stream-sources/rudderstack-event-streams/segment.md" %}
+{% page-ref page="../stream-sources/segment.md" %}
 
 {% page-ref page="salesforce/" %}
 
 {% page-ref page="zendesk.md" %}
 
-{% page-ref page="../stream-sources/rudderstack-event-streams/customerio.md" %}
+{% page-ref page="../stream-sources/customerio.md" %}
 
 {% page-ref page="google-analytics.md" %}
 

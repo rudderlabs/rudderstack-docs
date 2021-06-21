@@ -48,7 +48,7 @@ For more information on sources in RudderStack, check out the [**Connections**](
 {% endhint %}
 
 * Choose the data source from the list of available sources. RudderStack supports the following three types of sources: 
-  * [**Event Streams**](../stream-sources/rudderstack-event-streams/): With these sources, you can collect your event data from all of your web, mobile, and server-side apps and route it to a wide array of customer tools and data warehouses. 
+  * [**Event Streams**](): With these sources, you can collect your event data from all of your web, mobile, and server-side apps and route it to a wide array of customer tools and data warehouses. 
   * \*\*\*\*[**Cloud Extract**](../cloud-extract-sources/): With these sources, you can build ELT pipelines from cloud apps to your data warehouse. 
   * \*\*\*\*[**Warehouse Actions**](../warehouse-actions/): With this option, you can leverage the enriched data residing in your data warehouse as a data source for your whole customer data stack.
 
