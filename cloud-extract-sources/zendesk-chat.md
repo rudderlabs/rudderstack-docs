@@ -10,6 +10,10 @@ Zendesk Chat is a cross-platform live chat software that allows you to reach out
 
 This document guides you in setting up Zendesk Chat as a Cloud Extract source in RudderStack. Once configured, RudderStack automatically ingests your specified Zendesk Chat data, which can then be routed to your data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 To set up Zendesk Chat as a source on the RudderStack dashboard, follow these steps:

@@ -8,6 +8,10 @@ description: Step-by-step guide to ingest your Google AdWords data into RudderSt
 
 This document guides you in setting up Google AdWords as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google AdWords data, which can then be routed to your data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 To add Google AdWords as a source in RudderStack, follow these steps:

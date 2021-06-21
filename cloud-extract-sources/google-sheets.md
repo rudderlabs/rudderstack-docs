@@ -8,6 +8,10 @@ description: Step-by-step guide to ingest data from Google Sheets into RudderSta
 
 With the RudderStack-Google Sheets integration, you can send your spreadsheet data residing within Google Sheets to your preferred data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 Setting up the Google Sheet integration with RudderStack involves three major steps:

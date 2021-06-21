@@ -8,6 +8,10 @@ description: Step-by-step guide to ingest event data from Salesforce into Rudder
 
 This guide is aimed at helping you set up Salesforce as a source in RudderStack in the easiest possible way. With this integration, you can send your Salesforce data to RudderStack as events, which can then be further routed to your preferred data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 To set up Salesforce as a source on the RudderStack dashboard, follow these steps:

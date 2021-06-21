@@ -8,6 +8,10 @@ description: Step-by-step guide to ingest data from your Marketo account into Ru
 
 This document guides you in setting up Marketo as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Marketo data, which can then be routed to your data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 To add Marketo as a source in RudderStack, follow these steps:

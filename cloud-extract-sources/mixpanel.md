@@ -8,6 +8,10 @@ description: Step-by-step guide to ingest data from your Mixpanel account into R
 
 This document guides you in setting up Mixpanel as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Mixpanel data, which can then be routed to your data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 To add Mixpanel as a source in RudderStack, follow these steps:

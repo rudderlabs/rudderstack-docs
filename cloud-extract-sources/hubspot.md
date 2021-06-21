@@ -8,6 +8,10 @@ description: Step-by-step guide to ingest data from HubSpot into RudderStack.
 
 This document guides you in setting up HubSpot as a source in RudderStack. Once configured, RudderStack automatically ingests your specified HubSpot data, which can then be routed to your data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 To set up HubSpot as a source on the RudderStack dashboard, follow these steps:

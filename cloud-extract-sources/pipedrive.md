@@ -8,6 +8,10 @@ description: Step-by-step guide to ingest data from Pipedrive into RudderStack.
 
 This document guides you in setting up Pipedrive as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Pipedrive data, which can then be routed to your data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 To add Pipedrive as a source in RudderStack, follow these steps:

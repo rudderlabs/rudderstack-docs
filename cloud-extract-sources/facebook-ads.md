@@ -10,6 +10,10 @@ description: >-
 
 This document guides you in setting up Facebook Ads as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Facebook Ads data, which can then be routed to your data warehouse destination supported by RudderStack.
 
+{% hint style="info" %}
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+{% endhint %}
+
 ## Getting Started
 
 To add Facebook Ads as a source in RudderStack, follow these steps:
