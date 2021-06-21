@@ -607,7 +607,7 @@ Update the usage of the following classes as per the table below.
 
 You can get the user traits after making an `identify` call in the following way:
 
-% tabs %}
+{% tabs %}
 {% tab title="Objective-C" %}
 ```objectivec
 NSDictionary* traits =  [[RSClient sharedInstance] getContext].traits;
