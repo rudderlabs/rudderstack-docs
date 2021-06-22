@@ -99,6 +99,7 @@
   * [CRM](destinations/crm/README.md)
     * [Salesforce](destinations/crm/salesforce.md)
     * [HubSpot](destinations/crm/hubspot.md)
+    * [Variance](destinations/crm/variance.md)
     * [Zendesk](destinations/crm/zendesk.md)
   * [Marketing](destinations/marketing/README.md)
     * [Marketo](destinations/marketing/marketo.md)
