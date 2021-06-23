@@ -37,10 +37,13 @@ To sucessfully configure LinkedIn Insight Tag as destination you will need **Par
 
 * You will need LinkedIn account. Then you have to [sign in to Campaign Manager](https://www.linkedin.com/campaignmanager/login).
 * You will need to create an ad account. Account name ,an optional Linkedin Page and currency information is asked , but no payment is required.
+![Campaign Manager ad Account](../.gitbook/assets/campaign_mg.png)
 * Next you will be needing **Partner ID**. Click on the desired account name,then you will be able to see **Account Assets** dropdown menu. Select **insight tag**.
+![Account Assets](../.gitbook/assets/account_assets.png)
 * If you are using this for first time you will see **install my insight tag** else you will see **manage insight tag**, click and choose **see tag**.
+![Insight Tag](../.gitbook/assets/insight_tag.png)
 * Then select **I will use a tag manager**. You will be able to see your partner ID. Click on that to copy.
-
+![Partner ID](../.gitbook/assets/partner_id.png)
 * Enter the partner ID obtained above. It should be a series of numbers like `12345`.
 * **Use native SDK to send events** should be enabled. It allows you to send events using device mode.
 
