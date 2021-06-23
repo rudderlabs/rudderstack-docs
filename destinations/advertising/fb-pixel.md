@@ -41,7 +41,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![](../../.gitbook/assets/screen-shot-2021-03-03-at-1.09.38-pm.png)
 
-![](../../.gitbook/assets/screen-shot-2021-03-03-at-1.09.54-pm.png)
+![](../../.gitbook/assets/screen-shot-2021-06-23-at-9.15.42-am%20%282%29.png)
 
 The connection settings are:
 
@@ -78,6 +78,10 @@ More information on how to find your Facebook Pixel ID and Business Access Token
 
   * **Whitelist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. This is only necessary for properties that match the **Default Blacklisted PII** properties above. 
   * **Standard Events Custom Properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, those properties should be mentioned in this setting. 
+  * **Use as Test Destination:** If you will be using this destination for testing purposes, toggle this switch on. Then, enter the `Test Event Code` below. This code can be found on your Facebook Pixel dashboard and is required if the Test Destination flag is turned on.
+
+  \*\*\*\*
+
   * **Limited Data Usage**: If enabled, RudderStack will take the data processing information from the payload and send it to Facebook. The data in the RudderStack payload should be as follows:
 
 ```javascript
