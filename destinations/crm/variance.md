@@ -4,7 +4,7 @@ description: Step-by-step guide to send event data from RudderStack to Variance.
 
 # Variance
 
-The [Variance](https://www.variance.com) Customer Growth Platform hooks into your customer data and makes it easy for anyone to create, access, and manage intent-based signals across all stages of a customer’s journey.
+The [Variance](https://www.variance.com) Customer Growth Platform makes your product, marketing, and sales data operational. It makes it very easy for you to create, access, and manage intent-based signals across all stages of your customers' journey.
 
 ## Getting Started <a id="getting-started"></a>
 
@@ -132,23 +132,15 @@ rudderanalytics.group("sample-group-id", {
 For more information on the `group` call, refer to the [**RudderStack HTTP API Specification**](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification) guide.
 {% endhint %}
 
-## Alias
-
-Variance does not support Alias at this time.
-
-{% hint style="info" %}
-For more information on the `alias` call, refer to the [**RudderStack HTTP API Specification**](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification) guide.
-{% endhint %}
-
 ## Account Mapping
 
 Variance offers a few different ways of mapping your users to accounts/companies. Here's an overview:
 
-1. Group: if you already use the Group call to indicate the Account, then you don’t need to fill in anything. We will extract the Account automatically, and you’re good to go.
-1. Identify with custom traits (ex. `company.id` and `company.name`): choose this option if you include some information about the Account/Company/Organization as a trait in each Identify call. When you choose this option you'll need to let us know the name of the trait you use. For instance, if you do something like `{'company':{'id':1,'name':'Awesome Inc.'}}` you could add `company.id` as the Account ID trait and `company.name` as the Account Name trait.
-1. (Fallback) Identify email trait domain extraction: if you don't use either of the methods above, we can extract the domain from the `email` trait and use that as the Account name.
+1. Group: if you already use the Group call to indicate the Account, then you don’t need to fill in anything. Variance will extract the Account automatically, and you’re good to go.
+1. Identify with custom traits (ex. `company.id` and `company.name`): choose this option if you include some information about the Account/Company/Organization as a trait in each Identify call. When you choose this option you'll need to let Variance know the name of the trait you use. For instance, if you do something like `{'company':{'id':1,'name':'Awesome Inc.'}}` you could add `company.id` as the Account ID trait and `company.name` as the Account Name trait.
+1. (Fallback) Identify email trait domain extraction: if you don't use either of the methods above, Variance can extract the domain from the `email` trait and use that as the Account name.
 
-Note: if none of these work for your setup, [reach out to Variance support](mailto:support@variance.com) and we can discuss alternatives.
+Note: if none of these work for your setup, [reach out to Variance support](mailto:support@variance.com) and they can discuss alternatives.
 
 ## FAQs
 
