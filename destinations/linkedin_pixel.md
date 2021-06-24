@@ -35,7 +35,7 @@ Once you have confirmed that the platform supports sending events to LinkedIn, p
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-![Configuration settings for LinkedIn Insight Tag](../.gitbook/assets/campaign_mg.png)
+![Configuration settings for LinkedIn Insight Tag](../.gitbook/assets/Dashboard_linkedin.png)
 
 ## LinkedIn Insight Tag Configuration Settings on the RudderStack Dashboard
 
