@@ -4,11 +4,11 @@ description: Step-by-step guide to send your event data from RudderStack to Link
 
 # LinkedIn Insight Tag 
 
-The [Linkedin Insight Tag](https://business.linkedin.com/marketing-solutions/insight-tag) is a lightweight code JS code that you can add to your website to enable in-depth campaign reporting and unlock valualbe insights about your website visitors. You can use the linkedIn Insight Tag to track conversions, retarget website visitors and unlock additional insights about members interacting with your ads.
+The [Linkedin Insight Tag](https://business.linkedin.com/marketing-solutions/insight-tag) is a lightweight JS code that you can add to your website to enable in-depth campaign reporting and unlock valualbe insights about your website visitors. You can use the linkedIn Insight Tag to track conversions, retarget website visitors and unlock additional insights about members interacting with your ads.
 
 You can now send your event data directly to LinkedIn Insight Tag through RudderStack.
 
-When you start using the LinkedIn Insight Tag as destination in RudderStack web app, `browser.js` starts loading the LinkedIn insight tag's tracking snippet on your page. If you already have LinkedIn Insight tag snippet installed on your website, you should remove it. Since LinkedIn Insight tag automatically starts loading the pixel on sites which you load the `browser.js` on. It loads asynchronously with the current website and shouldn't slow down the performance of your website.
+When you start using the LinkedIn Insight Tag as a destination in the RudderStack web app, the RudderStack Java-Script sdk starts loading the LinkedIn insight tag's tracking snippet on your website page. If you are already using in your website you should remove it, as LinkedIn Insight tag automatically starts loading the snippet on sites on which you load the Rudderstack JS sdk on. The RudderStack sdk loads asynchronously with the current website and shouldn't slow down the performance of the website on which you are using it.
 
 * The LinkedIn Insight Tag enables the collection of data reagrding members' visit to your website, including the URL, IP Address, referrer, device and browser characteristics, also timestamp.
 
@@ -19,6 +19,8 @@ When you start using the LinkedIn Insight Tag as destination in RudderStack web 
 ## Getting started
 
 To enable sending your event data to LinkedIn Insight Tag, you will first need to add it as a destination to the source from which you are sending your event data.
+
+* `Note: This is device-mode only destination for JS source.`
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by LinkedIn Insight Tag, by referring to the table below:
 
@@ -43,7 +45,7 @@ To sucessfully configure LinkedIn Insight Tag as destination you will need **Par
 
 
 * You will need LinkedIn account. Then you have to [sign in to Campaign Manager](https://www.linkedin.com/campaignmanager/login).
-* You will need to create an ad account. Account name ,an optional Linkedin Page and currency information is asked , but no payment is needed.
+* You will need to create an ad account. Account name ,an optional Linkedin Page and currency information is asked , as of now no payment is required.
 
 ![Campaign Manager ad Account](../.gitbook/assets/Campaign_mg.png)
 
@@ -60,6 +62,10 @@ To sucessfully configure LinkedIn Insight Tag as destination you will need **Par
 
 * Enter the partner ID obtained above. It should be a series of numbers like `12345`.
 * **Use native SDK to send events** should be enabled. It allows you to send events using device mode.
+
+You should now see the domains of the website on which the Insight Tag is Loaded.
+
+![Domains](../.gitbook/assets/Domains.png)
 
 ## Contact Us
 
