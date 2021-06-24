@@ -57,7 +57,7 @@ Add the regex expression without the global\(`g`\) parameter. It is added by Rud
 
 * Identify Template ****
 
-Provide the template that you want the identify event to be transformed to when sent to slack. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is, `Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`  
+Provide the template that you want the identify event to be transformed to when sent to slack. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is,`Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`  
 where the traits key and value are the key-value pairs in the traits object of [Identify](https://docs.rudderstack.com/getting-started/rudderstack-api-spec#identifypayload) payload. The `name` field in the template is determined from either of the following:
 
 1. `traits.name`
@@ -85,6 +85,34 @@ There are three settings to configure.
 * Webhook URL
 
   ****Add your slack's incoming [Webhook URL](https://my.slack.com/services/new/incoming-webhook/).
+
+## Handlebar Expression
+
+For the Slack destination, RudderStack leverages the Handlebar.js library for including variables into your dynamic Slack messages.
+
+#### Accessible Variables
+
+The available variables that you can select from in your template messages are listed below.
+
+| Handlebar Expression | Output |
+| :--- | :--- |
+| `{{name}}` | The identity of the user in the priority listed above |
+| `{{event}}` | The event name i.e. `product viewed` or `user login` |
+| `{{<key_1>}}` or`{{properties.<key_1>}}` | Any of the property values from the event's properties object |
+| `{{propertiesList}}` | This will give you a JSON stringified version of your properties object |
+| `{{traits}}` | This will give you a JSON stringified version of your traits object |
+| `{{traitsList.<key_1>}}` | Any of the trait values from the event's traits object |
+
+#### Escaped Content
+
+For this destination, like Handlebars, the values returned by the `{{variable}}` are HTML-escaped. Meaning, if `variable` has a `&` in its value then it will be returned as `&amp;`. To avoid this behavior make sure to use triple "curly-brackets" instead of double. `{{variable}}` to `{{{varaible}}}`. This will stop Handlebars from escaping a value if there is one.
+
+| Expression | Variable | Result |
+| :--- | :--- | :--- |
+| `{{variable}}` | `"Marcia & Jan"` | `"Marcia &amp; Jan"` |
+| `{{{variable}}}` | `"Marcia & Jan"` | `"Marcia & Jan"` |
+
+For more information regarding escaped content for the Slack destination please read this [Handlebar Doc](https://handlebarsjs.com/guide/expressions.html#html-escaping).
 
 ## Identify
 
