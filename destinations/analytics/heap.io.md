@@ -20,7 +20,7 @@ Before configuring your source and destination on the RudderStack, verify if the
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | **-** |
+| **Device mode** | **Supported**| - | **-** |
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
