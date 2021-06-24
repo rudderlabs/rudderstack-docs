@@ -31,6 +31,12 @@ Once you have confirmed that the platform supports sending events to LinkedIn, p
 
 * From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and LinkedIn Insight Tag as a destination.
 
+{% hint style="info" %}
+Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+{% endhint %}
+
+![Configuration settings for LinkedIn Insight Tag](../.gitbook/assets/campaign_mg.png)
+
 ## LinkedIn Insight Tag Configuration Settings on the RudderStack Dashboard
 
 To sucessfully configure LinkedIn Insight Tag as destination you will need **Partner ID**. To obtain that, perform the steps below:
