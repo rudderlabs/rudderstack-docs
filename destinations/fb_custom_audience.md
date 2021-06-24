@@ -6,11 +6,9 @@ description: Step-by-step guide to send event data from RudderStack to Facebook 
 
 [Facebook Custom Audience](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences) is a targeting option for Facebook advertising. It helps to find the audiences, who already knows about your business, in Facebook.
 
-The sources can be customer lists, website or app traffic, or engagement on Facebook.
+You can now send your customer data list directly for adding them to already created Facebook Custom Audience through RudderStack.
 
-You can now send your user data list directly for adding them to already created Facebook Custom Audience through RudderStack.
-
-The user informations may include Email, Phone Number, Gender and many others. Find detailed information     [here] (https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#hash)
+The user informations may include Email, Phone Number, Gender and many others. Find detailed information on Supported fields [here] (https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#hash)
 
 
 
@@ -43,20 +41,20 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![](../.gitbook/assets/fb_custom_audience.png)
+![](../.gitbook/assets/facebook_custom_audience_setup.png)
 
 
 The connection settings are:
 
 * **Access Token** Enter the User Token of your business application set up for accessing the Marketing API in Facebook.
 
-* **Schema Fields** Choose your schema fields (at least one) from the available options. This is a mandatory field. RudderStack expects each user information to consist of every schema field that has been chosen on the dashboard. 
+* **Schema Fields** Choose your schema fields (at least one) from the available options. This is a mandatory field. RudderStack expects each user information to consist of every schema field that has been chosen on the dashboard, in the same order. 
 
 {% hint style="info" %}
 Any other information sent, without choosing the particular schema field on the dashboard will be ignored from our end. 
 {% endhint %}
 
-* **Map Specific Events To Audience ID**: In this section, enter the **Event Name(s)** you are going to use to send user data to Rudderstack \(for e.g. `USER_ADD`, `USER_DELETE` etc.\). Also, enter the corresponding **Custom Audience ID(s)** to which the audiences will be added to or removed from.
+* **Map Specific Events To Audience ID**: In this section, enter the **Event Name(s)** you are going to use to send user data to Rudderstack \(for e.g.`adding audience`,`remove audience` etc.\). Also, enter the corresponding **Custom Audience ID(s)** to which the audiences will be added to or removed from.
 
 {% hint style="info" %}
 More information on how to find your Access Token and Audienec ID can be found in our FAQs below.
@@ -73,7 +71,9 @@ You can only send `track` events, with the event names that you have specified i
   
 ## The Updated Track Event Structure To Send User Data To Facebook Custom Audience
 
-The `userListAdd` and `userListDelete` blocks expected inside the `properties` field of the track event. 
+The `userListAdd` and `userListDelete` arrays containing the user data objects are expected inside the properties field of the track event.
+
+You can send maximum `1100` user data in each of the above mentioned arrays in a single `track` event.
 
  * **userListAdd**: Enter the user data that needs to be added to the custom audience.
  * **userListDelete**: Enter the user data that needs to be deleted from the custom audience.
