@@ -58,6 +58,7 @@ To sucessfully configure LinkedIn Insight Tag as destination you will need **Par
 ![Insight Tag](../.gitbook/assets/insight_tag.png)
 
 * Then select **I will use a tag manager**. You will be able to see your partner ID. Click on that to copy.
+
 ![Partner ID](../.gitbook/assets/partner_id.png)
 
 * Enter the partner ID obtained above. It should be a series of numbers like `12345`.
