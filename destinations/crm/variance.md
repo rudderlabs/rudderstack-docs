@@ -4,7 +4,9 @@ description: Step-by-step guide to send event data from RudderStack to Variance.
 
 # Variance
 
-The [Variance](https://www.variance.com) Customer Growth Platform makes your product, marketing, and sales data operational. It makes it very easy for you to create, access, and manage intent-based signals across all stages of your customers' journey.
+The [**Variance**](https://www.variance.com) customer growth platform makes your product, marketing, and sales data operational. It lets you to create, access, and manage intent-based signals across all stages of your customers' journey.
+
+RudderStack lets you add Variance as a destination to which you can seamlessly send your event data.
 
 ## Getting Started <a id="getting-started"></a>
 
@@ -18,30 +20,34 @@ Before configuring Variance in RudderStack, verify if the source platform suppor
 | **Cloud Mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-Then, perform the steps below:
+Once you have confirmed that the source platform is supported by Variance, perform the steps below:
 
 * Configure the data source in RudderStack.
 
 {% hint style="info" %}
-Follow the guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details.
+Follow the guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details on adding a source in RudderStack.
 {% endhint %}
 
-* From the list of destinations, select **Variance**.
-* Then, assign a name to the destination and click on **Next**.
-* Select the data source and click on **Next**.
-* Enter the Variance "Webhook URL" and "Authorization Header Value" to configure the destination, as shown:
+* From the list of destinations, select **Variance**. 
+* Then, assign a name to the destination and click on **Next**. 
+* Select the data source and click on **Next**. You will then see the following **Connection Settings** page: 
+
+![](../../.gitbook/assets/image%20%28114%29.png)
+
+* Enter the Variance **Webhook URL** and **Authorization Header Value** to configure the destination. 
 * To transform your event data before sending it to this destination, click on **Create New Transformation**. Otherwise, click on **Next**.
-* Your Variance destination is now configured and enabled.
+
+That's it! Your Variance destination is now configured and enabled.
 
 ## Identify
 
 The `identify` call lets you associate a visiting user to their actions as well as record their traits.
 
 {% hint style="info" %}
-As a best practice, please make sure that the `identify` call is made at the start of every session or page load for logged-in users, if possible. This will ensure all the latest traits are captured.
+As a best practice, make sure that the `identify` call is made at the start of every session or page load for logged-in users, if possible. This will ensure all their latest traits are captured.
 {% endhint %}
 
 A sample `identify` call is as shown:
@@ -119,19 +125,31 @@ For more information on the `group` call, refer to the [**RudderStack HTTP API S
 
 Variance offers a few different ways of mapping your users to accounts/companies. Here's an overview:
 
-1. Group: if you already use the Group call to indicate the Account, then you don’t need to fill in anything. Variance will extract the Account automatically, and you’re good to go.
-2. Identify with custom traits \(ex. `company.id` and `company.name`\): choose this option if you include some information about the Account/Company/Organization as a trait in each Identify call. When you choose this option you'll need to let Variance know the name of the trait you use. For instance, if you do something like `{'company':{'id':1,'name':'Awesome Inc.'}}` you could add `company.id` as the Account ID trait and `company.name` as the Account Name trait.
-3. \(Fallback\) Identify email trait domain extraction: if you don't use either of the methods above, Variance can extract the domain from the `email` trait and use that as the Account name.
+### **Group**
 
-Note: if none of these work for your setup, [reach out to Variance support](mailto:support@variance.com) and they can discuss alternatives.
+If you already use the `group` call to indicate the Account, then you don’t need to fill in anything. Variance will extract the Account automatically, and you’re good to go.
+
+### **Identify** **with Custom Traits** \(ex. `company.id` and `company.name`\): 
+
+Choose this option if you include some information about the Account/Company/Organization as a trait in each `identify` call. When you choose this option you'll need to let Variance know the name of the trait you use. 
+
+For instance, if you pass something like `{'company':{'id':1,'name':'Awesome Inc.'}}` , you could add `company.id` as the **Account ID** trait and `company.name` as the **Account Name** trait.
+
+### Identify Email Trait Domain Extraction \(Fallback\) 
+
+If you don't use either of the methods above, Variance can extract the domain from the `email` trait and use that as the Account name.
+
+{% hint style="info" %}
+If none of these methods work for your setup, [**reach out to Variance support**](mailto:support@variance.com) ****to discuss alternatives.
+{% endhint %}
 
 ## FAQs
 
 ### How do I get the Variance Webhook URL/Authorization Header Value?
 
-Head to the [Integrations &gt; Rudderstack](https://app.variance.com/integrations) page in Variance then add a Rudderstack Connection. For more information visit our [Docs @Variance: RudderStack](https://www.variance.com/docs/rudderstack).
+Head to the [**Integrations - Rudderstack**](https://app.variance.com/integrations) page in Variance and then add a Rudderstack Connection. For more information check the [**Variance docs for RudderStack**.](https://www.variance.com/docs/rudderstack)
 
 ## Contact Us
 
-If you come across any issues while configuring or using Variance with RudderStack, feel free to [contact us](mailto:support@variance.com). We are happy to help.
+If you come across any issues while configuring or using Variance with RudderStack, feel free to [**contact the Variance team** ](mailto:support@variance.com) ****or [**get in touch**](mailto:%20docs@rudderstack.com) ****with us. You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
 
