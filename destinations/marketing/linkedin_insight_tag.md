@@ -37,7 +37,7 @@ Once you have confirmed that the platform supports sending events to LinkedIn, p
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-![Configuration settings for LinkedIn Insight Tag](../.gitbook/assets/Dashboard_linkedin.png)
+![Configuration Settings](https://user-images.githubusercontent.com/59817155/123381912-f36d8980-d5ae-11eb-9f4c-cb75fb42ba47.png)
 
 ## LinkedIn Insight Tag Configuration Settings on the RudderStack Dashboard
 
@@ -47,30 +47,27 @@ To sucessfully configure LinkedIn Insight Tag as destination you will need **Par
 * You will need LinkedIn account. Then you have to [sign in to Campaign Manager](https://www.linkedin.com/campaignmanager/login).
 * You will need to create an ad account. Account name ,an optional Linkedin Page and currency information is asked , as of now no payment is required.
 
-![Campaign Manager ad Account](../.gitbook/assets/Campaign_mg.png)
+![Campaign Manager ad Account](https://user-images.githubusercontent.com/59817155/123381910-f23c5c80-d5ae-11eb-843c-5b1a0e4dedd2.png)
 
 * Next you will be needing **Partner ID**. Click on the desired account name,then you will be able to see **Account Assets** dropdown menu. Select **insight tag**.
 
-![Account Assets](../.gitbook/assets/Account_assets.png)
+![Account Assets](https://user-images.githubusercontent.com/59817155/123381898-f0729900-d5ae-11eb-9cfa-f5063eeebb81.png)
 
 * If you are using this for first time you will see **install my insight tag** else you will see **manage insight tag**, click and choose **see tag**.
 
-![Insight Tag](../.gitbook/assets/insight_tag.png)
+![Insight Tag](https://user-images.githubusercontent.com/59817155/123381916-f4062000-d5ae-11eb-945a-960e2dce869e.png)
 
 * Then select **I will use a tag manager**. You will be able to see your partner ID. Click on that to copy.
 
-![Partner ID](../.gitbook/assets/partner_id.png)
+![Partner ID](https://user-images.githubusercontent.com/59817155/123381921-f49eb680-d5ae-11eb-9135-48b3e6f7aac7.png)
 
 * Enter the partner ID obtained above. It should be a series of numbers like `12345`.
 * **Use native SDK to send events** should be enabled. It allows you to send events using device mode.
 
 You should now see the domains of the website on which the Insight Tag is Loaded.
 
-![Domains](../.gitbook/assets/Domains.png)
+![Domains](https://user-images.githubusercontent.com/59817155/123381914-f36d8980-d5ae-11eb-91a1-31f90e7e3557.png)
 
 ## Contact Us
 
 If you come across any issues while configuring LinkedIn Insight Tag with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
-
-
