@@ -54,7 +54,7 @@ The connection settings are:
 Any other information sent, without choosing the particular schema field on the dashboard will be ignored from our end. 
 {% endhint %}
 
-* **Map Specific Events To Audience ID**: In this section, enter the **Event Name(s)** you are going to use to send user data to Rudderstack \(for e.g.`adding audience`,`remove audience` etc.\). Also, enter the corresponding **Custom Audience ID(s)** to which the audiences will be added to or removed from.
+* **Map Specific Events To Audience ID**: In this section, enter the **Event Name(s)** you are going to use to send user data to Rudderstack \(for e.g.`uploadingCustomAudience`,`trimmingCustomAudience` etc.\). Also, enter the corresponding **Custom Audience ID(s)** to which the audiences will be added to or removed from.
 
 {% hint style="info" %}
 More information on how to find your Access Token and Audienec ID can be found in our FAQs below.
