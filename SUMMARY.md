@@ -131,6 +131,7 @@
   * [Advertising](destinations/advertising/README.md)
     * [Google Ads](destinations/advertising/google-ads.md)
     * [Facebook App Events](destinations/advertising/facebook-app-events.md)
+    * [LinkedIn Insight Tag](destinations/advertising/linkedin_insight_tag.md)
     * [Facebook Pixel](destinations/advertising/fb-pixel.md)
     * [Lotame](destinations/advertising/lotame.md)
     * [Bing Ads](destinations/advertising/bingads.md)
