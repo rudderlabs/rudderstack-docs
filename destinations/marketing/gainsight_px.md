@@ -41,7 +41,7 @@ To add a source, follow our guide on [**How to Add a Source and Destination in R
 
 - Assign a name to this destination and click on **Next**. You should then see the following **Connection Settings** screen:
 
-![Connection screen for Gainsight PX](../../.gitbook/assets/gainsight-px-connection-settings-1.png)
+![Connection Settings for Gainsight PX](../../.gitbook/assets/gainsight-px-connection-settings-1.png)
 
 You will need to enter the following settings under **Connection Settings**:
 
@@ -64,7 +64,10 @@ To create custom attributes in Gainsight PX, go to your Gainsight dashboard and 
 
 ![Create Custom Attribute](../../.gitbook/assets/gainsight-px-create-attribute.png)
 
-You can then provide these mappings in the RudderStack dashboard.
+You can then provide these mappings in the RudderStack dashboard as shown:
+
+![Connection Settings 2](https://user-images.githubusercontent.com/59817155/123422602-119dae80-d5dc-11eb-869f-6c796c821821.png)
+![Connection Settings 3](https://user-images.githubusercontent.com/59817155/123422622-18c4bc80-d5dc-11eb-8fb7-03c7b8c4ce7e.png)
 
 
 ## Identify
@@ -81,7 +84,7 @@ RudderStack supports all the default attributes for the **`User`** object. For t
 
 
 {% hint style="warning" %}
-If the custom attribute mapping is not provided, all the attributes apart from the default ones are dropped.
+RudderStack will drop the custom attributes that are not defined in the mapping and send the rest of the attributes to Gainsight PX.
 {% endhint %}
 
 A sample `identify` call is as shown below:
@@ -95,9 +98,12 @@ rudderanalytics.identify("sample-user-id", {
   countryCode: "IN",
   city: "CHENNAI",
   score: 100,
+  hobbyCustomField: "Painting",
   title: "Doctor",
 });
 ```
+
+In the above example, `hobbyCustomField` is a custom field. You will need to provide the mapping for `hobbyCustomField` to the corresponding Custom Attribute name (`hobby`, as shown in the screenshot above) in Gainsight PX. If this mapping is not provided, RudderStack will drop the `hobbyCustomField` attribute and send the other attributes to Gainsight PX.
 
 ## Group
 
