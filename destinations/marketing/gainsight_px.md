@@ -101,7 +101,7 @@ rudderanalytics.identify("sample-user-id", {
 
 ## Group
 
-For the `group` calls, RudderStack associates a **`User`** with an **`Account`** in Gainsight PX. RudderStack will map the `groupId` to the `accountId` in the destination payload.
+For the `group` calls, RudderStack associates a **`User`** with an **`Account`** in Gainsight PX. RudderStack will map the `groupId` to the `accountId` in the Gainsight PX payload.
 
 All the default fields for **`Account`** object are supported. For custom attributes, you can map the custom RudderStack attributes to Gainsight custom attributes in the RudderStack dashboard under **Account Attribute Mapping**, as shown below:
 
