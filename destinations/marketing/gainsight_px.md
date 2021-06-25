@@ -4,7 +4,9 @@ description: Step-by-step guide to send your event data from RudderStack to Gain
 
 # Gainsight PX
 
-Gainsight PX is a complete Product Experience Platform that enables product teams to accelerate onboarding and adoption, create memorable product experiences that efficiently scale onboarding and drive feature adoption through in-app guides, dialogues, and email.
+[**Gainsight PX**](https://www.gainsight.com/product-experience/) is a popular product experience platform that offers cutting-edge product analytics and product engagement features. It allows the product teams to optimize their customer adoption and onboarding flows and design relevant product experiences through email, dialogue, and effective user guides.
+
+RudderStack supports Gainsight PX as a destination to which you can send your event data seamlessly.
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/dest-gainsight-px)**.**
@@ -15,10 +17,10 @@ Gainsight PX is a complete Product Experience Platform that enables product team
 To send your events to Gainsight PX via RudderStack, you will first need to add it as a destination in the RudderStack dashboard.
 
 {% hint style="info" %}
-See our [Connections](https://docs.rudderstack.com/connections) guide to learn more about sources and destinations in RudderStack.
+See our [**Connections**](https://docs.rudderstack.com/connections) guide to learn more about sources and destinations in RudderStack.
 {% endhint %}
 
-Please check if the source platform is supported by Gainsight PX by referring to the table below:
+Before you get started, check if the source platform is supported by Gainsight PX by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -26,76 +28,86 @@ Please check if the source platform is supported by Gainsight PX by referring to
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you've confirmed that the source platform supports sending events to RudderStack, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and select **Gainsight** from the list of supported destinations.
+- From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source and select **Gainsight PX** from the list of supported destinations.
 
 {% hint style="info" %}
-Follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source in RudderStack.
+To add a source, follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack).
 {% endhint %}
 
-- Assign a name to this destination, and click on **Next**. You should then see the following screen:
+- Assign a name to this destination and click on **Next**. You should then see the following **Connection Settings** screen:
 
 ![Connection screen for Gainsight PX](../../.gitbook/assets/gainsight-px-connection-settings-1.png)
 
 You will need to enter the following settings under **Connection Settings**:
 
-- **API Key**: This key is required for using the REST API. To generate your API Key go to **Administration** > **Integrations** > **Rest API**
-- **Product Tag Key**: Provide the `Tag key` for your product. To create a new product or copy a product tag key go to **Administration** > **Products**.
+- **API Key**: Enter the API key required for using the Gainsight PX REST API. To generate the API Key, go to your Gainsight dashboard and navigate to **Administration** - **Integrations** - **Rest API**.
+
+{% hint style="info" %}
+More information on the Gainsight PX Rest API can be found [**here**](https://support.gainsight.com/PX/API_for_Developers/02Usage_of_Different_APIs/Work_with_the_Gainsight_PX_REST_API).
+{% endhint %}
+
+- **Product Tag Key**: Provide the **Tag key** for your product. To create a new product or copy a product tag key, go to **Administration** - **Products** as shown below:
 
 ![Gainsight PX](../../.gitbook/assets/gainsight-px-product-tag.png)
 
-{% hint style="info" %}
-More information on the Gainsight PX Rest API can be found [here](https://support.gainsight.com/PX/API_for_Developers/02Usage_of_Different_APIs/Work_with_the_Gainsight_PX_REST_API).
-{% endhint %}
 
 ### Custom Attributes
 
-You can send Custom Attributes for both `User` and `Account` objects using RudderStack.
+You can send Custom Attributes for both the `User` and `Account` objects using RudderStack.
 
-To create Custom Attributes in Gainsight PX go to **Administration** > **Attributes** and create a New Attribute as shown in the image below.
+To create custom attributes in Gainsight PX, go to your Gainsight dashboard and navigate to **Administration** - **Attributes**. Then, click on the **New Attribute** button as shown in the image below:
 
 ![Create Custom Attribute](../../.gitbook/assets/gainsight-px-create-attribute.png)
 
-Next Provide the mapping in the RudderStack dashboard.
+You can then provide this mapping in the RudderStack dashboard.
+
 
 ## Identify
 
-RudderStack creates a `User` object in Gainsight PX for the `identify` call. Gainsight uses the `identifyId` field as the unique identifier for a User object. RudderStack will map the `userId` from message to `identifyId`. If `userId` is not present, `anonymousId` will be used instead.
+RudderStack creates a **`User`** object in Gainsight PX for the `identify` call. Gainsight uses the `identifyId` field as the unique identifier for this object. RudderStack will then map the `userId` from the message to this `identifyId`. 
 
-All the default fields for `User` object are supported. Additionally, for custom attributes provide the rudder payload key to gainsight key mapping in the RudderStack dashboard as shown in the image below.
+{% hint style="info" %}
+If `userId` is not present, `anonymousId` will be used instead.
+{% endhint %}
 
-**Note** If mapping is not provided, all attributes other than the default ones are dropped.
+RudderStack supports all the default attributes for the **`User`** object. Additionally, for the custom attributes you can map the RudderStack payload key to the Gainsight PX key in the RudderStack dashboard as shown:
 
 ![User Custom Attribute Mapping](../../.gitbook/assets/gainsight-px-user-attribute-mapping-1.png)
 
-Example of identify call:
+
+{% hint style="warning" %}
+If the mapping is not provided, all the attributes apart from the default ones are dropped.
+{% endhint %}
+
+A sample `identify` call is as shown below:
 
 ```javascript
 rudderanalytics.identify("sample-user-id", {
-  email: "user@email.com",
-  name: "Example User",
+  email: "user@domain.com",
+  name: "Some User",
   gender: "M",
-  countryName: "USA",
-  countryCode: "US",
-  city: "New York",
+  countryName: "INDIA",
+  countryCode: "IN",
+  city: "CHENNAI",
   score: 100,
-  title: "Engineer",
+  title: "Doctor",
 });
 ```
 
 ## Group
 
-For group calls, RudderStack associates a `User` with an `Account` in Gainsight PX. RudderStack will map the groupId for message to the `Account` id.
+For the `group` calls, RudderStack associates a **`User`** with an **`Account`** in Gainsight PX. RudderStack will map the `groupId` for message to the **`Account`** ID.
 
-All the default fields for Account object are supported. Additionally, for custom attributes provide the rudder payload key to gainsight key mapping in the RudderStack dashboard.
+All the default fields for **`Account`** object are supported. For custom attributes, you can map the RudderStack payload key to Gainsight key in the RudderStack dashboard as shown below:
 
 ![Account Custom Attribute Mapping](../../.gitbook/assets/gainsight-px-account-custom-attribute-mapping.png)
 
-Example of group call:
+A sample `group` call is as shown:
 
 ```javascript
 rudderanalytics.group("sample-group-id", {
@@ -107,13 +119,14 @@ rudderanalytics.group("sample-group-id", {
 });
 ```
 
-**Note**: `cultureCustomField` is a custom field. Provide the mapping for `cultureCustomField` to the corressponding Custom Attribute Api name in Gainsight PX. If mapping is not provided, all attributes other than the default ones are dropped.
+In the above example, `cultureCustomField` is a custom field. You will need to provide the mapping for `cultureCustomField` to the corressponding Custom Attribute API name in Gainsight PX. If this mapping is not provided, RudderStack will drop the `cultureCustomField` attribute and send the other default attributes to Gainsight.
+
 
 ## Track
 
-RudderStack uses the Custom Event API in Gainsight PX for track calls.
+RudderStack uses the Gainsight PX's Custom Event API for sending the `track` calls.
 
-Example of track call:
+A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track("Track User", {
@@ -122,15 +135,13 @@ rudderanalytics.track("Track User", {
 });
 ```
 
-The `event` field in rudder payload is mapped to `eventName` field in the destination payload.
+The `event` field in the RudderStack payload is mapped to the `eventName` field in the Gainsight PX payload.
 
-You can also set Global Context metadata for Custom Events. The key value pairs for Global Context must be set in the RudderStack dashboard as shown in the image below.
+You can also set the **Global Context** metadata for the custom events. The key-value pairs for Global Context must be set in the RudderStack dashboard under **Global Context Mapping** as shown in the image below:
 
 ![Global Context Mapping](../../.gitbook/assets/gainsight-px-global-context.png)
 
-The Global Context metadata can also be provided in the track payload. Incase it is provided both in Rudder dashboard and payload, the payload will have higher precedence.
-
-Example of track call with global context:
+The Global Context metadata can also be provided in the `track` payload, as shown in the following example:
 
 ```javascript
 rudderanalytics.track("Track User", {
@@ -143,9 +154,13 @@ rudderanalytics.track("Track User", {
 ```
 
 {% hint style="info" %}
-For `Identify`, `Group` and `Track`, userId is required. If `userId` is not present, `anonymousId` will be used.
+In case the global context metadata is provided in the RudderStack dashboard (under **Global Context Mapping**) as well as the payload, the payload will take a higher precedence.
+{% endhint %}
+
+{% hint style="info" %}
+For `identify`, `group` and `track` calls, `userId` is required. If `userId` is not present, `anonymousId` will be used instead.
 {% endhint %}
 
 ## Contact Us
 
-If you come across any issues while configuring Gainsight PX with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Gainsight PX with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
