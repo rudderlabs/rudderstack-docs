@@ -75,13 +75,13 @@ RudderStack creates a **`User`** object in Gainsight PX for the `identify` call.
 If `userId` is not present, `anonymousId` will be used instead.
 {% endhint %}
 
-RudderStack supports all the default attributes for the **`User`** object. Additionally, for the custom attributes you can map the RudderStack payload key to the Gainsight PX key in the RudderStack dashboard as shown:
+RudderStack supports all the default attributes for the **`User`** object. For the custom attributes, you can map the RudderStack payload attribute to the Gainsight PX attribute in the RudderStack dashboard under the **User Attribute Mapping** section, as shown:
 
 ![User Custom Attribute Mapping](../../.gitbook/assets/gainsight-px-user-attribute-mapping-1.png)
 
 
 {% hint style="warning" %}
-If the mapping is not provided, all the attributes apart from the default ones are dropped.
+If the custom attribute mapping is not provided, all the attributes apart from the default ones are dropped.
 {% endhint %}
 
 A sample `identify` call is as shown below:
@@ -141,6 +141,10 @@ You can also set the **Global Context** metadata for the custom events. The key-
 
 ![Global Context Mapping](../../.gitbook/assets/gainsight-px-global-context.png)
 
+{% hint style="info" %}
+For more information on the Global Context feature, refer to the [**Gainsight PX documentation**](https://support.gainsight.com/PX/Engagements/02Engagement_Configuration/Use_Global_Context).
+{% endhint %}
+
 The Global Context metadata can also be provided in the `track` payload, as shown in the following example:
 
 ```javascript
@@ -154,7 +158,7 @@ rudderanalytics.track("Track User", {
 ```
 
 {% hint style="info" %}
-In case the global context metadata is provided in the RudderStack dashboard (under **Global Context Mapping**) as well as the payload, the payload will take a higher precedence.
+In case the Global Context metadata is provided in the RudderStack dashboard (under **Global Context Mapping**) as well as the payload, the payload will take a higher precedence.
 {% endhint %}
 
 {% hint style="info" %}
