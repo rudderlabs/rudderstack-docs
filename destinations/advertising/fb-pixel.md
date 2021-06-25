@@ -41,7 +41,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![](../../.gitbook/assets/screen-shot-2021-03-03-at-1.09.38-pm.png)
 
-![](../../.gitbook/assets/screen-shot-2021-06-23-at-9.15.42-am%20%282%29%20%282%29.png)
+![](../../.gitbook/assets/screen-shot-2021-06-23-at-9.15.42-am%20%282%29%20%282%29%20%282%29.png)
 
 The connection settings are:
 
