@@ -67,7 +67,6 @@ To create custom attributes in Gainsight PX, go to your Gainsight dashboard and 
 You can then provide these mappings in the RudderStack dashboard as shown:
 
 ![Connection Settings 2](https://user-images.githubusercontent.com/59817155/123422602-119dae80-d5dc-11eb-869f-6c796c821821.png)
-![Connection Settings 3](https://user-images.githubusercontent.com/59817155/123422622-18c4bc80-d5dc-11eb-8fb7-03c7b8c4ce7e.png)
 
 
 ## Identify
