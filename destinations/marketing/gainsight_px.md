@@ -147,7 +147,7 @@ You can also set the **Global Context** metadata for the custom events. The key-
 ![Global Context Mapping](../../.gitbook/assets/gainsight-px-global-context.png)
 
 {% hint style="info" %}
-For more information on the Global Context feature, refer to the [**Gainsight PX documentation**](https://support.gainsight.com/PX/Engagements/02Engagement_Configuration/Use_Global_Context).
+**For more information on the Global Context feature and how to use it, refer to the [Gainsight PX documentation](https://support.gainsight.com/PX/Engagements/02Engagement_Configuration/Use_Global_Context).**
 {% endhint %}
 
 The Global Context metadata can also be provided in the `track` payload, as shown in the following example:
