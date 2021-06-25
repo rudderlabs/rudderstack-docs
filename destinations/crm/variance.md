@@ -12,10 +12,10 @@ To enable sending data to Variance, you will first need to add it as a destinati
 
 Before configuring Variance in RudderStack, verify if the source platform supports sending events to RudderStack by referring to the table below:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Device Mode**     | **-**         | **-**         | **-**         |
-| **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device Mode** | **-** | **-** | **-** |
+| **Cloud Mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -23,35 +23,18 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Then, perform the steps below:
 
-- Configure the data source in RudderStack.
+* Configure the data source in RudderStack.
 
 {% hint style="info" %}
 Follow the guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details.
 {% endhint %}
 
-- From the list of destinations, select **Variance**.
-
-<!--TODO-->
-
-- Then, assign a name to the destination and click on **Next**.
-
-<!--TODO-->
-
-- Select the data source and click on **Next**.
-
-<!--TODO-->
-
-- Enter the Variance "Webhook URL" and "Authorization Header Value" to configure the destination, as shown:
-
-<!--TODO-->
-
-- To transform your event data before sending it to this destination, click on **Create New Transformation**. Otherwise, click on **Next**.
-
-<!--TODO-->
-
-- Your Variance destination is now configured and enabled.
-
-<!--TODO-->
+* From the list of destinations, select **Variance**.
+* Then, assign a name to the destination and click on **Next**.
+* Select the data source and click on **Next**.
+* Enter the Variance "Webhook URL" and "Authorization Header Value" to configure the destination, as shown:
+* To transform your event data before sending it to this destination, click on **Create New Transformation**. Otherwise, click on **Next**.
+* Your Variance destination is now configured and enabled.
 
 ## Identify
 
@@ -137,8 +120,8 @@ For more information on the `group` call, refer to the [**RudderStack HTTP API S
 Variance offers a few different ways of mapping your users to accounts/companies. Here's an overview:
 
 1. Group: if you already use the Group call to indicate the Account, then you don’t need to fill in anything. Variance will extract the Account automatically, and you’re good to go.
-1. Identify with custom traits (ex. `company.id` and `company.name`): choose this option if you include some information about the Account/Company/Organization as a trait in each Identify call. When you choose this option you'll need to let Variance know the name of the trait you use. For instance, if you do something like `{'company':{'id':1,'name':'Awesome Inc.'}}` you could add `company.id` as the Account ID trait and `company.name` as the Account Name trait.
-1. (Fallback) Identify email trait domain extraction: if you don't use either of the methods above, Variance can extract the domain from the `email` trait and use that as the Account name.
+2. Identify with custom traits \(ex. `company.id` and `company.name`\): choose this option if you include some information about the Account/Company/Organization as a trait in each Identify call. When you choose this option you'll need to let Variance know the name of the trait you use. For instance, if you do something like `{'company':{'id':1,'name':'Awesome Inc.'}}` you could add `company.id` as the Account ID trait and `company.name` as the Account Name trait.
+3. \(Fallback\) Identify email trait domain extraction: if you don't use either of the methods above, Variance can extract the domain from the `email` trait and use that as the Account name.
 
 Note: if none of these work for your setup, [reach out to Variance support](mailto:support@variance.com) and they can discuss alternatives.
 
@@ -146,8 +129,9 @@ Note: if none of these work for your setup, [reach out to Variance support](mail
 
 ### How do I get the Variance Webhook URL/Authorization Header Value?
 
-Head to the [Integrations > Rudderstack](https://app.variance.com/integrations) page in Variance then add a Rudderstack Connection. For more information visit our [Docs @Variance: RudderStack](https://www.variance.com/docs/rudderstack).
+Head to the [Integrations &gt; Rudderstack](https://app.variance.com/integrations) page in Variance then add a Rudderstack Connection. For more information visit our [Docs @Variance: RudderStack](https://www.variance.com/docs/rudderstack).
 
 ## Contact Us
 
 If you come across any issues while configuring or using Variance with RudderStack, feel free to [contact us](mailto:support@variance.com). We are happy to help.
+

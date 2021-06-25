@@ -357,6 +357,46 @@ Even if you are not having an enterprise account or groups add-on, RudderStack w
 
 Let' say you had defined `Group name trait` as `company_id` and `Group value trait` as `company_name` and made the above call then the user would be associated with a Group name : `RS` and a Group Value : `RudderStack` and you can also see that a user property with type `RS` and value `RudderStack` on user's profile.
 
+## Alias
+
+{% hint style="info" %}
+This feature is currently only available as part of RudderStack Web SDK in Cloud Mode.
+{% endhint %}
+
+RudderStack supports the `alias` call from the Web SDK in Cloud Mode. Refer to [these docs](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#3-5-alias) for information and examples on how to call the `alias` event. 
+
+### Mapping
+
+Amplitude's `alias` call simply creates a **mapping** or link between the `user_id` specified in the `from` parameter to the `global_user_id` specified in the `to` parameter of the `alias` call.
+
+```javascript
+rudderanalytics.alias("user_id", "global_user_id", options, callback);
+```
+
+### Unmapping
+
+With Amplitude, it is possible to **unmap** an already established link, or `alias`. In order to trigger Amplitude to unmap a connection, follow the code snippet template below.
+
+```javascript
+rudderanalytics.alias("user_id_to_unmapped", 
+  {
+    integrations: {
+      Amplitude: {
+        unmap: true
+      }
+    }
+  }
+)
+```
+
+In the snippet above, `user_to_be_unmapped`, will be unmapped or unlinked from the `global_user_id` it is currently linked to.
+
+{% hint style="info" %}
+For the **unmapping** call, it is not necessary to provide a `global_user_id` in the `to` parameter of the `alias` call. If it is included, RudderStack will dismiss it.
+{% endhint %}
+
+ For more information on how the `alias` call works for Amplitude, visit [this link](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
+
 ## Reset
 
 {% hint style="info" %}
