@@ -6,7 +6,7 @@ description: >-
 
 # LinkedIn Insight Tag
 
-The [**LinkedIn Insight Tag**](https://business.linkedin.com/marketing-solutions/insight-tag) is a lightweight JavaScript code for your website that lets you learn more about your customers and optimize your marketing campaigns. You can also use the LinkedIn Insight Tag to track your conversions and retarget your website visitors and customers who interact with your ads.
+The [**LinkedIn Insight Tag**](https://business.linkedin.com/marketing-solutions/insight-tag) is a JavaScript code for your website that lets you learn more about your customers and optimize your marketing campaigns. You can also use the LinkedIn Insight Tag to track your conversions and retarget your website visitors and customers who interact with your ads.
 
 RudderStack lets you send your user events directly to LinkedIn by supporting LinkedIn Insight Tag as a destination.
 
@@ -18,12 +18,12 @@ RudderStack lets you send your user events directly to LinkedIn by supporting Li
 
 The following flow explains how this integration works:
 
-* User configures **LinkedIn Insight Tag** as a destination in RudderStack.
-* User loads the RudderStack JavaScript SDK in their website.
+* The user configures **LinkedIn Insight Tag** as a destination in RudderStack.
+* The user loads the RudderStack JavaScript SDK on their website.
 * The JavaScript SDK automatically loads the Insight Tag tracking code.
 
 {% hint style="warning" %}
-If you are already using LinkedIn Insight Tag in your website, we highly recommend you remove it.
+If you are already using LinkedIn Insight Tag on your website, we highly recommend you remove it.
 {% endhint %}
 
 {% hint style="info" %}
@@ -61,10 +61,10 @@ Follow our [**How to Add a Source and Destination in RudderStack**](https://docs
 
 ## LinkedIn Insight Tag Configuration Settings
 
-To successfully configure LinkedIn Insight Tag as destination you will need a **Partner ID**. To get the Partner ID, follow the steps below:
+To successfully configure LinkedIn Insight Tag as a destination, you will need a **Partner ID**. To get the Partner ID, follow the steps below:
 
 * Sign in to [**LinkedIn Campaign Manager**](https://www.linkedin.com/campaignmanager/login).
-* Then, you will need to create an ad account. Enter your account name, an optional LinkedIn page and currency information. As of now, no payment is required.
+* Then, you will need to create an ad account. Enter your account name, an optional LinkedIn page, and currency information. As of now, no payment is required.
 
 ![Campaign Manager ad Account](https://user-images.githubusercontent.com/59817155/123381910-f23c5c80-d5ae-11eb-843c-5b1a0e4dedd2.png)
 
