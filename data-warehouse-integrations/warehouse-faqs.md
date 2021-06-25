@@ -41,6 +41,10 @@ To avoid this, simply match the `Namespace` for each source in the Source Settin
 
 Doing this will ensure that the mapping will be on the consistent Namespace and only one `RUDDER_ID` will be created for each user no matter how many sources are connected to your warehouse destination.
 
+### How can I delete my staging files in my buckets?
+
+RudderStack will load all events into staging buckets that are configured with your warehouse. You can set a retention policy to delete these files in your staging bucket after a certain amount of time. If no retention policy is set, then the files will accumulate. Make sure your retention policy duration is longer than your warehouse sync frequency duration. We generally suggest a retention duration of **1 month**. The longer the duration, the longer we can rerun event uploads if necessary.
+
 ### Which IPs should be whitelisted?
 
 If you are using the hosted RudderStack service, the following IPs need to be whitelisted in your destination's security configuration:
