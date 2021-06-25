@@ -64,7 +64,7 @@ To create custom attributes in Gainsight PX, go to your Gainsight dashboard and 
 
 ![Create Custom Attribute](../../.gitbook/assets/gainsight-px-create-attribute.png)
 
-You can then provide this mapping in the RudderStack dashboard.
+You can then provide these mappings in the RudderStack dashboard.
 
 
 ## Identify
