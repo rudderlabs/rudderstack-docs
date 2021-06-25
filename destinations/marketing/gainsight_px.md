@@ -101,9 +101,9 @@ rudderanalytics.identify("sample-user-id", {
 
 ## Group
 
-For the `group` calls, RudderStack associates a **`User`** with an **`Account`** in Gainsight PX. RudderStack will map the `groupId` for message to the **`Account`** ID.
+For the `group` calls, RudderStack associates a **`User`** with an **`Account`** in Gainsight PX. RudderStack will map the `groupId` to the `accountId` in the destination payload.
 
-All the default fields for **`Account`** object are supported. For custom attributes, you can map the RudderStack payload key to Gainsight key in the RudderStack dashboard as shown below:
+All the default fields for **`Account`** object are supported. For custom attributes, you can map the custom RudderStack attributes to Gainsight custom attributes in the RudderStack dashboard under **Account Attribute Mapping**, as shown below:
 
 ![Account Custom Attribute Mapping](../../.gitbook/assets/gainsight-px-account-custom-attribute-mapping.png)
 
@@ -119,7 +119,7 @@ rudderanalytics.group("sample-group-id", {
 });
 ```
 
-In the above example, `cultureCustomField` is a custom field. You will need to provide the mapping for `cultureCustomField` to the corressponding Custom Attribute API name in Gainsight PX. If this mapping is not provided, RudderStack will drop the `cultureCustomField` attribute and send the other default attributes to Gainsight.
+In the above example, `cultureCustomField` is a custom field. You will need to provide the mapping for `cultureCustomField` to the corressponding Custom Attribute name in Gainsight PX. If this mapping is not provided, RudderStack will drop the `cultureCustomField` attribute and send the other default attributes to Gainsight.
 
 
 ## Track
