@@ -104,6 +104,25 @@ rudderanalytics.identify("sample-user-id", {
 
 In the above example, `hobbyCustomField` is a custom field. You will need to provide the mapping for `hobbyCustomField` to the corresponding Custom Attribute name (`hobby`, as shown in the screenshot above) in Gainsight PX. If this mapping is not provided, RudderStack will drop the `hobbyCustomField` attribute and send the other attributes to Gainsight PX.
 
+### Location Attribute Mapping
+
+The mapping of the location properties from your **`User`** object to the RudderStack payload is as shown:
+
+| **Gainsight PX Property** | **RudderStack Trait Name** |
+| :--- | :--- |
+| `location.countryName` | `countryName` |
+| `location.countryCode` | `countryCode` |
+| `location.stateName` | `stateName` |
+| `location.stateCode` | `stateCode` |
+| `location.city` | `city` |
+| `location.street` | `street` |
+| `location.postalCode` | `postalCode` |
+| `location.continent` | `continent` |
+| `location.regionName` | `regionName` |
+| `location.timeZone` | `timeZone` |
+| `location.coordinates.latitude` | `latitude` |
+| `location.coordinates.longitude` | `longitude` |
+
 ## Group
 
 For the `group` calls, RudderStack associates a **`User`** with an **`Account`** in Gainsight PX. RudderStack will map the `groupId` to the `accountId` in the Gainsight PX payload.
@@ -127,11 +146,11 @@ rudderanalytics.group("sample-group-id", {
 In the above example, `cultureCustomField` is a custom field. You will need to provide the mapping for `cultureCustomField` to the corressponding Custom Attribute name in Gainsight PX. If this mapping is not provided, RudderStack will drop the `cultureCustomField` attribute and send the other default 
 attributes to Gainsight.
 
-### Location Attribute mapping
+### Location Attribute Mapping
 
-The mapping of location properties from Gainsight PX Account and User objects to RudderStack payload is as shown:
+The mapping of the location properties from your Gainsight PX account to the RudderStack payload is as shown:
 
-| **Gainsight PX** | **RudderStack Trait Name** |
+| **Gainsight PX Property** | **RudderStack Trait Name** |
 | :--- | :--- |
 | `location.countryName` | `countryName` |
 | `location.countryCode` | `countryCode` |
