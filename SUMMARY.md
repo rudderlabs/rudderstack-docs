@@ -111,6 +111,7 @@
     * [MoEngage](destinations/marketing/moengage.md)
     * [Autopilot](destinations/marketing/autopilot.md)
     * [Gainsight](destinations/marketing/gainsight.md)
+    * [Gainsight PX](destinations/marketing/gainsight_px.md)
     * [Leanplum](destinations/marketing/leanplum.md)
     * [Iterable](destinations/marketing/iterable.md)
     * [Appcues](destinations/marketing/appcues.md)

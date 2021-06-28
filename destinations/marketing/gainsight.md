@@ -94,7 +94,7 @@ The mapping of the RudderStack traits to the Gainsight `Person` object fields is
 
 An example of the `identify` call in RudderStack is as shown:
 
-```text
+```javascript
   rudderanalytics.identify(
     "sample-user-id",
     { 
@@ -161,7 +161,7 @@ The mapping of the RudderStack traits to the Gainsight `Company` object fields i
 
 An example `group` call is as shown below:
 
-```text
+```javascript
   rudderanalytics.group(
     "sample-group-id",
     { 
@@ -218,7 +218,7 @@ The **Contract ID** an be provided in the RudderStack dashboard or in the `track
 
 The following is an example of sending `contractId` via a `track` call:
 
-```text
+```javascript
 rudderanalytics.track(
   "Ticket Closure",
   {
@@ -255,7 +255,7 @@ You are now ready to send events to Gainsight using the `track` method.
 
 An example of a `track` call is as shown:
 
-```text
+```javascript
 rudderanalytics.track(
   "Ticket Closure",
   {
