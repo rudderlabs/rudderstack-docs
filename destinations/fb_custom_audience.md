@@ -67,7 +67,7 @@ You can only send `track` events, with the event names that you have specified i
 * Some other important settings are: 
 
   * **Enable Hashing**: Facebook expects user data to be hash encoded using `SHA256`. Rudderstack will hash encode the user data only if this option is enabled.
-  * **Disable Validation**: Facebook has fixed data formats for all the allowed schema fields. While this option is enabled, Rudderstack will `not` cross check whether the user data is sent following the format asked for.
+  * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. While this option is enabled, Rudderstack will `not` perform the primary formatting of data sent by the user.
   
 ## The Updated Track Event Structure To Send User Data To Facebook Custom Audience
 
@@ -77,12 +77,26 @@ You can send maximum `1100` user data in each of the above mentioned arrays in a
 
  * **userListAdd**: Enter the user data that needs to be added to the custom audience.
  * **userListDelete**: Enter the user data that needs to be deleted from the custom audience.
+ * **sessionIdAdd**: Enter if you want to track the session for adding users to a custom audience. This is not a mandatory field. 
+* **sessionIdDelete**: Enter if you want to track the session for removing users from a custom audience. This is not a mandatory   field. One `cannot` add or remove user using the same `session ID` value.
+
+{% hint style="info" %}
+
+For adding the `session` information to any user addition or deletion operation, `session_id`, `batch_seq`, `last_batch_flag` fields are mandatorily expected from Facebook Marketing API. Although data additon and deletion operation is possible without explicitly specifying the session information.
+
+{% endhint %}
 
  The following snippet shows an example of sending `track` event, with specified schema field data \(for e.g.`EMAIL`,`FN`\) in the [RudderStack dashboard](https://app.rudderstack.com/):
 
 
  ```javascript
 rudderanalytics.track("USER_ADD", {
+
+  "sessionIdAdd": 123,
+  "sessionIdDelete":456,
+  "batchSequence": 10,
+  "lastBatchFlag": true,
+
   "userListAdd": [
         {
           "EMAIL": "name1@abc.com",
