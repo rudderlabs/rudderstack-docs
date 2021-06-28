@@ -124,8 +124,27 @@ rudderanalytics.group("sample-group-id", {
 });
 ```
 
-In the above example, `cultureCustomField` is a custom field. You will need to provide the mapping for `cultureCustomField` to the corressponding Custom Attribute name in Gainsight PX. If this mapping is not provided, RudderStack will drop the `cultureCustomField` attribute and send the other default attributes to Gainsight.
+In the above example, `cultureCustomField` is a custom field. You will need to provide the mapping for `cultureCustomField` to the corressponding Custom Attribute name in Gainsight PX. If this mapping is not provided, RudderStack will drop the `cultureCustomField` attribute and send the other default 
+attributes to Gainsight.
 
+### Location Attribute mapping
+
+The mapping of location properties from Gainsight PX Account and User objects to RudderStack payload is as shown:
+
+| **Gainsight PX** | **RudderStack Trait Name** |
+| :--- | :--- |
+| `location.countryName` | `countryName` |
+| `location.countryCode` | `countryCode` |
+| `location.stateName` | `stateName` |
+| `location.stateCode` | `stateCode` |
+| `location.city` | `city` |
+| `location.street` | `street` |
+| `location.postalCode` | `postalCode` |
+| `location.continent` | `continent` |
+| `location.regionName` | `regionName` |
+| `location.timeZone` | `timeZone` |
+| `location.coordinates.latitude` | `latitude` |
+| `location.coordinates.longitude` | `longitude` |
 
 ## Track
 
