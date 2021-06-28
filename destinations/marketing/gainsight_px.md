@@ -106,7 +106,7 @@ In the above example, `hobbyCustomField` is a custom field. You will need to pro
 
 ### Location Attribute Mapping
 
-The mapping of the location properties from your **`User`** object to the RudderStack payload is as shown:
+The mapping of the location properties from the Gainsight PX **`User`** object to the RudderStack payload is as shown:
 
 | **Gainsight PX Property** | **RudderStack Trait Name** |
 | :--- | :--- |
