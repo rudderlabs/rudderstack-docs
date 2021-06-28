@@ -148,7 +148,7 @@ attributes to Gainsight.
 
 ### Location Attribute Mapping
 
-The mapping of the location properties from your Gainsight PX account to the RudderStack payload is as shown:
+The mapping of the location properties from your Gainsight PX **`Account`** object to the RudderStack payload is as shown:
 
 | **Gainsight PX Property** | **RudderStack Trait Name** |
 | :--- | :--- |
