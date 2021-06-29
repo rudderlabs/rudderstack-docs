@@ -73,7 +73,6 @@ You can only send `track` events, with the event names that you have specified i
 
 The `userListAdd` and `userListDelete` arrays containing the user data objects are expected inside the properties field of the track event.
 
-You can send maximum `1100` user data in each of the above mentioned arrays in a single `track` event.
 
  * **userListAdd**: Enter the user data that needs to be added to the custom audience.
  * **userListDelete**: Enter the user data that needs to be deleted from the custom audience.
