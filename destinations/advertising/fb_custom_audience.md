@@ -23,7 +23,7 @@ The user information in your events may include email, phone number, gender, etc
 
 To enable sending your event data to Facebook Custom Audience, you will first need to add it as a destination in RudderStack.Once the destination is configured and enabled, events from RudderStack will start flowing to Custom Audience.
 
-Before configuring Facebook Custom Audience as a destination, verify if the source platform supports sending events to Custom Audience, by referring to the table below:
+Before configuring Facebook Custom Audience as a destination, verify if the source platform supports sending events to Custom Audience by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -52,6 +52,10 @@ To add Custom Audience as a destination in RudderStack, you will need to configu
 
 * **Access Token** Enter the access token of your business application set up for accessing the Facebook Marketing API.
 
+{% hint style="info" %}
+Check the **FAQ** section for more information on how to find your User Access Token.
+{% endhint %}
+
 * **Schema Fields** Choose your schema fields (at least one) from the available options. **This is a mandatory field**. RudderStack expects the user information to consist of every schema field that has been chosen on the dashboard, in the same order. 
 
 {% hint style="info" %}
@@ -61,7 +65,7 @@ Any other information sent without choosing the specified schema field on the da
 * **Map Specific Events To Audience ID**: Enter the **Event Name(s)** you are going to use to send your user data to Rudderstack (for e.g.`uploadingCustomAudience`,`trimmingCustomAudience` etc.\). Also, specify the corresponding **Custom Audience ID(s)** to which the audiences will be added to/removed from.
 
 {% hint style="info" %}
-Check the **FAQ** section for more information on how to find your Access Token and Audience ID.
+Check the **FAQ** section for more information on how to find your Audience ID.
 {% endhint %}
 
 {% hint style="info" %}
