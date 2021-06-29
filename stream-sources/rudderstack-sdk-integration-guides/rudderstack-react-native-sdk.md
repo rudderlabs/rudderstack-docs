@@ -450,7 +450,6 @@ You can get the user traits after making an `identify` call as shown:
 ```typescript
 const rudderContext = await rc.getRudderContext();
 console.log("Traits are : " + JSON.stringify(rudderContext.traits));
-});
 ```
 
 ## Contact Us
