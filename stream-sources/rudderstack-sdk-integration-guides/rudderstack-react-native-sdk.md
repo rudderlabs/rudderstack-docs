@@ -448,9 +448,8 @@ Please try using Android Studio to build your application. This should fix most 
 You can get the user traits after making an `identify` call as shown:
 
 ```typescript
-await rc.getRudderContext((context) => {
-    console.log("Traits are :" + JSON.stringify(context.traits));
-});
+const rudderContext = await rc.getRudderContext();
+console.log("Traits are : " + JSON.stringify(rudderContext.traits));
 ```
 
 ## Contact Us
