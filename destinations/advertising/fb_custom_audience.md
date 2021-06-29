@@ -2,14 +2,17 @@
 description: Step-by-step guide to send event data from RudderStack to Facebook Custom Audience.
 ---
 
-# Facebook Pixel
+# Facebook Custom Audience
 
-[Facebook Custom Audience](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences) is a targeting option for Facebook advertising. It helps to find the audiences, who already knows about your business, in Facebook.
+[**Facebook Custom Audience**](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences) is a popular targeting tool that lets you find people on Facebook interested in your business. It lets you create custom audiences through customer lists, Facebook engagement, and website/app traffic.
 
-You can now send your customer data list directly for adding them to already created Facebook Custom Audience through RudderStack.
+RudderStack lets you send your customer events for creating custom audiences by leveraging the Facebook Marketing API.
 
-The user informations may include Email, Phone Number, Gender and many others. Find detailed information on Supported fields [here] (https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#hash)
+You can now send your customer events data list directly for adding them to already created Facebook Custom Audience through RudderStack.
 
+{% hint style="info" %}
+The user information in your events may include email, phone number, gender, etc. For more information on the supported fields, refer the documentation [here] (https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#hash)
+{% endhint %}
 
 
 {% hint style="success" %}
@@ -18,9 +21,9 @@ The user informations may include Email, Phone Number, Gender and many others. F
 
 ## Getting Started
 
-To enable sending your event data to Facebook Custom Audience, you will first need to add it as a destination to the source from which you are sending your event data.
+To enable sending your event data to Facebook Custom Audience, you will first need to add it as a destination in RudderStack.Once the destination is configured and enabled, events from RudderStack will start flowing to Custom Audience.
 
-Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Facebook Pixel, by referring to the table below:
+Before configuring Facebook Custom Audience as a destination, verify if the source platform supports sending events to Custom Audience, by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -28,63 +31,70 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-Once you have confirmed that the platform supports sending events to Facebook, perform the steps below:
+Once you have confirmed that the platform supports sending events to Custom Audience, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Facebook Custom Audience**.
+* From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Facebook Custom Audience**.
 
 {% hint style="info" %}
-Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+Please follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-* Give a name to the destination and click on **Next**. You should then see the following screen:
+* Give a name to the destination and click on **Next**. You will then see the following screen:
 
 ![Facebook Custom Audience Setup](https://user-images.githubusercontent.com/59817155/123789892-4a4ec800-d8fb-11eb-8ac4-480f7acbf7ef.png)
 
-The connection settings are:
+## Custom Audience Connection Settings
 
-* **Access Token** Enter the User Token of your business application set up for accessing the Marketing API in Facebook.
+To add Custom Audience as a destination in RudderStack, you will need to configure the following settings:
 
-* **Schema Fields** Choose your schema fields (at least one) from the available options. This is a mandatory field. RudderStack expects each user information to consist of every schema field that has been chosen on the dashboard, in the same order. 
+* **Access Token** Enter the access token of your business application set up for accessing the Facebook Marketing API.
+
+* **Schema Fields** Choose your schema fields (at least one) from the available options. **This is a mandatory field**. RudderStack expects the user information to consist of every schema field that has been chosen on the dashboard, in the same order. 
 
 {% hint style="info" %}
-Any other information sent, without choosing the particular schema field on the dashboard will be ignored from our end. 
+Any other information sent without choosing the specified schema field on the dashboard will be ignored by RudderStack. 
 {% endhint %}
 
-* **Map Specific Events To Audience ID**: In this section, enter the **Event Name(s)** you are going to use to send user data to Rudderstack \(for e.g.`uploadingCustomAudience`,`trimmingCustomAudience` etc.\). Also, enter the corresponding **Custom Audience ID(s)** to which the audiences will be added to or removed from.
+* **Map Specific Events To Audience ID**: Enter the **Event Name(s)** you are going to use to send your user data to Rudderstack (for e.g.`uploadingCustomAudience`,`trimmingCustomAudience` etc.\). Also, specify the corresponding **Custom Audience ID(s)** to which the audiences will be added to/removed from.
 
 {% hint style="info" %}
-More information on how to find your Access Token and Audienec ID can be found in our FAQs below.
+Check the **FAQ** section for more information on how to find your Access Token and Audience ID.
 {% endhint %}
 
 {% hint style="info" %}
-You can only send `track` events, with the event names that you have specified in the dashboard.
+You can only send `track` events with the event names specified in the dashboard.
 {% endhint %}
 
 * Some other important settings are: 
 
-  * **Enable Hashing**: Facebook expects user data to be hash encoded using `SHA256`. Rudderstack will hash encode the user data only if this option is enabled.
-  * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. While this option is enabled, Rudderstack will `not` perform the primary formatting of data sent by the user.
+  * **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. RudderStack will hash encode the user data only if this option is enabled.
+
+  * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. When this option is enabled, RudderStack will `not` format the data sent by the user.
   
-## The Updated Track Event Structure To Send User Data To Facebook Custom Audience
+## Updated `track` Event Structure to Send User Data to Custom Audience
 
-The `userListAdd` and `userListDelete` arrays containing the user data objects are expected inside the properties field of the track event.
+The `userListAdd` and `userListDelete` arrays containing the user data objects are expected inside the properties field of the `track` event.
 
 
- * **userListAdd**: Enter the user data that needs to be added to the custom audience.
- * **userListDelete**: Enter the user data that needs to be deleted from the custom audience.
- * **sessionIdAdd**: Enter if you want to track the session for adding users to a custom audience. This is not a mandatory field. 
-* **sessionIdDelete**: Enter if you want to track the session for removing users from a custom audience. This is not a mandatory   field. One `cannot` add or remove user using the same `session ID` value.
+ * **userListAdd**: Refers to the user information that needs to be added to the custom audience.
+ * **userListDelete**: Refers to the user information that needs to be deleted from the custom audience.
+ * **sessionIdAdd**: This is an optional field. You can include this to track the session for adding users to a custom audience. 
+* **sessionIdDelete**: This is an optional field. You can include this to track the session for removing users from a custom audience. 
 
-{% hint style="info" %}
-
-For adding the `session` information to any user addition or deletion operation, `session_id`, `batch_seq`, `last_batch_flag` fields are mandatorily expected from Facebook Marketing API. Although data additon and deletion operation is possible without explicitly specifying the session information.
-
+{% hint style="warning" %}
+You cannot add or remove users from a custom audience using the same `session_id`.
 {% endhint %}
 
- The following snippet shows an example of sending `track` event, with specified schema field data \(for e.g.`EMAIL`,`FN`\) in the [RudderStack dashboard](https://app.rudderstack.com/):
+
+{% hint style="info" %}
+For adding the session information to any user addition/deletion operation, the Facebook Marketing API expects the `session_id`, `batch_seq`, `last_batch_flag` fields to be present. However, note that the data additon and deletion operations are possible without explicitly specifying the session information.
+{% endhint %}
+
+
+The following snippet demonstrates how to send a `track` event with the schema fields \(e.g.`EMAIL`,`FN`\) specified in the RudderStack dashboard:
 
 
  ```javascript
@@ -120,40 +130,51 @@ rudderanalytics.track("USER_ADD", {
 
 ## FAQs
 
-**Where can I find the Custom Audience ID?**
+### Where can I find the Custom Audience ID?**
 
-To get your Custom Audience ID, go to your Facebook Ads Manager account. On the left navigation bar, select `Audiences`, choose the Ad account you have created the custom audience for. 
+- To get your Custom Audience ID, go to your Facebook Ads Manager account. On the left navigation bar, select **Audiences** and choose the Ad account you have created the custom audience for. 
 
 ![](https://user-images.githubusercontent.com/59817155/123789893-4ae75e80-d8fb-11eb-879f-825b7b6662b7.png)
 
-Click on the specific custom audience from the audience list. Click on **History** tab and you will find Audience ID under **Item Changed** column.
+- Then, click on **All Audience** and select the specific custom audience from the list.
+
+
+- Finally, click on **History** tab. Here, you will find the audience ID under the **Item Changed** column, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/123789891-49b63180-d8fb-11eb-8c60-0232bfedaffe.png)
 
 
-#### Where can I find the User Token For The Application?
+### Where can I find the user Access Token for the application?
 
-In order to use the Facebook Marketing API, you need to generate an user access token. We recommend using the [Facebook Developer account](https://developers.facebook.com/) to do so, by following these steps:
+To use the Facebook Marketing API, you need to generate a user access token. Follow these steps to generate a user access token using your [**Facebook Developer account**](https://developers.facebook.com/):
 
-* Log in with the specific Facebook account and click on **My APPS** tab.
+* Log into your Facebook Developer account.
 
-* Create an app of `Business` type if not already created and set up your app with `Marketing API` as product
+* If you haven't created an app already, do so with the type **Business**, as shown:
 
-* Now click on the Tools tab , click on **Access Token Tool** Find your App listed below and click on `need to grant permissions ` on the **User Token** row.
+![](https://user-images.githubusercontent.com/59817155/123803294-cc45ed80-d909-11eb-9ff6-9839c29005fa.png)
 
-![](https://user-images.githubusercontent.com/59817155/123789899-4c188b80-d8fb-11eb-9e7d-81e53b9d3966.png)
+* Set your app up with the **Marketing API** as the product, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/123803479-f697ab00-d909-11eb-8df9-d003c0803d7e.png)
+
+* Next, click on the **Tools** tab , followed by the **View All Tools** link. 
+
+![](https://user-images.githubusercontent.com/59817155/123803114-9f91d600-d909-11eb-82cc-271469d3f27b.png)
+
+*  Then, click on the **Access Token Tool** as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/123789885-4622aa80-d8fb-11eb-9488-20e7d4c5414c.png)
 
-![](https://user-images.githubusercontent.com/59817155/123789896-4b7ff500-d8fb-11eb-95e9-b66db7f49322.png)
+* Find your app and click on the **need to grant permissions** link in the **User Token** row. This will generate the user access token, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/123802258-c00d6080-d908-11eb-8edf-72211dd39cfd.png)
 
 
 {% hint style="info" %}
-For more information on how to use this access token, or to generate your access token via your own app, check out Facebook's [developer documentation](https://developers.facebook.com/docs/marketing-apis/overview/authentication).
+For more information on using this access token or generating the access token via your app, check out Facebook's [**developer documentation**](https://developers.facebook.com/docs/marketing-apis/overview/authentication).
 {% endhint %}
 
 ##  Contact Us
 
-If you come across any issues while configuring Facebook Custom Audience with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
-
+If you come across any issues while configuring Facebook Custom Audience with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
