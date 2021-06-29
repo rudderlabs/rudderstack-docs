@@ -41,8 +41,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![](../.gitbook/assets/facebook_custom_audience_setup.png)
-
+![Facebook Custom Audience Setup](https://user-images.githubusercontent.com/59817155/123789892-4a4ec800-d8fb-11eb-8ac4-480f7acbf7ef.png)
 
 The connection settings are:
 
@@ -125,11 +124,11 @@ rudderanalytics.track("USER_ADD", {
 
 To get your Custom Audience ID, go to your Facebook Ads Manager account. On the left navigation bar, select `Audiences`, choose the Ad account you have created the custom audience for. 
 
-![](../.gitbook/assets/fb_audience_tab.png)
+![](https://user-images.githubusercontent.com/59817155/123789893-4ae75e80-d8fb-11eb-879f-825b7b6662b7.png)
 
 Click on the specific custom audience from the audience list. Click on **History** tab and you will find Audience ID under **Item Changed** column.
 
-![](../.gitbook/assets/audience_id.png)
+![](https://user-images.githubusercontent.com/59817155/123789891-49b63180-d8fb-11eb-8c60-0232bfedaffe.png)
 
 
 #### Where can I find the User Token For The Application?
@@ -142,11 +141,11 @@ In order to use the Facebook Marketing API, you need to generate an user access 
 
 * Now click on the Tools tab , click on **Access Token Tool** Find your App listed below and click on `need to grant permissions ` on the **User Token** row.
 
-![](../.gitbook/assets/view_all_tools.png)
+![](https://user-images.githubusercontent.com/59817155/123789899-4c188b80-d8fb-11eb-9e7d-81e53b9d3966.png)
 
-![](../.gitbook/assets/access_token_tool.png)
+![](https://user-images.githubusercontent.com/59817155/123789885-4622aa80-d8fb-11eb-9488-20e7d4c5414c.png)
 
-![](../.gitbook/assets/grant_permission.png)
+![](https://user-images.githubusercontent.com/59817155/123789896-4b7ff500-d8fb-11eb-95e9-b66db7f49322.png)
 
 
 {% hint style="info" %}
