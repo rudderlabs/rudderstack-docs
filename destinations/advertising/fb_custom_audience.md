@@ -28,7 +28,7 @@ Before configuring Facebook Custom Audience as a destination, verify if the sour
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | - | - | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Cloud mode** | - | - | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -97,7 +97,7 @@ For adding the session information to any user addition/deletion operation, the 
 
 A detailed description of the session fields is documented in the table below (Source: [here](https://developers.facebook.com/docs/marketing-api/reference/custom-audience/users/#parameters)):
 
-|**Key Format Supported In Payload**| **Marketing API Field Name** | **Data Type** |  **Description**|
+|**Rudderstack Supported Field Name**| **Marketing API Field Name** | **Data Type** |  **Description**|
 | :--- | :--- | :--- |:--- |
 |`sessionIdAdd`| `session_id` | `int64` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account. You need to include this while tracking the session for adding users to a custom audience.` |
 |`sessionIdDelete`| `session_id` | `int64` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account. You need to include this while tracking the session for removing users from a custom audience.` |
@@ -107,7 +107,7 @@ A detailed description of the session fields is documented in the table below (S
 
 # Mapping of Schema fields between Facebook Marketing API and [**RudderStack dashboard**](https://app.rudderlabs.com/)
 
-| **Dashboard Field Name** | **Marketing API Schema Field (Key Format Supported In Payload)** | **Field Guidelines**|
+| **Dashboard Field Name** | **Marketing API Schema Field (Rudderstack Supported Field Name)** | **Field Guidelines**|
 | :--- | :--- | :--- |
 |`EMAIL`|`EMAIL`| `Trim leading, trail whitespace, and convert all characters to lowercase.`|
 |`EMAIL_SHA256`|`EMAIL_SHA256`| `In case you are already hashed emails, and also Enable Hashing is switched on in Rudderstack dashboard, emails will get sent to Facebook double-hashed.`|
@@ -128,7 +128,11 @@ A detailed description of the session fields is documented in the table below (S
 |`ZIP`|`ZIP`|`Use lowercase, and no white space. For the US, use only the first 5 digits. For the UK, use the Area/District/Sector format.`|
 |`COUNTRY`|`COUNTRY`|`Use lowercase, 2-letter country codes in ISO 3166-1 alpha-2.`|
 
-Rudderstack has modified the schema names in dashboard to ensure better readability. However, during the event call, the field names must be aligned with the schema names permitted by Facebook Marketing API.
+{% hint style="warning" %}
+
+Rudderstack has modified the schema names in dashboard to ensure better readability. However, during the event call, the field names **must** be aligned with the schema names permitted by Facebook Marketing API, as mentioned above.
+
+{% endhint %}
 
 ## Explicit Formatting Feature
 
