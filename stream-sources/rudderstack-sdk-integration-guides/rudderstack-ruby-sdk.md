@@ -29,7 +29,7 @@ gem install rudder_analytics_sync
 To use the SDK, create a client instance as shown:
 
 ```ruby
-analytics = RudderAnalyticsSync::Client.new(
+Analytics = RudderAnalyticsSync::Client.new(
   write_key: WRITE_KEY, # required
   data_plane_url: DATA_PLANE_URL
   on_error: proc { |error_code, error_body, exception, response|
@@ -41,7 +41,7 @@ analytics = RudderAnalyticsSync::Client.new(
 You can use it as shown in the following snippet:
 
 ```ruby
-analytics.track(
+Analytics.track(
   user_id: user.id,
   event: 'Created Account'
 )
@@ -52,7 +52,7 @@ analytics.track(
 You can manually batch events with `analytics.batch` as shown:
 
 ```ruby
-analytics.batch do |batch|
+Analytics.batch do |batch|
   batch.context = {...}       # shared context for all events
   batch.integrations = {...}  # shared integrations hash for all events
   batch.identify(...)
