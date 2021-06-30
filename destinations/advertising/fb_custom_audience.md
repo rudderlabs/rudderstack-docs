@@ -98,7 +98,7 @@ For adding the session information to any user addition/deletion operation, the 
 A detailed description of the session fields is documented in the table below (Source: [here](https://developers.facebook.com/docs/marketing-api/reference/custom-audience/users/#parameters)):
 
 |**Key Format Supported In Payload**| **Marketing API Field Name** | **Data Type** |  **Description**|
-| :--- | :--- | :--- |:--- |:--- |
+| :--- | :--- | :--- |:--- |
 |`sessionIdAdd`| `session_id` | `int64` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account. You need to include this while tracking the session for adding users to a custom audience.` |
 |`sessionIdDelete`| `session_id` | `int64` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account. You need to include this while tracking the session for removing users from a custom audience.` |
 |`batch_seq,batchSeq,batchSequence`| `batch_seq` | `int64` | `A 1 based sequence number, used to identify the request in the session.` |
