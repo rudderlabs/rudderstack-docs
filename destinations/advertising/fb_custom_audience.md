@@ -56,7 +56,7 @@ To add Custom Audience as a destination in RudderStack, you will need to configu
 Check the **FAQ** section for more information on how to find your User Access Token.
 {% endhint %}
 
-* **Schema Fields** Choose your schema fields (at least one) from the available options. **This is a mandatory field**. RudderStack expects the user information to consist of every schema field that has been chosen on the dashboard, in the same order. 
+* **Schema Fields** Choose your schema fields (at least one) from the available options. **This is a mandatory field**. RudderStack expects the user information to consist of **every** schema field that has been chosen on the dashboard, in the same order. 
 
 {% hint style="info" %}
 Any other information sent without choosing the specified schema field on the dashboard will be ignored by RudderStack. 
@@ -76,8 +76,8 @@ You can only send `track` events with the event names specified in the dashboard
 
   * **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
 
-  * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. When this option is enabled, RudderStack will `not` format the data sent by the user.
-  
+  * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
+
 ## Updated `track` Event Structure to Send User Data to Custom Audience
 
 The `userListAdd` and `userListDelete` arrays containing the user data objects are expected inside the properties field of the `track` event.
@@ -85,29 +85,25 @@ The `userListAdd` and `userListDelete` arrays containing the user data objects a
 
  * **userListAdd**: Refers to the user information that needs to be added to the custom audience.
  * **userListDelete**: Refers to the user information that needs to be deleted from the custom audience.
- * **sessionIdAdd**: This is an optional field. You can include this to track the session for adding users to a custom audience. 
-* **sessionIdDelete**: This is an optional field. You can include this to track the session for removing users from a custom audience. 
-
+ 
 {% hint style="warning" %}
 You cannot add or remove users from a custom audience using the same `session_id`.
 {% endhint %}
 
 
 {% hint style="info" %}
-For adding the session information to any user addition/deletion operation, the Facebook Marketing API expects the `session_id`, `batch_seq`, `last_batch_flag` fields to be present. However, note that the data additon and deletion operations are possible without explicitly specifying the session information.
+For adding the session information to any user addition/deletion operation, the Facebook Marketing API expects the `session_id`, `batch_seq`, `last_batch_flag` fields to be present. **However, note that the data additon and deletion operations are possible without explicitly specifying the session information.**
 {% endhint %}
 
 A detailed description of the session fields is documented in the table below (Source: [here](https://developers.facebook.com/docs/marketing-api/reference/custom-audience/users/#parameters)):
 
-| **Name** | **Data Type** | **Requiered** | **Description**|
-| :--- | :--- | :--- |:--- |
-| `session_id` | `int64` | `yes` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account` |
-| `batch_seq` | `int64` | `yes` | `A 1 based sequence number, used to identify the request in the session.` |
-|`last_batch_flag`|`boolean`|`yes`|`true when sending the last request`|
-|`estimated_num_total`|`int64`|`no`|`Estimated total number of users to be uploaded in a particular session`|
-
-
-Rudderstack has modified the schema names in dashboard to ensure better readability. However, the during event call, the field names must be aligned with the schema names permitted by Facebook Marketing API.
+|**Key Format Supported In Payload**| **Marketing API Field Name** | **Data Type** |  **Description**|
+| :--- | :--- | :--- |:--- |:--- |
+|`sessionIdAdd`| `session_id` | `int64` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account. You need to include this while tracking the session for adding users to a custom audience.` |
+|`sessionIdDelete`| `session_id` | `int64` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account. You need to include this while tracking the session for removing users from a custom audience.` |
+|`batch_seq,batchSeq,batchSequence`| `batch_seq` | `int64` | `A 1 based sequence number, used to identify the request in the session.` |
+|`last_batch_flag,lastBatchFlag`|`last_batch_flag`|`boolean`|`true when sending the last request`|
+|`estimated_num_total,estimatedNumTotal`|`estimated_num_total`|`int64`|`Estimated total number of users to be uploaded in a particular session`|
 
 # Mapping of Schema fields between Facebook Marketing API and [**RudderStack dashboard**](https://app.rudderlabs.com/)
 
@@ -132,10 +128,11 @@ Rudderstack has modified the schema names in dashboard to ensure better readabil
 |`ZIP`|`ZIP`|`Use lowercase, and no white space. For the US, use only the first 5 digits. For the UK, use the Area/District/Sector format.`|
 |`COUNTRY`|`COUNTRY`|`Use lowercase, 2-letter country codes in ISO 3166-1 alpha-2.`|
 
+Rudderstack has modified the schema names in dashboard to ensure better readability. However, during the event call, the field names must be aligned with the schema names permitted by Facebook Marketing API.
 
 ## Explicit Formatting Feature
 
-By default, **Disable Formatting** option is not enabled in RudderStack dashboard. In that case the following behaviour can expected for schema fields listed below:
+When the formatting is enabled in Rudderstack dashboard, the following behaviour can be expected for schema fields listed below:
 
  | **Schema Field Name** | **Example Input** | **Formatted Output ( Before hashing )** |
  | :--- | :--- | :--- |
@@ -196,9 +193,9 @@ rudderanalytics.track("USER_ADD", {
 | `Using only userListDelete`| `yes`|
 | `Using both userListAdd and userListDelete` | `yes`|
 | `Not using both userListAdd and userListDelete` | `no`|
-| `not using only sessionIdAdd` | `yes ( no session will be created for add operation)`|
-| `Not using only sessionIdDelete` | `yes ( no session will be created for delete operation)`|
-| `Not using both sessionIdAdd and sessionIdDelete` | `yes ( no session will be created for both add and delete operation)`|
+| `not using only sessionIdAdd` | `yes ( Rudderstack will not create session for add operation explicitly)`|
+| `Not using only sessionIdDelete` | `yes ( Rudderstack will not create session for delete operation explicitly)`|
+| `Not using both sessionIdAdd and sessionIdDelete` | `yes ( Rudderstack will not create session for both delete and add operation explicitly)`|
 
 ### FAQs
 
