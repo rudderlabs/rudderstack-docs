@@ -18,6 +18,8 @@ This documentation is split into the following four sections:
 
 {% page-ref page="adobe-analytics-web-device-mode.md" %}
 
+{% page-ref page="adobe-analytics-mobile-device-mode.md" %}
+
 {% page-ref page="adobe-analytics-heartbeat.md" %}
 
 {% page-ref page="e-commerce-events.md" %}
