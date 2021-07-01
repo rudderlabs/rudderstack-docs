@@ -62,7 +62,7 @@ For RudderStack to pick up the exported workspace configuration file, please fol
 
 ### Docker
 
-If you are running [RudderStack on Docker](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/docker):
+If you are running [**RudderStack on Docker**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/docker):
 
 * Open `rudder-docker.yml`. 
 * Uncomment the `volumes` section under `backend` service. Replace `<absolute_path_to_workspace_config>` with the path of the downloaded workspace configuration JSON file. 
@@ -70,7 +70,7 @@ If you are running [RudderStack on Docker](https://docs.rudderstack.com/get-star
 
 ### Native Installation
 
-For a [Native RudderStack Installation](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/native-installation):
+For a [**Native RudderStack Installation**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/native-installation):
 
 * Open `.env` file. 
 * Add `RSERVER_BACKEND_CONFIG_CONFIG_FROM_FILE=true` to the file. 
@@ -78,7 +78,7 @@ For a [Native RudderStack Installation](https://docs.rudderstack.com/get-started
 
 ### Developer Machine Setup
 
-If you have set up [RudderStack on a developer machine](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup):
+If you have set up [**RudderStack on a developer machine**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup):
 
 * Open `config/config.yaml`. Look for `configFromFile` and `configJSONPath` under `[BackendConfig]`.  
 * Set `configFromFile` to `true` and set `configJSONPath` to the path of the downloaded workspace configuration JSON file.
