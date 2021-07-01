@@ -281,7 +281,6 @@ NSString *appsflyerId = [AppsFlyerLib shared].getAppsFlyerUID;
 {% endtab %}
 
 {% tab title="Android" %}
-
 ```java
 import com.appsflyer.AppsFlyerLib;
 
@@ -290,13 +289,11 @@ String appsFlyerId = AppsFlyerLib.getInstance().getAppsFlyerUID(this);
 {% endtab %}
 
 {% tab title="ReactNative" %}
-
 ```javascript
 import AppsFlyerIntegrationFactory from 'rudder-integration-appsflyer-react-native/src/bridge';
 
 const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId();
 ```
-
 {% endtab %}
 {% endtabs %}
 
