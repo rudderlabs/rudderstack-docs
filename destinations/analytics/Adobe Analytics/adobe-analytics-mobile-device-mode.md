@@ -1,15 +1,17 @@
 ---
 description: >-
-  Detailed technical documentation on the mobile device mode settings for Adobe Analytics destination.
+  Detailed technical documentation on the Mobile device mode settings for Adobe Analytics destination.
 ---
 
 # Mobile Device Mode Settings
 
 ## Adding Device Mode Integration
 
-* Configure the Manage App Settings tab on the [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard.
+* Configure the Manage App Settings tab with the required details on the [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard.
 
-* Download the `ADBMobileConfig.json` file by clicking on `Config File` present at the bottom of the same tab and place it inside your app. Follow the instruction in Adobe's documentation for [**Android**](https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en)
+* Download the `ADBMobileConfig.json` file by clicking on `Config File` option present at the bottom of the same page and place it inside your app in the following path `src/main/assets/`. 
+
+* Follow the instructions in Adobe documentation here to create the report suite [**Android**](https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en)
 
 {% tabs %}
 {% tab title="Android" %}
@@ -39,7 +41,7 @@ val rudderClient = RudderClient.getInstance(
 )
 ```
 
-* For Android, be sure to add these permission to your app `AndroidManifest.xml`:
+* For Android, make sure you add these permissions to your `AndroidManifest.xml`:
 
 ```groovy
 <uses-permission android:name="android.permission.INTERNET" />
@@ -52,19 +54,19 @@ val rudderClient = RudderClient.getInstance(
 
 ## Sending Events
 
-Map all the events defined at the Adobe Mobile Service dashboard to the `Map Rudder Events to Adobe Custom Eevnts` settings at the Rudderstack dashboard.
+Map all the events defined at the Adobe Mobile Services dashboard at the `Map Rudder Events to Adobe Custom Events` settings on the Rudderstack dashboard.
 
 ## Sending Custom Properties
 
-Map all the properties defined at the Adobe Mobile Service dashboard to the `Map Rudder Context data to Adobe Contex Data` settings at the Rudderstack
+Map all the properties defined at the Adobe Mobile Services dashboard at the `Map Rudder Context data to Adobe Context Data` settings on the Rudderstack dashboard.
 
-% hint style="warning" %}
-**Note**: For Android device mode, do not map `Initialise Heartbeat` & `Heartbeat Playhead Update` with any video events.
+{% hint style="warning" %}
+**Note**: In Android device mode we do not support `Initialise Heartbeat` & `Heartbeat Playhead Update` video events.
 {% endhint %}
 
 ## Identify
 
-When you make an Identify call, Rudderstack sets the Adobe visitorId to the value of the userId. 
+When you make an Identify call, Rudderstack sets the Adobe visitorId to the value of the user’s Rudder userId.
 
 A sample `identify` calls looks like the following:
 
@@ -74,7 +76,7 @@ MainApplication.rudderClient.identify("AdobeUser");
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform and the properties associated with that action. Each action is considered to be an event.
+When you call `track`, Rudder sends an Adobe `trackAction` event, and passes your event name and any properties you mapped to Adobe, as context data values.
 
 A sample `track` calls looks like the following:
 
@@ -92,7 +94,7 @@ MainApplication.rudderClient.track("Order Completed",
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call but is exclusive to your mobile device.
+When you call `screen`, Rudder sends an Adobe `trackState` event, and passes the screen name and any properties you mapped to Adobe, as context data values.
 
 A sample `screen` calls looks like the following:
 
@@ -105,7 +107,7 @@ MainApplication.rudderClient.screen("Home Screen",
 
 ## Reset
 
-Calling reset sets the user’s visitorId to null. Null is Adobe’s default visitorId value until you explicitly set it (by calling identify).
+Calling reset sets the user’s Adobe visitorId to `null`. Default value of Adobe's visitorId is null until you explicitly set it (by calling identify).
 
 A sample `reset` calls looks like the following:
 
@@ -127,10 +129,10 @@ MainApplication.rudderClient.flush()
 
 Configure the below settings at the Rudderstack dashboard:
 
-* Set `Heartbeat Tracking Server URL` and it should be like `[your_namespace].hb.omtrdc.net`.
-* Toggle `Check for Heartbeat calls to be made over https` to set the ssl on or off.
-* Fill `Prefix to add before all conextData property` to add a prefix before custom property.
-* Select `Product Identifier` default is `Product Name`.
+* Set the `Heartbeat Tracking Server URL` and it should be in the format of `[your_namespace].hb.omtrdc.net`.
+* Toggle `Check for Heartbeat calls to be made over https` to enable or disable the `ssl`.
+* Enter `Prefix to add before all contextData property` to append a prefix before custom property.
+* Select `Product Identifier` to look for `Product Id` and its defaulted to `Product Name`.
 
 ## Contact Us
 
