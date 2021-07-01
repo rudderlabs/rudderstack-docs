@@ -1,11 +1,11 @@
 ---
 description: >-
-  Detailed technical documentation on the Android device mode settings for Adobe Analytics destination.
+  Detailed technical documentation on the mobile device mode settings for Adobe Analytics destination.
 ---
 
 # Mobile Device Mode Settings
 
-## Initialization
+## Adding Device Mode Integration
 
 * First configure the Manage App Settings tab on the [**Adobe Mobile Servces**](https://mobilemarketing.adobe.com/) dashbaord.
 
