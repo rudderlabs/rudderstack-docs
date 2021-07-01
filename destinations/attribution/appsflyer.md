@@ -267,9 +267,9 @@ The latest AppsFlyer SDK requires XCode 12. Make sure to meet the requirement. Y
 pod 'Rudder-Appsflyer',' 1.0.0'
 ```
 
-### How do I get the `AppsFlyerId` to send events via Cloud Mode from mobile sources?
+### How do I get the `AppsFlyerId` to send events via Cloud mode from my mobile sources?
 
-Depending on your platform of integration, follow these steps below to get `AppsFlyerId`:
+Depending on your platform of integration, include the following code snippet to get the `AppsFlyerId`:
 
 {% tabs %}
 {% tab title="iOS" %}
@@ -301,7 +301,7 @@ const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId();
 {% endtabs %}
 
 {% hint style="info" %}
-This works only if your source is also having a device mode connection with AppsFlyer i.e AppsFlyer Native SDK is loaded through RudderStack
+This works only if your source has a [**device mode connection**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) with AppsFlyer i.e the AppsFlyer native SDK is loaded through RudderStack.
 {% endhint %}
 
 ## Contact Us
