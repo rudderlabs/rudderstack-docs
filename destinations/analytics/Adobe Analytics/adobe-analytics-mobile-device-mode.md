@@ -22,7 +22,7 @@ implementation 'com.rudderstack.android.sdk:core:1.+'
 implementation 'com.google.code.gson:gson:2.8.6'
 
 // Adobe Analytics
-implementation group: 'com.adobe.mobile', name: 'adobeMobileLibrary', version: '4.18.2'
+implementation 'com.adobe.mobile:adobeMobileLibrary:4.18.2'
 ```
 
 * Initialize the Rudder SDK in the `Application` class's  `onCreate()` method as following:
