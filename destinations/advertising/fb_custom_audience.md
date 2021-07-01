@@ -36,13 +36,13 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Custom Audience, perform the steps below:
 
-* From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Facebook Custom Audience**.
+* From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source. Then, select **Facebook Custom Audience** from the list of destinations.
 
 {% hint style="info" %}
 Please follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-* Give a name to the destination and click on **Next**. You will then see the following screen:
+* Assign a name to the destination and click on **Next**. You will then see the following screen:
 
 ![Facebook Custom Audience Setup](https://user-images.githubusercontent.com/59817155/123789892-4a4ec800-d8fb-11eb-8ac4-480f7acbf7ef.png)
 
@@ -56,10 +56,10 @@ To add Custom Audience as a destination in RudderStack, you will need to configu
 Check the **FAQ** section for more information on how to find your User Access Token.
 {% endhint %}
 
-* **Schema Fields** Choose your schema fields (at least one) from the available options. **This is a mandatory field**. RudderStack expects the user information to consist of **every** schema field that has been chosen on the dashboard, in the same order. 
+* **Schema Fields** Choose your schema fields (at least one) from the available options. **This is a mandatory field**. RudderStack expects the user events to consist of **every** schema field that has been chosen on the dashboard, in the same order. 
 
 {% hint style="info" %}
-Any other information sent without choosing the specified schema field on the dashboard will be ignored by RudderStack. 
+RudderStack will ignore any user information which does not adhere to the specified schema fields in the dashboard settings. 
 {% endhint %}
 
 * **Map Specific Events To Audience ID**: Enter the **Event Name(s)** you are going to use to send your user data to Rudderstack (for e.g.`uploadingCustomAudience`,`trimmingCustomAudience` etc.\). Also, specify the corresponding **Custom Audience ID(s)** to which the audiences will be added to/removed from.
@@ -94,51 +94,52 @@ You cannot add or remove users from a custom audience using the same `session_id
 {% hint style="info" %}
 For adding the session information to any user addition/deletion operation, the Facebook Marketing API expects the `session_id`, `batch_seq`, `last_batch_flag` fields to be present. **However, note that the data additon and deletion operations are possible without explicitly specifying the session information.**
 {% endhint %}
+<br>
 
-A detailed description of the session fields is documented in the table below (Source: [here](https://developers.facebook.com/docs/marketing-api/reference/custom-audience/users/#parameters)):
+A detailed description of the session fields as prescribed in the [**Facebook documentation**](https://developers.facebook.com/docs/marketing-api/reference/custom-audience/users/#parameters) is documented in the following table:
 
-|**Rudderstack Supported Field Name**| **Marketing API Field Name** | **Data Type** |  **Description**|
+|**Rudderstack-supported Field Name**| **Marketing API Field Name** | **Data Type** |  **Description**|
 | :--- | :--- | :--- |:--- |
-|`sessionIdAdd`| `session_id` | `int64` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account. You need to include this while tracking the session for adding users to a custom audience.` |
-|`sessionIdDelete`| `session_id` | `int64` | `Advertiser generated session identifier, used to track the session. It has to be unique in a single ad account. You need to include this while tracking the session for removing users from a custom audience.` |
-|`batch_seq,batchSeq,batchSequence`| `batch_seq` | `int64` | `A 1 based sequence number, used to identify the request in the session.` |
-|`last_batch_flag,lastBatchFlag`|`last_batch_flag`|`boolean`|`true when sending the last request`|
-|`estimated_num_total,estimatedNumTotal`|`estimated_num_total`|`int64`|`Estimated total number of users to be uploaded in a particular session`|
+|`sessionIdAdd`| `session_id` | `int64` | This is the advertiser-generated identifier which is used to add users to a custom audience while tracking the session. It should be unique for each ad account. |
+|`sessionIdDelete`| `session_id` | `int64` | This is the advertiser-generated identifier which is used to remove users from a custom audience while tracking the session. It should be unique for each ad account. |
+|`batch_seq`,`batchSeq`,`batchSequence`| `batch_seq` | `int64` | This refers to the sequence number used to identify the request in the session. |
+|`last_batch_flag`,`lastBatchFlag`|`last_batch_flag`|`boolean`| This is set to `true` when sending the last request.|
+|`estimated_num_total`,`estimatedNumTotal`|`estimated_num_total`|`int64`|Refers to the estimated total number of users to be uploaded in a particular session.|
 
-# Mapping of Schema fields between Facebook Marketing API and [**RudderStack dashboard**](https://app.rudderlabs.com/)
+## Schema Fields Mapping
+
+The following table details the mapping of the schema fields specified in the [**RudderStack dashboard**](https://app.rudderlabs.com/) and the Facebook Marketing API. 
 
 | **Dashboard Field Name** | **Marketing API Schema Field (Rudderstack Supported Field Name)** | **Field Guidelines**|
 | :--- | :--- | :--- |
-|`EMAIL`|`EMAIL`| `Trim leading, trail whitespace, and convert all characters to lowercase.`|
-|`EMAIL_SHA256`|`EMAIL_SHA256`| `In case you are already hashed emails, and also Enable Hashing is switched on in Rudderstack dashboard, emails will get sent to Facebook double-hashed.`|
-|`PHONE`|`PHONE`| `Remove symbols, letters, and any leading zeroes. The country code is needed as prefix, if COUNTRY field is not specified.`|
-|`PHONE_SHA256`|`PHONE_SHA256`|`In case you are already hashed Phone numbers, and also Enable Hashing is switched on in Rudderstack dashboard, Phone numbers will get sent to Facebook double-hashed.`|
-|`GENDER`|`GEN`|`Use these values: m or male for Male and f or female for Female.`|
-|`MOBILE ADVERTISER ID`|`MOBILE_ADVERTISER_ID`|`Use all lowercase, and keep hyphens. This information will not be hashed.`|
-|`MADID`|`MADID`|`Use all lowercase, and keep hyphens. This information will not be hashed.`|
-|`EXTERN_ID`|`EXTERN_ID`|`This information will not be hashed.`|
-|`DOB YEAR (YYYY)`|`DOBY`| `Use the YYYY format from 1900 to current year.`|
-|`DOB MONTH (MM)`|`DOBM`|`Use the MM format from 01 to 12.`|
-|`DOB DATE (DD)`| `DOBD`|`Use the DD format from 01 to 31.`|
-|`LAST NAME` |`LN`|`Use a-z only. Lowercase only, no punctuation. Special characters in UTF-8 format.`|
-|`FIRST NAME` |`FN`|`Use a-z only. Lowercase only, no punctuation. Special characters in UTF-8 format.`|
-|`FIRST NAME INITIAL`|`FI`|`Use a-z only. Lowercase only. Special characters in UTF-8 format.`|
-|`CITY`|`CT`|`Use a-z only. Lowercase only, with no punctuation, no special characters, and no white space.`|
-|`US STATES`|`ST`|`Use the 2-character ANSI abbreviation code, lowercase. Normalize states outside the US in lowercase, with no punctuation, no special characters, and no white space.`|
-|`ZIP`|`ZIP`|`Use lowercase, and no white space. For the US, use only the first 5 digits. For the UK, use the Area/District/Sector format.`|
-|`COUNTRY`|`COUNTRY`|`Use lowercase, 2-letter country codes in ISO 3166-1 alpha-2.`|
+|`EMAIL`|`EMAIL`| Trim any leading or trailing whitespaces and convert all the characters to lower case.|
+|`EMAIL_SHA256`|`EMAIL_SHA256`| In case you are already hashing your emails, they will be double-hashed and sent to Facebook if the **Enable Hashing** option is enabled in the RudderStack dashboard.|
+|`PHONE`|`PHONE`| Remove symbols, letters, and any leading zeroes. The country code is needed as a prefix, if the `COUNTRY` field is not specified in the dashboard.|
+|`PHONE_SHA256`|`PHONE_SHA256`|In case you are already hashing the phone numbers, they will be double-hashed and sent to Facebook if the **Enable Hashing** option is enabled in the RudderStack dashboard.|
+|`GENDER`|`GEN`|Use these values: `m` or `male` for male and `f` or `female` for female.|
+|`MOBILE ADVERTISER ID`|`MOBILE_ADVERTISER_ID`|Use lowercase and keep the hyphens. This information will not be hashed.|
+|`MADID`|`MADID`|Use lowercase and keep the hyphens. This information will not be hashed.|
+|`EXTERN_ID`|`EXTERN_ID`|This information will not be hashed.|
+|`DOB YEAR (YYYY)`|`DOBY`| Use the YYYY format from `1900` to the current year.|
+|`DOB MONTH (MM)`|`DOBM`|Use the MM format from `01` to `12`.|
+|`DOB DATE (DD)`| `DOBD`|Use the DD format from `01` to `31`.|
+|`LAST NAME` |`LN`|Use a-z only. Lower case only, no punctuation. Use special characters in the UTF-8 format.|
+|`FIRST NAME` |`FN`|Use a-z only. Lower case only, no punctuation. Use special characters in the UTF-8 format.|
+|`FIRST NAME INITIAL`|`FI`|Use a-z only. Lower case only. Use special characters in the UTF-8 format.|
+|`CITY`|`CT`|Use a-z only. Lower case only, with no punctuation, no special characters, and no whitespace.|
+|`US STATES`|`ST`|Use the 2-character ANSI abbreviation code in lower case. Normalize the states outside the US in lowercase, with no punctuation, no special characters, and no white space.|
+|`ZIP`|`ZIP`|Use lower case and no white space. For the US, use only the first 5 digits. For the UK, use the Area/District/Sector format.|
+|`COUNTRY`|`COUNTRY`|Use lower case, 2-letter ISO 3166-1 alpha-2 country codes.|
 
 {% hint style="warning" %}
-
-Rudderstack has modified the schema names in dashboard to ensure better readability. However, during the event call, the field names **must** be aligned with the schema names permitted by Facebook Marketing API, as mentioned above.
-
+RudderStack modifies the schema names visible in the dashboard to ensure better readability. However, during the event call, the field names **must** be aligned with the schema names specified by Facebook Marketing API, as mentioned above.
 {% endhint %}
 
 ## Explicit Formatting Feature
 
-When the formatting is enabled in Rudderstack dashboard, the following behaviour can be expected for schema fields listed below:
+When formatting is enabled in the Rudderstack dashboard, the following behaviour can be expected for the schema fields listed in the table below:
 
- | **Schema Field Name** | **Example Input** | **Formatted Output ( Before hashing )** |
+ | **Schema Field Name** | **Example Input** | **Formatted Output (Before Hashing)** |
  | :--- | :--- | :--- |
  | `EMAIL`|`ABC@gmail.com `|`abc@gmail.com`|
  | `PHONE`|`0@96346895`| `96346895`|
@@ -152,10 +153,8 @@ When the formatting is enabled in Rudderstack dashboard, the following behaviour
  |`ZIP`|`11502 @bc`|`11502@bc`|
  |`COUNTRY`|`IN `|`in`|
 
- 
 
-
-The following snippet demonstrates how to send a `track` event with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
+The following code snippet shows a `track` event with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
 
 
  ```javascript
@@ -191,15 +190,17 @@ rudderanalytics.track("USER_ADD", {
 
 ## Facebook Custom Audience Payload Restrictions
 
+
+
 | **Payload Field Name** | **Transformed?** |
 | :--- | :--- | 
-| `Using only userListAdd` | `yes`|
-| `Using only userListDelete`| `yes`|
-| `Using both userListAdd and userListDelete` | `yes`|
-| `Not using both userListAdd and userListDelete` | `no`|
-| `not using only sessionIdAdd` | `yes ( Rudderstack will not create session for add operation explicitly)`|
-| `Not using only sessionIdDelete` | `yes ( Rudderstack will not create session for delete operation explicitly)`|
-| `Not using both sessionIdAdd and sessionIdDelete` | `yes ( Rudderstack will not create session for both delete and add operation explicitly)`|
+| Using only `userListAdd` | Yes|
+| Using only `userListDelete`| Yes|
+| Using both `userListAdd` and `userListDelete` | Yes|
+| Not using both `userListAdd` and `userListDelete` | No|
+| not using only `sessionIdAdd` | Yes (RudderStack will not explicitly create a session for the add operation.)|
+| Not using only `sessionIdDelete` | Yes ( Rudderstack will not explicitly create a session for the delete operation.)|
+| Not using both `sessionIdAdd` and `sessionIdDelete` | Yes ( Rudderstack will not explicitly create sessions for both the delete and add operations.)|
 
 ### FAQs
 
