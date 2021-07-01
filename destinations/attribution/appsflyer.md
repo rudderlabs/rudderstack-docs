@@ -271,6 +271,20 @@ pod 'Rudder-Appsflyer',' 1.0.0'
 
 You can integrate the AppsFlyer Native SDK in your application and retrieve the `appsflyerId` from the SDK and then pass it on to the RudderStack SDK so that it's passed on to the server. This will allow you you send events to AppsFlyer via cloud-mode. You can check the [sample application here with same functionality](https://github.com/rudderlabs/rudder-samples/tree/master/android/appsflyer/appsflyer-cloud-mode-sample).
 
+### How do I get the `AppsFlyerId` when sending events by React Native SDK via Cloud Mode?
+
+You can use the below piece of code to retrieve the AppsFlyerId from Native:
+
+```javascript
+import AppsFlyerIntegrationFactory from 'rudder-integration-appsflyer-react-native/src/bridge';
+
+const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId();
+```
+
+{% hint style="info" %}
+This method works only if your source is having a device mode connection with AppsFlyer i.e AppsFlyer Native SDK is loaded through RudderStack
+{% endhint %}
+
 ## Contact Us
 
 If you come across any issues while configuring AppsFlyer with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
