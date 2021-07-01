@@ -17,7 +17,7 @@ To add Adobe Analytics to your Android Project please follow these steps :
 
 * Open your `app/build.gradle` \(Module: app\) file, and add the following under the `dependencies` section :
 
-```javascript
+```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
 implementation 'com.google.code.gson:gson:2.8.6'
 
@@ -41,7 +41,7 @@ val rudderClient = RudderClient.getInstance(
 
 * For Android, be sure to add these permission to your app `AndroidManifest.xml`:
 
-```javascript
+```groovy
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
