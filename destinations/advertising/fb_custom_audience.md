@@ -201,6 +201,13 @@ rudderanalytics.track("USER_ADD", {
 | Not using only `sessionIdDelete` | Yes ( Rudderstack will not explicitly create a session for the delete operation.)|
 | Not using both `sessionIdAdd` and `sessionIdDelete` | Yes ( Rudderstack will not explicitly create sessions for both the delete and add operations.)|
 
+
+{% hint style="info" %}
+`sessionIdAdd` and `sessionIdDelete` helps you track and use a particular session ID while adding or removing users. This is useful when you are sending data in chunks. If you do not include these fields, Facebook creates a session ID itself. 
+
+Refer to the [Facebook documentation](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#step-2--specify-a-list-of-users) for more information on this.
+{% endhint %}
+
 The following code snippet shows a `track` event having only `userListAdd` with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
 
 ```javascript
@@ -280,7 +287,12 @@ To use the Facebook Marketing API, you need to generate a user access token. Fol
 For more information on using this access token or generating the access token via your app, check out Facebook's [**developer documentation**](https://developers.facebook.com/docs/marketing-apis/overview/authentication).
 {% endhint %}
 
+### Should I use `sessionIdAdd` or `sessionIdDelete` before adding/removing users in Custom Audience?
+
+`sessionIdAdd` and `sessionIdDelete` helps you track and use a particular session ID while adding or removing users. This is useful when you are sending data in chunks. If you do not include these fields, Facebook creates a session ID itself. 
+
+Refer to the [Facebook documentation](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#step-2--specify-a-list-of-users) for more information on this. 
+
 ##  Contact Us
 
 If you come across any issues while configuring Facebook Custom Audience with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
