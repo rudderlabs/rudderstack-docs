@@ -106,6 +106,7 @@ You cannot add or remove users from a custom audience using the same value for `
 {% hint style="info" %}
 For adding the session information to any user addition/deletion operation, the Facebook Marketing API expects the `session_id`, `batch_seq`, `last_batch_flag` fields to be present. **However, note that the data additon and deletion operations are possible without explicitly specifying the session information.**
 {% endhint %}
+
 ## Schema Fields Mapping
 
 The following table details the mapping of the schema fields specified in the [**RudderStack dashboard**](https://app.rudderlabs.com/) and the Facebook Marketing API. 
@@ -190,8 +191,6 @@ rudderanalytics.track("USER_ADD", {
 
 ## Facebook Custom Audience Payload Restrictions
 
-
-
 | **Payload Field Name** | **Transformed?** |
 | :--- | :--- | 
 | Using only `userListAdd` | Yes|
@@ -202,7 +201,7 @@ rudderanalytics.track("USER_ADD", {
 | Not using only `sessionIdDelete` | Yes ( Rudderstack will not explicitly create a session for the delete operation.)|
 | Not using both `sessionIdAdd` and `sessionIdDelete` | Yes ( Rudderstack will not explicitly create sessions for both the delete and add operations.)|
 
-The following code snippet shows a `track` event, having only `userListAdd` field, with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
+The following code snippet shows a `track` event having only `userListAdd` with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
 
 ```javascript
 rudderanalytics.track("USER_ADD", {
@@ -223,18 +222,14 @@ rudderanalytics.track("USER_ADD", {
       ]
 });
 ```
-The `sessionIdAdd` field being absent, the above example does not create session explicitly but successfully adds users to Facebook Custom Audience.
+As the `sessionIdAdd` field is absent, the above example does not create a session explicitly but successfully adds users to Facebook Custom Audience.
 
 {% hint style="info" %}
-
-Similarly, one can use `userListDelete` only in order to remove users from a particular custom audience.
-
+Similarly, you can use `userListDelete` in order to remove users from a particular custom audience without creating a session.
 {% endhint %}
 
 {% hint style="warning" %}
-
-Event payload without `userListAdd` and `userListDelete` field fails to transform and eventually to send data to Facebook Custom Audience.
-
+The event payload must include `userListAdd` or `userListDelete` . Otherwise, the user data won’t be transformed and sent to Custom Audience.
 {% endhint %}
 
 
