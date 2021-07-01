@@ -137,7 +137,7 @@ RudderStack modifies the schema names visible in the dashboard to ensure better 
 
 ## Explicit Formatting Feature
 
-When formatting is enabled in the Rudderstack dashboard, the following behaviour can be expected for the schema fields listed in the table below:
+When formatting is enabled in the Rudderstack dashboard (the **Disable Formatting** option must be disabled), the following behaviour can be expected for the schema fields listed in the table below:
 
  | **Schema Field Name** | **Example Input** | **Formatted Output (Before Hashing)** |
  | :--- | :--- | :--- |
@@ -198,7 +198,7 @@ rudderanalytics.track("USER_ADD", {
 | Using only `userListDelete`| Yes|
 | Using both `userListAdd` and `userListDelete` | Yes|
 | Not using both `userListAdd` and `userListDelete` | No|
-| not using only `sessionIdAdd` | Yes (RudderStack will not explicitly create a session for the add operation.)|
+| Not using only `sessionIdAdd` | Yes (RudderStack will not explicitly create a session for the add operation.)|
 | Not using only `sessionIdDelete` | Yes ( Rudderstack will not explicitly create a session for the delete operation.)|
 | Not using both `sessionIdAdd` and `sessionIdDelete` | Yes ( Rudderstack will not explicitly create sessions for both the delete and add operations.)|
 
