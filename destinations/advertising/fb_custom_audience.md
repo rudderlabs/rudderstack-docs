@@ -132,12 +132,12 @@ The following table details the mapping of the schema fields specified in the [*
 |`COUNTRY`|`COUNTRY`|Use lower case, 2-letter ISO 3166-1 alpha-2 country codes.|
 
 {% hint style="warning" %}
-RudderStack modifies the schema names visible in the dashboard to ensure better readability. However, during the event call, the field names **must** be aligned with the schema names specified by Facebook Marketing API, as mentioned above.
+RudderStack modifies the schema names visible in the dashboard to ensure better readability. However, during the event call, the field names must be exactly the same as the schema names specified by Facebook Marketing API, as mentioned in the table above.
 {% endhint %}
 
 ## Explicit Formatting Feature
 
-When formatting is enabled in the Rudderstack dashboard (the **Disable Formatting** option must be disabled), the following behaviour can be expected for the schema fields listed in the table below:
+If the **Disable Formatting** option is enabled in the RudderStack dashboard, RudderStack ***will not*** format the user data in the format prescribed by the Facebook Marketing API. If it is disabled, RudderStack formats the schema fields input by the user as shown in the table below:
 
  | **Schema Field Name** | **Example Input** | **Formatted Output (Before Hashing)** |
  | :--- | :--- | :--- |
