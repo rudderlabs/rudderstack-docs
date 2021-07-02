@@ -136,6 +136,7 @@
     * [Facebook App Events](destinations/advertising/facebook-app-events.md)
     * [LinkedIn Insight Tag](destinations/advertising/linkedin_insight_tag.md)
     * [Facebook Pixel](destinations/advertising/fb-pixel.md)
+    * [Facebook Custom Audience](destinations/advertising/fb_custom_audience.md)
     * [Lotame](destinations/advertising/lotame.md)
     * [Bing Ads](destinations/advertising/bingads.md)
     * [Pinterest Tag](destinations/advertising/pinterest-ads.md)
