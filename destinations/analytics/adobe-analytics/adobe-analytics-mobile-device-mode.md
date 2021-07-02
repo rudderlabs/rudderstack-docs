@@ -84,7 +84,7 @@ Map all the events defined in the [**Adobe Mobile Services**](https://mobilemark
 Map all the properties defined at the [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard in the **Map Rudder Context data to Adobe Context Data** settings in the Rudderstack dashboard.
 
 {% hint style="warning" %}
-For mobile device mode \(Android\), RudderStack currently does not support the [`**Initialise Heartbeat**`](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#initialize-heartbeat) and [`**Heartbeat Playhead Update**`](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#heartbeat-playhead-update) video events.
+For mobile device mode, RudderStack currently does not support the [**Initialize Heartbeat**](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#initialize-heartbeat) and [**Heartbeat Playhead Update**](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#heartbeat-playhead-update) video events.
 {% endhint %}
 
 ## Identify
