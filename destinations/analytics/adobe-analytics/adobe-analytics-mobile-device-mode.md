@@ -1,18 +1,24 @@
 ---
 description: >-
-  Detailed technical documentation on the mobile device mode settings for Adobe Analytics destination.
+  Detailed technical documentation on the mobile device mode settings for Adobe
+  Analytics destination.
 ---
 
 # Mobile Device Mode Settings
 
-To configure Adobe Analytics via the mobile [**device mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#device-mode), follow these steps:
+This document covers the necessary settings and configurations to send events to Adobe Analytics via your mobile device mode.
 
-{% hint style="info" %}
-Mobile device mode refers to using the Android or iOS SDK to send your events directly to Adobe Analytics.
+{% hint style="success" %}
+Mobile [**device mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#device-mode) refers to using the Android or iOS SDK to send your events directly to Adobe Analytics.
 {% endhint %}
 
-* Click on the **Manage Apps** option on the left nav bar on your [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard.
+{% hint style="info" %}
+For this implementation, we currently support only Android. **Support for iOS is coming soon**.
+{% endhint %}
 
+To configure Adobe Analytics via the mobile device mode, follow these steps:
+
+* Click on the **Manage Apps** option on the left nav bar on your [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard. 
 * **Add** your app or click on an existing app and configure the required settings under the **Manage App Settings** tab, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/124233542-92a2fb80-db30-11eb-8722-c91a07cfa7ab.png)
@@ -22,15 +28,13 @@ Mobile device mode refers to using the Android or iOS SDK to send your events di
 ![](https://user-images.githubusercontent.com/59817155/124233808-db5ab480-db30-11eb-900f-75a3aa9a5367.png)
 
 * Then, place the `ADBMobileConfig.json` file inside your app under `src/main/assets/`. 
+* Finally, follow the instructions in Adobe documentation [**here**](%20https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en) ****to create the report suite in Android.
 
-* Finally, follow the instructions in Adobe documentation [**here**]((https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en) to create the report suite in Android.
-
-{% tabs %}
-{% tab title="Android" %}
+## Adding Adobe Analytics to Your Android Project
 
 To add Adobe Analytics to your Android project, follow these steps :
 
-* Open your `app/build.gradle` \(Module: app\) file, and add the following under the `dependencies` section :
+* Open your `app/build.gradle` file and add the following under the `dependencies` section :
 
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
@@ -62,9 +66,6 @@ val rudderClient = RudderClient.getInstance(
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 
-{% endtab %}
-{% tab title="Android" %}
-
 ## Dashboard Settings to Send Events via the Mobile Device Mode
 
 Configure the following settings in the RudderStack dashboard to use the mobile device mode:
@@ -83,7 +84,7 @@ Map all the events defined in the [**Adobe Mobile Services**](https://mobilemark
 Map all the properties defined at the [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard in the **Map Rudder Context data to Adobe Context Data** settings in the Rudderstack dashboard.
 
 {% hint style="warning" %}
-For mobile device mode (Android), RudderStack currently does not support the [`**Initialise Heartbeat**`](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#initialize-heartbeat) and [`**Heartbeat Playhead Update**`](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#heartbeat-playhead-update) video events.
+For mobile device mode \(Android\), RudderStack currently does not support the [`**Initialise Heartbeat**`](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#initialize-heartbeat) and [`**Heartbeat Playhead Update**`](https://docs.rudderstack.com/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#heartbeat-playhead-update) video events.
 {% endhint %}
 
 ## Identify
@@ -129,10 +130,10 @@ MainApplication.rudderClient.screen("Home Screen",
 
 ## Reset
 
-Calling `reset` sets the user’s Adobe `visitorId` to `null`. 
+Calling `reset` sets the user’s Adobe `visitorId` to `null`.
 
 {% hint style="info" %}
-The default value of Adobe's `visitorId` is `null` until you explicitly set it (by calling `identify`).
+The default value of Adobe's `visitorId` is `null` until you explicitly set it \(by calling `identify`\).
 {% endhint %}
 
 A sample `reset` call is as shown:
@@ -154,3 +155,4 @@ MainApplication.rudderClient.flush()
 ## Contact Us
 
 For more information on any of the sections mentioned in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
