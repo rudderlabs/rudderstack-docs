@@ -79,6 +79,7 @@
     * [Adobe Analytics](destinations/analytics/adobe-analytics/README.md)
       * [Setting Up Adobe Analytics in RudderStack](destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack.md)
       * [Web Device Mode Settings](destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode.md)
+      * [Mobile Device Mode Settings](destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode.md)
       * [Adobe Analytics Heartbeat Measurement](destinations/analytics/adobe-analytics/adobe-analytics-heartbeat.md)
       * [E-commerce Events](destinations/analytics/adobe-analytics/e-commerce-events.md)
     * [Amplitude](destinations/analytics/amplitude.md)
