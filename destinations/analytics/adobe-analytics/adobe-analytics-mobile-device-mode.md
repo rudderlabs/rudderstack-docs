@@ -22,6 +22,7 @@ To add Adobe Analytics to your Android Project please follow these steps :
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
 implementation 'com.google.code.gson:gson:2.8.6'
+implementation 'com.rudderstack.android.integration:adobe:1.0.0'
 
 // Adobe Analytics
 implementation 'com.adobe.mobile:adobeMobileLibrary:4.18.2'
