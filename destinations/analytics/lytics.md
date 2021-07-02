@@ -20,7 +20,7 @@ Before configuring your source and destination on the RudderStack, verify if the
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | **-** |
+| **Device mode** | **Supported** | - | **-** |
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
@@ -49,8 +49,8 @@ To get the API Key, go to your Lytics dashboard, and navigate to **Account** - *
 {% endhint %}
 
 * **Stream**: Assign a name for the stream you want to send your data to.
-* **Block Load**: This is used to get your most updated audience membership and profile data, before sending it to Lytics.
-* **Load ID**: This information is used to identify users across domains.
+* **Ensure Entity(Block Load)**: This is used to get your most updated audience membership and profile data, before sending it to Lytics.
+* **Allow UID Sharing Across Multiple Domains(Load ID)**: This information is used to identify users across domains.
 
 ## Page
 
