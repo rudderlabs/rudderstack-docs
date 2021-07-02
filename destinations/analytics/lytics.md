@@ -20,7 +20,7 @@ Before configuring your source and destination on the RudderStack, verify if the
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | **-** |
+| **Device mode** | **Supported** | - | **-** |
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
@@ -41,16 +41,19 @@ Follow our [Adding a Source and Destination](https://docs.rudderstack.com/gettin
 
 The connection settings are explained in more detail as follows:
 
-* **Account ID**: The Lytics account ID you can get from their dashboard should be entered here.
+* **Account ID**: Enter the the Lytics account ID obtained from your Lytics dashboard. For more information, check out the [**Lytics support page**](https://support.lytics.com/hc/en-us/articles/115001231351-How-do-I-find-my-Lytics-account-ID-).
+
 * **API Key**: Create an API key from Lytics dashboard and enter the details here.
 
 {% hint style="info" %}
 To get the API Key, go to your Lytics dashboard, and navigate to **Account** - **Manage Accounts** - **Account Settings** - **API Token**. You can create an API token here and use this information to configure Lytics as a destination.
 {% endhint %}
 
-* **Stream**: Assign a name for the stream you want to send your data to.
-* **Block Load**: This is used to get your most updated audience membership and profile data, before sending it to Lytics.
-* **Load ID**: This information is used to identify users across domains.
+* **Stream**: Assign a name for the stream where you want to send your data.
+
+* **Ensure Entity(Block Load)**: When this option is enabled, RudderStack gets your most updated audience membership and profile data, before sending it to Lytics.
+
+* **Allow UID Sharing Across Multiple Domains(Load ID)**: When enabled, this option lets you identify users across domains.
 
 ## Page
 
