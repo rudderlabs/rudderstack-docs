@@ -159,31 +159,31 @@ import rudder_analytics
 rudder_analytics.write_key = WRITE_KEY
 rudder_analytics.data_plane_url = DATA_PLANE_URL
 
-rudder_analytics.track('USER-ID', "EVENT-NAME", {
+rudder_analytics.track('USER-ID', 'EVENT-NAME', {
 
- "sessionIdAdd": 123,
- "sessionIdDelete":456,
- "batchSequence": 10,
- "lastBatchFlag": true,
+ 'sessionIdAdd': 123,
+ 'sessionIdDelete':456,
+ 'batchSequence': 10,
+ 'lastBatchFlag': true,
 
- "userListAdd": [
+ 'userListAdd': [
        {
-         "EMAIL": "name1@abc.com",
-         "FN": "name1"
+         'EMAIL': 'name1@abc.com',
+         'FN': 'name1'
        },
        {
-         "EMAIL": "name2@abc.com",
-         "FN": "name2"
+         'EMAIL': 'name2@abc.com',
+         'FN': 'name2'
        }
      ],
-     "userListDelete": [
+     'userListDelete': [
        {
-         "Email": "name3@abc.com",
-         "FN": "name3"
+         'Email': 'name3@abc.com',
+         'FN': 'name3'
        },
        {
-         "Email": "name4@abc.com",
-         "FN": "name4"
+         'Email': 'name4@abc.com',
+         'FN': 'name4'
        }
      ]
 })
@@ -209,23 +209,23 @@ Refer to the [Facebook documentation](https://developers.facebook.com/docs/marke
 
 The following code snippet shows a `track` event having only `userListAdd` with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
 
-```javascript
-rudderanalytics.track("USER_ADD", {
+```python
+rudder_analytics.track('USER-ID', 'EVENT-NAME', {
   sessionIdDelete: 456,
   batchSequence: 10,
   lastBatchFlag: true,
 
   userListAdd: [
     {
-      EMAIL: "name1@abc.com",
-      FN: "name1",
+      EMAIL: 'name1@abc.com',
+      FN: 'name1',
     },
     {
-      EMAIL: "name2@abc.com",
-      FN: "name2",
+      EMAIL: 'name2@abc.com',
+      FN: 'name2',
     },
   ],
-});
+})
 ```
 
 As the `sessionIdAdd` field is absent, the above example does not create a session explicitly but successfully adds users to Facebook Custom Audience.
