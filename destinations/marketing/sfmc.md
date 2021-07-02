@@ -69,14 +69,18 @@ You can find the external key in the SFMC interface by going to **Data & Analyti
 
 \*\*\*\*
 
-* **Map events to External Key:** Use this setting if you would like RudderStack `track` events for creating or updating data extensions in Salesforce Marketing. The External Key of the Data Extension is needed for mapping the data.
+* **Map events to External Key:** This setting is for mapping `track` events to a certain Data Extension in Salesforce Marketing Cloud. For the "Event Name" field, enter the name of the event that you want to send to Salesforce Marketing Cloud. Then, for the "External Key" field, enter the Data Extension's External Key that you would like to route the event data to. Click "Add More" and repeat for all `track` events you would like to send to SFMC.
+
+{% hint style="warning" %}
+If you do not map an event to an External Key and it gets sent to SFMC, you may receive a message saying `"Event not mapped for this track call"`
+{% endhint %}
 
 {% hint style="info" %}
 You can find the external key in the SFMC interface by going to **Data & Analytics**, and navigating to **Contact Builder** - **Data Extensions**. The extension's name can be found in the **External Key** column.
 {% endhint %}
 
-* **Map events to Primary Key:** This is the target data extension's **Primary Key**. If a value is not provided, it defaults to **Contact Key**. You can add multiple primary keys by separating them with commas. ****
-* **Event Name to UUID:** If this is checked, we will generate a UUID and pass it through to SMC as the value for Primary Key for this event called 'Uuid'. It will override the above Primary Key field.
+* **Map events to Primary Key:** For all events going to a Data Extension, there needs to be a `Primary Key`. By default, if you do not use this setting, RudderStack will create a `Primary Key` called `Contact Key` and assign it to the `userId` of the event. If no `userId` is present, then it will be assigned to the `email`. Use this setting if you would like to map your own `Primary Key`. In the "Event Name" field, indicate the name of the event you would like to choose your own `Primary Key` for. Then choose what key from the event payload you would like to act as the `Primary Key`. The key should be present in your `event.properties` and ensure that it is set as a `Primary Key` in your SFMC Data Extension. You can add multiple primary keys by separating them with commas. ****
+* **Event Name to UUID:** This setting is for assigning a UUID as a `Primary Key` for a specified event. If an event name is given in the "Event Name" field and the toggle is turned on, RudderStack will generate a UUID and pass it through to SFMC as the value for a `Primary Key` called `Uuid` for the given event. Using this setting will override any action taken for the **Map events to Primary Key** section above, for the specified event.
 
 ## Creating Data Extensions in SFMC
 
