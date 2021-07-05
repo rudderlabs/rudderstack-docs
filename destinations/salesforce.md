@@ -33,7 +33,13 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 ![Salesforce Connection Settings](../.gitbook/assets/image%20%2841%29.png)
 
-* Please provide your Salesforce username and password here, along with the access token. Then, click on **Next**. Salesforce will be enabled as a destination in RudderStack.
+* Please provide your Salesforce username and password here, along with the access token.
+
+* If you are using Sandbox environment for integration, enable this. Then, click on **Next**. Salesforce will be enabled as a destination in RudderStack.
+
+{% hint style="info" %}
+To know more about Salesforce Sandbox, you can click [here](https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm&type=5).
+{% endhint %}
 
 {% hint style="info" %}
 We **recommend** that you create a new Salesforce account to use it with RudderStack. This will protect any confidential information present in your existing Salesforce account. This is **entirely optional**, however, and you can also use your existing Salesforce account.
