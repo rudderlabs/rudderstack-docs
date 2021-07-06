@@ -769,7 +769,7 @@ rudderanalytics.reset();
 
 ## 4. How to Filter Selective Destinations to Send Event Data
 
-RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. You can do so by passing an integrations object in the **options** parameter of the `identify()`, `page()`, and `track()` methods. Please refer to the [How to Filter Selective Destinations](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations-to-send-event-data) section.
+RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. You can do so by passing an integrations object in the **options** parameter of the `identify()`, `page()`, and `track()` methods. Please refer to the [How to Filter Selective Destinations](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations) section.
 
 ### 4.1. Common Destination Names
 
