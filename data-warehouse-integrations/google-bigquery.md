@@ -65,7 +65,7 @@ Make sure that you create the service account in the same project as BigQuery.
 
 ## Setting Up the Network Access
 
-You will need to whitelist the RudderStack IPs to enable network access to it.
+If necessary, you can whitelist the RudderStack IPs to enable network access to it.
 
 {% hint style="info" %}
 **The IPs to be whitelisted are : `3.216.35.97`, `34.198.90.241` , `54.147.40.62`** , **`23.20.96.9`,** and  **`18.214.35.254`**.
