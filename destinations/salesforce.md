@@ -31,7 +31,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Salesforce Connection Settings](../.gitbook/assets/image%20%2841%29.png)
+![Salesforce Connection Settings](../.gitbook/assets/SF_config.png)
 
 * Provide your Salesforce username and password here along with the access token.
 
