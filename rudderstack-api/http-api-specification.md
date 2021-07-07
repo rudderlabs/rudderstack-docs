@@ -407,7 +407,7 @@ http -a <your_write_key>: https://your-data-plane/v1/alias < alias.json
 
 The `batch` call allows you to send a series of `identify`, `track`, `page`, `group` and `screen` requests in a single batch. This call helps you minimize the number of outbound requests, thus enabling better performance.
 
-As mentioned earlier, RudderStack sets a maximum limit of `500KB` per batch request and `32KB` per call.
+As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch request and `32KB` per call.
 
 ### 12.1. `batch` Payload
 
