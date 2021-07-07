@@ -77,7 +77,7 @@ A workspace token is a unique identifier associated with your current RudderStac
 {% hint style="info" %}
 See the [**Install and Set up RudderStack**](../installing-and-setting-up-rudderstack/) guide for steps on installing open-source RudderStack in your preferred development environment.
 
-See the [**RudderStack API**](../../rudderstack-api-spec/) guide for details on various available RudderStack API and how to use them.
+See the [**RudderStack API**](../../rudderstack-api/) guide for details on various available RudderStack API and how to use them.
 {% endhint %}
 
 ## Data Plane URL

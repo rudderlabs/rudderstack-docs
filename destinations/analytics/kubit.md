@@ -27,7 +27,7 @@ Kubit currently supports only `identify` and `track` calls.
 The `identify` call lets you capture the actions of a visiting user. It also lets you record any traits associated with them such as their name, email address, etc.
 
 {% hint style="info" %}
-For more information on the `identify` call, refer to the [HTTP API Specification](../../rudderstack-api-spec/http-api-specification.md) guide.
+For more information on the `identify` call, refer to the [HTTP API Specification](../../rudderstack-api/http-api-specification.md) guide.
 {% endhint %}
 
 A sample `identify` call is as shown:
@@ -44,7 +44,7 @@ rudderanalytics.identify("userId", {
 The `track` call allows you to capture any user action along with the properties associated with that action.
 
 {% hint style="info" %}
-For more information on the `track` call, refer to the [HTTP API Specification](../../rudderstack-api-spec/http-api-specification.md) guide.
+For more information on the `track` call, refer to the [HTTP API Specification](../../rudderstack-api/http-api-specification.md) guide.
 {% endhint %}
 
 A sample `track` call is as shown:
