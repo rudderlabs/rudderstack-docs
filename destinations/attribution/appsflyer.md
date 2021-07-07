@@ -290,7 +290,7 @@ String appsFlyerId = AppsFlyerLib.getInstance().getAppsFlyerUID(this);
 
 {% tab title="ReactNative" %}
 ```javascript
-import AppsFlyerIntegrationFactory from 'rudder-integration-appsflyer-react-native/src/bridge';
+import AppsFlyerIntegrationFactory from '@rudderstack/rudder-integration-appsflyer-react-native/src/bridge';
 
 const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId();
 ```
