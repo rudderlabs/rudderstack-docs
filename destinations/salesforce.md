@@ -35,7 +35,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Provide your Salesforce username and password here along with the access token.
 
-* If you are using a sandbox environment for integration, enable this. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
+* If you are using a Sandbox environment for integration, enable **sandbox mode**. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
 
 {% hint style="info" %}
 To know more about Salesforce Sandbox, click [here](https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm&type=5).
