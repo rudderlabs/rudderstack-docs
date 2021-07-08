@@ -13,7 +13,7 @@ RudderStack lets you send your customer events for creating custom audiences by 
 You can now send your customer events data list directly for adding them to already created Facebook Custom Audience through RudderStack.
 
 {% hint style="info" %}
-The user information in your events may include email, phone number, gender, etc. For more information on the supported fields, refer the documentation \[here\] \([https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences\#hash](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#hash)\)
+The user information in your events may include email, phone number, gender, etc. For more information on the supported fields, refer the documentation [**here**](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#hash).
 {% endhint %}
 
 {% hint style="success" %}
@@ -73,11 +73,15 @@ Check the **FAQ** section for more information on how to find your Audience ID.
 You can only send `track` events with the event names specified in the dashboard.
 {% endhint %}
 
-* Some other important settings are:
-  * **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
+* Some other important settings are: 
+  * **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard. 
   * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
 
-## Updated `track` Event Structure to Send User Data to Custom Audience
+##  The `track` Event Structure to Send User Data to Custom Audience
+
+{% hint style="warning" %}
+**The Facebook Custom Audience destination supports only `track` calls.**
+{% endhint %}
 
 The `userListAdd` and `userListDelete` arrays containing the user data objects are expected inside the properties field of the `track` event.
 
@@ -99,7 +103,7 @@ You cannot add or remove users from a custom audience using the same value for `
 {% endhint %}
 
 {% hint style="info" %}
-For adding the session information to any user addition/deletion operation, the Facebook Marketing API expects the `session_id`, `batch_seq`, `last_batch_flag` fields to be present. **However, note that the data additon and deletion operations are possible without explicitly specifying the session information.**
+For adding the session information to any user addition/deletion operation, the Facebook Marketing API expects the `session_id`, `batch_seq`, `last_batch_flag` fields to be present. **However, note that the data addition and deletion operations are possible without explicitly specifying the session information.**
 {% endhint %}
 
 ## Schema Fields Mapping
@@ -202,7 +206,7 @@ rudder_analytics.track('USER-ID', 'EVENT-NAME', {
 {% hint style="info" %}
 `sessionIdAdd` and `sessionIdDelete` helps you track and use a particular session ID while adding or removing users. This is useful when you are sending data in chunks. If you do not include these fields, Facebook creates a session ID itself.
 
-Refer to the [Facebook documentation](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#step-2--specify-a-list-of-users) for more information on this.
+Refer to the [**Facebook documentation**](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#step-2--specify-a-list-of-users) for more information on this.
 {% endhint %}
 
 The following code snippet shows a `track` event having only `userListAdd` with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
@@ -282,7 +286,7 @@ For more information on using this access token or generating the access token v
 
 `sessionIdAdd` and `sessionIdDelete` helps you track and use a particular session ID while adding or removing users. This is useful when you are sending data in chunks. If you do not include these fields, Facebook creates a session ID itself.
 
-Refer to the [Facebook documentation](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#step-2--specify-a-list-of-users) for more information on this.
+Refer to the [**Facebook documentation**](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#step-2--specify-a-list-of-users) for more information on this.
 
 ## Contact Us
 
