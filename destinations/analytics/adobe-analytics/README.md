@@ -6,7 +6,7 @@ description: >-
 
 # Adobe Analytics
 
-\*\*\*\*[**Adobe Analytics**](https://www.adobe.io/apis/experiencecloud/analytics.html) is a real-time marketing analytics platform that provides cross-channel insights to discover high-value audiences and deliver business growth. It offers APIs that enable you to integrate all the important customer data into your key business processes.
+[**Adobe Analytics**](https://www.adobe.io/apis/experiencecloud/analytics.html) is a real-time marketing analytics platform that provides cross-channel insights to discover high-value audiences and deliver business growth. It offers APIs that enable you to integrate all the important customer data into your key business processes.
 
 RudderStack supports sending real-time customer events to Adobe Analytics.
 
