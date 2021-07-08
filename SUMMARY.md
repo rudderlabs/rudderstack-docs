@@ -8,6 +8,7 @@
     * [Native Installation](get-started/installing-and-setting-up-rudderstack/native-installation.md)
     * [Developer Machine Setup](get-started/installing-and-setting-up-rudderstack/developer-machine-setup.md)
   * [Config Generator](get-started/config-generator.md)
+  * [Live Events](get-started/live-events.md)
   * [Architecture](get-started/rudderstack-architecture.md)
   * [Dashboard Overview](get-started/dashboard-overview/README.md)
     * [User Management](get-started/dashboard-overview/user-management.md)
