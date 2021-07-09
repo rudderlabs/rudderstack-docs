@@ -11,6 +11,7 @@ RudderStack lets you identify your leads in Salesforce without having to use the
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/salesforce)**.**
 {% endhint %}
+
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Salesforce by referring to the table below:
@@ -34,10 +35,9 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-<img width="703" alt="SF_config" src="https://user-images.githubusercontent.com/59817155/125079748-9a8b0e80-e0e1-11eb-8d58-eda8f773afcf.png">
+![Salesforce Connection Settings](https://user-images.githubusercontent.com/59817155/125079748-9a8b0e80-e0e1-11eb-8d58-eda8f773afcf.png)
 
 * Provide your Salesforce username and password here along with the access token.
-
 * If you are using a Sandbox environment for integration, enable the **Sandbox Mode** option. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
 
 {% hint style="info" %}
@@ -100,14 +100,14 @@ As `lastName` and `company` are needed by the [**Salesforce Leads API**](https:/
 For example, if you wish to collect a custom trait in RudderStack named `newProp`, create a field label named `newProp`. This will generate an API name as `newProp__c`. RudderStack automatically appends the `__c` to any custom trait.
 
 {% hint style="info" %}
-**Make sure you are consistent with your casing**. If the custom fields are created in camelCase, make sure sure that you send the traits to RudderStack in camelCase. If you're creating custom fields in snake_case, make sure you send the traits in the same format.
+**Make sure you are consistent with your casing**. If the custom fields are created in camelCase, make sure sure that you send the traits to RudderStack in camelCase. If you're creating custom fields in snake\_case, make sure you send the traits in the same format.
 {% endhint %}
 
 ## Updating Salesforce Objects
 
 You can create or update any [**Salesforce Object**](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_list.htm) using the `identify` event. To specify the object type, follow the schema below.
 
-RudderStack will look for the key `externalId` under `context` and determine the Salesforce Object type by removing the part `Salesforce-` from the field `type`. It will then make a `PATCH` request if there is an `id` present in the request to update the record. Otherwise, a new record will be created. 
+RudderStack will look for the key `externalId` under `context` and determine the Salesforce Object type by removing the part `Salesforce-` from the field `type`. It will then make a `PATCH` request if there is an `id` present in the request to update the record. Otherwise, a new record will be created.
 
 You can pass multiple object types in a single request and RudderStack will create that many requests to Salesforce.
 
@@ -159,3 +159,4 @@ Salesforce has a very strict API limit. Moreover, RudderStack by default does no
 ## Contact Us
 
 If you come across any issues while configuring Salesforce with RudderStack, please feel free to [**contact us**](mailto:%20contact@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+
