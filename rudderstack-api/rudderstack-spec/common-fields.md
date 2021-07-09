@@ -47,6 +47,7 @@ The following table lists all the contextual fields with their detailed descript
 | `timezone` | `String` | Captures the timezone of the user you are tracking. |
 | `traits` | `Object` | Captures any additional relevant information about the user. RudderStack fills in the `anonymousId` for you. You can add more details here using `identify` call from the SDK. |
 | `userAgent` | `String` | The user agent of the device that you are tracking. |
+| `campaign` | `Object` | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
 
 ## Payload with Common Fields
 
@@ -80,6 +81,13 @@ The following sample payload highlights how the above common and contextual fiel
       "bluetooth": false,
       "cellular": true,
       "wifi": true
+    },
+    "campaign": {
+      "source": "google",
+      "medium": "medium",
+      "term": "keyword",
+      "content": "some content",
+      "name": "some campaign"
     },
     "os": { "name": "Android", "version": "9" },
     "screen": { "density": 420, "height": 1794, "width": 1080 },
