@@ -55,7 +55,7 @@ Make sure your destination is configured in the **Cloud mode**. Refer to the [**
 
 * Then, click on the **Live Events** button on the top right as shown:
 
-![](../.gitbook/assets/image%20%28124%29.png)
+![](../.gitbook/assets/image%20%28124%29%20%281%29.png)
 
 * You should be able to see the events sent to the destination in this window.
 

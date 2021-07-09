@@ -14,7 +14,7 @@ Every RudderStack API call shares the same common fields.
 
 ## Common Fields
 
-The following table lists all the common fields with their detailed description: 
+The following table lists all the common fields with their detailed description:
 
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |

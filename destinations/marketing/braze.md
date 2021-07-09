@@ -97,14 +97,17 @@ To add Braze to your Android project, please follow these steps:
 
 * Add the following under `dependencies` section:
 
-  \`\`\`text implementation 'com.rudderstack.android.sdk:core:1.0.1' implementation 'com.rudderstack.android.integration:braze:0.1.1' implementation 'com.appboy:android-sdk-ui:6.0.+'
+```javascript
+  implementation 'com.rudderstack.android.sdk:core:1.0.1' 
+  implementation 'com.rudderstack.android.integration:braze:0.1.1' 
+  implementation 'com.appboy:android-sdk-ui:6.0.+'
+  // if you haven't included Gson already 
+  implementation 'com.google.code.gson:gson:2.8.6'
+```
 
-// if you don't have Gson included already implementation 'com.google.code.gson:gson:2.8.6'
+* Finally, change the SDK initialization to the following:
 
 ```text
-* Finally change the initialization of the SDK to the following:
-
-  ```text
   val rudderClient: RudderClient = RudderClient.getInstance(
       this,
       <WRITE_KEY>,
