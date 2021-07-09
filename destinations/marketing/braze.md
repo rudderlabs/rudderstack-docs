@@ -99,7 +99,7 @@ To add Braze to your Android project, please follow these steps:
 
 ```javascript
   implementation 'com.rudderstack.android.sdk:core:1.0.1' 
-  implementation 'com.rudderstack.android.integration:braze:0.1.1' 
+  implementation 'com.rudderstack.android.integration:braze:1.0.2' 
   implementation 'com.appboy:android-sdk-ui:6.0.+'
   // if you haven't included Gson already 
   implementation 'com.google.code.gson:gson:2.8.6'
