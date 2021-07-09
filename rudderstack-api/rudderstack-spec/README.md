@@ -18,12 +18,12 @@ The RudderStack API Spec supports the following calls, each answering a pertinen
 
 | **API Call** | **Description** |
 | :--- | :--- |
-| **Identify**             | Captures the details about the user. |
-| **Page**  | Captures the details related to the web page that the user is currently on. |
-| **Screen** | Captures the details related to the app screen that the user is currently viewing. |
-| **Track** | Captures information related to the user's actions. |
-| **Group** | Captures the relevant details about the group or organization that the user is a part of. |
-| **Alias** | Captures any relevant details about the user's alternate/past identity. |
+| \*\*\*\*[**Identify**](identify.md)            **** | Captures the details about the user. |
+| \*\*\*\*[**Page**](page.md) **** | Captures the details related to the web page that the user is currently on. |
+| \*\*\*\*[**Screen**](screen.md)\*\*\*\* | Captures the details related to the app screen that the user is currently viewing. |
+| \*\*\*\*[**Track**](track.md)\*\*\*\* | Captures information related to the user's actions. |
+| \*\*\*\*[**Group**](group.md)\*\*\*\* | Captures the relevant details about the group or organization that the user is a part of. |
+| \*\*\*\*[**Alias**](alias.md)\*\*\*\* | Captures any relevant details about the user's alternate/past identity. |
 | **Reset** | Resets the information related to the previously identified user. |
 
 ## How the API Calls Work

@@ -197,6 +197,7 @@
     * [Screen](rudderstack-api/rudderstack-spec/screen.md)
     * [Track](rudderstack-api/rudderstack-spec/track.md)
     * [Group](rudderstack-api/rudderstack-spec/group.md)
+    * [Alias](rudderstack-api/rudderstack-spec/alias.md)
     * [Common Fields](rudderstack-api/rudderstack-spec/common-fields.md)
   * [HTTP API](rudderstack-api/http-api-specification.md)
   * [Pixel API](rudderstack-api/pixel-api-spec.md)
