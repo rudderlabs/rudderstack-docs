@@ -8,6 +8,9 @@ description: Step-by-step guide to set up Salesforce as a destination in RudderS
 
 RudderStack lets you identify your leads in Salesforce without having to use the REST APIs.
 
+{% hint style="success" %}
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/salesforce)**.**
+{% endhint %}
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Salesforce by referring to the table below:
@@ -35,7 +38,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Provide your Salesforce username and password here along with the access token.
 
-* If you are using a Sandbox environment for integration, enable the **Sandbox mode** option. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
+* If you are using a Sandbox environment for integration, enable the **Sandbox Mode** option. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
 
 {% hint style="info" %}
 To know more about Salesforce Sandbox, click [**here**](https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm&type=5).
