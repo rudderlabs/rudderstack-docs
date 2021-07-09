@@ -24,13 +24,12 @@ Before setting up the Config Generator, make sure you have RudderStack installed
 Make sure you have [**Node.js**](https://nodejs.org/en/download/) installed before setting up the Config Generator.
 {% endhint %}
 
-In order to set up the RudderStack Config Generator, navigate to the folder where you have installed RudderStack. 
+In order to set up the RudderStack Config Generator, first, clone the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator) ****repository.
 
-Then, run the following commands in the specified order:
+Then, in your terminal, navigate to the `config-generator` repository and run the following commands in the specified order:
 
-1. `cd utils/config-gen`
-2. `npm install`
-3. `npm start`
+1. `npm install`
+2. `npm start`
 
 {% hint style="info" %}
 The Config Generator can be accessed at [**http://localhost:3000**](https://github.com/ameypv-rudder/rudder-server/wiki/RudderStack-Config-Generator) by default.
