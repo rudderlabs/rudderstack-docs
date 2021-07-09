@@ -8,10 +8,6 @@ description: Step-by-step guide to set up Salesforce as a destination in RudderS
 
 RudderStack lets you identify your leads in Salesforce without having to use the REST APIs.
 
-{% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/salesforce)**.**
-{% endhint %}
-
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Salesforce by referring to the table below:
@@ -39,10 +35,10 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Provide your Salesforce username and password here along with the access token.
 
-* If you are using a Sandbox environment for integration, enable **sandbox mode**. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
+* If you are using a Sandbox environment for integration, enable the **Sandbox mode** option. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
 
 {% hint style="info" %}
-To know more about Salesforce Sandbox, click [here](https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm&type=5).
+To know more about Salesforce Sandbox, click [**here**](https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm&type=5).
 {% endhint %}
 
 {% hint style="info" %}
@@ -92,7 +88,9 @@ It is mandatory to include `'Salesforce':true` in every Salesforce integration o
 
 ### Updating Custom Fields in Salesforce
 
-If you wish to update custom fields in Salesforce using RudderStack, ensure that you create those lead fields in Salesforce before sending the data through RudderStack. 
+{% hint style="info" %}
+If you wish to update custom fields in Salesforce using RudderStack, make sure that you first create those lead fields in Salesforce before sending the data through RudderStack. For more information on how to do this, check out the [**Salesforce docs**](https://help.salesforce.com/articleView?id=sf.adding_fields.htm&type=5).
+{% endhint %}
 
 As `lastName` and `company` are needed by the [**Salesforce Leads API**](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_lead.htm), the absence of either of these fields will result in RudderStack automatically appending the `'n/a'`string to both the fields - even if they have been specified in some previous request.
 
