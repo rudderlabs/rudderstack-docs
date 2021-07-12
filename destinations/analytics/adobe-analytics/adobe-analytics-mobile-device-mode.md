@@ -30,8 +30,36 @@ To configure Adobe Analytics via the mobile device mode, follow these steps:
 * Then, place the `ADBMobileConfig.json` file inside your app under `src/main/assets/`. 
 * Finally, follow the instructions in Adobe documentation [**here**](%20https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en) ****to create the report suite in Android.
 
-## Adding Adobe Analytics to Your Android Project
+## Adding Device Mode Integration
 
+{% tabs %}
+{% tab title="iOS" %}
+Follow these steps to add Adobe Analytics to your iOS project:
+
+* In your `Podfile` and add the `Rudder-Adobe` extension
+
+```ruby
+pod 'Rudder-Adobe'
+```
+
+* After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
+
+```objectivec
+#import <Rudder/Rudder.h>
+#import <RudderAdobeFactory.h>
+```
+
+* and also add the initialization of your `RSClient` as shown:
+
+```objectivec
+RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
+[configBuilder withDataPlaneUrl:DATA_PLANE_URL];
+[configBuilder withFactory:[RudderAdobeFactory instance]];
+[RSClient getInstance:WRITE_KEY config:[configBuilder build]];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 To add Adobe Analytics to your Android project, follow these steps :
 
 * Open your `app/build.gradle` file and add the following under the `dependencies` section :
@@ -65,6 +93,8 @@ val rudderClient = RudderClient.getInstance(
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Dashboard Settings to Send Events via the Mobile Device Mode
 
@@ -93,9 +123,19 @@ When you make an `identify` call, RudderStack sets the Adobe `visitorId` to the 
 
 A sample `identify` calls looks like the following:
 
+{% tabs %}
+{% tab title="iOS" %}
+```objectivec
+[[RSClient sharedInstance] identify:@"Adobe_iOS_user"];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 ```java
 MainApplication.rudderClient.identify("AdobeUser");
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Track
 
@@ -103,10 +143,25 @@ When you make a `track` call, RudderStack sends an Adobe `trackAction` event and
 
 A sample `track` call is as shown:
 
+{% tabs %}
+{% tab title="iOS" %}
+```objectivec
+[[RSClient sharedInstance] track:@"Order Completed" properties:@{
+        @"orderId" : @2002,
+        @"category" : @"Cloths",
+        @"productId" : @"2200013",
+        @"name": @"Shirt",
+        @"price" : @10001,
+        @"quantity" : @12
+    }];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 ```java
 MainApplication.rudderClient.track("Order Completed",
             RudderProperty()
-                .putValue("orderId", "1a2b3c4d")
+                .putValue("orderId", "12345")
                 .putValue("category", "category")
                 .putValue("revenue", 99.9)
                 .putValue("shipping", 13.99)
@@ -114,6 +169,8 @@ MainApplication.rudderClient.track("Order Completed",
                 .putValue("promotion_id", "PROMO_1234")
         );
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Screen
 
@@ -121,12 +178,25 @@ When you make a `screen` call, RudderStack sends an Adobe `trackState` event and
 
 A sample `screen` call looks like the following:
 
+{% tabs %}
+{% tab title="iOS" %}
+```objectivec
+[[RSClient sharedInstance] track:@"Home Screen"
+                              properties:@{
+                                  @"Width" : @"13"
+                              }];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 ```java
 MainApplication.rudderClient.screen("Home Screen",
             RudderProperty()
                 .putValue("Width",12)
         )
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Reset
 
@@ -138,9 +208,19 @@ The default value of Adobe's `visitorId` is `null` until you explicitly set it \
 
 A sample `reset` call is as shown:
 
+{% tabs %}
+{% tab title="iOS" %}
+```objectivec
+[[RSClient sharedInstance] reset];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 ```java
 MainApplication.rudderClient.reset()
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Flush
 
