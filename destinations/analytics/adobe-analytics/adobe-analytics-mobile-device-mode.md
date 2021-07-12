@@ -12,10 +12,6 @@ This document covers the necessary settings and configurations to send events to
 Mobile [**device mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#device-mode) refers to using the Android or iOS SDK to send your events directly to Adobe Analytics.
 {% endhint %}
 
-{% hint style="info" %}
-For this implementation, we currently support only Android. **Support for iOS is coming soon**.
-{% endhint %}
-
 To configure Adobe Analytics via the mobile device mode, follow these steps:
 
 * Click on the **Manage Apps** option on the left nav bar on your [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard. 
@@ -27,8 +23,10 @@ To configure Adobe Analytics via the mobile device mode, follow these steps:
 
 ![](https://user-images.githubusercontent.com/59817155/124233808-db5ab480-db30-11eb-900f-75a3aa9a5367.png)
 
-* Then, place the `ADBMobileConfig.json` file inside your app under `src/main/assets/`. 
-* Finally, follow the instructions in Adobe documentation [**here**](%20https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en) ****to create the report suite in Android.
+* For Android, place the `ADBMobileConfig.json` file inside your app under `src/main/assets/`. 
+* For iOS, in `Project Navigator` drag the `ADBMobileConfig.json` file and drop it under your project. Verify the following: `Copy Items if needed` checkbox is selected, `Create groups` is selected and none of the checkboxes in the `Add to targets` section is selected. In `File Inspector`, add the JSON file to any targets in your project that will use the Adobe SDK.
+
+* Finally, follow the instructions in Adobe documentation to create the report suite [**here**](%20https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en) for Android and [**here**](https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/set-up-ios.html?lang=en#) for iOS.
 
 ## Adding Device Mode Integration
 
@@ -38,7 +36,7 @@ Follow these steps to add Adobe Analytics to your iOS project:
 
 * In your `Podfile` and add the `Rudder-Adobe` extension
 
-```ruby
+```objectivec
 pod 'Rudder-Adobe'
 ```
 
