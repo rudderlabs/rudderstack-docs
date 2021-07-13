@@ -333,7 +333,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 
 The following RudderStack properties must also be sent for mapping to the standard video metadata:
 
-| RudderStack property | Standard Video Adobe Metadata |
+| RudderStack property | Adobe Standard Video Metadata |
 | :--- | :--- |
 | `program` | `MediaHeartbeat.VideoMetadataKeys.SHOW` |
 | `season` | `MediaHeartbeat.VideoMetadataKeys.SEASON` |
@@ -350,7 +350,7 @@ The following RudderStack properties must also be sent for mapping to the standa
 
 The following RudderStack properties must also be sent for mapping to the standard ad metadata:
 
-| RudderStack property | Standard Ad Adobe Metadata |
+| RudderStack property | Adobe Standard Ad Metadata |
 | :--- | :--- |
 | `publisher` | `MediaHeartbeat.AdMetadataKeys.ADVERTISER`|
 
