@@ -243,6 +243,9 @@ A sample `flush` call is as follows:
 ```java
 MainApplication.rudderClient.flush()
 ```
+{% hint style="info" %}
+The `flush` call is supported only in Android.
+{% endhint %}
 
 ## Contact Us
 
