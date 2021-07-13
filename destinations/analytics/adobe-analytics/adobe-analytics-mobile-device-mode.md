@@ -36,7 +36,7 @@ Follow these steps to add Adobe Analytics to your iOS project:
 
 * In your `Podfile` and add the `Rudder-Adobe` extension
 
-```objectivec
+```ruby
 pod 'Rudder-Adobe'
 ```
 
@@ -53,7 +53,7 @@ pod 'Rudder-Adobe'
 RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
 [configBuilder withDataPlaneUrl:DATA_PLANE_URL];
 [configBuilder withFactory:[RudderAdobeFactory instance]];
-[RSClient getInstance:WRITE_KEY config:[configBuilder build]];
+[RSClient getInstance:<YOUR_WRITE_KEY> config:[configBuilder build]];
 ```
 {% endtab %}
 
