@@ -168,7 +168,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `title` | Sent for creating `AdObject` and `AdBreakObject`. | "no title" |
 | `asset_id` | Sent for creating `AdObject`. | "default ad" |
 | `position` | Sent for creating `AdObject` and `AdBreakObject`. | 1 |
-| `total_length` | Sent for creating `MediaObject`. | 0 |
+| `total_length` | Sent for creating `AdObject`. | 0 |
 | `type` | Sent for creating `AdBreakObject`. | "unknown" |
 | `start_time` | Sent for creating `AdBreakObject`. | 0 |
 | `content` | Sent for `trackEvent`. | empty JSON |
@@ -350,7 +350,7 @@ The following RudderStack properties must also be sent for mapping to the standa
 
 The following RudderStack properties must also be sent for mapping to the standard ad metadata:
 
-| RudderStack property| Standard Video Adobe Metadata |
+| RudderStack property | Standard Ad Adobe Metadata |
 | :--- | :--- |
 | `publisher` | `MediaHeartbeat.AdMetadataKeys.ADVERTISER`|
 
