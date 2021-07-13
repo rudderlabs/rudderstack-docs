@@ -12,10 +12,6 @@ This document covers the necessary settings and configurations to send events to
 Mobile [**device mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#device-mode) refers to using the Android or iOS SDK to send your events directly to Adobe Analytics.
 {% endhint %}
 
-{% hint style="info" %}
-For this implementation, we currently support only Android. **Support for iOS is coming soon**.
-{% endhint %}
-
 To configure Adobe Analytics via the mobile device mode, follow these steps:
 
 * Click on the **Manage Apps** option on the left nav bar on your [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard. 
@@ -27,11 +23,55 @@ To configure Adobe Analytics via the mobile device mode, follow these steps:
 
 ![](https://user-images.githubusercontent.com/59817155/124233808-db5ab480-db30-11eb-900f-75a3aa9a5367.png)
 
-* Then, place the `ADBMobileConfig.json` file inside your app under `src/main/assets/`. 
-* Finally, follow the instructions in Adobe documentation [**here**](%20https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en) ****to create the report suite in Android.
+### Android
 
-## Adding Adobe Analytics to Your Android Project
+For Android, place the `ADBMobileConfig.json` file inside your app under `src/main/assets/`.
 
+Then, follow the instructions in the [**Adobe documentation**](https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en) to create the report suite.
+
+### iOS
+
+For iOS, go to the `Project Navigator`and drag-drop the `ADBMobileConfig.json` under your project. Then, verify the following: 
+
+* The `Copy items if needed` checkbox is selected.
+* `Create groups` is selected.
+* None of the checkboxes in the `Add to targets` section is selected. 
+
+In `File Inspector`, add the JSON file to any targets in your project that will use the Adobe SDK.
+
+Then, follow the instructions in the [**Adobe documentation**](https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/set-up-ios.html?lang=en#) to create the report suite.
+
+
+## Adding Device Mode Integration
+
+{% tabs %}
+{% tab title="iOS" %}
+Follow these steps to add Adobe Analytics to your iOS project:
+
+* In your `Podfile`, add the `Rudder-Adobe` extension:
+
+```ruby
+pod 'Rudder-Adobe'
+```
+
+* After adding the dependency followed by `pod install` , add the imports to your `AppDelegate.m` file as shown:
+
+```objectivec
+#import <Rudder/Rudder.h>
+#import <RudderAdobeFactory.h>
+```
+
+* Then, add the initialization of your `RSClient` as shown:
+
+```objectivec
+RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
+[configBuilder withDataPlaneUrl:DATA_PLANE_URL];
+[configBuilder withFactory:[RudderAdobeFactory instance]];
+[RSClient getInstance:<YOUR_WRITE_KEY> config:[configBuilder build]];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 To add Adobe Analytics to your Android project, follow these steps :
 
 * Open your `app/build.gradle` file and add the following under the `dependencies` section :
@@ -65,6 +105,8 @@ val rudderClient = RudderClient.getInstance(
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Dashboard Settings to Send Events via the Mobile Device Mode
 
@@ -91,11 +133,21 @@ For mobile device mode, RudderStack currently does not support the [**Initialize
 
 When you make an `identify` call, RudderStack sets the Adobe `visitorId` to the value of the user’s RudderStack `userId`.
 
-A sample `identify` calls looks like the following:
+A sample `identify` call looks like the following:
 
+{% tabs %}
+{% tab title="iOS" %}
+```objectivec
+[[RSClient sharedInstance] identify:@"Adobe_iOS_user"];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 ```java
 MainApplication.rudderClient.identify("AdobeUser");
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Track
 
@@ -103,10 +155,25 @@ When you make a `track` call, RudderStack sends an Adobe `trackAction` event and
 
 A sample `track` call is as shown:
 
+{% tabs %}
+{% tab title="iOS" %}
+```objectivec
+[[RSClient sharedInstance] track:@"Order Completed" properties:@{
+        @"orderId" : @2002,
+        @"category" : @"Cloths",
+        @"productId" : @"2200013",
+        @"name": @"Shirt",
+        @"price" : @10001,
+        @"quantity" : @12
+    }];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 ```java
 MainApplication.rudderClient.track("Order Completed",
             RudderProperty()
-                .putValue("orderId", "1a2b3c4d")
+                .putValue("orderId", "12345")
                 .putValue("category", "category")
                 .putValue("revenue", 99.9)
                 .putValue("shipping", 13.99)
@@ -114,6 +181,8 @@ MainApplication.rudderClient.track("Order Completed",
                 .putValue("promotion_id", "PROMO_1234")
         );
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Screen
 
@@ -121,12 +190,25 @@ When you make a `screen` call, RudderStack sends an Adobe `trackState` event and
 
 A sample `screen` call looks like the following:
 
+{% tabs %}
+{% tab title="iOS" %}
+```objectivec
+[[RSClient sharedInstance] track:@"Home Screen"
+                              properties:@{
+                                  @"Width" : @"13"
+                              }];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 ```java
 MainApplication.rudderClient.screen("Home Screen",
             RudderProperty()
                 .putValue("Width",12)
         )
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Reset
 
@@ -138,9 +220,19 @@ The default value of Adobe's `visitorId` is `null` until you explicitly set it \
 
 A sample `reset` call is as shown:
 
+{% tabs %}
+{% tab title="iOS" %}
+```objectivec
+[[RSClient sharedInstance] reset];
+```
+{% endtab %}
+
+{% tab title="Android" %}
 ```java
 MainApplication.rudderClient.reset()
 ```
+{% endtab %}
+{% endtabs %}
 
 ## Flush
 
@@ -151,6 +243,9 @@ A sample `flush` call is as follows:
 ```java
 MainApplication.rudderClient.flush()
 ```
+{% hint style="info" %}
+The `flush` call is supported only in Android.
+{% endhint %}
 
 ## Contact Us
 
