@@ -31,13 +31,13 @@ Then, follow the instructions in the [**Adobe documentation**](https://experienc
 
 ### iOS
 
-For iOS, go to the `Project Navigator`and drag-drop the `ADBMobileConfig.json` under your project. Then, verify the following: 
+For iOS, drag and drop the `ADBMobileConfig.json` under the `Pods` section in the `Project Navigator`. Then verify the following:
 
 * The `Copy items if needed` checkbox is selected.
 * `Create groups` is selected.
-* None of the checkboxes in the `Add to targets` section is selected. 
+* None of the checkboxes in the `Add to targets` section is selected.
 
-In `File Inspector`, add the JSON file to any targets in your project that will use the Adobe SDK.
+In `File Inspector`, add the JSON file to the `AdobeMobileSDK` target.
 
 Then, follow the instructions in the [**Adobe documentation**](https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/set-up-ios.html?lang=en#) to create the report suite.
 
