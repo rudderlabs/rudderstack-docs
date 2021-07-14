@@ -1,14 +1,14 @@
 ---
 description: >-
   Step-by-step guide to send your event data from RudderStack to your configured
-  webhook endpoint
+  webhook endpoint.
 ---
 
 # Webhooks
 
-Webhooks allow you to send events generated via the RudderStack SDK to your own backend. It is useful for cases where you want to apply some custom logic on the payload before sending it to the destination platforms of your choice. 
+Webhooks allow you to send the events generated via the RudderStack SDK to your own backend. It is useful in cases where you want to apply some custom logic on the event payload before sending it to your preferred destination platforms. 
 
-Once enabled, RudderStack forwards the SDK events to your configured webhook endpoint.
+Once webhooks are enabled as a destination in your dashboard, RudderStack forwards the SDK events to your configured webhook endpoint.
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/webhook)**.**
@@ -16,9 +16,9 @@ Once enabled, RudderStack forwards the SDK events to your configured webhook end
 
 ## Getting Started
 
-In order to collect your events at the webhook endpoint, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from [RudderStack](https://github.com/rudderlabs/rudder-server) will start to flow to the webhook endpoint.
+In order to collect your events at the webhook endpoint, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from [**RudderStack**](https://github.com/rudderlabs/rudder-server) will start to flow to the webhook endpoint.
 
-Before configuring your source and destination on the [RudderStack ](https://app.rudderstack.com/)[dashboard](https://app.rudderstack.com/), please check whether the platform you are working on is supported by referring to the table below:
+Before configuring your source and destination on the [**RudderStack dashboard**](https://app.rudderstack.com/), verify if the platform you are working on is supported by the webhook destination by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -26,7 +26,7 @@ Before configuring your source and destination on the [RudderStack ](https://app
 | **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 Once you have confirmed that your platform supports sending events to webhooks, perform the steps below:
@@ -34,26 +34,42 @@ Once you have confirmed that your platform supports sending events to webhooks, 
 * Choose a source to which you would like to add your webhook endpoint as a destination.
 
 {% hint style="info" %}
-Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
 * Select the destination as **Webhook** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Connection Settings**, ****fill all the fields with the relevant information and click **Next**
+
+* Next, in the **Connection Settings** page, enter the relevant connection information and click on **Next**
 
 ![](../.gitbook/assets/screenshot-2020-08-24-at-10.24.37-am.png)
 
-* **Webhook URL:** This is the endpoint where [RudderStack](https://github.com/rudderlabs/rudder-server) will send the events. Both `http` and `https` are supported. For `https` , the **TLS cert** needs to be **valid** for successful event delivery.
-* **URL Method:** This is the HTTP method of the request that would be sent to the configured endpoint. Supported methods - `POST` and `GET`. The default method is `POST`.
-* **Headers:** Add custom headers for your events, these headers will be added to the request made from [RudderStack](https://github.com/rudderlabs/rudder-server) to your webhook. It by default adds the following headers for a `POST` request:
+The settings are:
+
+* **Webhook URL:** This is the endpoint where [**RudderStack**](https://github.com/rudderlabs/rudder-server) will send the events. Both `http` and `https` are supported. For `https`, the **TLS cert** needs to be **valid** for a successful event delivery.
+
+* **URL Method:** This is the HTTP method of the request that would be sent to the configured endpoint. Supported methods are `POST` and `GET`. By default, the `POST` method is used.
+
+* **Headers:** Add custom headers for your events via this option. These headers will be added to the request made from RudderStack to your webhook. By default, RudderStack adds the following headers for a `POST` request:
 
 |   Key | Value |
 | :--- | :--- |
 | `User-Agent` | `RudderLabs` |
 | `Content-Type` | `application/json` |
 
+{% hint style="info" %}
+RudderStack also supports adding a dynamic header for your events through user transformation. For more information, refer to our 
+[**open-source transformer code**](https://github.com/rudderlabs/rudder-transformer/blob/5859c11d15abf779fd70a2fa45de1d754ef50e60/v0/destinations/webhook/transform.js#L53) in our GitHub repo.
+{% endhint %}
+
+{% hint style="info" %}
+You can also add a dynamic path to your base URL. For more information on how to do this, refer to our 
+[**open-source transformer code**](https://github.com/rudderlabs/rudder-transformer/blob/5859c11d15abf779fd70a2fa45de1d754ef50e60/v0/destinations/webhook/transform.js#L88) in our GitHub repo.
+{% endhint %}
+
+
 ## Identify
 
-The `identify` call is used to associate a user to their actions. Apart from capturing a unique user ID, you can also send optional traits associated with that user, such as name, email, IP address, etc using RudderStack SDKs.
+The `identify` call is used to associate a user to their actions. Apart from capturing a unique user ID, you can also send optional traits associated with that user, such as name, email, IP address, etc. using the RudderStack SDKs.
 
 A sample `identify` payload is as shown:
 
@@ -95,17 +111,17 @@ A sample `identify` payload is as shown:
   "integrations": { "All": true },
   "sentAt": "2020-04-22T08:06:20.337Z"
 }
-
 ```
 
-For each identify call, we send the request in the following manner\(depending on the URL Method you configured earlier\):
+For each `identify` call, RudderStack sends the request in the following manner (depending on the URL method configured in the dashboard):
 
-* **`POST`:** We send the whole event payload\(as shown above\) as the JSON body of the POST request.
-* **`GET`:** We send the traits that you pass in the identify call as query params of the GET request. If your traits contain nested values, we flatten these values and send them as query params. For example, the company id specified in the above payload's traits is sent as `"company.id": "company-A"` 
+* **`POST`:** RudderStack sends the whole event payload\(as shown above\) as the JSON body of the `POST` request.
+
+* **`GET`:** RudderStack send the traits that you pass in the `identify` call as query parameters of the `GET` request. If your traits contain nested values, RudderStack flattens these values and sends them as query parameters. For example, the company ID specified in the above payload's traits is sent as `"company.id": "company-A"`.
 
 ## Page
 
-The `page` call allows you to record your website's page views, with the additional relevant information about the page being viewed. For more information on the page call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
+The `page` call lets you record your website's page views, with any additional relevant information about the viewed page. For more information on the `page` call, refer to the [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 
 A sample `page` payload is as shown:
 
@@ -152,14 +168,15 @@ A sample `page` payload is as shown:
 
 ```
 
-For each page call, we send the request in the following manner\(depending on the URL Method you configured earlier\):
+For each `page` call, RudderStack sends the request in the following manner(depending on the URL method configured in the dashboard):
 
-* **`POST`:** We send the whole event payload\(as shown above\) as the JSON body of the POST request.
-* **`GET`:** We send the properties that you pass on the page call as query params of the GET request. If your properties contain nested values, we flatten these values and send them as query params. For example, the experiment variant specified in the above payload's properties is sent as `"experiment.variant": "old"`.
+* **`POST`:** RudderStack send the whole event payload\(as shown above\) as the JSON body of the `POST` request.
+
+* **`GET`:** RudderStack sends the properties that you pass on the `page` call as query parameters of the `GET`request. If your properties contain nested values, RudderStack flattens these values and sends them as query parameters. For example, the experiment variant specified in the above payload's properties is sent as `"experiment.variant": "old"`.
 
 ## Track
 
-The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**. For more information on the track call, please refer to the [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) guide.
+The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered as an **event**. For more information on the `track` call, refer to the [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api-spec) guide.
 
 A sample `track` payload is as shown:
 
@@ -211,24 +228,28 @@ A sample `track` payload is as shown:
 }
 ```
 
-To view the other events and detailed event structure for the types of events being sent, please check our [RudderStack API Specification](https://docs.rudderstack.com/rudderstack-api-spec) documentation.
+To view the other events and detailed event structure for the types of events being sent, check out the [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api-spec).
 
-For each track call, we send the request in the following manner\(depending on the URL Method you configured earlier\):
+For each `track` call, RudderStack sends the request in the following manner(depending on the URL method configured in the dashboard):
 
-* **`POST`:** We send the whole event payload\(as shown above\) as the JSON body of the POST request.
-* **`GET`:** We send the properties that you pass in the track call as query params of the GET request. If your properties contain nested values, we flatten these values before sending them.
+* **`POST`:** RudderStack sends the whole event payload\(as shown above\) as the JSON body of the `POST` request.
+
+* **`GET`:** RudderStack sends the properties that you pass in the `track` call as query parameters of the `GET` request. If your properties contain nested values, RudderStack will flatten these values before sending them.
 
 ## FAQs
 
 ### How to check if there are any delivery failures for the events sent to the webhook?
 
-* Login to your account in  [RudderStack app](https://app.rudderstack.com)
+* Login to your account in  [**RudderStack app**](https://app.rudderstack.com).
 * Verify that you are sending the events in the **Live Events** tab of your source.
-* Check if there are any delivery failures in the **Live Events** tab of your destination.
+* Check if there are any delivery failures in the **Live Events** tab of your destination. An example of an event failure is as shown:
 
-![Destination delivery failures in Live Events tab of connected destination ](../.gitbook/assets/screenshot-2020-04-22-at-12.25.01-pm.png)
+![Failed Event](https://user-images.githubusercontent.com/59817155/125619804-64033117-16f6-44c7-8050-286059ab404d.png)
+
+* You can then check the **Error Response** to get more details about the error, including the reason of the failure, as shown:
+
+![Error Response](https://user-images.githubusercontent.com/59817155/125619922-c68b1c48-50aa-4ce9-8803-8381170e3cc9.png)
 
 ## Contact Us
 
-If you come across any issues while configuring webhooks with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
+If you come across any issues while configuring webhooks with RudderStack, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
