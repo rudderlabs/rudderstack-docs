@@ -58,12 +58,12 @@ The settings are:
 
 {% hint style="info" %}
 RudderStack also supports adding a dynamic header for your events through user transformation. For more information, refer to our 
-[**open-source transformer code**](https://github.com/rudderlabs/rudder-transformer/blob/5859c11d15abf779fd70a2fa45de1d754ef50e60/v0/destinations/webhook/transform.js#L53) in our GitHub repo.
+[**user transformer code**](https://github.com/rudderlabs/sample-user-transformers/blob/master/AddDynamicHeader.js) in our GitHub repo.
 {% endhint %}
 
 {% hint style="info" %}
 You can also add a dynamic path to your base URL. For more information on how to do this, refer to our 
-[**open-source transformer code**](https://github.com/rudderlabs/rudder-transformer/blob/5859c11d15abf779fd70a2fa45de1d754ef50e60/v0/destinations/webhook/transform.js#L88) in our GitHub repo.
+[**user transformer code**](https://github.com/rudderlabs/sample-user-transformers/blob/master/DynamicPathtoBaseURL.js) in our GitHub repo.
 {% endhint %}
 
 
