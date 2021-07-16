@@ -20,21 +20,21 @@ You can check the [codebase on GitHub](https://github.com/rudderlabs/rudder-sdk-
 
 To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned below:
 
-* You will need to set up a [RudderStack Account](https://app.rudderlabs.com).
-* Once signed up, your `iOS` source `writeKey` will appear in the dashboard, as shown:
+- You will need to set up a [RudderStack Account](https://app.rudderlabs.com).
+- Once signed up, your `iOS` source `writeKey` will appear in the dashboard, as shown:
 
 ![iOS source writeKey on the RudderStack Dashboard](../../.gitbook/assets/ios.png)
 
-* You will also need your Data Plane URL.  Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
+- You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
 To get the **Data Plane URL**:
 
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
-* If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
-{% endhint %}
+- If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
+- If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
+  {% endhint %}
 
-* You will also need a Mac with the latest version of [Xcode](https://developer.apple.com/xcode/).
+- You will also need a Mac with the latest version of [Xcode](https://developer.apple.com/xcode/).
 
 ## Installing the RudderStack iOS SDK
 
@@ -42,6 +42,7 @@ We distribute our iOS SDK through [Cocoapods](https://cocoapods.org) and [Cartha
 
 {% tabs %}
 {% tab title="CocoaPods" %}
+
 1. Add the RudderStack SDK to your `Podfile`, as shown:
 
 ```ruby
@@ -53,9 +54,11 @@ pod 'Rudder'
 ```bash
 pod install
 ```
+
 {% endtab %}
 
 {% tab title="Carthage" %}
+
 1. Add the RudderStack SDK to your `Cartfile`, as shown:
 
    ```ruby
@@ -67,8 +70,9 @@ pod install
    ```bash
    carthage update
    ```
-{% endtab %}
-{% endtabs %}
+
+   {% endtab %}
+   {% endtabs %}
 
 {% hint style="warning" %}
 **Important**: Remember to include the following code in all `.m` and `.h` files or your `.swift` files where you want to refer to or use RudderStack SDK classes.
@@ -76,15 +80,19 @@ pod install
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 #import <Rudder/Rudder.h>
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 import Rudder
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -98,6 +106,7 @@ Put this code in your `AppDelegate.m` file under the method `didFinishLaunchingW
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
@@ -108,6 +117,7 @@ A shared instance of `RSClient` is accessible after the initialization by `[RSCl
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 let builder: RSConfigBuilder = RSConfigBuilder()
     .withDataPlaneUrl(DATA_PLANE_URL)
@@ -139,31 +149,35 @@ An example `track` event is as shown:
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 [[RSClient sharedInstance] track:@"simple_track_with_props" properties:@{
     @"key_1" : @"value_1",
     @"key_2" : @"value_2"
 }];
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 RSClient.sharedInstance()?.track("test_user_id", properties: [
     "key_1": "value_1",
     "key_2": "value_2"
 ])
 ```
+
 {% endtab %}
 {% endtabs %}
 
 The `track` method accepts the following parameters:
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `eventName` | `NSString` | Yes | Name of the event you want to track |
-| `properties` | `NSDictionary` | No | Extra data properties you want to send along with the event |
-| `options` | `RudderOption` | No | Extra event options |
+| Name         | Data Type      | Required | Description                                                 |
+| :----------- | :------------- | :------- | :---------------------------------------------------------- |
+| `eventName`  | `NSString`     | Yes      | Name of the event you want to track                         |
+| `properties` | `NSDictionary` | No       | Extra data properties you want to send along with the event |
+| `options`    | `RudderOption` | No       | Extra event options                                         |
 
 ## Identify
 
@@ -177,6 +191,7 @@ An example `identify` event is as shown:
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 [[RSClient sharedInstance] identify:@"test_user_id"
                              traits:@{@"foo": @"bar",
@@ -187,9 +202,11 @@ An example `identify` event is as shown:
                              }
 ];
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 RSClient.sharedInstance()?.identify("test_user_id", traits: [
     "key_1": "value_1",
@@ -197,16 +214,17 @@ RSClient.sharedInstance()?.identify("test_user_id", traits: [
     "email": "test@gmail.com"
 ])
 ```
+
 {% endtab %}
 {% endtabs %}
 
 The `identify` method accepts the follwing parameters:
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `userId` | `NSString` | Yes | Developer identity for the user. |
-| `traits` | `NSDictionary` | No | Traits information for user. Use `dict` method of `RudderTraits` to convert to `NSDictionary` easily |
-| `options` | `RudderOption` | No | Extra options for the `identify` event. |
+| Name      | Data Type      | Required | Description                                                                                          |
+| :-------- | :------------- | :------- | :--------------------------------------------------------------------------------------------------- |
+| `userId`  | `NSString`     | Yes      | Developer identity for the user.                                                                     |
+| `traits`  | `NSDictionary` | No       | Traits information for user. Use `dict` method of `RudderTraits` to convert to `NSDictionary` easily |
+| `options` | `RudderOption` | No       | Extra options for the `identify` event.                                                              |
 
 ## Screen
 
@@ -216,25 +234,29 @@ An example of the `screen` event is as shown:
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 [[RSClient sharedInstance] screen:@"ViewController"];
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 RSClient.sharedInstance()?.screen("ViewController")
 ```
+
 {% endtab %}
 {% endtabs %}
 
 The `screen` method accepts the following parameters:
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `screenName` | `NSString` | Yes | Name of the screen viewed |
-| `properties` | `NSDictionary` | No | Extra property object that you want to pass along with the `screen` call |
-| `options` | `RudderOption` | No | Extra options to be passed along with the `screen` event |
+| Name         | Data Type      | Required | Description                                                              |
+| :----------- | :------------- | :------- | :----------------------------------------------------------------------- |
+| `screenName` | `NSString`     | Yes      | Name of the screen viewed                                                |
+| `properties` | `NSDictionary` | No       | Extra property object that you want to pass along with the `screen` call |
+| `options`    | `RudderOption` | No       | Extra options to be passed along with the `screen` event                 |
 
 ## Group
 
@@ -242,6 +264,7 @@ The `group` call associates a user to a specific organization. A sample `group` 
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```kotlin
 [[RSClient sharedInstance] group:@"sample_group_id"
                               traits:@{@"foo": @"bar",
@@ -249,25 +272,28 @@ The `group` call associates a user to a specific organization. A sample `group` 
                                        @"email": @"ruchira@gmail.com"}
 ];
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```java
 RSClient.sharedInstance()?.group("test_group_id", traits: [
     "key_1": "value_1",
     "key_2": "value_2"
 ])
 ```
+
 {% endtab %}
 {% endtabs %}
 
 Alternatively, you can use the following method signature
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `groupId` | `String` | Yes | An ID of the organization with which you want to associate your user |
-| `traits` | `NSDictionary` | No | Any other property of the organization you want to pass along with the call |
-| `options` | `RudderOption` | No | Event level options |
+| Name      | Data Type      | Required | Description                                                                 |
+| :-------- | :------------- | :------- | :-------------------------------------------------------------------------- |
+| `groupId` | `String`       | Yes      | An ID of the organization with which you want to associate your user        |
+| `traits`  | `NSDictionary` | No       | Any other property of the organization you want to pass along with the call |
+| `options` | `RudderOption` | No       | Event level options                                                         |
 
 We don't persist the traits for the group across the sessions.
 
@@ -277,24 +303,28 @@ The `alias` call associates the user with a new identification. A sample `alias`
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```kotlin
 [[RSClient sharedInstance] alias:@"new_user_id"];
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```java
 RSClient.sharedInstance()?.alias("new_user_id")
 ```
+
 {% endtab %}
 {% endtabs %}
 
 Alternatively, you can use the following method signature
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `newId` | `String` | Yes | The new `userId` you want to assign to the user |
-| `options` | `RudderOption` | No | Event level option |
+| Name      | Data Type      | Required | Description                                     |
+| :-------- | :------------- | :------- | :---------------------------------------------- |
+| `newId`   | `String`       | Yes      | The new `userId` you want to assign to the user |
+| `options` | `RudderOption` | No       | Event level option                              |
 
 We replace the old `userId` with the `newUserId` and we persist that identification across the sessions.
 
@@ -304,15 +334,19 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 [[RSClient sharedInstance] reset];
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 RSClient.sharedInstance()?.reset()
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -320,17 +354,17 @@ RSClient.sharedInstance()?.reset()
 
 You can configure your client based on the following parameters using `RudderConfigBuilder`:
 
-| Parameter | Type | Description | Default Value |
-| :--- | :--- | :--- | :--- |
-| `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RSLogLevelNone` |
-| `dataPlaneUrl` | `string` | URL of your `data-plane`. | [https://hosted.rudderlabs.com](https://hosted.rudderlabs.com) |
-| `flushQueueSize` | `int` | Number of events in a batch request sent to the server. | `30` |
-| `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
-| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server . | `10 seconds` |
-| `configRefreshInterval` | `int` | Fetches the config from `dashboard` after the specified time \(in hours\). | `2` |
-| `trackLifecycleEvents` | `boolean` | Specify whether the SDK will capture application life cycle events automatically. | `true` |
-| `recordScreenViews` | `boolean` | Specify whether the SDK will capture screen view events automatically. | `false` |
-| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+| Parameter               | Type      | Description                                                                                                                                                                                                                                                    | Default Value                                                  |
+| :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------- |
+| `logLevel`              | `int`     | Controls how much of the log you want to see from the SDK.                                                                                                                                                                                                     | `RSLogLevelNone`                                               |
+| `dataPlaneUrl`          | `string`  | URL of your `data-plane`.                                                                                                                                                                                                                                      | [https://hosted.rudderlabs.com](https://hosted.rudderlabs.com) |
+| `flushQueueSize`        | `int`     | Number of events in a batch request sent to the server.                                                                                                                                                                                                        | `30`                                                           |
+| `dbThresholdCount`      | `int`     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                                                                                                                                        | `10000`                                                        |
+| `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server .                                                                                                                                                                                                       | `10 seconds`                                                   |
+| `configRefreshInterval` | `int`     | Fetches the config from `dashboard` after the specified time \(in hours\).                                                                                                                                                                                     | `2`                                                            |
+| `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                         |
+| `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                        |
+| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com)       |
 
 ### Self-Hosted Control Plane
 
@@ -398,10 +432,10 @@ Follow the instructions below:
 
 Following are the available options you can pass to the `putAppTrackingConsent` method.
 
-* `RSATTNotDetermined`
-* `RSATTRestricted`
-* `RSATTDenied`
-* `RSATTAuthorize`
+- `RSATTNotDetermined`
+- `RSATTRestricted`
+- `RSATTDenied`
+- `RSATTAuthorize`
 
 ## Anonymous ID
 
@@ -423,6 +457,7 @@ The RudderStack iOS SDK allows you to enable or disable event flow to a specific
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 RSOption *option = [[RSOption alloc]init];
 //default value for `All` is true
@@ -434,9 +469,11 @@ RSOption *option = [[RSOption alloc]init];
 [option putIntegrationWithFactory:[RudderMoengageFactory instance] isEnabled:NO];
 [option putIntegrationWithFactory:[<RudderIntegrationFactory> instance] isEnabled:<BOOL>];
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 let option:RSOption = RSOption();
 //default value for `All` is true
@@ -448,6 +485,7 @@ option.putIntegration(<DESTINATION DISPLAY NAME>, isEnabled:<BOOL>)
 option.putIntegration(with: RudderMoengageFactory.instance(), isEnabled: true);
 option.putIntegration(with: <RudderIntegrationFactory>.instance(), isEnabled:<BOOL>);
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -467,6 +505,7 @@ This is helpful when you want to enable/disable sending the events across all th
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneURL:[[NSURL alloc] initWithString:DATA_PLANE_URL]];
@@ -475,9 +514,11 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withRecordScreenViews:YES;
 [RSClient getInstance:WRITE_KEY config:[builder build] options:option]; // passing the rudderoption object containing the list of destination(s) you specified
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 let builder: RSConfigBuilder = RSConfigBuilder()
             .withLoglevel(RSLogLevelDebug)
@@ -486,6 +527,7 @@ let builder: RSConfigBuilder = RSConfigBuilder()
             .withRecordScreenViews(true)
 RSClient.getInstance(WRITE_KEY, config: builder.build(),options: option)// passing the rudderoption object containing the list of destination(s) you specified
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -495,15 +537,18 @@ This approach is helpful when you want to enable/disable sending only a particul
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 [[RSClient sharedInstance] track:@"simple_track_with_props" properties:@{
         @"key_1" : @"value_1",
         @"key_2" : @"value_2"
     } options:option]; // passing the rudderoption object containing the list of destination(s) you specified
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 let rudder: RSClient? = RSClient.sharedInstance()
 rudder?.track("track_with_props", properties: [
@@ -511,6 +556,7 @@ rudder?.track("track_with_props", properties: [
             "key_2": "value_2",
         ],options:option) // passing the rudderoption object containing the list of destination(s) you specified
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -536,21 +582,25 @@ If you run into any issues regarding the RudderStack iOS SDK, you can turn on th
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withLoglevel:RudderLogLevelDebug];
 [RSClient getInstance:WRITE_KEY config:[builder build]];
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 let builder: RSConfigBuilder = RSConfigBuilder()
 builder.withDataPlaneUrl(<DATA_PLANE_URL>)
 builder.withLoglevel(RudderLogLevelDebug)
 RSClient.getInstance(<WRITE_KEY>, config: builder.build())
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -609,19 +659,28 @@ You can get the user traits after making an `identify` call in the following way
 
 {% tabs %}
 {% tab title="Objective-C" %}
+
 ```objectivec
 NSDictionary* traits =  [[RSClient sharedInstance] getContext].traits;
 ```
+
 {% endtab %}
 
 {% tab title="Swift" %}
+
 ```swift
 let traits = RSClient.sharedInstance()?.getContext().traits
 ```
+
 {% endtab %}
 {% endtabs %}
+
+### Network Response 4xx and 5xx
+
+- If writeKey is wrong and app data also gets deleted then a new config cannot retrieve with the wrong write key. in the case of an app, data is present, SDK will retrieve the older config but throw the “Wrong WriteKey. Aborting” error while flush events to the server.
+
+- For other types of network errors (i.e. Invalid Data Plane URL), SDK will try to flush the events to the server every 1 second, 2 seconds, 3 seconds, and so on
 
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-ios/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
