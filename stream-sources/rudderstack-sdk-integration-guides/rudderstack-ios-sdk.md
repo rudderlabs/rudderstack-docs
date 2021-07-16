@@ -677,7 +677,7 @@ let traits = RSClient.sharedInstance()?.getContext().traits
 
 ### Network Response 4xx and 5xx
 
-- If writeKey is wrong and app data also gets deleted then a new config cannot retrieve with the wrong write key. in the case of an app, data is present, SDK will retrieve the older config but throw the “Wrong WriteKey. Aborting” error while flush events to the server.
+- If the WriteKey of the source passed to the SDK is in-correct, it will get a 400 from dataplane and will abort immediately.
 
 - For other types of network errors (i.e. Invalid Data Plane URL), SDK will try to flush the events to the server every 1 second, 2 seconds, 3 seconds, and so on
 
