@@ -84,6 +84,52 @@ rudderanalytics.ready(
 );
 ```
 
+### What is the RudderStack retry and backoff logic after the connection fails?
+
+When the dataplane gets disconnected from the SDK and events are no longer able to be sent to Rudder Server, then some of the SDK's will store events and retry sending them to Rudder Server with a certain backoff logic.
+
+{% hint style="warning" %}
+**NOTE:** The retry of failed events is not supported by all SDKs. Please see table below for support.
+{% endhint %}
+
+#### General Support and Logic
+
+| SDK | Supported | Event Storage | Retry limit |
+| :--- | :--- | :--- | :--- |
+| JavaScript SDK | Yes | 100 events in Local Storage | 10 times |
+| Android SDK | Yes | 10k events in sqlite db | Infinity |
+| iOS SDK | Yes | 10k events in sqlite db | Infinity |
+| Node SDK | Yes | 20k events in-memory | 10 times |
+| All Other SDKs | No | N/A | N/A |
+
+#### JavaScript SDK
+
+This SDK can be configured to match your requirements for retry and backoff logic. By default, if the dataplane goes down and the JS SDK cannot send events to the Rudder Server, up to 100 events will be stored. While still disconnected from the dataplane, the JS SDK will try to resend the stored events to the Rudder Server. However, for each retry, the delay duration will grow. The equation to get the duration of delay is as follows
+
+$$
+dt = md * (F^n)
+$$
+
+Where, $$dt$$ is the delay time in ms, $$md$$ is the `minRetryDelay` \(configurable; default is 1000 ms\), $$F$$ is the `backoffFactor` \(configurable; default is 2\), and $$n$$ is the current retry attempt. The SDK will retry until the attempts surpass the `maxAttempts` value. This is by default set to 10 attempts but is configurable. Each retry attempt, the delay time grows exponentially. However, it will max out at whatever the `maxRetryDelay` is. By default, this value is set at 360000 ms, but it is configurable.
+
+#### iOS SDK and Android SDK
+
+Both the iOS and Android SDKs share similar retry and backoff logic for when the dataplane connection fails. If the dataplane goes down, up to 10,000 events will be stored. There is no limit to how many times the SDK will try to send failed events. However, the delay duration in between the attempts will grow by 1 second after each retry. For example, after the first failed attempt, there will be a delay of 1 second. After the second failed attempt, the SDK will wait 2 seconds before it retries. The third failed attempt will cause a delay of 3 seconds, and this behavior will repeat until the connection is re-established.
+
+#### Node SDK
+
+Currently the Node SDK is the only server-side SDK that supports event retry and backoff logic. The logic is quite similar to the JavaScript SDK. If the connection fails, up to 20,000 events will be stored. However, this is in-memory storage and can result in data loss. The SDK will retry a maximum of 10 times, by default. For each retry the delay duration between retries will grow and can be calculated using the following equation.
+
+$$
+dt = 1000 * (2^n)
+$$
+
+Where, $$dt$$ is the delay time in ms and $$n$$ is the current retry attempt. The SDK will retry until the attempts surpass the `maxAttempts` value which is set to 10 attempts. With each retry attempt, the delay time will grow exponentially. However, it will never be greater than the maximum delay duration which is 30 seconds.
+
+{% hint style="info" %}
+The Node SDK does have a feature to persist the event data in Redis for more event storage and better guarantees of failed event delivery. Instructions on how to configure the Redis solution can be found[ here](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk#data-persistence-in-node-js-sdk). 
+{% endhint %}
+
 ## Contact Us
 
 For more information on the RudderStack SDKs, you can [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to help you!

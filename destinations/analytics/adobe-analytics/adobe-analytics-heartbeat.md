@@ -352,7 +352,7 @@ The following RudderStack properties must also be sent for mapping to the standa
 
 | RudderStack property | Adobe Standard Ad Metadata |
 | :--- | :--- |
-| `publisher` | `MediaHeartbeat.AdMetadataKeys.ADVERTISER`|
+| `publisher` | `MediaHeartbeat.AdMetadataKeys.ADVERTISER` |
 
 ## Contact Us
 

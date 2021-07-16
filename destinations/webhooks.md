@@ -6,7 +6,7 @@ description: >-
 
 # Webhooks
 
-Webhooks allow you to send the events generated via the RudderStack SDK to your own backend. It is useful in cases where you want to apply some custom logic on the event payload before sending it to your preferred destination platforms. 
+Webhooks allow you to send the events generated via the RudderStack SDK to your own backend. It is useful in cases where you want to apply some custom logic on the event payload before sending it to your preferred destination platforms.
 
 Once webhooks are enabled as a destination in your dashboard, RudderStack forwards the SDK events to your configured webhook endpoint.
 
@@ -38,7 +38,6 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 {% endhint %}
 
 * Select the destination as **Webhook** to your source. Give your destination a name and then click on **Next**.
-
 * Next, in the **Connection Settings** page, enter the relevant connection information and click on **Next**
 
 ![](../.gitbook/assets/screenshot-2020-08-24-at-10.24.37-am.png)
@@ -46,26 +45,21 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 The settings are:
 
 * **Webhook URL:** This is the endpoint where [**RudderStack**](https://github.com/rudderlabs/rudder-server) will send the events. Both `http` and `https` are supported. For `https`, the **TLS cert** needs to be **valid** for a successful event delivery.
-
 * **URL Method:** This is the HTTP method of the request that would be sent to the configured endpoint. Supported methods are `POST` and `GET`. By default, the `POST` method is used.
-
 * **Headers:** Add custom headers for your events via this option. These headers will be added to the request made from RudderStack to your webhook. By default, RudderStack adds the following headers for a `POST` request:
 
-|   Key | Value |
+| Key | Value |
 | :--- | :--- |
 | `User-Agent` | `RudderLabs` |
 | `Content-Type` | `application/json` |
 
 {% hint style="info" %}
-RudderStack also supports adding a dynamic header for your events through user transformation. For more information, refer to our 
-[**user transformer code**](https://github.com/rudderlabs/sample-user-transformers/blob/master/AddDynamicHeader.js) in our GitHub repo.
+RudderStack also supports adding a dynamic header for your events through user transformation. For more information, refer to our [**user transformer code**](https://github.com/rudderlabs/sample-user-transformers/blob/master/AddDynamicHeader.js) in our GitHub repo.
 {% endhint %}
 
 {% hint style="info" %}
-You can also add a dynamic path to your base URL. For more information on how to do this, refer to our 
-[**user transformer code**](https://github.com/rudderlabs/sample-user-transformers/blob/master/DynamicPathtoBaseURL.js) in our GitHub repo.
+You can also add a dynamic path to your base URL. For more information on how to do this, refer to our [**user transformer code**](https://github.com/rudderlabs/sample-user-transformers/blob/master/DynamicPathtoBaseURL.js) in our GitHub repo.
 {% endhint %}
-
 
 ## Identify
 
@@ -113,10 +107,9 @@ A sample `identify` payload is as shown:
 }
 ```
 
-For each `identify` call, RudderStack sends the request in the following manner (depending on the URL method configured in the dashboard):
+For each `identify` call, RudderStack sends the request in the following manner \(depending on the URL method configured in the dashboard\):
 
 * **`POST`:** RudderStack sends the whole event payload\(as shown above\) as the JSON body of the `POST` request.
-
 * **`GET`:** RudderStack send the traits that you pass in the `identify` call as query parameters of the `GET` request. If your traits contain nested values, RudderStack flattens these values and sends them as query parameters. For example, the company ID specified in the above payload's traits is sent as `"company.id": "company-A"`.
 
 ## Page
@@ -165,13 +158,11 @@ A sample `page` payload is as shown:
   "integrations": { "All": true },
   "sentAt": "2020-04-22T08:06:20.334Z"
 }
-
 ```
 
-For each `page` call, RudderStack sends the request in the following manner(depending on the URL method configured in the dashboard):
+For each `page` call, RudderStack sends the request in the following manner\(depending on the URL method configured in the dashboard\):
 
 * **`POST`:** RudderStack send the whole event payload\(as shown above\) as the JSON body of the `POST` request.
-
 * **`GET`:** RudderStack sends the properties that you pass on the `page` call as query parameters of the `GET`request. If your properties contain nested values, RudderStack flattens these values and sends them as query parameters. For example, the experiment variant specified in the above payload's properties is sent as `"experiment.variant": "old"`.
 
 ## Track
@@ -230,10 +221,9 @@ A sample `track` payload is as shown:
 
 To view the other events and detailed event structure for the types of events being sent, check out the [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api-spec).
 
-For each `track` call, RudderStack sends the request in the following manner(depending on the URL method configured in the dashboard):
+For each `track` call, RudderStack sends the request in the following manner\(depending on the URL method configured in the dashboard\):
 
 * **`POST`:** RudderStack sends the whole event payload\(as shown above\) as the JSON body of the `POST` request.
-
 * **`GET`:** RudderStack sends the properties that you pass in the `track` call as query parameters of the `GET` request. If your properties contain nested values, RudderStack will flatten these values before sending them.
 
 ## FAQs
@@ -253,3 +243,4 @@ For each `track` call, RudderStack sends the request in the following manner(dep
 ## Contact Us
 
 If you come across any issues while configuring webhooks with RudderStack, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+

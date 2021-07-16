@@ -41,7 +41,6 @@ In the File Inspector, add the JSON file to the `AdobeMobileSDK` target.
 
 Then, follow the instructions in the [**Adobe documentation**](https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/set-up-ios.html?lang=en#) to create the report suite.
 
-
 ## Adding Device Mode Integration
 
 {% tabs %}
@@ -243,6 +242,7 @@ A sample `flush` call is as follows:
 ```java
 MainApplication.rudderClient.flush()
 ```
+
 {% hint style="info" %}
 The `flush` call is supported only in Android.
 {% endhint %}
