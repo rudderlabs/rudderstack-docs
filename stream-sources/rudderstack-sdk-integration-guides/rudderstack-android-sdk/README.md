@@ -18,21 +18,21 @@ You can check the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-and
 
 To set up the RudderStack Android SDK, there are a few prerequisites as mentioned below:
 
-- You will need to set up a [RudderStack Account](https://app.rudderlabs.com).
-- Once signed up, your `Android` source `writeKey` will appear in the Dashboard, as shown:
+* You will need to set up a [RudderStack Account](https://app.rudderlabs.com).
+* Once signed up, your `Android` source `writeKey` will appear in the Dashboard, as shown:
 
 ![Android source WriteKey after adding the source](../../../.gitbook/assets/android-1.png)
 
-- You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
+* You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
 To get the **Data Plane URL**:
 
-- If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
-- If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
-  {% endhint %}
+* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
+* If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
+{% endhint %}
 
-- You will also need to install [Android Studio](https://developer.android.com/studio) on your system.
+* You will also need to install [Android Studio](https://developer.android.com/studio) on your system.
 
 ## Installing the SDK
 
@@ -44,7 +44,7 @@ We distribute our Android SDK through [Maven Central](https://search.maven.org).
 
 Follow these steps:
 
-- Open your project level `build.gradle` file, and add the following lines of code:
+* Open your project level `build.gradle` file, and add the following lines of code:
 
 ```groovy
 buildscript {
@@ -59,7 +59,7 @@ allprojects {
 }
 ```
 
-- Then open your `app/build.gradle` and add the dependency under `dependencies` as shown below:
+* Then open your `app/build.gradle` and add the dependency under `dependencies` as shown below:
 
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1+'
@@ -97,7 +97,6 @@ Don't have an `Application` class? Follow our guide on [Adding an Application Cl
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 val rudderClient = RudderClient.getInstance(
     this,
@@ -109,11 +108,9 @@ val rudderClient = RudderClient.getInstance(
         .build()
 )
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 RudderClient rudderClient = RudderClient.getInstance(
         this,
@@ -125,7 +122,6 @@ RudderClient rudderClient = RudderClient.getInstance(
                 .build()
 );
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -148,7 +144,6 @@ An example of the `track` event is as shown:
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 rudderClient.track(
     "Product Added",
@@ -156,11 +151,9 @@ rudderClient.track(
         .putValue("product_id", "product_001")
 )
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 rudderClient.track(
         "Product Added",
@@ -168,17 +161,16 @@ rudderClient.track(
                 .putValue("product_id", "product_001")
 );
 ```
-
 {% endtab %}
 {% endtabs %}
 
 Follow the method signature as below:
 
-| Name       | Data Type                                 | Required | Description                                                 |
-| :--------- | :---------------------------------------- | :------- | :---------------------------------------------------------- |
-| `name`     | `String`                                  | Yes      | Name of the event you want to track                         |
-| `property` | `RudderProperty` or `Map<String, Object>` | No       | Extra data properties you want to send along with the event |
-| `options`  | `RudderOption`                            | No       | Extra event options                                         |
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `name` | `String` | Yes | Name of the event you want to track |
+| `property` | `RudderProperty` or `Map<String, Object>` | No | Extra data properties you want to send along with the event |
+| `options` | `RudderOption` | No | Extra event options |
 
 ## Identify
 
@@ -192,7 +184,6 @@ An example `identify` event is as shown:
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 val traits = RudderTraits()
 traits.putBirthday(Date())
@@ -216,11 +207,9 @@ traits.put("date", Date(System.currentTimeMillis()))
 
 rudderClient.identify("test_user_id", traits, null)
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 RudderTraits traits = new RudderTraits();
 traits.putBirthday(new Date());
@@ -244,24 +233,23 @@ traits.put("date", new Date(System.currentTimeMillis()));
 
 rudderClient.identify("test_user_id", traits, null;
 ```
-
 {% endtab %}
 {% endtabs %}
 
 Follow the method signatures below:
 
-| Name      | Data Type      | Required | Description                            |
-| :-------- | :------------- | :------- | :------------------------------------- |
-| `traits`  | `RudderTraits` | Yes      | Traits information for the user        |
-| `options` | `RudderOption` | No       | Extra options for the `identify` event |
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `traits` | `RudderTraits` | Yes | Traits information for the user |
+| `options` | `RudderOption` | No | Extra options for the `identify` event |
 
 **OR**
 
-| Name     | Data Type      | Required | Description                            |
-| :------- | :------------- | :------- | :------------------------------------- |
-| `userId` | `String`       | Yes      | Developer identity for the user        |
-| `traits` | `RudderTraits` | No       | Traits information for user            |
-| `option` | `RudderOption` | No       | Extra options for the `identify` event |
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `userId` | `String` | Yes | Developer identity for the user |
+| `traits` | `RudderTraits` | No | Traits information for user |
+| `option` | `RudderOption` | No | Extra options for the `identify` event |
 
 ## Screen
 
@@ -271,7 +259,6 @@ An example of the `screen` event is as shown:
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 rudderClient.screen(
     "MainActivity",
@@ -280,11 +267,9 @@ rudderClient.screen(
     null
 )
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 rudderClient.screen(
     "MainActivity",
@@ -293,18 +278,17 @@ rudderClient.screen(
     null
 );
 ```
-
 {% endtab %}
 {% endtabs %}
 
 Follow the method signature below:
 
-| Name         | Data Type        | Required | Description                                                                                                                                   |
-| :----------- | :--------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| `screenName` | `String`         | Yes      | Name of the screen viewed.                                                                                                                    |
-| `category`   | `String`         | No       | Category of the screen visited, such as `HomeScreen`, `LoginScreen`. Useful for tracking multiple `Fragment` views under a single `Activity`. |
-| `property`   | `RudderProperty` | No       | Extra property object that you want to pass along with the `screen` call.                                                                     |
-| `option`     | `RudderOption`   | No       | Extra options to be passed along with `screen` event.                                                                                         |
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `screenName` | `String` | Yes | Name of the screen viewed. |
+| `category` | `String` | No | Category of the screen visited, such as `HomeScreen`, `LoginScreen`. Useful for tracking multiple `Fragment` views under a single `Activity`. |
+| `property` | `RudderProperty` | No | Extra property object that you want to pass along with the `screen` call. |
+| `option` | `RudderOption` | No | Extra options to be passed along with `screen` event. |
 
 ## Group
 
@@ -312,7 +296,6 @@ The `group` call associates a user to a specific organization. A sample `group` 
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 rudderClient.group(
     "sample_group_id",
@@ -321,11 +304,9 @@ rudderClient.group(
         .putPhone("1234567891")
 )
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 rudderClient.group(
     "sample_group_id",
@@ -334,17 +315,16 @@ rudderClient.group(
         .putPhone("1234567891")
 );
 ```
-
 {% endtab %}
 {% endtabs %}
 
 Follow the method signatures below:
 
-| Name      | Data Type      | Required | Description                                                                 |
-| :-------- | :------------- | :------- | :-------------------------------------------------------------------------- |
-| `groupId` | `String`       | Yes      | An ID of the organization with which you want to associate your user        |
-| `traits`  | `RudderTraits` | No       | Any other property of the organization you want to pass along with the call |
-| `options` | `RudderOption` | No       | Event level options                                                         |
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `groupId` | `String` | Yes | An ID of the organization with which you want to associate your user |
+| `traits` | `RudderTraits` | No | Any other property of the organization you want to pass along with the call |
+| `options` | `RudderOption` | No | Event level options |
 
 We don't persist the traits for the group across the sessions
 
@@ -354,28 +334,24 @@ The `alias` call associates the user with a new identification. A sample `alias`
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 rudderClient.alias("test_new_id")
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 rudderClient.alias("test_new_id");
 ```
-
 {% endtab %}
 {% endtabs %}
 
 Alternatively, you can use the following method signature
 
-| Name      | Data Type      | Required | Description                                     |
-| :-------- | :------------- | :------- | :---------------------------------------------- |
-| `newId`   | `String`       | Yes      | The new `userId` you want to assign to the user |
-| `options` | `RudderOption` | No       | Event level option                              |
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `newId` | `String` | Yes | The new `userId` you want to assign to the user |
+| `options` | `RudderOption` | No | Event level option |
 
 We replace the old `userId` with the `newUserId` and we persist that identification across the sessions.
 
@@ -385,19 +361,15 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 rudderClient.reset()
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 rudderClient.reset();
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -405,17 +377,17 @@ rudderClient.reset();
 
 You can configure your client based on the following parameters using `RudderConfig.Builder`:
 
-| Parameter               | Type      | Description                                                                                                                                                                                                                                       | Default Value                                            |
-| :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------- |
-| `logLevel`              | `int`     | Controls how much of the log you want to see from the SDK.                                                                                                                                                                                        | `RudderLogger.RudderLogLevel.NONE`                       |
-| `dataPlaneUrl`          | `string`  | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL.                                                                                                                                                              | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
-| `flushQueueSize`        | `int`     | Number of events in a batch request to the server.                                                                                                                                                                                                | `30`                                                     |
-| `dbThresholdCount`      | `int`     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                                                                                                                           | `10000`                                                  |
-| `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server.                                                                                                                                                                                           | `10 seconds`                                             |
-| `configRefreshInterval` | `int`     | It will fetch the config from `dashboard` after this many hours.                                                                                                                                                                                  | `2`                                                      |
-| `trackLifecycleEvents`  | `boolean` | Whether SDK will capture application life cycle events automatically.                                                                                                                                                                             | `true`                                                   |
-| `recordScreenViews`     | `boolean` | Whether SDK will capture screen view events automatically.                                                                                                                                                                                        | `false`                                                  |
-| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+| Parameter | Type | Description | Default Value |
+| :--- | :--- | :--- | :--- |
+| `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RudderLogger.RudderLogLevel.NONE` |
+| `dataPlaneUrl` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+| `flushQueueSize` | `int` | Number of events in a batch request to the server. | `30` |
+| `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
+| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
+| `configRefreshInterval` | `int` | It will fetch the config from `dashboard` after this many hours. | `2` |
+| `trackLifecycleEvents` | `boolean` | Whether SDK will capture application life cycle events automatically. | `true` |
+| `recordScreenViews` | `boolean` | Whether SDK will capture screen view events automatically. | `false` |
+| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 
 ### Self-Hosted Control Plane
 
@@ -433,19 +405,15 @@ Follow the code snippets below:
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```bash
 rudderClient.putDeviceToken("your_device_token")
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```bash
 rudderClient.putDeviceToken("your_device_token");
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -495,11 +463,10 @@ The RudderStack Android SDK allows you to enable or disable event flow to a spec
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 val option = RudderOption()
 //default value for `All` is true
-option.putIntegration("All", false)
+option.putIntegration("All", false) 
 // specifying destination by its display name
 option.putIntegration("Google Analytics", true)
 option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>)
@@ -507,15 +474,13 @@ option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>)
 option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
 option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 ```
-
 {% endtab %}
 
 {% tab title="Java" %}
-
 ```java
 RudderOption option = new RudderOption();
 // default value for `All` is true
-option.putIntegration("All", false);
+option.putIntegration("All", false); 
 // specifying destination by its display name
 option.putIntegration("Google Analytics", true);
 option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>);
@@ -523,7 +488,6 @@ option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>);
 option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
 option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -543,7 +507,6 @@ This is helpful when you want to enable/disable sending the events across all th
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 var rudderClient = RudderClient.getInstance(
             this,
@@ -553,15 +516,13 @@ var rudderClient = RudderClient.getInstance(
                 .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
                 .withTrackLifecycleEvents(false)
                 .withRecordScreenViews(false)
-                .build(),
+                .build(), 
             option // passing the rudderoption object containing the list of destination(s) you specified
         )
 ```
-
 {% endtab %}
 
 {% tab title="Java" %}
-
 ```java
 RudderClient client = RudderClient.getInstance(
                 this,
@@ -572,7 +533,6 @@ RudderClient client = RudderClient.getInstance(
                 option // passing the rudderoption object containing the list of destination(s) you specified
         );
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -582,7 +542,6 @@ This approach is helpful when you want to enable/disable sending only a particul
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 rudderClient.track(
                     "Product Added",
@@ -591,20 +550,17 @@ rudderClient.track(
                     option // passing the rudderoption object containing the list of destination you specified
             )
 ```
-
 {% endtab %}
 
 {% tab title="Java" %}
-
 ```java
 rudderClient.track(
                 "Product Added",
                 new RudderProperty()
-                        .putValue("product_id", "product_001"),
+                        .putValue("product_id", "product_001"), 
                 option // passing the rudderoption object containing the list of destination(s) you specified
         );
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -631,7 +587,6 @@ If you run into any issues regarding the RudderStack Android SDK, you can turn o
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 val rudderClient: RudderClient = RudderClient.getInstance(
     this,
@@ -642,11 +597,9 @@ val rudderClient: RudderClient = RudderClient.getInstance(
         .build()
 )
 ```
-
 {% endtab %}
 
 {% tab title="Java" %}
-
 ```java
 RudderClient rudderClient = RudderClient.getInstance(
     this,
@@ -657,7 +610,6 @@ RudderClient rudderClient = RudderClient.getInstance(
         .build()
 );
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -711,28 +663,24 @@ You can get the user traits after making an `identify` call as shown:
 
 {% tabs %}
 {% tab title="Kotlin" %}
-
 ```kotlin
 val traits = rudderClient!!.getRudderContext().getTraits()
 ```
-
 {% endtab %}
 
 {% tab title="JAVA" %}
-
 ```java
 Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
 ```
-
 {% endtab %}
 {% endtabs %}
 
 ### Network Response 4xx and 5xx
+* If the WriteKey of the source passed to the SDK is in-correct, it will get a 400 from dataplane and will abort immediately.
+* For other types of network errors (i.e. Invalid Data Plane URL), SDK will try to flush the events to the server every 1 second, 2 seconds, 3 seconds, and so on.
 
-- If the WriteKey of the source passed to the SDK is in-correct, it will get a 400 from dataplane and will abort immediately.
-
-- For other types of network errors (i.e. Invalid Data Plane URL), SDK will try to flush the events to the server every 1 second, 2 seconds, 3 seconds, and so on.
 
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy.
+
