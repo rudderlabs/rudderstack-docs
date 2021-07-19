@@ -623,7 +623,7 @@ let traits = RSClient.sharedInstance()?.getContext().traits
 
 ### How does the SDK handle different client/server errors?
 
-In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately. For other types of network errors (e.g. Invalid Data Plane URL), the SDK tries to flush the events to RudderStack in an incremental manner (every 1 second, 2 seconds, 3 seconds, and so on).
+In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately. For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries to flush the events to RudderStack in an incremental manner \(every 1 second, 2 seconds, 3 seconds, and so on\).
 
 ## Contact Us
 
