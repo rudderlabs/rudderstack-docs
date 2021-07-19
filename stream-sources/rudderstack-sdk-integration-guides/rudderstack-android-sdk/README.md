@@ -675,9 +675,9 @@ Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
 {% endtab %}
 {% endtabs %}
 
-### Network Response 4xx and 5xx
-* If the WriteKey of the source passed to the SDK is in-correct, it will get a 400 from dataplane and will abort immediately.
-* For other types of network errors (i.e. Invalid Data Plane URL), SDK will try to flush the events to the server every 1 second, 2 seconds, 3 seconds, and so on.
+### How does the SDK handle different client/server errors?
+
+In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately. For other types of network errors (e.g. Invalid Data Plane URL), the SDK tries to flush the events to RudderStack in an incremental manner (every 1 second, 2 seconds, 3 seconds, and so on).
 
 
 ## Contact Us
