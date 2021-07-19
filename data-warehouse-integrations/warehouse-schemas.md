@@ -1,7 +1,7 @@
 ---
 description: >-
-  Detailed technical description of the tables created for various sources
-  connected to the warehouse
+  Detailed technical description of the various tables created when sending
+  events to the data warehouse.
 ---
 
 # Warehouse Schemas
