@@ -6,16 +6,6 @@ description: >-
 
 # Warehouse Actions Sources
 
-## What are Sources in RudderStack?
-
-Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed \(with or without transformation\) into your data warehouse or third-party destinations for analytics and other activation use-cases.
-
-{% hint style="success" %}
-For more information on sources in RudderStack, check out the [**Connections guide**](https://docs.rudderstack.com/connections).
-{% endhint %}
-
-## RudderStack Warehouse Actions
-
 With RudderStack **Warehouse Actions**, you can leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations.
 
 {% hint style="success" %}
