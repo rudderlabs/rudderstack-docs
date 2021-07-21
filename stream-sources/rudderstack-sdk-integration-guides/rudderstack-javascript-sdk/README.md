@@ -8,7 +8,7 @@ description: >-
 
 ## 1. **What is the RudderStack JavaScript SDK?**
 
-The RudderStack JavaScript SDK allows you to utilize our `rudder-analytics.js` library to start sending data from your website to RudderStack. After integrating this SDK, you will also be able to connect to multiple destinations such as Amplitude, Google Analytics, and more, to send your event data.
+RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to track and send user events from your website to RudderStack. You can then further transform and route this event data to the destination platform of your choice.
 
 ## **2. Installing the** RudderStack **JavaScript SDK**
 
@@ -152,6 +152,61 @@ The related APIs exported by the module are:
 * `reset`
 * `getAnonymousId`
 * `setAnonymousId`
+{% endhint %}
+
+###  2.4 Supported Browser Versions
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Browser</th>
+      <th style="text-align:left">Supported Versions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p><b>Safari</b>
+        </p>
+      </td>
+      <td style="text-align:left">v7 or later</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>IE</b>
+      </td>
+      <td style="text-align:left">v10 or later</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Edge</b>
+      </td>
+      <td style="text-align:left">v15 or later</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Mozilla Firefox</b>
+      </td>
+      <td style="text-align:left">v40 or later</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Chrome</b>
+      </td>
+      <td style="text-align:left">v37 or later</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Opera</b>
+      </td>
+      <td style="text-align:left">v23 or later</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Yandex</b>
+      </td>
+      <td style="text-align:left">v14.12 or later</td>
+    </tr>
+  </tbody>
+</table>
+
+{% hint style="info" %}
+If the SDK doesn't work on the versions you are targeting, verify if adding the browser polyfills to your application solves the issue.
 {% endhint %}
 
 ## 3. JavaScript SDK APIs
@@ -972,7 +1027,7 @@ rudderanalytics.page("RudderJS-Initiated", "ad-block page request", {
 });
 ```
 
-## **8. Troubleshooting**
+## **8. FAQs**
 
 This section provides solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
 
