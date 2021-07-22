@@ -6,6 +6,16 @@ description: >-
 
 # Cloud Extract Sources
 
+## What are Sources in RudderStack?
+
+Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed \(with or without transformation\) into your data warehouse or third-party destinations for analytics and other activation use-cases.
+
+{% hint style="success" %}
+For more information on sources in RudderStack, check out the [**Connections guide**](https://docs.rudderstack.com/connections).
+{% endhint %}
+
+## RudderStack Cloud Extract
+
 With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [**Facebook Ads**](https://www.facebook.com/business/ads), [**Google Analytics**](https://analytics.google.com/), [**Marketo**](https://www.marketo.com/), [**HubSpot**](https://www.hubspot.com/), [**Stripe**](stripe.md), and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
 
 {% hint style="info" %}

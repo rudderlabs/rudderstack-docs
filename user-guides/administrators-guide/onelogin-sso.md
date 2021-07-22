@@ -1,10 +1,12 @@
 ---
-description: Step-by-step guide to setting up the RudderStack SSO feature.
+description: >-
+  Step-by-step guide to setting up the RudderStack SSO (Single Sign-On) feature
+  with OneLogin.
 ---
 
-# RudderStack Single Sign-On \(SSO\)
+# OneLogin SSO Setup
 
-The [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial) now allows you to log in with SSO. This document lists the steps to follow in order to configure the SSO \(Single Sign-On\) feature.
+This document lists the steps to follow in order to configure and enable SSO for your organization with OneLogin.
 
 ## Configuring SSO
 
