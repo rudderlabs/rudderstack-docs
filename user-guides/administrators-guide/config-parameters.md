@@ -12,739 +12,256 @@ This document describes the various configuration parameters for the [**`config.
 These configuration parameters are also applicable for the **`config.toml`** file, in case you have an older RudderStack deployment.
 {% endhint %}
 
+{% hint style="success" %}
+To best understand some of the terms covered in this guide, we recommend going through the [**RudderStack architecture**](https://docs.rudderstack.com/get-started/rudderstack-architecture) first.
+{% endhint %}
+
 ## Global Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">No.</th>
-      <th style="text-align:left">Parameter name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">1</td>
-      <td style="text-align:left"><code>maxProcess</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Number of parallel threads used in server. Should be set to number of
-        cores.</td>
-      <td style="text-align:center">12</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">2</td>
-      <td style="text-align:left"><code>gwDBRetentionInHr</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in hours</code>
-        </p>
-        <p>The amount of time events are stored in gateway database after they have
-          been processed</p>
-      </td>
-      <td style="text-align:center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">3</td>
-      <td style="text-align:left"><code>routerDBRetention</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in seconds</code>
-        </p>
-        <p>The amount of time events are stored in router database after they have
-          been processed</p>
-      </td>
-      <td style="text-align:center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">4</td>
-      <td style="text-align:left"><code>enableProcessor</code>
-      </td>
-      <td style="text-align:left"><code>bool</code>
-      </td>
-      <td style="text-align:left">A boolean that enables or disables the processor module. Will be set to
-        false when running in degraded mode</td>
-      <td style="text-align:center">true</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">5</td>
-      <td style="text-align:left"><code>enableRouter</code>
-      </td>
-      <td style="text-align:left"><code>bool</code>
-      </td>
-      <td style="text-align:left">A boolean that enables or disables the router module. Will be set to false
-        when running in degraded mode</td>
-      <td style="text-align:center">true</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">6</td>
-      <td style="text-align:left"><code>enableStats</code>
-      </td>
-      <td style="text-align:left"><code>bool</code>
-      </td>
-      <td style="text-align:left">A boolean that enables or disables stats.</td>
-      <td style="text-align:center">true</td>
-    </tr>
-  </tbody>
-</table>
+| Parameter name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `maxProcess` | Int | Number of parallel threads used in server. Should be set to number of cores. | `12` |
+| `gwDBRetention` | String | The time for which the events are stored in the Gateway database after they have been processed. Examples: `1h`, `30m`, `35s`, etc. | `0h` |
+| `routerDBRetention` | String | The time for which the events are stored in the Router database after they have been processed. Examples: `1h`, `30m`, `45s`, etc. | `0h` |
+| `enableProcessor` | Boolean | This variable enables or disables the Processor module. It will be set to `false` when running in [**Degraded mode**](https://docs.rudderstack.com/user-guides/administrators-guide/high-availability#rudderstack-server-running-modes). | `true` |
+| `enableRouter` | Boolean | This variable enables or disables the Router module. Will be set to `false` when running in [**Degraded mode**](https://docs.rudderstack.com/user-guides/administrators-guide/high-availability#rudderstack-server-running-modes). | `true` |
+| `enableStats` | Boolean | This variable enables or disables stats.  | `true` |
+
+{% hint style="info" %}
+For more information on the Processor, Gateway, and Router modules of the RudderStack backend, refer to the [**Architecture**](../../get-started/rudderstack-architecture.md).
+{% endhint %}
 
 ## \[Gateway\]
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">No.</th>
-      <th style="text-align:left">Parameter name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">1</td>
-      <td style="text-align:left"><code>webPort</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">The port on which the server runs.</td>
-      <td style="text-align:center">8080</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">2</td>
-      <td style="text-align:left"><code>maxDBWriterProcess</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">As requests come in to the gateway and are batched, <code>maxDBWriterProcess</code> writers
-        are run to send these batches to db and config-backend</td>
-      <td style="text-align:center">64</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">3</td>
-      <td style="text-align:left"><code>CustomVal</code>
-      </td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">For creation of a job in jobsDB, <code>CustomVal</code> i.e.<code>GW</code> will
-        be assigned for the <code>CustomVal </code>column in jobsDB</td>
-      <td style="text-align:center">&quot;GW&quot;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">4</td>
-      <td style="text-align:left"><code>maxBatchSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Batch size used in Gateway. Requests are batched up to size <code>maxBatchSize </code>before
-        writing to DB.</td>
-      <td style="text-align:center">32</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">5</td>
-      <td style="text-align:left"><code>batchTimeoutInMS</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in MilliSeconds</code>
-        </p>
-        <p>In case the request batches do not meet the <code>maxBatchSize</code>,
-          every 20 milliseconds these request batches are are sent to db and config-backend.</p>
-      </td>
-      <td style="text-align:center">20</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">6</td>
-      <td style="text-align:left"><code>maxReqSizeInKB</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">One example where an error message (&quot;Request size exceeds max limit&quot;)
-        is thrown for a particular request is when its size in KB crosses <code>maxReqSizeInKB</code><em>.</em>
-      </td>
-      <td style="text-align:center">100000</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">7</td>
-      <td style="text-align:left"><code>enableDedup</code>
-      </td>
-      <td style="text-align:left"><code>bool</code>
-      </td>
-      <td style="text-align:left">Enable or disable deduplication of events. We use <code>message_id</code> to
-        de-dup. Duplicate events are dropped at the gateway.</td>
-      <td style="text-align:center">false</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">8</td>
-      <td style="text-align:left"><code>dedupWindowInS</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in Seconds</code>
-        </p>
-        <p>Events with the same message_id with in this time frame are considered
-          duplicate and are dropped</p>
-      </td>
-      <td style="text-align:center">86400</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">9</td>
-      <td style="text-align:left"><code>enableRateLimit</code>
-      </td>
-      <td style="text-align:left"><code>bool</code>
-      </td>
-      <td style="text-align:left">Rate limit the number of requests accepted by the gateway. Used for running
-        hosted service</td>
-      <td style="text-align:center">false</td>
-    </tr>
-  </tbody>
-</table>
+| Parameter name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `webPort` | Int | The port on which the RudderStack server runs. | `8080` |
+| `maxUserWebRequestWorkerProcess` | Int | RudderStack spawns this specified number of processes to consume the events at a user level. | `64` |
+| `maxDBWriterProcess` | Int | As requests come in to the Gateway and are batched, RudderStack runs the `maxDBWriterProcess` writers to send these batches to the database and the [**Configuration Backend**](https://gblobscdn.gitbook.com/assets%2F-Lq5Ea6fHVg3dSxMCgyQ%2F-MMKu5yWZaG2je_wYlsz%2F-MMKuDE6q6eLgf3xbyqE%2FRudderStack%20Architecture.png?alt=media&token=12ea0835-c074-4478-9527-486932630b80). | `256` |
+| `CustomVal` | String | For the creation of a job in the backend PostgreSQL database \(jobsDB\), the value of this variable will be assigned to the `CustomVal` column. | `GW` |
+| `maxBatchSize` | Int | The batch size used in the Gateway. The requests are batched up to this size before writing to the database. | `32` |
+| `batchTimeout` | String | In case the request batches do not meet the `maxBatchSize`, the batches are are sent to the database and the Configuration Backend in this interval. | `20ms` |
+| `maxReqSizeInKB` | Int | An error message \("**Request size exceeds max limit**"\) is thrown for a particular request is when its size in KB crosses this value_._ | `4000` |
+| `enableDedup` | Boolean | Enables or disables deduplication of events. RudderStack uses `message_id` to de-dup. The duplicate events are dropped at the Gateway.  | `false` |
+| `dedupWindow` | Int | Events with the same `message_id` within this timeframe are considered duplicate and are dropped. | `3600s` |
+| `enableRateLimit` | Boolean | Rate limits the number of requests accepted by the Gateway. This is used for running the RudderStack-hosted service. | `false` |
 
 ## \[SourceDebugger\]
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">No.</th>
-      <th style="text-align:left">Parameter name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">1</td>
-      <td style="text-align:left"><code>disableEventUploads</code>
-      </td>
-      <td style="text-align:left"><code>bool</code>
-      </td>
-      <td style="text-align:left">A bool to enable or disable event schema upload.</td>
-      <td style="text-align:center">false</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">2</td>
-      <td style="text-align:left"><code>maxBatchSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Maximum size of the live events batch sent to config-backend.</td>
-      <td
-      style="text-align:center">32</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">3</td>
-      <td style="text-align:left"><code>maxESQueueSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Maximum size of the live events queue in the memory.</td>
-      <td style="text-align:center">1024</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">4</td>
-      <td style="text-align:left"><code>maxRetry</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Maximum number of attempts by the server to upload the request batches,
-        in case of errors.</td>
-      <td style="text-align:center">3</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">5</td>
-      <td style="text-align:left"><code>batchTimeoutInS</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in seconds</code>
-        </p>
-        <p>In case the request batches do not meet the <code>maxBatchSize</code>,
-          every 2 seconds these request batches are uploaded to config-backend.</p>
-      </td>
-      <td style="text-align:center">2</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">6</td>
-      <td style="text-align:left"><code>retrySleepInMS</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in milliseconds</code>
-        </p>
-        <p>In case of error while uploading the request batches, the server instead
-          of retrying continuously for <code>maxRetry </code>times will sleep for
-          100 milliseconds before retrying.</p>
-      </td>
-      <td style="text-align:center">100</td>
-    </tr>
-  </tbody>
-</table>
+| Parameter name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `disableEventUploads` | Boolean | Enables or disables the event schema upload. | `false` |
+| `maxBatchSize` | Int | The maximum size of the live events batch sent to the Configuration Backend. | `32` |
+| `maxESQueueSize` | Int | The maximum size of the live events queue in the memory. | `1024` |
+| `maxRetry` | Int | The maximum number of attempts RudderStack makes to upload the request batches, in case of any errors. | `3` |
+| `batchTimeout` | String | In case the request batches do not meet the `maxBatchSize`,  the request batches are uploaded to Configuration Backend in this time interval. | `2s` |
+| `retrySleep` | String | In case of errors while uploading the request batches, RudderStack waits for this time interval before retrying. This is done until the `maxRetry` limit is reached. | `100ms` |
 
 ## \[JobsDB\]
 
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">No.</th>
       <th style="text-align:left">Parameter name</th>
       <th style="text-align:left">Type</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
+      <th style="text-align:center">Default value</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">1</td>
       <td style="text-align:left"><code>jobDoneMigrateThres</code>
       </td>
-      <td style="text-align:left"><code>float64</code>
-      </td>
+      <td style="text-align:left">Float64</td>
       <td style="text-align:left">If (<code>deletedJobsCount </code>/ <code>totalJobsCount</code>) &gt; <code>jobDoneMigrateThres</code>,
-        migrate the table of the jobs that have been processed.</td>
-      <td style="text-align:center">0.8</td>
+        RudderStack migrates the table of the jobs that have been processed.</td>
+      <td
+      style="text-align:center"><code>0.8</code>
+        </td>
     </tr>
     <tr>
-      <td style="text-align:left">2</td>
       <td style="text-align:left"><code>jobStatusMigrateThres</code>
       </td>
-      <td style="text-align:left"><code>float64</code>
-      </td>
+      <td style="text-align:left">Float64</td>
       <td style="text-align:left">
         <p>If (<code>statusCount </code>/ <code>totalCount</code>) &gt; <code>jobStatusMigrateThres</code>,</p>
-        <p>migrate the table of jobs that have been processed.</p>
+        <p>RudderStack migrates the table of jobs that have been processed.</p>
       </td>
-      <td style="text-align:center">5</td>
+      <td style="text-align:center"><code>5</code>
+      </td>
     </tr>
     <tr>
-      <td style="text-align:left">3</td>
       <td style="text-align:left"><code>maxDSSize</code>
       </td>
-      <td style="text-align:left"><code>int</code>
+      <td style="text-align:left">Int</td>
+      <td style="text-align:left">The maximum size of a table. If the maximum size is reached, RudderStack
+        migrates all the jobs in that table.</td>
+      <td style="text-align:center"><code>100000</code>
       </td>
-      <td style="text-align:left">The maximum size of a table. If the maximum size is reached, migrate all
-        the jobs in that table.</td>
-      <td style="text-align:center">100000</td>
     </tr>
     <tr>
-      <td style="text-align:left">4</td>
       <td style="text-align:left"><code>maxMigrateOnce</code>
       </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
+      <td style="text-align:left">Int</td>
       <td style="text-align:left">The maximum number of tables that can be migrated together.</td>
-      <td style="text-align:center">10</td>
+      <td style="text-align:center"><code>10</code>
+      </td>
     </tr>
     <tr>
-      <td style="text-align:left">5</td>
       <td style="text-align:left"><code>maxTableSizeInMB</code>
       </td>
-      <td style="text-align:left"><code>int</code>
+      <td style="text-align:left">Int</td>
+      <td style="text-align:left">The maximum size of the tables in MB. The tables are migrated if they
+        cross this limit.</td>
+      <td style="text-align:center"><code>300</code>
       </td>
-      <td style="text-align:left">Maximum size of tables in MB. Tables are migrated if they cross this limit.</td>
-      <td
-      style="text-align:center">300</td>
     </tr>
     <tr>
-      <td style="text-align:left">6</td>
-      <td style="text-align:left"><code>migrateDSLoopSleepDurationInS</code>
+      <td style="text-align:left"><code>migrateDSLoopSleepDuration</code>
       </td>
-      <td style="text-align:left"><code>int64</code>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">
+        <br />The time RudderStack waits before migrating the datasets.</td>
+      <td style="text-align:center"><code>30s</code>
       </td>
-      <td style="text-align:left"><code>Time in seconds </code>
-        <br />Time to sleep before migrating datasets.</td>
-      <td style="text-align:center">30</td>
     </tr>
     <tr>
-      <td style="text-align:left">7</td>
       <td style="text-align:left"><code>maxMigrateDSProbe</code>
       </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
+      <td style="text-align:left">Int64</td>
       <td style="text-align:left">The maximum number of tables probed to find if they can be migrated.</td>
       <td
-      style="text-align:center">10</td>
+      style="text-align:center"><code>10</code>
+        </td>
     </tr>
     <tr>
-      <td style="text-align:left">8</td>
-      <td style="text-align:left"><code>addNewDSLoopSleepDurationInS</code>
+      <td style="text-align:left"><code>addNewDSLoopSleepDuration</code>
       </td>
-      <td style="text-align:left"><code>int64</code>
+      <td style="text-align:left">Int64</td>
+      <td style="text-align:left">The time RudderStack waits before adding a dataset.</td>
+      <td style="text-align:center"><code>5s</code>
       </td>
-      <td style="text-align:left"><code>Time in seconds </code>
-        <br />Time to sleep before adding a dataset.</td>
-      <td style="text-align:center">5</td>
     </tr>
     <tr>
-      <td style="text-align:left">9</td>
-      <td style="text-align:left"><code>backupCheckSleepDurationIns</code>
+      <td style="text-align:left"><code>backupCheckSleepDuration</code>
       </td>
-      <td style="text-align:left"><code>int64</code>
+      <td style="text-align:left">Int64</td>
+      <td style="text-align:left">RudderStack waits for this time interval before checking if a dataset
+        needs backing up.</td>
+      <td style="text-align:center"><code>5s</code>
       </td>
-      <td style="text-align:left"><code>Time in seconds </code>
-        <br />Time interval to sleep before checking if a dataset needs backing up or
-        not.</td>
-      <td style="text-align:center">2</td>
     </tr>
     <tr>
-      <td style="text-align:left">10</td>
       <td style="text-align:left"><code>enableBackup</code>
       </td>
-      <td style="text-align:left"><code>bool</code>
+      <td style="text-align:left">Boolean</td>
+      <td style="text-align:left">Enables or disables the backup. This is set to <code>false</code> in the
+        <a
+        href="https://docs.rudderstack.com/user-guides/administrators-guide/high-availability#rudderstack-server-running-modes"><b>Degraded</b>
+          </a>mode.</td>
+      <td style="text-align:center"><code>true</code>
       </td>
-      <td style="text-align:left">Enables/Disables backup. This is set to false in degraded mode.</td>
-      <td
-      style="text-align:center">true</td>
     </tr>
   </tbody>
 </table>
 
 ## \[Router\]
 
-| No. | Parameter name | Type | Description | Default |
-| :--- | :--- | :--- | :--- | :---: |
-| 1 | `jobQueryBatchSize` | `int` | The size of a batch of jobs to get from database. A list of retry list, processing list or unprocessed list or executed list. | 10000 |
-| 2 | `updateStatusBatchSize` | `int` | The minimum size needed to update the status of a batch of jobs. | 1000 |
-| 3 | `readSleepInMS` | `int64` | `Time in milliseconds`  The time to wait for before the next iteration of the loop.  In case the length of unprocessed and retry list is zero, sleep for 10  __milliseconds. Else add it to another list.  | 10 |
-| 4 | `noOfWorkers` | `int` | The total number of workers that are started to send events to destinations.  | 64 |
-| 5 | `noOfJobsPerChannel` | `int`  | The number of jobs a channel in each worker can contain. So, each worker gets 1000 jobs. | 1000 |
-| 6 | `ser` | `int` |  | 3 |
-| 7 | `maxSleepInS` | `int64` | `Time in seconds`  The time to sleep when response status code is not 200. This is to give time before the next retry. | 60 |
-| 8 | `minSleepInS` | `int64` | `Time in seconds`  Time to sleep when response status code is 200. | 0 |
-| 9 | `maxStatusUpdateWaitInS` | `int64` | `Time in seconds`  Time to sleep before ending one round of stat collection. | 5 |
-| 11 | `useTestSink` | `bool` | Run internal tests. | false |
-| 12 | `maxFailedCountForJob` | `int` | The maximum number of times a job can fail before marking it as aborted. | 8 |
-| 13 | `guaranteeUserEventOrder` | `bool` | Maintain the user events order | true |
-| 14 | `retryTimeWindowInMins` | `int` | Minimum retry window in case of errors like 5XX, 429 | 180 |
-| 15 | `minRetryBackoffInS` | `int` | Minimum time in seconds before the next retry in case of errors like 5XX, 429 | 10 |
-| 16 | `maxRetryBackoffInS` | `int` | Maximum time in seconds between errors in case of errors like 5XX, 429 | 300 |
+| Parameter name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `jobQueryBatchSize` | Int | The size of a jobs batch to get from the database. This includes the retry list, processing list, unprocessed list, or executed list. | `10000` |
+| `updateStatusBatchSize` | Int | The minimum size needed to update the status of a batch of jobs. | `1000` |
+| `readSleep` | Int64 | The time RudderStack waits before fetching the next jobs batch from the database, in case the length of unprocessed and retry list is 0. | `1000ms` |
+| `noOfWorkers` | Int | RudderStack starts this number of workers to send events to the destinations. | `64` |
+| `noOfJobsPerChannel` | Int  | The number of jobs a channel in each worker can contain. | `1000` |
+| `maxSleep` | Int64 | The time to wait when the response status code is not **200**. This is to give RudderStack some time before the next retry. | `60s` |
+| `minSleep` | Int64 | The time to sleep when the response status code is **200**. | `0s` |
+| `maxStatusUpdateWait` | Int64 | The time to sleep before ending one round of stats collection. | `5s` |
+| `useTestSink` | Boolean | Runs internal tests if set to `true`. | `false` |
+| `maxFailedCountForJob` | Int | The maximum number of times a job can fail before it is marked as aborted. | `8` |
+| `guaranteeUserEventOrder` | Boolean | RudderStack maintains the order of user events if set to `true`. | `true` |
+| `retryTimeWindow` | Int | The minimum retry window in case of **5XX**, **429** errors. | `180m` |
+| `minRetryBackoff` | Int | The minimum time before the next retry in case of **5XX**, **429** errors. | `10s` |
+| `maxRetryBackoff` | Int | The maximum allowed time between the errors in case of **5XX**, **429** errors. | `300s` |
 
 ## \[BatchRouter\]
 
-| No. | Parameter name | Type | Description | Default |
-| :--- | :--- | :--- | :--- | :---: |
-| 1 | `mainLoopSleepInS` | `int64` | Timeout in seconds while running main loop. | 30 |
-| 2 | `noOfWorkers` | `int` | The number of workers to batch jobs before deletion. | 8 |
-| 3 | `jobQueryBatchSize` | `int` | Number of events picked up from batch router's jobsdb in each query  | 100000 |
-| 4 | `uploadFreqInS` | `int` | The Frequency with which batch router dumps events to storage destinations. | 30 |
-| 5 | `maxFailedCountForJob` | `int` | The maximum number of times a job can fail before marking it as aborted. | 128 |
+| Parameter name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `mainLoopSleep` | String | The timeout while running the main loop. | `2s` |
+| `noOfWorkers` | Int | The number of workers to batch jobs before deletion. | `8` |
+| `jobQueryBatchSize` | Int | The number of events picked up from the batch router's database \(Jobs DB\) in each query. | `100000` |
+| `uploadFreq` | Int | The frequency with which the batch router dumps the events to the storage destinations. | `30s` |
+| `maxFailedCountForJob` | Int | The maximum number of times a job can fail before marking it as aborted. | `128` |
 
 ## \[Warehouse\]
 
-You can ignore these settings if you don't have any warehouses \(like Redshift, BigQuery, etc.\) enabled in your config.
+{% hint style="info" %}
+You can ignore these settings if you don't have any [**warehouse destinations**](../../data-warehouse-integrations/) configured in RudderStack.
+{% endhint %}
 
-
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">No.</th>
-      <th style="text-align:left">Parameter name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">1</td>
-      <td style="text-align:left"><code>stagingFilesTable</code>
-      </td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">Table name of staging files.</td>
-      <td style="text-align:center">wh_staging_files</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">2</td>
-      <td style="text-align:left"><code>loadFilesTable</code>
-      </td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">Table name of load files.</td>
-      <td style="text-align:center">wh_load_files</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">3</td>
-      <td style="text-align:left"><code>uploadsTable</code>
-      </td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">Table name of uploads.</td>
-      <td style="text-align:center">wh_uploads</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">4</td>
-      <td style="text-align:left"><code>schemasTable</code>
-      </td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">Table name of schemas.</td>
-      <td style="text-align:center">wh_schemas</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">5</td>
-      <td style="text-align:left"><code>uploadFreqInS</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Frequency of upload in seconds</td>
-      <td style="text-align:center">1800</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">6</td>
-      <td style="text-align:left"><code>noOfWorkers</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Number of concurrent writes to the warehouse</td>
-      <td style="text-align:center">8</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">7</td>
-      <td style="text-align:left"><code>mainLoopSleepInS</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in Seconds</code> 
-        </p>
-        <p>Time to wait between multiple warehouse writes</p>
-      </td>
-      <td style="text-align:center">600</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">8</td>
-      <td style="text-align:left"><code>stagingFilesBatchSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Batch size of staging files</td>
-      <td style="text-align:center">240</td>
-    </tr>
-  </tbody>
-</table>
+| Parameter name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `stagingFilesTable` | String | Table name of the staging files. | `wh_staging_files` |
+| `loadFilesTable` | String | Table name of load files. | `wh_load_files` |
+| `uploadsTable` | String | Table name of uploads. | `wh_uploads` |
+| `schemasTable` | String | Table name of schemas. | `wh_schemas` |
+| `uploadFreq` | String | The frequency of the upload in seconds. | `1800s` |
+| `noOfWorkers` | Int | Number of concurrent writes to the warehouse. | `8` |
+| `mainLoopSleep` | String | The time RudderStack waits between multiple warehouse writes. | `5s` |
+| `stagingFilesBatchSize` | Int | The batch size of the staging files. | `960` |
 
 ## \[Processor\]
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">No.</th>
-      <th style="text-align:left">Variable name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">1</td>
-      <td style="text-align:left"><code>loopSleepInMS</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in MilliSeconds</code>
-        </p>
-        <p>In case the length of user jobs process queue is zero or the sum of unprocessed
-          and retry list is empty, sleep for 10 milliseconds is called.</p>
-      </td>
-      <td style="text-align:center">10</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">2</td>
-      <td style="text-align:left"><code>maxLoopSleepInMS</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left">Max processor loop sleep time in milli seconds</td>
-      <td style="text-align:center">5000</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">2</td>
-      <td style="text-align:left"><code>dbReadBatchSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">The total number of events to get as a batch from the database.</td>
-      <td
-      style="text-align:center">10000</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">3</td>
-      <td style="text-align:left"><code>transformBatchSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Batch size of events added to request queue before sending to transformation
-        server.</td>
-      <td style="text-align:center">10</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">4</td>
-      <td style="text-align:left"><code>userTransformBatchSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Batch size of events added to request queue before sending to custom transformation
-        server. Only used when user transformation functions are connected to a
-        destination.</td>
-      <td style="text-align:center">200</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">5</td>
-      <td style="text-align:left"><code>sessionThresholdEvents</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">The minimum number of events needed to be process further.</td>
-      <td style="text-align:center">20</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">6</td>
-      <td style="text-align:left"><code>sessionThresholdInS</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left"><code>Time in seconds </code>
-        <br />Minimum time needed before a new session is created.</td>
-      <td style="text-align:center">10</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">7</td>
-      <td style="text-align:left"><code>maxChanSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">The maximum channel size for request and response queue in transformer.</td>
-      <td
-      style="text-align:center">2048</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">8</td>
-      <td style="text-align:left"><code>processSessions</code>
-      </td>
-      <td style="text-align:left"><code>bool</code>
-      </td>
-      <td style="text-align:left">If <code>processSessions </code>is marked true, the status of the job in
-        db is updated.</td>
-      <td style="text-align:center">false</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">9</td>
-      <td style="text-align:left"><code>numTransformWorker</code>
-      </td>
-      <td style="text-align:left"><code>int</code> 
-      </td>
-      <td style="text-align:left">The number of go transform workers.</td>
-      <td style="text-align:center">8</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">10</td>
-      <td style="text-align:left"><code>maxRetry</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">The maximum number of times a transformer can retry hitting the API in
-        case of an error</td>
-      <td style="text-align:center">30</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">11</td>
-      <td style="text-align:left"><code>retrySleepInMS</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left"><code>Time in milliseconds</code>
-        <br />Sleep time in case of an error by transformer while hitting the API, before
-        trying to hit the API again</td>
-      <td style="text-align:center">100</td>
-    </tr>
-  </tbody>
-</table>
+| Variable name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `loopSleep` | Int64 | In case the length of the user jobs process queue is 0 or the unprocessed and retry list is empty, RudderStack sleeps for this specified time. | `10ms` |
+| `maxLoopSleep` | Int64 | Maximum loop sleep time for the Processor. | `5000ms` |
+| `dbReadBatchSize` | Int | The total number of events to get as a batch from the database. | `10000` |
+| `transformBatchSize` | Int | Batch size of the events added to the request queue before sending them for transformation. | `100` |
+| `userTransformBatchSize` | Int | Batch size of the events added to request queue before sending them to the custom transformation server. **Note**: This is used  only when a user transformation function is connected to a destination. | `200` |
+| `sessionThresholdEvents` | Int | The minimum number of events needed to be process further. | `20` |
+| `sessionThreshold` | String | The minimum time needed before a new session is created. | `10s` |
+| `maxChanSize` | Int | The maximum channel size for the  request and response queue in the transformer. | `2048` |
+| `processSessions` | Boolean |  If set to `true`, the status of the job in the database is updated. | `false` |
+| `numTransformWorker` | Int  | Specifies the number of Go transform workers. | `8` |
+| `maxRetry` | Int | The maximum number of times a transformer retries hitting the API in case of an error. | `30` |
+| `retrySleep` | String | The sleep time in case of a transformer error while hitting the API, before retrying. | `100ms` |
 
 ## \[BackendConfig\]
 
-| No. | Variable name | Type | Description | Default |
-| :--- | :--- | :--- | :--- | :---: |
-| 1 | `pollIntervalInS` | `int64` | `Time in seconds` Frequency of updating data from config-backend .  | 5 |
-| 2 | `configFromFile` | `bool` | Reads backend workspace config from a JSON file instead of fetching form api. | false |
-| 3 | `configJSONPath` | `string` | Path of the JSON file which contains the backend workspace config | ./workspaceConfig.json |
+| Variable name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `pollInterval` | `Int64` |  The frequency of updating data from the Configuration Backend.  | `5s` |
+| `configFromFile` | `Boolean` | When set to `true`, RudderStack reads the backend workspace configuration from a JSON file instead of fetching it from the API. | `false` |
+| `configJSONPath` | `String` | The path of the JSON file which contains the backend workspace configuration. | `/etc/rudderstack /workspaceConfig.json` |
 
-## \[RateLimiting\]
+## \[RateLimit\]
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">No.</th>
-      <th style="text-align:left">Variable name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:center">Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">1</td>
-      <td style="text-align:left"><code>eventLimit</code>
-      </td>
-      <td style="text-align:left"><code>int64</code>
-      </td>
-      <td style="text-align:left">Max number of events to be allowed in a time interval</td>
-      <td style="text-align:center">1000</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">2</td>
-      <td style="text-align:left"><code>rateLimitWindowInMins</code>
-      </td>
-      <td style="text-align:left"><code>int32</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>Time in minutes</code> 
-        </p>
-        <p>Rolling time interval used to limit number of events allowed</p>
-      </td>
-      <td style="text-align:center">60</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">3</td>
-      <td style="text-align:left"><code>noOfBucketsInWindow</code>
-      </td>
-      <td style="text-align:left"><code>int32</code>
-      </td>
-      <td style="text-align:left">Number of buckets <code>rateLimitWindowInMins</code> is broken down into</td>
-      <td
-      style="text-align:center">12</td>
-    </tr>
-  </tbody>
-</table>
+| Variable name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `eventLimit` | Int64 | The maximum number of events to be allowed in a time interval. | `1000` |
+| `rateLimitWindow` | Int32 | The rolling time interval used to limit the allowed number of events. | `60m` |
+| `noOfBucketsInWindow` | Int32 | The number of buckets `rateLimitWindow` is broken down into.  | `12` |
 
-## \[Diagnosis\]
+## \[Diagnostics\]
 
-| No. | Parameter name | Type | Description | Default |
-| :--- | :--- | :--- | :--- | :---: |
-| 1 | `enableDiagnosis` | `bool` | Boolean to send server diagnostics report to us. Disabling this will disable sending all diagnostics information. | true |
-| 2 | `gatewayTimePeriodInS` | `int32` | Time interval to send gateway requests report in seconds | 60 |
-| 3 | `routerTimePeriodInS` | `int32` | Time interval to send router requests report in seconds | 60 |
-| 4 | `batchRouterTimePeriodInS` | `int32` | Time interval to send batch router requests report in seconds | 600 |
-| 5 | `enableServerStartMetric` | `bool` | Boolean to send server start event | true |
-| 6 | `enableConfigIdentifyMetric` | `bool` | Boolean to send workspace config received event | true |
-| 7 | `enableServerStartedMetric` | `bool` | Boolean to send server successfully started event | true |
-| 8 | `enableConfigProcessedMetric` | `bool` | Boolean to send workspace config details | true |
-| 9 | `enableGatewayMetric` | `bool` | Boolean to send gateway request metrics | true |
-| 10 | `enableRouterMetric` | `bool` | Boolean to send router request metrics | true |
-| 11 | `enableBatchRouterMetric` | `bool` | Boolean to send batch router request metrics | true |
-| 12 | `enableDestinationFailuresMetric` | `bool` | Boolean to send destination failures metrics | true |
+| Parameter name | Type | Description | Default value |
+| :--- | :--- | :--- | :---: |
+| `enableDiagnosis` | Boolean | RudderStack sends the server diagnostics report to the user. Disabling this will disable sending all diagnostics information. | `true` |
+| `gatewayTimePeriod` | Int32 | The time interval to send the Gateway requests report | `60s` |
+| `routerTimePeriod` | Int32 | The time interval to send the Router requests report. | `60s` |
+| `batchRouterTimePeriod` | Int32 | The time interval to send the Batch router requests report. | `10m` |
+| `enableServerStartMetric` | Boolean | Sends the server start event. | `true` |
+| `enableConfigIdentifyMetric` | Boolean | Sends the workspace config received event. | `true` |
+| `enableServerStartedMetric` | Boolean | Sends the successful server start event. | `true` |
+| `enableConfigProcessedMetric` | Boolean | Sends the workspace config details. | `true` |
+| `enableGatewayMetric` | Boolean | Sends the Gateway request metrics. | `true` |
+| `enableRouterMetric` | Boolean | Sends the Router request metrics. | `true` |
+| `enableBatchRouterMetric` | Boolean | Sends the Batch Router request metrics. | `true` |
+| `enableDestinationFailuresMetric` | Boolean | Sends the destination failures metrics. | `true` |
+
+## Contact Us
+
+For more information on any of the configuration parameters discussed in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
