@@ -137,7 +137,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
     <tr>
       <td style="text-align:left"><code>addNewDSLoopSleepDuration</code>
       </td>
-      <td style="text-align:left">Int64</td>
+      <td style="text-align:left">String</td>
       <td style="text-align:left">The time RudderStack waits before adding a dataset.</td>
       <td style="text-align:center"><code>5s</code>
       </td>
@@ -145,7 +145,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
     <tr>
       <td style="text-align:left"><code>backupCheckSleepDuration</code>
       </td>
-      <td style="text-align:left">Int64</td>
+      <td style="text-align:left">String</td>
       <td style="text-align:left">RudderStack waits for this time interval before checking if a dataset
         needs backing up.</td>
       <td style="text-align:center"><code>5s</code>
