@@ -191,7 +191,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
 | `mainLoopSleep` | String | The timeout while running the main loop. | `2s` |
 | `noOfWorkers` | Int | The number of workers to batch jobs before deletion. | `8` |
 | `jobQueryBatchSize` | Int | The number of events picked up from the batch router's database \(Jobs DB\) in each query. | `100000` |
-| `uploadFreq` | Int | The frequency with which the batch router dumps the events to the storage destinations. | `30s` |
+| `uploadFreq` | String | The frequency with which the batch router dumps the events to the storage destinations. | `30s` |
 | `maxFailedCountForJob` | Int | The maximum number of times a job can fail before marking it as aborted. | `128` |
 
 ## \[Warehouse\]
@@ -215,8 +215,8 @@ You can ignore these settings if you don't have any [**warehouse destinations**]
 
 | Variable name | Type | Description | Default value |
 | :--- | :--- | :--- | :---: |
-| `loopSleep` | Int64 | In case the length of the user jobs process queue is 0 or the unprocessed and retry list is empty, RudderStack sleeps for this specified time. | `10ms` |
-| `maxLoopSleep` | Int64 | Maximum loop sleep time for the Processor. | `5000ms` |
+| `loopSleep` | String | In case the length of the user jobs process queue is 0 or the unprocessed and retry list is empty, RudderStack sleeps for this specified time. | `10ms` |
+| `maxLoopSleep` | String | Maximum loop sleep time for the Processor. | `5000ms` |
 | `dbReadBatchSize` | Int | The total number of events to get as a batch from the database. | `10000` |
 | `transformBatchSize` | Int | Batch size of the events added to the request queue before sending them for transformation. | `100` |
 | `userTransformBatchSize` | Int | Batch size of the events added to request queue before sending them to the custom transformation server. **Note**: This is used  only when a user transformation function is connected to a destination. | `200` |
@@ -232,16 +232,16 @@ You can ignore these settings if you don't have any [**warehouse destinations**]
 
 | Variable name | Type | Description | Default value |
 | :--- | :--- | :--- | :---: |
-| `pollInterval` | `Int64` |  The frequency of updating data from the Configuration Backend.  | `5s` |
-| `configFromFile` | `Boolean` | When set to `true`, RudderStack reads the backend workspace configuration from a JSON file instead of fetching it from the API. | `false` |
-| `configJSONPath` | `String` | The path of the JSON file which contains the backend workspace configuration. | `/etc/rudderstack /workspaceConfig.json` |
+| `pollInterval` | String |  The frequency of updating data from the Configuration Backend.  | `5s` |
+| `configFromFile` | Boolean | When set to `true`, RudderStack reads the backend workspace configuration from a JSON file instead of fetching it from the API. | `false` |
+| `configJSONPath` | String | The path of the JSON file which contains the backend workspace configuration. | `/etc/rudderstack /workspaceConfig.json` |
 
 ## \[RateLimit\]
 
 | Variable name | Type | Description | Default value |
 | :--- | :--- | :--- | :---: |
 | `eventLimit` | Int64 | The maximum number of events to be allowed in a time interval. | `1000` |
-| `rateLimitWindow` | Int32 | The rolling time interval used to limit the allowed number of events. | `60m` |
+| `rateLimitWindow` | String | The rolling time interval used to limit the allowed number of events. | `60m` |
 | `noOfBucketsInWindow` | Int32 | The number of buckets `rateLimitWindow` is broken down into.  | `12` |
 
 ## \[Diagnostics\]
@@ -249,9 +249,9 @@ You can ignore these settings if you don't have any [**warehouse destinations**]
 | Parameter name | Type | Description | Default value |
 | :--- | :--- | :--- | :---: |
 | `enableDiagnosis` | Boolean | RudderStack sends the server diagnostics report to the user. Disabling this will disable sending all diagnostics information. | `true` |
-| `gatewayTimePeriod` | Int32 | The time interval to send the Gateway requests report | `60s` |
-| `routerTimePeriod` | Int32 | The time interval to send the Router requests report. | `60s` |
-| `batchRouterTimePeriod` | Int32 | The time interval to send the Batch router requests report. | `10m` |
+| `gatewayTimePeriod` | String | The time interval to send the Gateway requests report | `60s` |
+| `routerTimePeriod` | String | The time interval to send the Router requests report. | `60s` |
+| `batchRouterTimePeriod` | String | The time interval to send the Batch router requests report. | `10m` |
 | `enableServerStartMetric` | Boolean | Sends the server start event. | `true` |
 | `enableConfigIdentifyMetric` | Boolean | Sends the workspace config received event. | `true` |
 | `enableServerStartedMetric` | Boolean | Sends the successful server start event. | `true` |
