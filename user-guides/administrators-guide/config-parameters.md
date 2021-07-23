@@ -171,18 +171,18 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
 | :--- | :--- | :--- | :---: |
 | `jobQueryBatchSize` | Int | The size of a jobs batch to get from the database. This includes the retry list, processing list, unprocessed list, or executed list. | `10000` |
 | `updateStatusBatchSize` | Int | The minimum size needed to update the status of a batch of jobs. | `1000` |
-| `readSleep` | Int64 | The time RudderStack waits before fetching the next jobs batch from the database, in case the length of unprocessed and retry list is 0. | `1000ms` |
+| `readSleep` | String | The time RudderStack waits before fetching the next jobs batch from the database, in case the length of unprocessed and retry list is 0. | `1000ms` |
 | `noOfWorkers` | Int | RudderStack starts this number of workers to send events to the destinations. | `64` |
 | `noOfJobsPerChannel` | Int  | The number of jobs a channel in each worker can contain. | `1000` |
-| `maxSleep` | Int64 | The time to wait when the response status code is not **200**. This is to give RudderStack some time before the next retry. | `60s` |
-| `minSleep` | Int64 | The time to sleep when the response status code is **200**. | `0s` |
-| `maxStatusUpdateWait` | Int64 | The time to sleep before ending one round of stats collection. | `5s` |
+| `maxSleep` | String | The time to wait when the response status code is not **200**. This is to give RudderStack some time before the next retry. | `60s` |
+| `minSleep` | String | The time to sleep when the response status code is **200**. | `0s` |
+| `maxStatusUpdateWait` | String | The time to sleep before ending one round of stats collection. | `5s` |
 | `useTestSink` | Boolean | Runs internal tests if set to `true`. | `false` |
 | `maxFailedCountForJob` | Int | The maximum number of times a job can fail before it is marked as aborted. | `8` |
 | `guaranteeUserEventOrder` | Boolean | RudderStack maintains the order of user events if set to `true`. | `true` |
-| `retryTimeWindow` | Int | The minimum retry window in case of **5XX**, **429** errors. | `180m` |
-| `minRetryBackoff` | Int | The minimum time before the next retry in case of **5XX**, **429** errors. | `10s` |
-| `maxRetryBackoff` | Int | The maximum allowed time between the errors in case of **5XX**, **429** errors. | `300s` |
+| `retryTimeWindow` | String | The minimum retry window in case of **5XX**, **429** errors. | `180m` |
+| `minRetryBackoff` | String | The minimum time before the next retry in case of **5XX**, **429** errors. | `10s` |
+| `maxRetryBackoff` | String | The maximum allowed time between the errors in case of **5XX**, **429** errors. | `300s` |
 
 ## \[BatchRouter\]
 
