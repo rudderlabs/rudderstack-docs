@@ -76,7 +76,7 @@ RudderStack will ignore any user information which does not adhere to the specif
   * **Is The Data Raw**: As rudderstack does not support combinational schema fields, this field will be ignored if kept disabled.
   
   {% hint style="warning" %}
-   When it is enabled, it will not support the schema fields:`EMAIL_SHA256`,`PHONE_SHA256`.
+   When it is enabled, it will not support the schema fields:`EMAIL_SHA256`,`PHONE_SHA256`. Even when disabled Facebook does not accept any other schema field coupled with `EMAIL_SHA256`,`PHONE_SHA256`.
   {% endhint %}
 
   * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
