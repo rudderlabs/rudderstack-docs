@@ -52,36 +52,39 @@ Please follow our guide on [**How to Add a Source and Destination in RudderStack
 
 To add Custom Audience as a destination in RudderStack, you will need to configure the following settings:
 
-* **Access Token** Enter the access token of your business application set up for accessing the Facebook Marketing API.
+* **Access Token**: Enter the access token of your business application set up for accessing the Facebook Marketing API.
 
 {% hint style="info" %}
 Check the **FAQ** section for more information on how to find your User Access Token.
 {% endhint %}
 
-* **Audience ID** Custom Audience ID to which the audiences will be added to/removed from.
+* **Audience ID**: This is the custom Audience ID to which the audiences will be added/removed.
 
 {% hint style="info" %}
-Check the **FAQ** section for more information on how to find your Audience ID.
+Check the **FAQ** section for more information on finding your Audience ID.
 {% endhint %}
 
 
-* **Schema Fields** Choose your schema fields \(at least one\) from the available options. **This is a mandatory field**. RudderStack expects the user events to consist of **every** schema field that has been chosen on the dashboard, in the same order.
+* **Schema Fields**: Choose your schema fields \(at least one\) from the available options. **This is a mandatory field**. RudderStack expects the user events to consist of **every** schema field that has been chosen on the dashboard, in the same order.
 
 {% hint style="info" %}
-RudderStack will ignore any user information which does not adhere to the specified schema fields in the dashboard settings.
+RudderStack will ignore any user information which does not adhere to the schema fields specified in the dashboard settings.
 {% endhint %}
 
 * Some other important settings are: 
-  * **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard. 
-  * **Is The Data Raw**: As rudderstack does not support combinational schema fields, this field will be ignored if kept disabled.
+  * **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
+
+  * **Is The Data Raw**: As RudderStack does not support combinational schema fields, this field will be ignored if not enabled.
   
   {% hint style="warning" %}
-   When it is enabled, it will not support the schema fields:`EMAIL_SHA256`,`PHONE_SHA256`. Even when disabled Facebook does not accept any other schema field coupled with `EMAIL_SHA256`,`PHONE_SHA256`.
+   When this option is enabled, it will not support these schema fields:`EMAIL_SHA256`,`PHONE_SHA256`. Even when disabled, Facebook does not accept any other schema field coupled with `EMAIL_SHA256`,`PHONE_SHA256`.
   {% endhint %}
 
   * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
-  * **Type**: Type of the custom audience, will be ignored if left as `NA`.
-  * **Sub Type**: Subtype of the custom audience, will be ignored if left as `NA`.
+
+  * **Type**: Specify the type of the custom audience here. This field will be ignored if left as `NA`.
+
+  * **Sub Type**: This is the sub-type of the custom audience. This field will be ignored if left as `NA`.
 
 ##  The `audiencelist` Event Structure to Send User Data to Custom Audience
 
@@ -91,8 +94,8 @@ RudderStack will ignore any user information which does not adhere to the specif
 
 The `add` and `remove` arrays containing the user data objects are expected inside the properties field of the `audiencelist` event. These arrays are wrapped inside the object `listData`.
 
-* **add**: Refers to the user information that needs to be added to the custom audience.
-* **remove**: Refers to the user information that needs to be deleted from the custom audience.
+* **add**: This array refers to the user information that needs to be added to the custom audience.
+* **remove**: This array refers to the user information that needs to be deleted from the custom audience.
 
 ## Schema Fields Mapping
 
@@ -178,7 +181,7 @@ rudder_analytics.audiencelist('USER-ID', 'EVENT-NAME', {
 
 ## Facebook Custom Audience Payload Restrictions
 
-| **Payload Field Name** | **Transformed?** |
+| **Payload Field** | **Transformed?** |
 | :--- | :--- |
 | Using only `add` | Yes |
 | Using only `remove` | Yes |
@@ -207,11 +210,11 @@ rudder_analytics.audiencelist('USER-ID', 'EVENT-NAME', {
 ```
 
 {% hint style="info" %}
-Similarly, you can use `remove` in order to remove users from a particular custom audience without creating a session.
+Similarly, you can use `remove` to remove users from a particular custom audience without creating a session.
 {% endhint %}
 
 {% hint style="warning" %}
-The event payload must include `add` or `remove` . Otherwise, the user data won’t be transformed and sent to Custom Audience.
+The event payload must include `add` or `remove` . Otherwise, the user data won’t be transformed and sent to Facebook Custom Audience.
 {% endhint %}
 
 ### FAQs
