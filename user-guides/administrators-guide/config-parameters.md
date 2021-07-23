@@ -43,7 +43,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
 | `batchTimeout` | String | In case the request batches do not meet the `maxBatchSize`, the batches are are sent to the database and the Configuration Backend in this interval. | `20ms` |
 | `maxReqSizeInKB` | Int | An error message \("**Request size exceeds max limit**"\) is thrown for a particular request is when its size in KB crosses this value_._ | `4000` |
 | `enableDedup` | Boolean | Enables or disables deduplication of events. RudderStack uses `message_id` to de-dup. The duplicate events are dropped at the Gateway.  | `false` |
-| `dedupWindow` | Int | Events with the same `message_id` within this timeframe are considered duplicate and are dropped. | `3600s` |
+| `dedupWindow` | String | Events with the same `message_id` within this timeframe are considered duplicate and are dropped. | `3600s` |
 | `enableRateLimit` | Boolean | Rate limits the number of requests accepted by the Gateway. This is used for running the RudderStack-hosted service. | `false` |
 
 ## \[SourceDebugger\]
