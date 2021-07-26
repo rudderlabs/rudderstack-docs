@@ -103,6 +103,7 @@
     * [HubSpot](destinations/crm/hubspot.md)
     * [Variance](destinations/crm/variance.md)
     * [Zendesk](destinations/crm/zendesk.md)
+    * [Delighted](destinations/crm/delighted.md)
   * [Marketing](destinations/marketing/README.md)
     * [Marketo](destinations/marketing/marketo.md)
     * [Salesforce Marketing Cloud](destinations/marketing/sfmc.md)
