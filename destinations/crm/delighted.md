@@ -35,7 +35,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-/////![Delighted Connection Settings]
+![Delighted Connection Settings](../../.gitbook/assets/Delighted.png)
 
 * Provide your Delighted API Key.
 
