@@ -256,6 +256,10 @@ The event table `add_to_cart` has all the columns as the `tracks` table. It also
 
 RudderStack creates a record in the `identifies` table and upserts the records in the `users` table for every `identify` call, based on the `userId`. 
 
+{% hint style="success" %}
+In case of Google BigQuery, you can use the views created over the tables to query for unique users in the dataset. Refer to the [**BigQuery documentation**](https://docs.rudderstack.com/data-warehouse-integrations/google-bigquery#schema-partitioned-tables-and-views) ****for more details.
+{% endhint %}
+
 A sample `identify` event made from the JavaScript SDK is as shown below:
 
 ```javascript
