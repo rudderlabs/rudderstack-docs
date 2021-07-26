@@ -105,7 +105,13 @@ A sample `track` call is as shown below:
 rudderanalytics.track("Test", {
   delighted_email_subject: "Custom Email Subject.",
   customProperty: "Custom Value",
-  delightedChannelType: "email"
+  delightedChannelType: "email"},
+  { externalId: [
+    {
+        type: "delightedChannelType",
+        id: "sms"
+    } 
+  ]}
 });
 ```
 
