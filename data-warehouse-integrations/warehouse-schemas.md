@@ -254,7 +254,7 @@ The event table `add_to_cart` has all the columns as the `tracks` table. It also
 
 ### Identify
 
-RudderStack creates a record in the `identifies` table and upsets the records in the `users` table for every `identify` call, based on the `userId`. 
+RudderStack creates a record in the `identifies` table and upserts the records in the `users` table for every `identify` call, based on the `userId`. 
 
 A sample `identify` event made from the JavaScript SDK is as shown below:
 
