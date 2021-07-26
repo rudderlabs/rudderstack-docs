@@ -84,7 +84,7 @@ To add MoEngage to your Android Project and enable its full functionality like p
 
 ```javascript
 repositories {
-    maven { url 'https://dl.bintray.com/rudderstack/rudderstack' }
+    mavenCentral()
 }
 ```
 

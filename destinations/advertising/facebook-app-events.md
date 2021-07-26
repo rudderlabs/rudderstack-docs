@@ -84,7 +84,7 @@ To add Facebook App Events to your Android project:
 
 ```text
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 

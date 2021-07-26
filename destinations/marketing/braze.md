@@ -90,7 +90,7 @@ To add Braze to your Android project, please follow these steps:
 
   ```text
   repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
     maven { url "https://appboy.github.io/appboy-android-sdk/sdk" }
   }
   ```

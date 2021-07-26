@@ -77,7 +77,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 
 ```text
 repositories {
-    maven { url  "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 

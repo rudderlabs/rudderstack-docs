@@ -60,7 +60,7 @@ Please follow the steps below to add Leanplum to your Android Project:
 
 ```groovy
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 

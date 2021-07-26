@@ -67,7 +67,7 @@ Please follow these steps to add Optimizely to your Android Project:
 
 ```text
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 

@@ -89,7 +89,7 @@ To add AppsFlyer to your Android project:
 
 ```groovy
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 

@@ -46,7 +46,7 @@ Please follow the steps below to add Bugsnag to your Android Project:
 
 ```text
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 

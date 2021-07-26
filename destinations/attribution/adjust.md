@@ -76,7 +76,7 @@ To add Adjust to your Android project, please follow these steps:
 
 ```groovy
 repositories {
-  maven { url  "https://dl.bintray.com/rudderstack/rudderstack" }
+  mavenCentral()
 }
 ```
 

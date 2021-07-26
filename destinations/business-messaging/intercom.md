@@ -61,7 +61,7 @@ To add the RudderStack Android SDK to your project, please follow these steps:
 
 ```groovy
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 

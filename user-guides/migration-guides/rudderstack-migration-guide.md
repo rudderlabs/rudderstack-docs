@@ -34,7 +34,7 @@ Depending on the platform, please follow these steps to move your existing SDK i
 
 ```groovy
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 
