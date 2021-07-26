@@ -536,6 +536,10 @@ The subsequent records created in the `rudder_discards` table for the discarded 
 | `a21620be-6502-44d6-941d-78209a386d58` | `add_to_cart` | `price` | `NA` |
 | `1e42b2b3-8b6a-49da-8502-83a8db334375` | `add_to_cart` | `added_at` | `05/25/2020` |
 
+## FAQs
+
+
+
 ## Contact Us
 
 For any queries on any of the sections covered in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
