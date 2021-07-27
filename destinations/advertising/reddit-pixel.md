@@ -8,10 +8,6 @@ description: Step-by-step guide to send your event data from RudderStack to Redd
 
 You can now seamlessly send your event data to Reddit Pixel by adding it as a destination in RudderStack.
 
-{% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-sdk-js/tree/production-staging/integrations)**.**
-{% endhint %}
-
 ## Getting Started
 
 Before configuring Reddit Pixel as a destination in RudderStack, verify if the source platform is supported by Reddit Pixel by referring to the table below:
