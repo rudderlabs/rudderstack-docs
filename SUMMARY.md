@@ -244,5 +244,6 @@
       * [How to Add a Device Mode SDK to RudderStack JavaScript SDK](user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js.md)
     * [How to Develop Integrations for RudderStack](user-guides/how-to-guides/developing-integrations-for-rudderstack.md)
     * [How to Integrate Rudderstack with a Gatsby Website](user-guides/how-to-guides/how-to-integrate-rudderstack-with-a-gatsby-website.md)
+* [Glossary](glossary.md)
 * [FAQs](faqs.md)
 
