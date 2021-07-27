@@ -129,7 +129,7 @@ In the above example, `Test` is the event name. Except the event name, all other
 If you do not enter the **Event** name in the dashboard for which the `track` call is triggered, RudderStack will throw an error.
 {% endhint %}
 
-Delighted also provides some custom properties by itself. In the above example, `delighted_email_subject` sets the email subject of the survey to `Custom Email Subject`. Note that this change can be done from the [Delighted website](https://app.delighted.com/platforms) too.
+Delighted also provides some custom properties by itself. In the above example, `delighted_email_subject` sets the email subject of the survey to `Custom Email Subject`. Note that this change can be done from the [**Delighted website**](https://app.delighted.com/platforms) too.
 
 Some other default properties provided by Delighted are mentioned in the table below:
 
