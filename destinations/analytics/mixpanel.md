@@ -55,6 +55,8 @@ rudderanalytics.page();
 
 ### Page Web Device Mode
 
+Rudderstack will send 1 event to Mixpanel per `page` call.
+
 For Device mode, RudderStack offers three options for `page` calls:
 
 * RudderStack transforms the `page` call to the corresponding Mixpanel events. **This is the default behavior**. RudderStack sends all the `page` and `screen` calls with a single name (for e.g., `Loaded a Page`) with the corresponding properties of the call in the body and the **Track All Pages with a Consolidated Event Name** option enabled by default. This allows you to leverage Mixpanel's reporting for page/screen analytics in the best possible way.
