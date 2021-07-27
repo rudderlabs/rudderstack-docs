@@ -111,7 +111,7 @@ In this step, you’ll generate access tokens for the integration record \(appli
 
 **Note:** If your Account ID contains a suffix - `1234567_SB2`, for example - it should be included when entering the ID into RudderStack.
 
-## Getting Started
+## Configuring RudderStack
 
 To set up Netsuite as a source on the RudderStack dashboard, follow these steps:
 
