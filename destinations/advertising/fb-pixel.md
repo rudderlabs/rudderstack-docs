@@ -217,6 +217,45 @@ This is only available for device mode.
 
 Custom events are used to send any event that does not appear in any of the mappings. 
 
+## Deduplication
+
+Facebook Pixel allows you to send events via your web browser and your server via the Conversion API. Depending on how you send your events, with this duel set-up, redundant events may be received by Facebook. Therefore, to help get accurate representation of your data, Facebook tries to deduplicate events coming in.
+
+{% hint style="info" %}
+For more information on Facebook Deduplication, you can refer to [this article.](https://www.facebook.com/business/help/823677331451951?id=1205376682832142)
+{% endhint %}
+
+#### `event_id` Method \(Recommended\)
+
+Facebook's \(and RudderStack's\) recommended form of deduplication is to leverage the `event_name` and `event_id` properties. When two events coming into Facebook meet the following criteria, they will be deduplicated.
+
+* They are sent within 48 hours of each other
+* They are received by the same Facebook Pixel ID
+* They have the same `event_name` i.e. `Purchase` etc.
+* They have the same `event_id` 
+  * The `event_id` must be unique to that specific event and the same for both of the events coming from the Pixel and Conversion API
+  * For example: the `event_id` could be the purchase order number etc.
+
+To set the `event_id`, simply include the `event_id` key-value pair either in the `context.traits` object or the `properties` object. The `event_name` will be whatever the name of the event is.
+
+{% hint style="info" %}
+For more information regarding the logic behind the `event_id` deduplication, read [this article](https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/#event-id-and-event-name---recommended).
+{% endhint %}
+
+#### `fbp`  and `external_id` Method \(Not Recommended\)
+
+For this approach, it is necessary to send an event, first from the browser, then from the server. Both events must have the same `event_name`, and the same `fbp` parameter and the same `external_id`. If the browser event is received before the server event and both events have the same `event_name` and the same `fbp` and `external_id`, then the server event will be discarded. Below are a few shortcomings for this deduplication method.
+
+* It will always discard the server event is Facebook identifies a redundant event.
+* This method only works for deduplicating events sent first from the browser and then the server. 
+* There will be no deduplication if two consecutive browser events with the same information are sent to Facebook. The same is true if two server events with the same information is sent to Facebook
+
+RudderStack maps the `event_name` from whatever the name of the event that is being sent is. The `fbp` parameter is taken from the `context.fbp` key-value pair. Finally, the `external_id` will just be the `userId` or `anonymousId` \(if `userId` is not present\). 
+
+{% hint style="info" %}
+For more information regarding the logic behind the `fbp` and `external_id` deduplication, read [this article](https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/#fbp-or-external-id).
+{% endhint %}
+
 ## Timestamps
 
 Facebook Pixel uses ISO 8601 timestamp without the timezone information. 
@@ -227,7 +266,7 @@ Facebook expects them to be sent in the following format:
 
 ## FAQs
 
-**Where can i find the Pixel ID?**
+**Where can I find the Pixel ID?**
 
 To get your Pixel ID, go to your Facebook Ads Manager account. On the left navigation bar, select Business Tools, and click on **Events Manager** under **Manage Business**. 
 
