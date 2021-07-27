@@ -4,9 +4,9 @@ description: Step-by-step guide to set up Delighted as a destination in RudderSt
 
 # Delighted
 
-[**Delighted**](https://app.delighted.com/) is a customer feedback platform - providing a range of ways for you and your team to gather, view, and act on feedback from your customers.
+[**Delighted**](https://delighted.com/) is a popular customer feedback platform. It allows your teams to gather instant, invaluable, and actionable customer feedback to improve your processes and product.
 
-RudderStack supports integration with Delighted and allows you to send customer data to Delighted seamlessly.
+RudderStack supports Delighted as a destination to which you can seamlessly send your customer data.
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/delighted)**.**
@@ -14,7 +14,7 @@ RudderStack supports integration with Delighted and allows you to send customer 
 
 ## Getting Started
 
-Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Delighted by referring to the table below:
+Before configuring your source and destination on the RudderStack, verify if the source platform is supported by Delighted by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -27,55 +27,59 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the source supports sending events to Delighted, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Delighted**.
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Delighted**.
 
 {% hint style="info" %}
-Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
 {% endhint %}
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
 ![Delighted Connection Settings](../../.gitbook/assets/Delighted.png)
 
-* Provide your Delighted API Key.
+* Enter your Delighted **API Key**.
 
 {% hint style="info" %}
-To get your API key. Click [here](https://app.delighted.com/docs/api).
+For more information on how to get your Delighted API key, refer to the Delighted [**docs**](https://app.delighted.com/docs/api).
 {% endhint %}
 
-* By default channel is set to **Email**. You can also change it to **SMS**.
+* By default, the channel is set to **Email**. You can also select **SMS** from the dropdown.
 
-* You can also set the **Delay** value(in seconds) here. By default it is set to **0**.
+* Set the **Delay** value (in seconds) here. By default it is set to **0**.
 
-* To make a **Track call**, you need to mention the **Event Names** for which track call will be triggered.
+* To make a `track` call, enter the **Event Names** for which `track` call will be triggered.
 
 {% hint style="warning" %}
-If the **dashboard** doesn't contain the **Event Name** with which **Track call** is triggered, it will throw an **error**.
+If the RudderStack dashboard does not contain the **Event** for which the `track` call is triggered, RudderStack will throw an error.
 {% endhint %}
 
-* Click on **Next**. Delighted will now be enabled as a destination in Rudderstack.
+* Finally, click on **Next**. Delighted will now be enabled as a destination in Rudderstack.
 
 ## Identify
 
-The `identify` call lets you to add user to your **People** [List](https://app.delighted.com/people). If the user already exists then it will update it with current field if any.
-The information includes `userId` as well as other additional information related to user like name,phone number/email, channel and last sent at.
+The `identify` call lets you to add a user to your **People** [**List**](https://app.delighted.com/people). If the user already exists, RudderStack will update the user with the latest information. This includes `userId` as well as other additional properties related to user like name,phone number/email, channel, and the 'Last sent at' timestamp.
 
-The `userId` provided during the call must match the `Channel type`. `Channel Type` can be either set from Rudderstack Dashboard or you can send it from the call with parameter `DelightedChannelType`. Call will have higher precedence.
-
-You can provide `email/phone number`. Both are not required at the same time, since one of the value will be set from `userId`, so either can be provided at once.
-`Last sent at` value can also be sent with the call.
+* The `userId` provided during the call must match the **Channel** type. The channel type can be either set from Rudderstack dashboard or you can send it via the `identify` call with the parameter `DelightedChannelType`.
 
 {% hint style="info" %}
-`Last sent at` (in Unix timestamp) is used to manually set the time a person was most recently sent a survey. This value will be used in `Survey throttling` system.`Survey throttling` is by default set to 1 month on your project. People added via the API who have already been sent a survey within this time period will not be sent another survey.
+The channel type set via the `identify` call will get a higher precedence.
+{% endhint %}
+
+* You can provide the user `email` or `phone number`. Both are not required at the same time, since one of the values will be set from the `userId`.
+
+* You can also send the `Last sent at` value with the call.
+
+{% hint style="info" %}
+`Last sent at` (in UNIX timestamp) is used to manually set the time a person was most recently sent a survey. This value will be used in the Delighted **Survey throttling** system. By default, Survey throttling is set to **1 month** in your project. Users added via the API who have already been sent a survey within this time period will not be sent another survey.
 {% endhint %}
 
 A sample `identify` call is as shown below:
 
 ```javascript
-rudderanalytics.identify("sample@user.com", {
+rudderanalytics.identify("name@surname.com", {
   name: "User",
-  last_sent_at: "1621496889",
-  phone_number: "+17132746524"},
+  last_sent_at: "1624293839",
+  phone_number: "+1234567890"},
   { externalId: [
     {
         type: "delightedChannelType",
@@ -85,18 +89,18 @@ rudderanalytics.identify("sample@user.com", {
 });
 ```
 
-In the above example, since the `userId` is already an email, you can proivde `phone_number` in addition. Also, the `delightedChannelType` will override the `Channel Type` from the dashboard.
+In this example, since the `userId` is already an email, you can provide the user's `phone_number` as well. Also, the `delightedChannelType` will override the **Channel Type** set in the RudderStack dashboard.
 
 {% hint style="info" %}
-Except `userId` all other fields are optional.
+Except `userId`, all the other fields in the call are optional.
 {% endhint %}
 
 ## Track
 
-The `track` call lets you send the survey to the user which is added to the **People** [List](https://app.delighted.com/people) in your account. In addition to name, phone number/email,channel, last sent at, you can also add `Custom Properties`. You can add as many properties as you need.
+The `track` call lets you send the survey to the user added to the **People** [**List**](https://app.delighted.com/people) in your account. In addition to name, phone number/email,channel, and the 'Last sent at' timestamp, you can also add as many custom properties as you need.
 
-{% hint style="info" %}
-If the `user` doesnot exist, `track` call cannot be made. First `identify` call must be made to add `user` in the `People` List.
+{% hint style="warning" %}
+If the user does not exist, you cannot make a `track` call. You need to first add the user in the People list via the `identify` call.
 {% endhint %}
 
 A sample `track` call is as shown below:
@@ -115,30 +119,32 @@ rudderanalytics.track("Test", {
 });
 ```
 
-Here `Test` is the Event Name.
+In the above example, `Test` is the event name. Except the event name, all other fields are optional.
 
 {% hint style="warning" %}
-If the **dashboard** doesn't contain the **Event Name** with which **Track call** is triggered, it will throw **error**.
-Except `Event Name` all other fields are optional.
+If you do not enter the **Event** name in the dashboard for which the `track` call is triggered, RudderStack will throw an error.
 {% endhint %}
 
-Delighted also provides some `Custom properties` by itself. Here `delighted_email_subject` sets the email subject of the survey to `Custom Email Subject`. Though this change can be done from the delighted website too. Some other default properties provided by Delighted are as follows.
-| Property | Value |
+Delighted also provides some custom properties by itself. In the above example, `delighted_email_subject` sets the email subject of the survey to `Custom Email Subject`. Note that this change can be done from the Delighted website too. 
+
+Some other default properties provided by Delighted are mentioned in the table below:
+
+| **Delighted Property** | **Description** |
 | :--- | :--- |
-| `question_product_name]` | This question will be shown in the survey. |
-| `delighted_intro_message` | It will be displayed in the email subject. |
-| `locale` | This will determine localization (including language) of the survey experience. |
+| `question_product_name` | Delighted shows this question in the survey. |
+| `delighted_intro_message` | Delighted displays this message in the email subject. |
+| `locale` | This property determines the localization (including language) of the survey experience. |
 
-For more default properties , click [here](https://help.delighted.com/article/577-special-properties).
+For more default properties, check out this Delighted [**support page**](https://help.delighted.com/article/577-special-properties).
 
-In the above example `customProperty` is the `Custom Property Field` that can be set by you. The `value` must be provided to these fields else it will be dropped by Delighted.
+In the example shown above, `customProperty` is the custom property field that you can set. Note that you must provide values for these custom fields, or else they will be dropped by Delighted.
 
 ## Alias
 
-The `alias` call allows you to update the email/phone number of the user. You need to set `previousId` as the current value and `userId` as the updated value.
+The `alias` call allows you to update the user's email or phone number. You need to set `previousId` as the current value and `userId` as the updated value.
 
 {% hint style="info" %}
-The `previousId` and `userId` must be of the same type. Both must be either email or phone number.
+The `previousId` and `userId` must be of the same type, i.e., either email or phone number.
 {% endhint %}
 
 A sample `alias` call is as shown below:
