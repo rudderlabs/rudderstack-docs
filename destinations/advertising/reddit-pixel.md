@@ -98,7 +98,7 @@ Reddit Pixel does not support any other custom events apart from the ones mentio
 
 **Where can I find the Reddit Pixel Advertiser ID?**
 
-To get your Reddit Pixel Advertiser ID, go to your Reddit Ads Manager account. Under **Reddit Pixel Setup**, select the Reddit **Pixel** button. Here, you can find the advertiser ID the in the `rdt('init', <advertiserID>)` line of the snippet code, as shown below.
+To get your Reddit Pixel Advertiser ID, go to your Reddit Ads Manager account. Under **Reddit Pixel Setup**, select the Reddit **Pixel** button. Here, you can find the advertiser ID in the `rdt('init', <advertiserID>)` line of the snippet code, as shown below.
 
 ![](../../.gitbook/assets/RedditPixel-2.png)
 
