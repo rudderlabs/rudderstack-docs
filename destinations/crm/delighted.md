@@ -70,7 +70,7 @@ The channel type set via the `identify` call will get a higher precedence.
 * You can also send the `last_sent_at` value with the call. Refer to the example below for more details.
 
 {% hint style="info" %}
-`Last sent at` (in UNIX timestamp) is used to manually set the time a person was most recently sent a survey. This value will be used in the Delighted **Survey throttling** system. By default, Survey throttling is set to **1 month** in your project. Users added via the API who have already been sent a survey within this time period will not be sent another survey.
+`Last sent at` (in UNIX timestamp) is used to manually set the time a person was most recently sent a survey. This value will be used in the Delighted **Survey throttling** system, which ensures that same person won’t be surveyed more than once per month. To change its value manually, click [here](https://app.delighted.com/dashboard). Select your `Project` from top left corner and click on the settings icon beside `Project Name`.
 {% endhint %}
 
 A sample `identify` call is as shown below:
@@ -103,13 +103,17 @@ The `track` call lets you send the survey to the user added to the **People** [*
 If the user does not exist, you cannot make a `track` call. You need to first add the user in the People list via the `identify` call.
 {% endhint %}
 
+{% hint style="info" %}
+`Delay` value from the dashboard will override the value sent via call.
+{% endhint %}
+
 A sample `track` call is as shown below:
 
 ```javascript
 rudderanalytics.track("Test", {
   delighted_email_subject: "Custom Email Subject.",
   customProperty: "Custom Value",
-  delightedChannelType: "email"},
+  customProperty2: "Custom Value2"},
   { externalId: [
     {
         type: "delightedChannelType",
@@ -125,7 +129,7 @@ In the above example, `Test` is the event name. Except the event name, all other
 If you do not enter the **Event** name in the dashboard for which the `track` call is triggered, RudderStack will throw an error.
 {% endhint %}
 
-Delighted also provides some custom properties by itself. In the above example, `delighted_email_subject` sets the email subject of the survey to `Custom Email Subject`. Note that this change can be done from the Delighted website too. 
+Delighted also provides some custom properties by itself. In the above example, `delighted_email_subject` sets the email subject of the survey to `Custom Email Subject`. Note that this change can be done from the [Delighted website](https://app.delighted.com/platforms) too.
 
 Some other default properties provided by Delighted are mentioned in the table below:
 
@@ -153,6 +157,9 @@ A sample `alias` call is as shown below:
 rudderanalytics.alias("new@email.com", "old@email.com");
 ```
 
+{% hint style="info" %}
+Here both `previousId` and `userId` are required.
+{% endhint %}
 ## Contact Us
 
 If you come across any issues while configuring Delighted with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
