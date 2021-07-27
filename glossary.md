@@ -7,7 +7,7 @@ description: General glossary of the RudderStack-related terminologies.
 This guide lists the definitions of the RudderStack-related terms that you are likely to encounter throughout our documentation and while using RudderStack.
 
 {% hint style="success" %}
-If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any term in the documentation or while using RudderStack that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 {% endhint %}
 
 ## General
