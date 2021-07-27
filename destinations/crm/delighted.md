@@ -70,7 +70,9 @@ The channel type set via the `identify` call will get a higher precedence.
 * You can also send the `last_sent_at` value with the call. Refer to the example below for more details.
 
 {% hint style="info" %}
-`Last sent at` (in UNIX timestamp) is used to manually set the time a person was most recently sent a survey. This value will be used in the Delighted **Survey throttling** system, which ensures that same person won’t be surveyed more than once per month. To change its value manually, click [here](https://app.delighted.com/dashboard). Select your `Project` from top left corner and click on the settings icon beside `Project Name`.
+`Last sent at` (in UNIX timestamp) is used to manually set the time a person was most recently sent a survey. This value will be used in the Delighted **Survey throttling** system, which ensures that same person won’t be surveyed more than once per month. 
+
+To change its value manually, go the Delighted [**dashboard**](https://app.delighted.com/dashboard), select your **Project** from top left corner and click on the settings icon beside **Project Name**.
 {% endhint %}
 
 A sample `identify` call is as shown below:
@@ -104,7 +106,7 @@ If the user does not exist, you cannot make a `track` call. You need to first ad
 {% endhint %}
 
 {% hint style="info" %}
-`Delay` value from the dashboard will override the value sent via call.
+The **Delay** value from the dashboard will override the value sent via the `track` call.
 {% endhint %}
 
 A sample `track` call is as shown below:
@@ -158,8 +160,10 @@ rudderanalytics.alias("new@email.com", "old@email.com");
 ```
 
 {% hint style="info" %}
-Here both `previousId` and `userId` are required.
+Both `previousId` and `userId` are required.
 {% endhint %}
+
+
 ## Contact Us
 
 If you come across any issues while configuring Delighted with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
