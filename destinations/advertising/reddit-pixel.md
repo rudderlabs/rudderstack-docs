@@ -77,11 +77,31 @@ A sample call looks like the following code snippet:
 rudderanalytics.track("Product Added");
 ```
 
+RudderStack transforms the following events to Reddit Pixel's Standard Events, as shown in the table below:
+
+| RudderStack Event Name      | Reddit Pixel Standard Event |
+| :-------------------------- | :-------------------------- |
+| `Product Added`             | `Add to Cart`               |
+| `Product Added to Wishlist` | `Add to Wishlist`           |
+| `Order Completed`           | `Purchase`                  |
+
+RudderStack also supports mapping the following custom events.
+
+| RudderStack Event Name | Reddit Pixel Standard Event |
+| :--------------------- | :-------------------------- |
+| `Lead`                 | `Lead`                      |
+| `View Content`         | `ViewContent`               |
+| `Search`               | `Search`                    |
+
+{% hint style="info" %}
+Custom events other than shown above are not supported by RedditPixel.
+{% endhint %}
+
 ## FAQs
 
 **Where can I find the Reddit Pixel Advertiser ID?**
 
-To get your Pixel Advertiser ID, go to your Reddit Ads Manager account. On the left side, select the blue Reddit Pixel button, and click on **Google Tag Manager**.
+To get your Reddit Pixel Advertiser ID, go to your Reddit Ads Manager account. On the left side, select the blue Reddit Pixel button, and the advertiser ID can be found in `rdt('init', <advertiserID>)` as shown below.
 
 ![](../../.gitbook/assets/RedditPixel-2.png)
 
