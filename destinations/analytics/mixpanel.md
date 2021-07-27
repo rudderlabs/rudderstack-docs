@@ -57,18 +57,13 @@ rudderanalytics.page();
 
 Rudderstack will send 1 event to Mixpanel per `page` call.
 
-For Device mode, RudderStack offers three options for `page` calls:
+For Device mode, RudderStack offers the following three options for `page` calls:
 
-* RudderStack transforms the `page` call to the corresponding Mixpanel events. **This is the default behavior**. RudderStack sends all the `page` and `screen` calls with a single name (for e.g., `Loaded a Page`) with the corresponding properties of the call in the body and the **Track All Pages with a Consolidated Event Name** option enabled by default. This allows you to leverage Mixpanel's reporting for page/screen analytics in the best possible way.
+* With **Track All Pages with a Consolidated Event Name** option enabled by default, RudderStack sends all the `page` and `screen` calls with the name `Loaded a Page` with the corresponding properties of the call. This allows you to leverage Mixpanel's reporting for page/screen analytics in the best possible way. Note that this option is given the **highest precedence**, even if the following two options (**Track Categorized Pages to Mixpanel** and **Track Named Pages to Mixpanel**) are enabled.
  
-* RudderStack tracks the categorized pages to Mixpanel. If you enable the **Track Categorized Pages to Mixpanel** option, RudderStack sends a `Viewed [category page_name] Page` event.
+* RudderStack tracks the categorized pages to Mixpanel. If you enable the **Track Categorized Pages to Mixpanel** option, RudderStack sends a `Viewed [category] Page` event. If the page name is also present in the event, then `Viewed [category page_name] Page` event is sent.
 
-* RudderStack tracks the named pages to Mixpanel. If you enable the **Track Named Pages to Mixpanel** option, RudderStack will send a `Viewed [page_name] Page` event.
-
-
-{% hint style="info" %}
-If both **Track Categorized Pages to Mixpanel** and **Track Named Pages to Mixpanel** options are enabled, RudderStack sets a higher precedence for the **Track Categorized Pages to Mixpanel**. For instance, if you pass both the page category and name, (e.g. `rudderanalytics.page('category', 'name')`), RudderStack will send a `Viewed category name Page` event to Mixpanel.
-{% endhint %}
+* RudderStack tracks the named pages to Mixpanel. If you enable the **Track Named Pages to Mixpanel** option, RudderStack will send a `Viewed [page_name] Page` event. Note that this option has the least precedence and comes to effect only if the above two options are disabled in the RudderStack dashboard.
 
 {% hint style="info" %}
 RudderStack expects atleast one of the three options listed above to be enabled for sending the `page` events to Mixpanel using device mode.
@@ -274,12 +269,6 @@ This feature is available in the native web Device mode only.
 {% endhint %}
 
 For each event name added, RudderStack automatically calls Mixpanel and sets a user trait as `Last + <event_name>`. For example, if you add `Logged In` to the list of increment events, RudderStack will increment a user trait called `Logged In` and set a trait called `Last Logged In` with the current date and time.
-
-If you’d like to add an increment a specific page or screen view, make sure you have enabled the **Track Named Pages** setting in the dashboard and use the dynamically generated event name under **Events to Increment in People**. For example, `rudderanalytics.page('Signup')` would translate to `Viewed Signup Page`.
-
-{% hint style="warning" %}
-RudderStack will only send one event per `page` call.
-{% endhint %}
 
 {% hint style="info" %}
 Increment works for known users only. So, if your `track` call is being made on the server-side, you will need to pass a `userId`. If your `track` call is being made on the client-side, you will need to identify your user first.
