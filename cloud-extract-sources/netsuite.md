@@ -12,6 +12,105 @@ This document guides you in setting up Netsuite as a source in RudderStack. Once
 **All the Cloud Extract sources support sending data only to a data warehouse destination.**
 {% endhint %}
 
+## Configuring Netsuite
+
+### IP Whitelisting
+
+Depending on the setup of your Netsuite organization you might have to whitelist the IPs of RudderStack. The IPs that should be whitelisted are the following:
+
+**3.216.35.97 \| 34.198.90.241 \| 54.147.40.62 \| 23.20.96.9 \| 18.214.35.254**
+
+To Whitelist IPs on Netsuite do the following.
+
+1. Sign into your NetSuite account as an administrator.
+2. In your NetSuite account, click **Setup &gt; Company &gt; Company** **Information**.
+3. In the **Allowed IP addresses** field, add a **comma-delimited** list of the RudderStackIPs from above.
+4. Click **Save**.
+
+### Enable Token Based Authentication
+
+Next, you’ll enable token-based authentication for your NetSuite account. This is required to generate tokens and authenticate to the SuiteTalk API.
+
+1. On the **Enable Features** page, locate the **Manage Authentication** section. This should be after the **SuiteTalk** section.
+2. Check the **Token-based Authentication** box. Your settings should look like this when finished
+3. Scroll to the bottom of the page and click **Save**.
+
+![](../.gitbook/assets/5.-consumer-key-secret.png)
+
+### Create an Integration
+
+Next, you’ll create an integration record for RudderStack. This will uniquely identify RudderStack in your NetSuite account.
+
+1. Using the global search, type `page: integrations` and click the **Page: Manage Integrations** result.
+2. On the **Integrations** page, click the **New** button.
+3. On the **New Integration** page, fill in the following fields: - **Name**: Enter a name for the integration. - **State**: Select **Enabled**.
+4. In the **Authentication** tab, select the **Token-based Authentication** option.
+5. Click the **Save** button. The confirmation page will display a **Consumer key/secret** section.
+6. **Copy the Consumer Key and Secret somewhere handy.** You’ll need these credentials to complete the setup in RudderStack.
+
+### Create a NetSuite role and configure permissions
+
+To create a Netsuite Token ID and Token Secret, you first need to create a **Role** for RudderStack and an **Employee** that has this specific role.
+
+#### Step 1: Creating a Role
+
+1. Using the global search, type `page: new role` and click the **Page: New Role** result.
+2. On the Role page, enter a name for the role in the **Name** field \(e.g. RudderStack\).
+3. Select **Two-factor Authentication Required** to **Not Required**.
+
+![](../.gitbook/assets/role.png)
+
+Then, under the **Permissions** section, go to **Setup** and assign the following permissions:
+
+Assign **Full** permissions for the following:
+
+* Web Services
+* User Access Tokens
+* Log In Using Access Tokens
+* Deleted Records
+
+Assign **View** permissions for the following:
+
+* Custom Fields
+* Custom Body Fields
+* Perform Search \(you can find this under the **Lists** section next to **Setup**\)
+
+![](../.gitbook/assets/role-permissions.png)
+
+{% hint style="info" %}
+For each pipeline resource that you want RudderStack to sync, you should give the relevant permissions for it to the Role. These resources are divided among these sections - **Transactions**, **Reports**, **Lists**, and **Custom Records**. Note that each permission should have **View** permissions.
+{% endhint %}
+
+{% hint style="warning" %}
+It is extremely important that you have assigned the permissions for every resource, saved search or custom record that you want RudderStack to sync. This is required so that you don't encounter any RudderStack sync failures with permission-related issues.
+{% endhint %}
+
+#### Step 2: Creating an Employee
+
+To create an employee, navigate to **Lists - Employees - Employees - New**. Then, enter the name and email ID of the employee. Under the **Access** section, select **Give Access**, and **Manually assign or change password**. Proceed to add a password. Finally, add the **Role** which you have created in the previous step. Click on **Save** to save the settings.
+
+![](../.gitbook/assets/employee.png)
+
+#### Step 3: Create an Access Token
+
+In this step, you’ll generate access tokens for the integration record \(application\) and user role. You may need to first login as this user to properly generate the **Access Token**.
+
+1. Using the global search, type `page: tokens` and click the **Page: Access Tokens** result.
+2. Click the **New Access Token** button.
+3. On the **Access Token** page, fill in the following fields: - **Application Name**: Select the integration record you created. - **User**: Select the Stitch user you created. - **Role**: Select the Stitch role you created. - **Token Name**: Enter a name for the token.
+4. Click the **Save** button. The confirmation page will display a **Token ID and Secret**. Note: For security reasons, this is the only time they will be displayed.
+5. **Copy the Token ID and Secret somewhere handy**. You’ll need these credentials to complete the setup.
+6. You can now mark the Role as a **Web Services Only Role** by selecting the checkbox in the **Manage Roles** page. 
+
+![](../.gitbook/assets/8%20%283%29.png)
+
+### Locate your NetSuite Account ID
+
+1. Using the global search, type `page: web services` and click the **Page: Web Services Preferences** result.
+2. In the Primary Information section, locate the **Account ID** field as shown in the image on the right.
+
+**Note:** If your Account ID contains a suffix - `1234567_SB2`, for example - it should be included when entering the ID into RudderStack.
+
 ## Getting Started
 
 To set up Netsuite as a source on the RudderStack dashboard, follow these steps:
@@ -98,69 +197,6 @@ Use the **Connect Destinations** option if you have already configured a data wa
 {% endhint %}
 
 ## FAQs
-
-### How can I get the Netsuite Consumer Key and Consumer Secret?
-
-To create the Netsuite Consumer Key and Consumer Secret, you will first have to add a new integration on your Netsuite account. To do so, navigate to **Setup** - **Integration** - **Manage Integrations** - **New**. Then, set up your Netsuite integration by specifying the following:
-
-* **Name** of the integration
-* Enabling the **State** option
-* Checking on the Token-based **Authentication** option
-
-Once you have entered this information, click on **Save**. Your Consumer Key and Secret should now appear on the dashboard for your use.
-
-![](../.gitbook/assets/5.-consumer-key-secret.png)
-
-### How can I get the Netsuite Token ID and Token Secret?
-
-To create a Netsuite Token ID and Token Secret, you first need to create a **Role** for RudderStack and an **Employee** that has this specific role. 
-
-#### Step 1: Creating a Role
-
-To create a role in Netsuite, navigate to **Setup** - **Users/Roles** - **Manage Roles** - **New**. 
-
-Then, enter the name of the role \(e.g. RudderStack\) and select **Two-factor Authentication Required** to **Not Required**.
-
-![](../.gitbook/assets/role.png)
-
-Then, under the **Permissions** section, go to **Setup** and assign the following permissions:
-
-Assign **Full** permissions for the following:
-
-* Web Services
-* User Access Tokens
-* Log In Using Access Tokens
-* Deleted Records
-
-Assign **View** permissions for the following:
-
-* Custom Fields
-* Custom Body Fields
-* Perform Search \(you can find this under the **Lists** section next to **Setup**\)
-
-![](../.gitbook/assets/role-permissions.png)
-
-{% hint style="info" %}
-For each pipeline resource that you want RudderStack to sync, you should give the relevant permissions for it to the Role. These resources are divided among these sections - **Transactions**, **Reports**, **Lists**, and **Custom Records**. Note that each permission should have **View** permissions.
-{% endhint %}
-
-{% hint style="warning" %}
-It is extremely important that you have assigned the permissions for every resource, saved search or custom record that you want RudderStack to sync. This is required so that you don't encounter any RudderStack sync failures with permission-related issues.
-{% endhint %}
-
-#### Step 2: Creating an Employee
-
-To create an employee, navigate to **Lists** - **Employees** - **Employees** - **New**. Then, enter the name and email ID of the employee. Under the **Access** section, select **Give Access**, and **Manually assign or change password**. Proceed to add a password. Finally, add the **Role** which you have created in the previous step. Click on **Save** to save the settings. 
-
-![](../.gitbook/assets/employee.png)
-
-#### Step 3: Create an Access Token
-
-To create an access token, navigate to **Setup** - **User/Roles** - **Access Tokens** - **New**. Select the **Application Name**, **User**, and **Role** \(created in the steps above\). The token name will be automatically created by Netsuite.
-
-Once you click on **Save**, the **Token ID** and **Token Secret** will appear on your screen. Please note these down somewhere safely as they will appear **this only time** - for security reasons. You can now use the Token ID and Secret to configure Netsuite as a source on the RudderStack dashboard.
-
-![](../.gitbook/assets/8%20%283%29.png)
 
 ### How can I get the RudderStack Restlet URL?
 
