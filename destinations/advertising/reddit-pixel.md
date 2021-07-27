@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Redd
 
 # Reddit Pixel
 
-[**Reddit Pixel**](https://ads.reddit.com/) is a simple JavaScript snippet that you can add to your website and track actions that users take after viewing or engaging with advertisers’ ads and enables conversion reporting within our interface. Brands can also leverage the Reddit Pixel to retarget redditors who have already visited their website, and drive them further down the conversion funnel.
+[**Reddit Pixel**](https://ads.reddit.com/) is a JavaScript snippet that, once added to your website, lets you track user actions on your website after interacting with your ad on Reddit. You can also leverage Reddit Pixel to retarget your visitors and boost your conversions.
 
 You can now seamlessly send your event data to Reddit Pixel by adding it as a destination in RudderStack.
 
