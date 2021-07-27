@@ -69,7 +69,7 @@ rudderanalytics.page();
 
 ## Track
 
-The `track` call lets you track custom events as they occur in your web application.
+The `track` call lets you track custom events in your website.
 
 A sample call looks like the following code snippet:
 
