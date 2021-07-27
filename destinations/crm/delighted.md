@@ -65,9 +65,9 @@ The `identify` call lets you to add a user to your **People** [**List**](https:/
 The channel type set via the `identify` call will get a higher precedence.
 {% endhint %}
 
-* You can provide the user `email` or `phone number`. Both are not required at the same time, since one of the values will be set from the `userId`.
+* You can provide the user email or phone number. Both are not required at the same time, since one of the values will be set from the `userId`.
 
-* You can also send the `Last sent at` value with the call.
+* You can also send the `last_sent_at` value with the call. Refer to the example below for more details.
 
 {% hint style="info" %}
 `Last sent at` (in UNIX timestamp) is used to manually set the time a person was most recently sent a survey. This value will be used in the Delighted **Survey throttling** system. By default, Survey throttling is set to **1 month** in your project. Users added via the API who have already been sent a survey within this time period will not be sent another survey.
