@@ -32,7 +32,7 @@ $ helm install my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
 * Helm installed
 * Sign up and log into the [**RudderStack dashboard**](https://app.rudderlabs.com/signup). Copy your workspace **Token** from the top of the page, as shown:
 
-![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29.png)
+![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%282%29.png)
 
 {% hint style="info" %}
 **Why do I need to sign up on RudderStack?** 

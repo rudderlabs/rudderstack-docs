@@ -14,7 +14,7 @@ The 3 endpoints are:
 
 1. `cdn.rudderlabs.com` for loading the Javascript SDK
 2. `api.rudderlabs.com` for fetching the source configuration based on your `writeKey`
-3. `events.rudderlabs.com` for sending events to the RudderStack server
+3. Your data plane url   `https://<data_plane_name>.rudderstack.com` for sending events to the RudderStack server
 
 To use your own domain for these, you’ll need to route traffic through your CDN.
 
@@ -91,7 +91,7 @@ After:
 
 ## Setup for Sending Events
 
-Normally all events are sent to `events.rudderlabs.com`. To have events routed through your own domain, you’ll need to setup a proxy to that and then use your own url for `DATA_PLANE_URL` when initializing the SDK.
+Normally all events are sent to your data plane url`https://<data_plane_name>.rudderstack.com`. To have events routed through your own domain, you’ll need to setup a proxy to that and then use your own url for `DATA_PLANE_URL` when initializing the SDK.
 
 ### Settings
 
@@ -99,7 +99,7 @@ The settings for sending events will be the same as the settings for serving the
 
 | Field | Setting |
 | :--- | :--- |
-| Origin Domain Name | `events.rudderlabs.com` |
+| Origin Domain Name | `https://<data_plane_name>.rudderstack.com` |
 | Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
 
 ### **Add CNAME Record to DNS**
