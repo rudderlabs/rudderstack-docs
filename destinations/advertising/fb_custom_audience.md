@@ -45,7 +45,7 @@ Please follow our guide on [**How to Add a Source and Destination in RudderStack
 
 * Assign a name to the destination and click on **Next**. You will then see the following screen:
 
-![](../../.gitbook/assets/facebook_custom_audience_setup.png)
+![](https://user-images.githubusercontent.com/59817155/127313498-87e59fca-8420-486a-a930-2b76f5181e6c.png)
 
 
 ## Custom Audience Connection Settings
@@ -65,26 +65,34 @@ Check the **FAQ** section for more information on finding your Audience ID.
 {% endhint %}
 
 
-* **Schema Fields**: Choose your schema fields \(at least one\) from the available options. **This is a mandatory field**. RudderStack expects the user events to consist of **every** schema field that has been chosen on the dashboard, in the same order.
+* **Schema Fields**: Choose your schema fields \(at least one\) from the available options. **This is a mandatory field**. RudderStack expects the user events to consist of **every** schema field that has been chosen on the dashboard.
 
 {% hint style="info" %}
 RudderStack will ignore any user information which does not adhere to the schema fields specified in the dashboard settings.
 {% endhint %}
 
-* Some other important settings are: 
-  * **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
-
-  * **Is The Data Raw**: As RudderStack does not support combinational schema fields, this field will be ignored if not enabled.
+Some other important settings are: 
   
-  {% hint style="warning" %}
-   When this option is enabled, Facebook will not support these schema fields:`EMAIL_SHA256`,`PHONE_SHA256`. Even when disabled, Facebook does not accept any other schema field coupled with the fields `EMAIL_SHA256`,`PHONE_SHA256`.
-  {% endhint %}
+* **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
 
-  * **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
+* **Is The Data Raw**: As RudderStack does not support combinational schema fields, this field will be ignored if not enabled.
+  
+{% hint style="warning" %}
+When this option is enabled, Facebook will not support these schema fields:`EMAIL_SHA256`,`PHONE_SHA256`. Even when disabled, Facebook does not accept any other schema field coupled with the fields `EMAIL_SHA256`,`PHONE_SHA256`.
+{% endhint %}
+  
+* **Audience Batch Size**: Specify the size of data you want RudderStack to send to Facebook in a single event.
 
-  * **Type**: Specify the type of the custom audience here. This field will be ignored if left as `NA`.
+{% hint style="info" %}
+For example, if you want to send a total 1000 user records to Facebook and set the batch size to 50, then Rudderstack will send 20 events to Facebook with 50 user records in each event.
+{% endhint %}
 
-  * **Sub Type**: This is the sub-type of the custom audience. This field will be ignored if left as `NA`.
+* **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
+
+* **Type**: Specify the type of the custom audience here. This field will be ignored if left as `NA`.
+
+* **Sub Type**: This is the sub-type of the custom audience. This field will be ignored if left as `NA`.
+
 
 ##  The `audiencelist` Event Structure to Send User Data to Custom Audience
 
@@ -146,37 +154,36 @@ If the **Disable Formatting** option is enabled in the RudderStack dashboard, Ru
 
 The following code snippet shows a `audiencelist` event with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
 
-```python
-import rudder_analytics
-
-rudder_analytics.write_key = WRITE_KEY
-rudder_analytics.data_plane_url = DATA_PLANE_URL
-
-rudder_analytics.audiencelist('USER-ID', 'EVENT-NAME', {
-
-  'listData': {
- 'add': [
-       {
-         'EMAIL': 'name1@abc.com',
-         'FN': 'name1'
-       },
-       {
-         'EMAIL': 'name2@abc.com',
-         'FN': 'name2'
-       }
-     ],
-     'remove': [
-       {
-         'Email': 'name3@abc.com',
-         'FN': 'name3'
-       },
-       {
-         'Email': 'name4@abc.com',
-         'FN': 'name4'
-       }
-     ]
+```JSON
+{
+  "type": "audiencelist",
+  "properties": {
+    "listData": {
+      "add": [{
+          "EMAIL": "name1@abc.com",
+          "FN": "name1"
+        },
+        {
+          "EMAIL": " 'name2@abc.com",
+          "FN": "name2"
+        },
+        {
+          "EMAIL": " 'name3@abc.com",
+          "FN": "name3"
+        }
+      ],
+      "remove": [{
+          "EMAIL": "'name4@abc.com",
+          "FN": "name4"
+        },
+        {
+          "EMAIL": "'name5@abc.com",
+          "FN": "name5"
+        }
+      ]
+    }
   }
-})
+}
 ```
 
 ## Facebook Custom Audience Payload Restrictions
@@ -191,22 +198,23 @@ rudder_analytics.audiencelist('USER-ID', 'EVENT-NAME', {
 
 The following code snippet shows a `audiencelist` event having only `add` with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
 
-```python
-rudder_analytics.audiencelist('USER-ID', 'EVENT-NAME', {
- 
- 'listData': {
-  'add': [
-    {
-      'EMAIL': 'name1@abc.com',
-      'FN': 'name1',
-    },
-    {
-      'EMAIL': 'name2@abc.com',
-      'FN': 'name2',
-    },
-  ]
- },
-})
+```JSON
+{
+  "type": "audiencelist",
+  "properties": {
+    "listData": {
+      "add": [{
+          "EMAIL": 'name1@abc.com',
+          "FN": 'name1'
+        },
+        {
+          "EMAIL": 'name2@abc.com',
+          "FN": 'name2'
+        }
+      ]
+    }
+  }
+}
 ```
 
 {% hint style="info" %}
@@ -261,4 +269,3 @@ For more information on using this access token or generating the access token v
 ## Contact Us
 
 If you come across any issues while configuring Facebook Custom Audience with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
