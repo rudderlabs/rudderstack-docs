@@ -16,10 +16,10 @@ RudderStack supports Mixpanel as a destination to which you can seamlessly send 
 
 Before configuring your source and destination on the RudderStack, verify if the source platform is supported by Mixpanel by referring to the table below:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | **Supported** | -             | -             |
-| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | **Supported** | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,15 +27,23 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the source supports sending events to Mixpanel, perform the steps below:
 
-- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Mixpanel**.
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Mixpanel**.
 
 {% hint style="info" %}
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-- Give a name to the destination and click on **Next**. You should then see the following screen:
+* Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Connection settings for Mixpanel](../../.gitbook/assets/mixpanel-config.png)
+![](../../.gitbook/assets/screen-shot-2021-07-28-at-5.45.20-pm.png)
+
+![](../../.gitbook/assets/screen-shot-2021-07-28-at-5.47.10-pm.png)
+
+![](../../.gitbook/assets/screen-shot-2021-07-28-at-5.50.09-pm.png)
+
+![](../../.gitbook/assets/screen-shot-2021-07-28-at-5.50.26-pm.png)
+
+![Connection Settings for Mixpanel](../../.gitbook/assets/screen-shot-2021-07-28-at-5.43.41-pm.png)
 
 ### Configuration Settings
 
@@ -59,10 +67,8 @@ Rudderstack will send 1 event to Mixpanel per `page` call.
 
 For Device mode, RudderStack offers the following three options for `page` calls:
 
-* With **Track All Pages with a Consolidated Event Name** option enabled by default, RudderStack sends all the `page` and `screen` calls with the name `Loaded a Page` with the corresponding properties of the call. This allows you to leverage Mixpanel's reporting for page/screen analytics in the best possible way. Note that this option is given the **highest precedence**, even if the following two options (**Track Categorized Pages to Mixpanel** and **Track Named Pages to Mixpanel**) are enabled.
- 
+* With **Track All Pages with a Consolidated Event Name** option enabled by default, RudderStack sends all the `page` and `screen` calls with the name `Loaded a Page` with the corresponding properties of the call. This allows you to leverage Mixpanel's reporting for page/screen analytics in the best possible way. Note that this option is given the **highest precedence**, even if the following two options \(**Track Categorized Pages to Mixpanel** and **Track Named Pages to Mixpanel**\) are enabled.
 * RudderStack tracks the categorized pages to Mixpanel. If you enable the **Track Categorized Pages to Mixpanel** option, RudderStack sends a `Viewed [category] Page` event. If the page name is also present in the event, then `Viewed [category page_name] Page` event is sent.
-
 * RudderStack tracks the named pages to Mixpanel. If you enable the **Track Named Pages to Mixpanel** option, RudderStack will send a `Viewed [page_name] Page` event. Note that this option has the least precedence and comes to effect only if the above two options are disabled in the RudderStack dashboard.
 
 {% hint style="info" %}
@@ -91,14 +97,14 @@ rudderanalytics.identify("12345",
 
 Mixpanel has some reserved properties:
 
-- `$first_name`
-- `$last_name`
-- `$name`
-- `$username`
-- `$created`
-- `$email`
-- `$phone`
-- `$avatar`
+* `$first_name`
+* `$last_name`
+* `$name`
+* `$username`
+* `$created`
+* `$email`
+* `$phone`
+* `$avatar`
 
 {% hint style="warning" %}
 You can create custom properties. However, note that you should not create properties that begin with a `$` sign.
@@ -211,29 +217,28 @@ RudderStack maps the following properties to the Mixpanel properties before send
 RudderStack maps these fields only in the `identify` requests.
 {% endhint %}
 
-| Mixpanel Property Name | RudderStack Property Name    |
-| :----------------------| :--------------------------- |
-| `$created`          | `traits.createdAt`        |
-| `$email`            | `traits.email`            |
-| `$firstName`        | `traits.firstName`        |
-| `$lastName`         | `traits.lastName`         |
-| `$name`             | `traits.name`             |
-| `$username`         | `traits.username`         |
-| `$phone`            | `traits.phone`            |
-| `$avator`           | `traits.avator`           |
-| `ip` or `$ip`       | `context.ip`              |
-| `campaign_id`       | `context.campaign.name`   |
-| `$current_url`      | `context.page.url`        |
-| `$os`               | `context.os.name`         |
-| `$referrer`         | `context.page.referrer`   |
-| `$carrier`          | `context.network.carrier` |
-
+| Mixpanel Property Name | RudderStack Property Name |
+| :--- | :--- |
+| `$created` | `traits.createdAt` |
+| `$email` | `traits.email` |
+| `$firstName` | `traits.firstName` |
+| `$lastName` | `traits.lastName` |
+| `$name` | `traits.name` |
+| `$username` | `traits.username` |
+| `$phone` | `traits.phone` |
+| `$avator` | `traits.avator` |
+| `ip` or `$ip` | `context.ip` |
+| `campaign_id` | `context.campaign.name` |
+| `$current_url` | `context.page.url` |
+| `$os` | `context.os.name` |
+| `$referrer` | `context.page.referrer` |
+| `$carrier` | `context.network.carrier` |
 
 ## Explicitly Setting People Properties and Super Properties
 
-You can set all of your traits as both **Super Properties** and **People Properties** (If you have **Use Mixpanel People** option enabled) by enabling the **Automatically set all Traits as Super Properties and People Properties** option in the Rudderstack dashboard.
+You can set all of your traits as both **Super Properties** and **People Properties** \(If you have **Use Mixpanel People** option enabled\) by enabling the **Automatically set all Traits as Super Properties and People Properties** option in the Rudderstack dashboard.
 
-You can choose to filter your reports by both People Properties and Super Properties. This gives you better control over what traits you can set as a Super Property or People Property. To do this, disable the **Automatically set all Traits as Super Properties and People Properties** option in the dashboard and add the traits that you want to send to Mixpanel as Super Properties or People Properties in the specified fields, as shown below. 
+You can choose to filter your reports by both People Properties and Super Properties. This gives you better control over what traits you can set as a Super Property or People Property. To do this, disable the **Automatically set all Traits as Super Properties and People Properties** option in the dashboard and add the traits that you want to send to Mixpanel as Super Properties or People Properties in the specified fields, as shown below.
 
 {% hint style="info" %}
 RudderStack will send all the Mixpanel's special traits as People Properties. Hence, you only need to add the properties that are not in this list.
@@ -250,15 +255,15 @@ This feature is available in the native web Device mode only.
 The following table lists all the properties that RudderStack sends to Mixpanel as special traits:
 
 | Mixpanel Properties | RudderStack Properties |
-| :------------------ | :------------------------ |
-|`created`| `$created`|
-|`email`| `$email`|
-|`firstName`| `$first_name`|
-|`lastName`|`$last_name`|
-|`lastSeen`| `$last_seen`|
-|`name`| `$name`|
-|`username`| `$username`|
-|`phone`| `$phone`|
+| :--- | :--- |
+| `created` | `$created` |
+| `email` | `$email` |
+| `firstName` | `$first_name` |
+| `lastName` | `$last_name` |
+| `lastSeen` | `$last_seen` |
+| `name` | `$name` |
+| `username` | `$username` |
+| `phone` | `$phone` |
 
 ## Incrementing Events
 
@@ -274,7 +279,6 @@ For each event name added, RudderStack automatically calls Mixpanel and sets a u
 Increment works for known users only. So, if your `track` call is being made on the server-side, you will need to pass a `userId`. If your `track` call is being made on the client-side, you will need to identify your user first.
 {% endhint %}
 
-
 ### Incrementing Properties
 
 To increment properties, you can specify which properties you want RudderStack to increment using the **Properties to Increment in People** field. RudderStack will call Mixpanel’s increment when you attach a number to the specified property. For example, `'items purchased': 5`.
@@ -285,7 +289,7 @@ To increment properties, you can specify which properties you want RudderStack t
 This feature is available in the native web Device mode only.
 {% endhint %}
 
-
 ## Contact Us
 
 If you come across any issues while configuring Mixpanel with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+

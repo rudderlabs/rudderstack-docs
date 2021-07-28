@@ -287,7 +287,7 @@ If the `createPersistenceQueue` method is not called after initializing the SDK,
 * **`flush()`**: You can use this method to ensure that all the events in the queue are processed. The following snippet highlights the user of `flush()` with a callback:
 
 ```jsx
-rudderclient.flush(function(err, batch){
+client.flush(function(err, batch){
   console.log('Flushing done');
 }
 )
