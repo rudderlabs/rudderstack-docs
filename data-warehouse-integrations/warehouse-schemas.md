@@ -160,7 +160,7 @@ RudderStack sets the following standard properties on all the above mentioned ta
     <tr>
       <td style="text-align:left"><code>timestamp</code>
       </td>
-      <td style="text-align:left">This is calculated by RudderStack to account for the client clock skew.
+      <td style="text-align:left">This is calculated by RudderStack to account for the <b>client clock skew</b>.
         The formula used is: <code>timestamp</code> = <code>receivedAt</code> - (<code>sentAt</code> - <code>originalTimestamp</code>).</td>
     </tr>
     <tr>
@@ -177,9 +177,83 @@ RudderStack sets the following standard properties on all the above mentioned ta
   </tbody>
 </table>
 
-{% hint style="info" %}
+{% hint style="warning" %}
 RudderStack reserves the above-mentioned standard properties. In the case of any conflict, RudderStack automatically discards the properties  set by the user.
 {% endhint %}
+
+### Clock Skew Considerations
+
+RudderStack considers the time at its end to be absolute and assumes any difference on the client-side. Thus, the client clock skew is relative.
+
+{% hint style="info" %}
+`sentAt` &gt; `original_timestamp` is **always true**. However, `timestamp` can be more or less than the `original_timestamp`. Refer to the examples below for more details.
+{% endhint %}
+
+Here's an example of `original_timestamp` &lt; `received_at`\(The client-side time is less than the server-side time\):
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"><code>original_timestamp</code>
+      </th>
+      <th style="text-align:left"><code>sent_at</code>
+      </th>
+      <th style="text-align:left"><code>received_at</code>
+      </th>
+      <th style="text-align:left">
+        <p><code>timestamp</code>= <code>received_at </code>-</p>
+        <p>(<code>sent_at</code> - <code>original_timestamp</code>)</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>2020-04-26 07:00:43.400</code>
+      </td>
+      <td style="text-align:left"><code>2020-04-26 07:00:45.124</code>
+      </td>
+      <td style="text-align:left"><code>2020-04-26 07:00:45.558</code>
+      </td>
+      <td style="text-align:left"><code>2020-04-26 07:00:44.834</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+In this case, `timestamp` will be **greater** than `original_timestamp`.
+
+Here's an example of `original_timestamp` &gt; `received_at` \(The client-side time is more than the server-side time\):
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"><code>original_timestamp</code>
+      </th>
+      <th style="text-align:left"><code>sent_at</code>
+      </th>
+      <th style="text-align:left"><code>received_at</code>
+      </th>
+      <th style="text-align:left">
+        <p><code>timestamp</code>= <code>received_at </code>-</p>
+        <p>(<code>sent_at</code> - <code>original_timestamp</code>)</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>2020-04-26 07:00:45.558</code>
+      </td>
+      <td style="text-align:left"><code>2020-04-26 07:00:46.124</code>
+      </td>
+      <td style="text-align:left"><code>2020-04-26 07:00:43.400</code>
+      </td>
+      <td style="text-align:left"><code>2020-04-26 07:00:43.9650</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+In this case, `timestamp` will be **less** than `original_timestamp`.
 
 ## Table Schemas
 
