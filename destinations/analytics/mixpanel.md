@@ -211,7 +211,7 @@ Mixpanel supports historical event data import. However, note that the timestamp
 
 ## Mapping RudderStack Properties to Mixpanel Properties
 
-RudderStack maps the following properties to the Mixpanel properties before sending them over the HTTP API.
+RudderStack maps the following properties to the Mixpanel properties before sending them over Mixpanel's HTTP API.
 
 {% hint style="info" %}
 RudderStack maps these fields only in the `identify` requests.
