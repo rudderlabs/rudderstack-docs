@@ -135,6 +135,36 @@ On running a test, an example event not having the specified email domain is fil
 
 ![](../.gitbook/assets/image%20%2886%29.png)
 
+#### Importing Multiple Functions From a Single Library
+
+When importing a single function or multiple functions from a library, it is important to keep the import statement to one line. Breaking the import function out into multiple lines will cause an error to occur. Use the following snippets as an example on how to properly import functions from a library.
+
+```javascript
+Correct Ways ✅
+---------------
+import { getPrice } from getFinanceData;
+
+OR
+
+import { getPrice, getRevenue, getProfit } from getFinanceData;
+```
+
+```javascript
+Incorrect Ways ❌
+-----------------
+import { 
+  getPrice 
+} from getFinanceData;
+
+OR
+
+import { 
+  getPrice, 
+  getRevenue, 
+  getProfit 
+} from getFinanceData;
+```
+
 ## Accessing Metadata
 
 RudderStack injects a function `metadata(event)` into your transformations as an argument. This allows you to access the event metadata variables that help you customize your transformations.
