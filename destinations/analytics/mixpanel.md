@@ -43,6 +43,8 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 ![](../../.gitbook/assets/screen-shot-2021-07-28-at-5.50.26-pm.png)
 
+![](../../.gitbook/assets/mp-config.png)
+
 ![Connection Settings for Mixpanel](../../.gitbook/assets/screen-shot-2021-07-28-at-5.43.41-pm.png)
 
 ### Configuration Settings
@@ -288,6 +290,12 @@ To increment properties, you can specify which properties you want RudderStack t
 {% hint style="warning" %}
 This feature is available in the native web Device mode only.
 {% endhint %}
+
+### Cookie Options
+
+- Cross Subdomain Cookie: This option will allow the Mixpanel cookie to be persisted between different pages of your application.
+- Secure Cookie: Enabling this option will mark the Mixpanel cookie as secure, i.e it will only transmit over https
+- Persistence Type: This option enables you to choose the persistence type for mixpanel cookies
 
 ## Contact Us
 
