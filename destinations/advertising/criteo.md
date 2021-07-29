@@ -9,7 +9,7 @@ description: Step-by-step guide to send your event data from RudderStack to Crit
 You can now send your event data directly to Criteo through RudderStack.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations)**.**
+**Find the open-source code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations)**.**
 {% endhint %}
 
 ## Getting Started
