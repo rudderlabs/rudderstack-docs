@@ -57,16 +57,13 @@ Choose **EU** in **Data Residency** settings to send your event data to the Mixp
 
 The following settings are applicable if you are using this destination via the web Device mode:
 
-* **Use Mixpanel People**: This option sends all your `identify` calls to Mixpanel People. More information on this option can be found [**below**](https://docs.rudderstack.com/destinations/analytics/mixpanel#mixpanel-people).
-
-* **Automatically Set all Traits as Super Properties and People properties**: More information on this option can be found [**here**](https://docs.rudderstack.com/destinations/analytics/mixpanel#explicitly-setting-people-properties-and-super-properties).
-
-* **Page Tracking Options**: For Device mode, RudderStack offers three options for `page` calls. More information on these options can be found [**here**](https://docs.rudderstack.com/destinations/analytics/mixpanel#page-web-device-mode).
-
-* **Source Name**: If set, RudderStack sends this source name to Mixpanel for every event/`page`/`screen` call.
-
-* **Cross Subdomain Cookie**: If enabled, this option allows the Mixpanel cookie to persist between different pages of your application. More information on this option can be found below.
-
+* **Use Mixpanel People**: This option sends all your `identify` calls to Mixpanel People. More information on this option can be found [**below**](https://docs.rudderstack.com/destinations/analytics/mixpanel#mixpanel-people). 
+* **Automatically Set all Traits as Super Properties and People properties**: More information on this option can be found [**here**](https://docs.rudderstack.com/destinations/analytics/mixpanel#explicitly-setting-people-properties-and-super-properties). 
+* **Page Tracking Options**: For Device mode, RudderStack offers three options for `page` calls. More information on these options can be found [**here**](https://docs.rudderstack.com/destinations/analytics/mixpanel#page-web-device-mode). 
+* **Source Name**: If set, RudderStack sends this source name to Mixpanel for every event/`page`/`screen` call. 
+* **Cross Subdomain Cookie**: If enabled, this option allows the Mixpanel cookie to persist between different pages of your application. 
+* **Persistence Type**: This option lets you choose the persistence type for your Mixpanel cookies. 
+* **Secure Cookie**: Enabling this option will mark the Mixpanel cookie as secure, i.e it will only transmit over HTTPs. 
 * **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. For more information, check out the [**Group**](https://docs.rudderstack.com/destinations/analytics/mixpanel#group) section below.
 
 ## Page
@@ -305,12 +302,13 @@ To increment properties, you can specify which properties you want RudderStack t
 This feature is available in the native web Device mode only.
 {% endhint %}
 
-### Cookie Options
+## Cross Subdomain Cookies
 
-- **Cross Subdomain Cookie**: This option will allow the Mixpanel cookie to be persisted between different pages of your application.
-- **Persistence Type**: This option lets you choose the persistence type for your Mixpanel cookies.
-- **Secure Cookie**: Enabling this option will mark the Mixpanel cookie as secure, i.e it will only transmit over HTTPs.
+* **Cross Subdomain Cookie**: This option will allow the Mixpanel cookie to be persisted between different pages of your application.
+* **Persistence Type**: This option lets you choose the persistence type for your Mixpanel cookies.
+* **Secure Cookie**: Enabling this option will mark the Mixpanel cookie as secure, i.e it will only transmit over HTTPs.
 
 ## Contact Us
 
 If you come across any issues while configuring Mixpanel with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
