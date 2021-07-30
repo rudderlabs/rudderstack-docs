@@ -143,6 +143,7 @@
     * [Lotame](destinations/advertising/lotame.md)
     * [Bing Ads](destinations/advertising/bingads.md)
     * [Pinterest Tag](destinations/advertising/pinterest-ads.md)
+    * [Criteo](destinations/advertising/criteo.md)
   * [Customer Data Platform](destinations/customer-data-platform/README.md)
     * [Segment](destinations/customer-data-platform/segment.md)
   * [Data Ingestion](destinations/data-ingestion/README.md)
