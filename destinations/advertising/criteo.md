@@ -101,12 +101,12 @@ In the above snippet, RudderStack captures the information related to the `Produ
 
 The following table details the mapping of the Rudderstack E-Commerce events specified  [**here**](https://docs.rudderstack.com/rudderstack-api/rudderstack-ecommerce-events-specification) and the [**Criteo OneTag events**](https://support.criteo.com/s/article?article=All-Criteo-OneTag-events-and-parameters&language=en_US).
 
-| **Rudderstack E-Commerce Events** | **Criteo OneTag Events** |
-| :--- | :--- | 
-|`Product Viewed`| `Product Tag`|
-|`Cart Viewed`| `Basket/cart tag`|
-|`Order Completed`| `Sales Tag`|
-|`Product List Viewed`|`Category/keyword search/listing Tag`|
+| **Rudderstack E-Commerce Events** | **Criteo OneTag Events** | **OneTag Event Names Used By Criteo**|
+| :--- | :--- | :--- |
+|`Product Viewed`| `Product Tag`| `viewItem`|
+|`Cart Viewed`| `Basket/cart tag`|`viewBasket`|
+|`Order Completed`| `Sales Tag`| `trackTransaction`|
+|`Product List Viewed`|`Category/keyword search/listing Tag`| `viewList`|
 
 {% hint style="info" %}
 If `Category/keyword search/listing Tag` needs to be fired with filters it has to be entered within `filters` field within `properties` inside the `Product List Viewed` tag. The `filters` field is an array of objects that consists of each filter category in a single object. Criteo expects, `name`, `operator` and `value` field for every filter that needs to be passed to Criteo.
