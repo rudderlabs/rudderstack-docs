@@ -98,7 +98,7 @@ val rudderClient = RudderClient.getInstance(
     WRITE_KEY,
     RudderConfig.Builder()
         .withDataPlaneUrl(DATA_PLANE_URL)
-        .withFactory(CleverTapIntegration.FACTORY)
+        .withFactory(CleverTapIntegrationFactory.FACTORY)
         .build()
     )
 ```
