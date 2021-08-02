@@ -43,7 +43,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
 | `batchTimeout` | String | In case the request batches do not meet the `maxBatchSize`, the batches are are sent to the database and the Configuration Backend in this interval. | `20ms` |
 | `maxReqSizeInKB` | Int | An error message \("**Request size exceeds max limit**"\) is thrown for a particular request is when its size in KB crosses this value_._ | `4000` |
 | `enableDedup` | Boolean | Enables or disables deduplication of events. RudderStack uses `message_id` to de-dup. The duplicate events are dropped at the Gateway.  | `false` |
-| `dedupWindow` | Int | Events with the same `message_id` within this timeframe are considered duplicate and are dropped. | `3600s` |
+| `dedupWindow` | String | Events with the same `message_id` within this timeframe are considered duplicate and are dropped. | `3600s` |
 | `enableRateLimit` | Boolean | Rate limits the number of requests accepted by the Gateway. This is used for running the RudderStack-hosted service. | `false` |
 
 ## \[SourceDebugger\]
@@ -137,7 +137,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
     <tr>
       <td style="text-align:left"><code>addNewDSLoopSleepDuration</code>
       </td>
-      <td style="text-align:left">Int64</td>
+      <td style="text-align:left">String</td>
       <td style="text-align:left">The time RudderStack waits before adding a dataset.</td>
       <td style="text-align:center"><code>5s</code>
       </td>
@@ -145,7 +145,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
     <tr>
       <td style="text-align:left"><code>backupCheckSleepDuration</code>
       </td>
-      <td style="text-align:left">Int64</td>
+      <td style="text-align:left">String</td>
       <td style="text-align:left">RudderStack waits for this time interval before checking if a dataset
         needs backing up.</td>
       <td style="text-align:center"><code>5s</code>
@@ -171,18 +171,18 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
 | :--- | :--- | :--- | :---: |
 | `jobQueryBatchSize` | Int | The size of a jobs batch to get from the database. This includes the retry list, processing list, unprocessed list, or executed list. | `10000` |
 | `updateStatusBatchSize` | Int | The minimum size needed to update the status of a batch of jobs. | `1000` |
-| `readSleep` | Int64 | The time RudderStack waits before fetching the next jobs batch from the database, in case the length of unprocessed and retry list is 0. | `1000ms` |
+| `readSleep` | String | The time RudderStack waits before fetching the next jobs batch from the database, in case the length of unprocessed and retry list is 0. | `1000ms` |
 | `noOfWorkers` | Int | RudderStack starts this number of workers to send events to the destinations. | `64` |
 | `noOfJobsPerChannel` | Int  | The number of jobs a channel in each worker can contain. | `1000` |
-| `maxSleep` | Int64 | The time to wait when the response status code is not **200**. This is to give RudderStack some time before the next retry. | `60s` |
-| `minSleep` | Int64 | The time to sleep when the response status code is **200**. | `0s` |
-| `maxStatusUpdateWait` | Int64 | The time to sleep before ending one round of stats collection. | `5s` |
+| `maxSleep` | String | The time to wait when the response status code is not **200**. This is to give RudderStack some time before the next retry. | `60s` |
+| `minSleep` | String | The time to sleep when the response status code is **200**. | `0s` |
+| `maxStatusUpdateWait` | String | The time to sleep before ending one round of stats collection. | `5s` |
 | `useTestSink` | Boolean | Runs internal tests if set to `true`. | `false` |
 | `maxFailedCountForJob` | Int | The maximum number of times a job can fail before it is marked as aborted. | `8` |
 | `guaranteeUserEventOrder` | Boolean | RudderStack maintains the order of user events if set to `true`. | `true` |
-| `retryTimeWindow` | Int | The minimum retry window in case of **5XX**, **429** errors. | `180m` |
-| `minRetryBackoff` | Int | The minimum time before the next retry in case of **5XX**, **429** errors. | `10s` |
-| `maxRetryBackoff` | Int | The maximum allowed time between the errors in case of **5XX**, **429** errors. | `300s` |
+| `retryTimeWindow` | String | The minimum retry window in case of **5XX**, **429** errors. | `180m` |
+| `minRetryBackoff` | String | The minimum time before the next retry in case of **5XX**, **429** errors. | `10s` |
+| `maxRetryBackoff` | String | The maximum allowed time between the errors in case of **5XX**, **429** errors. | `300s` |
 
 ## \[BatchRouter\]
 
@@ -191,7 +191,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
 | `mainLoopSleep` | String | The timeout while running the main loop. | `2s` |
 | `noOfWorkers` | Int | The number of workers to batch jobs before deletion. | `8` |
 | `jobQueryBatchSize` | Int | The number of events picked up from the batch router's database \(Jobs DB\) in each query. | `100000` |
-| `uploadFreq` | Int | The frequency with which the batch router dumps the events to the storage destinations. | `30s` |
+| `uploadFreq` | String | The frequency with which the batch router dumps the events to the storage destinations. | `30s` |
 | `maxFailedCountForJob` | Int | The maximum number of times a job can fail before marking it as aborted. | `128` |
 
 ## \[Warehouse\]
@@ -215,8 +215,8 @@ You can ignore these settings if you don't have any [**warehouse destinations**]
 
 | Variable name | Type | Description | Default value |
 | :--- | :--- | :--- | :---: |
-| `loopSleep` | Int64 | In case the length of the user jobs process queue is 0 or the unprocessed and retry list is empty, RudderStack sleeps for this specified time. | `10ms` |
-| `maxLoopSleep` | Int64 | Maximum loop sleep time for the Processor. | `5000ms` |
+| `loopSleep` | String | In case the length of the user jobs process queue is 0 or the unprocessed and retry list is empty, RudderStack sleeps for this specified time. | `10ms` |
+| `maxLoopSleep` | String | Maximum loop sleep time for the Processor. | `5000ms` |
 | `dbReadBatchSize` | Int | The total number of events to get as a batch from the database. | `10000` |
 | `transformBatchSize` | Int | Batch size of the events added to the request queue before sending them for transformation. | `100` |
 | `userTransformBatchSize` | Int | Batch size of the events added to request queue before sending them to the custom transformation server. **Note**: This is used  only when a user transformation function is connected to a destination. | `200` |
@@ -232,16 +232,16 @@ You can ignore these settings if you don't have any [**warehouse destinations**]
 
 | Variable name | Type | Description | Default value |
 | :--- | :--- | :--- | :---: |
-| `pollInterval` | `Int64` |  The frequency of updating data from the Configuration Backend.  | `5s` |
-| `configFromFile` | `Boolean` | When set to `true`, RudderStack reads the backend workspace configuration from a JSON file instead of fetching it from the API. | `false` |
-| `configJSONPath` | `String` | The path of the JSON file which contains the backend workspace configuration. | `/etc/rudderstack /workspaceConfig.json` |
+| `pollInterval` | String |  The frequency of updating data from the Configuration Backend.  | `5s` |
+| `configFromFile` | Boolean | When set to `true`, RudderStack reads the backend workspace configuration from a JSON file instead of fetching it from the API. | `false` |
+| `configJSONPath` | String | The path of the JSON file which contains the backend workspace configuration. | `/etc/rudderstack /workspaceConfig.json` |
 
 ## \[RateLimit\]
 
 | Variable name | Type | Description | Default value |
 | :--- | :--- | :--- | :---: |
 | `eventLimit` | Int64 | The maximum number of events to be allowed in a time interval. | `1000` |
-| `rateLimitWindow` | Int32 | The rolling time interval used to limit the allowed number of events. | `60m` |
+| `rateLimitWindow` | String | The rolling time interval used to limit the allowed number of events. | `60m` |
 | `noOfBucketsInWindow` | Int32 | The number of buckets `rateLimitWindow` is broken down into.  | `12` |
 
 ## \[Diagnostics\]
@@ -249,9 +249,9 @@ You can ignore these settings if you don't have any [**warehouse destinations**]
 | Parameter name | Type | Description | Default value |
 | :--- | :--- | :--- | :---: |
 | `enableDiagnosis` | Boolean | RudderStack sends the server diagnostics report to the user. Disabling this will disable sending all diagnostics information. | `true` |
-| `gatewayTimePeriod` | Int32 | The time interval to send the Gateway requests report | `60s` |
-| `routerTimePeriod` | Int32 | The time interval to send the Router requests report. | `60s` |
-| `batchRouterTimePeriod` | Int32 | The time interval to send the Batch router requests report. | `10m` |
+| `gatewayTimePeriod` | String | The time interval to send the Gateway requests report | `60s` |
+| `routerTimePeriod` | String | The time interval to send the Router requests report. | `60s` |
+| `batchRouterTimePeriod` | String | The time interval to send the Batch router requests report. | `10m` |
 | `enableServerStartMetric` | Boolean | Sends the server start event. | `true` |
 | `enableConfigIdentifyMetric` | Boolean | Sends the workspace config received event. | `true` |
 | `enableServerStartedMetric` | Boolean | Sends the successful server start event. | `true` |

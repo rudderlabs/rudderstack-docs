@@ -15,7 +15,7 @@ Before configuring Criteo as a destination in RudderStack, verify if Criteo supp
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | **Supported** | - | - |
-| **Cloud mode** | -| - | - |
+| **Cloud mode** | - | - | - |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -48,9 +48,7 @@ This field is required when you need to fire the homepage tag in cases where the
 {% endhint %}
 
 * **Email Hashing Method:** Criteo lets you use the email addresses in both hashed and non-hashed formats. If **MD5** is chosen as an option, RudderStack will hash-encode the email address.
-
 * **Map Specific Fields to Criteo Fields:** Enter the payload fields and the corresponding mapped fields that will be used to send the event data to Criteo.
-
 
 ## Page
 
@@ -85,7 +83,7 @@ window.rudderanalytics.page("category", "home", {
 
 ## Track
 
-The `track` call lets you capture any user action and the properties associated with it. Each action is considered to be an event. 
+The `track` call lets you capture any user action and the properties associated with it. Each action is considered to be an event.
 
 A sample `track` call is as shown:
 
@@ -107,12 +105,12 @@ In this snippet, RudderStack captures the information related to the `Product Vi
 
 The following table details the mapping of the [**Rudderstack E-Commerce events**](https://docs.rudderstack.com/rudderstack-api/rudderstack-ecommerce-events-specification) and the [**Criteo OneTag events**](https://support.criteo.com/s/article?article=All-Criteo-OneTag-events-and-parameters&language=en_US).
 
-| **Rudderstack E-Commerce Event** | **Criteo OneTag Event** | **OneTag Event Name Used By Criteo**|
+| **Rudderstack E-Commerce Event** | **Criteo OneTag Event** | **OneTag Event Name Used By Criteo** |
 | :--- | :--- | :--- |
-|`Product Viewed`| `Product tag`| `viewItem`|
-|`Cart Viewed`| `Basket/cart tag`|`viewBasket`|
-|`Order Completed`| `Sales Tag`| `trackTransaction`|
-|`Product List Viewed`|`Category/keyword search/listing tag`| `viewList`|
+| `Product Viewed` | `Product tag` | `viewItem` |
+| `Cart Viewed` | `Basket/cart tag` | `viewBasket` |
+| `Order Completed` | `Sales Tag` | `trackTransaction` |
+| `Product List Viewed` | `Category/keyword search/listing tag` | `viewList` |
 
 {% hint style="info" %}
 If the `Category/keyword search/listing tag` needs to be fired with the filters, enter it within the `filters` field of the `properties` inside the `Product List Viewed` tag.
@@ -156,13 +154,11 @@ For example, a simple `Product List Viewed` event that fires a `Category/keyword
 To get your Criteo account/partner ID, follow these steps:
 
 * Log into your [**Criteo account**](https://www.criteo.com/login/).
-
-* In the left navigation bar, go to **Event Tracking**  under **Assets**, as shown:
+* In the left navigation bar, go to **Event Tracking** under **Assets**, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/127632648-75ef6105-09fc-4344-b59d-876d45d82951.png)
 
 * Click on **Setup**, followed by **Direct Implementation**.
-
 * In the resulting loader file, you can find your 5-digit partner ID in the `src` key, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/127632914-01fb0c10-1741-478e-b5d3-685d4c145f26.png)
@@ -170,3 +166,4 @@ To get your Criteo account/partner ID, follow these steps:
 ## Contact Us
 
 If you come across any issues while configuring Criteo with RudderStack, feel free to [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
