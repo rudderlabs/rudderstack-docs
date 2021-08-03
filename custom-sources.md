@@ -45,6 +45,10 @@ Remember to add and test your webhook URL.
 
 In this example, Mailchimp sends the updates under **What type of updates should we send?** (seen in the image above) as user events to the webhook URL with the content type `application/x-www-form-urlencoded`.
 
+{% hint style="info" %}
+The content type can vary in case of other custom sources.
+{% endhint %}
+
 * RudderStack then takes the data, creates the payload and sends it to Google Analytics.
 
 {% hint style="info" %}
@@ -59,7 +63,7 @@ You can also add User Transformations to transform the payload in a specific for
 
 This section details how RudderStack receives the data from the custom source platform and creates the resulting payload.
 
-Continuing with our Mailchimp example, let's assume that a customer subscribes to Mailchimp. Mailchimp then sends the following data (as raw content) to RudderStack:
+Continuing with our Mailchimp example, let's assume that a customer subscribes to Mailchimp. Mailchimp then sends the following data to RudderStack:
 
 ```
 type=subscribe&fired_at=2021-07-28+08%3A06%3A59&data%5Bid%5D=e2ff089583&data%5Bemail%5D=ruchira%40rudderlabs.com&data%5Bemail_type%5D=html&data%5Bip_opt%5D=115.187.35.152&data%5Bweb_id%5D=161912900&data%5Bmerges%5D%5BEMAIL%5D=name%40rudderlabs.com&data%5Bmerges%5D%5BFNAME%5D=Name&data%5Bmerges%5D%5BLNAME%5D=Surname&data%5Bmerges%5D%5BADDRESS%5D=&data%5Bmerges%5D%5BPHONE%5D=&data%5Bmerges%5D%5BBIRTHDAY%5D=&data%5Blist_id%5D=ec4689c266
