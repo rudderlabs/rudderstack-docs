@@ -24,7 +24,7 @@ This section details the steps involved in setting up a custom source in RudderS
 ![](https://user-images.githubusercontent.com/59817155/127985229-cbafc185-f7ad-433c-a958-da508e5b962e.png)
 
 
-* Then, add a destination in RudderStack. In this example, we have added [**Google Analytics**](https://docs.rudderstack.com/destinations/analytics/google-analytics-ga) as a destination, as shown:
+* Then, add a destination in RudderStack and connect it to this custom source. In this example, we have added [**Google Analytics**](https://docs.rudderstack.com/destinations/analytics/google-analytics-ga) as a destination, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/127983406-76fcf748-bd1b-4f18-9840-b19a71aaf601.png)
 
