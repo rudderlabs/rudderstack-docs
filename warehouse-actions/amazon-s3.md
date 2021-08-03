@@ -40,6 +40,16 @@ If you've already configured S3 as a source before, your existing credentials wi
   * **AWS Access Key ID** - Your AWS Access Key ID goes here.
   * **AWS Secret Access Key** - Your AWS secret access key should be entered here.
 
+* List of minimal s3 actions that needs to be attached to the above access keys
+```.json
+"Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+
+```
+
+
 {% hint style="info" %}
 To get the **AWS Access Key ID** and the **Secret Access Key**, you can sign into your AWS Management Console as [the root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page). Then, in the navigation bar on the upper right corner, choose your account name and select **My Security Credentials**.
 
@@ -51,6 +61,10 @@ For more information on understanding and getting these AWS credentials, refer t
 * Next, enter the name of the S3 bucket from which you want RudderStack to import the data. Any **Prefix** associated with that bucket should be mentioned as well, as shown:
 
 ![](../.gitbook/assets/screen-shot-2021-01-13-at-10.58.18-am.png)
+
+{% hint style="warning" %}
+The files in your bucket should consists of parquet files only. Rudderstack, for now can only extract parquet files 
+{% endhint %}
 
 {% hint style="warning" %}
 Your table must include one of the following columns - `email`, `user_id`, or `anonymous_id`.
