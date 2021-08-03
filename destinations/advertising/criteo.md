@@ -50,6 +50,12 @@ This field is required when you need to fire the homepage tag in cases where the
 * **Email Hashing Method:** Criteo lets you use the email addresses in both hashed and non-hashed formats. If **MD5** is chosen as an option, RudderStack will hash-encode the email address.
 * **Map Specific Fields to Criteo Fields:** Enter the payload fields and the corresponding mapped fields that will be used to send the event data to Criteo.
 
+
+{% hint style="info" %}
+Criteo events allow you to send any extra data about a page or a user to add more context to the events. You can set this feature in Criteo with the assistance of your Criteo Account Manager. You can then use the **Map Specific Fields to Criteo Fields** field mapping feature to send extra data through RudderStack.
+{% endhint %}
+
+
 ## Page
 
 The `page` call lets you track the user's home page along with its associated properties.
