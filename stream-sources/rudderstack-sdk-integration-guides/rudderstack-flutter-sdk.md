@@ -59,11 +59,13 @@ After adding the SDK as a dependency, you need to set up the SDK.
 ```dart
 import 'package:rudder_sdk_flutter/RudderClient.dart';
 import 'package:rudder_sdk_flutter/RudderConfig.dart';
+import 'package:rudder_sdk_flutter/RudderLogger.dart';
 ```
 
 * Add the following code somewhere in your application.
 
 ```dart
+ RudderLogger.init(RudderLogger.VERBOSE);
 RudderConfigBuilder builder = RudderConfigBuilder();
 builder.withDataPlaneUrl(DATA_PLANE_URL);
 builder.withTrackLifecycleEvents(true);
