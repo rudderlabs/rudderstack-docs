@@ -40,7 +40,8 @@ If you've already configured S3 as a source before, your existing credentials wi
   * **AWS Access Key ID** - Your AWS Access Key ID goes here.
   * **AWS Secret Access Key** - Your AWS secret access key should be entered here.
 
-* List of minimal s3 actions that needs to be attached to the above access keys
+* A list of the minimal S3 actions that need to be attached to the above access keys is as below:
+
 ```.json
 "Action": [
                 "s3:GetObject",
@@ -63,7 +64,7 @@ For more information on understanding and getting these AWS credentials, refer t
 ![](../.gitbook/assets/screen-shot-2021-01-13-at-10.58.18-am.png)
 
 {% hint style="warning" %}
-The files in your bucket should consists of parquet files only. Rudderstack, for now can only extract parquet files 
+The files in your bucket should consists of Apache Parquet files only. As of now, Rudderstack can only extract Parquet files.
 {% endhint %}
 
 {% hint style="warning" %}
