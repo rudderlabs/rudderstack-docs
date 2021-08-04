@@ -613,11 +613,93 @@ RudderClient rudderClient = RudderClient.getInstance(
 {% endtab %}
 {% endtabs %}
 
+## Can I develop a device mode destination on my own if RudderStack doesn't Support that destination already?
+
+Yes, You can develop a Device Mode Destination on your own if RudderStack doesn't support that by following the steps as shown below:
+
+1. Create a Custom Factory class by Extending the [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) as shown below:
+```java
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.rudderstack.android.sdk.core.RudderClient;
+import com.rudderstack.android.sdk.core.RudderConfig;
+import com.rudderstack.android.sdk.core.RudderIntegration;
+import com.rudderstack.android.sdk.core.RudderLogger;
+import com.rudderstack.android.sdk.core.RudderMessage;
+
+public class CustomFactory extends RudderIntegration<CustomFactory> {
+    private static final String FACTORY_KEY = "Custom Factory";
+
+    public static Factory FACTORY = new Factory() {
+        @Override
+        public RudderIntegration<?> create(Object settings, RudderClient client, RudderConfig rudderConfig) {
+            return new CustomFactory(client,rudderConfig);
+        }
+
+        @Override
+        public String key() {
+            return FACTORY_KEY;
+        }
+    };
+
+    private CustomFactory(@NonNull RudderClient client, RudderConfig config) {
+
+    }
+
+    private void processRudderEvent(RudderMessage element) {
+        System.out.println("Processing RudderEvent of type "+element.getType());
+
+    }
+
+    @Override
+    public void reset() {
+        System.out.println("Reset is called");
+    }
+
+    @Override
+    public void dump(@Nullable RudderMessage element) {
+        try {
+            if (element != null) {
+                processRudderEvent(element);
+            }
+        } catch (Exception e) {
+            RudderLogger.logError(e);
+        }
+    }
+
+    @Override
+    public CustomFactory getUnderlyingInstance() {
+        return this;
+    }
+} 
+```
+* You can use the constructor of the `CustomFactory` to initialize the native SDK of the device mode destination you are working on.
+* Rudder Android SDK dumps every event it receives to the `dump()` of the `CustomFactory` class from where you can process it as per the destination and hand it over to the native SDK of the device mode destination.
+* Rudder Android SDK also triggers the `reset()` of the `CustomFactory` class on every `reset()` call made via the SDK which you can use to handle the destination-specific reset logic.
+* Make sure you return a valid value from the `getUnderlyingInstance()` as it is used by the Rudder Android SDK to validate the `CustomFactory`.
+* Make sure you do not duplicate the value of `FACTORY_KEY` across multiple Custom Factories you develop.
+
+2. Register the `CustomFactory` with the Rudder Android SDK during its initialization as shown below:
+
+```java
+var rudderClient = RudderClient.getInstance(
+            this,
+            WRITE_KEY,
+            RudderConfig.Builder()
+                .withDataPlaneUrl(DATA_PLANE_URL)
+                .withTrackLifecycleEvents(false)
+                .withRecordScreenViews(false)
+                .withCustomFactory(CustomFactory.FACTORY)
+                .build()
+)
+```
+3. That's it !. You've completed the development of a Device Mode Destination on your own. 
 ## FAQs
 
 ### Do I need to add anything to my progaurd-rules?
 
-If you are facing any issue regarding even delivery in production environment, add the following line in your progaurd rule.
+If you are facing any issue regarding even delivery in a production environment, add the following line in your progaurd rule.
 
 ```java
 -keep class com.rudderstack.android.** { *; }
