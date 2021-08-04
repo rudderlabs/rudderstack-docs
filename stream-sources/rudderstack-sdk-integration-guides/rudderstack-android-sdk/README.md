@@ -613,11 +613,11 @@ RudderClient rudderClient = RudderClient.getInstance(
 {% endtab %}
 {% endtabs %}
 
-## Can I develop a device mode destination if RudderStack doesn't support it already?
+## Can I develop a Device Mode destination if RudderStack doesn't support it already?
 
-Yes, you can develop a Device Mode destination if RudderStack doesn't support it already. Follow these steps:
+Yes, you can. Follow these steps:
 
-1. Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) as shown below:
+1. Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) as shown:
 
 ```java
 import androidx.annotation.NonNull;
@@ -677,13 +677,13 @@ public class CustomFactory extends RudderIntegration<CustomFactory> {
 ```
 Some pointers to keep in mind:
 
-* You can use the constructor of the `CustomFactory` to initialize the native SDK of the device mode destination you are working on.
+* You can use the constructor of the `CustomFactory` to initialize the native SDK of the Device mode destination you are working on.
 
-* RudderStack's Android SDK dumps every event it receives to the `dump()` of the `CustomFactory` class from where you can process it as per the destination and hand it over to the native SDK of the device mode destination.
+* RudderStack's Android SDK dumps every event it receives to the `dump()` of the `CustomFactory` class. From here, you can process the event and hand it over to the native SDK of the Device mode destination.
 
-* The SDK also triggers the `reset()` of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset logic.
+* The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset logic.
 
-* Make sure you return a valid value from the `getUnderlyingInstance()` as it is used by the Android SDK to validate `CustomFactory`.
+* Make sure you return a valid value from `getUnderlyingInstance()` as it is used by the Android SDK to validate `CustomFactory`.
 
 * Make sure you do not duplicate the value of `FACTORY_KEY` across multiple `CustomFactory` that you develop.
 
