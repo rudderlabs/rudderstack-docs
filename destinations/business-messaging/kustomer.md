@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Kust
 
 [**Kustomer**](https://www.kustomer.com/) is a modern customer engagement platform designed for enterprises. It gives you a holistic view of your users and customer base, lets you provide best-in-class support, and engage with your customers through meaningful interactions.
 
-You can now send your event data directly to Kustomer through RudderStack.
+You can now send your event data directly to Kustomer via RudderStack.
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kustomer)**.**
@@ -14,7 +14,7 @@ You can now send your event data directly to Kustomer through RudderStack.
 
 ## Getting Started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Kustomer. Please refer the following table to do so:
+Before configuring your source and destination on the RudderStack, verify if the platform you are sending the events from is supported by Kustomer by referring to the following table:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -30,21 +30,26 @@ Once you have confirmed that the platform supports sending events to Kustomer, p
 - From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source and Kustomer as a destination.
 
 {% hint style="info" %}
-Please follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
 ![Configuration Settings for Kustomer](../../.gitbook/assets/kustomer-v3-config.png)
 
-## Kustomer Configuration Settings in RudderStack
+## Configuration Settings
 
 To successfully configure Kustomer as a destination, you will need to configure the following settings:
 
-- **API Key:** Your API Key is an unique key generated for your account. It can be found in your Kustomer account under **Settings** by navigating to **Security** - **API Keys**.
-- **Enable advanced Kustomer transformations:** Enabling this option will result in RudderStack handling the payload nuances for Kustomer. Check the **Advanced Kustomer Transformations** section below for the detailed description.
-- **Add email as Tracking identity:** Enabling this option will result in Rudderstack adding email as an identifier when making Track/Page/Screen calls to Kustomer
-- **Disable email as a Tracking property:** Enabling this option will result in Rudderstack not adding email as a tracking property for Track/Page/Screen calls to Kustomer
-- **Enable generic title for Page events:** Enable this option to track all `page` events with the generic name `Web-Page-Viewed`.
-- **Enable generic title for Screen events:** Enable this option to track all `screen` events with the generic name `Screen-Viewed`.
+- **API Key:** Your API Key is an unique key generated for your Kustomer account. You can find it under **Settings** by navigating to **Security** - **API Keys**.
+
+- **Enable advanced Kustomer transformations:** RudderStack handles the payload nuances for Kustomer if this option is enabled. Check the **Advanced Kustomer Transformations** section below for more information on this setting.
+
+- **Add email as Tracking identity:** If this setting is enabled, Rudderstack adds the email as an identifier when making `track`/`page`/`screen` calls to Kustomer.
+
+- **Disable email as a Tracking property:** If this option is enabled, Rudderstack will not add the email as a tracking property for the `track`/`page`/`screen` calls made to Kustomer.
+
+- **Enable generic title for Page events:** Enable this option to track all the `page` events with a generic name `Web-Page-Viewed`.
+
+- **Enable generic title for Screen events:** Enable this option to track all the `screen` events with a generic name `Screen-Viewed`.
 
 {% hint style="info" %}
 The relevant `roles` \(`org.permission.customer.create`, `org.permission.customer.read`, `org.permission.customer.update`, `org.tracking`\) are required for an **API Key** to successfully access the Kustomer endpoints. Check the [**Kustomer docs**](https://support.kustomer.com/api-keys-SJs5YTIWX) for more information on how to do this.
@@ -62,18 +67,19 @@ For `page`, `screen`, and `track` events being sent to Kustomer, there are restr
 
 The `event name` sent in the `page`, `screen`, and `track` events cannot include any spaces.
 
-| Event Name Example            | Result     |
+| **Event Name Example**        | **Result** |
 | :---------------------------- | :--------- |
 | `Cart Viewed`                 | Error      |
-| `Cart-Viewed` / `Cart_Viewed` | Successful |
+| `Cart-Viewed`                 | Successful |
+| `Cart_Viewed`                 | Successful |
 
 ### Meta Object
 
-For `page`, `screen`, and `track` events, all of the data from the `properties` parameter will be sent to the Kustomer api through the `meta` object. However, there are certain restrictions in place on the key-value pairs within the `meta` object.
+For `page`, `screen`, and `track` events, all of the data in the `properties` parameter will be sent to the Kustomer API through the `meta` object. However, there are certain restrictions in place on the key-value pairs within the `meta` object.
 
 #### String Values
 
-For key-value pairs where the value has a type of `string`, the key must not end with the characters `Num` or `At`.
+For the key-value pairs where the value is of the `string` type, the key must not end with the characters `Num` or `At`.
 
 | String Key Name Example      | Result                   |
 | :--------------------------- | :----------------------- |
@@ -101,9 +107,10 @@ For key-value pairs where the value has a type of `number`, the key must end wit
 
 #### Object or Array Values
 
-The values for all keys in the `meta` object must be 'flat' meaning they cannot be nested `objects` or `arrays`.
+The values for all keys in the `meta` object must be **flat**, meaning they cannot be nested objects or arrays.
+
 {% hint style="info" %}
-If you are using advanced transformation, Rudderstack wll handle nested `objects` , `arrays` and `boolean`, and parse them to strings for Kustomer compatibility
+If you are using an advanced transformation, RudderStack will handle the nested objects, arrays, and Boolean and parse them to strings for compatibility with  Kustomer.
 {% endhint %}
 
 | Value Example                                    | Result |
@@ -117,7 +124,7 @@ For `track`, `page` and `screen` events, Kustomer supports only `number, string,
 
 ## Advanced Kustomer Transformations
 
-When the **Advanced Kustomer Transformation** option is enabled, Rudderstack will update the payload as per Kustomer's requirements.
+When the **Advanced Kustomer Transformation** option is enabled, RudderStack will update the payload as per Kustomer's requirements.
 
 The following behaviour is expected:
 
@@ -139,7 +146,7 @@ The event names with whitespaces will be replaced with `-`.
 | `income_Num`   | `500` | `income_Num`                         | No           |
 
 {% hint style="info" %}
-The event properties with numeric values will be appended with `Num` if not already present, while whitespaces will be replaced with `-`.
+The event properties with numeric values will be appended with `Num` if not already present, while the whitespaces will be replaced with `-`.
 {% endhint %}
 
 | Event Property | Value                        | With Advanced Transformation Enabled | Transformed? |
@@ -150,7 +157,7 @@ The event properties with numeric values will be appended with `Num` if not alre
 | `created_At`   | `'2020-02-02T00:23:09.544Z'` | `created_At`                         | No           |
 
 {% hint style="info" %}
-The event properties with date-time string values will be appended with `At` if not already present, while whitespaces will be replaced with `-`.
+The event properties with the date-time string values will be appended with `At` if not already present, while the whitespaces will be replaced with a `-`.
 {% endhint %}
 
 | Event Name  | Value       | With Advanced Transformation Enabled | Transformed? |
@@ -187,7 +194,7 @@ rudderanalytics.page("Cart", "Cart-Viewed", {
 The `event name` must not include any spaces or the event will fail.
 {% endhint %}
 
-If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for that page event, as per the [**Kustomer Tracking Event Reference**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for that `page` event as per the [**Kustomer Tracking Event Reference**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 ## Screen
 
@@ -205,7 +212,7 @@ A sample `screen` call looks like the following code snippet:
 The `event name` must not include any spaces or the event will fail.
 {% endhint %}
 
-If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for the page event, as per the [**Kustomer Tracking Event Reference**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for the `page` event as per the [**Kustomer Tracking Event Reference**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 ## Track
 
@@ -225,12 +232,12 @@ rudderanalytics.track("Checked-Out", {
 The `event name` must not include any spaces or the event will fail.
 {% endhint %}
 
-In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional information about that event - in this case, the details of the `Checked out` event.
+In the above snippet, RudderStack captures the information related to the `Checked Out` event along with any additional information about that event; in this case, the details of the `Checked out` event.
 
-If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for the page event, as per the [**Kustomer Tracking Event Reference**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
+If the `kustomerSessionId` or `kustomerTrackingId` is included in `properties`, RudderStack will map it as `sessionId` and `trackingId` for the `page` event as per the [**Kustomer Tracking Event Reference**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8).
 
 {% hint style="info" %}
-Note: For `track`, `page` and `screen` events, Kustomer supports only `number, string,`and `string` with `date-time` format for custom event properties. Please refer to the [**official Kustomer Documentation**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
+For `track`, `page` and `screen` events, Kustomer supports only `number, string,`and `string` with `date-time` format for custom event properties. Refer to the [**official Kustomer Documentation**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
 {% endhint %}
 
 ## Identify
@@ -330,8 +337,8 @@ rudderanalytics.identify("userId", {
         "phone": "+1676330984"
       }
     ],
-  birthday: "20-09-1980",
-  name: "John Doe",
+  birthday: "21-02-1988",
+  name: "Name Surname",
   address: "street city state zip"
   userName: "userName",
   company: "company"
@@ -341,11 +348,11 @@ rudderanalytics.identify("userId", {
 ```
 
 {% hint style="info" %}
-If a customer already exists, the new values will be updated for that user. Rudderstack automatically maps the `userId` \(or `anoymousId`\) to the customer's `externalId` in Kustomer.
+If a customer already exists, the new values will be updated for that user. RudderStack automatically maps the `userId` \(or `anoymousId`\) to the customer's `externalId` in Kustomer.
 {% endhint %}
 
 {% hint style="info" %}
-If you choose to send Customer's `id` in `context.externalId` \(example `context.externalId: [{type:kustomerId, id:uniqueId}]`\) we will skip looking-up the Customer using `email`/`userId`/`anonymousId`and directly update the Customer against that`id` with new attributes.
+If you choose to send Customer's `id` in `context.externalId` \(example `context.externalId: [{type:kustomerId, id:uniqueId}]`\) RudderStack will skip looking-up the customer using `email`/`userId`/`anonymousId`and directly update the user information for that`id` with the new attributes.
 {% endhint %}
 
 ## Contact Us
