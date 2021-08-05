@@ -16,10 +16,10 @@ You can now send your event data directly to Kustomer through RudderStack.
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Kustomer. Please refer the following table to do so:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,22 +27,24 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Kustomer, perform the steps below:
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source and Kustomer as a destination.
+- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source and Kustomer as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-![Configuration Settings for Kustomer](../../.gitbook/assets/kustomer-config-v2.png)
+![Configuration Settings for Kustomer](../../.gitbook/assets/kustomer-v3-config.png)
 
 ## Kustomer Configuration Settings in RudderStack
 
 To successfully configure Kustomer as a destination, you will need to configure the following settings:
 
-* **API Key:** Your API Key is an unique key generated for your account. It can be found in your Kustomer account under **Settings** by navigating to **Security** - **API Keys**.
-* **Enable advanced Kustomer transformations:** Enabling this option will result in RudderStack handling the payload nuances for Kustomer. Check the **Advanced Kustomer Transformations** section below for the detailed description.
-* **Enable generic title for Page events:** Enable this option to track all `page` events with the generic name `Web-Page-Viewed`.
-* **Enable generic title for Screen events:** Enable this option to track all `screen` events with the generic name `Screen-Viewed`.
+- **API Key:** Your API Key is an unique key generated for your account. It can be found in your Kustomer account under **Settings** by navigating to **Security** - **API Keys**.
+- **Enable advanced Kustomer transformations:** Enabling this option will result in RudderStack handling the payload nuances for Kustomer. Check the **Advanced Kustomer Transformations** section below for the detailed description.
+- **Add email as Tracking identity:** Enabling this option will result in Rudderstack adding email as an identifier when making Track/Page/Screen calls to Kustomer
+- **Disable email as a Tracking property:** Enabling this option will result in Rudderstack not adding email as a tracking property for Track/Page/Screen calls to Kustomer
+- **Enable generic title for Page events:** Enable this option to track all `page` events with the generic name `Web-Page-Viewed`.
+- **Enable generic title for Screen events:** Enable this option to track all `screen` events with the generic name `Screen-Viewed`.
 
 {% hint style="info" %}
 The relevant `roles` \(`org.permission.customer.create`, `org.permission.customer.read`, `org.permission.customer.update`, `org.tracking`\) are required for an **API Key** to successfully access the Kustomer endpoints. Check the [**Kustomer docs**](https://support.kustomer.com/api-keys-SJs5YTIWX) for more information on how to do this.
@@ -60,9 +62,9 @@ For `page`, `screen`, and `track` events being sent to Kustomer, there are restr
 
 The `event name` sent in the `page`, `screen`, and `track` events cannot include any spaces.
 
-| Event Name Example | Result |
-| :--- | :--- |
-| `Cart Viewed` | Error |
+| Event Name Example            | Result     |
+| :---------------------------- | :--------- |
+| `Cart Viewed`                 | Error      |
 | `Cart-Viewed` / `Cart_Viewed` | Successful |
 
 ### Meta Object
@@ -73,38 +75,41 @@ For `page`, `screen`, and `track` events, all of the data from the `properties` 
 
 For key-value pairs where the value has a type of `string`, the key must not end with the characters `Num` or `At`.
 
-| String Key Name Example | Result |
-| :--- | :--- |
-| `{ product_nameNum: 'UNO' }` | Error |
-| `{ product_nameAt: 'UNO' }` | Not Semantically Correct |
-| `{ product_name: 'UNO' }` | Successful |
+| String Key Name Example      | Result                   |
+| :--------------------------- | :----------------------- |
+| `{ product_nameNum: 'UNO' }` | Error                    |
+| `{ product_nameAt: 'UNO' }`  | Not Semantically Correct |
+| `{ product_name: 'UNO' }`    | Successful               |
 
 #### Date-time String Values
 
 For key-value pairs where the value has a type of `date-time string`, the key must end with the characters `At`.
 
-| Date-time String Key Name Example | Result |
-| :--- | :--- |
-| `{ purchased: '2020-02-02T00:23:09.544Z' }` | Not Semantically Correct |
-| `{ purchasedAt: '2020-02-02T00:23:09.544Z' }` | Successful |
+| Date-time String Key Name Example             | Result                   |
+| :-------------------------------------------- | :----------------------- |
+| `{ purchased: '2020-02-02T00:23:09.544Z' }`   | Not Semantically Correct |
+| `{ purchasedAt: '2020-02-02T00:23:09.544Z' }` | Successful               |
 
 #### Number Values
 
 For key-value pairs where the value has a type of `number`, the key must end with the characters `Num`.
 
-| Number Key Name Example | Result |
-| :--- | :--- |
-| `{ revenue: 300 }` | Error |
-| `{ revenueNum: 30 }` | Successful |
+| Number Key Name Example | Result     |
+| :---------------------- | :--------- |
+| `{ revenue: 300 }`      | Error      |
+| `{ revenueNum: 30 }`    | Successful |
 
 #### Object or Array Values
 
 The values for all keys in the `meta` object must be 'flat' meaning they cannot be nested `objects` or `arrays`.
+{% hint style="info" %}
+If you are using advanced transformation, Rudderstack wll handle nested `objects` , `arrays` and `boolean`, and parse them to strings for Kustomer compatibility
+{% endhint %}
 
-| Value Example | Result |
-| :--- | :--- |
-| `{ items: { price: 32, name: 'dinner plate' } }` | Error |
-| `{ items: [ 'dinner plate', 'fork', 'spoon' ] }` | Error |
+| Value Example                                    | Result |
+| :----------------------------------------------- | :----- |
+| `{ items: { price: 32, name: 'dinner plate' } }` | Error  |
+| `{ items: [ 'dinner plate', 'fork', 'spoon' ] }` | Error  |
 
 {% hint style="info" %}
 For `track`, `page` and `screen` events, Kustomer supports only `number, string,`and `string` with `date-time (ISO)` format for custom event properties. Please refer to the [**official Kustomer Documentation**](https://apidocs.kustomer.com/#fe1b29a6-7f3c-40a7-8f54-973ecd0335e8) for more information on this.
@@ -116,43 +121,43 @@ When the **Advanced Kustomer Transformation** option is enabled, Rudderstack wil
 
 The following behaviour is expected:
 
-| Event Name | With Advanced Transformation Enabled | Transformed? |
-| :--- | :--- | :--- |
-| `Order Completed` | `Order-Completed` | Yes |
-| `OrderCompleted` | `OrderCompleted` | No |
-| `Order-Completed` | `Order-Completed` | No |
+| Event Name        | With Advanced Transformation Enabled | Transformed? |
+| :---------------- | :----------------------------------- | :----------- |
+| `Order Completed` | `Order-Completed`                    | Yes          |
+| `OrderCompleted`  | `OrderCompleted`                     | No           |
+| `Order-Completed` | `Order-Completed`                    | No           |
 
 {% hint style="info" %}
 The event names with whitespaces will be replaced with `-`.
 {% endhint %}
 
 | Event Property | Value | With Advanced Transformation Enabled | Transformed? |
-| :--- | :--- | :--- | :--- |
-| `income` | `500` | `incomeNum` | Yes |
-| `income Num` | `500` | `income-Num` | Yes |
-| `income-Num` | `500` | `income-Num` | No |
-| `income_Num` | `500` | `income_Num` | No |
+| :------------- | :---- | :----------------------------------- | :----------- |
+| `income`       | `500` | `incomeNum`                          | Yes          |
+| `income Num`   | `500` | `income-Num`                         | Yes          |
+| `income-Num`   | `500` | `income-Num`                         | No           |
+| `income_Num`   | `500` | `income_Num`                         | No           |
 
 {% hint style="info" %}
 The event properties with numeric values will be appended with `Num` if not already present, while whitespaces will be replaced with `-`.
 {% endhint %}
 
-| Event Property | Value | With Advanced Transformation Enabled | Transformed? |
-| :--- | :--- | :--- | :--- |
-| `created` | `'2020-02-02T00:23:09.544Z'` | `createdAt` | Yes |
-| `created At` | `'2020-02-02T00:23:09.544Z'` | `created-At` | Yes |
-| `created-At` | `'2020-02-02T00:23:09.544Z'` | `created-At` | No |
-| `created_At` | `'2020-02-02T00:23:09.544Z'` | `created_At` | No |
+| Event Property | Value                        | With Advanced Transformation Enabled | Transformed? |
+| :------------- | :--------------------------- | :----------------------------------- | :----------- |
+| `created`      | `'2020-02-02T00:23:09.544Z'` | `createdAt`                          | Yes          |
+| `created At`   | `'2020-02-02T00:23:09.544Z'` | `created-At`                         | Yes          |
+| `created-At`   | `'2020-02-02T00:23:09.544Z'` | `created-At`                         | No           |
+| `created_At`   | `'2020-02-02T00:23:09.544Z'` | `created_At`                         | No           |
 
 {% hint style="info" %}
 The event properties with date-time string values will be appended with `At` if not already present, while whitespaces will be replaced with `-`.
 {% endhint %}
 
-| Event Name | Value | With Advanced Transformation Enabled | Transformed? |
-| :--- | :--- | :--- | :--- |
-| `Cart Name` | `Test Cart` | `Cart-Name` | Yes |
-| `CartName` | `Test Cart` | `CartName` | No |
-| `Cart-Name` | `Test Cart` | `Cart-Name` | No |
+| Event Name  | Value       | With Advanced Transformation Enabled | Transformed? |
+| :---------- | :---------- | :----------------------------------- | :----------- |
+| `Cart Name` | `Test Cart` | `Cart-Name`                          | Yes          |
+| `CartName`  | `Test Cart` | `CartName`                           | No           |
+| `Cart-Name` | `Test Cart` | `Cart-Name`                          | No           |
 
 {% hint style="info" %}
 For the event properties with `string` values, the whitespaces will be replaced with `-`.
@@ -234,26 +239,26 @@ The `identify` call lets you associate a user with their actions and capture all
 
 A number of Rudderstack's special traits map to Kustomer’s standard user profile fields, as shown in the table below.
 
-| **Kustomer** | **Rudderstack** | **Supported Type** |
-| :--- | :--- | :--- |
-| `name` | `name` or `firstName` and `lastName` | `string` |
-| `externalId` | `userId` or `anonymousId` | `string` |
-| `username` | `userName` | `string` |
-| `company` | `company` | `string` |
-| `signedUpAt` | `createdAt` | `string date-time` |
-| `lastActivityAt` | `lastActivityAt` | `string date-time` |
-| `lastCustomerActivityAt` | `lastCustomerActivityAt` | `string date-time` |
-| `lastSeenAt` | `lastSeenAt` | `string date-time` |
-| `avatarUrl` | `avatar` | `string` |
-| `gender` | `gender` | `string` |
-| `tags` | `tags` | `array` |
-| `emails` | `emails` or `email` | `array` or `string` |
-| `phones` | `phones` or `phone` | `array` or `string` |
-| `socials` | `socials` | `array` |
-| `birthdayAt` | `birthday` | `string date-time` |
-| `urls` | `website` | `string` |
-| `locations` | `address` | `string` or `object` |
-| `locale` | `context.locale` | `string` |
+| **Kustomer**             | **Rudderstack**                      | **Supported Type**   |
+| :----------------------- | :----------------------------------- | :------------------- |
+| `name`                   | `name` or `firstName` and `lastName` | `string`             |
+| `externalId`             | `userId` or `anonymousId`            | `string`             |
+| `username`               | `userName`                           | `string`             |
+| `company`                | `company`                            | `string`             |
+| `signedUpAt`             | `createdAt`                          | `string date-time`   |
+| `lastActivityAt`         | `lastActivityAt`                     | `string date-time`   |
+| `lastCustomerActivityAt` | `lastCustomerActivityAt`             | `string date-time`   |
+| `lastSeenAt`             | `lastSeenAt`                         | `string date-time`   |
+| `avatarUrl`              | `avatar`                             | `string`             |
+| `gender`                 | `gender`                             | `string`             |
+| `tags`                   | `tags`                               | `array`              |
+| `emails`                 | `emails` or `email`                  | `array` or `string`  |
+| `phones`                 | `phones` or `phone`                  | `array` or `string`  |
+| `socials`                | `socials`                            | `array`              |
+| `birthdayAt`             | `birthday`                           | `string date-time`   |
+| `urls`                   | `website`                            | `string`             |
+| `locations`              | `address`                            | `string` or `object` |
+| `locale`                 | `context.locale`                     | `string`             |
 
 For more information on the supported traits, check out the [**official Kustomer Documentation**](https://apidocs.kustomer.com/#07bd1072-4d4b-4875-b526-8369d711e811)
 
@@ -346,4 +351,3 @@ If you choose to send Customer's `id` in `context.externalId` \(example `context
 ## Contact Us
 
 If you come across any issues while configuring Kustomer with RudderStack, please feel free to [**contact us**](mailto:docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
