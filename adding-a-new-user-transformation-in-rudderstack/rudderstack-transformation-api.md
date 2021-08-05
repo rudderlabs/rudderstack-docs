@@ -15,7 +15,7 @@ The Transformations API is authenticated via HTTP Basic Authentication.
 You can authenticate your account when using the API by including your **email address** in the username field and the secret **access token** in the password field in Authorization, if you're using POSTMAN.
 
 {% hint style="warning" %}
-It is mandatory to generate your access token before you make any API calls. If you have not generated your access token visit our [Access Token](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MV0iZoVHsD3nVgP7COV/api-access-token) page.
+It is mandatory to generate your access token before you make any API calls. If you have not generated your access token visit our [**Access Token**](api-access-token.md) page.
 {% endhint %}
 
 {% hint style="danger" %}

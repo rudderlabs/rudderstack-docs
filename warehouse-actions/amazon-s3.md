@@ -15,7 +15,7 @@ To set up Amazon S3 as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.png)
+![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.png)
 
 * Scroll down to the **Warehouse Sources** and select **Amazon S3**. Then, click on **Next**.
 
@@ -39,17 +39,14 @@ If you've already configured S3 as a source before, your existing credentials wi
   * **Account Name** - Enter the name you wish to assign to this connection account.
   * **AWS Access Key ID** - Your AWS Access Key ID goes here.
   * **AWS Secret Access Key** - Your AWS secret access key should be entered here.
-
 * A list of the minimal S3 actions that need to be attached to the above access keys is as below:
 
-```.json
+```javascript
 "Action": [
                 "s3:GetObject",
                 "s3:ListBucket"
             ],
-
 ```
-
 
 {% hint style="info" %}
 To get the **AWS Access Key ID** and the **Secret Access Key**, you can sign into your AWS Management Console as [the root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page). Then, in the navigation bar on the upper right corner, choose your account name and select **My Security Credentials**.
@@ -85,7 +82,7 @@ Your table must include one of the following columns - `email`, `user_id`, or `a
 
 ![](../.gitbook/assets/screen-shot-2021-01-13-at-11.00.29-am.png)
 
-That's it! Amazon S3 is now successfully configured as a source on your RudderStack dashboard. 
+That's it! Amazon S3 is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start importing data from your S3 bucket as per the specified frequency. You can further connect this source to your preferred destination by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
@@ -99,7 +96,7 @@ If you have already configured a destination on the RudderStack platform, choose
 
 ### Where do I get the AWS Access Key ID and the AWS Secret Access Key?
 
-To get the **AWS Access Key ID** and the **Secret Access Key**,  sign into your AWS Management Console as [the root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page). Then, in the navigation bar on the upper right corner, choose your account name and select **My Security Credentials**.
+To get the **AWS Access Key ID** and the **Secret Access Key**, sign into your AWS Management Console as [the root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page). Then, in the navigation bar on the upper right corner, choose your account name and select **My Security Credentials**.
 
 For more information on understanding and getting these AWS credentials, refer to their [guide](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html).
 
