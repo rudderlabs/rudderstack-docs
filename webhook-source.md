@@ -19,10 +19,10 @@ This section details the steps involved in setting up a webhook source. As an ex
 
 * Create a webhook source in your RudderStack dashboard as shown:
 
-![](https://user-images.githubusercontent.com/59817155/127985229-cbafc185-f7ad-433c-a958-da508e5b962e.png)
+![](https://user-images.githubusercontent.com/59817155/128315856-0d71db9a-fbc3-4f71-8692-f2a0faa4c5b3.png)
 
 
-* Then, add a destination in RudderStack and connect it to this webhook source. In this example, we have added [**Google Analytics**](https://docs.rudderstack.com/destinations/analytics/google-analytics-ga) as a destination, as shown:
+* Then, add a destination in RudderStack and connect it to this webhook source. In this example, we will configure [**Google Analytics**](https://docs.rudderstack.com/destinations/analytics/google-analytics-ga) as a destination, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/127983406-76fcf748-bd1b-4f18-9840-b19a71aaf601.png)
 
@@ -72,7 +72,7 @@ RudderStack receives this data and creates the following payload:
 ```JavaScript
 [{
   "type": "track",
-  "event": "custom_source_event",
+  "event": "webhook_source_event",
   "rudderId": "044448e2-a674-426c-ba61-8341262babcc",
   "messageId": "4379907d-689a-4e3a-a2f7-477e29a02299",
   "properties": {
