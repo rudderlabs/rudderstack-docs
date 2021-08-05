@@ -6,17 +6,26 @@ description: Step-by-step guide to add a Webhook source in RudderStack.
 
 RudderStack lets you add any source that supports a webhook and use it to send events to your preferred destination.
 
-When you create a webhook source in the RudderStack dashboard, you get a write key associated with it. Use this write key in a webhook endpoint, e.g., `http://<DATA_PLANE_URL>/v1/webhook?writeKey=<SOURCE_WRITE_KEY>`. You can then add this webhook URL to any source. RudderStack will receive the data according to the settings made in the source and route it to your specified destination.
+When you create a webhook source in the RudderStack dashboard, you get a write key associated with it. Use this write key in a webhook endpoint in the format:   
+  
+`http://<DATA_PLANE_URL>/v1/webhook?writeKey=<SOURCE_WRITE_KEY>`  
+  
+You can then add this webhook URL to any source. RudderStack receives the data according to the settings made in the source, creates the payload, and routes it to your specified destination.
 
-{% hint style="success" %}
-You can also add [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) to transform the event data as your requirement.
+{% hint style="info" %}
+You must also add [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) ****to transform the event data into a destination-specific format.
 {% endhint %}
 
-## Adding a Webhook Source in RudderStack
+## Adding a Webhook Source
 
-This section details the steps involved in setting up a webhook source. As an example, we will configure Mailchimp as a source in RudderStack.
+This section details the steps involved in setting up a webhook source. As an example, we will configure [**Mailchimp**](https://mailchimp.com) ****as a source in RudderStack.
 
-* Create a webhook source in your RudderStack dashboard as shown:
+* From the list of [**Event Stream**](./) sources, click on **Webhook**.
+
+![](../.gitbook/assets/webhook%20%281%29.png)
+
+* Assign a name to the source, and click on **Next**. 
+* Your webhook source is now created, as shown below. Note the **Webhook URL** which will be added in the source platform.
 
 ![](https://user-images.githubusercontent.com/59817155/128315856-0d71db9a-fbc3-4f71-8692-f2a0faa4c5b3.png)
 
@@ -28,7 +37,7 @@ This section details the steps involved in setting up a webhook source. As an ex
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details.
 {% endhint %}
 
-* Next, add the webhook URL to your desired source platform. **Remember that you can configure webhook sources only for the source platforms that support webhooks**. The following image shows how to add the URL in [Mailchimp](https://mailchimp.com):
+* Next, add the webhook URL to your desired source platform. **Remember that you can configure webhook sources only for the source platforms that support webhooks**.   The following image shows the webhook URL added in Mailchimp:
 
 ![](https://user-images.githubusercontent.com/59817155/127986131-3740dbfe-7d55-4328-abe1-63fb8ac70de2.png)
 
@@ -47,18 +56,14 @@ The content type can vary in case of other webhook sources.
 * RudderStack then takes the data, creates the payload and sends it to Google Analytics.
 
 {% hint style="info" %}
-For more information on how RudderStack creates the payload, refer to the **Payload Creation and Transformation** section.
-{% endhint %}
-
-{% hint style="success" %}
-You can also add **User Transformations** to transform the payload into a specific format before sending it to your destination. Refer to the **Payload Creation and Transformation** section for more details.
+You must also add [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) ****to transform the payload into a destination-specific format before sending it to the destination. Refer to the [**Payload Creation and Transformation**](https://docs.rudderstack.com/stream-sources/webhook-source#payload-creation-and-transformation) section for more details.
 {% endhint %}
 
 ## Payload Creation and Transformation
 
 This section details how RudderStack receives the data from the webhook source platform and creates the resulting payload.
 
-Continuing with our Mailchimp example, let's assume that a customer subscribes to Mailchimp. Mailchimp then sends the following data to RudderStack:
+Continuing with our Mailchimp example, suppose a customer subscribes to Mailchimp. Mailchimp then sends the following data to RudderStack:
 
 ```text
 type=subscribe&fired_at=2021-07-28+08%3A06%3A59&data%5Bid%5D=e2ff089583&data%5Bemail%5D=ruchira%40rudderlabs.com&data%5Bemail_type%5D=html&data%5Bip_opt%5D=115.187.35.152&data%5Bweb_id%5D=161912900&data%5Bmerges%5D%5BEMAIL%5D=name%40rudderlabs.com&data%5Bmerges%5D%5BFNAME%5D=Name&data%5Bmerges%5D%5BLNAME%5D=Surname&data%5Bmerges%5D%5BADDRESS%5D=&data%5Bmerges%5D%5BPHONE%5D=&data%5Bmerges%5D%5BBIRTHDAY%5D=&data%5Blist_id%5D=ec4689c266
@@ -122,7 +127,7 @@ RudderStack receives this data and creates the following payload:
 ]
 ```
 
-You can also transform this payload according to the desired destination with the help of RudderStack's [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) feature.
+You can then transform this payload according to the desired destination with the help of RudderStack's [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) feature.
 
 A sample transformation is as shown below:
 
