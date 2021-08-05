@@ -65,7 +65,7 @@ import 'package:rudder_sdk_flutter/RudderLogger.dart';
 * Add the following code somewhere in your application.
 
 ```dart
- RudderLogger.init(RudderLogger.VERBOSE);
+RudderLogger.init(RudderLogger.VERBOSE);
 RudderConfigBuilder builder = RudderConfigBuilder();
 builder.withDataPlaneUrl(DATA_PLANE_URL);
 builder.withTrackLifecycleEvents(true);
