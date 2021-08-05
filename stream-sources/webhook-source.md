@@ -9,7 +9,7 @@ RudderStack lets you add any source that supports a webhook and use it to send e
 When you create a webhook source in the RudderStack dashboard, you get a write key associated with it. Use this write key in a webhook endpoint, e.g., `http://<DATA_PLANE_URL>/v1/webhook?writeKey=<SOURCE_WRITE_KEY>`. You can then add this webhook URL to any source. RudderStack will receive the data according to the settings made in the source and route it to your specified destination.
 
 {% hint style="success" %}
-You can also add [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) to manipulate the event data as your requirement.
+You can also add [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) to transform the event data as your requirement.
 {% endhint %}
 
 ## Adding a Webhook Source in RudderStack
