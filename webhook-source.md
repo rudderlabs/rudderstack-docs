@@ -31,7 +31,7 @@ This section details the steps involved in setting up a webhook source. As an ex
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details.
 {% endhint %}
 
-* Next, add the webhook URL to your desired source platform. **Remember that you can configure webhook sources only for the source platforms that support webhooks**. The following image shows how to add the URL in Mailchimp:
+* Next, add the webhook URL to your desired source platform. **Remember that you can configure webhook sources only for the source platforms that support webhooks**. The following image shows how to add the URL in [Mailchimp](https://mailchimp.com):
 
 ![](https://user-images.githubusercontent.com/59817155/127986131-3740dbfe-7d55-4328-abe1-63fb8ac70de2.png)
 
@@ -39,7 +39,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 Remember to add and test your webhook URL.
 {% endhint %}
 
-* When the users perform any of the actions configured in the source, the platform will send the generated events to the webhook URL. 
+* When the users perform any of the actions configured in the source, the platform will send the generated events to the webhook URL.
 
 In this example, Mailchimp sends the updates under **What type of updates should we send?** (seen in the image above) as user events to the webhook URL with the content type `application/x-www-form-urlencoded`.
 
@@ -70,91 +70,81 @@ type=subscribe&fired_at=2021-07-28+08%3A06%3A59&data%5Bid%5D=e2ff089583&data%5Be
 RudderStack receives this data and creates the following payload:
 
 ```JavaScript
-[{
-  "type": "track",
-  "event": "webhook_source_event",
-  "rudderId": "044448e2-a674-426c-ba61-8341262babcc",
-  "messageId": "4379907d-689a-4e3a-a2f7-477e29a02299",
-  "properties": {
-    "type": [
-      "subscribe"
-    ],
-    "data[id]": [
-      "e2ff089583"
-    ],
-    "fired_at": [
-      "2021-07-28 08:06:59"
-    ],
-    "data[email]": [
-      "[name@rudderlabs.com](mailto:name@rudderlabs.com)"
-    ],
-    "data[ip_opt]": [
-      "115.187.35.152"
-    ],
-    "data[web_id]": [
-      "161912900"
-    ],
-    "data[list_id]": [
-      "ec4689c266"
-    ],
-    "data[email_type]": [
-      "html"
-    ],
-    "data[merges][EMAIL]": [
-      "[name@rudderlabs.com](mailto:name@rudderlabs.com)"
-    ],
-    "data[merges][FNAME]": [
-      "Name"
-    ],
-    "data[merges][LNAME]": [
-      "Surname"
-    ],
-    "data[merges][PHONE]": [
-      ""
-    ],
-    "data[merges][ADDRESS]": [
-      ""
-    ],
-    "data[merges][BIRTHDAY]": [
-      ""
-    ]
-  },
-  "anonymousId": "d6597ba2-54db-4bd7-8769-86ac067b4178"
-}]
+[
+  {
+    "type": "track",
+    "event": "webhook_source_event",
+    "rudderId": "044448e2-a674-426c-ba61-8341262babcc",
+    "messageId": "4379907d-689a-4e3a-a2f7-477e29a02299",
+    "properties": {
+      "type": [
+        "subscribe"
+      ],
+      "data[id]": [
+        "e2ff089583"
+      ],
+      "fired_at": [
+        "2021-07-28 08:06:59"
+      ],
+      "data[email]": [
+        "[name@rudderlabs.com](mailto:name@rudderlabs.com)"
+      ],
+      "data[ip_opt]": [
+        "115.187.35.152"
+      ],
+      "data[web_id]": [
+        "161912900"
+      ],
+      "data[list_id]": [
+        "ec4689c266"
+      ],
+      "data[email_type]": [
+        "html"
+      ],
+      "data[merges][EMAIL]": [
+        "[name@rudderlabs.com](mailto:name@rudderlabs.com)"
+      ],
+      "data[merges][FNAME]": [
+        "Name"
+      ],
+      "data[merges][LNAME]": [
+        "Surname"
+      ],
+      "data[merges][PHONE]": [
+        ""
+      ],
+      "data[merges][ADDRESS]": [
+        ""
+      ],
+      "data[merges][BIRTHDAY]": [
+        ""
+      ]
+    },
+    "anonymousId": "d6597ba2-54db-4bd7-8769-86ac067b4178"
+  }
+]
 ```
-You can also manipulate this payload according to the desired destination with the help of RudderStack's [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) feature.
+You can also transform this payload according to the desired destination with the help of RudderStack's [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) feature.
 
 A sample transformation is as shown below:
 
 ```JavaScript
 function transformEvent(event) {
-
   const updatedEvent = event[0];
-
-  const {
-    properties
-  } = event[0];
+  const { properties } = event[0];
 
   if (properties) {
-
     updatedEvent.event = properties.type;
-
     updatedEvent.userId = properties["data[email]"];
-
     updatedEvent.properties.name = `${properties["data[merges][FNAME]"]} ${properties["data[merges][LNAME]"]}`;
-
     updatedEvent.properties.phone = properties["data[merges][PHONE]"];
 
     delete updatedEvent.properties["data[merges][PHONE]"];
-
     delete updatedEvent.properties["data[merges][FNAME]"];
-
     delete updatedEvent.properties["data[merges][LNAME]"];
-
   }
 
   return updatedEvent;
-
 }
 ```
 
@@ -163,26 +153,54 @@ The transformed payload is as shown:
 ```JavaScript
 {
   type: 'track',
-  event: ['subscribe'],
+  event: [
+    'subscribe'
+  ],
   rudderId: '044448e2-a674-426c-ba61-8341262babcc',
   messageId: '4379907d-689a-4e3a-a2f7-477e29a02299',
   properties: {
-    type: ['subscribe'],
-    'data[id]': ['e2ff089583'],
-    fired_at: ['2021-07-28 08:06:59'],
-    'data[email]': ['name@rudderlabs.com'],
-    'data[ip_opt]': ['115.187.35.152'],
-    'data[web_id]': ['161912900'],
-    'data[list_id]': ['ec4689c266'],
-    'data[email_type]': ['html'],
-    'data[merges][EMAIL]': ['name@rudderlabs.com'],
-    'data[merges][ADDRESS]': [''],
-    'data[merges][BIRTHDAY]': [''],
+    type: [
+      'subscribe'
+    ],
+    'data[id]': [
+      'e2ff089583'
+    ],
+    fired_at: [
+      '2021-07-28 08:06:59'
+    ],
+    'data[email]': [
+      'name@rudderlabs.com'
+    ],
+    'data[ip_opt]': [
+      '115.187.35.152'
+    ],
+    'data[web_id]': [
+      '161912900'
+    ],
+    'data[list_id]': [
+      'ec4689c266'
+    ],
+    'data[email_type]': [
+      'html'
+    ],
+    'data[merges][EMAIL]': [
+      'name@rudderlabs.com'
+    ],
+    'data[merges][ADDRESS]': [
+      ''
+    ],
+    'data[merges][BIRTHDAY]': [
+      ''
+    ],
     name: 'Name Surname',
-    phone: ['']
+    phone: [
+      ''
+    ]
   },
   anonymousId: 'd6597ba2-54db-4bd7-8769-86ac067b4178',
-  userId: ['name@rudderlabs.com']
+  userId: [
+    'name@rudderlabs.com'
+  ]
 }
 ```
 
