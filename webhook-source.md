@@ -1,30 +1,30 @@
 ---
 description: >-
-  Step-by-step guide to add a custom source in RudderStack.
+  Step-by-step guide to add a Webhook source in RudderStack.
 ---
 
-# Custom Sources
+# Webhook Source
 
-RudderStack lets you add any custom sources that have the provision of a webhook. You can then use this custom source to send events from that source to your preferred destination.
+RudderStack lets you add any source that supports a webhook and use it to send events to your preferred destination.
 
-When you create a custom source in the RudderStack dashboard, you will get a write key associated with that source. Use this write key in a webhook endpoint, e.g., `http://<DATA_PLANE_URL>/v1/webhook?writeKey=<SOURCE_WRITE_KEY>`.
+When you create a webhook source in the RudderStack dashboard, you will get a write key associated with it. Use this write key in a webhook endpoint, e.g., `http://<DATA_PLANE_URL>/v1/webhook?writeKey=<SOURCE_WRITE_KEY>`.
 
-You can then add this webhook URL to any source. RudderStack will receive the data according to the settings made in the source and route it to your specified destination. You can also add [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) to manipulate the event data as your requirement.
+You can then add this webhook URL to any source. RudderStack will receive the data according to the settings made in the source and route it to your specified destination.
 
 {% hint style="success" %}
 You can also add [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) to manipulate the event data as your requirement.
 {% endhint %}
 
-## Adding a Custom Source in RudderStack
+## Adding a Webhook Source in RudderStack
 
-This section details the steps involved in setting up a custom source in RudderStack. As an example, we will configure Mailchimp as a custom source.
+This section details the steps involved in setting up a webhook source. As an example, we will configure Mailchimp as a source in RudderStack.
 
-* Create a custom source in your RudderStack dashboard as shown:
+* Create a webhook source in your RudderStack dashboard as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/127985229-cbafc185-f7ad-433c-a958-da508e5b962e.png)
 
 
-* Then, add a destination in RudderStack and connect it to this custom source. In this example, we have added [**Google Analytics**](https://docs.rudderstack.com/destinations/analytics/google-analytics-ga) as a destination, as shown:
+* Then, add a destination in RudderStack and connect it to this webhook source. In this example, we have added [**Google Analytics**](https://docs.rudderstack.com/destinations/analytics/google-analytics-ga) as a destination, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/127983406-76fcf748-bd1b-4f18-9840-b19a71aaf601.png)
 
@@ -33,7 +33,7 @@ This section details the steps involved in setting up a custom source in RudderS
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details.
 {% endhint %}
 
-* Next, add the webhook URL to your desired source platform. Remember that you can configure custom sources only for the source platforms that support webhooks. The following image shows how to add the URL in Mailchimp:
+* Next, add the webhook URL to your desired source platform. **Remember that you can configure webhook sources only for the source platforms that support webhooks**. The following image shows how to add the URL in Mailchimp:
 
 ![](https://user-images.githubusercontent.com/59817155/127986131-3740dbfe-7d55-4328-abe1-63fb8ac70de2.png)
 
@@ -41,27 +41,27 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 Remember to add and test your webhook URL.
 {% endhint %}
 
-* When the users perform any of the actions associated with the source, the source platform will send the generated events to the webhook URL. 
+* When the users perform any of the actions configured in the source, the platform will send the generated events to the webhook URL. 
 
 In this example, Mailchimp sends the updates under **What type of updates should we send?** (seen in the image above) as user events to the webhook URL with the content type `application/x-www-form-urlencoded`.
 
 {% hint style="info" %}
-The content type can vary in case of other custom sources.
+The content type can vary in case of other webhook sources.
 {% endhint %}
 
 * RudderStack then takes the data, creates the payload and sends it to Google Analytics.
 
 {% hint style="info" %}
-For more information on how RudderStack creates the payload, refer to the next section.
+For more information on how RudderStack creates the payload, refer to the **Payload Creation and Transformation** section.
 {% endhint %}
 
 {% hint style="success" %}
-You can also add User Transformations to transform the payload in a specific format before sending it to the destination. Refer to the next section for more details.
+You can also add **User Transformations** to transform the payload into a specific format before sending it to your destination. Refer to the **Payload Creation and Transformation** section for more details.
 {% endhint %}
 
 ## Payload Creation and Transformation
 
-This section details how RudderStack receives the data from the custom source platform and creates the resulting payload.
+This section details how RudderStack receives the data from the webhook source platform and creates the resulting payload.
 
 Continuing with our Mailchimp example, let's assume that a customer subscribes to Mailchimp. Mailchimp then sends the following data to RudderStack:
 
@@ -188,8 +188,8 @@ The transformed payload is as shown:
 }
 ```
 
-RudderStack then sends this payload to your desired destination.
+RudderStack then sends this payload to your destination.
 
 ## Contact Us
 
-If you come across any issues while setting up and using custom sources in RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any issues while setting up and using webhook sources in RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
