@@ -34,7 +34,7 @@
     * [.NET](stream-sources/rudderstack-sdk-integration-guides/.net.md)
     * [PHP](stream-sources/rudderstack-sdk-integration-guides/php.md)
     * [SDK FAQs](stream-sources/rudderstack-sdk-integration-guides/sdk-faqs.md)
-    * [Webhook Source](webhook-source.md)
+  * [Webhook Source](stream-sources/webhook-source.md)
   * [App Center](stream-sources/appcenter.md)
   * [AppsFlyer](stream-sources/appsflyer.md)
   * [Auth0](stream-sources/auth0.md)

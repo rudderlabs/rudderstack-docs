@@ -1,6 +1,5 @@
 ---
-description: >-
-  Step-by-step guide to add a Webhook source in RudderStack.
+description: Step-by-step guide to add a Webhook source in RudderStack.
 ---
 
 # Webhook Source
@@ -21,11 +20,9 @@ This section details the steps involved in setting up a webhook source. As an ex
 
 ![](https://user-images.githubusercontent.com/59817155/128315856-0d71db9a-fbc3-4f71-8692-f2a0faa4c5b3.png)
 
-
 * Then, add a destination in RudderStack and connect it to this webhook source. In this example, we will configure [**Google Analytics**](https://docs.rudderstack.com/destinations/analytics/google-analytics-ga) as a destination, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/127983406-76fcf748-bd1b-4f18-9840-b19a71aaf601.png)
-
 
 {% hint style="info" %}
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more details.
@@ -41,7 +38,7 @@ Remember to add and test your webhook URL.
 
 * When the users perform any of the actions configured in the source, the platform will send the generated events to the webhook URL.
 
-In this example, Mailchimp sends the updates under **What type of updates should we send?** (seen in the image above) as user events to the webhook URL with the content type `application/x-www-form-urlencoded`.
+In this example, Mailchimp sends the updates under **What type of updates should we send?** \(seen in the image above\) as user events to the webhook URL with the content type `application/x-www-form-urlencoded`.
 
 {% hint style="info" %}
 The content type can vary in case of other webhook sources.
@@ -63,13 +60,13 @@ This section details how RudderStack receives the data from the webhook source p
 
 Continuing with our Mailchimp example, let's assume that a customer subscribes to Mailchimp. Mailchimp then sends the following data to RudderStack:
 
-```
+```text
 type=subscribe&fired_at=2021-07-28+08%3A06%3A59&data%5Bid%5D=e2ff089583&data%5Bemail%5D=ruchira%40rudderlabs.com&data%5Bemail_type%5D=html&data%5Bip_opt%5D=115.187.35.152&data%5Bweb_id%5D=161912900&data%5Bmerges%5D%5BEMAIL%5D=name%40rudderlabs.com&data%5Bmerges%5D%5BFNAME%5D=Name&data%5Bmerges%5D%5BLNAME%5D=Surname&data%5Bmerges%5D%5BADDRESS%5D=&data%5Bmerges%5D%5BPHONE%5D=&data%5Bmerges%5D%5BBIRTHDAY%5D=&data%5Blist_id%5D=ec4689c266
 ```
 
 RudderStack receives this data and creates the following payload:
 
-```JavaScript
+```javascript
 [
   {
     "type": "track",
@@ -124,11 +121,12 @@ RudderStack receives this data and creates the following payload:
   }
 ]
 ```
+
 You can also transform this payload according to the desired destination with the help of RudderStack's [**User Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) feature.
 
 A sample transformation is as shown below:
 
-```JavaScript
+```javascript
 function transformEvent(event) {
   const updatedEvent = event[0];
   const { properties } = event[0];
@@ -150,7 +148,7 @@ function transformEvent(event) {
 
 The transformed payload is as shown:
 
-```JavaScript
+```javascript
 {
   type: 'track',
   event: [
@@ -209,3 +207,4 @@ RudderStack then sends this payload to your destination.
 ## Contact Us
 
 If you come across any issues while setting up and using webhook sources in RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
