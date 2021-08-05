@@ -15,7 +15,7 @@
 * [Connections](connections/README.md)
   * [How to Add a Source and Destination in RudderStack](connections/adding-source-and-destination-rudderstack.md)
   * [RudderStack Connection Modes: Cloud Mode vs. Device Mode](connections/rudderstack-connection-modes.md)
-* [Custom Sources](custom-sources.md)
+* [Webhook Source](webhook-source.md)
 * [Event Stream Sources](stream-sources/README.md)
   * [SDKs](stream-sources/rudderstack-sdk-integration-guides/README.md)
     * [JavaScript](stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/README.md)
