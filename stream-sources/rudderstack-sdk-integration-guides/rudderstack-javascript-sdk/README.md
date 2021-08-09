@@ -1103,6 +1103,23 @@ rudderanalytics.getAnonymousId();
 **NOTE:** In case the `anonymousId` value is null, calling the above function will lead to automatically setting a new `anonymousId`.
 {% endhint %}
 
+### What is the `Reserved Keyword` error?
+
+When using the JS-SDK, you may run into the following error: `rudder-analytics:Warning! : Reserved keyword used in traits --> id with track call`. This is due to one or more of the keys in your `traits` and/or `properties` object is the same value as a reserved keyword. The following list of reserved keywords are keys the RudderStack uses for a standard event payload and therefore should be avoided when naming traits and properties.
+
+```javascript
+Reserved Keywords:
+------------------
+"anonymous_id"
+"id"
+"sent_at"
+"received_at"
+"timestamp"
+"original_timestamp"
+"event_text"
+"event"
+```
+
 ## Contact Us
 
 To know more about the RudderStack JavaScript SDK or to see it in action, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
