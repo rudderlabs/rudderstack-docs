@@ -40,8 +40,7 @@ RudderStack transforms the following properties to Drip's Standard properties:
 | :----------------------------- | :--------------------------- |
 | `email`                        | `email`                      |
 | `newEmail`                     | `new_email`                  |
-| `userId`                       | `user_id`                    |
-| `anonymousId`                  | `user_id`                    |
+| `userId or anonymousId`        | `user_id`                    |
 | `tags`                         | `tags`                       |
 | `removeTags`                   | `remove_tags`                |
 | `prospect`                     | `prospect`                   |
@@ -71,12 +70,11 @@ rudderanalytics.track("randomProduct", {
 
 RudderStack transforms the following properties to Drip's Standard properties:
 
-| **RudderStack Property Names** | **Drip Standard Properties** |
-| :----------------------------- | :--------------------------- |
-| `email`                        | `email`                      |
-| `revenue`                      | `value`                      |
-| `originalTimestamp`            | `occurred_at`                |
-| `occurred_at`                  | `occurred_at`                |
+| **RudderStack Property Names**     | **Drip Standard Properties** |
+| :--------------------------------- | :--------------------------- |
+| `email`                            | `email`                      |
+| `revenue`                          | `value`                      |
+| `occurred_at or originalTimestamp` | `occurred_at`                |
 
 ## Contact Us
 
