@@ -226,6 +226,45 @@ For each `track` call, RudderStack sends the request in the following manner\(de
 * **`POST`:** RudderStack sends the whole event payload\(as shown above\) as the JSON body of the `POST` request.
 * **`GET`:** RudderStack sends the properties that you pass in the `track` call as query parameters of the `GET` request. If your properties contain nested values, RudderStack will flatten these values before sending them.
 
+## Features
+
+### Dynamic Header Support
+
+In the settings config, you can set static headers for the webhook call. However, in some cases you may want to dynamically change or add a header to the webhook. This can be done through a top-level object with a key of `header`.  Below is an example of a payload with this feature.
+
+```javascript
+{
+  event: "some-event-name",
+  type: "track",
+  properties: {
+    color: "blue",
+    number: 3,
+    newMember: true
+  },
+  header: {
+    "Authorization": "Bearer 3841718412jhcdskc"
+  }
+}
+```
+
+### Dynamically Append to Endpoint URL
+
+In the settings config, you will enter the endpoint that this webhook will be pointed to. There are some use-cases where depending on the event that is going to this destination, the endpoint may need to be changed. RudderStack allows you to append a dynamic string to your webhook endpoint using a top-level key named `appendPath`.
+
+```javascript
+Fixed Endpoint URL From Settings
+--------------------------------
+endpoint: 'https://www.google.com/'
+
+Dynamically Append String to Endpoint
+-------------------------------------
+appendPath: 'search?q=cats'
+
+Final Endpoint
+--------------
+endpoint: 'https://www.google.com/search?q=cats'
+```
+
 ## FAQs
 
 ### How to check if there are any delivery failures for the events sent to the webhook?
