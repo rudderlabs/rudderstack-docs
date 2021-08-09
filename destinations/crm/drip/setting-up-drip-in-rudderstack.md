@@ -44,10 +44,14 @@ The **API token** is required when using the Cloud mode to send your data.
 * Enter your **Campaign ID**. To get your campaign ID, go to **Campaigns** - **Email Series** and choose the relevant campaign. The last part of the URL is the campaign ID, e.g. `https://www.getdrip.com/account_id/campaigns/campaign_id`.
 
 {% hint style="info" %}
-If the **Campaign ID** is provided, RudderStack will try to subscribe the users by default. You can also send your Campaign ID via the `identify` call, which takes a higher precedence. 
+If the **Campaign ID** is provided, RudderStack will try to subscribe the users by default.
 {% endhint %}
 
-* **User Creation Mode** This option you to create the user with `email` for the `track` call, if the user doesn't already exist.
+{% hint style="success" %}
+You can also send your Campaign ID via the `identify` call, which takes a higher precedence. 
+{% endhint %}
+
+* **User Creation Mode** This option lets you create the user with their `email` using the `track` call, if the user doesn't already exist.
 
 * To send events via Device mode , enable the **Use device-mode to send events**  option.
 
