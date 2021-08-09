@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Qual
 
 [**Qualtrics**](https://www.qualtrics.com/au/core-xm/survey-software/) is a servey software which helps to create surveys in real time and collaborate effortlessly. It helps to acquire better insights regarding the market, brand, customer and product and that makes it useful to target ideal customers with befitted messaging.
 
-RudderStack supports Qualtrics as a destination to which you can send your event data directly.
+RudderStack supports Qualtrics as a [**website feedback destination**](https://api.qualtrics.com/sdks/docs/SDKs/Web%20Intercept%20SDK/web-feedback-javascript-api-reference-1.md) to which you can send your event data directly.
 
 ## Getting Started
 
@@ -29,7 +29,7 @@ Once you have confirmed that the source platform supports sending events to Qual
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
 {% endhint %}
 
-![Configuration Settings for Qualtrics](../../.gitbook/assets/Screenshot_Qualtrics.png)
+![Configuration Settings for Qualtrics](../../../.gitbook/assets/Screenshot_Qualtrics.png)
 
 ### Configuration Settings
 
@@ -55,7 +55,7 @@ If this option is disabled, Rudderstack will search for category and name of the
 
 ## Page
 
-The `page` call lets you keep track on how many time a user performs certain actions. Any events being tracked can be passed as embedded data to the intercept target.
+The `page` call lets you keep track on how many time a user performs certain actions. Any events being tracked can be passed as embedded data to the intercept target. After the page call you will find the Qualtrics servey being loaded.
 
 Some sample `page` calls are shown below:
 
@@ -113,7 +113,7 @@ if both the name and category fields are absent in the page call, while this opt
 
 ## Track
 
-The `track` call lets you keep track on how many time a user performs certain actions. Any events being tracked can be passed as embedded data to the intercept target.
+The `track` call lets you keep track on how many time a user performs certain actions. Any events being tracked can be passed as embedded data to the intercept target. After the track call you will find the Qualtrics servey being loaded.
 
 In this case, the value of event field of the track call will be used while sending the event.
 
