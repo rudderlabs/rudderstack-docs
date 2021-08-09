@@ -1,21 +1,21 @@
 ---
-description: Detailed technical documentation on the web cloud mode settings for Drip destination.
+description: Detailed technical documentation on the Web Cloud mode settings for Drip destination.
 ---
 
 # Web Cloud Mode Settings
 
-% hint style="success" %}
+{% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/drip)**.**
 {% endhint %}
 
 ## Identify
 
-The `identify` call allows you to create a subscriber or update an already existing subscriber and associate the related information them. The information include `dripId` ,`email` , `name` etc.
+The `identify` call lets you create a new subscriber or update an already existing subscriber and their related information. This information includes the subscriber's `dripId` ,`email` , `name`,  etc.
 
-- If **Campaign ID** is provided then we will by default try to subscribe every user to this `campaign ID`. You can also send it via call, which will have higher precedence than the one in dashboard.
+If you provide the **Campaign ID** in the dashboard while setting up the destination, RudderStack will subscribe every user to this `campaign ID` by default. Alternatively, you can also send the information via the `identify` call, which takes a higher precedence than the campaign ID provided in the dashboard.
 
 {% hint style="info" %}
-Either `dripId` or `email` is required for the call. If creating user then `email` must be provided, in case of updation either assigned `dripId` or `email` can be provided.
+Either the `dripId` or `email` is required for the `identify` call. If you are creating a user, then you must provide the `email`. In case of updating a user, you can provide either the assigned `dripId` or `email`.
 {% endhint %}
 
 A sample `identify` call is as shown below:
@@ -47,67 +47,73 @@ rudderanalytics.identify(
 );
 ```
 
+### Identify Mapping
+
+The following table includes all the fields in `identify` call with their relative mapping to the Drip fields:
+
+
+
 This table includes all the fields in `identify` call with their relative mapping :
 
-| **Rudder Field**               | **Drip Field**     |
-| :----------------------------- | :----------------- |
-| newEmail                       | new_email          |
-| phone                          | phone              |
-| firstName/first_name/firstname | first_name         |
-| lastName/last_name/lastname    | last_name          |
-| tags                           | tags               |
-| removeTags                     | remove_tags        |
-| status                         | status             |
-| initialStatus                  | initial_status     |
-| timezone                       | time_zone          |
-| country                        | country            |
-| city                           | city               |
-| zip                            | zip                |
-| euConsent                      | eu_consent         |
-| euConsentMessage               | eu_consent_message |
-| ip                             | ip_address         |
-| address                        | address1           |
-| address2                       | address2           |
-| lifetimeValue                  | lifetime_value     |
-| prospect                       | prospect           |
-| baseLeadScore                  | base_lead_score    |
-| customFields                   | custom_fields      |
+| **RudderStack Field**                | **Drip Field**       |
+| :----------------------------------- | :--------------------|
+| `newEmail`                           | `new_email`          |
+| `phone`                              | `phone`              |
+| `firstName`/`first_name`/`firstname` | `first_name`         |
+| `lastName`/`last_name`/`lastname`    | `last_name`          |
+| `tags`                               | `tags`               |
+| `removeTags`                         | `remove_tags`        |
+| `status`                             | `status`             |
+| `initialStatus`                      | `initial_status`     |
+| `timezone`                           | `time_zone`          |
+| `country`                            | `country`            |
+| `city`                               | `city`               |
+| `zip`                                | `zip`                |
+| `euConsent`                          | `eu_consent`         |
+| `euConsentMessage`                   | `eu_consent_message` |
+| `ip`                                 | `ip_address`         |
+| `address`                            | `address1`           |
+| `address2`                           | `address2`           |
+| `lifetimeValue`                      | `lifetime_value`     |
+| `prospect`                           | `prospect`           |
+| `baseLeadScore`                      | `base_lead_score`    |
+| `customFields`                       | `custom_fields`      |
 
-When **Campaign ID** is provided, some extra fields can also be sent with the call. All the supported fields for `campaign` call are mentioned below :
 
-| **Rudder Field**    | **Drip Field**        |
-| :------------------ | :-------------------- |
-| doubleOptin         | double_optin          |
-| startingEmailIndex  | starting_email_index  |
-| reactivateIfRemoved | reactivate_if_removed |
-| tags                | tags                  |
-| prospect            | prospect              |
-| euConsent           | eu_consent            |
-| euConsentMessage    | eu_consent_message    |
-| baseLeadScore       | base_lead_score       |
-| timezone            | time_zone             |
+When you provide the **Campaign ID**, you can also send some extra fields with the call. 
+
+The following table lists all the supported fields for the `campaign` call:
+
+| **RudderStack Field** | **Drip Field**          |
+| :-------------------- | :---------------------- |
+| `doubleOptin`         | `double_optin`          |
+| `startingEmailIndex`  | `starting_email_index`  |
+| `reactivateIfRemoved` | `reactivate_if_removed` |
+
+{% hint style="info" %}
+For more information on using these fields, refer to the [**Drip documentation**](https://developer.drip.com/#subscribe-someone-to-an-email-series-campaign).
+{% endhint %}
 
 ## Track
 
-The track call lets you record an event associated to the user and associate relevant information regarding the event like `action`, `occurred_at` and also `custom field`.
+The `track` call lets you record the user events and the information associated with them, like `action`, `occurred_at`, and `custom field`. Either `id` or `email` must be provided in this call.
 
-- Either `id` or `email` must be provided.
-
-`User Creation Mode` allows you to create a user with `email`, if user doesn't already exist. You can disable it if you don't want new users to be created.
+The **User Creation Mode** option in the RudderStack dashboard lets you create a user with their `email` if they don't already exist. If you don't want new users to be created, you can disable this option.
 
 {% hint style="warning" %}
-If `dripId` is provided in call, then new users will not be created, even if `User Creation Mode` is enabled.
+If the `dripId` is provided in the call, then new users will not be created even if the **User Creation Mode** option is enabled in the RudderStack dashboard.
 {% endhint %}
 
-You can also create or update order, if the event name belongs to either of the special events:
+### Special Events
 
-- `order updated`
-- `order completed`
-- `order refunded`
-- `order cancelled`
-- `checkout started`
-- `fulfilled`
-- `order fulfilled`
+You can also create or update an order if the event name belongs to either of the following special events:
+
+* `order updated`
+* `order completed`
+* `order refunded`
+* `order cancelled`
+* `checkout started`
+* `fulfilled` / `order fulfilled`
 
 A sample `track` call is as shown below:
 
@@ -136,59 +142,61 @@ rudderanalytics.track(
 );
 ```
 
+### Track Fields
+
 A `track` call can contain following fields:
 
-| **Rudder Field** | **Drip Field** |
-| :--------------- | :------------- |
-| prospect         | prospect       |
-| `custom_fields`  | properties     |
-| occurred_at      | occurred_at    |
+| **RudderStack Field** | **Drip Field** |
+| :-------------------- | :--------------|
+| `prospect`            | `prospect`     |
+| `custom_fields`       | `properties`   |
+| `occurred_at`         | `occurred_at`  |
 
-For `special events` mentioned above, following fields are also supported:
+For the special events mentioned above, the following fields are also supported:
 
-| **Rudder Field** | **Drip Field**   |
-| :--------------- | :--------------- |
-| `affiliation`    | provider         |
-| initial_status   | initial_status   |
-| order_id         | order_id         |
-| order_public_id  | order_public_id  |
-| `total`          | grand_total      |
-| `discount`       | discounts        |
-| `tax`            | total_taxes      |
-| total_fees       | total_fees       |
-| `shipping`       | total_shipping   |
-| refund_amount    | refund_amount    |
-| currency         | currency         |
-| order_url        | order_url        |
-| billing_address  | billing_address  |
-| shipping_address | shipping_address |
-| occurred_at      | occurred_at      |
-| `products`       | items            |
+| **RudderStack Field** | **Drip Field**      |
+| :-------------------- | :-------------------|
+| `affiliation`         | `provider`          |
+| `initial_status`      | `initial_status`    |
+| `order_id`            | `order_id`          |
+| `order_public_id`     | `order_public_id`   |
+| `total`               | `grand_total`       |
+| `discount`            | `discounts`         |
+| `tax`                 | `total_taxes`       |
+| `total_fees`          | `total_fees`        |
+| `shipping`            | `total_shipping`    |
+| `refund_amount`       | `refund_amount`     |
+| `currency`            | `currency`          |
+| `order_url`           | `order_url`         |
+| `billing_address`     | `billing_address`   |
+| `shipping_address`    | `shipping_address`  |
+| `occurred_at`         | `occurred_at`       |
+| `**products**`        | `items`             |
 
-The last field in the above list i.e. `products` is an array of objects. The object can contain the following fields:
+Note that the last field in the above list - `**products**` - is an array of objects. Every object in this array can contain the following fields:
 
-| **Rudder Field**   | **Drip Field**     |
-| :----------------- | :----------------- |
-| product_id         | product_id         |
-| sku                | sku                |
-| name               | name               |
-| product_variant_id | product_variant_id |
-| brand              | brand              |
-| price              | price              |
-| quantity           | quantity           |
-| categories         | categories         |
-| discounts          | discounts          |
-| taxes              | taxes              |
-| fees               | fees               |
-| shipping           | shipping           |
-| total              | total              |
-| `url`              | product_url        |
-| image_url          | image_url          |
+| **RudderStack Field** | **Drip Field**        |
+| :-------------------- | :-------------------- |
+| `product_id`          | `product_id`          |
+| `sku`                 | `sku`                 |
+| `name`                | `name`                |
+| `product_variant_id`  | `product_variant_id`  |
+| `brand`               | `brand`               |
+| `price`               | `price`               |
+| `quantity`            | `quantity`            |
+| `categories`          | `categories`          |
+| `discounts`           | `discounts`           |
+| `taxes`               | `taxes`               |
+| `fees`                | `fees`                |
+| `shipping`            | `shipping`            |
+| `total`               | `total`               |
+| `url`                 | `product_url`         |
+| `image_url`           | `image_url`           |
 
 {% hint style="info" %}
-The `products` field is not mandatory but if provided then each object must contain `name` and `price` field, else that object will be dropped. But track call will not be aborted.
+The `products` field is not mandatory. However, if provided, each object must contain the `name` and `price` field, otherwise it will be dropped. Note that the  `track` call will still not be aborted in such a scenario.
 {% endhint %}
 
 ## Contact Us
 
-If you come across any issues while configuring Drip with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel. we will be happy to talk to you!
+For any issues or questions on any of the sections covered in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
