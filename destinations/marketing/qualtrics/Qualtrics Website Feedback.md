@@ -120,21 +120,11 @@ In this case, the value of event field of the track call will be used while send
 A sample `track` call is as shown:
 
 ```javascript
-   rudderanalytics.track('Product Viewed', {
-            product_id: 'Prod12345',
-            quantity: 1,
-            price: 19.99,
-            name: 'my product',
-            category: 'categ 1',
-            sku: 'p-666',
-            list: 'Gallery',
-            testDimension: true,
-            testMetric: true
-          });
+   rudderanalytics.track("Test Event");
 ```
 
 {% hint style="info" %}
-In the above example, The event will be sent as `Product Viewed`. 
+In the above example, The event will be sent as `Test Event`. 
 {% endhint %}
 
 ## FAQ
