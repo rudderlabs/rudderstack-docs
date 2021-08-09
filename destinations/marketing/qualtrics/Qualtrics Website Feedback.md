@@ -1,8 +1,8 @@
 ---
-description: Step-by-step guide to send your event data from RudderStack to Qualtrics.
+description: Step-by-step guide to send your event data from RudderStack to Qualtrics Website Feedback.
 ---
 
-# Qualtrics
+# Qualtrics Website Feedback
 
 [**Qualtrics**](https://www.qualtrics.com/au/core-xm/survey-software/) is a servey software which helps to create surveys in real time and collaborate effortlessly. It helps to acquire better insights regarding the market, brand, customer and product and that makes it useful to target ideal customers with befitted messaging.
 
@@ -60,7 +60,7 @@ The `page` call lets you keep track on how many time a user performs certain act
 Some sample `page` calls are shown below:
 
 ```javascript
-window.rudderanalytics.page("category", "name", {
+    rudderanalytics.page("category", "name", {
         path: "path",
         url: "url",
         title: "title",
@@ -76,7 +76,7 @@ For the above example, The event will be sent as `Viewed catergory name Page`, i
 If category field is not mentioned in the root of the page call but specified inside the properties, then also category field is included while sending the event.
 
 ```javascript
-window.rudderanalytics.page( "name", {
+    rudderanalytics.page( "name", {
         category: "category",
         path: "path",
         url: "url",
@@ -94,7 +94,7 @@ For the above example, The event will be sent as `Viewed catergory name Page`, i
 If category field is not specified both in the root of the event or the properties, Rudderstack will send the event with the page name only.
 
 ```javascript
-window.rudderanalytics.page( "name", {
+    rudderanalytics.page( "name", {
         path: "path",
         url: "url",
         title: "title",
@@ -151,5 +151,5 @@ To get your Qualtrics Project ID and Brand ID, follow these steps:
 
 ## Contact Us
 
-If you come across any issues while configuring Criteo with RudderStack, feel free to [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any issues while configuring Qualtrics with RudderStack, feel free to [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
