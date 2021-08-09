@@ -289,7 +289,27 @@ In order to use the Facebook Conversions API, you need to generate an access tok
 For more information on how to use this access token, or to generate your access token via your own app, check out Facebook's [developer documentation](https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/#via-events-manager).
 {% endhint %}
 
-##  Contact Us
+#### Can I hash my user data before sending it to RudderStack?
+
+Yes. Facebook Pixel requires all user data, data coming from `context.traits`, to be hashed. This includes `email`, `phone`, `birthday`, `address`, etc. By default, RudderStack will automatically hash all of the necessary properties for you. However, if you would like to hash these traits before sending to RudderStack then you need to add this code to the event.
+
+```javascript
+rudderanalytics.track(
+  'some_event_name', 
+  { some_properties }, 
+  {
+    'integrations': {
+      'Facebook Pixel': {
+        hashed: true
+      }
+    }
+  }
+);
+```
+
+The `integrations` object with these key-values will tell RudderStack not to hash the traits in `context.traits` because they are already hashed. Otherwise, RudderStack will hash your data again and Facebook will not be able to match the traits. Please keep in mind that Facebook will not accept un-hashed data.
+
+## Contact Us
 
 If you come across any issues while configuring Facebook Pixel with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
