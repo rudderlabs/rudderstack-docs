@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Drip
 
 # Drip
 
-[**Drip**](https://drip.com/) is a popular platform, which gathers and organizes customer data, then enables ecommerce retailers to use that data to make personalized omnichannel customer journeys at scale.
+[**Drip**](https://drip.com/) is a popular email and SMS marketing platform that lets you drive your business revenue through effective automation. It lets you bring together your customer data from various marketing tools and leverage powerful personalized marketing strategies to target your customers.
 
 RudderStack supports Drip as a destination to which you can seamlessly send your customer data.
 
