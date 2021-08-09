@@ -220,7 +220,9 @@ Finally, click on the title of your deployed script, and you should be able to s
 
 ![](../.gitbook/assets/14.-external-url.png)
 
-### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+## FAQs
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is. 
 

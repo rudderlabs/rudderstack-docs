@@ -26,10 +26,12 @@ In order to add Segment as a source in RudderStack, please follow these steps:
 
 ![Segment Webhook Destination settings](../.gitbook/assets/segment3.png)
 
+Your webhook URL should follow this format `<your-dataplane-url>/v1/webhook?writeKey=<segment-source-writeKey>` 
+
 An example webhook URL is as follows:
 
 ```bash
-https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
+https://some.dataplaneurl.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
 ```
 
 {% hint style="warning" %}
