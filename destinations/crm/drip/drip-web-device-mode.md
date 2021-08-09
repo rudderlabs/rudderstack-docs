@@ -21,15 +21,13 @@ rudderanalytics.identify(
   "6781206",
   {
     email: "sampleUser@testmail.com",
-    tags: ["Customer", "Data", "Customer2"],
-    euConsent: "granted",
-    doubleOptin: true,
+    tags: ["Customer"],
   },
   {
     externalId: [
       {
         type: "dripCampaignId",
-        id: "846314760",
+        id: "846616660",
       },
     ],
   }
@@ -40,22 +38,21 @@ RudderStack transforms the following properties to Drip's Standard properties:
 
 | **RudderStack Property Names** | **Drip Standard Properties** |
 | :----------------------------- | :--------------------------- |
-| email                          | email                        |
-| newEmail                       | new_email                    |
-| userId                         | user_id                      |
-| anonymousId                    | user_id                      |
-| tags                           | tags                         |
-| removeTags                     | remove_tags                  |
-| prospect                       | prospect                     |
-| euConsent                      | eu_consent                   |
-| euConsentMessage               | eu_consent_message           |
+| `email`                        | `email`                      |
+| `newEmail`                     | `new_email`                  |
+| `userId`                       | `user_id`                    |
+| `anonymousId`                  | `user_id`                    |
+| `tags`                         | `tags`                       |
+| `removeTags`                   | `remove_tags`                |
+| `prospect`                     | `prospect`                   |
+| `euConsent`                    | `eu_consent`                 |
+| `euConsentMessage`             | `eu_consent_message`         |
 
 We can Subscribe to an Email Series Campaign by providing **Campaign ID**, it will add a subscriber directly to an Email Series Campaign. If you would like to add a subscriber to your account without subscribing them to an Email Series Campaign, use simply an `identify` call instead. Some additional properties can also be sent with the `identify` call mentioned below.
 
 | **RudderStack Property Names** | **Drip Standard Properties** |
 | :----------------------------- | :--------------------------- |
-| externalId                     | campaign_id                  |
-| doubleOptin                    | double_optin                 |
+| `doubleOptin`                  | `double_optin`               |
 
 ## Track
 
@@ -68,10 +65,7 @@ A sample `track` call is as shown:
 ```javascript
 rudderanalytics.track("randomProduct", {
   email: "sampleUser@rudderstackdrip.com",
-  user_id: "90008254005",
   revenue: 100,
-  occurred_at: "2019-10-15T09:35:31.288Z",
-  product_id: 123,
 });
 ```
 
@@ -79,17 +73,10 @@ RudderStack transforms the following properties to Drip's Standard properties:
 
 | **RudderStack Property Names** | **Drip Standard Properties** |
 | :----------------------------- | :--------------------------- |
-| email                          | email                        |
-| revenue                        | value                        |
-| originalTimestamp              | occurred_at                  |
-| occurred_at                    | occurred_at                  |
-| product_id                     | product_id                   |
-| product_variant_id             | product_variant_id           |
-| sku                            | sku                          |
-| name                           | name                         |
-| brand                          | brand                        |
-| categories                     | categories                   |
-| price                          | price                        |
+| `email`                        | `email`                      |
+| `revenue`                      | `value`                      |
+| `originalTimestamp`            | `occurred_at`                |
+| `occurred_at`                  | `occurred_at`                |
 
 ## Contact Us
 
