@@ -106,7 +106,7 @@
     * [Zendesk](destinations/crm/zendesk.md)
     * [Delighted](destinations/crm/delighted.md)
     * [Drip](destinations/crm/drip/README.md)
-      * [Setting Up Adobe Analytics in RudderStack](destinations/crm/drip/setting-up-drip-in-rudderstack.md)
+      * [Setting Up Drip in RudderStack](destinations/crm/drip/setting-up-drip-in-rudderstack.md)
       * [Web Cloud Mode Settings](destinations/crm/drip/drip-web-cloud-mode.md)
       * [Web Device Mode Settings](destinations/crm/drip/drip-web-device-mode.md)
   * [Marketing](destinations/marketing/README.md)
