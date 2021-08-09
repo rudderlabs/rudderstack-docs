@@ -133,7 +133,7 @@ A sample `track` call is as shown:
           });
 ```
 
-{% hint style="warning" %}
+{% hint style="info" %}
 In the above example, The event will be sent as `Product Viewed`. 
 {% endhint %}
 
