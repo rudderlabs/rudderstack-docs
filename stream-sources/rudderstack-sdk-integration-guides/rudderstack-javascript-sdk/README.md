@@ -1105,7 +1105,7 @@ rudderanalytics.getAnonymousId();
 
 ### What is the `Reserved Keyword` error?
 
-When using the JS-SDK, you may run into the following error: `rudder-analytics:Warning! : Reserved keyword used in traits --> id with track call`. This is due to one or more of the keys in your `traits` and/or `properties` object is the same value as a reserved keyword. The following list of reserved keywords are keys the RudderStack uses for a standard event payload and therefore should be avoided when naming traits and properties.
+When using the JS-SDK, you may run into the following error: `Warning! : Reserved keyword used in traits --> id with track call`. This is due to one or more of the keys in your `traits` and/or `properties` object is the same value as a reserved keyword. The following list of reserved keywords are keys the RudderStack uses for a standard event payload and therefore should be avoided when naming traits and properties.
 
 ```javascript
 Reserved Keywords:
