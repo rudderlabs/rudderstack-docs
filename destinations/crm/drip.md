@@ -125,7 +125,7 @@ When **Campaign ID** is provided, some extra fields can also be sent with the ca
 | **Rudder Field** | **Drip Field** |
 | :--- | :--- |
 | doubleOptin | double_optin |
-| startingEmailIndex | tagstarting_email_indexs |
+| startingEmailIndex | starting_email_index |
 | reactivateIfRemoved | reactivate_if_removed |
 | tags | tags |
 | prospect | prospect |
@@ -140,7 +140,7 @@ The track call lets you record an event associated to the user and associate rel
 
 * Either `id` or `email` must be provided.
 
-`User Creation Mode` allows you to create a user with `email`, if it doesn't already exist. You can disable it if you don't want new users to be created. In this case we will search the user with provided `email`, if user exists then track call can be made else call will be aborted.
+`User Creation Mode` allows you to create a user with `email`, if user doesn't already exist. You can disable it if you don't want new users to be created.
 
 {% hint style="warning" %}
 If `dripId` is provided in call, then new users will not be created, even if `User Creation Mode` is enabled.
@@ -227,7 +227,7 @@ The last field in the above list i.e. `products` is an array of objects. The obj
 | image_url | image_url |
 
 {% hint style="info" %}
-The `products` field itself is not mandatory but if provided then each object must contain `name` and `price` field, else that object will be dropped. But track call will not be aborted.
+The `products` field is not mandatory but if provided then each object must contain `name` and `price` field, else that object will be dropped. But track call will not be aborted.
 {% endhint %}
 
 ## Contact Us
