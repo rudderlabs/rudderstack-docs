@@ -152,15 +152,15 @@ A `track` call can contain following fields:
 | **RudderStack Field** | **Drip Field** |
 | :-------------------- | :--------------|
 | `prospect`            | `prospect`     |
-| `custom_fields`       | `properties`   |
+| `customFields`        | `properties`   |
 | `occurred_at`         | `occurred_at`  |
 
 {% hint style="info" %}
 Note that:
 
-* If `custom_fields` is not present, RudderStack extracts all the fields apart from the ones mentioned in the table above and constructs a `customFields` object.
+* If `customFields` is not present, RudderStack extracts all the fields apart from the ones mentioned in the table above and constructs a `customFields` object.
 
-* If `custom_fields` is present **and** there are other fields apart from the ones mentioned in the table, RudderStack ignores them.
+* If `customFields` is present **and** there are other fields apart from the ones mentioned in the table, RudderStack ignores them.
 {% endhint %}
 
 For the special events mentioned above, the following fields are also supported:
