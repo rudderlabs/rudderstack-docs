@@ -8,10 +8,10 @@ To enable sending data to Drip, you will first need to add it as a destination i
 
 Before configuring Drip as a destination, verify if Drip supports the source platform by referring to the table below:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | -             | -             | -             |
-| **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | - | - | - |
+| **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -52,9 +52,9 @@ You can also send your Campaign ID via the `identify` call, which takes a higher
 {% endhint %}
 
 * **User Creation Mode** This option lets you create the user with their `email` using the `track` call, if the user doesn't already exist.
-
 * Finally, click on **Next**. That's it! Drip will now be enabled as a destination in Rudderstack.
 
 ## Contact Us
 
 If you come across any issues while configuring Drip with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+

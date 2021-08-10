@@ -1,8 +1,10 @@
 ---
-description: Detailed technical documentation on sending events to Drip using the RudderStack Cloud mode.
+description: >-
+  Detailed technical documentation on sending events to Drip using the
+  RudderStack Cloud mode.
 ---
 
-# Sending Events to Drip via Cloud Mode
+# Sending Events to Drip
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/drip)**.**
@@ -51,48 +53,46 @@ rudderanalytics.identify(
 
 The following table includes all the fields in `identify` call with their relative mapping to the Drip fields:
 
-| **RudderStack Field**                | **Drip Field**       |
-| :----------------------------------- | :--------------------|
-| `newEmail`                           | `new_email`          |
-| `phone`                              | `phone`              |
-| `firstName`/`first_name`/`firstname` | `first_name`         |
-| `lastName`/`last_name`/`lastname`    | `last_name`          |
-| `tags`                               | `tags`               |
-| `removeTags`                         | `remove_tags`        |
-| `status`                             | `status`             |
-| `initialStatus`                      | `initial_status`     |
-| `timeZone`                           | `time_zone`          |
-| `country`                            | `country`            |
-| `city`                               | `city`               |
-| `zip`                                | `zip`                |
-| `euConsent`                          | `eu_consent`         |
-| `euConsentMessage`                   | `eu_consent_message` |
-| `ip`                                 | `ip_address`         |
-| `address`                            | `address1`           |
-| `address2`                           | `address2`           |
-| `lifetimeValue`                      | `lifetime_value`     |
-| `prospect`                           | `prospect`           |
-| `baseLeadScore`                      | `base_lead_score`    |
-| `customFields`                       | `custom_fields`      |
+| **RudderStack Field** | **Drip Field** |
+| :--- | :--- |
+| `newEmail` | `new_email` |
+| `phone` | `phone` |
+| `firstName`/`first_name`/`firstname` | `first_name` |
+| `lastName`/`last_name`/`lastname` | `last_name` |
+| `tags` | `tags` |
+| `removeTags` | `remove_tags` |
+| `status` | `status` |
+| `initialStatus` | `initial_status` |
+| `timeZone` | `time_zone` |
+| `country` | `country` |
+| `city` | `city` |
+| `zip` | `zip` |
+| `euConsent` | `eu_consent` |
+| `euConsentMessage` | `eu_consent_message` |
+| `ip` | `ip_address` |
+| `address` | `address1` |
+| `address2` | `address2` |
+| `lifetimeValue` | `lifetime_value` |
+| `prospect` | `prospect` |
+| `baseLeadScore` | `base_lead_score` |
+| `customFields` | `custom_fields` |
 
 {% hint style="info" %}
 Note that:
 
 * If `customFields` is not present, RudderStack extracts all the fields apart from the ones mentioned in the table above and constructs a `customFields` object.
-
 * If `customFields` is present **and** there are other fields apart from the ones mentioned in the table, RudderStack ignores them.
-
 * The `address` field should be an object.
 {% endhint %}
 
-When you provide the **Campaign ID**, you can also send some extra fields with the call. 
+When you provide the **Campaign ID**, you can also send some extra fields with the call.
 
 The following table lists all the supported fields for the `campaign` call:
 
-| **RudderStack Field** | **Drip Field**          |
-| :-------------------- | :---------------------- |
-| `doubleOptin`         | `double_optin`          |
-| `startingEmailIndex`  | `starting_email_index`  |
+| **RudderStack Field** | **Drip Field** |
+| :--- | :--- |
+| `doubleOptin` | `double_optin` |
+| `startingEmailIndex` | `starting_email_index` |
 | `reactivateIfRemoved` | `reactivate_if_removed` |
 
 {% hint style="info" %}
@@ -147,70 +147,71 @@ You can create or update a user order if the event name belongs to either of the
 * `checkout started`
 * `fulfilled` / `order fulfilled`
 
-
 ### Track Fields
 
 A `track` call can contain the following fields:
 
 | **RudderStack Field** | **Drip Field** |
-| :-------------------- | :--------------|
-| `prospect`            | `prospect`     |
-| `customFields`        | `properties`   |
-| `occurred_at`         | `occurred_at`  |
+| :--- | :--- |
+| `prospect` | `prospect` |
+| `customFields` | `properties` |
+| `occurred_at` | `occurred_at` |
 
 {% hint style="info" %}
 Note that:
 
 * If `customFields` is not present, RudderStack extracts all the fields apart from the ones mentioned in the table above and constructs a `customFields` object.
-
 * If `customFields` is present **and** there are other fields apart from the ones mentioned in the table, RudderStack ignores them.
 {% endhint %}
 
 For the special events mentioned above, the following fields are also supported:
 
-| **RudderStack Field** | **Drip Field**      |
-| :-------------------- | :-------------------|
-| `affiliation`         | `provider`          |
-| `initial_status`      | `initial_status`    |
-| `order_id`            | `order_id`          |
-| `order_public_id`     | `order_public_id`   |
-| `total`               | `grand_total`       |
-| `discount`            | `discounts`         |
-| `tax`                 | `total_taxes`       |
-| `total_fees`          | `total_fees`        |
-| `shipping`            | `total_shipping`    |
-| `refund_amount`       | `refund_amount`     |
-| `currency`            | `currency`          |
-| `order_url`           | `order_url`         |
-| `billing_address`     | `billing_address`   |
-| `shipping_address`    | `shipping_address`  |
-| `occurred_at`         | `occurred_at`       |
-| `**products**`        | `items`             |
+| **RudderStack Field** | **Drip Field** |
+| :--- | :--- |
+| `affiliation` | `provider` |
+| `initial_status` | `initial_status` |
+| `order_id` | `order_id` |
+| `order_public_id` | `order_public_id` |
+| `total` | `grand_total` |
+| `discount` | `discounts` |
+| `tax` | `total_taxes` |
+| `total_fees` | `total_fees` |
+| `shipping` | `total_shipping` |
+| `refund_amount` | `refund_amount` |
+| `currency` | `currency` |
+| `order_url` | `order_url` |
+| `billing_address` | `billing_address` |
+| `shipping_address` | `shipping_address` |
+| `occurred_at` | `occurred_at` |
+| **`products`** | `items` |
 
-Note that the last field in the above list - `**products**` - is an array of objects. Every object in this array can contain the following fields:
+Note that **`products`** is an array of objects. Every object in this array can contain the following fields:
 
-| **RudderStack Field** | **Drip Field**        |
-| :-------------------- | :-------------------- |
-| `product_id`          | `product_id`          |
-| `sku`                 | `sku`                 |
-| `name`                | `name`                |
-| `product_variant_id`  | `product_variant_id`  |
-| `brand`               | `brand`               |
-| `price`               | `price`               |
-| `quantity`            | `quantity`            |
-| `categories`          | `categories`          |
-| `discounts`           | `discounts`           |
-| `taxes`               | `taxes`               |
-| `fees`                | `fees`                |
-| `shipping`            | `shipping`            |
-| `total`               | `total`               |
-| `url`                 | `product_url`         |
-| `image_url`           | `image_url`           |
+| **RudderStack Field** | **Drip Field** |
+| :--- | :--- |
+| `product_id` | `product_id` |
+| `sku` | `sku` |
+| `name` | `name` |
+| `product_variant_id` | `product_variant_id` |
+| `brand` | `brand` |
+| `price` | `price` |
+| `quantity` | `quantity` |
+| `categories` | `categories` |
+| `discounts` | `discounts` |
+| `taxes` | `taxes` |
+| `fees` | `fees` |
+| `shipping` | `shipping` |
+| `total` | `total` |
+| `url` | `product_url` |
+| `image_url` | `image_url` |
 
 {% hint style="info" %}
-The `products` field is not mandatory. However, if provided, each object must contain the `name` and `price` field, otherwise it will be dropped. Note that the  `track` call will still not be aborted in such a scenario.
+The `products` field is not mandatory. However, if provided, each object must contain the `name` and `price` field, otherwise it will be dropped. 
+
+**Note that the `track` call will still not be aborted in such a scenario.**
 {% endhint %}
 
 ## Contact Us
 
 For any issues or questions on any of the sections covered in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
