@@ -12,7 +12,7 @@ description: Detailed technical documentation on sending events to Drip using th
 
 The `identify` call lets you add a new user or update an existing user with the latest information like the user's `dripId`,`email`,`name`, etc.
 
-If you provide the **Campaign ID** in the dashboard while setting up the destination, RudderStack will subscribe every user to this `campaign ID` by default. Alternatively, you can also send the information via the `identify` call, which takes a higher precedence than the campaign ID provided in the dashboard.
+If you provide the **Campaign ID** in the dashboard while setting up the destination, RudderStack will subscribe every user to this `campaign ID` by default. Alternatively, you can also send the information via the `identify` call using `externalId` as shown below in example code snippet, which takes a higher precedence than the campaign ID provided in the dashboard.
 
 {% hint style="info" %}
 Either the `dripId` or `email` is required for the `identify` call. If you are creating a user, then you must provide the `email`. In case of updating a user, you can provide either the assigned `dripId` or `email`.
