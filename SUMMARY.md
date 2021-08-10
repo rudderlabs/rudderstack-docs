@@ -107,7 +107,7 @@
     * [Delighted](destinations/crm/delighted.md)
     * [Drip](destinations/crm/drip/README.md)
       * [Setting Up Drip in RudderStack](destinations/crm/drip/setting-up-drip-in-rudderstack.md)
-      * [Sending Events to Drip via Web Cloud Mode](destinations/crm/drip/drip-web-cloud-mode.md)
+      * [Sending Events to Drip via Cloud Mode](destinations/crm/drip/drip-cloud-mode.md)
       * [Sending Events to Drip via Web Device Mode](destinations/crm/drip/drip-web-device-mode.md)
   * [Marketing](destinations/marketing/README.md)
     * [Marketo](destinations/marketing/marketo.md)
