@@ -79,6 +79,9 @@ This table includes all the fields in `identify` call with their relative mappin
 | `baseLeadScore`                      | `base_lead_score`    |
 | `customFields`                       | `custom_fields`      |
 
+{% hint style="info" %}
+If `customFields` is not provided then we are extracting all fields other than the list mentioned above and constructing `customFields` for those fields.
+{% endhint %}
 
 When you provide the **Campaign ID**, you can also send some extra fields with the call. 
 
@@ -151,6 +154,10 @@ A `track` call can contain following fields:
 | `prospect`            | `prospect`     |
 | `custom_fields`       | `properties`   |
 | `occurred_at`         | `occurred_at`  |
+
+{% hint style="info" %}
+If `custom_fields` is not provided then we are extracting all fields other than the list mentioned above and constructing `custom_fields` for those fields.
+{% endhint %}
 
 For the special events mentioned above, the following fields are also supported:
 
