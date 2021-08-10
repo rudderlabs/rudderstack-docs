@@ -51,10 +51,6 @@ rudderanalytics.identify(
 
 The following table includes all the fields in `identify` call with their relative mapping to the Drip fields:
 
-
-
-This table includes all the fields in `identify` call with their relative mapping :
-
 | **RudderStack Field**                | **Drip Field**       |
 | :----------------------------------- | :--------------------|
 | `newEmail`                           | `new_email`          |
@@ -80,7 +76,11 @@ This table includes all the fields in `identify` call with their relative mappin
 | `customFields`                       | `custom_fields`      |
 
 {% hint style="info" %}
-If `customFields` is not provided then we are extracting all fields other than the list mentioned above and constructing `customFields` for those fields.
+Note that:
+
+* If `customFields` is not present, RudderStack extracts all the fields apart from the ones mentioned in the table above and constructs a `customFields` object.
+
+* If `customFields` is present **and** there are other fields apart from the ones mentioned in the table, RudderStack ignores them.
 {% endhint %}
 
 When you provide the **Campaign ID**, you can also send some extra fields with the call. 
@@ -156,7 +156,11 @@ A `track` call can contain following fields:
 | `occurred_at`         | `occurred_at`  |
 
 {% hint style="info" %}
-If `custom_fields` is not provided then we are extracting all fields other than the list mentioned above and constructing `custom_fields` for those fields.
+Note that:
+
+* If `custom_fields` is not present, RudderStack extracts all the fields apart from the ones mentioned in the table above and constructs a `customFields` object.
+
+* If `custom_fields` is present **and** there are other fields apart from the ones mentioned in the table, RudderStack ignores them.
 {% endhint %}
 
 For the special events mentioned above, the following fields are also supported:
