@@ -61,7 +61,7 @@ The following table includes all the fields in `identify` call with their relati
 | `removeTags`                         | `remove_tags`        |
 | `status`                             | `status`             |
 | `initialStatus`                      | `initial_status`     |
-| `timezone`                           | `time_zone`          |
+| `timeZone`                           | `time_zone`          |
 | `country`                            | `country`            |
 | `city`                               | `city`               |
 | `zip`                                | `zip`                |
@@ -99,7 +99,7 @@ For more information on using these fields, refer to the [**Drip documentation**
 
 ## Track
 
-The `track` call lets you record the user events and the information associated with them, like `action`, `occurred_at`, and `custom field`. Either `id` or `email` must be provided in this call.
+The `track` call lets you record the user events and the information associated with them, like `action`, `occurred_at`, and `customFields`. Either `id` or `email` must be provided in this call.
 
 The **User Creation Mode** option in the RudderStack dashboard lets you create a user with their `email` if they don't already exist. If you don't want new users to be created, disable this option.
 
