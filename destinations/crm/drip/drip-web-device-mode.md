@@ -80,7 +80,7 @@ rudderanalytics.track("randomProduct", {
 
 The following table lists the properties that RudderStack transforms and maps to Drip's standard properties:
 
-| **RudderStack Property Name**      | **Drip Standard Propertie** |
+| **RudderStack Property Name**      | **Drip Standard Property** |
 | :--------------------------------- | :-------------------------- |
 | `email`                            | `email`                     |
 | `revenue`                          | `value`                     |
