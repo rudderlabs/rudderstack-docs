@@ -10,7 +10,7 @@ description: Detailed technical documentation on sending events to Drip using th
 
 ## Identify
 
-The `identify` call lets you create a new subscriber or update an already existing subscriber and their related information. This information includes the subscriber's `dripId` ,`email` , `name`,  etc.
+The `identify` call lets you add a new user or update an existing user with the latest information like the user's `dripId`,`email`,`name`, etc.
 
 If you provide the **Campaign ID** in the dashboard while setting up the destination, RudderStack will subscribe every user to this `campaign ID` by default. Alternatively, you can also send the information via the `identify` call, which takes a higher precedence than the campaign ID provided in the dashboard.
 
@@ -101,22 +101,11 @@ For more information on using these fields, refer to the [**Drip documentation**
 
 The `track` call lets you record the user events and the information associated with them, like `action`, `occurred_at`, and `custom field`. Either `id` or `email` must be provided in this call.
 
-The **User Creation Mode** option in the RudderStack dashboard lets you create a user with their `email` if they don't already exist. If you don't want new users to be created, you can disable this option.
+The **User Creation Mode** option in the RudderStack dashboard lets you create a user with their `email` if they don't already exist. If you don't want new users to be created, disable this option.
 
 {% hint style="warning" %}
 If the `dripId` is provided in the call, then new users will not be created even if the **User Creation Mode** option is enabled in the RudderStack dashboard.
 {% endhint %}
-
-### Special Events
-
-You can also create or update an order if the event name belongs to either of the following special events:
-
-* `order updated`
-* `order completed`
-* `order refunded`
-* `order cancelled`
-* `checkout started`
-* `fulfilled` / `order fulfilled`
 
 A sample `track` call is as shown below:
 
@@ -145,9 +134,21 @@ rudderanalytics.track(
 );
 ```
 
+### Special Events
+
+You can create or update a user order if the event name belongs to either of the following special events:
+
+* `order updated`
+* `order completed`
+* `order refunded`
+* `order cancelled`
+* `checkout started`
+* `fulfilled` / `order fulfilled`
+
+
 ### Track Fields
 
-A `track` call can contain following fields:
+A `track` call can contain the following fields:
 
 | **RudderStack Field** | **Drip Field** |
 | :-------------------- | :--------------|
