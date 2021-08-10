@@ -10,7 +10,7 @@ Before configuring Drip as a destination, verify if Drip supports the source pla
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | **Supported** | -             | -             |
+| **Device mode**     | -             | -             | -             |
 | **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
@@ -48,12 +48,10 @@ If the **Campaign ID** is provided, RudderStack will try to subscribe the users 
 {% endhint %}
 
 {% hint style="success" %}
-You can also send your Campaign ID via the `identify` call, which takes a higher precedence. 
+You can also send your Campaign ID via the `identify` call, which takes a higher precedence.
 {% endhint %}
 
 * **User Creation Mode** This option lets you create the user with their `email` using the `track` call, if the user doesn't already exist.
-
-* To send events via Device mode , enable the **Use device-mode to send events**  option.
 
 * Finally, click on **Next**. That's it! Drip will now be enabled as a destination in Rudderstack.
 
