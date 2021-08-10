@@ -1,3 +1,7 @@
+---
+description: RudderStack Documentation
+---
+
 # Home
 
 [**RudderStack**](https://rudderstack.com/) is a **customer data platform for developers.**  Our tooling makes it easy to deploy pipelines that collect customer data from every app, website and SaaS platform, then activate it in your warehouse and business tools.
