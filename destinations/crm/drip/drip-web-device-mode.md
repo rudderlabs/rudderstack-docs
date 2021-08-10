@@ -1,18 +1,24 @@
 ---
-description: Detailed technical documentation on the web device mode settings for Drip destination.
+description: Detailed technical documentation on sending events to Drip using the RudderStack Web Device mode.
 ---
 
-# Web Device Mode Settings
+# Sending Events to Drip via Web Device Mode
 
 {% hint style="success" %}
-**Find the open-source JavaScript SDK code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/Drip)**.**
+**Find the open-source JavaScript SDK code for this destination in our [GitHub repo](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/Drip).**
 {% endhint %}
 
 ## Identify
 
-The `identify` method pushes subscriber data into Drip. If the subscriber is not yet in your account, we will create a new record for them; otherwise, we update their record with the information you pass in. To update a subscriber's email address, use the `new_email` property.
+The `identify` method pushes the subscriber data to Drip. If the subscriber is not present in your account, RudderStack will create a new record for them. Otherwise, RudderStack updates the user records with the latest information. 
 
+{% hint style="info" %}
+To update a subscriber's email address, use the `new_email` property.
+{% endhint %}
+
+{% hint style="info" %}
 For more information on the `identify` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/identify).
+{% endhint %}
 
 A sample `identify` call is as shown:
 
@@ -34,9 +40,9 @@ rudderanalytics.identify(
 );
 ```
 
-RudderStack transforms the following properties to Drip's Standard properties:
+The following table lists the properties that RudderStack transforms and maps to Drip's standard properties:
 
-| **RudderStack Property Names** | **Drip Standard Properties** |
+| **RudderStack Property Name**  | **Drip Standard Property**   |
 | :----------------------------- | :--------------------------- |
 | `email`                        | `email`                      |
 | `newEmail`                     | `new_email`                  |
@@ -47,17 +53,21 @@ RudderStack transforms the following properties to Drip's Standard properties:
 | `euConsent`                    | `eu_consent`                 |
 | `euConsentMessage`             | `eu_consent_message`         |
 
-We can Subscribe to an Email Series Campaign by providing **Campaign ID**, it will add a subscriber directly to an Email Series Campaign. If you would like to add a subscriber to your account without subscribing them to an Email Series Campaign, use simply an `identify` call instead. Some additional properties can also be sent with the `identify` call mentioned below.
+You can subscribe a user to a [**Email Series Campaign**](https://www.drip.com/learn/docs/guides/overview-of-drip) by providing the associated **Campaign ID**. Doing so will add the subscriber directly to that email series campaign. 
 
-| **RudderStack Property Names** | **Drip Standard Properties** |
+If you want to add a subscriber to your account without subscribing them to an email series campaign, use the `identify` call instead. You can also send some additional properties with the `identify`call. These are listed in the following table:
+
+| **RudderStack Property Name**  | **Drip Standard Property**   |
 | :----------------------------- | :--------------------------- |
 | `doubleOptin`                  | `double_optin`               |
 
 ## Track
 
-The `track` method is appropriate when you cannot trigger conversions by URL or you simply wish to record an particular action that the user has taken.
+Use the `track` method when you cannot trigger conversions by the URL or want to record a user event.
 
+{% hint style="info" %}
 For more information on the `track` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/track).
+{% endhint %}
 
 A sample `track` call is as shown:
 
@@ -68,9 +78,9 @@ rudderanalytics.track("randomProduct", {
 });
 ```
 
-RudderStack transforms the following properties to Drip's Standard properties:
+The following table lists the properties that RudderStack transforms and maps to Drip's standard properties:
 
-| **RudderStack Property Names**     | **Drip Standard Properties** |
+| **RudderStack Property Name**      | **Drip Standard Propertie**  |
 | :--------------------------------- | :--------------------------- |
 | `email`                            | `email`                      |
 | `revenue`                          | `value`                      |
@@ -78,4 +88,4 @@ RudderStack transforms the following properties to Drip's Standard properties:
 
 ## Contact Us
 
-If you come across any issues while configuring Drip with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel. we will be happy to talk to you!
+For any questions related to any of the sections covered in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
