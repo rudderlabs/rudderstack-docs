@@ -81,6 +81,8 @@ Note that:
 * If `customFields` is not present, RudderStack extracts all the fields apart from the ones mentioned in the table above and constructs a `customFields` object.
 
 * If `customFields` is present **and** there are other fields apart from the ones mentioned in the table, RudderStack ignores them.
+
+* The `address` field should be an object.
 {% endhint %}
 
 When you provide the **Campaign ID**, you can also send some extra fields with the call. 
