@@ -55,7 +55,11 @@ If this option is disabled, RudderStack will search for the category and name of
 
 ## Page
 
-The `page` call lets you track of how many times a user performs certain actions. Any tracked events can be passed as embedded data to the intercept target. After the `page` call, you will find the Qualtrics survey being loaded.
+The `page` call lets you track how many times a user performs certain actions. RudderStack passes any tracked events as embedded data to the Qualtrics [**intercept**](https://www.qualtrics.com/support/website-app-feedback/getting-started-with-website-app-feedback/step-4-setting-up-your-intercept/) target. After the `page` call, the Qualtrics survey is loaded.
+
+{% hint style="success" %}
+You can set the intercepts when a user creates the project or after they have created the project.
+{% endhint %}
 
 A sample `page` call is as shown:
 
@@ -110,7 +114,15 @@ If both the name and category fields are absent in the `page` call and the **Gen
 
 ## Track
 
-The `track` call lets you keep track on how many time a user performs certain actions. Any events being tracked can be passed as embedded data to the intercept target. After the track call you will find the Qualtrics servey being loaded.
+The `track` call lets you track how many times a user performs certain actions. RudderStack passes any tracked events as embedded data to the Qualtrics [**intercept**](https://www.qualtrics.com/support/website-app-feedback/getting-started-with-website-app-feedback/step-4-setting-up-your-intercept/) target. After the `track` call, the Qualtrics survey is loaded.
+
+{% hint style="info" %}
+At the destination end, i.e. Qualtrics, both `page` and `track` calls have the same functionality.
+{% endhint %}
+
+{% hint style="success" %}
+You can set the intercepts when a user creates the project or after they have created the project.
+{% endhint %}
 
 In this case, the value of event field of the `track` call will be used as the event name while sending it to Qualtrics.
 
