@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Qual
 
 # Qualtrics Website Feedback
 
-[**Qualtrics**](https://www.qualtrics.com/au/core-xm/survey-software/) is a servey software which helps to create surveys in real time and collaborate effortlessly. It helps to acquire better insights regarding the market, brand, customer and product and that makes it useful to target ideal customers with befitted messaging.
+[**Qualtrics**](https://www.qualtrics.com/au/core-xm/survey-software/) is a popular survey software that lets you create intelligent, real-time user surveys. It lets you get cutting-edge insights into your customers and use them to boost your brand value.
 
 RudderStack supports Qualtrics as a [**website feedback destination**](https://api.qualtrics.com/sdks/docs/SDKs/Web%20Intercept%20SDK/web-feedback-javascript-api-reference-1.md) to which you can send your event data directly.
 
@@ -12,10 +12,10 @@ RudderStack supports Qualtrics as a [**website feedback destination**](https://a
 
 Before configuring Qualtrics as a destination in RudderStack, verify if Qualtrics supports the source platform you are sending the events from. Refer to the following table:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **Supported** | - | - |
-| **Cloud mode** | - | - | - |
+| **Connection Mode** | **Web**       | **Mobile** | **Server** |
+| :------------------ | :------------ | :--------  | :--------- |
+| **Device mode**     | **Supported** | -          | -          |
+| **Cloud mode**      | -             | -          | -          |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -37,43 +37,42 @@ To successfully configure Qualtrics as a destination, you will need to configure
 
 * **Project ID:** Enter your Qualtrics Project ID here.
 
-{% hint style="info" %}
-Refer to the **FAQ** section below for more information on getting your Project ID.
-{% endhint %}
-
 * **Brand ID:** Enter your Qualtrics Brand ID here.
 
 {% hint style="info" %}
-Refer to the **FAQ** section below for more information on getting your Project ID.
+Refer to the **FAQ** section below for steps on how to get your Qualtrics Project ID and Brand ID.
 {% endhint %}
 
-* **Enable Generic Page Title:** This field useful only when you are using `page` call. If this field is enabled, the page call is sent with the name `Viewed a Page`. 
+* **Enable Generic Page Title:** If this field is enabled, RudderStack sends every `page` call with the name `Viewed a Page`.
 
 {% hint style="info" %}
-If this option is disabled, Rudderstack will search for category and name of the page call and send the event as `Viewed catergory-field name-field Page`. If any of the two is absent, the page call will be sent as `Viewed catergory-field/name-field Page`.
+This field useful only when you are using `page` call. 
+{% endhint %}
+
+{% hint style="info" %}
+If this option is disabled, RudderStack will search for the category and name of the `page` call and send the event as `Viewed <category_field> <name_field> Page`. If any of the two fields is absent, RudderStack sends the `page` call as `Viewed <category_field>/<name_field> Page`.
 {% endhint %}
 
 ## Page
 
-The `page` call lets you keep track on how many time a user performs certain actions. Any events being tracked can be passed as embedded data to the intercept target. After the page call you will find the Qualtrics servey being loaded.
+The `page` call lets you track of how many times a user performs certain actions. Any tracked events can be passed as embedded data to the intercept target. After the `page` call, you will find the Qualtrics survey being loaded.
 
-Some sample `page` calls are shown below:
+A sample `page` call is as shown:
 
 ```javascript
-    rudderanalytics.page("category", "name", {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer",
-        testDimension: "true"
+rudderanalytics.page("category", "name", {
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer",
+  testDimension: "true"
 });
 ```
-{% hint style="warning" %}
-For the above example, The event will be sent as `Viewed catergory name Page`, if the Generic Page Title option is disabled. Otherwise, the event will be sent as `Viewed a Page`.
-{% endhint %}
 
-If category field is not mentioned in the root of the page call but specified inside the properties, then also category field is included while sending the event.
+For the above example, The event will be sent as `Viewed category name Page`, if the **Generic Page Title** option is disabled in the RudderStack dashboard. If this option is enabled, the event will be sent as `Viewed a Page`.
+
+If the category field is not mentioned in the `page` call but specified inside the properties, RudderStack still includes the field while sending the event. For example, refer to the following snippet:
 
 ```javascript
     rudderanalytics.page( "name", {
@@ -87,11 +86,10 @@ If category field is not mentioned in the root of the page call but specified in
 });
 ```
 
-{% hint style="warning" %}
-For the above example, The event will be sent as `Viewed catergory name Page`, if the Generic Page Title option is disabled. Otherwise, the event will be sent as `Viewed a Page`.
+For the above example, the event will be sent as `Viewed category name Page`, if the **Generic Page Title** option is disabled in the RudderStack dashboard. If it is enabled, the event will be sent as `Viewed a Page`.
 {% endhint %}
 
-If category field is not specified both in the root of the event or the properties, Rudderstack will send the event with the page name only.
+If `category` is not specified in the event at all, RudderStack sends the event with only the page name, as shown below:
 
 ```javascript
     rudderanalytics.page( "name", {
@@ -103,19 +101,18 @@ If category field is not specified both in the root of the event or the properti
         testDimension: "true"
 });
 ```
-{% hint style="warning" %}
-For the above example, The event will be sent as `Viewed name Page`, if the Generic Page Title option is disabled. Otherwise, the event will be sent as `Viewed a Page`.
-{% endhint %}
+
+For the above example, The event will be sent as `Viewed name Page`, if the **Generic Page Title** option is disabled in the RudderStack dashboard. If enabled, the event will be sent as `Viewed a Page`.
 
 {% hint style="warning" %}
-if both the name and category fields are absent in the page call, while this option is disabled, RudderStack will not be sending the event to Qualtrics.
+If both the name and category fields are absent in the `page` call and the **Generic Page Title** option is disabled, RudderStack will not send the event to Qualtrics.
 {% endhint %}
 
 ## Track
 
 The `track` call lets you keep track on how many time a user performs certain actions. Any events being tracked can be passed as embedded data to the intercept target. After the track call you will find the Qualtrics servey being loaded.
 
-In this case, the value of event field of the track call will be used while sending the event.
+In this case, the value of event field of the `track` call will be used as the event name while sending it to Qualtrics.
 
 A sample `track` call is as shown:
 
@@ -123,9 +120,7 @@ A sample `track` call is as shown:
    rudderanalytics.track("Test Event");
 ```
 
-{% hint style="info" %}
-In the above example, The event will be sent as `Test Event`. 
-{% endhint %}
+In the above example, the event will be sent to Qualtrics as `Test Event`. 
 
 ## FAQ
 
@@ -135,11 +130,14 @@ To get your Qualtrics Project ID and Brand ID, follow these steps:
 
 * Log into your [**Qualtrics account**](https://login.qualtrics.com/login?lang=au).
 * Click on the project you will be using.
-* Click on **Settings** tab, followed by **Manage Project** drop down option which is the right most menu in the project dashboard.
-* Click on `Project ID's` option in the resulting drop down menu and you will find both Project ID and Brand ID.
+* Click on **Settings** tab, followed by **Manage Project** option (the right-most dropdown menu in the dashboard).
 
+![](https://user-images.githubusercontent.com/59817155/128864100-05ef5c5a-8c04-4607-b742-633938f440ac.png)
+
+* Click on **Project ID's**. Here you will find both your Project ID and Brand ID, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/128864303-2660ccb8-a91d-4633-b6bf-eef4253cb381.png)
 
 ## Contact Us
 
-If you come across any issues while configuring Qualtrics with RudderStack, feel free to [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
+For questions on any of the sections covered in this guide, feel free to [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
