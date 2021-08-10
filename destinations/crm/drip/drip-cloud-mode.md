@@ -1,8 +1,8 @@
 ---
-description: Detailed technical documentation on sending events to Drip using the RudderStack Web Cloud mode.
+description: Detailed technical documentation on sending events to Drip using the RudderStack Cloud mode.
 ---
 
-# Sending Events to Drip via Web Cloud Mode
+# Sending Events to Drip via Cloud Mode
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/drip)**.**
