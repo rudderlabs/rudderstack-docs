@@ -63,7 +63,7 @@ If you want to add a subscriber to your account without subscribing them to an e
 
 ## Track
 
-When you call `track`, Rudderstack will send the event to Drip with the event name and all of its properties that you specify. Use the `track` method when you want to record a user event. If you include `revenue` as a property, it will get passed to Drip as the conversion value of this event.
+When you call the `track` API, RudderStack sends the event to Drip along with its name and all of the specified properties. If you include `revenue` as a property, it will get passed to Drip as the conversion value of the event.
 
 {% hint style="info" %}
 For more information on the `track` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/track).
