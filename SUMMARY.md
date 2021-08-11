@@ -110,6 +110,7 @@
     * [Drip](destinations/marketing/drip/README.md)
       * [Setting Up Drip in RudderStack](destinations/marketing/drip/setting-up-drip-in-rudderstack.md)
       * [Sending Events to Drip](destinations/marketing/drip/drip-cloud-mode.md)
+    * [Qualtrics Website Feedback](destinations/marketing/qualtrics-website-feedback.md)
     * [Salesforce Marketing Cloud](destinations/marketing/sfmc.md)
     * [CleverTap](destinations/marketing/clevertap.md)
     * [Braze](destinations/marketing/braze.md)
