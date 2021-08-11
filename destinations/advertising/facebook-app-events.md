@@ -283,13 +283,13 @@ This section highlights the different consent-based options for configuring the 
 ```
 
 * In some cases, you can delay the collection of automatically logged events to obtain user consent or fulfill legal obligations instead of disabling it entirely. To do so, call the `setAutoLogAppEventsEnabled` method of the `FBSDKSettings` class to re-enable auto-logging after the end-user provides the required consent. 
-  * For **Objective-C**:
+  * In **Objective-C**:
 
     ```objectivec
     [FBSDKSettings setAutoLogAppEventsEnabled:YES];
     ```
 
-  * For **Swift**:
+  * In **Swift**:
 
     ```swift
     FBSDKSettings.setAutoLogAppEventsEnabled(true)
