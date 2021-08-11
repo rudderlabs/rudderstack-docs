@@ -16,6 +16,8 @@ This documentation is split into the following sections:
 
 {% page-ref page="drip-cloud-mode.md" %}
 
+{% page-ref page="drip-web-device-mode.md" %}
+
 ## Contact Us
 
 If you come across any issues while configuring or using Drip with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.

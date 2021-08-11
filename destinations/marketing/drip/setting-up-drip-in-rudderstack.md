@@ -10,7 +10,7 @@ Before configuring Drip as a destination, verify if Drip supports the source pla
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
+| **Device mode** | **Supported** | - | - |
 | **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
