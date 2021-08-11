@@ -159,7 +159,7 @@ A code snippet for loading the SDKs in parallel is shown below:
         !function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)}}()
         !(function(){
           // Create a queue, but don't obliterate an existing one!
-          var analtics = window.analytics = window.analytics || [];
+          var analytics = window.analytics = window.analytics || [];
           // If the real analytics.js is already on the page return.
           if (analytics.initialize) return;
           // If the snippet was invoked already show an error.

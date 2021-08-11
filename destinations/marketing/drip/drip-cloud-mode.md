@@ -4,7 +4,7 @@ description: >-
   RudderStack Cloud mode.
 ---
 
-# Sending Events to Drip
+# Cloud Mode
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/drip)**.**
