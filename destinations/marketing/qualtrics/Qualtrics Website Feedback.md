@@ -46,7 +46,7 @@ Refer to the **FAQ** section below for steps on how to get your Qualtrics Projec
 * **Enable Generic Page Title:** If this field is enabled, RudderStack sends every `page` call with the name `Viewed a Page`.
 
 {% hint style="info" %}
-This field useful only when you are using `page` call. 
+This field useful only when you are using `page` call.
 {% endhint %}
 
 {% hint style="info" %}
@@ -79,14 +79,14 @@ For the above example, The event will be sent as `Viewed category name Page`, if
 If the category field is not mentioned in the `page` call but specified inside the properties, RudderStack still includes the field while sending the event. For example, refer to the following snippet:
 
 ```javascript
-rudderanalytics.page( "name", {
-    category: "category",
-    path: "path",
-    url: "url",
-    title: "title",
-    search: "search",
-    referrer: "referrer",
-    testDimension: "true"
+rudderanalytics.page("name", {
+  category: "category",
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer",
+  testDimension: "true"
 });
 ```
 
@@ -96,13 +96,13 @@ For the above example, the event will be sent as `Viewed category name Page`, if
 If `category` is not specified in the event at all, RudderStack sends the event with only the page name, as shown below:
 
 ```javascript
-rudderanalytics.page( "name", {
-    path: "path",
-    url: "url",
-    title: "title",
-    search: "search",
-    referrer: "referrer",
-    testDimension: "true"
+rudderanalytics.page("name", {
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer",
+  testDimension: "true"
 });
 ```
 
@@ -132,7 +132,7 @@ A sample `track` call is as shown:
 rudderanalytics.track("Test Event");
 ```
 
-In the above example, the event will be sent to Qualtrics as `Test Event`. 
+In the above example, the event will be sent to Qualtrics as `Test Event`.
 
 ## FAQ
 
