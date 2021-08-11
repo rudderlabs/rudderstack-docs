@@ -53,7 +53,9 @@ The following table lists the properties that RudderStack transforms and maps to
 | `euConsent`                   | `eu_consent`               |
 | `euConsentMessage`            | `eu_consent_message`       |
 
-**Note**: All other fields in `context.traits`, will be passed as custom fields.
+{% hint style="info" %}
+All other fields in `context.traits` will be passed as custom fields.
+{% endhint %}
 
 You can subscribe a user to a [**Email Series Campaign**](https://www.drip.com/learn/docs/guides/overview-of-drip) by providing the associated **Campaign ID**. Doing so will add the subscriber directly to that email series campaign.
 
