@@ -1,7 +1,7 @@
 ---
 description: >-
   Step-by-step guide to send your event data from RudderStack to Facebook App
-  Events for analytics
+  Events.
 ---
 
 # Facebook App Events
