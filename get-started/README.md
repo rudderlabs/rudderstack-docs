@@ -65,6 +65,10 @@ For more information on sources in RudderStack, check out the [**Connections**](
 You can transform your events in RudderStack before sending them to the specified destinations. Read our [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) guide for more information on this feature.
 {% endhint %}
 
+Here's a quick walkthrough on how to send data from your website to various cloud tools via RudderStack:
+
+{% embed url="https://www.youtube.com/watch?v=BEQltd\_5A\_k&ab\_channel=RudderStack" %}
+
 ## Useful Links
 
 * Check out some [**sample applications**](https://github.com/rudderlabs/rudder-samples/) that demonstrate various RudderStack use-cases. 
