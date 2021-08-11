@@ -16,9 +16,9 @@ RudderStack supports Facebook App Events as a destination to which you can send 
 
 ## Getting Started
 
-To enable sending your event data to Facebook, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Facebook.
+To enable sending data to Facebook App Events, you will first need to add it as a destination in RudderStack. Once the destination is configured and enabled, events from RudderStack will start flowing to App Events.
 
-Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Facebook, by referring to the table below:
+Before configuring App Events as a destination, verify if Facebook supports the source platform by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -26,38 +26,44 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Cloud mode** | **Supported** | **Supported** | - |
 
 {% hint style="info" %}
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-Once you have confirmed that the platform supports sending events to Facebook App Events, perform the steps below:
+Once you have confirmed that the source supports sending events to Facebook App Events, follow these steps:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Facebook**.
+* From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Facebook App Events**.
 
 {% hint style="info" %}
-Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+Please follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
 {% endhint %}
 
-* Give a name to the destination and click on **Next**. You should then see the following screen:
+* Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-![Destination Settings for Facebook App Events](../../.gitbook/assets/screenshot-2020-07-31-at-1.01.29-pm.png)
+![Connection Settings for Facebook App Events](../../.gitbook/assets/screenshot-2020-07-31-at-1.01.29-pm.png)
 
-* Enter the **Facebook App Id**. 
-* Turn on the `Use native SDK to send events` button so that we can send data to Facebook using the native SDK.
+* Enter the **Facebook App ID**.
+
+The following options are applicable if you are using the Device mode to send your events to Facebook:
+
+* **Limited Data Use**: If this option is enabled, you can send the country and state of the end-user so that Facebook processes the user data according to the data regulations set for that region.
+
+{% hint style="success" %}
+For more information on this option, refer to the [**Limited Data Use**](https://docs.rudderstack.com/destinations/advertising/facebook-app-events#limited-data-use) section below.
+{% endhint %}
+
 * Click on **Next** to complete the configuration. 
 
-Facebook App Events should now be added and enabled as a destination in RudderStack.
+That's it! Facebook App Events should now be added and enabled as a destination in RudderStack.
 
-## Adding Facebook App Events to your project
+## Adding Facebook App Events to Your Project
 
-Depending on your platform of integration, follow these steps below to add Facebook to your project:
+Depending on your platform of integration, follow these steps below to add App Events to your project:
 
 {% tabs %}
-
-
-
+{% tab title="iOS" %}
 To add Facebook to your iOS project:
 
-* Add the following line to your [CocoaPods](https://cocoapods.org/) `Podfile` 
+* Add the following line to your [**CocoaPods**](https://cocoapods.org/) `Podfile` :
 
 ```groovy
 pod 'Rudder-Facebook'
@@ -70,27 +76,26 @@ pod 'Rudder-Facebook'
                              didFinishLaunchingWithOptions:launchOptions];
 ```
 
-* Send the user's consent to App Events as shown below:
+* Send the user's consent to App Events as shown below:  
 
-{% tabs %}
-{% tab title="Objective-C" %}
 
-{% tab %}
-```objectivec
-// Set AdvertiserTrackingEnabled to YES if a user provides consent
-[FBSDKSettings setAdvertiserTrackingEnabled:YES];
-// Set AdvertiserTrackingEnabled to NO if a user does not provide consent
-[FBSDKSettings setAdvertiserTrackingEnabled:NO];
-```
-{% endtab %}
+  * For **Objective-C**:
 
-{% tab title="Swift" %}
-```swift
-// Set AdvertiserTrackingEnabled to true if a user provides consent
-Settings.setAdvertiserTrackingEnabled(true)
-// Set AdvertiserTrackingEnabled to false if a user does not provide consent
-Settings.setAdvertiserTrackingEnabled(false)
-```
+  ```objectivec
+  // Set AdvertiserTrackingEnabled to YES if a user provides consent
+  [FBSDKSettings setAdvertiserTrackingEnabled:YES];
+  // Set AdvertiserTrackingEnabled to NO if a user does not provide consent
+  [FBSDKSettings setAdvertiserTrackingEnabled:NO];
+  ```
+
+  * For **Swift**:
+
+  ```swift
+  // Set AdvertiserTrackingEnabled to true if a user provides consent
+  Settings.setAdvertiserTrackingEnabled(true)
+  // Set AdvertiserTrackingEnabled to false if a user does not provide consent
+  Settings.setAdvertiserTrackingEnabled(false)
+  ```
 
 * Configure your project by adding the following lines to `(<dict>...</dict>)` in your `Info.plist` :
 
@@ -135,7 +140,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 {% tab title="Android" %}
 To add Facebook App Events to your Android project, follow these steps:
 
-* Add the repository as shown:
+* Add the repository, as shown:
 
 ```groovy
 repositories {
@@ -143,7 +148,7 @@ repositories {
 }
 ```
 
-* Add the following lines to your `app/build.gradle` file under the `dependencies` section as shown:
+* Add the following lines to your `app/build.gradle` file under the `dependencies` section, as shown:
 
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
@@ -168,7 +173,7 @@ implementation 'com.facebook.android:facebook-android-sdk:11.1.0'
 </application>
 ```
 
-* Finally, change the initialization of your `RudderClient` in your `Application` class, as shown below:
+* Finally, change the initialization of your `RudderClient` in your `Application` class, as shown:
 
 ```java
 val rudderClient = RudderClient.getInstance(
@@ -200,7 +205,7 @@ RudderStack sets the following properties \(if available\) using the `setUserDat
 * `zip`
 * `country`
 
-A Sample `identify` call for an iOS application will look like the below.
+A sample `identify` call for an iOS application looks like the following:
 
 ```text
 [[RSClient sharedInstance] identify:@"developer_user_id"
@@ -209,27 +214,29 @@ A Sample `identify` call for an iOS application will look like the below.
 
 ## Track
 
-The `track` call from RudderStack is logged to Facebook using `logEvent` method of the `AppEventsLogger` class. We'll use the `eventName` as same as you have passed to the `track` method. Along with that, we'll pass all the `properties` you've passed after converting it to the accepted format.
+The `track` call from RudderStack is logged to Facebook using the `logEvent` method of the `AppEventsLogger` class. RudderStack uses the same `eventName` as you have passed to the `track` method. Along with that, it will pass all the `properties` after converting them into an accepted format.
 
-A Sample `track` call for an iOS application will look like the below.
+A sample `track` call for an iOS application is as shown:.
 
 ```text
-[[RSClient sharedInstance] track:@"Accepted Terms of Service" 
-                          properties:@{
-                                  @"foo": @"bar",
-                              @"foo_int": @134
-}];
+[[RSClient sharedInstance] track:@"Accepted Terms of Service"
+                      properties:@{
+                          @"foo": @"bar",
+                          @"foo_int": @134
+                      }];
 ```
 
 {% hint style="info" %}
-When `revenue` and `currency` are present in the event properties of any track call we will make a `Purchase` call to Facebook using its `logPurchase` api along with the normal track call using `logEvent` api. If `currency` is absent in the event properties we fall back to a default value of `USD`.
+When `revenue` and `currency` are present in the event properties of any `track` call, RudderStack makes a `Purchase` call to Facebook using its `logPurchase` API along with the normal `track` call using the `logEvent` API. 
+
+If `currency` is absent in the event properties RudderStack sets the default value to `USD`.
 {% endhint %}
 
 ## Screen
 
-The `screen` method allows you to record whenever the user views their mobile screen, along with any associated properties. This call is similar to the `page` call, but is exclusive to your mobile device.
+The `screen` method lets you record whenever the user views their mobile screen along with any associated properties. This call is similar to the `page` call, but is exclusive to your mobile device.
 
-A sample `screen` call using the RudderStack Android SDK is shown below:
+A sample `screen` call using the RudderStack Android SDK is as shown:
 
 ```text
 [[RSClient sharedInstance] screen:@"Home" properties:@{
@@ -240,78 +247,69 @@ A sample `screen` call using the RudderStack Android SDK is shown below:
 In the above snippet, RudderStack captures the information related to the viewed screen, such as screen name and `category`.
 
 {% hint style="info" %}
-The above `screen` call is directly passed on to Facebook as a `track` event via its `logEvent` API, with the event name as `Viewed {screen name} screen` along with the the associated properties. The above example will be sent as a `track` event with name `Viewed MainActivity screen` along with its properties.
+The above `screen` call is directly passed on to Facebook as a `track` event via its `logEvent` API, with the event name as `Viewed {screen name} screen` along with the the associated properties. The above example will be sent as a `track` event with name `Viewed Home screen` along with its properties.
 {% endhint %}
 
 ## Limited Data Use
 
-In July 2020, Facebook released a [**Limited Data Use**](https://developers.facebook.com/docs/marketing-apis/data-processing-options) feature to give businesses better control over how their data is used while supporting businesses in their **California Consumer Privacy Act \(CCPA\)** compliance efforts.
+In July 2020, Facebook released a [**Limited Data Use**](https://developers.facebook.com/docs/marketing-apis/data-processing-options) feature to give businesses better control over how their data is used in their **California Consumer Privacy Act \(CCPA\)** compliance efforts.
 
-You can now send **Limited Data Use** data processing parameters to Facebook for each event via RudderStack, so that Facebook can appropriately apply the user’s data choice.
+You can now send the **Limited Data Use** data processing parameters to Facebook for each event via RudderStack, so that Facebook can appropriately apply the user’s data choice.
 
 To use this feature, simply enable the **Limited Data Use** setting on the RudderStack dashboard and control its behavior via the following data processing parameters:
 
 | **Parameter** | **Default Value** | **Description** |
 | :--- | :--- | :--- |
-| **Data Processing Options State** | **`0`** | Use Facebook’s geolocation to determine the country. |
-| **Data Processing Options Country** | **`0`** | Use Facebook’s geolocation to determine the state. |
+| **Data Processing Options State** | **`0`** | Use Facebook’s geolocation to  determine the end-user's state. |
+| **Data Processing Options Country** | **`0`** | Use Facebook’s geolocation to  determine the end-user's country. |
 
 {% hint style="success" %}
 Learn more about the different data processing options accepted by Facebook [**here**](https://developers.facebook.com/docs/marketing-apis/data-processing-options).
 {% endhint %}
 
-## Configuring Facebook App Events SDK based on User's Consent
+## Configuring Facebook App Events SDK Based on User Consent
 
 This section highlights the different consent-based options for configuring the App Events SDK.
 
 ### Disable Automatically Logged Events
 
 {% tabs %}
-
-
-
-To disable automatic event logging, open the application's `.plist` as code in Xcode and add the following XML to the property dictionary:
+{% tab title="iOS" %}
+* To disable automatic event logging, open the application's `.plist` as code in Xcode and add the following XML to the property dictionary:
 
 ```markup
 <key>FacebookAutoLogAppEventsEnabled</key>
 <false/>
 ```
 
-In some cases, you can delay the collection of automatically logged events to obtain user consent or fulfill legal obligations instead of disabling it entirely. To do so, call the `setAutoLogAppEventsEnabled` method of the `FBSDKSettings` class to re-enable auto-logging after the end-user provides the required consent.
+* In some cases, you can delay the collection of automatically logged events to obtain user consent or fulfill legal obligations instead of disabling it entirely. To do so, call the `setAutoLogAppEventsEnabled` method of the `FBSDKSettings` class to re-enable auto-logging after the end-user provides the required consent. 
+  * For **Objective-C**:
 
-{% tabs %}
+    ```objectivec
+    [FBSDKSettings setAutoLogAppEventsEnabled:YES];
+    ```
 
+  * For **Swift**:
 
+    ```swift
+    FBSDKSettings.setAutoLogAppEventsEnabled(true)
+    ```
+* To suspend event collection for any reason, set the `setAutoLogAppEventsEnabled` method to `NO` for iOS or `false` for Swift, as shown: 
+  * In **Objective-C**:
 
-```objectivec
-[FBSDKSettings setAutoLogAppEventsEnabled:YES];
-```
+    ```objectivec
+    [FBSDKSettings setAutoLogAppEventsEnabled:NO];
+    ```
 
+  * In **Swift**:
 
+    ```swift
+    FBSDKSettings.setAutoLogAppEventsEnabled(false)
+    ```
+{% endtab %}
 
-```swift
-FBSDKSettings.setAutoLogAppEventsEnabled(true)
-```
-
-To suspend event collection for any reason, set the `setAutoLogAppEventsEnabled` method to `NO` for iOS or `false` for Swift.
-
-{% tabs %}
-
-
-
-```objectivec
-[FBSDKSettings setAutoLogAppEventsEnabled:NO];
-```
-
-
-
-```swift
-FBSDKSettings.setAutoLogAppEventsEnabled(false)
-```
-
-
-
-To disable automatically logged events, add the following to your `AndroidManifest.xml` file:
+{% tab title="Android" %}
+* To disable automatically logged events, add the following to your `AndroidManifest.xml` file:
 
 ```markup
 <application>
@@ -322,66 +320,59 @@ To disable automatically logged events, add the following to your `AndroidManife
 </application>
 ```
 
-In some cases, you can delay the collection of automatically logged events to obtain user consent or fulfill legal obligations instead of disabling it entirely. To do so, call the `setAutoLogAppEventsEnabled()` method of the `FacebookSDK` class and set it to `true` to re-enable event logging after the end-user provides the required consent.
+* In some cases, you can delay the collection of automatically logged events to obtain user consent or fulfill legal obligations instead of disabling it entirely. To do so, call the `setAutoLogAppEventsEnabled()` method of the `FacebookSDK` class and set it to `true` . This re-enables event logging after the end-user has provided the required consent.
 
 ```java
 setAutoLogAppEventsEnabled(true);
 ```
 
-To suspend event logging again for any reason, set the `setAutoLogAppEventsEnabled()` method to `false`, as shown:
+* To suspend event logging again for any reason, set the `setAutoLogAppEventsEnabled()` method to `false`, as shown:
 
 ```java
 setAutoLogAppEventsEnabled(false);
 ```
+{% endtab %}
+{% endtabs %}
 
 ### Disable Collection of Advertiser IDs
 
 {% tabs %}
-
-
-
-To disable collection of advertiser ID, open the application's `.plist` as code in Xcode and add the following XML to the property dictionary:
+{% tab title="iOS" %}
+* To disable the collection of advertiser ID, open the application's `.plist` as code in Xcode and add the following XML to the property dictionary:
 
 ```markup
 <key>FacebookAdvertiserIDCollectionEnabled</key>
 <false/>
 ```
 
-In some cases, you can delay the collection of `advertiser_id` to obtain the user consent or fulfill any legal obligations instead of disabling it entirely. To do so, call the `setAdvertiserIDCollectionEnabled` method of the `FBSDKSettings` class and set it to `YES` for iOS, or `true` for Swift after the end-user provides consent, as shown:
+* In some cases, you can delay the collection of `advertiser_id` to obtain the user consent or fulfill any legal obligations instead of disabling it entirely. To do so, call the `setAdvertiserIDCollectionEnabled` method of the `FBSDKSettings` class and set it to `YES` for iOS, or `true` for Swift after the end-user provides consent, as shown: 
+  * In **Objective-C**:
 
-{% tabs %}
+    ```objectivec
+    [FBSDKSettings setAdvertiserIDCollectionEnabled:@YES];
+    ```
 
+  * In **Swift**:
 
+    ```swift
+    FBSDKSettings.setAdvertiserIDCollectionEnabled(true);
+    ```
+* To suspend collection for any reason, set the `setAdvertiserIDCollectionEnabled` method to `NO` for iOS or `false` for Swift. 
+  * In **Objective-C**:
 
-```objectivec
-[FBSDKSettings setAdvertiserIDCollectionEnabled:@YES];
-```
+    ```objectivec
+    [FBSDKSettings setAdvertiserIDCollectionEnabled:@NO];
+    ```
 
+  * In **Swift**:
 
+    ```swift
+    FBSDKSettings.setAdvertiserIDCollectionEnabled(false)
+    ```
+{% endtab %}
 
-```swift
-FBSDKSettings.setAdvertiserIDCollectionEnabled(true);
-```
-
-To suspend collection for any reason, set the `setAdvertiserIDCollectionEnabled` method to `NO` for iOS or `false` for Swift.
-
-{% tabs %}
-
-
-
-```objectivec
-[FBSDKSettings setAdvertiserIDCollectionEnabled:@NO];
-```
-
-
-
-```swift
-FBSDKSettings.setAdvertiserIDCollectionEnabled(false)
-```
-
-
-
-To disable collection of `advertiser-id`, add the following to your `AndroidManifest.xml` file:
+{% tab title="Android" %}
+* To disable collection of `advertiser-id`, add the following code to your `AndroidManifest.xml` file:
 
 ```markup
 <application>
@@ -392,20 +383,24 @@ To disable collection of `advertiser-id`, add the following to your `AndroidMani
 </application>
 ```
 
-In some cases, you can delay the collection of `advertiser_id` to obtain user consent or fulfill any legal obligations instead of disabling it entirely. To do so, call the `setAdvertiserIDCollectionEnabled()` method of the `FacebookSDK` class and set it to `true` to re-enable collection of `advertiser_id` after the end-user provides consent, as shown:
+* In some cases, you can delay the collection of `advertiser_id` to obtain user consent or fulfill any legal obligations instead of disabling it entirely.   To do so, call the `setAdvertiserIDCollectionEnabled()` method of the `FacebookSDK` class and set it to `true` . This re-enables the collection of `advertiser_id` after the end-user provides the required consent, as shown:
 
 ```java
 setAdvertiserIDCollectionEnabled(true);
 ```
 
-To suspend collection for any reason, set the `setAdvertiserIDCollectionEnabled()` method to `false`.
+* To suspend collection for any reason, set the `setAdvertiserIDCollectionEnabled()` method to `false`, as shown:
 
 ```java
 setAdvertiserIDCollectionEnabled(false)
 ```
+{% endtab %}
+{% endtabs %}
 
 ### Disable Automatic SDK Initialization
 
+{% tabs %}
+{% tab title="Android" %}
 To disable automatic SDK initialization in case of the Android SDK, add the following to your `AndroidManifest.xml` file:
 
 ```markup
@@ -417,12 +412,14 @@ To disable automatic SDK initialization in case of the Android SDK, add the foll
 </application>
 ```
 
-In some cases, you can delay the SDK initialization to obtain user consent or fulfill any legal obligations instead of disabling it entirely. In this case, call the class method `setAutoInitEnabled` and set it to `true` to manually initialize the SDK after the end-user provides the required consent.
+In some cases, you can delay the SDK initialization to obtain user consent or fulfill any legal obligations instead of disabling it entirely. To do so, call the class method `setAutoInitEnabled` and set it to `true` to manually initialize the SDK after the end-user provides the required consent.
 
 ```java
 FacebookSdk.setAutoInitEnabled(true)
 FacebookSdk.fullyInitialize()
 ```
+{% endtab %}
+{% endtabs %}
 
 ## FAQs
 
@@ -432,7 +429,7 @@ You can find the **Facebook App ID** by logging into your Facebook Developer acc
 
 ### Where do I get the Facebook Client Token?
 
-You can find the **Facebook Client Token** by logging into your Facebook Developer account, and navigating to the `Settings > Advanced > Client Token` in your App Dashboard.
+You can find the **Facebook Client Token** by logging into your Facebook Developer account. Then, navigate to **Settings** - **Advanced** - **Client Token** in your app dashboard.
 
 ## Contact Us
 
