@@ -34,7 +34,7 @@ Do you have any questions about RudderStack? Join our [**Slack**](https://resour
 
 ## RudderStack in 5 Minutes
 
-Get up and running with RudderStack and instrument your event streams in no time. Follow these steps:
+Get up and running with RudderStack in no time by following these steps:
 
 * Sign up for [**RudderStack Cloud**](https://app.rudderlabs.com/signup?type=freetrial). 
 * You will then get access to this dashboard for setting up your data pipelines:
