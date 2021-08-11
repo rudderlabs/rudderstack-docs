@@ -150,6 +150,12 @@ To get your Qualtrics Project ID and Brand ID, follow these steps:
 
 ![](https://user-images.githubusercontent.com/59817155/128864303-2660ccb8-a91d-4633-b6bf-eef4253cb381.png)
 
+### How do I know if the SDK has loaded successfully?
+
+Once RudderStack loads the web SDK successfully, you will be able to see the survey options chosen in the Qualtrics dashboard, e.g., a survey button, form, etc., as shown:
+
+![](https://user-images.githubusercontent.com/59817155/128988678-5f108062-6072-47e0-94d1-d3e7bee15fe5.png)
+
 ## Contact Us
 
 For questions on any of the sections covered in this guide, feel free to [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
