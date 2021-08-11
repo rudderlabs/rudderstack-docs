@@ -142,7 +142,7 @@ repositories {
 
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
-implementation 'com.rudderstack.android.integration:facebook:0.1.2'
+implementation 'com.rudderstack.android.integration:facebook:1.0.0'
 implementation 'com.facebook.android:facebook-android-sdk:11.1.0'
 ```
 
