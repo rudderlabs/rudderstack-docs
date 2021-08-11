@@ -59,7 +59,7 @@ All other fields in `context.traits` will be passed as custom fields.
 
 You can subscribe a user to a [**Email Series Campaign**](https://www.drip.com/learn/docs/guides/overview-of-drip) by providing the associated **Campaign ID**. Doing so will add the subscriber directly to that email series campaign.
 
-If you want to add a subscriber to your account without subscribing them to an email series campaign, use the `identify` call instead. You can also send some additional properties with the `identify`call. These are listed in the following table:
+If you want to add a subscriber to your account without subscribing them to an email series campaign, use the `identify` call instead. You can also send some additional properties with the `identify` call. These are listed in the following table:
 
 | **RudderStack Property Name** | **Drip Standard Property** |
 | :---------------------------- | :------------------------- |
@@ -85,10 +85,10 @@ rudderanalytics.track("randomProduct", {
 The following table lists the properties that RudderStack transforms and maps to Drip's standard properties:
 
 | **RudderStack Property Name**      | **Drip Standard Property** |
-| :--------------------------------- | :-------------------------- |
-| `email`                            | `email`                     |
-| `revenue`                          | `value`                     |
-| `occurred_at or originalTimestamp` | `occurred_at`               |
+| :--------------------------------- | :------------------------- |
+| `email`                            | `email`                    |
+| `revenue`                          | `value`                    |
+| `occurred_at or originalTimestamp` | `occurred_at`              |
 
 ## Contact Us
 
