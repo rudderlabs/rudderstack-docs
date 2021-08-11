@@ -39,7 +39,7 @@ Please follow our guide on [**How to Add a Source and Destination in RudderStack
 
 * Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-![Connection Settings for Facebook App Events](../../.gitbook/assets/screenshot-2020-07-31-at-1.01.29-pm.png)
+![Connection Settings for Facebook App Events](../../.gitbook/assets/image%20%28118%29.png)
 
 * Enter the **Facebook App ID**.
 
