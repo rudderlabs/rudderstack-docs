@@ -57,7 +57,7 @@ The **write key** is different from your **workspace token**. The write key is a
 
 ## FAQs
 
-### 1. What is a Data Plane URL? Where do I get it?
+### What is a Data Plane URL? Where do I get it?
 
 {% hint style="info" %}
 Refer to the [**RudderStack Architecture**](../rudderstack-architecture.md) guide for more information the RudderStack data plane.
@@ -70,7 +70,7 @@ Here's how to get the data plane URL:
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by installing and setting up RudderStack in your preferred dev environment. 
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID you used to sign up for RudderStack.
 
-### 2. How to Check the Data Plane Status?
+### How to Check the Data Plane Status?
 
 To check your data plane status, run the following command:
 
@@ -99,7 +99,7 @@ The RudderStack server supports two running modes:
 For more information on the RudderStack Server running modes, refer to our [**High Availability**](../../user-guides/administrators-guide/high-availability.md) guide.
 {% endhint %}
 
-### 4. Why Do I Need a RudderStack Account?
+### Why Do I Need a RudderStack Account?
 
 RudderStack's self-hosted dashboard \([**Control Plane**](https://docs.rudderstack.com/get-started/rudderstack-architecture#control-plane)\) is the easiest way to set up and manage your event data sources, destinations and transformations.
 
