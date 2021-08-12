@@ -41,7 +41,7 @@ The workspace token allows you to use the RudderStack-hosted control plane. It i
 
 #### 4. Can I self-host RudderStack?
 
-Yes, you can. Many people who don't want to sign up for RudderStack use the [**RudderStack Config Generator**](get-started/config-generator.md) to configure their sources and destinations.
+Yes, you can use the [**RudderStack Config Generator**](get-started/config-generator.md) to self-host the control plane and configure your sources and destinations. Refer to the Config Generator section below for more information/FAQs.
 
 #### 5. While running `git submodule update`, I get the following error:
 
@@ -129,10 +129,6 @@ backend_1 | panic: During db.vlog.open: Value log truncate required to run DB. T
 
 Check for the folder `/tmp/badgerdbv2` and delete it. This should resolve the issue and you should be able to start rudder-server.
 
-
-
-
-
 ## Config Generator
 
 #### 1. How do I self-host the UI configuration?
@@ -149,7 +145,7 @@ The self-hosted control plane \(UI\) does not support features like **Transforma
 
 #### "**TypeError: Cannot read property 'name' of undefined"**. What should I do?
 
-This issue can occur when you have some old data left in your browser's local storage. Use the latest version of the Config Generator after clearing your browser cache and local storage. In case it still does not work, please feel free to contact us.
+This issue can occur when you have some old data left in your browser's local storage. Use the latest version of the Config Generator after clearing your browser cache and local storage. In case it still does not work, feel free to contact us.
 
 ## Transformations
 
@@ -157,9 +153,7 @@ This issue can occur when you have some old data left in your browser's local st
 
 RudderStack lets you implement your own custom transformation functions that leverage the event data to implement specific use-cases based on your business requirements. To add custom transformations in RudderStack, follow this [**guide**](adding-a-new-user-transformation-in-rudderstack/).
 
-#### 2. How do transformations handle batching? 
-
-#### The transformation functions are given a list of events, but the events are also pushed out in real-time. What's the logic behind that?
+#### 2. How do transformations handle batching? The transformation functions are given a list of events, but the events are also pushed out in real-time. What's the logic behind that?
 
 The batching is done on a per end-user level. All the events from a given end-user are batched and then sent to the transformation function. The batching process is controlled via the following three parameters in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml)\( or **`config.toml`** in case of older RudderStack deployments\):
 
@@ -374,14 +368,4 @@ userLevelTimeWindowInS = 1
 ## Contact Us
 
 If you come across any issue that is not listed in this guide, feel free to start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
-
-
-
-
-
-
-
-
 

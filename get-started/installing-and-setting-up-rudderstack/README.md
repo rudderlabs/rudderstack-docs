@@ -57,7 +57,7 @@ The **write key** is different from your **workspace token**. The write key is a
 
 ## FAQs
 
-### What is a Data Plane URL? Where do I get it?
+### 1. What is a Data Plane URL? Where do I get it?
 
 {% hint style="info" %}
 Refer to the [**RudderStack Architecture**](../rudderstack-architecture.md) guide for more information the RudderStack data plane.
@@ -70,7 +70,7 @@ Here's how to get the data plane URL:
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by installing and setting up RudderStack in your preferred dev environment. 
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID you used to sign up for RudderStack.
 
-### How to Check the Data Plane Status?
+### 2. How to Check the Data Plane Status?
 
 To check your data plane status, run the following command:
 
@@ -99,15 +99,15 @@ The RudderStack server supports two running modes:
 For more information on the RudderStack Server running modes, refer to our [**High Availability**](../../user-guides/administrators-guide/high-availability.md) guide.
 {% endhint %}
 
-### Why Do I Need a RudderStack Account?
+### 4. Why Do I Need a RudderStack Account?
 
 RudderStack's self-hosted dashboard \([**Control Plane**](https://docs.rudderstack.com/get-started/rudderstack-architecture#control-plane)\) is the easiest way to set up and manage your event data sources, destinations and transformations.
 
 {% hint style="info" %}
-The hosted Control Plane is only used for configuration and does not have access to your data. The [**Live Events**](../live-events.md) console can temporarily stream events from your data plane for debugging purposes, but only for a limited time. **RudderStack does not persist any of your data**.
+The hosted Control Plane is only used for configuration and does not have access to your data. The Live Events Debugger console can temporarily stream events from your data plane for debugging but only for a limited time. It does not persist any of your data.
 {% endhint %}
 
-If you want to self-host the Control Plane, you can use the open-source [**RudderStack Config Generator**](../../user-guides/how-to-guides/rudderstack-config-generator.md). However, note that the Control Plane set up using the Config Generator does not have features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events**](../live-events.md).
+If you don't wish to sign up for RudderStack and want to self-host the Control Plane, you can use the open-source [**RudderStack Config Generator**](../../user-guides/how-to-guides/rudderstack-config-generator.md). However, note that the Control Plane set up using the Config Generator does not have features like Transformations and Live Events Debugger.
 
 ## Contact Us
 
