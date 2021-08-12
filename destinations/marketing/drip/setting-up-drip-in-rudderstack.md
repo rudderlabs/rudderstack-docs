@@ -27,7 +27,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Drip Connection Settings](../../../.gitbook/assets/drip-connection-settings.png)
+![Connection Settings for Drip](../../../.gitbook/assets/3%20%2827%29.png)
 
 * Next, enter your Drip **Account ID**. To get your **Account ID**, [**sign in**](https://login.getdrip.com/login/email) to your Drip dashboard and go to **Settings** - **Account**. Scroll down to see your Account ID.
 
@@ -51,7 +51,8 @@ If the **Campaign ID** is provided, RudderStack will try to subscribe the users 
 You can also send your Campaign ID via the `identify` call, which takes a higher precedence.
 {% endhint %}
 
-* **User Creation Mode** This option lets you create the user with their `email` using the `track` call, if the user doesn't already exist.
+* **User Creation Mode** This option lets you create the user with their `email` using the `track` call, if the user doesn't already exist. 
+* **Use device-mode to send events**: Enable this option to send events via the [**Device mode**](../../../connections/rudderstack-connection-modes.md).  
 * Finally, click on **Next**. That's it! Drip will now be enabled as a destination in Rudderstack.
 
 ## Contact Us
