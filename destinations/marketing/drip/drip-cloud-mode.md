@@ -4,7 +4,11 @@ description: >-
   RudderStack Cloud mode.
 ---
 
-# Cloud Mode
+# Sending Data via Cloud Mode
+
+{% hint style="info" %}
+For more information on sending events via the Cloud mode, refer to the [**RudderStack Connection Modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
+{% endhint %}
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/drip)**.**
