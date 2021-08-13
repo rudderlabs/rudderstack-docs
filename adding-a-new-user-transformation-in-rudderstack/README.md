@@ -4,7 +4,7 @@ description: Detailed technical documentation on RudderStack's Transformations f
 
 # Transformations
 
-RudderStack gives you the ability to code custom JavaScript functions to implement specific use-cases on your event data, like:
+Transformations is one of RudderStack's key features. It gives you the ability to code custom JavaScript functions to implement specific use-cases on your event data, like:
 
 * Filtering/sampling events.
 * Enriching events by implementing static logic or leveraging an external API.
