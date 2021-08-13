@@ -21,7 +21,7 @@ Here's a quick 2-minute walkthrough of this feature:
 {% embed url="https://www.youtube.com/watch?v=-1F4YeJCXU8" %}
 
 {% hint style="info" %}
-For details on how to add a transformation in RudderStack, check the **Creating a New Transformation** section below. 
+For details on how to add a transformation in RudderStack, check the [**Adding a New Transformation**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack#adding-a-transformation) section below. 
 {% endhint %}
 
 {% hint style="success" %}
