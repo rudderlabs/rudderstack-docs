@@ -53,7 +53,7 @@ For more information on these variables, check out the [**Configuration Paramete
 
 ## Starting RudderStack With the Workspace Configuration File
 
-For RudderStack to pick up the exported workspace configuration file, please follow the steps below:
+For RudderStack to pick up the exported workspace configuration file, follow the steps for your preferred setup:
 
 ### Docker
 
@@ -96,7 +96,7 @@ Your `rudder-docker.yml` should look like the following:
 
 For a native RudderStack Installation, follow these steps:
 
-* Follow the steps mentioned in this [**guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/native-installation#installation) to set up RudderStack. 
+* Follow the steps mentioned in this [**guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/native-installation#installation) to set up the RudderStack Data Plane natively. 
 * Create a `.env` file and copy the contents of the [**`sample.env`**](https://github.com/rudderlabs/rudder-server/blob/master/config/sample.env) file into it. Then, open this `.env` file. 
 * Add the line `RSERVER_BACKEND_CONFIG_CONFIG_FROM_FILE=true`. 
 * Also, add the following line and replace `<absolute_path_to_workspace_config>` with the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\).
@@ -115,10 +115,20 @@ RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH=<absolute_path_to_workspace_config>
 
 ### Developer Machine Setup
 
-If you have set up [**RudderStack on a developer machine**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup):
+* Follow [**this guide** ](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup)to set up RudderStack on your developer machine. 
+* Then, open `config/config.yaml`.  
+* Under `[BackendConfig]`, look for `configFromFile` and set its value to `true`. 
+* Also, change the value of `configJSONPath` to the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\).
 
-* Open `config/config.yaml`. Look for `configFromFile` and `configJSONPath` under `[BackendConfig]`.  
-* Set `configFromFile` to `true` and set `configJSONPath` to the path of the downloaded workspace configuration JSON file.
+![](../.gitbook/assets/config-1-.jpg)
+
+* Finally, run the RudderStack server using the following command:
+
+  ```bash
+  go run -mod=vendor main.go
+  ```
+
+* Once you have completed these steps above successfully, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
 ## Using RudderStack Config Generator for Device Mode Destinations
 
