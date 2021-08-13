@@ -63,7 +63,7 @@ If you are self-hosting RudderStack and have set up the control plane using the 
 
 ### Sending Test Events
 
-In our [**GitHub repository**](https://github.com/rudderlabs/rudder-server) ****\(which you have cloned\) we have bundled a shell script that generates test events.
+In our [**GitHub repository**](https://github.com/rudderlabs/rudder-server) ****\(which you cloned above\) we have bundled a shell script that generates test events.
 
 #### If you're using RudderStack Cloud, follow these steps:
 
