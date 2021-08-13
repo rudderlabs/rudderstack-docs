@@ -12,36 +12,35 @@ RudderStack's Control Plane manages the configuration of your sources and destin
 For more information on the Control Plane, refer to RudderStack's [**architecture**](rudderstack-architecture.md).
 {% endhint %}
 
-The easiest way to manage these configurations is through RudderStack's [**self-hosted Control Plane**](https://app.rudderstack.com/). It is free, requires no setup, and has some advanced features like [**Live Events Debugger**](../user-guides/how-to-guides/live-destination-event-debugger.md) and [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/).
+The easiest way to manage these configurations is through RudderStack's [**self-hosted web app**](https://app.rudderstack.com/). It is free, requires no setup, and has some advanced features like [**Live Events**](../user-guides/how-to-guides/live-destination-event-debugger.md) and [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/).
 
-However, if you want to self-host these configurations, you can use the open-source RudderStack Config Generator to set up your Control Plane. You can then manage the source and destination configurations locally by exporting to or importing them from a JSON file.
+However, if you don't wish to sign up for RudderStack and want to self-host these configurations instead, you can use the open-source Config Generator to set up your own Control Plane. You can then manage the source and destination configurations locally by exporting to or importing them from a JSON file.
 
 ## Setting up the Config Generator
 
-Before setting up the Config Generator, make sure you have RudderStack installed locally. You can find the instructions for setting up RudderStack in the [**Install and Set Up RudderStack**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack) guide.
+Before setting up the Config Generator, make sure you have RudderStack installed in your environment. You can find the instructions for setting up RudderStack in the [**Install and Set Up RudderStack**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack) guide.
 
-{% hint style="warning" %}
+{% hint style="info" %}
 Make sure you have [**Node.js**](https://nodejs.org/en/download/) installed before setting up the Config Generator.
 {% endhint %}
 
-In order to set up the RudderStack Config Generator, first, clone the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator) ****repository.
-
-Then, in your terminal, navigate to the `config-generator` repository and run the following commands in the specified order:
+* To set up the RudderStack Config Generator, you need to first clone the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator) ****repository. 
+* Then, open your terminal and navigate to the Config Generator folder and run the following commands in the specified order:
 
 1. `npm install`
 2. `npm start`
-
-{% hint style="info" %}
-The Config Generator can be accessed at [**http://localhost:3000**](https://github.com/ameypv-rudder/rudder-server/wiki/RudderStack-Config-Generator) by default.
-{% endhint %}
 
 On successful setup, you should be able to see the following UI:
 
 ![Control Plane set up using Config Generator](../.gitbook/assets/image%20%2822%29.png)
 
+{% hint style="info" %}
+The dashboard can be accessed at [**http://localhost:3000**](https://github.com/ameypv-rudder/rudder-server/wiki/RudderStack-Config-Generator) by default.
+{% endhint %}
+
 ## Exporting Workspace Configuration
 
-After adding the required sources and destinations in the dashboard shown above, you can export your workspace configuration by simply clicking the **EXPORT** button.
+After adding the required sources and destinations in the dashboard, you can export your workspace configuration by simply clicking the **EXPORT** button.
 
 {% hint style="info" %}
 For more information on adding sources and destinations in RudderStack, refer to the [**How to Add a Source and Destination in RudderStack**](../connections/adding-source-and-destination-rudderstack.md) guide.
@@ -61,11 +60,40 @@ For RudderStack to pick up the exported workspace configuration file, please fol
 
 ### Docker
 
-If you are running [**RudderStack on Docker**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/docker):
+If you want to set up RudderStack ****on ****Docker, follow these steps:
 
-* Open `rudder-docker.yml`. 
-* Uncomment the `volumes` section under `backend` service. Replace `<absolute_path_to_workspace_config>` with the path of the downloaded workspace configuration JSON file. 
-* In the `environment` section under `backend` service, uncomment the environment variable `RSERVER_BACKEND_CONFIG_CONFIG_FROM_FILE=true`.
+* Download and open [**`rudder-docker.yml`**](https://raw.githubusercontent.com/rudderlabs/rudder-server/master/rudder-docker.yml).
+* In the `environment` section under `backend` service, uncomment the following lines:
+
+```text
+- RSERVER_BACKEND_CONFIG_CONFIG_FROM_FILE=true
+- RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH=<workspace_config_filepath_in_container>
+```
+
+* Then, replace `<workspace_config_filepath_in_container>`  in the line above with your preferred container file path. By default, you can set it to `/etc/rudderstack/workspaceConfig.json`. 
+* In the `volumes` section under the `backend` service, uncomment the following line:
+
+```text
+- <absolute_path_to_workspace_config>:<workspace_config_filepath_in_container>
+```
+
+* Then, replace `<absolute_path_to_workspace_config>` with the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\). Also, replace  `<workspace_config_filepath_in_container>`  with the container file path that you set above.
+
+{% hint style="warning" %}
+Value for `<workspace_config_filepath_in_container>`should be the same as the value provided for the  `RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH` variable. Otherwise, your workspace configuration won't be loaded and you will get an error.
+{% endhint %}
+
+Your `rudder-docker.yml` should look like the following:
+
+![](../.gitbook/assets/yml-file.jpg)
+
+* Finally, navigate to the directory where you want to install RudderStack and run the following command:
+
+  ```text
+  docker-compose -f rudder-docker.yml up
+  ```
+
+* Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
 ### Native Installation
 
