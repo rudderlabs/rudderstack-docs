@@ -12,6 +12,10 @@ RudderStack gives you the ability to code custom JavaScript functions to impleme
 * Data masking or removing sensitive PII information in the events to ensure data privacy.
 * Implementing external actions on the events using an API.
 
+{% hint style="success" %}
+Transformations can be used across your [**Event Stream**](../stream-sources/), [**Warehouse Actions**](../warehouse-actions/), and [**Cloud Extract**](../cloud-extract-sources/) pipelines.
+{% endhint %}
+
 Here's a quick 2-minute walkthrough of this feature:
 
 {% embed url="https://www.youtube.com/watch?v=-1F4YeJCXU8" %}
