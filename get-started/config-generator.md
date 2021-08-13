@@ -116,9 +116,9 @@ RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH=<absolute_path_to_workspace_config>
 ### Developer Machine Setup
 
 * Follow [**this guide** ](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup)to set up RudderStack on your developer machine. 
-* Then, open `config/config.yaml`.  
-* Under `[BackendConfig]`, look for `configFromFile` and set its value to `true`. 
-* Also, change the value of `configJSONPath` to the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\).
+* Then, go to the `config` folder and open `config.yaml`.  
+* Under `[BackendConfig]`, look for `configFromFile` and set it to `true`. 
+* Also, change the value of `configJSONPath` to the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\), as shown:
 
 ![](../.gitbook/assets/config-1-.jpg)
 
