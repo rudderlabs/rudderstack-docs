@@ -18,33 +18,86 @@ If you are planning to use RudderStack in production, we strongly recommend usin
 `helm install` deploys RudderStack on the Kubernetes cluster configured with `kubectl`.
 {% endhint %}
 
-The commands are as shown below:
+The commands are listed below:
 
 ```bash
 $ git clone git@github.com:rudderlabs/rudderstack-helm.git
 $ cd rudderstack-helm/
+
+# If you're using the RudderStack-hosted Control Plane:
+
 $ helm install my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
+
+# If you're using the self-hosted Control Plane:
+
+$ helm install my-release ./ --set backend.controlPlaneJSON=true
 ```
 
-## Prerequisites
+## Introduction
 
-* **Kubectl** installed and connected to your Kubernetes cluster
-* Helm installed
-* Sign up and log into the [**RudderStack dashboard**](https://app.rudderlabs.com/signup). Copy your workspace **Token** from the top of the page, as shown:
+Installing and setting up RudderStack involves two key steps:
 
-![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%282%29.png)
+* Control Plane setup
+* Data Plane setup
 
 {% hint style="info" %}
-**Why do I need to sign up on RudderStack?** 
-
-RudderStack's dashboard \([**Control Plane**](https://docs.rudderstack.com/get-started/rudderstack-architecture#control-plane)\) lets you set up your data pipelines by configuring event data sources and destinations. This dashboard is hosted by RudderStack and is free for open-source users. 
-
-If you don't wish to sign up for RudderStack, you can also set up your own control plane using the open-source [**RudderStack Config Generator**](../../user-guides/how-to-guides/rudderstack-config-generator.md). However, note that the control plane set up using the RudderStack Config Generator lacks certain features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events Debugger**](../../user-guides/how-to-guides/live-destination-event-debugger.md).
+Refer to the [**RudderStack Architecture**](../rudderstack-architecture.md) to know more about the RudderStack Control Plane and Data Plane.
 {% endhint %}
 
-## Installing the Chart
+## Control Plane Setup
 
-To install the chart with the release name `my-release` from the root directory of this repository, run the following command:
+There are two ways you can set up the Control Plane. This section lists the steps involved in each of them.
+
+### **Use RudderStack-hosted Control Plane**
+
+* Sign up and log into the [**RudderStack dashboard**](https://app.rudderlabs.com/signup).
+
+{% hint style="info" %}
+**Why do I need to sign up for RudderStack?** 
+
+RudderStack's dashboard lets you easily set up your data pipelines by configuring your sources and destinations. It is fully hosted by RudderStack and is free for open-source users. You also get access to some important features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and a [**Live Events** ](../../user-guides/how-to-guides/live-destination-event-debugger.md)tab.
+{% endhint %}
+
+* Note and copy your workspace **Token** from the top of the page, as shown below. This will be required for setting up the Data Plane.
+
+![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
+
+### Self-host the Control Plane
+
+{% hint style="warning" %}
+Use this option if you don't wish to sign up for RudderStack.
+{% endhint %}
+
+You can self-host your own Control Plane using the open-source [**RudderStack Config Generator**](../../user-guides/how-to-guides/rudderstack-config-generator.md). 
+
+{% hint style="danger" %}
+Note that the Control Plane set up using the RudderStack Config Generator lacks certain features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events**](../../user-guides/how-to-guides/live-destination-event-debugger.md) tab.
+{% endhint %}
+
+## Data Plane Setup
+
+This section lists the steps to set up the RudderStack Data Plane in your Kubernetes environment. 
+
+### Prerequisites
+
+* \*\*\*\*[**Kubectl**](https://kubernetes.io/docs/tasks/tools/) installed and connected to your Kubernetes cluster
+* \*\*\*\*[**Helm**](https://helm.sh/) installed
+
+### For **RudderStack-Hosted Control Plane**
+
+* Clone the [**repository**](https://github.com/rudderlabs/rudderstack-helm) containing the RudderStack Helm chart by running the following command:
+
+  ```bash
+  $ git clone git@github.com:rudderlabs/rudderstack-helm.git
+  ```
+
+* Navigate to the folder containing the Helm chart.
+
+  ```bash
+  $ cd rudderstack-helm/
+  ```
+
+* To install the chart with the release name `my-release`, run the following command after replacing `<your_workspace_token>` with the workspace token copied from the RudderStack dashboard.
 
 ```bash
 $ helm install my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
@@ -56,12 +109,30 @@ The above command deploys RudderStack on your default Kubernetes cluster configu
 Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/kubernetes#configuration) section below for information on the parameters that can be configured during deployment.
 {% endhint %}
 
+* Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
+
+### For **Self-Hosted Control Plane**
+
+If you have self-hosted the Control Plane, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#kubernetes) instructions to set up the RudderStack Data Plane in your Kubernetes cluster. 
+
+Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
+
 ## Upgrading the Chart
 
-To update the configuration or version of the images used, change the configuration and run the following command:
+### For **RudderStack-Hosted Control Plane**
+
+Update the configuration or version of the images and run the following command:
 
 ```bash
 $ helm upgrade my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
+```
+
+### For **Self-Hosted Control Plane**
+
+Update the configuration or version of the images and run the following command:
+
+```bash
+$ helm upgrade my-release ./ --set backend.controlPlaneJSON=true
 ```
 
 ## Uninstalling the Chart
@@ -99,10 +170,10 @@ $ helm install --name my-release \
   ./
 ```
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Note that:
 
-* The configuration specific to the backend can be edited in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml).
+* The configuration specific to the Data Plane can be edited in[`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml).
 * The configuration specific to PostgreSQL can be configured in `pg_hba.conf`, and `postgresql.conf`.
 {% endhint %}
 

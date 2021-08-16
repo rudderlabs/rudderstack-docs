@@ -18,23 +18,25 @@ However, if you don't wish to sign up for RudderStack and want to self-host thes
 
 ## Setting Up the Config Generator
 
-Before setting up the Config Generator, make sure you have RudderStack installed in your environment. You can find the instructions for setting up RudderStack in the [**Install and Set Up RudderStack**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack) guide.
-
 {% hint style="info" %}
 Make sure you have [**Node.js**](https://nodejs.org/en/download/) installed before setting up the Config Generator.
 {% endhint %}
 
 * To set up the RudderStack Config Generator, clone the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator) ****repository. 
-* Next, open your terminal and navigate to the Config Generator folder and run the following commands: 
+* Next, open your terminal and navigate to the Config Generator folder and run the following commands:  
+
+
   * `npm install`
   * `npm start`
 
-On successful setup, you should be able to see the following UI:
+ 
 
-![Control Plane UI](../.gitbook/assets/image%20%2822%29.png)
+* On successful setup, you should be able to see the following UI:
+
+![](../.gitbook/assets/image%20%2822%29.png)
 
 {% hint style="info" %}
-The dashboard can be accessed at [**http://localhost:3000**](https://github.com/ameypv-rudder/rudder-server/wiki/RudderStack-Config-Generator) by default.
+You can access the dashboard at [**http://localhost:3000**](https://github.com/ameypv-rudder/rudder-server/wiki/RudderStack-Config-Generator) by default.
 {% endhint %}
 
 ## Exporting Workspace Configuration
@@ -94,12 +96,20 @@ Your `rudder-docker.yml` should look like the following:
 
 ### Kubernetes
 
-* Open the `values.yaml` file.
+* Clone the [**repository**](https://github.com/rudderlabs/rudderstack-helm) containing the RudderStack Helm chart by running the following command:
 
-{% hint style="info" %}
-The repository for the Helm chart containing `values.yaml` can be found [**here**](https://github.com/rudderlabs/rudderstack-helm).
-{% endhint %}
+  ```bash
+  $ git clone git@github.com:rudderlabs/rudderstack-helm.git
 
+  ```
+
+* Navigate to the folder containing the Helm chart.
+
+  ```bash
+  $ cd rudderstack-helm/
+  ```
+
+* Open the `values.yaml` file. 
 * Set the parameter `controlPlaneJSON` to `true`.  
 * Export the workspace configuration from the dashboard by following the steps in the [**Exporting Workspace Configuration**](https://docs.rudderstack.com/get-started/config-generator#exporting-workspace-configuration) section above. 
 * Finally, run the following command:
