@@ -170,7 +170,7 @@ $ helm install --name my-release \
   ./
 ```
 
-{% hint style="warning" %}
+{% hint style="info" %}
 Note that:
 
 * The configuration specific to the Data Plane can be edited in[`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml).
