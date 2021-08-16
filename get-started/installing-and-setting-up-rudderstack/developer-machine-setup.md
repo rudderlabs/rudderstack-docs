@@ -21,7 +21,7 @@ Refer to the [**RudderStack Architecture**](../rudderstack-architecture.md) to k
 
 There are two ways you can set up the Control Plane. This section lists the steps involved in each of them.
 
-### **Use RudderStack-hosted Control Plane**
+### **Use RudderStack-Hosted Control Plane**
 
 * Sign up and log into the [**RudderStack dashboard**](https://app.rudderlabs.com/signup).
 
