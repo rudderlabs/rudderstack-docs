@@ -1,7 +1,7 @@
 ---
 description: >-
-  Detailed documentation on installing and setting up RudderStack on your
-  preferred platform.
+  Detailed documentation on installing and setting up RudderStack in your
+  preferred environment.
 ---
 
 # Install and Set Up RudderStack
@@ -14,8 +14,7 @@ The easiest way to get started with RudderStack is to sign up for free on [**Rud
 
 * Setup instructions for [**Docker**](docker.md)\*\*\*\*
 * Setup instructions for [**Kubernetes**](kubernetes.md)\*\*\*\*
-* Setup instructions for a [**Native Installation**](native-installation.md)\*\*\*\*
-* Setup instructions for a [**Developer Machine Setup**](developer-machine-setup.md)\*\*\*\*
+* Instructions for a [**Developer Machine Setup**](developer-machine-setup.md)\*\*\*\*
 
 {% hint style="warning" %}
 If you are planning to use RudderStack in production, we strongly recommend using the [**Kubernetes**](kubernetes.md) Helm charts. We update our Docker images with bug fixes much more frequently than our [**GitHub repository**](https://github.com/rudderlabs/rudder-server).
@@ -28,8 +27,10 @@ You can [**contact us**](https://resources.rudderstack.com/join-rudderstack-slac
 ## Sending Test Events to Verify the Installation
 
 {% hint style="info" %}
-This section assumes you have already [**installed and set up RudderStack**](./).
+This section assumes you have already installed and set up RudderStack.
 {% endhint %}
+
+### Step 1: Clone the Repository
 
 Before sending test events to verify your RudderStack installation, clone the RudderStack [**GitHub repository**](https://github.com/rudderlabs/rudder-server) by running the following command:
 
@@ -39,9 +40,9 @@ git clone https://github.com/rudderlabs/rudder-server.git
 
 Then, follow the sections below to send events to test your RudderStack installation.
 
-### Getting the Source Write Key
+### Step 2: Get the Source Write Key
 
-If you have signed up for [**RudderStack Cloud**](https://app.rudderstack.com/), follow these steps to get your source write key:
+#### Option 1: If you have signed up for [**RudderStack Cloud**](https://app.rudderstack.com/), follow these steps to get your source write key:
 
 * Set up a source and a destination in RudderStack by following this [**guide**](../../connections/adding-source-and-destination-rudderstack.md). 
 * You can find the write key in the dashboard, as shown:
@@ -54,18 +55,18 @@ The **write key** is different from your **workspace token**. The write key is a
 
 ![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.29.03-pm.png)
 
-If you are self-hosting RudderStack and have set up the control plane using the [**RudderStack Config Generator**](../config-generator.md), you can find the write key associated with your source by following these steps:
+#### Option 2: If you are self-hosting RudderStack and have set up the control plane using the [**RudderStack Config Generator**](../config-generator.md), you can find the source write key by following these steps:
 
 * Set up a source and a destination by following this [**guide**](../../connections/adding-source-and-destination-rudderstack.md). 
 * You can find the write key associated with the source in the dashboard as shown:
 
 ![](../../.gitbook/assets/writekey.jpg)
 
-### Sending Test Events
+### Step 3: Send Test Events
 
-In our [**GitHub repository**](https://github.com/rudderlabs/rudder-server) ****\(which you cloned above\) we have bundled a shell script that generates test events.
+In our [**GitHub repository**](https://github.com/rudderlabs/rudder-server) ****\(which you cloned in **Step 1**\) we have bundled a shell script that generates test events.
 
-#### If you're using RudderStack Cloud, follow these steps:
+#### Option 1: If you're using RudderStack Cloud, follow these steps:
 
 * In your terminal, navigate to the folder where RudderStack is installed. 
 * Then, run the following command after replacing `<YOUR_WRITE_KEY>` with the source write key obtained in the previous section:
@@ -76,7 +77,7 @@ In our [**GitHub repository**](https://github.com/rudderlabs/rudder-server) ****
 
 * You can then check your destination to verify that events are delivered. You can also view the live events via RudderStack's [**Live Events**](../../user-guides/how-to-guides/live-destination-event-debugger.md) ****tab.
 
-#### If you have set up open-source RudderStack in your environment, follow these steps:
+#### Option 2: If you have set up open-source RudderStack in your environment, follow these steps:
 
 * In your terminal, navigate to the folder where RudderStack is installed. 
 * Then, run the following command after replacing `<YOUR_WRITE_KEY>` with the source write key obtained in the previous section, and `<DATA_PLANE_URL>` with your Data Plane URL.
