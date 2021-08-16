@@ -118,6 +118,10 @@ Your `rudder-docker.yml` should look like the following:
 $ helm install my-release ./ --set backend.controlPlaneJSON=true
 ```
 
+{% hint style="info" %}
+Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/kubernetes#configuration) section for information on the parameters that can be configured during deployment.
+{% endhint %}
+
 ### Developer Machine Setup
 
 * Follow [**this guide** ](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup)to set up RudderStack on your developer machine. 

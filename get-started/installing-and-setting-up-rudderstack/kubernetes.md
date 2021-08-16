@@ -159,6 +159,7 @@ The following table lists the configurable parameters of the RudderStack chart a
 | `transformer.image.version` | Container image tag for the transformer. Check the  [**Available versions**](https://hub.docker.com/r/rudderlabs/rudder-transformer/tags)\*\*\*\* | `0.1.4` |
 | `transformer.image.imagePullPolicy` | Container image pull policy for the transformer image | `Always` |
 | `backend.extraEnvVars` | Extra environments variables to be used by the backend in the deployments | Refer the `values.yaml` file |
+| `backend.controlPlaneJSON` | Set this to `true` for the Data Plane to read the configuration from the `workspaceConfig.json` file in case you have a self-hosted Control Plane. | `false` |
 
 Each of these parameters can be changed in `values.yaml`. You can also specify each parameter using the `--set key=value[,key=value]` argument while running the `helm install` command. 
 
@@ -176,6 +177,14 @@ Note that:
 * The configuration specific to the Data Plane can be edited in[`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml).
 * The configuration specific to PostgreSQL can be configured in `pg_hba.conf`, and `postgresql.conf`.
 {% endhint %}
+
+## Instructions for GCP
+
+Make sure you replace the contents of the file [**rudder-google-application-credentials.json**](https://github.com/rudderlabs/rudderstack-helm/blob/master/rudder-google-application-credentials.json) in the repository with the details of your Google service account if you are using Google Cloud Storage or BigQuery for the following cases:
+
+* \*\*\*\*[**Google Cloud Storage**](../../destinations/storage-platforms/google-cloud-storage.md) as a destination
+* Google Cloud Storage for dumping jobs
+* \*\*\*\*[**BigQuery**](../../data-warehouse-integrations/google-bigquery.md) as a warehouse destination
 
 ## Components
 
