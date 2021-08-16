@@ -76,7 +76,7 @@ docker-compose -f rudder-docker.yml up
 
 ### For **Self-Hosted Control Plane**
 
-If you have self-hosted the Control Plane using the open-source Config Generator, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#docker) instructions to set up the RudderStack Data Plane on Docker. 
+If you have self-hosted the Control Plane, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#docker) instructions to set up the RudderStack Data Plane on Docker. 
 
 Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
