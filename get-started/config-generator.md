@@ -92,26 +92,21 @@ Your `rudder-docker.yml` should look like the following:
 
 * Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
-### Native Installation
+### Kubernetes
 
-For a native RudderStack Installation, follow these steps:
+* Open the `values.yaml` file.
 
-* Follow the steps mentioned in this [**guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/native-installation#installation) to set up the RudderStack Data Plane natively. 
-* Create a `.env` file and copy the contents of the [**`sample.env`**](https://github.com/rudderlabs/rudder-server/blob/master/config/sample.env) file into it. Then, open this `.env` file. 
-* Add the line `RSERVER_BACKEND_CONFIG_CONFIG_FROM_FILE=true`. 
-* Also, add the following line and replace `<absolute_path_to_workspace_config>` with the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\).
+{% hint style="info" %}
+The repository for the Helm chart containing `values.yaml` can be found [**here**](https://github.com/rudderlabs/rudderstack-helm).
+{% endhint %}
 
-```text
-RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH=<absolute_path_to_workspace_config>
-```
-
-* Finally, run the RudderStack server using the following command:
+* Set the parameter `controlPlaneJSON` to `true`.  
+* Export workspace configuration from the dashboard by following the steps in the **Exporting Workspace Configuration** section above. 
+* Finally, run the following command:
 
 ```text
-./rudder-server
+$ helm install my-release ./ --set backend.controlPlaneJSON=true
 ```
-
-* Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
 ### Developer Machine Setup
 

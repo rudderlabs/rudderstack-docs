@@ -5,7 +5,6 @@
   * [Install and Set Up RudderStack](get-started/installing-and-setting-up-rudderstack/README.md)
     * [Docker](get-started/installing-and-setting-up-rudderstack/docker.md)
     * [Kubernetes](get-started/installing-and-setting-up-rudderstack/kubernetes.md)
-    * [Native Installation](get-started/installing-and-setting-up-rudderstack/native-installation.md)
     * [Developer Machine Setup](get-started/installing-and-setting-up-rudderstack/developer-machine-setup.md)
   * [Dashboard Overview](get-started/dashboard-overview/README.md)
     * [User Management](get-started/dashboard-overview/user-management.md)
