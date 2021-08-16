@@ -239,6 +239,10 @@ To view the data or events that are sent to your destination, you can use the **
 
 You can use [**RudderStack Transformations**](adding-a-new-user-transformation-in-rudderstack/) to set custom logic on your events before sending them to Mixpanel.
 
+#### 4. I am seeing a `Message type not supported` error. What does this mean?
+
+This error is being returned from the RudderStack Transformer. It means that for a particular destination, the event type that is trying to be sent, is not supported. For example, Salesforce only supports `identify` events. Therefore, if a `track` call is sent to Salesforce, the `Message type not supported` error will be returned. This error does not affect any other events and is harmless. However, a simple user transformation can be written to filter out these events so you will no longer see this error. Read [these docs](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) on how to create a user transformation for a destination.
+
 ### Warehouse Destinations
 
 #### 1. How to force RudderStack to push all the data to a data warehouse in real-time with no delay? During the implementation, it would be better to see how the data is collected in real-time, rather than 30 minutes later.
