@@ -113,7 +113,7 @@ Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/instal
 
 ### For **Self-Hosted Control Plane**
 
-If you have self-hosted the Control Plane, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#kubernetes) instructions to set up the RudderStack Data Plane in your Kubernetes cluster. 
+If you have self-hosted the Control Plane using the open-source Config Generator, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#kubernetes) instructions to set up the RudderStack Data Plane in your Kubernetes cluster. 
 
 Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
@@ -205,5 +205,5 @@ Installing this Helm chart will deploy the following pods and containers in the 
 
 ## Contact Us
 
-If you come across any issues while setting up RudderStack on your Kubernetes cluster, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any issues while setting up RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
