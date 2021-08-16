@@ -101,7 +101,7 @@ The repository for the Helm chart containing `values.yaml` can be found [**here*
 {% endhint %}
 
 * Set the parameter `controlPlaneJSON` to `true`.  
-* Export workspace configuration from the dashboard by following the steps in the **Exporting Workspace Configuration** section above. 
+* Export the workspace configuration from the dashboard by following the steps in the [**Exporting Workspace Configuration**](https://docs.rudderstack.com/get-started/config-generator#exporting-workspace-configuration) section above. 
 * Finally, run the following command:
 
 ```text
