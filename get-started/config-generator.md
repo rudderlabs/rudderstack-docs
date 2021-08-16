@@ -124,36 +124,7 @@ Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/instal
 
 ### Developer Machine Setup
 
-* First, set up the database in your preferred directory using the following commands:
-
-```bash
-createdb jobsdb
-createuser --superuser rudder
-psql "jobsdb" -c "alter user rudder with encrypted password 'rudder'";
-psql "jobsdb" -c "grant all privileges on database jobsdb to rudder";
-```
-
-* Next, clone the [**RudderStack server**](https://github.com/rudderlabs/rudder-server) repository.  
-* Then, run `git submodule init` and `git submodule update` to fetch the `rudder-transformer` repository.  
-* Next, navigate to the Transformer directory using the following command:
-
-```bash
-cd rudder-transformer
-```
-
-* Install dependencies using the command `npm i` . Then, start the destination transformer using the following command:
-
-```bash
-node destTransformer.js
-```
-
-* Navigate back to the main directory using the command `cd rudder-server`.  
-* Next, copy the `sample.env` to the main directory using the following command:
-
-```bash
-cp config/sample.env .env
-```
-
+* Follow [**this guide** ](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup)to set up RudderStack on your developer machine. 
 * Then, go to the `config` folder and open `config.yaml`.  
 * Under `[BackendConfig]`, look for `configFromFile` and set it to `true`. 
 * Also, change the value of `configJSONPath` to the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\), as shown:

@@ -39,7 +39,7 @@ RudderStack's dashboard lets you easily set up your data pipelines by configurin
 
 ![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
 
-### Self-host the Control Plane
+### Self-Host the Control Plane
 
 {% hint style="warning" %}
 Use this option if you don't wish to sign up for RudderStack.
@@ -76,7 +76,7 @@ docker-compose -f rudder-docker.yml up
 
 ### For **Self-Hosted Control Plane**
 
-If you have self-hosted the Control Plane, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#docker) instructions to set up the RudderStack Data Plane on Docker. 
+If you have self-hosted the Control Plane using the open-source Config Generator, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#docker) instructions to set up the RudderStack Data Plane on Docker. 
 
 Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
