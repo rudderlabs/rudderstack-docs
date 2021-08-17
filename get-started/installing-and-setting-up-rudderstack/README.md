@@ -10,9 +10,7 @@ description: >-
 The easiest way to get started with RudderStack is to sign up for free on [**RudderStack Cloud** **Free**](https://app.rudderlabs.com/signup?type=freetrial).
 {% endhint %}
 
-## How to Set Up RudderStack?
-
-### Setup Instructions
+## Setup Instructions
 
 * Setup instructions for [**Docker**](docker.md)\*\*\*\*
 * Setup instructions for [**Kubernetes**](kubernetes.md)\*\*\*\*
@@ -22,7 +20,7 @@ The easiest way to get started with RudderStack is to sign up for free on [**Rud
 If you are planning to use RudderStack in production, we strongly recommend using the [**Kubernetes**](kubernetes.md) Helm charts. We update our Docker images with bug fixes much more frequently than our [**GitHub repository**](https://github.com/rudderlabs/rudder-server).
 {% endhint %}
 
-### Send Test Events
+## Send Test Events
 
 Once you have installed RudderStack, follow [**this guide**](sending-test-events.md) to send test events to verify your installation.
 

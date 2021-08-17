@@ -55,6 +55,13 @@ Note that the Control Plane set up using the RudderStack Config Generator lacks 
 
 ### For **RudderStack-Hosted Control Plane**
 
+{% hint style="info" %}
+This section assumes you have the following tools installed already:
+
+* [**Go 1.13**](https://golang.org/dl/) or above
+* [**Node.js 10.6**](https://nodejs.org/en/download/) or above
+{% endhint %}
+
 To set up the RudderStack Data Plane in your Docker environment, follow these steps:
 
 * Download the `rudder-docker.yml` [**docker-compose**](https://raw.githubusercontent.com/rudderlabs/rudder-server/master/rudder-docker.yml) file.
@@ -65,13 +72,13 @@ To set up the RudderStack Data Plane in your Docker environment, follow these st
 docker-compose -f rudder-docker.yml up
 ```
 
-* Once you have successfully followed the steps above, [**send test events**](sending-test-events.md) to verify the installation.
+* Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
 ### For **Self-Hosted Control Plane**
 
 If you have self-hosted the Control Plane using the open-source Config Generator, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#docker) instructions to set up the RudderStack Data Plane on Docker. 
 
-Once you have successfully followed the steps above, [**send test events**](sending-test-events.md) to verify the installation.
+Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
 
 ## Contact Us
 
