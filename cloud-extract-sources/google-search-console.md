@@ -47,6 +47,10 @@ If you have already connected RudderStack to your Google Search Console account,
 
 In the **Site URL**, make sure to use the **exact URL** of the website as specified in your Google Search Console. Read [this guide](https://support.google.com/webmasters/answer/34592?hl=en) for more information.
 
+{% hint style="info" %}
+If you are using a domain property in search console you will need pre-pepend the site with "sc-domain:".
+{% endhint %}
+
 ![](../.gitbook/assets/image%20%2813%29%20%281%29.png)
 
 {% hint style="success" %}
