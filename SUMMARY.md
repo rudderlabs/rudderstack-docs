@@ -6,6 +6,7 @@
     * [Docker](get-started/installing-and-setting-up-rudderstack/docker.md)
     * [Kubernetes](get-started/installing-and-setting-up-rudderstack/kubernetes.md)
     * [Developer Machine Setup](get-started/installing-and-setting-up-rudderstack/developer-machine-setup.md)
+    * [Sending Test Events](get-started/installing-and-setting-up-rudderstack/sending-test-events.md)
   * [Dashboard Overview](get-started/dashboard-overview/README.md)
     * [User Management](get-started/dashboard-overview/user-management.md)
   * [Config Generator](get-started/config-generator.md)

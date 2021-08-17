@@ -92,7 +92,7 @@ Your `rudder-docker.yml` should look like the following:
   docker-compose -f rudder-docker.yml up
   ```
 
-* Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
+* Once you have successfully followed the steps above, [**send test events**](installing-and-setting-up-rudderstack/sending-test-events.md) to verify the installation.
 
 ### Kubernetes
 
@@ -122,9 +122,40 @@ $ helm install my-release ./ --set backend.controlPlaneJSON=true
 Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/kubernetes#configuration) section for information on the parameters that can be configured during deployment.
 {% endhint %}
 
+* Once you have completed these steps above successfully, [**send test events**](installing-and-setting-up-rudderstack/sending-test-events.md) to verify the installation.
+
 ### Developer Machine Setup
 
-* Follow [**this guide** ](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup)to set up RudderStack on your developer machine. 
+* First, set up the database in your preferred directory using the following commands:
+
+```bash
+createdb jobsdb
+createuser --superuser rudder
+psql "jobsdb" -c "alter user rudder with encrypted password 'rudder'";
+psql "jobsdb" -c "grant all privileges on database jobsdb to rudder";
+```
+
+* Next, clone the [**RudderStack server**](https://github.com/rudderlabs/rudder-server) repository.  
+* Then, run `git submodule init` and `git submodule update` to fetch the `rudder-transformer` repository.  
+* Next, navigate to the Transformer directory using the following command:
+
+```bash
+cd rudder-transformer
+```
+
+* Install dependencies using the command `npm i` . Then, start the destination transformer using the following command:
+
+```bash
+node destTransformer.js
+```
+
+* Navigate back to the main directory using the command `cd rudder-server`.  
+* Next, copy the `sample.env` to the main directory using the following command:
+
+```bash
+cp config/sample.env .env
+```
+
 * Then, go to the `config` folder and open `config.yaml`.  
 * Under `[BackendConfig]`, look for `configFromFile` and set it to `true`. 
 * Also, change the value of `configJSONPath` to the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\), as shown:
@@ -137,7 +168,7 @@ Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/instal
   go run -mod=vendor main.go
   ```
 
-* Once you have completed these steps above successfully, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
+* Once you have completed these steps above successfully, [**send test events**](installing-and-setting-up-rudderstack/sending-test-events.md) to verify the installation.
 
 ## Using RudderStack Config Generator for Device Mode Destinations
 
