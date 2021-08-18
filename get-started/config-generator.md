@@ -16,14 +16,16 @@ The easiest way to manage these configurations is through RudderStack's [**self-
 
 However, if you don't wish to sign up for RudderStack and want to self-host these configurations instead, you can use the open-source Config Generator to set up your own Control Plane. You can then manage the source and destination configurations locally by exporting to or importing from a JSON file.
 
-## Setting Up the Config Generator
+## Setting Up the Control Plane
+
+To set up your self-hosted Control Plane using the Config Generator, follow these steps:
 
 {% hint style="info" %}
 Make sure you have [**Node.js**](https://nodejs.org/en/download/) installed before setting up the Config Generator.
 {% endhint %}
 
-* To set up the RudderStack Config Generator, clone the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator) ****repository. 
-* Next, open your terminal and navigate to the Config Generator folder and run the following commands:  
+* Clone the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator) ****repository. 
+* Next, open your terminal, navigate to the Config Generator folder, and run the following commands:  
 
 
   * `npm install`
@@ -31,13 +33,9 @@ Make sure you have [**Node.js**](https://nodejs.org/en/download/) installed befo
 
  
 
-* On successful setup, you should be able to see the following UI:
+* Upon successful setup, you can access the dashboard at [**http://localhost:3000**](http://localhost:3000) by default.
 
 ![](../.gitbook/assets/image%20%2822%29.png)
-
-{% hint style="info" %}
-You can access the dashboard at [**http://localhost:3000**](https://github.com/ameypv-rudder/rudder-server/wiki/RudderStack-Config-Generator) by default.
-{% endhint %}
 
 ## Exporting Workspace Configuration
 
@@ -47,15 +45,9 @@ After adding the required sources and destinations in the dashboard, you can exp
 For more information on adding sources and destinations in RudderStack, refer to the [**How to Add a Source and Destination in RudderStack**](../connections/adding-source-and-destination-rudderstack.md) guide.
 {% endhint %}
 
-To read the workspace configuration from the exported JSON file, you can update the config variables `configFromFile` and `configJSONPath` in `config.yaml`.
-
-{% hint style="info" %}
-For more information on these variables, check out the [**Configuration Parameters**](https://docs.rudderstack.com/user-guides/administrators-guide/config-parameters#backendconfig) guide.
-{% endhint %}
-
 ## Starting RudderStack With the Workspace Configuration File
 
-For RudderStack to pick up the exported workspace configuration file, follow the steps for your preferred setup:
+For RudderStack to pick up the exported workspace configuration file, follow the steps for your preferred RudderStack setup.
 
 ### Docker
 
@@ -92,7 +84,7 @@ Your `rudder-docker.yml` should look like the following:
   docker-compose -f rudder-docker.yml up
   ```
 
-* Once you have successfully followed the steps above, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
+* Once you have successfully followed the steps above, [**send test events**](installing-and-setting-up-rudderstack/sending-test-events.md) to verify the installation.
 
 ### Kubernetes
 
@@ -122,9 +114,40 @@ $ helm install my-release ./ --set backend.controlPlaneJSON=true
 Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/kubernetes#configuration) section for information on the parameters that can be configured during deployment.
 {% endhint %}
 
+* Once you have completed these steps above successfully, [**send test events**](installing-and-setting-up-rudderstack/sending-test-events.md) to verify the installation.
+
 ### Developer Machine Setup
 
-* Follow [**this guide** ](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/developer-machine-setup)to set up RudderStack on your developer machine. 
+* First, set up the database in your preferred directory using the following commands:
+
+```bash
+createdb jobsdb
+createuser --superuser rudder
+psql "jobsdb" -c "alter user rudder with encrypted password 'rudder'";
+psql "jobsdb" -c "grant all privileges on database jobsdb to rudder";
+```
+
+* Next, clone the [**RudderStack server**](https://github.com/rudderlabs/rudder-server) repository.  
+* Then, run `git submodule init` and `git submodule update` to fetch the `rudder-transformer` repository.  
+* Next, navigate to the Transformer directory using the following command:
+
+```bash
+cd rudder-transformer
+```
+
+* Install dependencies using the command `npm i` . Then, start the destination transformer using the following command:
+
+```bash
+node destTransformer.js
+```
+
+* Navigate back to the main directory using the command `cd rudder-server`.  
+* Next, copy the `sample.env` to the main directory using the following command:
+
+```bash
+cp config/sample.env .env
+```
+
 * Then, go to the `config` folder and open `config.yaml`.  
 * Under `[BackendConfig]`, look for `configFromFile` and set it to `true`. 
 * Also, change the value of `configJSONPath` to the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\), as shown:
@@ -137,9 +160,9 @@ Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/instal
   go run -mod=vendor main.go
   ```
 
-* Once you have completed these steps above successfully, [**send test events**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#sending-test-events-to-verify-the-installation) to verify the installation.
+* Once you have completed these steps above successfully, [**send test events**](installing-and-setting-up-rudderstack/sending-test-events.md) to verify the installation.
 
-## Using RudderStack Config Generator for Device Mode Destinations
+## Using Hosted Control Plane for Device Mode Destinations
 
 {% hint style="info" %}
 To know more about the difference between **Cloud mode** and **Device mode** in RudderStack, read the ****[**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -157,8 +180,8 @@ Since the RudderStack SDKs need the source configuration and RudderStack's Data 
 
 To do so, follow these steps:
 
-* Set up your Control Plane using the RudderStack Config Generator by following the steps [**here**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#setting-up-the-rudderstack-config-generator). 
-* Go to the Config Generator UI and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button, as shown below:
+* Set up your Control Plane using the RudderStack Config Generator. 
+* Go to the dashboard, set up your source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button, as shown:
 
 ![](../.gitbook/assets/screenshot-2020-10-12-at-4.51.52-pm.png)
 
@@ -174,7 +197,7 @@ RudderStack SDKs fetch the configuration by appending the `/sourceConfig` path t
 
 * The SDKs will fetch the config from `<CONTROL_PLANE_URL>/sourceConfig`. 
 
-Shown below is a sample of the exported source config:
+A sample exported source config is shown below:
 
 ```text
 {
@@ -244,9 +267,12 @@ Shown below is a sample of the exported source config:
 
 To use the Control Plane URL to initialize your SDKs, follow these steps:
 
-* \*\*\*\*[**Set up**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#setting-up-the-rudderstack-config-generator) ****the RudderStack Config Generator. 
-* Go to RudderStack Config Generator UI and export the source config from the source details page by clicking the **EXPORT SOURCE CONFIG** button. 
-* Host the exported file on your own server such that the config is available at  `<CONTROL_PLANE_URL>/sourceConfig`. 
+* \*\*\*\*[**Set up**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#setting-up-the-rudderstack-config-generator) ****the Control Plane using the RudderStack Config Generator. 
+* Go to dashboard, configure the source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button as shown:
+
+![](../.gitbook/assets/image%20%28121%29.png)
+
+* Host the exported file on your own server such that the configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`. 
 
 {% hint style="info" %}
 This solution assumes that you have already [**set up RudderStack**](installing-and-setting-up-rudderstack/) locally and are hosting your own RudderStack backend \(Data Plane\).
