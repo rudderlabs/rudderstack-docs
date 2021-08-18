@@ -168,10 +168,10 @@ cp config/sample.env .env
 To know more about the difference between **Cloud mode** and **Device mode** in RudderStack, read the ****[**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-RudderStack's [**web**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Android**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) ****SDKs expect the source configurations and the associated device mode destination configurations for initialization.
+RudderStack's [**web**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Android**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) ****SDKs expect the source configurations and the associated device mode destination configurations for initialization. If you are self-hosting the Control Plane, you will need to host these configurations on your own server such that the source configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
 
 {% hint style="info" %}
-By default, RudderStack SDKs fetch the source configuration from [**https://api.rudderlabs.com/sourceConfig**](https://api.rudderlabs.com/sourceConfig).
+For RudderStack Cloud, the SDKs fetch the source configuration from [**https://api.rudderlabs.com/sourceConfig**](https://api.rudderlabs.com/sourceConfig).
 {% endhint %}
 
 ### What is the Control Plane URL?
@@ -268,8 +268,11 @@ A sample exported source config is shown below:
 To use the Control Plane URL to initialize your SDKs, follow these steps:
 
 * \*\*\*\*[**Set up**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#setting-up-the-rudderstack-config-generator) ****the Control Plane using the RudderStack Config Generator. 
-* Go to RudderStack Config Generator UI and export the source config from the source details page by clicking the **EXPORT SOURCE CONFIG** button. 
-* Host the exported file on your own server such that the config is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
+* Go to dashboard, configure the source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button as shown:
+
+![](../../.gitbook/assets/image%20%28121%29.png)
+
+* Host the exported file on your own server such that the configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`. 
 
 {% hint style="info" %}
 This solution assumes that you have already [**set up RudderStack**](../../get-started/installing-and-setting-up-rudderstack/) locally and are hosting your own RudderStack backend \(Data Plane\).
