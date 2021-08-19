@@ -28,7 +28,7 @@ To use the SDK, run the following code snippet:
 const Analytics = require("@rudderstack/rudder-sdk-node");
 
 // RudderStack requires the batch endpoint of the server you are running
-const client = new Analytics(WRITE_KEY, DATA_PLANE_URL/v1/batch);
+const client = new Analytics(WRITE_KEY, `${DATA_PLANE_URL}/v1/batch`);
 ```
 
 ## Identify
