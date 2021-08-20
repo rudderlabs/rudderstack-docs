@@ -43,7 +43,8 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Select the destination as **AWS Personalize**. Give your destination a name and then click on **Next**. You should then see the following screen:
 
-![Destination Settings for AWS Personalize](../../.gitbook/assets/personalize.png)
+![Destination Settings for AWS Personalize](https://user-images.githubusercontent.com/59817155/129888869-c221b05e-bb80-4394-90a6-f3d84d31f76e.png)
+
 
 * Next, in the **Settings** section, fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
   * **Connection Credentials**
