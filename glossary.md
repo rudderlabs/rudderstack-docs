@@ -221,7 +221,7 @@ For more information on how to use these warehouse destinations, check out our [
 The **RudderStack API Spec** helps you plan your event data and provides various options for tracking your events across all the RudderStack SDKs and APIs. As RudderStack has a unified event semantic for different destination platforms, you can easily translate your event data to different downstream tools by following this spec.
 
 {% hint style="info" %}
-For more information on the RudderStack API Specification, refer to our [**docs**](rudderstack-api/rudderstack-spec/).
+For more information on the RudderStack API Specification, refer to our [**docs**](rudderstack-api/api-specification/rudderstack-spec/).
 {% endhint %}
 
 ### SDK

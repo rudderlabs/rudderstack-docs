@@ -45,7 +45,6 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ![Destination Settings for AWS Personalize](https://user-images.githubusercontent.com/59817155/129888869-c221b05e-bb80-4394-90a6-f3d84d31f76e.png)
 
-
 * Next, in the **Settings** section, fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
   * **Connection Credentials**
     * **Access Key ID**: The access key ID of your AWS account goes here.

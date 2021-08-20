@@ -4,7 +4,7 @@ description: >-
   RudderStack Cloud mode.
 ---
 
-# Sending Data via Cloud Mode
+# Cloud Mode
 
 {% hint style="info" %}
 For more information on sending events via the Cloud mode, refer to the [**RudderStack Connection Modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
@@ -210,7 +210,7 @@ Note that **`products`** is an array of objects. Every object in this array can 
 | `image_url` | `image_url` |
 
 {% hint style="info" %}
-The `products` field is not mandatory. However, if provided, each object must contain the `name` and `price` field, otherwise it will be dropped. 
+The `products` field is not mandatory. However, if provided, each object must contain the `name` and `price` field, otherwise it will be dropped.
 
 **Note that the `track` call will still not be aborted in such a scenario.**
 {% endhint %}
