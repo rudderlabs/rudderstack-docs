@@ -4,7 +4,13 @@ description: >-
   RudderStack Web Device mode.
 ---
 
-# Device Mode
+# Sending Data via Device Mode
+
+RudderStack lets you send your event data to Drip via the Device mode, i.e. using the native web SDK.
+
+{% hint style="info" %}
+For more information on sending events via the Device mode, refer to the [**RudderStack connection modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
+{% endhint %}
 
 {% hint style="success" %}
 **Find the open-source JavaScript SDK code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/Drip)**.**
