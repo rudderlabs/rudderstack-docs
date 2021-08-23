@@ -661,7 +661,7 @@ public class CustomFactory extends RudderIntegration<CustomFactory> {
     public void reset() {
         System.out.println("Reset is called");
     }
-    
+
     @Override
     public void flush() {
         System.out.println("Flush is called");
@@ -682,16 +682,14 @@ public class CustomFactory extends RudderIntegration<CustomFactory> {
     public CustomFactory getUnderlyingInstance() {
         return this;
     }
-} 
+}
 ```
+
 Some pointers to keep in mind:
 
 * You can use the constructor of the `CustomFactory` class to initialize the native SDK of the Device Mode destination you are working on.
-
 * RudderStack's Android SDK dumps every event it receives to the `dump()` method of the `CustomFactory` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination.
-
 * The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset.
-
 * RudderStack's Android SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
 
 {% tabs %}
@@ -700,6 +698,7 @@ Some pointers to keep in mind:
 rudderClient.flush()
 ```
 {% endtab %}
+
 {% tab title="JAVA" %}
 ```java
 rudderClient.flush();
@@ -708,10 +707,8 @@ rudderClient.flush();
 {% endtabs %}
 
 * Make sure you return a valid value from `getUnderlyingInstance()` as it is used by the Android SDK to validate `CustomFactory`.
-
 * Make sure you do not duplicate the value of `FACTORY_KEY` across multiple `CustomFactory` that you develop.
-
-2. Register the `CustomFactory` with the RudderStack Android SDK during its initialization, as shown:
+* Register the `CustomFactory` with the RudderStack Android SDK during its initialization, as shown:
 
 ```java
 var rudderClient = RudderClient.getInstance(
@@ -727,7 +724,7 @@ var rudderClient = RudderClient.getInstance(
 ```
 
 That's it! Your Device Mode destination is good to go.
- 
+
 ## FAQs
 
 ### Do I need to add anything to my proguard-rules?
