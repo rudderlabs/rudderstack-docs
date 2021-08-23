@@ -217,7 +217,7 @@ The following table includes all the fields in `track` call for `orders` with th
 
 Note that **`products`** is an array of objects. Every object in this array can contain the following fields:
 
-| **RudderStack Field** | **Drip Field** |
+| **RudderStack Field** | **Ometria Field** |
 | :--- | :--- |
 | `product_id` | `product_id` |
 | `variant_id` | `variant_id` |
