@@ -613,11 +613,12 @@ RudderClient rudderClient = RudderClient.getInstance(
 {% endtab %}
 {% endtabs %}
 
-## Can I develop a device mode destination on my own if RudderStack doesn't Support that destination already?
+## Can I develop a Device Mode destination if RudderStack doesn't support it already?
 
-Yes, You can develop a Device Mode Destination on your own if RudderStack doesn't support that by following the steps as shown below:
+Yes, you can. Follow these steps:
 
-1. Create a Custom Factory class by Extending the [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) as shown below:
+1. Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) as shown:
+
 ```java
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -679,9 +680,14 @@ public class CustomFactory extends RudderIntegration<CustomFactory> {
     }
 } 
 ```
-* You can use the constructor of the `CustomFactory` to initialize the native SDK of the device mode destination you are working on.
-* Rudder Android SDK dumps every event it receives to the `dump()` of the `CustomFactory` class from where you can process it as per the destination and hand it over to the native SDK of the device mode destination.
-* Rudder Android SDK also triggers the `reset()` of the `CustomFactory` class on every `reset()` call made via the SDK which you can use to handle the destination-specific reset logic.
+Some pointers to keep in mind:
+
+* You can use the constructor of the `CustomFactory` to initialize the native SDK of the Device mode destination you are working on.
+
+* RudderStack's Android SDK dumps every event it receives to the `dump()` of the `CustomFactory` class. From here, you can process the event and hand it over to the native SDK of the Device mode destination.
+
+* The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset.
+
 * Rudder Android SDK also triggers the `flush()` of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -696,10 +702,11 @@ rudderClient.flush();
 {% endtab %}
 {% endtabs %}
 
-* Make sure you return a valid value from the `getUnderlyingInstance()` as it is used by the Rudder Android SDK to validate the `CustomFactory`.
-* Make sure you do not duplicate the value of `FACTORY_KEY` across multiple Custom Factories you develop.
+* Make sure you return a valid value from `getUnderlyingInstance()` as it is used by the Android SDK to validate `CustomFactory`.
 
-2. Register the `CustomFactory` with the Rudder Android SDK during its initialization as shown below:
+* Make sure you do not duplicate the value of `FACTORY_KEY` across multiple `CustomFactory` that you develop.
+
+2. Register the `CustomFactory` with the RudderStack Android SDK during its initialization, as shown:
 
 ```java
 var rudderClient = RudderClient.getInstance(
@@ -713,12 +720,14 @@ var rudderClient = RudderClient.getInstance(
                 .build()
 )
 ```
-3. That's it !. You've completed the development of a Device Mode Destination on your own. 
+
+That's it! Your Device Mode destination is good to go.
+ 
 ## FAQs
 
-### Do I need to add anything to my progaurd-rules?
+### Do I need to add anything to my proguard-rules?
 
-If you are facing any issue regarding even delivery in a production environment, add the following line in your progaurd rule.
+If you are facing any issue regarding even delivery in a production environment, add the following line in your proguard rule.
 
 ```java
 -keep class com.rudderstack.android.** { *; }
