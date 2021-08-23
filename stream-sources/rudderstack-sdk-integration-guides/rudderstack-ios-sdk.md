@@ -556,7 +556,11 @@ RSClient.getInstance(<WRITE_KEY>, config: builder.build())
 
 ## Can I develop a Device Mode destination if RudderStack doesn't support it already?
 
-Yes, you can. Follow these steps:
+{% hint style="info" %}
+More information on the RudderStack Device Mode can be found in the [**RudderStack Connection Modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
+{% endhint %}
+
+Yes, you can develop a Device Mode destination by following these steps:
 
 1. Create a `CustomFactory.h` file by extending [`RSIntegrationFactory`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegrationFactory.h), as shown:
 
@@ -575,7 +579,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 ```
 
-2. Create a `CustomFactory.m` file, as shown:
+2. Then, create a `CustomFactory.m` file, as shown:
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -613,7 +617,7 @@ NS_ASSUME_NONNULL_END
 @end
 ```
 
-3. Create a `CustomIntegration.h` file by extending [`RSIntegration`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegration.h), as shown:
+3. Next, create a `CustomIntegration.h` file by extending [`RSIntegration`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegration.h), as shown:
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -633,7 +637,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 ```
 
-4. Then, create a `CustomIntegration.m` file, as shown:
+4. Next, create a `CustomIntegration.m` file, as shown:
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -688,13 +692,13 @@ NS_ASSUME_NONNULL_END
 
 Some pointers to keep in mind:
 
-* RudderStack's iOS SDK dumps every event it receives to the `dump()` of the `CustomFIntegration` class. From here, you can process the event and hand it over to the native SDK of the Device mode destination.
+* RudderStack's iOS SDK dumps every event it receives to the `dump()` method of the `CustomFIntegration` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination.
 
 * The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset logic.
 
 * Make sure you do not duplicate the value of `KEY` present inside `CustomFactory`, across multiple `CustomFactory` that you develop.
 
-* Rudder iOS SDK also triggers the `flush()` of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
+* RudderStack's iOS SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK, which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown:
 
 ```objective c
 [[RSClient sharedInstance] flush];
@@ -770,4 +774,3 @@ let traits = RSClient.sharedInstance()?.getContext().traits
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-ios/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
