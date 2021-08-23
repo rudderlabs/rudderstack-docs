@@ -668,6 +668,9 @@ NS_ASSUME_NONNULL_END
 - (void) reset {
 }
 
+- (void) flush {
+}
+
 @end
 ```
 
@@ -691,6 +694,12 @@ Some pointers to keep in mind:
 * The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset logic.
 
 * Make sure you do not duplicate the value of `KEY` present inside `CustomFactory`, across multiple `CustomFactory` that you develop.
+
+* Rudder iOS SDK also triggers the `flush()` of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
+
+```objective c
+[[RSClient sharedInstance] flush];
+```
 
 ## FAQ
 
