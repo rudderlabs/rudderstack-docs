@@ -195,7 +195,7 @@ The following properties, if available, are present in the metadata response:
 
 ![Source ID](../.gitbook/assets/image%20%2898%29.png)
 
-![](../.gitbook/assets/image%20%28120%29%20%281%29.png)
+![](../.gitbook/assets/image%20%28120%29%20%281%29%20%281%29.png)
 
 Since you may not need the metadata in every transformation, you can optionally access it by including it in your function signature as an argument wherever required.
 
