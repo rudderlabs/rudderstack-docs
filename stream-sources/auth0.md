@@ -45,9 +45,7 @@ The webhook URL is of the format:
 <DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_AUTH0_SOURCE_WRITE_KEY>
 ```
 
-* If you're using RudderStack Cloud, replace `<DATA_PLANE_URL>` with the Data Plane URL listed in your dashboard as shown:
-
-![](https://user-images.githubusercontent.com/59817155/130412186-632c46ac-2487-4048-bf32-dc839a257da4.png)
+* If you're using RudderStack Cloud, replace `<DATA_PLANE_URL>` with [**https://hosted.rudderlabs.com/**](https://hosted.rudderlabs.com/).
 
 * If you're hosting your own Data Plane, replace `<DATA_PLANE_URL>` with your [**hosted Data Plane URL**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
 {% endhint %}
