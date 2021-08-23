@@ -286,7 +286,7 @@ If the `createPersistenceQueue` method is not called after initializing the SDK,
 
 ### **Configurable Parameters**
 
-* **`flush()`**: You can use this method to ensure that all the events in the queue are processed. The following snippet highlights the user of `flush()` with a callback:
+* **`flush()`**: Use this method to ensure that all the events in the queue are processed. The following snippet highlights the use of `flush()` with a callback:
 
 ```jsx
 client.flush(function(err, batch){
@@ -295,11 +295,11 @@ client.flush(function(err, batch){
 )
 ```
 
-* **`flushAt`** : The maximum number of events to batch and send to the server. The default value is **20**. 
-* **`flushInterval`** : The maximum timespan after which the events from the in-memory queue is flushed to Redis' persistence queue. The default value is **20 seconds**. 
-* **`maxInternalQueueSize`** - The maximum size of the in-memory queue. The default value is **20000**. 
-* **`JobOpts.maxAttempts`** - The maximum number of retry attempts. The default value is **10**. 
-* **`isMultiProcessor`** - Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. 
+* **`flushAt`**: The maximum number of events to batch and send to the server. The default value is **20**. 
+* **`flushInterval`**: The maximum timespan after which the events from the in-memory queue is flushed to Redis' persistence queue. The default value is **20 seconds**. 
+* **`maxInternalQueueSize`**: The maximum size of the in-memory queue. The default value is **20000**. 
+* **`JobOpts.maxAttempts`**: The maximum number of retry attempts. The default value is **10**. 
+* **`isMultiProcessor`**: Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. 
 
 {% hint style="warning" %}
 If the same queue \(RudderStack SDK initialized with the same queue name\) is used in multiple servers, set this value to `true`as event ordering is not present in this case.
