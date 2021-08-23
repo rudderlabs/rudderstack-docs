@@ -615,7 +615,11 @@ RudderClient rudderClient = RudderClient.getInstance(
 
 ## Can I develop a Device Mode destination if RudderStack doesn't support it already?
 
-Yes, you can. Follow these steps:
+{% hint style="info" %}
+More information on the RudderStack Device Mode can be found in the [**RudderStack Connection Modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
+{% endhint %}
+
+Yes, you can develop a Device Mode destination by following these steps:
 
 1. Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) as shown:
 
@@ -682,13 +686,14 @@ public class CustomFactory extends RudderIntegration<CustomFactory> {
 ```
 Some pointers to keep in mind:
 
-* You can use the constructor of the `CustomFactory` to initialize the native SDK of the Device mode destination you are working on.
+* You can use the constructor of the `CustomFactory` class to initialize the native SDK of the Device Mode destination you are working on.
 
-* RudderStack's Android SDK dumps every event it receives to the `dump()` of the `CustomFactory` class. From here, you can process the event and hand it over to the native SDK of the Device mode destination.
+* RudderStack's Android SDK dumps every event it receives to the `dump()` method of the `CustomFactory` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination.
 
 * The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset.
 
-* Rudder Android SDK also triggers the `flush()` of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
+* RudderStack's Android SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
+
 {% tabs %}
 {% tab title="Kotlin" %}
 ```kotlin
@@ -727,7 +732,7 @@ That's it! Your Device Mode destination is good to go.
 
 ### Do I need to add anything to my proguard-rules?
 
-If you are facing any issue regarding even delivery in a production environment, add the following line in your proguard rule.
+If you are facing any issues regarding event delivery in a production environment, add the following line in your proguard rule:
 
 ```java
 -keep class com.rudderstack.android.** { *; }
