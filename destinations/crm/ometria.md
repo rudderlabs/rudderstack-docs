@@ -49,7 +49,12 @@ To get your API key go to **settings** and click on **API Keys** tab.
 
 The `identify` call lets you add a new contact or update the already existing contact, with latest information such as `id`, `email` etc.
 
-`listingId` and `email` are required for `identify` call. If `listingId` is not provided it will set to value of `userId`. Rudderstack will map `userId` to `customer_id` field.
+`listingId` and `email` are required for `identify` call.
+
+{% hint style="info" %}
+`listingId` is specific to collection. To different collections can have same `listingId`.
+{% endhint %}
+
 
 A sample `identify` call is as shown below:
 
