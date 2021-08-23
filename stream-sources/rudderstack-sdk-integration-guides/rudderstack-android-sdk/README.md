@@ -621,7 +621,7 @@ More information on the RudderStack Device Mode can be found in the [**RudderSta
 
 Yes, you can develop a Device Mode destination by following these steps:
 
-1. Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) as shown:
+* Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) , as shown:
 
 ```java
 import androidx.annotation.NonNull;
@@ -687,9 +687,9 @@ public class CustomFactory extends RudderIntegration<CustomFactory> {
 
 Some pointers to keep in mind:
 
-* You can use the constructor of the `CustomFactory` class to initialize the native SDK of the Device Mode destination you are working on.
-* RudderStack's Android SDK dumps every event it receives to the `dump()` method of the `CustomFactory` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination.
-* The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset.
+* You can use the constructor of the `CustomFactory` class to initialize the native SDK of the Device Mode destination you are working on. 
+* RudderStack's Android SDK dumps every event it receives to the `dump()` method of the `CustomFactory` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination. 
+* The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset. 
 * RudderStack's Android SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
 
 {% tabs %}
@@ -706,9 +706,9 @@ rudderClient.flush();
 {% endtab %}
 {% endtabs %}
 
-* Make sure you return a valid value from `getUnderlyingInstance()` as it is used by the Android SDK to validate `CustomFactory`.
-* Make sure you do not duplicate the value of `FACTORY_KEY` across multiple `CustomFactory` that you develop.
-* Register the `CustomFactory` with the RudderStack Android SDK during its initialization, as shown:
+* Make sure you return a valid value from `getUnderlyingInstance()` as it is used by the Android SDK to validate `CustomFactory`. 
+* Make sure you do not duplicate the value of `FACTORY_KEY` across multiple `CustomFactory` that you develop. 
+* Register `CustomFactory` with the RudderStack Android SDK during its initialization, as shown:
 
 ```java
 var rudderClient = RudderClient.getInstance(
@@ -762,7 +762,7 @@ Yes, you can use the library with `maven`.
 
 ### How do I check whether a specific event is getting fired or not?
 
-You can try searching in the Logcat using the following command once you set the `logLevel` to `VERBOSE`
+Using the following command in the Logcat tool once you set the `logLevel` to `VERBOSE`.
 
 ```bash
 adb logcat -s RudderSDK:V \
@@ -771,7 +771,7 @@ adb logcat -s RudderSDK:V \
 
 ### How do I get the user `traits` after making the `identify` call?
 
-You can get the user traits after making an `identify` call as shown:
+You can get the user traits after making an `identify` call as shown in the following snippet:
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -789,7 +789,9 @@ Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
 
 ### How does the SDK handle different client/server errors?
 
-In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately. For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries to flush the events to RudderStack in an incremental manner \(every 1 second, 2 seconds, 3 seconds, and so on\).
+In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately. 
+
+For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries to flush the events to RudderStack in an incremental manner \(every 1 second, 2 seconds, 3 seconds, and so on\).
 
 ## Contact Us
 
