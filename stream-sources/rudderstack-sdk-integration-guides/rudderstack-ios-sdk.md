@@ -558,7 +558,7 @@ RSClient.getInstance(<WRITE_KEY>, config: builder.build())
 
 Yes, you can. Follow these steps:
 
-1. Create a `CustomFactory.h` file by extending [`RSIntegrationFactory`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegrationFactory.h) as shown:
+1. Create a `CustomFactory.h` file by extending [`RSIntegrationFactory`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegrationFactory.h), as shown:
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -575,7 +575,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 ```
 
-2. Create a `CustomFactory.m` file
+2. Create a `CustomFactory.m` file, as shown:
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -613,7 +613,7 @@ NS_ASSUME_NONNULL_END
 @end
 ```
 
-3. Create a CustomIntegration.h file by extending [`RSIntegration`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegration.h) as shown:
+3. Create a `CustomIntegration.h` file by extending [`RSIntegration`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegration.h), as shown:
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -633,7 +633,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 ```
 
-4. Create a CustomIntegration.m file
+4. Then, create a `CustomIntegration.m` file, as shown:
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -674,10 +674,9 @@ NS_ASSUME_NONNULL_END
 @end
 ```
 
-s
 5. Register the `CustomFactory` with the RudderStack iOS SDK during its initialization, as shown:
 
-```objective c
+```objectivec
     RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
     [builder withDataPlaneURL:[[NSURL alloc] initWithString:DATA_PLANE_URL]];
     [builder withLoglevel:RSLogLevelDebug];
