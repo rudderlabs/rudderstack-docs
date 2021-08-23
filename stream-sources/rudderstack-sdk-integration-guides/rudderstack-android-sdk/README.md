@@ -656,6 +656,11 @@ public class CustomFactory extends RudderIntegration<CustomFactory> {
     public void reset() {
         System.out.println("Reset is called");
     }
+    
+    @Override
+    public void flush() {
+        System.out.println("Flush is called");
+    }
 
     @Override
     public void dump(@Nullable RudderMessage element) {
@@ -677,6 +682,20 @@ public class CustomFactory extends RudderIntegration<CustomFactory> {
 * You can use the constructor of the `CustomFactory` to initialize the native SDK of the device mode destination you are working on.
 * Rudder Android SDK dumps every event it receives to the `dump()` of the `CustomFactory` class from where you can process it as per the destination and hand it over to the native SDK of the device mode destination.
 * Rudder Android SDK also triggers the `reset()` of the `CustomFactory` class on every `reset()` call made via the SDK which you can use to handle the destination-specific reset logic.
+* Rudder Android SDK also triggers the `flush()` of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.flush()
+```
+{% endtab %}
+{% tab title="JAVA" %}
+```java
+rudderClient.flush();
+```
+{% endtab %}
+{% endtabs %}
+
 * Make sure you return a valid value from the `getUnderlyingInstance()` as it is used by the Rudder Android SDK to validate the `CustomFactory`.
 * Make sure you do not duplicate the value of `FACTORY_KEY` across multiple Custom Factories you develop.
 
