@@ -554,6 +554,156 @@ RSClient.getInstance(<WRITE_KEY>, config: builder.build())
 {% endtab %}
 {% endtabs %}
 
+## Can I develop a Device Mode destination if RudderStack doesn't support it already?
+
+{% hint style="info" %}
+More information on the RudderStack Device Mode can be found in the [**RudderStack Connection Modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
+{% endhint %}
+
+Yes, you can develop a Device Mode destination by following these steps:
+
+1. Create a `CustomFactory.h` file by extending [`RSIntegrationFactory`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegrationFactory.h), as shown:
+
+```objectivec
+#import <Foundation/Foundation.h>
+#import <Rudder/Rudder.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface CustomFactory : NSObject<RSIntegrationFactory>
+
++ (instancetype) instance;
+
+@end
+
+NS_ASSUME_NONNULL_END
+```
+
+2. Then, create a `CustomFactory.m` file, as shown:
+
+```objectivec
+#import <Foundation/Foundation.h>
+#import <Rudder/Rudder.h>
+#import "CustomFactory.h"
+#import "CustomIntegration.h"
+
+
+@implementation CustomFactory
+
++ (instancetype)instance {
+    static CustomFactory *sharedInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    return self;
+}
+
+- (nonnull NSString *)key {
+    return @"Custom Factory";
+}
+
+- (nonnull id<RSIntegration>)initiate:(NSDictionary *)config client:(nonnull RSClient *)client rudderConfig:(nonnull RSConfig *)rudderConfig {
+    return [[CustomIntegration alloc] initWithConfig:config withAnalytics:client];
+}
+
+
+@end
+```
+
+3. Next, create a `CustomIntegration.h` file by extending [`RSIntegration`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegration.h), as shown:
+
+```objectivec
+#import <Foundation/Foundation.h>
+#import <Rudder/Rudder.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface CustomIntegration : NSObject<RSIntegration>
+
+@property (nonatomic, strong) NSDictionary *config;
+@property (nonatomic, strong) RSClient *client;
+
+- (instancetype)initWithConfig:(NSDictionary *)config withAnalytics:(RSClient *)client;
+
+@end
+
+NS_ASSUME_NONNULL_END
+```
+
+4. Next, create a `CustomIntegration.m` file, as shown:
+
+```objectivec
+#import <Foundation/Foundation.h>
+#import <Rudder/Rudder.h>
+#import "CustomIntegration.h"
+
+@implementation CustomIntegration
+
+- (instancetype) initWithConfig:(NSDictionary *)config withAnalytics:(RSClient *)client {
+    if (self == [super init]) {
+    }
+    return self;
+}
+
+- (void) processRuderEvent:(nonnull RSMessage *)message {
+    NSString *type = message.type;
+    if ([type isEqualToString:@"identify"]) {
+//        Do something
+    } else if ([type isEqualToString:@"track"]) {
+//        Do something
+    } else if ([type isEqualToString:@"screen"]) {
+//        Do something
+    } else {
+        [RSLogger logWarn:@"MessageType is not supported"];
+    }
+}
+
+- (void) dump:(nonnull RSMessage *)message {
+    [self processRuderEvent:message];
+}
+
+- (void) reset {
+}
+
+- (void) flush {
+}
+
+@end
+```
+
+5. Register the `CustomFactory` with the RudderStack iOS SDK during its initialization, as shown:
+
+```objectivec
+    RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+    [builder withDataPlaneURL:[[NSURL alloc] initWithString:DATA_PLANE_URL]];
+    [builder withLoglevel:RSLogLevelDebug];
+    [builder withTrackLifecycleEvens:NO];
+    [builder withRecordScreenViews:NO];
+    [builder withCustomFactory:[CustomFactory instance]];
+    [RSClient getInstance:WRITE_KEY config:[builder build]];
+```
+
+Some pointers to keep in mind:
+
+* RudderStack's iOS SDK dumps every event it receives to the `dump()` method of the `CustomFIntegration` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination.
+
+* The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset logic.
+
+* Make sure you do not duplicate the value of `KEY` present inside `CustomFactory`, across multiple `CustomFactory` that you develop.
+
+* RudderStack's iOS SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK, which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown:
+
+```objective c
+[[RSClient sharedInstance] flush];
+```
+
 ## FAQ
 
 ### I'm facing issues building with Carthage on XCode 12. What should I do?
@@ -632,4 +782,3 @@ This scenario is most likely caused by the default behavior of iOS apps staying 
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-ios/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
