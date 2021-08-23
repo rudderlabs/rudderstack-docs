@@ -12,7 +12,7 @@ RudderStack’s Node.js SDK lets you track your customer event data from your No
 Find the code for this SDK in our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-node).
 {% endhint %}
 
-## Installing the RudderStack Node.js SDK
+## Installing the Node.js SDK
 
 To install the RudderStack Node.js SDK using [**npm**](https://www.npmjs.com/), run the following command:
 
@@ -20,24 +20,38 @@ To install the RudderStack Node.js SDK using [**npm**](https://www.npmjs.com/), 
 npm install @rudderstack/rudder-sdk-node
 ```
 
-## Using the RudderStack Node.js SDK
+## Using the SDK
 
-To use the SDK, run the following code snippet:
+To use the Node.js SDK, run the following code snippet:
 
 ```javascript
 const Analytics = require("@rudderstack/rudder-sdk-node");
 
 // RudderStack requires the batch endpoint of the server you are running
-const client = new Analytics(WRITE_KEY, DATA_PLANE_URL/v1/batch);
+const client = new Analytics(WRITE_KEY, `${DATA_PLANE_URL}/v1/batch`);
 ```
+
+Running the above snippet creates a global RudderStack client object that can be used for all the subsequent event requests.
+
+## Supported Events
+
+The RudderStack Node.js SDK supports the following API calls:
+
+* Identify
+* Track
+* Page
+* Group
+* Alias
+
+For a detailed information on each of these calls, refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec) guide.
+
+{% hint style="info" %}
+RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the Node.js SDK, you need to specify either `userId` or `anonymousId` every time.
+{% endhint %}
 
 ## Identify
 
 The `identify` call lets you associate a user to their actions as well as captures the relevant traits or properties related to that user.
-
-{% hint style="info" %}
-For a detailed explanation of the `identify` call, refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/identify) guide.
-{% endhint %}
 
 An example `identify` call is as shown:
 
@@ -57,8 +71,8 @@ The `identify` parameters are as described below:
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Optional, if `anonymousId` is already set | The unique identifier for a user in your database. |
+| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
+| `userId` | String | Required, if `anonymousId` is not present | The unique identifier for a user in your database. |
 | `context` | Object | Optional | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | The dictionary of destinations to be either enabled or disabled. |
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
@@ -67,10 +81,6 @@ The `identify` parameters are as described below:
 ## Track
 
 The `track` call lets you record the users' actions along with their associated properties. Each user  action is called an 'event'.
-
-{% hint style="info" %}
-For a detailed explanation of the `track` call, please refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/track) guide.
-{% endhint %}
 
 An example `track` call is as shown:
 
@@ -89,21 +99,17 @@ The `track` method parameters are as described below:
 
 | Name | Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
-| `userId` | String | Required | The unique identifier for a user in your database. |
+| `userId` | String | Required, if `anonymousId` is not present. | The unique identifier for a user in your database. |
+| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
 | `event` | String | Required | Name of the user event. |
 | `properties` | Object | Optional | The dictionary of the properties associated with the particular event. |
 | `context` | Object | Optional | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
-| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required. |
 | `integrations` | Object | Optional | A dictionary of destinations to be either enabled or disabled. |
 
 ## Page
 
 The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
-
-{% hint style="info" %}
-For a detailed explanation of the `page` call, please refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/page) guide.
-{% endhint %}
 
 An example `page` call is as shown:
 
@@ -124,8 +130,8 @@ The `page` method parameters are as described below:
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Optional, if `anonymousId` is already set | The unique identifier for a user in your database. |
+| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
+| `userId` | String | Required, if `anonymousId` is not present.| The unique identifier for a user in your database. |
 | `context` | Object | Optional | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary of destinations to be either enabled or disabled. |
 | `name` | String | Required | Name of the viewed page. |
@@ -135,10 +141,6 @@ The `page` method parameters are as described below:
 ## Group
 
 The `group` call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
-
-{% hint style="info" %}
-For a detailed explanation of the `group` call, refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/group) guide.
-{% endhint %}
 
 An example `group` call is as shown:
 
@@ -157,8 +159,8 @@ The `group` method parameters are as follows:
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Optional, if `anonymousId` is already set | The unique identifier for a user in your database. |
+| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
+| `userId` | String | Required, if `anonymousId` is not present. | The unique identifier for a user in your database. |
 | `context` | Object | Optional | A dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary of the destinations to be either enabled or disabled. |
 | `groupId` | String | Required | Unique identifier for the group present in your database. |
@@ -190,7 +192,7 @@ The `alias` method parameters are as mentioned below:
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `userId` | String | Optional, if `anonymousId` is already set | The unique identifier for a user in your database. |
+| `userId` | String | Required, if `anonymousId` is not present. | The unique identifier for a user in your database. |
 | `context` | Object | Optional | A dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary of the destinations to be either enabled or disabled. |
 | `previousId` | String | Required | The previous unique identifier of the user. |
@@ -199,27 +201,29 @@ The `alias` method parameters are as mentioned below:
 
 ## Node.js SDK Data Persistence
 
-{% hint style="info" %}
-This feature is still in beta. Contact us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel in case you face any issues.
+{% hint style="warning" %}
+This feature is still in beta. Contact us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel if you face any issues.
 {% endhint %}
 
-The Node.js SDK retries event delivery `n` times, if it fails to successfully deliver the event data to RudderStack. Since the data is in-memory, `n` should ideally be a small number, failing which there is a possibility of data loss if RudderStack is not available for a larger duration.
+If the Node.js SDK fails to successfully deliver the event data to RudderStack at the first attempt, it retries the event delivery. However, if, for some reason, RudderStack is unavailable for a longer duration, there is a possibility of data loss.
 
-To prevent data loss from the SDK to RudderStack while it is not ready to accept data or temporarily unreachable, we have introduced a feature to persist the event data in **Redis**, leading to better event delivery guarantees. Also, the SDK can retry multiple times as the queue is maintained in a different process space \(in this case, Redis\).
-
-You will need to host a Redis server and use it as the intermediary data storage queue to use this feature. 
+To prevent the data loss from the Node.js SDK to RudderStack while it is unavailable, RudderStack has a data persistence feature to persist the event data in **Redis**, leading to better event delivery guarantees. Also, the SDK can retry multiple times as the queue is maintained in a different process space \(in this case, Redis\).
 
 {% hint style="info" %}
-We use [**Bull**](https://github.com/OptimalBits/bull) as the interface layer between the Node.js SDK and Redis.
+You will need to host a Redis server and use it as the intermediary data storage queue to use this feature.
 {% endhint %}
 
-The initialization of the SDK is as follows:
+{% hint style="info" %}
+RudderStack uses [**Bull**](https://github.com/OptimalBits/bull) as the interface layer between the Node.js SDK and Redis.
+{% endhint %}
+
+A sample initialization of the SDK is as below:
 
 ```jsx
-const client = new Analytics("write_key","server_url/v1/batch",{
+const client = new Analytics(WRITE_KEY,`${DATA_PLANE_URL}/v1/batch`,{
     flushAt: <number> = 20,
     flushInterval: <ms> = 20000
-    // the max number of elements that the SDK can hold in memory, 
+    // the max number of elements that the SDK can hold in memory 
     // this is different than the Redis list created when persistence is enabled.
     // This restricts the data in-memory when Redis is down, unreachable etc.
     maxInternalQueueSize: <number> = 20000 
@@ -228,9 +232,7 @@ const client = new Analytics("write_key","server_url/v1/batch",{
 client.createPersistenceQueue({ redisOpts: { host: "localhost" } }, err => {})
 ```
 
-To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue. 
-
-The specifications of these parameters are as follows:
+To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue. The specifications of these parameters are as follows:
 
 ### `queueOpts`
 
@@ -261,7 +263,7 @@ RedisOpts {
 
 ```jsx
 JobOpts {
-    maxAttempts ? : number = 10
+    maxAttempts?: number = 10
 }
 ```
 
@@ -315,4 +317,3 @@ If the same queue \(RudderStack SDK initialized with the same queue name\) is us
 ## Contact Us
 
 For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
