@@ -41,10 +41,12 @@ In order to add Auth0 as a source in RudderStack, please follow these steps:
 
 The webhook URL is of the format:
 
-`<DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_AUTH0_SOURCE_WRITE_KEY>`
+```
+<DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_AUTH0_SOURCE_WRITE_KEY>
+```
 
-{% hint style="info" %}
-* If you're using RudderStack Cloud, replace `<DATA_PLANE_URL>` with [**https://hosted.rudderlabs.com/**](https://hosted.rudderlabs.com/).  
+* If you're using RudderStack Cloud, replace `<DATA_PLANE_URL>` with [**https://hosted.rudderlabs.com/**](https://hosted.rudderlabs.com/).
+
 * If you're hosting your own Data Plane, replace `<DATA_PLANE_URL>` with your [**hosted Data Plane URL**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
 {% endhint %}
 
@@ -64,7 +66,7 @@ Then, continue with the rest of the steps, as follows:
 
 ## RudderStack Event Transformation
 
-The webhook event from Auth0 is ingested into RudderStack after converting it into the RudderStack event format. The `user_id` set by Auth0 is set as `userId` . 
+The webhook event from Auth0 is ingested into RudderStack after converting it into the RudderStack event format. The `user_id` set by Auth0 is converted to `userId`. 
 
 RudderStack also populates the following properties from Auth0 event payload directly to the RudderStack event:
 
@@ -95,5 +97,4 @@ Refer to the [**Auth0 documentation**](https://auth0.com/docs/extensions/auth0-a
 
 ## Contact Us
 
-If you come across any issues while configuring Auth0 with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our ****[**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
-
+If you come across any issues while configuring Auth0 as a source, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
