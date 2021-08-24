@@ -224,10 +224,10 @@ const client = new Analytics(WRITE_KEY,`${DATA_PLANE_URL}/v1/batch`,{
     maxInternalQueueSize:20000 
 });
 
-client.createPersistenceQueue(QueueOpts, callback)
+client.createPersistenceQueue(queueOpts, callback)
 ```
 
-To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `QueueOpts` and a `callback`. This will initialize the persistent queue. 
+To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue. 
 
 {% hint style="warning" %}
 If the `createPersistenceQueue` method is not called after initializing the SDK, the SDK will work without any persistence.
@@ -259,7 +259,7 @@ client.flush(function(err, batch){
 )
 ```
 
-### `QueueOpts`
+### `queueOpts`
 
 As mentioned in the previous section, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`- to achieve data persistence. This method will initialize the persistent queue.
 
@@ -267,10 +267,10 @@ As mentioned in the previous section, you need to call the `createPersistenceQue
 
 Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for  the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to a callback with the error.
 
-A sample `QueueOpts` initialization is shown below:
+A sample `queueOpts` initialization is shown below:
 
 ```javascript
-QueueOpts {
+queueOpts {
     queueName ?: string = rudderEventsQueue,
     isMultiProcessor ? : boolean = false
     // for prefix, pass a value without the {}, this will used as prefix to Redis keys,
@@ -281,7 +281,7 @@ QueueOpts {
 }
 ```
 
-The specification of the different `QueueOpts` parameters is listed in the following table:
+The specification of the different `queueOpts` parameters is listed in the following table:
 
 |**Parameter**  |**Description**                                             |**Default Value**|
 |---------------|------------------------------------------------------------|-----------------|
@@ -341,9 +341,9 @@ It is recommended to retry calling `createPersistenceQueue` with a backoff, if t
 
 * If the job fails even after the `JobOpts.maxAttempts` limit is reached, it will not be retried again and pushed to a `failed queue`. You can retry sending these events manually using Bull’s utility methods [**listed here**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queuegetfailed) or get them from Redis directly.
 
-* There might be a scenario where the node process dies with the jobs still in active state (not completed nor failed but in the process of sending or retrying). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, the jobs will be picked up first by the processor to maintain the event ordering - based on the value set for `QueueOpts.isMultiProcessor`.
+* There might be a scenario where the node process dies with the jobs still in active state (not completed nor failed but in the process of sending or retrying). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, the jobs will be picked up first by the processor to maintain the event ordering - based on the value set for `queueOpts.isMultiProcessor`.
 
-* For multiple server-side SDKs connecting to the same queue \(`QueueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. In this case, `QueueOpts.isMultiProcessor` should be set to **`true`.**
+* For multiple server-side SDKs connecting to the same queue \(`queueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. In this case, `queueOpts.isMultiProcessor` should be set to **`true`.**
 
 
 ## Contact Us
