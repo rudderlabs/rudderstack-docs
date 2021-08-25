@@ -106,7 +106,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
   
 
-*  **AWS Access Key ID, AWS Secret Access Key** - Your AWS Access Key ID and AWS Secret Access Key.
+*  **AWS Access Key ID, AWS Secret Access Key** - Your AWS Access Key ID and AWS Secret Access Key.These credentials should have permissions to read and write into the configured bucket.
 
   
 
@@ -128,6 +128,9 @@ We convert your events into paruqet files and dump them to the configured s3 buc
 
 YYYY, MM, DD and HH are replaced by actual time values. A combination of these values represents an hour in UTC time.
 
+For example, if we receive an event `Product Purchased` at `"2019-10-12T08:40:50.52Z" UTC ` and an event `Cart Viewed` at `"2019-11-12T09:34:50.52Z" UTC` , we dump them in different parquet files in the following folder structures -
+* Product Purchased - `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` 
+* Cart Viewed - `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09` 
   
 
 If glue is enabled, all table definitions are created in a database with name set to namespace.
