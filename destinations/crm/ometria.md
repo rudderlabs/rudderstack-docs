@@ -17,8 +17,8 @@ RudderStack supports Ometria as a destination to which you can seamlessly send y
 Before configuring your source and destination on the RudderStack, verify if the source platform is supported by Ometria by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | -             | -             | -             |
+| :-----------------* | :-----------* | :-----------* | :-----------* |
+| **Device mode**     | *             | *             | *             |
 | **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
@@ -35,7 +35,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Ometria Connection Settings](../../.gitbook/assets/Ometria.png)
+![Ometria Connection Settings](../../.gitbook/assets/Ometria.png) ////////////// UPDATE IMAGE
 
 * Enter your Ometria **API Token**.
 
@@ -43,83 +43,106 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 To get your API key go to **settings** and click on **API Keys** tab.
 {% endhint %}
 
+* You can choose **Marketing Optin** status from the drop down list. By default it is set to **Explicitly Opted Out**.
+
+{% hint style="info" %}
+You can additionally pass this value in `identify` call as shown in example. Value sent via call will have `higher` priority.
+{% endhint %}
+
+* In SMS channel settings you can set **Allow marketing** to `true` or `false`. This implies whether contact is opted in or out for SMS marketing. By default it is set to **false**.
+
+* You can also set **Allow Transactional** to `true` or `false`. It implies whether contact is opted in or out for transactional SMS. By default it is set to **false**.
+
+{% hint style="info" %}
+You can additionally pass **Allow marketing** and **Allow Transactional** in `identify` call as shown in example. Value sent via call will have `higher` priority.
+{% endhint %}
+
 * click on **Next**. Ometria will now be enabled as a destination in Rudderstack.
 
 ## Identify
 
-The `identify` call lets you add a new contact or update the already existing contact, with latest information such as `id`, `email` etc.
+The `identify` call lets you add a new contact or update the already existing contact, with latest information such as `listingId`, `email` etc.
 
-`listingId` and `email` are required for `identify` call.
+`listingId` and `email` are required for `identify` call. You can set value of `Marketing Optin`, `Allow Marketing` and `Allow Transactional` from Rudderstack dashboard. You can also send these values via call which will have higher priority.
 
 {% hint style="info" %}
-`listingId` is specific to collection. To different collections can have same `listingId`.
+`listingId` is specific to `collection`. Two different collections can have same `listingId`.
 {% endhint %}
-
+                                                                        
 
 A sample `identify` call is as shown below:
 
 ```javascript
-rudderanalytics.identify("userId", {
-  listingId: "listingId123",
-  email: "sampleuser@testmail.com",
-  firstName: "Demo",
-  lastName: "Example",
-  channels: {
-    sms: {},
+rudderanalytics.identify(
+  "userId",
+  {
+    listingId: "listingId123",
+    email: "sampleuser@testmail.com",
+    firstName: "Demo",
+    lastName: "Example",
+    phoneNumber: "+447812122136",
+    custom_fields: {
+      field1: "val1",
+    }
   },
-  phoneNumber: "+447812122136",
-  custom_fields: {
-    field1: "val1",
+  {
+    integrations: {
+      Ometria: {
+        marketingOptin: "EXPLICITLY_OPTEDIN",
+        allow_marketing: "true",
+        allow_transactional: "true",
+      }
+    }
   }
-});
+);
 ```
 
 {% hint style="info" %}
 Note that:
 
 * `phoneNumber` must follow E.164 format, else it will be set to `null`.
-* If you are sending `sms` in `channels` field then you must also send a valid `phoneNumber`, else `channels` field will be dropped.
 * `custom_fields` is mapped to `properties` and it will be same for track call too.
-* If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields, which are not present in the below list.
-{% endhint %}
+* If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields, which are not present in the below mapping list.
+  {% endhint %}
 
 ### Identify Mapping
 
 The following table includes all the fields in `identify` call with their relative mapping to the Ometria fields:
 
-| **RudderStack Field** | **Ometria Field** |
-| :--- | :--- |
-| `email` | `email` |
-| `listingId` | `id` |
-| `firstName`/`first_name`/`firstname` | `firstname` |
-| `middleName`/ `middle_name` / `middlename` | `middlename`
-| `lastName`/`last_name`/`lastname` | `lastname` |
-| `phoneNumber` | `phone_number` |
-| `collection` | `@collection` |
-| `marketinOptin` | `marketin_optin` |
-| `prefix` | `prefix` |
-| `dateOfBirth` | `date_of_birth` |
-| `countryId` | `country_id` |
-| `timezone` | `timezone` |
-| `timestampAcquired` | `timestamp_acquired` |
-| `timestampSubscribed` | `timestamp_subscribed` |
-| `timestampUnsubscribed` | `timestamp_unsubscribed` |
-| `channels` | `channels` |
-| `storeIds` | `store_ids` |
-| `gender` | `gender` |
-| `removeFromLists` | `remove_from_lists` |
-| `addToLists` | `add_to_lists` |
-| `custom_fields` | `properties` |
-| `forceOptin` | `@force_optin` |
-| `merge` | `@merge` |
+| **RudderStack Field**                      | **Ometria Field**        |
+| :----------------------------------------- | :----------------------- |
+| `email`                                    | `email`                  |
+| `listingId`                                | `id`                     |
+| `firstName`/`first_name`/`firstname`       | `firstname`              |
+| `middleName`/ `middle_name` / `middlename` | `middlename`             |
+| `lastName`/`last_name`/`lastname`          | `lastname`               |
+| `phoneNumber`                              | `phone_number`           |
+| `collection`                               | `@collection`            |
+| `prefix`                                   | `prefix`                 |
+| `dateOfBirth`                              | `date_of_birth`          |
+| `countryId`                                | `country_id`             |
+| `timezone`                                 | `timezone`               |
+| `timestampAcquired`                        | `timestamp_acquired`     |
+| `timestampSubscribed`                      | `timestamp_subscribed`   |
+| `timestampUnsubscribed`                    | `timestamp_unsubscribed` |
+| `storeIds`                                 | `store_ids`              |
+| `gender`                                   | `gender`                 |
+| `removeFromLists`                          | `remove_from_lists`      |
+| `addToLists`                               | `add_to_lists`           |
+| `custom_fields`                            | `properties`             |
+| `forceOptin`                               | `@force_optin`           |
+| `merge`                                    | `@merge`                 |
 
+{% hint style="info" %}
+In addition to above fields, name can be sent using the `name` field. If it consists of two words `firstname` and `lastname` will be set.
+{% endhint %}
 
 ## Track
 
 The `track` call allows you to record `custom events`, with information such as `event_id`, `timestamp`, `properties` etc.
 
 Rudderstack will try to map `identity_email` to the `email` provided in `identify` call, if not found then it will be mapped to `email` present in `track` call.
-`identity_account_id` is mapped to `userId` from `identify` call. userId is `mandatory`.
+`identity_account_id` is mapped to `userId` from `identify` call. `userId` and `email` is **mandatory**.
 
 A sample track call for `custom_event` is as shown below:
 
@@ -130,7 +153,7 @@ rudderanalytics.track("Sample Event", {
   profile_id: "sample",
   custom_fields: {
     field1: "val1",
-  }
+  },
 });
 ```
 
@@ -140,27 +163,26 @@ Note that:
 * Event name must be provided in track call.
 * If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields if provided, else it will be left empty.
 * `Timestamp` follows `ISO-8601`. If it is not in correct format, call will be dropped.
-* Either `profile_id`, `email` or `identity account id` is required.
-{% endhint %}
+  {% endhint %}
 
 ### Track Custom Event Mapping
 
 The following table includes all the fields in `track` call for `custom_events` with their relative mapping to the Ometria fields:
 
 | **RudderStack Field** | **Ometria Field** |
-| :--- | :--- |
-| `event_id` | `id` |
-| `timestamp` | `timestamp` |
-| `custom_fields` | `properties` |
-| `profile_id` | `profile_id` |
-| `email` | `identity_email` |
-
+| :-------------------- | :---------------- |
+| `event_id`            | `id`              |
+| `timestamp`           | `timestamp`       |
+| `custom_fields`       | `properties`      |
+| `profile_id`          | `profile_id`      |
+| `email`               | `identity_email`  |
 
 Track call also allows you to record `orders` with information like `order_id`, `grandtotal`, `timestamp`, `currency` etc.
 
-Rudderstack will make `customer` object with `userId`, `email`, `firstname` and `lastname` using records from `identify` call. `userId` is mandatory field for customer object.
+Rudderstack will make `customer` object with `userId`, `email`, `firstname` and `lastname` using records from `identify` call. `userId` and `email` are mandatory fields for customer object.
 
 Supported `order` events are:
+
 * `order completed` / `complete`/ `order complete`
 * `order shipped` / `shipped`
 * `order pending` / `pending`
@@ -179,8 +201,8 @@ rudderanalytics.track("order completed", {
       product_id: "prod123",
       quantity: 4,
       subtotal: 10,
-    }
-  ]
+    },
+  ],
 });
 ```
 
@@ -191,54 +213,54 @@ Note that:
 * If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields if provided, else it will be left empty. In above example `field1` will be mapped inside `custom_fields`.
 * The `products` field is not mandatory. However, if provided each object should contain `product_id`, `quantity` and either `subtotal` or `unit_price`. If not present then that object will be dropped. Track call will **not** be aborted.
 * Rudderstack will set `status` according to the event name. For instance, if event name is `order pending` status will be set to `pending` and likewise.
-{% endhint %}
+* The field `is_valid` is always set to true.
+  {% endhint %}
 
 ### Track Orders Mapping
 
 The following table includes all the fields in `track` call for `orders` with their relative mapping to the Ometria fields:
 
-| **RudderStack Field** | **Ometria Field** |
-| :--- | :--- |
-| `order_id` | `id` |
-| `timestamp` | `timestamp` |
-| `grand_total` | `grand_total` |
-| `subtotal` | `subtotal` |
-| `marketinOptin` | `marketin_optin` |
-| `discount` | `discount` |
-| `shipping` | `shipping` |
-| `tax` | `tax` |
-| `currency` | `currency` |
-| `web_id` | `web_id` |
-| `ip_address` | `ip_address` |
+| **RudderStack Field**   | **Ometria Field**        |
+| :---------------------- | :----------------------- |
+| `order_id`              | `id`                     |
+| `timestamp`             | `timestamp`              |
+| `grand_total`           | `grand_total`            |
+| `subtotal`              | `subtotal`               |
+| `marketinOptin`         | `marketin_optin`         |
+| `discount`              | `discount`               |
+| `shipping`              | `shipping`               |
+| `tax`                   | `tax`                    |
+| `currency`              | `currency`               |
+| `web_id`                | `web_id`                 |
+| `ip_address`            | `ip_address`             |
 | `timestampUnsubscribed` | `timestamp_unsubscribed` |
-| `channel` | `channel` |
-| `store` | `store` |
-| `payment_method` | `payment_method` |
-| `shipping_method` | `shipping_method` |
-| `shipping_address` | `shipping_address` |
-| `billing_address` | `billing_address` |
-| `coupon_code` | `coupon_code` |
-| **`products`** | `lineitems` |
+| `channel`               | `channel`                |
+| `store`                 | `store`                  |
+| `payment_method`        | `payment_method`         |
+| `shipping_method`       | `shipping_method`        |
+| `shipping_address`      | `shipping_address`       |
+| `billing_address`       | `billing_address`        |
+| `coupon_code`           | `coupon_code`            |
+| **`products`**          | `lineitems`              |
 
 Note that **`products`** is an array of objects. Every object in this array can contain the following fields:
 
-| **RudderStack Field** | **Ometria Field** |
+| **RudderStack Field** | **Ometria Field**   |
 | :--- | :--- |
-| `product_id` | `product_id` |
-| `variant_id` | `variant_id` |
-| `quantity` | `quantity` |
-| `sku` | `sku` |
-| `unit_price` | `unit_price` |
-| `quantity_refunded` | `quantity_refunded` |
-| `refunded` | `refunded` |
-| `subtotal` | `subtotal` |
-| `tax` | `tax` |
-| `total` | `total` |
-| `discount` | `discount` |
-| `is_on_sale` | `is_on_sale` |
-| `totals` | `totals` |
-| `properties` | `properties` |
-
+| `product_id`          | `product_id`        |
+| `variant_id`          | `variant_id`        |
+| `quantity`            | `quantity`          |
+| `sku`                 | `sku`               |
+| `unit_price`          | `unit_price`        |
+| `quantity_refunded`   | `quantity_refunded` |
+| `refunded`            | `refunded`          |
+| `subtotal`            | `subtotal`          |
+| `tax`                 | `tax`               |
+| `total`               | `total`             |
+| `discount`            | `discount`          |
+| `is_on_sale`          | `is_on_sale`        |
+| `totals`              | `totals`            |
+| `properties`          | `properties`        |
 
 ## Contact Us
 
