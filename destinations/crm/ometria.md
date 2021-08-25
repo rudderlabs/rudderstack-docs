@@ -69,7 +69,7 @@ The sms channel fields `dt_updated_marketing` and `dt_updated_transactional` can
 
 
 {% hint style="info" %}
-`listingId` is id specific to a contact in a particular `collection`. If `listingId` is sent inside `integrations` object as shown below, it will have higher precedence than the one in traits.
+`listingId` is id specific to a contact in a particular `collection`. If `listingId` is sent inside `integrations` object, it will have higher precedence than the one in traits.
 {% endhint %}
                                                                         
 
@@ -107,7 +107,7 @@ Note that:
 * `custom_fields` is mapped to `properties` and it will be same for track call too.
 * If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields, which are not present in the below mapping list.
   {% endhint %}
-* Inside integration object you can additionally send two timestamps `dt_updated_marketing` and `dt_updated_transactional`.
+* Inside integration object you can additionally send two timestamps `dt_updated_marketing` and `dt_updated_transactional`. Timestamp format must follow ISO-8601 format.
 
 ### Identify Mapping
 
@@ -132,8 +132,8 @@ The following table includes all the fields in `identify` call with their relati
 | `timestampUnsubscribed`                    | `timestamp_unsubscribed` |
 | `storeIds`                                 | `store_ids`              |
 | `gender`                                   | `gender`                 |
-| `removeFromLists`                          | `remove_from_lists`      |
-| `addToLists`                               | `add_to_lists`           |
+| `removeFromLists`                          | `@remove_from_lists`      |
+| `addToLists`                               | `@add_to_lists`           |
 | `custom_fields`                            | `properties`             |
 | `forceOptin`                               | `@force_optin`           |
 | `merge`                                    | `@merge`                 |
@@ -228,7 +228,7 @@ Note that:
 
 * `Currency` should follow ISO 4217. If format is not corrected, call will be **dropped**.
 * If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields if provided, else it will be left empty. In above example `field1` will be mapped inside `custom_fields`.
-* The `products` field is not mandatory. However, if provided each object should contain `product_id`, `quantity` and either `subtotal` or `unit_price`. If not present then that object will be dropped. Track call will **not** be aborted.
+* The `products` field is not mandatory. However, if provided each object should contain `product_id`, `quantity` and either `subtotal` or `unit_price`. If not present then that `object` will be dropped and call will be made.
 * Rudderstack will set `status` according to the event name. For instance, if event name is `order pending` status will be set to `pending` and likewise.
 * The field `is_valid` is always set to true.
   {% endhint %}
@@ -243,7 +243,6 @@ The following table includes all the fields in `track` call for `orders` with th
 | `timestamp`             | `timestamp`              |
 | `grand_total`           | `grand_total`            |
 | `subtotal`              | `subtotal`               |
-| `marketinOptin`         | `marketin_optin`         |
 | `discount`              | `discount`               |
 | `shipping`              | `shipping`               |
 | `tax`                   | `tax`                    |
@@ -258,29 +257,45 @@ The following table includes all the fields in `track` call for `orders` with th
 | `shipping_address`      | `shipping_address`       |
 | `billing_address`       | `billing_address`        |
 | `coupon_code`           | `coupon_code`            |
+| `custom_fields`         | `properties`             |
 | **`products`**          | `lineitems`              |
 
 {% hint style="info" %}
 `shipping_address` and `billing_address` should be an `object`, else it will be dropped.
+{% endhint %}
 
 Note that **`products`** is an array of objects. Every object in this array can contain the following fields:
 
-| **RudderStack Field** | **Ometria Field**   |
-| :--- | :--- |
-| `product_id`          | `product_id`        |
-| `variant_id`          | `variant_id`        |
-| `quantity`            | `quantity`          |
-| `sku`                 | `sku`               |
-| `unit_price`          | `unit_price`        |
-| `quantity_refunded`   | `quantity_refunded` |
-| `refunded`            | `refunded`          |
-| `subtotal`            | `subtotal`          |
-| `tax`                 | `tax`               |
-| `total`               | `total`             |
-| `discount`            | `discount`          |
-| `is_on_sale`          | `is_on_sale`        |
-| `totals`              | `totals`            |
-| `properties`          | `properties`        |
+| **RudderStack Field** | **Ometria Field**     |
+| :-------------------- | :-------------------- |
+| `product_id`          | `product_id`          |
+| `variant_id`          | `variant_id`          |
+| `quantity`            | `quantity`            |
+| `sku`                 | `sku`                 |
+| `unit_price`          | `unit_price`          |
+| `quantity_refunded`   | `quantity_refunded`   |
+| `refunded`            | `refunded`            | 
+| `subtotal`            | `subtotal`            |
+| `tax`                 | `tax`                 |
+| `total`               | `total`               |
+| `discount`            | `discount`            |
+| `is_on_sale`          | `is_on_sale`          |
+| `totals`              | `totals`              |
+| `properties`          | `properties`          |
+| **`variant_options`** | **`variant_options`** |
+
+`variant_options` is an array of objects. It is not a mandatory field. However, if provided each object in this array **must** contain the following fields:
+
+| **RudderStack Field** | **Ometria Field** |
+| :-------------------- | :---------------- |
+| `id`                  | `id`              |
+| `type`                | `type`            |
+| `label`               | `label`           |
+
+
+{% hint style="info" %}
+Destination Ometria expects that `product_id` must contain a valid product Id. To create a `product` use `https://api.ometria.com/v2/push` API endpoint.
+{% endhint %}
 
 ## Contact Us
 
