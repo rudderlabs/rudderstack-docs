@@ -10,7 +10,7 @@ This section covers the different RudderStack API along with detailed instructio
 
 {% page-ref page="api-specification/rudderstack-spec/" %}
 
-{% page-ref page="http-api-specification.md" %}
+{% page-ref page="http-api.md" %}
 
 {% page-ref page="api-specification/rudderstack-ecommerce-events-specification/" %}
 

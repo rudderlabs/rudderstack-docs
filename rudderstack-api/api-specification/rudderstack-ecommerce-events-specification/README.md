@@ -4,7 +4,7 @@ description: >-
   captured by the various RudderStack APIs
 ---
 
-# E-Commerce Events Specification
+# E-Commerce Events
 
 ## Introduction
 
