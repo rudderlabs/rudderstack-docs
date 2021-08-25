@@ -66,7 +66,7 @@ The `identify` call lets you add a new contact or update the already existing co
 `listingId` and `email` are required for `identify` call. You can set value of `Marketing Optin`, `Allow Marketing` and `Allow Transactional` from Rudderstack dashboard. You can also send these values via call which will have higher priority.
 
 {% hint style="info" %}
-`listingId` is specific to `collection`. Two different collections can have same `listingId`.
+`listingId` is specific to `collection`. Two different collections can have same `listingId`. If `listingId` is sent inside `integrations` object as shown below, it will have higher priority.
 {% endhint %}
                                                                         
 
@@ -104,6 +104,7 @@ Note that:
 * `custom_fields` is mapped to `properties` and it will be same for track call too.
 * If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields, which are not present in the below mapping list.
   {% endhint %}
+* Inside integration object you can additionally send two timestamps `dt_updated_marketing` and `dt_updated_transactional`.
 
 ### Identify Mapping
 
@@ -249,6 +250,9 @@ The following table includes all the fields in `track` call for `orders` with th
 | `billing_address`       | `billing_address`        |
 | `coupon_code`           | `coupon_code`            |
 | **`products`**          | `lineitems`              |
+
+{% hint style="info" %}
+`shipping_address` and `billing_address` should be an `object`, else it will be dropped.
 
 Note that **`products`** is an array of objects. Every object in this array can contain the following fields:
 
