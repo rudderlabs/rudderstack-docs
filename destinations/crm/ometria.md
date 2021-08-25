@@ -71,7 +71,6 @@ The sms channel fields `dt_updated_marketing` and `dt_updated_transactional` can
 {% hint style="info" %}
 `listingId` is id specific to a contact in a particular `collection`. If `listingId` is sent inside `integrations` object, it will have higher precedence than the one in traits.
 {% endhint %}
-                                                                        
 
 A sample `identify` call is as shown below:
 
@@ -105,7 +104,7 @@ Note that:
 
 * `phoneNumber` must follow E.164 format, else it will be set to `null`.
 * `custom_fields` is mapped to `properties` and it will be same for track call too.
-* If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields, which are not present in the below mapping list.
+* If `custom_fields` is not provided then Rudderstack will create that object with extra fields, which are not present in the below mapping list i.e the non-default fields.
   {% endhint %}
 * Inside integration object you can additionally send two timestamps `dt_updated_marketing` and `dt_updated_transactional`. Timestamp format must follow ISO-8601 format.
 
@@ -146,8 +145,7 @@ In addition to above fields, name can be sent using the `name` field. If it cons
 
 The `track` call allows you to record `custom events`, with information such as `event_id`, `timestamp`, `properties` etc.
 
-Rudderstack will try to map `identity_email` to the `email` provided in `identify` call, if not found then it will be mapped to `email` present in `track` call.
-`identity_account_id` is mapped to `userId` from `identify` call. `userId` and `email` is **mandatory**.
+`userId` and `email` are required fields.
 
 A sample track call for `custom_event` is as shown below:
 
@@ -166,7 +164,7 @@ rudderanalytics.track("Sample Event", {
 Note that:
 
 * Event name must be provided in track call.
-* If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields if provided, else it will be left empty.
+* `custom_fields` is mapped to the `properties` object in Ometria. If `custom_fields` is not provided, the non-default Ometria fields will be taken as custom fields.
 * `Timestamp` follows `ISO-8601`. If it is not in correct format, call will be dropped.
   {% endhint %}
 
@@ -189,7 +187,7 @@ The following table includes all the fields in `track` call for `custom_events` 
 
 Track call also allows you to record `orders` with information like `order_id`, `grandtotal`, `timestamp`, `currency` etc.
 
-Rudderstack will make `customer` object with `userId`, `email`, `firstname` and `lastname` using records from `identify` call. `userId` and `email` are mandatory fields for customer object.
+Rudderstack will create `customer` object with `userId`, `email`, `firstname` and `lastname` from `context.traits`. `userId` and `email` are mandatory fields for customer object.
 
 Supported `order` Ecomm events are:
 
@@ -226,8 +224,8 @@ rudderanalytics.track("order completed", {
 {% hint style="info" %}
 Note that:
 
-* `Currency` should follow ISO 4217. If format is not corrected, call will be **dropped**.
-* If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields if provided, else it will be left empty. In above example `field1` will be mapped inside `custom_fields`.
+* Ometria requires `Currency` to follow ISO 4217. If format is not corrected, event will be **dropped**.
+* If `custom_fields` is not provided, the non-default fields are taken as custom fields. In above example `field1` will be mapped inside `custom_fields`.
 * The `products` field is not mandatory. However, if provided each object should contain `product_id`, `quantity` and either `subtotal` or `unit_price`. If not present then that `object` will be dropped and call will be made.
 * Rudderstack will set `status` according to the event name. For instance, if event name is `order pending` status will be set to `pending` and likewise.
 * The field `is_valid` is always set to true.
@@ -261,7 +259,7 @@ The following table includes all the fields in `track` call for `orders` with th
 | **`products`**          | `lineitems`              |
 
 {% hint style="info" %}
-`shipping_address` and `billing_address` should be an `object`, else it will be dropped.
+`shipping_address` and `billing_address` should be an `object`.
 {% endhint %}
 
 Note that **`products`** is an array of objects. Every object in this array can contain the following fields:
@@ -294,7 +292,7 @@ Note that **`products`** is an array of objects. Every object in this array can 
 
 
 {% hint style="info" %}
-Destination Ometria expects that `product_id` must contain a valid product Id. To create a `product` use `https://api.ometria.com/v2/push` API endpoint.
+Destination Ometria expects that `product_id` must contain a valid product Id. To create a `Product` use the [Ometria Product endpoint.](https://api.ometria.com/v2/push).
 {% endhint %}
 
 ## Contact Us
