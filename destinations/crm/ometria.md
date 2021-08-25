@@ -61,12 +61,15 @@ You can additionally pass **Allow marketing** and **Allow Transactional** in `id
 
 ## Identify
 
-The `identify` call lets you add a new contact or update the already existing contact, with latest information such as `listingId`, `email` etc.
+The `identify` call lets you add a new contact or update the already existing contact.
 
-`listingId` and `email` are required for `identify` call. You can set value of `Marketing Optin`, `Allow Marketing` and `Allow Transactional` from Rudderstack dashboard. You can also send these values via call which will have higher priority.
+`listingId` and `email` are required for `identify` call. You can set value of `Marketing Optin`, `Allow Marketing` and `Allow Transactional` from Rudderstack dashboard. You can also send these values using integrations object in payload which will have higher precedence.
+
+The sms channel fields `dt_updated_marketing` and `dt_updated_transactional` can also be passed using the integrations object.
+
 
 {% hint style="info" %}
-`listingId` is specific to `collection`. Two different collections can have same `listingId`. If `listingId` is sent inside `integrations` object as shown below, it will have higher priority.
+`listingId` is id specific to a contact in a particular `collection`. If `listingId` is sent inside `integrations` object as shown below, it will have higher precedence than the one in traits.
 {% endhint %}
                                                                         
 
@@ -112,6 +115,7 @@ The following table includes all the fields in `identify` call with their relati
 
 | **RudderStack Field**                      | **Ometria Field**        |
 | :----------------------------------------- | :----------------------- |
+| `userId / anonymousId`                     | `customer_id`            |
 | `email`                                    | `email`                  |
 | `listingId`                                | `id`                     |
 | `firstName`/`first_name`/`firstname`       | `firstname`              |
@@ -166,23 +170,28 @@ Note that:
 * `Timestamp` follows `ISO-8601`. If it is not in correct format, call will be dropped.
   {% endhint %}
 
-### Track Custom Event Mapping
+### Track
+
+Track allows you to send custom events to Ometria. Ecommerce Events are also supported. For RudderStack ecommerce events, events are sent using the Ometria Order Object.
+
+### Ometria Custom Event
 
 The following table includes all the fields in `track` call for `custom_events` with their relative mapping to the Ometria fields:
 
-| **RudderStack Field** | **Ometria Field** |
-| :-------------------- | :---------------- |
-| `event_id`            | `id`              |
-| `timestamp`           | `timestamp`       |
-| `custom_fields`       | `properties`      |
-| `profile_id`          | `profile_id`      |
-| `email`               | `identity_email`  |
+| **RudderStack Field** | **Ometria Field**      |
+| :-------------------- | :----------------      |
+| `event_id`            | `id`                   |
+| `timestamp`           | `timestamp`            |
+| `custom_fields`       | `properties`           |
+| `profile_id`          | `profile_id`           |
+| `email`               | `identity_email`       |
+| `userId / anonymousId`| `identity_account_id`  |
 
 Track call also allows you to record `orders` with information like `order_id`, `grandtotal`, `timestamp`, `currency` etc.
 
 Rudderstack will make `customer` object with `userId`, `email`, `firstname` and `lastname` using records from `identify` call. `userId` and `email` are mandatory fields for customer object.
 
-Supported `order` events are:
+Supported `order` Ecomm events are:
 
 * `order completed` / `complete`/ `order complete`
 * `order shipped` / `shipped`
