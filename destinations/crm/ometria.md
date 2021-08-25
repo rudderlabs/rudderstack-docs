@@ -4,7 +4,7 @@ description: Step-by-step guide to set up Ometria as a destination in RudderStac
 
 # Ometria
 
-[**Ometria**](https://ometria.com/) Ometria is a customer data and marketing platform that helps retailers increase CRM revenue by sending personalized marketing messages throughout the customer journey.
+[**Ometria**](https://ometria.com/) is a customer data and marketing platform that helps retailers increase CRM revenue by sending personalized marketing messages throughout the customer journey.
 
 RudderStack supports Ometria as a destination to which you can seamlessly send your customer data.
 
@@ -16,10 +16,10 @@ RudderStack supports Ometria as a destination to which you can seamlessly send y
 
 Before configuring your source and destination on the RudderStack, verify if the source platform is supported by Ometria by referring to the table below:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :-----------------* | :-----------* | :-----------* | :-----------* |
-| **Device mode**     | *             | *             | *             |
-| **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | - | - | - |
+| **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -35,7 +35,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Ometria Connection Settings](../../.gitbook/assets/Ometria.png) ////////////// UPDATE IMAGE
+![Ometria Connection Settings](../../.gitbook/assets/Ometria.png)
 
 * Enter your Ometria **API Token**.
 
@@ -201,15 +201,22 @@ rudderanalytics.track("order completed", {
       product_id: "prod123",
       quantity: 4,
       subtotal: 10,
-    },
-  ],
+      variant_options:[
+        {
+          type: "size",
+          id: "newid",
+          label: "5"
+        }
+      ]
+    }
+  ]
 });
 ```
 
 {% hint style="info" %}
 Note that:
 
-* `Currency` should follow ISO 4217. If format is not corrected, call will be dropped.
+* `Currency` should follow ISO 4217. If format is not corrected, call will be **dropped**.
 * If `custom_fields` is not provided then Rudderstack will try to make that object with extra fields if provided, else it will be left empty. In above example `field1` will be mapped inside `custom_fields`.
 * The `products` field is not mandatory. However, if provided each object should contain `product_id`, `quantity` and either `subtotal` or `unit_price`. If not present then that object will be dropped. Track call will **not** be aborted.
 * Rudderstack will set `status` according to the event name. For instance, if event name is `order pending` status will be set to `pending` and likewise.
