@@ -91,8 +91,8 @@ Here are a few things to keep in mind when updating a destination:
 ![](../.gitbook/assets/screen-shot-2021-08-25-at-11.18.08-am.png)
 
 * To add or change the transformation, go the **Transformation** tab.
-* To change the destination configuration, go to the **Configuration** tab.
-* To enable/disable a destination or permanently delete it, go to the **Settings** tab.
+* To modify the destination configuration, go to the **Configuration** tab.
+* To enable or disable a destination or permanently delete it, go to the **Settings** tab.
 
 {% hint style="warning" %}
 Before deleting a destination, make sure it is disconnected from the source.

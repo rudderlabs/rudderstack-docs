@@ -73,6 +73,7 @@
   * [Google BigQuery](warehouse-actions/google-bigquery.md)
   * [PostgreSQL](warehouse-actions/postgresql.md)
   * [Snowflake](warehouse-actions/snowflake.md)
+  * [Visual Data Mapper](warehouse-actions/visual-data-mapper.md)
 * [Destinations](destinations/README.md)
   * [Analytics](destinations/analytics/README.md)
     * [Google Analytics](destinations/analytics/google-analytics-ga.md)
