@@ -187,6 +187,7 @@
   * [Warehouse FAQs](data-warehouse-integrations/warehouse-faqs.md)
   * [Warehouse Schemas](data-warehouse-integrations/warehouse-schemas.md)
   * [Amazon Redshift](data-warehouse-integrations/amazon-redshift.md)
+  * [Amazon S3 Data Lake](data-warehouse-integrations/s3-datalake.md)
   * [Azure Synapse](data-warehouse-integrations/azure-synapse.md)
   * [ClickHouse](data-warehouse-integrations/clickhouse.md)
   * [Google BigQuery](data-warehouse-integrations/google-bigquery.md)
