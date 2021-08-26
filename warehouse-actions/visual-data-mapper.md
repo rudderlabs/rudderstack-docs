@@ -15,7 +15,7 @@ This feature is currently available only for the [**HubSpot**](../destinations/c
 {% hint style="success" %}
 To use this feature, you can use an existing [**warehouse source**](./) and then connect it to a VDM-supported destination.
 
-However, note that you can connect only one destination to a warehouse source. If you want to send data to multiple destinations, we recommend creating a source with the same settings for each destination.
+However, note that you can connect only one destination to a warehouse source. If you want to send data to multiple destinations, we recommend creating a new source with the same settings for each destination.
 {% endhint %}
 
 ## Using the Visual Data Mapper
