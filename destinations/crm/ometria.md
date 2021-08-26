@@ -75,7 +75,7 @@ Note that `listingId` and `email` fields are the mandatory fields for the `ident
 For more information on the `identify` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/identify) guide.
 {% endhint %}
 
-You can set the values for the **Marketing Optin**, **Allow Marketing**, and **Allow Transactional** fields from RudderStack dashboard. You can also send these values using an integrations object in the `identify` event payload, **which will have higher precedence**. The SMS channel fields `dt_updated_marketing` and `dt_updated_transactional` can also be passed using this integrations object.
+You can set the values for the **Marketing Optin**, **Allow Marketing**, and **Allow Transactional** fields from RudderStack dashboard. You can also send these values using an `integrations` object in the `identify` event payload, **which will have higher precedence**. The SMS channel fields `dt_updated_marketing` and `dt_updated_transactional` can also be passed using this object.
 
 
 The `listingId` is the ID specific to a contact in a particular Ometria collection. Note that the `listingId` specified in the `integrations` object will have a higher precedence than the one present in the traits.
@@ -113,7 +113,7 @@ A few things to keep in mind while making the `identify` call:
 
 * The `custom_fields` are mapped to the `properties` and will be the used in the `track` call too.
 
-* If `custom_fields` is not provided, then RudderStack will create that object with extra fields. Note that these fields must be different from the ones mentioned in the mapping list mentioned in the **Identify Mapping** section, i.e, the non-default fields.
+* If `custom_fields` is not provided, then RudderStack will create that object with extra fields. Note that these fields must be different from the ones mentioned in the mapping list mentioned in the **Identify Mapping** section below, i.e, the non-default fields.
 
 * Inside the `integrations` object, you can additionally send two timestamps - `dt_updated_marketing` and `dt_updated_transactional`. These timestamps must follow the [**ISO-8601**](https://en.wikipedia.org/wiki/ISO_8601) format.
 
@@ -173,8 +173,10 @@ rudderanalytics.track("Sample Event", {
 A few things to note:
 
 * The event name must be provided in the `track` call.
+
 * The `custom_fields` property is mapped to the `properties` object in Ometria. If it is not provided, the non-default Ometria fields will be taken as custom fields.
-* The `timestamp` field follows the [**ISO-8601**](https://en.wikipedia.org/wiki/ISO_8601) format. If it is not specified in the correct format, the call will not be sent to Ometria.
+
+* The `timestamp` field follows the [**ISO-8601**](https://en.wikipedia.org/wiki/ISO_8601) format. If it is not specified in the correct format, the call will be dropped - i.e., not be sent to Ometria.
 
 ### Ometria Custom Event
 
@@ -295,7 +297,7 @@ Note that **`products`** is an array of objects. Every object in this array can 
 | **`variant_options`** | **`variant_options`** |
 
 {% hint style="info" %}
-Ometria expects that `product_id` must contain a valid product ID. To create a `Product` use the [Ometria Product endpoint.](https://api.ometria.com/v2/push).
+Ometria expects that the `product_id` field must contain a valid product ID. To create a `Product`, use the [**Ometria Product endpoint**](https://api.ometria.com/v2/push).
 {% endhint %}
 
 Note that **`variant_options`** listed above is an array of objects. It is not a mandatory field. However, if provided, each object in this array **must** contain the following fields:
