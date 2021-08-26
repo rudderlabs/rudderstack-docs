@@ -152,7 +152,7 @@ In addition to the above fields, the customer name can also be sent using the `n
 
 ## Track
 
-The `track` call  lets you send custom events to Ometria. Note that the [**RudderStack E-Commerce events**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification) are also supported and are sent using the **Ometria Order Object**.
+The `track` call  lets you send custom events to Ometria. Note that `track` also supports the E-Commerce events and sends them using the **Ometria Order Object**.
 
 {% hint style="warning" %}
 Note that `userId` and `email` are the mandatory fields for the `track` call.
