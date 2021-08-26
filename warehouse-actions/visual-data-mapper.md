@@ -59,6 +59,10 @@ RudderStack automatically loads all the relevant warehouse schemas and tables. I
 RudderStack automatically loads all the relevant destination objects. If you have added a new destination object during this configuration process, click on **Reload objects** to get all the latest objects.
 {% endhint %}
 
+{% hint style="warning" %}
+**RudderStack does not support objects that do not have any fields or a unique user identifier.**
+{% endhint %}
+
 ### Choosing the Identifier
 
 In the **Choose Identifier** section, specify the warehouse column to be used as the primary user identifier \(`user_id`\) and mapped to the destination field. An example is shown below:
@@ -77,9 +81,34 @@ In the **Map Fields** section, you can easily configure the source-destination f
 RudderStack gives you full visibility into the name and type of the fields that you are mapping. 
 {% endhint %}
 
-In case you are mapping fields that are of a different type or format - e.g., mapping the warehouse column `Phone` of type `string` to a destination field `Company ID` of type `float`, you can use the [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature to ensure there is no type mismatch while sending the events.
+#### Mandatory Mappings
+
+When sending events to some objects, there are some required fields that need to be mapped. These fields cant be removed from the mappings. For example, in case of the Salesforce **Account** object, **Account Name** is a required field, as seen in the following image:
+
+![](../.gitbook/assets/image%20%28126%29.png)
+
+#### Mapping Fields of Different Type/Format
+
+In case you are mapping fields that are of a different type or format, you can use the [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature to ensure there is no type mismatch while sending the events. 
+
+For example, RudderStack lets you map the warehouse column `Phone` of type `string` to a destination field `Company ID` of type `float` . You can then add a transformation at the destination end to do this type conversion to ensure there is no mismatch.
 
 ![](../.gitbook/assets/6%20%2823%29.png)
+
+### Creating a Custom Destination Field
+
+{% hint style="warning" %}
+This feature is currently available only for the [**Braze**](../destinations/marketing/braze.md) ****destination.
+{% endhint %}
+
+RudderStack also lets you create a custom destination field and map it to a warehouse column. You can do this by following the steps below:
+
+* Click on the **Map another field** option. 
+* Type the name of the custom destination field that you want to create, as shown:
+
+![](../.gitbook/assets/image%20%28120%29.png)
+
+* Finally, click on **Create `<custom_field_name>`**
 
 Once you have mapped all the source columns to the destination fields, click on **Next** to complete the destination configuration.
 
