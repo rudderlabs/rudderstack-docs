@@ -102,6 +102,7 @@
   * [CRM](destinations/crm/README.md)
     * [Salesforce](destinations/crm/salesforce.md)
     * [HubSpot](destinations/crm/hubspot.md)
+    * [Ometria](destinations/crm/ometria.md)
     * [Variance](destinations/crm/variance.md)
     * [Zendesk](destinations/crm/zendesk.md)
     * [Delighted](destinations/crm/delighted.md)
