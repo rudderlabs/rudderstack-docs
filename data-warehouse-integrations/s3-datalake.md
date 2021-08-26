@@ -1,128 +1,203 @@
+---
+description: Step-by-step guide to send event data from RudderStack to your S3 data lake.
+---
 
-# S3 Datalakes
+# S3 Data Lake
 
-S3 datalake intro
+Amazon S3 is a popular object storage service used to store both structured and unstructured data. You can leverage S3 to securely and cost-effectively build a data lake of any size or scale. With an S3-powered data lake, you can easily use the native AWS services for data processing, analytics, machine learning, and more.
 
-# Setting up a new S3 Datalake destination
+RudderStack supports S3 data lake as a destination to which you can securely send your data.
 
-In order to start dumping data to your S3 datalake, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will automatically start flowing to your datalake.
+## Setting Up the S3 Data Lake Destination
 
-To configure S3 Datalake as a destination, please follow these steps:
+To start sending data to your S3 data lake, you will first need to add it as a destination in RudderStack and connect it to a data source. Once the destination is enabled, the events will automatically start flowing to your data lake.
 
-* Choose a source to which you would like to add S3 Datalake as a destination. You can also simply create a destination and connect it to a source later.
+Follow these steps to configure S3 data lake as a destination in RudderStack:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), configure the data source. Then, from the list of destinations, select **S3 Data Lake**.
 
 {% hint style="info" %}
-
-Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) guide to know how to add a source in RudderStack.
-
+Refer to the [**Adding a Source and Destination in RudderStack**](https://docs.rudderstack.com/connections/adding-source-and-destination-rudderstack) guide for more information.
 {% endhint %}
 
-* After choosing a source, select **S3 Datalake** from the list of destinations.
+* Assign a name to your destination and click on **Next**. You should then see the following screen:
 
-* Give your destination a name and then click on **Next**. You should then see the following screen:
+![S3 data lake destination settings in RudderStack](../.gitbook/assets/s3_datalake/connectionScreen.png)
 
-![S3 Datalake Destination Settings on the RudderStack dashboard](../.gitbook/assets/s3_datalake/connectionScreen.png)
+### Connection Settings
   
-* Add the required credentials in the **Connection Settings** as mentioned below:
+Add the following credentials in the **Connection Settings**:
 
-	*  **Staging S3 Storage Bucket Name-** The name of the S3 bucket that will be used to store data.
+*  **Staging S3 Storage Bucket Name**: Enter the name of the S3 bucket that will be used to store data before loading it into the S3 data lake.
 
-	*  **Register schema on AWS Glue -** If you enable this option, we register the schema of your incoming data on AWS Glue's Data catalog.
+*  **Register schema on AWS Glue**: If you enable this option, RudderStack will register the schema of your incoming data on AWS Glue's data catalog.
 
-	* **AWS Glue Region** - Your AWS Glue's region.Ex for N.Virginia it would be `us-east-1`
+{% hint style="info" %}
+For more information on registering your schema in AWS Glue, refer to the AWS Glue [**documentation**](https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html).
+{% endhint %}
 
-	*  **S3 Prefix** - If configured, we create a folder in the bucket with the same name as the configured prefix and push all data inside that folder. OR If configured, all data pushed by rudderstack for this destination would be inside the prefix folder.  
+* **AWS Glue Region**: Specify your AWS Glue region. For example, for N.Virginia, it would be **us-east-1**.
 
-	*  **Namespace** - Defaults to source name.All data for the destination would be pushed to `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>`.If glue is enabled, all table definitions are created in a database with name set to namespace.
+*  **S3 Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.
 
-	*  **AWS Access Key ID, AWS Secret Access Key** - Your AWS Access Key ID and AWS Secret Access Key.These credentials should have permissions to read and write into the configured bucket.
+*  **Namespace**: If specified, all the data for the destination will be pushed to `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>`. If AWS Glue is enabled, all the table definitions are created in a database with the name set to this namespace. 
 
-## Where to find your data
+{% hint style="info" %}
+If you don't specify a namespace in the settings, it is set to the source name by default.
+{% endhint %}
 
-We convert your events into paruqet files and dump them to the configured s3 bucket.Before dumping your events to s3, we group them based on the time(UTC) we received them.All events belonging to an hour are stored in the same folder.(grouped by event name).The folder structure looks something like -
+*  **AWS Access Key ID**: Enter your AWS access key ID.
+
+*  **AWS Secret Access Key**: Enter your AWS secret access key.
+
+{% hint style="warning" %}
+Make sure the above credentials (**Access Key ID** and **Secret Access Key**) should have permissions to read and write into the configured bucket.
+{% endhint %}
+
+### Finding Your Data in the S3 Data Lake
+
+RudderStack converts your events into Parquet files and dumps them to the configured S3 bucket. Before dumping the events, RudderStack groups them by the event name based on the time (UTC) they were received. The folder structure looks something like the following:
 
 `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/<tableName>/YYYY/MM/DD/HH`
+
+As mentioned in the **Connection Settings** section above:
   
-*  **prefix**  - the configured prefix.if prefix is not configured, we omit this value.
-*  **namespace** - defaults to source name if not configured while adding destination.
+*  **`prefix`**: This is the S3 prefix in the destination settings. If not specified, RudderStack will omit this value.
+*  **`namespace`**: The namespace specified in the destination settings. If not specified, it defaults to the source name.
+*  **`tableName`**: This is set to the event name.
 
-*  **tableName** - this is the same as the event name.
+**`YYYY`**, **`MM`**, **`DD`**, and **`HH`** are replaced by actual time values. A combination of these values represents the UTC time.
 
-YYYY, MM, DD and HH are replaced by actual time values. A combination of these values represents an hour in UTC time.
+For example, suppose that RudderStack tracks the following two events:
 
-For example, if we receive an event `Product Purchased` at `"2019-10-12T08:40:50.52Z" UTC ` and an event `Cart Viewed` at `"2019-11-12T09:34:50.52Z" UTC` , we dump them in different parquet files in the following folder structures -
-* Product Purchased - `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` 
-* Cart Viewed - `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09` 
-  
+|**Event Name**	    |**Timestamp**		    |
+|-------------------|-------------------------------|
+|`Product Purchased`|`"2019-10-12T08:40:50.52Z" UTC`|
+|`Cart Viewed`	    |`"2019-11-12T09:34:50.52Z" UTC`|
 
-If glue is enabled, all table definitions are created in a database with name set to namespace.
+RudderStack will convert these events into Parquet files and dump them into the following folders:
 
-## Creating a crawler
-If you didn't enable glue while setting up the destination, you need to create a crawler to go through your data and create table definitions out of it.
-**This step is only required if you didn't enable glue while setting up the destination.**
-If you enabled glue while setting up, skip to the `Querying your data using AWS Athena` section.
+|**Event Name**     |**Folder Location**	    							     |
+|-------------------|----------------------------------------------------------------------------------------|
+|`Product Purchased`|`s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08`|
+|`Cart Viewed`	    |`s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09`      |
 
-Follow these steps to create a crawler -
+{% hint style="info" %}
+If AWS Glue is enabled, all the table definitions are created in a database with the name set to the namespace (specified in the destination settings).
+{% endhint %}
 
-* Go to the AWS Glue console and select `Crawler` from the left pane.
 
-* Select Add Crawler
+## Creating a Crawler
 
-* Specify a name for your crawler
-![Crawler name](../.gitbook/assets/s3_datalake/crawlerName.png)
+{% hint style="warning" %}
+Refer to this section **only** if you haven't enabled the **Register Schema on AWS Glue** setting while configuring the S3 data lake destination in RudderStack.
+{% endhint %}
 
-* Next, Choose `Data stores` under `Crawler source type`
-![Crawler source type](../.gitbook/assets/s3_datalake/crawlerSourceType.png)
+In the absence of AWS Glue, you can create a crawler to go through your data and create table definitions out of it. Follow these steps to create a crawler:
 
-* Configure `Repeat crawls of S3 data stores` based on your needs.
+* Go to your AWS Glue console and select **Crawler** from the left pane.
 
-* Next, Under `Choose a data store` choose `S3` from the dropdown
-![Crawler source type](../.gitbook/assets/s3_datalake/addDataStore.png)
+* Select **Add Crawler**.
 
-* Under `Crawl data in` choose `Specified path in my account`
+* Specify a name for your crawler and click **Next**, as shown:
 
-* Under `Include path` enter the S3 URI of your configured bucket followed by the sufix `/<prefix>/rudder-datalake/<namespace>/`. For example if your bucket name is `testBucket` and the configured prefix and namespace is `testPrefix` and `testNS` - then your include path should look like `s3://testBucket/testPrefix/rudder-datalake/testNS/`.If you have not configured any prefix, you should omit the prefix part - your include path would be `s3://testBucket/rudder-datalake/testNS/` in that case.
+![](../.gitbook/assets/s3_datalake/crawlerName.png)
 
-* Next, Select `No` under `Add another data store`
-![Another data store](../.gitbook/assets/s3_datalake/anotherDataStore.png)
+* Next, under the **Crawler source type** section, choose **Data stores**.
+ 
+![](../.gitbook/assets/s3_datalake/crawlerSourceType.png)
 
-* Configure a suitable IAM role in the `Choose an IAM role` section
-![IAM](../.gitbook/assets/s3_datalake/iam.png)
+* Configure the **Repeat crawls of S3 data stores** based on your requirement.
 
-* Next, In the schedule section, configure the frequency of your crawler.
-![Schedule](../.gitbook/assets/s3_datalake/scheduler.png)
+* Then, under the **Data store** section, select **S3** from the dropdown for the **Choose a data store** setting.
 
-* In the output section, configure a database which would store all your tables.
-![Output](../.gitbook/assets/s3_datalake/output.png)
+![](../.gitbook/assets/s3_datalake/addDataStore.png)
 
-* Select `Create a single schema for each S3 path` under `Grouping behavior for S3 data`
+* For the **Crawl data in** setting, choose the option **Specified path in my account**.
 
-* Also specify the `Table level` as 5. This value indicates the table location(the absolute level in the bucket).The level for the top level folder is 1.For example, for the path mydataset/a/b, if the level is set to 3, the table is created at location mydataset/a/b.
-Since all tables are created under `s3://testBucket/<prefix>/rudder-datalake/<namespace>/`, the table level should be set to-
-	* 5 if a prefix is configured
-	* 4 if no prefix is configured
-* Review your crawler configuration.
-![Review](../.gitbook/assets/s3_datalake/review.png)
-* Click on finish
-* Once done, click on your crawler and run it
-* Wait for it to finish, you should see some tables getting created in your configured database.
+* In the **Include path** setting, enter the S3 URI of your configured bucket followed by the suffix `/<prefix>/rudder-datalake/<namespace>/`. 
 
-## Querying your data using AWS Athena
+{% hint style="info" %}
+For example, if your S3 bucket name is `testBucket` and the configured prefix and namespace are `testPrefix` and `testNameSpace` respectively, then your path should be:
 
-You can query your data using something like [AWS Athena](https://aws.amazon.com/athena/), which lets you run SQL queries on your S3 data.Before trying out the steps below, you should make sure that you have sent some data and the sync has completed.
+`s3://testBucket/testPrefix/rudder-datalake/testNameSpace/`
+{% endhint %}
+
+{% hint style="warning" %}
+If you have not configured any prefix while setting up the S3 data lake destination in RudderStack, omit the prefix. Your URI would then be:
+
+`s3://testBucket/rudder-datalake/testNameSpace/`.
+{% endhint %}
+
+
+* Then, under the **Add another data store** setting, select **No**.
+
+![](../.gitbook/assets/s3_datalake/anotherDataStore.png)
+
+* In the **IAM Role** section, configure a suitable IAM role.
+
+![](../.gitbook/assets/s3_datalake/iam.png)
+
+* Next, In the **Schedule** section, select the frequency of your crawler from the dropdown options, as shown:
+
+![](../.gitbook/assets/s3_datalake/scheduler.png)
+
+* In the **Output** section, configure the database that will store all the tables. Under the Grouping behavior for S3 data section, make sure you enable (tick) the **Create a single schema for each S3 path** option, as shown:
+
+![](../.gitbook/assets/s3_datalake/output.png)
+
+* Specify the **Table level** as **5** or **4** (refer to the tips below). This value indicates the absolute level of the table location in the bucket.
+
+{% hint style="info" %}
+The level for the top-level folder is **1**. For example, for the path `mydataset/a/b`, if the level is set to 3, the table will be created at the location `mydataset/a/b`. Similarly, if the level is set to 2, the table will be created at the location `mydataset/a`.
+{% endhint %}
+
+{% hint style="warning" %}
+Since all tables are created in the URI `s3://testBucket/<prefix>/rudder-datalake/<namespace>/`, make sure the table level should be set to:
+
+* **5** if a prefix is configured
+* **4** if a prefix is **not** configured
+{% endhint %}
+
+* Review your crawler configuration, as shown:
+
+![](../.gitbook/assets/s3_datalake/review.png)
+
+* Click on **Finish**.
+
+* Then, click on your crawler and run it. Wait for the process to finish; you should see some tables getting created in your configured database.
+
+## Querying Data using AWS Athena
+
+You can query your S3 data using a tool like [**AWS Athena**](https://aws.amazon.com/athena/), which lets you run SQL queries on S3. 
+
+{% hint style="warning" %}
+Before querying your data on S3, make sure that you have sent some data to S3, and that the sync has been completed.
+{% endhint %}
 
 Follow these steps to start querying your data on s3 -
 
-* Open the AWS Athena console and go to the same AWS region which you used while configuring glue.
+* Open your AWS Athena console. Then, go to the same AWS region which you used while configuring AWS Glue.
 
-* In the left pane, select `AwsDataCatalog` as your data source.
-![AwsDataCatalog](../.gitbook/assets/s3_datalake/datasource.png)
+* In the left pane, select `AwsDataCatalog` as your data source, as shown:
 
-* Select your configured namespace(or the database you used while configuring the crawler) from the database drop down menu.(The namespace defaults to your source name)
-![Namespace](../.gitbook/assets/s3_datalake/database.png)
+![](../.gitbook/assets/s3_datalake/datasource.png)
 
-* You should see some tables already created under the tables section in the left pane.
+* Select your configured namespace (or the database you specified while configuring the crawler) from the database dropdown menu.
 
-* You can either preview data by clicking on the three dots next to the table and selecting `Preview Data` or you can even run your custom SQL queries
-![Preview data](../.gitbook/assets/s3_datalake/previewTable.png)
+![](../.gitbook/assets/s3_datalake/database.png)
+
+{% hint style="info" %}
+By default, the namespace is set to your source name if you did not specify it in the destination settings.
+{% endhint %}
+
+* You should see some tables already created under the **Tables** section in the left pane.
+
+* You can preview the data by clicking on the three dots next to the table and selecting the **Preview Data** option. Alternatively, you can run your own SQL queries in the workspace on the right, as shown:
+
+![](../.gitbook/assets/s3_datalake/previewTable.png)
+
+## Contact Us
+
+If you come across any issues while setting up using the S3 data lake destination, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
   
