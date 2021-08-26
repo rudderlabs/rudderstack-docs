@@ -143,7 +143,7 @@ In addition to above fields, name can be sent using the `name` field. If it cons
 
 ## Track
 
-The `track` call allows you to record `custom events`, with information such as `event_id`, `timestamp`, `properties` etc.
+The `Track` call  allows you to send `custom events` to Ometria. Ecommerce Events are also supported. For RudderStack ecommerce events, events are sent using the Ometria Order Object.
 
 `userId` and `email` are required fields.
 
@@ -168,10 +168,6 @@ Note that:
 * `Timestamp` follows `ISO-8601`. If it is not in correct format, call will be dropped.
   {% endhint %}
 
-### Track
-
-Track allows you to send custom events to Ometria. Ecommerce Events are also supported. For RudderStack ecommerce events, events are sent using the Ometria Order Object.
-
 ### Ometria Custom Event
 
 The following table includes all the fields in `track` call for `custom_events` with their relative mapping to the Ometria fields:
@@ -184,6 +180,8 @@ The following table includes all the fields in `track` call for `custom_events` 
 | `profile_id`          | `profile_id`           |
 | `email`               | `identity_email`       |
 | `userId / anonymousId`| `identity_account_id`  |
+
+### Ecommerce Events
 
 Track call also allows you to record `orders` with information like `order_id`, `grandtotal`, `timestamp`, `currency` etc.
 
