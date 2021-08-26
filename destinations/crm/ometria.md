@@ -47,7 +47,11 @@ This section details the connection settings required to configure Ometria as a 
 To get your API key go to your Ometria dashboard, navigate to **Settings**, and click on the **API Keys** tab.
 {% endhint %}
 
-* Under **Contact Settings**, you can choose the **Marketing Optin** status from the dropdown list. By default, it is set to **Explicitly Opted Out**.
+* Under **Contact Settings**, you can choose the **Marketing Optin** status from the dropdown list. By default, it is set to **Explicitly Opted Out**. The different options are:
+
+  * **Explicitly Opted In**: The customer is eligible for marketing
+  * **Explicitly Opted Out**: The customer is not eligible for marketing
+  * **Not Specified**: No option is specified
 
 {% hint style="info" %}
 You can also pass this value in the `identify` call - refer to the **Identify** section below for more details. Note that the value set via the `identify` call will have a higher precedence.
