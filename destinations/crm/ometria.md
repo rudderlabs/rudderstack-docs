@@ -247,7 +247,7 @@ A few things to note:
 
 * RudderStack will set the `status` field according to the event name. For instance, if event name is `order pending` status will be set to `pending`.
 
-* The field `is_valid` is always set to true.
+* The field `is_valid` is always set to `true`. For more information on how to use this field, refer to this [**example**](https://docs.ometria.com/recipes/how-to-process-a-full-refund).
 
 ### Track Orders Mapping
 
