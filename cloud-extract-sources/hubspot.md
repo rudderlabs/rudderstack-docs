@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest data from HubSpot into RudderStack.
 
 # HubSpot
 
-[HubSpot](https://www.hubspot.com/) is a leading marketing and sales platform that helps you track leads, as well as inbound marketing and sales. It offers state-of-the-art tools for efficient marketing, tracking sales, and offering better customer support.
+\*\*\*\*[**HubSpot**](https://www.hubspot.com/) ****is a leading marketing and sales platform that helps you track leads, as well as inbound marketing and sales. It offers state-of-the-art tools for efficient marketing, tracking sales, and offering better customer support.
 
 This document guides you in setting up HubSpot as a source in RudderStack. Once configured, RudderStack automatically ingests your specified HubSpot data, which can then be routed to your data warehouse destination supported by RudderStack.
 
@@ -16,7 +16,7 @@ This document guides you in setting up HubSpot as a source in RudderStack. Once 
 
 To set up HubSpot as a source on the RudderStack dashboard, follow these steps:
 
-* Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
+* Log into your ****[**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
 
 ![](../.gitbook/assets/1%20%2815%29%20%281%29%20%281%29.png)
 
@@ -64,6 +64,12 @@ Use the **Connect Destinations** option if you have already configured a data wa
 
 ## FAQs
 
+#### How does RudderStack sync the HubSpot data?
+
+* When RudderStack first connects to your HubSpot data source, it pulls all of your historical data. 
+* Then, it syncs the HubSpot data based on the specified on the **Run Frequency** set by you in the RudderStack dashboard. The default setting is set to 30 minutes. 
+* There may be instances where an incremental sync is not possible due to HubSpot's API limitations. In such cases, a full sync is done.
+
 #### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is. 
@@ -72,5 +78,5 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 
 ## Contact Us
 
-If you come across any issues while configuring HubSpot as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring HubSpot as a source, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our ****[**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
 
