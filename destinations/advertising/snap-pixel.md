@@ -4,9 +4,9 @@ description: Step-by-step guide to send your event data from RudderStack to Snap
 
 # Snap Pixel
 
-The [**Snap Pixel**](https://ads.snapchat.com/) is a piece of JavaScript code that helps Advertisers measure the cross-device impact of Campaigns. Advertisers will be able to see how many Snapchatters take action on their website(s) after seeing their Ad.
+The [**Snap Pixel**](https://ads.snapchat.com/) is a piece of JavaScript code that lets you measure the cross-device impact of your advertising campaigns. It lets understand how many Snapchat users interact with your website after seeing the ads.
 
-You can now seamlessly send your event data to Snap Pixel by adding it as a destination in RudderStack.
+RudderStack supports Snap Pixel as a destination to which you can seamlessly send your event data.
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ Before configuring Snap Pixel as a destination in RudderStack, verify if the sou
 To know more about the difference between Cloud mode and Device mode in RudderStack, refer to the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
-Once you have confirmed that the source supports sending events to Snap Pixel, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Snap Pixel, perform the steps below:
 
 * From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Snap Pixel**.
 
@@ -29,7 +29,7 @@ Once you have confirmed that the source supports sending events to Snap Pixel, p
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
 {% endhint %}
 
-* Give a name to the destination and click on **Next**. You should then see the following screen:
+* Assign a name to the destination and click on **Next**. You should then see the following screen:
 
 ![](../../.gitbook/assets/SnapPixel-1.png)
 
@@ -37,13 +37,11 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 To successfully configure Snap Pixel as a destination, you will need to configure the following settings:
 
-* **Snap Pixel ID:** Enter your Snap Pixel ID here.
+* **Snap Pixel ID:** Enter your Snap Pixel ID here. To get your Snap Pixel ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**. You can find the Pixel ID under **Pixel Code**, as shown:
 
-{% hint style="info" %}
-For more information on how to find your Snap Pixel ID, refer to the FAQs below.
-{% endhint %}
+![](../../.gitbook/assets/SnapPixel-2.png)
 
-* **Hashing Method:** Snap Pixel lets you pass a user parameter (email or phone number) in both hashed and non-hashed formats in it's init call. If **SHA-256** is chosen as an option, RudderStack will hash-encode the provided user parameter (email or the phone number).
+* **Hashing Method:** Snap Pixel lets you pass a user parameter (email or phone number) in both hashed and non-hashed format during intialization. If **SHA-256** is chosen as an option, RudderStack will hash-encode the provided user parameter.
 
 ## Identify
 
@@ -52,12 +50,14 @@ The Snap Pixel will not be initialized unless `identify` call is fired.
 {% endhint %}
 
 {% hint style="info" %}
-A user parameter (email or phone number) is needed for the snap pixel code to be loaded. So, while loading rudderstack will check for those from the cookies. If found, then, the web snippet is loaded fully else `identify` call with email/phone is required for that.
+RudderStacks checks the cookies for the user parameter (email or phone number) before loading the Snap Pixel snippet. If found, the snippet is loaded. Otherwise, an `identify` call with the user's email or phone number is required.
 {% endhint %}
 
-In Snap Pixel, the `identify` call initializes the Snap Pixel snippit code.
+In Snap Pixel, the `identify` call initializes the Snap Pixel code.
 
+{% hint style="info" %}
 For more information on the `identify` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/identify).
+{% endhint %}
 
 A sample `identify` call is as shown:
 
@@ -68,18 +68,20 @@ A sample `identify` call is as shown:
       });
 ```
 
-Either or both of the following user parameters should be passed in identify:
+Either or both of the user parameters should be passed in the `identify` call. The following table lists the parameters along with the relative mapping to the Snap Pixel parameters:
 
 | **RudderStack User Parameter**  | **Snap Pixel User Parameter** |
-| :-------------------------- | :---------------------------- |
-| `email` | `user_email` |
-| `phone` | `user_phone_number` |
+| :------------------------------ | :---------------------------- |
+| `email`                         | `user_email`                  |
+| `phone`                         | `user_phone_number`           |
 
 ## Page
 
-When the `page` call is made, the `track` event is sent as `PAGE_VIEW` . RudderStack ignores any parameter sent to `rudderanalytics.page()` .
+When the `page` call is made, the `track` event is sent to Snap Pixel as `PAGE_VIEW`. 
 
+{% hint style="info" %}
 For more information on the `page` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/page).
+{% endhint %}
 
 A sample `page` call is as shown:
 
@@ -91,7 +93,11 @@ rudderanalytics.page();
 
 The `track` call lets you track custom events in your website.
 
-A sample call looks like the following code snippet:
+{% hint style="info" %}
+For more information on the `track` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/track).
+{% endhint %}
+
+A sample call looks like the following snippet:
 
 ```javascript
 rudderanalytics.track('PURCHASE', {
@@ -101,30 +107,31 @@ rudderanalytics.track('PURCHASE', {
 });
 ```
 
-{% hint style="info" %}
-Any Snap Pixel Standard Events apart from shown below will be passed as it is along with the event payload wherever as needed.
-{% endhint %}
-
 RudderStack transforms the following events to Snap Pixel's Standard Events:
 
 | **RudderStack Event Name**  | **Snap Pixel Standard Event** |
 | :-------------------------- | :---------------------------- |
-| `Order Completed` | `PURCHASE` |
-| `Checkout Started` | `START_CHECKOUT` |
-| `Product Added` | `ADD_CART` |
-| `Payment Info Entered` | `ADD_BILLING` |
-| `Promotion Clicked` | `AD_CLICK` |
-| `Promotion Viewed` | `AD_VIEW` |
-| `Product Added To Wishlist` | `ADD_TO_WISHLIST` |
+| `Order Completed`           | `PURCHASE`                    |
+| `Checkout Started`          | `START_CHECKOUT`              |
+| `Product Added`             | `ADD_CART`                    |
+| `Payment Info Entered`      | `ADD_BILLING`                 |
+| `Promotion Clicked`         | `AD_CLICK`                    |
+| `Promotion Viewed`          | `AD_VIEW`                     |
+| `Product Added To Wishlist` | `ADD_TO_WISHLIST`             |
+
+{% hint style="warning" %}
+Any Snap Pixel standard events apart from the ones listed in the table above will be passed as is, along with the payload.
+{% endhint %}
+
 
 ## FAQs
 
 **Where can I find the Snap Pixel ID?**
 
-To get your Snap Pixel ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**, under **Pixel Code** you can find the Pixel ID, as shown below.
+To get your Snap Pixel ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**. You can find the Pixel ID under **Pixel Code**, as shown:
 
 ![](../../.gitbook/assets/SnapPixel-2.png)
 
 ## Contact Us
 
-If you come across any issues while configuring or using Snap Pixel with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+In case of any issues while configuring or using Snap Pixel with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
