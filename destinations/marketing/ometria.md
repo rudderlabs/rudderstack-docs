@@ -8,10 +8,6 @@ description: Step-by-step guide to set up Ometria as a destination in RudderStac
 
 RudderStack supports Ometria as a destination to which you can seamlessly send your customer data.
 
-{% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ometria)**.**
-{% endhint %}
-
 ## Getting Started
 
 Before configuring Ometria as a destination in RudderStack, verify if the source platform is supported by Ometria by referring to the table below:
@@ -44,7 +40,7 @@ This section details the connection settings required to configure Ometria as a 
 * Enter your Ometria **API Token**.
 
 {% hint style="info" %}
-To get your API key go to your Ometria dashboard, navigate to **Settings**, and click on the **API Keys** tab.
+To get the Ometria API token, go to your your Ometria dashboard and navigate to **Settings** - **API Keys**. Then, click on **New API Key**.
 {% endhint %}
 
 * Under **Contact Settings**, you can choose the **Marketing Optin** status from the dropdown list. By default, it is set to **Explicitly Opted Out**. The different options are:
@@ -300,6 +296,12 @@ Note that **`variant_options`** listed above is an array of objects. It is not a
 | `id` | `id` |
 | `type` | `type` |
 | `label` | `label` |
+
+## FAQ
+
+### How do I get the Ometria API Key?
+
+To get the Ometria API token, go to your your Ometria dashboard and navigate to **Settings** - **API Keys**. Then, click on **New API Key**.
 
 ## Contact Us
 
