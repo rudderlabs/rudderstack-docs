@@ -8,10 +8,6 @@ description: Step-by-step guide to set up Ometria as a destination in RudderStac
 
 RudderStack supports Ometria as a destination to which you can seamlessly send your customer data.
 
-{% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ometria)**.**
-{% endhint %}
-
 ## Getting Started
 
 Before configuring Ometria as a destination in RudderStack, verify if the source platform is supported by Ometria by referring to the table below:
@@ -301,6 +297,11 @@ Note that **`variant_options`** listed above is an array of objects. It is not a
 | `type` | `type` |
 | `label` | `label` |
 
+## FAQ
+
+### How do I get the Ometria API Key?
+
+In the Ometria dashboard, go to **Settings** > **API Keys** > **New API Key**
 ## Contact Us
 
 If you come across any issues while configuring or using Ometria with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
