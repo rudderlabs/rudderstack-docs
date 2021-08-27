@@ -148,6 +148,7 @@
     * [LinkedIn Insight Tag](destinations/advertising/linkedin_insight_tag.md)
     * [Reddit Pixel](destinations/advertising/reddit-pixel.md)
     * [Facebook Pixel](destinations/advertising/fb-pixel.md)
+    * [Snap Pixel](destinations/advertising/snap-pixel.md)
     * [Facebook Custom Audience](destinations/advertising/fb_custom_audience.md)
     * [Lotame](destinations/advertising/lotame.md)
     * [Bing Ads](destinations/advertising/bingads.md)
