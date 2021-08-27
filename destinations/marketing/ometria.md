@@ -52,8 +52,8 @@ To get the Ometria API token, go to your your Ometria dashboard and navigate to 
 You can also pass this value in the `identify` call - refer to the **Identify** section below for more details. Note that the value set via the `identify` call will have a higher precedence.
 {% endhint %}
 
-* In the **SMS Channel Settings**, you can set **Allow Marketing** to **True** or **False**. This setting determines whether the contact is opted in or out for SMS marketing. By default, it is set to **False**.
-* Set **Allow Transactional** to either **True** or **False**. This setting determines whether the contact is opted in or out for transactional SMSes. By default, it is set to **False**.
+* Under **SMS Channel Settings**, you can enable **Allow Marketing**. This setting determines whether the contact is opted in or out for SMS marketing. By default, it is **disabled**.
+*  **Allow Transactional**: Enabling or disabling this setting determines if the contact is opted in or out for transactional SMSes. By default, it is **disabled**.
 
 {% hint style="info" %}
 You can additionally set the values for **Allow Marketing** and **Allow Transactional** via the `identify` call - refer to the **Identify** section below for more details. Note that the value set via the `identify` call will have a higher precedence.
@@ -96,8 +96,8 @@ rudderanalytics.identify(
     integrations: {
       Ometria: {
         marketingOptin: "EXPLICITLY_OPTEDIN",
-        allow_marketing: "true",
-        allow_transactional: "true",
+        allow_marketing: true,
+        allow_transactional: true,
       }
     }
   }
@@ -250,7 +250,6 @@ The following table includes all the fields in `track` call for E-Commerce order
 | `currency` | `currency` |
 | `web_id` | `web_id` |
 | `ip_address` | `ip_address` |
-| `timestampUnsubscribed` | `timestamp_unsubscribed` |
 | `channel` | `channel` |
 | `store` | `store` |
 | `payment_method` | `payment_method` |
@@ -284,10 +283,6 @@ Note that **`products`** is an array of objects. Every object in this array can 
 | `totals` | `totals` |
 | `properties` | `properties` |
 | **`variant_options`** | **`variant_options`** |
-
-{% hint style="info" %}
-Ometria expects that the `product_id` field must contain a valid product ID. To create a `Product`, use the [**Ometria Product endpoint**](https://api.ometria.com/v2/push).
-{% endhint %}
 
 Note that **`variant_options`** listed above is an array of objects. It is not a mandatory field. However, if provided, each object in this array **must** contain the following fields:
 
