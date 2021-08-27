@@ -40,7 +40,7 @@ This section details the connection settings required to configure Ometria as a 
 * Enter your Ometria **API Token**.
 
 {% hint style="info" %}
-To get your API key go to your Ometria dashboard, navigate to **Settings**, and click on the **API Keys** tab.
+To get the Ometria API key, go to your your Ometria dashboard and navigate to **Settings** - **API Keys** - **New API Key**.
 {% endhint %}
 
 * Under **Contact Settings**, you can choose the **Marketing Optin** status from the dropdown list. By default, it is set to **Explicitly Opted Out**. The different options are:
@@ -301,7 +301,8 @@ Note that **`variant_options`** listed above is an array of objects. It is not a
 
 ### How do I get the Ometria API Key?
 
-In the Ometria dashboard, go to **Settings** > **API Keys** > **New API Key**
+To get the Ometria API key, go to your your Ometria dashboard and navigate to **Settings** - **API Keys** - **New API Key**.
+
 ## Contact Us
 
 If you come across any issues while configuring or using Ometria with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
