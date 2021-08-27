@@ -40,7 +40,7 @@ This section details the connection settings required to configure Ometria as a 
 * Enter your Ometria **API Token**.
 
 {% hint style="info" %}
-To get the Ometria API key, go to your your Ometria dashboard and navigate to **Settings** - **API Keys** - **New API Key**.
+To get the Ometria API token, go to your your Ometria dashboard and navigate to **Settings** - **API Keys**. Then, click on **New API Key**.
 {% endhint %}
 
 * Under **Contact Settings**, you can choose the **Marketing Optin** status from the dropdown list. By default, it is set to **Explicitly Opted Out**. The different options are:
@@ -301,7 +301,7 @@ Note that **`variant_options`** listed above is an array of objects. It is not a
 
 ### How do I get the Ometria API Key?
 
-To get the Ometria API key, go to your your Ometria dashboard and navigate to **Settings** - **API Keys** - **New API Key**.
+To get the Ometria API token, go to your your Ometria dashboard and navigate to **Settings** - **API Keys**. Then, click on **New API Key**.
 
 ## Contact Us
 
