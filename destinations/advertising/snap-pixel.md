@@ -44,7 +44,11 @@ To successfully configure Snap Pixel as a destination, you will need to configur
 ## Identify
 
 {% hint style="warning" %}
-The Snap Pixel will not be initialize unless identify call is fired.
+The Snap Pixel will not be initialized unless `identify` call is fired.
+{% endhint %}
+
+{% hint style="info" %}
+A user parameter (email or phone number) is needed for the snap pixel code to be loaded. So, while loading rudderstack will check for those from the cookies. If found, then, the web snippet is loaded fully else `identify` call with email/phone is required for that.
 {% endhint %}
 
 In Snap Pixel, the `identify` call initializes the Snap Pixel snippit code.
