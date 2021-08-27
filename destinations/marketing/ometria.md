@@ -52,8 +52,8 @@ To get the Ometria API token, go to your your Ometria dashboard and navigate to 
 You can also pass this value in the `identify` call - refer to the **Identify** section below for more details. Note that the value set via the `identify` call will have a higher precedence.
 {% endhint %}
 
-* In the **SMS Channel Settings**, you can enable **Allow Marketing**. This setting determines whether the contact is opted in or out for SMS marketing. By default, it is **disabled**.
-*  **Allow Transactional** setting determines whether the contact is opted in or out for transactional SMSes. It can be enabled. By default, it is **disabled**.
+* Under **SMS Channel Settings**, you can enable **Allow Marketing**. This setting determines whether the contact is opted in or out for SMS marketing. By default, it is **disabled**.
+*  **Allow Transactional**: Enabling or disabling this setting determines if the contact is opted in or out for transactional SMSes. By default, it is **disabled**.
 
 {% hint style="info" %}
 You can additionally set the values for **Allow Marketing** and **Allow Transactional** via the `identify` call - refer to the **Identify** section below for more details. Note that the value set via the `identify` call will have a higher precedence.
