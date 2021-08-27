@@ -77,7 +77,8 @@ Either or both of the following user parameters should be passed in identify:
 
 ## Page
 
-When the `page` call is made, the `track` event is sent as `PAGE_VIEW` . RudderStack ignores any parameter sent to `rudderanalytics.page()` .
+When the `page` call is made, the `snaptr("track", "PAGE_VIEW")` is sent.
+You can also send payload with the rudderstack `page` call.
 
 For more information on the `page` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/page).
 
@@ -89,9 +90,9 @@ rudderanalytics.page();
 
 ## Track
 
-The `track` call lets you track custom events in your website.
+The `track` call lets you send Snap Pixel events.
 
-A sample call looks like the following code snippet:
+A sample track call is as shown below:
 
 ```javascript
 rudderanalytics.track('PURCHASE', {
@@ -101,11 +102,7 @@ rudderanalytics.track('PURCHASE', {
 });
 ```
 
-{% hint style="info" %}
-Any Snap Pixel Standard Events apart from shown below will be passed as it is along with the event payload wherever as needed.
-{% endhint %}
-
-RudderStack transforms the following events to Snap Pixel's Standard Events:
+You can also send the following RudderStack Ecommerce Events.
 
 | **RudderStack Event Name**  | **Snap Pixel Standard Event** |
 | :-------------------------- | :---------------------------- |
@@ -116,6 +113,16 @@ RudderStack transforms the following events to Snap Pixel's Standard Events:
 | `Promotion Clicked` | `AD_CLICK` |
 | `Promotion Viewed` | `AD_VIEW` |
 | `Product Added To Wishlist` | `ADD_TO_WISHLIST` |
+
+Snap Pixel supports upto 5 Custom Events. They are listed below:
+
+| **RudderStack Event Name**  |
+| :-------------------------- |
+| `CUSTOM_EVENT_1` |
+| `CUSTOM_EVENT_2` |
+| `CUSTOM_EVENT_3` |
+| `CUSTOM_EVENT_4` |
+| `CUSTOM_EVENT_5` |
 
 ## FAQs
 
