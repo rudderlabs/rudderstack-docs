@@ -41,8 +41,6 @@ To successfully configure Snap Pixel as a destination, you will need to configur
 
 * **Hashing Method:** Snap Pixel lets you pass a user parameter (email or phone number) in both hashed and non-hashed formats in it's init call. If **SHA-256** is chosen as an option, RudderStack will hash-encode the provided user parameter (email or the phone number).
 
-* **Custom Events:** Enter your Snap Pixel Custom Events here. Snap Pixel allows to track upto 5 Custom Events.
-
 ## Identify
 
 {% hint style="warning" %}
@@ -96,7 +94,7 @@ rudderanalytics.track('PURCHASE', {
 ```
 
 {% hint style="info" %}
-Any Snap Pixel Standard Events apart from shown below will be passed as it is and user can provide upto 5 Custom events (should match that of the dashboard) of their own along with the event payload wherever as needed.
+Any Snap Pixel Standard Events apart from shown below will be passed as it is along with the event payload wherever as needed.
 {% endhint %}
 
 RudderStack transforms the following events to Snap Pixel's Standard Events:
