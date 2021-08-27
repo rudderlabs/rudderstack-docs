@@ -129,7 +129,7 @@ For more information on the Snap Pixel events, visit this [**Snapchat page**](ht
 
 Snap Pixel supports upto 5 custom events. They are listed in the table below:
 
-| **RudderStack Event Name**  |
+| **Custom Events**  |
 | :-------------------------- |
 | `CUSTOM_EVENT_1` |
 | `CUSTOM_EVENT_2` |
