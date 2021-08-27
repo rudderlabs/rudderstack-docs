@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Snap
 
 # Snap Pixel
 
-The [**Snap Pixel**](https://ads.snapchat.com/) is a piece of JavaScript code that lets you measure the cross-device impact of your advertising campaigns. It lets understand how many Snapchat users interact with your website after seeing the ads.
+The [**Snap Pixel**](https://ads.snapchat.com/) is a piece of JavaScript code that lets you measure the cross-device impact of your advertising campaigns. It lets you understand how many Snapchat users interact with your website after seeing the ads.
 
 RudderStack supports Snap Pixel as a destination to which you can seamlessly send your event data.
 
@@ -46,11 +46,11 @@ To successfully configure Snap Pixel as a destination, you will need to configur
 ## Identify
 
 {% hint style="warning" %}
-The Snap Pixel will not be initialized unless `identify` call is fired.
+The Snap Pixel will not be initialized unless the `identify` call is fired.
 {% endhint %}
 
 {% hint style="info" %}
-RudderStacks checks the cookies for the user parameter (email or phone number) before loading the Snap Pixel snippet. If found, the snippet is loaded. Otherwise, an `identify` call with the user's email or phone number is required.
+RudderStacks checks the cookies for the user parameter (email or phone number) before loading the Snap Pixel snippet. If found, the snippet is loaded. Otherwise, an `identify` call with the user's email or phone number is required to load the snippet.
 {% endhint %}
 
 In Snap Pixel, the `identify` call initializes the Snap Pixel code.
@@ -77,8 +77,11 @@ Either or both of the user parameters should be passed in the `identify` call. T
 
 ## Page
 
-When the `page` call is made, the `snaptr("track", "PAGE_VIEW")` is sent.
-You can also send payload with the rudderstack `page` call.
+When the `page` call is made, RudderStack sends the following: 
+
+`snaptr("track", "PAGE_VIEW")`.
+
+You can make the `page` call with or without the event payload.
 
 {% hint style="info" %}
 For more information on the `page` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/page).
@@ -98,7 +101,7 @@ The `track` call lets you send Snap Pixel events.
 For more information on the `track` call, check out the [**RudderStack API spec**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/track).
 {% endhint %}
 
-A sample track call is as shown below:
+A sample `track` call is as shown below:
 
 ```javascript
     rudderanalytics.track('PURCHASE', {
@@ -108,7 +111,7 @@ A sample track call is as shown below:
     });
 ```
 
-You can also send the following RudderStack Ecommerce Events.
+You can also send the following RudderStack E-Commerce Events:
 
 | **RudderStack Event Name**  | **Snap Pixel Standard Event** |
 | :-------------------------- | :---------------------------- |
@@ -121,10 +124,10 @@ You can also send the following RudderStack Ecommerce Events.
 | `Product Added To Wishlist` | `ADD_TO_WISHLIST`             |
 
 {% hint style="warning" %}
-For more information on snap pixel events visit this [page](https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US)
+For more information on the Snap Pixel events, visit this [**Snapchat page**](https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US)
 {% endhint %}
 
-Snap Pixel supports upto 5 Custom Events. They are listed below:
+Snap Pixel supports upto 5 custom events. They are listed in the table below:
 
 | **RudderStack Event Name**  |
 | :-------------------------- |
