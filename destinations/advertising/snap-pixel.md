@@ -39,6 +39,10 @@ To successfully configure Snap Pixel as a destination, you will need to configur
 
 * **Snap Pixel ID:** Enter your Snap Pixel ID here.
 
+{% hint style="info" %}
+For more information on how to find your Snap Pixel ID, refer to the FAQs below.
+{% endhint %}
+
 * **Hashing Method:** Snap Pixel lets you pass a user parameter (email or phone number) in both hashed and non-hashed formats in it's init call. If **SHA-256** is chosen as an option, RudderStack will hash-encode the provided user parameter (email or the phone number).
 
 ## Identify
@@ -112,6 +116,14 @@ RudderStack transforms the following events to Snap Pixel's Standard Events:
 | `Promotion Clicked` | `AD_CLICK` |
 | `Promotion Viewed` | `AD_VIEW` |
 | `Product Added To Wishlist` | `ADD_TO_WISHLIST` |
+
+## FAQs
+
+**Where can I find the Snap Pixel ID?**
+
+To get your Snap Pixel ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**, under **Pixel Code** you can find the Pixel ID, as shown below.
+
+![](../../.gitbook/assets/SnapPixel-2.png)
 
 ## Contact Us
 
