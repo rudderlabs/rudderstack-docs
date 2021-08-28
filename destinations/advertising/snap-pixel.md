@@ -12,10 +12,10 @@ RudderStack supports Snap Pixel as a destination to which you can seamlessly sen
 
 Before configuring Snap Pixel as a destination in RudderStack, verify if the source platform is supported by Snap Pixel by referring to the table below: ̦
 
-| **Connection Mode** | **Web**       | **Mobile** | **Server** |
-| :------------------ | :------------ | :--------- | :--------- |
-| **Device mode**     | **Supported** | -          | -          |
-| **Cloud mode**      | -             | -          | -          |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | **Supported** | - | - |
+| **Cloud mode** | - | - | - |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, refer to the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -41,7 +41,7 @@ To successfully configure Snap Pixel as a destination, you will need to configur
 
 ![](../../.gitbook/assets/SnapPixel-2.png)
 
-* **Hashing Method:** Snap Pixel lets you pass a user parameter (email or phone number) in both hashed and non-hashed format during intialization. If **SHA-256** is chosen as an option, RudderStack will hash-encode the provided user parameter.
+* **Hashing Method:** Snap Pixel lets you pass a user parameter \(email or phone number\) in both hashed and non-hashed format during intialization. If **SHA-256** is chosen as an option, RudderStack will hash-encode the provided user parameter.
 
 ## Identify
 
@@ -50,7 +50,7 @@ The Snap Pixel will not be initialized unless the `identify` call is fired.
 {% endhint %}
 
 {% hint style="info" %}
-RudderStacks checks the cookies for the user parameter (email or phone number) before loading the Snap Pixel snippet. If found, the snippet is loaded. Otherwise, an `identify` call with the user's email or phone number is required to load the snippet.
+RudderStacks checks the cookies for the user parameter \(email or phone number\) before loading the Snap Pixel snippet. If found, the snippet is loaded. Otherwise, an `identify` call with the user's email or phone number is required to load the snippet.
 {% endhint %}
 
 In Snap Pixel, the `identify` call initializes the Snap Pixel code.
@@ -70,14 +70,14 @@ A sample `identify` call is as shown:
 
 Either or both of the user parameters should be passed in the `identify` call. The following table lists the parameters along with the relative mapping to the Snap Pixel parameters:
 
-| **RudderStack User Parameter**  | **Snap Pixel User Parameter** |
-| :------------------------------ | :---------------------------- |
-| `email`                         | `user_email`                  |
-| `phone`                         | `user_phone_number`           |
+| **RudderStack User Parameter** | **Snap Pixel User Parameter** |
+| :--- | :--- |
+| `email` | `user_email` |
+| `phone` | `user_phone_number` |
 
 ## Page
 
-When the `page` call is made, RudderStack sends the following: 
+When the `page` call is made, RudderStack sends the following:
 
 `snaptr("track", "PAGE_VIEW")`.
 
@@ -113,15 +113,15 @@ A sample `track` call is as shown below:
 
 You can also send the following RudderStack E-Commerce Events:
 
-| **RudderStack Event Name**  | **Snap Pixel Standard Event** |
-| :-------------------------- | :---------------------------- |
-| `Order Completed`           | `PURCHASE`                    |
-| `Checkout Started`          | `START_CHECKOUT`              |
-| `Product Added`             | `ADD_CART`                    |
-| `Payment Info Entered`      | `ADD_BILLING`                 |
-| `Promotion Clicked`         | `AD_CLICK`                    |
-| `Promotion Viewed`          | `AD_VIEW`                     |
-| `Product Added To Wishlist` | `ADD_TO_WISHLIST`             |
+| **RudderStack Event Name** | **Snap Pixel Standard Event** |
+| :--- | :--- |
+| `Order Completed` | `PURCHASE` |
+| `Checkout Started` | `START_CHECKOUT` |
+| `Product Added` | `ADD_CART` |
+| `Payment Info Entered` | `ADD_BILLING` |
+| `Promotion Clicked` | `AD_CLICK` |
+| `Promotion Viewed` | `AD_VIEW` |
+| `Product Added To Wishlist` | `ADD_TO_WISHLIST` |
 
 {% hint style="warning" %}
 For more information on the Snap Pixel events, visit this [**Snapchat page**](https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US)
@@ -129,8 +129,8 @@ For more information on the Snap Pixel events, visit this [**Snapchat page**](ht
 
 Snap Pixel supports upto 5 custom events. They are listed in the table below:
 
-| **Custom Events**  |
-| :-------------------------- |
+| **Custom Events** |
+| :--- |
 | `CUSTOM_EVENT_1` |
 | `CUSTOM_EVENT_2` |
 | `CUSTOM_EVENT_3` |
@@ -148,3 +148,4 @@ To get your Snap Pixel ID, go to your [**Snap Ads Manager**](https://ads.snapcha
 ## Contact Us
 
 In case of any issues while configuring or using Snap Pixel with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+

@@ -56,7 +56,9 @@ If this option is disabled, RudderStack will search for the category and name of
 
 ## Page
 
-The `page` call lets you track how many times a user performs certain actions. RudderStack passes any tracked events as embedded data to the Qualtrics [**intercept**](https://www.qualtrics.com/support/website-app-feedback/getting-started-with-website-app-feedback/step-4-setting-up-your-intercept/) target. After the `page` call, the Qualtrics survey is loaded.
+The `page` call lets you record your website's page views with any additional relevant information about the viewed page.
+
+RudderStack passes any tracked events as embedded data to the Qualtrics [**intercept**](https://www.qualtrics.com/support/website-app-feedback/getting-started-with-website-app-feedback/step-4-setting-up-your-intercept/) target. After the `page` call, the Qualtrics survey is loaded.
 
 {% hint style="success" %}
 You can set the intercepts when a user creates the project or after they have created the project.

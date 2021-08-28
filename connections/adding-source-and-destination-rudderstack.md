@@ -22,7 +22,7 @@ Follow these steps to add an event data source in RudderStack:
 
 * Log in to the **RudderStack dashboard**.
 
-![](../.gitbook/assets/1%20%2827%29%20%283%29%20%283%29%20%283%29.png)
+![](../.gitbook/assets/1%20%2827%29%20%283%29%20%283%29%20%283%29%20%283%29.png)
 
 * Under Sources, click on **Add Source**. From the list of sources, click on the source you want to set up in RudderStack.
 
@@ -57,7 +57,7 @@ To add a destination in RudderStack, follow these steps:
 
 * On your dashboard home page, click on the **ADD DESTINATION** option under **Destinations**, as shown:
 
-![](../.gitbook/assets/1%20%2827%29%20%283%29%20%283%29%20%283%29%20%281%29.png)
+![](../.gitbook/assets/1%20%2827%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29.png)
 
 * Alternatively, you can also connect your source to a destination as shown:
 
