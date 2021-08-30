@@ -18,7 +18,7 @@ The following table lists all the common fields with their detailed description:
 
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
-| `anonymousId` | `String` | Required | Unique identification for the user. This is the same as the `deviceId`**`.`** |
+| `anonymousId` | `String` | Required | Unique identification for the user. This is the same as the `deviceId`. |
 | `channel` | `String` | Required | Identifies the source of the event. Permitted values are `mobile`, `web`, `server` |
 | `context` | `Object` | Required | Contains all the additional user information. The RudderStack SDKs populate this information automatically. |
 | `event` | `String` | Optional | Captures the user action that you want to record. |
