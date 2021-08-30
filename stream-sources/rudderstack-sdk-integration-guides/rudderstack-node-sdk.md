@@ -66,7 +66,7 @@ The `identify` parameters are as described below:
 
 ## Track
 
-The `track` call lets you record the users' actions along with their associated properties. Each user  action is called an 'event'.
+The `track` call lets you record the users' actions along with their associated properties. Each user action is called an 'event'.
 
 {% hint style="info" %}
 For a detailed explanation of the `track` call, please refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/track) guide.
@@ -207,7 +207,7 @@ The Node.js SDK retries event delivery `n` times, if it fails to successfully de
 
 To prevent data loss from the SDK to RudderStack while it is not ready to accept data or temporarily unreachable, we have introduced a feature to persist the event data in **Redis**, leading to better event delivery guarantees. Also, the SDK can retry multiple times as the queue is maintained in a different process space \(in this case, Redis\).
 
-You will need to host a Redis server and use it as the intermediary data storage queue to use this feature. 
+You will need to host a Redis server and use it as the intermediary data storage queue to use this feature.
 
 {% hint style="info" %}
 We use [**Bull**](https://github.com/OptimalBits/bull) as the interface layer between the Node.js SDK and Redis.
@@ -228,7 +228,7 @@ const client = new Analytics("write_key","server_url/v1/batch",{
 client.createPersistenceQueue({ redisOpts: { host: "localhost" } }, err => {})
 ```
 
-To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue. 
+To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue.
 
 The specifications of these parameters are as follows:
 
@@ -272,7 +272,7 @@ JobOpts {
 callback: function(error) || function()
 ```
 
-Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for  the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to calling `callback` with the error.
+Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to calling `callback` with the error.
 
 {% hint style="info" %}
 It is recommended to retry calling `createPersistenceQueue` with a backoff, if the callback returns with an error.
@@ -306,7 +306,7 @@ If the same queue \(RudderStack SDK initialized with the same queue name\) is us
 ### **Flow**
 
 * Calling the SDK methods like `track`, `page`, `identify`, etc. pushes the events to an in-memory array. 
-* The events from the array are flushed as a `batch` to the Redis persistence based on the `flushAt` and `flushInterval` settings. The in-memory array has a maximum size of `maxInternalQueueSize`. **Once this size limit is reached,**  _****_**the events won't be accepted if not drained to the other side \(cases where Redis connection is slow or the Redis server is not reachable\).** 
+* The events from the array are flushed as a `batch` to the Redis persistence based on the `flushAt` and `flushInterval` settings. The in-memory array has a maximum size of `maxInternalQueueSize`. **Once this size limit is reached,**  _\*\*_**the events won't be accepted if not drained to the other side \(cases where Redis connection is slow or the Redis server is not reachable\).** 
 * The processor will take the batch from the Redis list and make a request to RudderStack. In case of an error, the processor will retry sending the data again if the error can be retried \(errors with status code `5xx and 429`\). **The retry will go up to `JobOpts.maxAttempts` with an** **exponential backoff of power 2 with max backoff of 30 seconds**. 
 * If the job fails even after `JobOpts.maxAttempts`, it will not be retried again and pushed to a `failed queue`. **You can retry them later manually using Bull’s utility methods** [**listed here**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queuegetfailed) **or get them from Redis directly**. 
 * There might be a scenario where the node process dies with the jobs still in active state \(not completed nor failed but in the process of sending/retrying\). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, **the jobs will be picked up first by the processor to get processed to maintain event ordering based on the value of `QueueOpts.isMultiProcessor`**. 
