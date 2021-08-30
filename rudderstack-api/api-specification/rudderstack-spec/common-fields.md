@@ -26,7 +26,7 @@ The following table lists all the common fields with their detailed description:
 | `messageId` | `String` | Optional | Unique identification for the event. |
 | `properties` | `Object` | Optional | Passes all the relevant information associated with the event. |
 | `originalTimestamp` | `Timestamp` | Required | Records the actual time when the event occurred. |
-| `type` | `String` | Required | Captures the type of API. Values can be either `track`,`screen`,`identify`,`page`. |
+| `type` | `String` | Required | Captures the type of API. Values can be either `track`, `screen`, `identify`, `page`. |
 | `sentAt` | `Timestamp` | Required | Captures the time when the event was sent to RudderStack from the client. |
 
 ## Contextual Fields
