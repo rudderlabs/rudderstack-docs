@@ -43,7 +43,7 @@ The following table lists all the contextual fields with their detailed descript
 | `locale` | `String` | Captures the language of the device. |
 | `network` | `Object` | Contains information about the reachability of the device. Also, it gives you the status of the device's `bluetooth`, `wifi`, `cellular` network and `carrier` name. |
 | `os` | `Object` | Captures the operating system details of the device you are tracking. |
-| `screen` | `Object` | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density` . |
+| `screen` | `Object` | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density`. |
 | `timezone` | `String` | Captures the timezone of the user you are tracking. |
 | `traits` | `Object` | Captures any additional relevant information about the user. RudderStack fills in the `anonymousId` for you. You can also associate the   [**traits**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/identify#identify-traits) from the previously-made `identify` call from the SDK. |
 | `userAgent` | `String` | The user agent of the device that you are tracking. |
