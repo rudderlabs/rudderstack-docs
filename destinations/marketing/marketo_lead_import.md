@@ -106,15 +106,11 @@ The corresponding mapping to the Marketo traits in case of the above event is sh
 | `phone` | `phone_number` |
 | `timestamp` | `createdAt` |
 
-The values that will be sent to Marketo \(corresponding to the sample `identify` call above\) are listed in the following table:
+RudderStack sends the following values to Marketo \(corresponding to the sample `identify` call above\):
 
-| **Marketo Field Name** | **Value** |
-| :--- | :--- |
-| `name` | `Name` |
-| `Email` | `name@surname.com` |
-| `birthday` | - |
-| `phone` | - |
-| `timestamp` | `Thu Mar 24 2020 17:46:45 GMT+0000 (UTC)` |
+`name`,`Email`,`birthday`,`phone`,`timestamp`
+
+`Name`,[`name@surname.com`](mailto:name@surname.com),,,`Thu Mar 24 2020 17:46:45 GMT+0000 (UTC)`
 
 ## Contact Us
 
