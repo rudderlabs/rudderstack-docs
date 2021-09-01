@@ -54,7 +54,7 @@ The `identify` call has the following fields in addition to the [**Common Fields
 
 ## User ID vs Anonymous ID
 
- RudderStack requires every `identify` call to have either a `userId` or an `anonymousId`. This section highlights the difference between the two.
+RudderStack requires every `identify` call to have either a `userId` or an `anonymousId`. This section highlights the difference between the two.
 
 ### User ID
 
