@@ -16,7 +16,7 @@ For more information on sources in RudderStack, check out the [**Connections gui
 
 ## RudderStack Cloud Extract
 
-With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [**Facebook Ads**](https://www.facebook.com/business/ads), [**Google Analytics**](https://analytics.google.com/), [**Marketo**](https://www.marketo.com/), [**HubSpot**](https://www.hubspot.com/), [**Stripe**](stripe.md), and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
+With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [**Facebook Ads**](https://www.facebook.com/business/ads), [**Google Analytics**](https://analytics.google.com/), [**Marketo**](https://www.marketo.com/), [**HubSpot**](https://www.hubspot.com/), [**Stripe**](stripe.md), and more. You can then build efficient ETL pipelines from these cloud apps to your data warehouse.
 
 {% hint style="info" %}
 **All the Cloud Extract sources support sending data only to a data warehouse destination.**
