@@ -268,7 +268,7 @@ In the above example, the event will be sent to Qualtrics as `Test Event`.
 The `identify` call is supported only in the mobile (Android and iOS) Device Mode integration.
 {% endhint %}
 
-When you make an `identify` call, RudderStack sets the user traits using the Qualtrics' `property` API. These traits can be used as custom properties while setting the [**Target Logic**](https://www.qualtrics.com/support/website-app-feedback/common-use-cases/optimizing-intercept-targeting-logic/) or [**Embedded Data**](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/standard-elements/embedded-data/) for any intercept in your Qualtrics dashboard.
+When you make an `identify` call, RudderStack sets the user traits using the Qualtrics `Properties` class, `setString` and `setNumber` API on Android and `setStringWithString` and `setNumberWithNumber` API on iOS. These traits can be used as custom properties while setting the [**Target Logic**](https://www.qualtrics.com/support/website-app-feedback/common-use-cases/optimizing-intercept-targeting-logic/) or [**Embedded Data**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android#using-embedded-data) for any intercept in your Qualtrics dashboard.
 
 {% tabs %}
 {% tab title="iOS" %}
@@ -314,7 +314,7 @@ An example is shown below:
 
 ### In the mobile Device Mode integration, is it possible to manually set the logic?
 
-Yes, you can manually set the logic using Qualtrics `property` API. For more information, refer to the [**iOS documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjY-getting-started-with-the-mobile-app-sdk-on-i-os) or the [**Android documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android), depending on your implementation.
+Yes, you can manually set the logic using Qualtrics `Properties` class `setString` and `setNumber` API on Android and `setStringWithString` and `setNumberWithNumber` API on iOS. For more information, refer to the [**iOS documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjY-getting-started-with-the-mobile-app-sdk-on-i-os) or the [**Android documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android), depending on your implementation.
 
 ## Contact Us
 
