@@ -109,6 +109,7 @@
     * [Delighted](destinations/crm/delighted.md)
   * [Marketing](destinations/marketing/README.md)
     * [Marketo](destinations/marketing/marketo.md)
+    * [Marketo Lead Import] (destinations/marketing/marketo_lead_import.md)
     * [Drip](destinations/marketing/drip/README.md)
       * [Setting Up Drip in RudderStack](destinations/marketing/drip/setting-up-drip-in-rudderstack.md)
       * [Cloud Mode](destinations/marketing/drip/drip-cloud-mode.md)
