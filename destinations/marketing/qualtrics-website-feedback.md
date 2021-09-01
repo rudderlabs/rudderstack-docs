@@ -82,7 +82,7 @@ RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
     [RSClient getInstance:<YOUR_WRITE_KEY> config:[configBuilder build]];
 ```
 
-* Call the intercept using:
+* Add the below snippet to display the qualified intercept on your ViewController:
 
 ```objectivec
 [Qualtrics.shared evaluateProjectWithCompletion:^(NSDictionary<NSString *,TargetingResult *>* targetingResults){
@@ -166,7 +166,7 @@ private class MyCallback implements IQualtricsProjectEvaluationCallback {
 }
 ```
 
-* Call the intercept using:
+* Add the below snippet to display the qualified intercept on your Activity class:
 
 ```java
 Qualtrics.instance().evaluateProject(new MyCallback());
@@ -177,13 +177,9 @@ Qualtrics.instance().evaluateProject(new MyCallback());
 {% endtab %}
 {% endtabs %}
 
-## Information on Mobile Device Mode Integration
-
-* Mobile Device Mode Integration supports only `identify` call.
-* For iOS, activate only one `intercept` at a time.
-* For Android, multiple intercepts could be used.
-* Having multiple `Action Set` within an intercept should be used properly, as the `intercept logic` which is set first will be displayed in successive intercept calls.
-* Intercept call should be made after Qualtrics SDK is initialised. Use button to make an intercept call.
+{% hint style="success" %}
+In iOS, if the user qualifies for multiple intercepts, only one will be shown, whereas in Android all the intercept will be shown.
+{% endhint %}
 
 ## Page
 
@@ -267,7 +263,7 @@ In the above example, the event will be sent to Qualtrics as `Test Event`.
 
 ## Identify
 
-When you make an `identify` call, RudderStack sets the `property` passed for that event. This `property` could be used for the `Target Logic` and `Embedded Data`.
+When you make an `identify` call, RudderStack sets the `traits` passed for that user using the `property` API of Qualtrics. This `traits` values could be used as a custom property while setting the `Target Logic` or `Embedded Data` for any Intercept in Qualtrics dashboard.
 
 {% tabs %}
 {% tab title="iOS" %}
@@ -286,6 +282,10 @@ MainApplication.rudderClient.identify(
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="success" %}
+* `Identify` call is supported only by Mobile Device Mode Integration.
+{% endhint %}
 
 ## FAQ
 
@@ -311,9 +311,9 @@ An example is shown below:
 
 ![](https://user-images.githubusercontent.com/59817155/128988678-5f108062-6072-47e0-94d1-d3e7bee15fe5.png)
 
-### In Mbobile Device Mode Integration could we set the logic manually?
+### In Mobile Device Mode Integration could we set the logic manually?
 
-Yes, using Qualtrics `property` api you could set the logic. Click to know more for [**iOS**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjY-getting-started-with-the-mobile-app-sdk-on-i-os) and [**Android**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android).
+Yes, using Qualtrics `property` API you could set the logic. Click to know more for [**iOS**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjY-getting-started-with-the-mobile-app-sdk-on-i-os) and [**Android**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android).
 
 ## Contact Us
 
