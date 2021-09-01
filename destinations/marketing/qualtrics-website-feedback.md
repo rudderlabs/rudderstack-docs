@@ -58,15 +58,15 @@ If this option is disabled, RudderStack will search for the category and name of
 
 {% tabs %}
 {% tab title="iOS" %}
-Follow these steps to add Qualtrics to your iOS project:
+To add Qualtrics to your iOS project, follow these steps:
 
-* In your `Podfile`, add the `Rudder-Qualtrics` extension:
+* In your `Podfile`, add the `Rudder-Qualtrics` extension as shown:
 
 ```ruby
 pod 'Rudder-Qualtrics'
 ```
 
-* After adding the dependency followed by `pod install`, add the imports to your `AppDelegate.m` file as shown:
+* After adding the dependency followed by a `pod install` command, add the following imports to your `AppDelegate.m` file:
 
 ```objectivec
 #import <Rudder/Rudder.h>
@@ -82,7 +82,7 @@ RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
     [RSClient getInstance:<YOUR_WRITE_KEY> config:[configBuilder build]];
 ```
 
-* Add the below snippet to display the qualified intercept on your ViewController:
+* Next, add the following snippet to display the qualified intercept on your `ViewController`:
 
 ```objectivec
 [Qualtrics.shared evaluateProjectWithCompletion:^(NSDictionary<NSString *,TargetingResult *>* targetingResults){
@@ -95,13 +95,13 @@ RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
 }];
 ```
 
-For more information refer to [**Qualtrics iOS doc**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjY-getting-started-with-the-mobile-app-sdk-on-i-os).
+For more information, refer to the [**Qualtrics iOS documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjY-getting-started-with-the-mobile-app-sdk-on-i-os).
 {% endtab %}
 
 {% tab title="Android" %}
-To add Qualtrics to your Android Project please follow these steps :
+To add Qualtrics to your Android project, follow these steps :
 
-* Open your `app/build.gradle` \(Module: app\) file, and add the following under the `dependencies` section :
+* Open your `app/build.gradle` \(Module: app\) file and add the following under the `dependencies` section :
 
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
@@ -112,7 +112,7 @@ implementation 'com.google.code.gson:gson:2.8.6'
 implementation 'com.qualtrics:digital:2.0.0'
 ```
 
-* Add a new maven repository for the App Feedback package. Your `allprojects` section should appear similar to below :
+* Add a new Maven repository for the App Feedback package. Your `allprojects` section should appear as shown:
 
 ```groovy
 allprojects {
@@ -126,7 +126,7 @@ allprojects {
 }
 ```
 
-* Open the AndroidManifest.xml file from the src/main folder in the project root and add the following XML snippet after the existing activity:
+* Open the `AndroidManifest.xml` file from the `src/main` folder in the project root and add the following XML snippet after the existing activity:
 
 ```xml
 <activity android:name=
@@ -136,7 +136,7 @@ allprojects {
           android:theme="@style/Qualtrics.Theme.Transparent"/>
 ```
 
-* Initialize the Rudder SDK in the `Application` class's  `onCreate()` method as following:
+* Initialize the RudderStack SDK in your `Application` class'  `onCreate()` method as shown:
 
 ```kotlin
 // initializing Rudder SDK
@@ -150,9 +150,7 @@ val rudderClient = RudderClient.getInstance(
 )
 ```
 
-* Add a MyCallback Subclass
-
-You need to implement a callback for the Qualtrics APIs. This will be used to call the displayIntercept() method based on the evaluateIntercept() result. A good place is before the last closing brace (}) in your MainActivity.Java class. Add the following code:
+* Add a `MyCallback` subclass. You need to implement a callback for the Qualtrics APIs. This will be used to call the `displayIntercept()` method based on the `evaluateIntercept()` result. A good place to add this callback is before the last closing brace (`}`) in your `MainActivity.Java` class. Add the following code:
 
 ```java
 private class MyCallback implements IQualtricsProjectEvaluationCallback {
@@ -166,19 +164,22 @@ private class MyCallback implements IQualtricsProjectEvaluationCallback {
 }
 ```
 
-* Add the below snippet to display the qualified intercept on your Activity class:
+* Add the following snippet to display the qualified intercept in your activity class:
 
 ```java
 Qualtrics.instance().evaluateProject(new MyCallback());
 ```
 
-* For information refer to [**Qualtrics Android doc**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android).
+{% hint style="info" %}
+For more information, refer to the [**Qualtrics Android documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android).
+{% endhint %}
+
 
 {% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
-In iOS, if the user qualifies for multiple intercepts, only one will be shown, whereas in Android all the intercept will be shown.
+In the iOS Device Mode implementation, even if the user qualifies for multiple intercepts, only one will be shown. Whereas in Android, all the intercepts for the user will be shown.
 {% endhint %}
 
 ## Page
@@ -263,7 +264,11 @@ In the above example, the event will be sent to Qualtrics as `Test Event`.
 
 ## Identify
 
-When you make an `identify` call, RudderStack sets the `traits` passed for that user using the `property` API of Qualtrics. This `traits` values could be used as a custom property while setting the `Target Logic` or `Embedded Data` for any Intercept in Qualtrics dashboard.
+{% hint style="info" %}
+The `identify` call is supported only in the mobile (Android and iOS) Device Mode integration.
+{% endhint %}
+
+When you make an `identify` call, RudderStack sets the user traits using the Qualtrics' `property` API. These traits can be used as a custom property while setting the [**Target Logic**](https://www.qualtrics.com/support/website-app-feedback/common-use-cases/optimizing-intercept-targeting-logic/) or [**Embedded Data**](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/standard-elements/embedded-data/) for any intercept in your Qualtrics dashboard.
 
 {% tabs %}
 {% tab title="iOS" %}
@@ -282,10 +287,6 @@ MainApplication.rudderClient.identify(
 ```
 {% endtab %}
 {% endtabs %}
-
-{% hint style="info" %}
-* `Identify` call is supported only by Mobile Device Mode Integration.
-{% endhint %}
 
 ## FAQ
 
@@ -311,11 +312,10 @@ An example is shown below:
 
 ![](https://user-images.githubusercontent.com/59817155/128988678-5f108062-6072-47e0-94d1-d3e7bee15fe5.png)
 
-### In Mobile Device Mode Integration could we set the logic manually?
+### In the mobile Device Mode integration, is it possible to manually set the logic?
 
-Yes, using Qualtrics `property` API you could set the logic. Click to know more for [**iOS**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjY-getting-started-with-the-mobile-app-sdk-on-i-os) and [**Android**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android).
+Yes, you can manually set the logic using Qualtrics `property` API. For more information, refer to the [**iOS documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjY-getting-started-with-the-mobile-app-sdk-on-i-os) or the [**Android documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android), depending on your implementation.
 
 ## Contact Us
 
 For questions on any of the sections covered in this guide, feel free to [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
