@@ -52,7 +52,9 @@ The following are the settings to be configured:
 You can find your columns api key names from [here](https://developers.marketo.com/rest-api/bulk-import/bulk-custom-object-import/)
 
 Eg. You want to send data to the columns with api key names: `name`, `Email` and from traits keys `firstName`, `email` then the mapping should be done as:
+
 | **Column Field Name** | **Traits** |
+| :--- | :--- |
 | name | firstName |
 | Email | email |
 
@@ -73,7 +75,9 @@ rudderanalytics.identify("name123", {
 });
 ```
 And the mapping is :
+
 | **Column Field Name** | **Traits** |
+| :--- | :--- |
 | name | firstName |
 | Email | email |
 | birthday | birthday |
@@ -81,7 +85,9 @@ And the mapping is :
 | timestamp | createdAt | 
 
 The values that will be sent to marketo: 
+
 name,Email,birthday,phone,timestamp
+
 Name,name@surname.com,,,Thu Mar 24 2020 17:46:45 GMT+0000 (UTC)
 
 
