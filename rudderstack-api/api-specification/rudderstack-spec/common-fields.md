@@ -18,15 +18,15 @@ The following table lists all the common fields with their detailed description:
 
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
-| `anonymousId` | `String` | Required | Unique identification for the user. This is the same as the `deviceId`**`.`** |
-| `channel` | `String` | Required | Identifies the source of the event. Permitted values are `mobile`, `web`, `server` |
+| `anonymousId` | `String` | Required | Unique identification for the user. This is the same as the `deviceId`. |
+| `channel` | `String` | Required | Identifies the source of the event. Permitted values are `mobile`, `web`, `server`. |
 | `context` | `Object` | Required | Contains all the additional user information. The RudderStack SDKs populate this information automatically. |
 | `event` | `String` | Optional | Captures the user action that you want to record. |
 | `integrations` | `Object` | Optional | You can specify the destinations for which you want to enable/disable sending events. |
 | `messageId` | `String` | Optional | Unique identification for the event. |
 | `properties` | `Object` | Optional | Passes all the relevant information associated with the event. |
 | `originalTimestamp` | `Timestamp` | Required | Records the actual time when the event occurred. |
-| `type` | `String` | Required | Captures the type of API. Values can be either `track`,`screen`,`identify`,`page .` |
+| `type` | `String` | Required | Captures the type of API. Values can be either `track`, `screen`, `identify`, `page`. |
 | `sentAt` | `Timestamp` | Required | Captures the time when the event was sent to RudderStack from the client. |
 
 ## Contextual Fields
@@ -43,7 +43,7 @@ The following table lists all the contextual fields with their detailed descript
 | `locale` | `String` | Captures the language of the device. |
 | `network` | `Object` | Contains information about the reachability of the device. Also, it gives you the status of the device's `bluetooth`, `wifi`, `cellular` network and `carrier` name. |
 | `os` | `Object` | Captures the operating system details of the device you are tracking. |
-| `screen` | `Object` | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density` . |
+| `screen` | `Object` | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density`. |
 | `timezone` | `String` | Captures the timezone of the user you are tracking. |
 | `traits` | `Object` | Captures any additional relevant information about the user. RudderStack fills in the `anonymousId` for you. You can also associate the   [**traits**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/identify#identify-traits) from the previously-made `identify` call from the SDK. |
 | `userAgent` | `String` | The user agent of the device that you are tracking. |
