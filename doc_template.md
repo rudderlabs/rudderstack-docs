@@ -126,7 +126,7 @@ RudderStack sends the following comma-separated values to Marketo (corresponding
 
 ## FAQs
 
-If you think the reader is likely to encounter any issues or queries while setting up or using the integration, feel free to add an FAQ.
+If you think the reader is likely to encounter any issues or queries while setting up or using the integration, feel free to add an FAQ. You can add as many FAQs as required.
 
 ## Contact Us
 
