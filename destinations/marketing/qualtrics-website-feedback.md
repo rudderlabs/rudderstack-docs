@@ -79,7 +79,7 @@ pod 'Rudder-Qualtrics'
 RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
     [configBuilder withDataPlaneUrl:DATA_PLANE_URL];
     [configBuilder withFactory:[RudderQualtricsFactory instance]];
-    [RSClient getInstance:<YOUR_WRITE_KEY> config:[configBuilder build]];
+    [RSClient getInstance:<SOURCE_WRITE_KEY> config:[configBuilder build]];
 ```
 
 * Next, add the following snippet to display the qualified intercept on your `ViewController`:
@@ -142,7 +142,7 @@ allprojects {
 // initializing Rudder SDK
 val rudderClient = RudderClient.getInstance(
   this,
-  WRITE_KEY,
+  <SOURCE_WRITE_KEY>,
   RudderConfig.Builder()
           .withDataPlaneUrl(DATA_PLANE_URL)
           .withFactory(QualtricsIntegrationFactory.FACTORY)
