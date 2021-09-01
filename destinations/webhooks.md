@@ -230,7 +230,7 @@ For each `track` call, RudderStack sends the request in the following manner\(de
 
 ### Dynamic Header Support
 
-In the settings config, you can set static headers for the webhook call. However, in some cases you may want to dynamically change or add a header to the webhook. This can be done through a top-level object with a key of `header`.  Below is an example of a payload with this feature.
+In the settings config, you can set static headers for the webhook call. However, in some cases you may want to dynamically change or add a header to the webhook. This can be done through a top-level object with a key of `header`.  This top-level key can be added using a [user transformation](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) and the following line of code `event.header = { "Authorization": "some-auth" }`. Below is an example of a payload with this feature.
 
 ```javascript
 {
@@ -249,7 +249,7 @@ In the settings config, you can set static headers for the webhook call. However
 
 ### Dynamically Append to Endpoint URL
 
-In the settings config, you will enter the endpoint that this webhook will be pointed to. There are some use-cases where depending on the event that is going to this destination, the endpoint may need to be changed. RudderStack allows you to append a dynamic string to your webhook endpoint using a top-level key named `appendPath`.
+In the settings config, you will enter the endpoint that this webhook will be pointed to. There are some use-cases where depending on the event that is going to this destination, the endpoint may need to be changed. RudderStack allows you to append a dynamic string to your webhook endpoint using a top-level key named `appendPath`. This top-level key can be added using a [user transformation](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) and the following line of code `event.appendPath = 'some-path'`.
 
 ```javascript
 Fixed Endpoint URL From Settings
