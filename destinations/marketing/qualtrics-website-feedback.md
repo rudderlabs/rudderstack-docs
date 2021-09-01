@@ -177,7 +177,7 @@ Qualtrics.instance().evaluateProject(new MyCallback());
 {% endtab %}
 {% endtabs %}
 
-{% hint style="success" %}
+{% hint style="info" %}
 In iOS, if the user qualifies for multiple intercepts, only one will be shown, whereas in Android all the intercept will be shown.
 {% endhint %}
 
@@ -283,7 +283,7 @@ MainApplication.rudderClient.identify(
 {% endtab %}
 {% endtabs %}
 
-{% hint style="success" %}
+{% hint style="info" %}
 * `Identify` call is supported only by Mobile Device Mode Integration.
 {% endhint %}
 
