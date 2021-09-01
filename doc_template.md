@@ -124,6 +124,9 @@ RudderStack sends the following comma-separated values to Marketo (corresponding
 `name`,`Email`,`birthday`,`phone`,`timestamp`
 `Name`,`name@surname.com`,,,`Thu Mar 24 2020 17:46:45 GMT+0000 (UTC)`
 
+## FAQs
+
+If you think the reader is likely to encounter any issues or queries while setting up or using the integration, feel free to add an FAQ.
 
 ## Contact Us
 
