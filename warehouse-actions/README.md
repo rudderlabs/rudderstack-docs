@@ -36,13 +36,17 @@ Here's a detailed walkthrough of the Warehouse Actions feature:
 
 {% embed url="https://www.youtube.com/watch?v=krFbHHjX-AU" %}
 
-## Configuring Warehouse Actions on RudderStack
+## Configuring Warehouse Actions Sources in RudderStack
 
-The **Warehouse Actions** feature supports only source-driven configuration of your data pipeline. So, you need to configure a Warehouse Actions source in RudderStack first, and then connect it to a destination \(this destination should not be connected to any other source\), as shown:
+{% hint style="warning" %}
+**The** **Warehouse Actions** **feature supports only source-driven configuration of your data pipeline**. 
+
+So, you need to configure a Warehouse Actions source in RudderStack first, and then connect it to a destination \(this destination should not be connected to any other source\), as shown in the following image.
+{% endhint %}
 
 ![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am.png)
 
-To configure your data warehouse as a source on the RudderStack dashboard, follow these steps:
+To configure your data warehouse as a source in the RudderStack dashboard, follow these steps:
 
 * Log into your [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
 * Navigate to **Sources**, present in the left panel of the dashboard.
