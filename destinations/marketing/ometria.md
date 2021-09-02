@@ -191,7 +191,7 @@ The `track` call also lets you record order-related information like `order_id`,
 RudderStack will create a `customer` object with `userId`, `email`, `firstname` and `lastname` from `context.traits`.
 
 {% hint style="warning" %}
-Note that `userId` and `email` are the mandatory fields for the `customer` object.
+Note that `userId` and `email` are the mandatory fields. `email` is picked up from `traits` or `properties`.
 {% endhint %}
 
 The supported `order` E-Commerce events are as listed below:
