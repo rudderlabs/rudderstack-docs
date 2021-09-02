@@ -1,10 +1,8 @@
 ---
-description: >-
-  Step-by-step guide to send your event data from RudderStack to Qualtrics
-  Website Feedback.
+description: Step-by-step guide to send your event data from RudderStack to Qualtrics.
 ---
 
-# Qualtrics Website Feedback
+# Qualtrics
 
 [**Qualtrics**](https://www.qualtrics.com/au/core-xm/survey-software/) is a popular survey software that lets you create intelligent, real-time user surveys. It lets you get cutting-edge insights into your customers and use them to boost your brand value.
 
@@ -128,7 +126,7 @@ allprojects {
 
 * Open the `AndroidManifest.xml` file from the `src/main` folder in the project root and add the following XML snippet after the existing activity:
 
-```xml
+```markup
 <activity android:name=
     "com.qualtrics.digital.QualtricsSurveyActivity"/>
 <activity android:name=
@@ -150,7 +148,7 @@ val rudderClient = RudderClient.getInstance(
 )
 ```
 
-* Add a `MyCallback` subclass. You need to implement a callback for the Qualtrics APIs. This will be used to call the `displayIntercept()` method based on the `evaluateIntercept()` result. A good place to add this callback is before the last closing brace (`}`) in your `MainActivity.Java` class. Add the following code:
+* Add a `MyCallback` subclass. You need to implement a callback for the Qualtrics APIs. This will be used to call the `displayIntercept()` method based on the `evaluateIntercept()` result. A good place to add this callback is before the last closing brace \(`}`\) in your `MainActivity.Java` class. Add the following code:
 
 ```java
 private class MyCallback implements IQualtricsProjectEvaluationCallback {
@@ -173,8 +171,6 @@ Qualtrics.instance().evaluateProject(new MyCallback());
 {% hint style="info" %}
 For more information, refer to the [**Qualtrics Android documentation**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android).
 {% endhint %}
-
-
 {% endtab %}
 {% endtabs %}
 
@@ -267,7 +263,7 @@ In the above example, the event will be sent to Qualtrics as `Test Event`.
 ## Identify
 
 {% hint style="info" %}
-The `identify` call is supported only in the mobile (Android and iOS) Device Mode integration.
+The `identify` call is supported only in the mobile \(Android and iOS\) Device Mode integration.
 {% endhint %}
 
 When you make an `identify` call, RudderStack sets the user traits using:
@@ -326,3 +322,4 @@ Yes, you can manually set the logic using Qualtrics `Properties` class `setStrin
 ## Contact Us
 
 For questions on any of the sections covered in this guide, feel free to [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
