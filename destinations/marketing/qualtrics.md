@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Qual
 
 [**Qualtrics**](https://www.qualtrics.com/au/core-xm/survey-software/) is a popular survey software that lets you create intelligent, real-time user surveys. It lets you get cutting-edge insights into your customers and use them to boost your brand value.
 
-RudderStack supports Qualtrics as a [**website feedback destination**](https://api.qualtrics.com/sdks/docs/SDKs/Web%20Intercept%20SDK/web-feedback-javascript-api-reference-1.md) to which you can send your event data directly.
+RudderStack allows you to configure Qualtrics as a destination to which you can send your event data directly.
 
 ## Getting Started
 
