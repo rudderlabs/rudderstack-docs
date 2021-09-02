@@ -52,7 +52,7 @@ Depending on the platform of integration follow the steps below to integrate wit
 * Open the `Podfile` of your project and add the following line
 
 ```text
-pod 'Rudder-Branch', '0.1.3'
+pod 'Rudder-Branch'
 ```
 
 followed by 
