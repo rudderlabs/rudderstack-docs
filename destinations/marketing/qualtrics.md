@@ -1,10 +1,9 @@
 ---
 description: >-
-  Step-by-step guide to send your event data from RudderStack to Qualtrics
-  Website Feedback.
+  Step-by-step guide to send your event data from RudderStack to Qualtrics.
 ---
 
-# Qualtrics Website Feedback
+# Qualtrics
 
 [**Qualtrics**](https://www.qualtrics.com/au/core-xm/survey-software/) is a popular survey software that lets you create intelligent, real-time user surveys. It lets you get cutting-edge insights into your customers and use them to boost your brand value.
 

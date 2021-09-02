@@ -112,7 +112,7 @@
       * [Setting Up Drip in RudderStack](destinations/marketing/drip/setting-up-drip-in-rudderstack.md)
       * [Cloud Mode](destinations/marketing/drip/drip-cloud-mode.md)
       * [Device Mode](destinations/marketing/drip/drip-web-device-mode.md)
-    * [Qualtrics Website Feedback](destinations/marketing/qualtrics-website-feedback.md)
+    * [Qualtrics](destinations/marketing/qualtrics.md)
     * [Salesforce Marketing Cloud](destinations/marketing/sfmc.md)
     * [Ometria](destinations/marketing/ometria.md)
     * [CleverTap](destinations/marketing/clevertap.md)
