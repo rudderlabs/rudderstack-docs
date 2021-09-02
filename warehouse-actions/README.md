@@ -41,7 +41,7 @@ Here's a detailed walkthrough of the Warehouse Actions feature:
 {% hint style="warning" %}
 **The** **Warehouse Actions** **feature supports only source-driven configuration of your data pipeline**. 
 
-So, you need to configure a Warehouse Actions source in RudderStack first, and then connect it to a destination \(this destination should not be connected to any other source\), as shown in the following image.
+So, you need to configure a Warehouse Actions source in RudderStack first, and then connect it to a new or existing destination \(the existing destination should not be connected to any other source\), as shown below.
 {% endhint %}
 
 ![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am.png)
