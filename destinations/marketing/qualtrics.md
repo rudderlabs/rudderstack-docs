@@ -267,7 +267,12 @@ In the above example, the event will be sent to Qualtrics as `Test Event`.
 The `identify` call is supported only in the mobile (Android and iOS) Device Mode integration.
 {% endhint %}
 
-When you make an `identify` call, RudderStack sets the user traits using the Qualtrics `Properties` class, `setString` and `setNumber` API on Android and `setStringWithString` and `setNumberWithNumber` API on iOS. These traits can be used as custom properties while setting the [**Target Logic**](https://www.qualtrics.com/support/website-app-feedback/common-use-cases/optimizing-intercept-targeting-logic/) or [**Embedded Data**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android#using-embedded-data) for any intercept in your Qualtrics dashboard.
+When you make an `identify` call, RudderStack sets the user traits using:
+
+* The Qualtrics `Properties` class, `setString`, and `setNumber` API in case of Android, and
+* The `setStringWithString` and `setNumberWithNumber` API in case of iOS 
+
+These user traits can be used as custom properties while setting the [**Target Logic**](https://www.qualtrics.com/support/website-app-feedback/common-use-cases/optimizing-intercept-targeting-logic/) or [**Embedded Data**](https://api.qualtrics.com/sdks/ZG9jOjgwNTgzNjE-getting-started-with-mobile-app-sdk-on-android#using-embedded-data) for any intercept in your Qualtrics dashboard.
 
 {% tabs %}
 {% tab title="iOS" %}
