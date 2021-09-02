@@ -18,16 +18,18 @@ For more information on sources in RudderStack, check out the [**Connections gui
 
 With RudderStack **Warehouse Actions**, you can leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations.
 
-{% hint style="success" %}
-**With this feature, you can configure your data warehouse as a source on the** [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial)**, select the right data and then sync this data to all the supported destinations.**
+With this feature, you can configure your data warehouse as a source in the [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial), select the right data and then sync this data to all the supported destinations.
+
+{% hint style="warning" %}
+**You can connect only one destination to a Warehouse Actions source**. Also, note that this destination **should not be connected to any other source** \(including [**Event Stream**](../stream-sources/) sources.\)
 {% endhint %}
 
 {% hint style="info" %}
-You can connect only one destination to a Warehouse Actions source. If you want to send data to multiple destinations, we recommend creating a source with the same settings for each destination.
+**If you want to send data from a warehouse source to multiple destinations, we recommend creating multiple copies of the source with the same settings and connect them with each of the destinations.**
 {% endhint %}
 
-{% hint style="warning" %}
-You cannot connect a Warehouse Actions source to a warehouse destination in RudderStack.
+{% hint style="danger" %}
+**You cannot connect a Warehouse Actions source to a warehouse destination in RudderStack.**
 {% endhint %}
 
 Here's a detailed walkthrough of the Warehouse Actions feature:
@@ -35,6 +37,10 @@ Here's a detailed walkthrough of the Warehouse Actions feature:
 {% embed url="https://www.youtube.com/watch?v=krFbHHjX-AU" %}
 
 ## Configuring Warehouse Actions on RudderStack
+
+The **Warehouse Actions** feature supports only source-driven configuration of your data pipeline. So, you need to configure a Warehouse Actions source in RudderStack first, and then connect it to a destination \(this destination should not be connected to any other source\), as shown:
+
+![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am.png)
 
 To configure your data warehouse as a source on the RudderStack dashboard, follow these steps:
 
@@ -133,6 +139,12 @@ Adding a new constant when configuring a Warehouse Actions source is very easy:
 ![](../.gitbook/assets/screenshot_2021-03-18_at_3.52.26_pm.png)
 
 ## FAQs
+
+### I cannot add a Warehouse Actions source to an already configured destination. Why?
+
+Warehouse Actions supports only source-driven configuration of your pipeline. So you need to configure a Warehouse Actions source in RudderStack and then connect it an existing, **free** destination \(this destination should not be connected to any other source\), as shown:
+
+![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am%20%281%29.png)
 
 ### Can I connect a Warehouse Actions source to multiple destinations?
 
