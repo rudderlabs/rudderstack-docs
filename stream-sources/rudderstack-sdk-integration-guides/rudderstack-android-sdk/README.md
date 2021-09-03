@@ -373,9 +373,9 @@ rudderClient.reset();
 {% endtab %}
 {% endtabs %}
 
-## Opt-Out
+## Disable User Tracking Until User Consent (Opt Out)
 
-If you want to opt-out from tracking an user activity due to reasons like waiting for user consent, you can use the `optOut` api to disable user tracking as shown below:
+If you want to opt-out from tracking any user activity while waiting for their consent, you can use the `optOut` API to disable user tracking, as shown:
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -391,7 +391,7 @@ rudderClient.optOut(true);
 {% endtab %}
 {% endtabs %}
 
-If you want to opt back for tracking a user activity due to reasons like user granted his consent, you can use the same `optOut` api with `false` as a parameter sent to it as shown below:
+Once the user grants their consent, you can enable user tracking once again by using the same `optOut` API with `false` as a parameter sent to it, as shown:
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -408,7 +408,7 @@ rudderClient.optOut(false);
 {% endtabs %}
 
 {% hint style="info" %}
-`optOut` api is available in RudderStack Android SDK starting from version `1.0.16`.
+The `optOut` api is available in the RudderStack Android SDK starting from version `1.0.16`.
 {% endhint %}
 
 ## Configuring your RudderStack Client
@@ -834,4 +834,3 @@ For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy.
-
