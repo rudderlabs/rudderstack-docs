@@ -193,7 +193,7 @@ The following table lists the mapping between the accepted names of the Commerce
 | `Reserve` | `RESERVE` |
 
 {% hint style="info" %}
-RudderStack also maps the `Spend Credits` event to Branch's `SPEND_CREDITS` , although it is not directly a part of the Commerce Events.
+RudderStack also maps the `Spend Credits` event to Branch's `SPEND_CREDITS` although it is not directly a part of the E-Commerce Events.
 {% endhint %}
 
 The following table lists the mapping between the accepted names of the Content events:
@@ -266,4 +266,4 @@ You can retrieve the Branch key from the settings page of the [Branch dashboard]
 
 ## Contact Us
 
-If you come across any issues while configuring Branch with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Branch with RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
