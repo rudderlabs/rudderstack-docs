@@ -373,7 +373,7 @@ rudderClient.reset();
 {% endtab %}
 {% endtabs %}
 
-## Disable User Tracking Until User Consent (Opt Out)
+## Disabling User Tracking Until User Consent
 
 If you want to opt-out from tracking any user activity while waiting for their consent, you can use the `optOut` API to disable user tracking, as shown:
 
