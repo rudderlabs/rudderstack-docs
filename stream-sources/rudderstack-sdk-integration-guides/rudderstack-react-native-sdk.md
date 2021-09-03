@@ -180,6 +180,24 @@ await rudderClient.reset()
 It is highly recommended to use the `await` keyword with the reset call.
 {% endhint %}
 
+## Opt-Out
+If you want to opt-out from tracking an user activity due to reasons like waiting for user consent, you can use the `optOut` api to disable user tracking as shown below:
+
+```typescript
+await rudderClient.optOut(true)
+```
+
+If you want to opt back for tracking a user activity due to reasons like user granted his consent, you can use the same `optOut` api with `false` as a parameter sent to it as shown below:
+
+```typescript
+await rudderClient.optOut(false)
+```
+
+{% hint style="info" %}
+`optOut` api is available in RudderStack React-Native SDK starting from version `1.0.13`.
+{% endhint %}
+
+
 ## Registering Callbacks:
 
 The React Native SDK lets you trigger a callback once any device-mode integration is successful. You can use this callback to perform any operation that you wanted to do once a device-integration is successful.
