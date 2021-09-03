@@ -316,7 +316,7 @@ RSClient.sharedInstance()?.reset()
 {% endtab %}
 {% endtabs %}
 
-## Disabling User Tracking Until User's Consent
+## Disabling User Tracking Until User Consent
 
 If you want to opt out of tracking any user activity while waiting for their consent, you can use the `optOut` API to disable user tracking, as shown:
 
