@@ -346,7 +346,7 @@ rudderanalytics.identify(
 In the above example, information such as the `userId` and `email` along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
 
 {% hint style="info" %}
-Note that the user's IP address is not automatically collected by the SDK. Instead, it is filled in by RudderStack when it receives the client-side events.
+Note that the user's IP address is not automatically collected by the SDK. Instead, it is filled in by the RudderStack server when it receives the client-side events.
 {% endhint %}
 
 {% hint style="warning" %}
