@@ -16,24 +16,30 @@ If you come across any term that is not listed here, you can [**contact us**](ma
 
 A **Customer Data Platform \(CDP\)** is a software/collection of tools that unifies and persists all the customer-specific records across multiple data sources in a centralized location accessible to other tools/platforms. A CDP lets you build a comprehensive customer profile and use the insights for a variety of use-cases.
 
-### ETL \(Extract, Transform, Load\)
+### ELT \(Extract, Load, Transform\)
 
-The ETL process can be defined as:
+The **ELT \(Extract, Load, Transform\)** process can be defined as:
+
+* **Extract:** Obtaining data from the source platform or application.
+* **Load:** Replicating the data from the source into the target system, typically a data warehouse or a data lake.
+* **Transformation:** Transforming the data in the desired format according to the business requirement/use-case.
+
+{% hint style="success" %}
+Check out our [**blog**](https://rudderstack.com/blog/rudderstack-cloud-extract-makes-cloud-to-warehouse-pipelines-easy) to read more about ELT and how RudderStack facilitates it via the [**Cloud Extract**](cloud-extract-sources/) feature.
+{% endhint %}
+
+### Reverse ETL
+
+The **ETL \(Extract, Transform, Load\)** process can be defined as:
 
 * **Extract**: Collecting/pulling data from a variety of sources.
 * **Transform**: Refining and transforming the data as per the required data quality and business requirements.
 * **Load**: Pushing the data into a consolidated data store \(for e.g., data warehouse\)
 
-{% hint style="success" %}
-Check out our [**blog**](https://rudderstack.com/blog/rudderstack-cloud-extract-makes-cloud-to-warehouse-pipelines-easy) to read more about ETL and how RudderStack facilitates it via its [**Cloud Extract**](cloud-extract-sources/) feature.
-{% endhint %}
-
-### Reverse-ETL
-
-Reverse ETL is the process of routing the enriched data from your data warehouse to various downstream tools within your customer data stack. This includes various SaaS marketing, analytics, sales, and customer support tools.
+On the other hand, **Reverse ETL** is the process of routing the enriched data residing in your data warehouse to various downstream tools within your customer data stack. This includes various SaaS marketing, analytics, sales, and customer support tools.
 
 {% hint style="success" %}
-Check out our [**blog**](https://rudderstack.com/blog/reverse-etl-is-just-another-data-pipeline) to read more about Reverse ETL and how RudderStack facilitates it via its [**Warehouse Actions**](warehouse-actions/) feature.
+Check out our [**blog**](https://rudderstack.com/blog/reverse-etl-is-just-another-data-pipeline) to read more about Reverse ETL and how RudderStack facilitates it via the [**Warehouse Actions**](warehouse-actions/) feature.
 {% endhint %}
 
 ## Core Product

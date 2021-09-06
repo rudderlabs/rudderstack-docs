@@ -343,7 +343,7 @@ rudderanalytics.identify(
 );
 ```
 
-In the above example, information such as the `userid` and email along with contextual information such as IP address, etc. is captured.
+In the above example, information such as the `userid` and email along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
 
 The above `identify` call has the following parameters:
 

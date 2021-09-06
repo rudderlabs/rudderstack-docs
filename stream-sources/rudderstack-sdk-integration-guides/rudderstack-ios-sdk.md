@@ -316,6 +316,44 @@ RSClient.sharedInstance()?.reset()
 {% endtab %}
 {% endtabs %}
 
+## Disabling User Tracking Until User Consent
+
+If you want to opt out of tracking any user activity while waiting for their consent, you can use the `optOut` API to disable user tracking, as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:YES];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(true)
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the same `optOut` API with `NO` or `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:NO];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(false)
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.23`.
+{% endhint %}
+
 ## Configuring the RudderStack Client
 
 You can configure your client based on the following parameters using `RudderConfigBuilder`:
@@ -745,7 +783,6 @@ Update the usage of the following classes as per the table below:
       <td style="text-align:left">
         <p><code>RSLogLevelDebug</code>
         </p>
-        <p></p>
         <p>Other <code>LogLevel</code> follows the same nomenclature.</p>
       </td>
     </tr>
@@ -764,7 +801,7 @@ You can get the user traits after making an `identify` call in the following way
 {% endtab %}
 
 {% tab title="Objective-C" %}
-```
+```text
  NSDictionary* traits = [[RSClient sharedInstance] getContext].traits;
 ```
 {% endtab %}
@@ -776,9 +813,9 @@ In case of client-side errors, e.g. if the source write key passed to the SDK is
 
 ### **Why is there a larger difference between `timestamp` and `received_at` for iOS events vs. Android events?**
 
-This scenario is most likely caused by the default behavior of iOS apps staying open in the background for a shorter period of time after a user closes them. 
+This scenario is most likely caused by the default behavior of iOS apps staying open in the background for a shorter period of time after a user closes them.
 
-When a user closes an iOS or Android app, events will still continue to be sent from the queue until the app closes in the background as well. Any events still in the queue will remain there until the user reopens the app. Due to this lag, there are some scenarios where there can be significant differences between `timestamp` \(when the event was created\) and `received_at` \(when RudderStack actually receives the events\). 
+When a user closes an iOS or Android app, events will still continue to be sent from the queue until the app closes in the background as well. Any events still in the queue will remain there until the user reopens the app. Due to this lag, there are some scenarios where there can be significant differences between `timestamp` \(when the event was created\) and `received_at` \(when RudderStack actually receives the events\).
 
 For Android apps, events can be sent from the background after apps close for a longer period of time than iOS apps, therefore, more of the events coming from the Android SDK have closer `timestamp` and `received_at` times.
 

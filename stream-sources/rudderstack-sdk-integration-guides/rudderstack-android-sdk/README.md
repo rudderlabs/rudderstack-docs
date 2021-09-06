@@ -373,6 +373,44 @@ rudderClient.reset();
 {% endtab %}
 {% endtabs %}
 
+## Disabling User Tracking Until User Consent
+
+If you want to opt-out from tracking any user activity while waiting for their consent, you can use the `optOut` API to disable user tracking, as shown:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(true)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(true);
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the same `optOut` API with `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(false)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(false);
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` api is available in the RudderStack Android SDK starting from version `1.0.16`.
+{% endhint %}
+
 ## Configuring your RudderStack Client
 
 You can configure your client based on the following parameters using `RudderConfig.Builder`:
@@ -789,7 +827,7 @@ Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
 
 ### How does the SDK handle different client/server errors?
 
-In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately. 
+In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately.
 
 For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries to flush the events to RudderStack in an incremental manner \(every 1 second, 2 seconds, 3 seconds, and so on\).
 

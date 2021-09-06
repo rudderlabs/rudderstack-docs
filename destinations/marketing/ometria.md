@@ -149,8 +149,7 @@ In addition to the above fields, the customer name can also be sent using the `n
 The `track` call lets you send custom events to Ometria. Note that `track` also supports the E-Commerce events and sends them using the **Ometria Order Object**.
 
 {% hint style="warning" %}
-Note that `userId` and `email` are the mandatory fields for the `track` call.
-`event_id` is required for custom events. If not provided, RudderStack will populate the field with `messageId`.
+Note that `userId` and `email` are the mandatory fields for the `track` call. `event_id` is required for custom events. If not provided, RudderStack will populate the field with `messageId`.
 {% endhint %}
 
 A sample `track` call for a custom event is as shown:
