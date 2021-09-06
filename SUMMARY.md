@@ -45,6 +45,7 @@
   * [Segment](stream-sources/segment.md)
 * [Cloud Extract Sources](cloud-extract-sources/README.md)
   * [ActiveCampaign](cloud-extract-sources/activecampaign.md)
+  * [Bing Ads](cloud-extract-sources/bing-ads.md)
   * [Facebook Ads](cloud-extract-sources/facebook-ads.md)
   * [Freshdesk](cloud-extract-sources/freshdesk.md)
   * [Google AdWords](cloud-extract-sources/google-adwords.md)

@@ -46,6 +46,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 ![Destination Settings for AWS Personalize](../../.gitbook/assets/personalize.png)
 
 * Next, in the **Settings** section, fill all the fields with the relevant information and click **Next.** A brief description of each of these fields is mentioned below:
+
   * **Connection Credentials**
     * **Access Key ID**: The access key ID of your AWS account goes here.
     * **Secret Access Key**: Enter the secret access key of your AWS account.
@@ -57,23 +58,19 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
     * **Personalize Events**: Choose the type of personalize event you want to avail.
   * **Map all the fields**: In this section, enter the **Schema Field** you have used to create the schema in AWS Personalize \(for e.g. `USER_ID`, `TIMESTAMP`, `ITEM_ID`, etc.\). Also, enter the corresponding **Mapped Field** from which the value will be taken from your event payload.
 
-  {% hint style="info" %}
-  When using PutItems operation, you need to provide the path to the corresponding **Mapped Field** corresponding ITEM_ID in your personalize database schema.
-  {% endhint %}
+  When using PutItems operation, you need to provide the path to the corresponding **Mapped Field** corresponding ITEM\_ID in your personalize database schema.
 
 ## Track
 
 The `track` call lets you use `PutEvents` and `PutItems` operation of AWS Personalize.
-
 
 {% hint style="info" %}
 For `PutEvents` The value of the `event` field in the payload will be sent as `EVENT_TYPE`.
 {% endhint %}
 
 {% hint style="info" %}
-For `PutItems` and `PutEvents` operation, `Dataset ARN` and ` Tracking ID` respectively are mantaory information to provide.
+For `PutItems` and `PutEvents` operation, `Dataset ARN` and `Tracking ID` respectively are mantaory information to provide.
 {% endhint %}
-
 
 The following snippet shows an example of sending track event, with mapped field specified in the [RudderStack dashboard](https://app.rudderstack.com/):
 
@@ -84,9 +81,11 @@ rudderanalytics.track("PRODUCT ADDED", {
   X: "item 1",
 });
 ```
+
 {% hint style="info" %}
-  When using `PutItems` operation, with the above example `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema. And, the path can be specified as `properties.X`.
-  {% endhint %}
+When using `PutItems` operation, with the above example `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema. And, the path can be specified as `properties.X`.
+{% endhint %}
+
 ## Identify
 
 The `identify` call lets you use `PutUsers` operation of AWS Personalize.
@@ -107,6 +106,7 @@ rudderanalytics.identify("userId", {
   email: "john@xyz.com"
   });
 ```
+
 ## Contact Us
 
 If you come across any issues while configuring AWS Personalize as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

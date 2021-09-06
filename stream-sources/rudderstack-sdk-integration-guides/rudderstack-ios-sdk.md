@@ -783,7 +783,6 @@ Update the usage of the following classes as per the table below:
       <td style="text-align:left">
         <p><code>RSLogLevelDebug</code>
         </p>
-        <p></p>
         <p>Other <code>LogLevel</code> follows the same nomenclature.</p>
       </td>
     </tr>
@@ -802,7 +801,7 @@ You can get the user traits after making an `identify` call in the following way
 {% endtab %}
 
 {% tab title="Objective-C" %}
-```
+```text
  NSDictionary* traits = [[RSClient sharedInstance] getContext].traits;
 ```
 {% endtab %}
@@ -814,9 +813,9 @@ In case of client-side errors, e.g. if the source write key passed to the SDK is
 
 ### **Why is there a larger difference between `timestamp` and `received_at` for iOS events vs. Android events?**
 
-This scenario is most likely caused by the default behavior of iOS apps staying open in the background for a shorter period of time after a user closes them. 
+This scenario is most likely caused by the default behavior of iOS apps staying open in the background for a shorter period of time after a user closes them.
 
-When a user closes an iOS or Android app, events will still continue to be sent from the queue until the app closes in the background as well. Any events still in the queue will remain there until the user reopens the app. Due to this lag, there are some scenarios where there can be significant differences between `timestamp` \(when the event was created\) and `received_at` \(when RudderStack actually receives the events\). 
+When a user closes an iOS or Android app, events will still continue to be sent from the queue until the app closes in the background as well. Any events still in the queue will remain there until the user reopens the app. Due to this lag, there are some scenarios where there can be significant differences between `timestamp` \(when the event was created\) and `received_at` \(when RudderStack actually receives the events\).
 
 For Android apps, events can be sent from the background after apps close for a longer period of time than iOS apps, therefore, more of the events coming from the Android SDK have closer `timestamp` and `received_at` times.
 
