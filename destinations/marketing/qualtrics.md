@@ -69,6 +69,7 @@ pod 'Rudder-Qualtrics'
 ```objectivec
 #import <Rudder/Rudder.h>
 #import <RudderQualtricsFactory.h>
+@import Qualtrics;
 ```
 
 * Then, add the initialization of your `RSClient` as shown:
