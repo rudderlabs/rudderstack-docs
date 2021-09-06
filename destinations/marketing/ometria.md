@@ -191,7 +191,7 @@ The `track` call also lets you record order-related information like `order_id`,
 RudderStack will create a `customer` object with `userId`, `email`, `firstname` and `lastname` from `context.traits`.
 
 {% hint style="warning" %}
-Note that `order_id`, `timestamp`, `grand_total` and `currency` are the mandatory fields for the `orders` event, while `userId` and `email` are required for `customer` object.
+Note that `order_id`, `timestamp`, `grand_total` and `currency` are the mandatory fields for the `orders` event, while `userId` and `email` are required for `customer` object. You can pass `email` either via the `identify` call or the `track` call's properties.
 {% endhint %}
 
 The supported `order` E-Commerce events are as listed below:
@@ -301,4 +301,3 @@ To get the Ometria API token, go to your your Ometria dashboard and navigate to 
 ## Contact Us
 
 If you come across any issues while configuring or using Ometria with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
