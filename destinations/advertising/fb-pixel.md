@@ -6,6 +6,8 @@ description: Step-by-step guide to send event data from RudderStack to Facebook 
 
 [Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics. It allows you to measure and rudder audiences to build effective marketing and advertising campaigns.
 
+This destination also supports the [**Conversions API**](https://developers.facebook.com/docs/marketing-api/conversions-api/) for sending server side events.
+
 You can now send your event data directly to Facebook Pixel through RudderStack.
 
 {% hint style="success" %}
