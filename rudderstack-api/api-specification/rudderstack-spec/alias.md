@@ -44,7 +44,7 @@ The RudderStack SDK automatically passes the user's `anonymousId` as `previousId
 When instrumenting a website with the JavaScript SDK, making the `alias` call via the client-side is important as the `anonymousId` is generated via the browser. Similarly, if you're using a server-side SDK, the `alias`call must be made from the server-side as the session ID is set as the `anonymousId`.
 {% endhint %}
 
-## Page Fields
+## Alias Fields
 
 Apart from the **Common Fields**, the `alias` call accepts the following fields:
 
@@ -66,13 +66,14 @@ Apart from the **Common Fields**, the `alias` call accepts the following fields:
       <td style="text-align:left"><code>previousId</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">Required</td>
+      <td style="text-align:left"><b>See below</b>
+      </td>
       <td style="text-align:left">The user&apos;s previous identifier.</td>
     </tr>
     <tr>
       <td style="text-align:left"><code>userId</code>
       </td>
-      <td style="text-align:left">Object</td>
+      <td style="text-align:left">String</td>
       <td style="text-align:left">
         <p>Optional</p>
         <p>(<b>if</b>  <code>anonymousId</code> is</p>
@@ -85,6 +86,9 @@ Apart from the **Common Fields**, the `alias` call accepts the following fields:
     </tr>
   </tbody>
 </table>
+
+* RudderStack does not require `previousId` mandatorily in case of the SDKs that offer persistence \([**JavaScript**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), [**Flutter**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk.md), [**iOS**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md), [**Android**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/), [**React Native**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk.md)\) as they will automatically set the previous `userId`/`anonymousId` as the `previousId` during an `alias` call. 
+* For SDKs that do not offer persistence support \(server-side SDKs like [**Node.js**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk.md), [**Python**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk.md), [**Java**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk.md), [**.NET**](../../../stream-sources/rudderstack-sdk-integration-guides/.net.md), [**PHP**](../../../stream-sources/rudderstack-sdk-integration-guides/php.md), [**Ruby**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk.md)\), `previousId` needs to be specified explicitly during the `alias` call.
 
 ## `userId` vs `previousId`
 
