@@ -1033,14 +1033,7 @@ This section provides solutions to some of the commonly faced issues while using
 
 ### Where do I get the Data Plane URL?
 
-Simply put, the **Data Plane URL** is used to connect to the RudderStack backend for processing and routing your events.
-
-{% hint style="info" %}
-To get the **Data Plane URL**: _\*\*_
-
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
-* If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
-{% endhint %}
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. Refer to [**this section**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it) to get the Data Plane URL depending on your choice of setup.
 
 ### How to load `analytics.js` correctly?
 
