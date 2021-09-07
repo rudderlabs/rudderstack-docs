@@ -91,7 +91,7 @@ rudderanalytics.track("event name", {
 
 A few things to note: 
 
-* `eventType` can only be either `click`, `view` or `conversion`.
+* `eventType` can only be either `click`, `view` or `conversion`. Otherwise, the event will be dropped.
 * `timestamp` must be in milliseconds UNIX epoch and must be maximum 4 days old.
 * `queryId` must be a 32-character hexadecimal string.
 * `filters` must be an array of strings. If it has more than 10 strings, only first 10 values will be passed.
@@ -99,12 +99,14 @@ A few things to note:
 * `positions` must be an array of integers. It must be passed for only `click` type events. Only first 20 values will be passed.
 
 {% hint style="info" %}
-For all the event types (`eventType`), either `filters` or `objectIds` must be passed and **not both**. 
+For all the event types (`eventType`), either `filters` or `objectIds` must be passed and **not both**. If both or none of the fields are passed, the event will be dropped.
 {% endhint %}
 
 
 {% hint style="info" %}
-For the `click` event type, if you pass `objectIds`, then you must pass either **both** or **none** of the `positions` and `queryId` fields. Also, the length of `objectIds` and `positions` arrays should be equal.
+For the `click` event type, if you pass `objectIds`, then you must pass either **both** or **none** of the `positions` and `queryId` fields. If only either of the fields are present, the event will be dropped. 
+
+Also, the length of `objectIds` and `positions` arrays should be equal. Otherwise, the event will be dropped.
 {% endhint %}
 
 ### E-Commerce Events
