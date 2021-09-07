@@ -44,7 +44,7 @@ The RudderStack SDK automatically passes the user's `anonymousId` as `previousId
 When instrumenting a website with the JavaScript SDK, making the `alias` call via the client-side is important as the `anonymousId` is generated via the browser. Similarly, if you're using a server-side SDK, the `alias`call must be made from the server-side as the session ID is set as the `anonymousId`.
 {% endhint %}
 
-## Page Fields
+## Alias Fields
 
 Apart from the **Common Fields**, the `alias` call accepts the following fields:
 
@@ -72,7 +72,7 @@ Apart from the **Common Fields**, the `alias` call accepts the following fields:
     <tr>
       <td style="text-align:left"><code>userId</code>
       </td>
-      <td style="text-align:left">Object</td>
+      <td style="text-align:left">String</td>
       <td style="text-align:left">
         <p>Optional</p>
         <p>(<b>if</b>  <code>anonymousId</code> is</p>
