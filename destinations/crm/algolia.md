@@ -97,7 +97,7 @@ A few things to note:
 Note that for all `eventType` either `filters` or `objectIds` should be passed, but **not** both.
 For `click` eventType, if `objectIds` is passed then either `both` `positions` and `queryId` must be passed or `none` of them. Length of `objectIds` and `positions` should be equal.
 
-Rudderstack supports `products` array for two events `product list viewed` and `order completed`. It can passed as shown:
+Rudderstack supports `products` array for two events [`product list viewed`](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [`order completed`](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed). It can passed as shown:
 
 ```javascript
 rudderanalytics.track("product list viewed", {
