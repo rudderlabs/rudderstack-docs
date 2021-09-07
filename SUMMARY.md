@@ -183,6 +183,7 @@
     * [Optimizely Full Stack](destinations/testing-and-personalization/optimizely-full-stack.md)
   * [Productivity](destinations/productivity/README.md)
     * [Google Sheets](destinations/productivity/google-sheets.md)
+    * [Algolia](destinations/productivity/algolia.md)
   * [Error Reporting](destinations/error-reporting/README.md)
     * [Bugsnag](destinations/error-reporting/bugsnag.md)
   * [Continuous Integration](destinations/continuous-integration/README.md)
