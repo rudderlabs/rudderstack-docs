@@ -89,7 +89,7 @@ rudderanalytics.track("event name", {
 });
 ```
 
-A few things to note: 
+Please note the required criteria of Algolia: 
 
 * `eventType` can only be either `click`, `view` or `conversion`. Otherwise, the event will be dropped.
 * `timestamp` must be in milliseconds UNIX epoch and must be maximum 4 days old.
@@ -111,7 +111,7 @@ Also, the length of `objectIds` and `positions` arrays should be equal. Otherwis
 
 ### E-Commerce Events
 
-Rudderstack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed). 
+For Algolia integration, Rudderstack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed). 
 
 An example is shown below:
 
