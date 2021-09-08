@@ -46,7 +46,7 @@ To get the Algolia API key and Application ID, go to your [**Algolia dashboard**
 * Under **Event Settings**, you can add the **Event Name** and its corresponding **Event Type**. These are optional fields and can also be passed via the `track` call. 
 
 {% hint style="info" %}
-Note that the **Event Name** - **Event Type** mapping passed via the `track` call  **will get a higher precedence** over the one specified in the dashboard.
+The `event`-`eventType` mapping passed via the `track` call  **will get a higher precedence** over the mapping specified in the dashboard.
 {% endhint %}
 
 * Finally, click on **Next**. Algolia will now be enabled as a destination in RudderStack.
@@ -55,7 +55,11 @@ Note that the **Event Name** - **Event Type** mapping passed via the `track` cal
 
 The `track` call lets you send events related to your customers' product usage. The required fields are `event`, `eventType`, `index`, and either `objectIds` or `filters`.
 
-Note that the **Event Name** (`event`) and **Event Type** (`eventType`) can be mapped in the dashboard while configuring the Algolia destination and the fields can also be passed via the `track` call. Value sent via `track` call will have higher precedence. In case you are already specifying the mapping in the dashboard, you don't need to send `eventType` in the `track` call.
+Note that the **Event Name** (`event`) and **Event Type** (`eventType`) can be mapped in the dashboard while configuring the destination. These fields can also be passed via the `track` call. Note that the values sent via `track` call will have a higher precedence over the dashboard mapping.
+
+{% hint style="info" %}
+In case you have already specified the mapping in the dashboard, you don't need to send the same `eventType` in the `track` call.
+{% endhint %}
 
 {% hint style="warning" %}
 If you are sending a new `event` via  the `track` call which is not specified in the dashboard, make sure you include the `eventType` in the call as well, otherwise the call will be **dropped**.
@@ -89,7 +93,7 @@ rudderanalytics.track("event name", {
 });
 ```
 
-Please note the required criteria of Algolia: 
+To successfully send events to Algolia, the following criteria must be met:
 
 * `eventType` can only be either `click`, `view` or `conversion`. Otherwise, the event will be dropped.
 * `timestamp` must be in milliseconds UNIX epoch and must be maximum 4 days old.
@@ -111,7 +115,7 @@ Also, the length of `objectIds` and `positions` arrays should be equal. Otherwis
 
 ### E-Commerce Events
 
-For Algolia integration, Rudderstack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed). 
+For Algolia, Rudderstack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed). 
 
 An example is shown below:
 
