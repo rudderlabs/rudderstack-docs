@@ -4,9 +4,9 @@ description: Step-by-step guide to send your event data from RudderStack to Bran
 
 # Branch
 
-[Branch.io](https://branch.io) is an industry leader in cross-platform attribution, mobile app measurement, and deep linking. Many top-ranking apps use Branch to increase their performance and revenue through better performance and engagement.
+\*\*\*\*[**Branch.io**](https://branch.io) is an industry leader in cross-platform attribution, mobile app measurement, and deep linking. Many top-ranking apps use Branch to increase their performance and revenue through better performance and engagement.
 
-RudderStack supports sending events from RudderStack SDKs to Branch through our data plane via the S2S \(Server to Server\) connection mode. You can also opt for the device mode as well for Android and iOS. Branch SDK is wrapped inside Rudder SDK in case of device mode.
+RudderStack supports Branch as a destination to which you can seamlessly send customer events.
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/branch)**.**
@@ -14,58 +14,64 @@ RudderStack supports sending events from RudderStack SDKs to Branch through our 
 
 ## Getting Started
 
-Before getting started, please determine whether the platform you are sending your event data from is supported. Refer to the following table for more the supported source types and connection modes:
+Before configuring Branch as a destination in RudderStack, verify if the source platform is supported by Branch by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | - | **Supported** | - |
 | **Cloud mode** | - | **Supported** | - |
 
+{% hint style="info" %}
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) ****guide.
+{% endhint %}
+
+Once you have confirmed that your source platform supports sending events to Branch, follow these steps:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add a compatible source. From the list of destinations, select **Branch Metrics**.
+
 {% hint style="warning" %}
-This destination currently supports [**Android**](../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/), [**iOS**](../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md), and [**Unity**](../../stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk.md) as sources.
+This destination currently supports [**Android**](../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/), [**iOS**](../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md), and [**Unity**](../../stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk.md) as sources. 
+
+RudderStack does not support sending data to Branch via the web \(JavaScript\) SDK on both Device and Cloud mode.
 {% endhint %}
 
 {% hint style="info" %}
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+Follow our guide on [**Adding a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
 {% endhint %}
 
-In order to start sending data to Branch, you will first need to add it as a destination to the source from which you are sending the event data.
+* Assign a name to the destination and click on **Next**. You should then see the following screen: 
+
+![](../../.gitbook/assets/1%20%2827%29.png)
+
+### Connection Settings
+
+* **Branch Key**: Enter your Branch key here.
 
 {% hint style="info" %}
-Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
+To get your Branch key, log into to your Branch [**dashboard**](https://dashboard.branch.io/#/settings). You should be able to access the Branch key from the settings page of the dashboard. For more information on the Branch key, refer to their [**documentation**](https://help.branch.io/using-branch/docs/profile-settings#branch-key-and-secret).
 {% endhint %}
 
-Please follow these steps once you have added a source in the RudderStack app:
-
-* Once you have added the source, you will need to register on Branch and follow the required steps to complete the set up.
-* You should then be able to access the Branch key from the settings page of your Branch [dashboard](https://dashboard.branch.io/#/settings).
-* Enter your Branch key to complete the destination configuration as shown:
-
-![BranchIO Dashboard Settings](../../.gitbook/assets/screenshot-2020-02-23-at-3.25.23-pm.png)
-
-{% hint style="warning" %}
-Please note that RudderStack does not support sending data to Branch on both device or cloud mode for the web.
-{% endhint %}
+* Enable the **Use device-mode to send events** option if you wish to send events to the destination via the native SDK.
 
 ## Adding Device Mode Integration
 
-Depending on the platform of integration follow the steps below to integrate with Device-mode.
+Depending on your source platform, follow the steps below to send events to Branch via the Device Mode .
 
 {% tabs %}
 {% tab title="iOS" %}
-* Open the `Podfile` of your project and add the following line
+* Open the `Podfile` of your project and add the following line:
 
 ```text
 pod 'Rudder-Branch'
 ```
 
-followed by
+* Then, run the following:
 
 ```text
 $ pod install
 ```
 
-* Finally change the SDK initialization with the following
+* Finally, change the SDK initialization as shown:
 
 ```text
 RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
@@ -77,7 +83,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 {% endtab %}
 
 {% tab title="Android" %}
-* Open your `app/build.gradle` \(Module: app\) file, add the following
+* Open your `app/build.gradle` \(Module: `app`\) file and add the following lines:
 
 ```text
 repositories {
@@ -85,7 +91,7 @@ repositories {
 }
 ```
 
-* Add the following  under `dependencies` section
+* Add the following  under `dependencies` section:
 
 ```text
 implementation 'com.rudderstack.android.sdk:core:1.0.1'
@@ -98,7 +104,7 @@ implementation 'com.google.firebase:firebase-appindexing:19.1.0'
 implementation 'com.google.android.gms:play-services-ads:16+'
 ```
 
-* Finally change the initialization of the SDK with the following
+* Finally, change the initialization of the SDK as shown:
 
 ```text
 val rudderClient: RudderClient = RudderClient.getInstance(
@@ -114,13 +120,15 @@ val rudderClient: RudderClient = RudderClient.getInstance(
 {% endtab %}
 {% endtabs %}
 
-Now follow the instructions below to send events to Branch.
-
 ## Identify
 
-The `identify` call associates a user to their actions and also captures the traits associated with that user. Some of captured information includes a unique user ID, as well as optional traits such as name, email, IP address, etc.
+The `identify` call lets you identify a visiting user and associate them to their actions.
 
-A sample identify call captured from the RudderStack iOS SDK would look like the following:
+{% hint style="success" %}
+For more information on the `identify` call, refer to the [**RudderStack Events Specification**](../../rudderstack-api/api-specification/rudderstack-spec/) guide.
+{% endhint %}
+
+A sample `identify` call captured from the RudderStack iOS SDK is as shown:
 
 ```text
 [[RudderClient sharedInstance] identify:@"developer_user_id"
@@ -128,12 +136,16 @@ A sample identify call captured from the RudderStack iOS SDK would look like the
 ```
 
 {% hint style="info" %}
-Ideally, this call is made when the user registers to the app for the first time, or after the user logs into the app or updates their information.
+Ideally, this call is made when the user registers on the app, after login, or after they update their information on the app.
 {% endhint %}
 
 ## Track
 
-The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**.
+The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with them.
+
+{% hint style="success" %}
+For more information on the `track` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/track) guide.
+{% endhint %}
 
 A sample `track` call looks like the following:
 
@@ -142,39 +154,13 @@ A sample `track` call looks like the following:
                           properties:@{@"key":@"value", @"foo": @"bar"}]
 ```
 
-For example, consider the following code snippet for a `track` event `Product Added` from your JavaScript SDK:
-
-```text
-rudderanalytics.track('Product Added', {
-  cart_id: '1234',
-  products: [
-    {
-       product_id: 'mobi1',
-       name: "mobile name",
-       brand: "brand name",
-       variant: "4gb/8gb", 
-       price: "750$",
-       quantity: "1",
-       description: "Mobile phone description goes here",  
-    },
-    {
-       product_id: 'mobi2',
-       name: "mobile name",
-       brand: "brand name",
-       variant: "16gb/32gb", 
-       price: "1000$",
-       quantity: "1",
-       description: "Mobile phone description goes here", 
-    }
-  ]
-});
-```
-
 All the trackable events in RudderStack are divided into three major Branch event categories:
 
-* Commerce Events
+* E-Commerce Events
 * Content Events
 * Lifecycle Events
+
+### E-Commerce Events
 
 The following table lists the mapping between the accepted names of the Commerce events:
 
@@ -194,8 +180,10 @@ The following table lists the mapping between the accepted names of the Commerce
 | `Reserve` | `RESERVE` |
 
 {% hint style="info" %}
-RudderStack also maps the `Spend Credits` event to Branch's `SPEND_CREDITS` although it is not directly a part of the E-Commerce Events.
+RudderStack also maps the `Spend Credits` event to Branch's `SPEND_CREDITS` , although it is not directly a part of the E-Commerce Events.
 {% endhint %}
+
+### Content Events
 
 The following table lists the mapping between the accepted names of the Content events:
 
@@ -210,10 +198,12 @@ The following table lists the mapping between the accepted names of the Content 
 | `Complete Stream` | `COMPLETE_STREAM` |
 
 {% hint style="info" %}
-The above mentioned events are a part of the RudderStack Commerce events, but are mapped to Branch's Content Events.
+The above mentioned events are a part of the RudderStack E-Commerce events, but are mapped to Branch's Content Events.
 {% endhint %}
 
-RudderStack also supports mapping the following events even though they are not explicitly a part of the RudderStack Lifecycle Events:
+### Lifecycle Events
+
+RudderStack also supports mapping the following events:
 
 | RudderStack Event | Branch Event |
 | :--- | :--- |
@@ -225,6 +215,8 @@ RudderStack also supports mapping the following events even though they are not 
 | `Login` | `LOGIN` |
 | `Start Trial` | `START_TRIAL` |
 | `Subscribe` | `SUBSCRIBE` |
+
+### Common Fields Mapping
 
 The following table lists the mapping of the accepted property keys common to all events:
 
@@ -261,11 +253,11 @@ The following table lists the mapping of the accepted property keys common to al
 
 ## FAQs
 
-### Where can I get the Branch Key from?
+### Where can I get the Branch Key?
 
-You can retrieve the Branch key from the settings page of the [Branch dashboard](https://dashboard.branch.io/#/settings). For more information, please check the [Getting Started](https://docs.rudderstack.com/destinations/branchio#getting-started) section above.
+You can retrieve the Branch key from the settings page of the [**Branch dashboard**](https://dashboard.branch.io/#/settings).
 
 ## Contact Us
 
-If you come across any issues while configuring Branch with RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any issues while configuring Branch with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
 
