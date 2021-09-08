@@ -343,7 +343,12 @@ rudderanalytics.identify(
 );
 ```
 
-In the above example, information such as the `userid` and email along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
+In the above example, information such as the `userId` and `email` along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
+
+{% hint style="warning" %}
+If you explicitly specify the IP address in the event, RudderStack will use that IP instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
+{% endhint %}
+
 
 The above `identify` call has the following parameters:
 
