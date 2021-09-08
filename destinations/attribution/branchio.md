@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Bran
 
 # Branch
 
-\*\*\*\*[**Branch.io**](https://branch.io) is an industry leader in cross-platform attribution, mobile app measurement, and deep linking. Many top-ranking apps use Branch to increase their performance and revenue through better performance and engagement.
+\*\*\*\*[**Branch**](https://branch.io) is an industry leader in cross-platform attribution, mobile app measurement, and deep linking. Many top-ranking apps use Branch to increase their performance and revenue through better performance and engagement.
 
 RudderStack supports Branch as a destination to which you can seamlessly send customer events.
 
