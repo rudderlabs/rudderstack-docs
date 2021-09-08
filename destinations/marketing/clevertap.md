@@ -42,6 +42,7 @@ To successfully configure CleverTap as a destination, you will need to configure
 * **Account ID:** Your account ID is an unique ID generated for your account. It can be found in your account in the **Settings** as your **Project ID**.
 * **Passcode:** Your account passcode is an unique code generated for your account. It can be found in the **Settings** as **Passcode**.
 * **Enable track for anonymous user:** Enable this option to track anonymous users in CleverTap.
+* **Use Clevertap ObjectId for Mapping:** Enable this option to use both Clevertap `objectId` along with `identity` for mapping events from Rudderstack to Clevertap.
 * **Region:** Server Only: This is your dedicated CleverTap region.
 * **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
 
@@ -275,6 +276,45 @@ completionHandler:^(BOOL granted, NSError * _Nullable error) {
 * Open `ios` folder of your React Native app and do follow all the steps mentioned in `iOS` tab of [Configuring Push Notifications](clevertap.md#configuring-push-notifications)
 {% endtab %}
 {% endtabs %}
+
+## Using both Clevertap ObjectId and Identity for Mapping (Cloud Mode Only)
+Clevertap uniquely identifies each user with two main identifier, namely `objectId` and `identity`, when `Use Clevertap ObjectId for Mapping` is enabled the mapping of identifiers between Rudderstack and Clevertap changes.
+
+### When `Use Clevertap ObjectId for Mapping` is disabled following mapping is expected
+
+ For Identify and Tracking events (Track/Page/Screen) events:
+
+| Rudderstack| Clevertap |
+| :--- | :--- |
+|`userId or anonymousId`|`identity`|
+
+### When `Use Clevertap ObjectId for Mapping` is enabled following mapping is expected
+
+For Identify Events
+| Rudderstack||Clevertap||
+| :--- | :--- |:--- |:--- |
+|anonymousId(present?)	|	userId(present?) 	|			objectId	    |	  identity
+|true					          |	true		          |			anonymousId		|	   userId
+|true					          |	false		          |		  anonymousId		|	    -
+|false				          |	true		          |		  userId		    |	   userId
+
+For tracking events
+| Rudderstack||Clevertap|
+| :--- | :--- |:--- |
+anonymousId(present?)		|		userId(present?)	|				tracking with
+true				            |		true		          |			identity ( value = userId)
+true				            |		false		          |			objectId (value = anonymousId)
+false				            |	  true			        |			identity (value = userId)
+
+### Why enable `Use Clevertap ObjectId for Mapping`?
+
+When an unidentified user is tracked in clevertap an user profile is creadted with minimal details with the tracking event present in the activity. When the same user is `identified` with an userId (Without `Use Clevertap ObjectId for Mapping`) option another user profile gets created for the same user now with `userId`(Rudderstack) as `identity`(Clevertap). One way to solve this problem is to disable `Enable track for anonymous user` option in dashboard which results in tracking of users whenver `userId`(Rudderstack) is Present. To address this problem along with keeping backward compatibility of how we map `identifiable` attributes to Clevertap we have `Use Clevertap ObjectId for Mapping` option where Anonymous users can later be identifed and merged with `userId`.
+
+## Device token upload using cloud mode
+
+For `android` and `iOS` sources for cloud mode when device token is present in `context.device.token` in identify calls we will use [Clevertap Device Token Upload API](https://developer.clevertap.com/docs/upload-device-tokens-api) to upload device token for the identified user. For `android` we set the token type as `fcm` and for `iOS` we set it as `apns`
+
+To use this feature you should have `Use Clevertap ObjectId for Mapping` option enabled, as we have to use `objectId`(Clevertap) to upload device token
 
 ## Page
 
