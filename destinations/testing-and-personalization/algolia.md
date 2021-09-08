@@ -49,6 +49,10 @@ To get the Algolia API key and Application ID, go to your [**Algolia dashboard**
 The `event`-`eventType` mapping passed via the `track` call  **will get a higher precedence** over the mapping specified in the dashboard.
 {% endhint %}
 
+{% hint style="warning" %}
+If the **Event** - **Event Type** mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be dropped.
+{% endhint %}
+
 * Finally, click on **Next**. Algolia will now be enabled as a destination in RudderStack.
 
 ## Track
@@ -130,6 +134,12 @@ rudderanalytics.track("product list viewed", {
   ]
 });
 ```
+
+## FAQs
+
+### What happens if the Event Name - Event Type mapping is not specified in the dashboard as well as in the `track` call?
+
+If the **Event** - **Event Type** mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be dropped.
 
 ## Contact Us
 
