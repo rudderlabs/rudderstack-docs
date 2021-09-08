@@ -31,7 +31,7 @@ Follow our guide on [**Adding a Source and Destination in RudderStack**](https:/
 
 * Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-![Algolia Connection Settings](https://user-images.githubusercontent.com/59817155/132336730-357f9550-f38f-4fb7-8e02-7e68174f0e4d.png)
+![Algolia Connection Settings](../../.gitbook/assets/Algolia.png)
 
 ### Connection Settings
 
