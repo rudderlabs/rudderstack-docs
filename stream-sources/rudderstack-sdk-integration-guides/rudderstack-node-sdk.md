@@ -80,7 +80,7 @@ The `identify` parameters are as described below:
 
 ## Track
 
-The `track` call lets you record the users' actions along with their associated properties. Each user  action is called an 'event'.
+The `track` call lets you record the users' actions along with their associated properties. Each user action is called an 'event'.
 
 An example `track` call is as shown:
 
@@ -215,7 +215,7 @@ To use this feature, you will need to host a Redis server and use it as the inte
 RudderStack uses [**Bull**](https://github.com/OptimalBits/bull) as the interface layer between the Node.js SDK and Redis.
 {% endhint %}
 
-A sample initialization of the SDK is as below:
+A sample initialization of the SDK is as shown:
 
 ```javascript
 const client = new Analytics(WRITE_KEY,`${DATA_PLANE_URL}/v1/batch`,{
@@ -227,19 +227,19 @@ const client = new Analytics(WRITE_KEY,`${DATA_PLANE_URL}/v1/batch`,{
 client.createPersistenceQueue(queueOpts, callback)
 ```
 
-To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue. 
+To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue.
 
 {% hint style="warning" %}
 If the `createPersistenceQueue` method is not called after initializing the SDK, the SDK will work without any persistence.
 {% endhint %}
 
-### **Configurable Parameters**
+### Configurable Parameters
 
 
 |**Parameter**  |**Description**                                             |**Default Value**|
 |---------------|------------------------------------------------------------|-----------------|
 |`flushAt`      |The maximum number of events to batch and send to the server|`20`             |
-|`flushInterval`|The maximum timespan (in ms) after which the events from the in-memory queue is flushed to Redis' persistence queue|`20000`|
+|`flushInterval`|The maximum timespan (in milliseconds) after which the events from the in-memory queue is flushed to Redis' persistence queue|`20000`|
 |`maxInternalQueueSize`|The maximum size of the in-memory queue              |`20000`          |
 |`JobOpts.maxAttempts` |The maximum number of retry attempts                 |`10`             |
 |`isMultiProcessor`    |Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event.|`false` |
@@ -327,8 +327,10 @@ In case of an error, the `createPersistenceQueue` method returns a callback. You
 callback: function(error) || function()
 ```
 
+Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to calling `callback` with the error.
+
 {% hint style="info" %}
-It is recommended to retry calling `createPersistenceQueue` with a backoff, if the callback returns with an error.
+If the callback returns with an error, we recommend retrying calling `createPersistenceQueue` with a backoff.
 {% endhint %}
 
 ### Event Flow

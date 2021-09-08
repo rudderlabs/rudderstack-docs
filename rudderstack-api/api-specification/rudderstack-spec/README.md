@@ -4,7 +4,7 @@ description: >-
   captured by the various RudderStack APIs.
 ---
 
-# RudderStack Event Specification
+# RudderStack Events Specification
 
 The **RudderStack API Spec** helps you plan your event data and provides various options for tracking your events across all the RudderStack SDKs and APIs. 
 

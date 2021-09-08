@@ -47,10 +47,14 @@ If you have already connected RudderStack to your Google Search Console account,
 
 In the **Site URL**, make sure to use the **exact URL** of the website as specified in your Google Search Console. Read [this guide](https://support.google.com/webmasters/answer/34592?hl=en) for more information.
 
+{% hint style="info" %}
+If you are using a domain property in the Search Console, you will need prepend the site with `sc-domain:`.
+{% endhint %}
+
 ![](../.gitbook/assets/image%20%2813%29%20%281%29.png)
 
 {% hint style="success" %}
-The available dimensions that you can query are **country**, **device**, ****and **page**. 
+The available dimensions that you can query are **country**, **device**, **\*\*and** page\*\*.
 {% endhint %}
 
 {% hint style="info" %}
@@ -63,7 +67,7 @@ Please note that this **Start from date** is valid only for the first \(historic
 
 ![](../.gitbook/assets/screen-shot-2020-12-18-at-11.00.31-am.png)
 
-That's it! Google Search Console is now successfully configured as a source on your RudderStack dashboard. 
+That's it! Google Search Console is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start importing data from Google Search Console as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
@@ -87,7 +91,7 @@ The synchronization also depends on your destination's sync schedule.
 
 #### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
-Yes, it is. 
+Yes, it is.
 
 We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 

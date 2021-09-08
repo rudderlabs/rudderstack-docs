@@ -54,11 +54,11 @@ The `identify` call has the following fields in addition to the [**Common Fields
 
 ## User ID vs Anonymous ID
 
- RudderStack requires every `identify` call to have either a `userId` or an `anonymousId`. This section highlights the difference between the two.
+RudderStack requires every `identify` call to have either a `userId` or an `anonymousId`. This section highlights the difference between the two.
 
 ### User ID
 
-A user ID \(`userId`\) uniquely identifies your user present in your database. It is a permanent identifier of your customer which never changes - like a database ID. 
+A user ID \(`userId`\) uniquely identifies your user present in your database. It is a permanent identifier of your customer which never changes - like a database ID.
 
 {% hint style="info" %}
 For `identify` calls, you should include a `userId` as often as possible to identify the most up to date traits of the customer.
@@ -153,7 +153,6 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <p>User&apos;s street address. This can</p>
         <p>optionally contain either / all of
           <br />the following fields:</p>
-        <p></p>
         <ul>
           <li><code>city</code>
           </li>
@@ -182,7 +181,6 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <p>User&apos;s company. This can</p>
         <p>optionally contain either / all of
           <br />the following fields:</p>
-        <p></p>
         <ul>
           <li><code>name</code> (String)</li>
           <li><code>id</code> (String / Number)</li>
@@ -272,10 +270,4 @@ In the above example, `{name: "username", gender: "male"}` are the traits stored
 ## Contact Us
 
 For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
-
-
-
-
 

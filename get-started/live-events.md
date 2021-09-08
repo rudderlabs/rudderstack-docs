@@ -1,7 +1,7 @@
 ---
 description: >-
-  Detailed technical description of the Live Events Debugger feature to debug
-  your source and destination events in real-time.
+  Detailed technical description of the Live Events feature to debug your source
+  and destination events in real-time.
 ---
 
 # Live Events
@@ -36,7 +36,7 @@ To view the live events collected from your source in real-time, follow these st
 ![](../.gitbook/assets/image%20%28115%29.png)
 
 {% hint style="info" %}
-For details on the information available in the **Live Events** window, check the **Source Live Events** section.
+For details on the information available in the **Live Events** window, check the [**Source Live Events**](https://docs.rudderstack.com/get-started/live-events#source-live-events) ****section.
 {% endhint %}
 
 ### Destinations
@@ -62,7 +62,7 @@ Make sure your destination is configured in the **Cloud mode**. Refer to the [**
 ![](../.gitbook/assets/image%20%28125%29.png)
 
 {% hint style="info" %}
-For details on the information available in the **Live Events** window, check the **Destination Live Events** section.
+For details on the information available in the **Live Events** window, check the [**Destination Live Events**](https://docs.rudderstack.com/get-started/live-events#destination-live-events) ****section.
 {% endhint %}
 
 ## **Source Live Events**
@@ -110,6 +110,20 @@ The responses received from the destination help you in quickly identifying and 
 Live events are shown for all the destinations. However, the **payload of the events** is not shown for some destinations like the [**object storage platforms**](../destinations/storage-platforms/) and the [**data warehouses**](../data-warehouse-integrations/) supported by RudderStack.
 {% endhint %}
 
+## **Transformation Live Events**
+
+RudderStack also gives you the option of viewing the events before and after a transformation is applied. 
+
+![](../.gitbook/assets/2%20%2825%29.png)
+
+RudderStack also notifies you about any dropped events or any errors during the transformation along with the details, as shown in the following image:
+
+![](../.gitbook/assets/3%20%2829%29.png)
+
+Note that this feature is applicable for cases where you have connect a [**transformation**](../adding-a-new-user-transformation-in-rudderstack/) to a destination, as shown:
+
+![](../.gitbook/assets/1%20%2821%29.png)
+
 ## **FAQs**
 
 ### **Why are my events failing?**
@@ -118,5 +132,5 @@ Routing events to a destination can fail for various reasons. Often, it is becau
 
 ## **Contact Us**
 
-To know more about the Live Events Debugger, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+To know more about the Live Events feature, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 

@@ -22,7 +22,7 @@ Before getting started, please determine whether the platform you are sending yo
 | **Cloud mode** | - | **Supported** | - |
 
 {% hint style="info" %}
- To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 In order to start sending data to Branch, you will first need to add it as a destination to the source from which you are sending the event data.
@@ -52,10 +52,10 @@ Depending on the platform of integration follow the steps below to integrate wit
 * Open the `Podfile` of your project and add the following line
 
 ```text
-pod 'Rudder-Branch', '0.1.3'
+pod 'Rudder-Branch'
 ```
 
-followed by 
+followed by
 
 ```text
 $ pod install
@@ -70,6 +70,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withLoglevel:RudderLogLevelDebug];
 [RudderClient getInstance:<WRITE_KEY> config:[builder build]];
 ```
+
 {% endtab %}
 
 {% tab title="Android" %}
@@ -107,10 +108,11 @@ val rudderClient: RudderClient = RudderClient.getInstance(
         .build()
 )
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Now follow the instructions below to send events to Branch. 
+Now follow the instructions below to send events to Branch.
 
 ## Identify
 
@@ -166,8 +168,7 @@ rudderanalytics.track('Product Added', {
 });
 ```
 
-  
-All the trackable events in RudderStack are divided into three major Branch event categories: 
+All the trackable events in RudderStack are divided into three major Branch event categories:
 
 * Commerce Events
 * Content Events
@@ -184,9 +185,14 @@ The following table lists the mapping between the accepted names of the Commerce
 | `Payment Info Entered` | `ADD_PAYMENT_INFO` |
 | `Order Completed` | `ADD_PAYMENT_INFO` |
 | `Spend Credits` | `SPEND_CREDITS` |
+| `Promotion Viewed` | `VIEW_AD` |
+| `Promotion Clicked` | `CLICK_AD` |
+| `Checkout Started` | `PURCHASE` |
+| `Order Completed` | `PURCHASE` |
+| `Reserve` | `RESERVE` |
 
 {% hint style="info" %}
-RudderStack also maps the `Spend Credits` event to Branch's `SPEND_CREDITS`, although it is not directly a part of the Commerce Events.
+RudderStack also maps the `Spend Credits` event to Branch's `SPEND_CREDITS` although it is not directly a part of the E-Commerce Events.
 {% endhint %}
 
 The following table lists the mapping between the accepted names of the Content events:
@@ -198,6 +204,8 @@ The following table lists the mapping between the accepted names of the Content 
 | `Product List Viewed` | `VIEW_ITEMS` |
 | `Product Reviewed` | `RATE` |
 | `Product Shared` | `SHARE` |
+| `Initiate Stream` | `INITIATE_STREAM` |
+| `Complete Stream` | `COMPLETE_STREAM` |
 
 {% hint style="info" %}
 The above mentioned events are a part of the RudderStack Commerce events, but are mapped to Branch's Content Events.
@@ -211,6 +219,10 @@ RudderStack also supports mapping the following events even though they are not 
 | `Complete Tutorial` | `COMPLETE_TUTORIAL` |
 | `Achieve Level` | `ACHIEVE_LEVEL` |
 | `Unlock Achievement` | `UNLOCK_ACHIEVEMENT` |
+| `Invite` | `INVITE` |
+| `Login` | `LOGIN` |
+| `Start Trial` | `START_TRIAL` |
+| `Subscribe` | `SUBSCRIBE` |
 
 The following table lists the mapping of the accepted property keys common to all events:
 
@@ -253,5 +265,4 @@ You can retrieve the Branch key from the settings page of the [Branch dashboard]
 
 ## Contact Us
 
-If you come across any issues while configuring Branch with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
+If you come across any issues while configuring Branch with RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.

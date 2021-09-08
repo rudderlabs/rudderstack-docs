@@ -132,21 +132,21 @@ You can then transform this payload according to the desired destination with th
 A sample transformation is as shown below:
 
 ```javascript
-function transformEvent(event) {
-  const updatedEvent = event[0];
-  const { properties } = event[0];
-
+export function transformEvent(event) {
+  const updatedEvent = event;
+  const { properties } = event;
+  
   if (properties) {
     updatedEvent.event = properties.type;
     updatedEvent.userId = properties["data[email]"];
     updatedEvent.properties.name = `${properties["data[merges][FNAME]"]} ${properties["data[merges][LNAME]"]}`;
     updatedEvent.properties.phone = properties["data[merges][PHONE]"];
-
+  
     delete updatedEvent.properties["data[merges][PHONE]"];
     delete updatedEvent.properties["data[merges][FNAME]"];
     delete updatedEvent.properties["data[merges][LNAME]"];
   }
-
+  
   return updatedEvent;
 }
 ```

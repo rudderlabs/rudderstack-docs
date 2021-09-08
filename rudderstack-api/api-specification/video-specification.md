@@ -4,7 +4,7 @@ description: >-
   sending events when tracking videos.
 ---
 
-# Video Events Specification
+# Video Events
 
 RudderStack's video specification lets you define how a customer engages with your videos and the related ad content. 
 

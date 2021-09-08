@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest event data from Auth0 into RudderStack
 
 [**Auth0**](https://auth0.com/) is a popular solution used by many companies to add authentication and authorization services to their applications. You can connect Auth0 to your application with just a few lines of code and also define the identity providers, i.e., how you want the users to log in.
 
-This guide will help you set up Auth0 as a source in RudderStack. 
+This guide will help you set up Auth0 as a source in RudderStack.
 
 ## Introduction
 
@@ -35,20 +35,18 @@ In order to add Auth0 as a source in RudderStack, please follow these steps:
 
 ![](../.gitbook/assets/auth05.png)
 
-* Add the **WEBHOOK\_URL** as shown on the source settings page in your RudderStack ****[**dashboard**](https://app.rudderstack.com). 
+* Add the **WEBHOOK\_URL** as shown on the source settings page in your RudderStack dashboard.
 
 ![](../.gitbook/assets/1%20%2825%29.png)
 
 The webhook URL is of the format:
 
-```
+```text
 <DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_AUTH0_SOURCE_WRITE_KEY>
 ```
 
-* If you're using RudderStack Cloud, replace `<DATA_PLANE_URL>` with [**https://hosted.rudderlabs.com/**](https://hosted.rudderlabs.com/).
-
+* If you're using RudderStack Cloud, replace `<DATA_PLANE_URL>` with [**https://hosted.rudderlabs.com/**](https://hosted.rudderlabs.com/). 
 * If you're hosting your own Data Plane, replace `<DATA_PLANE_URL>` with your [**hosted Data Plane URL**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
-{% endhint %}
 
 An example is as shown:
 
@@ -61,14 +59,14 @@ Make sure you add the `writeKey` as the query parameter to the URL. This is requ
 Then, continue with the rest of the steps, as follows:
 
 * Keep the authorization section as blank. 
-* You can disable **SEND\_AS\_BATCH** setting to receive the events in separate requests, but we recommend to keep it **Enabled**. 
+* You can disable the **SEND\_AS\_BATCH** setting to receive the events in separate requests. However, we recommend setting it to **Enabled**. 
 * Finally click on **INSTALL** to install the webhook on your Auth0 dashboard.
 
 ## RudderStack Event Transformation
 
-The webhook event from Auth0 is ingested into RudderStack after converting it into the RudderStack event format. The `user_id` set by Auth0 is converted to `userId`. 
+The webhook event from Auth0 is ingested into RudderStack after converting it into the RudderStack event format. The `user_id` set by Auth0 is converted to `userId`.
 
-RudderStack also populates the following properties from Auth0 event payload directly to the RudderStack event:
+The following table lists the properties populated from the Auth0 event payload directly to the RudderStack event:
 
 | **Auth0 Property** | **RudderStack Property** |
 | :--- | :--- |
@@ -85,11 +83,9 @@ RudderStack also populates the following properties from Auth0 event payload dir
 | `user_name` | `context.traits.user_name` |
 | `user_agent` | `context.userAgent` |
 
-## Troubleshooting
+## How to Debug
 
-### How do I see the Auth0 API webhooks logs?
-
-If you're unable to see any events flowing from the Auth0 API webhooks to RudderStack, you can troubleshoot the issue by viewing the API webhooks logs. To do so, go to your Auth0 dashboard and navigate to **Monitoring** - **Logs**. 
+If you're unable to see any events flowing from the Auth0 API webhooks to RudderStack, you can troubleshoot the issue by viewing the API webhooks logs. To do so, go to your Auth0 dashboard and navigate to **Monitoring** - **Logs**.
 
 {% hint style="info" %}
 Refer to the [**Auth0 documentation**](https://auth0.com/docs/extensions/auth0-authentication-api-webhooks#troubleshoot-webhooks) for more information on this issue.
@@ -98,3 +94,4 @@ Refer to the [**Auth0 documentation**](https://auth0.com/docs/extensions/auth0-a
 ## Contact Us
 
 If you come across any issues while configuring Auth0 as a source, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
