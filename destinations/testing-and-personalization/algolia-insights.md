@@ -121,7 +121,7 @@ Also, the length of `objectIds` and `positions` arrays should be equal. Otherwis
 
 ### E-Commerce Events
 
-For Algolia, RudderStack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed).
+For Algolia Insights, RudderStack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed).
 
 An example is shown below:
 
@@ -145,5 +145,5 @@ If the **Event** - **Event Type** mapping is not specified in the dashboard and 
 
 ## Contact Us
 
-If you come across any issues while configuring or using Algolia with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any issues while configuring or using Algolia Insights with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
