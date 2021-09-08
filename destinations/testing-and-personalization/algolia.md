@@ -66,7 +66,7 @@ In case you have already specified the mapping in the dashboard, you don't need 
 {% endhint %}
 
 {% hint style="warning" %}
-If you are sending a new `event` via  the `track` call which is not specified in the dashboard, make sure you include the `eventType` in the call as well, otherwise the call will be **dropped**.
+To send a new `event` via `track` which is not specified in the dashboard, make sure you include the `eventType` inside the `properties` of the call. Otherwise, the event will be **dropped**.
 {% endhint %}
 
 
