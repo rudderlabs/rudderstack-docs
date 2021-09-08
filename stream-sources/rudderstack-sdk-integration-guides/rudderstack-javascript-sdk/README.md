@@ -350,7 +350,7 @@ Note that the user's IP address is not automatically collected by the SDK. Inste
 {% endhint %}
 
 {% hint style="warning" %}
-If you explicitly specify the IP address in the event, RudderStack will use that IP instead of automatically capturing it when collecting the events. You can use this feature to anonymize your users' IP - e.g., by supplying a random IP address like `0.0.0.0`.
+If you explicitly specify the IP address in the event, RudderStack will use that IP instead of automatically capturing it when collecting the events. You can use this feature to anonymize your users' IP - e.g., by supplying a random dummy IP address.
 {% endhint %}
 
 
