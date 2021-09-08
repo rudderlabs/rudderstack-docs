@@ -15,7 +15,7 @@ Before configuring Algolia as a destination in RudderStack, verify if the source
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | - | - | - |
-| **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
