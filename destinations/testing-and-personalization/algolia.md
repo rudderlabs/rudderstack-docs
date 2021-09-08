@@ -73,7 +73,6 @@ The following table includes all `track` fields with their relative mapping to t
 
 | **RudderStack Field**    | **Algolia Field** |
 | :----------------------- | :---------------- |
-| `userId` / `anonymousId` | `userToken`       |
 | `index`                  | `index`           |
 | `eventType`              | `eventType`       |
 | `timestamp`              | `timestamp`       |
@@ -85,6 +84,7 @@ The following table includes all `track` fields with their relative mapping to t
 
 {% hint style="info" %}
 RudderStack looks for these fields within the `properties` field of the event payload.
+`userId` or `anonymousId` is  mapped to `userToken` in Algolia.
 {% endhint %}
 
 A sample `track` call is as shown:
