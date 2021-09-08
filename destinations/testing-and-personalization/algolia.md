@@ -109,8 +109,8 @@ To successfully send events to Algolia, the following criteria must be met:
 |`timestamp`   | Must be in milliseconds UNIX epoch and must be maximum 4 days old.                                                        |
 |`queryId`     | Must be a 32-character Hexadecimal string.                                                                                |   
 |`filters`     | Must be an array of strings. **If it has more than 10 strings, only the first 10 values will be passed**.                 |
-|`objectIds`   | Must be an array of strings. **If it has more than 20 strings, only first 20 values will be passed.**                     |
-|`positions`   | Must be an array of integers. **It must be passed for only `click` type events**. Only the first 20 values will be passed.| 
+|`objectIds`   | Must be an array of strings. **If it has more than 20 strings, only the first 20 values will be passed**.                 |
+|`positions`   | Must be an array of integers. **It must be passed for only `click` type events. Only the first 20 values will be passed**.| 
 
 {% hint style="info" %}
 For all the event types (`eventType`), either `filters` or `objectIds` must be passed and **not both**. If both or none of the fields are passed, the event will be discarded.
