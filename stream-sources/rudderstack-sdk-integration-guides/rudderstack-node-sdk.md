@@ -131,7 +131,7 @@ The `page` method parameters are as described below:
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
-| `userId` | String | Required, if `anonymousId` is not present.| The unique identifier for a user in your database. |
+| `userId` | String | Required, if `anonymousId` is not present. | The unique identifier for a user in your database. |
 | `context` | Object | Optional | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary of destinations to be either enabled or disabled. |
 | `name` | String | Required | Name of the viewed page. |
@@ -235,17 +235,16 @@ If the `createPersistenceQueue` method is not called after initializing the SDK,
 
 ### Configurable Parameters
 
-
-|**Parameter**  |**Description**                                             |**Default Value**|
-|---------------|------------------------------------------------------------|-----------------|
-|`flushAt`      |The maximum number of events to batch and send to the server|`20`             |
-|`flushInterval`|The maximum timespan (in milliseconds) after which the events from the in-memory queue is flushed to Redis' persistence queue|`20000`|
-|`maxInternalQueueSize`|The maximum size of the in-memory queue              |`20000`          |
-|`JobOpts.maxAttempts` |The maximum number of retry attempts                 |`10`             |
-|`isMultiProcessor`    |Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event.|`false` |
+| **Parameter** | **Description** | **Default Value** |
+| :--- | :--- | :--- |
+| `flushAt` | The maximum number of events to batch and send to the server | `20` |
+| `flushInterval` | The maximum timespan \(in milliseconds\) after which the events from the in-memory queue is flushed to Redis' persistence queue | `20000` |
+| `maxInternalQueueSize` | The maximum size of the in-memory queue | `20000` |
+| `JobOpts.maxAttempts` | The maximum number of retry attempts | `10` |
+| `isMultiProcessor` | Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. | `false` |
 
 {% hint style="warning" %}
-If the same queue \(RudderStack SDK initialized with the same queue name\) is used in case of multiple servers (server-side SDKs), set the value of `isMultiProcessor` to `true` as event ordering is not applicable in this case.
+If the same queue \(RudderStack SDK initialized with the same queue name\) is used in case of multiple servers \(server-side SDKs\), set the value of `isMultiProcessor` to `true` as event ordering is not applicable in this case.
 {% endhint %}
 
 #### How to ensure that all my events in the queue are processed?
@@ -265,7 +264,7 @@ As mentioned in the previous section, you need to call the `createPersistenceQue
 
 `client.createPersistenceQueue(QueueOpts, callback)`
 
-Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for  the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to a callback with the error.
+Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to a callback with the error.
 
 A sample `queueOpts` initialization is shown below:
 
@@ -283,13 +282,13 @@ queueOpts {
 
 The specification of the different `queueOpts` parameters is listed in the following table:
 
-|**Parameter**  |**Description**                                             |**Default Value**|
-|---------------|------------------------------------------------------------|-----------------|
-|`queueName`           |Name of the queue. |`20`             |
-|`isMultiProcessor`    |Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event.|`false` |
-|`prefix`              |Used as the prefix to the Redis keys needed to support the Redis cluster slots. |`20000`|
-|`redisOpts`           |Refer to the `RedisOpts` section below                |`RedisOpts`          |
-|`jobOpts`             |Refer to the `JobOpts` section below                  |`JobOpts`            |
+| **Parameter** | **Description** | **Default Value** |
+| :--- | :--- | :--- |
+| `queueName` | Name of the queue. | `20` |
+| `isMultiProcessor` | Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. | `false` |
+| `prefix` | Used as the prefix to the Redis keys needed to support the Redis cluster slots. | `20000` |
+| `redisOpts` | Refer to the `RedisOpts` section below | `RedisOpts` |
+| `jobOpts` | Refer to the `JobOpts` section below | `JobOpts` |
 
 {% hint style="info" %}
 More information on this parameter can be found in the [**Bull docs**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queue).
@@ -336,18 +335,13 @@ If the callback returns with an error, we recommend retrying calling `createPers
 ### Event Flow
 
 * Calling the SDK methods like `track`, `page`, `identify`, etc. pushes the events to an in-memory array.
-
-* The events from the array are flushed as a batch to the Redis persistence based on the `flushAt` and `flushInterval` settings. The in-memory array has a maximum size of `maxInternalQueueSize`. Once this size limit is reached, the events won't be accepted if not drained to the queue (applicable in cases where the Redis connection is slow or the Redis server is not reachable).
-
-* The processor will take the batch from the Redis list and make a request to RudderStack. In case of an error, the processor will retry sending the data again if the error can be retried (in case of errors with the status code `5xx` and `429`). **The retry will go up to `JobOpts.maxAttempts` with an exponential backoff of power 2 with a max backoff of 30s**.
-
+* The events from the array are flushed as a batch to the Redis persistence based on the `flushAt` and `flushInterval` settings. The in-memory array has a maximum size of `maxInternalQueueSize`. Once this size limit is reached, the events won't be accepted if not drained to the queue \(applicable in cases where the Redis connection is slow or the Redis server is not reachable\).
+* The processor will take the batch from the Redis list and make a request to RudderStack. In case of an error, the processor will retry sending the data again if the error can be retried \(in case of errors with the status code `5xx` and `429`\). **The retry will go up to `JobOpts.maxAttempts` with an exponential backoff of power 2 with a max backoff of 30s**.
 * If the job fails even after the `JobOpts.maxAttempts` limit is reached, it will not be retried again and pushed to a `failed queue`. You can retry sending these events manually using Bull’s utility methods [**listed here**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queuegetfailed) or get them from Redis directly.
-
-* There might be a scenario where the node process dies with the jobs still in active state (not completed nor failed but in the process of sending or retrying). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, the jobs will be picked up first by the processor to maintain the event ordering - based on the value set for `queueOpts.isMultiProcessor`.
-
+* There might be a scenario where the node process dies with the jobs still in active state \(not completed nor failed but in the process of sending or retrying\). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, the jobs will be picked up first by the processor to maintain the event ordering - based on the value set for `queueOpts.isMultiProcessor`.
 * For multiple server-side SDKs connecting to the same queue \(`queueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. In this case, `queueOpts.isMultiProcessor` should be set to **`true`.**
-
 
 ## Contact Us
 
 For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+

@@ -21,6 +21,10 @@ Before getting started, please determine whether the platform you are sending yo
 | **Device mode** | - | **Supported** | - |
 | **Cloud mode** | - | **Supported** | - |
 
+{% hint style="warning" %}
+This destination currently supports [**Android**](../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/), [**iOS**](../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md), and [**Unity**](../../stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk.md) as sources.
+{% endhint %}
+
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
@@ -70,7 +74,6 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withLoglevel:RudderLogLevelDebug];
 [RudderClient getInstance:<WRITE_KEY> config:[builder build]];
 ```
-
 {% endtab %}
 
 {% tab title="Android" %}
@@ -108,7 +111,6 @@ val rudderClient: RudderClient = RudderClient.getInstance(
         .build()
 )
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -266,3 +268,4 @@ You can retrieve the Branch key from the settings page of the [Branch dashboard]
 ## Contact Us
 
 If you come across any issues while configuring Branch with RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
