@@ -50,7 +50,7 @@ The `event`-`eventType` mapping passed via the `track` call  **will get a higher
 {% endhint %}
 
 {% hint style="warning" %}
-If the **Event** - **Event Type** mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be dropped.
+If the **Event** - **Event Type** mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be discarded.
 {% endhint %}
 
 * Finally, click on **Next**. Algolia will now be enabled as a destination in RudderStack.
@@ -66,7 +66,7 @@ In case you have already specified the mapping in the dashboard, you don't need 
 {% endhint %}
 
 {% hint style="warning" %}
-To send a new `event` via `track` which is not specified in the dashboard, make sure you include the `eventType` inside the `properties` of the call. Otherwise, the event will be **dropped**.
+To send a new `event` via `track` which is not specified in the dashboard, make sure you include the `eventType` inside the `properties` of the call. Otherwise, the event will be **discarded**.
 {% endhint %}
 
 
@@ -84,6 +84,10 @@ The following table includes all `track` fields with their relative mapping to t
 | `positions`              | `positions`       |
 
 
+{% hint style="info" %}
+RudderStack looks for these fields within the `properties` field of the event payload.
+{% endhint %}
+
 A sample `track` call is as shown:
 
 ```javascript
@@ -99,27 +103,28 @@ rudderanalytics.track("event name", {
 
 To successfully send events to Algolia, the following criteria must be met:
 
-* `eventType` can only be either `click`, `view` or `conversion`. Otherwise, the event will be dropped.
-* `timestamp` must be in milliseconds UNIX epoch and must be maximum 4 days old.
-* `queryId` must be a 32-character hexadecimal string.
-* `filters` must be an array of strings. If it has more than 10 strings, only first 10 values will be passed.
-* `objectIds` must be an array of strings. If it has more than 20 strings, only first 20 values will be passed.
-* `positions` must be an array of integers. It must be passed for only `click` type events. Only first 20 values will be passed.
+|**Field**     |**Criteria**                                                                                                               |
+|--------------|---------------------------------------------------------------------------------------------------------------------------|
+|`eventType`   | Values can only be  either of `click`, `view` or `conversion`. Otherwise, the event will be discarded.                    |
+|`timestamp`   | Must be in milliseconds UNIX epoch and must be maximum 4 days old.                                                        |
+|`queryId`     | Must be a 32-character Hexadecimal string.                                                                                |   
+|`filters`     | Must be an array of strings. **If it has more than 10 strings, only the first 10 values will be passed**.                 |
+|`objectIds`   | Must be an array of strings. **If it has more than 20 strings, only first 20 values will be passed.**                     |
+|`positions`   | Must be an array of integers. **It must be passed for only `click` type events**. Only the first 20 values will be passed.| 
 
 {% hint style="info" %}
-For all the event types (`eventType`), either `filters` or `objectIds` must be passed and **not both**. If both or none of the fields are passed, the event will be dropped.
+For all the event types (`eventType`), either `filters` or `objectIds` must be passed and **not both**. If both or none of the fields are passed, the event will be discarded.
 {% endhint %}
 
-
 {% hint style="info" %}
-For the `click` event type, if you pass `objectIds`, then you must pass either **both** or **none** of the `positions` and `queryId` fields. If only either of the fields are present, the event will be dropped. 
+For the `click` event type, if you pass `objectIds`, then you must pass either **both** or **none** of the `positions` and `queryId` fields. If only either of the fields are present, the event will be discarded. 
 
-Also, the length of `objectIds` and `positions` arrays should be equal. Otherwise, the event will be dropped.
+Also, the length of `objectIds` and `positions` arrays should be equal. Otherwise, the event will be discarded.
 {% endhint %}
 
 ### E-Commerce Events
 
-For Algolia, Rudderstack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed). 
+For Algolia, RudderStack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed). 
 
 An example is shown below:
 
@@ -139,7 +144,7 @@ rudderanalytics.track("product list viewed", {
 
 ### What happens if the Event Name - Event Type mapping is not specified in the dashboard as well as in the `track` call?
 
-If the **Event** - **Event Type** mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be dropped.
+If the **Event** - **Event Type** mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be discarded.
 
 ## Contact Us
 
