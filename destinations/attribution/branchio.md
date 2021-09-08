@@ -1,5 +1,5 @@
 ---
-description: Step-by-step guide to send your event data from RudderStack to Branch.io
+description: Step-by-step guide to send your event data from RudderStack to Branch Metrics.
 ---
 
 # Branch
