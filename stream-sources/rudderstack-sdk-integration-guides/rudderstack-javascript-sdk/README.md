@@ -154,56 +154,17 @@ The related APIs exported by the module are:
 * `setAnonymousId`
 {% endhint %}
 
-###  2.4 Supported Browser Versions
+### 2.4 Supported Browser Versions
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Browser</th>
-      <th style="text-align:left">Supported Versions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p></p>
-        <p><b>Safari</b>
-        </p>
-      </td>
-      <td style="text-align:left">v7 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>IE</b>
-      </td>
-      <td style="text-align:left">v10 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Edge</b>
-      </td>
-      <td style="text-align:left">v15 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Mozilla Firefox</b>
-      </td>
-      <td style="text-align:left">v40 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Chrome</b>
-      </td>
-      <td style="text-align:left">v37 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Opera</b>
-      </td>
-      <td style="text-align:left">v23 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Yandex</b>
-      </td>
-      <td style="text-align:left">v14.12 or later</td>
-    </tr>
-  </tbody>
-</table>
+| Browser | Supported Versions |
+| :--- | :--- |
+| **Safari** | v7 or later |
+| **IE** | v10 or later |
+| **Edge** | v15 or later |
+| **Mozilla Firefox** | v40 or later |
+| **Chrome** | v37 or later |
+| **Opera** | v23 or later |
+| **Yandex** | v14.12 or later |
 
 {% hint style="info" %}
 If the SDK doesn't work on the versions you are targeting, verify if adding the browser polyfills to your application solves the issue.
@@ -348,7 +309,6 @@ In the above example, information such as the `userId` and `email` along with th
 {% hint style="warning" %}
 If you explicitly specify the IP address in the event, RudderStack will use that IP instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
 {% endhint %}
-
 
 The above `identify` call has the following parameters:
 

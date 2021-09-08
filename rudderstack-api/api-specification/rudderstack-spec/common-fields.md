@@ -75,7 +75,7 @@ The following sections highlight all the contextual fields that are automaticall
 | `device.model` | - |
 | `library.name` | Yes |
 | `library.version` | Yes |
-| `ip` | Yes **\*\*** |
+| `ip` | Yes |
 | `locale` | Yes |
 | `location.latitude` | - |
 | `location.longitude` | - |
@@ -98,10 +98,6 @@ The following sections highlight all the contextual fields that are automaticall
 | `userAgent` | Yes |
 | `timezone` | - |
 
-{% hint style="info" %}
-**\*\*** The `ip` field is not collected by the SDK. Instead, it is filled in by RudderStack when it receives the client-side events.
-{% endhint %}
-
 ### Android SDK
 
 | Field | Automatically Collected? |
@@ -123,7 +119,7 @@ The following sections highlight all the contextual fields that are automaticall
 | `device.name` | Yes |
 | `library.name` | Yes |
 | `library.version` | Yes |
-| `ip` | Yes **\*\*** |
+| `ip` | Yes |
 | `locale` | Yes |
 | `location.latitude` | - |
 | `location.longitude` | - |
@@ -146,10 +142,6 @@ The following sections highlight all the contextual fields that are automaticall
 | `userAgent` | Yes |
 | `timezone` | Yes |
 
-{% hint style="info" %}
-**\*\*** The `ip` field is not collected by the SDK. Instead, it is filled in by RudderStack when it receives the client-side events.
-{% endhint %}
-
 ### iOS SDK
 
 | Field | Automatically Collected? |
@@ -171,7 +163,7 @@ The following sections highlight all the contextual fields that are automaticall
 | `device.name` | - |
 | `library.name` | Yes |
 | `library.version` | Yes |
-| `ip` | Yes **\*\*** |
+| `ip` | Yes |
 | `locale` | Yes |
 | `location.latitude` | - |
 | `location.longitude` | - |
@@ -193,10 +185,6 @@ The following sections highlight all the contextual fields that are automaticall
 | `traits` | Yes |
 | `userAgent` | - |
 | `timezone` | Yes |
-
-{% hint style="info" %}
-**\*\*** The `ip` field is not collected by the SDK. Instead, it is filled in by RudderStack when it receives the client-side events.
-{% endhint %}
 
 ## Sample Payload with Common Fields
 
