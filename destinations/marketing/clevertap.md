@@ -321,9 +321,15 @@ One way to solve this problem is to track users only in cases where a `userId` i
 
 ## Device token upload using cloud mode
 
-For `android` and `iOS` sources for cloud mode when device token is present in `context.device.token` in identify calls we will use [Clevertap Device Token Upload API](https://developer.clevertap.com/docs/upload-device-tokens-api) to upload device token for the identified user. For `android` we set the token type as `fcm` and for `iOS` we set it as `apns`
+{% hint style="info" %}
+This section is applicable for the Android and iOS sources when sending events via the Cloud Mode.
+{% endhint %}
 
-To use this feature you should have `Use Clevertap ObjectId for Mapping` option enabled, as we have to use `objectId`(Clevertap) to upload device token
+When the device token is present in `context.device.token` in `identify` calls, RudderStack will use the [CleverTap Device Token Upload API](https://developer.clevertap.com/docs/upload-device-tokens-api) to upload the device token for the identified user. For Android, RudderStack sets the token type as `fcm`. For iOS, it is set as `apns`.
+
+{% hint style="warning" %}
+To use this feature you should have enabled the **Use Clevertap ObjectId for Mapping** option in the dashboard, as RudderStack needs the `objectId` to upload the device token.
+{% endhint %}
 
 ## Page
 
