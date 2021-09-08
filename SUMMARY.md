@@ -177,7 +177,7 @@
     * [Google Tag Manager](destinations/tag-managers/google-tag-manager.md)
   * [A/B Testing & Personalization](destinations/testing-and-personalization/README.md)
     * [Split.io](destinations/testing-and-personalization/splitio.md)
-    * [Algolia](destinations/testing-and-personalization/algolia.md)
+    * [Algolia Insights](destinations/testing-and-personalization/algolia-insights.md)
     * [Monetate](destinations/testing-and-personalization/monetate.md)
     * [VWO \(Visual Website Optimizer\)](destinations/testing-and-personalization/vwo-beta-visual-website-optimizer.md)
     * [Optimizely Web](destinations/testing-and-personalization/optimizely-web.md)
@@ -262,3 +262,4 @@
     * [How to Integrate Rudderstack with a Gatsby Website](user-guides/how-to-guides/how-to-integrate-rudderstack-with-a-gatsby-website.md)
 * [Glossary](glossary.md)
 * [FAQs](faqs.md)
+
