@@ -46,7 +46,7 @@ To get the Algolia API key and Application ID, go to your [**Algolia dashboard**
 * Under **Event Settings**, you can add the **Event Name** and its corresponding **Event Type**. These are optional fields and can also be passed via the `track` call. 
 
 {% hint style="info" %}
-Note that the **Event Name** - **Event Type** mapping specified in the dashboard **will get a higher precedence** over the same fields passed via the `track` call.
+Note that the **Event Name** - **Event Type** mapping passed via the `track` call  **will get a higher precedence** over the one specified in the dashboard.
 {% endhint %}
 
 * Finally, click on **Next**. Algolia will now be enabled as a destination in RudderStack.
@@ -55,7 +55,7 @@ Note that the **Event Name** - **Event Type** mapping specified in the dashboard
 
 The `track` call lets you send events related to your customers' product usage. The required fields are `event`, `eventType`, `index`, and either `objectIds` or `filters`.
 
-Note that the **Event Name** (`event`) and **Event Type** (`eventType`) can be mapped in the dashboard while configuring the Algolia destination, which will have a higher precedence over the same fields passed in a `track` call. In case you are already specifying the mapping, you don't need to send `eventType` in the `track` call.
+Note that the **Event Name** (`event`) and **Event Type** (`eventType`) can be mapped in the dashboard while configuring the Algolia destination and the fields can also be passed via the `track` call. Value sent via `track` call will have higher precedence. In case you are already specifying the mapping in the dashboard, you don't need to send `eventType` in the `track` call.
 
 {% hint style="warning" %}
 If you are sending a new `event` via  the `track` call which is not specified in the dashboard, make sure you include the `eventType` in the call as well, otherwise the call will be **dropped**.
