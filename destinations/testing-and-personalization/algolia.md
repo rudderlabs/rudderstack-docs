@@ -59,7 +59,7 @@ If the **Event** - **Event Type** mapping is not specified in the dashboard and 
 
 The `track` call lets you send events related to your customers' product usage. The required fields are `event`, `eventType`, `index`, and either `objectIds` or `filters`.
 
-Note that the **Event Name** (`event`) and **Event Type** (`eventType`) can be mapped in the dashboard while configuring the destination. These fields can also be passed via the `track` call. Note that the values sent via `track` call will have a higher precedence over the dashboard mapping.
+Note that the **Event Name** (`event`) and **Event Type** (`eventType`) can be mapped in the dashboard while configuring the destination. Note that the `eventType` value set in `properties` in the `track` call will have a higher precedence over the dashboard mapping.
 
 {% hint style="info" %}
 In case you have already specified the mapping in the dashboard, you don't need to send the same `eventType` in the `track` call.
@@ -68,7 +68,6 @@ In case you have already specified the mapping in the dashboard, you don't need 
 {% hint style="warning" %}
 To send a new `event` via `track` which is not specified in the dashboard, make sure you include the `eventType` inside the `properties` of the call. Otherwise, the event will be **discarded**.
 {% endhint %}
-
 
 The following table includes all `track` fields with their relative mapping to the Algolia fields:
 
