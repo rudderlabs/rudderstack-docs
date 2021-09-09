@@ -236,25 +236,6 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 ```dart
 RudderClient.reset();
 ```
-
-## Disabling User Tracking Until User Consent
-
-If you want to opt out from tracking any activity while waiting for the user's consent, you can use the `optOut` API to disable user tracking, as shown:
-
-```dart
-RudderClient.optOut(true);
-```
-
-Once the user grants their consent, you can then enable user tracking once again by using the same `optOut` API with `false` as a parameter sent to it, as shown:
-
-```dart
-RudderClient.optOut(false);
-```
-
-{% hint style="info" %}
-The `optOut` API is available in the Flutter SDK starting from version `1.0.3`.
-{% endhint %}
-
 ## Enabling / Disabling Events for Specific Destinations
 
 The Flutter SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:
