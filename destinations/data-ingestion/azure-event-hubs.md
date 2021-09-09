@@ -88,7 +88,7 @@ Event Hubs connection string is the primary connection string of your shared acc
 
 Check whether you are using the proper Event Hubs connection string for the policy that you have created. 
 
-You need to create a policy to write to the Event Hub with a `Send` permission, and put the corresponding primary connection string in the destination settings, as described in the Configuring Azure Event Hubs in RudderStack section of this guide.
+You need to create a policy to write to the Event Hub with a `Send` permission, and put the corresponding primary connection string in the destination settings, as described in the [**Getting Started**](https://docs.rudderstack.com/destinations/data-ingestion/azure-event-hubs#getting-started) section of this guide.
 
 ## Contact Us
 
