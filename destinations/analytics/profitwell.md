@@ -67,7 +67,7 @@ A sample `identify` call is as shown below:
     {
       externalId: [
         { type: "profitwellSubscriptionId", id: "pws_psqfbi9zODBB" },
-        { type: "profitwellSubscriptionId", id: "pws_MS2g4ON214dU" },
+        { type: "profitwellUserId", id: "pws_MS2g4ON214dU" },
       ],
     }
   );
