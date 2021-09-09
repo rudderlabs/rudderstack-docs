@@ -99,7 +99,7 @@ The following table lists all the supported fields for `Creating Subscriptions` 
 
 The following table lists all the supported fields for `Updating Subscriptions` with their relative mapping to the ProfitWell fields:
 
-| **RudderStack Field** | **Drip Field**   |
+| **RudderStack Field** | **ProfitWell Field**   |
 | :-------------------- | :--------------- |
 | `planId`              | `plan_id`        |
 | `planInterval`        | `plan_interval`  |
