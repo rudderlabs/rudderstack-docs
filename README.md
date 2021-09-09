@@ -37,7 +37,7 @@ We would love to see you contribute to RudderStack. Get more information on how 
 * \*\*\*\*[**Slack**](https://resources.rudderstack.com/join-rudderstack-slack)\*\*\*\*
 * \*\*\*\*[**Twitter**](https://twitter.com/rudderstack)\*\*\*\*
 * \*\*\*\*[**LinkedIn**](https://www.linkedin.com/company/rudderlabs/)\*\*\*\*
-* \*\*\*\*[**dev.to**](https://dev.to/rudderstack)\*\*\*\*
+* \*\*\*\*[**DEV Community**](https://dev.to/rudderstack)\*\*\*\*
 * \*\*\*\*[**Medium**](https://rudderstack.medium.com/)\*\*\*\*
 * \*\*\*\*[**YouTube**](https://www.youtube.com/channel/UCgV-B77bV_-LOmKYHw8jvBw)\*\*\*\*
 * \*\*\*\*[**Hacker News**](https://news.ycombinator.com/item?id=21081756)\*\*\*\*
