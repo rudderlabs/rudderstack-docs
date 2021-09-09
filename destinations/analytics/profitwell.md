@@ -84,14 +84,14 @@ A sample `identify` call is as shown:
 ```
 
 {% hint style="info" %}
+RudderStack passes the fields `profitwellUserId` and `profitwellSubscriptionId` as `externalId`.
+{% endhint %}
+
+{% hint style="info" %}
 Note that:
 
 * The `externalId` of type `profitwellUserId` is mapped to ProfitWell's `user_id` field. 
 * The `externalId` of type `profitwellSubscriptionId` is mapped to ProfitWell's `subscription_id` field. 
-{% endhint %}
-
-{% hint style="info" %}
-RudderStack passes the fields `profitwellUserId` and `profitwellSubscriptionId` as `externalId`.
 {% endhint %}
 
 ### Identify Mapping
