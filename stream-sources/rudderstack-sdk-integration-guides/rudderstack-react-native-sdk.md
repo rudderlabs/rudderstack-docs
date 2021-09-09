@@ -180,21 +180,22 @@ await rudderClient.reset()
 It is highly recommended to use the `await` keyword with the reset call.
 {% endhint %}
 
-## Opt-Out
-If you want to opt-out from tracking an user activity due to reasons like waiting for user consent, you can use the `optOut` api to disable user tracking as shown below:
+## Disabling User Tracking Until User Consent
+
+If you want to opt out from tracking any activity while waiting for the user's consent, you can use the `optOut` API to disable user tracking, as shown:
 
 ```typescript
 await rudderClient.optOut(true)
 ```
 
-If you want to opt back for tracking a user activity due to reasons like user granted his consent, you can use the same `optOut` api with `false` as a parameter sent to it as shown below:
+Once the user grants their consent, you can then enable user tracking once again by using the same `optOut` API with `false` as a parameter sent to it, as shown:
 
 ```typescript
 await rudderClient.optOut(false)
 ```
 
 {% hint style="info" %}
-`optOut` api is available in RudderStack React-Native SDK starting from version `1.0.13`.
+The `optOut` API is available in the React Native SDK starting from version `1.0.13`.
 {% endhint %}
 
 
