@@ -9,7 +9,7 @@ description: >-
 This section aims to address the queries and issues you might encounter while using RudderStack.
 
 {% hint style="success" %}
-**To quickly find the solution you are looking for, we recommend using the Contents panel on the right hand side of this guide to quickly navigate to the section you are looking for.** 
+**To quickly find the solution you are looking for, we recommend using the Contents panel on the right hand side of this guide to quickly navigate to the section you are looking for.**
 
 **Alternatively, you can use the search feature at the top-right hand side of this page with the relevant keywords to look for solutions on a specific topic.**
 {% endhint %}
@@ -29,7 +29,7 @@ To quickly get started, you can [**sign up for RudderStack**](https://app.rudder
 Simply put, the Data Plane URL is used to connect to the RudderStack backend for routing and processing your events.
 
 {% hint style="info" %}
- To get the **Data Plane URL**: ****
+To get the **Data Plane URL**: _\*\*_
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
@@ -62,7 +62,7 @@ Verify if the SSH keys are correctly set in your GitHub account as they are used
 
 A **c4.xlarge** or **c4.2xlarge** machine should work just fine for your setup.
 
-#### 2. I'm running RudderStack in Docker on a GCP VM instance. I upgraded the instance to have more CPU and now the RudderStack container is stuck on this message: 
+#### 2. I'm running RudderStack in Docker on a GCP VM instance. I upgraded the instance to have more CPU and now the RudderStack container is stuck on this message:
 
 ```c
 sh -c '/wait-for db:5432 -- /rudder-server'
@@ -88,7 +88,7 @@ CURL https://hosted.rudderlabs.com/health
 
 #### 2. How many events can a single RudderStack node handle?
 
-The number of events that a single RudderStack node can handle will depend on the destinations that you are sending the event data to. It also depends on the transformations that you are running. 
+The number of events that a single RudderStack node can handle will depend on the destinations that you are sending the event data to. It also depends on the transformations that you are running.
 
 However, here are some ballpark figures:
 
@@ -133,15 +133,15 @@ Check for the folder `/tmp/badgerdbv2` and delete it. This should resolve the is
 
 #### 1. How do I self-host the UI configuration?
 
-For self-hosting the UI, you can use the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator). 
+For self-hosting the UI, you can use the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator).
 
-Note that the open-source config-generator will only generate the source-destination configurations which are required by RudderStack. 
+Note that the open-source config-generator will only generate the source-destination configurations which are required by RudderStack.
 
 {% hint style="warning" %}
 The self-hosted control plane \(UI\) does not support features like **Transformations** and **Live Events Debugger**, which are included for free in the [**RudderStack-hosted control plane**](https://app.rudderstack.com).
 {% endhint %}
 
-#### 2. I am using the RudderStack Config Generator to generate the `workspaceConfig.json` file. But when I import this file, I get an error: 
+#### 2. I am using the RudderStack Config Generator to generate the `workspaceConfig.json` file. But when I import this file, I get an error:
 
 #### "**TypeError: Cannot read property 'name' of undefined"**. What should I do?
 
@@ -249,7 +249,7 @@ You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` 
 
 #### 2. I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
 
-* Firstly, make sure you have set up the [**required user permissions**](https://docs.rudderstack.com/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) ****for PostgreSQL.
+* Firstly, make sure you have set up the [**required user permissions**](https://docs.rudderstack.com/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) _\*\*_for PostgreSQL.
 * Then, check the status of the sync in the [**RudderStack dashboard**](https://app.rudderstack.com/syncs).
 * Check if the database is accessible by whitelisting all the RudderStack IPs listed [**here**](https://docs.rudderstack.com/data-warehouse-integrations/warehouse-faqs#which-ips-should-be-whitelisted).
 * Ensure that all the security group policies for S3 are set as specified [**here**](https://docs.rudderstack.com/destinations/storage-platforms/amazon-s3#permissions).
@@ -292,7 +292,7 @@ Yes, you can set the desired folder name in the **Prefix** input field while con
 
 RudderStack lets you fill in the values with variable names. These variables should be prepended with `env.`. You can populate these secrets as environment variables and run the data plane.
 
-Suppose you are configuring Amazon S3 as a destination but you don't want to enter the AWS access key credentials in the destination settings. Fill the value with a placeholder that starts with `env.`  It should look like this `env.MY_AWS_ACCESS_KEY`. Then set the value of the environment variable `MY_AWS_ACCESS_KEY`while running the data plane.
+Suppose you are configuring Amazon S3 as a destination but you don't want to enter the AWS access key credentials in the destination settings. Fill the value with a placeholder that starts with `env.` It should look like this `env.MY_AWS_ACCESS_KEY`. Then set the value of the environment variable `MY_AWS_ACCESS_KEY`while running the data plane.
 
 ## RudderStack Failover, Hardening and Security
 

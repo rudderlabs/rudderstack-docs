@@ -40,15 +40,10 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 To successfully configure CleverTap as a destination, you will need to configure the following settings:
 
 * **Account ID:** Your account ID is an unique ID generated for your account. It can be found in your account in the **Settings** as your **Project ID**.
-
 * **Passcode:** Your account passcode is an unique code generated for your account. It can be found in the **Settings** as **Passcode**.
-
 * **Enable track for anonymous user:** Enable this option to track anonymous users in CleverTap.
-
 * **Use Clevertap ObjectId for Mapping:** Enable this option to use both CleverTap `objectId` along with `identity` for mapping events from RudderStack to CleverTap.
-
 * **Region:** Server Only: This is your dedicated CleverTap region.
-
 * **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
 
 {% hint style="info" %}
@@ -282,40 +277,39 @@ completionHandler:^(BOOL granted, NSError * _Nullable error) {
 {% endtab %}
 {% endtabs %}
 
-## Using CleverTap ObjectId and Identity for Mapping (Cloud Mode Only)
+## Using CleverTap ObjectId and Identity for Mapping \(Cloud Mode Only\)
 
 CleverTap uniquely identifies each user with two main identifiers, namely `objectId` and `identity`. When the **Use Clevertap ObjectId for Mapping** option is enabled in the dashboard, both `objectId` and `identity` are used for mapping.
 
-When the **Use Clevertap ObjectId for Mapping** setting is disabled in the dashboard, RudderStack expects the the following mapping for identifying users and tracking events (`track`/`page`/`screen`):
+When the **Use Clevertap ObjectId for Mapping** setting is disabled in the dashboard, RudderStack expects the the following mapping for identifying users and tracking events \(`track`/`page`/`screen`\):
 
-| RudderStack             | CleverTap |
-| :---------------------- | :-------- |
-|`userId` or `anonymousId`|`identity` |
-
+| RudderStack | CleverTap |
+| :--- | :--- |
+| `userId` or `anonymousId` | `identity` |
 
 When the **Use Clevertap ObjectId for Mapping** setting is enabled in the dashboard, the following mapping is expected:
 
 * For `identify` events:
 
-| RudderStack               |RudderStack            |CleverTap              |CleverTap      |
-| :------------------------ | :-------------------- |:--------------------- |:------------- |
-|**`anonymousId` present**	|	**`userId` present** 	|			**`objectId`**	  |	  **identity**|
-|true					              |	true		              |			anonymousId		    |	   userId     |
-|true					              |	false		              |		  anonymousId		    |	    -         |
-|false				              |	true		              |		  userId		        |	   userId     |
+| RudderStack | RudderStack | CleverTap | CleverTap |
+| :--- | :--- | :--- | :--- |
+| **`anonymousId` present** | **`userId` present** | **`objectId`** | **identity** |
+| true | true | anonymousId | userId |
+| true | false | anonymousId | - |
+| false | true | userId | userId |
 
 * For `track` events:
 
-| RudderStack               |RudderStack            |CleverTap                      |CleverTap |
-| :------------------------ | :-------------------- |:---------------------         |:---------|
-|**`anonymousId` present**	|	**`userId` present**	|	**tracking with**             |**value** |
-|true				            |		true		          |			identity                        |userId    |
-|true				            |		false		          |			objectId                        |anonymousId|
-|false				          |	  true			        |			identity                        |userId     |
+| RudderStack | RudderStack | CleverTap | CleverTap |
+| :--- | :--- | :--- | :--- |
+| **`anonymousId` present** | **`userId` present** | **tracking with** | **value** |
+| true | true | identity | userId |
+| true | false | objectId | anonymousId |
+| false | true | identity | userId |
 
 ## Why enable the Use Clevertap ObjectId for Mapping setting?
 
-When you track an unidentified user in CleverTap, a user profile is created with minimal details, along with the details of the user's activity. When the same user is then identified with a `userId` without the **Use CleverTap ObjectId for Mapping** option enabled, RudderStack creates another profile for the user with the identifier `userId` (in case of RudderStack) which maps to `identity` (in case of CleverTap). 
+When you track an unidentified user in CleverTap, a user profile is created with minimal details, along with the details of the user's activity. When the same user is then identified with a `userId` without the **Use CleverTap ObjectId for Mapping** option enabled, RudderStack creates another profile for the user with the identifier `userId` \(in case of RudderStack\) which maps to `identity` \(in case of CleverTap\).
 
 One way to solve this problem is to track users only in cases where a `userId` is present. To do so, you can disable the **Enable tracking for anonymous users** option in the RudderStack dashboard. Alternatively, you can enable the **Use Clevertap ObjectId for Mapping** option in the dashboard which allows you to track the anonymous users and when they are later identified, merge their `anonymousId` with their `userId`.
 
@@ -515,3 +509,4 @@ Example: To disable push notifications for a user, set `MSG-push` to `false`
 ## Contact Us
 
 If you come across any issues while configuring CleverTap with RudderStack, feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+
