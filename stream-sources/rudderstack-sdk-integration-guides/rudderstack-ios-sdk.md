@@ -315,45 +315,6 @@ RSClient.sharedInstance()?.reset()
 ```
 {% endtab %}
 {% endtabs %}
-
-## Disabling User Tracking Until User Consent
-
-If you want to opt out of tracking any user activity while waiting for their consent, you can use the `optOut` API to disable user tracking, as shown:
-
-{% tabs %}
-{% tab title="Objective-C" %}
-```objectivec
-[[RSClient sharedInstance] optOut:YES];
-```
-{% endtab %}
-
-{% tab title="Swift" %}
-```swift
-RSClient.sharedInstance()?.optOut(true)
-```
-{% endtab %}
-{% endtabs %}
-
-Once the user grants their consent, you can enable user tracking once again by using the same `optOut` API with `NO` or `false` as a parameter sent to it, as shown:
-
-{% tabs %}
-{% tab title="Objective-C" %}
-```objectivec
-[[RSClient sharedInstance] optOut:NO];
-```
-{% endtab %}
-
-{% tab title="Swift" %}
-```swift
-RSClient.sharedInstance()?.optOut(false)
-```
-{% endtab %}
-{% endtabs %}
-
-{% hint style="info" %}
-The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.23`.
-{% endhint %}
-
 ## Configuring the RudderStack Client
 
 You can configure your client based on the following parameters using `RudderConfigBuilder`:
