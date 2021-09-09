@@ -237,14 +237,15 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 RudderClient.reset();
 ```
 
-## Opt-Out
-If you want to opt-out from tracking an user activity due to reasons like waiting for user consent, you can use the `optOut` api to disable user tracking as shown below:
+## Disabling User Tracking Until User Consent
+
+If you want to opt out from tracking any activity while waiting for the user's consent, you can use the `optOut` API to disable user tracking, as shown:
 
 ```dart
 RudderClient.optOut(true);
 ```
 
-If you want to opt back for tracking a user activity due to reasons like user granted his consent, you can use the same `optOut` api with `false` as a parameter sent to it as shown below:
+Once the user grants their consent, you can then enable user tracking once again by using the same `optOut` API with `false` as a parameter sent to it, as shown:
 
 ```dart
 RudderClient.optOut(false);
