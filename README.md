@@ -40,6 +40,6 @@ We would love to see you contribute to RudderStack. Get more information on how 
 * \*\*\*\*[**dev.to**](https://dev.to/rudderstack)\*\*\*\*
 * \*\*\*\*[**Medium**](https://rudderstack.medium.com/)\*\*\*\*
 * \*\*\*\*[**YouTube**](https://www.youtube.com/channel/UCgV-B77bV_-LOmKYHw8jvBw)\*\*\*\*
-* \*\*\*\*[**HackerNews**](https://news.ycombinator.com/item?id=21081756)\*\*\*\*
+* \*\*\*\*[**Hacker News**](https://news.ycombinator.com/item?id=21081756)\*\*\*\*
 * \*\*\*\*[**Product Hunt**](https://www.producthunt.com/posts/rudderstack)\*\*\*\*
 
