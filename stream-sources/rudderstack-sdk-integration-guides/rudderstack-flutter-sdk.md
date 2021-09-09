@@ -252,7 +252,7 @@ RudderClient.optOut(false);
 ```
 
 {% hint style="info" %}
-`optOut` api is available in RudderStack Flutter SDK starting from version `1.0.3`.
+The `optOut` API is available in the Flutter SDK starting from version `1.0.3`.
 {% endhint %}
 
 ## Enabling / Disabling Events for Specific Destinations
