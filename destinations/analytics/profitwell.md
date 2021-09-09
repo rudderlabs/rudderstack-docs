@@ -76,7 +76,7 @@ A sample `identify` call is as shown below:
 ### Identify Mapping
 
 {% hint style="info" %}
-For a given `profitwellUserId` if user is not found at destination or for a given userId which exists at destination and `profitwellSubscriptionId` is not found then in both cases the event is dropped. However, if we provide `userId` or `subscriptionAlias` and it doesn't exist then a new subscription is created.
+`profitwellUserId` and `profitwellSubscriptionId` are passed as `externalId`. Hence, for a given `profitwellUserId` if user is not found at destination or for a given userId which exists at destination and `profitwellSubscriptionId` is not found then in both cases the event is discarded. However, if we provide `userId` (mapped to `userAlias`) or `subscriptionAlias` a new subscription is created, if not found.
 {% endhint %}
 
 {% hint style="info" %}
