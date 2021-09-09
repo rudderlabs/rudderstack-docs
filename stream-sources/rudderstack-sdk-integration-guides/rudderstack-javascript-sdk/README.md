@@ -98,7 +98,7 @@ The above code snippet does the following:
 | **`reset()`**    | Resets the `userid` and the associated traits       |
 
 - Loads the analytics object with your write key.
-- Makes the `page()`call to track the page view. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. If you want to override them, use the call mentioned in the section JavaScript SDK APIs.
+- Makes the `page()`call to track the page view. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. If you want to override them, use the call mentioned in the section [JavaScript SDK APIs](#javascript-sdk-apis).
 
 ### **Alternative Installation**
 
@@ -189,7 +189,7 @@ The `load()`method is defined as follows:
 **NOTE**: You need to replace `<YOUR_WRITE_KEY>` with the write key in the RudderStack Control Plane and `<DATA_PLANE_URL>` with the URL of the RudderStack Server.
 {% endhint %}
 
-#### **Load Options**
+#### **The `options` parameter**
 
 The `options` parameter in the above `load` call looks like the following:
 
@@ -205,60 +205,13 @@ The `options` parameter in the above `load` call looks like the following:
 
 It includes the following details:
 
-| Parameter             | Type    | Description                                                                                                                                                                                |
-| :-------------------- | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`logLevel`**        | String  | Options include **`DEBUG`**, **`INFO`**, and **`WARN`**.                                                                                                                                   |
-| **`integrations`**    | -       | Refer to [**`IntegrationOpts`**](#integrationopts) below.                                                                                                                                  |
-| **`configUrl`**       | String  | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
-| **`queueOpts`**       | -       | Refer to [**`QueueOpts`**](#queueopts) below.                                                                                                                                              |
-| **`loadIntegration`** | Boolean | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                              |
-
-##### **`IntegrationOpts`**
-
-The structure of **`IntegrationOpts`** looks like the following:
-
-```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
-}
-```
-
-| Parameter           | Type    | Description                                                                                                                                                                                            |
-| :------------------ | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`All`**           | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it.                                                                                      |
-
-{% hint style="info" %}
-More information on the Load **`IntegrationOpts`** option can be found here:
-
-- [Specifying Selective Destinations in the `load` Method](#specifying-selective-destinations-in-the-load-method)
-- [Common Destination Names for sending events through the `load` method](#common-destination-names)
-  {% endhint %}
-
-##### **`QueueOpts`**
-
-The structure of **`QueueOpts`** looks like the following:
-
-```text
-QueueOpts {
- maxRetryDelay: 360000, // Upper cap on maximum delay for an event
- minRetryDelay: 1000, // minimum delay before sending an event
- backoffFactor: 2, // exponentional base
- maxAttempts: 10, // max attempts
- maxItems: 100,  // max number of events in storage
-}
-```
-
-| Parameter           | Description                                                                                        |
-| :------------------ | :------------------------------------------------------------------------------------------------- |
-| **`maxRetryDelay`** | Corresponds to the upper limit on the maximum delay for an event. Default value is set as 36000ms. |
-| **`minRetryDelay`** | Corresponds to the minimum delay expected before sending an event. Default value is set to 1000ms. |
-| **`backoffFactor`** | Refers to the exponential base. Default value is set to 2.                                         |
-| **`maxAttempts`**   | Refers to the maximum attempts to send the event to the destination. Default value is set to 10.   |
-| **`maxItems`**      | Refers to the maximum number of events kept in the storage. Default value is set to 100.           |
+| Parameter             | Type            | Description                                                                                                                                                                                |
+| :-------------------- | :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`logLevel`**        | String          | Options include **`DEBUG`**, **`INFO`**, and **`WARN`**.                                                                                                                                   |
+| **`integrations`**    | IntegrationOpts | Refer to [**`IntegrationOpts`**](#integrationopts) below.                                                                                                                                  |
+| **`configUrl`**       | String          | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
+| **`queueOpts`**       | QueueOpts       | Refer to [**`QueueOpts`**](#queueopts) below.                                                                                                                                              |
+| **`loadIntegration`** | Boolean         | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                              |
 
 #### **Self-hosted Control Plane**
 
@@ -330,44 +283,21 @@ The above `identify` call has the following parameters:
 
 The options parameter in the `identify` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter                           | Type                 | Description                                                                                                                           |
-| :---------------------------------- | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
-| **`integrations: IntegrationOpts`** | -                    | Refer to **`IntegrationOpts`** below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`**                   | String               | Overrides the current event **`anonymousId`** at the top level                                                                        |
-| **`originalTimestamp`**             | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                  |
-| **`<other keys>: <value>`**         | -                    | Merged with the event's contextual information                                                                                        |
-
-- The structure of **`IntegrationOpts`** looks like the following:
-
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
-| Parameter           | Type    | Description                                                                                                                                                                                            |
-| :------------------ | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`All`**           | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it.                                                                                      |
-
-{% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here:
-
-- [Specifying Selective Destinations in the `load` Method](#specifying-selective-destinations-in-the-load-method)
-- [Common Destination Names for sending events through the `load` method](#common-destination-names)
-  {% endhint %}
+| Parameter                   | Type                 | Description                                                                                                                                               |
+| :-------------------------- | :------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`integrations`**          | IntegrationOpts      | Refer to [**`IntegrationOpts`**](#integrationopts) below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`**           | String               | Overrides the current event **`anonymousId`** at the top level                                                                                            |
+| **`originalTimestamp`**     | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                                      |
+| **`<other keys>: <value>`** | -                    | Merged with the event's contextual information                                                                                                            |
 
 {% hint style="info" %}
 **NOTE**: The `anonymousId` is a **UUID** **\(Universally Unique Identifier\)** generated to uniquely identify the user. Also, if it is provided by the user using the `setAnonymousId` method, the user-specified `anonymousId` overrides the SDK-generated one.
@@ -521,44 +451,21 @@ The above code snippet has the following parameters:
 
 The `options` parameter in the `page` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter                           | Type                 | Description                                                                                                                           |
-| :---------------------------------- | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
-| **`integrations: IntegrationOpts`** | -                    | Refer to **`IntegrationOpts`** below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`**                   | String               | Overrides the current event **`anonymousId`** at the top level                                                                        |
-| **`originalTimestamp`**             | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                  |
-| **`<other keys>: <value>`**         | -                    | Merged with the event's contextual information                                                                                        |
-
-- The structure of **`IntegrationOpts`** looks like the following:
-
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
-| Parameter           | Type    | Description                                                                                                                                                                                            |
-| :------------------ | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`All`**           | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it.                                                                                      |
-
-{% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here:
-
-- [Specifying Selective Destinations in the `load` Method](#specifying-selective-destinations-in-the-load-method)
-- [Common Destination Names for sending events through the `load` method](#common-destination-names)
-  {% endhint %}
+| Parameter                   | Type                 | Description                                                                                                                                               |
+| :-------------------------- | :------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`integrations`**          | `IntegrationOpts`    | Refer to [**`IntegrationOpts`**](#integrationopts) below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`**           | String               | Overrides the current event **`anonymousId`** at the top level                                                                                            |
+| **`originalTimestamp`**     | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                                      |
+| **`<other keys>: <value>`** | -                    | Merged with the event's contextual information                                                                                                            |
 
 ### **Track**
 
@@ -599,44 +506,21 @@ The above code snippet has the following parameters:
 
 The `options` parameter in the `track` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter                           | Type                 | Description                                                                                                                           |
-| :---------------------------------- | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
-| **`integrations: IntegrationOpts`** | -                    | Refer to **`IntegrationOpts`** below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`**                   | String               | Overrides the current event **`anonymousId`** at the top level                                                                        |
-| **`originalTimestamp`**             | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                  |
-| **`<other keys>: <value>`**         | -                    | Merged with the event's contextual information                                                                                        |
-
-- The structure of **`IntegrationOpts`** looks like the following:
-
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
-| Parameter           | Type    | Description                                                                                                                                                                                            |
-| :------------------ | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`All`**           | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it.                                                                                      |
-
-{% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here:
-
-- [Specifying Selective Destinations in the `load` Method](#specifying-selective-destinations-in-the-load-method)
-- [Common Destination Names for sending events through the `load` method](#common-destination-names)
-  {% endhint %}
+| Parameter                   | Type                 | Description                                                                                                                                               |
+| :-------------------------- | :------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`integrations`**          | `IntegrationOpts`    | Refer to [**`IntegrationOpts`**](#integrationopts) below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`**           | String               | Overrides the current event **`anonymousId`** at the top level                                                                                            |
+| **`originalTimestamp`**     | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                                      |
+| **`<other keys>: <value>`** | -                    | Merged with the event's contextual information                                                                                                            |
 
 ### **Alias**
 
@@ -665,44 +549,21 @@ The above `alias` call has the following parameters:
 
 The `options` parameter in the `alias` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter                           | Type                 | Description                                                                                                                           |
-| :---------------------------------- | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
-| **`integrations: IntegrationOpts`** | -                    | Refer to **`IntegrationOpts`** below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`**                   | String               | Overrides the current event **`anonymousId`** at the top level                                                                        |
-| **`originalTimestamp`**             | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                  |
-| **`<other keys>: <value>`**         | -                    | Merged with the event's contextual information                                                                                        |
-
-- The structure of **`IntegrationOpts`** looks like the following:
-
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
-| Parameter           | Type    | Description                                                                                                                                                                                            |
-| :------------------ | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`All`**           | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it.                                                                                      |
-
-{% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here:
-
-- [Specifying Selective Destinations in the `load` Method](#specifying-selective-destinations-in-the-load-method)
-- [Common Destination Names for sending events through the `load` method](#common-destination-names)
-  {% endhint %}
+| Parameter                   | Type                 | Description                                                                                                                                               |
+| :-------------------------- | :------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`integrations`**          | `IntegrationOpts`    | Refer to [**`IntegrationOpts`**](#integrationopts) below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`**           | String               | Overrides the current event **`anonymousId`** at the top level                                                                                            |
+| **`originalTimestamp`**     | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                                      |
+| **`<other keys>: <value>`** | -                    | Merged with the event's contextual information                                                                                                            |
 
 A sample example of how to use the `alias()` method is as shown:
 
@@ -733,44 +594,21 @@ The above `group` call has the following parameters:
 
 The `options` parameter in the `group` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter                           | Type                 | Description                                                                                                                           |
-| :---------------------------------- | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
-| **`integrations: IntegrationOpts`** | -                    | Refer to **`IntegrationOpts`** below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`**                   | String               | Overrides the current event **`anonymousId`** at the top level                                                                        |
-| **`originalTimestamp`**             | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                  |
-| **`<other keys>: <value>`**         | -                    | This info is merged with the event's contextual information                                                                           |
-
-- The structure of **`IntegrationOpts`** looks like the following:
-
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
-| Parameter           | Type    | Description                                                                                                                                                                                            |
-| :------------------ | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`All`**           | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it.                                                                                      |
-
-{% hint style="info" %}
-More information on the **`IntegrationOpts`** option can be found here:
-
-- [Specifying Selective Destinations in the `load` Method](#specifying-selective-destinations-in-the-load-method)
-- [Common Destination Names for sending events through the `load` method](#common-destination-names)
-  {% endhint %}
+| Parameter                   | Type                 | Description                                                                                                                                               |
+| :-------------------------- | :------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`integrations`**          | `IntegrationOpts`    | Refer to [**`IntegrationOpts`**](#integrationopts) below. More information can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
+| **`anonymousId`**           | String               | Overrides the current event **`anonymousId`** at the top level                                                                                            |
+| **`originalTimestamp`**     | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level                                                                                      |
+| **`<other keys>: <value>`** | -                    | This info is merged with the event's contextual information                                                                                               |
 
 An example of how to use the `group` call is as shown below:
 
@@ -794,6 +632,55 @@ rudderanalytics.reset();
 {% hint style="info" %}
 **NOTE**: The `reset()`method only clears the cookies and local storage set by RudderStack, and not the information stored by the integrated destinations. To completely clear the user session, please refer to the documentation provided by those respective tools.
 {% endhint %}
+
+### Types
+
+#### **`IntegrationOpts`**
+
+The structure of **`IntegrationOpts`** looks like the following:
+
+```javascript
+IntegrationOpts {
+ All: boolean, // default true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+| Parameter           | Type    | Description                                                                                                                                                                                            |
+| :------------------ | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`All`**           | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
+| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it.                                                                                      |
+
+{% hint style="info" %}
+More information on the **`IntegrationOpts`** option can be found here:
+
+- [Specifying Selective Destinations in the `load` Method](#specifying-selective-destinations-in-the-load-method)
+- [Common Destination Names for sending events through the `load` method](#common-destination-names)
+  {% endhint %}
+
+#### **`QueueOpts`**
+
+The structure of **`QueueOpts`** looks like the following:
+
+```text
+QueueOpts {
+ maxRetryDelay: 360000, // Upper cap on maximum delay for an event
+ minRetryDelay: 1000, // minimum delay before sending an event
+ backoffFactor: 2, // exponentional base
+ maxAttempts: 10, // max attempts
+ maxItems: 100,  // max number of events in storage
+}
+```
+
+| Parameter           | Description                                                                                        |
+| :------------------ | :------------------------------------------------------------------------------------------------- |
+| **`maxRetryDelay`** | Corresponds to the upper limit on the maximum delay for an event. Default value is set as 36000ms. |
+| **`minRetryDelay`** | Corresponds to the minimum delay expected before sending an event. Default value is set to 1000ms. |
+| **`backoffFactor`** | Refers to the exponential base. Default value is set to 2.                                         |
+| **`maxAttempts`**   | Refers to the maximum attempts to send the event to the destination. Default value is set to 10.   |
+| **`maxItems`**      | Refers to the maximum number of events kept in the storage. Default value is set to 100.           |
 
 ## **How to Filter Selective Destinations to Send Event Data**
 
@@ -1066,24 +953,24 @@ rudderanalytics.getAnonymousId();
 ```
 
 {% hint style="info" %}
-**NOTE:** In case the `anonymousId` value is null, calling the above function will lead to automatically setting a new `anonymousId`.
+**NOTE:** In case the `anonymousId` value is null in the SDK, calling the above function will lead to automatically setting a new `anonymousId`.
 {% endhint %}
 
 ### **What is the `Reserved Keyword` error?**
 
-When using the JS-SDK, you may run into the following error: `Warning! : Reserved keyword used in traits --> id with track call`. This is due to one or more of the keys in your `traits` and/or `properties` object is the same value as a reserved keyword. The following list of reserved keywords are keys the RudderStack uses for a standard event payload and therefore should be avoided when naming traits and properties.
+When using the JavaScript SDK, you may run into the following error: `Warning! : Reserved keyword used in traits --> id with track call`. This is due to one or more of the keys in your `traits` and/or `properties` object is the same value as a reserved keyword.
+
+The following list of reserved keywords are keys the RudderStack uses for a standard event payload and therefore should be avoided when naming traits and properties:
 
 ```javascript
-Reserved Keywords:
-------------------
-"anonymous_id"
-"id"
-"sent_at"
-"received_at"
-"timestamp"
-"original_timestamp"
-"event_text"
-"event"
+"anonymous_id";
+"id";
+"sent_at";
+"received_at";
+"timestamp";
+"original_timestamp";
+"event_text";
+"event";
 ```
 
 ## **Contact Us**
