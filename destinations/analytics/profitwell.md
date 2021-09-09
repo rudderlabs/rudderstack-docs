@@ -76,6 +76,10 @@ A sample `identify` call is as shown below:
 ### Identify Mapping
 
 {% hint style="info" %}
+For a given `profitwellUserId` if user is not found at destination or for a given userId which exists at destination and `profitwellSubscriptionId` is not found then in both cases the event is dropped. However, if we provide `userId` or `subscriptionAlias` and it doesn't exist then a new subscription is created.
+{% endhint %}
+
+{% hint style="info" %}
 `externalId` of type `profitwellUserId` is mapped to `user_id` of ProfitWell Field. Similarly, `externalId` of type `profitwellSubscriptionId` is mapped to `subscription_id` of ProfitWell Field. While creating subscription if `effectiveDate` is not given then it is taken from `originalTimestamp`.
 {% endhint %}
 
