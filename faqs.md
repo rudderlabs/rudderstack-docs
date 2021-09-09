@@ -181,9 +181,7 @@ Currently, transformations can only be configured and used for destinations. If 
 
 Unfortunately, your workspace name is not changeable currently. We are planning to include this feature in our future releases.
 
-#### 2.1 How do I see the logs or data that is sent to my destination?
-
-#### 2.2 I see a few events that show up in the live stream but do not reach the destination. What is the best way to debug this?
+#### 2. I see a few events that show up in the live stream but do not reach the destination. How do I see the logs or data that is sent to my destination?
 
 To view the data or events that are sent to your destination, you can use the **Live Events** tab on your destination page.
 
