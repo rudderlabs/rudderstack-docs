@@ -101,6 +101,7 @@
     * [Indicative](destinations/analytics/indicative.md)
     * [Pendo](destinations/analytics/pendo.md)
     * [PostHog](destinations/analytics/posthog.md)
+    * [ProfitWell](destinations/analytics/profitwell.md)
     * [Lytics](destinations/analytics/lytics.md)
   * [CRM](destinations/crm/README.md)
     * [Salesforce](destinations/crm/salesforce.md)
