@@ -136,7 +136,7 @@ RudderStack discards the `identify` event in the following two scenarios:
 * For a given `profitWellUserId`, a `profitwellSubscriptionId` is not found.
 
 {% hint style="info" %}
-If you provide a `userId`(mapped to `userAlias` in ProfitWell) or a `subscriptionAlias` (mapped to `subscriptionAlias`) in the `identify` call, a new user subscription is created if it is not already present. 
+If you provide a `userId`(mapped to `user_alias` in ProfitWell) or a `subscriptionAlias` (mapped to `subscription_alias`) in the `identify` call, a new user subscription is created if it is not already present. 
 {% endhint %}
 
 ## FAQs
