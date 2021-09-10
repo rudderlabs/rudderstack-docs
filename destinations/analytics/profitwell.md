@@ -9,7 +9,7 @@ description: Step-by-step guide to send event data from RudderStack to ProfitWel
 RudderStack lets you configure ProfitWell as a destination to which you can send your event data seamlessly.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our [GitHub repo](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/profitwell)**.
+**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/profitwell).
 {% endhint %}
 
 ## Getting Started
@@ -18,10 +18,10 @@ To enable sending data to ProfitWell, you will first need to add it as a destina
 
 Before configuring ProfitWell as a destination in RudderStack, make sure that the source platform is supported by ProfitWell by referring to the following table:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | -             | -             | -             |
-| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | - | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -101,26 +101,26 @@ This section lists the various criteria for mapping RudderStack fields to Profit
 The following table lists all the supported fields for **`Creating Subscriptions`** with their relative mapping to the ProfitWell fields:
 
 | **RudderStack Field** | **ProfitWell Field** |
-| :-------------------- | :------------------- |
-| `userId`              | `user_alias`         |
-| `subscriptionAlias`   | `subscription_alias` |
-| `email`               | `email`              |
-| `planId`              | `plan_id`            |
-| `planInterval`        | `plan_interval`      |
-| `planCurrency`        | `plan_currency`      |
-| `status`              | `status`             |
-| `value`               | `value`              |
-| `effectiveDate`       | `effective_date`     |
+| :--- | :--- |
+| `userId` | `user_alias` |
+| `subscriptionAlias` | `subscription_alias` |
+| `email` | `email` |
+| `planId` | `plan_id` |
+| `planInterval` | `plan_interval` |
+| `planCurrency` | `plan_currency` |
+| `status` | `status` |
+| `value` | `value` |
+| `effectiveDate` | `effective_date` |
 
 The following table lists all the supported fields for **`Updating Subscriptions`** with their relative mapping to the ProfitWell fields:
 
-| **RudderStack Field** | **ProfitWell Field**   |
-| :-------------------- | :--------------- |
-| `planId`              | `plan_id`        |
-| `planInterval`        | `plan_interval`  |
-| `value`               | `value`          |
-| `status`              | `status`         |
-| `effectiveDate`       | `effective_date` |
+| **RudderStack Field** | **ProfitWell Field** |
+| :--- | :--- |
+| `planId` | `plan_id` |
+| `planInterval` | `plan_interval` |
+| `value` | `value` |
+| `status` | `status` |
+| `effectiveDate` | `effective_date` |
 
 {% hint style="info" %}
 While creating a subscription, if `effectiveDate` is not provided in the `identify` call, then RudderStack takes the date from the event call's `originalTimestamp`.
@@ -136,7 +136,7 @@ RudderStack discards the `identify` event in the following two scenarios:
 * For a given `profitWellUserId`, a `profitwellSubscriptionId` is not found.
 
 {% hint style="info" %}
-If you provide a `userId`(mapped to `user_alias` in ProfitWell) or a `subscriptionAlias` (mapped to `subscription_alias`) in the `identify` call, a new user subscription is created if it is not already present. 
+If you provide a `userId`\(mapped to `user_alias` in ProfitWell\) or a `subscriptionAlias` \(mapped to `subscription_alias`\) in the `identify` call, a new user subscription is created if it is not already present.
 {% endhint %}
 
 ## FAQs
@@ -150,3 +150,4 @@ To obtain your ProfitWell **Private API Key**, log into your ProfitWell dashboar
 ## Contact Us
 
 In case of any issues while configuring or using ProfitWell with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+

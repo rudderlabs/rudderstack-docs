@@ -315,6 +315,7 @@ RSClient.sharedInstance()?.reset()
 ```
 {% endtab %}
 {% endtabs %}
+
 ## Configuring the RudderStack Client
 
 You can configure your client based on the following parameters using `RudderConfigBuilder`:

@@ -179,6 +179,7 @@ await rudderClient.reset()
 {% hint style="success" %}
 It is highly recommended to use the `await` keyword with the reset call.
 {% endhint %}
+
 ## Registering Callbacks:
 
 The React Native SDK lets you trigger a callback once any device-mode integration is successful. You can use this callback to perform any operation that you wanted to do once a device-integration is successful.

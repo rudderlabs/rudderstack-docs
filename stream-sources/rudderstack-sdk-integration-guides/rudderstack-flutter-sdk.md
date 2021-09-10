@@ -236,6 +236,7 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 ```dart
 RudderClient.reset();
 ```
+
 ## Enabling / Disabling Events for Specific Destinations
 
 The Flutter SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:

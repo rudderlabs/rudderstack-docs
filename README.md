@@ -4,11 +4,11 @@ description: RudderStack Documentation
 
 # Home
 
-[**RudderStack**](https://rudderstack.com/) is a **customer data platform for developers.**  Our tooling makes it easy to deploy pipelines that collect customer data from every app, website and SaaS platform, then activate it in your warehouse and business tools.
+[**RudderStack**](https://rudderstack.com/) is a **customer data platform for developers.** Our tooling makes it easy to deploy pipelines that collect customer data from every app, website and SaaS platform, then activate it in your warehouse and business tools.
 
 > **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your customer data stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today.**
 
-{% embed url="https://www.youtube.com/watch?v=vOaw9pKn6\_M" %}
+{% embed url="https://www.youtube.com/watch?v=vOaw9pKn6\_M" caption="" %}
 
 ## Quick Start
 
@@ -20,7 +20,7 @@ description: RudderStack Documentation
 * Stuck somewhere? Refer to our up-to-date [**user guides**](user-guides/) or check out the [**FAQs**](faqs.md).
 
 {% hint style="success" %}
-For community support, you can always start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel ****and ask any questions you might have about RudderStack.
+For community support, you can always start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) **channel** and ask any questions you might have about RudderStack.
 {% endhint %}
 
 ## License

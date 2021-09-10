@@ -372,6 +372,7 @@ rudderClient.reset();
 ```
 {% endtab %}
 {% endtabs %}
+
 ## Configuring your RudderStack Client
 
 You can configure your client based on the following parameters using `RudderConfig.Builder`:
