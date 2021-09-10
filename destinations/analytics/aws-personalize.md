@@ -12,8 +12,8 @@ RudderStack allows you to configure AWS Personalize as a destination to which yo
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/personalize)**.**
 {% endhint %}
 
-{% hint style="success" %}
-To use PutUsers and PutItems for Personalize please use latest rudder-server and rudder-transformer images.
+{% hint style="info" %}
+To use `PutUsers` and `PutItems` for Personalize, use the latest images for [**`rudder-server`**](https://github.com/rudderlabs/rudder-server) and [**`rudder-transformer`**](https://github.com/rudderlabs/rudder-transformer) images.
 {% endhint %}
 
 ## **Getting Started**
@@ -76,6 +76,10 @@ For `PutEvents` The value of the `event` field in the payload will be sent as `E
 For `PutItems` and `PutEvents` operation, `Dataset ARN` and `Tracking ID` respectively are mantaory information to provide.
 {% endhint %}
 
+{% hint style="info" %}
+To use `PutUsers` and `PutItems` for Personalize, use the latest images for [**`rudder-server`**](https://github.com/rudderlabs/rudder-server) and [**`rudder-transformer`**](https://github.com/rudderlabs/rudder-transformer) images.
+{% endhint %}
+
 The following snippet shows an example of sending track event, with mapped field specified in the [RudderStack dashboard](https://app.rudderstack.com/):
 
 ```javascript
@@ -93,6 +97,10 @@ When using `PutItems` operation, with the above example `track` call, `X` is the
 ## Identify
 
 The `identify` call lets you use `PutUsers` operation of AWS Personalize.
+
+{% hint style="info" %}
+To use `PutUsers` and `PutItems` for Personalize, use the latest images for [**`rudder-server`**](https://github.com/rudderlabs/rudder-server) and [**`rudder-transformer`**](https://github.com/rudderlabs/rudder-transformer) images.
+{% endhint %}
 
 {% hint style="info" %}
 For `PutUsers`, the value of the `userId` or `anonymousId` field in the payload will be sent as `userId`.
