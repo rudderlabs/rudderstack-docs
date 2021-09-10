@@ -12,6 +12,10 @@ RudderStack allows you to configure AWS Personalize as a destination to which yo
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/personalize)**.**
 {% endhint %}
 
+{% hint style="success" %}
+To use PutUsers and PutItems for Personalize please use latest rudder-server and rudder-transformer images.
+{% endhint %}
+
 ## **Getting Started**
 
 In order to enable dumping data to AWS Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to AWS Personalize.
