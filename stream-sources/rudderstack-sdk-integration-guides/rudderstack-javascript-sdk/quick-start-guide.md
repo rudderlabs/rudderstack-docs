@@ -7,7 +7,7 @@ description: >-
 
 ## **Step 1: Install RudderStack Using the Code Snippet**
 
-To integrate the SDK, place the following minified or non-minified version of the code in the `<head>` section of your website.
+To integrate the SDK, place the following [minified](#minified-code) or [non-minified](#non-minified-code) version of the code in the `<head>` section of your website.
 
 ### **Minified Code**
 
@@ -107,7 +107,7 @@ npm install rudder-sdk-js --save
 ```
 
 {% hint style="info" %}
-This NPM module is only meant to be used for a browser installation. If you want to integrate RudderStack with your Node.js applications, please refer to [the RudderStack Node.js repository](https://github.com/rudderlabs/rudder-sdk-node).
+This NPM module is only meant to be used for a browser installation. If you want to integrate RudderStack with your Node.js applications, refer to the [RudderStack Node.js repository](https://github.com/rudderlabs/rudder-sdk-node).
 {% endhint %}
 
 {% hint style="warning" %}
@@ -131,7 +131,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL);
 exports.rudderanalytics = rudderanalytics;
 ```
 
-Please refer to the following projects for a detailed walk-through of the above steps:
+Refer to the following projects for a detailed walk-through of the above steps:
 
 - [Sample Angular project](https://github.com/rudderlabs/rudder-analytics-angular)
 - [Sample React project](https://github.com/rudderlabs/rudder-analytics-react)
@@ -194,13 +194,11 @@ rudderanalytics.identify(
 
 In the above example, information such as the `userId` and `email` along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
 
-{% hint style="warning" %}
-If you explicitly specify the IP address in the event, RudderStack will use that IP instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
-{% endhint %}
-
 {% hint style="info" %}
 **NOTE**: There is no need to call `identify()` for anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`.
 {% endhint %}
+
+For more information, refer to the [`identify`](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#identify) API call.
 
 ## **Step 3: Track Your Users’ Actions With the `track()` Method**
 
@@ -224,6 +222,8 @@ rudderanalytics.track(
 
 In the above example, the method tracks the event ‘**test track event GA3**’, and information such as the revenue, currency, anonymousId.
 
+For more information, refer to the [`track`](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#track) API call.
+
 You can use this method to track various other success metrics for your website, such as user signups, item purchases, article bookmarks, and much more.
 
 You’ve now successfully installed `rudder-analytics.js` tracking. You can enable and use any event destination to send your event data via RudderStack, in no time at all.
@@ -240,4 +240,4 @@ rudderanalytics.ready(() => {
 });
 ```
 
-For detailed information on the API calls, visit [JavaScript SDK APIs](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#javascript-sdk-apis).
+For more information on the SDK API calls, refer to [JavaScript SDK APIs](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#javascript-sdk-apis).
