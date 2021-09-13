@@ -33,13 +33,13 @@ We would love to see you contribute to RudderStack. Get more information on how 
 
 ## Follow Us
 
-* [**RudderStack Blog**](https://rudderstack.com/blog/)\*\*\*\*
-* \*\*\*\*[**Slack**](https://resources.rudderstack.com/join-rudderstack-slack)\*\*\*\*
-* \*\*\*\*[**Twitter**](https://twitter.com/rudderstack)\*\*\*\*
-* \*\*\*\*[**LinkedIn**](https://www.linkedin.com/company/rudderlabs/)\*\*\*\*
-* \*\*\*\*[**DEV Community**](https://dev.to/rudderstack)\*\*\*\*
-* \*\*\*\*[**Medium**](https://rudderstack.medium.com/)\*\*\*\*
-* \*\*\*\*[**YouTube**](https://www.youtube.com/channel/UCgV-B77bV_-LOmKYHw8jvBw)\*\*\*\*
-* \*\*\*\*[**Hacker News**](https://news.ycombinator.com/item?id=21081756)\*\*\*\*
-* \*\*\*\*[**Product Hunt**](https://www.producthunt.com/posts/rudderstack)\*\*\*\*
+* [**RudderStack Blog**](https://rudderstack.com/blog/)
+* [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack)
+* [**Twitter**](https://twitter.com/rudderstack)
+* [**LinkedIn**](https://www.linkedin.com/company/rudderlabs/)
+* [**DEV Community**](https://dev.to/rudderstack)
+* [**Medium**](https://rudderstack.medium.com/)
+* [**YouTube**](https://www.youtube.com/channel/UCgV-B77bV_-LOmKYHw8jvBw)
+* [**Hacker News**](https://news.ycombinator.com/item?id=21081756)
+* [**Product Hunt**](https://www.producthunt.com/posts/rudderstack)
 
