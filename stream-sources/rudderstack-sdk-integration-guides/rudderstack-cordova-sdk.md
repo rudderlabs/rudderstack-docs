@@ -154,7 +154,7 @@ The `group` method has the following signatures:
 
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
-| `groupId` | `string` | Required | An ID of the organization with which you want to associate the user |
+| `groupId` | `string` | Required | The organization ID with which you want to associate the user. |
 | `groupTraits` | `JSON Object` | Optional | Any other property of the organization that you want to pass along with the call. |
 | `options` | `JSON Object` | Optional | Extra options for the `group` event. |
 
