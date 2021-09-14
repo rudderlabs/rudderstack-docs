@@ -172,7 +172,7 @@ For more information on sources and destinations in RudderStack, check our [**Co
 You can set up different types of connections in RudderStack to send your events, based on the type of source:
 
 * **Event Stream**:  One source to many destinations
-* **Cloud Extract**: Multiple sources to one destination
+* **Cloud Extract**: Multiple sources to one warehouse destination
 * **Warehouse Action**: One warehouse source to one downstream destination \(mainly due to the mappings required when setting up the connection\).
 
 {% hint style="info" %}
