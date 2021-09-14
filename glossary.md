@@ -205,7 +205,7 @@ A **source** is a platform or an application \(web, mobile, server-side, or a th
 A destination is a tool or application where you want to send the data via RudderStack.
 
 {% hint style="success" %}
-RudderStack currently supports over 80 destinations. These include [**data warehouses**](https://docs.rudderstack.com/data-warehouse-integrations), [**analytics**](https://docs.rudderstack.com/destinations/analytics) platforms,  [**CRMs**](https://docs.rudderstack.com/destinations/crm), [**marketing**](https://docs.rudderstack.com/destinations/marketing) platforms, and more.
+RudderStack currently supports over 80 destinations. These include [**data warehouses**](https://docs.rudderstack.com/data-warehouse-integrations), [**analytics**](https://docs.rudderstack.com/destinations/analytics) platforms, [**CRMs**](https://docs.rudderstack.com/destinations/crm), [**marketing**](https://docs.rudderstack.com/destinations/marketing) platforms, and more.
 
 Check out the [**Destinations**](destinations/) guide for the complete list of supported destinations.
 {% endhint %}
