@@ -19,31 +19,33 @@ To set up the Cordova SDK, follow these steps:
 
 * Add a new **Cordova** source and note the source write key, as shown:
 
-**<screenshot_here>**
+![Adding Cordova SDK](../../.gitbook/assets/Cordova_Source.png)
 
 * You will also need your Data Plane URL. Follow [**this section**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it) for more information.
 
 ## Installing the SDK
 
+To add the SDK as a dependency, navigate to the root folder of your application and execute the following command:
 
+```bash
+cordova plugin add rudder-sdk-cordova
+```
 
 ## Initializing the RudderStack Client
 
-
-
+After adding the SDK as a dependency, you need to set up the SDK. Add the following code in the `onDeviceReady()` function of your Home page to initialize the SDK.
 
 A sample Cordova SDK initialization is as shown:
 
 ```javascript
-RudderClient.initialize( < SOURCE_WRITE_KEY > , {
-  "dataPlaneUrl": < YOUR_DATA_PLANE_URL > ,
+RudderClient.initialize( <SOURCE_WRITE_KEY> , {
+  "dataPlaneUrl": <YOUR_DATA_PLANE_URL> ,
   "flushQueueSize": 30,
   "dbCountThreshold": 10000,
   "configRefreshInterval": 2,
   "logLevel": 0,
   "sleepTimeOut": 10,
   "trackLifecycleEvents": true,
-  "recordScreenViews": true,
   "controlPlaneUrl": "https://api.rudderstack.com"
 }, {
   "integrations": {
@@ -52,6 +54,22 @@ RudderClient.initialize( < SOURCE_WRITE_KEY > , {
   }
 })
  ```
+
+{% hint style="success" %}
+Make sure to use the `await` keyword with the `initialize` call.
+{% endhint %}
+
+The `setup` method has the following signature:
+
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `writeKey` | `string` | Yes | Your Cordova Source `writeKey` |
+| `configuration` | `JSON Object` | No | Contains the RudderStack Client configuration |
+| `options` | `JSON Object` | No | Extra options to be passed along. |
+
+Check the [Configuring your RudderStack Client](#configuring-your-rudderstack-client) section below for a detailed information about the parameters you can send in `configuration` object.
+
+Check the [Configuring your Options object](#configuring-your-options-object) section below for a detailed information about the parameters you can send in `options` object.
 
 
 ## Identify
@@ -93,10 +111,17 @@ RudderClient.identify("userId", {
   }
 })
 ```
+The `identify` method has the following signatures:
+
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `userId` | `string` | Yes | Developer identity for the user |
+| `traits` | `JSON Object` | No | Traits information for user |
+| `options` | `JSON Object` | No | Extra options for the `identify` event |
+
 {% hint style="info" %}
 For more information on the behavior of the `integrations` property, refer to the **Enabling/Disabling Events for Specific Destinations** section below.
 {% endhint %}
-
 
 ## Group
 
@@ -123,6 +148,14 @@ RudderClient.group("group1", {
   }
 })
 ```
+
+The `group` method has the following signatures:
+
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `groupId` | `string` | Yes | An ID of the organization with which you want to associate your user |
+| `groupTraits` | `JSON Object` | No | Any other property of the organization you want to pass along with the call |
+| `options` | `JSON Object` | No | Extra options for the `group` event |
 
 ## Track
 
@@ -175,6 +208,23 @@ RudderClient.track('Order Completed', {
 })
 ```
 
+The `track` method has the following signature:
+
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `name` | `String` | Yes | Contains the name of the event you want to track |
+| `properties` | `JSON Object` | No | Contains the extra data properties you want to send along with the event |
+| `options` | `JSON Object` | No | Contains the extra event options |
+
+{% hint style="info" %}
+We automatically track the following optional events:
+
+1. `Application Installed`
+2. `Application Opened`
+
+You can disable these events by sending property `trackLifecycleEvents` as `false` within `configuration` object while initializing the `RudderClient`. However, it is highly recommended to keep them enabled.
+{% endhint %}
+
 ## Screen
 
 The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the viewed screen. 
@@ -195,6 +245,15 @@ RudderClient.screen("Home Screen", {
   }
 })
 ```
+
+The `screen` method has the following signature:
+
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `screenName` | `string` | Yes | Name of the screen viewed. |
+| `property` | `JSON Object` | No | Extra property object that you want to pass along with the `screen` call. |
+| `option` | `JSON Object` | No | Extra options to be passed along with `screen` event. |
+
 
 ## Alias
 
@@ -219,26 +278,80 @@ RudderClient.alias("userId", {
 })
 ```
 
+The `alias` method has the following signature:
+
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `newId` | `String` | Yes | The new `userId` you want to assign to the user |
+| `options` | `JSON Object` | No | Event level option |
+
+
 ## Reset
 
-Use the `reset` method to clear the persisted user traits.
+You can use the `reset` method to clear the persisted `traits` for the `identify` call. This is required for `Logout` operations.
 
 A sample `reset` call is as shown:
 
 ```javascript
 RudderClient.reset()
 ```
+## Configuring your RudderStack Client
 
-## Flushing the Events
+You can configure your client based on the following parameters by passing them in the `configuration` object of your `RudderClient.initialize()` call.
 
+| Parameter | Type | Description | Default Value |
+| :--- | :--- | :--- | :--- |
+| `logLevel` | `int` | Controls how much of the log you want to see from the Cordova SDK. | `0`  |
+| `dataPlaneUrl` | `string` | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+| `flushQueueSize` | `int` | Number of events in a batch request to the server. | `30` |
+| `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
+| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
+| `configRefreshInterval` | `int` | It will fetch the config from `dashboard` after this many hours. | `2` |
+| `trackLifecycleEvents` | `boolean` | Whether SDK will capture application life cycle events automatically. | `true` |
+| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 
+## Log Level
 
-A sample `flush` usage is as shown:
+You can set the `logLevel` in the configuration object by referring to the table below: 
 
-```javascript
-RudderClient.flush()
+| Log Level | Integer |
+| :--- | :--- |
+| `VERBOSE` | `5` |
+| `DEBUG` | `4` |
+| `INFO` | `3` |
+| `WARN` | `2` |
+| `ERROR` | `1` |
+| `NONE` | `0` |
+
+## Configuring your Options Object
+
+The sample format of the `options` object that you are sending along with all the api calls looks like below:
+
+```json
+{
+  "externalIds": {
+    "brazeExternalId": "externalId1"
+  },
+  "integrations": {
+    "MixPanel": false,
+    "Amplitude": true
+  }
+}
 ```
+The `options` object has the following signature:
 
+| Name | Data Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `externalIds` | `JSON Object` | NO | Each key within `externalIds` object should define the type of external Id and its value should be a `String` / `Integer`. |
+| `integrations` | `JSON Object` | No | Each key within the `integrations` object should hold the display name of your desired destination and its value should be a `boolean` indicating whether you want to send that event or not.  |
+
+### Self-Hosted Control Plane
+
+If you are using a device mode destination like Adjust, Firebase, etc., the Cordova SDK needs to fetch the required configuration from the Control Plane. If you are using the RudderStack Config Generator to host your own Control Plane, then follow [this guide](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
+
+{% hint style="warning" %}
+You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using the dashboard from [https://app.rudderstack.com](https://app.rudderstack.com). This parameter is supported only if you are using our open-source [RudderStack Config Generator](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator).
+{% endhint %}
 ## Enabling/Disabling Events for Specific Destinations
 
 RudderStack lets you send your event data only to the explicitly specified destinations and filtering out the rest. You can do this in one of the following two ways:
@@ -298,6 +411,10 @@ You can use the `setAnonymousId` method to override the default `anonymousId`, a
 RudderClient.setAnonymousId("CustomAnonymousId");
 ```
 
+{% hint style="warning" %}
+You need to call `setAnonymousId` method before calling `initialize`
+{% endhint %}
+
 ## Advertisement ID
 
 RudderStack collects the advertisement ID if it is enabled by the user. To set the advertising ID yourself, you can use the `setAdvertisingId` method as shown:
@@ -305,6 +422,17 @@ RudderStack collects the advertisement ID if it is enabled by the user. To set t
 ```javascript
 RudderClient.setAdvertisingId("SampleAdvertisingId")
 ```
+
+## Setting Device Token
+
+You can pass your `device-token` for push notifications to be passed to the destinations which support the Push Notification feature. We set the `token` under `context.device.token`.
+
+An example of setting the `device-token` is as below:
+
+```javascript
+RudderClient.putDeviceToken("sampleDeviceToken");
+```
+
 
 ## Contact Us
 In case of any queries while setting up or using the Cordova SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
