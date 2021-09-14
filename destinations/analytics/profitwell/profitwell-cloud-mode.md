@@ -1,12 +1,14 @@
 ---
-description: Step-by-step guide to send event data from RudderStack to ProfitWell.
+description: >-
+  Detailed technical documentation on sending events to ProfitWell using the
+  RudderStack Cloud mode.
 ---
 
-# ProfitWell
+# Cloud Mode
 
-[**ProfitWell**](https://www.profitwell.com/) is a business financial metrics platform that provides users with all their financial and subscription metrics in one place. With ProfitWell, you can implement several revenue automation tasks to reduce cancellation rates, optimize product pricing, and get accurate revenue reporting.
-
-RudderStack lets you configure ProfitWell as a destination to which you can send your event data seamlessly.
+{% hint style="info" %}
+For more information on sending events via the Cloud mode, refer to the [**RudderStack Connection Modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
+{% endhint %}
 
 {% hint style="success" %}
 **Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/profitwell).
@@ -18,14 +20,10 @@ To enable sending data to ProfitWell, you will first need to add it as a destina
 
 Before configuring ProfitWell as a destination in RudderStack, make sure that the source platform is supported by ProfitWell by referring to the following table:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
-
-{% hint style="info" %}
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
-{% endhint %}
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | **Supported** | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 Once you have confirmed that the source platform supports sending events to ProfitWell, follow the steps below:
 
@@ -37,17 +35,21 @@ Follow our guide on [**Adding a Source and Destination in RudderStack**](https:/
 
 * Assign a name to the destination, and click on **Next**. You will then see the following **Connection Settings** window:
 
-![Connection Settings for ProfitWell](https://user-images.githubusercontent.com/59817155/132686748-198597d1-4e2e-46ba-9314-a70c3ff35f69.png)
+![Connection Settings for ProfitWell](https://user-images.githubusercontent.com/64877812/133275863-5babdaa6-d45d-4e08-ab36-a61629b19e2b.png)
 
 ### Connection Settings
 
-To successfully configure ProfitWell as a destination, enter the following connection settings:
+To successfully configure ProfitWell as a cloud-mode destination, enter the following connection settings:
 
 * **Private API Key**: Enter your ProfitWell private API key here. To obtain the **Private API Key**, log into your ProfitWell account. Then, navigate to the **Account Settings** - **Integration** option. Here, you can get your API key under [**API Keys/Dev Kit**](https://www2.profitwell.com/app/account/integrations), as shown in the following image:
 
 ![](https://user-images.githubusercontent.com/59817155/132687515-dd2246e4-2239-4971-994d-167513fa3c96.png)
 
-* Once you have finalized the settings, click on **Next** to complete the setup. ProfitWell should now be configured and enabled as a destination in RudderStack.
+* Finally, click on **Next** to complete the setup. ProfitWell should now be configured and enabled as a destination in RudderStack.
+
+{% hint style="info" %}
+Settings apart from stated above are for configuring ProfitWell as a web device-mode destination.
+{% endhint %}
 
 ## Identify
 
@@ -101,26 +103,26 @@ This section lists the various criteria for mapping RudderStack fields to Profit
 The following table lists all the supported fields for **`Creating Subscriptions`** with their relative mapping to the ProfitWell fields:
 
 | **RudderStack Field** | **ProfitWell Field** |
-| :--- | :--- |
-| `userId` | `user_alias` |
-| `subscriptionAlias` | `subscription_alias` |
-| `email` | `email` |
-| `planId` | `plan_id` |
-| `planInterval` | `plan_interval` |
-| `planCurrency` | `plan_currency` |
-| `status` | `status` |
-| `value` | `value` |
-| `effectiveDate` | `effective_date` |
+| :-------------------- | :------------------- |
+| `userId`              | `user_alias`         |
+| `subscriptionAlias`   | `subscription_alias` |
+| `email`               | `email`              |
+| `planId`              | `plan_id`            |
+| `planInterval`        | `plan_interval`      |
+| `planCurrency`        | `plan_currency`      |
+| `status`              | `status`             |
+| `value`               | `value`              |
+| `effectiveDate`       | `effective_date`     |
 
 The following table lists all the supported fields for **`Updating Subscriptions`** with their relative mapping to the ProfitWell fields:
 
 | **RudderStack Field** | **ProfitWell Field** |
-| :--- | :--- |
-| `planId` | `plan_id` |
-| `planInterval` | `plan_interval` |
-| `value` | `value` |
-| `status` | `status` |
-| `effectiveDate` | `effective_date` |
+| :-------------------- | :------------------- |
+| `planId`              | `plan_id`            |
+| `planInterval`        | `plan_interval`      |
+| `value`               | `value`              |
+| `status`              | `status`             |
+| `effectiveDate`       | `effective_date`     |
 
 {% hint style="info" %}
 While creating a subscription, if `effectiveDate` is not provided in the `identify` call, then RudderStack takes the date from the event call's `originalTimestamp`.
