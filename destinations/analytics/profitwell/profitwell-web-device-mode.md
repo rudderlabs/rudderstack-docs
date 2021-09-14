@@ -47,7 +47,7 @@ To successfully configure ProfitWell as a web device-mode destination, enter the
 
 ![](https://user-images.githubusercontent.com/59817155/132687515-dd2246e4-2239-4971-994d-167513fa3c96.png)
 
-* **Site Type**:  A `Web App` will wait for Identify call to start the ProfitWell service. A `marketing` site will start the Profitwell service on load with a generated UUID mapped to Profitwell's `user_id`.
+* **Site Type**:  If Site Type is `Web App` then Identify call is needed to start the ProfitWell service. A `marketing` Site Type will start the Profitwell service on load with a generated UUID mapped to Profitwell's `user_id`.
 
 * **Use device-mode to send events**: Enable this option to send events via the **Device mode**.
 
