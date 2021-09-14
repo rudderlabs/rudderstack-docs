@@ -68,9 +68,9 @@ The `setup` method has the following signature:
 | `options` | `JSON Object` | Optional | Extra options to be pass along with the event. |
 
 {% hint style="info" %}
-* Check the [**Configuring your RudderStack Client**](#configuring-your-rudderstack-client) section below for detailed information on the parameters you can send in the `configuration` object.
+* Check the **Configuring your RudderStack Client** section below for detailed information on the parameters you can send in the `configuration` object.
 
-* Check the [**Configuring your Options object**](#configuring-your-options-object) section below for detailed information on the parameters you can send in the `options` object.
+* Check the **Configuring your Options object** section below for detailed information on the parameters you can send in the `options` object.
 {% endhint %}
 
 ## Identify
