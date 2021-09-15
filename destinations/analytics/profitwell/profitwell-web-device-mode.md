@@ -47,7 +47,7 @@ To successfully configure ProfitWell as a web device-mode destination, enter the
 
 ![](https://user-images.githubusercontent.com/59817155/132687515-dd2246e4-2239-4971-994d-167513fa3c96.png)
 
-* **Site Type**:  If Site Type is `Web App` then Identify call is needed to start the ProfitWell service. For a `marketing` Site Type RudderStack will start the Profitwell service anonymously.
+* **Site Type**:  If Site Type is `Web App` then it will start the ProfitWell service either with `email` or `userId`. For a `marketing` Site Type RudderStack will start the Profitwell service anonymously.
 
 * **Use device-mode to send events**: Enable this option to send events via the **Device mode**.
 
@@ -59,11 +59,7 @@ Settings apart from stated above are for configuring ProfitWell as a cloud-mode 
 
 ## Identify
 
-{% hint style="info" %}
-The `identify` call is required for Site Type as `Web App` and in that case either email or userId is required.
-{% endhint %}
-
-Identify call will start the Profitwell Service using the customer's email. If no email is provided then it will start the service with userId.
+For Site Type as `Web App` Identify call will start the Profitwell Service using the customer's email. If no email is provided then it will start the service with userId. For Site Type as `marketing` Rudderstack will start the Profitwell service anonymously.
 
 A sample `identify` call is as shown:
 
