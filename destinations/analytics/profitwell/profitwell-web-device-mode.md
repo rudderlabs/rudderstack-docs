@@ -51,7 +51,7 @@ To successfully configure ProfitWell as a Device Mode destination, enter the fol
 The **Private API Key** field is **not** required if you want to send the events via the Device Mode.
 {% endhint %}
 
-* **Site Type**: Choose the site type from the dropdown. If the site type is **Web App**, then RudderStack will start the ProfitWell service either with `email` or `userId`. For the type **Marketing Site**, RudderStack will start the Profitwell service anonymously.
+* **Site Type**: Choose the site type from the dropdown. If the site type is **Webapp**, then RudderStack will start the ProfitWell service either with `email` or `userId`. For the type **Marketing**, RudderStack will start the Profitwell service anonymously.
 
 * **Use device-mode to send events**: Enable this option to send events via the **Device mode**.
 
@@ -63,7 +63,7 @@ The **Private API Key** field is **not** required if you want to send the events
 
 ## Identify
 
-For the **Web App** site type, the `identify` call will start the Profitwell Service using the customer's `email`. If no email is provided, then RudderStack will start the service with the user's `userId`. For the **Marketing Site** type, Rudderstack will start the Profitwell service anonymously.
+For the **Webapp** site type, the `identify` call will start the Profitwell Service using the customer's `email`. If no email is provided, then RudderStack will start the service with the user's `userId`. For the **Marketing** type, Rudderstack will start the Profitwell service anonymously.
 
 A sample `identify` call is as shown:
 
