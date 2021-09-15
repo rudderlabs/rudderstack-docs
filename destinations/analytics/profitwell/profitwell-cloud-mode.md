@@ -39,17 +39,18 @@ Follow our guide on [**Adding a Source and Destination in RudderStack**](https:/
 
 ### Connection Settings
 
-To successfully configure ProfitWell as a cloud-mode destination, enter the following connection settings:
+To successfully configure ProfitWell as a Cloud Mode destination, enter the following connection settings:
 
 * **Private API Key**: Enter your ProfitWell private API key here. To obtain the **Private API Key**, log into your ProfitWell account. Then, navigate to the **Account Settings** - **Integration** option. Here, you can get your API key under [**API Keys/Dev Kit**](https://www2.profitwell.com/app/account/integrations), as shown in the following image:
 
 ![](https://user-images.githubusercontent.com/59817155/132687515-dd2246e4-2239-4971-994d-167513fa3c96.png)
 
+{% hint style="info" %}
+To send events to ProfitWell via the Cloud Mode, you don't need to enter the **Public API Key**.
+{% endhint %}
+
 * Finally, click on **Next** to complete the setup. ProfitWell should now be configured and enabled as a destination in RudderStack.
 
-{% hint style="info" %}
-Settings apart from stated above are for configuring ProfitWell as a web device-mode destination.
-{% endhint %}
 
 ## Identify
 
