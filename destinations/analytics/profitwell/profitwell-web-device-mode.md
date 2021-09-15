@@ -37,7 +37,7 @@ Follow our guide on [**Adding a Source and Destination in RudderStack**](https:/
 
 * Assign a name to the destination, and click on **Next**. You will then see the following **Connection Settings** window:
 
-![Connection Settings for ProfitWell](https://user-images.githubusercontent.com/64877812/133275863-5babdaa6-d45d-4e08-ab36-a61629b19e2b.png)
+![Connection Settings for ProfitWell](https://user-images.githubusercontent.com/64877812/133475825-90fff9ed-73da-4d40-9c40-0140eb7f12d9.png)
 
 ### Connection Settings
 
