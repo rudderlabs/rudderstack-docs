@@ -612,7 +612,11 @@ The subsequent records created in the `rudder_discards` table for the discarded 
 
 ## FAQs
 
+### Can I change the namespace \(schema name\) of my data warehouse in RudderStack?
 
+Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse. 
+
+**Refer to the warehouse-specific destination settings for configuring the namespace in the RudderStack dashboard.**
 
 ## Contact Us
 

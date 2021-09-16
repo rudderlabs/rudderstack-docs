@@ -7,7 +7,7 @@ description: General glossary of the RudderStack-related terminology.
 This guide lists the definitions of the RudderStack-related terms that you are likely to encounter throughout our documentation and while using RudderStack.
 
 {% hint style="success" %}
-If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) **\*\*or start a conversation on our \[**Slack\*\*\]\([https://resources.rudderstack.com/join-rudderstack-slack](https://resources.rudderstack.com/join-rudderstack-slack)\) channel.
 {% endhint %}
 
 ## General
@@ -54,7 +54,7 @@ For more information on the Data Plane and Control Plane, refer to RudderStack's
 
 ### Data Plane
 
-The Data Plane is RudderStack's ****core engine responsible for:
+The Data Plane is RudderStack's _\*\*_core engine responsible for:
 
 * Receiving and buffering the event data
 * Transforming the events into the required destination format
@@ -63,7 +63,7 @@ The Data Plane is RudderStack's ****core engine responsible for:
 {% hint style="success" %}
 The Data Plane is intentionally separated from the Control Plane to give you complete ownership of your data. Depending on how RudderStack is deployed, you can set up your Control Plane and Data Plane via one of the following approaches:
 
-* **RudderStack-hosted**: ****RudderStack hosts both Control Plane and Data Plane
+* **RudderStack-hosted**: _\*\*_RudderStack hosts both Control Plane and Data Plane
 * **Hybrid**: RudderStack hosts the Control Plane and the user hosts the Data Plane
 * **Customer**: User hosts both the Control Plane and Data Plane via open-source.
 {% endhint %}
@@ -82,7 +82,7 @@ For information on Control Plane Lite and how to use it, refer to the [**docs**]
 
 ### Event Stream
 
-RudderStack's [**Event Stream**](stream-sources/) ****feature lets you collect your event data from all of your web and mobile apps and route it to a wide array of customer tools and data warehouses via RudderStack.
+RudderStack's [**Event Stream**](stream-sources/) _\*\*_feature lets you collect your event data from all of your web and mobile apps and route it to a wide array of customer tools and data warehouses via RudderStack.
 
 {% hint style="info" %}
 For more information on the various Event Stream sources supported by RudderStack, check out the [**docs**](https://docs.rudderstack.com/stream-sources).
@@ -106,7 +106,7 @@ For more information on the various Warehouse Actions sources and how to set the
 
 ### Transformations
 
-RudderStack ****[**Transformations**](adding-a-new-user-transformation-in-rudderstack/) transform your source events into a destination-specific format. These transformations can be used across your Event Stream, Warehouse Actions, and Cloud Extract pipelines.
+RudderStack **\*\*\[**Transformations\*\*\]\(adding-a-new-user-transformation-in-rudderstack/\) transform your source events into a destination-specific format. These transformations can be used across your Event Stream, Warehouse Actions, and Cloud Extract pipelines.
 
 There are two key aspects of this feature:
 
@@ -127,12 +127,12 @@ In the absence of a user transformation, the flow is as follows:
 {% endhint %}
 
 {% hint style="info" %}
-For more details on this feature and how to use it, check out our [**Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) ****docs.
+For more details on this feature and how to use it, check out our [**Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) _\*\*_docs.
 {% endhint %}
 
 ### Live Events
 
-RudderStack's [**Live Events**](https://docs.rudderstack.com/get-started/live-events) is a debugger that shows the live events collected from your sources and sent to the connected destinations in real-time.  With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
+RudderStack's [**Live Events**](https://docs.rudderstack.com/get-started/live-events) is a debugger that shows the live events collected from your sources and sent to the connected destinations in real-time. With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
 
 Broadly speaking, this feature can be further classified into two categories:
 
@@ -145,7 +145,7 @@ For more information on this feature, check out our [**docs**](https://docs.rudd
 
 ### Data Governance
 
-RudderStack's [**Data Governance**](data-governance/) ****feature gives you the ability to access all your events and their metadata programmatically and identify any inconsistencies in them. This includes vital information related to the event schema, event payload versions, data types, and more.
+RudderStack's [**Data Governance**](data-governance/) _\*\*_feature gives you the ability to access all your events and their metadata programmatically and identify any inconsistencies in them. This includes vital information related to the event schema, event payload versions, data types, and more.
 
 {% hint style="info" %}
 Refer to the [**RudderStack Data Governance API**](data-governance/rudderstack-data-governance-api.md) reference for the detailed technical documentation.
@@ -197,7 +197,7 @@ For more information on these modes, check the [**RudderStack Connection Modes**
 A **source** is a platform or an application \(web, mobile, server-side, or a third-party cloud app\) from where RudderStack tracks and collects your event data. We highly recommend creating a source for every unique data source that you want to track.
 
 {% hint style="info" %}
- For more information on RudderStack sources, check out our [**documentation**](https://docs.rudderstack.com/connections#sources). 
+For more information on RudderStack sources, check out our [**documentation**](https://docs.rudderstack.com/connections#sources).
 {% endhint %}
 
 ### Destination
@@ -212,9 +212,9 @@ Check out the [**Destinations**](destinations/) guide for the complete list of s
 
 ### Warehouse Destination
 
-RudderStack supports sending events to your data warehouse. These are called the warehouse destinations. 
+RudderStack supports sending events to your data warehouse. These are called the warehouse destinations.
 
-Currently, RudderStack supports integration with all the leading data warehouses like Amazon Redshift, Azure Synapse, Google BigQuery, Snowflake, PostgreSQL, ClickHouse, and Microsoft SQL Server. 
+Currently, RudderStack supports integration with all the leading data warehouses like Amazon Redshift, Azure Synapse, Google BigQuery, Snowflake, PostgreSQL, ClickHouse, and Microsoft SQL Server.
 
 {% hint style="info" %}
 For more information on how to use these warehouse destinations, check out our [**Data Warehouse Integration**](https://docs.rudderstack.com/data-warehouse-integrations) guides.
