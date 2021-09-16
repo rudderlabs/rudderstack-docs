@@ -68,7 +68,7 @@ RudderStack's dashboard lets you easily set up your data pipelines by configurin
 Use this option if you don't wish to sign up for RudderStack.
 {% endhint %}
 
-You can self-host your own Control Plane using the open-source[ ****](../../user-guides/how-to-guides/rudderstack-config-generator.md)[**Control Plane Lite**](../control-plane-lite.md) ****utility. 
+You can self-host your own Control Plane using the open-source[ ****](../../user-guides/how-to-guides/rudderstack-control-plane-lite.md)[**Control Plane Lite**](../control-plane-lite.md) ****utility. 
 
 {% hint style="danger" %}
 Note that the Control Plane set up using the [**Control Plane Lite**](../control-plane-lite.md) ****utility lacks certain features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events**](../../user-guides/how-to-guides/live-destination-event-debugger.md) tab.

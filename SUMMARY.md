@@ -249,7 +249,7 @@
     * [Configuration Parameters](user-guides/administrators-guide/config-parameters.md)
     * [Troubleshooting Guide](user-guides/administrators-guide/admin-troubleshooting-guide.md)
   * [How-to Guides](user-guides/how-to-guides/README.md)
-    * [How to Use the RudderStack Config Generator](user-guides/how-to-guides/rudderstack-config-generator.md)
+    * [How to Use the RudderStack Control Plane Lite](user-guides/how-to-guides/rudderstack-control-plane-lite.md)
     * [How to Submit an Integration Pull Request](user-guides/how-to-guides/how-to-submit-an-integration-pull-request.md)
     * [How to Use Custom Domains](user-guides/how-to-guides/custom-domains.md)
     * [How to Use AWS Lambda Functions with RudderStack](user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack.md)
