@@ -41,7 +41,7 @@ The workspace token allows you to use the RudderStack-hosted control plane. It i
 
 #### 4. Can I self-host RudderStack?
 
-Yes, you can use the [**RudderStack Config Generator**](get-started/control-plane-lite.md) to self-host the control plane and configure your sources and destinations. Refer to the Config Generator section below for more information/FAQs.
+Yes, you can use the [**RudderStack** ](get-started/control-plane-lite.md)[**Control Plane Lite**](https://github.com/rudderlabs/config-generator) ****to self-host the control plane and configure your sources and destinations. Refer to the **Control Plane Lite** section below for more information/FAQs.
 
 #### 5. While running `git submodule update`, I get the following error:
 
@@ -129,23 +129,23 @@ backend_1 | panic: During db.vlog.open: Value log truncate required to run DB. T
 
 Check for the folder `/tmp/badgerdbv2` and delete it. This should resolve the issue and you should be able to start rudder-server.
 
-## Config Generator
+## Control Plane Lite
 
 #### 1. How do I self-host the UI configuration?
 
-For self-hosting the UI, you can use the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator).
+For self-hosting the UI, you can use the [**RudderStack Control Plane Lite**](https://github.com/rudderlabs/config-generator) ****utility.
 
-Note that the open-source config-generator will only generate the source-destination configurations which are required by RudderStack.
+Note that this utility will only generate the source-destination configurations which are required by RudderStack.
 
 {% hint style="warning" %}
-The self-hosted control plane \(UI\) does not support features like **Transformations** and **Live Events Debugger**, which are included for free in the [**RudderStack-hosted control plane**](https://app.rudderstack.com).
+The self-hosted control plane set up using the [**Control Plane Lite**](https://github.com/rudderlabs/config-generator) ****utility does not support features like **Transformations** and **Live Events Debugger**, which are included for free in the [**RudderStack-hosted control plane**](https://app.rudderstack.com).
 {% endhint %}
 
-#### 2. I am using the RudderStack Config Generator to generate the `workspaceConfig.json` file. But when I import this file, I get an error:
+#### 2. I am using the Control Plane Lite to generate the `workspaceConfig.json` file. But when I import this file, I get an error:
 
 #### "**TypeError: Cannot read property 'name' of undefined"**. What should I do?
 
-This issue can occur when you have some old data left in your browser's local storage. Use the latest version of the Config Generator after clearing your browser cache and local storage. In case it still does not work, feel free to contact us.
+This issue can occur when you have some old data left in your browser's local storage. Use the latest version of the Control Plane Lite after clearing your browser cache and local storage. In case it still does not work, feel free to contact us.
 
 ## Transformations
 
