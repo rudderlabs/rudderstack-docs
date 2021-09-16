@@ -41,10 +41,10 @@ RudderStack's dashboard lets you easily set up your data pipelines by configurin
 Use this option if you don't wish to sign up for RudderStack.
 {% endhint %}
 
-You can self-host your own Control Plane using the open-source [**RudderStack Config Generator**](../../user-guides/how-to-guides/rudderstack-config-generator.md). 
+You can self-host your own Control Plane using the open-source [**Control Plane Lite**](../control-plane-lite.md) ****utility.
 
 {% hint style="danger" %}
-Note that the Control Plane set up using the RudderStack Config Generator lacks certain features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events**](../../user-guides/how-to-guides/live-destination-event-debugger.md) tab.
+Note that the Control Plane set up using [**Control Plane Lite**](../control-plane-lite.md) lacks certain features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events**](../../user-guides/how-to-guides/live-destination-event-debugger.md) tab.
 {% endhint %}
 
 ## Data Plane Setup
@@ -102,7 +102,7 @@ go run -mod=vendor main.go
 
 ### For **Self-Hosted Control Plane**
 
-If you have self-hosted the Control Plane using the open-source Config Generator, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#developer-machine-setup) instructions to set up the RudderStack Data Plane in your development environment. 
+If you have self-hosted the Control Plane using the open-source [**Control Plane Lite**](../control-plane-lite.md) ****utility, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#developer-machine-setup) instructions to set up the RudderStack Data Plane in your development environment. 
 
 Once you have successfully followed the steps above, [**send test events**](sending-test-events.md) to verify the installation.
 
