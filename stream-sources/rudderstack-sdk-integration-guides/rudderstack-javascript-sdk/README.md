@@ -50,7 +50,7 @@ It includes the following details:
 | Parameter             | Type                                | Description                                                                                                                                                                                                |
 | :-------------------- | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`logLevel`**        | String                              | Options include **`DEBUG`**, **`INFO`**, and **`WARN`**.                                                                                                                                                   |
-| **`integrations`**    | [IntegrationOpts](#integrationopts) | Refer to the [**`IntegrationOpts`**](#integrationopts) section.                                                                                                                                            |
+| **`integrations`**    | [IntegrationOpts](#integrationopts) | Refer to the [**`IntegrationOpts`**](#integrationopts) section. More information on how to use this parameter can be found [here](#filter-selective-destinations).                                         |
 | **`configUrl`**       | String                              | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server (Control Plane) endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
 | **`queueOpts`**       | [QueueOpts](#queueopts)             | Refer to the [**`QueueOpts`**](#queueopts) section.                                                                                                                                                        |
 | **`loadIntegration`** | Boolean                             | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                              |
@@ -75,7 +75,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 });
 ```
 
-For more information, check the [Filter Selective Destinations](#filter-selective-destinations-to-send-event-data) section.
+For more information, check the [Filter Selective Destinations](#filter-selective-destinations) section.
 
 ### **Identify**
 
@@ -390,12 +390,12 @@ The structure of **`options`** parameter looks like the following:
 }
 ```
 
-| Parameter                   | Type                                | Description                                                                                                                                                                                  |
-| :-------------------------- | :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`integrations`**          | [IntegrationOpts](#integrationopts) | Refer to the [**`IntegrationOpts`**](#integrationopts) section. More information on how to use this parameter can be found [here](#how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`**           | String                              | Overrides the current event's **`anonymousId`** at the top level.                                                                                                                            |
-| **`originalTimestamp`**     | ISO 8601 date string                | Overrides the current event's **`originalTimestamp`** at the top level.                                                                                                                      |
-| **`<other keys>: <value>`** | -                                   | Merged with the event's contextual information.                                                                                                                                              |
+| Parameter                   | Type                                | Description                                                                                                                                                        |
+| :-------------------------- | :---------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`integrations`**          | [IntegrationOpts](#integrationopts) | Refer to the [**`IntegrationOpts`**](#integrationopts) section. More information on how to use this parameter can be found [here](#filter-selective-destinations). |
+| **`anonymousId`**           | String                              | Overrides the current event's **`anonymousId`** at the top level.                                                                                                  |
+| **`originalTimestamp`**     | ISO 8601 date string                | Overrides the current event's **`originalTimestamp`** at the top level.                                                                                            |
+| **`<other keys>: <value>`** | -                                   | Merged with the event's contextual information.                                                                                                                    |
 
 #### **`IntegrationOpts`**
 
@@ -416,7 +416,7 @@ The structure of **`IntegrationOpts`** looks like the following:
 | **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it.                                                                                            |
 
 {% hint style="info" %}
-More information on using the **`IntegrationOpts`** option can be found in [Filter Selective Destinations to Send Event Data](#filter-selective-destinations-to-send-event-data) section.
+More information on using the **`IntegrationOpts`** option can be found in [Filter Selective Destinations to Send Event Data](#filter-selective-destinations) section.
 {% endhint %}
 
 #### **`QueueOpts`**
@@ -483,9 +483,9 @@ rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL, {
 
 We will be adding similar callbacks for APIs such as `track`, `page`, `identify`, etc.
 
-## **Filter Selective Destinations to Send Event Data**
+## **Filter Selective Destinations**
 
-RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. You can do so by passing an [integrations object](#integrationopts) in the options parameter of the supported API methods.
+RudderStack allows you to load or send your event data only to a few intended destinations by filtering out the rest. You can do so by passing an [integrations object](#integrationopts) in the options parameter of the supported API methods.
 
 ### **Common Destination Names**
 
@@ -552,7 +552,7 @@ Below shows some of the supported names that RudderStack can intake for each des
 
 ### **Specifying Selective Destinations**
 
-You can also choose to load or send events to selective destinations by passing an [integrations object](#integrationopts) in the options parameter to the supported API methods. RudderStack loads or sends events only to those destinations that are enabled.
+You can also choose to load or send events to selective destinations by passing an [integrations object](#integrationopts) in the options parameter of the supported API methods. RudderStack loads or sends events only to those destinations that are enabled.
 
 The format of the `load` method with integration names passed as arguments will look like the following:
 

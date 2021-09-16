@@ -1,6 +1,6 @@
 ---
 description: >-
-  This Quick Start Guide will help you get up and running with using the RudderStack JavaScript SDK in no time.
+  To help you get up and running with using the RudderStack JavaScript SDK in no time.
 ---
 
 # **Quick Start Guide**
@@ -245,3 +245,9 @@ rudderanalytics.ready(() => {
 ```
 
 For more information on the SDK API methods, refer to [JavaScript SDK APIs](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#javascript-sdk-apis).
+
+## **Contact Us**
+
+To know more about the RudderStack JavaScript SDK, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+
+In case you come across any issues while using this SDK, please feel free to submit them on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-js/issues).

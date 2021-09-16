@@ -1,6 +1,6 @@
 ---
 description: >-
-  This page provides solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
+  Solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
 ---
 
 # **FAQs**
@@ -54,7 +54,7 @@ The size limit on requests is 32 KB per message.
 
 ## **Can I send the event data to specific destinations only?**
 
-Yes, you can. Refer to the [Filter Selective Destinations to Send Your Event Data](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#filter-selective-destinations-to-send-event-data) section to see how to do this.
+Yes, you can. Refer to the [Filter Selective Destinations](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#filter-selective-destinations) section to see how to do this.
 
 ## **What is an anonymous ID and how to retrieve it?**
 
@@ -86,3 +86,9 @@ The following list of reserved keywords are keys the RudderStack uses for a stan
 "event_text";
 "event";
 ```
+
+## **Contact Us**
+
+To know more about the RudderStack JavaScript SDK, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+
+In case you come across any issues while using this SDK, please feel free to submit them on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-js/issues).

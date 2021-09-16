@@ -24,7 +24,7 @@ Some of the properties in the snippet above are:
 Since most ad blockers block the request to the Google AdSense servers, this is assumed as a good measure to detect ad-blocked pages.
 {% endhint %}
 
-- `sendAdblockPageOptions`: The RudderStack SDK will make an implicit `page` call about the ad-blocked pages if `sendAdblockPage` is set to `true`. With `sendAdblockPageOptions` \(which internally contains [`IntegrationOpts`](#integrationopts) object\), you can provide the destinations to which you want to forward this `page` call. For more information on filtering destinations refer to [Filter Selective Destinations to Send Event Data](#filter-selective-destinations-to-send-event-data).
+- `sendAdblockPageOptions`: The RudderStack SDK will make an implicit `page` call about the ad-blocked pages if `sendAdblockPage` is set to `true`. With `sendAdblockPageOptions` \(which internally contains [`IntegrationOpts`](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#integrationopts) object\), you can provide the destinations to which you want to forward this `page` call. For more information on filtering destinations refer to [Filter Selective Destinations](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#filter-selective-destinations).
 
 The implicit `page` call semantics is as follows:
 
@@ -40,3 +40,9 @@ rudderanalytics.page(
   sendAdblockPageOptions
 );
 ```
+
+## **Contact Us**
+
+To know more about the RudderStack JavaScript SDK, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+
+In case you come across any issues while using this SDK, please feel free to submit them on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-js/issues).
