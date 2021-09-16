@@ -46,25 +46,25 @@ This command enables the user (`RUDDER`) to perform all the operations allowed f
 GRANT USAGE ON WAREHOUSE "<YOUR_WAREHOUSE>" TO ROLE RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace "<YOUR_WAREHOUSE>" with the exact name of your data warehouse in Snowflake.
+This command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace <YOUR_WAREHOUSE> with the exact name of your data warehouse in Snowflake.
 
 ```
 GRANT USAGE ON DATABASE "<YOUR_DATABASE>" TO ROLE RUDDER_ROLE; 
 ```
 
-The above command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace "<YOUR_DATABASE>" with the exact name of your database in Snowflake.
+The above command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace <YOUR_DATABASE> with the exact name of your database in Snowflake.
 
 ```
 GRANT USAGE ON SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
-This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace "<YOUR_SCHEMA>" with the exact name of your database schema in Snowflake.
+This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace <YOUR_SCHEMA> with the exact name of your database schema in Snowflake.
 
 ```
 GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to read the data from the specified table "<YOUR_TABLE>". Replace "<YOUR_TABLE>" with the exact table name in Snowflake.
+This command allows the role `RUDDER_ROLE` to read the data from the specified table "<YOUR_TABLE>". Replace <YOUR_TABLE> with the exact table name in Snowflake.
 
 ```
 CREATE SCHEMA "<YOUR_DATABASE>"."_rudderstack";
