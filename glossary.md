@@ -68,14 +68,14 @@ The Data Plane is intentionally separated from the Control Plane to give you com
 * **Customer**: User hosts both the Control Plane and Data Plane via open-source.
 {% endhint %}
 
-### Config Generator
+### Control Plane Lite
 
 RudderStack's **Control Plane** offers an intuitive UI to configure your event data sources and destinations.
 
-If you want to self-host these configurations, you can use the open-source **Config Generator** to set up your Control Plane. You can then manage the source and destination configurations locally by exporting to or importing them from a JSON file.
+If you want to self-host these configurations, you can use the open-source **Control Plane Lite** utility to set up your Control Plane. You can then manage the source and destination configurations locally by exporting to or importing them from a JSON file.
 
 {% hint style="info" %}
-For information on the Config Generator and how to use it, refer to the [**docs**](https://docs.rudderstack.com/get-started/config-generator).
+For information on Control Plane Lite and how to use it, refer to the [**docs**](https://docs.rudderstack.com/get-started/config-generator).
 {% endhint %}
 
 ## **Features**
