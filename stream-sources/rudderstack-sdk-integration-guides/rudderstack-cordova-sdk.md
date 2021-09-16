@@ -390,5 +390,17 @@ An example of setting the `device-token` is as shown:
 RudderClient.putDeviceToken("sampleDeviceToken");
 ```
 
+## FAQs
+
+### Where can I find the source write key?
+
+Once you set up a Cordova source in the [**RudderStack dashboard**](http://app.rudderstack.com/), you will be able to view the source **Write Key**, under the **Overview** section, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/133607048-cd7d4a25-7f8f-4558-83ce-52775d76d33a.png)
+
+### Where can I find the Data Plane URL?
+
+Refer to this [**section**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it) for more information on the Data Plane URL and how to get it.
+
 ## Contact us
 In case of any queries while setting up or using the Cordova SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
