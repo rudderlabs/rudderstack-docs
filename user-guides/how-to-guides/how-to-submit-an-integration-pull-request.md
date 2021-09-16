@@ -107,7 +107,7 @@ The `rudder-transformer` repository is responsible for transforming __the source
 
 The `config-generator` repository allows the user to upload the necessary settings needed for configuring the integration. Follow the pre-existing structure to the best of your ability and [**reach out to us**](https://rudderstack.com/join-rudderstack-slack-community) with any questions or concerns. 
 
-Note the following when creating the config generator:
+Note the following when creating the Control Plane:
 
 * Your documentation should be in the `.md` format
 * Include proper `regex` validation rules for all of the text input fields.
