@@ -25,10 +25,10 @@ SHOW ROLES;
 This command verifies if the role `RUDDER_ROLE` is successfully created.
 
 ```
-CREATE OR REPLACE USER RUDDER PASSWORD = '<strong_unique_password>' DEFAULT_ROLE = 'RUDDER_ROLE';
+CREATE USER RUDDER PASSWORD = '<strong_unique_password>' DEFAULT_ROLE = 'RUDDER_ROLE';
 ```
 
-This command creates a new user or replaces the existing user `RUDDER` with your password `<strong_unique_password>` in Snowflake.
+This command creates a new user `RUDDER` with your password `<strong_unique_password>` in Snowflake.
 
 ```
 SHOW USERS;
