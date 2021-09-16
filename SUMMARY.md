@@ -9,7 +9,7 @@
     * [Sending Test Events](get-started/installing-and-setting-up-rudderstack/sending-test-events.md)
   * [Dashboard Overview](get-started/dashboard-overview/README.md)
     * [User Management](get-started/dashboard-overview/user-management.md)
-  * [Config Generator](get-started/config-generator.md)
+  * [Control Plane Lite](get-started/control-plane-lite.md)
   * [Live Events](get-started/live-events.md)
   * [Architecture](get-started/rudderstack-architecture.md)
 * [Connections](connections/README.md)

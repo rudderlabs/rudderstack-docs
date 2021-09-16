@@ -44,7 +44,7 @@ The **write key** is different from your **workspace token**. The write key is a
 
 ![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.29.03-pm.png)
 
-#### **Option 2: If you are self-hosting RudderStack and have set up the control plane using the** [**RudderStack Config Generator**](../config-generator.md)**, you can find the source write key by following these steps:**
+#### **Option 2: If you are self-hosting RudderStack and have set up the control plane using the** [**RudderStack Config Generator**](../control-plane-lite.md)**, you can find the source write key by following these steps:**
 
 * Set up a source and a destination by following this [**guide**](../../connections/adding-source-and-destination-rudderstack.md). 
 * You can find the write key associated with the source in the dashboard as shown:
@@ -80,7 +80,7 @@ An example is as shown:
 * You can then check your destination to verify that the events are delivered.
 
 {% hint style="info" %}
-Note that unlike RudderStack Cloud, the Control Plane set up using the open-source [**Config Generator**](../config-generator.md) does not let you view live events.
+Note that unlike RudderStack Cloud, the Control Plane set up using the open-source [**Config Generator**](../control-plane-lite.md) does not let you view live events.
 {% endhint %}
 
 If you supply an invalid source write key or Data Plane URL, you will get the following error:
@@ -111,7 +111,7 @@ The **write key** is different from your **workspace token**. The write key is a
 
 ![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.29.03-pm.png)
 
-#### **If you are self-hosting RudderStack and have set up the control plane using the** [**RudderStack Config Generator**](../config-generator.md)**, you can find the source write key by following these steps:**
+#### **If you are self-hosting RudderStack and have set up the control plane using the** [**RudderStack Config Generator**](../control-plane-lite.md)**, you can find the source write key by following these steps:**
 
 * Set up a source by following this [**guide**](../../connections/adding-source-and-destination-rudderstack.md). 
 * You can find the write key associated with the source in the dashboard as shown:

@@ -41,7 +41,7 @@ The workspace token allows you to use the RudderStack-hosted control plane. It i
 
 #### 4. Can I self-host RudderStack?
 
-Yes, you can use the [**RudderStack Config Generator**](get-started/config-generator.md) to self-host the control plane and configure your sources and destinations. Refer to the Config Generator section below for more information/FAQs.
+Yes, you can use the [**RudderStack Config Generator**](get-started/control-plane-lite.md) to self-host the control plane and configure your sources and destinations. Refer to the Config Generator section below for more information/FAQs.
 
 #### 5. While running `git submodule update`, I get the following error:
 
