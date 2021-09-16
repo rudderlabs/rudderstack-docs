@@ -91,5 +91,5 @@ This is the URL required for routing and processing your events to RudderStack.
 
 ## Contact Us
 
-For more information on these RudderStack dashboard options, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+For more information on these RudderStack dashboard options, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 

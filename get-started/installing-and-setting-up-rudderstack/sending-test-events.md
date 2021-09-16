@@ -130,5 +130,5 @@ Refer to the [**HTTP API guide**](https://docs.rudderstack.com/rudderstack-api/h
 
 ## Contact Us
 
-If you come across any issues while sending test events to verify your RudderStack installation, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any issues while sending test events to verify your RudderStack installation, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 
