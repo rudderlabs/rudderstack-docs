@@ -58,19 +58,23 @@ The above command allows the role `RUDDER_ROLE` to look up objects within the da
 GRANT USAGE ON SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
-This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace <YOUR_SCHEMA> with the exact name of your database schema in Snowflake.
+This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace <YOUR_DATABASE> and <YOUR_SCHEMA> with the exact name of your database and the schema in Snowflake.
 
 ```
 GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to read the data from the specified table "<YOUR_TABLE>". Replace <YOUR_TABLE> with the exact table name in Snowflake.
+This command allows the role `RUDDER_ROLE` to read the data from the specified table "<YOUR_TABLE>". Replace <YOUR_DATABASE>, <YOUR_SCHEMA>, and <YOUR_TABLE> with the exact database, schema, and table names in Snowflake.
 
 ```
 CREATE SCHEMA "<YOUR_DATABASE>"."_rudderstack";
 ```
 
-This command creates a dedicated schema `_rudderstack` to be used by RudderStack for storing all the synced data.
+This command creates a dedicated schema `_rudderstack` to be used by RudderStack for storing the state of each data sync.
+
+{% hint style="warning" %}
+The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed.
+{% endhint %}
 
 ```
 GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_rudderstack" TO ROLE RUDDER_ROLE;
@@ -94,7 +98,7 @@ The above command allows the role `RUDDER_ROLE` to read data from all the tables
 GRANT SELECT ON FUTURE TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to read the data from all the future tables present in the schema `<YOUR_SCHEMA>`.
+This command allows the role `RUDDER_ROLE` to read the data from all the future tables in the schema `<YOUR_SCHEMA>`.
 
 ## Set Up as Source
 
