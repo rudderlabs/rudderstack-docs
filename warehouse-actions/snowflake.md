@@ -16,7 +16,7 @@ Run the SQL queries below in the **exact order** to grant the necessary permissi
 CREATE ROLE RUDDER_ROLE;
 ```
 
-This command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it. Also, the user `RUDDER` will be created and access control security for the system objects will be enabled for it.
+This command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it.
 
 ```
 SHOW ROLES;
@@ -173,4 +173,3 @@ If you have already configured a destination on the RudderStack platform, choose
 ## Contact Us
 
 If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
