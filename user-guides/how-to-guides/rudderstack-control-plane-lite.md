@@ -1,7 +1,7 @@
 ---
 description: >-
-  Step-by-step guide to set up your self-hosted Control Plane using RudderStack
-  Config Generator.
+  Step-by-step guide to set up your self-hosted Control Plane using
+  RudderStack's Control Plane Lite utility.
 ---
 
 # How to Use the RudderStack Control Plane Lite
