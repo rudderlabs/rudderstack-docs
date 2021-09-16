@@ -38,8 +38,8 @@ After adding the SDK as a dependency, you need to set up the SDK. Add the follow
 A sample Cordova SDK initialization is as shown:
 
 ```javascript
-RudderClient.initialize( <WRITE_KEY> , {
-  "dataPlaneUrl": <DATA_PLANE_URL> ,
+RudderClient.initialize( WRITE_KEY , {
+  "dataPlaneUrl": DATA_PLANE_URL ,
   "trackLifecycleEvents": true,
   "controlPlaneUrl": "https://api.rudderstack.com"
 })
@@ -402,5 +402,19 @@ Once you set up a Cordova source in the [**RudderStack dashboard**](http://app.r
 
 Refer to this [**section**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it) for more information on the Data Plane URL and how to get it.
 
+## Debugging
+
+If you run into any issues regarding the RudderStack Cordova SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
+
+You configure logging behaviour of your SDK by sending the value of `logLevel` property of the `configuration` object appropriately as defined [**here**](#log-level) and pass it over to the `initialize` call as shown below:
+
+```javascript
+RudderClient.initialize( WRITE_KEY , {
+  "dataPlaneUrl": DATA_PLANE_URL ,
+  "logLevel": 5,
+  "trackLifecycleEvents": true,
+  "controlPlaneUrl": "https://api.rudderstack.com"
+})
+```
 ## Contact us
 In case of any queries while setting up or using the Cordova SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
