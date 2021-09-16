@@ -268,7 +268,7 @@ You can configure your RudderStack client by passing the following parameters in
 
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
-| `logLevel` | `int` | Controls how much of the log you want to see from the Cordova SDK. | `0`  |
+| `logLevel` | `RudderClient.LogLevel` | Controls how much of the log you want to see from the Cordova SDK. | `RudderClient.LogLevel.None`  |
 | `dataPlaneUrl` | `string` | Your RudderStack Data Plane URL. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com) |
 | `flushQueueSize` | `int` | The number of events included in a batch request to the server. | `30` |
 | `dbThresholdCount` | `int` | The number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database. | `10000` |
@@ -281,14 +281,14 @@ You can configure your RudderStack client by passing the following parameters in
 
 You can set the `logLevel` in the configuration object by referring to the table below: 
 
-| Log Level | Integer |
+| Log Level | RudderClient.LogLevel |
 | :--- | :--- |
-| `VERBOSE` | `5` |
-| `DEBUG` | `4` |
-| `INFO` | `3` |
-| `WARN` | `2` |
-| `ERROR` | `1` |
-| `NONE` | `0` |
+| `VERBOSE` | `RudderClient.LogLevel.VERBOSE` |
+| `DEBUG` | `RudderClient.LogLevel.DEBUG` |
+| `INFO` | `RudderClient.LogLevel.INFO` |
+| `WARN` | `RudderClient.LogLevel.WARN` |
+| `ERROR` | `RudderClient.LogLevel.ERROR` |
+| `NONE` | `RudderClient.LogLevel.NONE` |
 
 ## Configuring your `options` object
 
@@ -406,12 +406,12 @@ Refer to this [**section**](https://docs.rudderstack.com/get-started/installing-
 
 If you run into any issues regarding the RudderStack Cordova SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
 
-You configure logging behaviour of your SDK by sending the value of `logLevel` property of the `configuration` object appropriately as defined [**here**](#log-level) and pass it over to the `initialize` call as shown below:
+You configure logging behaviour of your SDK by sending the value of `logLevel` property of the `configuration` object appropriately as defined [**here**] and pass it over to the `initialize` call as shown below:
 
 ```javascript
 RudderClient.initialize( WRITE_KEY , {
   "dataPlaneUrl": DATA_PLANE_URL ,
-  "logLevel": 5,
+  "logLevel": RudderClient.LogLevel.VERBOSE,
   "trackLifecycleEvents": true,
   "controlPlaneUrl": "https://api.rudderstack.com"
 })
