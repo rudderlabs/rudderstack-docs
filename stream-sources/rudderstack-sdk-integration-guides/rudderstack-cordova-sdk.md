@@ -40,18 +40,8 @@ A sample Cordova SDK initialization is as shown:
 ```javascript
 RudderClient.initialize( <WRITE_KEY> , {
   "dataPlaneUrl": <DATA_PLANE_URL> ,
-  "flushQueueSize": 30,
-  "dbCountThreshold": 10000,
-  "configRefreshInterval": 2,
-  "logLevel": 0,
-  "sleepTimeOut": 10,
   "trackLifecycleEvents": true,
   "controlPlaneUrl": "https://api.rudderstack.com"
-}, {
-  "integrations": {
-    "MixPanel": true,
-    "Amplitude": true
-  }
 })
  ```
 
@@ -105,10 +95,6 @@ RudderClient.identify("userId", {
 }, {
   "externalIds": {
     "brazeExternalId": "externalId1"
-  },
-  "integrations": {
-    "MixPanel": false,
-    "Amplitude": true
   }
 })
 ```
@@ -142,11 +128,6 @@ A sample `group` call is shown below:
 RudderClient.group("group1", {
   "groupname": "RS",
   "groupwork": "Mobile dev"
-}, {
-  "integrations": {
-    "All": false,
-    "Amplitude": true
-  }
 })
 ```
 
@@ -201,11 +182,6 @@ RudderClient.track('Order Completed', {
       category: 'Games'
     }
   ]
-}, {
-  "integrations": {
-    "All": false,
-    "Amplitude": true
-  }
 })
 ```
 
@@ -239,11 +215,6 @@ A sample `screen` call is shown below:
 ```javascript
 RudderClient.screen("Home Screen", {
   "mobile": "pixel"
-}, {
-  "integrations": {
-    "All": false,
-    "Amplitude": true
-  }
 })
 ```
 
@@ -271,12 +242,7 @@ For more information on the `alias` call, refer to the [**RudderStack Events Spe
 A sample `alias` call is shown below:
 
 ```javascript
-RudderClient.alias("userId", {
-  "integrations": {
-    "All": false,
-    "Amplitude": true
-  }
-})
+RudderClient.alias("userId")
 ```
 
 The `alias` method has the following signature:
@@ -332,10 +298,6 @@ The sample format of the `options` object that can send along with all the above
 {
   "externalIds": {
     "brazeExternalId": "externalId1"
-  },
-  "integrations": {
-    "MixPanel": false,
-    "Amplitude": true
   }
 }
 ```
