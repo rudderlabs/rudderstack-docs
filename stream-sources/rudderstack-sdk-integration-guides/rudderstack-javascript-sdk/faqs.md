@@ -1,6 +1,6 @@
 ---
 description: >-
-  This section provides solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
+  This page provides solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
 ---
 
 # **FAQs**
