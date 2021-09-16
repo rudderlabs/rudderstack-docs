@@ -10,20 +10,91 @@ This guide will help you configure Snowflake as a source from which you can rout
 
 ## Granting Permissions
 
-Run the following SQL queries to grant the necessary permissions for warehouse action
+Run the SQL queries below in the **exact order** to grant the necessary permissions for the Warehouse Actions source:
 
-```text
-CREATE ROLE RUDDER_ROLE;
-SHOW ROLES;
-CREATE OR REPLACE USER RUDDER PASSWORD = 'strong_unique_password' DEFAULT_ROLE = 'RUDDER_ROLE';
-SHOW USERS;
-GRANT ROLE RUDDER_ROLE TO USER RUDDER;
-GRANT USAGE ON WAREHOUSE TESTWAREHOUSE TO ROLE RUDDER_ROLE; 
-GRANT USAGE ON DATABASE TESTDATABASE TO ROLE RUDDER_ROLE; 
-GRANT USAGE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
-GRANT CREATE TABLE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
-GRANT SELECT ON TABLE TESTDATABASE.TESTSCHEMA.TESTTABLE TO ROLE RUDDER_ROLE;
 ```
+CREATE ROLE RUDDER_ROLE;
+```
+
+This command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it. Also, the user `RUDDER` will be created and access control security for the system objects will be enabled for it.
+
+```
+SHOW ROLES;
+```
+
+This command verifies if the role `RUDDER_ROLE` is successfully created.
+
+```
+CREATE OR REPLACE USER RUDDER PASSWORD = '<strong_unique_password>' DEFAULT_ROLE = 'RUDDER_ROLE';
+```
+
+This command creates a new user or replaces the existing user `RUDDER` with your password `<strong_unique_password>` in Snowflake.
+
+```
+SHOW USERS;
+```
+
+The above command verifies if the user `RUDDER` is successfully created.
+
+```
+GRANT ROLE RUDDER_ROLE TO USER RUDDER;
+```
+
+This command enables the user (`RUDDER`) to perform all the operations allowed for the role (via the access privileges granted to it).
+
+```
+GRANT USAGE ON WAREHOUSE "<YOUR_WAREHOUSE>" TO ROLE RUDDER_ROLE;
+```
+
+This command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace "<YOUR_WAREHOUSE>" with the exact name of your data warehouse in Snowflake.
+
+```
+GRANT USAGE ON DATABASE "<YOUR_DATABASE>" TO ROLE RUDDER_ROLE; 
+```
+
+The above command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace "<YOUR_DATABASE>" with the exact name of your database in Snowflake.
+
+```
+GRANT USAGE ON SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace "<YOUR_SCHEMA>" with the exact name of your database schema in Snowflake.
+
+```
+GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
+```
+
+This command allows the role `RUDDER_ROLE` to read the data from the specified table "<YOUR_TABLE>". Replace "<YOUR_TABLE>" with the exact table name in Snowflake.
+
+```
+CREATE SCHEMA "<YOUR_DATABASE>"."_rudderstack";
+```
+
+This command creates a dedicated schema `_rudderstack` to be used by RudderStack for storing all the synced data.
+
+```
+GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_rudderstack" TO ROLE RUDDER_ROLE;
+```
+
+This command allows `RUDDER_ROLE` to have full access to the schema `_rudderstack`.
+
+```
+GRANT CREATE TABLE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
+```
+
+**Optional**: Run the following commands to allow the role `RUDDER_ROLE` to read the data from all the tables in the schema `<YOUR_SCHEMA>`:
+
+```
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+The above command allows the role `RUDDER_ROLE` to read data from all the tables in the schema `<YOUR_SCHEMA>`. 
+
+```
+GRANT SELECT ON FUTURE TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+This command allows the role `RUDDER_ROLE` to read the data from all the future tables present in the schema `<YOUR_SCHEMA>`.
 
 ## Set Up as Source
 
