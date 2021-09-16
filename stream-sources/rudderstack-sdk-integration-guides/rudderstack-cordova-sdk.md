@@ -84,7 +84,7 @@ RudderClient.identify("userId", {
     "country": "India",
     "state": "Telangana",
   },
-  "birthday": "17/07/1984",
+  "birthday": "1984/07/17",
   "company": {
     "name": "RudderStack",
     "id": "RS",
