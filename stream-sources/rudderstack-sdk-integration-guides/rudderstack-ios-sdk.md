@@ -323,21 +323,21 @@ You can configure your client based on the following parameters using `RudderCon
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
 | `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RSLogLevelNone` |
-| `dataPlaneUrl` | `string` | Your Data Plane URL. | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com)\*\*\*\* |
+| `dataPlaneUrl` | `string` | Your Data Plane URL. | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request sent to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
 | `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server . | `10 seconds` |
 | `configRefreshInterval` | `int` | Fetches the config from `dashboard` after the specified time \(in hours\). | `2` |
 | `trackLifecycleEvents` | `boolean` | Specify whether the SDK will capture application life cycle events automatically. | `true` |
 | `recordScreenViews` | `boolean` | Specify whether the SDK will capture screen view events automatically. | `false` |
-| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com)\*\*\*\* |
+| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com) |
 
 ### Self-Hosted Control Plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the iOS SDK needs to fetch the required configuration from the Control Plane. If you are using the **RudderStack Config Generator** to host your own Control Plane, then follow [this guide](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in `RudderConfigBuilder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the iOS SDK needs to fetch the required configuration from the Control Plane. If you are using the [**Control Plane Lite**](../../get-started/control-plane-lite.md) utility to host your own Control Plane, then follow [**this guide**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in `RudderConfigBuilder` that points to your hosted source configuration file.
 
 {% hint style="warning" %}
-You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using [**RudderStack Cloud**](https://app.rudderstack.com). This parameter is supported only if you are using our open-source [**RudderStack Config Generator**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator).
+You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using [**RudderStack Cloud**](https://app.rudderstack.com). This parameter is supported only if you are using our open-source [**Control Plane Lite**](../../get-started/control-plane-lite.md) utility to self-host your Control Plane.
 {% endhint %}
 
 ## Setting Device Token
