@@ -34,7 +34,7 @@ We would love to see you contribute to RudderStack. Get more information on how 
 ## Follow Us
 
 * [**RudderStack Blog**](https://rudderstack.com/blog/)
-* [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack)
+* [**Slack**](https://rudderstack.com/join-rudderstack-slack-community)
 * [**Twitter**](https://twitter.com/rudderstack)
 * [**LinkedIn**](https://www.linkedin.com/company/rudderlabs/)
 * [**DEV Community**](https://dev.to/rudderstack)
