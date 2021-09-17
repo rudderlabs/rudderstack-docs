@@ -10,16 +10,63 @@ This guide will help you configure PostgreSQL as a source from which you can rou
 
 ## Granting Permissions
 
-Run the following SQL queries to grant the necessary permissions for warehouse action
+Run the SQL queries below in the **exact order** to grant the necessary permissions for the Warehouse Actions source:
 
-```text
-CREATE USER RUDDER WITH PASSWORD 'strong_unique_password'
-GRANT USAGE ON SCHEMA "testschema" TO RUDDER;
-GRANT SELECT ON TABLE "testschema"."testtable" to RUDDER;
-GRANT CREATE ON SCHEMA "testschema" to RUDDER;
+```
+CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 ```
 
-## Set Up as Source
+The above command creates a new user `rudder` with your password `<strong_unique_password>` in PostgreSQL.
+
+```
+GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
+```
+
+This command lets the user `rudder` look up objects within the schema `<YOUR_SCHEMA>`. Replace <YOUR_SCHEMA> with the exact name of your PostgreSQL database schema.
+
+``` 
+GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
+```
+ 
+This command allows the user `rudder` to read data from the table `<YOUR_TABLE>`. Replace <YOUR_SCHEMA> and <YOUR_TABLE> with the exact name of your database schema and table names in PostgreSQL.
+
+```
+CREATE SCHEMA "_rudderstack";
+```
+The above command creates a dedicated schema `_rudderstack` that is used by Rudderstack for for storing the state of each data sync.
+
+{% hint style="warning" %}
+The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed.
+{% endhint %}
+
+```
+GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
+```
+
+This command allows the user `rudder` to have full access to the schema `_rudderstack`.
+
+```
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
+```
+
+Allows the user `rudder` to have full access to all the objects existing in the schema `_rudderstack`.
+
+**Optional**: Run the following commands to allow the user `rudder` to read the data from all the tables in the schema `<YOUR_SCHEMA>`.
+ 
+```
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
+```
+
+This command lets the user `rudder` to read data from all the tables in the schema "<YOUR_SCHEMA>".
+
+```
+ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
+```
+ 
+Allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`.
+
+
+## Setting Up as Source
 
 To set up PostgreSQL as a source in RudderStack, follow these steps:
 
