@@ -38,7 +38,7 @@ To capture the event dumps in your S3 bucket, uncomment the following lines in y
 Then follow these steps:
 
 * Specify your S3 bucket name for the variable `JOBS_BACKUP_BUCKET`.
-* Add the specific AWS IAM keys by following the **Permissions for Amazon S3** section below.
+* Add the specific AWS IAM keys by following the [**Permissions for Amazon S3**](https://docs.rudderstack.com/user-guides/administrators-guide/bucket-configuration-settings#permissions-for-amazon-s3) section below.
 
 {% hint style="info" %}
 The `<prefix>` value for the **`JOBS_BACKUP_PREFIX`** variable refers to the path under the bucket in which RudderStack dumps the data. 
@@ -66,7 +66,7 @@ To capture the event dumps in your GCS bucket, uncomment the following lines in 
 Then, follow these steps:
 
 * Specify your GCS bucket name for the variable `JOBS_BACKUP_BUCKET`.
-* Specify the location of the downloaded JSON file containing the required permissions for the variable `GOOGLE_APPLICATION_CREDENTIALS`. You can obtain this JSON file by referring to the **Permissions for GCS** section below.
+* Specify the location of the downloaded JSON file containing the required permissions for the variable `GOOGLE_APPLICATION_CREDENTIALS`. You can obtain this JSON file by referring to the [**Permissions for GCS**](https://docs.rudderstack.com/user-guides/administrators-guide/bucket-configuration-settings#permissions-for-gcs) section below.
 
 {% hint style="success" %}
 **If you're a RudderStack Pro/Enterprise user, you can share the downloaded JSON containing the required permissions with the RudderStack team by** [**contacting us**](https://resources.rudderstack.com/join-rudderstack-slack)**.**
