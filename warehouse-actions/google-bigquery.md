@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest your data from Google BigQuery into Ru
 
 # Google BigQuery
 
-[Google BigQuery](https://cloud.google.com/bigquery) ****is an industry-leading, fully-managed cloud data warehouse that allows you to store and analyze petabytes of data in no time.
+[Google BigQuery](https://cloud.google.com/bigquery) is an industry-leading, fully-managed cloud data warehouse that allows you to store and analyze petabytes of data in no time.
 
 This guide will help you configure BigQuery as a source from which you can route event data to your desired destinations through RudderStack.
 
