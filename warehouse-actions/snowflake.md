@@ -46,19 +46,19 @@ This command enables the user \(`RUDDER`\) to perform all the operations allowed
 GRANT USAGE ON WAREHOUSE "<YOUR_WAREHOUSE>" TO ROLE RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace  with the exact name of your data warehouse in Snowflake.
+This command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace `<YOUR_WAREHOUSE>` with the exact name of your data warehouse in Snowflake.
 
 ```text
 GRANT USAGE ON DATABASE "<YOUR_DATABASE>" TO ROLE RUDDER_ROLE;
 ```
 
-The above command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace  with the exact name of your database in Snowflake.
+The above command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace `<YOUR_DATABASE>` with the exact name of your database in Snowflake.
 
 ```text
 GRANT USAGE ON SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
-This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace  and  with the exact name of your database and the schema in Snowflake.
+This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_DATABASE>` and `<YOUR_SCHEMA>` with the exact name of your database and the schema in Snowflake.
 
 ```text
 GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
@@ -67,20 +67,20 @@ GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  
 This command allows the role `RUDDER_ROLE` to read the data from the specified table "`<YOUR_TABLE>`". Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact database, schema, and table names in Snowflake.
 
 ```text
-CREATE SCHEMA "<YOUR_DATABASE>"."_rudderstack";
+CREATE SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK";
 ```
 
-This command creates a dedicated schema `_rudderstack` to be used by RudderStack for storing the state of each data sync.
+This command creates a dedicated schema `_RUDDERSTACK` to be used by RudderStack for storing the state of each data sync.
 
 {% hint style="warning" %}
-The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed.
+The `_RUDDERSTACK` schema is used by RudderStack. Its name **should not** be changed.
 {% endhint %}
 
 ```text
-GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_rudderstack" TO ROLE RUDDER_ROLE;
+GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK" TO ROLE RUDDER_ROLE;
 ```
 
-This command allows `RUDDER_ROLE` to have full access to the schema `_rudderstack`.
+This command allows `RUDDER_ROLE` to have full access to the schema `_RUDDERSTACK`.
 
 **Optional**: Run the following commands to allow the role `RUDDER_ROLE` to read the data from all the tables in the schema `<YOUR_SCHEMA>`:
 
@@ -103,7 +103,7 @@ To set up Snowflake as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%282%29.png)
+![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.png)
 
 * Scroll down to the **Warehouse Sources** and select **Snowflake**. Then, click on **Next**.
 
