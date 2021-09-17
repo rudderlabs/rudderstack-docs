@@ -38,33 +38,33 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 
 ```javascript
 <script>
-    rudderanalytics = window.rudderanalytics = [];
+rudderanalytics = window.rudderanalytics = [];
 
-    var  methods = [
-        "load",
-        "page",
-        "track",
-        "identify",
-        "alias",
-        "group",
-        "ready",
-        "reset",
-        "getAnonymousId",
+var  methods = [
+    "load",
+    "page",
+    "track",
+    "identify",
+    "alias",
+    "group",
+    "ready",
+    "reset",
+    "getAnonymousId",
     "setAnonymousId"
-    ];
+];
 
-    for (var i = 0; i < methods.length; i++) {
-          var method = methods[i];
-          rudderanalytics[method] = function (methodName) {
-                return function () {
-                      rudderanalytics.push([methodName].concat(Array.prototype.slice.call(arguments)));
-                };
-              }(method);
-    }
-    rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL);
-    //For example,
-    //rudderanalytics.load("1Qb1F3jSWv0eKFBPZcrM7ypgjVo", "http://localhost:8080");
-    rudderanalytics.page();
+for (var i = 0; i < methods.length; i++) {
+    var method = methods[i];
+    rudderanalytics[method] = function (methodName) {
+        return function () {
+            rudderanalytics.push([methodName].concat(Array.prototype.slice.call(arguments)));
+        };
+    }(method);
+}
+rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL);
+//For example,
+//rudderanalytics.load("1Qb1F3jSWv0eKFBPZcrM7ypgjVo", "http://localhost:8080");
+rudderanalytics.page();
 </script>
 
 <script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
