@@ -70,7 +70,7 @@ This command allows the user `rudder` to have full access to all the objects tha
 ``` 
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
-This command allows the user `rudder` to read data from all the tables in the schema `<YOUR_SCHEMA>`.
+This command allows the user `rudder` to view and read the data from all the tables present in the schema `<YOUR_SCHEMA>`.
 
 ``` 
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
