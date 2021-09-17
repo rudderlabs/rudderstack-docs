@@ -66,7 +66,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rud
 This command allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`.
 
 
-## Setting Up as Source
+## Setting Up the Source
 
 To set up PostgreSQL as a source in RudderStack, follow these steps:
 
@@ -133,4 +133,3 @@ If you have already configured a destination on the RudderStack platform, choose
 ## Contact Us
 
 If you come across any issues while configuring PostgreSQL as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
