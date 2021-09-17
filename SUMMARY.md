@@ -244,7 +244,7 @@
     * [Software Releases](user-guides/administrators-guide/software-releases.md)
     * [High Availability](user-guides/administrators-guide/high-availability.md)
     * [Horizontal Scaling](user-guides/administrators-guide/horizontal-scaling-1.md)
-    * [Events Backup Bucket Permissions](user-guides/administrators-guide/event-dump-bucket-permissions.md)
+    * [Bucket Configuration Settings for Event Backups](user-guides/administrators-guide/bucket-configuration-settings.md)
     * [Alerting Guide](user-guides/administrators-guide/alerting.md)
     * [Infrastructure Provisioning](user-guides/administrators-guide/infra-provisioning.md)
     * [Monitoring and Metrics](user-guides/administrators-guide/monitoring-and-metrics.md)
