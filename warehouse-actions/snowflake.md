@@ -120,7 +120,7 @@ GRANT SELECT ON FUTURE VIEWS IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE
 
 This command allows the role `RUDDER_ROLE` __to read the data from all the future views in the schema `<YOUR_SCHEMA>`.
 
-## Set Up as Source
+## Setting Up the Source
 
 To set up Snowflake as a source in RudderStack, follow these steps:
 
