@@ -34,13 +34,13 @@ For more information on the password rules, refer to the [**Amazon Redshift docu
 GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
-This command allows the user `rudder` to look up objects within the schema `<YOUR_SCHEMA>`. Replace <YOUR_SCHEMA> with the exact name of your Redshift schema.
+This command allows the user `rudder` to look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema.
 
 ```
 GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
 ```
 
-This command allows the user `rudder` to read the data from specified table `<YOUR_TABLE>`. Replace <YOUR_SCHEMA> and <YOUR_TABLE> with the exact names of your Redshift schema and table.
+This command allows the user `rudder` to read the data from specified table `<YOUR_TABLE>`. Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your Redshift schema and table.
 
 ```
 CREATE SCHEMA "_rudderstack";
