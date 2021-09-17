@@ -4,7 +4,7 @@ description: >-
   RudderStack Web Device mode.
 ---
 
-# Sending Events to ProfitWell via Device Mode
+# Device Mode
 
 RudderStack lets you send your event data to ProfitWell via the Web Device mode, i.e. using the native web SDK.
 
@@ -13,7 +13,7 @@ For more information on sending events via the Device mode, refer to the [**Rudd
 {% endhint %}
 
 {% hint style="success" %}
-**Find the open-source JavaScript SDK code for this destination in our [GitHub repository](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/ProfitWell)**.
+**Find the open-source JavaScript SDK code for this destination in our** [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/ProfitWell).
 {% endhint %}
 
 ## Getting Started
@@ -22,10 +22,10 @@ To enable sending data to ProfitWell, you will first need to add it as a destina
 
 Before configuring ProfitWell as a destination in RudderStack, make sure that the source platform is supported by ProfitWell by referring to the following table:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | **Supported** | -             | -             |
-| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | **Supported** | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 Once you have confirmed that the source platform supports sending events to ProfitWell, follow the steps below:
 
@@ -52,7 +52,6 @@ The **Private API Key** field is **not** required if you want to send the events
 {% endhint %}
 
 * **Site Type**: Choose the site type from the dropdown. If the site type is **Web App**, then RudderStack will start the ProfitWell service either with `email` or `userId`. For the type **Marketing**, RudderStack will start the ProfitWell service anonymously.
-
 * **Use device-mode to send events**: Enable this option to send events via the **Device mode**.
 
 {% hint style="warning" %}
@@ -76,3 +75,4 @@ For the `identify` call to trigger user engagements, you need to first create [*
 ## Contact Us
 
 In case of any issues while configuring or using ProfitWell with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+

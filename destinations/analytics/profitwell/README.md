@@ -19,3 +19,4 @@ This documentation is split into the following sections:
 ## Contact Us
 
 In case of any issues while configuring or using ProfitWell with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+

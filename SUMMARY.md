@@ -103,7 +103,7 @@
     * [PostHog](destinations/analytics/posthog.md)
     * [ProfitWell](destinations/analytics/profitwell/README.md)
       * [Cloud Mode](destinations/analytics/profitwell/profitwell-cloud-mode.md)
-      * [Device Mode](destinations/analytics/profitwell/profitwell-web-device-mode.md)   
+      * [Device Mode](destinations/analytics/profitwell/profitwell-web-device-mode.md)
     * [Lytics](destinations/analytics/lytics.md)
   * [CRM](destinations/crm/README.md)
     * [Salesforce](destinations/crm/salesforce.md)
