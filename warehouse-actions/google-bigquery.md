@@ -69,7 +69,7 @@ bigquery.tables.updateData
 * Finally, download this JSON file. This file is required while creating a BigQuery warehouse source in RudderStack - the next section covers the steps to do this.
 
 {% hint style="info" %}
-RudderStack creates a dedicated dataset called `rudderstack` in your project that is used to store the state of each data sync.
+RudderStack creates a dedicated dataset called `rudderstack_` in your project that is used to store the state of each data sync.
 {% endhint %}
 
 ## Setting Up the Source
