@@ -49,7 +49,7 @@ This command allows the user `rudder` to have full access to the schema `_rudder
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 ```
 
-Allows the user `rudder` to have full access to all the objects existing in the schema `_rudderstack`.
+This command lets the user `rudder` to have full access to all the objects existing in the schema `_rudderstack`.
 
 **Optional**: Run the following commands to allow the user `rudder` to read the data from all the tables in the schema `<YOUR_SCHEMA>`.
  
@@ -63,7 +63,7 @@ This command lets the user `rudder` to read data from all the tables in the sche
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
 ```
  
-Allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`.
+This command allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`.
 
 
 ## Setting Up as Source
