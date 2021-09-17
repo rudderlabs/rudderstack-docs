@@ -10,6 +10,12 @@ This guide will help you configure Snowflake as a source from which you can rout
 
 ## Granting Permissions
 
+{% hint style="warning" %}
+You must have the **ACCOUNTADMIN** role in order to grant the necessary permissions.
+{% endhint %}
+
+![](../.gitbook/assets/screenshot-2021-09-17-at-6.46.08-pm.png)
+
 Run the SQL queries below in the **exact order** to grant the necessary permissions for the Warehouse Actions source:
 
 ```text
