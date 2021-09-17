@@ -16,13 +16,13 @@ You must have the **ACCOUNTADMIN** role in order to grant the necessary permissi
 
 ![](../.gitbook/assets/screenshot-2021-09-17-at-6.46.08-pm.png)
 
-Run the SQL queries below in the **exact order** to grant the necessary permissions for the Warehouse Actions source:
+Run the following SQL queries in the **exact order** to grant the necessary permissions for the Snowflake Warehouse Actions source:
 
 ```text
 CREATE ROLE RUDDER_ROLE;
 ```
 
-This command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it.
+The above command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it.
 
 ```text
 SHOW ROLES;
@@ -70,7 +70,13 @@ This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOU
 GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to read the data from the specified table "`<YOUR_TABLE>`". Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact database, schema, and table names in Snowflake.
+This command allows the role `RUDDER_ROLE` to read the data from the specified table `<YOUR_TABLE>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact database, schema, and table names in Snowflake.
+
+```text
+GRANT SELECT ON VIEW "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_VIEW>" TO ROLE  RUDDER_ROLE;
+```
+
+The above command allows the role `RUDDER_ROLE` to read the data from the specified view `<YOUR_VIEW>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_VIEW>` with the exact database, schema, and view names in Snowflake.
 
 ```text
 CREATE SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK";
@@ -88,7 +94,7 @@ GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK" TO ROLE RUDDER_R
 
 This command allows `RUDDER_ROLE` to have full access to the schema `_RUDDERSTACK`.
 
-**Optional**: Run the following commands to allow the role `RUDDER_ROLE` to read the data from all the tables in the schema `<YOUR_SCHEMA>`:
+**Optional**: Run the following commands to allow the role `RUDDER_ROLE` to read the data from all the tables and views in the schema `<YOUR_SCHEMA>`:
 
 ```text
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
@@ -101,6 +107,18 @@ GRANT SELECT ON FUTURE TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROL
 ```
 
 This command allows the role `RUDDER_ROLE` to read the data from all the future tables in the schema `<YOUR_SCHEMA>`.
+
+```text
+GRANT SELECT ON ALL VIEWS IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+The above command allows the role `RUDDER_ROLE` to read data from all the views in the schema `<YOUR_SCHEMA>`.
+
+```text
+GRANT SELECT ON FUTURE VIEWS IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+This command allows the role `RUDDER_ROLE` __to read the data from all the future views in the schema `<YOUR_SCHEMA>`.
 
 ## Set Up as Source
 
