@@ -10,34 +10,69 @@ This guide will help you configure BigQuery as a source from which you can route
 
 ## Granting Permissions
 
-Follow these steps below to grant the necessary permissions for warehouse actions. For BigQuery, use the BigQuery Console.
+Follow these steps below to grant the necessary permissions for Warehouse Actions. For BigQuery, use the **BigQuery Console**.
 
-* Go to [https://console.cloud.google.com/iam-admin/roles](https://console.cloud.google.com/iam-admin/roles) and click on “CREATE ROLE”.
-* Fill it in as shown below. 
+* Go to [**https://console.cloud.google.com/iam-admin/roles**](https://console.cloud.google.com/iam-admin/roles) and click on **CREATE ROLE**.
+
+* Then, fill in the details as shown: 
 
 ![](../.gitbook/assets/image1.png)
 
-* Click on “ADD PERMISSIONS” and add the permissions mentioned below.
+* Next, click on **ADD PERMISSIONS** and add the permissions as listed in the following image:
 
 ![](../.gitbook/assets/image3.png)
 
-* Click on “CREATE”.
-* Now, move to [https://console.cloud.google.com/iam-admin/serviceaccounts](https://console.cloud.google.com/iam-admin/serviceaccounts) and select the project which has the dataset or table you want to share.
-* Click on “CREATE SERVICE ACCOUNT”.
-* Fill in the details in Step 1 and click CREATE:
+The permissions are as shown below:
+
+```
+bigquery.datasets.get
+bigquery.jobs.create
+bigquery.jobs.list
+bigquery.tables.create
+bigquery.tables.get
+bigquery.tables.getData
+bigquery.tables.list
+bigquery.tables.update
+bigquery.tables.updateData
+```
+
+* After adding all the required permissions, click on **CREATE**.
+
+* Next, go to [**https://console.cloud.google.com/iam-admin/serviceaccounts**](https://console.cloud.google.com/iam-admin/serviceaccounts).
+
+* Select the project which has the dataset or the table that you want to use.
+
+* Click on **CREATE SERVICE ACCOUNT**.
+
+* Fill in the details in Step **1** as shown below, and click **CREATE AND CONTINUE**:
 
 ![](../.gitbook/assets/image2.png)
 
-* Fill in the details in Step 2 and click CONTINUE:
+* Then, fill in the details in Step **2** as shown below, and click **CONTINUE**:
 
 ![](../.gitbook/assets/image4.png)
 
-* After filling in steps 1 and 2 click DONE.
-* This will move you to the list of service accounts. Now, click on the “3 dots” for the service account that just created, and select “Manage keys”.
-* Click on ADD KEY and select "Create new key". In the pop up select JSON and click CREATE. 
-* Download this json file and use its data while creating a BQ source on RudderStack.
+* After completing steps **1** and **2**, click on **DONE**. This will move you to the list of service accounts.
 
-## Set Up as Source
+* Now, click on the three dots under **Actions** in the service account that you just created and select **Manage keys**, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/133751172-bd11d971-1e15-4c06-831e-23058a2eed86.png)
+
+* Click on **ADD KEY**, followed by **Create new key**, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/133751255-356dab76-a795-4428-8e72-9c46b0031d79.png)
+
+* In the resulting pop-up, select **JSON** and click on **CREATE**.
+
+![](https://user-images.githubusercontent.com/59817155/133751286-a7897da9-eb9d-48ef-be29-f16f0e65e2bb.png)
+ 
+* Finally, download this JSON file. This file is required while creating a BigQuery warehouse source in RudderStack - the next section covers the steps to do this.
+
+{% hint style="info" %}
+RudderStack creates a dedicated dataset called `rudderstack` in your project that is used to store the state of each data sync.
+{% endhint %}
+
+## Setting Up the Source
 
 To set up Google BigQuery as a source in RudderStack, follow these steps:
 
