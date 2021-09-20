@@ -39,7 +39,7 @@ A sample Cordova SDK initialization is as shown:
 
 ```javascript
 RudderClient.initialize(WRITE_KEY , {
-  "dataPlaneUrl": DATA_PLANE_URL
+  dataPlaneUrl: DATA_PLANE_URL
 })
  ```
 
@@ -77,19 +77,19 @@ A sample `identify` call is as shown below:
 
 ```javascript
 RudderClient.identify("userId", {
-    "address": {
-        "city": "Hyderabad",
-        "country": "India",
-        "state": "Telangana",
+    address: {
+        city: "Hyderabad",
+        country: "India",
+        state: "Telangana",
     },
-    "birthday": "1984/07/17",
-    "company": {
-        "name": "RudderStack",
-        "id": "RS",
-        "industry": "IT"
+    birthday: "1984/07/17",
+    company: {
+        name: "RudderStack",
+        id: "RS",
+        industry: "IT"
     },
-    "email": "john@rudderstack.com",
-    "firstName": "john",
+    email: "john@rudderstack.com",
+    firstName: "john",
 }
 })
 ```
@@ -104,6 +104,7 @@ The `identify` method has the following signatures:
 {% hint style="info" %}
 For more information on the behavior of the `options` property, refer to the **Configuring your `options` object** section below.
 {% endhint %}
+
 ## Track
 
 The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with the action.
@@ -196,7 +197,6 @@ The `group` method has the following signatures:
 | `groupTraits` | `JSON Object` | Optional | Any other property of the organization that you want to pass along with the call. |
 | `options` | `JSON Object` | Optional | Extra options for the `group` event. |
 
-
 ## Screen
 
 The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the viewed screen. 
@@ -209,7 +209,7 @@ A sample `screen` call is shown below:
 
 ```javascript
 RudderClient.screen("Home Screen", {
-  "mobile": "pixel"
+  mobile: "pixel"
 })
 ```
 
@@ -247,7 +247,6 @@ The `alias` method has the following signature:
 | `newId` | `String` | Required | The new `userId` that you want to assign to the user. |
 | `options` | `JSON Object` | Optional | Event level options. |
 
-
 ## Reset
 
 You can use the `reset` method to clear the persisted `traits` from the `identify` call. We recommend calling it during the `Logout` operation.
@@ -257,6 +256,7 @@ A sample `reset` call is as shown:
 ```javascript
 RudderClient.reset()
 ```
+
 ## Configuring the RudderStack client
 
 You can configure your RudderStack client by passing the following parameters in the `configuration` object of your `RudderClient.initialize()` call:
@@ -290,7 +290,6 @@ The `options` object has the following signature:
 | `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
 | `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the **Enabling/disabling events for specific destinations** section below.  |
 
-
 ## Enabling/disabling events for specific destinations
 
 RudderStack lets you send your event data only to the explicitly specified destinations and filtering out the rest. You can do this in one of the following two ways:
@@ -306,19 +305,19 @@ A sample SDK initialization is shown below:
 
 ```javascript
 RudderClient.initialize("1n0JdVPZTRUIkLXYccrWzZwdGSx", {
-  "dataPlaneUrl": "https://0ff6-175-101-36-4.ngrok.io",
-  "flushQueueSize": 30,
-  "dbCountThreshold": 10000,
-  "configRefreshInterval": 2,
-  "logLevel": 0,
-  "sleepTimeOut": 10,
-  "trackLifecycleEvents": true,
-  "recordScreenViews": true,
-  "controlPlaneUrl": "https://api.rudderstack.com"
+  dataPlaneUrl: "https://0ff6-175-101-36-4.ngrok.io",
+  flushQueueSize: 30,
+  dbCountThreshold: 10000,
+  configRefreshInterval: 2,
+  logLevel: 0,
+  sleepTimeOut: 10,
+  trackLifecycleEvents: true,
+  recordScreenViews: true,
+  controlPlaneUrl: "https://api.rudderstack.com"
 }, {
-  "integrations": {
-    "MixPanel": true,
-    "Amplitude": true
+  integrations: {
+    MixPanel: true,
+    Amplitude: true
   }
 })
 ```
@@ -331,11 +330,11 @@ An example is shown below:
 
 ```javascript
 RudderClient.screen("Home Screen", {
-  "mobile": "pixel"
+  mobile: "pixel"
 }, {
-  "integrations": {
-    "All": false,
-    "Salesforce": true
+  integrations: {
+    All: false,
+    Salesforce: true
   }
 })
 ```
@@ -392,10 +391,10 @@ You configure logging behaviour of your SDK by sending the value of `logLevel` p
 
 ```javascript
 RudderClient.initialize( WRITE_KEY , {
-  "dataPlaneUrl": DATA_PLANE_URL ,
-  "logLevel": RudderClient.LogLevel.VERBOSE,
-  "trackLifecycleEvents": true,
-  "controlPlaneUrl": "https://api.rudderstack.com"
+  dataPlaneUrl: DATA_PLANE_URL ,
+  logLevel: RudderClient.LogLevel.VERBOSE,
+  trackLifecycleEvents: true,
+  controlPlaneUrl: "https://api.rudderstack.com"
 })
 ```
 ## Contact us
