@@ -101,7 +101,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE R
 ```
 
 {% hint style="warning" %}
-Run the above command only if you're okay with RudderStack being able to access all the data within your specified schema.
+Run the above command only if you're okay with RudderStack being able to access all the tables within your specified schema.
 {% endhint %}
 
 * The following **optional** command allows the role `<RUDDER_ROLE>` to read data from all the **future** **tables** in the schema `<YOUR_SCHEMA>`:
