@@ -12,7 +12,7 @@ This guide will help you configure BigQuery as a source from which you can route
 
 Follow these steps below to grant the necessary permissions for Warehouse Actions. For BigQuery, use the **BigQuery Console**.
 
-### Creating the role and adding required permissions to it
+### Creating the role and adding required permissions
 
 * Go to [**https://console.cloud.google.com/iam-admin/roles**](https://console.cloud.google.com/iam-admin/roles) and click on **CREATE ROLE**.
 
