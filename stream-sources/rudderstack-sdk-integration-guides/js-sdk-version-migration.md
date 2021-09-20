@@ -49,7 +49,7 @@ If you are forwarding or proxying RudderStack's CDN, follow these steps:
 * Then, go to **Behaviors**, and check that the sub-path `/v1.1/*` is **not configured to be blocked** in any way. 
 
 {% hint style="info" %}
-This step is required to ensure that both the code SDK and destination SDKs are forwarded properly.
+This step is required to ensure that both the core SDK and destination SDKs are forwarded properly.
 {% endhint %}
 
 * Finally, update the script tag in your website:
