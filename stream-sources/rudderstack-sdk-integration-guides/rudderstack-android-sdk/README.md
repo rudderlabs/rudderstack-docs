@@ -373,6 +373,28 @@ rudderClient.reset();
 {% endtab %}
 {% endtabs %}
 
+## Opt-out
+
+You can provide the ability to the user (for example, EU users) to opt-out from tracking activities, using the below `optOut` API snippet. Opt-out could be set to `true` or `false` to enable or disable tracking activities. This flag persist across device reboots.
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(true)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(true);
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack Android SDK starting from version `1.0.19`.
+{% endhint %}
+
 ## Configuring your RudderStack Client
 
 You can configure your client based on the following parameters using `RudderConfig.Builder`:
