@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest your data from Snowflake into RudderSt
 
 # Snowflake
 
-\*\*\*\*[**Snowflake**](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
+[Snowflake](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
 
 This guide will help you configure Snowflake as a source from which you can route event data to your desired destinations through RudderStack.
 
@@ -17,8 +17,6 @@ You must have the **ACCOUNTADMIN** role in order to grant the necessary permissi
 ![](../.gitbook/assets/screenshot-2021-09-17-at-6.46.08-pm.png)
 
 Run the following SQL queries in the **exact order** to grant the necessary permissions for the Snowflake Warehouse Actions source:
-
-### User & role creation
 
 ```text
 CREATE ROLE RUDDER_ROLE;
@@ -43,26 +41,6 @@ SHOW USERS;
 ```
 
 The above command verifies if the user `RUDDER` is successfully created.
-
-### Creating the RudderStack schema & granting permissions
-
-```text
-CREATE SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK";
-```
-
-This command creates a dedicated schema `_RUDDERSTACK` to be used by RudderStack for storing the state of each data sync.
-
-{% hint style="warning" %}
-The `_RUDDERSTACK` schema is used by RudderStack. Its name **should not** be changed.
-{% endhint %}
-
-```text
-GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK" TO ROLE RUDDER_ROLE;
-```
-
-This command allows `RUDDER_ROLE` to have full access to the schema `_RUDDERSTACK`.
-
-### Granting permissions on the warehouse, database, schema & the table
 
 ```text
 GRANT ROLE RUDDER_ROLE TO USER RUDDER;
@@ -100,9 +78,23 @@ GRANT SELECT ON VIEW "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_VIEW>" TO ROLE  RU
 
 The above command allows the role `RUDDER_ROLE` to read the data from the specified view `<YOUR_VIEW>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_VIEW>` with the exact database, schema, and view names in Snowflake.
 
-### Optional permissions to grant on the schema objects
+```text
+CREATE SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK";
+```
 
-Run the following commands to allow the role `RUDDER_ROLE` to read the data from all the tables and views in the schema `<YOUR_SCHEMA>`:
+This command creates a dedicated schema `_RUDDERSTACK` to be used by RudderStack for storing the state of each data sync.
+
+{% hint style="warning" %}
+The `_RUDDERSTACK` schema is used by RudderStack. Its name **should not** be changed.
+{% endhint %}
+
+```text
+GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK" TO ROLE RUDDER_ROLE;
+```
+
+This command allows `RUDDER_ROLE` to have full access to the schema `_RUDDERSTACK`.
+
+**Optional**: Run the following commands to allow the role `RUDDER_ROLE` to read the data from all the tables and views in the schema `<YOUR_SCHEMA>`:
 
 ```text
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
@@ -132,7 +124,7 @@ This command allows the role `RUDDER_ROLE` __to read the data from all the futur
 
 To set up Snowflake as a source in RudderStack, follow these steps:
 
-* Log into your [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
+* Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
 ![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.png)
@@ -204,5 +196,5 @@ If you have already configured a destination on the RudderStack platform, choose
 
 ## Contact Us
 
-If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

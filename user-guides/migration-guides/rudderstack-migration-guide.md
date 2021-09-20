@@ -252,5 +252,5 @@ Note that you will need to enter your `SEGMENT_WRITE_KEY`, `RUDDERSTACK_WRITE_KE
 
 ## Contact Us
 
-Are you stuck somewhere in the migration process? Feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+Stuck somewhere in the migration process? Feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
