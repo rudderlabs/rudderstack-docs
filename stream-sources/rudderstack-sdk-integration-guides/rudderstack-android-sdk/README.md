@@ -138,7 +138,7 @@ You can disable these events using the `withTrackLifecycleEvents` method and pas
 
 ## Opt-out
 
-You can provide the ability to the user (for example, EU user) to opt-out from tracking the activity, using the below `optOut` API snippet. Opt-out could be set to `true` or `false` to disable or enable tracking user activity. This flag persists across device reboots.
+You can provide the ability to user (for example, EU user) to opt-out from tracking any activity using `optOut` API. The API takes `true` or `false` as `Boolean` to disable or enable tracking activities. This flag persists across device reboots.
 
 {% tabs %}
 {% tab title="Kotlin" %}
