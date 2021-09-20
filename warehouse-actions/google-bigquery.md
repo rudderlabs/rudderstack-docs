@@ -12,6 +12,8 @@ This guide will help you configure BigQuery as a source from which you can route
 
 Follow these steps below to grant the necessary permissions for Warehouse Actions. For BigQuery, use the **BigQuery Console**.
 
+### Creating the role and adding required permissions to it
+
 * Go to [**https://console.cloud.google.com/iam-admin/roles**](https://console.cloud.google.com/iam-admin/roles) and click on **CREATE ROLE**.
 
 * Then, fill in the details as shown: 
@@ -38,6 +40,8 @@ bigquery.tables.updateData
 
 * After adding all the required permissions, click on **CREATE**.
 
+### Creating the service account & attaching the role to it
+
 * Next, go to [**https://console.cloud.google.com/iam-admin/serviceaccounts**](https://console.cloud.google.com/iam-admin/serviceaccounts).
 
 * Select the project which has the dataset or the table that you want to use.
@@ -53,6 +57,8 @@ bigquery.tables.updateData
 ![](../.gitbook/assets/image4.png)
 
 * After completing steps **1** and **2**, click on **DONE**. This will move you to the list of service accounts.
+
+### Creating and downloading the JSON key
 
 * Now, click on the three dots under **Actions** in the service account that you just created and select **Manage keys**, as shown:
 
@@ -72,7 +78,7 @@ bigquery.tables.updateData
 RudderStack creates a dedicated dataset called `rudderstack_` in your project that is used to store the state of each data sync.
 {% endhint %}
 
-## Setting Up the Source
+## Setting up the Source
 
 To set up Google BigQuery as a source in RudderStack, follow these steps:
 
