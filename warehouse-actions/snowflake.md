@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest your data from Snowflake into RudderSt
 
 # Snowflake
 
-[Snowflake](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
+\*\*\*\*[**Snowflake**](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
 
 This guide will help you configure Snowflake as a source from which you can route event data to your desired destinations through RudderStack.
 
@@ -132,7 +132,7 @@ This command allows the role `RUDDER_ROLE` __to read the data from all the futur
 
 To set up Snowflake as a source in RudderStack, follow these steps:
 
-* Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
+* Log into your [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
 ![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.png)
@@ -204,5 +204,5 @@ If you have already configured a destination on the RudderStack platform, choose
 
 ## Contact Us
 
-If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 
