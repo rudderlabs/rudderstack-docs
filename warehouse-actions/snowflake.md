@@ -20,113 +20,126 @@ Run the following SQL queries in the **exact order** to grant the necessary perm
 
 ### User & role creation
 
+* The following command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it.
+
 ```text
 CREATE ROLE RUDDER_ROLE;
 ```
 
-The above command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it.
+* The following command verifies if the role `RUDDER_ROLE` is successfully created.
 
 ```text
 SHOW ROLES;
 ```
 
-This command verifies if the role `RUDDER_ROLE` is successfully created.
+* The following command creates a new user `RUDDER` with your password `<strong_unique_password>` in Snowflake.
 
 ```text
 CREATE USER RUDDER PASSWORD = '<strong_unique_password>' DEFAULT_ROLE = 'RUDDER_ROLE';
 ```
 
-This command creates a new user `RUDDER` with your password `<strong_unique_password>` in Snowflake.
+* The following command verifies if the user `RUDDER` is successfully created.
 
 ```text
 SHOW USERS;
 ```
 
-The above command verifies if the user `RUDDER` is successfully created.
-
 ### Creating the RudderStack schema & granting permissions
+
+* The following command creates a dedicated schema `_RUDDERSTACK` to be used by RudderStack for storing the state of each data sync.
 
 ```text
 CREATE SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK";
 ```
 
-This command creates a dedicated schema `_RUDDERSTACK` to be used by RudderStack for storing the state of each data sync.
-
 {% hint style="warning" %}
 The `_RUDDERSTACK` schema is used by RudderStack. Its name **should not** be changed.
 {% endhint %}
+
+* The following command allows `RUDDER_ROLE` to have full access to the schema `_RUDDERSTACK`.
 
 ```text
 GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK" TO ROLE RUDDER_ROLE;
 ```
 
-This command allows `RUDDER_ROLE` to have full access to the schema `_RUDDERSTACK`.
-
 ### Granting permissions on the warehouse, database, schema & the table
+
+* The following command enables the user \(`RUDDER`\) to perform all the operations allowed for the role `RUDDER_ROLE` \(via the access privileges granted to it\).
 
 ```text
 GRANT ROLE RUDDER_ROLE TO USER RUDDER;
 ```
 
-This command enables the user \(`RUDDER`\) to perform all the operations allowed for the role \(via the access privileges granted to it\).
+* The following command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace `<YOUR_WAREHOUSE>` with the exact name of your data warehouse in Snowflake.
 
 ```text
 GRANT USAGE ON WAREHOUSE "<YOUR_WAREHOUSE>" TO ROLE RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace `<YOUR_WAREHOUSE>` with the exact name of your data warehouse in Snowflake.
+* The following command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace `<YOUR_DATABASE>` with the exact name of your database in Snowflake.
 
 ```text
 GRANT USAGE ON DATABASE "<YOUR_DATABASE>" TO ROLE RUDDER_ROLE;
 ```
 
-The above command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace `<YOUR_DATABASE>` with the exact name of your database in Snowflake.
+* The following command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_DATABASE>` and `<YOUR_SCHEMA>` with the exact name of your database and the schema in Snowflake.
 
 ```text
 GRANT USAGE ON SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
-This command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_DATABASE>` and `<YOUR_SCHEMA>` with the exact name of your database and the schema in Snowflake.
+* The following command allows the role `RUDDER_ROLE` to read the data from the specified table `<YOUR_TABLE>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact database, schema, and table names in Snowflake.
 
 ```text
 GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to read the data from the specified table `<YOUR_TABLE>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact database, schema, and table names in Snowflake.
-
-```text
-GRANT SELECT ON VIEW "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_VIEW>" TO ROLE  RUDDER_ROLE;
-```
-
-The above command allows the role `RUDDER_ROLE` to read the data from the specified view `<YOUR_VIEW>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_VIEW>` with the exact database, schema, and view names in Snowflake.
-
-### Optional permissions to grant on the schema objects
-
-Run the following commands to allow the role `RUDDER_ROLE` to read the data from all the tables and views in the schema `<YOUR_SCHEMA>`:
+* The following **optional** command allows the role `RUDDER_ROLE` to read data from **all** the tables in the schema `<YOUR_SCHEMA>`:
 
 ```text
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
-The above command allows the role `RUDDER_ROLE` to read data from all the tables in the schema `<YOUR_SCHEMA>`.
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access all the data within your specified schema.
+{% endhint %}
+
+* The following **optional** command allows the role `<RUDDER_ROLE>` to read data from all the **future** **tables** in the schema `<YOUR_SCHEMA>`:
 
 ```text
 GRANT SELECT ON FUTURE TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
-This command allows the role `RUDDER_ROLE` to read the data from all the future tables in the schema `<YOUR_SCHEMA>`.
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access the data in all the future tables residing within your specified schema.
+{% endhint %}
+
+* The following command allows the role `RUDDER_ROLE` to read the data from the specified view `<YOUR_VIEW>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_VIEW>` with the exact database, schema, and view names in Snowflake.
 
 ```text
-GRANT SELECT ON ALL VIEWS IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+GRANT SELECT ON VIEW "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_VIEW>" TO ROLE  RUDDER_ROLE;
 ```
 
-The above command allows the role `RUDDER_ROLE` to read data from all the views in the schema `<YOUR_SCHEMA>`.
+* The following **optional** command allows the role `RUDDER_ROLE` to read data from **all** the views in the schema `<YOUR_SCHEMA>`:
+
+```text
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access all the views within your specified schema.
+{% endhint %}
+
+* The following **optional** command allows the role `<RUDDER_ROLE>` to read data from all the **future views** in the schema `<YOUR_SCHEMA>`:
 
 ```text
 GRANT SELECT ON FUTURE VIEWS IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+
 ```
 
-This command allows the role `RUDDER_ROLE` __to read the data from all the future views in the schema `<YOUR_SCHEMA>`.
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access all the future views residing within your specified schema.
+{% endhint %}
 
 ## Setting Up the Source
 
