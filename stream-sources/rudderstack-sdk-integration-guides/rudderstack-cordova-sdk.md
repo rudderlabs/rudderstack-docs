@@ -38,10 +38,8 @@ After adding the SDK as a dependency, you need to set up the SDK. Add the follow
 A sample Cordova SDK initialization is as shown:
 
 ```javascript
-RudderClient.initialize( WRITE_KEY , {
-  "dataPlaneUrl": DATA_PLANE_URL ,
-  "trackLifecycleEvents": true,
-  "controlPlaneUrl": "https://api.rudderstack.com"
+RudderClient.initialize(WRITE_KEY , {
+  "dataPlaneUrl": DATA_PLANE_URL
 })
  ```
 
@@ -65,7 +63,7 @@ The `setup` method has the following signature:
 
 ## Identify
 
-The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+The `identify` call lets you identify a visiting user and associate them with their actions. It also lets you record the traits about them like their name, email address, etc.
 
 {% hint style="info" %}
 For more information on the `identify` call and the supported fields, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/identify) guide.
@@ -79,23 +77,20 @@ A sample `identify` call is as shown below:
 
 ```javascript
 RudderClient.identify("userId", {
-  "address": {
-    "city": "Hyderabad",
-    "country": "India",
-    "state": "Telangana",
-  },
-  "birthday": "1984/07/17",
-  "company": {
-    "name": "RudderStack",
-    "id": "RS",
-    "industry": "IT"
-  },
-  "email": "john@rudderstack.com",
-  "firstName": "john",
-}, {
-  "externalIds": {
-    "brazeExternalId": "externalId1"
-  }
+    "address": {
+        "city": "Hyderabad",
+        "country": "India",
+        "state": "Telangana",
+    },
+    "birthday": "1984/07/17",
+    "company": {
+        "name": "RudderStack",
+        "id": "RS",
+        "industry": "IT"
+    },
+    "email": "john@rudderstack.com",
+    "firstName": "john",
+}
 })
 ```
 The `identify` method has the following signatures:
@@ -107,7 +102,69 @@ The `identify` method has the following signatures:
 | `options` | `JSON Object` | Optional | Extra options for the `identify` event. |
 
 {% hint style="info" %}
-For more information on the behavior of the `integrations` property, refer to the **Enabling/Disabling Events for Specific Destinations** section below.
+For more information on the behavior of the `options` property, refer to the **Configuring your `options` object** section below.
+{% endhint %}
+## Track
+
+The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with the action.
+
+Each user action is called an **event**. Every event has a name associated with it, e.g. `Product Reviewed`. This event might also have some properties associated with it, like `review_id` and `rating`.
+
+{% hint style="info" %}
+For more information on the `track` call and the supported fields, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/track) guide.
+{% endhint %}
+
+A sample `track` event called `Order Completed` using the Cordova SDK is shown below:
+
+```javascript
+RudderClient.track('Order Completed', {
+  checkout_id: '18310159091413-2',
+  order_id: '1153390412189-01',
+  affiliation: 'Google Play Store',
+  total: 68.00,
+  subtotal: 60.00,
+  revenue: 70.00,
+  shipping: 5,
+  tax: 3,
+  discount: 10,
+  coupon: 'NEWUSER',
+  currency: 'USD',
+  products: [{
+      product_id: '853913-410121910',
+      sku: 'FF-21',
+      name: 'Varsity Graphic T-Shirt',
+      price: 25,
+      quantity: 1,
+      category: 'Clothing',
+      url: 'https://www.myntra.com/tshirts/huetrap/huetrap-men-beige--black-printed-round-neck-t-shirt/11148764/buy',
+    },
+    {
+      product_id: '113413-190158920',
+      sku: 'GF-67',
+      name: 'Printed Round Neck T-Shirt',
+      price: 15,
+      quantity: 3,
+      category: 'Clothing'
+    }
+  ]
+})
+```
+
+The `track` method has the following signature:
+
+| Name | Data Type | Presence | Description |
+| :--- | :--- | :--- | :--- |
+| `name` | `String` | Required | Contains the name of the event that you want to track. |
+| `properties` | `JSON Object` | Optional | Contains the extra properties to be sent along with the event. |
+| `options` | `JSON Object` | Optional | Contains the extra event options. |
+
+{% hint style="info" %}
+RudderStack automatically tracks the following optional events:
+
+1. `Application Installed`
+2. `Application Opened`
+
+You can disable these events by sending the property `trackLifecycleEvents` as `false` within the `configuration` object while initializing `RudderClient`. **However, it is highly recommended to keep them enabled**.
 {% endhint %}
 
 ## Group
@@ -139,68 +196,6 @@ The `group` method has the following signatures:
 | `groupTraits` | `JSON Object` | Optional | Any other property of the organization that you want to pass along with the call. |
 | `options` | `JSON Object` | Optional | Extra options for the `group` event. |
 
-## Track
-
-The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with the action.
-
-Each user action is called an **event**. Every event has a name associated with it, e.g. `Product Reviewed`. This event might also have some properties associated with it, like `review_id` and `rating`.
-
-{% hint style="info" %}
-For more information on the `track` call and the supported fields, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/track) guide.
-{% endhint %}
-
-A sample `track` event called `Order Completed` using the Cordova SDK is shown below:
-
-```javascript
-RudderClient.track('Order Completed', {
-  checkout_id: '12345',
-  order_id: '1234',
-  affiliation: 'Apple Store',
-  total: 20,
-  revenue: 15.00,
-  shipping: 22,
-  tax: 1,
-  discount: 1.5,
-  coupon: 'ImagePro',
-  currency: 'USD',
-  products: [{
-      product_id: '123',
-      sku: 'G-32',
-      name: 'Monopoly',
-      price: 14,
-      quantity: 1,
-      category: 'Games',
-      url: 'https://www.website.com/product/path',
-      image_url: 'https://www.website.com/product/path.jpg'
-    },
-    {
-      product_id: '345',
-      sku: 'F-32',
-      name: 'UNO',
-      price: 3.45,
-      quantity: 2,
-      category: 'Games'
-    }
-  ]
-})
-```
-
-The `track` method has the following signature:
-
-| Name | Data Type | Presence | Description |
-| :--- | :--- | :--- | :--- |
-| `name` | `String` | Required | Contains the name of the event that you want to track. |
-| `properties` | `JSON Object` | Optional | Contains the extra properties to be sent along with the event. |
-| `options` | `JSON Object` | Optional | Contains the extra event options. |
-
-{% hint style="info" %}
-RudderStack automatically tracks the following optional events:
-
-1. `Application Installed`
-2. `Application Opened`
-
-You can disable these events by sending the property `trackLifecycleEvents` as `false` within the `configuration` object while initializing `RudderClient`. **However, it is highly recommended to keep them enabled**.
-{% endhint %}
 
 ## Screen
 
@@ -269,26 +264,13 @@ You can configure your RudderStack client by passing the following parameters in
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
 | `logLevel` | `RudderClient.LogLevel` | Controls how much of the log you want to see from the Cordova SDK. | `RudderClient.LogLevel.None`  |
-| `dataPlaneUrl` | `string` | Your RudderStack Data Plane URL. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com) |
+| `dataPlaneUrl` | `string` | Your RudderStack Data Plane URL. | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com) |
 | `flushQueueSize` | `int` | The number of events included in a batch request to the server. | `30` |
 | `dbThresholdCount` | `int` | The number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database. | `10000` |
 | `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
 | `configRefreshInterval` | `int` | RudderStack will fetch the config after this time interval. | `2` |
 | `trackLifecycleEvents` | `boolean` | Determmines whether the SDK should capture the application life cycle events automatically. | `true` |
 | `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com) |
-
-## Log level
-
-You can set the `logLevel` in the configuration object by referring to the table below: 
-
-| Log Level | RudderClient.LogLevel |
-| :--- | :--- |
-| `VERBOSE` | `RudderClient.LogLevel.VERBOSE` |
-| `DEBUG` | `RudderClient.LogLevel.DEBUG` |
-| `INFO` | `RudderClient.LogLevel.INFO` |
-| `WARN` | `RudderClient.LogLevel.WARN` |
-| `ERROR` | `RudderClient.LogLevel.ERROR` |
-| `NONE` | `RudderClient.LogLevel.NONE` |
 
 ## Configuring your `options` object
 
@@ -306,7 +288,7 @@ The `options` object has the following signature:
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
 | `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
-| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not.  |
+| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the **Enabling/disabling events for specific destinations** section below.  |
 
 
 ## Enabling/disabling events for specific destinations
@@ -362,7 +344,7 @@ In the above example, the values of the `screen` call are passed only to the Sal
 
 ## Anonymous ID
 
-You can use the `setAnonymousId` method to override the default `anonymousId`, as shown:
+We use the `deviceId` as anonymousId by default. You can use the `setAnonymousId` method to override the default `anonymousId`, as shown:
 
 ```javascript
 RudderClient.setAnonymousId("CustomAnonymousId");
@@ -404,7 +386,7 @@ Refer to this [**section**](https://docs.rudderstack.com/get-started/installing-
 
 ## Debugging
 
-If you run into any issues regarding the RudderStack Cordova SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
+If you face any unexpected behavior of the SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
 
 You configure logging behaviour of your SDK by sending the value of `logLevel` property of the `configuration` object appropriately as defined [**here**] and pass it over to the `initialize` call as shown below:
 
