@@ -1,6 +1,7 @@
 ---
 description: >-
-  Detailed technical documentation on RudderStack’s Cordova SDK to send events from your Cordova apps to various destinations.
+  Detailed technical documentation on RudderStack’s Cordova SDK to send events
+  from your Cordova apps to various destinations.
 ---
 
 # Cordova
@@ -16,7 +17,6 @@ Refer to the [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-co
 To set up the Cordova SDK, follow these steps:
 
 * Sign up and log into your [**RudderStack account**](https://app.rudderstack.com/login?type=freetrial).
-
 * Add a new **Cordova** source and note the source write key, as shown:
 
 ![Adding Cordova SDK](../../.gitbook/assets/Cordova_Source.png)
@@ -41,7 +41,7 @@ A sample Cordova SDK initialization is as shown:
 RudderClient.initialize(WRITE_KEY , {
   dataPlaneUrl: DATA_PLANE_URL
 })
- ```
+```
 
 {% hint style="success" %}
 Make sure to use the `await` keyword with the `initialize` call.
@@ -56,9 +56,8 @@ The `setup` method has the following signature:
 | `options` | `JSON Object` | Optional | Extra options to be pass along with the event. |
 
 {% hint style="info" %}
-* Check the **Configuring your RudderStack Client** section below for detailed information on the parameters you can send in the `configuration` object.
-
-* Check the **Configuring your Options object** section below for detailed information on the parameters you can send in the `options` object.
+* Check the [**Configuring your RudderStack Client**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk#configuring-the-rudderstack-client) section below for detailed information on the parameters you can send in the `configuration` object.
+* Check the [**Configuring your options object**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk#configuring-your-options-object) section below for detailed information on the parameters you can send in the `options` object.
 {% endhint %}
 
 ## Identify
@@ -92,6 +91,7 @@ RudderClient.identify("userId", {
   firstName: "john",
 });
 ```
+
 The `identify` method has the following signatures:
 
 | Name | Data Type | Presence | Description |
@@ -136,7 +136,7 @@ RudderClient.track('Order Completed', {
       price: 25,
       quantity: 1,
       category: 'Clothing',
-      url: 'https://www.myntra.com/tshirts/huetrap/huetrap-men-beige--black-printed-round-neck-t-shirt/11148764/buy',
+      url: 'https://www.myntra.com/tshirts/huetrap/huetrap-men-beige/111/buy',
     },
     {
       product_id: '113413-190158920',
@@ -164,7 +164,7 @@ RudderStack automatically tracks the following optional events:
 1. `Application Installed`
 2. `Application Opened`
 
-You can disable these events by sending the property `trackLifecycleEvents` as `false` within the `configuration` object while initializing `RudderClient`. **However, it is highly recommended to keep them enabled**.
+You can disable these events by sending the property `trackLifecycleEvents` as `false` within the `configuration` object while initializing `RudderClient`. **However, we highly recommend keeping them enabled**.
 {% endhint %}
 
 ## Group
@@ -220,7 +220,6 @@ The `screen` method has the following signature:
 | `property` | `JSON Object` | Optional | Extra properties that you want to pass along with the `screen` call. |
 | `option` | `JSON Object` | Optional | Extra options to be passed along with `screen` event. |
 
-
 ## Alias
 
 The `alias` call lets you merge different identities of a known user.
@@ -262,32 +261,32 @@ You can configure your RudderStack client by passing the following parameters in
 
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
-| `logLevel` | `RudderClient.LogLevel` | Controls how much of the log you want to see from the Cordova SDK. | `RudderClient.LogLevel.None`  |
+| `logLevel` | `RudderClient.LogLevel` | Controls how much of the log you want to see from the Cordova SDK. | `RudderClient.LogLevel.None` |
 | `dataPlaneUrl` | `string` | Your RudderStack Data Plane URL. | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com) |
 | `flushQueueSize` | `int` | The number of events included in a batch request to the server. | `30` |
 | `dbThresholdCount` | `int` | The number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database. | `10000` |
 | `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
-| `configRefreshInterval` | `int` | RudderStack will fetch the config after this time interval. | `2` |
-| `trackLifecycleEvents` | `boolean` | Determmines whether the SDK should capture the application life cycle events automatically. | `true` |
-| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com) |
+| `configRefreshInterval` | `int` | RudderStack fetches the config after this time interval. | `2` |
+| `trackLifecycleEvents` | `boolean` | Determines if the SDK should capture the application life cycle events automatically. | `true` |
 
 ## Configuring your `options` object
 
 The sample format of the `options` object that can send along with all the above-mentioned API calls is shown in the following snippet:
 
-```json
+```javascript
 {
   "externalIds": {
     "brazeExternalId": "externalId1"
   }
 }
 ```
+
 The `options` object has the following signature:
 
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
 | `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
-| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the **Enabling/disabling events for specific destinations** section below.  |
+| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the **Enabling/disabling events for specific destinations** section below. |
 
 ## Enabling/disabling events for specific destinations
 
@@ -312,7 +311,6 @@ RudderClient.initialize("1n0JdVPZTRUIkLXYccrWzZwdGSx", {
   sleepTimeOut: 10,
   trackLifecycleEvents: true,
   recordScreenViews: true,
-  controlPlaneUrl: "https://api.rudderstack.com"
 }, {
   integrations: {
     MixPanel: true,
@@ -386,15 +384,17 @@ Refer to this [**section**](https://docs.rudderstack.com/get-started/installing-
 
 If you face any unexpected behavior of the SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
 
-You configure logging behaviour of your SDK by sending the value of `logLevel` property of the `configuration` object appropriately as defined [**here**] and pass it over to the `initialize` call as shown below:
+You configure logging behaviour of your SDK by sending the value of `logLevel` property of the `configuration` object appropriately as defined \[**here**\] and pass it over to the `initialize` call as shown below:
 
 ```javascript
 RudderClient.initialize( WRITE_KEY , {
   dataPlaneUrl: DATA_PLANE_URL ,
   logLevel: RudderClient.LogLevel.VERBOSE,
-  trackLifecycleEvents: true,
-  controlPlaneUrl: "https://api.rudderstack.com"
+  trackLifecycleEvents: true
 })
 ```
+
 ## Contact us
+
 In case of any queries while setting up or using the Cordova SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
