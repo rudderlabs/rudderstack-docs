@@ -133,7 +133,7 @@ RudderStack supports all the major API calls across all iOS devices via the SDK.
 
 ## Opt-out
 
-You can provide the ability to the user (for example, EU user) to opt-out from tracking activity, using the below `optOut` API snippet. Opt-out could be set to `YES` or `NO` to enable or disable tracking activities. This flag persists across device reboots.
+You can provide the ability to the user (for example, EU user) to opt-out from tracking the activity, using the below `optOut` API snippet. Opt-out could be set to `YES` or `NO` to disable or enable tracking user activity. This flag persists across device reboots.
 
 {% tabs %}
 {% tab title="Objective-C" %}
