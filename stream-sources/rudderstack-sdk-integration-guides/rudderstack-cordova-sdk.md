@@ -101,7 +101,7 @@ The `identify` method has the following signatures:
 | `options` | `JSON Object` | Optional | Extra options for the `identify` event. |
 
 {% hint style="info" %}
-For more information on the behavior of the `options` property, refer to the **Configuring your `options` object** section below.
+For more information on the behavior of the `options` property, refer to the [**Configuring your `options` object**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk#configuring-your-options-object) section below.
 {% endhint %}
 
 ## Track
@@ -286,7 +286,7 @@ The `options` object has the following signature:
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
 | `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
-| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the **Enabling/disabling events for specific destinations** section below. |
+| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the [**Enabling/disabling events for specific destinations**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk#enabling-disabling-events-for-specific-destinations) section below. |
 
 ## Enabling/disabling events for specific destinations
 
