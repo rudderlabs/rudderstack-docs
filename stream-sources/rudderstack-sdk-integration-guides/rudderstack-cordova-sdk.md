@@ -77,21 +77,20 @@ A sample `identify` call is as shown below:
 
 ```javascript
 RudderClient.identify("userId", {
-    address: {
-        city: "Hyderabad",
-        country: "India",
-        state: "Telangana",
-    },
-    birthday: "1984/07/17",
-    company: {
-        name: "RudderStack",
-        id: "RS",
-        industry: "IT"
-    },
-    email: "john@rudderstack.com",
-    firstName: "john",
-}
-})
+  address: {
+    city: "Hyderabad",
+    country: "India",
+    state: "Telangana",
+  },
+  birthday: "1984/07/17",
+  company: {
+    name: "RudderStack",
+    id: "RS",
+    industry: "IT",
+  },
+  email: "john@rudderstack.com",
+  firstName: "john",
+});
 ```
 The `identify` method has the following signatures:
 
@@ -173,7 +172,7 @@ You can disable these events by sending the property `trackLifecycleEvents` as `
 The `group` call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
 
 {% hint style="info" %}
-An identified user can be a part of more than one group. 
+An identified user can be a part of more than one group.
 {% endhint %}
 
 {% hint style="info" %}
@@ -184,8 +183,8 @@ A sample `group` call is shown below:
 
 ```javascript
 RudderClient.group("group1", {
-  "groupname": "RS",
-  "groupwork": "Mobile dev"
+  groupname: "RS",
+  groupwork: "Mobile dev"
 })
 ```
 
@@ -199,7 +198,7 @@ The `group` method has the following signatures:
 
 ## Screen
 
-The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the viewed screen. 
+The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the viewed screen.
 
 {% hint style="info" %}
 For more information on the `screen` call and the supported fields, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/screen) guide.
