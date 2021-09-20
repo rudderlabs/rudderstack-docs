@@ -25,6 +25,7 @@
     * [Unity](stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk.md)
     * [React Native](stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk.md)
     * [Flutter](stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk.md)
+    * [Cordova](stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk.md)
     * [AMP Analytics](stream-sources/rudderstack-sdk-integration-guides/amp-analytics.md)
     * [Java](stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk.md)
     * [Python](stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk.md)
