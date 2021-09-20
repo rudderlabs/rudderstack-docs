@@ -14,11 +14,11 @@ Run the SQL queries below in the **exact** order to grant the necessary permissi
 
 ### Creating the user
 
+- The following command creates a new user `rudder` with password `<strong_unique_password>` in Redshift.
+
 ```
 CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 ```
-
-The above command creates a new user `rudder` with password `<strong_unique_password>` in Redshift.
 
 #### Password considerations for Redshift
 
@@ -34,57 +34,61 @@ For more information on the password rules, refer to the [**Amazon Redshift docu
 
 ### Creating the RudderStack schema and granting permissions
 
+- The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
+
 ```
 CREATE SCHEMA "_rudderstack";
-``` 
-
-This command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
+```
 
 {% hint style="warning" %}
 The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed. 
 {% endhint %}
 
+- The following command allows the user `rudder` to have full access to the schema `_rudderstack`.
+
 ```
 GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
 ```
  
-This command allows the user `rudder` to have full access to the schema `_rudderstack`.
+- The following command allows the user `rudder` to have full access to all the objects that exist in the schema `_rudderstack`.
 
 ```
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 ```
- 
-This command allows the user `rudder` to have full access to all the objects that exist in the schema `_rudderstack`.
 
 ### Granting permissions on your schema and table
+
+- The following command allows the user `rudder` to look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema.
 
 ```
 GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
-This command allows the user `rudder` to look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema.
+- The following command allows the user `rudder` to read the data from specified table `<YOUR_TABLE>`. Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your Redshift schema and table.
 
 ```
 GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
 ```
 
-This command allows the user `rudder` to read the data from specified table `<YOUR_TABLE>`. Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your Redshift schema and table.
-
-
-### Optional permissions to grant on the schema objects
-
-Run the following commands to allow the user `rudder` to read the data from all the tables in the schema <YOUR_SCHEMA>:
+- The following **optional** command allows the user `rudder` to view and read the data from all the tables present in the schema `<YOUR_SCHEMA>`:
 
 ``` 
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
-This command allows the user `rudder` to view and read the data from all the tables present in the schema `<YOUR_SCHEMA>`.
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access the data in all the tables residing within your specified schema.
+{% endhint %}
+
+- The following **optional** command allows the user `rudder` to read the data from all the future tables in the schema `<YOUR_SCHEMA>`:
 
 ``` 
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
 ```
 
-This command allows the user `rudder` to read the data from all the future tables in the schema `<YOUR_SCHEMA>`.
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access the data in all the future tables residing within your specified schema.
+{% endhint %}
 
 
 ## Setting Up the Source
