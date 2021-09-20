@@ -136,6 +136,28 @@ We automatically track the following optional events:
 You can disable these events using the `withTrackLifecycleEvents` method and passing `false`. But it is highly recommended to keep them enabled.
 {% endhint %}
 
+## Opt-out
+
+You can provide the ability to the user (for example, EU user) to opt-out from tracking activity, using the below `optOut` API snippet. Opt-out could be set to `true` or `false` to enable or disable tracking activities. This flag persists across device reboots.
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(true)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(true);
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack Android SDK starting from version `1.0.19`.
+{% endhint %}
+
 ## Track
 
 You can record the users' activity through the `track` method. Every action performed by the user is called an event.
@@ -372,28 +394,6 @@ rudderClient.reset();
 ```
 {% endtab %}
 {% endtabs %}
-
-## Opt-out
-
-You can provide the ability to the user (for example, EU users) to opt-out from tracking activities, using the below `optOut` API snippet. Opt-out could be set to `true` or `false` to enable or disable tracking activities. This flag persist across device reboots.
-
-{% tabs %}
-{% tab title="Kotlin" %}
-```kotlin
-rudderClient.optOut(true)
-```
-{% endtab %}
-
-{% tab title="JAVA" %}
-```java
-rudderClient.optOut(true);
-```
-{% endtab %}
-{% endtabs %}
-
-{% hint style="info" %}
-The `optOut` API is available in the RudderStack Android SDK starting from version `1.0.19`.
-{% endhint %}
 
 ## Configuring your RudderStack Client
 

@@ -131,6 +131,28 @@ You can disable these events using the`withTrackLifecycleEvents` method of `RSCo
 
 RudderStack supports all the major API calls across all iOS devices via the SDK. These include the `track`, `identify`, and `screen` calls.
 
+## Opt-out
+
+You can provide the ability to the user (for example, EU user) to opt-out from tracking activity, using the below `optOut` API snippet. Opt-out could be set to `YES` or `NO` to enable or disable tracking activities. This flag persists across device reboots.
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:YES];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(true)
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.23`.
+{% endhint %}
+
 ## Track
 
 You can record the users' activity through the `track` method. Every action performed by the user is called an `event`.
@@ -315,28 +337,6 @@ RSClient.sharedInstance()?.reset()
 ```
 {% endtab %}
 {% endtabs %}
-
-## Opt-out
-
-You can provide the ability to the user (for example, EU users) to opt-out from tracking activities, using the below `optOut` API snippet. Opt-out could be set to `YES` or `NO` to enable or disable tracking activities. This flag persist across device reboots.
-
-{% tabs %}
-{% tab title="Objective-C" %}
-```objectivec
-[[RSClient sharedInstance] optOut:YES];
-```
-{% endtab %}
-
-{% tab title="Swift" %}
-```swift
-RSClient.sharedInstance()?.optOut(true)
-```
-{% endtab %}
-{% endtabs %}
-
-{% hint style="info" %}
-The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.23`.
-{% endhint %}
 
 ## Configuring the RudderStack Client
 
