@@ -7,7 +7,7 @@ description: General glossary of the RudderStack-related terminology.
 This guide lists the definitions of the RudderStack-related terms that you are likely to encounter throughout our documentation and while using RudderStack.
 
 {% hint style="success" %}
-If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) **\*\*or start a conversation on our \[**Slack\*\*\]\([https://resources.rudderstack.com/join-rudderstack-slack](https://resources.rudderstack.com/join-rudderstack-slack)\) channel.
+If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our ****[**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
 {% endhint %}
 
 ## General
@@ -54,7 +54,7 @@ For more information on the Data Plane and Control Plane, refer to RudderStack's
 
 ### Data Plane
 
-The Data Plane is RudderStack's _\*\*_core engine responsible for:
+The Data Plane is RudderStack's core engine responsible for:
 
 * Receiving and buffering the event data
 * Transforming the events into the required destination format
@@ -63,7 +63,7 @@ The Data Plane is RudderStack's _\*\*_core engine responsible for:
 {% hint style="success" %}
 The Data Plane is intentionally separated from the Control Plane to give you complete ownership of your data. Depending on how RudderStack is deployed, you can set up your Control Plane and Data Plane via one of the following approaches:
 
-* **RudderStack-hosted**: _\*\*_RudderStack hosts both Control Plane and Data Plane
+* **RudderStack-hosted**: RudderStack hosts both Control Plane and Data Plane
 * **Hybrid**: RudderStack hosts the Control Plane and the user hosts the Data Plane
 * **Customer**: User hosts both the Control Plane and Data Plane via open-source.
 {% endhint %}
@@ -82,7 +82,7 @@ For information on Control Plane Lite and how to use it, refer to the [**docs**]
 
 ### Event Stream
 
-RudderStack's [**Event Stream**](stream-sources/) _\*\*_feature lets you collect your event data from all of your web and mobile apps and route it to a wide array of customer tools and data warehouses via RudderStack.
+RudderStack's [**Event Stream**](stream-sources/) feature lets you collect your event data from all of your web and mobile apps and route it to a wide array of customer tools and data warehouses via RudderStack.
 
 {% hint style="info" %}
 For more information on the various Event Stream sources supported by RudderStack, check out the [**docs**](https://docs.rudderstack.com/stream-sources).
@@ -90,7 +90,7 @@ For more information on the various Event Stream sources supported by RudderStac
 
 ### Cloud Extract
 
-\*\*\*\*[**Cloud Extract**](cloud-extract-sources/) is RudderStack's ETL feature that lets you collect your raw events and data from various third-party cloud platforms such as Google Analytics, Marketo, Facebook Ads, Stripe, etc. and send it to your data warehouse with a user-specified frequency.
+[**Cloud Extract**](cloud-extract-sources/) is RudderStack's ETL feature that lets you collect your raw events and data from various third-party cloud platforms such as Google Analytics, Marketo, Facebook Ads, Stripe, etc. and send it to your data warehouse with a user-specified frequency.
 
 {% hint style="info" %}
 For more information on the various Cloud Extract sources and how to set them up in RudderStack, check out the [**docs**](https://docs.rudderstack.com/cloud-extract-sources).
@@ -98,7 +98,7 @@ For more information on the various Cloud Extract sources and how to set them up
 
 ### Warehouse Actions
 
-\*\*\*\*[**Warehouse Actions**](warehouse-actions/) is RudderStack's Reverse-ETL feature. It allows you to leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations, including SaaS marketing, analytics, sales, and customer support tools.
+[**Warehouse Actions**](warehouse-actions/) is RudderStack's Reverse-ETL feature. It allows you to leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations, including SaaS marketing, analytics, sales, and customer support tools.
 
 {% hint style="info" %}
 For more information on the various Warehouse Actions sources and how to set them up in RudderStack, check out the [**docs**](https://docs.rudderstack.com/warehouse-actions).
@@ -106,28 +106,14 @@ For more information on the various Warehouse Actions sources and how to set the
 
 ### Transformations
 
-RudderStack **\*\*\[**Transformations\*\*\]\(adding-a-new-user-transformation-in-rudderstack/\) transform your source events into a destination-specific format. These transformations can be used across your Event Stream, Warehouse Actions, and Cloud Extract pipelines.
+RudderStack's [**Transformations**](transformations/) feature lets you leverage your custom JavaScript functions that you can use to implement a variety of use-cases like: 
 
-There are two key aspects of this feature:
-
-* **RudderStack Transformer**: This is a RudderStack service that transforms your incoming events into a destination-specific format. 
-* **User Transformations**: User Transformations are custom JavaScript functions that you can leverage to implement a variety of use-cases like: 
-  * Filtering or sampling events
+* * Filtering or sampling events
   * Implementing a static logic to enrich your events
   * Removing any sensitive PII information from your customer events, and a lot more.
 
-{% hint style="success" %}
-RudderStack applies the User Transformations \(if any\) to the incoming events before sending them to the Transformer. So the flow looks like the following:
-
-**Incoming events** -- **User Transformation** -- **RudderStack Transformer** -- **Routed to the specified destination/s**
-
-In the absence of a user transformation, the flow is as follows:
-
-**Incoming events** -- **RudderStack Transformer** -- **Routed to the specified destination/s**
-{% endhint %}
-
 {% hint style="info" %}
-For more details on this feature and how to use it, check out our [**Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) _\*\*_docs.
+For more details on this feature and how to use it, check out our [**Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) ****docs.
 {% endhint %}
 
 ### Live Events
@@ -136,8 +122,8 @@ RudderStack's [**Live Events**](https://docs.rudderstack.com/get-started/live-ev
 
 Broadly speaking, this feature can be further classified into two categories:
 
-* \*\*\*\*[**Source Live Events**](https://docs.rudderstack.com/get-started/live-events#source-live-events): This feature gives you real-time visibility into the source events collected by RudderStack. This way, you can confirm if your source is configured correctly and is collecting & sending data as expected. 
-* \*\*\*\*[**Destination Live Events**](https://docs.rudderstack.com/get-started/live-events#destination-live-events): When routing events to a destination, sometimes events don't show up in your destination. This feature gives you real-time visibility into the destination's responses and helps you troubleshoot the problem.
+* [**Source Live Events**](https://docs.rudderstack.com/get-started/live-events#source-live-events): This feature gives you real-time visibility into the source events collected by RudderStack. This way, you can confirm if your source is configured correctly and is collecting & sending data as expected. 
+* [**Destination Live Events**](https://docs.rudderstack.com/get-started/live-events#destination-live-events): When routing events to a destination, sometimes events don't show up in your destination. This feature gives you real-time visibility into the destination's responses and helps you troubleshoot the problem.
 
 {% hint style="info" %}
 For more information on this feature, check out our [**docs**](https://docs.rudderstack.com/get-started/live-events).
@@ -145,7 +131,7 @@ For more information on this feature, check out our [**docs**](https://docs.rudd
 
 ### Data Governance
 
-RudderStack's [**Data Governance**](data-governance/) _\*\*_feature gives you the ability to access all your events and their metadata programmatically and identify any inconsistencies in them. This includes vital information related to the event schema, event payload versions, data types, and more.
+RudderStack's [**Data Governance**](data-governance/) feature gives you the ability to access all your events and their metadata programmatically and identify any inconsistencies in them. This includes vital information related to the event schema, event payload versions, data types, and more.
 
 {% hint style="info" %}
 Refer to the [**RudderStack Data Governance API**](data-governance/rudderstack-data-governance-api.md) reference for the detailed technical documentation.
