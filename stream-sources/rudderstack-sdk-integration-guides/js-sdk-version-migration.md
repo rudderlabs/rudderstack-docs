@@ -74,14 +74,14 @@ If you have cloned RudderStack's JavaScript SDK and are self-hosting it via your
 * Download all the destination SDKs as listed [**here**]().
 * Move all the downloaded files in your preferred location.
 
-{% hint style="info" %}
 We recommend maintaining the following structure:
 
-`<BASE_LOCATION>` <br>
+`<BASE_PATH>` <br>
 ---> `<CORE_JS_SDK_v1.1>` <br>
--------> `<js-integrations>`<br>
--------------> `<*.min.js>` - the destination SDK file
-{% endhint %}
+---> `<js-integrations>`<br>
+-------------> `<*.min.js>` - corresponding to the destination SDK file
+
+![](https://user-images.githubusercontent.com/59817155/134155017-1b71c18c-27f1-4911-9b9c-4263014463eb.png)
 
 * Next, check if the core SDK filename is different than `rudder-analytics.min.js`. If **yes**, update the script tag in your website as shown below:
 
@@ -92,19 +92,19 @@ We recommend maintaining the following structure:
 // ...
 // provide the location of the destination SDKs in the load options
 rudderanalytics.load(<your_write_key>, <your_data_plane_url>, {
-    destSDKBaseURL: "https://cdn.customer.com/js-integrations"
+    destSDKBaseURL: "https://cdn.<yourdomain>.com/js-integrations"
 });
 // ...
 // ...
 </script>
 
-<script src="https://cdn.customer.com/custom-analytics.js"></script>
+<script src="https://cdn.<yourdomain>.com/your-custom-analytics-file.js"></script>
 ```
 
 * If the core SDK filename **is** `rudder-analytics.min.js`, verify if the destination SDKs are located next to the core SDK file under the `js-integrations` directory (as highlighted in the tip above). If **yes**, update the script tag in your website as shown:
 
 ```html
-<script src="https://cdn.customer.com/rudder-analytics.js"></script>
+<script src="https://cdn.<yourdomain>.com/rudder-analytics.js"></script>
 ```
 
 * If the destination SDKs are **not** located next to the core SDK file under the `js-integrations` directory, then update the script tag as shown:
@@ -116,13 +116,13 @@ rudderanalytics.load(<your_write_key>, <your_data_plane_url>, {
 // ...
 // provide the location of the destination SDKs in the load options
 rudderanalytics.load(<your_write_key>, <your_data_plane_url>, {
-    destSDKBaseURL: "https://cdn.customer.com/custom-js-integrations"
+    destSDKBaseURL: "https://cdn.<yourdomain>.com/custom-js-integrations"
 });
 // ...
 // ...
 </script>
 
-<script src="https://cdn.customer.com/rudder-analytics.js"></script>
+<script src="https://cdn.<yourdomain>.com/rudder-analytics.js"></script>
 ```
 
 ## FAQs
