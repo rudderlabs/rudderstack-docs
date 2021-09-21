@@ -7,7 +7,7 @@ description: General glossary of the RudderStack-related terminology.
 This guide lists the definitions of the RudderStack-related terms that you are likely to encounter throughout our documentation and while using RudderStack.
 
 {% hint style="success" %}
-If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our ****[**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
+If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 {% endhint %}
 
 ## General
@@ -78,7 +78,7 @@ If you want to self-host these configurations, you can use the open-source **Con
 For information on Control Plane Lite and how to use it, refer to the [**docs**](https://docs.rudderstack.com/get-started/config-generator).
 {% endhint %}
 
-## **Features**
+## Features
 
 ### Event Stream
 
@@ -106,14 +106,14 @@ For more information on the various Warehouse Actions sources and how to set the
 
 ### Transformations
 
-RudderStack's [**Transformations**](transformations/) feature lets you leverage your custom JavaScript functions that you can use to implement a variety of use-cases like: 
+RudderStack's [**Transformations**](transformations/) feature lets you leverage your custom JavaScript functions that you can use to implement a variety of use-cases like:
 
-* * Filtering or sampling events
-  * Implementing a static logic to enrich your events
-  * Removing any sensitive PII information from your customer events, and a lot more.
+* Filtering or sampling events
+* Implementing a static logic to enrich your events
+* Removing any sensitive PII information from your customer events, and a lot more.
 
 {% hint style="info" %}
-For more details on this feature and how to use it, check out our [**Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) ****docs.
+For more details on this feature and how to use it, check out our [**Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) docs.
 {% endhint %}
 
 ### Live Events
@@ -157,7 +157,7 @@ For more information on sources and destinations in RudderStack, check our [**Co
 
 You can set up different types of connections in RudderStack to send your events, based on the type of source:
 
-* **Event Stream**:  One source to many destinations
+* **Event Stream**: One source to many destinations
 * **Cloud Extract**: Multiple sources to one warehouse destination
 * **Warehouse Action**: One warehouse source to one downstream destination \(mainly due to the mappings required when setting up the connection\).
 
