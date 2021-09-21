@@ -16,7 +16,7 @@ RudderStack lets you set up connections between your preferred event data source
 
 ## Sources
 
-A **source** refers to a platform or an application \(web, mobile, server-side, or a third-party cloud app\) from where RudderStack tracks and collects your event data. 
+A **source** refers to a platform or an application \(web, mobile, server-side, or a third-party cloud app\) from where RudderStack tracks and collects your event data.
 
 {% hint style="success" %}
 We recommend creating a source for every unique source of data. You can also create multiple sources for each website or application from which you want to track the data.
@@ -27,7 +27,7 @@ To view all the configured sources in your RudderStack dashboard, click on **Sou
 ![](../.gitbook/assets/3%20%2820%29.png)
 
 {% hint style="success" %}
-You can add a new source by simply clicking on the **Add Source** button. For more details on adding a source in RudderStack, refer to the guide on [**Adding a Source and Destination in RudderStack**](adding-source-and-destination-rudderstack.md). 
+You can add a new source by simply clicking on the **Add Source** button. For more details on adding a source in RudderStack, refer to the guide on [**Adding a Source and Destination in RudderStack**](adding-source-and-destination-rudderstack.md).
 {% endhint %}
 
 ### Source Details
@@ -42,8 +42,8 @@ The options you see in this page are as follows:
 * **Write Key**: The write key is required to send the data from your source.
 
 {% hint style="success" %}
-As an example, you can load [**RudderStack's JavaScript SDK**](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your web pages to track and collect the events by running the following:  
-  
+As an example, you can load [**RudderStack's JavaScript SDK**](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your web pages to track and collect the events by running the following:
+
 `rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URL>, options);`
 {% endhint %}
 
@@ -57,7 +57,7 @@ If you have already configured a destination in RudderStack, you should click on
 
 ### Deleting a Source
 
-You can delete a source by clicking on the **Delete Source** button. 
+You can delete a source by clicking on the **Delete Source** button.
 
 {% hint style="warning" %}
 Before you delete a source, make sure there are no active destinations enabled for it.
@@ -90,7 +90,7 @@ To get more details on the configured destination, click on it. You should then 
 You will see the following options:
 
 * **Destination ID**: The unique identifier associated with your destination.
-* **Transformation**: RudderStack allows you to transform your events before routing them across to your destination. 
+* **Transformation**: RudderStack allows you to transform your events before routing them across to your destination.
 
 {% hint style="success" %}
 Read more about RudderStack's [**Transformations**](../transformations/) feature.
@@ -108,27 +108,27 @@ Follow these steps to clone a destination:
 
 * On the **Destination Details** page, click on the **Clone To a New Destination** option as shown:
 
-![](../.gitbook/assets/clone-1.png)
+  ![](../.gitbook/assets/clone-1.png)
 
 * Assign a name to the new destination and click on **Create**.
 
-![](../.gitbook/assets/clone-2.png)
+  ![](../.gitbook/assets/clone-2.png)
 
 * Connect this destination to a source, as shown:
 
-![](../.gitbook/assets/clone-3.png)
+  ![](../.gitbook/assets/clone-3.png)
 
 * Enter the **Connection Settings** for this new destination, and click on **Next**.
 
-![](../.gitbook/assets/clone-4.png)
+  ![](../.gitbook/assets/clone-4.png)
 
 * Your new destination should now be configured.
 
-![](../.gitbook/assets/clone-5.png)
+  ![](../.gitbook/assets/clone-5.png)
 
 ### Deleting a Destination
 
-You can delete a destination by clicking on the **Delete Destination** button. 
+You can delete a destination by clicking on the **Delete Destination** button.
 
 {% hint style="warning" %}
 Before you delete a destination, make sure there are no active sources enabled for it.
@@ -146,7 +146,7 @@ Once you've set up a connection, you should be able to view it in your RudderSta
 
 ![](../.gitbook/assets/9%20%284%29.png)
 
-You can also send your data from one source to multiple destinations, as shown: 
+You can also send your data from one source to multiple destinations, as shown:
 
 ![](../.gitbook/assets/8%20%287%29.png)
 

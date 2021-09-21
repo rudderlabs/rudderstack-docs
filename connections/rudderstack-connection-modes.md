@@ -23,14 +23,14 @@ There are two modes through which you can send your event data from your website
 
 ## Cloud Mode
 
-In this mode, the SDK sends the event data directly to RudderStack. RudderStack then transforms this data and routes it to the desired destination. This transformation is done in the RudderStack backend, using RudderStack's ****[**Transformer**](https://github.com/rudderlabs/rudder-transformer) module.
+In this mode, the SDK sends the event data directly to RudderStack. RudderStack then transforms this data and routes it to the desired destination. This transformation is done in the RudderStack backend, using RudderStack's [**Transformer**](https://github.com/rudderlabs/rudder-transformer) module.
 
 ### How It Works
 
-Suppose you want to analyze your website users' event data using Amplitude. To do so, you've decided to use RudderStack's [**JavaScript**](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) ****SDK.
+Suppose you want to analyze your website users' event data using Amplitude. To do so, you've decided to use RudderStack's [**JavaScript**](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) SDK.
 
-RudderStack defines a fixed event structure. If you track your events in this format, RudderStack will take care of transforming the events as required by Amplitude. You can start by [**adding a source and an Amplitude destination**](adding-source-and-destination-rudderstack.md) in the RudderStack dashboard.   
-  
+RudderStack defines a fixed event structure. If you track your events in this format, RudderStack will take care of transforming the events as required by Amplitude. You can start by [**adding a source and an Amplitude destination**](adding-source-and-destination-rudderstack.md) in the RudderStack dashboard.
+
 Then, [**add the RudderStack JavaScript SDK snippet**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#2-installing-the-rudderstack-javascript-sdk) into the web page which you wish to track.
 
 The SDK automatically tracks and sends the user events to RudderStack. These events are then transformed by RudderStack and then routed to Amplitude.
@@ -59,7 +59,7 @@ This mode lets you send your events to the preferred destinations using the clie
 
 ### How It Works
 
-Suppose you want to send your event data from your source mobile apps to Firebase through RudderStack's mobile SDK \([**Android**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-android-sdk), [**iOS**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk), or [**Unity**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk)**,** depending on your requirement\). You can start by [**adding a source and a Firebase destination**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) in the RudderStack dashboard.
+Suppose you want to send your event data from your source mobile apps to Firebase through RudderStack's mobile SDK \([**Android**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-android-sdk), [**iOS**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk), or [**Unity**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk), depending on your requirement\). You can start by [**adding a source and a Firebase destination**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) in the RudderStack dashboard.
 
 The RudderStack SDK will download the Firebase SDK, transform the events and will send them to Firebase for analytics.
 
@@ -84,7 +84,7 @@ Device mode does not support the RudderStack [**Transformations**](../transforma
 
 ## How to Check If a Destination Supports Cloud Mode or Device Mode, or Both?
 
-The easiest way to check the connection mode supported by the destination is to go refer to the individual destination's [**documentation**](../destinations/). 
+The easiest way to check the connection mode supported by the destination is to go refer to the individual destination's [**documentation**](../destinations/).
 
 We explicitly mention the supported connection modes for every destination in the **Getting Started** section of each guide. A sample example is as shown:
 
@@ -92,15 +92,11 @@ We explicitly mention the supported connection modes for every destination in th
 
 ## Cloud + Device Mode Support
 
-Some of our destinations support both Cloud and Device Modes. Some examples are [**Google Analytics**](https://docs.rudderstack.com/destinations/google-analytics-ga), [**HubSpot**](https://docs.rudderstack.com/destinations/hubspot), [**Intercom**](https://docs.rudderstack.com/destinations/intercom), [**Kissmetrics**](https://docs.rudderstack.com/destinations/kissmetrics), [**Branch**](https://docs.rudderstack.com/destinations/branchio), [**Braze**](https://docs.rudderstack.com/destinations/braze), [**Customer.io**](https://docs.rudderstack.com/destinations/customer.io), and [**Facebook App Events**](https://docs.rudderstack.com/destinations/facebook-app-events). 
+Some of our destinations support both Cloud and Device Modes. Some examples are [**Google Analytics**](https://docs.rudderstack.com/destinations/google-analytics-ga), [**HubSpot**](https://docs.rudderstack.com/destinations/hubspot), [**Intercom**](https://docs.rudderstack.com/destinations/intercom), [**Kissmetrics**](https://docs.rudderstack.com/destinations/kissmetrics), [**Branch**](https://docs.rudderstack.com/destinations/branchio), [**Braze**](https://docs.rudderstack.com/destinations/braze), [**Customer.io**](https://docs.rudderstack.com/destinations/customer.io), and [**Facebook App Events**](https://docs.rudderstack.com/destinations/facebook-app-events).
 
 You can choose to integrate these destinations with RudderStack via cloud mode or device mode, depending on your requirement.
 
 ## Contact Us
 
 To learn more about the connection modes supported by RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
-
-
 
