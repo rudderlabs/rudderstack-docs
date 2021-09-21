@@ -18,7 +18,7 @@ v1.1 offers the following features:
 |Parameter|v1|v1.1|
 |---------|--|----|
 |**Size**|112 KB|32.2 KB|
-|**Destination SDKs**|All the device mode destination SDKs are bundled with the core SDK.|The device mode destination SDKs are dynamically loaded per the source configuration in the dashboard.|
+|**Destination SDKs**|All the device mode destination SDKs are bundled with the core SDK.|The device mode destination SDKs are dynamically loaded as per the source configuration in the dashboard.|
 
 ## Migrating to v1.1
 
@@ -104,7 +104,7 @@ rudderanalytics.load(<your_write_key>, <your_data_plane_url>, {
 * If the core SDK filename **is** `rudder-analytics.min.js`, verify if the destination SDKs are located next to the core SDK file under the `js-integrations` directory (as highlighted in the tip above). If **yes**, update the script tag in your website as shown:
 
 ```html
-<script src="https://cdn.<yourdomain>.com/rudder-analytics.js"></script>
+<script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
 ```
 
 * If the destination SDKs are **not** located next to the core SDK file under the `js-integrations` directory, then update the script tag as shown:
@@ -122,7 +122,7 @@ rudderanalytics.load(<your_write_key>, <your_data_plane_url>, {
 // ...
 </script>
 
-<script src="https://cdn.<yourdomain>.com/rudder-analytics.js"></script>
+<script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
 ```
 
 ## FAQs
