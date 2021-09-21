@@ -6,12 +6,12 @@ description: >-
 
 # RudderTyper
 
-\*\*\*\*[**RudderTyper**](https://github.com/rudderlabs/rudder-typer) is a tool that lets you generate strongly-typed [**RudderStack**](https://rudderstack.com/) analytics library wrappers based on your [**Tracking Plan**](https://documenter.getpostman.com/view/16242548/TzeWFT6D) spec. 
+[**RudderTyper**](https://github.com/rudderlabs/rudder-typer) is a tool that lets you generate strongly-typed [**RudderStack**](https://rudderstack.com/) analytics library wrappers based on your [**Tracking Plan**](https://documenter.getpostman.com/view/16242548/TzeWFT6D) spec.
 
 Simply put, it uses an event from your specified tracking plan and generates an analytics call in the supported languages.
 
 {% hint style="success" %}
-RudderTyper currently generates native clients for the [**JavaScript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk), and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) ****SDKs**.**
+RudderTyper currently generates native clients for the [**JavaScript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk), and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) SDKs.
 {% endhint %}
 
 ![](../.gitbook/assets/readme-example.gif)
@@ -35,7 +35,7 @@ Some key features of RudderTyper are:
 To fire up a quick start wizard to create a `ruddertyper.yml` and generate your first client with the specified configuration details, run the following command:
 
 ```bash
-$ npx rudder-typer init | initialize | quickstart
+npx rudder-typer init | initialize | quickstart
 ```
 
 ## Other Commands
@@ -43,7 +43,7 @@ $ npx rudder-typer init | initialize | quickstart
 ### Update
 
 ```bash
-$ npx rudder-typer update | u | *   (default)
+npx rudder-typer update | u | *   (default)
 ```
 
 This command syncs `plan.json` with RudderStack to pull the latest changes in your tracking plan and then generates an updated development client.
@@ -51,7 +51,7 @@ This command syncs `plan.json` with RudderStack to pull the latest changes in yo
 ### Build
 
 ```bash
-$ npx rudder-typer build | b | d | dev | development
+npx rudder-typer build | b | d | dev | development
 ```
 
 This command generates a development client from `plan.json`.
@@ -59,7 +59,7 @@ This command generates a development client from `plan.json`.
 ### Production
 
 ```bash
-$ npx rudder-typer prod | p | production
+npx rudder-typer prod | p | production
 ```
 
 This command generates a production client from `plan.json`.
@@ -67,7 +67,7 @@ This command generates a production client from `plan.json`.
 ### Token
 
 ```bash
-$ npx rudder-typer token | tokens | t
+npx rudder-typer token | tokens | t
 ```
 
 This command prints the local RudderStack API token configuration.
@@ -75,7 +75,7 @@ This command prints the local RudderStack API token configuration.
 ### Version
 
 ```bash
-$ npx rudder-typer version
+npx rudder-typer version
 ```
 
 This command prints the RudderTyper CLI version.
@@ -83,7 +83,7 @@ This command prints the RudderTyper CLI version.
 ### Help
 
 ```bash
-$ npx rudder-typer help
+npx rudder-typer help
 ```
 
 This command prints the help message describing different commands available with RudderTyper.
@@ -105,14 +105,14 @@ RudderTyper stores its configuration in a `ruddertyper.yml` file in the root of 
 
 A sample configuration looks like the following:
 
-```bash
+```yaml
 # RudderStack RudderTyper Configuration Reference (https://github.com/rudderlabs/rudder-typer)
 # Just run `npx rudder-typer` to re-generate a client with the latest versions of these events.
 
 scripts:
-  # You can supply a RudderStack API token using a `script.token` command. The output of `script.token` command should be a valid RudderStack API token. 
+  # You can supply a RudderStack API token using a `script.token` command. The output of `script.token` command should be a valid RudderStack API token.
   token: source .env; echo $RUDDERTYPER_TOKEN
-  # You can supply email address linked to your workspace using a `script.email` command.The output of `script.email` command should be an email address registered with your workspace.  
+  # You can supply email address linked to your workspace using a `script.email` command.The output of `script.email` command should be an email address registered with your workspace.
   email: source .env: echo $EMAIL
   # You can format any of RudderTyper's auto-generated files using a `script.after` command.
   # See `Formatting Generated Files` below.
@@ -149,38 +149,38 @@ This section includes steps to integrate your RudderTyper-generated client with 
 * Import all the files in the client generated by RudderTyper as a package in your project.
 * Then, you can directly make the calls using the RudderTyper client as shown below:
 
-```java
-// Import your auto-generated RudderTyper client:
-import com.rudderstack.generated.*
+  ```java
+  // Import your auto-generated RudderTyper client:
+  import com.rudderstack.generated.*
 
   // Issue your first RudderTyper track call!
   RudderTyperAnalytics.with(this).orderCompleted(
-    OrderCompleted.Builder()
-    .orderID("ck-f306fe0e-cc21-445a-9caa-08245a9aa52c")
-    .total(39.99)
-    .build()
+      OrderCompleted.Builder()
+      .orderID("ck-f306fe0e-cc21-445a-9caa-08245a9aa52c")
+      .total(39.99)
+      .build()
   );
-```
+  ```
 
 ### RudderStack iOS SDK
 
 * Import your RudderTyper client into your project using XCode. 
 
-**Note**: If you place your generated files into a folder in your project, import the project as a group not a folder reference.
+  **Note**: If you place your generated files into a folder in your project, import the project as a group not a folder reference.
 
 * Then, you can directly make the calls using the RudderTyper client as shown:
 
-```text
-// Import your auto-generated RudderTyper client:
-#import "RSRudderTyperAnalytics.h"
+  ```swift
+  // Import your auto-generated RudderTyper client:
+  #import "RSRudderTyperAnalytics.h"
 
-// Issue your first RudderTyper track call!
-[RSRudderTyperAnalytics orderCompletedWithOrderID: "ck-f306fe0e-cc21-445a-9caa-08245a9aa52c" total: @39.99];
-```
+  // Issue your first RudderTyper track call!
+  [RSRudderTyperAnalytics orderCompletedWithOrderID: "ck-f306fe0e-cc21-445a-9caa-08245a9aa52c" total: @39.99];
+  ```
 
 ### RudderStack JavaScript SDK
 
-* Import the RudderTyper-generated client using `require()` and make the calls if your framework supports them. Otherwise, you can use [**Browserify**](https://browserify.org/) to generate a bundle that supports your implementation. The implementation for each of the alternatives mentioned above will be as shown:
+Import the RudderTyper-generated client using `require()` and make the calls if your framework supports them. Otherwise, you can use [**Browserify**](https://browserify.org/) to generate a bundle that supports your implementation. The implementation for each of the alternatives mentioned above will be as shown:
 
 #### Using the `require()`method
 
@@ -188,12 +188,15 @@ import com.rudderstack.generated.*
 // Import RudderStack JS SDK and initialize it
 const rudderanalytics = require("rudder-sdk-js")
 rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL)
+
 // Import your auto-generated RudderTyper client:
 const rudderTyper = require('./rudderTyperClient')
+
 // Pass in your rudder-sdk-js instance to RudderTyper client
 rudderTyper.setRudderTyperOptions({
   analytics: rudderanalytics
 });
+
 // Issue your first RudderTyper track call!
 rudderTyper.orderCompleted({
   orderID: 'ck-f306fe0e-cc21-445a-9caa-08245a9aa52c',
@@ -205,59 +208,61 @@ rudderTyper.orderCompleted({
 
 * Execute the following command to generate a bundle from the RudderTyper client:
 
-```bash
-browserify rudderTyperClient.js --standalone rudderTyper >  rudderTyperBundle.js
-```
+  ```bash
+  browserify rudderTyperClient.js --standalone rudderTyper >  rudderTyperBundle.js
+  ```
 
 * Now you can make calls from your `html` file as shown:
 
-```markup
-<head>
+  ```html
+  <head>
+    <script>
+      rudderanalytics = window.rudderanalytics = [];
+      var methods = ["load", "page", "track", "identify", "alias", "group", "ready", "reset", "getAnonymousId", "setAnonymousId"];
+      for (var i = 0; i < methods.length; i++) {
+        var method = methods[i];
+        rudderanalytics[method] = function(methodName) {
+          return function() {
+            rudderanalytics.push([methodName].concat(Array.prototype.slice.call(arguments)));
+          };
+        }(method);
+      }
+      rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL);
+      rudderanalytics.page();
+    </script>
+    <script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
+    <script src="./rudderTyperBundle.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
   <script>
-    rudderanalytics = window.rudderanalytics = [];
-    var methods = ["load", "page", "track", "identify", "alias", "group", "ready", "reset", "getAnonymousId", "setAnonymousId"];
-    for (var i = 0; i < methods.length; i++) {
-      var method = methods[i];
-      rudderanalytics[method] = function(methodName) {
-        return function() {
-          rudderanalytics.push([methodName].concat(Array.prototype.slice.call(arguments)));
-        };
-      }(method);
-    }
-    rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL);
-    rudderanalytics.page();
+    rudderTyper.setRudderTyperOptions({
+      analytics: rudderanalytics
+    });
+    rudderTyper.orderCompleted({
+      orderID: 'ck-f306fe0e-cc21-445a-9caa-08245a9aa52c',
+      total: 39.99
+    })
   </script>
-  <script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
-  <script src="./rudderTyperBundle.js"></script>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<script>
-  rudderTyper.setRudderTyperOptions({
-    analytics: rudderanalytics
-  });
-  rudderTyper.orderCompleted({
-    orderID: 'ck-f306fe0e-cc21-445a-9caa-08245a9aa52c',
-    total: 39.99
-  })
-</script>
-```
+  ```
 
 ### RudderStack Node.js SDK
 
-* Import the the RudderTyper-generated client and start making calls using RudderTyper as shown:
+Import the the RudderTyper-generated client and start making calls using RudderTyper as shown:
 
 ```javascript
 // Import Rudder Node SDK and intialize it
 const Analytics = require("@rudderstack/rudder-sdk-node");
 const client = new Analytics(WRITE_KEY, DATA_PLANE_URL / v1 / batch);
 const ruddertyper = require("./rudderTyperClient");
+
 // Pass in your rudder-sdk-node instance to RudderTyper.
 ruddertyper.setRudderTyperOptions({
   analytics: client
 });
+
 // Issue your first RudderTyper track call!
 ruddertyper.orderCompleted({
   orderID: 'ck-f306fe0e-cc21-445a-9caa-08245a9aa52c',
