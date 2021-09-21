@@ -63,7 +63,7 @@ Similar to the example given above, let's assume you want to send your event dat
 Device mode integrations will send data to the destinations directly from your client \(browser or mobile application\).
 {% endhint %}
 
-Some of the destinations that currently support only device mode are [Adjust](https://docs.rudderstack.com/destinations/adjust), [Firebase](https://docs.rudderstack.com/destinations/firebase), [Hotjar](https://docs.rudderstack.com/destinations/hotjar), [AppsFlyer](https://docs.rudderstack.com/destinations/appsflyer), [Chartbeat](https://docs.rudderstack.com/destinations/chartbeat), [Google Ads](https://docs.rudderstack.com/destinations/google-ads), and [Facebook Pixel](https://docs.rudderstack.com/destinations/fb-pixel). 
+Some of the destinations that currently support only device mode are [Adjust](https://docs.rudderstack.com/destinations/adjust), [Firebase](https://docs.rudderstack.com/destinations/firebase), [Hotjar](https://docs.rudderstack.com/destinations/hotjar), [AppsFlyer](https://docs.rudderstack.com/destinations/appsflyer), [Chartbeat](https://docs.rudderstack.com/destinations/chartbeat), [Google Ads](https://docs.rudderstack.com/destinations/google-ads), and [Facebook Pixel](https://docs.rudderstack.com/destinations/fb-pixel).
 
 ### Support for Cloud Mode and Device Mode Both
 

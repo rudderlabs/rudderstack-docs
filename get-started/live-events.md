@@ -6,7 +6,7 @@ description: >-
 
 # Live Events
 
-RudderStack's **Live Events** is a debugger that shows a stream of live events collected from your sources and sent to the connected destinations in real-time. 
+RudderStack's **Live Events** is a debugger that shows a stream of live events collected from your sources and sent to the connected destinations in real-time.
 
 With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
 
@@ -25,18 +25,18 @@ To view the live events collected from your source in real-time, follow these st
 * Make sure you have configured a source and destination in RudderStack. Follow this [**guide**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/diff/drafts/-MdGKMQEdba4ZbKvF7Mf/connections/adding-source-and-destination-rudderstack) for more information.
 * Select the **Connections** option on your left nav bar and click on the source for which you want to view the live events.
 
-![](../.gitbook/assets/image%20%28119%29.png)
+  ![](../.gitbook/assets/image%20%28119%29.png)
 
 * Then, click on the **Live Events** button on the top right as shown:
 
-![](../.gitbook/assets/image%20%28123%29.png)
+  ![](../.gitbook/assets/image%20%28123%29.png)
 
 * Now you can ingest the data into RudderStack through the source and see the collected events in this window.
 
-![](../.gitbook/assets/image%20%28115%29.png)
+  ![](../.gitbook/assets/image%20%28115%29.png)
 
 {% hint style="info" %}
-For details on the information available in the **Live Events** window, check the [**Source Live Events**](https://docs.rudderstack.com/get-started/live-events#source-live-events) ****section.
+For details on the information available in the **Live Events** window, check the [**Source Live Events**](https://docs.rudderstack.com/get-started/live-events#source-live-events) section.
 {% endhint %}
 
 ### Destinations
@@ -51,18 +51,18 @@ Make sure your destination is configured in the **Cloud mode**. Refer to the [**
 
 * Select the **Connections** option on your left nav bar and click on the destination for which you want to view the live events.
 
-![](../.gitbook/assets/image%20%28117%29.png)
+  ![](../.gitbook/assets/image%20%28117%29.png)
 
 * Then, click on the **Live Events** button on the top right as shown:
 
-![](../.gitbook/assets/image%20%28124%29%20%281%29.png)
+  ![](../.gitbook/assets/image%20%28124%29%20%281%29.png)
 
 * You should be able to see the events sent to the destination in this window.
 
-![](../.gitbook/assets/image%20%28125%29.png)
+  ![](../.gitbook/assets/image%20%28125%29.png)
 
 {% hint style="info" %}
-For details on the information available in the **Live Events** window, check the [**Destination Live Events**](https://docs.rudderstack.com/get-started/live-events#destination-live-events) ****section.
+For details on the information available in the **Live Events** window, check the [**Destination Live Events**](https://docs.rudderstack.com/get-started/live-events#destination-live-events) section.
 {% endhint %}
 
 ## **Source Live Events**
@@ -83,7 +83,7 @@ When routing events to a destination, it can be frustrating if the events sent d
 
 The **Live Events** feature gives you real-time visibility into the destination's responses. The key information captured includes:
 
-* **Event Name:** Corresponding to the name of the event. 
+* **Event Name:** Corresponding to the name of the event.
 * **Error Code**: In case the event fails, this gives specific details related to the error. These details include the error response and the date and time of the attempt to send the event.
 
 The payload sent to the destination can be seen by clicking on an event. This is shown in the right-hand side window on the same page, as shown:
@@ -112,7 +112,7 @@ Live events are shown for all the destinations. However, the **payload of the ev
 
 ## **Transformation Live Events**
 
-RudderStack also gives you the option of viewing the events before and after a transformation is applied. 
+RudderStack also gives you the option of viewing the events before and after a transformation is applied.
 
 ![](../.gitbook/assets/2%20%2825%29.png)
 

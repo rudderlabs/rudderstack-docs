@@ -86,7 +86,7 @@ Here's a quick walkthrough on how to send data from your website to various clou
 
 ## Contact Us
 
-If you want to know more about RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) . You can also see [**RudderStack in action**](https://app.rudderstack.com/signup?type=freetrial) ****to check out all the cool features the platform has to offer.
+If you want to know more about RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also see [**RudderStack in action**](https://app.rudderstack.com/signup?type=freetrial) to check out all the cool features the platform has to offer.
 
 For community support, you can always start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel. We will be happy to help you!
 

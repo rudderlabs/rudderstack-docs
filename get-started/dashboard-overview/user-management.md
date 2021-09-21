@@ -7,7 +7,7 @@ description: Detailed description of the Teammates option on the RudderStack das
 RudderStack's user management feature lets you add and manage other users in your current workspace and enables easier collaboration between you and other members of your team or organization.
 
 {% hint style="info" %}
-You can invite up to 3 users in your [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) plan. You can increase this limit by upgrading to a Pro or Enterprise plan. 
+You can invite up to 3 users in your [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) plan. You can increase this limit by upgrading to a Pro or Enterprise plan.
 {% endhint %}
 
 Refer to the table below for specifics on the number of teammates you can add to your current workspace in each plan:
@@ -28,11 +28,11 @@ To invite a user in your current workspace, follow these steps:
 
 * Click on the **Teammates** option on the left nav bar and click on **Invite Teammate**, as shown:
 
-![](../../.gitbook/assets/image%20%2882%29.png)
+  ![](../../.gitbook/assets/image%20%2882%29.png)
 
 * Enter the email address of the user you want to invite and select the privileges you want to assign to them. Then, click on **Invite**.
 
-![](../../.gitbook/assets/team-2.png)
+  ![](../../.gitbook/assets/team-2.png)
 
 ## User Permissions
 
@@ -92,8 +92,8 @@ This role has the following permissions:
 {% hint style="success" %}
 See the following guides to learn more about these features:
 
-* \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
-* \*\*\*\*[**Transformations**](../../transformations/)\*\*\*\*
+* [**Connections**](../../connections/)
+* [**Transformations**](../../transformations/)
 {% endhint %}
 
 | Option | View | Add | Modify | Delete |
@@ -154,8 +154,8 @@ A user with the read-write role has all the permissions associated with a view-o
 {% hint style="success" %}
 See the following guides for more information on these options:
 
-* \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
-* \*\*\*\*[**Transformations**](../../transformations/)\*\*\*\*
+* [**Connections**](../../connections/)
+* [**Transformations**](../../transformations/)
 {% endhint %}
 
 Other permissions for this role include:
@@ -200,8 +200,8 @@ The permissions for this role are as listed below:
 {% hint style="success" %}
 See the following guides for more information on these options:
 
-* \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
-* \*\*\*\*[**Transformations**](../../transformations/)\*\*\*\*
+* [**Connections**](../../connections/)
+* [**Transformations**](../../transformations/)
 {% endhint %}
 
 #### Live Events
@@ -229,6 +229,4 @@ See the following guides for more information on these options:
 ## Contact Us
 
 For more information on this feature, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel, we will be happy to help you.
-
-
 

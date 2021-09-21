@@ -42,8 +42,6 @@ This options lists all the available sources and destinations supported by Rudde
 
 ![](../../.gitbook/assets/4%20%2821%29.png)
 
-
-
 ## Transformations
 
 With this option, you can write your own JavaScript functions to transform your events in a destination-specific format. You can also create your own libraries - a RudderStack feature that allows you to reuse the code written for a transformation in other transformations.
@@ -86,7 +84,7 @@ This is the URL required for routing and processing your events to RudderStack.
 
 ### **Getting the Data Plane URL**
 
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by installing and setting up RudderStack in your preferred development environment. 
+* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by installing and setting up RudderStack in your preferred development environment.
 * If you're using the **enterprise** version of RudderStack, contact us for the data plane URL with the email ID you used to sign up for RudderStack.
 
 ## Contact Us
