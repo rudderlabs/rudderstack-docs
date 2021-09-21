@@ -10,9 +10,9 @@ This guide describes the various API operations, related request and response st
 
 ## Basic Authentication
 
-The Transformations API is authenticated via HTTP Basic Authentication. 
+The Transformations API is authenticated via HTTP Basic Authentication.
 
-You can authenticate your account when using the API by including your **email address** in the username field and the secret **access token** in the password field in Authorization, if you're using POSTMAN.
+You can authenticate your account when using the API by including your **email address** in the username field and the secret **access token** in the password field in Authorization, if you're using Postman.
 
 {% hint style="warning" %}
 It is mandatory to generate your access token before you make any API calls. If you have not generated your access token visit our [**Access Token**](api-access-token.md) page.
@@ -25,7 +25,7 @@ Any API requests without the authentication will fail.
 You can also pass your access token in the authorization headers, as shown:
 
 ```markup
-Authorisation: Basic {Base64Encoded(emailaddress:AccessToken)}
+Authorization: Basic {Base64Encoded(emailaddress:AccessToken)}
 ```
 
 The basic auth contains three parts:
@@ -46,7 +46,7 @@ To make a successful request all of the upcoming endpoints should include this h
 
 ## Transformations
 
-RudderStack transformations are responsible for converting the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript. 
+RudderStack transformations are responsible for converting the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript.
 
 {% hint style="success" %}
 We also support [user-specific transformations](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) for real-time operations, such as aggregation and sampling.
@@ -99,7 +99,7 @@ Name of transformer that you wish to create.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="description " type="string" required=false %}
-Description of transformer goes here. 
+Description of transformer goes here.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="code" type="string" required=true %}
@@ -114,7 +114,7 @@ Code of transformer goes here.
 When publish is false we create a transformation revisions and you cannot connect a destination.
 {% endapi-method-response-example-description %}
 
-```
+```json
 publish = true :: 
 {
   "id": "1puvbvMW2mxWvfFFnPIv5TTv4wL",
@@ -129,20 +129,20 @@ publish = true ::
     {
       "id": "xdcfvgbvfcdvfgbhgvf",
       "name": "Destination 1",
-      "enabled": true,
+      "enabled": true
     }
   ]
 }
 
 publish = false ::
 {
-    "id": "1puu7XFWgbwObDY4nbJdF0cgeTC",
-    "versionId": "1puu7e4DXYMPJrLglIICgFK75fD",
-    "name": "new Transformation 3",
-    "description": "Some Description",
-    "code": "function transformEvent(events) { return events.context; } ",
-    "createdAt": "2021-03-04T04:48:27.288Z",
-    "updatedAt": "2021-03-04T04:48:27.288Z",
+  "id": "1puu7XFWgbwObDY4nbJdF0cgeTC",
+  "versionId": "1puu7e4DXYMPJrLglIICgFK75fD",
+  "name": "new Transformation 3",
+  "description": "Some Description",
+  "code": "function transformEvent(events) { return events.context; } ",
+  "createdAt": "2021-03-04T04:48:27.288Z",
+  "updatedAt": "2021-03-04T04:48:27.288Z"
 }
 ```
 {% endapi-method-response-example %}
@@ -153,7 +153,7 @@ publish = false ::
 {% hint style="info" %}
 **Events Parameters : Passing events in our API accepts a  JSON format.**
 
-```text
+```json
 [
   {
     "anonymousId": "8d872292709c6fbe",
@@ -180,21 +180,21 @@ publish = false ::
 ```
 {% endhint %}
 
-Creating a transformation can be done in one of the two ways: 
+Creating a transformation can be done in one of the two ways:
 
-**`publish: true` -** In this case, we maintain two copies of the transformer. Among these, one is published and other is used for revisions. With the published version, you can connect a destination and its code is made live for incoming traffic.  
+**`publish: true` -** In this case, we maintain two copies of the transformer. Among these, one is published and other is used for revisions. With the published version, you can connect a destination and its code is made live for incoming traffic.
 
-**`publish: false` -** In this case, we only create revisions for the transformation, which means you cannot connect any destinations to it. It cannot be used for any incoming event traffic. However, if you wish to publish some revisions of transformations you can do so using our **Publish API.** 
+**`publish: false` -** In this case, we only create revisions for the transformation, which means you cannot connect any destinations to it. It cannot be used for any incoming event traffic. However, if you wish to publish some revisions of transformations you can do so using our **Publish API**.
 
 {% hint style="success" %}
-We will be using these two terms **Published** and **Revisions** for transformations and libraries throughout our docs**.**
+We will be using these two terms **Published** and **Revisions** for transformations and libraries throughout our docs.
 {% endhint %}
 
 An example is as shown:
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X POST 'https://api.rudderstack.com/transformations' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 -H 'Content-Type: application/json' \
@@ -207,7 +207,7 @@ curl --location -X POST 'https://api.rudderstack.com/transformations' \
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
  http POST 'https://api.rudderstack.com/transformations' \
  name='Create Transformation Tested-4' code='function transformEvent(events) { return events; }' description='Descriptrion 1' \
  Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
@@ -234,32 +234,32 @@ Get all **published transformations** for a workspace.
 This will give an array of published transformations.
 {% endapi-method-response-example-description %}
 
-```
+```bash
 {
-    "transformations": [
-        {
-            "id": "sedrftg",
-            "versionId": "edrtv",
-            "name": "new Transformations-2",
-            "description": "",
-            "code": "function transformEvent(events) { return events; }",
-            "codeVersion": "1",
-            "createdAt": "2021-03-04T04:48:27.288Z",
-            "updatedAt": "2021-03-04T04:48:27.288Z",
-            "destinations": []
-        },
-        {
-            "id": "xcgvhcfdx",
-            "versionId": "dtvbyutbvc",
-            "name": "Update Transformations and Publish",
-            "description": "",
-            "code": "function transformEvent(events) { return events; } ",
-            "codeVersion": "1",
-            "createdAt": "2021-03-04T10:07:25.513Z",
-            "updatedAt": "2021-03-04T10:07:25.513Z",
-            "destinations": []
-        }
-    ]
+  "transformations": [
+    {
+      "id": "sedrftg",
+      "versionId": "edrtv",
+      "name": "new Transformations-2",
+      "description": "",
+      "code": "function transformEvent(events) { return events; }",
+      "codeVersion": "1",
+      "createdAt": "2021-03-04T04:48:27.288Z",
+      "updatedAt": "2021-03-04T04:48:27.288Z",
+      "destinations": []
+    },
+    {
+      "id": "xcgvhcfdx",
+      "versionId": "dtvbyutbvc",
+      "name": "Update Transformations and Publish",
+      "description": "",
+      "code": "function transformEvent(events) { return events; } ",
+      "codeVersion": "1",
+      "createdAt": "2021-03-04T10:07:25.513Z",
+      "updatedAt": "2021-03-04T10:07:25.513Z",
+      "destinations": []
+    }
+  ]
 }
 ```
 {% endapi-method-response-example %}
@@ -269,16 +269,16 @@ This will give an array of published transformations.
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X GET 'https://api.rudderstack.com/transformations' \
--H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```
+```bash
  http GET 'https://api.rudderstack.com/transformations' \
- Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)'
 ```
 {% endtab %}
 {% endtabs %}
@@ -301,17 +301,17 @@ Retrieve the **published transformations** from an ID.
 This will give a transformation object on basis of the ID.
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "id": "swderftgy",
-    "versionId": "edftgyhu",
-    "name": "new Transformations-2",
-    "description": "",
-    "code": "function transform(events) { return events; } ",
-    "codeVersion": "1",
-    "createdAt": "2021-03-04T04:48:27.288Z",
-    "updatedAt": "2021-03-04T04:48:27.288Z",
-    "destinations": []
+  "id": "swderftgy",
+  "versionId": "edftgyhu",
+  "name": "new Transformations-2",
+  "description": "",
+  "code": "function transform(events) { return events; } ",
+  "codeVersion": "1",
+  "createdAt": "2021-03-04T04:48:27.288Z",
+  "updatedAt": "2021-03-04T04:48:27.288Z",
+  "destinations": []
 }
 ```
 {% endapi-method-response-example %}
@@ -321,16 +321,16 @@ This will give a transformation object on basis of the ID.
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X GET 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
--H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 http GET 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
-Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)'
 ```
 {% endtab %}
 {% endtabs %}
@@ -341,14 +341,14 @@ Update a transformation
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Updating a transformation creates a new **revision** and sets it as **published** if the `publish` flag is set is `true`, and its code becomes live for upcoming traffic. If the `publish` flag is `false` , it only creates a new **revision** for that transformation.
+Updating a transformation creates a new **revision** and sets it as **published** if the `publish` flag is set is `true`, and its code becomes live for upcoming traffic. If the `publish` flag is `false`, it only creates a new **revision** for that transformation.
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-query-parameters %}
 {% api-method-parameter name="publish" type="boolean" required=false %}
-By default this flag is set to `false` . When set to `true` it will publish your transformation and make it live for the incoming traffic.
+By default this flag is set to `false`. When set to `true` it will publish your transformation and make it live for the incoming traffic.
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 
@@ -373,16 +373,17 @@ Update the description of a transformation.
 This will update transformation object on basis of id.
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "id": "1pHw1RmzAqKpRCNupzHjTGfTrPJ",
-    "versionId": "1pIfjTI5cOMnSgutkXjTRldt1n3",
-    "name": "new Transformations-2",
-    "description": "Hey I am updated",
-    "code": "export default function cube(x) { return x * x ; }",
-    "codeVersion": "1",
-    "createdAt": "2021-03-04T04:48:27.288Z",
-    "updatedAt": "2021-03-04T04:48:27.288Z",
+  "id": "swderftgy",
+  "versionId": "edftgyhu",
+  "name": "new Transformations-2",
+  "description": "",
+  "code": "function transform(events) { return events; } ",
+  "codeVersion": "1",
+  "createdAt": "2021-03-04T04:48:27.288Z",
+  "updatedAt": "2021-03-04T04:48:27.288Z",
+  "destinations": []
 }
 ```
 {% endapi-method-response-example %}
@@ -394,7 +395,7 @@ An example request is as shown:
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X POST 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 -H 'Content-Type: application/json' \
@@ -405,7 +406,7 @@ curl --location -X POST 'https://api.rudderstack.com/transformations/1pSvMXr651E
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
  http POST 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
  name='name updated'
  Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
@@ -432,9 +433,9 @@ Delete a **published** transformations by ID. Note that RudderStack never delete
 
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "success": true
+  "success": true
 }
 ```
 {% endapi-method-response-example %}
@@ -444,16 +445,16 @@ Delete a **published** transformations by ID. Note that RudderStack never delete
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X DELETE 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
--H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 http DELETE 'https://api.rudderstack.com/transformations/1pSvMXr651E1gWeErQNQlSQU5Bg' \
-Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)'
 ```
 {% endtab %}
 {% endtabs %}
@@ -475,7 +476,7 @@ Gets the number of objects in your array. By default it always returns the first
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="orderBy" type="string" required=false %}
-You can pass it either as **`ASC`** for ascending or **`DESC`** as descending. By default, it sets the order as ascending on **`createdAt`.**
+You can pass it either as **`ASC`** for ascending or **`DESC`** as descending. By default, it sets the order as ascending on **`createdAt`**.
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
 {% endapi-method-request %}
@@ -486,30 +487,30 @@ You can pass it either as **`ASC`** for ascending or **`DESC`** as descending. B
 This gets an array of transformations revisions.
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "TransformationVersions": [
-        {
-            "id": "1pIYoILGZTNYZP4YYkeyNIKlitl",
-            "versionId": "1pIYoLfEzcMK3D3M1ihjqI02wnx",
-            "name": "Update Transformations and Publish",
-            "description": "",
-            "code": "",
-            "codeVersion": "1",
-            "createdAt": "2021-03-04T10:07:24.562Z",
-            "updatedAt": "2021-03-04T10:07:24.562Z",
-        },
-        {
-            "id": "1pIYoILGZTNYZP4YYkeyNIKlitl",
-            "versionId": "1pIhxFXd7NR7XDA914rLAn5f7wq",
-            "name": "Update Transformations and Publish",
-            "description": "Hey I am updated again",
-            "code": "export default function cube(x) { return x * x * x ; }",
-            "codeVersion": "1",
-            "createdAt": "2021-03-04T11:22:36.102Z",
-            "updatedAt": "2021-03-08T04:22:42.646Z",
-        }
-    ]
+  "TransformationVersions": [
+    {
+      "id": "1pIYoILGZTNYZP4YYkeyNIKlitl",
+      "versionId": "1pIYoLfEzcMK3D3M1ihjqI02wnx",
+      "name": "Update Transformations and Publish",
+      "description": "",
+      "code": "",
+      "codeVersion": "1",
+      "createdAt": "2021-03-04T10:07:24.562Z",
+      "updatedAt": "2021-03-04T10:07:24.562Z"
+    },
+    {
+      "id": "1pIYoILGZTNYZP4YYkeyNIKlitl",
+      "versionId": "1pIhxFXd7NR7XDA914rLAn5f7wq",
+      "name": "Update Transformations and Publish",
+      "description": "Hey I am updated again",
+      "code": "export default function cube(x) { return x * x * x ; }",
+      "codeVersion": "1",
+      "createdAt": "2021-03-04T11:22:36.102Z",
+      "updatedAt": "2021-03-08T04:22:42.646Z"
+    }
+  ]
 }
 ```
 {% endapi-method-response-example %}
@@ -521,16 +522,16 @@ An example request is as shown:
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions' \
--H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 http GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions' \
-Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)'
 ```
 {% endtab %}
 {% endtabs %}
@@ -553,16 +554,16 @@ Get a single transformation revision.
 This gets a single transformation version.
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "id": "1pIYoILGZTNYZP4YYkeyNIKlitl",
-    "versionId": "1pIYoLfEzcMK3D3M1ihjqI02wnx",
-    "name": "Update Transformations and Publish",
-    "description": "",
-    "code": "",
-    "codeVersion": "1",
-    "createdAt": "2021-03-04T10:07:24.562Z",
-    "updatedAt": "2021-03-04T10:07:24.562Z",
+  "id": "1pIYoILGZTNYZP4YYkeyNIKlitl",
+  "versionId": "1pIYoLfEzcMK3D3M1ihjqI02wnx",
+  "name": "Update Transformations and Publish",
+  "description": "",
+  "code": "",
+  "codeVersion": "1",
+  "createdAt": "2021-03-04T10:07:24.562Z",
+  "updatedAt": "2021-03-04T10:07:24.562Z"
 }
 ```
 {% endapi-method-response-example %}
@@ -572,16 +573,16 @@ This gets a single transformation version.
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location --request GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions/1pIhxFXd7NR7XDA914rLAn5f7wq' \
--H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
+-H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 http GET 'https://api.rudderstack.com/transformations/1pIYoILGZTNYZP4YYkeyNIKlitl/versions/1pIhxFXd7NR7XDA914rLAn5f7wq' \
-Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
+Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)'
 ```
 {% endtab %}
 {% endtabs %}
@@ -643,16 +644,16 @@ Description of the library goes here
 
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "id": "1pT7qGNwZfGkSqne8OE1EAcRvgK",
-    "versionId": "1pT7qEnXP8Dn9tQGiKnKNY0Qwmw",
-    "name": "User Defined Library4",
-    "description": "Get User context",
-    "code": "export default function cube(x) { return x * x * x; }",
-    "updatedAt": "2021-03-08T03:53:34.468Z",
-    "createdAt": "2021-03-08T03:53:34.468Z",
-    "importName": "userDefinedLibrary4"
+  "id": "1pT7qGNwZfGkSqne8OE1EAcRvgK",
+  "versionId": "1pT7qEnXP8Dn9tQGiKnKNY0Qwmw",
+  "name": "User Defined Library4",
+  "description": "Get User context",
+  "code": "export default function cube(x) { return x * x * x; }",
+  "updatedAt": "2021-03-08T03:53:34.468Z",
+  "createdAt": "2021-03-08T03:53:34.468Z",
+  "importName": "userDefinedLibrary4"
 }
 ```
 {% endapi-method-response-example %}
@@ -666,7 +667,7 @@ The `publish` flag for a library works in the same way as for destinations.
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X POST 'https://api.rudderstack.com/libraries' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 -H 'Content-Type: application/json' \
@@ -679,7 +680,7 @@ curl --location -X POST 'https://api.rudderstack.com/libraries' \
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
  http POST 'https://api.rudderstack.com/libraries' \
  name='User Defined Library' description='Get User context' code='export default function cube(x) { return x * x * x; }' \ 
  Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
@@ -706,30 +707,30 @@ Get all the **published** libraries.
 
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "libraries": [
-        {
-            "id": "1pHx15j5rXvmmQUIMBaQdIyrpr2",
-            "versionId": "1pHxdlGL8IyoP7WfvRil4Qs88cp",
-            "name": "Get Cube",
-            "description": "First Library using apiCall",
-            "code": "export default function cube(x) { return x * x ; }",
-            "createdAt": "2021-03-04T05:01:46.985Z",
-            "updatedAt": "2021-03-04T05:01:47.141Z",
-            "importName": "getCube"
-        },
-        {
-            "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
-            "versionId": "1pT793mcqQkcyHdqwXkxHmtgMMg",
-            "name": "User Defined Library",
-            "description": "Get User context",
-            "code": "    export default function cube(x) { return x * x * x; }",
-            "createdAt": "2021-03-08T03:47:51.512Z",
-            "updatedAt": "2021-03-08T03:47:51.512Z",
-            "importName": "userDefinedLibrary"
-        }
-    ]
+  "libraries": [
+    {
+      "id": "1pHx15j5rXvmmQUIMBaQdIyrpr2",
+      "versionId": "1pHxdlGL8IyoP7WfvRil4Qs88cp",
+      "name": "Get Cube",
+      "description": "First Library using apiCall",
+      "code": "export default function cube(x) { return x * x ; }",
+      "createdAt": "2021-03-04T05:01:46.985Z",
+      "updatedAt": "2021-03-04T05:01:47.141Z",
+      "importName": "getCube"
+    },
+    {
+      "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
+      "versionId": "1pT793mcqQkcyHdqwXkxHmtgMMg",
+      "name": "User Defined Library",
+      "description": "Get User context",
+      "code": "    export default function cube(x) { return x * x * x; }",
+      "createdAt": "2021-03-08T03:47:51.512Z",
+      "updatedAt": "2021-03-08T03:47:51.512Z",
+      "importName": "userDefinedLibrary"
+    }
+  ]
 }
 ```
 {% endapi-method-response-example %}
@@ -739,15 +740,15 @@ Get all the **published** libraries.
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X GET 'https://api.rudderstack.com/libraries' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
--H 'Content-Type: application/json' \
+-H 'Content-Type: application/json'
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 http GET 'https://api.rudderstack.com/libraries' \
 Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 Content-Type:'application/json'
@@ -773,16 +774,16 @@ Get a single **published** library by ID.
 
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
-    "versionId": "1pT793mcqQkcyHdqwXkxHmtgMMg",
-    "name": "User Defined Library",
-    "description": "Get User context",
-    "code": "    export default function cube(x) { return x * x * x; }",
-    "createdAt": "2021-03-08T03:47:51.512Z",
-    "updatedAt": "2021-03-08T03:47:51.512Z",
-    "importName": "userDefinedLibrary"
+  "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
+  "versionId": "1pT793mcqQkcyHdqwXkxHmtgMMg",
+  "name": "User Defined Library",
+  "description": "Get User context",
+  "code": "    export default function cube(x) { return x * x * x; }",
+  "createdAt": "2021-03-08T03:47:51.512Z",
+  "updatedAt": "2021-03-08T03:47:51.512Z",
+  "importName": "userDefinedLibrary"
 }
 ```
 {% endapi-method-response-example %}
@@ -792,15 +793,15 @@ Get a single **published** library by ID.
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
--H 'Content-Type: application/json' \
+-H 'Content-Type: application/json'
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 http GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
 Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 Content-Type:'application/json'
@@ -842,16 +843,16 @@ Code of the library.
 
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
-    "versionId": "1pT8KDAD66mQxnaUQxJpNs9qLFn",
-    "name": "User Defined Library",
-    "description": "Get Divisible by 2",
-    "code": "export default function cube(x) { return 2 * x; }",
-    "createdAt": "2021-03-08T03:47:51.512Z",
-    "updatedAt": "2021-03-08T03:57:33.689Z",
-    "importName": "userDefinedLibrary"
+  "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
+  "versionId": "1pT8KDAD66mQxnaUQxJpNs9qLFn",
+  "name": "User Defined Library",
+  "description": "Get Divisible by 2",
+  "code": "export default function cube(x) { return 2 * x; }",
+  "createdAt": "2021-03-08T03:47:51.512Z",
+  "updatedAt": "2021-03-08T03:57:33.689Z",
+  "importName": "userDefinedLibrary"
 }
 ```
 {% endapi-method-response-example %}
@@ -867,7 +868,7 @@ A sample request is as shown:
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X POST 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 -H 'Content-Type: application/json' \
@@ -879,7 +880,7 @@ curl --location -X POST 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZ
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 description='Get Divisible by 2' code='export default function cube(x) { return 2 * x; }'
 http POST 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1' \
 Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
@@ -890,7 +891,7 @@ Content-Type:'application/json'
 
 {% api-method method="get" host="https://api.rudderstack.com" path="/libraries/{id}/versions" %}
 {% api-method-summary %}
-List all library versions. 
+List all library versions.
 {% endapi-method-summary %}
 
 {% api-method-description %}
@@ -916,30 +917,30 @@ You can pass it either as **ASC** to get an ascending order or **DESC** for desc
 
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "libraryVersions": [
-        {
-            "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
-            "versionId": "1pT793mcqQkcyHdqwXkxHmtgMMg",
-            "name": "userDefinedLibrary",
-            "description": "Get User context",
-            "code": "    export default function cube(x) { return x * x * x; }",
-            "createdAt": "2021-03-08T03:47:51.686Z",
-            "updatedAt": "2021-03-08T03:47:51.686Z",
-            "isPublished": false
-        },
-        {
-            "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
-            "versionId": "1pT8KDAD66mQxnaUQxJpNs9qLFn",
-            "name": "userDefinedLibrary",
-            "description": "Get Divisible by 2",
-            "code": "export default function cube(x) { return 2 * x; }",
-            "createdAt": "2021-03-08T03:57:33.738Z",
-            "updatedAt": "2021-03-08T03:57:33.738Z",
-            "isPublished": true
-        }
-    ]
+  "libraryVersions": [
+    {
+      "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
+      "versionId": "1pT793mcqQkcyHdqwXkxHmtgMMg",
+      "name": "userDefinedLibrary",
+      "description": "Get User context",
+      "code": "    export default function cube(x) { return x * x * x; }",
+      "createdAt": "2021-03-08T03:47:51.686Z",
+      "updatedAt": "2021-03-08T03:47:51.686Z",
+      "isPublished": false
+    },
+    {
+      "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
+      "versionId": "1pT8KDAD66mQxnaUQxJpNs9qLFn",
+      "name": "userDefinedLibrary",
+      "description": "Get Divisible by 2",
+      "code": "export default function cube(x) { return 2 * x; }",
+      "createdAt": "2021-03-08T03:57:33.738Z",
+      "updatedAt": "2021-03-08T03:57:33.738Z",
+      "isPublished": true
+    }
+  ]
 }
 ```
 {% endapi-method-response-example %}
@@ -949,15 +950,15 @@ You can pass it either as **ASC** to get an ascending order or **DESC** for desc
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location --request GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
--H 'Content-Type: application/json' \
+-H 'Content-Type: application/json'
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 http GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions' \
 Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 Content-Type:'application/json'
@@ -971,7 +972,7 @@ Retrieve a single library versions
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Get a single library revision. 
+Get a single library revision.
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -983,16 +984,16 @@ Get a single library revision.
 
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
-    "versionId": "1pT8KDAD66mQxnaUQxJpNs9qLFn",
-    "name": "userDefinedLibrary",
-    "description": "Get Divisible by 2",
-    "code": "export default function cube(x) { return 2 * x; }",
-    "createdAt": "2021-03-08T03:57:33.738Z",
-    "updatedAt": "2021-03-08T03:57:33.738Z",
-    "isPublished": false
+  "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
+  "versionId": "1pT8KDAD66mQxnaUQxJpNs9qLFn",
+  "name": "userDefinedLibrary",
+  "description": "Get Divisible by 2",
+  "code": "export default function cube(x) { return 2 * x; }",
+  "createdAt": "2021-03-08T03:57:33.738Z",
+  "updatedAt": "2021-03-08T03:57:33.738Z",
+  "isPublished": false
 }
 ```
 {% endapi-method-response-example %}
@@ -1002,15 +1003,15 @@ Get a single library revision.
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions/1pT8KDAD66mQxnaUQxJpNs9qLFn' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
--H 'Content-Type: application/json' \
+-H 'Content-Type: application/json'
 ```
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
  http GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt5Zi3VIht1/versions/1pT8KDAD66mQxnaUQxJpNs9qLFn' \
  Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
  Content-Type:'application/json'
@@ -1020,7 +1021,7 @@ curl --location -X GET 'https://api.rudderstack.com/libraries/1pT7933tHRBPlEMIZt
 
 ## Publish the API
 
-As an end user you can create a transformer/library and perform several edits on it. Note that  **publishing is optional at `create`**. 
+As an end user you can create a transformer/library and perform several edits on it. Note that  **publishing is optional at `create`**.
 
 If you perform some edits on this version of transformer, RudderStack takes your latest update as the published version, creates a copy of the older version, and saves it as revisions. Let's assume that after creating some 7 to 8 such revisions of your transformer,  you finally decide to use the second or third version of the transformer.
 
@@ -1071,9 +1072,9 @@ An array of object with property as **`versionId`.**
 Sends published as true if versions is successfully published.
 {% endapi-method-response-example-description %}
 
-```
+```json
 {
-    "published": true
+  "published": true
 }
 ```
 {% endapi-method-response-example %}
@@ -1083,29 +1084,30 @@ Sends published as true if versions is successfully published.
 
 The sample request is as shown:
 
-```markup
+```json
 Request Payload :: 
 {
-  transformations: [
+  "transformations": [
     {
-      versionId: publishTransformerVersionId,
-      testInput:
-        '[
-          {
-            "anonymousId":"8d872292709c6fbe",
-            "channel":"mobile"
-          },
-          {
-            "anonymousId":"8d872292709c6fbe",
-            "channel":"mobile"
-          }
-        ],
-  libraries: [
+      "versionId": "publishTransformerVersionId",
+      "testInput": [
+        {
+          "anonymousId": "8d872292709c6fbe",
+          "channel": "mobile"
+        },
+        {
+          "anonymousId": "8d872292709c6fbe",
+          "channel": "mobile"
+        }
+      ]
+    }
+  ],
+  "libraries": [
     {
-      versionId: publishLibraryVersionId1,
+      "versionId": "publishLibraryVersionId1"
     },
     {
-      versionId: publishLibraryVersionId1,
+      "versionId": "publishLibraryVersionId1"
     }
   ]
 }
@@ -1113,31 +1115,32 @@ Request Payload ::
 
 {% tabs %}
 {% tab title="Curl" %}
-```markup
+```bash
 curl --location -X POST 'https://api.rudderstack.com/transformations/libraries/publish' \
 -H 'Authorization: Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN) \
 -H 'Content-Type: application/json' \
 -d '{
-  transformations: [
+  "transformations": [
     {
-      versionId: publishTransformerVersionId,
-      testInput:
-        '[
-          {
-            "anonymousId":"8d872292709c6fbe",
-            "channel":"mobile"
-          },
-          {
-            "anonymousId":"8d872292709c6fbe",
-            "channel":"mobile"
-          }
-        ],
-  libraries: [
+      "versionId": "publishTransformerVersionId",
+      "testInput": [
+        {
+          "anonymousId": "8d872292709c6fbe",
+          "channel": "mobile"
+        },
+        {
+          "anonymousId": "8d872292709c6fbe",
+          "channel": "mobile"
+        }
+      ]
+    }
+  ],
+  "libraries": [
     {
-      versionId: publishLibraryVersionId1,
+      "versionId": "publishLibraryVersionId1"
     },
     {
-      versionId: publishLibraryVersionId1,
+      "versionId": "publishLibraryVersionId1"
     }
   ]
 }'
@@ -1145,7 +1148,7 @@ curl --location -X POST 'https://api.rudderstack.com/transformations/libraries/p
 {% endtab %}
 
 {% tab title="Httpie" %}
-```markup
+```bash
 http POST 'https://api.rudderstack.com/transformations/libraries/publish' \
 transformations='[{versionId: publishTransformerVersionId, testInput:'[{"anonymousId":"8d872292709c6fbe","channel":"mobile"},{"anonymousId":"8d872292709c6fbe","channel":"mobile"}] libraries='[{versionId: publishLibraryVersionId1,},{versionId: publishLibraryVersionId1}]' \ 
 Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
@@ -1155,7 +1158,7 @@ Content-Type:'application/json'
 {% endtabs %}
 
 {% hint style="info" %}
-A few things to note: 
+A few things to note:
 
 * You can choose to publish some revisions transformer without the libraries.
 * You can choose to publish some revisions libraries without the transformers.
@@ -1163,7 +1166,7 @@ A few things to note:
 {% endhint %}
 
 {% hint style="warning" %}
-Whenever you call the `publish` API , we run tests in our server to make sure you won't save any transformation/libraries code that can lead to any exceptions. 
+Whenever you call the `publish` API, we run tests in our server to make sure you won't save any transformation/libraries code that can lead to any exceptions.
 
 In case if your publish is failing, make sure to check your transformation code and the libraries that it is referring to.
 {% endhint %}

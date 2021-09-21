@@ -22,13 +22,21 @@ Read more about why your data pipeline needs to have an efficient event transfor
 
 We have changed the way transformations are written. RudderStack now supports writing functions that transform a single event instead of a batch of events. You can now define your transformation in the following manner:
 
- `export function transformEvent(event, metadata) {}` 
+```javascript
+export function transformEvent(event, metadata) {
+    return event;
+}
+```
 
 ## I want to write a transformation that can be applied to a small batch of events. Can I not do this anymore?
 
 You can. Simply define your transformation in the following manner:
 
- `export function transformBatch(event, metadata) {}` . 
+```javascript
+export function transformBatch(events, metadata) {
+    return events;
+}
+```
 
 {% hint style="warning" %}
 This can cause a loss of the event metadata that RudderStack uses internally to maintain event ordering for you.

@@ -21,7 +21,7 @@ Here's a quick 2-minute walkthrough of this feature:
 {% embed url="https://www.youtube.com/watch?v=-1F4YeJCXU8" %}
 
 {% hint style="info" %}
-For details on how to add a transformation in RudderStack, check the [**Adding a New Transformation**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack#adding-a-transformation) section below. 
+For details on how to add a transformation in RudderStack, check the [**Adding a New Transformation**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack#adding-a-transformation) section below.
 {% endhint %}
 
 {% hint style="success" %}
@@ -39,19 +39,19 @@ To know more about the Cloud mode in RudderStack, check out the [**RudderStack C
 * Log into your [**RudderStack dashboard**](https://app.rudderstack.com/).
 * Click on the [**Transformations**](https://app.rudderstack.com/transformations) link from the left panel in the dashboard, as shown:
 
-![](../.gitbook/assets/image%20%2890%29.png)
+  ![](../.gitbook/assets/image%20%2890%29.png)
 
 * Click on the **Create New** option as shown:
 
-![](../.gitbook/assets/image%20%2892%29.png)
+  ![](../.gitbook/assets/image%20%2892%29.png)
 
 * Next, assign a name for this new transformation. Enter the transformation function's code in the **Transformation** window, as shown:
 
-![](../.gitbook/assets/image%20%28100%29.png)
+  ![](../.gitbook/assets/image%20%28100%29.png)
 
 * Add your transformation code within the `transformEvent` function in the **Transformation** window. You can also add other functions and call them from within `transformEvent`.
 
-![](../.gitbook/assets/image%20%2899%29.png)
+  ![](../.gitbook/assets/image%20%2899%29.png)
 
 {% hint style="info" %}
 Our [**Transformations**](https://github.com/rudderlabs/sample-user-transformers) GitHub repository contains some useful templates that you can use to create your own transformations.
@@ -65,21 +65,22 @@ Remember to delete the pre-populated `transformEvent` function in such cases, be
 
 * RudderStack also gives you the ability to test your transformation function with the **Run Test** option as shown:
 
-![](../.gitbook/assets/image%20%2897%29.png)
+  ![](../.gitbook/assets/image%20%2897%29.png)
 
 * In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` feature, as shown:
 
-```text
+```javascript
 /***  
 * This function gets executed on a batch of events before it gets pushed to a destination
-* events    => JSON list of events sent to rudder
+* events => JSON list of events sent to rudder
 * metadata (optional) => Javascript function which can be used to access metadata of
-                        the given event by calling metadata(event)  
+*                        the given event by calling metadata(event)  
 * After all the transformations are done, the final event that 
 * needs to be pushed to the destination should be returned by this function
 ***/
+
 export function transformBatch(events, metadata) {      
-  return events
+  return events;
 }
 ```
 
@@ -101,15 +102,15 @@ To create a library, follow these steps:
 
 * Click on the [**Transformations**](https://app.rudderstack.com/transformations) link in the left nav bar and go to the **Libraries** section. Click on the **Create New** option to add new libraries, as shown:
 
-![](../.gitbook/assets/image%20%2889%29.png)
+  ![](../.gitbook/assets/image%20%2889%29.png)
 
 * Add the library's **Name**, an optional **Description**, and include the custom functions that you need to reuse across all other transformations.
 
-![](../.gitbook/assets/image%20%2891%29.png)
+  ![](../.gitbook/assets/image%20%2891%29.png)
 
 * You can add more functions under a single library, as shown:
 
-![](../.gitbook/assets/image%20%2895%29.png)
+  ![](../.gitbook/assets/image%20%2895%29.png)
 
 {% hint style="warning" %}
 **RudderStack does not support the deletion of libraries as of now.**
@@ -129,14 +130,12 @@ Let's say you want to import a function called **`rudderEmail`**, which returns 
 
 The following code snippet demonstrates how we can implement this use-case:
 
-```text
-import { rudderEmail } from 'isRudderEmail'
+```javascript
+import { rudderEmail } from 'isRudderEmail';
 export function transformEvent(event) {
-    const email = event.context && event.context.traits && event.context.traits.email;
-    if (email) {
-      if (!rudderEmail(email)) return;
-    }
-    return event;
+  const email = event.context && event.context.traits && event.context.traits.email;
+  if (email && !rudderEmail(email)) return;
+  return event;
 }
 ```
 
@@ -146,28 +145,30 @@ On running a test, an example event not having the specified email domain is fil
 
 ### Importing Multiple Functions From Single Library
 
-When importing a single function or multiple functions from a library, it is important to keep the import statement to one line. Breaking the import function out into multiple lines will lead to an error. 
+When importing a single function or multiple functions from a library, it is important to keep the import statement to one line. Breaking the import function out into multiple lines will lead to an error.
 
 The following snippets highlight how to properly import functions from a library:
 
 ```javascript
-Correct Way ✅
----------------
+// Correct Way ✅
+// --------------
+
 import { getPrice } from getFinanceData;
 
-OR
+// OR
 
 import { getPrice, getRevenue, getProfit } from getFinanceData;
 ```
 
 ```javascript
-Incorrect Way ❌
------------------
+// Incorrect Way ❌
+// ----------------
+
 import { 
   getPrice 
 } from getFinanceData;
 
-OR
+// OR
 
 import { 
   getPrice, 
@@ -201,11 +202,10 @@ Since you may not need the metadata in every transformation, you can optionally 
 
 An example of this is as shown below:
 
-```text
-export function transformEvent(event, metadata){
+```javascript
+export function transformEvent(event, metadata) {
   const meta = metadata(event);
-  event.sourceId = meta.sourceId
-
+  event.sourceId = meta.sourceId;
   return event;
 }
 ```
@@ -218,44 +218,44 @@ An example of how to use the `fetch` function in transformations is shown below:
 
 {% tabs %}
 {% tab title="Basic" %}
-```text
+```javascript
 export async function transformEvent(event) {
-    const res = await fetch("any_api_endpoint");
-    event.response = JSON.stringify(res);
-    return event;
+  const res = await fetch("any_api_endpoint");
+  event.response = JSON.stringify(res);
+  return event;
 }
 ```
 {% endtab %}
 
 {% tab title="POST" %}
-```text
+```javascript
 export async function transformEvent(event) {
-    const res = await fetch("post_url", {
-        method: "POST", // POST, PUT, DELETE, GET, etc.
-        body: JSON.stringify(event),
-        headers: {
-         "Content-Type": "application/json;charset=UTF-8",
-        },
-    });
-    event.response = JSON.stringify(res);
-    return event;
+  const res = await fetch("post_url", {
+    method: "POST", // POST, PUT, DELETE, GET, etc.
+    body: JSON.stringify(event),
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8"
+    }
+  });
+  event.response = JSON.stringify(res);
+  return event;
 }
 ```
 {% endtab %}
 
 {% tab title="Headers" %}
-```text
+```javascript
 export async function transformEvent(event) {
-    const res = await fetch("post_url", {
-        method: "POST", // POST, PUT, DELETE, GET, etc.
-        headers: {
-         "Content-Type": "application/json;charset=UTF-8",
-         "Authorization": "Bearer <your_authorization_token>"
-        },
-        body: JSON.stringify(event),
-    });
-    event.response = JSON.stringify(res);
-    return event;
+  const res = await fetch("post_url", {
+    method: "POST", // POST, PUT, DELETE, GET, etc.
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Authorization": "Bearer <your_authorization_token>"
+    },
+    body: JSON.stringify(event)
+  });
+  event.response = JSON.stringify(res);
+  return event;
 }
 ```
 {% endtab %}
@@ -276,10 +276,10 @@ You can access event-related logs while running a test by including the `log()` 
 ```javascript
 export function transformEvent(event, metadata) {
   const meta = metadata(event);
-  event.sourceId = meta.sourceId
+  event.sourceId = meta.sourceId;
 
-  log("Event Name is", event.event, ";", "Message Id is", event.messageId);
-  log("Source Id is", meta.sourceId);
+  log(`Event Name is ${event.event}; Message Id is ${event.messageId}`);
+  log(`Source Id is ${meta.sourceId}`);
 
   return event;
 }
