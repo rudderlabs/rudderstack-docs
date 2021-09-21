@@ -91,7 +91,7 @@ The [**Live Events**](../live-events.md) console can be used to temporarily stre
 If you do not wish to sign up for RudderStack and want to self-host the Control Plane, you can do so using the open-source [**RudderStack Control Plane Lite**](../control-plane-lite.md) ****utility.
 
 {% hint style="warning" %}
-Note that the Control Plane set up using the Control Plane Lite utility does not have features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events**](../live-events.md).
+Note that the Control Plane set up using the Control Plane Lite utility does not have features like [**Transformations**](../../transformations/) and [**Live Events**](../live-events.md).
 {% endhint %}
 
 ## Contact Us

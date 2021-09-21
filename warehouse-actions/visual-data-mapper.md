@@ -89,7 +89,7 @@ When sending events to some objects, there are some required fields that need to
 
 #### Mapping Fields of Different Type/Format
 
-In case you are mapping fields that are of a different type or format, you can use the [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature to ensure there is no type mismatch while sending the events. 
+In case you are mapping fields that are of a different type or format, you can use the [**Transformations**](../transformations/) feature to ensure there is no type mismatch while sending the events. 
 
 For example, RudderStack lets you map the warehouse column `Phone` of type `string` to a destination field `Company ID` of type `float` . You can then add a transformation at the destination end to do this type conversion to ensure there is no mismatch.
 

@@ -12,7 +12,7 @@ RudderStack's Control Plane manages the configuration of your sources and destin
 For more information on the Control Plane, refer to RudderStack's [**architecture**](rudderstack-architecture.md).
 {% endhint %}
 
-The easiest way to manage these configurations is through RudderStack's [**self-hosted web app**](https://app.rudderstack.com/). It is free, requires no setup, and has some advanced features like [**Live Events**](../user-guides/how-to-guides/live-destination-event-debugger.md) and [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/).
+The easiest way to manage these configurations is through RudderStack's [**self-hosted web app**](https://app.rudderstack.com/). It is free, requires no setup, and has some advanced features like [**Live Events**](../user-guides/how-to-guides/live-destination-event-debugger.md) and [**Transformations**](../transformations/).
 
 However, if you don't wish to sign up for RudderStack and want to self-host these configurations instead, you can use the open-source **Control Plane Lite** to set up your own Control Plane. You can then manage the source and destination configurations locally by exporting to or importing from a JSON file.
 

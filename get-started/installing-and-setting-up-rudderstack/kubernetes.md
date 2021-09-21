@@ -55,7 +55,7 @@ There are two ways you can set up the Control Plane. This section lists the step
 {% hint style="info" %}
 **Why do I need to sign up for RudderStack?** 
 
-RudderStack's dashboard lets you easily set up your data pipelines by configuring your sources and destinations. It is fully hosted by RudderStack and is free for open-source users. You also get access to some important features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and a [**Live Events** ](../../user-guides/how-to-guides/live-destination-event-debugger.md)tab.
+RudderStack's dashboard lets you easily set up your data pipelines by configuring your sources and destinations. It is fully hosted by RudderStack and is free for open-source users. You also get access to some important features like [**Transformations**](../../transformations/) and a [**Live Events** ](../../user-guides/how-to-guides/live-destination-event-debugger.md)tab.
 {% endhint %}
 
 * Note and copy your workspace **Token** from the top of the page, as shown below. This will be required for setting up the Data Plane.
@@ -71,7 +71,7 @@ Use this option if you don't wish to sign up for RudderStack.
 You can self-host your own Control Plane using the open-source[ ****](../../user-guides/how-to-guides/rudderstack-control-plane-lite.md)[**Control Plane Lite**](../control-plane-lite.md) ****utility. 
 
 {% hint style="danger" %}
-Note that the Control Plane set up using the [**Control Plane Lite**](../control-plane-lite.md) ****utility lacks certain features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events**](../../user-guides/how-to-guides/live-destination-event-debugger.md) tab.
+Note that the Control Plane set up using the [**Control Plane Lite**](../control-plane-lite.md) ****utility lacks certain features like [**Transformations**](../../transformations/) and [**Live Events**](../../user-guides/how-to-guides/live-destination-event-debugger.md) tab.
 {% endhint %}
 
 ## Data Plane Setup

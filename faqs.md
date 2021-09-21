@@ -151,7 +151,7 @@ This issue can occur when you have some old data left in your browser's local st
 
 #### 1. How do I add custom user transformations in RudderStack?
 
-RudderStack lets you implement your own custom transformation functions that leverage the event data to implement specific use-cases based on your business requirements. To add custom transformations in RudderStack, follow this [**guide**](adding-a-new-user-transformation-in-rudderstack/).
+RudderStack lets you implement your own custom transformation functions that leverage the event data to implement specific use-cases based on your business requirements. To add custom transformations in RudderStack, follow this [**guide**](transformations/).
 
 #### 2. How do transformations handle batching? The transformation functions are given a list of events, but the events are also pushed out in real-time. What's the logic behind that?
 
@@ -195,7 +195,7 @@ Switching between open-source RudderStack and RudderStack Cloud is quite straigh
 
 #### 5. Does RudderStack have any settings for consent management?
 
-Currently, we do not have any solutions for consent management. We are in the process of implementing some key GDPR features. In the meantime, you can filter your events using our [**Transformations**](adding-a-new-user-transformation-in-rudderstack/) feature or stop sending events to the users who do not give their consent.
+Currently, we do not have any solutions for consent management. We are in the process of implementing some key GDPR features. In the meantime, you can filter your events using our [**Transformations**](transformations/) feature or stop sending events to the users who do not give their consent.
 
 ## Integrations
 
@@ -235,7 +235,7 @@ To view the data or events that are sent to your destination, you can use the **
 
 #### 3. I would like to send events to Mixpanel via RudderStack. However, I would like to set a filtering condition on the source events before routing them to Mixpanel. How do I go about doing this?
 
-You can use [**RudderStack Transformations**](adding-a-new-user-transformation-in-rudderstack/) to set custom logic on your events before sending them to Mixpanel.
+You can use [**RudderStack Transformations**](transformations/) to set custom logic on your events before sending them to Mixpanel.
 
 #### 4. I am seeing a `Message type not supported` error. What does this mean?
 
