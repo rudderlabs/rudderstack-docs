@@ -9,7 +9,7 @@ The **JavaScript SDK  v1.1** is a lightweight, more efficient, and optimized ver
 
 v1.1 offers the following features:
 
-* The size of the SDK is reduced by approximately **70%**, thus reducing its loading time consideraby.
+* The size of the SDK is reduced by approximately **70%**, thus reducing its loading time considerably.
 * The destination SDKs are separated from the core JavaScript SDK. They are published as individual plugins.
 * The [**device mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#device-mode) destinations will be loaded dynamically as per your specified dashboard configurations.
 
