@@ -90,7 +90,7 @@ For more information on the various Event Stream sources supported by RudderStac
 
 ### Cloud Extract
 
-[**Cloud Extract**](cloud-extract-sources/) is RudderStack's ETL feature that lets you collect your raw events and data from various third-party cloud platforms such as Google Analytics, Marketo, Facebook Ads, Stripe, etc. and send it to your data warehouse with a user-specified frequency.
+[**Cloud Extract**](cloud-extract-sources/) is RudderStack's ELT feature that lets you collect your raw events and data from various third-party cloud platforms such as Google Analytics, Marketo, Facebook Ads, Stripe, etc. and send it to your data warehouse with a user-specified frequency.
 
 {% hint style="info" %}
 For more information on the various Cloud Extract sources and how to set them up in RudderStack, check out the [**docs**](https://docs.rudderstack.com/cloud-extract-sources).
