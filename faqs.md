@@ -29,9 +29,9 @@ To quickly get started, you can [**sign up for RudderStack**](https://app.rudder
 Simply put, the Data Plane URL is used to connect to the RudderStack backend for routing and processing your events.
 
 {% hint style="info" %}
-To get the **Data Plane URL**: _\*\*_
+To get the **Data Plane URL**:
 
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
+* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment.
 * If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
 {% endhint %}
 
@@ -41,7 +41,7 @@ The workspace token allows you to use the RudderStack-hosted control plane. It i
 
 #### 4. Can I self-host RudderStack?
 
-Yes, you can use the [**RudderStack** ](get-started/control-plane-lite.md)[**Control Plane Lite**](https://github.com/rudderlabs/config-generator) ****to self-host the control plane and configure your sources and destinations. Refer to the **Control Plane Lite** section below for more information/FAQs.
+Yes, you can use the [**RudderStack** ](get-started/control-plane-lite.md)[**Control Plane Lite**](https://github.com/rudderlabs/config-generator) to self-host the control plane and configure your sources and destinations. Refer to the **Control Plane Lite** section below for more information/FAQs.
 
 #### 5. While running `git submodule update`, I get the following error:
 
@@ -54,7 +54,7 @@ git@github.com: Permission denied (publickey).
 fatal: Could not read from remote repository."
 ```
 
-Verify if the SSH keys are correctly set in your GitHub account as they are used when cloning using the git protocol. For more information, refer to [**this thread**](https://stackoverflow.com/questions/25957125/git-submodule-permission-denied)**.**
+Verify if the SSH keys are correctly set in your GitHub account as they are used when cloning using the git protocol. For more information, refer to [**this thread**](https://stackoverflow.com/questions/25957125/git-submodule-permission-denied).
 
 ### Docker
 
@@ -82,7 +82,7 @@ CURL <DATA_PLANE_URL>/health
 
 A sample command would look something like:
 
-```c
+```bash
 CURL https://hosted.rudderlabs.com/health
 ```
 
@@ -93,8 +93,8 @@ The number of events that a single RudderStack node can handle will depend on th
 However, here are some ballpark figures:
 
 * **Dumping to S3** - Approximately 1.5K events/sec
-* **Dumping to Warehouse** - Approximately 1K events/sec 
-* **Dumping to Warehouse + a couple of cloud destinations** - Approximately 750 events/sec 
+* **Dumping to Warehouse** - Approximately 1K events/sec
+* **Dumping to Warehouse + a couple of cloud destinations** - Approximately 750 events/sec
 
 {% hint style="info" %}
 Please note that these are conservative numbers. A single RudderStack node can handle **5x**+ event load at the peak; just that those events will get cached locally and then drained as per the regular throughput.
@@ -133,17 +133,19 @@ Check for the folder `/tmp/badgerdbv2` and delete it. This should resolve the is
 
 #### 1. How do I self-host the UI configuration?
 
-For self-hosting the UI, you can use the [**RudderStack Control Plane Lite**](https://github.com/rudderlabs/config-generator) ****utility.
+For self-hosting the UI, you can use the [**RudderStack Control Plane Lite**](https://github.com/rudderlabs/config-generator) utility.
 
 Note that this utility will only generate the source-destination configurations which are required by RudderStack.
 
 {% hint style="warning" %}
-The self-hosted control plane set up using the [**Control Plane Lite**](https://github.com/rudderlabs/config-generator) ****utility does not support features like **Transformations** and **Live Events Debugger**, which are included for free in the [**RudderStack-hosted control plane**](https://app.rudderstack.com).
+The self-hosted control plane set up using the [**Control Plane Lite**](https://github.com/rudderlabs/config-generator) utility does not support features like **Transformations** and **Live Events Debugger**, which are included for free in the [**RudderStack-hosted control plane**](https://app.rudderstack.com).
 {% endhint %}
 
 #### 2. I am using the Control Plane Lite to generate the `workspaceConfig.json` file. But when I import this file, I get an error:
 
-#### "**TypeError: Cannot read property 'name' of undefined"**. What should I do?
+```text
+TypeError: Cannot read property 'name' of undefined
+```
 
 This issue can occur when you have some old data left in your browser's local storage. Use the latest version of the Control Plane Lite after clearing your browser cache and local storage. In case it still does not work, feel free to contact us.
 
@@ -155,11 +157,11 @@ RudderStack lets you implement your own custom transformation functions that lev
 
 #### 2. How do transformations handle batching? The transformation functions are given a list of events, but the events are also pushed out in real-time. What's the logic behind that?
 
-The batching is done on a per end-user level. All the events from a given end-user are batched and then sent to the transformation function. The batching process is controlled via the following three parameters in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml)\( or **`config.toml`** in case of older RudderStack deployments\):
+The batching is done on a per end-user level. All the events from a given end-user are batched and then sent to the transformation function. The batching process is controlled via the following three parameters in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or **`config.toml`** in case of older RudderStack deployments\):
 
-* `processSessions = False` \(make it `True` for batching\) 
-* `sessionThresholdEvents = 100` 
-* `sessionInactivityThresholdInS = 120` 
+* `processSessions = False` \(make it `True` for batching\)
+* `sessionThresholdEvents = 100`
+* `sessionInactivityThresholdInS = 120`
 
 The events from an end-user are batched till we have 100 events or 120 seconds of inactivity since the last event. This list is then passed to the transformation function.
 
@@ -292,7 +294,7 @@ Yes, you can set the desired folder name in the **Prefix** input field while con
 
 RudderStack lets you fill in the values with variable names. These variables should be prepended with `env.`. You can populate these secrets as environment variables and run the data plane.
 
-Suppose you are configuring Amazon S3 as a destination but you don't want to enter the AWS access key credentials in the destination settings. Fill the value with a placeholder that starts with `env.` It should look like this `env.MY_AWS_ACCESS_KEY`. Then set the value of the environment variable `MY_AWS_ACCESS_KEY`while running the data plane.
+Suppose you are configuring Amazon S3 as a destination but you don't want to enter the AWS access key credentials in the destination settings. Fill the value with a placeholder that starts with `env.`. It should look like this `env.MY_AWS_ACCESS_KEY`. Then set the value of the environment variable `MY_AWS_ACCESS_KEY` while running the data plane.
 
 ## RudderStack Failover, Hardening and Security
 
@@ -305,8 +307,8 @@ RudderStack's hosted solution is running on AWS EKS with the cluster spanning 3 
 * At the infrastructure layer, RudderStack runs on a multi-availability zone EKS cluster. So hardware failures, if any, are handled by Kubernetes by relocating pods.
 * At an application level, RudderStack operates in either of the following 3 modes:
   * **Normal** mode, where everything is normal and there are no issues.
-  * If for some reason the system fails \(e.g. because of a bug\), it enters the **Degraded** mode, where RudderStack processes incoming requests but doesn't send it to destinations. 
-  * If the system continues to fail to process the data \(e.g. internal database corruption\), it enters the **Maintenance** mode where we save the previous state \(which can be debugged and processed\) and start from scratch - still receiving requests. 
+  * If for some reason the system fails \(e.g. because of a bug\), it enters the **Degraded** mode, where RudderStack processes incoming requests but doesn't send it to destinations.
+  * If the system continues to fail to process the data \(e.g. internal database corruption\), it enters the **Maintenance** mode where we save the previous state \(which can be debugged and processed\) and start from scratch - still receiving requests.
 * All of RudderStack's SDKs also have failure handling. They can store events in local storage and retry on failure.
 * RudderStack provides isolation between the data and control planes. For example, if the control plane \(where you manage the source and destination configurations\) goes offline, the data plane continues to operate.
 
@@ -351,14 +353,13 @@ Some downstream destinations have limits on the number of events they accept at 
 Some examples are:
 
 * [**Customer.io**](https://customer.io/docs/api/#api-documentationlimits): 
-* \*\*\*\*[**Amplitude Upload Limit** ](https://help.amplitude.com/hc/en-us/articles/360032842391-HTTP-API-V2#upload-limit)
+* [**Amplitude Upload Limit** ](https://help.amplitude.com/hc/en-us/articles/360032842391-HTTP-API-V2#upload-limit)
 
 These limits can also be configured using config variables in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) or using environment variables as described in comments [**here**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml#L1-L32).
 
-```c
-# The following configuration throttles request to Amplitude at 1000 req/s for the account 
-# and 10 req/s for individual user/device  
+The following configuration throttles request to Amplitude at 1000 req/s for the account and 10 req/s for individual user/device:
 
+```yaml
 [Router.throttler.AM]
 limit = 1000
 timeWindowInS = 1
