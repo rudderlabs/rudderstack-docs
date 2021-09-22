@@ -136,9 +136,13 @@ We automatically track the following optional events:
 You can disable these events using the `withTrackLifecycleEvents` method and passing `false`. But it is highly recommended to keep them enabled.
 {% endhint %}
 
-## Opt-out
+## Enabling/Disabling User Tracking via the optOut API (GDPR Support)
 
-You can provide the ability to user (for example, EU user) to opt-out from tracking any activity using `optOut` API. The API takes `true` or `false` as `Boolean` to disable or enable tracking activities. This flag persists across device reboots.
+RudderStack gives you (e.g., an EU user) the ability to opt out of tracking any user activity by leveraging its `optOut` API. 
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+An example of how you can use the `optOut` API is shown below:
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -155,7 +159,7 @@ rudderClient.optOut(true);
 {% endtabs %}
 
 {% hint style="info" %}
-The `optOut` API is available in the RudderStack Android SDK starting from version `1.0.19`.
+The `optOut` API is available in the RudderStack Android SDK from version `1.0.19`.
 {% endhint %}
 
 ## Track
@@ -818,4 +822,3 @@ For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy.
-
