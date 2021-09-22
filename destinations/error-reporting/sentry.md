@@ -60,7 +60,7 @@ Refer to the **FAQ** section below for more information on getting your public D
 
 * **Deny URLs:** The inverse of Allow Urls and similar to ignoreErrors. It is the list of regex patterns or exact url strings, error from which needs to be ignored while sending to sentry.
 
-* **Debug Mode:** This is set to false by default. Set this to “true” to enable Sentry’s debug mode. Remember, in debug mode, no events are sent to your sentry instance.
+* **Debug Mode:** This is set to false by default. Set this to “true” to enable Sentry’s debug mode.
 
 
 ## Identify
