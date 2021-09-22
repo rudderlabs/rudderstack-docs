@@ -47,6 +47,10 @@ Refer to the [**FAQ**](#faq) section below for more information on getting your 
 
 * **Set Release By Property:** This field helps you dynamically track the application version in Sentry. The property set here will be searched in the global window object. If found, RudderStack will use that particular version. Otherwise, the value set in the **Release** field will be used by default.
 
+{% hint style="info" %}
+Suppose you've set the **Set Release By Property** field to the value `new_custom_version` and RudderStack finds `window.new_custom_version=2.4.5` in the `window` object. In this case, RudderStack will send the value `2.4.5` as the app version to Sentry. Otherwise, it will look for the value input in the **Release** field and send it as the app version.
+{% endhint %}
+
 * **Release:** This field is used for tracking your application's version in Sentry.
 
 * **Server Name:** This option is used to track the host on which the client is running. You can enter the server name or even the Device ID in this field.
