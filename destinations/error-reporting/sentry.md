@@ -65,10 +65,10 @@ Refer to the **FAQ** section below for more information on getting your public D
 
 ## Identify
 
-The `identify` call lets you detect any user.
+When an `identify` call is made, `Sentry.setUser` is called by passing the traits.
 
 {% hint style="info" %}
-The identify call will be dropped if none of the userId, userName, email or ip_address is present. Any one of these four fields are needed to capture a user information.
+The identify call will be discarded if none of the userId, userName, email or ip_address is present. Atleast one of these four fields are needed to capture a user information.
 {% endhint %}
 
 {% hint style="info" %}
