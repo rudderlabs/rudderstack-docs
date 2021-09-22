@@ -65,7 +65,7 @@ Suppose you've set the **Set Release By Property** field to the value `new_custo
 
 * **Include Paths:** This field should contain the regex patterns of URLs that are part of the app in the stack trace. The other frames will appear as collapsed in the Sentry dashboard.
 
-* **Allow URLs:** This is the list of the regex patterns or exact URL strings - errors from which need to be exclusively sent to Sentry. The URL of the actual JavaScript files should match the whitelist URLs.
+* **Allow URLs:** This is the list of the regex patterns or exact URL strings - from which the errors need to be exclusively sent to Sentry. The URLs of the actual JavaScript files should match this list.
 
 * **Deny URLs:** This field refers to the list of regex patterns or exact URL strings for which the errors need to be ignored.
 
