@@ -138,11 +138,11 @@ You can disable these events using the `withTrackLifecycleEvents` method and pas
 
 ## Enabling/Disabling User Tracking via the optOut API (GDPR Support)
 
-RudderStack gives the users (e.g., an EU user) the ability to opt out of tracking any user activity by leveraging its `optOut` API. 
+RudderStack gives the users (e.g., an EU user) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API. 
 
 The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
 
-An example of how you can use the `optOut` API is shown below:
+An example of how you can use the `optOut` API to disable user tracking:
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -154,6 +154,21 @@ rudderClient.optOut(true)
 {% tab title="JAVA" %}
 ```java
 rudderClient.optOut(true);
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(false)
+```
+{% endtab %}
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(false);
 ```
 {% endtab %}
 {% endtabs %}
