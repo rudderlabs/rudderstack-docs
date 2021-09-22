@@ -44,7 +44,7 @@ Refer to the **FAQ** section below for more information on getting your public D
 
 * **Environment:** Enter the value you want Rudderstack to set as the environment configuration in your Sentry dashboard.
 
-* **Set Release By Property:** This field helps to track the version of your application in Sentry dynamically. The property set here will be searched in the global window object. If found, RudderStack will use that particular version. Otherwise, the manually set value in the `Release` field will be used as default.
+* **Set Release By Property:** This field helps to track the version of your application in Sentry dynamically. The property set here will be searched in the global window object. If found, RudderStack will use that particular version. Otherwise, the value set in the `Release` field will be used as default.
 
 * **Release:** Used for tracking the version of your application in Sentry.
 
