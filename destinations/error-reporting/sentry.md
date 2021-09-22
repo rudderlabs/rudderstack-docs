@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Sent
 
 # Sentry
 
-[**Sentry**](https://sentry.io/about/) is a popular online display advertising platform that offers various solutions to increase your website traffic. It also helps you generate brand awareness and boost sales, conversions, and app installs.
+[**Sentry**](https://sentry.io/about/)Sentry is open-source error tracking that helps developers monitor and fix crashes in real time.
 
 RudderStack supports Sentry as a destination to which you can send your event data directly.
 
