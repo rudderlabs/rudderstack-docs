@@ -29,6 +29,7 @@ Once you have confirmed that the source platform supports sending events to Sent
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
 {% endhint %}
 
+
 ![Configuration Settings for Sentry](../../.gitbook/assets/sentry.png)
 
 ### Configuration Settings
