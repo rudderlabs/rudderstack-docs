@@ -138,7 +138,7 @@ You can disable these events using the `withTrackLifecycleEvents` method and pas
 
 ## Enabling/Disabling User Tracking via the optOut API (GDPR Support)
 
-RudderStack gives you (e.g., an EU user) the ability to opt out of tracking any user activity by leveraging its `optOut` API. 
+RudderStack gives the users (e.g., an EU user) the ability to opt out of tracking any user activity by leveraging its `optOut` API. 
 
 The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
 
