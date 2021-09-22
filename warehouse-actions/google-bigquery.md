@@ -74,9 +74,21 @@ bigquery.tables.updateData
  
 * Finally, download this JSON file. This file is required while creating a BigQuery warehouse source in RudderStack - the next section covers the steps to do this.
 
-{% hint style="info" %}
-RudderStack creates a dedicated dataset called `rudderstack_` in your project that is used to store the state of each data sync.
-{% endhint %}
+### Creating the RudderStack schema and granting permissions
+
+* The following command creates a dedicated schema `rudderstack_` used by RudderStack for storing the state of each data sync.
+
+```
+create schema rudderstack_;
+```
+
+* The following query allows the service account `Rudderstack` to have full access to the schema `rudderstack_` (used by RudderStack).
+
+```
+GRANT `roles/bigquery.dataOwner`
+     ON SCHEMA rudderstack_
+     TO "serviceAccount:rudderstack-404@testproject-308713.iam.gserviceaccount.com";
+```
 
 ## Setting up the Source
 
