@@ -43,7 +43,7 @@ To successfully configure Sentry as a destination, configure the following setti
 Refer to the [**FAQ**](#faq) section below for more information on getting your public DSN.
 {% endhint %}
 
-* **Environment:** Enter the value you want RudderStack to set as the environment configuration in your Sentry dashboard.
+* **Environment:** Enter the value you want RudderStack to set as the environment configuration in your Sentry dashboard. For more information on the use of environments in Sentry, refer to their [**documentation**](https://docs.sentry.io/product/sentry-basics/environments/#creating-environments).
 
 * **Set Release By Property:** This field helps you dynamically track the application version in Sentry. The property set here will be searched in the global window object. If found, RudderStack will use that particular version. Otherwise, the value set in the **Release** field will be used by default.
 
