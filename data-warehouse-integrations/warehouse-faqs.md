@@ -25,11 +25,11 @@ The warehouse upload status can be viewed in Live Events section of the destinat
 
 ![Live Events Option in the RudderStack Dashboard](../.gitbook/assets/live-events.png)
 
-### How can I change the schema and the namespace name of my data warehouse?
+### Can I change the namespace \(schema name\) of my data warehouse in RudderStack?
 
-The default namespace will be the source name with some modifications to the name. However, RudderStack also provides an option in the dashboard to change the namespace of the dataset. 
+Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse. 
 
-Please refer to the warehouse-specific destination settings for configuring the namespace in the RudderStack UI.
+**Refer to the warehouse-specific destination settings for configuring the namespace in the RudderStack dashboard.**
 
 ### How can I achieve Identity Resolution with multiple sources connected to one warehouse destination?
 

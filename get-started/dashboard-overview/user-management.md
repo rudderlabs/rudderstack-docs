@@ -93,7 +93,7 @@ This role has the following permissions:
 See the following guides to learn more about these features:
 
 * \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
-* \*\*\*\*[**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/)\*\*\*\*
+* \*\*\*\*[**Transformations**](../../transformations/)\*\*\*\*
 {% endhint %}
 
 | Option | View | Add | Modify | Delete |
@@ -155,7 +155,7 @@ A user with the read-write role has all the permissions associated with a view-o
 See the following guides for more information on these options:
 
 * \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
-* \*\*\*\*[**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/)\*\*\*\*
+* \*\*\*\*[**Transformations**](../../transformations/)\*\*\*\*
 {% endhint %}
 
 Other permissions for this role include:
@@ -179,7 +179,7 @@ Other permissions for this role include:
 * Cannot invite new users to the team or change the role/permissions of any existing user.
 
 {% hint style="info" %}
-The user with the read-write role has all the permissions as an admin, except the team management options. Refer to the **Admin** section below to know more about these features.
+The user with the read-write role has all the permissions as an admin, except the team management options. Refer to the [**Admin**](https://docs.rudderstack.com/get-started/dashboard-overview/user-management#admin) section below to know more about these features.
 {% endhint %}
 
 ### Admin
@@ -201,7 +201,7 @@ The permissions for this role are as listed below:
 See the following guides for more information on these options:
 
 * \*\*\*\*[**Connections**](../../connections/)\*\*\*\*
-* \*\*\*\*[**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/)\*\*\*\*
+* \*\*\*\*[**Transformations**](../../transformations/)\*\*\*\*
 {% endhint %}
 
 #### Live Events
@@ -228,7 +228,7 @@ See the following guides for more information on these options:
 
 ## Contact Us
 
-For more information on this feature, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel, we will be happy to help you.
+For more information on this feature, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel, we will be happy to help you.
 
 
 

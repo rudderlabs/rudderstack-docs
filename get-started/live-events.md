@@ -120,7 +120,7 @@ RudderStack also notifies you about any dropped events or any errors during the 
 
 ![](../.gitbook/assets/3%20%2829%29.png)
 
-Note that this feature is applicable for cases where you have connect a [**transformation**](../adding-a-new-user-transformation-in-rudderstack/) to a destination, as shown:
+Note that this feature is applicable for cases where you have connect a [**transformation**](../transformations/) to a destination, as shown:
 
 ![](../.gitbook/assets/1%20%2821%29.png)
 

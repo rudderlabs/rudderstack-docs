@@ -363,9 +363,9 @@ You can configure your client based on the following parameters by passing them 
       </td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">If you are using our open-source config generator, use this option to
-        point to your hosted <code>sourceConfig</code>. SDK will add <code>/sourceConfig</code> along
-        with this URL</td>
+      <td style="text-align:left">If you are using our open-source <a href="../../get-started/control-plane-lite.md"><b>Control Plane Lite</b></a> utility,
+        use this option to point to your hosted <code>sourceConfig</code>. SDK will
+        add <code>/sourceConfig</code> along with this URL</td>
       <td style="text-align:left"><code>https://api.rudderlabs.com</code>
       </td>
     </tr>

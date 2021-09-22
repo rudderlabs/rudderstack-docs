@@ -74,7 +74,7 @@ To add a destination in RudderStack, follow these steps:
 
 
 
-* RudderStack lets you transform your source events in a destination-specific format through the [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**.
+* RudderStack lets you transform your source events in a destination-specific format through the [**Transformations**](../transformations/) feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**.
 
 ![](../.gitbook/assets/screen-shot-2021-05-19-at-5.01.56-pm.png)
 

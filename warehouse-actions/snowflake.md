@@ -4,35 +4,151 @@ description: Step-by-step guide to ingest your data from Snowflake into RudderSt
 
 # Snowflake
 
-[Snowflake](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
+\*\*\*\*[**Snowflake**](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
 
 This guide will help you configure Snowflake as a source from which you can route event data to your desired destinations through RudderStack.
 
 ## Granting Permissions
 
-Run the following SQL queries to grant the necessary permissions for warehouse action
+{% hint style="warning" %}
+You must have the **ACCOUNTADMIN** role in order to grant the necessary permissions.
+{% endhint %}
+
+![](../.gitbook/assets/screenshot-2021-09-17-at-6.46.08-pm.png)
+
+Run the following SQL queries in the **exact order** to grant the necessary permissions for the Snowflake Warehouse Actions source:
+
+### User & role creation
+
+* The following command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it.
 
 ```text
 CREATE ROLE RUDDER_ROLE;
-SHOW ROLES;
-CREATE OR REPLACE USER RUDDER PASSWORD = 'strong_unique_password' DEFAULT_ROLE = 'RUDDER_ROLE';
-SHOW USERS;
-GRANT ROLE RUDDER_ROLE TO USER RUDDER;
-GRANT USAGE ON WAREHOUSE TESTWAREHOUSE TO ROLE RUDDER_ROLE; 
-GRANT USAGE ON DATABASE TESTDATABASE TO ROLE RUDDER_ROLE; 
-GRANT USAGE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
-GRANT CREATE TABLE ON SCHEMA TESTDATABASE.TESTSCHEMA TO ROLE RUDDER_ROLE;
-GRANT SELECT ON TABLE TESTDATABASE.TESTSCHEMA.TESTTABLE TO ROLE RUDDER_ROLE;
 ```
 
-## Set Up as Source
+* The following command verifies if the role `RUDDER_ROLE` is successfully created.
+
+```text
+SHOW ROLES;
+```
+
+* The following command creates a new user `RUDDER` with your password `<strong_unique_password>` in Snowflake.
+
+```text
+CREATE USER RUDDER PASSWORD = '<strong_unique_password>' DEFAULT_ROLE = 'RUDDER_ROLE';
+```
+
+* The following command verifies if the user `RUDDER` is successfully created.
+
+```text
+SHOW USERS;
+```
+
+### Creating the RudderStack schema & granting permissions
+
+* The following command creates a dedicated schema `_RUDDERSTACK` to be used by RudderStack for storing the state of each data sync.
+
+```text
+CREATE SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK";
+```
+
+{% hint style="warning" %}
+The `_RUDDERSTACK` schema is used by RudderStack. Its name **should not** be changed.
+{% endhint %}
+
+* The following command allows `RUDDER_ROLE` to have full access to the schema `_RUDDERSTACK`.
+
+```text
+GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK" TO ROLE RUDDER_ROLE;
+```
+
+### Granting permissions on the warehouse, database, schema & the table
+
+* The following command enables the user \(`RUDDER`\) to perform all the operations allowed for the role `RUDDER_ROLE` \(via the access privileges granted to it\).
+
+```text
+GRANT ROLE RUDDER_ROLE TO USER RUDDER;
+```
+
+* The following command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace `<YOUR_WAREHOUSE>` with the exact name of your data warehouse in Snowflake.
+
+```text
+GRANT USAGE ON WAREHOUSE "<YOUR_WAREHOUSE>" TO ROLE RUDDER_ROLE;
+```
+
+* The following command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace `<YOUR_DATABASE>` with the exact name of your database in Snowflake.
+
+```text
+GRANT USAGE ON DATABASE "<YOUR_DATABASE>" TO ROLE RUDDER_ROLE;
+```
+
+* The following command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_DATABASE>` and `<YOUR_SCHEMA>` with the exact name of your database and the schema in Snowflake.
+
+```text
+GRANT USAGE ON SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+* The following command allows the role `RUDDER_ROLE` to read the data from the specified table `<YOUR_TABLE>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact database, schema, and table names in Snowflake.
+
+```text
+GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
+```
+
+* The following **optional** command allows the role `RUDDER_ROLE` to read data from **all** the tables in the schema `<YOUR_SCHEMA>`:
+
+```text
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access all the tables within your specified schema.
+{% endhint %}
+
+* The following **optional** command allows the role `<RUDDER_ROLE>` to read data from all the **future** **tables** in the schema `<YOUR_SCHEMA>`:
+
+```text
+GRANT SELECT ON FUTURE TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access the data in all the future tables residing within your specified schema.
+{% endhint %}
+
+* The following command allows the role `RUDDER_ROLE` to read the data from the specified view `<YOUR_VIEW>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_VIEW>` with the exact database, schema, and view names in Snowflake.
+
+```text
+GRANT SELECT ON VIEW "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_VIEW>" TO ROLE  RUDDER_ROLE;
+```
+
+* The following **optional** command allows the role `RUDDER_ROLE` to read data from **all** the views in the schema `<YOUR_SCHEMA>`:
+
+```text
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access all the views within your specified schema.
+{% endhint %}
+
+* The following **optional** command allows the role `<RUDDER_ROLE>` to read data from all the **future views** in the schema `<YOUR_SCHEMA>`:
+
+```text
+GRANT SELECT ON FUTURE VIEWS IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
+
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access all the future views residing within your specified schema.
+{% endhint %}
+
+## Setting Up the Source
 
 To set up Snowflake as a source in RudderStack, follow these steps:
 
-* Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
+* Log into your [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%282%29.png)
+![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.png)
 
 * Scroll down to the **Warehouse Sources** and select **Snowflake**. Then, click on **Next**.
 
@@ -101,5 +217,5 @@ If you have already configured a destination on the RudderStack platform, choose
 
 ## Contact Us
 
-If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
 

@@ -44,7 +44,7 @@ RudderStack's Transformations module transforms the received event data into a s
 RudderStack also supports user-specific transformations for real-time operations, such as aggregation, filtering, and sampling.
 
 {% hint style="success" %}
-Refer to the [**RudderStack Transformations**](../adding-a-new-user-transformation-in-rudderstack/) guide for more information on this feature.
+Refer to the [**RudderStack Transformations**](../transformations/) guide for more information on this feature.
 {% endhint %}
 
 ## **Data Plane Architecture**
