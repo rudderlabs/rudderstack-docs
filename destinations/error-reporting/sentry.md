@@ -54,7 +54,7 @@ Refer to the **FAQ** section below for more information on getting your public D
 
 * **Ignore Errors:** A list of error messages you do not want Sentry to notify you for. It can be entered as string or regular expression.
 
-* **Include Paths:** This field should contain the regex patters of urls that are part of the app in the stack trace. The other frames will appear as collapsed in the Sentry dashboard. This will help you to differentiate between the frames happened in your code or any other code. Anyway you will be able to manually expand all the frames from a stack trace in Sentry dashboard.
+* **Include Paths:** This field should contain the regex patterns of urls that are part of the app in the stack trace. The other frames will appear as collapsed in the Sentry dashboard.
 
 * **Allow URLs:** List of regex patterns or exact url strings, error from which needs to be exclusively sent to Sentry. The url of actual javascript files should match the whitelist urls.
 
