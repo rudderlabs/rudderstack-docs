@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Sent
 
 # Sentry
 
-[**Sentry**](https://sentry.io/about/)Sentry is a popular error monitoring and reporting tool. It is open-source and enables you to monitor and track real-time errors and crashes in your app.
+[**Sentry**](https://sentry.io/about/) is a popular error monitoring and reporting tool. It is open-source and enables you to monitor and track real-time errors and crashes in your app.
 
 RudderStack supports Sentry as a destination to which you can send your event data directly.
 
