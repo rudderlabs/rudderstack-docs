@@ -133,11 +133,11 @@ RudderStack supports all the major API calls across all iOS devices via the SDK.
 
 ## Enabling/Disabling User Tracking via the optOut API (GDPR Support)
 
-RudderStack gives the users (e.g., an EU user) the ability to opt out of tracking any user activity by leveraging its `optOut` API. 
+RudderStack gives the users (e.g., an EU user) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
 
 The `optOut` API takes `YES` or `NO` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
 
-An example of how you can use the `optOut` API is shown below:
+An example of how you can use the `optOut` API to disable user tracking is shown below:
 
 {% tabs %}
 {% tab title="Objective-C" %}
@@ -149,6 +149,22 @@ An example of how you can use the `optOut` API is shown below:
 {% tab title="Swift" %}
 ```swift
 RSClient.sharedInstance()?.optOut(true)
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `NO` or `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:NO];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(false)
 ```
 {% endtab %}
 {% endtabs %}
