@@ -71,6 +71,10 @@ Suppose you've set the **Set Release By Property** field to the value `new_custo
 
 * **Debug Mode:** In debug mode, no events are sent to your Sentry instance. You can set this option to **true** or **false** to enable or disable this feature. By default, it is set to **false**.
 
+A sample configuration looks like the following:
+
+![](https://user-images.githubusercontent.com/59817155/134350654-e0bb6539-040d-4e17-a445-e8c3dbbdbeb0.png)
+
 
 ## Identify
 
