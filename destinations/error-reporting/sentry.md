@@ -72,7 +72,7 @@ The identify call will be discarded if none of the userId, userName, email or ip
 {% endhint %}
 
 {% hint style="info" %}
-The userId or anonymousId (in case userId is not present) is mapped to `id` while setting the user in Sentry.
+The userId is mapped to `id` while setting the user in Sentry.
 {% endhint %}
 
 
