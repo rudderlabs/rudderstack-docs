@@ -190,6 +190,7 @@
     * [Google Sheets](destinations/productivity/google-sheets.md)
   * [Error Reporting](destinations/error-reporting/README.md)
     * [Bugsnag](destinations/error-reporting/bugsnag.md)
+    * [Sentry](destinations/error-reporting/sentry.md)
   * [Continuous Integration](destinations/continuous-integration/README.md)
     * [Visual Studio App Center](destinations/continuous-integration/appcenter.md)
 * [Warehouse Destinations](data-warehouse-integrations/README.md)
