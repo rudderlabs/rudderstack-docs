@@ -87,7 +87,7 @@ create schema rudderstack_;
 ```
 GRANT `roles/bigquery.dataOwner`
      ON SCHEMA rudderstack_
-     TO "serviceAccount:rudderstack-404@testproject-308713.iam.gserviceaccount.com";
+     TO "serviceAccount:<YOUR_SERVICE_ACCOUNT_ID>";
 ```
 
 ## Setting up the Source
