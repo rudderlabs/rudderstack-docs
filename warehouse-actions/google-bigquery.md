@@ -52,6 +52,10 @@ bigquery.tables.updateData
 
 ![](../.gitbook/assets/image2.png)
 
+{% hint style="info" %}
+Note down the **Service account ID**. This ID is required while creating the RudderStack schema and granting the required permissions to it.
+{% endhint %}
+
 * Then, fill in the details in Step **2** as shown below, and click **CONTINUE**:
 
 ![](../.gitbook/assets/image4.png)
@@ -87,7 +91,7 @@ create schema rudderstack_;
 ```
 GRANT `roles/bigquery.dataOwner`
      ON SCHEMA rudderstack_
-     TO "serviceAccount:<YOUR_SERVICE_ACCOUNT_ID>";
+     TO "serviceAccount:<SERVICE_ACCOUNT_ID>";
 ```
 
 ## Setting up the Source
