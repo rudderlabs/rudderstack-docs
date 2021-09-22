@@ -45,6 +45,10 @@ Refer to the [**FAQ**](#faq) section below for more information on getting your 
 
 * **Environment:** Enter the value you want RudderStack to set as the environment configuration in your Sentry dashboard. For more information on the use of environments in Sentry, refer to their [**documentation**](https://docs.sentry.io/product/sentry-basics/environments/#creating-environments).
 
+{% hint style="warning" %}
+If you enter the value for the **Environment** field as a forward slash (`/`), new line character, space (` `), or the string `None`, Sentry will silently discard the environment configuration information without sending any error.
+{% endhint %}
+
 * **Set Release By Property:** This field helps you dynamically track the application version in Sentry. The property set here will be searched in the global window object. If found, RudderStack will use that particular version. Otherwise, the value set in the **Release** field will be used by default.
 
 {% hint style="info" %}
