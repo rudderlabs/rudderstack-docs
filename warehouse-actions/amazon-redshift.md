@@ -10,16 +10,88 @@ This guide will help you configure Redshift as a source from which you can route
 
 ## Granting Permissions
 
-Run the following SQL queries to grant the necessary permissions for warehouse action
+Run the SQL queries below in the **exact** order to grant the necessary permissions for the Warehouse Actions source:
 
-```text
-CREATE USER RUDDER WITH PASSWORD 'strong_unique_password'
-GRANT USAGE ON SCHEMA "testschema" TO RUDDER;
-GRANT SELECT ON TABLE "testschema"."testtable" to RUDDER;
-GRANT CREATE ON SCHEMA "testschema" to RUDDER;
+### Creating the user
+
+- The following command creates a new user `rudder` with password `<strong_unique_password>` in Redshift.
+
+```
+CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 ```
 
-## Set Up as Source
+#### Password considerations for Redshift
+
+The password you set in the above command must meet the following conditions:
+
+* It should be **8-64** characters in length
+* It must contain atleast one upper case, one lower case, and one number
+* It can contain any ASCII characters with the ASCII codes 33-126, with the exception of `'` (single quotation mark), `"` (double quotation mark), `\`, `/`, and `@`.
+
+{% hint style="info" %}
+For more information on the password rules, refer to the [**Amazon Redshift documentation**](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html#r_CREATE_USER-parameters).
+{% endhint %}
+
+### Creating the RudderStack schema and granting permissions
+
+- The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
+
+```
+CREATE SCHEMA "_rudderstack";
+```
+
+{% hint style="warning" %}
+The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed. 
+{% endhint %}
+
+- The following command allows the user `rudder` to have full access to the schema `_rudderstack`.
+
+```
+GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
+```
+ 
+- The following command allows the user `rudder` to have full access to all the objects that exist in the schema `_rudderstack`.
+
+```
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
+```
+
+### Granting permissions on your schema and table
+
+- The following command allows the user `rudder` to look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema.
+
+```
+GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
+```
+
+- The following command allows the user `rudder` to read the data from specified table `<YOUR_TABLE>`. Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your Redshift schema and table.
+
+```
+GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
+```
+
+- The following **optional** command allows the user `rudder` to view and read the data from all the tables present in the schema `<YOUR_SCHEMA>`:
+
+``` 
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access the data in all the tables residing within your specified schema.
+{% endhint %}
+
+- The following **optional** command allows the user `rudder` to read the data from all the future tables in the schema `<YOUR_SCHEMA>`:
+
+``` 
+ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access the data in all the future tables residing within your specified schema.
+{% endhint %}
+
+
+## Setting Up the Source
 
 To set up Amazon Redshift as a source in RudderStack, follow these steps:
 

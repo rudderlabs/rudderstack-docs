@@ -4,40 +4,97 @@ description: Step-by-step guide to ingest your data from Google BigQuery into Ru
 
 # Google BigQuery
 
-[Google BigQuery](https://cloud.google.com/bigquery) ****is an industry-leading, fully-managed cloud data warehouse that allows you to store and analyze petabytes of data in no time.
+[Google BigQuery](https://cloud.google.com/bigquery) is an industry-leading, fully-managed cloud data warehouse that allows you to store and analyze petabytes of data in no time.
 
 This guide will help you configure BigQuery as a source from which you can route event data to your desired destinations through RudderStack.
 
 ## Granting Permissions
 
-Follow these steps below to grant the necessary permissions for warehouse actions. For BigQuery, use the BigQuery Console.
+Follow these steps below to grant the necessary permissions for Warehouse Actions. For BigQuery, use the **BigQuery Console**.
 
-* Go to [https://console.cloud.google.com/iam-admin/roles](https://console.cloud.google.com/iam-admin/roles) and click on “CREATE ROLE”.
-* Fill it in as shown below. 
+### Creating the role and adding required permissions
+
+* Go to [**https://console.cloud.google.com/iam-admin/roles**](https://console.cloud.google.com/iam-admin/roles) and click on **CREATE ROLE**.
+
+* Then, fill in the details as shown: 
 
 ![](../.gitbook/assets/image1.png)
 
-* Click on “ADD PERMISSIONS” and add the permissions mentioned below.
+* Next, click on **ADD PERMISSIONS** and add the permissions as listed in the following image:
 
 ![](../.gitbook/assets/image3.png)
 
-* Click on “CREATE”.
-* Now, move to [https://console.cloud.google.com/iam-admin/serviceaccounts](https://console.cloud.google.com/iam-admin/serviceaccounts) and select the project which has the dataset or table you want to share.
-* Click on “CREATE SERVICE ACCOUNT”.
-* Fill in the details in Step 1 and click CREATE:
+The permissions are as shown below:
+
+```
+bigquery.datasets.get
+bigquery.jobs.create
+bigquery.jobs.list
+bigquery.tables.create
+bigquery.tables.get
+bigquery.tables.getData
+bigquery.tables.list
+bigquery.tables.update
+bigquery.tables.updateData
+```
+
+* After adding all the required permissions, click on **CREATE**.
+
+### Creating the service account & attaching the role to it
+
+* Next, go to [**https://console.cloud.google.com/iam-admin/serviceaccounts**](https://console.cloud.google.com/iam-admin/serviceaccounts).
+
+* Select the project which has the dataset or the table that you want to use.
+
+* Click on **CREATE SERVICE ACCOUNT**.
+
+* Fill in the details in Step **1** as shown below, and click **CREATE AND CONTINUE**:
 
 ![](../.gitbook/assets/image2.png)
 
-* Fill in the details in Step 2 and click CONTINUE:
+{% hint style="info" %}
+Note down the **Service account ID**. This ID is required while creating the RudderStack schema and granting the required permissions to it.
+{% endhint %}
+
+* Then, fill in the details in Step **2** as shown below, and click **CONTINUE**:
 
 ![](../.gitbook/assets/image4.png)
 
-* After filling in steps 1 and 2 click DONE.
-* This will move you to the list of service accounts. Now, click on the “3 dots” for the service account that just created, and select “Manage keys”.
-* Click on ADD KEY and select "Create new key". In the pop up select JSON and click CREATE. 
-* Download this json file and use its data while creating a BQ source on RudderStack.
+* After completing steps **1** and **2**, click on **DONE**. This will move you to the list of service accounts.
 
-## Set Up as Source
+### Creating and downloading the JSON key
+
+* Now, click on the three dots under **Actions** in the service account that you just created and select **Manage keys**, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/133751172-bd11d971-1e15-4c06-831e-23058a2eed86.png)
+
+* Click on **ADD KEY**, followed by **Create new key**, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/133751255-356dab76-a795-4428-8e72-9c46b0031d79.png)
+
+* In the resulting pop-up, select **JSON** and click on **CREATE**.
+
+![](https://user-images.githubusercontent.com/59817155/133751286-a7897da9-eb9d-48ef-be29-f16f0e65e2bb.png)
+ 
+* Finally, download this JSON file. This file is required while creating a BigQuery warehouse source in RudderStack - the next section covers the steps to do this.
+
+### Creating the RudderStack schema and granting permissions
+
+* The following command creates a dedicated schema `rudderstack_` used by RudderStack for storing the state of each data sync.
+
+```
+create schema rudderstack_;
+```
+
+* The following query allows the service account `Rudderstack` to have full access to the schema `rudderstack_` (used by RudderStack).
+
+```
+GRANT `roles/bigquery.dataOwner`
+     ON SCHEMA rudderstack_
+     TO "serviceAccount:<SERVICE_ACCOUNT_ID>";
+```
+
+## Setting up the Source
 
 To set up Google BigQuery as a source in RudderStack, follow these steps:
 
