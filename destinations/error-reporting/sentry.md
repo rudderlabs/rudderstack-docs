@@ -52,7 +52,11 @@ If you enter the value for the **Environment** field as a forward slash \(`/`\),
 * **Set Release By Property:** This field helps you dynamically track the application version in Sentry. The property set here will be searched in the global window object. If found, RudderStack will use that particular version. Otherwise, the value set in the **Release** field will be used by default.
 
 {% hint style="info" %}
-Suppose you've set the **Set Release By Property** field to the value `new_custom_version` and RudderStack finds `window.new_custom_version=2.4.5` in the `window` object. In this case, RudderStack will send the value `2.4.5` as the app version to Sentry. Otherwise, it will look for the value input in the **Release** field and send it as the app version.
+Suppose you have set the **Set Release By Property** field to the value `new_custom_version` and RudderStack finds `window.new_custom_version=2.4.5` in the `window` object. In this case, RudderStack will send the value `2.4.5` as the app version to Sentry. Otherwise, it will look for the value input in the **Release** field and send it as the app version.
+{% endhint %}
+
+{% hint style="warning" %}
+Sentry needs the `release` value for every single session. If neither **Set Release By Property** or **Release fields** are specified in the dashboard while configuring the destination, the particular session will be discarded.
 {% endhint %}
 
 * **Release:** This field is used for tracking your application's version in Sentry.
