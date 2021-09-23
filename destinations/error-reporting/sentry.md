@@ -56,7 +56,7 @@ Suppose you've set the **Set Release By Property** field to the value `new_custo
 {% endhint %}
 
 {% hint style="warning" %}
-Remember Sentry needs the `release` value for every single session. If both `Set Release By Property` and `Release` field kept empty, the particular session will be discarded from the destination end due to missing or non-string release.
+Sentry needs the `release` value for every single session. If both `Set Release By Property` and `Release` fields are kept empty, the particular session will be discarded.
 {% endhint %}
 
 * **Release:** This field is used for tracking your application's version in Sentry.
