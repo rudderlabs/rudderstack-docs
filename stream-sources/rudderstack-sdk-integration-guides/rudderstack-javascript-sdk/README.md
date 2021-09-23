@@ -3,39 +3,39 @@ description: >-
   Detailed technical documentation on the RudderStack’s JavaScript SDK to send data from your website to your destinations via RudderStack.
 ---
 
-# **JavaScript**
+# JavaScript
 
-## **What is the RudderStack JavaScript SDK?**
+## What is the RudderStack JavaScript SDK?
 
 RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to track and send user events from your website to RudderStack. You can then further transform and route this event data to the destination platform of your choice.
 
-## **Installing the RudderStack JavaScript SDK**
+## Installing the SDK
 
-To quickly get up and running with setting up and using the RudderStack JavaScript SDK, go through our [quick start guide](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide).
+To quickly set up and start using the RudderStack JavaScript SDK, go through our [**quick start guide**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide).
 
-## **JavaScript SDK APIs**
+## Supported APIs
 
-RudderStack’s JavaScript SDK makes it very easy for you to send your event data to any destination without having to implement a new API every single time.
+The JavaScript SDK makes it very easy for you to send your event data to any destination without implementing a new API every time.
 
-Let us take a look at some of the key methods in this section:
+The following sections detail all the API calls supported by RudderStack for this SDK.
 
-### **Load**
+## Load
 
-The `load` method loads the `rudder-analytics.js` file with your write key.
+The `load` method loads the `rudder-analytics.js` file with the source write key. It is defined as follows:
 
-It is defined as follows:
-
-`rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URL>, [options]);`
+```javaascript
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, [options]);
+```
 
 {% hint style="info" %}
-**NOTE**: You need to replace `<YOUR_WRITE_KEY>` with the write key in the RudderStack Control Plane and `<DATA_PLANE_URL>` with the URL of the RudderStack Server.
+You need to replace the `<WRITE_KEY>` with the write key in the RudderStack dashboard and `<DATA_PLANE_URL>` with the URL of the RudderStack Server.
 {% endhint %}
 
-#### **The `options` parameter**
+### The `options` parameter
 
 The `options` parameter in the above `load` call looks like the following:
 
-```text
+```javascript
 {
  logLevel: "DEBUG" | "INFO" | "WARN",
  integrations: IntegrationOpts,
@@ -47,17 +47,17 @@ The `options` parameter in the above `load` call looks like the following:
 
 It includes the following details:
 
-| Parameter             | Type                                | Description                                                                                                                                                                                                |
+| **Parameter**             | **Type**                                | **Description**                                                                                                                                                                                                |
 | :-------------------- | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`logLevel`**        | String                              | Options include **`DEBUG`**, **`INFO`**, and **`WARN`**.                                                                                                                                                   |
-| **`integrations`**    | [IntegrationOpts](#integrationopts) | Refer to the [**`IntegrationOpts`**](#integrationopts) section. More information on how to use this parameter can be found [here](#filter-selective-destinations).                                         |
+| **`integrations`**    | [**IntegrationOpts**](#integrationopts) | Refer to the [**`IntegrationOpts`**](#integrationopts) section. More information on how to use this parameter can be found [**here**](#filter-selective-destinations).                                         |
 | **`configUrl`**       | String                              | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server (Control Plane) endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
 | **`queueOpts`**       | [QueueOpts](#queueopts)             | Refer to the [**`QueueOpts`**](#queueopts) section.                                                                                                                                                        |
 | **`loadIntegration`** | Boolean                             | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                              |
 
-#### **Self-hosted Control Plane**
+### Loading the SDK for self-hosted control plane
 
-If you are self-hosting the Control Plane, your `load` call will look like the following:
+If you are self-hosting the control plane using the [**RudderStack Control Plane Lite**](https://docs.rudderstack.com/get-started/control-plane-lite#what-is-the-control-plane-url) utility, your `load` call will look like the following:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
@@ -65,9 +65,14 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 });
 ```
 
-#### **Selective Destinations**
+{% hint style="info" %}
+More information on how to get the `CONTROL_PLANE_URL` can be found [**here**](https://docs.rudderstack.com/get-started/control-plane-lite#what-is-the-control-plane-url).
+{% endhint %}
 
-RudderStack allows you to load selective destinations as specified by you and disable sending events to the remaining destinations. You can specify these destinations through the `load` call, as shown:
+
+### Loading selective destinations
+
+RudderStack lets you send your event data to selective destinations specified by you and disable sending events to the rest of the destinations. You can specify these destinations through the `load` call, as shown in the following snippet:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
@@ -75,17 +80,27 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 });
 ```
 
-For more information, check the [Filter Selective Destinations](#filter-selective-destinations) section.
+{% hint style="info" %}
+For more information, check the [**Filter Selective Destinations**](#filter-selective-destinations) section.
+{% endhint %}
 
-### **Identify**
+## Identify
 
-The `identify` method allows you to link the users and their actions to a specific `userid`. You can also add additional information as `traits` to a user. Once you set the `identify` information to the user, those will be passed to the successive [`track`](#track) or [`page`](#page) calls. To reset the user identification, you can use the [`reset`](#reset) method.
+The `identify` method allows you to link the users and their actions to a specific `userid`. You can also add additional information as `traits` to a user. Once the `identify` call is made, the SDK persists the user information and passes it to the subsequent [`track`](#track) or [`page`](#page) calls. 
 
-It is defined as follows:
+To reset the user identification, you can use the [`reset`](#reset) method.
 
-`rudderanalytics.identify([userid], [traits], [options], [callback]);`
+{% hint style="info" %}
+For more information on the `identify` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/identify) guide.
+{% endhint %}
 
-A sample example of how to use the `identify()` method is as shown:
+The SDK defines the `identify` method as shown:
+
+```javascript
+rudderanalytics.identify([userid], [traits], [options], [callback]);
+```
+
+A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify(
@@ -101,7 +116,7 @@ rudderanalytics.identify(
     },
   },
   () => {
-    console.log("in identify call");
+    console.log("Sample identify call");
   }
 );
 ```
@@ -109,39 +124,43 @@ rudderanalytics.identify(
 In the above example, information such as the `userId` and `email` along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
 
 {% hint style="warning" %}
-If you explicitly specify the IP address in the event, RudderStack will use that IP instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
+If you explicitly specify the IP address in the event, RudderStack will use that address instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
 {% endhint %}
+
+### Identify parameters
 
 The `identify` method has the following parameters:
 
 | **Parameter**  | **Presence** | **Description**                                                                                                                                                                                     |
 | :------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`userid`**   | Optional     | This string defines the database ID of the user. If provided, this argument will be sent to destinations as the user ID instead of an anonymous ID.                                                 |
-| **`traits`**   | Optional     | This dictionary contains the traits or properties associated with a `userid` such as email, address, etc.                                                                                           |
+| **`userId`**   | Optional     | This string defines the database ID of the user. If provided, this argument will be sent to destinations as the user ID instead of an anonymous ID.                                                 |
+| **`traits`**   | Optional     | This dictionary contains the traits or properties associated with a `userId` such as email, address, etc. More information on the `identify` traits can be found [**here**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/identify#identify-traits).                                                                                           |
 | **`options`**  | Optional     | This dictionary provides information such as context, integrations, and `anonymousId`. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section. |
 | **`callback`** | Optional     | This function gets executed after successful execution of the **`identify()`** method.                                                                                                              |
 
+### AnonymousId
+
+The `anonymousId` is a **UUID** (Universally Unique Identifier) generated to uniquely identify the user. Also, if it is provided by the user using the `setAnonymousId` method, the user-specified `anonymousId` overrides the SDK-generated one. For more information on how to do this, refer to the
+
 {% hint style="success" %}
-There is no need to call `identify()` for anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`.
+You don't have to call `identify()` for the anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`.
 {% endhint %}
+
+#### How RudderStack uses anonymousId
+
+The JavaScript SDK generates a unique `anonymousId`, stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps RudderStack in identifying the unknown users from other sites that are hosted under a sub-domain.
 
 {% hint style="info" %}
-**NOTE**: The `anonymousId` is a **UUID** **\(Universally Unique Identifier\)** generated to uniquely identify the user. Also, if it is provided by the user using the `setAnonymousId` method, the user-specified `anonymousId` overrides the SDK-generated one.
-{% endhint %}
-
-The JavaScript SDK generates a unique `anonymousId`, stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps in identifying the users from other sites that are hosted under a sub-domain.
-
-{% hint style="info" %}
-As an example, if you include the RudderStack JavaScript SDK in both **admin.samplewebsite.com** and **app.samplewebsite.com**, the SDK will store the cookie in the top-level domain **samplewebsite.com**.
-{% endhint %}
-
 If you identify a user with your application's unique identifier like email, database ID etc. RudderStack stores this ID in a cookie named `rl_user_id` and attaches to every event.
+{% endhint %}
 
-There are two options that you can use to identify anonymous users when using the JavaScript SDK:
+For example, if you include the RudderStack JavaScript SDK in both **admin.samplewebsite.com** and **app.samplewebsite.com**, the SDK will store the cookie in the top-level domain **samplewebsite.com**.
 
-#### **Overriding `anonymousId` in the `options` parameter**
+There are two options that you can use to identify anonymous users with the JavaScript SDK:
 
-There can be scenarios where you may want to provide your own `anonymousId` instead of an auto-generated ID by the SDK. To do so, you can provide the `anonymousId` in the `options` parameter of the `identify` call, as mentioned above. This will send the value provided by you in the `anonymousId` key of the event.
+#### Overriding `anonymousId` in the `options` parameter
+
+There can be scenarios where you may want to provide your own `anonymousId` instead of an SDK-generated ID. To do so, you can provide the `anonymousId` in the `options` parameter of the `identify` call, as mentioned above. This will send the value provided by you in the `anonymousId` key of the event.
 
 {% hint style="info" %}
 All other events will have`anonymousId` from the one persisted in the cookie, except this event where you override the options.
@@ -163,11 +182,11 @@ rudderanalytics.identify(
 js;
 ```
 
-#### **Overriding the `anonymousId` for all future events using `setAnonymousId`**
+#### Overriding the `anonymousId` for all future events using `setAnonymousId`
 
 You can also override the `anonymousId` for all the future events using the `rudderananlytics.setAnonymousId` method.
 
-An example of this is shown in the code snippet below:
+An example of this is shown in the following snippet:
 
 ```javascript
 rudderanalytics.setAnonymousId("my-anonymous-id");
@@ -179,9 +198,9 @@ rudderanalytics.identify("userId", { email1: "name@domain.com" }, () => {
 });
 ```
 
-##### **AMP Analytics**
+### **AMP Analytics**
 
-You can also parse the AMP Linker ID and set the `anonymousId` as shown:
+You can also parse the AMP Linker ID and set the `anonymousId`, as shown:
 
 ```javascript
 rudderanalytics.setAnonymousId(
@@ -190,31 +209,37 @@ rudderanalytics.setAnonymousId(
 );
 ```
 
-Here, the second parameter is the AMP Linker ID format in accordance with the [specified structure](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [RudderStack Linker parameter](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/amp-analytics#amp-linker), the **`<idName1>`** value will be **`rs_amp_id`**.
+Here, the second parameter is the AMP Linker ID format in accordance with the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [**RudderStack Linker parameter**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/amp-analytics#amp-linker), the **`<idName1>`** value will be **`rs_amp_id`**.
 
 Calling the above method will parse the Linker ID and set the **`anonymousId`** as the value of the **`rs_amp_id`** key.
 
-#### **Setting `userid` to Empty**
+### Setting a blank `userId`
 
-If you would like to set the `userid` to be empty, pass an empty string or `""`. A common use case for this is if an anonymous user was identified with a `userid` and then logs out of their account. You can then `identify("", {isLoggedIn: false})` and the user will continue to be identified by their `anonymousId` for future events.
+If you would like to set a blank `userid`, pass an empty string or `""`.
 
 {% hint style="warning" %}
 Do **not** identify with `null`, as this will not allow you to pass a traits object and it will keep the current `userid`.
 {% endhint %}
 
-#### **Identifying New Users**
+#### Use-case
 
-To identify new users in scenarios like a new login, you can take one of the following approaches:
+Suppose an anonymous user is identified with a `userid` and then logs out of their account. You can then `identify("", {isLoggedIn: false})` and the user will continue to be identified by their `anonymousId` for future events.
 
-- Call the `identify` API with a new `userid`. RudderStack will reset all cookies related to the user for `userid` and `user-traits` and update them with the new values provided by you.
+### Identifying New Users
+
+To identify new users in scenarios like new logins, you can take one of the following approaches:
+
+- Call the `identify` API with a new `userid`. RudderStack will reset all the cookies related to the user associated with the `userid` and `traits` and update them with the new values provided by you.
 
 {% hint style="info" %}
 The `anonymousId` will remain unchanged in this case. It will be the value that you set explicitly using `setAnonymousId` , or the auto-generated value set by the SDK while loading.
 {% endhint %}
 
-- Explicitly call `reset` and then call `identify`. It has the same effect as described above.
+- Explicitly call `reset` and then call `identify`. It has the exactly same outcome as described in the first approach.
 
-For updating the traits of a user, you can call identify with the same `userid` multiple times with new traits. All the traits for that user keep on getting appended/modified.
+For updating the traits of a user, you can call identify with the same `userId` multiple times with the new traits. This results in all the traits associated with that user getting appended or modified.
+
+An example is shown below:
 
 ```javascript
 rudderanalytics.identify("userId", { email1: "name@domain.com" }, () => {
@@ -228,9 +253,14 @@ rudderanalytics.identify("userId", { email2: "name@domain.com" }, () => {
 // for the second call.
 ```
 
-Calling `reset()` or identifying with a new `userId` with new traits will reset the earlier traits and update them with the new values.
+In the above example, both `email1` and `email2` will be sent in the payload for the second `identify` call.
 
-### **Page**
+{% hint style="info" %}
+Calling `reset()` or identifying with a new `userId` with the new traits will reset the earlier traits and update them with the new values.
+{% endhint %}
+
+
+## Page
 
 The `page` method lets you record information about the web page being viewed by the user. This includes page views, category, and other relevant information about the page.
 
