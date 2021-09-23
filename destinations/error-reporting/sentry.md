@@ -55,6 +55,10 @@ If you enter the value for the **Environment** field as a forward slash \(`/`\),
 Suppose you've set the **Set Release By Property** field to the value `new_custom_version` and RudderStack finds `window.new_custom_version=2.4.5` in the `window` object. In this case, RudderStack will send the value `2.4.5` as the app version to Sentry. Otherwise, it will look for the value input in the **Release** field and send it as the app version.
 {% endhint %}
 
+{% hint style="warning" %}
+Remember Sentry needs the `release` value for every single session. If both `Set Release By Property` and `Release` field kept empty, the particular session will be discarded from the destination end due to missing or non-string release.
+{% endhint %}
+
 * **Release:** This field is used for tracking your application's version in Sentry.
 * **Server Name:** This option is used to track the host on which the client is running. You can enter the server name or even the Device ID in this field.
 * **Logger:** The name you want Sentry to use as logger. For more information on Sentry's logging feature, refer to their [**docs**](https://docs.sentry.io/platforms/python/guides/logging/).
