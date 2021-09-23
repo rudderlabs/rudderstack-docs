@@ -137,7 +137,7 @@ RudderStack gives the users (e.g., an EU user) the ability to opt out of trackin
 
 The `optOut` API takes `YES` or `NO` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
 
-An example of how you can use the `optOut` API to disable user tracking is shown below:
+The following snippet highlights the use of the `optOut` API to disable user tracking::
 
 {% tabs %}
 {% tab title="Objective-C" %}
