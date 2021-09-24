@@ -13,10 +13,10 @@ The query parameters are listed in the following table:
 
 | Parameter             | Action                                                                                                                                             |
 | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ajs_uid`             | Makes a `rudderanalytics.identify()` call with `userId` having the parameter value.                                                                |
-| `ajs_aid`             | Makes a `rudderanalytics.setAnonymousId()` call with `anonymousId` having the parameter value.                                                     |
-| `ajs_event`           | Makes a `rudderanalytics.track()` call with `event` name as the parameter value.                                                                   |
-| `ajs_prop_<property>` | If `ajs_event` is passed as a query string, value of this parameter will populate the `properties` of the corresponding event in the `track` call. |
+| `ajs_uid`             | Triggers a `rudderanalytics.identify()` call with `userId` having the parameter value.                                                                |
+| `ajs_aid`             | Triggers a `rudderanalytics.setAnonymousId()` call with `anonymousId` having the parameter value.                                                     |
+| `ajs_event`           | Triggers a `rudderanalytics.track()` call with `event` name as the parameter value.                                                                   |
+| `ajs_prop_<property>` | If `ajs_event` is passed as a query string, the value of this parameter populates the `properties` of the corresponding event in the `track` call. |
 | `ajs_trait_<trait>`   | If `ajs_uid` is provided as a query sting, the value of this parameter will populate the `traits` of the `identify` call made.                     |
 
 ## Use-case
