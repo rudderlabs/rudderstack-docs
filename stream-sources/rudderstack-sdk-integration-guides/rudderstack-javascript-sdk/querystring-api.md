@@ -35,7 +35,7 @@ rudderanalytics.identify("12345", { name: "Firstname Lastname" });
 rudderanalytics.track("test event", { testProp: "prop1" });
 ```
 
-## **Contact Us**
+## Contact Us
 
 For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
