@@ -56,7 +56,7 @@ rudderanalytics.page(
 );
 ```
 
-## **Contact Us**
+## Contact Us
 
 For questions or queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
