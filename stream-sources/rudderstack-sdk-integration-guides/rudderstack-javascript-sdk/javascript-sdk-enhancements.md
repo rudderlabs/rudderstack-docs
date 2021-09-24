@@ -1,93 +1,111 @@
 ---
 description: >-
-  Detailed technical description of the newly made enhancements to the
-  RudderStack JavaScript SDK
+  Detailed technical description of the new enhancements made to the RudderStack JavaScript SDK
 ---
 
 # JavaScript SDK Enhancements
 
-In this document, we cover some of the finer technical details of the improvements that make our RudderStack JavaScript SDK more efficient and easier to use. These enhancements include:
+This guide covers the finer technical details of the improvements that make the RudderStack JavaScript SDK more efficient and easier to use. 
 
-- **`sendBeacon` interface support for sending event payloads**
+These enhancements are:
+
+- **Support for the `sendBeacon` interface support to send event payloads**
 - **Reducing the core SDK size by using explicit `requireIntegration` calls**
 
-## **Added `sendBeacon` as a Transport Mechanism**
+## `sendBeacon` as a transport mechanism
 
-Our present JavaScript SDK hosted at [https://cdn.rudderlabs.com/v1/rudder-analytics.min.js](https://cdn.rudderlabs.com/v1/rudder-analytics.min.js) sends event payload using the **XHR** \(XMLHttpRequest\) API. We have now added support for sending the event payload using **`navigator.sendBeacon`** browser utility, which asynchronously sends a small amount of data over HTTP to the RudderStack server.
+The JavaScript SDK hosted at [**https://cdn.rudderlabs.com/v1/rudder-analytics.min.js**](https://cdn.rudderlabs.com/v1/rudder-analytics.min.js) sends event payload using the **XHR** \(XMLHttpRequest\) API. We have added support for sending the event payload using the **`navigator.sendBeacon`** browser utility, which asynchronously sends a small amount of data over HTTP to the RudderStack server.
 
-### Why Use sendBeacon to Send Your Event Payload?
+### Why use sendBeacon to send your event payload?
 
-There are 2 key advantages of using the navigator.sendBeacon utility to send your event payload:
+There are 2 key advantages of using the `navigator.sendBeacon` utility to send your event payload:
 
 - Since pushing events to the Beacon queue is faster compared to the XHR instrumentation, you may see some performance improvements in the JavaScript SDK.
-- The Beacon requests are optimized in the sense that browser waits until the CPU load is lower, or until the network is free before making the actual requests. This can lead to better website performance.
+- The Beacon requests are optimized so that the browser waits until the CPU load is lower, or until the network is free before making the actual requests. This can lead to better website performance.
 
 {% hint style="info" %}
-You can find the `sendBeacon` version of the RudderStack JavaScript SDK located at [https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon](https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon). For using its XMLHTTP version, please use [https://cdn.rudderlabs.com/v2/rudder-analytics.min.js](https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon).
+You can find the `sendBeacon` version of the RudderStack JavaScript SDK located at [**https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon**](https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon). For using its XMLHTTP version, use [**https://cdn.rudderlabs.com/v2/rudder-analytics.min.js**](https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon).
 {% endhint %}
 
-### Important Notes
+### Event delivery guarantees and retry mechanism
 
-A couple of important pointers to note before you opt to use `sendBeacon` for sending your event payload:
+This section guidelines some important points before you opt to use `sendBeacon` for sending your event payload:
 
-- The Beacon requests sent from the SDK using `Navigator.sendBeacon()` only push the events to browser’s Beacon queue. As it depends on the browser's engine to send these events from the queue, RudderStack **cannot guarantee** the events getting discarded due to 5xx errors and other network-related errors \(request timed out, end resource unavailable, etc.\).
+- The Beacon requests sent from the SDK using `navigator.sendBeacon()` only push the events to browser’s Beacon queue. As it depends on the browser's engine to send these events from the queue, RudderStack **cannot guarantee** the events getting discarded due to 5xx errors and other network-related errors \(request timed out, end resource unavailable, etc.\).
 
 {% hint style="warning" %}
-If this is indeed a requirement for your site, we suggest you use the XHR version of the JavaScript SDK, where RudderStack retries event delivery based on status codes and other errors.
+If event delivery and retry is an important requirement for your website, we highly recommend using the XHR version of the JavaScript SDK, where RudderStack retries event delivery based on status codes and other errors.
 {% endhint %}
 
-- The Beacon queue maintained by browsers also has the limitation on the total size of elements present in the beacon queue at any snapshot, and peaks out at 64k. Thus, inherently sending very high frequency hits at one go from main thread is not supported, as the Beacon queue cannot take up cycles to dequeue itself. The RudderStack JavaScript SDK handles this by maintaining a separate queue, which retries pushing events to the Beacon queue in case they fail to be pushed the first time. Our current queue handles approximately 500 hits per 30 ms and ensures eventual successful delivery of events after retries to Beacon. A similar comparison on Google Analytics’ `analytics.js` shows a hit rate of 2 hits/sec.
-
-## Reduced **core SDK size by using explicit `requireIntegration`**
-
-As we support more native destinations through our SDK, more instrumentation code gets added to it. This leads to an increase in the SDK size, and requires the browser to evaluate and parse more unused JavaScript.
-
-Therefore, we decided not to bundle these instrumentation codes for the end destinations in the core JavaScript SDK. Instead, the SDK will now only fetch the destination configuration settings from the RudderStack dashboard, such as track ID, API key, secret, etc. using the **`requireIntegration`** method.
-
-### How It Works
-
-Once the JavaScript SDK receives a call such as `rudderanalytics.requireIntegration("GA")`, it automatically fetches the Google Analytics instrumentation code \(for e.g. `GAPlugin.js`\) that handles the transformation and mapping logic for the RudderStack event payload and the call type \(`track`, `page`, etc.\) to Google Analytics' corresponding payload and API calls \(for e.g. `send`, `set`, etc.\)
-
-The core SDK maintains a call queue, and the API calls to it are processed one after the other. The processing of this call queue will be blocked, once it encounters a call to the `requireIntegration` method.
-
-For instance, in the above call `rudderanalytics.requireIntegration("GA")`, the subsequent calls to the SDK \(such as `page`, `track`, `alias`, `group`, etc.\) will get enqueued until the `GAPlugin.js` and Google Analytics' `analytics.js` is loaded on the web page. Once the plugin and the end destination snippet is loaded, the subsequent calls in the call queue will be processed, and the corresponding calls to `analytics.js` will start flowing.
+- The Beacon queue maintained by the browsers also has a limitation on the total size of the elements present in the queue at any point, and peaks out at 64KB. Therefore, you cannot send high frequency hits from the main thread in one go, as the Beacon queue cannot take up cycles to dequeue itself. The JavaScript SDK handles this by maintaining a separate queue which retries pushing events to the Beacon queue in case they are not successfully pushed in the first attempt. 
 
 {% hint style="success" %}
-For this example, Google Analytics' `trackingId` and other configuration settings are fetched from the RudderStack dashboard as noted earlier and `analytics.js` is configured using these settings.
+Currently, the RudderStack queue handles approximately 500 hits per 30ms and ensures eventual successful delivery of events after retries to Beacon. A similar comparison on Google Analytics’ `analytics.js` shows a hit rate of 2 hits/sec.
 {% endhint %}
 
-### Sample Call Flow for the RudderStack JavaScript SDK
+## Reduced core SDK size by calling `requireIntegration`
 
-The following workflow sums up the flow of the event payload while using the JavaScript SDK:
+As RudderStack supports more native destinations through the JavaScript SDK, more instrumentation code gets added to it. This leads to an increase in the SDK size and requires the browser to evaluate and parse more unused JavaScript.
 
-![JavaScript SDK Workflow](../../../.gitbook/assets/js-sdk-workflow.png)
+Therefore, we have decided not to bundle these instrumentation codes for the end destinations in the core JavaScript SDK. Instead, the SDK will now only fetch the destination configuration settings from the RudderStack dashboard such as track ID, API key, secret, etc. using the **`requireIntegration`** method.
 
-### `requireIntegration` Call Definition
+### `requireIntegration` call definition
 
-- The first parameter is a **string** or an **array of strings** containing the destination names. You can also pass `rudderanalytics.requireIntegration(“All”)`. This will fetch all the plugins for the native destinations that are connected to the source in your RudderStack dashboard.
+The `requireIntegration` method contains the following two parameters:
+
+- The first parameter is a **string** or an **array of strings** containing the destination names.
+
+{% hint style="success" %}
+You can also pass "All" as a parameter for `requireIntegration`, as shown: 
+
+`rudderanalytics.requireIntegration(“All”)` 
+
+This will fetch **all** the plugins for the native destinations that are connected to the source in your RudderStack dashboard.
+{% endhint %}
+
 - The second parameter is a **callback** that accepts an object containing the names of the destinations that were successfully or unsuccessfully loaded on the page.
 
-  An example is as shown:
+An example is shown below:
 
 ```javascript
 rudderanalytics.requireIntegration(
   ["GoogleAnalytics", "Hotjar", "Hubspot"],
-  function (object) {
+  function(object) {
     console.log(JSON.stringify(object));
   }
 );
 ```
 
 {% hint style="info" %}
-We support a few canonical names for destinations. You can find more information regarding these canonical names in the [common destination names](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#common-destination-names) section of our JavaScript SDK guide.
+RudderStack supports a few canonical names for destinations. You can find more information regarding these canonical names in the [**common destination names**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#common-destination-names) section of the SDK guide.
 {% endhint %}
 
 {% hint style="warning" %}
-Currently, we only support plugins for **Google Analytics**, **Hotjar** and **Hubspot**. We are working on adding support for more destinations very soon, so stay tuned!
+Currently, RudderStack support plugins for **Google Analytics**, **Hotjar** and **Hubspot**. We are working on adding support for more destinations very soon, so stay tuned!
 {% endhint %}
 
-## **Contact Us**
+### How it works
 
-To know more about the RudderStack JavaScript SDK, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+Once the SDK receives a call, e.g. `rudderanalytics.requireIntegration("GA")`, it automatically fetches the Google Analytics instrumentation code \(e.g. `GAPlugin.js`\). This code handles the transformation and mapping logic for the RudderStack event payload and the call type \(`track`, `page`, etc.\) to Google Analytics' corresponding payload and API calls \(for e.g. `send`, `set`, etc.\)
 
-In case you come across any issues while using this SDK, please feel free to submit them on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-js/issues).
+The JavaScript SDK maintains a call queue and the API calls to it are processed one after the other. The processing of this call queue will be blocked once the `requireIntegration` method is called.
+
+### Use-case
+
+Suppose the user makes a call `rudderanalytics.requireIntegration("GA")`. All the subsequent calls made to the SDK \(such as `page`, `track`, `alias`, `group`, etc.\) will get enqueued until the `GAPlugin.js` and Google Analytics' `analytics.js` is loaded on the web page. Once the plugin and the end destination snippet is loaded, the subsequent calls in the call queue will be processed, and the corresponding calls to `analytics.js` will start flowing.
+
+{% hint style="info" %}
+For this example, Google Analytics' `trackingId` and other configuration settings are fetched from the RudderStack dashboard as noted earlier and `analytics.js` is configured using these settings.
+{% endhint %}
+
+### Sample call flow
+
+The following workflow sums up the flow of the event payload when the user calls `requireIntegration()`:
+
+![](https://user-images.githubusercontent.com/59817155/134640405-004dcb27-b100-47e2-8bef-16fbaf42051e.png)
+
+## Contact Us
+
+For more information or queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
+If you come across any issues while using the JavaScript SDK, feel free to submit them on our [**GitHub issues page**](https://github.com/rudderlabs/rudder-sdk-js/issues).
