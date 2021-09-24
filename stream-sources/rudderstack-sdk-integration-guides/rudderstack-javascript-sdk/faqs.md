@@ -90,7 +90,7 @@ RudderStack has reserved the following keywords as keys for a standard event pay
 The above keywords should be avoided when naming your event traits and properties.
 
 
-## **Contact Us**
+## Contact Us
 
 For more information on the RudderStack JavaScript SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
