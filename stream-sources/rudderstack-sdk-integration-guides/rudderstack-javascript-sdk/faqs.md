@@ -50,7 +50,7 @@ If the outbound request is not shown, check if you have installed and set up the
 
 ## What is the size limit on the requests?
 
-The size limit on requests is 32 KB per message and 4 MB per batch request.
+The size limit on requests is 32KB per message and 4MB per batch request.
 
 ## Can I send the event data to specific destinations only?
 
