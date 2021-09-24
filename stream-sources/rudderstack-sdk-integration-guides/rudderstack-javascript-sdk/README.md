@@ -198,7 +198,7 @@ rudderanalytics.identify("userId", { email1: "name@domain.com" }, () => {
 });
 ```
 
-### **AMP Analytics**
+### AMP Analytics
 
 You can also parse the AMP Linker ID and set the `anonymousId`, as shown:
 
@@ -225,9 +225,9 @@ Do **not** identify with `null`, as this will not allow you to pass a traits obj
 
 Suppose an anonymous user is identified with a `userid` and then logs out of their account. You can then `identify("", {isLoggedIn: false})` and the user will continue to be identified by their `anonymousId` for future events.
 
-### Identifying New Users
+### Identifying new users
 
-To identify new users in scenarios like new logins, you can take one of the following approaches:
+To identify new users in scenarios like new logins, you can take one of the following two approaches:
 
 - Call the `identify` API with a new `userid`. RudderStack will reset all the cookies related to the user associated with the `userid` and `traits` and update them with the new values provided by you.
 
@@ -580,7 +580,7 @@ Below shows some of the supported names that RudderStack can intake for each des
 **NOTE:** You can also refer to [this section](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention) for more information on the naming convention of the `destinations names`.
 {% endhint %}
 
-### **Specifying Selective Destinations**
+### Specifying selective destinations
 
 You can also choose to load or send events to selective destinations by passing an [integrations object](#integrationopts) in the options parameter of the supported API methods. RudderStack loads or sends events only to those destinations that are enabled.
 
@@ -640,25 +640,25 @@ rudderanalytics.track(
 
 For more information, refer to the [How to Filter Selective Destinations](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations) section.
 
-## **Context and Traits in RudderStack**
+## Context and traits
 
 RudderStack gives you the option to automatically capture certain event-specific and user-specific data, based on the type of the event.
 
-In this section, we cover two specific dictionaries, within the [`options`](#options) parameter, which is included in the supported API methods.
+In this section, we cover two specific dictionaries within the [**`options`**](#options) parameter included in the SDK-supported API methods.
 
-### **Context**
+### Context
 
-A context is a dictionary of additional information about a particular data, such as a user’s locale.
+A context is a dictionary of additional information about a particular event data, such as a user’s locale.
 
-{% hint style="info" %}
-**NOTE**: A context is a complete and specific piece of information. Any other information provided outside of this specification is ignored.
+{% hint style="warning" %}
+A context is a complete and specific piece of information. Any other information provided outside of this specification is ignored.
 {% endhint %}
 
-### **Traits**
+### Traits
 
-Traits is an optional dictionary included within [`context`](#context), which specifies the unique traits of the user. This is a very useful field for linking information of a user from a previously made [`identify()`](#identify) call to a [`track()`](#track) or [`page()`](#page) event.
+Traits is an optional dictionary included within [**`context`**](#context) which specifies the user's unique traits. This is a very useful field for linking the user's information from a previously made [**`identify()`**](#identify) call to the subsequent [**`track()`**](#track) or [**`page()`**](#page) calls.
 
-In order to better understand how contexts and traits work, let us look at the following `identify` event:
+To better understand how contexts and traits work, refer to the following `identify` event:
 
 ```javascript
 rudderanalytics.identify("userId", {
@@ -667,7 +667,7 @@ rudderanalytics.identify("userId", {
 });
 ```
 
-The trait in the above event is `plan`. If you wish to include this trait in a subsequent `track()` or `page()`event that is triggered by the user, you can establish the association by passing this trait into `context.traits` as shown:
+The trait in the above event is `plan`. If you wish to include this trait in a subsequent `track()` or `page()`event triggered by the user, you can establish the association by passing this trait into `context.traits` as shown:
 
 ```javascript
 rudderanalytics.track(
@@ -685,14 +685,14 @@ rudderanalytics.track(
 );
 ```
 
-The above code snippet will append `plan` as a trait to the track event. The trait `email` will not be appended, as it was not specified in the `context.traits` field.
+The above snippet will append `plan` as a trait to the `track` event. Note that the trait `email` will not be appended, as it was not specified in the `context.traits` field.
 
-## **FAQs**
+## FAQs
 
-Refer to [FAQs](ttps://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/faqs) page for solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
+Refer to the [**FAQs**](ttps://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/faqs) section for solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
 
-## **Contact Us**
+## Contact Us
 
-To know more about the RudderStack JavaScript SDK or to see it in action, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
-In case you come across any issues while using this SDK, please feel free to submit them on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-js/issues).
+If you come across any issues while using this SDK, feel free to submit them on our [**GitHub issues page**](https://github.com/rudderlabs/rudder-sdk-js/issues).
