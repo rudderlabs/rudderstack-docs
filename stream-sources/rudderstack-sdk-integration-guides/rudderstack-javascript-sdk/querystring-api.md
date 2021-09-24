@@ -3,11 +3,13 @@ description: >-
   Detailed technical description of the RudderStack's Querystring API.
 ---
 
-# **Querystring API**
+# Querystring API
 
-RudderStack's Querystring API allows you to trigger `track` and `identify` calls using the query parameters.
+RudderStack's Querystring API lets you trigger the `track` and `identify` calls using the query parameters.
 
-You may use the below parameters as a query string parameters and trigger the corresponding call.
+## Query parameters
+
+The query parameters are listed in the following table:
 
 | Parameter             | Action                                                                                                                                             |
 | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17,7 +19,9 @@ You may use the below parameters as a query string parameters and trigger the co
 | `ajs_prop_<property>` | If `ajs_event` is passed as a query string, value of this parameter will populate the `properties` of the corresponding event in the `track` call. |
 | `ajs_trait_<trait>`   | If `ajs_uid` is provided as a query sting, the value of this parameter will populate the `traits` of the `identify` call made.                     |
 
-As an example, if you pass the following parameters in the URL as shown:
+## Use-case
+
+For the following URL containing the querystring parameters:
 
 ```javascript
 http://hostname.com/?ajs_uid=12345&ajs_event=test%20event&ajs_aid=abcde&ajs_prop_testProp=prop1&ajs_trait_name=Firstname+Lastname
@@ -27,12 +31,12 @@ The following API calls will be triggered:
 
 ```javascript
 rudderanalytics.setAnonymousId("abcde");
-rudderanalytics.identify("userId", { name: "Firstname Lastname" });
+rudderanalytics.identify("12345", { name: "Firstname Lastname" });
 rudderanalytics.track("test event", { testProp: "prop1" });
 ```
 
 ## **Contact Us**
 
-To know more about the RudderStack JavaScript SDK, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you!
+For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
-In case you come across any issues while using this SDK, please feel free to submit them on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-js/issues).
+If you come across any issues while using this SDK, feel free to submit them on our [**GitHub issues page**](https://github.com/rudderlabs/rudder-sdk-js/issues).
