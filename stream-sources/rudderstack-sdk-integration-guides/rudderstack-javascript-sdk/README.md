@@ -31,6 +31,13 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, [options]);
 You need to replace the `<WRITE_KEY>` with the write key in the RudderStack dashboard and `<DATA_PLANE_URL>` with the URL of the RudderStack Server.
 {% endhint %}
 
+### Write key and data plane URL
+
+To integrate and initialize the JavaScript SDK, you need the source write key and the data plane URL.
+
+- To get the source write key, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/sending-test-events#get-the-source-write-key).
+- To get the data plane URL, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
+
 ### The `options` parameter
 
 The `options` parameter in the above `load` call looks like the following:
