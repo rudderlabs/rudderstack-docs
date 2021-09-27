@@ -52,7 +52,7 @@ It includes the following details:
 | **`logLevel`**        | String                              | Options include **`DEBUG`**, **`INFO`**, and **`WARN`**.                                                                                                                                                   |
 | **`integrations`**    | [**IntegrationOpts**](#integrationopts) | Refer to the [**`IntegrationOpts`**](#integrationopts) section. More information on how to use this parameter can be found [**here**](#filter-selective-destinations).                                         |
 | **`configUrl`**       | String                              | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server (Control Plane) endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
-| **`queueOpts`**       | [QueueOpts](#queueopts)             | Refer to the [**`QueueOpts`**](#queueopts) section.                                                                                                                                                        |
+| **`queueOpts`**       | [**QueueOpts**](#queueopts)             | Refer to the [**`QueueOpts`**](#queueopts) section.                                                                                                                                                        |
 | **`loadIntegration`** | Boolean                             | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                              |
 
 ### Loading the SDK for self-hosted control plane
@@ -60,8 +60,8 @@ It includes the following details:
 If you are self-hosting the control plane using the [**RudderStack Control Plane Lite**](https://docs.rudderstack.com/get-started/control-plane-lite#what-is-the-control-plane-url) utility, your `load` call will look like the following:
 
 ```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-  configUrl: CONTROL_PLANE_URL,
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
+  configUrl: <CONTROL_PLANE_URL>,
 });
 ```
 
@@ -75,7 +75,7 @@ More information on how to get the `CONTROL_PLANE_URL` can be found [**here**](h
 RudderStack lets you send your event data to selective destinations specified by you and disable sending events to the rest of the destinations. You can specify these destinations through the `load` call, as shown in the following snippet:
 
 ```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
   integrations: { All: false, destination_name: true },
 });
 ```
@@ -657,7 +657,7 @@ Refer to the [**Common destination names**](#common-destination-names) or refer 
 The following example shows how to load only the Google Analytics and Intercom destinations:
 
 ```javascript
-rudderanalytics.load( <YOUR_WRITE_KEY> , <DATA_PLANE_URL> , {
+rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
   integrations: {
     All: false,
     "Google Analytics": true,
