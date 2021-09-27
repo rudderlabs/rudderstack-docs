@@ -136,6 +136,47 @@ We automatically track the following optional events:
 You can disable these events using the `withTrackLifecycleEvents` method and passing `false`. But it is highly recommended to keep them enabled.
 {% endhint %}
 
+## Enabling/Disabling User Tracking via the optOut API (GDPR Support)
+
+RudderStack gives the users (e.g., an EU user) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API. 
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(true)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(true);
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(false)
+```
+{% endtab %}
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(false);
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack Android SDK from version `1.0.19`.
+{% endhint %}
+
 ## Track
 
 You can record the users' activity through the `track` method. Every action performed by the user is called an event.
@@ -796,4 +837,3 @@ For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy.
-
