@@ -137,7 +137,7 @@ If you explicitly specify the IP address in the event, RudderStack will use that
 {% endhint %}
                                                                                                               |
 
-### AnonymousId
+### anonymousId
 
 The `anonymousId` is a **UUID** (Universally Unique Identifier) generated to uniquely identify the user. Also, if it is provided by the user using the `setAnonymousId` method, the user-specified `anonymousId` overrides the SDK-generated one. For more information on how to do this, refer to the
 
@@ -181,7 +181,7 @@ rudderanalytics.identify(
 js;
 ```
 
-#### Overriding the `anonymousId` for all future events using `setAnonymousId`
+#### Overriding the `anonymousId` using `setAnonymousId`
 
 You can also override the `anonymousId` for all the future events using the `rudderananlytics.setAnonymousId` method.
 
