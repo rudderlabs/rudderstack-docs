@@ -49,7 +49,7 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
     })(method);
   }
 
-  rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URL>);
+  rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
   //For example,
   //rudderanalytics.load("1Qb1F3jSWv0eKFBPZcrM7ypgjVo", "http://localhost:8080");
   rudderanalytics.page();
@@ -75,7 +75,7 @@ Combining the initialization and the above async scripts together, we get the fo
 ```javascript
 <script type="text/javascript">
 !function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
-e.load(<YOUR_WRITE_KEY>,<DATA_PLANE_URL>),
+e.load(<WRITE_KEY>,<DATA_PLANE_URL>),
 e.page()}();
 </script>
 ```
@@ -128,7 +128,7 @@ import * as rudderanalytics from "rudder-sdk-js";
 rudderanalytics.ready(() => {
   console.log("we are all set!!!");
 });
-rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URL>);
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
 export { rudderanalytics };
 ```
 
@@ -136,7 +136,7 @@ You can also do this with **ES5** using the `require` method, as shown in the fo
 
 ```jsx
 var rudderanalytics = require("rudder-sdk-js");
-rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URL>);
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
 exports.rudderanalytics = rudderanalytics;
 ```
 
