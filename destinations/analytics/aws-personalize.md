@@ -91,7 +91,7 @@ rudderanalytics.track("PRODUCT ADDED", {
 ```
 
 {% hint style="info" %}
-When using `PutItems` operation, with the above example `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema. And, the path can be specified as `properties.X`. But, while using `putEvents` the same mapped field for `ITEM_ID` should addressed as the field name **only**. So for the above track call, the `ITEM_ID` should be mapped to `X` instead of `properties.X`.
+When using `PutItems` operation, with the above example `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema. And, the path can be specified as `properties.X`. But, while using `putEvents` the same mapped field for `ITEM_ID` should be addressed as the field name **only**. So for the above track call, the `ITEM_ID` should be mapped to `X` instead of `properties.X`.
 {% endhint %}
 
 ## Identify
