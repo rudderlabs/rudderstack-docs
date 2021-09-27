@@ -559,7 +559,7 @@ We will be adding similar callbacks for APIs such as `track`, `page`, `identify`
 
 ## Filtering selective destinations
 
-RudderStack lets you load or send your event data to only selective destinations specified by you. You can do so by passing an [**integrations object**](#integrationopts) in the `options` parameter of the SDK-supported API methods.
+RudderStack lets you load or send your event data to only the selective destinations specified by you. You can do so by passing an [**integrations object**](#integrationopts) in the `options` parameter of the SDK-supported API methods.
 
 ### Common destination names
 
