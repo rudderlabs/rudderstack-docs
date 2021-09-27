@@ -79,7 +79,7 @@ More information on how to get the `CONTROL_PLANE_URL` can be found [**here**](h
 
 ### Loading selective destinations
 
-RudderStack lets you send your event data to selective destinations specified by you and disable sending events to the rest of the destinations. You can specify these destinations through the `load` call, as shown in the following snippet:
+RudderStack lets you load and send your event data to selective destinations specified by you and disable sending events to the rest of the destinations. You can specify these destinations through the `load` call, as shown in the following snippet:
 
 ```javascript
 rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
