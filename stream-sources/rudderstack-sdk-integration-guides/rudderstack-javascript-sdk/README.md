@@ -100,6 +100,15 @@ The SDK defines the `identify` method as shown:
 rudderanalytics.identify([userid], [traits], [options], [callback]);
 ```
 
+The `identify` method has the following parameters:
+
+| **Parameter**  | **Presence** | **Description**                                                                                                                                                                                     |
+| :------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`userId`**   | Optional     | This string defines the database ID of the user. If provided, this argument will be sent to destinations as the user ID instead of an anonymous ID.                                                 |
+| **`traits`**   | Optional     | This dictionary contains the traits or properties associated with a `userId` such as email, address, etc. More information on the `identify` traits can be found [**here**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/identify#identify-traits).                                                                                           |
+| **`options`**  | Optional     | This dictionary provides information such as context, integrations, and `anonymousId`. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section. |
+| **`callback`** | Optional     | This function gets executed after successful execution of the **`identify()`** method.
+
 A sample `identify` call is shown below:
 
 ```javascript
@@ -126,17 +135,7 @@ In the above example, information such as the `userId` and `email` along with th
 {% hint style="warning" %}
 If you explicitly specify the IP address in the event, RudderStack will use that address instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
 {% endhint %}
-
-### Identify parameters
-
-The `identify` method has the following parameters:
-
-| **Parameter**  | **Presence** | **Description**                                                                                                                                                                                     |
-| :------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`userId`**   | Optional     | This string defines the database ID of the user. If provided, this argument will be sent to destinations as the user ID instead of an anonymous ID.                                                 |
-| **`traits`**   | Optional     | This dictionary contains the traits or properties associated with a `userId` such as email, address, etc. More information on the `identify` traits can be found [**here**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/identify#identify-traits).                                                                                           |
-| **`options`**  | Optional     | This dictionary provides information such as context, integrations, and `anonymousId`. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section. |
-| **`callback`** | Optional     | This function gets executed after successful execution of the **`identify()`** method.                                                                                                              |
+                                                                                                              |
 
 ### AnonymousId
 
@@ -262,19 +261,38 @@ Calling `reset()` or identifying with a new `userId` with the new traits will re
 
 ## Page
 
-The `page` method lets you record information about the web page being viewed by the user. This includes page views, category, and other relevant information about the page.
+The `page` call lets you record your website's page views with any additional relevant information about the viewed page.
+
+{% hint style="info" %}
+Many destinations require the page events to be called at least once every page load.
+{% endhint %}
+
+{% hint style="info" %}
+For more information on the `page` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/page) guide.
+{% endhint %}
 
 It is defined as follows:
 
-`rudderanalytics.page([category], [name], [properties], [options], [callback]);`
+```javascript
+rudderanalytics.page([category], [name], [properties], [options], [callback]);
+```
 
-A sample example of how to use the `page()` method is as shown:
+The `page` method has the following parameters:
+
+| **Parameter**    | **Type** | **Presence** | **Description** |
+| :--------------- |:---------| :----------- | :-------------- |
+| `category`   |String      | Optional     | Defines the page category.       |
+| `name`       | String     | Optional     | Defines the name of the page.    |
+| `properties` | Dictionary | Optional     | Defines the properties of the page. These properties are auto-captured by the SDK. |
+| `options`    | Dictionary | Optional     | Provides information such as context, integrations, `anonymousId`, etc. Specific user traits can also be provided as the context. Refer to the [**`options`**](#options) section. |
+| `callback`   | Function   |Optional     | Called after the successful execution of the **`page()`** method.
+
+A sample `page()` call is shown below:
 
 ```javascript
 rudderanalytics.page(
   "Cart",
-  "Cart Viewed",
-  {
+  "Cart Viewed", {
     path: "",
     referrer: "",
     search: "",
@@ -287,32 +305,36 @@ rudderanalytics.page(
 );
 ```
 
-In the above example, information such as the page category and page name along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
-
-The `page` method has the following parameters:
-
-| **Parameter**    | **Presence** | **Description**                                                                                                                                                                                        |
-| :--------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`category`**   | Optional     | A string that defines the category of the page.                                                                                                                                                        |
-| **`name`**       | Optional     | A string that defines the name of the page.                                                                                                                                                            |
-| **`properties`** | Optional     | A dictionary that defines the properties of the page. These properties are auto-captured by the SDK.                                                                                                   |
-| **`options`**    | Optional     | A dictionary that provides information such as context, integrations, `anonymousId`, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section. |
-| **`callback`**   | Optional     | This function gets executed after successful execution of the **`page()`** method.                                                                                                                     |
+In the above example, the SDK captures the information such as the page category and page name along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk).
 
 ### Track
 
-The `track` method allows you to track any actions that your users might perform. Each of these actions is commonly referred to as an **event**.
+The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with those actions.
+
+{% hint style="info" %}
+For more information on the `track` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/track) guide.
+{% endhint %}
 
 It is defined as follows:
 
-`rudderanalytics.track(event, [properties], [options], [callback]);`
+```javascript
+rudderanalytics.track(event, [properties], [options], [callback]);
+```
 
-A sample example of how to use the `track()` method is as shown:
+The `track` method has the following parameters:
+
+| **Parameter**    | **Type** | **Presence** | **Description** |
+| :--------------- |:---------| :----------- | :-------------- |
+| `event`      | String | Required     | Captures the name of the tracked event.|
+| `properties` | Dictionary | Optional     | Tracks the event properties.|
+| `options`    | Dictionary | Optional     | Tracks the information like the context, integrations, etc. Specific user traits can also be provided as the context. Refer to the [**`options`**](#options) section for more information. |
+| `callback`   | Function | Optional     | Called after the successful execution of the **`track`** call.|
+
+A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track(
-  "test track event GA3",
-  {
+  "test track event GA3", {
     revenue: 30,
     currency: "USD",
     user_actual_id: 12345,
@@ -323,16 +345,7 @@ rudderanalytics.track(
 );
 ```
 
-In the above example, the method tracks the event `test track event GA3`, information such as the revenue, currently, user ID, and other [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk).
-
-The `track` method has the following parameters:
-
-| **Parameter**    | **Presence** | **Description** |
-| :--------------- | :----------- | :-------------- |
-| **`event`**      | Required     | A string that captures the name of the event that is being tracked.|
-| **`properties`** | Optional     | An **optional** dictionary that tracks the properties of the event.|
-| **`options`**    | Optional     | An **optional** dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section. |
-| **`callback`**   | Optional     | This function gets executed after successful execution of the **`track`** call.|
+In the above example, the method tracks the event `test track event GA3` along information like the `revenue`, `currency`, and the user ID.
 
 ### Alias
 
@@ -340,18 +353,14 @@ Many destination platforms need an explicit `alias` call for mapping the already
 
 Simply put, the `alias` call lets you merge different identities of a known user.
 
+{% hint style="info" %}
+For more information on the `alias` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/alias) guide.
+{% endhint %}
+
 It is defined as follows:
 
 ```javascript
 rudderanalytics.alias(newId, previousId, [options], [callback]);
-```
-
-A sample `alias()` method is shown below:
-
-```javascript
-rudderanalytics.alias("test_new_id", "old_user_id", () => {
-  console.log("alias call");
-});
 ```
 
 The `alias` call has the following parameters:
@@ -362,6 +371,14 @@ The `alias` call has the following parameters:
 | `previousId`   | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
 | `options`  | Optional     | A dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section.                             |
 | `callback` | Optional     | This function gets executed after the successful execution of the **`alias()`** method. |
+
+A sample `alias()` method is shown below:
+
+```javascript
+rudderanalytics.alias("test_new_id", "old_user_id", () => {
+  console.log("alias call");
+});
+```
 
 ## Group
 
@@ -377,15 +394,6 @@ It is defined as follows:
 rudderanalytics.group(groupId, [traits], [options], [callback]);
 ```
 
-A sample `group()` call is as shown:
-
-```javascript
-rudderanalytics.group("sample_group_id", {
-  name: "CompanyA",
-  location: "USA",
-});
-```
-
 The `group` method has the following parameters:
 
 | **Parameter**  | **Presence** | **Description** |
@@ -394,6 +402,15 @@ The `group` method has the following parameters:
 | `traits`   | Optional     | Denotes the group traits. RudderStack will pass these traits to the destination to enhance the group properties.| 
 | `options`  | Optional     | A dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section.   |
 | `callback` | Optional     | Gets executed after the successful execution of the `group()` method.|
+
+A sample `group()` call is as shown:
+
+```javascript
+rudderanalytics.group("sample_group_id", {
+  name: "CompanyA",
+  location: "USA",
+});
+```
 
 ## Reset
 
