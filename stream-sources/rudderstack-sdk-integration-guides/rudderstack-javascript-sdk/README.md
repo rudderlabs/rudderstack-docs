@@ -371,15 +371,15 @@ For more information on the `alias` call, refer to the [**RudderStack Events Spe
 It is defined as follows:
 
 ```javascript
-rudderanalytics.alias(newId, previousId, [options], [callback]);
+rudderanalytics.alias(to, [from], [options], [callback]);
 ```
 
 The `alias` call has the following parameters:
 
 | **Parameter**  | **Presence** | **Description** |
 | :------------- | :----------- | :---------------|
-| `newId`        | Required     | Denotes the new identifier of the user. |
-| `previousId`   | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
+| `to`        | Required     | Denotes the new identifier of the user. |
+| `[from]`    | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
 | `options`  | Optional     | A dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section.                             |
 | `callback` | Optional     | This function gets executed after the successful execution of the **`alias()`** method. |
 
