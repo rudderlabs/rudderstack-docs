@@ -69,7 +69,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 The `track` call lets you use `PutEvents` and `PutItems` operation of AWS Personalize.
 
 {% hint style="info" %}
-For `PutEvents` The value of the `event` field in the payload will be sent as `EVENT_TYPE`.
+For `PutEvents` The value of the `event` field in the payload will be sent as `EVENT_TYPE`. Also, the value of the `timestamp` or `originalTimestamp` field in the payload will be sent as `sentAt`.
 {% endhint %}
 
 {% hint style="info" %}
@@ -91,7 +91,7 @@ rudderanalytics.track("PRODUCT ADDED", {
 ```
 
 {% hint style="info" %}
-When using `PutItems` operation, with the above example `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema. And, the path can be specified as `properties.X`.
+When using `PutItems` operation, with the above example `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema. And, the path can be specified as `properties.X`. But, while using `putEvents` the same mapped field for `ITEM_ID` should addressed as the field name **only**. So for the above track call, the `ITEM_ID` should be mapped to `X` instead of `properties.X`.
 {% endhint %}
 
 ## Identify
