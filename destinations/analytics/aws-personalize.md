@@ -55,6 +55,14 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
     * **Access Key ID**: The access key ID of your AWS account goes here.
     * **Secret Access Key**: Enter the secret access key of your AWS account.
     * **Region**: Please enter the region associated with your AWS account here.
+    * Also ensure that this actions are attached to the above access keys while setting up the aws policy for this keys. Below are the actions that you need to attach based on the type of events you want to send. If you are only sending putEvents, attach only `"personalize:PutEvents"` 
+    ```
+    "Action": [
+                    "personalize:PutEvents",
+                    "personalize:PutUsers",
+                    "personalize:PutItems"
+                ]
+    ```
   * **Information on Dataset Group**
     * **TrackingId**: Enter the tracking ID that you generated in the first step
     * **Dataset ARN**: Please enter the dataset ARN of the corresponding dataset from the chosen dataset group
