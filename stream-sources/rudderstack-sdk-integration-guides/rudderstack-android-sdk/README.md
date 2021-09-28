@@ -828,6 +828,32 @@ Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
 {% endtab %}
 {% endtabs %}
 
+### Can I disable event tracking until the user gives their consent?
+
+Yes, you can.
+
+RudderStack gives you the ability to disable tracking any user activity until the user gives their consent, by leveraging the `optOut` API. This is required in cases where your app is audience-dependent (e.g. minors) or where you're using the app to track the user events (e.g. EU users) to meet the data protection and privacy regulations.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. So, to disable user tracking, you can use the `optOut` API as shown:
+
+```kotlin
+rudderClient.optOut(true)
+```
+
+Once the user gives their consent, you can enable user tracking again, as shown:
+
+```kotlin
+rudderClient.optOut(false)
+```
+{% hint style ="info" %}
+For more information on the `optOut` API, refer to the [**Enabling/Disabling User Tracking via optOut API (GDPR Support)**]() section above.
+{% endhint %}
+
+{% hint style="success" %}
+You only need to call the `optOut` API with the required parameter once, as the information persists within the device even if you reboot it. 
+{% endhint %}
+
+
 ### How does the SDK handle different client/server errors?
 
 In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately.
