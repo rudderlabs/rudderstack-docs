@@ -827,7 +827,52 @@ For Android apps, events can be sent from the background after apps close for a 
 
 RudderStack does not integrate with SKAdNetwork. However, SKAdNetwork can be directly integrated into an iOS application alongside RudderStack.
 
+### Can I disable event tracking until the user gives their consent?
+
+Yes, you can.
+
+RudderStack gives you the ability to disable tracking any user activity until the user gives their consent, by leveraging the `optOut` API. This is required in cases where your app is audience-dependent (e.g. minors) or where you're using the app to track the user events (e.g. EU users) to meet the data protection and privacy regulations.
+
+The `optOut` API takes `true` / `false` (in case of Swift) or `YES` / `NO` (in case of Objective-C)  as a value to enable or disable tracking user activities. So, to disable user tracking, you can use the `optOut` API as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:YES];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(true)
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user gives their consent, you can enable user tracking again, as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:NO];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(false)
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style ="info" %}
+For more information on the `optOut` API, refer to the [**Enabling/Disabling User Tracking via optOut API (GDPR Support)**]() section above.
+{% endhint %}
+
+{% hint style="success" %}
+You only need to call the `optOut` API with the required parameter only once, as the information persists within the device even if you reboot it. 
+{% endhint %}
+
 ## Contact Us
 
 If you come across any issues while using the RudderStack iOS SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
