@@ -58,15 +58,16 @@ This section details all the fields you need to configure to set up Personalize 
 * **Access Key ID**: Enter the access key ID of your AWS account here.
 
 {% hint style="info" %}
-The actions noted below need to be attached to the Access Key while setting up the AWS policy for it. You can use the following actions based on the type of Personalize events you want to send. For example, If you are only sending `putEvents`, attach only `"personalize:PutEvents"`:
+The following actions need to be attached to the Access Key while setting up the AWS policy for it:
          
-         ```
-        "Action": [
-                    "personalize:PutEvents",
-                    "personalize:PutUsers",
-                    "personalize:PutItems"
-                  ]
-         ```
+```
+"Action": [
+           "personalize:PutEvents",
+           "personalize:PutUsers",
+           "personalize:PutItems"
+          ]
+```
+You can use these actions based on the type of Personalize events you want to send. For example, to send only `putEvents` type of events, you can attach only `"personalize:PutEvents"`.
 {% endhint %}
 
 * **Secret Access Key**: Enter the secret access key of your AWS account.
