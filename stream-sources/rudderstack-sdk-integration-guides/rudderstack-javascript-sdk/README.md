@@ -97,11 +97,7 @@ The `identify` method allows you to link the users and their actions to a specif
 
 To reset the user identification, you can use the [**`reset`**](#reset) method.
 
-{% hint style="info" %}
-For more information on the `identify` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/identify) guide.
-{% endhint %}
-
-The SDK defines the `identify` method as shown:
+The SDK defines the `identify` method as shown below:
 
 ```javascript
 rudderanalytics.identify([userid], [traits], [options], [callback]);
@@ -278,11 +274,7 @@ The `page` call lets you record your website's page views with any additional re
 Many destinations require the page events to be called at least once every page load.
 {% endhint %}
 
-{% hint style="info" %}
-For more information on the `page` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/page) guide.
-{% endhint %}
-
-It is defined as follows:
+The `page()` method is defined as follows:
 
 ```javascript
 rudderanalytics.page([category], [name], [properties], [options], [callback]);
@@ -322,11 +314,7 @@ In the above example, the SDK captures the information such as the page category
 
 The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with those actions.
 
-{% hint style="info" %}
-For more information on the `track` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/track) guide.
-{% endhint %}
-
-It is defined as follows:
+The SDK defines the `track()` method as follows:
 
 ```javascript
 rudderanalytics.track(event, [properties], [options], [callback]);
@@ -364,11 +352,7 @@ Many destination platforms need an explicit `alias` call for mapping the already
 
 Simply put, the `alias` call lets you merge different identities of a known user.
 
-{% hint style="info" %}
-For more information on the `alias` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/alias) guide.
-{% endhint %}
-
-It is defined as follows:
+The SDK defines the `alias()` method as shown:
 
 ```javascript
 rudderanalytics.alias(to, [from], [options], [callback]);
@@ -395,11 +379,7 @@ rudderanalytics.alias("test_new_id", "old_user_id", () => {
 
 The `group` call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group such as the name of the company, the number of employees, etc.
 
-{% hint style="info" %}
-For more information on the `group` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/group) guide.
-{% endhint %}
-
-It is defined as follows:
+The `group()` method is defined as shown below:
 
 ```javascript
 rudderanalytics.group(groupId, [traits], [options], [callback]);
