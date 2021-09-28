@@ -783,7 +783,7 @@ For Android apps, events can be sent from the background after apps close for a 
 
 ### Does RudderStack integrate with SKAdNetwork?
 
-RudderStack does not integrate with SKAdNetwork, but SKAdNetwork can be directly integrated into an iOS application alongside RudderStack.
+RudderStack does not integrate with SKAdNetwork. However, SKAdNetwork can be directly integrated into an iOS application alongside RudderStack.
 
 ## Contact Us
 
