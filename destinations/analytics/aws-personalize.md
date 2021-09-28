@@ -91,6 +91,10 @@ For `PutItems` and `PutEvents` operations, it is mandatory to specify the `Datas
     * **Map all the fields**: In this section, enter the **Schema Field** you have used to create the schema in AWS Personalize \(e.g. `USER_ID`, `TIMESTAMP`, `ITEM_ID`, etc.\). Also, enter the corresponding **Mapped Field** from which the value will be taken from your event payload.
 
 {% hint style="info" %}
+For more information on creating a schema in Personalize, refer to their [**documentation**](https://docs.aws.amazon.com/personalize/latest/dg/data-prep-creating-datasets.html).
+{% endhint %}
+
+{% hint style="info" %}
 When using the `PutItems` operation, you need to provide the path to the corresponding **Mapped Field** corresponding to the `ITEM_ID` in your Personalize database schema.
 {% endhint %}
 
