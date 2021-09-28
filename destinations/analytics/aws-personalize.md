@@ -16,7 +16,7 @@ RudderStack allows you to configure AWS Personalize as a destination to which yo
 To use `PutUsers` and `PutItems` for Personalize, use the latest images for [**`rudder-server`**](https://github.com/rudderlabs/rudder-server) and [**`rudder-transformer`**](https://github.com/rudderlabs/rudder-transformer) images.
 {% endhint %}
 
-## **Getting Started**
+## Getting Started
 
 In order to enable dumping data to AWS Personalize, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to AWS Personalize.
 
@@ -80,7 +80,7 @@ For `PutItems` and `PutEvents` operation, `Dataset ARN` and `Tracking ID` respec
 To use `PutUsers` and `PutItems` for Personalize, use the latest images for [**`rudder-server`**](https://github.com/rudderlabs/rudder-server) and [**`rudder-transformer`**](https://github.com/rudderlabs/rudder-transformer) images.
 {% endhint %}
 
-The following snippet shows an example of sending track event, with mapped field specified in the [RudderStack dashboard](https://app.rudderstack.com/):
+The following snippet shows an example of sending a `track` event with the mapped field specified in the [RudderStack dashboard](https://app.rudderstack.com/):
 
 ```javascript
 rudderanalytics.track("PRODUCT ADDED", {
@@ -91,7 +91,7 @@ rudderanalytics.track("PRODUCT ADDED", {
 ```
 
 {% hint style="info" %}
-When using `PutItems` operation, with the above example `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema. And, the path can be specified as `properties.X`. But, while using `putEvents` the same mapped field for `ITEM_ID` should be addressed as the field name **only**. So for the above track call, the `ITEM_ID` should be mapped to `X` instead of `properties.X`.
+When using the `PutItems` operation with the above `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema and the path can be specified as `properties.X`. However, while using `putEvents`, the same mapped field for `ITEM_ID` should be addressed as the field name **only**. So, for the above track call, the `ITEM_ID` should be mapped to `X` instead of `properties.X`.
 {% endhint %}
 
 ## Identify
