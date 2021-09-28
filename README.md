@@ -25,7 +25,11 @@ For community support, you can always start a conversation on our [**Slack**](ht
 
 ## License
 
-RudderStack is released under the [**AGPLv3 License**](https://www.gnu.org/licenses/agpl-3.0-standalone.html).
+The [**RudderStack server**](https://github.com/rudderlabs/rudder-server) is released under the [**AGPLv3 License**](https://www.gnu.org/licenses/agpl-3.0-standalone.html). 
+
+{% hint style="info" %}
+Read [**our blog**](https://rudderstack.com/blog/rudderstacks-licensing-explained) to know more about how our software is licensed.
+{% endhint %}
 
 ## Contribute
 
