@@ -14,17 +14,17 @@ Run the SQL queries below in the **exact order** to grant the necessary permissi
 
 ### Creating the user
 
-- The following command creates a new user `rudder` with password `<strong_unique_password>` in PostgreSQL.
+* The following command creates a new user `rudder` with password `<strong_unique_password>` in PostgreSQL.
 
-```
+```text
 CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 ```
 
 ### Creating the RudderStack schema and granting permissions
 
-- The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
+* The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
 
-```
+```text
 CREATE SCHEMA "_rudderstack";
 ```
 
@@ -32,35 +32,35 @@ CREATE SCHEMA "_rudderstack";
 The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed.
 {% endhint %}
 
-- This command allows the user `rudder` to have full access to the schema `_rudderstack`:
+* This command allows the user `rudder` to have full access to the schema `_rudderstack`:
 
-```
+```text
 GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
 ```
 
-- This command lets the user `rudder` to have full access to all the objects in the schema `_rudderstack`.
+* This command lets the user `rudder` to have full access to all the objects in the schema `_rudderstack`.
 
-```
+```text
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 ```
 
 ### Granting permissions on your schema & table
 
-- This command lets the user `rudder` look up objects within the schema `<YOUR_SCHEMA>`. Replace <YOUR_SCHEMA> with the exact name of your PostgreSQL database schema.
+* This command lets the user `rudder` look up objects within the schema `<YOUR_SCHEMA>`. Replace  with the exact name of your PostgreSQL database schema.
 
-```
+```text
 GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
-- This command allows the user `rudder` to read data from the table `<YOUR_TABLE>`. Replace <YOUR_SCHEMA> and <YOUR_TABLE> with the exact name of your database schema and table names in PostgreSQL.
+* This command allows the user `rudder` to read data from the table `<YOUR_TABLE>`. Replace  and  with the exact name of your database schema and table names in PostgreSQL.
 
-``` 
+```text
 GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
 ```
- 
-- The following **optional** command lets the user `rudder` to read data from all the tables in the schema "<YOUR_SCHEMA>":
 
-```
+* The following **optional** command lets the user `rudder` to read data from all the tables in the schema "":
+
+```text
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
@@ -68,16 +68,15 @@ GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 Run the above command only if you're okay with RudderStack being able to access the data in all the tables residing within your specified schema.
 {% endhint %}
 
-- The following **optional** command allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`:
+* The following **optional** command allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`:
 
-```
+```text
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
 ```
 
 {% hint style="warning" %}
 Run the above command only if you're okay with RudderStack being able to access the data in all the future tables residing within your specified schema.
 {% endhint %}
-
 
 ## Setting Up the Source
 
@@ -86,7 +85,7 @@ To set up PostgreSQL as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%281%29.png)
+![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.png)
 
 * Scroll down to the **Warehouse Sources** and select **PostgreSQL**. Then, click on **Next**.
 
@@ -146,3 +145,4 @@ If you have already configured a destination on the RudderStack platform, choose
 ## Contact Us
 
 If you come across any issues while configuring PostgreSQL as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+
