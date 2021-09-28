@@ -355,7 +355,7 @@ Simply put, the `alias` call lets you merge different identities of a known user
 The SDK defines the `alias()` method as shown:
 
 ```javascript
-rudderanalytics.alias(to, [from], [options], [callback]);
+rudderanalytics.alias(to, from, [options], [callback]);
 ```
 
 The `alias` call has the following parameters:
@@ -363,7 +363,7 @@ The `alias` call has the following parameters:
 | **Parameter**  | **Presence** | **Description** |
 | :------------- | :----------- | :---------------|
 | `to`        | Required     | Denotes the new identifier of the user. |
-| `[from]`    | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
+| `from`      | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
 | `options`  | Optional     | A dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section.                             |
 | `callback` | Optional     | This function gets executed after the successful execution of the **`alias()`** method. |
 
