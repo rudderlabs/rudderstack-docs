@@ -53,16 +53,22 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
   * **Connection Credentials**
     * **Access Key ID**: The access key ID of your AWS account goes here.
-    * **Secret Access Key**: Enter the secret access key of your AWS account.
-    * **Region**: Please enter the region associated with your AWS account here.
-    * Also ensure that this actions are attached to the above access keys while setting up the aws policy for this keys. Below are the actions that you need to attach based on the type of events you want to send. If you are only sending putEvents, attach only `"personalize:PutEvents"` 
-    ```
-    "Action": [
+
+      {% hint style="info" %}
+         The actions noted below need to be attached to the Access Key while setting up the aws policy for it. You can use the following actions based on the type of Personalize events you want to send. For example, If you are only sending putEvents, attach only `"personalize:PutEvents"` 
+         ```
+        "Action": [
                     "personalize:PutEvents",
                     "personalize:PutUsers",
                     "personalize:PutItems"
-                ]
-    ```
+                  ]
+         ```
+      {% endhint %}
+
+    * **Secret Access Key**: Enter the secret access key of your AWS account.
+    * **Region**: Please enter the region associated with your AWS account here.
+
+  
   * **Information on Dataset Group**
     * **TrackingId**: Enter the tracking ID that you generated in the first step
     * **Dataset ARN**: Please enter the dataset ARN of the corresponding dataset from the chosen dataset group
@@ -99,8 +105,20 @@ rudderanalytics.track("PRODUCT ADDED", {
 ```
 
 {% hint style="info" %}
-When using the `PutItems` operation with the above `track` call, `X` is the corresponding mapping field for `ITEM_ID` in the database schema and the path can be specified as `properties.X`. However, while using `putEvents`, the same mapped field for `ITEM_ID` should be addressed as the field name **only**. So, for the above track call, the `ITEM_ID` should be mapped to `X` instead of `properties.X`.
+When using the `PutItems`, the Schema field `ITEM_ID` must be mapped to a specific key inside the payload and you need to mention the path to the chosen key as the corresponding Mapped Field. If you use the above example and map `ITEM_ID` to the payload field `X`, the corresponding Mapped Field will be `properties.X`. For any other Schema Field in your ITEMS dataset, it is `not` advised to specify the path, only the field name will be sufficient.
 {% endhint %}
+
+{% hint style="warning" %}
+Remember, while using `PutEvents`, the mapped field for `ITEM_ID` should `not` contain the path to the field but only the name of the field will be sufficient. And, the same rule is applicable for any other Schema Field mapping.
+{% endhint %}
+
+Here is an example of dashboard configuration for `PutItems`:
+
+![Dashboard Configuration Based On The Above Example](../../.gitbook/assets/putItems.png)
+
+Here is an example of dashboard configuration for `PutEvents`:
+
+![Dashboard Configuration Based On The Above Example](../../.gitbook/assets/putEvents.png)
 
 ## Identify
 
