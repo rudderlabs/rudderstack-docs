@@ -31,14 +31,14 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to your destination, and then click on **Next**. You should see the following screen:
 
-![Quantum Metric Connection Settings in RudderStack](../../.gitbook/assets/image%20%2842%29.png)
+![Quantum Metric Connection Settings in RudderStack](../../.gitbook/assets/quantum-metric.png)
 
 * Please provide the `Site ID`.  You will get your `Site ID` by first logging into you IAM Quantum Metric dashboard. Then, select the Account button in the top-right-hand corner. Then, click on **Install** and inspect the `Installation Tag`. Your `Site ID` will be found in the following line.
 ```
 qtm.src = 'https://cdn.quantummetric.com/qscripts/quantum-<SITE_ID>.js';
 ```
 Copy, the `Site ID` and paste it in the input field on your RudderStack settings.
-* Finally, click on **Next** to complete the configuration. 
+* Finally, click on **Next** to complete the configuration.
 
 Quantum Metric will now be added and enabled as a device-mode destination in RudderStack.
 
