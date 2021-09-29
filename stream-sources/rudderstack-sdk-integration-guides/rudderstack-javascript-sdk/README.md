@@ -547,7 +547,71 @@ We will be adding similar callbacks for APIs such as `track`, `page`, `identify`
 
 ## Filtering selective destinations
 
-RudderStack lets you load or send your event data to only the selective destinations specified by you. You can do so by passing an [**integrations object**](#integrationopts) in the `options` parameter of the SDK-supported API methods.
+RudderStack lets you load or send your event data to only the selective destinations specified by you. 
+
+You can do so by passing an [**integrations object**](#integrationopts) in the `options` parameter of the SDK-supported API methods. RudderStack then loads or sends events only to those destinations that are specified and enabled.
+
+The format of the `load` method with integration names passed as arguments is shown below:
+
+```javascript
+rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
+  integrations: {
+    All: false,
+    <destination_name>: true
+  },
+});
+```
+Here, `<destination_name>` is the name of the destination.
+
+The format of the `track` method with integration names passed as arguments is shown below:
+
+```javascript
+rudderanalytics.track(
+  "test track event GA3", {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345,
+  }, {
+    integrations: {
+      All: false,
+      <destination_name>: true
+    }
+  },
+);
+```
+
+{% hint style="info" %}
+Refer to the [**Common destination names**](#common-destination-names) for the naming conventions for the destinations.
+{% endhint %}
+
+The following example shows how to load only the Google Analytics and Intercom destinations:
+
+```javascript
+rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
+  integrations: {
+    All: false,
+    "Google Analytics": true,
+    "Intercom": true
+  },
+});
+```
+
+The following example highlights how you can send the `track` type of events only to Google Analytics:
+
+```javascript
+rudderanalytics.track(
+  "test track event GA3", {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345,
+  }, {
+    integrations: {
+      All: false,
+      "Google Analytics": true
+    },
+  }
+);
+```
 
 ### Common destination names
 
@@ -611,76 +675,6 @@ Not all the destinations are listed in this section.
 | Zendesk              | `Zendesk`                  |
 | AWS Personalize      | `AWS Personalize`          |
 | Amazon Kinesis       | `Amazon Kinesis`           |
-
-{% hint style="info" %}
-You can also refer to [**this section**](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention) for more information on the naming convention of the destinations.
-{% endhint %}
-
-### Specifying selective destinations
-
-You can choose to load or send events to selective destinations by passing an [**integrations object**](#integrationopts) in the `options` parameter of the supported API methods. RudderStack loads or sends events only to those destinations that are specified and enabled.
-
-The format of the `load` method with integration names passed as arguments is shown below:
-
-```javascript
-rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
-  integrations: {
-    All: false,
-    <destination_name>: true
-  },
-});
-```
-Here, `<destination_name>` is the name of the destination.
-
-The format of the `track` method with integration names passed as arguments is shown below:
-
-```javascript
-rudderanalytics.track(
-  "test track event GA3", {
-    revenue: 30,
-    currency: "USD",
-    user_actual_id: 12345,
-  }, {
-    integrations: {
-      All: false,
-      <destination_name>: true
-    }
-  },
-);
-```
-
-{% hint style="info" %}
-Refer to the [**Common destination names**](#common-destination-names) or refer to [**this guide**](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention) for the naming conventions for the destinations.
-{% endhint %}
-
-The following example shows how to load only the Google Analytics and Intercom destinations:
-
-```javascript
-rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
-  integrations: {
-    All: false,
-    "Google Analytics": true,
-    "Intercom": true
-  },
-});
-```
-
-The following example highlights how you can send the `track` type of events only to Google Analytics:
-
-```javascript
-rudderanalytics.track(
-  "test track event GA3", {
-    revenue: 30,
-    currency: "USD",
-    user_actual_id: 12345,
-  }, {
-    integrations: {
-      All: false,
-      "Google Analytics": true
-    },
-  }
-);
-```
 
 ## Context and traits
 
