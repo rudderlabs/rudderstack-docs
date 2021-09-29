@@ -142,6 +142,29 @@ RudderStack will start importing data from your PostgreSQL database as per the s
 If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
 {% endhint %}
 
+## FAQ
+
+### What do the three validations under Verifying Credentials imply?
+
+When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option, as shown:
+
+![](../.gitbook/assets/validations.png)
+
+These options are explained below:
+
+* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
+
+{% hint style="warning" %}
+If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
+{% endhint %}
+
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/postgresql#granting-user-permissions) section. 
+
+{% hint style="warning" %}
+If this option gives an error, verify if you have successfully created the RudderStack schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/postgresql#creating-the-rudderstack-schema-and-granting-permissions).
+{% endhint %}
+
 ## Contact Us
 
 If you come across any issues while configuring PostgreSQL as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
