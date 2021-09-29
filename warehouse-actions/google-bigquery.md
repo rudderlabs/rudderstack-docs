@@ -155,7 +155,7 @@ If you have already configured a destination on the RudderStack platform, choose
 
 ### What do the three validations under Verifying Credentials imply?
 
-When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option, as shown:
+When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
 ![](../.gitbook/assets/validations.png)
 
