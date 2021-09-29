@@ -23,9 +23,9 @@ To enable sending data to AWS Personalize, you will first need to add it as a de
 Before configuring your source and destination on the RudderStack app, check whether the source platform is supported by AWS Personalize by referring to the following table:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :------------------ | :--- | :--- | :--- |
-| **Device mode**     | - | - | - |
-| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | - | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between cloud mode and device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -59,37 +59,31 @@ This section details all the fields you need to configure to set up Personalize 
 
 {% hint style="info" %}
 The following actions need to be attached to the Access Key while setting up the AWS policy for it:
-         
-```
+
+```text
 "Action": [
            "personalize:PutEvents",
            "personalize:PutUsers",
            "personalize:PutItems"
           ]
 ```
+
 You can use these actions based on the type of Personalize events you want to send. For example, to send only `putEvents` type of events, you can attach only `"personalize:PutEvents"`.
 {% endhint %}
 
 * **Secret Access Key**: Enter the secret access key of your AWS account.
-
 * **Region**: Enter the region associated with your AWS account in this field.
-
-  
 * **Information on Dataset Group**:
-
-    * **TrackingId**: Enter the Tracking ID that you generated in the first step.
-
-    * **Dataset ARN**: Enter the dataset ARN of the dataset from the chosen dataset group.
+  * **TrackingId**: Enter the Tracking ID that you generated in the first step.
+  * **Dataset ARN**: Enter the dataset ARN of the dataset from the chosen dataset group.
 
 {% hint style="warning" %}
 For `PutItems` and `PutEvents` operations, it is mandatory to specify the `Dataset ARN` and `Tracking ID` in the RudderStack dashboard.
 {% endhint %}
 
 * **Operational Choice**:
-
-    * **Personalize Events**: Choose the type of Personalize event you want to avail.
-
-    * **Map all the fields**: In this section, enter the **Schema Field** you have used to create the schema in AWS Personalize \(e.g. `USER_ID`, `TIMESTAMP`, `ITEM_ID`, etc.\). Also, enter the corresponding **Mapped Field** from which the value will be taken from your event payload.
+  * **Personalize Events**: Choose the type of Personalize event you want to avail.
+  * **Map all the fields**: In this section, enter the **Schema Field** you have used to create the schema in AWS Personalize \(e.g. `USER_ID`, `TIMESTAMP`, `ITEM_ID`, etc.\). Also, enter the corresponding **Mapped Field** from which the value will be taken from your event payload.
 
 {% hint style="info" %}
 For more information on creating a schema in Personalize, refer to their [**documentation**](https://docs.aws.amazon.com/personalize/latest/dg/data-prep-creating-datasets.html).
@@ -129,7 +123,7 @@ rudderanalytics.track("PRODUCT ADDED", {
 When using the `PutItems`, the **Schema Field** `ITEM_ID` must be mapped to a specific key inside the payload and you need to mention the path to the chosen key as the corresponding **Mapped Field**.
 {% endhint %}
 
-In the above example, if you map `ITEM_ID` to the payload field `X`, the corresponding **Mapped Field** will be `properties.X`. 
+In the above example, if you map `ITEM_ID` to the payload field `X`, the corresponding **Mapped Field** will be `properties.X`.
 
 {% hint style="info" %}
 For any other **Schema Field** in your `ITEMS` dataset, it is **not** advised to specify the path - only the field name will be sufficient.
@@ -175,3 +169,4 @@ rudderanalytics.identify("userId", {
 ## Contact Us
 
 If you come across any issues while configuring AWS Personalize as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
+
