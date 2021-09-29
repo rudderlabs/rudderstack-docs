@@ -5,9 +5,9 @@ description: >-
 
 # FAQs
 
-## Where do I get the Data Plane URL?
+## Where do I get the data plane URL?
 
-For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. Refer to [**this section**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it) to get the Data Plane URL depending on your choice of setup.
+For routing and processing the events to the RudderStack backend, a **data plane URL** is required. Refer to [**this section**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it) to get the data plane URL depending on your choice of setup.
 
 ## How do I load the SDK (`rudder-analytics.js`) correctly?
 
@@ -15,10 +15,10 @@ To load `rudder-analytics.js`, follow the instructions in the [**Install RudderS
 
 To check if the library has loaded correctly, open the JavaScript console in your browser:
 
-- Safari: `Ctrl+Alt+I` \(Windows\) or `Command+Option+I` \(Mac\) and go to the `Console` tab
-- Chrome: `Ctrl+Shift+J` \(Windows\) or `Command+Option+J` \(Mac\)
-- Firefox: `Ctrl+Shift+K` \(Windows\) or `Command+Option+K` \(Mac\) and select the `Console` tab
-- Internet Explorer: Press `F12` and go to the `Console` tab
+- **Safari**: `Ctrl+Alt+I` \(Windows\) or `Command+Option+I` \(Mac\) and go to the `Console` tab.
+- **Chrome**: `Ctrl+Shift+J` \(Windows\) or `Command+Option+J` \(Mac\).
+- **Firefox**: `Ctrl+Shift+K` \(Windows\) or `Command+Option+K` \(Mac\) and select the `Console` tab.
+- **Internet Explorer**: Press `F12` and go to the `Console` tab.
 
 In the console, run `rudderanalytics`. If it returns an object as shown in the following code snippet, it means that the `rudder-analytics.js` file has loaded successfully:
 
@@ -26,7 +26,7 @@ In the console, run `rudderanalytics`. If it returns an object as shown in the f
 {Integrations: Object, _integrations: Object, _readied: true, _timeout: 300, _user: n_}
 ```
 
-If it gives you an `undefined` error, verify if the installation is done correctly. Our [**Quick Start Guide**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide) may be able to help you get up and running.
+If it gives you an `undefined` error, verify if the installation is done correctly. Our [**quick start guide**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide) may be able to help you get up and running.
 
 ## Should I disable ad-blockers on my browser?
 
@@ -54,7 +54,7 @@ The size limit on requests is 32KB per message and 4MB per batch request.
 
 ## Can I send the event data to specific destinations only?
 
-Yes, you can. Refer to the [**Filter Selective Destinations**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#filter-selective-destinations) section in the SDK guide for more information.
+Yes, you can. Refer to the [**Filtering Selective Destinations**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#filtering-selective-destinations) section in the SDK guide for more information.
 
 ## What is an anonymous ID and how to retrieve it?
 
@@ -92,6 +92,6 @@ The above keywords should be avoided when naming your event traits and propertie
 
 ## Contact Us
 
-For more information on the RudderStack JavaScript SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+For more information on the RudderStack JavaScript SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
 If you come across any issues while using this SDK, feel free to submit them on our [**GitHub issues page**](https://github.com/rudderlabs/rudder-sdk-js/issues).
