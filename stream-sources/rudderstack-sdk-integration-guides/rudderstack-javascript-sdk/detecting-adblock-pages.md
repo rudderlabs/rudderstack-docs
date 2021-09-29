@@ -3,7 +3,7 @@ description: >-
   This page provides information on detecting ad-blocked pages via RudderStack JavaScript SDK.
 ---
 
-# Detecting ad-blocked pages
+# Detecting Ad-blocked Pages
 
 The JavaScript SDK provides a way to send a page view containing relevant markers that determine whether a page is ad-blocked. You can analyze this data to find what percent of your website's page views are affected by ad blockers.
 
@@ -56,7 +56,7 @@ rudderanalytics.page(
 );
 ```
 
-## Contact Us
+## Contact us
 
 For questions or queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
 
