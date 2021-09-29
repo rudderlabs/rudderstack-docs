@@ -41,7 +41,7 @@ To add the SDK as a dependency, perform the following steps:
 
 ```groovy
 dependencies:
-  rudder_sdk_flutter: ^1.0.2
+  rudder_sdk_flutter: ^1.0.5
 ```
 
 * Navigate to your Application's root folder and install all the required dependencies with:
