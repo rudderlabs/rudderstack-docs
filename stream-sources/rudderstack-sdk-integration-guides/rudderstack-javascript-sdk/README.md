@@ -5,8 +5,6 @@ description: >-
 
 # JavaScript
 
-## What is the RudderStack JavaScript SDK?
-
 RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to track and send user events from your website to RudderStack. You can then further transform and route this event data to the destination platform of your choice.
 
 {% hint style="success" %}
@@ -65,6 +63,10 @@ It includes the following details:
 | **`configUrl`**       | String                              | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server (Control Plane) endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
 | **`queueOpts`**       | [**QueueOpts**](#queueopts)             | Refer to the [**`QueueOpts`**](#queueopts) section.                                                                                                                                                        |
 | **`loadIntegration`** | Boolean                             | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                              |
+
+{% hint style="info" %}
+For more details, refer to the section on the [**`options`**](#options) parameter.
+{% endhint %}
 
 ### Loading the SDK for self-hosted control plane
 
@@ -210,7 +212,7 @@ rudderanalytics.identify("userId", { email1: "name@domain.com" }, () => {
 });
 ```
 
-#### AMP Analytics
+#### Using AMP Analytics
 
 You can also parse the AMP Linker ID and set the `anonymousId`, as shown:
 
@@ -316,7 +318,7 @@ rudderanalytics.page(
 
 In the above example, the SDK captures the information such as the page category and page name along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk).
 
-### Track
+## Track
 
 The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with those actions.
 
@@ -352,7 +354,7 @@ rudderanalytics.track(
 
 In the above example, the method tracks the event `test track event GA3` along information like the `revenue`, `currency`, and the user ID.
 
-### Alias
+## Alias
 
 Many destination platforms need an explicit `alias` call for mapping the already identified users to a new identifier that you may want to use, to track them in the future. The `alias` call lets you implement this functionality.
 
@@ -366,12 +368,12 @@ rudderanalytics.alias(to, from, [options], [callback]);
 
 The `alias` call has the following parameters:
 
-| **Parameter**  | **Presence** | **Description** |
-| :------------- | :----------- | :---------------|
-| `to`        | Required     | Denotes the new identifier of the user. |
-| `from`      | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
-| `options`  | Optional     | A dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section.                             |
-| `callback` | Optional     | This function gets executed after the successful execution of the **`alias()`** method. |
+| **Parameter**  |**Type** | **Presence** | **Description** |
+| :------------- |:--------| :----------- | :---------------|
+| `to`        | String     | Required     | Denotes the new identifier of the user. |
+| `from`      | String     | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
+| `options`  | Dictionary  | Optional     | A dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section.                             |
+| `callback` | Function    | Optional     | This function gets executed after the successful execution of the **`alias()`** method. |
 
 A sample `alias()` method is shown below:
 
