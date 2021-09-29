@@ -1,6 +1,6 @@
 ---
 description: >-
-  Detailed technical description of the new enhancements made to the RudderStack JavaScript SDK
+  Detailed technical description of the new enhancements made to the RudderStack JavaScript SDK.
 ---
 
 # JavaScript SDK Enhancements
@@ -18,7 +18,7 @@ The JavaScript SDK hosted at [**https://cdn.rudderlabs.com/v1/rudder-analytics.m
 
 ### Why use sendBeacon to send your event payload?
 
-There are 2 key advantages of using the `navigator.sendBeacon` utility to send your event payload:
+There are 2 key advantages of using the [**`navigator.sendBeacon`**](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) utility to send your event payload:
 
 - Since pushing events to the Beacon queue is faster compared to the XHR instrumentation, you may see some performance improvements in the JavaScript SDK.
 - The Beacon requests are optimized so that the browser waits until the CPU load is lower, or until the network is free before making the actual requests. This can lead to better website performance.
