@@ -93,6 +93,7 @@
     * [Chartbeat](destinations/analytics/chartbeat.md)
     * [FullStory](destinations/analytics/fullstory.md)
     * [Mixpanel](destinations/analytics/mixpanel.md)
+    * [Quantum Metric](destinations/analytics/quantummetric.md)
     * [Firebase](destinations/analytics/firebase.md)
     * [Kissmetrics](destinations/analytics/kissmetrics.md)
     * [Heap.io](destinations/analytics/heap.io.md)
