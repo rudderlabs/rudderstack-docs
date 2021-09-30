@@ -26,14 +26,22 @@ To quickly get started, you can [**sign up for RudderStack**](https://app.rudder
 
 #### 2. What is a Data Plane URL? Where do I get it?
 
-Simply put, the Data Plane URL is used to connect to the RudderStack backend for routing and processing your events.
-
 {% hint style="info" %}
-To get the **Data Plane URL**: _\*\*_
-
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
-* If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
+Refer to the [**RudderStack Architecture**](get-started/rudderstack-architecture.md) guide for more information the RudderStack Data Plane.
 {% endhint %}
+
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. 
+
+Here's how to get the Data Plane URL:
+
+* If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
+
+{% hint style="success" %}
+An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.  
+{% endhint %}
+
+* If you're using [**RudderStack Cloud** **Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
+* If you're using the [**pro or enterprise**](https://rudderstack.com/pricing) version of RudderStack, [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for the Data Plane URL with the email ID you used to sign up for RudderStack.
 
 #### 3. To get started with RudderStack on my local machine, is it mandatory to get the workspace token from RudderStack dashboard?
 
