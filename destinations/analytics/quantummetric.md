@@ -4,7 +4,7 @@ description: Step-by-step guide to set up Quantum Metric as a destination in Rud
 
 # Quantum Metric
 
-[**Quantum Metric**](https://www.quantummetric.com/) is a continuos product design platform that lets you leverage real-time digital insights to improve your product. It gives you complete visibility into your customers' product experience and helps you prioritize the most important product features that have the most impact on your brand.
+[**Quantum Metric**](https://www.quantummetric.com/) is a continuous product design platform that lets you leverage real-time digital insights to improve your product. It gives you complete visibility into your customers' product experience and helps you prioritize the most important product features that have the most impact on your brand.
 
 RudderStack helps you integrate your website with Quantum Metric to auto-track all your user data.
 
@@ -55,7 +55,7 @@ As this is a web device mode-only integration, the **Use native SDK to send even
 
 ## Sending events to Quantum Metric
 
-Quantum Metric auto-tracks your user data. There is **no need** to call any of `identify`, `page` or `track` methods explicitly. 
+Quantum Metric auto-tracks your user data. There is **no need** to call any of `identify`, `page` or `track` methods explicitly.
 
 ## Contact us
 
