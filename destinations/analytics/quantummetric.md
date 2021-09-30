@@ -55,7 +55,7 @@ As this is a web device mode-only integration, the **Use native SDK to send even
 
 ## Sending events to Quantum Metric
 
-Quantum Metric auto-tracks your user data. So, there is **no need** to call any of `identify`, `page` or `track` methods explicitly. 
+Quantum Metric auto-tracks your user data. There is **no need** to call any of `identify`, `page` or `track` methods explicitly. 
 
 ## Contact us
 
