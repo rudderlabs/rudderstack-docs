@@ -12,10 +12,10 @@ RudderStack helps you integrate your website with Quantum Metric to auto-track a
 
 Before configuring Quantum Metric as a destination in RudderStack, make sure that the source platform is supported by Quantum Metric by referring to the following table:
 
-| **Connection Mode** | **Web**       | **Mobile** | **Server** |
-| :------------------ | :------------ | :--------- | :--------- |
-| **Device mode**     | **Supported** | -          | -          |
-| **Cloud mode**      | -             | -          | -          |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | **Supported** | - | - |
+| **Cloud mode** | - | - | - |
 
 {% hint style="info" %}
 To know more about the difference between cloud mode and device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -40,9 +40,9 @@ The following settings need to be configured to successfully set up Quantum Metr
 * **Site ID**: Enter your site ID here.
 
 {% hint style="success" %}
-Your can get the Site ID by logging into your [**IAM Quantum Metric dashboard**](https://iam.quantummetric.com/). There, select the **Account** button in the top-right corner. Then, click on **Install** and inspect the installation tag. Your site ID will be found in the following line:
+You can get the Site ID by logging into your [**IAM Quantum Metric dashboard**](https://iam.quantummetric.com/). There, select the **Account** button in the top-right corner. Then, click on **Install** and inspect the installation tag. Your site ID will be found in the following line:
 
-```
+```text
 qtm.src = 'https://cdn.quantummetric.com/qscripts/quantum-<SITE_ID>.js';
 ```
 {% endhint %}
@@ -60,3 +60,4 @@ Quantum Metric auto-tracks your user data. There is **no need** to call any of `
 ## Contact us
 
 If you come across any issues while configuring or using Quantum Metric with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+
