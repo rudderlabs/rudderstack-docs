@@ -62,7 +62,7 @@ For more information on sources in RudderStack, check out the [**Connections**](
 * Configure the destination by entering the relevant connection settings. For detailed information on the required settings, refer to that destination's [**documentation**](../destinations/).
 
 {% hint style="success" %}
-You can transform your events in RudderStack before sending them to the specified destinations. Read our [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) guide for more information on this feature.
+You can transform your events in RudderStack before sending them to the specified destinations. Read our [**Transformations**](../transformations/) guide for more information on this feature.
 {% endhint %}
 
 Here's a quick walkthrough on how to send data from your website to various cloud tools via RudderStack:
@@ -88,7 +88,7 @@ Here's a quick walkthrough on how to send data from your website to various clou
 
 If you want to know more about RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) . You can also see [**RudderStack in action**](https://app.rudderstack.com/signup?type=freetrial) ****to check out all the cool features the platform has to offer.
 
-For community support, you can always start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you!
+For community support, you can always start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel. We will be happy to help you!
 
 
 

@@ -131,6 +131,48 @@ You can disable these events using the`withTrackLifecycleEvents` method of `RSCo
 
 RudderStack supports all the major API calls across all iOS devices via the SDK. These include the `track`, `identify`, and `screen` calls.
 
+## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+
+RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `YES` or `NO` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking::
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:YES];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(true)
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `NO` or `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:NO];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(false)
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.23`.
+{% endhint %}
+
 ## Track
 
 You can record the users' activity through the `track` method. Every action performed by the user is called an `event`.
@@ -323,21 +365,21 @@ You can configure your client based on the following parameters using `RudderCon
 | Parameter | Type | Description | Default Value |
 | :--- | :--- | :--- | :--- |
 | `logLevel` | `int` | Controls how much of the log you want to see from the SDK. | `RSLogLevelNone` |
-| `dataPlaneUrl` | `string` | Your Data Plane URL. | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com)\*\*\*\* |
+| `dataPlaneUrl` | `string` | Your Data Plane URL. | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com) |
 | `flushQueueSize` | `int` | Number of events in a batch request sent to the server. | `30` |
 | `dbThresholdCount` | `int` | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB. | `10000` |
 | `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server . | `10 seconds` |
 | `configRefreshInterval` | `int` | Fetches the config from `dashboard` after the specified time \(in hours\). | `2` |
 | `trackLifecycleEvents` | `boolean` | Specify whether the SDK will capture application life cycle events automatically. | `true` |
 | `recordScreenViews` | `boolean` | Specify whether the SDK will capture screen view events automatically. | `false` |
-| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com)\*\*\*\* |
+| `controlPlaneUrl` | `string` | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com) |
 
 ### Self-Hosted Control Plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the iOS SDK needs to fetch the required configuration from the Control Plane. If you are using the **RudderStack Config Generator** to host your own Control Plane, then follow [this guide](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in `RudderConfigBuilder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the iOS SDK needs to fetch the required configuration from the Control Plane. If you are using the [**Control Plane Lite**](../../get-started/control-plane-lite.md) utility to host your own Control Plane, then follow [**this guide**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in `RudderConfigBuilder` that points to your hosted source configuration file.
 
 {% hint style="warning" %}
-You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using [**RudderStack Cloud**](https://app.rudderstack.com). This parameter is supported only if you are using our open-source [**RudderStack Config Generator**](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator).
+You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using [**RudderStack Cloud**](https://app.rudderstack.com). This parameter is supported only if you are using our open-source [**Control Plane Lite**](../../get-started/control-plane-lite.md) utility to self-host your Control Plane.
 {% endhint %}
 
 ## Setting Device Token
@@ -745,7 +787,6 @@ Update the usage of the following classes as per the table below:
       <td style="text-align:left">
         <p><code>RSLogLevelDebug</code>
         </p>
-        <p></p>
         <p>Other <code>LogLevel</code> follows the same nomenclature.</p>
       </td>
     </tr>
@@ -764,7 +805,7 @@ You can get the user traits after making an `identify` call in the following way
 {% endtab %}
 
 {% tab title="Objective-C" %}
-```
+```text
  NSDictionary* traits = [[RSClient sharedInstance] getContext].traits;
 ```
 {% endtab %}
@@ -776,11 +817,61 @@ In case of client-side errors, e.g. if the source write key passed to the SDK is
 
 ### **Why is there a larger difference between `timestamp` and `received_at` for iOS events vs. Android events?**
 
-This scenario is most likely caused by the default behavior of iOS apps staying open in the background for a shorter period of time after a user closes them. 
+This scenario is most likely caused by the default behavior of iOS apps staying open in the background for a shorter period of time after a user closes them.
 
-When a user closes an iOS or Android app, events will still continue to be sent from the queue until the app closes in the background as well. Any events still in the queue will remain there until the user reopens the app. Due to this lag, there are some scenarios where there can be significant differences between `timestamp` \(when the event was created\) and `received_at` \(when RudderStack actually receives the events\). 
+When a user closes an iOS or Android app, events will still continue to be sent from the queue until the app closes in the background as well. Any events still in the queue will remain there until the user reopens the app. Due to this lag, there are some scenarios where there can be significant differences between `timestamp` \(when the event was created\) and `received_at` \(when RudderStack actually receives the events\).
 
 For Android apps, events can be sent from the background after apps close for a longer period of time than iOS apps, therefore, more of the events coming from the Android SDK have closer `timestamp` and `received_at` times.
+
+### Does RudderStack integrate with SKAdNetwork?
+
+RudderStack does not integrate with SKAdNetwork. However, SKAdNetwork can be directly integrated into an iOS application alongside RudderStack.
+
+### Can I disable event tracking until the user gives their consent?
+
+Yes, you can.
+
+RudderStack gives you the ability to disable tracking any user activity until the user gives their consent, by leveraging the `optOut` API. This is required in cases where your app is audience-dependent \(e.g. minors\) or where you're using the app to track the user events \(e.g. EU users\) to meet the data protection and privacy regulations.
+
+The `optOut` API takes `true` / `false` \(in case of Swift\) or `YES` / `NO` \(in case of Objective-C\) as a value to enable or disable tracking user activities. So, to disable user tracking, you can use the `optOut` API as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:YES];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(true)
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user gives their consent, you can enable user tracking again, as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:NO];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(false)
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+For more information on the `optOut` API, refer to the [**Enabling/Disabling User Tracking via optOut API \(GDPR Support\)**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk#enabling-disabling-user-tracking-via-the-optout-api-gdpr-support) section above.
+{% endhint %}
+
+{% hint style="success" %}
+You only need to call the `optOut` API with the required parameter only once, as the information persists within the device even if you reboot it.
+{% endhint %}
 
 ## Contact Us
 

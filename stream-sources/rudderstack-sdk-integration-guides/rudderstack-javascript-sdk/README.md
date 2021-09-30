@@ -32,39 +32,39 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 **You can find your source write key and the data plane URL on your RudderStack dashboard.**
 {% endhint %}
 
-![Source write key and Data Plane URL](../../../.gitbook/assets/workspace-token%20%284%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29%20%281%29%20%284%29.png)
+![Source write key and Data Plane URL](../../../.gitbook/assets/workspace-token%20%284%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29%20%281%29%20%288%29.png)
 
 ### **2.2. Non-minified Code**
 
 ```javascript
 <script>
-    rudderanalytics = window.rudderanalytics = [];
+rudderanalytics = window.rudderanalytics = [];
 
-    var  methods = [
-        "load",
-        "page",
-        "track",
-        "identify",
-        "alias",
-        "group",
-        "ready",
-        "reset",
-        "getAnonymousId",
+var  methods = [
+    "load",
+    "page",
+    "track",
+    "identify",
+    "alias",
+    "group",
+    "ready",
+    "reset",
+    "getAnonymousId",
     "setAnonymousId"
-    ];
+];
 
-    for (var i = 0; i < methods.length; i++) {
-          var method = methods[i];
-          rudderanalytics[method] = function (methodName) {
-                return function () {
-                      rudderanalytics.push([methodName].concat(Array.prototype.slice.call(arguments)));
-                };
-              }(method);
-    }
-    rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL);
-    //For example,
-    //rudderanalytics.load("1Qb1F3jSWv0eKFBPZcrM7ypgjVo", "http://localhost:8080");
-    rudderanalytics.page();
+for (var i = 0; i < methods.length; i++) {
+    var method = methods[i];
+    rudderanalytics[method] = function (methodName) {
+        return function () {
+            rudderanalytics.push([methodName].concat(Array.prototype.slice.call(arguments)));
+        };
+    }(method);
+}
+rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL);
+//For example,
+//rudderanalytics.load("1Qb1F3jSWv0eKFBPZcrM7ypgjVo", "http://localhost:8080");
+rudderanalytics.page();
 </script>
 
 <script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
@@ -154,56 +154,17 @@ The related APIs exported by the module are:
 * `setAnonymousId`
 {% endhint %}
 
-###  2.4 Supported Browser Versions
+### 2.4 Supported Browser Versions
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Browser</th>
-      <th style="text-align:left">Supported Versions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p></p>
-        <p><b>Safari</b>
-        </p>
-      </td>
-      <td style="text-align:left">v7 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>IE</b>
-      </td>
-      <td style="text-align:left">v10 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Edge</b>
-      </td>
-      <td style="text-align:left">v15 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Mozilla Firefox</b>
-      </td>
-      <td style="text-align:left">v40 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Chrome</b>
-      </td>
-      <td style="text-align:left">v37 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Opera</b>
-      </td>
-      <td style="text-align:left">v23 or later</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>Yandex</b>
-      </td>
-      <td style="text-align:left">v14.12 or later</td>
-    </tr>
-  </tbody>
-</table>
+| Browser | Supported Versions |
+| :--- | :--- |
+| **Safari** | v7 or later |
+| **IE** | v10 or later |
+| **Edge** | v15 or later |
+| **Mozilla Firefox** | v40 or later |
+| **Chrome** | v37 or later |
+| **Opera** | v23 or later |
+| **Yandex** | v14.12 or later |
 
 {% hint style="info" %}
 If the SDK doesn't work on the versions you are targeting, verify if adding the browser polyfills to your application solves the issue.
@@ -343,7 +304,11 @@ rudderanalytics.identify(
 );
 ```
 
-In the above example, information such as the `userid` and email along with contextual information such as IP address, etc. is captured.
+In the above example, information such as the `userId` and `email` along with the [**contextual information**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
+
+{% hint style="warning" %}
+If you explicitly specify the IP address in the event, RudderStack will use that IP instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
+{% endhint %}
 
 The above `identify` call has the following parameters:
 
@@ -1033,14 +998,7 @@ This section provides solutions to some of the commonly faced issues while using
 
 ### Where do I get the Data Plane URL?
 
-Simply put, the **Data Plane URL** is used to connect to the RudderStack backend for processing and routing your events.
-
-{% hint style="info" %}
-To get the **Data Plane URL**: _\*\*_
-
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.
-* If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
-{% endhint %}
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. Refer to [**this section**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it) to get the Data Plane URL depending on your choice of setup.
 
 ### How to load `analytics.js` correctly?
 

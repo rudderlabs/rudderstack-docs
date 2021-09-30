@@ -39,7 +39,7 @@ For your integration to be reviewed and considered, there are three repositories
     </tr>
     <tr>
       <td style="text-align:left">
-        <p>RudderStack Config Generator</p>
+        <p>Control Plane Lite</p>
         <p></p>
         <p><b><code>config-generator</code></b>
         </p>
@@ -101,13 +101,13 @@ The `rudder-transformer` repository is responsible for transforming __the source
 * Include any `eslint` logic in the top of the file.
 * Include test cases that cover around 80% code coverage.
 
-## RudderStack Config Generator
+## RudderStack Control Plane Lite
 
 [**GitHub Repository Link**](https://github.com/rudderlabs/config-generator)\*\*\*\*
 
-The `config-generator` repository allows the user to upload the necessary settings needed for configuring the integration. Follow the pre-existing structure to the best of your ability and please reach out to us via the [**Contact Us**](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-submit-an-integration-pull-request#contact-us) ****section with any questions or concerns. 
+The `config-generator` repository allows the user to upload the necessary settings needed for configuring the integration. Follow the pre-existing structure to the best of your ability and [**reach out to us**](https://rudderstack.com/join-rudderstack-slack-community) with any questions or concerns. 
 
-Please note the following when creating the config generator:
+Note the following when creating the Control Plane:
 
 * Your documentation should be in the `.md` format
 * Include proper `regex` validation rules for all of the text input fields.
@@ -120,7 +120,7 @@ Please note the following when creating the config generator:
 The `rudderstack-docs` repository houses all the relevant documentation for instructing the users on using the integration you have created. Remember to be thorough with your documentation to avoid confusion and any errors. Although we will review the documentation and get in touch with you in case of any clarification, it will certainly be very helpful to ensure clear, concise steps on setting up, configuring, and using your integration.
 
 {% hint style="warning" %}
-Please do not include screenshots. We will include them after merging the changes.
+Do not include screenshots. We will include them after merging the changes.
 {% endhint %}
 
 ## Contact Us

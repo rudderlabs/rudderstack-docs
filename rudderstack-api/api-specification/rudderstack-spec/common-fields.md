@@ -41,6 +41,7 @@ The following table lists all the contextual fields with their detailed descript
 | `device` | `Object` | Information about the device from which you are capturing the event. It contains `deviceId`, `manufacturer`, `model`, `name` and `type`. |
 | `library` | `Object` | Details about the RudderStack SDK you are using, like `name` and `version`. |
 | `locale` | `String` | Captures the language of the device. |
+| `ip` | `String` | The user's IP address. |
 | `network` | `Object` | Contains information about the reachability of the device. Also, it gives you the status of the device's `bluetooth`, `wifi`, `cellular` network and `carrier` name. |
 | `os` | `Object` | Captures the operating system details of the device you are tracking. |
 | `screen` | `Object` | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density`. |
@@ -49,7 +50,143 @@ The following table lists all the contextual fields with their detailed descript
 | `userAgent` | `String` | The user agent of the device that you are tracking. |
 | `campaign` | `Object` | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
 
-## Payload with Common Fields
+{% hint style="warning" %}
+**Not all of the above contextual fields are automatically collected by the RudderStack SDKs.** Refer to the following sections for more information on which SDK automatically populates what contextual fields.
+{% endhint %}
+
+The following sections highlight all the contextual fields that are automatically collected and populated by each of the RudderStack SDKs:
+
+### JavaScript SDK
+
+| Field | Automatically Collected? |
+| :--- | :--- |
+| `app.name` | - |
+| `app.version` | - |
+| `app.build` | - |
+| `campaign.name` | Yes |
+| `campaign.source` | Yes |
+| `campaign.medium` | Yes |
+| `campaign.term` | Yes |
+| `campaign.content` | Yes |
+| `device.type` | - |
+| `device.advertisingId` | - |
+| `device.adTrackingEnabled` | - |
+| `device.manufacturer` | - |
+| `device.model` | - |
+| `library.name` | Yes |
+| `library.version` | Yes |
+| `ip` | Yes |
+| `locale` | Yes |
+| `location.latitude` | - |
+| `location.longitude` | - |
+| `location.speed` | - |
+| `network.bluetooth` | - |
+| `network.carrier` | - |
+| `network.cellular` | - |
+| `network.wifi` | - |
+| `os.name` | - |
+| `os.version` | - |
+| `page.path` | Yes |
+| `page.referrer` | Yes |
+| `page.search` | Yes |
+| `page.title` | Yes |
+| `page.url` | Yes |
+| `screen.density` | - |
+| `screen.height` | - |
+| `screen.width` | - |
+| `traits` | - |
+| `userAgent` | Yes |
+| `timezone` | - |
+
+### Android SDK
+
+| Field | Automatically Collected? |
+| :--- | :--- |
+| `app.name` | Yes |
+| `app.version` | Yes |
+| `app.build` | Yes |
+| `campaign.name` | - |
+| `campaign.source` | - |
+| `campaign.medium` | - |
+| `campaign.term` | - |
+| `campaign.content` | - |
+| `device.type` | Yes |
+| `device.id` | Yes |
+| `device.advertisingId` | Yes |
+| `device.adTrackingEnabled` | - |
+| `device.manufacturer` | Yes |
+| `device.model` | Yes |
+| `device.name` | Yes |
+| `library.name` | Yes |
+| `library.version` | Yes |
+| `ip` | Yes |
+| `locale` | Yes |
+| `location.latitude` | - |
+| `location.longitude` | - |
+| `location.speed` | - |
+| `network.bluetooth` | Yes |
+| `network.carrier` | Yes |
+| `network.cellular` | Yes |
+| `network.wifi` | Yes |
+| `os.name` | Yes |
+| `os.version` | Yes |
+| `page.path` | - |
+| `page.referrer` | - |
+| `page.search` | - |
+| `page.title` | - |
+| `page.url` | - |
+| `screen.density` | Yes |
+| `screen.height` | Yes |
+| `screen.width` | Yes |
+| `traits` | Yes |
+| `userAgent` | Yes |
+| `timezone` | Yes |
+
+### iOS SDK
+
+| Field | Automatically Collected? |
+| :--- | :--- |
+| `app.name` | Yes |
+| `app.version` | Yes |
+| `app.build` | Yes |
+| `campaign.name` | - |
+| `campaign.source` | - |
+| `campaign.medium` | - |
+| `campaign.term` | - |
+| `campaign.content` | - |
+| `device.type` | - |
+| `device.id` | Yes |
+| `device.advertisingId` | Yes |
+| `device.adTrackingEnabled` | Yes |
+| `device.manufacturer` | Yes |
+| `device.model` | Yes |
+| `device.name` | - |
+| `library.name` | Yes |
+| `library.version` | Yes |
+| `ip` | Yes |
+| `locale` | Yes |
+| `location.latitude` | - |
+| `location.longitude` | - |
+| `location.speed` | - |
+| `network.bluetooth` | - |
+| `network.carrier` | Yes |
+| `network.cellular` | Yes |
+| `network.wifi` | Yes |
+| `os.name` | Yes |
+| `os.version` | Yes |
+| `page.path` | - |
+| `page.referrer` | - |
+| `page.search` | - |
+| `page.title` | - |
+| `page.url` | - |
+| `screen.density` | - |
+| `screen.height` | Yes |
+| `screen.width` | Yes |
+| `traits` | Yes |
+| `userAgent` | - |
+| `timezone` | Yes |
+
+## Sample Payload with Common Fields
 
 The following sample payload highlights how the above common and contextual fields are used:
 

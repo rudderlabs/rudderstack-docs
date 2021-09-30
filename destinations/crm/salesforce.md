@@ -156,6 +156,64 @@ To check the number of Salesforce API calls, go to **Setup** - **Administration 
 
 Salesforce has a very strict API limit. Moreover, RudderStack by default does not send `identify` calls to Salesforce. If you don't include `'Salesforce':true` in your `identify` call payload, the call will be simply ignored.
 
+### What are the Salesforce Standard Fields that RudderStack supports?
+
+RudderStack supports several standard fields in Salesforce. Below is the mapping of the fields, where the left column represent the field name within the properties object, and the right column represents what RudderStack will map the field name to.
+
+| RudderStack Property Field Name | Salesforce Standard Field |
+| :--- | :--- |
+| `address.accuracy` or `accuracy` | `Accuracy` |
+| `company.annualRevenue` | `AnnualRevenue` |
+| `address.city` or `city` | `City` |
+| `company.name` or `company` | `Company` |
+| `address.country` or `country` | `Country` |
+| `address.countryCode` or `countryCode` | `CountryCode` |
+| `convertedAccountId` | `ConvertedAccountId` |
+| `convertedContactId` | `ConvertedContactId` |
+| `convertedDate` | `ConvertedDate` |
+| `convertedOpportunityId` | `ConvertedOpportunityId` |
+| `createdById` | `CreatedById` |
+| `createdAt` or `createddate` | `CreatedDate` |
+| `description` | `Description` |
+| `email` | `Email` |
+| `emailBouncedDate` | `EmailBouncedDate` |
+| `emailBouncedReason` | `EmailBouncedReason` |
+| `firstName` | `FirstName` |
+| `geocodeAccuracy` | `GeocodeAccuracy` |
+| `id` | `Id` |
+| `company.industry` | `Industry` |
+| `individualId` | `IndividualId` |
+| `isConverted` | `IsConverted` |
+| `isDeleted` | `IsDeleted` |
+| `isUnreadByOwner` | `IsUnreadByOwner` |
+| `jigsaw` | `Jigsaw` |
+| `jigsawContactId` | `JigsawContactId` |
+| `lastActivityDate` | `LastActivityDate` |
+| `lastModifiedById` | `LastModifiedById` |
+| `lastModifiedDate` | `LastModifiedDate` |
+| `lastName` | `LastName` |
+| `lastReferencedDate` | `LastReferencedDate` |
+| `lastViewedDate` | `LastViewedDate` |
+| `address.latitude` or `latitude` | `Latitude` |
+| `LeadSource` | `LeadSource` |
+| `address.longitude` or `longitude` | `Longitude` |
+| `masterRecordId` | `MasterRecordId` |
+| `name` | `Name` |
+| `company.employee_count` | `NumberOfEmployees` |
+| `ownerId` | `OwnerId` |
+| `phone` | `Phone` |
+| `photoUrl` | `PhotoUrl` |
+| `address.postalCode` or `postalCode` | `PostalCode` |
+| `rating` | `Rating` |
+| `salutation` | `Salutation` |
+| `address.state` or `state` | `State` |
+| `address.stateCode` or `stateCode` | `StateCode` |
+| `status` | `Status` |
+| `address.street` or `street` | `Street` |
+| `systemModstamp` | `SystemModstamp` |
+| `title` | `Title` |
+| `website` | `Website` |
+
 ## Contact Us
 
 If you come across any issues while configuring Salesforce with RudderStack, please feel free to [**contact us**](mailto:%20contact@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

@@ -136,6 +136,48 @@ We automatically track the following optional events:
 You can disable these events using the `withTrackLifecycleEvents` method and passing `false`. But it is highly recommended to keep them enabled.
 {% endhint %}
 
+## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+
+RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(true)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(true);
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(false)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(false);
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack Android SDK from version `1.0.19`.
+{% endhint %}
+
 ## Track
 
 You can record the users' activity through the `track` method. Every action performed by the user is called an event.
@@ -391,10 +433,10 @@ You can configure your client based on the following parameters using `RudderCon
 
 ### Self-Hosted Control Plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the RudderStack Config Generator to host your own Control Plane, then follow [this guide](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the [**Control Plane Lite**](../../../get-started/control-plane-lite.md) utility to self-host your Control Plane, then follow [**this guide**](https://docs.rudderstack.com/user-guides/how-to-guides/rudderstack-control-plane-lite#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
 
 {% hint style="warning" %}
-You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using the dashboard from [https://app.rudderstack.com](https://app.rudderstack.com). This parameter is supported only if you are using our open-source [RudderStack Config Generator](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator).
+You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using the [**RudderStack Cloud dashboard**](https://app.rudderstack.com/) \([**https://app.rudderstack.com**](https://app.rudderstack.com)\). This parameter is supported only if you are using the open-source [**Control Plane Lite**](../../../get-started/control-plane-lite.md) _\*\*_to self-host your Control Plane.
 {% endhint %}
 
 ## Setting Android Device Token
@@ -787,9 +829,35 @@ Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
 {% endtab %}
 {% endtabs %}
 
+### Can I disable event tracking until the user gives their consent?
+
+Yes, you can.
+
+RudderStack gives you the ability to disable tracking any user activity until the user gives their consent, by leveraging the `optOut` API. This is required in cases where your app is audience-dependent \(e.g. minors\) or where you're using the app to track the user events \(e.g. EU users\) to meet the data protection and privacy regulations.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. So, to disable user tracking, you can use the `optOut` API as shown:
+
+```kotlin
+rudderClient.optOut(true)
+```
+
+Once the user gives their consent, you can enable user tracking again, as shown:
+
+```kotlin
+rudderClient.optOut(false)
+```
+
+{% hint style="info" %}
+For more information on the `optOut` API, refer to the [**Enabling/Disabling User Tracking via optOut API**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk#enabling-disabling-user-tracking-via-the-optout-api-gdpr-support) section above.
+{% endhint %}
+
+{% hint style="success" %}
+You only need to call the `optOut` API with the required parameter once, as the information persists within the device even if you reboot it.
+{% endhint %}
+
 ### How does the SDK handle different client/server errors?
 
-In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately. 
+In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately.
 
 For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries to flush the events to RudderStack in an incremental manner \(every 1 second, 2 seconds, 3 seconds, and so on\).
 

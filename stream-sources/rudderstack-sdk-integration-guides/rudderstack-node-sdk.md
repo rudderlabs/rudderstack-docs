@@ -12,7 +12,7 @@ RudderStack’s Node.js SDK lets you track your customer event data from your No
 Find the code for this SDK in our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-node).
 {% endhint %}
 
-## Installing the RudderStack Node.js SDK
+## Installing the Node.js SDK
 
 To install the RudderStack Node.js SDK using [**npm**](https://www.npmjs.com/), run the following command:
 
@@ -20,9 +20,9 @@ To install the RudderStack Node.js SDK using [**npm**](https://www.npmjs.com/), 
 npm install @rudderstack/rudder-sdk-node
 ```
 
-## Using the RudderStack Node.js SDK
+## Using the SDK
 
-To use the SDK, run the following code snippet:
+To use the Node.js SDK, run the following code snippet:
 
 ```javascript
 const Analytics = require("@rudderstack/rudder-sdk-node");
@@ -31,13 +31,27 @@ const Analytics = require("@rudderstack/rudder-sdk-node");
 const client = new Analytics(WRITE_KEY, `${DATA_PLANE_URL}/v1/batch`);
 ```
 
+Running the above snippet creates a global RudderStack client object that can be used for all the subsequent event requests.
+
+## Supported Events
+
+The RudderStack Node.js SDK supports the following API calls:
+
+* Identify
+* Track
+* Page
+* Group
+* Alias
+
+For a detailed information on each of these calls, refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec) guide.
+
+{% hint style="info" %}
+RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the Node.js SDK, you need to specify either `userId` or `anonymousId` every time.
+{% endhint %}
+
 ## Identify
 
 The `identify` call lets you associate a user to their actions as well as captures the relevant traits or properties related to that user.
-
-{% hint style="info" %}
-For a detailed explanation of the `identify` call, refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/identify) guide.
-{% endhint %}
 
 An example `identify` call is as shown:
 
@@ -57,8 +71,8 @@ The `identify` parameters are as described below:
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Optional, if `anonymousId` is already set | The unique identifier for a user in your database. |
+| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
+| `userId` | String | Required, if `anonymousId` is not present | The unique identifier for a user in your database. |
 | `context` | Object | Optional | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | The dictionary of destinations to be either enabled or disabled. |
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
@@ -67,10 +81,6 @@ The `identify` parameters are as described below:
 ## Track
 
 The `track` call lets you record the users' actions along with their associated properties. Each user action is called an 'event'.
-
-{% hint style="info" %}
-For a detailed explanation of the `track` call, please refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/track) guide.
-{% endhint %}
 
 An example `track` call is as shown:
 
@@ -89,21 +99,17 @@ The `track` method parameters are as described below:
 
 | Name | Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
-| `userId` | String | Required | The unique identifier for a user in your database. |
+| `userId` | String | Required, if `anonymousId` is not present. | The unique identifier for a user in your database. |
+| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
 | `event` | String | Required | Name of the user event. |
 | `properties` | Object | Optional | The dictionary of the properties associated with the particular event. |
 | `context` | Object | Optional | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
-| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required. |
 | `integrations` | Object | Optional | A dictionary of destinations to be either enabled or disabled. |
 
 ## Page
 
 The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
-
-{% hint style="info" %}
-For a detailed explanation of the `page` call, please refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/page) guide.
-{% endhint %}
 
 An example `page` call is as shown:
 
@@ -124,8 +130,8 @@ The `page` method parameters are as described below:
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Optional, if `anonymousId` is already set | The unique identifier for a user in your database. |
+| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
+| `userId` | String | Required, if `anonymousId` is not present. | The unique identifier for a user in your database. |
 | `context` | Object | Optional | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary of destinations to be either enabled or disabled. |
 | `name` | String | Required | Name of the viewed page. |
@@ -135,10 +141,6 @@ The `page` method parameters are as described below:
 ## Group
 
 The `group` call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
-
-{% hint style="info" %}
-For a detailed explanation of the `group` call, refer to our [**RudderStack API Specification**](https://docs.rudderstack.com/rudderstack-api/rudderstack-spec/group) guide.
-{% endhint %}
 
 An example `group` call is as shown:
 
@@ -157,8 +159,8 @@ The `group` method parameters are as follows:
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Optional, if `anonymousId` is already set | The unique identifier for a user in your database. |
+| `anonymousId` | String | Optional | A user identifier for cases where there is no `userId` set for the user. **Either `userId` or `anonymousId` is required.** |
+| `userId` | String | Required, if `anonymousId` is not present. | The unique identifier for a user in your database. |
 | `context` | Object | Optional | A dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary of the destinations to be either enabled or disabled. |
 | `groupId` | String | Required | Unique identifier for the group present in your database. |
@@ -190,7 +192,7 @@ The `alias` method parameters are as mentioned below:
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `userId` | String | Optional, if `anonymousId` is already set | The unique identifier for a user in your database. |
+| `userId` | String | Required, if `anonymousId` is not present. | The unique identifier for a user in your database. |
 | `context` | Object | Optional | A dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary of the destinations to be either enabled or disabled. |
 | `previousId` | String | Required | The previous unique identifier of the user. |
@@ -199,46 +201,78 @@ The `alias` method parameters are as mentioned below:
 
 ## Node.js SDK Data Persistence
 
-{% hint style="info" %}
-This feature is still in beta. Contact us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel in case you face any issues.
+{% hint style="warning" %}
+This feature is still in beta. Contact us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel if you face any issues.
 {% endhint %}
 
-The Node.js SDK retries event delivery `n` times, if it fails to successfully deliver the event data to RudderStack. Since the data is in-memory, `n` should ideally be a small number, failing which there is a possibility of data loss if RudderStack is not available for a larger duration.
-
-To prevent data loss from the SDK to RudderStack while it is not ready to accept data or temporarily unreachable, we have introduced a feature to persist the event data in **Redis**, leading to better event delivery guarantees. Also, the SDK can retry multiple times as the queue is maintained in a different process space \(in this case, Redis\).
-
-You will need to host a Redis server and use it as the intermediary data storage queue to use this feature.
+If the Node.js SDK fails to successfully deliver the event data to RudderStack at the first attempt, it retries the event delivery. However, if, for some reason, RudderStack is unavailable for a longer duration, there is a possibility of data loss. To prevent this scenario, RudderStack has a data persistence feature to persist the events in **Redis**, leading to better event delivery guarantees. Also, the SDK can retry multiple times as the queue is maintained in a different process space \(in this case, Redis\).
 
 {% hint style="info" %}
-We use [**Bull**](https://github.com/OptimalBits/bull) as the interface layer between the Node.js SDK and Redis.
+To use this feature, you will need to host a Redis server and use it as the intermediary data storage queue.
 {% endhint %}
 
-The initialization of the SDK is as follows:
+{% hint style="info" %}
+RudderStack uses [**Bull**](https://github.com/OptimalBits/bull) as the interface layer between the Node.js SDK and Redis.
+{% endhint %}
 
-```jsx
-const client = new Analytics("write_key","server_url/v1/batch",{
-    flushAt: <number> = 20,
-    flushInterval: <ms> = 20000
-    // the max number of elements that the SDK can hold in memory, 
-    // this is different than the Redis list created when persistence is enabled.
-    // This restricts the data in-memory when Redis is down, unreachable etc.
-    maxInternalQueueSize: <number> = 20000 
+A sample initialization of the SDK is as shown:
+
+```javascript
+const client = new Analytics(WRITE_KEY,`${DATA_PLANE_URL}/v1/batch`,{
+    flushAt:20,
+    flushInterval:20000,
+    maxInternalQueueSize:20000 
 });
 
-client.createPersistenceQueue({ redisOpts: { host: "localhost" } }, err => {})
+client.createPersistenceQueue(queueOpts, callback)
 ```
 
 To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue.
 
-The specifications of these parameters are as follows:
+{% hint style="warning" %}
+If the `createPersistenceQueue` method is not called after initializing the SDK, the SDK will work without any persistence.
+{% endhint %}
+
+### Configurable Parameters
+
+| **Parameter** | **Description** | **Default Value** |
+| :--- | :--- | :--- |
+| `flushAt` | The maximum number of events to batch and send to the server | `20` |
+| `flushInterval` | The maximum timespan \(in milliseconds\) after which the events from the in-memory queue is flushed to Redis' persistence queue | `20000` |
+| `maxInternalQueueSize` | The maximum size of the in-memory queue | `20000` |
+| `JobOpts.maxAttempts` | The maximum number of retry attempts | `10` |
+| `isMultiProcessor` | Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. | `false` |
+
+{% hint style="warning" %}
+If the same queue \(RudderStack SDK initialized with the same queue name\) is used in case of multiple servers \(server-side SDKs\), set the value of `isMultiProcessor` to `true` as event ordering is not applicable in this case.
+{% endhint %}
+
+#### How to ensure that all my events in the queue are processed?
+
+You can use the `flush()` method to ensure that all the events in the queue are processed. The following example highlights the use of `flush()` with a callback:
+
+```jsx
+client.flush(function(err, batch){
+  console.log('Flushing done');
+}
+)
+```
 
 ### `queueOpts`
 
-```jsx
-QueueOpts {
+As mentioned in the previous section, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`- to achieve data persistence. This method will initialize the persistent queue.
+
+`client.createPersistenceQueue(QueueOpts, callback)`
+
+Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to a callback with the error.
+
+A sample `queueOpts` initialization is shown below:
+
+```javascript
+queueOpts {
     queueName ?: string = rudderEventsQueue,
     isMultiProcessor ? : boolean = false
-    // pass a value without the {}, this will used as prefix to Redis keys,
+    // for prefix, pass a value without the {}, this will used as prefix to Redis keys,
     // needed to support Redis cluster slots.
     prefix ? : string = {rudder},  
     redisOpts : RedisOpts,
@@ -246,9 +280,21 @@ QueueOpts {
 }
 ```
 
+The specification of the different `queueOpts` parameters is listed in the following table:
+
+| **Parameter** | **Description** | **Default Value** |
+| :--- | :--- | :--- |
+| `queueName` | Name of the queue. | `20` |
+| `isMultiProcessor` | Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. | `false` |
+| `prefix` | Used as the prefix to the Redis keys needed to support the Redis cluster slots. | `20000` |
+| `redisOpts` | Refer to the `RedisOpts` section below | `RedisOpts` |
+| `jobOpts` | Refer to the `JobOpts` section below | `JobOpts` |
+
 {% hint style="info" %}
 More information on this parameter can be found in the [**Bull docs**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queue).
 {% endhint %}
+
+#### `RedisOpts`
 
 ```jsx
 RedisOpts {
@@ -259,15 +305,23 @@ RedisOpts {
 }
 ```
 
-```jsx
+{% hint style="info" %}
+More information on this parameter can be found in the [**Bull docs**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queue).
+{% endhint %}
+
+#### `JobOpts`
+
+```javascript
 JobOpts {
-    maxAttempts ? : number = 10
+    maxAttempts?: number = 10
 }
 ```
 
 ### `callback`
 
-```jsx
+In case of an error, the `createPersistenceQueue` method returns a callback. You should retry sending the events in this scenario.
+
+```javascript
 // createPersistenceQueue calls this with error or nothing(in case of success), // user should retry in case of error
 callback: function(error) || function()
 ```
@@ -275,42 +329,17 @@ callback: function(error) || function()
 Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to calling `callback` with the error.
 
 {% hint style="info" %}
-It is recommended to retry calling `createPersistenceQueue` with a backoff, if the callback returns with an error.
+If the callback returns with an error, we recommend retrying calling `createPersistenceQueue` with a backoff.
 {% endhint %}
 
-{% hint style="warning" %}
-If the `createPersistenceQueue` method is not called after initializing the SDK, the SDK will work without any persistence.
-{% endhint %}
+### Event Flow
 
-### **Configurable Parameters**
-
-* **`flush()`**: You can use this method to ensure that all the events in the queue are processed. The following snippet highlights the user of `flush()` with a callback:
-
-```jsx
-client.flush(function(err, batch){
-  console.log('Flushing done');
-}
-)
-```
-
-* **`flushAt`** : The maximum number of events to batch and send to the server. The default value is **20**. 
-* **`flushInterval`** : The maximum timespan after which the events from the in-memory queue is flushed to Redis' persistence queue. The default value is **20 seconds**. 
-* **`maxInternalQueueSize`** - The maximum size of the in-memory queue. The default value is **20000**. 
-* **`JobOpts.maxAttempts`** - The maximum number of retry attempts. The default value is **10**. 
-* **`isMultiProcessor`** - Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. 
-
-{% hint style="warning" %}
-If the same queue \(RudderStack SDK initialized with the same queue name\) is used in multiple servers, set this value to `true`as event ordering is not present in this case.
-{% endhint %}
-
-### **Flow**
-
-* Calling the SDK methods like `track`, `page`, `identify`, etc. pushes the events to an in-memory array. 
-* The events from the array are flushed as a `batch` to the Redis persistence based on the `flushAt` and `flushInterval` settings. The in-memory array has a maximum size of `maxInternalQueueSize`. **Once this size limit is reached,**  _\*\*_**the events won't be accepted if not drained to the other side \(cases where Redis connection is slow or the Redis server is not reachable\).** 
-* The processor will take the batch from the Redis list and make a request to RudderStack. In case of an error, the processor will retry sending the data again if the error can be retried \(errors with status code `5xx and 429`\). **The retry will go up to `JobOpts.maxAttempts` with an** **exponential backoff of power 2 with max backoff of 30 seconds**. 
-* If the job fails even after `JobOpts.maxAttempts`, it will not be retried again and pushed to a `failed queue`. **You can retry them later manually using Bull’s utility methods** [**listed here**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queuegetfailed) **or get them from Redis directly**. 
-* There might be a scenario where the node process dies with the jobs still in active state \(not completed nor failed but in the process of sending/retrying\). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, **the jobs will be picked up first by the processor to get processed to maintain event ordering based on the value of `QueueOpts.isMultiProcessor`**. 
-* For multiple servers \(SDK\) connecting to the same queue \(`QueueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. Hence, `QueueOpts.isMultiProcessor` should be set to **`true`.**
+* Calling the SDK methods like `track`, `page`, `identify`, etc. pushes the events to an in-memory array.
+* The events from the array are flushed as a batch to the Redis persistence based on the `flushAt` and `flushInterval` settings. The in-memory array has a maximum size of `maxInternalQueueSize`. Once this size limit is reached, the events won't be accepted if not drained to the queue \(applicable in cases where the Redis connection is slow or the Redis server is not reachable\).
+* The processor will take the batch from the Redis list and make a request to RudderStack. In case of an error, the processor will retry sending the data again if the error can be retried \(in case of errors with the status code `5xx` and `429`\). **The retry will go up to `JobOpts.maxAttempts` with an exponential backoff of power 2 with a max backoff of 30s**.
+* If the job fails even after the `JobOpts.maxAttempts` limit is reached, it will not be retried again and pushed to a `failed queue`. You can retry sending these events manually using Bull’s utility methods [**listed here**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queuegetfailed) or get them from Redis directly.
+* There might be a scenario where the node process dies with the jobs still in active state \(not completed nor failed but in the process of sending or retrying\). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, the jobs will be picked up first by the processor to maintain the event ordering - based on the value set for `queueOpts.isMultiProcessor`.
+* For multiple server-side SDKs connecting to the same queue \(`queueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. In this case, `queueOpts.isMultiProcessor` should be set to **`true`.**
 
 ## Contact Us
 

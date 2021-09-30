@@ -1,0 +1,78 @@
+---
+description: >-
+  Detailed technical documentation on sending events to ProfitWell using the
+  RudderStack Web Device mode.
+---
+
+# Device Mode
+
+RudderStack lets you send your event data to ProfitWell via the Web Device mode, i.e. using the native web SDK.
+
+{% hint style="info" %}
+For more information on sending events via the Device mode, refer to the [**RudderStack connection modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
+{% endhint %}
+
+{% hint style="success" %}
+**Find the open-source JavaScript SDK code for this destination in our** [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/ProfitWell).
+{% endhint %}
+
+## Getting Started
+
+To enable sending data to ProfitWell, you will first need to add it as a destination in RudderStack. Once the destination is enabled, events from our SDKs will automatically start flowing to ProfitWell.
+
+Before configuring ProfitWell as a destination in RudderStack, make sure that the source platform is supported by ProfitWell by referring to the following table:
+
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | **Supported** | - | - |
+| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+
+Once you have confirmed that the source platform supports sending events to ProfitWell, follow the steps below:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **ProfitWell**.
+
+{% hint style="info" %}
+Follow our guide on [**Adding a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
+{% endhint %}
+
+* Assign a name to the destination, and click on **Next**. You will then see the following **Connection Settings** window:
+
+![Connection Settings for ProfitWell](https://user-images.githubusercontent.com/64877812/133475825-90fff9ed-73da-4d40-9c40-0140eb7f12d9.png)
+
+### Connection Settings
+
+To successfully configure ProfitWell as a Device Mode destination, enter the following connection settings:
+
+* **Public API Key**: Enter your ProfitWell public API key here. To obtain the **Public API Key**, log into your ProfitWell account. Then, navigate to the **Account Settings** - **Integration** option. Here, you can get your API key under [**API Keys/Dev Kit**](https://www2.profitwell.com/app/account/integrations), as shown in the following image:
+
+![](https://user-images.githubusercontent.com/59817155/132687515-dd2246e4-2239-4971-994d-167513fa3c96.png)
+
+{% hint style="info" %}
+The **Private API Key** field is **not** required if you want to send the events via the Device Mode.
+{% endhint %}
+
+* **Site Type**: Choose the site type from the dropdown. If the site type is **Web App**, then RudderStack will start the ProfitWell service either with `email` or `userId`. For the type **Marketing**, RudderStack will start the ProfitWell service anonymously.
+* **Use device-mode to send events**: Enable this option to send events via the **Device mode**.
+
+{% hint style="warning" %}
+The **Private API Key** field is **not** required if you want to send the events via the Device Mode.
+{% endhint %}
+
+* Finally, click on **Next** to complete the setup. ProfitWell should now be configured and enabled as a destination in RudderStack.
+
+## Identify
+
+For the **Web App** site type, the `identify` call will start the ProfitWell Service using the customer's `email`. If no email is provided, then RudderStack will start the service with the user's `userId`. For the **Marketing** type, RudderStack will start the ProfitWell service anonymously.
+
+A sample `identify` call is as shown:
+
+```javascript
+  rudderanalytics.identify( "userId", {email: "sample@domain.com"});
+```
+
+For the `identify` call to trigger user engagements, you need to first create [**Customers**](https://www2.profitwell.com/app/customers) within ProfitWell.
+
+## Contact Us
+
+In case of any issues while configuring or using ProfitWell with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+

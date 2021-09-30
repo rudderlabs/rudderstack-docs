@@ -25,7 +25,7 @@ If you are planning to use RudderStack in production, we strongly recommend usin
 Once you have installed RudderStack, follow [**this guide**](sending-test-events.md) to send test events to verify your installation.
 
 {% hint style="success" %}
-You can [**contact us**](https://resources.rudderstack.com/join-rudderstack-slack) for help if you're stuck at any stage of the setup process.
+You can [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for help if you're stuck at any stage of the setup process.
 {% endhint %}
 
 ## FAQs
@@ -47,7 +47,7 @@ An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is t
 {% endhint %}
 
 * If you're using [**RudderStack Cloud** **Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
-* If you're using the [**pro or enterprise**](https://rudderstack.com/pricing) version of RudderStack, please contact us for the Data Plane URL with the email ID you used to sign up for RudderStack.
+* If you're using the [**pro or enterprise**](https://rudderstack.com/pricing) version of RudderStack, [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for the Data Plane URL with the email ID you used to sign up for RudderStack.
 
 ### How to Check the Data Plane Status?
 
@@ -88,13 +88,13 @@ The web app is only used for source/destination configuration and does not have 
 The [**Live Events**](../live-events.md) console can be used to temporarily stream events for debugging purposes, but only for a limited time. **RudderStack does not persist any of your data**.
 {% endhint %}
 
-If you do not wish to sign up for RudderStack and want to self-host the Control Plane, you can do so using the open-source [**RudderStack Config Generator**](../../user-guides/how-to-guides/rudderstack-config-generator.md). 
+If you do not wish to sign up for RudderStack and want to self-host the Control Plane, you can do so using the open-source [**RudderStack Control Plane Lite**](../control-plane-lite.md) ****utility.
 
 {% hint style="warning" %}
-Note that the Control Plane set up using the Config Generator does not have features like [**Transformations**](../../adding-a-new-user-transformation-in-rudderstack/) and [**Live Events**](../live-events.md).
+Note that the Control Plane set up using the Control Plane Lite utility does not have features like [**Transformations**](../../transformations/) and [**Live Events**](../live-events.md).
 {% endhint %}
 
 ## Contact Us
 
-For any questions on installing and setting up RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+For any questions on installing and setting up RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 

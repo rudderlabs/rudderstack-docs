@@ -93,7 +93,7 @@ You will see the following options:
 * **Transformation**: RudderStack allows you to transform your events before routing them across to your destination. 
 
 {% hint style="success" %}
-Read more about RudderStack's [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature.
+Read more about RudderStack's [**Transformations**](../transformations/) feature.
 {% endhint %}
 
 * **Settings**: You can change the settings of your configured destination by clicking on this button.

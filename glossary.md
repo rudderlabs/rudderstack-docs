@@ -7,7 +7,7 @@ description: General glossary of the RudderStack-related terminology.
 This guide lists the definitions of the RudderStack-related terms that you are likely to encounter throughout our documentation and while using RudderStack.
 
 {% hint style="success" %}
-If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+If you come across any term that is not listed here, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our ****[**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
 {% endhint %}
 
 ## General
@@ -16,24 +16,30 @@ If you come across any term that is not listed here, you can [**contact us**](ma
 
 A **Customer Data Platform \(CDP\)** is a software/collection of tools that unifies and persists all the customer-specific records across multiple data sources in a centralized location accessible to other tools/platforms. A CDP lets you build a comprehensive customer profile and use the insights for a variety of use-cases.
 
-### ETL \(Extract, Transform, Load\)
+### ELT \(Extract, Load, Transform\)
 
-The ETL process can be defined as:
+The **ELT \(Extract, Load, Transform\)** process can be defined as:
+
+* **Extract:** Obtaining data from the source platform or application.
+* **Load:** Replicating the data from the source into the target system, typically a data warehouse or a data lake.
+* **Transformation:** Transforming the data in the desired format according to the business requirement/use-case.
+
+{% hint style="success" %}
+Check out our [**blog**](https://rudderstack.com/blog/rudderstack-cloud-extract-makes-cloud-to-warehouse-pipelines-easy) to read more about ELT and how RudderStack facilitates it via the [**Cloud Extract**](cloud-extract-sources/) feature.
+{% endhint %}
+
+### Reverse ETL
+
+The **ETL \(Extract, Transform, Load\)** process can be defined as:
 
 * **Extract**: Collecting/pulling data from a variety of sources.
 * **Transform**: Refining and transforming the data as per the required data quality and business requirements.
 * **Load**: Pushing the data into a consolidated data store \(for e.g., data warehouse\)
 
-{% hint style="success" %}
-Check out our [**blog**](https://rudderstack.com/blog/rudderstack-cloud-extract-makes-cloud-to-warehouse-pipelines-easy) to read more about ETL and how RudderStack facilitates it via its [**Cloud Extract**](cloud-extract-sources/) feature.
-{% endhint %}
-
-### Reverse-ETL
-
-Reverse ETL is the process of routing the enriched data from your data warehouse to various downstream tools within your customer data stack. This includes various SaaS marketing, analytics, sales, and customer support tools.
+On the other hand, **Reverse ETL** is the process of routing the enriched data residing in your data warehouse to various downstream tools within your customer data stack. This includes various SaaS marketing, analytics, sales, and customer support tools.
 
 {% hint style="success" %}
-Check out our [**blog**](https://rudderstack.com/blog/reverse-etl-is-just-another-data-pipeline) to read more about Reverse ETL and how RudderStack facilitates it via its [**Warehouse Actions**](warehouse-actions/) feature.
+Check out our [**blog**](https://rudderstack.com/blog/reverse-etl-is-just-another-data-pipeline) to read more about Reverse ETL and how RudderStack facilitates it via the [**Warehouse Actions**](warehouse-actions/) feature.
 {% endhint %}
 
 ## Core Product
@@ -48,7 +54,7 @@ For more information on the Data Plane and Control Plane, refer to RudderStack's
 
 ### Data Plane
 
-The Data Plane is RudderStack's ****core engine responsible for:
+The Data Plane is RudderStack's core engine responsible for:
 
 * Receiving and buffering the event data
 * Transforming the events into the required destination format
@@ -57,26 +63,26 @@ The Data Plane is RudderStack's ****core engine responsible for:
 {% hint style="success" %}
 The Data Plane is intentionally separated from the Control Plane to give you complete ownership of your data. Depending on how RudderStack is deployed, you can set up your Control Plane and Data Plane via one of the following approaches:
 
-* **RudderStack-hosted**: ****RudderStack hosts both Control Plane and Data Plane
+* **RudderStack-hosted**: RudderStack hosts both Control Plane and Data Plane
 * **Hybrid**: RudderStack hosts the Control Plane and the user hosts the Data Plane
 * **Customer**: User hosts both the Control Plane and Data Plane via open-source.
 {% endhint %}
 
-### Config Generator
+### Control Plane Lite
 
 RudderStack's **Control Plane** offers an intuitive UI to configure your event data sources and destinations.
 
-If you want to self-host these configurations, you can use the open-source **Config Generator** to set up your Control Plane. You can then manage the source and destination configurations locally by exporting to or importing them from a JSON file.
+If you want to self-host these configurations, you can use the open-source **Control Plane Lite** utility to set up your Control Plane. You can then manage the source and destination configurations locally by exporting to or importing them from a JSON file.
 
 {% hint style="info" %}
-For information on the Config Generator and how to use it, refer to the [**docs**](https://docs.rudderstack.com/get-started/config-generator).
+For information on Control Plane Lite and how to use it, refer to the [**docs**](https://docs.rudderstack.com/get-started/config-generator).
 {% endhint %}
 
 ## **Features**
 
 ### Event Stream
 
-RudderStack's [**Event Stream**](stream-sources/) ****feature lets you collect your event data from all of your web and mobile apps and route it to a wide array of customer tools and data warehouses via RudderStack.
+RudderStack's [**Event Stream**](stream-sources/) feature lets you collect your event data from all of your web and mobile apps and route it to a wide array of customer tools and data warehouses via RudderStack.
 
 {% hint style="info" %}
 For more information on the various Event Stream sources supported by RudderStack, check out the [**docs**](https://docs.rudderstack.com/stream-sources).
@@ -84,7 +90,7 @@ For more information on the various Event Stream sources supported by RudderStac
 
 ### Cloud Extract
 
-\*\*\*\*[**Cloud Extract**](cloud-extract-sources/) is RudderStack's ETL feature that lets you collect your raw events and data from various third-party cloud platforms such as Google Analytics, Marketo, Facebook Ads, Stripe, etc. and send it to your data warehouse with a user-specified frequency.
+[**Cloud Extract**](cloud-extract-sources/) is RudderStack's ELT feature that lets you collect your raw events and data from various third-party cloud platforms such as Google Analytics, Marketo, Facebook Ads, Stripe, etc. and send it to your data warehouse with a user-specified frequency.
 
 {% hint style="info" %}
 For more information on the various Cloud Extract sources and how to set them up in RudderStack, check out the [**docs**](https://docs.rudderstack.com/cloud-extract-sources).
@@ -92,7 +98,7 @@ For more information on the various Cloud Extract sources and how to set them up
 
 ### Warehouse Actions
 
-\*\*\*\*[**Warehouse Actions**](warehouse-actions/) is RudderStack's Reverse-ETL feature. It allows you to leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations, including SaaS marketing, analytics, sales, and customer support tools.
+[**Warehouse Actions**](warehouse-actions/) is RudderStack's Reverse-ETL feature. It allows you to leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations, including SaaS marketing, analytics, sales, and customer support tools.
 
 {% hint style="info" %}
 For more information on the various Warehouse Actions sources and how to set them up in RudderStack, check out the [**docs**](https://docs.rudderstack.com/warehouse-actions).
@@ -100,25 +106,11 @@ For more information on the various Warehouse Actions sources and how to set the
 
 ### Transformations
 
-RudderStack ****[**Transformations**](adding-a-new-user-transformation-in-rudderstack/) transform your source events into a destination-specific format. These transformations can be used across your Event Stream, Warehouse Actions, and Cloud Extract pipelines.
+RudderStack's [**Transformations**](transformations/) feature lets you leverage your custom JavaScript functions that you can use to implement a variety of use-cases like: 
 
-There are two key aspects of this feature:
-
-* **RudderStack Transformer**: This is a RudderStack service that transforms your incoming events into a destination-specific format. 
-* **User Transformations**: User Transformations are custom JavaScript functions that you can leverage to implement a variety of use-cases like: 
-  * Filtering or sampling events
+* * Filtering or sampling events
   * Implementing a static logic to enrich your events
   * Removing any sensitive PII information from your customer events, and a lot more.
-
-{% hint style="success" %}
-RudderStack applies the User Transformations \(if any\) to the incoming events before sending them to the Transformer. So the flow looks like the following:
-
-**Incoming events** -- **User Transformation** -- **RudderStack Transformer** -- **Routed to the specified destination/s**
-
-In the absence of a user transformation, the flow is as follows:
-
-**Incoming events** -- **RudderStack Transformer** -- **Routed to the specified destination/s**
-{% endhint %}
 
 {% hint style="info" %}
 For more details on this feature and how to use it, check out our [**Transformations**](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) ****docs.
@@ -126,12 +118,12 @@ For more details on this feature and how to use it, check out our [**Transformat
 
 ### Live Events
 
-RudderStack's [**Live Events**](https://docs.rudderstack.com/get-started/live-events) is a debugger that shows the live events collected from your sources and sent to the connected destinations in real-time.  With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
+RudderStack's [**Live Events**](https://docs.rudderstack.com/get-started/live-events) is a debugger that shows the live events collected from your sources and sent to the connected destinations in real-time. With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
 
 Broadly speaking, this feature can be further classified into two categories:
 
-* \*\*\*\*[**Source Live Events**](https://docs.rudderstack.com/get-started/live-events#source-live-events): This feature gives you real-time visibility into the source events collected by RudderStack. This way, you can confirm if your source is configured correctly and is collecting & sending data as expected. 
-* \*\*\*\*[**Destination Live Events**](https://docs.rudderstack.com/get-started/live-events#destination-live-events): When routing events to a destination, sometimes events don't show up in your destination. This feature gives you real-time visibility into the destination's responses and helps you troubleshoot the problem.
+* [**Source Live Events**](https://docs.rudderstack.com/get-started/live-events#source-live-events): This feature gives you real-time visibility into the source events collected by RudderStack. This way, you can confirm if your source is configured correctly and is collecting & sending data as expected. 
+* [**Destination Live Events**](https://docs.rudderstack.com/get-started/live-events#destination-live-events): When routing events to a destination, sometimes events don't show up in your destination. This feature gives you real-time visibility into the destination's responses and helps you troubleshoot the problem.
 
 {% hint style="info" %}
 For more information on this feature, check out our [**docs**](https://docs.rudderstack.com/get-started/live-events).
@@ -139,7 +131,7 @@ For more information on this feature, check out our [**docs**](https://docs.rudd
 
 ### Data Governance
 
-RudderStack's [**Data Governance**](data-governance/) ****feature gives you the ability to access all your events and their metadata programmatically and identify any inconsistencies in them. This includes vital information related to the event schema, event payload versions, data types, and more.
+RudderStack's [**Data Governance**](data-governance/) feature gives you the ability to access all your events and their metadata programmatically and identify any inconsistencies in them. This includes vital information related to the event schema, event payload versions, data types, and more.
 
 {% hint style="info" %}
 Refer to the [**RudderStack Data Governance API**](data-governance/rudderstack-data-governance-api.md) reference for the detailed technical documentation.
@@ -166,7 +158,7 @@ For more information on sources and destinations in RudderStack, check our [**Co
 You can set up different types of connections in RudderStack to send your events, based on the type of source:
 
 * **Event Stream**:  One source to many destinations
-* **Cloud Extract**: Multiple sources to one destination
+* **Cloud Extract**: Multiple sources to one warehouse destination
 * **Warehouse Action**: One warehouse source to one downstream destination \(mainly due to the mappings required when setting up the connection\).
 
 {% hint style="info" %}
@@ -191,7 +183,7 @@ For more information on these modes, check the [**RudderStack Connection Modes**
 A **source** is a platform or an application \(web, mobile, server-side, or a third-party cloud app\) from where RudderStack tracks and collects your event data. We highly recommend creating a source for every unique data source that you want to track.
 
 {% hint style="info" %}
- For more information on RudderStack sources, check out our [**documentation**](https://docs.rudderstack.com/connections#sources). 
+For more information on RudderStack sources, check out our [**documentation**](https://docs.rudderstack.com/connections#sources).
 {% endhint %}
 
 ### Destination
@@ -199,16 +191,16 @@ A **source** is a platform or an application \(web, mobile, server-side, or a th
 A destination is a tool or application where you want to send the data via RudderStack.
 
 {% hint style="success" %}
-RudderStack currently supports over 80 destinations. These include [**data warehouses**](https://docs.rudderstack.com/data-warehouse-integrations), [**analytics**](https://docs.rudderstack.com/destinations/analytics) platforms,  [**CRMs**](https://docs.rudderstack.com/destinations/crm), [**marketing**](https://docs.rudderstack.com/destinations/marketing) platforms, and more.
+RudderStack currently supports over 80 destinations. These include [**data warehouses**](https://docs.rudderstack.com/data-warehouse-integrations), [**analytics**](https://docs.rudderstack.com/destinations/analytics) platforms, [**CRMs**](https://docs.rudderstack.com/destinations/crm), [**marketing**](https://docs.rudderstack.com/destinations/marketing) platforms, and more.
 
 Check out the [**Destinations**](destinations/) guide for the complete list of supported destinations.
 {% endhint %}
 
 ### Warehouse Destination
 
-RudderStack supports sending events to your data warehouse. These are called the warehouse destinations. 
+RudderStack supports sending events to your data warehouse. These are called the warehouse destinations.
 
-Currently, RudderStack supports integration with all the leading data warehouses like Amazon Redshift, Azure Synapse, Google BigQuery, Snowflake, PostgreSQL, ClickHouse, and Microsoft SQL Server. 
+Currently, RudderStack supports integration with all the leading data warehouses like Amazon Redshift, Azure Synapse, Google BigQuery, Snowflake, PostgreSQL, ClickHouse, and Microsoft SQL Server.
 
 {% hint style="info" %}
 For more information on how to use these warehouse destinations, check out our [**Data Warehouse Integration**](https://docs.rudderstack.com/data-warehouse-integrations) guides.

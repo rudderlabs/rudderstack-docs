@@ -6,6 +6,8 @@ description: Step-by-step guide to send event data from RudderStack to Facebook 
 
 [Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics. It allows you to measure and rudder audiences to build effective marketing and advertising campaigns.
 
+This destination also supports the [**Conversions API**](https://developers.facebook.com/docs/marketing-api/conversions-api/) for sending server side events.
+
 You can now send your event data directly to Facebook Pixel through RudderStack.
 
 {% hint style="success" %}
@@ -186,7 +188,7 @@ rudderanalytics.track("Product Added", {
 
 ## Standard Events
 
-In the dashboard, you have the option to **map your events to standard Facebook events**. RudderStack maps the events in the code and sends them to Facebook pixel as the standard event as specified. All the properties will be sent as the event properties.
+In the dashboard, you have the option to **map your events to standard Facebook events**. RudderStack maps the events in the code and sends them to Facebook pixel as the standard event as specified. The properties will be sent according to what the standard event requires.
 
 {% hint style="info" %}
 Please go through our guide on [E-Commerce Event Specifications](https://docs.rudderstack.com/rudderstack-api-spec/rudderstack-ecommerce-events-specification) for more information
@@ -204,6 +206,25 @@ The mapping is done as follows in RudderStack:
 | `Checkout Started` | `InitiateCheckout` |
 
 In Pixel, a currency for **Purchase** events is required to be specified. If not provided the default will be set to **`USD`**.
+
+### Other Standard Events
+
+If you map your event to any of the following Standard Events listed below, then RudderStack will treat it as an `Other Standard Event`. For any properties you would like to send with the other standard event you must specify them in the **Standard Events custom properties** settings field.
+
+```javascript
+"AddToWishlist"
+"AddPaymentInfo"
+"Lead"
+"CompleteRegistration"
+"Contact"
+"CustomizeProduct"
+"Donate"
+"FindLocation"
+"Schedule"
+"StartTrial"
+"SubmitApplication"
+"Subscribe"
+```
 
 ## Legacy Events
 

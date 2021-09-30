@@ -38,6 +38,10 @@ This can cause a loss of the event metadata that RudderStack uses internally to 
 
 Previously created transformations shown as `Version: V0` don't support libraries. If you want to use libraries, please create a new transformation with `Version: V1` that support libraries. You can then reconnect your destinations with this new transformation that you have created.
 
+## I want to update my existing version v0 transformation code to version v1. What do I do?
+
+You cannot update transformation `Version: V0` directly to `Version: V1`. Please create a new transformation with updated code `Version: V1`. You can then reconnect your destinations with this new transformation that you have created and delete existing `Version: V0` transformation.
+
 ## Contact Us
 
 For more information on transformations and libraries in RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.

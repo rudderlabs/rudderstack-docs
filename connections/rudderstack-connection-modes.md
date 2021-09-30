@@ -74,7 +74,7 @@ Device mode integrations will send data to the destinations directly from your c
 {% endhint %}
 
 {% hint style="warning" %}
-Device mode does not support the RudderStack [**Transformations**](../adding-a-new-user-transformation-in-rudderstack/) feature.
+Device mode does not support the RudderStack [**Transformations**](../transformations/) feature.
 {% endhint %}
 
 ## Which Connection Mode Should I Choose?
