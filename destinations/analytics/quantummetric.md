@@ -40,7 +40,7 @@ The following settings need to be configured to successfully set up Quantum Metr
 * **Site ID**: Enter your site ID here.
 
 {% hint style="success" %}
-You can get the Site ID by logging into your [**IAM Quantum Metric dashboard**](https://iam.quantummetric.com/). There, select the **Account** button in the top-right corner. Then, click on **Install** and inspect the installation tag. Your site ID will be found in the following line:
+Your can get the Site ID by logging into your [**IAM Quantum Metric dashboard**](https://iam.quantummetric.com/). There, select the **Account** button in the top-right corner. Then, click on **Install** and inspect the installation tag. Your site ID will be found in the following line:
 
 ```text
 qtm.src = 'https://cdn.quantummetric.com/qscripts/quantum-<SITE_ID>.js';
