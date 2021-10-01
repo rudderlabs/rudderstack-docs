@@ -6,11 +6,11 @@ description: >-
 
 # JavaScript
 
-## 1. **What is the RudderStack JavaScript SDK?**
+## 1. What is the RudderStack JavaScript SDK?
 
 RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to track and send user events from your website to RudderStack. You can then further transform and route this event data to the destination platform of your choice.
 
-## **2. Installing the** RudderStack **JavaScript SDK**
+## 2. Installing the RudderStack JavaScript SDK
 
 {% hint style="info" %}
 **NOTE:** To quickly get up and running with setting up and using the RudderStack JavaScript SDK, please go through our [quick start guide](https://github.com/rudderlabs/rudder-sdk-js#how-to-use-the-rudderstack-javascript-sdk).
@@ -18,7 +18,7 @@ RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to trac
 
 To integrate the RudderStack JavaScript SDK with your website, place either the minified or non-minified version of the code snippet in the `<head>` section of your website.
 
-### **2.1. Minified Code**
+### 2.1. Minified Code
 
 ```javascript
 <script> 
@@ -34,7 +34,7 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 
 ![Source write key and Data Plane URL](../../../.gitbook/assets/workspace-token%20%284%29%20%283%29%20%284%29%20%284%29%20%284%29%20%284%29%20%282%29%20%281%29%20%288%29.png)
 
-### **2.2. Non-minified Code**
+### 2.2. Non-minified Code
 
 ```javascript
 <script>
@@ -79,9 +79,9 @@ rudderanalytics.page();
 Combining the initialization and the above async script together, we get:
 
 ```javascript
-<script type="text/javascript"> 
+<script type="text/javascript">
 !function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
- e.load(WRITE_KEY, DATA_PLANE_URL), e.page()}(); 
+ e.load(WRITE_KEY, DATA_PLANE_URL), e.page()}();
 </script>
 ```
 
@@ -99,7 +99,7 @@ The above code snippet does the following:
 | **`reset()`** | Resets the `userid` and the associated traits |
 
 * Loads the analytics object with your write key.
-* Makes the `page()`call to track the page view. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. If you want to override them, use the call mentioned in the section JavaScript SDK APIs.
+* Makes the `page()` call to track the page view. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. If you want to override them, use the call mentioned in the section JavaScript SDK APIs.
 
 ### 2.3. Alternative Installation
 
@@ -131,7 +131,7 @@ You can also do so with **ES5**, using the `require` method, as shown:
 ```jsx
 var rudderanalytics = require("rudder-sdk-js")
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL)
-exports.rudderanalytics  =  rudderanalytics
+exports.rudderanalytics = rudderanalytics
 ```
 
 Please refer to the following projects for a detailed walk-through of the above steps:
@@ -180,7 +180,7 @@ Let us take a look at some of the key methods in this section:
 
 The `load()` method loads the `rudderanalytics.js` file with your write key.
 
-The `load()`method is defined as follows:
+The `load()` method is defined as follows:
 
 `rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URL>, options);`
 
@@ -192,13 +192,13 @@ The `load()`method is defined as follows:
 
 The `options` parameter in the above `load` call looks like the following:
 
-```text
+```javascript
 {
- logLevel: "DEBUG" | "INFO" | "WARN", 
- integrations: IntegrationOpts,
- configUrl: string,  // defaults to https://api.rudderlabs.com
- queueOptions: QueueOpts,
- loadIntegration: boolean // defaults to true.
+  logLevel: "DEBUG" | "INFO" | "WARN",
+  integrations: IntegrationOpts,
+  configUrl: string, // defaults to https://api.rudderlabs.com
+  queueOptions: QueueOpts,
+  loadIntegration: boolean // defaults to true.
 }
 ```
 
@@ -237,13 +237,13 @@ More information on the Load **`IntegrationOpts`** option can be found here:
 
 * The structure of **`QueueOpts`** looks like the following:
 
-```text
+```javascript
 QueueOpts {
- maxRetryDelay: 360000, // Upper cap on maximum delay for an event
- minRetryDelay: 1000, // minimum delay before sending an event
- backoffFactor: 2, // exponentional base
- maxAttempts: 10, // max attempts
- maxItems: 100,  // max number of events in storage
+  maxRetryDelay: 360000, // Upper cap on maximum delay for an event
+  minRetryDelay: 1000, // minimum delay before sending an event
+  backoffFactor: 2, // exponentional base
+  maxAttempts: 10, // max attempts
+  maxItems: 100, // max number of events in storage
 }
 ```
 
@@ -323,12 +323,12 @@ The above `identify` call has the following parameters:
 
 The options parameter in the `identify` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
+```javascript
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
@@ -343,10 +343,10 @@ originalTimestamp: ISO 8601 date string,
 
 ```javascript
 IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+  All: boolean, // default true
+  <Destination1>: boolean,
+  <Destination2>: boolean,
+  ...
 }
 ```
 
@@ -367,12 +367,12 @@ More information on the **`IntegrationOpts`** option can be found here:
 {% endhint %}
 
 {% hint style="success" %}
-There is no need to call`identify()`for anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`
+There is no need to call `identify()` for anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`.
 {% endhint %}
 
 ### 3.2.2. `identify` Options
 
-The JavaScript SDK generates one unique `anonymousId` , stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps in identifying the users from other sites that are hosted under a sub-domain.
+The JavaScript SDK generates one unique `anonymousId`, stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps in identifying the users from other sites that are hosted under a sub-domain.
 
 {% hint style="info" %}
 As an example, if you include the RudderStack JavaScript SDK in both **admin.samplewebsite.com** and **app.samplewebsite.com**, the SDK will store the cookie in the top-level domain **samplewebsite.com**.
@@ -387,7 +387,7 @@ There are two options that you can use to identify users when using the JavaScri
 There can be scenarios where you may want to provide your own `anonymousID` instead of an auto-generated ID by the SDK. To do so, you can provide the `anonymousId` in the `options` parameter of the `identify` call, as mentioned above. This will send the value provided by you in the `anonymousId` key of the event.
 
 {% hint style="info" %}
-All other events will have`anonymousId` from the one persisted in the cookie, except this event where you override the options.
+All other events will have `anonymousId` from the one persisted in the cookie, except this event where you override the options.
 {% endhint %}
 
 An example of this approach is as shown in the code snippet below:
@@ -402,7 +402,7 @@ rudderanalytics.identify(
   () => {
     console.log("in identify call");
   }
-);js
+);
 ```
 
 ### 3.2.4. Overriding the `anonymousId` for all future events using `setAnonymousId`
@@ -425,8 +425,8 @@ rudderanalytics.identify("userId", { email1: "name@domain.com" }, () => {
 
 You can call the following method to parse the AMP Linker ID and set the **`anonymousId`** as shown:
 
-```text
-setAnonymousId(null, "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>...")
+```javascript
+setAnonymousId(null, "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>...");
 ```
 
 Here, the second parameter is the AMP Linker ID format in accordance with the [specified structure](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [RudderStack Linker parameter](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/amp-analytics#amp-linker), the **`<idName1>`** value will be **`rs_amp_id`**.
@@ -448,7 +448,7 @@ To identify new users in scenarios like a new login, you can take one of the fol
 * Call the `identify` API with a new `userid`. RudderStack will reset all cookies related to the user for `userid` and `user-traits` and update them with the new values provided by you.
 
 {% hint style="info" %}
-The `anonymousId` will remain unchanged in this case. It will be the value that you set explicitly using `setAnonymousId` , or the auto-generated value set by the SDK while loading.
+The `anonymousId` will remain unchanged in this case. It will be the value that you set explicitly using `setAnonymousId`, or the auto-generated value set by the SDK while loading.
 {% endhint %}
 
 * Explicitly call `rudderanalytics.reset()` and then call `identify`. It has the same effect as described above.
@@ -515,12 +515,12 @@ The above code snippet has the following parameters:
 
 The `options` parameter in the `page` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
+```javascript
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
@@ -535,10 +535,10 @@ originalTimestamp: ISO 8601 date string,
 
 ```javascript
 IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+  All: boolean, // default true
+  <Destination1>: boolean,
+  <Destination2>: boolean,
+  ...
 }
 ```
 
@@ -558,7 +558,7 @@ More information on the **`IntegrationOpts`** option can be found here:
 
 This method allows you to track any actions that your users might perform. Each of these actions is commonly referred to as an **event**.
 
-The `track()`method definition is as follows:
+The `track()` method definition is as follows:
 
 `rudderanalytics.track(event,[properties],[options],[callback]);`
 
@@ -591,12 +591,12 @@ The above code snippet has the following parameters:
 
 The `options` parameter in the `track` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
+```javascript
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
@@ -657,12 +657,12 @@ The above `alias` call has the following parameters:
 
 The `options` parameter in the `alias` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
+```javascript
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
@@ -677,10 +677,10 @@ originalTimestamp: ISO 8601 date string,
 
 ```javascript
 IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+  All: boolean, // default true
+  <Destination1>: boolean,
+  <Destination2>: boolean,
+  ...
 }
 ```
 
@@ -725,12 +725,12 @@ The above `group` call has the following parameters:
 
 The `options` parameter in the `group` call looks like the following:
 
-```text
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
+```javascript
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
 }
 ```
 
@@ -745,10 +745,10 @@ originalTimestamp: ISO 8601 date string,
 
 ```javascript
 IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
+  All: boolean, // default true
+  <Destination1>: boolean,
+  <Destination2>: boolean,
+  ...
 }
 ```
 
@@ -856,7 +856,7 @@ Below shows some of the supported names that RudderStack can intake for each des
 
 ### 4.2. Specifying Selective Destinations in the `load` Method
 
-You can also choose to load selective destinations by modifying the [`load`](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#3-1-load) method to take a third argument. You can pass an`integrations` object containing the destination names in the format specified [here](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention). RudderStack loads only those destinations that are marked as enabled with the boolean value `true` .
+You can also choose to load selective destinations by modifying the [`load`](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#3-1-load) method to take a third argument. You can pass an `integrations` object containing the destination names in the format specified [here](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention). RudderStack loads only those destinations that are marked as enabled with the boolean value `true`.
 
 A sample RudderStack load method with integration names passed as arguments will look like the following snippet:
 
@@ -929,7 +929,7 @@ rudderanalytics.track(
 );
 ```
 
-The above code snippet will append `plan` as a trait to the track event.The trait `email` will not be appended, as it was not specified in the `context.traits` field.
+The above code snippet will append `plan` as a trait to the track event. The trait `email` will not be appended, as it was not specified in the `context.traits` field.
 
 ## 6. Querystring API
 
@@ -959,7 +959,7 @@ rudderanalytics.track("test event", {testProp: "prop1"});
 rudderanalytics.setAnonymousId("anonymousId");
 ```
 
-## 7. Detect**ing** Ad-blocked Pages
+## 7. Detecting Ad-blocked Pages
 
 RudderStack's JavaScript SDK provides a way to send a page view containing relevant markers on whether a page is ad-blocked. You can analyze this data to find what percent of your site's page views are affected by ad-blockers.
 
@@ -992,7 +992,7 @@ rudderanalytics.page("RudderJS-Initiated", "ad-block page request", {
 });
 ```
 
-## **8. FAQs**
+## 8. FAQs
 
 This section provides solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
 
@@ -1039,15 +1039,15 @@ To check if data is being transmitted to the specified destinations, go to the `
 **NOTE**: If the outbound request is not being shown, check if you have installed and set up the RudderStack JavaScript SDK correctly, or if ad-blockers are enabled on your browser.
 {% endhint %}
 
-### **What is the size limit on the requests?**
+### What is the size limit on the requests?
 
 The size limit on requests is 32 KB per message.
 
-### **Can I send the event data to specific destinations only?**
+### Can I send the event data to specific destinations only?
 
 Yes, you can. Refer to the [How to Filter Selective Destinations to Send Your Event Data](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data) section above to see how to do this.
 
-### **What is an Anonymous ID and how to retrieve it?**
+### What is an Anonymous ID and how to retrieve it?
 
 An Anonymous ID is an auto-generated UUID \(Universally Unique Identifier\) that gets assigned to each unique visitor to your website.
 
