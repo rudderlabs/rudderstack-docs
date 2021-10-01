@@ -168,10 +168,10 @@ If this option gives an error, it means that one or more fields specified in the
 {% endhint %}
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#granting-permissions) section. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#granting-permissions) section. 
 
 {% hint style="warning" %}
-If this option gives an error, verify if you have successfully created the RudderStack schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
+If this option gives an error, verify if you have successfully created the `rudderstack_` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
 {% endhint %}
 
 ## Contact Us
