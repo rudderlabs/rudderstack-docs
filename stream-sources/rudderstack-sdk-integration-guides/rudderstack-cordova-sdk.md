@@ -255,6 +255,28 @@ A sample `reset` call is as shown:
 RudderClient.reset()
 ```
 
+## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+
+RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking:
+
+```javascript
+RudderClient.optOut(true);
+```
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+```javascript
+RudderClient.optOut(false);
+```
+
+{% hint style="info" %}
+The `optOut` API is available in the Cordova SDK starting from version `1.0.1`.
+{% endhint %}
+
 ## Configuring the RudderStack client
 
 You can configure your RudderStack client by passing the following parameters in the `configuration` object of your `RudderClient.initialize()` call:
