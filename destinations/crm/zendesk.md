@@ -8,10 +8,10 @@ description: Step-by-step guide to set up Zendesk as a destination in RudderStac
 
 RudderStack supports integration with Zendesk and allows you to send your customer data to Zendesk seamlessly.
 
-This document lays out the steps to follow for sending your event data to Zendesk. 
+This document lays out the steps to follow for sending your event data to Zendesk.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/zendesk)**.**
+**Find the open-source transformer code for this destination in our [GitHub repo](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/zendesk).**
 {% endhint %}
 
 ## Getting Started
@@ -99,13 +99,13 @@ rudderanalytics.identify("12345678",{
 });
 ```
 
-This `identify` call updates the user as well as remove it from the organization with id `900001329943`
+This `identify` call updates the user as well as remove it from the organization with id `900001329943`.
 
 ## Track
 
 Zendesk expects an `userId` for every `track` call. You can set the `userId` by producing an `identify` call before sending any `track` event. We affix the user details from the `identify` call, to the subsequent calls.
 
-Here is a sample `track` call
+Here is a sample `track` call:
 
 ```javascript
 rudderanalytics.track("Track me", {
@@ -126,9 +126,9 @@ rudderanalytics.track("Track me", {
 
 You can use the `group` call to create or update an organization in Zendesk. We use the `groupId` to do that.
 
-Here is a sample `group` call
+Here is a sample `group` call:
 
-```text
+```javascript
 rudderanalytics.group("123456789", {
   name: "Softworks",
   country: "UK",
@@ -136,7 +136,7 @@ rudderanalytics.group("123456789", {
 });
 ```
 
-The group call connects the user to the organization.‌ You can incapacitate this feature by disabling the "**Send Group Calls without User ID"** on the dashboard. We create or update the organization if no user is associated with the event.
+The group call connects the user to the organization.‌ You can incapacitate this feature by disabling the "**Send Group Calls without User ID**" on the dashboard. We create or update the organization if no user is associated with the event.
 
 Currently, RudderStack maps the group traits to a subset of the standard organization attributes of Zendesk. We'll create a new custom field for any unmapped attributes.
 
@@ -151,9 +151,9 @@ The current mapping is as follows:
 | `url` | `url` |
 | `deleted` | `deleted` |
 
-We assume that there is always an `identify` call before any `group` call with userId is made. If `groupId` and `userId` both are present in the payload of a group call, then, we will find the user with the **email** present in the traits, if not present, we will create the user. We also find the organization by the `groupId` that you provide. If that is not present, we create that too and after that, we do the association.
+We assume that there is always an `identify` call before any `group` call with `userId` is made. If `groupId` and `userId` both are present in the payload of a group call, then, we will find the user with the **email** present in the traits, if not present, we will create the user. We also find the organization by the `groupId` that you provide. If that is not present, we create that too and after that, we do the association.
 
-If the user exists the `organizationId` will be attached to the user and all the user information will be sent for this call. The `traits` under `message` containts the group information but when the `identify` call is being made during the `group` call the user informations will be fetched from the `context.traits`.
+If the user exists the `organizationId` will be attached to the user and all the user information will be sent for this call. The `traits` under `message` contains the group information but when the `identify` call is being made during the `group` call the user information will be fetched from the `context.traits`.
 
 ## Settings
 
@@ -169,11 +169,11 @@ This is the API token that will be used to authenticate the request. If you do n
 
 ### Zendesk Domain
 
-This is your Zendesk subdomain \(not including `.zendesk.com`\)
+This is your Zendesk subdomain \(not including `.zendesk.com`\).
 
 ### Create users as verified
 
-Enabling this setting will create users as verified\(skipping the email verification\). We will send `verified` as true if this setting is enabled
+Enabling this setting will create users as verified\(skipping the email verification\). We will send `verified` as true if this setting is enabled.
 
 ### Send Group Calls without a User ID
 
