@@ -175,7 +175,7 @@ rudderClient.optOut(false);
 {% endtabs %}
 
 {% hint style="info" %}
-The `optOut` API is available in the RudderStack Android SDK from version `1.0.19`.
+The `optOut` API is available in the RudderStack Android SDK from version `1.0.21`.
 {% endhint %}
 
 ## Track

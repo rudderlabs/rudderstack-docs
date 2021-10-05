@@ -170,7 +170,7 @@ RSClient.sharedInstance()?.optOut(false)
 {% endtabs %}
 
 {% hint style="info" %}
-The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.23`.
+The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.24`.
 {% endhint %}
 
 ## Track
