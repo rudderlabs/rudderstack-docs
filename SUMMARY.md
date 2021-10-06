@@ -59,7 +59,7 @@
   * [Mailchimp](cloud-extract-sources/mailchimp.md)
   * [Mixpanel](cloud-extract-sources/mixpanel.md)
   * [Marketo](cloud-extract-sources/marketo.md)
-  * [Netsuite](cloud-extract-sources/netsuite.md)
+  * [NetSuite](cloud-extract-sources/netsuite.md)
   * [Pipedrive](cloud-extract-sources/pipedrive.md)
   * [QuickBooks](cloud-extract-sources/quickbooks.md)
   * [Salesforce](cloud-extract-sources/salesforce/README.md)
