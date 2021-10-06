@@ -44,7 +44,7 @@ A sample `track` call is as shown:
 
 ```python
 rudder_analytics.track('developer_user_id', 'Simple Track Event', {
-  'key1': 'val1'
+    'key1': 'val1'
 })
 ```
 
@@ -75,7 +75,7 @@ The `identify` method parameters are as described below:
 | `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
-| `traits` | Object | Optional | Dictionary of the traits associated with the user, such as `name`or `email`. |
+| `traits` | Object | Optional | Dictionary of the traits associated with the user, such as `name` or `email`. |
 
 ## Track
 
@@ -132,7 +132,7 @@ The `page` method parameters are as described below:
 | `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
 | `name` | String | Required | Name of the viewed page. |
-| `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer` |
+| `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`. |
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
 
 ## Screen
@@ -160,7 +160,7 @@ The `screen` method parameters are as described below:
 | `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
 | `name` | String | Required | Name of the viewed screen. |
-| `properties` | Object | Optional | Dictionary of the properties associated with the screen, such as `url` and `referrer` |
+| `properties` | Object | Optional | Dictionary of the properties associated with the screen, such as `url` and `referrer`. |
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
 
 ## Group
@@ -203,9 +203,9 @@ The `alias` call lets you merge different identities of a known user.
 {% hint style="success" %}
 The following downstream destinations support the `alias` call:
 
-* \*\*\*\*[**MoEngage**](../../destinations/marketing/moengage.md)\*\*\*\*
-* \*\*\*\*[**Kissmetrics**](../../destinations/analytics/kissmetrics.md)\*\*\*\*
-* \*\*\*\*[**Amplitude**](../../destinations/analytics/amplitude.md) ****\(only supported by the [**JavaScript SDK**](rudderstack-javascript-sdk/) via [**Cloud Mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#cloud-mode)\)
+* [**MoEngage**](../../destinations/marketing/moengage.md)
+* [**Kissmetrics**](../../destinations/analytics/kissmetrics.md)
+* [**Amplitude**](../../destinations/analytics/amplitude.md) \(only supported by the [**JavaScript SDK**](rudderstack-javascript-sdk/) via [**Cloud Mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#cloud-mode)\)
 {% endhint %}
 
 {% hint style="info" %}
@@ -233,7 +233,7 @@ The `alias` method parameters are as mentioned below:
 
 To handle the errors that may occur while sending events using the RudderStack client, you can declare a callback called `on_error`.
 
-```text
+```python
 def on_error(error, events):
     print("Error response:", error)
 
