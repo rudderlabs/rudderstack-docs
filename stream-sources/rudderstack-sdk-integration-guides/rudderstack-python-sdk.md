@@ -38,7 +38,7 @@ rudder_analytics.data_plane_url = <YOUR_DATA_PLANE_URL>
 
 ## Sending Events from RudderStack
 
-Once the RudderStack client is initialized, you can use it to send your customer events. 
+Once the RudderStack client is initialized, you can use it to send your customer events.
 
 A sample `track` call is as shown:
 
@@ -109,7 +109,7 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call lets you record your page views with any additional relevant information about the viewed page. 
+The `page` call lets you record your page views with any additional relevant information about the viewed page.
 
 {% hint style="info" %}
 For more information on the `page` call, refer to the [**RudderStack Events Specification**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/page) guide.
@@ -255,5 +255,5 @@ The common request responses from the RudderStack server are listed below:
 
 ## Contact Us
 
-For more information on the RudderStack Python SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+For more information on the RudderStack Python SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) **\*\*or start a conversation on our \[**Slack\*\*\]\([https://resources.rudderstack.com/join-rudderstack-slack](https://resources.rudderstack.com/join-rudderstack-slack)\) channel.
 

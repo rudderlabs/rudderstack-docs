@@ -238,6 +238,14 @@ If this option gives an error, it means that one or more fields specified in the
 If this option gives an error, verify if you have successfully created the `_RUDDERSTACK` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
 {% endhint %}
 
+{% hint style="info" %}
+**If you are trying to re-use the credentials for Warehouse Actions from before September 2021, you may run into the following permissions error:**
+
+![](https://lh5.googleusercontent.com/DFQzUbsZSH9g-lL7zE5ND9PPgjzegbm3Bmj5Srf2220A1HvJ5bEbo6LbJPSwd_w00dhBjkD-Iz68x9p9UXTwGGxJ8--arzJQW9rU0mRnJD161tokINPFk6bjRFshEdEy3p_qG__D=s0)
+
+As mentioned above, you will need to update your Snowflake account permissions by following the commands in [**this section**](https://docs.rudderstack.com/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
+{% endhint %}
+
 ## Contact Us
 
 If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!

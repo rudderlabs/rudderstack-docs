@@ -30,14 +30,14 @@ To quickly get started, you can [**sign up for RudderStack**](https://app.rudder
 Refer to the [**RudderStack Architecture**](get-started/rudderstack-architecture.md) guide for more information the RudderStack Data Plane.
 {% endhint %}
 
-For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. 
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required.
 
 Here's how to get the Data Plane URL:
 
 * If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
 
 {% hint style="success" %}
-An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.  
+An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.
 {% endhint %}
 
 * If you're using [**RudderStack Cloud** **Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
@@ -259,7 +259,7 @@ You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` 
 
 #### 2. I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
 
-* Firstly, make sure you have set up the [**required user permissions**](https://docs.rudderstack.com/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) _\*\*_for PostgreSQL.
+* Firstly, make sure you have set up the [**required user permissions**](https://docs.rudderstack.com/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) \_\*\*\_for PostgreSQL.
 * Then, check the status of the sync in the [**RudderStack dashboard**](https://app.rudderstack.com/syncs).
 * Check if the database is accessible by whitelisting all the RudderStack IPs listed [**here**](https://docs.rudderstack.com/data-warehouse-integrations/warehouse-faqs#which-ips-should-be-whitelisted).
 * Ensure that all the security group policies for S3 are set as specified [**here**](https://docs.rudderstack.com/destinations/storage-platforms/amazon-s3#permissions).

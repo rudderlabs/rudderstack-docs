@@ -436,7 +436,7 @@ You can configure your client based on the following parameters using `RudderCon
 If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the [**Control Plane Lite**](../../../get-started/control-plane-lite.md) utility to self-host your Control Plane, then follow [**this guide**](https://docs.rudderstack.com/user-guides/how-to-guides/rudderstack-control-plane-lite#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
 
 {% hint style="warning" %}
-You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using the [**RudderStack Cloud dashboard**](https://app.rudderstack.com/) \([**https://app.rudderstack.com**](https://app.rudderstack.com)\). This parameter is supported only if you are using the open-source [**Control Plane Lite**](../../../get-started/control-plane-lite.md) _\*\*_to self-host your Control Plane.
+You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using the [**RudderStack Cloud dashboard**](https://app.rudderstack.com/) \([**https://app.rudderstack.com**](https://app.rudderstack.com)\). This parameter is supported only if you are using the open-source [**Control Plane Lite**](../../../get-started/control-plane-lite.md) \_\*\*\_to self-host your Control Plane.
 {% endhint %}
 
 ## Setting Android Device Token
