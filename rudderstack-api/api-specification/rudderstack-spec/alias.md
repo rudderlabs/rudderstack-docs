@@ -16,6 +16,7 @@ The following destinations support the `alias` call:
 * \*\*\*\*[**MoEngage**](../../../destinations/marketing/moengage.md)\*\*\*\*
 * \*\*\*\*[**Kissmetrics**](../../../destinations/analytics/kissmetrics.md)\*\*\*\*
 * \*\*\*\*[**Amplitude**](../../../destinations/analytics/amplitude.md) ****\(only supported by the [**JavaScript SDK**](../../../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) via [**Cloud Mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#cloud-mode)\)
+* \*\*\*\*[**Mixpanel**](../../../destinations/analytics/mixpanel.md)\*\*\*\*
 {% endhint %}
 
 ## Sample Payload

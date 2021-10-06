@@ -131,6 +131,48 @@ You can disable these events using the`withTrackLifecycleEvents` method of `RSCo
 
 RudderStack supports all the major API calls across all iOS devices via the SDK. These include the `track`, `identify`, and `screen` calls.
 
+## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+
+RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `YES` or `NO` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking::
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:YES];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(true)
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `NO` or `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:NO];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(false)
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.24`.
+{% endhint %}
+
 ## Track
 
 You can record the users' activity through the `track` method. Every action performed by the user is called an `event`.
@@ -780,6 +822,56 @@ This scenario is most likely caused by the default behavior of iOS apps staying 
 When a user closes an iOS or Android app, events will still continue to be sent from the queue until the app closes in the background as well. Any events still in the queue will remain there until the user reopens the app. Due to this lag, there are some scenarios where there can be significant differences between `timestamp` \(when the event was created\) and `received_at` \(when RudderStack actually receives the events\).
 
 For Android apps, events can be sent from the background after apps close for a longer period of time than iOS apps, therefore, more of the events coming from the Android SDK have closer `timestamp` and `received_at` times.
+
+### Does RudderStack integrate with SKAdNetwork?
+
+RudderStack does not integrate with SKAdNetwork. However, SKAdNetwork can be directly integrated into an iOS application alongside RudderStack.
+
+### Can I disable event tracking until the user gives their consent?
+
+Yes, you can.
+
+RudderStack gives you the ability to disable tracking any user activity until the user gives their consent, by leveraging the `optOut` API. This is required in cases where your app is audience-dependent \(e.g. minors\) or where you're using the app to track the user events \(e.g. EU users\) to meet the data protection and privacy regulations.
+
+The `optOut` API takes `true` / `false` \(in case of Swift\) or `YES` / `NO` \(in case of Objective-C\) as a value to enable or disable tracking user activities. So, to disable user tracking, you can use the `optOut` API as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:YES];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(true)
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user gives their consent, you can enable user tracking again, as shown:
+
+{% tabs %}
+{% tab title="Objective-C" %}
+```objectivec
+[[RSClient sharedInstance] optOut:NO];
+```
+{% endtab %}
+
+{% tab title="Swift" %}
+```swift
+RSClient.sharedInstance()?.optOut(false)
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+For more information on the `optOut` API, refer to the [**Enabling/Disabling User Tracking via optOut API \(GDPR Support\)**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk#enabling-disabling-user-tracking-via-the-optout-api-gdpr-support) section above.
+{% endhint %}
+
+{% hint style="success" %}
+You only need to call the `optOut` API with the required parameter only once, as the information persists within the device even if you reboot it.
+{% endhint %}
 
 ## Contact Us
 

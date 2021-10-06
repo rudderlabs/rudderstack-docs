@@ -35,6 +35,10 @@ To set up Zendesk as a source on the RudderStack dashboard, follow these steps:
 
 ![](../.gitbook/assets/4%20%282%29.png)
 
+{% hint style="warning" %}
+For the **Subdomain** input, do not include `.zendesk.com` as part of the subdomain. Just include the subdomain name.
+{% endhint %}
+
 {% hint style="info" %}
 To create a Zendesk API token, log into your Zendesk dashboard, and navigate to **Admin** - **Channels** - **API** in the Zendesk admin interface, and click the **Add New Token** link.
 {% endhint %}

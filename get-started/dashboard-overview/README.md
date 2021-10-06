@@ -80,12 +80,22 @@ See the [**RudderStack API**](../../rudderstack-api/) guide for details on vario
 
 ## Data Plane URL
 
-This is the URL required for routing and processing your events to RudderStack.
+{% hint style="info" %}
+Refer to the [**RudderStack Architecture**](../rudderstack-architecture.md) guide for more information the RudderStack Data Plane.
+{% endhint %}
 
-### **Getting the Data Plane URL**
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. 
 
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by installing and setting up RudderStack in your preferred development environment.
-* If you're using the **enterprise** version of RudderStack, contact us for the data plane URL with the email ID you used to sign up for RudderStack.
+Here's how to get the Data Plane URL:
+
+* If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [**installing and setting up RudderStack**](../installing-and-setting-up-rudderstack/) in your preferred environment. 
+
+{% hint style="success" %}
+An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.  
+{% endhint %}
+
+* If you're using [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
+* If you're using the [**pro or enterprise**](https://rudderstack.com/pricing) version of RudderStack, [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for the Data Plane URL with the email ID you used to sign up for RudderStack.
 
 ## Contact Us
 
