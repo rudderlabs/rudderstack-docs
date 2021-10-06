@@ -237,6 +237,28 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 RudderClient.reset();
 ```
 
+## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+
+RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking:
+
+```dart
+RudderClient.optOut(true);
+```
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+```dart
+RudderClient.optOut(false);
+```
+
+{% hint style="info" %}
+The `optOut` API is available in the Flutter SDK starting from version `1.0.6`.
+{% endhint %}
+
 ## Enabling / Disabling Events for Specific Destinations
 
 The Flutter SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:
