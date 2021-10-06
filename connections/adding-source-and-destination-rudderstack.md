@@ -22,18 +22,18 @@ Follow these steps to add an event data source in RudderStack:
 
 * Log in to the **RudderStack dashboard**.
 
-![](../.gitbook/assets/1%20%2827%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29.png)
+  ![](../.gitbook/assets/1%20%2827%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29.png)
 
 * Under Sources, click on **Add Source**. From the list of sources, click on the source you want to set up in RudderStack.
 
-![](../.gitbook/assets/2%20%2825%29%20%281%29%20%281%29.png)
+  ![](../.gitbook/assets/2%20%2825%29%20%281%29%20%281%29.png)
 
 {% hint style="success" %}
 All the RudderStack sources are classified into the following three categories. Read their respective documentation for more information:
 
-* \*\*\*\*[**Event Streams**](../stream-sources/)\*\*\*\*
-* \*\*\*\*[**Cloud Extract**](../cloud-extract-sources/)\*\*\*\*
-* \*\*\*\*[**Warehouse Actions**](../warehouse-actions/)\*\*\*\*
+* [**Event Streams**](../stream-sources/)
+* [**Cloud Extract**](../cloud-extract-sources/)
+* [**Warehouse Actions**](../warehouse-actions/)
 {% endhint %}
 
 * Click on the desired source, assign a name to it, and click **Next**. 
@@ -45,7 +45,7 @@ Setting up the data sources to ingest data from your cloud apps might require so
 
 * **Important**: Note the source **Write Key**. This is required to configure the RudderStack SDK to track and collect events from the source platform.
 
-![](../.gitbook/assets/latest.png)
+  ![](../.gitbook/assets/latest.png)
 
 ## Adding a Destination
 
@@ -57,30 +57,30 @@ To add a destination in RudderStack, follow these steps:
 
 * On your dashboard home page, click on the **ADD DESTINATION** option under **Destinations**, as shown:
 
-![](../.gitbook/assets/1%20%2827%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
+  ![](../.gitbook/assets/1%20%2827%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
 
 * Alternatively, you can also connect your source to a destination as shown:
 
-![](../.gitbook/assets/latest-1.png)
+  ![](../.gitbook/assets/latest-1.png)
 
 * From the list of destinations, select the desired destination. Assign a name to it and click on **Next**. 
 * Select the data source for this destination and click on **Next**.
 
-![](../.gitbook/assets/screen-shot-2021-05-19-at-4.54.30-pm.png)
+  ![](../.gitbook/assets/screen-shot-2021-05-19-at-4.54.30-pm.png)
 
 * Configure the destination with the relevant connection settings. Refer to the specific [**destination documentation**](../destinations/) for more details on these settings.
 
-![](../.gitbook/assets/ga1%20%281%29.png)
+  ![](../.gitbook/assets/ga1%20%281%29.png)
 
 
 
 * RudderStack lets you transform your source events in a destination-specific format through the [**Transformations**](../transformations/) feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**.
 
-![](../.gitbook/assets/screen-shot-2021-05-19-at-5.01.56-pm.png)
+  ![](../.gitbook/assets/screen-shot-2021-05-19-at-5.01.56-pm.png)
 
 * Your destination should now be configured successfully.
 
-![](../.gitbook/assets/latest23.png)
+  ![](../.gitbook/assets/latest23.png)
 
 ### Updating a Destination
 
@@ -88,7 +88,7 @@ Here are a few things to keep in mind when updating a destination:
 
 * To rename a destination, click on the edit icon next to the destination name as shown:
 
-![](../.gitbook/assets/screen-shot-2021-08-25-at-11.18.08-am.png)
+  ![](../.gitbook/assets/screen-shot-2021-08-25-at-11.18.08-am.png)
 
 * To add or change the transformation, go the **Transformation** tab.
 * To modify the destination configuration, go to the **Configuration** tab.
