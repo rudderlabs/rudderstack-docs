@@ -148,7 +148,7 @@ To set up Snowflake as a source in RudderStack, follow these steps:
 * Log into your [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.png)
+![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%286%29.png)
 
 * Scroll down to the **Warehouse Sources** and select **Snowflake**. Then, click on **Next**.
 
@@ -213,6 +213,29 @@ RudderStack will start importing data from your Snowflake instance as per the sp
 
 {% hint style="info" %}
 If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
+{% endhint %}
+
+## FAQ
+
+### What do the three validations under Verifying Credentials imply?
+
+When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+
+![](../.gitbook/assets/validations.png)
+
+These options are explained below:
+
+* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
+
+{% hint style="warning" %}
+If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
+{% endhint %}
+
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/snowflake#granting-permissions) section. 
+
+{% hint style="warning" %}
+If this option gives an error, verify if you have successfully created the `_RUDDERSTACK` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
 {% endhint %}
 
 ## Contact Us

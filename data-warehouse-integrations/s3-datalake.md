@@ -50,6 +50,15 @@ If you don't specify a namespace in the settings, it is set to the source name b
 Make sure the above credentials \(**Access Key ID** and **Secret Access Key**\) should have permissions to read and write into the configured bucket.
 {% endhint %}
 
+{% hint style="warning" %}
+ If AWS Glue is enabled, make sure to grant the following permissions:
+
+* glue:CreateTable
+* glue:UpdateTable
+* glue:CreateDatabase
+* glue:GetTables
+{% endhint %}
+
 ### Finding Your Data in the S3 Data Lake
 
 RudderStack converts your events into Parquet files and dumps them to the configured S3 bucket. Before dumping the events, RudderStack groups them by the event name based on the time \(UTC\) they were received. The folder structure looks something like the following:
