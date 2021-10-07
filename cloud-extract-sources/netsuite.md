@@ -118,13 +118,13 @@ In this step, you’ll generate access tokens for the integration record \(appli
 To set up NetSuite as a source on the RudderStack dashboard, follow these steps:
 
 * Log into your [**RudderStack dashboard**](https://app.rudderstack.com).
-* From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
+* From the left panel, select **Sources**. Then, click on **New Source**, as shown:
 
-![](../.gitbook/assets/1%20%284%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29%20%281%29.png)
+![](../.gitbook/assets/screenshot-2021-10-07-at-2.37.41-pm.png)
 
-* Next, select **NetSuite** from the list of **Cloud Sources**, and click on **Next**.
+* Next, select **Cloud Extract** and select **NetSuite**.
 
-![](../.gitbook/assets/2%20%2815%29.png)
+![](../.gitbook/assets/screenshot-2021-10-07-at-2.41.34-pm.png)
 
 * Assign a name to your source and click on **Next**.
 
@@ -132,12 +132,18 @@ To set up NetSuite as a source on the RudderStack dashboard, follow these steps:
 
 ### Specifying the connection settings
 
-* Next, enter the relevant connection credentials required to set up your NetSuite source, as shown:
+* Click on **Create Credentials from Scratch**.
+
+{% hint style="success" %}
+If you have already configured a NetSuite account in RudderStack, your credentials will automatically appear under **Choose an Account**.
+{% endhint %}
+
+* Enter the relevant connection credentials required to set up your NetSuite source, as shown:
 
 ![](../.gitbook/assets/4%20%2812%29.png)
 
 * The connection settings are as follows: 
-  * **Account Name** : Enter your NetSuite account name here. You can get it from your NetSuite dashboard
+  * **Account Name** : Enter your NetSuite account name here. You can get it from your NetSuite dashboard.
   * **Account ID** : Enter the NetSuite account ID. You can get the account ID by going to your NetSuite dashboard and navigating to **Setup** - **Integration** - **Web Services Preferences**.
   * **Consumer Key** : Your NetSuite consumer key goes here. 
   * **Consumer Secret** : Your NetSuite consumer secret goes here. 
@@ -145,11 +151,7 @@ To set up NetSuite as a source on the RudderStack dashboard, follow these steps:
   * **Token Secret** : Your NetSuite token secret needs to be entered here.
 
 {% hint style="success" %}
-Refer to the **FAQs section** to know more about how to procure your NetSuite **Consumer Key**, **Consumer Secret**, **Token ID**, and **Token Secret**. 
-{% endhint %}
-
-{% hint style="info" %}
-If you've already configured NetSuite as a source before, you can choose the account visible under the **Use existing credentials** tab.
+Refer to the **FAQs section** to know more about how to procure your NetSuite **Consumer Key**, **Consumer Secret**, **Token ID**, and **Token Secret**.
 {% endhint %}
 
 ### Setting the data update schedule
@@ -165,7 +167,7 @@ If you've already configured NetSuite as a source before, you can choose the acc
 ![](../.gitbook/assets/screenshot-2021-02-23-at-11.23.47-am.png)
 
 {% hint style="warning" %}
-To get the RudderStack Restlet URL, you need to first install [this script](https://js.blendo.co/netsuite/v1/restlet.js) in your NetSuite account, and paste the generated Restlet URL in the RudderStack Restlet URL field. Refer to the **FAQs section** to know more about how to add the script in your NetSuite account.
+To get the **RudderStack Restlet URL**, you need to first install [**this script**](https://js.blendo.co/netsuite/v1/restlet.js) in your NetSuite account, and paste the generated restlet URL in the **RudderStack Restlet URL** field. Refer to the **FAQs section** to know more about how to add the script in your NetSuite account.
 {% endhint %}
 
 ### Selecting the data to import
@@ -182,10 +184,10 @@ Note that none of the resources are selected by default, so you will have to do 
 
 ![](../.gitbook/assets/screenshot-2021-02-23-at-11.25.45-am.png)
 
-* If you have already configured a NetSuite resource before, you can choose the **Clone from** option to use the values of that resource as is.
-* Alternatively, select the appropriate **Resource type** you want to import: 
+* If you have already configured a NetSuite resource before, you can choose the **Clone from** option to use the values of that resource as is. 
+* Alternatively, select the appropriate **Resource type** you want to import:  
   * For a **saved\_search**, provide a **Name** for the resource, select the **Record type** that is present in your NetSuite account, and the exact **Saved search** that you have created there.
-  * For a **custom\_record**, provide a **Name** for the resource, and select the custom record that is present on your NetSuite account. 
+  * For a **custom\_record**, provide a **Name** for the resource, and select the custom record that is present on your NetSuite account.  
 * Finally, save the information by clicking on **Save**.
 
 That's it! NetSuite is now successfully configured as a source on your RudderStack dashboard.
@@ -231,3 +233,4 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 ## Contact us
 
 If you come across any issues while configuring NetSuite as a source on the RudderStack dashboard, feel free to [**contact us**](mailto:%20docs@rudderstack.com). or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
+
