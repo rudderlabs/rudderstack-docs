@@ -171,7 +171,15 @@ RudderStack assumes that an `identify` call is made before any `group` call with
 
 If `groupId` and `userId` both are present in the `group` event payload, then RudderStack will find the user with `email` present in the traits. If it is not present, RudderStack will create the user. It will also find the organization associated with the `groupId` present in the payload. If `groupId` is not present, RudderStack creates that too and then does the user-group association.
 
-If a user already exists, the `organizationId` will be attached to the user and all the user information will be sent for this call. The `traits` contain the relevant group-specific information. However, when the `identify` call is being made during the `group` call the user information will be fetched from the `context.traits`.
+If a user already exists, the `organizationId` will be attached to the user and all the user information will be sent for this call. 
+
+The above discussion can be summarized as follows:
+
+* New `groupId` and new `email` (No Zendesk user ID associated with the email): RudderStack creates the user and the organization and associates them.
+* New `groupId` and existing `email` (Zendesk user already exists): RudderStack creates a new organization and associates the existing user with it.
+* Old `groupId` and new `email` (Organization already exists in Zendesk, but not user): RudderStack creates a new user with the `email` and associated them with the organization.
+
+Note that `traits` contain the relevant group-specific information, whereas the `context.traits` contains all the user-related information.
 
 ## Contact Us
 
