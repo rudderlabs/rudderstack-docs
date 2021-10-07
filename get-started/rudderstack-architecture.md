@@ -22,12 +22,12 @@ RudderStack's architecture consists of 2 major components, namely the **Control 
 
 The Control Plane offers an intuitive UI to configure your event data sources and destinations. It comprises of:
 
-* **RudderStack Web App**: This is the [**front-end application**](https://app.rudderlabs.com/signup?type=freetrial) that lets you set up your data pipelines in RudderStack. 
+* **RudderStack Web App**: This is the [**front-end application**](https://app.rudderlabs.com/signup?type=freetrial) that lets you set up your data pipelines in RudderStack.
 * **Configuration Backend**: The configuration backend gives you the options to configure your event data sources, destinations, and connections.
 
 ## **Data Plane**
 
-The Data Plane is RudderStack's ****core engine responsible for:
+The Data Plane is RudderStack's core engine responsible for:
 
 * Receiving and buffering the event data
 * Transforming the events in the required destination format
@@ -37,9 +37,9 @@ The Data Plane is RudderStack's ****core engine responsible for:
 The RudderStack Data Plane uses PostgreSQL as a streaming database for the event data. Refer to the **Data Plane Architecture** section below for more information.
 {% endhint %}
 
-## **Transformation** 
+## **Transformation**
 
-RudderStack's Transformations module transforms the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript. 
+RudderStack's Transformations module transforms the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript.
 
 RudderStack also supports user-specific transformations for real-time operations, such as aggregation, filtering, and sampling.
 
@@ -61,7 +61,7 @@ The following sections give a detailed overview of each of the components of the
 
 The Gateway is primarily responsible for receiving and forwarding the event data for processing and transformation.
 
-It accepts the event requests and sends an acknowledgement back to the source depending on the acceptance \(an HTTP 200 response\) or rejection of the event data. 
+It accepts the event requests and sends an acknowledgement back to the source depending on the acceptance \(an HTTP 200 response\) or rejection of the event data.
 
 The event data is rejected in case of the following scenarios:
 
@@ -96,22 +96,20 @@ Check out the [**GitHub repository**](https://github.com/rudderlabs/sample-user-
 The RudderStack backend workflow is detailed in the following steps:
 
 1. The Gateway receives the event from the source. 
-2. The Gateway then:  
-
+2. The Gateway then:
 
    i.  Stores the event data to the Router database \(PostgreSQL\).
 
-   ii. Sends an **HTTP 200** status acknowledging receipt of the data.  
+   ii. Sends an **HTTP 200** status acknowledging receipt of the data.
 
 3. The Processor picks the data from the Gateway and forwards the event data to the Transformation module. 
-4. The Transformation module transforms the event and sends it back to the Processor. 
-5. Once the event is transformed and sent to the Router, it is deleted from the Gateway store. 
+4. The Transformation module transforms the event and sends it back to the Processor.
+5. Once the event is transformed and sent to the Router, it is deleted from the Gateway store.
 6. The Router then:  
- 
 
    i.  Forwards the transformed event data to the desired destinations.
 
-   ii. Stores the information in a separate table in the database.  
+   ii. Stores the information in a separate table in the database.
 
 7. Once the transformed data reaches the destination, the event data from the Router database is deleted by the Router.
 
@@ -119,7 +117,7 @@ The RudderStack backend workflow is detailed in the following steps:
 
 ## **Notes**
 
-The RudderStack backend can be customized with a variety of configuration options. Some of these options include backing up events to S3, rejecting malicious requests by defining the maximum size of the event, and more. 
+The RudderStack backend can be customized with a variety of configuration options. Some of these options include backing up events to S3, rejecting malicious requests by defining the maximum size of the event, and more.
 
 Although the default configuration works just fine for most use-cases, RudderStack gives you the flexibility to customize it by tweaking the [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) file to suit your application's needs.
 

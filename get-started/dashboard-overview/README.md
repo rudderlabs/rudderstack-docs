@@ -42,8 +42,6 @@ This options lists all the available sources and destinations supported by Rudde
 
 ![](../../.gitbook/assets/4%20%2821%29.png)
 
-
-
 ## Transformations
 
 With this option, you can write your own JavaScript functions to transform your events in a destination-specific format. You can also create your own libraries - a RudderStack feature that allows you to reuse the code written for a transformation in other transformations.
@@ -96,7 +94,7 @@ Here's how to get the Data Plane URL:
 An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.  
 {% endhint %}
 
-* If you're using [**RudderStack Cloud** **Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
+* If you're using [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
 * If you're using the [**pro or enterprise**](https://rudderstack.com/pricing) version of RudderStack, [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for the Data Plane URL with the email ID you used to sign up for RudderStack.
 
 ## Contact Us

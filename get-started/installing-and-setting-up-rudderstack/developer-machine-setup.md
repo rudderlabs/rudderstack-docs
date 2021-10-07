@@ -33,7 +33,7 @@ RudderStack's dashboard lets you easily set up your data pipelines by configurin
 
 * Note and copy your workspace **Token** from the top of the page, as shown below. This will be required for setting up the Data Plane.
 
-![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
+  ![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
 
 ### Self-Host the Control Plane
 
@@ -41,7 +41,7 @@ RudderStack's dashboard lets you easily set up your data pipelines by configurin
 Use this option if you don't wish to sign up for RudderStack.
 {% endhint %}
 
-You can self-host your own Control Plane using the open-source [**Control Plane Lite**](../control-plane-lite.md) ****utility.
+You can self-host your own Control Plane using the open-source [**Control Plane Lite**](../control-plane-lite.md) utility.
 
 {% hint style="danger" %}
 Note that the Control Plane set up using [**Control Plane Lite**](../control-plane-lite.md) lacks certain features like [**Transformations**](../../transformations/) and [**Live Events**](../../user-guides/how-to-guides/live-destination-event-debugger.md) tab.
@@ -49,7 +49,7 @@ Note that the Control Plane set up using [**Control Plane Lite**](../control-pla
 
 ## Data Plane Setup
 
-This section lists the steps to set up the RudderStack Data Plane in your preferred development environment. 
+This section lists the steps to set up the RudderStack Data Plane in your preferred development environment.
 
 ### Prerequisites
 
@@ -63,46 +63,46 @@ To set up RudderStack, you will need to set up and install the following tools:
 
 * First, set up the database in your preferred directory using the following commands:
 
-```bash
-createdb jobsdb
-createuser --superuser rudder
-psql "jobsdb" -c "alter user rudder with encrypted password 'rudder'";
-psql "jobsdb" -c "grant all privileges on database jobsdb to rudder";
-```
+  ```bash
+  createdb jobsdb
+  createuser --superuser rudder
+  psql "jobsdb" -c "alter user rudder with encrypted password 'rudder'";
+  psql "jobsdb" -c "grant all privileges on database jobsdb to rudder";
+  ```
 
 * Next, clone the [**RudderStack server**](https://github.com/rudderlabs/rudder-server) repository.  
 * Then, run `git submodule init` and `git submodule update` to fetch the `rudder-transformer` repository.  
 * Next, navigate to the Transformer directory using the following command:
 
-```bash
-cd rudder-transformer
-```
+  ```bash
+  cd rudder-transformer
+  ```
 
 * Install dependencies using the command `npm i` . Then, start the destination transformer using the following command:
 
-```bash
-node destTransformer.js
-```
+  ```bash
+  node destTransformer.js
+  ```
 
 * Navigate back to the main directory using the command `cd rudder-server`.  
 * Next, copy the `sample.env` to the main directory using the following command:
 
-```bash
-cp config/sample.env .env
-```
+  ```bash
+  cp config/sample.env .env
+  ```
 
-* Update the`WORKSPACE_TOKEN` environment variable in this file with the workspace token you copied from the RudderStack dashboard. 
+* Update the `WORKSPACE_TOKEN` environment variable in this file with the workspace token you copied from the RudderStack dashboard. 
 * Finally, run the RudderStack server using the following command:
 
-```bash
-go run -mod=vendor main.go
-```
+  ```bash
+  go run -mod=vendor main.go
+  ```
 
 * Once you have completed these steps above successfully, [**send test events**](sending-test-events.md) to verify the installation.
 
 ### For **Self-Hosted Control Plane**
 
-If you have self-hosted the Control Plane using the open-source [**Control Plane Lite**](../control-plane-lite.md) ****utility, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#developer-machine-setup) instructions to set up the RudderStack Data Plane in your development environment. 
+If you have self-hosted the Control Plane using the open-source [**Control Plane Lite**](../control-plane-lite.md) utility, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#developer-machine-setup) instructions to set up the RudderStack Data Plane in your development environment. 
 
 Once you have successfully followed the steps above, [**send test events**](sending-test-events.md) to verify the installation.
 
