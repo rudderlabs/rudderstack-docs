@@ -198,7 +198,8 @@ The `options` parameter in the above `load` call looks like the following:
  integrations: IntegrationOpts,
  configUrl: string,  // defaults to https://api.rudderlabs.com
  queueOptions: QueueOpts,
- loadIntegration: boolean // defaults to true.
+ loadIntegration: boolean, // defaults to true.
+ defaultStorage: string // defaults to "cookies"
 }
 ```
 
@@ -211,6 +212,13 @@ It includes the following details:
 | **`configUrl`** | String | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
 | **`queueOpts`** | - | Refer to **`QueueOpts`** |
 | **`loadIntegration`** | Boolean | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**. |
+| **`defaultStorage`** | String | Defaults to **`cookies`**. You need to specify the default persistent storage type for the SDK. Options include **`cookies`** and **`localstorage`**. |
+
+{% hint style="info" %}
+The above `defaultStorage` parameter is only to specify the default storage type to be used by the SDK but does not guarantee the eventual persistent storage type used by the SDK.
+
+For example, if the `defaultStorage` parameter is set to **`cookies`** and cookies are unavailable, then local storage would be used as the persistent storage and vice-versa.
+{% endhint %}
 
 * The structure of **`IntegrationOpts`** looks like the following:
 
@@ -375,7 +383,9 @@ There is no need to call`identify()`for anonymous visitors to your website. Such
 The JavaScript SDK generates one unique `anonymousId` , stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps in identifying the users from other sites that are hosted under a sub-domain.
 
 {% hint style="info" %}
-As an example, if you include the RudderStack JavaScript SDK in both **admin.samplewebsite.com** and **app.samplewebsite.com**, the SDK will store the cookie in the top-level domain **samplewebsite.com**.
+As an example, if you include the RudderStack JavaScript SDK in both **admin.samplewebsite.com** and **app.samplewebsite.com**, the SDK will store the cookie in the top-level domain **samplewebsite.com**. 
+
+However, this functionality is only applicable if the SDK uses cookies as its persistent storage which is configurable via `defaultStorage` parameter in the **`load`** API options.
 {% endhint %}
 
 If you identify a user with your application's unique identifier like email, database ID etc. RudderStack stores this ID in a cookie named `rl_user_id` and attaches to every event.
