@@ -304,4 +304,6 @@ A few things to note:
 * Each object inside `content` array must contain `type` and `value`. If not found that object will be dropped. However call will `not` be dropped.
 * Each object inside attachments array must atleast contain `content` and `filename`. If not found that object will be dropped. However call will `not` be dropped.
 
+## Contact Us
 
+If you come across any issues while configuring or using Senddgrid with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
