@@ -71,7 +71,7 @@ Note that this is only useful when `integration` object is empty. Sendgrid also 
 * In **Reply To Name** , enter the name associated with the above email address.
 
 {% hint style="info" %}
-Note that Sendgrid doesn't allow only `name` to be sent in `reply to` object, `email` must be there else `reply to` object will be ignored.
+Note that Sendgrid doesn't allow only `name` to be sent in `reply to`  object, `email` must be there else `reply to` object will be ignored.
 You can send email and name inside an `replyTo` object via `integrations` object which will have higher prioerity.
 {% endhint %}
 
@@ -85,7 +85,7 @@ replyTo:{
 * Enter **IP Pool Name**.
 
 {% hint style="info" %}
-Length of IP Pool Name should be between 2 and 64.To check out the steps to create **IP Pool Name**, click [here](https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool).
+Length of IP Pool Name should be between 2 and 64. To check out the steps to create **IP Pool Name**, click [here](https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool).
 {% endhint %}
 
 * Enter the **email** address via which email will be sent.
@@ -210,7 +210,7 @@ mailSettings:{
 `Track` call allows you to send event to Sendgrid with properties inside `integration` object which will override dashboard properties.
 
 {% hint style="warning" %}
-Note that Sendgrid required either `template ID` or `content` to be present in body else event will be discarded.
+Note that Sendgrid requires either `template ID` or `content` to be present in body else event will be discarded.
 {% endhint %}
 
 A sample `track` call is as shown:
@@ -296,7 +296,7 @@ A few things to note:
 
 * Sendgrid allows `categories` array to have maximum of 10 values.
 * If `customArgs` is not provided, the non-default fields are taken as custom fields. In the above example, `field1` will be mapped as a `customArgs`.
-* Sendgrid requires that in `mailSettings`, `bypassListManagement` cannot be combined with `bypassBounceManagement`, `bypassSpamManagement`, `bypassUnsubscribeManagement`. If `bypassListManagement` is present then neither `bypassBounceManagement`, `bypassBounceManagement` nor `bypassUnsubscribeManagement` can be present.
+* Sendgrid requires that in `mailSettings`, `bypassListManagement` cannot be combined with `bypassBounceManagement`, `bypassSpamManagement`, `bypassUnsubscribeManagement`. If `bypassListManagement` is present then neither `bypassSpamManagement`, `bypassBounceManagement` nor `bypassUnsubscribeManagement` can be present.
 * Sendgrid requires that `personalizations` array should be present in every event and atleast each object must contain field `to`. If `Get mail from traits` is enabled in dashboard and `integrations` object is not sent, Rudderstack will look for `email` in traits, if found `personalizations` object will be created and email will be assigned to the `to` field. In case both `template ID` and `content` are not assigned in dashboard, event will not be sent as either of `template ID` or `content` is required.
 * `email` field inside `replyTo` object is mandatory.
 * `groupId` field inside `asm` object is mandatory.
