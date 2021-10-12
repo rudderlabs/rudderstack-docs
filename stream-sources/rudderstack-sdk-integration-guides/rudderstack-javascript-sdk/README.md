@@ -121,8 +121,8 @@ This NPM module is only meant to be used for a browser installation. If you want
 
 ```jsx
 import * as rudderanalytics from "rudder-sdk-js"
-rudderanalytics.ready(() => {console.log("we are all set!!!")})
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL)
+rudderanalytics.ready(() => {console.log("We are all set!")})
 export { rudderanalytics }
 ```
 
