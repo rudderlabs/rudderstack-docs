@@ -16,10 +16,10 @@ With RudderStack's SDK for mobile and web platforms, you can send your in-app ev
 
 Before getting started, please determine whether the platform you are sending your event data from is supported. Refer to the following table for the supported source types and connection modes:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **Supported** | **Supported** | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | **Supported** | **Supported** | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -36,22 +36,22 @@ Please follow these steps once you have added a source in the RudderStack app:
 ![RudderStack connection settings for adding Braze as a destination](../../.gitbook/assets/braze.png)
 
 {% hint style="info" %}
-When creating a new Braze Rest API Key for your app, you will only need to select the **users.track**, **users.identify**, and **users.alias.new** endpoints under the **User Data** permissions
+When creating a new Braze Rest API Key for your app, you will only need to select the **users.track**, **users.identify**, and **users.alias.new** endpoints under the **User Data **permissions
 {% endhint %}
 
 * Once you have added the source, configure the Braze settings to complete the setup.
-* Both the **App Key**  and the **Rest Api Key** can be found in the **Developer Console** underneath the **Settings** section in your Braze dashboard \(left-side menu\)
-* In the **Developer Console** under the **API Settings** tab, there should be 4 sections.
-* To get the **App Key**, go to the **Identification** section and look up your **App Name**. The key will then be the associated **Identifier** string. You can find more information [here](https://www.braze.com/docs/api/api_key/#where-can-i-find-it-1).
-* To get the **Rest Api Key**, go to the **Rest API Keys** section and look for the **API Key Name** that you created. The key will then be the associated **Identifier** string. You can find more information [here](https://www.braze.com/docs/api/api_key/#where-can-i-find-it).
-* To get the correct **Data Center** details, you can follow this very clear [Braze Instances](https://www.braze.com/docs/user_guide/administrative/access_braze/braze_instances/) guide. An example of a Data Instance would be `US-01`. The easiest way to get your **Data Center** details is to simply log in to your Braze account and look at your URL. Your URL will map to what **Data Center** you will enter.
+* Both the **App Key ** and the** Rest Api Key **can be found in the **Developer Console **underneath the **Settings **section in your Braze dashboard (left-side menu)
+* In the **Developer Console** under the **API Settings **tab, there should be 4 sections.
+* To get the **App Key**, go to the **Identification **section and look up your **App Name**. The key will then be the associated **Identifier **string. You can find more information [here](https://www.braze.com/docs/api/api_key/#where-can-i-find-it-1).
+* To get the **Rest Api Key**, go to the **Rest API Keys **section and look for the **API Key Name **that you created. The key will then be the associated **Identifier** string. You can find more information [here](https://www.braze.com/docs/api/api_key/#where-can-i-find-it).
+* To get the correct **Data Center **details, you can follow this very clear [Braze Instances](https://www.braze.com/docs/user_guide/administrative/access_braze/braze_instances/) guide. An example of a Data Instance would be `US-01`. The easiest way to get your **Data Center **details is to simply log in to your Braze account and look at your URL. Your URL will map to what **Data Center **you will enter.
 
-| URL | Data Center Input |
-| :--- | :--- |
-| https://dashboard-01.braze.com | US-01 |
-| https://dashboard-03.braze.com | US-03 |
-| https://dashboard-01.braze.eu | EU-01 |
-| etc. | etc. |
+| URL                            | Data Center Input |
+| ------------------------------ | ----------------- |
+| https://dashboard-01.braze.com | US-01             |
+| https://dashboard-03.braze.com | US-03             |
+| https://dashboard-01.braze.eu  | EU-01             |
+| etc.                           | etc.              |
 
 ## Adding Device Mode Integration
 
@@ -61,40 +61,38 @@ Depending on your platform of integration, follow the steps below to add Braze t
 {% tab title="iOS" %}
 Please follow these steps to add Braze to your iOS project:
 
-* Open the `Podfile` of your project and add the following line:
+*   Open the `Podfile` of your project and add the following line:
 
-  ```text
-  pod 'Rudder-Braze'
-  ```
+    ```
+    pod 'Rudder-Braze'
+    ```
 
-  followed by the command as shown:
+    followed by the command as shown:
 
-  ```text
-  $ pod install
-  ```
+    ```
+    $ pod install
+    ```
+*   Finally change the SDK initialization to the following snippet:
 
-* Finally change the SDK initialization to the following snippet:
-
-  ```text
-  RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
-  [builder withDataPlaneUrl:<YOUR_DATA_PLANE_URL>];
-  [builder withFactory:[RudderBrazeFactory instance]];
-  [RudderClient getInstance:<YOUR_WRITE_KEY> config:[builder build]];
-  ```
+    ```
+    RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
+    [builder withDataPlaneUrl:<YOUR_DATA_PLANE_URL>];
+    [builder withFactory:[RudderBrazeFactory instance]];
+    [RudderClient getInstance:<YOUR_WRITE_KEY> config:[builder build]];
+    ```
 {% endtab %}
 
 {% tab title="Android" %}
 To add Braze to your Android project, please follow these steps:
 
-* Open your `app/build.gradle` \(Module: app\) file, and add the following:
+*   Open your `app/build.gradle` (Module: app) file, and add the following:
 
-  ```text
-  repositories {
-    mavenCentral()
-    maven { url "https://appboy.github.io/appboy-android-sdk/sdk" }
-  }
-  ```
-
+    ```
+    repositories {
+      mavenCentral()
+      maven { url "https://appboy.github.io/appboy-android-sdk/sdk" }
+    }
+    ```
 * Add the following under `dependencies` section:
 
 ```javascript
@@ -107,7 +105,7 @@ To add Braze to your Android project, please follow these steps:
 
 * Finally, change the SDK initialization to the following:
 
-```text
+```
   val rudderClient: RudderClient = RudderClient.getInstance(
       this,
       <WRITE_KEY>,
@@ -237,4 +235,3 @@ For example, if the `groupId` is `test_group_id` then RudderStack will create a 
 ## Contact Us
 
 If you come across any issues while configuring Braze with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

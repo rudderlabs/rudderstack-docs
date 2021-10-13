@@ -58,9 +58,9 @@ There are two ways you can set up the Control Plane. This section lists the step
 RudderStack's dashboard lets you easily set up your data pipelines by configuring your sources and destinations. It is fully hosted by RudderStack and is free for open-source users. You also get access to some important features like [**Transformations**](../../transformations/) and a [**Live Events** ](../../user-guides/how-to-guides/live-destination-event-debugger.md) tab.
 {% endhint %}
 
-* Note and copy your workspace **Token** from the top of the page, as shown below. This will be required for setting up the Data Plane.
+*   Note and copy your workspace **Token** from the top of the page, as shown below. This will be required for setting up the Data Plane.
 
-  ![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
+    ![](<../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm (3) (3) (2) (3) (3) (3) (3) (3) (1) (1) (1).png>)
 
 ### Self-Host the Control Plane
 
@@ -81,29 +81,27 @@ This section lists the steps to set up the RudderStack Data Plane in your Kubern
 ### Prerequisites
 
 * [**Kubectl**](https://kubernetes.io/docs/tasks/tools/) installed and connected to your Kubernetes cluster
-* [**Helm**](https://helm.sh/) installed
+* [**Helm**](https://helm.sh) installed
 
 ### For **RudderStack-Hosted Control Plane**
 
-* Clone the [**repository**](https://github.com/rudderlabs/rudderstack-helm) containing the RudderStack Helm chart by running the following command:
+*   Clone the [**repository**](https://github.com/rudderlabs/rudderstack-helm) containing the RudderStack Helm chart by running the following command:
 
-  ```bash
-  git clone git@github.com:rudderlabs/rudderstack-helm.git
-  ```
+    ```bash
+    git clone git@github.com:rudderlabs/rudderstack-helm.git
+    ```
+*   Navigate to the folder containing the Helm chart.
 
-* Navigate to the folder containing the Helm chart.
+    ```bash
+    cd rudderstack-helm/
+    ```
+*   To install the chart with the release name `my-release`, run the following command after replacing `<your_workspace_token>` with the workspace token copied from the RudderStack dashboard.
 
-  ```bash
-  cd rudderstack-helm/
-  ```
+    ```bash
+    helm install my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
+    ```
 
-* To install the chart with the release name `my-release`, run the following command after replacing `<your_workspace_token>` with the workspace token copied from the RudderStack dashboard.
-
-  ```bash
-  helm install my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
-  ```
-
-  The above command deploys RudderStack on your default Kubernetes cluster configured with `kubectl`.
+    The above command deploys RudderStack on your default Kubernetes cluster configured with `kubectl`.
 
 {% hint style="info" %}
 Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/kubernetes#configuration) section below for information on the parameters that can be configured during deployment.
@@ -113,7 +111,7 @@ Refer to the [**Configuration**](https://docs.rudderstack.com/get-started/instal
 
 ### For **Self-Hosted Control Plane**
 
-If you have self-hosted the Control Plane using the open-source [**Control Plane Lite**](../control-plane-lite.md) utility, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#kubernetes) instructions to set up the RudderStack Data Plane in your Kubernetes cluster. 
+If you have self-hosted the Control Plane using the open-source [**Control Plane Lite**](../control-plane-lite.md) utility, follow [**these**](https://docs.rudderstack.com/get-started/config-generator#kubernetes) instructions to set up the RudderStack Data Plane in your Kubernetes cluster.
 
 Once you have successfully followed the steps above, [**send test events**](sending-test-events.md) to verify the installation.
 
@@ -149,19 +147,19 @@ This removes all the components created by the chart.
 
 The following table lists the configurable parameters of the RudderStack chart and their default values:
 
-| Parameter | Description | Default |
-| :--- | :--- | :--- |
-| `rudderWorkspaceToken` | Workspace token from the dashboard | `-` |
-| `backend.image.repository` | Container image repository for the backend | `rudderlabs/rudder-server` |
-| `backend.image.version` | Container image tag for the backend. Check the   [**Available versions**](https://hub.docker.com/r/rudderlabs/rudder-server/tags) | `0.1.9` |
-| `backend.image.pullPolicy` | Container image pull policy for the backend image | `Always` |
-| `transformer.image.repository` | Container image repository for the transformer | `rudderlabs/transformer` |
-| `transformer.image.version` | Container image tag for the transformer. Check the  [**Available versions**](https://hub.docker.com/r/rudderlabs/rudder-transformer/tags) | `0.1.4` |
-| `transformer.image.imagePullPolicy` | Container image pull policy for the transformer image | `Always` |
-| `backend.extraEnvVars` | Extra environments variables to be used by the backend in the deployments | Refer the `values.yaml` file |
-| `backend.controlPlaneJSON` | Set this to `true` for the Data Plane to read the configuration from the `workspaceConfig.json` file in case you have a self-hosted Control Plane. | `false` |
+| Parameter                           | Description                                                                                                                                        | Default                      |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `rudderWorkspaceToken`              | Workspace token from the dashboard                                                                                                                 | `-`                          |
+| `backend.image.repository`          | Container image repository for the backend                                                                                                         | `rudderlabs/rudder-server`   |
+| `backend.image.version`             | Container image tag for the backend. Check the   [**Available versions**](https://hub.docker.com/r/rudderlabs/rudder-server/tags)                  | `0.1.9`                      |
+| `backend.image.pullPolicy`          | Container image pull policy for the backend image                                                                                                  | `Always`                     |
+| `transformer.image.repository`      | Container image repository for the transformer                                                                                                     | `rudderlabs/transformer`     |
+| `transformer.image.version`         | Container image tag for the transformer. Check the  [**Available versions**](https://hub.docker.com/r/rudderlabs/rudder-transformer/tags)          | `0.1.4`                      |
+| `transformer.image.imagePullPolicy` | Container image pull policy for the transformer image                                                                                              | `Always`                     |
+| `backend.extraEnvVars`              | Extra environments variables to be used by the backend in the deployments                                                                          | Refer the `values.yaml` file |
+| `backend.controlPlaneJSON`          | Set this to `true` for the Data Plane to read the configuration from the `workspaceConfig.json` file in case you have a self-hosted Control Plane. | `false`                      |
 
-Each of these parameters can be changed in `values.yaml`. You can also specify each parameter using the `--set key=value[,key=value]` argument while running the `helm install` command. 
+Each of these parameters can be changed in `values.yaml`. You can also specify each parameter using the `--set key=value[,key=value]` argument while running the `helm install` command.
 
 For example:
 
@@ -206,4 +204,3 @@ Installing this Helm chart will deploy the following pods and containers in the 
 ## Contact Us
 
 If you come across any issues while setting up RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
-

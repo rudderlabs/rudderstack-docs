@@ -16,7 +16,7 @@ Run the SQL queries below in the **exact** order to grant the necessary permissi
 
 * The following command creates a new user `rudder` with password `<strong_unique_password>` in Redshift.
 
-```text
+```
 CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 ```
 
@@ -26,7 +26,7 @@ The password you set in the above command must meet the following conditions:
 
 * It should be **8-64** characters in length
 * It must contain atleast one upper case, one lower case, and one number
-* It can contain any ASCII characters with the ASCII codes 33-126, with the exception of `'` \(single quotation mark\), `"` \(double quotation mark\), `\`, `/`, and `@`.
+* It can contain any ASCII characters with the ASCII codes 33-126, with the exception of `'` (single quotation mark), `"` (double quotation mark), `\`, `/`, and `@`.
 
 {% hint style="info" %}
 For more information on the password rules, refer to the [**Amazon Redshift documentation**](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html#r_CREATE_USER-parameters).
@@ -36,7 +36,7 @@ For more information on the password rules, refer to the [**Amazon Redshift docu
 
 * The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
 
-```text
+```
 CREATE SCHEMA "_rudderstack";
 ```
 
@@ -46,13 +46,13 @@ The `_rudderstack` schema is used by RudderStack. Its name **should not** be cha
 
 * The following command allows the user `rudder` to have full access to the schema `_rudderstack`.
 
-```text
+```
 GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
 ```
 
 * The following command allows the user `rudder` to have full access to all the objects that exist in the schema `_rudderstack`.
 
-```text
+```
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 ```
 
@@ -60,19 +60,19 @@ GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 
 * The following command allows the user `rudder` to look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema.
 
-```text
+```
 GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
 * The following command allows the user `rudder` to read the data from specified table `<YOUR_TABLE>`. Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your Redshift schema and table.
 
-```text
+```
 GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
 ```
 
 * The following **optional** command allows the user `rudder` to view and read the data from all the tables present in the schema `<YOUR_SCHEMA>`:
 
-```text
+```
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
@@ -82,7 +82,7 @@ Run the above command only if you're okay with RudderStack being able to access 
 
 * The following **optional** command allows the user `rudder` to read the data from all the future tables in the schema `<YOUR_SCHEMA>`:
 
-```text
+```
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
 ```
 
@@ -97,7 +97,7 @@ To set up Amazon Redshift as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%282%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (12).png>)
 
 * Scroll down to the **Warehouse Sources** and select **Redshift**. Then, click on **Next**.
 
@@ -146,7 +146,7 @@ Your table must include one of the following columns - `email`, `user_id`, or `a
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Redshift instance to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option. Then, click on **Next**.
 
-![](../.gitbook/assets/screen-shot-2021-01-06-at-4.05.51-pm%20%281%29%20%281%29%20%281%29%20%281%29%20%282%29%20%282%29%20%283%29%20%282%29%20%281%29.png)
+![](<../.gitbook/assets/screen-shot-2021-01-06-at-4.05.51-pm (1) (1) (1) (1) (2) (2) (3) (2) (1) (3).png>)
 
 That's it! Redshift is now successfully configured as a source on your RudderStack dashboard.
 
@@ -174,7 +174,8 @@ These options are explained below:
 If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
 {% endhint %}
 
-* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials.\
+
 * **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema that you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/amazon-redshift#creating-the-rudderstack-schema-and-granting-permissions) section. 
 
 {% hint style="warning" %}
@@ -184,4 +185,3 @@ If this option gives an error, verify if you have successfully created the `_rud
 ## Contact Us
 
 If you come across any issues while configuring Amazon Redshift as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

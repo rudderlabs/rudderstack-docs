@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest your data from Snowflake into RudderSt
 
 # Snowflake
 
-\*\*\*\*[**Snowflake**](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
+****[**Snowflake**](https://www.snowflake.com) is a cloud-based data warehouse provided as Software-as-a-Service (SaaS). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
 
 This guide will help you configure Snowflake as a source from which you can route event data to your desired destinations through RudderStack.
 
@@ -22,25 +22,25 @@ Run the following SQL queries in the **exact order** to grant the necessary perm
 
 * The following command creates the role `RUDDER_ROLE` in Snowflake. After creating the role, you can grant object privileges to it.
 
-```text
+```
 CREATE ROLE RUDDER_ROLE;
 ```
 
 * The following command verifies if the role `RUDDER_ROLE` is successfully created.
 
-```text
+```
 SHOW ROLES;
 ```
 
 * The following command creates a new user `RUDDER` with your password `<strong_unique_password>` in Snowflake.
 
-```text
+```
 CREATE USER RUDDER PASSWORD = '<strong_unique_password>' DEFAULT_ROLE = 'RUDDER_ROLE';
 ```
 
 * The following command verifies if the user `RUDDER` is successfully created.
 
-```text
+```
 SHOW USERS;
 ```
 
@@ -48,7 +48,7 @@ SHOW USERS;
 
 * The following command creates a dedicated schema `_RUDDERSTACK` to be used by RudderStack for storing the state of each data sync.
 
-```text
+```
 CREATE SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK";
 ```
 
@@ -58,45 +58,45 @@ The `_RUDDERSTACK` schema is used by RudderStack. Its name **should not** be cha
 
 * The following command allows `RUDDER_ROLE` to have full access to the schema `_RUDDERSTACK`.
 
-```text
+```
 GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK" TO ROLE RUDDER_ROLE;
 ```
 
 ### Granting permissions on the warehouse, database, schema & the table
 
-* The following command enables the user \(`RUDDER`\) to perform all the operations allowed for the role `RUDDER_ROLE` \(via the access privileges granted to it\).
+* The following command enables the user (`RUDDER`) to perform all the operations allowed for the role `RUDDER_ROLE` (via the access privileges granted to it).
 
-```text
+```
 GRANT ROLE RUDDER_ROLE TO USER RUDDER;
 ```
 
 * The following command allows the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`. Replace `<YOUR_WAREHOUSE>` with the exact name of your data warehouse in Snowflake.
 
-```text
+```
 GRANT USAGE ON WAREHOUSE "<YOUR_WAREHOUSE>" TO ROLE RUDDER_ROLE;
 ```
 
 * The following command allows the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. Replace `<YOUR_DATABASE>` with the exact name of your database in Snowflake.
 
-```text
+```
 GRANT USAGE ON DATABASE "<YOUR_DATABASE>" TO ROLE RUDDER_ROLE;
 ```
 
 * The following command lets the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_DATABASE>` and `<YOUR_SCHEMA>` with the exact name of your database and the schema in Snowflake.
 
-```text
+```
 GRANT USAGE ON SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
 * The following command allows the role `RUDDER_ROLE` to read the data from the specified table `<YOUR_TABLE>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact database, schema, and table names in Snowflake.
 
-```text
+```
 GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
 ```
 
 * The following **optional** command allows the role `RUDDER_ROLE` to read data from **all** the tables in the schema `<YOUR_SCHEMA>`:
 
-```text
+```
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
@@ -106,7 +106,7 @@ Run the above command only if you're okay with RudderStack being able to access 
 
 * The following **optional** command allows the role `<RUDDER_ROLE>` to read data from all the **future** **tables** in the schema `<YOUR_SCHEMA>`:
 
-```text
+```
 GRANT SELECT ON FUTURE TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
@@ -116,13 +116,13 @@ Run the above command only if you're okay with RudderStack being able to access 
 
 * The following command allows the role `RUDDER_ROLE` to read the data from the specified view `<YOUR_VIEW>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_VIEW>` with the exact database, schema, and view names in Snowflake.
 
-```text
+```
 GRANT SELECT ON VIEW "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_VIEW>" TO ROLE  RUDDER_ROLE;
 ```
 
 * The following **optional** command allows the role `RUDDER_ROLE` to read data from **all** the views in the schema `<YOUR_SCHEMA>`:
 
-```text
+```
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
@@ -132,7 +132,7 @@ Run the above command only if you're okay with RudderStack being able to access 
 
 * The following **optional** command allows the role `<RUDDER_ROLE>` to read data from all the **future views** in the schema `<YOUR_SCHEMA>`:
 
-```text
+```
 GRANT SELECT ON FUTURE VIEWS IN SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 
 ```
@@ -148,7 +148,7 @@ To set up Snowflake as a source in RudderStack, follow these steps:
 * Log into your [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%286%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (9).png>)
 
 * Scroll down to the **Warehouse Sources** and select **Snowflake**. Then, click on **Next**.
 
@@ -167,14 +167,13 @@ If you've already configured Snowflake as a source before, your existing credent
 ![](../.gitbook/assets/screen-shot-2021-01-13-at-4.43.42-pm.png)
 
 * The required settings are:
-  * **Account -** This is the account ID of your warehouse. The account ID is part of the Snowflake URL. The following examples illustrate the slight differences in the account ID for various cloud providers**.**
+  *   **Account -** This is the account ID of your warehouse. The account ID is part of the Snowflake URL. The following examples illustrate the slight differences in the account ID for various cloud providers**.**
 
-    | Account ID sample | Snowflake URL | Snowflake cloud provider |
-    | :--- | :--- | :--- |
-    | **qya56091.us-east-1** | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com` | Amazon Web Services \(AWS\) |
-    | **rx18795.east-us-2.azure** | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure \(Azure[\)](https://azure.microsoft.com/en-us/) |
-    | **ah76025.us-central1.gcp** | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform \(GCP\) |
-
+      | Account ID sample           | Snowflake URL                                                    | Snowflake cloud provider                                      |
+      | --------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------- |
+      | **qya56091.us-east-1**      | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`      | Amazon Web Services (AWS)                                     |
+      | **rx18795.east-us-2.azure** | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure (Azure[)](https://azure.microsoft.com/en-us/) |
+      | **ah76025.us-central1.gcp** | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform (GCP)                                   |
   * **Database -** The name of the database in which your data resides goes here.
   * **Warehouse** - Specify the name of the warehouse here.
   * **User** - The username which has the required read/write access to the above database.
@@ -231,7 +230,8 @@ These options are explained below:
 If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
 {% endhint %}
 
-* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials.\
+
 * **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/snowflake#granting-permissions) section. 
 
 {% hint style="warning" %}
@@ -241,7 +241,7 @@ If this option gives an error, verify if you have successfully created the `_RUD
 {% hint style="info" %}
 **If you are trying to re-use the credentials for Warehouse Actions from before September 2021, you may run into the following permissions error:**
 
-![](https://lh5.googleusercontent.com/DFQzUbsZSH9g-lL7zE5ND9PPgjzegbm3Bmj5Srf2220A1HvJ5bEbo6LbJPSwd_w00dhBjkD-Iz68x9p9UXTwGGxJ8--arzJQW9rU0mRnJD161tokINPFk6bjRFshEdEy3p_qG__D=s0)
+![](https://lh5.googleusercontent.com/DFQzUbsZSH9g-lL7zE5ND9PPgjzegbm3Bmj5Srf2220A1HvJ5bEbo6LbJPSwd_w00dhBjkD-Iz68x9p9UXTwGGxJ8--arzJQW9rU0mRnJD161tokINPFk6bjRFshEdEy3p_qG\_\_D=s0)
 
 As mentioned above, you will need to update your Snowflake account permissions by following the commands in [**this section**](https://docs.rudderstack.com/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
 {% endhint %}
@@ -249,4 +249,3 @@ As mentioned above, you will need to update your Snowflake account permissions b
 ## Contact Us
 
 If you come across any issues while configuring Snowflake as a source on the RudderStack dashboard, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

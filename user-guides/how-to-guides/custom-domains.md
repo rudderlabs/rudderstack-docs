@@ -30,34 +30,34 @@ You'll start by creating a new distribution for serving the JavaScript SDK.
 
 ### Settings
 
-![](../../.gitbook/assets/screen-shot-2021-02-19-at-3.01.03-pm%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![](<../../.gitbook/assets/screen-shot-2021-02-19-at-3.01.03-pm (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (1).png>)
 
-![](../../.gitbook/assets/screen-shot-2021-02-19-at-2.59.05-pm.png)
+![](<../../.gitbook/assets/screen-shot-2021-02-19-at-2.59.05-pm (1).png>)
 
-![](../../.gitbook/assets/screen-shot-2021-02-19-at-3.01.03-pm%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![](<../../.gitbook/assets/screen-shot-2021-02-19-at-3.01.03-pm (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2).png>)
 
-| Field | Setting |
-| :--- | :--- |
-| Origin Domain Name | `cdn.rudderlabs.com` |
-| Origin Protocol Policy | HTTPS Only |
+| Field                  | Setting              |
+| ---------------------- | -------------------- |
+| Origin Domain Name     | `cdn.rudderlabs.com` |
+| Origin Protocol Policy | HTTPS Only           |
 
 **Default Cache Behavior Settings**
 
-| **Field** | Setting |
-| :--- | :--- |
-| Viewer Protocol Policy | Redirect HTTP to HTTPS |
-| Allowed HTTP Methods | `GET`, `HEAD`, `OPTIONS`, `PUT`, `POST`, `PATCH`, `DELETE` |
-| Cache and origin request settings | Use legacy cache settings |
-| Forward Cookies | All |
-| Query String Forwarding and Caching | Forward all, cache based on all |
+| **Field**                           | Setting                                                    |
+| ----------------------------------- | ---------------------------------------------------------- |
+| Viewer Protocol Policy              | Redirect HTTP to HTTPS                                     |
+| Allowed HTTP Methods                | `GET`, `HEAD`, `OPTIONS`, `PUT`, `POST`, `PATCH`, `DELETE` |
+| Cache and origin request settings   | Use legacy cache settings                                  |
+| Forward Cookies                     | All                                                        |
+| Query String Forwarding and Caching | Forward all, cache based on all                            |
 
 **Distribution Settings**
 
-| Field | Setting |
-| :--- | :--- |
-| Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
-| SSL Certificate | Custom SSL Certificate \(more info\) |
-| Custom SSL Client Support | Clients that support SNI |
+| Field                           | Setting                            |
+| ------------------------------- | ---------------------------------- |
+| Alternate Domain Names (CNAMEs) | `<subdomain.yourdomain.com>`       |
+| SSL Certificate                 | Custom SSL Certificate (more info) |
+| Custom SSL Client Support       | Clients that support SNI           |
 
 **Click Create Distribution and wait for CloudFront to be deployed.**
 
@@ -67,9 +67,9 @@ You'll start by creating a new distribution for serving the JavaScript SDK.
 
 Once your distribution is deployed, you’ll need to create a CNAME record on your domain for the subdomain you wish to use and the distribution url.
 
-| **Name** | Value |
-| :--- | :--- |
-| Subdomain you wish to use \(which was used in the creation of the distribution\). This will vary based on your DNS provider but will typically be just the subdomain. Example: for `cdn.yourdomain.com` you would use `cdn` | The CDN URL for the distribution created. Example: `d3jlkfchu4u.cloudfront.net` |
+| **Name**                                                                                                                                                                                                                  | Value                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Subdomain you wish to use (which was used in the creation of the distribution). This will vary based on your DNS provider but will typically be just the subdomain. Example: for `cdn.yourdomain.com` you would use `cdn` | The CDN URL for the distribution created. Example: `d3jlkfchu4u.cloudfront.net` |
 
 ![](../../.gitbook/assets/screen-shot-2021-02-19-at-12.31.51-pm.png)
 
@@ -97,10 +97,10 @@ Normally all events are sent to your data plane url `<your_data_plane_url>`. To 
 
 The settings for sending events will be the same as the settings for serving the JavaScript SDK except for the following:
 
-| Field | Setting |
-| :--- | :--- |
-| Origin Domain Name | `<your_data_plane_url>`  |
-| Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
+| Field                           | Setting                      |
+| ------------------------------- | ---------------------------- |
+| Origin Domain Name              | `<your_data_plane_url>`      |
+| Alternate Domain Names (CNAMEs) | `<subdomain.yourdomain.com>` |
 
 ### **Add CNAME Record to DNS**
 
@@ -134,10 +134,10 @@ The call to fetch the sourceConfig is sent to `api.rudderstack.com` with the `wr
 
 The settings for sending events will be the same as the settings for serving the JavaScript SDK except for the following:
 
-| Field | Setting |
-| :--- | :--- |
-| Origin Domain Name | `api.rudderlabs.com` |
-| Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
+| Field                           | Setting                      |
+| ------------------------------- | ---------------------------- |
+| Origin Domain Name              | `api.rudderlabs.com`         |
+| Alternate Domain Names (CNAMEs) | `<subdomain.yourdomain.com>` |
 
 We also need to add a Whitelisting for the Authorization headers in **Default Cache Behavior Settings**.
 
@@ -149,7 +149,7 @@ Under Cache Based on Selected Request Headers, you'll choose Whitelist.
 
 ![](../../.gitbook/assets/screen-shot-2021-02-16-at-3.04.55-pm.png)
 
-Choose Authorization and Add &gt;&gt; to whitelist the Authorization Header
+Choose Authorization and Add >> to whitelist the Authorization Header
 
 ![](../../.gitbook/assets/screen-shot-2021-02-16-at-3.05.09-pm.png)
 
@@ -177,13 +177,11 @@ When choosing your SSL certificate on CloudFront, you'll be given the option to 
 
 ![](../../.gitbook/assets/screen-shot-2021-02-19-at-3.56.01-pm.png)
 
-From there you'll choose your subdomain or use a wildcard domain \(`*.yourdomain.com`\) to be able to setup multiple subdomains. 
+From there you'll choose your subdomain or use a wildcard domain (`*.yourdomain.com`) to be able to setup multiple subdomains. 
 
 ACM will guide you through verifying by email or DNS TXT records and you'll be able to choose your own domain for SSL certificates once verified.
 
 ## Contact Us
 
 For more information on any of the sections in this guide, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, we will be happy to help you.
-
-
 

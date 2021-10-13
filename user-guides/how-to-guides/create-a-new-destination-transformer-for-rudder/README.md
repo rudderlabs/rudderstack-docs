@@ -6,37 +6,37 @@ description: >-
 
 # How to Create a New Destination Transformation for RudderStack
 
-## What are destination transformers? <a id="what-are-destination-transformers"></a>
+## What are destination transformers? <a href="what-are-destination-transformers" id="what-are-destination-transformers"></a>
 
-The core promise of platforms like RudderStack is **generate-once-analyse-anywhere**.   
-  
+The core promise of platforms like RudderStack is **generate-once-analyse-anywhere**. \
+\
 This essentially means that organizations need to transmit an event once to the RudderStack platform and the platform would suitably **transform** and **route** the event data to the various target analytics platforms. This is where **destination transformers** come into action.
 
 Every analytics platform defines its own protocol for communication along with semantics for the business objects that can be included in a message sent to the platform. **Destination transformers** are responsible for ingesting the RudderStack canonical object and emit a payload that provides the subsequent **router** programs in the data pipeline along with the information regarding:
 
-a\) Protocol for communicating with the destination \(analytics platform\) \(e.g. REST, parameterized HTTP query etc.\)
+a) Protocol for communicating with the destination (analytics platform) (e.g. REST, parameterized HTTP query etc.)
 
-b\) Payload intelligible to the destination and conformant to the protocol mentioned in a\)
+b) Payload intelligible to the destination and conformant to the protocol mentioned in a)
 
-c\) Additionally, authorization credentials can also be a part of the emitted package, wherever applicable
+c) Additionally, authorization credentials can also be a part of the emitted package, wherever applicable
 
 The RudderStack platform comes with destination transformers for a plethora of popular analytics platforms like Google Analytics, Amplitude, AppsFlyer, MixPanel, Facebook App Events, HubSpot, and many more. We also welcome contributors to add to this ever growing collection of transformers.
 
 Destination Transformers are REST services developed using Node.js that
 
-* Expose a single interface that accepts a JSON payload formatted as per the canonical object model used by Rudder \(detailed examples follow\)
+* Expose a single interface that accepts a JSON payload formatted as per the canonical object model used by Rudder (detailed examples follow)
 * Map the inputs from the canonical object model to the fields of the payload intelligible to the destination
-* Emit an enriched payload as described in points a\), b\) and c\) above
+* Emit an enriched payload as described in points a), b) and c) above
 
-## How data flows to the destination transformer <a id="how-data-flows-to-the-destination-transformer"></a>
+## How data flows to the destination transformer <a href="how-data-flows-to-the-destination-transformer" id="how-data-flows-to-the-destination-transformer"></a>
 
-The **processor** component of the RudderStack server routes individual messages to the transformation ecosystem. Essentially, the processor would make POST request with a JSON payload to endpoints like **http\(s\)://&lt;IP&gt;:9090/v0/ga.** Here, **v0** signifies version of the transformer to be used and **ga** represents the destination.
+The **processor** component of the RudderStack server routes individual messages to the transformation ecosystem. Essentially, the processor would make POST request with a JSON payload to endpoints like **http(s)://\<IP>:9090/v0/ga. **Here,** v0** signifies version of the transformer to be used and **ga** represents the destination.
 
 There can be situations wherein a target analytics platform updates/upgrades its endpoints and RudderStack also updates its transformations to match. However, backward compatibility is needed to be maintained for organizations who might not be in a position to deploy updated code into production.
 
 The concept of version comes in handy to deal with such situations. Depending on the configurations in the RudderStack **control plane**, messages for one organization can get routed to one version of the transformer, while those for another organization can get routed to another version.
 
-The **transformerServer** is the entry point to the transformation ecosystem. It leverages the **transformerRouter,** which routes the message to the intended recipient following the **&lt;version&gt;/&lt;destination acronym&gt;** component of the endpoint URL described above. Essentially, transformerRouter would look for a file `ga.js` under a sub-directory v0 relative to its own directory.
+The **transformerServer** is the entry point to the transformation ecosystem. It leverages the **transformerRouter,** which routes the message to the intended recipient following the **\<version>/\<destination acronym>** component of the endpoint URL described above. Essentially, transformerRouter would look for a file `ga.js` under a sub-directory v0 relative to its own directory.
 
 So a new transformer entry point code needs to be in a file that should be named `<transformer acronym>.js` and placed under a `<version>` sub-directory relative to the path where `transformerServer.js` and `transformerRouter.js` are located. Sample below:
 
@@ -97,11 +97,11 @@ function process (jsonQobj){
 exports.process = process;
 ```
 
-## How do destination transformers work? <a id="how-do-destination-transformers-work"></a>
+## How do destination transformers work? <a href="how-do-destination-transformers-work" id="how-do-destination-transformers-work"></a>
 
 Before we continue on the program flow starting with the **processSingleMessage**, let us take a pause and look at the various business event messages that a transformer needs to be able to handle.
 
-Also, note that depending on the destination, the degree of semantic compliance requirement might vary. For e.g., one platform might not pose any restrictions on the payload attributes and would allow display as well as search on free-flowing attribute names \(e.g. Amplitude\) whereas others might allow only fixed nomenclature of payload field names and present only a derived view/report based on such attributes \(e.g. Google Analytics\)
+Also, note that depending on the destination, the degree of semantic compliance requirement might vary. For e.g., one platform might not pose any restrictions on the payload attributes and would allow display as well as search on free-flowing attribute names (e.g. Amplitude) whereas others might allow only fixed nomenclature of payload field names and present only a derived view/report based on such attributes (e.g. Google Analytics)
 
 The transformation code needs to enforce any semantic checks required by the destination. For e.g., an "event" Hit Type for Google Analytics mandates that at least an "event action" and an "event category" be specified. Concerned transformation must therefore encapsulate logic that can map and/or derive values for these fields for concerned message
 
@@ -112,7 +112,7 @@ Following are key business event message types:
 * **Screen** - applicable for mobile applications. Represents the event where a screen of the application is opened
 * **Track** - the catch-all and most used type. All events can be captured using this. Information related to generic e-Commerce events, with their defined information structures, can be passed using this message type. You can also pass information related to very specific and custom events
 
-The canonical object attributes would get mapped to destination payload fields depending on the above message types. Let us look at a sample such branching logic \(to be emulated in a new transformer in accordance with the destination requirements\)
+The canonical object attributes would get mapped to destination payload fields depending on the above message types. Let us look at a sample such branching logic (to be emulated in a new transformer in accordance with the destination requirements)
 
 ```javascript
 //Generic process function which invokes specific handler functions 
@@ -198,7 +198,7 @@ In the above example, for **track,** a second level check has been introduced to
 
 Within each of the message type-specific processing routines, mapping from the canonical model to the destination data model would occur.
 
-Destination transformers can combine direct field-mapping configurations \(maintained as key-value pairs in a JSON where the key is the canonical object attribute path and the value is the destination payload attribute\) as well as custom mapping logic.
+Destination transformers can combine direct field-mapping configurations (maintained as key-value pairs in a JSON where the key is the canonical object attribute path and the value is the destination payload attribute) as well as custom mapping logic.
 
 The sample below is that of a direct field-mapping configuration for a generic RudderStack "event" message being mapped to a [Google Analytics Measurement Protocol invocation for Event Tracking](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#events).
 
@@ -315,7 +315,7 @@ function processRefundEvent(jsonQobj){
 }
 ```
 
-In the above example, a list of products can be sent as argument parameters for the **transaction** hit type of Google Analytics Measurement Protocol. Custom logic is used to iterate through the array of JSON structures signifying the **products** and construct parameters following GA's convention of **pr&lt;productIndex&gt;id**, **pr&lt;productIndex&gt;nm** and so on
+In the above example, a list of products can be sent as argument parameters for the **transaction** hit type of Google Analytics Measurement Protocol. Custom logic is used to iterate through the array of JSON structures signifying the **products** and construct parameters following GA's convention of **pr\<productIndex>id**, **pr\<productIndex>nm** and so on
 
 The last statement in the above code block shows how control is passed to the generic method that uses configuration file for direct mapping to take over after the custom logic-based mapping has completed.
 
@@ -323,7 +323,7 @@ The last statement in the above code block shows how control is passed to the ge
 return responseBuilderSimple(parameterMap,jsonQobj,'transaction',refundEventConfigJson, customerCredentialsConfigJson);
 ```
 
-The **responseBuilderSimple** method, shown briefly before, is where the direct mappings are taken care of. Expanded version of the same is provided below. Here one can see parameters \(**endpoint**, **request-format**, **request\_method\)** being set for the configuration corresponding to the request to be made to the destination platform
+The **responseBuilderSimple** method, shown briefly before, is where the direct mappings are taken care of. Expanded version of the same is provided below. Here one can see parameters (**endpoint**, **request-format**, **request_method)** being set for the configuration corresponding to the request to be made to the destination platform
 
 ```javascript
 //Basic response builder
@@ -421,4 +421,3 @@ While we hope this guide helps developers understand the basic need, data flow, 
 ## Contact us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

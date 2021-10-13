@@ -8,7 +8,7 @@ description: >-
 
 ## What are Sources in RudderStack?
 
-Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed \(with or without transformation\) into your data warehouse or third-party destinations for analytics and other activation use-cases.
+Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed (with or without transformation) into your data warehouse or third-party destinations for analytics and other activation use-cases.
 
 {% hint style="success" %}
 For more information on sources in RudderStack, check out the [**Connections guide**](https://docs.rudderstack.com/connections).
@@ -21,7 +21,7 @@ With RudderStack **Warehouse Actions**, you can leverage the already processed c
 With this feature, you can configure your data warehouse as a source in the [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial), select the right data and then sync this data to all the supported destinations.
 
 {% hint style="warning" %}
-**You can connect only one destination to a Warehouse Actions source**. Also, note that this destination **should not be connected to any other source** \(including [**Event Stream**](../stream-sources/) sources.\)
+**You can connect only one destination to a Warehouse Actions source**. Also, note that this destination **should not be connected to any other source** (including [**Event Stream**](../stream-sources/) sources.)
 {% endhint %}
 
 {% hint style="info" %}
@@ -41,10 +41,10 @@ Here's a detailed walkthrough of the Warehouse Actions feature:
 {% hint style="warning" %}
 **The** **Warehouse Actions** **feature supports only source-driven configuration of your data pipeline**. 
 
-So, you need to configure a Warehouse Actions source in RudderStack first, and then connect it to a new or existing destination \(the existing destination should not be connected to any other source\), as shown below.
+So, you need to configure a Warehouse Actions source in RudderStack first, and then connect it to a new or existing destination (the existing destination should not be connected to any other source), as shown below.
 {% endhint %}
 
-![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am.png)
+![](<../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am (1).png>)
 
 To configure your data warehouse as a source in the RudderStack dashboard, follow these steps:
 
@@ -52,13 +52,13 @@ To configure your data warehouse as a source in the RudderStack dashboard, follo
 * Navigate to **Sources**, present in the left panel of the dashboard.
 * Choose your preferred data warehouse which you want to configure as a source, as shown. Then, click on **Next**.
 
-![](../.gitbook/assets/1%20%288%29.png)
+![](<../.gitbook/assets/1 (8).png>)
 
 ### Specifying Connection Credentials
 
 * Assign a name to your source. Then, click on the **Create credentials from scratch** button, if you are configuring your data warehouse in the RudderStack dashboard for the first time.
 
-![](../.gitbook/assets/2%20%281%29%20%281%29.png)
+![](<../.gitbook/assets/2 (1).png>)
 
 {% hint style="info" %}
 If you have previously configured your data warehouse as a source on the RudderStack dashboard, you can simply use the existing credentials and proceed. 
@@ -76,7 +76,7 @@ RudderStack currently supports **Google BigQuery**, **PostgreSQL**, **ClickHouse
 
 * Next, enter the data warehouse schema and the table name. RudderStack will collect the data from this table.
 
-![](../.gitbook/assets/4%20%287%29.png)
+![](<../.gitbook/assets/4 (7).png>)
 
 {% hint style="warning" %}
 Please note that your source table must include at least one of the following columns for it to be considered a valid source:
@@ -92,9 +92,9 @@ Please note that your source table must include at least one of the following co
 
 * You can also filter, select and edit the column names of the table to be included as the data source, as shown:
 
-![](../.gitbook/assets/6%20%286%29.png)
+![](<../.gitbook/assets/6 (6).png>)
 
-![](../.gitbook/assets/7%20%282%29%20%281%29.png)
+![](<../.gitbook/assets/7 (2).png>)
 
 * Once you've selected all the the required table columns, click on **Next**.
 
@@ -116,7 +116,7 @@ Now you can connect this source to any RudderStack destination of your choice. R
 
 ## Warehouse Actions Constants
 
-Constants give you the ability to add new fields to each event with a pre-defined value. The **key** of a Warehouse Actions constant has the same functionality as modifying an existing column, and is in the format \(**test.value, test.value\[0\]**\).
+Constants give you the ability to add new fields to each event with a pre-defined value. The **key** of a Warehouse Actions constant has the same functionality as modifying an existing column, and is in the format (**test.value, test.value\[0]**).
 
 ### How to add a Warehouse Actions constant
 
@@ -124,31 +124,31 @@ Adding a new constant when configuring a Warehouse Actions source is very easy:
 
 * Click on the **Add Constant** button as shown below, while [mapping your table](https://docs.rudderstack.com/warehouse-actions#specifying-warehouse-schema-and-table):
 
-![](../.gitbook/assets/image%20%2877%29.png)
+![](<../.gitbook/assets/image (77).png>)
 
 * Add your preferred key and value for the constant, select **Ok** and then click on **Confirm**, as shown:
 
-![](../.gitbook/assets/image%20%2876%29.png)
+![](<../.gitbook/assets/image (76).png>)
 
 * The new constant appears in the table and also in the JSON preview inside the traits, as shown:
 
-![](../.gitbook/assets/screenshot_2021-03-18_at_3.51.11_pm.png)
+![](../.gitbook/assets/screenshot\_2021-03-18\_at\_3.51.11\_pm.png)
 
 * You can also use dot notation to define a Warehouse Actions constant, as shown below:
 
-![](../.gitbook/assets/screenshot_2021-03-18_at_3.52.00_pm.png)
+![](../.gitbook/assets/screenshot\_2021-03-18\_at\_3.52.00\_pm.png)
 
 * The result would look something like:
 
-![](../.gitbook/assets/screenshot_2021-03-18_at_3.52.26_pm.png)
+![](../.gitbook/assets/screenshot\_2021-03-18\_at\_3.52.26\_pm.png)
 
 ## FAQs
 
 ### I cannot add a Warehouse Actions source to an already configured destination. Why?
 
-Warehouse Actions supports only source-driven configuration of your pipeline. So you need to configure a Warehouse Actions source in RudderStack and then connect it an existing, **free** destination \(this destination should not be connected to any other source\), as shown:
+Warehouse Actions supports only source-driven configuration of your pipeline. So you need to configure a Warehouse Actions source in RudderStack and then connect it an existing, **free** destination (this destination should not be connected to any other source), as shown:
 
-![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am%20%281%29.png)
+![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am.png)
 
 ### Can I connect a Warehouse Actions source to multiple destinations?
 
@@ -160,17 +160,26 @@ Currently all events from the RudderStack warehouse actions are `identify()` eve
 
 ## Popular Sources
 
-{% page-ref page="amazon-s3.md" %}
+{% content-ref url="amazon-s3.md" %}
+[amazon-s3.md](amazon-s3.md)
+{% endcontent-ref %}
 
-{% page-ref page="snowflake.md" %}
+{% content-ref url="snowflake.md" %}
+[snowflake.md](snowflake.md)
+{% endcontent-ref %}
 
-{% page-ref page="amazon-redshift.md" %}
+{% content-ref url="amazon-redshift.md" %}
+[amazon-redshift.md](amazon-redshift.md)
+{% endcontent-ref %}
 
-{% page-ref page="google-bigquery.md" %}
+{% content-ref url="google-bigquery.md" %}
+[google-bigquery.md](google-bigquery.md)
+{% endcontent-ref %}
 
-{% page-ref page="postgresql.md" %}
+{% content-ref url="postgresql.md" %}
+[postgresql.md](postgresql.md)
+{% endcontent-ref %}
 
 ## Contact Us
 
 To know more about RudderStack's Warehouse Actions feature, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-

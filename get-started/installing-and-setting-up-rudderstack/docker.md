@@ -35,9 +35,9 @@ There are two ways you can set up the Control Plane. This section lists the step
 RudderStack's dashboard lets you easily set up your data pipelines by configuring your sources and destinations. It is fully hosted by RudderStack and is free for open-source users. You also get access to some important features like [**Transformations**](../../transformations/) and a [**Live Events** ](../../user-guides/how-to-guides/live-destination-event-debugger.md)tab.
 {% endhint %}
 
-* Note and copy your workspace **Token** from the top of the page, as shown below. This will be required for setting up the Data Plane.
+*   Note and copy your workspace **Token** from the top of the page, as shown below. This will be required for setting up the Data Plane.
 
-  ![](../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29%20%281%29.png)
+    ![](<../../.gitbook/assets/screen-shot-2021-07-01-at-5.36.15-pm (3) (3) (2) (3) (3) (3) (3) (3) (1) (1) (1).png>)
 
 ### Self-Host the Control Plane
 
@@ -59,12 +59,11 @@ To set up the RudderStack Data Plane in your Docker environment, follow these st
 
 * Download the `rudder-docker.yml` [**docker-compose**](https://raw.githubusercontent.com/rudderlabs/rudder-server/master/rudder-docker.yml) file.
 * Replace `<your_workspace_token>` in this file with the token you copied in the previous section.
-* Then, open your terminal, navigate to the directory where you want to install RudderStack, and run the following command:
+*   Then, open your terminal, navigate to the directory where you want to install RudderStack, and run the following command:
 
-  ```bash
-  docker-compose -f rudder-docker.yml up
-  ```
-
+    ```bash
+    docker-compose -f rudder-docker.yml up
+    ```
 * Once you have successfully followed the steps above, [**send test events**](sending-test-events.md) to verify the installation.
 
 ### For **Self-Hosted Control Plane**
@@ -76,4 +75,3 @@ Once you have successfully followed the steps above, [**send test events**](send
 ## Contact Us
 
 If you come across any issues while setting up RudderStack on Docker, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
-

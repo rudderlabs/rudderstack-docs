@@ -14,11 +14,11 @@ These lifecycle events are associated with the key interactions that a customer 
 
 This event is triggered whenever a coupon is entered by the customer, either on a cart or during the order/transaction. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `order_id` | String | Contains the order ID or the transaction ID, if applicable |
-| `cart_id` | String | Contains the cart ID, if applicable |
-| `coupon_id` | String | Contains the coupon ID |
+| **Property Name** | **Type** | **Description of the Property**                            |
+| ----------------- | -------- | ---------------------------------------------------------- |
+| `order_id`        | String   | Contains the order ID or the transaction ID, if applicable |
+| `cart_id`         | String   | Contains the cart ID, if applicable                        |
+| `coupon_id`       | String   | Contains the coupon ID                                     |
 
 An example of the **Coupon Entered** event is as shown:
 
@@ -34,13 +34,13 @@ rudderanalytics.track('Coupon Entered', {
 
 This event is triggered whenever a coupon is applied to a cart or a transaction successfully. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `order_id` | String | Contains the order ID or the transaction ID, if applicable |
-| `cart_id` | String | Contains the cart ID, if applicable |
-| `coupon_id` | String | Contains the coupon ID |
-| `coupon_name` | String | Contains the name of the coupon |
-| `discount` | Number | Contains the amount of discount availed by applying the coupon |
+| **Property Name** | **Type** | **Description of the Property**                                |
+| ----------------- | -------- | -------------------------------------------------------------- |
+| `order_id`        | String   | Contains the order ID or the transaction ID, if applicable     |
+| `cart_id`         | String   | Contains the cart ID, if applicable                            |
+| `coupon_id`       | String   | Contains the coupon ID                                         |
+| `coupon_name`     | String   | Contains the name of the coupon                                |
+| `discount`        | Number   | Contains the amount of discount availed by applying the coupon |
 
 An example of the **Coupon Entered** event is as shown:
 
@@ -58,13 +58,13 @@ rudderanalytics.track('Coupon Applied', {
 
 This event is triggered whenever an invalid coupon code is applied to a cart or a transaction. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `order_id` | String | Contains the order ID or the transaction ID, if applicable |
-| `cart_id` | String | Contains the cart ID, if applicable |
-| `coupon_id` | String | Contains the coupon ID |
-| `coupon_name` | String | Contains the name of the coupon |
-| `reason` | String | Contains the reason why the coupon was declined |
+| **Property Name** | **Type** | **Description of the Property**                            |
+| ----------------- | -------- | ---------------------------------------------------------- |
+| `order_id`        | String   | Contains the order ID or the transaction ID, if applicable |
+| `cart_id`         | String   | Contains the cart ID, if applicable                        |
+| `coupon_id`       | String   | Contains the coupon ID                                     |
+| `coupon_name`     | String   | Contains the name of the coupon                            |
+| `reason`          | String   | Contains the reason why the coupon was declined            |
 
 An example of the **Coupon Denied** event is as shown:
 
@@ -81,15 +81,15 @@ rudderanalytics.track('Coupon Denied', {
 
 This event is triggered whenever a customer removes an already applied coupon from a cart or transaction. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `order_id` | String | Contains the order ID or the transaction ID, if applicable |
-| `cart_id` | String | Contains the cart ID, if applicable |
-| `coupon_id` | String | Contains the coupon ID |
-| `coupon_name` | String | Contains the name of the coupon |
-| `discount` | Number | Contains the amount of discount availed by applying the coupon |
+| **Property Name** | **Type** | **Description of the Property**                                |
+| ----------------- | -------- | -------------------------------------------------------------- |
+| `order_id`        | String   | Contains the order ID or the transaction ID, if applicable     |
+| `cart_id`         | String   | Contains the cart ID, if applicable                            |
+| `coupon_id`       | String   | Contains the coupon ID                                         |
+| `coupon_name`     | String   | Contains the name of the coupon                                |
+| `discount`        | Number   | Contains the amount of discount availed by applying the coupon |
 
-An example of the **Coupon Removed** event is as shown:
+An example of the **Coupon Removed **event is as shown:
 
 ```javascript
 analytics.track('Coupon Removed', {
@@ -104,4 +104,3 @@ analytics.track('Coupon Removed', {
 ## Contact Us
 
 To know more about the RudderStack eCommerce spec, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action.
-

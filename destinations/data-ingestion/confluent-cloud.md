@@ -9,19 +9,19 @@ description: Step-by-step guide to set up Confluent Cloud as a destination in Ru
 RudderStack allows you to seamlessly configure Confluent Cloud as a destination to send your event data.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/confluent_cloud)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/confluent_cloud)**.**
 {% endhint %}
 
 ## Configuring Confluent Cloud in RudderStack
 
 To enable sending data to Confluent Cloud, you will first need to add it as a destination to the source you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to Confluent Cloud.
 
-Before configuring your source and destination on [RudderStack](https://app.rudderstack.com/), check whether Confluent Cloud supports the platform you are working on by referring to the table below:
+Before configuring your source and destination on [RudderStack](https://app.rudderstack.com), check whether Confluent Cloud supports the platform you are working on by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device Mode** | - | - | - |
-| **Cloud Mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device Mode**     | -             | -             | -             |
+| **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
  To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -36,7 +36,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **Confluent Cloud**. Give your destination a name, and then click on **Next**.
-* In the **Connection Settings**, ****fill the required fields with the relevant information and click **Next.**
+* In the **Connection Settings**,** **fill the required fields with the relevant information and click **Next.**
 
 ![Confluent Cloud connection settings](../../.gitbook/assets/screenshot-2020-11-27-at-1.28.49-pm.png)
 
@@ -55,9 +55,8 @@ RudderStack uses `userId` as the partition key of a given message.
 If `userId` is not present in the payload, then `anonymousId` is used.
 {% endhint %}
 
-If you have a multi-partitioned topic, then the records of the same `userId` \(or `anonymousId` in the absence of `userId`\) will always go to the same partition.
+If you have a multi-partitioned topic, then the records of the same `userId` (or `anonymousId` in the absence of `userId`) will always go to the same partition.
 
 ## Contact Us
 
 If you come across any issues while configuring Confluent Cloud with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
-

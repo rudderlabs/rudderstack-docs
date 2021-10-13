@@ -19,23 +19,24 @@ To add Marketo as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/1%20%284%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29%20%284%29.png)
+![](<../.gitbook/assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png>)
 
 * Next, navigate to **Cloud Extract** within the **Sources** directory and select **Marketo**.
 
-![](../.gitbook/assets/2%20%289%29.png)
+![](<../.gitbook/assets/2 (9).png>)
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/3%20%284%29.png)
+![](<../.gitbook/assets/3 (4).png>)
 
 ### Setting Up the Connection
 
 * Under **Create new account**, fill in the relevant connection credentials.
 
-![](../.gitbook/assets/4%20%283%29.png)
+![](<../.gitbook/assets/4 (3).png>)
 
-* The connection settings are: 
+* The connection settings are:\
+
   * **Account Name**: Your Marketo account name goes here.
   * **Marketo Client ID**: To get the Client ID, navigate to the **LaunchPoint** page under **Integration** on your admin settings page. Then select the API service and click on **View Details**.
   * **Marketo Client Secret**: You can find the client secret next to the ID from the previous step.
@@ -49,19 +50,19 @@ If you have already connected RudderStack to your Marketo account, your credenti
 
 * In the next screen, choose the **Start Date** under **Source Settings**. This is the date from which RudderStack ingests the data from Marketo.
 
-![](../.gitbook/assets/5%20%289%29.png)
+![](<../.gitbook/assets/5 (9).png>)
 
 ### Setting the Data Update Schedule
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Marketo account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option, as shown:
 
-![](../.gitbook/assets/6%20%289%29.png)
+![](<../.gitbook/assets/6 (9).png>)
 
 That's it! Marketo is now successfully configured as a source on your RudderStack dashboard. 
 
 RudderStack will start importing data from Marketo as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
-![](../.gitbook/assets/7%20%285%29.png)
+![](<../.gitbook/assets/7 (5).png>)
 
 {% hint style="success" %}
 Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
@@ -78,4 +79,3 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 ## Contact Us
 
 If you come across any issues while configuring Marketo as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

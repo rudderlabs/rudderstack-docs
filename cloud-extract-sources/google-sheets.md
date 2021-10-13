@@ -25,15 +25,15 @@ To set up Google Sheets as a source on the RudderStack dashboard, follow these s
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%285%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (2).png>)
 
 * Next, select **Google Sheets**, and click on **Next**.
 
-![](../.gitbook/assets/1%20%287%29.png)
+![](<../.gitbook/assets/1 (7).png>)
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/2%20%282%29.png)
+![](<../.gitbook/assets/2 (2).png>)
 
 ### Specifying Connection Credentials
 
@@ -48,7 +48,7 @@ If you've already configured Google Sheets as a source before, you can choose th
 * Next, choose the Google Spreadsheet and the worksheet to be used as the data source. You will also need to specify the **Header row**. This is the row that contains the sheet’s headers and column names. 
 
 {% hint style="info" %}
-By default, RudderStack uses the first row ****of the sheet as the header row.
+By default, RudderStack uses the first row** **of the sheet as the header row.
 {% endhint %}
 
 ![](../.gitbook/assets/4.png)
@@ -61,19 +61,19 @@ By default, RudderStack uses the row that follows the header as the first data r
 
 * RudderStack will automatically verify if the sheet is valid and contains any data. If the specified worksheet is empty, RudderStack will flag this automatically, as shown:
 
-![](../.gitbook/assets/7%20%281%29.png)
+![](<../.gitbook/assets/7 (1).png>)
 
 ### Setting the Data Update Schedule
 
 * As the final step, you will be required to set the **Run Frequency** to schedule the data import from your Google Sheet to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
-![](../.gitbook/assets/5%20%284%29.png)
+![](<../.gitbook/assets/5 (4).png>)
 
 That's it! Your Google Sheet is now successfully configured as a source. 
 
 RudderStack will start ingesting data from your Google Sheets source as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
-![](../.gitbook/assets/6%20%285%29.png)
+![](<../.gitbook/assets/6 (5).png>)
 
 {% hint style="success" %}
 Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
@@ -90,4 +90,3 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 ## Contact Us
 
 If you come across any issues while configuring Google Sheets as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

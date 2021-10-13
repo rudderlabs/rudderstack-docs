@@ -8,9 +8,9 @@ description: >-
 
 ## What is RudderStack?
 
-[**RudderStack**](https://rudderstack.com/) is a **customer data platform** to capture, process, and sync all of your event, product, and warehouse data to all the tools across your customer data stack.
+[**RudderStack**](https://rudderstack.com) is a **customer data platform** to capture, process, and sync all of your event, product, and warehouse data to all the tools across your customer data stack.
 
-RudderStack's backend is written in Go, with a simple, user-friendly UI written in React.js. 
+RudderStack's backend is written in Go, with a simple, user-friendly UI written in React.js.
 
 RudderStack is enterprise-ready and provides a powerful transformation framework to process your event data on the fly.
 
@@ -24,7 +24,7 @@ Do you have any questions about RudderStack? Join our [**Slack**](https://resour
 
 ## Why RudderStack?
 
-* **Segment API-compatible**: RudderStack is fully compatible with the Segment API. So you don't need to change your app if you are using Segment. Simply integrate the RudderStack SDKs into your app and your events will keep flowing as before \(including your data warehouse\). 
+* **Segment API-compatible**: RudderStack is fully compatible with the Segment API. So you don't need to change your app if you are using Segment. Simply integrate the RudderStack SDKs into your app and your events will keep flowing as before (including your data warehouse). 
 * **Processing Flexibility**: With RudderStack's powerful JavaScript-based event transformation framework, you can enhance or transform your event data by combining it with your other internal data. 
 * **Stand-alone System**: RudderStack runs as a single Go binary with the dependencies being on a PostgreSQL server and a Node.js service. There is no other dependency required to run RudderStack. 
 * **Platform-independent**: RudderStack is Kubernetes-native and can run on any Kubernetes cluster with our Helm charts. RudderStack is cloud-agnostic and can run on stand-alone machines in all popular cloud platforms, namely AWS, Microsoft Azure, GCP, and others. 
@@ -39,7 +39,7 @@ Get up and running with RudderStack in no time by following these steps:
 * Sign up for [**RudderStack Cloud**](https://app.rudderlabs.com/signup?type=freetrial). 
 * You will then get access to this dashboard for setting up your data pipelines:
 
-![Connections Dashboard](../.gitbook/assets/1%20%2822%29.png)
+![Connections Dashboard](<../.gitbook/assets/1 (22).png>)
 
 * Click on **Add Source** to set up a data source.
 
@@ -67,28 +67,31 @@ You can transform your events in RudderStack before sending them to the specifie
 
 Here's a quick walkthrough on how to send data from your website to various cloud tools via RudderStack:
 
-{% embed url="https://www.youtube.com/watch?v=BEQltd\_5A\_k&ab\_channel=RudderStack" %}
+{% embed url="https://www.youtube.com/watch?v=BEQltd_5A_k&ab_channel=RudderStack" %}
 
 ## Useful Links
 
 * Check out some [**sample applications**](https://github.com/rudderlabs/rudder-samples/) that demonstrate various RudderStack use-cases. 
 * Read more about RudderStack's underlying architecture and familiarize yourself with RudderStack's core backend and terms such as **Control Plane** and **Data Plane**.
 
-{% page-ref page="rudderstack-architecture.md" %}
+{% content-ref url="rudderstack-architecture.md" %}
+[rudderstack-architecture.md](rudderstack-architecture.md)
+{% endcontent-ref %}
 
 * You can set up open-source RudderStack on the platform of your choice, in your own development environment.
 
-{% page-ref page="installing-and-setting-up-rudderstack/" %}
+{% content-ref url="installing-and-setting-up-rudderstack/" %}
+[installing-and-setting-up-rudderstack](installing-and-setting-up-rudderstack/)
+{% endcontent-ref %}
 
 * Learn about data governance in RudderStack.
 
-{% page-ref page="../data-governance/" %}
+{% content-ref url="../data-governance/" %}
+[data-governance](../data-governance/)
+{% endcontent-ref %}
 
 ## Contact Us
 
 If you want to know more about RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also see [**RudderStack in action**](https://app.rudderstack.com/signup?type=freetrial) to check out all the cool features the platform has to offer.
 
 For community support, you can always start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel. We will be happy to help you!
-
-
-

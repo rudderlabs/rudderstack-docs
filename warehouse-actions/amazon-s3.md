@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest your data from Amazon S3 bucket into R
 
 # Amazon S3
 
-[Amazon S3](https://aws.amazon.com/s3/) \(Simple Storage Service\) is a cloud-based object storage service that allows customers and businesses to store their data securely, and at scale. With an easy to use interface and management features, S3 allows for effortless organizing of data to meet the business-specific requirements.
+[Amazon S3](https://aws.amazon.com/s3/) (Simple Storage Service) is a cloud-based object storage service that allows customers and businesses to store their data securely, and at scale. With an easy to use interface and management features, S3 allows for effortless organizing of data to meet the business-specific requirements.
 
 This guide will help you configure Amazon S3 as a source from which you can route event data to your desired destinations through RudderStack.
 
@@ -15,7 +15,7 @@ To set up Amazon S3 as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%281%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (8).png>)
 
 * Scroll down to the **Warehouse Sources** and select **Amazon S3**. Then, click on **Next**.
 
@@ -103,4 +103,3 @@ For more information on understanding and getting these AWS credentials, refer t
 ## Contact Us
 
 If you come across any issues while configuring Amazon S3 as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

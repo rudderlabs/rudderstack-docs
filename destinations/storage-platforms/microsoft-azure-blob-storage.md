@@ -11,14 +11,14 @@ description: >-
 RudderStack allows you to send your event data from a source to Microsoft Azure Blob Storage, and dump it in their container.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_blob)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_blob)**.**
 {% endhint %}
 
 ## Setting up Azure Blob Storage
 
 Follow these steps to set up Azure Blog Storage before adding it as a destination in RudderStack:
 
-* Login to your [Azure portal](https://portal.azure.com/).
+* Login to your [Azure portal](https://portal.azure.com).
 * Create a Storage Account of type **General-purpose v2 account**.
 * Choose your storage account and under `Blob service` , click on `containers`.
 * Create a new container. This is where all your event files will be dumped.
@@ -40,8 +40,8 @@ Follow these steps to configure Azure Blob Storage as a destination in RudderSta
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
 {% endhint %}
 
-* Select the destination as **Azure Blob Storage** to your source. Give your destination a name and click **Next**.
-* Next, fill all the fields with the appropriate information \(please refer to the Setting up Azure Blob Storage section above\) and click **Next**.
+* Select the destination as** Azure Blob Storage** to your source. Give your destination a name and click **Next**.
+* Next, fill all the fields with the appropriate information (please refer to the Setting up Azure Blob Storage section above) and click **Next**.
 
 ![Azure Blob Storage settings](../../.gitbook/assets/screenshot-2020-01-06-at-10.04.20-am.png)
 
@@ -52,8 +52,6 @@ That's it! You have successfully added Microsoft Azure Blob Storage as a destina
 ## Contact Us
 
 If you come across any issues while configuring or using Azure Blob Storage with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
-
 
 
 

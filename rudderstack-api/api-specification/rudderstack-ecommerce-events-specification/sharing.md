@@ -14,22 +14,22 @@ The product sharing activities allow customers to share interesting products to 
 
 This event is triggered whenever a customer shares a product. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `share_via` | String | Contains information on the method of sharing the product |
-| `share_message` | String | Contains the message sent by the customer |
-| `recipient` | String | Contains information on the recipient with whom the product is shared |
-| `product_id` | String | Contains the Database ID of the product being shared |
-| `sku` | String | Contains the SKU of the product |
-| `category` | String | Contains the category of the product |
-| `name` | String | Contains the name of the product |
-| `brand` | String | Contains the brand associated with the product |
-| `variant` | String | Contains the variant associated with the product |
-| `price` | Number | Contains the price of the product \(in USD\) |
-| `url` | String | Contains the URL of the product's page |
-| `image_url` | String | Contains the image URL of the product |
+| **Property Name** | **Type** | **Description of the Property**                                       |
+| ----------------- | -------- | --------------------------------------------------------------------- |
+| `share_via`       | String   | Contains information on the method of sharing the product             |
+| `share_message`   | String   | Contains the message sent by the customer                             |
+| `recipient`       | String   | Contains information on the recipient with whom the product is shared |
+| `product_id`      | String   | Contains the Database ID of the product being shared                  |
+| `sku`             | String   | Contains the SKU of the product                                       |
+| `category`        | String   | Contains the category of the product                                  |
+| `name`            | String   | Contains the name of the product                                      |
+| `brand`           | String   | Contains the brand associated with the product                        |
+| `variant`         | String   | Contains the variant associated with the product                      |
+| `price`           | Number   | Contains the price of the product (in USD)                            |
+| `url`             | String   | Contains the URL of the product's page                                |
+| `image_url`       | String   | Contains the image URL of the product                                 |
 
-An example of the **Product Shared** event is as shown:
+An example of the **Product Shared **event is as shown:
 
 ```javascript
 rudderanalytics.track('Product Shared', {
@@ -52,16 +52,16 @@ rudderanalytics.track('Product Shared', {
 
 This event is triggered whenever a customer shares a shopping cart. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `share_via` | String | Contains information on the method of sharing the cart |
-| `share_message` | String | Contains the message sent by the customer |
-| `recipient` | String | Contains information of the recipient |
-| `cart_id` | String | Contains the ID of the shopping cart that is being shared |
-| `products` | Array | Contains the list of products shared with the recipient |
-| `products.$.product_id` | String | Contains the product ID displayed on the list |
+| **Property Name**       | **Type** | **Description of the Property**                           |
+| ----------------------- | -------- | --------------------------------------------------------- |
+| `share_via`             | String   | Contains information on the method of sharing the cart    |
+| `share_message`         | String   | Contains the message sent by the customer                 |
+| `recipient`             | String   | Contains information of the recipient                     |
+| `cart_id`               | String   | Contains the ID of the shopping cart that is being shared |
+| `products`              | Array    | Contains the list of products shared with the recipient   |
+| `products.$.product_id` | String   | Contains the product ID displayed on the list             |
 
-An example of the **Cart Shared** event is as shown below:
+An example of the **Cart Shared **event is as shown below:
 
 ```javascript
 rudderanalytics.track('Cart Shared', {
@@ -79,4 +79,3 @@ rudderanalytics.track('Cart Shared', {
 ## Contact Us
 
 To know more about the RudderStack eCommerce spec, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action.
-

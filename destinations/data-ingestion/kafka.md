@@ -18,10 +18,10 @@ In order to enable dumping data to Kafka, you will first need to add it as a des
 
 Before configuring your source and destination on the [dashboard](https://app.rudderestack.com), please check whether the platform you are working on is supported by Apache Kafka. Please refer to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
-| **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | -             | -             | -             |
+| **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -36,7 +36,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **Kafka** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Connection Settings**, **\*\*fill all the fields with the relevant information and click** Next\*\*
+* Next, in the **Connection Settings**, **\*\*fill all the fields with the relevant information and click **Next\*\*
 
 ![Kafka Connection Settings](../../.gitbook/assets/screenshot-2020-05-17-at-4.34.38-pm.png)
 
@@ -73,7 +73,7 @@ We use `userId` as the partition key of message.
 If `userId` is not present in payload, then `anonymousId` is used instead.
 {% endhint %}
 
-So, if you have a multi-partitioned topic, then the records of the same `userId` \(or `anonymousId` in absence of `userId`\) will always go to the same partition.
+So, if you have a multi-partitioned topic, then the records of the same `userId` (or `anonymousId` in absence of `userId`) will always go to the same partition.
 
 ## FAQ
 
@@ -89,14 +89,13 @@ Please follow the steps below that make use of Java's **keytool** utility.
 2. **Create your own CA**
    1. Generate a CA that is simply a public-private key pair and certificate, and it is intended to sign other certificates. **You need to put this certificate at the RudderStack Web App as CA certificate**.
 
-```text
+```
   `openssl req -new -x509 -keyout ca-key -out ca-cert -days {validity}`
 ```
 
-1. Add the generated CA to the **broker's truststore** so that the brokers can trust this CA.
+1.  Add the generated CA to the **broker's truststore** so that the brokers can trust this CA.
 
-   `keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert` 3. **Sign the certificates**
-
+    `keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert` 3. **Sign the certificates**
 2. Export the certificate from the keystore, like so:   `keytool -keystore kafka.server.keystore.jks -alias localhost -certreq -file cert-file`
 3. Sign it with the CA:  `openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days {validity} -CAcreateserial -passin pass:{ca-password}`
 4. Import both the certificate of the CA and the signed certificate into the broker keystore:  `1. keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert  2. keytool -keystore kafka.server.keystore.jks -alias localhost -import -file cert-signed`
@@ -171,7 +170,7 @@ Open this address with SSL in addition to that. For that, you need to update `ad
 
 A sample entry is as shown below:
 
-```text
+```
 # Hostname and port the broker will advertise to producers and consumers.
 # here the INTERNAL listerner is your cluster kafka service host for kafka server
 # and the EXTERNAL is public loadbalancer for kafka server
@@ -192,4 +191,3 @@ You should configure your Zookeeper with `SASL_SSL`.
 ## Contact Us
 
 If you come across any issues while configuring or using Kafka with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

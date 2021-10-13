@@ -25,7 +25,7 @@ Follow these steps below to grant the necessary permissions for Warehouse Action
 
 The permissions are as shown below:
 
-```text
+```
 bigquery.datasets.get
 bigquery.jobs.create
 bigquery.jobs.list
@@ -78,13 +78,13 @@ Note down the **Service account ID**. This ID is required while creating the Rud
 
 * The following command creates a dedicated schema `rudderstack_` used by RudderStack for storing the state of each data sync.
 
-```text
+```
 create schema rudderstack_;
 ```
 
-* The following query allows the service account `Rudderstack` to have full access to the schema `rudderstack_` \(used by RudderStack\).
+* The following query allows the service account `Rudderstack` to have full access to the schema `rudderstack_` (used by RudderStack).
 
-```text
+```
 GRANT `roles/bigquery.dataOwner`
      ON SCHEMA rudderstack_
      TO "serviceAccount:<SERVICE_ACCOUNT_ID>";
@@ -97,7 +97,7 @@ To set up Google BigQuery as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%287%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (10).png>)
 
 * Scroll down to the **Warehouse Sources** and select **BigQuery**. Then, click on **Next**.
 
@@ -145,7 +145,7 @@ That's it! BigQuery is now successfully configured as a source on your RudderSta
 
 RudderStack will start importing data from your BigQuery instance as per the specified frequency. You can further connect this source to your preferred destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
-![](../.gitbook/assets/screen-shot-2021-01-06-at-2.55.24-pm%20%281%29.png)
+![](<../.gitbook/assets/screen-shot-2021-01-06-at-2.55.24-pm (1).png>)
 
 {% hint style="info" %}
 If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
@@ -167,14 +167,14 @@ These options are explained below:
 If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
 {% endhint %}
 
-* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials.\
+
 * **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#granting-permissions) section. 
 
 {% hint style="warning" %}
-If this option gives an error, verify if you have successfully created the `rudderstack_` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
+If this option gives an error, verify if you have successfully created the `rudderstack_ `schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
 {% endhint %}
 
 ## Contact Us
 
 If you come across any issues while configuring Google BigQuery as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

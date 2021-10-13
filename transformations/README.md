@@ -36,22 +36,22 @@ To know more about the Cloud mode in RudderStack, check out the [**RudderStack C
 
 ## Adding a Transformation
 
-* Log into your [**RudderStack dashboard**](https://app.rudderstack.com/).
+* Log into your [**RudderStack dashboard**](https://app.rudderstack.com).
 * Click on the [**Transformations**](https://app.rudderstack.com/transformations) link from the left panel in the dashboard, as shown:
 
-![](../.gitbook/assets/image%20%2890%29.png)
+![](<../.gitbook/assets/image (90).png>)
 
 * Click on the **Create New** option as shown:
 
-![](../.gitbook/assets/image%20%2892%29.png)
+![](<../.gitbook/assets/image (92).png>)
 
 * Next, assign a name for this new transformation. Enter the transformation function's code in the **Transformation** window, as shown:
 
-![](../.gitbook/assets/image%20%28100%29.png)
+![](<../.gitbook/assets/image (100).png>)
 
 * Add your transformation code within the `transformEvent` function in the **Transformation** window. You can also add other functions and call them from within `transformEvent`.
 
-![](../.gitbook/assets/image%20%2899%29.png)
+![](<../.gitbook/assets/image (99).png>)
 
 {% hint style="info" %}
 Our [**Transformations**](https://github.com/rudderlabs/sample-user-transformers) GitHub repository contains some useful templates that you can use to create your own transformations.
@@ -65,11 +65,11 @@ Remember to delete the pre-populated `transformEvent` function in such cases, be
 
 * RudderStack also gives you the ability to test your transformation function with the **Run Test** option as shown:
 
-![](../.gitbook/assets/image%20%2897%29.png)
+![](<../.gitbook/assets/image (97).png>)
 
 * In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` feature, as shown:
 
-```text
+```
 /***  
 * This function gets executed on a batch of events before it gets pushed to a destination
 * events    => JSON list of events sent to rudder
@@ -101,15 +101,15 @@ To create a library, follow these steps:
 
 * Click on the [**Transformations**](https://app.rudderstack.com/transformations) link in the left nav bar and go to the **Libraries** section. Click on the **Create New** option to add new libraries, as shown:
 
-![](../.gitbook/assets/image%20%2889%29.png)
+![](<../.gitbook/assets/image (89).png>)
 
 * Add the library's **Name**, an optional **Description**, and include the custom functions that you need to reuse across all other transformations.
 
-![](../.gitbook/assets/image%20%2891%29.png)
+![](<../.gitbook/assets/image (91).png>)
 
 * You can add more functions under a single library, as shown:
 
-![](../.gitbook/assets/image%20%2895%29.png)
+![](<../.gitbook/assets/image (95).png>)
 
 {% hint style="warning" %}
 **RudderStack does not support the deletion of libraries as of now.**
@@ -123,13 +123,13 @@ To use the libraries in your existing transformation, simply take the name of yo
 
 For example, if your library name is **`is rudder email`**, then the library handle would be **`isRudderEmail`**.
 
-![](../.gitbook/assets/image%20%28101%29.png)
+![](<../.gitbook/assets/image (101).png>)
 
-Let's say you want to import a function called **`rudderEmail`**, which returns `true` for the emails from a specific domain \(e.g. RudderStack\) and `false` otherwise, from the **`is rudder email`** library. Also, you want to use this function to filter the events that don't have the email address of the specified domain.
+Let's say you want to import a function called **`rudderEmail`**, which returns `true` for the emails from a specific domain (e.g. RudderStack) and `false` otherwise, from the **`is rudder email`** library. Also, you want to use this function to filter the events that don't have the email address of the specified domain.
 
 The following code snippet demonstrates how we can implement this use-case:
 
-```text
+```
 import { rudderEmail } from 'isRudderEmail'
 export function transformEvent(event) {
     const email = event.context && event.context.traits && event.context.traits.email;
@@ -142,7 +142,7 @@ export function transformEvent(event) {
 
 On running a test, an example event not having the specified email domain is filtered out, as shown:
 
-![](../.gitbook/assets/image%20%2886%29.png)
+![](<../.gitbook/assets/image (86).png>)
 
 ### Importing Multiple Functions From Single Library
 
@@ -186,22 +186,22 @@ RudderStack injects a function `metadata(event)` into your transformations as an
 
 The following properties, if available, are present in the metadata response:
 
-| Property Name | Description |
-| :--- | :--- |
-| `sourceId` | This refers to the ID of the source configured on your RudderStack dashboard. Note that it different from the source **Write Key**. Refer to the image below for more details. |
-| `destinationId` | ID of the destination configured on your RudderStack dashboard. |
-| `messageId` | Corresponds to the unique ID for each event. |
-| `sessionId` | If sessions are enabled, this corresponds to the value of the session ID. |
+| Property Name   | Description                                                                                                                                                                    |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `sourceId`      | This refers to the ID of the source configured on your RudderStack dashboard. Note that it different from the source **Write Key**. Refer to the image below for more details. |
+| `destinationId` | ID of the destination configured on your RudderStack dashboard.                                                                                                                |
+| `messageId`     | Corresponds to the unique ID for each event.                                                                                                                                   |
+| `sessionId`     | If sessions are enabled, this corresponds to the value of the session ID.                                                                                                      |
 
-![Source ID](../.gitbook/assets/image%20%2898%29.png)
+![Source ID](<../.gitbook/assets/image (98).png>)
 
-![](../.gitbook/assets/image%20%28120%29%20%281%29%20%281%29.png)
+![](<../.gitbook/assets/image (120) (1) (1).png>)
 
 Since you may not need the metadata in every transformation, you can optionally access it by including it in your function signature as an argument wherever required.
 
 An example of this is as shown below:
 
-```text
+```
 export function transformEvent(event, metadata){
   const meta = metadata(event);
   event.sourceId = meta.sourceId
@@ -218,7 +218,7 @@ An example of how to use the `fetch` function in transformations is shown below:
 
 {% tabs %}
 {% tab title="Basic" %}
-```text
+```
 export async function transformEvent(event) {
     const res = await fetch("any_api_endpoint");
     event.response = JSON.stringify(res);
@@ -228,7 +228,7 @@ export async function transformEvent(event) {
 {% endtab %}
 
 {% tab title="POST" %}
-```text
+```
 export async function transformEvent(event) {
     const res = await fetch("post_url", {
         method: "POST", // POST, PUT, DELETE, GET, etc.
@@ -244,7 +244,7 @@ export async function transformEvent(event) {
 {% endtab %}
 
 {% tab title="Headers" %}
-```text
+```
 export async function transformEvent(event) {
     const res = await fetch("post_url", {
         method: "POST", // POST, PUT, DELETE, GET, etc.
@@ -287,7 +287,7 @@ export function transformEvent(event, metadata) {
 
 On running a test on the above code, you can see the logs in the **Logs** section of the  dashboard, as shown:
 
-![](../.gitbook/assets/image%20%28103%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
+![](<../.gitbook/assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1) (2).png>)
 
 {% hint style="info" %}
 Arguments to the `log` function can be a String, Number or Object.
@@ -297,10 +297,10 @@ Arguments to the `log` function can be a String, Number or Object.
 
 You should take into account the memory and time limits when adding a new transformation. Each invocation of the transformation should not exceed the following limits:
 
-| Parameter | Limit |
-| :--- | :--- |
-| Memory Limit | 8 MB |
-| Time Limit | 4 seconds |
+| Parameter    | Limit     |
+| ------------ | --------- |
+| Memory Limit | 8 MB      |
+| Time Limit   | 4 seconds |
 
 {% hint style="warning" %}
 The user transformation fails if these limits are exceeded.
@@ -309,4 +309,3 @@ The user transformation fails if these limits are exceeded.
 ## Contact Us
 
 For more information on transformations and libraries in RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-

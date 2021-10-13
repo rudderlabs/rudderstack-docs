@@ -8,7 +8,7 @@ description: >-
 
 ## What are Sources in RudderStack?
 
-Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed \(with or without transformation\) into your data warehouse or third-party destinations for analytics and other activation use-cases.
+Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed (with or without transformation) into your data warehouse or third-party destinations for analytics and other activation use-cases.
 
 {% hint style="success" %}
 For more information on sources in RudderStack, check out the [**Connections guide**](https://docs.rudderstack.com/connections).
@@ -26,15 +26,25 @@ Here's a quick 2-minute walkthrough of this feature:
 
 This section contains links to some of the popular Event Stream sources:
 
-{% page-ref page="rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/" %}
+{% content-ref url="rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/" %}
+[rudderstack-javascript-sdk](rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/)
+{% endcontent-ref %}
 
-{% page-ref page="rudderstack-sdk-integration-guides/rudderstack-android-sdk/" %}
+{% content-ref url="rudderstack-sdk-integration-guides/rudderstack-android-sdk/" %}
+[rudderstack-android-sdk](rudderstack-sdk-integration-guides/rudderstack-android-sdk/)
+{% endcontent-ref %}
 
-{% page-ref page="rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md" %}
+{% content-ref url="rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md" %}
+[rudderstack-ios-sdk.md](rudderstack-sdk-integration-guides/rudderstack-ios-sdk.md)
+{% endcontent-ref %}
 
-{% page-ref page="rudderstack-sdk-integration-guides/rudderstack-flutter-sdk.md" %}
+{% content-ref url="rudderstack-sdk-integration-guides/rudderstack-flutter-sdk.md" %}
+[rudderstack-flutter-sdk.md](rudderstack-sdk-integration-guides/rudderstack-flutter-sdk.md)
+{% endcontent-ref %}
 
-{% page-ref page="posthog.md" %}
+{% content-ref url="posthog.md" %}
+[posthog.md](posthog.md)
+{% endcontent-ref %}
 
 ## Contribute
 
@@ -42,5 +52,4 @@ If you wish to contribute to developing more Event Streams for RudderStack, plea
 
 ## Contact Us
 
-For more information on the RudderStack stream sources or the platform in general, feel free to [**contact us**](mailto:%20contact@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel. We will be happy to talk to you.
-
+For more information on the RudderStack stream sources or the platform in general, feel free to [**contact us**](mailto:%20contact@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack)** **channel. We will be happy to talk to you.

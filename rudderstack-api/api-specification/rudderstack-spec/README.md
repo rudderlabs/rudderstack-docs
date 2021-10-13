@@ -6,7 +6,7 @@ description: >-
 
 # RudderStack Events Specification
 
-The **RudderStack API Spec** helps you plan your event data and provides various options for tracking your events across all the RudderStack SDKs and APIs. 
+The **RudderStack API Spec **helps you plan your event data and provides various options for tracking your events across all the RudderStack SDKs and APIs. 
 
 {% hint style="success" %}
 RudderStack has a unified event semantic for different destination platforms. You can easily translate your event data to different downstream tools by following this spec.
@@ -16,15 +16,15 @@ RudderStack has a unified event semantic for different destination platforms. Yo
 
 The RudderStack API Spec supports the following calls, each answering a pertinent question about the user:
 
-| **API Call** | **Description** |
-| :--- | :--- |
-| \*\*\*\*[**Identify**](identify.md)            **** | Captures the details about the user. |
-| \*\*\*\*[**Page**](page.md) **** | Captures the details related to the web page that the user is currently on. |
-| \*\*\*\*[**Screen**](screen.md)\*\*\*\* | Captures the details related to the app screen that the user is currently viewing. |
-| \*\*\*\*[**Track**](track.md)\*\*\*\* | Captures information related to the user's actions. |
-| \*\*\*\*[**Group**](group.md)\*\*\*\* | Captures the relevant details about the group or organization that the user is a part of. |
-| \*\*\*\*[**Alias**](alias.md)\*\*\*\* | Captures any relevant details about the user's alternate/past identity. |
-| **Reset** | Resets the information related to the previously identified user. |
+| **API Call**                                    | **Description**                                                                           |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| ****[**Identify**](identify.md)**            ** | Captures the details about the user.                                                      |
+| ****[**Page**](page.md)** **                    | Captures the details related to the web page that the user is currently on.               |
+| ****[**Screen**](screen.md)****                 | Captures the details related to the app screen that the user is currently viewing.        |
+| ****[**Track**](track.md)****                   | Captures information related to the user's actions.                                       |
+| ****[**Group**](group.md)****                   | Captures the relevant details about the group or organization that the user is a part of. |
+| ****[**Alias**](alias.md)****                   | Captures any relevant details about the user's alternate/past identity.                   |
+| **Reset**                                       | Resets the information related to the previously identified user.                         |
 
 ## How the API Calls Work
 
@@ -41,8 +41,6 @@ The event data collected by RudderStack has a JSON structure, which has [**commo
 ## Contact Us
 
 For more information on the RudderStack API spec, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
 
 
 

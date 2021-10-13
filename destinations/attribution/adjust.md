@@ -9,17 +9,17 @@ description: Step-by-step guide to send your event data from RudderStack to Adju
 RudderStack allows you to configure your mobile devices with our SDKs to send your customer event data to Adjust - without any hassle. You can check the code for Adjust destination on our GitHub for [Android](https://github.com/rudderlabs/rudder-integration-adjust-android) and [iOS](https://github.com/rudderlabs/rudder-integration-adjust-ios).
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/adj)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/adj)**.**
 {% endhint %}
 
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Adjust. Refer to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | - | **Supported** | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | -             | **Supported** | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
  To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,7 +27,7 @@ Before configuring your source and destination on the RudderStack app, please ch
 
 Once you have confirmed that the platform supports sending events to Adjust, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and Adjust as a destination.
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source and Adjust as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -199,4 +199,3 @@ The Adjust environment depends on the `RudderLogLevel`. `RudderLogLevel.DEBUG` o
 ## Contact Us
 
 If you come across any issues while configuring Adjust with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

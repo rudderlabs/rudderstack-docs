@@ -9,17 +9,17 @@ description: Step-by-step guide to send event data from RudderStack to Kinesis F
 RudderStack allows you to configure Kinesis Firehose as a destination and send your event data to it directly.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/firehose)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/firehose)**.**
 {% endhint %}
 
 ## Getting Started
 
 To enable sending data to Firehose, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Firehose.
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
  To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,7 +27,7 @@ To enable sending data to Firehose, you will first need to add it as a destinati
 
 Once you have confirmed that the platform supports sending events to Firehose, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Firehose.**
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source. From the list of destinations, select **Firehose.**
 
 {% hint style="info" %}
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack) guide to add a source and destination in RudderStack.
@@ -36,13 +36,13 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 * Give a name to the destination and click on **Next**. You should then see the following screen.
 * Fill up the details and click on **Next** to complete the configuration. Firehose should now be added and enabled as a destination in RudderStack.
 
-![Add Firehose as destination](../../.gitbook/assets/image%20%2888%29.png)
+![Add Firehose as destination](<../../.gitbook/assets/image (88) (1).png>)
 
 **Details to be filled:**
 
 * **AWS Credentials**
   * **AWS Region**: Enter the AWS region here.
-  * The **AWS Access Key ID** and **AWS Secret Access Key** are required ****to authorize RudderStack to write to your stream.
+  * The** AWS Access Key ID** and** AWS Secret Access Key **are required** **to authorize RudderStack to write to your stream.
 
 {% hint style="success" %}
 Please note that if the AWS credentials are **already configured** on your machine where the RudderStack server is set up, you will **not** need the security credentials.
@@ -51,7 +51,7 @@ Please note that if the AWS credentials are **already configured** on your machi
 * Enter the **Event Name** as well as the corresponding **Delivery Stream**.
 
 {% hint style="info" %}
-You can send an event `type` like `page,` `identify,` `track`.   
+You can send an event `type` like `page,` `identify,` `track`. \
 For `track` events you can specify the event name based on the `event` name in the payload.
 
 For example:
@@ -65,7 +65,7 @@ If you want to send all the events to a particular stream irrespective of the ty
 {% endhint %}
 
 {% hint style="warning" %}
-The **delivery stream** name is **case sensitive** and has to be exactly as named in AWS. On the other hand, the **event name** is **case insensitive**, and thus Page or page both will be considered.
+The** delivery stream** name is **case sensitive** and has to be exactly as named in AWS. On the other hand, the **event name** is **case insensitive**, and thus Page or page both will be considered.
 {% endhint %}
 
 
@@ -103,7 +103,12 @@ To configure the Firehose destination with RudderStack correctly, a delivery str
 
 * If there is no delivery stream set for an event, it will not be sent.
 * If an event is set with a delivery stream, the payload will be sent to Firehose to that particular delivery stream.
-* If you have set all event type, event and `*` for mapping the priority will be given to event  then type and then \*. Eg. Let the type of event be track, Event name be product added. And the mapping is done as:  
+* If you have set all event type, event and `*` for mapping the priority will be given to event  then type and then \*.\
+  Eg.\
+  Let the type of event be track,\
+  Event name be product added.\
+  And the mapping is done as: \
+
 
 ![](../../.gitbook/assets/screenshot-2020-07-14-at-10.37.02-pm.png)
 
@@ -112,4 +117,3 @@ Then all events should go to the one mapped with `product added`.
 ##  Contact Us
 
 If you come across any issues while configuring Kinesis Firehose with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

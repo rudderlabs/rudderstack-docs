@@ -4,30 +4,30 @@ description: Step-by-step guide to set up Azure Event Hubs as a destination in R
 
 # Azure Event Hubs
 
-\*\*\*\*[**Azure Event Hubs**](https://docs.microsoft.com/en-us/azure/event-hubs/) is a data streaming platform and an event ingestion service. It provides a Kafka endpoint which can be used by your existing Kafka-based applications as an alternative to running your own Kafka clusters.
+****[**Azure Event Hubs**](https://docs.microsoft.com/en-us/azure/event-hubs/) is a data streaming platform and an event ingestion service. It provides a Kafka endpoint which can be used by your existing Kafka-based applications as an alternative to running your own Kafka clusters.
 
 RudderStack supports Azure Event Hubs as a destination to which you can seamlessly send your event data.
 
 {% hint style="warning" %}
-**RudderStack does not support the Basic tier of Azure Event Hubs**. For this integration to work, you need to have a standard tier \(or higher\) of Event Hubs which includes an Apache Kafka endpoint.  
-  
+**RudderStack does not support the Basic tier of Azure Event Hubs**. For this integration to work, you need to have a standard tier (or higher) of Event Hubs which includes an Apache Kafka endpoint.\
+\
 For more information, refer to the Event Hubs' [**pricing page**](https://azure.microsoft.com/en-us/pricing/details/event-hubs/#pricing).
 {% endhint %}
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_event_hub)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_event_hub)**.**
 {% endhint %}
 
 ## Getting Started
 
 To enable sending data to Azure Event Hubs, you need to add it as a destination in RudderStack. Once the destination is enabled, events from RudderStack will start to flow to Azure Event Hubs. 
 
-Before configuring your source and destination in ****[**RudderStack**](https://app.rudderstack.com/), check whether the source platform is supported by Azure Event Hubs by referring to the table below:
+Before configuring your source and destination in** **[**RudderStack**](https://app.rudderstack.com), check whether the source platform is supported by Azure Event Hubs by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device Mode** | - | - | - |
-| **Cloud Mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device Mode**     | -             | -             | -             |
+| **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
  To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -42,16 +42,17 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 {% endhint %}
 
 * Select the destination as **Azure Event Hubs**. Give your destination a name, and then click on **Next**.
-* In the **Connection Settings**, ****fill the required fields with the relevant information and click **Next.**
+* In the **Connection Settings**,** **fill the required fields with the relevant information and click **Next.**
 
-![Azure Event Hubs Connection Settings](../../.gitbook/assets/image%20%28100%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
+![Azure Event Hubs Connection Settings](<../../.gitbook/assets/image (100) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)
 
 ### Connection Settings
 
 This section lists the required connection settings to configure Event Hubs as a destination in RudderStack.
 
 * **Bootstrap server**: The bootstrap server information goes here. This is in the format`hostname of your event hub namespace`:`port`
-* **Topic Name**: The topic name, or the name of the Event Hub ****that you have created in your [**Azure portal**](https://portal.azure.com). 
+* **Topic Name**: The topic name, or the name of the Event Hub** **that you have created in your [**Azure portal**](https://portal.azure.com).\
+
 * **Event Hubs Connection String**: Your Event Hubs' primary connection string. For more information, refer to Microsoft's [**How to get Event hubs connection string**](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-get-connection-string) guide. 
 
 ## Partition Key
@@ -62,7 +63,7 @@ RudderStack uses `userId` as the partition key of a given message.
 If the `userId` is not present in the payload, then `anonymousId` is used.
 {% endhint %}
 
-If you have a multi-partitioned topic, then the records of the same `userId` \(or `anonymousId` in absence of `userId`\) will always go to the same partition.
+If you have a multi-partitioned topic, then the records of the same `userId` (or `anonymousId` in absence of `userId`) will always go to the same partition.
 
 ## FAQs
 
@@ -78,7 +79,7 @@ Here `NAMESPACENAME` is your event hubs namespace, while `9093` is the port numb
 
 #### **Where can I get the Topic name?**
 
-The Topic name is the name of the **Event Hub** that you have created in your [**Azure portal**](https://portal.azure.com).
+The Topic name is the name of the **Event Hub **that you have created in your [**Azure portal**](https://portal.azure.com).
 
 #### **Where can I get the Event Hubs connection string?**
 
@@ -93,4 +94,3 @@ You need to create a policy to write to the Event Hub with a `Send` permission, 
 ## Contact Us
 
 If you come across any issues while configuring or using Azure Event Hubs with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-

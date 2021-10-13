@@ -6,7 +6,7 @@ description: >-
 
 # How to Debug Live Destination Events
 
-[RudderStack](https://rudderstack.com) is an open-source platform for collecting and routing your customer event data \(commonly known as **Customer Data Infrastructure** or a CDI platform\). Our most recent release introduces a new feature called  **Live Destination Event Debugger** that allows you to debug the events sent to the destination flowing through RudderStack in real-time.
+[RudderStack](https://rudderstack.com) is an open-source platform for collecting and routing your customer event data (commonly known as **Customer Data Infrastructure** or a CDI platform). Our most recent release introduces a new feature called  **Live Destination Event Debugger **that allows you to debug the events sent to the destination flowing through RudderStack in real-time.
 
 In this document, we dive deeper into the technical aspects of this feature.
 
@@ -20,15 +20,15 @@ The **Destination Live Events** feature will give you real-time visibility into 
 * **Attempt number**: RudderStack retries sending a failed job internally. It is retried several times before it is marked as aborted. This retrying happens with some exponential backoff, which helps in sending the event at an acceptable rate. This increases the chance of the success of the job - especially in cases where the destination has some rate limits, or when it is down altogether.
 * **Job State**: This gives the current status of the job. It can be one of the following:
   * **Succeeded** - When the sent event is successfully  accepted by the destination
-  * **Failed** - When the destination throws an error
-  * **Aborted** - When the number of failed attempts reaches a threshold, RudderStack marks the job as aborted 
-  * **Waiting** - When the current event is waiting for the previous event to be successfully sent \(or for that job to be aborted\). RudderStack guarantees the order of the events. Hence, if any event fails, the following events are put on hold till the first event is either successfully sent to the destination, or aborted.
+  * **Failed **- When the destination throws an error
+  * **Aborted **- When the number of failed attempts reaches a threshold, RudderStack marks the job as aborted 
+  * **Waiting** - When the current event is waiting for the previous event to be successfully sent (or for that job to be aborted). RudderStack guarantees the order of the events. Hence, if any event fails, the following events are put on hold till the first event is either successfully sent to the destination, or aborted.
 * The **error code** sent by the destination
 * The **error response** sent by the destination
 
 The payload sent to the destination can be seen by clicking on an event. This is shown in the right-hand side box on the same page, as shown in the image below:
 
-![](https://lh6.googleusercontent.com/J9YJXBCimDUeiIiSEkRbxA8Ttql9bBKMnzM0M8NYrKxWJ-KIhCBNj6UcN2t7akSMTfuFoV4CJNHRCxPj7OgQZ3ytXErLlWIGxWkhdJh2dikvTGK8_GByKU7WfK6Yj_vbU5sM0GoS)
+![](https://lh6.googleusercontent.com/J9YJXBCimDUeiIiSEkRbxA8Ttql9bBKMnzM0M8NYrKxWJ-KIhCBNj6UcN2t7akSMTfuFoV4CJNHRCxPj7OgQZ3ytXErLlWIGxWkhdJh2dikvTGK8\_GByKU7WfK6Yj_vbU5sM0GoS)
 
 As seen above, the Amplitude destination is configured with a wrong API key and the data is ingested through a connected source. When RudderStack tries to send the events to Amplitude, an error is thrown. The error response clearly states that the API key is invalid. This job is tried several times before it is marked as aborted.
 
@@ -42,17 +42,17 @@ Live events are shown for all the destinations. However, the **payload of live e
 
 To view the destination live events, please follow these steps:
 
-* Log in  to the [RudderStack dashboard](https://app.rudderstack.com/)
+* Log in  to the [RudderStack dashboard](https://app.rudderstack.com)
 * Click on the destination of your choice in the **Connections** page
 * The **Live Events** button can be found on the top right of your destination page
 * Click on the Live Events button and give your consent to stream the data for viewing purposes
 
-![](../../.gitbook/assets/image%20%2833%29.png)
+![](<../../.gitbook/assets/image (33).png>)
 
 * Ingest the data into RudderStack through a source connected to this destination. You should be able to see the destination responses in real-time. 
 
 {% hint style="info" %}
-Make sure your destination is configured in the cloud mode.  
+Make sure your destination is configured in the cloud mode.\
 ****
 {% endhint %}
 
@@ -61,8 +61,6 @@ We hope that this Destination Live Events Debugger feature of RudderStack will r
 ## **Contact Us**
 
 If you want to know more about the features of RudderStack, [contact us](mailto:%20docs@rudderstack.com). To know more about the new features in the latest RudderStack release, talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
 
 
 

@@ -13,7 +13,7 @@ Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse
 {% endhint %}
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/postgres)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/postgres)**.**
 {% endhint %}
 
 ## Setting PostgreSQL User Permissions
@@ -22,7 +22,7 @@ After setting up your PostgreSQL database, create a user. You should also assign
 
 Below are the SQL queries that let you create a user, and grant the above-mentioned privileges to that created user:
 
-```text
+```
 CREATE USER <user name> WITH PASSWORD '<enter password here>';
 
 -- grants the above created user to create new schemas and temporary tables on the specified database.
@@ -53,14 +53,14 @@ To configure PostgreSQL as a destination, please follow these steps:
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) guide to know how to add a source in RudderStack.
 {% endhint %}
 
-* After choosing a source, select **PostgreSQL** from the list of destinations.
+* After choosing a source, select **PostgreSQL **from the list of destinations.
 * Give your destination a name and then click on **Next**. You should then see the following screen:
 
-![PostgreSQL Destination Settings on the RudderStack dashboard](../.gitbook/assets/image%20%2869%29.png)
+![PostgreSQL Destination Settings on the RudderStack dashboard](<../.gitbook/assets/image (69).png>)
 
 * Add the required credentials in the **Connection Settings** as mentioned below:
-  * **Host -** The host name of your PostgreSQL service.
-  * **Database -** The database name in your PostgreSQL instance where the data gets loaded.
+  * **Host - **The host name of your PostgreSQL service.
+  * **Database - **The database name in your PostgreSQL instance where the data gets loaded.
   * **User** - The username which has the required read/write access to the above database.
   * **Password** - The password for the above user.
   * **SSL Mode** - SSL modes for connecting to your PostgreSQL instance.
@@ -71,7 +71,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 ### I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
 
 * Firstly, check the status of the sync in the [**RudderStack dashboard**](https://app.rudderstack.com/syncs).
-* Make sure you have set up the [**required user permissions**](https://docs.rudderstack.com/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) ****for PostgreSQL.
+* Make sure you have set up the [**required user permissions**](https://docs.rudderstack.com/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions)** **for PostgreSQL.
 * Check if the database is accessible by whitelisting all the RudderStack IPs listed [**here**](https://docs.rudderstack.com/data-warehouse-integrations/warehouse-faqs#which-ips-should-be-whitelisted).
 * Ensure that all the security group policies for S3 are set as specified [**here**](https://docs.rudderstack.com/destinations/storage-platforms/amazon-s3#permissions).
 
@@ -90,4 +90,3 @@ RudderStack converts the event keys into lower case before exporting the data in
 ## Contact Us
 
 If you come across any issues while configuring PostgreSQL with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
-

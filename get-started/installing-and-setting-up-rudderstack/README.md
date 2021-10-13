@@ -36,7 +36,7 @@ You can [**contact us**](https://rudderstack.com/join-rudderstack-slack-communit
 Refer to the [**RudderStack Architecture**](../rudderstack-architecture.md) guide for more information the RudderStack Data Plane.
 {% endhint %}
 
-For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. 
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required.
 
 Here's how to get the Data Plane URL:
 
@@ -65,14 +65,14 @@ CURL https://hosted.rudderlabs.com/health
 
 You will get the following output:
 
-```json
+```javascript
 {"server":"UP", "db":"UP", "acceptingEvents":"TRUE", "routingEvents":"TRUE", "mode":"NORMAL","goroutines":"15364", "backendConfigMode":"API", "lastSync":"2020-12-01T04:20:33Z", "lastRegulationSync":"2020-11-30T21:40:27Z"}
 ```
 
 The RudderStack server supports two running modes:
 
-* **Normal** \(`"mode": "NORMAL"`\): In this mode, the RudderStack server runs as expected, and there are no issues.
-* **Degraded** \(`"mode": "DEGRADED"`\): RudderStack enters the degraded mode if it keeps crashing while processing the events after a threshold number of restarts is reached. RudderStack still receives and stores the events in this mode but does not process them and route them to your specified destinations.
+* **Normal** (`"mode": "NORMAL"`): In this mode, the RudderStack server runs as expected, and there are no issues.
+* **Degraded** (`"mode": "DEGRADED"`): RudderStack enters the degraded mode if it keeps crashing while processing the events after a threshold number of restarts is reached. RudderStack still receives and stores the events in this mode but does not process them and route them to your specified destinations.
 
 {% hint style="info" %}
 For more information on the RudderStack Server running modes, refer to our [**High Availability**](../../user-guides/administrators-guide/high-availability.md) guide.
@@ -80,7 +80,7 @@ For more information on the RudderStack Server running modes, refer to our [**Hi
 
 ### Why Do I Need a RudderStack Account?
 
-Using the [**RudderStack web app**](https://app.rudderstack.com/) is the easiest way to set up and manage your event data sources, destinations and transformations.
+Using the [**RudderStack web app**](https://app.rudderstack.com) is the easiest way to set up and manage your event data sources, destinations and transformations.
 
 {% hint style="info" %}
 The web app is only used for source/destination configuration and does not have access to your data.
@@ -97,4 +97,3 @@ Note that the Control Plane set up using the Control Plane Lite utility does not
 ## Contact Us
 
 For any questions on installing and setting up RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
-

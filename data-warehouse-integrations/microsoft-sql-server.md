@@ -4,7 +4,7 @@ description: Step-by-step guide to set up SQL Server as a destination in RudderS
 
 # Microsoft SQL Server
 
-[Microsoft SQL Server](https://www.microsoft.com/en-in/sql-server/sql-server-downloads) is a popular relational database management system \(RDBMS\). It is ideal for a variety of audiences and data workloads - from small-scale, single-machine data applications to large applications with thousands of concurrent users.
+[Microsoft SQL Server](https://www.microsoft.com/en-in/sql-server/sql-server-downloads) is a popular relational database management system (RDBMS). It is ideal for a variety of audiences and data workloads - from small-scale, single-machine data applications to large applications with thousands of concurrent users.
 
 RudderStack allows you to configure SQL Server as a destination to which you can send your event data seamlessly.
 
@@ -13,7 +13,7 @@ Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse
 {% endhint %}
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mssql)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mssql)**.**
 {% endhint %}
 
 ## Setting Up a Microsoft SQL Server User
@@ -22,21 +22,21 @@ After setting up your MS SQL Server database, the next step is to create a user 
 
 Run the following commands to create a SQL Server instance on Docker:
 
-```text
+```
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Test@123" -p 1433:1433 --name rudder_mssql -h rudder_mssql -d mcr.microsoft.com/mssql/server:2019-latest 
 ```
 
-```text
+```
 docker exec -it rudder_mssql "bash" /opt/mssql-tools/bin/sqlcmd -S localhost -U SA [-P "Test@123"]
 ```
 
-where the user is `SA` \(System Admin\) and password is `Test@123`.
+where the user is `SA` (System Admin) and password is `Test@123`.
 
 The SQL queries below let you create a user and assign the above-mentioned privileges to that user:
 
-Below are the SQL queries that let you create a user and grant the above-mentioned privileges \(creating schemas and temporary tables on the database\) to that created user:
+Below are the SQL queries that let you create a user and grant the above-mentioned privileges (creating schemas and temporary tables on the database) to that created user:
 
-```text
+```
 CREATE LOGIN testuser WITH PASSWORD = 'Test@123';
 CREATE USER testuser FOR LOGIN testuser ;
 
@@ -71,7 +71,8 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 
 
-* Enter the following credentials in the **Connection Settings**: 
+* Enter the following credentials in the **Connection Settings**:\
+
   * **Host -** The host name of your SQL Server service.
   * **Database -** The database name in your SQL Server instance where the data is to be sent.
   * **User** - The username which has the required read/write access to the above database.
@@ -101,4 +102,3 @@ RudderStack converts the event keys into lower case before exporting the data in
 ## Contact Us
 
 If you come across any issues while configuring SQL Server with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
-

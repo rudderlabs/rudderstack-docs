@@ -12,14 +12,15 @@ To consume all the public RudderStack APIs, you will need access to them. This g
 
 To use all the public RudderStack APIs, you will need an Access Token associated with your account. You can create your own Access Token by following the steps below:
 
-* Log into your [**RudderStack dashboard**](https://app.rudderstack.com/). 
-* Click on the [**profile**](https://app.rudderstack.com/profile) tab from the left panel in the dashboard and choose[ **Personal Access Tokens**](https://app.rudderstack.com/profile/tokens) ****tab, as shown:
+* Log into your [**RudderStack dashboard**](https://app.rudderstack.com).\
 
-![](../.gitbook/assets/image%20%28130%29.png)
+* Click on the [**profile**](https://app.rudderstack.com/profile) tab from the left panel in the dashboard and choose[ **Personal Access Tokens**](https://app.rudderstack.com/profile/tokens)** **tab, as shown:
 
-* Click on **Generate new token** option. Enter the token **name** in the popup and click on **Generate**, ****as shown:
+![](<../.gitbook/assets/image (130).png>)
 
-![](../.gitbook/assets/image%20%28129%29.png)
+* Click on **Generate new token **option. Enter the token **name** in the popup and click on **Generate**,** **as shown:
+
+![](<../.gitbook/assets/image (129).png>)
 
 * You will then be able to see and copy the access token, as shown: 
 
@@ -29,16 +30,16 @@ To use all the public RudderStack APIs, you will need an Access Token associated
 Make sure you copy the generated token. You won't be able to see it again.
 {% endhint %}
 
-* To delete an existing token, click on the corresponding **Delete** option next to that token, and confirm by clicking on the **Yes, delete** button. 
-* To delete all the existing tokens, click on the **Revoke all** button on the top right and confirm, as shown:
+* To delete an existing token, click on the corresponding **Delete **option next to that token, and confirm by clicking on the **Yes, delete **button.\
+
+* To delete all the existing tokens, click on the **Revoke all **button on the top right and confirm, as shown:
 
 ![](../.gitbook/assets/screenshot-2021-08-31-at-1.45.36-pm.png)
 
 ## Permissions
 
-The invited members who have the **Read-Write** or **Admin** role access can create their own access tokens and use them.
+The invited members who have the **Read-Write **or **Admin **role access can create their own access tokens and use them.
 
 ## Contact Us
 
-For more information or any help on generating or using the access tokens, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
-
+For more information or any help on generating or using the access tokens, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack)** **channel.

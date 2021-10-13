@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest your Google AdWords data into RudderSt
 
 # Google AdWords
 
-[Google AdWords](https://ads.google.com/intl/en_in/home/) is Google's premier online advertising platform. It allows advertisers to display their advertisements, as well as service offerings and product listings to prospective customers. With AdWords, you can place your ads within Google's search results, and also on your websites, mobile apps and videos. Google Adwords offers these advertisement services under a PPC \(pay per click\) model.
+[Google AdWords](https://ads.google.com/intl/en_in/home/) is Google's premier online advertising platform. It allows advertisers to display their advertisements, as well as service offerings and product listings to prospective customers. With AdWords, you can place your ads within Google's search results, and also on your websites, mobile apps and videos. Google Adwords offers these advertisement services under a PPC (pay per click) model.
 
 This document guides you in setting up Google AdWords as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google AdWords data, which can then be routed to your data warehouse destination supported by RudderStack.
 
@@ -19,9 +19,9 @@ To add Google AdWords as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/1%20%284%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29%20%283%29.png)
+![](<../.gitbook/assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (2).png>)
 
-* Next, select **Google Analytics** from the list of **Cloud Sources**, and click on **Next**.
+* Next, select **Google Analytics **from the list of **Cloud Sources**, and click on **Next**.
 
 ![](../.gitbook/assets/screen-shot-2020-12-17-at-4.38.57-pm.png)
 
@@ -46,7 +46,7 @@ If you have already connected RudderStack to your Google AdWords account, your c
 ![](../.gitbook/assets/screen-shot-2020-12-17-at-4.40.01-pm.png)
 
 {% hint style="info" %}
-Please note that this **Start date** is valid only for the first \(historical\) sync.
+Please note that this **Start date** is valid only for the first (historical) sync.
 {% endhint %}
 
 ### Setting the Data Update Schedule
@@ -73,13 +73,13 @@ Use the **Connect Destinations** option if you have already configured a data wa
 
 ## What Google AdWords data does RudderStack Import?
 
-| **Property** | **Table Name** | **Description** |
-| :--- | :--- | :--- |
-| **Ad Groups** | **`ad_groups`** | This table contains information about the bounced people for your Ad Groups. The columns in this table include: `Name`, `CampaignName`, `labels`, `BaseCampaignId` with **`Id`** being the primary key. |
-| **Campaigns** | **`campaigns`** | This table holds information information about your campaigns for your Google AdWords account. The columns in this table are: `name`, `startDate`, `frequencyCap` with **`id`** being the primary key. |
-| **Report: Keywords Performance** | **`keywords_performance_report`** | This tables has information about your Google AdWords keywords' performance. The columns in this table are: `ActiveViewImpressions`, `AverageCost`, `AverageCpc`, `CampaignName`, `KeywordMatchType` |
-| **Report: Click Performance** | **`click_performance_report`** | This table contains information about your Google AdWords' click performance. Columns include: `AccountDescriptiveName`, `AdGroupStatus`, `CampaignId`, `Clicks`, `ClickType` |
-| **Report: Placement Performance** | **`placement_performance_report`** | This table contains the performance of your Google AdWords' placement. The columns in this table are: `AverageCpc`, `AdGroupStatus`, `Clicks`, `Device`, `Ctr`. |
+| **Property**                      | **Table Name**                     | **Description**                                                                                                                                                                                         |
+| --------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Ad Groups**                     | **`ad_groups`**                    | This table contains information about the bounced people for your Ad Groups. The columns in this table include: `Name`, `CampaignName`, `labels`, `BaseCampaignId `with **`Id`** being the primary key. |
+| **Campaigns**                     | **`campaigns`**                    | This table holds information information about your campaigns for your Google AdWords account. The columns in this table are: `name`, `startDate`, `frequencyCap` with **`id`** being the primary key.  |
+| **Report: Keywords Performance**  | **`keywords_performance_report`**  | This tables has information about your Google AdWords keywords' performance. The columns in this table are: `ActiveViewImpressions`, `AverageCost`, `AverageCpc`, `CampaignName`, `KeywordMatchType`    |
+| **Report: Click Performance**     | **`click_performance_report`**     | This table contains information about your Google AdWords' click performance. Columns include: `AccountDescriptiveName`, `AdGroupStatus`, `CampaignId`, `Clicks`, `ClickType`                           |
+| **Report: Placement Performance** | **`placement_performance_report`** | This table contains the performance of your Google AdWords' placement. The columns in this table are: `AverageCpc`, `AdGroupStatus`, `Clicks`, `Device`, `Ctr`.                                         |
 
 ## FAQs
 
@@ -92,4 +92,3 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 ## Contact Us
 
 If you come across any issues while configuring Google AdWords as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

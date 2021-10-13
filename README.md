@@ -4,11 +4,11 @@ description: RudderStack Documentation
 
 # Home
 
-[**RudderStack**](https://rudderstack.com/) is a **customer data platform for developers**. Our tooling makes it easy to deploy pipelines that collect customer data from every app, website and SaaS platform, then activate it in your warehouse and business tools.
+[**RudderStack**](https://rudderstack.com) is a **customer data platform for developers**. Our tooling makes it easy to deploy pipelines that collect customer data from every app, website and SaaS platform, then activate it in your warehouse and business tools.
 
 > **Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your customer data stack. Sign up for** [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial) **today**.
 
-{% embed url="https://www.youtube.com/watch?v=vOaw9pKn6\_M" caption="" %}
+{% embed url="https://www.youtube.com/watch?v=vOaw9pKn6_M" %}
 
 ## Quick Start
 
@@ -33,7 +33,7 @@ Read [**our blog**](https://rudderstack.com/blog/rudderstacks-licensing-explaine
 
 ## Contribute
 
-We would love to see you contribute to RudderStack. Get more information on how to contribute [**here**](https://github.com/rudderlabs/rudderstack-docs/blob/master/CONTRIBUTING.MD).
+We would love to see you contribute to RudderStack. Get more information on how to contribute [**here**](CONTRIBUTING.MD).
 
 ## Follow Us
 
@@ -42,8 +42,7 @@ We would love to see you contribute to RudderStack. Get more information on how 
 * [**Twitter**](https://twitter.com/rudderstack)
 * [**LinkedIn**](https://www.linkedin.com/company/rudderlabs/)
 * [**DEV Community**](https://dev.to/rudderstack)
-* [**Medium**](https://rudderstack.medium.com/)
-* [**YouTube**](https://www.youtube.com/channel/UCgV-B77bV_-LOmKYHw8jvBw)
+* [**Medium**](https://rudderstack.medium.com)
+* [**YouTube**](https://www.youtube.com/channel/UCgV-B77bV\_-LOmKYHw8jvBw)
 * [**Hacker News**](https://news.ycombinator.com/item?id=21081756)
 * [**Product Hunt**](https://www.producthunt.com/posts/rudderstack)
-

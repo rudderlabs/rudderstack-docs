@@ -14,9 +14,9 @@ The browsing lifecycle events are associated with the key activities that a cust
 
 This event is triggered whenever a visitor searches for a particular product on your app/website. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `query` | String / Object | Contains the query that has been searched by the user |
+| **Property Name** | **Type**        | **Description of the Property**                       |
+| ----------------- | --------------- | ----------------------------------------------------- |
+| `query`           | String / Object | Contains the query that has been searched by the user |
 
 An example of the **Products Searched** event is as shown:
 
@@ -30,25 +30,25 @@ rudderanalytics.track('Products Searched', {
 
 This event is triggered whenever a visitor views a list or category of products on your website or app. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `list_id` | String | Contains the name of the product list being viewed |
-| `category` | String | Contains the category of the product being viewed |
-| `products` | Array | Contains the array of products displayed in the product list |
-| `products.$.product_id` | String | Contains the product ID displayed on the list |
-| `products.$.sku` | String | Contains the SKU \(Stock Keeping Unit\) of the product being viewed |
-| `products.$.category` | String | Contains the category of the product being viewed |
-| `products.$.name` | String | Contains the name of the product being viewed |
-| `products.$.brand` | String | Contains the name of the brand associated with the product |
-| `products.$.variant` | String | Contains the name of the variant of the product |
-| `products.$.price` | Number | Contains the price of the product being viewed \(in USD\) |
-| `products.$.quantity` | Number | Contains the quantity of the product |
-| `products.$.coupon` | String | Contains the coupon code associated with a product |
-| `products.$.position` | Number | Contains the position of the product in the product list |
-| `products.$.url` | String | Contains the URL of the product page |
-| `products.$.image_url` | String | Contains the image URL of the product |
+| **Property Name**       | **Type** | **Description of the Property**                                   |
+| ----------------------- | -------- | ----------------------------------------------------------------- |
+| `list_id`               | String   | Contains the name of the product list being viewed                |
+| `category`              | String   | Contains the category of the product being viewed                 |
+| `products`              | Array    | Contains the array of products displayed in the product list      |
+| `products.$.product_id` | String   | Contains the product ID displayed on the list                     |
+| `products.$.sku`        | String   | Contains the SKU (Stock Keeping Unit) of the product being viewed |
+| `products.$.category`   | String   | Contains the category of the product being viewed                 |
+| `products.$.name`       | String   | Contains the name of the product being viewed                     |
+| `products.$.brand`      | String   | Contains the name of the brand associated with the product        |
+| `products.$.variant`    | String   | Contains the name of the variant of the product                   |
+| `products.$.price`      | Number   | Contains the price of the product being viewed (in USD)           |
+| `products.$.quantity`   | Number   | Contains the quantity of the product                              |
+| `products.$.coupon`     | String   | Contains the coupon code associated with a product                |
+| `products.$.position`   | Number   | Contains the position of the product in the product list          |
+| `products.$.url`        | String   | Contains the URL of the product page                              |
+| `products.$.image_url`  | String   | Contains the image URL of the product                             |
 
-An example of the **Product List Viewed** event is as shown:
+An example of the **Product List Viewed **event is as shown:
 
 ```javascript
 rudderanalytics.track('Product List Viewed', {
@@ -81,31 +81,31 @@ rudderanalytics.track('Product List Viewed', {
 
 This event is triggered whenever a visitor filters a  list or category of products on your website or app. The following properties are supported by this event:
 
-| **Property Name** | **Type** | **Description of the Property** |
-| :--- | :--- | :--- |
-| `list_id` | String | Contains the name of the product list being viewed |
-| `category` | String | Contains the name of the product category being viewed |
-| `filters` | Array | Contain the product filters that the customer has applied |
-| `filters.$.type` | String | Contains the ID of the filter type that the customer is using |
-| `filters.$.value` | String | Contains the ID of the selection chosen by the customer |
-| `sorts` | Array | Represents the product sorting used by the customer |
-| `sorts.$.type` | String | Contains the ID of the sort type used by the customer |
-| `sorts.$.value` | String | Contains the ID of the selection-type the customer is using |
-| `products` | Array | Contains the products displayed in the product list |
-| `products.$.product_id` | String | Contains the product ID displayed in the product list |
-| `products.$.sku` | String | Contains the SKU of the viewed product |
-| `products.$.category` | String | Contains the product category viewed by the customer |
-| `products.$.name` | String | Contains the name of the product being viewed by the user |
-| `products.$.brand` | String | Indicates the brand name associated with the product |
-| `products.$.variant` | String | Contains the name of the product variant |
-| `products.$.price` | Number | Contains the price of the product being viewed \(in USD\) |
-| `products.$.quantity` | Number | Indicates the quantity of a product |
-| `products.$.coupon` | String | Contains the coupon code associated with a product |
-| `products.$.position` | Number | Indicates the position of the product in the product list |
-| `products.$.url` | String | Contains the URL of the product page |
-| `products.$.image_url` | String | Contains the image URL of the product |
+| **Property Name**       | **Type** | **Description of the Property**                               |
+| ----------------------- | -------- | ------------------------------------------------------------- |
+| `list_id`               | String   | Contains the name of the product list being viewed            |
+| `category`              | String   | Contains the name of the product category being viewed        |
+| `filters`               | Array    | Contain the product filters that the customer has applied     |
+| `filters.$.type`        | String   | Contains the ID of the filter type that the customer is using |
+| `filters.$.value`       | String   | Contains the ID of the selection chosen by the customer       |
+| `sorts`                 | Array    | Represents the product sorting used by the customer           |
+| `sorts.$.type`          | String   | Contains the ID of the sort type used by the customer         |
+| `sorts.$.value`         | String   | Contains the ID of the selection-type the customer is using   |
+| `products`              | Array    | Contains the products displayed in the product list           |
+| `products.$.product_id` | String   | Contains the product ID displayed in the product list         |
+| `products.$.sku`        | String   | Contains the SKU of the viewed product                        |
+| `products.$.category`   | String   | Contains the product category viewed by the customer          |
+| `products.$.name`       | String   | Contains the name of the product being viewed by the user     |
+| `products.$.brand`      | String   | Indicates the brand name associated with the product          |
+| `products.$.variant`    | String   | Contains the name of the product variant                      |
+| `products.$.price`      | Number   | Contains the price of the product being viewed (in USD)       |
+| `products.$.quantity`   | Number   | Indicates the quantity of a product                           |
+| `products.$.coupon`     | String   | Contains the coupon code associated with a product            |
+| `products.$.position`   | Number   | Indicates the position of the product in the product list     |
+| `products.$.url`        | String   | Contains the URL of the product page                          |
+| `products.$.image_url`  | String   | Contains the image URL of the product                         |
 
-An example of the **Product List Filtered** event is as shown:
+An example of the **Product List Filtered **event is as shown:
 
 ```javascript
 rudderanalytics.track('Product List Filtered', {
@@ -152,4 +152,3 @@ rudderanalytics.track('Product List Filtered', {
 ## Contact Us
 
 To know more about the RudderStack eCommerce spec, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also [request a demo](https://rudderstack.com/request-a-demo/) to see RudderStack in action.
-

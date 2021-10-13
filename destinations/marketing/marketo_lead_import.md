@@ -22,10 +22,10 @@ The most common source can be a [**Warehouse Actions**](https://docs.rudderstack
 
 Before configuring your source and destination on the RudderStack, verify if Marketo supports the source platform by referring to the following table:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **-** | **-** | **-** |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | **-**         | **-**         | **-**         |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -60,17 +60,18 @@ For more information on finding your Munchkin Account ID, refer to the [**Market
 For more information on finding your Client ID, refer to the [**Marketo knowledge base**](https://developers.marketo.com/rest-api/authentication/).
 {% endhint %}
 
-* **Client Secret**: You can find your Marketo client secret next to the **Client ID** obtained in the previous step. 
+* **Client Secret**: You can find your Marketo client secret next to the **Client ID** obtained in the previous step.\
+
 * **Column Fields Mapping**: This option lets you map your **Leads** table columns' API key values with keys in your incoming events' traits. The values of those traits will be sent correspondingly to the columns.
 
 You can find your columns API key names by following this [**documentation**](https://developers.marketo.com/rest-api/bulk-import/bulk-custom-object-import/).
 
 For instance, if you want to send data from the event traits set as `firstName`, `email` to the Marketo columns with API key names `name` and `Email`, then the mapping should be done as shown in the following table:
 
-| **Column Field Name** | **Traits** |
-| :--- | :--- |
-| `name` | `firstName` |
-| `Email` | `email` |
+| **Column Field Name** | **Traits**  |
+| --------------------- | ----------- |
+| `name`                | `firstName` |
+| `Email`               | `email`     |
 
 ## Identify
 
@@ -98,15 +99,15 @@ rudderanalytics.identify("name123", {
 
 The corresponding mapping to the Marketo traits in case of the above event is shown in the following table:
 
-| **Marketo Field Name** | **Traits** |
-| :--- | :--- |
-| `name` | `firstName` |
-| `Email` | `email` |
-| `birthday` | `birthday` |
-| `phone` | `phone_number` |
-| `timestamp` | `createdAt` |
+| **Marketo Field Name** | **Traits**     |
+| ---------------------- | -------------- |
+| `name`                 | `firstName`    |
+| `Email`                | `email`        |
+| `birthday`             | `birthday`     |
+| `phone`                | `phone_number` |
+| `timestamp`            | `createdAt`    |
 
-RudderStack sends the following values to Marketo \(corresponding to the sample `identify` call above\):
+RudderStack sends the following values to Marketo (corresponding to the sample `identify` call above):
 
 `name`,`Email`,`birthday`,`phone`,`timestamp`
 
@@ -115,4 +116,3 @@ RudderStack sends the following values to Marketo \(corresponding to the sample 
 ## Contact Us
 
 If you come across any issues while configuring or using Marketo Lead Import with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-

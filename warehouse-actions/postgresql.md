@@ -16,7 +16,7 @@ Run the SQL queries below in the **exact order** to grant the necessary permissi
 
 * The following command creates a new user `rudder` with password `<strong_unique_password>` in PostgreSQL.
 
-```text
+```
 CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 ```
 
@@ -24,7 +24,7 @@ CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 
 * The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
 
-```text
+```
 CREATE SCHEMA "_rudderstack";
 ```
 
@@ -34,13 +34,13 @@ The `_rudderstack` schema is used by RudderStack. Its name **should not** be cha
 
 * This command allows the user `rudder` to have full access to the schema `_rudderstack`:
 
-```text
+```
 GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
 ```
 
 * This command lets the user `rudder` to have full access to all the objects in the schema `_rudderstack`.
 
-```text
+```
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 ```
 
@@ -48,19 +48,19 @@ GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 
 * This command lets the user `rudder` look up objects within the schema `<YOUR_SCHEMA>`. Replace  with the exact name of your PostgreSQL database schema.
 
-```text
+```
 GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
 * This command allows the user `rudder` to read data from the table `<YOUR_TABLE>`. Replace  and  with the exact name of your database schema and table names in PostgreSQL.
 
-```text
+```
 GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
 ```
 
 * The following **optional** command lets the user `rudder` to read data from all the tables in the schema "":
 
-```text
+```
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
@@ -70,7 +70,7 @@ Run the above command only if you're okay with RudderStack being able to access 
 
 * The following **optional** command allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`:
 
-```text
+```
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
 ```
 
@@ -85,11 +85,11 @@ To set up PostgreSQL as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (11).png>)
 
 * Scroll down to the **Warehouse Sources** and select **PostgreSQL**. Then, click on **Next**.
 
-![](../.gitbook/assets/screen-shot-2021-01-05-at-3.18.17-pm%20%281%29%20%281%29%20%281%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29.png)
+![](<../.gitbook/assets/screen-shot-2021-01-05-at-3.18.17-pm (1) (1) (1) (2) (2) (3) (3) (3) (3) (3) (3) (3) (3) (2) (3) (3) (3) (3) (3) (1) (3).png>)
 
 ### Setting Up the Connection
 
@@ -158,7 +158,8 @@ These options are explained below:
 If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
 {% endhint %}
 
-* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials.\
+
 * **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/postgresql#creating-the-rudderstack-schema-and-granting-permissions) section. 
 
 {% hint style="warning" %}
@@ -168,4 +169,3 @@ If this option gives an error, verify if you have successfully created the `_rud
 ## Contact Us
 
 If you come across any issues while configuring PostgreSQL as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

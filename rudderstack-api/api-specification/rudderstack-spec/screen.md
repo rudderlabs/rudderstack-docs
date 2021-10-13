@@ -35,10 +35,10 @@ The corresponding event that generates the above payload via the [**iOS SDK**](.
 
 Apart from the [**Common Fields**](common-fields.md), the `screen` call accepts the following fields:
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `name` | String | Optional | The name of the screen. |
-| `properties` | Object | Optional | Includes the properties of the screen such as the `url`, `referrer`, etc. For more more information, check the **Properties** section below. |
+| **Field**    | **Type** | **Presence** | **Description**                                                                                                                              |
+| ------------ | -------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | String   | Optional     | The name of the screen.                                                                                                                      |
+| `properties` | Object   | Optional     | Includes the properties of the screen such as the `url`, `referrer`, etc. For more more information, check the **Properties** section below. |
 
 ## Properties
 
@@ -46,11 +46,10 @@ Properties are additional information that describe the viewed screen.
 
 RudderStack has reserved some standard properties listed in the table below and handles them in special ways.
 
-| **Property** | **Type** | **Description** |
-| :--- | :--- | :--- |
-| `name` | String | You can tag each screen with a `name`.  This is a reserved property for future use. |
+| **Property** | **Type** | **Description**                                                                                          |
+| ------------ | -------- | -------------------------------------------------------------------------------------------------------- |
+| `name`       | String   | <p>You can tag each screen with a <code>name</code>. <br>This is a reserved property for future use.</p> |
 
 ## Contact Us
 
 For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-

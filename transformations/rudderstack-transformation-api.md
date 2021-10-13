@@ -2,7 +2,7 @@
 description: API Specification to manage your RudderStack Transformations and Libraries.
 ---
 
-# Transformations  API
+# Transformations API
 
 RudderStack's Transformations API allows you to create, read, update and delete transformations and libraries programmatically by making HTTP calls.
 
@@ -31,14 +31,14 @@ Authorisation: Basic {Base64Encoded(emailaddress:AccessToken)}
 The basic auth contains three parts:
 
 * Basic
-* Base64Encoded \(Token\)
+* Base64Encoded (Token)
 * Token = _`emailaddress`_ + _`colon`_ + _`access token`_
 
 Some examples are as shown: 
 
 * Email Address: **`myemailaddressis@gmail.com`**
-* Access Token **- `1pHxUIA3jmxS2ip01zY696F80j7`**
-* Headers **- `Basic {Base64Encoded(myemailaddressis@gmail.com:1pHxUIA3jmxS2ip01zY696F80j7)}`**
+* Access Token** - `1pHxUIA3jmxS2ip01zY696F80j7`**
+* Headers** - `Basic {Base64Encoded(myemailaddressis@gmail.com:1pHxUIA3jmxS2ip01zY696F80j7)}`**
 
 {% hint style="success" %}
 To make a successful request all of the upcoming endpoints should include this header.
@@ -56,64 +56,64 @@ Transformations help you to create a user-defined code that allow you to route y
 
 #### Transformer Payload:
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `name` | String | Required | Sets the name of Transformer |
-| `description` | String | Optional | Gives a description for a transformer |
-| `code` | String | Optional | User-defined code that maps event data to destinations as defined by the user |
-| `codeVersion` | String | Optional | This is an integer data always set to version 1 for API calls. |
-| `createdAt` | Date | Optional | The timestamp of the transformer when it is created |
-| `updatedAt` | Date | Optional | The timestamp of the transformer when it is updated |
-| `versionId` | String | Optional | Maintains a version of transformer every time it is updated |
-| `workspaceId` | Object | Optional | Workspace ID on which this transformation is created |
-| `destinations` | Array | Optional | List of all Destination IDs to which your transformation is connected |
+| **Field**      | **Type** | **Presence** | **Description**                                                               |
+| -------------- | -------- | ------------ | ----------------------------------------------------------------------------- |
+| `name`         | String   | Required     | Sets the name of Transformer                                                  |
+| `description`  | String   | Optional     | Gives a description for a transformer                                         |
+| `code`         | String   | Optional     | User-defined code that maps event data to destinations as defined by the user |
+| `codeVersion`  | String   | Optional     | This is an integer data always set to version 1 for API calls.                |
+| `createdAt`    | Date     | Optional     | The timestamp of the transformer when it is created                           |
+| `updatedAt`    | Date     | Optional     | The timestamp of the transformer when it is updated                           |
+| `versionId`    | String   | Optional     | Maintains a version of transformer every time it is updated                   |
+| `workspaceId`  | Object   | Optional     | Workspace ID on which this transformation is created                          |
+| `destinations` | Array    | Optional     | List of all Destination IDs to which your transformation is connected         |
 
-{% api-method method="post" host="https://api.rudderstack.com" path="/transformations" %}
-{% api-method-summary %}
-Create a transformation
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/transformations" method="post" summary="Create a transformation" %}
+{% swagger-description %}
 Creates a transformation and get its object as response.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="publish" type="boolean" required=false %}
-By default this flag is `false`. It publishes your transformer to the latest version if set to `true` and its code is made live for incoming traffic.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
+{% swagger-parameter in="query" name="publish" type="boolean" %}
+By default this flag is 
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="events" type="object" required=false %}
+`false`
+
+. It publishes your transformer to the latest version if set to 
+
+`true`
+
+ and its code is made live for incoming traffic.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="events" type="object" %}
 Pass a set of JSON events to be tested for your code. This should be an array of JSON data.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="destinationIds" type="array" required=false %}
-Pass an array of `destinationIds` that you wish to connect with this transformation. You can connect only if publish is set to `true`.
-{% endapi-method-parameter %}
+{% swagger-parameter in="body" name="destinationIds" type="array" %}
+Pass an array of 
 
-{% api-method-parameter name="name" type="string" required=true %}
+`destinationIds`
+
+ that you wish to connect with this transformation. You can connect only if publish is set to 
+
+`true`
+
+.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="name" type="string" %}
 Name of transformer that you wish to create.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="description " type="string" required=false %}
+{% swagger-parameter in="body" name="description " type="string" %}
 Description of transformer goes here. 
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="code" type="string" required=true %}
+{% swagger-parameter in="body" name="code" type="string" %}
 Code of transformer goes here.
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-When publish is false we create a transformation revisions and you cannot connect a destination.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="When publish is false we create a transformation revisions and you cannot connect a destination." %}
 ```
 publish = true :: 
 {
@@ -145,15 +145,13 @@ publish = false ::
     "updatedAt": "2021-03-04T04:48:27.288Z",
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% hint style="info" %}
 **Events Parameters : Passing events in our API accepts a  JSON format.**
 
-```text
+```
 [
   {
     "anonymousId": "8d872292709c6fbe",
@@ -182,9 +180,9 @@ publish = false ::
 
 Creating a transformation can be done in one of the two ways: 
 
-**`publish: true` -** In this case, we maintain two copies of the transformer. Among these, one is published and other is used for revisions. With the published version, you can connect a destination and its code is made live for incoming traffic.  
+**`publish: true` - **In this case, we maintain two copies of the transformer. Among these, one is published and other is used for revisions. With the published version, you can connect a destination and its code is made live for incoming traffic.  
 
-**`publish: false` -** In this case, we only create revisions for the transformation, which means you cannot connect any destinations to it. It cannot be used for any incoming event traffic. However, if you wish to publish some revisions of transformations you can do so using our **Publish API.** 
+**`publish: false` - **In this case, we only create revisions for the transformation, which means you cannot connect any destinations to it. It cannot be used for any incoming event traffic. However, if you wish to publish some revisions of transformations you can do so using our **Publish API. **
 
 {% hint style="success" %}
 We will be using these two terms **Published** and **Revisions** for transformations and libraries throughout our docs**.**
@@ -216,24 +214,16 @@ curl --location -X POST 'https://api.rudderstack.com/transformations' \
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="get" host="https://api.rudderstack.com" path="/transformations" %}
-{% api-method-summary %}
-List all the transformations
-{% endapi-method-summary %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/transformations" method="get" summary="List all the transformations" %}
+{% swagger-description %}
+Get all 
 
-{% api-method-description %}
-Get all **published transformations** for a workspace.
-{% endapi-method-description %}
+**published transformations**
 
-{% api-method-spec %}
-{% api-method-request %}
+ for a workspace.
+{% endswagger-description %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-This will give an array of published transformations.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="This will give an array of published transformations." %}
 ```
 {
     "transformations": [
@@ -262,10 +252,8 @@ This will give an array of published transformations.
     ]
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% tabs %}
 {% tab title="Curl" %}
@@ -283,24 +271,16 @@ curl --location -X GET 'https://api.rudderstack.com/transformations' \
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="get" host="https://api.rudderstack.com" path="/transformations/{id}" %}
-{% api-method-summary %}
-Retrieve a single Transformation
-{% endapi-method-summary %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/transformations/{id}" method="get" summary="Retrieve a single Transformation" %}
+{% swagger-description %}
+Retrieve the 
 
-{% api-method-description %}
-Retrieve the **published transformations** from an ID.
-{% endapi-method-description %}
+**published transformations**
 
-{% api-method-spec %}
-{% api-method-request %}
+ from an ID.
+{% endswagger-description %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-This will give a transformation object on basis of the ID.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="This will give a transformation object on basis of the ID." %}
 ```
 {
     "id": "swderftgy",
@@ -314,10 +294,8 @@ This will give a transformation object on basis of the ID.
     "destinations": []
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% tabs %}
 {% tab title="Curl" %}
@@ -335,44 +313,64 @@ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="post" host="https://api.rudderstack.com" path="/transformations/{id}" %}
-{% api-method-summary %}
-Update a transformation
-{% endapi-method-summary %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/transformations/{id}" method="post" summary="Update a transformation" %}
+{% swagger-description %}
+Updating a transformation creates a new
 
-{% api-method-description %}
-Updating a transformation creates a new **revision** and sets it as **published** if the `publish` flag is set is `true`, and its code becomes live for upcoming traffic. If the `publish` flag is `false` , it only creates a new **revision** for that transformation.
-{% endapi-method-description %}
+** revision **
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="publish" type="boolean" required=false %}
-By default this flag is set to `false` . When set to `true` it will publish your transformation and make it live for the incoming traffic.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
+and sets it as
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="events" type="object" required=false %}
+** published**
+
+ if the 
+
+`publish`
+
+ flag is set is 
+
+`true`
+
+, and its code becomes live for upcoming traffic. If the 
+
+`publish`
+
+ flag is 
+
+`false`
+
+ , it only creates a new 
+
+**revision **
+
+for that transformation.
+{% endswagger-description %}
+
+{% swagger-parameter in="query" name="publish" type="boolean" %}
+By default this flag is set to 
+
+`false`
+
+ . When set to 
+
+`true`
+
+ it will publish your transformation and make it live for the incoming traffic.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="events" type="object" %}
 Pass a set of JSON object to test your code.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="code" type="string" required=false %}
+{% swagger-parameter in="body" name="code" type="string" %}
 Update the code of an existing transformation.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="description" type="string" required=false %}
+{% swagger-parameter in="body" name="description" type="string" %}
 Update the description of a transformation.
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-This will update transformation object on basis of id.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="This will update transformation object on basis of id." %}
 ```
 {
     "id": "1pHw1RmzAqKpRCNupzHjTGfTrPJ",
@@ -385,10 +383,8 @@ This will update transformation object on basis of id.
     "updatedAt": "2021-03-04T04:48:27.288Z",
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 An example request is as shown:
 
@@ -414,33 +410,23 @@ curl --location -X POST 'https://api.rudderstack.com/transformations/1pSvMXr651E
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="delete" host="https://api.rudderstack.com" path="/transformations/{id}" %}
-{% api-method-summary %}
-Delete a transformation
-{% endapi-method-summary %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/transformations/{id}" method="delete" summary="Delete a transformation" %}
+{% swagger-description %}
+Delete a 
 
-{% api-method-description %}
-Delete a **published** transformations by ID. Note that RudderStack never deletes a transformation revisions. An example request and response is as shown:
-{% endapi-method-description %}
+**published**
 
-{% api-method-spec %}
-{% api-method-request %}
+ transformations by ID. Note that RudderStack never deletes a transformation revisions. An example request and response is as shown:
+{% endswagger-description %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 {
     "success": true
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% tabs %}
 {% tab title="Curl" %}
@@ -458,34 +444,30 @@ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="get" host="https://api.rudderstack.com" path="/transformations/{id}/versions" %}
-{% api-method-summary %}
-List all transformation versions
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/transformations/{id}/versions" method="get" summary="List all transformation versions" %}
+{% swagger-description %}
 Get all your transformation revisions by passing an ID.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="count" type="number" required=false %}
+{% swagger-parameter in="query" name="count" type="number" %}
 Gets the number of objects in your array. By default it always returns the first 5 objects.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="orderBy" type="string" required=false %}
-You can pass it either as **`ASC`** for ascending or **`DESC`** as descending. By default, it sets the order as ascending on **`createdAt`.**
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% swagger-parameter in="query" name="orderBy" type="string" %}
+You can pass it either as 
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-This gets an array of transformations revisions.
-{% endapi-method-response-example-description %}
+**`ASC`**
 
+ for ascending or 
+
+**`DESC`**
+
+ as descending. By default, it sets the order as ascending on 
+
+**`createdAt`.**
+{% endswagger-parameter %}
+
+{% swagger-response status="200" description="This gets an array of transformations revisions." %}
 ```
 {
     "TransformationVersions": [
@@ -512,10 +494,8 @@ This gets an array of transformations revisions.
     ]
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 An example request is as shown:
 
@@ -535,24 +515,12 @@ Authorization: 'Basic Base64Enc(EMAIL_ADDRESS:ACCESS_TOKEN)' \
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="get" host="https://api.rudderstack.com" path="/transformations/{id}/versions/{versionId}" %}
-{% api-method-summary %}
-Retrieve a single transformation version
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/transformations/{id}/versions/{versionId}" method="get" summary="Retrieve a single transformation version" %}
+{% swagger-description %}
 Get a single transformation revision.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-This gets a single transformation version.
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="This gets a single transformation version." %}
 ```
 {
     "id": "1pIYoILGZTNYZP4YYkeyNIKlitl",
@@ -565,10 +533,8 @@ This gets a single transformation version.
     "updatedAt": "2021-03-04T10:07:24.562Z",
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% tabs %}
 {% tab title="Curl" %}
@@ -594,55 +560,47 @@ Suppose you write an aggregation function. You can easily export them and use it
 
 #### Libraries Payload:
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `name` | String | Required | Sets the name of Library. This name is used as modules when it is imported in the transformation code. |
-| `description` | String | Optional | Gives a description for a library. |
-| `code` | String | Optional | User-defined code. |
-| `importName` | String | Optional | This is library name that user can use in his transformation code while importing that library. |
-| `createdAt` | Date | Optional | The timestamp when the transformer is created. |
-| `updatedAt` | Date | Optional | The timestamp when the transformer is updated. |
-| `versionId` | String | Optional | Maintains a version of library every time it is updated. |
-| `workspace` | Object | Optional | Dictionary of information that provides workspace data where any transformation is used. |
+| **Field**     | **Type** | **Presence** | **Description**                                                                                        |
+| ------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------ |
+| `name`        | String   | Required     | Sets the name of Library. This name is used as modules when it is imported in the transformation code. |
+| `description` | String   | Optional     | Gives a description for a library.                                                                     |
+| `code`        | String   | Optional     | User-defined code.                                                                                     |
+| `importName`  | String   | Optional     | This is library name that user can use in his transformation code while importing that library.        |
+| `createdAt`   | Date     | Optional     | The timestamp when the transformer is created.                                                         |
+| `updatedAt`   | Date     | Optional     | The timestamp when the transformer is updated.                                                         |
+| `versionId`   | String   | Optional     | Maintains a version of library every time it is updated.                                               |
+| `workspace`   | Object   | Optional     | Dictionary of information that provides workspace data where any transformation is used.               |
 
-{% api-method method="post" host="https://api.rudderstack.com" path="/libraries" %}
-{% api-method-summary %}
-Create a library
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/libraries" method="post" summary="Create a library" %}
+{% swagger-description %}
 Create a library and get its object as a response.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="publish" type="boolean" required=false %}
-By default this flag is `false`. It publishes your library to the latest version if set to `true`.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
+{% swagger-parameter in="query" name="publish" type="boolean" %}
+By default this flag is 
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="name" type="string" required=true %}
+`false`
+
+. It publishes your library to the latest version if set to 
+
+`true`
+
+.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="name" type="string" %}
 Name of library that you wish to create
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="code" type="string" required=true %}
+{% swagger-parameter in="body" name="code" type="string" %}
 Code of library goes here
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="description" type="string" required=false %}
+{% swagger-parameter in="body" name="description" type="string" %}
 Description of the library goes here
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 {
     "id": "1pT7qGNwZfGkSqne8OE1EAcRvgK",
@@ -655,10 +613,8 @@ Description of the library goes here
     "importName": "userDefinedLibrary4"
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% hint style="success" %}
 The `publish` flag for a library works in the same way as for destinations.
@@ -688,24 +644,16 @@ curl --location -X POST 'https://api.rudderstack.com/libraries' \
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="get" host="https://api.rudderstack.com" path="/libraries" %}
-{% api-method-summary %}
-List all libraries
-{% endapi-method-summary %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/libraries" method="get" summary="List all libraries" %}
+{% swagger-description %}
+Get all the 
 
-{% api-method-description %}
-Get all the **published** libraries.
-{% endapi-method-description %}
+**published**
 
-{% api-method-spec %}
-{% api-method-request %}
+ libraries.
+{% endswagger-description %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 {
     "libraries": [
@@ -732,10 +680,8 @@ Get all the **published** libraries.
     ]
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% tabs %}
 {% tab title="Curl" %}
@@ -755,24 +701,16 @@ Content-Type:'application/json'
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="get" host="https://api.rudderstack.com" path="/libraries/{id}" %}
-{% api-method-summary %}
-Retrieve a library
-{% endapi-method-summary %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/libraries/{id}" method="get" summary="Retrieve a library" %}
+{% swagger-description %}
+Get a single 
 
-{% api-method-description %}
-Get a single **published** library by ID.
-{% endapi-method-description %}
+**published**
 
-{% api-method-spec %}
-{% api-method-request %}
+ library by ID.
+{% endswagger-description %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 {
     "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
@@ -785,10 +723,8 @@ Get a single **published** library by ID.
     "importName": "userDefinedLibrary"
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% tabs %}
 {% tab title="Curl" %}
@@ -808,40 +744,24 @@ Content-Type:'application/json'
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="post" host="https://api.rudderstack.com" path="/libraries/{id}" %}
-{% api-method-summary %}
-Update a library
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/libraries/{id}" method="post" summary="Update a library" %}
+{% swagger-description %}
 Update a library by ID.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="publish" type="string" required=false %}
+{% swagger-parameter in="query" name="publish" type="string" %}
 This will publish your library and make it live for the upcoming traffic.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
+{% endswagger-parameter %}
 
-{% api-method-body-parameters %}
-{% api-method-parameter name="description" type="string" required=false %}
+{% swagger-parameter in="body" name="description" type="string" %}
 Description of the library.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="code" type="string" required=false %}
+{% swagger-parameter in="body" name="code" type="string" %}
 Code of the library.
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+{% endswagger-parameter %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 {
     "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
@@ -854,10 +774,8 @@ Code of the library.
     "importName": "userDefinedLibrary"
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% hint style="warning" %}
 Updating a library with publish has same flow as for transformations.
@@ -888,34 +806,36 @@ Content-Type:'application/json'
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="get" host="https://api.rudderstack.com" path="/libraries/{id}/versions" %}
-{% api-method-summary %}
-List all library versions. 
-{% endapi-method-summary %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/libraries/{id}/versions" method="get" summary="List all library versions. " %}
+{% swagger-description %}
+Get all the library 
 
-{% api-method-description %}
-Get all the library **revisions** for an ID.
-{% endapi-method-description %}
+**revisions**
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-query-parameters %}
-{% api-method-parameter name="count" type="number" required=false %}
+ for an ID.
+{% endswagger-description %}
+
+{% swagger-parameter in="query" name="count" type="number" %}
 By passing count it gets number of object in your array. By default it always returns first 5
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="orderBy" type="string" required=false %}
-You can pass it either as **ASC** to get an ascending order or **DESC** for descending. By default it returns the ascending order on **createdAt**.
-{% endapi-method-parameter %}
-{% endapi-method-query-parameters %}
-{% endapi-method-request %}
+{% swagger-parameter in="query" name="orderBy" type="string" %}
+You can pass it either as 
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
+**ASC**
 
-{% endapi-method-response-example-description %}
+ to get an ascending order or 
 
+**DESC**
+
+ for descending. By default it returns the ascending order on 
+
+**createdAt**
+
+.
+{% endswagger-parameter %}
+
+{% swagger-response status="200" description="" %}
 ```
 {
     "libraryVersions": [
@@ -942,10 +862,8 @@ You can pass it either as **ASC** to get an ascending order or **DESC** for desc
     ]
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% tabs %}
 {% tab title="Curl" %}
@@ -965,24 +883,12 @@ Content-Type:'application/json'
 {% endtab %}
 {% endtabs %}
 
-{% api-method method="get" host="https://api.rudderstack.com" path="/libraries/{id}/versions/{versionId}" %}
-{% api-method-summary %}
-Retrieve a single library versions
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/libraries/{id}/versions/{versionId}" method="get" summary="Retrieve a single library versions" %}
+{% swagger-description %}
 Get a single library revision. 
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
+{% swagger-response status="200" description="" %}
 ```
 {
     "id": "1pT7933tHRBPlEMIZt5Zi3VIht1",
@@ -995,10 +901,8 @@ Get a single library revision.
     "isPublished": false
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 {% tabs %}
 {% tab title="Curl" %}
@@ -1028,58 +932,54 @@ This is where the RudderStack **Publish API** comes into play.
 
 #### Publish Payload:
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `transformations` | Array | Optional | Pass an array of transformer `versionIds` that you wish to publish. |
-| `libraries` | Array | Optional | Pass an array of library `versionIds` you wish to publish. |
+| **Field**         | **Type** | **Presence** | **Description**                                                     |
+| ----------------- | -------- | ------------ | ------------------------------------------------------------------- |
+| `transformations` | Array    | Optional     | Pass an array of transformer `versionIds` that you wish to publish. |
+| `libraries`       | Array    | Optional     | Pass an array of library `versionIds` you wish to publish.          |
 
 Any one of above payload must be present to make a successful `publish` call.
 
-{% api-method method="post" host="https://api.rudderstack.com" path="/transformations/libraries/publish" %}
-{% api-method-summary %}
-Publish a transformation or library
-{% endapi-method-summary %}
-
-{% api-method-description %}
+{% swagger baseUrl="https://api.rudderstack.com" path="/transformations/libraries/publish" method="post" summary="Publish a transformation or library" %}
+{% swagger-description %}
 Publish any transformation revisions or library revisions.
-{% endapi-method-description %}
+{% endswagger-description %}
 
-{% api-method-spec %}
-{% api-method-request %}
-{% api-method-body-parameters %}
-{% api-method-parameter name="versionId" type="string" required=true %}
-Transformation `versionId` that needs to be published.
-{% endapi-method-parameter %}
+{% swagger-parameter in="body" name="versionId" type="string" %}
+Transformation 
 
-{% api-method-parameter name="testInput" type="string" required=false %}
+`versionId`
+
+ that needs to be published.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="testInput" type="string" %}
 This is an array of JSON object in a string format.
-{% endapi-method-parameter %}
+{% endswagger-parameter %}
 
-{% api-method-parameter name="transformations" type="array" required=false %}
-An array of object with the property as **`versionId`** and **`testInput`.**
-{% endapi-method-parameter %}
+{% swagger-parameter in="body" name="transformations" type="array" %}
+An array of object with the property as 
 
-{% api-method-parameter name="libraries" type="array" required=false %}
-An array of object with property as **`versionId`.**
-{% endapi-method-parameter %}
-{% endapi-method-body-parameters %}
-{% endapi-method-request %}
+**`versionId`**
 
-{% api-method-response %}
-{% api-method-response-example httpCode=200 %}
-{% api-method-response-example-description %}
-Sends published as true if versions is successfully published.
-{% endapi-method-response-example-description %}
+ and 
 
+**`testInput`.**
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="libraries" type="array" %}
+An array of object with property as 
+
+**`versionId`.**
+{% endswagger-parameter %}
+
+{% swagger-response status="200" description="Sends published as true if versions is successfully published." %}
 ```
 {
     "published": true
 }
 ```
-{% endapi-method-response-example %}
-{% endapi-method-response %}
-{% endapi-method-spec %}
-{% endapi-method %}
+{% endswagger-response %}
+{% endswagger %}
 
 The sample request is as shown:
 
@@ -1171,4 +1071,3 @@ In case if your publish is failing, make sure to check your transformation code 
 ## Contact Us
 
 To know more about the Transformations API, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
-

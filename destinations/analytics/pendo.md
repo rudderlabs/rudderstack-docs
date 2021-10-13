@@ -4,7 +4,7 @@ description: Step-by-step guide to send event data from RudderStack to Pendo.
 
 # Pendo
 
-[Pendo](https://www.pendo.io/) is a popular product analytics platform that allows you to better understand your customers, and deliver personalized, guided product journeys for them. Some of the key features that Pendo offers include:
+[Pendo](https://www.pendo.io) is a popular product analytics platform that allows you to better understand your customers, and deliver personalized, guided product journeys for them. Some of the key features that Pendo offers include:
 
 * [Insights](https://www.pendo.io/product/insights/)
 * [Sentiment](https://www.pendo.io/product/sentiment/)
@@ -22,10 +22,10 @@ To enable sending data to **Pendo**, you will first need to add it as a destinat
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Pendo, by referring to the table below:
 
-| **Connection Mode**  | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device Mode** | **Supported** | **-** | **-** |
-| **Cloud Mode** | **-** | **-** | **-** |
+| **Connection Mode ** | **Web**       | **Mobile** | **Server** |
+| -------------------- | ------------- | ---------- | ---------- |
+| **Device Mode**      | **Supported** | **-**      | **-**      |
+| **Cloud Mode**       | **-**         | **-**      | **-**      |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -48,7 +48,7 @@ Please follow our guide on [How to Add a Source and Destination](https://docs.ru
 To get the Pendo **API Key**, follow these steps:
 
 * Login to Pendo dashboard.
-* Go to the **Settings** on the left sidebar and click on **Subscription Settings.** 
+* Go to the **Settings** on the left sidebar and click on **Subscription Settings. **
 * You will see an option called **Apps** and under that hover on the square box and click on **view app details**.
 * Here you will find your **API Key** in **App Details** section.
 {% endhint %}
@@ -74,7 +74,7 @@ rudderanalytics.identify("name123", {
 You can use the `group` call to create or update an account in Pendo. When you send a Group call, RudderStack sends the `groupId` to Pendo as account ID. The group traits are mapped to account metadata in Pendo. 
 
 {% hint style="info" %}
-If you are using your Pendo account data, the group calls \(with fields `groupId` & `traits`\) are required.
+If you are using your Pendo account data, the group calls (with fields `groupId` & `traits`) are required.
 {% endhint %}
 
 Here is a sample `group` call:
@@ -111,11 +111,10 @@ rudderanalytics.track(
 ### Where do I find the Pendo API Key?
 
 * Login to Pendo dashboard.
-* Go to the **Settings** on the left sidebar and click on **Subscription Settings.** 
+* Go to the **Settings** on the left sidebar and click on **Subscription Settings. **
 * You will see an option called **Apps** and under that hover on the square box and click on **view app details**.
 * Here you will find your **API Key** in **App Details** section.
 
 ## Contact Us
 
 If you come across any issues while configuring Pendo with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

@@ -22,8 +22,10 @@ This document details various aspects of the HTTP API.
 
 The following prerequisites must be met to send events via the HTTP API:
 
-* The RudderStack HTTP server must be accessible from your HTTP client. Refer to [**this guide**](../get-started/installing-and-setting-up-rudderstack/) to install and set up RudderStack in your preferred environment. 
-* Set up a source and destination in RudderStack by following [**this guide**](../connections/adding-source-and-destination-rudderstack.md). 
+* The RudderStack HTTP server must be accessible from your HTTP client. Refer to [**this guide**](../get-started/installing-and-setting-up-rudderstack/) to install and set up RudderStack in your preferred environment.\
+
+* Set up a source and destination in RudderStack by following [**this guide**](../connections/adding-source-and-destination-rudderstack.md).\
+
 * Import the Postman collection using using this [**URL**](https://www.getpostman.com/collections/480307c55ad2b9dd4e27) and edit the variables `source_write_key` and `data_plane_url`with the [**source write key**](https://docs.rudderstack.com/connections#source-details) and the [**Data Plane URL**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
 
 {% hint style="success" %}
@@ -35,18 +37,18 @@ If you are using RudderStack Cloud, set the Data Plane URL to [**`https://hosted
 RudderStack uses Basic Authentication for authenticating all the HTTP requests.
 
 {% hint style="success" %}
-All the popular HTTP clients \(e.g. CURL, Postman, HTTPie\) have default support for Basic Authentication.
+All the popular HTTP clients (e.g. CURL, Postman, HTTPie) have default support for Basic Authentication.
 {% endhint %}
 
 The Basic Authentication for this API requires a username and password where:
 
 * The username is the **source write key**
-* The password is an empty string \(`""`\)
+* The password is an empty string (`""`)
 
 For example, if the source write key is `1Xk5DChfJAol3xtW7qNnK1apo5p`, your HTTP request must have the following HTTP header `Authorization: Basic MVhrNURDaGZKQW9sM3h0VzdxTm5LMWFwbzVwOg==`
 
 {% hint style="success" %}
-You can use this [**Basic Authentication Header Generator**](https://www.blitter.se/utils/basic-authentication-header-generator/) ****to generate the HTTP header.
+You can use this [**Basic Authentication Header Generator**](https://www.blitter.se/utils/basic-authentication-header-generator/)** **to generate the HTTP header.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -55,8 +57,10 @@ You can use this [**Basic Authentication Header Generator**](https://www.blitter
 
 ## 3. HTTP Responses
 
-* The HTTP API returns a `200` response for successful API requests.  
-* The API returns a `400` response for invalid requests with an appropriate error message in the response. Some possible invalid requests include: 
+* The HTTP API returns a `200` response for successful API requests.\
+   
+* The API returns a `400` response for invalid requests with an appropriate error message in the response. Some possible invalid requests include:\
+
   * Request size too large
   * Invalid JSON
   * Missing Authorization Header
@@ -75,7 +79,7 @@ RudderStack allows messages with a maximum size of `32 KB` per call. The [**`bat
 The `identify` call lets you associate a visiting user to their actions and record any associated traits.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format**: **
 
 ```javascript
 <DATA_PLANE_URL>/v1/identify
@@ -122,14 +126,14 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/identify < identify.json
 
 ### 5.3. Accepted Fields
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Required, if `anonymousId` is not present. | Unique identifier for a particular user in your database. |
-| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
-| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. |
-| `traits` | Object | Optional | Dictionary of the traits associated with the user, such as `name`or `email` |
+| **Field**      | **Type** | **Presence**                                                    | **Description**                                                                                                            |
+| -------------- | -------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `anonymousId`  | String   | Optional                                                        | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId`       | String   | <p>Required, if <code>anonymousId</code> is<br>not present.</p> | Unique identifier for a particular user in your database.                                                                  |
+| `context`      | Object   | Optional                                                        | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
+| `integrations` | Object   | Optional                                                        | A dictionary containing the destinations to be either enabled or disabled.                                                 |
+| `timestamp`    | Date     | Optional                                                        | The timestamp of the message's arrival.                                                                                    |
+| `traits`       | Object   | Optional                                                        | Dictionary of the traits associated with the user, such as `name`or `email`                                                |
 
 {% hint style="success" %}
 For more details on the `identify` call, refer to the [**RudderStack Events Specification**](api-specification/rudderstack-spec/)**.**
@@ -140,7 +144,7 @@ For more details on the `identify` call, refer to the [**RudderStack Events Spec
 The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with them.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format**: **
 
 ```javascript
 <DATA_PLANE_URL>/v1/track
@@ -189,15 +193,15 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/track < track.json
 
 ### 6.3. Accepted fields
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Required, if `anonymousId` is not present. | Unique identifier for a particular user in your database. |
-| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
-| `event` | String | Required | Name of the event being performed by the user |
-| `properties` | Object | Optional | Dictionary of the properties associated with a particular event. |
-| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. |
+| **Field**      | **Type** | **Presence**                                                    | **Description**                                                                                                            |
+| -------------- | -------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `anonymousId`  | String   | Optional                                                        | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId`       | String   | <p>Required, if <code>anonymousId</code> is<br>not present.</p> | Unique identifier for a particular user in your database.                                                                  |
+| `context`      | Object   | Optional                                                        | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
+| `event`        | String   | Required                                                        | Name of the event being performed by the user                                                                              |
+| `properties`   | Object   | Optional                                                        | Dictionary of the properties associated with a particular event.                                                           |
+| `integrations` | Object   | Optional                                                        | A dictionary containing the destinations to be either enabled or disabled.                                                 |
+| `timestamp`    | Date     | Optional                                                        | The timestamp of the message's arrival.                                                                                    |
 
 {% hint style="success" %}
 For more details on the `track` call, refer to the [**RudderStack Events Specification**](api-specification/rudderstack-spec/)**.**
@@ -208,7 +212,7 @@ For more details on the `track` call, refer to the [**RudderStack Events Specifi
 The `page` call lets you record your website's page views with any additional relevant information about the viewed page.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format**: **
 
 ```javascript
 <DATA_PLANE_URL>/v1/page
@@ -257,15 +261,15 @@ http -a <your_write_key>: <DATA_PLANE_URL>/v1/page < page.json
 
 ### 7.3. Accepted Fields
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Required, if `anonymousId` is  not present. | Unique identifier for a particular user in your database. |
-| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
-| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
-| `name` | String | Required | Name of the page being viewed. |
-| `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer` |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. |
+| **Field**      | **Type** | **Presence**                                                     | **Description**                                                                                                            |
+| -------------- | -------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `anonymousId`  | String   | Optional                                                         | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId`       | String   | <p>Required, if <code>anonymousId</code> is <br>not present.</p> | Unique identifier for a particular user in your database.                                                                  |
+| `context`      | Object   | Optional                                                         | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
+| `integrations` | Object   | Optional                                                         | A dictionary containing the destinations to be either enabled or disabled.                                                 |
+| `name`         | String   | Required                                                         | Name of the page being viewed.                                                                                             |
+| `properties`   | Object   | Optional                                                         | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
+| `timestamp`    | Date     | Optional                                                         | The timestamp of the message's arrival.                                                                                    |
 
 {% hint style="success" %}
 For more details on the `page` call, refer to the [**RudderStack Events Specification**](api-specification/rudderstack-spec/)**.**
@@ -280,7 +284,7 @@ The `screen` call is the mobile equivalent of the `page` call.
 {% endhint %}
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format**: **
 
 ```javascript
 <DATA_PLANE_URL>/v1/screen
@@ -328,15 +332,15 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/screen < screen.json
 
 ### 8.3. Accepted Fields
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Required, if `anonymousId` is  not present. | Unique identifier for a particular user in your database. |
-| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
-| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
-| `name` | String | Required | Name of the screen being viewed. |
-| `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer` |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. |
+| **Field**      | **Type** | **Presence**                                                     | **Description**                                                                                                            |
+| -------------- | -------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `anonymousId`  | String   | Optional                                                         | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId`       | String   | <p>Required, if <code>anonymousId</code> is <br>not present.</p> | Unique identifier for a particular user in your database.                                                                  |
+| `context`      | Object   | Optional                                                         | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
+| `integrations` | Object   | Optional                                                         | A dictionary containing the destinations to be either enabled or disabled.                                                 |
+| `name`         | String   | Required                                                         | Name of the screen being viewed.                                                                                           |
+| `properties`   | Object   | Optional                                                         | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
+| `timestamp`    | Date     | Optional                                                         | The timestamp of the message's arrival.                                                                                    |
 
 {% hint style="success" %}
 For more details on the `screen` call, refer to the [**RudderStack Events Specification**](api-specification/rudderstack-spec/)**.**
@@ -347,7 +351,7 @@ For more details on the `screen` call, refer to the [**RudderStack Events Specif
 The `group` call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group, like the name of the company, the number of employees, etc.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format**: **
 
 ```javascript
 <DATA_PLANE_URL>/v1/group
@@ -399,15 +403,15 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/group < group.json
 
 ### 9.3. Accepted Fields
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId` | String | Required, if `anonymousId` is  not present. | Unique identifier for a particular user in your database. |
-| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
-| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
-| `groupId` | String | Required | Unique identifier of the group, as present in your database. |
-| `traits` | Object | Optional | Dictionary of the properties or traits associated with the group, such as `email` or `name`. |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. |
+| **Field**      | **Type** | **Presence**                                                     | **Description**                                                                                                            |
+| -------------- | -------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `anonymousId`  | String   | Optional                                                         | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId`       | String   | <p>Required, if <code>anonymousId</code> is <br>not present.</p> | Unique identifier for a particular user in your database.                                                                  |
+| `context`      | Object   | Optional                                                         | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
+| `integrations` | Object   | Optional                                                         | A dictionary containing the destinations to be either enabled or disabled.                                                 |
+| `groupId`      | String   | Required                                                         | Unique identifier of the group, as present in your database.                                                               |
+| `traits`       | Object   | Optional                                                         | Dictionary of the properties or traits associated with the group, such as `email` or `name`.                               |
+| `timestamp`    | Date     | Optional                                                         | The timestamp of the message's arrival.                                                                                    |
 
 {% hint style="success" %}
 For more details on the `group` call, refer to the [**RudderStack Events Specification**](api-specification/rudderstack-spec/)**.**
@@ -424,13 +428,13 @@ The `alias` call lets you merge different identities of a known user.
 {% hint style="success" %}
 The following destinations support the `alias` call:
 
-* \*\*\*\*[**MoEngage**](../destinations/marketing/moengage.md)\*\*\*\*
-* \*\*\*\*[**Kissmetrics**](../destinations/analytics/kissmetrics.md)\*\*\*\*
-* \*\*\*\*[**Amplitude**](../destinations/analytics/amplitude.md) ****\(only supported by the [**JavaScript SDK**](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) via [**Cloud Mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#cloud-mode)\)
+* ****[**MoEngage**](../destinations/marketing/moengage.md)****
+* ****[**Kissmetrics**](../destinations/analytics/kissmetrics.md)****
+* ****[**Amplitude**](../destinations/analytics/amplitude.md)** **(only supported by the [**JavaScript SDK**](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) via [**Cloud Mode**](https://docs.rudderstack.com/connections/rudderstack-connection-modes#cloud-mode))
 {% endhint %}
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format**: **
 
 ```javascript
 <DATA_PLANE_URL>/v1/alias
@@ -477,14 +481,14 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/alias < alias.json
 
 ### 10.3. Accepted Fields
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `userId` | String | Required, if `anonymousId` is  not present. | Unique identifier for a particular user in your database. |
-| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
-| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
-| `previousId` | String | Required | The previous unique identifier of the user. |
-| `traits` | Object | Optional | Dictionary of the properties or traits associated with the group, such as `email` or `name`. |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. |
+| **Field**      | **Type** | **Presence**                                                     | **Description**                                                                                                       |
+| -------------- | -------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `userId`       | String   | <p>Required, if <code>anonymousId</code> is <br>not present.</p> | Unique identifier for a particular user in your database.                                                             |
+| `context`      | Object   | Optional                                                         | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
+| `integrations` | Object   | Optional                                                         | A dictionary containing the destinations to be either enabled or disabled.                                            |
+| `previousId`   | String   | Required                                                         | The previous unique identifier of the user.                                                                           |
+| `traits`       | Object   | Optional                                                         | Dictionary of the properties or traits associated with the group, such as `email` or `name`.                          |
+| `timestamp`    | Date     | Optional                                                         | The timestamp of the message's arrival.                                                                               |
 
 {% hint style="success" %}
 For more details on the `alias` call, refer to the [**RudderStack Events Specification**](api-specification/rudderstack-spec/)**.**
@@ -497,7 +501,7 @@ The `batch` call allows you to send a series of `identify`, `track`, `page`, `gr
 As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch request and `32 KB` per call.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format**: **
 
 ```javascript
 <DATA_PLANE_URL>/v1/batch
@@ -634,11 +638,11 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/batch < batch.json
 
 ### 11.3. Accepted Fields
 
-| **Field** | **Type** | **Presence** | **Description** |
-| :--- | :--- | :--- | :--- |
-| `batch` | Array | Required | An array of `identify`, `track`, `page`, `group` and `screen` calls. It is mandatory that each call has a `type` property and a valid method name. |
-| `context` | Object | Optional | This is the same as the `context` field in case of other calls. However, it is merged with the context \(if any\) inside each of the items within the batch. |
-| `integrations` | Object | Optional | This is the same as the `integrations` field in case of other calls. However, it is merged with the integrations \(if any\) inside each of the items within the batch. |
+| **Field**      | **Type** | **Presence** | **Description**                                                                                                                                                      |
+| -------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `batch`        | Array    | Required     | An array of `identify`, `track`, `page`, `group` and `screen` calls. It is mandatory that each call has a `type` property and a valid method name.                   |
+| `context`      | Object   | Optional     | This is the same as the `context` field in case of other calls. However, it is merged with the context (if any) inside each of the items within the batch.           |
+| `integrations` | Object   | Optional     | This is the same as the `integrations` field in case of other calls. However, it is merged with the integrations (if any) inside each of the items within the batch. |
 
 ## 12. Historical Imports
 
@@ -650,5 +654,4 @@ If you are tracking current events, leave out the `timestamp` field. RudderStack
 
 ## Contact Us
 
-For more information on the HTTP API, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) ****channel.
-
+For more information on the HTTP API, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack)** **channel.

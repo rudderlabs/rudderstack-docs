@@ -4,24 +4,24 @@ description: Step-by-step guide to send your event data from RudderStack to Mone
 
 # Monetate
 
-[Monetate](https://monetate.com/) is a personalization platform that allows you to create unique customer experiences. Its state-of-the-art features allow you to increase customer engagement, boost conversion rates, and improve overall sales.
+[Monetate](https://monetate.com) is a personalization platform that allows you to create unique customer experiences. Its state-of-the-art features allow you to increase customer engagement, boost conversion rates, and improve overall sales.
 
-Monetate is a unique, all-in-one personalization solution aimed especially at marketers. Its intelligent personalization engine makes it very easy for you to test, optimize, segment, and create 1-to-1 customer experiences. The engine also gives you the ability to personalize content, product recommendations, offers, and a lot more.  
-  
+Monetate is a unique, all-in-one personalization solution aimed especially at marketers. Its intelligent personalization engine makes it very easy for you to test, optimize, segment, and create 1-to-1 customer experiences. The engine also gives you the ability to personalize content, product recommendations, offers, and a lot more.\
+\
 RudderStack allows you to send your event data from your client-side or server-side components to Monetate. This guide will help you set up, configure, and use Monetate for your project.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/monetate)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/monetate)**.**
 {% endhint %}
 
 ## Getting Started
 
 To get started, check whether the platform you are working with is supported by RudderStack for Monetate. The following table lists the supported connection modes across various platforms:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| Device mode | **-** | **-** | **-** |
-| Cloud mode | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| Device mode         | **-**         | **-**         | **-**         |
+| Cloud mode          | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -29,7 +29,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Monetate, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and select **Monetate** from the list of destinations.
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source and select **Monetate** from the list of destinations.
 
 {% hint style="info" %}
 Follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -37,7 +37,7 @@ Follow our guide on [How to Add a Source and Destination in RudderStack](https:/
 
 * Name your destination, and click on **Next**. You should be able to see the following screen:
 
-![Connection Settings for Monetate](../../.gitbook/assets/image%20%286%29.png)
+![Connection Settings for Monetate](<../../.gitbook/assets/image (6).png>)
 
 * The connection settings are described in more details below:
   * **Monetate Channel** - Enter the name of the Monetate channel you would like to send your events to.
@@ -54,28 +54,28 @@ The table below summarizes the various Monetate events and properties sent by Ru
 The Monetate event is sent only if the corresponding RudderStack key is present.
 {% endhint %}
 
-| RudderStack Key | Monetate Event | Monetate Event Properties |
-| :--- | :--- | :--- |
-| `context.ip` | `monetate:context:IpAddress` | `ipAddress` : `context.ip` |
-| `"properties.page"` OR `"context.page"` | `monetate:context:PageView` | `url`: `page.url`, `path`: `page.path`, `categories`: \[`page.category`\], `breadcrumbs`: \[`page.breadcrumbs`\] |
-| `context.referrer.url` | `monetate:context:Referrer` | `referrer`: `context.referrer.url` |
-| `context.screen` | `monetate:context:ScreenSize` | `height`: `context.screen.height`, `width`: `context.screen.width` |
-| `context.userAgent` | `monetate:context:UserAgent` | `userAgent` : `context.userAgent` |
+| RudderStack Key                                                            | Monetate Event                | Monetate Event Properties                                                                                                                                                                                            |
+| -------------------------------------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `context.ip`                                                               | `monetate:context:IpAddress`  | `ipAddress` : `context.ip`                                                                                                                                                                                           |
+| <p><code>"properties.page"</code><br>OR<br><code>"context.page"</code></p> | `monetate:context:PageView`   | <p><code>url</code>: <code>page.url</code>,<br><code>path</code>: <code>page.path</code>,<br><code>categories</code>: [<code>page.category</code>],<br><code>breadcrumbs</code>: [<code>page.breadcrumbs</code>]</p> |
+| `context.referrer.url`                                                     | `monetate:context:Referrer`   | `referrer`: `context.referrer.url`                                                                                                                                                                                   |
+| `context.screen`                                                           | `monetate:context:ScreenSize` | `height`: `context.screen.height`, `width`: `context.screen.width`                                                                                                                                                   |
+| `context.userAgent`                                                        | `monetate:context:UserAgent`  | `userAgent` : `context.userAgent`                                                                                                                                                                                    |
 
 {% hint style="success" %}
-RudderStack also sends `monetateId` along with the events if you send `monetateId`  
+RudderStack also sends `monetateId` along with the events if you send `monetateId`\
 in the event's properties.
 {% endhint %}
 
 RudderStack sends an additional event to Monetate for the following E-commerce events :
 
-| RudderStack Event | Monetate Event |
-| :--- | :--- |
-| `Product Viewed` | `monetate:context:ProductDetailView` |
+| RudderStack Event     | Monetate Event                          |
+| --------------------- | --------------------------------------- |
+| `Product Viewed`      | `monetate:context:ProductDetailView`    |
 | `Product List Viewed` | `monetate:context:ProductThumbnailView` |
-| `Product Added` | `monetate:context:Cart` |
-| `Cart Viewed` | `monetate:context:Cart` |
-| `Order Completed` | `monetate:context:Purchase` |
+| `Product Added`       | `monetate:context:Cart`                 |
+| `Cart Viewed`         | `monetate:context:Cart`                 |
+| `Order Completed`     | `monetate:context:Purchase`             |
 
 The code snippet below shows a sample `track` call : 
 
@@ -90,9 +90,9 @@ rudderanalytics.track("Form Submitted", {
 
 For each `screen` call, RudderStack sends the following events to Monetate:
 
-| RudderStack Key | Monetate Event | Monetate Event Properties |
-| :--- | :--- | :--- |
-| `context.screen` | `monetate:context:ScreenSize` | `height`: `context.screen.height`, `width`: `context.screen.width` |
+| RudderStack Key  | Monetate Event                | Monetate Event Properties                                                                                                |
+| ---------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `context.screen` | `monetate:context:ScreenSize` | <p><code>height</code>: <code>context.screen.height</code>,<br><code>width</code>: <code>context.screen.width</code></p> |
 
 {% hint style="info" %}
 Note that RudderStack sends the Monetate event only if the corresponding RudderStack key is present.
@@ -109,10 +109,10 @@ The code snippet below shows a sample `screen` call :
 
 For each `page` call, RudderStack sends the following events to Monetate:
 
-| RudderStack Key | Monetate Event | Monetate Event Properties |
-| :--- | :--- | :--- |
-| `"properties.page"` OR `"context.page"` | `monetate:context:PageView` | `url`: `page.url`, `path`: `page.path`, `categories`: \[`page.category`\], `breadcrumbs`: \[`page.breadcrumbs`\] |
-| `context.referrer.url` | `monetate:context:Referrer` | `referrer`: `context.referrer.url` |
+| RudderStack Key                                                            | Monetate Event              | Monetate Event Properties                                                                                                                                                                                            |
+| -------------------------------------------------------------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><code>"properties.page"</code><br>OR<br><code>"context.page"</code></p> | `monetate:context:PageView` | <p><code>url</code>: <code>page.url</code>,<br><code>path</code>: <code>page.path</code>,<br><code>categories</code>: [<code>page.category</code>],<br><code>breadcrumbs</code>: [<code>page.breadcrumbs</code>]</p> |
+| `context.referrer.url`                                                     | `monetate:context:Referrer` | `referrer`: `context.referrer.url`                                                                                                                                                                                   |
 
 {% hint style="info" %}
 Note that RudderStack sends the Monetate event only if the corresponding RudderStack key is present.
@@ -130,4 +130,3 @@ rudderanalytics.page("HomePage", {
 ## Contact Us
 
 If you come across any issues while configuring Monetate with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

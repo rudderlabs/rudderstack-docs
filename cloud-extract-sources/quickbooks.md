@@ -18,22 +18,22 @@ To set up QuickBooks as a source on the RudderStack dashboard, follow these step
 
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 
-![](../.gitbook/assets/1%20%2815%29%20%281%29.png)
+![](<../.gitbook/assets/1 (15) (1) (1).png>)
 
 * Then, click on the **Directory** option on the left navigation bar and go to **Cloud Extract** under **Sources**.
 
-![](../.gitbook/assets/2%20%2821%29.png)
+![](<../.gitbook/assets/2 (21).png>)
 
 * From the list of sources, click on **QuickBooks**.
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/3%20%2817%29.png)
+![](<../.gitbook/assets/3 (17).png>)
 
 ### Specifying Connection Credentials
 
-* Next, click on the **Connect with QuickBooks** option, as shown: 
+* Next, click on the **Connect with QuickBooks **option, as shown: 
 
-![](../.gitbook/assets/4%20%2818%29.png)
+![](<../.gitbook/assets/4 (18).png>)
 
 {% hint style="info" %}
 If you've already configured QuickBooks as a source before, you can choose the account visible under the **Use existing credentials** tab.
@@ -41,26 +41,27 @@ If you've already configured QuickBooks as a source before, you can choose the a
 
 * Authorize RudderStack to access your QuickBooks account, as shown:
 
-![](../.gitbook/assets/5%20%2819%29.png)
+![](<../.gitbook/assets/5 (19).png>)
 
 ### Setting the Table Prefix, Run Frequency and Data Update Schedule
 
-* Next, you will be required to set the **Table Prefix**. RudderStack will create a table with this prefix name in your database and load all your QuickBooks data into it.  
+* Next, you will be required to set the **Table Prefix**. RudderStack will create a table with this prefix name in your database and load all your QuickBooks data into it. \
+
 * Also, set the **Run Frequency** to schedule the data import from your QuickBooks account to RudderStack. Optionally, you can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
-![](../.gitbook/assets/6%20%2817%29.png)
+![](<../.gitbook/assets/6 (17).png>)
 
 ### Selecting the Data to Import
 
 * Finally, choose the QuickBooks data that you wish to ingest via RudderStack. You can either select all the data, or choose specific QuickBooks attributes, as per your requirement.
 
-![](../.gitbook/assets/7%20%2812%29.png)
+![](<../.gitbook/assets/7 (12).png>)
 
 That's it! QuickBooks is now successfully configured as a source on your RudderStack dashboard. 
 
 RudderStack will start ingesting data from QuickBooks source as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
-![](../.gitbook/assets/8%20%286%29.png)
+![](<../.gitbook/assets/8 (6).png>)
 
 {% hint style="success" %}
 Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
@@ -77,4 +78,3 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 ## Contact Us
 
 If you come across any issues while configuring QuickBooks as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

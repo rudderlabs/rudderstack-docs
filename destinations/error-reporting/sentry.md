@@ -12,10 +12,10 @@ RudderStack supports Sentry as a destination to which you can send your event da
 
 Before configuring Sentry as a destination in RudderStack, verify if Sentry supports the source platform you are sending the events from by referring to the following table:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **Supported** | - | - |
-| **Cloud mode** | - | - | - |
+| **Connection Mode** | **Web**       | **Mobile** | **Server** |
+| ------------------- | ------------- | ---------- | ---------- |
+| **Device mode**     | **Supported** | -          | -          |
+| **Cloud mode**      | -             | -          | -          |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -23,7 +23,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the source platform supports sending events to Sentry, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, select **Sentry** from the list of destinations.
+* From your [**RudderStack dashboard**](https://app.rudderstack.com), add the source. Then, select **Sentry** from the list of destinations.
 
 {% hint style="info" %}
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
@@ -46,7 +46,7 @@ Refer to the [**FAQ**](sentry.md#faq) section below for more information on gett
 * **Environment:** Enter the value you want RudderStack to set as the environment configuration in your Sentry dashboard. For more information on the use of environments in Sentry, refer to their [**documentation**](https://docs.sentry.io/product/sentry-basics/environments/#creating-environments).
 
 {% hint style="warning" %}
-If you enter the value for the **Environment** field as a forward slash \(`/`\), new line character, space \(```), or the string``None\`, Sentry will silently discard the environment configuration information without sending any error.
+If you enter the value for the **Environment** field as a forward slash (`/`), new line character, space (`` `), or the string ``None\`, Sentry will silently discard the environment configuration information without sending any error.
 {% endhint %}
 
 * **Set Release By Property:** This field helps you dynamically track the application version in Sentry. The property set here will be searched in the global window object. If found, RudderStack will use that particular version. Otherwise, the value set in the **Release** field will be used by default.
@@ -102,10 +102,9 @@ To get your public DSN, follow these steps:
 * Log into your [**Sentry account**](https://sentry.io/auth/login/).
 * In the left navigation bar, go to **Projects** .
 * Click on the right-most settings icon. This will open the settings window.
-* Click on **Client Keys \(DSN\)** under **SDK Setup**.
+* Click on **Client Keys (DSN)** under **SDK Setup**.
 * Copy the DSN and use it in your RudderStack destination configuration.
 
 ## Contact Us
 
 If you come across any issues while configuring or using Sentry with RudderStack, you can [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-

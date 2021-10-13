@@ -6,7 +6,7 @@ description: Step-by-step guide to migrating from Segment to RudderStack
 
 ## Introduction
 
-This document explains the step-by-step process of migrating from [Segment](https://segment.com/) to RudderStack. Our primary goal is to lay out the necessary actions for replacing your instrumentation code for generating the events from using the Segment SDK to RudderStack SDK with minimal changes.
+This document explains the step-by-step process of migrating from [Segment](https://segment.com) to RudderStack. Our primary goal is to lay out the necessary actions for replacing your instrumentation code for generating the events from using the Segment SDK to RudderStack SDK with minimal changes.
 
 ## Migrating the Workspace
 
@@ -62,11 +62,11 @@ RudderClient rudderClient = RudderClient.getInstance(
 
 * Update the use of the classes according to the table below:
 
-| Segment | RudderStack |
-| :--- | :--- |
-| `Analytics` | `RudderClient` |
-| `Traits` | `RudderTraits` |
-| `Property` | `RudderProperty` |
+| Segment     | RudderStack      |
+| ----------- | ---------------- |
+| `Analytics` | `RudderClient`   |
+| `Traits`    | `RudderTraits`   |
+| `Property`  | `RudderProperty` |
 
 {% hint style="success" %}
 You can use the rest of your code as is, as RudderStack SDK is API-compatible with Segment.
@@ -95,11 +95,11 @@ The instance of the `RudderClient` is available at `[RudderClient sharedInstance
 * Update the imports from `Analytics.h` to `Rudder.h` wherever necessary
 * Update the use of the classes according to the table below:
 
-| Segment | RudderStack |
-| :--- | :--- |
-| `Analytics` | `RudderClient` |
-| `Traits` | `RudderTraits` |
-| `Property` | `RudderProperty` |
+| Segment     | RudderStack      |
+| ----------- | ---------------- |
+| `Analytics` | `RudderClient`   |
+| `Traits`    | `RudderTraits`   |
+| `Property`  | `RudderProperty` |
 
 {% hint style="success" %}
 You can use the rest of your code as is, as RudderStack SDK is API compatible with Segment
@@ -247,10 +247,9 @@ A code snippet for loading the SDKs in parallel is shown below:
 ```
 
 {% hint style="info" %}
-Note that you will need to enter your `SEGMENT_WRITE_KEY`, `RUDDERSTACK_WRITE_KEY`, and `RUDDERSTACK_DATAPLANE_URL` in the above example.
+Note that you will need to enter your `SEGMENT_WRITE_KEY`, `RUDDERSTACK_WRITE_KEY`, and` RUDDERSTACK_DATAPLANE_URL` in the above example.
 {% endhint %}
 
 ## Contact Us
 
 Stuck somewhere in the migration process? Feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-

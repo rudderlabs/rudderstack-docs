@@ -62,20 +62,20 @@ During the user's first visit, your server generates a new `anonymousId` to make
 {% hint style="info" %}
 The RudderStack JavaScript SDK generates a unique `anonymousId` for every unique user visit. It then stores this value in a cookie named `rl_anonymous_id` and attaches it to every subsequent event. 
 
-Users sometimes try to directly use the browser APIs to get or set the value for this cookie. However, this is not advisable since the RudderStack cookies are encrypted, and the cookie may not be present altogether \(if the SDK is blocked\). 
+Users sometimes try to directly use the browser APIs to get or set the value for this cookie. However, this is not advisable since the RudderStack cookies are encrypted, and the cookie may not be present altogether (if the SDK is blocked). 
 
 It is, therefore, always advisable to use RudderStack's `getAnonymousId` and `setAnonymousId` methods to update the cookie value.
 {% endhint %}
 
 To set `anonymousId`, use the `setAnonymousId` call after the SDK snippet as below:
 
-```text
+```
 rudderanalytics.setAnonymousId("my-anon-id");
 ```
 
 To get the `anonymousId` stored in a RudderStack cookie, use the `getAnonymousId` call inside the `ready` callback - this ensures that the method is available and returns the previously set `anonymousId` value.
 
-```text
+```
 rudderanalytics.ready(
 	() => {
 	  var anonId = window.rudderanalytics.getAnonymousId();
@@ -89,18 +89,18 @@ rudderanalytics.ready(
 When the dataplane gets disconnected from the SDK and events are no longer able to be sent to Rudder Server, then some of the SDK's will store events and retry sending them to Rudder Server with a certain backoff logic.
 
 {% hint style="warning" %}
-**NOTE:** The retry of failed events is not supported by all SDKs. Please see table below for support.
+**NOTE: **The retry of failed events is not supported by all SDKs. Please see table below for support.
 {% endhint %}
 
 #### General Support and Logic
 
-| SDK | Supported | Event Storage | Retry limit |
-| :--- | :--- | :--- | :--- |
-| JavaScript SDK | Yes | 100 events in Local Storage | 10 times |
-| Android SDK | Yes | 10k events in sqlite db | Infinity |
-| iOS SDK | Yes | 10k events in sqlite db | Infinity |
-| Node SDK | Yes | 20k events in-memory | 10 times |
-| All Other SDKs | No | N/A | N/A |
+| SDK            | Supported | Event Storage               | Retry limit |
+| -------------- | --------- | --------------------------- | ----------- |
+| JavaScript SDK | Yes       | 100 events in Local Storage | 10 times    |
+| Android SDK    | Yes       | 10k events in sqlite db     | Infinity    |
+| iOS SDK        | Yes       | 10k events in sqlite db     | Infinity    |
+| Node SDK       | Yes       | 20k events in-memory        | 10 times    |
+| All Other SDKs | No        | N/A                         | N/A         |
 
 #### JavaScript SDK
 
@@ -110,7 +110,7 @@ $$
 dt = md * (F^n)
 $$
 
-Where, $$dt$$ is the delay time in ms, $$md$$ is the `minRetryDelay` \(configurable; default is 1000 ms\), $$F$$ is the `backoffFactor` \(configurable; default is 2\), and $$n$$ is the current retry attempt. The SDK will retry until the attempts surpass the `maxAttempts` value. This is by default set to 10 attempts but is configurable. Each retry attempt, the delay time grows exponentially. However, it will max out at whatever the `maxRetryDelay` is. By default, this value is set at 360000 ms, but it is configurable.
+Where, $$dt$$ is the delay time in ms, $$md$$ is the `minRetryDelay` (configurable; default is 1000 ms), $$F$$ is the `backoffFactor` (configurable; default is 2), and $$n$$ is the current retry attempt. The SDK will retry until the attempts surpass the `maxAttempts` value. This is by default set to 10 attempts but is configurable. Each retry attempt, the delay time grows exponentially. However, it will max out at whatever the `maxRetryDelay` is. By default, this value is set at 360000 ms, but it is configurable.
 
 #### iOS SDK and Android SDK
 
@@ -133,4 +133,3 @@ The Node SDK does have a feature to persist the event data in Redis for more eve
 ## Contact Us
 
 For more information on the RudderStack SDKs, you can [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to help you!
-

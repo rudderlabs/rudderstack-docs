@@ -21,21 +21,21 @@ To set up Zendesk Chat as a source on the RudderStack dashboard, follow these st
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/1%20%284%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29%20%282%29.png)
+![](<../.gitbook/assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2).png>)
 
-* Next, select **Zendesk Chat** from the list of **Cloud Sources**, and click on **Next**.
+* Next, select **Zendesk Chat **from the list of **Cloud Sources**, and click on **Next**.
 
-![](../.gitbook/assets/2%20%2813%29.png)
+![](<../.gitbook/assets/2 (13).png>)
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/3%20%289%29.png)
+![](<../.gitbook/assets/3 (9).png>)
 
 ### Specifying Connection Credentials
 
 * Next, enter your Zendesk Chat credentials. Enter your Zendesk Chat subdomain, and click on **Connect with Zendesk Chat**. You will be required to authenticate RudderStack on your Zendesk Chat account.
 
-![](../.gitbook/assets/4%20%2811%29.png)
+![](<../.gitbook/assets/4 (11).png>)
 
 {% hint style="info" %}
 More details on how to find your Zendesk Chat subdomain can be found [here](https://support.zendesk.com/hc/en-us/articles/221682747-Where-can-I-find-my-Zendesk-subdomain-).
@@ -49,19 +49,19 @@ If you've already configured Zendesk Chat as a source before, you can choose the
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Zendesk Chat account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
-![](../.gitbook/assets/5%20%2812%29.png)
+![](<../.gitbook/assets/5 (12).png>)
 
 ### Selecting the Data to Import
 
 * Finally, choose the Zendesk Chat data that you wish to ingest via RudderStack. You can either select all the data, or choose specific Zendesk Chat data attributes, as per your requirement.
 
-![](../.gitbook/assets/6%20%2811%29.png)
+![](<../.gitbook/assets/6 (11).png>)
 
 That's it! Zendesk Chat is now successfully configured as a source on your RudderStack dashboard. 
 
 RudderStack will start ingesting data from your Zendesk Chat source as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown: 
 
-![](../.gitbook/assets/7%20%288%29.png)
+![](<../.gitbook/assets/7 (8).png>)
 
 {% hint style="success" %}
 Use the **Connect Destinations** option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the **Add Destination** button.
@@ -71,7 +71,7 @@ Use the **Connect Destinations** option if you have already configured a data wa
 
 #### How can I find my Zendesk Chat subdomain?
 
-Your Zendesk Chat's subdomain can be easily identified from your account's URL. It is usually in the format of [`https://[YOUR_ZENDESK_SUBDOMAIN].zendesk.com`](https://[your_subdomain].zendesk.com).
+Your Zendesk Chat's subdomain can be easily identified from your account's URL. It is usually in the format of `https://[YOUR_ZENDESK_SUBDOMAIN].zendesk.com`.
 
 There are a few other ways to find out what your Zendesk Chat subdomain is. Check out [Zendesk's knowledge base](https://support.zendesk.com/hc/en-us/articles/221682747-Where-can-I-find-my-Zendesk-subdomain-) for more information.
 
@@ -84,4 +84,3 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 ## Contact Us
 
 If you come across any issues while configuring Zendesk Chat as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

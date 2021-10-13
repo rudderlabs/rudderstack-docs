@@ -46,7 +46,7 @@ Refers to RudderStack's internal service which is responsible for processing new
 
 The RudderStack dashboard is powered by Grafana, and gives you a complete picture of the total number of requests, as well as the events received and delivered via RudderStack.
 
-![Big Picture](../../.gitbook/assets/1%20%284%29.png)
+![Big Picture](<../../.gitbook/assets/1 (4).png>)
 
 ### **Received Requests**
 
@@ -56,13 +56,13 @@ Corresponds to the number of HTTP requests RudderStack has received in the selec
 
 This section refers to the number of events RudderStack has received in the selected time period. The RudderStack API allows multiple events to be [batched inside a single HTTP request](https://docs.rudderstack.com/rudderstack-api-spec/http-api-specification#12-batch).
 
-### **Delivered Events** 
+### **Delivered Events **
 
 Refers to the number of events RudderStack has delivered across all destinations in a selected time period. If you have set up a warehouse destination in RudderStack, every event will be delivered into two different tables in warehouse and counted as two delivered events.
 
 ## Gateway
 
-![Gateway Requests](../../.gitbook/assets/2%20%288%29.png)
+![Gateway Requests](<../../.gitbook/assets/2 (8).png>)
 
 ### Gateway Requests
 
@@ -74,11 +74,11 @@ RudderStack has a reverse proxy in front of the RudderStack nodes. This panel li
 
 ### Request Latency
 
-In this section, the events are stored to the gateway \(PostgreSQL\) and acknowledged. The time to acknowledge HTTP requests is listed with 99 percentile, 95 percentile, and mean times.
+In this section, the events are stored to the gateway (PostgreSQL) and acknowledged. The time to acknowledge HTTP requests is listed with 99 percentile, 95 percentile, and mean times.
 
 ### Gateway Throughput
 
-The RudderStack Processor module picks events from gateway for further processing. If `Input Requests` &gt; `Output Requests` then the inflow is higher than what the processor can handle. 
+The RudderStack Processor module picks events from gateway for further processing. If `Input Requests `> `Output Requests` then the inflow is higher than what the processor can handle. 
 
 {% hint style="info" %}
 This usually happens during a sudden surge in the traffic, but syncs over a period of time. If this is consistently high, **consider adding an extra RudderStack node**.
@@ -100,17 +100,17 @@ Indicates the number of events delivered to the data warehouse destinations like
 
 Indicates the number of events delivered to all the other destinations except the ones highlighted in the above two sections.
 
-![](../../.gitbook/assets/screenshot_2020-12-09_at_11.17.00_pm.png)
+![](../../.gitbook/assets/screenshot\_2020-12-09\_at\_11.17.00\_pm.png)
 
 ### Event Delivery Time - Batch Router
 
-Corresponds to the average time taken for delivering the events to the object storage destinations. RudderStack batches events every 30 seconds \(default value\), so RudderStack takes at least this much time to batch the events and deliver them.
+Corresponds to the average time taken for delivering the events to the object storage destinations. RudderStack batches events every 30 seconds (default value), so RudderStack takes at least this much time to batch the events and deliver them.
 
 ### Events Sync Lag Time - Warehouse
 
-Highlights the longest sync delay for delivering the events to the warehouse destination. RudderStack batches events every 30 minutes \(default value\) before uploading to the data warehouse, so the delivery takes at least this much batching period. 
+Highlights the longest sync delay for delivering the events to the warehouse destination. RudderStack batches events every 30 minutes (default value) before uploading to the data warehouse, so the delivery takes at least this much batching period. 
 
-This section reports the lag for the oldest event in a batch. For example, if the batching period is 30 minutes and the reported lag time is 50 minutes, then the average lag time would be **50 - \(30/2\) = 35 min**
+This section reports the lag for the oldest event in a batch. For example, if the batching period is 30 minutes and the reported lag time is 50 minutes, then the average lag time would be **50 - (30/2) = 35 min**
 
 ### Event Delivery Time - Router
 
@@ -118,7 +118,7 @@ Corresponds to the average time taken to deliver the events to all other destina
 
 ## Processor
 
-![Processor](../../.gitbook/assets/4%20%288%29.png)
+![Processor](<../../.gitbook/assets/4 (8).png>)
 
 ### Active Processed Destinations
 
@@ -128,7 +128,7 @@ This includes the list of all active destinations within the selected time windo
 
 This dashboard gives you the big picture of how the input events are multiplexed into the destination specific events.
 
-![Destination Processing Events and Times](../../.gitbook/assets/5%20%288%29.png)
+![Destination Processing Events and Times](<../../.gitbook/assets/5 (8).png>)
 
 ### Destination Processing Events
 
@@ -138,7 +138,7 @@ This corresponds to the number of events generated by the processor per destinat
 
 Indicates the time taken to generate the destination events. Note that these events are not yet sent to the destinations at this stage.
 
-![Errors](../../.gitbook/assets/screenshot_2020-12-10_at_12.49.12_pm.png)
+![Errors](../../.gitbook/assets/screenshot\_2020-12-10\_at\_12.49.12\_pm.png)
 
 ### Errors
 
@@ -146,11 +146,11 @@ This dashboard indicates the number of errors incurred during the transformation
 
 ## Router Throughput
 
-![Router Throughput](../../.gitbook/assets/6%20%288%29.png)
+![Router Throughput](<../../.gitbook/assets/6 (8).png>)
 
-### Router Throughput - &lt;destination\_type&gt;
+### Router Throughput - \<destination_type>
 
-The router picks the transformed events that are ready to be sent to the destinations, and then forwards them to the destinations. If a destination is down for sometime, it retries up to a configured time window \(default value being 3 hours\). If **IN &gt; OUT** \(refer to the second graph in the image above\), then there would be a delay in delivering the events. Some possible reasons include a sudden surge of events, or that the destination is slow in accepting new event requests.
+The router picks the transformed events that are ready to be sent to the destinations, and then forwards them to the destinations. If a destination is down for sometime, it retries up to a configured time window (default value being 3 hours). If **IN > OUT **(refer to the second graph in the image above), then there would be a delay in delivering the events. Some possible reasons include a sudden surge of events, or that the destination is slow in accepting new event requests.
 
 ### Router Responses
 
@@ -164,7 +164,7 @@ Corresponds to the metrics on any failures and retries before the event is deliv
 
 The warehouse uploads are run as scheduled in the configuration. If there is no schedule defined, uploads are run every 30 minutes and the batched data is loaded into the data warehouse.
 
-![Warehouse Uploads](../../.gitbook/assets/7%20%284%29.png)
+![Warehouse Uploads](<../../.gitbook/assets/7 (4).png>)
 
 ### Uploads
 
@@ -174,7 +174,7 @@ The upload status of every batch is shown in the dashboard panel. If an upload k
 
 This graph corresponds to the number of events delivered to the warehouse destinations plotted against the time when the upload was completed.
 
-![Synced Rows and Events Sync Lag Time](../../.gitbook/assets/8%20%282%29.png)
+![Synced Rows and Events Sync Lag Time](<../../.gitbook/assets/8 (2).png>)
 
 {% hint style="info" %}
 A `user_logged_in` event of `track` type will be synced to `tracks` and `user_logged_in` tables. Check out our [RudderStack Warehouse Schema](https://docs.rudderstack.com/data-warehouse-integrations/warehouse-schemas) for more details. Similarly, the `identify` events are synced to the `identifies` and `users` tables. Since each event is being synced to two tables, number of synced rows is generally twice the number of events.
@@ -186,7 +186,7 @@ If an event property does not match the data type in the corresponding table of 
 
 ### Synced Rows
 
-Corresponds to the number of new rows created in the `grouped by` table during warehouse uploads. In the example above, if there are different event names \(eg. `user_logged_in`, `user_signed_up` \) they all are grouped under **`others`** in the metrics.
+Corresponds to the number of new rows created in the `grouped by` table during warehouse uploads. In the example above, if there are different event names (eg. `user_logged_in`, `user_signed_up` ) they all are grouped under **`others`** in the metrics.
 
 {% hint style="warning" %}
 If there are a lot of synced rows in `rudder_discards`, this implies that the data types are not consistent from your sources. It is recommended to check such entries and fix the issue.
@@ -194,15 +194,15 @@ If there are a lot of synced rows in `rudder_discards`, this implies that the da
 
 ### Events Sync Lag Time - Warehouse
 
-This panel corresponds to the longest sync delay for delivering events to your warehouse destination. RudderStack batches events every 30 minutes \(default value\) before uploading to your data warehouse, so the delivery takes at least that much batching time. This panel reports the lag for the oldest event in a batch. For example, if the batching period is 30 min and the reported lag time is 50 min, then the average lag time would be **50 - \(30/2\) = 35 min**.
+This panel corresponds to the longest sync delay for delivering events to your warehouse destination. RudderStack batches events every 30 minutes (default value) before uploading to your data warehouse, so the delivery takes at least that much batching time. This panel reports the lag for the oldest event in a batch. For example, if the batching period is 30 min and the reported lag time is 50 min, then the average lag time would be **50 - (30/2) = 35 min**.
 
 ## JobsDB
 
-![JobsDB Tables Count](../../.gitbook/assets/9%20%282%29.png)
+![JobsDB Tables Count](<../../.gitbook/assets/9 (2).png>)
 
 ### JobsDB Tables Count
 
-This is the size of internal queue that RudderStack maintains for routing the events. There are 3 such queues named **gateway** \(`gw`\), **router** \(`rt`\) and **batch router** \(`batch_rt`\).
+This is the size of internal queue that RudderStack maintains for routing the events. There are 3 such queues named **gateway** (`gw`), **router** (`rt`) and **batch router** (`batch_rt`).
 
 RudderStack processes events from these queues. If the size of the queue keeps increasing, it implies that the event outflow is less than inflow.
 
@@ -213,6 +213,4 @@ For real-time deliveries, it is important to maintain queue size at 1 or 2.
 ## Contact Us
 
 To get more information on any of the above metrics related to the RudderStack dashboards, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to help you!
-
-
 

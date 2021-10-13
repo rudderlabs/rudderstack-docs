@@ -8,20 +8,20 @@ description: >-
 
 Google Analytics is the world's most popular analytics service that allows you to track and report your website traffic across a variety of sources.
 
-RudderStack supports sending events from RudderStack SDKs to the Google Analytics endpoints. We support the connection mode **S2S** **\(Server-to-Server\)** through our data plane, making requests to Google Analytics endpoints through Google Analytics' **Measurement Protocol** specification.
+RudderStack supports sending events from RudderStack SDKs to the Google Analytics endpoints. We support the connection mode **S2S** **(Server-to-Server)** through our data plane, making requests to Google Analytics endpoints through Google Analytics' **Measurement Protocol** specification.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga)**.**
 {% endhint %}
 
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Google Analytics. Refer to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device Mode** | **Supported** | - | - |
-| **Cloud Mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device Mode**     | **Supported** | -             | -             |
+| **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -59,15 +59,15 @@ From our JavaScript libraries, we automatically collect the following page prope
 * `search`
 * `referrer`
 
-> For a page loaded at [http://localhost/test\_browser.html?param1=true](http://localhost/test_browser.html?param1=true) with title "Page Load"
+> For a page loaded at [http://localhost/test_browser.html?param1=true](http://localhost/test_browser.html?param1=true) with title "Page Load"
 
-| Property | Value |
-| :--- | :--- |
-| `path` | /test\_browser.html |
-| `referrer` | "" |
-| `search` | ?param1=true |
-| `title` | Page Load |
-| `url` | [http://localhost/test\_browser.html?param1=true](http://localhost/test_browser.html?param1=true) |
+| Property   | Value                                                                                            |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| `path`     | /test_browser.html                                                                               |
+| `referrer` | ""                                                                                               |
+| `search`   | ?param1=true                                                                                     |
+| `title`    | Page Load                                                                                        |
+| `url`      | [http://localhost/test_browser.html?param1=true](http://localhost/test_browser.html?param1=true) |
 
 You can also override these values and call `page()` with properties as shown below:
 
@@ -111,18 +111,18 @@ rudderanalytics.page("home", {
 {% hint style="info" %}
 For a server-side screen call, the application name is passed from RudderStack's `context.app.name` as **`an`**, otherwise the event will be rejected by GA. 
 
-If **Include the Querystring in Page Views** option is turned on under Advanced options of RudderStack destination settings \(please refer to the settings in the Getting Started section above\), then the whole URL with query string will be sent as **`dp`** \(Document Path\). Otherwise, the query string will be removed from the URL.
+If **Include the Querystring in Page Views** option is turned on under Advanced options of RudderStack destination settings (please refer to the settings in the Getting Started section above), then the whole URL with query string will be sent as **`dp`** (Document Path). Otherwise, the query string will be removed from the URL.
 {% endhint %}
 
 ## Identify
 
-Personally Identifiable Information \(PII\) cannot be sent to the Google Analytics reporting interface. Thus nothing is passed to Google unless specifically told.
+Personally Identifiable Information (PII) cannot be sent to the Google Analytics reporting interface. Thus nothing is passed to Google unless specifically told.
 
 Google Analytics' universal tracking allows you to set a user ID to the identified visitors if **Send User ID** **to GA** is enabled in the destination settings by the user. Also, the `userid` property must be enabled in Google Analytics, and user-id view needs to be created.
 
 A sample `identify` call is as shown:
 
-```text
+```
 rudderanalytics.identify("abc123", {
         name: "Ruchira Moitra",
         email: "ruchira@gmail.com"
@@ -131,27 +131,27 @@ rudderanalytics.identify("abc123", {
 
 In the above snippet, the `userid` will be set to `abc123` for Google Analytics, but the name and email will not be shared with Google. Traits along with custom dimensions, metrics, and content groupings can be set in the SDK.
 
-For server-side, Google Analytics needs a customer identifier for each call to be made. RudderStack passes an internally generated ID as the `cid` parameter for Google Analytics to understand every unique user. Traits are not mapped to custom dimensions, metrics and content grouping yet from our side in server-side.
+For server-side, Google Analytics needs a customer identifier for each call to be made. RudderStack passes an internally generated ID as the `cid `parameter for Google Analytics to understand every unique user. Traits are not mapped to custom dimensions, metrics and content grouping yet from our side in server-side.
 
-You can call `identify` once in order to set the `userId` and `user traits`for all subsequent calls that you make from our SDK for a particular user. If `userId` is not set, RudderStack sends a generated ID \(called `anonymousId`\) from its SDKs with every call made to the RudderStack servers. This `id` is used as the `cid` in Google Analytics. And if Send User ID to GA setting is enabled, the user ID property will be set as `uid` and will be sent as well.
+You can call `identify` once in order to set the `userId` and `user traits`for all subsequent calls that you make from our SDK for a particular user. If `userId` is not set, RudderStack sends a generated ID (called `anonymousId`) from its SDKs with every call made to the RudderStack servers. This `id` is used as the `cid` in Google Analytics. And if Send User ID to GA setting is enabled, the user ID property will be set as `uid` and will be sent as well.
 
 ## Custom Dimensions
 
 In Google Analytics, we can configure custom dimensions in the [Admin](https://support.google.com/analytics/answer/6132368?hl=en) page.
 
-There are multiple scopes for custom dimensions, such as `hits`, `session`, `user`, and `products` \(If Enhanced eCommerce is enabled\). Once these are set up in Google Analytics, the traits and properties can be mapped to custom dimensions as set by the user in the RudderStack destination settings page \(as seen in the Getting Started section\). 
+There are multiple scopes for custom dimensions, such as `hits`, `session`, `user`, and `products` (If Enhanced eCommerce is enabled). Once these are set up in Google Analytics, the traits and properties can be mapped to custom dimensions as set by the user in the RudderStack destination settings page (as seen in the Getting Started section). 
 
 A custom dimension should be set as `dimension{index}` . For example, `dimension1` and it will map accordingly when the user sets the dimension in GA settings as shown below.
 
 Similar activity is to be done for metrics.A
 
-![Custom Dimensions and Metrics Settings in RudderStack](../../.gitbook/assets/image%20%2859%29.png)
+![Custom Dimensions and Metrics Settings in RudderStack](<../../.gitbook/assets/image (59).png>)
 
-![Custom Dimensions Settings in Google Analytics](../../.gitbook/assets/image%20%2836%29.png)
+![Custom Dimensions Settings in Google Analytics](<../../.gitbook/assets/image (36).png>)
 
 An `identify` call with custom dimensions will be recorded after the next `track` or `page` call.
 
-```text
+```
 rudderanalytics.identify({
 Gender: 'Female'
 });
@@ -165,24 +165,24 @@ We send an `event` hit when a **`track()`** call is made from our SDKs.
 
 A simple `track` call is as shown:
 
-```text
+```
 rudderanalytics.track("Track me")
 ```
 
 This will send the following `Event Category` and `Event Action` :
 
-| Property | Value |
-| :--- | :--- |
-| Event Category | All |
-| Event Action | `Track me` |
+| Property       | Value      |
+| -------------- | ---------- |
+| Event Category | All        |
+| Event Action   | `Track me` |
 
 {% hint style="info" %}
-We do not populate the `Event Category` field by default. If you face such a requirement, use our custom transformations to populate the event payload with a `category` property.
+We do not populate the `Event Category` field by default. If you face such a requirement, use our custom transformations to populate the event payload with a `category `property.
 {% endhint %}
 
 A more verbose `track` call that you can make is as shown:
 
-```text
+```
 rudderanalytics.track("Track me", {
         category: "category",
         label: "label",
@@ -192,18 +192,18 @@ rudderanalytics.track("Track me", {
 
 The following properties are sent to the Google Analytics event:
 
-| Property | Value |
-| :--- | :--- |
+| Property       | Value      |
+| -------------- | ---------- |
 | Event Category | `category` |
-| Event Action  | `Track me` |
-| Event Label | `label` |
-| Event Value | `value` |
+| Event Action   | `Track me` |
+| Event Label    | `label`    |
+| Event Value    | `value`    |
 
 ## Non-Interaction Events
 
 If the non-interaction setting is enabled in the RudderStack destination settings, `nonInteraction` with value `1` will be sent. 
 
-```text
+```
 {
   "action": "track",
   "event": "Track Page",
@@ -244,13 +244,13 @@ The Checkout steps feature is a key difference between the regular E-Commerce an
 
 You can configure the checkout funnel in the Google Analytics admin interface as shown below:
 
-![](../../.gitbook/assets/image%20%2821%29.png)
+![](<../../.gitbook/assets/image (21).png>)
 
 The checkout flow can be implemented by calling `track` with **`checkout step viewed`** and **`checkout step completed`** for the steps you have added in Google Analytics. 
 
 An example of this is as shown:
 
-```text
+```
 rudderanalytics.track('checkout step viewed', {
             currency: 'CAD',
             step: 1
@@ -271,7 +271,7 @@ For more information, please check our guide on the [RudderStack E-Commerce Even
 
 ### Measuring Promotions
 
-```text
+```
 rudderanalytics.track('promotion viewed', {
             currency: 'CAD',
             promotion_id: 'PROMO_1234',
@@ -296,7 +296,7 @@ rudderanalytics.track('promotion clicked', {
 
 You can add the `coupon` property if you want to send coupon data to **`order completed`**.
 
-```text
+```
 rudderanalytics.track('order completed', {
             orderId: 'abc55',
             total: 999.9,
@@ -333,7 +333,7 @@ rudderanalytics.track('order completed', {
 
 Information related to impressions of the users who have viewed or filtered through the product can be collected through Enhanced E-Commerce. The product impressions are mapped to **`product list viewed`** and **`product list filtered`** events.
 
-```text
+```
 window.rudderanalytics.track('product list filtered', {
             category: 'cat 1',
             list_id: '1234',
@@ -393,7 +393,7 @@ window.rudderanalytics.track('Product List Viewed', {
 
 For full refunds :
 
-```text
+```
  rudderanalytics.track('order refunded', {
             order_id: 'abc55',
             testDimension: true,
@@ -403,7 +403,7 @@ For full refunds :
 
 For partial refunds:
 
-```text
+```
 rudderanalytics.track('order refunded', {
             order_id: 'abc55',
             products: [
@@ -423,17 +423,17 @@ rudderanalytics.track('order refunded', {
 
 ## Passing Cookies from Universal Analytics
 
-`clientId` \(cid\) is used to keep a track of the unique visitors to your website.
+`clientId` (cid) is used to keep a track of the unique visitors to your website.
 
 A Google Analytics universal cookie will look like the following:
 
-```text
+```
 _ga=GA1.2.476220681.159039102;
 ```
 
 The `clientId` is `476220681.159039102` which can be cross-checked by running the following snippet:
 
-```text
+```
 ga(function (tracker) {
     var clientId = tracker.get('clientId');
     console.log('My GA universal client ID is: ' + clientId);
@@ -462,7 +462,7 @@ There are some other important features associated with Google Analytics integra
 
 ### Named Tracker
 
-If you turn on the named tracker in RudderStack destination setting under the **Other Settings** option, Rudder will push the events to a GA tracker named as `rudderGATracker`  instead of the default tracker.  
+If you turn on the named tracker in RudderStack destination setting under the **Other Settings** option, Rudder will push the events to a GA tracker named as `rudderGATracker`  instead of the default tracker.\
 For more information on creating trackers please follow:
 
 [https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers)
@@ -529,7 +529,7 @@ In your Google Analytics account, enable **Site search Tracking** and put the pa
 
 If the query is `abc.com/s=xyz`the setting should be as follows:
 
-![](../../.gitbook/assets/image%20%2818%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
+![](<../../.gitbook/assets/image (18) (1) (1) (1) (1) (1) (1) (1).png>)
 
 ### Optimize
 
@@ -539,16 +539,16 @@ Add your **Optimize Container ID** in destinations settings.
 
 You can set the content group mapping in the RudderStack dashboard and Google Analytics, as shown in the images below:
 
-![Content Group Mapping in RudderStack](../../.gitbook/assets/image%20%2867%29.png)
+![Content Group Mapping in RudderStack](<../../.gitbook/assets/image (67).png>)
 
-![Content Grouping Settings in Google Analytics](../../.gitbook/assets/image%20%2826%29.png)
+![Content Grouping Settings in Google Analytics](<../../.gitbook/assets/image (26).png>)
 
 
 
 When you use `rudderanalytics.page(name, properties)` with the custom properties, RudderStack will use the value of the property you designate as the value of the specified content grouping.
 
 {% hint style="info" %}
-For more information on content grouping, please refer to this [guide](https://support.google.com/analytics/answer/2853423?hl=en#:~:text=Content%20Grouping%20lets%20you%20group,page%20title%2C%20or%20screen%20name.).
+For more information on content grouping, please refer to this [guide](https://support.google.com/analytics/answer/2853423?hl=en#:\~:text=Content%20Grouping%20lets%20you%20group,page%20title%2C%20or%20screen%20name.).
 {% endhint %}
 
 ### Sample Rate
@@ -561,7 +561,7 @@ This feature defines the sample size for Site Speed data collection. The default
 
 ### Server-side Identification 
 
-If enabled, the `identify` calls will be made only from the server-side.
+If enabled, the `identify `calls will be made only from the server-side.
 
 ### Server-side Identification Event Action and Category.
 
@@ -583,7 +583,7 @@ If the specified dimension is set in the properties of the `page` call, it will 
 
 The tracking ID can be found in your Google Analytics account:
 
-![](../../.gitbook/assets/image%20%2844%29.png)
+![](<../../.gitbook/assets/image (44).png>)
 
 Navigate to your account and go to **Apps**. The tracking ID will be present there.
 
@@ -597,9 +597,9 @@ Please refer to the [Getting Started](https://docs.rudderstack.com/destinations-
 
 ### My website uses HTTPS. Do I need to change any settings for accurate Google Analytics tracking?
 
-Yes. In the **Property Setup**, please change the website URL from HTTP \(default\) to HTTPS as shown:
+Yes. In the **Property Setup**, please change the website URL from HTTP (default) to HTTPS as shown:
 
-![Changing the website URL from HTTP to HTTPS](../../.gitbook/assets/image%20%2849%29.png)
+![Changing the website URL from HTTP to HTTPS](<../../.gitbook/assets/image (49).png>)
 
 ### Can I view real-time reports of my event data?
 
@@ -627,4 +627,3 @@ The RudderStack JavaScript SDK provides a way of detecting how many page view re
 ## Contact Us
 
 If you come across any issues while configuring Google Analytics with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

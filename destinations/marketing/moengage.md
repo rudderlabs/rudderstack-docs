@@ -11,17 +11,17 @@ With MoEngage, you can effectively deliver personalized communication to your cu
 RudderStack now supports MoEngage as a destination to seamlessly send your event data in real-time.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/moengage)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/moengage)**.**
 {% endhint %}
 
 ## Getting Started
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by MoEngage, by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device Mode** | **Supported** | **Supported** | **-** |
-| **Cloud Mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device Mode**     | **Supported** | **Supported** | **-**         |
+| **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -29,7 +29,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to MoEngage, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **MoEngage**.
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source. From the list of destinations, select **MoEngage**.
 
 {% hint style="info" %}
  Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -55,19 +55,19 @@ Follow these steps to add MoEngage to your iOS project:
 
 * Go your `Podfile` and add the `Rudder-Moengage` extension
 
-```text
+```
 pod 'Rudder-Moengage'
 ```
 
 * After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
 
-```text
+```
 #import "RudderMoengageFactory.h"
 ```
 
 * Finally, change the initialization of your `RudderClient` as shown:
 
-```text
+```
 RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withFactory:[RudderMoengageFactory instance]];
@@ -80,7 +80,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 
 To add MoEngage to your Android Project and enable its full functionality like push notifications, please follow these steps :
 
-* Open your `app/build.gradle` \(Module: app\) file, and add the following:
+* Open your `app/build.gradle` (Module: app) file, and add the following:
 
 ```javascript
 repositories {
@@ -114,7 +114,7 @@ implementation 'com.google.code.gson:gson:2.8.6'
 apply plugin: 'com.google.gms.google-services'
 ```
 
-* Open your `build.gradle` \(Module: Project\) file and add the following in `buildscript` dependencies
+* Open your `build.gradle` (Module: Project) file and add the following in `buildscript` dependencies
 
 ```javascript
 // For Push Notification
@@ -139,7 +139,7 @@ val rudderClient = RudderClient.getInstance(
 )
 ```
 
-* Also, Initialize the MoEngage SDK in the Application class's onCreate\(\) method as following: 
+* Also, Initialize the MoEngage SDK in the Application class's onCreate() method as following: 
 
 ```javascript
 // this is the instance of the application class 
@@ -176,7 +176,7 @@ rudderanalytics.identify("name123", {
 ```
 
 {% hint style="info" %}
-Identify api will be used to **Login** the user into MoEngage in **Device** Mode
+Identify api will be used to **Login** the user into MoEngage in **Device **Mode
 {% endhint %}
 
 ### MoEngage Reserved Properties
@@ -333,10 +333,10 @@ In-app messaging is a type of mobile messaging where the notification is display
 {% endtab %}
 
 {% tab title="Android" %}
-Copy the Server Key from the FCM console and add it to the MoEngage Dashboard\(Not sure where to find the Server Key refer to [Getting FCM Server Key](https://docs.moengage.com/docs/getting-fcmgcm-server-key). To upload it, go to the [Settings Page](https://app.moengage.com/v3/#/settings/push/mobile) and add the Server Key and package name.  
+Copy the Server Key from the FCM console and add it to the MoEngage Dashboard(Not sure where to find the Server Key refer to [Getting FCM Server Key](https://docs.moengage.com/docs/getting-fcmgcm-server-key). To upload it, go to the [Settings Page](https://app.moengage.com/v3/#/settings/push/mobile) and add the Server Key and package name.\
 **Please make sure you add the keys both in the Test and Live environment.**
 
-Before configuring MoEngage SDK for receiving push notifications please make you have configured Firebase in your application, if not done already refer to the [documentation](https://firebase.google.com/docs/android/setup) and complete setup.  
+Before configuring MoEngage SDK for receiving push notifications please make you have configured Firebase in your application, if not done already refer to the [documentation](https://firebase.google.com/docs/android/setup) and complete setup.\
 Also, make sure you have added the Firebase Messaging dependency in your application `build.gradle` file.
 
 ### Adding meta for push notification
@@ -354,7 +354,8 @@ MoEngage.initialise(moEngage)
 For showing Push notifications there are 2 important things 
 
 1. Registration for Push, i.e. generating push token.
-2. Receiving the Push payload from Firebase Cloud Messaging\(FCM\) service and showing the notification on the device. The above can either be handled by the application or MoEngage SDK. There is some configuration required based on whether the above-mentioned things are handled by the application or SDK.
+2. Receiving the Push payload from Firebase Cloud Messaging(FCM) service and showing the notification on the device.\
+   The above can either be handled by the application or MoEngage SDK. There is some configuration required based on whether the above-mentioned things are handled by the application or SDK.
 
 ### Push Registration and Receiving handled by App
 
@@ -385,7 +386,7 @@ _Note:_ Please make sure token is passed to MoEngage SDK whenever push token is 
 
 #### Passing the Push payload to the MoEngage SDK
 
-To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the Firebase receiver.  
+To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the Firebase receiver.\
 Before passing the payload to the MoEngage SDK you should check if the payload is from the MoEngage platform using the helper API provided by the SDK.
 
 ```javascript
@@ -409,12 +410,12 @@ Add the below code in your manifest file within the application tag
 </service>
 ```
 
-When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.  
+When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.\
 An application can get this callback by implementing `FirebaseEventListener` and registering for a callback in the Application class'  `onCreate()`using `MoEFireBaseHelper.getInstance().setEventListener()`
 
 ### In-App messaging:
 
-In-app messaging is a type of mobile messaging where the notification is displayed within the app. Examples include popups, yes/no prompts, interstitials, and more. To implement this please follow: [ **InApp NATIV**](https://docs.moengage.com/docs/configuring-in-app-nativ)\*\*\*\*
+In-app messaging is a type of mobile messaging where the notification is displayed within the app. Examples include popups, yes/no prompts, interstitials, and more. To implement this please follow: [ **InApp NATIV**](https://docs.moengage.com/docs/configuring-in-app-nativ)****
 {% endtab %}
 
 {% tab title="Web" %}
@@ -428,7 +429,8 @@ In-app messaging is a type of mobile messaging where the notification is display
 importScripts("https://cdn.moengage.com/webpush/releases/serviceworker_cdn.min.latest.js");
 ```
 
-* HTTP : Select a sub-domain. 
+* HTTP :\
+  Select a sub-domain. 
 
  For more details please follow the [guidelines from MoEngage](https://docs.moengage.com/docs/setting-up-chrome-push).
 {% endtab %}
@@ -436,21 +438,21 @@ importScripts("https://cdn.moengage.com/webpush/releases/serviceworker_cdn.min.l
 
 ## Debugging in Web SDK
 
-From the RudderStack [dashboard](htps://app.rudderstack.com), turn on the debug mode to get debug logs. The events will be seen under the **Test** section of the particular app in MoEngage.
+From the RudderStack [dashboard](htps://app.rudderstack.com), turn on the debug mode to get debug logs. The events will be seen under the **Test **section of the particular app in MoEngage.
 
 ## Timezone offset for cloud mode
 
 ### Track
 
-MoEngage allows sending the t[ime at which the event occurred](https://docs.moengage.com/docs/data-import-apis#event-api) and calculates the user local time by taking two parameters. `current_time` and `user_timezone_offset` where the `current_time` is **UTC** Time at which the event happened, and `user_timezone_offset` is the difference in seconds between the **user local time and UTC.** 
+MoEngage allows sending the t[ime at which the event occurred](https://docs.moengage.com/docs/data-import-apis#event-api) and calculates the user local time by taking two parameters. `current_time `and `user_timezone_offset` where the `current_time` is **UTC** Time at which the event happened, and `user_timezone_offset` is the difference in seconds between the **user local time and UTC. **
 
 {% hint style="info" %}
-The RudderStack transformer maps the _**current\_time** to **timestamp or originalTimestamp**_   
-value from the event payload sent to Rudder server. This value should be passed in **UTC.**
+The RudderStack transformer maps the _**current_time** to **timestamp or originalTimestamp** _\
+__value from the event payload sent to Rudder server. This value should be passed in **UTC.**
 {% endhint %}
 
 {% hint style="info" %}
-The _**user\_timezone\_offset**_ is mapped to _**timezone**_ field present under the _**context**_ object of the event payload. This value should be passed as **tz** string.  
+The _**user_timezone_offset**_ is mapped to _**timezone**_ field present under the _**context**_ object of the event payload. This value should be passed as** tz** string.\
 Rudder mobile SDKs populate the timezone field by itself. But for other sources like server like SDKs, HTTP api,  the timezone needs to be set explicitly in every request.
 {% endhint %}
 
@@ -486,7 +488,7 @@ Example payload:
 MoEngage accepts user creation time for its [user endpoint](https://docs.moengage.com/docs/data-import-apis#user-api). This is reflected as `first_Seen` in their dashboard.
 
 {% hint style="info" %}
-The RudderStack transformer maps the _**created\_time**_ from the _**createdAt**_  spec'd traits in our payload. The value should be in the **ISO 8601** format.  
+The RudderStack transformer maps the _**created_time **_from the _**createdAt**_  spec'd traits in our payload. The value should be in the **ISO 8601** format.\
 If the value is not in proper format or not present, MoEngage will put in the value by itself.
 {% endhint %}
 
@@ -530,14 +532,13 @@ An example payload is as shown:
 
 #### **Where can I find my MoEngage API ID and API KEY?**
 
-You can find your MoEngage API ID and API KEY in your [moengage.com](https://www.moengage.com/) account under **Settings** &gt; **APIs** &gt; [**DATA API Settings**](https://app.moengage.com/v3/#/settings/1/0).
+You can find your MoEngage API ID and API KEY in your [moengage.com](https://www.moengage.com) account under **Settings** > **APIs** > [**DATA API Settings**](https://app.moengage.com/v3/#/settings/1/0).
 
 #### Where can I see the events that are going to MoEngage? 
 
-If your app is in debug mode then you can see under Test otherwise you can see under Live.   
-Go to For developers --&gt; Recent Events.
+If your app is in debug mode then you can see under Test otherwise you can see under Live. \
+Go to For developers --> Recent Events.
 
 ## Contact Us
 
 If you come across any issues while configuring or using MoEngage with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

@@ -8,10 +8,10 @@ To enable sending data to Drip, you will first need to add it as a destination i
 
 Before configuring Drip as a destination, verify if Drip supports the source platform by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **Supported** | - | - |
-| **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | **Supported** | -             | -             |
+| **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -19,7 +19,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the source supports sending events to Drip, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Drip**.
+* From your [**RudderStack dashboard**](https://app.rudderstack.com), add the source. From the list of destinations, select **Drip**.
 
 {% hint style="info" %}
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) for more information.
@@ -27,7 +27,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Connection Settings for Drip](../../../.gitbook/assets/3%20%2827%29.png)
+![Connection Settings for Drip](<../../../.gitbook/assets/3 (27).png>)
 
 * Next, enter your Drip **Account ID**. To get your **Account ID**, [**sign in**](https://login.getdrip.com/login/email) to your Drip dashboard and go to **Settings** - **Account**. Scroll down to see your Account ID.
 
@@ -51,11 +51,12 @@ If the **Campaign ID** is provided, RudderStack will try to subscribe the users 
 You can also send your Campaign ID via the `identify` call, which takes a higher precedence.
 {% endhint %}
 
-* **User Creation Mode** This option lets you create the user with their `email` using the `track` call, if the user doesn't already exist. 
-* **Use device-mode to send events**: Enable this option to send events via the [**Device mode**](../../../connections/rudderstack-connection-modes.md).  
+* **User Creation Mode** This option lets you create the user with their `email` using the `track` call, if the user doesn't already exist.\
+
+* **Use device-mode to send events**: Enable this option to send events via the [**Device mode**](../../../connections/rudderstack-connection-modes.md). \
+
 * Finally, click on **Next**. That's it! Drip will now be enabled as a destination in Rudderstack.
 
 ## Contact Us
 
 If you come across any issues while configuring Drip with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
