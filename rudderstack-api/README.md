@@ -8,15 +8,15 @@ This section covers the different RudderStack API along with detailed instructio
 
 ## Useful Links
 
-{% page-ref page="rudderstack-spec/" %}
+{% page-ref page="api-specification/rudderstack-spec/" %}
 
-{% page-ref page="http-api-specification.md" %}
+{% page-ref page="http-api.md" %}
 
-{% page-ref page="rudderstack-ecommerce-events-specification/" %}
+{% page-ref page="api-specification/rudderstack-ecommerce-events-specification/" %}
 
 {% page-ref page="pixel-api-spec.md" %}
 
-{% page-ref page="video-specification.md" %}
+{% page-ref page="api-specification/video-specification.md" %}
 
 ## Contact Us
 

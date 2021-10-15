@@ -16,10 +16,10 @@ RudderStack lets you identify your leads in Salesforce without having to use the
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Salesforce by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
-| **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | -             | -             | -             |
+| **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,7 +27,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the source supports sending events to Salesforce, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Salesforce**.
+* From your [**RudderStack dashboard**](https://app.rudderlabs.com), add the source. From the list of destinations, select **Salesforce**.
 
 {% hint style="info" %}
 Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -41,7 +41,7 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 * If you are using a Sandbox environment for integration, enable the **Sandbox Mode** option. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
 
 {% hint style="info" %}
-To know more about Salesforce Sandbox, click [**here**](https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm&type=5).
+To know more about Salesforce Sandbox, click [**here**](https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm\&type=5).
 {% endhint %}
 
 {% hint style="info" %}
@@ -92,7 +92,7 @@ It is mandatory to include `'Salesforce':true` in every Salesforce integration o
 ### Updating Custom Fields in Salesforce
 
 {% hint style="info" %}
-If you wish to update custom fields in Salesforce using RudderStack, make sure that you first create those lead fields in Salesforce before sending the data through RudderStack. For more information on how to do this, check out the [**Salesforce docs**](https://help.salesforce.com/articleView?id=sf.adding_fields.htm&type=5).
+If you wish to update custom fields in Salesforce using RudderStack, make sure that you first create those lead fields in Salesforce before sending the data through RudderStack. For more information on how to do this, check out the [**Salesforce docs**](https://help.salesforce.com/articleView?id=sf.adding_fields.htm\&type=5).
 {% endhint %}
 
 As `lastName` and `company` are needed by the [**Salesforce Leads API**](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_lead.htm), the absence of either of these fields will result in RudderStack automatically appending the `'n/a'`string to both the fields - even if they have been specified in some previous request.
@@ -100,7 +100,7 @@ As `lastName` and `company` are needed by the [**Salesforce Leads API**](https:/
 For example, if you wish to collect a custom trait in RudderStack named `newProp`, create a field label named `newProp`. This will generate an API name as `newProp__c`. RudderStack automatically appends the `__c` to any custom trait.
 
 {% hint style="info" %}
-**Make sure you are consistent with your casing**. If the custom fields are created in camelCase, make sure sure that you send the traits to RudderStack in camelCase. If you're creating custom fields in snake\_case, make sure you send the traits in the same format.
+**Make sure you are consistent with your casing**. If the custom fields are created in camelCase, make sure sure that you send the traits to RudderStack in camelCase. If you're creating custom fields in snake_case, make sure you send the traits in the same format.
 {% endhint %}
 
 ## Updating Salesforce Objects
@@ -140,11 +140,11 @@ By default, RudderStack creates a `Lead` object in Salesforce and maps the `trai
 
 ### Which Salesforce Edition should I use to access the API?
 
-Before connecting to the Salesforce API with RudderStack, make sure you are using the right edition of Salesforce. You can follow [**this guide**](https://help.salesforce.com/articleView?id=000326486&type=1&mode=1) to know more about the supported editions with the API access. You must have either the **Enterprise**, **Unlimited**, **Developer** or **Performance** editions to access the API.
+Before connecting to the Salesforce API with RudderStack, make sure you are using the right edition of Salesforce. You can follow [**this guide**](https://help.salesforce.com/articleView?id=000326486\&type=1\&mode=1) to know more about the supported editions with the API access. You must have either the **Enterprise**, **Unlimited**, **Developer** or **Performance** editions to access the API.
 
 ### Where do I get the Security Token?
 
-You can find your Security Token under **Setup** - **Personal Setup** - **My Personal Information** - [**Reset My Security Token**](https://na15.salesforce.com/_ui/system/security/ResetApiTokenEdit).
+You can find your Security Token under **Setup** - **Personal Setup** - **My Personal Information** - [**Reset My Security Token**](https://na15.salesforce.com/\_ui/system/security/ResetApiTokenEdit).
 
 If you still face any issues, feel free to contact us.
 
@@ -156,7 +156,64 @@ To check the number of Salesforce API calls, go to **Setup** - **Administration 
 
 Salesforce has a very strict API limit. Moreover, RudderStack by default does not send `identify` calls to Salesforce. If you don't include `'Salesforce':true` in your `identify` call payload, the call will be simply ignored.
 
+### What are the Salesforce Standard Fields that RudderStack supports?
+
+RudderStack supports several standard fields in Salesforce. Below is the mapping of the fields, where the left column represent the field name within the properties object, and the right column represents what RudderStack will map the field name to.
+
+| RudderStack Property Field Name        | Salesforce Standard Field |
+| -------------------------------------- | ------------------------- |
+| `address.accuracy` or `accuracy`       | `Accuracy`                |
+| `company.annualRevenue`                | `AnnualRevenue`           |
+| `address.city` or `city`               | `City`                    |
+| `company.name` or `company`            | `Company`                 |
+| `address.country` or `country`         | `Country`                 |
+| `address.countryCode` or `countryCode` | `CountryCode`             |
+| `convertedAccountId`                   | `ConvertedAccountId`      |
+| `convertedContactId`                   | `ConvertedContactId`      |
+| `convertedDate`                        | `ConvertedDate`           |
+| `convertedOpportunityId`               | `ConvertedOpportunityId`  |
+| `createdById`                          | `CreatedById`             |
+| `createdAt` or `createddate`           | `CreatedDate`             |
+| `description`                          | `Description`             |
+| `email`                                | `Email`                   |
+| `emailBouncedDate`                     | `EmailBouncedDate`        |
+| `emailBouncedReason`                   | `EmailBouncedReason`      |
+| `firstName`                            | `FirstName`               |
+| `geocodeAccuracy`                      | `GeocodeAccuracy`         |
+| `id`                                   | `Id`                      |
+| `company.industry`                     | `Industry`                |
+| `individualId`                         | `IndividualId`            |
+| `isConverted`                          | `IsConverted`             |
+| `isDeleted`                            | `IsDeleted`               |
+| `isUnreadByOwner`                      | `IsUnreadByOwner`         |
+| `jigsaw`                               | `Jigsaw`                  |
+| `jigsawContactId`                      | `JigsawContactId`         |
+| `lastActivityDate`                     | `LastActivityDate`        |
+| `lastModifiedById`                     | `LastModifiedById`        |
+| `lastModifiedDate`                     | `LastModifiedDate`        |
+| `lastName`                             | `LastName`                |
+| `lastReferencedDate`                   | `LastReferencedDate`      |
+| `lastViewedDate`                       | `LastViewedDate`          |
+| `address.latitude `or `latitude`       | `Latitude`                |
+| `LeadSource`                           | `LeadSource`              |
+| `address.longitude` or `longitude`     | `Longitude`               |
+| `masterRecordId`                       | `MasterRecordId`          |
+| `name`                                 | `Name`                    |
+| `company.employee_count`               | `NumberOfEmployees`       |
+| `ownerId`                              | `OwnerId`                 |
+| `phone`                                | `Phone`                   |
+| `photoUrl`                             | `PhotoUrl`                |
+| `address.postalCode` or `postalCode`   | `PostalCode`              |
+| `rating`                               | `Rating`                  |
+| `salutation`                           | `Salutation`              |
+| `address.state` or `state`             | `State`                   |
+| `address.stateCode` or `stateCode`     | `StateCode`               |
+| `status`                               | `Status`                  |
+| `address.street` or `street`           | `Street`                  |
+| `systemModstamp`                       | `SystemModstamp`          |
+| `title`                                | `Title`                   |
+| `website`                              | `Website`                 |
+
 ## Contact Us
 
 If you come across any issues while configuring Salesforce with RudderStack, please feel free to [**contact us**](mailto:%20contact@rudderstack.com). You can also start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

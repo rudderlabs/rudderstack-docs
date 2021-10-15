@@ -8,29 +8,88 @@ PostgreSQL is an enterprise-grade, open source database management system. It su
 
 This guide will help you configure PostgreSQL as a source from which you can route event data to your desired destinations through RudderStack.
 
-## Granting Permissions
+## Granting User Permissions
 
-Run the following SQL queries to grant the necessary permissions for warehouse action
+Run the SQL queries below in the **exact order** to grant the necessary permissions for the Warehouse Actions source:
 
-```text
-CREATE USER RUDDER WITH PASSWORD 'strong_unique_password'
-GRANT USAGE ON SCHEMA "testschema" TO RUDDER;
-GRANT SELECT ON TABLE "testschema"."testtable" to RUDDER;
-GRANT CREATE ON SCHEMA "testschema" to RUDDER;
+### Creating the user
+
+* The following command creates a new user `rudder` with password `<strong_unique_password>` in PostgreSQL.
+
+```
+CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 ```
 
-## Set Up as Source
+### Creating the RudderStack schema and granting permissions
+
+* The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
+
+```
+CREATE SCHEMA "_rudderstack";
+```
+
+{% hint style="warning" %}
+The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed.
+{% endhint %}
+
+* This command allows the user `rudder` to have full access to the schema `_rudderstack`:
+
+```
+GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
+```
+
+* This command lets the user `rudder` to have full access to all the objects in the schema `_rudderstack`.
+
+```
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
+```
+
+### Granting permissions on your schema & table
+
+* This command lets the user `rudder` look up objects within the schema `<YOUR_SCHEMA>`. Replace  with the exact name of your PostgreSQL database schema.
+
+```
+GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
+```
+
+* This command allows the user `rudder` to read data from the table `<YOUR_TABLE>`. Replace  and  with the exact name of your database schema and table names in PostgreSQL.
+
+```
+GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
+```
+
+* The following **optional** command lets the user `rudder` to read data from all the tables in the schema "":
+
+```
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access the data in all the tables residing within your specified schema.
+{% endhint %}
+
+* The following **optional** command allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`:
+
+```
+ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
+```
+
+{% hint style="warning" %}
+Run the above command only if you're okay with RudderStack being able to access the data in all the future tables residing within your specified schema.
+{% endhint %}
+
+## Setting Up the Source
 
 To set up PostgreSQL as a source in RudderStack, follow these steps:
 
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (11).png>)
 
 * Scroll down to the **Warehouse Sources** and select **PostgreSQL**. Then, click on **Next**.
 
-![](../.gitbook/assets/screen-shot-2021-01-05-at-3.18.17-pm%20%281%29%20%281%29%20%281%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%281%29.png)
+![](<../.gitbook/assets/screen-shot-2021-01-05-at-3.18.17-pm (1) (1) (1) (2) (2) (3) (3) (3) (3) (3) (3) (3) (3) (2) (3) (3) (3) (3) (3) (1) (3).png>)
 
 ### Setting Up the Connection
 
@@ -83,7 +142,30 @@ RudderStack will start importing data from your PostgreSQL database as per the s
 If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
 {% endhint %}
 
+## FAQ
+
+### What do the three validations under Verifying Credentials imply?
+
+When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+
+![](../.gitbook/assets/validations.png)
+
+These options are explained below:
+
+* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
+
+{% hint style="warning" %}
+If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
+{% endhint %}
+
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials.\
+
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/postgresql#creating-the-rudderstack-schema-and-granting-permissions) section. 
+
+{% hint style="warning" %}
+If this option gives an error, verify if you have successfully created the `_rudderstack` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/postgresql#creating-the-rudderstack-schema-and-granting-permissions).
+{% endhint %}
+
 ## Contact Us
 
 If you come across any issues while configuring PostgreSQL as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

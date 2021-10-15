@@ -9,7 +9,7 @@ description: Step-by-step guide to send event data from RudderStack to Marketo.
 RudderStack allows you to seamlessly configure Marketo as a destination to which you can send your event data seamlessly.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/marketo)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/marketo)**.**
 {% endhint %}
 
 ## Getting Started
@@ -18,10 +18,10 @@ To enable sending data to **Marketo**, you will first need to add it as a destin
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Marketo, by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **-** | **-** | **-** |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | **-**         | **-**         | **-**         |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -66,9 +66,9 @@ Now you can configure the settings in the RudderStack Dashboard.
 
 ![](../../.gitbook/assets/screen-shot-2021-06-02-at-11.51.32-am.png)
 
-* For the **Map events to Marketo Activity ID** input, you will map the event name that you call in your app to the Activity ID that you just created in the steps above.
+* For the **Map events to Marketo Activity ID **input, you will map the event name that you call in your app to the Activity ID that you just created in the steps above.
 * For the **Map event properties to Marketo property name** input, you will match the property names of the source's track call, with the associated Marketo property name from the fields listed in your Custom Activity created above.
-* Finally, for the **Map event name to Marketo primary key** input, you will match the source's track event name to the Marketo Primary Key for the associated Custom Activity you created above.
+* Finally, for the **Map event name to Marketo primary key **input, you will match the source's track event name to the Marketo Primary Key for the associated Custom Activity you created above.
 
 A sample `track` call is as shown in the snippet below:
 
@@ -88,25 +88,25 @@ rudderanalytics.track("Order Completed", {
 
 We create or update a Lead object in Marketo through an `identify` request. By default we map the following `traits` to relevant fields in Marketo. For rest of the fields you want to sync with Marketo, you need to create a mapping of your `traits` field name and the `customFieldName` from your Marketo dashboard.
 
-| Marketo Field Name | RudderStack Trait Name |
-| :--- | :--- |
-| `City` | `address.city` |
-| `Company` | `company.name` |
-| `Country` | `address.country` |
-| `Email` | `email` |
-| `FirstName` | `firstName` |
-| `Industry` | `company.industry` |
-| `LastName` | `lastName` |
-| `OriginalSourceInfo` | `leadSource` |
-| `NumberOfEmployees` | `company.employee_count` |
-| `Phone` | `phone` |
-| `PostalCode` | `address.zip` |
-| `Rating` | `rating` |
-| `State` | `address.state` |
-| `Address` | `address.street` |
-| `Title` | `title` |
-| `DateofBirth` | `birthday` |
-| `Website` | `website` |
+| Marketo Field Name   | RudderStack Trait Name   |
+| -------------------- | ------------------------ |
+| `City`               | `address.city`           |
+| `Company`            | `company.name`           |
+| `Country`            | `address.country`        |
+| `Email`              | `email`                  |
+| `FirstName`          | `firstName`              |
+| `Industry`           | `company.industry`       |
+| `LastName`           | `lastName`               |
+| `OriginalSourceInfo` | `leadSource`             |
+| `NumberOfEmployees`  | `company.employee_count` |
+| `Phone`              | `phone`                  |
+| `PostalCode`         | `address.zip`            |
+| `Rating`             | `rating`                 |
+| `State`              | `address.state`          |
+| `Address`            | `address.street`         |
+| `Title`              | `title`                  |
+| `DateofBirth`        | `birthday`               |
+| `Website`            | `website`                |
 
 A sample `identify` call is as shown:
 
@@ -133,4 +133,3 @@ Please check whether you've turned off the `Track Anonymous Id` settings on the 
 ## Contact Us
 
 If you come across any issues while configuring or using Marketo with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

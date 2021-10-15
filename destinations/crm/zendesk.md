@@ -4,14 +4,14 @@ description: Step-by-step guide to set up Zendesk as a destination in RudderStac
 
 # Zendesk
 
-[Zendesk](https://www.zendesk.com/) is a popular CRM and customer support service suite that ensures cutting-edge sales and support across various business domains. It allows you to tend to your customers in the best way possible, and satisfactorily resolve all their queries and concerns. Zendesk also offers features such as live chat, call center software capabilities, and a smart knowledge base so that your executives have a handy solution to any customer query at hand.
+[Zendesk](https://www.zendesk.com) is a popular CRM and customer support service suite that ensures cutting-edge sales and support across various business domains. It allows you to tend to your customers in the best way possible, and satisfactorily resolve all their queries and concerns. Zendesk also offers features such as live chat, call center software capabilities, and a smart knowledge base so that your executives have a handy solution to any customer query at hand.
 
 RudderStack supports integration with Zendesk and allows you to send your customer data to Zendesk seamlessly.
 
 This document lays out the steps to follow for sending your event data to Zendesk. 
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/zendesk)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/zendesk)**.**
 {% endhint %}
 
 ## Getting Started
@@ -20,10 +20,10 @@ As a first step, you need to add Zendesk as a destination to the source on the d
 
 Before configuring your source and destination on RudderStack, please verify if the Zendesk destination supports the source platform. Refer to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -31,7 +31,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have verified that the platform supports forwarding events to Zendesk, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select Zendesk.
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source. From the list of destinations, select Zendesk.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -60,15 +60,15 @@ Currently, RudderStack maps to a subset of the standard user attributes of a Zen
 
 The current mapping is as follows:
 
-| RudderStack | Zendesk |
-| :--- | :--- |
-| `email` | `email` |
-| `name` | `name` |
+| RudderStack      | Zendesk           |
+| ---------------- | ----------------- |
+| `email`          | `email`           |
+| `name`           | `name`            |
 | `organizationId` | `organization_id` |
-| `timezone` | `time_zone` |
-| `phone` | `phone` |
-| `userId` | `user_id` |
-| `userId` | `external_id` |
+| `timezone`       | `time_zone`       |
+| `phone`          | `phone`           |
+| `userId`         | `user_id`         |
+| `userId`         | `external_id`     |
 
 {% hint style="info" %}
 The `organization_id` is Zendesk organization id and they create it.
@@ -83,7 +83,7 @@ You can use the dashboard setting "**Create users as verified**" to register the
 Please enable the option in our dashboard - **Enable Removing Users from Organizations** to access this feature. The following fields are mandatory in the payload under `context.traits` for this action:
 
 * `company.id`
-* `company.remove` \(to be set as `true`\)
+* `company.remove` (to be set as `true`)
 
 We assume a valid Zendesk `organization_id` in the `company.id` field. Then we find the organization corresponding to that `id`, and perform the action. A sample `identify` call for this should look like the below:
 
@@ -128,7 +128,7 @@ You can use the `group` call to create or update an organization in Zendesk. We 
 
 Here is a sample `group` call
 
-```text
+```
 rudderanalytics.group("123456789", {
   name: "Softworks",
   country: "UK",
@@ -142,14 +142,14 @@ Currently, RudderStack maps the group traits to a subset of the standard organiz
 
 The current mapping is as follows:
 
-| RudderStack | Zendesk |
-| :--- | :--- |
-| `name` | `name` |
+| RudderStack   | Zendesk        |
+| ------------- | -------------- |
+| `name`        | `name`         |
 | `domainNames` | `domain_names` |
-| `tags` | `tags` |
-| `groupId` | `external_id` |
-| `url` | `url` |
-| `deleted` | `deleted` |
+| `tags`        | `tags`         |
+| `groupId`     | `external_id`  |
+| `url`         | `url`          |
+| `deleted`     | `deleted`      |
 
 We assume that there is always an `identify` call before any `group` call with userId is made. If `groupId` and `userId` both are present in the payload of a group call, then, we will find the user with the **email** present in the traits, if not present, we will create the user. We also find the organization by the `groupId` that you provide. If that is not present, we create that too and after that, we do the association.
 
@@ -169,11 +169,11 @@ This is the API token that will be used to authenticate the request. If you do n
 
 ### Zendesk Domain
 
-This is your Zendesk subdomain \(not including `.zendesk.com`\)
+This is your Zendesk subdomain (not including `.zendesk.com`)
 
 ### Create users as verified
 
-Enabling this setting will create users as verified\(skipping the email verification\). We will send `verified` as true if this setting is enabled
+Enabling this setting will create users as verified(skipping the email verification). We will send `verified` as true if this setting is enabled
 
 ### Send Group Calls without a User ID
 
@@ -182,4 +182,3 @@ Enable this setting if you don't want to associate the user with the group. If t
 ## Contact Us
 
 If you come across any issues while configuring Zendesk with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

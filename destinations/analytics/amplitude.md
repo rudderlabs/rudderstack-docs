@@ -4,7 +4,7 @@ description: Step-by-step guide to send your event data from RudderStack to Ampl
 
 # Amplitude
 
-[Amplitude](https://amplitude.com/) is a comprehensive product analytics platform for the web as well as mobile platforms. Over 12,000 companies use Amplitude to get useful marketing insights that drive product strategy and conversion and retention of their customers.
+[Amplitude](https://amplitude.com) is a comprehensive product analytics platform for the web as well as mobile platforms. Over 12,000 companies use Amplitude to get useful marketing insights that drive product strategy and conversion and retention of their customers.
 
 RudderStack supports sending events from the RudderStack SDKs to Amplitude through our data plane and Web connection mode.
 
@@ -16,10 +16,10 @@ RudderStack supports sending events from the RudderStack SDKs to Amplitude throu
 
 Before configuring your source and destination on the RudderStack app, please check whether Amplitude supports the platform you are working on. Refer to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **Supported** | **Supported** | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | **Supported** | **Supported** | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -86,10 +86,10 @@ This feature is not applicable for RudderStack web device mode integrations.
 * **Track UTM properties:** If this setting is enabled, the Amplitude SDK parses the UTM parameters in the query string or `_utmz` cookie and includes them as user properties in all uploaded events.
 * **Save Referrer, URL Params, GCLID once per session:** If this setting is enabled, the corresponding tracking of `gclid`, referrer, UTM parameters will be done once per session. If you always want to capture new values, please set this to False.
 * **Unset param referrer on new session:** If this setting is disabled, the existing `referrer` and `utm_parameter` values will be passed to each new session. If enabled, `referrer` and `utm_parameter` properties will be set to `null` upon instantiating new session. This only works if `Track referrer` and `Track UTM properties` are enabled.
-* **Enable location listening \(Android only\):** If the user grants your app location permissions, the SDK will also grab the user's location. Amplitude will never prompt the user for location permissions, and this will have to be done by your app.
-* **Track session events \(Mobile only\):** If this setting is enabled, `[Amplitude] Start Session` and `[Amplitude] End Session` events will be sent to the Amplitude at the starting and end of the session.
-* **Use advertising id as device id \(Android only\):**  If this setting is enabled, the `advertising id` assigned by Google Play Store to a user device will be sent as `device id` to the Amplitude.
-* **Use IDFA as device id \(iOS only\):** If this setting is enabled, the `Identifier for Advertisers (IDFA)` assigned by Apple to a user device will be sent as  `device id` to the Amplitude.
+* **Enable location listening (Android only):** If the user grants your app location permissions, the SDK will also grab the user's location. Amplitude will never prompt the user for location permissions, and this will have to be done by your app.
+* **Track session events (Mobile only):** If this setting is enabled, `[Amplitude] Start Session` and `[Amplitude] End Session` events will be sent to the Amplitude at the starting and end of the session.
+* **Use advertising id as device id (Android only):**  If this setting is enabled, the `advertising id` assigned by Google Play Store to a user device will be sent as `device id` to the Amplitude.
+* **Use IDFA as device id (iOS only):** If this setting is enabled, the `Identifier for Advertisers (IDFA)` assigned by Apple to a user device will be sent as  `device id` to the Amplitude.
 
 ## Adding Device Mode Integration
 
@@ -137,7 +137,7 @@ Make sure that you enable `use IDFA as device id` under `iOS SDK settings` on da
 };
 ```
 
-* and then add the below logic if you would like to `track location` \(latitude, longitude\)
+* and then add the below logic if you would like to `track location` (latitude, longitude)
 
 ```javascript
 [Amplitude instance].locationInfoBlock = ^{
@@ -152,7 +152,7 @@ Make sure that you enable `use IDFA as device id` under `iOS SDK settings` on da
 {% tab title="Android" %}
 To add Amplitude to your Android Project please follow these steps :
 
-* Open your `app/build.gradle` \(Module: app\) file, and add the following under the `dependencies` section :
+* Open your `app/build.gradle` (Module: app) file, and add the following under the `dependencies` section :
 
 ```javascript
 implementation 'com.rudderstack.android.sdk:core:1.+'
@@ -218,7 +218,7 @@ rudderanalytics.page({
 })
 ```
 
-In the above sample, we capture information related to the page being viewed such as the category of the page \(`Category`\), as well as the name of the page \(`Sample`\) along with the unique user ID.
+In the above sample, we capture information related to the page being viewed such as the category of the page (`Category`), as well as the name of the page (`Sample`) along with the unique user ID.
 
 ## Screen
 
@@ -273,7 +273,7 @@ rudderanalytics.track("Item Purchased",
 To track revenue event in web device mode, we use Amplitude's `logRevenueV2()` api and also for an eCommerce event, we expect `revenue` as a top level attribute in properties. If `products` array is present in event payload, then to track product individually, at each product level `price` or `revenue`must be present, or else we will not track the revenue. As `logRevenueV2` uses both `price` and `quantity` to calculate the `revenue`, if no `quantity` is present, we will take default as `1`.
 {% endhint %}
 
-A sample eCommerce event \(`Order Completed`\) is as following:
+A sample eCommerce event (`Order Completed`) is as following:
 
 ```javascript
 rudderanalytics.track("Order Completed",{
@@ -301,14 +301,14 @@ rudderanalytics.track("Order Completed",{
 });
 ```
 
-The above call will generate one `Order Completed` event, 2 individual `Product purchased` events and 2 revenue events \(one with `$price` as `15` and `$quantity` as `2` and the other one with `$price` as `20` and `$quantity` as `1` \) at Amplitude, provided that in the destination settings dashboard: `Track revenue per product settings` is enabled. The two separate revenue events are generated for device mode. For cloud mode, revenue will be tracked along with the 2 `Product purchased` events.
+The above call will generate one `Order Completed` event, 2 individual `Product purchased` events and 2 revenue events (one with `$price` as `15` and `$quantity` as `2` and the other one with `$price` as `20` and `$quantity` as `1` ) at Amplitude, provided that in the destination settings dashboard: `Track revenue per product settings` is enabled. The two separate revenue events are generated for device mode. For cloud mode, revenue will be tracked along with the 2 `Product purchased` events.
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
 {% endhint %}
 
 {% hint style="info" %}
-**\(Mobile Only\)** If _\*\*_ a property with the name`optOutOfSession`and value`true`then this track call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
+**(Mobile Only)** If _\*\*_ a property with the name`optOutOfSession`and value`true`then this track call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
 {% endhint %}
 
 ## Identify
@@ -336,7 +336,7 @@ A sample dashboard after making the above `identify`, `page`, and `track` calls 
 ![User properties dashboard](../../.gitbook/assets/screenshot-2020-02-17-at-5.49.05-pm.png)
 
 {% hint style="info" %}
-**\(Mobile Only\)** If _\*\*_ a trait with the name `optOutOfSession` and value `true` then this `identify` call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
+**(Mobile Only)** If _\*\*_ a trait with the name `optOutOfSession` and value `true` then this `identify` call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
 {% endhint %}
 
 ## Group
@@ -375,7 +375,7 @@ rudderanalytics.alias("user_id", "global_user_id", options, callback);
 
 ### Unmapping
 
-With Amplitude, it is possible to **unmap** an already established link, or `alias`. In order to trigger Amplitude to unmap a connection, follow the code snippet template below.
+With Amplitude, it is possible to **unmap **an already established link, or `alias`. In order to trigger Amplitude to unmap a connection, follow the code snippet template below.
 
 ```javascript
 rudderanalytics.alias("user_id_to_unmapped", 
@@ -395,7 +395,7 @@ In the snippet above, `user_to_be_unmapped`, will be unmapped or unlinked from t
 For the **unmapping** call, it is not necessary to provide a `global_user_id` in the `to` parameter of the `alias` call. If it is included, RudderStack will dismiss it.
 {% endhint %}
 
- For more information on how the `alias` call works for Amplitude, visit [this link](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
+ For more information on how the `alias` call works for Amplitude, visit [this link](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h\_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
 
 ## Reset
 
@@ -428,4 +428,3 @@ You can find the Amplitude API key on the [Amplitude Settings Page](https://anal
 ## Contact Us
 
 If you come across any issues while configuring Amplitude with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

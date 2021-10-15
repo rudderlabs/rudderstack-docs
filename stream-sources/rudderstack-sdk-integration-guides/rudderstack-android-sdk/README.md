@@ -136,6 +136,48 @@ We automatically track the following optional events:
 You can disable these events using the `withTrackLifecycleEvents` method and passing `false`. But it is highly recommended to keep them enabled.
 {% endhint %}
 
+## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+
+RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(true)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(true);
+```
+{% endtab %}
+{% endtabs %}
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.optOut(false)
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.optOut(false);
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The `optOut` API is available in the RudderStack Android SDK from version `1.0.21`.
+{% endhint %}
+
 ## Track
 
 You can record the users' activity through the `track` method. Every action performed by the user is called an event.
@@ -391,10 +433,10 @@ You can configure your client based on the following parameters using `RudderCon
 
 ### Self-Hosted Control Plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the RudderStack Config Generator to host your own Control Plane, then follow [this guide](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the [**Control Plane Lite**](../../../get-started/control-plane-lite.md) utility to self-host your Control Plane, then follow [**this guide**](https://docs.rudderstack.com/user-guides/how-to-guides/rudderstack-control-plane-lite#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
 
 {% hint style="warning" %}
-You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using the dashboard from [https://app.rudderstack.com](https://app.rudderstack.com). This parameter is supported only if you are using our open-source [RudderStack Config Generator](https://docs.rudderstack.com/how-to-guides/rudderstack-config-generator).
+You shouldn't pass the `controlPlaneUrl` parameter during SDK initialization if you are using the [**RudderStack Cloud dashboard**](https://app.rudderstack.com/) \([**https://app.rudderstack.com**](https://app.rudderstack.com)\). This parameter is supported only if you are using the open-source [**Control Plane Lite**](../../../get-started/control-plane-lite.md) \_\*\*\_to self-host your Control Plane.
 {% endhint %}
 
 ## Setting Android Device Token
@@ -613,11 +655,123 @@ RudderClient rudderClient = RudderClient.getInstance(
 {% endtab %}
 {% endtabs %}
 
+## Can I develop a Device Mode destination if RudderStack doesn't support it already?
+
+{% hint style="info" %}
+More information on the RudderStack Device Mode can be found in the [**RudderStack Connection Modes**](https://docs.rudderstack.com/connections/rudderstack-connection-modes) guide.
+{% endhint %}
+
+Yes, you can develop a Device Mode destination by following these steps:
+
+* Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) , as shown:
+
+```java
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.rudderstack.android.sdk.core.RudderClient;
+import com.rudderstack.android.sdk.core.RudderConfig;
+import com.rudderstack.android.sdk.core.RudderIntegration;
+import com.rudderstack.android.sdk.core.RudderLogger;
+import com.rudderstack.android.sdk.core.RudderMessage;
+
+public class CustomFactory extends RudderIntegration<CustomFactory> {
+    private static final String FACTORY_KEY = "Custom Factory";
+
+    public static Factory FACTORY = new Factory() {
+        @Override
+        public RudderIntegration<?> create(Object settings, RudderClient client, RudderConfig rudderConfig) {
+            return new CustomFactory(client,rudderConfig);
+        }
+
+        @Override
+        public String key() {
+            return FACTORY_KEY;
+        }
+    };
+
+    private CustomFactory(@NonNull RudderClient client, RudderConfig config) {
+
+    }
+
+    private void processRudderEvent(RudderMessage element) {
+        System.out.println("Processing RudderEvent of type "+element.getType());
+
+    }
+
+    @Override
+    public void reset() {
+        System.out.println("Reset is called");
+    }
+
+    @Override
+    public void flush() {
+        System.out.println("Flush is called");
+    }
+
+    @Override
+    public void dump(@Nullable RudderMessage element) {
+        try {
+            if (element != null) {
+                processRudderEvent(element);
+            }
+        } catch (Exception e) {
+            RudderLogger.logError(e);
+        }
+    }
+
+    @Override
+    public CustomFactory getUnderlyingInstance() {
+        return this;
+    }
+}
+```
+
+Some pointers to keep in mind:
+
+* You can use the constructor of the `CustomFactory` class to initialize the native SDK of the Device Mode destination you are working on. 
+* RudderStack's Android SDK dumps every event it receives to the `dump()` method of the `CustomFactory` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination. 
+* The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset. 
+* RudderStack's Android SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
+
+{% tabs %}
+{% tab title="Kotlin" %}
+```kotlin
+rudderClient.flush()
+```
+{% endtab %}
+
+{% tab title="JAVA" %}
+```java
+rudderClient.flush();
+```
+{% endtab %}
+{% endtabs %}
+
+* Make sure you return a valid value from `getUnderlyingInstance()` as it is used by the Android SDK to validate `CustomFactory`. 
+* Make sure you do not duplicate the value of `FACTORY_KEY` across multiple `CustomFactory` that you develop. 
+* Register `CustomFactory` with the RudderStack Android SDK during its initialization, as shown:
+
+```java
+var rudderClient = RudderClient.getInstance(
+            this,
+            WRITE_KEY,
+            RudderConfig.Builder()
+                .withDataPlaneUrl(DATA_PLANE_URL)
+                .withTrackLifecycleEvents(false)
+                .withRecordScreenViews(false)
+                .withCustomFactory(CustomFactory.FACTORY)
+                .build()
+)
+```
+
+That's it! Your Device Mode destination is good to go.
+
 ## FAQs
 
-### Do I need to add anything to my progaurd-rules?
+### Do I need to add anything to my proguard-rules?
 
-If you are facing any issue regarding even delivery in production environment, add the following line in your progaurd rule.
+If you are facing any issues regarding event delivery in a production environment, add the following line in your proguard rule:
 
 ```java
 -keep class com.rudderstack.android.** { *; }
@@ -650,7 +804,7 @@ Yes, you can use the library with `maven`.
 
 ### How do I check whether a specific event is getting fired or not?
 
-You can try searching in the Logcat using the following command once you set the `logLevel` to `VERBOSE`
+Using the following command in the Logcat tool once you set the `logLevel` to `VERBOSE`.
 
 ```bash
 adb logcat -s RudderSDK:V \
@@ -659,7 +813,7 @@ adb logcat -s RudderSDK:V \
 
 ### How do I get the user `traits` after making the `identify` call?
 
-You can get the user traits after making an `identify` call as shown:
+You can get the user traits after making an `identify` call as shown in the following snippet:
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -675,9 +829,37 @@ Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
 {% endtab %}
 {% endtabs %}
 
+### Can I disable event tracking until the user gives their consent?
+
+Yes, you can.
+
+RudderStack gives you the ability to disable tracking any user activity until the user gives their consent, by leveraging the `optOut` API. This is required in cases where your app is audience-dependent \(e.g. minors\) or where you're using the app to track the user events \(e.g. EU users\) to meet the data protection and privacy regulations.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. So, to disable user tracking, you can use the `optOut` API as shown:
+
+```kotlin
+rudderClient.optOut(true)
+```
+
+Once the user gives their consent, you can enable user tracking again, as shown:
+
+```kotlin
+rudderClient.optOut(false)
+```
+
+{% hint style="info" %}
+For more information on the `optOut` API, refer to the [**Enabling/Disabling User Tracking via optOut API**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk#enabling-disabling-user-tracking-via-the-optout-api-gdpr-support) section above.
+{% endhint %}
+
+{% hint style="success" %}
+You only need to call the `optOut` API with the required parameter once, as the information persists within the device even if you reboot it.
+{% endhint %}
+
 ### How does the SDK handle different client/server errors?
 
-In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately. For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries to flush the events to RudderStack in an incremental manner \(every 1 second, 2 seconds, 3 seconds, and so on\).
+In case of client-side errors, e.g. if the source write key passed to the SDK is incorrect, RudderStack gives you a **400 Bad Request** response and aborts the operation immediately.
+
+For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries to flush the events to RudderStack in an incremental manner \(every 1 second, 2 seconds, 3 seconds, and so on\).
 
 ## Contact Us
 

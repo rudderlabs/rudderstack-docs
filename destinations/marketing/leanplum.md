@@ -4,12 +4,12 @@ description: Step-by-step guide to send event data from RudderStack to Leanplum.
 
 # Leanplum
 
-[Leanplum](https://www.leanplum.com/) is a popular mobile marketing and customer engagement platform. It allows you to boost customer engagement and thereby drive retention, better conversion and increased business revenue.
+[Leanplum](https://www.leanplum.com) is a popular mobile marketing and customer engagement platform. It allows you to boost customer engagement and thereby drive retention, better conversion and increased business revenue.
 
 RudderStack allows you to configure Leanplum as a destination and send your event data to it directly.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/leanplum)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/leanplum)**.**
 {% endhint %}
 
 ## Getting Started
@@ -18,10 +18,10 @@ To enable sending data to Leanplum, you will first need to add it as a destinati
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Leanplum, by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **-** | **Supported** | - |
-| **Cloud mode** | **-** | **-** | **-** |
+| **Connection Mode** | **Web** | **Mobile**    | **Server** |
+| ------------------- | ------- | ------------- | ---------- |
+| **Device mode**     | **-**   | **Supported** | -          |
+| **Cloud mode**      | **-**   | **-**         | **-**      |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -29,7 +29,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Leanplum, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Leanplum**.
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source. From the list of destinations, select **Leanplum**.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -37,7 +37,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Leanplum Connection Settings in RudderStack](../../.gitbook/assets/image%20%2832%29%20%281%29%20%281%29%20%281%29%20%281%29.png)
+![Leanplum Connection Settings in RudderStack](<../../.gitbook/assets/image (32) (1) (1) (1) (1).png>)
 
 * Enter the Leanplum **Application ID** as well as **Client Key**.  
 * Click on **Next** to complete the configuration. 
@@ -60,7 +60,7 @@ Please follow the steps below to add Leanplum to your Android Project:
 
 ```groovy
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 
@@ -130,7 +130,7 @@ RudderStack sets the `userId` of the user to the Leanplum SDK via the `setUserId
 
 The following is an example of an `identify`call:
 
-```text
+```
 [[RudderClient sharedInstance] identify:@"developer_user_id"
                                  traits:@{@"email": @"bar@foo.com"}];
 ```
@@ -141,7 +141,7 @@ Leanplum accepts any free-flowing property and event name. So, we forward the ev
 
 The following is an example of a `track` call in RudderStack:
 
-```text
+```
 [[RudderClient sharedInstance] track:@"Accepted Terms of Service" 
                           properties:@{
                                   @"foo": @"bar",
@@ -157,7 +157,7 @@ We also send the automatically tracked `screen` events to LeanPlum.
 
 The following is an example of a `screen` call in RudderStack:
 
-```text
+```
 [[RudderClient sharedInstance] screen:@"Main"];
 ```
 
@@ -167,7 +167,7 @@ RudderStack calls `clearUserContent` method of the Leanplum SDK to clear the per
 
 The following code snippet shows a sample `reset` call:
 
-```text
+```
 [[RudderClient sharedInstance] reset];
 ```
 
@@ -184,4 +184,3 @@ You can find your **Application ID** and **Client Key** by logging on to your Le
 ## Contact Us
 
 If you come across any issues while configuring Leanplum with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

@@ -21,11 +21,11 @@ To add Facebook Ads as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/1%20%284%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%283%29%20%282%29%20%283%29.png)
+![](<../.gitbook/assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png>)
 
-* Next, select **Facebook Ads** from the list of **Cloud Sources**, and click on **Next**.
+* Next, select **Facebook Ads **from the list of **Cloud Sources**, and click on **Next**.
 
-![](../.gitbook/assets/2%20%281%29.png)
+![](<../.gitbook/assets/2 (1) (1).png>)
 
 * Assign a name to your source, and click on **Next**.
 
@@ -33,9 +33,9 @@ To add Facebook Ads as a source in RudderStack, follow these steps:
 
 ### Setting Up the Connection
 
-* Click on **Connect with Facebook Ads** and give RudderStack the required access permissions. Then, click on **Next**.
+* Click on **Connect with Facebook Ads **and give RudderStack the required access permissions. Then, click on **Next**.
 
-![](../.gitbook/assets/screen-shot-2021-02-08-at-1.23.21-pm%20%281%29.png)
+![](<../.gitbook/assets/screen-shot-2021-02-08-at-1.23.21-pm (1).png>)
 
 {% hint style="info" %}
 If you have already connected RudderStack to your Facebook Ads account, your credentials should appear automatically under **Use existing credentials**.
@@ -57,7 +57,7 @@ RudderStack will not sync the data which is older than the selected timeframes.
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Facebook Ads account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
-![](../.gitbook/assets/6%20%287%29.png)
+![](<../.gitbook/assets/6 (7) (1).png>)
 
 ### Specifying the Data to Import
 
@@ -77,13 +77,13 @@ Use the **Connect Destinations** option if you have already configured a data wa
 
 ## What Facebook Ads Data does RudderStack Import?
 
-| **Property** | **Table Name** | **Description** |
-| :--- | :--- | :--- |
-| **Account Insights** | **`account_insights`** | This table contains insights, aggregated for the whole account. Insights include Total Impressions, CPP, CPC, Reach, and CPM. |
-| **Campaigns** | **`campaigns`** | This table holds information information about your campaigns. ****The columns of this table include: `name`, `objective`, `account_id`,  and`status`. |
-| **AdSets** | **`adsets`** | This tables has information about your Ad Sets. The columns of this table are: `bid_amount`,`updated_time`,`campaign_id`,`daily_budget`,`lifetime_budget`, and `pacing_type`. |
-| **Ads** | **`ads`** | This table contains information about your Facebook Ads. |
-| **Ad Creatives** | **`ad_creatives`** | This table contains the creative content for your Facebook Ads account that you can use in your ads. |
+| **Property**         | **Table Name**         | **Description**                                                                                                                                                               |
+| -------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Account Insights** | **`account_insights`** | This table contains insights, aggregated for the whole account. Insights include Total Impressions, CPP, CPC, Reach, and CPM.                                                 |
+| **Campaigns**        | **`campaigns`**        | This table holds information information about your campaigns.** **The columns of this table include: `name`, `objective`, `account_id`,  and`status`.                        |
+| **AdSets**           | **`adsets`**           | This tables has information about your Ad Sets. The columns of this table are: `bid_amount`,`updated_time`,`campaign_id`,`daily_budget`,`lifetime_budget`, and `pacing_type`. |
+| **Ads**              | **`ads`**              | This table contains information about your Facebook Ads.                                                                                                                      |
+| **Ad Creatives**     | **`ad_creatives`**     | This table contains the creative content for your Facebook Ads account that you can use in your ads.                                                                          |
 
 ## FAQs
 
@@ -96,4 +96,3 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 ## Contact Us
 
 If you come across any issues while configuring Facebook Ads as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

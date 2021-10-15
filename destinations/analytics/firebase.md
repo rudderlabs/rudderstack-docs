@@ -61,7 +61,7 @@ apply plugin: 'com.google.gms.google-services'
 
 ```text
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 

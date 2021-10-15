@@ -4,7 +4,7 @@ description: Step-by-step guide to set up ClickHouse as a destination in RudderS
 
 # ClickHouse
 
-[ClickHouse](https://clickhouse.tech/) is an open-source, column-oriented database management system mainly used for online analytical processing \(OLAP\). It is fast, and allows for real-time analysis of your data. ClickHouse was originally developed by Yandex, the Russian IT company,  for the Yandex Metrica web analytics service. ClickHouse is highly scalable, and built for high performance.
+[ClickHouse](https://clickhouse.tech) is an open-source, column-oriented database management system mainly used for online analytical processing (OLAP). It is fast, and allows for real-time analysis of your data. ClickHouse was originally developed by Yandex, the Russian IT company,  for the Yandex Metrica web analytics service. ClickHouse is highly scalable, and built for high performance.
 
 You can now integrate RudderStack with ClickHouse seamlessly and store your customer event data into it, from the source of your choice.
 
@@ -13,14 +13,14 @@ Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse
 {% endhint %}
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clickhouse)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clickhouse)**.**
 {% endhint %}
 
 ## Setting ClickHouse Permissions 
 
-You to need to set `date_time_input_format` to `best_effort` for ClickHouse to parse all the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time formats. For example, `'2018-06-08T01:02:03.000Z'`.
+You to need to set `date_time_input_format` to `best_effort` for ClickHouse to parse all the [ISO 8601](https://en.wikipedia.org/wiki/ISO\_8601) date and time formats. For example, `'2018-06-08T01:02:03.000Z'`.
 
-```text
+```
 set date_time_input_format = 'best_effort';
 ```
 
@@ -33,7 +33,7 @@ Make sure your ClickHouse User has read access to `system.columns` table for fet
 {% endhint %}
 
 {% hint style="warning" %}
-If you are creating tables in the same database where RudderStack loads, we highly recommend not using `UInt8`as a datatype except for boolean values \(0,1\).
+If you are creating tables in the same database where RudderStack loads, we highly recommend not using `UInt8`as a datatype except for boolean values (0,1).
 {% endhint %}
 
 ## Setting Up the Network Access
@@ -62,9 +62,9 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 ![](../.gitbook/assets/screenshot-2020-12-15-at-3.11.49-pm.png)
 
 * Add the required credentials in the **Connection Settings** as mentioned below:
-  * **Host** - ****The host name of your ClickHouse Database.
+  * **Host **-** **The host name of your ClickHouse Database.
   * **Port** - The TCP port of your ClickHouse Host. ex: 9000. if you want the connection to be secure use TCP secure port 9440. [reference](https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/#server_configuration_parameters-tcp_port)
-  * **Database -** The database name in your ClickHouse instance where the data gets loaded.
+  * **Database - **The database name in your ClickHouse instance where the data gets loaded.
   * **Cluster** - The name of your ClickHouse cluster _**Please note: Leave this blank if you are running a single host ClickHouse Cluster**_
   * **User** - The username which has the required read/write access to the above database.
   * **Password** - The password for the above user.
@@ -91,5 +91,4 @@ RudderStack converts the event keys into the lower case before exporting the dat
 
 If you come across any issues while configuring ClickHouse with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
 
-## 
-
+##

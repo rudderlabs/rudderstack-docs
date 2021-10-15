@@ -12,24 +12,24 @@ This document guides you in setting up Xero as a source in RudderStack. Once con
 **All the Cloud Extract sources support sending data only to a data warehouse destination.**
 {% endhint %}
 
-## Getting Started <a id="getting-started"></a>
+## Getting Started <a href="getting-started" id="getting-started"></a>
 
 To add Xero as a source in RudderStack, follow these steps:
 
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](https://gblobscdn.gitbook.com/assets%2F-Lq5Ea6fHVg3dSxMCgyQ%2F-MOehucaPVJeehiI6kGM%2F-MOewizUa40U7fa-Ny3L%2F1.png?alt=media&token=33f4d672-e6f3-4fc8-9b49-09c772d79e93)
+![](https://gblobscdn.gitbook.com/assets%2F-Lq5Ea6fHVg3dSxMCgyQ%2F-MOehucaPVJeehiI6kGM%2F-MOewizUa40U7fa-Ny3L%2F1.png?alt=media\&token=33f4d672-e6f3-4fc8-9b49-09c772d79e93)
 
 * Next, navigate to **Cloud Extract** within the **Sources** directory and select **Xero**.
 
-![](../.gitbook/assets/2%20%2814%29.png)
+![](<../.gitbook/assets/2 (14).png>)
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/3%20%2812%29.png)
+![](<../.gitbook/assets/3 (12).png>)
 
-### Setting Up the Connection <a id="setting-up-the-connection"></a>
+### Setting Up the Connection <a href="setting-up-the-connection" id="setting-up-the-connection"></a>
 
 * Under **Create new account**, click on **Connect with Xero** and authenticate RudderStack with your Xero account.
 
@@ -39,13 +39,13 @@ To add Xero as a source in RudderStack, follow these steps:
 If you have already connected RudderStack to your Xero account, your credentials should appear automatically under **Use existing credentials**.
 {% endhint %}
 
-### Configuring the Source <a id="configuring-the-source"></a>
+### Configuring the Source <a href="configuring-the-source" id="configuring-the-source"></a>
 
-* In the next screen, choose the Xero **Tenant ID** . Also, select the **Earliest Report Year** and **Report Starting Month** from which you want RudderStack to ingest the data.
+* In the next screen, choose the Xero **Tenant ID **. Also, select the **Earliest Report Year** and **Report Starting Month** from which you want RudderStack to ingest the data.
 
 ![](../.gitbook/assets/screen-shot-2021-02-23-at-6.27.16-pm.png)
 
-### Setting the Data Update Schedule <a id="setting-the-data-update-schedule"></a>
+### Setting the Data Update Schedule <a href="setting-the-data-update-schedule" id="setting-the-data-update-schedule"></a>
 
 * Next, you will be required to set the **Run Frequency** to schedule the data import from your Xero account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option, as shown:
 
@@ -75,8 +75,7 @@ Yes, it is.
 
 We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
-## Contact Us <a id="contact-us"></a>
+## Contact Us <a href="contact-us" id="contact-us"></a>
 
-If you come across any issues while configuring Xero as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you![  
+If you come across any issues while configuring Xero as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you\![\
 ](https://docs.rudderstack.com/cloud-extract-sources/pipedrive)
-

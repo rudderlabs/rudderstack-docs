@@ -23,7 +23,7 @@ To set up the RudderStack React Native SDK, there are a few prerequisites as men
 
 * You will also need your `Data-Plane URL`. The following screenshot shows the data plane URL for the managed hosting mode:
 
-![Data Plane URL](../../.gitbook/assets/android-2%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![Data Plane URL](<../../.gitbook/assets/android-2 (1) (1) (2) (2) (2) (2) (2) (2).png>)
 
 * It would help if you also had the [React Native Development Environment](https://reactnative.dev/docs/environment-setup) setup on your system.
 
@@ -81,10 +81,10 @@ It is highly recommended to use the `await` keyword with the setup call.
 
 The `setup` method has the following signature:
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `writeKey` | `string` | Yes | Your React Native `writeKey` |
-| `configuration` | `JSON Object` | No | Contains the RudderStack Client configuration |
+| Name            | Data Type     | Required | Description                                   |
+| --------------- | ------------- | -------- | --------------------------------------------- |
+| `writeKey`      | `string`      | Yes      | Your React Native `writeKey`                  |
+| `configuration` | `JSON Object` | No       | Contains the RudderStack Client configuration |
 
 Check the [Configuring your RudderStack Client](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk#configuring-your-rudderstack-client) section below for a full list of configurable parameters.
 
@@ -105,11 +105,11 @@ rudderClient.track("test_track_event", {
 
 The `track` method has the following signature:
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `name` | `string` | Yes | Name of the event you want to track |
-| `property` | `JSON Object` | No | Extra data properties you want to send along with the event |
-| `options` | `JSON Object` | No | Extra event options |
+| Name       | Data Type     | Required | Description                                                 |
+| ---------- | ------------- | -------- | ----------------------------------------------------------- |
+| `name`     | `string`      | Yes      | Name of the event you want to track                         |
+| `property` | `JSON Object` | No       | Extra data properties you want to send along with the event |
+| `options`  | `JSON Object` | No       | Extra event options                                         |
 
 {% hint style="info" %}
 We automatically track the following optional events:
@@ -137,11 +137,11 @@ rudderClient.identify("test_userId", {
 
 The `identify` method has the following signatures:
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `userId` | `string` | Yes | Developer identity for the user |
-| `traits` | `JSON Object` | No | Traits information for user |
-| `option` | `JSON Object` | No | Extra options for the `identify` event |
+| Name     | Data Type     | Required | Description                            |
+| -------- | ------------- | -------- | -------------------------------------- |
+| `userId` | `string`      | Yes      | Developer identity for the user        |
+| `traits` | `JSON Object` | No       | Traits information for user            |
+| `option` | `JSON Object` | No       | Extra options for the `identify` event |
 
 ## Screen
 
@@ -157,14 +157,14 @@ rudderClient.screen("Main Activity", {
 
 Alternatively, you can use the following method signature:
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `screenName` | `string` | Yes | Name of the screen viewed. |
-| `property` | `JSON Object` | No | Extra property object that you want to pass along with the `screen` call. |
-| `option` | `JSON Object` | No | Extra options to be passed along with `screen` event. |
+| Name         | Data Type     | Required | Description                                                               |
+| ------------ | ------------- | -------- | ------------------------------------------------------------------------- |
+| `screenName` | `string`      | Yes      | Name of the screen viewed.                                                |
+| `property`   | `JSON Object` | No       | Extra property object that you want to pass along with the `screen` call. |
+| `option`     | `JSON Object` | No       | Extra options to be passed along with `screen` event.                     |
 
 {% hint style="info" %}
-You can also enable automatic recording of screen views by passing `recordScreenViews` as `true` while initializing the `rudderClient`.  
+You can also enable automatic recording of screen views by passing `recordScreenViews` as `true` while initializing the `rudderClient`.\
 The default value for `recordScreenViews` is `false`.
 {% endhint %}
 
@@ -178,6 +178,28 @@ await rudderClient.reset()
 
 {% hint style="success" %}
 It is highly recommended to use the `await` keyword with the reset call.
+{% endhint %}
+
+## Enabling/Disabling User Tracking via the optOut API (GDPR Support)
+
+RudderStack gives the users (e.g., an EU user) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking:
+
+```typescript
+await rudderClient.optOut(true)
+```
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+```typescript
+await rudderClient.optOut(false)
+```
+
+{% hint style="info" %}
+The `optOut` API is available in the React Native SDK starting from version `1.0.14`.
 {% endhint %}
 
 ## Registering Callbacks:
@@ -194,10 +216,10 @@ await rc.registerCallback('App Center', () => {
 
 The `registerCallback` method has the following signatures:
 
-| Name | Data Type | Required | Description |
-| :--- | :--- | :--- | :--- |
-| `destinationName` | `string` | Yes | Display name of the device-mode destination. |
-| `callback` | `Function` | Yes | Callback function to be triggered once device-mode integration is successful. |
+| Name              | Data Type  | Required | Description                                                                   |
+| ----------------- | ---------- | -------- | ----------------------------------------------------------------------------- |
+| `destinationName` | `string`   | Yes      | Display name of the device-mode destination.                                  |
+| `callback`        | `Function` | Yes      | Callback function to be triggered once device-mode integration is successful. |
 
 ## Enabling / Disabling Events for Specific Destinations
 
@@ -235,7 +257,7 @@ rudderClient.setup(WRITE_KEY, config, options);
 
 ### 2. Passing the destinations while making any event call:
 
-This approach is helpful when you want to enable or disable sending only a particular event to the specified destinations, or if you want to override the specified destinations passed with the SDK initialization \(as described in the method above\) for a particular event.
+This approach is helpful when you want to enable or disable sending only a particular event to the specified destinations, or if you want to override the specified destinations passed with the SDK initialization (as described in the method above) for a particular event.
 
 ```typescript
 rudderClient.track("test_track_event", {
@@ -269,108 +291,17 @@ rudderClient.identify("test_userId", {
 
 You can configure your client based on the following parameters by passing them in the `configuration` object of your `setup` call.
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:left">Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><code>logLevel</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">
-        <p>Controls how much of the log you want to see from the SDK.</p>
-        <p>Refer to the Debugging section to get a list of all supported values.</p>
-      </td>
-      <td style="text-align:left"><code>RUDDER_LOG_LEVEL.ERROR</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dataPlaneUrl</code>
-      </td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">URL of your <code>data-plane</code>. Please refer above to see how to fetch
-        the data plane URL.</td>
-      <td style="text-align:left"><code>https://hosted.rudderlabs.com</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>flushQueueSize</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Number of events in a batch request to the server.</td>
-      <td style="text-align:left"><code>30</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>dbThresholdCount</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">The number of events to be saved in the <code>SQLite</code> database. Once
-        the limit is reached, older events are deleted from the DB.</td>
-      <td style="text-align:left"><code>10000</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>sleepTimeout</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">Minimum waiting time to flush the events to the server.</td>
-      <td style="text-align:left"><code>10 seconds</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>configRefreshInterval</code>
-      </td>
-      <td style="text-align:left"><code>int</code>
-      </td>
-      <td style="text-align:left">It will fetch the config from <code>dashboard</code> after this many hours.</td>
-      <td
-      style="text-align:left"><code>2</code>
-        </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>trackLifecycleEvents</code>
-      </td>
-      <td style="text-align:left"><code>boolean</code>
-      </td>
-      <td style="text-align:left">Whether SDK will capture application life cycle events automatically.</td>
-      <td
-      style="text-align:left"><code>true</code>
-        </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>recordScreenViews</code>
-      </td>
-      <td style="text-align:left"><code>boolean</code>
-      </td>
-      <td style="text-align:left">Whether SDK will capture screen view events automatically.</td>
-      <td style="text-align:left"><code>false</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>controlPlaneUrl</code>
-      </td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">If you are using our open-source config generator, use this option to
-        point to your hosted <code>sourceConfig</code>. SDK will add <code>/sourceConfig</code> along
-        with this URL</td>
-      <td style="text-align:left"><code>https://api.rudderlabs.com</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Parameter               | Type      | Description                                                                                                                                                                                                          | Default Value                   |
+| ----------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `logLevel`              | `int`     | <p>Controls how much of the log you want to see from the SDK.</p><p>Refer to the Debugging section to get a list of all supported values.</p>                                                                        | `RUDDER_LOG_LEVEL.ERROR`        |
+| `dataPlaneUrl`          | `string`  | URL of your `data-plane`. Please refer above to see how to fetch the data plane URL.                                                                                                                                 | `https://hosted.rudderlabs.com` |
+| `flushQueueSize`        | `int`     | Number of events in a batch request to the server.                                                                                                                                                                   | `30`                            |
+| `dbThresholdCount`      | `int`     | The number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                                                                                          | `10000`                         |
+| `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server.                                                                                                                                                              | `10 seconds`                    |
+| `configRefreshInterval` | `int`     | It will fetch the config from `dashboard` after this many hours.                                                                                                                                                     | `2`                             |
+| `trackLifecycleEvents`  | `boolean` | Whether SDK will capture application life cycle events automatically.                                                                                                                                                | `true`                          |
+| `recordScreenViews`     | `boolean` | Whether SDK will capture screen view events automatically.                                                                                                                                                           | `false`                         |
+| `controlPlaneUrl`       | `string`  | If you are using our open-source [**Control Plane Lite**](../../get-started/control-plane-lite.md) utility, use this option to point to your hosted `sourceConfig`. SDK will add `/sourceConfig` along with this URL | `https://api.rudderlabs.com`    |
 
 ## Debugging
 
@@ -404,8 +335,8 @@ You can set the log level to one of the following values:
 
 You can use the `setAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `setAdvertisingId` method accepts two `string` arguments :
 
-* `androidId` : Your Android `advertisingId` \(AAID\)
-* `iOSId` : Your iOS `advertisingId` \(IDFA\)
+* `androidId` : Your Android `advertisingId` (AAID)
+* `iOSId` : Your iOS `advertisingId` (IDFA)
 
 Example Usage:
 
@@ -455,4 +386,3 @@ console.log("Traits are : " + JSON.stringify(rudderContext.traits));
 ## Contact Us
 
 In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

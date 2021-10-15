@@ -13,7 +13,7 @@ Please check our [Warehouse Schemas](https://docs.rudderstack.com/data-warehouse
 {% endhint %}
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/rs)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/rs)**.**
 {% endhint %}
 
 ## Setting Up a Redshift Cluster
@@ -22,7 +22,7 @@ Before adding Redshift as a destination in RudderStack, it is recommended that y
 
 ### Choosing the type of Redshift instance
 
-Amazon Redshift provides two types of clusters: **Dense Compute** and **Dense Storage** clusters
+Amazon Redshift provides two types of clusters: **Dense Compute** and **Dense Storage **clusters
 
 * **Dense Compute** clusters maximize CPU usage, resulting in an increase in query performance. However, there is a trade-off with respect to the storage.
 * **Dense Storage** clusters maximize storage for customers with hundreds of millions of rows of data. However, there is a trade-off in the CPU usage, resulting in a lower query performance.
@@ -37,23 +37,23 @@ Please follow the steps below in order to create a new Redshift cluster:
 
 * Open the Redshift Console as shown:
 
-![Redshift Console](../.gitbook/assets/1%20%283%29.png)
+![Redshift Console](<../.gitbook/assets/1 (3).png>)
 
-* Click on the **Create Cluster** option as shown:
+* Click on the **Create Cluster **option as shown:
 
-![](../.gitbook/assets/2%20%285%29.png)
+![](<../.gitbook/assets/2 (5).png>)
 
-* Enter the cluster details**.** First, fill in the **Cluster identifier** and choose the instance type as shown:
+* Enter the cluster details**. **First, fill in the **Cluster identifier** and choose the instance type as shown:
 
-![Redshift cluster configuration settings](../.gitbook/assets/3%20%284%29%20%281%29%20%281%29.png)
+![Redshift cluster configuration settings](<../.gitbook/assets/3 (4) (1).png>)
 
 * Enter the number of nodes for your cluster. This will primarily depend on the amount of data you expect to work with.
 
-![](../.gitbook/assets/4%20%281%29%20%281%29.png)
+![](<../.gitbook/assets/4 (1) (1).png>)
 
 * Enter the database name, and create the admin user with the name of your choice.
 
-![](../.gitbook/assets/5%20%287%29.png)
+![](<../.gitbook/assets/5 (7).png>)
 
 {% hint style="warning" %}
 For security purposes, we recommend that you choose a strong password.
@@ -77,13 +77,13 @@ The following sections describe creating a database user, setting up the network
 The  username and password we provided earlier while creating the Redshift cluster should be strictly used for administration purposes. We will create a different user to enable RudderStack access to Redshift. This also helps us keep the queries separate as well as maintain an audit log.
 {% endhint %}
 
-* Click on the **Editor** option visible in the left pane. You can run the queries to create a new user to access the Redshift cluster in the **Query editor**, as shown in the image below:
+* Click on the **Editor **option visible in the left pane. You can run the queries to create a new user to access the Redshift cluster in the **Query editor**, as shown in the image below:
 
-![](../.gitbook/assets/6%20%281%29.png)
+![](<../.gitbook/assets/6 (1).png>)
 
 * The queries to create a new user are:
 
-```text
+```
 -- create a user named "rudder" RudderStack can use to access Redshift
 CREATE USER rudder PASSWORD '<password goes here>'; 
 
@@ -111,15 +111,15 @@ This procedure works for **EC2-VPC**. However, **EC2-Classic** works similarly.
 
 * Go to EC2 from the services on AWS console,  as shown:
 
-![](../.gitbook/assets/7%20%283%29.png)
+![](<../.gitbook/assets/7 (3).png>)
 
-* Go to **Security Groups** under **Network & Security** and click on **Create Security Group**.
+* Go to **Security Groups** under** Network & Security** and click on **Create Security Group**.
 
-![](../.gitbook/assets/8%20%281%29%20%281%29.png)
+![](<../.gitbook/assets/8 (1).png>)
 
 * Enter the details of the security group. The **Security group name** will be used to select the group later.
 
-![](../.gitbook/assets/9%20%281%29.png)
+![](<../.gitbook/assets/9 (1).png>)
 
 * Add an **Inbound rule** with IPs listed above, and enter the Redshift port as `5439` in the **Port range** field, as shown:
 
@@ -149,7 +149,7 @@ To do so, please follow these steps:
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) guide to know how to add a source in RudderStack.
 {% endhint %}
 
-* Once you have set up the source, select **Redshift** from the list of destinations. Give your destination a name, and then click on **Next**. You will then see the following **Connection Credentials** screen:
+* Once you have set up the source, select **Redshift **from the list of destinations. Give your destination a name, and then click on **Next**. You will then see the following **Connection Credentials** screen:
 
 ![Connection Settings for adding Redshift as a destination in RudderStack](../.gitbook/assets/14.png)
 
@@ -211,9 +211,9 @@ You need to edit your bucket policy to allow RudderStack to write to your bucket
 }
 ```
 
- 2. Create an IAM user with programmatic access keys and attach the above created IAM policy. Copy the ARN of this user.
+ 2\. Create an IAM user with programmatic access keys and attach the above created IAM policy. Copy the ARN of this user.
 
-3. Edit your bucket policy to allow the data plane to write to your bucket with the following JSON. Make sure you edit the account id and user ARN with your AWS Account ID and the above created user ARN:
+3\. Edit your bucket policy to allow the data plane to write to your bucket with the following JSON. Make sure you edit the account id and user ARN with your AWS Account ID and the above created user ARN:
 
 ```javascript
 {
@@ -239,7 +239,7 @@ You need to edit your bucket policy to allow RudderStack to write to your bucket
 }
 ```
 
-4. Add the programmatic access credentials to the environment of your data plane.
+4\. Add the programmatic access credentials to the environment of your data plane.
 
 ```bash
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<above created user access key>
@@ -263,4 +263,3 @@ For instance, `'25dollarpurchase`' will be changed to `'_25dollarpurchase`'.
 ## Contact Us
 
 If you come across any issues while configuring Redshift with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
-

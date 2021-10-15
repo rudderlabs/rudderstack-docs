@@ -4,7 +4,7 @@ description: Step-by-step guide to send event data from RudderStack to Google An
 
 # Google Analytics 4
 
-[Google Analytics 4](https://analytics.google.com/) \(formerly known as "App + Web"\) is a new Google Analytics property, with different instrumentation and reports than the Universal Analytics properties. Google Analytics 4 can be used for websites, apps, or both together - whereas Universal Analytics properties only support websites.
+[Google Analytics 4](https://analytics.google.com) (formerly known as "App + Web") is a new Google Analytics property, with different instrumentation and reports than the Universal Analytics properties. Google Analytics 4 can be used for websites, apps, or both together - whereas Universal Analytics properties only support websites.
 
 RudderStack supports the `gtag` way of tagging in websites.
 
@@ -14,10 +14,10 @@ To enable sending data to **Google Analytics 4**, you will first need to add it 
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Google Analytics 4, by referring to the table below:
 
-| **Connection Mode** | Web | Mobile | Server |
-| :--- | :--- | :--- | :--- |
-| **Device Mode** | **Supported** | **-** | **-** |
-| **Cloud Mode** | **-** | **-** | **-** |
+| **Connection Mode** | Web           | Mobile | Server |
+| ------------------- | ------------- | ------ | ------ |
+| **Device Mode**     | **Supported** | **-**  | **-**  |
+| **Cloud Mode**      | **-**         | **-**  | **-**  |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -40,7 +40,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 ## Identify
 
-User-ID is an advanced feature that lets GA4 present a cross-device, cross-platform view of your customers' behavior. Google Analytics 4 uses `userId` and `deviceId` \(GA's `cid` value from Universal Analytics terminology\) to identify users.
+User-ID is an advanced feature that lets GA4 present a cross-device, cross-platform view of your customers' behavior. Google Analytics 4 uses `userId` and `deviceId` (GA's `cid` value from Universal Analytics terminology) to identify users.
 
 Google Analytics 4 also allows you to set a user ID to the identified visitors if **Send User ID to GA** is enabled in the destination settings page in the RudderStack app. RudderStack will send the identified `userId` according to [this guide](https://developers.google.com/analytics/devguides/collection/ga4/cookies-user-id#set_user_id).
 
@@ -81,14 +81,14 @@ rudderanalytics.page({
 
 ### Extend Page View Property
 
-Google Analytics 4 has a limit on the number of unique properties per event name. The default `page_view` event supports the above properties as mentioned [in this guide](https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484). If the **Extend Page View Property** config is enabled, then RudderStack sends the following properties along with any other custom property passed to `page` call of the RudderStack SDK:
+Google Analytics 4 has a limit on the number of unique properties per event name. The default `page_view` event supports the above properties as mentioned [in this guide](https://support.google.com/analytics/answer/9234069?hl=en\&ref_topic=6317484). If the **Extend Page View Property** config is enabled, then RudderStack sends the following properties along with any other custom property passed to `page` call of the RudderStack SDK:
 
 * `url`
 * `search`
 
 ### Block Page View Event
 
-When this config is enabled we disable sending Google Analytics 4 `page_view` events on load, instead you can explicitly send a `page_view` event by calling Rudder SDK **page\(\)** API.
+When this config is enabled we disable sending Google Analytics 4 `page_view` events on load, instead you can explicitly send a `page_view` event by calling Rudder SDK **page()** API.
 
 ## Track
 
@@ -116,20 +116,20 @@ RudderStack supports eCommerce tracking for Google Analytics 4. Use the [RudderS
 
 Below are some examples of the track event names that are passed to Google Analytics 4-specific eCommerce event name:
 
-| RudderStack event name | Google Analytics 4 event name |
-| :--- | :--- |
-| Products Searched | `search` |
-| Product List Viewed | `view_item_list` |
-| Promotion Viewed | `view_promotion` |
-| Product Clicked | `select_item` |
-| Product Added To Wishlist | `add_to_wishlist` |
-| Product Added | `add_to_cart` |
-| Cart Shared | `share` |
-| Checkout Started | `begin_checkout` |
-| Order Completed | `purchase` |
+| RudderStack event name    | Google Analytics 4 event name |
+| ------------------------- | ----------------------------- |
+| Products Searched         | `search`                      |
+| Product List Viewed       | `view_item_list`              |
+| Promotion Viewed          | `view_promotion`              |
+| Product Clicked           | `select_item`                 |
+| Product Added To Wishlist | `add_to_wishlist`             |
+| Product Added             | `add_to_cart`                 |
+| Cart Shared               | `share`                       |
+| Checkout Started          | `begin_checkout`              |
+| Order Completed           | `purchase`                    |
 
 {% hint style="info" %}
-For each product in the order, there must be an `id` and `name` associated. More info on Google Analytics 4 e-commerce event and corresponding properties can be found [here](https://developers.google.com/gtagjs/reference/ga4-events#view_item_list).
+For each product in the order, there must be an `id` and `name `associated. More info on Google Analytics 4 e-commerce event and corresponding properties can be found [here](https://developers.google.com/gtagjs/reference/ga4-events#view_item_list).
 {% endhint %}
 
 ## FAQs
@@ -145,4 +145,3 @@ For each product in the order, there must be an `id` and `name` associated. More
 ## Contact Us
 
 If you come across any issues while configuring Google Analytics 4 with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
-

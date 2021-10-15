@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest your event data from App Center into R
 
 # App Center
 
-[App Center](https://appcenter.ms/) is Microsoft's cross-platform build automation and management platform. It allows you to manage your app's lifecycle seamlessly. With App Center, you can automate your builds, test your apps in the cloud effectively and monitor their real-time usage with the help of crash data and analytics.
+[App Center](https://appcenter.ms) is Microsoft's cross-platform build automation and management platform. It allows you to manage your app's lifecycle seamlessly. With App Center, you can automate your builds, test your apps in the cloud effectively and monitor their real-time usage with the help of crash data and analytics.
 
 This document guides you in setting up App Center as a source in RudderStack. 
 
@@ -14,7 +14,7 @@ You can send your App Center events to RudderStack by simply adding a webhook po
 
 In order to add App Center as a source in RudderStack, please follow these steps:
 
-* From your [RudderStack dashboard](https://app.rudderstack.com/), click on **Add Source**. From the list of sources, select **App Center**, as shown:
+* From your [RudderStack dashboard](https://app.rudderstack.com), click on **Add Source**. From the list of sources, select **App Center**, as shown:
 
 ![Choose App Center as a source](../.gitbook/assets/AppcenterSource.png)
 
@@ -26,7 +26,9 @@ In order to add App Center as a source in RudderStack, please follow these steps
 
 ![](../.gitbook/assets/AppcenterWebhookConfig.png)
 
-* In the **URL** text box, add a URL pointing to RudderStack in the following format:  `<DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_APP CENTER_SOURCE_WRITE_KEY>`
+* In the **URL** text box, add a URL pointing to RudderStack in the following format:\
+  \
+  `<DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_APP CENTER_SOURCE_WRITE_KEY>`
 
 An example URL should like the following:
 
@@ -54,26 +56,25 @@ The events sent by App Center are converted into a Rudderstack `track` call with
 
 Refer to the table below to understand how various events from App Center are converted into Rudderstack `track` calls:
 
-| App Center Event | RudderStack Track Event Name |
-| :--- | :--- |
-| `On Success of a Build` | `Build Succeeded` |
-| `On Failure of a Build` | `Build Failed` |
-| `On Release of a new version` | `Released Version <X.YY>` |
-| `On an App Crash` | `App Crashed` |
+| App Center Event              | RudderStack Track Event Name |
+| ----------------------------- | ---------------------------- |
+| `On Success of a Build`       | `Build Succeeded`            |
+| `On Failure of a Build`       | `Build Failed`               |
+| `On Release of a new version` | `Released Version <X.YY>`    |
+| `On an App Crash`             | `App Crashed`                |
 
 Also, RudderStack populates the following properties from App Center event payload to the RudderStack event:
 
-| App Center Property | RudderStack Property |
-| :--- | :--- |
-| `app_name`, `app_display_name` | `context.app.name` |
-| `build_id` | `context.app.build` |
-| `os`, `platform` | `context.device.type`, `context.os.name` |
-| `start_time` | `originalTimeStamp` |
-| `sent_at` | `sentAt` |
-| `short_version`, `app_version` | `context.app.version` |
-| `bundle_identifier` | `context.app.namespace` |
+| App Center Property            | RudderStack Property                     |
+| ------------------------------ | ---------------------------------------- |
+| `app_name`, `app_display_name` | `context.app.name`                       |
+| `build_id`                     | `context.app.build`                      |
+| `os`, `platform`               | `context.device.type`, `context.os.name` |
+| `start_time`                   | `originalTimeStamp`                      |
+| `sent_at`                      | `sentAt`                                 |
+| `short_version`, `app_version` | `context.app.version`                    |
+| `bundle_identifier`            | `context.app.namespace`                  |
 
 ## Contact Us
 
 If you come across any issues while configuring App Center as a source with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel - we will be happy to talk to you!
-

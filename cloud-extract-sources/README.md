@@ -8,7 +8,7 @@ description: >-
 
 ## What are Sources in RudderStack?
 
-Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed \(with or without transformation\) into your data warehouse or third-party destinations for analytics and other activation use-cases.
+Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed (with or without transformation) into your data warehouse or third-party destinations for analytics and other activation use-cases.
 
 {% hint style="success" %}
 For more information on sources in RudderStack, check out the [**Connections guide**](https://docs.rudderstack.com/connections).
@@ -16,7 +16,7 @@ For more information on sources in RudderStack, check out the [**Connections gui
 
 ## RudderStack Cloud Extract
 
-With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [**Facebook Ads**](https://www.facebook.com/business/ads), [**Google Analytics**](https://analytics.google.com/), [**Marketo**](https://www.marketo.com/), [**HubSpot**](https://www.hubspot.com/), [**Stripe**](stripe.md), and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
+With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [**Facebook Ads**](https://www.facebook.com/business/ads), [**Google Analytics**](https://analytics.google.com), [**Marketo**](https://www.marketo.com), [**HubSpot**](https://www.hubspot.com), [**Stripe**](stripe.md), and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
 
 {% hint style="info" %}
 **All the Cloud Extract sources support sending data only to a data warehouse destination.**
@@ -46,17 +46,29 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 
 ## Popular Cloud Extract Sources
 
-{% page-ref page="marketo.md" %}
+{% content-ref url="marketo.md" %}
+[marketo.md](marketo.md)
+{% endcontent-ref %}
 
-{% page-ref page="salesforce/" %}
+{% content-ref url="salesforce/" %}
+[salesforce](salesforce/)
+{% endcontent-ref %}
 
-{% page-ref page="zendesk.md" %}
+{% content-ref url="zendesk.md" %}
+[zendesk.md](zendesk.md)
+{% endcontent-ref %}
 
-{% page-ref page="stripe.md" %}
+{% content-ref url="stripe.md" %}
+[stripe.md](stripe.md)
+{% endcontent-ref %}
 
-{% page-ref page="google-sheets.md" %}
+{% content-ref url="google-sheets.md" %}
+[google-sheets.md](google-sheets.md)
+{% endcontent-ref %}
 
-{% page-ref page="google-analytics.md" %}
+{% content-ref url="google-analytics.md" %}
+[google-analytics.md](google-analytics.md)
+{% endcontent-ref %}
 
 {% hint style="success" %}
 If you wish to contribute to developing more Cloud Extract integrations for RudderStack, please refer to the contributing guide [**here**](../user-guides/how-to-guides/how-to-submit-an-integration-pull-request.md).
@@ -64,5 +76,4 @@ If you wish to contribute to developing more Cloud Extract integrations for Rudd
 
 ## Contact Us
 
-For more information on the RudderStack Cloud Extract sources or the platform in general, feel free to [**contact us**](mailto:%20contact@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
+For more information on the RudderStack Cloud Extract sources or the platform in general, feel free to [**contact us**](mailto:%20contact@rudderstack.com)** **or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.

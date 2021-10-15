@@ -16,10 +16,10 @@ RudderStack allows you to configure Google Pub/Sub as a destination and send you
 
 To enable sending data to Google Pub/Sub, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Google Pub/Sub.
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| Device mode | **-** | **-** | **-** |
-| Cloud mode | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| Device mode         | **-**         | **-**         | **-**         |
+| Cloud mode          | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,7 +27,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Google Pub/Sub, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Google Pub/Sub.**
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source. From the list of destinations, select **Google Pub/Sub.**
 
 {% hint style="info" %}
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack) guide to add a source and destination in RudderStack.
@@ -35,7 +35,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 
 * Give a name to the destination and click on **Next**. You should then see the following screen:
 
-![Google Pub/Sub Connection Settings](../../.gitbook/assets/image%20%2879%29%20%282%29%20%282%29%20%283%29%20%283%29%20%283%29%20%282%29%20%282%29.png)
+![Google Pub/Sub Connection Settings](<../../.gitbook/assets/image (79) (2) (2) (3) (3) (3) (2) (3).png>)
 
 * Enter the following details:
   * **Connection Settings**
@@ -47,10 +47,10 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
       * Paste this downloaded JSON in the **Credentials** field
     * Enter the **Event Name** as well as the corresponding **Topic ID**. You can get the topic id from your topics page, as shown:
 
-![Google Pub/Sub Topic ID and Name](../../.gitbook/assets/image%20%2848%29.png)
+![Google Pub/Sub Topic ID and Name](<../../.gitbook/assets/image (48) (1).png>)
 
 {% hint style="info" %}
-You can send an event `type` like `page,` `identify,` `track`.  
+You can send an event `type` like `page,` `identify,` `track`.\
 For the `track` events you can specify the event name based on the `event` name in the payload.
 
 For example:
@@ -73,7 +73,7 @@ The **topic ID** is **case-sensitive** and has to be exactly as seen in Google P
 
 You can send attributes to Google Pub/Sub along with the message. In order to send the attributes, enter the required attribute mapping in the RudderStack dashboard as seen below:
 
-![](../../.gitbook/assets/image%20%28113%29.png)
+![](<../../.gitbook/assets/image (113).png>)
 
 The following are some examples:
 
@@ -89,7 +89,7 @@ For the `key` fields provided in the attributes map, the `key` is searched in th
 
 For example:
 
-```text
+```
 rudderanalytics.track("Track me", {
   category: "category",
   label: "label",
@@ -102,13 +102,13 @@ rudderanalytics.track("Track me", {
 
 For the above `track` call, you can specify an attribute mapping for `metadataID` as shown below:
 
-| **Event** | **Field** |
-| :--- | :--- |
-| Track me | `metadata.metadataId` |
+| **Event** | **Field**             |
+| --------- | --------------------- |
+| Track me  | `metadata.metadataId` |
 
 This will create the below attribute metadata object:
 
-```text
+```
 {
    metadataId: "sample-id"
 }
@@ -169,15 +169,15 @@ rudderanalytics.track("Track me", {
  });
 ```
 
-## FAQs <a id="faqs"></a>
+## FAQs <a href="faqs" id="faqs"></a>
 
-### How does event mapping work with the topic ID? <a id="how-does-event-mapping-work-with-the-delivery-stream"></a>
+### How does event mapping work with the topic ID? <a href="how-does-event-mapping-work-with-the-delivery-stream" id="how-does-event-mapping-work-with-the-delivery-stream"></a>
 
 * If there is no topic ID set for an event, it will not be sent.
 * If an event is set with a topic id, the payload will be sent to Pub/Sub to that particular topic id.
 
 {% hint style="info" %}
-If you have set all event type, event and \* for mapping the priority will be given to `event` ,  
+If you have set all event type, event and \* for mapping the priority will be given to `event` ,\
 then `type` , followed by \*.
 {% endhint %}
 
@@ -187,13 +187,12 @@ For example, let the type of event be `track`, the event name be `product added`
 
 Now all the events should go to the topic mapped with **`product added`**.
 
-### How do I provide multiple Attribute mapping for a particular event? <a id="how-do-I-provide-multiple-attribute-mapping"></a>
+### How do I provide multiple Attribute mapping for a particular event? <a href="how-do-i-provide-multiple-attribute-mapping" id="how-do-i-provide-multiple-attribute-mapping"></a>
 
 In order to send multiple attribute keys for a particular event, enter the required mappings in the RudderStack dashboard as seen below:
 
-![](../../.gitbook/assets/image%20%28112%29.png)
+![](<../../.gitbook/assets/image (112).png>)
 
 ## Contact Us
 
 If you come across any issues while configuring or using Google Pub/Sub with RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

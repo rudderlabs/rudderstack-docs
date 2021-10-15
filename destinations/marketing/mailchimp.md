@@ -4,22 +4,22 @@ description: Step-by-step guide to add people to your Mailchimp list using Rudde
 
 # Mailchimp
 
-[Mailchimp](https://mailchimp.com/) is a popular email marketing automation platform used worldwide by thousands of businesses. Built specially for eCommerce and retail, Mailchimp allows you to build your audience and send them personalized campaign and marketing messages through web or mobile.
+[Mailchimp](https://mailchimp.com) is a popular email marketing automation platform used worldwide by thousands of businesses. Built specially for eCommerce and retail, Mailchimp allows you to build your audience and send them personalized campaign and marketing messages through web or mobile.
 
 RudderStack allows you to add people to your Mailchimp list via a simple `identify` call.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mailchimp)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mailchimp)**.**
 {% endhint %}
 
 ## Getting Started
 
 Before configuring Mailchimp as a destination in RudderStack, please make sure that the source platform is supported by Mailchimp. You can refer to the following table to do so:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -27,7 +27,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that Mailchimp supports the source type, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and Mailchimp as a destination.
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source and Mailchimp as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -35,7 +35,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 
 * Give a suitable name to the destination, and then click on **Next**. You should then see the following screen:
 
-![Mailchimp Connection Settings screen](../../.gitbook/assets/image%20%2872%29.png)
+![Mailchimp Connection Settings screen](<../../.gitbook/assets/image (72).png>)
 
 * Enter the relevant information in the fields such as the **Mailchimp API Key**, **Audience ID** and **DataCenter ID**. Then, click on **Next**.
 
@@ -51,7 +51,7 @@ The `identify` call captures the details about the visiting user along with the 
 
 Let us consider a sample `identify` call in RudderStack:
 
-```text
+```
 rudderanalytics.identify("user123", {
   firstName: "John",
   lastName: "Doe",
@@ -77,7 +77,7 @@ To send custom merge fields or user traits to Mailchimp, please follow these ste
 * When you make the `identify` call, the keys that match the traits above will automatically appear in your Mailchimp list.
 
 {% hint style="info" %}
-The `identify` call will **not change** in this case.
+The `identify` call will **not change **in this case.
 {% endhint %}
 
 ### Overriding `listId`
@@ -86,7 +86,7 @@ If you have multiple lists that your users can subscribe to, you can override th
 
 Consider the following code snippet:
 
-```text
+```
 rudderanalytics.identify(
   "userId123",
   {
@@ -110,7 +110,7 @@ RudderStack gives you the option of manually updating the subscription status of
 
 An example of how to do this is as shown in the code snippet below:
 
-```text
+```
 rudderanalytics.identify(
   "userId123",
   {
@@ -134,7 +134,7 @@ Please note that this setting will **NOT** work for new users. New users will al
 
 ### Where do I get the Mailchimp API Key?
 
-To get the Mailchimp API Key, log in to Mailchimp, and go to **Account** - **Extras** - **API Keys**
+To get the Mailchimp API Key, log in to Mailchimp, and go to **Account **- **Extras** - **API Keys**
 
 ### Where do I get the Mailchimp Audience ID?
 
@@ -147,4 +147,3 @@ You can find the Mailchimp Audience ID by logging in to Mailchimp and navigating
 ## Contact Us
 
 If you come across any issues while configuring Mailchimp with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

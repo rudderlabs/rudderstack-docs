@@ -4,22 +4,22 @@ description: Step-by-step guide to send event data from RudderStack to HubSpot
 
 # HubSpot
 
-[HubSpot](https://www.hubspot.com/) is a leading marketing and sales platform that helps you track leads, as well as inbound marketing and sales. It offers state-of-the-art tools for efficient marketing, tracking sales and offering better customer support.
+[HubSpot](https://www.hubspot.com) is a leading marketing and sales platform that helps you track leads, as well as inbound marketing and sales. It offers state-of-the-art tools for efficient marketing, tracking sales and offering better customer support.
 
 RudderStack supports HubSpot as a destination to send your event data through our APIs.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/hs)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/hs)**.**
 {% endhint %}
 
 ## Getting Started
 
 Before configuring your source and destination in RudderStack, please check whether the platform you are working on is supported by HubSpot. Refer the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **Supported** | - | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | **Supported** | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -29,7 +29,7 @@ Once you have confirmed that the platform supports sending events to HubSpot, pe
 
 Once you have confirmed that the platform supports sending events to HubSpot, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and select **HubSpot** as a destination.
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source and select **HubSpot** as a destination.
 
 {% hint style="info" %}
 Please follow our guide on [How to Add a Source and Destination in RudderStack](https://docs.rudderstack.com/how-to-guides/adding-source-and-destination-rudderstack) to add a source and destination in RudderStack.
@@ -129,7 +129,7 @@ Hubspot also supports custom properties. You can update values of the `contact` 
 
 ### Dates
 
-For sending properties of type `date` send the date as the epoch time, or as a `date` object. We convert it to the required HubSpot format \(midnight UTC\).
+For sending properties of type `date` send the date as the epoch time, or as a `date` object. We convert it to the required HubSpot format (midnight UTC).
 
 ## Track
 
@@ -169,7 +169,7 @@ The `screen` call records the screen views of the user in your App. If you have 
 
 Here is a sample `screen` call in using RudderStack iOS SDK:
 
-```text
+```
 [[RSClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
 ```
@@ -223,4 +223,3 @@ Yes - `page` calls are supported in Device mode and can be used for Hubspot webs
 ## Contact Us
 
 If you come across any issues while configuring HubSpot with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

@@ -89,7 +89,7 @@ To add AppsFlyer to your Android project:
 
 ```groovy
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 
@@ -281,10 +281,12 @@ NSString *appsflyerId = [AppsFlyerLib shared].getAppsFlyerUID;
 {% endtab %}
 
 {% tab title="Android" %}
-```java
+```kotlin
 import com.appsflyer.AppsFlyerLib;
 
-String appsFlyerId = AppsFlyerLib.getInstance().getAppsFlyerUID(this);
+rudderClient.onIntegrationReady("AppsFlyer") {
+  val appsflyerId = AppsFlyerLib.getInstance().getAppsFlyerUID(this)
+}
 ```
 {% endtab %}
 
@@ -292,7 +294,9 @@ String appsFlyerId = AppsFlyerLib.getInstance().getAppsFlyerUID(this);
 ```javascript
 import AppsFlyerIntegrationFactory from '@rudderstack/rudder-integration-appsflyer-react-native/src/bridge';
 
-const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId();
+await rc.registerCallback('AppsFlyer', async () => {
+      const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId();
+});
 ```
 {% endtab %}
 {% endtabs %}

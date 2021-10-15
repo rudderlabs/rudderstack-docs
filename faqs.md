@@ -9,7 +9,7 @@ description: >-
 This section aims to address the queries and issues you might encounter while using RudderStack.
 
 {% hint style="success" %}
-**To quickly find the solution you are looking for, we recommend using the Contents panel on the right hand side of this guide to quickly navigate to the section you are looking for.** 
+**To quickly find the solution you are looking for, we recommend using the Contents panel on the right hand side of this guide to quickly navigate to the section you are looking for.**
 
 **Alternatively, you can use the search feature at the top-right hand side of this page with the relevant keywords to look for solutions on a specific topic.**
 {% endhint %}
@@ -26,14 +26,22 @@ To quickly get started, you can [**sign up for RudderStack**](https://app.rudder
 
 #### 2. What is a Data Plane URL? Where do I get it?
 
-Simply put, the Data Plane URL is used to connect to the RudderStack backend for routing and processing your events.
-
 {% hint style="info" %}
- To get the **Data Plane URL**: ****
-
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
-* If you're using the **enterprise** version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
+Refer to the [**RudderStack Architecture**](get-started/rudderstack-architecture.md) guide for more information the RudderStack Data Plane.
 {% endhint %}
+
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required.
+
+Here's how to get the Data Plane URL:
+
+* If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
+
+{% hint style="success" %}
+An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.
+{% endhint %}
+
+* If you're using [**RudderStack Cloud** **Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
+* If you're using the [**pro or enterprise**](https://rudderstack.com/pricing) version of RudderStack, [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for the Data Plane URL with the email ID you used to sign up for RudderStack.
 
 #### 3. To get started with RudderStack on my local machine, is it mandatory to get the workspace token from RudderStack dashboard?
 
@@ -41,7 +49,7 @@ The workspace token allows you to use the RudderStack-hosted control plane. It i
 
 #### 4. Can I self-host RudderStack?
 
-Yes, you can. Many people who don't want to sign up for RudderStack use the [**RudderStack Config Generator**](get-started/config-generator.md) to configure their sources and destinations.
+Yes, you can use the [**RudderStack** ](get-started/control-plane-lite.md)[**Control Plane Lite**](https://github.com/rudderlabs/config-generator) to self-host the control plane and configure your sources and destinations. Refer to the **Control Plane Lite** section below for more information/FAQs.
 
 #### 5. While running `git submodule update`, I get the following error:
 
@@ -54,7 +62,7 @@ git@github.com: Permission denied (publickey).
 fatal: Could not read from remote repository."
 ```
 
-Verify if the SSH keys are correctly set in your GitHub account as they are used when cloning using the git protocol. For more information, refer to [**this thread**](https://stackoverflow.com/questions/25957125/git-submodule-permission-denied)**.**
+Verify if the SSH keys are correctly set in your GitHub account as they are used when cloning using the git protocol. For more information, refer to [**this thread**](https://stackoverflow.com/questions/25957125/git-submodule-permission-denied).
 
 ### Docker
 
@@ -62,7 +70,7 @@ Verify if the SSH keys are correctly set in your GitHub account as they are used
 
 A **c4.xlarge** or **c4.2xlarge** machine should work just fine for your setup.
 
-#### 2. I'm running RudderStack in Docker on a GCP VM instance. I upgraded the instance to have more CPU and now the RudderStack container is stuck on this message: 
+#### 2. I'm running RudderStack in Docker on a GCP VM instance. I upgraded the instance to have more CPU and now the RudderStack container is stuck on this message:
 
 ```c
 sh -c '/wait-for db:5432 -- /rudder-server'
@@ -82,19 +90,19 @@ CURL <DATA_PLANE_URL>/health
 
 A sample command would look something like:
 
-```c
+```bash
 CURL https://hosted.rudderlabs.com/health
 ```
 
 #### 2. How many events can a single RudderStack node handle?
 
-The number of events that a single RudderStack node can handle will depend on the destinations that you are sending the event data to. It also depends on the transformations that you are running. 
+The number of events that a single RudderStack node can handle will depend on the destinations that you are sending the event data to. It also depends on the transformations that you are running.
 
 However, here are some ballpark figures:
 
 * **Dumping to S3** - Approximately 1.5K events/sec
-* **Dumping to Warehouse** - Approximately 1K events/sec 
-* **Dumping to Warehouse + a couple of cloud destinations** - Approximately 750 events/sec 
+* **Dumping to Warehouse** - Approximately 1K events/sec
+* **Dumping to Warehouse + a couple of cloud destinations** - Approximately 750 events/sec
 
 {% hint style="info" %}
 Please note that these are conservative numbers. A single RudderStack node can handle **5x**+ event load at the peak; just that those events will get cached locally and then drained as per the regular throughput.
@@ -129,43 +137,39 @@ backend_1 | panic: During db.vlog.open: Value log truncate required to run DB. T
 
 Check for the folder `/tmp/badgerdbv2` and delete it. This should resolve the issue and you should be able to start rudder-server.
 
-
-
-
-
-## Config Generator
+## Control Plane Lite
 
 #### 1. How do I self-host the UI configuration?
 
-For self-hosting the UI, you can use the [**RudderStack Config Generator**](https://github.com/rudderlabs/config-generator). 
+For self-hosting the UI, you can use the [**RudderStack Control Plane Lite**](https://github.com/rudderlabs/config-generator) utility.
 
-Note that the open-source config-generator will only generate the source-destination configurations which are required by RudderStack. 
+Note that this utility will only generate the source-destination configurations which are required by RudderStack.
 
 {% hint style="warning" %}
-The self-hosted control plane \(UI\) does not support features like **Transformations** and **Live Events Debugger**, which are included for free in the [**RudderStack-hosted control plane**](https://app.rudderstack.com).
+The self-hosted control plane set up using the [**Control Plane Lite**](https://github.com/rudderlabs/config-generator) utility does not support features like **Transformations** and **Live Events Debugger**, which are included for free in the [**RudderStack-hosted control plane**](https://app.rudderstack.com).
 {% endhint %}
 
-#### 2. I am using the RudderStack Config Generator to generate the `workspaceConfig.json` file. But when I import this file, I get an error: 
+#### 2. I am using the Control Plane Lite to generate the `workspaceConfig.json` file. But when I import this file, I get an error:
 
-#### "**TypeError: Cannot read property 'name' of undefined"**. What should I do?
+```text
+TypeError: Cannot read property 'name' of undefined
+```
 
-This issue can occur when you have some old data left in your browser's local storage. Use the latest version of the Config Generator after clearing your browser cache and local storage. In case it still does not work, please feel free to contact us.
+This issue can occur when you have some old data left in your browser's local storage. Use the latest version of the Control Plane Lite after clearing your browser cache and local storage. In case it still does not work, feel free to contact us.
 
 ## Transformations
 
 #### 1. How do I add custom user transformations in RudderStack?
 
-RudderStack lets you implement your own custom transformation functions that leverage the event data to implement specific use-cases based on your business requirements. To add custom transformations in RudderStack, follow this [**guide**](adding-a-new-user-transformation-in-rudderstack/).
+RudderStack lets you implement your own custom transformation functions that leverage the event data to implement specific use-cases based on your business requirements. To add custom transformations in RudderStack, follow this [**guide**](transformations/).
 
-#### 2. How do transformations handle batching? 
+#### 2. How do transformations handle batching? The transformation functions are given a list of events, but the events are also pushed out in real-time. What's the logic behind that?
 
-#### The transformation functions are given a list of events, but the events are also pushed out in real-time. What's the logic behind that?
+The batching is done on a per end-user level. All the events from a given end-user are batched and then sent to the transformation function. The batching process is controlled via the following three parameters in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or **`config.toml`** in case of older RudderStack deployments\):
 
-The batching is done on a per end-user level. All the events from a given end-user are batched and then sent to the transformation function. The batching process is controlled via the following three parameters in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml)\( or **`config.toml`** in case of older RudderStack deployments\):
-
-* `processSessions = False` \(make it `True` for batching\) 
-* `sessionThresholdEvents = 100` 
-* `sessionInactivityThresholdInS = 120` 
+* `processSessions = False` \(make it `True` for batching\)
+* `sessionThresholdEvents = 100`
+* `sessionInactivityThresholdInS = 120`
 
 The events from an end-user are batched till we have 100 events or 120 seconds of inactivity since the last event. This list is then passed to the transformation function.
 
@@ -187,9 +191,7 @@ Currently, transformations can only be configured and used for destinations. If 
 
 Unfortunately, your workspace name is not changeable currently. We are planning to include this feature in our future releases.
 
-#### 2.1 How do I see the logs or data that is sent to my destination?
-
-#### 2.2 I see a few events that show up in the live stream but do not reach the destination. What is the best way to debug this?
+#### 2. I see a few events that show up in the live stream but do not reach the destination. How do I see the logs or data that is sent to my destination?
 
 To view the data or events that are sent to your destination, you can use the **Live Events** tab on your destination page.
 
@@ -203,7 +205,7 @@ Switching between open-source RudderStack and RudderStack Cloud is quite straigh
 
 #### 5. Does RudderStack have any settings for consent management?
 
-Currently, we do not have any solutions for consent management. We are in the process of implementing some key GDPR features. In the meantime, you can filter your events using our [**Transformations**](adding-a-new-user-transformation-in-rudderstack/) feature or stop sending events to the users who do not give their consent.
+Currently, we do not have any solutions for consent management. We are in the process of implementing some key GDPR features. In the meantime, you can filter your events using our [**Transformations**](transformations/) feature or stop sending events to the users who do not give their consent.
 
 ## Integrations
 
@@ -243,7 +245,11 @@ To view the data or events that are sent to your destination, you can use the **
 
 #### 3. I would like to send events to Mixpanel via RudderStack. However, I would like to set a filtering condition on the source events before routing them to Mixpanel. How do I go about doing this?
 
-You can use [**RudderStack Transformations**](adding-a-new-user-transformation-in-rudderstack/) to set custom logic on your events before sending them to Mixpanel.
+You can use [**RudderStack Transformations**](transformations/) to set custom logic on your events before sending them to Mixpanel.
+
+#### 4. I am seeing a `Message type not supported` error. What does this mean?
+
+This error is being returned from the RudderStack Transformer. It means that for a particular destination, the event type that is trying to be sent, is not supported. For example, Salesforce only supports `identify` events. Therefore, if a `track` call is sent to Salesforce, the `Message type not supported` error will be returned. This error does not affect any other events and is harmless. However, a simple user transformation can be written to filter out these events so you will no longer see this error. Read [these docs](https://docs.rudderstack.com/adding-a-new-user-transformation-in-rudderstack) on how to create a user transformation for a destination.
 
 ### Warehouse Destinations
 
@@ -253,7 +259,7 @@ You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` 
 
 #### 2. I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
 
-* Firstly, make sure you have set up the [**required user permissions**](https://docs.rudderstack.com/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) ****for PostgreSQL.
+* Firstly, make sure you have set up the [**required user permissions**](https://docs.rudderstack.com/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) \_\*\*\_for PostgreSQL.
 * Then, check the status of the sync in the [**RudderStack dashboard**](https://app.rudderstack.com/syncs).
 * Check if the database is accessible by whitelisting all the RudderStack IPs listed [**here**](https://docs.rudderstack.com/data-warehouse-integrations/warehouse-faqs#which-ips-should-be-whitelisted).
 * Ensure that all the security group policies for S3 are set as specified [**here**](https://docs.rudderstack.com/destinations/storage-platforms/amazon-s3#permissions).
@@ -296,7 +302,7 @@ Yes, you can set the desired folder name in the **Prefix** input field while con
 
 RudderStack lets you fill in the values with variable names. These variables should be prepended with `env.`. You can populate these secrets as environment variables and run the data plane.
 
-Suppose you are configuring Amazon S3 as a destination but you don't want to enter the AWS access key credentials in the destination settings. Fill the value with a placeholder that starts with `env.`  It should look like this `env.MY_AWS_ACCESS_KEY`. Then set the value of the environment variable `MY_AWS_ACCESS_KEY`while running the data plane.
+Suppose you are configuring Amazon S3 as a destination but you don't want to enter the AWS access key credentials in the destination settings. Fill the value with a placeholder that starts with `env.`. It should look like this `env.MY_AWS_ACCESS_KEY`. Then set the value of the environment variable `MY_AWS_ACCESS_KEY` while running the data plane.
 
 ## RudderStack Failover, Hardening and Security
 
@@ -309,8 +315,8 @@ RudderStack's hosted solution is running on AWS EKS with the cluster spanning 3 
 * At the infrastructure layer, RudderStack runs on a multi-availability zone EKS cluster. So hardware failures, if any, are handled by Kubernetes by relocating pods.
 * At an application level, RudderStack operates in either of the following 3 modes:
   * **Normal** mode, where everything is normal and there are no issues.
-  * If for some reason the system fails \(e.g. because of a bug\), it enters the **Degraded** mode, where RudderStack processes incoming requests but doesn't send it to destinations. 
-  * If the system continues to fail to process the data \(e.g. internal database corruption\), it enters the **Maintenance** mode where we save the previous state \(which can be debugged and processed\) and start from scratch - still receiving requests. 
+  * If for some reason the system fails \(e.g. because of a bug\), it enters the **Degraded** mode, where RudderStack processes incoming requests but doesn't send it to destinations.
+  * If the system continues to fail to process the data \(e.g. internal database corruption\), it enters the **Maintenance** mode where we save the previous state \(which can be debugged and processed\) and start from scratch - still receiving requests.
 * All of RudderStack's SDKs also have failure handling. They can store events in local storage and retry on failure.
 * RudderStack provides isolation between the data and control planes. For example, if the control plane \(where you manage the source and destination configurations\) goes offline, the data plane continues to operate.
 
@@ -355,14 +361,13 @@ Some downstream destinations have limits on the number of events they accept at 
 Some examples are:
 
 * [**Customer.io**](https://customer.io/docs/api/#api-documentationlimits): 
-* \*\*\*\*[**Amplitude Upload Limit** ](https://help.amplitude.com/hc/en-us/articles/360032842391-HTTP-API-V2#upload-limit)
+* [**Amplitude Upload Limit** ](https://help.amplitude.com/hc/en-us/articles/360032842391-HTTP-API-V2#upload-limit)
 
 These limits can also be configured using config variables in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) or using environment variables as described in comments [**here**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml#L1-L32).
 
-```c
-# The following configuration throttles request to Amplitude at 1000 req/s for the account 
-# and 10 req/s for individual user/device  
+The following configuration throttles request to Amplitude at 1000 req/s for the account and 10 req/s for individual user/device:
 
+```yaml
 [Router.throttler.AM]
 limit = 1000
 timeWindowInS = 1
@@ -374,14 +379,4 @@ userLevelTimeWindowInS = 1
 ## Contact Us
 
 If you come across any issue that is not listed in this guide, feel free to start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
-
-
-
-
-
-
-
-
-
 

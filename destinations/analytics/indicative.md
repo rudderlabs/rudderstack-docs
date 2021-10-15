@@ -9,7 +9,7 @@ description: Step-by-step guide to send event data from RudderStack to Indicativ
 RudderStack allows you to seamlessly configure Indicative as a destination to which you can send your event data seamlessly.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/indicative)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/indicative)**.**
 {% endhint %}
 
 ## Getting Started
@@ -18,10 +18,10 @@ To enable sending data to **Indicative**, you will first need to add it as a des
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Indicative, by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **-** | - | - |
-| **Cloud mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device mode**     | **-**         | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -36,7 +36,7 @@ Please follow our [Adding a Source and Destination](https://docs.rudderstack.com
 {% endhint %}
 
 * Select the destination as **Indicative** to your source. Give your destination a name and then click on **Next**.
-* On the **Connection Settings** page, ****fill all the fields with the relevant information and click **Next.**
+* On the **Connection Settings **page,** **fill all the fields with the relevant information and click **Next.**
 
 ![Indicative Connection Settings in RudderStack](../../.gitbook/assets/indicative.png)
 
@@ -118,4 +118,3 @@ You can get the Indicative API key under the **Project Settings** section in you
 ## Contact Us
 
 If you come across any issues while configuring or using Indicative with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

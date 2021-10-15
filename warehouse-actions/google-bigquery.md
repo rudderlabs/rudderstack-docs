@@ -4,47 +4,100 @@ description: Step-by-step guide to ingest your data from Google BigQuery into Ru
 
 # Google BigQuery
 
-[Google BigQuery](https://cloud.google.com/bigquery) ****is an industry-leading, fully-managed cloud data warehouse that allows you to store and analyze petabytes of data in no time.
+[Google BigQuery](https://cloud.google.com/bigquery) is an industry-leading, fully-managed cloud data warehouse that allows you to store and analyze petabytes of data in no time.
 
 This guide will help you configure BigQuery as a source from which you can route event data to your desired destinations through RudderStack.
 
 ## Granting Permissions
 
-Follow these steps below to grant the necessary permissions for warehouse actions. For BigQuery, use the BigQuery Console.
+Follow these steps below to grant the necessary permissions for Warehouse Actions. For BigQuery, use the **BigQuery Console**.
 
-* Go to [https://console.cloud.google.com/iam-admin/roles](https://console.cloud.google.com/iam-admin/roles) and click on “CREATE ROLE”.
-* Fill it in as shown below. 
+### Creating the role and adding required permissions
+
+* Go to [**https://console.cloud.google.com/iam-admin/roles**](https://console.cloud.google.com/iam-admin/roles) and click on **CREATE ROLE**.
+* Then, fill in the details as shown:
 
 ![](../.gitbook/assets/image1.png)
 
-* Click on “ADD PERMISSIONS” and add the permissions mentioned below.
+* Next, click on **ADD PERMISSIONS** and add the permissions as listed in the following image:
 
 ![](../.gitbook/assets/image3.png)
 
-* Click on “CREATE”.
-* Now, move to [https://console.cloud.google.com/iam-admin/serviceaccounts](https://console.cloud.google.com/iam-admin/serviceaccounts) and select the project which has the dataset or table you want to share.
-* Click on “CREATE SERVICE ACCOUNT”.
-* Fill in the details in Step 1 and click CREATE:
+The permissions are as shown below:
+
+```
+bigquery.datasets.get
+bigquery.jobs.create
+bigquery.jobs.list
+bigquery.tables.create
+bigquery.tables.get
+bigquery.tables.getData
+bigquery.tables.list
+bigquery.tables.update
+bigquery.tables.updateData
+```
+
+* After adding all the required permissions, click on **CREATE**.
+
+### Creating the service account & attaching the role to it
+
+* Next, go to [**https://console.cloud.google.com/iam-admin/serviceaccounts**](https://console.cloud.google.com/iam-admin/serviceaccounts).
+* Select the project which has the dataset or the table that you want to use.
+* Click on **CREATE SERVICE ACCOUNT**.
+* Fill in the details in Step **1** as shown below, and click **CREATE AND CONTINUE**:
 
 ![](../.gitbook/assets/image2.png)
 
-* Fill in the details in Step 2 and click CONTINUE:
+{% hint style="info" %}
+Note down the **Service account ID**. This ID is required while creating the RudderStack schema and granting the required permissions to it.
+{% endhint %}
+
+* Then, fill in the details in Step **2** as shown below, and click **CONTINUE**:
 
 ![](../.gitbook/assets/image4.png)
 
-* After filling in steps 1 and 2 click DONE.
-* This will move you to the list of service accounts. Now, click on the “3 dots” for the service account that just created, and select “Manage keys”.
-* Click on ADD KEY and select "Create new key". In the pop up select JSON and click CREATE. 
-* Download this json file and use its data while creating a BQ source on RudderStack.
+* After completing steps **1** and **2**, click on **DONE**. This will move you to the list of service accounts.
 
-## Set Up as Source
+### Creating and downloading the JSON key
+
+* Now, click on the three dots under **Actions** in the service account that you just created and select **Manage keys**, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/133751172-bd11d971-1e15-4c06-831e-23058a2eed86.png)
+
+* Click on **ADD KEY**, followed by **Create new key**, as shown:
+
+![](https://user-images.githubusercontent.com/59817155/133751255-356dab76-a795-4428-8e72-9c46b0031d79.png)
+
+* In the resulting pop-up, select **JSON** and click on **CREATE**.
+
+![](https://user-images.githubusercontent.com/59817155/133751286-a7897da9-eb9d-48ef-be29-f16f0e65e2bb.png)
+
+* Finally, download this JSON file. This file is required while creating a BigQuery warehouse source in RudderStack - the next section covers the steps to do this.
+
+### Creating the RudderStack schema and granting permissions
+
+* The following command creates a dedicated schema `rudderstack_` used by RudderStack for storing the state of each data sync.
+
+```
+create schema rudderstack_;
+```
+
+* The following query allows the service account `Rudderstack` to have full access to the schema `rudderstack_` (used by RudderStack).
+
+```
+GRANT `roles/bigquery.dataOwner`
+     ON SCHEMA rudderstack_
+     TO "serviceAccount:<SERVICE_ACCOUNT_ID>";
+```
+
+## Setting up the Source
 
 To set up Google BigQuery as a source in RudderStack, follow these steps:
 
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (10).png>)
 
 * Scroll down to the **Warehouse Sources** and select **BigQuery**. Then, click on **Next**.
 
@@ -88,17 +141,40 @@ Your table must include one of the following columns - `email`, `user_id`, or `a
 
 ![](../.gitbook/assets/screen-shot-2021-01-05-at-5.19.23-pm.png)
 
-That's it! BigQuery is now successfully configured as a source on your RudderStack dashboard. 
+That's it! BigQuery is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start importing data from your BigQuery instance as per the specified frequency. You can further connect this source to your preferred destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
-![](../.gitbook/assets/screen-shot-2021-01-06-at-2.55.24-pm%20%281%29.png)
+![](<../.gitbook/assets/screen-shot-2021-01-06-at-2.55.24-pm (1).png>)
 
 {% hint style="info" %}
 If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
 {% endhint %}
 
+## FAQ
+
+### What do the three validations under Verifying Credentials imply?
+
+When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+
+![](../.gitbook/assets/validations.png)
+
+These options are explained below:
+
+* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
+
+{% hint style="warning" %}
+If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
+{% endhint %}
+
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials.\
+
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#granting-permissions) section. 
+
+{% hint style="warning" %}
+If this option gives an error, verify if you have successfully created the `rudderstack_ `schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
+{% endhint %}
+
 ## Contact Us
 
 If you come across any issues while configuring Google BigQuery as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

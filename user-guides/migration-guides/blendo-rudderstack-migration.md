@@ -48,12 +48,15 @@ The following differences are observed in the data structure of the sources in R
 Further processing might be necessary on a query level for the existing views or dashboards to work.
 {% endhint %}
 
-* The special columns **`blendo_imported_at`**, **`blendo_exported_at`** will no longer be populated at the destination. The context fields will be included in each event to provide the segmentation of data. The list of context fields introduced in RudderStack are: 
+* The special columns **`blendo_imported_at`**, **`blendo_exported_at`** will no longer be populated at the destination. The context fields will be included in each event to provide the segmentation of data. The list of context fields introduced in RudderStack are:\
+
   * **`context_sources_job_id` -** Corresponding to the source ID, as it appears in the RudderStack UI.
   * **`context_sources_task_id`** - This is the resource name - e.g. `'lists'`, `'contacts'`, etc.
   * **`context_sources_job_run_id`** - Corresponds to a unique ID assigned to a single execution of the source import process.
-  * **`context_sources_task_run_id`** - This is a unique ID assigned to a single execution of a specific source task. 
-* Resources that replaced the previous data on export are no longer supported. In RudderStack, the new data will always be appended to the output table. This change affects mainly two resources: **Google Sheets rows**, and **Mailchimp lists.** 
+  * **`context_sources_task_run_id`** - This is a unique ID assigned to a single execution of a specific source task.\
+
+* Resources that replaced the previous data on export are no longer supported. In RudderStack, the new data will always be appended to the output table. This change affects mainly two resources: **Google Sheets rows**, and **Mailchimp lists.**\
+  ****
 * Prefixing tables on destinations is not supported by RudderStack. You can resolve the conflicts in table names from sources of the same role by exporting to separate schemas.
 
 ## Functionalities to be Released Soon
@@ -62,11 +65,9 @@ We're currently working on adding more functionalities to make the migration fro
 
 * Currently, the failures encountered in the import tasks are only displayed in the RudderStack UI. We are working on adding support for **error notification**, so that you get timely alerts in such a scenario. 
 * The RudderStack UI will also have a **usage report** that includes the details related to the data imported by the source.
-* We are working on **improving the performance of the data pipelines,** compared to Blendo**.** In case you have come across any performance-related differences between Blendo and RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com).
+* We are working on** improving the performance of the data pipelines, **compared to Blendo**. **In case you have come across any performance-related differences between Blendo and RudderStack, please feel free to [contact us](mailto:%20contact@rudderstack.com).
 
 ## Contact Us
 
 For more information on any of the incompatibilities listed above, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to talk to you.
-
-
 

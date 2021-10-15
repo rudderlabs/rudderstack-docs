@@ -6,12 +6,12 @@ description: >-
 
 # RudderTyper
 
-\*\*\*\*[**RudderTyper**](https://github.com/rudderlabs/rudder-typer) is a tool that lets you generate strongly-typed [**RudderStack**](https://rudderstack.com/) analytics library wrappers based on your [**Tracking Plan**](https://documenter.getpostman.com/view/16242548/TzeWFT6D) spec. 
+****[**RudderTyper**](https://github.com/rudderlabs/rudder-typer) is a tool that lets you generate strongly-typed [**RudderStack**](https://rudderstack.com) analytics library wrappers based on your [**Tracking Plan**](https://documenter.getpostman.com/view/16242548/TzeWFT6D) spec. 
 
 Simply put, it uses an event from your specified tracking plan and generates an analytics call in the supported languages.
 
 {% hint style="success" %}
-RudderTyper currently generates native clients for the [**JavaScript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk), and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) ****SDKs**.**
+RudderTyper currently generates native clients for the [**JavaScript**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Node.js**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk), [**Android**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk), and [**iOS**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk)** **SDKs**.**
 {% endhint %}
 
 ![](../.gitbook/assets/readme-example.gif)
@@ -28,7 +28,7 @@ Some key features of RudderTyper are:
 **This feature is currently in a closed beta. If you're interested, please contact your account representative for more information.**
 {% endhint %}
 
-![](https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github)
+![](https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge\&logo=github)
 
 ## Get Started
 
@@ -90,14 +90,14 @@ This command prints the help message describing different commands available wit
 
 ## CLI Arguments
 
-| Argument | Type | Description |
-| :--- | :--- | :--- |
-| `config` | `string` | An optional path to a `ruddertyper.yml` \(or a directory with `ruddertyper.yml`\). |
-| `debug` | `boolean` | An optional \(hidden\) flag for enabling Ink debug mode. |
-| `version` | `boolean` | Standard `--version` flag to print the version of this CLI. |
-| `v` | `boolean` | Standard `-v` flag to print the version of this CLI. |
-| `help` | `boolean` | Standard `--help` flag to print help on a command. |
-| `h` | `boolean` | Standard `-h` flag to print help on a command. |
+| Argument  | Type      | Description                                                                      |
+| --------- | --------- | -------------------------------------------------------------------------------- |
+| `config`  | `string`  | An optional path to a `ruddertyper.yml` (or a directory with `ruddertyper.yml`). |
+| `debug`   | `boolean` | An optional (hidden) flag for enabling Ink debug mode.                           |
+| `version` | `boolean` | Standard `--version` flag to print the version of this CLI.                      |
+| `v`       | `boolean` | Standard `-v` flag to print the version of this CLI.                             |
+| `help`    | `boolean` | Standard `--help` flag to print help on a command.                               |
+| `h`       | `boolean` | Standard `-h` flag to print help on a command.                                   |
 
 ## Configuration Reference
 
@@ -170,7 +170,7 @@ import com.rudderstack.generated.*
 
 * Then, you can directly make the calls using the RudderTyper client as shown:
 
-```text
+```
 // Import your auto-generated RudderTyper client:
 #import "RSRudderTyperAnalytics.h"
 
@@ -180,7 +180,7 @@ import com.rudderstack.generated.*
 
 ### RudderStack JavaScript SDK
 
-* Import the RudderTyper-generated client using `require()` and make the calls if your framework supports them. Otherwise, you can use [**Browserify**](https://browserify.org/) to generate a bundle that supports your implementation. The implementation for each of the alternatives mentioned above will be as shown:
+* Import the RudderTyper-generated client using `require()` and make the calls if your framework supports them. Otherwise, you can use [**Browserify**](https://browserify.org) to generate a bundle that supports your implementation. The implementation for each of the alternatives mentioned above will be as shown:
 
 #### Using the `require()`method
 
@@ -273,4 +273,3 @@ ruddertyper.orderCompleted({
 ## Contact Us
 
 For queries on any of the sections in this guide, start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-

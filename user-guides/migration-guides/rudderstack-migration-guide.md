@@ -6,7 +6,7 @@ description: Step-by-step guide to migrating from Segment to RudderStack
 
 ## Introduction
 
-This document explains the step-by-step process of migrating from [Segment](https://segment.com/) to RudderStack. Our primary goal is to lay out the necessary actions for replacing your instrumentation code for generating the events from using the Segment SDK to RudderStack SDK with minimal changes.
+This document explains the step-by-step process of migrating from [Segment](https://segment.com) to RudderStack. Our primary goal is to lay out the necessary actions for replacing your instrumentation code for generating the events from using the Segment SDK to RudderStack SDK with minimal changes.
 
 ## Migrating the Workspace
 
@@ -34,7 +34,7 @@ Depending on the platform, please follow these steps to move your existing SDK i
 
 ```groovy
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 
@@ -62,11 +62,11 @@ RudderClient rudderClient = RudderClient.getInstance(
 
 * Update the use of the classes according to the table below:
 
-| Segment | RudderStack |
-| :--- | :--- |
-| `Analytics` | `RudderClient` |
-| `Traits` | `RudderTraits` |
-| `Property` | `RudderProperty` |
+| Segment     | RudderStack      |
+| ----------- | ---------------- |
+| `Analytics` | `RudderClient`   |
+| `Traits`    | `RudderTraits`   |
+| `Property`  | `RudderProperty` |
 
 {% hint style="success" %}
 You can use the rest of your code as is, as RudderStack SDK is API-compatible with Segment.
@@ -95,11 +95,11 @@ The instance of the `RudderClient` is available at `[RudderClient sharedInstance
 * Update the imports from `Analytics.h` to `Rudder.h` wherever necessary
 * Update the use of the classes according to the table below:
 
-| Segment | RudderStack |
-| :--- | :--- |
-| `Analytics` | `RudderClient` |
-| `Traits` | `RudderTraits` |
-| `Property` | `RudderProperty` |
+| Segment     | RudderStack      |
+| ----------- | ---------------- |
+| `Analytics` | `RudderClient`   |
+| `Traits`    | `RudderTraits`   |
+| `Property`  | `RudderProperty` |
 
 {% hint style="success" %}
 You can use the rest of your code as is, as RudderStack SDK is API compatible with Segment
@@ -159,7 +159,7 @@ A code snippet for loading the SDKs in parallel is shown below:
         !function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)}}()
         !(function(){
           // Create a queue, but don't obliterate an existing one!
-          var analtics = window.analytics = window.analytics || [];
+          var analytics = window.analytics = window.analytics || [];
           // If the real analytics.js is already on the page return.
           if (analytics.initialize) return;
           // If the snippet was invoked already show an error.
@@ -247,10 +247,9 @@ A code snippet for loading the SDKs in parallel is shown below:
 ```
 
 {% hint style="info" %}
-Note that you will need to enter your `SEGMENT_WRITE_KEY`, `RUDDERSTACK_WRITE_KEY`, and `RUDDERSTACK_DATAPLANE_URL` in the above example.
+Note that you will need to enter your `SEGMENT_WRITE_KEY`, `RUDDERSTACK_WRITE_KEY`, and` RUDDERSTACK_DATAPLANE_URL` in the above example.
 {% endhint %}
 
 ## Contact Us
 
-Are you stuck somewhere in the migration process? Feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
+Stuck somewhere in the migration process? Feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.

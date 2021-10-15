@@ -4,12 +4,12 @@ description: Step-by-step guide to set up MinIO as a destination in RudderStack.
 
 # MinIO
 
-[MinIO](https://min.io/) is a high performance, enterprise-ready distributed object storage system released under Apache License v2.0. Using MinIO, you can build a high performance infrastructure for machine learning, analytics and application data workloads. It is compatible with the Amazon S3 cloud storage service as well.
+[MinIO](https://min.io) is a high performance, enterprise-ready distributed object storage system released under Apache License v2.0. Using MinIO, you can build a high performance infrastructure for machine learning, analytics and application data workloads. It is compatible with the Amazon S3 cloud storage service as well.
 
 RudderStack allows you to configure MinIO as a destination to which you can dump your event data seamlessly.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/minio)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/minio)**.**
 {% endhint %}
 
 ## Setting up MinIO
@@ -26,7 +26,7 @@ Please follow these steps to set up MinIO before adding it as a destination in R
 
 * Make a note of both the `access key ID` and `secret access key` as these will be required while configuring MinIO as a destination.
 
-## **Configuring** MinIO **in RudderStack**
+## **Configuring **MinIO** in RudderStack**
 
 In order to enable dumping data to MinIO, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to MinIO. You will start seeing the files created in your MinIO bucket.
 
@@ -39,7 +39,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **MinIO** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Connection Settings**, ****fill all the fields with the relevant information \(please refer to the [Setting up MinIO](https://docs.rudderstack.com/destinations/minio#setting-up-minio) section above\) and click on **Next**.
+* Next, in the **Connection Settings**,** **fill all the fields with the relevant information (please refer to the [Setting up MinIO](https://docs.rudderstack.com/destinations/minio#setting-up-minio) section above) and click on **Next**.
 
 ![MinIO connection settings](../../.gitbook/assets/screenshot-2020-02-26-at-7.22.29-pm.png)
 
@@ -50,4 +50,3 @@ That's it! You have successfully added MinIO as a destination in RudderStack. On
 ## Contact Us
 
 If you come across any issues while configuring MinIO with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

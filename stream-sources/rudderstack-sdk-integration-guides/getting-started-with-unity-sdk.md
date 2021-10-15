@@ -8,25 +8,27 @@ description: >-
 
 ## What is the RudderStack Unity SDK?
 
-The RudderStack Unity SDK is a wrapper for the RudderStack [**Android SDK**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS SDK**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) ****used for tracking game event data. 
+The RudderStack Unity SDK is a wrapper for the RudderStack [**Android SDK**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS SDK**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/rudderstack-ios-sdk)** **used for tracking game event data. 
 
 After integrating this SDK with your game, you will be able to track and send the game event data to any analytics destination of your choice.
 
 {% hint style="success" %}
-Check the [**Unity SDK codebase on GitHub**](https://github.com/rudderlabs/rudder-sdk-unity) ****to get a more hands-on understanding of how it works.
+Check the [**Unity SDK codebase on GitHub**](https://github.com/rudderlabs/rudder-sdk-unity)** **to get a more hands-on understanding of how it works.
 {% endhint %}
 
 ## Prerequisites
 
 To configure the Unity SDK, you will need the following:
 
-* A [**RudderStack account**](https://app.rudderlabs.com/login). Your source `writeKey` should appear on the dashboard once you have signed up. 
+* A [**RudderStack account**](https://app.rudderlabs.com/login). Your source `writeKey` should appear on the dashboard once you have signed up.\
+
 * Your data plane URL to connect to the RudderStack backend for processing and routing your events.
 
 {% hint style="info" %}
 To get the **Data Plane URL**:
 
-* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [**installing and setting up RudderStack**](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment. 
+* If you're using the **open-source** version of RudderStack, you are required to set up your own data plane by [**installing and setting up RudderStack**](https://docs.rudderstack.com/installing-and-setting-up-rudderstack) in your preferred dev environment.\
+
 * If you're using the **enterprise** version of RudderStack, contact us for the data plane URL with the email ID used to sign up for RudderStack.
 {% endhint %}
 
@@ -34,10 +36,11 @@ To get the **Data Plane URL**:
 
 ## Adding Unity SDK to Your Project
 
-* Download `rudder-sdk-unity.unitypackage` from our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/SDK/rudder-sdk-unity.unitypackage). 
+* Download `rudder-sdk-unity.unitypackage` from our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/SDK/rudder-sdk-unity.unitypackage).\
+
 * Import the downloaded package to your project. From the **Assets** menu, go to **Import Package** - **Custom Package...** as shown:
 
-![Importing the downloaded package](../../.gitbook/assets/unity1%20%281%29%20%282%29%20%282%29.png)
+![Importing the downloaded package](<../../.gitbook/assets/unity1 (1) (2) (2).png>)
 
 * Select `rudder-sdk-unity.unitypackage` from the location where you have downloaded it and click on **Open**:
 
@@ -150,5 +153,4 @@ You can find the following files in the **Plugins** folder for the SDK:
 
 ## Contact us
 
-If you come across any issues while using the Unity SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also open an issue on our [**GitHub**](https://github.com/rudderlabs/rudder-sdk-unity).
-
+If you come across any issues while using the Unity SDK, you can [**contact us**](mailto:%20docs@rudderstack.com)** **or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel. You can also open an issue on our [**GitHub**](https://github.com/rudderlabs/rudder-sdk-unity).

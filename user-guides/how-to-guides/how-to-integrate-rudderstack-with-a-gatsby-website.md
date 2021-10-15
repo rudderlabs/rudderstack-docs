@@ -12,8 +12,8 @@ This plugin makes it easy to integrate your Gatsby website with the Rudderstack 
 
 ## Key features of this plugin
 
-* Use multiple write keys \(one for production environment, another optional one for development\)
-* Disable page view tracking \(just in case you want to add it later manually\)
+* Use multiple write keys (one for production environment, another optional one for development)
+* Disable page view tracking (just in case you want to add it later manually)
 * Always up-to-date and maintained by the RudderStack team
 
 ## Installing the plugin
@@ -29,7 +29,7 @@ To install the plugin, run the following command with the package manager of you
 
 In your `gatsby-config.js` file you first need to add your write key from your account. You can find this in your RudderStack dashboard.
 
-![](../../.gitbook/assets/source%20%281%29.png)
+![](<../../.gitbook/assets/source (1).png>)
 
 #### The Configuration Options
 
@@ -170,9 +170,9 @@ window.rudderanalytics.track(
 
 #### Tracking pageviews
 
-If you want to track pageviews automatically, set `trackPage` to `true` in your `gatsby-config.js` file. What we mean by _**automatically**_ is that whenever there is a route change, RudderStack leverages Gatsby's `onRouteUpdate` API in the `gatsby-browser.js` file \([link](https://www.gatsbyjs.org/docs/browser-apis/#onRouteUpdate)\) to invoke `window.rudderanalytics.page()` on each route change. 
+If you want to track pageviews automatically, set `trackPage` to `true` in your `gatsby-config.js` file. What we mean by _**automatically **_is that whenever there is a route change, RudderStack leverages Gatsby's `onRouteUpdate` API in the `gatsby-browser.js` file ([link](https://www.gatsbyjs.org/docs/browser-apis/#onRouteUpdate)) to invoke `window.rudderanalytics.page()` on each route change. 
 
-However, if you want to pass in properties along with the pageview call \(it is common to see some users pass in some user or account data with each `page` call\), then you'll have to set `trackPage: false` and call it yourself in your `gatsby-browser.js` file, as shown below:
+However, if you want to pass in properties along with the pageview call (it is common to see some users pass in some user or account data with each `page` call), then you'll have to set `trackPage: false` and call it yourself in your `gatsby-browser.js` file, as shown below:
 
 ```javascript
 // gatsby-browser.js
@@ -219,66 +219,13 @@ rudderanalytics.setAnonymousId("abcde");
 
 You may use the below parameters as a querystring parameter and trigger the corresponding call:
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left"><b>Parameter</b>
-      </th>
-      <th style="text-align:left"><b>Description</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p></p>
-        <p><code>ajs_uid</code>
-        </p>
-      </td>
-      <td style="text-align:left">
-        <p></p>
-        <p>Makes a <code>rudderanalytics.identify()</code> call with <code>userId</code> having
-          the value of the parameter value.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p></p>
-        <p><code>ajs_aid</code>
-        </p>
-      </td>
-      <td style="text-align:left">Makes a <code>rudderanalytics.setAnonymousId()</code> call with <code>anonymousId</code> having
-        the value of the parameter value.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p></p>
-        <p><code>ajs_event</code>
-        </p>
-      </td>
-      <td style="text-align:left">Makes a <code>rudderanalytics.track()</code> call with <code>event</code> name
-        as parameter value.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p></p>
-        <p><code>ajs_prop_&lt;property&gt;</code>
-        </p>
-      </td>
-      <td style="text-align:left">If <code>ajs_event</code> is passed as querystring, value of this parameter
-        will populate the properties of the corresponding event in the <code>track</code> call.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p></p>
-        <p><code>ajs_trait_&lt;trait&gt;</code>
-        </p>
-      </td>
-      <td style="text-align:left">If <code>ajs_uid</code> is provided as querystring, value of this parameter
-        will populate the traits of the <code>identify</code> call made.</td>
-    </tr>
-  </tbody>
-</table>
+| **Parameter**                                       | **Description**                                                                                                                               |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p></p><p><code>ajs_uid</code></p>                  | <p></p><p>Makes a <code>rudderanalytics.identify()</code> call with <code>userId</code> having the value of the parameter value.</p>          |
+| <p></p><p><code>ajs_aid</code></p>                  | Makes a `rudderanalytics.setAnonymousId()` call with `anonymousId` having the value of the parameter value.                                   |
+| <p></p><p><code>ajs_event</code></p>                | Makes a `rudderanalytics.track()` call with `event` name as parameter value.                                                                  |
+| <p></p><p><code>ajs_prop_&#x3C;property></code></p> | If `ajs_event` is passed as querystring, value of this parameter will populate the properties of the corresponding event in the `track` call. |
+| <p></p><p><code>ajs_trait_&#x3C;trait></code></p>   | If `ajs_uid` is provided as querystring, value of this parameter will populate the traits of the `identify` call made.                        |
 
 ## Adding callbacks to standard methods
 
@@ -324,4 +271,3 @@ This plugin is released under the [AGPLv3 License](https://www.gnu.org/licenses/
 ## Contact Us
 
 For more information on any of the sections in this guide, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, or even see RudderStack [in action](https://rudderstack.com/request-a-demo/).
-

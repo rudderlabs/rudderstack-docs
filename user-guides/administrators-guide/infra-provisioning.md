@@ -15,133 +15,31 @@ All tests are done using db.m4.xlarge Amazon RDS instance for hosting the postgr
 
 ### Gateway 
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Machine</th>
-      <th style="text-align:left">Load</th>
-      <th style="text-align:left">
-        <p>Response Time (ms)</p>
-        <p><em>gateway.response_time</em>
-        </p>
-      </th>
-      <th style="text-align:left">
-        <p>Throughput</p>
-        <p><em>gateway.write_key_requests</em>
-        </p>
-      </th>
-      <th style="text-align:left">Dangling Tables</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">m4.2xLarge
-        <br /><em>8Core 32GB</em>
-      </td>
-      <td style="text-align:left">2.5K/s</td>
-      <td style="text-align:left">--</td>
-      <td style="text-align:left">2.5K/s</td>
-      <td style="text-align:left">No</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">m4.2xLarge
-        <br /><em>8Core 32GB</em>
-      </td>
-      <td style="text-align:left">5K/s</td>
-      <td style="text-align:left">--</td>
-      <td style="text-align:left">3K/s</td>
-      <td style="text-align:left">Yes</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">m4.2xLarge
-        <br /><em>8Core 32GB</em>
-      </td>
-      <td style="text-align:left">3K/s</td>
-      <td style="text-align:left">--</td>
-      <td style="text-align:left">2.7K/s</td>
-      <td style="text-align:left">No</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>m5.xLarge</p>
-        <p><em>4Core 16GB</em>
-        </p>
-      </td>
-      <td style="text-align:left">2.5K/s</td>
-      <td style="text-align:left">3</td>
-      <td style="text-align:left">1.9K/s</td>
-      <td style="text-align:left">No</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>m5.large</p>
-        <p><em>2Core 8GB</em>
-        </p>
-      </td>
-      <td style="text-align:left">2.5K/s</td>
-      <td style="text-align:left">4.2</td>
-      <td style="text-align:left">1.7K/s</td>
-      <td style="text-align:left">No</td>
-    </tr>
-  </tbody>
-</table>
+| Machine                                    | Load   | <p>Response Time (ms)</p><p><em>gateway.response_time</em></p> | <p>Throughput</p><p><em>gateway.write_key_requests</em></p> | Dangling Tables |
+| ------------------------------------------ | ------ | -------------------------------------------------------------- | ----------------------------------------------------------- | --------------- |
+| <p>m4.2xLarge<br><em>8Core 32GB</em></p>   | 2.5K/s | --                                                             | 2.5K/s                                                      | No              |
+| <p>m4.2xLarge<br><em>8Core 32GB</em></p>   | 5K/s   | --                                                             | 3K/s                                                        | Yes             |
+| <p>m4.2xLarge<br><em>8Core 32GB</em></p>   | 3K/s   | --                                                             | 2.7K/s                                                      | No              |
+| <p>m5.xLarge</p><p><em>4Core 16GB</em></p> | 2.5K/s | 3                                                              | 1.9K/s                                                      | No              |
+| <p>m5.large</p><p><em>2Core 8GB</em></p>   | 2.5K/s | 4.2                                                            | 1.7K/s                                                      | No              |
 
 {% hint style="info" %}
-Backend migrates and drops tables that have a threshold of jobs processed. Gateway tables are backed up to object storage \(S3, MinIO etc.\) if configured by user. Dangling tables indicate tables are ready for drop at a rate greater than the rate at which tables are backed up to object storage. Concurrent uploads to object storage is in the roadmap for upcoming versions of Backend.
+Backend migrates and drops tables that have a threshold of jobs processed. Gateway tables are backed up to object storage (S3, MinIO etc.) if configured by user. Dangling tables indicate tables are ready for drop at a rate greater than the rate at which tables are backed up to object storage. Concurrent uploads to object storage is in the roadmap for upcoming versions of Backend.
 {% endhint %}
 
 {% hint style="info" %}
-Load is an approximation since it depends on the maching configuration where the [genload.go script](https://github.com/rudderlabs/rudder-server/blob/master/tests/load/genload.go) is run from. We ran it on a m5ad.xLarge machine with the approxiamtion that input of 50 users \(50 go routines\) gives a input load of 2.5K/s
+Load is an approximation since it depends on the maching configuration where the [genload.go script](https://github.com/rudderlabs/rudder-server/blob/master/tests/load/genload.go) is run from. We ran it on a m5ad.xLarge machine with the approxiamtion that input of 50 users (50 go routines) gives a input load of 2.5K/s
 {% endhint %}
 
 
 
 ### Transformer
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Machine</th>
-      <th style="text-align:left">
-        <p>Gateway Throughput</p>
-        <p><em>gateway.write_key_requests</em>
-        </p>
-      </th>
-      <th style="text-align:left">
-        <p>Throughput</p>
-        <p><em>processor.transformer_received</em>
-        </p>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">m4.2xLarge
-        <br /><em>8Core 32GB</em>
-      </td>
-      <td style="text-align:left">2.7k/s</td>
-      <td style="text-align:left">2.7K/s</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>m5.xLarge</p>
-        <p><em>4Core 16GB</em>
-        </p>
-      </td>
-      <td style="text-align:left">1.9K/s</td>
-      <td style="text-align:left">1.9K/s</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>m5.large</p>
-        <p><em>2Core 8GB</em>
-        </p>
-      </td>
-      <td style="text-align:left">1.7K/s</td>
-      <td style="text-align:left">1.6K/s</td>
-    </tr>
-  </tbody>
-</table>
+| Machine                                    | <p>Gateway Throughput</p><p><em>gateway.write_key_requests</em></p> | <p>Throughput</p><p><em>processor.transformer_received</em></p> |
+| ------------------------------------------ | ------------------------------------------------------------------- | --------------------------------------------------------------- |
+| <p>m4.2xLarge<br><em>8Core 32GB</em></p>   | 2.7k/s                                                              | 2.7K/s                                                          |
+| <p>m5.xLarge</p><p><em>4Core 16GB</em></p> | 1.9K/s                                                              | 1.9K/s                                                          |
+| <p>m5.large</p><p><em>2Core 8GB</em></p>   | 1.7K/s                                                              | 1.6K/s                                                          |
 
 {% hint style="warning" %}
 Transformer is a NodeJS/Koa server launced as cluster of node processes, processses count equal to the number of cores of the machine. Choosingan instance with lower number of core the number of cores in instance processor might reduce the throughput of transformer
@@ -151,50 +49,11 @@ Transformer is a NodeJS/Koa server launced as cluster of node processes, process
 
 ### Batch Router - S3 Destination
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Machine</th>
-      <th style="text-align:left">
-        <p>Gateway Throughput</p>
-        <p><em>gateway.write_key_requests</em>
-        </p>
-      </th>
-      <th style="text-align:left">
-        <p>Throughput</p>
-        <p><em>batch_router.dest_successful_events</em>
-        </p>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">m4.2xLarge
-        <br /><em>8Core 32GB</em>
-      </td>
-      <td style="text-align:left">2.7K/s</td>
-      <td style="text-align:left">2.8K/s</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>m5.xLarge</p>
-        <p><em>4Core 16GB</em>
-        </p>
-      </td>
-      <td style="text-align:left">1.9K/s</td>
-      <td style="text-align:left">1.8K/s</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>m5.large</p>
-        <p><em>2Core 8GB</em>
-        </p>
-      </td>
-      <td style="text-align:left">1.7K/s</td>
-      <td style="text-align:left">1.6K/s</td>
-    </tr>
-  </tbody>
-</table>
+| Machine                                    | <p>Gateway Throughput</p><p><em>gateway.write_key_requests</em></p> | <p>Throughput</p><p><em>batch_router.dest_successful_events</em></p> |
+| ------------------------------------------ | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| <p>m4.2xLarge<br><em>8Core 32GB</em></p>   | 2.7K/s                                                              | 2.8K/s                                                               |
+| <p>m5.xLarge</p><p><em>4Core 16GB</em></p> | 1.9K/s                                                              | 1.8K/s                                                               |
+| <p>m5.large</p><p><em>2Core 8GB</em></p>   | 1.7K/s                                                              | 1.6K/s                                                               |
 
 Below is an image captured in CloudWatch Metrics showing the captured stats
 
@@ -206,18 +65,18 @@ Rudder recommends using a database with at least 1TB allocated storage as there 
 
 ### Estimating Storage
 
-If you want to dig deeper and figure out the right storage size, go through the following example.  
+If you want to dig deeper and figure out the right storage size, go through the following example.\
 Following variables should be considered to come with a right storage size for your use case.
 
-| Variable | Description | Production sample data |
-| :--- | :--- | :--- |
-| numSources | Total number of sources | 2 |
-| numEventsPerSec | Number of events per sec for a given source | 2500 |
-| avgGwEventSize | Event size that is captured at the gateway by Rudder | 2.1 KB |
-| gwEventOverhead | Size of extra metadata that Rudder stores at Gateway to process the event | 300 B |
-| numDests | Number of enabled destinations for a given source | 3 |
-| avgRtEventSize | The payload size that needs to be sent by the router to the destination after applying transformations | 1.2 KB |
-| rtEventOverhead | Size of extra metadata that Rudder stores to process the event | 300 B |
+| Variable        | Description                                                                                            | Production sample data |
+| --------------- | ------------------------------------------------------------------------------------------------------ | ---------------------- |
+| numSources      | Total number of sources                                                                                | 2                      |
+| numEventsPerSec | Number of events per sec for a given source                                                            | 2500                   |
+| avgGwEventSize  | Event size that is captured at the gateway by Rudder                                                   | 2.1 KB                 |
+| gwEventOverhead | Size of extra metadata that Rudder stores at Gateway to process the event                              | 300 B                  |
+| numDests        | Number of enabled destinations for a given source                                                      | 3                      |
+| avgRtEventSize  | The payload size that needs to be sent by the router to the destination after applying transformations | 1.2 KB                 |
+| rtEventOverhead | Size of extra metadata that Rudder stores to process the event                                         | 300 B                  |
 
 $$
 gatewayStorage = numEventsPerSec * (avgGwEventSize + gwEventOverhead)
@@ -232,7 +91,7 @@ $$
 totalStoragePerHour = 3600 * \sum_{firstSource}^{lastSource} (gatewayStorage + routerStorage)
 $$
 
-In the above production example, after substituting the values, _totalStoragePerHour_  adds up to _**120 GB**_
+In the above production example, after substituting the values, _totalStoragePerHour  _adds up to _**120 GB**_
 
 Sample your peak load in production to estimate the storage requirements and substitute your values to get an estimate of the storage needed per 1 hour of data. 
 
@@ -246,30 +105,29 @@ If you want to prepare for a destination going for down for days, accommodate th
 
 ### Estimating Connections
 
-Rudder batches requests efficiently to write data. Under heavy load, backend can be configured \(`batchTimeoutInMS`  and `maxBatchSize` \) to batch more requests to limit concurrent connections to the database. If write latencies to the database are not in permissible thresholds, a new data set needs to be added i.e., backend server and database server.
+Rudder batches requests efficiently to write data. Under heavy load, backend can be configured (`batchTimeoutInMS`  and `maxBatchSize` ) to batch more requests to limit concurrent connections to the database. If write latencies to the database are not in permissible thresholds, a new data set needs to be added i.e., backend server and database server.
 
 Rudder reads the data back from the database at a constant rate. A sudden spike in user traffic will not result in more read DB requests.
 
 ## RAM Requirements
 
-Rudder does not cache aggressively and hence does not need huge amount of memory. Load tests were performed on 4 GB and 8 GB memory instances.  
-  
+Rudder does not cache aggressively and hence does not need huge amount of memory. Load tests were performed on 4 GB and 8 GB memory instances.\
+\
 Rudder caches active user events by default to form configurable user sessions server side. The length of any user session can be configured with `sessionThresholdInS` and `sessionThresholdEvents`. Once a user's session is formed, that user events are cleared from the cache. If you don't need sessions, this can be disabled by setting `processSessions` to _false_.
 
-| Variable | Description | Sample data |
-| :--- | :--- | :--- |
-| `numActiveUsers` | Number of active users during a session \(2 min\) in your application during peak hours | 10000 |
-| `avgGwEventSize` | Event size that is captured at the gateway by Rudder | 2.1 KB |
-| `userEventsInThreshold` | Number of user events in the given threshold i.e., 40 user events in 2 min | 40 |
+| Variable                | Description                                                                           | Sample data |
+| ----------------------- | ------------------------------------------------------------------------------------- | ----------- |
+| `numActiveUsers`        | Number of active users during a session (2 min) in your application during peak hours | 10000       |
+| `avgGwEventSize`        | Event size that is captured at the gateway by Rudder                                  | 2.1 KB      |
+| `userEventsInThreshold` | Number of user events in the given threshold i.e., 40 user events in 2 min            | 40          |
 
 $$
 memoryNeeded = numActiveUsers * userEventsInThreshold * avgGwEventSize
 $$
 
-Memory required in the above example would be 840 MB.   
+Memory required in the above example would be 840 MB. \
 
 
 {% hint style="info" %}
 The memory estimate does not include the default RAM required for running the OS and the required processes.
 {% endhint %}
-

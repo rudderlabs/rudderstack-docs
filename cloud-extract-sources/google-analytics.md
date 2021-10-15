@@ -19,21 +19,21 @@ To add Google Analytics as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%285%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (1).png>)
 
-* Next, select **Google Analytics** from the list of **Cloud Sources**, and click on **Next**.
+* Next, select **Google Analytics **from the list of **Cloud Sources**, and click on **Next**.
 
 ![](../.gitbook/assets/2.png)
 
 * Assign a name to your source, and click on **Next**.
 
-![](../.gitbook/assets/3%20%287%29.png)
+![](<../.gitbook/assets/3 (7).png>)
 
 ### Setting Up the Connection
 
 * Click on **Connect with Google Analytics** and give RudderStack the required access permissions. Then, click on **Next**.
 
-![](../.gitbook/assets/4%20%285%29.png)
+![](<../.gitbook/assets/4 (5).png>)
 
 {% hint style="info" %}
 If you have already connected RudderStack to your Google Analytics account, your credentials should appear automatically under **Use existing credentials**.
@@ -43,7 +43,7 @@ If you have already connected RudderStack to your Google Analytics account, your
 
 * In the next screen, select one of your Google Analytics views in the **Source Settings**. Then, click on **Next**.
 
-![](../.gitbook/assets/5%20%283%29.png)
+![](<../.gitbook/assets/5 (3).png>)
 
 * Once you select a view, the **Dimensions** and **Metrics** rows should appear automatically. Choose the appropriate dimensions and metrics for RudderStack to ingest the data from, and then click **Next**.
 
@@ -104,4 +104,3 @@ We have implemented a feature wherein RudderStack associates a table prefix for 
 ## Contact Us
 
 If you come across any issues while configuring Google Analytics as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

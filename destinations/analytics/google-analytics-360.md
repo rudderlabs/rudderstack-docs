@@ -11,19 +11,19 @@ description: >-
 RudderStack supports sending real-time customer events to Google Analytics 360.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga360)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga360)**.**
 {% endhint %}
 
-## Getting Started <a id="getting-started"></a>
+## Getting Started <a href="getting-started" id="getting-started"></a>
 
 To enable sending data to Google Analytics 360, you will first need to add it as a destination in the RudderStack dashboard. Once the destination is configured and enabled, events from RudderStack will start flowing to Google Analytics 360.
 
 Before configuring Google Analytics 360 as a destination, verify if the source platform supports sending events to RudderStack, by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device Mode** | **Supported** | - | - |
-| **Cloud Mode** | **Supported** | **Supported** | **Supported** |
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| ------------------- | ------------- | ------------- | ------------- |
+| **Device Mode**     | **Supported** | -             | -             |
+| **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -40,17 +40,18 @@ Follow the guide on [How to Add a Source and Destination in RudderStack](https:/
 * From the list of destinations, select **Google Analytics 360**. Then, assign a name to the destination and click on **Next**.
 * You should then see the following **Connection Settings** page:
 
-![](../../.gitbook/assets/1%20%2820%29.png)
+![](<../../.gitbook/assets/1 (20).png>)
 
-![](../../.gitbook/assets/2%20%2826%29.png)
+![](<../../.gitbook/assets/2 (26).png>)
 
-![](../../.gitbook/assets/3%20%2823%29.png)
+![](<../../.gitbook/assets/3 (23).png>)
 
-* **Tracking ID** is a required field to configure the destination. You can configure the other options as per your preference. 
+* **Tracking ID** is a required field to configure the destination. You can configure the other options as per your preference.\
+
 * To add a transformation, click on **Create New Transformation**. Otherwise, click on **Next**.
 
 {% hint style="info" %}
-See the [**Transformations**]() guide for more details on this feature.
+See the [**Transformations**](broken-reference) guide for more details on this feature.
 {% endhint %}
 
 * The destination is now configured and enabled.
@@ -67,7 +68,7 @@ For details on the supported events and other additional features refer to the [
 
 ### Can I anonymize an IP Address in Google Analytics 360?
 
-Yes, you can. Turn on the **Anonymize IP Addresses** setting under the **Other Settings** option in the RudderStack dashboard while configuring Google Analytics 360. 
+Yes, you can. Turn on the **Anonymize IP Addresses **setting under the **Other Settings** option in the RudderStack dashboard while configuring Google Analytics 360. 
 
 This setting lets Google Analytics anonymize the address at the earliest possible stage of the data collection.
 
@@ -83,7 +84,6 @@ If you come across any issues while configuring Google Analytics 360 with Rudder
 
 
 
-\*\*\*\*
+****
 
-## 
-
+##

@@ -1,12 +1,12 @@
 ---
 description: >-
-  Detailed technical description of the Live Events Debugger feature to debug
-  your source and destination events in real-time.
+  Detailed technical description of the Live Events feature to debug your source
+  and destination events in real-time.
 ---
 
 # Live Events
 
-RudderStack's **Live Events** is a debugger that shows a stream of live events collected from your sources and sent to the connected destinations in real-time. 
+RudderStack's **Live Events** is a debugger that shows a stream of live events collected from your sources and sent to the connected destinations in real-time.
 
 With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
 
@@ -14,29 +14,27 @@ With this feature, you can easily debug any errors in the failing events at a de
 To use this feature, make sure you have configured your source and destination in RudderStack. For more information on adding a source and destination in RudderStack, follow this [**guide**](../connections/adding-source-and-destination-rudderstack.md).
 {% endhint %}
 
-## **How to View the Live Events** <a id="how-to-view-the-live-events"></a>
+## **How to View the Live Events** <a href="how-to-view-the-live-events" id="how-to-view-the-live-events"></a>
 
 This section includes the steps to view the live events for your sources and destinations.‌
 
-### Sources <a id="sources"></a>
+### Sources <a href="sources" id="sources"></a>
 
 To view the live events collected from your source in real-time, follow these steps:‌
 
-* Make sure you have configured a source and destination in RudderStack. Follow this [**guide**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/diff/drafts/-MdGKMQEdba4ZbKvF7Mf/connections/adding-source-and-destination-rudderstack) for more information.
-* Select the **Connections** option on your left nav bar and click on the source for which you want to view the live events.
+* Make sure you have configured a source and destination in RudderStack. Follow this [**guide**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/\~/diff/drafts/-MdGKMQEdba4ZbKvF7Mf/connections/adding-source-and-destination-rudderstack) for more information.
+*   Select the **Connections** option on your left nav bar and click on the source for which you want to view the live events.
 
-![](../.gitbook/assets/image%20%28119%29.png)
+    ![](<../.gitbook/assets/image (119).png>)
+*   Then, click on the **Live Events** button on the top right as shown:
 
-* Then, click on the **Live Events** button on the top right as shown:
+    ![](<../.gitbook/assets/image (123).png>)
+*   Now you can ingest the data into RudderStack through the source and see the collected events in this window.
 
-![](../.gitbook/assets/image%20%28123%29.png)
-
-* Now you can ingest the data into RudderStack through the source and see the collected events in this window.
-
-![](../.gitbook/assets/image%20%28115%29.png)
+    ![](<../.gitbook/assets/image (115).png>)
 
 {% hint style="info" %}
-For details on the information available in the **Live Events** window, check the **Source Live Events** section.
+For details on the information available in the **Live Events** window, check the [**Source Live Events**](https://docs.rudderstack.com/get-started/live-events#source-live-events) section.
 {% endhint %}
 
 ### Destinations
@@ -49,20 +47,18 @@ To view the live events sent to your destination in real-time, follow these step
 Make sure your destination is configured in the **Cloud mode**. Refer to the [**Connection Modes**](../connections/rudderstack-connection-modes.md) guide for more information on the Cloud mode.
 {% endhint %}
 
-* Select the **Connections** option on your left nav bar and click on the destination for which you want to view the live events.
+*   Select the **Connections** option on your left nav bar and click on the destination for which you want to view the live events.
 
-![](../.gitbook/assets/image%20%28117%29.png)
+    ![](<../.gitbook/assets/image (117).png>)
+*   Then, click on the **Live Events** button on the top right as shown:
 
-* Then, click on the **Live Events** button on the top right as shown:
+    ![](<../.gitbook/assets/image (124) (1) (1).png>)
+*   You should be able to see the events sent to the destination in this window.
 
-![](../.gitbook/assets/image%20%28124%29%20%281%29.png)
-
-* You should be able to see the events sent to the destination in this window.
-
-![](../.gitbook/assets/image%20%28125%29.png)
+    ![](<../.gitbook/assets/image (125).png>)
 
 {% hint style="info" %}
-For details on the information available in the **Live Events** window, check the **Destination Live Events** section.
+For details on the information available in the **Live Events** window, check the [**Destination Live Events**](https://docs.rudderstack.com/get-started/live-events#destination-live-events) section.
 {% endhint %}
 
 ## **Source Live Events**
@@ -83,7 +79,7 @@ When routing events to a destination, it can be frustrating if the events sent d
 
 The **Live Events** feature gives you real-time visibility into the destination's responses. The key information captured includes:
 
-* **Event Name:** Corresponding to the name of the event. 
+* **Event Name:** Corresponding to the name of the event.
 * **Error Code**: In case the event fails, this gives specific details related to the error. These details include the error response and the date and time of the attempt to send the event.
 
 The payload sent to the destination can be seen by clicking on an event. This is shown in the right-hand side window on the same page, as shown:
@@ -94,7 +90,7 @@ The payload sent to the destination can be seen by clicking on an event. This is
 
 Suppose you are trying to send some events to Facebook Custom Audience but they are not being delivered. Upon checking the **Live Events** tab for the Custom Audience destination, you see the following error in the UI:
 
-![](../.gitbook/assets/image%20%28116%29.png)
+![](<../.gitbook/assets/image (116).png>)
 
 You can click on the **See full error** option to see the error response, as shown:
 
@@ -110,6 +106,20 @@ The responses received from the destination help you in quickly identifying and 
 Live events are shown for all the destinations. However, the **payload of the events** is not shown for some destinations like the [**object storage platforms**](../destinations/storage-platforms/) and the [**data warehouses**](../data-warehouse-integrations/) supported by RudderStack.
 {% endhint %}
 
+## **Transformation Live Events**
+
+RudderStack also gives you the option of viewing the events before and after a transformation is applied.
+
+![](<../.gitbook/assets/2 (25).png>)
+
+RudderStack also notifies you about any dropped events or any errors during the transformation along with the details, as shown in the following image:
+
+![](<../.gitbook/assets/3 (29).png>)
+
+Note that this feature is applicable for cases where you have connect a [**transformation**](../transformations/) to a destination, as shown:
+
+![](<../.gitbook/assets/1 (21).png>)
+
 ## **FAQs**
 
 ### **Why are my events failing?**
@@ -118,5 +128,4 @@ Routing events to a destination can fail for various reasons. Often, it is becau
 
 ## **Contact Us**
 
-To know more about the Live Events Debugger, you can [**contact us**](mailto:%20docs@rudderstack.com) ****or start a conversation on our [**Slack**](https://resources.rudderstack.com/join-rudderstack-slack) channel.
-
+To know more about the Live Events feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our** **[**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.

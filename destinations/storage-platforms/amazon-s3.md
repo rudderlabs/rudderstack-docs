@@ -4,12 +4,12 @@ description: Step-by-step guide to set up Amazon S3 as a destination in RudderSt
 
 # Amazon S3
 
-[Amazon S3](https://aws.amazon.com/s3/) \(Simple Storage Service\) is a cloud-based object storage service that allows customers and businesses to store their data securely, and at scale. With an easy to use interface and management features, S3 allows for effortless organizing of data to meet the business-specific requirements.
+[Amazon S3](https://aws.amazon.com/s3/) (Simple Storage Service) is a cloud-based object storage service that allows customers and businesses to store their data securely, and at scale. With an easy to use interface and management features, S3 allows for effortless organizing of data to meet the business-specific requirements.
 
 RudderStack allows you to configure Amazon S3 as a destination to which you can dump your event data seamlessly.
 
 {% hint style="success" %}
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/s3)**.**
+**Find the open-source transformer code for this destination in our **[**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/s3)**.**
 {% endhint %}
 
 ## Setting up Amazon S3
@@ -72,7 +72,7 @@ If the AWS credentials are **already configured** on your instance where the Rud
 }
 ```
 
-* Replace `YOUR_BUCKET_NAME` in the above JSON with your bucket name. By adding the above policy, RudderStack user \(_arn:aws:iam::422074288268:user/s3-copy_\) has the permission to write into your bucket.
+* Replace `YOUR_BUCKET_NAME` in the above JSON with your bucket name. By adding the above policy, RudderStack user (_arn:aws:iam::422074288268:user/s3-copy_) has the permission to write into your bucket.
 
 {% hint style="info" %}
 The above approach will only work if you are using managed RudderStack
@@ -93,7 +93,7 @@ If you are hosting RudderStack on your instances and don't want to follow option
 }
 ```
 
-* Add the following bucket policy to your bucket. Replace ACCOUNT\_ID, USER\_ARN, YOUR\_BUCKET\_NAME with your AWS account id, the above created user arn, your bucket name.
+* Add the following bucket policy to your bucket. Replace ACCOUNT_ID, USER_ARN, YOUR_BUCKET_NAME with your AWS account id, the above created user arn, your bucket name.
 
 ```javascript
 {
@@ -123,7 +123,7 @@ RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<above created user access key>
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY=<above created user secret access key>
 ```
 
-## **Configuring** Amazon S3 **in RudderStack**
+## **Configuring **Amazon S3** in RudderStack**
 
 In order to enable dumping data to Amazon S3, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start flowing to Amazon S3. You will start seeing the files created in your S3 bucket.
 
@@ -136,7 +136,7 @@ Please follow our guide on [How to Add a Source and Destination in RudderStack](
 {% endhint %}
 
 * Select the destination as **Amazon S3** to your source. Give your destination a name and then click on **Next**.
-* Next, in the **Connection Settings**, ****fill all the fields with the relevant information \(please refer to the Setting up Amazon S3 section above\) and click on **Next**.
+* Next, in the **Connection Settings**,** **fill all the fields with the relevant information (please refer to the Setting up Amazon S3 section above) and click on **Next**.
 
 ![S3 Destination Settings](../../.gitbook/assets/screenshot-2020-06-01-at-2.29.13-pm.png)
 
@@ -150,20 +150,20 @@ That's it! You have successfully added Amazon S3 as a destination in RudderStack
 
 ## Encryption
 
-Amazon S3 provides encryption at rest. Object gets encrypted while saving it to S3 and gets decrypted before downloading from S3. S3 provides a way to set the default encryption behavior for a bucket. You can set the default encryption on a bucket from its properties. The objects are encrypted using server-side encryption with either Amazon S3-managed keys \(SSE-S3\) or AWS Key Management Service \(AWS KMS\) customer master keys \(CMKs\). 
+Amazon S3 provides encryption at rest. Object gets encrypted while saving it to S3 and gets decrypted before downloading from S3. S3 provides a way to set the default encryption behavior for a bucket. You can set the default encryption on a bucket from its properties. The objects are encrypted using server-side encryption with either Amazon S3-managed keys (SSE-S3) or AWS Key Management Service (AWS KMS) customer master keys (CMKs). 
 
-### Server-Side Encryption: Using AWS KMS \(SSE-KMS\) <a id="sse"></a>
+### Server-Side Encryption: Using AWS KMS (SSE-KMS) <a href="sse" id="sse"></a>
 
-RudderStack can write to S3 buckets when default encryption is set to AWS-KMS. Objects are encrypted using customer managed keys \(CMK\) when uploaded to the bucket. CMK can be  created in your AWS Key Management Service \(KMS\). Follow the steps below to enable encryption using AWS KMS Managed Keys:
+RudderStack can write to S3 buckets when default encryption is set to AWS-KMS. Objects are encrypted using customer managed keys (CMK) when uploaded to the bucket. CMK can be  created in your AWS Key Management Service (KMS). Follow the steps below to enable encryption using AWS KMS Managed Keys:
 
-* Create a new customer managed key in Key Management Services \(KMS\) and add your IAM user in the key usage permission section. This will allow the IAM user to use the key for cryptographic operations
+* Create a new customer managed key in Key Management Services (KMS) and add your IAM user in the key usage permission section. This will allow the IAM user to use the key for cryptographic operations
 * Choose the above created CMK when you set AWS-KMS in the default Encryption property for the bucket
 
 {% hint style="info" %}
 Amazon S3 supports only [symmetric CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#symmetric-cmks)
 {% endhint %}
 
-### Server-Side Encryption: Using Amazon S3 Managed Keys \(SSE-S3\) <a id="sse"></a>
+### Server-Side Encryption: Using Amazon S3 Managed Keys (SSE-S3) <a href="sse" id="sse"></a>
 
 When Server Side Encryption is enabled from S3 destination settings, RudderStack adds a header `x-amz-server-side-encryption` with value `AES256` to the put's object request, So that [S3 will encrypt the object with AES256 encryption algorithm.](https://docs.aws.amazon.com/AmazonS3/latest/dev/SSEUsingRESTAPI.html)
 
@@ -174,4 +174,3 @@ You can also set the Default Encryption property to `AES-256` for the bucket, by
 ## Contact Us
 
 If you come across any issues while configuring Amazon S3 with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

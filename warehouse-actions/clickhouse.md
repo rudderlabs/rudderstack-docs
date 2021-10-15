@@ -4,7 +4,7 @@ description: Step-by-step guide to ingest your data from ClickHouse into RudderS
 
 # ClickHouse
 
-[ClickHouse](https://clickhouse.tech/) is an open-source, column-oriented database management system mainly used for online analytical processing \(OLAP\). It is fast, and allows for real-time analysis of your data. ClickHouse was originally developed by Yandex, the Russian IT company,  for the Yandex Metrica web analytics service. ClickHouse is highly scalable, and built for high performance.
+[ClickHouse](https://clickhouse.tech) is an open-source, column-oriented database management system mainly used for online analytical processing (OLAP). It is fast, and allows for real-time analysis of your data. ClickHouse was originally developed by Yandex, the Russian IT company,  for the Yandex Metrica web analytics service. ClickHouse is highly scalable, and built for high performance.
 
 This guide will help you configure ClickHouse as a source from which you can route event data to your desired destinations through RudderStack.
 
@@ -15,7 +15,7 @@ To set up ClickHouse as a source in RudderStack, follow these steps:
 * Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%284%29.png)
+![](<../.gitbook/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (3).png>)
 
 * Scroll down to the **Warehouse Sources** and select **ClickHouse**. Then, click on **Next**.
 
@@ -36,8 +36,8 @@ If you've already configured ClickHouse as a source before, your existing creden
 ![](../.gitbook/assets/screen-shot-2021-01-12-at-1.01.23-pm.png)
 
 * The required settings are:
-  * **Host -** The host name of your ClickHouse service.
-  * **Database -** The database name in your ClickHouse instance where the data is loaded.
+  * **Host - **The host name of your ClickHouse service.
+  * **Database - **The database name in your ClickHouse instance where the data is loaded.
   * **User** - The username which has the required read/write access to the above database.
   * **Password** - The password for the above user should be specified here.
   * **Port** - The port number of your ClickHouse service should be specified here.
@@ -79,4 +79,3 @@ If you have already configured a destination on the RudderStack platform, choose
 ## Contact Us
 
 If you come across any issues while configuring ClickHouse as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-

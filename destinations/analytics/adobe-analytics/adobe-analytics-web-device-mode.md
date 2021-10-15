@@ -62,7 +62,7 @@ For the regular and video type \(Heartbeat\) `track` events, it is necessary to 
 For the E-Commerce track events, if the events fall under the following mapping they will be sent accordingly. Otherwise, the mapping should be done in the dashboard.
 
 {% hint style="info" %}
-For more info on the RudderStack E-Commerce Spec, follow the [**E-Commerce Tracking API**](../../../rudderstack-api/rudderstack-ecommerce-events-specification/) guide.
+For more info on the RudderStack E-Commerce Spec, follow the [**E-Commerce Tracking API**](../../../rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) guide.
 {% endhint %}
 
 The mapping is as shown:

@@ -18,10 +18,10 @@ To enable sending data to Optimizely Full Stack, you will first need to add it a
 
 Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Optimizely Full Stack, by referring to the table below:
 
-| **Connection Mode** | **Web** | **Mobile** | **Server** |
-| :--- | :--- | :--- | :--- |
-| **Device mode** | **-** | **Supported** | **-** |
-| **Cloud mode** | **-** | **-** | **-** |
+| **Connection Mode** | **Web** | **Mobile**    | **Server** |
+| ------------------- | ------- | ------------- | ---------- |
+| **Device mode**     | **-**   | **Supported** | **-**      |
+| **Cloud mode**      | **-**   | **-**         | **-**      |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [RudderStack connection modes](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -29,7 +29,7 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Optimizely Full Stack, perform the steps below:
 
-* From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select Optimizely Full Stack**.**
+* From your [RudderStack dashboard](https://app.rudderlabs.com), add the source. From the list of destinations, select Optimizely Full Stack**.**
 
 {% hint style="info" %}
 Please follow our [Adding a Source and Destination](https://docs.rudderstack.com/getting-started/adding-source-and-destination-rudderstack) guide to add a source and destination in RudderStack.
@@ -47,7 +47,7 @@ The connection settings are explained in more detail below:
 
 Configure the settings according to your requirements and click on **Next** to complete the setup. Optimizely Full Stack should now be added and enabled as a destination in RudderStack.
 
-### Implementation Prerequisites <a id="implementation-prerequisite"></a>
+### Implementation Prerequisites <a href="implementation-prerequisite" id="implementation-prerequisite"></a>
 
 Unlike other destinations, Optimizely Full Stack for the mobile integration works a little differently. You will have to implement some Optimizely functions natively to make sure the experiment logic runs correctly.
 
@@ -65,36 +65,36 @@ Please follow these steps to add Optimizely to your Android Project:
 
 1. Add the following `repository` to your `app/build.gradle` file.
 
-```text
+```
 repositories {
-    maven { url "https://dl.bintray.com/rudderstack/rudderstack" }
+    mavenCentral()
 }
 ```
 
-   2.   After that, add the following `dependency` in the same file:
+   2\.   After that, add the following `dependency` in the same file:
 
-```text
+```
 implementation 'com.rudderstack.android.integration:optimizely:0.1.1'
 implementation 'com.optimizely.ab:android-sdk:3.0.0'
 ```
 
-  3. Initialize the Optimizely Manager:
+  3\. Initialize the Optimizely Manager:
 
 {% hint style="success" %}
-Optimizely recommends initializing their SDK as soon as possible. You need to initialize the Optimizely Manager before proceeding to the next step \(Step 4\) . 
+Optimizely recommends initializing their SDK as soon as possible. You need to initialize the Optimizely Manager before proceeding to the next step (Step 4) . 
 
 Please refer to the Optimizely [Initializing the SDK](https://docs.developers.optimizely.com/full-stack/docs/initialize-sdk-android) guide for more information.
 {% endhint %}
 
-```text
+```
 val optimizelyManager =  OptimizelyManager.builder()
             .withSDKKey(<YOUR OPTIMIZELY SDK KEY>)
             .build(this)
 ```
 
-  4. Finally, change the initialization of your `RudderClient` in your `Application` class:
+  4\. Finally, change the initialization of your `RudderClient` in your `Application` class:
 
-```text
+```
 val rudderClient = RudderClient.getInstance(
     this,
     <YOUT_WRITE_KEY>,
@@ -106,7 +106,7 @@ val rudderClient = RudderClient.getInstance(
 ```
 
 {% hint style="warning" %}
-Make sure you pass the Optimizely manager instance you created \(in Step 3\) to the factory as shown in the snippet above.
+Make sure you pass the Optimizely manager instance you created (in Step 3) to the factory as shown in the snippet above.
 {% endhint %}
 {% endtab %}
 
@@ -115,20 +115,20 @@ Follow these steps to add Optimizely to your iOS project:
 
 1. Go your `Podfile` and add the `Rudder-Optimizely` extension
 
-```text
+```
 pod 'Rudder-Optimizely'
 ```
 
-    2.  After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:  
+    2\.  After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:\
 
 
-```text
+```
 #import "RudderOptimizelyFactory.h"
 ```
 
-    3. Finally, change the initialization of your `RudderClient` as shown:
+    3\. Finally, change the initialization of your `RudderClient` as shown:
 
-```text
+```
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 // Setup optimizely logger.
@@ -148,4 +148,3 @@ OPTLYLoggerDefault *optlyLogger = [[OPTLYLoggerDefault alloc] initWithLogLevel:O
 ## Contact Us
 
 If you come across any issues while configuring or using Optimizely Full Stack with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel; we will be happy to talk to you!
-
