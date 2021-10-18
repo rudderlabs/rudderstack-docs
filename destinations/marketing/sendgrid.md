@@ -15,7 +15,7 @@ Before configuring Sendgrid as a destination in RudderStack, verify if the sourc
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
 | **Device mode** | - | - | - |
-| **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
+| **Cloud** **mode** | **Supported** | - | **Supported** |
 
 {% hint style="info" %}
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://docs.rudderstack.com/get-started/rudderstack-connection-modes) guide.
@@ -72,7 +72,7 @@ Note that this is only useful when `integration` object is empty. Sendgrid also 
 
 {% hint style="info" %}
 Note that Sendgrid doesn't allow only `name` to be sent in `reply to`  object, `email` must be there else `reply to` object will be ignored.
-You can send email and name inside an `replyTo` object via `integrations` object which will have higher prioerity.
+You can send email and name inside an `replyTo` object via `integrations` object which will have higher priority.
 {% endhint %}
 
 ```javascript
@@ -216,7 +216,7 @@ Note that Sendgrid requires either `template ID` or `content` to be present in b
 A sample `track` call is as shown:
 
 ```javascript
-rudderanalytics.track('testing',{},
+rudderanalytics.track('testing',{ "someField": "value" },
       {
         "integrations": {
           "Sendgrid": {
@@ -269,10 +269,6 @@ rudderanalytics.track('testing',{},
         "categories": ["sample","values","here"],
         "sendAt": 1617260400,
         "batchId": "a valid batch Id here",
-        "asm": {
-                "groupId": 16256,
-                "groupsToDisplay": [ 16257, 16258]
-        },
         "subject": "Subject Value",
         "mailSettings":{
           "bypassBounceManagement": true,
@@ -286,7 +282,7 @@ rudderanalytics.track('testing',{},
         "replyTo":{
           "email": "testingreplyto@email.com",
           "name": "Name"
-        }
+        },
         "field1": "value"
       }
     }
@@ -295,7 +291,7 @@ rudderanalytics.track('testing',{},
 A few things to note: 
 
 * Sendgrid allows `categories` array to have maximum of 10 values.
-* If `customArgs` is not provided, the non-default fields are taken as custom fields. In the above example, `field1` will be mapped as a `customArgs`.
+* If `customArgs` is not provided, the non-default fields are taken as custom fields. In the above example, `field1` will be mapped inside `customArgs`.
 * Sendgrid requires that in `mailSettings`, `bypassListManagement` cannot be combined with `bypassBounceManagement`, `bypassSpamManagement`, `bypassUnsubscribeManagement`. If `bypassListManagement` is present then neither `bypassSpamManagement`, `bypassBounceManagement` nor `bypassUnsubscribeManagement` can be present.
 * Sendgrid requires that `personalizations` array should be present in every event and atleast each object must contain field `to`. If `Get mail from traits` is enabled in dashboard and `integrations` object is not sent, Rudderstack will look for `email` in traits, if found `personalizations` object will be created and email will be assigned to the `to` field. In case both `template ID` and `content` are not assigned in dashboard, event will not be sent as either of `template ID` or `content` is required.
 * `email` field inside `replyTo` object is mandatory.
