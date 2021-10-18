@@ -6,11 +6,7 @@ description: >-
 
 # How to Develop Integrations for RudderStack
 
-{% hint style="success" %}
-RudderStack currently supports over 80 [**destinations**](../../destinations/).
-
-This guide is useful if you wish to send events to a target platform **not supported by us currently.**
-{% endhint %}
+RudderStack currently supports over 80 [**destinations**](../../destinations/). This guide is useful if you wish to send events to a target platform **not supported by us currently.**
 
 ## What is an integration?
 
@@ -49,6 +45,10 @@ The RudderStack SDKs have two major components‌:
 You can control the inclusion of a platform during development by including or excluding the corresponding **integration** **sub-component** in the build. The core SDK prepares an inventory of the supported integration modules and includes only those in the factory calls. Using this approach, you can restrict the application size to include only the required components.
 
 ‌Even after an integration component has been included in the build, you can control its usage at runtime through appropriate server-side configurations which the client SDK downloads and uses. Using this approach, the developers can enable or disable the direct flow of events to the destination.
+
+## Submitting an integration pull request
+
+When developing a new integration for RudderStack, there are a couple of repositories you need a submit a new PR to. For more details, refer to our [**step-by-step guide**](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-submit-an-integration-pull-request) on submitting a new integration PR.
 
 ## Contact us <a href="docs-internal-guid-a89efda1-7fff-16e0-53f3-fc73af7d3e3a" id="docs-internal-guid-a89efda1-7fff-16e0-53f3-fc73af7d3e3a"></a>
 
