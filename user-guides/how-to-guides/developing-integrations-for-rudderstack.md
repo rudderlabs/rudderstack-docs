@@ -48,7 +48,7 @@ You can control the inclusion of a platform during development by including or e
 
 ## Submitting an integration pull request
 
-When developing a new integration for RudderStack, there are a couple of repositories you need a submit a new PR to. For more details, refer to our [**step-by-step guide**](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-submit-an-integration-pull-request) on submitting a new integration PR.
+When developing a new integration for RudderStack, you need to submit a pull request (PR) to a couple of RudderStack repositories. For more details on submitting these PRs, refer to our [**step-by-step guide**](https://docs.rudderstack.com/user-guides/how-to-guides/how-to-submit-an-integration-pull-request).
 
 ## Contact us <a href="docs-internal-guid-a89efda1-7fff-16e0-53f3-fc73af7d3e3a" id="docs-internal-guid-a89efda1-7fff-16e0-53f3-fc73af7d3e3a"></a>
 
