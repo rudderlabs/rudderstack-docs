@@ -218,10 +218,10 @@ The following table describes the various tracking settings to be configured in 
 |**Click Tracking** | Allows you to track if a recipient clicked a link in your email.|
 |**Click Tracking enable text** | Indicates if this setting should be included in the text/plain portion of your email. |
 |**Open Tracking** |Allows you to track if the email was opened by including a single pixel image in the body of the content. |
-|**Substitution Tag** | Allows you to specify a substitution tag that you can insert in the email body at a specific location.|
+|**Substitution Tag** | When **Open Tracking** is enabled, this setting allows you to specify a substitution tag that you can insert in the email body at a specific location.|
 |**Subscription Tracking** |Allows you to insert a subscription management link at the bottom of your email's text and HTML bodies. |
-|**Text**  |Refers to the string to be appended to the email with the subscription tracking link. |
-|**HTML**| This is appended to the email with the subscription tracking link.|
+|**Text**|When **Subscription Tracking** is enabled, this setting refers to the string to be appended to the email with the subscription tracking link. |
+|**HTML**|When **Subscription Tracking** is enabled, this is appended to the email with the subscription tracking link.|
 |**Substitution Tag** | Refers to the tag that will be replaced with the unsubscribe URL.|
 |**GAnalytics** |Allows you to enable Google Analytics tracking. |
 |**utm source** |Refers to the name of the referrer source, e.g. Google. |
@@ -229,7 +229,6 @@ The following table describes the various tracking settings to be configured in 
 |**utm term**| This setting is used to identify any paid keywords.|
 |**utm content**  | Allows you to differentiate your campaign from advertisements.|
 |**utm campaign** | Corresponds to the name of the campaign.|
-
 
 Finally, click on **Next**. SendGrid will now be enabled as a destination in RudderStack.
 
