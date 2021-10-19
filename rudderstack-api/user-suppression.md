@@ -18,12 +18,12 @@ For all the requests mentioned in this guide, we use the basic HTTP authorizatio
 
 ## What is User Suppression?
 
-RudderStack is completely GDPR and CCPA compliant. We respect the users' privacy and are committed to keeping their data secure at all times. 
+At RudderStack, we respect the users' privacy and are committed to keeping their data secure at all times. 
 
-When a user is suppressed, RudderStack will drop the events from that user. Those events will not be shown in any of the debuggers, will not be forwarded to any destinations and will not be backed up.
+When a user is suppressed, RudderStack will drop the events from that user. Those events will not be shown in any of the debuggers, will not be forwarded to any destinations, and will not be backed up.
 
 {% hint style="warning" %}
-Please note that once suppressed, replaying of these events will not be possible.
+Once suppressed, replaying these events will not be possible.
 {% endhint %}
 
 ## HTTP Authorization
@@ -195,9 +195,4 @@ https://api.rudderlabs.com/workspaces/sources/<source_id>/regulations < suppress
 
 ## Contact Us
 
-To know more about the HTTP API spec, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel, and we will be happy to help you.
-
-
-
-
-
+To know more about the User Suppression API, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel.
