@@ -230,6 +230,10 @@ The following table describes the various tracking settings to be configured in 
 |**utm content**  | Allows you to differentiate your campaign from advertisements.|
 |**utm campaign** | Corresponds to the name of the campaign.|
 
+{% hint style="info" %}
+The **utm source**, **utm medium**, **utm term**, **utm content**, **utm campaign** options are associated with the **GAnalytics** setting on the dashboard.
+{% endhint %}
+
 Finally, click on **Next**. SendGrid will now be enabled as a destination in RudderStack.
 
 ## Track
