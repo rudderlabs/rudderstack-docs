@@ -145,7 +145,7 @@ Use the **Attachments** settings to specify any attachments you want to include 
 
 * **content**: This should be a Base64-encoded string (`base64encodedString`).
 
-* **type**: The attachment **type** contains the type of content you are attaching e.g. `"text/plain"`, `"text/html`, etc.
+* **type**: The attachment **type** contains the type of content you are attaching e.g. `"text/plain"`, `"text/html"`, etc.
 
 * **filename**: Use this setting to specify the attachment's file name.
 
