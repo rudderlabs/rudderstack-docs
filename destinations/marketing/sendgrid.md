@@ -62,9 +62,9 @@ To get your template ID or create a new one, go to your [**SendGrid dashboard**]
 The Template ID can also be sent via the `integrations` object. Note that the template ID passed via the `integrations` object (`templateId`) will override the ID specified in the RudderStack dashboard.
 {% endhint %}
 
-```javascript
-"templateId": "valueHere"
-```
+{% hint style="success" %}
+Refer to the `track` call in the [**Track**](#track) section below to see its usage.
+{% endhint %}
 
 * Next, you can enable or disable the **Get mail by traits** option. If enabled, this option allows RudderStack to search for the user's `email` inside the user's `traits`. If it is found, then the event can be sent to SendGrid without the `integrations` object.
 
@@ -81,7 +81,7 @@ You can also send the email and name inside the `replyTo` object via `integratio
 {% endhint %}
 
 {% hint style="success" %}
-For more information on how to send these details via the `replyTo` object, refer to the [**Track**](#track) section below.
+For more information on how to send these details via the `replyTo` object, refer to the [**`replyTo`**](#replyto) section below.
 {% endhint %}
 
 * Next, enter the **IP Pool Name**.
