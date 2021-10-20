@@ -43,13 +43,13 @@ The connection settings required to configure SendGrid as a destination in Rudde
 * Enter your SendGrid **API Key**.
 
 {% hint style="info" %}
-To get the SendGrid API Key, click [**here**](https://app.sendgrid.com/settings/api_keys). You can also send the subject via the `integrations` object in the `track` call.
+To get the SendGrid API Key, click [**here**](https://app.sendgrid.com/settings/api_keys).
 {% endhint %}
 
 * Enter the **Subject**. 
 
 {% hint style="info" %}
-For more information on the `integrations` object, refer to the [**Track**](#track) section below.
+You can also send the subject via the `integrations` object in the `track` call. For more information on the `integrations` object, refer to the [**Track**](#track) section below.
 {% endhint %}
 
 * Next, enter the **Template ID**. 
@@ -143,7 +143,7 @@ content: [
 
 Use the **Attachments** settings to specify any attachments you want to include in your email. The individual settings are as follows:
 
-* **content**: This should be a Base64-encoded string (`base64encodedString`).
+* **content**: This should be a Base64-encoded string.
 
 * **type**: The attachment **type** contains the type of content you are attaching e.g. `"text/plain"`, `"text/html"`, etc.
 
