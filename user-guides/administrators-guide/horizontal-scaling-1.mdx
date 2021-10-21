@@ -1,0 +1,68 @@
+---
+# slug: "/docs/user-guides/administrators-guide/horizontal-scaling-1"
+title: "Horizontal Scaling"
+description: >-
+  Detailed technical description of the horizontal scaling options for the
+  open-source as well as enterprise version of RudderStack.
+---
+
+# Horizontal Scaling
+
+RudderStack makes it easier for you to add more nodes to your Kubernetes cluster, to process the events in a timely and effective manner. This guide shows you how to effectively configure your [Helm charts](https://github.com/rudderlabs/rudderstack-helm) to trigger a horizontal scale up/down, based on the version of RudderStack you are using.
+
+## RudderStack Open-source Version
+
+Each RudderStack node consists of a backend pod and a PostgreSQL pod. In case a RudderStack cluster is not able to process the events, it is advisable to add more more nodes to it. By changing the **`backendReplicaCount`** in the [Helm configuration](https://github.com/rudderlabs/rudderstack-helm/blob/master/values.yaml), you can trigger horizontal scale up/down. If you set this value to any positive number, helm charts will create as many RudderStack nodes.
+
+<div class="successBlock">
+
+  The <code class="inline-code">values.yaml</code> file can be found
+  <a href="https://github.com/rudderlabs/rudderstack-helm/blob/master/values.yaml">
+    here
+  </a>.
+</div>
+
+There are, however, a couple of challenges in scaling up or down this way.
+
+### Event Ordering
+
+In a single-node cluster, all events are routed to the same RudderStack node. This guarantees the ordering of all events it has received for a given user. In case of a multi-node cluster, since the events of a same user can go to different nodes, the event ordering is not guaranteed by the cluster.
+
+<img src="../../../../images/assets/image (17).png" />
+<span class="imageTitle">Event Ordering While Scaling Up from 1 Node to 2 Nodes</span>
+
+### Scale Down
+
+If you scale down, all the pending events in the terminated node will not be delivered to the destination. You will need to make sure that all the events in a node are drained before terminating it.
+
+<img src="../../../../images/assets/image (65).png" />
+<span class="imageTitle">Scaling Down from 2 Nodes to 1 Node</span>
+
+<div class="infoBlock">
+
+To understand how RudderStack handles hardware failures and guarantees High Availability, please go through our <a href="https://rudderstack.com/docs/user-guides/administrators-guide/high-availability/">
+High Availability guide</a>.
+
+</div>
+
+## RudderStack Enterprise Version
+
+The Enterprise version of RudderStack makes horizontal scaling seamless, while maintaining the event ordering and guaranteeing the delivery of all events.
+
+### Event Ordering
+
+RudderStack Enterprise has a proxy service that implements a routing algorithm. It forwards a given set of user events to the same RudderStack node every time. Each node then guarantees the event ordering while delivering to the specified destinations. This proxy service is highly available and scalable.
+
+<img src="../../../../images/assets/image (27).png" />
+<span class="imageTitle">Event Ordering in RudderStack Enterprise</span>
+
+### Scale Down
+
+RudderStack Enterprise includes a separate process named **Jobs DB Migrator**. This process is responsible for moving all pending events from the existing nodes to the new nodes after scaling up or down. It makes sure all the events are migrated to the new nodes and the event ordering is maintained during and after the migration process.
+
+<img src="../../../../images/assets/image (55).png" />
+<span class="imageTitle">Scaling Down in RudderStack Enterprise</span>
+
+## Contact Us
+
+If you want to know more about horizontal scaling in RudderStack, or if you have any queries or concerns on how to implement it effectively, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel to know more about this feature.

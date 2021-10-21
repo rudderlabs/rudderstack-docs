@@ -1,0 +1,89 @@
+---
+title: "Xero"
+description: Step-by-step guide to ingest data from Xero into RudderStack.
+---
+
+# Xero
+
+[Xero](https://www.xero.com/us/) is a popular cloud-based accounting software, ideal for small and medium-sized businesses, accountants, and book-keepers. It allows you to simplify your accounting and everyday business-related tasks, including bill payments, bank connections, and claiming expenses.
+
+This document guides you in setting up Xero as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Xero data, which can then be routed to your data warehouse destination supported by RudderStack.
+
+<div class="infoBlock">
+
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+
+</div>
+
+## Getting Started
+
+To add Xero as a source in RudderStack, follow these steps:
+
+- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
+- From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
+
+<img src="https://gblobscdn.gitbook.com/assets%2F-Lq5Ea6fHVg3dSxMCgyQ%2F-MOehucaPVJeehiI6kGM%2F-MOewizUa40U7fa-Ny3L%2F1.png?alt=media&token=33f4d672-e6f3-4fc8-9b49-09c772d79e93" alt="Add Source" />
+
+- Next, navigate to **Cloud Extract** within the **Sources** directory and select **Xero**.
+
+<img src="../../../images/assets/2 (14).png" alt="Select Xero" />
+
+- Assign a name to your source, and click on **Next**.
+
+<img src="../../../images/assets/3 (12).png" alt="Assign a name" />
+
+### Setting Up the Connection
+
+- Under **Create new account**, click on **Connect with Xero** and authenticate RudderStack with your Xero account.
+
+<img src="../../../images/assets/screen-shot-2021-02-23-at-6.27.30-pm.png" alt="Connect with Xero" />
+
+<div class="infoBlock">
+
+If you have already connected RudderStack to your Xero account, your credentials should appear automatically under **Use existing credentials**.
+
+</div>
+
+### Configuring the Source
+
+- In the next screen, choose the Xero **Tenant ID** . Also, select the **Earliest Report Year** and **Report Starting Month** from which you want RudderStack to ingest the data.
+
+<img src="../../../images/assets/screen-shot-2021-02-23-at-6.27.16-pm.png" alt="Report Starting Month" />
+
+### Setting the Data Update Schedule
+
+- Next, you will be required to set the **Run Frequency** to schedule the data import from your Xero account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option, as shown:
+
+<img src="../../../images/assets/screen-shot-2021-02-23-at-6.27.53-pm.png" alt="Sync Starting At" />
+
+### Selecting the Data to Import
+
+- Finally, select the appropriate data columns to import. To import all the data, simply click on **Select All**.
+
+<img src="../../../images/assets/screen-shot-2021-02-23-at-6.28.10-pm.png" alt="Select All" />
+
+That's it! Xero is now successfully configured as a source on your RudderStack dashboard.
+
+RudderStack will start importing data from Xero as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+
+<img src="../../../images/assets/screen-shot-2021-02-23-at-6.28.27-pm.png" alt="Add Destinations" />
+
+<div class="successBlock">
+
+  Use the **Connect Destinations** option if you have already
+  configured a data warehouse destination in RudderStack. To configure a data
+  warehouse destination from scratch, click on the
+  **Add Destination** button.
+</div>
+
+## FAQs
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is.
+
+We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
+## Contact Us
+
+If you come across any issues while configuring Xero as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack channel](https://rudderstack.com/join-rudderstack-slack-community); we will be happy to talk to you

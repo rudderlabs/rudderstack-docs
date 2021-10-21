@@ -1,0 +1,116 @@
+---
+# slug: "/docs/destinations/marketing/drip/drip-web-device-mode"
+title: "Device Mode"
+description: >-
+  Detailed technical documentation on sending events to Drip using the
+  RudderStack Web Device mode.
+---
+
+# Device Mode
+
+RudderStack lets you send your event data to Drip via the Device mode, i.e. using the native web SDK.
+
+<div class="infoBlock">
+
+For more information on sending events via the Device mode, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes//">RudderStack connection modes</a> guide.
+
+</div>
+
+<div class="successBlock">
+
+**Find the open-source JavaScript SDK code for this destination in our <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/Drip">GitHub repo</a>.**
+</div>
+
+## Identify
+
+The `identify` method pushes the subscriber data to Drip. If the subscriber is not present in your account, RudderStack will create a new record for them. Otherwise, RudderStack updates the user records with the latest information.
+
+<div class="infoBlock">
+
+To update a subscriber's email address, use the <code class="inline-code">new_email</code> property.
+
+</div>
+
+<div class="infoBlock">
+
+For more information on the <code class="inline-code">identify</code> call, check out the <a href="https://rudderstack.com/docs/rudderstack-api/rudderstack-spec/identify/">RudderStack API spec</a>.
+
+</div>
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify(
+  "6781206",
+  {
+    email: "sampleUser@testmail.com",
+    tags: ["Customer"],
+  },
+  {
+    externalId: [
+      {
+        type: "dripCampaignId",
+        id: "846616660",
+      },
+    ],
+  }
+)
+```
+
+The following table lists the properties that RudderStack transforms and maps to Drip's standard properties:
+
+| **RudderStack Property Name** | **Drip Standard Property** |
+| :---------------------------- | :------------------------- |
+| `email`                       | `email`                    |
+| `newEmail`                    | `new_email`                |
+| `userId or anonymousId`       | `user_id`                  |
+| `tags`                        | `tags`                     |
+| `removeTags`                  | `remove_tags`              |
+| `prospect`                    | `prospect`                 |
+| `euConsent`                   | `eu_consent`               |
+| `euConsentMessage`            | `eu_consent_message`       |
+
+<div class="infoBlock">
+
+All other fields in <code class="inline-code">context.traits</code> will be passed as custom fields.
+
+</div>
+
+You can subscribe a user to a [**Email Series Campaign**](https://www.drip.com/learn/docs/guides/overview-of-drip) by providing the associated **Campaign ID**. Doing so will add the subscriber directly to that email series campaign.
+
+If you want to add a subscriber to your account without subscribing them to an email series campaign, use the `identify` call instead. You can also send some additional properties with the `identify` call. These are listed in the following table:
+
+| **RudderStack Property Name** | **Drip Standard Property** |
+| :---------------------------- | :------------------------- |
+| `doubleOptin`                 | `double_optin`             |
+
+## Track
+
+When you call the `track` API, RudderStack sends the event to Drip along with its name and all of the specified properties. If you include `revenue` as a property, it will get passed to Drip as the conversion value of the event.
+
+<div class="infoBlock">
+
+For more information on the <code class="inline-code">track</code> call, check out the <a href="https://rudderstack.com/docs/rudderstack-api/rudderstack-spec/track/">RudderStack API spec</a>.
+
+</div>
+
+A sample `track` call is as shown:
+
+```javascript
+rudderanalytics.track("randomProduct", {
+  email: "sampleUser@rudderstackdrip.com",
+  revenue: 100,
+})
+```
+
+The following table lists the properties that RudderStack transforms and maps to Drip's standard properties:
+
+| **RudderStack Property Name**      | **Drip Standard Property** |
+| :--------------------------------- | :------------------------- |
+| `email`                            | `email`                    |
+| `revenue`                          | `value`                    |
+| `occurred_at or originalTimestamp` | `occurred_at`              |
+
+## Contact Us
+
+For any questions related to any of the sections covered in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

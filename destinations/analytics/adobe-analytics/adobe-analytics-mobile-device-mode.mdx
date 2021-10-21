@@ -1,0 +1,480 @@
+---
+# slug: "/docs/destinations/analytics/adobe-analytics/mobile-device-mode"
+title: "Mobile Device Mode Settings"
+description: >-
+  Detailed technical documentation on the mobile device mode settings for Adobe
+  Analytics destination.
+---
+
+# Mobile Device Mode Settings
+
+This document covers the necessary settings and configurations to send events to Adobe Analytics via your mobile device mode.
+
+<div class="successBlock">
+
+  Mobile <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode"> device mode </a> refers to using the Android or iOS SDK to send your events directly to Adobe Analytics.
+</div>
+
+To configure Adobe Analytics via the mobile device mode, follow these steps:
+
+- Click on the **Manage Apps** option on the left nav bar on your [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard.
+- **Add** your app or click on an existing app and configure the required settings under the **Manage App Settings** tab, as shown:
+
+<img src="https://user-images.githubusercontent.com/59817155/124233542-92a2fb80-db30-11eb-8722-c91a07cfa7ab.png" />
+
+- Click on the **Config File** option present at the bottom of the same page, as shown:
+
+<img src="https://user-images.githubusercontent.com/59817155/124233808-db5ab480-db30-11eb-900f-75a3aa9a5367.png" />
+
+### Android
+
+For Android, place the `ADBMobileConfig.json` file inside your app under `src/main/assets/`.
+
+Then, follow the instructions in the [**Adobe documentation**](https://experienceleague.adobe.com/docs/mobile-services/android/getting-started-android/dev-qs.html?lang=en) to create the report suite.
+
+### iOS
+
+For iOS, drag and drop the `ADBMobileConfig.json` under the `Pods` section in the `Project Navigator`and verify the following:
+
+- The `Copy items if needed` checkbox is selected.
+- `Create groups` is selected.
+- None of the checkboxes in the `Add to targets` section is selected.
+
+In the File Inspector, add the JSON file to the `AdobeMobileSDK` target.
+
+Then, follow the instructions in the [**Adobe documentation**](https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/set-up-ios.html?lang=en#) to create the report suite.
+
+## Adding Device Mode Integration
+
+<!--{% tabs %}
+{% tab title="iOS" %}
+Follow these steps to add Adobe Analytics to your iOS project:
+
+- In your `Podfile`, add the `Rudder-Adobe` extension:
+
+```ruby
+pod 'Rudder-Adobe'
+```
+
+- After adding the dependency followed by `pod install` , add the imports to your `AppDelegate.m` file as shown:
+
+```objectivec
+#import <Rudder/Rudder.h>
+#import <RudderAdobeFactory.h>
+```
+
+- Then, add the initialization of your `RSClient` as shown:
+
+```objectivec
+RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
+[configBuilder withDataPlaneUrl:DATA_PLANE_URL];
+[configBuilder withFactory:[RudderAdobeFactory instance]];
+[RSClient getInstance:<YOUR_WRITE_KEY> config:[configBuilder build]];
+```
+
+{% endtab %}
+
+{% tab title="Android" %}
+To add Adobe Analytics to your Android project, follow these steps :
+
+- Open your `app/build.gradle` file and add the following under the `dependencies` section :
+
+```groovy
+implementation 'com.rudderstack.android.sdk:core:1.+'
+implementation 'com.google.code.gson:gson:2.8.6'
+implementation 'com.rudderstack.android.integration:adobe:1.0.0'
+
+// Adobe Analytics
+implementation 'com.adobe.mobile:adobeMobileLibrary:4.18.2'
+```
+
+- Initialize the RudderStack SDK in the `Application` class' `onCreate()` method as shown:
+
+```kotlin
+// initializing Rudder SDK
+val rudderClient = RudderClient.getInstance(
+    this,
+    WRITE_KEY,
+    RudderConfig.Builder()
+        .withDataPlaneUrl(DATA_PLANE_URL)
+        .withFactory(AdobeIntegrationFactory.FACTORY)
+        .build()
+)
+```
+
+- For Android, make sure you add these permissions to your `AndroidManifest.xml`:
+
+```groovy
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+```
+
+{% endtab %}
+{% endtabs %} -->
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+        Follow these steps to add Adobe Analytics to your iOS project:
+<ul>
+<li>In your <code class="inline-code">Podfile</code>, add the <code class="inline-code">Rudder-Adobe</code> extension:
+<span>
+
+```ruby
+pod 'Rudder-Adobe'
+```
+</span>
+</li>
+<li>After adding the dependency followed by <code class="inline-code">pod install</code> , add the imports to your <code class="inline-code">AppDelegate.m</code> file as shown:
+<span>
+
+```objectivec
+#import <Rudder/Rudder.h>
+#import <RudderAdobeFactory.h>
+```
+</span>
+</li>
+<li>Then, add the initialization of your <code class="inline-code">RSClient</code> as shown:
+<span>
+
+```objectivec
+RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
+[configBuilder withDataPlaneUrl:DATA_PLANE_URL];
+[configBuilder withFactory:[RudderAdobeFactory instance]];
+[RSClient getInstance:<YOUR_WRITE_KEY> config:[configBuilder build]];
+```
+</span>
+</li>
+</ul>
+      </TabPanel>
+      <TabPanel>
+        To add Adobe Analytics to your Android project, follow these steps :
+<ul>
+<li>Open your <code class="inline-code">app/build.gradle</code> file and add the following under the <code class="inline-code">dependencies</code> section :
+
+```groovy
+implementation 'com.rudderstack.android.sdk:core:1.+'
+implementation 'com.google.code.gson:gson:2.8.6'
+implementation 'com.rudderstack.android.integration:adobe:1.0.0'
+
+// Adobe Analytics
+implementation 'com.adobe.mobile:adobeMobileLibrary:4.18.2'
+```
+</li>
+<li>Initialize the RudderStack SDK in the <code class="inline-code">Application</code> class' <code class="inline-code">onCreate()</code> method as shown:
+<span>
+
+```kotlin
+// initializing Rudder SDK
+val rudderClient = RudderClient.getInstance(
+    this,
+    WRITE_KEY,
+    RudderConfig.Builder()
+        .withDataPlaneUrl(DATA_PLANE_URL)
+        .withFactory(AdobeIntegrationFactory.FACTORY)
+        .build()
+)
+```
+</span>
+</li>
+<li>For Android, make sure you add these permissions to your <code class="inline-code">AndroidManifest.xml</code>:
+<span>
+
+```groovy
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+```
+</span>
+</li>
+</ul>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Dashboard Settings to Send Events via the Mobile Device Mode
+
+Configure the following settings in the RudderStack dashboard to use the mobile device mode:
+
+- Set the **Heartbeat Tracking Server URL** and it should be in the format of `[your_namespace].hb.omtrdc.net`.
+- Toggle **Check for Heartbeat calls to be made over HTTPS** to enable or disable the SSL mode.
+- Enter **Prefix to add before all contextData property** to append a prefix before a custom property.
+- Select **Product Identifier** to look for `Product Id`. By default, it is set to `Product Name`.
+
+## Sending Events
+
+Map all the events defined in the [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard in the **Map Rudder Events to Adobe Custom Events** setting in the RudderStack dashboard.
+
+## Sending Custom Properties
+
+Map all the properties defined at the [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard in the **Map Rudder Context data to Adobe Context Data** settings in the Rudderstack dashboard.
+
+<div class="warningBlock">
+
+For mobile device mode, RudderStack currently does not support the <a href="https://rudderstack.com/docs/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#initialize-heartbeat">Initialize Heartbeat</a> and <a href="https://rudderstack.com/docs/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#heartbeat-playhead-update">Heartbeat Playhead Update</a> video events.
+</div>
+
+## Identify
+
+When you make an `identify` call, RudderStack sets the Adobe `visitorId` to the value of the user’s RudderStack `userId`.
+
+A sample `identify` call looks like the following:
+
+<!--{% tabs %}
+{% tab title="iOS" %}
+
+```objectivec
+[[RSClient sharedInstance] identify:@"Adobe_iOS_user"];
+```
+
+{% endtab %}
+
+{% tab title="Android" %}
+
+```java
+MainApplication.rudderClient.identify("AdobeUser");
+```
+
+{% endtab %}
+{% endtabs %} -->
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient sharedInstance] identify:@"Adobe_iOS_user"];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+MainApplication.rudderClient.identify("AdobeUser");
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Track
+
+When you make a `track` call, RudderStack sends an Adobe `trackAction` event and passes your event name and any associated properties mapped to Adobe as context data values.
+
+A sample `track` call is as shown:
+
+<!--{% tabs %}
+{% tab title="iOS" %}
+
+```objectivec
+[[RSClient sharedInstance] track:@"Order Completed" properties:@{
+        @"orderId" : @2002,
+        @"category" : @"Cloths",
+        @"productId" : @"2200013",
+        @"name": @"Shirt",
+        @"price" : @10001,
+        @"quantity" : @12
+    }];
+```
+
+{% endtab %}
+
+{% tab title="Android" %}
+
+```java
+MainApplication.rudderClient.track("Order Completed",
+            RudderProperty()
+                .putValue("orderId", "12345")
+                .putValue("category", "category")
+                .putValue("revenue", 99.9)
+                .putValue("shipping", 13.99)
+                .putValue("tax", 20.99)
+                .putValue("promotion_id", "PROMO_1234")
+        );
+```
+
+{% endtab %}
+{% endtabs %} -->
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient sharedInstance] track:@"Order Completed" properties:@{
+    @"orderId" : @2002,
+    @"category" : @"Cloths",
+    @"productId" : @"2200013",
+    @"name": @"Shirt",
+    @"price" : @10001,
+    @"quantity" : @12
+}];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+MainApplication.rudderClient.track("Order Completed",
+  RudderProperty()
+    .putValue("orderId", "12345")
+    .putValue("category", "category")
+    .putValue("revenue", 99.9)
+    .putValue("shipping", 13.99)
+    .putValue("tax", 20.99)
+    .putValue("promotion_id", "PROMO_1234")
+  );
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Screen
+
+When you make a `screen` call, RudderStack sends an Adobe `trackState` event and passes the screen name along with any associated properties mapped to Adobe as context data values.
+
+A sample `screen` call looks like the following:
+
+<!--{% tabs %}
+{% tab title="iOS" %}
+
+```objectivec
+[[RSClient sharedInstance] track:@"Home Screen"
+                              properties:@{
+                                  @"Width" : @"13"
+                              }];
+```
+
+{% endtab %}
+
+{% tab title="Android" %}
+
+```java
+MainApplication.rudderClient.screen("Home Screen",
+            RudderProperty()
+                .putValue("Width",12)
+        )
+```
+
+{% endtab %}
+{% endtabs %} -->
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient sharedInstance] track:@"Home Screen"
+  properties:@{
+      @"Width" : @"13"
+  }];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+MainApplication.rudderClient.screen("Home Screen",
+      RudderProperty()
+          .putValue("Width",12)
+  )
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Reset
+
+Calling `reset` sets the user’s Adobe `visitorId` to `null`.
+
+<div class="infoBlock">
+
+The default value of Adobe's <code class="inline-code">visitorId</code> is <code class="inline-code">null</code> until you explicitly set it (by calling <code class="inline-code">identify</code>).
+</div>
+
+A sample `reset` call is as shown:
+
+<!--{% tabs %}
+{% tab title="iOS" %}
+
+```objectivec
+[[RSClient sharedInstance] reset];
+```
+
+{% endtab %}
+
+{% tab title="Android" %}
+
+```java
+MainApplication.rudderClient.reset()
+```
+
+{% endtab %}
+{% endtabs %} -->
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient sharedInstance] reset];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+MainApplication.rudderClient.reset()
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Flush
+
+Calling the `flush` method immediately sends all the locally queued events to Adobe.
+
+A sample `flush` call is as follows:
+
+```java
+MainApplication.rudderClient.flush()
+```
+
+<div class="infoBlock">
+
+The <code class="inline-code">flush</code> call is supported only in Android.
+</div>
+
+## Contact Us
+
+For more information on any of the sections mentioned in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

@@ -1,0 +1,199 @@
+---
+#slug: "/docs/data-warehouse-integrations"
+title: "Warehouse Destinations"
+description: >-
+  Detailed technical documentation on sending your event data from RudderStack
+  to your specified data warehouse platforms
+---
+
+# Warehouse Destinations
+
+RudderStack currently supports data warehouse integrations for Snowflake, Redshift, Google BigQuery, and PostgreSQL.
+
+This section gives you detailed guidance on how to integrate RudderStack with these destination platforms. Although there are detailed FAQs provided at the end of each of these guides, please feel free to [contact us](https://rudderstack.com/contact/) or talk to us on [Slack](https://rudderstack.com/join-rudderstack-slack-community), in case you have any questions or concerns regarding their integration or use.
+
+## Useful Data Warehouse Integrations
+
+<!--{% page-ref page="warehouse-schemas.md" %}-->
+
+<a class="pageRef" href="warehouse-schemas/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Warehouse Schemas
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="google-bigquery.md" %}-->
+
+<a class="pageRef" href="google-bigquery/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Google BigQuery
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="amazon-redshift.md" %}-->
+
+<a class="pageRef" href="amazon-redshift/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Amazon Redshift
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="snowflake.md" %}-->
+
+<a class="pageRef" href="snowflake/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Snowflake
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="postgresql.md" %}-->
+
+<a class="pageRef" href="postgresql/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      PostgreSQL
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="clickhouse.md" %}-->
+
+<a class="pageRef" href="clickhouse/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Clickhouse
+    </span>
+  </div>
+</a>
+
+## Contact Us
+
+For more information on the supported data warehouse integrations or the RudderStack platform in general, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel. We will be happy to talk to you.
