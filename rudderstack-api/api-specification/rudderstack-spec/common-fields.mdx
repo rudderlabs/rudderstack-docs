@@ -14,8 +14,6 @@ The common fields define the core event data structure in RudderStack. These fie
 Every RudderStack API call shares the same common fields.
 </div>
 
-## Common Fields
-
 The following table lists all the common fields with their detailed description:
 
 | Name | Data Type | Presence | Description |
@@ -31,7 +29,7 @@ The following table lists all the common fields with their detailed description:
 | `type` | `String` | Required | Captures the type of API. Values can be either `track`, `screen`, `identify`, `page`. |
 | `sentAt` | `Timestamp` | Required | Captures the time when the event was sent to RudderStack from the client. |
 
-## Contextual Fields
+## Contextual fields
 
 The contextual fields give additional useful context about a particular event.
 
@@ -124,8 +122,6 @@ The following sections highlight all the contextual fields that are automaticall
 | `library.version` | Yes |
 | `ip` | Yes |
 | `locale` | Yes |
-| `location.latitude` | - |
-| `location.longitude` | - |
 | `location.speed` | - |
 | `network.bluetooth` | Yes |
 | `network.carrier` | Yes |
@@ -168,8 +164,6 @@ The following sections highlight all the contextual fields that are automaticall
 | `library.version` | Yes |
 | `ip` | Yes |
 | `locale` | Yes |
-| `location.latitude` | - |
-| `location.longitude` | - |
 | `location.speed` | - |
 | `network.bluetooth` | - |
 | `network.carrier` | Yes |
@@ -189,7 +183,7 @@ The following sections highlight all the contextual fields that are automaticall
 | `userAgent` | - |
 | `timezone` | Yes |
 
-## Sample Payload with Common Fields
+## Sample payload with common fields
 
 The following sample payload highlights how the above common and contextual fields are used:
 
@@ -250,6 +244,6 @@ The following sample payload highlights how the above common and contextual fiel
 }
 ```
 
-## Contact Us
+## Contact us
 
 For more information on the common fields, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
