@@ -1,0 +1,158 @@
+---
+# slug: "/docs/connections/adding-source-and-destination-rudderstack"
+title: "How to Add a Source and Destination in RudderStack"
+description: >-
+  Step-by-step guide on adding a source and destination in RudderStack to track
+  and route your events.
+---
+
+# How to Add a Source and Destination in RudderStack
+
+This guide details the steps to add a source and destination in RudderStack.
+
+<div class="successBlock">
+  Refer to the <a href="https://rudderstack.com/docs/connections/">Connections</a> guide to read more about
+  sources and destinations in RudderStack.
+</div>
+
+## Adding a Source
+
+<div class="successBlock">
+
+  For more information on sources in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/">Connections</a> guide.
+</div>
+
+Follow these steps to add an event data source in RudderStack:
+
+- Log in to the **RudderStack dashboard**.
+
+<!-- <img src="../../../images/assets/1 (26).png" /> -->
+
+<img src="../../../images/assets/1 (26).png" alt="RudderStack Dashboard" />
+<span class="imageTitle"></span>
+
+- Under Sources, click on **Add Source**. From the list of sources, click on the source you want to set up in RudderStack.
+
+<!-- <img src="../../../images/assets/2 (30).png" /> -->
+
+<img src="../../../images/assets/2 (30).png" alt="Add Source" />
+
+<div class="successBlock">
+
+  All the RudderStack sources are classified into the following three
+  categories. Read their respective documentation for more information:
+  <ul>
+    <li>
+      <a href="https://rudderstack.com/docs/stream-sources/">Event Streams</a>
+    </li>
+    <li>
+      <a href="https://rudderstack.com/docs/cloud-extract-sources/">Cloud Extract</a>
+    </li>
+    <li>
+      <a href="https://rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a>
+    </li>
+  </ul>
+</div>
+
+- Click on the desired source, assign a name to it, and click **Next**.
+- Enter the required source-specific settings as applicable.
+
+<div class="warningBlock">
+
+  Setting up the data sources to ingest data from your cloud apps might require
+  some additional configuration. Refer to the relevant source documentation for
+  more details.
+</div>
+
+- **Important**: Note the source **Write Key**. This is required to configure the RudderStack SDK to track and collect events from the source platform.
+
+<!-- <img src="../../../images/assets/latest.png" /> -->
+
+<img src="../../../images/assets/latest.png" alt="Write Key" />
+
+## Adding a Destination
+
+<div class="successBlock">
+
+  For more information on destinations in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/">Connections</a> guide.
+</div>
+
+To add a destination in RudderStack, follow these steps:
+
+- On your dashboard home page, click on the **ADD DESTINATION** option under **Destinations**, as shown:
+
+<!-- <img src="../../../images/assets/1 (27).png" /> -->
+
+<img src="../../../images/assets/1 (27).png" alt="Add Destination" />
+<span class="imageTitle"></span>
+
+- Alternatively, you can also connect your source to a destination as shown:
+
+<!-- <img src="../../../images/assets/latest-1.png" /> -->
+
+<img
+  src="../../../images/assets/latest-1.png"
+  alt="Connect your source to a destination"
+/>
+<span class="imageTitle"></span>
+
+- From the list of destinations, select the desired destination. Assign a name to it and click on **Next**.
+- Select the data source for this destination and click on **Next**.
+
+<!-- <img src="../../../images/assets/screen-shot-2021-05-19-at-4.54.30-pm.png" /> -->
+
+<img
+  src="../../../images/assets/screen-shot-2021-05-19-at-4.54.30-pm.png"
+  alt="Select the data source"
+/>
+<span class="imageTitle"></span>
+
+- Configure the destination with the relevant connection settings. Refer to the specific [**destination documentation**](https://rudderstack.com/docs/destinations/) for more details on these settings.
+
+<!-- <img src="../../../images/assets/ga1 (1).png" /> -->
+
+<img src="../../../images/assets/ga1 (1).png" alt="Configure the destination" />
+<span class="imageTitle"></span>
+
+- RudderStack lets you transform your source events in a destination-specific format through the [**Transformations**](https://rudderstack.com/docs/transformations/) feature. Click on the **CREATE NEW TRANSFORMATION** option to add a transformation. Otherwise, click on **Next**.
+
+<!-- <img src="../../../images/assets/screen-shot-2021-05-19-at-5.01.56-pm (1).png" /> -->
+
+<img
+  src="../../../images/assets/screen-shot-2021-05-19-at-5.01.56-pm (1).png"
+  alt="Create new transformation"
+/>
+<span class="imageTitle"></span>
+
+- Your destination should now be configured successfully.
+
+<!-- <img src="../../../images/assets/latest23.png" /> -->
+
+<img src="../../../images/assets/latest23.png" alt="Configuration successful" />
+
+### Updating a Destination
+
+Here are a few things to keep in mind when updating a destination:
+
+- To rename a destination, click on the edit icon next to the destination name as shown:
+
+<!-- <img src="../../../images/assets/screen-shot-2021-08-25-at-11.18.08-am.png" /> -->
+
+<img
+  src="../../../images/assets/screen-shot-2021-08-25-at-11.18.08-am.png"
+  alt="Rename a destination"
+/>
+<span class="imageTitle"></span>
+
+- To add or change the transformation, go the **Transformation** tab.
+- To modify the destination configuration, go to the **Configuration** tab.
+- To enable or disable a destination or permanently delete it, go to the **Settings** tab.
+
+<div class="warningBlock">
+
+  Before deleting a destination, make sure it is disconnected from the source.
+</div>
+
+## Contact Us
+
+For more information or support on adding a source and destination in RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

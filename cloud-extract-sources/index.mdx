@@ -1,0 +1,245 @@
+---
+#slug: "/docs/cloud-extract-sources"
+title: "Cloud Extract Sources"
+description: >-
+  Detailed technical documentation on ingesting your event data from your
+  specified Cloud Extract sources into RudderStack.
+---
+
+# Cloud Extract Sources
+
+## What are Sources in RudderStack?
+
+Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed \(with or without transformation\) into your data warehouse or third-party destinations for analytics and other activation use-cases.
+
+<div class="successBlock">
+
+  For more information on sources in RudderStack, check out the <a href="https://rudderstack.com/docs/connections/">Connections guide</a>.
+</div>
+
+## RudderStack Cloud Extract
+
+With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [**Facebook Ads**](https://www.facebook.com/business/ads), [**Google Analytics**](https://analytics.google.com/), [**Marketo**](https://www.marketo.com/), [**HubSpot**](https://www.hubspot.com/), [**Stripe**](stripe/), and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
+
+<div class="infoBlock">
+
+**All the Cloud Extract sources support sending data only to a data warehouse destination.**
+
+</div>
+
+<div class="warningBlock">
+
+We highly recommend connecting **only one** warehouse destination to a Cloud Extract source. To send data to multiple data warehouses from the same source, we recommend creating individual sources with the same settings for each warehouse destination.
+
+</div>
+
+Here's a quick 1-minute walkthrough of the Cloud Extract feature:
+
+<!--https://www.youtube.com/watch?v=F9dIv5Pp0EE-->
+
+<YouTube
+  videoId={'F9dIv5Pp0EE'}
+/>
+
+## FAQs
+
+#### Can I connect a Cloud Extract source to multiple data warehouse destinations?
+
+You can connect **only one data warehouse destination per Cloud Extract source**. If you wish to send data to multiple warehouses, you can configure multiple Cloud Extract sources with the same settings and connect them to each data warehouse.
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is.
+
+We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
+## Popular Cloud Extract Sources
+
+<!--{% page-ref page="marketo.md" %}-->
+
+<a class="pageRef" href="marketo/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Marketo
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="salesforce/" %}-->
+<a class="pageRef" href="salesforce/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Salesforce
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="zendesk.md" %}-->
+
+<a class="pageRef" href="zendesk/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Zendesk
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="stripe.md" %}-->
+
+<a class="pageRef" href="stripe/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Stripe
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="google-sheets.md" %}-->
+
+<a class="pageRef" href="google-sheets/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Google Sheets
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="google-analytics.md" %}-->
+
+<a class="pageRef" href="google-analytics/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Google Analytics
+    </span>
+  </div>
+</a>
+
+<div class="successBlock">
+
+  If you wish to contribute to developing more Cloud Extract integrations for
+  RudderStack, please refer to the contributing guide <a href="https://rudderstack.com/docs/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/">here</a>.
+</div>
+
+## Contact Us
+
+For more information on the RudderStack Cloud Extract sources or the platform in general, feel free to [**contact us**](mailto:%20contact@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

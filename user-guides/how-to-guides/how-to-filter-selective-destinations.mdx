@@ -1,0 +1,138 @@
+---
+# slug: "/docs/user-guides/how-to-guides/how-to-filter-selective-destinations"
+title: "How to Filter Selective Destinations"
+description: >-
+  An easy-to-follow guide on filtering selective destinations while sending
+  event data in RudderStack
+---
+
+# How to Filter Selective Destinations
+
+RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. For the JavaScript SDK, you can do so by passing an integrations object in the **options** parameter of the event method. For most of the other SDK's you can use the **integrations** object parameter for the associated event. The filter destination feature is currently only supported for cloud mode integrations.
+
+## How it works
+
+The following is an example of how to send a sample message **only** to `Google Analytics` and `Intercom` in the JavaScript SDK:
+
+```javascript
+rudderanalytics.identify(
+  "samplename",
+  {
+    email: "name@email.org",
+    name: "Samplename",
+  },
+  {
+    integrations: {
+      All: false,
+      "Google Analytics": true,
+      Intercom: true,
+    },
+  }
+)
+```
+
+<div class="successBlock">
+
+  **NOTE**: Unless explicitly defined otherwise,
+  <code class="inline-code">'All'</code> is always set to
+  <code class="inline-code">true</code>. This means that sending events to all destinations
+  is enabled by default.
+</div>
+
+<div class="infoBlock">
+
+The line **<code class="inline-code">All: false</code>** instructs RudderStack **not** to send the event data to any destinations **by default,** unless they are explicitly listed as **<code class="inline-code">true</code>** in the subsequent lines.
+
+</div>
+
+You can also disable sending event data to certain destinations. In this case, the event data is sent to **all the other destinations** except the specified ones. An example of this is as shown from the JavaScript SDK:
+
+```javascript
+rudderanalytics.identify(
+  "samplename",
+  {
+    email: "name@email.org",
+    name: "Samplename",
+  },
+  {
+    integrations: {
+      "Google Analytics": false,
+      Intercom: false,
+    },
+  }
+)
+```
+
+<div class="infoBlock">
+
+As seen in the above code snippet, RudderStack will send the event data to all the destinations except <code class="inline-code">Google Analytics</code> and <code class="inline-code">Intercom</code>.
+
+</div>
+
+## Examples
+
+The following are examples for the same `track()` call from a variety of SDK's.
+
+<div class="infoBlock">
+
+Please Note: Some of the SDK's follow their own convention that is different than the examples below. The notable SDK's with different convention are IOS and Android. Please read the respective <code class="inline-code">SDK Integration Guide</code> section for your given SDK to find the correct format to filter selective destinations.
+
+</div>
+
+### JavaScript SDK
+
+```javascript
+rudderanalytics.track(
+  "samplename",
+  "sampleEventName",
+  {
+    email: "name@email.org",
+    name: "Samplename",
+  },
+  {
+    integrations: {
+      All: false,
+      "Amazon S3": true,
+      "Heap.io": false,
+    },
+  }
+)
+```
+
+### Python SDK
+
+```python
+rudder_analytics.track(
+    'sampleName',
+    'sampleEventName',
+    {
+      'email': 'name@email.org',
+      'name': 'Samplename'
+    },
+    integrations={
+      'All': False,
+      'Amazon S3': True,
+      'Heap.io': False
+    }
+)
+```
+
+<div class="infoBlock">
+
+In these examples above, the track events will only be sent to <code class="inline-code">Amazon S3</code> and <code class="inline-code">Heap.io</code> destinations.
+
+</div>
+
+## Destination Naming Convention
+
+By default, for the destination name please use the `displayed destination name` on the [RudderStack directory in your control plane](https://app.rudderstack.com/directory).
+
+<div class="infoBlock">
+
+These destination names are case sensitive!
+
+</div>
+
+## Contact Us
+
+For more information on any of the sections in this guide, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel, and we will be happy to help you!

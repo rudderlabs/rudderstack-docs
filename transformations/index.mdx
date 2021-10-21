@@ -1,0 +1,393 @@
+---
+#slug: "/docs/transformations"
+title: "Transformations"
+description: Detailed technical documentation on RudderStack's Transformations feature.
+---
+
+# Transformations
+
+Transformations is one of RudderStack's key features. It gives you the ability to code custom JavaScript functions to implement specific use-cases on your event data, like:
+
+- Filtering/sampling events.
+- Enriching events by implementing static logic or leveraging an external API.
+- Cleaning/aggregating data.
+- Data masking or removing sensitive PII information in the events to ensure data privacy.
+- Implementing external actions on the events using an API.
+
+<div class="successBlock">
+  Transformations can be used across your <a href="https://rudderstack.com/docs/stream-sources/">Event Stream</a>, <a href="https://rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> and <a href="https://rudderstack.com/docs/cloud-extract-sources/">Cloud Extract</a> pipelines.
+</div>
+
+Here's a quick 2-minute walkthrough of this feature:
+
+<!--https://www.youtube.com/watch?v=-1F4YeJCXU8-->
+
+<YouTube 
+  videoId={'-1F4YeJCXU8'}
+  opts={{playerVars: {rel: 0}}}
+/>
+
+<div class="infoBlock">
+  For details on how to add a transformation in RudderStack, check the <a href="https://rudderstack.com/docs/transformations#adding-a-transformation">Adding a New Transformation</a> section below.
+</div>
+
+<div class="successBlock">
+
+  You can refer to our <a href="https://github.com/rudderlabs/sample-user-transformers">Transformations</a> GitHub repository for some useful templates that you can use to create your own user transformations.
+</div>
+
+<div class="warningBlock">
+
+**Transformations only work for the Cloud mode destinations.**
+
+To know more about the Cloud mode in RudderStack, check out the <a href="https://rudderstack.com/docs/get-started/rudderstack-connection-modes">RudderStack Connection Modes</a> guide.
+
+</div>
+
+## Adding a Transformation
+
+- Log into your [**RudderStack dashboard**](https://app.rudderstack.com/).
+- Click on the [**Transformations**](https://app.rudderstack.com/transformations) link from the left panel in the dashboard, as shown:
+
+<!--<img src="../../../images/assets/image (90).png" />-->
+
+<img src="../../../images/assets/image (90).png" alt="Adding a Transformation" />
+<span class="imageTitle"></span>
+
+- Click on the **Create New** option as shown:
+
+<!--<img src="../../../images/assets/image (92).png" />-->
+
+<img src="../../../images/assets/image (92).png" alt="Create New Transformation" />
+<span class="imageTitle"></span>
+
+- Next, assign a name for this new transformation. Enter the transformation function's code in the **Transformation** window, as shown:
+
+<!--<img src="../../../images/assets/image (100).png" />-->
+
+<img
+  src="../../images/assets/image (100).png"
+  alt="Assign a transformation name"
+/>
+<span class="imageTitle"></span>
+
+- Add your transformation code within the `transformEvent` function in the **Transformation** window. You can also add other functions and call them from within `transformEvent`.
+
+<!--<img src="../../../images/assets/image (99).png" />-->
+
+<img src="../../../images/assets/image (99).png" alt="transformEvent function" />
+<span class="imageTitle"></span>
+
+<div class="infoBlock">
+
+Our <a href="https://github.com/rudderlabs/sample-user-transformers">Transformations</a> GitHub repository contains some useful templates that you can use to create your own transformations.
+
+You can copy-paste the entire code of any of the functions present in this repository into the **Transformation** window.
+
+</div>
+
+<div class="warningBlock">
+
+  Remember to delete the pre-populated <code class="inline-code">transformEvent</code> function in such cases, before
+  pasting your code.
+</div>
+
+- RudderStack also gives you the ability to test your transformation function with the **Run Test** option as shown:
+
+<!--<img src="../../../images/assets/image (97).png" />-->
+
+<img src="../../../images/assets/image (97).png" alt="Run Test" />
+<span class="imageTitle"></span>
+
+- In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` feature, as shown:
+
+```
+/***
+* This function gets executed on a batch of events before it gets pushed to a destination
+* events    => JSON list of events sent to rudder
+* metadata (optional) => Javascript function which can be used to access metadata of
+                        the given event by calling metadata(event)
+* After all the transformations are done, the final event that
+* needs to be pushed to the destination should be returned by this function
+***/
+export function transformBatch(events, metadata) {
+  return events
+}
+```
+
+<div class="dangerBlock"> 
+
+**Disclaimer for using <code class="inline-code">transformBatch</code>**
+
+Make sure you pass on the <code class="inline-code">messageID</code> from the input event onto the output event. If the <code class="inline-code">messageID</code> is passed on, the order of delivery of events is preserved. **Without it, this order may not be maintained**.
+
+It is highly recommended to use <code class="inline-code">transformEvent</code> in every possible case as it ensures event ordering in all cases.
+
+In case a <code class="inline-code">transformBatch</code> is required and event ordering is important, make sure to pass on the <code class="inline-code">messageID</code>.
+</div>
+
+## Libraries
+
+One of the key features of RudderStack Transformations is the ability to reuse code written for a transformation in other transformations as well. For this, RudderStack lets you create libraries or functions that can be reused in different transformations.
+
+To create a library, follow these steps:
+
+- Click on the [**Transformations**](https://app.rudderstack.com/transformations) link in the left nav bar and go to the **Libraries** section. Click on the **Create New** option to add new libraries, as shown:
+
+<!--<img src="../../../images/assets/image (89).png" />-->
+
+<img src="../../../images/assets/image (89).png" alt="Create new library" />
+
+- Add the library's **Name**, an optional **Description**, and include the custom functions that you need to reuse across all other transformations.
+
+<!--<img src="../../../images/assets/image (91).png" />-->
+
+<img
+  src="../../images/assets/image (91).png"
+  alt="Add library name and description"
+/>
+
+- You can add more functions under a single library, as shown:
+
+<!--<img src="../../../images/assets/image (95).png" />-->
+
+<img
+  src="../../images/assets/image (95).png"
+  alt="Add more functions under a single library"
+/>
+
+<div class="warningBlock">
+
+**RudderStack does not support the deletion of libraries as of now.**
+
+This is to ensure that you don't break any existing transformations that use the library that you might be trying to delete.
+</div>
+
+## Using Libraries in Transformations
+
+To use the libraries in your existing transformation, simply take the name of your library and convert it into **camel case without spaces** - this becomes your library handle.
+
+For example, if your library name is **`is rudder email`**, then the library handle would be **`isRudderEmail`**.
+
+<!--<img src="../../../images/assets/image (101).png" />-->
+
+<img
+  src="../../images/assets/image (101).png"
+  alt="Using libraries in transformations"
+/>
+
+Let's say you want to import a function called **`rudderEmail`**, which returns `true` for the emails from a specific domain \(e.g. RudderStack\) and `false` otherwise, from the **`is rudder email`** library. Also, you want to use this function to filter the events that don't have the email address of the specified domain.
+
+The following code snippet demonstrates how we can implement this use-case:
+
+```
+import { rudderEmail } from 'isRudderEmail'
+export function transformEvent(event) {
+    const email = event.context && event.context.traits && event.context.traits.email;
+    if (email) {
+      if (!rudderEmail(email)) return;
+    }
+    return event;
+}
+```
+
+On running a test, an example event not having the specified email domain is filtered out, as shown:
+
+<!--<img src="../../../images/assets/image (86).png" />-->
+
+<img
+  src="../../images/assets/image (86).png"
+  alt="Event filtered out without specifying email domain"
+/>
+
+### Importing Multiple Functions From Single Library
+
+When importing a single function or multiple functions from a library, it is important to keep the import statement to one line. Breaking the import function out into multiple lines will lead to an error.
+
+The following snippets highlight how to properly import functions from a library:
+
+```javascript
+Correct Way ✅
+---------------
+import { getPrice } from getFinanceData;
+
+OR
+
+import { getPrice, getRevenue, getProfit } from getFinanceData;
+```
+
+```javascript
+Incorrect Way ❌
+-----------------
+import {
+  getPrice
+} from getFinanceData;
+
+OR
+
+import {
+  getPrice,
+  getRevenue,
+  getProfit
+} from getFinanceData;
+```
+
+## Accessing Metadata
+
+RudderStack injects a function `metadata(event)` into your transformations as an argument. This allows you to access the event metadata variables that help you customize your transformations.
+
+<div class="infoBlock">
+
+  <code class="inline-code">metadata()</code> takes the event as input and
+  returns the metadata of the event.
+</div>
+
+The following properties, if available, are present in the metadata response:
+
+| Property Name   | Description                                                                                                                                                                    |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceId`      | This refers to the ID of the source configured on your RudderStack dashboard. Note that it different from the source **Write Key**. Refer to the image below for more details. |
+| `destinationId` | ID of the destination configured on your RudderStack dashboard.                                                                                                                |
+| `messageId`     | Corresponds to the unique ID for each event.                                                                                                                                   |
+| `sessionId`     | If sessions are enabled, this corresponds to the value of the session ID.                                                                                                      |
+
+<!--<img src="../../../images/assets/image (98).png" /><span class="imageTitle">Source ID</span> -->
+
+<img src="../../../images/assets/image (98).png" alt="Source ID" />
+<span class="imageTitle">Source ID</span>
+
+<!--<img src="../../../images/assets/image (120) (1) (1).png" />-->
+
+<img src="../../../images/assets/image (120) (1) (1).png" alt="Source ID" />
+
+Since you may not need the metadata in every transformation, you can optionally access it by including it in your function signature as an argument wherever required.
+
+An example of this is as shown below:
+
+```
+export function transformEvent(event, metadata){
+  const meta = metadata(event);
+  event.sourceId = meta.sourceId
+
+  return event;
+}
+```
+
+## External API Requests
+
+You can make any number of external API requests in your transformation functions and use the response to enrich your events data. RudderStack injects an asynchronous `fetch(url)` function into your transformations. It makes an API call to the given URL and returns the response in a JSON format.
+
+An example of how to use the `fetch` function in transformations is shown below:
+
+
+<Tabs>
+  <TabList>
+    <Tab>Basic</Tab>
+    <Tab>POST</Tab>
+    <Tab>Headers</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+<span>
+
+```
+curl --location -X POST
+'https://api.rudderstack.com/accessTokens' \ -H 'Authorization: Basic
+Base64Enc(workspacetoken:)' \ -H 'Content-Type: application/json' \ -d
+'{ "name": "some-test-access-token", "description":
+"some-description" }' 
+```
+</span>
+    </TabPanel>
+    <TabPanel>
+<span>
+
+``` 
+http POST 'https://api.rudderstack.com/accessTokens' \
+name=some-test-access-token description=some-description \
+Authorization:'Basic MXBUbGc2MlpZcUgycWtDMDVmc1hUZlJQRWZyOg==' \
+Content-Type:'application/json' 
+```
+</span>
+    </TabPanel>
+    <TabPanel> 
+<span>
+
+```
+export async function transformEvent(event) {
+  const res = await fetch("post_url", {
+    method: "POST", // POST, PUT, DELETE, GET, etc.
+    headers: {
+    "Content-Type": "application/json;charset=UTF-8",
+    "Authorization": "Bearer <your_authorization_token>"
+    },
+    body: JSON.stringify(event),
+  });
+  event.response = JSON.stringify(res);
+  return event;
+}
+```
+</span>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+
+<div class="successBlock">
+
+  To see how this feature is used in more detail, check out the <a href="https://github.com/rudderlabs/sample-user-transformers/blob/sampleTransformationV1/EnrichWithClearbit.js">
+    Clearbit enrichment example</a> which uses the <code class="inline-code">fetch</code> function.
+</div>
+
+<div class="infoBlock">
+
+For improved performance, we recommend using `batch` API requests instead of a separate API request for each event whenever possible.
+</div>
+
+## Debugging with Logs
+
+You can access event-related logs while running a test by including the `log()` function in your transformation code. An example of this is as shown:
+
+```javascript
+export function transformEvent(event, metadata) {
+  const meta = metadata(event)
+  event.sourceId = meta.sourceId
+
+  log("Event Name is", event.event, ";", "Message Id is", event.messageId)
+  log("Source Id is", meta.sourceId)
+
+  return event
+}
+```
+
+On running a test on the above code, you can see the logs in the **Logs** section of the dashboard, as shown:
+
+<!--<img src="../../../images/assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png" />-->
+
+<img
+  src="../../images/assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png"
+  alt="Adding a Transformation"
+/>
+
+<div class="infoBlock">
+
+  Arguments to the <code class="inline-code">log</code> function can be a
+  String, Number or Object.
+</div>
+
+## Limits
+
+You should take into account the memory and time limits when adding a new transformation. Each invocation of the transformation should not exceed the following limits:
+
+| Parameter    | Limit     |
+| :----------- | :-------- |
+| Memory Limit | 8 MB      |
+| Time Limit   | 4 seconds |
+
+<div class="warningBlock">
+
+  The user transformation fails if these limits are exceeded.
+</div>
+
+## Contact Us
+
+For more information on transformations and libraries in RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

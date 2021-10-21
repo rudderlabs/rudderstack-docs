@@ -1,0 +1,142 @@
+---
+# slug: "/docs/destinations/business-messaging/trengo"
+title: "Trengo"
+description: Step-by-step guide to set up Trengo as a destination in RudderStack.
+---
+
+# Trengo
+
+[Trengo](https://trengo.com/en) is a popular business messaging and communications platform that lets you bring together all your messages via email, SMS, social media, etc. into a single central communication hub. It allows you to set up cross-platform collaborations with your team, automate conversations with your users, and deliver personalized customer experiences.
+
+RudderStack allows you to configure Trengo as a destination to which you can send your event data.
+
+<div class="successBlock">
+
+  Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/trengo">GitHub repo</a>.
+</div>
+
+## Getting Started
+
+Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Trengo by referring to the table below:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | -             | -             | -             |
+| **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
+
+<div class="infoBlock">
+
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+
+</div>
+
+Once you have confirmed that the platform supports sending events to Trengo, perform the steps below:
+
+- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. Then, select **Trengo** from the list of destinations.
+
+<div class="infoBlock">
+
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">How to Add a Source and Destination in RudderStack</a> for details on adding a source in the RudderStack dashboard.
+
+</div>
+
+- Assign a name to the destination and click on **Next**. You should then see the following screen:
+
+<img src="../../../../images/assets/trengo-config.png" /><span class="imageTitle">Trengo Connection Settings</span>
+
+### Connection Settings
+
+In the **Connection Settings**, you will see the following options:
+
+- **API Token:** This is an unique token generated for your Trengo account. To generate this API token, you need to select **REST API** from **Apps and Integrations** under the **Settings** option in your Trengo account.
+- **Channel ID:** This corresponds to the unique ID for the channel to which you want to send your data via RudderStack.
+- **Channel Identifier:** Select this option depending on the type of channel you want to send your data.
+- **Enable deduplication for Contacts:** By default, Rudderstack will _Deduplicate_ contacts generated from your `identify` events. You can disable this option if you want to create duplicate contacts with same identifier.
+- **Map events with template:** To send `track` events to Trengo, you need to add the `event` to the _Event Name_ field. If you wish to customize the subject for the event, you can do so by adding a _template_.
+
+<div class="infoBlock">
+
+For a particular event the **Channel ID** can be overriden using `externalId`, For example: `(context.externalId: [{type:trengoChannelId, id:channelId}])`.
+
+</div>
+
+<div class="warningBlock">
+
+When using an `externalId` to override _channelId_ , make sure that the **Channel Identifier** of that specific channel matches with the **Channel Identifier** you have selected in Rudderstack dashboard.
+
+</div>
+
+### Effects on the Identify events
+
+Disabling the option **Enable deduplication for Contacts** will have the following consequences on the `identify` events:
+
+- Rudderstack will not update exising contacts with the same `identifier`.
+- For the channel identifier **phone**:
+  - If a contact is present with the same `phone`number as an identifier, it will be duplicated.
+  - If you want to store multiple contacts for a particular `phone` number as an identifier for different channels \(where the `channel identifiers` are **phone** too\), you will need to disable the `deduplication` option from Rudderstack dashboard.
+- For the channel identifier **email**:
+  - If a contact is present with the same `email` address as an identifier, it will not be duplicated. This is a known destination behavior.
+  - For creating multiple contacts with `email` address as an identifer, you need a unique email address.
+
+## Identify
+
+The `identify` call lets you associate a user with their actions and capture all the relevant traits about them.
+
+For each `identify` call, Rudderstack creates a `contact` using `email` or `phone` as an identifier \(depending on the `channel identifier`\) using the [Trengo Contact API](https://developers.trengo.com/reference#create-update-a-user).
+
+If a contact is already present with same `identifier` \(`email`/`phone`\), Rudderstack will update the contact using the [Trengo Contact API](https://developers.trengo.com/reference#update-a-user-1).
+
+A sample `identify` call looks like the following:
+
+```javascript
+rudderanalytics.identify("userid", {
+  firstName: "Name",
+  lastName: "Surname",
+  email: "name@website.com",
+})
+```
+
+<div class="infoBlock">
+
+**NOTE:** If you already have Trengo `contactId` you can pass it in `externalId`, `(example context.externalId: [&#123;type:trengoContactId, id:channelId&#125;])`, in that case will we avoid searching for `contactId` using `identifier(email/phone)` before updating.
+
+</div>
+
+## Track
+
+The `track` call allows you to capture any action that the user might perform along with the properties associated with that action. Each action is considered to be an event. For every `track` event, Rudderstack creates a `ticket` in Trengo using the [Trengo Ticket API](https://developers.trengo.com/reference#create-a-ticket).
+
+A sample `track` call looks like the following:
+
+```javascript
+rudderanalytics.track("Product Purchased", {
+  Clicked_Rush_delivery_Button: true,
+  total_value: 2000,
+  revenue: 2000,
+})
+```
+
+## Mapping Track Events with Trengo's Event Template
+
+The following table demonstrates the use of the **Map events with template:** option for your `track` events:
+
+| **Event Name**      | **Event Template**                   | **Subject Generated**              |
+| :------------------ | :----------------------------------- | :--------------------------------- |
+| `Product Purchased` | `{{ event }} from our store`         | `Product Purchased from our store` |
+| `Added to cart`     | `Product was of value:{{ revenue }}` | `Product was of value:2000`        |
+| `Checked Out`       | `Cart was checked out`               | `Cart was checked out`             |
+
+A few things to note while using this option:
+
+- For particular **Event Name**, the **Event Template** is optional. If left blank, the subject will not generated using the Template. \(Note: Subjects are generally used for creating tickets in the channels where the channel identifier is `email`.\)
+- For `track` calls, the `contact identifier` is mandatory. For example, for tracking events to an `email` channel, `email` is a mandatory event field. Similarly, for tracking events to a `phone` channel, `phone` is a mandatory event field.
+
+<div class="warningBlock">
+
+For lodging your `track` events to Trengo, it is mandatory to add the `event` name in **Event Name** field. If the **Event Name** is not present, the particular `track` events will not flow through.
+
+</div>
+
+## Contact Us
+
+If you come across any issues while configuring Trengo with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you.

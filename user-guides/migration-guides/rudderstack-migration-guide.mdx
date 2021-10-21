@@ -1,0 +1,424 @@
+---
+# slug: "/docs/user-guides/migration-guides/rudderstack-migration-guide"
+title: "Migrating from Segment to RudderStack"
+description: Step-by-step guide to migrating from Segment to RudderStack
+---
+
+# Migrating from Segment to RudderStack
+
+## Introduction
+
+This document explains the step-by-step process of migrating from [Segment](https://segment.com/) to RudderStack. Our primary goal is to lay out the necessary actions for replacing your instrumentation code for generating the events from using the Segment SDK to RudderStack SDK with minimal changes.
+
+## Migrating the Workspace
+
+Start with creating an account on the RudderStack [dashboard](https://app.rudderlabs.com/signup?type=freetrial). Similar to Segment, you will need to create sources and destinations in the dashboard. This will help you create the necessary connections for the event data to flow from your sources to the destination.
+
+<div class="infoBlock">
+
+You can also check our guide on how to <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">add sources and destinations in RudderStack</a>.
+
+</div>
+
+## Setting up the RudderStack Data Plane
+
+RudderStack requires a data plane for the events to flow through. You can choose to set it up yourself within your cloud computing environment. Please check our [installation guide](https://rudderstack.com/docs/administrators-guide/installing-and-setting-up-rudderstack) to set up RudderStack.
+
+We also offer a version of the data plane where we host it within our VPC. You can turn on the **RudderStack Hosted Service** button on the **Connections** page of your dashboard to get started with it. ‌
+
+If you need more support or you want us to manage your hosting, please feel free to [contact us](mailto:contact@rudderstack.com).
+
+## Updating SDK implementation
+
+Depending on the platform, please follow these steps to move your existing SDK implementation to RudderStack:
+
+<!--{% tabs %}
+{% tab title="Android" %}
+
+- Change the dependencies in your `app/build.gradle` file add the following:
+
+```groovy
+repositories {
+    mavenCentral()
+}
+```
+
+- Under dependencies, add the following:
+
+```groovy
+implementation 'com.rudderstack.android.sdk:core:1.0.1'
+implementation 'com.google.code.gson:gson:2.8.6'
+```
+
+- Update your SDK initialization to the following:
+
+```java
+RudderClient rudderClient = RudderClient.getInstance(
+        this,
+        <YOUR_WRITE_KEY>,
+        new RudderConfig.Builder()
+                .withDataPlaneUrl(<DATA_PLANE_URL>)
+                .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
+                .withTrackLifecycleEvents(true)
+                .withRecordScreenViews(true)
+                .build()
+);
+```
+
+- Update the use of the classes according to the table below:
+
+| Segment     | RudderStack      |
+| :---------- | :--------------- |
+| `Analytics` | `RudderClient`   |
+| `Traits`    | `RudderTraits`   |
+| `Property`  | `RudderProperty` |
+
+<div class="successBlock">
+
+  You can use the rest of your code as is, as RudderStack SDK is API-compatible
+  with Segment.
+</div>
+
+{% endtab %}
+
+{% tab title="iOS" %}
+
+- Change the dependencies in the `Podfile` of your project:
+
+```ruby
+pod 'Rudder'
+```
+
+- Update your SDK initialization to the following:
+
+```objectivec
+RudderConfigBuilder *builder = [[RudderConfigBuilder alloc]init];
+[builder withDataPlaneUrl:<DATA_PLANE_URL>];
+[RudderClient getInstance:<WRITE_KEY> config:[builder build]];
+```
+
+<div class="infoBlock">
+
+The instance of the <code class="inline-code">RudderClient</code> is available at <code class="inline-code">[RudderClient sharedInstance]</code> whereas Segment Instance is available at <code class="inline-code">[Analytics sharedAnalytics]</code>
+
+</div>
+
+- Update the imports from `Analytics.h` to `Rudder.h` wherever necessary
+- Update the use of the classes according to the table below:
+
+| Segment     | RudderStack      |
+| :---------- | :--------------- |
+| `Analytics` | `RudderClient`   |
+| `Traits`    | `RudderTraits`   |
+| `Property`  | `RudderProperty` |
+
+<div class="successBlock">
+
+  You can use the rest of your code as is, as RudderStack SDK is API compatible
+  with Segment
+</div>
+
+{% endtab %}
+
+{% tab title="JavaScript" %}
+
+- Add the SDK to your web application:
+
+```markup
+<script>
+	rudderanalytics = window.rudderanalytics = [];
+
+	var methods = [
+		"load",
+		"page",
+		"track",
+		"identify",
+		"reset"
+	];
+	for (var i=0; i<methods.length; i++) {
+		var method = methods[i];
+		rudderanalytics[method] = function(methodName) {
+			return function() {
+				rudderanalytics.push([methodName, ...arguments]);
+			}
+		} (method)
+	}
+	rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URI>);
+	rudderanalytics.page();
+</script>
+<script src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>
+```
+
+<div class="infoBlock">
+
+For the minified version of the above script please refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk">RudderStack JavaScript SDK</a> guide.
+
+</div>
+
+- Update the object. We use `rudderanalytics` as the global object library in comparison to Segment's `analytics` object
+
+<div class="successBlock">
+
+  You can use the rest of your code as is, as the RudderStack SDK is fully
+  API-compatible with Segment
+</div>
+
+{% endtab %}
+{% endtabs %} -->
+
+<Tabs>
+  <TabList>
+    <Tab>Android</Tab>
+    <Tab>iOS</Tab>
+    <Tab>JavaScript</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+      <ul>
+      <li>Change the dependencies in your <code class="inline-code">app/build.gradle</code> file add the following:
+<span>
+
+```groovy
+repositories {
+    mavenCentral()
+}
+```
+</span>
+</li>
+<li>Under dependencies, add the following:
+<span>
+
+```groovy
+implementation 'com.rudderstack.android.sdk:core:1.0.1'
+implementation 'com.google.code.gson:gson:2.8.6'
+```
+</span>
+</li>
+<li>Update your SDK initialization to the following:
+<span>
+
+```java
+RudderClient rudderClient = RudderClient.getInstance(
+        this,
+        <YOUR_WRITE_KEY>,
+        new RudderConfig.Builder()
+                .withDataPlaneUrl(<DATA_PLANE_URL>)
+                .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
+                .withTrackLifecycleEvents(true)
+                .withRecordScreenViews(true)
+                .build()
+);
+```
+</span>
+</li>
+<li>Update the use of the classes according to the table below:
+<span>
+
+| Segment     | RudderStack      |
+| :---------- | :--------------- |
+| `Analytics` | `RudderClient`   |
+| `Traits`    | `RudderTraits`   |
+| `Property`  | `RudderProperty` |
+</span>
+</li>
+</ul>
+<div class="successBlock">
+
+  You can use the rest of your code as is, as RudderStack SDK is API-compatible
+  with Segment.
+</div>
+      </TabPanel>
+      <TabPanel>
+<ul>
+<li>Change the dependencies in the <code class="inline-code">Podfile</code> of your project:
+
+```ruby
+pod 'Rudder'
+```
+</li>
+<li>Update your SDK initialization to the following:
+
+```objectivec
+RudderConfigBuilder *builder = [[RudderConfigBuilder alloc]init];
+[builder withDataPlaneUrl:<DATA_PLANE_URL>];
+[RudderClient getInstance:<WRITE_KEY> config:[builder build]];
+```
+
+<div class="infoBlock">
+The instance of the <code class="inline-code">RudderClient</code> is available at <code class="inline-code">[RudderClient sharedInstance]</code> whereas Segment Instance is available at <code class="inline-code">[Analytics sharedAnalytics]</code>
+
+</div>
+</li>
+<li>Update the imports from <code class="inline-code">Analytics.h</code> to <code class="inline-code">Rudder.h</code> wherever necessary</li>
+<li>Update the use of the classes according to the table below:
+
+| Segment     | RudderStack      |
+| :---------- | :--------------- |
+| `Analytics` | `RudderClient`   |
+| `Traits`    | `RudderTraits`   |
+| `Property`  | `RudderProperty` |
+</li>
+</ul>
+<div class="successBlock">
+  You can use the rest of your code as is, as RudderStack SDK is API compatible
+  with Segment
+</div>        
+      </TabPanel>
+      <TabPanel>
+<ul>
+<li>Add the SDK to your web application:
+<span>
+
+```markup
+<script>
+	rudderanalytics = window.rudderanalytics = [];
+
+	var methods = [
+		"load",
+		"page",
+		"track",
+		"identify",
+		"reset"
+	];
+	for (var i=0; i<methods.length; i++) {
+		var method = methods[i];
+		rudderanalytics[method] = function(methodName) {
+			return function() {
+				rudderanalytics.push([methodName, ...arguments]);
+			}
+		} (method)
+	}
+	rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URI>);
+	rudderanalytics.page();
+</script>
+<script src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>
+```
+</span>
+<div class="infoBlock">
+
+For the minified version of the above script please refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk">RudderStack JavaScript SDK</a> guide.
+
+</div>
+</li>
+<li>Update the object. We use <code class="inline-code">rudderanalytics</code> as the global object library in comparison to Segment's <code class="inline-code">analytics</code> object
+
+<div class="successBlock">
+
+  You can use the rest of your code as is, as the RudderStack SDK is fully
+  API-compatible with Segment
+</div>
+</li>
+</ul>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Backfilling Segment AnonymousIds
+
+When migrating from Segment or a similar analytics tool, you likely already have some amount of anonymous traffic that has not yet been identified. When Segment or RudderStack track events for non-identified users, both assign a random UUID as an `anonymousId`. This ID is used to track an unknown user until they are identified and allows us to stitch together user behavior, journeys, and first touch attribution before and after they are identified.
+
+To avoid duplicating these previously assigned anonymous users, we recommend loading the RudderStack SDK in the `ready` callback of the segment SDK for a period of time. By loading RudderStack in the callback, we can retrieve the previously assigned `anonymousId` from the segment cookie and assign that same `anonymousId` to the RudderStack user while initializing the RudderStack SDK. After we have overlapped the SDKs enough to feel confident that the majority of our anonymousId have been backfilled, we can remove the Segment SDK and begin using only the RudderStack SDK.
+
+A code snippet for loading the SDKs in parallel is shown below:
+
+```javascript
+<script type="text/javascript">
+        !function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)}}()
+        !(function(){
+          // Create a queue, but don't obliterate an existing one!
+          var analytics = window.analytics = window.analytics || [];
+          // If the real analytics.js is already on the page return.
+          if (analytics.initialize) return;
+          // If the snippet was invoked already show an error.
+          if (analytics.invoked) {
+            if (window.console && console.error) {
+              console.error('Segment snippet included twice.');
+            }
+            return;
+          }
+          // Invoked flag, to make sure the snippet
+          // is never invoked twice.
+          analytics.invoked = true;
+          // A list of the methods in Analytics.js to stub.
+          analytics.methods = [
+            'trackSubmit',
+            'trackClick',
+            'trackLink',
+            'trackForm',
+            'pageview',
+            'identify',
+            'reset',
+            'group',
+            'track',
+            'ready',
+            'alias',
+            'debug',
+            'page',
+            'once',
+            'off',
+            'on',
+            'addSourceMiddleware',
+            'addIntegrationMiddleware',
+            'setAnonymousId',
+            'addDestinationMiddleware'
+          ];
+          // Define a factory to create stubs. These are placeholders
+          // for methods in Analytics.js so that you never have to wait
+          // for it to load to actually record data. The `method` is
+          // stored as the first argument, so we can replay the data.
+          analytics.factory = function(method){
+            return function(){
+              var args = Array.prototype.slice.call(arguments);
+              args.unshift(method);
+              analytics.push(args);
+              return analytics;
+            };
+          };
+          // For each of our methods, generate a queueing stub.
+          for (var i = 0; i < analytics.methods.length; i++) {
+            var key = analytics.methods[i];
+            analytics[key] = analytics.factory(key);
+          }
+          // Define a method to load Analytics.js from our CDN,
+          // and that will be sure to only ever load it once.
+          analytics.load = function(key, options){
+            // Create an async script element based on your key.
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = 'https://cdn.segment.com/analytics.js/v1/'
+              + key + '/analytics.min.js';
+            // Insert our script next to the first script element.
+            var first = document.getElementsByTagName('script')[0];
+            first.parentNode.insertBefore(script, first);
+            analytics._loadOptions = options;
+          };
+          // Add a version to keep track of what's in the wild.
+          analytics.SNIPPET_VERSION = '4.1.0';
+          // Load Analytics.js with your key, which will automatically
+          // load the tools you've enabled for your account. Boosh!
+          analytics.load("SEGMENT_WRITE_KEY");
+          // Make the first page call to load the integrations. If
+          // you'd like to manually name or tag the page, edit or
+          // move this call however you'd like.
+          analytics.page();
+          // analytics ready callback
+          analytics.ready(function() {
+            // INITIALIZE RUDDER SDK with setAnonymousId
+            window.rudderanalytics.unshift(["setAnonymousId", window.analytics.user().anonymousId()])
+            window.rudderanalytics.unshift(["load", "RUDDERSTACK_WRITE_KEY", "RUDDERSTACK_DATAPLANE_URL"])
+            window.rudderanalytics.page()
+            window.rudderanalytics.loadJS()
+        })})();
+      </script>
+```
+
+<div class="infoBlock">
+
+Note that you will need to enter your <code class="inline-code">SEGMENT_WRITE_KEY</code>, <code class="inline-code">RUDDERSTACK_WRITE_KEY</code>, and <code class="inline-code">RUDDERSTACK_DATAPLANE_URL</code> in the above example.
+
+</div>
+
+## Contact Us
+
+Stuck somewhere in the migration process? Feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel.
