@@ -5,65 +5,58 @@ description: >-
   Detailed technical documentation on using RudderStack’s Rust SDK to send events to various destinations.
 ---
 
+
 # Rust
 
 RudderStack’s Rust SDK allows you to track your customer event data from your Rust applications.
 
-Once added as the source, the event requests hit the RudderStack servers. RudderStack then routes the events to the destination platforms as configured by you.
+Once configured as a source, the event requests are sent to the RudderStack server. RudderStack then routes the events to the destination platforms as configured by you.
 
 You can find the SDK implementation in our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-rust).
 
-## Installing the RudderStack PHP SDK
+## Installing the Rust SDK
 
-Install the RudderStack PHP SDK using the [composer](https://packagist.org/packages/rudderstack/rudder-php-sdk). You can also do so by running the following command:
+To install the Rust SDK, add its crate as a project dependency.
 
-```bash
-git clone https://github.com/rudderlabs/rudder-php-sdk /my/app/folders/
+Add the following line to your `Cargo.toml` file:
+
+```rust
+rudderanalytics = "1.0.0"
 ```
 
-You can use composer to install the SDK. Use the following command.
-
-```bash
-composer require rudderstack/rudder-php-sdk
-```
-
-## Initializing the RudderStack Client
+## Initializing the RudderStack client
 
 To initialize the RudderStack client, run the following code snippet:
 
-```php
-require_once("/path/to/lib/Rudder.php");
+```rust
+use rudderanalytics::client::RudderAnalytics;
 
-Rudder::init(WRITE_KEY, array(
-  "data_plane_url" => DATA_PLANE_URL,
-  "consumer"       => "lib_curl", // fork_curl
-  "debug"          => true,
-  "max_queue_size" => 10000,
-  "batch_size"     => 100
-));
+let rudder_analytics = RudderAnalytics::load(
+	"<SOURCE_WRITE_KEY>".to_string(),
+	"<DATA_PLANE_URL>".to_string()
+);
 ```
+
+Once the RudderStack client is initialized, you can use it to send your customer events.
+
+## Sending events from RudderStack
+
+The Rust SDK supports the following events:
+
+* Identify
+* Track
+* Page
+* Group
+* Screen
+* Alias
+* Batch
+
+For more information on each of calls, refer to the [**RudderStack Events Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
 
 <div class="warningBlock">
-
-We append the protocol to <code class="inline-code">DATA_PLANE_URL</code> before sending the events to RudderStack server.
-
-For example if your dataPlaneUrl is <code class="inline-code">https://example.dataplane.com</code> mention only <code class="inline-code">example.dataplane.com</code>
-
+  
+RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users simultaneously. Therefore, for any of the calls supported by the Rust SDK, you need to specify either the <code class="inline-code">user_id</code> or <code class="inline-code">anonymous_id</code> every time. 
 </div>
-
-## Sending Events from RudderStack
-
-Once the RudderStack client is initialized, you can use it to send relevant customer events from the RudderStack client. An example `track` call is as shown in the following code snippet:
-
-```php
-Rudder::track(array(
-  "userId" => "f4ca124298",
-  "event" => "Signed Up",
-  "properties" => array(
-    "plan" => "Enterprise"
-  )
-));
-```
 
 ## Identify
 
@@ -277,8 +270,8 @@ For a detailed explanation of the <code class="inline-code">alias</code> call, p
 
 </div>
 
-## Contact Us
+## Contact us
 
-To know more about the RudderStack PHP SDK, you can [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+For more information on the Rust SDK, you can [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 
-In case you come across any issues while using this SDK, please feel free to start a new issue on our [GitHub repository](https://github.com/rudderlabs/rudder-php-sdk).
+In case you come across any issues while using this SDK, feel free to start a new issue on our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-rust).
