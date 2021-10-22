@@ -14,7 +14,7 @@ Once configured as a source, the event requests are sent to the RudderStack serv
 
 You can find the SDK implementation in our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-rust).
 
-## Installing the Rust SDK
+## Installing the SDK
 
 To install the Rust SDK, add its crate as a project dependency.
 
@@ -60,215 +60,318 @@ RudderStack does not store the user state in any of the server-side SDKs. Unlike
 
 ## Identify
 
-The `identify` call lets you associate a user to their actions as well as captures the relevant traits or properties related to that user.
+The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
-<div class="infoBlock">
+A sample `identify` call is as shown:
 
-For a detailed explanation of the <code class="inline-code">identify</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
+```rust
+use rudderanalytics::message::{ Identify, Message };
 
-</div>
-
-An example `identify` call is as shown:
-
-```php
-Rudder::identify(array(
-  "userId" => "2sfjej334",
-  "traits" => array(
-    "email" => "test@test.com",
-    "name" => "test name",
-    "friends" => 25
-  )
-));
+rudder_analytics
+        .send(Message::Identify(Identify {
+            user_id: Some("sample_user_id".to_string()),
+            traits: Some(json!({
+                "name": "Test User",
+                "email": "test@user.com",
+            })),
+            ..Default::default()
+        }))
+        .expect("The identify call failed to send data to RudderStack");
 ```
 
-The `identify` method parameters are as described below:
+### Identify` parameters
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
-| `traits`       | Object   | Optional                                  | Dictionary of the traits associated with the user, such as `name`or `email`                                                |
+The following table describes the different `identify` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
+| `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user, such as name, email, etc. |
+| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
 
 ## Track
 
-The `track` call lets you record the users' actions along with their associated properties. Each triggered action is called as an 'event'.
+The `track` call lets you record the customer events, i.e. the user actions, along with any properties associated with them.
 
-<div class="infoBlock">
+A sample `track` call is as shown:
 
-For a detailed explanation of the <code class="inline-code">track</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
+```rust
+use rudderanalytics::message::{ Track, Message };
 
-</div>
-
-An example `track` call is as shown:
-
-```php
-Rudder::track(array(
-  "userId" => "f4ca124298",
-  "event" => "Article Bookmarked",
-  "properties" => array(
-    "title" => "Snow Fall",
-    "subtitle" => "The Avalanche at Tunnel Creek",
-    "author" => "John Branch"
-  )
-));
+rudder_analytics
+        .send(Message::Track(Track {
+            user_id: Some("sample_user_id".to_string()),
+            event: "Test Event".to_owned(),
+            properties: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Track call failed to send data to RudderStack");
 ```
 
-The `track` method parameters are as described below:
+### Track parameters
 
-| Name           | Type   | Presence | Description                                                                                                                |
-| :------------- | :----- | :------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `user_id`      | String | Required | The developer identification for your user                                                                                 |
-| `event`        | String | Required | Name of the event being performed by the user                                                                              |
-| `properties`   | Object | Optional | Dictionary of the properties associated with a particular event.                                                           |
-| `context`      | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `timestamp`    | Date   | Optional | The timestamp of the message's arrival.                                                                                    |
-| `anonymous_id` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled.                                                 |
+The following table describes the different `track` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
+| `event`        | String   | Required                                   | Name of the event, i.e. the action performed by the user.		        |
+| `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the event.                      |
+| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
+The `page` call lets you record your website's page views, with any relevant information about the viewed page. 
 
 <div class="infoBlock">
 
-For a detailed explanation of the <code class="inline-code">page</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
-
+We recommend calling <code class="inline-code">page</code> at least once every page load.
 </div>
 
-An example `page` call is as shown:
+A sample `page` call is shown below:
 
-```php
-Rudder::page(array(
-  "userId" => "f4ca124298",
-  "category" => "Docs",
-  "name" => "PHP library",
-  "properties" => array(
-    "url" => "https://segment.com/libraries/php/"
-  )
-));
+```rust
+use rudderanalytics::message::{ Page, Message };
+
+rudder_analytics
+        .send(Message::Page(Page {
+            user_id: Some("sample_user_id".to_string()),
+            name: "Cart viewd".to_owned(),
+            properties: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Page call failed to send data to RudderStack");
 ```
 
-The `page` method parameters are as described below:
+### Page parameters
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `name`         | String   | Required                                  | Name of the page being viewed.                                                                                             |
-| `properties`   | Object   | Optional                                  | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
+The following table describes the different `page` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
+| `name`         | String   | Required                                   | Name of the viewed page.			   			        |
+| `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the page view event.            |
+| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
 ## Screen
 
-The `screen` call is the mobile equivalent of the page call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
+The `screen` method lets you record whenever the user views their mobile screen, along with any additional relevant information about the screen.
 
 <div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">screen</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack API Specification</a> guide.
-
+	
+	The <code class="inline-code">screen</code> call is the mobile equivalent of the <code class="inline-code">page</code> call.
 </div>
 
-An example `screen` call is as shown:
+A sample `screen` call is shown below:
 
-```php
-Rudder::screen(array(
-  "userId" => "f4ca124298",
-  "category" => "Docs",
-  "name" => "PHP library",
-  "properties" => array(
-    "name" => "HomeScreen"
-  )
-));
+```rust
+use rudderanalytics::message::{ Screen, Message };
+
+rudder_analytics
+        .send(Message::Screen(Screen {
+            user_id: Some("sample_user_id".to_string()),
+            name: "sample_screen".to_owned(),
+            properties: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Screen call failed to send data to RudderStack");
 ```
 
-The `screen` method parameters are as described below:
+### Screen parameters
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `name`         | String   | Required                                  | Name of the screen being viewed.                                                                                           |
-| `properties`   | Object   | Optional                                  | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
+The following table describes the different `page` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
+| `name`         | String   | Required                                   | Name of the viewed screen.			   			        |
+| `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the screen view event.          |
+| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
 ## Group
 
-The `group` call allows you to associate an identified user to a group - either a company, project or a team. You can also record custom traits or properties associated with that group.
+The `group` call lets you link an identified user with a group, such as a company, organization, or account. It also lets you record any custom traits associated with that group, such as the company's name, the number of employees, etc.
 
 <div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">group</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
-
+	
+	An identified user can be in more than one group.
 </div>
 
-An example `group` call is as shown:
+A sample `group` call is shown below:
 
-```php
-Rudder::group(array(
-  "userId" => "2sfjej334",
-  "groupId" => "2sfjej334erresd",
-  "traits" => array(
-    "email" => "test@test.com",
-    "name" => "test name",
-    "friends" => 25
-  )
-));
+```rust
+use rudderanalytics::message::{ Group, Message };
+
+rudder_analytics
+        .send(Message::Group(Group {
+            user_id: Some("sample_user_id".to_string()),
+            group_id: "sample_group_id".to_owned(),
+            traits: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Group call failed to send data to RudderStack");
 ```
 
-The `group` method parameters are as follows:
+### Group paramters
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `groupId`      | String   | Required                                  | Unique identifier of the group, as present in your database.                                                               |
-| `traits`       | Object   | Optional                                  | Dictionary of the properties or traits associated with the group, such as `email` or `name`.                               |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
+The following table describes the different `group` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          |
+| `group_id`     | String   | Required                                   | Unique identifier of the group in your database.                             |
+| `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the group.                          |
+| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
 ## Alias
 
-The `alias` call allows you to associate one identity with another.
+The `alias` call lets you merge different identities of a known user.
 
 <div class="infoBlock">
 
-<code class="inline-code">alias</code> is an advanced method. However, it is required when managing user identities in some destinations.
-
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
 </div>
 
-An example `alias` call is as shown:
+<div class="successBlock">
 
-```php
-Rudder::alias(array(
-  "previousId" => "previousId",
-  "userId" => "2sfjej334",
-));
+  The following destinations support the <code class="inline-code">alias</code> call:
+  <ul>
+    <li>
+      <a href="https://rudderstack.com/docs/destinations/marketing/moengage/">MoEngage</a>
+    </li>
+    <li>
+      <a href="https://rudderstack.com/docs/destinations/analytics/kissmetrics/">Kissmetrics</a>
+    </li>
+    <li>
+      <a href="https://rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a> (only
+      supported by the 
+      <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">
+        JavaScript SDK
+      </a>
+       via <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode">
+        cloud mode
+      </a>)
+    </li>
+    <li>
+      <a href="https://rudderstack.com/docs/destinations/analytics/mixpanel/">Mixpanel</a>
+    </li>
+  </ul>
+</div>
+
+A sample `alias` call is shown below:
+
+```rust
+use rudderanalytics::message::{ Alias, Message };
+
+rudder_analytics
+        .send(Message::Alias(Alias {
+            user_id: Some("sample_user_id".to_string()),
+            previous_id: "sample_previous_user_id".to_owned(),
+            traits: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Alias call failed to send data to RudderStack");
 ```
 
-The `alias` method parameters are as mentioned below:
+### Alias parameters
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                       |
-| :------------- | :------- | :---------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                             |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                            |
-| `previousId`   | String   | Required                                  | The previous unique identifier of the user.                                                                           |
-| `traits`       | Object   | Optional                                  | Dictionary of the properties or traits associated with the group, such as `email` or `name`.                          |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                               |
+The following table describes the different `alias` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Required				         | Unique user identifier in your database.                                     |
+| `previous_id`  | String   | Required                                   | The user's previous identifier.                                              |
+| `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user.                           |
+| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
+
+## Batch
+
+The `batch` call lets you send multiple user events(of type `identify`, `track`, `page`, `screen`, `group`, and `alias`) in one call.
 
 <div class="infoBlock">
 
-For a detailed explanation of the <code class="inline-code">alias</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias">RudderStack API Specification</a> guide.
-
+The <code class="inline-code">batch</code> call accepts a maximum call size of 4 MB.
 </div>
+
+A sample `batch` call is as shown:
+
+```rust
+use rudderanalytics::message::{ Batch, Message, BatchMessage };
+
+rudder_analytics
+        .send(Message::Batch(Batch {
+            batch: vec![
+                BatchMessage::Identify(Identify {
+                    user_id: Some("foo".to_string()),
+                    traits: Some(json!({})),
+                    ..Default::default()
+                }),
+                BatchMessage::Track(Track {
+                    user_id: Some("bar".to_string()),
+                    event: "Bar".to_owned(),
+                    properties: Some(json!({})),
+                    ..Default::default()
+                }),
+                BatchMessage::Track(Track {
+                    user_id: Some("baz".to_string()),
+                    event: "Baz".to_owned(),
+                    properties: Some(json!({})),
+                    ..Default::default()
+                }),
+            ],
+            context: Some(json!({
+                "foo": "bar",
+            })),
+            ..Default::default()
+        }))
+        .expect("Batch call failed to send data to Rudderstack");
+```
+
+### Batch parameters
+
+The following table describes the different `batch` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `batch`        | Vector   | Required                                   | Contains one or more event calls of type `identify`/ `track`/ `page`/ `screen`/ `group`/ `alias`.                          													           |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
 ## Contact us
 
