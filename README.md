@@ -14,7 +14,7 @@ Refer to the [**contributing guide**](/contributing.md) for detailed instruction
 
 ## License
 
-RudderStack's docs are open sourced under the [**MIT license**](/license.md).
+RudderStack's docs are open sourced under the [**MIT license**](/LICENSE.md).
 
 ## Contact us
 
