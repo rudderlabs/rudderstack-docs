@@ -88,7 +88,7 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 In the **Connection Settings**, the **Tracking ID** field of the destination should be configured as shown:
 
-<img src="../../master/assets/Dynamic%20Destination%20Config.png" />
+<img src="../../assets/Dynamic%20Destination%20Config.png" />
 
 ### How it works
 
@@ -203,11 +203,11 @@ Consider the following event payload:
 }]
 ```
 
-As mentioned previously, you will specify the value for the **Tracking ID** field as `{{ message.properties.trackingId || "UA-1659942401" }}` while setting up the Google Analytics destination. 
+Once you specify the value for the **Tracking ID** field as `{{ message.properties.trackingId || "UA-1659942401" }}` while setting up the Google Analytics destination, for the above payload, `UA-1234567890` will be passed the configuration value.
 
-For the above payload, the `Config.trackingId` will be set to `UA-1234567890`, which is the value assigned to `properties.trackingId`. As a result, `UA-1234567890` will be passed as the value for **Tracking ID**. 
+This is because `Config.trackingId` will be set to `UA-1234567890`, which is the value assigned to `properties.trackingId`.
 
-In case `properties.trackingId` does not have any value, then `Config.trackingId` will be set to `UA-1659942401` and passed as the destination configuration value.
+In case `properties.trackingId` does not have any value, then `Config.trackingId` will be set to `UA-1659942401` (the default value) and passed as the destination configuration value.
 
 ## Contact us
 
