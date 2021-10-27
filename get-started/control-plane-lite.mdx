@@ -10,7 +10,8 @@ description: >-
 RudderStack's Control Plane manages the configuration of your sources and destinations.
 
 <div class="infoBlock">
-For more information on the Control Plane, refer to RudderStack's <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/">architecture</a>.
+
+  For more information on the Control Plane, refer to RudderStack's <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/">architecture</a>.
 </div>
 
 The easiest way to manage these configurations is through RudderStack's [**self-hosted web app**](https://app.rudderstack.com/). It is free, requires no setup, and has some advanced features like [**Live Events**](https://rudderstack.com/docs/user-guides/how-to-guides/live-destination-event-debugger/) and [**Transformations**](https://rudderstack.com/docs/transformations/).
@@ -22,7 +23,8 @@ However, if you don't wish to sign up for RudderStack and want to self-host thes
 To set up your self-hosted Control Plane using the Control Plane Lite utility, follow these steps:
 
 <div class="infoBlock">
-Make sure you have <a href="https://nodejs.org/en/download/">Node.js</a> installed before setting up your self-hosted Control Plane.
+
+  Make sure you have <a href="https://nodejs.org/en/download/">Node.js</a> installed before setting up your self-hosted Control Plane.
 </div>
 
 * Clone the [**RudderStack Control Plane Lite**](https://github.com/rudderlabs/config-generator) repository. 
@@ -34,9 +36,7 @@ Make sure you have <a href="https://nodejs.org/en/download/">Node.js</a> install
   npm start
 ```
 
- 
-
-* Upon successful setup, you can access the dashboard at [**http://localhost:3000**](http://localhost:3000) by default.
+* Upon successful setup, you can access the dashboard at `http://localhost:3000` by default.
 
 <img src="../../../images/assets/image (22).png" />
 
@@ -64,7 +64,8 @@ If you want to set up RudderStack on Docker, follow these steps:
   - RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH=<workspace_config_filepath_in_container>
 ```
 
-* Then, replace `<workspace_config_filepath_in_container>`  in the line above with your preferred container file path. By default, you can set it to `/etc/rudderstack/workspaceConfig.json`. 
+* Then, replace `<workspace_config_filepath_in_container>`  in the line above with your preferred container file path. By default, you can set it to `/etc/rudderstack/workspaceConfig.json`.
+
 * In the `volumes` section under the `backend` service, uncomment the following line:
 
 ```yaml
@@ -74,7 +75,8 @@ If you want to set up RudderStack on Docker, follow these steps:
 * Then, replace `<absolute_path_to_workspace_config>` with the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\). Also, replace  `<workspace_config_filepath_in_container>`  with the container file path that you set above.
 
 <div class="warningBlock">
-Value for <code class="inline-code">&lt;workspace_config_filepath_in_container&gt;</code> should be the same as the value provided for the  <code class="inline-code">RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH</code> variable. Otherwise, your workspace configuration won't be loaded and you will get an error.
+
+  Value for <code class="inline-code">&lt;workspace_config_filepath_in_container&gt;</code> should be the same as the value provided for the  <code class="inline-code">RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH</code> variable. Otherwise, your workspace configuration won't be loaded and you will get an error.
 </div>
 
 Your `rudder-docker.yml` should look like the following:
@@ -103,9 +105,12 @@ git clone git@github.com:rudderlabs/rudderstack-helm.git
 cd rudderstack-helm/
 ```
 
-* Open the `values.yaml` file. 
-* Set the parameter `controlPlaneJSON` to `true`.  
-* Export the workspace configuration from the dashboard by following the steps in the [**Exporting Workspace Configuration**](https://rudderstack.com/docs/get-started/control-plane-lite/#exporting-workspace-configuration) section above. 
+* Open the `values.yaml` file.
+
+* Set the parameter `controlPlaneJSON` to `true`.
+
+* Export the workspace configuration from the dashboard by following the steps in the [**Exporting Workspace Configuration**](https://rudderstack.com/docs/get-started/control-plane-lite/#exporting-workspace-configuration) section above.
+
 * Finally, run the following command:
 
 ```bash
@@ -113,7 +118,8 @@ helm install my-release ./ --set backend.controlPlaneJSON=true
 ```
 
 <div class="infoBlock">
-Refer to the <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/kubernetes/#configuration">Configuration</a> section for information on the parameters that can be configured during deployment.
+
+  Refer to the <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/kubernetes/#configuration">Configuration</a> section for information on the parameters that can be configured during deployment.
 </div>
 
 * Once you have completed these steps above successfully, <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/sending-test-events/">send test events</a> to verify the installation.
@@ -143,15 +149,18 @@ cd rudder-transformer
 node destTransformer.js
 ```
 
-* Navigate back to the main directory using the command `cd rudder-server`.  
+* Navigate back to the main directory using the command `cd rudder-server`. 
+
 * Next, copy the `sample.env` to the main directory using the following command:
 
 ```bash
 cp config/sample.env .env
 ```
 
-* Then, go to the `config` folder and open `config.yaml`.  
+* Then, go to the `config` folder and open `config.yaml`.
+
 * Under `[BackendConfig]`, look for `configFromFile` and set it to `true`. 
+
 * Also, change the value of `configJSONPath` to the local path of your `workspaceConfig.json`\(where your workspace configuration file is saved locally\), as shown:
 
 <img src="../../../images/assets/config-1-.jpg" />
@@ -174,7 +183,8 @@ To know more about the difference between **Cloud mode** and **Device mode** in 
 RudderStack's [**web**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Android**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) SDKs expect the source configurations and the associated device mode destination configurations for initialization. If you are self-hosting the Control Plane, you will need to host these configurations on your own server such that the source configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
 
 <div class="successBlock">
-For RudderStack Cloud, the SDKs fetch this source configuration from <a href="https://api.rudderlabs.com/sourceConfig">https://api.rudderlabs.com/sourceConfig</a>.
+
+  For RudderStack Cloud, the SDKs fetch this source configuration from <a href="https://api.rudderlabs.com/sourceConfig">https://api.rudderlabs.com/sourceConfig</a>.
 </div>
 
 ### What is the Control Plane URL?
