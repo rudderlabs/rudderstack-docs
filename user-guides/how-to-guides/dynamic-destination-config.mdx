@@ -7,24 +7,28 @@ description: >-
 
 # Loading Destination Configuration via Event Payload
 
-While setting a destination in RudderStack is quite straightforward, you might encounter a scenario where you need to configure multiple instances of a destination with different configurations for specific fields. RudderStack lets you pass these configuration values **via the event payload** dynamically, while setting up the destination in the dashboard.
+While setting a destination in RudderStack is quite straightforward, you might encounter a scenario where you need to configure multiple instances of a destination with different configurations for specific fields.
 
-All you need to do is pass the path of your event payload from which the configuration value will be fetched, along with a default value for the field.
+RudderStack lets you pass these configuration values **via the event payload** dynamically, while setting up the destination in the dashboard.
+
+All you need to do is pass the path of your event payload from which the configuration value will be fetched, along with a default value for the field, as shown below:
+
+<img src="../../assets/Dynamic%20Destination%20Config.png" />
 
 <div class="successBlock">
   
   You can use this feature for any RudderStack destination.
 </div>
 
-## Supported configuration format
+## Supported format
 
-RudderStack supports the following format of the field config in the dashboard settings:
+To use this feature, enter the path of the payload along with a default value in the text field of a connection setting that you want to configure. The format in which the setting should be specified is shown below:
 
 ```javascript
 {{event.path.config.name || "default_config_value"}}
 ```
 
-Any value present in the path will be passed as a configuration value in the dashboard settings. Otherwise, the default value will be used to configure the destination.
+Any value present in the path will be passed as a configuration value in the dashboard settings. If no value is present in the payload path, the default value will be used to configure the destination.
 
 <div class="infoBlock">
   
@@ -208,6 +212,30 @@ Once you specify the value for the **Tracking ID** field as `{{ message.properti
 This is because `Config.trackingId` will be set to `UA-1234567890`, which is the value assigned to `properties.trackingId`.
 
 In case `properties.trackingId` does not have any value, then `Config.trackingId` will be set to `UA-1659942401` (the default value) and passed as the destination configuration value.
+
+## FAQs
+
+#### How is this feature useful to me?
+
+This feature is very useful if you want to configure multiple instances of the same destination with different configurations for specific fields. Refer to the use-case section above to see how you can use this feature.
+
+#### How should I use this feature? What if I don't want to use it?
+
+In the text field of a particular connection setting that you want to configure, enter the path of the payload along with a default value in the following format:
+
+```javascript
+{{event.path.config.name || "default_config_value"}}
+```
+
+If you don't want to use this feature, you can enter the configuration setting in the dashboard as you normally would.
+
+#### Can I specify only the payload path without a default value?
+
+We highly recommend setting a payload path along with a default value. This is because if, for some reason, the payload path does not have any value, the default value is passed as the connection setting. If both the values are absent, you will get an error. 
+
+#### My default value is a number starting with 0. What happens if I don't set it as a string?
+
+If your default value is a number starting with 0, you need to set it as a string. Otherwise, the value will not be accepted and you may encounter an error.
 
 ## Contact us
 
