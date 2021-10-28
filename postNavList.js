@@ -1548,7 +1548,7 @@ export const postNavList = [
  },
  {
     "key":"dynamic-destination-configuration",
-    "title":"How to Configure a Destination via Event Payload",
+    "title":"How to Configure a Destination via the Event Payload",
     "link":"/user-guides/how-to-guides/dynamic-destination-configuration",
     "content":[]
  },
