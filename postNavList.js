@@ -1411,7 +1411,7 @@ export const postNavList = [
  {
     "key":"test-api",
     "title":"Test API",
-    "link":"/rudderstack-api/http-api/",
+    "link":"/rudderstack-api/test-api/",
     "content":[]
  },
  {
@@ -1549,7 +1549,7 @@ export const postNavList = [
  {
     "key":"dynamic-destination-configuration",
     "title":"How to Configure a Destination via the Event Payload",
-    "link":"/user-guides/how-to-guides/dynamic-destination-configuration",
+    "link":"/user-guides/how-to-guides/dynamic-destination-configuration/",
     "content":[]
  },
  {
