@@ -224,7 +224,7 @@ This feature is very useful if you want to configure multiple instances of the s
 In the text field of a particular connection setting that you want to configure, enter the path of the payload along with a default value in the following format:
 
 ```javascript
-{{event.path.config.name || "default_config_value"}}
+{{ event.path.config.name || "default_config_value" }}
 ```
 
 If you don't want to use this feature, you can enter the configuration setting in the dashboard as you normally would.
