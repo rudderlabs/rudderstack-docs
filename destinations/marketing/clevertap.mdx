@@ -577,29 +577,29 @@ CleverTap uniquely identifies each user with two main identifiers, namely `objec
 
 When the **Use Clevertap ObjectId for Mapping** setting is disabled in the dashboard, RudderStack expects the the following mapping for identifying users and tracking events \(`track`/`page`/`screen`\):
 
-| RudderStack | CleverTap |
-| :--- | :--- |
-| `userId` or `anonymousId` | `identity` |
+| **RudderStack**           | **CleverTap** |
+| :------------------------ | :------------ |
+| `userId` or `anonymousId` | `identity`    |
 
 When the **Use Clevertap ObjectId for Mapping** setting is enabled in the dashboard, the following mapping is expected:
 
 * For `identify` events:
 
-| RudderStack | RudderStack | CleverTap | CleverTap |
-| :--- | :--- | :--- | :--- |
-| **`anonymousId` present** | **`userId` present** | **`objectId`** | **identity** |
-| true | true | anonymousId | userId |
-| true | false | anonymousId | - |
-| false | true | userId | userId |
+| **RudderStack**           | **RudderStack**      | **CleverTap**                  | **CleverTap**   |
+| :------------------------ | :------------------- | :----------------------------- | :-------------- |
+| **`anonymousId` present?**| **`userId` present?**| **`objectId`**                 | **`identity`**  |
+| Yes                       | Yes                  | `anonymousId`                  | `userId`        |
+| Yes                       | No                   | `anonymousId`                  | -               |
+| No                        | Yes                  | CleverTap-generated UUID       | `userId`        | 
 
 * For `track` events:
 
-| RudderStack | RudderStack | CleverTap | CleverTap |
-| :--- | :--- | :--- | :--- |
-| **`anonymousId` present** | **`userId` present** | **tracking with** | **value** |
-| true | true | identity | anonymousId |
-| true | false | objectId | anonymousId |
-| false | true | identity | userId |
+| **RudderStack**           | **RudderStack**      | **CleverTap**     | **CleverTap** |
+| :------------------------ | :------------------- | :---------------- | :------------ |
+| **`anonymousId` present?**| **`userId` present?**| **Tracking with** | **Value**     |
+| Yes                       | Yes                  | `objectId`        | `anonymousId` |
+| Yes                       | No                   | `objectId`        | `anonymousId` |
+| No                        | Yes                  | `identity`        | `userId`      |
 
 ## Why enable the Use Clevertap ObjectId for Mapping setting?
 
