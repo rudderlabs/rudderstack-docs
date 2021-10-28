@@ -17,17 +17,17 @@ To set up ClickHouse as a source in RudderStack, follow these steps:
 - Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 - From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-<img src="../../../images/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (5).png" />
+<img src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (5).png" />
 
 - Scroll down to the **Warehouse Sources** and select **ClickHouse**. Then, click on **Next**.
 
-<img src="../../../images/assets/screen-shot-2021-01-12-at-1.00.07-pm.png" />
+<img src="../assets/screen-shot-2021-01-12-at-1.00.07-pm.png" />
 
 ### Setting Up the Connection
 
 - Assign a name to your source, and click on **Create Credentials from Scratch**. Then, click on **Next**.
 
-<img src="../../../images/assets/screen-shot-2021-01-13-at-10.16.55-am.png" />
+<img src="../assets/screen-shot-2021-01-13-at-10.16.55-am.png" />
 
 <div class="successBlock">
 
@@ -38,7 +38,7 @@ To set up ClickHouse as a source in RudderStack, follow these steps:
 
 - Next, enter the relevant connection details in the **Connection Credentials** as shown below:
 
-<img src="../../../images/assets/screen-shot-2021-01-12-at-1.01.23-pm.png" />
+<img src="../assets/screen-shot-2021-01-12-at-1.01.23-pm.png" />
 
 - The required settings are:
   - **Host -** The host name of your ClickHouse service.
@@ -51,7 +51,7 @@ To set up ClickHouse as a source in RudderStack, follow these steps:
 
 - Next, select the **Schema** and the **Table** from which you want RudderStack to import the data.
 
-<img src="../../../images/assets/screen-shot-2021-01-12-at-12.59.13-pm.png" />
+<img src="../assets/screen-shot-2021-01-12-at-12.59.13-pm.png" />
 
 <div class="warningBlock">
 
@@ -61,23 +61,23 @@ Your table must include one of the following columns - <code class="inline-code"
 
 - Once you specify the table containing the required columns, you will be able to preview a snippet of your data, as shown below:
 
-<img src="../../../images/assets/screen-shot-2021-01-05-at-3.21.38-pm.png" />
+<img src="../assets/screen-shot-2021-01-05-at-3.21.38-pm.png" />
 
 - Here, you can select all or only a few specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**, as shown below. You can also preview the resultant JSON on the right. Once you've select the required table columns to import the data from, click on **Next**.
 
-<img src="../../../images/assets/screen-shot-2021-01-05-at-3.22.09-pm.png" />
+<img src="../assets/screen-shot-2021-01-05-at-3.22.09-pm.png" />
 
 ### Setting the Data Update Schedule
 
 - Next, you will be required to set the **Run Frequency** to schedule the data import from your ClickHouse instance to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option. Then, click on **Next**.
 
-<img src="../../../images/assets/screen-shot-2021-01-12-at-12.59.39-pm.png" />
+<img src="../assets/screen-shot-2021-01-12-at-12.59.39-pm.png" />
 
 That's it! ClickHouse is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start importing data from your ClickHouse instance as per the specified frequency. You can further connect this source to your preferred destination by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
-<img src="../../../images/assets/screen-shot-2021-01-12-at-1.02.09-pm.png" />
+<img src="../assets/screen-shot-2021-01-12-at-1.02.09-pm.png" />
 
 <div class="infoBlock">
 

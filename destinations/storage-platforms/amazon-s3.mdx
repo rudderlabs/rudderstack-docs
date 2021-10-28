@@ -33,14 +33,14 @@ The Following are two ways to give permissions to RudderStack for writing in you
 
 ```javascript
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "s3:PutObject",
-            "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
+    }
+  ]
 }
 ```
 
@@ -58,22 +58,17 @@ If the AWS credentials are **already configured** on your instance where the Rud
 
 ```javascript
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::422074288268:user/s3-copy"
-            },
-            "Action": [
-                "s3:PutObject",
-                "s3:PutObjectAcl"
-            ],
-            "Resource": [
-                "arn:aws:s3:::YOUR_BUCKET_NAME/*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::422074288268:user/s3-copy"
+      },
+      "Action": ["s3:PutObject", "s3:PutObjectAcl"],
+      "Resource": ["arn:aws:s3:::YOUR_BUCKET_NAME/*"]
+    }
+  ]
 }
 ```
 
@@ -87,16 +82,16 @@ The above approach will only work if you are using managed RudderStack
 
 If you are hosting RudderStack on your instances and don't want to follow option 1, then you have to create your IAM user with programmatic access and attach the below policy.
 
-```bash
+```javascript
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "*",
-            "Resource": "arn:aws:s3:::*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "*",
+      "Resource": "arn:aws:s3:::*"
+    }
+  ]
 }
 ```
 
@@ -104,28 +99,23 @@ If you are hosting RudderStack on your instances and don't want to follow option
 
 ```javascript
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::ACCOUNT_ID:user/USER_ARN"
-            },
-            "Action": [
-                "s3:PutObject",
-                "s3:PutObjectAcl"
-            ],
-            "Resource": [
-                "arn:aws:s3:::YOUR_BUCKET_NAME/*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::ACCOUNT_ID:user/USER_ARN"
+      },
+      "Action": ["s3:PutObject", "s3:PutObjectAcl"],
+      "Resource": ["arn:aws:s3:::YOUR_BUCKET_NAME/*"]
+    }
+  ]
 }
 ```
 
 - Add the above created IAM user programmatic access credentials to the environment of your RudderStack
 
-```javascript
+```markup
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<above created user access key>
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY=<above created user secret access key>
 ```
@@ -147,7 +137,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 - Select the destination as **Amazon S3** to your source. Give your destination a name and then click on **Next**.
 - Next, in the **Connection Settings**, fill all the fields with the relevant information \(please refer to the Setting up Amazon S3 section above\) and click on **Next**.
 
-<img src="../../../../images/assets/screenshot-2020-06-01-at-2.29.13-pm.png" />
+<img src="../../assets/screenshot-2020-06-01-at-2.29.13-pm.png" />
 <span class="imageTitle">S3 Destination Settings</span>
 
 <div class="infoBlock">
@@ -183,7 +173,7 @@ When Server Side Encryption is enabled from S3 destination settings, RudderStack
 
 You can also set the Default Encryption property to `AES-256` for the bucket, by which S3 will encrypt the object when its uploaded irrespective of the header `x-amz-server-side-encryption`
 
-<img src="../../../../images/assets/screenshot-2020-06-01-at-2.58.08-pm.png" />
+<img src="../../assets/screenshot-2020-06-01-at-2.58.08-pm.png" />
 
 ## Contact Us
 

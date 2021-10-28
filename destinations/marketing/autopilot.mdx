@@ -42,7 +42,7 @@ Please follow our [Adding a Source and Destination](https://rudderstack.com/docs
 
 - Give a name to the destination and click on **Next**. You should then see the following screen.
 
-<img src="../../../../images/assets/autopilot.png" /><span class="imageTitle">Autopilot Settings</span>
+<img src="../../assets/autopilot.png" /><span class="imageTitle">Autopilot Settings</span>
 
 - Fill up the details and click on **Next** to complete the configuration. Autopilot should now be added and enabled as a destination in RudderStack.
 
@@ -52,13 +52,13 @@ The `identify` call captures the relevant details about the visiting user.
 
 <div class="infoBlock">
 
-For more information on the `identify` method, please refer to our guide on [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec).
+For more information on the `identify` method, please refer to our guide on [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/).
 
 </div>
 
 A sample `identify` payload is as shown in the snippet below:
 
-```javascript
+```objectivec
 [[RSClient sharedInstance] identify:@"developer_user_id"
                                  traits:@{@"foo": @"bar", @"foo1": @"bar1"}];
 ```
@@ -69,13 +69,13 @@ The `track` call captures the information related to the actions performed by th
 
 <div class="infoBlock">
 
-For more information on the `track` method, please refer to our guide on [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec).
+For more information on the `track` method, please refer to our guide on [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/).
 
 </div>
 
 A sample `track` payload is as shown in the snippet below:
 
-```
+```objectivec
 [[RudderClient sharedInstance] track:@"test_event"
                           properties:@{@"key":@"value", @"foo": @"bar"}]
 ```
@@ -84,7 +84,7 @@ A sample `track` payload is as shown in the snippet below:
 
 ### Where can I get the API Key from?
 
-You can retrieve the API key from the settings page of the [Autopilot](https://dashboard.branch.io/#/settings) dashboard. For more information, please check the [Getting Started](https://rudderstack.com/docs/destinations/autopilot#getting-started) section above.
+You can retrieve the API key from the settings page of the [Autopilot](https://dashboard.branch.io/#/settings) dashboard. For more information, please check the [Getting Started](https://rudderstack.com/docs/destinations/marketing/autopilot/#getting-started) section above.
 
 ## Contact Us
 

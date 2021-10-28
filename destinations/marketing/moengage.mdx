@@ -44,7 +44,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/screenshot-2020-11-11-at-11.11.28-am.png" />
+<img src="../../assets/screenshot-2020-11-11-at-11.11.28-am.png" />
 
 In the Connection Settings on the RudderStack dashboard, please enter the MoEngage **API ID**, **API Key**, and **Region**, as shown above.
 
@@ -65,19 +65,19 @@ Follow these steps to add MoEngage to your iOS project:
 
 - Go your `Podfile` and add the `Rudder-Moengage` extension
 
-```
+```ruby
 pod 'Rudder-Moengage'
 ```
 
 - After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
 
-```
+```objectivec
 #import "RudderMoengageFactory.h"
 ```
 
 - Finally, change the initialization of your `RudderClient` as shown:
 
-```
+```objectivec
 RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withFactory:[RudderMoengageFactory instance]];
@@ -94,7 +94,7 @@ To add MoEngage to your Android Project and enable its full functionality like p
 
 - Open your `app/build.gradle` \(Module: app\) file, and add the following:
 
-```javascript
+```groovy
 repositories {
     mavenCentral()
 }
@@ -102,7 +102,7 @@ repositories {
 
 - and add the following under the dependencies section
 
-```javascript
+```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
 implementation 'com.rudderstack.android.integration:moengage:1.0.0'
 api 'com.moengage:moe-android-sdk:10.5.00'
@@ -121,14 +121,14 @@ implementation 'com.google.code.gson:gson:2.8.6'
 
 - Also, add the below plugin after `buildscript`
 
-```javascript
+```groovy
 // For Push Notification
 apply plugin: 'com.google.gms.google-services'
 ```
 
 - Open your `build.gradle` \(Module: Project\) file and add the following in `buildscript` dependencies
 
-```javascript
+```groovy
 // For Push Notification
 buildscript {
     dependencies {
@@ -139,7 +139,7 @@ buildscript {
 
 - Initialize the Rudder SDK in the `Application` class's `onCreate()` method as following:
 
-```javascript
+```kotlin
 // initializing Rudder SDK
 val rudderClient = RudderClient.getInstance(
     this,
@@ -153,7 +153,7 @@ val rudderClient = RudderClient.getInstance(
 
 - Also, Initialize the MoEngage SDK in the Application class's onCreate\(\) method as following:
 
-```javascript
+```kotlin
 // this is the instance of the application class
 // and "XXXXXXXXXXX" is the APP ID from the dashboard.
 val moEngage = MoEngage.Builder(this, "XXXXXXXXXXX")
@@ -176,7 +176,7 @@ MoEngage.initialise(moEngage)
 <li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Moengage</code> extension
 <span>
 
-```
+```ruby
 pod 'Rudder-Moengage'
 ```
 </span>
@@ -184,7 +184,7 @@ pod 'Rudder-Moengage'
 <li>After adding the dependency followed by <code class="inline-code">pod install</code> , you can add the imports to your <code class="inline-code">AppDelegate.m</code> file as shown:
 <span>
 
-```
+```objectivec
 #import "RudderMoengageFactory.h"
 ```
 </span>
@@ -192,7 +192,7 @@ pod 'Rudder-Moengage'
 <li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
 <span>
 
-```
+```objectivec
 RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withFactory:[RudderMoengageFactory instance]];
@@ -209,7 +209,7 @@ To add MoEngage to your Android Project and enable its full functionality like p
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: app) file, and add the following:
 <span>
 
-```javascript
+```groovy
 repositories {
     mavenCentral()
 }
@@ -219,7 +219,7 @@ repositories {
 <li>and add the following under the dependencies section
 <span>
 
-```javascript
+```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
 implementation 'com.rudderstack.android.integration:moengage:1.0.0'
 api 'com.moengage:moe-android-sdk:10.5.00'
@@ -240,7 +240,7 @@ implementation 'com.google.code.gson:gson:2.8.6'
 <li>Also, add the below plugin after <code class="inline-code">buildscript</code>
 <span>
 
-```javascript
+```groovy
 // For Push Notification
 apply plugin: 'com.google.gms.google-services'
 ```
@@ -249,7 +249,7 @@ apply plugin: 'com.google.gms.google-services'
 <li>Open your <code class="inline-code">build.gradle</code> (Module: Project) file and add the following in <code class="inline-code">buildscript</code> dependencies
 <span>
 
-```javascript
+```groovy
 // For Push Notification
 buildscript {
     dependencies {
@@ -262,7 +262,7 @@ buildscript {
 <li>Initialize the Rudder SDK in the <code class="inline-code">Application</code> class's <code class="inline-code">onCreate()</code> method as following:
 <span>
 
-```javascript
+```groovy
 // initializing Rudder SDK
 val rudderClient = RudderClient.getInstance(
     this,
@@ -278,7 +278,7 @@ val rudderClient = RudderClient.getInstance(
 <li>Also, Initialize the MoEngage SDK in the Application class's onCreate() method as following:
 <span>
 
-```javascript
+```kotlin
 // this is the instance of the application class
 // and "XXXXXXXXXXX" is the APP ID from the dashboard.
 val moEngage = MoEngage.Builder(this, "XXXXXXXXXXX")
@@ -290,7 +290,7 @@ MoEngage.initialise(moEngage)
 </ul>
       </TabPanel>
     </TabPanels>
-</Tabs> 
+</Tabs>
 
 
 ## Identify
@@ -415,13 +415,13 @@ The Alias api is used to merge two different profiles of a same user into a sing
 
 Alias call can be done only through mobile sdks.
 
-For more information, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) guide.
+For more information, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
 
 <!--{% tabs %}
 {% tab title="iOS" %}
 Run the following command to implement the `alias` method in your iOS project:
 
-```javascript
+```objectivec
 [[RSClient sharedInstance]  alias:@"newId"];
 ```
 
@@ -449,7 +449,7 @@ rudderClient.alias("newId")
         <li>Run the following command to implement the <code class="inline-code">alias</code> method in your iOS project:
 <span>
 
-```javascript
+```objectivec
 [[RSClient sharedInstance]  alias:@"newId"];
 ```
 </span>
@@ -471,13 +471,13 @@ rudderClient.alias("newId")
 
 ## Reset
 
-The reset method resets the previously identified user and the related information. For more information, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) guide.
+The reset method resets the previously identified user and the related information. For more information, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
 
 <!--{% tabs %}
 {% tab title="iOS" %}
 Run the following command to implement the `reset`method in your iOS project:
 
-```javascript
+```objectivec
 [[RSClient sharedInstance] reset];
 ```
 
@@ -503,7 +503,7 @@ rudderClient.reset()
         Run the following command to implement the <code class="inline-code">reset</code> method in your iOS project:
 <span>
 
-```javascript
+```objectivec
 [[RSClient sharedInstance] reset];
 ```
 </span>
@@ -552,17 +552,17 @@ In-app messaging is a type of mobile messaging where the notification is display
 {% endtab %}
 
 {% tab title="Android" %}
-Copy the Server Key from the FCM console and add it to the MoEngage Dashboard\(Not sure where to find the Server Key refer to [Getting FCM Server Key](https://docs.moengage.com/docs/getting-fcmgcm-server-key). To upload it, go to the [Settings Page](https://app.moengage.com/v3/#/settings/push/mobile) and add the Server Key and package name.  
+Copy the Server Key from the FCM console and add it to the MoEngage Dashboard\(Not sure where to find the Server Key refer to [Getting FCM Server Key](https://docs.moengage.com/docs/getting-fcmgcm-server-key). To upload it, go to the [Settings Page](https://app.moengage.com/v3/#/settings/push/mobile) and add the Server Key and package name.
 **Please make sure you add the keys both in the Test and Live environment.**
 
-Before configuring MoEngage SDK for receiving push notifications please make you have configured Firebase in your application, if not done already refer to the [documentation](https://firebase.google.com/docs/android/setup) and complete setup.  
+Before configuring MoEngage SDK for receiving push notifications please make you have configured Firebase in your application, if not done already refer to the [documentation](https://firebase.google.com/docs/android/setup) and complete setup.
 Also, make sure you have added the Firebase Messaging dependency in your application `build.gradle` file.
 
 ### Adding meta for push notification
 
 To show push notifications you need to add the notification small icon and large icon along with the AppId to the `MoEngage.Builder`
 
-```javascript
+```kotlin
 val moEngage = MoEngage.Builder(this, "XXXXXXXX")
         .setNotificationSmallIcon(R.drawable.icon)
         .setNotificationLargeIcon(R.drawable.ic_launcher)
@@ -583,7 +583,7 @@ By default, MoEngage SDK attempts to register for push token, since your applica
 
 To opt-out of MoEngage's token registration mechanism call in the `optOutTokenRegistration()` on the `MoEngage.Builder` as shown below
 
-```javascript
+```kotlin
 val moEngage = MoEngage.Builder(this, "XXXXXXXX")
         .setNotificationSmallIcon(R.drawable.icon)
         .setNotificationLargeIcon(R.drawable.ic_launcher)
@@ -596,7 +596,7 @@ MoEngage.initialise(moEngage)
 
 The Application would need to pass the Push Token received from FCM to the MoEngage SDK for the MoEngage platform to send out push notifications to the device. Use the below API to pass the push token to the MoEngage SDK.
 
-```javascript
+```kotlin
 MoEFireBaseHelper.getInstance().passPushToken(applicationContext, token)
 ```
 
@@ -604,10 +604,10 @@ _Note:_ Please make sure token is passed to MoEngage SDK whenever push token is 
 
 #### Passing the Push payload to the MoEngage SDK
 
-To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the Firebase receiver.  
+To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the Firebase receiver.
 Before passing the payload to the MoEngage SDK you should check if the payload is from the MoEngage platform using the helper API provided by the SDK.
 
-```javascript
+```java
 if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
   MoEFireBaseHelper.getInstance().passPushPayload(
     applicationContext,
@@ -622,7 +622,7 @@ if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
 
 Add the below code in your manifest file within the application tag
 
-```javascript
+```markup
 <service android:name="com.moengage.firebase.MoEFireBaseMessagingService">
   <intent-filter>
     <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -630,7 +630,7 @@ Add the below code in your manifest file within the application tag
 </service>
 ```
 
-When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.  
+When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.
 An application can get this callback by implementing `FirebaseEventListener` and registering for a callback in the Application class' `onCreate()`using `MoEFireBaseHelper.getInstance().setEventListener()`
 
 ### In-App messaging:
@@ -677,22 +677,21 @@ For more details please follow the [guidelines from MoEngage](https://docs.moeng
           <li>In case if you would like to keep the notifications even after the App Launch then : <code class="inline-code">[MoEngage sharedInstance].disableBadgeReset = true;</code></li>
         </ul>
         <div class="infoBlock">
-        
         For more detailed steps please follow <a href="https://docs.moengage.com/docs/push-notification-implementation">MoEngage guidelines here</a>.
         </div>
       <h3>In-App messaging</h3>
       In-app messaging is a type of mobile messaging where the notification is displayed within the app. Some examples include popups, yes/no prompts, interstitials, and more. To implement this please follow this guide: <a href="https://docs.moengage.com/docs/in-app-nativ">InApp NATIV</a>.
       </TabPanel>
       <TabPanel>
-Copy the Server Key from the FCM console and add it to the MoEngage Dashboard(Not sure where to find the Server Key refer to <a href="https://docs.moengage.com/docs/getting-fcmgcm-server-key">Getting FCM Server Key</a>. To upload it, go to the <a href="https://app.moengage.com/v3/#/settings/push/mobile">Settings Page</a> and add the Server Key and package name.  
+Copy the Server Key from the FCM console and add it to the MoEngage Dashboard(Not sure where to find the Server Key refer to <a href="https://docs.moengage.com/docs/getting-fcmgcm-server-key">Getting FCM Server Key</a>. To upload it, go to the <a href="https://app.moengage.com/v3/#/settings/push/mobile">Settings Page</a> and add the Server Key and package name.
 **Please make sure you add the keys both in the Test and Live environment.**
-Before configuring MoEngage SDK for receiving push notifications please make you have configured Firebase in your application, if not done already refer to the <a href="https://firebase.google.com/docs/android/setup">documentation</a> and complete setup.  
+Before configuring MoEngage SDK for receiving push notifications please make you have configured Firebase in your application, if not done already refer to the <a href="https://firebase.google.com/docs/android/setup">documentation</a> and complete setup.
 Also, make sure you have added the Firebase Messaging dependency in your application <code class="inline-code">build.gradle</code> file.
 <h3>Adding meta for push notification</h3>
 To show push notifications you need to add the notification small icon and large icon along with the AppId to the <code class="inline-code">MoEngage.Builder</code>
 <span>
 
-```javascript
+```kotlin
 val moEngage = MoEngage.Builder(this, "XXXXXXXX")
         .setNotificationSmallIcon(R.drawable.icon)
         .setNotificationLargeIcon(R.drawable.ic_launcher)
@@ -715,7 +714,7 @@ By default, MoEngage SDK attempts to register for push token, since your applica
 To opt-out of MoEngage's token registration mechanism call in the <code class="inline-code">optOutTokenRegistration()</code> on the <code class="inline-code">MoEngage.Builder</code> as shown below
 <span>
 
-```javascript
+```kotlin
 val moEngage = MoEngage.Builder(this, "XXXXXXXX")
         .setNotificationSmallIcon(R.drawable.icon)
         .setNotificationLargeIcon(R.drawable.ic_launcher)
@@ -728,17 +727,17 @@ MoEngage.initialise(moEngage)
 The Application would need to pass the Push Token received from FCM to the MoEngage SDK for the MoEngage platform to send out push notifications to the device. Use the below API to pass the push token to the MoEngage SDK.
 <span>
 
-```javascript
+```java
 MoEFireBaseHelper.getInstance().passPushToken(applicationContext, token)
 ```
 </span>
 _Note:_ Please make sure token is passed to MoEngage SDK whenever push token is refreshed and on application update. Passing token on application update is important for migration to the MoEngage Platform.
 <h4>Passing the Push payload to the MoEngage SDK</h4>
-To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the Firebase receiver.  
+To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the Firebase receiver.
 Before passing the payload to the MoEngage SDK you should check if the payload is from the MoEngage platform using the helper API provided by the SDK.
 <span>
 
-```javascript
+```java
 if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
   MoEFireBaseHelper.getInstance().passPushPayload(
     applicationContext,
@@ -753,7 +752,7 @@ if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
 Add the below code in your manifest file within the application tag
 <span>
 
-```javascript
+```markup
 <service android:name="com.moengage.firebase.MoEFireBaseMessagingService">
   <intent-filter>
     <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -761,7 +760,7 @@ Add the below code in your manifest file within the application tag
 </service>
 ```
 </span>
-When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.  
+When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.
 An application can get this callback by implementing <code class="inline-code">FirebaseEventListener</code> and registering for a callback in the Application class' <code class="inline-code">onCreate()</code>using <code class="inline-code">MoEFireBaseHelper.getInstance().setEventListener()</code>
 <h3>In-App messaging:</h3>
 In-app messaging is a type of mobile messaging where the notification is displayed within the app. Examples include popups, yes/no prompts, interstitials, and more. To implement this please follow: <a href="https://docs.moengage.com/docs/configuring-in-app-nativ">InApp NATIV</a>
@@ -803,14 +802,14 @@ MoEngage allows sending the t[ime at which the event occurred](https://docs.moen
 
 <div class="infoBlock">
 
-The RudderStack transformer maps the _**current_time** to **timestamp or originalTimestamp**_  
+The RudderStack transformer maps the _**current_time** to **timestamp or originalTimestamp**_
 value from the event payload sent to Rudder server. This value should be passed in **UTC.**
 
 </div>
 
 <div class="infoBlock">
 
-The _**user_timezone_offset**_ is mapped to _**timezone**_ field present under the _**context**_ object of the event payload. This value should be passed as **tz** string.  
+The _**user_timezone_offset**_ is mapped to _**timezone**_ field present under the _**context**_ object of the event payload. This value should be passed as **tz** string.
 Rudder mobile SDKs populate the timezone field by itself. But for other sources like server like SDKs, HTTP api, the timezone needs to be set explicitly in every request.
 
 </div>
@@ -848,7 +847,7 @@ MoEngage accepts user creation time for its [user endpoint](https://docs.moengag
 
 <div class="infoBlock">
 
-The RudderStack transformer maps the _**created_time**_ from the _**createdAt**_ spec'd traits in our payload. The value should be in the **ISO 8601** format.  
+The RudderStack transformer maps the _**created_time**_ from the _**createdAt**_ spec'd traits in our payload. The value should be in the **ISO 8601** format.
 If the value is not in proper format or not present, MoEngage will put in the value by itself.
 
 </div>
@@ -897,7 +896,7 @@ You can find your MoEngage API ID and API KEY in your [moengage.com](https://www
 
 #### Where can I see the events that are going to MoEngage?
 
-If your app is in debug mode then you can see under Test otherwise you can see under Live.  
+If your app is in debug mode then you can see under Test otherwise you can see under Live.
 Go to For developers --&gt; Recent Events.
 
 ## Contact Us

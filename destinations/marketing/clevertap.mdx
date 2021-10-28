@@ -40,7 +40,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 </div>
 
-<img src="../../../../images/assets/clevertap-settings.png" /><span class="imageTitle">Configuration Settings for Clevertap</span>
+<img src="../../assets/clevertap-settings.png" /><span class="imageTitle">Configuration Settings for Clevertap</span>
 
 ## CleverTap Configuration Settings in RudderStack
 
@@ -84,7 +84,7 @@ allprojects {
 - Ensure that `android.useAndroidX` is set to `true` in your `gradle.properties` file.
 - Also, add the following under the `dependencies` section:
 
-```kotlin
+```groovy
 // ruddder core sdk
 implementation 'com.rudderstack.android.sdk:core:1.+'
 // rudder-clevertap integration
@@ -120,7 +120,7 @@ Follow these steps to add CleverTap to your iOS project:
 
 - Go your `Podfile` and add the `Rudder-CleverTap` extension as shown below:
 
-```objectivec
+```ruby
 pod 'Rudder-CleverTap'
 ```
 
@@ -203,7 +203,7 @@ allprojects {
 <li>Also, add the following under the <code class="inline-code">dependencies</code> section:
 <span>
 
-```kotlin
+```groovy
 // ruddder core sdk
 implementation 'com.rudderstack.android.sdk:core:1.+'
 // rudder-clevertap integration
@@ -243,7 +243,7 @@ val rudderClient = RudderClient.getInstance(
 <li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-CleverTap</code> extension as shown below:
 <span>
 
-```objectivec
+```ruby
 pod 'Rudder-CleverTap'
 ```
 </span>
@@ -597,7 +597,7 @@ When the **Use Clevertap ObjectId for Mapping** setting is enabled in the dashbo
 | RudderStack | RudderStack | CleverTap | CleverTap |
 | :--- | :--- | :--- | :--- |
 | **`anonymousId` present** | **`userId` present** | **tracking with** | **value** |
-| true | true | identity | userId |
+| true | true | identity | anonymousId |
 | true | false | objectId | anonymousId |
 | false | true | identity | userId |
 
@@ -644,7 +644,7 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 
 A sample `screen` call looks like the following code snippet:
 
-```
+```objectivec
 [[RSClient sharedInstance] screen:@"Sample Screen Name"
         properties:@{@"prop_key" : @"prop_value"}];
 ```

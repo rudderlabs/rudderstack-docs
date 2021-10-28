@@ -36,7 +36,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 </div>
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
-<img src="../../../../images/assets/bugsnag.png" /><span class="imageTitle">Connection settings for Bugsnag</span>
+<img src="../../assets/bugsnag.png" /><span class="imageTitle">Connection settings for Bugsnag</span>
 
 - Add your API key to your connection settings. You can find your API key in your Bugsnag dashboard under “Settings”, which is located in the upper left-hand corner.
 - Click on **Next** to complete the configuration. Bugsnag should now be added and enabled as a destination in RudderStack.
@@ -49,7 +49,7 @@ Please follow the steps below to add Bugsnag to your Android Project:
 
 - Add the following `repository` to your `app/build.gradle` file.
 
-```
+```groovy
 repositories {
     mavenCentral()
 }
@@ -57,14 +57,14 @@ repositories {
 
 - After that, add the following `dependencies` in the same file:
 
-```
+```groovy
 implementation 'com.rudderstack.android.sdk:core:1.0.1-beta.1'
 implementation 'com.rudderstack.android.integration:bugsnag:0.1.0-beta.1'
 ```
 
 - Finally, change the initialization of your `RudderClient` in your `Application` class
 
-```
+```kotlin
 val rudderClient = RudderClient.getInstance(
     this,
     <YOUT_WRITE_KEY>,
@@ -82,19 +82,19 @@ Follow these steps to add Bugsnag to your iOS project:
 
 - Go your `Podfile` and add the `Rudder-Bugsnag` extension
 
-```
+```ruby
 pod 'Rudder-Bugsnag', '0.1.0-beta.1'
 ```
 
 - After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
 
-```
+```objectivec
 #import "RudderBugsnagFactory.h"
 ```
 
 - Finally, change the initialization of your `RudderClient` as shown:
 
-```
+```objectivec
 RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withDataPlaneUrl:<YOUR_DATA_PLANE_URL>];
 [builder withFactory:[RudderBugsnagFactory instance]];
@@ -116,7 +116,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 <li>Add the following <code class="inline-code">repository</code> to your <code class="inline-code">app/build.gradle</code> file.
 <span>
 
-```
+```groovy
 repositories {
     mavenCentral()
 }
@@ -126,7 +126,7 @@ repositories {
 <li>After that, add the following <code class="inline-code">dependencies</code> in the same file:
 <span>
 
-```
+```groovy
 implementation 'com.rudderstack.android.sdk:core:1.0.1-beta.1'
 implementation 'com.rudderstack.android.integration:bugsnag:0.1.0-beta.1'
 ```
@@ -135,7 +135,7 @@ implementation 'com.rudderstack.android.integration:bugsnag:0.1.0-beta.1'
 <li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> in your <code class="inline-code">Application</code> class
 <span>
 
-```
+```kotlin
 val rudderClient = RudderClient.getInstance(
     this,
     <YOUT_WRITE_KEY>,
@@ -155,7 +155,7 @@ val rudderClient = RudderClient.getInstance(
 <li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Bugsnag</code> extension
 <span>
 
-```
+```ruby
 pod 'Rudder-Bugsnag', '0.1.0-beta.1'
 ```
 </span>
@@ -163,7 +163,7 @@ pod 'Rudder-Bugsnag', '0.1.0-beta.1'
 <li>After adding the dependency followed by <code class="inline-code">pod install</code> , you can add the imports to your <code class="inline-code">AppDelegate.m</code> file as shown:
 <span>
 
-```
+```objectivec
 #import "RudderBugsnagFactory.h"
 ```
 </span>
@@ -171,7 +171,7 @@ pod 'Rudder-Bugsnag', '0.1.0-beta.1'
 <li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
 <span>
 
-```
+```objectivec
 RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withDataPlaneUrl:<YOUR_DATA_PLANE_URL>];
 [builder withFactory:[RudderBugsnagFactory instance]];
@@ -190,10 +190,10 @@ The `identify` call lets you associate a user to their actions and capture all t
 
 An example `identify` call from our JS source looks like this:
 
-```
+```javascript
 rudderanalytics.identify("abc123", {
-        name: "Foo Bar",
-        email: "foo@bar.com",
+  name: "Foo Bar",
+  email: "foo@bar.com",
 });
 ```
 

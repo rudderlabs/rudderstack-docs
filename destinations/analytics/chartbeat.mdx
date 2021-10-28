@@ -37,7 +37,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - In the Connection Settings page, please enter the relevant information in the fields shown in the following screen:
 
-<img src="../../../../images/assets/image (18).png" /><span class="imageTitle">Connection Settings for Chartbeat</span>
+<img src="../../assets/image (18).png" /><span class="imageTitle">Connection Settings for Chartbeat</span>
 
 Each field is as explained below:
 
@@ -59,14 +59,14 @@ Making a call to the `page` API will send out an object to Chartbeat containing 
 
 A sample `page` call is shown below:
 
-```
+```javascript
 rudderanalytics.page("section-name", "home", {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer",
-        author: 'author-name'
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer",
+  author: "author-name",
 });
 ```
 

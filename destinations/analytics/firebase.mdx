@@ -44,50 +44,50 @@ Follow these steps to add Firebase to your Android project:
 - Copy this file in your `app` folder of your project. The file contains all the necessary information about the project and the integration.
 - Add the `classpath` under `dependencies` to your project level `build.gradle`
 
-```
+```groovy
 buildscript {
-    repositories {
-        google()
-    }
-    dependencies {
-        // add this line
-        classpath 'com.google.gms:google-services:4.3.3'
-    }
+  repositories {
+    google()
+  }
+  dependencies {
+    // add this line
+    classpath 'com.google.gms:google-services:4.3.3'
+  }
 }
 ```
 
 - Once you have completed the steps above, you can add the `plugins` and `dependencies` to your `app/build.gradle` file as shown:
 
-```
+```groovy
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 ```
 
 - Then, add the repository as shown:
 
-```
+```groovy
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 ```
 
 - Add the RudderStack-Firebase SDK extension along with `core` SDK under `dependencies`:
 
-```
+```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
 implementation 'com.rudderstack.android.integration:firebase:1.+'
 ```
 
 - Then, add the necessary `permissions` under `AndroidManifest.xml`
 
-```
+```markup
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 
 - Finally change the initialization of your `RudderClient` in your `Application` class.
 
-```
+```kotlin
 val rudderClient = RudderClient.getInstance(
     this,
     <YOUT_WRITE_KEY>,
@@ -107,19 +107,19 @@ Follow these steps to add Firebase to your iOS project:
 - Add the file to the root of your XCode project.
 - Go your `Podfile` and add the `Rudder-Firebase` extension along with `Core` SDK using the following code:
 
-```
+```ruby
 pod 'Rudder-Firebase'
 ```
 
 - After adding the dependency followed by `pod install` ,you can add the imports to your `AppDelegate.m` file as shown:
 
-```
+```objectivec
 #import "RudderFirebaseFactory.h"
 ```
 
 - Finally change the intialization of your `RudderClient` as shown:
 
-```
+```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withFactory:[RudderFirebaseFactory instance]];
@@ -141,7 +141,7 @@ Follow these steps to add Firebase to your Unity project:
 - Register your project in [Firebase Console](https://console.firebase.google.com). We support only `Android` and `iOS` for Unity.
 - After adding the project, Firebase will prompt you to download the `google-services.json` for Android and `GoogleServices-Info.plist` for iOS.
 - Add those two files to your `Assets` folder.
-- Integrate the RudderStack `core` SDK with your project. To know more, please refer to our [Getting Started with Unity SDK](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk) guide.
+- Integrate the RudderStack `core` SDK with your project. To know more, please refer to our [Getting Started with Unity SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk) guide.
 - Download and import the Firebase Unity SDK and follow these instructions on [adding Firebase SDK to your project](https://firebase.google.com/docs/unity/setup). Specifically `FirebaseAnalytics.unitypackage`.
 - Download [Firebase Extension for RudderStack](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/Integrations/Firebase/rudder-integration-firebase-unity.unitypackage) from our GitHub page and import into your project.
 - Attach `RudderPreferbs.prefab` file from `Rudder` to your Main `GameObject`
@@ -170,7 +170,7 @@ Follow these steps to add Firebase to your ReactNative project:
 - Add the RudderStack react native SDK to your app - refer [Getting Started with the ReactNative SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk.md).
 - Add the RudderStack-Firebase react native module to your app using :
 
-  ```
+  ```bash
   npm install @rudderstack/rudder-integration-firebase-react-native
   // OR //
   yarn add @rudderstack/rudder-integration-firebase-react-native
@@ -178,7 +178,7 @@ Follow these steps to add Firebase to your ReactNative project:
 
 - Import the module you added above and add it to your SDK initialization code in the following manner:
 
-  ```
+  ```javascript
   import rudderClient from '@rudderstack/rudder-sdk-react-native';
   import firebase from "@rudderstack/rudder-integration-firebase-react-native";
 
@@ -196,28 +196,28 @@ Follow these steps to add Firebase to your ReactNative project:
   - Copy the `google-services.json` file in the `app` folder of your android project. The file contains all the necessary information about the project and the integration.
   - Add the `classpath` under `dependencies` to your project level `build.gradle`
 
-  ```
+  ```groovy
   buildscript {
-      repositories {
-          google()
-      }
-      dependencies {
-          // add this line
-          classpath 'com.google.gms:google-services:4.3.3'
-      }
+    repositories {
+      google()
+    }
+    dependencies {
+      // add this line
+      classpath 'com.google.gms:google-services:4.3.3'
+    }
   }
   ```
 
   - Once you have completed the steps above, you can add the `plugins` and `dependencies` to your `app/build.gradle` file as shown:
 
-  ```
+  ```groovy
   apply plugin: 'com.android.application'
   apply plugin: 'com.google.gms.google-services'
   ```
 
   - Then, add the necessary `permissions` under `AndroidManifest.xml`
 
-  ```
+  ```markup
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   ```
@@ -245,15 +245,15 @@ Follow these steps to add Firebase to your ReactNative project:
 <li>Add the <code class="inline-code">classpath</code> under <code class="inline-code">dependencies</code> to your project level <code class="inline-code">build.gradle</code>
 <span>
 
-```
+```groovy
 buildscript {
-    repositories {
-        google()
-    }
-    dependencies {
-        // add this line
-        classpath 'com.google.gms:google-services:4.3.3'
-    }
+  repositories {
+    google()
+  }
+  dependencies {
+    // add this line
+    classpath 'com.google.gms:google-services:4.3.3'
+  }
 }
 ```
 </span>
@@ -261,7 +261,7 @@ buildscript {
 <li>Once you have completed the steps above, you can add the <code class="inline-code">plugins</code> and <code class="inline-code">dependencies</code> to your <code class="inline-code">app/build.gradle</code> file as shown:
 <span>
 
-```
+```groovy
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 ```
@@ -269,16 +269,16 @@ apply plugin: 'com.google.gms.google-services'
 </li>
 <li>Then, add the repository as shown:
 
-```
+```groovy
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 ```
 </li>
 <li>Add the RudderStack-Firebase SDK extension along with <code class="inline-code">core</code> SDK under <code class="inline-code">dependencies</code>:
 <span>
 
-```
+```groovy
 implementation 'com.rudderstack.android.sdk:core:1.+'
 implementation 'com.rudderstack.android.integration:firebase:1.+'
 ```
@@ -287,7 +287,7 @@ implementation 'com.rudderstack.android.integration:firebase:1.+'
 <li>Then, add the necessary <code class="inline-code">permissions</code> under <code class="inline-code">AndroidManifest.xml</code>
 <span>
 
-```
+```markup
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
@@ -296,7 +296,7 @@ implementation 'com.rudderstack.android.integration:firebase:1.+'
 <li>Finally change the initialization of your <code class="inline-code">RudderClient</code> in your <code class="inline-code">Application</code> class.
 <span>
 
-```
+```kotlin
 val rudderClient = RudderClient.getInstance(
     this,
     <YOUT_WRITE_KEY>,
@@ -318,7 +318,7 @@ val rudderClient = RudderClient.getInstance(
 <li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Firebase</code> extension along with <code class="inline-code">Core</code> SDK using the following code:
 <span>
 
-```
+```ruby
 pod 'Rudder-Firebase'
 ```
 </span>
@@ -326,7 +326,7 @@ pod 'Rudder-Firebase'
 <li>After adding the dependency followed by <code class="inline-code">pod install</code> ,you can add the imports to your <code class="inline-code">AppDelegate.m</code> file as shown:
 <span>
 
-```
+```objectivec
 #import "RudderFirebaseFactory.h"
 ```
 </span>
@@ -334,7 +334,7 @@ pod 'Rudder-Firebase'
 <li>Finally change the intialization of your `RudderClient` as shown:
 <span>
 
-```
+```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withFactory:[RudderFirebaseFactory instance]];
@@ -385,7 +385,7 @@ RudderClient rudderClient = RudderClient.GetInstance(
 <li>Add the RudderStack react native SDK to your app - refer <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk">Getting Started with the ReactNative SDK</a>.</li>
 <li>Add the RudderStack-Firebase react native module to your app using :
 
-  ```
+  ```bash
   npm install @rudderstack/rudder-integration-firebase-react-native
   // OR //
   yarn add @rudderstack/rudder-integration-firebase-react-native
@@ -393,7 +393,7 @@ RudderClient rudderClient = RudderClient.GetInstance(
 </li>
 <li>Import the module you added above and add it to your SDK initialization code in the following manner:
 
-  ```
+  ```javascript
   import rudderClient from '@rudderstack/rudder-sdk-react-native';
   import firebase from "@rudderstack/rudder-integration-firebase-react-native";
 
@@ -411,28 +411,28 @@ RudderClient rudderClient = RudderClient.GetInstance(
   <li>Copy the <code class="inline-code">google-services.json</code> file in the <code class="inline-code">app</code> folder of your android project. The file contains all the necessary information about the project and the integration.</li>
   <li>Add the <code class="inline-code">classpath</code> under <code class="inline-code">dependencies</code> to your project level <code class="inline-code">build.gradle</code>
 
-  ```
+  ```groovy
   buildscript {
-      repositories {
-          google()
-      }
-      dependencies {
-          // add this line
-          classpath 'com.google.gms:google-services:4.3.3'
-      }
+    repositories {
+      google()
+    }
+    dependencies {
+      // add this line
+      classpath 'com.google.gms:google-services:4.3.3'
+    }
   }
   ```
 </li>
 <li>Once you have completed the steps above, you can add the <code class="inline-code">plugins</code> and <code class="inline-code">dependencies</code> to your <code class="inline-code">app/build.gradle</code> file as shown:
 
-  ```
+  ```groovy
   apply plugin: 'com.android.application'
   apply plugin: 'com.google.gms.google-services'
   ```
 </li>
 <li>Then, add the necessary <code class="inline-code">permissions</code> under <code class="inline-code">AndroidManifest.xml</code>
 
-  ```
+  ```markup
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   ```
@@ -454,7 +454,7 @@ RudderClient rudderClient = RudderClient.GetInstance(
 
 The `identify` call from RudderStack sets the `userId` through `setUserId` method from `FirebaseAnalytics` . We set other user properties from `RudderTraits` to Firebase using the `setUserProperty` method. We ignore `age`, `gender` and `interest` as these are reserved by Google for their own purpose.
 
-```
+```objectivec
 [[RSClient sharedInstance] identify:@"test_user_id"
                              traits:@{@"foo": @"bar",
                                       @"foo1": @"bar1",
@@ -537,7 +537,7 @@ Firebase enforces to have the value of length less than 100. RudderStack takes t
 
 A sample `track` call from the iOS SDK will look like the below
 
-```
+```objectivec
 [[RSClient sharedInstance] track:@"simple_track_with_props" properties:@{
     @"key_1" : @"value_1",
     @"key_2" : @"value_2"
@@ -552,7 +552,7 @@ RudderStack does not send the screen view events to Firebase from the Firebase S
 
 You can check the events and the properties along with it in the Firebase Debug View. To enable it for Android, fire the command below from your terminal:
 
-```
+```bash
 $ adb shell setprop debug.firebase.analytics.app <your_package_name>
 ```
 

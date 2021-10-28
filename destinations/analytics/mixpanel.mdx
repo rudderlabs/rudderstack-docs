@@ -42,17 +42,17 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/screen-shot-2021-07-28-at-5.45.20-pm.png" />
+<img src="../../assets/screen-shot-2021-07-28-at-5.45.20-pm.png" />
 
-<img src="../../../../images/assets/screen-shot-2021-07-28-at-5.47.10-pm.png" />
+<img src="../../assets/screen-shot-2021-07-28-at-5.47.10-pm.png" />
 
-<img src="../../../../images/assets/screen-shot-2021-07-28-at-5.50.09-pm.png" />
+<img src="../../assets/screen-shot-2021-07-28-at-5.50.09-pm.png" />
 
-<img src="../../../../images/assets/screen-shot-2021-07-28-at-5.50.26-pm.png" />
+<img src="../../assets/screen-shot-2021-07-28-at-5.50.26-pm.png" />
 
-<img src="../../../../images/assets/mp-config.png" />
+<img src="../../assets/mp-config.png" />
 
-<img src="../../../../images/assets/screen-shot-2021-07-28-at-5.43.41-pm.png" /><span class="imageTitle">Connection Settings for Mixpanel</span>
+<img src="../../assets/screen-shot-2021-07-28-at-5.43.41-pm.png" /><span class="imageTitle">Connection Settings for Mixpanel</span>
 
 ### Configuration Settings
 
@@ -79,7 +79,7 @@ The following settings are applicable if you are using this destination via the 
 
 We pass all the page properties that you provide through our `page` call along with the properties that we auto collect through our SDK to Mixpanel. The event name would be **Page** for `page` call and **Screen** for a `screen` call. A sample `page` call is as shown:
 
-```
+```javascript
 rudderanalytics.page();
 ```
 
@@ -107,16 +107,14 @@ After making this request, RudderStack merges the `anonymousId` and `userId` as 
 
 A sample `identify` call is as shown:
 
-```
-rudderanalytics.identify("12345",
-  {
-    firstname: "Tintin",
-    city: "Brussels",
-    country: "Belgium",
-    phone: "1234567890",
-    email: "tintin@twentiethcentury.com"
-  }
-)
+```javascript
+rudderanalytics.identify("12345", {
+  firstname: "Tintin",
+  city: "Brussels",
+  country: "Belgium",
+  phone: "1234567890",
+  email: "tintin@twentiethcentury.com"
+})
 ```
 
 Mixpanel has some reserved properties:
@@ -142,7 +140,7 @@ Rudderstack does not send data to Mixpanel People by default, as it usually requ
 
 We recommend identifying the user traits without the `userId` if you wish to add the people properties in Mixpanel before knowing the `userId`. To do this, refer to the following snippet:
 
-```
+```javascript
 rudderanalytics.identify({
   email: 'hello@example.com',
   name: 'Ian Taylor'
@@ -159,7 +157,7 @@ Currently, RudderStack supports this feature only for the native web device mode
 
 To track user events, use the `track` method with the event name and the associated properties. A sample `track` call is as shown:
 
-```
+```javascript
 rudderanalytics.track("track event", {
     test_prop1: 50,
     test_prop2: "prop_value"
@@ -174,10 +172,10 @@ Revenue tracking is done with a `distinct_id` \(`userId` that you provide in you
 
 A sample revenue `track` call is as shown:
 
-```
+```javascript
 rudderanalytics.track("Purchase", {
-    revenue: 30,
-    currency: "USD"
+  revenue: 30,
+  currency: "USD"
 });
 ```
 
@@ -189,7 +187,7 @@ If **Use Mixpanel People** is enabled in your RudderStack dashboard and you incl
 
 The `alias` call lets you associate multiple identities of a known user. A sample `alias` call is as shown:
 
-```
+```javascript
 analytics.alias('userId', `previousId`);
 ```
 
@@ -207,7 +205,7 @@ RudderStack allows you to record the custom traits associated with a user group 
 
 A sample `group` call is as shown:
 
-```
+```javascript
 {
   "userId": "user123",
   "traits": {
@@ -229,7 +227,7 @@ A sample `group` call is as shown:
 
 RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified during the destination configuration in RudderStack, as shown:
 
-<img src="../../../../images/assets/1 (12).png" /><span class="imageTitle">Mixpanel Group Key Settings</span>
+<img src="../../assets/1 (12).png" /><span class="imageTitle">Mixpanel Group Key Settings</span>
 
 <div class="warningBlock">
 
@@ -280,7 +278,7 @@ RudderStack will send all the Mixpanel's special traits as People Properties. He
 
 </div>
 
-<img src="../../../../images/assets/mixpanle-super-people.png" /><span class="imageTitle">Mixpanel Super Properties and People Properties</span>
+<img src="../../assets/mixpanle-super-people.png" /><span class="imageTitle">Mixpanel Super Properties and People Properties</span>
 
 <div class="warningBlock">
 
@@ -325,7 +323,7 @@ Increment works for known users only. So, if your <code class="inline-code">trac
 
 To increment properties, you can specify which properties you want RudderStack to increment using the **Properties to Increment in People** field. RudderStack will call Mixpanel’s increment when you attach a number to the specified property. For example, `'items purchased': 5`.
 
-<img src="../../../../images/assets/mixpanle-increment.png" /><span class="imageTitle">Mixpanel Event Increment</span>
+<img src="../../assets/mixpanle-increment.png" /><span class="imageTitle">Mixpanel Event Increment</span>
 
 <div class="warningBlock">
 
