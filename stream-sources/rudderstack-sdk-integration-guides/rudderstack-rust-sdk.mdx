@@ -1,5 +1,5 @@
 ---
-# slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/rust"
+# slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk"
 title: "Rust"
 description: >-
   Detailed technical documentation on using RudderStack’s Rust SDK to send events to various destinations.
@@ -12,11 +12,14 @@ RudderStack’s Rust SDK allows you to track your customer event data from your 
 
 Once configured as a source, the event requests are sent to the RudderStack server. RudderStack then routes the events to the destination platforms as configured by you.
 
-You can find the SDK implementation in our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-rust).
+<div class="successBlock">
+  
+Find the SDK implementation in our <a href="https://github.com/rudderlabs/rudder-sdk-rust">**GitHub repository**</a>.
+</div>
 
 ## Installing the SDK
 
-To install the Rust SDK, add its crate as a project dependency.
+To install the Rust SDK, simply add its crate as a project dependency.
 
 Add the following line to your `Cargo.toml` file:
 
@@ -76,19 +79,19 @@ rudder_analytics
             })),
             ..Default::default()
         }))
-        .expect("The identify call failed to send data to RudderStack");
+        .expect("Identify call failed to send data to RudderStack");
 ```
 
 ### Identify parameters
 
 The following table describes the different `identify` parameters in detail:
 
-| **Field**      | **Type** | **Presence**                               | **Description** |
+| **Field**      | **Type** | **Presence**                               | **Description**                        					|
 |:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
 | `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
 | `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user, such as name, email, etc. |
-| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `original_timestamp`| DateTime | Optional                              | The timestamp when the event occurred, in ISO 8601 format.                   |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -125,7 +128,7 @@ The following table describes the different `track` parameters in detail:
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
 | `event`        | String   | Required                                   | Name of the event, i.e. the action performed by the user.		        |
 | `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the event.                      |
-| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.	                |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -147,7 +150,7 @@ use rudderanalytics::message::{ Page, Message };
 rudder_analytics
         .send(Message::Page(Page {
             user_id: Some("sample_user_id".to_string()),
-            name: "Cart viewd".to_owned(),
+            name: "Cart viewed".to_owned(),
             properties: Some(json!({
                 "some property": "some value",
                 "some other property": "some other value",
@@ -167,7 +170,7 @@ The following table describes the different `page` parameters in detail:
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
 | `name`         | String   | Required                                   | Name of the viewed page.			   			        |
 | `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the page view event.            |
-| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -208,7 +211,7 @@ The following table describes the different `page` parameters in detail:
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
 | `name`         | String   | Required                                   | Name of the viewed screen.			   			        |
 | `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the screen view event.          |
-| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -249,7 +252,7 @@ The following table describes the different `group` parameters in detail:
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          |
 | `group_id`     | String   | Required                                   | Unique identifier of the group in your database.                             |
 | `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the group.                          |
-| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -258,8 +261,8 @@ The following table describes the different `group` parameters in detail:
 The `alias` call lets you merge different identities of a known user.
 
 <div class="infoBlock">
-
-<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+	
+	<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
 </div>
 
 <div class="successBlock">
@@ -314,8 +317,8 @@ The following table describes the different `alias` parameters in detail:
 |:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
 | `user_id`      | String   | Required				         | Unique user identifier in your database.                                     |
 | `previous_id`  | String   | Required                                   | The user's previous identifier.                                              |
-| `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user.                           |
-| `timestamp`    | Datetime | Optional                                   | The timestamp associated with the message's arrival.                         |
+| `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user, such as name, email, etc. |
+| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -372,6 +375,27 @@ The following table describes the different `batch` parameters in detail:
 | `batch`        | Vector   | Required                                   | Contains one or more event calls of type `identify`/ `track`/ `page`/ `screen`/ `group`/ `alias`.                          													           |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
+
+## Integrations options
+
+The structure of the `integrations` option is as follows:
+
+```rust
+integrations: {
+ All: boolean, // Defaults to true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+The following table describes all the `integrations` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `All`          | Boolean  | Optional                                   | Corresponds to all the destinations to which the event is to be sent. Defaults to true. `All: false` instructs RudderStack to not send the event data to any destinations by default.						     |
+| `<Destination>`| Boolean  | Optional                                   | Name of the specific destination to which the event should be sent/not sent, depending on the Boolean value assigned to it.															  |
 
 ## Contact us
 
