@@ -91,7 +91,7 @@ The following table describes the different `identify` parameters in detail:
 | `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
 | `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user, such as name, email, etc. |
-| `original_timestamp`| DateTime | Optional                              | The timestamp when the event occurred, in ISO 8601 format.                   |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -128,7 +128,7 @@ The following table describes the different `track` parameters in detail:
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
 | `event`        | String   | Required                                   | Name of the event, i.e. the action performed by the user.		        |
 | `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the event.                      |
-| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.	                |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -170,7 +170,7 @@ The following table describes the different `page` parameters in detail:
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
 | `name`         | String   | Required                                   | Name of the viewed page.			   			        |
 | `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the page view event.            |
-| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -211,7 +211,7 @@ The following table describes the different `page` parameters in detail:
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
 | `name`         | String   | Required                                   | Name of the viewed screen.			   			        |
 | `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the screen view event.          |
-| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -252,7 +252,7 @@ The following table describes the different `group` parameters in detail:
 | `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          |
 | `group_id`     | String   | Required                                   | Unique identifier of the group in your database.                             |
 | `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the group.                          |
-| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -318,7 +318,7 @@ The following table describes the different `alias` parameters in detail:
 | `user_id`      | String   | Required				         | Unique user identifier in your database.                                     |
 | `previous_id`  | String   | Required                                   | The user's previous identifier.                                              |
 | `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user, such as name, email, etc. |
-| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
 
@@ -375,7 +375,7 @@ The following table describes the different `batch` parameters in detail:
 | `batch`        | Vector   | Required                                   | Contains one or more event calls of type `identify`/ `track`/ `page`/ `screen`/ `group`/ `alias`.                          													           |
 | `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
 | `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
-| `original_timestamp`| DateTime | Optional                              | The time when the event occurred, in ISO 8601 format.                        |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
 
 ## Integrations options
 
