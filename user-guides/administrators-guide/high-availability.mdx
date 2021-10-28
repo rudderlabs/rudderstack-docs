@@ -16,13 +16,13 @@ To recover from node failures, we recommend provisioning the nodes with an auto-
 
 This is how a standard RudderStack production deployment looks like:
 
-<img src="../../../../images/assets/rudderstack2x_-7-.png" />
+<img src="../../assets/rudderstack2x_-7-.png" />
 
 ### Deploying RudderStack in a Single Availability Zone
 
 If the node hosting RudderStack goes down, Kubernetes will automatically schedule it on another available node. If you have an auto-scaling group and Kubernetes is not able to schedule RudderStack, a new node is created and RudderStack is scheduled.
 
-<img src="../../../../images/assets/rudderstack2x_-9-.png" />
+<img src="../../assets/rudderstack2x_-9-.png" />
 <span class="imageTitle">Single Availability Zone</span>
 
 This is equivalent to the standard High Availability setup where an infrastructure team creates an extra backup node to switch the master using a heartbeat mechanism.
@@ -31,7 +31,7 @@ This is equivalent to the standard High Availability setup where an infrastructu
 
 There could be instances of data center failures, where a complete availability zone can go down. If you want RudderStack to be resilient to such failures, your Kubernetes cluster should span multiple availability zones.
 
-<img src="../../../../images/assets/rudderstack2x_-11-.png" />
+<img src="../../assets/rudderstack2x_-11-.png" />
 <span class="imageTitle">Multiple Availability Zones</span>
 
 ## Software Failures
@@ -47,7 +47,7 @@ RudderStack supports two running modes - **normal and degraded**
 #### Normal Mode
 
 In the normal mode, RudderStack receives events and forwards them to the destinations as usual.
-<img src="../../../../images/assets/rudderstack2x_-12-.png" />
+<img src="../../assets/rudderstack2x_-12-.png" />
 <span class="imageTitle">Normal Mode</span>
 
 #### Degraded Mode
@@ -56,7 +56,7 @@ If RudderStack keeps crashing while processing the events, it enters the degrade
 
 In the degraded mode, RudderStack receives events and stores them. It will not forward to destinations.
 
-<img src="../../../../images/assets/rudderstack2x_-13- (1) (1) (1) (1) (1) (1) (1).png" />
+<img src="../../assets/rudderstack2x_-13- (1) (1) (1) (1) (1) (1) (1).png" />
 <span class="imageTitle">Degraded Mode</span>
 
 <div class="infoBlock">
@@ -75,14 +75,14 @@ If RudderStack crashes in degraded mode, we request you to send us the crash rep
 
 RudderStack has an in-built alerting service that will raise an alert when the server enters `degraded` mode. The alerting service supports integrations with PagerDuty and VictorOps. You can configure this to be alerted when an unexpected issue occurs with the RudderStack server.
 
-Please refer to our [alerting guide](https://rudderstack.com/docs/administrators-guide/alerting) to know more about the various configuring alerts in RudderStack.
+Please refer to our [alerting guide](https://rudderstack.com/docs/user-guides/administrators-guide/alerting) to know more about the various configuring alerts in RudderStack.
 
 ## Client SDK Caching
 
 There may arise a scenario where the RudderStack service is down because of an unexpected issue, and is not reachable for the SDKs. In such a situation, the web and the mobile SDKs will then cache the events in the local storage. The pending events will be retried with a backoff and delivered once the service is available again.
 
 Even during an unexpected downtime, all your events are safe and will be delivered to your destinations without fail.
-<img src="../../../../images/assets/rudderstack2x_-6-.png" />
+<img src="../../assets/rudderstack2x_-6-.png" />
 <span class="imageTitle">Downtime Scenario</span>
 
 ## Contact Us

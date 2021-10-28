@@ -40,7 +40,7 @@ Here's a quick 2-minute walkthrough of this feature:
 
 **Transformations only work for the Cloud mode destinations.**
 
-To know more about the Cloud mode in RudderStack, check out the <a href="https://rudderstack.com/docs/get-started/rudderstack-connection-modes">RudderStack Connection Modes</a> guide.
+To know more about the Cloud mode in RudderStack, check out the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes">RudderStack Connection Modes</a> guide.
 
 </div>
 
@@ -51,14 +51,14 @@ To know more about the Cloud mode in RudderStack, check out the <a href="https:/
 
 <!--<img src="../../../images/assets/image (90).png" />-->
 
-<img src="../../../images/assets/image (90).png" alt="Adding a Transformation" />
+<img src="../assets/image (90).png" alt="Adding a Transformation" />
 <span class="imageTitle"></span>
 
 - Click on the **Create New** option as shown:
 
 <!--<img src="../../../images/assets/image (92).png" />-->
 
-<img src="../../../images/assets/image (92).png" alt="Create New Transformation" />
+<img src="../assets/image (92).png" alt="Create New Transformation" />
 <span class="imageTitle"></span>
 
 - Next, assign a name for this new transformation. Enter the transformation function's code in the **Transformation** window, as shown:
@@ -66,7 +66,7 @@ To know more about the Cloud mode in RudderStack, check out the <a href="https:/
 <!--<img src="../../../images/assets/image (100).png" />-->
 
 <img
-  src="../../images/assets/image (100).png"
+  src="../assets/image (100).png"
   alt="Assign a transformation name"
 />
 <span class="imageTitle"></span>
@@ -75,7 +75,7 @@ To know more about the Cloud mode in RudderStack, check out the <a href="https:/
 
 <!--<img src="../../../images/assets/image (99).png" />-->
 
-<img src="../../../images/assets/image (99).png" alt="transformEvent function" />
+<img src="../assets/image (99).png" alt="transformEvent function" />
 <span class="imageTitle"></span>
 
 <div class="infoBlock">
@@ -96,12 +96,12 @@ You can copy-paste the entire code of any of the functions present in this repos
 
 <!--<img src="../../../images/assets/image (97).png" />-->
 
-<img src="../../../images/assets/image (97).png" alt="Run Test" />
+<img src="../assets/image (97).png" alt="Run Test" />
 <span class="imageTitle"></span>
 
 - In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` feature, as shown:
 
-```
+```javascript
 /***
 * This function gets executed on a batch of events before it gets pushed to a destination
 * events    => JSON list of events sent to rudder
@@ -115,7 +115,7 @@ export function transformBatch(events, metadata) {
 }
 ```
 
-<div class="dangerBlock"> 
+<div class="dangerBlock">
 
 **Disclaimer for using <code class="inline-code">transformBatch</code>**
 
@@ -136,14 +136,14 @@ To create a library, follow these steps:
 
 <!--<img src="../../../images/assets/image (89).png" />-->
 
-<img src="../../../images/assets/image (89).png" alt="Create new library" />
+<img src="../assets/image (89).png" alt="Create new library" />
 
 - Add the library's **Name**, an optional **Description**, and include the custom functions that you need to reuse across all other transformations.
 
 <!--<img src="../../../images/assets/image (91).png" />-->
 
 <img
-  src="../../images/assets/image (91).png"
+  src="../assets/image (91).png"
   alt="Add library name and description"
 />
 
@@ -152,7 +152,7 @@ To create a library, follow these steps:
 <!--<img src="../../../images/assets/image (95).png" />-->
 
 <img
-  src="../../images/assets/image (95).png"
+  src="../assets/image (95).png"
   alt="Add more functions under a single library"
 />
 
@@ -172,7 +172,7 @@ For example, if your library name is **`is rudder email`**, then the library han
 <!--<img src="../../../images/assets/image (101).png" />-->
 
 <img
-  src="../../images/assets/image (101).png"
+  src="../assets/image (101).png"
   alt="Using libraries in transformations"
 />
 
@@ -180,14 +180,15 @@ Let's say you want to import a function called **`rudderEmail`**, which returns 
 
 The following code snippet demonstrates how we can implement this use-case:
 
-```
-import { rudderEmail } from 'isRudderEmail'
+```javascript
+import { rudderEmail } from "isRudderEmail";
 export function transformEvent(event) {
-    const email = event.context && event.context.traits && event.context.traits.email;
-    if (email) {
-      if (!rudderEmail(email)) return;
-    }
-    return event;
+  const email =
+    event.context && event.context.traits && event.context.traits.email;
+  if (email) {
+    if (!rudderEmail(email)) return;
+  }
+  return event;
 }
 ```
 
@@ -196,7 +197,7 @@ On running a test, an example event not having the specified email domain is fil
 <!--<img src="../../../images/assets/image (86).png" />-->
 
 <img
-  src="../../images/assets/image (86).png"
+  src="../assets/image (86).png"
   alt="Event filtered out without specifying email domain"
 />
 
@@ -207,23 +208,23 @@ When importing a single function or multiple functions from a library, it is imp
 The following snippets highlight how to properly import functions from a library:
 
 ```javascript
-Correct Way ✅
----------------
+// Correct Way ✅
+// ---------------
 import { getPrice } from getFinanceData;
 
-OR
+// OR
 
 import { getPrice, getRevenue, getProfit } from getFinanceData;
 ```
 
 ```javascript
-Incorrect Way ❌
------------------
+// Incorrect Way ❌
+// -----------------
 import {
   getPrice
 } from getFinanceData;
 
-OR
+// OR
 
 import {
   getPrice,
@@ -253,21 +254,21 @@ The following properties, if available, are present in the metadata response:
 
 <!--<img src="../../../images/assets/image (98).png" /><span class="imageTitle">Source ID</span> -->
 
-<img src="../../../images/assets/image (98).png" alt="Source ID" />
+<img src="../assets/image (98).png" alt="Source ID" />
 <span class="imageTitle">Source ID</span>
 
 <!--<img src="../../../images/assets/image (120) (1) (1).png" />-->
 
-<img src="../../../images/assets/image (120) (1) (1).png" alt="Source ID" />
+<img src="../assets/image (120) (1) (1).png" alt="Source ID" />
 
 Since you may not need the metadata in every transformation, you can optionally access it by including it in your function signature as an argument wherever required.
 
 An example of this is as shown below:
 
-```
-export function transformEvent(event, metadata){
+```javascript
+export function transformEvent(event, metadata) {
   const meta = metadata(event);
-  event.sourceId = meta.sourceId
+  event.sourceId = meta.sourceId;
 
   return event;
 }
@@ -290,36 +291,36 @@ An example of how to use the `fetch` function in transformations is shown below:
     <TabPanel>
 <span>
 
-```
+```bash
 curl --location -X POST
 'https://api.rudderstack.com/accessTokens' \ -H 'Authorization: Basic
 Base64Enc(workspacetoken:)' \ -H 'Content-Type: application/json' \ -d
 '{ "name": "some-test-access-token", "description":
-"some-description" }' 
+"some-description" }'
 ```
 </span>
     </TabPanel>
     <TabPanel>
 <span>
 
-``` 
+```bash
 http POST 'https://api.rudderstack.com/accessTokens' \
 name=some-test-access-token description=some-description \
 Authorization:'Basic MXBUbGc2MlpZcUgycWtDMDVmc1hUZlJQRWZyOg==' \
-Content-Type:'application/json' 
+Content-Type:'application/json'
 ```
 </span>
     </TabPanel>
-    <TabPanel> 
+    <TabPanel>
 <span>
 
-```
+```javascript
 export async function transformEvent(event) {
   const res = await fetch("post_url", {
     method: "POST", // POST, PUT, DELETE, GET, etc.
     headers: {
-    "Content-Type": "application/json;charset=UTF-8",
-    "Authorization": "Bearer <your_authorization_token>"
+      "Content-Type": "application/json;charset=UTF-8",
+      Authorization: "Bearer <your_authorization_token>",
     },
     body: JSON.stringify(event),
   });
@@ -349,13 +350,13 @@ You can access event-related logs while running a test by including the `log()` 
 
 ```javascript
 export function transformEvent(event, metadata) {
-  const meta = metadata(event)
-  event.sourceId = meta.sourceId
+  const meta = metadata(event);
+  event.sourceId = meta.sourceId;
 
-  log("Event Name is", event.event, ";", "Message Id is", event.messageId)
-  log("Source Id is", meta.sourceId)
+  log("Event Name is", event.event, ";", "Message Id is", event.messageId);
+  log("Source Id is", meta.sourceId);
 
-  return event
+  return event;
 }
 ```
 
@@ -364,7 +365,7 @@ On running a test on the above code, you can see the logs in the **Logs** sectio
 <!--<img src="../../../images/assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png" />-->
 
 <img
-  src="../../images/assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png"
+  src="../assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png"
   alt="Adding a Transformation"
 />
 

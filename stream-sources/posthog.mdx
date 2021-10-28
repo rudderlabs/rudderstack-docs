@@ -19,19 +19,19 @@ In order to add PostHog as a source in RudderStack, please follow these steps:
 
 <!--![](https://lh3.googleusercontent.com/btm9bvnoW8qs7XZXIfuQzmlaQPcD_JLg8y4ZdorBviunWfN_U9hk6WpYPQ-kp4HwCy6kJBvW60ygQHZznLkFVB-vQc7rGYlYrRMAzbpnBgLgJD9S3_pYoicqo40jLQs-YrHYNT5L)-->
 
-<img src="../../../images/assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png" alt="Add Source" />
+<img src="../assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png" alt="Add Source" />
 
 - From the list of sources, select **PostHog**.
 
-<img src="../../../images/assets/posthog-1.png" alt="PostHog" />
+<img src="../assets/posthog-1.png" alt="PostHog" />
 
 - Enter the name of your source, and click on **Next**.
 
-<img src="../../../images/assets/posthog-2.png" alt="Next" />
+<img src="../assets/posthog-2.png" alt="Next" />
 
 - In the **Connection Settings** screen, enter your PostHog credentials and complete the source configuration. Once you've successfully set up the source, you should see the following screen:
 
-<img src="../../../images/assets/posthog-3.png" alt="Connection Settings" />
+<img src="../assets/posthog-3.png" alt="Connection Settings" />
 
 ## Setting up the RudderStack PostHog plugin
 
@@ -39,18 +39,18 @@ Once you've successfully set up PostHog as a source on the RudderStack dashboard
 
 - Get your PostHog source **Write Key** and your RudderStack server URL \(also called as **Data Plane URL**\).
 
-<img src="../../../images/assets/posthog-4.png" alt="Write Key" />
+<img src="../assets/posthog-4.png" alt="Write Key" />
 
-<img src="../../../images/assets/posthog-5.png" alt="Data Plane URL" />
+<img src="../assets/posthog-5.png" alt="Data Plane URL" />
 
 - Copy the [RudderStack-PostHog Plugin repository URL](https://github.com/rudderlabs/rudderstack-posthog-plugin).
 - Go to your PostHog dashboard, and add a custom plugin using this URL, as shown:
 
-<img src="../../../images/assets/posthog-6.png" alt="Add a custom plugin" />
+<img src="../assets/posthog-6.png" alt="Add a custom plugin" />
 
 - Once added successfully, configure this plugin using the source write key and RudderStack server URL that you copied above. The default RudderStack server URL is configured to[ https://hosted.rudderlabs.com/v1/batch](https://hosted.rudderlabs.com/v1/batch). Append **`v1/batch`** to this URL, as shown:
 
-<img src="../../../images/assets/posthog-7.png" alt="v1-batch" />
+<img src="../assets/posthog-7.png" alt="v1-batch" />
 
 - Finally, enable this plugin. You should now start to see the events sent to your PostHog instance flowing to this RudderStack source.
 

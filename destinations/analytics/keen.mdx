@@ -44,7 +44,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/image (24).png" /><span class="imageTitle">Connection Settings for Keen in RudderStack</span>
+<img src="../../assets/image (24).png" /><span class="imageTitle">Connection Settings for Keen in RudderStack</span>
 
 - Please enter the **Project ID** and **Write Key**.
 - You can enable the **Use native SDK to send events** setting to send events through Keen's native JavaScript SDK.
@@ -66,7 +66,7 @@ Note: We only pass the IP, page and referrer add-ons to Keen if the event contai
 
 </div>
 
-<img src="../../../../images/assets/image (38).png" /><span class="imageTitle">Keen add-ons settings in RudderStack</span>
+<img src="../../assets/image (38).png" /><span class="imageTitle">Keen add-ons settings in RudderStack</span>
 
 - Once you have finalized all the settings, click on **Next** to complete the configuration. Keen will now be added as a destination in RudderStack.
 
@@ -78,18 +78,18 @@ Calling `extendEvents` adds the user object to all subsequent`recordEvent` calls
 
 A sample `identify` call is as shown in the following code snippet:
 
-```
+```javascript
 rudderanalytics.identify("my-userID", {
-        name: "Tintin",
-        city: "Brussels",
-        country: "Belgium",
-        email: "tintin@herge.com"
+  name: "Tintin",
+  city: "Brussels",
+  country: "Belgium",
+  email: "tintin@herge.com",
 });
 ```
 
 This will pass the below user to every subsequent event data:
 
-```
+```javascript
 user: {
   userId: "my-userID",
   traits: {
@@ -103,18 +103,18 @@ user: {
 
 ## Page
 
-Calling `rudderanalytics.page()` will pass the `page` properties to the Keen collection `Viewed <category> <name> page`. To know more about the `page`call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.page()` will pass the `page` properties to the Keen collection `Viewed <category> <name> page`. To know more about the `page`call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 A sample `page` call is as shown in the snippet below:
 
-```
+```javascript
 // "home" is the name of the page.
 rudderanalytics.page("home", {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer"
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer"
 });
 ```
 
@@ -130,16 +130,16 @@ This will send the following properties to the Keen `Viewed Home Page` collectio
 
 ## Track
 
-Calling `rudderanalytics.track()` will pass the event properties to Keen on the collection `event-name`. To know more about the `track`call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.track()` will pass the event properties to Keen on the collection `event-name`. To know more about the `track`call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 An example `track` call is as shown:
 
-```
+```javascript
 rudderanalytics.track("Track me", {
-        category: "category",
-        label: "label",
-        value: "value"
- });
+  category: "category",
+  label: "label",
+  value: "value",
+});
 ```
 
 The above call will send the following properties to Keen's `Track me` collection:
@@ -152,11 +152,11 @@ The above call will send the following properties to Keen's `Track me` collectio
 
 ## Screen
 
-The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) or [Android](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-android-sdk) SDK it will be registered in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
+The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) or [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) SDK it will be registered in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
 
 Here is a sample `screen` call in using RudderStack iOS SDK.
 
-```
+```objectivec
 [[RudderClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
 ```

@@ -42,7 +42,7 @@ Please follow our [Adding a Source and Destination](https://rudderstack.com/docs
 
 - Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/google-sheets-config.png" />
+<img src="../../assets/google-sheets-config.png" />
 <span class="imageTitle">Google Sheets Connection Settings</span>
 
 ### **Obtaining the Credentials**
@@ -51,11 +51,11 @@ Before you add Google Sheets as a destination in RudderStack, follow these steps
 
 - Create a service account in from your Google Cloud Console account, as shown below:
 
-<img src="../../../../images/assets/image (84) (1) (1).png" />
+<img src="../../assets/image (84) (1) (1).png" />
 
 - A JSON file with the required credentials will be generated against this service account, as shown:
 
-<img src="../../../../images/assets/image (83).png" />
+<img src="../../assets/image (83).png" />
 
 <div class="warningBlock">
 
@@ -69,7 +69,7 @@ Then, enter the following details under **Connection Settings** in the RudderSta
 - **Sheet ID**: Add the Google Sheet ID to which you want to send your event data. You will also need to assign **Editor** privileges to the email address of the service account for that specific Google Sheet.
 - **Sheet Name**: Add the Sheet Name to which you want to send your data. You can find the sheet name at the bottom left corner the spreadsheet as shown below:
 
-<img src="../../../../images/assets/image (85).png" />
+<img src="../../assets/image (85).png" />
 
 <div class="warningBlock">
 
@@ -173,7 +173,7 @@ The `screen` method allows you to record whenever a user sees the mobile screen 
 
 A sample `screen` call looks like the following code snippet:
 
-```
+```objectivec
 [[RSClient sharedInstance] screen:@"Sample Screen Name" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
@@ -192,7 +192,7 @@ To ensure that your events are sent to Google Sheets, verify if you have taken t
 
 - You can find the Google-Sheet-Id within the Google Sheet URL, as highlighted below:
 
-<img src="../../../../images/assets/Google-Sheet-ID.png" />
+<img src="../../assets/Google-Sheet-ID.png" />
 <span class="imageTitle">Google Sheet ID (underlined in yellow)</span>
 
 ## Contact Us

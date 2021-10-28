@@ -19,7 +19,7 @@ We will be using the terms **integration** and **destination** interchangeably.
 
 RudderStack JS SDK reads the config data from the control plane to fetch the native integrations. The native integrations must have the following methods/attributes defined by you as shown below. RudderStack JS SDK calls these for initializing the destination global object and forwarding event data namely identify, page and track.
 
-<img src="../../../../../images/assets/screenshot-2019-12-10-at-7.57.43-pm.png" />
+<img src="../../../assets/screenshot-2019-12-10-at-7.57.43-pm.png" />
 <span class="imageTitle">Move the Native SDK slider to enabled</span>
 
 - **constructor**: RudderStack JS SDK, constructs an integration object with the destination specific keys such as `name`, `apiKey,` `custom mappings etc`, fetched from your config plane. These information are required by the below calls.
@@ -45,10 +45,10 @@ The input to identify, page, track methods/property of the integration object is
 
 ### Code Structure
 
-<img src="../../../../../images/assets/screenshot-2019-12-10-at-7.21.35-pm.png" />
+<img src="../../../assets/screenshot-2019-12-10-at-7.21.35-pm.png" />
 <span class="imageTitle">This exports the list of all native integrations</span>
 
-<img src="../../../../../images/assets/screenshot-2019-12-10-at-7.22.25-pm.png" />
+<img src="../../../assets/screenshot-2019-12-10-at-7.22.25-pm.png" />
 <span class="imageTitle">Eg: This exports the GoogleAds integration</span>
 
 To add a new integration, add the above said methods to a JS object and export that object to be picked up by the **integrations** map.

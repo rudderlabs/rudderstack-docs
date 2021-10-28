@@ -29,7 +29,7 @@ Follow these steps to set up your BigQuery project before adding it as a destina
 - Enable the BigQuery API if you have an existing project and it is not enabled. More details can be found [**here**](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-web-ui).
 - Log into your [**Google BigQuery console**](https://console.cloud.google.com/). Copy the project **ID** as shown in the following image:
 
-<img src="../../../images/assets/screenshot-2020-04-08-at-11.36.30-am.png" alt="Copy the Project ID" /><span class="imageTitle">Project ID (highlighted) </span>
+<img src="../assets/screenshot-2020-04-08-at-11.36.30-am.png" alt="Copy the Project ID" /><span class="imageTitle">Project ID (highlighted) </span>
 
 <div class="successBlock">
 
@@ -66,11 +66,11 @@ To ensure loading data from cloud storage to BigQuery, make sure to co-locate yo
 
 - Create a key for the service account with **JSON** as the type and store it.
 
-<img src="../../../images/assets/screenshot-2020-04-08-at-12.09.07-pm (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="Create a key" /><span class="imageTitle">Service Account Permissions</span>
+<img src="../assets/screenshot-2020-04-08-at-12.09.07-pm (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="Create a key" /><span class="imageTitle">Service Account Permissions</span>
 
 - Create and download the private JSON key which will be required while configuring BigQuery as a destination in RudderStack, as shown:
 
-<img src="../../../images/assets/screenshot-2020-04-08-at-12.09.32-pm (1).png" alt="JSON key required for the RudderStack UI" /><span class="imageTitle">JSON key required for the RudderStack UI</span>
+<img src="../assets/screenshot-2020-04-08-at-12.09.32-pm (1).png" alt="JSON key required for the RudderStack UI" /><span class="imageTitle">JSON key required for the RudderStack UI</span>
 
 <div class="warningBlock">
 
@@ -103,9 +103,9 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
 </div>
 
 - Once you have set up the source, select **Google BigQuery** from the list of destinations. Give your destination a name, and then click on **Next**. You will then see the following **Connection Credentials** screen:
-<img src="../../../images/assets/image (52).png" alt="Connection Credentials" /><span class="imageTitle">Google BigQuery Configuration Settings in RudderStack</span>
+<img src="../assets/image (52).png" alt="Connection Credentials" /><span class="imageTitle">Google BigQuery Configuration Settings in RudderStack</span>
 
-- Add your **Project ID, Location** \(optional\) and the **Staging GCS Storage Bucket Name**, as specified in the [**Setting up Google BigQuery Project**](https://rudderstack.com/docs/destinations/google-bigquery#setting-up-google-bigquery) section.
+- Add your **Project ID, Location** \(optional\) and the **Staging GCS Storage Bucket Name**, as specified in the [**Setting up Google BigQuery Project**](https://rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#setting-up-the-bigquery-project) section.
 - Copy the contents of the credentials JSON file you created and stored, in the section above.
 
 That's it! You have successfully added Google BigQuery as a destination in RudderStack.
@@ -160,7 +160,7 @@ By default, RudderStack sends the data to the table / dataset based on the sourc
 
 You can override this by setting the **Namespace** in the destination settings as shown:
 
-<img src="../../../images/assets/image (79).png" alt="Namespace" />
+<img src="../assets/image (79).png" alt="Namespace" />
 
 ### I'm looking to send data to BigQuery through RudderStack and I'm trying to understand what data is populated in each column. How do I go about this?
 

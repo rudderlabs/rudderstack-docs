@@ -65,7 +65,7 @@ Your `rudder-docker.yml` should look like the following:
 
 <!--![](../../.gitbook/assets/image%20%28132%29.png)-->
 
-<img src="../../../../images/assets/image (132).png" alt="rudder-docker.yml" />
+<img src="../../assets/image (132).png" alt="rudder-docker.yml" />
 
 * Finally, navigate to the directory where you want to install RudderStack and run the following command:
 
@@ -156,7 +156,7 @@ cp config/sample.env .env
 To know more about the difference between **Cloud mode** and **Device mode** in RudderStack, read the [**RudderStack connection modes**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/) guide.
 </div>
 
-RudderStack's [**web**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Android**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) SDKs expect the source configurations and the associated device mode destination configurations for initialization. If you are self-hosting the Control Plane, you will need to host these configurations on your own server such that the source configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
+RudderStack's [**web**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Android**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) SDKs expect the source configurations and the associated device mode destination configurations for initialization. If you are self-hosting the Control Plane, you will need to host these configurations on your own server such that the source configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
 
 <div class="successBlock">
 
@@ -176,9 +176,9 @@ To do so, follow these steps:
 
 * Host the exported file on your own server at `/sourceConfig`. Provide the base URL of your server that is serving this file in SDK initialization code snippet:
   * **JavaScript SDK**: Instructions [**here**](https://github.com/rudderlabs/rudder-sdk-js#self-hosted-config-plane).
-  * **Android SDK**: Instructions [**here**](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-android-sdk#configuring-your-rudderstack-client).
-  * **iOS SDK**: Instructions [**here**](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-ios-sdk#configuring-the-rudderstack-client).
-  * **Flutter SDK**: Instructions [**here**](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk#configuring-the-rudderstack-client).
+  * **Android SDK**: Instructions [**here**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk#configuring-your-rudderstack-client).
+  * **iOS SDK**: Instructions [**here**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk#configuring-the-rudderstack-client).
+  * **Flutter SDK**: Instructions [**here**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/#configuring-the-rudderstack-client).
 
 RudderStack SDKs fetch the configuration by appending the `/sourceConfig` path to the base URL provided above.
 
@@ -192,11 +192,11 @@ A sample exported source config is shown below:
 
 ## FAQs
 
-#### For a self-hosted environment, how to get the Control Plane URL? <a id="for-a-self-hosted-environment-how-to-get-the-control-plane-url"></a>
+#### For a self-hosted environment, how to get the Control Plane URL?
 
 To use the Control Plane URL to initialize your SDKs, follow these steps:
 
-* **​**[**Set up**](https://rudderstack.com/docs/how-to-guides/rudderstack-control-plane-lite/#setting-up-the-control-plane) the Control Plane using the Control Plane Lite utility.
+* **​**[**Set up**](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#setting-up-the-control-plane) the Control Plane using the Control Plane Lite utility.
 * Go to dashboard, configure the source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button as shown:
 
 ![](https://gblobscdn.gitbook.com/assets%2F-Lq5Ea6fHVg3dSxMCgyQ%2F-MhNluKAPDk-WL4SN6FG%2F-MhNmWT34fhUQc2Xpzdi%2Fimage.png?alt=media&token=9906987b-32c1-4d98-80e3-f31dfe8d34df)

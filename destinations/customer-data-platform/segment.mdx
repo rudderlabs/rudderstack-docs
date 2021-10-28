@@ -39,27 +39,27 @@ Follow the guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 - From the list of destinations, select **Segment**.
 
-<img src="../../../../images/assets/2 (27).png" />
+<img src="../../assets/2 (27).png" />
 
 - Then, assign a name to the destination and click on **Next**.
 
-<img src="../../../../images/assets/3 (24).png" />
+<img src="../../assets/3 (24).png" />
 
 - Select the data source and click on **Next**.
 
-<img src="../../../../images/assets/4 (23).png" />
+<img src="../../assets/4 (23).png" />
 
 - Enter the Segment write key to configure the destination, as shown:
 
-<img src="../../../../images/assets/5 (22).png" />
+<img src="../../assets/5 (22).png" />
 
 - To transform your event data before sending it to this destination, click on **Create New Transformation**. Otherwise, click on **Next**.
 
-<img src="../../../../images/assets/6 (20).png" />
+<img src="../../assets/6 (20).png" />
 
 - Your Segment destination is now configured and enabled.
 
-<img src="../../../../images/assets/7 (15).png" />
+<img src="../../assets/7 (15).png" />
 
 ## Identify
 
@@ -137,15 +137,12 @@ The `group` call lets you associate a particular identified user with a group, s
 
 A sample `group` call is as shown:
 
-```
-rudderanalytics.group(
-    "sample-group-id",
-    {
-      name: "Example Company",
-      employees: 1000,
-      industry: "Software"
-    },
-  );
+```javascript
+rudderanalytics.group("sample-group-id", {
+  name: "Example Company",
+  employees: 1000,
+  industry: "Software",
+});
 ```
 
 <div class="infoBlock">
@@ -175,7 +172,7 @@ The above `alias` call has the following parameters:
 
 <div class="infoBlock">
 
-For more information on the `alias` call, refer to the [**RudderStack HTTP API Specification**](https://rudderstack.com/docs/rudderstack-api-spec/http-api) guide.
+For more information on the `alias` call, refer to the [**RudderStack HTTP API Specification**](https://rudderstack.com/docs/rudderstack-api/http-api/) guide.
 
 </div>
 

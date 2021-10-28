@@ -43,7 +43,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 - Once you have added the source, select Kochava from the list of destinations.
 - In the **Connection Settings** page, please enter the relevant information in the fields shown in the following screen:
 
-<img src="../../../../images/assets/kochava.png" /><span class="imageTitle">Destination Settings for Kochava</span>
+<img src="../../assets/kochava.png" /><span class="imageTitle">Destination Settings for Kochava</span>
 
 ## Kochava Configuration Settings in RudderStack
 
@@ -87,7 +87,7 @@ allprojects {
 
 - Also, add the following under the `dependencies` section:
 
-```kotlin
+```groovy
 // ruddder core sdk
 implementation 'com.rudderstack.android.sdk:core:1.+'
 // rudder-kochava integration
@@ -214,7 +214,7 @@ val rudderClient = RudderClient.getInstance(
 <li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Kochava</code> extension as shown below:
 <span>
 
-```objectivec
+```ruby
 pod 'Rudder-Kochava'
 ```
 </span>
@@ -245,7 +245,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 
 ## Track
 
-The `track` event captures information related to the actions performed by the user. For more information, refer to the the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+The `track` event captures information related to the actions performed by the user. For more information, refer to the the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 RudderStack transforms the following events to Kochava's Standard Events, as shown in the table below:
 
@@ -272,7 +272,7 @@ You can send an event with the name same as that of an Kochava's standard event 
 
 A sample `track` event for sending event data to Kochava looks like the following code snippet:
 
-```
+```objectivec
 [[RudderClient sharedInstance] track:@"Product Added" properties:@{
 @"price": @2.0,
 @"product_id": @"product_id_a",
@@ -288,7 +288,7 @@ The `screen` method allows you to record whenever a user sees the mobile screen,
 
 A sample `screen` call looks like the following code snippet:
 
-```
+```kotlin
 MainApplication.rudderClient.screen("Sample Screen Name",
             RudderProperty()
                 .putValue("prop_key","prop_value"));
@@ -331,7 +331,7 @@ apply plugin: 'com.google.gms.google-services'
 - Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.
 - Passing the new Push Token received from FCM to the Kochava SDK. For more information, look into the **sample-kotlin** app.
 
-```
+```kotlin
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.rudderstack.android.integrations.kochava.KochavaIntegrationFactory.registeredForPushNotificationsWithFCMToken
 
@@ -429,7 +429,7 @@ apply plugin: 'com.google.gms.google-services'
 <li>Passing the new Push Token received from FCM to the Kochava SDK. For more information, look into the **sample-kotlin** app.
 <span>
 
-```
+```kotlin
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.rudderstack.android.integrations.kochava.KochavaIntegrationFactory.registeredForPushNotificationsWithFCMToken
 

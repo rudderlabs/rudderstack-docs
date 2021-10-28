@@ -56,7 +56,7 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 - Assign a name to this destination, and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/gainsightcs-settings.png" /><span class="imageTitle">Connection screen for Gainsight</span>
+<img src="../../assets/gainsightcs-settings.png" /><span class="imageTitle">Connection screen for Gainsight</span>
 
 You will need to enter the following settings under **Connection Settings**:
 
@@ -132,11 +132,11 @@ Custom fields are supported for <code class="inline-code">identify</code>. Refer
 
 You can create custom fields in the Gainsight schema for a `Person` object as shown in the image below:
 
-<img src="../../../../images/assets/gainsightcs-custom-field-person.png" /><span class="imageTitle">gainsightcs-custom-field-person</span>
+<img src="../../assets/gainsightcs-custom-field-person.png" /><span class="imageTitle">gainsightcs-custom-field-person</span>
 
 Then, you can add the RudderStack trait name for the Gainsight custom field mapping in the RudderStack dashboard as shown:
 
-<img src="../../../../images/assets/gainsightcs-person-map.png" /><span class="imageTitle">gainsightcs-field-map-person</span>
+<img src="../../assets/gainsightcs-person-map.png" /><span class="imageTitle">gainsightcs-field-map-person</span>
 
 <div class="infoBlock">
 When you add custom fields in the Gainsight schema, <code class="inline-code">__gc</code> is automatically suffixed at the end. Therefore, you need to provide the field name including the <code class="inline-code">__gc</code> suffix in the RudderStack dashboard as shown above.
@@ -201,11 +201,11 @@ Custom Fields are supported for the <code class="inline-code">group</code> call.
 
 To send custom properties to Gainsight CS via RudderStack, you first need to create custom fields in the Gainsight schema for the `Company` object, as shown in the following image:
 
-<img src="../../../../images/assets/gainsightcs-custom-field-company.png" /><span class="imageTitle">gainsightcs-custom-field-company</span>
+<img src="../../assets/gainsightcs-custom-field-company.png" /><span class="imageTitle">gainsightcs-custom-field-company</span>
 
 Then, you can add the RudderStack trait name for the Gainsight custom field mapping in the RudderStack dashboard:
 
-<img src="../../../../images/assets/gainsightcs-company-map.png" /><span class="imageTitle">gainsightcs-field-map-company</span>
+<img src="../../assets/gainsightcs-company-map.png" /><span class="imageTitle">gainsightcs-field-map-company</span>
 
 <div class="infoBlock">
 When you add custom fields in the Gainsight schema, <code class="inline-code">__gc</code> is automatically suffixed at the end. Therefore, you need to provide the field name including the <code class="inline-code">__gc</code> suffix in the RudderStack dashboard as shown above.
@@ -228,7 +228,7 @@ More information on the Gainsight Events Framework can be found in their <a href
 
 Provide the required event settings in the RudderStack dashboard as shown:
 
-<img src="../../../../images/assets/gainsightcs-event-main-settings.png" /><span class="imageTitle">gainsight-event-main-settings</span>
+<img src="../../assets/gainsightcs-event-main-settings.png" /><span class="imageTitle">gainsight-event-main-settings</span>
 
 The required settings are:
 
@@ -269,11 +269,11 @@ Both the event <code class="inline-code">name</code> and <code class="inline-cod
 
 First, create a new event under a particular topic in Gainsight, as shown:
 
-<img src="../../../../images/assets/gainsightcs-event-create.png" /><span class="imageTitle">gainsightcs-event-map-sample</span>
+<img src="../../assets/gainsightcs-event-create.png" /><span class="imageTitle">gainsightcs-event-map-sample</span>
 
 Then, provide this event name and the version mapping in the RudderStack dashboard as shown:
 
-<img src="../../../../images/assets/gainsightcs-event-map-sample.png" /><span class="imageTitle">gainsightcs-event-map-sample</span>
+<img src="../../assets/gainsightcs-event-map-sample.png" /><span class="imageTitle">gainsightcs-event-map-sample</span>
 
 You are now ready to send events to Gainsight using the `track` method.
 

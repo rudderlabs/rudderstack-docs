@@ -31,7 +31,7 @@ The following sections illustrate how to create a virtual warehouse, a database,
 
 Create a `X-Small warehouse`by following the wizard on Snowflake's website as shown in the screenshot below:
 
-<img src="../../../images/assets/screenshot-2020-03-31-at-11.56.32-am.png" /><span class="imageTitle">creating x-small warehouse screenshot</span>
+<img src="../assets/screenshot-2020-03-31-at-11.56.32-am.png" /><span class="imageTitle">creating x-small warehouse screenshot</span>
 
 <div class="infoBlock">
 
@@ -41,7 +41,7 @@ You can set your data warehouse size as per your future data volume.
 
 Alternatively, you can also use SQL to create a warehouse, as shown:
 
-```
+```sql
 CREATE WAREHOUSE "RUDDER_WAREHOUSE"
   WITH WAREHOUSE_SIZE = 'XSMALL'
     WAREHOUSE_TYPE = 'STANDARD'
@@ -65,11 +65,11 @@ Please create a new database to avoid conflicts with your existing data, as Rudd
 
 The following screenshot demonstrates the **Create Database** option in Snowflake.
 
-<img src="../../../images/assets/screenshot-2020-02-27-at-5.33.31-pm.png" /><span class="imageTitle">Creating a database in Snowflake</span>
+<img src="../assets/screenshot-2020-02-27-at-5.33.31-pm.png" /><span class="imageTitle">Creating a database in Snowflake</span>
 
 Alternatively, you can also use SQL to create a database, as shown:
 
-```
+```sql
 CREATE DATABASE "RUDDER_EVENTS";
 ```
 
@@ -79,19 +79,19 @@ Please execute the following SQL commands to create a new role with the required
 
 - Create a new role
 
-```
+```sql
 CREATE ROLE "RUDDER";
 ```
 
 - Grant access to the virtual warehouse
 
-```
+```sql
 GRANT USAGE ON WAREHOUSE "RUDDER_WAREHOUSE" TO ROLE "RUDDER";
 ```
 
 - Grant access to the database
 
-```
+```sql
 GRANT USAGE ON DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
 GRANT CREATE SCHEMA ON DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
 GRANT ALL ON ALL SCHEMAS IN DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
@@ -101,11 +101,11 @@ GRANT ALL ON ALL SCHEMAS IN DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
 
 Finally, please create a user to connect RudderStack to the previously created Snowflake warehouse, as shown:
 
-<img src="../../../images/assets/screenshot-2020-02-27-at-5.34.41-pm.png" /><span class="imageTitle">Creating a user in Snowflake</span>
+<img src="../assets/screenshot-2020-02-27-at-5.34.41-pm.png" /><span class="imageTitle">Creating a user in Snowflake</span>
 
 Alternatively, you can use SQL to create a user in Snowflake, as shown:
 
-```
+```sql
 CREATE USER "RUDDER_USER"
   MUST_CHANGE_PASSWORD = FALSE
   DEFAULT_ROLE = "RUDDER"
@@ -129,9 +129,9 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
 
 - After choosing a source, select **Snowflake** from the list of destinations.
 - Give your destination a name and then click on **Next**. You should then see the following screen:
-<img src="../../../images/assets/4 (3) (2) (2) (1) (2).png" /><span class="imageTitle">Connection Settings for configuring Snowflake as a Destination</span>
+<img src="../assets/4 (3) (2) (2) (1) (2).png" /><span class="imageTitle">Connection Settings for configuring Snowflake as a Destination</span>
 
-<img src="../../../images/assets/5 (2).png" /><span class="imageTitle">Connection Settings for configuring Snowflake as a Destination</span>
+<img src="../assets/5 (2).png" /><span class="imageTitle">Connection Settings for configuring Snowflake as a Destination</span>
 
 - Add the required credentials in the **Connection Settings** as described below:
 
@@ -143,26 +143,26 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
   | **rx18795.east-us-2.azure** | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure \(Azure[\)](https://azure.microsoft.com/en-us/) |
   | **ah76025.us-central1.gcp** | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform \(GCP\) _\*\*_                            |
 
-  - **Database** - The name of the database, as created in the [Creating a Database](https://rudderstack.com/docs/destinations/snowflake#creating-a-database) section
-  - **Warehouse** - The name of the warehouse, as created in the [Creating a Virtual Warehouse](https://rudderstack.com/docs/destinations/snowflake#creating-a-virtual-warehouse) section
-  - **User** - This is the username, as created in [Creating a User](https://rudderstack.com/docs/destinations/snowflake#creating-a-user) section.
-  - **Password** - This is the password, as created in [Creating a User](https://rudderstack.com/docs/destinations/snowflake#creating-a-user) section.
+  - **Database** - The name of the database, as created in the [Creating a Database](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-database) section
+  - **Warehouse** - The name of the warehouse, as created in the [Creating a Virtual Warehouse](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-virtual-warehouse) section
+  - **User** - This is the username, as created in [Creating a User](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-user) section.
+  - **Password** - This is the password, as created in [Creating a User](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-user) section.
 
 - The following settings are applicable if you are using an Amazon S3 bucket for object storage:
   - **S3 bucket name** - This is your unique S3 bucket name.
   - **AWS Access Key ID** - This can be obtained from the AWS Console.
-  - **AWS Secret Access Key** - This can be obtained from AWS Console. Please refer to the [Setting Up Amazon S3](https://rudderstack.com/docs/destinations-guides/amazon-s3#setting-up-amazon-s3) section for more details.
+  - **AWS Secret Access Key** - This can be obtained from AWS Console. Please refer to the [Setting Up Amazon S3](https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#setting-up-amazon-s3) section for more details.
 - Please grant the following permissions to the IAM user:
 
-  ```
-  "Effect": "Allow",
-  "Action": [
-    "s3:GetObject",
-    "s3:PutObject",
-    "s3:PutObjectAcl",
-    "s3:ListBucket"
-  ]
-  ```
+```javascript
+"Effect": "Allow",
+"Action": [
+  "s3:GetObject",
+  "s3:PutObject",
+  "s3:PutObjectAcl",
+  "s3:ListBucket"
+]
+```
 
 ## Configuring Snowflake Integration
 
@@ -174,7 +174,7 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
   </TabList>
   <TabPanels>
     <TabPanel>
-      
+
         If you have Amazon Web Services (AWS) as your cloud provider and want to leverage S3 as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration.
 
 Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration">here</a>
@@ -187,39 +187,36 @@ Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-g
 Replace <code class="inline-code">&lt;bucket&gt;</code> and <code class="inline-code">&lt;prefix&gt;</code> with your values in the JSON below. And create the policy with a name of your choice.
 <span>
 
-```
+```javascript
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-              "s3:PutObject",
-              "s3:GetObject",
-              "s3:GetObjectVersion",
-              "s3:DeleteObject",
-              "s3:DeleteObjectVersion"
-            ],
-            "Resource": "arn:aws:s3:::<bucket>/<prefix>/*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "s3:ListBucket",
-            "Resource": "arn:aws:s3:::<bucket>",
-            "Condition": {
-                "StringLike": {
-                    "s3:prefix": [
-                        "<prefix>/*"
-                    ]
-                }
-            }
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:DeleteObject",
+        "s3:DeleteObjectVersion"
+      ],
+      "Resource": "arn:aws:s3:::<bucket>/<prefix>/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::<bucket>",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": ["<prefix>/*"]
         }
-    ]
+      }
+    }
+  ]
 }
 ```
 </span>
 <li>
-  
   Create a role and attach the above policy in AWS: - Create role of type <strong>
     Another AWS account
   </strong> - Enter your AWS account ID and enable <strong>
@@ -231,7 +228,7 @@ Replace <code class="inline-code">&lt;bucket&gt;</code> and <code class="inline-
 <li> Create cloud storage integration in Snowflake </li>
 <span>
 
-```
+```sql
 CREATE STORAGE INTEGRATION <integration_name>
   TYPE = EXTERNAL_STAGE
   STORAGE_PROVIDER = S3
@@ -251,7 +248,7 @@ Record the values: <code class="inline-code">&lt;integration_name&gt;</code>.
 <li> Retrieve the AWS IAM user for your Snowflake account as shown:</li>
 <span>
 
-```
+```sql
 DESC INTEGRATION <integration_name>;
 ```
 </span>
@@ -265,7 +262,7 @@ Choose the role created in Step 2 and edit the trust relationship with the follo
 JSON.
 <span>
 
-```
+```javascript
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -296,11 +293,11 @@ JSON.
 <li> Grant integration access to role in Snowflake:</li>
 <span>
 
-```
+```sql
 grant usage on integration <integration_name> to role <sf_role>
 ```
 </span>
-  <code class="inline-code">&lt;integration_name&gt;</code> is the integration created in the Step 3.  
+  <code class="inline-code">&lt;integration_name&gt;</code> is the integration created in the Step 3.
   <code class="inline-code">&lt;sf_role&gt;</code> is the role in Snowflake you want to grant access to.
 </ol>
       </TabPanel>
@@ -319,14 +316,14 @@ Create a container in the storage account created above by navigating to **&lt;s
 <li>Create cloud storage integration in Snowflake:
 <span>
 
-```
-  CREATE STORAGE INTEGRATION <integration_name>
-  TYPE = EXTERNAL_STAGE
-  STORAGE_PROVIDER = AZURE
-  ENABLED = TRUE
-  AZURE_TENANT_ID = '<tenant_id>'
-  STORAGE_ALLOWED_LOCATIONS = ('azure://<account>.blob.core.windows.net/<container>/<path>/', 'azure://<account>.blob.core.windows.net/<container>/<path>/')
-  [ STORAGE_BLOCKED_LOCATIONS = ('azure://<account>.blob.core.windows.net/<container>/<path>/', 'azure://<account>.blob.core.windows.net/<container>/<path>/') ]
+```sql
+CREATE STORAGE INTEGRATION <integration_name>
+TYPE = EXTERNAL_STAGE
+STORAGE_PROVIDER = AZURE
+ENABLED = TRUE
+AZURE_TENANT_ID = '<tenant_id>'
+STORAGE_ALLOWED_LOCATIONS = ('azure://<account>.blob.core.windows.net/<container>/<path>/', 'azure://<account>.blob.core.windows.net/<container>/<path>/')
+[ STORAGE_BLOCKED_LOCATIONS = ('azure://<account>.blob.core.windows.net/<container>/<path>/', 'azure://<account>.blob.core.windows.net/<container>/<path>/') ]
 ```
 </span>
 <code class="inline-code">&lt;tenant_id&gt;</code> - Get your tenant id by
@@ -343,13 +340,12 @@ navigating to <strong>Azure Active Directory</strong> - <strong>
 Replace <code class="inline-code">&lt;integration_name&gt;</code> with the integration name created in the previous step.
 <span>
 
-```
+```sql
 DESC INTEGRATION <integration_name>;
 ```
 </span>
 And record the values <code class="inline-code">AZURE_CONSENT_URL</code> and <code class="inline-code">AZURE_MULTI_TENANT_APP_NAME</code> .
 <li>
-  
   Navigate to the URL in the <code class="inline-code">
     AZURE_CONSENT_URL
   </code> obtained in the previous step and accept.
@@ -370,12 +366,12 @@ And record the values <code class="inline-code">AZURE_CONSENT_URL</code> and <co
 <li>Grant integration access to role in Snowflake:</li>
 <span>
 
-```
-  grant usage on integration <integration_name> to role <sf_role>;
+```sql
+grant usage on integration <integration_name> to role <sf_role>;
 ```
 </span>
-  <code class="inline-code">&lt;integration_name&gt;</code> is the integration created in the Step 4.  
-  <code class="inline-code">&lt;sf_role&gt;</code> is the role in Snowflake you want to grant access to.  
+  <code class="inline-code">&lt;integration_name&gt;</code> is the integration created in the Step 4.
+  <code class="inline-code">&lt;sf_role&gt;</code> is the role in Snowflake you want to grant access to.
 </ol>
       </TabPanel>
       <TabPanel>
@@ -389,12 +385,12 @@ Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-g
 <li>Create a Cloud Storage integration in Snowflake.</li>
 <span>
 
-```
- CREATE STORAGE INTEGRATION <integration_name>
-   TYPE = EXTERNAL_STAGE
-   STORAGE_PROVIDER = GCS
-   ENABLED = TRUE
-   STORAGE_ALLOWED_LOCATIONS = ('gcs://<bucket>/<path>/', 'gcs://<bucket>/<path>/')
+```sql
+CREATE STORAGE INTEGRATION <integration_name>
+  TYPE = EXTERNAL_STAGE
+  STORAGE_PROVIDER = GCS
+  ENABLED = TRUE
+  STORAGE_ALLOWED_LOCATIONS = ('gcs://<bucket>/<path>/', 'gcs://<bucket>/<path>/')
 ```
 </span>
 <ul>
@@ -422,8 +418,8 @@ Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-g
 </li>
 <span>
 
-```
- DESC STORAGE INTEGRATION <integration_name>;
+```sql
+DESC STORAGE INTEGRATION <integration_name>;
 ```
 </span>
 <ul>
@@ -443,7 +439,6 @@ Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-g
     </code>
   </li>
 </ul>
-
 <li> Grant the Service Account Permissions to Access Bucket Objects</li>
 <ul>
   <li>
@@ -477,18 +472,17 @@ Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-g
    <li>From the Select a role dropdown, select Storage » Custom » <code class="inline-code">&lt;role&gt;</code>, where <code class="inline-code">&lt;role&gt;</code> is the custom Cloud Storage role you created in Creating a Custom IAM Role (in this topic).</li>
    <li>Click the Add button. The service account name is added to the Storage Object Viewer role dropdown in the information panel.</li>
   </ul>
-  
+
   <li> Grant usage to an external (i.e. Cloud Storage) stage that references the integration you created.
 <span>
 
-```
+```sql
 GRANT USAGE ON INTEGRATION <integration_name> TO ROLE "RUDDER";
 ```
 </span>
 </li>
 </ol>
         <div class="infoBlock">
-        
         <ul>
             <li>
               <code class="inline-code">"RUDDER"</code> is the name of the role that you

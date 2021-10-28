@@ -26,7 +26,7 @@ Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and
 
 <!--![S3 data lake destination settings in RudderStack](../.gitbook/assets/connectionScreen.png)-->
 
-<img src="../../../images/assets/connectionScreen.png" alt="S3 data lake destination settings in RudderStack" />
+<img src="../assets/connectionScreen.png" alt="S3 data lake destination settings in RudderStack" />
 <span class="imageTitle">S3 data lake destination settings in RudderStack</span>
 
 ### Connection Settings
@@ -117,20 +117,20 @@ In the absence of AWS Glue, you can create a crawler to go through your data and
 
 <!--![](../.gitbook/assets/crawlerName.png)-->
 
-<img src="../../../images/assets/crawlerName.png" alt="Add Crawler" />
+<img src="../assets/crawlerName.png" alt="Add Crawler" />
 
 * Next, under the **Crawler source type** section, choose **Data stores**.
 
 <!--![](../.gitbook/assets/crawlerSourceType.png)-->
 
-<img src="../../../images/assets/crawlerSourceType.png" alt="Crawler source type" />
+<img src="../assets/crawlerSourceType.png" alt="Crawler source type" />
 
 * Configure the **Repeat crawls of S3 data stores** based on your requirement. 
 * Then, under the **Data store** section, select **S3** from the dropdown for the **Choose a data store** setting, as shown:
 
 <!--![](../.gitbook/assets/addDataStore.png)-->
 
-<img src="../../../images/assets/addDataStore.png" alt="Choose a data store" />
+<img src="../assets/addDataStore.png" alt="Choose a data store" />
 
 * For the **Crawl data in** setting, choose the option **Specified path in my account**. 
 * In the **Include path** setting, enter the S3 URI of your configured bucket followed by the suffix `/<prefix>/rudder-datalake/<namespace>/`.
@@ -151,25 +151,25 @@ If you have not configured any prefix while setting up the S3 data lake destinat
 
 <!--![](../.gitbook/assets/anotherDataStore.png)-->
 
-<img src="../../../images/assets/anotherDataStore.png" alt="Add another data store" />
+<img src="../assets/anotherDataStore.png" alt="Add another data store" />
 
 * In the **IAM Role** section, configure a suitable IAM role.
 
 <!--![](../.gitbook/assets/iam.png)-->
 
-<img src="../../../images/assets/iam.png" alt="IAM Role" />
+<img src="../assets/iam.png" alt="IAM Role" />
 
 * Next, In the **Schedule** section, select the frequency of your crawler from the dropdown options, as shown:
 
 <!--![](../.gitbook/assets/scheduler.png)-->
 
-<img src="../../../images/assets/scheduler.png" alt="Scheduler" />
+<img src="../assets/scheduler.png" alt="Scheduler" />
 
 * In the **Output** section, configure the database that will store all the tables. Under the Grouping behavior for S3 data section, make sure you enable \(tick\) the **Create a single schema for each S3 path** option, as shown:
 
 <!--![](../.gitbook/assets/output.png)-->
 
-<img src="../../../images/assets/output.png" alt="Output" />
+<img src="../assets/output.png" alt="Output" />
 
 * Specify the **Table level** as **5** or **4** \(refer to the tips below\). This value indicates the absolute level of the table location in the bucket.
 
@@ -191,7 +191,7 @@ Since all tables are created in the URI <code class="inline-code">s3://testBucke
 
 <!--![](../.gitbook/assets/review.png)-->
 
-<img src="../../../images/assets/review.png" alt="Review" />
+<img src="../assets/review.png" alt="Review" />
 
 * Click on **Finish** to confirm the configuration. 
 * Then, click on your crawler and run it. Wait for the process to finish - you should see some tables getting created in your configured database.
@@ -212,13 +212,15 @@ Follow these steps to start querying your data on s3 -
 
 <!--![](../.gitbook/assets/datasource.png)-->
 
-<img src="../../../images/assets/datasource.png" alt="AwsDataCatalog" />
+<img src="../assets/datasource.png" alt="AwsDataCatalog" />
 
 * Select your configured namespace \(or the database you specified while configuring the crawler\) from the database dropdown menu.
 
 <!--![](../.gitbook/assets/database.png)-->
 
-<img src="../../../images/assets/database.png" alt="Database" />
+<!--<img src="../assets/database.png" alt="Database" />-->
+
+<img src="../assets/database.png" alt="Database" />
 
 <div class="infoBlock">
 
@@ -230,7 +232,7 @@ By default, the namespace is set to your source name if you did not specify it i
 
 <!--![](../.gitbook/assets/previewTable.png)-->
 
-<img src="../../../images/assets/previewTable.png" alt="Preview Data" />
+<img src="../assets/previewTable.png" alt="Preview Data" />
 
 ## Contact Us
 

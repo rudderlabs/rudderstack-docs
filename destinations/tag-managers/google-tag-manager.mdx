@@ -45,7 +45,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - In the configuration settings, please add the **Container ID** which you can find in the Admin section of your [GTM dashboard](https://tagmanager.google.com/#/admin/).
 
-<img src="../../../../images/assets/image (17) (1) (1).png" />
+<img src="../../assets/image (17) (1) (1).png" />
 
 That's it! Google Tag Manager will now load on any page where the RudderStack snippet is initialized, and `rudderanalytics.page` is called on the client-side.
 
@@ -59,7 +59,7 @@ It is also possible to load RudderStack as a custom tag in Google Tag Manager. H
 
 The following screenshot shows how to add RudderStack as a custom HTML tag which can then be called through Google Tag Manager:
 
-<img src="../../../../images/assets/image (51).png" />
+<img src="../../assets/image (51).png" />
 <span class="imageTitle">Adding RudderStack as a tag in Google Tag Manager</span>
 
 ## Page
@@ -74,14 +74,14 @@ In `rudderanalytics.js` , a `page` call is included by default, just after `rudd
 
 A sample `page` call looks like the following:
 
-```
+```javascript
 // "home" is the name of the page.
 rudderanalytics.page("home", {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer"
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer"
 });
 ```
 
@@ -108,12 +108,12 @@ The `track` call allows you to record any actions that the users might perform, 
 
 Calling the RudderStack SDK `track` API with the event and its properties similarly passes the data to GTM as seen in the Page section above.
 
-```
+```javascript
 rudderanalytics.track("Track me", {
-        category: "category",
-        label: "label",
-        value: "value"
- });
+  category: "category",
+  label: "label",
+  value: "value",
+});
 ```
 
 The above call will populate Google Tag Manager with the below properties along with their values:

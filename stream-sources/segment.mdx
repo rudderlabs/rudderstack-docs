@@ -16,19 +16,19 @@ In order to add Segment as a source in RudderStack, please follow these steps:
 
 - From your [RudderStack dashboard](https://app.rudderstack.com), click on **Add Source**. From the list of sources, select **Segment**, as shown:
 
-<img src="../../../images/assets/segment1.png" />
+<img src="../assets/segment1.png" />
 <span class="imageTitle">Segment Source</span>
 
 - Enter the name you want to assign to this source.
 - Once you have entered the name of your source, click on **Next** and save the source.
 - Head over to your [Segment Dashboard](https://app.segment.com/workspaces) and navigate to the **Destinations** page from the sidebar. Click on **Add Destination** and on the destination catalog page search for the destination **Webhooks**, as shown in the screenshot below:
 
-<img src="../../../images/assets/segment2.png" />
+<img src="../assets/segment2.png" />
 <span class="imageTitle">Segment Webhook destination</span>
 
 - Now configure the destination and connect it to your desired source. On the destination settings screen, enter the RudderStack webhook. The following screenshot shows where to put the **Webhook URL:**
 
-<img src="../../../images/assets/segment3.png" />
+<img src="../assets/segment3.png" />
 <span class="imageTitle">Segment Webhook Destination settings</span>
 
 Your webhook URL should follow this format `<your-dataplane-url>/v1/webhook?writeKey=<segment-source-writeKey>`
