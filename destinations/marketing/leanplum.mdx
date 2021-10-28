@@ -44,7 +44,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/image (32) (1) (1) (1) (1).png" /><span class="imageTitle">Leanplum Connection Settings in RudderStack</span>
+<img src="../../assets/image (32) (1) (1) (1) (1).png" /><span class="imageTitle">Leanplum Connection Settings in RudderStack</span>
 
 - Enter the Leanplum **Application ID** as well as **Client Key**.
 - Click on **Next** to complete the configuration.
@@ -224,7 +224,7 @@ RudderStack sets the `userId` of the user to the Leanplum SDK via the `setUserId
 
 The following is an example of an `identify`call:
 
-```
+```objectivec
 [[RudderClient sharedInstance] identify:@"developer_user_id"
                                  traits:@{@"email": @"bar@foo.com"}];
 ```
@@ -235,7 +235,7 @@ Leanplum accepts any free-flowing property and event name. So, we forward the ev
 
 The following is an example of a `track` call in RudderStack:
 
-```
+```objectivec
 [[RudderClient sharedInstance] track:@"Accepted Terms of Service"
                           properties:@{
                                   @"foo": @"bar",
@@ -251,7 +251,7 @@ We also send the automatically tracked `screen` events to LeanPlum.
 
 The following is an example of a `screen` call in RudderStack:
 
-```
+```objectivec
 [[RudderClient sharedInstance] screen:@"Main"];
 ```
 
@@ -261,7 +261,7 @@ RudderStack calls `clearUserContent` method of the Leanplum SDK to clear the per
 
 The following code snippet shows a sample `reset` call:
 
-```
+```objectivec
 [[RudderClient sharedInstance] reset];
 ```
 

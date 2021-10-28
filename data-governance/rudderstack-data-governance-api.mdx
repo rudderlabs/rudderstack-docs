@@ -48,64 +48,63 @@ Please note that the base URL for all the API requests will be your RudderStack 
 
 To get all event models for your data plane, run the following command:
 
-```
+```bash
 curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/schemas/event-models
 ```
 
 **Example Response**
 
-```
+```javascript
 [
-    {
-        "ID": 40,
-        "EventID": "1b02d5ec-83b9-405e-ba86-7693d0a2b52b",
-        "WriteKey": "1Xbp2IIhsZcwqENLgSEJusU70GH",
-        "EventType": "track",
-        "EventIdentifier": "Product Purchased",
-        "CreatedAt": "2020-12-07T22:10:13.945156Z",
-        "Schema": {
-            "type": "string",
-            "event": "string",
-            "sentAt": "string",
-            "userId": "string",
-            "rudderId": "string",
-            "messageId": "string",
-            "timestamp": "string",
-            "context.ip": "string",
-            "anonymousId": "string",
-            "properties.name": "string",
-            "originalTimestamp": "string",
-            "properties.revenue": "float64",
-            "context.library.name": "string"
-        },
-        "LastSeen": "2020-12-07T22:10:09.247534Z",
-        "TotalCount": 5
+  {
+    "ID": 40,
+    "EventID": "1b02d5ec-83b9-405e-ba86-7693d0a2b52b",
+    "WriteKey": "1Xbp2IIhsZcwqENLgSEJusU70GH",
+    "EventType": "track",
+    "EventIdentifier": "Product Purchased",
+    "CreatedAt": "2020-12-07T22:10:13.945156Z",
+    "Schema": {
+      "type": "string",
+      "event": "string",
+      "sentAt": "string",
+      "userId": "string",
+      "rudderId": "string",
+      "messageId": "string",
+      "timestamp": "string",
+      "context.ip": "string",
+      "anonymousId": "string",
+      "properties.name": "string",
+      "originalTimestamp": "string",
+      "properties.revenue": "float64",
+      "context.library.name": "string"
     },
-    {
-        "ID": 41,
-        "EventID": "96f10d53-3a94-47a2-95e7-6cca99daed1e",
-        "WriteKey": "1cUFbgdRJj8LYpA6zGV3O5dGpAq",
-        "EventType": "page",
-        "EventIdentifier": "Product Viewed",
-        "CreatedAt": "2020-12-06T20:17:43.945156Z",
-        "Schema": {
-            "type": "string",
-            "name": "string",
-            "sentAt": "string",
-            "userId": "string",
-            "rudderId": "string",
-            "messageId": "string",
-            "timestamp": "string",
-            "context.ip": "string",
-            "anonymousId": "string",
-            "properties.name": "string",
-            "originalTimestamp": "string",
-            "context.library.name": "string"
-        },
-        "LastSeen": "2020-12-07T22:10:09.247534Z",
-        "TotalCount": 20
-    }
-
+    "LastSeen": "2020-12-07T22:10:09.247534Z",
+    "TotalCount": 5
+  },
+  {
+    "ID": 41,
+    "EventID": "96f10d53-3a94-47a2-95e7-6cca99daed1e",
+    "WriteKey": "1cUFbgdRJj8LYpA6zGV3O5dGpAq",
+    "EventType": "page",
+    "EventIdentifier": "Product Viewed",
+    "CreatedAt": "2020-12-06T20:17:43.945156Z",
+    "Schema": {
+      "type": "string",
+      "name": "string",
+      "sentAt": "string",
+      "userId": "string",
+      "rudderId": "string",
+      "messageId": "string",
+      "timestamp": "string",
+      "context.ip": "string",
+      "anonymousId": "string",
+      "properties.name": "string",
+      "originalTimestamp": "string",
+      "context.library.name": "string"
+    },
+    "LastSeen": "2020-12-07T22:10:09.247534Z",
+    "TotalCount": 20
+  }
 ]
 ```
 
@@ -113,39 +112,39 @@ curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/sch
 
 To get all event models for a specific source, pass the write key as a query parameter, as shown:
 
-```
+```bash
 curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/schemas/event-models?WriteKey=1Xbp2IIhsZcwqENLgSEJusU70GH
 ```
 
 **Example Response**
 
-```
+```javascript
 [
-    {
-        "ID": 40,
-        "EventID": "1b02d5ec-83b9-405e-ba86-7693d0a2b52b",
-        "WriteKey": "1Xbp2IIhsZcwqENLgSEJusU70GH",
-        "EventType": "track",
-        "EventIdentifier": "Product Purchased",
-        "CreatedAt": "2020-12-07T22:10:13.945156Z",
-        "Schema": {
-            "type": "string",
-            "event": "string",
-            "sentAt": "string",
-            "userId": "string",
-            "rudderId": "string",
-            "messageId": "string",
-            "timestamp": "string",
-            "context.ip": "string",
-            "anonymousId": "string",
-            "properties.name": "string",
-            "originalTimestamp": "string",
-            "properties.revenue": "float64",
-            "context.library.name": "string"
-        },
-        "LastSeen": "2020-12-07T22:10:09.247534Z",
-        "TotalCount": 5
-    }
+  {
+    "ID": 40,
+    "EventID": "1b02d5ec-83b9-405e-ba86-7693d0a2b52b",
+    "WriteKey": "1Xbp2IIhsZcwqENLgSEJusU70GH",
+    "EventType": "track",
+    "EventIdentifier": "Product Purchased",
+    "CreatedAt": "2020-12-07T22:10:13.945156Z",
+    "Schema": {
+      "type": "string",
+      "event": "string",
+      "sentAt": "string",
+      "userId": "string",
+      "rudderId": "string",
+      "messageId": "string",
+      "timestamp": "string",
+      "context.ip": "string",
+      "anonymousId": "string",
+      "properties.name": "string",
+      "originalTimestamp": "string",
+      "properties.revenue": "float64",
+      "context.library.name": "string"
+    },
+    "LastSeen": "2020-12-07T22:10:09.247534Z",
+    "TotalCount": 5
+  }
 ]
 ```
 
@@ -193,58 +192,60 @@ curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/sch
 
 To get the schema versions for your event type, run the following command:
 
-```
+```bash
 curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/schemas/event-versions?EventID=1b02d5ec-83b9-405e-ba86-7693d0a2b52b
 ```
 
 **Example Response**
 
-```
+```javascript
+
 [
-    {
-        "ID": 39,
-        "VersionID": "9e9e6da4-24b7-4cf9-a194-8acb040d7422",
-        "EventModelID": "1b02d5ec-83b9-405e-ba86-7693d0a2b52b",
-        "Schema": {
-            "type": "string",
-            "event": "string",
-            "sentAt": "string",
-            "userId": "string",
-            "rudderId": "string",
-            "messageId": "string",
-            "context.ip": "string",
-            "anonymousId": "string",
-            "properties.name": "string",
-            "originalTimestamp": "string",
-            "properties.revenue": "float64",
-            "context.library.name": "string"
-        },
-        "FirstSeen": "2020-12-07T22:00:38.437051Z",
-        "LastSeen": "2020-12-07T22:08:04.036091Z",
-        "TotalCount": 4
+  {
+    "ID": 39,
+    "VersionID": "9e9e6da4-24b7-4cf9-a194-8acb040d7422",
+    "EventModelID": "1b02d5ec-83b9-405e-ba86-7693d0a2b52b",
+    "Schema": {
+      "type": "string",
+      "event": "string",
+      "sentAt": "string",
+      "userId": "string",
+      "rudderId": "string",
+      "messageId": "string",
+      "context.ip": "string",
+      "anonymousId": "string",
+      "properties.name": "string",
+      "originalTimestamp": "string",
+      "properties.revenue": "float64",
+      "context.library.name": "string"
     },
-    {
-        "ID": 40,
-        "VersionID": "b39800d9-55d5-4163-b859-1bca04c4003b",
-        "EventModelID": "1b02d5ec-83b9-405e-ba86-7693d0a2b52b",
-        "Schema": {
-            "type": "string",
-            "event": "string",
-            "userId": "string",
-            "rudderId": "string",
-            "messageId": "string",
-            "timestamp": "string",
-            "context.ip": "string",
-            "anonymousId": "string",
-            "properties.name": "string",
-            "properties.revenue": "float64",
-            "context.library.name": "string"
-        },
-        "FirstSeen": "2020-12-07T22:10:09.247629Z",
-        "LastSeen": "2020-12-07T22:10:09.247698Z",
-        "TotalCount": 1
-    }
+    "FirstSeen": "2020-12-07T22:00:38.437051Z",
+    "LastSeen": "2020-12-07T22:08:04.036091Z",
+    "TotalCount": 4
+  },
+  {
+    "ID": 40,
+    "VersionID": "b39800d9-55d5-4163-b859-1bca04c4003b",
+    "EventModelID": "1b02d5ec-83b9-405e-ba86-7693d0a2b52b",
+    "Schema": {
+      "type": "string",
+      "event": "string",
+      "userId": "string",
+      "rudderId": "string",
+      "messageId": "string",
+      "timestamp": "string",
+      "context.ip": "string",
+      "anonymousId": "string",
+      "properties.name": "string",
+      "properties.revenue": "float64",
+      "context.library.name": "string"
+    },
+    "FirstSeen": "2020-12-07T22:10:09.247629Z",
+    "LastSeen": "2020-12-07T22:10:09.247698Z",
+    "TotalCount": 1
+  }
 ]
+
 ```
 
 ### schemas/event-model/{EventID}/metadata
@@ -263,136 +264,136 @@ The metadata of given event-model comes with three information points:
 
 To get metadata for your event-model, run the following command:
 
-```
+```bash
 curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/schemas/event-model/96f10d53-3a94-47a2-95e7-6cca99daed1e/metadata
 ```
 
 **Example Response**
 
-```
+```javascript
 {
-    "SampledEvents": [
-        {
-            "anonymousId": "1hg89d6hvskmygt83nst",
-            "context": {
-                "ip": "1.2.3.4",
-                "library": {
-                    "name": "http"
-                }
-            },
-            "event": "Product Purchased",
-            "messageId": "messageID",
-            "originalTimestamp": "2020-02-02T00:23:09.544Z",
-            "properties": {
-                "name": "Shirt",
-                "revenue": 14.99
-            },
-            "rudderId": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
-            "sentAt": "2020-02-02T00:23:09.544Z",
-            "type": "track",
-            "userId": "user12345"
-        },
-        {
-            "anonymousId": "1hg89d6hvskmygt83nst",
-            "context": {
-                "ip": "1.2.3.4",
-                "library": {
-                    "name": "http"
-                }
-            },
-            "event": "Product Purchased",
-            "messageId": "messageID",
-            "properties": {
-                "name": "Shirt",
-                "revenue": 14.99
-            },
-            "rudderId": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
-            "timestamp": "2020-02-02T00:23:09.544Z",
-            "type": "track",
-            "userId": "user12345"
+  "SampledEvents": [
+    {
+      "anonymousId": "1hg89d6hvskmygt83nst",
+      "context": {
+        "ip": "1.2.3.4",
+        "library": {
+          "name": "http"
         }
-    ],
-    "TotalCount": 5,
-    "FrequentValues": {
-        "anonymousId": [
-            {
-                "Value": "1hg89d6hvskmygt83nst",
-                "Frequency": 1
-            }
-        ],
-        "context.ip": [
-            {
-                "Value": "1.2.3.4",
-                "Frequency": 1
-            }
-        ],
-        "context.library.name": [
-            {
-                "Value": "http",
-                "Frequency": 1
-            }
-        ],
-        "event": [
-            {
-                "Value": "Product Purchased",
-                "Frequency": 1
-            }
-        ],
-        "messageId": [
-            {
-                "Value": "messageID",
-                "Frequency": 1
-            }
-        ],
-        "originalTimestamp": [
-            {
-                "Value": "2020-02-02T00:23:09.544Z",
-                "Frequency": 1
-            }
-        ],
-        "properties.name": [
-            {
-                "Value": "Shirt",
-                "Frequency": 1
-            }
-        ],
-        "properties.revenue": [
-            {
-                "Value": "14.99",
-                "Frequency": 1
-            }
-        ],
-        "rudderId": [
-            {
-                "Value": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
-                "Frequency": 1
-            }
-        ],
-        "sentAt": [
-            {
-                "Value": "2020-02-02T00:23:09.544Z",
-                "Frequency": 1
-            }
-        ],
-        "timestamp": [
-            {
-                "Value": "2020-02-02T00:23:09.544Z",
-                "Frequency": 1
-            }
-        ],
-        "type": [
-            {
-                "Value": "track",
-                "Frequency": 1
-            }
-        ],
-        "userId": [
-            {
-                "Value": "user12345",
-                "Frequency": 1
-            }
-        ]
+      },
+      "event": "Product Purchased",
+      "messageId": "messageID",
+      "originalTimestamp": "2020-02-02T00:23:09.544Z",
+      "properties": {
+        "name": "Shirt",
+        "revenue": 14.99
+      },
+      "rudderId": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
+      "sentAt": "2020-02-02T00:23:09.544Z",
+      "type": "track",
+      "userId": "user12345"
+    },
+    {
+      "anonymousId": "1hg89d6hvskmygt83nst",
+      "context": {
+        "ip": "1.2.3.4",
+        "library": {
+          "name": "http"
+        }
+      },
+      "event": "Product Purchased",
+      "messageId": "messageID",
+      "properties": {
+        "name": "Shirt",
+        "revenue": 14.99
+      },
+      "rudderId": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
+      "timestamp": "2020-02-02T00:23:09.544Z",
+      "type": "track",
+      "userId": "user12345"
     }
+  ],
+  "TotalCount": 5,
+  "FrequentValues": {
+    "anonymousId": [
+      {
+        "Value": "1hg89d6hvskmygt83nst",
+        "Frequency": 1
+      }
+    ],
+    "context.ip": [
+      {
+        "Value": "1.2.3.4",
+        "Frequency": 1
+      }
+    ],
+    "context.library.name": [
+      {
+        "Value": "http",
+        "Frequency": 1
+      }
+    ],
+    "event": [
+      {
+        "Value": "Product Purchased",
+        "Frequency": 1
+      }
+    ],
+    "messageId": [
+      {
+        "Value": "messageID",
+        "Frequency": 1
+      }
+    ],
+    "originalTimestamp": [
+      {
+        "Value": "2020-02-02T00:23:09.544Z",
+        "Frequency": 1
+      }
+    ],
+    "properties.name": [
+      {
+        "Value": "Shirt",
+        "Frequency": 1
+      }
+    ],
+    "properties.revenue": [
+      {
+        "Value": "14.99",
+        "Frequency": 1
+      }
+    ],
+    "rudderId": [
+      {
+        "Value": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
+        "Frequency": 1
+      }
+    ],
+    "sentAt": [
+      {
+        "Value": "2020-02-02T00:23:09.544Z",
+        "Frequency": 1
+      }
+    ],
+    "timestamp": [
+      {
+        "Value": "2020-02-02T00:23:09.544Z",
+        "Frequency": 1
+      }
+    ],
+    "type": [
+      {
+        "Value": "track",
+        "Frequency": 1
+      }
+    ],
+    "userId": [
+      {
+        "Value": "user12345",
+        "Frequency": 1
+      }
+    ]
+  }
 }
 ```
 
@@ -412,111 +413,111 @@ The metadata of given schema-version comes with three information points:
 
 To get metadata for your schema-versions, run the following command:
 
-```
+```bash
 curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/schemas/event-version/96f10d53-3a94-47a2-95e7-6cca99daed1e/metadata
 ```
 
 **Example Response**
 
-```
+```javascript
 {
-    "SampledEvents": [
-        {
-            "anonymousId": "1hg89d6hvskmygt83nst",
-            "context": {
-                "ip": "1.2.3.4",
-                "library": {
-                    "name": "http"
-                }
-            },
-            "event": "Product Purchased",
-            "messageId": "messageID",
-            "originalTimestamp": "2020-02-02T00:23:09.544Z",
-            "properties": {
-                "name": "Shirt",
-                "revenue": 14.99
-            },
-            "rudderId": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
-            "sentAt": "2020-02-02T00:23:09.544Z",
-            "type": "track",
-            "userId": "user12345"
+  "SampledEvents": [
+    {
+      "anonymousId": "1hg89d6hvskmygt83nst",
+      "context": {
+        "ip": "1.2.3.4",
+        "library": {
+          "name": "http"
         }
-    ],
-    "TotalCount": 4,
-    "FrequentValues": {
-        "anonymousId": [
-            {
-                "Value": "1hg89d6hvskmygt83nst",
-                "Frequency": 1
-            }
-        ],
-        "context.ip": [
-            {
-                "Value": "1.2.3.4",
-                "Frequency": 1
-            }
-        ],
-        "context.library.name": [
-            {
-                "Value": "http",
-                "Frequency": 1
-            }
-        ],
-        "event": [
-            {
-                "Value": "Product Purchased",
-                "Frequency": 1
-            }
-        ],
-        "messageId": [
-            {
-                "Value": "messageID",
-                "Frequency": 1
-            }
-        ],
-        "originalTimestamp": [
-            {
-                "Value": "2020-02-02T00:23:09.544Z",
-                "Frequency": 1
-            }
-        ],
-        "properties.name": [
-            {
-                "Value": "Shirt",
-                "Frequency": 1
-            }
-        ],
-        "properties.revenue": [
-            {
-                "Value": "14.99",
-                "Frequency": 1
-            }
-        ],
-        "rudderId": [
-            {
-                "Value": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
-                "Frequency": 1
-            }
-        ],
-        "sentAt": [
-            {
-                "Value": "2020-02-02T00:23:09.544Z",
-                "Frequency": 1
-            }
-        ],
-        "type": [
-            {
-                "Value": "track",
-                "Frequency": 1
-            }
-        ],
-        "userId": [
-            {
-                "Value": "user12345",
-                "Frequency": 1
-            }
-        ]
+      },
+      "event": "Product Purchased",
+      "messageId": "messageID",
+      "originalTimestamp": "2020-02-02T00:23:09.544Z",
+      "properties": {
+        "name": "Shirt",
+        "revenue": 14.99
+      },
+      "rudderId": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
+      "sentAt": "2020-02-02T00:23:09.544Z",
+      "type": "track",
+      "userId": "user12345"
     }
+  ],
+  "TotalCount": 4,
+  "FrequentValues": {
+    "anonymousId": [
+      {
+        "Value": "1hg89d6hvskmygt83nst",
+        "Frequency": 1
+      }
+    ],
+    "context.ip": [
+      {
+        "Value": "1.2.3.4",
+        "Frequency": 1
+      }
+    ],
+    "context.library.name": [
+      {
+        "Value": "http",
+        "Frequency": 1
+      }
+    ],
+    "event": [
+      {
+        "Value": "Product Purchased",
+        "Frequency": 1
+      }
+    ],
+    "messageId": [
+      {
+        "Value": "messageID",
+        "Frequency": 1
+      }
+    ],
+    "originalTimestamp": [
+      {
+        "Value": "2020-02-02T00:23:09.544Z",
+        "Frequency": 1
+      }
+    ],
+    "properties.name": [
+      {
+        "Value": "Shirt",
+        "Frequency": 1
+      }
+    ],
+    "properties.revenue": [
+      {
+        "Value": "14.99",
+        "Frequency": 1
+      }
+    ],
+    "rudderId": [
+      {
+        "Value": "d2c78239-ffb7-46b9-9bf9-e995465873b1",
+        "Frequency": 1
+      }
+    ],
+    "sentAt": [
+      {
+        "Value": "2020-02-02T00:23:09.544Z",
+        "Frequency": 1
+      }
+    ],
+    "type": [
+      {
+        "Value": "track",
+        "Frequency": 1
+      }
+    ],
+    "userId": [
+      {
+        "Value": "user12345",
+        "Frequency": 1
+      }
+    ]
+  }
 }
 ```
 
@@ -530,13 +531,13 @@ curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/sch
 
 To get the key-wise counts for any given event-model, run the following command:
 
-```
+```bash
 curl -u <RUDDER_ADMIN_USER>:<DATA_PLANE_URL> https://<your-data-plane-url>/schemas/event-model/ad00285b-f49f-4d4f-88e0-8ec293bbd5c7/key-counts
 ```
 
 **Example Response**
 
-```
+```javascript
 {
   "anonymousId": 1234,
   "channel": 1372,
@@ -578,13 +579,13 @@ curl -u <RUDDER_ADMIN_USER>:<DATA_PLANE_URL> https://<your-data-plane-url>/schem
 
 To get the missing keys for an event-version, run the following command:
 
-```
+```bash
 curl -u <RUDDER_ADMIN_USER>:<RUDDER_ADMIN_PASSWORD> https://<DATA_PLANE_URL>/schemas/ad00285b-f49f-4d4f-88e0-8ec293bbd5c7/missing-keys
 ```
 
 **Example Response**
 
-```
+```javascript
 [
   "context.app.version",
   "context.app.name",

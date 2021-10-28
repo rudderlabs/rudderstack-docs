@@ -37,7 +37,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Name your destination, and click on **Next**. You should be able to see the following screen:
 
-<img src="../../../../images/assets/screenshot-2020-02-26-at-3.41.29-pm.png" />
+<img src="../../assets/screenshot-2020-02-26-at-3.41.29-pm.png" />
 
 Enter the relevant details and click on **Next**. To get the **FS ORG** field, please login to FullStory and navigate to **Settings** - **General**. Here, copy the value present on the following line: `window['_fs_org'] = 'fullstory_org_id';`
 
@@ -51,7 +51,7 @@ To enable FullStory debugging, you can enable the **FS debug mode** option.
 
 ## Identify
 
-The `identify` call is used to uniquely identify a user in FullStory. For more information on the `identify` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+The `identify` call is used to uniquely identify a user in FullStory. For more information on the `identify` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 A sample `identify` call looks like the following snippet:
 
@@ -95,7 +95,7 @@ For more information on the <code class="inline-code">displayName</code> and <co
 
 ## Track
 
-A `track` call lets you track custom events as they occur in your web application. For more information on the `track` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+A `track` call lets you track custom events as they occur in your web application. For more information on the `track` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 A sample `track` call looks like the following snippet:
 
@@ -111,7 +111,7 @@ A `track` call is directly passed on to FullStory via its [FS.event](https://hel
 
 ## Page
 
-A page call contains information such as the URL or the name of the web page visited by the user. For more information, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+A page call contains information such as the URL or the name of the web page visited by the user. For more information, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 By default, all `page` calls are sent to FullStory as events. A sample `page` call looks like the following:
 

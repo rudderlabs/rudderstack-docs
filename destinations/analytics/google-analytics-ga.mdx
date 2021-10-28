@@ -46,13 +46,13 @@ Once the destination is enabled, events from our servers will start flowing to G
 
 Google Analytics' property `tracking id` is a required field to start sending events. Other inputs as shown below can be set as per your preferences:
 
-<img src="../../../../images/assets/screenshot-2020-09-14-at-5.58.13-pm.png" />
+<img src="../../assets/screenshot-2020-09-14-at-5.58.13-pm.png" />
 
-<img src="../../../../images/assets/screenshot-2020-09-14-at-5.59.00-pm.png" />
+<img src="../../assets/screenshot-2020-09-14-at-5.59.00-pm.png" />
 
-<img src="../../../../images/assets/screenshot-2020-09-14-at-6.00.03-pm.png" />
+<img src="../../assets/screenshot-2020-09-14-at-6.00.03-pm.png" />
 
-<img src="../../../../images/assets/screenshot-2020-09-14-at-5.56.58-pm.png" />
+<img src="../../assets/screenshot-2020-09-14-at-5.56.58-pm.png" />
 
 ## Page
 
@@ -154,9 +154,9 @@ There are multiple scopes for custom dimensions, such as `hits`, `session`, `use
 A custom dimension should be set as `dimension{index}` . For example, `dimension1` and it will map accordingly when the user sets the dimension in GA settings as shown below.
 
 Similar activity is to be done for metrics.A
-<img src="../../../../images/assets/image (59).png" /><span class="imageTitle">Custom Dimensions and Metrics Settings in RudderStack</span>
+<img src="../../assets/image (59).png" /><span class="imageTitle">Custom Dimensions and Metrics Settings in RudderStack</span>
 
-<img src="../../../../images/assets/image (36).png" /><span class="imageTitle">Custom Dimensions Settings in Google Analytics</span>
+<img src="../../assets/image (36).png" /><span class="imageTitle">Custom Dimensions Settings in Google Analytics</span>
 
 An `identify` call with custom dimensions will be recorded after the next `track` or `page` call.
 
@@ -239,7 +239,7 @@ The required steps are:
 
 Enhanced E-Commerce allows you to derive insights on the E-Commerce events by combining impression data, product data, promotion data and action data. This is a necessity for product-scoped custom dimensions.
 
-Enhanced E-Commerce must be enabled in Google Analytics, and should follow RudderStack's [E-Commerce Tracking API](https://rudderstack.com/docs/rudderstack-api-spec/rudderstack-ecommerce-events-specification).
+Enhanced E-Commerce must be enabled in Google Analytics, and should follow RudderStack's [E-Commerce Tracking API](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/).
 
 The required steps are:
 
@@ -255,7 +255,7 @@ The Checkout steps feature is a key difference between the regular E-Commerce an
 
 You can configure the checkout funnel in the Google Analytics admin interface as shown below:
 
-<img src="../../../../images/assets/image (21).png" />
+<img src="../../assets/image (21).png" />
 
 The checkout flow can be implemented by calling `track` with **`checkout step viewed`** and **`checkout step completed`** for the steps you have added in Google Analytics.
 
@@ -278,7 +278,7 @@ rudderanalytics.track('checkout step completed', {
 
 <div class="infoBlock">
 
-For more information, please check our guide on the <a href="https://rudderstack.com/docs/rudderstack-api/rudderstack-ecommerce-events-specification">RudderStack E-Commerce Events Specification</a>.
+For more information, please check our guide on the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">RudderStack E-Commerce Events Specification</a>.
 
 </div>
 
@@ -537,7 +537,7 @@ In your Google Analytics account, enable **Site search Tracking** and put the pa
 
 If the query is `abc.com/s=xyz`the setting should be as follows:
 
-<img src="../../../../images/assets/image (18) (1) (1) (1) (1) (1) (1) (1).png" />
+<img src="../../assets/image (18) (1) (1) (1) (1) (1) (1) (1).png" />
 
 ### Optimize
 
@@ -547,9 +547,9 @@ Add your **Optimize Container ID** in destinations settings.
 
 You can set the content group mapping in the RudderStack dashboard and Google Analytics, as shown in the images below:
 
-<img src="../../../../images/assets/image (67).png" /><span class="imageTitle">Content Group Mapping in RudderStack</span>
+<img src="../../assets/image (67).png" /><span class="imageTitle">Content Group Mapping in RudderStack</span>
 
-<img src="../../../../images/assets/image (26).png" /><span class="imageTitle">Content Grouping Settings in Google Analytics</span>
+<img src="../../assets/image (26).png" /><span class="imageTitle">Content Grouping Settings in Google Analytics</span>
 
 When you use `rudderanalytics.page(name, properties)` with the custom properties, RudderStack will use the value of the property you designate as the value of the specified content grouping.
 
@@ -591,7 +591,7 @@ If the specified dimension is set in the properties of the `page` call, it will 
 
 The tracking ID can be found in your Google Analytics account:
 
-<img src="../../../../images/assets/image (44).png" />
+<img src="../../assets/image (44).png" />
 
 Navigate to your account and go to **Apps**. The tracking ID will be present there.
 
@@ -601,25 +601,25 @@ Navigate to your account and go to **Apps**. The tracking ID will be present the
 
 Metrics is for event properties having numeric data type while dimensions is for event properties having string data type. Both are used to track custom data properties in Google Analytics.
 
-Please refer to the [Getting Started](https://rudderstack.com/docs/destinations-guides/google-analytics-ga#getting-started) section above in this document to know how to specify these fields on the RudderStack platform.
+Please refer to the [Getting Started](https://rudderstack.com/docs/destinations/analytics/google-analytics-ga#getting-started) section above in this document to know how to specify these fields on the RudderStack platform.
 
 ### My website uses HTTPS. Do I need to change any settings for accurate Google Analytics tracking?
 
 Yes. In the **Property Setup**, please change the website URL from HTTP \(default\) to HTTPS as shown:
 
-<img src="../../../../images/assets/image (49).png" /><span class="imageTitle">Changing the website URL from HTTP to HTTPS</span>
+<img src="../../assets/image (49).png" /><span class="imageTitle">Changing the website URL from HTTP to HTTPS</span>
 
 ### Can I view real-time reports of my event data?
 
 Yes, you can. Please check the Real-time reports in Google Analytics. A sample dashboard is as shown:
 
-<img src="../../../../images/assets/faq2.png" /><span class="imageTitle">Real-time event data report</span>
+<img src="../../assets/faq2.png" /><span class="imageTitle">Real-time event data report</span>
 
 ### How do I view the already processed events for a particular day?
 
 Please adjust the Google Analytics' default reporting time frame from a month ago to **the required date**, in order to view the processed events of that day.
 
-<img src="../../../../images/assets/faq1.png" /><span class="imageTitle">Changing the website URL from HTTP to HTTPS</span>
+<img src="../../assets/faq1.png" /><span class="imageTitle">Changing the website URL from HTTP to HTTPS</span>
 
 ### Why are my page views in Google Analytics different when sent from device mode as against the cloud mode?
 
@@ -628,7 +628,7 @@ There could be 2 reasons for this:
 - There can be ad blockers enabled in the user's browser while visiting your site. This blocks the Google Analytics requests from being sent directly from the browser.
 - For the cloud mode, RudderStack is not blocked by ad blockers presently. If the events are sent to Google Analytics via the cloud mode, the actual number of events intended to be sent to Google Analytics are forwarded by the RudderStack server. So, the number of requests from the native mode or device mode is expected to be lower than cloud mode.
 
-The RudderStack JavaScript SDK provides a way of detecting how many page view requests are potentially being blocked by the ad blockers throughout your site pages. Please check the section on [Detecting Ad-blocked Pages](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#detecting-ad-blocked-pages) for more information.
+The RudderStack JavaScript SDK provides a way of detecting how many page view requests are potentially being blocked by the ad blockers throughout your site pages. Please check the section on [Detecting Ad-blocked Pages](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#detecting-ad-blocked-pages) for more information.
 
 ## Contact Us
 

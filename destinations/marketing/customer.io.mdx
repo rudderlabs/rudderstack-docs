@@ -42,7 +42,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Fill the required fields such as API Key and Site ID as shown in the screenshot below:
 
-<img src="../../../../images/assets/photo-17-03-2021.png" /><span class="imageTitle">Customer.io Connection Settings</span>
+<img src="../../assets/photo-17-03-2021.png" /><span class="imageTitle">Customer.io Connection Settings</span>
 
 <div class="infoBlock">
 
@@ -60,7 +60,7 @@ We primarily need the properties API Key and Site ID to start sending events to 
 
 ## Identify
 
-The `identify` call sends the event data to Customer.io along with the properties that you pass as the RudderStack traits. For more information on the identify call, please refer our [RudderStack API specification](https://rudderstack.com/docs/get-started/rudderstack-api-spec) documentation.
+The `identify` call sends the event data to Customer.io along with the properties that you pass as the RudderStack traits. For more information on the identify call, please refer our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 RudderStack sends the `createdAt` field as `created_at` field to Customer.io to register user `sign up` time in the dashboard. If you don't send that field, `created_at` will not be sent to Customer IO.
 
@@ -68,7 +68,7 @@ RudderStack sends the `createdAt` field as `created_at` field to Customer.io to 
 
 The following code snippet is an example of an `identify` call in RudderStack:
 
-```
+```javascript
 // a sample identify
 rudderanalytics.identify("my-userID", {
         name: "Tintin",
@@ -77,8 +77,8 @@ rudderanalytics.identify("my-userID", {
         email: "tintin@herge.com"
 });
 
-// As created at is not present in the above call, we will append it with
-current timestamp value.
+// As created at is not present in the above call,
+// we will append it with current timestamp value.
 ```
 
 ## Page
@@ -87,24 +87,24 @@ If you are using a native SDK, the Customer.io JavaScript snippet is loaded and 
 
 Here is a sample of a `page` call in RudderStack:
 
-```
+```javascript
 // "home" is the name of the page.
 rudderanalytics.page("home", {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer"
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer",
 });
 ```
 
 ## Screen
 
-The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) or [Android](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-android-sdk) SDK it will register as `Viewed <screen name> Screen` under the Activities tab for the user. We'll forward the `properties` you've passed along with the `screen` call to [Customer.io](https://customer.io) dashboard as it is.
+The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) or [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk) SDK it will register as `Viewed <screen name> Screen` under the Activities tab for the user. We'll forward the `properties` you've passed along with the `screen` call to [Customer.io](https://customer.io) dashboard as it is.
 
 Here is a sample `screen` call in using RudderStack iOS SDK:
 
-```
+```objectivec
 [[RudderClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
 ```
@@ -113,16 +113,16 @@ The above event will be transformed as `Viewed Main Screen` in your dashboard.
 
 ## Track
 
-The `track` call \_\*\*\_will pass the event properties to Customer.io. You may call `rudderanalytics.track()`with or without the event properties. For more information on how `track`call works, please refer to our [RudderStack API specification](https://rudderstack.com/docs/get-started/rudderstack-api-spec) documentation.
+The `track` call \_\*\*\_will pass the event properties to Customer.io. You may call `rudderanalytics.track()`with or without the event properties. For more information on how `track`call works, please refer to our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 The following code snippet shows how a sample `track` call is made in RudderStack:
 
-```
+```javascript
 rudderanalytics.track("Track me", {
-        category: "category",
-        label: "label",
-        value: "value"
- });
+  category: "category",
+  label: "label",
+  value: "value",
+});
 ```
 
 <div class="infoBlock">
@@ -146,7 +146,7 @@ Example for registering `deviceToken` is as follows:
 <!--{% tabs %}
 {% tab title="iOS" %}
 
-```
+```objectivec
 [[[RudderClient sharedInstance] getContext] putDeviceToken:[self getDeviceToken]];
 ```
 
@@ -154,7 +154,7 @@ Example for registering `deviceToken` is as follows:
 
 {% tab title="Android" %}
 
-```
+```kotlin
 rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
 ```
 
@@ -170,7 +170,7 @@ rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
       <TabPanel>
 <span>
 
-```
+```objectivec
 [[[RudderClient sharedInstance] getContext] putDeviceToken:[self getDeviceToken]];
 ```
 </span>
@@ -178,7 +178,7 @@ rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
       <TabPanel>
 <span>
 
-```
+```kotlin
 rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
 ```
 </span>

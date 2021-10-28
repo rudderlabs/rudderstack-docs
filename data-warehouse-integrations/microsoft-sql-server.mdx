@@ -27,11 +27,11 @@ After setting up your MS SQL Server database, the next step is to create a user 
 
 Run the following commands to create a SQL Server instance on Docker:
 
-```
+```bash
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Test@123" -p 1433:1433 --name rudder_mssql -h rudder_mssql -d mcr.microsoft.com/mssql/server:2019-latest
 ```
 
-```
+```bash
 docker exec -it rudder_mssql "bash" /opt/mssql-tools/bin/sqlcmd -S localhost -U SA [-P "Test@123"]
 ```
 
@@ -41,15 +41,15 @@ The SQL queries below let you create a user and assign the above-mentioned privi
 
 Below are the SQL queries that let you create a user and grant the above-mentioned privileges \(creating schemas and temporary tables on the database\) to that created user:
 
-```
+```sql
 CREATE LOGIN testuser WITH PASSWORD = 'Test@123';
 CREATE USER testuser FOR LOGIN testuser ;
 
 CREATE DATABASE test_db
 USE test_db
-//GRANT individual permissions like this or
+-- GRANT individual permissions like this or
 GRANT CREATE TABLE TO testuser
-//Provides owner permissions to user
+-- Provides owner permissions to user
 EXEC sp_addrolemember N'db_owner', N'testuser'
 ```
 
@@ -73,7 +73,7 @@ To configure SQL Server as a destination, please follow these steps:
 - After choosing a source, click on the **Add Destination** button and select **SQL Server** from the list of destinations.
 - Assign a name to your destination and then click on **Next**. You should then see the following screen:
 
-<img src="../../../images/assets/mssqlconnection.png" />
+<img src="../assets/mssqlconnection.png" />
 
 - Enter the following credentials in the **Connection Settings**:
   - **Host -** The host name of your SQL Server service.

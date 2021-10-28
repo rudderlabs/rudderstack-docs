@@ -34,11 +34,11 @@ You'll start by creating a new distribution for serving the JavaScript SDK.
 
 ### Settings
 
-<img src="../../../../images/assets/screen-shot-2021-02-19-at-3.01.03-pm (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2).png" />
+<img src="../../assets/screen-shot-2021-02-19-at-3.01.03-pm (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2).png" />
 
-<img src="../../../../images/assets/screen-shot-2021-02-19-at-2.59.05-pm.png" />
+<img src="../../assets/screen-shot-2021-02-19-at-2.59.05-pm.png" />
 
-<img src="../../../../images/assets/screen-shot-2021-02-19-at-3.01.03-pm (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (1).png" />
+<img src="../../assets/screen-shot-2021-02-19-at-3.01.03-pm (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (1).png" />
 
 | Field                  | Setting              |
 | :--------------------- | :------------------- |
@@ -65,7 +65,7 @@ You'll start by creating a new distribution for serving the JavaScript SDK.
 
 **Click Create Distribution and wait for CloudFront to be deployed.**
 
-<img src="../../../../images/assets/screen-shot-2021-02-16-at-3.00.43-pm.png" />
+<img src="../../assets/screen-shot-2021-02-16-at-3.00.43-pm.png" />
 
 ### **Add CNAME Record to DNS**
 
@@ -75,7 +75,7 @@ Once your distribution is deployed, you’ll need to create a CNAME record on yo
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | Subdomain you wish to use \(which was used in the creation of the distribution\). This will vary based on your DNS provider but will typically be just the subdomain. Example: for `cdn.yourdomain.com` you would use `cdn` | The CDN URL for the distribution created. Example: `d3jlkfchu4u.cloudfront.net` |
 
-<img src="../../../../images/assets/screen-shot-2021-02-19-at-12.31.51-pm.png" />
+<img src="../../assets/screen-shot-2021-02-19-at-12.31.51-pm.png" />
 
 ### Serving the SDK
 
@@ -153,15 +153,15 @@ We also need to add a Whitelisting for the Authorization headers in **Default Ca
 
 As with serving the JavaScript SDK and Sending events, you'll choose Use legacy cache settings
 
-<img src="../../../../images/assets/screen-shot-2021-02-16-at-3.04.25-pm.png" />
+<img src="../../assets/screen-shot-2021-02-16-at-3.04.25-pm.png" />
 
 Under Cache Based on Selected Request Headers, you'll choose Whitelist.
 
-<img src="../../../../images/assets/screen-shot-2021-02-16-at-3.04.55-pm.png" />
+<img src="../../assets/screen-shot-2021-02-16-at-3.04.55-pm.png" />
 
 Choose Authorization and Add &gt;&gt; to whitelist the Authorization Header
 
-<img src="../../../../images/assets/screen-shot-2021-02-16-at-3.05.09-pm.png" />
+<img src="../../assets/screen-shot-2021-02-16-at-3.05.09-pm.png" />
 
 ### Add CNAME Record to DNS
 
@@ -187,7 +187,7 @@ To use your own domain, you'll need to Request or Import a certificate with your
 
 When choosing your SSL certificate on CloudFront, you'll be given the option to do so:
 
-<img src="../../../../images/assets/screen-shot-2021-02-19-at-3.56.01-pm.png" />
+<img src="../../assets/screen-shot-2021-02-19-at-3.56.01-pm.png" />
 
 From there you'll choose your subdomain or use a wildcard domain \(`*.yourdomain.com`\) to be able to setup multiple subdomains.
 

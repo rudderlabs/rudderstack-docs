@@ -28,17 +28,17 @@ After integrating RudderStack, you can collect events from sources to build a pr
 
 First, Alice searches for the latest iPhone in her mobile app, and signs up with her phone number.
 
-<img src="../../../images/assets/image (80).png" alt="Identity Resolution" />
+<img src="../assets/image (80).png" alt="Identity Resolution" />
 
 Later, she signs up on the website with her email, verifies her mobile number and then purchases the iPhone. The flow of events is as shown:
 
-<img src="../../../images/assets/image (93).png" alt="Flow of event" />
+<img src="../assets/image (93).png" alt="Flow of event" />
 
 Alice then reports an issue via her phone and a ticket for the same is created using Zendesk. This ticket confirmation email is sent to Alice using CustomerIO.
 
 This data can be collected using the RudderStack cloud sources, as shown:
 
-<img src="../../../images/assets/image (12).png" alt="RudderStack cloud sources" />
+<img src="../assets/image (12).png" alt="RudderStack cloud sources" />
 
 RudderStack has a **merge API** which takes two different identities and connects them. For example, Stripe is integrated for payments and you would want to merge Alice's Stripe identifier with your internal identifier.
 
@@ -49,13 +49,13 @@ RudderStack has a **merge API** which takes two different identities and connect
 
 This gives you the flexibility to run your own algorithms or machine learning models internally and send the final identity merge events to RudderStack.
 
-<img src="../../../images/assets/image (87).png" alt="Run your own Algorithms" />
+<img src="../assets/image (87).png" alt="Run your own Algorithms" />
 
 RudderStack then applies the identity merges on all events and generates a table that includes the identity mappings of all users. A `rudder_id` is the unique identifier for all merged identities.
 
 The following `rudder_identity_mappings` table is an example of how the identity mappings look like in Alice's user journey:
 
-<img src="../../../images/assets/image (64).png" alt="Rudder Identity Mappings" />
+<img src="../assets/image (64).png" alt="Rudder Identity Mappings" />
 
 ## Querying with Identities
 

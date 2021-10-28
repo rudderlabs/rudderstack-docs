@@ -42,7 +42,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a suitable name to the destination, and then click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/image (72).png" /><span class="imageTitle">Mailchimp Connection Settings screen</span>
+<img src="../../assets/image (72).png" /><span class="imageTitle">Mailchimp Connection Settings screen</span>
 
 - Enter the relevant information in the fields such as the **Mailchimp API Key**, **Audience ID** and **DataCenter ID**. Then, click on **Next**.
 
@@ -54,13 +54,13 @@ It is recommended that you create a new API key for your RudderStack destination
 
 ## Identify
 
-The `identify` call captures the details about the visiting user along with the properties associated with that user. For more information, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+The `identify` call captures the details about the visiting user along with the properties associated with that user. For more information, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 ### Adding or updating a user
 
 Let us consider a sample `identify` call in RudderStack:
 
-```
+```javascript
 rudderanalytics.identify("user123", {
   firstName: "John",
   lastName: "Doe",
@@ -99,7 +99,7 @@ If you have multiple lists that your users can subscribe to, you can override th
 
 Consider the following code snippet:
 
-```
+```javascript
 rudderanalytics.identify(
   "userId123",
   {
@@ -123,7 +123,7 @@ RudderStack gives you the option of manually updating the subscription status of
 
 An example of how to do this is as shown in the code snippet below:
 
-```
+```javascript
 rudderanalytics.identify(
   "userId123",
   {

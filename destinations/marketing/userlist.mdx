@@ -43,7 +43,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Name your destination, and click on **Next**. You should be able to see the following screen:
 
-<img src="../../../../images/assets/userlist.png" />
+<img src="../../assets/userlist.png" />
 <span class="imageTitle">Connection settings for Userlist destination</span>
 
 - Enter the **Userlist Pus Key** which you can find from your [Userlist Push API settings](https://app.userlist.com/settings/push).
@@ -56,7 +56,7 @@ Userlist does not support tracking of anonymous users. So, make sure you call `i
 
 ## Identify
 
-The `identify` call sends the event data to Userlist along with the properties that you pass as the RudderStack traits. For more information on the `identify` call, please refer our [RudderStack API specification](https://rudderstack.com/docs/get-started/rudderstack-api-spec) documentation.
+The `identify` call sends the event data to Userlist along with the properties that you pass as the RudderStack traits. For more information on the `identify` call, please refer our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 If the `userId` is already known, Userlist will update the user record. Otherwise, it’ll create a new one.
 
@@ -79,7 +79,7 @@ rudderanalytics.identify("test-user-id", {
 
 ## Group
 
-The `group` call is made to associate the user with a company in Userlist. For more information on the `group` call, please refer our [RudderStack API specification](https://rudderstack.com/docs/get-started/rudderstack-api-spec) documentation.
+The `group` call is made to associate the user with a company in Userlist. For more information on the `group` call, please refer our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 An example of a `group` call is as shown:
 
@@ -120,7 +120,7 @@ rudderanalytics.group("test-group-id", {
 
 ## Track
 
-The `track` call will pass the event properties to Userlist. You may call `rudderanalytics.track()` with or without event properties. For more information on how `track` call works, please refer to our [RudderStack API specification](https://rudderstack.com/docs/get-started/rudderstack-api-spec) documentation.
+The `track` call will pass the event properties to Userlist. You may call `rudderanalytics.track()` with or without event properties. For more information on how `track` call works, please refer to our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 The following code snippet shows how a sample `track` call is made in RudderStack:
 

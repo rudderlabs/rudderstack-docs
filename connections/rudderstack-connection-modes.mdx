@@ -44,7 +44,7 @@ The SDK automatically tracks and sends the user events to RudderStack. These eve
   The above example uses the JavaScript SDK; the other <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/"> RudderStack SDKs </a> also work in the same way.
 </div>
 
-<img src="../../../images/assets/image (9).png" alt="RudderStack SDKs" /><span class="imageTitle">RudderStack Cloud Mode</span>
+<img src="../assets/image (9).png" alt="RudderStack SDKs" /><span class="imageTitle">RudderStack Cloud Mode</span>
 
 <div class="successBlock">
 
@@ -70,15 +70,15 @@ This mode lets you send your events to the preferred destinations using the clie
 
 ### How It Works
 
-Suppose you want to send your event data from your source mobile apps to Firebase through RudderStack's mobile SDK \([**Android**](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-android-sdk/), [**iOS**](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/), or [**Unity**](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk/)**,** depending on your requirement\). You can start by [**adding a source and a Firebase destination**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) in the RudderStack dashboard.
+Suppose you want to send your event data from your source mobile apps to Firebase through RudderStack's mobile SDK \([**Android**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/), [**iOS**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/), or [**Unity**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk/)**,** depending on your requirement\). You can start by [**adding a source and a Firebase destination**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) in the RudderStack dashboard.
 
 The RudderStack SDK will download the Firebase SDK, transform the events and will send them to Firebase for analytics.
 
-<img src="../../../images/assets/image (29).png" alt="SDK will transform the events" /><span class="imageTitle">RudderStack Device Mode</span>
+<img src="../assets/image (29).png" alt="SDK will transform the events" /><span class="imageTitle">RudderStack Device Mode</span>
 
 In some cases, you can also use the RudderStack web SDK \([**JavaScript**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/)\) to send the events to the destination through the device mode. To do so, enable the **Use native SDK to send events** option on the RudderStack dashboard as shown:
 
-<img src="../../../images/assets/screen-shot-2021-06-07-at-4.17.14-pm.png" alt="RudderStack web SDK" />
+<img src="../assets/screen-shot-2021-06-07-at-4.17.14-pm.png" alt="RudderStack web SDK" />
 
 <div class="successBlock">
 
@@ -103,11 +103,11 @@ The easiest way to check the connection mode supported by the destination is to 
 
 We explicitly mention the supported connection modes for every destination in the **Getting Started** section of each guide. A sample example is as shown:
 
-<img src="../../../images/assets/screen-shot-2021-06-07-at-4.24.51-pm.png" alt="Getting Started" />
+<img src="../assets/screen-shot-2021-06-07-at-4.24.51-pm.png" alt="Getting Started" />
 
 ## Cloud + Device Mode Support
 
-Some of our destinations support both Cloud and Device Modes. Some examples are [**Google Analytics**](https://rudderstack.com/docs/destinations/google-analytics-ga/), [**HubSpot**](https://rudderstack.com/docs/destinations/hubspot/), [**Intercom**](https://rudderstack.com/docs/destinations/intercom/), [**Kissmetrics**](https://rudderstack.com/docs/destinations/kissmetrics/), [**Branch**](https://rudderstack.com/docs/destinations/branchio/), [**Braze**](https://rudderstack.com/docs/destinations/braze/), [**Customer.io**](https://rudderstack.com/docs/destinations/customer.io/), and [**Facebook App Events**](https://rudderstack.com/docs/destinations/facebook-app-events/).
+Some of our destinations support both Cloud and Device Modes. Some examples are [**Google Analytics**](https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/), [**HubSpot**](https://rudderstack.com/docs/destinations/crm/hubspot/), [**Intercom**](https://rudderstack.com/docs/destinations/business-messaging/intercom/), [**Kissmetrics**](https://rudderstack.com/docs/destinations/analytics/kissmetrics/), [**Branch**](https://rudderstack.com/docs/destinations/attribution/branchio/), [**Braze**](https://rudderstack.com/docs/destinations/marketing/braze/), [**Customer.io**](https://rudderstack.com/docs/destinations/marketing/customer.io/), and [**Facebook App Events**](https://rudderstack.com/docs/destinations/advertising/facebook-app-events/).
 
 You can choose to integrate these destinations with RudderStack via cloud mode or device mode, depending on your requirement.
 

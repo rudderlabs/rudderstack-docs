@@ -34,7 +34,7 @@ Follow our guide on [**Adding a Source and Destination in RudderStack**](https:/
 
 * Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/Algolia.png"/><span class="imageTitle">Algolia Connection Settings</span>
+<img src="../../assets/Algolia.png"/><span class="imageTitle">Algolia Connection Settings</span>
 
 ### Connection Settings
 
@@ -47,7 +47,7 @@ This section details the connection settings required to configure Algolia as a 
 To get the Algolia API key and Application ID, go to your [**Algolia dashboard**](https://www.algolia.com/apps/). Under the **API Keys** menu, copy the values under **Application ID** and **Search-Only API Key**.
 </div>
 
-* Under **Event Settings**, you can add the **Event Name** and its corresponding **Event Type**. These are optional fields and can also be passed via the `track` call. 
+* Under **Event Settings**, you can add the **Event Name** and its corresponding **Event Type**. These are optional fields and can also be passed via the `track` call.
 
 <div class="infoBlock">
 
@@ -98,7 +98,7 @@ A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track("event name", {
-  eventType: "click",  
+  eventType: "click",
   index: "index1",
   timestamp: 1630649198801,
   objectIds: [ "objId1","objId2"],

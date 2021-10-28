@@ -37,7 +37,7 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/RedditPixel-1.png" />
+<img src="../../assets/RedditPixel-1.png" />
 
 - Enter your **Reddit Pixel Advertiser ID**.
 
@@ -51,7 +51,7 @@ For more information on how to find your Reddit Pixel Advertiser ID, refer to th
 
 In Reddit Pixel, the `identify` call updates the Reddit Pixel with the user's signup information.
 
-For more information on the `identify` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/rudderstack-spec/identify).
+For more information on the `identify` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/).
 
 A sample `identify` call is as shown:
 
@@ -63,7 +63,7 @@ rudderanalytics.identify()
 
 When the `page` call is made, the `track` event is sent as `PageVisit` to `rdt('track,'PageVisit')`. RudderStack ignores any parameter sent to `rudderanalytics.page()`.
 
-For more information on the `page` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/rudderstack-spec/page).
+For more information on the `page` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page).
 
 A sample `page` call is as shown:
 
@@ -109,7 +109,7 @@ Reddit Pixel does not support any other custom events apart from the ones mentio
 
 To get your Reddit Pixel Advertiser ID, go to your Reddit Ads Manager account. Under **Reddit Pixel Setup**, select the Reddit **Pixel** button. Here, you can find the advertiser ID in the `rdt('init', <advertiserID>)` line of the snippet code, as shown below.
 
-<img src="../../../../images/assets/RedditPixel-2.png" />
+<img src="../../assets/RedditPixel-2.png" />
 
 ## Contact Us
 

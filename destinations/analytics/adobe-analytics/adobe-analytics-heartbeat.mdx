@@ -19,7 +19,7 @@ For sending the heartbeat events to Adobe Analytics, you will need the Heartbeat
 
 <div class="infoBlock">
 
-The <a href="./setting-up-adobe-analytics-in-rudderstack">RudderStack dashboard settings</a> also has a toggle for SSL which, if enabled, will send the Heartbeat Tracking URL in the HTTPS mode.
+The <a href="https://rudderstack.com/docs/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/">RudderStack dashboard settings</a> also has a toggle for SSL which, if enabled, will send the Heartbeat Tracking URL in the HTTPS mode.
 </div>
 
 ## Playback Head
@@ -28,7 +28,7 @@ For sending video heartbeat events to Adobe Analytics through RudderStack's Web 
 
 To stop triggering this event for every second, the playhead to the window needs to be set. This can be done by setting `window.rudderHBPlayheads` to the key-value pair of the current content’s `session_id` and `position` as shown:
 
-```
+```javascript
 window.rudderHBPlayheads = {
   "session_id": position value
 }
