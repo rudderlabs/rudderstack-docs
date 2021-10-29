@@ -1,0 +1,404 @@
+---
+# slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk"
+title: "Rust"
+description: >-
+  Detailed technical documentation on using RudderStack’s Rust SDK to send events to various destinations.
+---
+
+
+# Rust
+
+RudderStack’s Rust SDK allows you to track your customer event data from your Rust applications.
+
+Once configured as a source, the event requests are sent to the RudderStack server. RudderStack then routes the events to the destination platforms as configured by you.
+
+<div class="successBlock">
+  
+Find the SDK implementation in our <a href="https://github.com/rudderlabs/rudder-sdk-rust">**GitHub repository**</a>.
+</div>
+
+## Installing the SDK
+
+To install the Rust SDK, simply add its crate as a project dependency.
+
+Add the following line to your `Cargo.toml` file:
+
+```rust
+rudderanalytics = "1.0.0"
+```
+
+## Initializing the RudderStack client
+
+To initialize the RudderStack client, run the following code snippet:
+
+```rust
+use rudderanalytics::client::RudderAnalytics;
+
+let rudder_analytics = RudderAnalytics::load(
+	"<SOURCE_WRITE_KEY>".to_string(),
+	"<DATA_PLANE_URL>".to_string()
+);
+```
+
+Once the RudderStack client is initialized, you can use it to send your customer events.
+
+## Sending events from RudderStack
+
+The Rust SDK supports the following events:
+
+* Identify
+* Track
+* Page
+* Group
+* Screen
+* Alias
+* Batch
+
+For more information on each of calls, refer to the [**RudderStack Events Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+
+<div class="warningBlock">
+  
+RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users simultaneously. Therefore, for any of the calls supported by the Rust SDK, you need to specify either the <code class="inline-code">user_id</code> or <code class="inline-code">anonymous_id</code> every time. 
+</div>
+
+## Identify
+
+The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+
+A sample `identify` call is as shown:
+
+```rust
+use rudderanalytics::message::{ Identify, Message };
+
+rudder_analytics
+        .send(Message::Identify(Identify {
+            user_id: Some("sample_user_id".to_string()),
+            traits: Some(json!({
+                "name": "Test User",
+                "email": "test@user.com",
+            })),
+            ..Default::default()
+        }))
+        .expect("Identify call failed to send data to RudderStack");
+```
+
+### Identify parameters
+
+The following table describes the different `identify` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description**                        					|
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
+| `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user, such as name, email, etc. |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
+
+## Track
+
+The `track` call lets you record the customer events, i.e. the user actions, along with any properties associated with them.
+
+A sample `track` call is as shown:
+
+```rust
+use rudderanalytics::message::{ Track, Message };
+
+rudder_analytics
+        .send(Message::Track(Track {
+            user_id: Some("sample_user_id".to_string()),
+            event: "Test Event".to_owned(),
+            properties: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Track call failed to send data to RudderStack");
+```
+
+### Track parameters
+
+The following table describes the different `track` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
+| `event`        | String   | Required                                   | Name of the event, i.e. the action performed by the user.		        |
+| `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the event.                      |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
+
+## Page
+
+The `page` call lets you record your website's page views, with any relevant information about the viewed page. 
+
+<div class="infoBlock">
+
+We recommend calling <code class="inline-code">page</code> at least once every page load.
+</div>
+
+A sample `page` call is shown below:
+
+```rust
+use rudderanalytics::message::{ Page, Message };
+
+rudder_analytics
+        .send(Message::Page(Page {
+            user_id: Some("sample_user_id".to_string()),
+            name: "Cart viewed".to_owned(),
+            properties: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Page call failed to send data to RudderStack");
+```
+
+### Page parameters
+
+The following table describes the different `page` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
+| `name`         | String   | Required                                   | Name of the viewed page.			   			        |
+| `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the page view event.            |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
+## Screen
+
+The `screen` method lets you record whenever the user views their mobile screen, along with any additional relevant information about the screen.
+
+<div class="infoBlock">
+	
+	The <code class="inline-code">screen</code> call is the mobile equivalent of the <code class="inline-code">page</code> call.
+</div>
+
+A sample `screen` call is shown below:
+
+```rust
+use rudderanalytics::message::{ Screen, Message };
+
+rudder_analytics
+        .send(Message::Screen(Screen {
+            user_id: Some("sample_user_id".to_string()),
+            name: "sample_screen".to_owned(),
+            properties: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Screen call failed to send data to RudderStack");
+```
+
+### Screen parameters
+
+The following table describes the different `page` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          | 
+| `name`         | String   | Required                                   | Name of the viewed screen.			   			        |
+| `properties`   | Object   | Optional                                   | Dictionary of the properties associated with the screen view event.          |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
+## Group
+
+The `group` call lets you link an identified user with a group, such as a company, organization, or account. It also lets you record any custom traits associated with that group, such as the company's name, the number of employees, etc.
+
+<div class="infoBlock">
+	
+	An identified user can be in more than one group.
+</div>
+
+A sample `group` call is shown below:
+
+```rust
+use rudderanalytics::message::{ Group, Message };
+
+rudder_analytics
+        .send(Message::Group(Group {
+            user_id: Some("sample_user_id".to_string()),
+            group_id: "sample_group_id".to_owned(),
+            traits: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Group call failed to send data to RudderStack");
+```
+
+### Group parameters
+
+The following table describes the different `group` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Optional, if `anonymous_id` is already set.| Unique user identifier in your database.                                     |
+| `anonymous_id` | String   | Optional                                   | Sets an identifier for cases when there is no unique user identifier. Either `user_id` or `anonymous_id` is required.                                                                                                                          |
+| `group_id`     | String   | Required                                   | Unique identifier of the group in your database.                             |
+| `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the group.                          |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
+## Alias
+
+The `alias` call lets you merge different identities of a known user.
+
+<div class="infoBlock">
+	
+	<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+</div>
+
+<div class="successBlock">
+
+  The following destinations support the <code class="inline-code">alias</code> call:
+  <ul>
+    <li>
+      <a href="https://rudderstack.com/docs/destinations/marketing/moengage/">MoEngage</a>
+    </li>
+    <li>
+      <a href="https://rudderstack.com/docs/destinations/analytics/kissmetrics/">Kissmetrics</a>
+    </li>
+    <li>
+      <a href="https://rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a> (only
+      supported by the 
+      <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">
+        JavaScript SDK
+      </a>
+       via <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode">
+        cloud mode
+      </a>)
+    </li>
+    <li>
+      <a href="https://rudderstack.com/docs/destinations/analytics/mixpanel/">Mixpanel</a>
+    </li>
+  </ul>
+</div>
+
+A sample `alias` call is shown below:
+
+```rust
+use rudderanalytics::message::{ Alias, Message };
+
+rudder_analytics
+        .send(Message::Alias(Alias {
+            user_id: Some("sample_user_id".to_string()),
+            previous_id: "sample_previous_user_id".to_owned(),
+            traits: Some(json!({
+                "some property": "some value",
+                "some other property": "some other value",
+            })),
+            ..Default::default()
+        }))
+        .expect("Alias call failed to send data to RudderStack");
+```
+
+### Alias parameters
+
+The following table describes the different `alias` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `user_id`      | String   | Required				         | Unique user identifier in your database.                                     |
+| `previous_id`  | String   | Required                                   | The user's previous identifier.                                              |
+| `traits`       | Object   | Optional                                   | Dictionary of the traits associated with the user, such as name, email, etc. |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+
+
+## Batch
+
+The `batch` call lets you send multiple user events(of type `identify`, `track`, `page`, `screen`, `group`, and `alias`) in one call.
+
+<div class="infoBlock">
+
+The <code class="inline-code">batch</code> call accepts a maximum call size of 4 MB.
+</div>
+
+A sample `batch` call is as shown:
+
+```rust
+use rudderanalytics::message::{ Batch, Message, BatchMessage };
+
+rudder_analytics
+        .send(Message::Batch(Batch {
+            batch: vec![
+                BatchMessage::Identify(Identify {
+                    user_id: Some("foo".to_string()),
+                    traits: Some(json!({})),
+                    ..Default::default()
+                }),
+                BatchMessage::Track(Track {
+                    user_id: Some("bar".to_string()),
+                    event: "Bar".to_owned(),
+                    properties: Some(json!({})),
+                    ..Default::default()
+                }),
+                BatchMessage::Track(Track {
+                    user_id: Some("baz".to_string()),
+                    event: "Baz".to_owned(),
+                    properties: Some(json!({})),
+                    ..Default::default()
+                }),
+            ],
+            context: Some(json!({
+                "foo": "bar",
+            })),
+            ..Default::default()
+        }))
+        .expect("Batch call failed to send data to Rudderstack");
+```
+
+### Batch parameters
+
+The following table describes the different `batch` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `batch`        | Vector   | Required                                   | Contains one or more event calls of type `identify`/ `track`/ `page`/ `screen`/ `group`/ `alias`.                          													           |
+| `context`      | Object   | Optional                                   | Dictionary of information providing context about a message. It is not directly related to the API call.        															   |
+| `integrations` | Object   | Optional                                   | Dictionary containing the destinations to be enabled or disabled.            |
+| `original_timestamp`| DateTime | Optional                              | The timestamp of the event's occurrence as specified by the user, in ISO 8601 format. If not explicitly specified, the SDK appends the timestamp of the event's receipt.									 |
+
+## Integrations options
+
+The structure of the `integrations` option is as follows:
+
+```rust
+integrations: {
+ All: boolean, // Defaults to true
+ <Destination1>: boolean,
+ <Destination2>: boolean,
+ ...
+}
+```
+
+The following table describes all the `integrations` parameters in detail:
+
+| **Field**      | **Type** | **Presence**                               | **Description** |
+|:---------------|:---------|:-------------------------------------------|:-----------------------------------------------------------------------------|
+| `All`          | Boolean  | Optional                                   | Corresponds to all the destinations to which the event is to be sent. Defaults to true. `All: false` instructs RudderStack to not send the event data to any destinations by default.						     |
+| `<Destination>`| Boolean  | Optional                                   | Name of the specific destination to which the event should be sent/not sent, depending on the Boolean value assigned to it.															  |
+
+## Contact us
+
+For more information on the Rust SDK, you can [**contact us**](mailto:docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+
+In case you come across any issues while using this SDK, feel free to start a new issue on our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-rust).
