@@ -228,6 +228,14 @@ export const jsonData = [
                  ]
               },
               {
+                 "key":"rudderstack-rust-sdk",
+                 "title":"Rust",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk/",
+                 "content":[
+                    
+                 ]
+              },
+              {
                  "key":"rudderstack-node-sdk",
                  "title":"Node.js",
                  "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/",
