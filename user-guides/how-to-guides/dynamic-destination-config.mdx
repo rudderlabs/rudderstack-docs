@@ -17,7 +17,7 @@ All you need to do is pass the path of your event payload from which the configu
 
 <div class="successBlock">
   
-  You can use this feature for all RudderStack destinations.
+  You can use this feature for all RudderStack destinations - including <a href="https://rudderstack.com/docs/data-warehouse-integrations/">**warehouse destinations**</a>.
 </div>
 
 ## Supported format
@@ -215,11 +215,11 @@ In case `properties.trackingId` does not have any value, then `Config.trackingId
 
 ## FAQs
 
-#### How is this feature useful to me?
+### How is this feature useful to me?
 
 This feature is very useful if you want to configure multiple instances of the same destination with different configurations for specific fields. Refer to the use-case section above to see how you can use this feature.
 
-#### How should I use this feature? What if I don't want to use it?
+### How should I use this feature? What if I don't want to use it?
 
 In the text field of a particular connection setting that you want to configure, enter the path of the payload along with a default value in the following format:
 
@@ -229,11 +229,15 @@ In the text field of a particular connection setting that you want to configure,
 
 If you don't want to use this feature, you can enter the configuration setting in the dashboard as you normally would.
 
-#### Can I specify only the payload path without a default value?
+### Can I use this feature to dynamically configure a warehouse destination?
+
+Yes, you can. Make sure that the warehouse credentials that you use to configure the destination are applicable for the dynamic project ID/database/any other configuration values from the event payload.
+
+### Can I specify only the payload path without a default value?
 
 We highly recommend setting a payload path along with a default value. This is because if, for some reason, the payload path does not have any value, the default value is passed as the connection setting. If both the values are absent, you will get an error. 
 
-#### My default value is a number starting with 0. What happens if I don't set it as a string?
+### My default value is a number starting with 0. What happens if I don't set it as a string?
 
 If your default value is a number starting with 0, you need to set it as a string. Otherwise, the value will not be accepted and you may encounter an error.
 
