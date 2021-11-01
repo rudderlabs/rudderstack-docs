@@ -502,6 +502,7 @@ Apart from the above mentioned events, the following standard events of Firebase
 - `item_list_name`
 - `creative_slot`
 - `location_id`
+- `transaction_id`
 - `screen_class`
 
 We pass all the `properties` from the event to Firebase. The nested value in the properties is converted to JSON using [GSON](https://github.com/google/gson).
@@ -516,7 +517,6 @@ We modify the event property parameter names as per the following table.
 | `query`                     | `search_term`            |
 | `revenue`, `value`, `total` | `value`                  |
 | `currency`                  | `currency`               |
-| `order_id`                  | `transaction_id`         |
 | `tax`                       | `tax`                    |
 | `shipping`                  | `shipping`               |
 | `coupon`                    | `coupon`                 |
