@@ -84,7 +84,7 @@ implementation 'com.rudderstack.android.integration:firebase:2.+'
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 
-- Finally change the initialization of your `RudderClient` in your `Application` class.
+- Finally, change the initialization of your `RudderClient` in your `Application` class.
 
 ```kotlin
 val rudderClient = RudderClient.getInstance(
@@ -116,7 +116,7 @@ pod 'Rudder-Firebase'
 #import "RudderFirebaseFactory.h"
 ```
 
-- Finally, change the initializationn of your `RudderClient` as shown:
+- Finally, change the initialization of your `RudderClient` as shown:
 
 ```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
@@ -142,7 +142,7 @@ Follow these steps to add Firebase to your Unity project:
 - Add those two files to your `Assets` folder.
 - Integrate the RudderStack `core` SDK with your project. To know more, please refer to our [Getting Started with Unity SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk) guide.
 - Download and import the Firebase Unity SDK and follow these instructions on [adding Firebase SDK to your project](https://firebase.google.com/docs/unity/setup). Specifically `FirebaseAnalytics.unitypackage`.
-- Download [Firebase Extension for RudderStack](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/Integrations/Firebase/rudder-integration-firebase-unity.unitypackage) from our GitHub page and import into your project.
+- Download [Firebase Extension for RudderStack](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/Integrations/Firebase/rudder-integration-firebase-unity.unitypackage) from our GitHub page and import it into your project.
 - Attach `RudderPreferbs.prefab` file from `Rudder` to your Main `GameObject`
 - Finally, change the SDK initialization using the following code snippet:
 
@@ -614,8 +614,8 @@ For iOS, specify the following in your command line argument in XCode:
 ```xml
 <meta-data android:name="google_analytics_automatic_screen_reporting_enabled" android:value="false" />
 ```
-*On iOS, set `FirebaseAutomaticScreenReportingEnabled` to `NO` (Boolean) in the `Info.plist`.
-*For more information visit [**Firebase automatic track screens docs**](https://firebase.google.com/docs/analytics/screenviews#automatically_track_screens)
+* On iOS, set `FirebaseAutomaticScreenReportingEnabled` to `NO` (Boolean) in the `Info.plist`.
+* For more information visit [**Firebase automatic track screens docs**](https://firebase.google.com/docs/analytics/screenviews#automatically_track_screens)
 
 
 ## Contact Us
