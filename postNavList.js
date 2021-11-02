@@ -141,6 +141,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"version-migration-guide",
+    "title":"Version Migration Guide",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/",
+    "content":[]
+ },
+ {
     "key":"js-sdk-faqs",
     "title":"FAQs",
     "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
