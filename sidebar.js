@@ -138,7 +138,7 @@ export const jsonData = [
                  "title":"JavaScript",
                  "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/",
                  "content":[
-                   {
+                    {
                        "key":"quick-start-guide",
                        "title":"Quick Start Guide",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/",
@@ -146,7 +146,7 @@ export const jsonData = [
                           
                        ]
                     }, 
-                   {
+                    {
                        "key":"javascript-sdk-enhancements",
                        "title":"JavaScript SDK Enhancements",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
@@ -154,7 +154,7 @@ export const jsonData = [
                           
                        ]
                     },
-                   {
+                    {
                        "key":"querystring-api",
                        "title":"Querystring API",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/",
@@ -162,7 +162,7 @@ export const jsonData = [
                           
                        ]
                     },
-                   {
+                    {
                        "key":"detecting-adblocked-pages",
                        "title":"Detecting Ad-blocked Pages",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/",
@@ -170,7 +170,15 @@ export const jsonData = [
                           
                        ]
                     },
-                   {
+                    {
+                       "key":"version-migration-guide",
+                       "title":"Version Migration Guide",
+                       "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/",
+                       "content":[
+                          
+                       ]
+                    },
+                    {
                        "key":"js-sdk-faqs",
                        "title":"FAQs",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
