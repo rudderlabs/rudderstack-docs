@@ -45,7 +45,7 @@ The above code snippet does the following:
 | **`reset()`**    | Resets the `userid` and the associated traits.       |
 
 - Loads the analytics object with your write key.
-- Makes the `page()`call to track the page view. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. If you want to override them, refer to the [**`page`**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#page) API method.
+- Makes the `page()`call to track the page view. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. If you want to override them, refer to the [`page`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#page) API method.
 
 ### Minified code
 
@@ -103,8 +103,8 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 
 To integrate and initialize the JavaScript SDK, you need the source write key and the data plane URL.
 
-- To get the source write key, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/sending-test-events#get-the-source-write-key).
-- To get the data plane URL, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
+- To get the source write key, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/sending-test-events/#get-the-source-write-key).
+- To get the data plane URL, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
 
 ### Alternative installation using NPM
 
@@ -205,7 +205,7 @@ rudderanalytics.identify(
 );
 ```
 
-In the above example, the user-related information like the `userId` and `email` along with the [**contextual information**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields#javascript-sdk) is captured.
+In the above example, the user-related information like the `userId` and `email` along with the [**contextual information**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/#javascript-sdk) is captured.
 
 <div class="infoBlock">
   
@@ -214,7 +214,7 @@ In the above example, the user-related information like the `userId` and `email`
 
 <div class="successBlock">
   
-  For more information, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#identify" section of the SDK documentation.
+  For more information, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#identify" section of the SDK documentation.
 </div>
 
 ## Step 3: Track your users' actions with `track()`
@@ -257,7 +257,7 @@ rudderanalytics.ready(() => {
 
 <div class="successBlock">
   
-For more information on the JavaScript SDK API methods, refer to the <a href="https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#supported-apis">JavaScript SDK APIs</a> section of the SDK documentation.
+For more information on the JavaScript SDK API methods, refer to the <a href="https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#supported-apis">JavaScript SDK APIs</a> section of the SDK documentation.
 </div>
 
 ## Contact us
