@@ -48,19 +48,19 @@ If you are forwarding or proxying RudderStack's CDN, follow these steps:
 * Go to the distribution whose origin is set to RudderStack's CDN. Ensure that the entire domain (`https://cdn.rudderlabs.com`) is set as the origin.
 
 <div class="infoBlock">
-  
+
 We highly recommend forwarding the entire CDN path <code class="inline-code">https://cdn.rudderlabs.com</code> so that you don't miss any files/directories that might be added in the future.
 </div>
 
 <div class="successBlock">
-  
+
   Refer to our guide on <a href="https://rudderstack.com/docs/user-guides/how-to-guides/custom-domains/">using custom domains</a> for more information CDN forwarding/proxying.
 </div>
 
-* Then, go to **Behaviors**, and check that the sub-path `/v1.1/*` is **not configured to be blocked** in any way. 
+* Then, go to **Behaviors**, and check that the sub-path `/v1.1/*` is **not configured to be blocked** in any way.
 
 <div class="warningBlock">
-  
+
 This step is required to ensure that both the core SDK and destination SDKs are forwarded properly.
 </div>
 
@@ -88,9 +88,9 @@ If you have cloned RudderStack's JavaScript SDK and are self-hosting it via your
 
 We recommend maintaining the following structure:
 
-`<BASE_PATH>` <br>
----> `<CORE_JS_SDK_v1.1>` <br>
----> `<js-integrations>`<br>
+`<BASE_PATH>`
+---> `<CORE_JS_SDK_v1.1>`
+---> `<js-integrations>`
 -------------> `<*.min.js>` - corresponding to the destination SDK file.
 
 A visual representation of the structure above is as shown:
@@ -148,7 +148,7 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 | Hotjar               | https://cdn.rudderlabs.com/v1.1/js-integrations/Hotjar.min.js             |
 | Google Ads           | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleAds.min.js          |
 | VWO                  | https://cdn.rudderlabs.com/v1.1/js-integrations/VWO.min.js                |
-| Google Tag Manager   | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleTagManager.min.js   |  
+| Google Tag Manager   | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleTagManager.min.js   |
 | Braze                | https://cdn.rudderlabs.com/v3/js-integrations/Braze.min.js                |
 | Intercom             | https://cdn.rudderlabs.com/v1.1/js-integrations/INTERCOM.min.js           |
 | Keen.io              | https://cdn.rudderlabs.com/v1.1/js-integrations/Keen.min.js               |

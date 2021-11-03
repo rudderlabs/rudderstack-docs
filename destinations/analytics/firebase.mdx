@@ -22,7 +22,7 @@ Before configuring Firebase as a destination in RudderStack, verify if the sourc
 | **Cloud mode**      | -       | -             | -          |
 
 <div class="warningBlock">
-  
+
   Firebase is a device-mode only integration. To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
 </div>
 
@@ -336,7 +336,7 @@ Apart from the above-mentioned events, the following Firebase standard events ar
 - `screen_class`
 
 <div class="infoBlock">
-  
+
   RudderStack passes all the `properties` from the event to Firebase. The nested value in the properties is converted to JSON using <a href="https://github.com/google/gson">GSON</a>.
 </div>
 
@@ -387,42 +387,17 @@ The `screen` method allows you to record whenever a user sees the mobile screen 
 
 A sample `screen` call looks like the following:
 
-<Tabs>
-  <TabList>
-    <Tab>iOS</Tab> // this is the first tab's title
-    <Tab>Android</Tab>       // this is the second tab's title
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
- 
 ```objectivec
 [[RSClient sharedInstance] screen:@"Home Screen"
                               properties:@{
                                   @"Width" : @"13"
                               }];
 ```
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
- 
-```kotlin
-MainApplication.rudderClient.screen("Home Screen",
-            RudderProperty()
-                .putValue("Width",12)
-        )
-```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
-
 
 # Reset
 
 The `reset` method removes the user ID.
-        
+
 A sample `reset` call is shown in the following snippets:
 
 <Tabs>
@@ -433,7 +408,7 @@ A sample `reset` call is shown in the following snippets:
     <TabPanels>
       <TabPanel>
 <span>
- 
+
 ```objectivec
 
 [[RSClient sharedInstance] reset];
@@ -441,7 +416,7 @@ A sample `reset` call is shown in the following snippets:
       </TabPanel>
       <TabPanel>
 <span>
- 
+
 ```kotlin
 
 MainApplication.rudderClient.reset()
@@ -470,13 +445,13 @@ For iOS, specify the following in your command line argument in XCode:
 ### How do I disable automatic screen tracking while using this SDK?
 
 * For Android, nest the following setting within the `<application>` tag of the `AndroidManifest.xml` file:
-        
+
 ```xml
 <meta-data android:name="google_analytics_automatic_screen_reporting_enabled" android:value="false" />
 ```
 
 * In case of iOS, set `FirebaseAutomaticScreenReportingEnabled` to `NO` (Boolean) in the `Info.plist`.
-        
+
 For more information, visit the [**Firebase docs**](https://firebase.google.com/docs/analytics/screenviews#automatically_track_screens) on this topic.
 
 ## Contact us
