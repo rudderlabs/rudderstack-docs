@@ -12,7 +12,7 @@ The **Visual Data Mapper** \(VDM\) offers an intuitive UI to easily map your war
 
 <div class="infoBlock">
 
-  This feature is currently available only for the <a href="https://rudderstack.com/docs/destinations/crm/hubspot/">HubSpot</a>, <a href="https://rudderstack.com/docs/destinations/crm/salesforce/">Salesforce</a>, <a href="https://rudderstack.com/docs/destinations/marketing/mailchimp/">Mailchimp</a>, and <a href="https://rudderstack.com/docs/destinations//marketing/braze/">Braze</a> destinations.
+  This feature is currently available only for the <a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a>, <a href="https://rudderstack.com/docs/destinations/crm/hubspot/">HubSpot</a>, <a href="https://rudderstack.com/docs/destinations/crm/salesforce/">Salesforce</a>, <a href="https://rudderstack.com/docs/destinations/marketing/mailchimp/">Mailchimp</a>, and <a href="https://rudderstack.com/docs/destinations//marketing/braze/">Braze</a> destinations.
 </div>
 
 <div class="successBlock">
@@ -29,17 +29,16 @@ You can connect only one destination to a Warehouse Actions source. If you want 
 
 To use the Visual Data Mapper, follow these steps:
 
-- Set up a [**Warehouse Actions**](./) source. Then, connect it to a destination. As mentioned above, RudderStack currently supports the visual data mapping feature only for [**HubSpot**](https://rudderstack.com/docs/destinations/crm/hubspot/), [**Salesforce**](https://rudderstack.com/docs/destinations/crm/salesforce/), [**Mailchimp**](https://rudderstack.com/docs/destinations/marketing/mailchimp/), and [**Braze**](https://rudderstack.com/docs/destinations/marketing/braze/)**.**
+- Set up a [**Warehouse Actions**](https://rudderstack.com/docs/warehouse-actions/) source. Then, connect it to a destination.
 
 <div class="infoBlock">
 
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">**Adding a Source and Destination in RudderStack**</a> for more information.
-
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-* Configure the destination with the relevant settings and click on **Next**. You should then see the following screen:
+* As mentioned above, RudderStack currently supports the visual data mapping feature only for [**Customer.io**](https://rudderstack.com/docs/destinations/marketing/customer.io/) [**HubSpot**](https://rudderstack.com/docs/destinations/crm/hubspot/), [**Salesforce**](https://rudderstack.com/docs/destinations/crm/salesforce/), [**Mailchimp**](https://rudderstack.com/docs/destinations/marketing/mailchimp/), and [**Braze**](https://rudderstack.com/docs/destinations/marketing/braze/). Configure the required destination with the relevant settings and click on **Next**. You should then see the following screen:
   
-<img src="../assets/1 (28).png" />
+<img src="../assets/vdm-1.png" />
 
 <div class="successBlock">
 
@@ -55,30 +54,28 @@ Clicking on **Map with JSON** will cause the Visual Data Mapper to be disabled. 
 
 <div class="successBlock">
 
-RudderStack automatically loads all the relevant warehouse schemas and tables. If you have added a new schema or table during this configuration process, click on **Reload schemas and tables** to get all the latest schemas and tables.
+RudderStack automatically loads all the relevant warehouse schemas and tables. If you have added a new schema or table during this configuration process, click on <strong>Reload schemas and tables</strong> to get all the latest schemas and tables.
 </div>
 
-* Also, select the destination **Object** where you want to sync the data. An example in case of the 
+* Also, select the destination **Object** where you want to sync the data. An example in case of the [**HubSpot**](https://rudderstack.com/docs/destinations/crm/hubspot/) destination is as shown:
 
-  [**HubSpot**](https://rudderstack.com/docs/destinations/crm/hubspot/) destination is as shown:
-
-<img src="../assets/2 (31).png" />
+<img src="../assets/vdm-2.png" />
 
 <div class="successBlock">
 
-RudderStack automatically loads all the relevant destination objects. If you have added a new destination object during this configuration process, click on **Reload objects** to get all the latest objects.
+RudderStack automatically loads all the relevant destination objects. If you have added a new destination object during this configuration process, click on <strong>Reload objects</strong> to get all the latest objects.
 </div>
 
 <div class="warningBlock">
 
-**RudderStack does not support objects that do not have any fields or a unique user identifier.**
+<strong>RudderStack does not support objects that do not have any fields or a unique user identifier.</strong>
 </div>
 
 ### Choosing the identifier
 
 In the **Choose Identifier** section, specify the warehouse column to be used as the primary user identifier \(`user_id`\) and mapped to the destination field. An example is shown below:
 
-<img src="../assets/3 (28).png" />
+<img src="../assets/vdm-3.png" />
 
 ### Mapping the fields
 
@@ -86,7 +83,7 @@ In the **Map Fields** section, you can easily configure the source-destination f
 
 * Click on the **Map another field** option. From the dropdown, select the **Destination field**. Then, select the **Warehouse column** to want to map to this field.
 
-<img src="../assets/image (96).png" />
+<img src="../assets/vdm-4.png" />
 
 <div class="successBlock">
 
@@ -95,9 +92,9 @@ RudderStack gives you full visibility into the name and type of the fields that 
 
 #### Mandatory mappings
 
-When sending events to some objects, there are some required fields that need to be mapped. These fields cant be removed from the mappings. For example, in case of the Salesforce **Account** object, **Account Name** is a required field, as seen in the following image:
+When sending events to some objects, there are some required fields that need to be mapped. These fields cannot be removed from the mappings. For example, in case of the Salesforce **Account** object, **Account Name** is a required field, as seen in the following image:
 
-<img src="../assets/image (126).png" />
+<img src="../assets/vdm-5.png" />
 
 #### Mapping fields of different type/format
 
@@ -105,13 +102,13 @@ In case you are mapping fields that are of a different type or format, you can u
 
 For example, RudderStack lets you map the warehouse column `Phone` of type `string` to a destination field `Company ID` of type `float` . You can then add a transformation at the destination end to do this type conversion to ensure there is no mismatch.
 
-<img src="../assets/6 (23).png" />
+<img src="../assets/vdm-6.png" />
 
 ### Creating a custom destination field
 
 <div class="warningBlock">
 
-This feature is currently available only for the [**Braze**](https://rudderstack.com/docs/destinations/marketing/braze/) destination.
+ This feature is currently available only for the <a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a> destination.
 </div>
 
 RudderStack also lets you create a custom destination field and map it to a warehouse column. You can do this by following the steps below:
@@ -119,9 +116,9 @@ RudderStack also lets you create a custom destination field and map it to a ware
 * Click on the **Map another field** option. 
 * Type the name of the custom destination field that you want to create, as shown:
 
-<img src="../assets/visual.png" alt="Map another field" />
+<img src="../assets/vdm-7.png" alt="Map another field" />
 
-* Finally, click on **Create `<custom_field_name>`**
+* Finally, click on **Create `<custom_field_name>`**.
 
 Once you have mapped all the source columns to the destination fields, click on **Next** to complete the destination configuration.
 
