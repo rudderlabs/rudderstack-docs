@@ -11,16 +11,16 @@ The RudderStack Test API lets you verify the event workflow of your configured s
 
 <div class="warningBlock">
 
-Since the Test API does not leverage the [**rudder-server**](https://github.com/rudderlabs/rudder-server) to send the test events, it is currently not supported for some destinations like Apache Kafka, Google Pub/Sub, Google Sheets, etc. For a complete list of the destinations not supported by the API, refer to the [**FAQ**](#faq) section below.
+Since the Test API does not leverage the [**rudder-server**](https://github.com/rudderlabs/rudder-server) to send the test events, it is currently not supported for some destinations like Apache Kafka, Google Pub/Sub, Google Sheets, etc. For a complete list of the destinations not supported by the API, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#faqs">FAQs</a> section below.
 </div>
 
 This guide details the various endpoints of the Test API.
 
 ## Prerequisites
 
-You must meet the following prerequisites to use the Test API successfully:
+The following prerequisites must be met to use the Test API successfully:
 
-* You need to set up a source-destination connection in RudderStack. For more details, refer to [**this guide**](../connections/adding-source-and-destination-rudderstack.md).
+* You need to set up a source-destination connection in RudderStack. For more details, refer to [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).
 
 * You need to generate a [**Personal Access Token**](https://rudderstack.com/docs/transformations/api-access-token/) to authenticate the API successfully.
 
@@ -30,7 +30,7 @@ The Test API uses **Basic Authentication** for authenticating all the requests.
 
 <div class="successBlock">
 
-All the popular HTTP clients \(e.g., CURL, Postman, HTTPie\) have default support for Basic Authentication.
+All the popular HTTP clients (e.g., CURL, Postman, HTTPie) have default support for Basic Authentication.
 </div>
 
 The Basic Authentication for this API requires a username and password, where:
@@ -46,12 +46,12 @@ Authorization: Basic bmFtZUBzdXJuYW1lLmNvbToxemw0R0prTHUwSHNCZHJESzg4TmdZWnpZMkU
 
 <div class="infoBlock">
 
-In case of the **Invalid Authorization Header** error, verify if the email address and the personal access token are valid.
+  In case of the <strong>Invalid Authorization Header</strong> error, verify if the email address and the personal access token are valid.
 </div>
 
 <div class="successBlock">
 
-You can use this [**Basic Authentication Header Generator**](https://www.blitter.se/utils/basic-authentication-header-generator/) to generate the HTTP header.
+  You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
 </div>
 
 ## Verify destination events
@@ -68,12 +68,11 @@ https://api.rudderstack.com/v0/testDestination/<destination_ID>
 
 Here, `<destination_ID>` should be replaced with the ID associated with the destination configured on the dashboard, as shown:
 
-<img src="https://user-images.githubusercontent.com/59817155/138080590-dc1c4059-223f-4d13-981f-9d37dcefbb2d.png" alt="Destination ID" />
-
+<img src="" alt="Destination ID" />
 
 <div class="infoBlock">
 
-The `/testDestination` endpoint does not require a source to be connected to the specified destination.
+  The <code class="inline-code">/testDestination</code> endpoint does not require a source to be connected to the specified destination.
 </div>
 
 * **Request body**:
@@ -93,7 +92,7 @@ The `/testDestination` endpoint does not require a source to be connected to the
 
 <div class="infoBlock">
 
-  To know more about the `stage` object, refer to the [**Verification stages**](#verification-stages) section below.
+  To know more about the <code class="inline-code">stage</code> object, refer to the <strong>Verification stages</strong> section below.
 </div>
 
 * **Sample payload**:
@@ -221,12 +220,12 @@ Here, `<source_ID>` should be replaced with the ID associated with the source co
 
 <div class="infoBlock">
 
-The `/testSource` endpoint requires the specified source to be connected to at least one destination.
+  The <code class="inline-code">/testSource</code> endpoint requires the specified source to be connected to at least one destination.
 </div>
 
 <div class="successBlock">
-
-The `/testSource` endpoint essentially calls the `/testDestination` endpoint for each destination connected to that source and returns an array of responses.
+  
+  The <code class="inline-code">/testSource</code> endpoint essentially calls the <code class="inline-code">/testDestination</code> endpoint for each destination connected to that source and returns an array of responses.
 </div>
 
 * **Request body**:
@@ -245,7 +244,7 @@ The `/testSource` endpoint essentially calls the `/testDestination` endpoint for
 ```
 <div class="infoBlock">
 
-  To know more about the `stage` object, refer to the [**Verification stages**](#verification-stages) section below.
+  To know more about the <code class="inline-code">stage</code> object, refer to the <strong>Verification stages</strong> section below.
 </div>
 
 * **Sample payload**:
@@ -552,7 +551,10 @@ The Test API does not support the destinations that leverage the [**rudder-serve
 * Google Sheets
 * Redis
 
-The Test API also does not support the [**data warehouse destinations**](https://rudderstack.com/docs/data-warehouse-integrations/).
+<div class="warningBlock">
+  
+  The Test API also does not support the <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouse destinations</a>.
+</div>
 
 ### What happens if `type` is not included in the event payload?
 
@@ -596,7 +598,7 @@ To disable or a specific verification stage, you can set the value of that param
 
 <div class="infoBlock">
 
-  Refer to the [**Verification stages**](#verification-stages) section above for more information on each of the `stage` object parameters.
+  Refer to the <strong>Verification stages</strong> section above for more information on each of the <code class="inline-code">stage</code> object parameters.
 </div>
 
 ## Contact us
