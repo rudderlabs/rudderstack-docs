@@ -14,7 +14,7 @@ RudderStack supports SendGrid as a destination to which you can seamlessly send 
 
 Before configuring SendGrid as a destination in RudderStack, verify if the source platform is supported by SendGrid by referring to the table below:
 
-| Connection Mode     | Web           | Mobile     | Server        |
+| Connection Mode     | Web           | Mobile     | Server           |
 | :------------------ | :------------ | :--------- | :-------------|
 | **Device mode**     | -             | -          | -             |
 | **Cloud mode**      | **Supported** | -          | **Supported** |
@@ -42,57 +42,61 @@ Once you have confirmed that your source platform supports sending events to Sen
 
 ### Connection settings
 
-The connection settings required to configure SendGrid as a destination in RudderStack are listed below.
+The connection settings required to configure SendGrid as a destination in RudderStack are listed below:
 
 * Enter your SendGrid **API Key**.
 
-{% hint style="info" %}
-To get the SendGrid API Key, click [**here**](https://app.sendgrid.com/settings/api_keys).
-{% endhint %}
+<div class="infoBlock">
+ 
+ To get the SendGrid API Key, click <a href="https://app.sendgrid.com/settings/api_keys">here</a>.
+</div>
 
-* Enter the **Subject**. 
+* Enter the **Subject**.
 
-{% hint style="info" %}
-You can also send the subject via the `integrations` object in the `track` call. For more information on the `integrations` object, refer to the [**Track**](#track) section below.
-{% endhint %}
+<div class="infoBlock">
+ 
+ You can also send the subject via the <code class="inline-code">integrations</code> object in the <code class="inline-code">track</code> call. For more information on the <code class="inline-code">integrations</code> object, refer to the <strong>Track</track> section below.
+</div>
 
 * Next, enter the **Template ID**. 
 
-{% hint style="info" %}
-To get your template ID or create a new one, go to your [**SendGrid dashboard**](https://app.sendgrid.com/). Then, click on **Email API** and go to **Dynamic Templates**.
-{% endhint %}
+<div class="infoBlock">
+ 
+To get your template ID or create a new one, go to your ,<a href="https://app.sendgrid.com/">SendGrid dashboard</a>. Then, click on <strong>Email API</strong> and go to <strong>Dynamic Templates</strong>.
+</div>
 
-{% hint style="info" %}
-The Template ID can also be sent via the `integrations` object. Note that the template ID passed via the `integrations` object (`templateId`) will override the ID specified in the RudderStack dashboard.
-{% endhint %}
-
-{% hint style="success" %}
-Refer to the `track` call in the [**Track**](#track) section below to see its usage.
-{% endhint %}
+<div class="infoBlock">
+ 
+You can also set the Template ID via the <code class="inline-code">integrations</code> object in the <code class="inline-code">track</code> call. Note that the template ID passed via the <code class="inline-code">integrations</code> object will override the ID specified in the RudderStack dashboard.
+</div>
 
 * Next, you can enable or disable the **Get mail by traits** option. If enabled, this option allows RudderStack to search for the user's `email` inside the user's `traits`. If it is found, then the event can be sent to SendGrid without the `integrations` object.
 
-{% hint style="info" %}
-Note that this option is only useful when the `integrations` object is empty. SendGrid also requires either the `templateId` or `content` to be present for a successful event delivery.  
-{% endhint %}
+<div class="warningBlock">
+ 
+This option is only useful when the <code class="inline-code">integrations</code> object is empty. SendGrid also requires either the <code class="inline-code">templateId</code> or <code class="inline-code">content</code> to be present for a successful event delivery. 
+</div>
 
 * Enter the email address in the **Reply To Email** option, where the email replies or bounces will be returned.
 
 * In **Reply To Name** , enter the name of the user associated with the above email address.
 
-{% hint style="info" %}
-You can also send the email and name inside the `replyTo` object via `integrations` object. Note that these fields will override the **Reply To Email** and **Reply To Name** fields set in the RudderStack dashboard.
-{% endhint %}
+<div class="infoBlock">
+ 
+You can also send the email and name inside <code class="inline-code">replyTo</code> via the <code class="inline-code">integrations</code> object. Note that these fields will override the <strong>Reply To Email</strong> and <strong>Reply To Name</strong> fields set in the RudderStack dashboard.
+</div>
 
-{% hint style="success" %}
-For more information on how to send these details via the `replyTo` object, refer to the [**`replyTo`**](#replyto) section below.
-{% endhint %}
+<div class="infoBlock">
+ 
+For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the <strong>replyTo</strong> section below.
+</div>
 
 * Next, enter the **IP Pool Name**.
 
-{% hint style="info" %}
-The length of the IP Pool Name should be between 2 and 64 characters. For detailed steps on creating the IP pool name, refer to the [**SendGrid documentation**](https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool).
-{% endhint %}
+<div class="infoBlock">
+ 
+The length of the IP Pool Name must be between 2 and 64 characters. For detailed steps on creating the IP pool name, refer to the <a href="https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool">SendGrid documentation</a>.
+</div>
 
 #### From
 
