@@ -5,7 +5,7 @@ description: Step-by-step guide on installing and using the RudderStack JavaScri
 
 # Quick Start Guide
 
-This guide is aimed at helping you quickly get up and running with the JavaScript SDK. 
+This guide is aimed at helping you quickly get up and running with the JavaScript SDK.
 
 The following sections cover the SDK installation steps and details on using the SDK to identify your website users and track their actions.
 
@@ -22,12 +22,12 @@ e.page()}();
 ```
 
 <div class="successBlock">
-  
+
 The above snippet lets you integrate the SDK with your website and load it asynchronously to keep your page load time unaffected.
 </div>
 
 <div class="infoBlock">
-  
+
 To load <code class="inline-code">rudder-analytics.js</code> on to your page synchronously, refer to the **minified** or **non-minified** versions of the snippet below.
 </div>
 
@@ -86,8 +86,6 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
   }
 
   rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
-  //For example,
-  //rudderanalytics.load("1Qb1F3jSWv0eKFBPZcrM7ypgjVo", "http://localhost:8080");
   rudderanalytics.page();
 </script>
 
@@ -95,7 +93,7 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 ```
 
 <div class="infoBlock">
-  
+
   In all the above versions, there is an explicit <code class="inline-code">page</code> call at the end. This is added to ensure that whenever the SDK loads in a page, a <code class="inline-code">page</code> call is sent. You can remove this call completely or modify it with the extra page properties to suit your requirement. You can also add <code class="inline-code">page</code> calls in your application in places not tied directly to page load, e.g., virtual page views, page renders on route change such as in SPAs.
 </div>
 
@@ -117,7 +115,7 @@ npm install rudder-sdk-js --save
 ```
 
 <div class="warningBlock">
-  
+
 This NPM module is only meant to be used for a browser installation. If you want to integrate RudderStack with a Node.js application, refer to the <a href="https://github.com/rudderlabs/rudder-sdk-node">RudderStack Node.js repository</a>.
 </div>
 
@@ -176,7 +174,7 @@ Refer to the following projects for a detailed walk-through of the above steps:
 
 
 <div class="infoBlock">
-  
+
 If the SDK does not work on the browser versions that you are targeting, verify if adding the browser polyfills to your application solves the issue.
 </div>
 
@@ -188,16 +186,18 @@ A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify(
-  "12345", {
+  "12345",
+  {
     email: "name@domain.com"
-  }, {
+  },
+  {
     page: {
       path: "",
       referrer: "",
       search: "",
       title: "",
-      url: "",
-    },
+      url: ""
+    }
   },
   () => {
     console.log("in identify call");
@@ -208,12 +208,12 @@ rudderanalytics.identify(
 In the above example, the user-related information like the `userId` and `email` along with the [**contextual information**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/#javascript-sdk) is captured.
 
 <div class="infoBlock">
-  
+
   There is no need to call <code class="inline-code">identify()</code> for anonymous visitors to your website. Such visitors are automatically assigned an <code class="inline-code">anonymousId</code>.
 </div>
 
 <div class="successBlock">
-  
+
   For more information, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#identify" section of the SDK documentation.
 </div>
 
@@ -239,7 +239,7 @@ rudderanalytics.track(
 In the above example, the `track` method tracks the user event `test track event GA3` and information such as the `revenue`, `currency`, `anonymousId`.
 
 <div class="successBlock">
-  
+
 You can use the <code class="inline-code">track()</code> method to track various success metrics for your website like user signups, item purchases, article bookmarks, and more.
 </div>
 
@@ -256,7 +256,7 @@ rudderanalytics.ready(() => {
 ```
 
 <div class="successBlock">
-  
+
 For more information on the JavaScript SDK API methods, refer to the <a href="https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#supported-apis">JavaScript SDK APIs</a> section of the SDK documentation.
 </div>
 

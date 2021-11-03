@@ -12,14 +12,14 @@ The JavaScript SDK provides a way to send a page view containing relevant marker
 To send an ad-blocked page view, load the JavaScript SDK as shown below:
 
 ```javascript
-rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
   sendAdblockPage: true,
   sendAdblockPageOptions: {
     integrations: {
       All: false,
       Amplitude: true
     }
-  },
+  }
 });
 ```
 
@@ -30,18 +30,18 @@ The following sections describe the properties included in the snippet above.
 This property enables the JavaScript SDK to make a call to load the [**Google AdSense**](https://www.google.com/adsense/start/) library. If RudderStack fails to load this library, it concludes that an ad blocker is enabled on the page.
 
 <div class="infoBlock">
-  
+
   Since most ad blockers block the request to the Google AdSense servers, we assume this approach to be a good measure to detect ad-blocked pages.
 </div>
 
 ### `sendAdblockPageOptions`
 
-The JavaScript SDK will make an implicit `page` call about the ad-blocked pages if `sendAdblockPage` is set to `true`. 
+The JavaScript SDK will make an implicit `page` call about the ad-blocked pages if `sendAdblockPage` is set to `true`.
 
 With `sendAdblockPageOptions` \(which internally contains the [**`IntegrationOpts`**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#integrationopts) object\), you can provide the destinations to which you want to forward this `page` call.
 
 <div class="infoBlock">
-  
+
   For more information on filtering destinations, refer to the <a href="https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#filtering-selective-destinations">Filtering selective destinations</a> section of the SDK guide.
 </div>
 
@@ -50,9 +50,11 @@ The implicit `page` call semantics is as shown:
 ```javascript
 rudderanalytics.page(
   "RudderJS-Initiated",
-  "ad-block page request", {
+  "ad-block page request",
+  {
     path: "/ad-blocked",
-    title: "error in script loading:: src::  http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js id:: ad-block",
+    title:
+      "error in script loading:: src::  http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js id:: ad-block"
   },
   sendAdblockPageOptions
 );
