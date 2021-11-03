@@ -102,15 +102,17 @@ The length of the IP Pool Name must be between 2 and 64 characters. For detailed
 
 * Enter the **email** address via which email will be sent.
 
-{% hint style="info" %}
-For more information on creating a verified sender identity, refer to this [**SendGrid documentation**](https://docs.sendgrid.com/ui/sending-email/sender-verification).
-{% endhint %}
+<div class="infoBlock">
+
+For more information on creating a verified sender identity, refer to this <a href="https://docs.sendgrid.com/ui/sending-email/sender-verification">SendGrid documentation<a/>.
+</div>
 
 * Enter the **name** associated with above email.
 
-{% hint style="info" %}
-You can additionally include `email` and `name` inside the `from` object via the `integration` object (shown below), which will override the fields specified in the RudderStack dashboard.
-{% endhint %}
+<div class="infoBlock">
+
+You can additionally include <code class="inline-code">email</code> and <code class="inline-code">name</code> inside the <code class="inline-code">from</code> object via the <code class="inline-code">integrations</code> object (shown below). Note that this will override the fields specified in the RudderStack dashboard.
+</div>
 
 ```javascript
 from:{
@@ -121,11 +123,12 @@ from:{
 
 #### Event Names
 
-* Next, create the list of **events** for which the `track` calls will be made. 
+* Next, create the list of **events** for which the `track` calls will be made.
 
-{% hint style="warning" %}
-If a `track` call is made with event not in this list, the call will be **dropped**.
-{% endhint %}
+<div class="warningBlock">
+
+If a <code class="inline-code">track</code> call is made with event not in this list, the call will be <strong>dropped</strong>.
+</div>
 
 #### Content
 
@@ -134,9 +137,10 @@ If a `track` call is made with event not in this list, the call will be **droppe
     * The **type** field is the type of the value to be included in the **value** field.
     * The **value** field contains the actual value that is to be included in the email.
 
-{% hint style="info" %}
-The `content` array can also be sent via `integrations` object (shown below), which will override the dashboard settings.
-{% endhint %}
+<div class="infoBlock">
+
+The <code class="inline-code">content</code> array can also be sent via <code class="inline-code">integrations</code> object (shown below), which will override the dashboard settings.
+</div>
 
 ```javascript
 content: [
@@ -161,10 +165,10 @@ Use the **Attachments** settings to specify any attachments you want to include 
 
 * **content ID**: Use this option when **disposition** is set to `inline` and the attachment is an image.
 
+<div class="infoBlock">
 
-{% hint style="info" %}
-SendGrid requires that each attachment element must contain **content** and **filename**. The attachments can also be sent via the `integrations` object (shown below) which will override the dashboard settings.
-{% endhint %}
+SendGrid requires that each attachment element must contain <strong>content</strong> and <strong>filename</strong> The attachments can also be sent via the <code class="inline-code">integrations</code> object (shown below) which will override the dashboard settings.
+</div>
 
 ```javascript
 attachments:[
@@ -185,17 +189,19 @@ The **ASM** settings allow you to handle unsubscribes. The configurable options 
  
 * **Groups**: This option contains the array of unsubscribing groups that would be displayed in the Unsusbcribe preferences page.
 
-{% hint style="info" %}
-SendGrid requires that the **Group ID** should always be present if the `asm` object is to be sent.
-{% endhint %}
+<div class="infoBlock">
+
+SendGrid requires that the <strong>Group ID</strong> should always be present if the <code class="inline-code">asm</code> object is to be sent.
+</div>
 
 #### Mail Settings
 
 * To include a default footer in every mail, enable the **Footer** option. When enabled, the **text** option contains the plain content of footer. The **HTML** contains the HTML content of footer.
 
-{% hint style="info" %}
-The footer can also be sent via `integrations` object (shown below), which will override the dashboard settings.
-{% endhint %}
+<div class="infoBlock">
+
+The footer can also be sent via <code class="inline-code">integrations</code> object (shown below), which will override the dashboard settings.
+</div>
 
 ```javascript
 mailSettings:{
@@ -207,9 +213,10 @@ mailSettings:{
 
 * To send a test mail and ensure everything is correct, you can enable the **Sandbox Mode** setting.
 
-{% hint style="info" %}
-The sandbox mode can also be enabled or disabled via the `integrations` object (shown below), which will override the dashboard setting.
-{% endhint %}
+<div class="infoBlock">
+
+The sandbox mode can also be enabled or disabled via the <code class="inline-code">integrations</code> object (shown below), which will override the dashboard setting.
+</div>
 
 ```javascript
 mailSettings:{
@@ -238,9 +245,10 @@ The following table describes the various tracking settings to be configured in 
 |**utm content**  | Allows you to differentiate your campaign from advertisements.|
 |**utm campaign** | Corresponds to the name of the campaign.|
 
-{% hint style="info" %}
-The **utm source**, **utm medium**, **utm term**, **utm content**, **utm campaign** options are associated with the **GAnalytics** setting on the dashboard.
-{% endhint %}
+<div class="infoBlock">
+
+The <strong>utm source</strong>, <strong>utm medium</strong>, <strong>utm term</strong>, <strong>utm content</strong>, <strong>utm campaign</strong> options are associated with the <strong>GAnalytics</strong> setting on the dashboard.
+</div>
 
 Finally, click on **Next**. SendGrid will now be enabled as a destination in RudderStack.
 
@@ -248,9 +256,10 @@ Finally, click on **Next**. SendGrid will now be enabled as a destination in Rud
 
 The `track` call lets you send an event to SendGrid along with its properties inside the `integrations` object. Note that the properties specified within this object will override the settings specified in the RudderStack dashboard.
 
-{% hint style="warning" %}
-Note that SendGrid requires either the `templateId` or `content` to be present in the body. Otherwise, the event will be discarded.
-{% endhint %}
+<div class="warningBlock">
+
+Note that SendGrid requires either the <code class="inline-code">templateId</code> or <code class="inline-code">content</code> to be present in the body. Otherwise, the event will be <strong>discarded</strong>.
+</div>
 
 A sample `track` call is shown below:
 
@@ -349,9 +358,9 @@ To send the event to SendGrid successfully, the following points must be kept in
 
 SendGrid requires that the `personalizations` array should be present in every event and each object must contain the field `to`. 
 
-If the **Get mail from traits** option is enabled in the RudderStack dashboard and the `integrations` object is not sent, RudderStack will look for the `email` in the event traits. If found, RudderStack will create a `personalizations` object and assign email to the `to` field. 
+* If the **Get mail from traits** option is enabled in the RudderStack dashboard and the `integrations` object is not sent, RudderStack will look for the `email` in the event traits. If found, RudderStack will create a `personalizations` object and assign email to the `to` field. 
 
-In case both **Template ID** and **content** are not assigned in the dashboard settings, the event will not be sent as either of Template ID or content is mandatory.
+* In case both **Template ID** and **content** are not assigned in the dashboard settings, the event will **not** be sent as either of Template ID or content is mandatory.
 
 ### `replyTo`
 
@@ -372,7 +381,7 @@ It is mandatory to have the `groupId` field inside the `asm` object.
 
 ### Event name
 
-As mentioned in the [**Connection settings**](#connection-settings) section above, the event names for which a `track` call is made must be specified in the RudderStack dashboard. In the sample `track` call above, `testing` is the event name that should be configured in the dashboard. Otherwise, the call will be dropped.
+As mentioned in the [**Connection settings**](#connection-settings) section above, the event names for which a `track` call is made must be specified in the RudderStack dashboard. In the sample `track` call above, `testing` is the event name that should be configured in the RudderStack dashboard. Otherwise, the call will be dropped.
 
 ### `content`
 
