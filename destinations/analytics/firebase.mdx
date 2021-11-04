@@ -394,37 +394,24 @@ A sample `screen` call looks like the following:
                               }];
 ```
 
-# Reset
+## Reset
 
 The `reset` method removes the user ID.
 
 A sample `reset` call is shown in the following snippets:
 
-<Tabs>
-  <TabList>
-    <Tab>iOS</Tab> // this is the first tab's title
-    <Tab>Android</Tab>       // this is the second tab's title
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
+* In case of iOS:
 
 ```objectivec
 
 [[RSClient sharedInstance] reset];
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
+```
+* In case of Android:
 
 ```kotlin
-
+        
 MainApplication.rudderClient.reset()
 ```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
 
 ## Debugging
 
