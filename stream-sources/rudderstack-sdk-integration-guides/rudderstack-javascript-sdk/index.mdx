@@ -36,7 +36,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [options]);
 You need to replace the <code class="inline-code">WRITE_KEY</code> with the source write key in the RudderStack dashboard and <code class="inline-code">DATA_PLANE_URL</code> with your data plane URL.
 </div>
 
-### WriteKey and DataPlaneUrl
+### Write key and data plane URL
 
 To integrate and initialize the JavaScript SDK, you need the source write key and the data plane URL.
 
@@ -144,7 +144,7 @@ In the above example, information such as the `userId` and `email` along with th
 <div class="warningBlock">
 
 If you explicitly specify the IP address in the event, RudderStack will use that address instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
-</div>                                                                                            |
+</div>
 
 ### anonymousId
 
@@ -429,9 +429,10 @@ The following snippet shows an example of the `reset()` method:
 rudderanalytics.reset();
 ```
 
-{% hint style="warning" %}
+<div class="warningBlock">
+  
 The <code class="inline-code">reset()</code> method only clears the cookies and local storage set by RudderStack. It does not clear the information stored by the integrated destinations. To completely clear the user session, refer to the destination-specific documentation.
-{% endhint %}
+</div>
 
 ## Parameter definitions
 
