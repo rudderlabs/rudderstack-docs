@@ -36,7 +36,7 @@ Follow the guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 This section lists all the relevant connection settings to successfully set up Adobe Analytics as a destination in RudderStack.
 
-<img src="../../../../../images/assets/adobe-1.png" />
+<img src="../../../assets/adobe-1.png" />
 
 - **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. Eg: If url is [`http://abc.a.b`](http://abc.a.b) ,the tracking server URL will be `abc.a.b`.
 
@@ -66,12 +66,12 @@ For more information on this setting, refer to the <a href="https://experiencele
 For more information on this setting, refer to the <a href="https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/setup-overview.html?lang=en">Adobe Analytics documentation</a>.
 </div>
 
-- **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [**Adobe Analytics Heartbeat Measurement**](adobe-analytics-heartbeat/) page.
+- **Adobe Heartbeat Settings**: This setting is used to map your RudderStack video events to Adobe Heartbeat Events. Find more information on how this mapping is done in the [**Adobe Analytics Heartbeat Measurement**](https://rudderstack.com/docs/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat/) page.
 - **Adobe Analytics Javascript SDK URL/Heartbeat SDK URL**: Add your proxy URL where you will be hosting the `adobe-analytics-js.js` and `adobe-analytics-js-heartbeat.js`. By default, we host them at [https://cdn.rudderlabs.com/adobe-analytics-js/adobe-analytics-js.js](https://cdn.rudderlabs.com/adobe-analytics-js/adobe-analytics-js.js) and [https://cdn.rudderlabs.com/adobe-analytics-js/adobe-analytics-js-heartbeat.js](https://cdn.rudderlabs.com/adobe-analytics-js/adobe-analytics-js-heartbeat.js) respectively.
 
 ### Identity Resolution
 
-<img src="../../../../../images/assets/image (110).png" />
+<img src="../../../assets/image (110).png" />
 
 - **Marketing Cloud Organization ID**: If you want to use `visitorAPI.js`, enter this field. For example: `99887766ABC@AdobeOrg`.
 - **Drop Visitor ID**: If enabled, RudderStack does not assign the `userId` to `visitorID`.
@@ -121,7 +121,7 @@ For more information on this setting, refer to the <a href="https://experiencele
 
 ### Mappings
 
-<img src="../../../../../images/assets/image (111).png" />
+<img src="../../../assets/image (111).png" />
 
 - **Map Rudder Events to Adobe Custom Events**: This setting allows you to add one or multiple custom Adobe events separated by comma.
 - **Map Rudder Context data to Adobe Context Data**: Context data variables allow you to you define custom variables on each page that the processing rules apply and can read. Instead of explicitly assigning values to the analytics variables, you can send your data in via these context data variables. The processing rules take the values from the context data variables and pass them into the respective analytics variables.
@@ -161,7 +161,7 @@ Only enter the index number of the eVar you want to set.
 For more information on this setting, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar.html?lang=en">Adobe Analytics documentation</a>.
 </div>
 
-<img src="../../../../../images/assets/image (108).png" />
+<img src="../../../assets/image (108).png" />
 
 - **Map Rudder Properties to Adobe Hierarchy properties**: Hierarchy variables are the custom variables that allow you to see a site’s structure. By default, Adobe supports up to 5 hierarchy variables in your implementation.
 
@@ -190,7 +190,7 @@ For more information, refer to the <a href="https://experienceleague.adobe.com/d
 
 - **Map Rudder Property with Delimiters for list properties**: The list variables need to be sent as a string. So if there is a list of properties, it needs to be delimited. RudderStack lets you set any of the delimiters from `, ; / : |`.
 
-<img src="../../../../../images/assets/image (109).png" />
+<img src="../../../assets/image (109).png" />
 
 - **Map Rudder Properties to Adobe Custom properties**: Props are custom variables that you can use as per your requirement. This setting lets you map any RudderStack property with the prop you want to set it to.
 
@@ -215,12 +215,12 @@ For more information, refer to the <a href="https://experienceleague.adobe.com/d
 
 ### Merchandise Product Level Settings
 
-<img src="../../../../../images/assets/image (107).png" />
+<img src="../../../assets/image (107).png" />
 
 - **Map Rudder Events to Adobe Merchandise events**: This setting lets you map a RudderStack event with a currency/purchase type of an Adobe event.
 - **Properties to add to merchandise events at product level**: With this setting, the RudderStack property that has a currency/counter value should be added. This will be used to create a product string like `[category][item][quantity][total][incrementor][merchString]`.
 
-<img src="../../../../../images/assets/image (105).png" />
+<img src="../../../assets/image (105).png" />
 
 - **Map Rudder Properties to eVars at product level**: Lets you map the RudderStack properties you want to set to eVars.
 

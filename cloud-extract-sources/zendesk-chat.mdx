@@ -24,26 +24,25 @@ To set up Zendesk Chat as a source on the RudderStack dashboard, follow these st
 - Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 - From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-<img src="../../../images/assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png" alt="Add Source" />
+<img src="../assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png" alt="Add Source" />
 
 - Next, select **Zendesk Chat** from the list of **Cloud Sources**, and click on **Next**.
 
-<img src="../../../images/assets/2 (13).png" alt="Cloud Sources" />
+<img src="../assets/2 (13).png" alt="Cloud Sources" />
 
 - Assign a name to your source, and click on **Next**.
 
-<img src="../../../images/assets/3 (9).png" alt="Assign a name" />
+<img src="../assets/3 (9).png" alt="Assign a name" />
 
 ### Specifying Connection Credentials
 
 - Next, enter your Zendesk Chat credentials. Enter your Zendesk Chat subdomain, and click on **Connect with Zendesk Chat**. You will be required to authenticate RudderStack on your Zendesk Chat account.
 
-<img src="../../../images/assets/4 (11).png" alt="Connect with Zendesk Chat" />
+<img src="../assets/4 (11).png" alt="Connect with Zendesk Chat" />
 
 <div class="infoBlock">
-
-More details on how to find your Zendesk Chat subdomain can be found <a href="https://support.zendesk.com/hc/en-us/articles/221682747-Where-can-I-find-my-Zendesk-subdomain">here</a>.
-
+  
+  To get your Zendesk subdomain, go to the **Admin Center** and click on the **Account** icon. You will find your Zendesk subdomain under **Appearance** - **Branding** - **Subdomain** section. For more information, check the FAQs below.
 </div>
 
 <div class="infoBlock">
@@ -56,19 +55,19 @@ If you've already configured Zendesk Chat as a source before, you can choose the
 
 - Next, you will be required to set the **Run Frequency** to schedule the data import from your Zendesk Chat account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
 
-<img src="../../../images/assets/5 (12).png" alt="Sync Starting At" />
+<img src="../assets/5 (12).png" alt="Sync Starting At" />
 
 ### Selecting the Data to Import
 
 - Finally, choose the Zendesk Chat data that you wish to ingest via RudderStack. You can either select all the data, or choose specific Zendesk Chat data attributes, as per your requirement.
 
-<img src="../../../images/assets/6 (11).png" alt="Select data to import" />
+<img src="../assets/6 (11).png" alt="Select data to import" />
 
 That's it! Zendesk Chat is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start ingesting data from your Zendesk Chat source as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
 
-<img src="../../../images/assets/7 (8).png" alt="Add Destination" />
+<img src="../assets/7 (8).png" alt="Add Destination" />
 
 <div class="successBlock">
 
@@ -82,9 +81,7 @@ RudderStack will start ingesting data from your Zendesk Chat source as per the s
 
 #### How can I find my Zendesk Chat subdomain?
 
-Your Zendesk Chat's subdomain can be easily identified from your account's URL. It is usually in the format of [`https://[YOUR_ZENDESK_SUBDOMAIN].zendesk.com`](https://[your_subdomain].zendesk.com).
-
-There are a few other ways to find out what your Zendesk Chat subdomain is. Check out [Zendesk's knowledge base](https://support.zendesk.com/hc/en-us/articles/221682747-Where-can-I-find-my-Zendesk-subdomain-) for more information.
+Your Zendesk Chat's subdomain can be easily identified from your account's URL. It is usually in the format of `https://[YOUR_ZENDESK_SUBDOMAIN].zendesk.com`.
 
 #### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 

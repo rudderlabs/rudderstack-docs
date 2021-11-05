@@ -17,7 +17,7 @@ This guide will help you configure Snowflake as a source from which you can rout
 You must have the **ACCOUNTADMIN** role in order to grant the necessary permissions.
 </div>
 
-<img src="../../../images/assets/screenshot-2021-09-17-at-6.46.08-pm.png" />
+<img src="../assets/screenshot-2021-09-17-at-6.46.08-pm.png" />
 
 Run the following SQL queries in the **exact order** to grant the necessary permissions for the Snowflake Warehouse Actions source:
 
@@ -154,11 +154,11 @@ To set up Snowflake as a source in RudderStack, follow these steps:
 * Log into your [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
 * From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
 
-<img src="../../../images/assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (2).png" />
+<img src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (2).png" />
 
 - Scroll down to the **Warehouse Sources** and select **Snowflake**. Then, click on **Next**.
 
-<img src="../../../images/assets/screen-shot-2021-01-13-at-4.42.40-pm.png" />
+<img src="../assets/screen-shot-2021-01-13-at-4.42.40-pm.png" />
 
 ### Setting Up the Connection
 
@@ -173,7 +173,7 @@ To set up Snowflake as a source in RudderStack, follow these steps:
 
 - Next, enter the relevant connection details in the **Connection Credentials** as shown below:
 
-<img src="../../../images/assets/screen-shot-2021-01-13-at-4.43.42-pm.png" />
+<img src="../assets/screen-shot-2021-01-13-at-4.43.42-pm.png" />
 
 - The required settings are:
 
@@ -195,7 +195,7 @@ To set up Snowflake as a source in RudderStack, follow these steps:
 
 - Next, select the **Schema** and the **Table** from which you want RudderStack to import the data.
 
-<img src="../../../images/assets/screen-shot-2021-01-13-at-4.44.24-pm.png" />
+<img src="../assets/screen-shot-2021-01-13-at-4.44.24-pm.png" />
 
 <div class="warningBlock">
 
@@ -205,23 +205,23 @@ Your table must include one of the following columns - <code class="inline-code"
 
 - Once you specify the table containing the required columns, you will be able to preview a snippet of your data, as shown below:
 
-<img src="../../../images/assets/screen-shot-2021-01-05-at-3.21.38-pm.png" />
+<img src="../assets/screen-shot-2021-01-05-at-3.21.38-pm.png" />
 
 - Here, you can select all or only a few specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**, as shown below. You can also preview the resultant JSON on the right. Once you've select the required table columns to import the data from, click on **Next**.
 
-<img src="../../../images/assets/screen-shot-2021-01-05-at-3.22.09-pm.png" />
+<img src="../assets/screen-shot-2021-01-05-at-3.22.09-pm.png" />
 
 ### Setting the Data Update Schedule
 
 - Next, you will be required to set the **Run Frequency** to schedule the data import from your Snowflake instance to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option. Then, click on **Next**.
 
-<img src="../../../images/assets/screen-shot-2021-01-13-at-4.44.45-pm.png" />
+<img src="../assets/screen-shot-2021-01-13-at-4.44.45-pm.png" />
 
 That's it! Snowflake is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start importing data from your Snowflake instance as per the specified frequency. You can further connect this source to your preferred destination by clicking on **Connect Destinations** or **Add Destinations**, as shown:
 
-<img src="../../../images/assets/screen-shot-2021-01-13-at-4.45.10-pm.png" />
+<img src="../assets/screen-shot-2021-01-13-at-4.45.10-pm.png" />
 
 <div class="infoBlock">
 
@@ -235,7 +235,7 @@ If you have already configured a destination on the RudderStack platform, choose
 
 When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
-<img src="../../../images/assets/validations.png" />
+<img src="../assets/validations.png" />
 
 These options are explained below:
 
@@ -247,11 +247,11 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/snowflake#granting-permissions) section. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/snowflake#granting-permissions) section. 
 
 <div class="warningBlock">
 
-If this option gives an error, verify if you have successfully created the `_RUDDERSTACK` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
+If this option gives an error, verify if you have successfully created the `_RUDDERSTACK` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://rudderstack.com/docs/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
 </div>
 
 <div class="infoBlock">
@@ -260,7 +260,7 @@ If this option gives an error, verify if you have successfully created the `_RUD
 
 <img src="https://lh5.googleusercontent.com/DFQzUbsZSH9g-lL7zE5ND9PPgjzegbm3Bmj5Srf2220A1HvJ5bEbo6LbJPSwd_w00dhBjkD-Iz68x9p9UXTwGGxJ8--arzJQW9rU0mRnJD161tokINPFk6bjRFshEdEy3p_qG__D=s0" />
 
-As mentioned above, you will need to update your Snowflake account permissions by following the commands in [**this section**](https://docs.rudderstack.com/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
+As mentioned above, you will need to update your Snowflake account permissions by following the commands in [**this section**](https://rudderstack.com/docs/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
 
 </div>
 

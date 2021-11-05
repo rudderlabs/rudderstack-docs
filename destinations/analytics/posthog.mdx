@@ -45,7 +45,7 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
 - Select the destination as **PostHog** to your source. Give your destination a name and then click on **Next**.
 - On the **Connection Settings** page, fill all the fields with the relevant information and click **Next**.
 
-<img src="../../../../images/assets/image (94).png" /><span class="imageTitle">PostHog Connection Settings in RudderStack</span>
+<img src="../../assets/image (94).png" /><span class="imageTitle">PostHog Connection Settings in RudderStack</span>
 
 In the **Connection Settings**, please enter your **Team API Key** and **Your-Instance** URL as shown above.
 
@@ -57,7 +57,7 @@ If you’re hosting your own PostHog instance, add the URL of your instance with
 
 ## Web Settings
 
-<img src="../../../../images/assets/posthog-web.png" /><span class="imageTitle">PostHog Web Settings in RudderStack</span>
+<img src="../../assets/posthog-web.png" /><span class="imageTitle">PostHog Web Settings in RudderStack</span>
 
 - **Use native SDK to send events** - This will send event data using the [Posthog JavaScript SDK](https://posthog.com/docs/integrations/js-integration).
 - **Enable autocapture with PostHog** - Enable this option to allow PostHog to send [auto-captured](https://posthog.com/docs/integrations/js-integration#usage) events.
@@ -222,8 +222,8 @@ rudderanalytics.group("sample_group_id", {
 
 To pass [super properties](https://posthog.com/docs/integrations/js-integration#super-properties) to PostHog JavaScript SDK, pass the key-value pairs as below:
 
-```
-This will set {superKey1: "value1", superKey2: "value2"} as super properties to PostHog SDK
+```javascript
+// This will set {superKey1: "value1", superKey2: "value2"} as super properties to PostHog SDK
 rudderanalytics.track("event", {prop: "value"}, {
   integrations: {
     POSTHOG: {
@@ -236,8 +236,8 @@ rudderanalytics.track("event", {prop: "value"}, {
 })
 ```
 
-```
-This will set {superKey3: "value3"} as set once super properties to PostHog SDK
+```javascript
+// This will set {superKey3: "value3"} as set once super properties to PostHog SDK
 rudderanalytics.track("event", {prop: "value"}, {
   integrations: {
     POSTHOG: {
@@ -249,8 +249,8 @@ rudderanalytics.track("event", {prop: "value"}, {
 })
 ```
 
-```
-This will unset super properties superKey1, superKey2, superKey3 to PostHog SDK
+```javascript
+// This will unset super properties superKey1, superKey2, superKey3 to PostHog SDK
 rudderanalytics.track("event", {prop: "value"}, {
   integrations: {
     POSTHOG: {

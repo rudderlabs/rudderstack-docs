@@ -44,7 +44,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a name to the destination and select the source to connect this destination, then click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/slack-settings.png" /><span class="imageTitle">Add Slack as destination</span>
+<img src="../../assets/slack-settings.png" /><span class="imageTitle">Add Slack as destination</span>
 
 ### Settings
 
@@ -64,10 +64,10 @@ Add the regex expression without the global\(`g`\) parameter. It is added by Rud
 
 </div>
 
-- Identify Template 
+- Identify Template
 
-Provide the template that you want the identify event to be transformed to when sent to slack. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is,`Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`  
-where the traits key and value are the key-value pairs in the traits object of [Identify](https://rudderstack.com/docs/get-started/rudderstack-api-spec#identifypayload) payload. The `name` field in the template is determined from either of the following:
+Provide the template that you want the identify event to be transformed to when sent to slack. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is,`Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`
+where the traits key and value are the key-value pairs in the traits object of [Identify](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#sample-payload) payload. The `name` field in the template is determined from either of the following:
 
 1. `traits.name`
 2. `traits.firstName + traits.lastName`
@@ -129,13 +129,12 @@ For more information regarding escaped content for the Slack destination please 
 
 For a template like `Identified {{name}} with {{traits}}` and calling Rudder API as below,
 
-```
- window.rudderanalytics.identify("12345",{
-          name: "my-name",
-          email: "name@domain.com",
-          country: "India"
-        }
- );
+```javascript
+window.rudderanalytics.identify("12345", {
+  name: "my-name",
+  email: "name@domain.com",
+  country: "India",
+});
 ```
 
 you will see the message as below:
@@ -146,11 +145,11 @@ you will see the message as below:
 
 For a template like \***\*`{{name}} performed {{event}} with {{properties.key1}} {{properties.key2}}` \*\***and the following track call, after being `identified` as above:
 
-```
+```javascript
 window.rudderanalytics.track("test_event", {
-    "key1": "test_val1",
-    "key2": "test_val2",
-    "key3": "test_val3"
+  "key1": "test_val1",
+  "key2": "test_val2",
+  "key3": "test_val3"
 })
 ```
 

@@ -10,7 +10,7 @@ description: >-
 
 The backend uses [statsd](https://github.com/statsd/statsd) client to log stats. These stats can be collected by any statsd server such as Graphite, CloudWatch, etc. For example, [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html) can be used to collect stats to Amazon CloudWatch.
 
-Note that the collection of stats can be disabled using `enableStats` in [`config.yaml`](https://rudderstack.com/docs/administrators-guide/config-parameters).
+Note that the collection of stats can be disabled using `enableStats` in [`config.yaml`](https://rudderstack.com/docs/user-guides/administrators-guide/config-parameters).
 
 <div class="infoBlock">
 
@@ -97,7 +97,7 @@ This is the most important metric to monitor as it directly indicates the health
 
 > \* These metrics are each destination type such as GA, AMP, etc. All the different Google Analytics destinations are grouped under a single metric \(e.g: router.GA_worker_network\). Useful for monitoring if there are failures or delays in delivering to a particular destination.
 >
-> \** Number of events picked in each iteration can be configured using `noOfJobsPerChannel` from [config.yaml](https://rudderstack.com/docs/administrators-guide/config-parameters).
+> \** Number of events picked in each iteration can be configured using `noOfJobsPerChannel` from [config.yaml](https://rudderstack.com/docs/user-guides/administrators-guide/config-parameters).
 
 ### BatchRouter
 

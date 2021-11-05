@@ -27,7 +27,7 @@ After setting up your PostgreSQL database, create a user. You should also assign
 
 Below are the SQL queries that let you create a user, and grant the above-mentioned privileges to that created user:
 
-```
+```sql
 CREATE USER <user name> WITH PASSWORD '<enter password here>';
 
 -- grants the above created user to create new schemas and temporary tables on the specified database.
@@ -67,7 +67,7 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
 - After choosing a source, select **PostgreSQL** from the list of destinations.
 - Give your destination a name and then click on **Next**. You should then see the following screen:
 
-<img src="../../../images/assets/image (69).png" /><span class="imageTitle">PostgreSQL Destination Settings on the RudderStack dashboard</span>
+<img src="../assets/image (69).png" /><span class="imageTitle">PostgreSQL Destination Settings on the RudderStack dashboard</span>
 
 - Add the required credentials in the **Connection Settings** as mentioned below:
   - **Host -** The host name of your PostgreSQL service.

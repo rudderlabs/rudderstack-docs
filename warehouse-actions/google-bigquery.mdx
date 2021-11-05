@@ -19,11 +19,11 @@ Follow these steps below to grant the necessary permissions for Warehouse Action
 * Go to [**https://console.cloud.google.com/iam-admin/roles**](https://console.cloud.google.com/iam-admin/roles) and click on **CREATE ROLE**.
 * Then, fill in the details as shown:
 
-<img src="../../../images/assets/image1.png" />
+<img src="../assets/image1.png" />
 
 * Next, click on **ADD PERMISSIONS** and add the permissions as listed in the following image:
 
-<img src="../../../images/assets/image3.png" />
+<img src="../assets/image3.png" />
 
 The permissions are as shown below:
 
@@ -48,7 +48,7 @@ bigquery.tables.updateData
 * Click on **CREATE SERVICE ACCOUNT**.
 * Fill in the details in Step **1** as shown below, and click **CREATE AND CONTINUE**:
 
-<img src="../../../images/assets/image2.png" />
+<img src="../assets/image2.png" />
 
 <div class="infoBlock">
 
@@ -57,7 +57,7 @@ Note down the **Service account ID**. This ID is required while creating the Rud
 
 * Then, fill in the details in Step **2** as shown below, and click **CONTINUE**:
 
-<img src="../../../images/assets/image4.png" />
+<img src="../assets/image4.png" />
 
 * After completing steps **1** and **2**, click on **DONE**. This will move you to the list of service accounts.
 
@@ -147,7 +147,7 @@ Then, follow these steps:
 For [**HubSpot**](https://rudderstack.com/docs/destinations/crm/hubspot/), [**Salesforce**](https://rudderstack.com/docs/destinations/crm/salesforce/), [**Mailchimp**](https://rudderstack.com/docs/destinations/marketing/mailchimp/), and [**Braze**](https://rudderstack.com/docs/destinations//marketing/braze/) destinations, you can also use the [**Visual Data Mapper**](https://rudderstack.com/docs/warehouse-actions/visual-data-mapper/) functionality to map your warehouse columns to specific destination fields.
 </div>
 
-Once you specify the table containing the required columns, you will be able to preview a snippet of your data. Here, you can search the columns by a specific keyword and select all or only specific columns of your choice. You can also edit the **JSON Trait Key** and  preview the resultant JSON on the right, as shown:
+* You can specify the table containing the required columns, you will be able to preview a snippet of your data. Here, you can search the columns by a specific keyword and select all or only specific columns of your choice. You can also edit the **JSON Trait Key** and  preview the resultant JSON on the right, as shown:
 
 <img src="https://user-images.githubusercontent.com/59817155/138226097-025a730f-e87c-4d56-8e93-1d1d2089114d.png" />
 
@@ -155,13 +155,13 @@ Once you specify the table containing the required columns, you will be able to 
 
 RudderStack will then start importing the data from your BigQuery table as per the specified frequency.
 
-## FAQ
+## FAQs
 
 ### What do the three validations under Verifying Credentials imply?
 
 When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
-<img src="../../../images/assets/validations.png" />
+<img src="../assets/validations.png" />
 
 These options are explained below:
 
@@ -173,11 +173,11 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**User Permissions**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#granting-permissions) section. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/google-bigquery#granting-permissions) section. 
 
 <div class="warningBlock">
 
-If this option gives an error, verify if you have successfully created the `rudderstack_` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://docs.rudderstack.com/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
+If this option gives an error, verify if you have successfully created the `rudderstack_` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://rudderstack.com/docs/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
 </div>
 
 ## Contact us

@@ -25,12 +25,14 @@ This document details various aspects of the HTTP API.
 
 The following prerequisites must be met to send events via the HTTP API:
 
-* The RudderStack HTTP server must be accessible from your HTTP client. Refer to [**this guide**](../get-started/installing-and-setting-up-rudderstack/) to install and set up RudderStack in your preferred environment. 
-* Set up a source and destination in RudderStack by following [**this guide**](../connections/adding-source-and-destination-rudderstack.md). 
-* Import the Postman collection using using this [**URL**](https://www.getpostman.com/collections/480307c55ad2b9dd4e27) and edit the variables `source_write_key` and `data_plane_url`with the [**source write key**](https://docs.rudderstack.com/connections#source-details) and the [**Data Plane URL**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
+* The RudderStack HTTP server must be accessible from your HTTP client. Refer to [**this guide**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/) to install and set up RudderStack in your preferred environment. 
+* Set up a source and destination in RudderStack by following [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/). 
+* Import the Postman collection using using this [**URL**](https://www.getpostman.com/collections/480307c55ad2b9dd4e27) and edit the variables `source_write_key` and `data_plane_url`with the [**source write key**](https://rudderstack.com/docs/connections/#source-details) and the [**Data Plane URL**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
 
 <div class="successBlock">
+
 If you are using RudderStack Cloud, set the Data Plane URL to [**`https://hosted.rudderlabs.com`**](https://hosted.rudderlabs.com).
+
 </div>
 
 ## 2. API Authorization
@@ -75,7 +77,7 @@ In case of the Invalid Authorization Header error, verify if the source write ke
 
 ## 4. Maximum Allowed Request Size
 
-RudderStack allows messages with a maximum size of `32 KB` per call. The [**`batch`**](https://docs.rudderstack.com/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB` per batch, and `32 KB` per call. RudderStack responds with a `400 Bad Request` if these limits are exceeded.
+RudderStack allows messages with a maximum size of `32 KB` per call. The [**`batch`**](https://rudderstack.com/docs/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB` per batch, and `32 KB` per call. RudderStack responds with a `400 Bad Request` if these limits are exceeded.
 
 ## 5. Identify
 
@@ -571,7 +573,7 @@ The following destinations support the `alias` call:
 
 * [**MoEngage**](https://rudderstack.com/docs/destinations/marketing/moengage/)
 * [**Kissmetrics**](https://rudderstack.com/docs/destinations/analytics/kissmetrics/)
-* [**Amplitude**](https://rudderstack.com/docs/destinations/analytics/amplitude/) (only supported by the [**JavaScript SDK**](../stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) via [**Cloud Mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode)\)
+* [**Amplitude**](https://rudderstack.com/docs/destinations/analytics/amplitude/) (only supported by the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) via [**Cloud Mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode)\)
 
 </div>
 

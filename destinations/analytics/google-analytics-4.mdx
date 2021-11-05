@@ -40,7 +40,7 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
 - Select the destination as **Google Analytics 4** to your source. Give your destination a name and then click on **Next**.
 - On the **Connection Settings** page, fill all the fields with the relevant information and click **Next**.
 
-<img src="../../../../images/assets/ga4.png" /><span class="imageTitle">Google Analytics 4 Connection Settings in RudderStack</span>
+<img src="../../assets/ga4.png" /><span class="imageTitle">Google Analytics 4 Connection Settings in RudderStack</span>
 
 - In the **Connection Settings**, please enter your **Measurement Id** as shown above.
 
@@ -116,13 +116,12 @@ For properties that are nested and not a standard Google Analytics 4 property, R
 
 <div class="infoBlock">
 
-There are limits on the number of custom properties per event that can be sent to Google Analytics 4. RudderStack SDK <code class="inline-code">doesn't drop</code> the payload based on these limits. If the events are not showing up in **debug view or reports on Google Analytics dashboard**, please refer <a href="https://support.google.com/analytics/answer/9237506?hl=en">this</a> for collection limits.
-
+There are limits on the number of custom properties per event that can be sent to Google Analytics 4. The RudderStack SDK <code class="inline-code">**does not drop**</code> the payload based on these limits. If the events are don't show up in the debug view or in the Google Analytics dashboard reports, refer to <a href="https://support.google.com/analytics/answer/9267744?hl=en">**this Google support page**</a> to know more about the collection limits.
 </div>
 
 ## eCommerce
 
-RudderStack supports eCommerce tracking for Google Analytics 4. Use the [RudderStack eCommerce spec](https://rudderstack.com/docs/rudderstack-api-spec/rudderstack-ecommerce-events-specification) for sending events while instrumenting your site with the RudderStack SDK.
+RudderStack supports eCommerce tracking for Google Analytics 4. Use the [RudderStack eCommerce spec](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) for sending events while instrumenting your site with the RudderStack SDK.
 
 Below are some examples of the track event names that are passed to Google Analytics 4-specific eCommerce event name:
 

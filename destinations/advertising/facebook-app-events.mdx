@@ -46,7 +46,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/image (118).png" /><span class="imageTitle">Connection Settings for Facebook App Events</span>
+<img src="../../assets/image (118).png" /><span class="imageTitle">Connection Settings for Facebook App Events</span>
 
 - Enter the **Facebook App ID**.
 
@@ -380,7 +380,7 @@ RudderStack sets the following properties \(if available\) using the `setUserDat
 
 A sample `identify` call for an iOS application looks like the following:
 
-```
+```objectivec
 [[RSClient sharedInstance] identify:@"developer_user_id"
                                  traits:@{@"email": @"bar@foo.com"}];
 ```
@@ -391,7 +391,7 @@ The `track` call from RudderStack is logged to Facebook using the `logEvent` met
 
 A sample `track` call for an iOS application is as shown:.
 
-```
+```objectivec
 [[RSClient sharedInstance] track:@"Accepted Terms of Service"
                       properties:@{
                           @"foo": @"bar",
@@ -413,7 +413,7 @@ The `screen` method lets you record whenever the user views their mobile screen 
 
 A sample `screen` call using the RudderStack Android SDK is as shown:
 
-```
+```objectivec
 [[RSClient sharedInstance] screen:@"Home" properties:@{
     @"category" : @"launcher"
 }];
@@ -710,7 +710,7 @@ setAdvertiserIDCollectionEnabled(false)
 [FBSDKSettings setAdvertiserIDCollectionEnabled:@YES];
 ```
 </span>
-  </li>  
+  </li>
 
   <li>In <strong>Swift</strong>:
 <span>
@@ -719,7 +719,7 @@ setAdvertiserIDCollectionEnabled(false)
 FBSDKSettings.setAdvertiserIDCollectionEnabled(true);
 ```
 </span>
-  </li>  
+  </li>
   </ul>
 </li>
 <li>To suspend collection for any reason, set the <code class="inline-code">setAdvertiserIDCollectionEnabled</code> method to <code class="inline-code">NO</code> for iOS or <code class="inline-code">false</code> for Swift.
@@ -811,10 +811,10 @@ FacebookSdk.fullyInitialize()
   </TabList>
   <TabPanels>
     <TabPanel>
-        To disable automatic SDK initialization in case of the Android SDK, add the following to your <code class="inline-code">AndroidManifest.xml</code> file: 
+        To disable automatic SDK initialization in case of the Android SDK, add the following to your <code class="inline-code">AndroidManifest.xml</code> file:
 
 <span>
- 
+
 ```markup
 <application>
   ...

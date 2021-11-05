@@ -49,7 +49,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a name to the destination and select the source to connect to this destination. Then, click on **Next**. You should see the following screen:
 
-<img src="../../../../images/assets/image (25).png" /><span class="imageTitle">Lotame Destination Settings on the RudderStack dashboard</span>
+<img src="../../assets/image (25).png" /><span class="imageTitle">Lotame Destination Settings on the RudderStack dashboard</span>
 
 You can provide multiple BCP and DSP URL templates in the settings dashboard by clicking on the **ADD MORE** option as seen above. Once specified, RudderStack includes these sources of image pixels in the web app. To provide the URLs, please use the below template:
 
@@ -126,7 +126,7 @@ pod 'Rudder-Lotame'
 
 followed by
 
-```
+```bash
 $ pod install
 ```
 
@@ -222,7 +222,7 @@ pod 'Rudder-Lotame'
 followed by
 <span>
 
-```
+```bash
 $ pod install
 ```
 </span>
@@ -261,11 +261,11 @@ rudderanalytics.identify("12345", {
 
 The above identify call will sync the DSP Pixel, modify the template to place the `userId` in the source URL where required, and use it as `{{userId}}` in the template, as shown:
 
-```
+```markup
 http://ab.cdef.com/getapi?http://sync.crwdcntrl.net/map/c={{clientId}}/rand={{random}}/tpid={{userId}}/tp={{clientIdSpace}}
 ```
 
-RudderStack will replace the `{{userId}}` expression with the `userId` provided in the [`identify`](https://rudderstack.com/docs/get-started/rudderstack-api-spec#identifypayload) call.We will also replace `{{random}}` with a random value. The rest of the expression's values \(`{{clientId}}` , `{{clientIdSpace}}` \) are to be provided in the mapping fields section, i.e. **Map all the fields** section in the Destination Settings, as covered in the Getting Started section.
+RudderStack will replace the `{{userId}}` expression with the `userId` provided in the [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#sample-payload) call. We will also replace `{{random}}` with a random value. The rest of the expression's values \(`{{clientId}}` , `{{clientIdSpace}}` \) are to be provided in the mapping fields section, i.e. **Map all the fields** section in the Destination Settings, as covered in the Getting Started section.
 
 #### Important Notes
 
@@ -274,7 +274,7 @@ RudderStack will replace the `{{userId}}` expression with the `userId` provided 
 
 ## Page
 
-For each `page` call, RudderStack will load the BCP **Pixels**. A `page` call with a payload having `userId` triggers the syncing of DSP Pixels once in every **7 days** too. So, a <a href="https://rudderstack.com/docs/get-started/rudderstack-api-spec#page-payload">page</a> call serves the purpose of loading BCP Pixels and syncing DSP Pixels.
+For each `page` call, RudderStack will load the BCP **Pixels**. A `page` call with a payload having `userId` triggers the syncing of DSP Pixels once in every **7 days** too. So, a <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/#sample-payload">page</a> call serves the purpose of loading BCP Pixels and syncing DSP Pixels.
 
 A sample `page` call is as shown:
 
@@ -284,7 +284,7 @@ rudderanalytics.page()
 
 ## Screen
 
-For each `screen` call, RudderStack will send `GET` requests for BCP Pixels. A `screen` call with a payload having `userId` triggers the syncing of DSP Pixels once in every **7 days** too. So, a[`screen`](https://rudderstack.com/docs/get-started/rudderstack-api-spec#screen-payload) call serves the purpose of sending requests for BCP Pixels and syncing DSP Pixels.
+For each `screen` call, RudderStack will send `GET` requests for BCP Pixels. A `screen` call with a payload having `userId` triggers the syncing of DSP Pixels once in every **7 days** too. So, a[`screen`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/#sample-payload) call serves the purpose of sending requests for BCP Pixels and syncing DSP Pixels.
 
 A sample `screen` call is as shown:
 
@@ -316,7 +316,7 @@ rudderanalytics.ready(() => {
 })
 ```
 
-The above callback triggers a call to RudderStack SDK's [`track` ](https://rudderstack.com/docs/get-started/rudderstack-api-spec#track-payload)API which dumps the `track` call payload to a configured S3 destination in your RudderStack dashboard, each time the syncing of the DSP Pixels happens.
+The above callback triggers a call to RudderStack SDK's [`track` ](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/#sample-payload)API which dumps the `track` call payload to a configured S3 destination in your RudderStack dashboard, each time the syncing of the DSP Pixels happens.
 {% endtab %}
 
 {% tab title="Android" %}
@@ -376,7 +376,7 @@ rudderanalytics.ready(() => {
 ```
 </span>
 </li>
-<li>The above callback triggers a call to RudderStack SDK's <a href="https://rudderstack.com/docs/rudderstack-api/rudderstack-spec#track-payload"><code class="inline-code">track</code> </a>API which dumps the <code class="inline-code">track</code> call payload to a configured S3 destination in your RudderStack dashboard, each time the syncing of the DSP Pixels happens.
+<li>The above callback triggers a call to RudderStack SDK's <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/#sample-payload"><code class="inline-code">track</code> </a>API which dumps the <code class="inline-code">track</code> call payload to a configured S3 destination in your RudderStack dashboard, each time the syncing of the DSP Pixels happens.
 </li>
 </ul>
       </TabPanel>

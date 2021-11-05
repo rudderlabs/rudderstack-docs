@@ -68,27 +68,27 @@ For more information on the `identify` call, refer to the [**RudderStack Events 
 A sample `identify` call is as shown:
 
 ```javascript
-  rudderanalytics.identify(
-    "user0001",
-    {
-      planId: "Starter",
-      email: "axel@testmail.com",
-      planInterval: "month",
-      effectiveDate: 1630645519,
-      planCurrency: "USD",
-      subscriptionAlias: "starter_axel",
-      value: "2000",
-      name: "Axel Rose",
-      age: 25,
-      phone: "+911234665544",
-    },
-    {
-      externalId: [
-        { type: "profitwellSubscriptionId", id: "pws_psqfbi9zODBB" },
-        { type: "profitwellUserId", id: "pws_MS2g4ON214dU" },
-      ],
-    }
-  );
+rudderanalytics.identify(
+  "user0001",
+  {
+    planId: "Starter",
+    email: "axel@testmail.com",
+    planInterval: "month",
+    effectiveDate: 1630645519,
+    planCurrency: "USD",
+    subscriptionAlias: "starter_axel",
+    value: "2000",
+    name: "Axel Rose",
+    age: 25,
+    phone: "+911234665544",
+  },
+  {
+    externalId: [
+      { type: "profitwellSubscriptionId", id: "pws_psqfbi9zODBB" },
+      { type: "profitwellUserId", id: "pws_MS2g4ON214dU" },
+    ],
+  }
+);
 ```
 
 <div class="infoBlock">

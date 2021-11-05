@@ -19,16 +19,21 @@ The RudderStack iOS SDK allows you to integrate RudderStack to your iOS applicat
   hands-on information or are keen to know the SDK architecture.
 </div>
 
+<div class="successBlock">
+
+  Starting from version <strong>1.1.0</strong>, the iOS SDK supports the <b>tvOS</b> platform.  You can now integrate the SDK with your tvOS apps and seamlessly track the user events without the need for any additional configuration.
+</div>
+
 <img src="https://img.shields.io/cocoapods/v/Rudder.svg?style=flat)(https://cocoapods.org/pods/Rudder" alt="Github Badge" class="githubBadge" />
 
 ## SDK Setup Requirements
 
 To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned below:
 
-- You will need to set up a [RudderStack Account](https://app.rudderlabs.com).
+- You will need to set up a [RudderStack Account](https://app.rudderstack.com).
 - Once signed up, your `iOS` source `writeKey` will appear in the dashboard, as shown:
 
-<img src="../../../../images/assets/ios.png" />
+<img src="../../assets/ios.png" />
 <span class="imageTitle">iOS source writeKey on the RudderStack Dashboard</span>
 
 - You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
@@ -631,14 +636,14 @@ You can configure your client based on the following parameters using `RudderCon
 | Parameter               | Type      | Description                                                                                                                                                                                                                                                    | Default Value                                                              |
 | :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
 | `logLevel`              | `int`     | Controls how much of the log you want to see from the SDK.                                                                                                                                                                                                     | `RSLogLevelNone`                                                           |
-| `dataPlaneUrl`          | `string`  | Your Data Plane URL.                                                                                                                                                                                                                                           | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com) |
+| `dataPlaneUrl`          | `string`  | Your Data Plane URL.                                                                                                                                                                                                                                           | `https://hosted.rudderlabs.com` |
 | `flushQueueSize`        | `int`     | Number of events in a batch request sent to the server.                                                                                                                                                                                                        | `30`                                                                       |
 | `dbThresholdCount`      | `int`     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                                                                                                                                        | `10000`                                                                    |
 | `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server .                                                                                                                                                                                                       | `10 seconds`                                                               |
 | `configRefreshInterval` | `int`     | Fetches the config from `dashboard` after the specified time \(in hours\).                                                                                                                                                                                     | `2`                                                                        |
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                                     |
 | `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
-| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com)       |
+| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
 
 ### Self-Hosted Control Plane
 
@@ -1144,6 +1149,10 @@ Some pointers to keep in mind:
 ### I'm facing issues building with Carthage on XCode 12. What should I do?
 
 If you're facing an issue with Carthage and XCode 12, you can follow [**this workaround**](https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md) suggested by the Carthage team.
+
+### Does the SDK support tvOS ?
+
+As of version `1.1.0`, the iOS SDK supports the [**tvOS**](https://developer.apple.com/tvos/) platform.
 
 ### How do I migrate from v1.0.2?
 

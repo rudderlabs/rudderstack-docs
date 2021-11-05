@@ -44,7 +44,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a name to your destination, and then click on **Next**. You should see the following screen:
 
-<img src="../../../../images/assets/image (24) (1) (1).png" /><span class="imageTitle">Connection Settings for Kissmetrics in RudderStack</span>
+<img src="../../assets/image (24) (1) (1).png" /><span class="imageTitle">Connection Settings for Kissmetrics in RudderStack</span>
 
 - Please enter the **API Key** in the **Connection Settings**. You may also enable the **Use native SDK to send events** setting to send events through Kissmetrics' native JavaScript SDK.
 
@@ -62,33 +62,34 @@ You will need to enable this setting while building reports in Kissmetrics.
 
 ## Identify
 
-Calling `rudderanalytics.identify()` pushes an `identify` call with the `userId` and `set` with the `user-traits` to the Kissmetrics queue object while using the the Native SDK. For more information on the `identify` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.identify()` pushes an `identify` call with the `userId` and `set` with the `user-traits` to the Kissmetrics queue object while using the the Native SDK. For more information on the `identify` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
-For sending data through the API's cloud mode, we call the [http://trk.kissmetrics.com/s](https://trk.kissmetrics.com/s) end-point for registering users and their traits.
+For sending data through the API's cloud mode, we call the `http://trk.kissmetrics.com/s` end-point for registering users and their traits.
 
 A sample `identify` call is as shown:
 
-```
+```javascript
 // a sample identify
 rudderanalytics.identify("my-userID", {
-        name: "Tintin",
-        city: "Brussels",
-        country: "Belgium",
-        email: "tintin@herge.com"
+  name: "Tintin",
+  city: "Brussels",
+  country: "Belgium",
+  email: "tintin@herge.com"
 });
 ```
 
 will pass the following to the `_kmq kissmetrics` object.
 
-```
-  ['identify', 'my-userID']
-  ['set', {
-                  name: "Tintin",
-                  city: "Brussels",
-                  country: "Belgium",
-                  email: "tintin@herge.com"
-          }
-  ]
+```javascript
+['identify', 'my-userID']
+['set',
+  {
+    name: "Tintin",
+    city: "Brussels",
+    country: "Belgium",
+    email: "tintin@herge.com"
+  }
+]
 ```
 
 <div class="infoBlock">
@@ -99,30 +100,30 @@ Nested objects are flattened as <code class="inline-code">a.b.c</code> for input
 
 ## Page
 
-Calling `rudderanalytics.page()` will record the page properties for event `Viewed <category> <name> page`. For more information on the `page` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.page()` will record the page properties for event `Viewed <category> <name> page`. For more information on the `page` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 A sample page event is as shown:
 
-```
+```javascript
 // "home" is the name of the page.
 rudderanalytics.page("home", {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer"
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer"
 });
 ```
 
 The above snippet will pass the following to the `_kmq kissmetrics` object:
 
-```
+```javascript
 ['record', 'Viewed home page',  {
-        path: "path",
-        url: "url",
-        title: "title",
-        search: "search",
-        referrer: "referrer"
+  path: "path",
+  url: "url",
+  title: "title",
+  search: "search",
+  referrer: "referrer"
 }]
 ```
 
@@ -134,28 +135,28 @@ Automatically-tracked Kissmetrics events such as **Visited a site**, etc. will f
 
 ## Track
 
-Calling `rudderanalytics.track()` pushes a record with the event name and the associated properties \_\_when using the native SDK integration. For more information on the `track` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api-spec) documentation.
+Calling `rudderanalytics.track()` pushes a record with the event name and the associated properties \_\_when using the native SDK integration. For more information on the `track` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 For sending data through the API's cloud mode, we call the [http://trk.kissmetrics.com/e](http://trk.kissmetrics.com/e) end-point for registering the event and its associated properties.
 
 A sample `track` call is as shown:
 
-```
+```javascript
 rudderanalytics.track("Track me", {
-        category: "category",
-        label: "label",
-        value: "value"
- });
+  category: "category",
+  label: "label",
+  value: "value",
+});
 ```
 
 will pass the following to the `_kmq kissmetrics` object.
 
-```
- ['record', "Track me", {
-        category: "category",
-        label: "label",
-        value: "value"
- }]
+```javascript
+['record', "Track me", {
+  category: "category",
+  label: "label",
+  value: "value"
+}]
 ```
 
 An event sent to RudderStack with a property called `revenue` , is passed on to Kissmetrics as `Billing amount` as well as `revenue`.
@@ -163,8 +164,6 @@ An event sent to RudderStack with a property called `revenue` , is passed on to 
 <div class="infoBlock">
 
 In order to send eCommerce events that have a product array as one of their <code class="inline-code">track</code> properties, RudderStack sends each product property to the <code class="inline-code">/s</code> endpoint from the cloud mode, or pushes it as <code class="inline-code">['set', &#123;id:, sku: ...&#125;]</code> from the native SDK.
-
-Please check the [Kissmetrics eCommerce documentation](http://support.kissmetrics.com/article/show/ecommerce-essentials) for more details.
 
 </div>
 
@@ -176,24 +175,24 @@ While passing data using the cloud mode, we call the [http://trk.kissmetrics.com
 
 The following code snippet shows a sample `alias` call in RudderStack:
 
-```
+```javascript
 // assuming the previous set userId was "my-userID"
 rudderanalytics.alias("my-new-userID");
 ```
 
 will pass the following to the `_kmq kissmetrics` object.
 
-```
+```javascript
 ['alias', "my-new-userID", "userId"]
 ```
 
 ## Screen
 
-The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) or [Android](https://rudderstack.com/docs/rudderstack-sdk-integration-guides/rudderstack-android-sdk) SDK it will register in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
+The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) or [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) SDK it will register in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
 
 Here is a sample `screen` call in using RudderStack iOS SDK:
 
-```
+```javascript
 [[RudderClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
 ```
@@ -202,9 +201,9 @@ Here is a sample `screen` call in using RudderStack iOS SDK:
 
 ### Where do I get the API Key for Kissmetrics?
 
-You can obtain the Kissmetrics API Key by logging into your Kissmetrics account, and navigating to the [Product Settings](https://www.kissmetrics.com/settings). Please refer to the following screenshot for more details:
+You can obtain the Kissmetrics API Key by logging into your Kissmetrics account, and navigating to the **Product Settings**. Please refer to the following screenshot for more details:
 
-<img src="../../../../images/assets/image (13) (2).png" /><span class="imageTitle">Kissmetrics API Key</span>
+<img src="../../assets/image (13) (2).png" /><span class="imageTitle">Kissmetrics API Key</span>
 
 ## Contact Us
 

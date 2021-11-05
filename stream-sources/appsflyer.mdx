@@ -16,15 +16,15 @@ In order to add AppsFlyer as a source in RudderStack, please follow these steps:
 
 - From your [RudderStack dashboard](https://app.rudderstack.com/), click on **Add Source**. From the list of sources, select **AppsFlyer**, as shown:
 
-<img src="../../../images/assets/AF_choose_src.png" /><span class="imageTitle">Choose AppsFlyer as a source</span>
+<img src="../assets/AF_choose_src.png" /><span class="imageTitle">Choose AppsFlyer as a source</span>
 
 - Enter the name of your source, and click on **Next**.
 
-<img src="../../../images/assets/AF_src_name.png" /><span class="imageTitle">Provide source name</span>
+<img src="../assets/AF_src_name.png" /><span class="imageTitle">Provide source name</span>
 
 - Head over to your AppsFlyer account and navigate to the **API Access** section under **Integration** from the sidebar. Look for the **Push API** section, as shown:
 
-<img src="../../../images/assets/AF_Dashboard.png" />
+<img src="../assets/AF_Dashboard.png" />
 
 - Under the **Endpoint Configuration**, add an endpoint URL pointing to RudderStack in the following format:`<DATA_PLANE_URL>/v1/webhook?writeKey=<your_AppsFlyer_source_write_key>`
 
@@ -46,7 +46,7 @@ You can validate the endpoint using the **Send Test** button.
 
 </div>
 
-<img src="../../../images/assets/AF_src_sendtest.png" /><span class="imageTitle">Endpoint Configuration</span>
+<img src="../assets/AF_src_sendtest.png" /><span class="imageTitle">Endpoint Configuration</span>
 
 - Finally, save the endpoint.
 

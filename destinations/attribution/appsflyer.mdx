@@ -44,7 +44,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../../../images/assets/screen-shot-2021-06-08-at-4.01.45-pm.png" />
+<img src="../../assets/screen-shot-2021-06-08-at-4.01.45-pm.png" />
 
 - Enter the **AppsFlyer Dev Key**.
 - **Sharing Filter** is set to `all` by default. For more information on this field please visit the AppsFlyer docs [here](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16)
@@ -66,19 +66,19 @@ To add AppsFlyer to your iOS project:
 
 - Add the following line to your [CocoaPods](https://cocoapods.org/) `Podfile`
 
-```
+```ruby
 pod 'Rudder-Appsflyer'
 ```
 
 - After adding the dependency, you must register the `RudderAppsflyerFactory` with your `RudderClient` initialization as a `factory` of `RudderConfig`. To do this, run the following command to import the `RudderAppsflyerFactory.h` file in your `AppDelegate.m` file.
 
-```
+```objectivec
 #import <Rudder-Appsflyer/RudderAppsflyerFactory.h>
 ```
 
 - Then, change the SDK initialization to the following:
 
-```
+```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withTrackLifecycleEvens:YES];
@@ -167,7 +167,7 @@ rudderClient.setup(WRITE_KEY, config)
 <li>Add the following line to your <a href="https://cocoapods.org/">CocoaPods</a> <code class="inline-code">Podfile</code>
 <span>
 
-```
+```ruby
 pod 'Rudder-Appsflyer'
 ```
 </span>
@@ -175,7 +175,7 @@ pod 'Rudder-Appsflyer'
 <li>After adding the dependency, you must register the <code class="inline-code">RudderAppsflyerFactory</code> with your <code class="inline-code">RudderClient</code> initialization as a <code class="inline-code">factory</code> of <code class="inline-code">RudderConfig</code>. To do this, run the following command to import the <code class="inline-code">RudderAppsflyerFactory.h</code> file in your <code class="inline-code">AppDelegate.m</code> file.
 <span>
 
-```
+```objectivec
 #import <Rudder-Appsflyer/RudderAppsflyerFactory.h>
 ```
 </span>
@@ -183,7 +183,7 @@ pod 'Rudder-Appsflyer'
 <li>Then, change the SDK initialization to the following:
 <span>
 
-```
+```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withTrackLifecycleEvens:YES];
@@ -292,7 +292,7 @@ The `identify` call from RudderStack sets the `userId` through the `setCustomerU
 
 RudderStack sets the `email` from `RudderTraits` to AppsFlyer using the `setUserEmails` method from the native SDK.
 
-```
+```objectivec
 [[RSClient sharedInstance] identify:@"developer_user_id"
                                  traits:@{@"email": @"bar@foo.com"}];
 ```
@@ -330,14 +330,14 @@ Along with the above event mapping, the event property mapping is done as well, 
 | `product_id`              | `af_content_id`                                                                                                                                                                        |
 | `category`                | `af_content_type`                                                                                                                                                                      |
 | `currency`                | `af_currency`                                                                                                                                                                          |
-| `products`                | We formulate the list as per List View [specification](https://support.appsflyer.com/hc/en-us/articles/115005544169#verticals-list-view) and pass it to the property `af_content_list` |
+| `products`                | We formulate the list as per List View [specification](https://support.appsflyer.com/hc/en-us/articles/115005544169#event-structure) and pass it to the property `af_content_list` |
 | `quantity`                | `af_quantity`                                                                                                                                                                          |
 | `order_id`                | `af_receipt_id`                                                                                                                                                                        |
 | `revenue`                 | `af_revenue`                                                                                                                                                                           |
 
 A Sample `track` call for an iOS application will look like the below.
 
-```
+```objectivec
 [[RSClient sharedInstance] track:@"Accepted Terms of Service"
                           properties:@{
                                   @"foo": @"bar",
@@ -465,7 +465,7 @@ const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId()
 </span>
       </TabPanel>
     </TabPanels>
-</Tabs> 
+</Tabs>
 
 <div class="infoBlock">
 

@@ -31,14 +31,14 @@ To quickly get started, you can [**sign up for RudderStack**](https://app.rudder
 
 <div class="infoBlock">
 
-Refer to the [**RudderStack Architecture**](get-started/rudderstack-architecture/) guide for more information the RudderStack Data Plane.
+Refer to the [**RudderStack Architecture**](https://rudderstack.com/docs/get-started/rudderstack-architecture/) guide for more information the RudderStack Data Plane.
 </div>
 
 For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. 
 
 Here's how to get the Data Plane URL:
 
-* If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [**installing and setting up RudderStack**](get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
+* If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [**installing and setting up RudderStack**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
 
 <div class="successBlock">
 
@@ -54,7 +54,7 @@ The workspace token allows you to use the RudderStack-hosted control plane. It i
 
 #### 4. Can I self-host RudderStack?
 
-Yes, you can use the [**RudderStack** ](get-started/control-plane-lite/)[**Control Plane Lite**](https://github.com/rudderlabs/config-generator) to self-host the control plane and configure your sources and destinations. Refer to the **Control Plane Lite** section below for more information/FAQs.
+Yes, you can use the [**RudderStack** ](https://rudderstack.com/docs/get-started/control-plane-lite/)[**Control Plane Lite**](https://github.com/rudderlabs/config-generator) to self-host the control plane and configure your sources and destinations. Refer to the **Control Plane Lite** section below for more information/FAQs.
 
 #### 5. While running `git submodule update`, I get the following error:
 
@@ -210,7 +210,7 @@ Switching between open-source RudderStack and RudderStack Cloud is quite straigh
 
 #### 5. Does RudderStack have any settings for consent management?
 
-Currently, we do not have any solutions for consent management. We are in the process of implementing some key GDPR features. In the meantime, you can filter your events using our [**Transformations**](transformations/) feature or stop sending events to the users who do not give their consent.
+Currently, we do not have any solutions for consent management. We are in the process of implementing some key GDPR features. In the meantime, you can filter your events using our [**Transformations**](https://rudderstack.com/docs/transformations/) feature or stop sending events to the users who do not give their consent.
 
 ## Integrations
 
@@ -218,7 +218,7 @@ Currently, we do not have any solutions for consent management. We are in the pr
 
 #### 1. I want to use the RudderStack JavaScript SDK to track impressions in an eCommerce site, such as product impression. How can I send the impression data in batches? I could not find the `batch` method in the SDK.
 
-You should use the `track` method in the SDK instead. For JavaScript SDK's `track` method parameters specific to eCommerce, you can refer our Google Analytics [**Enhanced eCommerce**](https://rudderstack.com/docs/destinations/google-analytics-ga#enhanced-e-commerce) guide.
+You should use the `track` method in the SDK instead. For JavaScript SDK's `track` method parameters specific to eCommerce, you can refer our Google Analytics [**Enhanced eCommerce**](https://rudderstack.com/docs/destinations/analytics/google-analytics-ga#enhanced-e-commerce) guide.
 
 #### 2. Is Shopify compatible as a data source for Rudderstack?
 
@@ -250,7 +250,7 @@ To view the data or events that are sent to your destination, you can use the **
 
 #### 3. I would like to send events to Mixpanel via RudderStack. However, I would like to set a filtering condition on the source events before routing them to Mixpanel. How do I go about doing this?
 
-You can use [**RudderStack Transformations**](transformations/) to set custom logic on your events before sending them to Mixpanel.
+You can use [**RudderStack Transformations**](https://rudderstack.com/docs/transformations/) to set custom logic on your events before sending them to Mixpanel.
 
 #### 4. I am seeing a `Message type not supported` error. What does this mean?
 
@@ -275,7 +275,7 @@ By default, RudderStack sends the data to the table / dataset based on the sourc
 
 You can override this by setting namespace in the destination settings as shown:
 
-<img src="../../images/assets/mssqlconnection (1).png" alt="Set namespace in the destination settings" />
+<img src="assets/mssqlconnection (1).png" alt="Set namespace in the destination settings" />
 
 #### 4. I am trying to set `warehouseSyncFreqIgnore = true` to have a real-time sync with BigQuery but I can't find the `config.yaml` file. How can I do this using the Docker setup?
 
@@ -286,7 +286,7 @@ You can do so by setting this value via the following ENV variables:
 
 #### 5. I'm looking to send data to my data warehouse through RudderStack and I'm trying to understand what data is populated in each column. How do I go about this?
 
-You can refer to the [**RudderStack Warehouse Schema**](data-warehouse-integrations/warehouse-schemas/) documentation for details on how RudderStack generates the schema in the warehouse.
+You can refer to the [**RudderStack Warehouse Schema**](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/) documentation for details on how RudderStack generates the schema in the warehouse.
 
 #### 6. I am trying to load data into my BigQuery destination and I get this error:
 
