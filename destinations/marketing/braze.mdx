@@ -66,77 +66,11 @@ When creating a new Braze Rest API Key for your app, you will only need to selec
 
 Depending on your platform of integration, follow the steps below to add Braze to your project:
 
-<!--{% tabs %}
-{% tab title="iOS" %}
-Please follow these steps to add Braze to your iOS project:
-
-- Open the `Podfile` of your project and add the following line:
-
-  ```ruby
-  pod 'Rudder-Braze'
-  ```
-
-  followed by the command as shown:
-
-  ```bash
-  $ pod install
-  ```
-
-- Finally change the SDK initialization to the following snippet:
-
-  ```objectivec
-  RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
-  [builder withDataPlaneUrl:<YOUR_DATA_PLANE_URL>];
-  [builder withFactory:[RudderBrazeFactory instance]];
-  [RudderClient getInstance:<YOUR_WRITE_KEY> config:[builder build]];
-  ```
-
-  {% endtab %}
-
-{% tab title="Android" %}
-To add Braze to your Android project, please follow these steps:
-
-- Open your `app/build.gradle` \(Module: app\) file, and add the following:
-
-  ```groovy
-  repositories {
-    mavenCentral()
-    maven { url "https://appboy.github.io/appboy-android-sdk/sdk" }
-  }
-  ```
-
-- Add the following under `dependencies` section:
-
-```groovy
-  implementation 'com.rudderstack.android.sdk:core:1.0.1'
-  implementation 'com.rudderstack.android.integration:braze:1.0.2'
-  implementation 'com.appboy:android-sdk-ui:6.0.+'
-  // if you haven't included Gson already
-  implementation 'com.google.code.gson:gson:2.8.6'
-```
-
-- Finally, change the SDK initialization to the following:
-
-```kotlin
-  val rudderClient: RudderClient = RudderClient.getInstance(
-      this,
-      <WRITE_KEY>,
-      RudderConfig.Builder()
-          .withDataPlaneUrl(<DATA_PLANE_URL>)
-          .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
-          .withFactory(BrazeIntegrationFactory.FACTORY)
-          .build()
-  )
-```
-
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
-    <Tab>React-Native</Tab>
+    <Tab>React Native</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -162,16 +96,16 @@ $ pod install
 
 ```objectivec
 RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
-[builder withDataPlaneUrl:&lt;YOUR_DATA_PLANE_URL&gt;];
+[builder withDataPlaneUrl:<DATA_PLANE_URL>];
 [builder withFactory:[RudderBrazeFactory instance]];
-[RudderClient getInstance:&lt;YOUR_WRITE_KEY&gt; config:[builder build]];
+[RudderClient getInstance:<WRITE_KEY>; config:[builder build]];
 ```
 </span>
 </li>
 </ul>
       </TabPanel>
       <TabPanel>
-        To add Braze to your Android project, please follow these steps:
+        To add Braze to your Android project, follow these steps:
 <ul>
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: app) file, and add the following:
 <span>
@@ -215,14 +149,19 @@ repositories {
 </ul>
       </TabPanel>
       <TabPanel>
-        To add Braze to your ReactNative project:
+        To add Braze to your React Native project:
 <ul>
-<li>Add the RudderStack-Braze module to your app using :
+<li>Add the RudderStack-Braze module to your app by running the following command:
 <span>
 
 ```bash
 npm install @rudderstack/rudder-integration-braze-react-native
-// OR //
+```
+</span>
+
+<span>
+
+```bash
 yarn add @rudderstack/rudder-integration-braze-react-native
 ```
 </span>
@@ -239,7 +178,7 @@ repositories {
 </span>
 </li>
 
-<li>Import the module you added above and add it to your SDK initialization code in the following manner:
+<li>Import the module you added above and add it to your SDK initialization code as shown:
 <span>
 
 ```typescript
