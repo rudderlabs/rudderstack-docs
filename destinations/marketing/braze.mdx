@@ -136,6 +136,7 @@ To add Braze to your Android project, please follow these steps:
   <TabList>
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
+    <Tab>React-Native</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -208,6 +209,48 @@ repositories {
           .withFactory(BrazeIntegrationFactory.FACTORY)
           .build()
   )
+```
+</span>
+</li>
+</ul>
+      </TabPanel>
+      <TabPanel>
+        To add Braze to your ReactNative project:
+<ul>
+<li>Add the RudderStack-Braze module to your app using :
+<span>
+
+```bash
+npm install @rudderstack/rudder-integration-braze-react-native
+// OR //
+yarn add @rudderstack/rudder-integration-braze-react-native
+```
+</span>
+</li>
+
+<li>Open your <code class="inline-code">android/build.gradle</code> file (Project level), and add the following:
+<span>
+
+```groovy
+repositories {
+  maven { url "https://appboy.github.io/appboy-android-sdk/sdk" }
+}
+```
+</span>
+</li>
+
+<li>Import the module you added above and add it to your SDK initialization code in the following manner:
+<span>
+
+```typescript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+import braze from "@rudderstack/rudder-integration-braze-react-native"
+const config = {
+  dataPlaneUrl: DATA_PLANE_URL,
+  trackAppLifecycleEvents: true,
+  withFactories: [braze],
+}
+rudderClient.setup(WRITE_KEY, config)
 ```
 </span>
 </li>

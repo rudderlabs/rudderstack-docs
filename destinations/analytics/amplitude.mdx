@@ -228,6 +228,7 @@ Make sure that you enable <code class="inline-code">Use Advertising ID for Devic
   <TabList>
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
+    <Tab>React-Native</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -361,6 +362,48 @@ Make sure that you enable <code class="inline-code">Use Advertising ID for Devic
 ```
 </span>
 
+</li>
+</ul>
+      </TabPanel>
+      <TabPanel>
+        To add Amplitude to your ReactNative project:
+<ul>
+<li>Add the RudderStack-Amplitude module to your app using :
+<span>
+
+```bash
+npm install @rudderstack/rudder-integration-amplitude-react-native
+// OR //
+yarn add @rudderstack/rudder-integration-amplitude-react-native
+```
+</span>
+</li>
+<li>Open your <code class="inline-code">android/app/build.gradle</code> (Module: app) file, and add the following under the <code class="inline-code">compileOptions</code> in android tag :
+<span>
+
+```groovy
+compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
+```
+</span>
+</li>
+
+<li>Import the module you added above and add it to your SDK initialization code in the following manner:
+<span>
+
+```typescript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+import amplitude from "@rudderstack/rudder-integration-amplitude-react-native"
+const config = {
+  dataPlaneUrl: DATA_PLANE_URL,
+  trackAppLifecycleEvents: true,
+  withFactories: [amplitude],
+}
+rudderClient.setup(WRITE_KEY, config)
+```
+</span>
 </li>
 </ul>
       </TabPanel>
