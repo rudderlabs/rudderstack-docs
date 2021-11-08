@@ -125,10 +125,10 @@ Since the module exports the related APIs on an already-defined object combined 
 
 ```jsx
 import * as rudderanalytics from "rudder-sdk-js";
-rudderanalytics.ready(() => {
-  console.log("we are all set!!!");
-});
 rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
+rudderanalytics.ready(() => {
+  console.log("We are all set!!!");
+});
 export { rudderanalytics };
 ```
 
