@@ -220,11 +220,11 @@ RudderClient rudderClient = RudderClient.GetInstance(
   import rudderClient from '@rudderstack/rudder-sdk-react-native';
   import firebase from "@rudderstack/rudder-integration-firebase-react-native";
 
-  const config = &#123;
+  const config = {
       dataPlaneUrl: <DATA_PLANE_URL>,
       trackAppLifecycleEvents: true,
       withFactories: [firebase]
-  &#125;;
+  };
 
   rudderClient.setup(<SOURCE_WRITE_KEY>, config);
   ```
@@ -394,37 +394,24 @@ A sample `screen` call looks like the following:
                               }];
 ```
 
-# Reset
+## Reset
 
 The `reset` method removes the user ID.
 
 A sample `reset` call is shown in the following snippets:
 
-<Tabs>
-  <TabList>
-    <Tab>iOS</Tab> // this is the first tab's title
-    <Tab>Android</Tab>       // this is the second tab's title
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
+* In case of iOS:
 
 ```objectivec
 
 [[RSClient sharedInstance] reset];
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
+```
+* In case of Android:
 
 ```kotlin
-
+        
 MainApplication.rudderClient.reset()
 ```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
 
 ## Debugging
 

@@ -88,13 +88,6 @@ If you have cloned RudderStack's JavaScript SDK and are self-hosting it via your
 
 We recommend maintaining the following structure:
 
-`<BASE_PATH>`
----> `<CORE_JS_SDK_v1.1>`
----> `<js-integrations>`
--------------> `<*.min.js>` - corresponding to the destination SDK file.
-
-A visual representation of the structure above is as shown:
-
 <img src="../../../assets/js-sdk-version-migration.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
 
 * Next, check if the core SDK filename is different than `rudder-analytics.min.js`. If **yes**, update the script tag in your website as shown below:
@@ -143,13 +136,13 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 
 | Destination name     | Download path                                                             |
 |:---------------------|:--------------------------------------------------------------------------|
-| HubSpot              | https://cdn.rudderlabs.com/v3/js-integrations/HubSpot.min.js              |
+| HubSpot              | https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js            |
 | Google Analytics     | https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js                 |
 | Hotjar               | https://cdn.rudderlabs.com/v1.1/js-integrations/Hotjar.min.js             |
 | Google Ads           | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleAds.min.js          |
 | VWO                  | https://cdn.rudderlabs.com/v1.1/js-integrations/VWO.min.js                |
 | Google Tag Manager   | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleTagManager.min.js   |
-| Braze                | https://cdn.rudderlabs.com/v3/js-integrations/Braze.min.js                |
+| Braze                | https://cdn.rudderlabs.com/v1.1/js-integrations/Braze.min.js                |
 | Intercom             | https://cdn.rudderlabs.com/v1.1/js-integrations/INTERCOM.min.js           |
 | Keen.io              | https://cdn.rudderlabs.com/v1.1/js-integrations/Keen.min.js               |
 | Kissmetrics          | https://cdn.rudderlabs.com/v1.1/js-integrations/Kissmetrics.min.js        |
