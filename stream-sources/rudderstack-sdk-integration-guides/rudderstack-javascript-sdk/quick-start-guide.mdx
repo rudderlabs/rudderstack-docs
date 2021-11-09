@@ -27,6 +27,11 @@ The above snippet lets you integrate the SDK with your website and load it async
 </div>
 
 <div class="infoBlock">
+  
+  When the SDK is loaded asynchronously, all the API calls should follow only after the <code class="inline-code">load</code> call.        
+</div>
+
+<div class="infoBlock">
 
 To load <code class="inline-code">rudder-analytics.js</code> on to your page synchronously, refer to the **minified** or **non-minified** versions of the snippet below.
 </div>
@@ -125,10 +130,10 @@ Since the module exports the related APIs on an already-defined object combined 
 
 ```jsx
 import * as rudderanalytics from "rudder-sdk-js";
-rudderanalytics.ready(() => {
-  console.log("we are all set!!!");
-});
 rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
+rudderanalytics.ready(() => {
+  console.log("We are all set!!!");
+});
 export { rudderanalytics };
 ```
 
