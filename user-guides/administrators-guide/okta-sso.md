@@ -8,6 +8,8 @@ description: >-
 
 This document lists the steps to follow in order to configure and enable Okta SSO for your organization.
 
+[![Plan: Enterprise](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)](https://rudderstack.com/enterprise-quote)
+
 ## Configuring the RudderStack SSO App
 
 * Log into your Okta application as an Administrator. Then, navigate to the **Applications** page in the dashboard. 

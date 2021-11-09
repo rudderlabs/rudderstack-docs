@@ -10,7 +10,7 @@ RudderStack's User Suppression API allows you to suppress user data identified b
 
 This guide covers the user suppression feature in detail.
 
-![](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)
+[![Plan: Enterprise](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)](https://rudderstack.com/enterprise-quote)
 
 {% hint style="info" %}
 For all the requests mentioned in this guide, we use the basic HTTP authorization.

@@ -10,7 +10,7 @@ The RudderStack Data Governance API gives you full access to all your events' me
 
 This documentation describes all of the available calls in the Data Governance API, as well as the properties of the returned objects as a result.
 
-![](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)
+[![Plan: Enterprise](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)](https://rudderstack.com/enterprise-quote)
 
 ## Getting Started - Obtaining the Credentials
 

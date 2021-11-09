@@ -14,7 +14,7 @@ With Identity Resolution, you can tie these different identities together whenev
 Identity Resolution is available as a part of RudderStack's Enterprise plan.
 {% endhint %}
 
-![](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)
+[![Plan: Enterprise](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)](https://rudderstack.com/enterprise-quote)
 
 ## Identity Resolution Explained
 
