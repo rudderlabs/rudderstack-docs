@@ -31,36 +31,13 @@ The RudderStack iOS SDK allows you to integrate RudderStack to your iOS applicat
 To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned below:
 
 - You will need to set up a [RudderStack Account](https://app.rudderstack.com).
-- Once signed up, your `iOS` source `writeKey` will appear in the dashboard, as shown:
+- Once signed up, set up an iOS source in the dashboard. For more information, follow [this guide](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
 
-<img src="../../../assets/ios.png" />
-<span class="imageTitle">iOS source writeKey on the RudderStack Dashboard</span>
+<img src="../../../assets/event-stream-sources/ios-sdk-1.png" alt="iOS source write key" />
 
-- You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
-<div class="infoBlock">
-
-To get the **Data Plane URL**:
-
-<ul>
-  <li>
-    
-    If you're using the <strong>open-source</strong> version of RudderStack, you
-    are required to set up your own data plane by <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/">
-      installing and setting up RudderStack
-    </a>
-    in your preferred dev environment.
-  </li>
-  <li>
-    
-    If you're using the <strong>enterprise</strong> version of RudderStack, please
-    contact us for the data plane URL with the email ID used to sign up for RudderStack.
-  </li>
-</ul>
-
-  </div>
-
-- You will also need a Mac with the latest version of [Xcode](https://developer.apple.com/xcode/).
+- Finally, you will need a Mac with the latest version of [Xcode](https://developer.apple.com/xcode/).
 
 ## Installing the RudderStack iOS SDK
 
@@ -404,24 +381,6 @@ You can use the `screen` call to record whenever the user sees a screen on the m
 
 An example of the `screen` event is as shown:
 
-<!--{% tabs %}
-{% tab title="Objective-C" %}
-
-```objectivec
-[[RSClient sharedInstance] screen:@"ViewController"];
-```
-
-{% endtab %}
-
-{% tab title="Swift" %}
-
-```swift
-RSClient.sharedInstance()?.screen("ViewController")
-```
-
-{% endtab %}
-{% endtabs %} 
-
 <Tabs>
   <TabList>
     <Tab>Objective-C</Tab>
@@ -445,7 +404,7 @@ RSClient.sharedInstance()?.screen("ViewController")
 </span>
       </TabPanel>
     </TabPanels>
-</Tabs>-->
+</Tabs>
 
 The `screen` method accepts the following parameters:
 
