@@ -607,9 +607,9 @@ export const jsonData = [
            "link":"/cloud-extract-sources/airbyte-sources/",
            "content":[
               {
-                 "key":"singer-intercom",
-                 "title":"Intercom",
-                 "link":"/cloud-extract-sources/airbyte-sources/singer-intercom/",
+                 "key":"intercom-v2",
+                 "title":"Intercom v2",
+                 "link":"/cloud-extract-sources/airbyte-sources/intercom-v2/",
                  "content":[
                     
                  ]
