@@ -601,6 +601,21 @@ export const jsonData = [
                
             ]
          },
+         {
+           "key":"airbyte-sources",
+           "title":"Airbyte-supported Sources",
+           "link":"/cloud-extract-sources/airbyte-sources/",
+           "content":[
+              {
+                 "key":"singer-intercom",
+                 "title":"Intercom",
+                 "link":"/cloud-extract-sources/airbyte-sources/singer-intercom/",
+                 "content":[
+                    
+                 ]
+              }
+           ]
+        },
      ]
   },
   {
