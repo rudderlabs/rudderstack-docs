@@ -39,15 +39,32 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 <img src="../../assets/image (42).png" /><span class="imageTitle">Hotjar Connection Settings in RudderStack</span>
 
-- Please provide the `Site ID`. You will get your `Site ID` under **Settings** - **Sites & Organizations** after logging into your Hotjar account.
-- You can enable or disable native SDK to send your events as per your preference. Finally, click on **Next** to complete the configuration.
+- Please provide the `Site ID`. You will get your `Site ID` under **Settings** - **Sites & Organizations** after logging into your Hotjar account. Finally, click on **Next** to complete the configuration.
 
 Hotjar will now be added and enabled as a destination in RudderStack.
 
-## Sending events to Hotjar
+## Identify
 
-There is **no need** to call any of `identify`, `page` or `track`methods explicitly, as Hotjar auto-tracks your user data.
+<div class="warningBlock">
+
+Before you can begin making calls to `identify`, User Attributes must be enabled in your Hotjar dashboard for each site you want to User Attributes within your account.
+
+</div>
+
+`identify` allows you to pass data about your users to Hotjar, saving them as User Attributes.
+
+<div class="infoBlock">
+
+For more information on the `identify` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/).
+
+</div>
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify("userId", { total_spend: 500 });
+```
 
 ## Contact Us
 
-If you come across any issues while configuring Hotjar with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+In case of any issues while configuring or using Hotjar with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
