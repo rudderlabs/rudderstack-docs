@@ -19,22 +19,16 @@ After integrating this SDK with your game, you will be able to track and send th
   Check the <a href="https://github.com/rudderlabs/rudder-sdk-unity">Unity SDK codebase on GitHub</a> to get a more hands-on understanding of how it works.
 </div>
 
-## Prerequisites
+## SDK Setup Requirements
 
 To configure the Unity SDK, you will need the following:
 
-- A [**RudderStack account**](https://app.rudderlabs.com/login). Your source `writeKey` should appear on the dashboard once you have signed up.
-- Your data plane URL to connect to the RudderStack backend for processing and routing your events.
+- You will need to set up a [RudderStack account](https://app.rudderstack.com).
+- Once signed up, set up a Unity source in the dashboard. For more information, follow [this guide](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
 
-<div class="infoBlock">
+<img src="../../assets/event-stream-sources/unity-sdk-1.png" alt="Unity source write key" />
 
-To get the **Data Plane URL**:
-
-<ul>
-<li> If you're using the <strong>open-source</strong>version of RudderStack, you are required to set up your own data plane by <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/">installing and setting up RudderStack</a> in your preferred dev environment.</li>
-<li> If you're using the <strong>enterprise</strong> version of RudderStack, contact us for the data plane URL with the email ID used to sign up for RudderStack.</li>
-</ul>
-</div>
+- You will also need a data plane URL. Follow [this section](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
 - Finally, you will need the [**Unity development kit**](https://store.unity.com/download).
 
