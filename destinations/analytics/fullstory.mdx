@@ -35,7 +35,7 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 - Assign a name to your destination and click on **Next**. You should be able to see the following screen:
 
-<img src="../../assets/screenshot-2020-02-26-at-3.41.29-pm.png" />
+<img src="../../assets/event-stream-destinations/fullstory-connection-settings.png" alt="FullStory connection settings" />
 
 ### Connection settings
 
@@ -47,10 +47,7 @@ To configure the destination, you will need to enter the following settings:
 window['_fs_org'] = 'some_value';
 ```
 
-<div class="infoBlock">
-
-    In the above snippet, <code class="inline-code">some_value</code> represents the value for the <b>FS ORG</b> field.
-</div>
+In the above snippet, `some_value` represents the value for the **FS ORG** field.
 
 - To enable FullStory debugging, you can enable the **FS debug mode** option.
 
@@ -68,7 +65,7 @@ To add FullStory to your project, follow the steps below depending on your platf
       <TabPanel>
         To add FullStory to your iOS project, follow these steps:
 <ul>
-<li>In your `Podfile`, add the following extension:
+    <li>In your <code class="inline-code">Podfile</code>, add the following extension:
 <span>
 
 ```ruby
@@ -77,7 +74,7 @@ pod 'Rudder-FullStory'
 ```
 </span>
 </li>
-<li>After adding the dependencies followed by a `pod install` command, add the following imports to your `AppDelegate.m` file:
+<li>After adding the dependencies followed by a <code class="inline-code">pod install</code> command, add the following imports to your <code class="inline-code">AppDelegate.m</code> file:
 <span>
 
 ```objectivec
@@ -86,7 +83,7 @@ pod 'Rudder-FullStory'
 ```
 </span>
 </li>
-<li>Then, initialize your `RSClient` as shown:
+<li>Then, initialize your <code class="inline-code">RSClient</code> as shown:
 <span>
 
 ```objectivec
@@ -98,16 +95,17 @@ RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder bu
 </span>
 </li>
 </ul>
-    To complete the FullStory integration, you need to tell the framework which FullStory organization to record to. To do so, follow these steps:
-    <ul>
-    <li>Open your app's `Info.plist`. </li>
-    <li>From the menu, choose <b>Editor</b> - <b>Add Item</b>. Set the key name to `FullStory`, and the type to `Dictionary`. </li>
-    <li>Right-click on the FullStory row, and choose <b>Add Row</b>. Set the key name to `OrgId`, and the type to `String`. For the value, paste your assigned organization ID.</li>
-    </ul>
+    To complete the FullStory integration, you need to specify which FullStory organization to record to. To do so, follow these steps:
+<ul>
+    <li>Open your app's <code class="inline-code">Info.plist</code>. </li>
+    <li>From the menu, choose <b>Editor</b> - <b>Add Item</b>. Set the key name to <code class="inline-code">FullStory</code>, and the type to <code class="inline-code">Dictionary</code>.</li>
+    <li>Right-click on the FullStory row, and choose <b>Add Row</b>. Set the key name to <code class="inline-code">OrgId</code>, and the type to <code class="inline-code">String</code>. For the value, paste your assigned organization ID.</li>
+    <li>When configured correctly, the <code class="inline-code">Info.plist</code> entry should look as follows:
+ </li>
     
-    When configured correctly, the `Info.plist` entry should look as follows:
-    
-    <img src="" alt="Final entry"/>
+    <img src="../../assets/event-stream-destinations/fullstory-devicemode-ios.png" alt="Final entry"/>
+
+</ul>
     
     <div class="infoBlock">
         
@@ -117,7 +115,7 @@ RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder bu
       <TabPanel>
         To add FullStory to your Android project, follow these steps:
 <ul>
-<li>Open your `app/build.gradle` \(Module: app\) file and add the following under the `dependencies` section:
+<li>Open your <code class="inline-code">app/build.gradle</code> \(Module: app\) file and add the following under the <code class="inline-code">dependencies</code> section:
 <span>
 
 ```groovy
@@ -132,7 +130,7 @@ implementation 'com.fullstory:instrumentation-full:1.18.0@aar'
 ```
 </span>
 </li>
-<li>Then, add the FullStory Maven plugin to your build script. To do so, add the following snippet into the `Gradle Scripts` section of your root `build.gradle`:
+<li>Then, add the FullStory Maven plugin to your build script. To do so, add the following snippet into the <code class="inline-code">Gradle Scripts</code> section of your root <code class="inline-code">build.gradle</code>:
 <span>
 
 ```groovy
@@ -151,10 +149,10 @@ buildscript {
 ```
 </span>
 </li>
-<li> Make sure that you replace `PLUGIN_VERSION` with the correct version of the FullStory Android plugin. You can find the latest release notes <a href="https://docs.google.com/document/d/e/2PACX-1vRBDZpgGoLz2IdHntpXtS_1HWGMwlf6n1J1SurkcyguQB9Liv9OCQ1LHnNmfhxwcZ-ZQSl7QUgcMIR5/pub">here</a> (this is currently 1.18.0).
+<li> Make sure that you replace <code class="inline-code">PLUGIN_VERSION</code> with the correct version of the FullStory Android plugin. You can find the latest release notes <a href="https://docs.google.com/document/d/e/2PACX-1vRBDZpgGoLz2IdHntpXtS_1HWGMwlf6n1J1SurkcyguQB9Liv9OCQ1LHnNmfhxwcZ-ZQSl7QUgcMIR5/pub">here</a> (this is currently 1.18.0).
     </li>
     
-<li>To apply the FullStory plugin, add the following snippet into your app-specific `build.gradle` (if your Gradle file adds plugins via plugin ID):
+<li>To apply the FullStory plugin, add the following snippet into your app-specific <code class="inline-code">build.gradle</code> (if your Gradle file adds plugins via plugin ID):
 <span>
 
 ```groovy
@@ -197,7 +195,7 @@ enabledVariants 'all'
 ```
         </span>
         </li>
-<li>Add the following permissions, if not added already, to your `AndroidManifest.xml`:
+<li>Add the following permissions, if not added already, to your <code class="inline-code">AndroidManifest.xml</code>:
     <span>
 
 ```markup
@@ -206,7 +204,7 @@ enabledVariants 'all'
 ```
     </span>
     </li>
-<li>Finally, initialize the RudderStack SDK in your `Application` class' `onCreate()` method as shown:
+<li>Finally, initialize the RudderStack SDK in your <code class="inline-code">Application</code> class' <code class="inline-code">onCreate()</code> method as shown:
     <span>
         
 ```kotlin
@@ -394,7 +392,7 @@ Refer to the [**FullStory Android documentation**](https://help.fullstory.com/hc
 
 ### How to subclass from an application in Android
 
-FullStory requires that you enable MultiDex. If your minSdkVersion is set to 21 or higher, Multidex is enabled by default. Subclass from application class android.app.Application. If your minSdkVersion is lower than 21, you will need to subclass from androidx.multidex.MultiDexApplication instead.
+FullStory requires that you enable MultiDex. If your minSdkVersion is set to 21 or higher, Multidex is enabled by default. In this case, you will need to extend `android.app.Application`, otherwise there will be a build error. If your minSdkVersion is lower than 21, you will need to subclass from `androidx.multidex.MultiDexApplication` instead.
 
 If you're using Java and if you do not have an application class, you will need to create one. In your `App.java`, add the following:
 
@@ -405,7 +403,7 @@ public class App extends Application {
 }
 ```
 
-If you're using Kotlin and if you do not have an application class, you will need to create one and add the following in your `App.kt`:
+If you're using Kotlin and if you do not have an application class, you will need to create one, and add the following in your `App.kt`:
 
 ```kotlin
 import android.app.Application
@@ -421,7 +419,7 @@ Then, set `android:name="App"` in your `AndroidManifest.xml` under the `<applica
 android:name="App" ….
 ```
 
-For more information, refer to the [**FullStory documentation**](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording#01F5E7X1NYJY51ME0PEWSM0KBJ)
+For more information, refer to the [**FullStory documentation**](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording#01F5E7X1NYJY51ME0PEWSM0KBJ).
 
 ## Contact us
 
