@@ -37,17 +37,21 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Give a name to your destination, and then click on **Next**. You should see the following screen:
 
-<img src="../../assets/image (42).png" /><span class="imageTitle">Hotjar Connection Settings in RudderStack</span>
+<img src="../../assets/Hotjar-1.png" /><span class="imageTitle">Hotjar Connection Settings in RudderStack</span>
 
 - Please provide the `Site ID`. You will get your `Site ID` under **Settings** - **Sites & Organizations** after logging into your Hotjar account. Finally, click on **Next** to complete the configuration.
 
 Hotjar will now be added and enabled as a destination in RudderStack.
 
+## Sending events to Hotjar
+
+There is **no need** to call any of `page` or `track` methods explicitly, as Hotjar auto-tracks your user data.
+
 ## Identify
 
 <div class="warningBlock">
 
-Before you can begin making calls to `identify`, User Attributes must be enabled in your Hotjar dashboard for each site you want to User Attributes within your account.
+Before you can begin making calls to `identify`, <a href="https://insights.hotjar.com/settings/user-attributes">User Attributes</a> must be enabled in your Hotjar dashboard for each site.
 
 </div>
 
