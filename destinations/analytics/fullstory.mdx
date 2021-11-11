@@ -6,13 +6,13 @@ description: Step-by-step guide to send your event data from RudderStack to Full
 
 # FullStory
 
-[FullStory](https://www.fullstory.com/) is a platform for analyzing user interactions, data recording and searching, and much more. It is the perfect platform to measure and improve your overall mobile app experience.
+[**FullStory**](https://www.fullstory.com/) is a platform for analyzing user interactions, data recording and searching, and much more. FullStory's Digital Experience Intelligence (DXI) capability lets you measure and improve your users' overall digital experience.
 
-RudderStack lets you configure FullStory as a destination to which you can send your event data directly.
+RudderStack supports FullStory as a destination to which you can send your event data seamlessly.
 
-## Getting Started
+## Getting started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by FullStory. Please refer to the following table to do so:
+To send your events to FullStory via RudderStack, you will first need to add it as a destination in the RudderStack dashboard. Before you get started, check if the source platform supports sending events to FullStory by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server** |
 | :------------------ | :------------ | :------------ | :--------- |
@@ -21,100 +21,119 @@ Before configuring your source and destination on the RudderStack, please check 
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to FullStory, perform the steps below:
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and select **FullStory** from the list of destinations.
+- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, select **FullStory** from the list of destinations.
 
 <div class="infoBlock">
 
-Please follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">How to Add a Source and Destination in RudderStack</a> to add a source and destination in RudderStack.
-
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-- Name your destination, and click on **Next**. You should be able to see the following screen:
+- Assign a name to your destination and click on **Next**. You should be able to see the following screen:
 
 <img src="../../assets/screenshot-2020-02-26-at-3.41.29-pm.png" />
 
-Enter the relevant details and click on **Next**. To get the **FS ORG** field, please login to FullStory and navigate to **Settings** - **General**. Here, copy the value present on the following line: `window['_fs_org'] = 'fullstory_org_id';`
+### Connection settings
 
-- In this example **FS ORG** would be `fullstory_org_id`
+To configure the destination, you will need to enter the following settings:
+
+- **FS ORG**: To get this value, log into your FullStory account and navigate to **Settings** - **General**. Then, copy the value present in the following line:
+
+```
+window['_fs_org'] = 'some_value';
+```
 
 <div class="infoBlock">
 
-To enable FullStory debugging, you can enable the **FS debug mode** option.
-
+    In the above snippet, <code class="inline-code">some_value</code> represents the value for the <b>FS ORG</b> field.
 </div>
 
-## Adding Device Mode Integration
+- To enable FullStory debugging, you can enable the **FS debug mode** option.
 
-{% tabs %}
-{% tab title="iOS" %}
-To add FullStory to your iOS project, follow these steps:
+## Adding device mode integration
 
-- In your `Podfile`, add the following extension as shown:
+To add FullStory to your project, follow the steps below depending on your platform of integration.
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+    <Tab>React Native</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+        To add FullStory to your iOS project, follow these steps:
+<ul>
+<li>In your `Podfile`, add the following extension:
+<span>
 
 ```ruby
 pod 'FullStory', :http => 'https://ios-releases.fullstory.com/fullstory-1.18.0-xcframework.tar.gz'
 pod 'Rudder-FullStory'
 ```
-
-- After adding the dependencies followed by a `pod install` command, add the following imports to your `AppDelegate.m` file:
+</span>
+</li>
+<li>After adding the dependencies followed by a `pod install` command, add the following imports to your `AppDelegate.m` file:
+<span>
 
 ```objectivec
 #import <Rudder/Rudder.h>
 #import <RudderFullStoryFactory.h>
 ```
-
-- Then, add the initialization of your `RSClient` as shown:
+</span>
+</li>
+<li>Then, initialize your `RSClient` as shown:
+<span>
 
 ```objectivec
-    RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
-    [configBuilder withDataPlaneUrl:dataPlaneUrl];
-    [configBuilder withFactory:[RudderFullStoryFactory instance]];
-    RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder build]];
+RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
+[configBuilder withDataPlaneUrl:dataPlaneUrl];
+[configBuilder withFactory:[RudderFullStoryFactory instance]];
+RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder build]];
 ```
-
-- Configure FullStory:
-
-- To complete the FullStory integration, you need to tell the framework which FullStory organization to record to.
-- Open your app's Info.plist
-- From the menu, choose Editor > Add Item. Set the key name to FullStory, and the type to "Dictionary".
-- Right-click on the FullStory row, and choose "Add Row". Set the key name to OrgId, and the type to "String". For the value, paste in your assigned organization ID.
-- When configured correctly, the Info.plist entry should look as follows:
-  ![](https://help.fullstory.com/hc/article_attachments/4408101391383/image__63_.png)
-
-<div class="infoBlock">
-
-For more information, refer to the [**FullStory iOS documentation**](https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Recording).
-
-</div>
-
-{% endtab %}
-
-{% tab title="Android" %}
-To add FullStory to your Android project, follow these steps:
-
-- Open your `app/build.gradle` \(Module: app\) file and add the following under the `dependencies` section:
+</span>
+</li>
+</ul>
+    To complete the FullStory integration, you need to tell the framework which FullStory organization to record to. To do so, follow these steps:
+    <ul>
+    <li>Open your app's `Info.plist`. </li>
+    <li>From the menu, choose <b>Editor</b> - <b>Add Item</b>. Set the key name to `FullStory`, and the type to `Dictionary`. </li>
+    <li>Right-click on the FullStory row, and choose <b>Add Row</b>. Set the key name to `OrgId`, and the type to `String`. For the value, paste your assigned organization ID.</li>
+    </ul>
+    
+    When configured correctly, the `Info.plist` entry should look as follows:
+    
+    <img src="" alt="Final entry"/>
+    
+    <div class="infoBlock">
+        
+        For more information, refer to the <a href="https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Recording">FullStory iOS documentation</a>.
+    </div>
+      </TabPanel>
+      <TabPanel>
+        To add FullStory to your Android project, follow these steps:
+<ul>
+<li>Open your `app/build.gradle` \(Module: app\) file and add the following under the `dependencies` section:
+<span>
 
 ```groovy
 implementation 'com.rudderstack.android.sdk:core:1.0.22'
 implementation 'com.rudderstack.android.integration:fullstory:1.0.0'
 implementation 'com.google.code.gson:gson:2.8.6'
-
 // FullStory
 repositories
   maven { url "https://maven.fullstory.com" }
 }
 implementation 'com.fullstory:instrumentation-full:1.18.0@aar'
 ```
-
-- Add the FullStory maven plugin to your build script
-
-Add the following snippet into the `Gradle Scripts` section of your root `build.gradle`, ensure that you replace <THE PLUGIN VERSION> with the correct version of the FullStory Android plugin. You can find the latest release notes [**here**](https://docs.google.com/document/d/e/2PACX-1vRBDZpgGoLz2IdHntpXtS_1HWGMwlf6n1J1SurkcyguQB9Liv9OCQ1LHnNmfhxwcZ-ZQSl7QUgcMIR5/pub) (this is currently 1.18.0):
+</span>
+</li>
+<li>Then, add the FullStory Maven plugin to your build script. To do so, add the following snippet into the `Gradle Scripts` section of your root `build.gradle`:
+<span>
 
 ```groovy
 buildscript {
@@ -124,18 +143,19 @@ buildscript {
     maven { url "https://maven.fullstory.com" }
   }
   dependencies {
-    classpath 'com.fullstory:gradle-plugin-local:<THE PLUGIN VERSION>'
+    classpath 'com.fullstory:gradle-plugin-local:PLUGIN_VERSION'
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
   }
 }
 ```
-
-- Apply the FullStory plugin
-
-Add the following snippet into your app-specific `build.gradle`:
-
-If your gradle file adds plugins via plugin id:
+</span>
+</li>
+<li> Make sure that you replace `PLUGIN_VERSION` with the correct version of the FullStory Android plugin. You can find the latest release notes <a href="https://docs.google.com/document/d/e/2PACX-1vRBDZpgGoLz2IdHntpXtS_1HWGMwlf6n1J1SurkcyguQB9Liv9OCQ1LHnNmfhxwcZ-ZQSl7QUgcMIR5/pub">here</a> (this is currently 1.18.0).
+    </li>
+    
+<li>To apply the FullStory plugin, add the following snippet into your app-specific `build.gradle` (if your Gradle file adds plugins via plugin ID):
+<span>
 
 ```groovy
 plugins {
@@ -143,66 +163,77 @@ plugins {
   id 'fullstory'
 }
 fullstory {
-  org '<YOUR ORG ID HERE>'
+  org 'YOUR_ORG_ID_HERE'
 }
 android {
   ...
 ```
-
-If your gradle file applies plugins:
-
+</span>
+</li>
+<li>If your Gradle file applies plugins, use the following snippet instead:
+<span>
+    
 ```groovy
 apply plugin: 'com.android.application'
 apply plugin: 'fullstory'
 fullstory {
- org '<YOUR ORG ID HERE>'
+ org 'YOUR_ORG_ID_HERE'
 }
 android {
  ...
 ```
+</span>
+</li>
+<div class="infoBlock">
 
-Replace <YOUR ORG ID HERE> with your ORG ID.
-
-- To apply FullStory to all variants, including those used at debug time, add the following line below the org line:
-
+    Replace <code class="inline-code">YOUR_ORG_ID_HERE</code> with your organization ID.
+</div>
+<li>To apply FullStory to all variants, including those used at debug time, add the following line below the org line:
+    <span>
+        
 ```groovy
-org '<YOUR ORG ID HERE>'
+org 'YOUR_ORG_ID_HERE'
 enabledVariants 'all'
 ```
-
-- Add the following permissions, if not already added to your `AndroidManifest.xml`:
+        </span>
+        </li>
+<li>Add the following permissions, if not added already, to your `AndroidManifest.xml`:
+    <span>
 
 ```markup
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ```
-
-- Initialize the RudderStack SDK in your `Application` class' `onCreate()` method as shown:
-
+    </span>
+    </li>
+<li>Finally, initialize the RudderStack SDK in your `Application` class' `onCreate()` method as shown:
+    <span>
+        
 ```kotlin
 // initializing Rudder SDK
 val rudderClient = RudderClient.getInstance(
   this,
-  <SOURCE_WRITE_KEY>,
+  <WRITE_KEY>,
   RudderConfig.Builder()
           .withDataPlaneUrl(DATA_PLANE_URL)
           .withFactory(FullStoryIntegrationFactory.FACTORY)
           .build()
 )
 ```
+    </span>
+        </li>
+</ul>
+    <div class="infoBlock">
 
-<div class="infoBlock">
-
-For more information, refer to the [**FullStory Android documentation**](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording).
-
+        For more information, refer to the <a href="https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording">FullStory Android documentation</a>.
 </div>
-
-{% endtab %}
-{% endtabs %}
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ## Identify
 
-The `identify` call is used to uniquely identify a user in FullStory. For more information on the `identify` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+The `identify` call is used to uniquely identify a user in FullStory.
 
 A sample `identify` call looks like the following snippet:
 
@@ -220,15 +251,14 @@ The above call is translated to a FullStory `identify` call as follows:
 
 <div class="infoBlock">
 
-In the Web Device mode, if the <code class="inline-code">userId</code> is not explicitly provided, the <code class="inline-code">anonymousId</code> of the user is sent as the <code class="inline-code">uid</code> instead.
-
+In the web device mode, if the <code class="inline-code">userId</code> is not explicitly provided, then the <code class="inline-code">anonymousId</code> of the user is sent as the <code class="inline-code">uid</code> instead.
 </div>
 
 ### `displayName` and `email`
 
-`displayName` and `email` are both **optional** traits that can passed on to FullStory, and are treated specially. Once these traits are specified in the `identify` call, they will show up automatically the next time the user list is browsed in FullStory.
+`displayName` and `email` are both **optional** traits that can passed on to FullStory and are treated specially. Once these traits are specified in the `identify` call, they will show up automatically the next time the user list is browsed in FullStory.
 
-A sample `identify` call using the above traits is as shown:
+A sample `identify` call using the `displayName` and `email` is as shown:
 
 ```javascript
 rudderanalytics.identify("1234", {
@@ -240,13 +270,12 @@ rudderanalytics.identify("1234", {
 
 <div class="infoBlock">
 
-For more information on the <code class="inline-code">displayName</code> and <code class="inline-code">email</code> traits, please refer to the <a href="https://help.fullstory.com/hc/en-us/articles/360020828113">FullStory documentation</a>.
-
+For more information on the <code class="inline-code">displayName</code> and <code class="inline-code">email</code> traits, refer to the <a href="https://help.fullstory.com/hc/en-us/articles/360020828113">FullStory documentation</a>.
 </div>
 
 ## Track
 
-A `track` call lets you track custom events as they occur in your web application. For more information on the `track` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+A `track` call lets you track custom events as they occur in your web application.
 
 A sample `track` call looks like the following snippet:
 
@@ -258,11 +287,11 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
-A `track` call is directly passed on to FullStory via its [FS.event](https://help.fullstory.com/hc/en-us/articles/360020623274-FS-event-API-Sending-custom-event-data-into-FullStory) method. All the associated properties are also passed on this method.
+A `track` call is directly passed on to FullStory via its [**FS.event**](https://help.fullstory.com/hc/en-us/articles/360020623274-FS-event-API-Sending-custom-event-data-into-FullStory) method. All the associated event properties are also passed to FullStory via this call.
 
 ## Page
 
-A page call contains information such as the URL or the name of the web page visited by the user. For more information, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+A `page` call contains information such as the URL or the name of the web page visited by the user.
 
 By default, all `page` calls are sent to FullStory as events. A sample `page` call looks like the following:
 
@@ -297,26 +326,25 @@ In the above snippet, RudderStack captures all the information related to the vi
 
 <div class="infoBlock">
 
-Note that <code class="inline-code">screen</code> call will be sent to FullStory as a custom event.
-
+Note that the <code class="inline-code">screen</code> call will be sent to FullStory as a custom event.
 </div>
 
 # Reset
 
-The `reset` method calls will release the identity of the current user and create a new anonymous session. It should be called when users log out. For more information, please refer to [**FullStory Reset API**](https://developer.fullstory.com/anonymize?lang=ObjectiveC).
+The `reset` method calls will release the identity of the current user and create a new anonymous session. It should be called when the users log out. For more information, refer to the [**FullStory Reset API**](https://developer.fullstory.com/anonymize?lang=ObjectiveC).
 
-A sample `reset` call is shown in the following snippets:
+A sample `reset` call is as shown below:
 
 <Tabs>
   <TabList>
-    <Tab>iOS</Tab> // this is the first tab's title
-    <Tab>Android</Tab>       // this is the second tab's title
+    <Tab>iOS</Tab> 
+    <Tab>Android</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
 <span>
 
-````objectivec
+```objectivec
 
 [[RSClient sharedInstance] reset];
 </span>
@@ -328,7 +356,6 @@ A sample `reset` call is shown in the following snippets:
 
 MainApplication.rudderClient.reset()
 ````
-
 </span>
       </TabPanel>
     </TabPanels>
@@ -336,36 +363,40 @@ MainApplication.rudderClient.reset()
 
 ## FAQs
 
-### How do I get the value for the field FS ORG \*?
+### How do I get the value for the field FS ORG?
 
 To get the value for the **FS ORG \*** field in the RudderStack **Connection Settings**, please follow these steps:
 
 1. Login to your FullStory dashboard.
-2. Navigate to Settings - General.
-3. Go to the following line and copy the value present there: `window['_fs_org'] = 'fullstory_org_here';`
+2. Navigate to **Settings** - **General**.
+3. Go to the following line and copy the value present there: `window['_fs_org'] = 'fullstory_org';`
+    
+In this case, `fullstory_org` is your **FS ORG** value.
 
-### How to prevent FullStory from automatically recording on startup
+### How do I prevent FullStory from automatically recording on startup?
 
-By default, FullStory will automatically request a session and start recording on app startup. If you need to only start recording the app once certain conditions are met, then you can use the new RecordOnStart feature. Configuring FullStory to not RecordOnStart will prevent recording until you explicitly invoke FS.restart. To prevent FullStory from recording on start:
+By default, FullStory will automatically request a session and start recording on the app's startup. If you need to start recording the app only when certain conditions are met, then you can use the new `RecordOnStart` feature. Configuring FullStory to disable `RecordOnStart` will prevent any recording until you explicitly invoke `FS.restart`. 
 
-In your `iOS` app’s Info.plist's FullStory dictionary, add a RecordOnStart key, of type `Boolean`, with a value of `NO`. Refer [**FullStory iOS documentation**](https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Recording#01ER0FEDVJS9RJ843477QPRYS6) for more information.
+To prevent FullStory from recording on start, follow these steps:
 
-In your `Android` app, go to your FullStory plugin configuration (where you set your org id), set the following:
+In your iOS app’s `Info.plist`'s FullStory dictionary, add a `RecordOnStart` key of type `Boolean` with a value of `NO`. Refer to the [**FullStory iOS documentation**](https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Recording#01ER0FEDVJS9RJ843477QPRYS6) for more information.
+
+In case of Android, go to your FullStory plugin configuration (where you set your organiation ID) and set the following:
 
 ```groovy
 fullstory {
-org '<YOUR ORG ID HERE>'
+org 'YOUR_ORG_ID_HERE'
 recordOnStart false
 }
 ```
 
-Refer [**FullStory Android documentation**](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording#01F5E7XY5HJYV5ZWCCSYNQ8TXC) for more information.
+Refer to the [**FullStory Android documentation**](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording#01F5E7XY5HJYV5ZWCCSYNQ8TXC) for more information.
 
-### How to Subclass from Application in Android
+### How to subclass from an application in Android
 
 FullStory requires that you enable MultiDex. If your minSdkVersion is set to 21 or higher, Multidex is enabled by default. Subclass from application class android.app.Application. If your minSdkVersion is lower than 21, you will need to subclass from androidx.multidex.MultiDexApplication instead.
 
-If you're using Java and if you do not have an Application class, create one, and in your App.java:
+If you're using Java and if you do not have an application class, you will need to create one. In your `App.java`, add the following:
 
 ```java
 import android.app.Application;
@@ -374,7 +405,7 @@ public class App extends Application {
 }
 ```
 
-If you're using Kotlin and if you do not have an Application class, create one, and in your App.kt:
+If you're using Kotlin and if you do not have an application class, you will need to create one and add the following in your `App.kt`:
 
 ```kotlin
 import android.app.Application
@@ -383,15 +414,15 @@ class App: Application() {
 }
 ```
 
-And set android:name="App" in your AndroidManifest.xml for <application> tag:
+Then, set `android:name="App"` in your `AndroidManifest.xml` under the `<application>` tag as shown:
 
 ```xml
 <application
 android:name="App" ….
 ```
 
-For more information refer [FullStory documentation](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording#01F5E7X1NYJY51ME0PEWSM0KBJ)
+For more information, refer to the [**FullStory documentation**](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording#01F5E7X1NYJY51ME0PEWSM0KBJ)
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring FullStory with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+If you come across any issues while configuring FullStory with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
