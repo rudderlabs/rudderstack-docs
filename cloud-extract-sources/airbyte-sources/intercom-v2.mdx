@@ -80,6 +80,12 @@ For Intercom versions less than **2.1**, data syncs to the warehouse destination
 
 <img src="../../assets/cloud-extract-sources/singer-intercom-8.png" alt="Sync error" />
 
+The complete error log is as shown:
+
+```text
+Traceback (most recent call last):unknown error File "/airbyte/integration_code/main.py", line 13, in <module> launch(source, sys.argv[1:]) File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/entrypoint.py", line 108, in launch for message in source_entrypoint.run(parsed_args): File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/entrypoint.py", line 99, in run for message in generator: File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/abstract_source.py", line 110, in read raise e File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/abstract_source.py", line 106, in read internal_config=internal_config, File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/abstract_source.py", line 136, in _read_stream for record in record_iterator: File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/abstract_source.py", line 208, in _read_full_refresh for record in records: File "/airbyte/integration_code/source_intercom/source.py", line 65, in read_records raise e File "/airbyte/integration_code/source_intercom/source.py", line 60, in read_records yield from super().read_records(*args, **kwargs) File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/streams/http/http.py", line 351, in read_records response = self._send_request(request, request_kwargs) File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/streams/http/http.py", line 318, in _send_request return backoff_handler(user_backoff_handler)(request, request_kwargs) File "/usr/local/lib/python3.7/site-packages/backoff/_sync.py", line 94, in retry ret = target(*args, **kwargs) File "/usr/local/lib/python3.7/site-packages/backoff/_sync.py", line 94, in retry ret = target(*args, **kwargs) File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/streams/http/http.py", line 284, in _send response.raise_for_status() File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 953, in raise_for_status raise HTTPError(http_error_msg, response=self)requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.intercom.io/data_attributes?model=contact
+```
+
 This is because many Intercom resources are not supported by the older API versions. In such a scenario, we highly recommend updating your Intercom API.
 
 <div class="infoBlock">
