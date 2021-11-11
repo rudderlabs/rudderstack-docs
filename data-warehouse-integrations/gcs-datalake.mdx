@@ -18,9 +18,12 @@ To set up GCS data lake as a destination in RudderStack, you will need to create
 - Go to **https://console.cloud.google.com/iam-admin/roles** and click on **CREATE ROLE**.
 - Then, fill in the details as shown:
 
+<img src="../assets/dw-integrations/gcs-datalake-2.png" alt="Role details" />
+
 - Fill the details and click on **ADD PERMISSIONS**.
 - Under **Filter permissions by role**, select **Storage Object Admin** and grant the required permissions:
 
+<img src="../assets/dw-integrations/gcs-datalake-3.png" alt="Setting permissions" />
 
 - The permission required to successfully use the GCS data lake destination is shown:
 
@@ -32,21 +35,34 @@ storage.objects.create
 ### Creating the service account and attaching the role
 
 - Go to **https://console.cloud.google.com/iam-admin/serviceaccounts**.
+
 - Then, select the project containing the dataset that you want to use.
+
 - Next, click on **CREATE SERVICE ACCOUNT**.
-- Fill in the details as shown below and click on **CREATE AND CONTINUE**.
+
+- Fill in the details as shown below and click on **CREATE**.
+
+<img src="../assets/dw-integrations/gcs-datalake-4.png" alt="Service account details" />
 
 - Then, select the previously created role and click on **CONTINUE**.
+
+<img src="../assets/dw-integrations/gcs-datalake-5.png" alt="Role details" />
 
 - Finally, after completing Steps 1 and 2, click on **DONE**. 
 
 ### Creating and downloading the JSON key
 
-- Click on the three dots under **Actions** in the service account that you just created and select **Manage keys**, as shown: 
+- Click on the three dots under **Actions** in the service account that you just created and select **Manage keys**, as shown:
+
+<img src="../assets/dw-integrations/gcs-datalake-6.png" alt="Manage keys option" />
 
 - Click on **ADD KEY**, followed by **Create new key**, as shown:
 
+<img src="../assets/dw-integrations/gcs-datalake-7.png" alt="Creating new key" />
+
 - In the resulting pop-up, select **JSON** and click on **CREATE**.
+
+<img src="../assets/dw-integrations/gcs-datalake-8.png" alt="Downloading JSON key" />
 
 - Finally, download this JSON file. This file is required while setting up the GCS data lake destination in RudderStack.
 
@@ -65,7 +81,7 @@ Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and
 
 * Assign a name to your destination and click on **Next**. You should then see the following screen:
 
-<img src="   " alt="GCS data lake destination settings in RudderStack" />
+<img src="../assets/dw-integrations/gcs-datalake-1.png" alt="GCS data lake destination settings in RudderStack" />
 
 ### Connection settings
 
@@ -108,15 +124,15 @@ Suppose that RudderStack tracks the following two events:
 
 | Event Name             | Timestamp                                        |
 | :-------------------| :----------------------------------|
-| Product Purchased | "2019-10-12T08:40:50.52Z" UTC |
-| Cart Viewed             | "2019-11-12T09:34:50.52Z" UTC  |
+| Product Purchased | `"2019-10-12T08:40:50.52Z" UTC` |
+| Cart Viewed             | `"2019-11-12T09:34:50.52Z" UTC`  |
 
 RudderStack then converts these events into Parquet files and dumps them into the following folders:
 
 | Event Name             | Folder Location  |
 | :-------------------| :----------------|
-| Product Purchased | https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08 |
-| Cart Viewed             | https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09              |
+| Product Purchased | `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` |
+| Cart Viewed             | `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09`              |
 
 ## Contact us
 
