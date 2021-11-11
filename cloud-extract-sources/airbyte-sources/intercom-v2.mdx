@@ -74,6 +74,19 @@ RudderStack will start ingesting data from Intercom as per the specified frequen
   Use the <strong>Use Existing Destination</strong> option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the <strong>Create New Destination</strong> button.
 </div>
 
+## Failing syncs for older Intercom API versions
+
+For Intercom versions less than **2.1**, data syncs to the warehouse destination will fail and throw an error as shown:
+
+<img src="../../assets/cloud-extract-sources/singer-intercom-8.png" alt="Sync error" />
+
+This is because many Intercom resources are not supported by the older API versions. In such a scenario, we highly recommend updating your Intercom API.
+
+<div class="infoBlock">
+
+For more information on updating your Intercom API version, refer to this <a href="https://developers.intercom.com/building-apps/docs/update-your-api-version">Intercom support page</a>.
+</div>
+
 ## FAQs
 
 #### How do I get the Intercom access token?
@@ -91,6 +104,14 @@ For more details, refer to the Intercom [**support page**](https://help-desk-mig
 Yes, it is.
 
 RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
+#### While syncing data to the warehouse destination, I get the following error. What should I do?
+
+<img src="../../assets/cloud-extract-sources/singer-intercom-8.png" alt="Sync error" />
+
+For Intercom versions less than **2.1**, data syncs to the warehouse destination will fail and throw an error, as seen above. This is because many Intercom resources are not supported by the older API versions. In such a scenario, you will need to update your Intercom API.
+
+For more information on updating your Intercom API version, refer to their [**support page**](https://developers.intercom.com/building-apps/docs/update-your-api-version).
 
 ## Contact us
 
