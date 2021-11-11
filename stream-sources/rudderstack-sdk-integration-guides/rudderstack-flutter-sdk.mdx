@@ -21,7 +21,7 @@ To set up the RudderStack Flutter SDK, there are a few prerequisites as mentione
 - You will need to set up a [RudderStack Account](https://app.rudderstack.com).
 - Once signed up, your `Flutter` source `writeKey` will appear in the Dashboard, as shown:
 
-<img src="../../../../images/assets/flutter_setup.png" />
+<img src="../../../../images/assets/flutter_setup(1).png" />
 <span class="imageTitle">Adding Flutter SDK</span>
 
 - You will also need your `Data-Plane URL`. The following screenshot shows the data plane URL for the managed hosting mode:
@@ -125,9 +125,7 @@ You can disable these events by calling <code class="inline-code">withTrackLifeC
 
 ## Identify
 
-We capture `deviceId` and use that as the `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method.
-
-Once you set the `identify` information to the user, it will also be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+We capture `deviceId` and use that as the `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, it will also be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
 <div class="infoBlock">
 
@@ -289,7 +287,7 @@ options.putIntegrationWithFactory(Appcenter(), true);
 
 <div class="infoBlock">
 
-The keyword <code class="inline-code">All</code> in the above snippet represents all the destinations to which the source is connected. Its value is set to <code class="inline-code">true</code> by default.
+The keyword <code class="inline-code">All</code> in the above snippet represents all the destinations to which the source is connected to. Its value is set to <code class="inline-code">true</code> by default.
 
 </div>
 
@@ -355,7 +353,7 @@ RudderClient.setAnonymousId(<ANONYMOUS_ID>);
 
 You can use the `setAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `setAdvertisingId` method accepts a `string` argument :
 
-- `id` : Your Android `advertisingId` \(AAID\) \(or\) Your iOS `advertisingId` \(IDFA\)
+- `id` : Your Android `advertisingId` \(AAID\) \or\ Your iOS `advertisingId` \(IDFA\)
 
 <div class="warningBlock">
 
@@ -396,13 +394,13 @@ You can configure your client based on the following parameters by passing them 
 | `flushQueueSize`        | `int`     | Number of events in a batch request to the server.                                                                                                                                                                                                | `30`                                                     |
 | `dbThresholdCount`      | `int`     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                                                                                                                           | `10000`                                                  |
 | `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server.                                                                                                                                                                                           | `10 seconds`                                             |
-| `configRefreshInterval` | `int`     | It will fetch the config from `dashboard` after this many hours.                                                                                                                                                                                  | `2`                                                      |
+| `configRefreshInterval` | `int`     | Fetches the config from `dashboard` after the specified time.                                                                                                                                                                                     | `2 hours`                                                |
 | `trackLifecycleEvents`  | `boolean` | Whether SDK will capture application life cycle events automatically.                                                                                                                                                                             | `true`                                                   |
 | `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 
 ### Self-Hosted Control Plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the Flutter SDK needs to fetch the required configuration from the Control Plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the Flutter SDK needs to fetch the required configuration from the Control Plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your `RudderConfig.Builder` that points to your hosted source configuration file.
 
 <div class="warningBlock">
 You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using the <a href="https://app.rudderstack.com">RudderStack dashboard</a> from <a href="https://app.rudderstack.com">https://app.rudderstack.com</a>. This parameter is supported only if you are using our open-source <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to set up your own Control Plane.
@@ -451,4 +449,4 @@ print(context["traits"]);
 
 ## Contact Us
 
-In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-flutter/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel, we will be happy to talk to you!

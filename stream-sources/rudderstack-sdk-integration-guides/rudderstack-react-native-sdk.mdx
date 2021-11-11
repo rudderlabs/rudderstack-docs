@@ -21,7 +21,7 @@ To set up the RudderStack React Native SDK, there are a few prerequisites as men
 - You will need to set up a [RudderStack Account](https://app.rudderlabs.com).
 - Once signed up, your `React Native` source `writeKey` will appear in the Dashboard, as shown:
 
-<img src="../../../../images/assets/react-native.png" />
+<img src="../../../../images/assets/react-native(1).png" />
 <span class="imageTitle">Adding React Native SDK</span>
 
 - You will also need your `Data-Plane URL`. The following screenshot shows the data plane URL for the managed hosting mode:
@@ -126,7 +126,7 @@ Check the [Configuring your RudderStack Client](https://rudderstack.com/docs/str
 
 ## Track
 
-You can record the users' activity through the `track` method. Every action performed by the user is called an event.
+You can record the users' activity through the `track` method. Every action performed by the user is called an `event`.
 
 An example of the `track` event is as shown:
 
@@ -162,7 +162,7 @@ You can disable these events by passing <code class="inline-code">trackLifecycle
 
 ## Identify
 
-Capture `deviceId` and use that as `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+We capture `deviceId` and use that as `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
 An example `identify` event is as shown:
 
@@ -447,11 +447,11 @@ You can configure your client based on the following parameters by passing them 
         <code class="inline-code">int</code>
       </td>
       <td style="text-align:left">
-        It will fetch the config from <code class="inline-code">dashboard</code> after this many
-        hours.
+        Fetches the config from <code class="inline-code">dashboard</code> after the specified
+        time.
       </td>
       <td style="text-align:left">
-        <code class="inline-code">2</code>
+        <code class="inline-code">2 hours</code>
       </td>
     </tr>
     <tr>
@@ -556,7 +556,7 @@ An example of this method's usage is as shown:
 rudderClient.setAnonymousId(ANONYMOUS_ID)
 ```
 
-## FAQ
+## FAQs
 
 ### Do I need to link the SDK using the React Native link?
 
@@ -585,4 +585,4 @@ console.log("Traits are : " + JSON.stringify(rudderContext.traits))
 
 ## Contact Us
 
-In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel, we will be happy to talk to you!

@@ -31,7 +31,7 @@ To set up the RudderStack iOS SDK, there are a few prerequisites as mentioned be
 <img src="../../../../images/assets/ios.png" />
 <span class="imageTitle">iOS source writeKey on the RudderStack Dashboard</span>
 
-- You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
+- You will also need your `Data Plane URL`. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
 
 <div class="infoBlock">
 
@@ -44,7 +44,7 @@ To get the **Data Plane URL**:
     are required to set up your own data plane by <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/">
       installing and setting up RudderStack
     </a>
-    in your preferred dev environment.
+     in your preferred dev environment.
   </li>
   <li>
     
@@ -295,7 +295,7 @@ The `optOut` API is available in the RudderStack iOS SDK starting from version `
 
 You can record the users' activity through the `track` method. Every action performed by the user is called an `event`.
 
-An example `track` event is as shown:
+An example of the `track` event is as shown:
 
 <Tabs>
   <TabList>
@@ -339,7 +339,7 @@ The `track` method accepts the following parameters:
 
 ## Identify
 
-We capture `deviceId` and use that as `anonymousId` for identifying the user. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+We capture `deviceId` and use that as `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
 <div class="infoBlock">
 
@@ -446,7 +446,7 @@ The `screen` method accepts the following parameters:
 
 | Name         | Data Type      | Required | Description                                                              |
 | :----------- | :------------- | :------- | :----------------------------------------------------------------------- |
-| `screenName` | `NSString`     | Yes      | Name of the viewed screen                                                |
+| `screenName` | `NSString`     | Yes      | Name of the screen viewed                                                |
 | `properties` | `NSDictionary` | No       | Extra property object that you want to pass along with the `screen` call |
 | `options`    | `RudderOption` | No       | Extra options to be passed along with the `screen` event                 |
 
@@ -519,7 +519,11 @@ Alternatively, you can use the following method signature
 | `traits`  | `NSDictionary` | No       | Any other property of the organization you want to pass along with the call |
 | `options` | `RudderOption` | No       | Event level options                                                         |
 
-We don't persist the traits for the group across the sessions.
+<div class="infoBlock">
+
+RudderStack doesn't persist the traits for the group across the sessions.
+
+</div>
 
 ## Alias
 
@@ -631,14 +635,14 @@ You can configure your client based on the following parameters using `RudderCon
 | Parameter               | Type      | Description                                                                                                                                                                                                                                                    | Default Value                                                              |
 | :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
 | `logLevel`              | `int`     | Controls how much of the log you want to see from the SDK.                                                                                                                                                                                                     | `RSLogLevelNone`                                                           |
-| `dataPlaneUrl`          | `string`  | Your Data Plane URL.                                                                                                                                                                                                                                           | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com) |
+| `dataPlaneUrl`          | `string`  | Your Data Plane URL.                                                                                                                                                                                                                                           | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com)         |
 | `flushQueueSize`        | `int`     | Number of events in a batch request sent to the server.                                                                                                                                                                                                        | `30`                                                                       |
 | `dbThresholdCount`      | `int`     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                                                                                                                                        | `10000`                                                                    |
-| `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server .                                                                                                                                                                                                       | `10 seconds`                                                               |
-| `configRefreshInterval` | `int`     | Fetches the config from `dashboard` after the specified time \(in hours\).                                                                                                                                                                                     | `2`                                                                        |
+| `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server.                                                                                                                                                                                                        | `10 seconds`                                                               |
+| `configRefreshInterval` | `int`     | Fetches the config from `dashboard` after the specified time.                                                                                                                                                                                                  | `2 hours`                                                                  |
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                                     |
 | `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
-| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com)       |
+| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | [**https://api.rudderlabs.com**](https://api.rudderlabs.com)               |
 
 ### Self-Hosted Control Plane
 
@@ -1139,7 +1143,7 @@ Some pointers to keep in mind:
 [[RSClient sharedInstance] flush];
 ```
 
-## FAQ
+## FAQs
 
 ### I'm facing issues building with Carthage on XCode 12. What should I do?
 
@@ -1337,4 +1341,4 @@ You only need to call the `optOut` API with the required parameter only once, as
 
 ## Contact Us
 
-If you come across any issues while using the RudderStack iOS SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel, we will be happy to talk to you!
