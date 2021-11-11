@@ -94,25 +94,23 @@ RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder bu
 </span>
 </li>
 </ul>
-    To complete the FullStory integration, you need to specify which FullStory organization to record to. To do so, follow these steps:
+    To complete the FullStory integration, you need to specify which FullStory organization to record. Follow these steps:
 <ul>
     <li>Open your app's <code class="inline-code">Info.plist</code>.</li>
     <li>From the menu, choose <b>Editor</b> - <b>Add Item</b>. Set the key name to <code class="inline-code">FullStory</code>, and the type to <code class="inline-code">Dictionary</code>.</li>
     <li>Right-click on the FullStory row, and choose <b>Add Row</b>. Set the key name to <code class="inline-code">OrgId</code>, and the type to <code class="inline-code">String</code>. For the value, paste your assigned organization ID.</li>
-    <li>When configured correctly, the <code class="inline-code">Info.plist</code> entry should look as follows:
- </li>
+    <li>When configured correctly, the <code class="inline-code">Info.plist</code> entry should look as follows:</li>
     
-    <img src="../../assets/event-stream-destinations/fullstory-devicemode-ios.png" alt="Final entry"/>
-
+<img src="../../assets/event-stream-destinations/fullstory-devicemode-ios.png" alt="Final entry"/>
 </ul>
     
-    <div class="infoBlock">
+<div class="infoBlock">
         
-        For more information, refer to the <a href="https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Recording">FullStory iOS documentation</a>.
-    </div>
-      </TabPanel>
-      <TabPanel>
-        To add FullStory to your Android project, follow these steps:
+For more information, refer to the <a href="https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Recording">FullStory iOS documentation</a>.
+</div>
+</TabPanel>
+<TabPanel>
+To add FullStory to your Android project, follow these steps:
 <ul>
 <li>Open your <code class="inline-code">app/build.gradle</code> \(Module: app\) file and add the following under the <code class="inline-code">dependencies</code> section:
 <span>
@@ -149,7 +147,7 @@ buildscript {
 </span>
 </li>
 <li> Make sure that you replace <code class="inline-code">PLUGIN_VERSION</code> with the correct version of the FullStory Android plugin. You can find the latest release notes <a href="https://docs.google.com/document/d/e/2PACX-1vRBDZpgGoLz2IdHntpXtS_1HWGMwlf6n1J1SurkcyguQB9Liv9OCQ1LHnNmfhxwcZ-ZQSl7QUgcMIR5/pub">here</a> (this is currently 1.18.0).
-    </li>
+</li>
     
 <li>To apply the FullStory plugin, add the following snippet into your app-specific <code class="inline-code">build.gradle</code> (if your Gradle file adds plugins via plugin ID):
 <span>
@@ -185,26 +183,26 @@ android {
 
     Replace <code class="inline-code">YOUR_ORG_ID_HERE</code> with your organization ID.
 </div>
-<li>To apply FullStory to all variants, including those used at debug time, add the following line below the org line:
-    <span>
+<li>To apply FullStory to all variants, including those used at debug time, add the following line below <code class="inline-code">org</code>:
+<span>
         
 ```groovy
 org 'YOUR_ORG_ID_HERE'
 enabledVariants 'all'
 ```
-        </span>
-        </li>
+</span>
+</li>
 <li>Add the following permissions, if not added already, to your <code class="inline-code">AndroidManifest.xml</code>:
-    <span>
+<span>
 
 ```markup
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ```
-    </span>
-    </li>
+</span>
+</li>
 <li>Finally, initialize the RudderStack SDK in your <code class="inline-code">Application</code> class' <code class="inline-code">onCreate()</code> method as shown:
-    <span>
+<span>
         
 ```kotlin
 // initializing Rudder SDK
@@ -217,12 +215,12 @@ val rudderClient = RudderClient.getInstance(
           .build()
 )
 ```
-    </span>
-        </li>
+</span>
+</li>
 </ul>
-    <div class="infoBlock">
+<div class="infoBlock">
 
-        For more information, refer to the <a href="https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording">FullStory Android documentation</a>.
+For more information, refer to the <a href="https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording">FullStory Android documentation</a>.
 </div>
       </TabPanel>
     </TabPanels>
