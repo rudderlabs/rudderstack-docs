@@ -59,7 +59,6 @@ To add FullStory to your project, follow the steps below depending on your platf
   <TabList>
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
-    <Tab>React Native</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -97,7 +96,7 @@ RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder bu
 </ul>
     To complete the FullStory integration, you need to specify which FullStory organization to record to. To do so, follow these steps:
 <ul>
-    <li>Open your app's <code class="inline-code">Info.plist</code>. </li>
+    <li>Open your app's <code class="inline-code">Info.plist</code>.</li>
     <li>From the menu, choose <b>Editor</b> - <b>Add Item</b>. Set the key name to <code class="inline-code">FullStory</code>, and the type to <code class="inline-code">Dictionary</code>.</li>
     <li>Right-click on the FullStory row, and choose <b>Add Row</b>. Set the key name to <code class="inline-code">OrgId</code>, and the type to <code class="inline-code">String</code>. For the value, paste your assigned organization ID.</li>
     <li>When configured correctly, the <code class="inline-code">Info.plist</code> entry should look as follows:
