@@ -394,7 +394,7 @@ recordOnStart false
 
 Refer to the [**FullStory Android documentation**](https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Recording#01F5E7XY5HJYV5ZWCCSYNQ8TXC) for more information.
 
-### How to subclass from an application in Android
+### How do I subclass from an application in Android?
 
 FullStory requires that you enable MultiDex. If your minSdkVersion is set to 21 or higher, Multidex is enabled by default. In this case, you will need to extend `android.app.Application`, otherwise there will be a build error. If your minSdkVersion is lower than 21, you will need to subclass from `androidx.multidex.MultiDexApplication` instead.
 
@@ -423,13 +423,13 @@ Then, set `android:name="App"` in your `AndroidManifest.xml` under the `<applica
 android:name="App" ….
 ```
          
-### How to solve Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle'
+### I encountered this error: Build was configured to prefer settings repositories over project repositories but repository 'Google' was added by build file 'build.gradle'. What do I do?
 
-Go to your `settings.gradle` file located in the root and then comment or remove the third line: `repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)`.
+Go to your `settings.gradle` file located in the root, and then comment or remove this line: `repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)` as shown in the following snippet:
 
 ```groovy
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    // repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
