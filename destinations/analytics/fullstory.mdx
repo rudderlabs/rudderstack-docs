@@ -160,7 +160,7 @@ fullstory {
 
 <div class="infoBlock">
   
-  Replace `YOUR_ORG_ID_HERE` above with your organization ID.
+  Replace <code class="inline-code">YOUR_ORG_ID_HERE</code> above with your organization ID.
 </div>
 
 * To apply FullStory to all variants, including those used at debug time, add the following line below `org`:
@@ -293,37 +293,21 @@ In the above snippet, RudderStack captures all the information related to the vi
 Note that the <code class="inline-code">screen</code> call will be sent to FullStory as a custom event.
 </div>
 
-# Reset
+## Reset
 
 The `reset` method calls will release the identity of the current user and create a new anonymous session. It should be called when the users log out. For more information, refer to the [**FullStory Reset API**](https://developer.fullstory.com/anonymize?lang=ObjectiveC).
 
-A sample `reset` call is as shown below:
-
-<Tabs>
-  <TabList>
-    <Tab>iOS</Tab> 
-    <Tab>Android</Tab>
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
+A sample `reset` call for iOS is as shown:
 
 ```objectivec
-
 [[RSClient sharedInstance] reset];
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
+```
+
+For Android, a sample `reset` call shown below:
 
 ```kotlin
-
 MainApplication.rudderClient.reset()
 ````
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
 
 ## FAQs
 
