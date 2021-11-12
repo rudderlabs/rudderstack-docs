@@ -615,7 +615,7 @@ export const jsonData = [
                  ]
               }
            ]
-        },
+        }
      ]
   },
   {
