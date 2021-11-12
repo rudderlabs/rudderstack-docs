@@ -203,7 +203,7 @@ enabledVariants 'all'
 // initializing Rudder SDK
 val rudderClient = RudderClient.getInstance(
   this,
-  <WRITE_KEY>,
+  WRITE_KEY,
   RudderConfig.Builder()
           .withDataPlaneUrl(DATA_PLANE_URL)
           .withFactory(FullStoryIntegrationFactory.FACTORY)
