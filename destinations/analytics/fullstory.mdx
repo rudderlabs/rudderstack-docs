@@ -165,7 +165,7 @@ plugins {
   id 'fullstory'
 }
 fullstory {
-  org 'YOUR_ORG_ID_HERE'
+  org '00000'
 }
 ```
 </span>
@@ -177,20 +177,20 @@ fullstory {
 apply plugin: 'com.android.application'
 apply plugin: 'fullstory'
 fullstory {
- org 'YOUR_ORG_ID_HERE'
-              }
+ org '00000'
+}
 ```
 </span>
 </li>
 <div class="infoBlock">
 
-    Replace <code class="inline-code">YOUR_ORG_ID_HERE</code> with your organization ID.
+    Replace <code class="inline-code">00000</code> above with your organization ID.
 </div>
 <li>To apply FullStory to all variants, including those used at debug time, add the following line below <code class="inline-code">org</code>:
 <span>
         
 ```groovy
-org 'YOUR_ORG_ID_HERE'
+org '00000'
 enabledVariants 'all'
 ```
 </span>
