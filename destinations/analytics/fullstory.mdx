@@ -165,32 +165,24 @@ plugins {
   id 'fullstory'
 }
 fullstory {
-  org '00000'
+  org 'YOUR_ORG_ID_HERE'
 }
 ```
 </span>
 </li>
-<li>If your Gradle file applies plugins, use the following snippet instead:
-<span>
-    
-```groovy
-apply plugin: 'com.android.application'
-apply plugin: 'fullstory'
-fullstory {
- org '00000'
-}
-```
-</span>
-</li>
+<li>If your Gradle file applies plugins, use the following snippet instead: </li>
+
+<img src="../../assets/event-stream-destinations/fullstory-devicemode-android.png" alt="Final entry"/>
+
 <div class="infoBlock">
 
-    Replace <code class="inline-code">00000</code> above with your organization ID.
+    Replace <code class="inline-code">YOUR_ORG_ID_HERE</code> above with your organization ID.
 </div>
 <li>To apply FullStory to all variants, including those used at debug time, add the following line below <code class="inline-code">org</code>:
 <span>
         
 ```groovy
-org '00000'
+org 'YOUR_ORG_ID_HERE'
 enabledVariants 'all'
 ```
 </span>
