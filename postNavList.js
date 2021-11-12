@@ -10,13 +10,19 @@ export const postNavList = [
 },
 {
     "key":"get-started",
-    "title":"Get Started",
+    "title":"RudderStack Open Source",
     "link":"/get-started/",
     "content":[]
 },
 {
+   "key":"control-plane-lite",
+   "title":"Control Plane Setup",
+   "link":"/get-started/control-plane-lite/",
+   "content":[]
+},
+{
     "key":"installing-and-setting-up-rudderstack",
-    "title":"Install and Set Up RudderStack",
+    "title":"Data Plane Setup",
     "link":"/get-started/installing-and-setting-up-rudderstack/",
     "content":[]
 },
@@ -45,6 +51,18 @@ export const postNavList = [
     "content":[]
  },
  {
+   "key":"architecture",
+   "title":"Architecture",
+   "link":"/get-started/rudderstack-architecture/",
+   "content":[]
+},
+{
+   "key":"connections",
+   "title":"RudderStack Cloud",
+   "link":"/connections/",
+   "content":[]
+},
+ {
     "key":"dashboard-overview",
     "title":"Dashboard Overview",
     "link":"/get-started/dashboard-overview/",
@@ -63,30 +81,12 @@ export const postNavList = [
    "content":[]
 },
  {
-   "key":"control-plane-lite",
-   "title":"Control Plane Lite",
-   "link":"/get-started/control-plane-lite/",
-   "content":[]
-},
- {
     "key":"live-events",
     "title":"Live Events",
     "link":"/get-started/live-events/",
     "content":[]
  },
- {
-    "key":"architecture",
-    "title":"Architecture",
-    "link":"/get-started/rudderstack-architecture/",
-    "content":[]
- },
- {
-    "key":"connections",
-    "title":"Connections",
-    "link":"/connections/",
-    "content":[]
- },
- {
+{
     "key":"adding-source-and-destination-rudderstack",
     "title":"How to Add a Source and Destination in RudderStack",
     "link":"/connections/adding-source-and-destination-rudderstack/",
@@ -94,7 +94,7 @@ export const postNavList = [
  },
  {
     "key":"rudderstack-connection-modes",
-    "title":"RudderStack Connection Modes: Cloud Mode vs Device Mode",
+    "title":"Connection Modes: Cloud Mode vs Device Mode",
     "link":"/connections/rudderstack-connection-modes/",
     "content":[]
  },
