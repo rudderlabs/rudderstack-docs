@@ -1223,15 +1223,33 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"identity-resolution-in-rudderstack",
+    "title":"Identity Resolution",
+    "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
+    "content":[]
+ },
+ {
+    "key":"warehouse-schemas",
+    "title":"Warehouse Schemas",
+    "link":"/data-warehouse-integrations/warehouse-schemas/",
+    "content":[]
+ },
+ {
     "key":"amazon-redshift",
     "title":"Amazon Redshift",
     "link":"/data-warehouse-integrations/amazon-redshift/",
     "content":[]
  },
  {
-    "key":"identity-resolution-in-rudderstack",
-    "title":"Identity Resolution",
-    "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
+    "key":"azure-synapse",
+    "title":"Azure Synapse",
+    "link":"/data-warehouse-integrations/azure-synapse/",
+    "content":[]
+ },
+ {
+    "key":"azure-datalake",
+    "title":"Azure Data Lake",
+    "link":"/data-warehouse-integrations/azure-datalake/",
     "content":[]
  },
  {
@@ -1247,6 +1265,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"gcs-datalake",
+    "title":"Google Cloud Storage Data Lake",
+    "link":"/data-warehouse-integrations/gcs-datalake/",
+    "content":[]
+ },
+ {
     "key":"postgresql",
     "title":"PostgreSQL",
     "link":"/data-warehouse-integrations/postgresql/",
@@ -1259,24 +1283,6 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"warehouse-faqs",
-    "title":"Warehouse FAQs",
-    "link":"/data-warehouse-integrations/warehouse-faqs/",
-    "content":[]
- },
- {
-    "key":"warehouse-schemas",
-    "title":"Warehouse Schemas",
-    "link":"/data-warehouse-integrations/warehouse-schemas/",
-    "content":[]
- },
- {
-    "key":"azure-synapse",
-    "title":"Azure Synapse",
-    "link":"/data-warehouse-integrations/azure-synapse/",
-    "content":[]
- },
- {
     "key":"microsoft-sql-server",
     "title":"Microsoft SQL Server",
     "link":"/data-warehouse-integrations/microsoft-sql-server/",
@@ -1286,6 +1292,12 @@ export const postNavList = [
     "key":"s3-datalake",
     "title":"Amazon S3 Data Lake",
     "link":"/data-warehouse-integrations/s3-datalake/",
+    "content":[]
+ },
+ {
+    "key":"warehouse-faqs",
+    "title":"Warehouse FAQs",
+    "link":"/data-warehouse-integrations/warehouse-faqs/",
     "content":[]
  },
  {
