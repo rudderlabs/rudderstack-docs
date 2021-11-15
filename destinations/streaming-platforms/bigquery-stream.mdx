@@ -50,9 +50,24 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 If you have already configured BigQuery Stream as a destination in RudderStack, your credentials should be visible under the **Use existing credentials** option.
 </div>
 
-<div class="warningBlock">
+<div class="infoBlock">
 
-The user or the account you have chosen should have the required access to the BigQuery APIs. Refer to the <strong>User Permissions</strong> section for more information.
+The following permissions are granted when you allow RudderStack to access your Google account:
+
+<ul>
+    <li>
+      <code class="inline-code">https://www.googleapis.com/auth/userinfo.email</code>
+    </li>
+    <li>
+      <code class="inline-code">https://www.googleapis.com/auth/userinfo.profile</code>.
+    </li>
+    <li>
+      <code class="inline-code">https://www.googleapis.com/auth/bigquery</code>.
+    </li>
+    <li>
+      <code class="inline-code">https://www.googleapis.com/auth/bigquery.insertdata</code>.
+    </li>
+  </ul>
 </div>
 
 - You should then see the following **Connection Settings** screen:
@@ -82,9 +97,14 @@ If you disable the destination and want to re-enable it, you will need to author
 
 ## Sending events to BigQuery Stream
 
+<div class="infoBlock">
+
+<strong>BigQuery Stream supports only <code class="inline-code">track</code> type of events.</strong>
+</div>
+
 <div class="warningBlock">
 
-To stream events into BigQuery successfully, make sure the event payload has the correct format that matches the schema of the table specified in the RudderStack dashboard.
+To stream events into BigQuery successfully, make sure the <code class="inline-code">track</code> event payload format matches the schema of the table specified in the RudderStack dashboard.
 </div>
 
 Suppose you want to stream the events from your web source to BigQuery and the table schema in your BigQuery dataset looks like the following image:

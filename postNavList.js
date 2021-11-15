@@ -1120,6 +1120,18 @@ export const postNavList = [
    "link":"/destinations/storage-platforms/microsoft-azure-blob-storage/",
    "content":[]
 },
+{
+   "key":"streaming-platforms",
+   "title":"Streaming Platforms",
+   "link":"/destinations/streaming-platforms/",
+   "content":[]
+},
+{
+  "key":"bigquery-stream",
+  "title":"BigQuery Stream",
+  "link":"/destinations/storage-platforms/bigquery-stream/",
+  "content":[]
+},
  {
     "key":"tag-managers",
     "title":"Tag Managers",

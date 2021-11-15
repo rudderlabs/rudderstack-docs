@@ -1460,6 +1460,19 @@ export const jsonData = [
            ]
         },
         {
+         "key":"streaming-platforms",
+         "title":"Streaming Platforms",
+         "link":"/destinations/streaming-platforms/",
+         "content":[
+          {
+             "key":"bigquery-stream",
+             "title":"BigQuery Stream",
+             "link":"/destinations/storage-platforms/bigquery-stream/",
+             "content":[
+                
+             ]
+          },
+        {
            "key":"tag-managers",
            "title":"Tag Managers",
            "link":"/destinations/tag-managers/",
