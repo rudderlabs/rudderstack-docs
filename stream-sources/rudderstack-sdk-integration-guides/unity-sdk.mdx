@@ -3,52 +3,48 @@
 title: "Unity"
 description: >-
   Detailed technical documentation on the RudderStack Unity SDK to send event
-  data from your game to various destinations.
+  data from your games to various destinations.
 ---
 
 # Unity
 
-## What is the RudderStack Unity SDK?
-
-The RudderStack Unity SDK is a wrapper for the RudderStack [**Android SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [**iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) used for tracking game event data.
+The **RudderStack Unity SDK** is a wrapper for the RudderStack [**Android SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [**iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) and is used for tracking game event data. 
 
 After integrating this SDK with your game, you will be able to track and send the game event data to any analytics destination of your choice.
 
-<div class="successBlock">
+Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-unity) to get a more hands-on understanding of the SDK.
 
-  Check the <a href="https://github.com/rudderlabs/rudder-sdk-unity">Unity SDK codebase on GitHub</a> to get a more hands-on understanding of how it works.
-</div>
-
-## SDK Setup Requirements
+## SDK setup requirements
 
 To configure the Unity SDK, you will need the following:
 
-- You will need to set up a [RudderStack account](https://app.rudderstack.com).
-- Once signed up, set up a Unity source in the dashboard. For more information, follow [this guide](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up a Unity source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
 
 <img src="../../assets/event-stream-sources/unity-sdk-1.png" alt="Unity source write key" />
 
-- You will also need a data plane URL. Follow [this section](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
 - Finally, you will need the [**Unity development kit**](https://store.unity.com/download).
 
-## Adding Unity SDK to Your Project
+## Adding Unity SDK to your project
+
+Follow these steps to integrate the RudderStack Unity SDK with your project:
 
 - Download `rudder-sdk-unity.unitypackage` from our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/SDK/rudder-sdk-unity.unitypackage).
 - Import the downloaded package to your project. From the **Assets** menu, go to **Import Package** - **Custom Package...** as shown:
 
-<img src="../../assets/unity1 (1) (2) (2).png" />
-<span class="imageTitle">Importing the downloaded package</span>
+<img src="../../assets/event-stream-sources/unity-sdk-2.png" alt="Importing the downloaded package" />
 
-- Select `rudder-sdk-unity.unitypackage` from the location where you have downloaded it and click on **Open**:
+- Select `rudder-sdk-unity.unitypackage` from the downloaded location and click on **Open**, as shown:
 
-<img src="../../assets/screenshot-2020-02-25-at-2.52.44-pm.png" />
+<img src="../../assets/event-stream-sources/unity-sdk-3.png" alt="Selecting the Unity package for integration" />
 
 - Click on `Import` in the import popup as shown:
 
-<img src="../../assets/screenshot-2020-02-25-at-2.54.29-pm.png" />
+<img src="../../assets/event-stream-sources/unity-sdk-4.png" alt="Importing the Unity package" />
 
-## Initializing RudderStack Client
+## Initializing RudderStack client
 
 To initialize the RudderStack client, follow these steps:
 
@@ -79,14 +75,13 @@ RudderClient rudderClient = RudderClient.GetInstance(
 <div class="warningBlock">
 
 If you are building an iOS project, <code class="inline-code">RudderClient.SerializeSqlite()</code> is important to handle races with SQLite.
-
 </div>
 
 ## Track
 
-You can record the users' in-game activity through the `track` method. Every action performed by the user is called an event.
+You can record the users' in-game activity through the `track` method. Every user action is called an **event**.
 
-An example of a `track` event is as shown:
+A sample `track` event is as shown:
 
 ```csharp
 // create event properties
@@ -122,11 +117,11 @@ rudderClient.Track(builder.Build());
 
 ## Identify
 
-The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for identifying the user. It lets you track the users across the application installation.
+The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation.
 
-To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, it will be passed to the successive `track` calls. To reset the user identification, use the `reset` method.
+To attach more information to the user, you can use the `identify` method. Once the SDK identifies the user, it persists and passes the user information to the subsequent `track` calls. To reset the user identification, you can use the `reset` method.
 
-An example `identify` event is as shown:
+A sample `identify` event is as shown:
 
 ```csharp
 RudderMessage identifyMessage = new RudderMessageBuilder().Build();
@@ -153,4 +148,6 @@ You can find the following files in the **Plugins** folder for the SDK:
 
 ## Contact us
 
-If you come across any issues while using the Unity SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel. You can also open an issue on our [**GitHub**](https://github.com/rudderlabs/rudder-sdk-unity).
+For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.
+
+If you come across any issue while using the Unity SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-unity/issues/new).
