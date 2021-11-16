@@ -9,54 +9,6 @@ export const postNavList = [
     "content":[]
 },
 {
-    "key":"get-started",
-    "title":"RudderStack Open Source",
-    "link":"/get-started/",
-    "content":[]
-},
-{
-   "key":"control-plane-lite",
-   "title":"Control Plane Setup",
-   "link":"/get-started/control-plane-lite/",
-   "content":[]
-},
-{
-    "key":"installing-and-setting-up-rudderstack",
-    "title":"Data Plane Setup",
-    "link":"/get-started/installing-and-setting-up-rudderstack/",
-    "content":[]
-},
-{
-    "key":"docker",
-    "title":"Docker",
-    "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
-    "content":[]
- },
- {
-    "key":"kubernetes",
-    "title":"Kubernetes",
-    "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
-    "content":[]
- },
- {
-    "key":"developer-machine-setup",
-    "title":"Developer Machine Setup",
-    "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
-    "content":[]
- },
- {
-    "key":"sending-test-events",
-    "title":"Sending Test Events",
-    "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
-    "content":[]
- },
- {
-   "key":"architecture",
-   "title":"Architecture",
-   "link":"/get-started/rudderstack-architecture/",
-   "content":[]
-},
-{
    "key":"connections",
    "title":"RudderStack Cloud",
    "link":"/connections/",
@@ -1473,6 +1425,54 @@ export const postNavList = [
     "title":"User Suppression API",
     "link":"/rudderstack-api/user-suppression/",
     "content":[]
+ },
+ {
+    "key":"get-started",
+    "title":"RudderStack Open Source",
+    "link":"/get-started/",
+    "content":[]
+},
+{
+   "key":"control-plane-lite",
+   "title":"Control Plane Setup",
+   "link":"/get-started/control-plane-lite/",
+   "content":[]
+},
+{
+    "key":"installing-and-setting-up-rudderstack",
+    "title":"Data Plane Setup",
+    "link":"/get-started/installing-and-setting-up-rudderstack/",
+    "content":[]
+},
+{
+    "key":"docker",
+    "title":"Docker",
+    "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
+    "content":[]
+ },
+ {
+    "key":"kubernetes",
+    "title":"Kubernetes",
+    "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
+    "content":[]
+ },
+ {
+    "key":"developer-machine-setup",
+    "title":"Developer Machine Setup",
+    "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
+    "content":[]
+ },
+ {
+    "key":"sending-test-events",
+    "title":"Sending Test Events",
+    "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
+    "content":[]
+ },
+ {
+   "key":"architecture",
+   "title":"Architecture",
+   "link":"/get-started/rudderstack-architecture/",
+   "content":[]
  },
  {
     "key":"user-guides",
