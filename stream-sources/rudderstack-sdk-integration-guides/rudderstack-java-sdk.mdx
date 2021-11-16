@@ -3,24 +3,34 @@
 title: "Java"
 description: >-
   Detailed technical documentation on using RudderStack’s Java SDK to send
-  events to various destinations
+  events to various destinations.
 ---
 
 # Java
 
-RudderStack’s Java SDK allows you to track your customer event data from your Java code. Once enabled, the event requests hit the RudderStack servers. RudderStack then routes the events to the specified destination platforms as configured by you.
+RudderStack’s Java SDK allows you to track your customer event data from your Java code and send it to your specified destinations.
 
-You can find this SDK in our [GitHub repository](https://github.com/rudderlabs/rudder-sdk-java).
+Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-java) to get a more hands-on understanding of the SDK.
+
+## SDK setup requirements
+
+To set up the RudderStack Java SDK, the following prerequisites must be met:
+
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up a Java source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
+
+<img src="../../../assets/event-stream-sources/java-sdk-1.png" alt="Java source write key" />
+
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
 ## Installing the RudderStack Java SDK
 
 <div class="warningBlock">
 
-**As Bintray has sunset from 1st may, 2021, we're moving our SDK to Maven Central. All the versions from 1.0.1 will now be available in Maven Central only.**
-
+<strong>As Bintray has sunset from 1st may, 2021, we're moving our SDK to Maven Central. All the versions from 1.0.1 will now be available in Maven Central only.</strong>
 </div>
 
-We distribute our Java SDK through [Maven Central](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Maven build system.
+We distribute our Java SDK through [**Maven Central**](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Maven build system.
 
 To install the RudderStack Java SDK, add the following lines of code to `pom.xml`:
 
@@ -32,7 +42,7 @@ To install the RudderStack Java SDK, add the following lines of code to `pom.xml
 </dependency>
 ```
 
-## Initializing the RudderStack Client
+## Initializing the RudderStack client
 
 To initialize the RudderStack client, run the following code snippet:
 
@@ -43,9 +53,16 @@ RudderAnalytics analytics = RudderAnalytics.builder(
 ).build();
 ```
 
-## Sending Events from RudderStack
+## Sending events from the RudderStack client
 
-Once the RudderStack client is initialized, you can use it to send relevant customer events from the RudderStack client. An example `track` call is as shown in the following code snippet:
+Once the RudderStack client is initialized, you can use it to send relevant customer events from the RudderStack client.
+
+<div class="warningBlock">
+
+RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the Java SDK, you need to specify either `userId` or `anonymousId` every time.
+</div>
+
+A sample `track` call is as shown:
 
 ```java
 Map<String, Object> properties = new LinkedHashMap<>();
@@ -61,15 +78,9 @@ Map<String, Object> properties = new LinkedHashMap<>();
 
 ## Identify
 
-The `identify` call lets you associate a user to their actions as well as captures the relevant traits or properties related to that user.
+The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">identify</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `identify` call is as shown:
+A sample `identify` call is as shown:
 
 ```java
 analytics.enqueue(IdentifyMessage.builder()
@@ -95,15 +106,9 @@ The `identify` method parameters are as described below:
 
 ## Track
 
-The `track` call lets you record the users' actions along with their associated properties. Each triggered action is called as an 'event'.
+The `track` call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">track</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track//">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `track` call is as shown:
+A sample `track` call is shown below:
 
 ```java
 Map<String, Object> properties = new LinkedHashMap<>();
@@ -131,15 +136,9 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
+The `page` call allows you to record the page views on your website along with the other relevant information about the viewed page.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">page</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `page` call is as shown:
+A sample `page` call is as shown:
 
 ```java
 analytics.enqueue(PageMessage.builder("Schedule")
@@ -166,15 +165,9 @@ The `page` method parameters are as described below:
 
 ## Screen
 
-The `screen` call is the mobile equivalent of the page call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
+The `screen` call is the mobile equivalent of the `page` call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">screen</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `screen` call is as shown:
+A sample `screen` call is as shown:
 
 ```java
 analytics.enqueue(ScreenMessage.builder("Schedule")
@@ -201,15 +194,9 @@ The `screen` method parameters are as described below:
 
 ## Group
 
-The `group` call allows you to associate an identified user to a group - either a company, project or a team. You can also record custom traits or properties associated with that group.
+The `group` call lets you associate an identified user to a group - either a company, project or a team and record any custom traits or properties associated with that group.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">group</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `group` call is as shown:
+A sample `group` call is as shown:
 
 ```python
 analytics.enqueue(GroupMessage.builder("group123")
@@ -240,11 +227,10 @@ The `alias` call allows you to associate one identity with another.
 
 <div class="infoBlock">
 
-<code class="inline-code">alias</code> is an advanced method. However, it is required when managing user identities in some destinations.
-
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
 </div>
 
-An example `alias` call is as shown:
+A sample `alias` call is as shown:
 
 ```java
 analytics.enqueue(AliasMessage.builder("previousId")
@@ -265,16 +251,15 @@ The `alias` method parameters are as mentioned below:
 
 <div class="infoBlock">
 
-For a detailed explanation of the <code class="inline-code">alias</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
+For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
 
 </div>
 
-## Block Flush
+## Block flush
 
 <div class="infoBlock">
 
 This feature is only available from version <code class="inline-code">1.0.1</code> onwards.
-
 </div>
 
 If you want to block `flush` until all the events are uploaded , the Java SDK has a builder method called `synchronize()` with default value `false` which needs to be set to `true` .
@@ -302,12 +287,12 @@ analytics.blockFlush();
 analytics.shutdown(); // Shut down after the flush is complete.
 ```
 
-## FAQ
+## FAQs
 
-### Can I use the ImmutableMap class?
+### Can I use the `ImmutableMap` class?
 
 Yes. You need to use the Guava library. You can also use the plain old Java Maps instead.
 
-## Contact Us
+## Contact us
 
-To know more about the RudderStack Java SDK, you can [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.

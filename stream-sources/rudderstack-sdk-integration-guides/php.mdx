@@ -17,7 +17,7 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-php-sdk
 To set up the RudderStack PHP SDK, the following prerequisites must be met:
 
 - You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up an PHP source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
+- Once signed up, set up a PHP source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
 
 <img src="../../../assets/event-stream-sources/php-sdk-1.png" alt="PHP source write key" />
 
@@ -53,7 +53,7 @@ Rudder::init(WRITE_KEY, array(
 ));
 ```
 
-<div class="warningBlock">
+<div class="infoBlock">
 
 RudderStack appends the HTTPS protocol to the data plane URL before sending the events to the server. For example if your data plane URL is <code class="inline-code">https://example.dataplane.com</code>, mention only <code class="inline-code">example.dataplane.com</code>.
 </div>
@@ -61,6 +61,11 @@ RudderStack appends the HTTPS protocol to the data plane URL before sending the 
 ## Sending events from the RudderStack client
 
 Once the RudderStack client is initialized, you can use it to send relevant customer events. 
+
+<div class="warningBlock">
+
+RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the PHP SDK, you need to specify either `userId` or `anonymousId` every time.
+</div>
 
 A sample `track` call is shown in the following code snippet:
 
@@ -77,11 +82,6 @@ Rudder::track(array(
 ## Identify
 
 The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
-
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">identify</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
-</div>
 
 A sample `identify` call is as shown:
 
@@ -109,15 +109,9 @@ The `identify` method parameters are as described below:
 
 ## Track
 
-The `track` call lets you record the users' actions along with their associated properties. Each triggered action is called as an 'event'.
+The `track` call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">track</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `track` call is as shown:
+A sample `track` call is shown below:
 
 ```php
 Rudder::track(array(
@@ -145,15 +139,9 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
+The `page` call allows you to record the page views on your website along with the other relevant information about the viewed page.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">page</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `page` call is as shown:
+A sample `page` call is as shown:
 
 ```php
 Rudder::page(array(
@@ -180,15 +168,9 @@ The `page` method parameters are as described below:
 
 ## Screen
 
-The `screen` call is the mobile equivalent of the page call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
+The `screen` call is the mobile equivalent of the `page` call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">screen</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `screen` call is as shown:
+A sample `screen` call is as shown:
 
 ```php
 Rudder::screen(array(
@@ -215,15 +197,9 @@ The `screen` method parameters are as described below:
 
 ## Group
 
-The `group` call allows you to associate an identified user to a group - either a company, project or a team. You can also record custom traits or properties associated with that group.
+The `group` call lets you associate an identified user to a group - either a company, project or a team and record any custom traits or properties associated with that group.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">group</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `group` call is as shown:
+A sample `group` call is as shown:
 
 ```php
 Rudder::group(array(
@@ -255,11 +231,10 @@ The `alias` call allows you to associate one identity with another.
 
 <div class="infoBlock">
 
-<code class="inline-code">alias</code> is an advanced method. However, it is required when managing user identities in some destinations.
-
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
 </div>
 
-An example `alias` call is as shown:
+A sample `alias` call is as shown:
 
 ```php
 Rudder::alias(array(
@@ -281,12 +256,11 @@ The `alias` method parameters are as mentioned below:
 
 <div class="infoBlock">
 
-For a detailed explanation of the <code class="inline-code">alias</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias">RudderStack API Specification</a> guide.
-
+For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias">RudderStack API Specification</a> guide.
 </div>
 
 ## Contact us
 
 For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.
 
-If you come across any issue while using the iOS SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-php-sdk/issues/new).
+If you come across any issue while using the PHP SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-php-sdk/issues/new).
