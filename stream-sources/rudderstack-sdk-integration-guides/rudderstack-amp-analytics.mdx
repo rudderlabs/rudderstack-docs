@@ -57,8 +57,8 @@ src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <script type="application/json">
     {
       "vars": {
-        "writeKey": <WRITE_KEY>,
-        "dataPlaneUrl": <DATA_PLANE_URL>,
+        "writeKey": WRITE_KEY,
+        "dataPlaneUrl": DATA_PLANE_URL,
         "pageName": "Your Page Name"
       }
     }
@@ -82,8 +82,8 @@ RudderStack's AMP analytics component includes an automatic page view. You can s
 <script type="application/json">
   {
     "vars": {
-      "writeKey": <WRITE_KEY>,
-      "dataPlaneUrl": <DATA_PLANE_URL>,
+      "writeKey": WRITE_KEY,
+      "dataPlaneUrl": DATA_PLANE_URL,
       "pageName": "Your Page Name"
     }
   }
@@ -106,8 +106,8 @@ You can record any user event on your website using the `track` request, or crea
   <script type="application/json">
   {
     "vars": {
-      "writeKey": <WRITE_KEY>,
-      "dataPlaneUrl": <DATA_PLANE_URL>,
+      "writeKey": WRITE_KEY,
+      "dataPlaneUrl": DATA_PLANE_URL,
       "pageName": "My AMP Page"
     },
     "triggers": {
@@ -160,15 +160,15 @@ RudderStack collects the following properties with each `track` and `page` view:
 
 You can choose to send custom properties by adding the `extraUrlParams` object. Every property name should be prefixed with `properties.`.
 
-A sample call with custom properties is shown below:
+A sample call with the custom properties is shown below:
 
 ```markup
 <amp-analytics config="https://cdn.rudderlabs.com/amp/rudderstack.json">
 <script type="application/json">
   {
     "vars": {
-      "writeKey": <WRITE_KEY>,
-      "dataPlaneUrl": <DATA_PLANE_URL>,
+      "writeKey": WRITE_KEY,
+      "dataPlaneUrl": DATA_PLANE_URL,
       "pageName": "Your Page Name"
     },
     "extraUrlParams": {
@@ -193,8 +193,8 @@ If you want to add custom properties to a specific event or a `page` call, you n
     <script type="application/json">
     {
       "vars": {
-        "writeKey": <WRITE_KEY>,
-        "dataPlaneUrl": <DATA_PLANE_URL>,
+        "writeKey": WRITE_KEY,
+        "dataPlaneUrl": DATA_PLANE_URL,
         "pageName": "My AMP Page"
       },
       "triggers": {
@@ -237,8 +237,8 @@ An example of using `extraUrlParams` is as shown:
   <script type="application/json">
     {
     "vars": {
-      "writeKey": <WRITE_KEY>,
-      "dataPlaneUrl": <DATA_PLANE_URL>,
+      "writeKey": WRITE_KEY,
+      "dataPlaneUrl": DATA_PLANE_URL,
       "pageName": "Your Page Name"
     },
     "extraUrlParams": {

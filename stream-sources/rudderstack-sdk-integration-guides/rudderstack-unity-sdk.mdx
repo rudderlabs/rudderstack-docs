@@ -8,9 +8,7 @@ description: >-
 
 # Unity
 
-The **RudderStack Unity SDK** is a wrapper for the RudderStack [**Android SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [**iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) and is used for tracking game event data. 
-
-After integrating this SDK with your game, you will be able to track and send the game event data to any analytics destination of your choice.
+The **RudderStack Unity SDK** is a wrapper for the RudderStack [**Android SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [**iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) and is used for tracking game event data. After integrating this SDK with your game, you will be able to track and send your game event data to your preferred destinations via RudderStack.
 
 Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-unity) to get a more hands-on understanding of the SDK.
 
@@ -27,7 +25,7 @@ To configure the Unity SDK, you will need the following:
 
 - Finally, you will need the [**Unity development kit**](https://store.unity.com/download).
 
-## Adding Unity SDK to your project
+## Installing the Unity SDK
 
 Follow these steps to integrate the RudderStack Unity SDK with your project:
 
@@ -44,7 +42,7 @@ Follow these steps to integrate the RudderStack Unity SDK with your project:
 
 <img src="../../assets/event-stream-sources/unity-sdk-4.png" alt="Importing the Unity package" />
 
-## Initializing RudderStack client
+## Initializing the RudderStack client
 
 To initialize the RudderStack client, follow these steps:
 
@@ -117,9 +115,7 @@ rudderClient.Track(builder.Build());
 
 ## Identify
 
-The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation.
-
-To attach more information to the user, you can use the `identify` method. Once the SDK identifies the user, it persists and passes the user information to the subsequent `track` calls. To reset the user identification, you can use the `reset` method.
+The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once the SDK identifies the user, it persists and passes the user information to the subsequent `track` calls. To reset the user identification, you can use the `reset` method.
 
 A sample `identify` event is as shown:
 

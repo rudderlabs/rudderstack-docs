@@ -30,7 +30,7 @@ To set up the RudderStack Flutter SDK, the prerequisites are as mentioned below:
 <strong>We have migrated the RudderStack Flutter SDK to Null Safety starting from version 1.0.2.</strong>
 </div>
 
-## Installing the RudderStack Flutter SDK
+## Installing the Flutter SDK
 
 The recommended way to install the Flutter SDK is through [`pub`](https://pub.dev/packages/rudder_sdk_flutter).
 
@@ -214,9 +214,19 @@ RudderStack doesn't persist the traits for the group across the sessions.
 
 ## Alias
 
-The `alias` call associates the user with a new identification.
+The `alias` call lets you merge different identities of a known user.
 
-An example of `alias` event is as shown:
+<div class="infoBlock">
+
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+</div>
+
+<div class="infoBlock">
+
+For a detailed explanation of the <code class="inline-code">alias</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
+</div>
+
+A sample `alias` call is as shown:
 
 ```dart
 RudderClient.alias("new_user_id", options: null);
@@ -229,7 +239,7 @@ The `alias` method has the following signature:
 | `newId`   | `String`       | Yes      | The new `userId` you want to assign to the user      |
 | `options` | `RudderOption` | No       | Extra options to be passed along with `alias` event. |
 
-We replace the old `userId` with the `newUserId` and we persist that identification across the sessions.
+RudderStack replaces the old `userId` with the `newUserId` and persists that identification across the sessions.
 
 ## Reset
 

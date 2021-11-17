@@ -25,7 +25,7 @@ To set up the RudderStack React Native SDK, the following prerequisites must be 
 
 - We also recommend setting up the [**React Native development environment**](https://reactnative.dev/docs/environment-setup) on your system.
 
-## Installing the RudderStack React Native SDK
+## Installing the React Native SDK
 
 The recommended way to install the React Native SDK is through [`npm`](https://www.npmjs.com/package/@rudderstack/rudder-sdk-react-native).
 
@@ -528,21 +528,21 @@ An example of this method's usage is as shown:
 rudderClient.setAnonymousId(ANONYMOUS_ID)
 ```
 
-## FAQ
+## FAQs
 
 ### Do I need to link the SDK using the React Native link?
 
-No, you don't need to link the SDK as it is auto-linked. If you have linked it using `react-native link` and are facing issues, use `react-native unlink rudder-sdk-react-native` to unlink it.
+No, you don't need to link the SDK as it is auto-linked. If you have linked it using `react-native link` and are facing any issues, use `react-native unlink rudder-sdk-react-native` to unlink it.
 
 ### Can I use the SDK with a React Native application created with Expo?
 
-No. The SDK is a React Native module, and currently, the expo doesn't support adding native modules. You can still [eject](https://docs.expo.dev/expokit/eject/) your Expo application and use our [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) SDKs.
+No. The SDK is a React Native module, and currently, the expo doesn't support adding native modules. You can still [**eject**](https://docs.expo.dev/expokit/eject/) your Expo application and use the RudderStack [**Android**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [**iOS**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) SDKs.
 
 ### What is the need to use the await keyword?
 
-The functions exposed by the SDK are asynchronous in nature. If you want synchronous behavior, you must use the `await` keyword. We highly recommend using the `await` keyword with the setup call to make sure that the SDK has been properly set up before any further calls are made.
+The functions exposed by the SDK are asynchronous in nature. If you want a synchronous behavior, you must use the `await` keyword. We highly recommend using the `await` keyword with the setup call to make sure that the SDK has been properly set up, before any further calls are made.
 
-### Does Android build fails after adding the SDK to your Application?
+### Does the Android build fail after adding the SDK to your Application?
 
 Please try using Android Studio to build your application. This should fix most of the errors.
 

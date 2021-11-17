@@ -3,21 +3,21 @@
 title: "Node.js"
 description: >-
   Detailed technical documentation on using RudderStack’s Node.js SDK to send
-  server-side events to various destinations.
+  events to various destinations.
 ---
 
 # Node.js
 
-RudderStack’s Node.js SDK lets you track your customer event data from your Node.js app and route them to your specified destination platforms.
+The **RudderStack Node.js SDK** lets you track your customer event data from your Node.js app and send it to your specified destination platforms.
 
 Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-node) to get a more hands-on understanding of the SDK.
 
 ## SDK setup requirements
 
-To set up the RudderStack PHP SDK, the following prerequisites must be met:
+To set up the RudderStack Node.js SDK, the following prerequisites must be met:
 
 - You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up an Node.js source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
+- Once signed up, set up an Node.js source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/). You should then see a **Write Key** for this source, as shown below:
 
 <img src="../../../assets/event-stream-sources/node-sdk-1.png" alt="Node.js source write key" />
 
@@ -44,14 +44,14 @@ const client = new Analytics(WRITE_KEY, DATA_PLANE_URL / v1 / batch)
 
 Running the above snippet creates a global RudderStack client object that can be used for all the subsequent event requests.
 
+## Identify
+
+The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
+
 <div class="warningBlock">
 
 RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the Node.js SDK, you need to specify either `userId` or `anonymousId` every time.
 </div>
-
-## Identify
-
-The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
 
 A sample `identify` call is as shown:
 
