@@ -85,17 +85,17 @@ It is recommended to use the Core Android SDK without any <code class="inline-co
 
 </div>
 
-## Instructions for using SDK on applications that have <code class="inline-code">minSDKVersion</code> less than <code class="inline-code">20</code>
+## Using the Android SDK on applications with `minSDKVersion` less than `20`
 
-Rudder Server has been updated to <code class="inline-code">TLSv1.2+</code> and thus the SDK won't be able to support applications with <code class="inline-code">minSDKVersion</code> less than <code class="inline-code">20</code> by default. Please follow the below steps to add the support.
+By default, the Android SDK does not support applications with `minSDKVersion` less than `20`. You can add this support by following the steps below:
 
-- Add the below dependency to the <code class="inline-code">build.gradle</code> file of your application.
+- Add the following dependency to the `build.gradle` file of your application:
 
 ```groovy
 implementation 'com.google.android.gms:play-services-base:17.6.0'
 ```
 
-- Add the function <code class="inline-code">tlsBackport()</code> in your <code class="inline-code">MainActivity</code> as shown below:
+- Add the function `tlsBackport()` in your `MainActivity` as shown:
 
 ```kotlin
 private fun tlsBackport() {
@@ -118,7 +118,7 @@ private fun tlsBackport() {
     }
 ```
 
-- Call the function <code class="inline-code">tlsBackport()</code> in the very beginning of your <code class="inline-code">onCreate()</code> method in the <code class="inline-code">MainActivity</code> as shown below:
+- Finally, call the `tlsBackport()` function at the very beginning of your `onCreate()` method in `MainActivity`.
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -130,7 +130,10 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
 ```
 
-For more details, please refer <a href="https://developer.android.com/reference/javax/net/ssl/SSLSocket.html#protocols">here</a>.
+<div class="infoBlock">
+  
+  For more details, refer to this <a href="https://developer.android.com/reference/javax/net/ssl/SSLSocket.html#protocols">Android documentation</a>.
+</div>
 
 ## Setting Android Permission
 
