@@ -8,111 +8,49 @@ export const jsonData = [
      ]
   },
   {
-     "key":"get-started",
-     "title":"Get Started",
-     "link":"/get-started/",
-     "content":[
-        {
-           "key":"installing-and-setting-up-rudderstack",
-           "title":"Install and Set Up RudderStack",
-           "link":"/get-started/installing-and-setting-up-rudderstack/",
-           "content":[
-              {
-                 "key":"docker",
-                 "title":"Docker",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"kubernetes",
-                 "title":"Kubernetes",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"developer-machine-setup",
-                 "title":"Developer Machine Setup",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"sending-test-events",
-                 "title":"Sending Test Events",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
-                 "content":[
-                    
-                 ]
-              }
-           ]
-        },
-        {
-           "key":"dashboard-overview",
-           "title":"Dashboard Overview",
-           "link":"/get-started/dashboard-overview/",
-           "content":[
-              {
-                 "key":"user-management",
-                 "title":"User Management",
-                 "link":"/get-started/dashboard-overview/user-management/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                  "key":"audit-logs",
-                  "title":"Audit Logs",
-                  "link":"/get-started/dashboard-overview/audit-logs/",
-                  "content":[
-                     
-                  ]
-               }
-           ]
-        },
-        {
-           "key":"control-plane-lite",
-           "title":"Control Plane Lite",
-           "link":"/get-started/control-plane-lite/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"live-events",
-           "title":"Live Events",
-           "link":"/get-started/live-events/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"architecture",
-           "title":"Architecture",
-           "link":"/get-started/rudderstack-architecture/",
-           "content":[
-              
-           ]
-        }
-     ]
-  },
-  {
      "key":"connections",
-     "title":"Connections",
+     "title":"RudderStack Cloud",
      "link":"/connections/",
      "content":[
         {
+         "key":"dashboard-overview",
+         "title":"Dashboard Overview",
+         "link":"/get-started/dashboard-overview/",
+         "content":[
+            {
+               "key":"user-management",
+               "title":"User Management",
+               "link":"/get-started/dashboard-overview/user-management/",
+               "content":[
+                  
+               ]
+            },
+            {
+                "key":"audit-logs",
+                "title":"Audit Logs",
+                "link":"/get-started/dashboard-overview/audit-logs/",
+                "content":[
+                   
+                ]
+             }
+           ]
+         },
+         {
+            "key":"live-events",
+            "title":"Live Events",
+            "link":"/get-started/live-events/",
+            "content":[
+               
+            ]
+         },
+         {
            "key":"adding-source-and-destination-rudderstack",
            "title":"How to Add a Source and Destination in RudderStack",
            "link":"/connections/adding-source-and-destination-rudderstack/",
            "content":[
               
            ]
-        },
+         },
         {
            "key":"rudderstack-connection-modes",
            "title":"RudderStack Connection Modes: Cloud Mode vs Device Mode",
@@ -1918,6 +1856,68 @@ export const jsonData = [
            "content":[
               
            ]
+        }
+     ]
+  },
+  {
+     "key":"get-started",
+     "title":"RudderStack Open Source",
+     "link":"/get-started/",
+     "content":[
+        {
+         "key":"control-plane-lite",
+         "title":"Control Plane Setup",
+         "link":"/get-started/control-plane-lite/",
+         "content":[
+            
+         ]
+        },
+        {
+           "key":"installing-and-setting-up-rudderstack",
+           "title":"Data Plane Setup",
+           "link":"/get-started/installing-and-setting-up-rudderstack/",
+           "content":[
+              {
+                 "key":"docker",
+                 "title":"Docker",
+                 "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
+                 "content":[
+                    
+                 ]
+              },
+              {
+                 "key":"kubernetes",
+                 "title":"Kubernetes",
+                 "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
+                 "content":[
+                    
+                 ]
+              },
+              {
+                 "key":"developer-machine-setup",
+                 "title":"Developer Machine Setup",
+                 "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
+                 "content":[
+                    
+                 ]
+              },
+              {
+                 "key":"sending-test-events",
+                 "title":"Sending Test Events",
+                 "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
+                 "content":[
+                    
+                 ]
+              }
+           ]
+        },
+        {
+         "key":"architecture",
+         "title":"Architecture",
+         "link":"/get-started/rudderstack-architecture/",
+         "content":[
+            
+         ]
         }
      ]
   },
