@@ -617,15 +617,7 @@ The Test API supports the following message `type`:
 * `group`
 * `alias`
 
-Setting any other message `type` leads to the following error:
-
-```json
-{
-    "message": "invalid message type"
-}
-```
-
-The absence of a `type` in the payload leads to the following error message:
+You will get the following error message in the absence of a message `type` in the payload, or if you specify any other `type` apart from the ones in the above list:
 
 ```json
 {
