@@ -537,7 +537,7 @@ If `dest_transform` is set to `true`, the API returns the transformer response. 
 A sample API response when `dest_transform` is set to `true` is shown below:
 
 ```json
-"dest_transformed_payload": {
+"dest_transformed_payload": [{
   "version": "1",
   "type": "REST",
   "method": "POST",
@@ -561,7 +561,7 @@ A sample API response when `dest_transform` is set to `true` is shown below:
     "FORM": {}
   },
   "files": {}
-}
+}]
 ```
 
 Consider the following scenario:
@@ -588,12 +588,12 @@ When `dest_response` is set to `true`, the API returns the destination's respons
 A sample API response when `dest_response` is set to `true` is shown below:
 
 ```json
-"destination_response": {
+"destination_response": [{
   "status": "success",
   "processed": 1,
   "unprocessed": []
-},
-"destination_response_status": 200
+}],
+"destination_response_status": [200]
 ```
 
 ## FAQs
@@ -624,7 +624,7 @@ If `type` is missing in the event payload, the API will return the following err
 
 ```json
 {
-    "error": "type is missing from message"
+    "error": "message type missing or invalid"
 }
 ```
 
