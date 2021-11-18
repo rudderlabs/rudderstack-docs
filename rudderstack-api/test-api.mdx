@@ -111,6 +111,11 @@ Here, `<destination_ID>` should be replaced with the ID associated with the dest
     }
 }
 ```
+<div class="infoBlock">
+
+  For more information on the message <code class="inline-code">type</code>, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types/">Supported message types</a> section below.
+</div>
+
 
 * **Sample request**:
 
@@ -283,6 +288,11 @@ Here, `<source_ID>` should be replaced with the ID associated with the source co
     }
 }
 ```
+
+<div class="infoBlock">
+
+  For more information on the message <code class="inline-code">type</code>, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types/">Supported message types</a> section below.
+</div>
 
 * **Sample request**:
 
@@ -596,6 +606,33 @@ A sample API response when `dest_response` is set to `true` is shown below:
 "destination_response_status": [200]
 ```
 
+## Supported message types
+
+The Test API supports the following message `type`:
+
+* `identify`
+* `track`
+* `page`
+* `screen`
+* `group`
+* `alias`
+
+Setting any other message `type` leads to the following error:
+
+```json
+{
+    "message": "invalid message type"
+}
+```
+
+The absence of a `type` in the payload leads to the following error message:
+
+```json
+{
+    "message": "type is missing from message"
+}
+```
+
 ## FAQs
 
 ### Which destinations are not supported by the Test API?
@@ -624,9 +661,11 @@ If `type` is invalid or missing in the event payload, the API will return the fo
 
 ```json
 {
-    "error": "message type missing or invalid"
+    "message": "type is missing from message"
 }
 ```
+
+For more information, refer to the [**Supported message types**](https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types/) section above.
 
 ### Can I disable a particular verification stage in the `stage` object?
 
