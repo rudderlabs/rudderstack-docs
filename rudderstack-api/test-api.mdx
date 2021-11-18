@@ -54,7 +54,7 @@ Authorization: Basic bmFtZUBzdXJuYW1lLmNvbToxemw0R0prTHUwSHNCZHJESzg4TmdZWnpZMkU
   You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
 </div>
 
-## Verify destination events
+## Verifying destination events
 
 This request verifies if the test events are successfully transformed and delivered to the specified destination.
 
@@ -128,6 +128,11 @@ curl --location --request POST 'https://api.rudderstack.com/v0/testDestination/1
         },
         "type": "identify",
         "userId": "abc@123.com"
+    },
+    "stage": {
+        "user_transform": true,
+        "dest_transform": true,
+        "dest_response": true
     }
 }'
 ```
@@ -136,41 +141,56 @@ curl --location --request POST 'https://api.rudderstack.com/v0/testDestination/1
 
 ```json
 {
-  "destinationId": "1zl4i0J8M8T7sozoLnueW46RVYe",
-  "destination": "WEBHOOK",
-  "destinationName": "test-webhook-dest",
-  "data": [{
-    "user_transformed_payload": {
-      "error": "Transformation VersionID not found"
-    },
-    "dest_transformed_payload": {
-      "version": "1",
-      "type": "REST",
-      "method": "POST",
-      "endpoint": "https://webhook.site/9d5e3e43-6c2b-4b84-be9f-0147347b4cdf",
-      "headers": {
-        "content-type": "application/json"
-      },
-      "params": {},
-      "body": {
-        "JSON": {
-          "context": {
-            "traits": {
-              "firstName": "James",
-              "lastName": "Doe"
-            }
-          },
-          "type": "identify",
-          "userId": "abc@123.com"
-        },
-        "XML": {},
-        "FORM": {}
-      },
-      "files": {}
-    },
-    "destination_response": "",
-    "destination_response_status": 200
-  }]
+    "destinationId": "1zl4i0J8M8T7sozoLnueW46RVYe",
+    "destination": "WEBHOOK",
+    "destinationName": "test-webhook-dest",
+    "data": [
+        {
+            "user_transformed_payload": {
+                "error": "Transformation VersionID not found"
+            },
+            "dest_transformed_payload": [
+                {
+                    "version": "1",
+                    "type": "REST",
+                    "method": "POST",
+                    "endpoint": "https://webhook.site/9d5e3e43-6c2b-4b84-be9f-0147347b4cdf",
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "params": {},
+                    "body": {
+                        "JSON": {
+                            "context": {
+                                "traits": {
+                                    "firstName": "James",
+                                    "lastName": "Doe"
+                                }
+                            },
+                            "type": "identify",
+                            "userId": "abc@123.com"
+                        },
+                        "JSON_ARRAY": {},
+                        "XML": {},
+                        "FORM": {}
+                    },
+                    "files": {}
+                }
+            ],
+            "destination_response": [
+                {
+                    "success": false,
+                    "error": {
+                        "message": "Token not found",
+                        "id": null
+                    }
+                }
+            ],
+            "destination_response_status": [
+                404
+            ]
+        }
+    ]
 }
 ```
 
@@ -202,7 +222,7 @@ To override this behavior and send the event to a disabled destination, you can 
 https://api.rudderstack.com/v0/testDestination/<destination_ID>?force=true
 ```
 
-## Verify source events
+## Verifying source events
 
 This request verifies if the test events are successfully sent from the specified source and delivered to all the connected destinations.
 
@@ -280,6 +300,11 @@ curl --location --request POST 'https://api.rudderstack.com/v0/testSource/1zlmsB
         },
         "type": "identify",
         "userId": "abc@123.com"
+    },
+    "stage": {
+        "user_transform": true,
+        "dest_transform": true,
+        "dest_response": true
     }
 }'
 ```
@@ -287,93 +312,130 @@ curl --location --request POST 'https://api.rudderstack.com/v0/testSource/1zlmsB
 * **Expected response**:
 
 ```json
-[{
-    "destinationId": "1tIgXcaRnQDlBBtxlJMGGHFUWGb",
-    "destinationName": "salesforce",
-    "error": "Destination with id 1tIgXcaRnQDlBBtxlJMGGHFUWGb is disabled"
-  },
-  {
-    "destinationId": "1zl4i0J8M8T7sozoLnueW46RVYe",
-    "destination": "WEBHOOK",
-    "destinationName": "test-webhook-dest",
-    "data": [{
-      "user_transformed_payload": {
-        "error": "Transformation VersionID not found"
-      },
-      "dest_transformed_payload": {
-        "version": "1",
-        "type": "REST",
-        "method": "POST",
-        "endpoint": "https://webhook.site/9d5e3e43-6c2b-4b84-be9f-0147347b4cdf",
-        "headers": {
-          "content-type": "application/json"
-        },
-        "params": {},
-        "body": {
-          "JSON": {
-            "context": {
-              "traits": {
-                "firstName": "James",
-                "lastName": "Doe"
-              }
-            },
-            "type": "identify",
-            "userId": "abc@123.com"
-          },
-          "XML": {},
-          "FORM": {}
-        },
-        "files": {}
-      },
-      "destination_response": "",
-      "destination_response_status": 200
-    }]
-  },
-  {
-    "destinationId": "1tKpO0kantcKjd5czXVD1cdwUBE",
-    "destination": "MARKETO",
-    "destinationName": "Marketo",
-    "data": [{
-      "user_transformed_payload": {
-        "error": "Transformation VersionID not found"
-      },
-      "dest_transformed_payload": {
-        "version": "1",
-        "type": "REST",
-        "method": "POST",
-        "endpoint": "https://585-AXP-425.mktorest.com/rest/v1/leads.json",
-        "headers": {
-          "Authorization": "Bearer c0e79df2-55ed-4d3e-b358-3d9bfc2785cf:ab",
-          "Content-Type": "application/json"
-        },
-        "params": {},
-        "body": {
-          "JSON": {
-            "action": "createOrUpdate",
-            "input": [{
-              "FirstName": "James",
-              "LastName": "Doe",
-              "lastName": "Doe",
-              "firstName": "James",
-              "id": 1328262,
-              "userId": "abc@123.com"
-            }],
-            "lookupField": "id"
-          },
-          "XML": {},
-          "FORM": {}
-        },
-        "files": {}
-      },
-      "destination_response_status": 200
-    }]
-  }
+[
+    {
+        "destinationId": "1tIgXcaRnQDlBBtxlJMGGHFUWGb",
+        "destinationName": "salesforce",
+        "error": "Destination with id 1tIgXcaRnQDlBBtxlJMGGHFUWGb is disabled"
+    },
+    {
+        "destinationId": "1zl4i0J8M8T7sozoLnueW46RVYe",
+        "destination": "WEBHOOK",
+        "destinationName": "test-webhook-dest",
+        "data": [
+            {
+                "user_transformed_payload": {
+                    "error": "Transformation VersionID not found"
+                },
+                "dest_transformed_payload": [
+                    {
+                        "version": "1",
+                        "type": "REST",
+                        "method": "POST",
+                        "endpoint": "https://webhook.site/9d5e3e43-6c2b-4b84-be9f-0147347b4cdf",
+                        "headers": {
+                            "content-type": "application/json"
+                        },
+                        "params": {},
+                        "body": {
+                            "JSON": {
+                                "context": {
+                                    "traits": {
+                                        "firstName": "James",
+                                        "lastName": "Doe"
+                                    }
+                                },
+                                "type": "identify",
+                                "userId": "abc@123.com"
+                            },
+                            "JSON_ARRAY": {},
+                            "XML": {},
+                            "FORM": {}
+                        },
+                        "files": {}
+                    }
+                ],
+                "destination_response": [
+                    {
+                        "success": false,
+                        "error": {
+                            "message": "Token not found",
+                            "id": null
+                        }
+                    }
+                ],
+                "destination_response_status": [
+                    404
+                ]
+            }
+        ]
+    },
+    {
+        "destinationId": "1tKpO0kantcKjd5czXVD1cdwUBE",
+        "destination": "MARKETO",
+        "destinationName": "Marketo",
+        "data": [
+            {
+                "user_transformed_payload": {
+                    "error": "Transformation VersionID not found"
+                },
+                "dest_transformed_payload": [
+                    {
+                        "version": "1",
+                        "type": "REST",
+                        "method": "POST",
+                        "endpoint": "https://585-AXP-425.mktorest.com/rest/v1/leads.json",
+                        "headers": {
+                            "Authorization": "Bearer f96f0384-583b-4718-b8a3-38aaed4bc5ae:ab",
+                            "Content-Type": "application/json"
+                        },
+                        "params": {},
+                        "body": {
+                            "JSON": {
+                                "action": "createOrUpdate",
+                                "input": [
+                                    {
+                                        "FirstName": "James",
+                                        "LastName": "Doe",
+                                        "lastName": "Doe",
+                                        "firstName": "James",
+                                        "id": 1328262,
+                                        "userId": "abc@123.com"
+                                    }
+                                ],
+                                "lookupField": "id"
+                            },
+                            "JSON_ARRAY": {},
+                            "XML": {},
+                            "FORM": {}
+                        },
+                        "files": {}
+                    }
+                ],
+                "destination_response": [
+                    {
+                        "requestId": "555d#17d31b0a392",
+                        "result": [
+                            {
+                                "id": 1328262,
+                                "status": "updated"
+                            }
+                        ],
+                        "success": true
+                    }
+                ],
+                "destination_response_status": [
+                    200
+                ]
+            }
+        ]
+    }
 ]
 ```
 
 The above response indicates that the source with the source ID `1zlmsBMe1dcPbu3u6NTZFUFBrNQ` is connected to three destinations: 
 
-* Salesforce, which is a disabled destination
+* Salesforce, a disabled destination
 * Webhook, with no transformation specified in the dashboard, and
 * Marketo
 
