@@ -418,6 +418,18 @@ export const postNavList = [
       "link":"/cloud-extract-sources/zendesk-chat/",
       "content":[]
    },
+   {
+    "key":"airbyte-sources",
+    "title":"Airbyte-supported Sources",
+    "link":"/cloud-extract-sources/airbyte-sources/",
+    "content":[]
+   },
+   {
+    "key":"intercom-v2",
+    "title":"Intercom v2",
+    "link":"/cloud-extract-sources/airbyte-sources/intercom-v2/",
+    "content":[]
+   },
  {
     "key":"warehouse-actions",
     "title":"Warehouse Actions Sources",
