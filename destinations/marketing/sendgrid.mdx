@@ -55,7 +55,7 @@ The connection settings required to configure SendGrid as a destination in Rudde
 
 <div class="infoBlock">
  
- You can also send the subject via the <code class="inline-code">integrations</code> object in the <code class="inline-code">track</code> call. For more information on the <code class="inline-code">integrations</code> object, refer to the <strong>Track</strong> section below.
+ You can also send the subject via the <code class="inline-code">properties</code> in the <code class="inline-code">track</code> call. For more information on the <code class="inline-code">properties</code> object, refer to the <strong>Track</strong> section below.
 </div>
 
 * Next, enter the **Template ID**. 
@@ -67,14 +67,14 @@ To get your template ID or create a new one, go to your ,<a href="https://app.se
 
 <div class="infoBlock">
  
-You can also set the Template ID via the <code class="inline-code">integrations</code> object in the <code class="inline-code">track</code> call. Note that the template ID passed via the <code class="inline-code">integrations</code> object will override the ID specified in the RudderStack dashboard.
+You can also set the Template ID via the <code class="inline-code">properties</code> in the <code class="inline-code">track</code> call. Note that the template ID passed in the <code class="inline-code">properties</code> will override the ID specified in the RudderStack dashboard.
 </div>
 
-* Next, you can enable or disable the **Get mail by traits** option. If enabled, this option allows RudderStack to search for the user's `email` inside the user's `traits`. If it is found, then the event can be sent to SendGrid without the `integrations` object.
+* Next, you can enable or disable the **Get mail by traits** option. If enabled, this option allows RudderStack to search for the user's `email` inside the user's `traits`. If it is found, then the event can be sent to SendGrid without the any properties in track call.
 
 <div class="warningBlock">
  
-This option is only useful when the <code class="inline-code">integrations</code> object is empty. SendGrid also requires either the <code class="inline-code">templateId</code> or <code class="inline-code">content</code> to be present for a successful event delivery. 
+This option is only useful when the <code class="inline-code">properties</code> in track call is empty. SendGrid also requires either the <code class="inline-code">templateId</code> or <code class="inline-code">content</code> to be present for a successful event delivery. 
 </div>
 
 * Enter the email address in the **Reply To Email** option, where the email replies or bounces will be returned.
@@ -83,7 +83,7 @@ This option is only useful when the <code class="inline-code">integrations</code
 
 <div class="infoBlock">
  
-You can also send the email and name inside <code class="inline-code">replyTo</code> via the <code class="inline-code">integrations</code> object. Note that these fields will override the <strong>Reply To Email</strong> and <strong>Reply To Name</strong> fields set in the RudderStack dashboard.
+You can also send the email and name inside <code class="inline-code">replyTo</code> via the <code class="inline-code">properties</code>. Note that these fields will override the <strong>Reply To Email</strong> and <strong>Reply To Name</strong> fields set in the RudderStack dashboard.
 </div>
 
 <div class="infoBlock">
@@ -111,7 +111,7 @@ For more information on creating a verified sender identity, refer to this <a hr
 
 <div class="infoBlock">
 
-You can additionally include <code class="inline-code">email</code> and <code class="inline-code">name</code> inside the <code class="inline-code">from</code> object via the <code class="inline-code">integrations</code> object (shown below). Note that this will override the fields specified in the RudderStack dashboard.
+You can additionally include <code class="inline-code">email</code> and <code class="inline-code">name</code> inside the <code class="inline-code">from</code> object via the <code class="inline-code">properties</code> (shown below). Note that this will override the fields specified in the RudderStack dashboard.
 </div>
 
 ```javascript
@@ -139,7 +139,7 @@ If a <code class="inline-code">track</code> call is made with event not in this 
 
 <div class="infoBlock">
 
-The <code class="inline-code">content</code> array can also be sent via <code class="inline-code">integrations</code> object (shown below), which will override the dashboard settings.
+The <code class="inline-code">content</code> array can also be sent via <code class="inline-code">properties</code> (shown below), which will override the dashboard settings.
 </div>
 
 ```javascript
@@ -167,7 +167,7 @@ Use the **Attachments** settings to specify any attachments you want to include 
 
 <div class="infoBlock">
 
-SendGrid requires that each attachment element must contain <strong>content</strong> and <strong>filename</strong> The attachments can also be sent via the <code class="inline-code">integrations</code> object (shown below) which will override the dashboard settings.
+SendGrid requires that each attachment element must contain <strong>content</strong> and <strong>filename</strong> The attachments can also be sent via the <code class="inline-code">properties</code> (shown below) which will override the dashboard settings.
 </div>
 
 ```javascript
@@ -200,7 +200,7 @@ SendGrid requires that the <strong>Group ID</strong> should always be present if
 
 <div class="infoBlock">
 
-The footer can also be sent via <code class="inline-code">integrations</code> object (shown below), which will override the dashboard settings.
+The footer can also be sent via <code class="inline-code">properties</code> (shown below), which will override the dashboard settings.
 </div>
 
 ```javascript
@@ -215,7 +215,7 @@ mailSettings:{
 
 <div class="infoBlock">
 
-The sandbox mode can also be enabled or disabled via the <code class="inline-code">integrations</code> object (shown below), which will override the dashboard setting.
+The sandbox mode can also be enabled or disabled via the <code class="inline-code">properties</code> (shown below), which will override the dashboard setting.
 </div>
 
 ```javascript
@@ -254,7 +254,7 @@ Finally, click on **Next**. SendGrid will now be enabled as a destination in Rud
 
 ## Track
 
-The `track` call lets you send an event to SendGrid along with its properties inside the `integrations` object. Note that the properties specified within this object will override the settings specified in the RudderStack dashboard.
+The `track` call lets you send an event to SendGrid along with its properties. Note that the properties specified in track call will override the settings specified in the RudderStack dashboard.
 
 <div class="warningBlock">
 
@@ -264,10 +264,8 @@ Note that SendGrid requires either the <code class="inline-code">templateId</cod
 A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track('testing',{ "someField": "value" },
+rudderanalytics.track('testing',
       {
-        "integrations": {
-          "Sendgrid": {
           "personalizations": [
           {
             "to": [
@@ -332,8 +330,6 @@ rudderanalytics.track('testing',{ "someField": "value" },
           "name": "Name"
         },
         "field1": "value"
-      }
-    }
   });
 ```
 The following sections highlight some important things to keep in mind while using the `track` call to send customer data to SendGrid.
@@ -358,7 +354,7 @@ To send the event to SendGrid successfully, the following points must be kept in
 
 SendGrid requires that the `personalizations` array should be present in every event and each object must contain the field `to`. 
 
-* If the **Get mail from traits** option is enabled in the RudderStack dashboard and the `integrations` object is not sent, RudderStack will look for the `email` in the event traits. If found, RudderStack will create a `personalizations` object and assign email to the `to` field. 
+* If the **Get mail from traits** option is enabled in the RudderStack dashboard and the `properties` is not sent in track call, RudderStack will look for the `email` in the event traits. If found, RudderStack will create a `personalizations` object and assign email to the `to` field. 
 
 * In case both **Template ID** and **content** are not assigned in the dashboard settings, the event will **not** be sent as either of Template ID or content is mandatory.
 
