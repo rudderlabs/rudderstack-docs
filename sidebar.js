@@ -118,7 +118,7 @@ export const jsonData = [
                     },
                     {
                        "key":"js-sdk-faqs",
-                       "title":"FAQs",
+                       "title":"JavaScript SDK FAQs",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
                        "content":[
                           
@@ -539,6 +539,21 @@ export const jsonData = [
                
             ]
          },
+         {
+           "key":"airbyte-sources",
+           "title":"Airbyte-supported Sources",
+           "link":"/cloud-extract-sources/airbyte-sources/",
+           "content":[
+              {
+                 "key":"intercom-v2",
+                 "title":"Intercom v2",
+                 "link":"/cloud-extract-sources/airbyte-sources/intercom-v2/",
+                 "content":[
+
+                 ]
+              }
+           ]
+        }
      ]
   },
   {

@@ -1,338 +1,124 @@
 ---
 title: "JavaScript"
 description: >-
-  Detailed technical documentation on the RudderStack’s JavaScript SDK to send
-  data from your website to your destinations via RudderStack
+  Detailed technical documentation on the RudderStack’s JavaScript SDK to send data from your website to your specified destinations.
 ---
 
 # JavaScript
 
-## 1. **What is the RudderStack JavaScript SDK?**
-
 RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to track and send user events from your website to RudderStack. You can then further transform and route this event data to the destination platform of your choice.
-
-## **2. Installing the** RudderStack **JavaScript SDK**
-
-<div class="infoBlock">
-
-**NOTE:** To quickly get up and running with setting up and using the RudderStack JavaScript SDK, please go through our [quick start guide](https://github.com/rudderlabs/rudder-sdk-js#how-to-use-the-rudderstack-javascript-sdk).
-</div>
-
-To integrate the RudderStack JavaScript SDK with your website, place either the minified or non-minified version of the code snippet in the `<head>` section of your website.
-
-### **2.1. Minified Code**
-
-```javascript
-<script> 
-rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load(<YOUR_WRITE_KEY>,<DATA_PLANE_URL>),rudderanalytics.page();
-</script>
-
-<script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
-```
-
-<div class="infoBlock">
-
-**You can find your source write key and the data plane URL on your RudderStack dashboard.**
-</div>
-
-<img src="../../../assets/workspace-token (4) (3) (4) (4) (4) (4) (2) (1) (4).png" />
-<span class="imageTitle">Source write key and Data Plane URL</span>
-
-### **2.2. Non-minified Code**
-
-```javascript
-<script>
-rudderanalytics = window.rudderanalytics = [];
-
-var  methods = [
-    "load",
-    "page",
-    "track",
-    "identify",
-    "alias",
-    "group",
-    "ready",
-    "reset",
-    "getAnonymousId",
-    "setAnonymousId"
-];
-
-for (var i = 0; i < methods.length; i++) {
-    var method = methods[i];
-    rudderanalytics[method] = function (methodName) {
-        return function () {
-            rudderanalytics.push([methodName].concat(Array.prototype.slice.call(arguments)));
-        };
-    }(method);
-}
-rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL);
-//For example,
-//rudderanalytics.load("1Qb1F3jSWv0eKFBPZcrM7ypgjVo", "http://localhost:8080");
-rudderanalytics.page();
-</script>
-
-<script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
-```
 
 <div class="successBlock">
 
-**NOTE**: The above code snippet will load `rudder-analytics.js` on to your page synchronously. To load the SDK asynchronously to keep your page load time unaffected, use the following instead:
-
-**`<script async src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>`**
+  Refer to the JavaScript SDK's <a href="https://github.com/rudderlabs/rudder-sdk-js">GitHub repository</a> for the source code and implementation details.
 </div>
 
-Combining the initialization and the above async script together, we get:
+## Installing the SDK
+
+To quickly set up and start using the RudderStack JavaScript SDK, go through our [**quick start guide**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide).
+
+## Supported APIs
+
+The JavaScript SDK makes it very easy for you to send your event data to any destination without implementing a new API every time.
+
+The following sections detail all the API calls supported by RudderStack for this SDK.
+
+## Load
+
+The `load` method loads the `rudder-analytics.js` file with the source write key. It is defined as follows:
 
 ```javascript
-<script type="text/javascript"> 
-!function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
- e.load(WRITE_KEY, DATA_PLANE_URL), e.page()}(); 
-</script>
-```
-
-The above code snippet does the following:
-
-* Creates an array to store the events until the analytics object is ready.
-* Stores a list of methods to replay them when the analytics object is ready. These methods include:
-
-| **Method** | **Description** |
-| :--- | :--- |
-| **`load()`** | Loads **`rudderanalytics.js`** with your write key |
-| **`page()`** | Records page views whenever a user visits a page |
-| **`track()`** | Keeps track of user actions and important events |
-| **`identify()`** | Associates users and their traits or actions |
-| **`reset()`** | Resets the `userid` and the associated traits |
-
-* Loads the analytics object with your write key.
-* Makes the `page()`call to track the page view. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. If you want to override them, use the call mentioned in the section JavaScript SDK APIs.
-
-### 2.3. Alternative Installation
-
-Although we recommend using the [minified or non-minified snippet](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#21-minified-code) as mentioned above to use RudderStack SDK with your website, you can also use this [NPM module](https://www.npmjs.com/package/rudder-sdk-js) to package RudderStack directly into your project.
-
-To install, run the following command:
-
-```bash
-npm install rudder-sdk-js --save
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [options]);
 ```
 
 <div class="infoBlock">
 
-This NPM module is only meant to be used for a browser installation. If you want to integrate RudderStack with your Node.js applications, please refer to [the RudderStack Node.js repository](https://github.com/rudderlabs/rudder-sdk-node).
+You need to replace the <code class="inline-code">WRITE_KEY</code> with the source write key in the RudderStack dashboard and <code class="inline-code">DATA_PLANE_URL</code> with your data plane URL.
 </div>
 
-<div class="warningBlock">
+### Write key and data plane URL
 
-**Important**: Since the module exports the related APIs on an already-defined object combined with the Node.js module caching, you should run the below code snippet **only once** and use the exported object throughout your project.
-</div>
+To integrate and initialize the JavaScript SDK, you need the source write key and the data plane URL.
 
-```jsx
-import * as rudderanalytics from "rudder-sdk-js"
-rudderanalytics.ready(() => {console.log("we are all set!!!")})
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL)
-export { rudderanalytics }
-```
+* To get the source write key, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/sending-test-events#get-the-source-write-key).
 
-You can also do so with **ES5**, using the `require` method, as shown:
+* To get the data plane URL, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
 
-```jsx
-var rudderanalytics = require("rudder-sdk-js")
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL)
-exports.rudderanalytics  =  rudderanalytics
-```
-
-Please refer to the following projects for a detailed walk-through of the above steps:
-
-* [Sample Angular project](https://github.com/rudderlabs/rudder-analytics-angular)
-* [Sample React project](https://github.com/rudderlabs/rudder-analytics-react)
-
-<div class="infoBlock">
-
-The related APIs exported by the module are:
-<ul>
-<li>
-
-`load`
-</li>
-<li>
-
-`ready`
-</li>
-<li>
-
-`identify`
-</li>
-<li>
-
-`alias`
-</li>
-<li>
-
-`page`
-</li>
-<li>
-
-`track`
-</li>
-<li>
-
-`group`
-</li>
-<li>
-
-`reset`
-</li>
-<li>
-
-`getAnonymousId`
-</li>
-<li>
-
-`setAnonymousId`
-</li>
-</ul>
-</div>
-
-### 2.4 Supported Browser Versions
-
-| Browser | Supported Versions |
-| :--- | :--- |
-| **Safari** | v7 or later |
-| **IE** | v10 or later |
-| **Edge** | v15 or later |
-| **Mozilla Firefox** | v40 or later |
-| **Chrome** | v37 or later |
-| **Opera** | v23 or later |
-| **Yandex** | v14.12 or later |
-
-<div class="infoBlock">
-
-If the SDK doesn't work on the versions you are targeting, verify if adding the browser polyfills to your application solves the issue.
-</div>
-
-## 3. JavaScript SDK APIs
-
-RudderStack’s JavaScript SDK makes it very easy for you to send your event data to any destination without having to implement a new API every single time.
-
-Let us take a look at some of the key methods in this section:
-
-## 3.1. Load
-
-The `load()` method loads the `rudderanalytics.js` file with your write key.
-
-The `load()`method is defined as follows:
-
-`rudderanalytics.load(<YOUR_WRITE_KEY>, <DATA_PLANE_URL>, options);`
-
-<div class="infoBlock">
-
-**NOTE**: You need to replace `&lt;YOUR_WRITE_KEY&gt;` with the write key in the RudderStack Control Plane and `&lt;DATA_PLANE_URL&gt;` with the URL of the RudderStack Server.
-</div>
-
-### 3.1.1. Load Options
+### The `options` parameter
 
 The `options` parameter in the above `load` call looks like the following:
 
-```
+```javascript
 {
- logLevel: "DEBUG" | "INFO" | "WARN", 
- integrations: IntegrationOpts,
- configUrl: string,  // defaults to https://api.rudderlabs.com
- queueOptions: QueueOpts,
- loadIntegration: boolean // defaults to true.
+  logLevel: "DEBUG" | "INFO" | "WARN",
+  integrations: IntegrationOpts,
+  configUrl: string,  // defaults to https://api.rudderlabs.com
+  queueOptions: QueueOpts,
+  loadIntegration: boolean // defaults to true.
 }
 ```
 
 It includes the following details:
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`logLevel`** | String | Options include **`DEBUG`**, **`INFO`**, and **`WARN`** |
-| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. |
-| **`configUrl`** | String | Defaults to **`https://api.rudderlabs.com`**. You need to provide the server endpoint serving your destination configurations. **`sourceConfig`** is appended to this endpoint by the SDK. |
-| **`queueOpts`** | - | Refer to **`QueueOpts`** |
-| **`loadIntegration`** | Boolean | Defaults to **`true`**. If set to **`false`**, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**. |
+| Parameter             | Type                                | Description                                              |
+| :-------------------- | :---------------------------------- | :------------------------------------------------------- |
+|  `logLevel`           | String                              | Options include `DEBUG`, `INFO`, and `WARN`.             |
+|  `integrations`       | [**IntegrationOpts**](#integrationopts) | Refer to the [`IntegrationOpts`](#integrationopts) section. More information on how to use this parameter can be found [**here**](#filtering-selective-destinations).                                               |
+|  `configUrl`          | String                              | Defaults to `https://api.rudderlabs.com`. You need to provide the server (Control Plane) endpoint serving your destination configurations. Note that `sourceConfig` is automatically appended to this endpoint by the SDK. |
+|  `queueOpts`          | [**QueueOpts**](#queueopts)         | Refer to the [`QueueOpts`](#queueopts) section.          |
+|  `loadIntegration`    | Boolean                             | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                    |
 
-* The structure of **`IntegrationOpts`** looks like the following:
+For more details, refer to the section on the [**`options`**](#options) parameter.
+
+### Loading the SDK for self-hosted control plane
+
+If you are self-hosting the control plane using the [**RudderStack Control Plane Lite**](https://docs.rudderstack.com/get-started/control-plane-lite#what-is-the-control-plane-url) utility, your `load` call will look like the following:
 
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
-}
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
+  configUrl: <CONTROL_PLANE_URL>,
+});
 ```
-
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
 
 <div class="infoBlock">
 
-More information on the Load **`IntegrationOpts`** option can be found here:
-<ul>
-<li>
-
-[Specifying Selective Destinations in the `load` Method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#42-specifying-selective-destinations-in-the-load-method)
-</li>
-<li>
-
-[Common Destination Names for sending events through the `load` method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#41-common-destination-names)
-</li>
-</ul>
+  More information on how to get the <code class="inline-code">CONTROL_PLANE_URL</code> can be found <a href="https://docs.rudderstack.com/get-started/control-plane-lite/#what-is-the-control-plane-url">here</a>.
 </div>
 
-* The structure of **`QueueOpts`** looks like the following:
+### Loading selective destinations
 
-```
-QueueOpts {
- maxRetryDelay: 360000, // Upper cap on maximum delay for an event
- minRetryDelay: 1000, // minimum delay before sending an event
- backoffFactor: 2, // exponentional base
- maxAttempts: 10, // max attempts
- maxItems: 100,  // max number of events in storage
-}
-```
-
-| Parameter | Description |
-| :--- | :--- |
-| **`maxRetryDelay`** | Corresponds to the upper limit on the maximum delay for an event. Default value is set as 36000ms. |
-| **`minRetryDelay`** | Corresponds to the minimum delay expected before sending an event. Default value is set to 1000ms. |
-| **`backoffFactor`** | Refers to the exponential base. Default value is set to 2. |
-| **`maxAttempts`** | Refers to the maximum attempts to send the event to the destination. Default value is set to 10. |
-| **`maxItems`** | Refers to the maximum number of events kept in the storage. Default value is set to 100. |
-
-### 3.1.**2**. Self-hosted Control Plane
-
-If you are self-hosting the Control Plane, your `load` call will look like the following:
+RudderStack lets you send your event data to selective destinations specified by you and disable sending events to the rest of the destinations. You can specify these destinations through the `load` call, as shown in the following snippet:
 
 ```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {configUrl: CONTROL_PLANE_URL});
-```
-
-### 3.1.3. Selective Destinations
-
-RudderStack allows you to load selective destinations as specified by you and disable sending events to the remaining destinations. You can specify these destinations through the `load` call, as shown:
-
-```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
   integrations: { All: false, destination_name: true },
 });
 ```
 
-For more information, please check the [How to Filter Selective Destinations](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#4-how-to-filter-selective-destinations-to-send-event-data) section.
+For more information, check the [**Filtering selective destinations**](#filtering-selective-destinations) section.
 
-## 3.2. Identify
+## Identify
 
-This method allows you to link the users and their actions to a specific `userid`. You can also add additional information as `traits` to a user. Once you set the `identify` information to the user, those will be passed to the successive `track` or `page` calls. To reset the user identification, you can use the `reset` method.
+The `identify` method allows you to link the users and their actions to a specific `userid`. You can also add additional information as `traits` to a user. Once the `identify` call is made, the SDK persists the user information and passes it to the subsequent [**`track`**](#track) or [**`page`**](#page) calls.
 
-The `identify()` method definition is as follows:
+To reset the user identification, you can use the [**`reset`**](#reset) method.
 
-`rudderanalytics.identify([userid], [traits], [options], [callback]);`
+The SDK defines the `identify` method as shown below:
 
-A sample example of how to use the `identify()` method is as shown:
+```javascript
+rudderanalytics.identify(userId, [traits], [options], [callback]);
+```
+
+The `identify` method has the following parameters:
+
+|  Parameter     |Type        | Presence | Description                                                                                |
+| :------------- |:---------- | :----------- | :------------------------------------------------------------------------------------- |
+|  `userId`      | String     | Optional     | This string defines the user's ID in your database. If provided, this argument will be sent to destinations as the user ID instead of an `anonymousId`.                                                                                                  |
+|  `traits`      | Dictionary | Optional     | This dictionary contains the traits or properties associated with a `userId` such as email, address, etc. More information on the `identify` traits can be found [**here**](https://docs.rudderstack.com/rudderstack-api/api-specification/rudderstack-spec/identify/#identify-traits).                                                                                                                              |
+|  `options`     | Dictionary | Optional     | This dictionary provides information such as context, integrations, and `anonymousId`. Specific user traits can be provided as the context as well. Refer to the [`options`](#options) section for more information.                                     |
+|  `callback`    | Function   | Optional     | This function gets executed after successful execution of the **`identify()`** method. |
+
+A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify(
@@ -344,11 +130,11 @@ rudderanalytics.identify(
       referrer: "",
       search: "",
       title: "",
-      url: "",
+      url: ""
     }
   },
   () => {
-    console.log("in identify call");
+    console.log("Sample identify call");
   }
 );
 ```
@@ -356,99 +142,47 @@ rudderanalytics.identify(
 In the above example, information such as the `userId` and `email` along with the [**contextual information**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/#javascript-sdk) is captured.
 
 <div class="warningBlock">
-If you explicitly specify the IP address in the event, RudderStack will use that IP instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
+
+If you explicitly specify the IP address in the event, RudderStack will use that address instead of capturing it in the backend. You can use this feature to anonymize your users' IP - e.g., by supplying an anonymous IP address.
 </div>
 
-The above `identify` call has the following parameters:
+### anonymousId
 
-| **Parameter** | **Description** |
-| :--- | :--- |
-| **`userid`** | This string defines the database ID of the user. If provided, this **optional** argument will be sent to destinations as the user ID instead of an anonymous ID |
-| **`traits`** | This **optional** dictionary contains the traits or properties associated with a `userid` such as email, address, etc. |
-| **`options`** | This dictionary is also **optional**, and provides information such as context, integrations, and `anonymousId`. Specific user traits can be provided as the context as well |
-| **`callback`** | This function gets executed after successful execution of the **`identify()`** method. |
+The `anonymousId` is a **UUID** (Universally Unique Identifier) generated to uniquely identify the user.
 
-### 3.2.1. The `options` parameter
-
-The options parameter in the `identify` call looks like the following:
-
-```
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
-| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
-| **`<other keys>: <value>`** | - | Merged with the event's contextual information |
-
-* The structure of **`IntegrationOpts`** looks like the following:
-
-```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
-}
-```
-
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
 
 <div class="infoBlock">
 
-More information on the **`IntegrationOpts`** option can be found here:
-<ul>
-<li>
-
-[Specifying Selective Destinations in the `load` Method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#42-specifying-selective-destinations-in-the-load-method)
-</li>
-<li>
-
-[Common Destination Names for sending events through the `load` method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#41-common-destination-names)
-</li>
-</ul>
+If the <code class="inline-code">anonymousId</code> is provided by the user using the <code class="inline-code">setAnonymousId</code> method, the user-specified <code class="inline-code">anonymousId</code> overrides the one generated by the SDK.
 </div>
+
+For more information on the `setAnonymousId` method, refer to the [**Overriding the `anonymousId` using `setAnonymousId`**](#overriding-the-anonymousId-using-setAnonymousId) section below.
 
 <div class="infoBlock">
 
-**NOTE**: The `anonymousId` is a **UUID** **\(Universally Unique Identifier\)** generated to uniquely identify the user. Also, if it is provided by the user using the `setAnonymousId` method, the user-specified `anonymousId` overrides the SDK-generated one.
+You don't have to call <code class="inline-code">identify</code> for the anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`.
 </div>
 
-<div class="successBlock">
+#### How RudderStack uses anonymousId
 
-There is no need to call`identify()`for anonymous visitors to your website. Such visitors are automatically assigned an `anonymousId`
-</div>
-
-### 3.2.2. `identify` Options
-
-The JavaScript SDK generates one unique `anonymousId` , stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps in identifying the users from other sites that are hosted under a sub-domain.
+The JavaScript SDK generates a unique `anonymousId`, stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps RudderStack in identifying the unknown users from other sites that are hosted under a sub-domain.
 
 <div class="infoBlock">
 
-As an example, if you include the RudderStack JavaScript SDK in both **admin.samplewebsite.com** and **app.samplewebsite.com**, the SDK will store the cookie in the top-level domain **samplewebsite.com**.
+If you identify a user with your application's unique identifier like email, database ID etc. RudderStack stores this ID in a cookie named <code class="inline-code">rl_user_id</code> and attaches to every event.
 </div>
 
-If you identify a user with your application's unique identifier like email, database ID etc. RudderStack stores this ID in a cookie named `rl_user_id` and attaches to every event.
+For example, if you include the RudderStack JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in the top-level domain `samplewebsite.com`.
 
-There are two options that you can use to identify users when using the JavaScript SDK:
+There are two options that you can use to identify anonymous users with the JavaScript SDK:
 
-### 3.2.3. Overriding `anonymousID` in the `options` parameter
+#### Overriding `anonymousId` in the `options` parameter
 
-There can be scenarios where you may want to provide your own `anonymousID` instead of an auto-generated ID by the SDK. To do so, you can provide the `anonymousId` in the `options` parameter of the `identify` call, as mentioned above. This will send the value provided by you in the `anonymousId` key of the event.
+There can be scenarios where you may want to provide your own `anonymousId` instead of an SDK-generated ID. To do so, you can provide the `anonymousId` in the `options` parameter of the `identify` call, as mentioned above. This will send the value provided by you in the `anonymousId` key of the event.
 
 <div class="infoBlock">
 
-All other events will have`anonymousId` from the one persisted in the cookie, except this event where you override the options.
+  Note that all other events will have the <code class="inline-code">anonymousId</code> from the one persisted in the cookie, except this event where you override the options.
 </div>
 
 An example of this approach is as shown in the code snippet below:
@@ -458,92 +192,121 @@ rudderanalytics.identify(
   "12345",
   { email: "name@domain.com" },
   {
-    anonymousId: "my-anonymous-id",
+    anonymousId: "my-anonymous-id"
   },
   () => {
     console.log("in identify call");
   }
-);js
+);
 ```
 
-### 3.2.4. Overriding the `anonymousId` for all future events using `setAnonymousId`
+#### Overriding the `anonymousId` using `setAnonymousId`
 
-You can also override the `anonymousId` for all the future events using the `rudderAnanlytics.setAnonymousId` method.
+You can also override the `anonymousId` for all the future events using the `setAnonymousId()` method.
 
-An example of this is shown in the code snippet below:
+An example of this is shown in the following snippet:
 
 ```javascript
 rudderanalytics.setAnonymousId("my-anonymous-id");
 
 // All event payloads will have the anonymousId key set "my-anonymous-id".
-
 rudderanalytics.identify("userId", { email1: "name@domain.com" }, () => {
   console.log("in identify call");
 });
 ```
 
-#### 3.2.4.1. AMP Analytics
+#### Using AMP Analytics
 
-You can call the following method to parse the AMP Linker ID and set the **`anonymousId`** as shown:
+You can also parse the AMP Linker ID and set the `anonymousId`, as shown:
 
+```javascript
+rudderanalytics.setAnonymousId(
+  null,
+  "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>..."
+);
 ```
-setAnonymousId(null, "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>...")
-```
 
-Here, the second parameter is the AMP Linker ID format in accordance with the [specified structure](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [RudderStack Linker parameter](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/amp-analytics/#amp-linker), the **`<idName1>`** value will be **`rs_amp_id`**.
+Here, the second parameter is the AMP Linker ID format in accordance with the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [**RudderStack Linker parameter**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/amp-analytics/#amp-linker), the `<idName1>` value will be `rs_amp_id`.
 
-Calling the above method will parse the Linker ID and set the **`anonymousId`** as the value of the **`rs_amp_id`** key.
+Calling the above method will parse the Linker ID and set the `anonymousId` as the value of the `rs_amp_id` key.
 
-### 3.2.5 Setting `userid` to Empty
+### Setting a blank `userId`
 
-If you would like to set the `userid` to be empty, pass an empty string or `""`. A common use case for this is if an anonymous user was identified with a `userid` and then logs out of their account. You can then `identify("", {isLoggedIn: false})` and the user will continue to be identified by their `anonymousId` for future events.
+If you would like to set a blank `userid`, pass an empty string or `" "`.
 
 <div class="warningBlock">
 
-Do **not** identify with `null`, as this will not allow you to pass a traits object and it will keep the current `userid`.
+  Do not identify with <code class="inline-code">null</code>, as this will not allow you to pass a traits object and it will keep the current <code class="inline-code">userId</code>.
 </div>
 
-### 3.2.6. Identifying New Users
+#### Use-case
 
-To identify new users in scenarios like a new login, you can take one of the following approaches:
+Suppose an anonymous user is identified with a `userid` and then logs out of their account. You can then `identify("", {isLoggedIn: false})` and the user will continue to be identified by their `anonymousId` for future events.
 
-* Call the `identify` API with a new `userid`. RudderStack will reset all cookies related to the user for `userid` and `user-traits` and update them with the new values provided by you.
+### Identifying new users
+
+To identify new users in scenarios like new logins, you can take one of the following two approaches:
+
+#### Calling the `identify` API with a new `userid`
+
+In this case, RudderStack will reset all the cookies related to the user associated with the `userid` and `traits` and update them with the new values provided by you.
 
 <div class="infoBlock">
 
-The `anonymousId` will remain unchanged in this case. It will be the value that you set explicitly using `setAnonymousId` , or the auto-generated value set by the SDK while loading.
+  The <code class="inline-code">anonymousId</code> will remain unchanged in this case. It will be the value that you set explicitly using `<code class="inline-code">setAnonymousId</code>, or the auto-generated value set by the SDK while loading.
 </div>
 
-* Explicitly call `rudderanalytics.reset()` and then call `identify`. It has the same effect as described above.
+#### Explicitly calling `reset` followed by `identify`
 
-For updating the traits of a user, you can call identify with the same `userid` multiple times with new traits. All the traits for that user keep on getting appended/modified.
+This approach has the exactly same outcome as described in the first approach.
 
-Calling `reset()` or identifying with a new `userId` with new traits will reset the earlier traits and update them with the new values, as shown:
+### Updating user traits
+
+For updating the user traits, you can call `identify` with the same `userId` multiple times with the new traits. This results in all the traits associated with that user getting appended or modified. An example is shown below:
 
 ```javascript
-rudderanalytics.identify("userId",
-  { email1: "name@domain.com" },
-  () => { console.log("in identify call"); }
-);
+rudderanalytics.identify("userId", { email1: "name@domain.com" }, () => {
+  console.log("in identify call");
+});
 
-rudderanalytics.identify("userId",
-  { email2: "name@domain.com" },
-  () => { console.log("in identify call"); }
-);
-
-// both email1 and email2 with be sent in the identify payload
-// for the second call.
+rudderanalytics.identify("userId", { email2: "name@domain.com" }, () => {
+  console.log("in identify call");
+});
 ```
 
-## 3.3. Page
+In the above example, both `email1` and `email2` will be sent in the payload for the second `identify` call.
 
-This method lets you record information about the web page being viewed by the user. This includes page views, category, and other relevant information about the page.
+<div class="infoBlock">
 
-The `page()` method definition is as follows:
+  Calling <code class="inline-code">reset()</code> will reset the earlier traits, while identifying a <code class="inline-code">userId</code> with the new traits will update it with the new values.
+</div>
 
-`rudderanalytics.page([category],[name],[properties],[options],[callback]);`
+## Page
 
-A sample example of how to use the `page()` method is as shown:
+The `page` call lets you record your website's page views with any additional relevant information about the viewed page.
+
+<div class="infoBlock">
+
+  Many destinations require the <code class="inline-code">page</code> events to be called at least once every page load.
+</div>
+
+The `page()` method is defined as follows:
+
+```javascript
+rudderanalytics.page(category, name, [properties], [options], [callback]);
+```
+
+The `page` method has the following parameters:
+
+| **Parameter**    | **Type**   | **Presence** | **Description**                                                                    |
+| :--------------- |:-----------| :----------- | :----------------------------------------------------------------------------------|
+| `category`       |String      | Optional     | Defines the page category.                                                         |
+| `name`           | String     | Optional     | Defines the name of the page.                                                      |
+| `properties`     | Dictionary | Optional     | Defines the properties of the page. These properties are auto-captured by the SDK. |
+| `options`        | Dictionary | Optional     | Provides information such as context, integrations, `anonymousId`, etc. Specific user traits can also be provided as the context. Refer to the [**`options`**](#options) section for more information.                                       |
+| `callback`       | Function   |Optional     | Called after the successful execution of the **`page()`** method.                   |
+
+A sample `page()` call is shown below:
 
 ```javascript
 rudderanalytics.page(
@@ -554,7 +317,7 @@ rudderanalytics.page(
     referrer: "",
     search: "",
     title: "",
-    url: "",
+    url: ""
   },
   () => {
     console.log("in page call");
@@ -562,305 +325,92 @@ rudderanalytics.page(
 );
 ```
 
-In the above example, the `page()` method captures information such as the page category and page name. It also captures contextual information such as IP address and the ID of the user.
+In the above example, the SDK also captures the information such as the page category and page name along with the [**contextual information**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/#javascript-sdk).
 
-The above code snippet has the following parameters:
+## Track
 
-| **Parameter** | **Description** |
-| :--- | :--- |
-| **`category`** | An **optional** string that defines the category of the page |
-| **`name`** | An **optional** string that defines the name of the page |
-| **`properties`** | An **optional** dictionary that defines the properties of the page. These properties are auto-captured by the page |
-| **`options`** | An **optional** dictionary that provides information such as context, integrations, `anonymousId`, etc. Specific user traits can be provided as the context as well |
-| **`callback`** | This function gets executed after successful execution of the **`page()`** method |
+The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with those actions.
 
-### 3.3.1. The `options` parameter
-
-The `options` parameter in the `page` call looks like the following:
-
-```
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
-| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
-| **`<other keys>: <value>`** | - | Merged with the event's contextual information |
-
-* The structure of **`IntegrationOpts`** looks like the following:
+The SDK defines the `track()` method as follows:
 
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
-}
+rudderanalytics.track(event, [properties], [options], [callback]);
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+The `track` method has the following parameters:
 
-<div class="infoBlock">
+| **Parameter**    | **Type**   | **Presence** | **Description**                                               |
+| :--------------- |:-----------| :----------- | :-------------------------------------------------------------|
+| `event`          | String     | Required     | Captures the name of the tracked event.                       |
+| `properties`     | Dictionary | Optional     | Tracks the event properties.                                  |
+| `options`        | Dictionary | Optional     | Tracks the information like the context, integrations, etc. Specific user traits can also be provided as the context. Refer to the [**`options`**](#options) section for more information.                                  |
+| `callback`       | Function   | Optional     | Called after the successful execution of the **`track`** call.|
 
-More information on the **`IntegrationOpts`** option can be found here:
-<ul>
-<li>
-
-[Specifying Selective Destinations in the `load` Method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#42-specifying-selective-destinations-in-the-load-method)
-</li>
-<li>
-
-[Common Destination Names for sending events through the `load` method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#41-common-destination-names)
-</li>
-</ul>
-</div>
-
-## 3.4. Track
-
-This method allows you to track any actions that your users might perform. Each of these actions is commonly referred to as an **event**.
-
-The `track()`method definition is as follows:
-
-`rudderanalytics.track(event,[properties],[options],[callback]);`
-
-A sample example of how to use the `track()` method is as shown:
+A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track(
   "test track event GA3",
   {
-    revenue:  30,
-    currency:  'USD' ,
-    user_actual_id:  12345
-  }, 
-  () => {console.log("in track call");}
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345
+  },
+  () => {
+    console.log("in track call");
+  }
 );
 ```
 
-In the above example, the method tracks the event `test track event GA3`, information such as the revenue, currently, user ID, and other contextual information such as IP address.
+In the above example, the method tracks the event `test track event GA3` along information like the `revenue`, `currency`, and the user ID.
 
-The above code snippet has the following parameters:
+## Alias
 
-| **Parameter** | **Description** |
-| :--- | :--- |
-| **`event`** | A string that captures the name of the event that is being tracked |
-| **`properties`** | An **optional** dictionary that tracks the properties of the event |
-| **`options`** | An **optional** dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well |
-| **`callback`** | This function gets executed after successful execution of the **`track`** call |
+Many destination platforms need an explicit `alias` call for mapping the already identified users to a new identifier that you may want to use, to track them in the future. The `alias` call lets you implement this functionality.
 
-### 3.4.1. The `options` parameter
-
-The `options` parameter in the `track` call looks like the following:
-
-```
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
-| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
-| **`<other keys>: <value>`** | - | Merged with the event's contextual information |
-
-* The structure of **`IntegrationOpts`** looks like the following:
+The SDK defines the `alias()` method as shown:
 
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
-}
+rudderanalytics.alias(to, from, [options], [callback]);
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+The `alias` call has the following parameters:
 
-<div class="infoBlock">
+| **Parameter**  |**Type** | **Presence** | **Description** |
+| :------------- |:--------| :----------- | :---------------|
+| `to`        | String     | Required     | Denotes the new identifier of the user. |
+| `from`      | String     | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
+| `options`  | Dictionary  | Optional     | A dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section for more information.                             |
+| `callback` | Function    | Optional     | This function gets executed after the successful execution of the **`alias()`** method. |
 
-More information on the **`IntegrationOpts`** option can be found here:
-<ul>
-<li>
-
-[Specifying Selective Destinations in the `load` Method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#42-specifying-selective-destinations-in-the-load-method)
-</li>
-<li>
-
-[Common Destination Names for sending events through the `load` method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#41-common-destination-names)
-</li>
-</ul>
-</div>
-
-## 3.5.  Alias
-
-Many destination platforms need an explicit `alias` call for mapping the already identified users to a new identifier that you may want to use, to track the users in the future. The RudderStack `alias` API allows you to implement this functionality.
-
-<div class="successBlock">
-
-Simply put, the `alias` call associates the user with a new identification.
-</div>
-
-The format of an `alias` call is as shown:
+A sample `alias()` method is shown below:
 
 ```javascript
-rudderanalytics.alias("to", "from", options, callback);
+rudderanalytics.alias("test_new_id", "old_user_id", () => {
+  console.log("alias call");
+});
 ```
 
-The above `alias` call has the following parameters:
+## Group
 
-| **Parameter** | **Presence** | **Description** |
-| :--- | :--- | :--- |
-| **`to`** | Required | Denotes the new identifier |
-| **`from`** | Optional | Denotes the old identifier which will be an alias for the `to` parameter.  If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
-| **`options`** | Optional | This dictionary provides additional context to the event payload. |
-| **`callback`** | Optional | This function gets executed after successful execution of the **`alias()`** method. |
+The `group` call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group such as the name of the company, the number of employees, etc.
 
-### 3.5.1. The `options` parameter
-
-The `options` parameter in the `alias` call looks like the following:
-
-```
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
-| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
-| **`<other keys>: <value>`** | - | Merged with the event's contextual information |
-
-* The structure of **`IntegrationOpts`** looks like the following:
+The `group()` method is defined as shown below:
 
 ```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
-}
+rudderanalytics.group(groupId, [traits], [options], [callback]);
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
+The `group` method has the following parameters:
 
-<div class="infoBlock">
+| **Parameter**  |**Type** | **Presence** | **Description** |
+| :------------- |:--------| :----------- | :-------------- |
+| `groupId`  |String | Required     | Denotes the group identifier to which the traits are to be modified or added. RudderStack will call the destination APIs to attach the currently identified user to this group.|
+| `traits`   | Dictionary | Optional     | Denotes the group traits. RudderStack will pass these traits to the destination to enhance the group properties.|
+| `options`  | Dictionary | Optional     | A dictionary of information such as context, integrations, etc. Specific user traits can be provided as the context as well. Refer to the [**`options`**](#options) section for more information.   |
+| `callback` | Function | Optional     | Gets executed after the successful execution of the `group()` method.|
 
-More information on the **`IntegrationOpts`** option can be found here:
-<ul>
-<li>
-
-[Specifying Selective Destinations in the `load` Method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#42-specifying-selective-destinations-in-the-load-method)
-</li>
-<li>
-
-[Common Destination Names for sending events through the `load` method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#41-common-destination-names)
-</li>
-</ul>
-</div>
-
-A sample example of how to use the `alias()` method is as shown:
-
-```javascript
-rudderanalytics.alias("test_new_id");
-```
-
-## 3.6.  Group
-
-The `group` call associates a user to a specific organization.
-
-The format of a group call is as shown:
-
-```javascript
-rudderanalytics.group("groupId", traits, options, callback);
-```
-
-The above `group` call has the following parameters:
-
-| **Parameter** | **Presence** | **Description** |
-| :--- | :--- | :--- |
-| **`groupId`** | Required | Denotes the group identifier to which the traits are to be modified or added. RudderStack will call the destination APIs to attach the currently identified user to this group. |
-| **`traits`** | Optional | Denotes the traits of the group. RudderStack will pass these traits to the destination to enhance the group properties. |
-| **`options`** | Optional | This dictionary provides additional context to the event payload. |
-| **`callback`** | Optional | This function gets executed after successful execution of the **`group()`** method. |
-
-### 3.6.1. The `options` parameter
-
-The `options` parameter in the `group` call looks like the following:
-
-```
-    {
-integrations: IntegrationOpts,
-anonymousId: string,
-originalTimestamp: ISO 8601 date string,
-<other keys>: <value> // merged with event's contextual information
-}
-```
-
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`integrations: IntegrationOpts`** | - | Refer to **`IntegrationOpts`** below. More information can be found [here](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data). |
-| **`anonymousId`** | String | Overrides the current event **`anonymousId`** at the top level |
-| **`originalTimestamp`** | ISO 8601 date string | Overrides the current event **`originalTimestamp`** at the top level |
-| **`<other keys>: <value>`** | - | This info is merged with the event's contextual information |
-
-* The structure of **`IntegrationOpts`** looks like the following:
-
-```javascript
-IntegrationOpts {
- All: boolean, // default true
- <Destination1>: boolean,
- <Destination2>: boolean,
- ...
-}
-```
-
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| **`All`** | Boolean | Corresponds to all the destinations to which the event has to be sent. Default is set to **`true`**. **`All: false`** instructs RudderStack not to send the event data to any destinations by default. |
-| **`<Destination>`** | Boolean | Specific destination to which the event is to be sent or not sent, depending on the boolean value assigned to it. |
-
-<div class="infoBlock">
-
-More information on the **`IntegrationOpts`** option can be found here:
-<ul>
-<li>
-
-[Specifying Selective Destinations in the `load` Method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#42-specifying-selective-destinations-in-the-load-method)
-</li>
-<li>
-
-[Common Destination Names for sending events through the `load` method](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#41-common-destination-names)
-</li>
-</ul>
-</div>
-
-An example of how to use the `group` call is as shown below:
+A sample `group()` call is as shown:
 
 ```javascript
 rudderanalytics.group("sample_group_id", {
@@ -869,320 +419,343 @@ rudderanalytics.group("sample_group_id", {
 });
 ```
 
-## 3.7. Reset
+## Reset
 
-This method resets the `userid` and the associated traits and properties of that specific user.
+The `reset` method resets the `userId` and the associated user traits and properties.
 
-The `reset()` method can be used as shown:
+The following snippet shows an example of the `reset()` method:
 
 ```javascript
 rudderanalytics.reset();
 ```
 
-<div class="infoBlock">
-
-**NOTE**: The `reset()`method only clears the cookies and local storage set by RudderStack, and not the information stored by the integrated destinations. To completely clear the user session, please refer to the documentation provided by those respective tools.
+<div class="warningBlock">
+  
+The <code class="inline-code">reset()</code> method only clears the cookies and local storage set by RudderStack. It does not clear the information stored by the integrated destinations. To completely clear the user session, refer to the destination-specific documentation.
 </div>
 
-## 4. How to Filter Selective Destinations to Send Event Data
+## Parameter definitions
 
-RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. You can do so by passing an integrations object in the **options** parameter of the `identify()`, `page()`, and `track()` methods. Please refer to the [How to Filter Selective Destinations](https://rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/) section.
+This section details the type definitions of the parameters used in some of the API methods described above:
 
-### 4.1. Common Destination Names
+### `options`
 
-Below shows some of the supported names that RudderStack can intake for each destination when sending the event data through the event method as described above \(please note that not all destinations are listed below\):
+The structure of **`options`** parameter is as shown:
 
-| Destination | Supported Common Names |
-| :--- | :--- |
-| Google Analytics | `Google Analytics` |
-|  | `GoogleAnalytics` |
-|  | `GA` |
-| Google Ads | `Google Ads` |
-|  | `GoogleAds` |
-|  | `GOOGLEADS` |
-| Braze | `Braze` |
-|  | `BRAZE` |
-| Chartbeat | `Chartbeat` |
-|  | `CHARTBEAT` |
-| Customer.io | `Customer.io` |
-|  | `CUSTOMERIO` |
-| Facebook Pixel | `FB Pixel` |
-|  | `Facebook Pixel` |
-|  | `FB_PIXEL` |
-| Google Tag Manager | `Google Tag Manager` |
-|  | `GTM` |
-| Hotjar | `Hotjar` |
-|  | `HOTJAR` |
-| Hubspot | `Hubspot` |
-|  | `HUBSPOT` |
-| Intercom | `Intercom` |
-|  | `INTERCOM` |
-| Keen.IO | `Keen` |
-|  | `KEEN` |
-|  | `Keen.io` |
-| Kissmetrics | `Kissmetrics` |
-|  | `KISSMETRICS` |
-| Lotame | `Lotame` |
-|  | `LOTAME` |
-| VWO | `Visual Website Optimizer` |
-|  | `VWO` |
-| Amplitude | `Amplitude` |
-| Mixpanel | `Mixpanel` |
-| Facebook App Events | `Facebook App Events` |
-| Amazon S3 | `Amazon S3` |
-| MinIO | `MinIO` |
-| Salesforce | `Salesforce` |
-| Autopilot | `Autopilot` |
-| Heap.io | `Heap.io` |
-| Mailchimp | `Mailchimp` |
-| Redshift | `Redshift` |
-| BigQuery | `BigQuery` |
-| Google Cloud Storage | `Google Cloud Storage` |
-| Azure Blob Storage | `Azure Blob Storage` |
-| Branch Metrics | `Branch Metrics` |
-| Kochava | `Kochava` |
-| Leanplum | `Leanplum` |
-| Slack | `Slack` |
-| Zendesk | `Zendesk` |
-| AWS Personalize | `AWS Personalize` |
-| Amazon Kinesis | `Amazon Kinesis` |
+```javascript
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
+}
+```
+The following table describes each of the above parameters in detail:
 
-<div class="infoBlock">
+| **Parameter**                   | **Type**                                | **Description**  |
+| :-------------------------- | :---------------------------------- | :----------------------- |
+| `integrations`         | [**IntegrationOpts**](#integrationopts) | Refer to the [`IntegrationOpts`](#integrationopts) section. More information on how to use this parameter can be found [**here**](#filtering-selective-destinations). |
+| `anonymousId`           | String                              | Overrides the current event's `anonymousId` at the top level. |
+| `originalTimestamp`     | ISO 8601 Date string                | Overrides the current event's `originalTimestamp` at the top level. |
+| `<other keys>: <value>` | -                                   | Merged with the event's contextual information. |
 
-**NOTE:** You can also refer to [this section](https://rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/#destination-naming-convention) for more information on the naming convention of the `destinations names`.
+### `IntegrationOpts`
+
+The structure of **`IntegrationOpts`** looks like the following:
+
+```javascript
+{
+  All: boolean, // default true
+  <Destination1>: boolean,
+  <Destination2>: boolean,
+  ...
+}
+```
+
+The following table describes each of the above parameters in detail:
+
+| **Parameter**       | **Type**| **Presence**  | **Description**  |
+| :------------------ | :------ |:--------------| :----------------------- |
+| `All`               | Boolean | Optional      | Corresponds to all the destinations to which the event is to be sent. The default value is set to `true`. `All: false` will lead to RudderStack not sending the event data to any destination. |
+| `<Destination>`     | Boolean | Optional      | Specific destination to which the event is to be sent or not sent, depending on the Boolean value assigned to it. |
+
+More information on using `IntegrationOpts` can be found in the [**Filtering selective destinations**](#filtering-selective-destinations) section.
+
+### `QueueOpts`
+
+The structure of **`QueueOpts`** is shown below:
+
+```javascript
+{
+  maxRetryDelay: 360000,
+  minRetryDelay: 1000,
+  backoffFactor: 2,
+  maxAttempts: 10,
+  maxItems: 100,
+}
+```
+
+The following table describes each of the above parameters in detail:
+
+| **Parameter**   | **Type**| **Description**                                                      | **Default value** |
+| :-------------- | :------ | :--------------------------------------------------------------------|:------------------|
+| `maxRetryDelay` | Integer | The upper limit on the maximum delay for an event.                   | 36000ms           |
+| `minRetryDelay` | Integer | The minimum delay expected before sending an event.                  | 1000ms            |
+| `backoffFactor` | Integer | Refers to the exponential base.                                      | 2                 |
+| `maxAttempts`   | Integer | Maximum number of attempts to send the event to the destination.     | 10                |
+| `maxItems`      | Integer | Maximum number of events kept in the storage.                        |    100            |
+
+## Adding callbacks to standard methods
+
+RudderStack lets you define callbacks to the common methods of the `rudderanalytics` object.
+
+<div class="warningBlock">
+
+  This functionality is supported only for the <code class="inline-code">syncPixel</code> method which is called in the SDK when making synchronization calls for the relevant destinations.
 </div>
 
-### 4.2. Specifying Selective Destinations in the `load` Method
+An example is shown below:
 
-You can also choose to load selective destinations by modifying the [`load`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#31-load) method to take a third argument. You can pass an`integrations` object containing the destination names in the format specified [here](https://rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention). RudderStack loads only those destinations that are marked as enabled with the boolean value `true` .
+```javascript
+<script>
+rudderanalytics.syncPixelCallback = obj => {
+  rudderanalytics.track(
+    "sync lotame",
+    {
+      destination: obj.destination
+    },
+    {
+      integrations: {
+        All: false,
+        S3: true
+      }
+    }
+  );
+};
+</script>
 
-A sample RudderStack load method with integration names passed as arguments will look like the following snippet:
+<script src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>
+```
+
+In the above example, RudderStack defines a `syncPixelCallback` on the `rudderanalytics` object loading the SDK. This will lead to RudderStack calling this registered callback with the parameter `{destination: <destination_name>}` whenever a sync call is made from the SDK to the relevant integrations, e.g. Lotame.
+
+You can also add the callback in the `options` parameter as shown below:
+
+```javascript
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
+  clientSuppliedCallbacks: {
+    syncPixelCallback: () => {
+      console.log("sync done!");
+    },
+  },
+});
+```
+
+<div class="successBlock">
+
+  We will be adding similar callbacks for other APIs such as <code class="inline-code">track</code>, <code class="inline-code">page</code>, <code class="inline-code">identify</code>, etc. very soon.
+</div>
+
+## Filtering selective destinations
+
+RudderStack lets you load or send your event data to only the destinations specified by you. You can do so by passing an [**integrations object**](#integrationopts) in the `options` parameter of the API methods. RudderStack then loads or sends events only to those destinations that are specified and enabled.
+
+The format of the `load` method with the integration names passed as arguments is as shown:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-  integrations: { All: false, <destination_name>: true },
+  integrations: {
+    All: false,
+    destination_name: true
+  }
+});
+```
+Here, `<destination_name>` is the name of the destination.
+
+### Examples
+
+* The format of the `track` method with the integration names passed as arguments is as shown below:
+
+```javascript
+rudderanalytics.track(
+  "test track event GA3",
+  {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345
+  },
+  {
+    integrations: {
+      All: false,
+      destination_name: true
+    }
+  }
+);
+```
+
+* The following example shows how to load only the Google Analytics and Intercom destinations:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  integrations: {
+    All: false,
+    "Google Analytics": true,
+    Intercom: true
+  }
 });
 ```
 
-Where `<destination_name>` is the name of the destination.
+* The following example highlights how you can send the `track` type of events only to Google Analytics:
+
+```javascript
+rudderanalytics.track(
+  "test track event GA3",
+  {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345
+  },
+  {
+    integrations: {
+      All: false,
+      "Google Analytics": true
+    }
+  }
+);
+```
 
 <div class="infoBlock">
 
-Please refer to the section above for the common destinations names or refer to [this section](https://rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations#destination-naming-convention) for destination naming convention.
+You can refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#common-destination-names">Common destination names</a> for the naming conventions for the destinations.
 </div>
 
-An example of the `load` method is as shown:
+### Common destination names
 
-```javascript
-rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL, {
-  integrations: { All: false, "Google Analytics": true, Intercom: true },
-});
-```
+The following table lists some of the popular destinations along with their supported names that RudderStack uses as values when sending the event data.
 
-As seen from the example above, **three** arguments are now passed in the `load` method:
+| Destination          | Supported Common Names     |
+| :------------------- | :------------------------- |
+| Google Analytics     | `Google Analytics`         |
+|                      | `GoogleAnalytics`          |
+|                      | `GA`                       |
+| Google Analytics 4   | `Google Analytics 4`       |
+|                      | `GoogleAnalytics4`         |
+|                      | `GA4`                      |
+| Google Ads           | `Google Ads`               |
+|                      | `GoogleAds`                |
+|                      | `GOOGLEADS`                |
+| Braze                | `Braze`                    |
+|                      | `BRAZE`                    |
+| Chartbeat            | `Chartbeat`                |
+|                      | `CHARTBEAT`                |
+| Customer.io          | `Customer.io`              |
+|                      | `CUSTOMERIO`               |
+| Facebook Pixel       | `FB Pixel`                 |
+|                      | `Facebook Pixel`           |
+|                      | `FB_PIXEL`                 |
+| Google Tag Manager   | `Google Tag Manager`       |
+|                      | `GTM`                      |
+| Hotjar               | `Hotjar`                   |
+|                      | `HOTJAR`                   |
+| Hubspot              | `Hubspot`                  |
+|                      | `HUBSPOT`                  |
+| Intercom             | `Intercom`                 |
+|                      | `INTERCOM`                 |
+| Keen.IO              | `Keen`                     |
+|                      | `KEEN`                     |
+|                      | `Keen.io`                  |
+| Kissmetrics          | `Kissmetrics`              |
+|                      | `KISSMETRICS`              |
+| Lotame               | `Lotame`                   |
+|                      | `LOTAME`                   |
+| VWO                  | `Visual Website Optimizer` |
+|                      | `VWO`                      |
+| Optimizely           | `OPTIMIZELY`               |
+|                      | `Optimizely`               |
+| Amplitude            | `Amplitude`                |
+|                      | `AMPLITUDE`                |
+| Mixpanel             | `Mixpanel`                 |
+| Facebook App Events  | `Facebook App Events`      |
+| Amazon S3            | `Amazon S3`                |
+| MinIO                | `MinIO`                    |
+| Salesforce           | `Salesforce`               |
+| Autopilot            | `Autopilot`                |
+| Heap.io              | `Heap.io`                  |
+| Mailchimp            | `Mailchimp`                |
+| Redshift             | `Redshift`                 |
+| BigQuery             | `BigQuery`                 |
+| Google Cloud Storage | `Google Cloud Storage`     |
+| Azure Blob Storage   | `Azure Blob Storage`       |
+| Branch Metrics       | `Branch Metrics`           |
+| Kochava              | `Kochava`                  |
+| Leanplum             | `Leanplum`                 |
+| Slack                | `Slack`                    |
+| Zendesk              | `Zendesk`                  |
+| AWS Personalize      | `AWS Personalize`          |
+| Amazon Kinesis       | `Amazon Kinesis`           |
+| CleverTap            | `CLEVERTAP`                |
+|                      | `Clevertap`                |
+| Adobe Analytics      | `Adobe Analytics`          |
+|                      | `AdobeAnalytics`           |
+|                      | `ADOBE_ANALYTICS`          |
+|                      | `adobeanalytics`           |
 
-* `writekey`
-* `<DATA_PLANE_URL>`
-* The `integrations` dictionary containing `Google Analytics` and `Intercom` as the destination names
-
-## 5. Contexts and Traits in RudderStack
+## Context and traits
 
 RudderStack gives you the option to automatically capture certain event-specific and user-specific data, based on the type of the event.
 
-In this section, we cover two specific dictionaries, within the `options` argument, which is included in the `identify()`, `page()`, and `track()` methods.
+In this section, we cover two specific dictionaries within the [`options`](#options) parameter included in the supported API methods.
 
-### 5.1. Context
+### Context
 
-A context is a dictionary of additional information about a particular data, such as a user’s IP address.
+A context is a dictionary of additional information about a particular event data, such as a user’s locale.
 
 <div class="infoBlock">
 
-**NOTE**: A context is a complete and specific piece of information. Any other information provided outside of this specification is ignored.
+A context is a complete and specific piece of information. Any other information provided outside of this specification is ignored.
 </div>
 
-### 5.2. Trait
+### Traits
 
-A trait is an optional dictionary included within `context`, which specifies the unique traits of the user. This is a very useful field for linking information of a user from a previously made `identify()` call to a `track()` or `page()` event.
+Traits is an optional dictionary included within [`context`](#context) which specifies the user's unique traits. This is a very useful field for linking the user's information from a previously made [`identify()`](#identify) call to the subsequent [`track()`](#track) or [`page()`](#page) calls.
 
-In order to better understand how contexts and traits work, let us look at the following `identify` event:
+#### Use-case
+
+To better understand how contexts and traits work, refer to the following `identify` event:
 
 ```javascript
 rudderanalytics.identify("userId", {
   plan: "Paid, Premium",
-  email: "name@surname.org",
+  email: "name@surname.org"
 });
 ```
 
-The trait in the above event is `plan`. If you wish to include this trait in a subsequent `track()` or `page()`event that is triggered by the user, you can establish the association by passing this trait into `context.traits` as shown:
+The trait in the above event is `plan`. If you wish to include this trait in a subsequent `track()` or `page()`event triggered by the user, you can establish the association by passing it in `context.traits` as shown:
 
 ```javascript
 rudderanalytics.track(
   "Subscribed",
   {
-    campaign: "Subscribe",
+    campaign: "Subscribe"
   },
   {
-    traits: {
-      plan: "Paid, Premium",
-    },
+    context: {
+      traits: {
+        plan: "Paid, Premium"
+      }
+    }
   }
 );
 ```
 
-The above code snippet will append `plan` as a trait to the track event.The trait `email` will not be appended, as it was not specified in the `context.traits` field.
+The above snippet will append `plan` as a trait to the `track` event. Note that the trait `email` will not be appended, as it was not specified in the `context.traits` field.
 
-## 6. Querystring API
+## FAQs
 
-RudderStack's Querystring API allows you to trigger `track`, `identify` calls using the query parameters.
+Refer to the [**FAQs**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/faqs) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.
 
-You may use the below parameters as a query string parameters and trigger the corresponding call.
+## Contact us
 
-| Parameter | Action |
-| :--- | :--- |
-| `ajs_uid` | Makes a `rudderanalytics.identify()` call with `userId` having the parameter value. |
-| `ajs_aid` | Makes a `rudderanalytics.setAnonymousId()` call with `anonymousId` having the parameter value. |
-| `ajs_event` | Makes a `rudderanalytics.track()` call with `event` name as the parameter value. |
-| `ajs_prop_<property>` | If `ajs_event` is passed as a query string, value of this parameter will populate the `properties` of the corresponding event in the `track` call. |
-| `ajs_trait_<trait>` | If `ajs_uid` is provided as a query sting, the value of this parameter will populate the `traits` of the `identify` call made. |
+For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 
-As an example, if you pass the following parameters in the URL as shown:
-
-```javascript
-http://hostname.com/?ajs_uid=12345&ajs_event=test%20event&ajs_aid=abcde&ajs_prop_testProp=prop1&ajs_trait_name=Firstname+Lastname
-```
-
-The following SDK calls will be triggered:
-
-```javascript
-rudderanalytics.identify("userId", {name: "Firstname Lastname"});
-rudderanalytics.track("test event", {testProp: "prop1"});
-rudderanalytics.setAnonymousId("anonymousId");
-```
-
-## 7. Detect**ing** Ad-blocked Pages
-
-RudderStack's JavaScript SDK provides a way to send a page view containing relevant markers on whether a page is ad-blocked. You can analyze this data to find what percent of your site's page views are affected by ad-blockers.
-
-To send an ad-blocked page view, load the SDK as follows:
-
-```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-  sendAdblockPage: true,
-  sendAdblockPageOptions: { integrations: { All: false, Amplitude: true } },
-});
-```
-
-Some of the properties in the snippet above are:
-
-* `sendAdblockPage`: Enables the JavaScript SDK to make a call to load the Google AdSense library. If RudderStack fails to load this library, it concludes that an ad blocker is enabled on the page. 
-
-<div class="infoBlock">
-
-Since most ad blockers block the request to the Google AdSense servers, this is assumed as a good measure to detect ad-blocked pages.
-</div>
-
-* `sendAdblockPageOptions`: The RudderStack SDK will make an implicit `page` call about the ad-blocked pages if `sendAdblockPage` is set to `true`. With `sendAdblockPageOptions`, you can provide the destinations to which you want to forward this `page` call.
-
-The implicit `page` call semantics is as follows:
-
-```javascript
-rudderanalytics.page("RudderJS-Initiated", "ad-block page request", {
-  path: "/ad-blocked",
-  title:
-    "error in script loading:: src::  http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js id:: ad-block",
-});
-```
-
-## **8. FAQs**
-
-This section provides solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK on your website.
-
-### Where do I get the Data Plane URL?
-
-For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. Refer to [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) to get the Data Plane URL depending on your choice of setup.
-
-### How to load `analytics.js` correctly?
-
-In order to load `analytics.js`, simply copy the minified or non-minified version of the code snippet provided in the [Installing the RudderStack JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#2-installing-the-rudderstack-javascript-sdk) section.
-
-To check if it has loaded correctly, open the JavaScript console in your browser:
-
-* Safari: `Ctrl+Alt+I` \(Windows\) or `Command+Option+I` \(Mac\) and go to the `Console` tab
-* Chrome: `Ctrl+Shift+J` \(Windows\) or `Command+Option+J` \(Mac\)
-* Firefox: `Ctrl+Shift+K` \(Windows\) or `Command+Option+K` \(Mac\) and select the `Console` tab
-* Internet Explorer: Press `F12` and go to the `Console` tab
-
-In the console, run `rudderanalytics`. If it returns an object as shown in the following code snippet, it means that the `rudderanalytics.js` file has loaded successfully:
-
-```
-{Integrations: Object, _integrations: Object, _readied: true, _timeout: 300, _user: n_}
-```
-
-If it gives you an `undefined` error, you might want to verify if the setting up procedure was correctly followed. [Our Quick Start Guide](https://github.com/rudderlabs/rudder-sdk-js/#how-to-use-the-rudderstack-javascript-sdk) may be able to help you get up and running.
-
-### **Should I disable ad-blockers on my browser?**
-
-Yes, it is important that you ensure no ad-blockers are running on your browser, as they restrict the`rudderanalytics.js` script from executing and storing user information in the browser.
-
-### **Can I load multiple instances of `rudderanalytics.js`?**
-
-No, it is not possible to load multiple instances of `rudderanalytics.js`, as it is bound to exceed the maximum stack call size and give you an error.
-
-### **How to check if the data is being transmitted to the desired destinations?**
-
-To check if data is being transmitted to the specified destinations, go to the `Network` tab of your JavaScript console on your browser.
-
-<img src="../../../assets/javascript-1.png" alt="Page call as seen in the network tab" /><span class="imageTitle">page call as seen in the Network tab</span>
-
-<img src="../../../assets/javascript-2.png" alt="Track call as seen in the network tab" /><span class="imageTitle">track call as seen in the Network tab</span>
-
-<div class="infoBlock">
-
-**NOTE**: If the outbound request is not being shown, check if you have installed and set up the RudderStack JavaScript SDK correctly, or if ad-blockers are enabled on your browser.
-</div>
-
-### **What is the size limit on the requests?**
-
-The size limit on requests is 32 KB per message.
-
-### **Can I send the event data to specific destinations only?**
-
-Yes, you can. Refer to the [How to Filter Selective Destinations to Send Your Event Data](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk#4-how-to-filter-selective-destinations-to-send-event-data) section above to see how to do this.
-
-### **What is an Anonymous ID and how to retrieve it?**
-
-An Anonymous ID is an auto-generated UUID \(Universally Unique Identifier\) that gets assigned to each unique visitor to your website.
-
-To retrieve the anonymous ID of any visitor, simply call the following:
-
-```javascript
-rudderanalytics.getAnonymousId();
-```
-
-<div class="infoBlock">
-
-**NOTE:** In case the `anonymousId` value is null, calling the above function will lead to automatically setting a new `anonymousId`.
-</div>
-
-### What is the `Reserved Keyword` error?
-
-When using the JS-SDK, you may run into the following error: `Warning! : Reserved keyword used in traits --> id with track call`. This is due to one or more of the keys in your `traits` and/or `properties` object is the same value as a reserved keyword. The following list of reserved keywords are keys the RudderStack uses for a standard event payload and therefore should be avoided when naming traits and properties.
-
-```javascript
-Reserved Keywords:
-------------------
-"anonymous_id"
-"id"
-"sent_at"
-"received_at"
-"timestamp"
-"original_timestamp"
-"event_text"
-"event"
-```
-
-## Contact Us
-
-To know more about the RudderStack JavaScript SDK or to see it in action, you can [contact us](mailto:%20docs@rudderstack.com) or see the SDK [in action](https://rudderstack.com/request-a-demo). You can also talk to us on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel.
-
-In case you come across any issues while using this SDK, please feel free to submit them on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-js/issues).
+If you come across any issues while using this SDK, feel free to submit them on our [**GitHub issues page**](https://github.com/rudderlabs/rudder-sdk-js/issues).

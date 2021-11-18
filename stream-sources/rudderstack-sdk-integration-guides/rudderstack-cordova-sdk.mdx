@@ -25,7 +25,7 @@ To set up the Cordova SDK, follow these steps:
 <img src="../../assets/Cordova_Source.png" alt="Adding Cordova SDK" />
 <span class="imageTitle">Adding Cordova SDK</span>
 
-* You will also need your Data Plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it) for more information.
+* You will also need your data plane URL. Follow [**this section**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information.
 
 ## Installing the SDK
 
@@ -49,7 +49,7 @@ RudderClient.initialize(WRITE_KEY , {
 
 <div class="successBlock">
 
-Make sure to use the `await` keyword with the `initialize` call.
+  Make sure to use the <code class="inline-code">await</code> keyword with the <code class="inline-code">initialize</code> call.
 </div>
 
 The `setup` method has the following signature:
@@ -182,7 +182,7 @@ RudderStack automatically tracks the following optional events:
 1. `Application Installed`
 2. `Application Opened`
 
-You can disable these events by sending the property `trackLifecycleEvents` as `false` within the `configuration` object while initializing `RudderClient`. **However, we highly recommend keeping them enabled**.
+You can disable these events by sending the property `trackLifecycleEvents` as `false` within the `configuration` object while initializing `RudderClient`. However, we highly recommend keeping them enabled.
 </div>
 
 ## Group
@@ -278,6 +278,29 @@ A sample `reset` call is as shown:
 RudderClient.reset()
 ```
 
+## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+
+RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across the device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking:
+
+```javascript
+RudderClient.optOut(true);
+```
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+```javascript
+RudderClient.optOut(false);
+```
+
+<div class="infoBlock">
+  
+ The <code class="inline-code">optOut</code> API is available in the Cordova SDK starting from version <code class="inline-code">1.0.1</code>. 
+</div>
+
 ## Configuring the RudderStack client
 
 You can configure your RudderStack client by passing the following parameters in the `configuration` object of your `RudderClient.initialize()` call:
@@ -309,7 +332,7 @@ The `options` object has the following signature:
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
 | `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
-| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the [**Enabling/disabling events for specific destinations**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk#enabling-disabling-events-for-specific-destinations) section below. |
+| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the [**Enabling/disabling events for specific destinations**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#enablingdisabling-events-for-specific-destinations) section below. |
 
 ## Enabling/disabling events for specific destinations
 
