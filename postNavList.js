@@ -100,7 +100,7 @@ export const postNavList = [
  },
  {
     "key":"js-sdk-faqs",
-    "title":"FAQs",
+    "title":"JavaScript SDK FAQs",
     "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
     "content":[]
  }, 
