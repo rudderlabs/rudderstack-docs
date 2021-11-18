@@ -8,11 +8,16 @@ description: >-
 
 # How to Filter Selective Destinations
 
-RudderStack allows you to send your event data only to a few intended destinations by filtering out the rest. For the [JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), you can do so by passing an integrations object in the `options` parameter of the event method. For most of the other SDKs you can use the `integrations` object parameter for the associated event. The filter destination feature is currently only supported for cloud mode integrations.
+RudderStack lets you send your event data only to certain intended destinations by filtering out the rest. For the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), you can do this by passing an `integrations` object in the `options` parameter of the event method. For most of the other SDKs, you can use the `integrations` object parameter for the associated event. 
+
+<div class="infoBlock">
+
+This feature is currently supported only for cloud mode integrations. For more information on the cloud mode, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+</div>
 
 ## How it works
 
-The following is an example of how to send a sample message **only** to `Google Analytics` and `Intercom` in the JavaScript SDK:
+The following example demonstrates how to send a sample event **only** to `Google Analytics` and `Intercom` via the JavaScript SDK:
 
 ```javascript
 rudderanalytics.identify(
@@ -33,16 +38,15 @@ rudderanalytics.identify(
 
 <div class="successBlock">
 
-  **NOTE**: Unless explicitly defined otherwise, <code class="inline-code">All</code> is always set to <code class="inline-code">true</code>. This means that sending events to all destinations is enabled by default.
+Unless explicitly defined otherwise, <code class="inline-code">All</code> is always set to <code class="inline-code">true</code>. This means that RudderStack sends the events to all destinations by default.
 </div>
 
 <div class="infoBlock">
 
-The line <code class="inline-code">All: false</code> instructs RudderStack **not** to send the event data to any destinations **by default,** unless they are explicitly listed as <code class="inline-code">true</code> in the subsequent lines.
-
+  The line <code class="inline-code">All: false</code> instructs RudderStack <strong>not</strong> to send the event data to any destinations <strong>by default</strong>, unless they are explicitly set to <code class="inline-code">true</code>.
 </div>
 
-You can also disable sending event data to certain destinations. In this case, the event data is sent to **all the other destinations** except the specified ones. An example of this is as shown from the JavaScript SDK:
+You can also disable sending event data to certain destinations. In this case, the event data is sent to **all the other destinations** except the specified ones. An example of how to do this is shown below:
 
 ```javascript
 rudderanalytics.identify(
@@ -62,18 +66,16 @@ rudderanalytics.identify(
 
 <div class="infoBlock">
 
-As seen in the above code snippet, RudderStack will send the event data to all destinations except <code class="inline-code">Google Analytics</code> and <code class="inline-code">Intercom</code>.
-
+In the above code snippet, RudderStack will send the event data to all destinations <strong>except</strong> Google Analytics and Intercom.
 </div>
 
 ## Examples
 
-The following are examples for the same `track()` call from a variety of SDKs.
+The following are some examples of the `track()` call sent from a variety of SDKs.
 
 <div class="infoBlock">
 
-Please Note: Some of the SDKs follow their own convention that is different than the examples below. The notable SDKs with different convention are IOS and Android. Please read the respective <code class="inline-code">SDK Integration Guide</code> section for your given SDK to find the correct format to filter selective destinations.
-
+Note that ome of the SDKs follow their own convention that is different than the examples below. The notable SDKs with different convention are iOS and Android. Refer to the respective SDK documentation for the correct format of filtering selective destinations.
 </div>
 
 ### JavaScript SDK
@@ -115,20 +117,18 @@ rudder_analytics.track(
 
 <div class="infoBlock">
 
-In these examples above, the track events will only be sent to the <code class="inline-code">Amazon S3</code> and <code class="inline-code">Heap.io</code> destinations.
-
+  In the above examples, the <code class="inline-code">track</code> events will only be sent to the Amazon S3 and Heap.io destinations.
 </div>
 
-## Destination Naming Convention
+## Destination naming convention
 
-Use the displayed destination name from the [RudderStack directory in your control plane](https://app.rudderstack.com/directory) for the destination name.
+To filter the destinations, you need to specify the exact destination names. To get these names, you can go to the [**RudderStack directory**](https://app.rudderstack.com/directory). 
 
 <div class="infoBlock">
 
-These destination names are case sensitive.
-
+Note that the destination names are case sensitive.
 </div>
 
-## Contact Us
+## Contact us
 
-For more information on any of the sections in this guide, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel, and we will be happy to help you!
+For more information on any of the sections in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
