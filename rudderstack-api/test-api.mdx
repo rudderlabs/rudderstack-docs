@@ -617,11 +617,19 @@ The Test API supports the following message `type`:
 * `group`
 * `alias`
 
-You will get the following error message in the absence of a message `type` in the payload, or if you specify any other `type` apart from the ones in the above list:
+If you specify any other message `type` apart from the supported events mentioned in the above list, you will get the following error:
 
 ```json
 {
-    "message": "type is missing from message"
+    "message": "message type is unsupported"
+}
+```
+
+You will get the following error message if no message `type` is specified in the payload, or if `type` is not a string:
+
+```json
+{
+    "message": "message type missing or invalid"
 }
 ```
 
@@ -649,11 +657,21 @@ The Test API does not support the destinations that leverage the [**rudder-serve
 
 ### What happens if `type` is not included in the event payload?
 
-If `type` is invalid or missing in the event payload, the API will return the following error:
+Simply put, `type` refers to the event type in the payload.
+
+* If `type` is missing in the event payload, the API will return the following error:
 
 ```json
 {
-    "message": "type is missing from message"
+    "message": "message type missing or invalid"
+}
+```
+
+* If you set `type` to any value other than `identify`, `track`, `page`, `screen`, `group`, or `alias`, the API will return the following error:
+
+```json
+{
+    "message": "message type is unsupported"
 }
 ```
 
