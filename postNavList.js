@@ -9,41 +9,11 @@ export const postNavList = [
     "content":[]
 },
 {
-    "key":"get-started",
-    "title":"Get Started",
-    "link":"/get-started/",
-    "content":[]
+   "key":"connections",
+   "title":"RudderStack Cloud",
+   "link":"/connections/",
+   "content":[]
 },
-{
-    "key":"installing-and-setting-up-rudderstack",
-    "title":"Install and Set Up RudderStack",
-    "link":"/get-started/installing-and-setting-up-rudderstack/",
-    "content":[]
-},
-{
-    "key":"docker",
-    "title":"Docker",
-    "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
-    "content":[]
- },
- {
-    "key":"kubernetes",
-    "title":"Kubernetes",
-    "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
-    "content":[]
- },
- {
-    "key":"developer-machine-setup",
-    "title":"Developer Machine Setup",
-    "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
-    "content":[]
- },
- {
-    "key":"sending-test-events",
-    "title":"Sending Test Events",
-    "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
-    "content":[]
- },
  {
     "key":"dashboard-overview",
     "title":"Dashboard Overview",
@@ -63,30 +33,12 @@ export const postNavList = [
    "content":[]
 },
  {
-   "key":"control-plane-lite",
-   "title":"Control Plane Lite",
-   "link":"/get-started/control-plane-lite/",
-   "content":[]
-},
- {
     "key":"live-events",
     "title":"Live Events",
     "link":"/get-started/live-events/",
     "content":[]
  },
- {
-    "key":"architecture",
-    "title":"Architecture",
-    "link":"/get-started/rudderstack-architecture/",
-    "content":[]
- },
- {
-    "key":"connections",
-    "title":"Connections",
-    "link":"/connections/",
-    "content":[]
- },
- {
+{
     "key":"adding-source-and-destination-rudderstack",
     "title":"How to Add a Source and Destination in RudderStack",
     "link":"/connections/adding-source-and-destination-rudderstack/",
@@ -94,7 +46,7 @@ export const postNavList = [
  },
  {
     "key":"rudderstack-connection-modes",
-    "title":"RudderStack Connection Modes: Cloud Mode vs Device Mode",
+    "title":"Connection Modes: Cloud Mode vs Device Mode",
     "link":"/connections/rudderstack-connection-modes/",
     "content":[]
  },
@@ -117,11 +69,41 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"quick-start-guide",
+    "title":"Quick Start Guide",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/",
+    "content":[]
+ },
+ {
     "key":"javascript-sdk-enhancements",
     "title":"JavaScript SDK Enhancements",
     "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
     "content":[]
  },
+ {
+    "key":"querystring-api",
+    "title":"Querystring API",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/",
+    "content":[]
+ },
+ {
+    "key":"detecting-adblocked-pages",
+    "title":"Detecting Ad-blocked Pages",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/",
+    "content":[]
+ },
+ {
+    "key":"version-migration-guide",
+    "title":"Version Migration Guide",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/",
+    "content":[]
+ },
+ {
+    "key":"js-sdk-faqs",
+    "title":"FAQs",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
+    "content":[]
+ }, 
  {
     "key":"rudderstack-android-sdk",
     "title":"Android",
@@ -138,6 +120,12 @@ export const postNavList = [
     "key":"rudderstack-ios-sdk",
     "title":"iOS",
     "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/",
+    "content":[]
+ },
+ {
+    "key":"tvOS",
+    "title":"tvOS",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/",
     "content":[]
  },
  {
@@ -1187,15 +1175,33 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"identity-resolution-in-rudderstack",
+    "title":"Identity Resolution",
+    "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
+    "content":[]
+ },
+ {
+    "key":"warehouse-schemas",
+    "title":"Warehouse Schemas",
+    "link":"/data-warehouse-integrations/warehouse-schemas/",
+    "content":[]
+ },
+ {
     "key":"amazon-redshift",
     "title":"Amazon Redshift",
     "link":"/data-warehouse-integrations/amazon-redshift/",
     "content":[]
  },
  {
-    "key":"identity-resolution-in-rudderstack",
-    "title":"Identity Resolution",
-    "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
+    "key":"azure-synapse",
+    "title":"Azure Synapse",
+    "link":"/data-warehouse-integrations/azure-synapse/",
+    "content":[]
+ },
+ {
+    "key":"azure-datalake",
+    "title":"Azure Data Lake",
+    "link":"/data-warehouse-integrations/azure-datalake/",
     "content":[]
  },
  {
@@ -1211,6 +1217,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"gcs-datalake",
+    "title":"Google Cloud Storage Data Lake",
+    "link":"/data-warehouse-integrations/gcs-datalake/",
+    "content":[]
+ },
+ {
     "key":"postgresql",
     "title":"PostgreSQL",
     "link":"/data-warehouse-integrations/postgresql/",
@@ -1223,24 +1235,6 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"warehouse-faqs",
-    "title":"Warehouse FAQs",
-    "link":"/data-warehouse-integrations/warehouse-faqs/",
-    "content":[]
- },
- {
-    "key":"warehouse-schemas",
-    "title":"Warehouse Schemas",
-    "link":"/data-warehouse-integrations/warehouse-schemas/",
-    "content":[]
- },
- {
-    "key":"azure-synapse",
-    "title":"Azure Synapse",
-    "link":"/data-warehouse-integrations/azure-synapse/",
-    "content":[]
- },
- {
     "key":"microsoft-sql-server",
     "title":"Microsoft SQL Server",
     "link":"/data-warehouse-integrations/microsoft-sql-server/",
@@ -1250,6 +1244,12 @@ export const postNavList = [
     "key":"s3-datalake",
     "title":"Amazon S3 Data Lake",
     "link":"/data-warehouse-integrations/s3-datalake/",
+    "content":[]
+ },
+ {
+    "key":"warehouse-faqs",
+    "title":"Warehouse FAQs",
+    "link":"/data-warehouse-integrations/warehouse-faqs/",
     "content":[]
  },
  {
@@ -1431,6 +1431,54 @@ export const postNavList = [
     "title":"User Suppression API",
     "link":"/rudderstack-api/user-suppression/",
     "content":[]
+ },
+ {
+    "key":"get-started",
+    "title":"RudderStack Open Source",
+    "link":"/get-started/",
+    "content":[]
+},
+{
+   "key":"control-plane-lite",
+   "title":"Control Plane Setup",
+   "link":"/get-started/control-plane-lite/",
+   "content":[]
+},
+{
+    "key":"installing-and-setting-up-rudderstack",
+    "title":"Data Plane Setup",
+    "link":"/get-started/installing-and-setting-up-rudderstack/",
+    "content":[]
+},
+{
+    "key":"docker",
+    "title":"Docker",
+    "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
+    "content":[]
+ },
+ {
+    "key":"kubernetes",
+    "title":"Kubernetes",
+    "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
+    "content":[]
+ },
+ {
+    "key":"developer-machine-setup",
+    "title":"Developer Machine Setup",
+    "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
+    "content":[]
+ },
+ {
+    "key":"sending-test-events",
+    "title":"Sending Test Events",
+    "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
+    "content":[]
+ },
+ {
+   "key":"architecture",
+   "title":"Architecture",
+   "link":"/get-started/rudderstack-architecture/",
+   "content":[]
  },
  {
     "key":"user-guides",
