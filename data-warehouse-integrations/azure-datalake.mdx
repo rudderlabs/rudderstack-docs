@@ -1,0 +1,88 @@
+---
+title: "Azure Data Lake"
+description: Step-by-step guide to send event data from RudderStack to your Azure data lake.
+---
+
+# Azure Data Lake
+
+[**Azure Data Lake**](https://azure.microsoft.com/en-in/solutions/data-lake/) is Microsoft's secure and scalable data lake functionality that lets you store data of varying sizes and complexity and facilitates fast, cross-platform data processing and analytics. It leverages [**Azure Blob Storage**](https://azure.microsoft.com/en-in/services/storage/blobs/) that lets you store massive amounts of data without conforming to any specific data model.
+
+RudderStack supports Azure data lake as a destination to which you can securely send your data.
+
+## Setting up the Azure data lake destination
+
+To start sending data to your Azure data lake, you will first need to add it as a destination in RudderStack and connect it to a data source. Once the destination is enabled, the events will automatically start flowing to your data lake.
+
+Follow these steps to configure your Azure data lake as a destination in RudderStack:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), configure the data source. Then, select **Azure Data Lake** from the list of destinations.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack//">Adding a Source and Destination in RudderStack</a> guide for more information.
+</div>
+
+* Assign a name to your destination and click on **Next**. You should then see the following screen:
+
+<img src="../assets/dw-integrations/azure-datalake-1.png" alt="Azure data lake destination settings in RudderStack" />
+
+### Connection settings
+
+Add the following credentials in the **Connection Settings**:
+
+* **Staging Azure Blob Storage Container Name**: Enter the name of the Azure container used to store the data before loading it into the data lake.
+* **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.
+* **Namespace**: If specified, all the data for the destination will be pushed to `https://<account_name>.blob.core.windows.net/<bucketName>/<prefix>/rudder-datalake/<namespace>`.
+
+<div class="infoBlock">
+
+If you don't specify a namespace in the settings, RudderStack sets it to the source name by default.
+</div>
+
+* **Azure Blob Storage Account Name**: Enter your Azure Blob Storage account name.
+* **Azure Blob Storage Account Key**: Enter your Azure Blob Storage account key.
+
+<div class="infoBlock">
+
+For more information on setting up your Azure Blob Storage account, refer to <a href="https://rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage">this section</a>.
+</div>
+
+## Finding your data in the Azure data lake
+
+RudderStack converts your events into Parquet files and dumps them into the configured Azure bucket. Before dumping the events, RudderStack groups the files by the event name based on the time (UTC) they were received. 
+
+The folder structure is similar to the following format:
+
+`https://<account_name>.blob.core.windows.net/<prefix>/rudder-datalake/<namespace>/<tableName>/YYYY/MM/DD/HH`
+
+As specified in the [**Connnection settings**](#connection-settings) section above:
+
+* `<prefix>` is the Azure prefix used while configuring the Azure data lake destination in RudderStack. If not specified, RudderStack will omit this value.
+* `<namespace>` is the namespace specified in the destination settings. If not specified, RudderStack sets it to the source name.
+* `<tableName>` is set to the event name.
+* `YYYY`, `MM`, `DD`, and `HH` are replaced by the actual time values.
+
+<div class="infoBlock">
+
+A combination of the `YYYY`, `MM`, `DD`, and `HH` values represents the UTC time.
+</div>
+
+### Use case
+
+Suppose that RudderStack tracks the following two events:
+
+| Event Name             | Timestamp                                        |
+| :-------------------| :----------------------------------|
+| Product Purchased | `"2019-10-12T08:40:50.52Z" UTC` |
+| Cart Viewed             | `"2019-11-12T09:34:50.52Z" UTC`  |
+
+RudderStack then converts these events into Parquet files and dumps them into the following folders:
+
+| Event Name             | Folder Location  |
+| :-------------------| :----------------|
+| Product Purchased | `https://<account_name>.blob.core.windows.net/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` |
+| Cart Viewed             | `https://<account_name>.blob.core.windows.net/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09`              |
+
+## Contact us
+
+If you come across any issues while setting up using the Azure data lake destination, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

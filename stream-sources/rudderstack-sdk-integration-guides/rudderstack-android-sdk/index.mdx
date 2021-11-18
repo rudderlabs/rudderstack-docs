@@ -67,7 +67,57 @@ It is recommended to use the Core Android SDK without any <code class="inline-co
 
 </div>
 
-## Setting Android permissions
+## Using the Android SDK on applications with `minSDKVersion` less than `20`
+
+By default, the Android SDK does not support applications with `minSDKVersion` less than `20`. You can add this support by following the steps below:
+
+- Add the following dependency to the `build.gradle` file of your application:
+
+```groovy
+implementation 'com.google.android.gms:play-services-base:17.6.0'
+```
+
+- Add the function `tlsBackport()` in your `MainActivity` as shown:
+
+```kotlin
+private fun tlsBackport() {
+        try {
+            ProviderInstaller.installIfNeeded(this)
+            Log.e("Rudder", "Play present")
+            val sslContext: SSLContext = SSLContext.getInstance("TLSv1.2")
+            sslContext.init(null, null, null)
+            sslContext.createSSLEngine()
+        } catch (e: GooglePlayServicesRepairableException) {
+            // Prompt the user to install/update/enable Google Play services.
+            GoogleApiAvailability.getInstance()
+                .showErrorNotification(this, e.connectionStatusCode)
+            Log.e("Rudder", "Play install")
+        } catch (e: GooglePlayServicesNotAvailableException) {
+            // Indicates a non-recoverable error: let the user know.
+            Log.e("SecurityException", "Google Play Services not available.");
+            e.printStackTrace()
+        }
+    }
+```
+
+- Finally, call the `tlsBackport()` function at the very beginning of your `onCreate()` method in `MainActivity`.
+
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            tlsBackport()
+        }
+    }
+```
+
+<div class="infoBlock">
+  
+  For more details, refer to this <a href="https://developer.android.com/reference/javax/net/ssl/SSLSocket.html#protocols">Android documentation</a>.
+</div>
+
+## Setting Android Permission
 
 Add this line to your `AndroidManifest.xml` file of your application for `internet` permission:
 

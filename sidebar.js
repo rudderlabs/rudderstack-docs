@@ -1662,6 +1662,22 @@ export const jsonData = [
            ]
         },
         {
+           "key":"gcs-datalake",
+           "title":"Google Cloud Storage Data Lake ",
+           "link":"/data-warehouse-integrations/gcs-datalake/",
+           "content":[
+              
+           ]
+        },
+        {
+           "key":"azure-datalake",
+           "title":"Azure Data Lake ",
+           "link":"/data-warehouse-integrations/azure-datalake/",
+           "content":[
+              
+           ]
+        },
+        {
            "key":"microsoft-sql-server",
            "title":"Microsoft SQL Server",
            "link":"/data-warehouse-integrations/microsoft-sql-server/",
