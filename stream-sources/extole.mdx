@@ -6,55 +6,79 @@ description: Step-by-step guide to ingest your event data from Extole into Rudde
 
 # Extole
 
-[Extole](https://www.extole.com/) is a popular referral marketing tool that lets you offer an integrated, optimized, and effective customer experience for your audience. It allows you to create personalized marketing campaigns aimed at boosting your customer acquisition and conversion rates.
+[**Extole**](https://www.extole.com/) is a popular referral marketing tool that lets you offer an integrated, optimized, and effective customer experience for your audience. It allows you to create personalized marketing campaigns aimed at boosting your customer acquisition and conversion rates.
 
-You can send your Extole events to RudderStack by simply adding a webhook pointing to RudderStack. These events includes the reward specific events `reward_earned`,`reward_fulfilled`,`reward_sent` along with other custom events from extole.
+You can now send your Extole events to RudderStack by simply adding a webhook that points to RudderStack. These events include the reward-specific events such as `reward_earned`,`reward_fulfilled`,`reward_sent`, etc. along with other custom events from Extole.
 
 This guide helps you in setting up Extole as a source in RudderStack.
 
-## Getting Started
+## Getting started
 
-In order to add Extole as a source in RudderStack, please follow these steps:
+This section details the steps involved in setting up Extole as a source in the RudderStack dashboard.  Follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/), click on **Add Source**. From the list of sources, select **Extole**, as shown:
+- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Extole** from the list of **Event Stream** sources, as shown:
 
-<img src="../assets/ExtoleSource.png" /><span class="imageTitle">Choose Extole as a source</span>
+<img src="../assets/event-stream-sources/extole-1.png" alt="Extole source in RudderStack" />
 
-- Enter the name of your source, and click on **Next**.
+- Assign a name to your source and click on **Next**.
 
-<img src="../assets/ExtoleSourceCreate.png" /><span class="imageTitle">Extole Source</span>
+- Your Extole source is now configured. Note the source **Write key** - this will be required to configure the endpoint URL in the later steps.
 
-- Head over to your Extole account and select the `program` you want to use for RudderStack to ingest your data. Then, navigate to the **Tech Center** section from the sidebar and then select [Rewards WebHook](https://my.extole.com/tech-center/rewards-webhooks) and create a new **Reward Webhook** in the view as shown below:
+<img src="../assets/event-stream-sources/extole-2.png" alt="Extole source write key" />
 
-<img src="../assets/ExtoleRewardWebhook.png" /><span class="imageTitle">Extole WebHook</span>
+- Next, head over to your Extole account and select the **program** you want to use for RudderStack to ingest your data. 
 
-- In the **URL** text box, add a URL pointing to RudderStack in the following format: `<DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_EXTOLE_SOURCE_WRITE_KEY>`
+- Then, navigate to the **Tech Center** section from the sidebar and then select [**Rewards WebHooks**](https://my.extole.com/tech-center/rewards-webhooks). 
 
-An example URL should like the following:
+- Then, click on the **New Reward Webhook** option as seen in the following image:
 
-```http
-https://hosted.rudderlabs.com/v1/webhook?writeKey=1qI4k72gLvHwg2mz24xPCv8gGGK
+<img src="../assets/event-stream-sources/extole-3.png" alt="Extole new webhook" />
+
+- In the **URL** text box, add the webhook URL as shown on the source settings page in your RudderStack dashboard:
+
+<img src="../assets/event-stream-sources/auth0-4.png" alt="Extole webhook URL" />
+
+The webhook URL is of the following format:
+
 ```
+<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>
+```
+
+A sample webhook URL is shown below:
+
+```
+https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
+```
+
+<div class="infoBlock">
+
+For more information on the data plane URL, refer to <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this</a> section.
+</div>
 
 <div class="warningBlock">
 
-Make sure you add the <code class="inline-code">writeKey</code> as query parameter to the URL. This is required to prevent the webhook from failing in case of an invalid write key.
-
+Make sure you add the source write key as query parameter to the URL. This is required to prevent the webhook from failing because of an invalid write key.
 </div>
 
 - Finally, save the endpoint.
 
-## RudderStack Event Transformation
+## Event transformation
 
-The events from Extole are ingested into RudderStack after converting it into a RudderStack-compatible event format. For example, the `event_id` set by Extole is set as `properties.eventId`.
+RudderStack ingests the Extole events after converting them into the RudderStack event format. For example, Extole's `event_id` is converted and set to `properties.eventId`. 
 
-The events sent by Extole are converted into a Rudderstack `track` call with a designated name and properties as the entire event received from Extole.
+<div class="infoBlock">
 
-The event name of the events generated by Extole is kept the same while mapping to the Rudderstack event name.
+The Extole events are converted into a RudderStack <code class="inline-code">track</code> call with the designated event name and associated properties received from Extole.
+</div>
 
-RudderStack populates the following properties from Extole event payload to the RudderStack event:
+<div class="infoBlock">
 
-| Extole Property              | RudderStack Property                                          |
+RudderStack retains the Extole event name during the mapping.
+</div>
+
+RudderStack populates the following properties from the Extole event payload to the RudderStack event:
+
+| **Extole Property**              | **RudderStack Property**                                          |
 | :--------------------------- | :------------------------------------------------------------ |
 | `event_id`,                  | `properties.eventId`                                          |
 | `event_time`                 | `originalTimestamp`                                           |
@@ -75,10 +99,9 @@ RudderStack populates the following properties from Extole event payload to the 
 
 <div class="warningBlock">
 
-All the properties of Extole Events other than <code class="inline-code">reward_earned</code>, <code class="inline-code">reward_fulfilled</code>, <code class="inline-code">reward_sent</code> which are sent to Rudderstack will be directly mapped to the Rudderstack event <code class="inline-code">properties</code>.
-
+All the Extole event properties other than <code class="inline-code">reward_earned</code>, <code class="inline-code">reward_fulfilled</code>, and <code class="inline-code">reward_sent</code> sent to Rudderstack will be directly mapped to the Rudderstack event properties.
 </div>
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Extole as a source with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel - we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
