@@ -55,7 +55,7 @@ The connection settings required to configure SendGrid as a destination in Rudde
 
 <div class="infoBlock">
  
- You can also send the subject via the <code class="inline-code">subject</code> field in the <code class="inline-code">track</code> properties. For more information, refer to the <a href="https://rudderstack.com/docs/destinations/marketing/sendgrid/#track">Track</a> section below.
+ You can also send the Email subject via the <code class="inline-code">subject</code> field in the <code class="inline-code">track</code> properties. For more information, refer to the <a href="https://rudderstack.com/docs/destinations/marketing/sendgrid/#track">Track</a> section below.
 </div>
 
 * Next, enter the **Template ID**. 
@@ -70,20 +70,20 @@ To get your template ID or create a new one, go to your ,<a href="https://app.se
 You can also set the Template ID via the <code class="inline-code">templateId</code> field in the <code class="inline-code">track</code> properties. Note that the template ID passed in the <code class="inline-code">track</code> properties will override the <strong>Template ID</strong> field specified in the RudderStack dashboard.
 </div>
 
-* Next, you can enable or disable the **Get mail by traits** option. If enabled, RudderStack searches for the user's `email` inside the user's `traits`. If it is found, then the event can be sent to SendGrid without any `track` call properties.
+* Next, you can enable or disable the **Get email ID by traits** option. If enabled, RudderStack searches for the user's `email` inside the user's `traits`. If it is found, then the event can be sent to SendGrid without any `track` call properties.
 
 <div class="warningBlock">
  
 This option is only useful when the properties in the <code class="inline-code">track</code> are empty. SendGrid also requires either the <code class="inline-code">templateId</code> or <code class="inline-code">content</code> to be present for a successful event delivery. 
 </div>
 
-* Enter the email address in the **Reply To Email** option, where the email replies or bounces will be returned.
+* Enter the email address in the **Reply-To Email** option, where the email ID replies or bounces will be returned.
 
-* In **Reply To Name** , enter the user's name associated with the above email address.
+* In **Reply-To Name** , enter the user's name associated with the above email address.
 
 <div class="infoBlock">
  
-You can also send the email and name inside <code class="inline-code">replyTo</code> in the <code class="inline-code">track</code> properties. Note that these fields will override the <strong>Reply To Email</strong> and <strong>Reply To Name</strong> fields set in the RudderStack dashboard.
+You can also send the email ID and name inside <code class="inline-code">replyTo</code> in the <code class="inline-code">track</code> properties. Note that these fields will override the <strong>Reply-To Email</strong> and <strong>Reply-To Name</strong> fields set in the RudderStack dashboard.
 </div>
 
 <div class="infoBlock">
@@ -107,7 +107,7 @@ The length of the IP Pool Name must be between 2 and 64 characters. For detailed
 For more information on creating a verified sender identity, refer to this <a href="https://docs.sendgrid.com/ui/sending-email/sender-verification">SendGrid documentation</a>.
 </div>
 
-* Enter the **Name** associated with above email.
+* Enter the **Name** associated with above email ID.
 
 <div class="infoBlock">
 
@@ -194,7 +194,7 @@ The **ASM** settings allow you to handle the user's unsubscribing activity. The 
 SendGrid requires that the <strong>Group ID</strong> should always be present if the <code class="inline-code">asm</code> object is to be sent.
 </div>
 
-#### Mail settings
+#### Email settings
 
 * To include a default footer in every mail, enable the **Footer** option. When enabled, the **text** option contains the plain content of footer. The **HTML** contains the HTML content of footer.
 
@@ -342,7 +342,7 @@ SendGrid allows the `categories` array to have a maximum of 10 values.
 
 If `customArgs` is not provided in the `track` call, the non-default fields are taken as custom fields. In the sample `track` call above, `field1` will be mapped inside `customArgs`.
 
-### Mail settings
+### Email settings
 
 To send the event to SendGrid successfully, the following points must be kept in mind:
 
@@ -354,7 +354,7 @@ To send the event to SendGrid successfully, the following points must be kept in
 
 SendGrid requires that the `personalizations` array should be present in every event and each object must contain the field `to`. 
 
-* If the **Get mail from traits** option is enabled in the RudderStack dashboard and the properties are not sent in track call, RudderStack will look for `email` in the event traits. If found, RudderStack will create a `personalizations` object and assign `email` to the `to` field. 
+* If the **Get email ID from traits** option is enabled in the RudderStack dashboard and the properties are not sent in track call, RudderStack will look for `email` in the event traits. If found, RudderStack will create a `personalizations` object and assign `email` to the `to` field. 
 
 * In case both **Template ID** and **content** are not assigned in the dashboard settings, the event will **not** be sent as either of `templateId` or `content` is required.
 
@@ -385,7 +385,7 @@ Each object inside `content` array must contain the `type` and `value` fields. I
 
 ### `attachments`
 
-Each object inside attachments array must atleast contain the `content` and `filename` fields. If these fields are absent, then the object will be dropped. However the call will **not** be discarded.
+Each object inside attachments array must at least contain the `content` and `filename` fields. If these fields are absent, then the object will be dropped. However the call will **not** be discarded.
 
 ## Contact us
 
