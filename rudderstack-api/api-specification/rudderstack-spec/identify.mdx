@@ -75,8 +75,7 @@ For <code class="inline-code">identify</code> calls, you should include a <code 
   We strongly recommend using a database ID as the
   <code class="inline-code">userId</code> instead of usernames or email
   addresses. This is because the user may update their username or email address
-  at any point in the future. Instead, you can pass them as
-  <strong>traits</strong>.
+  at any point in the future. Instead, you can pass them as <strong>traits</strong>.
 </div>
 
 ### Anonymous ID
@@ -90,7 +89,7 @@ An anonymousId can be any identifier. For instance, you can use a session ID cor
 </div>
 
 <div class="successBlock">
-  RudderStack's web and mobile <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/">SDKs</a> automatically use anonymous IDs to track unknown users on your website or mobile apps, so you don't have to worry about including an <code class="inline-code">anonymousId</code>explicitly.
+  RudderStack's web and mobile <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/">SDKs</a> automatically use anonymous IDs to track unknown users on your website or mobile apps, so you don't have to worry about including an <code class="inline-code">anonymousId</code> explicitly.
 </div>
 
 ## Identify Traits
@@ -141,14 +140,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>Full name of the user. If you have</p>
-        <p>
-          already passed the <code class="inline-code">firstName</code> and
-        </p>
-        <p>
-          <code class="inline-code">lastName</code>, RudderStack will
-        </p>
-        <p>automatically fill this field.</p>
+        <p>Full name of the user. If you have already passed the <code class="inline-code">firstName</code> and <code class="inline-code">lastName</code>, RudderStack will automatically fill this field.</p>
       </td>
     </tr>
     <tr>
@@ -178,13 +170,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">Object</td>
       <td style="text-align:left">
-        <p>User&apos;s street address. This can</p>
-        <p>
-          optionally contain either / all of
-          <br />
-          the following fields:
-        </p>
-        <p></p>
+        <p>User&apos;s street address. This can optionally contain either / all of the following fields:</p>
         <ul>
           <li>
             <code class="inline-code">city</code>
@@ -217,13 +203,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">Object</td>
       <td style="text-align:left">
-        <p>User&apos;s company. This can</p>
-        <p>
-          optionally contain either / all of
-          <br />
-          the following fields:
-        </p>
-        <p></p>
+        <p>User&apos;s company. This can optionally contain either / all of the following fields:</p>
         <ul>
           <li>
             <code class="inline-code">name</code> (String)
@@ -249,11 +229,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">Date</td>
       <td style="text-align:left">
-        <p>Date of user&apos;s account creation.</p>
-        <p>
-          We recommend using the <b>ISO-8601</b>
-        </p>
-        <p>date string format.</p>
+        <p>Date of user&apos;s account creation. We recommend using the <b>ISO-8601</b> date string format.</p>
       </td>
     </tr>
     <tr>
@@ -276,8 +252,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>User&apos;s title related to their position</p>
-        <p>in their company.</p>
+        <p>User&apos;s title related to their position in their company.</p>
       </td>
     </tr>
     <tr>
@@ -286,8 +261,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>User&apos;s username. This should be</p>
-        <p>unique for every user.</p>
+        <p>User&apos;s username. This should be unique for every user.</p>
       </td>
     </tr>
     <tr>
