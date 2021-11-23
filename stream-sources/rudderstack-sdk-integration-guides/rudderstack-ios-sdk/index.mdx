@@ -529,7 +529,7 @@ You can pass your `device-token` for Push Notifications to be passed to the dest
 Follow the instructions below:
 
 ```objectivec
-[[[RSClient sharedInstance] getContext] putDeviceToken:@"your_device_token"];
+[RSClient putDeviceToken:@"your_device_token"];
 ```
 
 ## Advertisement ID
@@ -589,13 +589,7 @@ Following are the available options you can pass to the `putAppTrackingConsent` 
 
 We use the `deviceId` as `anonymousId` by default. You can use the following method to override and use your own `anonymousId` with the SDK.
 
-<div class="warningBlock">
-
-You need to call <code class="inline-code">setAnonymousId</code> method before calling <code class="inline-code">getInstance</code>
-
-</div>
-
-An example of setting the `anonymousId` is as below
+An example of setting the `anonymousId` is shown below:
 
 ```java
 [RSClient setAnonymousId:<ANONYMOUS_ID>];
@@ -1138,4 +1132,4 @@ You only need to call the `optOut` API with the required parameter only once, as
 
 For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.
 
-If you come across any issue while using the iOS SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-ios/issues/new).
+If you come across any bugs or discrepancies while using the iOS SDK, you can also open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-ios/issues/new).
