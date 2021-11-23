@@ -1,79 +1,103 @@
 ---
 # slug: "/docs/stream-sources/looker"
 title: "Looker"
-description: Step-by-step guide to ingest event data from Looker into RudderStack
+description: Step-by-step guide to ingest your event data from Looker into RudderStack.
 ---
 
 # Looker
 
-[Looker](https://looker.com/) is a popular Business Intelligence and data analytics platform, that allows you to explore your data for actionable, business-oriented insights.
+[**Looker**](https://looker.com/) is a popular Business Intelligence and data analytics platform that allows you to explore your data for actionable, business-oriented insights.
 
-You can now use Looker as a source of data, where it can be used to send user-related looks to RudderStack. Looker sends the enriched user activities and their associated properties over a period of time to RudderStack. RudderStack can then forward this data to the desired destinations for real-time syncing of the newly created properties and actions.
+You can now use Looker as a data source where it can be used to send enriched user activities and their associated properties over a period of time to RudderStack. RudderStack then forwards this data to your specified destinations for real-time syncing of the newly created properties and actions.
 
-## Getting Started
+This guide will help you in setting up Looker as a source in RudderStack.
 
-After creating your views in Looker, you need to set-up [Looker actions](https://docs.looker.com/admin-options/platform/actions). Go to your Looker Actions dashboard to do this.
+## Setting up the Looker actions
+
+After creating your views in Looker, you need to set-up the necessary [**Looker actions**](https://docs.looker.com/admin-options/platform/actions). Go to your Looker actions dashboard to do this.
 
 <div class="warningBlock">
 
-While RudderStack supports teams and individual workspaces in its **Enterprise edition** - Looker does not allow for individual Action Hub configurations for different members of the same organization.
-
+While RudderStack supports teams and individual workspaces in its <a href="https://rudderstack.com/pricing/">Enterprise edition</a>, Looker does not allow individual Action Hub configurations for different members of the same organization.
 </div>
 
 <div class="infoBlock">
 
-If you want to send the output of different Looks to different RudderStack sources, you will need to host custom instances of Looker Action Hub. Looker themselves provide direction for doing this - please refer to their <a href="https://docs.looker.com/sharing-and-publishing/action-hub#setting_up_a_local_action_hub_server">documentation</a>.
-
+If you want to send the output of different looks to various RudderStack sources, you will need to host custom instances of Looker Action Hub. Refer to this <a href="https://docs.looker.com/sharing-and-publishing/action-hub#setting_up_a_local_action_hub_server">Looker documentation</a> for more information.
 </div>
 
-One can enable [RudderStack Actions](https://github.com/rudderlabs/actions) on Looker as below:
+## Configuring a Looker source in RudderStack
 
-### **Adding RudderStack Action Hub Server**
+This section details the steps involved in setting up Looker as a source in the RudderStack dashboard.  Follow these steps:
 
-RudderStack hosts a Looker [Action Hub Server](https://docs.looker.com/sharing-and-publishing/action-hub#writing_an_action) that communicates with your Looker instance. Once you connect the Action Hub Server to your Looker instance by clicking on the **Add Action Hub** button present at the bottom of Looker Actions dashboard, you can start viewing the three RudderStack actions as above.
+- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Looker** from the list of **Event Stream** sources, as shown:
+
+<img src="../assets/event-stream-sources/looker-1.png" alt="Looker source in RudderStack" />
+
+- Assign a name to your source and click on **Next**.
+
+- Your Looker source is now configured. Note the source **Write key** - this will be required later steps to enable your RudderStack actions for Looker.
+
+<img src="../assets/event-stream-sources/looker-2.png" alt="Looker source write key" />
+
+## Adding the RudderStack Action Hub Server
+
+This section describes the steps required to enable the [**RudderStack actions**](https://github.com/rudderlabs/actions) in Looker:
+
+RudderStack hosts a Looker [**Action Hub Server**](https://docs.looker.com/sharing-and-publishing/action-hub#writing_an_action) that communicates with your Looker instance.
 
 <div class="infoBlock">
+
 The RudderStack Action Hub Server can be found at <a href="https://looker-action-hub.rudderstack.com">https://looker-action-hub.rudderstack.com</a>
-
 </div>
 
-<div class="infoBlock">
-<p><strong>The authorization token to be used is:</strong></p>
-<code class="inline-code pathName">75805209b45a55494d0c27d4eb91fbf6bc7fb1a63dfcd9260fe65daee584737b/ea4e074e71c1af9c07bf71f69c1addf7b9a30d458bd7aea4b4e60d6a6a122277b59210186edb7cf21a5ff53a29c68fb89ff5aaf5019570c8a5131484a11e2e3e</code>
+You will require an **Authorization Token** to access the Action Hub. The token to be used is as follows:
 
-</div>
+```text
+75805209b45a55494d0c27d4eb91fbf6bc7fb1a63dfcd9260fe65daee584737b/ea4e074e71c1af9c07bf71f69c1addf7b9a30d458bd7aea4b4e60d6a6a122277b59210186edb7cf21a5ff53a29c68fb89ff5aaf5019570c8a5131484a11e2e3e
+```
 
-<img src="../assets/image (28).png" /><span class="imageTitle">RudderStack-hosted Action Hub</span>
+Once you connect the Action Hub Server to your Looker instance by clicking on the **Add Action Hub** button present at the bottom of Looker actions dashboard, you can start viewing the following three RudderStack actions:
 
-To enable any of the above actions, go to its **Settings** page where you need to give the **Rudder Write Key** from your [RudderStack](https://app.rudderstack.com) [dashboard](https://app.rudderstack.com/), which can be obtained as shown:
+- `Identify`: Adds the traits to your RudderStack users via the `identify` event.
+- `Group`: Adds the traits or users to your RudderStack groups via the `group` event.
+- `Track`: Adds the traits to your RudderStack users via the `track` event.
 
-<img src="../assets/screen-shot-2020-12-04-at-11.02.19-am.png" /><span class="imageTitle">Looker Source Write Key</span>
+<img src="../assets/event-stream-sources/looker-3.png" alt="RudderStack-hosted Action Hub" />
 
-In addition, you also need to specify the **Rudder Server URL** to which the RudderStack actions will be forwarding the user looks data: [https://hosted.rudderlabs.com/v1/batch](https://hosted.rudderlabs.com/v1/batch)
+### Configuring the actions
 
-<img src="../assets/image (11).png" /><span class="imageTitle">Configuring the Write Key and the RudderStack Server URL</span>
+- To enable any of the above actions, click on the **Settings** button. 
+
+- Here, you need to enter the **Write key** obtained after setting the Looker source in RudderStack.
+
+<img src="../assets/event-stream-sources/looker-2.png" alt="Looker source write key" />
+
+- In addition, you also need to specify the **Rudder Server URL** to which the actions will forward the user looks data. The URL is `https://hosted.rudderlabs.com/v1/batch`.
+
+<img src="../assets/event-stream-sources/looker-4.png" alt="Configuring the Rudder Write Key and Rudder Server URL" />
 
 Once the connection is successful, you should start seeing the RudderStack actions.
 
-## RudderStack Actions Overview
+## RudderStack actions overview
 
-Once configured, RudderStack Actions support sending query results to RudderStack.
+Once configured, RudderStack actions will start sending the query results to RudderStack.
 
-When defining your columns for the Looker models attached to the look that you will be sending to RudderStack, it's important to tag the user identifier column as `email` **or** `user_id` **or** `rudder_anonymous_id`. Additionally, to use the **RudderStack Group** action, you need to tag your group identifier column as `rudder_group_id`.
+When defining the columns for the Looker models attached to the user looks that you want to send to RudderStack, it's important to tag the user identifier column as `email` **or** `user_id` **or** `rudder_anonymous_id`. 
+
+Additionally, to use the **RudderStack Group** action, you need to tag your group identifier column as `rudder_group_id`.
 
 <div class="infoBlock">
 
-In **some** specific cases - e.g. Redis - the <code class="inline-code">user_id</code> field always needs to be present, even if the <code class="inline-code">email</code> field is present.
-
+In <strong>some</strong> specific cases, e.g. Redis - the <code class="inline-code">user_id</code> field always needs to be present even if <code class="inline-code">email</code> is already present.
 </div>
 
 <div class="infoBlock">
 
-The other user and activity columns will be sent as traits or properties along with the payload that is being sent to RudderStack by the above three actions.
-
+The other user and activity columns are sent as traits or properties along with the payload sent to RudderStack.
 </div>
 
-A sample `track` payload from the look's row data sent by the **RudderStack Track** action is as below:
+A sample `track` payload from the look's row data sent by the **RudderStack Track** action is as shown:
 
 ```javascript
 {
@@ -116,10 +140,9 @@ A sample `track` payload from the look's row data sent by the **RudderStack Trac
 
 <div class="infoBlock">
 
-The column names in your looks are transformed as <code class="inline-code">&lt;Looker view name&gt;.&lt;column name&gt;</code> in the payload sent to RudderStack by the RudderStack actions. If you want to change the names to your end destination needs, you can use our User-Transformer feature to transform them.
-
+The column names in your looks are transformed as <code class="inline-code">view name.column name</code> in the payload sent to RudderStack. If you want to change the names as per your end-destination, you can do so using RudderStack's <a href="https://rudderstack.com/docs/transformations/">Transformations</a> feature.
 </div>
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Looker as a source with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
