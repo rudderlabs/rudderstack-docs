@@ -2,8 +2,7 @@
 # slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/amp-analytics"
 title: "AMP Analytics"
 description: >-
-  Step-by-step guide for sending your event data from your AMP page to
-  RudderStack
+  Step-by-step guide to send your event data from your AMP page to RudderStack.
 ---
 
 # AMP Analytics
@@ -12,7 +11,7 @@ The RudderStack AMP component makes it easy to send the event data from your AMP
 
 <div class="infoBlock">
 
-Since the AMP source sends the data directly to the RudderStack data plane, we support only <code class="inline-code">cloud mode</code> destinations for AMP projects. For more information on the cloud mode, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+Since the AMP source sends the data directly to the RudderStack backend, it supports only the cloud mode destinations. For more information on the cloud mode, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 ## Setup requirements
@@ -132,11 +131,11 @@ Track - Click <a href="#" id="clickTrigger">here</a> to send
 
 ## Properties
 
-You can send extra properties for your `page` or `track` events to add more information along with the event request. Once you mention the properties as `extraUrlParams` in the `amp-analytics` tag of your implementation, it will be passed to RudderStack for further processing.
+You can send extra properties for your `page` or `track` events to add more information along with the event request. Once you mention the properties as `extraUrlParams` in the `amp-analytics` tag of your implementation, they will be passed to RudderStack for further processing.
 
 <div class="warningBlock">
 
-Prepend <code class="inline-code">properties.</code> with the <code class="inline-code">extraUrlParams</code> so that it can be parsed as the property value in RudderStack.
+Prepend <code class="inline-code">properties.</code> to the property name within the <code class="inline-code">extraUrlParams</code> object so that it can be parsed as the property value in RudderStack. For more information, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/#custom-properties">Custom Properties</a> section below.
 </div>
 
 ### Default properties
@@ -253,7 +252,7 @@ An example of using `extraUrlParams` is as shown:
 
 ## AMP Linker
 
-You can use the [**AMP Linker**](https://amp.dev/documentation/examples/advertising-analytics/joining_analytics_sessions/) feature to ensure a merged session for users navigating from cached AMP pages\(on an AMP cache\) to AMP pages on your domain. When a user navigates from a cached AMP page to an AMP page on your domain, the linker sends the current `AMP ClientID` by adding a URL parameter to the outgoing link. The AMP page on your domain receives this parameter and uses it to set a first-party cookie.
+You can use the [**AMP Linker**](https://amp.dev/documentation/examples/advertising-analytics/joining_analytics_sessions/) feature to ensure a merged session for users navigating from cached AMP pages (on an AMP cache) to AMP pages on your domain. When a user navigates from a cached AMP page to an AMP page on your domain, the linker sends the current `AMP ClientID` by adding a URL parameter to the outgoing link. The AMP page on your domain receives this parameter and uses it to set a first-party cookie.
 
 Once this cookie is set, both AMP and Non-AMP pages on your domain use this cookie to identify the user uniquely. This way, the same AMP Client ID \(set by the cached AMP page\) can be used to identify the user in all contexts.
 
@@ -282,6 +281,6 @@ You can also use the query parameter from the decorated outgoing link from an AM
 
 ## Contact us
 
-In case of any queries, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel. 
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 
-In case of any bugs or discrepancies, you can also open an issue on our [**GitHub Issues**](https://github.com/rudderlabs/rudder-sdk-amp/issues) page.
+In case of any bugs or discrepancies while using this SDK, you can also open an issue on our [**GitHub Issues**](https://github.com/rudderlabs/rudder-sdk-amp/issues) page.
