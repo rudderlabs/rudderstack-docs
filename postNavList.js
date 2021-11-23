@@ -779,6 +779,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"sendgrid",
+   "title":"SendGrid",
+   "link":"/destinations/marketing/sendgrid/",
+   "content":[]
+},  
+{
    "key":"gainsight",
    "title":"Gainsight",
    "link":"/destinations/marketing/gainsight/",
