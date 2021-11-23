@@ -902,18 +902,18 @@ RudderClient.putDeviceToken("your_device_token");
 
 We collect the `advertisementId` if it is enabled by the user and the App has the Google Play services Ads SDK embedded in the application. We set the `gaid` under `context.device.advertisementId`.
 
-Apart from it, if you want to set the `advertisingId` by yourself, you can do so using the `updateWithAdvertisingId` method and passing the `advertisingId`.
+Apart from it, if you want to set the `advertisingId` by yourself, you can do so using the `putAdvertisingId` method and passing the `advertisingId`.
 
 <div class="warningBlock">
 
-You need to call <code class="inline-code">updateWithAdvertisingId</code> method before calling <code class="inline-code">getInstance</code>
+You need to call <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">getInstance</code>
 
 </div>
 
 An example of setting the `advertisingId` is as below
 
 ```java
-RudderClient.updateWithAdvertisingId(<ADVERTISING_ID>);
+RudderClient.putAdvertisingId(<ADVERTISING_ID>);
 ```
 
 ## Anonymous ID
@@ -923,7 +923,7 @@ We use the `deviceId` as `anonymousId` by default. You can use the following met
 An example of setting the `anonymousId` is as below
 
 ```java
-RudderClient.setAnonymousId(<ANONYMOUS_ID>);
+RudderClient.putAnonymousId(<ANONYMOUS_ID>);
 ```
 
 To retrieve the `anonymousId` you can use the following method:

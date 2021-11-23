@@ -533,7 +533,7 @@ You can set the log level to one of the following values:
 
 ## Advertising ID
 
-You can use the `setAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `setAdvertisingId` method accepts two `string` arguments :
+You can use the `putAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `putAdvertisingId` method accepts two `string` arguments :
 
 - `androidId` : Your Android `advertisingId` \(AAID\)
 - `iOSId` : Your iOS `advertisingId` \(IDFA\)
@@ -541,19 +541,19 @@ You can use the `setAdvertisingId` method to pass your Android and iOS AAID and 
 Example Usage:
 
 ```typescript
-rudderClient.setAdvertisingId(AAID, IDFA)
+rudderClient.putAdvertisingId(AAID, IDFA)
 ```
 
 ## Anonymous ID
 
-You can use the `setAnonymousId` method to pass your `anonymousId` and the SDK will use that instead of the `deviceId`. The `setAnonymousId` method accepts one `string` argument:
+You can use the `putAnonymousId` method to pass your `anonymousId` and the SDK will use that instead of the `deviceId`. The `putAnonymousId` method accepts one `string` argument:
 
 - `id` : Your `anonymousId`
 
 An example of this method's usage is as shown:
 
 ```typescript
-rudderClient.setAnonymousId(ANONYMOUS_ID)
+rudderClient.putAnonymousId(ANONYMOUS_ID)
 ```
 
 ## FAQ
