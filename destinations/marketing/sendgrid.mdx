@@ -329,6 +329,12 @@ rudderanalytics.track('testing',
           "email": "testingreplyto@email.com",
           "name": "Name"
         },
+        "replyToList":[
+            {
+                "email": "test@gmail.com",
+                "name": "Test"
+            }
+        ],
         "field1": "value"
   });
 ```
@@ -385,7 +391,7 @@ Each object inside `content` array must contain the `type` and `value` fields. I
 
 ### `attachments`
 
-Each object inside attachments array must at least contain the `content` and `filename` fields. If these fields are absent, then the object will be dropped. However the call will **not** be discarded.
+Each object inside attachments array must at least contain the `content` and `filename` fields. If these fields are absent, then the object will be dropped. However the event will **not** be discarded.
 
 ## Contact us
 
