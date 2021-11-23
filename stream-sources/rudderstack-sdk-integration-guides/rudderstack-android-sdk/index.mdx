@@ -604,7 +604,7 @@ Follow the code snippets below:
 <span>
 
 ```bash
-rudderClient.putDeviceToken("your_device_token")
+RudderClient.putDeviceToken("your_device_token")
 ```
 </span>
       </TabPanel>
@@ -612,7 +612,7 @@ rudderClient.putDeviceToken("your_device_token")
 <span>
 
 ```bash
-rudderClient.putDeviceToken("your_device_token");
+RudderClient.putDeviceToken("your_device_token");
 ```
 </span>
       </TabPanel>
@@ -640,19 +640,13 @@ RudderClient.updateWithAdvertisingId(<ADVERTISING_ID>);
 
 We use the `deviceId` as `anonymousId` by default. You can use the following method to override and use your own `anonymousId` with the SDK.
 
-<div class="warningBlock">
-
-You need to call <code class="inline-code">setAnonymousId</code> method before calling <code class="inline-code">getInstance</code>
-
-</div>
-
-An example of setting the `anonymousId` is as below
+An example of setting the `anonymousId` is shown below:
 
 ```java
 RudderClient.setAnonymousId(<ANONYMOUS_ID>);
 ```
 
-To retrieve the `anonymousId` you can use the following method:
+To retrieve the `anonymousId`, you can use the following method:
 
 ```java
 RudderClient.getAnonymousId();
@@ -1098,6 +1092,6 @@ For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries
 
 ## Contact us
 
-For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 
-If you come across any issue while using the Android SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-android/issues).
+If you come across any issues while using the Android SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-android/issues).
