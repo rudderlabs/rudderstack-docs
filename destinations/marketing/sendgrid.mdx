@@ -383,11 +383,11 @@ It is mandatory to have the `groupId` field inside the `asm` object.
 
 ### Event name
 
-As mentioned in the [**Connection settings**](#connection-settings) section above, the event names for which a `track` call is made must be specified in the RudderStack dashboard. In the sample `track` call above, `testing` is the event name that should be configured in the RudderStack dashboard. Otherwise, the call will be dropped.
+As mentioned in the [**Connection settings**](#connection-settings) section above, the event names for which a `track` call is made must be specified in the RudderStack dashboard. In the sample `track` call above, `testing` is the event name that should be configured in the RudderStack dashboard. Otherwise, this event will be discarded.
 
 ### `content`
 
-Each object inside `content` array must contain the `type` and `value` fields. If these fields are absent, then the object will be dropped. However, note that the call will **not** be discarded.
+Each object inside `content` array must contain the `type` and `value` fields. If these fields are absent, then the object will be dropped. However, note that the event will **not** be discarded.
 
 ### `attachments`
 
