@@ -19,7 +19,7 @@ Each user action is called an event. Every event has a name associated with it, 
   For E-Commerce specific events, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">E-Commerce Events Specification</a> guide.
 </div>
 
-## Sample Payload
+## Sample payload
 
 A sample payload for the `track` event after removing the common fields mentioned in the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) section is as shown:
 
@@ -43,11 +43,11 @@ rudderanalytics.track("Product Reviewed", {
   review_id: "12345",
   product_id: "123",
   rating: 3.0,
-  review_body: "Average product, expected much more.",
+  review_body: "Average product, expected much more."
 })
 ```
 
-## Track Fields
+## Track fields
 
 Apart from the [**Common Fields**](common-fields/), the `track` call accepts the following fields:
 
@@ -83,12 +83,7 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">Number</td>
       <td style="text-align:left">
-        <p>The revenue amount as a</p>
-        <p>result of an event. For e.g., a</p>
-        <p>product worth $20.00 would</p>
-        <p>
-          result in a <code class="inline-code">revenue</code> of <code class="inline-code">20.00</code>
-        </p>
+        <p>The revenue amount as a result of an event. For e.g., a product worth $20.00 would result in a <code class="inline-code">revenue</code> of <code class="inline-code">20.00</code>.</p>
       </td>
     </tr>
     <tr>
@@ -97,11 +92,7 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>The currency of the revenue as</p>
-        <p>a result of the event, set in</p>
-        <p>ISO 4127 format. If this is not set,</p>
-        <p>RudderStack assumes the revenue</p>
-        <p>is in USD.</p>
+        <p>The currency of the revenue as a result of the event, set in ISO 4127 format. If this is not set, RudderStack assumes the revenue is in USD.</p>
       </td>
     </tr>
     <tr>
@@ -110,8 +101,7 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>An abstract value associated with an</p>
-        <p>event, to be used by various teams.</p>
+        <p>An abstract value associated with an event, to be used by various teams.</p>
       </td>
     </tr>
   </tbody>
@@ -127,6 +117,6 @@ RudderStack has reserved some standard properties listed in the table below and 
   the conversion automatically.
 </div>
 
-## Contact Us
+## Contact us
 
 For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
