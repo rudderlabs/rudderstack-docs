@@ -10,9 +10,7 @@ The `page` call lets you record your website's page views with any additional re
 
 <div class="successBlock">
 
-  The [**RudderStack JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/)
-  includes a `page` call in its snippet just after the `rudderanalytics.load`
-  method.
+  The <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</a> includes a <code class="inline-code">page</code> call in its snippet just after the <code class="inline-code">rudderanalytics.load</code> method.
 </div>
 
 ## Sample payload
@@ -38,8 +36,7 @@ rudderanalytics.page("Home")
 
 <div class="successBlock">
 
-  The SDK automatically gathers the page `name` and `url` and passes them into
-  the event payload.
+  The SDK automatically gathers the page <code class="inline-code">name</code> and <code class="inline-code">url</code> and passes them into the event payload.
 </div>
 
 ## Page fields
@@ -49,13 +46,13 @@ Apart from the [**Common Fields**](common-fields/), the `page` call accepts the 
 | **Field**    | **Type** | **Presence** | **Description**                                                                                                                            |
 | :----------- | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`       | String   | Optional     | The name of the page.                                                                                                                      |
-| `properties` | Object   | Optional     | Includes the properties of the page such as the `url`, `referrer`, etc. For more more information, check the **Properties** section below. |
+| `properties` | Object   | Optional     | Includes the properties of the page such as the `url`, `referrer`, etc. For more more information, check the [**Properties**]() section below. |
 
 ## Properties
 
 Properties are additional information that describe the viewed page.
 
-RudderStack has reserved some standard properties listed in the table below and handles them in special ways. For instance, the `path` should always be the URL path of the page and the `referrer` should be the URL of the previously viewed page.
+RudderStack has reserved some standard properties listed in the following table and handles them in a special manner. For instance, `path` should always be the URL path of the page and `referrer` should be the URL of the previously viewed page.
 
 <table>
   <thead>
@@ -119,7 +116,7 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>The query string component of the page URL.</p>
+        <p>The querystring component of the page URL.</p>
       </td>
     </tr>
     <tr>
@@ -136,4 +133,4 @@ RudderStack has reserved some standard properties listed in the table below and 
 
 ## Contact us
 
-For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
