@@ -8,7 +8,7 @@ description: >-
 
 # Flutter
 
-The **RudderStack Flutter SDK** lets you track your event data from your Flutter applications and send it to a variety of destinations supported by RudderStack.
+The **RudderStack Flutter SDK** lets you track your event data from your Flutter applications and send it to your specified destinations via RudderStack.
 
 You can check the SDK's [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-flutter) to get a more hands-on understanding of the SDK.
 
@@ -126,7 +126,7 @@ On the Android devices, the <code class="inline-code">deviceId</code> is assigne
 </div>
 
 <div class="infoBlock">
-On the iOS devices, According to the Apple <a href="https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor">documentation</a>, if the device has multiple apps from the same vendors, all those apps will be assigned the same <code class="inline-code">deviceId</code>. If all the applications from a vendor are uninstalled, then the app will be assigned a new <code class="inline-code">deviceId</code> on the next install.
+According to the Apple <a href="https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor">documentation</a>, if the iOS device has multiple apps from the same vendor, all the apps will be assigned the same <code class="inline-code">deviceId</code>. If all the applications from a vendor are uninstalled and then reinstalled, then they will be assigned a new <code class="inline-code">deviceId</code>.
 </div>
 
 A sample `identify` event is as shown:
@@ -448,6 +448,6 @@ print(context["traits"]);
 
 ## Contact us
 
-In case of any queries on any of the sections covered in this guide, you can always [**contact us**](mailto:%20docs@rudderstack.com) or  start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 
-If you come across any issue while using the Flutter SDK, you can also open an issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-flutter/issues).
+If you come across any issues while using the Flutter SDK, you can also open an issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-flutter/issues).

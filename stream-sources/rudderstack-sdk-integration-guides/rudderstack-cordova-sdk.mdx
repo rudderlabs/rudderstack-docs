@@ -9,7 +9,7 @@ description: >-
 
 [**Apache Cordova**](https://cordova.apache.org/) is an open-source, cross-platform application development framework. 
 
-The **RudderStack Cordova SDK** lets you track event data from your Cordova app and send it to your preferred destination platforms supported by RudderStack.
+The **RudderStack Cordova SDK** lets you track event data from your Cordova applications and send it to your specified destinations via RudderStack.
 
 Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-cordova) and the [**sample implementation**](https://github.com/rudderlabs/rudder-sdk-cordova/blob/master/sample-cordova/www/js/index.js) to get a more hands-on understanding of the SDK.
 
@@ -63,11 +63,11 @@ The `setup` method has the following signature:
 <ul>
 <li>
 
-Check the <strong>Configuring your RudderStack Client</strong> section below for detailed information on the parameters you can send in the <code class="inline-code">configuration</code> object.
+Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-the-rudderstack-client">Configuring the RudderStack Client</a> section below for detailed information on the parameters you can send in the <code class="inline-code">configuration</code> object.
 </li>
 <li>
 
-Check the <strong>Configuring your options object</strong> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
+Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-your-options-object">Configuring the options object</a> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
 </li>
 </ul>
 </div>
@@ -111,7 +111,7 @@ The `identify` method has the following signatures:
 
 <div class="infoBlock">
 
-Check the <strong>Configuring your options object</strong> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
+Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-your-options-object">Configuring the options object</a> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
 </div>
 
 ## Track
@@ -164,6 +164,11 @@ The `track` method has the following signature:
 
 <div class="infoBlock">
 
+Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-your-options-object">Configuring the options object</a> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
+</div>
+
+<div class="successBlock">
+
 RudderStack automatically tracks the following optional events:
 
 <ul>
@@ -197,7 +202,7 @@ The `group` method has the following signatures:
 
 <div class="infoBlock">
 
-Check the <strong>Configuring your options object</strong> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
+Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-your-options-object">Configuring the options object</a> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
 </div>
 
 ## Screen
@@ -218,7 +223,12 @@ The `screen` method has the following signature:
 | :--- | :--- | :--- | :--- |
 | `screenName` | `string` | Required | Name of the viewed screen. |
 | `property` | `JSON Object` | Optional | Extra properties that you want to pass along with the `screen` call. |
-| `option` | `JSON Object` | Optional | Extra options to be passed along with `screen` event. |
+| `options` | `JSON Object` | Optional | Extra options to be passed along with `screen` event. |
+
+<div class="infoBlock">
+
+Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-your-options-object">Configuring the options object</a> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
+</div>
 
 ## Alias
 
@@ -241,6 +251,11 @@ The `alias` method has the following signature:
 | :--- | :--- | :--- | :--- |
 | `newId` | `String` | Required | The new `userId` that you want to assign to the user. |
 | `options` | `JSON Object` | Optional | Event level options. |
+
+<div class="infoBlock">
+
+Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-your-options-object">Configuring the options object</a> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
+</div>
 
 <div class="infoBlock">
 
@@ -398,7 +413,7 @@ RudderClient.putDeviceToken("sampleDeviceToken");
 
 If you face any unexpected behavior while using the SDK, you can turn on the `VERBOSE` or `DEBUG` logging feature to determine out the issue.
 
-You configure logging behaviour of your SDK by sending the value of the `logLevel` property of the `configuration` object and pass it over to the `initialize` call as shown below:
+You configure logging behavior of your SDK by sending the value of the `logLevel` property of the `configuration` object and pass it over to the `initialize` call as shown below:
 
 ```javascript
 RudderClient.initialize( WRITE_KEY , {
@@ -416,10 +431,12 @@ Once you set up a Cordova source in the [**RudderStack dashboard**](http://app.r
 
 <img src="../../assets/event-stream-sources/cordova-sdk-1.png" alt="Cordova source write key" />
 
-### Where can I find the data plane URL
+### Where can I find the data plane URL?
 
 Refer to this [**section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane and how to get it.
 
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+
+If you come across any issues while using the Cordova SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-cordova/issues/new).

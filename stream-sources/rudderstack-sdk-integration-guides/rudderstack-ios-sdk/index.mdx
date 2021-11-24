@@ -2,13 +2,13 @@
 # slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk"
 title: "iOS"
 description: >-
-  Detailed technical documentation on RudderStack’s iOS SDK using XCode to send
-  events from your iOS device to various destinations.
+  Detailed technical documentation on using RudderStack’s iOS SDK to send
+  events from your iOS apps to various destinations.
 ---
 
 # iOS
 
-The **RudderStack iOS SDK** integrates RudderStack with your iOS application track the event data and send it to your preferred destinations.
+The **RudderStack iOS SDK** lets you track your customer event data from your iOS applications and send it to your specified destinations via RudderStack.
 
 Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-ios) to get a more hands-on understanding of the SDK.
 
@@ -34,7 +34,7 @@ To set up the RudderStack iOS SDK, the following prerequisites must be met:
 
 ## Installing the RudderStack iOS SDK
 
-We distribute our iOS SDK through [**Cocoapods**](https://cocoapods.org) and [**Carthage**](https://github.com/Carthage/Carthage). The recommended and easiest way to add the SDK to your project is through `Podfile`. Follow these steps:
+We distribute our iOS SDK through [**Cocoapods**](https://cocoapods.org/pods/Rudder) and [**Carthage**](https://github.com/Carthage/Carthage). The recommended and easiest way to add the SDK to your project is through `Podfile`. Follow these steps:
 
 <Tabs>
   <TabList>
@@ -118,7 +118,7 @@ import Rudder
 
 <div class="dangerBlock">
 
-RudderStack uses SQLite to save the events to local database before sending it to RudderStack data-plane. Making calls like <code class="inline-code">SQLite.shutdown()</code> which is not thread-safe might lead to unexpected crash.
+RudderStack uses <a href="https://sqlite.org/index.html">SQLite</a> to store the events before sending them to RudderStack data plane. Making calls like <code class="inline-code">SQLite.shutdown()</code> which is not thread-safe might lead to unexpected crash.
 
 </div>
 
@@ -427,7 +427,7 @@ Alternatively, you can use the following method signature
 
 <div class="infoBlock">
 
-RudderStack doesn't persist the traits for the group across the sessions.
+RudderStack does not persist the traits for the group across the sessions.
 </div>
 
 ## Alias
@@ -782,7 +782,7 @@ RSClient.getInstance(&lt;WRITE_KEY&gt;, config: builder.build())
 
 ## Developing a device mode destination
 
-You can easily develop a device mode destination in case RudderStack doesn't support it already, by following the steps listed in this section.
+You can easily develop a device mode destination in case RudderStack doesn't support it already.  Follow the steps listed in this section to do so.
 
 <div class="infoBlock">
 
@@ -1132,4 +1132,4 @@ You only need to call the `optOut` API with the required parameter only once, as
 
 For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.
 
-If you come across any bugs or discrepancies while using the iOS SDK, you can also open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-ios/issues/new).
+If you come across any issues while using the iOS SDK, you can also open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-ios/issues/new).
