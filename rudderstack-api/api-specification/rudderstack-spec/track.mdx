@@ -11,7 +11,6 @@ The `track` call lets you record the customer events, i.e. the actions that they
 <div class="infoBlock">
 
 Each user action is called an event. Every event has a name associated with it, e.g. **Product Reviewed**. This event might also have some properties associated with it, like <code class="inline-code">review_id</code> and <code class="inline-code">rating</code>.
-
 </div>
 
 <div class="successBlock">
@@ -54,13 +53,13 @@ Apart from the [**Common Fields**](common-fields/), the `track` call accepts the
 | **Field**    | **Type** | **Presence** | **Description**                                                                                                  |
 | :----------- | :------- | :----------- | :--------------------------------------------------------------------------------------------------------------- |
 | `event`      | String   | Required     | Name of the user action.                                                                                         |
-| `properties` | Object   | Optional     | Includes the properties associated with the event. For more information, check the **Properties** section below. |
+| `properties` | Object   | Optional     | Includes the properties associated with the event. For more information, check the [**Properties**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/#properties) section below. |
 
 ## Properties
 
 Properties are additional contextual information that are associated with a `track` event, that give more clarity of your users' actions.
 
-RudderStack has reserved some standard properties listed in the table below and handles them in special ways.
+RudderStack has reserved some standard properties listed in the following table and handles them in a special way.
 
 <table>
   <thead>
@@ -108,13 +107,8 @@ RudderStack has reserved some standard properties listed in the table below and 
 </table>
 
 <div class="successBlock">
-
-  Different destinations recognize some of the above traits differently. For
-  example, Mixpanel has a <code class="inline-code">track_charges</code> method
-  for tracking revenue. With RudderStack, you don't have to worry about these
-  inconsistencies. In this case, you can pass the
-  <code class="inline-code">revenue</code> property and RudderStack will handle
-  the conversion automatically.
+  
+  Different destinations recognize some of the above traits differently. For example, Mixpanel has a <code class="inline-code">track_charges</code> method for tracking revenue. With RudderStack, you don't have to worry about these inconsistencies. In this case, you can pass the <code class="inline-code">revenue</code> property and RudderStack will handle the conversion automatically.
 </div>
 
 ## Contact us
