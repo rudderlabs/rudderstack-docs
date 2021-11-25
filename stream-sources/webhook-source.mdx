@@ -8,19 +8,7 @@ description: Step-by-step guide to add a Webhook source in RudderStack.
 
 RudderStack lets you add any source that supports a webhook and use it to send events to your preferred destination.
 
-When you create a webhook source in the RudderStack dashboard, you get a write key associated with it. Use this write key in a webhook endpoint in the following format:
-
-`http://<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>`
-
-<div class="infoBlock">
-
-<ul>
-<li>For more information on the data plane URL, refer to <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this</a> section.</li>
-<li>The write key is automatically appended to the webhook endpoint once you add a webhook source in the <a href="https://app.rudderstack.com/">RudderStack dashboard</a>. Refer to <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">this</a> guide for more information on how to add a source in RudderStack. </li>
-</ul>
-</div>
-
-You can then add this webhook URL to any source. RudderStack receives the data according to the settings made in the source, creates the payload, and routes it to your specified destination.
+This guide will help you set up a webhook source in RudderStack.
 
 <div class="warningBlock">
 
@@ -29,7 +17,9 @@ You must also add <a href="https://rudderstack.com/docs/transformations/">User T
 
 ## Getting started
 
-This section details the steps involved in setting up a webhook source in the RudderStack dashboard. As an example, we will configure [**Mailchimp**](https://mailchimp.com) as a source in RudderStack.
+This section details the steps involved in setting up a webhook source in the RudderStack dashboard. 
+
+As an example, we will ingest events from [**Mailchimp**](https://mailchimp.com) into RudderStack by configuring a webhook.
 
 - Go to your [**RudderStack dashboard**](https://app.rudderstack.com/) and click on **Add Source**. From the list of **Event Stream** sources, click on **Webhook**.
 
@@ -37,17 +27,32 @@ This section details the steps involved in setting up a webhook source in the Ru
 
 - Assign a name to your source and click on **Next**.
 
-- Your webhook source is now created, as shown below. Note the **Webhook URL** which will be added in the source platform.
+- Your webhook source is now created, as shown below. Note the **Webhook URL** containing the **Write key** as a query parameter, as shown:
 
 <img src="../assets/event-stream-sources/webhook-2.png" alt="Webhook endpoint" />
 
-- Then, add a destination in RudderStack and connect it to this webhook source. As an example, we will configure [**Google Analytics**](https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/) as a destination, as shown:
+The webhook URL is of the following format:
+
+`http://<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>`
+
+<div class="infoBlock">
+
+For more information on the data plane URL, refer to <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this</a> section.
+</div>
+
+A sample webhook URL is shown below:
+
+```http
+https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
+```
+
+- Then, add a destination in RudderStack and connect it to this webhook source. For this example, we will configure [**Google Analytics**](https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/) as a destination, as shown:
 
 <img src="../assets/event-stream-sources/webhook-3.png" alt="GA destination" />
 
 <div class="infoBlock">
 
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack//">How to Add a Source and Destination in RudderStack</a> for more details.
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more details.
 </div>
 
 - Next, add the webhook URL to your desired source platform. **Remember that you can configure webhook sources only for the source platforms that support webhooks**. The following image shows the webhook URL added in Mailchimp:
@@ -72,7 +77,7 @@ The content type can vary in case of other webhook sources.
 
 <div class="warningBlock">
 
-You must also add <a href="https://rudderstack.com/docs/transformations/">User Transformations</a> to transform the payload into a destination-specific format before sending it to the destination. Refer to the <a href="#payload-creation-and-transformation">Payload creation and transformation</a> section for more details.
+You must also add the appropriate <a href="https://rudderstack.com/docs/transformations/">User Transformation</a> to transform the payload into a destination-specific format before sending it to the destination. Refer to the <a href="#payload-creation-and-transformation">Payload creation and transformation</a> section for more details.
 </div>
 
 ## Payload creation and transformation
@@ -197,7 +202,7 @@ The transformed payload is shown below:
 }
 ```
 
-RudderStack then sends this payload to your destination (Google Analytics, in this example).
+RudderStack then sends this payload to your destination - Google Analytics, in this case.
 
 ## Contact us
 
