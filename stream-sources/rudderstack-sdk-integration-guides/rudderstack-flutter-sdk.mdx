@@ -339,35 +339,28 @@ RudderClient.identify("testUserId", options: option);
 
 We use the `deviceId` as `anonymousId` by default. You can use the following method to override and use your own `anonymousId` with the SDK.
 
-<div class="warningBlock">
-
-You need to call <code class="inline-code">setAnonymousId</code> method before calling <code class="inline-code">getInstance</code>
-
-</div>
-
 An example of setting the `anonymousId` is as below
 
 ```dart
-RudderClient.setAnonymousId(<ANONYMOUS_ID>);
+RudderClient.putAnonymousId(<ANONYMOUS_ID>);
 ```
 
 ## Advertising ID
 
-You can use the `setAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `setAdvertisingId` method accepts a `string` argument :
+You can use the `putAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `putAdvertisingId` method accepts a `string` argument :
 
 - `id` : Your Android `advertisingId` \(AAID\) \(or\) Your iOS `advertisingId` \(IDFA\)
 
-<div class="warningBlock">
-
-On `Android` device you need to call <code class="inline-code">setAdvertisingId</code> method before calling <code class="inline-code">getInstance</code>
-
-</div>
-
-An example of how to use `setAdvertisingId` is as shown:
+An example of how to use `putAdvertisingId` is as shown:
 
 ```dart
-RudderClient.setAdvertisingId(<ADVERTISING_ID>);
+RudderClient.putAdvertisingId(<ADVERTISING_ID>);
 ```
+<div class="warningBlock">
+
+On iOS You need to call <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">getInstance()</code>
+
+</div>
 
 <div class="infoBlock">
 
