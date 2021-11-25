@@ -10,12 +10,17 @@ description: Step-by-step guide to ingest data from Intercom into RudderStack.
 
 This document guides you in setting up Intercom as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Intercom data, which can then be routed to your RudderStack-supported data warehouse destination.
 
-<img src="https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github" alt="Github Badge" class="githubBadge" />
+<div class="infoBlock">
+
+The Intercom v2 source supports <strong>Intercom API v2.1 and above</strong>. For the older versions of Intercom, refer to <a href="https://rudderstack.com/docs/cloud-extract-sources/intercom/">this</a> documentation.
+</div>
 
 <div class="warningBlock">
 
 All the Cloud Extract sources support sending data only to a data warehouse destination.
 </div>
+
+<img src="https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github" alt="Github Badge" class="githubBadge" />
 
 ## Getting started
 
@@ -27,11 +32,11 @@ To set up Intercom as a source on the RudderStack dashboard, follow these steps:
 
 - Next, go to **Cloud Extract** and select **Intercom v2**.
 
-<img src="../assets/cloud-extract-sources/singer-intercom-1.png" alt="Intercom v2 source" />
+<img src="../assets/cloud-extract-sources/intercomv2-1.png" alt="Intercom v2 source" />
 
 - Assign a name to your source, and click on **Next**.
 
-<img src="../assets/cloud-extract-sources/singer-intercom-2.png" alt="Assigning source name" />
+<img src="../assets/cloud-extract-sources/intercomv2-2.png" alt="Assigning source name" />
 
 ### Configuring the source
 
@@ -44,7 +49,7 @@ Refer to the FAQs section below for more information on how to get the Intercom 
 
 - You will also need to enter the **Start date**. This option specifies the historical data to be imported.
 
-<img src="../assets/cloud-extract-sources/singer-intercom-3.png" alt="Configuring Intercom" />
+<img src="../assets/cloud-extract-sources/intercomv2-3.png" alt="Configuring Intercom" />
 
 - Under **Destination Settings**, set the **Table prefix**. RudderStack will create a table in your data warehouse with this prefix name and load all your Intercom data into it.
 
@@ -52,38 +57,30 @@ Refer to the FAQs section below for more information on how to get the Intercom 
 
 - Optionally, you can also specify the time of the sync by selecting the time under **Sync Starting At**. Then, click on **Next**.
 
-<img src="../assets/cloud-extract-sources/singer-intercom-4.png" alt="Configuring the source" />
+<img src="../assets/cloud-extract-sources/intercomv2-4.png" alt="Configuring the source" />
 
 ### Selecting the data to import
 
 - Finally, choose the Intercom data that you wish to ingest via RudderStack. You can either select all the data, or choose specific Intercom data attributes, as per your requirement.
 
-<img src="../assets/cloud-extract-sources/singer-intercom-5.png" alt="Selecting the data to import" />
+<img src="../assets/cloud-extract-sources/intercomv2-5.png" alt="Selecting the data to import" />
 
 That's it! Intercom is now successfully configured as a source on your RudderStack dashboard.
 
 RudderStack will start ingesting data from Intercom as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
 
-<img src="../assets/cloud-extract-sources/singer-intercom-6.png" alt="Configuring the source" />
+<img src="../assets/cloud-extract-sources/intercomv2-6.png" alt="Configuring the source" />
 
 <div class="successBlock">
 
   Use the <strong>Use Existing Destination</strong> option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the <strong>Create New Destination</strong> button.
 </div>
 
-## Failing syncs for older Intercom API versions
+## Sync errors for older Intercom API versions
 
-For Intercom versions less than **2.1**, data syncs to the warehouse destination will fail and throw an error as shown:
+For Intercom versions less than **2.1**, data syncs to the warehouse destination will fail and throw an error. This is because many Intercom resources are not supported by the older API versions. 
 
-<img src="../assets/cloud-extract-sources/singer-intercom-8.png" alt="Sync error" />
-
-The complete error log is as shown:
-
-```text
-Traceback (most recent call last):unknown error File "/airbyte/integration_code/main.py", line 13, in <module> launch(source, sys.argv[1:]) File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/entrypoint.py", line 108, in launch for message in source_entrypoint.run(parsed_args): File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/entrypoint.py", line 99, in run for message in generator: File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/abstract_source.py", line 110, in read raise e File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/abstract_source.py", line 106, in read internal_config=internal_config, File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/abstract_source.py", line 136, in _read_stream for record in record_iterator: File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/abstract_source.py", line 208, in _read_full_refresh for record in records: File "/airbyte/integration_code/source_intercom/source.py", line 65, in read_records raise e File "/airbyte/integration_code/source_intercom/source.py", line 60, in read_records yield from super().read_records(*args, **kwargs) File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/streams/http/http.py", line 351, in read_records response = self._send_request(request, request_kwargs) File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/streams/http/http.py", line 318, in _send_request return backoff_handler(user_backoff_handler)(request, request_kwargs) File "/usr/local/lib/python3.7/site-packages/backoff/_sync.py", line 94, in retry ret = target(*args, **kwargs) File "/usr/local/lib/python3.7/site-packages/backoff/_sync.py", line 94, in retry ret = target(*args, **kwargs) File "/usr/local/lib/python3.7/site-packages/airbyte_cdk/sources/streams/http/http.py", line 284, in _send response.raise_for_status() File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 953, in raise_for_status raise HTTPError(http_error_msg, response=self)requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.intercom.io/data_attributes?model=contact
-```
-
-This is because many Intercom resources are not supported by the older API versions. In such a scenario, we highly recommend updating your Intercom API.
+In such a scenario, we highly recommend updating your Intercom API.
 
 <div class="infoBlock">
 
@@ -98,7 +95,7 @@ To get the Intercom access token, go to the **Your apps** section under **Interc
 
 If you have already created an app, click on the **Authentication** option under **Configure**, as shown below. Here, you will find the access token under the workspace associated with your app.
 
-<img src="../assets/cloud-extract-sources/singer-intercom-7.png" alt="Access token" />
+<img src="../assets/cloud-extract-sources/intercomv2-7.png" alt="Access token" />
 
 For more details, refer to the Intercom [**support page**](https://help-desk-migration.com/help/get-intercom-api-access-token/).
 
@@ -108,13 +105,13 @@ Yes, it is.
 
 RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
-#### While syncing data to the warehouse destination, I get the following error. What should I do?
+#### The sync to my warehouse destination is failing and I get an error. What should I do?
 
-<img src="../assets/cloud-extract-sources/singer-intercom-8.png" alt="Sync error" />
-
-For Intercom versions less than **2.1**, data syncs to the warehouse destination will fail and throw an error, as seen above. This is because many Intercom resources are not supported by the older API versions. In such a scenario, you will need to update your Intercom API.
+If the syncs are failing, the first step is to verify if your Intercom version is **2.1** or above. For versions less than 2.1, data syncs to the warehouse destination will fail. This is because many Intercom resources are not supported by the older API versions. In this scenario, you will need to update your Intercom API.
 
 For more information on updating your Intercom API version, refer to their [**support page**](https://developers.intercom.com/building-apps/docs/update-your-api-version).
+
+If you are using Intercom 2.1 or above and are facing this issue, you can [**contact us**](mailto:%20docs@rudderstack.com) or get in touch with us on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
 
 ## Contact us
 
