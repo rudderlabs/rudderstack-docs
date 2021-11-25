@@ -10,12 +10,10 @@ The `page` call lets you record your website's page views with any additional re
 
 <div class="successBlock">
 
-  The [**RudderStack JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/)
-  includes a `page` call in its snippet just after the `rudderanalytics.load`
-  method.
+  The <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</a> includes a <code class="inline-code">page</code> call in its snippet just after the <code class="inline-code">rudderanalytics.load</code> method.
 </div>
 
-## Sample Payload
+## Sample payload
 
 A sample payload of a `page` call with most of the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) removed is as shown:
 
@@ -38,24 +36,23 @@ rudderanalytics.page("Home")
 
 <div class="successBlock">
 
-  The SDK automatically gathers the page `name` and `url` and passes them into
-  the event payload.
+  The SDK automatically gathers the page <code class="inline-code">name</code> and <code class="inline-code">url</code> and passes them into the event payload.
 </div>
 
-## Page Fields
+## Page fields
 
 Apart from the [**Common Fields**](common-fields/), the `page` call accepts the following fields:
 
 | **Field**    | **Type** | **Presence** | **Description**                                                                                                                            |
 | :----------- | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`       | String   | Optional     | The name of the page.                                                                                                                      |
-| `properties` | Object   | Optional     | Includes the properties of the page such as the `url`, `referrer`, etc. For more more information, check the **Properties** section below. |
+| `properties` | Object   | Optional     | Includes the properties of the page such as the `url`, `referrer`, etc. For more more information, check the [**Properties**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/#properties) section below. |
 
 ## Properties
 
 Properties are additional information that describe the viewed page.
 
-RudderStack has reserved some standard properties listed in the table below and handles them in special ways. For instance, the `path` should always be the URL path of the page and the `referrer` should be the URL of the previously viewed page.
+RudderStack has reserved some standard properties listed in the following table and handles them in a special manner. For instance, `path` should always be the URL path of the page and `referrer` should be the URL of the previously viewed page.
 
 <table>
   <thead>
@@ -78,8 +75,7 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>The page name. This is a reserved</p>
-        <p>property for future use.</p>
+        <p>The page name. This is a reserved property for future use.</p>
       </td>
     </tr>
     <tr>
@@ -95,12 +91,7 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>Full page URL. RudderStack first looks for</p>
-        <p>the canonical URL. If it is not present,</p>
-        <p>
-          RudderStack uses the <code class="inline-code">location.href</code>
-        </p>
-        <p>component from the DOM API.</p>
+        <p>Full page URL. RudderStack first looks for the canonical URL. If it is not present, RudderStack uses the <code class="inline-code">location.href</code> component from the DOM API.</p>
       </td>
     </tr>
     <tr>
@@ -116,8 +107,7 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>The full URL of the previous page visited</p>
-        <p>by the user.</p>
+        <p>The full URL of the previous page visited by the user.</p>
       </td>
     </tr>
     <tr>
@@ -126,8 +116,7 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>The query string component of the page</p>
-        <p>URL.</p>
+        <p>The querystring component of the page URL.</p>
       </td>
     </tr>
     <tr>
@@ -136,21 +125,12 @@ RudderStack has reserved some standard properties listed in the table below and 
       </td>
       <td style="text-align:left">Array</td>
       <td style="text-align:left">
-        <p>A list or array of keywords describing the</p>
-        <p>
-          page. These keywords are similar to the
-          <br />
-          keywords used for SEO purposes.
-          <br />
-          <br />
-          This property is not automatically
-        </p>
-        <p>collected.</p>
+        <p>A list or array of keywords describing the page. These keywords are similar to the keywords used for SEO purposes. This property is not automatically collected.</p>
       </td>
     </tr>
   </tbody>
 </table>
 
-## Contact Us
+## Contact us
 
-For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
