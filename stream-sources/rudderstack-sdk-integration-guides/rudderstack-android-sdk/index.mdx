@@ -855,24 +855,6 @@ You can set your `device-token` for push notification to be sent to the destinat
 
 Follow the code snippets below:
 
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```bash
-RudderClient.putDeviceToken("your_device_token")
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```bash
-RudderClient.putDeviceToken("your_device_token");
-```
-
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>Kotlin</Tab>
@@ -903,12 +885,6 @@ RudderClient.putDeviceToken("your_device_token");
 We collect the `advertisementId` if it is enabled by the user and the App has the Google Play services Ads SDK embedded in the application. We set the `gaid` under `context.device.advertisementId`.
 
 Apart from it, if you want to set the `advertisingId` by yourself, you can do so using the `putAdvertisingId` method and passing the `advertisingId`.
-
-<div class="warningBlock">
-
-You need to call <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">getInstance</code>
-
-</div>
 
 An example of setting the `advertisingId` is as below
 

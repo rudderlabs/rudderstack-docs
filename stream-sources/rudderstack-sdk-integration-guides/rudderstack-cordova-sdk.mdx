@@ -394,11 +394,16 @@ RudderClient.putAnonymousId("CustomAnonymousId");
 
 ## Advertisement ID
 
-RudderStack collects the advertisement ID if it is enabled by the user. To set the advertising ID yourself, you can use the `setAdvertisingId` method as shown:
+RudderStack collects the advertisement ID if it is enabled by the user. To set the advertising ID yourself, you can use the `putAdvertisingId` method as shown:
 
 ```javascript
 RudderClient.putAdvertisingId("SampleAdvertisingId")
 ```
+<div class="warningBlock">
+
+On iOS You need to call <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">initialize</code>
+
+</div>
 
 ## Setting the device token
 
