@@ -545,15 +545,14 @@ rudderClient.putAdvertisingId(AAID, IDFA)
 ```
 <div class="warningBlock">
 
-On iOS You need to call <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">setup()</code>
-
+On iOS, you need to call the <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">setup()</code>.
 </div>
 
 ## Anonymous ID
 
 You can use the `putAnonymousId` method to pass your `anonymousId` and the SDK will use that instead of the `deviceId`. The `putAnonymousId` method accepts one `string` argument:
 
-- `id` : Your `anonymousId`
+- `id`: The user's `anonymousId`.
 
 An example of this method's usage is as shown:
 
