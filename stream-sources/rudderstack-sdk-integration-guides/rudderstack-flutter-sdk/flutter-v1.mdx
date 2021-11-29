@@ -205,11 +205,6 @@ An example of how to use `putAdvertisingId` is as shown:
 RudderClient.putAdvertisingId(<ADVERTISING_ID>);
 ```
 
-<div class="warningBlock">
-
-On iOS, you need to call the <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">getInstance()</code>.
-</div>
-
 ## Setting the device token
 
 You can pass your device token for push notifications to be passed to the destinations which support the Push Notification feature. RudderStack sets the token under `context.device.token`.
