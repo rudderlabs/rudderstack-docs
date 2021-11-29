@@ -190,13 +190,8 @@ RudderClient.identify("testUserId", options: option);
 By default, RudderStack uses `deviceId` as `anonymousId`. You can use the following method to override and set your own `anonymousId` with the SDK:
 
 ```dart
-RudderClient.setAnonymousId(<ANONYMOUS_ID>);
+RudderClient.putAnonymousId(<ANONYMOUS_ID>);
 ```
-
-<div class="warningBlock">
-
-You need to call <code class="inline-code">setAnonymousId</code> before calling <code class="inline-code">getInstance</code>.
-</div>
 
 ## Advertising ID
 
@@ -207,7 +202,7 @@ You can use the `putAdvertisingId` method to pass your Android and iOS AAID and 
 An example of how to use `putAdvertisingId` is as shown:
 
 ```dart
-RudderClient.setAdvertisingId(<ADVERTISING_ID>);
+RudderClient.putAdvertisingId(<ADVERTISING_ID>);
 ```
 
 <div class="warningBlock">
