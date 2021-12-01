@@ -39,9 +39,9 @@ The `alias` call lets you merge different identities of a known user.
   </ul>
 </div>
 
-## Sample Payload
+## Sample payload
 
-A sample payload of an `alias` call with most of the **Common Fields** removed is as shown:
+A sample payload of an `alias` call with most of the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) removed is shown below:
 
 ```javascript
 {
@@ -59,20 +59,17 @@ rudderanalytics.alias("12345")
 
 <div class="successBlock">
 
-  The RudderStack SDK automatically passes the user's
-  <code class="inline-code">anonymousId</code> as
-  <code class="inline-code">previousId</code> in the payload, as seen above.
+  The RudderStack SDK automatically passes the user's <code class="inline-code">anonymousId</code> as <code class="inline-code">previousId</code> in the payload, as seen above.
 </div>
 
 <div class="warningBlock">
 
-When instrumenting a website with the JavaScript SDK, making the <code class="inline-code">alias</code> call via the client-side is important as the <code class="inline-code">anonymousId</code> is generated via the browser. Similarly, if you're using a server-side SDK, the <code class="inline-code">alias</code>call must be made from the server-side as the session ID is set as the <code class="inline-code">anonymousId</code>.
-
+When instrumenting a website with the JavaScript SDK, making the <code class="inline-code">alias</code> call via the client-side is important as the <code class="inline-code">anonymousId</code> is generated via the browser. Similarly, if you're using a server-side SDK, the <code class="inline-code">alias</code> call must be made from the server-side as the session ID is set as the <code class="inline-code">anonymousId</code>.
 </div>
 
-## Page Fields
+## Page fields
 
-Apart from the **Common Fields**, the `alias` call accepts the following fields:
+In addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/), the `alias` call accepts the following fields:
 
 <table>
   <thead>
@@ -98,7 +95,7 @@ Apart from the **Common Fields**, the `alias` call accepts the following fields:
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">Required</td>
-      <td style="text-align:left">The user&apos;s previous identifier.</td>
+      <td style="text-align:left">The user's previous identifier.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -106,16 +103,10 @@ Apart from the **Common Fields**, the `alias` call accepts the following fields:
       </td>
       <td style="text-align:left">Object</td>
       <td style="text-align:left">
-        <p>Optional</p>
-        <p>
-          (if <code class="inline-code">anonymousId</code> is already set)</p>
+        <p>Optional (if <code class="inline-code">anonymousId</code> is already set)</p>
       </td>
       <td style="text-align:left">
-        <p>The user&apos;s identifier in your database.</p>
-        <p>
-          Either of <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> should be
-          present.
-        </p>
+        <p>The user's identifier in your database. Either <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> should be present.</p>
       </td>
     </tr>
   </tbody>
@@ -128,6 +119,6 @@ Apart from the **Common Fields**, the `alias` call accepts the following fields:
   - A previously set `userId` to identify the user via the `identify` call.
 - The `userId` is the user's new identity or an existing identity that you want to merge with `previousId`.
 
-## Contact Us
+## Contact us
 
 For more information on any section covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

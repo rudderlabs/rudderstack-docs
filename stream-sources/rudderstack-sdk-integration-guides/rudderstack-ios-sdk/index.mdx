@@ -662,7 +662,7 @@ You can pass your `device-token` for Push Notifications to be passed to the dest
 Follow the instructions below:
 
 ```objectivec
-[[[RSClient sharedInstance] getContext] putDeviceToken:@"your_device_token"];
+[RSClient putDeviceToken:@"your_device_token"];
 ```
 
 ## Advertisement ID
@@ -722,16 +722,10 @@ Following are the available options you can pass to the `putAppTrackingConsent` 
 
 We use the `deviceId` as `anonymousId` by default. You can use the following method to override and use your own `anonymousId` with the SDK.
 
-<div class="warningBlock">
-
-You need to call <code class="inline-code">setAnonymousId</code> method before calling <code class="inline-code">getInstance</code>
-
-</div>
-
 An example of setting the `anonymousId` is as below
 
 ```java
-[RSClient setAnonymousId:<ANONYMOUS_ID>];
+[RSClient putAnonymousId:<ANONYMOUS_ID>];
 ```
 
 ## Enabling / Disabling Events for Specific Destinations

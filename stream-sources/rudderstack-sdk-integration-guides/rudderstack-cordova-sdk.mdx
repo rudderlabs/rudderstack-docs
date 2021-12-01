@@ -386,24 +386,23 @@ In the above example, the values of the `screen` call are passed only to the Sal
 
 ## Anonymous ID
 
-We use the `deviceId` as anonymousId by default. You can use the `setAnonymousId` method to override the default `anonymousId`, as shown:
+RudderStack uses the `deviceId` as anonymousId by default. You can use the `putAnonymousId` method to override the default `anonymousId`, as shown:
 
 ```javascript
-RudderClient.setAnonymousId("CustomAnonymousId");
+RudderClient.putAnonymousId("CustomAnonymousId");
 ```
-
-<div class="warningBlock">
-
-You need to call `setAnonymousId` method before calling `initialize`
-</div>
 
 ## Advertisement ID
 
-RudderStack collects the advertisement ID if it is enabled by the user. To set the advertising ID yourself, you can use the `setAdvertisingId` method as shown:
+RudderStack collects the advertisement ID if it is enabled by the user. To set the advertising ID yourself, you can use the `putAdvertisingId` method as shown:
 
 ```javascript
-RudderClient.setAdvertisingId("SampleAdvertisingId")
+RudderClient.putAdvertisingId("SampleAdvertisingId")
 ```
+<div class="warningBlock">
+
+On iOS, you need to call the <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">initialize</code>.
+</div>
 
 ## Setting the device token
 
