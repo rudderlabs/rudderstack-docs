@@ -418,6 +418,12 @@ export const postNavList = [
       "link":"/cloud-extract-sources/zendesk-chat/",
       "content":[]
    },
+   {
+    "key":"intercom-v2",
+    "title":"Intercom v2",
+    "link":"/cloud-extract-sources/intercom-v2/",
+    "content":[]
+   },
  {
     "key":"warehouse-actions",
     "title":"Warehouse Actions Sources",
