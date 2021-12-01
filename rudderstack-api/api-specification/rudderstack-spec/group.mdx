@@ -10,13 +10,12 @@ The `group` call allows you to link an identified user with a group, such as a c
 
 <div class="infoBlock">
 
-An identified user can be in more than one group.
-
+An identified user can be a part of more than one group.
 </div>
 
-## Sample Payload
+## Sample payload
 
-A sample payload for the `group` event after removing the common fields mentioned in the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) section is as shown:
+A sample payload for the `group` event after removing the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) is as shown:
 
 ```javascript
 {
@@ -31,25 +30,25 @@ A sample payload for the `group` event after removing the common fields mentione
 }
 ```
 
-The corresponding event that generates the above payload via the JavaScript SDK is as shown:
+The corresponding event that generates the above payload via the JavaScript SDK is shown below:
 
 ```javascript
 rudderanalytics.group("12345", {
   name: "MyGroup",
   industry: "IT",
   employees: 450,
-  plan: "basic",
+  plan: "basic"
 })
 ```
 
-## Group Fields
+## Group fields
 
-The `group` call has the following fields in addition to the [**Common Fields**](common-fields/):
+The `group` call has the following fields in addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/):
 
 | **Field** | **Type** | **Presence** | **Description**                                                                                                                            |
 | :-------- | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
 | `groupId` | String   | Required     | Your group's unique identifier which lets you identify the group in your database.                                                         |
-| `traits`  | Object   | Optional     | Includes the traits of the group such as `name`, `email`, `employees`, etc. For more more information, check the **Traits** section below. |
+| `traits`  | Object   | Optional     | Includes the traits of the group such as `name`, `email`, `employees`, etc. For more more information, check the [**Traits**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/#traits) section below. |
 
 ## Traits
 
@@ -77,7 +76,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">id</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">The group&apos;s unique ID.</td>
+      <td style="text-align:left">The group's unique ID.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -91,7 +90,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">email</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">The group&apos;s email address.</td>
+      <td style="text-align:left">The group's email address.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -106,13 +105,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">Object</td>
       <td style="text-align:left">
-        <p>The group&apos;s street address. This can</p>
-        <p>
-          optionally contain either / all of
-          <br />
-          the following fields:
-        </p>
-        <p></p>
+        <p>The group's street address. This can optionally contain either/all of the following fields:</p>
         <ul>
           <li>
             <code class="inline-code">city</code>
@@ -138,8 +131,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>The name of the industry that the group is</p>
-        <p>a part of.</p>
+        <p>The name of the industry that the group is a part of.</p>
       </td>
     </tr>
     <tr>
@@ -148,11 +140,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">Date</td>
       <td style="text-align:left">
-        <p>Date of the group&apos;s account creation.</p>
-        <p>
-          We recommend using the <b>ISO-8601</b>
-        </p>
-        <p>date string format.</p>
+        <p>Date of the group's account creation. We recommend using the <b>ISO-8601</b> date string format.</p>
       </td>
     </tr>
     <tr>
@@ -160,7 +148,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">description</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">The group&apos;s description.</td>
+      <td style="text-align:left">The group's description.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -168,8 +156,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>Number of the employees in the group.</p>
-        <p>This is typically used for companies.</p>
+        <p>Number of the employees in the group. This is typically used for companies.</p>
       </td>
     </tr>
     <tr>
@@ -184,18 +171,18 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">website</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">The group&apos;s website.</td>
+      <td style="text-align:left">The group's website.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <code class="inline-code">avatar</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">URL of the group&apos;s avatar image.</td>
+      <td style="text-align:left">URL of the group's avatar image.</td>
     </tr>
   </tbody>
 </table>
 
-## Contact Us
+## Contact us
 
 For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

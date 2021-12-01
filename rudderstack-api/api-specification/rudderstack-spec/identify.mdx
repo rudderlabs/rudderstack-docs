@@ -14,7 +14,7 @@ As a best practice, make sure <code class="inline-code">identify</code> is calle
 
 </div>
 
-## When Should I Call `identify`?
+## When should I call `identify`?
 
 Ideally, you should call `identify` in the following scenarios:
 
@@ -23,7 +23,7 @@ Ideally, you should call `identify` in the following scenarios:
 - When a user updates their information, e.g., residential address, email ID
 - When you load a page accessible by a logged-in user: Although this is optional, many tools \(such as Intercom, for example\) require an initial identify call to know who the user is when they first start the session.
 
-## Sample Payload
+## Sample payload
 
 A sample payload for the `identify` event after removing the common fields mentioned in the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) section is as shown:
 
@@ -47,7 +47,7 @@ rudderanalytics.identify("hashed_user_id", {
 })
 ```
 
-## Identify Fields
+## Identify fields
 
 The `identify` call has the following fields in addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/):
 
@@ -72,11 +72,7 @@ For <code class="inline-code">identify</code> calls, you should include a <code 
 
 <div class="successBlock">
 
-  We strongly recommend using a database ID as the
-  <code class="inline-code">userId</code> instead of usernames or email
-  addresses. This is because the user may update their username or email address
-  at any point in the future. Instead, you can pass them as
-  <strong>traits</strong>.
+  We strongly recommend using a database ID as the <code class="inline-code">userId</code> instead of usernames or email addresses. This is because the user may update their username or email address at any point in the future. Instead, you can pass these attributes as <strong>traits</strong>.
 </div>
 
 ### Anonymous ID
@@ -90,10 +86,10 @@ An anonymousId can be any identifier. For instance, you can use a session ID cor
 </div>
 
 <div class="successBlock">
-  RudderStack's web and mobile <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/">SDKs</a> automatically use anonymous IDs to track unknown users on your website or mobile apps, so you don't have to worry about including an <code class="inline-code">anonymousId</code>explicitly.
+  RudderStack's web and mobile <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/">SDKs</a> automatically use anonymous IDs to track unknown users on your website or mobile apps, so you don't have to worry about including an <code class="inline-code">anonymousId</code> explicitly.
 </div>
 
-## Identify Traits
+## Identify traits
 
 Traits are bits of user information included in an `identify` call. Some example of traits include age, gender, or some specific details, e.g. if a user has a premium or a basic plan.
 
@@ -119,21 +115,21 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">id</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">Your user&apos;s unique ID.</td>
+      <td style="text-align:left">User's unique ID.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <code class="inline-code">firstName</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">User&apos;s first name.</td>
+      <td style="text-align:left">User's first name.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <code class="inline-code">lastName</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">User&apos;s last name.</td>
+      <td style="text-align:left">User's last name.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -141,14 +137,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>Full name of the user. If you have</p>
-        <p>
-          already passed the <code class="inline-code">firstName</code> and
-        </p>
-        <p>
-          <code class="inline-code">lastName</code>, RudderStack will
-        </p>
-        <p>automatically fill this field.</p>
+        <p>Full name of the user. If you have already passed the <code class="inline-code">firstName</code> and <code class="inline-code">lastName</code>, RudderStack will automatically fill this field.</p>
       </td>
     </tr>
     <tr>
@@ -156,21 +145,21 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">age</code>
       </td>
       <td style="text-align:left">Number</td>
-      <td style="text-align:left">User&apos;s age.</td>
+      <td style="text-align:left">User's age.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <code class="inline-code">email</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">User&apos;s email address.</td>
+      <td style="text-align:left">User's email address.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <code class="inline-code">phone</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">User&apos;s phone number.</td>
+      <td style="text-align:left">User's phone number.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -178,13 +167,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">Object</td>
       <td style="text-align:left">
-        <p>User&apos;s street address. This can</p>
-        <p>
-          optionally contain either / all of
-          <br />
-          the following fields:
-        </p>
-        <p></p>
+        <p>User's street address. This can optionally contain either/all of the following fields:</p>
         <ul>
           <li>
             <code class="inline-code">city</code>
@@ -209,7 +192,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">birthday</code>
       </td>
       <td style="text-align:left">Date</td>
-      <td style="text-align:left">User&apos;s date of birth.</td>
+      <td style="text-align:left">User's date of birth.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -217,13 +200,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">Object</td>
       <td style="text-align:left">
-        <p>User&apos;s company. This can</p>
-        <p>
-          optionally contain either / all of
-          <br />
-          the following fields:
-        </p>
-        <p></p>
+        <p>User's company. This can optionally contain either/all of the following fields:</p>
         <ul>
           <li>
             <code class="inline-code">name</code> (String)
@@ -249,11 +226,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">Date</td>
       <td style="text-align:left">
-        <p>Date of user&apos;s account creation.</p>
-        <p>
-          We recommend using the <b>ISO-8601</b>
-        </p>
-        <p>date string format.</p>
+        <p>Date of user's account creation. We recommend using the <b>ISO-8601</b> date string format.</p>
       </td>
     </tr>
     <tr>
@@ -261,14 +234,14 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">description</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">User&apos;s description.</td>
+      <td style="text-align:left">User's description.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <code class="inline-code">gender</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">User&apos;s gender.</td>
+      <td style="text-align:left">User's gender.</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -276,8 +249,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>User&apos;s title related to their position</p>
-        <p>in their company.</p>
+        <p>User's title related to their position in their company.</p>
       </td>
     </tr>
     <tr>
@@ -286,8 +258,7 @@ RudderStack has some reserved traits that it handles in special ways. These are 
       </td>
       <td style="text-align:left">String</td>
       <td style="text-align:left">
-        <p>User&apos;s username. This should be</p>
-        <p>unique for every user.</p>
+        <p>User's username. This should be unique for every user.</p>
       </td>
     </tr>
     <tr>
@@ -295,14 +266,14 @@ RudderStack has some reserved traits that it handles in special ways. These are 
         <code class="inline-code">website</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">User&apos;s website.</td>
+      <td style="text-align:left">User's website.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <code class="inline-code">avatar</code>
       </td>
       <td style="text-align:left">String</td>
-      <td style="text-align:left">URL of the user&apos;s avatar image.</td>
+      <td style="text-align:left">URL of the user's avatar image.</td>
     </tr>
   </tbody>
 </table>
@@ -315,7 +286,7 @@ With RudderStack, you don't have to worry about these inconsistencies at all, as
 
 </div>
 
-## Passing Traits to an `identify` Call
+## Passing traits to an `identify` call
 
 RudderStack lets you pass traits to an `identify` call. These traits will be stored in a cookie on your browser or mobile device and will be passed automatically to all the subsequent calls.
 
@@ -330,6 +301,6 @@ rudderanalytics.identify("user-id", {
 
 In the above example, `{name: "username", gender: "male"}` are the traits stored in a cookie and passed along all the subsequent calls.
 
-## Contact Us
+## Contact us
 
-For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
