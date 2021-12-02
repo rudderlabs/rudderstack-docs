@@ -47,25 +47,16 @@ Rudder::init(WRITE_KEY, array(
 
 We accept the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. Also, if the protocol is missing, it is automatically prepended to the URL based on the <code class="inline-code">ssl</code> option.
 
-For example if your data_plane_url is <code class="inline-code">https://example.dataplane.com</code> below formats are accepted:
-
-1. <code class="inline-code">https://example.dataplane.com</code>
-2. <code class="inline-code">example.dataplane.com</code>
-
-In case the protocol is <code class="inline-code">http</code> (<code class="inline-code">http://example.dataplane.com</code>) data_plane_url should be:
-
-1. <code class="inline-code">http://example.dataplane.com</code> and set <code class="inline-code">
-     ssl
-   </code> option in <code class="inline-code">init</code> to <code class="inline-code">
-     false
-   </code>
-2. <code class="inline-code">example.dataplane.com</code> and set <code class="inline-code">
-     ssl
-   </code> option in <code class="inline-code">init</code> to <code class="inline-code">
-     false
-   </code>
-
 </div>
+
+Below are the data_plane_url formats accepted by the system:
+
+| **Protocol** | **Accepted Format**             | **SSL Option** | **SSL value** |
+| :----------- | :------------------------------ | :------------- | :------------ |
+| `https`      | `https://example.dataplane.com` | Optional       | true          |
+| `https`      | `example.dataplane.com`         | Optional       | true          |
+| `http`       | `http://example.dataplane.com`  | Required       | false         |
+| `http`       | `example.dataplane.com`         | Required       | false         |
 
 ## Sending Events from RudderStack
 
