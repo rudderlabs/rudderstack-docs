@@ -46,17 +46,18 @@ Rudder::init(WRITE_KEY, array(
 <div class="warningBlock">
 
 We accept the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. Also, if the protocol is missing, it is automatically prepended to the URL based on the <code class="inline-code">ssl</code> option.
+For the <code class="inline-code">DATA_PLANE_URL</code> with <code class="inline-code">HTTPS</code> protocol, the <code class="inline-code">ssl</code> field is optional. However, for the <code class="inline-code">HTTP</code> protocol, it is a <b>required</b> field and must always be set to <code class="inline-code">false</code>.
 
 </div>
 
 Below are the data_plane_url formats accepted by the system:
 
-| **Protocol** | **Accepted Format**             | **SSL Option** | **SSL value** |
-| :----------- | :------------------------------ | :------------- | :------------ |
-| `https`      | `https://example.dataplane.com` | Optional       | true          |
-| `https`      | `example.dataplane.com`         | Optional       | true          |
-| `http`       | `http://example.dataplane.com`  | Required       | false         |
-| `http`       | `example.dataplane.com`         | Required       | false         |
+| **Protocol** | **Accepted Format**             |
+| :----------- | :------------------------------ |
+| `https`      | `https://example.dataplane.com` |
+| `https`      | `example.dataplane.com`         |
+| `http`       | `http://example.dataplane.com`  |
+| `http`       | `example.dataplane.com`         |
 
 ## Sending Events from RudderStack
 
