@@ -206,7 +206,7 @@ For all cloud mode calls, the `externalId` key must be present and must include 
 
 <div class="infoBlock">
 
-RudderStack expects the `externalId` to be present under the event's `context`.
+  RudderStack expects the <code class="inline-code">externalId</code> to be present under the event's <code class="inline-code">context</code>.
 </div>
 
 <div class="successBlock">
@@ -218,6 +218,11 @@ For more information on how to get the AppsFlyer ID, refer to this <a href="http
 ## Identify
 
 The `identify` call sets `userId` through `AppsFlyerLib`'s `setCustomerUserId` method.
+
+<div class="infoBlock">
+
+  RudderStack supports the <code class="inline-code">identify</code> calls only in the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode">device mode</a>.
+</div>
 
 RudderStack sets `email` from event traits to AppsFlyer using the native SDK's `setUserEmails` method, as shown:
 
