@@ -38,17 +38,25 @@ Rudder::init(WRITE_KEY, array(
   "consumer"       => "lib_curl", // fork_curl
   "debug"          => true,
   "max_queue_size" => 10000,
-  "batch_size"     => 100
+  "batch_size"     => 100,
+  "ssl"            => true // defaults to true
 ));
 ```
 
-<div class="warningBlock">
+<div class="infoBlock">
 
-We append the protocol to <code class="inline-code">DATA_PLANE_URL</code> before sending the events to RudderStack server.
-
-For example if your dataPlaneUrl is <code class="inline-code">https://example.dataplane.com</code> mention only <code class="inline-code">example.dataplane.com</code>
+RudderStack accepts the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. If the protocol is missing, RudderStack automatically prepends it to the URL depending on whether the <code class="inline-code">ssl</code> option is set to <code class="inline-code">true</code> or <code class="inline-code">false</code>, default value is <code class="inline-code">true</code>.
 
 </div>
+
+RudderStack accepts the following data plane URL formats:
+
+| **SSL** | **Data Plane URL**              |
+| :------ | :------------------------------ |
+| `true`  | `https://example.dataplane.com` |
+| `true`  | `example.dataplane.com`         |
+| `false` | `http://example.dataplane.com`  |
+| `false` | `example.dataplane.com`         |
 
 ## Sending Events from RudderStack
 
@@ -246,7 +254,8 @@ The `alias` call allows you to associate one identity with another.
 
 <div class="infoBlock">
 
-<code class="inline-code">alias</code> is an advanced method. However, it is required when managing user identities in some destinations.
+<code class="inline-code">alias</code> is an advanced method. However, it is required
+when managing user identities in some destinations.
 
 </div>
 
