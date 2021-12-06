@@ -1,0 +1,345 @@
+---
+title: "Post Affiliate Pro"
+description: >-
+ Step-by-step guide to send your event data from RudderStack to Post Affiliate Pro.
+---
+
+# Post Affiliate Pro
+
+[**Post Affiliate Pro**](https://https://www.postaffiliatepro.com/) is a popular affiliate marketing software that lets you manage your affiliate programs, track their performance, and boost your lead generation efforts.
+
+RudderStack supports Post Affiliate Pro as a destination to which you can seamlessly send your customer data.
+
+## Getting started
+
+Before configuring Post Affiliate Pro as a destination in RudderStack, verify if the source platform is supported by Post Affiliate Pro by referring to the table below:
+
+| Connection Mode     | Web           | Mobile                 | Server        |
+| :------------------ | :------------ | :--------------------- | :-------------|
+| **Device mode**     | **Supported**             | -                      | -             |
+| **Cloud mode**      | - | -          | - |
+
+<div class="infoBlock">
+ 
+ To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+</div>
+
+Once you have confirmed that your source platform supports sending events to Post Affiliate Pro, follow these steps:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Post Affiliate Pro**.
+
+<div class="infoBlock">
+ 
+ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+</div>
+
+* Assign a name to the destination and click on **Next**. You should then see the following screen:
+
+<img src="../../assets/event-stream-destinations/pap-connection-settings-1.png" alt="Post Affiliate Pro connection settings" />
+<img src="../../assets/event-stream-destinations/pap-connection-settings-2.png" alt="Post Affiliate Pro connection settings" />
+<img src="../../assets/event-stream-destinations/pap-connection-settings-3.png" alt="Post Affiliate Pro connection settings" />
+
+### Connection settings
+
+The connection settings required to configure Post Affiliate Pro as a destination in RudderStack are listed below:
+
+* **URL of Post Affiliate Pro**: Enter your Post Affiliate Pro tracking URL here.
+
+<div class="infoBlock">
+ 
+For more information on getting the Post Affiliate Pro URL, refer to the <a href="https://rudderstack.com/docs/destinations/marketing/post-affiliate-pro/#faqs">FAQs</a> section below.
+</div>
+
+* **Account ID**: Enter your network merchant account ID here. 
+
+<div class="infoBlock">
+ 
+Post Affiliate Pro owners will have this value set to <code class="inline-code">default1</code>.
+</div>
+
+* **Param Name User ID**: If you have changed the **Affiliate ID / Referrer ID** parameter value by going to **Configuration** - **URL Parameter Names** in your Post Affiliate Pro dashboard, this new value should be entered here.
+
+* **Cookie Domain**: Enter your cookie domain name here. You can find this setting by going to your Post Affiliate Pro dashboard and navigating to **Configuration** - **Cookies**, as shown:
+
+<img src="../../assets/event-stream-destinations/pap-cookie-domain.png" alt="Post Affiliate Pro cookie domain setting" />
+
+* **Cookie to Custom Field**: Enter the ID of the field where the cookie will be written.
+
+* **Campaign to Custom Field**: Enter the ID of the field where the campaign value will be written.
+
+* **Affiliate to Custom Field**: Enter the ID of the field where the affiliate ID will be written.
+
+#### Affiliate to Link settings
+
+* **Affiliate Link ID**: Enter your affiliate link ID here, e.g. `affiliateId`. This refers to the ID of the DOM object where the Affiliate ID is added.
+
+* **AffiliateId Parameter Name**: Enter your affiliate ID parameter name, e.g. `a_aid`.
+
+<div class="infoBlock">
+
+If you set the <strong>Affiliate Link ID</strong> value to <code class="inline-code">affiliateId</code> and the <strong>AffiliateId Parameter Name</strong> to <code class="inline-code">aff_id</code>, then the anchor link of the domain where you want to send the affiliate/referrer ID of the affiliate will be converted to:  <code class="inline-code">http://abcd.com/?aff_id=<your_affiliate_id>"id="affiliateId"</code>.
+</div>
+
+#### Cookie to Link settings
+
+* **Cookie Link ID**: Enter your cookie link ID here, e.g. `cookieLinkId`. This refers to the ID of the DOM object where the cookie ID is added.
+
+* **Cookie Parameter Name**:  Enter the cookie parameter name here, e.g. `PAPcookie`.
+
+<div class="infoBlock">
+
+These settings are similar to the <strong>Affiliate to Link</strong> settings, except that the cookie will be written in place of the <code class="inline-code">affiliateId</code>.
+</div>
+
+#### Event tracking settings
+
+* **Merge Products**: This setting determines if RudderStack should merge the product information while making a sale call to Post Affiliate Pro. If disabled, an individual sale object will be created for each product.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/destinations/marketing/post-affiliate-pro/#sales-tracking">Merging product information during sales tracking</a> section for more information on this feature.
+</div>
+
+* **Disable Tracking Method**: Disable this setting to disable flash cookie creation.
+
+* **List of Events for Click**: For [**Clicks Tracking**](https://rudder.postaffiliatepro.com/merchants/index.php#Clicks-Tracking), RudderStack will consider only the events listed in this field.
+
+<div class="warningBlock">
+
+Make sure the event names specified in this field are comma-separated.
+</div>
+
+* As this is a destination that supports sending events only via the web device mode, the **Use device mode to send events** option will be always enabled.
+</div>
+
+Finally, click on **Next** to complete the setup. Post Affiliate Pro will now be enabled as a destination in RudderStack.
+
+## Identify
+
+You can use the RudderStack `identify` method to set a unique customer ID. You can then use this ID to subsequently track the customer's activities.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify(
+  "user001", // visitor Id
+);
+```
+
+RudderStack calls the `setVisitorId` function of the Post Affiliate Pro SDK and sets the user ID provided in the `identify` call, as shown:
+
+```javascript
+PostAffTracker.setVisitorId("user001");
+```
+
+## Track
+
+RudderStack supports two types of event tracking for Post Affiliate Pro:
+
+* **Clicks tracking**: RudderStack initiates Post Affiliate Pro's clicks tracking mechanism for the events that are explicitly specified in the **List of Events for Click** field, while setting up the integration.
+
+* **Sales tracking**: RudderStack initiates Post Affiliate Pro's sales tracking only for the **Order Completed** event.
+
+### Clicks tracking
+
+A sample `track` event for clicks tracking is as shown:
+
+```javascript
+rudderanalytics.track(
+"User Clicked", //event name
+{
+      affiliateId: "affiliate id",
+      bannerId: "banner id",
+      campaignId: "campaign id",
+      channel: "channel",
+      data1: "data1",
+      data2: "data2",
+} //properties
+);
+```
+<div class="warningBlock">
+
+The <strong>User Clicked</strong> event must be explictly specified in the <strong>List of Events for Click</strong> field. Otherwise, the event will be discarded.
+</div>
+
+RudderStack maps the following properties to the Post Affiliate Pro click event properties:
+
+| **RudderStack Event Property** | **Post Affiliate Pro Property** |
+|:---------------------|:--------------------------|
+| `data1`                         | `Data1`                   |
+| `data2`                |  `Data2`                  |
+| `affiliateId`                  | `AffiliateID`                      |
+| `bannerId`                        | `BannerID`                          |
+| `campaignId`                       | `CampaignID`                          |
+| `channel`                       | `Channel`                          |
+
+### Sales tracking
+
+In case of sales tracking, RudderStack creates a Post Affiliate Pro `sale` object. For the properties in the event, RudderStack then calls the following functions of this object:
+
+| **Event Property** | **Sale Object Function** |
+|:---------------------|:--------------------------|
+| `total`                         | `setTotalCost`                   |
+| `fixedCost`                |  `setFixedCost`                  |
+| `order_id`                  | `setOrderID`                      |
+| `data1`                        | `setData1`                          |
+| `data2`                       | `setData2`                          |
+| `data3`                       | `setData3`                          |
+| `data4`                       | `setData4`                          |
+| `data5`                        | `setData5`                          |
+| `status`                        | `setStatus`                         |
+| `currency`                    | `setCurrency`                    |
+| `customCommission`  | `setCustomCommission`  |
+| `channel`                      | `setChannelID`                  |
+| `coupon`                      | `setCoupon`                       |
+| `campaignId`               | `setCampaignID`                |
+| `affiliateId`                    | `setAffiliateID`                    |
+| `product_id`                 | `setProductID`                    |
+
+A sample `Order Completed` event sent to Post Affiliate Pro sales tracking is shown below:
+
+```javascript
+rudderanalytics.track(
+"Order Completed", //event name
+{
+      checkout_id: "12345",
+      order_id: "1234",
+      affiliation: "aff_id",
+      total: 17.45,
+      fixedCost: 20.5,
+      revenue: 15.0,
+      customCommision: 15,
+      campaign: "campaignId",
+      channel: "channelId",
+      coupon: "ImagePro",
+      currency: "EUR",
+      status: "A",
+      data1: "something",
+      data2: "something",
+      data3: "something",
+      data4: "something",
+      data5: "something",
+      doNotDeleteCookies: true,
+
+      products: [
+        {
+          product_id: "123",
+          sku: "G-5",
+          name: "Product1",
+          price: 14,
+          fixedCost: 20.5,
+          quantity: 1,
+          customCommision: 10.23,
+          category: "Miscellaneous",
+          currency: "USD",
+          commisionStatus: "A",
+          url: "https://www.website.com/product/path",
+          image_url: "https://www.website.com/product/path.jpg",
+        },
+        {
+          product_id: "345",
+          sku: "F-5",
+          name: "Product2",
+          price: 2.45,
+          fixedCost: 5.0,
+          quantity: 2,
+          customCommision: 10.50,
+          commisionStatus: "A",
+          category: "General",
+        },
+      ],
+} //properties
+);
+```
+
+When the **Merge Products** option is enabled while configuring the destination in the dashboard, RudderStack merges the product information and sends the `sale` object as shown below:
+
+```javascript
+var sale = PostAffTracker.createSale();
+sale.setTotalCost('17.45');
+sale.setFixedCost('20.50');
+sale.setOrderID('1234');
+sale.setProductID('123,345');
+sale.setAffiliateID('aff_id');
+sale.setCampaignID('campaignId');
+sale.setChannelID('channelId');
+sale.setCoupon('ImagePro');
+sale.setCustomCommission('15');
+sale.setCustomCommissionNextTiersFromCampaign('Y');
+sale.setCurrency('EUR');
+sale.setStatus('A');
+sale.setData1('something');
+sale.setData2('something');
+sale.setData3('something');
+sale.setData4('something');
+sale.setData5('something');
+sale.doNotDeleteCookies();
+
+
+PostAffTracker.register();
+```
+
+If this option is disabled, two separate `sale` objects are created and sent, as shown:
+
+```javascript
+var sale = PostAffTracker.createSale();
+sale.setTotalCost('20.9');
+sale.setFixedCost('20.50');
+sale.setOrderID('1234');
+sale.setProductID('123');
+sale.setAffiliateID('aff_id');
+sale.setCampaignID('campaignId');
+sale.setChannelID('channelId');
+sale.setCoupon('ImagePro');
+sale.setCustomCommission('10.23');
+sale.setCustomCommissionNextTiersFromCampaign('Y');
+sale.setCurrency('EUR');
+sale.setStatus('A');
+sale.setData1('something');
+sale.setData2('something');
+sale.setData3('something');
+sale.setData4('something');
+sale.setData5('something');
+sale.doNotDeleteCookies();
+
+
+
+var sale2 = PostAffTracker.createSale();
+sale2.setTotalCost('3.45');
+sale2.setFixedCost('5.00');
+sale2.setOrderID('1234');
+sale2.setProductID('345');
+sale2.setAffiliateID('aff_id');
+sale2.setCampaignID('campaignId');
+sale2.setChannelID('channelId');
+sale2.setCoupon('ImagePro');
+sale2.setCustomCommission('10.23');
+sale2.setCustomCommissionNextTiersFromCampaign('Y');
+sale2.setCurrency('EUR');
+sale2.setStatus('A');
+sale2.setData1('something');
+sale2.setData2('something');
+sale2.setData3('something');
+sale2.setData4('something');
+sale2.setData5('something');
+sale2.doNotDeleteCookies();
+
+PostAffTracker.register();
+```
+
+## FAQs
+
+### Where do I get the Post Affiliate Pro URL?
+
+To get your Post Affiliate Pro URL, follow these steps:
+
+- Log into your Post Affiliate Pro merchant website.
+- Then, click on **Tools** and go to **Integration**.
+- Under **Main Integration Steps**, choose any one of the **Clicks tracking** or **Sales/Leads Tracking** options.
+- Finally, copy the `src` part as shown below: 
+
+<img src="../../assets/event-stream-destinations/pap-tracking-url.png" alt="Post Affiliate Pro tracking URL" />
+
+## Contact us
+
+If you come across any issues while configuring or using SendGrid with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
