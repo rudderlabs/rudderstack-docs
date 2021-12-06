@@ -296,15 +296,15 @@ If the advertising ID is set according to the associated docs, RudderStack will 
 
 If the `ATTrackingManager.trackingAuthorizationStatus` is passed according to [**this documentation**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#attrackingmanager-authorization-consent), RudderStack will utilize it for the AppsFlyer destination. It should be found in `context.device.attTrackingStatus`.
 
-## Error Messages
+## Error messages
 
 This section covers some of the possible error messages you may encounter while using this integration:
 
-### Invalid platform or required androidAppId or appleAppId missing
+### Invalid platform or required androidAppId or appleAppId missing.
 
 This error occurs when either the `OS Name` is not set or your respective App ID is not set. You can set the **App ID** in your settings \(see the [**Getting started**](https://rudderstack.com/docs/destinations/attribution/appsflyer/#getting-started) section above\). The `OS Name` should be set by the SDK automatically and it should be present at `context.os.name`.
 
-### Appsflyer id is not set. Rejecting the event
+### Appsflyer ID is not set. Rejecting the event.
 
 This error occurs when the `appsflyerExternalId` is not set. Refer to the [**Sending events via the RudderStack cloud mode**](https://rudderstack.com/docs/destinations/attribution/appsflyer/#sending-events-via-the-rudderstack-cloud-mode) section above to see how to properly set the `appsflyerExternalId`.
 
@@ -314,7 +314,7 @@ RudderStack sets the `logLevel` in AppsFlyer based on the `logLevel` set for the
 
 ## FAQs
 
-### Where do I get the AppsFlyer Dev Key?
+### Where do I get the AppsFlyer developer key?
 
 You can find the **AppsFlyer Dev Key** by logging into your AppsFlyer account and navigating to the **Apps Settings** page in your dashboard.
 
@@ -326,7 +326,7 @@ The latest AppsFlyer SDK requires XCode 12. Make sure you meet this requirement.
 pod 'Rudder-Appsflyer',' 1.0.0'
 ```
 
-### How do I get the `AppsFlyerId` to send events via cloud mode from my mobile sources?
+### How do I get the AppsFlyer ID to send events from my mobile sources via the RudderStack cloud mode?
 
 Depending on your platform of integration, include the following code snippet to get the `AppsFlyerId`:
 
