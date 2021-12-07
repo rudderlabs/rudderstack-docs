@@ -7,20 +7,20 @@ description: >-
 
 # Test API
 
-The RudderStack Test API lets you verify the event workflow of your configured sources and destinations via specific responses, without referring to the [**Live Events**](https://rudderstack.com/docs/get-started/live-events/) tab.
+The **RudderStack Test API** lets you verify the event workflow of your configured sources and destinations via specific responses, without referring to the [**Live Events**](https://rudderstack.com/docs/get-started/live-events/) tab.
 
 <div class="warningBlock">
 
-Since the Test API does not leverage the [**rudder-server**](https://github.com/rudderlabs/rudder-server) to send the test events, it is currently not supported for some destinations like Apache Kafka, Google Pub/Sub, Google Sheets, etc. For a complete list of the destinations not supported by the API, refer to the [**FAQ**](#faq) section below.
+  Since the Test API does not leverage the <a href="https://github.com/rudderlabs/rudder-server">rudder-server</a> to send the test events, it is currently not supported for some destinations like Apache Kafka, Google Pub/Sub, Google Sheets, etc. For a complete list of the destinations not supported by the API, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#faqs">FAQs</a> section below.
 </div>
 
 This guide details the various endpoints of the Test API.
 
 ## Prerequisites
 
-You must meet the following prerequisites to use the Test API successfully:
+The following prerequisites must be met to use the Test API successfully:
 
-* You need to set up a source-destination connection in RudderStack. For more details, refer to [**this guide**](../connections/adding-source-and-destination-rudderstack.md).
+* You need to set up a source-destination connection in RudderStack. For more details, refer to [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).
 
 * You need to generate a [**Personal Access Token**](https://rudderstack.com/docs/transformations/api-access-token/) to authenticate the API successfully.
 
@@ -30,7 +30,7 @@ The Test API uses **Basic Authentication** for authenticating all the requests.
 
 <div class="successBlock">
 
-All the popular HTTP clients \(e.g., CURL, Postman, HTTPie\) have default support for Basic Authentication.
+All the popular HTTP clients (e.g., CURL, Postman, HTTPie) have default support for Basic Authentication.
 </div>
 
 The Basic Authentication for this API requires a username and password, where:
@@ -46,15 +46,15 @@ Authorization: Basic bmFtZUBzdXJuYW1lLmNvbToxemw0R0prTHUwSHNCZHJESzg4TmdZWnpZMkU
 
 <div class="infoBlock">
 
-In case of the **Invalid Authorization Header** error, verify if the email address and the personal access token are valid.
+  In case of the <strong>Invalid Authorization Header</strong> error, verify if the email address and the personal access token are valid.
 </div>
 
 <div class="successBlock">
 
-You can use this [**Basic Authentication Header Generator**](https://www.blitter.se/utils/basic-authentication-header-generator/) to generate the HTTP header.
+  You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
 </div>
 
-## Verify destination events
+## Verifying destination events
 
 This request verifies if the test events are successfully transformed and delivered to the specified destination.
 
@@ -68,12 +68,11 @@ https://api.rudderstack.com/v0/testDestination/<destination_ID>
 
 Here, `<destination_ID>` should be replaced with the ID associated with the destination configured on the dashboard, as shown:
 
-<img src="https://user-images.githubusercontent.com/59817155/138080590-dc1c4059-223f-4d13-981f-9d37dcefbb2d.png" alt="Destination ID" />
-
+<img src="../assets/test-api-1.png" alt="Destination ID" />
 
 <div class="infoBlock">
 
-The `/testDestination` endpoint does not require a source to be connected to the specified destination.
+  The <code class="inline-code">/testDestination</code> endpoint does not require a source to be connected to the specified destination.
 </div>
 
 * **Request body**:
@@ -93,7 +92,7 @@ The `/testDestination` endpoint does not require a source to be connected to the
 
 <div class="infoBlock">
 
-  To know more about the `stage` object, refer to the [**Verification stages**](#verification-stages) section below.
+  To know more about the <code class="inline-code">stage</code> object, refer to the <strong>Verification stages</strong> section below.
 </div>
 
 * **Sample payload**:
@@ -112,6 +111,11 @@ The `/testDestination` endpoint does not require a source to be connected to the
     }
 }
 ```
+<div class="infoBlock">
+
+  For more information on the message <code class="inline-code">type</code>, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types/">Supported message types</a> section below.
+</div>
+
 
 * **Sample request**:
 
@@ -129,6 +133,11 @@ curl --location --request POST 'https://api.rudderstack.com/v0/testDestination/1
         },
         "type": "identify",
         "userId": "abc@123.com"
+    },
+    "stage": {
+        "user_transform": true,
+        "dest_transform": true,
+        "dest_response": true
     }
 }'
 ```
@@ -137,41 +146,56 @@ curl --location --request POST 'https://api.rudderstack.com/v0/testDestination/1
 
 ```json
 {
-  "destinationId": "1zl4i0J8M8T7sozoLnueW46RVYe",
-  "destination": "WEBHOOK",
-  "destinationName": "test-webhook-dest",
-  "data": [{
-    "user_transformed_payload": {
-      "error": "Transformation VersionID not found"
-    },
-    "dest_transformed_payload": {
-      "version": "1",
-      "type": "REST",
-      "method": "POST",
-      "endpoint": "https://webhook.site/9d5e3e43-6c2b-4b84-be9f-0147347b4cdf",
-      "headers": {
-        "content-type": "application/json"
-      },
-      "params": {},
-      "body": {
-        "JSON": {
-          "context": {
-            "traits": {
-              "firstName": "James",
-              "lastName": "Doe"
-            }
-          },
-          "type": "identify",
-          "userId": "abc@123.com"
-        },
-        "XML": {},
-        "FORM": {}
-      },
-      "files": {}
-    },
-    "destination_response": "",
-    "destination_response_status": 200
-  }]
+    "destinationId": "1zl4i0J8M8T7sozoLnueW46RVYe",
+    "destination": "WEBHOOK",
+    "destinationName": "test-webhook-dest",
+    "data": [
+        {
+            "user_transformed_payload": {
+                "error": "Transformation VersionID not found"
+            },
+            "dest_transformed_payload": [
+                {
+                    "version": "1",
+                    "type": "REST",
+                    "method": "POST",
+                    "endpoint": "https://webhook.site/9d5e3e43-6c2b-4b84-be9f-0147347b4cdf",
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "params": {},
+                    "body": {
+                        "JSON": {
+                            "context": {
+                                "traits": {
+                                    "firstName": "James",
+                                    "lastName": "Doe"
+                                }
+                            },
+                            "type": "identify",
+                            "userId": "abc@123.com"
+                        },
+                        "JSON_ARRAY": {},
+                        "XML": {},
+                        "FORM": {}
+                    },
+                    "files": {}
+                }
+            ],
+            "destination_response": [
+                {
+                    "success": false,
+                    "error": {
+                        "message": "Token not found",
+                        "id": null
+                    }
+                }
+            ],
+            "destination_response_status": [
+                404
+            ]
+        }
+    ]
 }
 ```
 
@@ -203,7 +227,7 @@ To override this behavior and send the event to a disabled destination, you can 
 https://api.rudderstack.com/v0/testDestination/<destination_ID>?force=true
 ```
 
-## Verify source events
+## Verifying source events
 
 This request verifies if the test events are successfully sent from the specified source and delivered to all the connected destinations.
 
@@ -217,16 +241,16 @@ https://api.rudderstack.com/v0/testSource/<source_ID>
 
 Here, `<source_ID>` should be replaced with the ID associated with the source configured on the dashboard, as shown:
 
-<img src="https://user-images.githubusercontent.com/59817155/138089903-6a58af1c-2a7d-402e-a354-97be11a7a425.png" alt="Source ID" />
+<img src="../assets/test-api-2.png" alt="Source ID" />
 
 <div class="infoBlock">
 
-The `/testSource` endpoint requires the specified source to be connected to at least one destination.
+  The <code class="inline-code">/testSource</code> endpoint requires the specified source to be connected to at least one destination.
 </div>
 
 <div class="successBlock">
-
-The `/testSource` endpoint essentially calls the `/testDestination` endpoint for each destination connected to that source and returns an array of responses.
+  
+  The <code class="inline-code">/testSource</code> endpoint essentially calls the <code class="inline-code">/testDestination</code> endpoint for each destination connected to that source and returns an array of responses.
 </div>
 
 * **Request body**:
@@ -245,7 +269,7 @@ The `/testSource` endpoint essentially calls the `/testDestination` endpoint for
 ```
 <div class="infoBlock">
 
-  To know more about the `stage` object, refer to the [**Verification stages**](#verification-stages) section below.
+  To know more about the <code class="inline-code">stage</code> object, refer to the <strong>Verification stages</strong> section below.
 </div>
 
 * **Sample payload**:
@@ -265,6 +289,11 @@ The `/testSource` endpoint essentially calls the `/testDestination` endpoint for
 }
 ```
 
+<div class="infoBlock">
+
+  For more information on the message <code class="inline-code">type</code>, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types/">Supported message types</a> section below.
+</div>
+
 * **Sample request**:
 
 ```curl
@@ -281,6 +310,11 @@ curl --location --request POST 'https://api.rudderstack.com/v0/testSource/1zlmsB
         },
         "type": "identify",
         "userId": "abc@123.com"
+    },
+    "stage": {
+        "user_transform": true,
+        "dest_transform": true,
+        "dest_response": true
     }
 }'
 ```
@@ -288,93 +322,130 @@ curl --location --request POST 'https://api.rudderstack.com/v0/testSource/1zlmsB
 * **Expected response**:
 
 ```json
-[{
-    "destinationId": "1tIgXcaRnQDlBBtxlJMGGHFUWGb",
-    "destinationName": "salesforce",
-    "error": "Destination with id 1tIgXcaRnQDlBBtxlJMGGHFUWGb is disabled"
-  },
-  {
-    "destinationId": "1zl4i0J8M8T7sozoLnueW46RVYe",
-    "destination": "WEBHOOK",
-    "destinationName": "test-webhook-dest",
-    "data": [{
-      "user_transformed_payload": {
-        "error": "Transformation VersionID not found"
-      },
-      "dest_transformed_payload": {
-        "version": "1",
-        "type": "REST",
-        "method": "POST",
-        "endpoint": "https://webhook.site/9d5e3e43-6c2b-4b84-be9f-0147347b4cdf",
-        "headers": {
-          "content-type": "application/json"
-        },
-        "params": {},
-        "body": {
-          "JSON": {
-            "context": {
-              "traits": {
-                "firstName": "James",
-                "lastName": "Doe"
-              }
-            },
-            "type": "identify",
-            "userId": "abc@123.com"
-          },
-          "XML": {},
-          "FORM": {}
-        },
-        "files": {}
-      },
-      "destination_response": "",
-      "destination_response_status": 200
-    }]
-  },
-  {
-    "destinationId": "1tKpO0kantcKjd5czXVD1cdwUBE",
-    "destination": "MARKETO",
-    "destinationName": "Marketo",
-    "data": [{
-      "user_transformed_payload": {
-        "error": "Transformation VersionID not found"
-      },
-      "dest_transformed_payload": {
-        "version": "1",
-        "type": "REST",
-        "method": "POST",
-        "endpoint": "https://585-AXP-425.mktorest.com/rest/v1/leads.json",
-        "headers": {
-          "Authorization": "Bearer c0e79df2-55ed-4d3e-b358-3d9bfc2785cf:ab",
-          "Content-Type": "application/json"
-        },
-        "params": {},
-        "body": {
-          "JSON": {
-            "action": "createOrUpdate",
-            "input": [{
-              "FirstName": "James",
-              "LastName": "Doe",
-              "lastName": "Doe",
-              "firstName": "James",
-              "id": 1328262,
-              "userId": "abc@123.com"
-            }],
-            "lookupField": "id"
-          },
-          "XML": {},
-          "FORM": {}
-        },
-        "files": {}
-      },
-      "destination_response_status": 200
-    }]
-  }
+[
+    {
+        "destinationId": "1tIgXcaRnQDlBBtxlJMGGHFUWGb",
+        "destinationName": "salesforce",
+        "error": "Destination with id 1tIgXcaRnQDlBBtxlJMGGHFUWGb is disabled"
+    },
+    {
+        "destinationId": "1zl4i0J8M8T7sozoLnueW46RVYe",
+        "destination": "WEBHOOK",
+        "destinationName": "test-webhook-dest",
+        "data": [
+            {
+                "user_transformed_payload": {
+                    "error": "Transformation VersionID not found"
+                },
+                "dest_transformed_payload": [
+                    {
+                        "version": "1",
+                        "type": "REST",
+                        "method": "POST",
+                        "endpoint": "https://webhook.site/9d5e3e43-6c2b-4b84-be9f-0147347b4cdf",
+                        "headers": {
+                            "content-type": "application/json"
+                        },
+                        "params": {},
+                        "body": {
+                            "JSON": {
+                                "context": {
+                                    "traits": {
+                                        "firstName": "James",
+                                        "lastName": "Doe"
+                                    }
+                                },
+                                "type": "identify",
+                                "userId": "abc@123.com"
+                            },
+                            "JSON_ARRAY": {},
+                            "XML": {},
+                            "FORM": {}
+                        },
+                        "files": {}
+                    }
+                ],
+                "destination_response": [
+                    {
+                        "success": false,
+                        "error": {
+                            "message": "Token not found",
+                            "id": null
+                        }
+                    }
+                ],
+                "destination_response_status": [
+                    404
+                ]
+            }
+        ]
+    },
+    {
+        "destinationId": "1tKpO0kantcKjd5czXVD1cdwUBE",
+        "destination": "MARKETO",
+        "destinationName": "Marketo",
+        "data": [
+            {
+                "user_transformed_payload": {
+                    "error": "Transformation VersionID not found"
+                },
+                "dest_transformed_payload": [
+                    {
+                        "version": "1",
+                        "type": "REST",
+                        "method": "POST",
+                        "endpoint": "https://585-AXP-425.mktorest.com/rest/v1/leads.json",
+                        "headers": {
+                            "Authorization": "Bearer f96f0384-583b-4718-b8a3-38aaed4bc5ae:ab",
+                            "Content-Type": "application/json"
+                        },
+                        "params": {},
+                        "body": {
+                            "JSON": {
+                                "action": "createOrUpdate",
+                                "input": [
+                                    {
+                                        "FirstName": "James",
+                                        "LastName": "Doe",
+                                        "lastName": "Doe",
+                                        "firstName": "James",
+                                        "id": 1328262,
+                                        "userId": "abc@123.com"
+                                    }
+                                ],
+                                "lookupField": "id"
+                            },
+                            "JSON_ARRAY": {},
+                            "XML": {},
+                            "FORM": {}
+                        },
+                        "files": {}
+                    }
+                ],
+                "destination_response": [
+                    {
+                        "requestId": "555d#17d31b0a392",
+                        "result": [
+                            {
+                                "id": 1328262,
+                                "status": "updated"
+                            }
+                        ],
+                        "success": true
+                    }
+                ],
+                "destination_response_status": [
+                    200
+                ]
+            }
+        ]
+    }
 ]
 ```
 
 The above response indicates that the source with the source ID `1zlmsBMe1dcPbu3u6NTZFUFBrNQ` is connected to three destinations: 
 
-* Salesforce, which is a disabled destination
+* Salesforce, a disabled destination
 * Webhook, with no transformation specified in the dashboard, and
 * Marketo
 
@@ -476,7 +547,7 @@ If `dest_transform` is set to `true`, the API returns the transformer response. 
 A sample API response when `dest_transform` is set to `true` is shown below:
 
 ```json
-"dest_transformed_payload": {
+"dest_transformed_payload": [{
   "version": "1",
   "type": "REST",
   "method": "POST",
@@ -500,7 +571,7 @@ A sample API response when `dest_transform` is set to `true` is shown below:
     "FORM": {}
   },
   "files": {}
-}
+}]
 ```
 
 Consider the following scenario:
@@ -527,12 +598,39 @@ When `dest_response` is set to `true`, the API returns the destination's respons
 A sample API response when `dest_response` is set to `true` is shown below:
 
 ```json
-"destination_response": {
+"destination_response": [{
   "status": "success",
   "processed": 1,
   "unprocessed": []
-},
-"destination_response_status": 200
+}],
+"destination_response_status": [200]
+```
+
+## Supported message types
+
+The Test API supports the following message `type`:
+
+* `identify`
+* `track`
+* `page`
+* `screen`
+* `group`
+* `alias`
+
+If you specify any other message `type` apart from the supported events mentioned in the above list, you will get the following error:
+
+```json
+{
+    "message": "message type is unsupported"
+}
+```
+
+You will get the following error message if no message `type` is specified in the payload, or if `type` is not a string:
+
+```json
+{
+    "message": "message type missing or invalid"
+}
 ```
 
 ## FAQs
@@ -552,17 +650,32 @@ The Test API does not support the destinations that leverage the [**rudder-serve
 * Google Sheets
 * Redis
 
-The Test API also does not support the [**data warehouse destinations**](https://rudderstack.com/docs/data-warehouse-integrations/).
+<div class="warningBlock">
+  
+  The Test API also does not support the <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouse destinations</a>.
+</div>
 
 ### What happens if `type` is not included in the event payload?
 
-If `type` is missing in the event payload, the API will return the following error:
+Simply put, `type` refers to the event type in the payload.
+
+* If `type` is missing in the event payload, the API will return the following error:
 
 ```json
 {
-    "error": "type is missing from message"
+    "message": "message type missing or invalid"
 }
 ```
+
+* If you set `type` to any value other than `identify`, `track`, `page`, `screen`, `group`, or `alias`, the API will return the following error:
+
+```json
+{
+    "message": "message type is unsupported"
+}
+```
+
+For more information, refer to the [**Supported message types**](https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types/) section above.
 
 ### Can I disable a particular verification stage in the `stage` object?
 
@@ -596,7 +709,7 @@ To disable or a specific verification stage, you can set the value of that param
 
 <div class="infoBlock">
 
-  Refer to the [**Verification stages**](#verification-stages) section above for more information on each of the `stage` object parameters.
+  Refer to the <strong>Verification stages</strong> section above for more information on each of the <code class="inline-code">stage</code> object parameters.
 </div>
 
 ## Contact us
