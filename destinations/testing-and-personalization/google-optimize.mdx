@@ -41,10 +41,62 @@ Once you have confirmed that your source platform supports sending events to Goo
 
 The connection settings required to configure Google Optimize as a destination in RudderStack are listed below:
 
-* 
+* **Load Google Analytics**: If you have the Google Analytics snippet already installed on your website, RudderStack will load it if this setting is enabled.
 
+* **Tracking ID**: If you have enabled the **Load Google Analytics** option, enter the corresponding tracking ID here.
 
+<div class="infoBlock">
+ 
+For more information on where to find the Google Analytics tracking ID, refer to the <a href="https://rudderstack.com/docs/destination/testing-and-personalization/google-optimize/#faqs">FAQs</a> section below.
+</div>
 
+* **Container ID**: Enter your Google Optimize container ID here. 
+
+<div class="infoBlock">
+ 
+You can find the Container ID by going to the <strong>User Settings</strong> option in your <a href="https://optimize.google.com/optimize/home/#/accounts">Google Optimize dashboard</a>.
+</div>
+
+<img src="../../assets/event-stream-destinations/google-optimize-container-id.png" alt="Google Optimize container ID" />
+
+* **Async mode**: Enable this setting to use the asynchronous version of Google Optimize.
+
+<div class="successBlock">
+ 
+We recommend enabling this setting if you want your pages to load faster and if your target visitors are likely to be on slow connections (3G or slower). For experimentation purposes, this setting should be <strong>disabled</strong>.
+</div>
+
+<div class="infoBlock">
+ 
+Refer to this <a href="https://support.google.com/optimize/answer/7513085?hl=en&ref_topic=6197443">Optimize support page</a> to know more about the differences between the synchronous and asynchronous versions of Google Optimize.
+</div>
+
+* **Anti-flicker snippet**: Enable this setting to install the anti-flicker snippet. 
+
+<div class="warningBlock">
+ 
+Enabling this setting can impact the page performance. Refer to this <a href="https://support.google.com/optimize/answer/7100284">support page</a> for more information on the anti-flicker snippet.
+</div>
+
+* As this is a destination that supports sending events only via the web device mode, the **Use device mode to send events** option will be always enabled.
+
+Finally, click on **Next** to complete the setup. Google Optimize will now be enabled as a destination in RudderStack.
+
+## FAQs
+
+### Where do I get the Google Analytics tracking ID?
+
+To get the Google Analytics tracking ID, follow these steps:
+
+1. Go to the **Admin** section of your [**Google Analytics account**](https://analytics.google.com/analytics/web/#/) in the bottom left corner.
+2. Then, select an account in the **Account** column, followed by a property in the **Property** column.
+3. Under **Property**, click on **Tracking Info** - **Tracking Code**. Your tracking ID will be displayed at the top of the resulting page.
+
+<img src="../../assets/event-stream-destinations/google-optimize-ga-tracking-id.png" alt="Google Analytics tracking ID" />
+
+### How do I link Google Optimize with Google Analytics?
+
+To link your Google Optimize container to a Google Analytics property or view, you can refer to this [**support page**](https://support.google.com/optimize/answer/7008374?hl=en&ref_topic=7310368).
 
 ## Contact us
 
