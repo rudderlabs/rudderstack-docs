@@ -172,26 +172,7 @@ RudderStack maps the following properties to the Post Affiliate Pro click event 
 
 ### Sales tracking
 
-In case of sales tracking, RudderStack creates a Post Affiliate Pro `sale` object. For the properties in the event, RudderStack then calls the following functions of this object:
-
-| **Event Property** | **Sale Object Function** |
-|:---------------------|:--------------------------|
-| `total`                         | `setTotalCost`                   |
-| `fixedCost`                |  `setFixedCost`                  |
-| `order_id`                  | `setOrderID`                      |
-| `data1`                        | `setData1`                          |
-| `data2`                       | `setData2`                          |
-| `data3`                       | `setData3`                          |
-| `data4`                       | `setData4`                          |
-| `data5`                        | `setData5`                          |
-| `status`                        | `setStatus`                         |
-| `currency`                    | `setCurrency`                    |
-| `customCommission`  | `setCustomCommission`  |
-| `channel`                      | `setChannelID`                  |
-| `coupon`                      | `setCoupon`                       |
-| `campaignId`               | `setCampaignID`                |
-| `affiliateId`                    | `setAffiliateID`                    |
-| `product_id`                 | `setProductID`                    |
+In case of sales tracking, RudderStack creates a Post Affiliate Pro `sale` object. For the properties in the event, RudderStack then calls the respective `sale` object function.
 
 A sample `Order Completed` event sent to Post Affiliate Pro sales tracking is shown below:
 
@@ -249,80 +230,13 @@ rudderanalytics.track(
 );
 ```
 
-When the **Merge Products** option is enabled while configuring the destination in the dashboard, RudderStack merges the product information and sends the `sale` object as shown below:
+When the **Merge Products** option is enabled while configuring the destination in the dashboard, RudderStack merges the product information and sends the `sale` object as seen in the Post Affiliate Pro dashboard below:
 
-```javascript
-var sale = PostAffTracker.createSale();
-sale.setTotalCost('17.45');
-sale.setFixedCost('20.50');
-sale.setOrderID('1234');
-sale.setProductID('123,345');
-sale.setAffiliateID('aff_id');
-sale.setCampaignID('campaignId');
-sale.setChannelID('channelId');
-sale.setCoupon('ImagePro');
-sale.setCustomCommission('15');
-sale.setCustomCommissionNextTiersFromCampaign('Y');
-sale.setCurrency('EUR');
-sale.setStatus('A');
-sale.setData1('something');
-sale.setData2('something');
-sale.setData3('something');
-sale.setData4('something');
-sale.setData5('something');
-sale.doNotDeleteCookies();
+<img src="../../assets/event-stream-destinations/pap-mergeproduct-true.png" alt="Post Affiliate Pro sale object with combined product information" />
 
+If this option is disabled, two separate `sale` objects are created and sent to Post Affiliate Pro, as shown:
 
-PostAffTracker.register();
-```
-
-If this option is disabled, two separate `sale` objects are created and sent, as shown:
-
-```javascript
-var sale = PostAffTracker.createSale();
-sale.setTotalCost('20.9');
-sale.setFixedCost('20.50');
-sale.setOrderID('1234');
-sale.setProductID('123');
-sale.setAffiliateID('aff_id');
-sale.setCampaignID('campaignId');
-sale.setChannelID('channelId');
-sale.setCoupon('ImagePro');
-sale.setCustomCommission('10.23');
-sale.setCustomCommissionNextTiersFromCampaign('Y');
-sale.setCurrency('EUR');
-sale.setStatus('A');
-sale.setData1('something');
-sale.setData2('something');
-sale.setData3('something');
-sale.setData4('something');
-sale.setData5('something');
-sale.doNotDeleteCookies();
-
-
-
-var sale2 = PostAffTracker.createSale();
-sale2.setTotalCost('3.45');
-sale2.setFixedCost('5.00');
-sale2.setOrderID('1234');
-sale2.setProductID('345');
-sale2.setAffiliateID('aff_id');
-sale2.setCampaignID('campaignId');
-sale2.setChannelID('channelId');
-sale2.setCoupon('ImagePro');
-sale2.setCustomCommission('10.23');
-sale2.setCustomCommissionNextTiersFromCampaign('Y');
-sale2.setCurrency('EUR');
-sale2.setStatus('A');
-sale2.setData1('something');
-sale2.setData2('something');
-sale2.setData3('something');
-sale2.setData4('something');
-sale2.setData5('something');
-sale2.doNotDeleteCookies();
-
-PostAffTracker.register();
-```
+<img src="../../assets/event-stream-destinations/pap-mergeproduct-false.png" alt="Post Affiliate Pro separate sale objects" />
 
 ## FAQs
 
@@ -330,10 +244,10 @@ PostAffTracker.register();
 
 To get your Post Affiliate Pro URL, follow these steps:
 
-- Log into your Post Affiliate Pro merchant website.
-- Then, click on **Tools** and go to **Integration**.
-- Under **Main Integration Steps**, choose any one of the **Clicks tracking** or **Sales/Leads Tracking** options.
-- Finally, copy the `src` part as shown below: 
+1. Log into your Post Affiliate Pro merchant website.
+2. Then, click on **Tools** and go to **Integration**.
+3. Under **Main Integration Steps**, choose any one of the **Clicks tracking** or **Sales/Leads Tracking** options.
+4. Finally, copy the `src` part as shown below: 
 
 <img src="../../assets/event-stream-destinations/pap-tracking-url.png" alt="Post Affiliate Pro tracking URL" />
 
