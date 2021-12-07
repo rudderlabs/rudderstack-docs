@@ -198,6 +198,7 @@ Make sure the <code class="inline-code">minSdkVersion</code> of your <code class
     <Tab>iOS</Tab>
     <Tab>React Native</Tab>
     <Tab>Flutter</Tab>
+    <Tab>Cordova</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -361,9 +362,55 @@ Make sure the <code class="inline-code">minSdkVersion</code> of your <code class
 </div>
 </li>
 </ul>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
+     </TabPanel>
+       <TabPanel>
+        To add App Center to your Cordova project, follow these steps:
+<ul>
+<li>Navigate to the root folder of your application and run the following command::
+<span>
+
+```bash
+cordova plugin add rudder-integration-appcenter-cordova
+```
+</span>
+</li>
+<li>Add the platforms that you want to target for your app:
+<span>
+
+```bash
+cordova platform add ios
+cordova platform add android
+```
+</span>
+</li>
+<li>Run the following command to build the project for all the platforms:
+<span>
+
+```bash
+cordova build
+```
+</span>
+</li>
+<li>Add the following code in the <code class="inline-code">onDeviceReady()</code> function of your home page to initialize the SDK, as shown:
+<span>
+
+```javascript
+RudderClient.initialize(WRITE_KEY , {
+  dataPlaneUrl: DATA_PLANE_URL,
+  factories: [RudderAppsflyerFactory]
+})
+```
+</span>
+
+<div class="infoBlock">
+
+Make sure to use the <code class="inline-code">await</code> keyword with the <code class="inline-code">initialize</code> call.
+</div>
+</li>
+</ul>
+     </TabPanel>
+   </TabPanels>
+  </Tabs>
 
 ## Track
 
