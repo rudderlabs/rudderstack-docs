@@ -8,51 +8,33 @@ description: >-
 
 # Android
 
-## What is the RudderStack Android SDK?
+The **RudderStack Android SDK** lets you track event data from your Android applications and send it to your specified destinations via RudderStack.
 
-The RudderStack Android SDK allows you to track event data from your app. It can be easily integrated into your Android application. After integrating this SDK, you will also be able to send the event data to your preferred analytics destination/s such as Google Analytics, Amplitude, and more.
-
-You can check the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-android) if you want to get more hands-on or keen to know the SDK architecture.
+You can check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-android) to get more a hands-on understanding of the SDK and its architecture.
 
 <img src="https://img.shields.io/maven-central/v/com.rudderstack.android.sdk/core.svg?label=Maven%20Central" alt="Github Badge" class="githubBadge"/>
 
-## SDK Setup Requirements
+## SDK setup requirements
 
-To set up the RudderStack Android SDK, there are a few prerequisites as mentioned below:
+To set up the RudderStack Android SDK, the following prerequisites must be met:
 
-- You will need to set up a [RudderStack Account](https://app.rudderlabs.com).
-- Once signed up, your `Android` source `writeKey` will appear in the Dashboard, as shown:
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up an Android source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
 
-<img src="../../../assets/android-1.png" alt="writeKey" />
-<span class="imageTitle">Android source WriteKey after adding the source</span>
+<img src="../../../assets/event-stream-sources/android-sdk-1.png" alt="Android source write key" />
 
-- You will also need your Data Plane URL. Simply put, the Data Plane URL is used to connect to the RudderStack backend for processing and routing your events.
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
-<div class="infoBlock">
-
-To get the **Data Plane URL**:
-<ul><li>
-If you're using the <strong>
-open-source</strong> version of RudderStack, you are required to set up your own data plane by <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/">installing and setting up RudderStack</a> in your preferred dev environment.
-</li>
-<li>
-If you're using the <strong>
-enterprise</strong> version of RudderStack, please contact us for the data plane URL with the email ID used to sign up for RudderStack.
-</li>
-</ul>
-</div>
-
-- You will also need to install [Android Studio](https://developer.android.com/studio) on your system.
+- Finally, you will also need to install [**Android Studio**](https://developer.android.com/studio) on your system.
 
 ## Installing the SDK
 
 <div class="infoBlock">
 
-**As Bintray has a sunset from 1st may, we're moving our SDK to Maven Central". All the versions, 1.0.10 onwards are available in Maven Central only.**
-
+<strong>As Bintray has sunset from 1st May, we're moving the Android SDK to Maven Central. All the versions from 1.0.10 are available in Maven Central only.</strong>
 </div>
 
-We distribute our Android SDK through [Maven Central](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Android Gradle build system.
+We distribute the Android SDK through [**Maven Central**](https://search.maven.org). The recommended and easiest way to add the SDK to your project is through the Android Gradle build system.
 
 Follow these steps:
 
@@ -145,7 +127,7 @@ Add this line to your `AndroidManifest.xml` file of your application for `intern
 
 We also declare `android.permission.BLUETOOTH` and `android.permission.ACCESS_WIFI_STATE` as optional by mentioning `required="false"` . If we get these permissions, we'll capture the Bluetooth status and the WiFi status of the device and pass it under `context.network`.
 
-## Initializing the RudderStack Client
+## Initializing the RudderStack client
 
 Import the library on the classes you desire to use `RudderClient` library
 
@@ -157,43 +139,8 @@ Add the following code to the `onCreate` method in your `Application` class:
 
 <div class="infoBlock">
 
-Don't have an <code class="inline-code">Application</code> class? Follow our guide on <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application">Adding an Application Class to Your Android Application</a> to add one.
-
+Follow our guide on <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application">Adding an Application Class to Your Android Application</a> for more information.
 </div>
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-val rudderClient = RudderClient.getInstance(
-    this,
-    WRITE_KEY,
-    RudderConfig.Builder()
-        .withDataPlaneUrl(DATA_PLANE_URL)
-        .withTrackLifecycleEvents(true)
-        .withRecordScreenViews(true)
-        .build()
-)
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-RudderClient rudderClient = RudderClient.getInstance(
-        this,
-        WRITE_KEY,
-        new RudderConfig.Builder()
-                .withDataPlaneUrl(DATA_PLANE_URL)
-                .withTrackLifecycleEvents(true)
-                .withRecordScreenViews(true)
-                .build()
-);
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -249,47 +196,13 @@ You can disable these events using the <code class="inline-code">withTrackLifecy
 
 </div>
 
-## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+## Enabling/disabling user tracking via the optOut API \(GDPR Support\)
 
 RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
 
 The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
 
 The following snippet highlights the use of the `optOut` API to disable user tracking:
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-```kotlin
-rudderClient.optOut(true)
-```
-{% endtab %}
-
-{% tab title="JAVA" %}
-```java
-rudderClient.optOut(true);
-```
-{% endtab %}
-{% endtabs %}
-
-Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
-
-{% tabs %}
-{% tab title="Kotlin" %}
-```kotlin
-rudderClient.optOut(false)
-```
-{% endtab %}
-
-{% tab title="JAVA" %}
-```java
-rudderClient.optOut(false);
-```
-{% endtab %}
-{% endtabs %}
-
-{% hint style="info" %}
-The `optOut` API is available in the RudderStack Android SDK from version `1.0.21`.
-{% endhint %} -->
 
 <Tabs>
   <TabList>
@@ -350,35 +263,9 @@ The `optOut` API is available in the RudderStack Android SDK from version `1.0.2
 
 ## Track
 
-You can record the users' activity through the `track` method. Every action performed by the user is called an event.
+You can record the users' activity through the `track` method. Every user action is called an **event**.
 
-An example of the `track` event is as shown:
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-rudderClient.track(
-    "Product Added",
-    RudderProperty()
-        .putValue("product_id", "product_001")
-)
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-rudderClient.track(
-        "Product Added",
-        new RudderProperty()
-                .putValue("product_id", "product_001")
-);
-```
-
-{% endtab %}
-{% endtabs %}-->
+A sample `track` event is as shown below:
 
 <Tabs>
   <TabList>
@@ -428,68 +315,9 @@ We capture `deviceId` and use that as `anonymousId` for identifying the user. It
 <div class="infoBlock">
 
 On the Android devices, the <code class="inline-code">deviceId</code> is assigned during the first boot. It remains consistent across the applications and installs. It changes only after factory reset.
-
 </div>
 
-An example `identify` event is as shown:
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-val traits = RudderTraits()
-traits.putBirthday(Date())
-traits.putEmail("abc@123.com")
-traits.putFirstName("First")
-traits.putLastName("Last")
-traits.putGender("m")
-traits.putPhone("5555555555")
-
-val address = RudderTraits.Address()
-address.putCity("City")
-address.putCountry("USA")
-traits.putAddress(address)
-
-traits.put("boolean", Boolean.TRUE)
-traits.put("integer", 50)
-traits.put("float", 120.4f)
-traits.put("long", 1234L)
-traits.put("string", "hello")
-traits.put("date", Date(System.currentTimeMillis()))
-
-rudderClient.identify("test_user_id", traits, null)
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-RudderTraits traits = new RudderTraits();
-traits.putBirthday(new Date());
-traits.putEmail("abc@123.com");
-traits.putFirstName("First");
-traits.putLastName("Last");
-traits.putGender("m");
-traits.putPhone("5555555555");
-
-RudderTraits.Address address = new RudderTraits.Address();
-address.putCity("City");
-address.putCountry("USA");
-traits.putAddress(address);
-
-traits.put("boolean", Boolean.TRUE);
-traits.put("integer", 50);
-traits.put("float", 120.4f);
-traits.put("long", 1234L);
-traits.put("string", "hello");
-traits.put("date", new Date(System.currentTimeMillis()));
-
-rudderClient.identify("test_user_id", traits, null;
-```
-
-{% endtab %}
-{% endtabs %}-->
+An sample `identify` event is as shown:
 
 <Tabs>
   <TabList>
@@ -571,34 +399,6 @@ You can use the `screen` call to record whenever the user sees a screen on the m
 
 An example of the `screen` event is as shown:
 
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-rudderClient.screen(
-    "MainActivity",
-    "HomeScreen",
-    RudderProperty().putValue("foo", "bar"),
-    null
-)
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-rudderClient.screen(
-    "MainActivity",
-    "HomeScreen",
-    new RudderProperty().putValue("foo", "bar"),
-    null
-);
-```
-
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>Kotlin</Tab>
@@ -647,34 +447,6 @@ Follow the method signature below:
 
 The `group` call associates a user to a specific organization. A sample `group` call for the API is below:
 
-<!-- {% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-rudderClient.group(
-    "sample_group_id",
-    RudderTraits().putAge("24")
-        .putName("Test Group Name")
-        .putPhone("1234567891")
-)
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-rudderClient.group(
-    "sample_group_id",
-    new RudderTraits().putAge("24")
-        .putName("Test Group Name")
-        .putPhone("1234567891")
-);
-```
-
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>Kotlin</Tab>
@@ -719,29 +491,14 @@ Follow the method signatures below:
 | `traits`  | `RudderTraits` | No       | Any other property of the organization you want to pass along with the call |
 | `options` | `RudderOption` | No       | Event level options                                                         |
 
-We don't persist the traits for the group across the sessions
+<div class="infoBlock">
+
+RudderStack doesn't persist the traits for the group across the sessions.
+</div>
 
 ## Alias
 
 The `alias` call associates the user with a new identification. A sample `alias` call for the API is below:
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-rudderClient.alias("test_new_id")
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-rudderClient.alias("test_new_id");
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -781,24 +538,6 @@ We replace the old `userId` with the `newUserId` and we persist that identificat
 
 You can use the `reset` method to clear the persisted `traits` for the `identify` call. This is required for `Logout` operations.
 
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-rudderClient.reset()
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-rudderClient.reset();
-```
-
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>Curl</Tab>
@@ -824,7 +563,7 @@ rudderClient.reset();
     </TabPanels>
 </Tabs>
 
-## Configuring your RudderStack Client
+## Configuring your RudderStack client
 
 You can configure your client based on the following parameters using `RudderConfig.Builder`:
 
@@ -835,12 +574,12 @@ You can configure your client based on the following parameters using `RudderCon
 | `flushQueueSize`        | `int`     | Number of events in a batch request to the server.                                                                                                                                                                                                | `30`                                                     |
 | `dbThresholdCount`      | `int`     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                                                                                                                           | `10000`                                                  |
 | `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server.                                                                                                                                                                                           | `10 seconds`                                             |
-| `configRefreshInterval` | `int`     | It will fetch the config from `dashboard` after this many hours.                                                                                                                                                                                  | `2`                                                      |
+| `configRefreshInterval` | `int`     | It will fetch the config from `dashboard` after the specified time                                                                                                                                                                                 | `2 hours`                                                      |
 | `trackLifecycleEvents`  | `boolean` | Whether SDK will capture application life cycle events automatically.                                                                                                                                                                             | `true`                                                   |
 | `recordScreenViews`     | `boolean` | Whether SDK will capture screen view events automatically.                                                                                                                                                                                        | `false`                                                  |
 | `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 
-### Self-Hosted Control Plane
+### Self-hosted control plane
 
 If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
 
@@ -849,7 +588,7 @@ You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> paramete
 
 </div>
 
-## Setting Android Device Token
+## Setting the Android device token
 
 You can set your `device-token` for push notification to be sent to the destinations that support Push Notification. We set the `token` under `context.device.token`.
 
@@ -886,7 +625,7 @@ We collect the `advertisementId` if it is enabled by the user and the App has th
 
 Apart from it, if you want to set the `advertisingId` by yourself, you can do so using the `putAdvertisingId` method and passing the `advertisingId`.
 
-An example of setting the `advertisingId` is as below
+An example of setting the `advertisingId` is as below:
 
 ```java
 RudderClient.putAdvertisingId(<ADVERTISING_ID>);
@@ -896,13 +635,13 @@ RudderClient.putAdvertisingId(<ADVERTISING_ID>);
 
 We use the `deviceId` as `anonymousId` by default. You can use the following method to override and use your own `anonymousId` with the SDK.
 
-An example of setting the `anonymousId` is as below
+An example of setting the `anonymousId` is shown below:
 
 ```java
 RudderClient.putAnonymousId(<ANONYMOUS_ID>);
 ```
 
-To retrieve the `anonymousId` you can use the following method:
+To retrieve the `anonymousId`, you can use the following method:
 
 ```java
 RudderClient.getAnonymousId();
@@ -914,43 +653,9 @@ The method <code class="inline-code">getAnonymousId</code> is available from v1.
 
 </div>
 
-## Enabling / Disabling Events for Specific Destinations
+## Enabling/disabling events for specific destinations
 
 The RudderStack Android SDK allows you to enable or disable event flow to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating a `RudderOption` object as shown:
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-val option = RudderOption()
-//default value for `All` is true
-option.putIntegration("All", false)
-// specifying destination by its display name
-option.putIntegration("Google Analytics", true)
-option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>)
-// specifying destination by its Factory object
-option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
-option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
-```
-
-{% endtab %}
-
-{% tab title="Java" %}
-
-```java
-RudderOption option = new RudderOption();
-// default value for `All` is true
-option.putIntegration("All", false);
-// specifying destination by its display name
-option.putIntegration("Google Analytics", true);
-option.putIntegration(<DESTINATION DISPLAY NAME>, <boolean>);
-// specifying destination by its Factory object
-option.putIntegration(AppcenterIntegrationFactory.FACTORY,true);
-option.putIntegration(<RudderIntegration.FACTORY>,<boolean>);
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -1007,44 +712,9 @@ Make sure the <code class="inline-code">destination display name</code> that you
 
 You can pass the destination\(s\) specified in the above snippet to the SDK in two ways:
 
-### 1. Passing the destinations while initializing the SDK:
+### 1. Passing destinations while initializing the SDK
 
 This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination\(s\).
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-var rudderClient = RudderClient.getInstance(
-            this,
-            <WRITE_KEY>,
-            RudderConfig.Builder()
-                .withDataPlaneUrl(<DATA_PLANE_URL>)
-                .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
-                .withTrackLifecycleEvents(false)
-                .withRecordScreenViews(false)
-                .build(),
-            option // passing the rudderoption object containing the list of destination(s) you specified
-        )
-```
-
-{% endtab %}
-
-{% tab title="Java" %}
-
-```java
-RudderClient client = RudderClient.getInstance(
-                this,
-                <WRITE_KEY>,
-                new RudderConfig.Builder()
-                        .withEndPointUri(<END_POINT_URL>)
-                        .build(),
-                option // passing the rudderoption object containing the list of destination(s) you specified
-        );
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -1088,37 +758,9 @@ RudderClient client = RudderClient.getInstance(
     </TabPanels>
 </Tabs>
 
-### 2. Passing the destinations while making any event call:
+### 2. Passing destinations while making event calls
 
 This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-rudderClient.track(
-                    "Product Added",
-                    RudderProperty()
-                            .putValue("product_id", "product_001"),
-                    option // passing the rudderoption object containing the list of destination you specified
-            )
-```
-
-{% endtab %}
-
-{% tab title="Java" %}
-
-```java
-rudderClient.track(
-                "Product Added",
-                new RudderProperty()
-                        .putValue("product_id", "product_001"),
-                option // passing the rudderoption object containing the list of destination(s) you specified
-        );
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -1178,38 +820,6 @@ rudderClient.identify(
 
 If you run into any issues regarding the RudderStack Android SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is. To turn on the logging, change your `RudderClient` initialization to the following:
 
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-val rudderClient: RudderClient = RudderClient.getInstance(
-    this,
-    YOUR_WRITE_KEY,
-    RudderConfig.Builder()
-        .withDataPlaneUrl(DATA_PLANE_URL)
-        .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
-        .build()
-)
-```
-
-{% endtab %}
-
-{% tab title="Java" %}
-
-```java
-RudderClient rudderClient = RudderClient.getInstance(
-    this,
-    YOUR_WRITE_KEY,
-    new RudderConfig.Builder()
-        .withDataPlaneUrl(DATA_PLANE_URL)
-        .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
-        .build()
-);
-```
-
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>Kotlin</Tab>
@@ -1249,15 +859,14 @@ RudderClient rudderClient = RudderClient.getInstance(
     </TabPanels>
 </Tabs>
 
-## Can I develop a Device Mode destination if RudderStack doesn't support it already?
+## Developing a device mode destination
+
+You can easily develop a device mode destination in case RudderStack doesn't support it already, by following the steps listed in this section.
 
 <div class="infoBlock">
 
-More information on the RudderStack Device Mode can be found in the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes//">RudderStack Connection Modes</a> guide.
-
+More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes//">RudderStack Connection Modes</a> guide.
 </div>
-
-Yes, you can develop a Device Mode destination by following these steps:
 
 - Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) , as shown:
 
@@ -1330,24 +939,6 @@ Some pointers to keep in mind:
 - The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset.
 - RudderStack's Android SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown below:
 
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-rudderClient.flush()
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-rudderClient.flush();
-```
-
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>Kotlin</Tab>
@@ -1403,13 +994,13 @@ If you are facing any issues regarding event delivery in a production environmen
 -keep class com.rudderstack.android.** { *; }
 ```
 
-### **What is the Android version required to set up the RudderStack Android SDK?**
+### What is the Android version required to set up the RudderStack Android SDK?
 
 We currently support `API 14: Android 4.0 (IceCreamSandwich)` or higher.
 
 ### I don't have an `Application` class to initialize my RudderStack client. What do I do?
 
-Please follow our guide on [How to Add an Application Class to Your Android App](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/) to add an `Application` class.
+Follow our guide on [How to Add an Application Class to Your Android App](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/) to add an `Application` class.
 
 ### How do I set the Android permissions?
 
@@ -1440,24 +1031,6 @@ adb logcat -s RudderSDK:V \
 ### How do I get the user `traits` after making the `identify` call?
 
 You can get the user traits after making an `identify` call as shown in the following snippet:
-
-<!--{% tabs %}
-{% tab title="Kotlin" %}
-
-```kotlin
-val traits = rudderClient!!.getRudderContext().getTraits()
-```
-
-{% endtab %}
-
-{% tab title="JAVA" %}
-
-```java
-Map<String,Object> traitsObj = rudderClient.getRudderContext().getTraits();
-```
-
-{% endtab %}
-{% endtabs %}-->
 
 <Tabs>
   <TabList>
@@ -1512,6 +1085,8 @@ In case of client-side errors, e.g. if the source write key passed to the SDK is
 
 For other types of network errors \(e.g. Invalid Data Plane URL\), the SDK tries to flush the events to RudderStack in an incremental manner \(every 1 second, 2 seconds, 3 seconds, and so on\).
 
-## Contact Us
+## Contact us
 
-In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-android/issues) in case of any discrepancy.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+
+If you come across any issues while using the Android SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-android/issues).

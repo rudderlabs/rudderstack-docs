@@ -8,16 +8,22 @@ description: >-
 
 # Rust
 
-RudderStack’s Rust SDK allows you to track your customer event data from your Rust applications.
+The **RudderStack Rust SDK** lets you track your customer event data from your Rust applications and send it to your specified destinations via RudderStack.
 
-Once configured as a source, the event requests are sent to the RudderStack server. RudderStack then routes the events to the destination platforms as configured by you.
+Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-rust) to get a more hands-on understanding of the SDK.
 
-<div class="successBlock">
-  
-Find the SDK implementation in our <a href="https://github.com/rudderlabs/rudder-sdk-rust">**GitHub repository**</a>.
-</div>
+## SDK setup requirements
 
-## Installing the SDK
+To set up the RudderStack Rust SDK, the following prerequisites must be met:
+
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up an Rust source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/). You should then see a **Write Key** for this source, as shown below:
+
+<img src="../../../assets/event-stream-sources/rust-sdk-1.png" alt="Rust source write key" />
+
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+
+## Installing the Rust SDK
 
 To install the Rust SDK, simply add its crate as a project dependency.
 
@@ -42,7 +48,7 @@ let rudder_analytics = RudderAnalytics::load(
 
 Once the RudderStack client is initialized, you can use it to send your customer events.
 
-## Sending events from RudderStack
+## Sending events from the RudderStack client
 
 The Rust SDK supports the following events:
 
@@ -98,7 +104,7 @@ The following table describes the different `identify` parameters in detail:
 
 ## Track
 
-The `track` call lets you record the customer events, i.e. the user actions, along with any properties associated with them.
+The `track` call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
 A sample `track` call is as shown:
 
@@ -135,14 +141,14 @@ The following table describes the different `track` parameters in detail:
 
 ## Page
 
-The `page` call lets you record your website's page views, with any relevant information about the viewed page. 
+The `page` call allows you to record the page views on your website along with the other relevant information about the viewed page.
 
 <div class="infoBlock">
 
 We recommend calling <code class="inline-code">page</code> at least once every page load.
 </div>
 
-A sample `page` call is shown below:
+A sample `page` call is as shown:
 
 ```rust
 use rudderanalytics::message::{ Page, Message };
@@ -217,14 +223,14 @@ The following table describes the different `page` parameters in detail:
 
 ## Group
 
-The `group` call lets you link an identified user with a group, such as a company, organization, or account. It also lets you record any custom traits associated with that group, such as the company's name, the number of employees, etc.
+The `group` call lets you associate an identified user to a group - either a company, project or a team and record any custom traits or properties associated with that group.
 
 <div class="infoBlock">
 	
 	An identified user can be in more than one group.
 </div>
 
-A sample `group` call is shown below:
+A sample `group` call is as shown:
 
 ```rust
 use rudderanalytics::message::{ Group, Message };

@@ -2,31 +2,42 @@
 # slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/php"
 title: "PHP"
 description: >-
-  Detailed technical documentation on using RudderStack’s PHP SDK to send events
-  to various destinations
+  Detailed technical documentation on using RudderStack’s PHP SDK to send your server-side events
+  to various destinations.
 ---
 
 # PHP
 
-RudderStack’s PHP SDK allows you to track your customer event data from your PHP code. Once enabled, the event requests hit the RudderStack servers. RudderStack then routes the events to the specified destination platforms as configured by you.
+RudderStack’s PHP SDK allows you to track your event data from your PHP applications and send it to your specified destinations via RudderStack.
 
-You can find this SDK in our [GitHub repository](https://github.com/rudderlabs/rudder-php-sdk).
+Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-php-sdk) to get a more hands-on understanding of the SDK.
 
-## Installing the RudderStack PHP SDK
+## SDK setup requirements
 
-Install the RudderStack PHP SDK using the [composer](https://packagist.org/packages/rudderstack/rudder-php-sdk). You can also do so by running the following command:
+To set up the RudderStack PHP SDK, the following prerequisites must be met:
+
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up a PHP source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
+
+<img src="../../assets/event-stream-sources/php-sdk-1.png" alt="PHP source write key" />
+
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+
+## Installing the PHP SDK
+
+Install the RudderStack PHP SDK using the [**composer**](https://packagist.org/packages/rudderstack/rudder-php-sdk). You can also do so by running the following command:
 
 ```bash
 git clone https://github.com/rudderlabs/rudder-php-sdk /my/app/folders/
 ```
 
-You can use composer to install the SDK. Use the following command.
+Then, use the composer to install the PHP SDK by running the following command:
 
 ```bash
 composer require rudderstack/rudder-php-sdk
 ```
 
-## Initializing the RudderStack Client
+## Initializing the RudderStack client
 
 To initialize the RudderStack client, run the following code snippet:
 
@@ -45,8 +56,7 @@ Rudder::init(WRITE_KEY, array(
 
 <div class="infoBlock">
 
-RudderStack accepts the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. If the protocol is missing, RudderStack automatically prepends it to the URL depending on whether the <code class="inline-code">ssl</code> option is set to <code class="inline-code">true</code> or <code class="inline-code">false</code>, default value is <code class="inline-code">true</code>.
-
+RudderStack accepts the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. If the protocol is missing, RudderStack automatically prepends it to the URL based on whether the <code class="inline-code">ssl</code> option is set to  <code class="inline-code">true</code> or  <code class="inline-code">false</code>.
 </div>
 
 RudderStack accepts the following data plane URL formats:
@@ -58,9 +68,23 @@ RudderStack accepts the following data plane URL formats:
 | `false` | `http://example.dataplane.com`  |
 | `false` | `example.dataplane.com`         |
 
-## Sending Events from RudderStack
+<div class="warningBlock">
 
-Once the RudderStack client is initialized, you can use it to send relevant customer events from the RudderStack client. An example `track` call is as shown in the following code snippet:
+While initializing the RudderStack client, the <code class="inline-code">ssl</code> field is optional if you are using the HTTPS protocol. If included, its value must be set to <code class="inline-code">true</code>. 
+
+In case of the HTTP protocol, <code class="inline-code">ssl</code> is a required field and must always be set to <code class="inline-code">false</code>.
+</div>
+
+## Sending events from the RudderStack client
+
+Once the RudderStack client is initialized, you can use it to send relevant customer events. 
+
+<div class="warningBlock">
+
+RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the PHP SDK, you need to specify either `userId` or `anonymousId` every time.
+</div>
+
+A sample `track` call is shown in the following code snippet:
 
 ```php
 Rudder::track(array(
@@ -74,15 +98,9 @@ Rudder::track(array(
 
 ## Identify
 
-The `identify` call lets you associate a user to their actions as well as captures the relevant traits or properties related to that user.
+The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">identify</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `identify` call is as shown:
+A sample `identify` call is as shown:
 
 ```php
 Rudder::identify(array(
@@ -108,15 +126,9 @@ The `identify` method parameters are as described below:
 
 ## Track
 
-The `track` call lets you record the users' actions along with their associated properties. Each triggered action is called as an 'event'.
+The `track` call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">track</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `track` call is as shown:
+A sample `track` call is shown below:
 
 ```php
 Rudder::track(array(
@@ -144,15 +156,9 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
+The `page` call allows you to record the page views on your website along with the other relevant information about the viewed page.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">page</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `page` call is as shown:
+A sample `page` call is as shown:
 
 ```php
 Rudder::page(array(
@@ -179,15 +185,9 @@ The `page` method parameters are as described below:
 
 ## Screen
 
-The `screen` call is the mobile equivalent of the page call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
+The `screen` call is the mobile equivalent of the `page` call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">screen</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `screen` call is as shown:
+A sample `screen` call is as shown:
 
 ```php
 Rudder::screen(array(
@@ -214,15 +214,9 @@ The `screen` method parameters are as described below:
 
 ## Group
 
-The `group` call allows you to associate an identified user to a group - either a company, project or a team. You can also record custom traits or properties associated with that group.
+The `group` call lets you associate an identified user to a group - either a company, project or a team and record any custom traits or properties associated with that group.
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">group</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `group` call is as shown:
+A sample `group` call is as shown:
 
 ```php
 Rudder::group(array(
@@ -254,12 +248,10 @@ The `alias` call allows you to associate one identity with another.
 
 <div class="infoBlock">
 
-<code class="inline-code">alias</code> is an advanced method. However, it is required
-when managing user identities in some destinations.
-
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing user identities for some of the downstream destinations.
 </div>
 
-An example `alias` call is as shown:
+A sample `alias` call is as shown:
 
 ```php
 Rudder::alias(array(
@@ -281,12 +273,11 @@ The `alias` method parameters are as mentioned below:
 
 <div class="infoBlock">
 
-For a detailed explanation of the <code class="inline-code">alias</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias">RudderStack API Specification</a> guide.
-
+For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias">RudderStack API Specification</a> guide.
 </div>
 
-## Contact Us
+## Contact us
 
-To know more about the RudderStack PHP SDK, you can [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.
 
-In case you come across any issues while using this SDK, please feel free to start a new issue on our [GitHub repository](https://github.com/rudderlabs/rudder-php-sdk).
+If you come across any issues while using the PHP SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-php-sdk/issues/new).

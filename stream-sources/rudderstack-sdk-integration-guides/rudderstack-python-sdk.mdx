@@ -8,22 +8,30 @@ description: >-
 
 # Python
 
-RudderStack’s Python SDK allows you to track your customer event data from your Python code. Once enabled, the event requests hit the RudderStack servers. RudderStack then routes the events to the specified destination platforms as configured by you.
+The **RudderStack Python SDK** lets you track your customer event data from your Python applications and send it to your specified destinations via RudderStack.
 
-<div class="successBlock">
+Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-python) to get a more hands-on understanding of the SDK.
 
-Find this SDK in our [GitHub repository](https://github.com/rudderlabs/rudder-sdk-python).
-</div>
+## SDK setup requirements
 
-## Installing the RudderStack Python SDK
+To set up the RudderStack Python SDK, the following prerequisites must be met:
 
-To install the RudderStack Python SDK using [pip](https://pip.pypa.io/en/stable/), run the following command:
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up an Python source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/). You should then see a **Write Key** for this source, as shown below:
+
+<img src="../../../assets/event-stream-sources/python-sdk-1.png" alt="Python source write key" />
+
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+
+## Installing the Python SDK
+
+To install the RudderStack Python SDK using [**pip**](https://pip.pypa.io/en/stable/), run the following command:
 
 ```bash
 pip install rudder-sdk-python
 ```
 
-## Initializing the RudderStack Client
+## Initializing the RudderStack client
 
 To initialize the RudderStack client, run the following code snippet:
 
@@ -34,22 +42,9 @@ rudder_analytics.write_key = WRITE_KEY
 rudder_analytics.data_plane_url = DATA_PLANE_URL
 ```
 
-<div class="successBlock">
- <ul>   
-<li>
+## Sending events from the RudderStack client
 
-For more information on how to get the source write key, refer to [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/sending-test-events/#get-the-source-write-key).
-</li>
-<li>
-
-For more information on how to get your data plane URL, refer to [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
-</li>
-</ul>
-</div>
-
-## Sending Events from RudderStack
-
-Once the RudderStack client is initialized, you can use it to send relevant customer events from the RudderStack client. 
+Once the RudderStack client is initialized, you can use it to send your customer events. 
 
 A sample `track` call is as shown :
 
@@ -61,15 +56,14 @@ rudder_analytics.track('developer_user_id', 'Simple Track Event', {
 
 ## Identify
 
-The `identify` call lets you identify a visiting user and associate them to their actions.
+The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
 
-<div class="infoBlock">
+<div class="warningBlock">
 
-For more information on the <code class="inline-code">identify</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a> guide.
-
+RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the Node.js SDK, you need to specify either `userId` or `anonymousId` every time.
 </div>
 
-An example `identify` call is as shown:
+A sample `identify` call is as shown:
 
 ```python
 rudder_analytics.identify('123456', {
@@ -88,19 +82,13 @@ The `identify` method parameters are as described below:
 | `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
 | `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
 | `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
-| `traits`       | Object   | Optional                                  | Dictionary of the traits associated with the user, such as `name`or `email`                                                |
+| `traits`       | Object   | Optional                                  | Dictionary of the traits associated with the user, such as `name`or `email` .                                               |
 
 ## Track
 
-The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with them.
+The `track` call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `track` call is as shown:
+A sample `track` call is shown below:
 
 ```python
 rudder_analytics.track('123456', 'Article Read', {
@@ -124,15 +112,9 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call lets you record your page views with any additional relevant information about the viewed page.
+The `page` call allows you to record the page views on your website along with the other relevant information about the viewed page.
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">page</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `page` call is as shown:
+A sample `page` call is as shown:
 
 ```python
 rudder_analytics.page('userid', 'Documentation', 'Sample Doc', {
@@ -154,15 +136,9 @@ The `page` method parameters are as described below:
 
 ## Screen
 
-The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the screen.
+The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the viewed screen.
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">screen</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `screen` call is as shown:
+A sample `screen` call is shown below:
 
 ```python
 rudder_analytics.screen('userid', 'Settings', 'Brightness', {
@@ -184,15 +160,9 @@ The `screen` method parameters are as described below:
 
 ## Group
 
-The `group` call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
+The `group` call lets you associate an identified user to a group - either a company, project or a team and record any custom traits or properties associated with that group.
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `group` call is as shown:
+A sample `group` call is as shown:
 
 ```python
 rudder_analytics.group('userid', 'groupid', {
@@ -219,26 +189,10 @@ The `alias` call lets you merge different identities of a known user.
 
 <div class="infoBlock">
 
-<code class="inline-code">alias</code> is an advanced method. However, it is required when managing user identities in some destinations.
-
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
 </div>
 
-<div class="successBlock">
-
-The following downstream destinations support the `alias` call:
-<ul>
-<li>[**MoEngage**](https://rudderstack.com/docs/destinations/marketing/moengage/)</li>
-<li>[**Kissmetrics**](https://rudderstack.com/docs/destinations/analytics/kissmetrics/)</li>
-<li>[**Amplitude**](https://rudderstack.com/docs/destinations/analytics/amplitude/) \(only supported by the [**JavaScript SDK**](rudderstack-javascript-sdk/) via [**Cloud Mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode)\)</li>
-</ul>
-</div>
-
-<div class="infoBlock">
-
-For more information on the `alias` call, refer to the [**RudderStack Events Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/) guide.
-</div>
-
-An example `alias` call is as shown:
+A sample `alias` call is as shown:
 
 ```python
 rudder_analytics.alias('previousid', 'userid')
@@ -257,11 +211,10 @@ The `alias` method parameters are as mentioned below:
 
 <div class="infoBlock">
 
-For more information on the <code class="inline-code">alias</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a> guide.
-
+For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
 </div>
 
-## Error Handling
+## Error handling
 
 To handle errors that may occur when sending these events via `rudder_analytics` you can declare a callback called `on_error`.
 
@@ -274,19 +227,18 @@ rudder_analytics.on_error = on_error
 
 <div class="infoBlock">
 
-**NOTE:** this will only return errors that may occur with the HTTP request to the Gateway. Any errors that occur downstream will not be returned via this callback.
-
+Note that this callback will only return the errors that may occur with the HTTP request to the gateway. It will not return any errors that occur downstream.
 </div>
 
-Common request responses from the Gateway are as follows
+Some of the common request responses are listed in the following table:
 
 | Status                                     | Code |
 | :----------------------------------------- | :--- |
-| Ok                                         | 200  |
-| Request neither has anonymousId nor userId | 400  |
-| Invalid Write Key                          | 401  |
+| OK                                          | 200  |
+| Request neither has `anonymousId` nor `userId` | 400  |
+| Invalid write key                          | 401  |
 | Invalid JSON                               | 400  |
 
-## Contact Us
+## Contact us
 
-To know more about the RudderStack Python SDK, you can [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you.
+For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) channel.

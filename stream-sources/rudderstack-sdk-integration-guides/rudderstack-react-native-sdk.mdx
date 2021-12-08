@@ -8,54 +8,30 @@ description: >-
 
 # React Native
 
-## What is the RudderStack React Native SDK?
+The **RudderStack React Native SDK** allows you to track event data from your React Native applications and send it to your specified destinations via RudderStack.
 
-The RudderStack React Native SDK allows you to track event data from your app. It can be easily integrated into your React Native application. After integrating this SDK, you will also send the event data to your preferred analytics destination/s, such as Google Analytics, Amplitude, and more.
+You can check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-react-native) to get a more hands-on understanding of the SDK.
 
-You can check the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-react-native) if you want to get more hands-on or keen to know more about the SDK architecture.
+## SDK setup requirements
 
-## SDK Setup Requirements
+To set up the RudderStack React Native SDK, the following prerequisites must be met:
 
-To set up the RudderStack React Native SDK, there are a few prerequisites as mentioned below:
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up a React Native source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
 
-- You will need to set up a [RudderStack Account](https://app.rudderlabs.com).
-- Once signed up, your `React Native` source `writeKey` will appear in the Dashboard, as shown:
+<img src="../../assets/event-stream-sources/react-native-1.png" alt="React Native source write key" />
 
-<img src="../../assets/react-native.png" />
-<span class="imageTitle">Adding React Native SDK</span>
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
-- You will also need your `Data-Plane URL`. The following screenshot shows the data plane URL for the managed hosting mode:
+- We also recommend setting up the [**React Native development environment**](https://reactnative.dev/docs/environment-setup) on your system.
 
-<img src="../../assets/android-2 (1) (1) (2) (2) (2) (2) (2).png" />
-<span class="imageTitle">Data Plane URL</span>
-
-- It would help if you also had the [React Native Development Environment](https://reactnative.dev/docs/environment-setup) setup on your system.
-
-## Installing the RudderStack React Native SDK
+## Installing the React Native SDK
 
 The recommended way to install the React Native SDK is through [`npm`](https://www.npmjs.com/package/@rudderstack/rudder-sdk-react-native).
 
 To add the SDK as a dependency, perform the following steps:
 
-- Go to the root of your Application and add `@rudderstack/rudder-sdk-react-native` to your Application as a dependency with:
-
-<!--{% tabs %}
-{% tab title="npm" %}
-
-```bash
-npm install @rudderstack/rudder-sdk-react-native --save
-```
-
-{% endtab %}
-
-{% tab title="yarn" %}
-
-```bash
-yarn add @rudderstack/rudder-sdk-react-native
-```
-
-{% endtab %}
-{% endtabs %}-->
+- Go to the root of your application and add `@rudderstack/rudder-sdk-react-native` as a dependency as shown:
 
 <Tabs>
   <TabList>
@@ -89,17 +65,17 @@ yarn add @rudderstack/rudder-sdk-react-native
 pod install
 ```
 
-## Initializing the RudderStack Client
+## Initializing the RudderStack client
 
 After adding the SDK as a dependency, you need to set up the SDK.
 
-- Make sure to import the SDK wherever you use it with:
+- Make sure you import the SDK as shown:
 
 ```typescript
 import rudderClient from "@rudderstack/rudder-sdk-react-native"
 ```
 
-- Add the following code somewhere in your application.
+- Add the following code in your application:
 
 ```typescript
 await rudderClient.setup(WRITE_KEY, {
@@ -111,8 +87,7 @@ await rudderClient.setup(WRITE_KEY, {
 
 <div class="successBlock">
 
-  It is highly recommended to use the <code class="inline-code">await</code>
-  keyword with the setup call.
+  We highly recommend using the <code class="inline-code">await</code> keyword with the setup call.
 </div>
 
 The `setup` method has the following signature:
@@ -122,13 +97,13 @@ The `setup` method has the following signature:
 | `writeKey`      | `string`      | Yes      | Your React Native `writeKey`                  |
 | `configuration` | `JSON Object` | No       | Contains the RudderStack Client configuration |
 
-Check the [Configuring your RudderStack Client](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/#configuring-your-rudderstack-client) section below for a full list of configurable parameters.
+Check the [**Configuring your RudderStack client**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/#configuring-your-rudderstack-client) section below for a full list of configurable parameters.
 
 ## Track
 
-You can record the users' activity through the `track` method. Every action performed by the user is called an event.
+You can record the user activity through the `track` method. Every user action is called an **event**.
 
-An example of the `track` event is as shown:
+A sample `track` event is shown below:
 
 ```typescript
 rudderClient.track("test_track_event", {
@@ -149,22 +124,21 @@ The `track` method has the following signature:
 
 <div class="infoBlock">
 
-We automatically track the following optional events:
+RudderStack automatically tracks the following optional events:
 <ol>
 <li><code class="inline-code">Application Installed</code></li>
 <li><code class="inline-code">Application Updated</code></li>
 <li><code class="inline-code">Application Opened</code></li>
 <li><code class="inline-code">Application Backgrounded</code></li>
 </ol>
-You can disable these events by passing <code class="inline-code">trackLifecycleEvents</code> as false in the configuration object. But it is highly recommended to keep them enabled.
-
+You can disable these events by passing <code class="inline-code">trackLifecycleEvents</code> as <code class="inline-code">false</code> in the configuration object. However, we recommend keeping them enabled.
 </div>
 
 ## Identify
 
-Capture `deviceId` and use that as `anonymousId` for identifying the user. It helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, those will be passed to the successive `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+RudderStack captures the `deviceId` and uses it as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, the SDK persists the user information and passes it to the subsequent `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
-An example `identify` event is as shown:
+A sample `identify` event is as shown:
 
 ```typescript
 rudderClient.identify(
@@ -177,7 +151,7 @@ rudderClient.identify(
 )
 ```
 
-The `identify` method has the following signatures:
+The `identify` method has the following signature:
 
 | Name     | Data Type     | Required | Description                            |
 | :------- | :------------ | :------- | :------------------------------------- |
@@ -201,7 +175,7 @@ Alternatively, you can use the following method signature:
 
 | Name         | Data Type     | Required | Description                                                               |
 | :----------- | :------------ | :------- | :------------------------------------------------------------------------ |
-| `screenName` | `string`      | Yes      | Name of the screen viewed.                                                |
+| `screenName` | `string`      | Yes      | Name of the screen viewed by the user.                                               |
 | `property`   | `JSON Object` | No       | Extra property object that you want to pass along with the `screen` call. |
 | `option`     | `JSON Object` | No       | Extra options to be passed along with `screen` event.                     |
 
@@ -209,7 +183,6 @@ Alternatively, you can use the following method signature:
 
 You can also enable automatic recording of screen views by passing <code class="inline-code">recordScreenViews</code> as <code class="inline-code">true</code> while initializing the <code class="inline-code">rudderClient</code>.  
 The default value for <code class="inline-code">recordScreenViews</code> is <code class="inline-code">false</code>.
-
 </div>
 
 ## Reset
@@ -226,7 +199,7 @@ await rudderClient.reset()
   keyword with the reset call.
 </div>
 
-## Enabling/Disabling User Tracking via the optOut API \(GDPR Support\)
+## Enabling/disabling user tracking via the optOut API \(GDPR support\)
 
 RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
 
@@ -250,7 +223,7 @@ The `optOut` API is available in the React Native SDK starting from version `1.0
 </div>
 
 
-## Registering Callbacks:
+## Registering callbacks
 
 The React Native SDK lets you trigger a callback once any device-mode integration is successful. You can use this callback to perform any operation that you wanted to do once a device-integration is successful.
 
@@ -269,7 +242,7 @@ The `registerCallback` method has the following signatures:
 | `destinationName` | `string`   | Yes      | Display name of the device-mode destination.                                  |
 | `callback`        | `Function` | Yes      | Callback function to be triggered once device-mode integration is successful. |
 
-## Enabling / Disabling Events for Specific Destinations
+## Enabling/disabling events for specific destinations
 
 The React Native SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:
 
@@ -299,7 +272,7 @@ Make sure the destination names that you pass while specifying the destinations 
 
 There are two methods in which you can pass the destinations specified in the above snippet to the SDK:
 
-### 1. Passing the destinations while initializing the SDK:
+### 1. Passing destinations while initializing the SDK
 
 This is helpful when you want to enable or disable sending the events across all the event calls made using the SDK to the specified destinations.
 
@@ -307,7 +280,7 @@ This is helpful when you want to enable or disable sending the events across all
 rudderClient.setup(WRITE_KEY, config, options)
 ```
 
-### 2. Passing the destinations while making any event call:
+### 2. Passing destinations while making event calls
 
 This approach is helpful when you want to enable or disable sending only a particular event to the specified destinations, or if you want to override the specified destinations passed with the SDK initialization \(as described in the method above\) for a particular event.
 
@@ -324,7 +297,6 @@ rudderClient.track(
 <div class="infoBlock">
 
 If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
-
 </div>
 
 ## External ID
@@ -350,7 +322,7 @@ rudderClient.identify(
 )
 ```
 
-## Configuring your RudderStack Client
+## Configuring your RudderStack client
 
 You can configure your client based on the following parameters by passing them in the `configuration` object of your `setup` call.
 
@@ -560,21 +532,21 @@ An example of this method's usage is as shown:
 rudderClient.putAnonymousId(ANONYMOUS_ID)
 ```
 
-## FAQ
+## FAQs
 
 ### Do I need to link the SDK using the React Native link?
 
-No, you don't need to link the SDK as it is auto-linked. If you have linked it using `react-native link` and are facing issues, use `react-native unlink rudder-sdk-react-native` to unlink it.
+No, you don't need to link the SDK as it is auto-linked. If you have linked it using `react-native link` and are facing any issues, use `react-native unlink rudder-sdk-react-native` to unlink it.
 
 ### Can I use the SDK with a React Native application created with Expo?
 
-No. The SDK is a React Native module, and currently, the expo doesn't support adding native modules. You can still [eject](https://docs.expo.dev/expokit/eject/) your Expo application and use our [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) SDKs.
+No. The SDK is a React Native module, and currently, the expo doesn't support adding native modules. You can still [**eject**](https://docs.expo.dev/expokit/eject/) your Expo application and use the RudderStack [**Android**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [**iOS**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) SDKs.
 
 ### What is the need to use the await keyword?
 
-The functions exposed by the SDK are asynchronous in nature. If you want synchronous behavior, you must use the `await` keyword. We highly recommend using the `await` keyword with the setup call to make sure that the SDK has been properly set up before any further calls are made.
+The functions exposed by the SDK are asynchronous in nature. If you want a synchronous behavior, you must use the `await` keyword. We highly recommend using the `await` keyword with the setup call to make sure that the SDK has been properly set up, before any further calls are made.
 
-### Does Android build fails after adding the SDK to your Application?
+### Does the Android build fail after adding the SDK to your Application?
 
 Please try using Android Studio to build your application. This should fix most of the errors.
 
@@ -587,6 +559,8 @@ const rudderContext = await rc.getRudderContext()
 console.log("Traits are : " + JSON.stringify(rudderContext.traits))
 ```
 
-## Contact Us
+## Contact us
 
-In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue [on our GitHub Issues page](https://github.com/rudderlabs/rudder-sdk-react-native/issues) in case of any discrepancy. You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+
+If you come across any issues while using the React Native SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-react-native/issues/new).

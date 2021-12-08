@@ -3,18 +3,25 @@
 title: "Node.js"
 description: >-
   Detailed technical documentation on using RudderStack’s Node.js SDK to send
-  server-side events to various destinations.
+  events to various destinations.
 ---
 
 # Node.js
 
-RudderStack’s Node.js SDK lets you track your customer event data from your Node.js app and route them to your specified destination platforms.
+The **RudderStack Node.js SDK** lets you track your customer event data from your Node.js applications and send it to your specified destinations via RudderStack.
 
-<div class="successBlock">
+Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-node) to get a more hands-on understanding of the SDK.
 
-  Find the code for this SDK in our <a href="https://github.com/rudderlabs/rudder-sdk-node">GitHub
-  repository</a>.
-</div>
+## SDK setup requirements
+
+To set up the RudderStack Node.js SDK, the following prerequisites must be met:
+
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up an Node.js source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/). You should then see a **Write Key** for this source, as shown below:
+
+<img src="../../../assets/event-stream-sources/node-sdk-1.png" alt="Node.js source write key" />
+
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
 ## Installing the Node.js SDK
 
@@ -37,28 +44,16 @@ const client = new Analytics(WRITE_KEY, DATA_PLANE_URL / v1 / batch)
 
 Running the above snippet creates a global RudderStack client object that can be used for all the subsequent event requests.
 
-## Supported Events
+## Identify
 
-The RudderStack Node.js SDK supports the following API calls:
+The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
 
-* Identify
-* Track
-* Page
-* Group
-* Alias
-
-For a detailed information on each of these calls, refer to our [**RudderStack API Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
-
-<div class="infoBlock">
+<div class="warningBlock">
 
 RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the Node.js SDK, you need to specify either `userId` or `anonymousId` every time.
 </div>
 
-## Identify
-
-The `identify` call lets you associate a user to their actions as well as captures the relevant traits or properties related to that user.
-
-An example `identify` call is as shown:
+A sample `identify` call is as shown:
 
 ```javascript
 client.identify({
@@ -85,9 +80,9 @@ The `identify` parameters are as described below:
 
 ## Track
 
-The `track` call lets you record the users' actions along with their associated properties. Each user action is called an 'event'.
+The `track` call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
-An example `track` call is as shown:
+A sample `track` call is shown below:
 
 ```javascript
 client.track({
@@ -114,9 +109,9 @@ The `track` method parameters are as described below:
 
 ## Page
 
-The `page` call allows you to record the page views on your website. It also records the other relevant information about the page that is being viewed.
+The `page` call allows you to record the page views on your website along with the other relevant information about the viewed page.
 
-An example `page` call is as shown:
+A sample `page` call is as shown:
 
 ```javascript
 client.page({
@@ -143,11 +138,42 @@ The `page` method parameters are as described below:
 | `properties`   | Object   | Optional                                  | A dictionary of the properties associated with the viewed page, like `url` and `referrer`.                                 |
 | `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
 
+## Screen
+
+The `screen` call is the mobile equivalent of the `page` call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
+
+A sample `screen` call is as shown:
+
+```javascript
+client.screen({
+  userId: "12345",
+  category: "Food",
+  name: "Pizza",
+  properties: {
+    screenSize: 10,
+    title: "Pizza",
+    referrer: "https://google.com",
+  },
+})
+```
+
+The `screen` method parameters are as described below:
+
+| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
+| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
+| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
+| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
+| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
+| `name`         | String   | Required                                  | Name of the screen being viewed.                                                                                           |
+| `properties`   | Object   | Optional                                  | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
+| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
+
 ## Group
 
-The `group` call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
+The `group` call lets you associate an identified user to a group - either a company, project or a team and record any custom traits or properties associated with that group.
 
-An example `group` call is as shown:
+A sample `group` call is as shown:
 
 ```javascript
 client.group({
@@ -179,16 +205,9 @@ The `alias` call lets you merge different identities of a known user.
 <div class="infoBlock">
 
 <code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
-
 </div>
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
-
-</div>
-
-An example `alias` call is as shown:
+A sample `alias` call is as shown:
 
 ```javascript
 client.alias({
@@ -208,12 +227,16 @@ The `alias` method parameters are as mentioned below:
 | `traits`       | Object   | Optional                                  | The dictionary of the traits associated with the user, like `name`or `email.`                                            |
 | `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                  |
 
-## Node.js SDK Data Persistence
+<div class="infoBlock">
+
+For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
+</div>
+
+## Node.js SDK data persistence
 
 <div class="warningBlock">
 
-This feature is still in beta. Contact us on our <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack</a> channel in case you face any issues.
-
+This feature is still in beta. Contact us on our <a href="https://rudderstack.com/join-rudderstack-slack-community">Community Slack</a> channel in case you face any issues.
 </div>
 
 If the Node.js SDK fails to successfully deliver the event data to RudderStack at the first attempt, it retries the event delivery. However, if, for some reason, RudderStack is unavailable for a longer duration, there is a possibility of data loss. To prevent this scenario, RudderStack has a data persistence feature to persist the events in **Redis**, leading to better event delivery guarantees. Also, the SDK can retry multiple times as the queue is maintained in a different process space (in this case, Redis).
@@ -228,7 +251,7 @@ RudderStack uses <a href="https://github.com/OptimalBits/bull">Bull</a> as the i
 
 </div>
 
-A sample initialization of the SDK is as shown:
+A sample SDK initialization is shown below:
 
 ```jsx
 const client = new Analytics("write_key","server_url/v1/batch",{
@@ -250,7 +273,7 @@ To achieve the data persistence, you need to call the `createPersistenceQueue` m
 If the createPersistenceQueue method is not called after initializing the SDK, the SDK will work without any persistence.
 </div>
 
-### Configurable Parameters
+### Configurable parameters
 
 | **Parameter** | **Description** | **Default Value** |
 | :--- | :--- | :--- |
@@ -354,7 +377,7 @@ If the callback returns with an error, we recommend retrying calling `createPers
 
 </div>
 
-### **Event Flow**
+###  Event flow
 
 - Calling the SDK methods like `track`, `page`, `identify`, etc. pushes the events to an in-memory array.
 - The events from the array are flushed as a `batch` to the Redis persistence based on the `flushAt` and `flushInterval` settings. The in-memory array has a maximum size of `maxInternalQueueSize`. **Once this size limit is reached,** __**the events won't be accepted if not drained to the other side \(cases where Redis connection is slow or the Redis server is not reachable\).**
@@ -363,6 +386,8 @@ If the callback returns with an error, we recommend retrying calling `createPers
 - There might be a scenario where the node process dies with the jobs still in active state \(not completed nor failed but in the process of sending/retrying\). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, **the jobs will be picked up first by the processor to get processed to maintain event ordering based on the value of `QueueOpts.isMultiProcessor`**.
 - For multiple servers \(SDK\) connecting to the same queue \(`QueueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. Hence, `QueueOpts.isMultiProcessor` should be set to **`true`.**
 
-## Contact Us
+## Contact us
 
-For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+
+If you come across any issues while using the Node.js SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-node/issues/new).
