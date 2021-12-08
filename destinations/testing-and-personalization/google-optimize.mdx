@@ -1,0 +1,114 @@
+---
+title: "Google Optimize"
+description: >-
+ Step-by-step guide to send your event data from RudderStack to Google Optimize.
+---
+
+# Google Optimize
+
+[**Google Optimize**](https://marketingplatform.google.com/about/optimize/) is Google's free website optimization tool that lets you run different website tests to tailor personalized user experiences and increase your conversion rate.
+
+RudderStack supports Google Optimize as a destination to which you can seamlessly send your website data for efficient A/B testing.
+
+<div class="successBlock">
+ 
+Once you add Google Optimize as a destination in RudderStack, RudderStack loads the <a href="https://support.google.com/optimize/answer/7513085">Optimize snippet</a> on your website. Then, it loads the Google Analytics snippet(if not already present). This snippet natively measures all the Optimize experiments and then sends the data to Optimize for creating the reports.
+</div>
+
+
+## Getting started
+
+Before configuring Google Optimize as a destination in RudderStack, verify if the source platform is supported by Google Optimize by referring to the table below:
+
+| Connection Mode     | Web           | Mobile                 | Server        |
+| :------------------ | :------------ | :--------------- | :-------------|
+| **Device mode**     | **Supported**                        | -                      | -             |
+| **Cloud mode**      | -                   | -                           | - |
+
+<div class="infoBlock">
+ 
+ To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+</div>
+
+Once you have confirmed that your source platform supports sending events to Google Optimize, follow these steps:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Google Optimize**.
+
+<div class="infoBlock">
+ 
+ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+</div>
+
+* Assign a name to the destination and click on **Next**. You should then see the following screen:
+
+<img src="../../assets/event-stream-destinations/google-optimize-connection-settings-1.png" alt="Google Optimize connection settings" />
+
+### Connection settings
+
+The connection settings required to configure Google Optimize as a destination in RudderStack are listed below:
+
+* **Load Google Analytics**: Enable this setting **only if** Google Analytics is not installed on your website already. 
+
+<div class="infoBlock">
+ 
+Disable this setting if you have already configured <a href="https://rudderstack.com/docs/destinations/analytics/google-analytics-4/">Google Analytics 4</a> as a destination in RudderStack, or already installed the <a href="https://support.google.com/optimize/answer/9183119#zippy=%2Cexample-global-site-tag-with-google-analytics">global site tag</a> on your website.
+</div>
+
+* **Tracking ID**: If you have enabled the **Load Google Analytics** option, enter the corresponding tracking ID here.
+
+<div class="infoBlock">
+ 
+For more information on finding the Google Analytics tracking ID, refer to the <a href="https://rudderstack.com/docs/destination/testing-and-personalization/google-optimize/#faqs">FAQs</a> section below.
+</div>
+
+* **Container ID**: Enter your Google Optimize container ID here. 
+
+<div class="infoBlock">
+ 
+You can find the Container ID by going to the <strong>User Settings</strong> option in your <a href="https://optimize.google.com/optimize/home/#/accounts">Google Optimize dashboard</a>.
+</div>
+
+<img src="../../assets/event-stream-destinations/google-optimize-container-id.png" alt="Google Optimize container ID" />
+
+* **Async mode**: Enable this setting to use the asynchronous version of Google Optimize.
+
+<div class="successBlock">
+ 
+We recommend enabling this setting if you want your pages to load faster and if your target visitors are likely to be on slow connections (3G or slower). However, for experimentation purposes, this setting should be <strong>disabled</strong>.
+</div>
+
+<div class="infoBlock">
+ 
+Refer to this <a href="https://support.google.com/optimize/answer/7513085?hl=en&ref_topic=6197443">Optimize support page</a> to know more about the differences between the synchronous and asynchronous versions of Google Optimize.
+</div>
+
+* **Anti-flicker snippet**: Enable this setting to install the anti-flicker snippet. 
+
+<div class="warningBlock">
+ 
+Enabling this setting can impact page performance. Refer to this <a href="https://support.google.com/optimize/answer/7100284">support page</a> for more information on the anti-flicker snippet.
+</div>
+
+* As this destination supports sending events only via the web device mode, the **Use device mode to send events** option will be always enabled.
+
+Finally, click on **Next** to complete the setup. Google Optimize will now be enabled as a destination in RudderStack.
+
+## FAQs
+
+### Where do I get the Google Analytics tracking ID?
+
+To get the Google Analytics tracking ID, follow these steps:
+
+1. Go to the **Admin** section of your [**Google Analytics account**](https://analytics.google.com/analytics/web/#/) in the bottom left corner.
+2. Then, select an account in the **Account** column, followed by a property in the **Property** column.
+3. Under **Property**, click on **Tracking Info** - **Tracking Code**. Your tracking ID will be displayed at the top of the resulting page.
+
+<img src="../../assets/event-stream-destinations/google-optimize-ga-tracking-id.png" alt="Google Analytics tracking ID" />
+
+### How do I link Google Optimize with Google Analytics?
+
+To link your Google Optimize container to a Google Analytics property or view, refer to this [**support page**](https://support.google.com/optimize/answer/7008374?hl=en&ref_topic=7310368).
+
+## Contact us
+
+If you come across any issues while configuring or using Google Optimize with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
