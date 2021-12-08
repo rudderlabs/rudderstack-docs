@@ -10,6 +10,12 @@ description: >-
 
 RudderStack supports Google Optimize as a destination to which you can seamlessly send your website data for efficient A/B testing.
 
+<div class="successBlock">
+ 
+Once you add Google Optimize as a destination in RudderStack, RudderStack loads the <a href="https://support.google.com/optimize/answer/7513085">Optimize snippet</a> installed on your website. Then, it installs (if not already present) and loads the Google Analytics snippet. This snippet natively measures all the Optimize experiments and then sends the data to Optimize for creating the reports.
+</div>
+
+
 ## Getting started
 
 Before configuring Google Optimize as a destination in RudderStack, verify if the source platform is supported by Google Optimize by referring to the table below:
@@ -41,7 +47,12 @@ Once you have confirmed that your source platform supports sending events to Goo
 
 The connection settings required to configure Google Optimize as a destination in RudderStack are listed below:
 
-* **Load Google Analytics**: If you have the Google Analytics snippet already installed on your website, RudderStack will load it if this setting is enabled.
+* **Load Google Analytics**: Enable this setting **only if** Google Analytics is not already installed on your website. 
+
+<div class="infoBlock">
+ 
+Disable this setting if you have already configured <a href="https://rudderstack.com/docs/destinations/analytics/google-analytics-4/">Google Analytics 4</a> as a destination in RudderStack, or if you have already installed the <a href="https://support.google.com/optimize/answer/9183119#zippy=%2Cexample-global-site-tag-with-google-analytics">global site tag</a> on your website.
+</div>
 
 * **Tracking ID**: If you have enabled the **Load Google Analytics** option, enter the corresponding tracking ID here.
 
