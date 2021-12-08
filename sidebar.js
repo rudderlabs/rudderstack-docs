@@ -157,9 +157,9 @@ export const jsonData = [
                  ]
               },
               {
-                 "key":"getting-started-with-unity-sdk",
+                 "key":"rudderstack-unity-sdk",
                  "title":"Unity",
-                 "link":"/stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk/",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/",
                  "content":[
                     
                  ]
@@ -189,9 +189,9 @@ export const jsonData = [
                ]
             },
               {
-                 "key":"amp-analytics",
+                 "key":"rudderstack-amp-analytics",
                  "title":"AMP Analytics",
-                 "link":"/stream-sources/rudderstack-sdk-integration-guides/amp-analytics/",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/",
                  "content":[
                     
                  ]
@@ -245,17 +245,17 @@ export const jsonData = [
                  ]
               },
               {
-                 "key":"dotnet",
+                 "key":"rudderstack-dotnet-sdk",
                  "title":".NET",
-                 "link":"/stream-sources/rudderstack-sdk-integration-guides/dotnet/",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/",
                  "content":[
                     
                  ]
               },
               {
-                 "key":"php",
+                 "key":"rudderstack-php-sdk",
                  "title":"PHP",
-                 "link":"/stream-sources/rudderstack-sdk-integration-guides/php/",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/",
                  "content":[
                     
                  ]
