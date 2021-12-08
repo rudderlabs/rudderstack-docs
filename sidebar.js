@@ -1458,6 +1458,14 @@ export const jsonData = [
                ]
             },
             {
+               "key":"google-optimize",
+               "title":"Google Optimize",
+               "link":"/destinations/testing-and-personalization/google-optimize/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"monetate",
                "title":"Monetate",
                "link":"/destinations/testing-and-personalization/monetate/",
