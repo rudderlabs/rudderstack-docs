@@ -994,6 +994,14 @@ export const jsonData = [
                ]
             },
             {
+               "key":"post-affiliate-pro",
+               "title":"Post Affiliate Pro",
+               "link":"/destinations/marketing/post-affiliate-pro/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"mailchimp",
                "title":"Mailchimp",
                "link":"/destinations/marketing/mailchimp/",
