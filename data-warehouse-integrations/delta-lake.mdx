@@ -128,29 +128,82 @@ In this step, you will configure your AWS account to [**create an instance profi
 
 To create a new Databricks cluster, follow these steps:
 
-* Sign into your Databricks account.
+* Sign into your Databricks account. Then, click on the **Compute** option on the dashboard, as shown:
 
-* Then, click on the **Compute** option, as shown:
+<img src="../assets/dw-integrations/delta-lake-1.png" alt="Delta Lake Compute option" />
 
 * Click on the **Create Cluster** option.
 
 * Next, enter the cluster details. Fill in the **Cluster Name**, as shown:
 
+<img src="../assets/dw-integrations/delta-lake-2.png" alt="Delta Lake Cluster name" />
+
 * Select the **Cluster Mode** depending on your use-case. The following image highlights the three cluster modes:
 
+<img src="../assets/dw-integrations/delta-lake-3.png" alt="Delta Lake cluster modes" />
+
 * Then, select the **Databricks Runtime Version** as **8.3** or higher, as shown:
+
+<img src="../assets/dw-integrations/delta-lake-4.png" alt="Delta Lake runtime version" />
 
 * Configure the rest of the settings as per your requirement.
 
 * In the **Advanced Options** section, configure the **Instances** field as shown in the following image:
 
+<img src="../assets/dw-integrations/delta-lake-5.png" alt="Delta Lake instances" />
+
 * In the **Instance Profile** dropdown menu, select the Databricks instance profile that you added to your account in the previous step.
+
+<img src="../assets/dw-integrations/delta-lake-6.png" alt="Delta Lake instances field" />
 
 * Finally, click on the **Create Cluster** button to complete the configuration and create the Databricks cluster.
 
+<img src="../assets/dw-integrations/delta-lake-7.png" alt="Delta Lake create cluster option" />
+
+
 ## Obtaining the JDBC/ODBC configuration
 
+Follow these steps to get the JDBC/ODBC configuration:
+
+* In your Databricks dashboard, click on the **Compute** option, as shown:
+
+<img src="../assets/dw-integrations/delta-lake-1.png" alt="Delta Lake Compute option" />
+
+* Then, select the cluster you created in the previous section.
+
+<img src="../assets/dw-integrations/delta-lake-8.png" alt="Delta Lake cluster" />
+
+* In the **Advanced Options** section, select the **JDBC/ODBC** field and copy the **Server Hostname**, **Port**, and **HTTP Path** values, as shown:
+
+<img src="../assets/dw-integrations/delta-lake-9.png" alt="Delta Lake JDBC/ODBC settings" />
+
+<div class="infoBlock">
+
+The <strong>Server Hostname</strong>, <strong>Port</strong>, and <strong>HTTP Path</strong> values are required to configure Delta Lake as a destination in RudderStack.
+</div>
+
 ## Generating the Databricks access token
+
+To generate the Databricks access token, follow these steps:
+
+* In your Databricks dashboard, go to **Settings** and click on **User Settings**, as shown:
+
+<img src="../assets/dw-integrations/delta-lake-10.png" alt="Databricks user settings" />
+
+* Then, go to the **Access Tokens** section and click on **Generate New Token**, as shown:
+
+<img src="../assets/dw-integrations/delta-lake-11.png" alt="Access tokens" />
+
+* Enter your comment in the Comment field and click on **Generate**, as shown:
+
+<img src="../assets/dw-integrations/delta-lake-12.png" alt="Databricks generating new token" />
+
+<div class="warningBlock">
+
+Keep the <strong>Lifetime (days)</strong> field blank. If you enter a number, your access token will expire after that number of days.
+</div>
+
+* Finally, copy the access token as it will be used during the Delta Lake destination setup in RudderStack.
 
 
 ## Setting up the Delta Lake destination in RudderStack
@@ -166,19 +219,33 @@ Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and
 
 * Assign a name to your destination and click on **Next**. You should then see the following **Connection Settings** screen:
 
-<img src="../assets/dw-integrations/delta-lake-.png" alt="Delta Lake destination settings in RudderStack" />
+<img src="../assets/dw-integrations/delta-lake-connection-settings-1.png" alt="Delta Lake destination settings in RudderStack" />
+<img src="../assets/dw-integrations/delta-lake-connection-settings-2.png" alt="Delta Lake destination settings in RudderStack" />
 
 ### Connection settings
 
 Add the following credentials in the **Connection Settings** to successfully configure Delta Lake as a destination:
 
-* **Host**: Enter the server hostname you obtained in the [**Obtaining the JDBC/ODBC configuration**]() section above.
+* **Host**: Enter the server hostname you copied in the [**Obtaining the JDBC/ODBC configuration**](https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbc-odbc-configuration) section above.
 
-* **Port**: Enter the port which you copied in the [**Obtaining the JDBC/ODBC configuration**]() section above.
+* **Port**: Enter the port which you copied in the [**Obtaining the JDBC/ODBC configuration**](https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbc-odbc-configuration) section above.
 
-* **HTTP Path**: Enter the HTTP path which you copied in the [**Obtaining the JDBC/ODBC configuration**]() section above.
+* **HTTP Path**: Enter the HTTP path which you copied in the [**Obtaining the JDBC/ODBC configuration**](https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbc-odbc-configuration) section above.
 
-* **Personal Access Token**: Enter your access token obtained in the [**Generating the Databricks access token**]() section above.
+* **Personal Access Token**: Enter your access token obtained in the [**Generating the Databricks access token**](https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#generating-the-databricks-access-token) section above.
+
+* **Namespace**: Enter the the name of the schema where RudderStack will create the tables.
+
+<div class="infoBlock">
+
+If you don't specify a namespace in the settings, RudderStack will set it to the source name.
+</div>
+
+* **Sync Frequency**: Specify the frequency at which RudderStack should sync the data.
+
+* **Sync Starting At**: This optional setting lets you set a specific time of the day (in UTC) when RudderStack performs the sync.
+
+* **Exclude Window**: This optional setting lets you specify the time window (in UTC) when RudderStack will **skip** the data sync.
 
 * **Staging S3 Storage Bucket Name**: Enter your S3 bucket name in this field.
 
@@ -186,22 +253,16 @@ Add the following credentials in the **Connection Settings** to successfully con
 
 * **AWS Secret Access Key**: Enter the secret access key from your AWS console. For more information, refer to this [**AWS guide**](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html).
 
+* **Enable Server Side Encryption for S3**: You can enable this setting to enable server-side encryption for S3. Finally, click on **Next** to complete the configuration. 
 
-<div class="infoBlock">
+## FAQs
 
-If you don't specify a namespace in the settings, RudderStack sets it to the source name by default.
-</div>
+### How does RudderStack handle the reserved words in a column, table, or schema?
 
-* **Azure Blob Storage Account Name**: Enter your Azure Blob Storage account name.
-* **Azure Blob Storage Account Key**: Enter your Azure Blob Storage account key.
+There are some limitations when it comes to using reserved words as a schema, table, or column name. If such words are used in event names, traits or properties, they will be prefixed with a `_` when RudderStack creates tables or columns for them in your schema.
 
-<div class="infoBlock">
-
-For more information on setting up your Azure Blob Storage account, refer to <a href="https://rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage">this section</a>.
-</div>
-
-
+Also, integers are **not** allowed at the start of a schema or table name. Hence, such schema, column, or table names will be prefixed with a `_`. For example, `'25dollarpurchase'` will be changed to `'_25dollarpurchase'`.
 
 ## Contact us
 
-
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
