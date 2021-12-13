@@ -14,9 +14,9 @@ RudderStack supports Delta Lake as a destination to which you can securely send 
 Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/blob/feat_delta_lakes/v0/destinations/deltalake/transform.js">GitHub repository</a>.
 </div>
 
-Before configuring Delta Lake as a destination in RudderStack, we highly recommend editing your S3 bucket policy to grant RudderStack the necessary permissions.
+Before configuring Delta Lake as a destination in RudderStack, we highly recommend going through the following sections in the exact order to grant RudderStack and Databricks the necessary permissions to your S3 bucket.
 
-## Granting RudderStack access to your Amazon S3 bucket
+## Step 1: Granting RudderStack access to your Amazon S3 bucket
 
 This section contains the steps to edit your S3 bucket policy to grant RudderStack the necessary permissions.
 
@@ -110,7 +110,7 @@ RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<user_access_key>
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY=<user_access_key_secret>
 ```
 
-## Granting Databricks access to your Amazon S3 staging bucket
+## Step 2: Granting Databricks access to your Amazon S3 staging bucket
 
 In this step, you will configure your AWS account to [**create an instance profile**](https://docs.databricks.com/administration-guide/cloud-configurations/aws/instance-profiles.html) which will be attached with the cluster later. Follow these steps in the exact order:
 
@@ -124,7 +124,7 @@ In this step, you will configure your AWS account to [**create an instance profi
 
 5. [**Add the instance profile to Databricks**](https://docs.databricks.com/administration-guide/cloud-configurations/aws/instance-profiles.html#step-5-add-the-instance-profile-to-databricks)
 
-## Creating a new Databricks cluster
+## Step 3: Creating a new Databricks cluster
 
 To create a new Databricks cluster, follow these steps:
 
@@ -161,7 +161,7 @@ To create a new Databricks cluster, follow these steps:
 <img src="../assets/dw-integrations/delta-lake-7.png" alt="Delta Lake create cluster option" />
 
 
-## Obtaining the JDBC/ODBC configuration
+## Step 4: Obtaining the JDBC/ODBC configuration
 
 Follow these steps to get the JDBC/ODBC configuration:
 
@@ -182,7 +182,7 @@ Follow these steps to get the JDBC/ODBC configuration:
 The <strong>Server Hostname</strong>, <strong>Port</strong>, and <strong>HTTP Path</strong> values are required to configure Delta Lake as a destination in RudderStack.
 </div>
 
-## Generating the Databricks access token
+## Step 5: Generating the Databricks access token
 
 To generate the Databricks access token, follow these steps:
 
