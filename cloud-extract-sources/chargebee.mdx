@@ -1,0 +1,115 @@
+---
+# slug: "/docs/cloud-extract-sources/Chargebee"
+title: "Chargebee"
+description: Step-by-step guide to ingest data from Chargebee into RudderStack.
+---
+
+# Chargebee
+
+[**Chargebee**](https://www.Chargebee.com/) is a subscription billing and revenue management platform. It lets you streamline your revenue operations via features like subscription workflow automation, cutting-edge revenue reporting, and more. 
+
+This document guides you in setting up Chargebee as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Chargebee data, which can then be routed to your RudderStack-supported data warehouse destination.
+
+<div class="warningBlock">
+
+All the Cloud Extract sources support sending data only to a data warehouse destination.
+</div>
+
+<img src="https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github" alt="Github Badge" class="githubBadge" />
+
+## Getting started
+
+To set up Chargebee as a source on the RudderStack dashboard, follow these steps:
+
+- Log into your [**RudderStack dashboard**](https://app.rudderstack.com/).
+
+- At the panel on the left, select **Sources**. Then, click on **Add Source**.
+
+- Next, go to **Cloud Extract** and select **Chargebee v2**.
+
+<img src="../assets/cloud-extract-sources/chargebee-1.png" alt="Chargebee source" />
+
+- Assign a name to your source, and click on **Next**.
+
+<img src="../assets/cloud-extract-sources/chargebee-2.png" alt="Assigning source name" />
+
+### Configuring the source
+
+- Authenticate RudderStack with Chargebee by entering the Chargebee access token under the **access_token** section.
+
+<div class="infoBlock">
+
+Refer to the FAQs section below for more information on how to get the Chargebee access token.
+</div>
+
+- You will also need to enter the **Start date**. This option specifies the historical data to be imported.
+
+<img src="../assets/cloud-extract-sources/Chargebeev2-3.png" alt="Configuring Chargebee" />
+
+- Under **Destination Settings**, set the **Table prefix**. RudderStack will create a table in your data warehouse with this prefix name and load all your Chargebee data into it.
+
+- Under **Schedule Settings**, set the **Run Frequency**. This option specifies how frequently the syncs will occur.
+
+- Optionally, you can also specify the time of the sync by selecting the time under **Sync Starting At**. Then, click on **Next**.
+
+<img src="../assets/cloud-extract-sources/Chargebeev2-4.png" alt="Configuring the source" />
+
+### Selecting the data to import
+
+- Finally, choose the Chargebee data that you wish to ingest via RudderStack. You can either select all the data, or choose specific Chargebee data attributes, as per your requirement.
+
+<img src="../assets/cloud-extract-sources/Chargebeev2-5.png" alt="Selecting the data to import" />
+
+That's it! Chargebee is now successfully configured as a source on your RudderStack dashboard.
+
+RudderStack will start ingesting data from Chargebee as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../assets/cloud-extract-sources/Chargebeev2-6.png" alt="Configuring the source" />
+
+<div class="successBlock">
+
+  Use the <strong>Use Existing Destination</strong> option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, click on the <strong>Create New Destination</strong> button.
+</div>
+
+## Troubleshooting
+
+### Sync errors for older Chargebee API versions
+
+For Chargebee versions less than **2.1**, data syncs to the warehouse destination will fail and throw an error. This is because many Chargebee resources are not supported by the older API versions. 
+
+In such a scenario, we highly recommend updating your Chargebee API.
+
+<div class="infoBlock">
+
+For more information on updating your Chargebee API version, refer to this <a href="https://developers.Chargebee.com/building-apps/docs/update-your-api-version">Chargebee support page</a>.
+</div>
+
+## FAQs
+
+#### How do I get the Chargebee access token?
+
+To get the Chargebee access token, go to the **Your apps** section under **Chargebee Developer Hub**. 
+
+If you have already created an app, click on the **Authentication** option under **Configure**, as shown below. Here, you will find the access token under the workspace associated with your app.
+
+<img src="../assets/cloud-extract-sources/Chargebeev2-7.png" alt="Access token" />
+
+For more details, refer to the Chargebee [**support page**](https://help-desk-migration.com/help/get-Chargebee-api-access-token/).
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is.
+
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
+#### The sync to my warehouse destination is failing and I get an error. What should I do?
+
+If the syncs are failing, the first step is to verify if your Chargebee version is **2.1** or above. For versions less than 2.1, data syncs to the warehouse destination will fail. This is because many Chargebee resources are not supported by the older API versions. In this scenario, you will need to update your Chargebee API.
+
+For more information on updating your Chargebee API version, refer to their [**support page**](https://developers.Chargebee.com/building-apps/docs/update-your-api-version).
+
+If you are using Chargebee 2.1 or above and are facing this issue, you can [**contact us**](mailto:%20docs@rudderstack.com) or get in touch with us on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+
+## Contact us
+
+If you come across any issues while configuring Chargebee as a source in RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
