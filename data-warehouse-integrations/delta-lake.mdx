@@ -5,7 +5,7 @@ description: Step-by-step guide to send event data from RudderStack to Databrick
 
 # Databricks Delta Lake
 
-[**Delta Lake**](https://databricks.com/product/delta-lake-on-databricks) is a popular data lake used for both streaming and batch operations. It lets you store structured, unstructured, and semi-structured data securely and reliably. With features such as support for ACID transactions, scalable metadata management, and schema enforcement, Delta Lake enables you to scale and deliver real-time data insights and analytics directly via your data lake. 
+[**Delta Lake**](https://databricks.com/product/delta-lake-on-databricks) is a popular data lake used for both streaming and batch operations. It lets you store structured, unstructured, and semi-structured data securely and reliably. With features such as support for ACID transactions, scalable metadata management, and schema enforcement, Delta Lake enables you to scale and deliver real-time data insights and analytics directly via your data lake.
 
 RudderStack supports Delta Lake as a destination to which you can securely send your data.
 
@@ -18,9 +18,13 @@ Before configuring Delta Lake as a destination in RudderStack, we highly recomme
 
 ## Step 1: Granting RudderStack access to your Amazon S3 bucket
 
-This section contains the steps to edit your S3 bucket policy to grant RudderStack the necessary permissions.
+This section contains the steps to edit your bucket policy to grant RudderStack the necessary permissions, depending on your preferred cloud platform.
 
-### For RudderStack Cloud
+### Amazon S3
+
+Follow these steps to grant RudderStack access to your S3 bucket:
+
+#### For RudderStack Cloud
 
 If you are using RudderStack Cloud, edit your bucket policy using the following JSON:
 
@@ -51,7 +55,7 @@ If you are using RudderStack Cloud, edit your bucket policy using the following 
 Make sure you replace <code class="inline-code">YOUR_BUCKET_NAME</code> with the name of your S3 bucket.
 </div>
 
-### For self-hosted RudderStack
+#### For self-hosted RudderStack
 
 If you are  [**self-hosting RudderStack**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it), follow these steps:
 
@@ -110,9 +114,38 @@ RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<user_access_key>
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY=<user_access_key_secret>
 ```
 
-## Step 2: Granting Databricks access to your Amazon S3 staging bucket
+* You can then provide the configuration directly while setting up the Delta Lake destination in RudderStack, as shown:
 
-In this step, you will configure your AWS account to [**create an instance profile**](https://docs.databricks.com/administration-guide/cloud-configurations/aws/instance-profiles.html) which will be attached with the cluster later. Follow these steps in the exact order:
+<img src="../assets/dw-integrations/delta-lake-connection-settings-3.png" alt="S3 settings in RudderStack dashboard" />
+
+### Google Cloud Storage
+
+You can provide the necessary GCS bucket configuration while setting up the Delta Lake destination in RudderStack, as shown:
+
+<img src="../assets/dw-integrations/delta-lake-connection-settings-4.png" alt="GCS bucket settings in RudderStack dashboard" />
+
+### Azure Blob Storage
+
+You can provide the necessary Blob Storage container configuration while setting up the Delta Lake destination in RudderStack, as shown:
+
+<img src="../assets/dw-integrations/delta-lake-connection-settings-5.png" alt="GCS bucket settings in RudderStack dashboard" />
+
+## Step 2: Granting Databricks access to your staging bucket
+
+This section contains the steps to grant Databricks the necessary permissions to access your staging bucket, depending on your preferred cloud platform.
+
+### Amazon S3
+
+Follow these steps to grant Databricks access to your S3 bucket:
+
+#### Case 1
+
+<div class="infoBlock">
+
+Follow the steps listed in this section if you don't want to specify the AWS access key and secret access key while configuring Delta Lake in the RudderStack dashboard.
+</div>
+
+This section contains the steps to configure your AWS account to [**create an instance profile**](https://docs.databricks.com/administration-guide/cloud-configurations/aws/instance-profiles.html) which will be attached with the Databricks cluster later. Follow these steps in the exact order:
 
 1.  [**Create an instance profile to access the S3 bucket**](https://docs.databricks.com/administration-guide/cloud-configurations/aws/instance-profiles.html#step-1-create-an-instance-profile-to-access-an-s3-bucket)
 
@@ -123,6 +156,68 @@ In this step, you will configure your AWS account to [**create an instance profi
 4. [**Add the S3 IAM role to the EC2 policy**](https://docs.databricks.com/administration-guide/cloud-configurations/aws/instance-profiles.html#step-4-add-the-s3-iam-role-to-the-ec2-policy)
 
 5. [**Add the instance profile to Databricks**](https://docs.databricks.com/administration-guide/cloud-configurations/aws/instance-profiles.html#step-5-add-the-instance-profile-to-databricks)
+
+#### Case 2
+
+<div class="infoBlock">
+
+Follow the steps listed in this section if you are specifying the AWS access key and secret access key while configuring Delta Lake in the RudderStack dashboard.
+</div>
+
+Add the following Spark configuration to your Databricks cluster:
+
+```text
+spark.hadoop.fs.s3.impl shaded.databricks.org.apache.hadoop.fs.s3a.S3AFileSystem
+spark.hadoop.fs.s3a.impl shaded.databricks.org.apache.hadoop.fs.s3a.S3AFileSystem
+spark.hadoop.fs.s3n.impl shaded.databricks.org.apache.hadoop.fs.s3a.S3AFileSystem
+spark.hadoop.fs.s3.impl.disable.cache true
+spark.hadoop.fs.s3a.impl.disable.cache true
+spark.hadoop.fs.s3n.impl.disable.cache true
+```
+
+<div class="infoBlock">
+
+For more information on adding custom Spark configuration properties in a Databricks cluster, refer to <a href="https://docs.databricks.com/clusters/configure.html#spark-configuration">this guide</a>.
+</div>
+
+### Google Cloud Storage
+
+To grant Databricks access to your GCS bucket, follow these steps:
+
+* Follow the steps listed in [**this**](https://rudderstack.com/docs/data-warehouse-integrations/gcs-datalake/#user-permissions-for-gcs-data-lake) section to set up the required role and user permissions.
+
+* Then, add the following Spark configuration to your Databricks cluster:
+
+```text
+spark.hadoop.google.cloud.auth.service.account.enable true
+spark.hadoop.fs.gs.auth.service.account.email <client_email>
+spark.hadoop.fs.gs.project.id <project_id>
+spark.hadoop.fs.gs.auth.service.account.private.key <private_key>
+spark.hadoop.fs.gs.auth.service.account.private.key.id <private_key_id>
+```
+
+<div class="infoBlock">
+
+For more information on adding custom Spark configuration properties in a Databricks cluster, refer to <a href="https://docs.databricks.com/clusters/configure.html#spark-configuration">this guide</a>.
+</div>
+
+* You need to replace the following fields with the values obtained from the downloaded JSON in the previous step: `<project_id>`,`<private_key>`, `<private_key_id>`,`<client_email>`.
+
+### Azure Blob Storage
+
+To grant Databricks access to your Azure Blob Storage container, follow these steps:
+
+* Add the following Spark configuration to your Databricks cluster. 
+
+```text
+fs.azure.account.key.<storage-account-name>.blob.core.windows.net <storage-account-access-key>
+```
+<div class="infoBlock">
+
+For more information on adding custom Spark configuration properties in a Databricks cluster, refer to <a href="https://docs.databricks.com/clusters/configure.html#spark-configuration">this guide</a>.
+</div>
+
+* You need to replace the following fields with the relevant values from your Blob Storage account settings: `<storage-account-name>`,`<storage-account-access-key>`.
 
 ## Step 3: Creating a new Databricks cluster
 
@@ -142,7 +237,7 @@ To create a new Databricks cluster, follow these steps:
 
 <img src="../assets/dw-integrations/delta-lake-3.png" alt="Delta Lake cluster modes" />
 
-* Then, select the **Databricks Runtime Version** as **8.3** or higher, as shown:
+* Then, select the **Databricks Runtime Version** as **7.1** or higher, as shown:
 
 <img src="../assets/dw-integrations/delta-lake-4.png" alt="Delta Lake runtime version" />
 
