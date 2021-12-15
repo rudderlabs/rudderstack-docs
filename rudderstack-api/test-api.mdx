@@ -555,23 +555,6 @@ A sample API response when `dest_transform` is set to `true` is shown below:
 }]
 ```
 
-Consider the following scenario:
-
-```json
-{
-  "stage": {
-    "user_transform": true,
-    "dest_transform": false,
-    "send_to_destination": true
-  },
-  "message": {
-    // RudderStack HTTP Payload (identify, track, etc.)
-  }
-}
-```
-
-In this case, since `dest_transform` is set to `false`, the destination-specific payload transformation will be skipped and the data will not be sent to the destination.
-
 ### `send_to_destination`
 
 When `send_to_destination` is set to `true`, the API returns the destination's response upon receiving the event payload. If set to `false`, this stage is skipped completely.
