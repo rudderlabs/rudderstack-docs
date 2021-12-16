@@ -342,13 +342,12 @@ If you don't specify a namespace in the settings, RudderStack will set it to the
 
 * **Exclude Window**: This optional setting lets you specify the time window (in UTC) when RudderStack will **skip** the data sync.
 
-* **Staging S3 Storage Bucket Name**: Enter your S3 bucket name in this field.
+* **Object Storage Configuration**: Specify the settings for the intermediary storage. RudderStack currently supports the following platforms for storing the staging files:
 
-* **AWS Access Key ID**: Enter the access key ID from your AWS console. For more information, refer to this [**AWS guide**](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html).
-
-* **AWS Secret Access Key**: Enter the secret access key from your AWS console. For more information, refer to this [**AWS guide**](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html).
-
-* **Enable Server Side Encryption for S3**: You can enable this setting to enable server-side encryption for S3. Finally, click on **Next** to complete the configuration. 
+    * **Amazon S3**
+    * **Google Cloud Storage**
+    * **Azure Blob Storage**
+    * **MinIO**
 
 ## FAQs
 
