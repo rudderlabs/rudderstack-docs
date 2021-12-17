@@ -14,7 +14,7 @@ You can check the SDK's [**GitHub codebase**](https://github.com/rudderlabs/rudd
 
 <div class="infoBlock">
 
-If you are using an older version of the Flutter SDK (v1), then refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/">this</a> guide. <strong>Note that this SDK version will soon be deprecated.</strong>
+If you are using an older version of the Flutter SDK (<1.2.0), then refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/">this</a> guide. <strong>Note that this SDK version will soon be deprecated.</strong>
 </div>
 
 ## SDK setup requirements
@@ -77,7 +77,7 @@ builder.withTrackLifecycleEvents(true);
 rudderClient.initialize(WRITE_KEY,config: builder.build());
 ```
 
-The `setup` method has the following signature:
+The `initialize` method has the following signature:
 
 | Name       | Data Type      | Required | Description                                   |
 | :--------- | :------------- | :------- | :-------------------------------------------- |
