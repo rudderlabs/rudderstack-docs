@@ -177,7 +177,14 @@ export const jsonData = [
                  "title":"Flutter",
                  "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/",
                  "content":[
-                    
+                    {
+                       "key":"flutter-v1",
+                       "title":"Flutter SDK v1",
+                       "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/",
+                       "content":[
+                          
+                       ]
+                    }
                  ]
               },
               {
