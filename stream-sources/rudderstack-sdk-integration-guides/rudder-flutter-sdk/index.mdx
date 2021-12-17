@@ -47,7 +47,7 @@ To add the SDK as a dependency, perform the following steps:
 
 ```groovy
 dependencies:
-  rudder_sdk_flutter: ^2.0.0
+  rudder_sdk_flutter: ^1.2.0
 ```
 
 - Navigate to your Application's root folder and install all the required dependencies with:
@@ -55,10 +55,6 @@ dependencies:
 ```bash
 flutter pub get
 ```
-
-<div class="infoBlock">
-   Instructions for using RudderStack Flutter SDK version < 2<code class="inline-code">CONTROL_PLANE_URL</code> can be found <a href="https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudder-flutter-sdk/rudder-flutter-sdk-v1.mdx">here</a>.
-</div>
 
 ## Initializing the RudderStack Client
 
@@ -75,7 +71,7 @@ import 'package:rudder_sdk_flutter/RudderLogger.dart';
 - Add the following code somewhere in your application.
 
 ```dart
-final RudderClient rudderClient = RudderClient.instance;
+final RudderController rudderClient = RudderController.instance;
 RudderLogger.init(RudderLogger.VERBOSE);
 RudderConfigBuilder builder = RudderConfigBuilder();
 builder.withDataPlaneUrl(DATA_PLANE_URL);
