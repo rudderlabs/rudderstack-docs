@@ -8,111 +8,49 @@ export const jsonData = [
      ]
   },
   {
-     "key":"get-started",
-     "title":"Get Started",
-     "link":"/get-started/",
-     "content":[
-        {
-           "key":"installing-and-setting-up-rudderstack",
-           "title":"Install and Set Up RudderStack",
-           "link":"/get-started/installing-and-setting-up-rudderstack/",
-           "content":[
-              {
-                 "key":"docker",
-                 "title":"Docker",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"kubernetes",
-                 "title":"Kubernetes",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"developer-machine-setup",
-                 "title":"Developer Machine Setup",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"sending-test-events",
-                 "title":"Sending Test Events",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
-                 "content":[
-                    
-                 ]
-              }
-           ]
-        },
-        {
-           "key":"dashboard-overview",
-           "title":"Dashboard Overview",
-           "link":"/get-started/dashboard-overview/",
-           "content":[
-              {
-                 "key":"user-management",
-                 "title":"User Management",
-                 "link":"/get-started/dashboard-overview/user-management/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                  "key":"audit-logs",
-                  "title":"Audit Logs",
-                  "link":"/get-started/dashboard-overview/audit-logs/",
-                  "content":[
-                     
-                  ]
-               }
-           ]
-        },
-        {
-           "key":"control-plane-lite",
-           "title":"Control Plane Lite",
-           "link":"/get-started/control-plane-lite/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"live-events",
-           "title":"Live Events",
-           "link":"/get-started/live-events/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"architecture",
-           "title":"Architecture",
-           "link":"/get-started/rudderstack-architecture/",
-           "content":[
-              
-           ]
-        }
-     ]
-  },
-  {
      "key":"connections",
-     "title":"Connections",
+     "title":"RudderStack Cloud",
      "link":"/connections/",
      "content":[
         {
+         "key":"dashboard-overview",
+         "title":"Dashboard Overview",
+         "link":"/get-started/dashboard-overview/",
+         "content":[
+            {
+               "key":"user-management",
+               "title":"User Management",
+               "link":"/get-started/dashboard-overview/user-management/",
+               "content":[
+                  
+               ]
+            },
+            {
+                "key":"audit-logs",
+                "title":"Audit Logs",
+                "link":"/get-started/dashboard-overview/audit-logs/",
+                "content":[
+                   
+                ]
+             }
+           ]
+         },
+         {
+            "key":"live-events",
+            "title":"Live Events",
+            "link":"/get-started/live-events/",
+            "content":[
+               
+            ]
+         },
+         {
            "key":"adding-source-and-destination-rudderstack",
            "title":"How to Add a Source and Destination in RudderStack",
            "link":"/connections/adding-source-and-destination-rudderstack/",
            "content":[
               
            ]
-        },
+         },
         {
            "key":"rudderstack-connection-modes",
            "title":"RudderStack Connection Modes: Cloud Mode vs Device Mode",
@@ -180,7 +118,7 @@ export const jsonData = [
                     },
                     {
                        "key":"js-sdk-faqs",
-                       "title":"FAQs",
+                       "title":"JavaScript SDK FAQs",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
                        "content":[
                           
@@ -219,9 +157,9 @@ export const jsonData = [
                  ]
               },
               {
-                 "key":"getting-started-with-unity-sdk",
+                 "key":"rudderstack-unity-sdk",
                  "title":"Unity",
-                 "link":"/stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk/",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/",
                  "content":[
                     
                  ]
@@ -239,7 +177,14 @@ export const jsonData = [
                  "title":"Flutter",
                  "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/",
                  "content":[
-                    
+                    {
+                       "key":"flutter-v1",
+                       "title":"Flutter SDK v1",
+                       "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/",
+                       "content":[
+                          
+                       ]
+                    }
                  ]
               },
               {
@@ -251,9 +196,9 @@ export const jsonData = [
                ]
             },
               {
-                 "key":"amp-analytics",
+                 "key":"rudderstack-amp-analytics",
                  "title":"AMP Analytics",
-                 "link":"/stream-sources/rudderstack-sdk-integration-guides/amp-analytics/",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/",
                  "content":[
                     
                  ]
@@ -307,17 +252,17 @@ export const jsonData = [
                  ]
               },
               {
-                 "key":"dotnet",
+                 "key":"rudderstack-dotnet-sdk",
                  "title":".NET",
-                 "link":"/stream-sources/rudderstack-sdk-integration-guides/dotnet/",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/",
                  "content":[
                     
                  ]
               },
               {
-                 "key":"php",
+                 "key":"rudderstack-php-sdk",
                  "title":"PHP",
-                 "link":"/stream-sources/rudderstack-sdk-integration-guides/php/",
+                 "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/",
                  "content":[
                     
                  ]
@@ -601,6 +546,14 @@ export const jsonData = [
                
             ]
          },
+         {
+            "key":"intercom-v2",
+            "title":"Intercom v2",
+            "link":"/cloud-extract-sources/intercom-v2/",
+            "content":[
+               
+            ]
+         }
      ]
   },
   {
@@ -1048,6 +1001,14 @@ export const jsonData = [
                ]
             },
             {
+               "key":"post-affiliate-pro",
+               "title":"Post Affiliate Pro",
+               "link":"/destinations/marketing/post-affiliate-pro/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"mailchimp",
                "title":"Mailchimp",
                "link":"/destinations/marketing/mailchimp/",
@@ -1071,6 +1032,14 @@ export const jsonData = [
                   
                ]
             },
+            {
+               "key":"sendgrid",
+               "title":"SendGrid",
+               "link":"/destinations/marketing/sendgrid/",
+               "content":[
+                  
+               ]
+            }, 
             {
                "key":"gainsight",
                "title":"Gainsight",
@@ -1469,9 +1438,11 @@ export const jsonData = [
              "title":"BigQuery Stream",
              "link":"/destinations/storage-platforms/bigquery-stream/",
              "content":[
-                
+
              ]
           },
+         ]
+       },
         {
            "key":"tag-managers",
            "title":"Tag Managers",
@@ -1504,6 +1475,14 @@ export const jsonData = [
                "key":"algolia-insights",
                "title":"Algolia Insights",
                "link":"/destinations/testing-and-personalization/algolia-insights/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"google-optimize",
+               "title":"Google Optimize",
+               "link":"/destinations/testing-and-personalization/google-optimize/",
                "content":[
                   
                ]
@@ -1917,6 +1896,14 @@ export const jsonData = [
            ]
         },
         {
+           "key":"test-api",
+           "title":"Test API",
+           "link":"/rudderstack-api/test-api/",
+           "content":[
+
+           ]
+        },
+        {
            "key":"pixel-api-spec",
            "title":"Pixel API",
            "link":"/rudderstack-api/pixel-api-spec/",
@@ -1931,6 +1918,68 @@ export const jsonData = [
            "content":[
               
            ]
+        }
+     ]
+  },
+  {
+     "key":"get-started",
+     "title":"RudderStack Open Source",
+     "link":"/get-started/",
+     "content":[
+        {
+         "key":"control-plane-lite",
+         "title":"Control Plane Setup",
+         "link":"/get-started/control-plane-lite/",
+         "content":[
+            
+         ]
+        },
+        {
+           "key":"installing-and-setting-up-rudderstack",
+           "title":"Data Plane Setup",
+           "link":"/get-started/installing-and-setting-up-rudderstack/",
+           "content":[
+              {
+                 "key":"docker",
+                 "title":"Docker",
+                 "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
+                 "content":[
+                    
+                 ]
+              },
+              {
+                 "key":"kubernetes",
+                 "title":"Kubernetes",
+                 "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
+                 "content":[
+                    
+                 ]
+              },
+              {
+                 "key":"developer-machine-setup",
+                 "title":"Developer Machine Setup",
+                 "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
+                 "content":[
+                    
+                 ]
+              },
+              {
+                 "key":"sending-test-events",
+                 "title":"Sending Test Events",
+                 "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
+                 "content":[
+                    
+                 ]
+              }
+           ]
+        },
+        {
+         "key":"architecture",
+         "title":"Architecture",
+         "link":"/get-started/rudderstack-architecture/",
+         "content":[
+            
+         ]
         }
      ]
   },
