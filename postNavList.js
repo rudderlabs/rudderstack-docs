@@ -9,41 +9,11 @@ export const postNavList = [
     "content":[]
 },
 {
-    "key":"get-started",
-    "title":"Get Started",
-    "link":"/get-started/",
-    "content":[]
+   "key":"connections",
+   "title":"RudderStack Cloud",
+   "link":"/connections/",
+   "content":[]
 },
-{
-    "key":"installing-and-setting-up-rudderstack",
-    "title":"Install and Set Up RudderStack",
-    "link":"/get-started/installing-and-setting-up-rudderstack/",
-    "content":[]
-},
-{
-    "key":"docker",
-    "title":"Docker",
-    "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
-    "content":[]
- },
- {
-    "key":"kubernetes",
-    "title":"Kubernetes",
-    "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
-    "content":[]
- },
- {
-    "key":"developer-machine-setup",
-    "title":"Developer Machine Setup",
-    "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
-    "content":[]
- },
- {
-    "key":"sending-test-events",
-    "title":"Sending Test Events",
-    "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
-    "content":[]
- },
  {
     "key":"dashboard-overview",
     "title":"Dashboard Overview",
@@ -63,30 +33,12 @@ export const postNavList = [
    "content":[]
 },
  {
-   "key":"control-plane-lite",
-   "title":"Control Plane Lite",
-   "link":"/get-started/control-plane-lite/",
-   "content":[]
-},
- {
     "key":"live-events",
     "title":"Live Events",
     "link":"/get-started/live-events/",
     "content":[]
  },
- {
-    "key":"architecture",
-    "title":"Architecture",
-    "link":"/get-started/rudderstack-architecture/",
-    "content":[]
- },
- {
-    "key":"connections",
-    "title":"Connections",
-    "link":"/connections/",
-    "content":[]
- },
- {
+{
     "key":"adding-source-and-destination-rudderstack",
     "title":"How to Add a Source and Destination in RudderStack",
     "link":"/connections/adding-source-and-destination-rudderstack/",
@@ -94,7 +46,7 @@ export const postNavList = [
  },
  {
     "key":"rudderstack-connection-modes",
-    "title":"RudderStack Connection Modes: Cloud Mode vs Device Mode",
+    "title":"Connection Modes: Cloud Mode vs Device Mode",
     "link":"/connections/rudderstack-connection-modes/",
     "content":[]
  },
@@ -148,7 +100,7 @@ export const postNavList = [
  },
  {
     "key":"js-sdk-faqs",
-    "title":"FAQs",
+    "title":"JavaScript SDK FAQs",
     "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
     "content":[]
  }, 
@@ -177,9 +129,9 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"getting-started-with-unity-sdk",
+    "key":"rudderstack-unity-sdk",
     "title":"Unity",
-    "link":"/stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk/",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/",
     "content":[]
  },
  {
@@ -195,15 +147,21 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"flutter-v1",
+    "title":"Flutter SDK v1",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/",
+    "content":[]
+ },
+ {
    "key":"rudderstack-cordova-sdk",
    "title":"Cordova",
    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/",
    "content":[]
 },
  {
-    "key":"amp-analytics",
+    "key":"rudderstack-amp-analytics",
     "title":"AMP Analytics",
-    "link":"/stream-sources/rudderstack-sdk-integration-guides/amp-analytics/",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/",
     "content":[]
  },
  {
@@ -243,15 +201,15 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"dotnet",
+    "key":"rudderstack-dotnet-sdk",
     "title":".NET",
-    "link":"/stream-sources/rudderstack-sdk-integration-guides/dotnet/",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/",
     "content":[]
  },
  {
-    "key":"php",
+    "key":"rudderstack-php-sdk",
     "title":"PHP",
-    "link":"/stream-sources/rudderstack-sdk-integration-guides/php/",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/",
     "content":[]
  },
  {
@@ -465,6 +423,12 @@ export const postNavList = [
       "title":"Zendesk Chat",
       "link":"/cloud-extract-sources/zendesk-chat/",
       "content":[]
+   },
+   {
+    "key":"intercom-v2",
+    "title":"Intercom v2",
+    "link":"/cloud-extract-sources/intercom-v2/",
+    "content":[]
    },
  {
     "key":"warehouse-actions",
@@ -809,6 +773,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"post-affiliate-pro",
+   "title":"Post Affiliate Pro",
+   "link":"/destinations/marketing/post-affiliate-pro/",
+   "content":[]
+},
+{
    "key":"mailchimp",
    "title":"Mailchimp",
    "link":"/destinations/marketing/mailchimp/",
@@ -826,6 +796,12 @@ export const postNavList = [
    "link":"/destinations/marketing/autopilot/",
    "content":[]
 },
+{
+   "key":"sendgrid",
+   "title":"SendGrid",
+   "link":"/destinations/marketing/sendgrid/",
+   "content":[]
+},  
 {
    "key":"gainsight",
    "title":"Gainsight",
@@ -1163,6 +1139,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"google-optimize",
+   "title":"Google Optimize",
+   "link":"/destinations/testing-and-personalization/google-optimize/",
+   "content":[]
+},
+{
    "key":"monetate",
    "title":"Monetate",
    "link":"/destinations/testing-and-personalization/monetate/",
@@ -1475,6 +1457,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"test-api",
+    "title":"Test API",
+    "link":"/rudderstack-api/test-api/",
+    "content":[]
+ },
+ {
     "key":"pixel-api-spec",
     "title":"Pixel API",
     "link":"/rudderstack-api/pixel-api-spec/",
@@ -1485,6 +1473,54 @@ export const postNavList = [
     "title":"User Suppression API",
     "link":"/rudderstack-api/user-suppression/",
     "content":[]
+ },
+ {
+    "key":"get-started",
+    "title":"RudderStack Open Source",
+    "link":"/get-started/",
+    "content":[]
+},
+{
+   "key":"control-plane-lite",
+   "title":"Control Plane Setup",
+   "link":"/get-started/control-plane-lite/",
+   "content":[]
+},
+{
+    "key":"installing-and-setting-up-rudderstack",
+    "title":"Data Plane Setup",
+    "link":"/get-started/installing-and-setting-up-rudderstack/",
+    "content":[]
+},
+{
+    "key":"docker",
+    "title":"Docker",
+    "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
+    "content":[]
+ },
+ {
+    "key":"kubernetes",
+    "title":"Kubernetes",
+    "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
+    "content":[]
+ },
+ {
+    "key":"developer-machine-setup",
+    "title":"Developer Machine Setup",
+    "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
+    "content":[]
+ },
+ {
+    "key":"sending-test-events",
+    "title":"Sending Test Events",
+    "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
+    "content":[]
+ },
+ {
+   "key":"architecture",
+   "title":"Architecture",
+   "link":"/get-started/rudderstack-architecture/",
+   "content":[]
  },
  {
     "key":"user-guides",
