@@ -145,7 +145,7 @@ A sample `track` call is shown below:
 rudderanalytics.track("Checked Out", {
   Clicked_Rush_delivery_Button: true,
   total_value: 2000,
-  Odered: ["T-Shirt", "jacket"],
+  Ordered: ["T-Shirt", "jacket"],
   revenue: 2000,
 })
 ```
@@ -187,7 +187,12 @@ In the above snippet, RudderStack captures the information related to the `Item 
 </ul>
 </div>
 
-### E-Commerce event mapping
+### E-Commerce event name mapping
+
+<div class="successBlock">
+
+E-Commerce event name mapping is supported for both RudderStack cloud mode and web device mode.
+</div>
 
 RudderStack converts the following e-commerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
 
@@ -282,9 +287,49 @@ Furthermore, `items` can contain the following parameters:
 | `image_url` | `ImageURL` |
 | `categories` | `ProductCategories` |
 
+A sample `track` call containing the above e-Commerce event parameters is shown below:
+
+```javascript
+rudderanalytics.track("checkout started ", {
+  order_id: "1234",
+  value: 12.34,
+  categories: ["category1", "category2"],
+  checkout_url: "http://www.testcall.com",
+  item_names: ["item1", "item2"],
+  items: [{
+      product_id: "pId1",
+      sku: "sku1",
+      name: "item1",
+      url: "https://www.item1URL.com",
+      price: 1.0,
+      quantity: 1,
+      image_url: "https://www.item1Image.com,
+      categories: ["category1", "category2"],
+      row_total: 1.0
+    },
+    {
+      product_id: "pId2",
+      sku: "sku2",
+      name: "item2",
+      url: "https://www.item2URL.com",
+      price: 2.0,
+      quantity: 1,
+      image_url: "https://www.item2Image.com,
+      categories: ["category1", "category2"],
+      row_total: 2.0
+    },
+  ],
+});
+```
+
+<div class="infoBlock">
+
+Klaviyo extracts the customer properties from <code class="inline-code">traits</code>/<code class="inline-code">context.traits</code>.
+</div>
+
 <div class="warningBlock">
 
-Note that specifying <code class="inline-code">event_id</code> is not mandatory, as Klaviyo automatically assigns the timestamp to the event. However, if specified explicitly, it <strong>must be unique</strong>. Events with duplicate <code class="inline-code">event_id</code> will be discarded automatically.
+When sending events via the web device mode, specifying <code class="inline-code">order_id</code> is not mandatory, as Klaviyo automatically assigns the timestamp to the event. However, if explicitly specified, it <strong>must be unique</strong>. Klaviyo automatically discards the events with a duplicate <code class="inline-code">order_id</code>.
 </div>
 
 ## Identify
