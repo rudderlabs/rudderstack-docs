@@ -59,13 +59,10 @@ The following permissions are granted when you allow RudderStack to access your 
       <code class="inline-code">https://www.googleapis.com/auth/userinfo.email</code>
     </li>
     <li>
-      <code class="inline-code">https://www.googleapis.com/auth/userinfo.profile</code>.
+      <code class="inline-code">https://www.googleapis.com/auth/userinfo.profile</code>
     </li>
     <li>
-      <code class="inline-code">https://www.googleapis.com/auth/bigquery</code>.
-    </li>
-    <li>
-      <code class="inline-code">https://www.googleapis.com/auth/bigquery.insertdata</code>.
+      <code class="inline-code">https://www.googleapis.com/auth/bigquery</code>
     </li>
   </ul>
 </div>
@@ -92,7 +89,14 @@ To configure BigQuery Stream as a destination in RudderStack, you will need to a
 
 <div class="warningBlock">
 
-If you disable the destination and want to re-enable it, you will need to authorize the credentials (give RudderStack the required permissions to access BigQuery Stream) again.
+If you disable the destination in the RudderStack dashboard and then try to re-enable it later, you may need to reauthorize RudderStack, i.e. give RudderStack the required permissions to access BigQuery Stream. This can happen if:
+
+<ul>
+<li>BigQuery access to the account has been revoked.</li>
+<li>The access token for the account has expired.</li>
+</ul>
+
+Here, <strong>account</strong> refers to the account used to grant RudderStack access to BigQuery.
 </div>
 
 ## Sending events to BigQuery Stream
@@ -100,6 +104,11 @@ If you disable the destination and want to re-enable it, you will need to author
 <div class="infoBlock">
 
 <strong>BigQuery Stream supports only <code class="inline-code">track</code> type of events.</strong>
+</div>
+
+<div class="infoBlock">
+
+RudderStack currently does not support the <code class="inline-code">templateSupportSuffix</code> feature which creates a table schema during a streaming insert action.
 </div>
 
 <div class="warningBlock">
@@ -111,9 +120,9 @@ Suppose you want to stream the events from your web source to BigQuery and the t
 
 <img src="../../assets/event-stream-destinations/bqstream-7.png" alt="BigQuery table schema" />
 
-To successfully stream the events, the event payload tracked from your JavaScript SDK should look like the following sample:
+To successfully stream the events, the event tracked from your JavaScript SDK should look like the following:
 
-```javascript
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -167,11 +176,10 @@ Note that the `track` properties in the above payload match with the fields spec
 
 <img src="../../assets/event-stream-destinations/bqstream-8.png" alt="BigQuery result" />
 
-<div class="infoBlock">
+## Troubleshooting
 
-RudderStack currently does not support the <code class="inline-code">templateSupportSuffix</code> feature which creates a table schema during a streaming insert action.
-</div>
+This [**BigQuery documentation**](https://cloud.google.com/bigquery/docs/error-messages) lists the different errors you can possibly encounter while sending data to BigQuery Stream, along with the steps to troubleshoot and resolve them.
 
 ## Contact us
 
-If you come across any issues while configuring Gainsight PX with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
