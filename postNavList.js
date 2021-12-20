@@ -1097,16 +1097,16 @@ export const postNavList = [
    "content":[]
 },
 {
-   "key":"streaming-platforms",
-   "title":"Streaming Platforms",
-   "link":"/destinations/streaming-platforms/",
+    "key":"streaming-platforms",
+    "title":"Streaming Platforms",
+    "link":"/destinations/streaming-platforms/",
+    "content":[]
+ },
+ {
+   "key":"bigquery-stream",
+   "title":"BigQuery Stream",
+   "link":"/destinations/tag-managers/bigquery-stream/",
    "content":[]
-},
-{
-  "key":"bigquery-stream",
-  "title":"BigQuery Stream",
-  "link":"/destinations/storage-platforms/bigquery-stream/",
-  "content":[]
 },
  {
     "key":"tag-managers",
