@@ -553,6 +553,14 @@ export const jsonData = [
             "content":[
                
             ]
+         },
+         {
+            "key":"chargebee",
+            "title":"Chargebee",
+            "link":"/cloud-extract-sources/chargebee/",
+            "content":[
+               
+            ]
          }
      ]
   },
