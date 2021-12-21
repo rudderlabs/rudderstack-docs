@@ -1,74 +1,82 @@
 ---
 # slug: "/docs/stream-sources/auth0"
 title: "Auth0"
-description: Step-by-step guide to ingest event data from Auth0 into RudderStack
+description: Step-by-step guide to ingest your event data from Auth0 into RudderStack.
 ---
 
 # Auth0
 
 [**Auth0**](https://auth0.com/) is a popular solution used by many companies to add authentication and authorization services to their applications. You can connect Auth0 to your application with just a few lines of code and also define the identity providers, i.e., how you want the users to log in.
 
+You can now send login and signup-related events to RudderStack whenever Auth0 generates an authentication log by adding an [**Auth0 Authentication API webhook**](https://auth0.com/docs/extensions/auth0-authentication-api-webhooks) extension that points to RudderStack.
+
 This guide will help you set up Auth0 as a source in RudderStack.
 
-## Introduction
+## Getting started
 
-By adding an [**Auth0 Authentication API webhook**](https://auth0.com/docs/extensions/auth0-authentication-api-webhooks) extension that points to RudderStack, you can send events to RudderStack whenever Auth0 generates an authentication log. This way, you can capture events related to logins and signups and send them to RudderStack.
+Follow these steps to set up your Auth0 source in the RudderStack dashboard:
 
-## Getting Started
+- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Auth0** from the list of **Event Stream** sources, as shown:
 
-In order to add Auth0 as a source in RudderStack, please follow these steps:
+<img src="../assets/event-stream-sources/auth0-1.png" alt="Auth0 source in RudderStack" />
 
-- From your [**RudderStack dashboard**](https://app.rudderlabs.com/), click on **Add Source**. From the list of sources, select **Auth0**.
+- Assign a name to your source and click on **Next**.
 
-<img src="../assets/auth02.png" /><span class="imageTitle">Auth0 Source</span>
+- Your Auth0 source is now configured. Note the source **Write key** - this will be required to configure the endpoint URL in the following steps.
 
-- Enter the name you want to assign to this source.
-- Once you have entered the name of your source, click on **Next** and save the source.
+<img src="../assets/event-stream-sources/auth0-2.png" alt="Auth0 source write key" />
+
 - Head over to your [**Auth0**](https://auth0.com/) account and navigate to the **Extensions** page from the sidebar.
+
 - Look for the extension **Auth0 Authentication API webhooks**, as shown:
 
-<img src="../assets/auth03.png" />
+<img src="../assets/event-stream-sources/auth0-3.png" alt="Auth0 API webhook" />
 
-- After selecting this option, you should be able to see the extension installation page as shown:
+- After selecting this option, you should be able to see the extension installation page, as shown:
 
-<img src="../assets/auth04.png" /><span class="imageTitle">Auth0 extension installation page</span>
+<img src="../assets/event-stream-sources/auth0-4.png" alt="Auth0 extension installation page" />
 
 - At the bottom, select the **LOG_TYPES** option for which you want to forward the events to RudderStack.
 
-<img src="../assets/auth05.png" />
+<img src="../assets/event-stream-sources/auth0-5.png" alt="Auth0 log types" />
 
 - Add the **WEBHOOK_URL** as shown on the source settings page in your RudderStack dashboard.
 
-<img src="../assets/1 (25).png" />
+<img src="../assets/event-stream-sources/auth0-6.png" alt="Auth0 webhook URL" />
 
-The webhook URL is of the format:
+The webhook URL is of the following format:
 
 ```
-<DATA_PLANE_URL>/v1/webhook?writeKey=<YOUR_AUTH0_SOURCE_WRITE_KEY>
+<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>
 ```
 
-- If you're using RudderStack Cloud, replace `<DATA_PLANE_URL>` with [**https://hosted.rudderlabs.com/**](https://hosted.rudderlabs.com/).
-- If you're hosting your own Data Plane, replace `<DATA_PLANE_URL>` with your [**hosted Data Plane URL**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
+A sample webhook URL is shown below:
 
-An example is as shown:
+```
+https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
+```
 
-`https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J`
+<div class="infoBlock">
+
+For more information on the data plane URL, refer to <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this</a> section.
+</div>
 
 <div class="warningBlock">
 
-Make sure you add the <code class="inline-code">writeKey</code> as the query parameter to the URL. This is required to prevent the webhook from failing for the lack of a valid write key.
-
+Make sure you add the source write key as query parameter to the URL. This is required to prevent the webhook from failing because of an invalid write key.
 </div>
 
-Then, continue with the rest of the steps, as follows:
+Then, continue with the rest of the steps as listed below:
 
 - Keep the authorization section as blank.
+
 - You can disable the **SEND_AS_BATCH** setting to receive the events in separate requests. However, we recommend setting it to **Enabled**.
+
 - Finally click on **INSTALL** to install the webhook on your Auth0 dashboard.
 
-## RudderStack Event Transformation
+## Event transformation
 
-The webhook event from Auth0 is ingested into RudderStack after converting it into the RudderStack event format. The `user_id` set by Auth0 is converted to `userId`.
+The Auth0 webhook events are ingested into RudderStack after converting them in a RudderStack event format. The `user_id` set by Auth0 is converted to `userId`.
 
 The following table lists the properties populated from the Auth0 event payload directly to the RudderStack event:
 
@@ -87,16 +95,15 @@ The following table lists the properties populated from the Auth0 event payload 
 | `user_name`               | `context.traits.user_name`                                                                  |
 | `user_agent`              | `context.userAgent`                                                                         |
 
-## How to Debug
+## Debugging
 
 If you're unable to see any events flowing from the Auth0 API webhooks to RudderStack, you can troubleshoot the issue by viewing the API webhooks logs. To do so, go to your Auth0 dashboard and navigate to **Monitoring** - **Logs**.
 
 <div class="infoBlock">
 
-Refer to the <a href="https://auth0.com/docs/extensions/auth0-authentication-api-webhooks#troubleshoot-webhooks">Auth0 documentation</a> for more information on this issue.
-
+Refer to the <a href="https://auth0.com/docs/extensions/auth0-authentication-api-webhooks#troubleshoot-webhooks">Auth0 documentation</a> for more information on troubleshooting your webhook.
 </div>
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Auth0 as a source, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

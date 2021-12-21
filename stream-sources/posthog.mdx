@@ -1,63 +1,57 @@
 ---
 # slug: "/docs/stream-sources/posthog"
 title: "PostHog"
-description: Step-by-step guide to ingest event data from PostHog into RudderStack
+description: Step-by-step guide to ingest your event data from PostHog into RudderStack.
 ---
 
 # PostHog
 
-[PostHog](https://posthog.com/) is a complete product analytics stack that you can seamlessly deploy on your infrastructure. Built for both data analysts and managers, PostHog gives you easy access to product analytics which you can perform at scale. It also gives you full control over all your user data.
+[**PostHog**](https://posthog.com/) is a complete product analytics stack that you can seamlessly deploy on your infrastructure. Built for both data analysts and managers, PostHog simplifies scalable product analytics, while giving you full control over all your user data.
 
-RudderStack now supports PostHog as an Event Streams source. We've built a[ RudderStack PostHog plugin](https://github.com/rudderlabs/rudderstack-posthog-plugin) that lets you send events from your PostHog instance to RudderStack.
+RudderStack now supports PostHog as an Event Streams source. You can send your PostHog events to RudderStack by using the [ **RudderStack PostHog plugin**](https://github.com/rudderlabs/rudderstack-posthog-plugin).
 
-## ‌Getting Started
+## ‌Getting started
 
-In order to add PostHog as a source in RudderStack, please follow these steps:
+Follow these steps to set up your PostHog source in the RudderStack dashboard:
 
-- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-- From the left panel, select Sources. Then, click on **Add Source**, as shown:
+- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Extole** from the list of **Event Stream** sources, as shown:
 
-<!--![](https://lh3.googleusercontent.com/btm9bvnoW8qs7XZXIfuQzmlaQPcD_JLg8y4ZdorBviunWfN_U9hk6WpYPQ-kp4HwCy6kJBvW60ygQHZznLkFVB-vQc7rGYlYrRMAzbpnBgLgJD9S3_pYoicqo40jLQs-YrHYNT5L)-->
+<img src="../assets/event-stream-sources/posthog-1.png" alt="PostHog source in RudderStack" />
 
-<img src="../assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png" alt="Add Source" />
+- Assign a name to your source and click on **Next**.
 
-- From the list of sources, select **PostHog**.
+- Your PostHog source is now configured. Note the source **Write key** - this will be required in the later steps.
 
-<img src="../assets/posthog-1.png" alt="PostHog" />
+<img src="../assets/event-stream-sources/posthog-2.png" alt="PostHog source write key" />
 
-- Enter the name of your source, and click on **Next**.
+## Setting up the RudderStack-PostHog plugin
 
-<img src="../assets/posthog-2.png" alt="Next" />
+Once you've successfully set up PostHog as a source on the RudderStack dashboard, follow these steps to configure and set up the PostHog-managed RudderStack plugin.
 
-- In the **Connection Settings** screen, enter your PostHog credentials and complete the source configuration. Once you've successfully set up the source, you should see the following screen:
+- Copy your PostHog source **Write key** from the RudderStack dashboard and your data plane URL.
 
-<img src="../assets/posthog-3.png" alt="Connection Settings" />
+<div class="infoBlock">
 
-## Setting up the RudderStack PostHog plugin
+For more information on the data plane URL and how to get it, refer to <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this</a> section.
+</div>
 
-Once you've successfully set up PostHog as a source on the RudderStack dashboard, follow these steps to configure and set up the [RudderStack PostHog plugin](https://github.com/rudderlabs/rudderstack-posthog-plugin) which allows you to ingest PostHog data into RudderStack:
+- Then, go to your PostHog dashboard and go to **Plugins**. In the search bar, type **RudderStack**.
 
-- Get your PostHog source **Write Key** and your RudderStack server URL \(also called as **Data Plane URL**\).
+- Configure this plugin using the write key and the data plane URL that you copied above. Append `v1/batch` to this URL so that it is of the format `https://<DATA_PLANE_URL>/v1/batch`.
 
-<img src="../assets/posthog-4.png" alt="Write Key" />
+<div class="infoBlock">
 
-<img src="../assets/posthog-5.png" alt="Data Plane URL" />
+If you are using RudderStack Cloud, the default RudderStack Server URL will be <code class="inline-code">https://hosted.rudderlabs.com/v1/batch</code>
+</div>
 
-- Copy the [RudderStack-PostHog Plugin repository URL](https://github.com/rudderlabs/rudderstack-posthog-plugin).
-- Go to your PostHog dashboard, and add a custom plugin using this URL, as shown:
+<img src="../assets/event-stream-sources/posthog-4.png" alt="RudderStack Server URL" />
 
-<img src="../assets/posthog-6.png" alt="Add a custom plugin" />
-
-- Once added successfully, configure this plugin using the source write key and RudderStack server URL that you copied above. The default RudderStack server URL is configured to `https://hosted.rudderlabs.com`. Append **`v1/batch`** to this URL, as shown:
-
-<img src="../assets/posthog-7.png" alt="v1-batch" />
-
-- Finally, enable this plugin. You should now start to see the events sent to your PostHog instance flowing to this RudderStack source.
+- Finally, enable this plugin. Any events generated in your PostHog instance will now be automatically sent to RudderStack. You can then route these events to your specified destinations.
 
 ## License
 
-The RudderStack PostHog Plugin is released under the [MIT License](https://opensource.org/licenses/MIT).
+The RudderStack PostHog Plugin is released under the [**MIT License**](https://opensource.org/licenses/MIT).
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring PostHog as an Event Stream source with RudderStack, please feel free to contact us. You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel - we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

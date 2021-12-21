@@ -6,49 +6,58 @@ description: Step-by-step guide to ingest event data from Segment into RudderSta
 
 # Segment
 
-[Segment](https://segment.com) is a Customer Data Platform \(CDP\) that allows you to collect your customer data, while giving you complete control over how you use it. It is a popular tool that is used by many businesses to collect and send event data to various platforms, including but not limited to - Zendesk, Optimizely, and Google Analytics. Segment is a good option for companies that are sending data to several databases, and integrating with lots of different marketing tools.
+[**Segment**](https://segment.com) is a Customer Data Platform that lets you collect your customer data while giving you complete control over how you use it.
 
-This guide is aimed at setting up Segment as a source in RudderStack in the easiest possible way. You can simply add a webhook destination in your Segment dashboard that points to RudderStack. This way, you can send events to RudderStack whenever Segment gets an event.
+You can now send your Segment event data to RudderStack by adding a webhook endpoint that points to RudderStack. This way, you can forward any event received by Segment to RudderStack.
 
-## Getting Started
+This guide will help you set up Segment as a source in RudderStack.
 
-In order to add Segment as a source in RudderStack, please follow these steps:
+## Getting started
 
-- From your [RudderStack dashboard](https://app.rudderstack.com), click on **Add Source**. From the list of sources, select **Segment**, as shown:
+Follow these steps to set up your Segment source in the RudderStack dashboard:
 
-<img src="../assets/segment1.png" />
-<span class="imageTitle">Segment Source</span>
+- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Segment** from the list of **Event Stream** sources, as shown:
 
-- Enter the name you want to assign to this source.
-- Once you have entered the name of your source, click on **Next** and save the source.
-- Head over to your [Segment Dashboard](https://app.segment.com/workspaces) and navigate to the **Destinations** page from the sidebar. Click on **Add Destination** and on the destination catalog page search for the destination **Webhooks**, as shown in the screenshot below:
+<img src="../assets/event-stream-sources/segment-1.png" alt="Segment source in RudderStack" />
 
-<img src="../assets/segment2.png" />
-<span class="imageTitle">Segment Webhook destination</span>
+- Assign a name to your source and click on **Next**.
 
-- Now configure the destination and connect it to your desired source. On the destination settings screen, enter the RudderStack webhook. The following screenshot shows where to put the **Webhook URL:**
+- Your Segment source is now configured. Note the source **Write key** - this will be required to configure the endpoint URL in the later steps.
 
-<img src="../assets/segment3.png" />
-<span class="imageTitle">Segment Webhook Destination settings</span>
+<img src="../assets/event-stream-sources/segment-2.png" alt="Segment source write key" />
 
-Your webhook URL should follow this format `<your-dataplane-url>/v1/webhook?writeKey=<segment-source-writeKey>`
+- Next, head over to your [**Segment dashboard**](https://app.segment.com/workspaces) and navigate to the **Destinations** page from the sidebar. Then, click on **Add Destination**. In the destinations catalog page, search for **Webhooks**.
 
-An example webhook URL is as follows:
+<img src="../assets/event-stream-sources/segment-3.png" alt="Webhooks destination in Segment" />
 
-```bash
-https://some.dataplaneurl.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
-```
+- In the configuration screen, enter the RudderStack webhook URL as shown:
+
+<img src="../assets/event-stream-sources/segment-4.png" alt="RudderStack webhook URL setting in Segment" />
+
+The webhook URL is of the following format:
+
+`<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>`
+
+<div class="infoBlock">
+
+For more information on the data plane URL and how to get it, refer to <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this</a> section.
+</div>
 
 <div class="warningBlock">
 
-Make sure you add the <code class="inline-code">writeKey</code> as a query parameter to the URL. This is required to prevent the webhook from failing for the lack of a valid write key.
-
+Make sure you add the source write key as query parameter to the URL. This is required to prevent the webhook from failing because of an invalid write key.
 </div>
 
-## RudderStack Event Transformation
+A sample webhook URL is shown below:
 
-Being Segment API compatible, RudderStack does not perform any modifications on the data sent by Segment.
+```http
+https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
+```
 
-## Contact Us
+## Event transformation
 
-If you come across any issues while configuring Segment as a source with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+As RudderStack is fully Segment-compatible, it does not perform any modifications on the event data received from Segment.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.

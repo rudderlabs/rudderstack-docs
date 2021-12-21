@@ -1,75 +1,90 @@
 ---
 # slug: "/docs/stream-sources/customerio"
 title: "Customer.io"
-description: Step-by-step guide to ingest event data from Customer.io into RudderStack
+description: Step-by-step guide to ingest your event data from Customer.io into RudderStack.
 ---
 
 # Customer.io
 
-[Customer.io](https://customer.io/) is a popular marketing platform for sending targeted emails and push and SMS notifications to improve customer engagement and thereby the overall conversion rate. It leverages real-time behavioral data and advanced segmentation techniques across the web and mobile platforms to improve your customers' overall experience.
+[**Customer.io**](https://customer.io/) is a popular marketing platform for sending targeted emails and push and SMS notifications to improve customer engagement and thereby the overall conversion rate. It leverages real-time behavioral data and advanced segmentation techniques across the web and mobile platforms to improve your customers' overall experience.
 
-This document guides you in setting up Customer.io as a source in RudderStack. By adding a reporting webhook in Customer.io that points to RudderStack, you can send events to RudderStack whenever Customer.io sends messages to your customers. Events such as messages delivered, opened, and clicked by the customers are also captured and sent to RudderStack.
+By adding a reporting webhook in Customer.io, you can send your Customer.io email events to RudderStack. These include events such as email delivered, opened, bounced, and more.
 
-## Getting Started
+This guide will help you set up Customer.io as a source in RudderStack.
 
-In order to add Customer.io as a source in RudderStack, please follow these steps:
+## Getting started
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), click on **Add Source**. From the list of sources, select **Customer.io**, as shown:
+Follow these steps to set up your Customer.io source in the RudderStack dashboard:
 
-<img src="../assets/image (20) (1).png" />
+- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/) and click on **Add Source**. Then, select **CustomerIO** from the list of **Event Stream** sources, as shown:
 
-- Enter the name of your source.
+<img src="../assets/event-stream-sources/customerio-1.png" alt="Customer.io source in RudderStack" />
 
-<div class="infoBlock">
+- Assign a source name and click on **Next**.
 
-If you wish to connect this source to our warehouse destinations, the source name should match the name of your warehouse schema.
+<div class="warningBlock">
 
+To connect this source to a RudderStack warehouse destination, the source name should match the name of your warehouse schema.
 </div>
 
-- Once you have entered the name of your source, click on **Next** and save the source.
+- Your Customer.io source is now configured. Note the source **Write key** - this will be required to configure the endpoint URL in the following steps.
 
-<img src="../assets/image (61).png" />
+<img src="../assets/event-stream-sources/customerio-2.png" alt="Customer.io source write key" />
 
-- Head over to your Customer.io account and navigate to the **Integrations** page from the sidebar. Look for the integration **Reporting Webhooks**, as shown:
+- Head over to your Customer.io account and navigate to the **Integrations** page from the sidebar. Then, look for the integration **Reporting Webhooks**, as shown:
 
-<img src="../assets/image (62).png" />
+<img src="../assets/event-stream-sources/customerio-3.png" alt="Customer.io reporting webhooks" />
 
-- Click on **Add Webhook** and add a webhook pointing to the URL in the following format:`<your_dataplane_url>/v1/webhook?writeKey=<your_customer_io_source_write_key>`
+- Click on **Add Webhook** and add the webhook URL as shown on the source settings page in your RudderStack dashboard.
 
-An example URL would like the following:
+<img src="../assets/event-stream-sources/customerio-4.png" alt="Customer.io webhook URL" />
 
-```http
+The webhook URL is of the format:
+
+```
+<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>
+```
+
+
+A sample webhook URL is shown below:
+
+```
 https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
 ```
 
-<div class="warningBlock">
-Make sure to add the <code class="inline-code">writeKey</code> as query parameter to the URL. This is required to prevent the webhook from failing for the lack of a valid write key.
+<div class="infoBlock">
 
+For more information on the data plane URL, refer to <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this</a> section.
 </div>
 
-A sample figure highlighting this step is as shown:
+<div class="warningBlock">
 
-<img src="../assets/image (30).png" /><span class="imageTitle">Webhook Settings</span>
+Make sure you add the source write key as query parameter to the URL. This is required to prevent the webhook from failing because of an invalid write key.
+</div>
 
-- Finally, save the webhook.
+### Supported events
 
-## Supported Events
-
-We currently support only the Email Events as listed in the table below:
+RudderStack currently supports only the Customer.io Email Events listed in the table below:
 
 | **Email Event** | **Description**                                                                           |
 | :-------------- | :---------------------------------------------------------------------------------------- |
-| `Delivered`     | The delivery provider's report that the email was delivered to the inbox of the recipient |
-| `Opened`        | An email was opened by the recipient                                                      |
-| `Clicked`       | A tracked link in an email was clicked by the recipient / customer                        |
-| `Bounced`       | The delivery provider's report that it was unable to deliver the email to the recipient   |
-| `Spammed`       | An email was marked as spam by the recipient                                              |
-| `Unsubscribed`  | The customer unsubscribed via a particular email                                          |
+| `Delivered`     | The delivery provider's report that the email was delivered to the inbox of the recipient. |
+| `Opened`        | An email was opened by the recipient.                                                      |
+| `Clicked`       | A tracked link in an email was clicked by the recipient / customer.                        |
+| `Bounced`       | The delivery provider's report that it was unable to deliver the email to the recipient.   |
+| `Spammed`       | An email was marked as spam by the recipient.                                             |
+| `Unsubscribed`  | The customer unsubscribed via a particular email.                                          |
 
-## RudderStack Event Transformation
+The following image highlights the whole setup in the Customer.io dashboard:
 
-The webhook event from Customer.io is ingested into RudderStack after converting it into the format of a RudderStack event. The `customer_id` set by Customer.io is set as `userId` . In cases where Customer.io does not send the `customer_id`, the email address of the user is set as `anonymousId`.
+<img src="../assets/event-stream-sources/customerio-5.png" alt="Customer.io webhook settings" />
 
-## Contact Us
+- Finally, save the webhook.
 
-If you come across any issues while configuring Customer.io as a source with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel - we will be happy to talk to you!
+## Event transformation
+
+The Customer.io webhook events are ingested into RudderStack after converting them into the RudderStack event format. The `customer_id` set by Customer.io is set as `userId`. In cases where Customer.io does not send the `customer_id`, the email address of the user is set as `anonymousId`.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
