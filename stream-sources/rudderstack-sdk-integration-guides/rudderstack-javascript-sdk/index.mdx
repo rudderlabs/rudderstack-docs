@@ -55,6 +55,7 @@ The `options` parameter in the above `load` call looks like the following:
   configUrl: string,  // defaults to https://api.rudderlabs.com
   queueOptions: QueueOpts,
   loadIntegration: boolean // defaults to true.
+  secureCookie: boolean // defaults to false.
 }
 ```
 
@@ -67,6 +68,7 @@ It includes the following details:
 |  `configUrl`          | String                              | Defaults to `https://api.rudderlabs.com`. You need to provide the server (Control Plane) endpoint serving your destination configurations. Note that `sourceConfig` is automatically appended to this endpoint by the SDK. |
 |  `queueOpts`          | [**QueueOpts**](#queueopts)         | Refer to the [`QueueOpts`](#queueopts) section.          |
 |  `loadIntegration`    | Boolean                             | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                    |
+| `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS. |
 
 For more details, refer to the section on the [**`options`**](#options) parameter.
 
@@ -83,25 +85,6 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 <div class="infoBlock">
 
   More information on how to get the <code class="inline-code">CONTROL_PLANE_URL</code> can be found <a href="https://docs.rudderstack.com/get-started/control-plane-lite/#what-is-the-control-plane-url">here</a>.
-</div>
-
-### Secure cookie flag
-
-RudderStack lets you set a `secureCookie` flag while loading the SDK. This flag allows you to control how you send the cookie to the storage backend, i.e. via HTTP or HTTPS.
-
-An example is shown below:
-
-```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-  configUrl: string, // defaults to https://api.rudderlabs.com
-  logLevel: "DEBUG",
-  secureCookie: true // defaults to false
-});
-```
-
-<div class="infoBlock">
-
-  Setting <code class="inline-code">secureCookie</code> to <code class="inline-code">true</code> results in RudderStack sending the cookie over a secure connection, i.e. HTTPS. If set to <code class="inline-code">false</code>, the cookie is sent via HTTP.
 </div>
 
 ### Loading selective destinations
