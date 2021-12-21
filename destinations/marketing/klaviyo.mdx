@@ -194,7 +194,7 @@ In the above snippet, RudderStack captures the information related to the `Item 
 E-Commerce event name mapping is supported for both RudderStack cloud mode and web device mode.
 </div>
 
-RudderStack converts the following e-commerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
+RudderStack converts the following E-Commerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
 
 | **RudderStack Event Name** | **Klaviyo Event Name** |
 |:--------------------------------|:--------------------------|
@@ -206,10 +206,20 @@ In addition, RudderStack also sends the associated customer properties and the t
 
 <div class="infoBlock">
  
- The token is the Public API key used to configure Klaviyo as a destination in RudderStack. This is a mandatory field. Also, the customer properties must contain atleast one of <code class="inline-code">email</code> or  <code class="inline-code">phone_number</code>.
+ The token refers to the Public API key used to configure Klaviyo as a destination in RudderStack. <strong>This is a mandatory field</strong>.
 </div>
 
-In addition to the above-mentioned properties, you can also **optionally** send specific fields for each of the events covered in the following sections:
+<div class="infoBlock">
+
+RudderStack extracts the customer properties from <code class="inline-code">traits</code>/<code class="inline-code">context.traits</code>. Refer to the sample <code class="inline-code">track</code> call in the <a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/#track">Track</a> section above for more information on passing the properties within <code class="inline-code">traits</code>/<code class="inline-code">context.traits</code>.
+</div>
+
+<div class="warningBlock">
+
+  The customer properties must contain atleast one of <code class="inline-code">email</code> or <code class="inline-code">phone_number</code>.
+</div>
+
+In addition to the above-mentioned properties, you can also **optionally** send specific fields for each of the events covered in the following sections.
 
 #### Product Viewed
 
@@ -321,11 +331,6 @@ rudderanalytics.track("checkout started ", {
   ],
 });
 ```
-
-<div class="infoBlock">
-
-Klaviyo extracts the customer properties from <code class="inline-code">traits</code>/<code class="inline-code">context.traits</code>.
-</div>
 
 <div class="warningBlock">
 
