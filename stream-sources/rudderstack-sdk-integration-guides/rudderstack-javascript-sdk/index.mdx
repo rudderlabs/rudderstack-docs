@@ -85,6 +85,25 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
   More information on how to get the <code class="inline-code">CONTROL_PLANE_URL</code> can be found <a href="https://docs.rudderstack.com/get-started/control-plane-lite/#what-is-the-control-plane-url">here</a>.
 </div>
 
+### Secure cookie flag
+
+RudderStack lets you set a `secureCookie` flag while loading the SDK. This flag allows you to control how you send the cookie to the storage backend, i.e. via HTTP or HTTPS.
+
+An example is shown below:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  configUrl: string, // defaults to https://api.rudderlabs.com
+  logLevel: "DEBUG",
+  secureCookie: true
+});
+```
+
+<div class="infoBlock">
+
+  Setting <code class="inline-code">secureCookie</code> to <code class="inline-code">true</code> results in RudderStack sending the cookie over a secure connection, i.e. HTTPS. If set to <code class="inline-code">false</code>, the cookie is sent via HTTP.
+</div>
+
 ### Loading selective destinations
 
 RudderStack lets you send your event data to selective destinations specified by you and disable sending events to the rest of the destinations. You can specify these destinations through the `load` call, as shown in the following snippet:
