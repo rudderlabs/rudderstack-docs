@@ -6,18 +6,20 @@ description: Step-by-step guide to send your event data from RudderStack to Klav
 
 # Klaviyo
 
-[Klaviyo](https://www.klaviyo.com/) is a powerful eCommerce platform that allows you to boost your business revenue. It supports unique features such as category-based segmentation and various event triggers based on page views, purchases, email engagement, etc. With Klaviyo, you can easily track and measure all your user activity and the resulting revenue and get a breakdown of this revenue based on custom attributes like campaign type or revenue per recipient. It also offers features such as trend reports, cohort analysis, and various options for boosting customer engagement, such as personalized newsletters, product recommendations, in-app push notifications, and more.
+[**Klaviyo**](https://www.klaviyo.com/) is a powerful eCommerce platform that lets you boost your business revenue. It supports unique features such as category-based segmentation and various event triggers based on page views, purchases, email engagement, etc. You can easily track and measure all your user activity and the resulting revenue and get a breakdown of this revenue based on different custom attributes.
 
-You can now send your event data directly to Klaviyo through RudderStack.
+Klaviyo also offers features such as trend reports, cohort analysis, and various options for boosting customer engagement, such as personalized newsletters, product recommendations, in-app push notifications, and more.
+
+RudderStack supports Klaviyo as a destination to which you can seamlessly send your event data.
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/klaviyo">GitHub repo</a>.**
+  <strong>Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/klaviyo">GitHub repo</a></strong>.
 </div>
 
-## Getting Started
+## Getting started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by Klaviyo. Please refer the following table to do so:
+Before configuring Klaviyo as a destination in RudderStack, verify if the source platform is supported by Klaviyo by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -26,49 +28,64 @@ Before configuring your source and destination on the RudderStack, please check 
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
-Once you have confirmed that the platform supports sending events to Klaviyo, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Klaviyo, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source and Klaviyo as a destination.
+- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Klaviyo**.
 
 <div class="infoBlock">
 
-Please follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">How to Add a Source and Destination in RudderStack</a> to add a source and destination in RudderStack.
-
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-<img src="../../assets/Klaviyo_conf.png" /><span class="imageTitle">Configuration Settings for Klaviyo</span>
+<img src="../../assets/event-stream-destinations/klaviyo-connection-settings.png" alt="Klaviyo connection settings"/>
 
-## Klaviyo Configuration Settings on the RudderStack Dashboard
+## Connection settings
 
 To successfully configure Klaviyo as a destination, you will need to configure the following settings:
 
-- **Public API Key:** Your Public API Key is the unique key generated against your account. It can be found in your account on the **Account** section under the **Settings** tab.
-- **Private API Key:** Your Private API key can be generated for your account on the **Account** section under the **Settings** tab. This key allows you to add users to list or subscribe them using personalised emails/sms.
-- **Enforce Email as Primary Identifier:** If this option is enabled, we will never set `$id` field to your `userId` when you send events. Instead, we will only set a custom attribute `_id` and only set `$email` as the primary identifier with your `traits.email` or `properties.email`. You should be careful when enabling this option and understand its full implications. This should only be enabled if you are experiencing an issue with duplicate profiles being created inside Klaviyo.
-- **List Id:** Your default List Id to which you want to add/subscribe identified users.
-- **Consent:** If you are a GDPR-compliant business, you will need to include `consent` in your API call,`consent` is a Klaviyo-specific property and only accepts the following values: `email`, `web`, `sms`, `directmail`, and `mobile`.
-- **SMS Consent:** If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile \(for double opt-in lists\), include an `smsConsent` key in the properties with a value of `true` or `false`
-- **Send Page As Track:** If you wish send page events as track events, along with `name` and `category` you need to enable this option.
-- **Additional Page info:** If you are sending page events as track, you can also choose to send in additional `properties` for the event by enabling this field.
-- **Use Native SDK to send Events:** Enable this option if you want to send events using device mode
+- **Public API Key**: Your Public API Key is the unique key generated against your Klaviyo account. It can be found in your Klaviyo dashboard in the **Account** section under **Settings**.
+
+- **Private API Key**: Your Private API key can be generated for your account in the **Account** section under **Settings**. This key allows you to add users to a list or subscribe them using personalised emails/SMS.
+
+- **Enforce Email as Primary Identifier**: If this option is enabled, RudderStack will never set `$id` field to your `userId` when you send the events. Instead, RudderStack will only set a custom attribute `_id` and `$email` as the primary identifier with your `traits.email` or `properties.email`. 
+
+<div class="warningBlock">
+
+This setting should be enabled only if you are experiencing any issues with duplicate profiles created in your Klaviyo account.
+</div>
+
+- **List Id**: Enter your default list ID to which you want to add or subscribe your identified users.
+
+- **Consent**: If you are a GDPR-compliant business, you will need to include `consent` in your API call. 
 
 <div class="infoBlock">
 
-Note that in case of absence of <code class="inline-code">userId</code> rudderstack will try to fallback on <code class="inline-code">anonymousId</code> for mapping the user with an unique identifier. In case of absence of <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code> then <code class="inline-code">email</code> or <code class="inline-code">phone</code> will be considered as primary identifier for the user.
+<code class="inline-code">consent</code> is a Klaviyo-specific property and only accepts these values: <code class="inline-code">email</code>, <code class="inline-code">web</code>, <code class="inline-code">sms</code>, <code class="inline-code">directmail</code>, and <code class="inline-code">mobile</code>. 
+</div>
 
+- **SMS Consent**: If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile \(for double opt-in lists\), then enable this option. Alternatively, you can also include an `smsConsent` key in the properties with a value of `true` or `false`.
+
+- **Send Page As Track**: Enable this option if you wish send `page` events as `track` events along with the event `name` and `category`.
+
+- **Additional Page info**: If you are sending `page` events as `track` events, you can also choose to send in additional properties for the event by enabling this field.
+
+- **Use Native SDK to send Events**: Enable this option if you want to send events using the web device mode.
+
+<div class="infoBlock">
+
+In case <code class="inline-code">userId</code> is absent, RudderStack uses <code class="inline-code">anonymousId</code> for mapping the user with an unique identifier. In case both <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code> are absent, then <code class="inline-code">email</code> or <code class="inline-code">phone</code> will be considered as the user's primary identifier.
 </div>
 
 ## Page
 
-The `page` call allows you the web page that a user is viewing, along with its associated properties.
+The `page` call lets you record your website's page views with any additional relevant information about the viewed page.
 
-To send `name` and `category` info in the page event, you can do so by switching on the `Send Page As Track` button on the RudderStack dashboard. And, to associate `properties` with the page-view event, you can do so by enabling the `Additional Page info` property on the RudderStack dashboard.
+You can send the `name` and `category` information in the `page` event by enabling the **Send Page As Track** while setting up the Klaviyo destination in RudderStack. To associate the properties with the page view event, enable the `Additional Page info` setting.
 
-An example of such `page` call is shown below.
+A sample `page` call is shown below:
 
 ```javascript
 rudderanalytics.page("Cart", "Cart Viewed", {
@@ -82,46 +99,60 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 
 <div class="infoBlock">
 
-Note that **<code class="inline-code">page</code> calls are only supported in the RudderStack device mode** integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+The <code class="inline-code">page</code> calls are only supported in the RudderStack device mode. For more information on the RudderStack device mode, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 
 </div>
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
+The `screen` method lets you record whenever the user views their mobile screen, with any additional relevant information about the screen. 
 
-A sample `screen` call looks like the following code snippet:
+<div class="successBlock">
+
+The <code class="inline-code">screen</code>call is the mobile equivalent of the <code class="inline-code">page</code> call.
+</div>
+
+A sample `screen` call is shown below:
 
 ```objectivec
 [[RSClient sharedInstance] screen:@"Sample Screen Name" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In destination the above screen call will be shown as - "Sample Screen Name: " along with the properties.
+In the above snippet, RudderStack captures all the information related to the viewed screen along with any additional information associated with the event. In the destination, the above `screen` call will be shown as `Sample Screen Name: ` along with the properties.
 
 <div class="infoBlock">
 
-Note that **`screen` calls are only supported in the RudderStack cloud mode** integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+The <code class="inline-code">screen</code> calls are only supported in the RudderStack cloud mode. To know more about the RudderStack cloud mode, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event. It is similar to `screen` event, and the user has to be associated with an event either by using `userId`, `email` or `phone`.
+The `track` call allows you to capture user actions along with the properties associated with these actions. 
 
-A sample `track` call looks like the following:
+<div class="infoBlock">
+
+Each user action is called as an <strong>event</strong>. 
+</div>
+
+<div class="infoBlock">
+
+The user has to be associated with an event either via their <code class="inline-code">userId</code>, <code class="inline-code">email</code>, or <code class="inline-code">phone</code>.
+</div>
+
+A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track("Checked Out", {
   Clicked_Rush_delivery_Button: true,
   total_value: 2000,
-  Odered: ["T-Shirt", "jacket"],
+  Ordered: ["T-Shirt", "jacket"],
   revenue: 2000,
 })
 ```
 
-In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the details of the `Checked out` event.
+In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with the details of the event.
 
-A sample server-side `track` call along with user information looks like the following:
+A sample server-side `track` call along with the user information is as shown:
 
 ```javascript
 client.track({
@@ -145,25 +176,172 @@ client.track({
 })
 ```
 
-In the above snippet, RudderStack captures the information related to the `Item Purchased` event, along with any additional info about that event in `properties` - in this case the revenue, along with product information. Moreover since this event is captured usinng server-side sdk we are passing user information in `context`, along with an unique `userId`.
+In the above snippet, RudderStack captures the information related to the `Item Purchased` event, along with any additional info about that event in `properties` - in this case the `revenue`, along with product information. Moreover since this event is captured using a server-side SDK, RudderStack passes the user information in `context`, along with a unique `userId`.
 
 <div class="infoBlock">
 
-To send <code class="inline-code">track</code> or <code class="inline-code">screen</code> type event using an SDK that does not persist user context info after <code class="inline-code">identify</code>, you need to pass the user info in <code class="inline-code">context.traits</code>.
+<ul>
+<li>To send <code class="inline-code">track</code> or <code class="inline-code">screen</code> type event using an SDK that does not persist user context information after <code class="inline-code">identify</code>, you need to pass the information in <code class="inline-code">context.traits</code>.</li>
 
+<li>To set a specific value to the <code class="inline-code">screen</code> or <code class="inline-code">track</code> type event, you need to pass the event-related property in the <code class="inline-code">properties</code> field. Also, you can send <code class="inline-code">revenue</code> property in the <code class="inline-code">track</code> event and RudderStack will automatically map it to Klaviyo's special property <code class="inline-code">$value</code>.</li>
+</ul>
+</div>
+
+### E-Commerce event name mapping
+
+<div class="successBlock">
+
+E-Commerce event name mapping is supported for both RudderStack cloud mode and web device mode.
+</div>
+
+RudderStack converts the following E-Commerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
+
+| **RudderStack Event Name** | **Klaviyo Event Name** |
+|:--------------------------------|:--------------------------|
+| `product viewed`/`product clicked` | `Viewed Product` |
+| `product added` | `Added to Cart` |
+| `checkout started` | `Started Checkout` |
+
+In addition, RudderStack also sends the associated customer properties and the token.
+
+<div class="infoBlock">
+ 
+ The token refers to the Public API key used to configure Klaviyo as a destination in RudderStack. <strong>This is a mandatory field</strong>.
 </div>
 
 <div class="infoBlock">
 
-To set a specific value to the <code class="inline-code">screen</code> or <code class="inline-code">track</code> type event, you need to pass the <code class="inline-code">event</code> related property in the <code class="inline-code">properties</code> field. Also, you can send <code class="inline-code">revenue</code> property in <code class="inline-code">track</code> event and we will map it to Klaviyo's special property <code class="inline-code">$value</code>..
+RudderStack extracts the customer properties from <code class="inline-code">traits</code>/<code class="inline-code">context.traits</code>. Refer to the sample <code class="inline-code">track</code> call in the <a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/#track">Track</a> section above for more information on passing the properties within <code class="inline-code">traits</code>/<code class="inline-code">context.traits</code>.
+</div>
 
+<div class="warningBlock">
+
+  The customer properties must contain atleast one of <code class="inline-code">email</code> or <code class="inline-code">phone_number</code>.
+</div>
+
+In addition to the above-mentioned properties, you can also **optionally** send specific fields for each of the events covered in the following sections.
+
+#### Product Viewed
+
+As mentioned in the table above, RudderStack converts the `Product Viewed` event name to `Viewed Product`. The event properties are also mapped to the Klaviyo properties, as shown:
+
+| **RudderStack Property** | **Klaviyo Property** |
+|:--------------------------------|:--------------------------|
+| `name` | `ProductName` |
+| `product_id` | `ProductID` |
+| `sku` | `SKU` |
+| `image_url` | `ImageURL` |
+| `url` | `URL` |
+| `brand` | `Brand` |
+| `price` | `Price` |
+| `compare_at_price` | `CompareAtPrice` |
+| `categories` | `Categories` |
+
+#### Product Added
+
+As mentioned previously, RudderStack converts the `Product Added` event name to `Added to Cart`. The event properties are also mapped to the Klaviyo properties, as shown:
+
+| **RudderStack Property** | **Klaviyo Property** |
+|:--------------------------------|:--------------------------|
+| `value` | `$value`  |
+| `name` | `AddedItemProductName` |
+| `product_id` | `AddedItemProductID` |
+| `sku` | `AddedItemSKU` |
+| `image_url` | `AddedItemImageURL` |
+| `url` | `AddedItemURL` |
+| `price` | `AddedItemPrice` |
+| `quantity` | `AddedItemQuantity` |
+| `categories` | `AddedItemCategories` |
+| `item_names` | `ItemNames` |
+| `checkout_url`| `CheckoutURL` |
+| `items` | `Items` |
+
+Furthermore, `items` can contain the following parameters:
+
+| **RudderStack Parameters** | **Klaviyo Parameters** |
+|:--------------------------------|:--------------------------|
+| `product_id` | `ProductID` |
+| `sku` | `SKU` |
+| `name` | `ProductName` |
+| `quantity` | `Quantity` |
+| `price` | `Price` |
+| `total` | `RowTotal` |
+| `url` | `URL` |
+| `image_url` | `ImageURL` |
+| `categories` | `ProductCategories` |
+
+#### Checkout Started
+
+As mentioned previously, RudderStack converts the `Checkout Started` event name to `Started Checkout`. The event properties are also mapped to the Klaviyo properties, as shown:
+
+| **RudderStack Parameters** | **Klaviyo Parameters** |
+|:--------------------------------|:--------------------------|
+| `order_id` | `$event_id` |
+| `value` | `$value` |
+| `categories` | `Categories` |
+| `item_names` | `ItemNames` |
+| `items` | `Items` |
+| `checkout_url` | `CheckoutURL` |
+
+Furthermore, `items` can contain the following parameters:
+
+| **RudderStack Parameters** | **Klaviyo Parameters** |
+|:--------------------------------|:--------------------------|
+| `product_id` | `ProductID` |
+| `sku` | `SKU` |
+| `name` | `ProductName` |
+| `quantity` | `Quantity` |
+| `price` | `Price` |
+| `total` | `RowTotal` |
+| `url` | `URL` |
+| `image_url` | `ImageURL` |
+| `categories` | `ProductCategories` |
+
+A sample `track` call containing the above e-Commerce event parameters is shown below:
+
+```javascript
+rudderanalytics.track("checkout started ", {
+  order_id: "1234",
+  value: 12.34,
+  categories: ["category1", "category2"],
+  checkout_url: "http://www.testcall.com",
+  item_names: ["item1", "item2"],
+  items: [{
+      product_id: "pId1",
+      sku: "sku1",
+      name: "item1",
+      url: "https://www.item1URL.com",
+      price: 1.0,
+      quantity: 1,
+      image_url: "https://www.item1Image.com,
+      categories: ["category1", "category2"],
+      row_total: 1.0
+    },
+    {
+      product_id: "pId2",
+      sku: "sku2",
+      name: "item2",
+      url: "https://www.item2URL.com",
+      price: 2.0,
+      quantity: 1,
+      image_url: "https://www.item2Image.com,
+      categories: ["category1", "category2"],
+      row_total: 2.0
+    },
+  ],
+});
+```
+
+<div class="warningBlock">
+
+When sending events via the web device mode, specifying <code class="inline-code">order_id</code> is not mandatory, as Klaviyo automatically assigns the timestamp to the event. However, if explicitly specified, it <strong>must be unique</strong>. Klaviyo automatically discards the events with a duplicate <code class="inline-code">order_id</code>.
 </div>
 
 ## Identify
 
-The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as `name`, `email`, etc.
+The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
-A sample `identify` call looks like the following:
+A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify("userid", {
@@ -189,29 +367,40 @@ rudderanalytics.identify("userid", {
 })
 ```
 
-In the above snippet, RudderStack captures relevant information about the user such as the `email`, `phone` as well as the associated traits of that user.
+In the above snippet, RudderStack captures the user-related information like the `email`, `phone`, as well as the associated traits of the user.
 
 <div class="infoBlock">
 
-The <code class="inline-code">userId</code>, <code class="inline-code">email</code>, or <code class="inline-code">phone</code> trait is a mandatory trait for mapping a user to Klaviyo. If a user already exists, the new values will be updated for that user. You can further add the user to the list if default <code class="inline-code">listId</code> is present on the RudderStack dashboard. You can also do so by adding <code class="inline-code">listId</code> in the <code class="inline-code">properties</code> within the <code class="inline-code">traits</code>, this will override the <code class="inline-code">listId</code> you used on the dashboard for that particular event. You can also subscribe the user to a list by setting <code class="inline-code">subscribe</code> option to <code class="inline-code">true</code>.
-
+To map a user in Klaviyo, you need either the <code class="inline-code">userId</code>, <code class="inline-code">email</code>, or <code class="inline-code">phone</code>. If a user already exists, the new values will be updated for that user. 
 </div>
 
+### Adding a user to a list
+
 <div class="infoBlock">
 
-Similar to <code class="inline-code">listId</code> adding <code class="inline-code">consent</code> and <code class="inline-code">smsConsent</code> property will override the settings on the RudderStack dashboard for the specific event.
-
+Adding or subscribing users to a specific list is only available in cloud mode integration. To know more about the RudderStack cloud mode, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
 </div>
 
-<div class="infoBlock">
+You can add a user to a Klaviyo list if the **List ID** is specified in the RudderStack dashboard. Alternatively, you can add `listId` within the event `properties`.
 
-**Adding or subscribing users to a specific list is only available in cloud-mode** integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+<div class="warningBlock">
 
+Doing so will override the <strong>List ID</strong> specified in the dashboard for that particular event. Similarly, specifying <code class="inline-code">consent</code> and <code class="inline-code">smsConsent</code> in the event properties will override the respective settings specified in the RudderStack dashboard for the specific event.
+</div>
+
+<div class="successBlock">
+
+You can also subscribe the user to a list by setting <code class="inline-code">subscribe</code> option to <code class="inline-code">true</code>.
 </div>
 
 ## Group
 
-The `group` call lets you associate a user with a list. You can also subscribe a user to the list. If you haven't already added or subscribed the user using the `identify` call, you can do so by using `group` call.
+<div class="infoBlock">
+
+Adding or subscribing users to a specific list via the <code class="inline-code">group</code> event is only available in cloud mode integration. To know more about the RudderStack cloud mode, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+</div>
+
+The `group` call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
 
 A sample server-side `group` call looks like the following:
 
@@ -242,22 +431,14 @@ In the above snippet, the user with the associated traits is added to list, and 
 
 <div class="infoBlock">
 
-Apart from either <code class="inline-code">userId</code>, <code class="inline-code">email</code> or <code class="inline-code">phone</code>, the other fields are not mandatory.
-
+Apart from <code class="inline-code">userId</code>, <code class="inline-code">email</code>, or <code class="inline-code">phone</code>, the other fields are not mandatory.
 </div>
 
 <div class="infoBlock">
 
-Adding <code class="inline-code">consent</code> and <code class="inline-code">smsConsent</code> property in user traits will override the settings on the RudderStack dashboard for the specific event.
-
+Adding <code class="inline-code">consent</code> and <code class="inline-code">smsConsent</code> property in the user traits will override the settings specified in the RudderStack dashboard for the specific event.
 </div>
 
-<div class="infoBlock">
+## Contact us
 
-You can add or subscribe users to a specific list via the <code class="inline-code">group</code> event only in the cloud mode. This feature is not available in the device mode. To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
-</div>
-
-## Contact Us
-
-If you come across any issues while configuring Klaviyo with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
