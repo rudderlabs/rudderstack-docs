@@ -430,6 +430,12 @@ export const postNavList = [
     "link":"/cloud-extract-sources/intercom-v2/",
     "content":[]
    },
+   {
+    "key":"chargebee",
+    "title":"Chargebee",
+    "link":"/cloud-extract-sources/chargebee/",
+    "content":[]
+   },
  {
     "key":"warehouse-actions",
     "title":"Warehouse Actions Sources",
