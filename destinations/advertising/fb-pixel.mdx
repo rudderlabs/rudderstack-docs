@@ -17,7 +17,7 @@ You can now send your event data directly to Facebook Pixel through RudderStack.
   **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/facebook_pixel">GitHub repo</a>.**
 </div>
 
-## Getting Started
+## Getting started
 
 To enable sending your event data to Facebook Pixel, you will first need to add it as a destination to the source from which you are sending your event data.
 
@@ -149,7 +149,7 @@ rudderanalytics.identify("userId", userVars) // userVars is a JSON object
 
 ## Page
 
-When the `page`call is made, the `track` event is sent as `PageView` to `fbq('track,'PageView')`. Any parameter sent to `rudderanalytics.page()` is ignored by RudderStack.
+When you make the `page` call, RudderStack sends the data to Facebook Pixel with the event type as `pageView`. You can also pass properties to `page` - RudderStack automatically sends these properties along with the event ID to Pixel.
 
 A sample `page` call is as shown:
 
@@ -197,7 +197,7 @@ rudderanalytics.track(
 )
 ```
 
-## Standard Events
+## Standard events
 
 In the dashboard, you have the option to **map your events to standard Facebook events**. RudderStack maps the events in the code and sends them to Facebook pixel as the standard event as specified. The properties will be sent according to what the standard event requires.
 
@@ -220,7 +220,7 @@ The mapping is done as follows in RudderStack:
 
 In Pixel, a currency for **Purchase** events is required to be specified. If not provided the default will be set to **`USD`**.
 
-### Other Standard Events
+### Other standard events
 
 If you map your event to any of the following Standard Events listed below, then RudderStack will treat it as an `Other Standard Event`. For any properties you would like to send with the other standard event you must specify them in the **Standard Events custom properties** settings field.
 
@@ -239,7 +239,7 @@ If you map your event to any of the following Standard Events listed below, then
 "Subscribe"
 ```
 
-## Legacy Events
+## Legacy events
 
 In the dashboard, the legacy conversion Pixel IDs can be filled. The events which appear in the mapping are sent to Pixel with the mapped Pixel ID. The conversion events only support currency and value as their event properties.
 
@@ -249,7 +249,7 @@ This is only available for device mode.
 
 </div>
 
-## Custom Events
+## Custom events
 
 Custom events are used to send any event that does not appear in any of the mappings.
 
@@ -263,7 +263,7 @@ For more information on Facebook Deduplication, you can refer to <a href="https:
 
 </div>
 
-#### `event_id` Method \(Recommended\)
+#### `event_id` method \(Recommended\)
 
 Facebook's \(and RudderStack's\) recommended form of deduplication is to leverage the `event_name` and `event_id` properties. When two events coming into Facebook meet the following criteria, they will be deduplicated.
 
@@ -282,7 +282,7 @@ For more information regarding the logic behind the <code class="inline-code">ev
 
 </div>
 
-#### `fbp` and `external_id` Method \(Not Recommended\)
+#### `fbp` and `external_id` method \(Not Recommended\)
 
 For this approach, it is necessary to send an event, first from the browser, then from the server. Both events must have the same `event_name`, and the same `fbp` parameter and the same `external_id`. If the browser event is received before the server event and both events have the same `event_name` and the same `fbp` and `external_id`, then the server event will be discarded. Below are a few shortcomings for this deduplication method.
 
@@ -308,7 +308,7 @@ Facebook expects them to be sent in the following format:
 
 ## FAQs
 
-**Where can I find the Pixel ID?**
+#### Where can I find the Pixel ID?
 
 To get your Pixel ID, go to your Facebook Ads Manager account. On the left navigation bar, select Business Tools, and click on **Events Manager** under **Manage Business**.
 
@@ -353,6 +353,7 @@ rudderanalytics.track(
 
 The `integrations` object with these key-values will tell RudderStack not to hash the traits in `context.traits` because they are already hashed. Otherwise, RudderStack will hash your data again and Facebook will not be able to match the traits. Please keep in mind that Facebook will not accept un-hashed data.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Facebook Pixel with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+
