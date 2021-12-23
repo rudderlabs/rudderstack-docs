@@ -130,11 +130,9 @@ rudderanalytics.page("custom_event", {
 
 You can make a `track` call with the conversion name to RudderStack for a **Click Event Conversion** which will, in turn, send this data to Google Ads.
 
-RudderStack maps `properties.value`, `properties.currency`, and `properties.order_id` to the supported Google Ads `value`, `currency`, and `transaction_id` fields, respectively. RudderStack also maps `properties.revenue` to `value`. 
+<div class="infoBlock">
 
-<div class="warningBlock">
-
-This is applicable only in the cases where <strong>Dynamic Remarketing</strong> is disabled while setting up the destination in RudderStack.
+RudderStack maps `properties.value`, `properties.currency`, and `properties.order_id` to the supported Google Ads `value`, `currency`, and `transaction_id` fields, respectively. RudderStack also maps `properties.revenue` to `value`.  Note that this is applicable only when <strong>Dynamic Remarketing</strong> is disabled in the dashboard settings.
 </div>
 
 A sample `track` call is as shown:
