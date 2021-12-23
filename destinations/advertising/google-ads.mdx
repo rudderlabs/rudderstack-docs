@@ -90,42 +90,6 @@ For more information on the disabling advertising personalization feature, refer
 
 - Finally, click on **Next** to finish the configuration. Google Ads will now be added and enabled as a destination in RudderStack.
 
-## Page
-
-You can make a `page` call with the conversion name to RudderStack for a **Page Load Conversion** which will, in turn, send this data to Google Ads.
-
-A sample `page` call is as shown below:
-
-```javascript
-rudderanalytics.page('page view');
-```
-
-A sample `page` call after enabling the **Dynamic Remarketing** option in the RudderStack dashboard is shown below:
-
-```javascript
-rudderanalytics.page('page_view', {
-  ecomm_pagetype: 'product',
-  ecomm_prodid: 34592212,
-  ecomm_totalvalue: 29.99,
-  ecomm_category: 'Home & Garden',
-  isSaleItem: false
-});
-```
-
-<div class="successBlock">
-
-The format for passing the parameters is quite flexible. You can use the standard Google format for tracking specific categories or use a custom format for tracking custom categories.
-</div>
-
-A sample `page` call for a custom event after enabling the **Dynamic Remarketing** option in RudderStack is shown below:
-
-```javascript
-rudderanalytics.page("custom_event", {
-  custom_parameter1: "1",
-  custom_parameter2: 2,
-});
-```
-
 ## Track
 
 You can make a `track` call with the conversion name to RudderStack for a **Click Event Conversion** which will, in turn, send this data to Google Ads.
@@ -161,6 +125,41 @@ rudderanalytics.track('view_item', {
   ]
 });
 ```
+
+<div class="successBlock">
+
+The format for passing the parameters is quite flexible. You can use the standard Google format for tracking specific categories or use a custom format for tracking custom categories.
+</div>
+
+A sample `track` call for a custom event is shown below:
+
+```javascript
+rudderanalytics.track("custom_event", {
+  custom_parameter1: "1",
+  custom_parameter2: 2,
+});
+```
+
+## Page
+
+You can make a `page` call with the conversion name to RudderStack for a **Page Load Conversion** which will, in turn, send this data to Google Ads.
+
+A sample `page` call is as shown below:
+
+```javascript
+rudderanalytics.page('page view');
+```
+
+A sample `page` call for a custom event after enabling the **Dynamic Remarketing** option in RudderStack is shown below:
+
+```javascript
+rudderanalytics.page("custom_event", {
+  custom_parameter1: "1",
+  custom_parameter2: 2,
+});
+```
+
+As seen in the above snippet, enabling Dynamic Remarketing allows you to send custom parameters in the `page` call.
 
 ## FAQs
 
