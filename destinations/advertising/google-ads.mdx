@@ -117,6 +117,15 @@ rudderanalytics.page('page_view', {
 The format for passing the parameters is quite flexible. You can use the standard Google format for tracking specific categories or use a custom format for tracking custom categories.
 </div>
 
+A sample `page` call for a custom event after enabling the **Dynamic Remarketing** option in RudderStack is shown below:
+
+```javascript
+rudderanalytics.page("custom_event", {
+  custom_parameter1: "1",
+  custom_parameter2: 2,
+});
+```
+
 ## Track
 
 You can make a `track` call with the conversion name to RudderStack for a **Click Event Conversion** which will, in turn, send this data to Google Ads.
