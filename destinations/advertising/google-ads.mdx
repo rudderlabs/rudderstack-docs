@@ -58,24 +58,35 @@ Once you have confirmed that the platform supports sending events to Google Ads,
   - In **Conversion Label**, enter your Google Ads conversion label. 
   - Under **Name**, enter the name of the `track` event to be sent.
 
-- **Conversion Linker**: Enable this setting to use Google Ads' Conversion Linker feature.
+  - **Send Page View**: Enabling this setting configures Google Ads to automatically send your `page` events.
+
+- **Conversion Linker**: This setting is enabled by default. If you don't want the global site tag (`gtag.js`) to set first-party cookies on your website domain, you should disable this setting.
+
+<div class="warningBlock">
+
+Disabling this setting as it can lead to less accurate conversion measurements.
+</div>
 
 <div class="infoBlock">
  
 For more information on the Conversion Linker feature in Google Ads, refer to their official <a href="https://support.google.com/google-ads/answer/7521212?hl=en">documentation</a>.
 </div>
 
-- **Dynamic Remarketing**: Enable this setting to leverage the dynamic remarketing feature of Google Ads. 
+- **Disable Ad Personalization**: Toggling this setting on lets you programmatically disable ad personalization. 
 
 <div class="infoBlock">
  
-The <strong>Dynamic Remarketing</strong> feature lets you tailor your ads based on your users' previous interactions with your website. For more information on this feature, refer to the official Google Ads <a href="https://support.google.com/google-ads/answer/7305793">documentation</a>.
+For more information on the disabling advertising personalization feature, refer to the official Google <a href="https://developers.google.com/analytics/devguides/collection/gtagjs/display-features#disable_advertising_personalization">documentation</a>.
 </div>
 
-  <div class="infoBlock">
+- **Dynamic Remarketing**: Enabling this tracking mode allows RudderStack to leverage Google Ads' Dynamic Remarketing feature for event tracking.
+
+<div class="infoBlock">
  
-As this is a device mode-only integration, the <strong>Use device-mode to send events</strong> option will always be enabled.
+<strong>Dynamic Remarketing</strong> lets you tailor your ads based on your users' previous interactions with your website. For more information on this feature, refer to the official Google Ads <a href="https://support.google.com/google-ads/answer/7305793">documentation</a>.
 </div>
+ 
+- As this is a device mode-only integration, the **Use device-mode to send events** option will always be enabled.
 
 - Finally, click on **Next** to finish the configuration. Google Ads will now be added and enabled as a destination in RudderStack.
 
@@ -101,11 +112,21 @@ rudderanalytics.page('page_view', {
 });
 ```
 
+<div class="successBlock">
+
+The format for passing the parameters is quite flexible. You can use the standard Google format for tracking specific categories or use a custom format for tracking custom categories.
+</div>
+
 ## Track
 
 You can make a `track` call with the conversion name to RudderStack for a **Click Event Conversion** which will, in turn, send this data to Google Ads.
 
-RudderStack maps `properties.value`, `properties.currency`, and `properties.order_id` to the supported Google Ads `value`, `currency`, and `transaction_id` fields, respectively. RudderStack also maps `properties.revenue` to `value`.
+RudderStack maps `properties.value`, `properties.currency`, and `properties.order_id` to the supported Google Ads `value`, `currency`, and `transaction_id` fields, respectively. RudderStack also maps `properties.revenue` to `value`. 
+
+<div class="warningBlock">
+
+This is applicable only in the cases where <strong>Dynamic Remarketing</strong> is disabled while setting up the destination in RudderStack.
+</div>
 
 A sample `track` call is as shown:
 
