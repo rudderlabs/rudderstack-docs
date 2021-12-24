@@ -355,6 +355,37 @@ export async function transformEvent(event) {
 For improved performance, we recommend using `batch` API requests instead of a separate API request for each event whenever possible.
 </div>
 
+### External Api FetchV2
+
+FetchV2 is a wrapper around fetch call to provide more access to fetch response properties
+
+The following properties are present in the fetchV2 response:
+| Property Name   | Description                                                                                                                                                                    |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `status`      | Status code of fetch response say 200|
+| `url` | URL of fetch api                                                                                                                |
+| `headers`     | Response headers                                                                                                                             |
+| `body`     | Response body in JSON or TEXT, by default JSON
+
+<div class="infoBlock">
+
+  Use <code class="inline-code">try-catch</code> block syntax to capture cause for failures during fetch call like when timeout is applied 
+</div>
+
+An example of how to use the `fetchV2` function in transformations is shown below:
+```javascript
+export async function transformEvent(event) {
+  try {
+    const res = await fetchV2("url", { timeout: 1000});
+    if (res.status == 200) {
+      event.response = JSON.stringify(res.body);
+    }
+  } catch (err) {
+    log(err.message);
+  }
+  return event;
+}
+```
 ## Debugging with Logs
 
 You can access event-related logs while running a test by including the `log()` function in your transformation code. An example of this is as shown:
