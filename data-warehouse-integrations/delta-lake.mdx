@@ -93,7 +93,6 @@ If you don't specify a namespace in the dashboard settings, RudderStack will set
     * **Amazon S3**
     * **Google Cloud Storage**
     * **Azure Blob Storage**
-    * **MinIO**
 
 <div class="infoBlock">
 
@@ -108,7 +107,14 @@ This section contains the steps to edit your bucket policy to grant RudderStack 
 
 ### Amazon S3
 
-Follow these steps to grant RudderStack access to your S3 bucket:
+Follow these steps to grant RudderStack access to your S3 bucket based on the following two cases:
+
+#### Case 1: Use STS Token to copy staging files is disabled in the dashboard
+
+<div class="warningBlock">
+
+Follow the steps listed in this section if the <strong>Use STS Token to copy staging files</strong> option is disabled, i.e. you <strong>don't want to specify</strong> the AWS access key and secret access key while configuring your Delta Lake destination.
+</div>
 
 #### For RudderStack Cloud
 
@@ -200,7 +206,14 @@ RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<user_access_key>
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY=<user_access_key_secret>
 ```
 
-* You can then provide the configuration directly while setting up the Delta Lake destination in RudderStack, as shown:
+#### Case 2: Use STS Token to copy staging files is enabled in the dashboard
+
+<div class="infoBlock">
+
+Follow the steps listed in this section if the <strong>Use STS Token to copy staging files</strong> option is enabled, i.e. you are specifying the AWS access key and secret access key in the dashboard while configuring your Delta Lake destination.
+</div>
+
+You can provide the configuration directly while setting up the Delta Lake destination in RudderStack, as shown:
 
 <img src="../assets/dw-integrations/delta-lake-connection-settings-3.png" alt="S3 settings in RudderStack dashboard" />
 
@@ -228,7 +241,7 @@ Follow these steps to grant Databricks access to your S3 bucket depending on you
 
 <div class="warningBlock">
 
-Follow the steps listed in this section if <strong>Use STS Token to copy staging files</strong> is disabled, i.e. you <strong>don't want to specify</strong> the AWS access key and secret access key while configuring your Delta Lake destination in RudderStack.
+Follow the steps listed in this section if the <strong>Use STS Token to copy staging files</strong> option is disabled, i.e. you <strong>don't want to specify</strong> the AWS access key and secret access key while configuring your Delta Lake destination.
 </div>
 
 In this case, you will be required to configure your AWS account to [**create an instance profile**](https://docs.databricks.com/administration-guide/cloud-configurations/aws/instance-profiles.html) which will then be attached with your Databricks cluster. 
@@ -249,7 +262,7 @@ Follow these steps in the exact order:
 
 <div class="infoBlock">
 
-Follow the steps listed in this section if <strong>Use STS Token to copy staging files</strong> is enabled, i.e. you are specifying the AWS access key and secret access key in the dashboard while configuring your Delta Lake destination in RudderStack.
+Follow the steps listed in this section if the <strong>Use STS Token to copy staging files</strong> option is enabled, i.e. you are specifying the AWS access key and secret access key in the dashboard while configuring your Delta Lake destination.
 </div>
 
 Add the following Spark configuration to your Databricks cluster:
