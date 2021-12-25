@@ -1,7 +1,7 @@
 ---
 #slug: "/docs/transformations"
 title: "Transformations"
-description: Detailed technical documentation on RudderStack's Transformations feature.
+description: Detailed technical documentation on RudderStack Transformations.
 ---
 
 # Transformations
@@ -44,7 +44,7 @@ To know more about the Cloud mode in RudderStack, check out the <a href="https:/
 
 </div>
 
-## Adding a Transformation
+## Adding a transformation
 
 - Log into your [**RudderStack dashboard**](https://app.rudderstack.com/).
 - Click on the [**Transformations**](https://app.rudderstack.com/transformations) link from the left panel in the dashboard, as shown:
@@ -163,7 +163,7 @@ To create a library, follow these steps:
 This is to ensure that you don't break any existing transformations that use the library that you might be trying to delete.
 </div>
 
-## Using Libraries in Transformations
+## Using libraries in transformations
 
 To use the libraries in your existing transformation, simply take the name of your library and convert it into **camel case without spaces** - this becomes your library handle.
 
@@ -201,9 +201,9 @@ On running a test, an example event not having the specified email domain is fil
   alt="Event filtered out without specifying email domain"
 />
 
-### Importing Multiple Functions From Single Library
+### Importing multiple functions from a single library
 
-When importing a single function or multiple functions from a library, it is important to keep the import statement to one line. Breaking the import function out into multiple lines will lead to an error.
+When importing a single function or multiple functions from a library, it is important to keep the import statement to one line. Breaking the import function into multiple lines will lead to an error.
 
 The following snippets highlight how to properly import functions from a library:
 
@@ -244,7 +244,7 @@ import getPrice as gp from getFinanceData;
 getPrice(ev)
 ```
 
-## Accessing Metadata
+## Accessing metadata
 
 RudderStack injects a function `metadata(event)` into your transformations as an argument. This allows you to access the event metadata variables that help you customize your transformations.
 
@@ -285,7 +285,7 @@ export function transformEvent(event, metadata) {
 }
 ```
 
-## External API Requests
+## External API requests
 
 You can make any number of external API requests in your transformation functions and use the response to enrich your events data. RudderStack injects an asynchronous `fetch(url)` function into your transformations. It makes an API call to the given URL and returns the response in a JSON format.
 
@@ -355,24 +355,26 @@ export async function transformEvent(event) {
 For improved performance, we recommend using `batch` API requests instead of a separate API request for each event whenever possible.
 </div>
 
-### External Api FetchV2
+### FetchV2
 
-FetchV2 is a wrapper around fetch call to provide more access to fetch response properties
+FetchV2 is a wrapper around the `fetch` call to provide more access to fetch the response properties.
 
-The following properties are present in the fetchV2 response:
-| Property Name   | Description                                                                                                                                                                    |
-| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `status`      | Status code of fetch response say 200|
-| `url` | URL of fetch api                                                                                                                |
-| `headers`     | Response headers                                                                                                                             |
-| `body`     | Response body in JSON or TEXT, by default JSON
+The following properties are present in a `fetchV2` response:
+
+| Property Name   | Description  |
+| :-------------- | :----------- |
+| `status`      | Status code of fetch response, e.g. `200`.|
+| `url` | URL of the Fetch API.   |
+| `headers`     | Response headers   |
+| `body`     | Response body in JSON or TEXT. By default, it is JSON. |
 
 <div class="infoBlock">
 
-  Use <code class="inline-code">try-catch</code> block syntax to capture cause for failures during fetch call like when timeout is applied 
+  Use the <code class="inline-code">try-catch</code> block to capture the cause for failures during the <code class="inline-code">fetch</code> call, e.g. when a timeout is applied.
 </div>
 
-An example of how to use the `fetchV2` function in transformations is shown below:
+An example of how to use the `fetchV2` function in RudderStack transformations is shown below:
+  
 ```javascript
 export async function transformEvent(event) {
   try {
@@ -386,7 +388,8 @@ export async function transformEvent(event) {
   return event;
 }
 ```
-## Debugging with Logs
+  
+## Debugging with logs
 
 You can access event-related logs while running a test by including the `log()` function in your transformation code. An example of this is as shown:
 
@@ -431,6 +434,6 @@ You should take into account the memory and time limits when adding a new transf
   The user transformation fails if these limits are exceeded.
 </div>
 
-## Contact Us
+## Contact us
 
-For more information on transformations and libraries in RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
