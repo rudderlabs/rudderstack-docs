@@ -1,0 +1,132 @@
+---
+# slug: "/docs/warehouse-actions/visual-data-mapper"
+title: "RudderStack Airflow Provider"
+description: >-
+ Detailed technical description of the RudderStack Airflow Provider.
+---
+
+# RudderStack Airflow Provider
+
+RudderStack's Airflow Provider lets you schedule and trigger your [**Warehouse Actions**](https://rudderstack.com/docs/warehouse-actions/) syncs from outside RudderStack and integrate them with your existing Airflow workflows.
+
+<div class="infoBlock">
+
+  The RudderStack Airflow Provider contains two major components:
+
+  <ul>
+  <li>**Operator**: Refers to a task to be executed when a DAG runs.</li>
+  <li>**Hook**: Refers to the interface used by the Provider to connect to the external services for triggering/stopping syncs, getting the sync status, etc.</li>
+  </ul>
+</div>
+
+## Using the RudderStack Airflow Provider
+
+<div class="infoBlock">
+
+To use the RudderStack Airflow Provider, you must have Apache Airflow installed locally. For more information, refer to the <a href="https://airflow.apache.org/docs/apache-airflow/stable/start/local.html">Airflow documentation</a>.
+</div>
+
+To use the RudderStack Airflow Provider, follow the steps listed in the sections below:
+
+### Running Airflow
+
+Initialize all the dependencies by running Apache Airflow via the following command:
+
+```bash
+airflow standalone
+```
+
+### Installing Airflow Provider
+
+Install the RudderStack Airflow Provider by running the following commands:
+
+```bash
+git clone https://github.com/rudderlabs/rudder-airflow-provider.git
+cd rudder-airflow-provider
+pip3 install -e .
+```
+
+### Defining a DAG
+
+The next step is to define a DAG with any number of tasks as per your requirement. 
+
+The following code snippet highlights an Airflow DAG with one task named `rs_trigger_symc` for the source ID `20dQV6yuUDUw31peWA8f7xxgHdN`:
+
+```bash
+from datetime import datetime, timedelta
+
+from airflow import DAG
+
+from rudder_airflow_provider.operators.rudderstack import RudderstackOperator
+
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'email': ['airflow@example.com'],
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5)
+}
+
+with DAG('rudderstack-sample',
+    default_args=default_args,
+    description='A simple tutorial DAG',
+    schedule_interval=timedelta(days=1),
+    start_date=datetime(2021, 1, 1),
+    catchup=False,
+    tags=['rs']) as dag:
+    rs_operator = RudderstackOperator(source_id='20dQV6yuUDUw31peWA8f7xxgHdN', connecetion_id='rudderstack_sync_conn', task_id='rs_trigger_sync')
+```
+
+<div class="infoBlock">
+
+For more information on where to find the source ID, refer to <a href="https://rudderstack.com/docs/connections/#source-details">this guide</a>.
+</div>
+
+### Creating an Airflow connection
+
+To create a new Airflow connection, follow these steps:
+
+- Go to your Airflow dashboard and in the **Admin** tab, select **Connections**:
+
+<img src="../assets/warehouse-actions-sources/airflow-provider-1.png" alt="Airflow dashboard Connections option" />
+
+- Add a new connection by configuring the following details:
+
+   - **Connection ID**: Specify a unique connection name. If you don't specify a **Connection ID**, the RudderStack operator will pick the connection with the name `rudderstack_default`.
+
+   - **Connection Type**: For this field, select **HTTP** from the list.
+
+   - **Host**: Set the value for this field to `https://api.rudderstack.com`.
+
+   - **Password**: Enter your Personal Access Token here.
+
+<img src="../assets/warehouse-actions-sources/airflow-provider-2.png" alt="Airflow dashboard edit connection" />
+
+<div class="infoBlock">
+
+For more information on where to find the personal access token, refer to <a href="https://rudderstack.com/docs/transformations/api-access-token/">this guide</a>.
+</div>
+
+### Running the DAG
+
+Once you have defined a DAG and configured an Airflow connection, Airflow will automatically show the DAG in the dashboard. You can run the DAG via the following commands:
+
+```bash
+mkdir $AIRFLOW_HOME/dags
+cp rudderstack_dag.py $AIRFLOW_HOME/dags
+```
+
+**Make sure the Airflow scheduler is running in the background**. Also, you must enable the DAG in the Airflow dashboard, as shown:
+
+<img src="../assets/warehouse-actions-sources/airflow-provider-3.png" alt="enabling Airflow DAG in dashboard" />
+
+<div class="successBlock">
+
+You can trigger a DAG by clicking on the play button on the right as seen above, and selecting <strong>Trigger DAG</strong>.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
