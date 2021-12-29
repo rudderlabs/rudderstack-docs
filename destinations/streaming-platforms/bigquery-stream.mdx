@@ -53,7 +53,7 @@ To configure BigQuery Stream as a destination in RudderStack, you will need to a
 
 <img src="../../assets/event-stream-destinations/bqstream-3.png" alt="BigQuery Stream connection settings" />
 
-- **Insert ID**: This is an **optional** field. Enter your insert ID which will be used by Google to de-duplicate the data sent to BigQuery.
+- **Insert ID**: This is an **optional** field. Enter the insert ID which will be used by Google to de-duplicate the data sent to BigQuery.
 
 <div class="infoBlock">
 
@@ -75,11 +75,16 @@ For more information on creating a service account, refer to <a href="https://ru
 
 ## Insert ID
 
-Google leverages the insert ID to de-duplicate the data sent to BigQuery. The insert ID is essentially an event property that helps you uniquely identify an event.
+Google leverages the `insertId` to de-duplicate the data sent to BigQuery. `insertId` is essentially an event property that uniquely identifies an event.
+
+<div class="infoBlock">
+
+For more information on the de-duplication process in BigQuery, refer to <a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery#dataconsistency">this guide</a>.
+</div>
 
 <div class="warningBlock">
 
-RudderStack currently supports only <strong>numeric</strong> or <strong>string</strong> values as the insert ID.
+RudderStack currently supports only <strong>numeric</strong> or <strong>string</strong> values as `insertId`.
 </div>
 
 ### Use-case
@@ -88,12 +93,7 @@ Consider the following table schema:
 
 <img src="../../assets/event-stream-destinations/bqstream-5.png" alt="BigQuery table schema" />
 
-If you send an event called `Insert Product` to BigQuery, the `productId` can be used to uniquely identify the product. Hence it can be passed as the insert ID. BigQuery will perform the de-duplication of the data based on this `productId`. 
-
-<div class="infoBlock">
-
-For more information on the de-duplication process in BigQuery, refer to <a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery#dataconsistency">this guide</a>.
-</div>
+If you send an event called `Insert Product` to BigQuery, the `productId` can be used to uniquely identify the product. Hence it can be passed as `insertId`. BigQuery will perform the de-duplication of the data based on this `productId`. 
 
 ## Sending events to BigQuery Stream
 
