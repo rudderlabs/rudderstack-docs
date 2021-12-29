@@ -511,6 +511,7 @@ You can configure your client based on the following parameters using `RudderCon
 | `configRefreshInterval` | `int`     | Fetches the config from dashboard after the specified time.                                                                                                                                                                                     | `2 hours`                                                                        |
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                                     |
 | `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
+| `enableBackgroundMode`  | `boolean` | Specify whether the SDK should enable background mode to send events for some time when the app moves to background.                                                                                                                                           | `false`                                                                    |
 | `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the **Self-Hosted control plane** section below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
 
 ### Self-Hosted control plane
@@ -994,6 +995,16 @@ Update the usage of the following classes as per the table below:
     </tr>
   </tbody>
 </table>
+
+### How to ensure the events made just before closing/backgrounding the app are sent immediately and not on the next launch of the app ?
+
+You can do this by setting `withBackgroundMode` to `YES` while creating the `RSConfig` object as shown below. By doing this your app actually requests `iOS` for some additional background run time to run the app which in turn enables the SDK to send those events made just before the app closing/backgrounding immediately instead on the next launch.
+
+```objectivec
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+[builder withBackgroundMode:YES];
+[RSClient getInstance:WRITE_KEY config:[builder build] options:defaultOption];
+```
 
 ### How can I get the user `traits` after making the `identify` call?
 
