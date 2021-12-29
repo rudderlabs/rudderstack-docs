@@ -515,7 +515,8 @@ You can configure your client based on the following parameters using `RudderCon
 | `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server. .                                                                                                                                                                                                       | `10 seconds`                                                               |
 | `configRefreshInterval` | `int`     | Fetches the config from dashboard after the specified time.                                                                                                                                                                                     | `2 hours`                                                                        |
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                                     |
-| `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.
+| `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
+| `enableBackgroundMode`  | `boolean` | Specify whether the SDK should send the events for some time when the app moves to background. | `false`                                                                    |
 | `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the **Self-Hosted control plane** section below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
 
 ### Self-Hosted control plane
@@ -1003,6 +1004,18 @@ Update the usage of the following classes as per the table below:
     </tr>
   </tbody>
 </table>
+
+### How do I ensure the events tracked just before closing/backgrounding the app are sent immediately and not on the next app launch?
+
+To ensure that the events tracked just before closing/backgrounding the app are sent to RudderStack immediately, you can set `withBackgroundMode` to `YES` while creating the `RSConfig` object as shown below:
+
+```objectivec
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+[builder withBackgroundMode:YES];
+[RSClient getInstance:WRITE_KEY config:[builder build] options:defaultOption];
+```
+
+By doing so, your app requests iOS for some additional background run time to run the app, which in turn allows the SDK to immediately send the events tracked just before the app is closed/backgrounded, instead of waiting till the next app launch.
 
 ### How can I get the user `traits` after making the `identify` call?
 
