@@ -1002,7 +1002,7 @@ Update the usage of the following classes as per the table below:
 
 ### How do I ensure the events tracked just before closing/backgrounding the app are sent immediately and not on the next app launch?
 
-To ensure that the events tracked just before closing/backgrounding the app are sent to RudderStack immediately, you can set `withEnableBackgroundMode` to `YES` while creating the `RSConfig` object as shown below:
+To ensure that the events tracked just before closing/backgrounding the app are sent to RudderStack immediately, you can set `withEnableBackgroundMode` to `YES` while creating the `RSConfigBuilder` object as shown below:
 
 <div class="infoBlock">
 
@@ -1010,7 +1010,7 @@ Currently, this feature is available only for <code class="inline-code">iOS</cod
 </div>
 
 ```objectivec
-RSConfig *builder = [[RSConfig alloc] init];
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withEnableBackgroundMode:YES];
 [RSClient getInstance:WRITE_KEY config:[builder build] options:defaultOption];
 ```
