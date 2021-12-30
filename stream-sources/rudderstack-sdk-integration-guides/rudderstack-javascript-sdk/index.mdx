@@ -56,6 +56,7 @@ The `options` parameter in the above `load` call looks like the following:
   queueOptions: QueueOpts,
   loadIntegration: boolean // defaults to true.
   secureCookie: boolean // defaults to false.
+  useBeacon: boolean // defaults to false.
 }
 ```
 
@@ -68,9 +69,41 @@ It includes the following details:
 |  `configUrl`          | String                              | Defaults to `https://api.rudderlabs.com`. You need to provide the server (Control Plane) endpoint serving your destination configurations. Note that `sourceConfig` is automatically appended to this endpoint by the SDK. |
 |  `queueOpts`          | [**QueueOpts**](#queueopts)         | Refer to the [`QueueOpts`](#queueopts) section.          |
 |  `loadIntegration`    | Boolean                             | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                    |
-| `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS. |
+| `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS.|
+| `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  navigator.sendBeacon() utility. |
 
-For more details, refer to the section on the [**`options`**](#options) parameter.
+For more details, refer to the [**`options`**](#options) parameter section.
+
+#### The useBeacon option
+
+As mentioned in the above table above, the JavaScript SDK supports a new Boolean field, `useBeacon`, in the `load()` call options. When set to `true`, the SDK sends events using the [**navigator.sendBeacon**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism) browser utility, which asynchronously sends a small amount of data over HTTP to the RudderStack server.
+
+<div class="infoBlock">
+
+The Beacon queue maintained by the browsers has a limitation on the total size of the elements present in the queue at any point and <strong>peaks at 64 KB</strong>. The JavaScript SDK internally uses one queue to hold the data and send it in batches.
+</div>
+
+The SDK supports configuring the following two queue parameters from the `load()` options:
+
+| Parameter             | Type                                | Description                                                          | Default Value    |
+| :-------------------- | :---------------------------------- | :------------------------------------------------------------------- | :----------------|
+| `maxItems`            | Integer                             | The SDK flushes the queue when this number of payloads is reached.   | `10`             |
+| `flushQueueInterval`  | Integer                             | The SDK flushes the queue after this time interval(in milliseconds).| `1000 * 60 * 10` |
+
+
+<div class="infoBlock">
+
+The SDK flushes the queue if the total size of the payload exceeds 64 KB before reaching the `maxItems`/`flushQueueInterval` value in the configuration.
+</div>
+
+A sample `options.beaconQueue` configuration in the `load()` options is shown below:
+
+```javascript
+options.beaconQueue = {
+  maxItems: 10 
+  flushQueueInterval: 1000 * 60 * 10
+}
+```
 
 ### Loading the SDK for self-hosted control plane
 
