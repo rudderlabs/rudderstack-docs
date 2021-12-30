@@ -17,6 +17,11 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-ios
   Starting from version <strong>1.1.0</strong>, the iOS SDK supports the <b>tvOS</b> platform.  You can now integrate the SDK with your tvOS apps and seamlessly track the user events without the need for any additional configuration.
 </div>
 
+<div class="successBlock">
+
+  Starting from version <strong>1.3.0</strong>, the iOS SDK supports the <strong>watchOS</strong> platform.  You can now integrate the SDK with your watchOS apps and seamlessly track the user events without the need for any additional configuration.
+</div>
+
 <img src="https://img.shields.io/cocoapods/v/Rudder.svg?style=flat)(https://cocoapods.org/pods/Rudder" alt="Github Badge" class="githubBadge" />
 
 ## SDK setup requirements
@@ -511,9 +516,10 @@ You can configure your client based on the following parameters using `RudderCon
 | `configRefreshInterval` | `int`     | Fetches the config from dashboard after the specified time.                                                                                                                                                                                     | `2 hours`                                                                        |
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                                     |
 | `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
-| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the **Self-Hosted control plane** section below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
+| `enableBackgroundMode`  | `boolean` | Specify whether the SDK should send the events for some time when the app is moved to the background. Currently it is available only for `iOS` & `tvOS`. | `false`                                                                    |
+| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the [**Self-hosted control plane**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#self-hosted-control-plane) section below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
 
-### Self-Hosted control plane
+### Self-hosted control plane
 
 If you are using a device mode destination like Adjust, Firebase, etc., the iOS SDK needs to fetch the required configuration from the control plane. If you are using the [**Control Plane Lite**](https://rudderstack.com/docs/get-started/control-plane-lite/) utility to host your own control plane, then follow [**this guide**](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in `RudderConfigBuilder` that points to your hosted source configuration file.
 
@@ -938,6 +944,10 @@ If you're facing an issue with Carthage and XCode 12, you can follow [**this wor
 
 As of version `1.1.0`, the iOS SDK supports the [**tvOS**](https://developer.apple.com/tvos/) platform.
 
+### Does the SDK support watchOS ?
+
+As of version `1.3.0`, the iOS SDK supports the [**watchOS**](https://developer.apple.com/watchos/) platform.
+
 ### How do I migrate from v1.0.2?
 
 Update the usage of the following classes as per the table below:
@@ -994,6 +1004,25 @@ Update the usage of the following classes as per the table below:
     </tr>
   </tbody>
 </table>
+
+### How do I ensure the events tracked just before closing/backgrounding the app are sent immediately and not on the next app launch?
+
+To ensure that the events tracked just before closing/backgrounding the app are sent to RudderStack immediately, you can set `withBackgroundMode` to `YES` while creating the `RSConfig` object as shown below:
+
+<div class="infoBlock">
+
+Currently, this feature is available only for <code class="inline-code">iOS</code> & <code class="inline-code">tvOS</code> platforms.
+</div>
+
+```objectivec
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+[builder withBackgroundMode:YES];
+[RSClient getInstance:WRITE_KEY config:[builder build] options:defaultOption];
+```
+
+By doing so, your app requests iOS for some additional background run time to run the app, which in turn allows the SDK to immediately send the events tracked just before the app is closed/backgrounded, instead of waiting till the next app launch.
+  
+This SDK feature relies on the background mode capability offered by the iOS. There is no set number on the background run time the apps get, as it is completely abstracted by iOS. For more information, refer to [**this guide**](https://www.raywenderlich.com/5817-background-modes-tutorial-getting-started#toc-anchor-008).
 
 ### How can I get the user `traits` after making the `identify` call?
 
