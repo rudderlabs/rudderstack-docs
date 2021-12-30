@@ -55,7 +55,7 @@ Enter the relevant keys in the fields above by obtaining them from the following
 - **API Key**: This is required for all the S2S \(Server to Server\) events. This can be obtained by going to Intercom **Settings** - **Developers** - **Developer Hub** - &lt;Your App&gt; - **Configure** - **Authentication**.
 - **App ID**: This is required for sending events via `rudderanalytics.js` and mobile SDKs. You can get it from Intercom **Settings** - **Installation** - &lt;the desired platform&gt; Alternatively, you can follow the instructions listed [here](https://www.intercom.com/help/en/articles/3539-where-can-i-find-my-workspace-id-app-id).
 - **Android API Key & iOS API Key**: This is required for sending events from your mobile apps to Intercom. You can get it from Intercom **Settings** - **Installation** - &lt;the desired platform&gt;
-- **Send AnonymousId as Secondary UserId**: This is required for sending the `anonymousId` as user ID to Intercom when the `userId` is absent from the input payload.
+- **Send AnonymousId as Secondary UserId**: This is required for sending the `anonymousId` as user ID to Intercom when the `userId` is absent from the input payload. This is helpful for tracking anonymous users of your site.
 
 ## **Adding Intercom to your project**
 
@@ -381,7 +381,9 @@ You can obtain the Intercom API key by logging into Intercom and navigating to *
 
 ### What happens when both userId or email is missing?
 
-For both identity and track calls userId or email is a mandatory field. In case they are missing, RudderStack will drop the event.
+### What happens when both userId or email is missing?
+
+For both identify and track calls either `userId` or `email` is a mandatory field. In case they are missing, RudderStack will drop the event. It is recommended to set <a href="https://rudderstack.com/docs/destinations/marketing/intercom/##Getting Started">Send AnonymousId as Secondary UserId</a> from your [RudderStack dashboard](https://app.rudderlabs.com/) to `true` in such scenarios, to avoid event loss.
 
 ## Contact Us
 
