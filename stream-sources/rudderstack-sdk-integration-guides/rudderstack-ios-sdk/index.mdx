@@ -516,7 +516,7 @@ You can configure your client based on the following parameters using `RudderCon
 | `configRefreshInterval` | `int`     | Fetches the config from dashboard after the specified time.                                                                                                                                                                                     | `2 hours`                                                                        |
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                                     |
 | `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
-| `enableBackgroundMode`  | `boolean` | Specify whether the SDK should send the events for some time when the app moves to background. | `false`                                                                    |
+| `enableBackgroundMode`  | `boolean` | Specify whether the SDK should send the events for some time when the app moves to background. Currently it is available for <code class="inline-code">iOS</code> & <code class="inline-code">tvOS</code> only. | `false`                                                                    |
 | `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the [**Self-hosted control plane**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#self-hosted-control-plane) section below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
 
 ### Self-hosted control plane
@@ -1009,6 +1009,11 @@ Update the usage of the following classes as per the table below:
 
 To ensure that the events tracked just before closing/backgrounding the app are sent to RudderStack immediately, you can set `withBackgroundMode` to `YES` while creating the `RSConfig` object as shown below:
 
+<div class="infoBlock">
+
+Currently this feature is available only for <code class="inline-code">iOS</code> & <code class="inline-code">tvOS</code> platforms.
+</div>
+
 ```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withBackgroundMode:YES];
@@ -1016,6 +1021,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 ```
 
 By doing so, your app requests iOS for some additional background run time to run the app, which in turn allows the SDK to immediately send the events tracked just before the app is closed/backgrounded, instead of waiting till the next app launch.
+This feature of the SDK actually relies on the background mode feature offered by the iOS and there isn't any arbitary number on the amount of background run time the apps gets this way, its completely abstracted by iOS. You can find more information regarding the same [**here**](https://www.raywenderlich.com/5817-background-modes-tutorial-getting-started#toc-anchor-008).
 
 ### How can I get the user `traits` after making the `identify` call?
 
