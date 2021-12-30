@@ -14,12 +14,7 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-ios
 
 <div class="successBlock">
 
-  Starting from version <strong>1.1.0</strong>, the iOS SDK supports the <b>tvOS</b> platform.  You can now integrate the SDK with your tvOS apps and seamlessly track the user events without the need for any additional configuration.
-</div>
-
-<div class="successBlock">
-
-  Starting from version <strong>1.3.0</strong>, the iOS SDK supports the <strong>watchOS</strong> platform.  You can now integrate the SDK with your watchOS apps and seamlessly track the user events without the need for any additional configuration.
+  Starting from version <strong>1.1.0</strong>, the iOS SDK supports the <strong>tvOS</strong> platform. RudderStack also supports the <strong>watchOS</strong> platform starting from version <strong>1.3.1</strong>. You can now integrate the iOS SDK with your tvOS and watchOS apps and seamlessly track user events without the need for any additional configuration.
 </div>
 
 <img src="https://img.shields.io/cocoapods/v/Rudder.svg?style=flat)(https://cocoapods.org/pods/Rudder" alt="Github Badge" class="githubBadge" />
@@ -1007,7 +1002,7 @@ Update the usage of the following classes as per the table below:
 
 ### How do I ensure the events tracked just before closing/backgrounding the app are sent immediately and not on the next app launch?
 
-To ensure that the events tracked just before closing/backgrounding the app are sent to RudderStack immediately, you can set `withBackgroundMode` to `YES` while creating the `RSConfig` object as shown below:
+To ensure that the events tracked just before closing/backgrounding the app are sent to RudderStack immediately, you can set `withEnableBackgroundMode` to `YES` while creating the `RSConfigBuilder` object as shown below:
 
 <div class="infoBlock">
 
@@ -1016,7 +1011,7 @@ Currently, this feature is available only for <code class="inline-code">iOS</cod
 
 ```objectivec
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
-[builder withBackgroundMode:YES];
+[builder withEnableBackgroundMode:YES];
 [RSClient getInstance:WRITE_KEY config:[builder build] options:defaultOption];
 ```
 
