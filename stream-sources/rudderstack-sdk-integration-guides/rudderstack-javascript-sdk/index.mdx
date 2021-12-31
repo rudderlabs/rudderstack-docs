@@ -83,25 +83,25 @@ As mentioned in the above table above, the JavaScript SDK supports a new Boolean
 The Beacon queue maintained by the browsers has a limitation on the total size of the elements present in the queue at any point and <strong>peaks at 64 KB</strong>. The JavaScript SDK internally uses one queue to hold the data and send it in batches.
 </div>
 
-The SDK supports configuring the following two queue parameters from the `load()` options:
+When you set `useBeacon` to `true`, you can also customize the `beaconQueueOptions` object to customize two queue parameters - `maxItems` and `flushQueueInterval`, as described in the following table:
 
 | Parameter             | Type                                | Description                                                          | Default Value    |
 | :-------------------- | :---------------------------------- | :------------------------------------------------------------------- | :----------------|
 | `maxItems`            | Integer                             | The SDK flushes the queue when this number of payloads is reached.   | `10`             |
-| `flushQueueInterval`  | Integer                             | The SDK flushes the queue after this time interval(in milliseconds).| `1000 * 60 * 10` |
+| `flushQueueInterval`  | Integer                             | The SDK flushes the queue after this time interval(in milliseconds). | `600000`         |
 
 
 <div class="infoBlock">
 
-The SDK flushes the queue if the total size of the payload exceeds 64 KB before reaching the `maxItems`/`flushQueueInterval` value in the configuration.
+The SDK flushes the queue if the total size of the payload exceeds 64 KB before reaching the <code class="inline-code">maxItems</code>/<code class="inline-code">flushQueueInterval</code> value in the configuration.
 </div>
 
-A sample `options.beaconQueue` configuration in the `load()` options is shown below:
+A sample `options.beaconQueueOptions` configuration in the `load()` options is shown below:
 
 ```javascript
-options.beaconQueue = {
+options.beaconQueueOptions = {
   maxItems: 10 
-  flushQueueInterval: 1000 * 60 * 10
+  flushQueueInterval: 600000
 }
 ```
 
