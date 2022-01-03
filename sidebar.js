@@ -626,6 +626,14 @@ export const jsonData = [
            ]
         },
         {
+           "key":"airflow-provider",
+           "title":"Airflow Provider",
+           "link":"/warehouse-actions/airflow-provider/",
+           "content":[
+              
+           ]
+        },
+        {
            "key":"visual-data-mapper",
            "title":"Visual Data Mapper",
            "link":"/warehouse-actions/visual-data-mapper/",
