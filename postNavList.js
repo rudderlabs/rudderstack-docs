@@ -485,6 +485,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"airflow-provider",
+    "title":"AirFlow Provider",
+    "link":"/warehouse-actions/airflow-provider/",
+    "content":[]
+ },
+ {
     "key":"visual-data-mapper",
     "title":"Visual Data Mapper",
     "link":"/warehouse-actions/visual-data-mapper/",
