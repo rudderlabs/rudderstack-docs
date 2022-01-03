@@ -231,7 +231,7 @@ You can also leverage the `/testDestination` endpoint to send your destination c
 
 <div class="warningBlock">
 
-To use this feature, you must have set up a destination in RudderStack.
+To use this feature, you must have set up the destination in RudderStack.
 </div>
 
 A sample request body highlighting this feature is shown below:
@@ -252,7 +252,12 @@ A sample request body highlighting this feature is shown below:
 }
 ```
 
-#### How to know the destination definition variables?
+<div class="warningBlock">
+
+  The <code class="inline-code">destinationConfig</code> field can be passed only for the <code class="inline-code">testDestination</code> endpoint.
+</div>
+
+#### Getting the destination definition variables
 
 To override the destination configuration using the `/testDestination` endpoint, you need to know the configuration variables to use within `destinationConfig`. To get these variables, use the **`destination-definitions`** endpoint. The request format is listed below:
 
@@ -738,7 +743,7 @@ To disable or a specific verification stage, you can set the value of that param
 
 <div class="infoBlock">
 
-  Refer to the <strong>Verification stages</strong> section above for more information on each of the <code class="inline-code">stage</code> object parameters.
+  Refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#verification-stages">Verification stages</a> section above for more information on each of the <code class="inline-code">stage</code> object parameters.
 </div>
 
 ### Can I override the destination settings specified in the RudderStack dashboard using this API?
