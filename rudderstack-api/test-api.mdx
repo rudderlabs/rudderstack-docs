@@ -225,6 +225,65 @@ To override this behavior and send the event to a disabled destination, you can 
 https://api.rudderstack.com/v0/testDestination/<destination_ID>?force=true
 ```
 
+### Overriding existing destination configuration
+
+You can also leverage the `/testDestination` endpoint to send your destination configuration as a part of the HTTP request body. This configuration overrides the existing destination configuration in RudderStack.
+
+<div class="warningBlock">
+
+To use this feature, you must have set up a destination in RudderStack.
+</div>
+
+A sample request body highlighting this feature is shown below:
+
+```json
+{
+  "stage": {
+    "user_transform": true,
+    "dest_transform": true,
+    "send_to_destination": true
+  },
+  "message": {
+    // RudderStack HTTP Payload (identify, track, etc.)
+  },
+  "destinationConfig": {
+        "webhookUrl": <webhook_URL>
+    }
+}
+```
+
+#### How to know the destination definition variables?
+
+To override the destination configuration using the `/testDestination` endpoint, you need to know the configuration variables to use within `destinationConfig`. To get these variables, use the **`destination-definitions`** endpoint. The request format is listed below:
+
+* **Request Type**: **GET**
+
+* **Request Format**: 
+
+```bash
+https://api.rudderstack.com/destination-definitions
+```
+
+<div class="successBlock">
+
+This endpoint does not require any authentication.
+</div>
+
+Once you run this endpoint, you should be able to view all the variable names within the `defaultConfig` parameter of that destination, as seen below:
+
+<img src="../assets/test-api-2.png" alt="Configuration variables" />
+
+As seen in the above example, for the webhook destination, the configuration variables are `webhookUrl`, `webhookMethod`, and `headers`. These correspond to the webhook destination settings as seen in the RudderStack dashboard below:
+
+<img src="../assets/test-api-3.png" alt="Dashboard settings" />
+
+To override the dashboard settings, provide the new values for the destination configuration variables in the request body of the `/testDestination` endpoint as seen in the [**Overriding existing destination configuration**](https://rudderstack.com/docs/rudderstack-api/test-api/#overriding-existing-destination-configuration) section above.
+
+<div class="successBlock">
+
+  For a detailed use-case on how to use this feature, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#faqs">FAQs</a> section below.
+</div>
+
 ## Verifying source events
 
 This request verifies if the test events are successfully sent from the specified source and delivered to all the connected destinations.
@@ -681,6 +740,48 @@ To disable or a specific verification stage, you can set the value of that param
 
   Refer to the <strong>Verification stages</strong> section above for more information on each of the <code class="inline-code">stage</code> object parameters.
 </div>
+
+### Can I override the destination settings specified in the RudderStack dashboard using this API?
+
+Yes, you can.
+
+Suppose you have configured a webhook destination in the RudderStack dashboard with the following settings:
+
+<img src="../assets/test-api-4.png" alt="Dashboard settings for webhook destination" />
+
+You can leverage the [**`/testDestination`**](https://rudderstack.com/docs/rudderstack-api/test-api/#verifying-destination-events) endpoint to send the new configuration as a part of the HTTP request body. This configuration overrides the existing destination settings configured in RudderStack. 
+
+Your HTTP request body should look like the following:
+
+
+```json
+{
+  "stage": {
+    "user_transform": true,
+    "dest_transform": true,
+    "send_to_destination": true
+  },
+  "message": {
+    // RudderStack HTTP Payload (identify, track, etc.)
+  },
+  "destinationConfig": {
+        "webhookUrl": <webhook_URL>,
+        "webhookMethod": <new_webhook_method>
+    }
+}
+```
+
+To get the variable names to use in `destinationConfig`, run the following **GET** request: 
+
+```bash
+https://api.rudderstack.com/destination-definitions
+```
+
+Next, look for the webhook destination and the corresponding configuration variables for it under `defaultConfig`, as shown:
+
+<img src="../assets/test-api-2.png" alt="Configuration variables" />
+
+Finally, specify the new configuration value for the required variables and run the request. For instance, the new `webhookUrl` and `webhookMethod` values will replace the existing settings configured in the RudderStack dashboard.
 
 ## Contact us
 
