@@ -6,147 +6,107 @@ description: Step-by-step guide to ingest your Google Analytics data into Rudder
 
 # Google Analytics
 
-[Google Analytics](https://analytics.google.com/analytics/web/#/) is the world's most popular analytics service that allows you to track and report your website traffic across a variety of sources. It lets you measure your advertising ROI, as well as set up tracking code to perform data collection based on the type of your website.
+[**Google Analytics**](https://analytics.google.com/analytics/web/#/) is the world's most popular analytics service that allows you to track and report your website traffic across a variety of sources. It lets you measure your advertising ROI, as well as set up tracking code to perform data collection based on the type of your website.
 
-This document guides you in setting up Google Analytics as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google Analytics data, which can then be routed to your data warehouse destination supported by RudderStack.
+This guide will help you set up Google Analytics as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google Analytics data and routes it to the supported [**warehouse destinations**](https://rudderstack.com/docs/data-warehouse-integrations/).
 
 <div class="infoBlock">
 
-**All the Cloud Extract sources support sending data only to a data warehouse destination.**
-
+<strong>All the Cloud Extract sources support sending data only to a data warehouse destination.</strong>
 </div>
 
-## Getting Started
+## Getting started
 
 To add Google Analytics as a source in RudderStack, follow these steps:
 
-- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-- From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
+- Log into your [**RudderStack dashboard**](https://app.rudderstack.com).
 
-<!--<img src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (6).png" />-->
+- Then, click on the **Directory** option in the left navigation bar and go to **Cloud Extract** under **Sources**. From the list of sources, click on **Google Analytics**.
 
-<img
-  src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (1).png"
-  alt="Connect with Facebook Ads"
-/>
-
-- Next, select **Google Analytics** from the list of **Cloud Sources**, and click on **Next**.
-
-<!--<img src="../assets/2.png" />-->
-
-<img src="../assets/2.png" alt="Google Analytics" />
+<img src="../assets/cloud-extract-sources/ga-1.png" alt="Google Analytics source" />
 
 - Assign a name to your source, and click on **Next**.
 
-<!--<img src="../assets/3 (7).png" />-->
-
-<img src="../assets/3 (7).png" alt="Assign a name" />
-
-### Setting Up the Connection
+### Setting up the connection
 
 - Click on **Connect with Google Analytics** and give RudderStack the required access permissions. Then, click on **Next**.
 
-<!--<img src="../assets/4 (5).png" />-->
+<div class="successBlock">
 
-<img src="../assets/4 (5).png" alt="Google Analytics" />
-
-<div class="infoBlock">
-
-If you have already connected RudderStack to your Google Analytics account, your credentials should appear automatically under **Use existing credentials**.
-
+  If you've already configured Google Analytics as a source before, you can select the account under the <strong>Use existing credentials</strong> tab.
 </div>
 
-### Specifying the Data to Import
+### Selecting the data to import
 
-- In the next screen, select one of your Google Analytics views in the **Source Settings**. Then, click on **Next**.
-
-<!--<img src="../assets/5 (3).png" />-->
-
-<img src="../assets/5 (3).png" alt="Google Analytics" />
+- In the next screen, select your Google Analytics **View** in the **Source Settings**.
 
 - Once you select a view, the **Dimensions** and **Metrics** rows should appear automatically. Choose the appropriate dimensions and metrics for RudderStack to ingest the data from, and then click **Next**.
 
-<!--<img src="../assets/screen-shot-2020-12-15-at-4.07.31-pm.png" />-->
-
-<img
-  src="../assets/screen-shot-2020-12-15-at-4.07.31-pm.png"
-  alt="Dimensions and Metrics"
-/>
+<img src="../assets/cloud-extract-sources/ga-2.png" alt="Selecting the data to import" />
 
 <div class="warningBlock">
 
-Not all **Dimensions** and **Metrics** can be queried together. Only those dimensions and metrics combinations that follow Google’s compatibility rules can be used for querying. Read the <a href="https://rudderstack.com/docs/cloud-extract-sources/google-analytics/#valid-dimensions-and-metrics-combinations">Valid Dimensions and Metrics</a> section below for more information.
-
+Not all <strong>Dimensions</strong> and <strong>Metrics</strong>can be queried together. Only those dimensions and metrics combinations that follow Google’s compatibility rules can be used. Read the <a href="https://rudderstack.com/docs/cloud-extract-sources/google-analytics/#valid-dimensions-and-metrics-combinations">Valid Dimensions and Metrics</a> section below for more information.
 </div>
 
 <div class="warningBlock">
 
 The **Dimensions** and **Metrics** combination cannot be changed after the source is created and saved. The primary key that RudderStack creates depends on your choices during the source configuration.
-
 </div>
 
 <div class="infoBlock">
 
 If a combination of **Dimensions** and **Metrics** chosen by you is invalid, RudderStack will notify you.
-
 </div>
 
-### Setting the Data Update Schedule
+### Setting the table prefix, run frequency, and data update schedule
 
-- Next, you will be required to set the **Run Frequency** to schedule the data import from your Google Analytics account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
+- Next, under **Destination Settings**, specify the **Table Prefix**. RudderStack will create a table in your warehouse destination with this prefix and store your Google Analytics data.
 
-<!--<img src="../assets/screen-shot-2020-12-15-at-4.24.10-pm.png" />-->
+- Then, under **Schedule Settings**, set the **Run Frequency** with which RudderStack will sync the data to the warehouse destination.
 
-<img
-  src="../assets/screen-shot-2020-12-15-at-4.24.10-pm.png"
-  alt="Run Frequency"
-/>
+- Optionally, you can also specify the time when you want this synchronization to happen, by choosing the time under the **Sync Starting At** option.
 
-That's it! Google Analytics is now successfully configured as a source on your RudderStack dashboard.
+<img src="../assets/cloud-extract-sources/ga-3.png" alt="Prefix, run frequency, and data update settings" />
 
-RudderStack will start importing data from Google Analytics as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+RudderStack will start ingesting data from Google Analytics as per the specified frequency. You can then connect this source to your data warehouse by clicking on **Add Destination**, as shown:
 
-<!--<img src="../assets/screen-shot-2020-12-15-at-4.26.30-pm.png" />-->
+<img src="../assets/cloud-extract-sources/ga-4.png" alt="Adding warehouse destination" />
 
-<img
-  src="../assets/screen-shot-2020-12-15-at-4.26.30-pm.png"
-  alt="Connect Destinations"
-/>
+<div class="infoBlock">
 
-<div class="successBlock">
-
-  Use the **Connect Destinations** option if you have already
-  configured a data warehouse destination in RudderStack. To configure a data
-  warehouse destination from scratch, click on the **Add Destination** button.
+Select the <strong>Use Existing Destination</strong> option if you have already configured a data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> option.
 </div>
 
-## Valid Dimensions and Metrics Combinations
+## Valid dimensions and metrics combinations
 
 Not all the dimensions and metrics can be queried together in Google Analytics. Only those dimensions-metrics combinations that follow Google's compatibility rules can be used together for querying.
 
-<div class="successBlock">
+<div class="infoBlock">
 
 Check out the valid combinations in the <a href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/">Google Dimensions & Metrics Explorer</a>.
 </div>
 
-### Definition Limits
+### Definition limits
 
-Google also has a limit on the number of dimensions and metrics that you can define.
-
-<div class="infoBlock">
-
-Read more about these limits in Google's <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics">Core Reporting API</a> documentation.
-
-</div>
+Google has set a limit on the number of dimensions and metrics that you can define. Read more about these limits in Google's [**Core Reporting API documentation**](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#metrics).
 
 ## FAQs
 
-#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
 
 We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
-## Contact Us
+### My costs, impressions, and clicks are received as zeros in the destination. What should I do?
 
-If you come across any issues while configuring Google Analytics as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+While configuring the Google Analytics source in RudderStack, make sure you are defining the right combination of metrics and dimensions. 
+
+Not all the dimensions and metrics can be queried together in Google Analytics. Only those dimensions-metrics combinations that follow Google's compatibility rules can be used together for querying. 
+
+For more information, refer to this [**Google Dimensions & Metrics Explorer**](https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/) page.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
