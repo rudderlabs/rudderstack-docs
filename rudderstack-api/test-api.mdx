@@ -271,11 +271,11 @@ This endpoint does not require any authentication.
 
 Once you run this endpoint, you should be able to view all the variable names within the `defaultConfig` parameter of that destination, as seen below:
 
-<img src="../assets/test-api-2.png" alt="Configuration variables" />
+<img src="../assets/test-api-3.png" alt="Configuration variables" />
 
 As seen in the above example, for the webhook destination, the configuration variables are `webhookUrl`, `webhookMethod`, and `headers`. These correspond to the webhook destination settings as seen in the RudderStack dashboard below:
 
-<img src="../assets/test-api-3.png" alt="Dashboard settings" />
+<img src="../assets/test-api-4.png" alt="Dashboard settings" />
 
 To override the dashboard settings, provide the new values for the destination configuration variables in the request body of the `/testDestination` endpoint as seen in the [**Overriding existing destination configuration**](https://rudderstack.com/docs/rudderstack-api/test-api/#overriding-existing-destination-configuration) section above.
 
@@ -747,7 +747,7 @@ Yes, you can.
 
 Suppose you have configured a webhook destination in the RudderStack dashboard with the following settings:
 
-<img src="../assets/test-api-4.png" alt="Dashboard settings for webhook destination" />
+<img src="../assets/test-api-5.png" alt="Dashboard settings for webhook destination" />
 
 You can leverage the [**`/testDestination`**](https://rudderstack.com/docs/rudderstack-api/test-api/#verifying-destination-events) endpoint to send the new configuration as a part of the HTTP request body. This configuration overrides the existing destination settings configured in RudderStack. 
 
@@ -779,7 +779,7 @@ https://api.rudderstack.com/destination-definitions
 
 Next, look for the webhook destination and the corresponding configuration variables for it under `defaultConfig`, as shown:
 
-<img src="../assets/test-api-2.png" alt="Configuration variables" />
+<img src="../assets/test-api-3.png" alt="Configuration variables" />
 
 Finally, specify the new configuration value for the required variables and run the request. For instance, the new `webhookUrl` and `webhookMethod` values will replace the existing settings configured in the RudderStack dashboard.
 
