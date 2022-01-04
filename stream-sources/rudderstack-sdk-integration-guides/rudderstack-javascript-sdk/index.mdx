@@ -54,9 +54,9 @@ The `options` parameter in the above `load` call looks like the following:
   integrations: IntegrationOpts,
   configUrl: string,  // defaults to https://api.rudderlabs.com
   queueOptions: QueueOpts,
-  loadIntegration: boolean // defaults to true.
-  secureCookie: boolean // defaults to false.
-  useBeacon: boolean // defaults to false.
+  loadIntegration: boolean, // defaults to true.
+  secureCookie: boolean, // defaults to false.
+  useBeacon: boolean, // defaults to false.
   beaconQueueOptions: BeaconQueueOpts
 }
 ```
@@ -78,7 +78,7 @@ For more details, refer to the [**`options`**](#options) parameter section.
 
 #### The useBeacon option
 
-As mentioned in the above table above, the JavaScript SDK supports a new Boolean field, `useBeacon`, in the `load()` call options. When set to `true`, the SDK sends events using the [**navigator.sendBeacon**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism) browser utility, which asynchronously sends a small amount of data over HTTP to the RudderStack server.
+The JavaScript SDK supports a new Boolean field, `useBeacon`, in the `load()` call options. When set to `true`, the SDK sends events using the [**navigator.sendBeacon**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism) browser utility, which asynchronously sends a small amount of data over HTTP to the RudderStack server.
 
 <div class="infoBlock">
 
@@ -538,10 +538,10 @@ The structure of **`BeaconQueueOpts`** is shown below:
 }
 ```
 
-| Parameter             | Type                                | Description                                                          | Default Value    |
-| :-------------------- | :---------------------------------- | :------------------------------------------------------------------- | :----------------|
-| `maxItems`            | Integer                             | The SDK flushes the queue when this number of payloads is reached.   | `10`             |
-| `flushQueueInterval`  | Integer                             | The SDK flushes the queue after this time interval(in milliseconds). | `600000`         |
+| Parameter             | Type                                | Description                                                           | Default Value    |
+| :-------------------- | :---------------------------------- | :---------------------------------------------------------------------| :----------------|
+| `maxItems`            | Integer                             | The SDK flushes the queue when this number of payloads is reached.    | `10`             |
+| `flushQueueInterval`  | Integer                             | The SDK flushes the queue after this time interval (in milliseconds). | `600000`         |
 
 
 <div class="infoBlock">
