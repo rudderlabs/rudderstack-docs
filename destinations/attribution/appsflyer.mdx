@@ -40,7 +40,7 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 - Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../assets/event-stream-destinations/appsflyer-connection-settings.png" alt="AppsFlyer connection settings in RudderStack" />
+<img src="../../assets/event-stream-destinations/appsflyer-connection-settings-final.png" alt="AppsFlyer connection settings in RudderStack" />
 
 ### Connection settings
 
@@ -60,7 +60,7 @@ For more information on where to find the AppsFlyer dev key, refer to the <a hre
 For more information on this field can be found in the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer documentation</a>.
 </div>
 
-- **App ID**: If you wish to send events to AppsFlyer via the **Android**, **iOS**, or **React Native** source, you must enter the respective **App ID** for each SDK:
+- **App ID**: Rudderstack supports all sources for Appsflyer destination. If source is other than `android` or `apple family` (ios, watchos, ipados, tvos) then transformation in dashboard is needed to manipulate the os name.
   - **Android App ID** is the application id used in your `app/build.gradle` file
   - **Apple App ID** is the iTunes Application ID, and it is mandatory for iOS applications.
 
