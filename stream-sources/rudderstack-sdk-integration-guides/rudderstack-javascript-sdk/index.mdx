@@ -57,6 +57,7 @@ The `options` parameter in the above `load` call looks like the following:
   loadIntegration: boolean // defaults to true.
   secureCookie: boolean // defaults to false.
   useBeacon: boolean // defaults to false.
+  beaconQueueOptions: BeaconQueueOpts
 }
 ```
 
@@ -71,6 +72,7 @@ It includes the following details:
 |  `loadIntegration`    | Boolean                             | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                    |
 | `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS.|
 | `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  `navigator.sendBeacon()` utility. |
+| `beaconQueueOptions`  | [**BeaconQueueOpts**](#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](#beaconqueueopts) section. |
 
 For more details, refer to the [**`options`**](#options) parameter section.
 
@@ -80,30 +82,14 @@ As mentioned in the above table above, the JavaScript SDK supports a new Boolean
 
 <div class="infoBlock">
 
-The Beacon queue maintained by the browsers has a limitation on the total size of the elements present in the queue at any point and <strong>peaks at 64 KB</strong>. The JavaScript SDK internally uses one queue to hold the data and send it in batches.
+The Beacon queue maintained by the browsers has a limitation on the total size of the elements present in the queue at any point and <strong>peaks at 64 KB</strong>.
 </div>
-
-When you set `useBeacon` to `true`, you can also customize the `beaconQueueOptions` object to customize two queue parameters - `maxItems` and `flushQueueInterval`, as described in the following table:
-
-| Parameter             | Type                                | Description                                                          | Default Value    |
-| :-------------------- | :---------------------------------- | :------------------------------------------------------------------- | :----------------|
-| `maxItems`            | Integer                             | The SDK flushes the queue when this number of payloads is reached.   | `10`             |
-| `flushQueueInterval`  | Integer                             | The SDK flushes the queue after this time interval(in milliseconds). | `600000`         |
-
 
 <div class="infoBlock">
 
-The SDK flushes the queue if the total size of the payload exceeds 64 KB before reaching the <code class="inline-code">maxItems</code>/<code class="inline-code">flushQueueInterval</code> value in the configuration.
+The RudderStack JavaScript SDK internally uses one queue to hold the data and send it in batches. Refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#beaconqueuopts">BeaconQueueOpts</a> section below for more information.
 </div>
 
-A sample `options.beaconQueueOptions` configuration in the `load()` options is shown below:
-
-```javascript
-options.beaconQueueOptions = {
-  maxItems: 10 
-  flushQueueInterval: 600000
-}
-```
 
 ### Loading the SDK for self-hosted control plane
 
@@ -539,6 +525,29 @@ The following table describes each of the above parameters in detail:
 | `backoffFactor` | Integer | Refers to the exponential base.                                      | 2                 |
 | `maxAttempts`   | Integer | Maximum number of attempts to send the event to the destination.     | 10                |
 | `maxItems`      | Integer | Maximum number of events kept in the storage.                        |    100            |
+
+
+#### `BeaconQueueOpts`
+
+The structure of **`BeaconQueueOpts`** is shown below:
+
+```javascript
+options.beaconQueueOptions = {
+  maxItems: 10 
+  flushQueueInterval: 600000
+}
+```
+
+| Parameter             | Type                                | Description                                                          | Default Value    |
+| :-------------------- | :---------------------------------- | :------------------------------------------------------------------- | :----------------|
+| `maxItems`            | Integer                             | The SDK flushes the queue when this number of payloads is reached.   | `10`             |
+| `flushQueueInterval`  | Integer                             | The SDK flushes the queue after this time interval(in milliseconds). | `600000`         |
+
+
+<div class="infoBlock">
+
+The SDK flushes the queue if the total size of the payload exceeds 64 KB before reaching the <code class="inline-code">maxItems</code>/<code class="inline-code">flushQueueInterval</code> value in the configuration.
+</div>
 
 ## Adding callbacks to standard methods
 
