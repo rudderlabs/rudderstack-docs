@@ -1405,7 +1405,7 @@ export const jsonData = [
             {
                "key":"biquery-stream",
                "title":"BigQuery Stream",
-               "link":"/destinations/storage-platforms/bigquery-stream/",
+               "link":"/destinations/streaming-platforms/bigquery-stream/",
                "content":[
                   
                ]
