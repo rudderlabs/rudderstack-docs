@@ -238,6 +238,34 @@ RSClient.sharedInstance()?.optOut(false)
 The `optOut` API is available in the RudderStack iOS SDK starting from version `1.0.24`.
 </div>
 
+## Chromecast
+
+The `Google Chromecast` is a device which converts any TV or monitor with an HDMI port into a smart device that can interact with your mobile phone.
+
+Here's what you need to build a Cast app:
+
+- A `sender application` written for the iOS platform.
+- A `Receiver application` that handles communication between the sender app and the Cast device. You have the following options:
+  - The `Default Media Receiver` presented with Google Cast branding and styling.
+  - The `Styled Media Receiver` for which you can develop the styles and branding.
+  - A `Custom receiver` that implements the Web Receiver SDK and handles custom messages from your sender app.
+  - Another option is the `Android TV Receiver`.
+- `Default Media Receiver` app is free to use and for all other types of receiver app you need to get it registered at the [Cast Website](https://cast.google.com/publish/#/signup) for the corresponding Application-ID. Application-ID is required in the Sender app. It informs the Cast device to load the corresponding receiver app.
+- Follow all the [Google Cast Design Checklist](https://developers.google.com/cast/docs/design_checklist) defined by the Google.
+- Finally, add the `RudderStack's iOS SDK` in your Sender app.
+
+<div class="infoBlock">
+
+For `Default Media Receiver` app provide the following appID: <=v4.0.0 `kGCKMediaDefaultReceiverApplicationID` or >=v4.0.2 `kGCKDefaultMediaReceiverApplicationID` in your iOS Sender app. For more details refer to [Cast](https://developers.google.com/cast/docs/web_receiver#default_media_web_receiver) support.
+
+</div>
+
+<div class="infoBlock">
+
+Follow [Google Cast developer guide](https://developers.google.com/cast/docs/developers) for more details.
+
+</div>
+
 ## Track
 
 You can record the users' activity through the `track` method. Every user action is called as an **event**.
