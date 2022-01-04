@@ -1073,6 +1073,18 @@ export const postNavList = [
    "content":[]
 },
  {
+    "key":"streaming-platforms",
+    "title":"Streaming Platforms",
+    "link":"/destinations/streaming-platforms/",
+    "content":[]
+ },
+ {
+   "key":"bigquery-stream",
+   "title":"BigQuery Stream",
+   "link":"/destinations/storage-platforms/bigquery-stream/",
+   "content":[]
+ },
+ {
     "key":"storage-platforms",
     "title":"Storage Platforms",
     "link":"/destinations/storage-platforms/",
@@ -1250,6 +1262,12 @@ export const postNavList = [
     "key":"azure-datalake",
     "title":"Azure Data Lake",
     "link":"/data-warehouse-integrations/azure-datalake/",
+    "content":[]
+ },
+ {
+    "key":"delta-lake",
+    "title":"Databricks Delta Lake",
+    "link":"/data-warehouse-integrations/delta-lake/",
     "content":[]
  },
  {
