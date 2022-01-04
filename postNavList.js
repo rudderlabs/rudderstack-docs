@@ -1081,7 +1081,7 @@ export const postNavList = [
  {
    "key":"bigquery-stream",
    "title":"BigQuery Stream",
-   "link":"/destinations/storage-platforms/bigquery-stream/",
+   "link":"/destinations/streaming-platforms/bigquery-stream/",
    "content":[]
  },
  {
