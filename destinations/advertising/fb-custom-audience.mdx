@@ -24,7 +24,7 @@ The user information in your events may include email, phone number, gender, etc
  <strong>Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/fb_custom_audience">GitHub repo</a></strong>.
 </div>
 
-## Getting Started
+## Getting started
 
 To enable sending your event data to Facebook Custom Audience, you will first need to add it as a destination in RudderStack.Once the destination is configured and enabled, events from RudderStack will start flowing to Custom Audience.
 
@@ -37,7 +37,7 @@ Before configuring Facebook Custom Audience as a destination, verify if the sour
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 
 </div>
 
@@ -117,41 +117,6 @@ The `add` and `remove` arrays containing the user data objects are expected insi
 - **add**: This array refers to the user information that needs to be added to Custom Audience.
 - **remove**: This array refers to the user information that needs to be deleted from Custom Audience.
 
-## The `track` event structure to send user data to Custom Audience
-
-<div class="warningBlock">
-
-**The Facebook Custom Audience destination supports only <code class="inline-code">track</code> calls.**
-
-</div>
-
-The `userListAdd` and `userListDelete` arrays containing the user data objects are expected inside the properties field of the `track` event.
-
-- **userListAdd**: Refers to the user information that needs to be added to the custom audience.
-- **userListDelete**: Refers to the user information that needs to be deleted from the custom audience.
-
-A detailed description of the session fields as prescribed in the [**Facebook documentation**](https://developers.facebook.com/docs/marketing-api/reference/custom-audience/users/#parameters) is documented in the following table:
-
-| **Rudderstack-supported Field Name**      | **Marketing API Field Name** | **Data Type** | **Description**                                                                                                                                                       |
-| :---------------------------------------- | :--------------------------- | :------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sessionIdAdd`                            | `session_id`                 | `int64`       | This is the advertiser-generated identifier which is used to add users to a custom audience while tracking the session. It should be unique for each ad account.      |
-| `sessionIdDelete`                         | `session_id`                 | `int64`       | This is the advertiser-generated identifier which is used to remove users from a custom audience while tracking the session. It should be unique for each ad account. |
-| `batch_seq`,`batchSeq`,`batchSequence`    | `batch_seq`                  | `int64`       | This refers to the sequence number used to identify the request in the session.                                                                                       |
-| `last_batch_flag`,`lastBatchFlag`         | `last_batch_flag`            | `boolean`     | This is set to `true` when sending the last request.                                                                                                                  |
-| `estimated_num_total`,`estimatedNumTotal` | `estimated_num_total`        | `int64`       | Refers to the estimated total number of users to be uploaded in a particular session.                                                                                 |
-
-<div class="warningBlock">
-
-You cannot add or remove users from a custom audience using the same value for <code class="inline-code">sessionIdAdd</code> and <code class="inline-code">sessionIdDelete</code>.
-
-</div>
-
-<div class="infoBlock">
-
-For adding the session information to any user addition/deletion operation, the Facebook Marketing API expects the <code class="inline-code">session_id</code>, <code class="inline-code">batch_seq</code>, <code class="inline-code">last_batch_flag</code> fields to be present. **However, note that the data addition and deletion operations are possible without explicitly specifying the session information.**
-
-</div>
-
 ## Schema fields mapping
 
 The following table details the mapping of the schema fields specified in the [**RudderStack dashboard**](https://app.rudderlabs.com/) and the Facebook Marketing API.
@@ -182,7 +147,7 @@ The following table details the mapping of the schema fields specified in the [*
 RudderStack modifies the schema names visible in the dashboard to ensure better readability. However, during the event call, the field names <strong>must be exactly the same as</strong> the schema names specified by Facebook Marketing API, as mentioned in the table above.
 </div>
 
-## Explicit Formatting Feature
+## Explicit formatting feature
 
 If the **Disable Formatting** option is enabled in the RudderStack dashboard, RudderStack will not format the user data in the format prescribed by the Facebook Marketing API. If it is disabled, RudderStack formats the schema fields input by the user as shown in the table below:
 
@@ -323,6 +288,6 @@ For more information on using this access token or generating the access token v
 
 Refer to the [**Facebook documentation**](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#step-2--specify-a-list-of-users) for more information on this.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Facebook Custom Audience with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
