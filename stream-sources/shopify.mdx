@@ -1,0 +1,101 @@
+---
+# slug: "/docs/stream-sources/appcenter"
+title: "Shopify"
+description: Step-by-step guide to ingest your event data from Shopify into RudderStack.
+---
+
+# Shopify
+
+[**Shopify**](https://www.shopify.in/) is a popular all-in-one E-commerce platform that gives you all the tools to start, run, and grow your business effectively. It offers online retailers a variety of services around digital payments, marketing, product shipping, customer engagement and retention, and more.
+
+This guide will help you set up Shopify as a source in RudderStack.
+
+<img src="https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github" alt="Github Badge" class="githubBadge" />
+
+## Installing the RudderStack app in Shopify
+
+Before setting up the Shopify source in RudderStack, we highly recommend installing the RudderStack app on your Shopify store by following these steps:
+
+- [**Log in**](https://www.shopify.com/partners)  to your Shopify store.
+
+- Search for RudderStack.
+
+- Install the app on your Shopify store.
+
+## Setting up the Shopify source in RudderStack
+
+Follow these steps to set up your Shopify source in the RudderStack dashboard:
+
+- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/) and click on **Add Source**. From the list of **Event Stream** sources, select **Shopify**, as shown:
+
+<img src="../assets/event-stream-sources/shopify-1.png" alt="Shopify source in RudderStack dashboard" />
+
+- Assign a name to your source and click on **Next**.
+
+- Your Shopify source is now configured. Note the source **Write key**. This will be required later while configuring the RudderStack app on your Shopify store.
+
+<img src="../assets/event-stream-sources/shopify-2.png" alt="Shopify source webhook URL" />
+
+- Finally, connect the source to your desired destinations.
+
+## Configuring the RudderStack app in your Shopify store
+
+To complete the configuration, you will need to add the webhook URL copied above in the RudderStack app installed in your Shopify store. Follow these steps to do so:
+
+- Go to the [**admin dashboard**](https://www.shopify.com/partners) of your Shopify store.
+
+- In the left sidebar, click on **Stores**. Here, select your Shopify store, as shown:
+
+<img src="../assets/event-stream-sources/shopify-3.png" alt="Shopify store" />
+
+- Then, click on the **Log in** option, as shown:
+
+<img src="../assets/event-stream-sources/shopify-4.png" alt="Shopify store login option" />
+
+- In the left sidebar, click on **Apps**. Then, select **RudderStack**, as shown:
+
+<img src="../assets/event-stream-sources/shopify-5.png" alt="Shopify store RudderStack app" />
+
+- Finally, enter your **RudderStack Data Plane URL** and **Source Write Key** that you copied above, as shown:
+
+<img src="../assets/event-stream-sources/shopify-6.png" alt="Data plane URL and source write key" />
+
+<div class="infoBlock">
+
+Follow <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this section</a> for more information on the data plane URL and where to get it.
+</div>
+
+## Event transformation
+
+<div class="infoBlock">
+
+<ul>
+<li> RudderStack supports and maps Shopify's <code class="inline-code">customer_create</code> and <code class="inline-code">customer_update</code> events as <code class="inline-code">identify</code> events.</li>
+<li> RudderStack also supports <code class="inline-code">checkout_created</code> and <code class="inline-code">order_update</code> events as the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">E-commerce events</a>. </li>
+</ul>
+</div>
+
+The following Shopify events are mapped to RudderStack's generic `track` events:
+
+```javascript
+[
+  "checkout_delete",
+  "checkout_update",
+  "customers_disabled",
+  "customers_enable",
+  "carts_create",
+  "carts_update",
+  "fulfillments_create",
+  "fulfillments_update",
+  "orders_create",
+  "orders_delete",
+  "orders_cancelled",
+  "orders_fulfilled",
+  "orders_paid",
+  "orders_partially_fullfilled",
+]
+```
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
