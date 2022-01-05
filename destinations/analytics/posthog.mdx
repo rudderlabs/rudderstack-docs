@@ -57,9 +57,17 @@ If you’re hosting your own PostHog instance, add the URL of your instance with
 
 ## Web Settings
 
-<img src="../../assets/posthog-web.png" /><span class="imageTitle">PostHog Web Settings in RudderStack</span>
+<img src="../../assets/posthog-web-settings.png" /><span class="imageTitle">PostHog Web Settings in RudderStack</span>
 
 - **Use native SDK to send events** - This will send event data using the [Posthog JavaScript SDK](https://posthog.com/docs/integrations/js-integration).
+- **Enable Local Storage for Persistence** - Enabling this will reduce the amount of data stored in cookies by storing it in Local Storage instead. This should reduce the amount of data we send to app.posthog.com for each event by 2-4kb, improving deliverability.
+
+<div class="infoBlock">
+
+Note that this feature is only useful in device mode.
+
+</div>
+
 - **Enable autocapture with PostHog** - Enable this option to allow PostHog to send [auto-captured](https://posthog.com/docs/integrations/js-integration#usage) events.
 - **Allow PostHog to automatically capture pageview events** - This allows PostHog Javascript SDK to send a pageview event each time it is loaded on page.
 - **Disable session recoding** - Turning this to enabled will stop PostHog from recording user sessions. Find more info on this option [here](https://posthog.com/docs/features/session-recording).
