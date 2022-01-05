@@ -23,6 +23,11 @@ RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to trac
   <strong>v1.1 is now the default version of the JavaScript SDK</strong>. RudderStack will end support for the older versions by March 2022. For more information on migrating to v1.1, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/">this guide</a>.
 </div>
 
+<div class="successBlock">
+
+The JavaScript SDK now supports integration with the OneTrust consent manager and lets you map OneTrust cookie/consent groups to RudderStack's consent purposes.  For more information on the OneTrust integration, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/">this guide</a>.
+</div>
+
 ## Installing the SDK
 
 To quickly set up and start using the RudderStack JavaScript SDK, go through our [**quick start guide**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide).
@@ -68,7 +73,8 @@ The `options` parameter in the above `load` call looks like the following:
   secureCookie: boolean, // defaults to false.
   destSDKBaseURL: string, // defaults to https://cdn.rudderlabs.com/v1.1/js-integrations
   useBeacon: boolean, // defaults to false.
-  beaconQueueOptions: BeaconQueueOpts
+  beaconQueueOptions: BeaconQueueOpts,
+  cookieConsentManager: cookieConsentManager
 }
 ```
 
@@ -85,6 +91,7 @@ It includes the following details:
 | `destSDKBaseURL`      | String                              | Defaults to `https://cdn.rudderlabs.com/v1.1/js-integrations`. The SDK will load the integrations from this path. You can also set your own integrations path using this field.                                            | 
 | `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  `navigator.sendBeacon()` utility. |
 | `beaconQueueOptions`  | [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) section. |
+| `cookieConsentManager` | Object       |  Refer to the [`cookieConsentManager`](#cookieconsentmanager) section for more information. |
 
 For more details, refer to the [**`options`**](#options) parameter section.
 
@@ -531,6 +538,29 @@ The following table describes each of the above parameters in detail:
 | `backoffFactor` | Integer | Refers to the exponential base.                                      | 2                 |
 | `maxAttempts`   | Integer | Maximum number of attempts to send the event to the destination.     | 10                |
 | `maxItems`      | Integer | Maximum number of events kept in the storage.                        |    100            |
+
+#### cookieConsentManager
+
+Once the user provides the consent, you can load the JavaScript SDK and enable the OneTrust integration via the `cookieConsentManager` object, as shown:
+
+```javascript
+rudderanalytics.load(
+  "WRITE-KEY",
+  "DATA-PLANE-URL", {
+    configUrl: "https://api.dev.rudderlabs.com",
+    cookieConsentManager: {
+      oneTrust: {
+        enabled: true
+      }
+    }
+  }
+);
+```
+
+<div class="infoBlock">
+  
+For more information on <code class="inline-code">cookieConsentManager</code> and how to use it, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/#setting-up-the-integration">this section</a>.
+</div>
 
 ## Adding callbacks to standard methods
 
