@@ -88,7 +88,7 @@ It includes the following details:
 |  `queueOpts`          | [**QueueOpts**](#queueopts)         | Refer to the [`QueueOpts`](#queueopts) section.          |
 |  `loadIntegration`    | Boolean                             | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                    |
 | `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS.|
-| `destSDKBaseURL`      | String                              | Defaults to `https://cdn.rudderlabs.com/v1.1/js-integrations`. The SDK will load the integrations from this path. You can also set your own integrations path using this field.                                            | 
+| `destSDKBaseURL`      | String                              | Defaults to `https://cdn.rudderlabs.com/v1.1/js-integrations`. The SDK will load the integrations from this path. You can also set your own integrations path using this field. For more information, refer to [**this section**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn).                                                    | 
 | `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  `navigator.sendBeacon()` utility. |
 | `beaconQueueOptions`  | [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) section. |
 | `cookieConsentManager` | Object       |  Refer to the [`cookieConsentManager`](#cookieconsentmanager) section for more information. |
@@ -545,9 +545,8 @@ Once the user provides the consent, you can load the JavaScript SDK and enable t
 
 ```javascript
 rudderanalytics.load(
-  "WRITE-KEY",
-  "DATA-PLANE-URL", {
-    configUrl: "https://api.dev.rudderlabs.com",
+  <WRITE_KEY>,
+  <DATA_PLANE_URL>, {
     cookieConsentManager: {
       oneTrust: {
         enabled: true
@@ -559,7 +558,7 @@ rudderanalytics.load(
 
 <div class="infoBlock">
   
-For more information on <code class="inline-code">cookieConsentManager</code> and how to use it, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/#setting-up-the-integration">this section</a>.
+For more information on the consent managers supported by RudderStack, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/">this section</a>.
 </div>
 
 ## Adding callbacks to standard methods
