@@ -60,9 +60,14 @@ For more information on where to find the AppsFlyer dev key, refer to the <a hre
 For more information on this field can be found in the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer documentation</a>.
 </div>
 
-- **App ID**: Rudderstack supports all sources for Appsflyer destination. If source is other than `android` or `apple family` (ios, watchos, ipados, tvos) then transformation in dashboard is needed to manipulate the os name.
-  - **Android App ID** is the application id used in your `app/build.gradle` file
-  - **Apple App ID** is the iTunes Application ID, and it is mandatory for iOS applications.
+- **App ID**: RudderStack supports all the sources for the AppsFlyer destination. If your source is other than **Android** or the **Apple** sources (iOS, watchOS, ipados, tvOS) then transformation in dashboard is needed to manipulate the os name.
+  - **Android App ID**: This the application ID used in your `app/build.gradle` file.
+  - **Apple App ID**: This is the iTunes Application ID and it is mandatory for the iOS applications.
+
+<div class="infoBlock">
+
+RudderStack supports all the other sources for the AppsFlyer destination, in addition to the Android and iOS sources. However, you will need to <a href="">add a transformation</a> to the destination to manipulate the OS name. Refer to the <a href="#connecting-appsflyer-to-non-androidios-sources">Connecting AppsFlyer to non-Android/iOS sources</a> section below for more information.
+</div>
 
 - **Use native SDK to send events**: By default, this setting will be enabled. To send events via the cloud mode or device mode, you can toggle this setting on or off.
 
@@ -237,6 +242,35 @@ Make sure to use the <code class="inline-code">await</code> keyword with the <co
      </TabPanel>
     </TabPanels>
 </Tabs>
+
+## Connecting AppsFlyer to non-Android/iOS sources
+
+As mentioned above, the AppsFlyer destination supports all the RudderStack sources in addition to Android and iOS. However, you will need to add a transformation to the destination by following these steps:
+
+- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/).
+
+- Add a new transformation by following the instructions listed in [**this guide**](https://rudderstack.com/docs/transformation/#adding-a-transformation). Use the following transformation function:
+
+```javascript
+export function transformEvent(event, metadata) {
+  event.context.os = {
+    name: "android"
+  };
+  return event;
+}
+```
+
+- Save the transformation.
+
+- Finally, configure your AppsFlyer destination and select this transformation in the **Choose an existing transformation** window, as shown:
+
+<img src="../../assets/event-stream-destinations/appsflyer-2.png" alt="AppsFlyer transformation settings in RudderStack" />
+
+- If you have already configured your AppsFlyer destination, navigate to the **Transformation** option, as shown:
+
+<img src="../../assets/event-stream-destinations/appsflyer-3.png" alt="Transformation settings after adding destination" />
+
+- Click on **Add a transformation** and select the transformation you created above.
 
 ## Sending events via the RudderStack cloud mode
 
