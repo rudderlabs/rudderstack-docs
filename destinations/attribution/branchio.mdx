@@ -274,7 +274,7 @@ All the trackable events in RudderStack are divided into three major Branch even
 - Content Events
 - Lifecycle Events
 
-The following table lists the mapping between the accepted names of the Commerce events:
+The following table lists the mapping between the accepted names of the E-commerce events:
 
 | RudderStack Event           | Branch Event        |
 | :-------------------------- | :------------------ |
@@ -285,22 +285,29 @@ The following table lists the mapping between the accepted names of the Commerce
 | `Payment Info Entered`      | `ADD_PAYMENT_INFO`  |
 | `Order Completed`           | `ADD_PAYMENT_INFO`  |
 | `Spend Credits`             | `SPEND_CREDITS`     |
+| `Promotion Viewed`          | `VIEW_AD`           |
+| `Promotion Clicked`         | `CLICK_AD`          |
+| `Checkout Started`          | `PURCHASE`          |
+| `Order Completed`           | `PURCHASE`          |
+| `Reserve`                   | `RESERVE`           |
 
 <div class="infoBlock">
 
-RudderStack also maps the `Spend Credits` event to Branch's `SPEND_CREDITS`, although it is not directly a part of the Commerce Events.
+RudderStack also maps the `Spend Credits` event to Branch's `SPEND_CREDITS`, although it is not directly a part of the E-commerce Events.
 
 </div>
 
 The following table lists the mapping between the accepted names of the Content events:
 
-| RudderStack Event     | Branch Event |
-| :-------------------- | :----------- |
-| `Products Searched`   | `SEARCH`     |
-| `Product Viewed`      | `VIEW_ITEM`  |
-| `Product List Viewed` | `VIEW_ITEMS` |
-| `Product Reviewed`    | `RATE`       |
-| `Product Shared`      | `SHARE`      |
+| RudderStack Event     | Branch Event      |
+| :-------------------- | :---------------- |
+| `Products Searched`   | `SEARCH`          |
+| `Product Viewed`      | `VIEW_ITEM`       |
+| `Product List Viewed` | `VIEW_ITEMS`      |
+| `Product Reviewed`    | `RATE`            |
+| `Product Shared`      | `SHARE`           |
+| `Initiate Stream`     | `INITIATE_STREAM` |
+| `Complete Stream`     | `COMPLETE_STREAM` |
 
 <div class="infoBlock">
 
@@ -316,6 +323,10 @@ RudderStack also supports mapping the following events even though they are not 
 | `Complete Tutorial`     | `COMPLETE_TUTORIAL`     |
 | `Achieve Level`         | `ACHIEVE_LEVEL`         |
 | `Unlock Achievement`    | `UNLOCK_ACHIEVEMENT`    |
+| `Invite`                | `INVITE`                |
+| `Login`                 | `LOGIN`                 |
+| `Start Trial`           | `START_TRIAL`           |
+| `Subscribe`             | `SUBSCRIBE`             |
 
 The following table lists the mapping of the accepted property keys common to all events:
 
@@ -358,4 +369,4 @@ You can retrieve the Branch key from the settings page of the [Branch dashboard]
 
 ## Contact Us
 
-If you come across any issues while configuring Branch with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
