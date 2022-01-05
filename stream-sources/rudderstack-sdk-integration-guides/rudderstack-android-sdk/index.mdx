@@ -263,30 +263,16 @@ The `optOut` API is available in the RudderStack Android SDK from version `1.0.2
 
 ## Chromecast
 
-The `Google Chromecast` is a device which converts any TV or monitor with an HDMI port into a smart device that can interact with your mobile phone.
+[**Google Chromecast**](https://store.google.com/in/product/chromecast?hl=en-GB) is a device that plugs into your TV or monitor with an HDMI port, and can be used to stream content from your phone or computer.
 
-Here's what you need to build a Cast app:
+<div class="successBlock">
 
-- A `sender application` written for the Android platform.
-- A `Receiver application` that handles communication between the sender app and the Cast device. You have the following options:
-  - The `Default Media Receiver` presented with Google Cast branding and styling.
-  - The `Styled Media Receiver` for which you can develop the styles and branding.
-  - A `Custom receiver` that implements the Web Receiver SDK and handles custom messages from your sender app.
-  - Another option is the `Android TV Receiver`.
-- `Default Media Receiver` app is free to use and for all other types of receiver app you need to get it registered at the [Cast Website](https://cast.google.com/publish/#/signup) for the corresponding Application-ID. Application-ID is required in the Sender app. It informs the Cast device to load the corresponding receiver app.
-- Follow all the [Google Cast Design Checklist](https://developers.google.com/cast/docs/design_checklist) defined by the Google.
-- Finally, add the `RudderStack's Android SDK` in your Sender app.
-
-<div class="infoBlock">
-
-For `Default Media Receiver` app provide the following appID: `CastMediaControlIntent.DEFAULT_MEDIA_RECEIVER_APPLICATION_ID` in your Android Sender app. For more details refer to [Cast](https://developers.google.com/cast/docs/web_receiver#default_media_web_receiver) support.
-
+RudderStack supports integrating the Android SDK with your Cast app. Follow <a href="https://developers.google.com/cast/docs/android_sender">these instructions</a> to build your Android sender app and add the Android SDK to it.
 </div>
 
 <div class="infoBlock">
 
-Follow [Google Cast developer guide](https://developers.google.com/cast/docs/developers) for more details.
-
+  Follow the <a href="https://developers.google.com/cast/docs/developers">Google Cast developer guide</a> for more details.
 </div>
 
 ## Track
