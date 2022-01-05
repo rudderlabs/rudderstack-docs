@@ -2,13 +2,12 @@
 # slug: "/docs/advertising/fb-custom-audience"
 title: "Facebook Custom Audience"
 description: >-
-  Step-by-step guide to send event data from RudderStack to Facebook Custom
-  Audience.
+  Step-by-step guide to send event data from RudderStack to Facebook Custom Audience.
 ---
 
 # Facebook Custom Audience
 
-[**Facebook Custom Audience**](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences) is a popular targeting tool that lets you find people on Facebook interested in your business. It lets you create custom audiences through customer lists, Facebook engagement, and website/app traffic.
+[**Facebook Custom Audience**](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences) is a popular targeting tool that lets you find people on Facebook, who are interested in your business. It lets you create custom audiences through customer lists, Facebook engagement, and website/app traffic.
 
 RudderStack lets you send your customer events for creating custom audiences by leveraging the Facebook Marketing API.
 
@@ -22,7 +21,7 @@ The user information in your events may include email, phone number, gender, etc
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/fb_custom_audience">GitHub repo</a>.**
+ <strong>Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/fb_custom_audience">GitHub repo</a></strong>.
 </div>
 
 ## Getting Started
@@ -44,57 +43,81 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Custom Audience, perform the steps below:
 
-- From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source. Then, select **Facebook Custom Audience** from the list of destinations.
+- From your [**RudderStack dashboard**](https://app.rudderstack.com), add the source. Then, select **Facebook Custom Audience** from the list of destinations.
 
 <div class="infoBlock">
 
-Please follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">How to Add a Source and Destination in RudderStack</a> to add a source and destination in RudderStack.
-
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
 - Assign a name to the destination and click on **Next**. You will then see the following screen:
 
-<img src="https://user-images.githubusercontent.com/59817155/123789892-4a4ec800-d8fb-11eb-8ac4-480f7acbf7ef.png" /><span class="imageTitle">Facebook Custom Audience Setup</span>
+<img src="https://user-images.githubusercontent.com/59817155/127313498-87e59fca-8420-486a-a930-2b76f5181e6c.png" /><span class="imageTitle">Facebook Custom Audience Setup</span>
 
-## Custom Audience Connection Settings
+### Connection settings
 
 To add Custom Audience as a destination in RudderStack, you will need to configure the following settings:
 
-- **Access Token** Enter the access token of your business application set up for accessing the Facebook Marketing API.
+- **Access Token**: Enter the access token of your business application set up for accessing the Facebook Marketing API.
 
 <div class="infoBlock">
 
-Check the **FAQ** section for more information on how to find your User Access Token.
-
+  Check the <strong>FAQ</strong> section for more information on how to find your User Access Token.
 </div>
 
-- **Schema Fields** Choose your schema fields \(at least one\) from the available options. **This is a mandatory field**. RudderStack expects the user events to consist of **every** schema field that has been chosen on the dashboard, in the same order.
+- **Audience ID**: This is the custom Audience ID to which the audiences will be added/removed.
 
 <div class="infoBlock">
 
-RudderStack will ignore any user information which does not adhere to the specified schema fields in the dashboard settings.
-
+  Check the <strong>FAQ</strong> section for more information on how to find your Audience ID.
 </div>
 
-- **Map Specific Events To Audience ID**: Enter the **Event Name\(s\)** you are going to use to send your user data to Rudderstack \(for e.g.`uploadingCustomAudience`,`trimmingCustomAudience` etc.\). Also, specify the corresponding **Custom Audience ID\(s\)** to which the audiences will be added to/removed from.
+- **Schema Fields** Choose your schema fields \(at least one\) from the available options. **This is a mandatory field**. RudderStack expects the user events to consist of **every** schema field that has been chosen on the dashboard.
 
 <div class="infoBlock">
 
-Check the **FAQ** section for more information on how to find your Audience ID.
-
+RudderStack will ignore any user information which does not adhere to the schema fields specified in the dashboard settings.
 </div>
 
-<div class="infoBlock">
+Some other important settings include:
 
-You can only send <code class="inline-code">track</code> events with the event names specified in the dashboard.
+- **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
 
+- **Is The Data Raw**: As RudderStack does not support combinational schema fields, this field will be ignored if not enabled.
+
+<div class="warningBlock">
+
+When this option is enabled, Facebook will not support the following schema fields:
+  
+  <ul>
+    <li><code class="inline-code">EMAIL_SHA256</code></li>
+    <li><code class="inline-code">PHONE_SHA256</code></li>
+  </ul>
+  
+Even when disabled, Facebook does not accept any other schema fields coupled with the above fields.
 </div>
 
-- Some other important settings are:
-  - **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
-  - **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
+- **Audience Batch Size**: Specify the size of data you want RudderStack to send to Facebook in a single event. For example, if you want to send a total 1000 user records to Facebook and set the batch size to 50, then Rudderstack will send 20 events to Facebook with 50 user records in each event.
 
-## The `track` Event Structure to Send User Data to Custom Audience
+- **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
+
+- **Type**: Specify the type of the custom audience here. This field will be ignored if left as `NA`.
+
+- **Sub Type**: This is the sub-type of the custom audience. This field will be ignored if left as `NA`.
+
+## `audiencelist` event structure to send user data to Custom Audience
+
+<div class="warningBlock">
+
+<strong>The Facebook Custom Audience destination supports only <code class="inline-code">audiencelist</code> calls.</strong>
+</div>
+
+The `add` and `remove` arrays containing the user data objects are expected inside the properties field of the `audiencelist` event. These arrays are wrapped inside the object `listData`.
+
+- **add**: This array refers to the user information that needs to be added to Custom Audience.
+- **remove**: This array refers to the user information that needs to be deleted from Custom Audience.
+
+## The `track` event structure to send user data to Custom Audience
 
 <div class="warningBlock">
 
@@ -129,7 +152,7 @@ For adding the session information to any user addition/deletion operation, the 
 
 </div>
 
-## Schema Fields Mapping
+## Schema fields mapping
 
 The following table details the mapping of the schema fields specified in the [**RudderStack dashboard**](https://app.rudderlabs.com/) and the Facebook Marketing API.
 
@@ -156,8 +179,7 @@ The following table details the mapping of the schema fields specified in the [*
 
 <div class="warningBlock">
 
-RudderStack modifies the schema names visible in the dashboard to ensure better readability. However, during the event call, the field names **must be exactly the same as** the schema names specified by Facebook Marketing API, as mentioned in the table above.
-
+RudderStack modifies the schema names visible in the dashboard to ensure better readability. However, during the event call, the field names <strong>must be exactly the same as</strong> the schema names specified by Facebook Marketing API, as mentioned in the table above.
 </div>
 
 ## Explicit Formatting Feature
@@ -178,97 +200,78 @@ If the **Disable Formatting** option is enabled in the RudderStack dashboard, Ru
 | `ZIP`                 | `11502 @bc`       | `11502@bc`                              |
 | `COUNTRY`             | `IN`              | `in`                                    |
 
-The following code snippet shows a `track` event with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
+The following code snippet shows a `audiencelist` event with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
 
-```python
-import rudder_analytics
-
-rudder_analytics.write_key = WRITE_KEY
-rudder_analytics.data_plane_url = DATA_PLANE_URL
-
-rudder_analytics.track('USER-ID', 'EVENT-NAME', {
-
- 'sessionIdAdd': 123,
- 'sessionIdDelete':456,
- 'batchSequence': 10,
- 'lastBatchFlag': true,
-
- 'userListAdd': [
-       {
-         'EMAIL': 'name1@abc.com',
-         'FN': 'name1'
-       },
-       {
-         'EMAIL': 'name2@abc.com',
-         'FN': 'name2'
-       }
-     ],
-     'userListDelete': [
-       {
-         'Email': 'name3@abc.com',
-         'FN': 'name3'
-       },
-       {
-         'Email': 'name4@abc.com',
-         'FN': 'name4'
-       }
-     ]
-})
+```JSON
+{
+  "type": "audiencelist",
+  "properties": {
+    "listData": {
+      "add": [{
+          "EMAIL": "name1@abc.com",
+          "FN": "name1"
+        },
+        {
+          "EMAIL": " 'name2@abc.com",
+          "FN": "name2"
+        },
+        {
+          "EMAIL": " 'name3@abc.com",
+          "FN": "name3"
+        }
+      ],
+      "remove": [{
+          "EMAIL": "'name4@abc.com",
+          "FN": "name4"
+        },
+        {
+          "EMAIL": "'name5@abc.com",
+          "FN": "name5"
+        }
+      ]
+    }
+  }
+}
 ```
 
-## Facebook Custom Audience Payload Restrictions
+## Facebook Custom Audience payload restrictions
 
-| **Payload Field Name**                              | **Transformed?**                                                                                 |
-| :-------------------------------------------------- | :----------------------------------------------------------------------------------------------- |
-| Using only `userListAdd`                            | Yes                                                                                              |
-| Using only `userListDelete`                         | Yes                                                                                              |
-| Using both `userListAdd` and `userListDelete`       | Yes                                                                                              |
-| Not using both `userListAdd` and `userListDelete`   | No                                                                                               |
-| Not using only `sessionIdAdd`                       | Yes \(RudderStack will not explicitly create a session for the add operation.\)                  |
-| Not using only `sessionIdDelete`                    | Yes \( Rudderstack will not explicitly create a session for the delete operation.\)              |
-| Not using both `sessionIdAdd` and `sessionIdDelete` | Yes \( Rudderstack will not explicitly create sessions for both the delete and add operations.\) |
+| **Payload Field**                 | **Transformed?** |
+| :-------------------------------- | :--------------- |
+| Using only `add`                  | Yes              |
+| Using only `remove`               | Yes              |
+| Using both `add` and `remove`     | Yes              |
+| Not using both `add` and `remove` | No               |
+
+The following code snippet shows a `audiencelist` event having only `add` with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
+
+```JSON
+{
+  "type": "audiencelist",
+  "properties": {
+    "listData": {
+      "add": [{
+          "EMAIL": 'name1@abc.com',
+          "FN": 'name1'
+        },
+        {
+          "EMAIL": 'name2@abc.com',
+          "FN": 'name2'
+        }
+      ]
+    }
+  }
+}
+```
 
 <div class="infoBlock">
 
-<code class="inline-code">sessionIdAdd</code> and <code class="inline-code">sessionIdDelete</code> helps you track and use a particular session ID while adding or removing users. This is useful when you are sending data in chunks. If you do not include these fields, Facebook creates a session ID itself.
-
-Refer to the <a href="https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences#step-2--specify-a-list-of-users">Facebook documentation</a> for more information on this.
-
-</div>
-
-The following code snippet shows a `track` event having only `userListAdd` with the schema fields \(e.g.`EMAIL`,`FIRST NAME`\) specified in the RudderStack dashboard:
-
-```python
-rudder_analytics.track('USER-ID', 'EVENT-NAME', {
-  sessionIdDelete: 456,
-  batchSequence: 10,
-  lastBatchFlag: true,
-
-  userListAdd: [
-    {
-      EMAIL: 'name1@abc.com',
-      FN: 'name1',
-    },
-    {
-      EMAIL: 'name2@abc.com',
-      FN: 'name2',
-    },
-  ],
-})
-```
-
-As the `sessionIdAdd` field is absent, the above example does not create a session explicitly but successfully adds users to Facebook Custom Audience.
-
-<div class="infoBlock">
-
-Similarly, you can use <code class="inline-code">userListDelete</code> in order to remove users from a particular custom audience without creating a session.
-
+Similarly, you can use <code class="inline-code">remove</code> in order to remove users from a particular custom audience without creating a session.
 </div>
 
 <div class="warningBlock">
 
-The event payload must include <code class="inline-code">userListAdd</code> or <code class="inline-code">userListDelete</code> . Otherwise, the user data won’t be transformed and sent to Custom Audience.
-
+The event payload must include <code class="inline-code">add</code> or <code class="inline-code">remove</code> . Otherwise, the user data won’t be transformed and sent to Custom Audience.
 </div>
 
 ### FAQs
@@ -280,7 +283,7 @@ The event payload must include <code class="inline-code">userListAdd</code> or <
 <img src="https://user-images.githubusercontent.com/59817155/123789893-4ae75e80-d8fb-11eb-879f-825b7b6662b7.png" />
 
 - Then, click on **All Audience** and select the specific custom audience from the list.
-- Finally, click on **History** tab. Here, you will find the audience ID under the **Item Changed** column, as shown:
+- Finally, click on the **History** tab. Here, you will find the audience ID under the **Item Changed** column, as shown:
 
 <img src="https://user-images.githubusercontent.com/59817155/123789891-49b63180-d8fb-11eb-8c60-0232bfedaffe.png" />
 
@@ -311,8 +314,7 @@ To use the Facebook Marketing API, you need to generate a user access token. Fol
 
 <div class="infoBlock">
 
-For more information on using this access token or generating the access token via your app, check out Facebook's <a href="https://developers.facebook.com/docs/marketing-apis/overview/authentication">developer documentation</a>.
-
+For more information on using this access token or generating the access token via your app, refer to the Facebook <a href="https://developers.facebook.com/docs/marketing-apis/overview/authentication">developer documentation</a>.
 </div>
 
 ### Should I use `sessionIdAdd` or `sessionIdDelete` before adding/removing users in Custom Audience?
