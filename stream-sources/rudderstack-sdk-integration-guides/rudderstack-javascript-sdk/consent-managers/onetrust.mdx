@@ -32,14 +32,14 @@ Follow these steps to configure OneTrust for your web app:
 
 <div class="infoBlock">
  
-The categories should associated with/attached to at least one cookie. You can use one of the RudderStack cookies as a workaround.
+The categories should be associated with/attached to at least one cookie for them to be displayed in the OneTrust modal on your web app. You can use one of the RudderStack cookies as a workaround.
 </div>
 
 - Finally, go to the **Scripts** section and publish this script.
 
 ### Step 2: Specifying the OneTrust Cookie Categories in RudderStack
 
-This step involves enabling OneTrust for a given JavaScript source. To do so, specify the consent category name as defined in OneTrust (**Step 1**) for each destination that is connected to **that** JavaScript source.
+This step involves enabling OneTrust for a given JavaScript source. To do so, specify the consent category names as defined in OneTrust (**Step 1**) for each destination that is connected to **that** JavaScript source.
 
 <img src="../../../../assets/event-stream-sources/onetrust-1.png" alt="OneTrust category names" />
 
@@ -62,7 +62,7 @@ Before following the steps in this section, load the OneTrust script that you pu
 <!-- OneTrust Cookies Consent Notice end for samplewebsite.com -->
 ```
 
-- Load the JavaScript SDK after the user provides the consent.
+- **Important**: **Load the JavaScript SDK after the user provides the consent.**
 
 - Then, add the `cookieConsentManager` option in the `load()` call as shown in the following snippet:
 
