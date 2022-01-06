@@ -1,0 +1,189 @@
+---
+# slug: "/docs/rudderstack-api/user-suppression"
+title: "Data Regulation API"
+description: >-
+  Detailed technical description of the RudderStack Data Regulation API for
+  suppressing and deleting user data.
+---
+
+# Data Regulation API
+
+RudderStack's Data Regulation API allows you to delete the collected data, suspend data collection, or do both - for a particular user identified by a `userId`.
+
+This guide covers the data regulation feature in detail as well as details the various endpoints of the Data Regulation API.
+
+[![Plan: Enterprise](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)](https://rudderstack.com/enterprise-quote)
+
+## What is Data Regulation?
+
+At RudderStack, we respect the users' privacy choices and are committed to keeping their data secure at all times.
+
+You can leverage RudderStack's data regulation feature to suppress any incoming data for a given user. RudderStack will drop the events for that user - these events will not be shown in any of the debuggers and will not be forwarded to any destinations. You can also use the feature to direct RudderStack to delete any collected data in a given destination.
+
+<div class="warningBlock">
+
+Once a user is suppressed, replaying the user events is not possible.
+</div>
+
+## Prerequisites
+
+To use the Data Regulation API successfully, you need to generate a [**Personal Access Token**](https://rudderstack.com/docs/transformations/api-access-token/). This is required to authenticate the API.
+
+## API Authorization
+
+The Data Regulation API uses **Basic Authentication** for authenticating all the requests.
+
+<div class="successBlock">
+
+Basic Authentication concatenates the username and password with a colon (<code class="inline-code">:</code>) in between and encodes it using Base64 encryption.
+
+All the popular HTTP clients (e.g., CURL, Postman, HTTPie) have default support for Basic Authentication.
+</div>
+
+The Basic Authentication for this API requires a username and password, where:
+
+* The username is the **Workspace Token** present in your RudderStack dashboard.
+
+* The password is the **Personal Access Token** generated previously.
+
+For example, if your workspace token is `1tyVCBdlYeHlGrXqS7zYMxkXtW8` and the personal access token is `46kzUnuDv9J5NZsEqVJWLQutE4E`, your request must have the following HTTP header:
+
+```bash
+Authorization: Basic MXR5VkNCZGxZZUhsR3JYcVM3ellNeGtYdFc4OjQ2a3pVbnVEdjlKNU5ac0VxVkpXTFF1dEU0RQ== 
+```
+
+<div class="infoBlock">
+
+  In case of the <strong>Invalid Authorization Header</strong> error, verify if the email address and the personal access token are valid.
+</div>
+
+<div class="successBlock">
+
+  You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
+</div>
+
+## Add a new data regulation
+
+This request allows you to add a new data regulation required to suppress/delete a given user's data.
+
+* **Request Type**: **POST**
+
+* **Request Format**: 
+
+```bash
+https://api.rudderstack.com/v2/regulations
+```
+
+* **Request Body**:
+
+```json
+{
+  "regulationType": "suppress/suppress_with_delete/unsuppress",
+  "destinationIds": [],
+  "sourceIds": [],
+  "users": [{
+    "userId": "<user_ID>",
+    "phone": "<phone_number>",
+    "email": "<user_email>"
+  }]
+}
+```
+### `regulationType`
+
+This field lets you define the type of data regulation you want to add. It supports the following values:
+
+| Parameter Name | Description |
+| :-----------------| :-----------|
+| `suppress`           | Directs RudderStack to suppress the incoming user data. |
+| `suppress_with_delete` | Directs RudderStack to suppress any incoming user data and delete any events from the destinations configured by the user. |
+| `unsuppress` |  Directs RudderStack to withdraw any active suppression of the user data. |
+
+### `destinationIds` and `sourceIds`
+
+You can set these **optional** fields to specify the sources/destinations from which the data should be suppressed or deleted. 
+
+<div class="warningBlock">
+
+<ul>
+<li>Set the <code class="inline-code">sourceIds</code> field when setting the <code class="inline-code">regulationType</code> to <code class="inline-code">suppress</code>.</li>
+<li>Set the <code class="inline-code">destinationIds</code> field when setting the <code class="inline-code">regulationType</code> to <code class="inline-code">suppress_with_delete</code>.</li>
+</ul>
+
+<strong>Avoid specifying both <code class="inline-code">sourceIds</code> and <code class="inline-code">destinationIds</code>.
+</div>
+
+### `users`
+
+The API lets you specify the users for whom you want to set the data regulation. These users can be identified either by their `userId`, `phone`, or `email`.
+
+<div class="infoBlock">
+
+<strong>Only <code class="inline-code">userId</code> is a mandatory field. The other fields are optional as some destinations require fields like phone number or email to associate a given user and do not strictly associate a user by their user ID.
+</div>
+
+<div class="warningBlock">
+
+We suggest you provide the user's <code class="inline-code">phone</code> and <code class="inline-code">email</code> <strong>at your own discretion and only if it is required</strong>.
+</div>
+
+### List all data regulations
+
+This request lists all your data regulations.
+
+* **Request Type**: **POST**
+
+* **Request Format**: 
+
+```bash
+https://api.rudderstack.com/v2/regulations
+```
+
+* **Parameters**:
+
+| Parameter         | Type | Description |
+| :---------------| :------------| :------------------|
+| `after_cursor` | String | Should be used with the data after the given cursor position. This can be obtained from the `paging` object. Refer to the sample request below for more information. |
+| `per_page` | Integer | The number of data regulation items to be returned. |
+
+* **Request Body**:
+
+```javascript
+{
+  "paging": {
+    "next": "/v2/regulations?after_cursor=<string>"
+  },
+  "data": [{
+    "regulationId": "<string>",
+    "regulationType": "suppress/suppress_with_delete/unsuppress",
+    "workspaceId": "<string>",
+    "canceled": false,
+    "userAttributes": {
+      "userId": "<user_ID>",
+      "email": "<email>",
+      "phone": "<phone_number>"
+    }
+  }]
+}
+```
+
+## Cancel a data regulation
+
+This request cancels an existing data regulation.
+
+* **Request Type**: **DELETE**
+
+* **Request Format**: 
+
+```bash
+https://api.rudderstack.com/v2/regulations/{regulation_id}
+```
+
+* **Parameters**:
+
+| Parameter         | Type | Description |
+| :---------------| :------------| :------------------|
+| `regulation_id` | String |  The ID of the data regulation to be cancelled. |
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
