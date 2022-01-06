@@ -261,6 +261,20 @@ rudderClient.optOut(false);
 The `optOut` API is available in the RudderStack Android SDK from version `1.0.21`.
 </div>
 
+## Chromecast
+
+[**Google Chromecast**](https://store.google.com/in/product/chromecast?hl=en-GB) is a device that plugs into your TV or monitor with an HDMI port, and can be used to stream content from your phone or computer.
+
+<div class="successBlock">
+
+RudderStack supports integrating the Android SDK with your Cast app. Follow <a href="https://developers.google.com/cast/docs/android_sender">these instructions</a> to build your Android sender app. Then, add the Android SDK to it.
+</div>
+
+<div class="infoBlock">
+
+  Follow the <a href="https://developers.google.com/cast/docs/developers">Google Cast developer guide</a> for more details.
+</div>
+
 ## Track
 
 You can record the users' activity through the `track` method. Every user action is called an **event**.
@@ -371,7 +385,7 @@ traits.put("float", 120.4f);
 traits.put("long", 1234L);
 traits.put("string", "hello");
 traits.put("date", new Date(System.currentTimeMillis()));
-rudderClient.identify("test_user_id", traits, null;
+rudderClient.identify("test_user_id", traits, null);
 ```
 </span>
       </TabPanel>
@@ -540,8 +554,8 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 
 <Tabs>
   <TabList>
-    <Tab>Curl</Tab>
-    <Tab>Httpie</Tab>
+    <Tab>Kotlin</Tab>
+    <Tab>JAVA</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
