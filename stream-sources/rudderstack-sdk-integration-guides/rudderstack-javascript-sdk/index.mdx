@@ -131,6 +131,20 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 
 For more information, check the [**Filtering selective destinations**](#filtering-selective-destinations) section.
 
+## Chromecast
+
+[**Google Chromecast**](https://store.google.com/in/product/chromecast?hl=en-GB) is a device that plugs into your TV or monitor with an HDMI port, and can be used to stream content from your phone or computer.
+
+<div class="successBlock">
+
+RudderStack supports integrating the JavaScript SDK with your Cast app. Follow <a href="https://developers.google.com/cast/docs/web_sender">these instructions</a> to build your web sender app. Then, add the JavaScript SDK to it.
+</div>
+
+<div class="infoBlock">
+
+  Follow the <a href="https://developers.google.com/cast/docs/developers">Google Cast developer guide</a> for more details.
+</div>
+
 ## Identify
 
 The `identify` method allows you to link the users and their actions to a specific `userid`. You can also add additional information as `traits` to a user. Once the `identify` call is made, the SDK persists the user information and passes it to the subsequent [**`track`**](#track) or [**`page`**](#page) calls.
