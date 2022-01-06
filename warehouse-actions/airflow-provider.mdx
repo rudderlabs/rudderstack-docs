@@ -49,7 +49,7 @@ To create a new Airflow connection, follow these steps:
 
 - Add a new connection by configuring the following details:
 
-   - **Connection ID**: Specify a unique connection name. RudderStack operator will pick the connection with the name `rudderstack_default` by default. If you have created a connection with a name, make sure that same is passed as parameter to Rudderstack Operator.
+   - **Connection ID**: Specify a unique connection name. `RudderstackOperator` will pick the connection with the name `rudderstack_default` by default. If you have created a connection with a different name, make sure that name is passed as a parameter to `RudderstackOperator`.
 
    - **Connection Type**: For this field, select **HTTP** from the list.
 
