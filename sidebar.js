@@ -117,6 +117,21 @@ export const jsonData = [
                        ]
                     },
                     {
+                       "key":"consent-managers",
+                       "title":"Consent Managers",
+                       "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/",
+                       "content":[
+                          {
+                            "key":"onetrust",
+                            "title":"OneTrust",
+                            "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/",
+                            "content":[
+                          
+                              ]
+                          },
+                       ]
+                    },
+                    {
                        "key":"js-sdk-faqs",
                        "title":"JavaScript SDK FAQs",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
