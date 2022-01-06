@@ -198,25 +198,25 @@ The following snippets highlight how to properly import functions from a library
 ```javascript
 // Correct Way ✅
 // ---------------
-import { getLoss } from getFinanceData;
+import { getLoss } from "getFinanceData";
 
 // OR
 
-import { getLoss, getRevenue, getProfit } from getFinanceData;
+import { getLoss, getRevenue, getProfit } from "getFinanceData";
 import {
   getLoss,
   getRevenue,
   getProfit
-} from getFinanceData;
+} from "getFinanceData";
 
 // For default getPrice import
-import getPrice, { getRevenue, getProfit } from getFinanceData;
+import getPrice, { getRevenue, getProfit } from "getFinanceData";
 
 // alias imports
-import getPrice as gp, { getRevenue as gr, getProfit } from getFinanceData;
+import getPrice as gp, { getRevenue as gr, getProfit } from "getFinanceData";
 // usuage: gp(event), gr(event), getProfit(ev)
 
-import * as GFD from getFinanceData;
+import * as GFD from "getFinanceData";
 // usuage: GFD.getRevenue(ev), GFD.getProfit(ev)
 // for default import: GFD.default(ev)
 ```
@@ -224,11 +224,11 @@ import * as GFD from getFinanceData;
 ```javascript
 // Incorrect Way ❌
 // -----------------
-import * from getFinanceData;
+import * from "getFinanceData";
 
 // OR
 
-import getPrice as gp from getFinanceData;
+import getPrice as gp from "getFinanceData";
 getPrice(ev)
 ```
 
