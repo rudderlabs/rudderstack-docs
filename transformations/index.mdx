@@ -107,11 +107,11 @@ export function transformBatch(events, metadata) {
 
 **Disclaimer for using <code class="inline-code">transformBatch</code>**
 
-Make sure you pass on the <code class="inline-code">messageID</code> from the input event onto the output event. If the <code class="inline-code">messageID</code> is passed on, the order of delivery of events is preserved. **Without it, this order may not be maintained**.
+Make sure you pass on the <code class="inline-code">messageId</code> from the input event onto the output event. If the <code class="inline-code">messageId</code> is passed on, the order of delivery of events is preserved. **Without it, this order may not be maintained**.
 
 It is highly recommended to use <code class="inline-code">transformEvent</code> in every possible case as it ensures event ordering in all cases.
 
-In case a <code class="inline-code">transformBatch</code> is required and event ordering is important, make sure to pass on the <code class="inline-code">messageID</code>.
+In case a <code class="inline-code">transformBatch</code> is required and event ordering is important, make sure to pass on the <code class="inline-code">messageId</code>.
 </div>
 
 ## Libraries
