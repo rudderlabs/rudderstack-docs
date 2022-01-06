@@ -98,16 +98,8 @@ You can copy-paste the entire code of any of the functions present in this repos
 - In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` feature, as shown:
 
 ```javascript
-/***
-* This function gets executed on a batch of events before it gets pushed to a destination
-* events    => JSON list of events sent to rudder
-* metadata (optional) => Javascript function which can be used to access metadata of
-                        the given event by calling metadata(event)
-* After all the transformations are done, the final event that
-* needs to be pushed to the destination should be returned by this function
-***/
 export function transformBatch(events, metadata) {
-  return events
+    return events;
 }
 ```
 
