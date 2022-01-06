@@ -10,7 +10,22 @@ RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to trac
 
 <div class="successBlock">
 
-  Refer to the JavaScript SDK's <a href="https://github.com/rudderlabs/rudder-sdk-js">GitHub repository</a> for the source code and implementation details.
+  We have released <strong>JavaScript SDK v1.1</strong> - a more lightweight, efficient, and optimized version of the RudderStack JavaScript SDK v1. Read more about this new, high-performance JavaScript SDK in our <a href="https://rudderstack.com/blog/rudderstacks-new-high-performance-javascript-sdk/">blog</a>. 
+</div>
+
+<div class="infoBlock">
+
+ For the source code and implementation details, refer to the JavaScript SDK <a href="https://github.com/rudderlabs/rudder-sdk-js">GitHub repository</a> .
+</div>
+
+<div class="warningBlock">
+
+  <strong>v1.1 is now the default version of the JavaScript SDK</strong>. RudderStack will end support for the older versions by March 2022. For more information on migrating to v1.1, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/">this guide</a>.
+</div>
+
+<div class="successBlock">
+
+The JavaScript SDK now supports integration with the OneTrust consent manager and lets you map OneTrust cookie/consent groups to RudderStack's consent purposes.  For more information on the OneTrust integration, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/">this guide</a>.
 </div>
 
 ## Installing the SDK
@@ -54,8 +69,12 @@ The `options` parameter in the above `load` call looks like the following:
   integrations: IntegrationOpts,
   configUrl: string,  // defaults to https://api.rudderlabs.com
   queueOptions: QueueOpts,
-  loadIntegration: boolean // defaults to true.
-  secureCookie: boolean // defaults to false.
+  loadIntegration: boolean, // defaults to true.
+  secureCookie: boolean, // defaults to false.
+  destSDKBaseURL: string, // defaults to https://cdn.rudderlabs.com/v1.1/js-integrations
+  useBeacon: boolean, // defaults to false.
+  beaconQueueOptions: BeaconQueueOpts,
+  cookieConsentManager: cookieConsentManager
 }
 ```
 
@@ -68,9 +87,22 @@ It includes the following details:
 |  `configUrl`          | String                              | Defaults to `https://api.rudderlabs.com`. You need to provide the server (Control Plane) endpoint serving your destination configurations. Note that `sourceConfig` is automatically appended to this endpoint by the SDK. |
 |  `queueOpts`          | [**QueueOpts**](#queueopts)         | Refer to the [`QueueOpts`](#queueopts) section.          |
 |  `loadIntegration`    | Boolean                             | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                    |
-| `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS. |
+| `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS.|
+| `destSDKBaseURL`      | String                              | Defaults to `https://cdn.rudderlabs.com/v1.1/js-integrations`. The SDK will load the integrations from this path. You can also set your own integrations path using this field. For more information, refer to [**this section**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn).                                                    | 
+| `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  `navigator.sendBeacon()` utility. |
+| `beaconQueueOptions`  | [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) section. |
+| `cookieConsentManager` | Object       |  Refer to the [`cookieConsentManager`](#cookieconsentmanager) section for more information. |
 
-For more details, refer to the section on the [**`options`**](#options) parameter.
+For more details, refer to the [**`options`**](#options) parameter section.
+
+#### The useBeacon option
+
+The JavaScript SDK supports a new Boolean field, `useBeacon`, in the `load()` call options. When set to `true`, the SDK sends events using the [**`navigator.sendBeacon`**](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) utility.
+
+<div class="infoBlock">
+
+  Refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism">this section</a> for more details on using the Beacon transport mechanism.
+</div>
 
 ### Loading the SDK for self-hosted control plane
 
@@ -520,6 +552,28 @@ The following table describes each of the above parameters in detail:
 | `backoffFactor` | Integer | Refers to the exponential base.                                      | 2                 |
 | `maxAttempts`   | Integer | Maximum number of attempts to send the event to the destination.     | 10                |
 | `maxItems`      | Integer | Maximum number of events kept in the storage.                        |    100            |
+
+#### cookieConsentManager
+
+Once the user provides the consent, you can load the JavaScript SDK and enable the OneTrust integration via the `cookieConsentManager` object, as shown:
+
+```javascript
+rudderanalytics.load(
+  <WRITE_KEY>,
+  <DATA_PLANE_URL>, {
+    cookieConsentManager: {
+      oneTrust: {
+        enabled: true
+      }
+    }
+  }
+);
+```
+
+<div class="infoBlock">
+  
+For more information on the consent managers supported by RudderStack, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/">this section</a>.
+</div>
 
 ## Adding callbacks to standard methods
 
