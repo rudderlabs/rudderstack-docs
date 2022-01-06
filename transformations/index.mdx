@@ -279,58 +279,20 @@ You can make any number of external API requests in your transformation function
 
 An example of how to use the `fetch` function in transformations is shown below:
 
-
-<Tabs>
-  <TabList>
-    <Tab>Basic</Tab>
-    <Tab>POST</Tab>
-    <Tab>Headers</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>
-<span>
-
-```bash
-curl --location -X POST
-'https://api.rudderstack.com/accessTokens' \ -H 'Authorization: Basic
-Base64Enc(workspacetoken:)' \ -H 'Content-Type: application/json' \ -d
-'{ "name": "some-test-access-token", "description":
-"some-description" }'
-```
-</span>
-    </TabPanel>
-    <TabPanel>
-<span>
-
-```bash
-http POST 'https://api.rudderstack.com/accessTokens' \
-name=some-test-access-token description=some-description \
-Authorization:'Basic MXBUbGc2MlpZcUgycWtDMDVmc1hUZlJQRWZyOg==' \
-Content-Type:'application/json'
-```
-</span>
-    </TabPanel>
-    <TabPanel>
-<span>
-
 ```javascript
-export async function transformEvent(event) {
+export async function transformEvent(event, metadata) {
   const res = await fetch("post_url", {
     method: "POST", // POST, PUT, DELETE, GET, etc.
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      Authorization: "Bearer <your_authorization_token>",
+      Authorization: "Bearer <your_authorization_token>"
     },
-    body: JSON.stringify(event),
+    body: JSON.stringify(event)
   });
   event.response = JSON.stringify(res);
   return event;
 }
 ```
-</span>
-    </TabPanel>
-  </TabPanels>
-</Tabs>
 
 <div class="successBlock">
 
