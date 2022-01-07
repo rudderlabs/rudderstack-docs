@@ -236,7 +236,7 @@ For a detailed explanation of the <code class="inline-code">alias</code> call, r
 
 <div class="warningBlock">
 
-This feature is still in beta. Contact us on our <a href="https://rudderstack.com/join-rudderstack-slack-community">Community Slack</a> channel in case you face any issues.
+This feature is still in beta. Contact us on our <a href="https://rudderstack.com/join-rudderstack-slack-community">Community Slack</a> if you face any issues.
 </div>
 
 If the Node.js SDK fails to successfully deliver the event data to RudderStack at the first attempt, it retries the event delivery. However, if, for some reason, RudderStack is unavailable for a longer duration, there is a possibility of data loss. To prevent this scenario, RudderStack has a data persistence feature to persist the events in **Redis**, leading to better event delivery guarantees. Also, the SDK can retry multiple times as the queue is maintained in a different process space (in this case, Redis).
@@ -388,6 +388,6 @@ If the callback returns with an error, we recommend retrying calling `createPers
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
 
 If you come across any issues while using the Node.js SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-node/issues/new).
