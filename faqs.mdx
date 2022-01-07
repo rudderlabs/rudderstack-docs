@@ -116,7 +116,7 @@ Please note that these are conservative numbers. A single RudderStack node can h
 
 #### 3. How can I speed up the number of events sent to a destination?
 
-There is a [**config variable**](https://github.com/rudderlabs/rudder-server/blob/403adb3576eb57b65dcab3111d1e40caa99ef2af/config/config.toml#L123) to configure the number of workers that send data to destinations. The default value is 64, which itself is an aggressive number. You can increase the number of workers, but some destinations generally throttle the number of requests per account.
+There is a [**config variable**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml#L105) to configure the number of workers that send data to destinations. The default value is 64, which itself is an aggressive number. You can increase the number of workers, but some destinations generally throttle the number of requests per account.
 
 #### 4. How I can know the number of events that are being sent to a destination?
 
@@ -178,15 +178,7 @@ The batching is done on a per end-user level. All the events from a given end-us
 
 The events from an end-user are batched till we have 100 events or 120 seconds of inactivity since the last event. This list is then passed to the transformation function.
 
-#### 3. How do transformations affect the pipeline? If RudderStack is connected to the database and transformation is used to enrich the data, will it slow everything down?
-
-There is parallelism in calling the transformation function, so ideally it should not slow the system. However, if you have a really slow transformation, you can increase the number of transformation workers by tweaking `numTransformWorker` in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml).
-
-#### 4. Is there a configuration or setting to group together events to minimize the number of database calls?
-
-The number of user events that are batched together can be configured with `sessionThresholdEvents` and `sessionInactivityThresholdInS`in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml). The higher the number, the longer the events are grouped into a session. Note that that these will increase the memory footprint proportionally.
-
-#### 5. Can I apply a transformation on a source configured in RudderStack?
+#### 3. Can I apply a transformation on a source configured in RudderStack?
 
 Currently, transformations can only be configured and used for destinations. If you want to write some custom logic specific to the source, you can get the source ID in the transformation function and use it to include the logic. For more information, refer to this [**doc**](https://rudderstack.com/docs/transformations#accessing-metadata).
 
