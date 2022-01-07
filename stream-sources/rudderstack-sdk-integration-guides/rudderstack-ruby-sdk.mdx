@@ -42,6 +42,8 @@ gem install rudder_analytics_sync
 To use the SDK, create a client instance as shown in the following snippet:
 
 ```ruby
+require 'rudder_analytics_sync'
+
 Analytics = RudderAnalyticsSync::Client.new(
   write_key: WRITE_KEY, # required
   data_plane_url: DATA_PLANE_URL
