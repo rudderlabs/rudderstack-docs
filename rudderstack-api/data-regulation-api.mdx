@@ -31,35 +31,11 @@ To use the Data Regulation API successfully, you need to generate a [**Personal 
 
 ## API authorization
 
-The Data Regulation API uses **Basic Authentication** for authenticating all the requests.
-
-<div class="successBlock">
-
-Basic Authentication concatenates the username and password with a colon (<code class="inline-code">:</code>) in between and encodes it using Base64 encryption.
-
-All the popular HTTP clients (e.g., CURL, Postman, HTTPie) have default support for Basic Authentication.
-</div>
-
-The Basic Authentication for this API requires a username and password, where:
-
-* The username is the **Workspace Token** present in your RudderStack dashboard.
-
-* The password is the **Personal Access Token** generated previously.
-
-For example, if your workspace token is `1tyVCBdlYeHlGrXqS7zYMxkXtW8` and the personal access token is `46kzUnuDv9J5NZsEqVJWLQutE4E`, your request must have the following HTTP header:
-
-```bash
-Authorization: Basic MXR5VkNCZGxZZUhsR3JYcVM3ellNeGtYdFc4OjQ2a3pVbnVEdjlKNU5ac0VxVkpXTFF1dEU0RQ== 
-```
+The Data Regulation API uses the **Bearer Token Authentication** for authenticating all the requests.
 
 <div class="infoBlock">
 
-  In case of the <strong>Invalid Authorization Header</strong> error, verify if the email address and the personal access token are valid.
-</div>
-
-<div class="successBlock">
-
-  You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
+The Personal Access Token should be used as the bearer token for authentication.
 </div>
 
 ## Adding a new data regulation
@@ -125,6 +101,33 @@ The API lets you specify the users for whom you want to set the data regulation.
 We recommend that you provide the user's <code class="inline-code">phone</code> and <code class="inline-code">email</code> <strong>at your own discretion and only if it is required</strong>.
 </div>
 
+* **Sample Request**
+
+```bash
+curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
+--header 'Authorization: Bearer 22aJ7iEeWud78wDaR6dbAe29Nw2' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "regulationType": "suppress",
+    "sourceIds": [
+        "src-1"
+    ],
+    "users": [
+        {
+            "userId": "123",
+            "phone": "9876543210",
+            "email": "name@surname.com"
+        }
+    ]
+}'
+```
+
+* **Expected Response**
+
+```text
+Created
+```
+
 ### List all data regulations
 
 This request lists all your data regulations.
@@ -144,24 +147,51 @@ https://api.rudderstack.com/v2/regulations
 | `after_cursor` | String | Should be used with the data after the given cursor position. This can be obtained from the `paging` object. Refer to the sample request below for more information. |
 | `per_page` | Integer | The number of data regulation items to be returned. |
 
-* **Request Body**:
+* **Sample Request**
 
-```javascript
+```bash
+curl --location --request GET 'https://api.rudderstack.com/v2/regulations' \
+--header 'Authorization: Bearer 22YI2pCURNbcG0fGRfkgAdcWQsW'
+```
+
+* **Expected Response**
+
+```json
 {
-  "paging": {
-    "next": "/v2/regulations?after_cursor=<string>"
-  },
-  "data": [{
-    "regulationId": "<string>",
-    "regulationType": "suppress/suppress_with_delete/unsuppress",
-    "workspaceId": "<string>",
-    "canceled": false,
-    "userAttributes": {
-      "userId": "<user_ID>",
-      "email": "<email>",
-      "phone": "<phone_number>"
-    }
-  }]
+    "data": [
+        {
+            "id": "c8fae8a7-1555-4807-89d8-972837671071",
+            "workspaceId": "216AlUz1kdkhkh7RFFvJVA9THlq",
+            "canceled": false,
+            "regulationType": "suppress",
+            "attributes": {
+                "userId": "12",
+                "phone": "1234567890",
+                "email": "abc@xyz.com"
+            }
+        },
+        {
+            "id": "1ac629bf-d795-45df-8bfb-be06d22a636b",
+            "workspaceId": "216AlUz1kdkhkh7RFFvJVA9THlq",
+            "canceled": false,
+            "regulationType": "suppress_with_delete",
+            "attributes": {
+                "userId": "rudder-1"
+            }
+        },
+        {
+            "id": "7bdf698f-80bd-4278-bb85-414ad8d27888",
+            "workspaceId": "216AlUz1kdkhkh7RFFvJVA9THlq",
+            "canceled": true,
+            "regulationType": "suppress",
+            "attributes": {
+                "userId": "123",
+                "phone": "9876543210",
+                "email": "name@surname.com"
+            }
+        }
+    ],
+    "paging": {}
 }
 ```
 
