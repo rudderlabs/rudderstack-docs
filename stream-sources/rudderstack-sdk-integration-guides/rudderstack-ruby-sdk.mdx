@@ -42,6 +42,8 @@ gem install rudder_analytics_sync
 To use the SDK, create a client instance as shown in the following snippet:
 
 ```ruby
+require 'rudder_analytics_sync'
+
 Analytics = RudderAnalyticsSync::Client.new(
   write_key: WRITE_KEY, # required
   data_plane_url: DATA_PLANE_URL
@@ -60,7 +62,7 @@ Analytics.track(
 )
 ```
 
-### Manually batching the events
+### Manually batching events
 
 You can manually batch events with `Analytics.batch` as shown:
 
@@ -88,9 +90,9 @@ A sample `identify` call is as shown:
 
 ```ruby
 Analytics.identify(
-    user_id: '12345',
-    traits: { email: "#{ username.email }", friends: 1 },
-    context: {ip: '10.81.20.10'}
+  user_id: '12345',
+  traits: { email: "#{ username.email }", friends: 1 },
+  context: {ip: '10.81.20.10'}
 )
 ```
 
@@ -113,9 +115,9 @@ A sample `track` call is shown below:
 
 ```ruby
 Analytics.track(
-    user_id: '12345',
-    event: 'Item Sold',
-    properties: { revenue: 9.95, shipping: 'Free' }
+  user_id: '12345',
+  event: 'Item Sold',
+  properties: { revenue: 9.95, shipping: 'Free' }
 )
 ```
 
