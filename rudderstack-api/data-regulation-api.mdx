@@ -144,8 +144,7 @@ https://api.rudderstack.com/v2/regulations
 
 | Parameter         | Type | Description |
 | :---------------| :------------| :------------------|
-| `after_cursor` | String | Should be used with the data after the given cursor position. This can be obtained from the `paging` object. Refer to the sample request below for more information. |
-| `per_page` | Integer | The number of data regulation items to be returned. |
+| `after_cursor` | String | Fetches the regulations after the specified cursor position, obtained from the `paging` object from the **previous request**. Refer to the sample response below for more information. |
 
 * **Sample Request**
 
@@ -191,7 +190,9 @@ curl --location --request GET 'https://api.rudderstack.com/v2/regulations' \
             }
         }
     ],
-    "paging": {}
+  "paging": {
+    "next": "/v2/regulations?after_cursor=a450395bb52f4acb99e492c358e104eb"
+  },
 }
 ```
 
@@ -222,4 +223,4 @@ curl --location --request GET 'https://api.rudderstack.com/v2/regulations' \
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
