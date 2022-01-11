@@ -2,24 +2,130 @@
 # slug: "/docs/destinations/analytics/statsig"
 title: "Statsig"
 description: >-
-  Step-by-step guide to send your event data from RudderStack to Statsig
+  Step-by-step guide to send your event data from RudderStack to Statsig.
 ---
 
 # Statsig
 
-Statsig helps companies safely A/B test features in production before rolling them out, avoiding product debates and costly mistakes when shipping out new features. Statsig automates the grunt work so that A/B tests are always running automatically and you always know how your features are performing.
+Statsig helps companies safely A/B test features in production before rolling them out, avoiding product debates and costly mistakes when shipping out new features. Statsig automates the grunt work so that your A/B tests run automatically, and you always get the latest insights into how your product features are performing.
 
 <div class="successBlock">
 
-**Find out more in the <a href="https://docs.statsig.com/integrations/data-connectors">Statsig Documentation</a>.**
-
+  <strong>Read more about Statsig on their <a href="https://statsig.com/">website</a>. For more information on the Statsig-supported data connectors, refer to their <a href="https://docs.statsig.com/integrations/data-connectors">product documentation</a></strong>.
 </div>
 
-## Getting Started
+RudderStack supports Statsig as a destination to which you can send real-time event data for efficient A/B testing.
 
-1. From the Destinations catalog page in the Rudderstack App, click "New destination".
-1. Search for “Statsig” in the Destinations Catalog, and select the “Statsig” destination.
-1. Name your new Destination.
-1. Choose which Source(s) should send data to the “Statsig” destination.
-1. Enter the Statsig “Server Secret Key” in the "Server Secret Key" field.
-   - This “Server Secret Key” can be found in the <a href="https://console.statsig.com/">Statsig Console</a>, under Settings > API Keys.
+## Getting started
+
+Before configuring Statsig as a destination in RudderStack, verify if the source platform is supported by Statsig by referring to the table below:
+
+| Connection Mode     | Web           | Mobile                 | Server        |
+| :------------------ | :------------ | :--------------------- | :-------------|
+| **Device mode**     | -             | -                      | -             |
+| **Cloud mode**      | **Supported** | **Supported**          | **Supported** |
+
+<div class="infoBlock">
+ 
+ To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+</div>
+
+Once you have confirmed that your source platform supports sending events to Statsig, follow these steps:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Statsig**.
+
+<div class="infoBlock">
+ 
+ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+</div>
+
+* Assign a name to the destination and click on **Next**. You should then see the following screen:
+
+### Connection settings
+
+The connection settings required to configure Statsig as a destination in RudderStack are listed below:
+
+- **Server Secret Key**: Enter your server secret key for your project here. To obtain the server secret key, follow these steps:
+
+  - Go to your [**Statsig console**](https://console.statsig.com).
+
+  - Then, go to your project and click on the **Settings** icon on the top right, as shown:
+  
+  ![statsigs-project-settings](https://user-images.githubusercontent.com/59817155/148930736-70d5d1d4-ac54-4bbb-bfce-10a8939247f2.png)
+
+  - Finally, click on **API Keys**. You should find the **Server Secret Key** here.
+
+  ![statsig-api-keys](https://user-images.githubusercontent.com/59817155/148930921-5855f1be-cf90-4922-b6f1-db5e04198892.png)
+
+## Identify
+
+The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify("userId", {
+  name: "Name Surname",
+  email: "name@domain.com",
+})
+```
+
+<div class="infoBlock">
+ 
+  For more information on the <code class="inline-code">identify</code> event, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack Event Specification</a> guide.
+</div>
+
+## Page
+
+The `page` call lets you record your website's page views with any additional relevant information about the viewed page. Many destinations require the `page` events to be called at least once every page load.
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page("Home")
+```
+
+<div class="infoBlock">
+ 
+  For more information on the <code class="inline-code">page</code> event, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack Event Specification</a> guide.
+</div>
+
+## Track
+
+The `track` call lets you record the user events, i.e. the actions your users perform, along with any properties associated with these actions.
+
+A sample `track` call is as shown:
+
+```javascript
+rudderanalytics.track("Product Reviewed", {
+  review_id: "12345",
+  product_id: "123",
+  rating: 3.0,
+  review_body: "Average product, expected much more."
+})
+```
+
+<div class="infoBlock">
+ 
+  For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack Event Specification</a> guide.
+</div>
+
+## Screen
+
+The `screen` call lets you record whenever a user views their mobile screen, with any additional relevant information about the viewed screen.
+
+A sample `screen` call sent via the [**RudderStack iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) is shown below:
+
+```objectivec
+[[RSClient sharedInstance] screen:@"Main"
+                properties:@{@"prop_key" : @"prop_value"}];
+```
+
+<div class="infoBlock">
+ 
+  For more information on the <code class="inline-code">screen</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack Event Specification</a> guide.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
