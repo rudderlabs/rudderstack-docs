@@ -133,7 +133,7 @@ For anonymous users, customer.io does not allow an event name more than the size
 
 ## Device Token Registration
 
-We register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events.
+We generally register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events.
 
 - `Application Installed`
 - `Application Opened`
@@ -180,6 +180,37 @@ rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
 
 ```kotlin
 rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+Alternatively you can also enter an event name of your choice in the Customer IO Settings page as shown below:
+
+<img src="../../assets/customer.io_devicetoken_event.png" /><span class="imageTitle">Customer.io Connection Settings</span>
+
+and you should send this event just after setting the device token in your app as shown below, so that we can register the device token on that event immediately and not delayed until the next life cycle event occuring. 
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient sharedInstance] track:@"device_token_registered"];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+rudderClient!!.track("device_token_registered")
 ```
 </span>
       </TabPanel>
