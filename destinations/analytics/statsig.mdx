@@ -126,6 +126,46 @@ A sample `screen` call sent via the [**RudderStack iOS SDK**](https://rudderstac
   For more information on the <code class="inline-code">screen</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack Event Specification</a> guide.
 </div>
 
+## Group
+
+The `group` call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, e.g. the name of the company, number of employees, etc.
+
+A sample `group` call is shown below:
+
+```javascript
+rudderanalytics.group("12345", {
+  name: "MyGroup",
+  industry: "IT",
+  employees: 450,
+  plan: "basic"
+})
+```
+
+<div class="infoBlock">
+ 
+  For more information on the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack Event Specification</a> guide.
+</div>
+
+## Alias
+
+The `alias` call lets you merge different identities of a known user.
+
+<div class="infoBlock">
+
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+</div>
+
+A sample `alias` call is as shown:
+
+```javascript
+rudderanalytics.alias("12345")
+```
+
+<div class="infoBlock">
+ 
+  For more information on the <code class="inline-code">alias</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack Event Specification</a> guide.
+</div>
+
 ## Contact us
 
 **This integration has been built and maintained by Statsig**. For any queries, you can [**contact the Statsig team**](https://statsig.com/contact) or start a conversation in their [**Slack**](https://statsigcommunity.slack.com/) community. You can also [**get in touch**](mailto:%20docs@rudderstack.com) with us.
