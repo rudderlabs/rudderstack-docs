@@ -6,18 +6,18 @@ description: Step-by-step guide to send your event data from RudderStack to Cust
 
 # Customer.io
 
-[Customer.io](https://customer.io/) is a popular platform for sending automated messages and emails to your customers, with a focus on security and privacy. With Customer.io, you get complete information about your customers in one place, and use it to create personalized messages and campaigns for them.
+[**Customer.io**](https://customer.io/) is a popular platform for sending automated messages and emails to your customers, with a focus on security and privacy. With Customer.io, you get complete information about your customers in one place, and use it to create personalized messages and campaigns for them.
 
-RudderStack supports sending your events to CustomerIO from the cloud mode S2S \(Server to Server\) and native web SDKs by calling the relevant RudderStack APIs.
+RudderStack supports Customer.io as a destination to which you can seamlessly send your event data.
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/customerio">GitHub repo</a>.**
+<strong>Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/customerio">GitHub repo</a></strong>.
 </div>
 
-## Getting Started
+## Getting started
 
-Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported. You can refer the following table to do so:
+Before configuring Customer.io as a destination in RudderStack, verify if the source platform is supported by Customer.io by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -26,47 +26,69 @@ Before configuring your source and destination on the RudderStack app, please ch
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
-Once you have confirmed that the platform supports sending events to Customer.io, perform the steps below:
+Once you have confirmed that the platform supports sending events to Customer.io, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and Customer.io as a destination.
+- From your [**RudderStack dashboard**](https://app.ruddestack.com/), add the source. From the list of destinations, select **Customer.io**.
+
+<div class="infoBlock">
+ 
+ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+</div>
+
+- Assign a name to the destination and click on **Next**. You should then see the following screen:
+
+<img src="../../assets/event-stream-destinations/customerio-connection-settings.png" alt="Customer.io connection settings" />
+
+### Connection settings
+
+The connection settings required to configure Customer.io as a destination in RudderStack are listed below:
+
+- **Site ID**: Enter your Customer.io site ID.
+
+- **API Key**: Enter your Customer.io API key. 
 
 <div class="infoBlock">
 
-Please follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">How to Add a Source and Destination in RudderStack</a> to add a source and destination in RudderStack.
-
+For more information on obtaining your Customer.io site ID and API key, refer to the <a href="https://rudderstack.com/docs/destinations/marketing/customer.io/#where-do-i-find-the-api-key-and-site-id-for-configuring-customerio-in-rudderstack">FAQ</a> section below.
 </div>
 
-- Fill the required fields such as API Key and Site ID as shown in the screenshot below:
+- **Event sent after setting device token**: Enter the name of the event that is fired immediately after setting the device token.
 
-<img src="../../assets/photo-17-03-2021.png" /><span class="imageTitle">Customer.io Connection Settings</span>
+- **Account based in the EU data center?**: Enable this option in case your account is based in the EU region.
 
 <div class="infoBlock">
 
-In case your account based in the EU region, you must enable the option **Account based in the EU data center?**. For more information read the <a href="https://customer.io/docs/api/?region=eu#section/Overview">Customer.io Documentation</a>.
-
+Refer to the <a href="https://customer.io/docs/api/?region=eu#section/Overview">Customer.io documentation</a> for more information on this setting.
 </div>
 
-Once the destination is enabled, events from our SDK will start to flow to Customer.io.
+#### Web SDK settings
+
+- **Use native SDK to send events**: Enable this setting to send the events through Customer.io's native JavaScript SDK.
+
+- **OneTrust Cookie Category**: Specify the OneTrust category name for mapping the OneTrust consent settings to RudderStack's consent purposes.
 
 <div class="infoBlock">
 
-We primarily need the properties API Key and Site ID to start sending events to Customer.io. You may enable the **Use native SDK to send events** option to send events through Customer.io's native JavaScript SDK.
-
+For more information on this setting, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust Consent Manager</a> guide.
 </div>
+
+Finally, click on **Next** to complete the setup. Customer.io will now be enabled as a destination in RudderStack.
 
 ## Identify
 
-The `identify` call sends the event data to Customer.io along with the properties that you pass as the RudderStack traits. For more information on the identify call, please refer our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+The `identify` call sends the event data to Customer.io along with the properties that you pass as the RudderStack traits.
 
-RudderStack sends the `createdAt` field as `created_at` field to Customer.io to register user `sign up` time in the dashboard. If you don't send that field, `created_at` will not be sent to Customer IO.
+<div class="infoBlock">
 
-`userId` is a mandatory field for Customer.io and if it is not provided, we use `anonymousId` in place of that.
+<code class="inline-code">userId</code> is a mandatory field for Customer.io. If it is not provided, RudderStack uses <code class="inline-code">anonymousId</code> instead.
+</div>
 
-The following code snippet is an example of an `identify` call in RudderStack:
+RudderStack also sends the `createdAt` field as `created_at` to Customer.io to register the user signup time.
+
+A sample `identify` call is as shown:
 
 ```javascript
 // a sample identify
@@ -76,16 +98,15 @@ rudderanalytics.identify("my-userID", {
         country: "Belgium",
         email: "tintin@herge.com"
 });
-
-// As created at is not present in the above call,
-// we will append it with current timestamp value.
 ```
+
+As `createdAt` is not present in the above call, RudderStack will append the current timestamp value and send the field to Customer.io.
 
 ## Page
 
-If you are using a native SDK, the Customer.io JavaScript snippet is loaded and it captures the `page` view automatically. However, if you want to pass additional properties, you can call `rudderanalytics.page()` \_\*\*\_that sends the `page`event with the associated properties that you pass along with the call.
+If you are using a native SDK, the Customer.io JavaScript snippet is loaded and captures the page view automatically. You can also call `rudderanalytics.page()` that sends the `page` event along with any associated properties that you want to pass along with the call.
 
-Here is a sample of a `page` call in RudderStack:
+A sample `page` call is as shown below:
 
 ```javascript
 // "home" is the name of the page.
@@ -100,22 +121,26 @@ rudderanalytics.page("home", {
 
 ## Screen
 
-The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) or [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk) SDK it will register as `Viewed <screen name> Screen` under the Activities tab for the user. We'll forward the `properties` you've passed along with the `screen` call to [Customer.io](https://customer.io) dashboard as it is.
+The `screen` call lets you record whenever your user views their mobile screen, with any additional relevant information about the screen. 
 
-Here is a sample `screen` call in using RudderStack iOS SDK:
+If you have turned on the screen views in your app implementation from the [**iOS**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) or [**Android**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk) SDK, they will be registered as `Viewed <screen_name> Screen` under the **Activities** tab for the user. 
+
+RudderStack will also forward the event properties passed along with the `screen` call to Customer.io as they are received.
+
+A sample `screen` call using RudderStack's iOS SDK is shown below:
 
 ```objectivec
 [[RudderClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-The above event will be transformed as `Viewed Main Screen` in your dashboard.
+The above event will be transformed as `Viewed Main Screen` and sent to Customer.io.
 
 ## Track
 
-The `track` call \_\*\*\_will pass the event properties to Customer.io. You may call `rudderanalytics.track()`with or without the event properties. For more information on how `track`call works, please refer to our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+The `track` call lets you record the user events, i.e. the actions that they perform, along with any properties associated with them. You may call `rudderanalytics.track()`with or without the event properties. 
 
-The following code snippet shows how a sample `track` call is made in RudderStack:
+A sample `track` call is as shown below:
 
 ```javascript
 rudderanalytics.track("Track me", {
@@ -127,39 +152,23 @@ rudderanalytics.track("Track me", {
 
 <div class="infoBlock">
 
-For anonymous users, customer.io does not allow an event name more than the size of 100 bytes. That is why the event names bigger than the above size get trimmed from our end.
-
+For anonymous users, Customer.io does not allow an event name of size more than 100 Bytes. RudderStack will automatically trim the event names in such a scenario.
 </div>
 
-## Device Token Registration
+## Device token registration
 
-We generally register the `deviceToken` to [Customer.io](https://customer.io) on the following Application Lifecycle Events.
+RudderStack registers the device token to Customer.io for the following application lifecycle events:
 
 - `Application Installed`
 - `Application Opened`
 - `Application Unistalled`
 
-To use this feature, you've to turn on the feature `trackApplicationLifecycleEvents` in your mobile SDK implementation code. Moreover, you have to register your `deviceToken` after initializing the SDK.
+<div class="infoBlock">
 
-Example for registering `deviceToken` is as follows:
+To use this feature, turn on the <code class="inline-code">trackApplicationLifecycleEvents</code> feature in your mobile SDK implementation code. Moreover, you will have to register your device token after initializing the SDK.
+</div>
 
-<!--{% tabs %}
-{% tab title="iOS" %}
-
-```objectivec
-[[[RudderClient sharedInstance] getContext] putDeviceToken:[self getDeviceToken]];
-```
-
-{% endtab %}
-
-{% tab title="Android" %}
-
-```kotlin
-rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
-```
-
-{% endtab %}
-{% endtabs %}-->
+The following snippets demonstrate registering the device token for iOS and Android:
 
 <Tabs>
   <TabList>
@@ -179,18 +188,23 @@ rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
 <span>
 
 ```kotlin
-rudderClient!!.rudderContext.putDeviceToken(getDeviceToken())
+RudderClient.putDeviceToken(getDeviceToken())
 ```
 </span>
       </TabPanel>
     </TabPanels>
 </Tabs>
 
-Alternatively you can also enter an event name of your choice in the Customer IO Settings page as shown below:
+Alternatively, you can also enter the event name of your choice in the Customer.io settings in the RudderStack dashboard, as shown:
 
-<img src="../../assets/customer.io_devicetoken_event.png" /><span class="imageTitle">Customer.io Connection Settings</span>
+<img src="../../assets/customerio-device-token.png" alt="Customer.io device token settings" />
 
-and you should send this event just after setting the device token in your app as shown below, so that we can register the device token on that event immediately and not delayed until the next life cycle event occuring. 
+<div class="warningBlock">
+
+Make sure you send the event just after setting the device token in your app, so RudderStack can immediately register the device token on that event and not delay until the next lifecycle event.
+</div>
+
+The following snippets highlight sending the `device_token_registered` event after setting the device token in your app:
 
 <Tabs>
   <TabList>
@@ -219,10 +233,18 @@ rudderClient!!.track("device_token_registered")
 
 ## FAQs
 
-### Where do I find the **API Key** and **Site ID** for configuring Customer.io in RudderStack?
+### Where do I find the API Key and Site ID for configuring Customer.io in RudderStack?
 
-In order to obtain the API Key and Site ID, you will first need to create an account in Customer.io. Once you have done that, you can find this information on their Integration page.
+To obtain the API Key and Site ID, follow these steps:
 
-## Contact Us
+- Sign into your [**Customer.io dashboard**](https://fly.customer.io/).
 
-If you come across any issues while configuring Customer.io with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+- In the left panel, click on **Settings** and select **Account Settings**.
+
+- Then, click on **API Credentials**. You should find the site ID and API key for your project listed here, as shown:
+
+<img src="../../assets/customerio-siteid-apikey.png" alt="Customer.io site ID and API key" />
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
