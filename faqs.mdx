@@ -168,17 +168,7 @@ This issue can occur when you have some old data left in your browser's local st
 
 RudderStack lets you implement your own custom transformations that leverage the event data to implement specific use-cases based on your business requirements. To add transformations in RudderStack, follow this [**guide**](https://rudderstack.com/docs/transformations/#adding-a-transformation).
 
-#### 2. How do transformations handle batching? The transformation functions are given a list of events, but the events are also pushed out in real-time. What's the logic behind that?
-
-The batching is done on a per end-user level. All the events from a given end-user are batched and then sent to the transformation function. The batching process is controlled via the following three parameters in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml)\( or **`config.toml`** in case of older RudderStack deployments\):
-
-* `processSessions = False` \(make it `True` for batching\) 
-* `sessionThresholdEvents = 100` 
-* `sessionInactivityThresholdInS = 120` 
-
-The events from an end-user are batched till we have 100 events or 120 seconds of inactivity since the last event. This list is then passed to the transformation function.
-
-#### 3. Can I apply a transformation on a source configured in RudderStack?
+#### 2. Can I apply a transformation on a source configured in RudderStack?
 
 Currently, transformations can only be configured and used for destinations. If you want to write some custom logic specific to the source, you can get the source ID in the transformation function and use it to include the logic. For more information, refer to this [**doc**](https://rudderstack.com/docs/transformations#accessing-metadata).
 
