@@ -52,19 +52,20 @@ For more information on this setting, refer to the <a href="https://rudderstack.
 
 Finally, click on **Next** to complete the configuration. Hotjar will now be added and enabled as a destination in RudderStack.
 
-## Sending events to Hotjar
-
-There is **no need** to explicitly call any of the `page` or `track` methods as Hotjar auto-tracks your user data.
-
 ## Track
 
-The `track` call lets you record the user events along with any associated properties, and send this data to Hotjar.
+The `track` call leverages Hotjar's [**Events API**](https://help.hotjar.com/hc/en-us/articles/4405109971095) to record the user events along with any associated properties.
 
-A sample `track` call is as shown:
+A sample `track` call is as shown below:
 
 ```javascript
 rudderanalytics.track("sample_event");
 ```
+
+<div class="infoBlock">
+
+To use the Hotjar Events API, you must be on Hotjar's Plus, Business, or Scale plans.
+</div>
 
 ## Identify
 
