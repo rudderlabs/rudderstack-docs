@@ -88,6 +88,16 @@ You can set these **optional** fields to specify the sources/destinations from w
 </ul>
 </div>
 
+<div class="warningBlock">
+
+<ul>
+<li>Set the <code class="inline-code">sourceIds</code> field when setting the <code class="inline-code">regulationType</code> to <code class="inline-code">suppress</code>.</li>
+<li>Set the <code class="inline-code">destinationIds</code> field when setting the <code class="inline-code">regulationType</code> to <code class="inline-code">suppress_with_delete</code>.</li>
+</ul>
+
+Avoid specifying both <code class="inline-code">sourceIds</code> and <code class="inline-code">destinationIds</code>.
+</div>
+
 ### `users`
 
 The API lets you specify the users for whom you want to set the data regulation. These users can be identified either by their `userId`, `phone`, or `email`.
