@@ -81,14 +81,11 @@ This field lets you define the type of data regulation you want to add. It suppo
 
 You can set these **optional** fields to specify the sources/destinations from which the data should be suppressed or deleted. 
 
-<div class="warningBlock">
-
+<div class="infoBlock">
 <ul>
-<li>Set the <code class="inline-code">sourceIds</code> field when setting the <code class="inline-code">regulationType</code> to <code class="inline-code">suppress</code>.</li>
-<li>Set the <code class="inline-code">destinationIds</code> field when setting the <code class="inline-code">regulationType</code> to <code class="inline-code">suppress_with_delete</code>.</li>
+<li>Use the <code class="inline-code">https://api.rudderstack.com/v2/sources</code> endpoint to get the source IDs. </li>
+<li>Use the <code class="inline-code">https://api.rudderstack.com/v2/destinations</code> endpoint to get the destination IDs. </li>
 </ul>
-
-Avoid specifying both <code class="inline-code">sourceIds</code> and <code class="inline-code">destinationIds</code>.
 </div>
 
 ### `users`
@@ -145,13 +142,6 @@ curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
     ]
 }'
 ```
-
-<div class="infoBlock">
-<ul>
-<li>Use the <code class="inline-code">https://api.rudderstack.com/v2/sources</code> endpoint to get the source IDs. </li>
-<li>Use the <code class="inline-code">https://api.rudderstack.com/v2/destinations</code> endpoint to get the destination IDs. </li>
-</ul>
-</div>
 
 * **Expected Response**
 
