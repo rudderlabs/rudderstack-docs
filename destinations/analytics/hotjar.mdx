@@ -21,7 +21,7 @@ Before configuring Hotjar as a destination in RudderStack, make sure that the so
 
 <div class="infoBlock">
 
-To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that Hotjar supports the source, perform the steps below:
@@ -35,28 +35,39 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 - Assign a name to your destination and click on **Next**. You should see the following screen:
 
-<img src="../../assets/Hotjar-1.png" alt="Hotjar connection settings" />
+<img src="../../assets/event-stream-destinations/hotjar-connection-settings.png" alt="Hotjar connection settings" />
 
 ### Connection settings
 
 To successfully configure Hotjar as a destination in RudderStack, enter the following connection settings:
 
-- Enter your Hotjar **Site ID**. You can get your site ID by logging into your Hotjar account and navigating to **Settings** - **Sites & Organizations**. 
+- **Site ID**: Enter your Hotjar site ID. You can get your site ID by logging into your Hotjar account and navigating to **Settings** - **Sites & Organizations**.
 
-Click on **Next** to complete the configuration. Hotjar will now be added and enabled as a destination in RudderStack.
+Finally, click on **Next** to complete the configuration. Hotjar will now be added and enabled as a destination in RudderStack.
 
-## Sending events to Hotjar
+## Track
 
-There is **no need** to explicitly call any of the `page` or `track` methods as Hotjar auto-tracks your user data.
+The `track` call leverages Hotjar's [**Events API**](https://help.hotjar.com/hc/en-us/articles/4405109971095) to track specific user actions.
+
+A sample `track` call is as shown below:
+
+```javascript
+rudderanalytics.track("custom_event");
+```
+
+<div class="infoBlock">
+
+To use the Hotjar Events API, you must be on Hotjar's Plus, Business, or Scale plans.
+</div>
 
 ## Identify
+
+The `identify` call lets you pass your user data to Hotjar, sending them as [**User Attributes**](https://help.hotjar.com/hc/en-us/articles/4402892526487-What-are-User-Attributes-).
 
 <div class="warningBlock">
 
 Before you start making `identify` calls, make sure that <a href="https://insights.hotjar.com/settings/user-attributes">User Attributes</a> are enabled in your Hotjar dashboard for each site. Refer to this <a href="https://help.hotjar.com/hc/en-us/articles/360033640653-Identify-API-Reference#making_calls_to_identify">Hotjar support page</a> for more information on enabling and disabling User Attributes.
 </div>
-
-The `identify` call lets you pass your user data to Hotjar, sending them as [**User Attributes**](https://help.hotjar.com/hc/en-us/articles/4402892526487-What-are-User-Attributes-).
 
 A sample `identify` call is shown below:
 
@@ -68,4 +79,4 @@ rudderanalytics.identify("userId", {
 
 ## Contact us
 
-In case of any issues while configuring or using Hotjar with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
