@@ -117,7 +117,7 @@ A sample `identify` call looks like the following:
 
 ```javascript
 rudderanalytics.identify(
-    "userId", {
+  "userId", {
     email: "name@surname.com",
     name: "John Doe",
     phone: "2364556",
@@ -138,7 +138,7 @@ You can associate a user with custom tags by passing in the `tags` trait, as sho
 
 ```javascript
 rudderanalytics.identify(
-    "userId", {
+  "userId", {
     email: "name@surname.com",
     name: "John Doe",
     phone: "2364556",
@@ -161,7 +161,7 @@ To send custom fields to ActiveCampaign, you will need to first create the custo
 
 ```javascript
 rudderanalytics.identify(
-    "userId", {
+  "userId", {
     email: "name@surname.com",
     name: "John Doe",
     phone: "2364556",
@@ -172,7 +172,6 @@ rudderanalytics.identify(
       Hobbies: ["Cricket", "Tennis"],
     },
   })
-
 ```
 
 <div class="infoBlock">
@@ -193,7 +192,7 @@ You can subscribe or unsubscribe a contact from any number of lists by passing i
 
 ```javascript
 rudderanalytics.identify(
-    "userId", {
+  "userId", {
     email: "name@surname.com",
     name: "John Doe",
     phone: "2364556",
@@ -203,8 +202,7 @@ rudderanalytics.identify(
       Country: "USA",
       Hobbies: ["Cricket", "Tennis"],
     },
-  lists: [
-      {
+    lists: [{
         id: 2,
         status: "subscribe",
       },
@@ -213,7 +211,7 @@ rudderanalytics.identify(
         status: "unsubscribe",
       },
     ],
-})
+  })
 ```
 
 <div class="infoBlock">
