@@ -534,15 +534,12 @@ The `identify` call lets you associate a user with their actions and capture all
 A sample `identify` call looks like the following:
 
 ```javascript
-rudderanalytics.identify({
-  userId: "userid",
-  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
-  traits: {
+rudderanalytics.identify(
+    "userId", {
     email: "name@surname.com",
     name: "John Doe",
-    profession: "Student",
-  },
-})
+    phone: "2364556",
+  })
 ```
 
 A sample dashboard after making the above `identify`, `page`, and `track` calls is as follows:
