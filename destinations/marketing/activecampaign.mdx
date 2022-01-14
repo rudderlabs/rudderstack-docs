@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Acti
 
 # ActiveCampaign
 
-[ActiveCampaign](https://www.activecampaign.com/) is a popular marketing automation and CRM platform that makes it easy for you to drive customer engagement and retention. With ActiveCampaign's all-in-one email marketing and growth platform, you can easily monitor your customers' product behavior and use the insights to design and drive highly personalized customer experiences.
+[**ActiveCampaign**](https://www.activecampaign.com/) is a popular marketing automation and CRM platform that makes it easy for you to drive customer engagement and retention. With ActiveCampaign's all-in-one email marketing and growth platform, you can easily monitor your customers' product behavior and use the insights to design and drive highly personalized customer experiences.
 
 You can now send your event data directly to ActiveCampaign through RudderStack.
 
@@ -42,7 +42,7 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 <img src="../../assets/Active_Campaign.png" /><span class="imageTitle">Configuration Settings for ActiveCampaign</span>
 
-## ActiveCampaign Configuration Settings on the RudderStack Dashboard
+### Connection settings
 
 To successfully configure ActiveCampaign as a destination, you will need to configure the following settings:
 
@@ -116,15 +116,12 @@ The `identify` call lets you associate a user with their actions and capture all
 A sample `identify` call looks like the following:
 
 ```javascript
-rudderanalytics.identify({
-  userId: "userid",
-  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
-  traits: {
+rudderanalytics.identify(
+  "userId", {
     email: "name@surname.com",
     name: "John Doe",
     phone: "2364556",
-  },
-})
+  })
 ```
 
 In the above snippet, RudderStack captures relevant information about the user such as the `userId` as well as the associated traits such as `email`, `phone`, and `name` of that user.
@@ -140,16 +137,14 @@ The `email` trait is a mandatory trait for mapping a user to ActiveCampaign. If 
 You can associate a user with custom tags by passing in the `tags` trait, as shown:
 
 ```javascript
-rudderanalytics.identify({
-  userId: "userid",
-  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
-  traits: {
+rudderanalytics.identify(
+  "userId", {
     email: "name@surname.com",
     name: "John Doe",
     phone: "2364556",
     tags: ["Returning User", "Coupon Used"],
-  },
-})
+  })
+
 ```
 
 <div class="infoBlock">
@@ -165,10 +160,8 @@ ActiveCampaign also supports updating a contact’s custom fields with this Rudd
 To send custom fields to ActiveCampaign, you will need to first create the custom fields in ActiveCampaign for each custom field that you want to send. Then when you call `identify` with keys that match those traits, the custom fields for that contact will be updated. You can use the `fieldInfo` trait to set values to the custom fields.
 
 ```javascript
-rudderanalytics.identify({
-  userId: "userid",
-  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
-  traits: {
+rudderanalytics.identify(
+  "userId", {
     email: "name@surname.com",
     name: "John Doe",
     phone: "2364556",
@@ -178,8 +171,7 @@ rudderanalytics.identify({
       Country: "USA",
       Hobbies: ["Cricket", "Tennis"],
     },
-  },
-})
+  })
 ```
 
 <div class="infoBlock">
@@ -199,10 +191,8 @@ To send in multichoice field values for fields having a checkbox, or list values
 You can subscribe or unsubscribe a contact from any number of lists by passing in a trait called `lists`. As shown in the example below, this trait should be an array, with each element having an `id` and a `status`. The value of status must be either `subscribe` or `unsubscribe`.
 
 ```javascript
-rudderanalytics.identify({
-  userId: "userid",
-  anonymousId: "d80b66d5-b33d-412d-866f-r4fft5841af",
-  traits: {
+rudderanalytics.identify(
+  "userId", {
     email: "name@surname.com",
     name: "John Doe",
     phone: "2364556",
@@ -212,8 +202,7 @@ rudderanalytics.identify({
       Country: "USA",
       Hobbies: ["Cricket", "Tennis"],
     },
-    lists: [
-      {
+    lists: [{
         id: 2,
         status: "subscribe",
       },
@@ -222,16 +211,14 @@ rudderanalytics.identify({
         status: "unsubscribe",
       },
     ],
-  },
-})
+  })
 ```
 
 <div class="infoBlock">
 
 For associating a contact to any field, you need to create the list from ActiveCampaign and use the `id` parameter for mapping that contact.
-
 </div>
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring ActiveCampaign with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
