@@ -1,66 +1,114 @@
 ---
 #slug: "/docs/get-started"
-title: "Get Started"
+title: "RudderStack Open Source"
 description: >-
-  Get started with RudderStack - the customer data pipeline for collecting,
-  storing and routing your customer event data securely.
+  Step-by-step guides to help you set up open-source RudderStack in your development environment.
 ---
 
-# Get Started
+# RudderStack Open Source
 
-[**RudderStack**](https://rudderstack.com/) is a **customer data platform** to capture, process, and sync all of your event, product, and warehouse data to all the tools across your customer data stack.
+The easiest way to get started with RudderStack is to [**sign up**](https://app.rudderstack.com/signup) for [**RudderStack Cloud**](https://rudderstack.com/docs/rudderstack-cloud/). 
 
-RudderStack's backend is written in Go, with a simple, user-friendly UI written in React.js.
-
-RudderStack is enterprise-ready and provides a powerful transformation framework to process your event data on the fly.
-
-## RudderStack in 5 minutes
-
-**The easiest way to get started with RudderStack is by [signing up](https://app.rudderstack.com/signup) for [RudderStack Cloud](https://rudderstack.com/docs/rudderstack-cloud/).**
-
-Follow these steps to get up and running with RudderStack in no time:
-
-- Once you complete the signup, you will get access to the RudderStack dashboard for setting up your data pipelines:
-
-<img src="../assets/general/connections-dashboard.png" alt="Connections Dashboard" />
-
-- Click on **Add Source** to set up a data source.
-
-- You can choose the data source from the following three source categories supported by RudderStack:
-
-  - [**Event Streams**](https://rudderstack.com/docs/stream-sources/): With these sources, you can collect your event data from all of your web, mobile, and server-side apps and route it to your preferred customer tools and data warehouses.
-  - [**Cloud Extract**](https://rudderstack.com/docs/cloud-extract-sources/): With these sources, you can build ELT pipelines from cloud apps to your data warehouse.
-  - [**Warehouse Actions**](https://rudderstack.com/docs/warehouse-actions/): With this option, you can leverage the enriched data residing in your data warehouse as a data source for your whole customer data stack.
-
-- Once you have configured the source, add a destination in RudderStack by clicking on the **Add Destination** button.
-
-- From the list of destinations, choose the destination you want to configure for the source. **RudderStack currently supports over 100 tool and data warehouse destinations.**
-
-- Configure the destination by entering the relevant connection settings. For detailed information on the required settings, refer to that destination's [**documentation**](https://rudderstack.com/docs/destinations/).
-
-- You can also leverage custom JavaScript functions in RudderStack to transform your events before sending them to your specified destinations. 
+The guides in this section are useful if you want to set up open-source RudderStack in your preferred development environment.
 
 <div class="infoBlock">
 
-Refer to our <a href="https://rudderstack.com/docs/transformations/">Transformations</a> guide for more information on this feature.
+The <a href="https://github.com/rudderlabs/rudder-server">RudderStack backend</a> is written in Go, with a simple React.js UI to manage your sources, destinations, and the connections between them.
 </div>
 
-- Your connection is all set up. You can use the [**Live Events**](https://rudderstack.com/docs/rudderstack-cloud/live-events/) option to see the data flow through RudderStack in real-time.
+## Installation overview
 
-<div class="successBlock">
+Installing open-source RudderStack involves the following two steps:
 
-For a practical use-case on using RudderStack to track and send your data, refer to this <a href="https://rudderstack.com/blog/how-to-send-data-in-5-minutes-using-rudderstack/">blog post</a>.
-</div>
+- Setting up the control plane to manage the configuration of your sources and destinations
 
-## Useful links
+<a class="pageRef" href="/control-plane-lite/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Control Plane Setup
+    </span>
+  </div>
+</a>
 
-- Check out some [**sample applications**](https://github.com/rudderlabs/rudder-samples/) that demonstrate various RudderStack use-cases.
+- Setting up the data plane (backend) for tracking, processing, and routing the events.
 
-- Read more about RudderStack's [**architecture**](https://rudderstack.com/docs/get-started/rudderstack-architecture).
+<a class="pageRef" href="/installing-and-setting-up-rudderstack/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Data Plane Setup
+    </span>
+  </div>
+</a>
 
-- If you don't wish to sign up for [**RudderStack Cloud**](https://rudderstack.com/docs/rudderstack-cloud/), you can [**set up open-source RudderStack**](https://rudderstack.com/docs/rudderstack-open-source) in your own development environment.
+- Sending test events to verify the installation.
 
-- Learn about RudderStack's [**Data Governance**](https://rudderstack.com/docs/data-governance) features.
+<a class="pageRef" href="/installing-and-setting-up-rudderstack/sending-test-events/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Sending Test Events
+    </span>
+  </div>
+</a>
 
 ## Contact us
 
