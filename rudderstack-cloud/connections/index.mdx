@@ -12,226 +12,159 @@ RudderStack lets you set up connections between your preferred event data source
 
 <div class="successBlock">
 
-  **
-    With RudderStack, you can bring together all your event data across your
-    web, mobile, server-side, and cloud apps and route this data reliably to
-    your data warehouse and other third-party platforms of your choice.
-  **
+<strong>With RudderStack, you can bring together all your event data across your web, mobile, server-side, and cloud apps and route this data reliably to your data warehouse and other third-party platforms of your choice. </strong>
 </div>
 
-<!-- <img src="../assets/5 (20).png" /> -->
+<img src="../assets/general/rudderstack-data-flow.png" alt="RudderStack data flow" />
 
-<img src="../assets/5 (20).png" alt="Connections" />
+This guide details the various aspects of setting up a data pipeline, or a connection, in RudderStack.
+
+## Setting up a connection
+
+Setting up a connection in RudderStack involves the following steps:
+
+- Setting up a [**source**](#sources)
+- Configuring a [**destination**](#destinations) and connecting it to a source
+
+<div class="infoBlock">
+
+Refer to our guide on <a href="https://rudderstack.com/docs/rudderstack-cloud/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for step-by-step instructions on setting up a connection.
+</div>
+
+Once you have set up a connection, you should be able to view it in your RudderStack dashboard by clicking on the **Connections** tab on the left navigation bar, as shown:
+
+<img src="../assets/general/rudderstack-connections.png" alt="RudderStack connections" />
+
+You can also send your data from one source to multiple destinations, as shown:
+
+<img src="../assets/general/rudderstack-onetomany-connection.png" alt="Multiple destinations for a single source" />
 
 ## Sources
 
 A **source** refers to a platform or an application \(web, mobile, server-side, or a third-party cloud app\) from where RudderStack tracks and collects your event data.
 
-<div class="successBlock">
+<div class="infoBlock">
 
-  We recommend creating a source for every unique source of data. You can also
-  create multiple sources for each website or application from which you want to
-  track the data.
+  We recommend creating a source for every unique source of data. You can also create multiple sources for each website or application from which you want to track the data.
 </div>
 
 To view all the configured sources in your RudderStack dashboard, click on **Sources** in the left navigation bar, as shown:
 
-<!-- <img src="../assets/3 (20).png" /> -->
+<img src="../assets/general/rudderstack-sources.png" alt="RudderStack sources" />
 
-<img src="../assets/3 (20).png" alt="Sources" />
+<div class="infoBlock">
 
-<div class="successBlock">
-
-  You can add a new source by simply clicking on the **Add Source**
-  button. For more details on adding a source in RudderStack, refer to the guide
-  on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a>.
+You can add a new source by clicking on the <strong>New Source</strong> button.
 </div>
 
-### Source Details
+### Source details
 
 To get more details on the configured source, click on it. You should then see the following view on the dashboard:
 
-<!-- <img src="../assets/4 (20).png" /> -->
-
-<img src="../assets/4 (20).png" alt="Source Details" />
+<img src="../assets/general/rudderstack-source-details.png" alt="RudderStack source details" />
 
 The options you see in this page are as follows:
 
-- **Source ID**: The unique identifier associated with your source.
-- **Write Key**: The write key is required to send the data from your source.
+- **Write Key**: This is the write key is required to send the data from your source.
 
-<div class="successBlock">
-As an example, you can load <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">RudderStack's JavaScript SDK</a> on your web pages to track and collect the events by running the following:
+For example, you can load [**RudderStack's JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your website to track and collect the events by running the following snippet:
 
-<code class="inline-code">
-  rudderanalytics.load(&lt;YOUR_WRITE_KEY&gt;, &lt;DATA_PLANE_URL&gt;, options);
-</code>
-
-</div>
+```javascript
+  rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, options);
+```
 
 - **Add Destination**: You can connect your source to a new destination by clicking on this button.
 
-<div class="successBlock">
+<div class="infoBlock">
 
-  If you have already configured a destination in RudderStack, you should click
-  on the **Connect Destination** button.
+If you have already configured a destination in RudderStack, you should click on the <strong>Connect Destination</strong> button.
 </div>
 
 - **Live Events**: Once your source and destination are successfully configured and a connection is set up and enabled, RudderStack starts tracking and collecting events from your source. These events can be viewed in real-time using this option.
 
-### Deleting a Source
+The options visible under **Settings** are as follows:
 
-You can delete a source by clicking on the **Delete Source** button.
+- **Enabled**: You can enable or disable syncing data from this source via this option.
+
+- **Source ID**: This is the unique identifier associated with your source.
+
+- **Permanently delete source**: You can delete a source by clicking on the **Delete** button.
 
 <div class="warningBlock">
 
-Before you delete a source, make sure there are no active destinations enabled for it.
-
+Before you delete a source, make sure there are no destinations connected to it.
 </div>
 
 ## Destinations
 
-A destination is a tool or application where you want to send the data via RudderStack.
+A destination is a cloud tool/platform where you want to send the data via RudderStack.
 
 <div class="successBlock">
 
-RudderStack currently supports over 80 destinations. These include <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a>, <a href="https://rudderstack.com/docs/destinations/analytics/">analytics</a> platforms, <a href="https://rudderstack.com/docs/destinations/crm/">CRMs</a>, <a href="https://rudderstack.com/docs/destinations/marketing/">marketing</a> platforms, and more.
-
-Check out the <a href="https://rudderstack.com/docs/destinations/">Destinations</a> guide for the complete list of supported destinations.
-
+RudderStack currently supports over 100 <a href="https://rudderstack.com/docs/destinations/">destinations</a>. These include <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a>, <a href="https://rudderstack.com/docs/destinations/analytics/">analytics</a> platforms, <a href="https://rudderstack.com/docs/destinations/crm/">CRMs</a>, <a href="https://rudderstack.com/docs/destinations/marketing/">marketing</a> platforms, and more.
 </div>
 
 To view all the configured destinations in your RudderStack dashboard, click on **Destinations** in the left navigation bar, as shown:
 
-<!-- <img src="../assets/7 (13).png" /> -->
+<img src="../assets/general/rudderstack-destinations.png" alt="RudderStack destinations" />
 
-<img src="../assets/7 (13).png" alt="Destinations" />
+<div class="infoBlock">
 
-<div class="successBlock">
-
-  You can add a new destination by clicking on the
-  **Add Destination** button. For more details on adding a source
-  in RudderStack, refer to the guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a>.
+You can add a new destinations by clicking on the <strong>New Destination</strong> button.
 </div>
 
-### Destination Details
+### Destination details
 
-To get more details on the configured destination, click on it. You should then see the **Destination Details** page on your dashboard:
+To get more details on the configured destination, click on it. You should then see the following view on the dashboard:
 
-<!-- <img src="../assets/6 (19).png" /> -->
-
-<img src="../assets/6 (19).png" alt="Destination Details" />
+<img src="../assets/general/rudderstack-destination-details.png" alt="RudderStack destination details" />
 
 You will see the following options:
 
-- **Destination ID**: The unique identifier associated with your destination.
-- **Transformation**: RudderStack allows you to transform your events before routing them across to your destination.
+- **Sources**: Here, you can see all the sources connected to the destination and their status (enabled/disabled). You can also connect a new source by clicking on the **Add source** button.
 
-<div class="successBlock">
+- **Transformation**: You can connect a transformation to the destination via this option.
 
-  Read more about RudderStack's <a href="https://rudderstack.com/docs/transformations/">Transformations</a> feature.
+<div class="infoBlock">
+
+To add a new transformation, go to the <strong>Transformations</strong> option in the left dashboard panel and click on <strong>Create New</strong>.
 </div>
 
-- **Settings**: You can change the settings of your configured destination by clicking on this button.
-- **Connect Source**: If you haven't added a source while configuring your destination, you can do so by clicking on this button.
-- **Live Events**: RudderStack allows you to view the events delivered to the destination in real-time. Click on this option to view the live events.
+- **Events**: You can get all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by source and time period.
 
-### Cloning a Destination
+- **Configuration**: This option lets you change the existing configuration of a destination.
 
-With this option, you can clone an existing destination with the same or new configuration settings.
-
-Follow these steps to clone a destination:
-
-- On the **Destination Details** page, click on the **Clone To a New Destination** option as shown:
-
-<!-- <img src="../assets/clone-1.png" /> -->
-
-<img src="../assets/clone-1.png" alt="Clone to a New Destination" />
-<span class="imageTitle"></span>
-
-- Assign a name to the new destination and click on **Create**.
-
-<!-- <img src="../assets/clone-2.png" /> -->
-
-<img src="../assets/clone-2.png" alt="Create a new destination" />
-<span class="imageTitle"></span>
-
-- Connect this destination to a source, as shown:
-
-<!-- <img src="../assets/clone-3.png" /> -->
-
-<img src="../assets/clone-3.png" alt="Connect this destination" />
-<span class="imageTitle"></span>
-
-- Enter the **Connection Settings** for this new destination, and click on **Next**.
-
-<!-- <img src="../assets/clone-4.png" /> -->
-
-<img src="../assets/clone-4.png" alt="Connection Settings" />
-<span class="imageTitle"></span>
-
-- Your new destination should now be configured.
-
-<!-- <img src="../assets/clone-5.png" /> -->
-
-<img src="../assets/clone-5.png" alt="Configure destinations" />
-
-### Deleting a Destination
-
-You can delete a destination by clicking on the **Delete Destination** button.
+- **Settings**: This option gives you additional destination-related details, such as:
+  
+  - **Enabled**: You can enable or disable sending data to this destination via this option.
+  - **Destination ID**: This is the unique identifier associated with your destination.
+  - **Permanently delete destination**: You can delete the destination by clicking on the **Delete** button.
 
 <div class="warningBlock">
 
-Before you delete a destination, make sure there are no active sources enabled for it.
-
+Before you delete a destination, make sure there are no sources connected to it.
 </div>
 
-## Setting Up a Connection
+### Cloning a destination
 
-Setting up a connection in RudderStack involves configuring and connecting your data sources and destinations in the RudderStack dashboard.
+With this option, you can duplicate an existing destination with the same settings.
 
-Refer to the following guide for step-by-step instructions on how to set up a connection from scratch:
+Follow these steps to clone a destination:
 
-<a class="pageRef" href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">
-  <div class="pageRefInner">
-    <span class="pageRefArrow">
-      <svg
-        preserveAspectRatio="xMidYMid meet"
-        height="1em"
-        width="1em"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        stroke="currentColor"
-        class="rightRefArrow"
-      >
-        <g>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </g>
-      </svg>
-    </span>
-    <span class="mainRefText">
-      How to Add a Source and Destination in RudderStack
-    </span>
-  </div>
-</a>
+- On the **Destination Details** page, click on the **Duplication Destination** option as shown:
 
-Once you've set up a connection, you should be able to view it in your RudderStack dashboard by clicking on the **Connections** tab on the left navigation bar, as shown:
+<img src="../assets/general/duplicate-destination-1.png" alt="Duplicate a destination" />
 
-<!-- <img src="../assets/9 (4).png" /> -->
+- Assign a name to the new destination and click on **Next**.
 
-<img src="../assets/9 (4).png" alt="Connections" />
+<img src="../assets/general/duplicate-destination-2.png" alt="Assigning a name to the duplicate destination" />
 
-You can also send your data from one source to multiple destinations, as shown:
+- Connect this destination to a source, as shown:
 
-<!-- <img src="../assets/8 (7).png" /> -->
+<img src="../assets/general/duplicate-destination-3.png" alt="Connecting a new source to duplicate destination" />
 
-<img src="../assets/8 (7).png" alt="Multiple Destinations" />
+Your new destination is successfully configured and ready for use.
 
-## Contact Us
+## Contact us
 
-To know more about connections in RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community. You can also see this feature in action by [**requesting a demo**](https://resources.rudderstack.com/request-a-demo?_ga=2.47794151.1545771517.1607313913-1655106949.1598281099).
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
