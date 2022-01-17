@@ -677,6 +677,10 @@ rudderClient.reset();
 
 You can find the Amplitude API key on the [Amplitude Settings Page](https://analytics.amplitude.com/apitestorg/settings/profile?redirect=1).
 
+### Why are all the session IDs `-1` in Amplitude?
+
+Session tracking is only supported for the RudderStack [device mode](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode) because the integration loads Amplitude's SDK. Events sent via the [cloud mode](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) connections will have session IDs as `-1`.
+
 ## Contact Us
 
 If you come across any issues while configuring Amplitude with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
