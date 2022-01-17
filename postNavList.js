@@ -1169,6 +1169,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"statsig",
+   "title":"Statsig",
+   "link":"/destinations/testing-and-personalization/statsig/",
+   "content":[]
+},
+{
    "key":"google-optimize",
    "title":"Google Optimize",
    "link":"/destinations/testing-and-personalization/google-optimize/",
