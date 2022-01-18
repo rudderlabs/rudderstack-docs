@@ -333,6 +333,15 @@ The `options` object has the following signature:
 | `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
 | `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the [**Enabling/disabling events for specific destinations**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#enablingdisabling-events-for-specific-destinations) section below. |
 
+## Filtering events
+
+When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Event Filtering</a> guide for more information on this feature.
+</div>
+
 ## Enabling/disabling events for specific destinations
 
 RudderStack lets you send your event data only to the explicitly specified destinations and filtering out the rest. You can do this in one of the following two ways:

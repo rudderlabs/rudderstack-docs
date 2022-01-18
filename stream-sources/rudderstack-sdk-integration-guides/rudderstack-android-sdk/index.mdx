@@ -667,6 +667,15 @@ The method <code class="inline-code">getAnonymousId</code> is available from v1.
 
 </div>
 
+## Filtering events
+
+When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Event Filtering</a> guide for more information on this feature.
+</div>
+
 ## Enabling/disabling events for specific destinations
 
 The RudderStack Android SDK allows you to enable or disable event flow to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating a `RudderOption` object as shown:

@@ -1,0 +1,80 @@
+---
+# slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs"
+title: "Event Filtering"
+description: Answers to the generally asked questions related to the RudderStack SDKs
+---
+
+# Event Filtering
+
+RudderStack's event filtering feature lets you specify which events should be discarded or allowed to flow through by whitelisting or blacklisting them.
+
+<div class="successBlock">
+
+The event filtering feature can be used for all the RudderStack destinations that support <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode">device mode</a>.
+
+Refer to <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#how-to-check-if-a-destination-supports-cloud-mode-or-device-mode-or-both">this section</a> for more information. 
+</div>
+
+<div class="infoBlock">
+
+Event filtering is applicable only for <code class="inline-code">track</code> calls.
+</div>
+
+## Supported SDKs
+
+Event filtering is supported for the following source SDKs:
+
+- [**JavaScript**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/)
+- [**Android**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/)
+- [**iOS**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/)
+- [**React Native**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/)
+- [**Flutter**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/)
+- [**Cordova**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/)
+
+## Event filtering options
+
+RudderStack gives you the ability to configure your event filtering options while setting up your device mode destination in the dashboard, as shown:
+
+<img src="../../assets/event-stream-sources/rudderstack-event-filtering.png" alt="Event filtering options" />
+
+You will see the following dropdown options under **Event Filtering**, in the **Connection Settings** page:
+
+### Disable
+
+Event filtering will be disabled if you select this option from the dropdown. In this case, RudderStack will not filter any events and allow all events to flow through.
+
+### Whitelist
+
+Upon selecting the **Whitelist** option from the dropdown, you can specify the names of the events that you want RudderStack to **allow** or flow through to the destination. 
+
+<div class="infoBlock">
+
+If you choose the <strong>Whitelist</strong> option for event filtering, any events specified in the <strong>Blacklist</strong> field will be ignored.
+</div>
+
+You can add as many events as you want to the whitelist by clicking on the **Add More** option.
+
+<div class="warningBlock">
+
+RudderStack will discard any event that is not specified in the whitelist. This also means that if you do not specify any events in the whitelist, <strong>all</strong> the calls will be discarded.
+</div>
+
+### Blacklist
+
+Upon selecting the **Blacklist** option from the dropdown, you can specify the names of the events that you want RudderStack to **discard**. These events will not be sent to the destination.
+
+<div class="infoBlock">
+
+If you choose the <strong>Blacklist</strong> option for event filtering, any events specified in the <strong>Whitelist</strong> field will be ignored.
+</div>
+
+You can add as many events as you want to the blacklist by clicking on the **Add More** option.
+
+<div class="warningBlock">
+
+RudderStack will only discard the events explicitly specified in the blacklist. If you do not specify any events in the blacklist, then <strong>all</strong> the calls will be allowed to go through.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
