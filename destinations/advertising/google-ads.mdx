@@ -103,7 +103,7 @@ A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track('track conversion', {
-  value: 125,
+  revenue: 125,
   currency: 'INR',
   order_id: 'order_1'
 });
@@ -113,7 +113,7 @@ A sample `track` call after enabling the **Dynamic Remarketing** option in the R
 
 ```javascript
 rudderanalytics.track('view_item', {
-  'value': 998.55,
+  'revenue': 998.55,
   'items': [{
       'id': 1234,
       'google_business_vertical': 'retail'
