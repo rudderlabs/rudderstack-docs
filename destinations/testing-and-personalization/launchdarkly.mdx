@@ -78,7 +78,6 @@ The following table lists the supported fields for the `traits` object in the `i
 
 | Field | Type | Presence | Description | 
 |:------|:-----|:---------|:-------------|
-| `key`    | String | Required | Unique user identifier |
 | `anonymous`    | Boolean | Optional | Must be set to `true`  |
 | `avatar` | String | Optional | User's avatar image URL |
 | `country` | String | Optional | Country associated with the user |
@@ -96,15 +95,14 @@ The following table lists the supported fields for the `traits` object in the `i
 If you have chosen to bucket the users by a specific attribute, the <code class="inline-code">secondary</code> field can be used to further distinguish users who are otherwise identical as per that attribute. 
 </div>
 
-### key
+### LaunchDarkly key
 
-As mentioned in the above table, the `key` field uniquely identifies a user.
+RudderStack assigns the `userId` to LaunchDarkly's `key` field to uniquely identify a user.
 
-Some important cases to consider pertaining to the `key` field are listed below:
+<div class="infoBlock">
 
-- `key` is the only required field in the `identify` call, where RudderStack maps the unique user identifier (user ID). If no unique identifier is provided, RudderStack will automatically assign `anonymousId` as `key`.
-
-- If you omit `key` and also set `anonymous` as `true`, the SDK will generate a UUID string and use that as the value for `key`. It also attempts to persist that value in local storage if possible, so that the next anonymous user gets the same `key`. However, in cases where the local storage is unavailable, a new `key` is generated every time the user is specified.
+<code class="inline-code">key</code> is the only required field in LaunchDarkly's <code class="inline-code">identify</code> call, where RudderStack maps the unique user identifier (<code class="inline-code">userId</code>). If no unique identifier is provided, RudderStack will automatically assign <code class="inline-code">anonymousId</code> as <code class="inline-code">key</code>.
+</div>
 
 ## Track
 
