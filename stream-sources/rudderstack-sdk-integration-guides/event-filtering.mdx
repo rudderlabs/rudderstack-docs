@@ -8,16 +8,17 @@ description: Answers to the generally asked questions related to the RudderStack
 
 RudderStack's event filtering feature lets you specify which events should be discarded or allowed to flow through by whitelisting or blacklisting them.
 
-<div class="successBlock">
-
-The event filtering feature can be used for all the RudderStack destinations that support <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode">device mode</a>.
-
-Refer to <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#how-to-check-if-a-destination-supports-cloud-mode-or-device-mode-or-both">this section</a> for more information. 
-</div>
+This feature can be used for all the RudderStack destinations that support sending events via the [**device mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode)</a>.
 
 <div class="infoBlock">
 
-Event filtering is applicable only for <code class="inline-code">track</code> calls.
+Event filtering is applicable only for <code class="inline-code">track</code> calls. In case of mobile SDKs, it also applies to the following application lifecycle events:
+  <ul>
+    <li>Application Installed</li>
+    <li>Application Opened</li>
+    <li>Application Backgrounded</li>
+    <li>Application Updated</li>
+  </ul>
 </div>
 
 ## Supported SDKs
@@ -56,7 +57,7 @@ You can add as many events as you want to the whitelist by clicking on the **Add
 
 <div class="warningBlock">
 
-RudderStack will discard any event that is not specified in the whitelist. This also means that if you do not specify any events in the whitelist, <strong>all</strong> the calls will be discarded.
+RudderStack will discard any event that is not specified in the whitelist. If you do not specify any events in the whitelist, <strong>all</strong> the calls will be discarded.
 </div>
 
 ### Blacklist
