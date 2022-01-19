@@ -1245,9 +1245,9 @@ export const jsonData = [
            "link":"/destinations/advertising/",
            "content":[
             {
-               "key":"google-ads",
+               "key":"gads",
                "title":"Google Ads",
-               "link":"/destinations/advertising/google-ads/",
+               "link":"/destinations/advertising/gads/",
                "content":[
                   
                ]
