@@ -1,15 +1,14 @@
 ---
-title: "How to Submit an Integration Pull Request"
+title: "How to Submit a Pull Request for an Integration"
 description: >-
-  Step-by-step guide on the different repositories that you need to submit a PR
-  to, when creating a new integration.
+  Step-by-step guide on the different repositories where you need to submit a PR while creating a new integration.
 ---
 
-# How to Submit an Integration Pull Request
+# How to Submit a Pull Request for an Integration
 
-When contributing to our open-source code by creating your own RudderStack integration, this guide will help you ensure that you have completed the required steps. It will also help you make sure that your integration code will fit with our pre-existing code base without any issues.
+This guide will take you through the steps to contribute to our open-source code while creating your RudderStack integration. It will also make sure that your integration code fits into our existing code base without any issues.
 
-For your integration to be reviewed and considered, there are three repositories that you must contribute to:
+To create and submit an integration, you must contribute to the following repositories:
 
 <table>
   <thead>
@@ -28,105 +27,110 @@ For your integration to be reviewed and considered, there are three repositories
         <p>RudderStack Transformer
           <br />
         </p>
-        <p><b><code class="inline-code">rudder-transformer</code></b>
+        <p>
         </p>
       </td>
       <td style="text-align:left">
         <p></p>
-        <p><a href="https://github.com/rudderlabs/rudder-transformer">GitHub Repo</a></p>
+        <p><a href="https://github.com/rudderlabs/rudder-transformer">rudder-transformer</a></p>
       </td>
-      <td style="text-align:left">Responsible for transforming the standard RudderStack payload from the
-        source into the required payload format needed for a given downstream destination.</td>
+      <td style="text-align:left">Transforms the standard RudderStack payload from a
+        source to the required payload format by a downstream destination.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <p>Control Plane Lite</p>
         <p></p>
-        <p><b><code class="inline-code">config-generator</code></b>
+        <p>
         </p>
       </td>
       <td style="text-align:left">
         <p></p>
-        <p><a href="https://github.com/rudderlabs/config-generator">GitHub Repo</a></p>
+        <p><a href="https://github.com/rudderlabs/config-generator">config-generator</a></p>
       </td>
-      <td style="text-align:left">Responsible for gathering the required configuration details that will
-        be specific to each user, i.e. API keys, event mappings, metrics, etc.</td>
+      <td style="text-align:left">Gathers the required configuration details specific to each user, i.e. API keys, event mappings, metrics, etc.</td>
     </tr>
     <tr>
       <td style="text-align:left">
         <p>RudderStack Documentation</p>
         <p></p>
-        <p><b><code class="inline-code">rudderstack-docs</code></b>
+        <p></b>
         </p>
       </td>
       <td style="text-align:left">
         <p></p>
-        <p><a href="https://github.com/rudderlabs/rudderstack-docs">GitHub Repo</a></p>
+        <p><a href="https://github.com/rudderlabs/rudderstack-docs">rudderstack-docs</a></p>
       </td>
-      <td style="text-align:left">Includes the relevant instructions on setting up, configuring, and using
-        the integration you have created.</td>
+      <td style="text-align:left">Includes the documentation containing relevant instructions to set up, configure, and use
+        the integrations.</td>
     </tr>
   </tbody>
 </table>
 
+<div class="warningBlock">
+
+To contribute, you need to sign the <a href="https://rudderlabs.wufoo.com/forms/rudderlabs-contributor-license-agreement">Contributor License Agreement (“CLA”)</a> before performing the first commit. Once signed, you will be added to the list of approved contributors and we will review the changes proposed by you.
+</div>
+
 ## Creating a Pull Request
 
-For each of the three repositories listed above, it is necessary to fork each one and clone them to your local machine. Ensure that you are updating your local repositories regularly to limit any merge conflicts. It is important to create a branch with a descriptive name and ensure that your commit messages are clear. 
+To submit an integration to our open source code, a pull request needs to be created. You can follow the below steps to create the same:
 
-When you are ready to create a pull request, follow the steps below:
-
-1. Push your changes to your remote origin.
-2. Then, go to the RudderStack's repository and click on **New pull request**.
-3. Click the link the says **Compare across forks**.
-4. Change the **Head Repository** to be your forked repository and change **Compare** to be the associated branch name.
-5. Make any necessary title or descriptions changes. Add any tags such as WIP \(work in progress\), etc. to help add clarity on what is needed.
-6. Finally, click on **Create pull request**.
+1. Fork and clone the above mentioned respositories in your local machine. If done already, ensure that the local repositories are updated to prevent any merge conflicts. 
+2. Create a branch with a descriptive name.
+3. Push your changes to the remote origin.
+4. Click on **New pull request** in the RudderStack repository.
+5. Click **Compare across forks** link.
+6. Change the **Head Repository** to your forked repository and change **Compare** to be the associated branch name.
+7. Make the necessary title or descriptions changes, for example, you can add tags such as WIP \(work in progress\), etc. to add work status.
+8. Click on **Create pull request**.
 
 <div class="successBlock">
 
-Repeat the steps above for each of the repositories - **<code class="inline-code">rudder-transformer</code>**, **<code class="inline-code">config-generator</code>**, and **<code class="inline-code">rudderstack-docs</code>**.
+Repeat the above steps for each of the repositories: **<code class="inline-code">rudder-transformer</code>**, **<code class="inline-code">config-generator</code>**, and **<code class="inline-code">rudderstack-docs</code>**.
 </div>
 
-## RudderStack Contributor Agreement
 
-<div class="warningBlock">
-
-To contribute to this project, we need you to sign to <a href="https://rudderlabs.wufoo.com/forms/rudderlabs-contributor-license-agreement">Contributor License Agreement (“CLA”)</a> for the first commit you make. By agreeing to the <a href="https://rudderlabs.wufoo.com/forms/rudderlabs-contributor-license-agreement">CLA</a>, we can add you to list of approved contributors and review the changes proposed by you.
-</div>
 
 ## RudderStack Transformer
 
 [**GitHub Repository Link**](https://github.com/rudderlabs/rudder-transformer)
 
-The `rudder-transformer` repository is responsible for transforming __the source payload into the required payload for the downstream destination. This is where the bulk of the code will need to be written. Therefore, the following should be considered when contributing to this repository.
+The `rudder-transformer` repository is responsible for transforming the source payload into the required payload by the downstream destination. It contains huge amount of code and therefore, the following should be kept in mind when contributing to this repository:
 
-* There is a big emphasis on formatting the code to match current project structure. If there are any questions or issues regarding this, reach out to our team; see [**Contact Us**](https://rudderstack.com/docs/user-guides/how-to-guides/how-to-submit-an-integration-pull-request#contact-us) section below.
-* Include any `eslint` logic in the top of the file.
-* Include test cases that cover around 80% code coverage.
+* Format the code to match the existing structure. In case of any queries, please [**Contact Us**](https://rudderstack.com/docs/user-guides/how-to-guides/how-to-submit-an-integration-pull-request#contact-us).
+* Include any `eslint` logic at the top of the file.
+* Include test cases that provide around 80% code coverage.
 
 ## RudderStack Control Plane Lite
 
 [**GitHub Repository Link**](https://github.com/rudderlabs/config-generator)
 
-The `config-generator` repository allows the user to upload the necessary settings needed for configuring the integration. Follow the pre-existing structure to the best of your ability and [**reach out to us**](https://rudderstack.com/join-rudderstack-slack-community) with any questions or concerns. 
+The `config-generator` repository can be used to upload the settings required for configuring the integration. The best practice is to follow the pre-existing structure to the best of your ability and [**reach out to us**](https://rudderstack.com/join-rudderstack-slack-community), if any questions or concerns.
 
-Note the following when creating the Control Plane:
+Also, please note the following:
 
-* Your documentation should be in the `.md` format
-* Include proper `regex` validation rules for all of the text input fields.
-* The icon file must be an `svg`.
+* Documentation should be in the `.md` format.
+* Proper `regex` validation rules should be included for all text input fields.
+* Icon file must be in `svg` format.
 
 ## RudderStack Documentation
 
 [**GitHub Repository Link**](https://github.com/rudderlabs/rudderstack-docs)
 
-The `rudderstack-docs` repository houses all the relevant documentation for instructing the users on using the integration you have created. Remember to be thorough with your documentation to avoid confusion and any errors. Although we will review the documentation and get in touch with you in case of any clarification, it will certainly be very helpful to ensure clear, concise steps on setting up, configuring, and using your integration.
+The `rudderstack-docs` repository houses all the RudderStack documentation.
+
+Please note the following while creating the document for instructing the users on how to use the integration you have created:
+
+* Ensure that the document is detailed and thorough to avoid any confusion and errors. 
+* Include clear and concise steps to set up, configure, and use your integration.
+* Include tips and suggestions wherever possible.
 
 <div class="warningBlock">
 
-Do not include screenshots. We will include them after merging the changes.
+Do not include screenshots. They will be included once the changes are merged.
 </div>
 
 ## Contact Us
 
-For more information on any of the sections in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
