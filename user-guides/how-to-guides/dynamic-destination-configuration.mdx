@@ -7,17 +7,15 @@ description: >-
 
 # How to Configure a Destination via the Event Payload
 
-While setting a destination in RudderStack is quite straightforward, you might encounter a scenario where you need to configure multiple instances of a destination with different configurations for specific fields.
+While setting a destination in RudderStack is quite straightforward, you might encounter a scenario where you need to configure multiple instances of a destination with different configurations for specific fields. RudderStack lets you pass these configuration values **via the event payload** dynamically.
 
-RudderStack lets you pass these configuration values **via the event payload** dynamically, while setting up the destination in the dashboard.
-
-All you need to do is pass the path of your event payload from which the configuration value will be fetched, along with a default value for the field, as shown below:
+Simply pass the path of your event payload from which the configuration value will be fetched, along with a default value for the field, as shown below:
 
 <img src="../../assets/dynamic-destination-configuration.png" />
 
 <div class="successBlock">
   
-  This feature is supported for all the destinations in <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode">cloud mode</a>, including <a href="https://rudderstack.com/docs/data-warehouse-integrations/">warehouse destinations</a>.
+This feature is supported for all the destinations that support sending data via the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode">cloud mode</a>, including <a href="https://rudderstack.com/docs/data-warehouse-integrations/">warehouse destinations</a>.
 </div>
 
 ## Supported format
@@ -37,16 +35,16 @@ Any value present in the path will be passed as a configuration value in the das
 
 ### Default value format
 
-You can set the default configuration value as per your requirement. Note that in case of a string, you need to set the value within double quotes.
+You can set the default configuration value as per your requirement. In case of a string, you need to set the value within double quotes.
 
-<div class="infoBlock">
+<div class="successBlock">
   
-  To set a number as the default value, we recommend setting it as a string.
+  You can pass <strong>strings</strong> or <strong>custom mappings</strong> as the default value.
 </div>
 
 <div class="infoBlock">
   
-  This feature is currently supported only for text fields. Support for mapped fields is coming soon.
+  To set a number as the default value, we recommend setting it as a string.
 </div>
 
 ## Use-case
