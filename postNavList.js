@@ -231,6 +231,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"event-filtering",
+    "title":"Event Filtering",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/event-filtering/",
+    "content":[]
+ },
+ {
     "key":"sdk-faqs",
     "title":"SDK FAQs",
     "link":"/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/",
@@ -959,9 +965,9 @@ export const postNavList = [
     "content":[]
  },
  {
-   "key":"google-ads-gtag",
+   "key":"g-ads-gtag",
    "title":"Google Ads (gtag.js)",
-   "link":"/destinations/advertising/google-ads-gtag/",
+   "link":"/destinations/advertising/g-ads-gtag/",
    "content":[]
 },
 {
