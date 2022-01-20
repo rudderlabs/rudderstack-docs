@@ -626,6 +626,15 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
   We will be adding similar callbacks for other APIs such as <code class="inline-code">track</code>, <code class="inline-code">page</code>, <code class="inline-code">identify</code>, etc. very soon.
 </div>
 
+## Filtering events
+
+When sending events to a destination via the **web device mode**, you can explicitly specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Event Filtering</a> guide for more information on this feature.
+</div>
+
 ## Filtering selective destinations
 
 RudderStack lets you load or send your event data to only the destinations specified by you. You can do so by passing an [**integrations object**](#integrationopts) in the `options` parameter of the API methods. RudderStack then loads or sends events only to those destinations that are specified and enabled.
