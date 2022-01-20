@@ -960,7 +960,7 @@ export const postNavList = [
  },
  {
    "key":"google-ads-gtag",
-   "title":"Google Ads",
+   "title":"Google Ads (gtag.js)",
    "link":"/destinations/advertising/google-ads-gtag/",
    "content":[]
 },
@@ -1172,6 +1172,12 @@ export const postNavList = [
    "key":"statsig",
    "title":"Statsig",
    "link":"/destinations/testing-and-personalization/statsig/",
+   "content":[]
+},
+{
+   "key":"launchdarkly",
+   "title":"LaunchDarkly",
+   "link":"/destinations/testing-and-personalization/launchdarkly/",
    "content":[]
 },
 {
