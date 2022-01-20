@@ -1,0 +1,149 @@
+---
+title: "LaunchDarkly"
+description: >-
+ Step-by-step guide to send your event data from RudderStack to LaunchDarkly.
+---
+
+# LaunchDarkly
+
+[**LaunchDarkly**](https://launchdarkly.com/) is a popular feature management platform that offers cutting-edge A/B testing and experimentation functionalities. It lets you efficiently automate and manage feature flags and improve overall product workflow and software quality.
+
+RudderStack supports LaunchDarkly as a destination to which you can seamlessly send your data for flag management.
+
+## Getting started
+
+Before configuring LaunchDarkly as a destination in RudderStack, verify if the source platform is supported by LaunchDarkly by referring to the table below:
+
+| Connection Mode     | Web           | Mobile                 | Server        |
+| :------------------ | :------------ | :--------------------- | :-------------|
+| **Device mode**     | **Supported**             | -                      | -            |
+| **Cloud mode**      | - | -          | - |
+
+<div class="infoBlock">
+ 
+ To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+</div>
+
+Once you have confirmed that your source platform supports sending events to LaunchDarkly, follow these steps:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **LaunchDarkly**.
+
+<div class="infoBlock">
+ 
+ Refer to the guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+</div>
+
+* Assign a name to the destination and click on **Next**. You should then see the following screen:
+
+<img src="../../assets/event-stream-destinations/launchdarkly-connection-settings.png" alt="LaunchDarkly connection settings" />
+
+### Connection settings
+
+The connection settings required to configure LaunchDarkly as a destination in RudderStack are listed below:
+
+* **Client-side ID**: Enter the client-side ID of your LaunchDarkly project.
+
+<div class="infoBlock">
+ 
+For more information on getting the LaunchDarkly client-side ID, refer to the <a href="#faqs">FAQs</a> section below.
+</div>
+
+## Identify
+
+The `identify` call lets you create a new user in LaunchDarkly or update an existing one. 
+
+A sample `identify` call is as shown below:
+
+```javascript
+rudderanalytics.identify(
+  "userId", {
+    anonymous: false,
+    avatar: "https://avatarfiles.alphacoders.com/837/83744.jpg",
+    country: "India",
+    custom: {
+      favourite_color: "black"
+    },
+    email: "name@domain.com",
+    firstName: "Test",
+    ip: "10.11.23.22",
+    lastName: "User",
+    name: "Test User",
+    privateAttribureNames: ["avatar", "country"],
+    secondary: "abcd21234"
+  }
+);
+```
+
+The following table lists the supported fields for the `traits` object in the `identify` call:
+
+| Field | Type | Presence | Description | 
+|:------|:-----|:---------|:-------------|
+| `anonymous`    | Boolean | Optional | Must be set to `true`  |
+| `avatar` | String | Optional | User's avatar image URL |
+| `country` | String | Optional | Country associated with the user |
+| `custom` | Object | Optional | Additional attributes associated with the user |
+| `email` | String | Optional | User's email address |
+| `firstName` | String | Optional | User's first name |
+| `ip` | String | Optional | User's IP address |
+| `lastName` | String | Optional | User's last name |
+| `name` | String | Optional | User's full name |
+| `privateAttributeNames` | String Array | Optional | List of attribute names (built-in or custom) marked as private and not sent to LaunchDarkly as analytics events |
+| `secondary` | String | Optional | User's secondary identifier |
+
+<div class="infoBlock">
+
+If you have chosen to bucket the users by a specific attribute, the <code class="inline-code">secondary</code> field can be used to further distinguish users who are otherwise identical as per that attribute. 
+</div>
+
+### LaunchDarkly key
+
+RudderStack assigns the `userId` to LaunchDarkly's `key` field to uniquely identify a user.
+
+<div class="infoBlock">
+
+<code class="inline-code">key</code> is the only required field in LaunchDarkly's <code class="inline-code">identify</code> call. If no unique identifier is provided, RudderStack will automatically assign <code class="inline-code">anonymousId</code> as <code class="inline-code">key</code>.
+</div>
+
+## Track
+
+The `track` call lets you record user events and send them to LaunchDarkly as custom conversion metrics for your experiments.
+
+A sample `track` call is as shown:
+
+```javascript
+rudderanalytics.track("Test Event", {
+  foo: "bar"
+});
+```
+
+## Alias
+
+The `alias` call lets you merge different identities of a known user. You can explicitly change the identity of a user via this call.
+
+A sample `alias` call is shown below:
+
+```javascript
+rudderanalytics.alias("newUserId","userId");
+```
+
+## FAQs
+
+### Where do I get the LaunchDarkly Client-side ID?
+
+To get your LaunchDarkly client-side ID, follow these steps:
+
+- Log into your [**LaunchDarkly dashboard**](https://app.launchdarkly.com/).
+
+- Select your project, as shown:
+
+<img src="../../assets/event-stream-destinations/launchdarkly-projects.png" alt="LaunchDarkly projects" />
+
+- Then, navigate to **Account settings** - **Projects**.
+
+- You will see the client-side ID for your project here.
+
+<img src="../../assets/event-stream-destinations/launchdarkly-clientsideID.png" alt="LaunchDarkly client-side ID" />
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
