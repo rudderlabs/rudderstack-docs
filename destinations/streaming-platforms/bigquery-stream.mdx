@@ -113,54 +113,12 @@ Suppose you want to stream the events from your web source to BigQuery and the t
 
 To successfully stream the events, the event tracked from your JavaScript SDK should look like the following:
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <script>
-    rudderanalytics = window.rudderanalytics = [];
-    for (
-      var methods = [
-          "load",
-          "page",
-          "track",
-          "identify",
-          "alias",
-          "group",
-          "ready",
-          "reset",
-          "getAnonymousId",
-          "setAnonymousId",
-        ],
-        i = 0; i < methods.length; i++
-    ) {
-      var method = methods[i];
-      rudderanalytics[method] = (function(a) {
-        return function() {
-          rudderanalytics.push(
-            [a].concat(Array.prototype.slice.call(arguments))
-          );
-        };
-      })(method);
-    }
-    rudderanalytics.load("<WRITE_KEY>", "<DATA_PLANE_URL>");
-
-    rudderanalytics.track("relevant event name", {
-      productId: 10,
-      productName: `Product-10`,
-      count: 12
-    });
-  </script>
-
-  <script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
-</head>
-<body>...</body>
-</html>
+```javascript
+rudderanalytics.track("event", {
+  productId: 10,
+  productName: `Product-10`,
+  count: 12
+});
 ```
 
 Note that the `track` properties in the above payload match with the fields specified in your table schema. Once streamed, you can view this event in your BigQuery console by running the SQL command as shown:

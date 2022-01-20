@@ -1,0 +1,135 @@
+---
+# slug: "/docs/destinations/data-ingestion/amazon-kinesis-firehose"
+title: "Amazon Kinesis Firehose"
+description: Step-by-step guide to send event data from RudderStack to Kinesis Firehose.
+---
+
+# Amazon Kinesis Firehose
+
+[Amazon Kinesis Firehose](https://aws.amazon.com/kinesis/data-firehose/) gives you an easy and reliable way to load your streaming data into data lakes, data stores, and a host of other analytics tools. It is a fully-managed service that can be scaled automatically to match the load and throughput of your data, without requiring any additional administration. You can also perform batch processing, and compress, transform, and encrypt your data before loading it. Firehose helps you minimize the amount of storage used at the destination in a secure manner.
+
+RudderStack allows you to configure Kinesis Firehose as a destination and send your event data to it directly.
+
+<div class="successBlock">
+
+  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/firehose">GitHub repo</a>.**
+</div>
+
+## Getting Started
+
+To enable sending data to Firehose, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Firehose.
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
+<div class="infoBlock">
+
+To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+
+</div>
+
+Once you have confirmed that the platform supports sending events to Firehose, perform the steps below:
+
+- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Firehose.**
+
+<div class="infoBlock">
+
+Please follow our [Adding a Source and Destination](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) guide to add a source and destination in RudderStack.
+
+</div>
+
+- Give a name to the destination and click on **Next**. You should then see the following screen.
+- Fill up the details and click on **Next** to complete the configuration. Firehose should now be added and enabled as a destination in RudderStack.
+
+<img src="../../assets/image (88).png" /><span class="imageTitle">Add Firehose as destination</span>
+
+**Details to be filled:**
+
+- **AWS Credentials**
+  - **AWS Region**: Enter the AWS region here.
+  - The **AWS Access Key ID** and **AWS Secret Access Key** are required to authorize RudderStack to write to your stream.
+
+<div class="successBlock">
+
+  Please note that if the AWS credentials are **already configured** on your
+  machine where the RudderStack server is set up, you will **not** need the
+  security credentials.
+</div>
+
+- Enter the **Event Name** as well as the corresponding **Delivery Stream**.
+
+<div class="infoBlock">
+
+You can send an event `type` like `page,` `identify,` `track`.  
+For `track` events you can specify the event name based on the `event` name in the payload.
+
+For example:
+
+<ul>
+<li>
+
+If the event name is **`page`** it will send all the calls with `type` page.
+</li>
+<li>
+
+If event name is **`product added`** , it will send all the track events with the **`event`** product added.
+</li>
+</ul>
+  </div>
+
+<div class="infoBlock">
+
+If you want to send all the events to a particular stream irrespective of the type or name, you can use **`*`** as the event name.
+
+</div>
+
+<div class="warningBlock">
+
+The **delivery stream** name is **case sensitive** and has to be exactly as named in AWS. On the other hand, the **event name** is **case insensitive**, and thus Page or page both will be considered.
+
+</div>
+
+The following snippet shows an example of a permissions policy that allows a user to put event data into Firehose:
+
+```javascript
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "firehose:PutRecord"
+      ],
+      "Resource": [
+        "arn:aws:firehose:{region}:{account-id}:stream/{stream-name}"
+      ]
+    }
+  ]
+}
+```
+
+## Adding Firehose Delivery Stream on Your AWS account
+
+To configure the Firehose destination with RudderStack correctly, a delivery stream has to be created in Firehose. Please follow the steps below to do so:
+
+- Follow these [instructions](http://docs.aws.amazon.com/firehose/latest/dev/basic-create.html) on how to create an Amazon Kinesis Data Firehose delivery stream.
+- Next, create an IAM policy. To create one follow these instructions on [Creating an IAM policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html).
+- Add an IAM role and attach the policy which will allow `PutRecord` to interact with the delivery stream. To create an IAM role, follow the instructions on [Creating an IAM role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html#roles-creatingrole-user-console).
+
+## FAQs
+
+### How does event mapping work with the delivery stream?
+
+- If there is no delivery stream set for an event, it will not be sent.
+- If an event is set with a delivery stream, the payload will be sent to Firehose to that particular delivery stream.
+- If you have set all event type, event and `*` for mapping the priority will be given to event then type and then \*. Eg. Let the type of event be track, Event name be product added. And the mapping is done as:
+
+<img src="../../assets/screenshot-2020-07-14-at-10.37.02-pm.png" />
+
+Then all events should go to the one mapped with `product added`.
+
+## Contact Us
+
+If you come across any issues while configuring Kinesis Firehose with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
