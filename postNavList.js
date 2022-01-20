@@ -959,9 +959,9 @@ export const postNavList = [
     "content":[]
  },
  {
-   "key":"gads",
+   "key":"google-ads-gtag",
    "title":"Google Ads",
-   "link":"/destinations/advertising/gads/",
+   "link":"/destinations/advertising/google-ads-gtag/",
    "content":[]
 },
 {
