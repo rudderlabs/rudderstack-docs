@@ -20,11 +20,16 @@ This feature is supported for all the destinations that support sending data via
 
 ## Supported format
 
-To use this feature, enter the path of the payload along with a default value in the text field of a connection setting that you want to configure. The format in which the setting should be specified is shown below:
+To use this feature, enter the path of the payload along with a default value in the text field of a connection setting that you want to configure. 
+
+The format in which the setting should be specified is shown below:
 
 ```javascript
 {{event.path.config.name || "default_config_value"}}
 ```
+
+You can also use this feature to dynamically configure complex input types like field mappings, as seen in the following example:
+
 
 Any value present in the path will be passed as a configuration value in the dashboard settings. If no value is present in the payload path, the default value will be used to configure the destination.
 
@@ -35,16 +40,19 @@ Any value present in the path will be passed as a configuration value in the das
 
 ### Default value format
 
-You can set the default configuration value as per your requirement. In case of a string, set the value within double quotes.
+You can set the default configuration value as per your requirement.
+
+<div class="infoBlock">
+
+  <ul>
+    <li> To set a number as the default value, set it as a string.</li>
+    <li> In case of a multi-word string, we recommend setting the value within double quotes, e.g. <code class="inline-code">"default value"</code>.</li>
+  </ul>
+</div>
 
 <div class="infoBlock">
   
   To set a number as the default value, we recommend setting it as a string.
-</div>
-
-<div class="successBlock">
-  
-  You can also pass <strong>mapped fields</strong> as the default configuration value.
 </div>
 
 ## Use-case
