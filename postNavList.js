@@ -1043,54 +1043,6 @@ export const postNavList = [
    "content":[]
 },
  {
-    "key":"data-ingestion",
-    "title":"Data Ingestion",
-    "link":"/destinations/data-ingestion/",
-    "content":[]
- },
- {
-   "key":"kafka",
-   "title":"Apache Kafka",
-   "link":"/destinations/data-ingestion/kafka/",
-   "content":[]
-},
-{
-   "key":"amazon-eventbridge",
-   "title":"Amazon EventBridge",
-   "link":"/destinations/data-ingestion/amazon-eventbridge/",
-   "content":[]
-},
-{
-   "key":"amazon-kinesis",
-   "title":"Amazon Kinesis",
-   "link":"/destinations/data-ingestion/amazon-kinesis/",
-   "content":[]
-},
-{
-   "key":"amazon-kinesis-firehose",
-   "title":"Amazon Firehose",
-   "link":"/destinations/data-ingestion/amazon-kinesis-firehose/",
-   "content":[]
-},
-{
-   "key":"azure-event-hubs",
-   "title":"Azure Event Hubs",
-   "link":"/destinations/data-ingestion/azure-event-hubs/",
-   "content":[]
-},
-{
-   "key":"confluent-cloud",
-   "title":"Confluent Cloud",
-   "link":"/destinations/data-ingestion/confluent-cloud/",
-   "content":[]
-},
-{
-   "key":"google-pub-sub",
-   "title":"Google Pub/Sub",
-   "link":"/destinations/data-ingestion/google-pub-sub/",
-   "content":[]
-},
- {
     "key":"streaming-platforms",
     "title":"Streaming Platforms",
     "link":"/destinations/streaming-platforms/",
@@ -1102,6 +1054,48 @@ export const postNavList = [
    "link":"/destinations/streaming-platforms/bigquery-stream/",
    "content":[]
  },
+ {
+   "key":"kafka",
+   "title":"Apache Kafka",
+   "link":"/destinations/streaming-platforms/kafka/",
+   "content":[]
+},
+{
+   "key":"amazon-eventbridge",
+   "title":"Amazon EventBridge",
+   "link":"/destinations/streaming-platforms/amazon-eventbridge/",
+   "content":[]
+},
+{
+   "key":"amazon-kinesis",
+   "title":"Amazon Kinesis",
+   "link":"/destinations/streaming-platforms/amazon-kinesis/",
+   "content":[]
+},
+{
+   "key":"amazon-kinesis-firehose",
+   "title":"Amazon Firehose",
+   "link":"/destinations/streaming-platforms/amazon-kinesis-firehose/",
+   "content":[]
+},
+{
+   "key":"azure-event-hubs",
+   "title":"Azure Event Hubs",
+   "link":"/destinations/streaming-platforms/azure-event-hubs/",
+   "content":[]
+},
+{
+   "key":"confluent-cloud",
+   "title":"Confluent Cloud",
+   "link":"/destinations/streaming-platforms/confluent-cloud/",
+   "content":[]
+},
+{
+   "key":"google-pub-sub",
+   "title":"Google Pub/Sub",
+   "link":"/destinations/streaming-platforms/google-pub-sub/",
+   "content":[]
+},
  {
     "key":"storage-platforms",
     "title":"Storage Platforms",
