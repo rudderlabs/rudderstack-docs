@@ -292,7 +292,7 @@ export const jsonData = [
               },
               {
                  "key":"event-filtering",
-                 "title":"Event Filtering",
+                 "title":"Client-side Event Filtering",
                  "link":"/stream-sources/rudderstack-sdk-integration-guides/event-filtering/",
                  "content":[
                     
