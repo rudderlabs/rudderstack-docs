@@ -1,18 +1,21 @@
 ---
 # slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs"
-title: "Event Filtering"
+title: "Client-side Event Filtering"
 description: Detailed technical description of RudderStack's event filtering feature.
 ---
 
-# Event Filtering
+# Client-side Event Filtering
 
-RudderStack's event filtering feature lets you specify which events should be discarded or allowed to flow through by whitelisting or blacklisting them.
+RudderStack's client-side event filtering feature lets you specify which events should be discarded or allowed to flow through by whitelisting or blacklisting them.
 
-This feature can be used for all the RudderStack destinations that support sending events via the [**device mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode).
+<div class="successBlock">
+
+You can use this feature for all the RudderStack destinations that support sending events via the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode">device mode</a>.
+</div>
 
 <div class="infoBlock">
 
-Event filtering is applicable only for <code class="inline-code">track</code> calls. In case of mobile SDKs, it also applies to the following application lifecycle events:
+Client-side event filtering is applicable only for <code class="inline-code">track</code> calls. In case of mobile SDKs, it also applies to the following application lifecycle events:
   <ul>
     <li>Application Installed</li>
     <li>Application Opened</li>
@@ -23,9 +26,8 @@ Event filtering is applicable only for <code class="inline-code">track</code> ca
 
 ## Supported SDKs
 
-Event filtering is supported for the following source SDKs:
+The following source SDKs support this feature:
 
-- [**JavaScript**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/)
 - [**Android**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/)
 - [**iOS**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/)
 - [**React Native**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/)
