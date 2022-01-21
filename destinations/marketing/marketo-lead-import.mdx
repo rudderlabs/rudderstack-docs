@@ -67,17 +67,18 @@ For more information on finding your Munchkin Account ID, refer to the <a href="
 For more information on finding your Client ID, refer to the <a href="https://developers.marketo.com/rest-api/authentication/">Marketo knowledge base</a>.
 </div>
 
-* **Client Secret**: You can find your Marketo client secret next to the **Client ID** obtained in the previous step. 
-* **Column Fields Mapping**: This option lets you map your **Leads** table columns' API key values with keys in your incoming events' traits. The values of those traits will be sent correspondingly to the columns.
+* **Client Secret**: You can find your Marketo client secret next to the **Client ID** obtained in the previous step.
 
-You can find your columns API key names by following this [**documentation**](https://developers.marketo.com/rest-api/bulk-import/bulk-custom-object-import/).
+* **Column Fields Mapping**: This option lets you map your incoming events' traits to the **Leads** table columns' API names. 
 
-For instance, if you want to send data from the event traits set as `firstName`, `email` to the Marketo columns with API key names `name` and `Email`, then the mapping should be done as shown in the following table:
+For example, to send the data from the event traits `firstName` and `email` to the Marketo columns with the API names `name` and `Email`, set the mapping as shown:
 
-| **Column Field Name** | **Traits** |
+| **RudderStack Traits** | **Marketo Column Field** |
 | :--- | :--- |
-| `name` | `firstName` |
-| `Email` | `email` |
+| `firstName` | `name` |
+| `email` | `Email` |
+
+You can find your columns' API names by following this [**documentation**](https://developers.marketo.com/rest-api/bulk-import/bulk-custom-object-import/).
 
 ## Identify
 
