@@ -84,7 +84,11 @@ This field lets you define the type of data regulation you want to add. It suppo
 
 ### `destinationIds` and `sourceIds`
 
-You can set these **optional** fields to specify the sources/destinations from which the data should be suppressed or deleted. 
+You can set these **optional** fields to specify the sources/destinations from which the data should be suppressed or deleted.
+
+- Specify **only `sourceIds`** when setting the `regulationType` to `suppress`. If no `sourceIds` are specified, RudderStack will suppress data from all the sources present in the workspace associated with the access token.
+
+- Specify **only `destinationIds`** when setting the `regulationType` to `suppress_with_delete`. If no `destinationIds` are specified, RudderStack will delete the data for all the destinations present in the workspace.
 
 <div class="infoBlock">
 <ul>
@@ -95,12 +99,7 @@ You can set these **optional** fields to specify the sources/destinations from w
 
 <div class="warningBlock">
 
-<ul>
-<li>Set the <code class="inline-code">sourceIds</code> field when setting the <code class="inline-code">regulationType</code> to <code class="inline-code">suppress</code>.</li>
-<li>Set the <code class="inline-code">destinationIds</code> field when setting the <code class="inline-code">regulationType</code> to <code class="inline-code">suppress_with_delete</code>.</li>
-</ul>
-
-Avoid specifying both <code class="inline-code">sourceIds</code> and <code class="inline-code">destinationIds</code>.
+Do not specify both <code class="inline-code">sourceIds</code> and <code class="inline-code">destinationIds</code> in your request body.
 </div>
 
 ### `users`
@@ -121,6 +120,8 @@ We recommend that you provide the user's <code class="inline-code">phone</code> 
 
 ```bash
 curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
+--header 'Authorization: Bearer 2345678Dv9J5NZsEqVJWLQutE4E' \
+--header 'Content-Type: application/json' \
 --data-raw '{
     "regulationType": "suppress",
     "sourceIds": [
@@ -140,19 +141,18 @@ curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
 
 ```bash
 curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
+--header 'Authorization: Bearer 2345678Dv9J5NZsEqVJWLQutE4E' \
+--header 'Content-Type: application/json' \
 --data-raw '{
     "regulationType": "suppress_with_delete",
-    "sourceIds": [
-        "src-1",
-        "src-2",
-        "src-3"
-    ],
     "destinationIds": [
         "dest-1"
     ],
     "users": [
         {
-            "userId": "rudder-123"
+            "userId": "123",
+            "phone": "9876543210",
+            "email": "name@surname.com"
         }
     ]
 }'
@@ -186,7 +186,7 @@ https://api.rudderstack.com/v2/regulations
 
 ```bash
 curl --location --request GET 'https://api.rudderstack.com/v2/regulations' \
---header 'Authorization: Bearer 22YI2pCURNbcG0fGRfkgAdcWQsW'
+--header 'Authorization: Bearer 23456pCURNbcG0fGRfkgAdcWQsW'
 ```
 
 * **Expected Response**
@@ -253,8 +253,8 @@ https://api.rudderstack.com/v2/regulations/{regulation_id}
 * **Sample Request**:
 
 ```bash
-curl --location --request GET 'https://api.rudderstack.com/v2/regulations' \
---header 'Authorization: Bearer 22YI2pCURNbcG0fGRfkgAdcWQsW'
+curl --location --request DELETE 'http://api.rudderstack.com/v2/regulations/e44c5f3b-b4ca-4b17-8147-7bc1c9620fe3' \
+--header 'Authorization: Bearer 12345nuDv9J5NZsEqVJWLQutE4E'
 ```
 
 ## Contact us
