@@ -1,0 +1,259 @@
+---
+title: "Data Regulation API"
+description: >-
+  Detailed technical documentation on the RudderStack Data Regulation API for
+  suppressing and deleting user data.
+---
+
+# Data Regulation API
+
+RudderStack's Data Regulation API lets you specify regulations to suspend data collection and delete data for a particular user.
+
+This guide covers the data regulation feature in detail and details the Data Regulation API endpoints.
+
+[![Plan: Enterprise](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)](https://rudderstack.com/enterprise-quote)
+
+<div class="warningBlock">
+
+Contact our <a href="mailto:%20support@rudderstack.com">Customer Success</a> team before using the Data Regulation API.
+</div>
+
+## What is data regulation?
+
+RudderStack respects the users' data privacy choices. 
+
+You can leverage RudderStack's data regulation feature to suppress any incoming data for a given user. RudderStack will drop the events for that user at the source; RudderStack will not show these events in any debuggers and not forward them to any destinations. 
+
+You can also use this feature to direct RudderStack to suppress any incoming events for a user and delete any collected data for a given destination.
+
+<div class="warningBlock">
+
+Once a user is suppressed, it is not possible to replay their events.
+</div>
+
+## Prerequisites
+
+You need to generate a [**Personal Access Token**](https://rudderstack.com/docs/transformations/api-access-token/) to authenticate the Data Regulation API and use it successfully.
+
+## API authorization
+
+The Data Regulation API uses the **Bearer Token Authentication** for authenticating all the requests.
+
+<div class="infoBlock">
+
+The Personal Access Token should be used as the bearer token for authentication.
+</div>
+
+## Adding a new data regulation
+
+This request lets you add a new data regulation to suppress/suppress and delete a given user's data.
+
+* **Request type**: **POST**
+
+* **Request format**: 
+
+```bash
+https://api.rudderstack.com/v2/regulations
+```
+
+* **Request body**:
+
+```json
+{
+  "regulationType": "suppress/suppress_with_delete",
+  "destinationIds": [],
+  "sourceIds": [],
+  "users": [{
+    "userId": "<user_ID>",
+    "phone": "<phone_number>",
+    "email": "<user_email>"
+  }]
+}
+```
+### `regulationType`
+
+This field lets you define the data regulation type. It supports the following values:
+
+| Parameter Name | Description |
+| :-----------------| :-----------|
+| `suppress`           | Directs RudderStack to suppress the incoming user data. |
+| `suppress_with_delete` | Directs RudderStack to suppress any incoming user data and delete any events from the user-specified destinations. |
+
+### `destinationIds` and `sourceIds`
+
+You can set these **optional** fields to specify the sources or destinations from which the data should be suppressed or deleted.
+
+- Specify **only `sourceIds`** when setting the `regulationType` to `suppress`. If no `sourceIds` are specified, RudderStack will suppress data from all the sources present in the workspace associated with the access token.
+
+- Specify **only `destinationIds`** when setting the `regulationType` to `suppress_with_delete`. If no `destinationIds` are specified, RudderStack will delete the data for all the destinations present in the workspace.
+
+<div class="infoBlock">
+<ul>
+<li>Use the <code class="inline-code">https://api.rudderstack.com/v2/sources</code> endpoint to get the source IDs. </li>
+<li>Use the <code class="inline-code">https://api.rudderstack.com/v2/destinations</code> endpoint to get the destination IDs. </li>
+</ul>
+</div>
+
+<div class="warningBlock">
+
+Do not specify both <code class="inline-code">sourceIds</code> and <code class="inline-code">destinationIds</code> in your request body.
+</div>
+
+### `users`
+
+The API lets you specify the users for whom you want to set the data regulation. These users can be identified either by their `userId`, `phone`, or `email`.
+
+<div class="infoBlock">
+
+  <strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. The other fields are optional as some destinations require phone number or email to associate a given user and do not strictly identify a user by their user ID.
+</div>
+
+<div class="warningBlock">
+
+We recommend that you provide the user's <code class="inline-code">phone</code> and <code class="inline-code">email</code> <strong>at your own discretion and only if it is required</strong>.
+</div>
+
+* **Sample suppression request**
+
+```bash
+curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
+--header 'Authorization: Bearer 2345678Dv9J5NZsEqVJWLQutE4E' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "regulationType": "suppress",
+    "sourceIds": [
+        "src-1"
+    ],
+    "users": [
+        {
+            "userId": "123",
+            "phone": "9876543210",
+            "email": "name@surname.com"
+        }
+    ]
+}'
+```
+
+* **Sample suppression with delete request**
+
+```bash
+curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
+--header 'Authorization: Bearer 2345678Dv9J5NZsEqVJWLQutE4E' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "regulationType": "suppress_with_delete",
+    "destinationIds": [
+        "dest-1"
+    ],
+    "users": [
+        {
+            "userId": "123",
+            "phone": "9876543210",
+            "email": "name@surname.com"
+        }
+    ]
+}'
+```
+
+* **Expected response**
+
+```text
+Created
+```
+
+### List all data regulations
+
+This request lists all your data regulations.
+
+* **Request type**: **GET**
+
+* **Request format**: 
+
+```bash
+https://api.rudderstack.com/v2/regulations
+```
+
+* **Parameters**:
+
+| Parameter         | Type | Description |
+| :---------------| :------------| :------------------|
+| `after_cursor` | String | Fetches the regulations **after** this position. This cursor position is obtained from the `paging` object from the **previous request**. Refer to the sample response below for more information. |
+
+* **Sample request**
+
+```bash
+curl --location --request GET 'https://api.rudderstack.com/v2/regulations' \
+--header 'Authorization: Bearer 23456pCURNbcG0fGRfkgAdcWQsW'
+```
+
+* **Expected response**
+
+```json
+{
+    "data": [
+        {
+            "id": "c8fae8a7-1555-4807-89d8-972837671071",
+            "workspaceId": "216AlUz1kdkhkh7RFFvJVA9THlq",
+            "canceled": false,
+            "regulationType": "suppress",
+            "attributes": {
+                "userId": "12",
+                "phone": "1234567890",
+                "email": "abc@xyz.com"
+            }
+        },
+        {
+            "id": "1ac629bf-d795-45df-8bfb-be06d22a636b",
+            "workspaceId": "216AlUz1kdkhkh7RFFvJVA9THlq",
+            "canceled": false,
+            "regulationType": "suppress_with_delete",
+            "attributes": {
+                "userId": "rudder-1"
+            }
+        },
+        {
+            "id": "7bdf698f-80bd-4278-bb85-414ad8d27888",
+            "workspaceId": "216AlUz1kdkhkh7RFFvJVA9THlq",
+            "canceled": true,
+            "regulationType": "suppress",
+            "attributes": {
+                "userId": "123",
+                "phone": "9876543210",
+                "email": "name@surname.com"
+            }
+        }
+    ],
+  "paging": {
+    "next": "/v2/regulations?after_cursor=a450395bb52f4acb99e492c358e104eb"
+  },
+}
+```
+
+## Cancel a data regulation
+
+This request cancels an existing data regulation.
+
+* **Request type**: **DELETE**
+
+* **Request format**: 
+
+```bash
+https://api.rudderstack.com/v2/regulations/{regulation_id}
+```
+
+* **Parameters**:
+
+| Parameter         | Type | Description |
+| :---------------| :------------| :------------------|
+| `regulation_id` | String |  Refers to the ID of the data regulation to be cancelled. |
+
+* **Sample request**:
+
+```bash
+curl --location --request DELETE 'http://api.rudderstack.com/v2/regulations/e44c5f3b-b4ca-4b17-8147-7bc1c9620fe3' \
+--header 'Authorization: Bearer 12345nuDv9J5NZsEqVJWLQutE4E'
+```
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
