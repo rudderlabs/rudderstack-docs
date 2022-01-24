@@ -1517,9 +1517,9 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"user-suppression",
-    "title":"User Suppression API",
-    "link":"/rudderstack-api/user-suppression/",
+    "key":"data-regulation-api",
+    "title":"Data Regulation API",
+    "link":"/rudderstack-api/data-regulation-api/",
     "content":[]
  },
  {
