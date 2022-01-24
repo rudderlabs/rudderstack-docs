@@ -1,42 +1,39 @@
 ---
 title: "Data Regulation API"
 description: >-
-  Detailed technical description of the RudderStack Data Regulation API for
+  Detailed technical documentation on the RudderStack Data Regulation API for
   suppressing and deleting user data.
 ---
 
 # Data Regulation API
 
-RudderStack's Data Regulation API allows you to do the following:
+RudderStack's Data Regulation API lets you specify regulations to suspend data collection and delete data for a particular user.
 
-* Suspend data collection 
-* Suspend data collection and delete data
-
-This guide covers the data regulation feature in detail as well as details the various endpoints of the Data Regulation API.
+This guide covers the data regulation feature in detail and details the Data Regulation API endpoints.
 
 [![Plan: Enterprise](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)](https://rudderstack.com/enterprise-quote)
 
 <div class="warningBlock">
 
-We recommend contacting our <a href="mailto:%20support@rudderstack.com">Customer Success</a> team before you start using the Data Regulation API.
+Contact our <a href="mailto:%20support@rudderstack.com">Customer Success</a> team before using the Data Regulation API.
 </div>
 
 ## What is data regulation?
 
-At RudderStack, we respect the users' data privacy choices. 
+RudderStack respects the users' data privacy choices. 
 
-You can leverage RudderStack's data regulation feature to suppress any incoming data for a given user. RudderStack will drop the events for that user at source - these events will not be shown in any of the debuggers and will not be forwarded to any destinations. 
+You can leverage RudderStack's data regulation feature to suppress any incoming data for a given user. RudderStack will drop the events for that user at the source; RudderStack will not show these events in any debuggers and not forward them to any destinations. 
 
-You can also use this feature to direct RudderStack to suppress any incoming events for a user and delete any collected data in a given destination.
+You can also use this feature to direct RudderStack to suppress any incoming events for a user and delete any collected data for a given destination.
 
 <div class="warningBlock">
 
-Once a user is suppressed, replaying the user events is not possible.
+Once a user is suppressed, it is not possible to replay their events.
 </div>
 
 ## Prerequisites
 
-To use the Data Regulation API successfully, you need to generate a [**Personal Access Token**](https://rudderstack.com/docs/transformations/api-access-token/). This is required to authenticate the API.
+You need to generate a [**Personal Access Token**](https://rudderstack.com/docs/transformations/api-access-token/) to authenticate the Data Regulation API and use it successfully.
 
 ## API authorization
 
@@ -49,17 +46,17 @@ The Personal Access Token should be used as the bearer token for authentication.
 
 ## Adding a new data regulation
 
-This request allows you to add a new data regulation required to suppress/suppress and delete a given user's data.
+This request lets you add a new data regulation to suppress/suppress and delete a given user's data.
 
-* **Request Type**: **POST**
+* **Request type**: **POST**
 
-* **Request Format**: 
+* **Request format**: 
 
 ```bash
 https://api.rudderstack.com/v2/regulations
 ```
 
-* **Request Body**:
+* **Request body**:
 
 ```json
 {
@@ -75,16 +72,16 @@ https://api.rudderstack.com/v2/regulations
 ```
 ### `regulationType`
 
-This field lets you define the type of data regulation you want to add. It supports the following values:
+This field lets you define the data regulation type. It supports the following values:
 
 | Parameter Name | Description |
 | :-----------------| :-----------|
 | `suppress`           | Directs RudderStack to suppress the incoming user data. |
-| `suppress_with_delete` | Directs RudderStack to suppress any incoming user data and delete any events from the destinations configured by the user. |
+| `suppress_with_delete` | Directs RudderStack to suppress any incoming user data and delete any events from the user-specified destinations. |
 
 ### `destinationIds` and `sourceIds`
 
-You can set these **optional** fields to specify the sources/destinations from which the data should be suppressed or deleted.
+You can set these **optional** fields to specify the sources or destinations from which the data should be suppressed or deleted.
 
 - Specify **only `sourceIds`** when setting the `regulationType` to `suppress`. If no `sourceIds` are specified, RudderStack will suppress data from all the sources present in the workspace associated with the access token.
 
@@ -108,7 +105,7 @@ The API lets you specify the users for whom you want to set the data regulation.
 
 <div class="infoBlock">
 
-  <strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. The other fields are optional as some destinations require fields like phone number or email to associate a given user and do not strictly associate a user by their user ID.
+  <strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. The other fields are optional as some destinations require phone number or email to associate a given user and do not strictly identify a user by their user ID.
 </div>
 
 <div class="warningBlock">
@@ -116,7 +113,7 @@ The API lets you specify the users for whom you want to set the data regulation.
 We recommend that you provide the user's <code class="inline-code">phone</code> and <code class="inline-code">email</code> <strong>at your own discretion and only if it is required</strong>.
 </div>
 
-* **Sample Suppression Request**
+* **Sample suppression request**
 
 ```bash
 curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
@@ -137,7 +134,7 @@ curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
 }'
 ```
 
-* **Sample Suppression with Delete Request**
+* **Sample suppression with delete request**
 
 ```bash
 curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
@@ -158,7 +155,7 @@ curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
 }'
 ```
 
-* **Expected Response**
+* **Expected response**
 
 ```text
 Created
@@ -168,9 +165,9 @@ Created
 
 This request lists all your data regulations.
 
-* **Request Type**: **GET**
+* **Request type**: **GET**
 
-* **Request Format**: 
+* **Request format**: 
 
 ```bash
 https://api.rudderstack.com/v2/regulations
@@ -180,16 +177,16 @@ https://api.rudderstack.com/v2/regulations
 
 | Parameter         | Type | Description |
 | :---------------| :------------| :------------------|
-| `after_cursor` | String | Fetches the regulations after the specified cursor position, obtained from the `paging` object from the **previous request**. Refer to the sample response below for more information. |
+| `after_cursor` | String | Fetches the regulations **after** this position. This cursor position is obtained from the `paging` object from the **previous request**. Refer to the sample response below for more information. |
 
-* **Sample Request**
+* **Sample request**
 
 ```bash
 curl --location --request GET 'https://api.rudderstack.com/v2/regulations' \
 --header 'Authorization: Bearer 23456pCURNbcG0fGRfkgAdcWQsW'
 ```
 
-* **Expected Response**
+* **Expected response**
 
 ```json
 {
@@ -236,9 +233,9 @@ curl --location --request GET 'https://api.rudderstack.com/v2/regulations' \
 
 This request cancels an existing data regulation.
 
-* **Request Type**: **DELETE**
+* **Request type**: **DELETE**
 
-* **Request Format**: 
+* **Request format**: 
 
 ```bash
 https://api.rudderstack.com/v2/regulations/{regulation_id}
@@ -248,9 +245,9 @@ https://api.rudderstack.com/v2/regulations/{regulation_id}
 
 | Parameter         | Type | Description |
 | :---------------| :------------| :------------------|
-| `regulation_id` | String |  The ID of the data regulation to be cancelled. |
+| `regulation_id` | String |  Refers to the ID of the data regulation to be cancelled. |
 
-* **Sample Request**:
+* **Sample request**:
 
 ```bash
 curl --location --request DELETE 'http://api.rudderstack.com/v2/regulations/e44c5f3b-b4ca-4b17-8147-7bc1c9620fe3' \
