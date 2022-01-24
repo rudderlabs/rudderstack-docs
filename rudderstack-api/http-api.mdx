@@ -839,9 +839,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/batch < batch.json
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
-| `batch` | Array | Required | An array of `identify`, `track`, `page`, `group` and `screen` calls. It is mandatory that each call has a `type` property and a valid method name. |
-| `context` | Object | Optional | This is the same as the `context` field in case of other calls. However, it is merged with the context \(if any\) inside each of the items within the batch. |
-| `integrations` | Object | Optional | This is the same as the `integrations` field in case of other calls. However, it is merged with the integrations \(if any\) inside each of the items within the batch. |
+| `batch` | Array | Required | An array of `identify`, `track`, `page`, `group` and `screen` calls. Each call must have a `type` property and a valid method name. |
 
 ## 12. Historical Imports
 
