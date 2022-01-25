@@ -6,8 +6,6 @@ description: Commonly asked questions about RudderStack's Transformations featur
 
 # FAQ
 
-This document contains some of the commonly asked questions regarding RudderStack's Transformations feature.
-
 ## Why do I need to use RudderStack's Transformations feature?
 
 RudderStack's Transformations feature lets you transform the events collected from a source into a destination-specific format. Some key benefits of this feature are:
@@ -18,12 +16,7 @@ RudderStack's Transformations feature lets you transform the events collected fr
 
 <div class="successBlock">
 
-  Read more about why your data pipeline needs to have an efficient event
-  transformations capability in our
-  <a href="https://rudderstack.com/blog/the-future-of-data-pipeline-tools-must-include-better-transformations-than-etl-ever-had">
-    blog
-  </a>
-  .
+  Read more about why your data pipeline needs to have an efficient event transformations capability in our <a href="https://rudderstack.com/blog/the-future-of-data-pipeline-tools-must-include-better-transformations-than-etl-ever-had">blog</a>.
 </div>
 
 ## I used to write transformations like `function transform(events) {}`. Why am I not able to create new transformations this way?
@@ -36,7 +29,7 @@ We have changed the way transformations are written. RudderStack now supports wr
 
 You can. Simply define your transformation in the following manner:
 
-`export function transformBatch(event, metadata) {}` .
+`export function transformBatch(events, metadata) {}`
 
 <div class="warningBlock">
 

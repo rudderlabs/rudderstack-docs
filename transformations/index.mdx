@@ -27,13 +27,9 @@ Here's a quick 2-minute walkthrough of this feature:
   opts={{playerVars: {rel: 0}}}
 />
 
-<div class="infoBlock">
-  For details on how to add a transformation in RudderStack, check the <a href="https://rudderstack.com/docs/transformations#adding-a-transformation">Adding a New Transformation</a> section below.
-</div>
-
 <div class="successBlock">
 
-  You can refer to our <a href="https://github.com/rudderlabs/sample-user-transformers">Transformations</a> GitHub repository for some useful templates that you can use to create your own user transformations.
+  You can refer to our <a href="https://github.com/rudderlabs/sample-user-transformers">Sample Transformations</a> GitHub repository for some useful templates that you can use to create your own transformations.
 </div>
 
 <div class="warningBlock">
@@ -99,19 +95,11 @@ You can copy-paste the entire code of any of the functions present in this repos
 <img src="../assets/image (97).png" alt="Run Test" />
 <span class="imageTitle"></span>
 
-- In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` feature, as shown:
+- In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` function, as shown:
 
 ```javascript
-/***
-* This function gets executed on a batch of events before it gets pushed to a destination
-* events    => JSON list of events sent to rudder
-* metadata (optional) => Javascript function which can be used to access metadata of
-                        the given event by calling metadata(event)
-* After all the transformations are done, the final event that
-* needs to be pushed to the destination should be returned by this function
-***/
 export function transformBatch(events, metadata) {
-  return events
+    return events;
 }
 ```
 
@@ -119,11 +107,11 @@ export function transformBatch(events, metadata) {
 
 **Disclaimer for using <code class="inline-code">transformBatch</code>**
 
-Make sure you pass on the <code class="inline-code">messageID</code> from the input event onto the output event. If the <code class="inline-code">messageID</code> is passed on, the order of delivery of events is preserved. **Without it, this order may not be maintained**.
+Make sure you pass on the <code class="inline-code">messageId</code> from the input event onto the output event. If the <code class="inline-code">messageId</code> is passed on, the order of delivery of events is preserved. **Without it, this order may not be maintained**.
 
 It is highly recommended to use <code class="inline-code">transformEvent</code> in every possible case as it ensures event ordering in all cases.
 
-In case a <code class="inline-code">transformBatch</code> is required and event ordering is important, make sure to pass on the <code class="inline-code">messageID</code>.
+In case a <code class="inline-code">transformBatch</code> is required and event ordering is important, make sure to pass on the <code class="inline-code">messageId</code>.
 </div>
 
 ## Libraries
@@ -147,7 +135,7 @@ To create a library, follow these steps:
   alt="Add library name and description"
 />
 
-- You can add more functions under a single library, as shown:
+- You can add multiple functions to a single library, as shown:
 
 <!--<img src="../../../images/assets/image (95).png" />-->
 
@@ -210,25 +198,25 @@ The following snippets highlight how to properly import functions from a library
 ```javascript
 // Correct Way ✅
 // ---------------
-import { getLoss } from getFinanceData;
+import { getLoss } from "getFinanceData";
 
 // OR
 
-import { getLoss, getRevenue, getProfit } from getFinanceData;
+import { getLoss, getRevenue, getProfit } from "getFinanceData";
 import {
   getLoss,
   getRevenue,
   getProfit
-} from getFinanceData;
+} from "getFinanceData";
 
 // For default getPrice import
-import getPrice, { getRevenue, getProfit } from getFinanceData;
+import getPrice, { getRevenue, getProfit } from "getFinanceData";
 
 // alias imports
-import getPrice as gp, { getRevenue as gr, getProfit } from getFinanceData;
+import getPrice as gp, { getRevenue as gr, getProfit } from "getFinanceData";
 // usuage: gp(event), gr(event), getProfit(ev)
 
-import * as GFD from getFinanceData;
+import * as GFD from "getFinanceData";
 // usuage: GFD.getRevenue(ev), GFD.getProfit(ev)
 // for default import: GFD.default(ev)
 ```
@@ -236,11 +224,11 @@ import * as GFD from getFinanceData;
 ```javascript
 // Incorrect Way ❌
 // -----------------
-import * from getFinanceData;
+import * from "getFinanceData";
 
 // OR
 
-import getPrice as gp from getFinanceData;
+import getPrice as gp from "getFinanceData";
 getPrice(ev)
 ```
 
@@ -291,58 +279,20 @@ You can make any number of external API requests in your transformation function
 
 An example of how to use the `fetch` function in transformations is shown below:
 
-
-<Tabs>
-  <TabList>
-    <Tab>Basic</Tab>
-    <Tab>POST</Tab>
-    <Tab>Headers</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>
-<span>
-
-```bash
-curl --location -X POST
-'https://api.rudderstack.com/accessTokens' \ -H 'Authorization: Basic
-Base64Enc(workspacetoken:)' \ -H 'Content-Type: application/json' \ -d
-'{ "name": "some-test-access-token", "description":
-"some-description" }'
-```
-</span>
-    </TabPanel>
-    <TabPanel>
-<span>
-
-```bash
-http POST 'https://api.rudderstack.com/accessTokens' \
-name=some-test-access-token description=some-description \
-Authorization:'Basic MXBUbGc2MlpZcUgycWtDMDVmc1hUZlJQRWZyOg==' \
-Content-Type:'application/json'
-```
-</span>
-    </TabPanel>
-    <TabPanel>
-<span>
-
 ```javascript
-export async function transformEvent(event) {
+export async function transformEvent(event, metadata) {
   const res = await fetch("post_url", {
     method: "POST", // POST, PUT, DELETE, GET, etc.
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      Authorization: "Bearer <your_authorization_token>",
+      Authorization: "Bearer <your_authorization_token>"
     },
-    body: JSON.stringify(event),
+    body: JSON.stringify(event)
   });
   event.response = JSON.stringify(res);
   return event;
 }
 ```
-</span>
-    </TabPanel>
-  </TabPanels>
-</Tabs>
 
 <div class="successBlock">
 
