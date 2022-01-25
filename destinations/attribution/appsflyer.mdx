@@ -21,12 +21,21 @@ Before configuring AppsFlyer as a destination in RudderStack, verify if the sour
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
-| **Device mode**     | -             | **Supported** | -             |
+| **Device mode**     | -             | **Supported** (Recommended) | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
 
-To know more about the difference between the cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+To know more about the difference between the cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+</div>
+
+<div class="warningBlock">
+
+We recommend sending events to AppsFlyer using the cloud mode only in the following two scenarios:
+<ul>
+<li>To use RudderStack's <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> feature to transform your events</li> 
+<li>To send server-side events</li>
+</ul>
 </div>
 
 Once you have confirmed that the platform supports sending events to AppsFlyer, perform the steps below:
@@ -35,7 +44,7 @@ Once you have confirmed that the platform supports sending events to AppsFlyer, 
 
 <div class="infoBlock">
 
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> guide for more information.
 </div>
 
 - Assign a name to the destination and click on **Next**. You should then see the following screen:
@@ -44,40 +53,42 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 ### Connection settings
 
-The connection settings required to configure AppsFlyer as a destination in RudderStack are listed below:
+The following connection settings are required to configure AppsFlyer as a destination in RudderStack:
 
-- Enter the **AppsFlyer Dev Key**.
+- **AppsFlyer Dev Key**: Enter your AppsFlyer Dev key here.
 
 <div class="infoBlock">
 
-For more information on where to find the AppsFlyer dev key, refer to the <a href="#faqs">FAQs</a> section below.
+Refer to the <a href="#faqs">FAQs</a> section below for more information on obtaining the AppsFlyer dev key.
 </div>
 
 - **Sharing Filter**: By default, the value for this setting is set to `all`. 
 
 <div class="infoBlock">
 
-For more information on this field can be found in the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer documentation</a>.
+You can find more information on this field in this <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer Help Center</a> page.
 </div>
 
-- **App ID**: RudderStack supports all the sources for the AppsFlyer destination. If you are connecting a source other than **Android** or the **Apple** sources (iOS, watchOS, iPadOS, tvOS), then you need to add a user transformation that adds the OS information needed in the events.
+- **App ID**: Enter your Apple or Android app ID.
+
+  - **Android App ID**: This the application ID used in your `app/build.gradle` file.
+
+  - **Apple App ID**: This is the iTunes Application ID and it is mandatory for the iOS applications.
 
 <div class="infoBlock">
+
+If you are connecting a source other than <strong>Android</strong> or the <strong>Apple</strong> sources (iOS, watchOS, iPadOS, tvOS), then you need to add a user transformation that adds the OS information needed in the events.
 
 Refer to the <a href="#connecting-appsflyer-to-non-androidios-sources">Connecting AppsFlyer to non-Android/iOS sources</a> section below for more information.
 </div>
 
-- **Android App ID**: This the application ID used in your `app/build.gradle` file.
+- **Use native SDK to send events**: By default, this setting is enabled. To send events via the cloud mode or device mode, you can toggle this setting on or off.
 
-- **Apple App ID**: This is the iTunes Application ID and it is mandatory for the iOS applications.
-
-- **Use native SDK to send events**: By default, this setting will be enabled. To send events via the cloud mode or device mode, you can toggle this setting on or off.
-
-- Finally, click on **Next** to complete the configuration. AppsFlyer should now be added and enabled as a destination in RudderStack.
+- Finally, click on **Next** to complete the configuration. AppsFlyer will be added and enabled as a destination in RudderStack.
 
 ## Adding AppsFlyer to your project
 
-Depending on your platform of integration, follow these steps below to add AppsFlyer to your project:
+Depending on your platform of integration, follow the steps to add AppsFlyer to your project:
 
 <Tabs>
   <TabList>
@@ -247,11 +258,15 @@ Make sure to use the <code class="inline-code">await</code> keyword with the <co
 
 ## Connecting AppsFlyer to non-Android/iOS sources
 
-As mentioned above, the AppsFlyer destination supports all the RudderStack sources in addition to Android and iOS. However, you will need to add a transformation to the destination by following these steps:
+AppsFlyer supports all the RudderStack sources in addition to Android and iOS. However, you will need to add a transformation to the destination by following these steps:
 
 - Go to your [**RudderStack dashboard**](https://app.rudderstack.com/).
 
-- Add a new transformation by following the instructions listed in [**this guide**](https://rudderstack.com/docs/transformation/#adding-a-transformation). Use the following transformation function:
+- In the left navigation bar, select **Transformations** followed by **New transformation**. 
+
+- In the **Transformation Settings** window, assign a **Name** and **Description** for the transformation.
+
+- Then, add the following function:
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -263,9 +278,9 @@ export function transformEvent(event, metadata) {
 }
 ```
 
-- Save the transformation.
+- Click on **Save** to save the transformation.
 
-- Finally, configure your AppsFlyer destination and select this transformation in the **Choose an existing transformation** window, as shown:
+- Finally, configure your AppsFlyer destination and connect it to the transformation in the **Choose an existing transformation** window, as shown:
 
 <img src="../../assets/event-stream-destinations/appsflyer-2.png" alt="AppsFlyer transformation settings in RudderStack" />
 
@@ -277,142 +292,47 @@ export function transformEvent(event, metadata) {
 
 ## Sending events via the RudderStack cloud mode
 
-For all cloud mode calls, the `externalId` key must be present and must include the AppsFlyer ID, as well as the type of `appsFlyerExternalId`, as shown:
+<div class="warningBlock">
+
+We recommend sending events to AppsFlyer via the <a href="https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode">cloud mode</a> only in the following two scenarios:
+<ul>
+<li>To use RudderStack's <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> feature to transform your events</li> 
+<li>To send server-side events</li>
+</ul>
+</div>
+
+To send events to AppsFlyer, you need the AppsFlyer ID generated by the Appsflyer SDK that is integrated with your app.
+
+<div class="warningBlock">
+
+Refer to the <a href="#obtaining-the-appsflyer-id">Obtaining the AppsFlyer ID</a> section below for more information.
+</div>
+
+Once you obtain the AppsFlyer ID, you can send events to AppsFlyer via the cloud mode by including the `externalId` key within your events' `context`. The format of `externalId` is as shown:
 
 ```javascript
 "externalId": [
   {
-    "id": "some_other2345_sample_external_id",
+    "id": "AppsFlyer_ID",
     "type": "appsflyerExternalId"
   }
 ]
 ```
 
-<div class="infoBlock">
+The following table lists the `externalId` fields:
 
-  RudderStack expects the <code class="inline-code">externalId</code> to be present under the event's <code class="inline-code">context</code>.
-</div>
+| Field | Description|
+| :----| :------------|
+| `id` | Your AppsFlyer ID. |
+| `type`| The type of `externalId`. This must always be set to `appsFlyerExternalId`. |
 
-<div class="successBlock">
+### Obtaining the AppsFlyer ID
 
-For more information on how to get the AppsFlyer ID, refer to this <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#fetching-the-appsflyer-id">AppsFlyer documentation</a>.
-</div>
+As mentioned above, the AppsFlyer ID is generated by the Appsflyer SDK integrated with your app.
 
+- If the AppsFlyer SDK is directly loaded on your app, refer to this [**AppsFlyer documentation**](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#fetching-the-appsflyer-id) to obtain the AppsFlyer ID.
 
-## Identify
-
-The `identify` call sets `userId` through `AppsFlyerLib`'s `setCustomerUserId` method.
-
-<div class="infoBlock">
-
-  RudderStack supports the <code class="inline-code">identify</code> calls only in the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode">device mode</a>.
-</div>
-
-RudderStack sets `email` from event traits to AppsFlyer using the native SDK's `setUserEmails` method, as shown:
-
-```objectivec
-[[RSClient sharedInstance] identify:@"developer_user_id"
-                                 traits:@{@"email": @"bar@foo.com"}];
-```
-
-## Track
-
-RudderStack's `track` call is mapped to the standard AppsFlyer events wherever possible.
-
-The event mapping is shown in the following table:
-
-| **RudderStack Event**           | **AppsFlyer Event**         |
-| :-------------------------- | :---------------------- |
-| `Products Searched`         | `af_search`             |
-| `Product Viewed`            | `af_content_view`       |
-| `Product List Viewed`       | `af_list_view`          |
-| `Product Added to Wishlist` | `af_add_to_wishlist`    |
-| `Product Added`             | `af_add_to_cart`        |
-| `Checkout Started`          | `af_initiated_checkout` |
-| `Order Completed`           | `af_purchase`           |
-| `Product Removed`           | `remove_from_cart`      |
-
-For any event not present in the above table, RudderStack makes the following changes to the event name before sending it to AppsFlyer via the native SDK:
-
-- Converts the entire event name to lower case.
-- Replaces any space with an underscore.
-
-Along with the above event mapping, RudderStack also maps the event properties to the corresponding AppsFlyer event properties, as shown below:
-
-| RudderStack Property Name | AppsFlyer Property Name                                                                                                                                                                |
-| :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `query`                   | `af_search_string`                                                                                                                                                                     |
-| `price`                   | `af_price`                                                                                                                                                                             |
-| `product_id`              | `af_content_id`                                                                                                                                                                        |
-| `category`                | `af_content_type`                                                                                                                                                                      |
-| `currency`                | `af_currency`                                                                                                                                                                          |
-| `products`                | RudderStack formulates this list as per List View [**specification**](https://support.appsflyer.com/hc/en-us/articles/115005544169#event-structure) and passes it to the property `af_content_list`. |
-| `quantity`                | `af_quantity`                                                                                                                                                                          |
-| `order_id`                | `af_receipt_id`                                                                                                                                                                        |
-| `revenue`                 | `af_revenue`                                                                                                                                                                           |
-
-A sample `track` call for an iOS application is shown below:
-
-```objectivec
-[[RSClient sharedInstance] track:@"Accepted Terms of Service"
-                          properties:@{
-                                  @"foo": @"bar",
-                              @"foo_int": @134
-}];
-```
-
-## Screen
-
-For all the `screen` calls from the SDK, RudderStack calls the AppsFlyer `trackEvent` method with the event name as `screen`. All the event properties are passed to AppsFlyer as is.
-
-RudderStack performs the same task for the automatically recorded `screen` calls as well. For those calls, a Boolean property called `automatic` is obtained in the properties.
-
-## Mobile SDK ID for advertisers
-
-#### Advertising ID
-
-If the advertising ID is set according to the associated docs, RudderStack will utilize them appropriately for the AppsFlyer destination. They should be found in `context.device.advertisementId`:
-
-- For iOS: [**Advertisement ID documentation**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#advertisement-id)
-- For Android: [**Advertisement ID documentation**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#advertisement-id)
-
-#### ATTrackingManager
-
-If the `ATTrackingManager.trackingAuthorizationStatus` is passed according to [**this documentation**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#attrackingmanager-authorization-consent), RudderStack will utilize it for the AppsFlyer destination. It should be found in `context.device.attTrackingStatus`.
-
-## Error messages
-
-This section covers some of the possible error messages you may encounter while using this integration:
-
-### Invalid platform or required androidAppId or appleAppId missing.
-
-This error occurs when either the `OS Name` is not set or your respective App ID is not set. You can set the **App ID** in your settings \(see the [**Getting started**](https://rudderstack.com/docs/destinations/attribution/appsflyer/#getting-started) section above\). The `OS Name` should be set by the SDK automatically and it should be present at `context.os.name`.
-
-### Appsflyer ID is not set. Rejecting the event.
-
-This error occurs when the `appsflyerExternalId` is not set. Refer to the [**Sending events via the RudderStack cloud mode**](https://rudderstack.com/docs/destinations/attribution/appsflyer/#sending-events-via-the-rudderstack-cloud-mode) section above to see how to properly set the `appsflyerExternalId`.
-
-## Debugging
-
-RudderStack sets the `logLevel` in AppsFlyer based on the `logLevel` set for the `RudderClient`. If it is set for `DEBUG` or more, RudderStack sets the `logLevel` to `VERBOSE` for AppsFlyer. For anything below that, RudderStack sets the `logLevel` to `NONE` for AppsFlyer.
-
-## FAQs
-
-### Where do I get the AppsFlyer developer key?
-
-You can find the **AppsFlyer Dev Key** by logging into your AppsFlyer account and navigating to the **Apps Settings** page in your dashboard.
-
-### I get an error saying "Build input file cannot be found" for iOS device mode?
-
-The latest AppsFlyer SDK requires XCode 12. Make sure you meet this requirement. You may have to downgrade your AppsFlyer SDK to build with a lower version of XCode. You can declare the version with the `pod` in your `Podfile` as shown:
-
-```ruby
-pod 'Rudder-Appsflyer',' 1.0.0'
-```
-
-### How do I get the AppsFlyer ID to send events from my mobile sources via the RudderStack cloud mode?
-
-Depending on your platform of integration, include the following code snippet to get the `AppsFlyerId`:
+- If your AppsFlyer SDK is loaded through RudderStack (device mode integration), then you can obtain the AppsFlyer ID by including the code snippet depending on your platform of integration:
 
 <Tabs>
   <TabList>
@@ -451,10 +371,174 @@ const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId()
     </TabPanels>
 </Tabs>
 
+## Identify
+
+The `identify` call sets`userId` through the `setCustomerUserId` method of `AppsFlyerLib`.
+
 <div class="infoBlock">
 
-This works only if your source has a <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">device mode connection</a> with AppsFlyer i.e the AppsFlyer native SDK is loaded through RudderStack.
+  RudderStack supports the <code class="inline-code">identify</code> calls only in the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode">device mode</a>.
 </div>
+
+RudderStack sets `email` from the event traits to AppsFlyer using the native SDK's `setUserEmails` method, as shown:
+
+```objectivec
+[[RSClient sharedInstance] identify:@"developer_user_id"
+                                 traits:@{@"email": @"bar@foo.com"}];
+```
+
+## Track
+
+RudderStack's `track` call is mapped to the standard AppsFlyer events wherever possible. 
+
+The following table lists the event mapping from RudderStack to AppsFlyer:
+
+| **RudderStack event**           | **AppsFlyer event**         |
+| :-------------------------- | :---------------------- |
+| `Products Searched`         | `af_search`             |
+| `Product Viewed`            | `af_content_view`       |
+| `Product List Viewed`       | `af_list_view`          |
+| `Product Added to Wishlist` | `af_add_to_wishlist`    |
+| `Product Added`             | `af_add_to_cart`        |
+| `Checkout Started`          | `af_initiated_checkout` |
+| `Order Completed`           | `af_purchase`           |
+| `Product Removed`           | `remove_from_cart`      |
+
+For any event not present in the above table, RudderStack makes the following changes to the event name before sending it to AppsFlyer via the native SDK:
+
+- Converting the entire event name to lower case
+- Replacing any space with an underscore
+
+Along with the above event mapping, RudderStack also maps the event properties to the corresponding AppsFlyer event properties, as shown below:
+
+| RudderStack property name | AppsFlyer property name                                                                                                                                                                |
+| :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `query`                   | `af_search_string`                                                                                                                                                                     |
+| `price`                   | `af_price`                                                                                                                                                                             |
+| `product_id`              | `af_content_id`                                                                                                                                                                        |
+| `category`                | `af_content_type`                                                                                                                                                                      |
+| `currency`                | `af_currency`                                                                                                                                                                          |
+| `products`                | RudderStack formulates this list as per the [**List View specification**](https://support.appsflyer.com/hc/en-us/articles/115005544169#event-structure) and passes it to the property `af_content_list`. |
+| `quantity`                | `af_quantity`                                                                                                                                                                          |
+| `order_id`                | `af_receipt_id`                                                                                                                                                                        |
+| `revenue`                 | `af_revenue`                                                                                                                                                                           |
+
+A sample `track` call for an iOS app is shown below:
+
+```objectivec
+[[RSClient sharedInstance] track:@"Accepted Terms of Service"
+                          properties:@{
+                                  @"foo": @"bar",
+                              @"foo_int": @134
+}];
+```
+
+## Screen
+
+For all the `screen` calls sent from the SDK, RudderStack calls AppsFlyer's `trackEvent` method with `screen` as the event name. All the event properties are passed to AppsFlyer without any modification.
+
+For the automatically recorded `screen` calls, RudderStack obtains a Boolean property called `automatic`.
+
+## Advertising ID
+
+RudderStack will utilize the advertising ID for the AppsFlyer destination if it is set as per the following specifications:
+
+- For iOS: [**Advertisement ID documentation**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#advertisement-id)
+
+- For Android: [**Advertisement ID documentation**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#advertisement-id)
+
+You can find the advertising ID in your event's `context.device.advertisementId`.
+
+## ATTrackingManager
+
+If the `ATTrackingManager.trackingAuthorizationStatus` is passed according to [**ATTrackingManager authorization consent**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#attrackingmanager-authorization-consent), RudderStack will utilize it for the AppsFlyer destination. 
+
+You can find `trackingAuthorizationStatus` in your event's `context.device.attTrackingStatus`.
+
+## Error messages
+
+This section covers some of the possible error messages you may encounter while using this integration.
+
+### Invalid platform / required androidAppId / appleAppId missing
+
+This error occurs when either the `OS Name` or your respective App ID is not set. 
+
+You can set the **App ID** in your [**settings**](https://rudderstack.com/docs/destinations/attribution/appsflyer/#getting-started). 
+
+The SDK automatically sets the `OS Name` and it can be found in `context.os.name`.
+
+### Appsflyer ID is not set. Rejecting the event.
+
+This error occurs when the `appsflyerExternalId` is not set. Refer to the [**Sending events via the RudderStack cloud mode**](https://rudderstack.com/docs/destinations/attribution/appsflyer/#sending-events-via-the-rudderstack-cloud-mode) section for more information on setting the `appsflyerExternalId`.
+
+## Debugging
+
+RudderStack sets the `logLevel` in AppsFlyer based on the `logLevel` set for the `RudderClient`. If it is set to `DEBUG` or more, RudderStack sets the `logLevel` to `VERBOSE` for AppsFlyer. 
+
+For anything below that, RudderStack sets the `logLevel` to `NONE` for AppsFlyer.
+
+## FAQs
+
+### Where do I get the AppsFlyer dev key?
+
+You can find the **AppsFlyer Dev Key** by logging into your AppsFlyer account and navigating to the **Apps Settings** page in your dashboard. For more information, refer to this [**AppsFlyer Help Center**](https://support.appsflyer.com/hc/en-us/articles/211719806-App-settings-) page.
+
+### I get an error saying "Build input file cannot be found" for iOS device mode. What should I do?
+
+The latest AppsFlyer SDK requires XCode 12. Make sure you meet this requirement. You may have to downgrade your AppsFlyer SDK to build with a lower version of XCode. 
+
+You can declare the `pod` version in your `Podfile` as shown:
+
+```ruby
+pod 'Rudder-Appsflyer',' 1.0.0'
+```
+
+### How do I get the AppsFlyer ID to send events from my mobile sources via the RudderStack cloud mode?
+
+To send events to AppsFlyer via the cloud mode, you first need to obtain the AppsFlyer ID generated by the Appsflyer SDK.
+
+You can get this ID by either directly loading the native AppsFlyer SDK on your app, or loading it via RudderStack (device mode integration).
+
+In case of a device mode integration, include the following code snippet (depending on your platform of integration) in your app to get the AppsFlyer ID:
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+    <Tab>React Native</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+#import <AppsFlyerLib/AppsFlyerLib.h>
+NSString *appsflyerId = [AppsFlyerLib shared].getAppsFlyerUID;
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+import com.appsflyer.AppsFlyerLib;
+String appsFlyerId = AppsFlyerLib.getInstance().getAppsFlyerUID(this);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```javascript
+import AppsFlyerIntegrationFactory from "@rudderstack/rudder-integration-appsflyer-react-native/src/bridge"
+const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId()
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+Once you obtain the AppsFlyer ID, you can send events via the cloud mode by by including the `externalId` key within your events' `context`. For more information, refer to the [**Sending events via the RudderStack cloud mode**](#sending-events-via-the-rudderstack-cloud-mode) section above.
 
 ## Contact us
 
