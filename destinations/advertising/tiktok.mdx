@@ -1,0 +1,71 @@
+---
+# slug: "/docs/destinations/advertising/tiktok-ads"
+title: "TikTok Ads"
+description: Step-by-step guide to send your event data from RudderStack to TikTok Ads.
+---
+
+# TikTok Ads
+
+TikTok Ads is TikTok's online advertising platform. It allows marketers to run their product ads to target custom audiences, optimize their campaigns, attribution, etc.
+
+RudderStack supports TikTok Ads as a destination where you can send your event data seamlessly.
+
+<div class="successBlock">
+
+  <strong>Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/tiktok_ads">GitHub repo</a></strong>.
+</div>
+
+## Getting started
+
+Before configuring TikTok Ads as a destination in RudderStack, verify if the source platform is supported by TikTok Ads by referring to the table below:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     |  -            | -             | -             |
+| **Cloud mode**      | **Supported** | -             | -             |
+
+<div class="infoBlock">
+
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to TikTok Ads, follow these steps:
+
+- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **TikTok Ads**.
+
+<div class="infoBlock">
+
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+</div>
+
+<img src="../../assets/event-stream-destinations/titokads-connection-settings.png" alt="TikTok ads connection settings"/>
+
+## Connection settings
+
+To successfully configure TikTok Ads as a destination, you will need to configure the following settings:
+
+- **Access Token**: You need to generate the Access Token (also known as long-term access token) by following the steps mentioned in <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890912382977">Authorization</a> and <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Authentication</a> docs.
+
+- **Pixel Code**: You can find the Pixel Code by referring to <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890912382977">Where to Find pixel_code</a> doc.
+
+
+### Track
+
+The `track` call allows you to capture user actions along with the properties associated with these actions. Each action is considered to be an event.
+
+A sample `track` call is shown below:
+
+```javascript
+To be added later
+```
+
+## FAQ
+
+### I see a 40002 response code like the following instead of 200, what can I do?
+### {"code":40002,"message":"No permission to operate pixel code: D1VF1C8AIKHA8PLC3GAM","request_id":"3021042921460500023604014862AFFF38"}
+
+This error code is related to the authentication of your TikTok account. For more information, refer <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890979375106">TikTok doc</a>.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
