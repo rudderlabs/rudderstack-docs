@@ -109,58 +109,73 @@ CREATE USER "RUDDER_USER"
 GRANT ROLE "RUDDER" TO USER "RUDDER_USER";
 ```
 
-## Configuring Snowflake in RudderStack
+## Configuring Snowflake destination in RudderStack
 
-In order to enable dumping data to Snowflake, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Snowflake.
+To start sending data to Snowflake, you will first need to add it as a destination in RudderStack and connect it to a data source. Once the destination is enabled, the events will automatically start flowing to your Snowflake instance.
 
-To do so, please follow these steps:
+Follow these steps to configure your Azure data lake as a destination in RudderStack:
 
-- Choose a source to which you would like to add Snowflake as a destination. You can also simply create a destination and connect it to a source later.
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), configure the data source. Then, select **Snowflake** from the list of destinations.
 
 <div class="infoBlock">
 
-Please follow our <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination</a> guide to know how to add a source in RudderStack.
-
+Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack//">Adding a Source and Destination in RudderStack</a> guide for more information.
 </div>
 
-- After choosing a source, select **Snowflake** from the list of destinations.
-- Give your destination a name and then click on **Next**. You should then see the following screen:
-<img src="../assets/4 (3) (2) (2) (1) (2).png" /><span class="imageTitle">Connection Settings for configuring Snowflake as a Destination</span>
+* Assign a name to your destination and click on **Next**. You should then see the following screen:
 
-<img src="../assets/5 (2).png" /><span class="imageTitle">Connection Settings for configuring Snowflake as a Destination</span>
+<img src="../assets/dw-integrations/snowflake-connection-settings.png" alt="Snowflake destination settings in RudderStack" />
+<img src="../assets/dw-integrations/snowflake-connection-settings-1.png" alt="Snowflake destination settings in RudderStack" />
 
-- Add the required credentials in the **Connection Settings** as described below:
+### Connection settings
 
-  - **Account** - This is the account ID of your warehouse. Account ID is part of the Snowflake URL. The following examples illustrate the slight differences in the account ID for various cloud providers**.**
+Add the following credentials to set up the Snowflake destination:
 
-  | Account ID sample           | Snowflake URL                                                    | Snowflake cloud provider                                        |
+  - **Account**: Enter the account ID of your Snowflake warehouse. This account ID is part of the Snowflake URL. 
+  
+  The following examples illustrate the slight differences in the account ID for various cloud providers:
+
+  | Account ID example            | Corresponding Snowflake URL                                                    | Snowflake cloud provider                                        |
   | :-------------------------- | :--------------------------------------------------------------- | :-------------------------------------------------------------- |
-  | **qya56091.us-east-1**      | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`      | Amazon Web Services \(AWS\)                                     |
-  | **rx18795.east-us-2.azure** | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure \(Azure[\)](https://azure.microsoft.com/en-us/) |
-  | **ah76025.us-central1.gcp** | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform \(GCP\) _\*\*_                            |
+  | `qya56091.us-east-1`         | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`      | AWS                                   |
+  | `rx18795.east-us-2.azure` | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure  |
+  | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
 
-  - **Database** - The name of the database, as created in the [Creating a Database](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-database) section
-  - **Warehouse** - The name of the warehouse, as created in the [Creating a Virtual Warehouse](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-virtual-warehouse) section
-  - **User** - This is the username, as created in [Creating a User](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-user) section.
-  - **Password** - This is the password, as created in [Creating a User](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-user) section.
+  - **Database**: Enter the name of the database created in the [**Creating a database**](#creating-a-database) section above.
 
-- The following settings are applicable if you are using an Amazon S3 bucket for object storage:
-  - **S3 bucket name** - This is your unique S3 bucket name.
-  - **AWS Access Key ID** - This can be obtained from the AWS Console.
-  - **AWS Secret Access Key** - This can be obtained from AWS Console. Please refer to the [Setting Up Amazon S3](https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#setting-up-amazon-s3) section for more details.
-- Please grant the following permissions to the IAM user:
+  - **Warehouse**: Enter the name of the warehouse created in the [**Creating a virtual warehouse**](#creating-a-virtual-warehouse) section above.
 
-```javascript
-"Effect": "Allow",
-"Action": [
-  "s3:GetObject",
-  "s3:PutObject",
-  "s3:PutObjectAcl",
-  "s3:ListBucket"
-]
-```
+  - **User**: Enter the name of the user created in the [**Creating a user**](#creating-a-user) section above.
 
-## Configuring Snowflake Integration
+  - **Password**: Enter the password you set for the above user.
+
+  - **Namespace**: Enter the schema name for the warehouse where RudderStack will create all the tables.
+
+  <div class="infoBlock">
+
+  If you don't specify any namespace, RudderStack will set this to the source name by default.
+  </div>
+
+  - **Sync Frequency**:  Specify how often RudderStack should sync the data to your Snowflake warehouse.
+
+  - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+
+  - **Exclude Window**: This optional setting lets you set a time window when RudderStack **will not** sync the data to the warehouse.
+
+  ### Configuring the object storage
+
+  RudderStack lets you configure the following object storage configuration settings while setting up your Snowflake destination:
+
+  - **Use RudderStack-managed Object Storage**: Enable this setting to use RudderStack-managed buckets for object storage.
+
+   <div class="warningBlock">
+
+  This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
+  </div>
+
+  - **Choose your Cloud**: Select the cloud provider for your Snowflake instance.
+
+Refer to the following settings depending on your cloud provider:
 
 <Tabs>
   <TabList>
@@ -170,10 +185,46 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
   </TabList>
   <TabPanels>
     <TabPanel>
+    <ul>
+      <li><strong>Staging S3 Storage Bucket Name</strong>: Specify the name of your S3 bucket where RudderStack will store the data before loading it into Snowflake.</li>
+      <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>AWS Access Key ID</strong>: Enter your AWS access key ID obtained from the AWS console.</li>
+      <li><strong>AWS Secret Access Key</strong>:  Enter the AWS secret access key.  Refer to this <a href="https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#setting-up-amazon-s3">Permissions</a> section for more information. </li>
+      <li><strong>Enable Server-side Encryption for S3</strong>: Toggle on this setting to enable server-side encryption for your S3 bucket.</li>
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li><strong>Staging Azure Blob Storage Container Name</strong>: Specify the name of your Azure container where RudderStack will store the data before loading it into Snowflake.</li>
+      <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Azure Blob Storage Account Name</strong>: Enter the account name for the Azure container.</li>
+      <li><strong>Azure Blob Storage Account Key</strong>:  Enter the account key for your Azure container.  Refer to the <a href="https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage">Blob Storage setup</a> section for more information. </li>
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li><strong>Staging GCS Object Storage Bucket Name</strong>: Specify the name of your GCS bucket where RudderStack will store the data before loading it into Snowflake.</li>
+      <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Credentials</strong>: Paste the contents of your GCP service account credentials JSON. The service account should have a role with <code class="inline-code">storage.objectCreator</code> access. </li>
+    </ul>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
-        If you have Amazon Web Services (AWS) as your cloud provider and want to leverage S3 as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration.
+## Configuring cloud storage with Snowflake
 
-Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration">here</a>
+<Tabs>
+  <TabList>
+    <Tab>AWS</Tab>
+    <Tab>Azure</Tab>
+    <Tab>GCP</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+        If you have Amazon Web Services (AWS) as your cloud provider and want to leverage S3 as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration. Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration">here</a>.
 
 **Configuring snowflake integration with AWS **
 
