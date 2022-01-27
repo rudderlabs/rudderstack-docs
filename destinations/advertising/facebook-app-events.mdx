@@ -46,7 +46,11 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 - Assign a name to the destination and click on **Next**. You should then see the following screen:
 
-<img src="../../assets/image (118).png" /><span class="imageTitle">Connection Settings for Facebook App Events</span>
+<img src="../../assets/image (118).png" />
+
+### Connection settings
+
+The connection settings required to configure App Events as a destination in RudderStack are listed below:
 
 - Enter the **Facebook App ID**.
 
@@ -363,7 +367,12 @@ val rudderClient = RudderClient.getInstance(
 
 ## Identify
 
-The `identify` call from RudderStack sets the `userId` through the `setUserID` method from `AppEventsLogger` .
+<div class="warningBlock">
+  
+  For App Events, RudderStack supports the <code class="inline-code">identify</code> calls only in the mobile device mode.
+</div>
+
+The `identify` call from RudderStack sets the `userId` through the `setUserID` method from `AppEventsLogger`.
 
 RudderStack sets the following properties \(if available\) using the `setUserData` method.
 
@@ -378,7 +387,7 @@ RudderStack sets the following properties \(if available\) using the `setUserDat
 - `zip`
 - `country`
 
-A sample `identify` call for an iOS application looks like the following:
+A sample `identify` call for an iOS application is shown below:
 
 ```objectivec
 [[RSClient sharedInstance] identify:@"developer_user_id"
