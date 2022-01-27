@@ -22,7 +22,7 @@ Contact our <a href="mailto:%20support@rudderstack.com">Customer Success</a> tea
 
 RudderStack respects the users' data privacy choices. 
 
-You can leverage RudderStack's data regulation feature to suppress any incoming data for a given user. RudderStack will drop the events for that user at the source; RudderStack will not show these events in any debuggers and not forward them to any destinations. 
+You can leverage RudderStack's data regulation feature to suppress any incoming data for a given user. RudderStack will drop the events for that user at the source - these events will not be shown in any debugger or forwarded to any destinations. 
 
 You can also use this feature to direct RudderStack to suppress any incoming events for a user and delete any collected data for a given destination.
 
@@ -48,6 +48,8 @@ The Personal Access Token should be used as the bearer token for authentication.
 
 This request lets you add a new data regulation to suppress/suppress and delete a given user's data.
 
+### Adding a suppression regulation
+
 * **Request type**: **POST**
 
 * **Request format**: 
@@ -60,9 +62,8 @@ https://api.rudderstack.com/v2/regulations
 
 ```json
 {
-  "regulationType": "suppress/suppress_with_delete",
-  "destinationIds": [],
-  "sourceIds": [],
+  "regulationType": "suppress",
+  "sourceIds": [<source_IDs>],
   "users": [{
     "userId": "<user_ID>",
     "phone": "<phone_number>",
@@ -70,6 +71,31 @@ https://api.rudderstack.com/v2/regulations
   }]
 }
 ```
+
+### Adding a suppression with delete regulation
+
+* **Request type**: **POST**
+
+* **Request format**: 
+
+```bash
+https://api.rudderstack.com/v2/regulations
+```
+
+* **Request body**:
+
+```json
+{
+  "regulationType": "suppress_with_delete",
+  "destinationIds": [<dest_IDs>],
+  "users": [{
+    "userId": "<user_ID>",
+    "phone": "<phone_number>",
+    "email": "<user_email>"
+  }]
+}
+```
+
 ### `regulationType`
 
 This field lets you define the data regulation type. It supports the following values:
@@ -161,7 +187,7 @@ curl --location --request POST 'https://api.rudderstack.com/v2/regulations' \
 Created
 ```
 
-### List all data regulations
+## List all data regulations
 
 This request lists all your data regulations.
 
