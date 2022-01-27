@@ -6,40 +6,38 @@ description: Step-by-step guide to add Snowflake as a destination in RudderStack
 
 # Snowflake
 
-Snowflake is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
+Snowflake is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the modern data warehouse features like scalability, ease of use, secure access to your data, advanced analytics capabilities, and more.
 
-RudderStack allows you to configure Snowflake as a destination to dump your event data seamlessly.
+RudderStack lets you configure Snowflake as a destination to seamlessly store your event data.
 
 <div class="infoBlock">
 
-Please check our <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide to know how events are mapped to the tables in Snowflake.
-
+Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for information on how the events are mapped to the Snowflake tables.
 </div>
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snowflake">GitHub repo</a>.**
+<strong>Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snowflake">RudderStack GitHub</a> repo.</strong>
 </div>
 
-## Snowflake User Setup
+## Setting up a user in Snowflake
 
-To enable RudderStack access, please make sure you have an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS`.
+To enable RudderStack access, make sure you have an `ACCOUNTADMIN`, or an account that has the `MANAGE GRANTS` privilege.
 
-The following sections illustrate how to create a virtual warehouse, a database, a role, and an user in Snowflake:
+The following sections illustrate how to set up a virtual warehouse, a database, a role, and an user in Snowflake:
 
-### Creating a Virtual Warehouse
+### Creating a virtual warehouse
 
-Create a `X-Small warehouse`by following the wizard on Snowflake's website as shown in the screenshot below:
+In your Snowflake console, create a `X-Small` warehouse:
 
-<img src="../assets/screenshot-2020-03-31-at-11.56.32-am.png" /><span class="imageTitle">creating x-small warehouse screenshot</span>
+<img src="../assets/dw-integrations/snowflake-create-warehouse.png" />
 
 <div class="infoBlock">
 
-You can set your data warehouse size as per your future data volume.
-
+Set your data warehouse size as per your data volume requirements.
 </div>
 
-Alternatively, you can also use SQL to create a warehouse, as shown:
+Alternatively, you can create a new warehouse by running the following SQL commands:
 
 ```sql
 CREATE WAREHOUSE "RUDDER_WAREHOUSE"
@@ -51,45 +49,43 @@ CREATE WAREHOUSE "RUDDER_WAREHOUSE"
 
 <div class="infoBlock">
 
-It is recommended that you set <code class="inline-code">AUTO_SUSPEND</code> to ~10 mins, and enable <code class="inline-code">AUTO_RESUME</code> to avoid any extra costs.
-
+We recommend that you set <code class="inline-code">AUTO_SUSPEND</code> to ~10 mins and enable <code class="inline-code">AUTO_RESUME</code> to avoid any extra costs.
 </div>
 
-### Creating a Database
+### Creating a database
 
 <div class="warningBlock">
 
-Please create a new database to avoid conflicts with your existing data, as RudderStack creates its own tables.
-
+Create a new database to avoid conflicts with your existing data, as RudderStack creates its own tables while storing your events.
 </div>
 
-The following screenshot demonstrates the **Create Database** option in Snowflake.
+The following image demonstrates the **Create Database** option in Snowflake.
 
-<img src="../assets/screenshot-2020-02-27-at-5.33.31-pm.png" /><span class="imageTitle">Creating a database in Snowflake</span>
+<img src="../assets/dw-integrations/snowflake-create-database.png" />
 
-Alternatively, you can also use SQL to create a database, as shown:
+Alternatively, you can create a new database by running the following SQL command:
 
 ```sql
 CREATE DATABASE "RUDDER_EVENTS";
 ```
 
-### Creating a Role for RudderStack
+### Creating a role for RudderStack
 
-Please execute the following SQL commands to create a new role with the required permissions to load your data into the warehouse:
+Run the following SQL commands to create a new role with the required permissions to load your data into the newly-created warehouse:
 
-- Create a new role
+1. Create a new role called `RUDDER`:
 
 ```sql
 CREATE ROLE "RUDDER";
 ```
 
-- Grant access to the virtual warehouse
+2. Grant access to the warehouse `RUDDER_WAREHOUSE`:
 
 ```sql
 GRANT USAGE ON WAREHOUSE "RUDDER_WAREHOUSE" TO ROLE "RUDDER";
 ```
 
-- Grant access to the database
+3. Grant access to the database `RUDDER_EVENTS`:
 
 ```sql
 GRANT USAGE ON DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
@@ -97,11 +93,11 @@ GRANT CREATE SCHEMA ON DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
 GRANT ALL ON ALL SCHEMAS IN DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
 ```
 
-### Creating a User
+### Creating a user
 
-Finally, please create a user to connect RudderStack to the previously created Snowflake warehouse, as shown:
+Finally, create a user to connect RudderStack to the newly-created Snowflake warehouse, as shown:
 
-<img src="../assets/screenshot-2020-02-27-at-5.34.41-pm.png" /><span class="imageTitle">Creating a user in Snowflake</span>
+<img src="../assets/dw-integrations/snowflake-create-user.png" alt="New Snowflake user" />
 
 Alternatively, you can use SQL to create a user in Snowflake, as shown:
 
@@ -109,7 +105,7 @@ Alternatively, you can use SQL to create a user in Snowflake, as shown:
 CREATE USER "RUDDER_USER"
   MUST_CHANGE_PASSWORD = FALSE
   DEFAULT_ROLE = "RUDDER"
-  PASSWORD = "strong_unique_password";
+  PASSWORD = "<your_password>";
 GRANT ROLE "RUDDER" TO USER "RUDDER_USER";
 ```
 
