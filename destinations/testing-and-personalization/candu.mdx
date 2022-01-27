@@ -88,7 +88,7 @@ rudderanalytics.track('Promotion Clicked', {
 
 <div class="warningBlock">
 
-While working with Candu platform, the `identify` call should always be made before the `track` call. The reason being if a `track` call is made first for an anonymous user, then a user is created with anonymousId. Further, when an `identify` call is made for the same user where the user has userId and traits, a separate user is created in Candu. Hence, two identities are created for the same user.
+While working with Candu platform it is recommended to make an `identify` call before making a `track` call to ensure no duplicate identities are created in the Candu platform.
 
 </div>
 
