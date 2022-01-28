@@ -91,16 +91,31 @@ RudderStack also sends the `createdAt` field as `created_at` to Customer.io to r
 A sample `identify` call is as shown:
 
 ```javascript
-// a sample identify
-rudderanalytics.identify("my-userID", {
-        name: "Tintin",
-        city: "Brussels",
-        country: "Belgium",
-        email: "tintin@herge.com"
+rudderanalytics.identify("userId", {
+  name: "Tintin",
+  city: "Brussels",
+  country: "Belgium",
+  email: "tintin@herge.com"
 });
 ```
 
 As `createdAt` is not present in the above call, RudderStack will append the current timestamp value and send the field to Customer.io.
+
+### Unsubscribing users
+
+You can pass `unsubscribed: true` in the `identify` call to unsubscribe a user in Customer.io, as shown in the following snippet:
+
+```javascript
+rudderanalytics.identify("userId", {
+  email: "tintin@herge.com",
+  unsubscribed: true
+});
+```
+
+<div class="infoBlock">
+ 
+ Make sure the user ID and the email values match the Customer.io attributes. You can verify this by selecting that user in the <a href="https://customer.io/docs/getting-started-people/">People</a> page in your Customer.io dashboard and clicking on <strong>Attributes</strong>.
+</div>
 
 ## Page
 
