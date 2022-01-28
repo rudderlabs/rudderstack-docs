@@ -1,7 +1,7 @@
 ---
 #slug: "/docs/data-governance"
 title: "Data Governance"
-description: Description of RudderStack's data governance feature.
+description: Detailed technical description of RudderStack’s data governance feature to access your events and fix any inconsistencies programmatically.
 ---
 
 # Data Governance
@@ -13,22 +13,16 @@ To effectively analyze customer behavior or drive high-value marketing campaigns
 In reality, however, as multiple stakeholders define and implement the event specifications differently, there are always some inconsistencies introduced in the event data. Some of the reasons for these inconsistencies include:
 
 - **Missing fields**
-- **Capitalization / Casing errors** : For example, one event sets the product name to lower case, while another sets it to upper case.
-- **Unit errors** : For example, one event tracks the revenue in 100 dollar units, while another tracks it in dollars.
+- **Capitalization/Casing errors** - e.g., one event sets the product name in the lower case, while another sets it in the upper case.
+- **Unit errors** - e.g., one event tracks the revenue in pounds, while another tracks it in dollars.
 
-## **Data Governance with RudderStack**
+## RudderStack Data Governance API
 
 RudderStack's [**Data Governance API**](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/) gives you the ability to access all your events and their metadata programmatically. This includes vital information related to the event schema, event payload versions, data types, and more.
 
-<div class="infoBlock">
-
-**Refer to the <a href="https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/">RudderStack Data Governance API</a> reference for the detailed technical documentation.**
-
-</div>
-
 By leveraging the Data Governance API, the data engineering team can narrow down the specific nature and source of any event data inconsistencies. With these insights, they update the instrumentation or leverage [**RudderStack Transformations**](https://rudderstack.com/docs/transformations) to clean the incoming events.
 
-Here's a video that explains the features of the Data Governance API in detail:
+The following video gives you a quick overview of the Data Governance API:
 
 <!--https://www.youtube.com/watch?v=fs3Nkzm-NqY&t=18s&ab_channel=RudderStack-->
 
@@ -37,31 +31,30 @@ Here's a video that explains the features of the Data Governance API in detail:
   opts={{playerVars: {start: 18, rel: 0}}}
 />
 
-## How to Use the Data Governance API
+## Using the Data Governance API
 
-At a high level, you can take the following steps to investigate and troubleshoot any event data inconsistencies:
+You can use the Data Governance API to investigate and troubleshoot any event data inconsistencies by following the steps listed below:
 
-1. Get all the event models into RudderStack using [`schemas/event-models`](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/#schemas-event-models).
-2. Identify the source of the event models.
+1. Get all the event models into RudderStack using [**`schemas/event-models`**](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/#schemas-event-models).
+
+2. Identify the event models' source.
+
 3. Count the event models to determine the number for each event type.
-4. Identify the differences in the schema versions for a single event model using [`schemas/event-versions`](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/#schemas-event-versions).
+
+4. Identify the differences in the schema versions for a single event model using [**`schemas/event-versions`**](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/#schemas-event-versions).
 
 <div class="successBlock">
 
-  The RudderStack Data Governance API also lets you gather other useful
-  diagnostics related to both the events as well as the versions of individual
-  event schemas. You can leverage this information to find and fix issues in
-  your events.
+  The Data Governance API also lets you gather other useful diagnostics related to both the events as well as the individual event schema versions. You can use this information to find and fix issues in your events.
 </div>
 
-Once you have identified the inconsistencies, you can implement specific processes and set alerts for your data governance workflows. For instance, you can create alerts for notifying any missing keys in your events, or use RudderStack transformations to validate your event schemas and transform the faulty incoming event payloads.
+Once you have identified the inconsistencies, you can implement specific processes and set alerts for your data governance workflows. For example, you can create alerts for notifying any missing keys in your events, or use RudderStack's [**Transformations**](https://www.rudderstack.com/docs/transformations/) feature to validate your event schemas and transform the faulty incoming event payloads.
 
 <div class="infoBlock">
 
-A detailed, step-by-step explanation of using the RudderStack Data Governance API can be found in our <a href="https://rudderstack.com/blog/rudderstacks-data-governance-api">technical blog</a>.
-
+Refer to this <a href="https://rudderstack.com/blog/rudderstacks-data-governance-api">RudderStack Blog</a> for step-by-step explanation and usage of the Data Governance API.
 </div>
 
-## Contact Us
+## Contact us
 
-For more information on the RudderStack Data Governance API, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community, and we will be happy to help you.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
