@@ -214,7 +214,9 @@ Refer to the following settings depending on your cloud provider:
   </TabPanels>
 </Tabs>
 
-## Configuring cloud storage with Snowflake
+## Configuring cloud storage integration with Snowflake
+
+This section lists the steps required to configure the **Storage Integration** setting specified in the [**Configuring the object storage**](#configuring-the-object-storage) section above, depending on your cloud provider.
 
 <Tabs>
   <TabList>
@@ -224,9 +226,7 @@ Refer to the following settings depending on your cloud provider:
   </TabList>
   <TabPanels>
     <TabPanel>
-        If you have Amazon Web Services (AWS) as your cloud provider and want to leverage S3 as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration. Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration">here</a>.
-
-**Configuring snowflake integration with AWS **
+        If you have Amazon Web Services (AWS) as your cloud provider and want to leverage S3 as your object storage, you will need to follow a few more steps to configure your Snowflake warehouse destination. Detailed instructions can be found in this <a href="https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration">Snowflake documentation</a>.
 
 <ol>
 <li>Create a policy in AWS:</li>
@@ -547,15 +547,26 @@ GRANT USAGE ON INTEGRATION <integration_name> TO ROLE "RUDDER";
   </TabPanels>
 </Tabs>
 
-## Setting Up the Network Access
+## Setting up network access
 
-You will need to whitelist the RudderStack IPs to enable network access to it.
+You will need to whitelist the following RudderStack IPs to enable network access:
+
+- 3.216.35.97
+- 34.198.90.241
+- 54.147.40.62
+- 23.20.96.9
+- 18.214.35.254
+
+The EU cluster IPs are listed below:
+
+- 3.66.99.198
+- 3.64.201.167
 
 <div class="infoBlock">
 
-**The IPs to be whitelisted are : <code class="inline-code">3.216.35.97</code>, <code class="inline-code">34.198.90.241</code> , <code class="inline-code">54.147.40.62</code> , <code class="inline-code">23.20.96.9</code>, and <code class="inline-code">18.214.35.254</code>.**
+All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Snowflake with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
