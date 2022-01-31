@@ -46,7 +46,7 @@ To successfully configure TikTok Ads as a destination, you will need to configur
 
 - **Access Token**: You need to generate the Access Token (also known as long-term access token) by following the steps mentioned in <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890912382977">Authorization</a> and <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Authentication</a> in TikTok documentation.
 
-- **Pixel Code**: You can find the Pixel Code by referring to <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890912382977">TikTok documentation</a>.
+- **Pixel Code**: You can find the Pixel Code by referring to <a href="https://ads.tiktok.com/gateway/docs/index?identify_key=2b9b4278e47b275f36e7c39a4af4ba067d088e031d5f5fe45d381559ac89ba48&language=ENGLISH&doc_id=1701890979375106#item-link-Where%20to%20Find%20pixel_code">TikTok documentation</a>.
 
 - **Hash Contextual User Properties (SHA-256)**: If this setting is enabled, RudderStack will hash the contextual user properties like external_id, email, phone_number from raw format to sha256.
 
@@ -77,17 +77,16 @@ rudderanalytics.track(
 ```
 <div class="infoBlock">
 
-The events are automatically grouped in a batch of 50 events per request using the `batch` call. However, if the event payload contains **test_event_code** property, batching won't be applied. For more information about the `batch` call, please refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/http-api/#11-batch">RudderStack API Specification</a>documentation.
+The events are automatically grouped in a batch of 50 events per request using the `batch` call. However, if the payload contains **test_event_code** property, batching won't be applied. For more information on the `batch` call, please refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/http-api/#11-batch">RudderStack API Specification</a> documentation.
 
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 ## FAQ
 
 ### I see a 40002 response code like the following instead of 200, what can I do?
-### {"code":40002,"message":"No permission to operate pixel code: D1VF1C8AIKHA8PLC3GAM","request_id":"3021042921460500023604014862AFFF38"}
+<pre> {"code":40002,"message":"No permission to operate pixel code: D1VF1C8AIKHA8PLC3GAM","request_id":"3021042921460500023604014862AFFF38"}</pre>
 
-This error code is related to the authentication of your TikTok account. For more information, refer <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890979375106">TikTok documentation</a>.
+This error code is related to the authentication of your TikTok account. For more information, refer <a href="https://ads.tiktok.com/gateway/docs/index?identify_key=2b9b4278e47b275f36e7c39a4af4ba067d088e031d5f5fe45d381559ac89ba48&language=ENGLISH&doc_id=1701890979375106#item-link-FAQ">TikTok documentation</a>.
 
 ## Contact us
 
