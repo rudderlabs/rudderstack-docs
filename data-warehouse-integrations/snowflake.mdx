@@ -255,10 +255,10 @@ If you have Amazon Web Services (AWS) as your cloud provider and want to use S3 
 
 2. **Create a role and attach the above policy in AWS**: Follow the steps listed below:
 
-  a. Create a role of type **Another AWS account**.
-  b. Enter your AWS account ID and enable the **Require External ID** option.
-  c. For external ID, you can add a dummy value like 0000. This can be modified later.
-  d. Attach the policy created in Step 1. Assign a name to this role and keep the role ARN handy for the next step.
+    1. Create a role of type **Another AWS account**.
+    2. Enter your AWS account ID and enable the **Require External ID** option.
+    3. For external ID, you can add a dummy value like 0000. This can be modified later.
+    4. Attach the policy created in Step 1. Assign a name to this role and keep the role ARN handy for the next step.
 
 <div class="infoBlock">
 
@@ -393,12 +393,13 @@ The output of this command will have a property named as <code class="inline-cod
 
 3. **Grant service account permissions to access the bucket objects**: Create a custom IAM role with the required permissions to access the bucket and fetch the objects by following these steps:
 
-   a. Log into the GCP console as a Project Editor.
-   b. From the dashboard, go to **IAM & Admin** > **Roles**.
-   c. Click on **CREATE ROLE**.
-   d. Enter the title and description for the custom role.
-   e. Click on **ADD PERMISSIONS**.
-   f. Filter the following permissions in the **Enter property name or value** and add them to the list:
+    1. Log into the GCP console as a Project Editor.
+    2. From the dashboard, go to **IAM & Admin** > **Roles**.
+    3. Click on **CREATE ROLE**.
+    4. Enter the title and description for the custom role.
+    5. Click on **ADD PERMISSIONS**.
+    6. Filter the following permissions in the **Enter property name or value** and add them to the list:
+
 
    | Permission name |
    | :-----------------|
@@ -407,16 +408,16 @@ The output of this command will have a property named as <code class="inline-cod
    | `storage.objects.list` |
    | `storage.objects.create` |
 
-   g. Click on **ADD**.
+    7. Click on **ADD**.
 
 4. **Assign the custom role to the Cloud Storage service account**:
 
-  a. In your GCP console dashboard, go to **Cloud Storage** > **Browser**.
-  b. Select the bucket to configure the access.
-  c. Select **SHOW INFO PANEL** in the upper right corner. The information panel for the bucket will pop out.
-  d. In the **Add Members** section, get the service account name from the `DESC` command run in Step 2. 
-  e. From the **Select a role** dropdown, select **Storage** > **Custom** > `<role>`, where `<role>` is the custom Cloud Storage role.
-  f. Click on the **ADD** button. The service account name will be added to the **Storage Object Viewer** role dropdown in the information panel.
+   1. In your GCP console dashboard, go to **Cloud Storage** > **Browser**.
+   2. Select the bucket to configure the access.
+   3. Select **SHOW INFO PANEL** in the upper right corner. The information panel for the bucket will pop out.
+   4. In the **Add Members** section, get the service account name from the `DESC` command run in Step 2. 
+   5. From the **Select a role** dropdown, select **Storage** > **Custom** > `<role>`, where `<role>` is the custom Cloud Storage role.
+   6. Click on the **ADD** button. The service account name will be added to the **Storage Object Viewer** role dropdown in the information panel.
 
 5. Grant integration access to the Snowflake role you created in the [**Creating a role for RudderStack**](#creating-a-role-for-rudderStack) section by running the following command:
 
