@@ -43,7 +43,7 @@ To configure BigQuery Stream as a destination in RudderStack, you will need to a
 
 - **Project ID**: Enter your BigQuery project ID here.
 
-- **Dataset ID**: This is the ID of the project dataset for which you specified the  **Project ID** above.
+- **Dataset ID**: This is the ID of the project dataset for which you specified the **Project ID** above.
 
 - **Table ID**: Provide the ID of the table into which you want to stream the event data.
 
@@ -98,7 +98,7 @@ You can send only `track` events to BigQuery Stream via RudderStack. Also, Rudde
 
 <div class="infoBlock">
 
-  RudderStack currently does not support the <code class="inline-code">templateSupportSuffix</code> feature which creates a table schema during a streaming insert action.
+RudderStack currently does not support the <code class="inline-code">templateSupportSuffix</code> feature which creates a table schema during a streaming insert action.
 </div>
 
 Suppose you want to stream the events from your web source to BigQuery and the table schema in your BigQuery dataset is as shown:
@@ -137,7 +137,7 @@ To a create a service account from your [Google Cloud Console](https://console.c
 
 5. Click on **DONE** to finish the setup.
 
-6. Next, you need the service account JSON required for RudderStack to send the data to BigQuery. To obtain this JSON, go to your service account.
+6. Next, you need the service account credentials JSON required for RudderStack to send the data to BigQuery. To obtain this JSON, go to your service account.
 
 <img src="../../assets/event-stream-destinations/bqstream-service-account-2.png" alt="Service account" />
 
