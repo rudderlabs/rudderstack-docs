@@ -44,10 +44,11 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 To successfully configure TikTok Ads as a destination, you will need to configure the following settings:
 
-- **Access Token**: You need to generate the Access Token (also known as long-term access token) by following the steps mentioned in <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890912382977">Authorization</a> and <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Authentication</a> docs.
+- **Access Token**: You need to generate the Access Token (also known as long-term access token) by following the steps mentioned in <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890912382977">Authorization</a> and <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Authentication</a> in TikTok documentation.
 
-- **Pixel Code**: You can find the Pixel Code by referring to <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890912382977">Where to Find pixel_code</a> doc.
+- **Pixel Code**: You can find the Pixel Code by referring to <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890912382977">TikTok documentation</a>.
 
+- **Hash Contextual User Properties (SHA-256)**: If this setting is enabled, RudderStack will hash the contextual user properties like external_id, email, phone_number from raw format to sha256.
 
 ### Track
 
@@ -56,15 +57,37 @@ The `track` call allows you to capture user actions along with the properties as
 A sample `track` call is shown below:
 
 ```javascript
-To be added later
+rudderanalytics.track(
+  "checkout started", {
+    eventId: "1616318632825_357",
+    context: {
+      ad: {
+        callback: "123ATXSfe"
+      }
+    },
+    currency: "USD",
+    value: 46.0
+  }, {
+    externalId: [{
+      type: "tiktokExternalId",
+      id: "f0e388f53921a51f0bb0fc8a2944109ec188b59172935d8f23020b1614cc44bc"
+    }]
+  }
+);
 ```
+<div class="infoBlock">
+
+The events are automatically grouped in a batch of 50 events per request using the `batch` call. However, if the event payload contains **test_event_code** property, batching won't be applied. For more information about the `batch` call, please refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/http-api/#11-batch">RudderStack API Specification</a>documentation.
+
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+</div>
 
 ## FAQ
 
 ### I see a 40002 response code like the following instead of 200, what can I do?
 ### {"code":40002,"message":"No permission to operate pixel code: D1VF1C8AIKHA8PLC3GAM","request_id":"3021042921460500023604014862AFFF38"}
 
-This error code is related to the authentication of your TikTok account. For more information, refer <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890979375106">TikTok doc</a>.
+This error code is related to the authentication of your TikTok account. For more information, refer <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890979375106">TikTok documentation</a>.
 
 ## Contact us
 
