@@ -89,14 +89,16 @@ When sending an`Insert Product` event to BigQuery, the `productId` can be used t
 
 ## Sending events to BigQuery Stream
 
+You can send only `track` events to BigQuery Stream via RudderStack. Also, RudderStack currently does not support batching these events.
+
 <div class="warningBlock">
 
-BigQuery Stream supports only <code class="inline-code">track</code> events. Also, make sure the <code class="inline-code">track</code> event payload format matches the table schema specified in the RudderStack dashboard.
+ Make sure the <code class="inline-code">track</code> event payload format matches the table schema specified in the RudderStack dashboard.
 </div>
 
 <div class="infoBlock">
 
-RudderStack currently does not support the <code class="inline-code">templateSupportSuffix</code> feature which creates a table schema during a streaming insert action.
+  RudderStack currently does not support the <code class="inline-code">templateSupportSuffix</code> feature which creates a table schema during a streaming insert action.
 </div>
 
 Suppose you want to stream the events from your web source to BigQuery and the table schema in your BigQuery dataset is as shown:
