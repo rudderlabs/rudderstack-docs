@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to TikT
 
 # TikTok Ads
 
-<a href="https://www.tiktok.com/business/en/apps/tiktok?tt4b_lang_redirect=1">TikTok Ads</a> is TikTok's online advertising platform. It allows marketers to run their product ads to target custom audiences, optimize their campaigns, attribution, etc.
+[TikTok Ads](https://www.tiktok.com/business/en/apps/tiktok?tt4b_lang_redirect=1") is TikTok's online advertising platform. It allows marketers to run their product ads to target custom audiences, optimize their campaigns, attribution, etc.
 
 RudderStack supports TikTok Ads as a destination where you can send your event data seamlessly.
 
@@ -85,12 +85,6 @@ RudderStack maps the following E-Commerce event names to the corresponding TikTo
 | `Payment Info Entered` | `AddPaymentInfo` |
 | `Checkout Step Completed` | `CompletePayment` |
 | `Order Completed` | `PlaceAnOrder` |
-
-<div class="infoBlock">
-
-The events are automatically grouped in a batch of 50 events per request using the <code class="inline-code">batch</code> call. However, if the payload contains <code class="inline-code">test_event_code</code> property, batching won't be applied. For more information on the `batch` call, please refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/http-api/#11-batch">RudderStack API Specification</a> documentation.
-
-</div>
 
 ## FAQ
 
