@@ -71,15 +71,18 @@ Follow <a href="https://rudderstack.com/docs/get-started/installing-and-setting-
 
 ## Event transformation
 
+The Shopify source supports both [**cloud mode**](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) and [**device mode**](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode) tracking.
+
 <div class="infoBlock">
 
-<ul>
-<li> RudderStack supports and maps Shopify's <code class="inline-code">customer_create</code> and <code class="inline-code">customer_update</code> events as <code class="inline-code">identify</code> events.</li>
-<li> RudderStack also supports <code class="inline-code">checkout_created</code> and <code class="inline-code">order_update</code> events as the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">E-commerce events</a>. </li>
-</ul>
+For cloud mode tracking, RudderStack uses the Shopify-provided webhooks, whereas for device mode tracking, RudderStack inserts a JavaScript tracking code into every page of the respective Shopify store.
 </div>
 
-The following Shopify events are mapped to RudderStack's generic `track` events:
+### Supported cloud mode events
+
+- RudderStack supports and maps Shopify's `customer_create` and `customer_update` events as `identify` events.
+- RudderStack also supports `checkout_created` and `order_update` events as the [E-commerce events](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/).
+- The following Shopify events are mapped to RudderStack's generic `track` events:
 
 ```javascript
 [
@@ -105,6 +108,20 @@ The following Shopify events are mapped to RudderStack's generic `track` events:
 Any other events flowing through RudderStack except the <code class="inline-code">track</code>, <code class="inline-code">identify</code>, and the E-commerce events mentioned above will be <strong>discarded</strong>.
 </div>
 
+### Supported device mode events
+
+The Shopify source also supports sending the following events to RudderStack in device mode tracking:
+
+| Event Name |
+| :------------|
+| Cart Viewed |
+| Page Viewed |
+| Product Clicked |
+| Product List Viewed |
+| Product Viewed |
+| Registration Viewed |
+| Checkout Started |
+| Product Added |
 
 ## Contact us
 
