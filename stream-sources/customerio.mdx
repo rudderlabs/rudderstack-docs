@@ -76,7 +76,7 @@ RudderStack supports the following Customer.io event types:
 
 ### Email events
 
- RudderStack supports the following Customer.io email events:
+RudderStack supports the following Customer.io email events:
 
 | **Email Event** | **Description**                                                                           |
 | :--------------- | :---------------------------------------------------------------------------------------- |
@@ -133,31 +133,30 @@ RudderStack supports the following Customer.io push notification events:
 | `Bounced`         | An invalid device token was reported by the delivery provider.  |
 | `Dropped`         | The push notification was not sent to the recipient as the device token bounced.   |
 
+### Webhook events
 
+RudderStack supports the following Customer.io webhook events:
 
- ### Webhook events
-
- RudderStack supports the following Customer.io webhook events:
-
- | **Webhook Event** | **Description**     |
- | :--------------- | :---------------- |
- | `Failed`                |  The webhook payload failed and was not sent to the recipient. | 
- | `Click`                  |  The link in the webhook payload was clicked by the recipient.   |
- | `Sent`                   | A webhook payload was sent from Customer.io.  |
- | `Attempted`         | A webhook event was attempted unsuccessfully and would be retried. |
- | `Drafted`              | A webhook draft was created by the sender. |
+| **Webhook Event** | **Description**     |
+| :--------------- | :---------------- |
+| `Failed`                |  The webhook payload failed and was not sent to the recipient. | 
+| `Click`                  |  The link in the webhook payload was clicked by the recipient.   |
+| `Sent`                   | A webhook payload was sent from Customer.io.  |
+| `Attempted`         | A webhook event was attempted unsuccessfully and would be retried. |
+| `Drafted`              | A webhook draft was created by the sender. |
 
  ### Slack events
 
- RudderStack supports the following Customer.io Slack events:
 
- | **Slack Event** | **Description**  |
- | :---------------- | :---------------- |
- | `Failed`                |  The Slack message failed and was not delivered to the recipient. |
- | `Click`                  |  The recipient clicked the link in the Slack message. |
- | `Sent`                   |  A Slack message was successfully sent to the recipient.   |
- | `Attempted`         |  A Slack message was attempted unsuccessfully and would be retried. |
- | `Drafted`              |  A Slack message was drafted by the sender. |
+RudderStack supports the following Customer.io Slack events:
+
+| **Slack Event** | **Description**  |
+| :---------------- | :---------------- |
+| `Failed`                |  The Slack message failed and was not delivered to the recipient. |
+| `Click`                  |  The recipient clicked the link in the Slack message. |
+| `Sent`                   |  A Slack message was successfully sent to the recipient.   |
+| `Attempted`         |  A Slack message was attempted unsuccessfully and would be retried. |
+| `Drafted`              |  A Slack message was drafted by the sender. |
 
 The following image highlights the setup in the Customer.io dashboard:
 
