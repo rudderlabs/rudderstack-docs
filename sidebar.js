@@ -1638,6 +1638,14 @@ export const jsonData = [
      "link":"/data-warehouse-integrations/",
      "content":[
         {
+           "key":"warehouse-schemas",
+           "title":"Warehouse Schemas",
+           "link":"/data-warehouse-integrations/warehouse-schemas/",
+           "content":[
+              
+           ]
+        },
+        {
            "key":"amazon-redshift",
            "title":"Amazon Redshift",
            "link":"/data-warehouse-integrations/amazon-redshift/",
@@ -1646,9 +1654,25 @@ export const jsonData = [
            ]
         },
         {
-           "key":"identity-resolution-in-rudderstack",
-           "title":"Identity Resolution",
-           "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
+           "key":"s3-datalake",
+           "title":"Amazon S3 Data Lake",
+           "link":"/data-warehouse-integrations/s3-datalake/",
+           "content":[
+              
+           ]
+        },
+        {
+           "key":"azure-synapse",
+           "title":"Azure Synapse",
+           "link":"/data-warehouse-integrations/azure-synapse/",
+           "content":[
+              
+           ]
+        },
+        {
+           "key":"azure-datalake",
+           "title":"Azure Data Lake ",
+           "link":"/data-warehouse-integrations/azure-datalake/",
            "content":[
               
            ]
@@ -1662,9 +1686,33 @@ export const jsonData = [
            ]
         },
         {
+           "key":"delta-lake",
+           "title":"Databricks Delta Lake",
+           "link":"/data-warehouse-integrations/delta-lake/",
+           "content":[
+              
+           ]
+        },
+        {
            "key":"google-bigquery",
            "title":"Google BigQuery",
            "link":"/data-warehouse-integrations/google-bigquery/",
+           "content":[
+              
+           ]
+        },
+        {
+           "key":"gcs-datalake",
+           "title":"Google Cloud Storage Data Lake ",
+           "link":"/data-warehouse-integrations/gcs-datalake/",
+           "content":[
+              
+           ]
+        },
+        {
+           "key":"microsoft-sql-server",
+           "title":"Microsoft SQL Server",
+           "link":"/data-warehouse-integrations/microsoft-sql-server/",
            "content":[
               
            ]
@@ -1686,65 +1734,17 @@ export const jsonData = [
            ]
         },
         {
+           "key":"identity-resolution-in-rudderstack",
+           "title":"Identity Resolution",
+           "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
+           "content":[
+              
+           ]
+        },
+        {
            "key":"warehouse-faqs",
            "title":"Warehouse FAQs",
            "link":"/data-warehouse-integrations/warehouse-faqs/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"warehouse-schemas",
-           "title":"Warehouse Schemas",
-           "link":"/data-warehouse-integrations/warehouse-schemas/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"azure-synapse",
-           "title":"Azure Synapse",
-           "link":"/data-warehouse-integrations/azure-synapse/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"gcs-datalake",
-           "title":"Google Cloud Storage Data Lake ",
-           "link":"/data-warehouse-integrations/gcs-datalake/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"azure-datalake",
-           "title":"Azure Data Lake ",
-           "link":"/data-warehouse-integrations/azure-datalake/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"delta-lake",
-           "title":"Databricks Delta Lake",
-           "link":"/data-warehouse-integrations/delta-lake/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"microsoft-sql-server",
-           "title":"Microsoft SQL Server",
-           "link":"/data-warehouse-integrations/microsoft-sql-server/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"s3-datalake",
-           "title":"Amazon S3 Data Lake",
-           "link":"/data-warehouse-integrations/s3-datalake/",
            "content":[
               
            ]
