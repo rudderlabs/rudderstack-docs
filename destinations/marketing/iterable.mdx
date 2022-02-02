@@ -237,6 +237,16 @@ For this event, the user properties and item properties are compulsory.
 
 </div>
 
+## Alias
+
+The `alias` call allows you to update the user's email. You need to set `previousId` to the current email and `userId` as new email.
+
+A sample `alias` call is as shown below:
+
+```javascript
+rudderanalytics.alias("new@email.com", "old@email.com");
+```
+
 ## FAQs
 
 ### Where can I get the Iterable API key?
