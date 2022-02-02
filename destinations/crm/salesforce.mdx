@@ -125,22 +125,20 @@ RudderStack will look for the key `externalId` under `context` and determine the
 You can pass multiple object types in a single request and RudderStack will create that many requests to Salesforce.
 
 ```javascript
-client.identify({
-  userId: '123456',
-  traits: {
-    FirstName: "John",
-    LastName: "Gibbs",
-    Email: "john@peterson.com"
-  },
-  context: {
-    externalId: [
-      {
-        type: "Salesforce-Contact",
-        id: "sf-contact-id"
-      }
-    ]
-  }
-});
+rudderanalytics.identify('123456',
+    {
+      FirstName: "John",
+      LastName: "Gibbs",
+      Email: "john@peterson.com"
+    },
+    {
+      externalId: [
+        {
+          type: "Salesforce-Contact",
+          id: "sf-contact-id"
+        }
+      ]
+    });
 ```
 
 In the example above, RudderStack updates the `Contact` object in Salesforce with `id` as `sf-contact-id` and send the `traits` object to Salesforce.
