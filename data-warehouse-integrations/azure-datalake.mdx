@@ -83,6 +83,36 @@ RudderStack then converts these events into Parquet files and dumps them into th
 | Product Purchased | `https://<account_name>.blob.core.windows.net/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` |
 | Cart Viewed             | `https://<account_name>.blob.core.windows.net/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09`              |
 
+## Setting up network access
+
+You will need to whitelist the following RudderStack IPs to enable network access:
+
+- 3.216.35.97
+- 34.198.90.241
+- 54.147.40.62
+- 23.20.96.9
+- 18.214.35.254
+- 35.83.226.133
+- 52.41.61.208
+- 44.227.140.138
+- 54.245.141.180
+- 3.66.99.198
+- 3.64.201.167
+
+<div class="infoBlock">
+
+If you have your deployment in the EU region, you can whitelist only the following two IPs:
+<ul>
+<li>3.66.99.198</li>
+<li>3.64.201.167<li>
+</ul>
+</div>
+
+<div class="infoBlock">
+
+All the outbound traffic is routed through these RudderStack IPs.
+</div>
+
 ## Contact us
 
 If you come across any issues while setting up using the Azure data lake destination, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

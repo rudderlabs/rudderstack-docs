@@ -78,14 +78,34 @@ Make sure that you create the service account in the same project as BigQuery.
 
 </div>
 
-## Setting Up the Network Access
+## Setting up network access
 
-If necessary, you can whitelist the RudderStack IPs to enable network access to it.
+You will need to whitelist the following RudderStack IPs to enable network access:
+
+- 3.216.35.97
+- 34.198.90.241
+- 54.147.40.62
+- 23.20.96.9
+- 18.214.35.254
+- 35.83.226.133
+- 52.41.61.208
+- 44.227.140.138
+- 54.245.141.180
+- 3.66.99.198
+- 3.64.201.167
 
 <div class="infoBlock">
 
-**The IPs to be whitelisted are : <code class="inline-code">3.216.35.97</code>, <code class="inline-code">34.198.90.241</code> , <code class="inline-code">54.147.40.62</code> , <code class="inline-code">23.20.96.9</code>, and <code class="inline-code">18.214.35.254</code>**.
+If you have your deployment in the EU region, you can whitelist only the following two IPs:
+<ul>
+<li>3.66.99.198</li>
+<li>3.64.201.167<li>
+</ul>
+</div>
 
+<div class="infoBlock">
+
+All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
 ## **Configuring Google BigQuery in RudderStack**

@@ -25,6 +25,36 @@ Please check our <a href="https://rudderstack.com/docs/data-warehouse-integratio
 
 To set up an Azure Synapse Analytics user, you will need to have an Azure subscription for the [**SQL Data Warehouse**](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal)
 
+## Setting up network access
+
+You will need to whitelist the following RudderStack IPs to enable network access:
+
+- 3.216.35.97
+- 34.198.90.241
+- 54.147.40.62
+- 23.20.96.9
+- 18.214.35.254
+- 35.83.226.133
+- 52.41.61.208
+- 44.227.140.138
+- 54.245.141.180
+- 3.66.99.198
+- 3.64.201.167
+
+<div class="infoBlock">
+
+If you have your deployment in the EU region, you can whitelist only the following two IPs:
+<ul>
+<li>3.66.99.198</li>
+<li>3.64.201.167<li>
+</ul>
+</div>
+
+<div class="infoBlock">
+
+All the outbound traffic is routed through these RudderStack IPs.
+</div>
+
 ## Configuring Azure Synapse in RudderStack
 
 In order to send events to Azure Synapse, you will first need to add it as a destination in RudderStack and connect it to your data source. Once the destination is enabled, the tracked source data will automatically start flowing to Azure Synapse via RudderStack.

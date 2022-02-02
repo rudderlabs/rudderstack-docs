@@ -49,13 +49,27 @@ RudderStack will load all events into staging buckets that are configured with y
 
 ### Which IPs should be whitelisted?
 
-If you are using the hosted RudderStack service, the following IPs need to be whitelisted in your destination's security configuration:
+You will need to whitelist the following RudderStack IPs to enable network access:
 
-- **`3.216.35.97`**
-- **`34.198.90.241`**
-- **`54.147.40.62`**
-- **`23.20.96.9`**
-- **`18.214.35.254`**
+- 3.216.35.97
+- 34.198.90.241
+- 54.147.40.62
+- 23.20.96.9
+- 18.214.35.254
+- 35.83.226.133
+- 52.41.61.208
+- 44.227.140.138
+- 54.245.141.180
+
+The EU cluster IPs are listed below:
+
+- 3.66.99.198
+- 3.64.201.167
+
+<div class="infoBlock">
+
+All the outbound traffic is routed through these RudderStack IPs.
+</div>
 
 ### How can I speed-up my warehouse uploads
 
