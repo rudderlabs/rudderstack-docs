@@ -45,7 +45,6 @@ The webhook URL is of the format:
 <DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>
 ```
 
-
 A sample webhook URL is shown below:
 
 ```
@@ -62,24 +61,107 @@ For more information on the data plane URL, refer to <a href="https://rudderstac
 Make sure you add the source write key as query parameter to the URL. This is required to prevent the webhook from failing because of an invalid write key.
 </div>
 
-### Supported events
+- Finally, save the webhook.
 
-RudderStack currently supports only the Customer.io Email Events listed in the table below:
+## Supported events
+
+RudderStack supports the following Customer.io event types:
+
+- Email
+- Customer
+- Push notification
+- SMS
+- Slack
+- Webhook
+
+### Email events
+
+ RudderStack supports the following Customer.io email events:
 
 | **Email Event** | **Description**                                                                           |
-| :-------------- | :---------------------------------------------------------------------------------------- |
-| `Delivered`     | The delivery provider's report that the email was delivered to the inbox of the recipient. |
-| `Opened`        | An email was opened by the recipient.                                                      |
-| `Clicked`       | A tracked link in an email was clicked by the recipient / customer.                        |
-| `Bounced`       | The delivery provider's report that it was unable to deliver the email to the recipient.   |
+| :--------------- | :---------------------------------------------------------------------------------------- |
+| `Delivered`        | The delivery provider's report that the email was delivered to the inbox of the recipient. |
+| `Opened`          | An email was opened by the recipient.                                                      |
+| `Clicked`           | A tracked link in an email was clicked by the recipient / customer.                        |
+| `Bounced`         | The delivery provider's report that it was unable to deliver the email to the recipient.   |
 | `Spammed`       | An email was marked as spam by the recipient.                                             |
-| `Unsubscribed`  | The customer unsubscribed via a particular email.                                          |
+| `Unsubscribed` | The customer unsubscribed via a particular email.                                          |
+| `Failed`              |  The email was not successfully delivered to the recipient.                                         |
+| `Dropped`         | The email was not sent as the recipient was suppressed.              |
+| `Attempted`      | Customer.io retried sending the email to the email provider.             |
+| `Converted`      | The conversion goal attributed to the email was matched.             |
+| `Sent`                | The email was successfully sent to the recipient.                                 |
+| `Drafted`           | The sender created an email draft.                                          |
 
-The following image highlights the whole setup in the Customer.io dashboard:
+### Customer events
 
-<img src="../assets/event-stream-sources/customerio-5.png" alt="Customer.io webhook settings" />
+RudderStack supports the following Customer.io customer events:
 
-- Finally, save the webhook.
+|  **Customer Event**  | **Description**                                                                           |
+| :--------------------- | :---------------- |
+| `Subscribed`              |  The customer was subscribed to a campaign.            |
+| `Unsubscribed`           |  The customer was unsubscribed from a campaign.            |
+
+### SMS events
+
+RudderStack supports the following Customer.io SMS events:
+
+| **SMS Event**    | **Description**                                                                           |
+| :---------------- | :---------------- |
+| `Failed`                |  The SMS could not be sent to the delivery provider.           |
+| `Click`                  | The recipient tapped the link present in the SMS notification.            |
+| `Sent`                   |  The SMS notification was sent successfully.            |
+| `Attempted`         |  The SMS was attempted for delivery.            |
+| `Drafted`              | The SMS notification was drafted.            |
+| `Delivered`           | The SMS notification was delivered to the recipient. |
+| `Converted`      | The conversion goal attributed to the SMS was matched.             |
+| `Bounced`         | The delivery provider's report that it was unable to deliver the SMS to the recipient.   |
+
+### Push notification events
+
+RudderStack supports the following Customer.io push notification events:
+
+| **Push Event** | **Description**                                                                           |
+| :--------------- | :---------------- |
+| `Failed`                | The push notification could not be sent to the delivery provider.   |
+| `Click`                  | The recipient tapped the link present in the push notification.            |
+| `Sent`                   |  A push notification was sent. |
+| `Attempted`         | A push notification was attempted unsuccessfully. |
+| `Drafted`              | A push notification was drafted.  |
+| `Opened`          | A push notification was opened by the recipient.                                                      |
+| `Converted`      | The conversion goal attributed to the push notification was matched.             |
+| `Bounced`         | An invalid device token was reported by the delivery provider.  |
+| `Dropped`         | The push notification was not sent to the recipient as the device token bounced.   |
+
+
+
+ ### Webhook events
+
+ RudderStack supports the following Customer.io webhook events:
+
+ | **Webhook Event** | **Description**     |
+ | :--------------- | :---------------- |
+ | `Failed`                |  The webhook payload failed and was not sent to the recipient. | 
+ | `Click`                  |  The link in the webhook payload was clicked by the recipient.   |
+ | `Sent`                   | A webhook payload was sent from Customer.io.  |
+ | `Attempted`         | A webhook event was attempted unsuccessfully and would be retried. |
+ | `Drafted`              | A webhook draft was created by the sender. |
+
+ ### Slack events
+
+ RudderStack supports the following Customer.io Slack events:
+
+ | **Slack Event** | **Description**  |
+ | :---------------- | :---------------- |
+ | `Failed`                |  The Slack message failed and was not delivered to the recipient. |
+ | `Click`                  |  The recipient clicked the link in the Slack message. |
+ | `Sent`                   |  A Slack message was successfully sent to the recipient.   |
+ | `Attempted`         |  A Slack message was attempted unsuccessfully and would be retried. |
+ | `Drafted`              |  A Slack message was drafted by the sender. |
+
+The following image highlights the setup in the Customer.io dashboard:
+
+<img src="../assets/event-stream-sources/customerio-5.png" alt="Customer.io event settings" />
 
 ## Event transformation
 
