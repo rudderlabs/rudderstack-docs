@@ -547,8 +547,8 @@ The following table describes each of the above parameters in detail:
 
 | **Parameter**   | **Type**| **Description**                                                      | **Default value** |
 | :-------------- | :------ | :--------------------------------------------------------------------|:------------------|
-| `maxRetryDelay` | Integer | The upper limit on the maximum delay for an event.                   | 36000ms           |
-| `minRetryDelay` | Integer | The minimum delay expected before sending an event.                  | 1000ms            |
+| `maxRetryDelay` | Integer | The upper limit on the maximum delay for an event (in ms)            | 360000            |
+| `minRetryDelay` | Integer | The minimum delay expected before sending an event (in ms)           | 1000              |
 | `backoffFactor` | Integer | Refers to the exponential base.                                      | 2                 |
 | `maxAttempts`   | Integer | Maximum number of attempts to send the event to the destination.     | 10                |
 | `maxItems`      | Integer | Maximum number of events kept in the storage.                        |    100            |
