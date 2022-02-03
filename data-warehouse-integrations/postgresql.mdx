@@ -6,22 +6,21 @@ description: Step-by-step guide to set up PostgreSQL as a destination in RudderS
 
 # PostgreSQL
 
-PostgreSQL is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution in order to deliver efficient analytics and user insights. A myriad of other analytical tools in the market also integrate seamlessly with PostgreSQL. In fact, Amazon Redshift's design is inspired from PostgreSQL.
+PostgreSQL is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution in order to deliver efficient analytics and user insights.
 
-RudderStack allows you to configure PostgreSQL as a destination to which you can dump your event data seamlessly.
+RudderStack lets you configure PostgreSQL as a destination to which you can seamlessly send your event data.
 
 <div class="infoBlock">
 
-Please check our <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide to know how events are mapped to the tables in PostgreSQL.
-
+Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide to know how events are mapped to your PostgreSQL tables.
 </div>
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/postgres">GitHub repo</a>.**
+Find the open-source transformer code for this destination in this <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/postgres">GitHub repo</a>.
 </div>
 
-## Setting PostgreSQL User Permissions
+## Setting user permissions in PostgreSQL
 
 After setting up your PostgreSQL database, create a user. You should also assign privileges to the created user in order to create schemas and temporary tables on the specified database.
 
@@ -40,7 +39,7 @@ If you don't grant the <code class="inline-code">CREATE, TEMPORARY</code> privil
 
 </div>
 
-## Setting Up the Network Access
+## Setting up network access
 
 You will need to whitelist the following RudderStack IPs to enable network access:
 
@@ -99,14 +98,14 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
 
 ## FAQs
 
-### I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
+### RudderStack does not create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
 
-- Firstly, check the status of the sync in the [**RudderStack dashboard**](https://app.rudderstack.com/syncs).
-- Make sure you have set up the [**required user permissions**](https://rudderstack.com/docs/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) for PostgreSQL.
-- Check if the database is accessible by whitelisting all the RudderStack IPs listed [**here**](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-faqs#which-ips-should-be-whitelisted).
-- Ensure that all the security group policies for S3 are set as specified [**here**](https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#permissions).
+- Firstly, check the status of your data sync in the [**RudderStack dashboard**](https://app.rudderstack.com/syncs).
+- Make sure you have set up the [**required user permissions**](https://rudderstack.com/docs/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) for your PostgreSQL instance.
+- Check if your database is accessible to RudderStack by [whitelisting the RudderStack IPs](#setting-up-network-access).
+- Ensure that all the security group policies are set. For Amazon S3, you can refer to these [**user permissions**](https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#permissions).
 
-### **How are reserved words handled by RudderStack?**
+### How does RudderStack handle reserved words?
 
 There are some limitations when it comes to using [reserved words](https://www.postgresql.org/docs/current/sql-keywords-appendix.html) in a schema, table, or column names. If such words are used as event names, traits or properties, they will be prefixed with a `_` when RudderStack creates tables or columns for them in your schema.
 
@@ -118,6 +117,6 @@ For instance, `'25dollarpurchase'` will be changed by RudderStack to `'_25dollar
 
 RudderStack converts the event keys into lower case before exporting the data into PostgreSQL, so that it does not create two tables if the event name has two different cases.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring PostgreSQL with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
