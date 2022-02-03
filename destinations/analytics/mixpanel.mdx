@@ -127,6 +127,10 @@ Mixpanel has some reserved properties:
 - `$email`
 - `$phone`
 - `$avatar`
+- `$city`
+- `$country_code`
+- `$region`
+- `$unsubscribed`
 
 <div class="warningBlock">
 
@@ -265,6 +269,21 @@ RudderStack maps these fields only in the <code class="inline-code">identify</co
 | `$os`                  | `context.os.name`         |
 | `$referrer`            | `context.page.referrer`   |
 | `$carrier`             | `context.network.carrier` |
+| `$city`                | `address.city`            |
+| `$country_code`        | `address.country`         |
+| `$region`              | `address.region`          |
+| `$latitude`            | `context.location.latitude`|
+| `$longitude`           | `context.location.longitude`|
+| `$manufacturer`        | `context.page.manufacturer`|
+| `$model`               | `context.device.model`     |
+| `$screen_width`        | `context.screen.width`     |
+| `$screen_height`       | `context.screen.height`    |
+| `$wifi`                | `context.network.wifi`     |
+| `$geoSource`           | `context.location.geoSource`|
+| `$unsubscribed`        | `context.traits.unsubscribed`|
+| `$unsubscribed`        | `traits.unsubscribed`|
+| `$unsubscribed`        | `properties.unsubscribed` |
+| `$timezone`            | `context.location.timezone` |
 
 ## Explicitly Setting People Properties and Super Properties
 
@@ -292,14 +311,17 @@ The following table lists all the properties that RudderStack sends to Mixpanel 
 
 | Mixpanel Properties | RudderStack Properties |
 | :------------------ | :--------------------- |
-| `created`           | `$created`             |
-| `email`             | `$email`               |
-| `firstName`         | `$first_name`          |
-| `lastName`          | `$last_name`           |
-| `lastSeen`          | `$last_seen`           |
-| `name`              | `$name`                |
-| `username`          | `$username`            |
-| `phone`             | `$phone`               |
+| `$created`           | `created`             |
+| `$email`             | `email`               |
+| `$first_name`        | `firstName`           |
+| `$last_name`         | `lastName`            |
+| `$last_seen`         | `lastSeen`            |
+| `$name`              | `name`                |
+| `$username`          | `username`            |
+| `$phone`             | `phone`               |
+| `$city`              | `city`                |
+| `$region`            | `region`              |
+| `$country_code`      | `country`             |
 
 ## Incrementing Events
 
