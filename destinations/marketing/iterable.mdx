@@ -137,16 +137,17 @@ A sample `screen` call is as shown:
 
 ## Alias
 
-The `alias` call lets you merge different identities of a known user. To send an `alias` call to Iterable, you must set `previousId` to the current email and `userId` as new email, as shown below:
+The `alias` call lets you merge different identities of a known user. The format of an `alias` call is shown below:
+
+```javascript
+rudderanalytics.alias("userId","previousId");
+```
+
+To send an `alias` event to Iterable, you must set `previousId` to the current email and `userId` as new email, as shown:
 
 ```javascript
 rudderanalytics.alias("new@email.com", "current@email.com");
 ```
-
-<div class="infoBlock">
-
-<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
-</div>
 
 ## Track
 
