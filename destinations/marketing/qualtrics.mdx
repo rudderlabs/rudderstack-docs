@@ -61,7 +61,7 @@ This field is useful only when using the <code class="inline-code">page</code> c
 If this option is disabled, RudderStack will search for the category and name of the <code class="inline-code">page</code> call and send the event as <code class="inline-code">Viewed &lt;category_field&gt; &lt;name_field&gt; Page</code>. If any of the two fields is absent, RudderStack sends the <code class="inline-code">page</code> call as <code class="inline-code">Viewed &lt;category_field&gt;/&lt;name_field&gt; Page</code>.
 </div>
 
-## Adding Device Mode Integration
+## Adding device mode integration
 
 <!--{% tabs %}
 {% tab title="iOS" %}
@@ -107,7 +107,9 @@ For more information, refer to the [**Qualtrics iOS documentation**](https://api
 {% endtab %}
 
 {% tab title="Android" %}
-To add Qualtrics to your Android project, follow these steps :
+Your Android project must be on **version 5.0 (API level 21) or higher** for RudderStack to be able to send events to Qualtrics.<br/>
+
+Once confirmed, follow these steps to add Qualtrics to your Android project:
 
 * Open your `app/build.gradle` \(Module: app\) file and add the following under the `dependencies` section :
 
@@ -247,9 +249,7 @@ For more information, refer to the [**Qualtrics iOS documentation**](https://api
 </span>
       </TabPanel>
       <TabPanel>
-Your Android project must be on <strong>version 5.0 (API level 21) or higher</strong> for RudderStack to be able to send events to Qualtrics.<br/>
 
-Once confirmed, follow these steps to add Qualtrics to your Android project:
 <ul>
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: app) file and add the following under the <code class="inline-code">dependencies</code> section :
 <span>
