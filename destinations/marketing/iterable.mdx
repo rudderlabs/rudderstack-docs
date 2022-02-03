@@ -69,9 +69,9 @@ A sample `identify` call is as shown:
 rudderanalytics.identify(
   "userId",
   {
-    city: "California",
-    name: "John Doe",
-    email: "sample@website.com",
+    city: "New Orleans",
+    name: "Alex Keener",
+    email: "alex@example.com",
     country: "USA"
   }
 );
@@ -83,7 +83,7 @@ RudderStack uses Iterable's [device registration API](https://api.iterable.com/a
 
 Similarly, RudderStack uses Iterable's [browser token registration API](https://api.iterable.com/api/docs#users_registerBrowserToken) for the web platform.
 
-If the `deviceToken` for Push Notification is present in `context` of the event payload, then RudderStack will map the user with the device to register for push. This will add the data if it doesn't exist yet. It will also update data fields on the device.
+If the `deviceToken` associated with the push notification is present in `context` of the event payload, then RudderStack will map the user with the device to register for push. This will add the data if it doesn't exist yet. It will also update data fields on the device.
 
 <div class="infoBlock">
 
@@ -110,11 +110,11 @@ A sample `page` call is shown below:
 
 ```javascript
 rudderanalytics.page({
-  path: "path",
-  url: "url",
-  title: "title",
-  search: "search",
-  referrer: "referrer",
+  path: "home",
+  url: "https://www.example.com/home",
+  title: "Home Page",
+  search: "home",
+  referrer: "https://www.example.com/previous",
 })
 ```
 
@@ -135,6 +135,19 @@ A sample `screen` call is as shown:
 [[RSClient sharedInstance] screen:@"Main"];
 ```
 
+## Alias
+
+The `alias` call lets you merge different identities of a known user. To send an `alias` call to Iterable, you must set `previousId` to the current email and `userId` as new email, as shown below:
+
+```javascript
+rudderanalytics.alias("new@email.com", "current@email.com");
+```
+
+<div class="infoBlock">
+
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+</div>
+
 ## Track
 
 When you make a `track` call, RudderStack uses Iterable's [Track API](https://api.iterable.com/api/docs#events_track) to send the events. The event properties are sent as data fields in the request, while the name of the event is sent as a custom event.
@@ -151,10 +164,10 @@ rudderanalytics.track(
   "Email Opened", {
     "subject": "Resume validation",
     "sendtime": "2022-01-01",
-    "sendlocation": "johndoe@domain.com"
+    "sendlocation": "alex@example.com"
   }, {
     traits: {
-      email: "johndoe@stack.com"
+      email: "alex@example.com"
     }
   }
 );
