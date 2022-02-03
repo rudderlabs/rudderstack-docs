@@ -52,6 +52,8 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 <img src="../../assets/mp-config.png" />
 
+<img src="../../assets/event-map-setting.png" />
+
 <img src="../../assets/screen-shot-2021-07-28-at-5.43.41-pm.png" /><span class="imageTitle">Connection Settings for Mixpanel</span>
 
 ### Configuration Settings
@@ -74,6 +76,18 @@ The following settings are applicable if you are using this destination via the 
 - **Persistence Type**: This option lets you choose the persistence type for your Mixpanel cookies.
 - **Secure Cookie**: Enabling this option will mark the Mixpanel cookie as secure, i.e it will only transmit over HTTPs.
 - **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. For more information, check out the [**Group**](https://rudderstack.com/docs/destinations/analytics/mixpanel#group) section below.
+- **Use Old Mapping**: This option is enabled by default and sends the first name and last name as:
+
+    `$firstName : "John"`
+ 
+    `$lastName : "Keener"`
+ 
+  If disabled, it will send them as:
+ 
+   `$first_name : "John"`
+ 
+   `$last_name : "Keener"`
+
 
 ## Page
 
