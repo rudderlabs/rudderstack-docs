@@ -62,13 +62,6 @@ The following connection settings are required to configure AppsFlyer as a desti
 Refer to the <a href="#faqs">FAQs</a> section below for more information on obtaining the AppsFlyer dev key.
 </div>
 
-- **Sharing Filter**: By default, the value for this setting is set to `all`. 
-
-<div class="infoBlock">
-
-For more information on this field, refer to the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer Help Center</a> page.
-</div>
-
 - **App ID**: Enter your Apple or Android app ID.
 
   - **Android App ID**: This the application ID used in your `app/build.gradle` file.
@@ -82,7 +75,27 @@ If you are connecting a source other than <strong>Android</strong> or the <stron
 Refer to the <a href="#connecting-appsflyer-to-non-androidios-sources">Connecting AppsFlyer to non-Android/iOS sources</a> section below for more information.
 </div>
 
+
+- **Sharing Filter**: By default, the value for this setting is set to `all`. You can use this setting to meet any regulatory requirements like GDPR and CCPA, complying with user opt-out mechanisms, and for any other business use-case.
+
+<div class="infoBlock">
+
+For more information on this field, refer to the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer Help Center</a> page.
+</div>
+
+- **Client-side Event Filtering**: This setting is applicable only if you are sending events to AppsFlyer via the device mode. 
+
+<div class="infoBlock">
+  
+Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this setting.
+</div>
+
 - **Use native SDK to send events**: By default, this setting is enabled. To send events via the cloud mode or device mode, you can toggle this setting on or off.
+
+<div class="warningBlock">
+  
+This setting is not applicable for the JavaScript (web) source as RudderStack does not support sending events to AppsFlyer via the web device mode. Refer to the connection modes table in the <a href="#getting-started">Getting started</a> section above for more information.
+</div>
 
 - Finally, click on **Next** to complete the configuration. AppsFlyer will be added and enabled as a destination in RudderStack.
 
