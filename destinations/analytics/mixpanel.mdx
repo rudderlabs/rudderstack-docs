@@ -76,15 +76,15 @@ The following settings are applicable if you are using this destination via the 
 - **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. For more information, refer to the [**Group**](https://rudderstack.com/docs/destinations/analytics/mixpanel#group) section below.
 - **Client-side Events Filtering**: Refer to the [**Client-side Events Filtering**](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/) guide for more information on this feature.
 
-The following event map setting is only applicable if you are sending events to Mixpanel via the cloud mode:
+The following event mapping setting is applicable only if you are sending events to Mixpanel via the cloud mode:
 
-- **Use Old Mapping**: This option is enabled by default and sends the first name and last name as:
+- **Use New Mapping**: This option is disabled by default and sends the first name and last name as:
 
     `$firstName : "John"`
  
     `$lastName : "Keener"`
  
-  If this option is disabled, RudderStack will map these fields to Mixpanel in the following way :
+  If this option is enabled, RudderStack maps these fields to Mixpanel in the following way :
  
    `$first_name : "John"`
  
