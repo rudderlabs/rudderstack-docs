@@ -1030,6 +1030,12 @@ export const postNavList = [
    "link":"/destinations/advertising/criteo/",
    "content":[]
 },
+{
+   "key":"tiktok-ads",
+   "title":"TikTok Ads",
+   "link":"/destinations/advertising/tiktok-ads/",
+   "content":[]
+ },
  {
     "key":"customer-data-platform",
     "title":"Customer Data Platform",
@@ -1208,6 +1214,12 @@ export const postNavList = [
    "key":"optimizely-full-stack",
    "title":"Optimizely Full Stack",
    "link":"/destinations/testing-and-personalization/optimizely-full-stack/",
+   "content":[]
+},
+{
+   "key":"candu",
+   "title":"Candu",
+   "link":"/destinations/testing-and-personalization/candu/",
    "content":[]
 },
  {
