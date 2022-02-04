@@ -30,7 +30,7 @@ Run the following query to create a new user in PostgreSQL:
 CREATE USER <username> WITH PASSWORD '<password>';
 ```
 
-Run the following query to grant the above user permissions to create new schemas and temporary tables in the database:
+Run the following query to grant permissions to the user to create new schemas and temporary tables in the database:
 
 ```sql
 GRANT CREATE, TEMPORARY ON DATABASE <databasename> TO <username>;
@@ -133,7 +133,7 @@ RudderStack supports the following three SSL modes defined by PostgreSQL:
 | :----------| :--------------------------| :------------------------------------|:-------------|
 | disable      |  No                                        | No                                                         | SSL mode is disabled. Use it in cases where security is not an issue and you don't want the encryption overhead. |  
 | require      | Yes                                        | No                                                         | Use this mode when you want to encrypt your data and can deal with the resulting encryption overhead. |
-| verify-ca   | Yes                                        | Dependent on the CA policy              | Use this mode when you want to encrypt your data and bear the encryption overhead, and want to be sure that you connect to a server you trust. |
+| verify-ca   | Yes                                        | Dependent on the CA policy              | Use this mode when you want to encrypt your data, can bear the encryption overhead, and want to be sure that you connect to a server you trust. |
 
 <div class="infoBlock">
 
@@ -142,7 +142,7 @@ For more information, refer to the <a href="https://www.postgresql.org/docs/9.1/
 
 ### Using verify-ca to configure PostgreSQL destination
 
-To use verify-ca as the SSL mode while configuring your PostgreSQL destination, you will need to copy the contents of the following three files from your SSL certificate:
+To use verify-ca as the SSL mode while configuring your PostgreSQL destination, you need to copy the contents of the following three files from your SSL certificate:
 
 - **Client Key Pem File** 
 - **Client Cert Pem File**
