@@ -2,14 +2,14 @@
 # slug: "/docs/rudderstack-api/api-specification"
 title: "Tracking Plans"
 description: >-
-  Detailed technical description of the Tracking Plans feature to proactively plan and monitor your event data.
+  Detailed technical description of the Tracking Plans feature to plan and monitor your event data.
 ---
 
 # Tracking Plans
 
-Tracking Plans lets you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
+Tracking Plans let you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
 
-With the help of Tracking Plans, you can:
+With the help of a Tracking Plan, you can:
 
 * Define specific event names and properties for each of your `track`, `group`, and `identify` calls.
 * Specify whether a property/attribute is required and assign a particular data type.
@@ -21,77 +21,20 @@ With the help of Tracking Plans, you can:
 Refer to the <a href="https://rudderstack.com/blog/dogfooding-at-rudderstack-tracking-plans-part-1/">RudderStack Tracking Plans</a> blog post for more information on Tracking Plans and how to use them effectively.
 </div>
 
-## Get started
+## Quickstart
 
+To start using the Tracking Plans, follow these steps:
 
+1. Get your [Personal Access Token](https://www.rudderstack.com/docs/transformations/api-access-token/) from the RudderStack dashboard.
+2. Make a copy of the [RudderStack Tracking Plan Spreadsheet](https://docs.google.com/spreadsheets/d/1QnCY3dbzyz2InB68W3AGIJshsuY3Zu8WA3AfMMxIzAQ/edit#gid=1810167975) to create and update your tracking plans.
+3. Connect your tracking plan to a source.
+4. (Optional) Use [RudderTyper](https://www.rudderstack.com/docs/data-governance/ruddertyper/) for autocomplete and linting.
 
-## Authentication
+## Useful links
 
-The Tracking Plan API uses **Basic Authentication** for authenticating all the requests.
+The Tracking Plans documentation is divided into the following sections:
 
-<div class="successBlock">
-
-All the popular HTTP clients (e.g., CURL, Postman, HTTPie) have default support for Basic Authentication.
-</div>
-
-The Basic Authentication for this API requires a username and password, where:
-
-* The username is the **email address** you used to sign up for RudderStack.
-* The password is the **personal access token**.
-
-<div class="infoBlock">
-
-For more information on obtaining the personal access token, refer to <a href="https://rudderstack.com/docs/transformations/api-access-token/">these docs</a>.
-</div>
-
-For example, if the email address is `name@surname.com` and the personal access token is `1zl4GJkLu0HsBdrDK88NgYZzY2E`, your request must have the following HTTP header:
-
-```curl
-Authorization: Basic bmFtZUBzdXJuYW1lLmNvbToxemw0R0prTHUwSHNCZHJESzg4TmdZWnpZMkU=
-```
-
-<div class="infoBlock">
-
-  In case of the <strong>Invalid Authorization Header</strong> error, verify if the email address and the personal access token are valid.
-</div>
-
-<div class="successBlock">
-
-  You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
-</div>
-
-## Tracking Plan model
-
-| **Attribute** | **Type** | **Requirement** | **Description** |
-|:--------------|:----------|:-------------------|:-----------------|
-|`name` | ID | Read-only | Auto-generated name |
-| `display_name` | String | Required | Display name of the tracking plan. | 
-| `rules` | Rules | Optional | Schema rules for the tracking plan. |
-| `version` | Version | Read-only | Current version of the tracking plan. | 
-| `create_time` | Datetime| Read-only | Refers to the time when the tracking plan was created. |
-| `update_time` | Datetime | Read-only | Refers to the time the tracking plan was updated. |
-
-
-## Rules Model
-
-| **Attribute** | **Type** | **Requirement** | **Description** |
-|:--------------|:----------|:-------------------|:-----------------|
-| `events` | Array | Optional | Rules applied to the `track` calls. |
-| `identify` | Object | Optional | Rules applied to the `identify` calls. |
-| `group` | Object | Optional | Rules applied to the `group` calls. |
-
-
-## Events Model
-
-| **Attribute** | **Type** | **Requirement** | **Description** |
-|:--------------|:----------|:-------------------|:-----------------|
-| `name` | String | Required | Event Name. |
-| `description` | String | Optional | Refers to the event description. |
-| `rules` | JSON | Required | Rules applied to the event.
-
-This API documentation also contains the following guides:
-
-<a class="pageRef" href="tracking-plans/">
+<a class="pageRef" href="tracking-plan-spreadsheet/">
   <div class="pageRefInner">
     <span class="pageRefArrow">
       <svg
@@ -114,7 +57,7 @@ This API documentation also contains the following guides:
       </svg>
     </span>
     <span class="mainRefText">
-      Tracking Plans
+      Tracking Plan Spreadsheet
     </span>
   </div>
 </a>
@@ -142,12 +85,12 @@ This API documentation also contains the following guides:
       </svg>
     </span>
     <span class="mainRefText">
-      Tracking Plan Rules
+      Tracking Plan API
     </span>
   </div>
 </a>
 
-<a class="pageRef" href="source-tracking-plan-connections/">
+<a class="pageRef" href="https://www.rudderstack.com/docs/data-governance/ruddertyper/">
   <div class="pageRefInner">
     <span class="pageRefArrow">
       <svg
@@ -170,11 +113,11 @@ This API documentation also contains the following guides:
       </svg>
     </span>
     <span class="mainRefText">
-      Video Events
+      RudderTyper
     </span>
   </div>
 </a>
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or get in touch with your Account Manager.
