@@ -1340,6 +1340,14 @@ export const jsonData = [
                   
                ]
             },
+             {
+               "key":"tiktok-ads",
+               "title":"TikTok Ads",
+               "link":"/destinations/advertising/tiktok-ads/",
+               "content":[
+                  
+               ]
+            },
            ]
         },
         {
@@ -1571,6 +1579,14 @@ export const jsonData = [
                "key":"optimizely-full-stack",
                "title":"Optimizely Full Stack",
                "link":"/destinations/testing-and-personalization/optimizely-full-stack/",
+               "content":[
+                  
+               ]
+            },
+             {
+               "key":"candu",
+               "title":"Candu",
+               "link":"/destinations/testing-and-personalization/candu/",
                "content":[
                   
                ]
