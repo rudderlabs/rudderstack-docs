@@ -15,7 +15,7 @@ You can now send your event data directly to CleverTap through RudderStack.
   **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clevertap">GitHub repo</a>.**
 </div>
 
-## Getting Started
+## Getting started
 
 Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by CleverTap. Please refer the following table to do so:
 
@@ -40,9 +40,9 @@ Please follow our guide on <a href="https://rudderstack.com/docs/connections/add
 
 </div>
 
-<img src="../../assets/clevertap-settings.png" /><span class="imageTitle">Configuration Settings for Clevertap</span>
+<img src="../../assets/clevertap-settings.png" alt="CleverTap connection settings" />
 
-## CleverTap Configuration Settings in RudderStack
+### Connection settings
 
 To successfully configure CleverTap as a destination, you will need to configure the following settings:
 
@@ -56,10 +56,9 @@ To successfully configure CleverTap as a destination, you will need to configure
 <div class="infoBlock">
 
 All server-side destination requests require either a <code class="inline-code">anonymousId</code> or a <code class="inline-code">userId</code> in the payload.
-
 </div>
 
-## Adding Device Mode Integration
+## Adding device mode integration
 
 <!--{% tabs %}
 {% tab title="Android" %}
@@ -306,7 +305,7 @@ rudderClient.setup(WRITE_KEY, config)
 </Tabs>
 
 
-## Configuring Push Notifications and In-App Messages
+## Configuring push notifications and in-app messages
 
 The steps to configure push notifications for CleverTap for the platform of your choice are as mentioned below:
 
@@ -571,7 +570,7 @@ completionHandler:^(BOOL granted, NSError * _Nullable error) {
     </TabPanels>
 </Tabs>
 
-## Using CleverTap ObjectId and Identity for Mapping \(Cloud Mode Only\)
+## Using CleverTap objectId and identity for mapping \(cloud mode only\)
 
 CleverTap uniquely identifies each user with two main identifiers, namely `objectId` and `identity`. When the **Use Clevertap ObjectId for Mapping** option is enabled in the dashboard, both `objectId` and `identity` are used for mapping.
 
@@ -601,7 +600,7 @@ When the **Use Clevertap ObjectId for Mapping** setting is enabled in the dashbo
 | Yes                       | No                   | `objectId`        | `anonymousId` |
 | No                        | Yes                  | `identity`        | `userId`      |
 
-## Why enable the Use Clevertap ObjectId for Mapping setting?
+### Why use Clevertap objectId for mapping?
 
 When you track an unidentified user in CleverTap, a user profile is created with minimal details, along with the details of the user's activity. When the same user is then identified with a `userId` without the **Use CleverTap ObjectId for Mapping** option enabled, RudderStack creates another profile for the user with the identifier `userId` \(in case of RudderStack\) which maps to `identity` \(in case of CleverTap\).
 
@@ -650,10 +649,6 @@ A sample `screen` call looks like the following code snippet:
 ```
 
 In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In CleverTap, the above `screen` call will be shown as - **"Screen Viewed: `Sample Screen Name` "** along with the properties.
-
-<div class="infoBlock">
-Note that <strong><code class="inline-code">screen</code> calls are only supported in the RudderStack cloud mode</strong> integration. To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-</div>
 
 ## Track
 
@@ -813,6 +808,6 @@ Example: To disable push notifications for a user, set <code class="inline-code"
 
 </div>
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring CleverTap with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
