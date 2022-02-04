@@ -1,32 +1,29 @@
 ---
 # slug: "/docs/rudderstack-api/api-specification"
-title: "Tracking Plan API"
+title: "Tracking Plans"
 description: >-
-  Detailed technical description of the Tracking Plan API to plan and prescribe your data, along with the supporting Data Governance calls and models.
+  Detailed technical description of the Tracking Plans feature to proactively plan and monitor your event data.
 ---
 
-# Tracking Plan API
+# Tracking Plans
 
-Tracking Plans are RudderStack's latest offering within the [**Data Governance**](https://rudderstack.com/docs/data-governance/) feature that allow you to plan and decide what your event data should look like - **before** it starts flowing through. This essentially means that upon capture, your event data will always conform to a fixed, predefined schema.
+Tracking Plans lets you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
 
-## Tracking Plan features
-
-Tracking Plans allow you to:
+With the help of Tracking Plans, you can:
 
 * Define specific event names and properties for each of your `track`, `group`, and `identify` calls.
-* Specify whether a property/attribute is required and assign a particular data type to it.
+* Specify whether a property/attribute is required and assign a particular data type.
 * Have better control of your data streaming by supporting a versioning system.
-* Leverage the [**Data Governance API**](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/) to evaluate your inbound events, payloads, and metadata and compare them with your plans.
-
-<div class="successBlock">
-
-You can also use the <a href="https://rudderstack.com/docs/data-governance/rudder-typer/">RudderTyper</a> tool alongside the Tracking Plans. <strong>RudderTyper</strong> is a tool for generating strongly-typed RudderStack analytics library wrappers based on your published Tracking Plan specs.
-</div>
+* Use the [Data Governance API](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/) to evaluate your inbound events and metadata, and compare them with your plans.
 
 <div class="infoBlock">
 
-Read this <a href="https://rudderstack.com/blog/dogfooding-at-rudderstack-tracking-plans-part-1/">RudderStack blog</a> to know more about the Tracking Plans feature and how to use it effectively.
+Refer to the <a href="https://rudderstack.com/blog/dogfooding-at-rudderstack-tracking-plans-part-1/">RudderStack Tracking Plans</a> blog post for more information on Tracking Plans and how to use them effectively.
 </div>
+
+## Get started
+
+
 
 ## Authentication
 
