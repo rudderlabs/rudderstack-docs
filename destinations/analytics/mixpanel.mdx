@@ -52,12 +52,12 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 To successfully configure Mixpanel as a destination, you will need to configure the following settings:
 
-- **API Token**: Enter your Mixpanel API token.
+- **API Token**: Enter your Mixpanel API Token.
 - **API Secret**: Enter your Mixpanel API secret.
 
 <div class="infoBlock">
 
-For more information on obtaining the Mixpanel API token and Secret, refer to this <a href="https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-">Mixpanel Help Center</a> page.
+For more information on obtaining the Mixpanel API Token and Secret, refer to this <a href="https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-">Mixpanel Help Center</a> page.
 </div>
 
 - **Data Residency**: Select the relevant option among `US` and `EU`. RudderStack will send your event data to the Mixpanel server in that region.
@@ -130,7 +130,7 @@ RudderStack expects atleast one of the three options listed above to be enabled 
 
 To identify a user in Mixpanel, you need to call RudderStack's `identify` method. 
 
-Mixpanel needs a unique identifier to identify a user. If you provide `userId` in your `identify` call, RudderStack will pass it to Mixpanel as `distinct_id` . If `userId` is not present, RudderStack sends an `anonymousId` and sets the traits as the properties corresponding to `distinct_id`.
+If you provide `userId` in your `identify` call, RudderStack will pass it to Mixpanel as `distinct_id` . If `userId` is not present, RudderStack sends an `anonymousId` and sets the traits as the properties corresponding to `distinct_id`.
 
 After making this request, RudderStack merges `anonymousId` and `userId` as `distinct_id` and the new `userId` is mapped to `alias`, so that both of these users are mapped to a single entity in Mixpanel.
 
@@ -242,23 +242,13 @@ RudderStack lets you record the custom traits associated with a user group and s
 A sample `group` call is shown below:
 
 ```javascript
-{
-  "userId": "user123",
-  "traits": {
-    "name": "Tech group",
-    "industry": "Technology",
-    "employees": 100
-  },
-  "context": {
-    "traits": {
-       "trait1": "orgtrait"
-    },
-    "library": {
-        "name": "http"
-    }
-  },
-  "timestamp": "2020-01-21T00:21:34.208Z"
-}
+rudderanalytics.group(
+  "sample_group_id", {
+    name: "Tech group",
+    industry: "Technology",
+    employees: 100,
+  }
+);
 ```
 
 RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified during the destination configuration in RudderStack, as shown:
