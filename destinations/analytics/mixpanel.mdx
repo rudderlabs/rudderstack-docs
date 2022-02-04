@@ -92,7 +92,7 @@ The following event map setting is only applicable if you are sending events to 
 
 ## Page
 
-RudderStack passes all the page properties that you provide via the `page` call along with the properties to Mixpanel. RudderStack sets the event name as **Page** for a `page` call and **Screen** for a `screen` call. 
+RudderStack passes all the page properties that you provide via the `page` call to Mixpanel, along with the other default properties. RudderStack sets the event name as **Page** for a `page` call and **Screen** for a `screen` call. 
 
 A sample `page` call is shown below:
 
@@ -108,18 +108,15 @@ For device mode, RudderStack offers the following three options for `page` calls
 
 - **Track All Pages with a Consolidated Event Name**: This setting is enabled by default. RudderStack sends all the `page` and `screen` calls with the name `Loaded a Page` with the corresponding properties of the call. This lets you leverage Mixpanel's reporting capabilities for page/screen analytics in the best possible way.
 
-<div class="infoBlock">
-
-This option is given the highest precedence even if the following two options are enabled in the RudderStack dashboard:
-<ul>
-<li>Track Categorized Pages to Mixpanel</li>
-<li>Track Named Pages to Mixpanel</li>
-</ul>
-</div>
-
 - **Track Categorized Pages to Mixpanel**: RudderStack tracks the categorized pages to Mixpanel. If you enable this setting in the dashboard, RudderStack sends a `Viewed [<category>] Page` event to Mixpanel. If the page name is also present in the event, then RudderStack sends a `Viewed [<category> <page_name>] Page` event.
 
 - **Track Named Pages to Mixpanel**: RudderStack also tracks the named pages to Mixpanel. If you enable this setting in the dashboard, RudderStack will send a `Viewed [page_name] Page` event. Note that this option has the least precedence and comes to effect only if the above two options are disabled in the RudderStack dashboard.
+
+<div class="infoBlock">
+
+RudderStack gives the highest precedence to the <strong>Track All Pages with a Consolidated Event Name</strong> option even if <strong>Track Categorized Pages to Mixpanel</strong> and 
+<strong>Track Named Pages to Mixpanel</strong> are enabled in the dashboard.
+</div>
 
 <div class="warningBlock">
 
@@ -130,9 +127,7 @@ RudderStack expects atleast one of the three options listed above to be enabled 
 
 To identify a user in Mixpanel, you need to call RudderStack's `identify` method. 
 
-If you provide `userId` in your `identify` call, RudderStack will pass it to Mixpanel as `distinct_id` . If `userId` is not present, RudderStack sends an `anonymousId` and sets the traits as the properties corresponding to `distinct_id`.
-
-After making this request, RudderStack merges `anonymousId` and `userId` as `distinct_id` and the new `userId` is mapped to `alias`, so that both of these users are mapped to a single entity in Mixpanel.
+Mixpanel needs an identifier to uniquely identify a user. If you pass `userId` and `anonymousId` along with the Mixpanel API Secret (in the dashboard settings), then RudderStack first makes an `identify` call to Mixpanel using the `userId` and the `traits`. RudderStack then passes the `userId` and `anonymousId` via Mixpanel's [**Merge Identities**](https://developer.mixpanel.com/reference/identity-merge) feature, so that the two identifiers are glued to a single user profile.
 
 A sample `identify` call is as shown:
 
