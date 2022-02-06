@@ -6,115 +6,129 @@ description: >-
 
 # How to Integrate Rudderstack with Your Eleventy Site
 
-This guide will help you easily integrate RudderStack with your Eleventy site using the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track real-time user events and send them to your preferred destinations via RudderStack.
+This guide will help you integrate RudderStack with your Eleventy site using the [JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
 
 To set up the event streams on your Eleventy site, you need to perform the following steps:
 
-- [Integrating the JavaScript SDK with your Eleventy site](#step1)
-
-- [Configuring a destination in RudderStack](#step2)
-
-- [Deploying your Eleventy site and verifying the events](#step3)
+1. [Integrate the JavaScript SDK with your Eleventy site and set up the tracking code](#integrating-the-javascript-sdk-with-your-eleventy-site)
+2. [Configure a destination in RudderStack](#configuring-a-destination-in-rudderstack)
+3. [Deploy your Eleventy site and verify the events](#deploying-your-eleventy-site-and-verifying-the-event-stream)
 
 ## Prerequisites
 
-You must have installed and set up your Eleventy site already. You can also refer to the official [**Eleventy documentation**](https://www.11ty.dev/docs/getting-started/) for more information on setting up the site.
+This guide assumes you have installed and set up your Eleventy site. Refer to the [**Eleventy documentation**](https://www.11ty.dev/docs/getting-started/) for more information.
 
-## <a name="step1">Integrating the JavaScript SDK with your Eleventy site</a>
+## Integrating the JavaScript SDK with your Eleventy site
 
 Integrating the JavaScript SDK with your Next.js app involves the following steps:
 
-- Creating a JavaScript source in RudderStack 
-- Installing and configuring the JavaScript SDK in your app
+1. [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) 
+2. [Installing and configuring the JavaScript SDK in your Eleventy site](#installing-and-configuring-the-javascript-sdk-in-your-eleventy-site)
 
-### <a name="step1.1">Creating a JavaScript source in RudderStack</a>
+### Creating a JavaScript source in RudderStack
 
-The JavaScript source will be used to track the events from your Eleventy site. Follow these steps to set it up in your [**RudderStack dashboard**](https://app.rudderstack.com/):
+The RudderStack JavaScript source is required track the events from your Eleventy site. Follow these steps to set it up in your [RudderStack dashboard](https://app.rudderstack.com/):
 
-1. Log into [**RudderStack dashboard**](https://app.rudderstack.com/) to see the following:
+1. Note the data plane URL in your RudderStack dashboard. This is required to set up the JavaScript SDK in your site.
 
 <img src="../../../assets/user-guides/rudderstack-dashboard.png" alt="RudderStack dashboard" />
 
-<div class="infoBlock">
-
-Note the <strong>Data Plane URL</strong>. This is required to set up the SDK in your Next.js app.
-</div>
-
-2. Click on the **Sources** button in the left navigation bar and select **New Source** to create a source. Further, select **Event Streams** under **Sources**, and select **JavaScript**.
+2. Click on the **Sources** button in the left navigation bar and select **New Source** to create a source. Then, select **Event Streams** under **Sources**, and select **JavaScript**.
 
 <img src="../../../assets/user-guides/rudderstack-directory.png" alt="RudderStack directory" />
 
 3. Assign a name to your source and click **Next**.
 
-4. Your JavaScript source is now configured. **Note the write key for the source**.
+4. Your JavaScript source is now configured. Note down the write key for this source, as shown:
 
 <img src="../../../assets/user-guides/javascript-writekey.png" alt="RudderStack dashboard" />
 
-### <a name="step1.2">Installing the JavaScript SDK in your Eleventy site</a>
+### Installing and configuring the JavaScript SDK in your Eleventy site
 
 To integrate RudderStack with your Eleventy site and set up the tracking code, follow the steps below:
 
-1. Open your index.html file and insert the following lines of code within the &lt;head&gt; &lt;/head&gt;tag:
+1. Open your `index.html` file and add the following code within the `head` tag:
 
-```
-<script> 
-rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load("1pBSDA8DDqVgLRzxN5JWyKJQoNN","https://hosted.rudderlabs.com"),
-rudderanalytics.page();
+```html
+<script>
+rudderanalytics = window.rudderanalytics = [];
+for (var methods = ["load", "page", "track", "identify", "alias", "group", "ready", "reset", "getAnonymousId", "setAnonymousId"], i = 0; i < methods.length; i++) {
+  var method = methods[i];
+  rudderanalytics[method] = function(a) {
+    return function() {
+      rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))
+    }
+  }(method)
+}
+rudderanalytics.load("<WRITE_KEY>", "<DATA_PLANE_URL"),
+  rudderanalytics.page();
 rudderanalytics.track(
-  "Test Event in 11ty",
-  {
-    revenue:  30,
-    currency:  'INR' ,
-    user_actual_id:  12345
-  }, 
-  () => {console.log("Track call");}
+  "Test Event in 11ty", {
+    revenue: 30,
+    currency: 'INR',
+    user_actual_id: 12345
+  },
+  () => {
+    console.log("Track call");
+  }
 );
 </script>
 <script src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>
-
 ```
 
+2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL> with your JavaScript write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above.
 
 <div class="infoBlock">
 
-Refer to the sample Eleventy site in the <a href="https://github.com/rudderlabs/rudder-analytics-eleventy">RudderStack Eleventy Site Repository</a> for more information.
+Refer to the sample Eleventy site in the <a href="https://github.com/rudderlabs/rudder-samples">RudderStack Sample Applications</a> repository for more information.
 </div>
 
-## <a name="step2">Configuring a destination in RudderStack</a>
+## Configuring a destination in RudderStack
 
-This section details the steps required to set up a destination platform in RudderStack where you can send all the events tracked by the JavaScript SDK integrated with your Eleventy site.
+This section details the steps required to set up a destination platform in RudderStack, where you can send all the events tracked by the JavaScript SDK.
 
-As an example for this guide, Google Analytics is added as a destination.
+For this guide, Google Analytics is added as a destination.
 
 1. Click on **Add Destination** in RudderStack dashboard's home page.
-
 2. Choose **Google Analytics** from the list of destinations.
-
 3. Assign a name to your destination and click **Next**.
-
 4. Select the JavaScript source configured in the above section and click **Next**.
-
-5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the [**Google Analytics documentation**]().
+5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the [Google Analytics documentation](https://www.rudderstack.com/docs/destinations/analytics/google-analytics-ga/).
 
 <img src="../../../assets/user-guides/ga-settings.png" alt="Google Analytics destination configuration" />
 
-Optionally, you can add a [**user transformation**](https://rudderstack.com/docs/transformations/) to this destination to transform your events before sending them to Google Analytics. Google Analytics is now configured as a destination. You should be able to see the following source-destination connection in your RudderStack dashboard:
+<div class="infoBlock">
+
+Optionally, you can add a <a href="https://rudderstack.com/docs/transformations/">user transformation</a> to this destination to transform your events before sending them to Google Analytics. 
+</div>
+
+Google Analytics is now configured as a destination. You should be able to see the connection in your RudderStack dashboard, as seen below:
 
 <img src="../../../assets/user-guides/rudderstack-ga-connection.png" alt="Google Analytics connection" />
 
-## <a name="step3">Deploying your Eleventy site and verifying the event stream</a>
+<div class="successBlock">
 
-To verify if your event stream is working correctly, deploy your Eleventy site and test if the events are tracked and delivered correctly. To do so, follow these steps:
+You can also set up a warehouse destination in RudderStack and send your tracked events to it.
+</div>
 
-1. Deploy your Eleventy site. Then, open the local URL on your browser to view the app.
+## Deploying your Eleventy site and verifying the event stream
 
-2. Click on various links on the app to track different events.
+To verify if your event stream is working correctly, deploy your Eleventy site and test if the events are tracked and delivered correctly. Follow these steps:
 
-3. Go to your browser's developer tools and check the **Network** tab to verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly,  The following image highlights this option for the Google Chrome browser:
+1. From your terminal, navigate to the folder containing your Eleventy site.
+2. Deploy your site by running the following command:
+
+```bash
+npx @11ty/eleventy --serve
+```
+
+3. Open your Eleventy site by going to the local server URL (generally `http://localhost:8080/`) on your browser.
+4. Go to your browser's developer tools and check the **Network** tab to verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly.  The following image highlights this option for Google Chrome:
 
 <img src="../../../assets/user-guides/browser-network-tab.png" alt="Chrome Network tab" />
 
-4. Go to the **Live Events** tab of your JavaScript source in the RudderStack dashboard to check if the events are tracked:
+5. Click on various links on the app to track different events.
+6. Go to the **Live Events** tab of your JavaScript source in the RudderStack dashboard to check if the events are tracked:
 
 <img src="../../../assets/user-guides/live-events.png" alt="RudderStack live events tab" />
 
@@ -123,16 +137,14 @@ To verify if your event stream is working correctly, deploy your Eleventy site a
 Sometimes, you may encounter a lag while the events start showing up in your dashboard and destination but they will show up eventually.
 </div>
 
-5. Upon successful tracking, you will see the events in your RudderStack dashboard:
+7. Upon successful tracking, you will see the events in your RudderStack dashboard:
 
 <img src="../../../assets/user-guides/successful-live-events.png" alt="RudderStack live events tab" />
 
-6. Go to the Google Analytics dashboard and navigate to **Realtime** > **Events** option to check if the events are delivered to the destination (Google Analytics in this example).
-
-Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
+6. Go to the Google Analytics dashboard and navigate to **Realtime** > **Events** option to check if the events are delivered. Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
 
 <img src="../../../assets/user-guides/ga-live-events.png" alt="Google Analytics live events tab" />
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

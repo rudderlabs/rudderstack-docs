@@ -6,30 +6,28 @@ description: >-
 
 # How to Integrate Rudderstack with Your Jekyll Site
 
-This guide will help you easily integrate RudderStack with your Jekyll site using the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track real-time user events and send them to your preferred destinations via RudderStack.
+This guide will help you integrate RudderStack with your Jekyll site using the [JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
 
 To set up the event stream on your Jekyll site, you need to perform the following steps:
 
 1. [Integrate the JavaScript SDK with your Jekyll site and set up the tracking code](#integrating-the-javascript-sdk-with-your-jekyll-site)
-
 2. [Configure a destination in RudderStack](#configuring-a-destination-in-rudderstack)
-
 3. [Deploy your Jekyll site and verify the events](#deploying-your-jekyll-site-and-verifying-the-event-stream)
 
 ## Prerequisites
 
-You must have installed and set up your Jekyll site already. You can also refer to the official [**Jekyll documentation**](https://jekyllrb.com/docs/installation/) for more information on setting up the site.
+This guide assumes you have installed and set up your Jekyll site. Refer to the [Jekyll documentation](https://jekyllrb.com/docs/installation/) for more information.
 
 ## Integrating the JavaScript SDK with your Jekyll site
 
-Integrating the JavaScript SDK with your Next.js app involves the following steps:
+Integrating the JavaScript SDK with your Jekyll site involves the following steps:
 
-1. Creating a JavaScript source in RudderStack 
-2. Installing and configuring the JavaScript SDK in your site
+1. [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) 
+2. [Installing and configuring the JavaScript SDK in your Jekyll site](#installing-and-configuring-the-javascript-sdk-in-your-jekyll-site)
 
 ### Creating a JavaScript source in RudderStack
 
-The RudderStack JavaScript source is required track the events from your Jekyll site. Follow these steps to set it up in your [**RudderStack dashboard**](https://app.rudderstack.com/):
+The RudderStack JavaScript source is required track the events from your Jekyll site. Follow these steps to set it up in your [RudderStack dashboard](https://app.rudderstack.com/):
 
 1. Note the data plane URL in your RudderStack dashboard. This is required to set up the JavaScript SDK in your Jekyll site.
 
@@ -45,7 +43,7 @@ The RudderStack JavaScript source is required track the events from your Jekyll 
 
 <img src="../../../assets/user-guides/javascript-writekey.png" alt="RudderStack dashboard" />
 
-### Installing the JavaScript SDK in your Jekyll site
+### Installing and configuring the JavaScript SDK in your Jekyll site
 
 Jekyll has an extensive theme system that helps customize your site's presentation. **Minima** is Jekyll’s default theme. You can check your default Jekyll theme using the following command:
 
@@ -89,8 +87,8 @@ To integrate RudderStack with your Jekyll site and set up the tracking code, fol
     })(method);
   }
   rudderanalytics.load(
-    "YOUR_WRITE_KEY",
-    "DTA_PLANE_URL"
+    "WRITE_KEY",
+    "DATA_PLANE_URL"
   );
   rudderanalytics.ready(function () {
     console.log("Application is ready with JS");
@@ -100,7 +98,8 @@ To integrate RudderStack with your Jekyll site and set up the tracking code, fol
 <script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
 ```
 
-2. Go to the `_includes/head.html` file of your theme folder and run the following command:
+2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL> with your JavaScript write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above.
+3. Go to the `_includes/head.html` file of your theme folder and run the following command:
 
 ```bash
 {%- include rudder.html -%}
@@ -113,19 +112,15 @@ Refer to the sample Jekyll site in the <a href="https://github.com/rudderlabs/ru
 
 ## Configuring a destination in RudderStack
 
-This section details the steps required to set up a destination platform in RudderStack where you can send all the events tracked by the JavaScript SDK.
+This section details the steps required to set up a destination platform in RudderStack, where you can send all the events tracked by the JavaScript SDK.
 
 For this guide, Google Analytics is added as a destination.
 
 1. Click on **Add Destination** in RudderStack dashboard's home page.
-
 2. Choose **Google Analytics** from the list of destinations.
-
 3. Assign a name to your destination and click **Next**.
-
 4. Select the JavaScript source configured in the above section and click **Next**.
-
-5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the [**Google Analytics documentation**](https://www.rudderstack.com/docs/destinations/analytics/google-analytics-ga/).
+5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the [Google Analytics documentation](https://www.rudderstack.com/docs/destinations/analytics/google-analytics-ga/).
 
 <img src="../../../assets/user-guides/ga-settings.png" alt="Google Analytics destination configuration" />
 
@@ -159,7 +154,7 @@ bundle exec jekyll serve
 
 <img src="../../../assets/user-guides/browser-network-tab.png" alt="Chrome Network tab" />
 
-5. Click on the different links or pages in your Hugo site for RudderStack to track these actions.
+5. Click on the different links or pages in your site for RudderStack to track these actions.
 6. Go to the **Live Events** tab of your JavaScript source in the RudderStack dashboard to check if the events are tracked.
 
 <img src="../../../assets/user-guides/live-events.png" alt="RudderStack live events tab" />
@@ -179,4 +174,4 @@ Sometimes, you may encounter a lag while the events start showing up in your das
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -6,55 +6,47 @@ description: >-
 
 # How to Integrate Rudderstack with Your Nuxt.js App
 
-This guide that will help you easily integrate RudderStack with your Nuxt.js app using the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track real-time user events and send them to your preferred destinations via RudderStack.
+This guide will help you integrate RudderStack with your Nuxt.js app using the [JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
 
-To set up the event streams on your Nuxt.js app, you need to perform the following three steps need to be performed:
+To set up the event stream on your Nuxt.js app, you need to perform the following steps:
 
-- Integrating the RudderStack JavaScript SDK with your Nuxt.js app and set up the tracking.
-
-- Configuring a destination in RudderStack to route the tracked events
-
-- Deploying your Nuxt.js app and verifying the events
+1. [Integrate the JavaScript SDK with your Nuxt.js app and set up the tracking code](#integrating-the-javascript-sdk-with-your-hugo-site)
+2. [Configure a destination in RudderStack](#configuring-a-destination-in-rudderstack)
+3. [Deploy your Nuxt.js app and verify the events](#deploying-your-nuxtjs-app-and-verifying-the-event-stream)
 
 ## Prerequisites
 
-You must have already installed and set up your Nuxt.js app. You can refer to the official [**Nuxt.js documentation**](https://nuxtjs.org/docs/2.x/get-started/installation/) for more information on setting up the app.
+This guide assumes you have installed and set up your Nuxt.js app. You can refer to the official [Nuxt.js documentation](https://nuxtjs.org/docs/2.x/get-started/installation/) for more information.
 
 ## Integrating the JavaScript SDK with your Nuxt.js app
 
 Integrating the JavaScript SDK with your Nuxt.js app involves the following steps:
 
-- Creating a JavaScript source in RudderStack - you will use this source to track the events from your Nuxt.js app
-- Installing and configuring the JavaScript SDK in your app
+1. [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) 
+2. [Installing and configuring the JavaScript SDK in your Nuxt.js app](#installing-and-configuring-the-javascript-sdk-in-your-nuxtjs-app)
 
 ### Creating a JavaScript source
 
-Follow these steps to set up a JavaScript source in your [**RudderStack dashboard**](https://app.rudderstack.com/):
+The RudderStack JavaScript source is required track the events from your Nuxt.js app. Follow these steps to set it up in your [RudderStack dashboard](https://app.rudderstack.com/):
 
-- Log into your [**RudderStack dashboard**](https://app.rudderstack.com/). You should then see the following dashboard:
+1. Note the data plane URL in your RudderStack dashboard. This is required to set up the JavaScript SDK in your Nuxt.js app.
 
 <img src="../../../assets/user-guides/rudderstack-dashboard.png" alt="RudderStack dashboard" />
 
-<div class="infoBlock">
-
-Note the <strong>Data Plane URL</strong>. This is required to set up the SDK in your Nuxt.js app.
-</div>
-
-- To create a source, click on the **Add Source** button. Alternatively, you can also go to the **Directory** option in the left navigation bar, and select **Event Streams** under **Sources**, as shown. Then, select **JavaScript**.
+2. Click on the **Sources** button in the left navigation bar and select **New Source** to create a source. Then, select **Event Streams** under **Sources**, and select **JavaScript**.
 
 <img src="../../../assets/user-guides/rudderstack-directory.png" alt="RudderStack directory" />
 
-- Assign a name to your source and click on **Next**.
-
-- Your JavaScript source is now configured. **Note the write key for the source**.
+3. Assign a name to your source and click **Next**.
+4. Your JavaScript source is now configured. Note down the write key for this source, as shown:
 
 <img src="../../../assets/user-guides/javascript-writekey.png" alt="RudderStack dashboard" />
 
-### Installing the JavaScript SDK in your Nuxt.js app
+### Installing and configuring the JavaScript SDK in your Nuxt.js app
 
-To integrate RudderStack with your Nuxt.js app and set up the tracking, follow the steps below:
+To integrate RudderStack with your Nuxt.js app and set up the tracking code, follow the steps below:
 
-- Include the following snippet in the `nuxt.config.js` file in your app's folder:
+1. Include the following snippet in the `nuxt.config.js` file in your app's folder:
 
 ```javascript
 script: [{
@@ -98,70 +90,76 @@ script: [{
 ],
 ```
 
-- Include the write key and data plane URL you copied in the above section in the `load` method, as shown:
+2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL> with your JavaScript write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above.
 
 <img src="../../../assets/user-guides/nuxtjs-config.png" alt="Nuxt.js configuration" />
 
 <div class="infoBlock">
 
-Refer to the sample Nuxt.js app in the <a href="https://github.com/rudderlabs/rudder-analytics-nuxt">RudderStack Nuxt.js Repository</a> for more information.
+Refer to the sample Nuxt.js app in the <a href="https://github.com/rudderlabs/rudder-samples">RudderStack Sample Applications</a> repository for more information.
 </div>
 
 ## Configuring a destination tool in RudderStack
 
-This section details the steps required to set up a destination platform in RudderStack - where you can send all the events tracked by the JavaScript SDK integrated with your Nuxt.js app.
+This section details the steps required to set up a destination platform in RudderStack where you can send all the events tracked by the JavaScript SDK.
 
-As an example for this guide, Google Analytics is added as a destination.
+For this guide, Google Analytics is added as a destination.
 
-- In your RudderStack dashboard's home page, click on **Add Destination**.
-
-- From the list of destinations, choose **Google Analytics**.
-
-- Assign a name to your destination and click on **Next**.
-
-- Select the JavaScript source configured in the above section and integrated with your Nuxt.js app.
-
-- In the **Connection Settings** page, configure your Google Analytics destination with your Google Analytics **Tracking ID**. For details on the other settings, refer to the [**Google Analytics documentation**]().
+1. Click on **Add Destination** in RudderStack dashboard's home page.
+2. Choose **Google Analytics** from the list of destinations.
+3. Assign a name to your destination and click **Next**.
+4. Select the JavaScript source configured in the above section and click **Next**.
+5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the [Google Analytics documentation](https://www.rudderstack.com/docs/destinations/analytics/google-analytics-ga/).
 
 <img src="../../../assets/user-guides/ga-settings.png" alt="Google Analytics destination configuration" />
 
-- Optionally, you can add a [**user transformation**](https://rudderstack.com/docs/transformations/) to this destination to transform your events before sending them to Google Analytics.
+<div class="infoBlock">
 
-- Google Analytics is now configured as a destination. You should now see the following source-destination connection in your RudderStack dashboard:
+Optionally, you can add a <a href="https://rudderstack.com/docs/transformations/">user transformation</a> to this destination to transform your events before sending them to Google Analytics. 
+</div>
+
+Google Analytics is now configured as a destination. You should be able to see the connection in your RudderStack dashboard, as seen below:
 
 <img src="../../../assets/user-guides/rudderstack-ga-connection.png" alt="Google Analytics connection" />
 
+<div class="successBlock">
+
+You can also set up a warehouse destination in RudderStack and send your tracked events to it.
+</div>
+
 ## Deploying your Nuxt.js app and verifying the event stream
 
-To verify if your event stream is working correctly, deploy your Nuxt.js app and test if the events are tracked and delivered correctly. To do so, follow these steps:
+To verify if your event stream is working correctly, deploy your Nuxt.js app and test if the events are tracked and delivered correctly. Follow these steps:
 
-- Deploy your Nuxt.js app. Then, open the local URL on your browser to view the app.
+1. Deploy your Nuxt.js app by running the following command:
 
-- Click on various links on the app to track different events.
+```bash
+npm run dev
+```
 
-- To verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly, go to your browser's developer tools and check the **Network** tab. The following image highlights this option for the Google Chrome browser:
+2. Open the local server URL on your browser to view the app.
+3. To verify if the RudderStack JavaScript SDK(`rudder-analytics.js`) is loaded correctly, go to your browser's developer tools and check the **Network** tab. The following image highlights this option for the Google Chrome browser:
 
 <img src="../../../assets/user-guides/browser-network-tab.png" alt="Chrome Network tab" />
 
-- To check if the events are tracked, go to the **Live Events** tab of your JavaScript source in the RudderStack dashboard:
+4. Click on various links on the app to track different events.
+5. To check if the events are tracked, go to the **Live Events** tab of your JavaScript source in the RudderStack dashboard:
 
 <img src="../../../assets/user-guides/live-events.png" alt="RudderStack live events tab" />
 
 <div class="infoBlock">
 
-There can sometimes be a lag before events start showing up in your dashboard and destination and they can take a few minutes to show up.
+You may face a minor delay before the events start showing up in your dashboard and destination.
 </div>
 
-- Upon successful tracking, you will see the events in your RudderStack dashboard:
+6. Upon successful tracking, you will see the events in your RudderStack dashboard:
 
 <img src="../../../assets/user-guides/successful-live-events.png" alt="RudderStack live events tab" />
 
-- To check if the events are delivered to the destination (Google Analytics in this example), to go the Google Analytics dashboard and navigate to **Realtime** - **Events** option.
-
-- Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
+7. Go to the Google Analytics dashboard and navigate to **Realtime** > **Events** option to check if the events are delivered. Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
 
 <img src="../../../assets/user-guides/ga-live-events.png" alt="Google Analytics live events tab" />
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
