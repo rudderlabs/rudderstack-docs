@@ -47,11 +47,42 @@ The RudderStack JavaScript source is required track the events from your Hugo si
 
 To integrate RudderStack with your Hugo site and set up the tracking code, follow the steps below:
 
-1. Open your `index.html` file and insert the following lines of code within the `head` tag:
+1. In your Hugo project, navigate to the `layouts` > `partials` folder and open `site-header.html`.
+2. Place the following script within the `<header>` section of the page's `<body>`:
 
 ```html
-
+<script>
+      rudderanalytics = window.rudderanalytics = [];
+        var methods = [
+          "load",
+          "page",
+          "track",
+          "identify",
+          "alias",
+          "group",
+          "ready",
+          "reset",
+          // "requireIntegration",
+          "setAnonymousId",
+          "getAnonymousId",
+        ];
+        for (var i = 0; i < methods.length; i++) {
+          var method = methods[i];
+          rudderanalytics[method] = (function (methodName) {
+            return function () {
+              rudderanalytics.push(
+                [methodName].concat(Array.prototype.slice.call(arguments))
+              );
+            };
+          })(method);
+        }
+        rudderanalytics.load("WRITE_KEY","DATA_PLANE_URL");
+        rudderanalytics.track("Simple track call");
+    </script> 
+    <script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
 ```
+
+3. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL> with your JavaScript source write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above.
 
 <div class="infoBlock">
 
@@ -62,7 +93,10 @@ Refer to the sample Hugo site in the <a href="https://github.com/rudderlabs/rudd
 
 This section details the steps required to set up a destination platform in RudderStack, where you can send all the events tracked by the JavaScript SDK.
 
+<div class="infoBlock">
+
 For this guide, Google Analytics is added as a destination.
+</div>
 
 1. Click on **Add Destination** in RudderStack dashboard's home page.
 2. Choose **Google Analytics** from the list of destinations.
@@ -90,20 +124,19 @@ You can also set up a warehouse destination in RudderStack and send your tracked
 
 To verify if your event stream is working correctly, deploy your Hugo site and test if the events are tracked and delivered correctly. Follow these steps:
 
-1. From your terminal, navigate to the folder containing your Hugo site.
-2. To deploy your Hugo site, run following command:
+1. From your terminal, navigate to the folder containing your Hugo site and run following command:
 
 ```bash
 hugo server -D
 ```
 
-3. Open your Hugo site by going to the local server URL (generally `http://localhost:1313/`) on your browser.
-4. Go to your browser's developer tools and check the **Network** tab to verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly.  The following image highlights this option for Google Chrome:
+2. Open the local server URL(generally `http://localhost:1313/`) in your browser to view the site.
+3. Go to your browser's developer tools and check the **Network** tab to verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly.  The following image highlights this option for Google Chrome:
 
 <img src="../../../assets/user-guides/browser-network-tab.png" alt="Chrome Network tab" />
 
-5. Click on the various links or pages in your Hugo site for RudderStack to track these actions.
-6. Go to the **Live Events** tab of the JavaScript source you configured in the RudderStack dashboard to check if the events are tracked:
+4. Click on the various links or pages in your Hugo site for RudderStack to track these actions.
+5. Go to the **Live Events** tab of the JavaScript source you configured in the RudderStack dashboard to check if the events are tracked:
 
 <img src="../../../assets/user-guides/live-events.png" alt="RudderStack live events tab" />
 
@@ -112,11 +145,11 @@ hugo server -D
 You may face a minor delay before the events start showing up in your dashboard and the destination.
 </div>
 
-7. Upon successful tracking, you will see the events in your RudderStack dashboard:
+6. Upon successful tracking, you will see the events in your RudderStack dashboard:
 
 <img src="../../../assets/user-guides/successful-live-events.png" alt="RudderStack live events tab" />
 
-8. Go to the Google Analytics dashboard and navigate to **Realtime** > **Events** option to check if the events are delivered. Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
+7. Go to the Google Analytics dashboard and navigate to **Realtime** > **Events** option to check if the events are delivered. Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
 
 <img src="../../../assets/user-guides/ga-live-events.png" alt="Google Analytics live events tab" />
 

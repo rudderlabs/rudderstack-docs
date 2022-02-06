@@ -23,7 +23,7 @@ This guide assumes you have installed and set up your Next.js app. Refer to the 
 Integrating the JavaScript SDK with your Next.js app involves the following steps:
 
 1. [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) 
-2. [Installing and configuring the JavaScript SDK in your app](#installing-and-configuring-the-javascript-sdk-in-your-app)
+2. [Installing and configuring the JavaScript SDK in your app](#installing-and-configuring-the-javascript-sdk-in-your-nextjs-app)
 
 ### Creating a JavaScript source in RudderStack
 
@@ -42,11 +42,11 @@ The RudderStack JavaScript source is required track the events from your Next.js
 
 <img src="../../../assets/user-guides/javascript-writekey.png" alt="RudderStack dashboard" />
 
-### Installing and configuring the JavaScript SDK in your app
+### Installing and configuring the JavaScript SDK in your Next.js app
 
 To integrate RudderStack with your Next.js app and set up the tracking code, follow the steps below:
 
-1. Create a new `_document.js` file in your app’s `pages` folder and add the following code:
+1. In your Next.js project folder, go to the `pages` folder and create a new `_document.js` file with the following code:
 
 ```javascript
 import Document, { Html, Head, Main, NextScript } from "next/document";
@@ -80,11 +80,10 @@ export default class MyDocument extends Document {
 }
 ```
 
-2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL> with your JavaScript write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above. 
-
 <img src="../../../assets/user-guides/document-next-app.png" alt="New document Next.js" />
 
-3. Add the following lines in your `index.js` file:
+2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL> with your JavaScript source write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above. 
+3. In the same `pages` folder, open the `index.js` file and add the following code snippet:
 
 ```javascript
 export default function Home() {
@@ -103,7 +102,10 @@ Refer to the sample Next.js app in the <a href="https://github.com/rudderlabs/ru
 
 This section details the steps required to set up a destination platform in RudderStack, where you can send all the events tracked by the JavaScript SDK.
 
+<div class="infoBlock">
+
 For this guide, Google Analytics is added as a destination.
+</div>
 
 1. Click on **Add Destination** in RudderStack dashboard's home page.
 2. Choose **Google Analytics** from the list of destinations.
@@ -131,13 +133,19 @@ You can also set up a warehouse destination in RudderStack and send your tracked
 
 To verify if your event stream is working correctly, deploy your Next.js app and test if the events are tracked and delivered correctly. To do so, follow these steps:
 
-1. Deploy your Next.js app. Then, open the local URL on your browser to view the app.
-2. Go to your browser's developer tools and check the **Network** tab to verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly. The following image highlights this option for the Google Chrome browser:
+1. From your terminal, navigate to the folder containing your Next.js app and run following command:
+
+```bash
+npm run dev
+```
+
+2. Open the local server URL(generally `http://localhost:3000/`) in your browser to view the app.
+3. Go to your browser's developer tools and check the **Network** tab to verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly. The following image highlights this option for the Google Chrome browser:
 
 <img src="../../../assets/user-guides/browser-network-tab.png" alt="Chrome Network tab" />
 
-3. Click on the various links or pages in your app for RudderStack to track these actions.
-4. Go to the **Live Events** tab of your JavaScript source in the RudderStack dashboard to check if the events are tracked:
+4. Click on the various links or pages in your app for RudderStack to track these actions.
+5. Go to the **Live Events** tab of your JavaScript source in the RudderStack dashboard to check if the events are tracked:
 
 <img src="../../../assets/user-guides/live-events.png" alt="RudderStack live events tab" />
 
@@ -146,13 +154,11 @@ To verify if your event stream is working correctly, deploy your Next.js app and
 You may face a minor delay before the events start showing up in your dashboard and the destination.
 </div>
 
-5. Upon successful tracking, you will see the events in your RudderStack dashboard:
+6. Upon successful tracking, you will see the events in your RudderStack dashboard:
 
 <img src="../../../assets/user-guides/successful-live-events.png" alt="RudderStack live events tab" />
 
-6. Go to the Google Analytics dashboard and navigate to **Realtime** > **Events** option to check if the events are delivered to the destination (Google Analytics in this example).
-
-Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
+7. In your Google Analytics dashboard, go to **Realtime** > **Events** to check if the events are delivered. Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
 
 <img src="../../../assets/user-guides/ga-live-events.png" alt="Google Analytics live events tab" />
 

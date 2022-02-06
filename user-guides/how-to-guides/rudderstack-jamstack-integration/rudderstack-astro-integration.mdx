@@ -6,9 +6,9 @@ description: >-
 
 # How to Integrate Rudderstack with Your Astro Site
 
-This guide will help you integrate RudderStack with your Astro Site using the [JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
+This guide will help you integrate RudderStack with your Astro site using the [JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
 
-To set up the event stream on your Astro Site, you need to perform the following steps:
+To set up the event stream on your Astro site, you need to perform the following steps:
 
 1. [Integrate the JavaScript SDK with your Astro site and set up the tracking code](#integrating-the-javascript-sdk-with-your-astro-site)
 2. [Configure a destination in RudderStack](#configuring-a-destination-in-rudderstack)
@@ -16,7 +16,7 @@ To set up the event stream on your Astro Site, you need to perform the following
 
 ## Prerequisites
 
-This guide assumes you have installed and set up your Astro site. Refer to the [Astro documentation]() for more information.
+This guide assumes you have installed and set up your Astro site. Refer to the [Astro documentation](https://docs.astro.build/en/quick-start/) for more information.
 
 ## Integrating the JavaScript SDK with your Astro site
 
@@ -29,7 +29,7 @@ Integrating the JavaScript SDK with your Astro site involves the following steps
 
 The RudderStack JavaScript source is required track the events from your Astro site. Follow these steps to set it up in your [RudderStack dashboard](https://app.rudderstack.com/):
 
-1. Note the data plane URL in your RudderStack dashboard. This is required to set up the JavaScript SDK in your Astro Site.
+1. Note the data plane URL in your RudderStack dashboard. This is required to set up the JavaScript SDK in your Astro site.
 
 <img src="../../../assets/user-guides/rudderstack-dashboard.png" alt="RudderStack dashboard" />
 
@@ -46,7 +46,43 @@ The RudderStack JavaScript source is required track the events from your Astro s
 
 To integrate RudderStack with your Astro site and set up the tracking code, follow the steps below:
 
-1. 
+1. In your Astro project folder, navigate to `src` > `pages` and open `index.astro`.
+2. Enter the following script in the `<head>` section of the page:
+
+```html
+<script>
+		rudderanalytics = window.rudderanalytics = [];
+		var methods = [
+		  "load",
+		  "page",
+		  "track",
+		  "identify",
+		  "alias",
+		  "group",
+		  "ready",
+		  "reset",
+		  "getAnonymousId",
+		  "setAnonymousId",
+		];
+		for (var i = 0; i < methods.length; i++) {
+		  var method = methods[i];
+		  rudderanalytics[method] = (function (methodName) {
+			return function () {
+			  rudderanalytics.push(
+				[methodName].concat(Array.prototype.slice.call(arguments))
+			  );
+			};
+		  })(method);
+		}
+	  
+		rudderanalytics.load("WRITE_KEY","DATA_PLANE_URL");
+		//rudderanalytics.page();
+	  </script>
+	  
+	  <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
+```
+
+3. Replace `WRITE_KEY` and `DATA_PLANE_URL` with your JavaScript source write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above.
 
 <div class="infoBlock">
 
@@ -57,7 +93,10 @@ Refer to the sample Astro site in the <a href="https://github.com/rudderlabs/rud
 
 This section details the steps required to set up a destination platform in RudderStack, where you can send all the events tracked by the JavaScript SDK.
 
+<div class="infoBlock">
+
 For this guide, Google Analytics is added as a destination.
+</div>
 
 1. Click on **Add Destination** in RudderStack dashboard's home page.
 2. Choose **Google Analytics** from the list of destinations.
@@ -85,8 +124,14 @@ You can also set up a warehouse destination in RudderStack and send your tracked
 
 To verify if your event stream is working correctly, deploy your Astro site and test if the events are tracked and delivered correctly. To do so, follow these steps:
 
-1. Deploy your Astro site. Then, open the local URL on your browser to view the app.
-2. Go to your browser's developer tools and check the **Network** tab to verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly. The following image highlights this option for the Google Chrome browser:
+1. From your terminal, navigate to your Astro project's root folder and run the following command:
+
+```bash
+npm run dev
+```
+
+2. Open the local server URL(generally `http://localhost:3000/`) in your browser to view the app.
+3. Go to your browser's developer tools and check the **Network** tab to verify if the RudderStack JavaScript SDK (`rudder-analytics.js`) is loaded correctly. The following image highlights this option for the Google Chrome browser:
 
 <img src="../../../assets/user-guides/browser-network-tab.png" alt="Chrome Network tab" />
 
@@ -102,13 +147,11 @@ You may face a minor delay before the events start showing up in your dashboard 
 
 5. Upon successful tracking, you will see the events in your RudderStack dashboard:
 
-<img src="../../../assets/user-guides/successful-live-events.png" alt="RudderStack live events tab" />
+<img src="../../../assets/user-guides/successful-live-events-astro.png" alt="RudderStack live events tab" />
 
-6. Go to the Google Analytics dashboard and navigate to **Realtime** > **Events** option to check if the events are delivered to the destination (Google Analytics in this example).
+6. In your Google Analytics dashboard, go to **Realtime** > **Events** to check if the events are delivered. Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
 
-Your tracked events will be shown in this window along with other metrics such as number of active users, source platform, etc.
-
-<img src="../../../assets/user-guides/ga-live-events.png" alt="Google Analytics live events tab" />
+<img src="../../../assets/user-guides/ga-live-events-astro.png" alt="Google Analytics live events tab" />
 
 ## Contact us
 
