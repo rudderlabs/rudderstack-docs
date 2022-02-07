@@ -1773,17 +1773,32 @@ export const jsonData = [
      "link":"/data-governance/",
      "content":[
         {
-           "key":"rudder-typer",
-           "title":"RudderTyper",
-           "link":"/data-governance/rudder-typer/",
+           "key":"rudderstack-data-governance-api",
+           "title":"Data Governance API",
+           "link":"/data-governance/rudderstack-data-governance-api/",
            "content":[
               
            ]
         },
         {
-           "key":"rudderstack-data-governance-api",
-           "title":"Data Governance API",
-           "link":"/data-governance/rudderstack-data-governance-api/",
+           "key":"tracking-plans",
+           "title":"Tracking Plans",
+           "link":"/data-governance/tracking-plans/",
+           "content":[
+            {
+               "key":"tracking-plan-spreadsheet",
+               "title":"Tracking Plan Spreadsheet",
+               "link":"/data-governance/tracking-plans/tracking-plan-spreadsheet/",
+               "content":[
+                  
+               ]
+            }
+           ]
+        },
+        {
+           "key":"ruddertyper",
+           "title":"RudderTyper",
+           "link":"/data-governance/ruddertyper/",
            "content":[
               
            ]
