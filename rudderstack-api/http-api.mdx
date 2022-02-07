@@ -163,7 +163,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/identify < identify.json
 | `userId` | String | Required, if `anonymousId` is not present. | Unique identifier for a particular user in your database. |
 | `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z`|
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z`|
 | `traits` | Object | Optional | Dictionary of the traits associated with the user, such as `name`or `email` |
 
 <div class="successBlock">
@@ -259,7 +259,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/track < track.json
 | `event` | String | Required | Name of the event being performed by the user |
 | `properties` | Object | Optional | Dictionary of the properties associated with a particular event. |
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
 
 <div class="successBlock">
 
@@ -354,7 +354,7 @@ http -a <your_write_key>: <DATA_PLANE_URL>/v1/page < page.json
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
 | `name` | String | Required | Name of the page being viewed. |
 | `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer` |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
 
 <div class="successBlock">
 
@@ -453,7 +453,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/screen < screen.json
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
 | `name` | String | Required | Name of the screen being viewed. |
 | `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer` |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
 
 <div class="successBlock">
 
@@ -551,7 +551,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/group < group.json
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
 | `groupId` | String | Required | Unique identifier of the group, as present in your database. |
 | `traits` | Object | Optional | Dictionary of the properties or traits associated with the group, such as `email` or `name`. |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
 
 <div class="successBlock">
 
@@ -659,7 +659,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/alias < alias.json
 | `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
 | `previousId` | String | Required | The previous unique identifier of the user. |
 | `traits` | Object | Optional | Dictionary of the properties or traits associated with the group, such as `email` or `name`. |
-| `timestamp` | Date | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+| `timestamp` | DateTime| Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
 
 <div class="successBlock">
 
