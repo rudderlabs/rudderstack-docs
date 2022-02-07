@@ -1361,9 +1361,21 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"rudder-typer",
+    "key":"tracking-plans",
+    "title":"Tracking Plans",
+    "link":"/data-governance/tracking-plans/",
+    "content":[]
+ },
+ {
+    "key":"tracking-plan-spreadsheet",
+    "title":"Tracking Plan Spreadsheet",
+    "link":"/data-governance/tracking-plan-spreadsheet/",
+    "content":[]
+ },
+ {
+    "key":"ruddertyper",
     "title":"RudderTyper",
-    "link":"/data-governance/rudder-typer/",
+    "link":"/data-governance/ruddertyper/",
     "content":[]
  },
  {
