@@ -6,9 +6,7 @@ description: >-
 
 # How to Integrate Rudderstack with a Gatsby Website
 
-You can quickly and easily get Rudderstack up and running in your Gatsby application via our team-backed Gatsby plugin!
-
-This plugin makes it easy to integrate your Gatsby website with the Rudderstack API and easily track events.
+You can quickly and easily get Rudderstack up and running in your Gatsby application by using Rudderstack's Gatsby plugin. It makes it easy to integrate your Gatsby website with the Rudderstack API and easily track events.
 
 ## Key features of this plugin
 
@@ -31,7 +29,7 @@ In your `gatsby-config.js` file you first need to add your write key from your a
 
 <img src="../../assets/source (1).png" />
 
-#### The Configuration Options
+#### Configuration options
 
 ```javascript
 plugins: [
@@ -185,7 +183,7 @@ exports.onRouteUpdate = () => {
 }
 ```
 
-You’ve now successfully installed `rudder-analytics.js` tracking. You can enable and use any event destination to send your event data via RudderStack, in no time at all!
+You’ve now successfully installed `rudder-analytics.js` tracking. You can enable and use any event destination to send your event data via RudderStack.
 
 ### Step 4: Check ready state
 
@@ -201,7 +199,7 @@ window.rudderanalytics.ready(() => {
 
 <div class="infoBlock">
 
-For detailed technical documentation and troubleshooting guide on the RudderStack’s JavaScript SDK, check out our <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk">docs</a>.
+For detailed technical documentation and troubleshooting guide on the RudderStack’s JavaScript SDK, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk">JavaScript documentation</a>.
 
 </div>
 
@@ -311,7 +309,7 @@ You can also define callbacks to the common methods of the `rudderanalytics` obj
 
 <div class="infoBlock">
 
-For now, the functionality is supported for <code class="inline-code">syncPixel</code> method which is called in the SDK when making sync calls in integrations for relevant destinations. For example, you can load <code class="inline-code">rudderanalytics</code> with callbacks in your Gatsby browser file as shown below:
+Currently, the functionality is supported for <code class="inline-code">syncPixel</code> method which is called in the SDK when making sync calls in integrations for relevant destinations. For example, you can load <code class="inline-code">rudderanalytics</code> with callbacks in your Gatsby browser file as shown below:
 
 </div>
 
