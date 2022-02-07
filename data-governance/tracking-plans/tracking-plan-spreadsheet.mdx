@@ -9,17 +9,27 @@ description: >-
 
 By default, the Tracking Plan configuration is in JSON format. The [Tracking Plan spreadsheet](https://docs.google.com/spreadsheets/d/1QnCY3dbzyz2InB68W3AGIJshsuY3Zu8WA3AfMMxIzAQ/edit#gid=1810167975) is a no-code, spreadsheet representation of your Tracking Plan configuration. It lets you easily create or use an existing Tracking Plan.
 
-This guide details the various options and spreadsheet settings that let you effectively configure your Tracking Plan.
+This guide details the various options and spreadsheet settings that let you configure your Tracking Plan.
 
 ##  Spreadsheet overview
 
-The configuration settings for your Tracking Plan are listed in the **Homepage** and **Additional Features** tabs of the Tracking Plan spreadsheet. They are linked to the actions listed in the **RudderStack Tracking Plan** menu in the Google Sheets top bar, as seen in the following image:
+<div class="infoBlock">
+
+The Tracking Plan spreadsheet uses the Google Sheets' scripts functionality to integrate with the Rudderstack Tracking Plan API.
+</div>
+
+The configuration settings for your Tracking Plan are listed in the **Homepage** and **Additional Features** tabs of the Tracking Plan spreadsheet. They are linked to the actions listed in the **RudderStack Tracking Plan** menu in the Google Sheets top bar, as shown:
 
 <img src="../../assets/data-governance/tracking-plan-menu.png" alt="Tracking Plan menu" />
 
 <div class="infoBlock">
 
-The Tracking Plan spreadsheet uses the Google Sheets' scripts functionality to integrate with the Rudderstack Tracking Plan API.
+The Tracking Plan spreadsheet currently supports only simple datatypes (strings, numbers, Boolean, arrays, and objects).
+</div>
+
+<div class="successBlock">
+
+You can create, delete, or update the events or the properties within these events. Once you upload the changes, RudderStack creates a new version of the Tracking Plan to keep track of your changes.
 </div>
 
 ## Creating a Tracking Plan from existing event data
@@ -51,7 +61,7 @@ The <strong>Username</strong> and <strong>Password</strong> are your Grafana das
 
 <div class="infoBlock">
 
-For the first time you use the Tracking Plan spreadsheet, you will be prompted with an approval request. Select <strong>Allow</strong> to permit Google Apps to execute the scripts.
+For the first time you use the Tracking Plan spreadsheet, you will be prompted with an approval request. Select <strong>Allow</strong> to permit Google Apps to execute the scripts. Refer to the <a href="#google-apps-permissions">Google Apps Permissions</a> section below for more information.
 </div>
 
 4. To verify if the Tracking Plan is created, refer to the [Getting the Tracking Plans](#getting-the-tracking-plans) section below.
@@ -98,7 +108,7 @@ To upload a Tracking Plan to RudderStack, follow these steps:
 RudderStack will create a new Tracking Plan if the name does not exist.
 </div>
 
-3. Go to **RudderStack Tracking Plan** > **Upload Tracking Plan to RudderStack** in the top bar.
+3. Upload the Tracking Plan by going to **RudderStack Tracking Plan** > **Upload Tracking Plan to RudderStack** in the top bar.
 
 ## Linking Tracking Plan to a source
 
@@ -109,6 +119,11 @@ When you link a Tracking Plan to a source, all the events will be processed in a
 This option lets you define the events that will be allowed to pass through or dropped by RudderStack, and the permissible errors in the event's context field.
 </div>
 
+<div class="infoBlock">
+
+Refer to the <a href="#server-side-validation">Server-side validation</a> section below for more information on how RudderStack enforces the Tracking Plans on your source events.
+</div>
+
 To link a Tracking Plan to a source, follow these steps:
 
 1. In the **Additional Features** tab, go to the **Link Tracking Plan to Source** and enter the following settings:
@@ -116,14 +131,14 @@ To link a Tracking Plan to a source, follow these steps:
     - **Tracking Plan ID**: Enter the Tracking Plan ID. Refer to the [Getting the Tracking Plans](#getting-the-tracking-plans) section for more information.
     - **Source ID**: Enter your source ID.  The following image highlights the source ID's location in the RudderStack dashboard:
 
-<img src="../../assets/data-governance/source-id.png" alt="Source ID" />
+<img src="../../assets/data-governance/tracking-plan-source-id.png" alt="Source ID" />
 
 <div class="warningBlock">
 
 A source ID uniquely identifies a RudderStack source. It is different to the source write key which is used by RudderStack to send events from the source to your specified destinations.
 </div>
 
-2. Specify the following settings under **Global Settings**:
+2. Specify the following settings under **Global Settings** (applicable for **all** events):
 
     - **Allow unplanned events**: This setting has the following options:
 
@@ -147,22 +162,65 @@ A source ID uniquely identifies a RudderStack source. It is different to the sou
     | **FORWARD**| The event's `context` field will be updated with these violations and forwarded to RudderStack. |
     | **DROP** | RudderStack will drop the event containing the violations. |
 
+    - **Propagate Errors**: This setting has the following options:
 
+    | Option | Description |
+    | :-------| :-----------|
+    | **TRUE**| The validation errors are captured in the event's `context` and sent downstream (user transformations, destinations) |
+    | **FALSE** | RudderStack will drop the event containing the validation errors. |
 
+<div class="infoBlock">
 
+You can use <strong>Settings for track</strong> to explicitly define the Tracking Plan rules for <code class="inline-code">track</code> events.
+</div>
 
+3. After finalizing the settings, go to **RudderStack Tracking Plan** > **Link Tracking Plan to Source** in the top bar.
 
+## Other spreadsheet settings
 
+This section contains the noteworthy spreadsheet settings required to interact with your Tracking Plan.
 
+### API key settings (Global)
 
+- **API Personal Access Token**: Enter your Personal Access Token obtained from the RudderStack dashboard.
 
+<img src="../../assets/data-governance/personal-access-token.png" alt="Personal Access Token" />
+
+<div class="infoBlock">
+
+For more information, refer to the [Personal Access Token]() documentation.
+</div>
+
+- **Email**: Enter the email ID associated with your RudderStack account.
+
+### Advanced settings
+
+These settings define how RudderStack should pick the data (event/property values) from the Tracking Plan.
+
+<div class="warningBlock">
+
+Do not change these settings unless absolutely necessary as it may impact the entire Tracking Plan workflow.
+</div>
+
+### Google Apps permissions
+
+When you run the **RudderStack Tracking Plan** menu options for the first time, Google Apps will prompt you to authorize the scripts using the Tracking Plan API.
+
+<img src="../../assets/data-governance/tracking plan-permissions.png" alt="Google Apps permissions" />
+
+Click on **Allow** to set the permissions required for the script to work.
+
+## Server-side validation
+
+RudderStack uses server-side validation to enforce your Tracking Plans. When you [link a Tracking Plan to a source](#linking-tracking-plan-to-a-source), RudderStack will check all the new events against the Tracking Plan.
+
+The  validation adds two new columns for each table and each row that specify:
+
+- Which Tracking Plan was used
+- The error message associated with the Plan
+
+These columns will then propagate to both your data warehouse as well as cloud destinations. This lets you monitor the state of your violations and choose to act on them through manual operations or through the transformations.
 
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or get in touch with your Account Manager.
-
-
-RudderStack currently supports only the simple datatypes (String, Number, Boolean, Array, Object). 
-
-You can create, delete, or update new events as well as properties within these events. 
-Once you upload the changes, you will create a new version of the Tracking Plan to keep track of your edit history.
