@@ -125,18 +125,27 @@ A source ID uniquely identifies a RudderStack source. It is different to the sou
 
 2. Specify the following settings under **Global Settings**:
 
-    - **Allow unplanned events**:
+    - **Allow unplanned events**: This setting has the following options:
+
     
     | Option | Description |
     | :-------| :-----------|
     | **TRUE**| RudderStack will not drop the events not defined in your Tracking Plan |
     | **FALSE** | RudderStack will drop the events not defined in the Tracking Plan. |
     
-    - 
+    - **Unplanned Properties**: This setting has the following options:
+
+    | Option | Description |
+    | :-------| :-----------|
+    | **FORWARD**| The event's `context` field will be updated with the erroneous/unplanned property and forwarded to RudderStack. |
+    | **DROP** | RudderStack will drop the event containing the unplanned properties. |
+
+    - **Other Violations**: These violations include discrepancies such as type mismatch, missing required properties, etc. 
     
-    When set to **TRUE**, RudderStack will not drop the events not defined in your Tracking Plan. If set to **FALSE**, RudderStack will drop the events not defined in the plan.
-    - **Unplanned Properties**: If set to **FORWARD**, the event's context field will be updated with the erroneous/unplanned property and forwarded to RudderStack. If set to **DROP**, RudderStack will drop the event containing the unplanned properties.
-    - **Other Violations**: These violations include discrepancies such as type mismatch, missing required properties, etc. If set to **FORWARD**, RudderStack will update the event's context field will these violations and forward the event. If set to **DROP**, the event will be dropped.
+    | Option | Description |
+    | :-------| :-----------|
+    | **FORWARD**| The event's `context` field will be updated with these violations and forwarded to RudderStack. |
+    | **DROP** | RudderStack will drop the event containing the violations. |
 
 
 
