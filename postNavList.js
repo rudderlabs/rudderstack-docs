@@ -1769,9 +1769,9 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"how-to-integrate-rudderstack-with-a-gatsby-website",
-    "title":"How to Integrate RudderStack with a Gatsby Website",
-    "link":"/user-guides/how-to-guides/how-to-integrate-rudderstack-with-a-gatsby-website/",
+    "key":"rudderstack-jamstack-integration",
+    "title":"How to Integrate RudderStack with Your JAMstack Site",
+    "link":"/user-guides/how-to-guides/rudderstack-jamstack-integration/",
     "content":[]
  },
  {
