@@ -1775,6 +1775,72 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"rudderstack-angular-integration",
+    "title":"Angular",
+    "link":"/user-guides/how-to-guides/rudderstack-angular-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-astro-integration",
+    "title":"Astro.js",
+    "link":"/user-guides/how-to-guides/rudderstack-astro-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-eleventy-integration",
+    "title":"Eleventy",
+    "link":"/user-guides/how-to-guides/rudderstack-eleventy-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-ember-integration",
+    "title":"Ember.js",
+    "link":"/user-guides/how-to-guides/rudderstack-ember-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-gatsby-integration",
+    "title":"Gatsby",
+    "link":"/user-guides/how-to-guides/rudderstack-gatsby-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-hugo-integration",
+    "title":"Hugo",
+    "link":"/user-guides/how-to-guides/rudderstack-hugo-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-jekyll-integration",
+    "title":"Jekyll",
+    "link":"/user-guides/how-to-guides/rudderstack-jekyll-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-nextjs-integration",
+    "title":"Next.js",
+    "link":"/user-guides/how-to-guides/rudderstack-nextjs-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-nuxtjs-integration",
+    "title":"Nuxt.js",
+    "link":"/user-guides/how-to-guides/rudderstack-nuxtjs-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-svelte-integration",
+    "title":"Svelte",
+    "link":"/user-guides/how-to-guides/rudderstack-svelte-integration/",
+    "content":[]
+ },
+ {
+    "key":"rudderstack-vue-integration",
+    "title":"Vue",
+    "link":"/user-guides/how-to-guides/rudderstack-vue-integration/",
+    "content":[]
+ },
+ {
     "key":"glossary",
     "title":"Glossary",
     "link":"/glossary/",
