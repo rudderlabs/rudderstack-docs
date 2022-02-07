@@ -62,13 +62,9 @@ To get a list of all your existing Tracking Plans, go to **RudderStack Tracking 
 
 This option lists all your existing Tracking Plans along with their respective Tracking Plan IDs in the **List of Tracking Plans** sheet.
 
-## Uploading a Tracking Plan to RudderStack
+## Downloading existing Tracking Plans from RudderStack
 
-
-
-## Downloading an existing Tracking Plan
-
-Follow these steps to download an existing Tracking Plan:
+To download existing Tracking Plans from RudderStack, follow these steps:
 
 1. Get a list of all your Tracking Plans by going to **RudderStack Tracking Plan** > **Show All Tracking Plans**. Note the Tracking Plan ID.
 2. Go to the **Download Tracking Plan from RudderStack** option in the spreadsheet and enter the **Tracking Plan ID**, as shown:
@@ -79,17 +75,68 @@ Follow these steps to download an existing Tracking Plan:
 
 This will create a new sheet with your Tracking Plan.
 
-## Show All Tracking Plans
+## Uploading a Tracking Plan to RudderStack
 
+<div class="successBlock">
 
+You can use this option to create or update a Tracking Plan.
+</div>
 
-## Link Tracking Plan to source
+To upload a Tracking Plan to RudderStack, follow these steps:
 
+1. Go to the **Upload Tracking Plan to RudderStack** section in the **Homepage** tab of your spreadsheet.
 
+<img src="../../assets/data-governance/upload-tracking-plan.png" alt="Upload Tracking Plan" />
 
+2. Enter the following settings:
 
+    - **Sheet Name (for Upload)**: Enter the tab name of the sheet containing the Tracking Plan. 
+    - **Tracking Plan name**: Enter the name of the Tracking Plan you want to upload to RudderStack. 
 
+<div class="infoBlock">
 
+RudderStack will create a new Tracking Plan if the name does not exist.
+</div>
+
+3. Go to **RudderStack Tracking Plan** > **Upload Tracking Plan to RudderStack** in the top bar.
+
+## Linking Tracking Plan to a source
+
+When you link a Tracking Plan to a source, all the events will be processed in accordance with that plan. 
+
+<div class="infoBlock">
+
+This option lets you define the events that will be allowed to pass through or dropped by RudderStack, and the permissible errors in the event's context field.
+</div>
+
+To link a Tracking Plan to a source, follow these steps:
+
+1. In the **Additional Features** tab, go to the **Link Tracking Plan to Source** and enter the following settings:
+
+    - **Tracking Plan ID**: Enter the Tracking Plan ID. Refer to the [Getting the Tracking Plans](#getting-the-tracking-plans) section for more information.
+    - **Source ID**: Enter your source ID.  The following image highlights the source ID's location in the RudderStack dashboard:
+
+<img src="../../assets/data-governance/source-id.png" alt="Source ID" />
+
+<div class="warningBlock">
+
+A source ID uniquely identifies a RudderStack source. It is different to the source write key which is used by RudderStack to send events from the source to your specified destinations.
+</div>
+
+2. Specify the following settings under **Global Settings**:
+
+    - **Allow unplanned events**:
+    
+    | Option | Description |
+    | :-------| :-----------|
+    | **TRUE**| RudderStack will not drop the events not defined in your Tracking Plan |
+    | **FALSE** | RudderStack will drop the events not defined in the Tracking Plan. |
+    
+    - 
+    
+    When set to **TRUE**, RudderStack will not drop the events not defined in your Tracking Plan. If set to **FALSE**, RudderStack will drop the events not defined in the plan.
+    - **Unplanned Properties**: If set to **FORWARD**, the event's context field will be updated with the erroneous/unplanned property and forwarded to RudderStack. If set to **DROP**, RudderStack will drop the event containing the unplanned properties.
+    - **Other Violations**: These violations include discrepancies such as type mismatch, missing required properties, etc. If set to **FORWARD**, RudderStack will update the event's context field will these violations and forward the event. If set to **DROP**, the event will be dropped.
 
 
 
