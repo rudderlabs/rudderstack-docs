@@ -7,59 +7,44 @@ description: >-
 
 # Get Started
 
-[**RudderStack**](https://rudderstack.com/) is a **customer data platform** to capture, process, and sync all of your event, product, and warehouse data to all the tools across your customer data stack. It is enterprise-ready and provides a powerful transformation framework to process your event data on the fly.
+[**RudderStack**](https://rudderstack.com/) is a **customer data platform** which captures, processes, and syncs your event, product, and warehouse data to all the tools across your customer data stack. It is an enterprise-ready solution and provides powerful transformations to customize your event data on the fly.
 
-## RudderStack in 5 minutes
+## Quick Start
 
-Follow these steps to set up a connection in RudderStack and start sending your data in no time:
+RudderStack supports sending data from over x sources and destinations. The below steps take JavaScript platform as a source and Google Analytics platform as a destination and establishes a connection between them:
 
-1. Once you complete the [**signup**](https://app.rudderstack.com/signup), you will get access to the RudderStack dashboard for setting up your data pipelines:
+1. [**Sign-up**](https://app.rudderstack.com/signup) on RudderStack web app to access the RudderStack dashboard.
 
 <img src="../assets/general/connections-dashboard.png" alt="Connections Dashboard" />
 
 2. Click on [**Add Source**](https://www.rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) to set up a data source.
 
-3. You can choose the data source from the following three source categories:
+3. Choose `JavaScript` source and provide a name to configure it successfully. 
 
-  - [**Event Streams**](https://rudderstack.com/docs/stream-sources/): With these sources, you can collect your event data from all of your web, mobile, and server-side apps and route it to your preferred customer tools and data warehouses.
+<img src="../assets/general/source-configure.png" alt="Source Configuration" />
 
-  - [**Cloud Extract**](https://rudderstack.com/docs/cloud-extract-sources/): With these sources, you can build ELT pipelines from cloud apps to your data warehouse.
+4. Add destination by clicking  **Add Destination** > **Create New destination** button and selecting `Google Analytics` option.
 
-  - [**Warehouse Actions**](https://rudderstack.com/docs/warehouse-actions/): With this option, you can use the enriched data residing in your data warehouse as a source for your whole customer data stack.
+5. Configure [connection settings](https://www.rudderstack.com/docs/destinations/analytics/google-analytics-ga/#getting-started) for `Google Analytics`.
 
-4. Once you have configured the source, add a destination in RudderStack by clicking on the **Add Destination** button.
+The connection between JavaScript source and Google Analytics destination  will look like below in RudderStack dashboard:
 
-5. From the list of destinations, choose the destination you want to configure for the source. **RudderStack currently supports over 100 tool and data warehouse destinations.**
+<img src="../assets/general/connection.png" alt="Connection on RudderStack dashboard" />
 
-6. Configure the destination by entering the relevant connection settings. For detailed information on the required settings, refer to that destination's [**documentation**](https://rudderstack.com/docs/destinations/).
+## See also
 
-7. You can also use custom JavaScript functions in RudderStack to transform your events before sending them to your specified destinations. 
+- [**RudderStack Cloud**](https://rudderstack.com/docs/rudderstack-cloud/) - Learn more about sources, destinations and connections
+ - [**Live Events**](https://rudderstack.com/docs/rudderstack-cloud/live-events/) - View data flowing through RudderStack in real-time
 
-<div class="infoBlock">
+- [**Transformations**]("https://rudderstack.com/docs/transformations/") - Use custom JavaScript functions to transform your events before sending them to specified destinations
 
-Refer to the <a href="https://rudderstack.com/docs/transformations/">Transformations</a> guide for more information on this feature.
-</div>
+- [**Warehouse Actions**](https://rudderstack.com/docs/warehouse-actions/) - Send your warehouse data to desired destinations using reverse-ETL
 
-8. Your connection is all set up. Use the [**Live Events**](https://rudderstack.com/docs/rudderstack-cloud/live-events/) option to see the data flow through RudderStack in real-time.
+- [**Cloud Extract**](https://rudderstack.com/docs/cloud-extract-sources/) - Build efficient ETL pipelines from your cloud apps to data warehouse
 
-<div class="successBlock">
+- [**RudderStack APIs**](https://rudderstack.com/docs/rudderstack-api)
 
-For a practical use-case on tracking and sending your data using RudderStack, refer to this <a href="https://rudderstack.com/blog/how-to-send-data-in-5-minutes-using-rudderstack/">RudderStack blog post</a>.
-</div>
-
-## Useful links
-
-- Familarize yourself with [**RudderStack**](https://rudderstack.com/docs/rudderstack-cloud/) and its features.
-
-- Set up [**real-time event streams**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) in RudderStack.
-
-- Get the most out of [**Warehouse Actions**](https://rudderstack.com/docs/warehouse-actions/) - RudderStack's unique reverse-ETL feature.
-
-- Use RudderStack's [**Cloud Extract**](https://rudderstack.com/docs/cloud-extract-sources/) feature to build efficient ETL pipelines from your cloud apps to your data warehouse.
-
-- Work with the different RudderStack [**APIs**](https://rudderstack.com/docs/rudderstack-api).
-
-- Check out some [**sample applications**](https://github.com/rudderlabs/rudder-samples/) demonstrating various RudderStack use-cases.
+- [**How to Send Data in 5 Minutes Using RudderStack**]("https://rudderstack.com/blog/how-to-send-data-in-5-minutes-using-rudderstack/")
 
 ## Contact us
 
