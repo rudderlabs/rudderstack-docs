@@ -73,9 +73,11 @@ Follow <a href="https://rudderstack.com/docs/get-started/installing-and-setting-
 
 The Shopify source supports both [**cloud mode**](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) and [**device mode**](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode) tracking.
 
+For cloud mode tracking, RudderStack uses the Shopify-provided webhooks, whereas for device mode tracking, RudderStack inserts a JavaScript tracking code into every page of the respective Shopify store.
+
 <div class="infoBlock">
 
-For cloud mode tracking, RudderStack uses the Shopify-provided webhooks, whereas for device mode tracking, RudderStack inserts a JavaScript tracking code into every page of the respective Shopify store.
+RudderStack enables both cloud mode and device mode tracking simultaneously.
 </div>
 
 ### Supported cloud mode events
@@ -122,6 +124,16 @@ Any other events flowing through RudderStack except the <code class="inline-code
 | Product Clicked |
 | Product List Viewed |
 | Product Viewed |
+
+## FAQ
+
+### I'm getting a Registration Failed/Updated Failed error when I enter the data plane URL and the write key. What should I do?
+
+When [configuring the RudderStack app in your Shopify store](#configuring-the-rudderstack-app-in-your-shopify-store), you need to enter your RudderStack data plane URL and the source write key obtained while [setting up the Shopify source in RudderStack](#configuring-the-shopify-source-in-rudderstack).
+
+<img src="../assets/event-stream-sources/shopify-6.png" alt="Data plane URL and source write key" />
+
+If you get a **Registrated Failed** or **Update Failed** error after entering the credentials, uninstall and reinstall the RudderStack app in your Shopify store and try again.
 
 ## Contact us
 
