@@ -94,8 +94,8 @@ The `setup` method has the following signature:
 
 | Name            | Data Type     | Required | Description                                   |
 | :-------------- | :------------ | :------- | :-------------------------------------------- |
-| `writeKey`      | `string`      | Yes      | Your React Native `writeKey`                  |
-| `configuration` | `JSON Object` | No       | Contains the RudderStack Client configuration |
+| `writeKey`      | String     | Yes      | Your React Native source write key                  |
+| `configuration` | Object | No       | Contains the RudderStack client configuration |
 
 Check the [**Configuring your RudderStack client**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/#configuring-your-rudderstack-client) section below for a full list of configurable parameters.
 
@@ -118,9 +118,9 @@ The `track` method has the following signature:
 
 | Name       | Data Type     | Required | Description                                                 |
 | :--------- | :------------ | :------- | :---------------------------------------------------------- |
-| `name`     | `string`      | Yes      | Name of the event you want to track                         |
-| `property` | `JSON Object` | No       | Extra data properties you want to send along with the event |
-| `options`  | `JSON Object` | No       | Extra event options                                         |
+| `name`     | String      | Yes      | Name of the tracked event                         |
+| `property` | Object | No       | Extra data properties to send along with the event |
+| `options`  | Object | No       | Extra event options                                         |
 
 <div class="infoBlock">
 
@@ -155,9 +155,9 @@ The `identify` method has the following signature:
 
 | Name     | Data Type     | Required | Description                            |
 | :------- | :------------ | :------- | :------------------------------------- |
-| `userId` | `string`      | Yes      | Developer identity for the user        |
-| `traits` | `JSON Object` | No       | Traits information for user            |
-| `option` | `JSON Object` | No       | Extra options for the `identify` event |
+| `userId` | String    | Yes      | The user's unique identifier        |
+| `traits` | Object | No       | Traits information for the user            |
+| `option` | Object | No       | Extra options for the `identify` event |
 
 ## Screen
 
@@ -175,15 +175,59 @@ Alternatively, you can use the following method signature:
 
 | Name         | Data Type     | Required | Description                                                               |
 | :----------- | :------------ | :------- | :------------------------------------------------------------------------ |
-| `screenName` | `string`      | Yes      | Name of the screen viewed by the user.                                               |
-| `property`   | `JSON Object` | No       | Extra property object that you want to pass along with the `screen` call. |
-| `option`     | `JSON Object` | No       | Extra options to be passed along with `screen` event.                     |
+| `screenName` | String      | Yes      | Name of the screen viewed by the user.                                               |
+| `property`   | Object | No       | Extra property object to pass along with the `screen` call. |
+| `option`     | Object | No       | Extra options passed along with `screen` event.                     |
 
 <div class="infoBlock">
 
 You can also enable automatic recording of screen views by passing <code class="inline-code">recordScreenViews</code> as <code class="inline-code">true</code> while initializing the <code class="inline-code">rudderClient</code>.  
 The default value for <code class="inline-code">recordScreenViews</code> is <code class="inline-code">false</code>.
 </div>
+
+## Group
+
+RudderStack's `group` method lets you link an identified user with a group, such as a company, organization, or an account. You can also record any traits associated with the group like the company name, number of employees, etc.
+
+A sample `group` call is shown below:
+
+```typescript
+rudderClient.group("company123", {
+  "city": "New Orleans",
+  "state": "Louisiana",
+  "country": "USA"
+})
+```
+
+The `group` call has the following method signature:
+
+| Name         | Data Type     | Required | Description                                                               |
+| :----------- | :------------ | :------- | :------------------------------------ |
+| `groupId` | String      | Yes      | Your group's unique identifier                                               |
+| `traits`   | Object | No       | The group's traits |
+| `option`     | Object | No       | Extra options passed along with `group` event.                     |
+
+## Alias
+
+The `alias` call lets you merge different identities of a known user.
+
+<div class="infoBlock">
+
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+</div>
+
+A sample `alias` call is as shown:
+
+```typescript
+rudderClient.alias("newId")
+```
+
+The `alias` call has the following method signature:
+
+| Name         | Data Type     | Required | Description                                                               |
+| :----------- | :------------ | :------- | :------------------------------------ |
+| `newId` | String      | Yes      | The new identifier you want to assign to the user.                                               |
+| `option`     | Object | No       | Extra options passed along with `alias` event.                     |
 
 ## Reset
 
