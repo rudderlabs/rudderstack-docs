@@ -6,141 +6,110 @@ description: Step-by-step guide to ingest your Google AdWords data into RudderSt
 
 # Google AdWords
 
-[Google AdWords](https://ads.google.com/intl/en_in/home/) is Google's premier online advertising platform. It allows advertisers to display their advertisements, as well as service offerings and product listings to prospective customers. With AdWords, you can place your ads within Google's search results, and also on your websites, mobile apps and videos. Google Adwords offers these advertisement services under a PPC \(pay per click\) model.
+[Google AdWords](https://ads.google.com/intl/en_in/home/) is Google's premier online advertising platform that lets advertisers display their advertisements, service offerings, and product listings to prospective customers. 
 
-This document guides you in setting up Google AdWords as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google AdWords data, which can then be routed to your data warehouse destination supported by RudderStack.
-
-<div class="infoBlock">
-
-**All the Cloud Extract sources support sending data only to a data warehouse destination.**
-
-</div>
-
-## Getting Started
-
-To add Google AdWords as a source in RudderStack, follow these steps:
-
-- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-- From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
-
-<!--<img src="../assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (2).png" />-->
-
-<img
-  src="../assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png"
-  alt="Add Source"
-/>
-
-- Next, select **Google AdWords** from the list of **Cloud Sources**, and click on
-  **Next**.
-
-<!--<img src="../assets/screen-shot-2020-12-17-at-4.38.57-pm.png" />-->
-
-<img
-  src="../assets/screen-shot-2020-12-17-at-4.38.57-pm.png"
-  alt="Google AdWords"
-/>
-
-- Assign a name to your source, and click on **Next**.
-
-<!--<img src="../assets/screen-shot-2020-12-17-at-4.39.14-pm.png" />-->
-
-<img
-  src="../assets/screen-shot-2020-12-17-at-4.39.14-pm.png"
-  alt="Assign a name"
-/>
-
-### Setting Up the Connection
-
-- Click on **Connect with Google AdWords** and give RudderStack the required access permissions. Then, click on **Next**.
-
-<!--<img src="../assets/screen-shot-2020-12-17-at-4.39.38-pm.png" />-->
-
-<img
-  src="../assets/screen-shot-2020-12-17-at-4.39.38-pm.png"
-  alt="Connect with Google AdWords"
-/>
+This document guides you in setting up Google AdWords as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google AdWords data and routes it to the supported data warehouse destinations.
 
 <div class="infoBlock">
 
-If you have already connected RudderStack to your Google AdWords account, your credentials should appear automatically under **Use existing credentials**.
-
+All the Cloud Extract sources support sending data only to a <a href="https://www.rudderstack.com/docs/data-warehouse-integrations/">warehouse destination</a>.
 </div>
 
-### Configuring the Source Settings
+## Getting started
 
-- After successfully connecting RudderStack to your Google AdWords account, the customer IDs associated with this account will automatically appear in the dropdown menu of the **Customer ID**, where you can select one. You also need to select a **Start Date** for your pipeline, which specifies the earliest date that RudderStack will start importing your AdWords data from.
+To add Google AdWords as a source in your [RudderStack dashboard](https://app.rudderstack.com), follow these steps:
 
-<!--<img src="../assets/screen-shot-2020-12-17-at-4.40.01-pm.png" />-->
+1. In the left panel, go to **Directory**. Under **Sources**, click on **Cloud Extract** and select **Google Adwords**.
 
-<img
-  src="../assets/screen-shot-2020-12-17-at-4.40.01-pm.png"
-  alt="Customer ID"
-/>
+<img src="" alt="Google AdWords Cloud Extract source" />
+
+2. Assign a name to your source, and click on **Next**.
+
+3. Click on **Connect with Google AdWords** and give RudderStack the required access permissions. Then, click on **Next**.
 
 <div class="infoBlock">
 
-Please note that this **Start date** is valid only for the first (historical) sync.
-
+If you have already connected RudderStack to your Google AdWords account, your credentials should appear automatically under <strong>Use existing credentials</strong>.
 </div>
 
-### Setting the Data Update Schedule
+### Source settings
 
-- Next, you will be required to set the **Run Frequency** to schedule the data import from your Google AdWords account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
+- **Customer ID**: After you connect RudderStack to your Google AdWords account, the associated AdWords customer IDs will automatically appear in this dropdown. 
 
-<!--<img src="../assets/screen-shot-2020-12-17-at-4.40.48-pm.png" />-->
+- **Start date**: This option specifies the earliest date when RudderStack will import all your historical AdWords data.
 
-<img
-  src="../assets/screen-shot-2020-12-17-at-4.40.48-pm.png"
-  alt="Run Frequency"
-/>
+<div class="infoBlock">
 
-### Specifying the Data to Sync
+Note that the <strong>Start Date</strong> setting is valid only for the first (historical) sync.
+</div>
 
-- Next, you need to specify the data you want RudderStack to import. By default, all the data resources are selected.
+- **Conversion window**: Select your [AdWords conversion window](https://support.google.com/google-ads/answer/3123169?hl=en) from the dropdown options.
 
-<!--<img src="../assets/screen-shot-2020-12-17-at-4.41.10-pm.png" />-->
+<img src="../assets/cloud-extract-sources/google-adwords-source-settings.png" alt="AdWords source settings" />
 
-<img
-  src="../assets/screen-shot-2020-12-17-at-4.41.10-pm.png"
-  alt="Specifying the data to sync"
-/>
+### Destination settings and data update schedule
 
-That's it! Google AdWords is now successfully configured as a source on your RudderStack dashboard.
+- **Table prefix**: RudderStack will create a table in your data warehouse with this prefix name and load all your AdWords data into it.
 
-RudderStack will start importing data from Google AdWords as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+- **Run frequency**: Select the frequency of data import from your AdWords account to RudderStack. 
 
-<!--<img src="../assets/screen-shot-2020-12-17-at-4.41.30-pm.png" />-->
+- **Sync starting at**: Select the time when you want RudderStack to sync the data from your AdWords account.
 
-<img
-  src="../assets/screen-shot-2020-12-17-at-4.41.30-pm.png"
-  alt="Connect Destinations"
-/>
+<img src="../assets/cloud-extract-sources/google-adwords-destination-settings.png" alt="AdWords destination settings" />
+
+### Specifying the data to import
+
+- Finally, specify the AdWords data you want RudderStack to import. By default, all the resources are selected.
+
+<img src="../assets/cloud-extract-sources/google-adwords-resources.png" alt="AdWords resources to import" />
+
+- You can also import a custom report as a resource. Refer to the [Adding a custom report as resource](#adding-custom-reports-as-resources) section below for more information.
+
+That's it! Google AdWords is now successfully configured as a source. RudderStack will start importing the Google AdWords data as per the specified frequency. 
+
+You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+
+<img src="../assets/cloud-extract-sources/google-adwords-connect-destinations.png" alt="Connecting a destination to AdWords source" />
 
 <div class="successBlock">
 
-  Use the **Connect Destinations** option if you have already
-  configured a data warehouse destination in RudderStack. To configure a data
-  warehouse destination from scratch, click on the **Add Destination** button.
+  Use the <strong>Connect Destinations</strong> option if you have already configured a data warehouse destination in RudderStack/ To configure a warehouse destination from scratch, click on the <strong>Add Destination</strong> button.
 </div>
 
-## What Google AdWords data does RudderStack Import?
+## Adding custom reports as resources
 
-| **Property**                      | **Table Name**                     | **Description**                                                                                                                                                                                         |
-| :-------------------------------- | :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Ad Groups**                     | **`ad_groups`**                    | This table contains information about the bounced people for your Ad Groups. The columns in this table include: `Name`, `CampaignName`, `labels`, `BaseCampaignId` with **`Id`** being the primary key. |
-| **Campaigns**                     | **`campaigns`**                    | This table holds information information about your campaigns for your Google AdWords account. The columns in this table are: `name`, `startDate`, `frequencyCap` with **`id`** being the primary key.  |
-| **Report: Keywords Performance**  | **`keywords_performance_report`**  | This tables has information about your Google AdWords keywords' performance. The columns in this table are: `ActiveViewImpressions`, `AverageCost`, `AverageCpc`, `CampaignName`, `KeywordMatchType`    |
-| **Report: Click Performance**     | **`click_performance_report`**     | This table contains information about your Google AdWords' click performance. Columns include: `AccountDescriptiveName`, `AdGroupStatus`, `CampaignId`, `Clicks`, `ClickType`                           |
-| **Report: Placement Performance** | **`placement_performance_report`** | This table contains the performance of your Google AdWords' placement. The columns in this table are: `AverageCpc`, `AdGroupStatus`, `Clicks`, `Device`, `Ctr`.                                         |
+Follow the steps below to import custom reports as a resource and send this data to your warehouse:
+
+1. Click on the **Add Resource** button as shown:
+
+<img src="../assets/cloud-extract-sources/google-adwords-add-resource-1.png" alt="Adding custom reports as resources" />
+
+2. Under **Resource type**, select **report**.
+3. Assign a name to the report.
+4. Under **Report Type**, select the custom report you want to add as a resource.
+5. Add the relevant **Attributes**, **Segments**, and **Metrics** fields from the respective dropdowns.
+6. Finally, click on **Save**.
+
+Your custom report and the selected resources will be visible under **Custom Resources**, as shown:
+
+<img src="../assets/cloud-extract-sources/google-adwords-add-resource-2.png" alt="Custom resources configuration complete" />
+
+## AdWords data imported by RudderStack
+
+| Property                      | Table name                     | Description                |
+| :--------- | :-------------- | :----------- |
+| Ad Groups                     | `ad_groups`                    | Contains information about the bounced people for your Ad Groups. The columns in this table include: `Name`, `CampaignName`, `labels`, and `BaseCampaignId` with `id` as the primary key. |
+| Campaigns                     | `campaigns`                    | Contains information about the campaigns in your AdWords account. The columns in this table are `name`, `startDate`, and `frequencyCap` with `id` as the primary key.  |
+| Report: Keywords Performance  | `keywords_performance_report`  | Contains information about your AdWords keywords' performance. The columns in this table are `ActiveViewImpressions`, `AverageCost`, `AverageCpc`, `CampaignName`, and `KeywordMatchType`.    |
+| Report: Click Performance     | `click_performance_report`     | Contains information about your AdWords' click performance. The columns in this table are `AccountDescriptiveName`, `AdGroupStatus`, `CampaignId`, `Clicks`, and `ClickType`.                           |
+| Report: Placement Performance | `placement_performance_report` | Contains the your AdWords account's placement performance. The columns in this table are `AverageCpc`, `AdGroupStatus`, `Clicks`, `Device`, and `Ctr`.                                         |
 
 ## FAQs
 
-#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
-Yes, it is.
+Yes, it is. RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different prefixes.
 
-We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+## Contact us
 
-## Contact Us
-
-If you come across any issues while configuring Google AdWords as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
