@@ -51,9 +51,9 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 The settings are:
 
-- **Webhook URL:** This is the endpoint where [**RudderStack**](https://github.com/rudderlabs/rudder-server) will send the events. Both `http` and `https` are supported. For `https`, the **TLS cert** needs to be **valid** for a successful event delivery.
-- **URL Method:** This is the HTTP method of the request that would be sent to the configured endpoint. Supported methods are `POST`, `PUT` and `GET`. By default, the `POST` method is used.
-- **Headers:** Add custom headers for your events via this option. These headers will be added to the request made from RudderStack to your webhook. By default, RudderStack adds the following headers for `POST` and `PUT` requests:
+- **Webhook URL**: This is the endpoint where [**RudderStack**](https://github.com/rudderlabs/rudder-server) will send the events. Both `http` and `https` are supported. For `https`, the **TLS cert** needs to be **valid** for a successful event delivery.
+- **URL Method**: This is the HTTP method of the request sent to the configured endpoint. Supported methods are `POST`, `PUT` and `GET`. By default, the `POST` method is used.
+- **Headers**: Add custom headers for your events via this option. These headers will be added to the request made from RudderStack to your webhook. By default, RudderStack adds the following headers for the `POST` and `PUT` requests:
 
 | Key            | Value              |
 | :------------- | :----------------- |
@@ -120,9 +120,9 @@ A sample `identify` payload is as shown:
 
 For each `identify` call, RudderStack sends the request in the following manner \(depending on the URL method configured in the dashboard\):
 
-- **`POST`:** RudderStack sends the whole event payload \(as shown above\) as the JSON body of the `POST` request.
-- **`PUT`:** RudderStack sends the whole event payload \(as shown above\) as the JSON body of the `PUT` request.
-- **`GET`:** RudderStack sends the traits that you pass in the `identify` call as query parameters of the `GET` request. If your traits contain nested values, RudderStack flattens these values and sends them as query parameters. For example, the company ID specified in the above payload's traits is sent as `"company.id": "company-A"`.
+- **`POST`**: RudderStack sends the whole event payload \(as shown above\) as the JSON body of the `POST` request.
+- **`PUT`**: RudderStack sends the whole event payload \(as shown above\) as the JSON body of the `PUT` request.
+- **`GET`**: RudderStack sends the traits passed in the `identify` call as the query parameters of the `GET` request. If your traits contain nested values, RudderStack flattens these values and sends them as the query parameters. For example, the company ID specified in the above payload's `traits` is sent as `"company.id": "company-A"`.
 
 ## Page
 
@@ -176,7 +176,7 @@ For each `page` call, RudderStack sends the request in the following manner\(dep
 
 - **`POST`:** RudderStack sends the whole event payload \(as shown above\) as the JSON body of the `POST` request.
 - **`PUT`:** RudderStack sends the whole event payload \(as shown above\) as the JSON body of the `PUT` request.
-- **`GET`:** RudderStack sends the properties that you pass on the `page` call as query parameters of the `GET` request. If your properties contain nested values, RudderStack flattens these values and sends them as query parameters. For example, the experiment variant specified in the above payload's properties is sent as `"experiment.variant": "old"`.
+- **`GET`:** RudderStack sends the properties passed in the `page` call as query parameters of the `GET` request. If your properties contain nested values, RudderStack flattens these values and sends them as query parameters. For example, the experiment variant specified in the above payload's properties is sent as `"experiment.variant": "old"`.
 
 ## Track
 
