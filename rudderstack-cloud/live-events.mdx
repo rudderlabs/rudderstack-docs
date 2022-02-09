@@ -1,5 +1,5 @@
 ---
-# slug: "/docs/get-started/live-events"
+# slug: "/docs/rudderstack-cloud/live-events"
 title: "Live Events"
 description: >-
   Detailed technical description of the Live Events Debugger feature to debug
@@ -8,97 +8,16 @@ description: >-
 
 # Live Events
 
-RudderStack's **Live Events** is a debugger that shows a stream of live events collected from your sources and sent to the connected destinations in real-time.
+RudderStack's **Live Events** is a debugger that shows a live stream of events flowing from your sources to the connected destinations in real-time.
 
-With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
-
+With this feature, you can save your troubleshooting time and efforts by debugging the errors if events fail at the destination level. 
 <div class="warningBlock">
 
-To view the live events, make sure you have configured your source and destination in RudderStack. For more information on adding a source and destination in RudderStack, follow this <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack//">**guide**</a>.
+Live Events can only be viewed for the sources and destinations configured in the RudderStack dashboard. For more information on adding a source and destination, refer to <a href="https://rudderstack.com/docs/rudderstack-cloud/connections/">**Connections**</a>.
 
 </div>
 
-## How to view the live events
-
-This section includes the steps to view the live events for your sources and destinations.‌
-
-### Sources
-
-To view the live events collected from your source in real-time, follow these steps:‌
-
-- Make sure you have configured a source and destination in RudderStack. Follow this [**guide**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/diff/drafts/-MdGKMQEdba4ZbKvF7Mf/connections/adding-source-and-destination-rudderstack) for more information.
-- Select the **Connections** option on your left nav bar and click on the source for which you want to view the live events.
-
-<!-- <img src="../assets/image (119).png" /> -->
-
-<img src="../assets/image (119).png" alt="Sources" />
-<span class="imageTitle"></span>
-
-- Then, click on the **Live Events** button on the top right as shown:
-
-<!-- <img src="../assets/image (123).png" /> -->
-
-<img src="../assets/image (123).png" alt="Live Events" />
-<span class="imageTitle"></span>
-
-- Now you can ingest the data into RudderStack through
-  the source and see the collected events in this window.
-
-<!-- <img src="../assets/image (115).png" /> -->
-
-<img src="../assets/image (115).png" alt="Ingest Data" />
-
-<div class="infoBlock">
-
-For details on the information available in the **Live Events** window, check the [**Source Live Events**](https://rudderstack.com/docs/get-started/live-events/#source-live-events) section.
-
-</div>
-
-### Destinations
-
-To view the live events sent to your destination in real-time, follow these steps:
-
-- Make sure you have configured a source and destination in RudderStack. Follow this [**guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack//) for more information.
-
-<div class="warningBlock">
-
-Make sure your destination is configured in the **Cloud mode**. Refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes//">Connection Modes</a> guide for more information on the Cloud mode.
-
-</div>
-
-- Select the **Connections** option on your left nav bar and click on the destination for which you want to view the live events.
-
-<!-- <img src="../assets/image (117).png" /> -->
-
-<img
-  src="../assets/image (117).png"
-  alt="Connections - Live Events"
-/>
-<span class="imageTitle"></span>
-
-- Then, click on the **Live Events** button on the top right as shown:
-
-<!-- <img src="../assets/image (124) (1).png" /> -->
-
-<img src="../assets/image (124) (1).png" alt="Live Events" />
-<span class="imageTitle"></span>
-
-- You should be able to see the events sent to the destination in this window.
-
-<!-- <img src="../assets/image (125).png" /> -->
-
-<img
-  src="../assets/image (125).png"
-  alt="Events sent to the destination"
-/>
-
-<div class="infoBlock">
-
-For details on the information available in the **Live Events** window, check the **Destination Live Events** section.
-
-</div>
-
-## Source live events
+## Source Live Events
 
 The **Live Events** feature gives you real-time visibility into the source events collected by RudderStack. The key information includes:
 
@@ -113,51 +32,104 @@ The **Live Events** feature gives you real-time visibility into the source event
   correctly on your website.
 </div>
 
-## Destination live events
+### View source Live Events
 
-When routing events to a destination, it can be frustrating if the events sent do not show up in the destination and not knowing the reason for failure only makes it worse.
+To view the live events collected from your source in real-time, follow these steps:‌
 
-The **Live Events** feature gives you real-time visibility into the destination's responses. The key information captured includes:
+1. Select the **Connections** option from the left navigation bar and click on the source for which you want to view the live events.
 
-- **Event Name:** Corresponding to the name of the event.
-- **Error Code**: In case the event fails, this gives specific details related to the error. These details include the error response and the date and time of the attempt to send the event.
+<img src="../assets/image (119).png" alt="Sources" />
+<span class="imageTitle"></span>
 
-The payload sent to the destination can be seen by clicking on an event. This is shown in the right-hand side window on the same page, as shown:
+2. Click on the **Live Events** button present at the top right position.
 
-<!-- <img src="../assets/screen-shot-2021-06-30-at-10.03.52-pm.png" /> -->
+<img src="../assets/image (123).png" alt="Live Events" />
+<span class="imageTitle"></span>
+
+3. Ingest data into RudderStack through the source and you will be able to see the collected events in the **Live Events** window.
+
+<img src="../assets/image (115).png" alt="Ingest Data" />
+
+## Destination Live Events
+
+When routing events to a destination, it can be frustrating if the sent events do not show up in the destination and not knowing the reason for failure only makes it worse.
+
+The **Live Events** feature gives you real-time visibility into the destination's responses. The key information includes:
+
+- The **name** of the event.
+- The **error code** of the event in case of event failure. It gives the specific details related to an error including the error response and the date and time of the attempt to send the event.
+
+<div class="warningBlock">
+
+Your destination should be configured in the **Cloud mode** to view the Live Events.  Refer to <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes//">Connection Modes</a> for more information on the Cloud mode.
+
+</div>
+
+The payload sent to the destination can be seen by clicking on an event. This is shown in the right-hand side window on the same page:
 
 <img
   src="../assets/screen-shot-2021-06-30-at-10.03.52-pm.png"
   alt="Payload to the destination"
 />
 
-### Use-case
+### View destination Live Events
 
-Suppose you are trying to send some events to Facebook Custom Audience but they are not being delivered. Upon checking the **Live Events** tab for the Custom Audience destination, you see the following error in the UI:
+To view the live events sent to your destination in real-time, follow these steps:
 
-<!-- <img src="../assets/image (116).png" /> -->
+1. Select the **Connections** option from the left navigation bar and click on the destination for which you want to view the live events.
+
+<img
+  src="../assets/image (117).png"
+  alt="Connections - Live Events"
+/>
+<span class="imageTitle"></span>
+
+2. Click on the **Live Events** button present at the top right position.
+
+<img src="../assets/image (124) (1).png" alt="Live Events" />
+<span class="imageTitle"></span>
+
+3. You should be able to see the events sent from the source to the destination in the **Live Events** window.
+
+<img
+  src="../assets/image (125).png"
+  alt="Events sent to the destination"
+/>
+
+## View Live Events with transformations 
+
+You can also view the **Live Events** in case a <a href="https://rudderstack.com/docs/transformations/#adding-a-transformation">**transformation**</a> is associated with a destination. RudderStack lets you view the **Live Events** before and after a transformation is applied.
+
+<img
+  src="https://user-images.githubusercontent.com/59817155/137110303-0e9f42f2-4b5d-4a1a-ab34-5cbeea10f2ec.png"
+  alt="Transformation Live Events"
+/>
+
+RudderStack also notifies you about any dropped events or errors during the transformation along with the details, as shown in the following image:
+
+<img
+  src="https://user-images.githubusercontent.com/59817155/137110584-e2ff154e-8eba-42d3-9f3b-3022bb10f141.png"
+  alt="Dropped events"
+/>
+
+
+## Use-case
+
+Consider a scenario where some events are sent to [Facebook Custom Audience](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) platform but they are not delivered. Upon checking the **Live Events** tab for the **Facebook Custom Audience** destination, the following error is observed:
 
 <img
   src="../assets/image (116).png"
   alt="Custom Audience destination error"
 />
 
-You can click on the **See full error** option to see the error response, as shown:
-
-<!-- <img src="../assets/screen-shot-2021-07-08-at-4.21.13-pm.png" /> -->
+Clicking the **See full error** option displays the following error response:
 
 <img
   src="../assets/screen-shot-2021-07-08-at-4.21.13-pm.png"
   alt="See full error"
 />
 
-As seen above, you were trying to send an `identify` event to Facebook Custom Audience, which the destination does not support. You can refer to the [**Custom Audience documentation**](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) to confirm that only `track` events are supported. As a result, when RudderStack tries sending the `identify` event to the destination, an error is thrown. RudderStack tries sending this event several times before marking it as aborted.
-
-<div class="successBlock">
-
-  The responses received from the destination help you in quickly identifying
-  and resolving the issues.
-</div>
+As can be observed, an `identify` event is being sent to the **Facebook Custom Audience** platform, which is not supported. The [**Custom Audience documentation**](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) mentions that only `track` events are supported. As a result, when RudderStack tries sending the `identify` event to the destination, an error is thrown. RudderStack tries sending this event several times before marking it as aborted.
 
 <div class="warningBlock">
 
@@ -165,33 +137,12 @@ Live events are shown for all the destinations. However, the **payload of the ev
 
 </div>
 
-## Transformation live events
 
-<div class="infoBlock">
-
-  This feature is applicable for cases where you have connected a <a href="https://rudderstack.com/docs/transformations/#adding-a-transformation">**transformation**</a> to a destination.
-
-</div>
-
-RudderStack gives you the option of viewing the events before and after a transformation is applied.
-
-<img
-  src="https://user-images.githubusercontent.com/59817155/137110303-0e9f42f2-4b5d-4a1a-ab34-5cbeea10f2ec.png"
-  alt="Transformation Live Events"
-/>
-
-RudderStack also notifies you about any dropped events or any errors during the transformation along with the details, as shown in the following image:
-
-<img
-  src="https://user-images.githubusercontent.com/59817155/137110584-e2ff154e-8eba-42d3-9f3b-3022bb10f141.png"
-  alt="Dropped events"
-/>
-
-## FAQs
+## FAQ
 
 ### Why are my events failing?
 
-Routing events to a destination can fail for various reasons. Often, it is because the destination is configured incorrectly. Some other reasons could be incorrect/bad event payload structure, rate-limiting by the destination, etc. In some rare cases, the destination could be down too.
+Routing events to a destination can fail for various reasons. Often, it is due to the incorrect configuration of a destination. Other reasons might include incorrect/bad event payload structure, rate-limiting by the destination, etc. In some rare cases, the destination could be down too.
 
 ## Contact us
 
