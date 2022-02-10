@@ -65,9 +65,9 @@ Note that the <strong>Start Date</strong> setting is valid only for the first (h
 
 - You can also import a custom report as a resource. Refer to the [Adding a custom report as resource](#adding-custom-reports-as-resources) section below for more information.
 
-That's it! Google AdWords is now successfully configured as a source. RudderStack will start importing the Google AdWords data as per the specified frequency. 
+Google AdWords is now successfully configured as a source. RudderStack will start importing the Google AdWords data as per the specified frequency. 
 
-You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destinations**, as shown:
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
 
 <img src="../assets/cloud-extract-sources/google-adwords-connect-destinations.png" alt="Connecting a destination to AdWords source" />
 
@@ -104,7 +104,7 @@ Your custom report and the selected resources will be visible under **Custom Res
 | Report: Click Performance     | `click_performance_report`     | Contains information about your AdWords' click performance. The columns in this table are `AccountDescriptiveName`, `AdGroupStatus`, `CampaignId`, `Clicks`, and `ClickType`.                           |
 | Report: Placement Performance | `placement_performance_report` | Contains the your AdWords account's placement performance. The columns in this table are `AverageCpc`, `AdGroupStatus`, `Clicks`, `Device`, and `Ctr`.                                         |
 
-## FAQs
+## FAQ
 
 ### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
