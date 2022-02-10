@@ -3,7 +3,7 @@
 title: "Architecture"
 description: >-
   Detailed technical description of the RudderStack architecture with a special focus on
-  the backend (data plane).
+  the data plane.
 ---
 
 # Architecture
@@ -24,26 +24,21 @@ The control plane offers a UI to configure your event data sources and destinati
 
 ## Data plane
 
-The data plane is RudderStack's core engine responsible for:
+The data plane(backend) is RudderStack's core engine responsible for:
 
-- Receiving and buffering the event data
+- Receiving and processing the event data
 - Transforming the events in the required destination format
 - Relaying the events to the destination
 
+The RudderStack data plane consists of three major components:
+
+- RudderStack server ([rudder-server](https://github.com/rudderlabs/rudder-server))
+- Transformations module
+- Standalone streaming database(PostgreSQL) for the event data
+
 <div class="infoBlock">
 
-The data plane uses PostgreSQL as a streaming database for the event data. Refer to the <a href="#data-plane-architecture">Data Plane Architecture</a> section below for more information.
-</div>
-
-## Transformation
-
-RudderStack's Transformations module transforms the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript.
-
-RudderStack also supports **user transformations** that let you code custom JavaScript functions to implement specific use-cases on your event data. These include - but are not limited to - event enrichment, filtering, removing sensitive PII information, etc.
-
-<div class="successBlock">
-
-  Refer to the <a href="https://rudderstack.com/docs/transformations/">RudderStack Transformations</a> guide for more information on the user transformations.
+Refer to the <a href="#data-plane-architecture">data plane architecture</a> section below for more information on each of these components.
 </div>
 
 ## Data plane architecture
@@ -54,7 +49,7 @@ A simplified version of the RudderStack data plane architecture is as shown:
 
 <img src="../assets/general/rudderstack-backend-architecture.png" alt="RudderStack backend architecture" />
 
-The following sections give a detailed overview of each of the components of the RudderStack Data Plane**:**
+The following sections give a detailed overview of each of the components of the RudderStack data plane.
 
 ### Gateway
 
@@ -77,25 +72,36 @@ The gateway also temporarily stores all the received event data into an internal
 ### Processor
 
 The processor fetches the data from the gateway and forwards it to the transformation module. Once the event data is transformed, the processor forwards it to the router module that sends it to the required destination.
-
+ 
 ### Transformation module
 
-The transformation module takes the event data from the processor, converts it into the required destination format, and sends it back to the processor. The processor then forwards this data to the router, which then sends it to the desired destination.
+RudderStack's Transformations module transforms the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript.
+
+RudderStack also supports **user transformations** that let you code custom JavaScript functions to implement specific use-cases on your event data. These include - but are not limited to - event enrichment, filtering, removing sensitive PII information, etc.
+
+<div class="successBlock">
+
+  Refer to the <a href="https://rudderstack.com/docs/transformations/">RudderStack Transformations</a> guide for more information on the user transformations.
+</div>
+
+Once the events are transformed, the transformation module sends them back to the processor. The processor then forwards this data to the router, which in turn relays it to the desired destination.
 
 ### Router
 
 The router module sends the processed and transformed event data to your desired destinations, like marketing and analytics platforms, CRMs, data warehouses, etc.
 
-<div class="successBlock">
+### Database
 
-RudderStack also supports user-defined transformations where you can use custom JavaScript functions to implement specific use-cases on your event data, like filtering, sampling, removing sensitive information, etc.
+The data plane uses PostgreSQL as a streaming database for the event data. RudderStack temporarily stores the events in the database so that it can retry sending them in case of delivery failures. The events are deleted once they are successfully delivered.
 
-Refer to our <a href="https://github.com/rudderlabs/sample-user-transformers">Transformations GitHub Repository</a> for some useful templates that you can use to create your own user transformations.
+<div class="infoBlock">
+  
+RudderStack does not persist any events or store any user information in the database.
 </div>
 
 ## Data plane workflow
 
-The following steps detail the RudderStack backend (data plane) workflow:
+The following steps detail the RudderStack data plane workflow:
 
 1. The gateway module receives the event data from the source.
 
@@ -121,9 +127,9 @@ The following steps detail the RudderStack backend (data plane) workflow:
 
 <img src="../assets/general/rudderstack-backend-workflow.png" alt="RudderStack Backend Workflow" />
 
-## Customizing the RudderStack backend
+## Customizing the RudderStack data plane
 
-Although the default configuration works just fine for most use-cases, RudderStack also gives you the flexibility to customize the backend with a variety of configuration options. Some of these include backing up events to S3, rejecting malicious requests by defining the maximum size of the event, and more.
+Although the default configuration works just fine for most use-cases, RudderStack also gives you the flexibility to customize the data plane with a variety of configuration options. Some of these include backing up events to S3, rejecting malicious requests by defining the maximum size of the event, and more.
 
 You can do so by tweaking the [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) file to suit your application's needs.
 
