@@ -6,9 +6,9 @@ description: Detailed description of the Teammates option in RudderStack Cloud.
 
 # Teammates
 
-Teammates feature in RudderStack Cloud lets you add and manage other users in your current workspace. It also enables easier collaboration between you and other members of your team or organization.
+Teammates feature lets you add and manage other users in your current workspace. It also enables easier collaboration between you and other members of your team or organization.
 
-The below table specifies the number of teammates you can add to your workspace in each RudderStack Cloud plan:
+The below table specifies the number of teammates you can add to your workspace in different RudderStack Cloud plans:
 
 | **Plan**                         | **Number of Teammates** |
 | :------------------------------- | :---------------------- |
@@ -28,18 +28,15 @@ To invite a user in your current workspace, follow these steps:
 
 1. Click on the **Teammates** option in the left navigation bar and click on **Invite Teammate** button:
 
-<img src="../../assets/image (82).png" />
+<img src="../assets/general/invite-teammates.png" />
 
 2. Enter the email address and select a privilege you want to assign to the invited user. Then, click on **Invite**.
 
-<img src="../../assets/team-2.png" />
+<img src="../assets/general/teammate-details.png" />
 
 ## User permissions
 
-An invited user can be assigned one of the following three roles:
-
-
-
+An invited user can be assigned any of the following three roles:
 
 ### View-only
 
@@ -70,7 +67,7 @@ View-only users can run tests on existing transformations but they cannot add, m
 
 ### Read-write
 
-A user with the read-write privileges has all the permissions as a view-only user. Additionally, (s)he has permissions for different workspace features and options, as mentioned below:
+A read-write user has all the permissions of a view-only user. Additionally, (s)he has permissions for different workspace features and options, as mentioned below:
 
 
 | Option          | View | Add | Modify | Delete |
@@ -83,7 +80,7 @@ A user with the read-write privileges has all the permissions as a view-only use
 
 ### Admin
 
-This user role has complete access to the RudderStack workspace, including all the options and features in the current plan. The permissions for this role are listed below:
+This user role has complete access to the RudderStack workspace, including all the options and features in the current plan:
 
 | Option          | View | Add | Modify | Delete |
 | :-------------- | :--- | :-- | :----- | :----- |
@@ -91,6 +88,11 @@ This user role has complete access to the RudderStack workspace, including all t
 | [Destinations](https://www.rudderstack.com/docs/get-started/destinations/)    | Yes  | Yes | Yes    | Yes    |
 | [Connections](https://rudderstack.com/docs/connections/)     | Yes  | Yes | Yes    | Yes    |
 | [Transformations](https://rudderstack.com/docs/transformations/) | Yes  | Yes | Yes    | Yes    |
+
+<div class="infoBlock">
+
+The permissions for read-write and admin roles differ for the [Team](https://www.rudderstack.com/docs/rudderstack-cloud/teammates/#team) feature. 
+</div>
 
 ### Other permissions
 
@@ -111,22 +113,24 @@ View-only users can look at events that might contain sensitive information, lik
 
 #### Syncs
 
-| Option          | View-only | Read-write | Admin |
-| :-------------- | :--- | :-- | :----- | :----- |
-| Sync Cloud Extract and Warehouse Actions sources  | No  | Yes | Yes  |
-| View sync and history details   | Yes  | Yes | Yes  |
+| Option  | View-only | Read-write | Admin |
+| :-------| :---------| :----------| :------|
+| Sync Cloud Extract and Warehouse Actions sources | No  | Yes | Yes  |
+| View sync and history details | Yes  | Yes | Yes  |
+
 
 #### Audit logs
 
-| Option          | View-only | Read-write | Admin |
-| :-------------- | :--- | :-- | :----- | :----- |
+| Option  | View-only | Read-write | Admin |
+| :-------| :---------| :----------| :------|
 | View audit logs | No  | Yes | Yes  |
+
 
 #### Team
 
-| Option          | View-only | Read-write | Admin |
-| :-------------- | :--- | :-- | :----- | :----- |
-| View team member and role| Yes  | Yes | Yes  |
+| Option  | View-only | Read-write | Admin |
+| :-------| :---------| :----------| :------|
+| View team member and role | Yes  | Yes | Yes  |
 | Invite new user | No  | No | Yes  |
 | Modify permissions of any user | No  | No | Yes  |
 | Delete pending invitation | No  | No | Yes  |
