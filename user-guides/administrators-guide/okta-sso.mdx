@@ -2,57 +2,45 @@
 # slug: "/docs/user-guides/administrators-guide/okta-sso"
 title: "Okta SSO Setup"
 description: >-
-  Step-by-step guide to setting up the RudderStack SSO (Single Sign-On) feature
-  with Okta.
+  Step-by-step guide on setting up the RudderStack SSO (Single Sign-On) feature with Okta.
 ---
 
 # Okta SSO Setup
 
-This document lists the steps to follow in order to configure and enable Okta SSO for your organization.
+This guide lists the steps to configure and enable Okta SSO for your organization.
 
 [![Plan: Enterprise](https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge)](https://rudderstack.com/enterprise-quote)
 
 ## Configuring the RudderStack SSO App
 
-- Log into your Okta application as an Administrator. Then, navigate to the **Applications** page in the dashboard.
+- Log into your Okta application as an Administrator. Then, go to the **Applications** page in the dashboard.
 - Click on the **Create App Integration** button to integrate Okta with RudderStack, as shown:
 
-<!--![](../../.gitbook/assets/1 (24).png)-->
-
-<img src="../../assets/1 (24).png" alt="Create App Integration" />
+<img src="../../assets/user-guides/okta-sso-1.png" alt="Create App Integration" />
 
 - Select **SAML 2.0** as the sign-in method, as shown:
 
-<!--![](../../.gitbook/assets/2 (29).png)-->
-
-<img src="../../assets/2 (29).png" alt="SAML 2.0" />
+<img src="../../assets/user-guides/okta-sso-2.png" alt="SAML 2.0" />
 
 - Enter **RudderStack** as the **App name**.
 
-<!--![](../../.gitbook/assets/3 (26).png)-->
-
-<img src="../../assets/3 (26).png" alt="Rudderstack as app name" />
+<img src="../../assets/user-guides/okta-sso-3.png" alt="Rudderstack as app name" />
 
 In the next page, enter the following settings:
 
-<!--![](../../.gitbook/assets/4 (26).png)-->
-
-<img src="../../assets/4 (26).png" alt="Enter the settings" />
+<img src="../../assets/user-guides/okta-sso-4.png" alt="Enter the settings" />
 
 - The settings are as follows:
 
-  - **Single sign on URL**: Set this to**`https://auth.rudderstack.com/v1/saml_callback`**.
-  - **Audience URI \(SP Entity ID\)**: Set this to
-
-    **`https://auth.rudderstack.com/v1/saml_callback`**.
-
-  - **Default RelayState**: This field should be kept empty.
+  - **Single sign on URL**: Set this to `https://auth.rudderstack.com/v1/saml_callback`.
+  - **Audience URI \(SP Entity ID\)**: Set this to `https://auth.rudderstack.com/v1/saml_callback`.
+  - **Default RelayState**: Enter the domain name of your organization's email. For example, if your company email is `abc@company.com`, then this field should be set to `company.com`.
   - **Name ID format**: From the dropdown, select **Unspecified**.
   - **Application username**: From the dropdown, select **Okta username**.
 
-- Then, scroll down to the **Attribute Statements \(optional\)** section and fill the the three shown fields as shown. Click on the **Next** button after you fill these details.
+- Then, scroll down to the **Attribute Statements \(optional\)** section and fill the following three fields, as shown:
 
-<img src="../../assets/5 (24).png" />
+<img src="../../assets/user-guides/okta-sso-5.png" />
 
 | Name              | Name format \(optional\) | Value            |
 | :---------------- | :----------------------- | :--------------- |
@@ -60,37 +48,30 @@ In the next page, enter the following settings:
 | LastName          | Unspecified              | `user.lastName`  |
 | PersonImmutableID | Unspecified              | `user.id`        |
 
-- In the next page, select the **I'm an Okta customer adding an internal app** option and click on the **Finish** button.
+- In the next page, select the **I'm an Okta customer adding an internal app** option and click on **Finish**.
 
-The RudderStack Single Sign On app is now created and you will be taken to the app's page.
-
-The next section covers how to enable SSO for your organization.
+The RudderStack Single Sign-On app is now created and you will be taken to the app's page.
 
 ## Enabling SSO
 
-To enable SSO for your organization, follow these steps:
+This section lists the steps to enable SSO for your organization.
 
 - Under the **Sign-On** section of the app, click on the **View Setup Instructions** button. It should redirect you to the page called **How to Configure SAML 2.0 for RudderStack Application**.
 
-<!--![](../../.gitbook/assets/6 (22).png)-->
-
-<img src="../../assets/6 (22).png" alt="Sign on" />
+<img src="../../assets/user-guides/okta-sso-6.png" alt="Sign-on" />
 
 - Then, copy the following three fields and share them with the RudderStack team:
   - **Identity Provider Single Sign-On URL**
   - **Identity Provider Issuer**
   - **X.509 Certificate**
 
-<!--![](../../.gitbook/assets/image_-7-.png)-->
-
-<img src="../../assets/image_-7-.png" alt="Copy the following fields" />
+<img src="../../assets/user-guides/okta-sso-7.png" alt="SSO fields to copy and share" />
 
 <div class="successBlock">
 
-  Once you share the above fields with the RudderStack team, they will enable
-  SSO for your organization.
+  Once you share the above fields with the RudderStack team, SSO will be enabled for your organization.
 </div>
 
-## Contact Us
+## Contact us
 
-For more information on any of the steps covered in this guide, you can [**contact us**](mailto:docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
