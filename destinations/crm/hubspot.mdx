@@ -151,10 +151,9 @@ RudderStack supports sending custom properties to HubSpot via the `identify` cal
 Refer to the <a href="https://knowledge.hubspot.com/crm-setup/manage-your-properties">HubSpot Knowledge Base</a> for more information on creating custom properties.
 </div>
 
-<div class="warningBlock">
+When you provide any custom property in the event, RudderStack automatically converts the field name into the lower case and replaces any space with an underscore. This is because HubSpot does not accept properties in the upper case and spaces.
 
-When you provide any custom property, RudderStack automatically converts the name into the lower case and replaces any space with an underscore. This is because HubSpot does not accept properties in the upper case and spaces.
-</div>
+RudderStack then maps the field values present in the `traits` to the corresponding HubSpot custom property.
 
 <div class="warningBlock">
 
