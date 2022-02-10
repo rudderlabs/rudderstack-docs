@@ -1,7 +1,7 @@
 ---
 # slug: "/docs/user-guides/migration-guides/rudderstack-migration-guide"
 title: "Migrating from Segment to RudderStack"
-description: Step-by-step guide to migrate from Segment to RudderStack.
+description: Step-by-step guide on migrating from Segment to RudderStack.
 ---
 
 # Migrating from Segment to RudderStack
@@ -10,29 +10,25 @@ This document explains the step-by-step process of migrating from [Segment](http
 
 ## Migrating the workspace
 
-Start with creating an account in [RudderStack](https://app.rudderstack.com/signup?type=freetrial). You will then see the following dashboard containing your data plane URL required to [set up your data plane](#setting-up-the-rudderstack-data-plane):
+Start with creating an account in [RudderStack](https://app.rudderstack.com/signup?type=freetrial). You will then see the following dashboard containing your data plane URL:
 
 <img src="../../assets/user-guides/rudderstack-dashboard.png" alt="RudderStack dashboard" />
 
 Similar to Segment, you will need to set up your source-destination connections in the dashboard and facilitate the event data flow.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> guide for more information.
+</div>
 
 <div class="successBlock">
 
 Keep your source write key and the data plane URL handy.
 </div>
 
-<div class="infoBlock">
-
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
-</div>
-
-## Setting up the RudderStack data plane
-
-RudderStack requires a data plane for the events to flow through. By [signing up](https://app.rudderstack.com/signup?type=freetrial) for RudderStack, ‌you get a RudderStack-hosted data plane which you can use to update your existing SDK implementations.
-
 If you need more support or want us to manage your hosting, you can [contact us](mailto:%20support@rudderstack.com).
 
-## Updating SDK implementation
+## Updating the SDK implementation
 
 Depending on the platform, follow these steps to move your existing SDK implementation to RudderStack:
 
@@ -94,8 +90,7 @@ RudderClient rudderClient = RudderClient.getInstance(
 </ul>
 <div class="successBlock">
 
-  You can use the rest of your code as is, as RudderStack SDK API is fully compatible
-  with Segment.
+  You can use the rest of your code without any changes as the RudderStack SDK API is fully compatible with Segment.
 </div>
       </TabPanel>
       <TabPanel>
@@ -131,7 +126,7 @@ The instance of the <code class="inline-code">RudderClient</code> is available a
 </ul>
 <div class="successBlock">
 
-You can use the rest of your code as is, as the RudderStack SDK API is fully compatible with Segment.
+You can use the rest of your code without any changes as the RudderStack SDK API is fully compatible with Segment.
 </div>        
       </TabPanel>
       <TabPanel>
@@ -173,7 +168,7 @@ For the minified version of the above script, refer to the <a href="https://www.
 
 <div class="successBlock">
 
-  You can use the rest of your code as is, as the RudderStack SDK API is fully compatible with Segment.
+  You can use the rest of your code without any changes as the RudderStack SDK API is fully compatible with Segment.
 </div>
 </li>
 </ul>
@@ -183,7 +178,7 @@ For the minified version of the above script, refer to the <a href="https://www.
 
 ## Backfilling Segment anonymous IDs
 
-When migrating from Segment or a similar analytics tool, you might already have some anonymous traffic that has not yet been identified. When Segment or RudderStack track events for non-identified users, both assign a random UUID as an `anonymousId`. This ID is used to track an unknown user until they are identified. It also allows RudderStack to track user behavior, journeys, and first-touch attribution before and after the users are identified.
+When migrating from Segment or a similar analytics tool, you might already have some anonymous traffic that has not yet been identified. When Segment and RudderStack track events for non-identified users, both assign a random UUID as an `anonymousId`. This ID is used to track an unknown user until they are identified. It also allows RudderStack to track user behavior, journeys, and first-touch attribution before and after the users are identified.
 
 <div class="successBlock">
 
