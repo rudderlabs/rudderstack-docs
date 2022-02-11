@@ -14,7 +14,7 @@ RudderStack lets you send your event data to App Center via its native web SDKs.
 
 ## Getting Started
 
-Before configuring your source and destination on the RudderStack, please check whether the platform you are sending the events from is supported by App Center. Please refer the following table to do so:
+Before configuring your source and destination on the RudderStack, check whether the platform you are sending the events from is supported by App Center. Refer the following table to do so:
 
 | **Connection Mode** | **Web** | **Mobile**    | **Server** |
 | :------------------ | :------ | :------------ | :--------- |
@@ -108,7 +108,7 @@ val rudderClient = RudderClient.getInstance(
       <TabPanel>
         Follow these steps to add App Center to your iOS project:
 <ul>
-<li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-AppCenter</code> extension
+<li>Go to your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-AppCenter</code> extension
 <span>
 
 ```ruby
@@ -136,7 +136,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 </span>
 <div class="infoBlock">
 
-The following requirements must be met to use App Center: Your iOS project is set up in Xcode 11 or later on macOS version 10.14.4 or later. You're targeting devices running on iOS 9.0 or later.
+To use App Center, your iOS project must be set up in Xcode 11 or later on macOS version 10.14.4 or later. Also, you must be targeting devices running on iOS 9.0 or later.
 </div>
 </li>
 </ul>
@@ -144,7 +144,7 @@ The following requirements must be met to use App Center: Your iOS project is se
       <TabPanel>
         To add AppCenter to your React Native project:
 
-Add the RudderStack-App Center module to your app using :
+Add the RudderStack-App Center module to your app as shown:
 <span>
 
 ```bash
@@ -269,7 +269,7 @@ Make sure to use the <code class="inline-code">await</code> keyword with the <co
 
 ## Track
 
-A `track` call lets you track custom events as they occur in your web application. For more information on the `track` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+A `track` call lets you track custom events as they occur in your web application. For more information on the `track` call, refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
 
 A sample `track` call looks like the following:
 
@@ -291,7 +291,7 @@ A sample `track` call looks like the following:
 
 The `eventProperties` object should only contain the values of type `String` and `Number`- the other property types will be simply ignored, if sent.
 
-For example, if eventProperties is set as:
+For example, if `eventProperties` is set as:
 
 ```javascript
 {
@@ -299,17 +299,17 @@ For example, if eventProperties is set as:
     "red",
     "black"
   ],
-  "city": "varkala",
-  "state": "kerala"
+  "city": "New Orleans",
+  "state": "Louisiana"
 }
 ```
 
-then it will be sent to App Center as:
+then RudderStack will send the data to App Center as:
 
 ```javascript
 {
-  "city": "varkala",
-  "state": "kerala"
+  "city": "New Orleans",
+  "state": "Louisiana"
 }
 ```
 
@@ -332,79 +332,11 @@ The above <code class="inline-code">screen</code> call is directly passed on to 
 
 </div>
 
-## Opt-in & Opt-out
+## Opting in/out of sending user data to App Center
 
-Any users visting your app can express his consent over sending data to App Center and based on his consent you can either Opt in or Opt out that user's data from sending to App Center.
+Any users visting your app can express their consent over sending data to App Center. Based on this consent you can either opt in or out of sending that user's data to App Center.
 
-Please refer to the below section for more details on how to use this feature
-
-<!--{% tabs %}
-{% tab title="Android" %}
-Firstly import Appcenter's `Analytics` Module as shown below: \`\`groovy import com.microsoft.appcenter.analytics.Analytics;
-
-Then add the below script just after the initialization of the Android SDK:
-```kotlin
-rudderClient.onIntegrationReady("App Center") {
-    // have your own logic to get the user consent
-    if (userConsent) {
-        // enabling appcenter's analytics module
-        Analytics.setEnabled(true);
-    } else {
-        // disabling appcenter's analytics module
-        Analytics.setEnabled(false);
-    }
-}
-```
-
-{% endtab %}
-
-{% tab title="iOS" %}
-Firstly import the Appcenter's `Analytics` Module as shown below:
-
-```objectivec
-@import AppCenterAnalytics;
-```
-
-Then add the below script just after the initialization of the iOS SDK:
-
-```objectivec
-if(userConsent)
-{
-    // enabling appcenter's analytics module
-    [MSACAnalytics setEnabled:true];
-}
-else
-{
-    // disabling appcenter's analytics module
-    [MSACAnalytics setEnabled:false];
-}
-```
-
-{% endtab %}
-
-{% tab title="React Native" %}
-Firstly import the `AppCenterIntegrationFactory` as shown below:
-
-```javascript
-import AppcenterIntegrationFactory from "@rudderstack/rudder-integration-appcenter-react-native/src/bridge"
-```
-
-Then add the below script just after the initalization of the React Native SDK:
-
-```javascript
-await rudderClient.registerCallback("App Center", () => {
-  if (userconsent) {
-    // enabling appcenter's analytics module
-    AppcenterIntegrationFactory.enableAnalytics()
-  } else {
-    // disabling appcenter's analytics module
-    AppcenterIntegrationFactory.disableAnalytics()
-  }
-})
-```
-
-{% endtab %}
-{% endtabs %} -->
+Refer to the section below for more details on how to use this feature.
 
 <Tabs>
   <TabList>
@@ -498,6 +430,6 @@ The **API Secret Key** can be found as **App Secret** on the **Getting Started**
 
 The App Center SDK uploads logs in a batch of 50. If the SDK doesn't have 50 logs to send, it will still send logs after 3 seconds \(set by default\). There can be a maximum of 3 batches sent in parallel. In this case, this interval of 3 seconds is the **transmission interval**. Note that the value of this transmission interval must always be between 3 seconds and 86400 seconds \(one day\).
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring App Center with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
