@@ -5,25 +5,23 @@ description: Step-by-step guide to send your leads data from RudderStack to Mark
 
 # Marketo Lead Import
 
-[**Marketo**](https://marketo.com) is a leading marketing automation platform that lets you identify the right audiences through effective behavioral tracking. It also lets you enhance their overall product experience through personalized marketing campaigns. Marketo offers cutting-edge email marketing, lead management, and revenue attribution solutions across all major businesses verticals.
+[**Marketo**](https://marketo.com) is a leading marketing automation platform. It lets you identify the right audiences and deliver enhanced user experiences through effective marketing campaigns and behavioral tracking.
 
-RudderStack supports **Marketo Lead Import** as a destination to which you can send your leads seamlessly.
-
-<div class="successBlock">
-
-**Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/marketo_bulk_upload">GitHub repo</a>**.
-</div>
-
-## Getting Started
-
-To enable sending your leads data to **Marketo Lead Import**, you will need to add it as a destination in RudderStack.
+RudderStack supports Marketo Lead Import as a destination to which you can send large amounts of lead records asynchronously via Marketo's [bulk API](https://developers.marketo.com/rest-api/bulk-import/bulk-lead-import/).
 
 <div class="successBlock">
 
-The most common source can be a <a href="https://rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> source, as RudderStack only accepts <code class="inline-code">identify</code> events for this destination.
+Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/marketo_bulk_upload">GitHub repository</a>.
 </div>
 
-Before configuring your source and destination on the RudderStack, verify if Marketo supports the source platform by referring to the following table:
+## Getting started
+
+<div class="successBlock">
+
+This destination is ideal for your <a href="https://rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> sources, as it only accepts <code class="inline-code">identify</code> events.
+</div>
+
+Before configuring Marketo Lead Import as a destination in RudderStack, verify if the source platform is supported by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -32,53 +30,63 @@ Before configuring your source and destination on the RudderStack, verify if Mar
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
-Once you have confirmed that the platform supports sending events to Marketo Lead Import, follow these steps:
+Once you have confirmed that the source platform supports sending events to Marketo Lead Import, follow these steps:
 
-* Choose a source to which you would like to add Marketo Lead Import as a destination.
+- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Marketo Lead Import**.
 
 <div class="infoBlock">
 
 Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack//">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-* From the list of destinations, select **Marketo Lead Import**. Assign a name to your destination and then click on **Next**.
-* You should then see the following **Connection Settings** page, where you can fill the relevant information and click on **Next** to proceed.
+- Assign a name to your destination and then click on **Next**.
+
+## Connection settings
+
+To successfully configure Marketo Lead Import as a destination, you will need to configure the following settings:
 
 <img src="../../assets/event-stream-destinations/marketo-lead-import-connection-settings.png" />
 
-### Connection Settings
-
-The settings to configure Marketo Lead Import as a destination are listed below:
-
-* **Munchkin Account ID**: Enter your Munchkin ID, which is a unique identifier for your Marketo instance. To obtain this ID, log into your Marketo instance and navigate to the **Admin** section. In the left menu, under **Integration**, click on the **Munchkin** option. Your Munchkin Account ID will be listed in the **Tracking Code** section on the main screen.
+- **Munchkin Account ID**: Enter your Munchkin ID, which is a unique identifier for your Marketo instance. To obtain this ID, log into your Marketo instance and navigate to the **Admin** section. In the left menu, go to **Integration** > **Munchkin**. Your Munchkin Account ID will be listed in the **Tracking Code** section on the main screen.
 
 <div class="infoBlock">
 
 For more information on finding your Munchkin Account ID, refer to the <a href="https://nation.marketo.com/t5/knowledgebase/how-to-find-your-munchkin-id-for-a-marketo-instance/ta-p/248432">Marketo knowledge base</a>.
 </div>
 
-* **Client ID**: To get your **Client ID**, go to the the **Admin** section as mentioned above. Then, in the left menu, under **Integration**, click on **LaunchPoint**. Finally, select the API service and click on **View Details** to get your client ID.
+- **Client ID**: To get your **Client ID**, go to the the **Admin** section of your Marketo instance. In the left menu, go to **Integration** > **LaunchPoint**. Finally, select the API service and click on **View Details** to get your client ID.
 
 <div class="infoBlock">
 
 For more information on finding your Client ID, refer to the <a href="https://developers.marketo.com/rest-api/authentication/">Marketo knowledge base</a>.
 </div>
 
-* **Client Secret**: You can find your Marketo client secret next to the **Client ID** obtained in the previous step.
+- **Client Secret**: You can find your Marketo client secret next to the **Client ID** obtained in the previous step.
+- **De-duplication Field**: Marketo uses this field to de-duplicate user information. Make sure it is also present in the **Column Fields Mapping** setting below.
 
-* **Column Fields Mapping**: This option lets you map your incoming events' traits to the **Leads** table columns' API names. 
+<div class="warningBlock">
+
+This field should be present in all the events sent to Marketo Lead Import for proper de-duplication.
+</div>
+
+<div class="infoBlock">
+
+While calling the <a href="https://developers.marketo.com/rest-api/bulk-import/bulk-lead-import/">Bulk Lead Import API</a>, RudderStack uses this field for lookup. Marketo then uses it to de-duplicate user information. Generally, <code class="inline-code">email</code> should be preferred for de-duplication.
+</div>
+
+- **Column Fields Mapping**: This option lets you map your incoming events' traits to the **Leads** table columns' API names. 
 
 For example, to send the data from the event traits `firstName` and `email` to the Marketo columns with the API names `name` and `Email`, set the mapping as shown:
 
-| **RudderStack Traits** | **Marketo API Name** |
+| **RudderStack traits** | **Marketo API name** |
 | :--- | :--- |
 | `firstName` | `name` |
 | `email` | `Email` |
 
-You can find your columns' API names by following this [**documentation**](https://developers.marketo.com/rest-api/bulk-import/bulk-custom-object-import/).
+You can find your columns' API names by following the [**Marketo documentation**](https://developers.marketo.com/rest-api/bulk-import/bulk-custom-object-import/).
 
 ## Identify
 
@@ -106,9 +114,9 @@ rudderanalytics.identify("name123", {
 });
 ```
 
-The corresponding mapping to the Marketo traits in case of the above event is shown in the following table:
+The corresponding mapping to the Marketo traits for the above event is as shown:
 
-| **Marketo Field Name** | **Traits** |
+| **Marketo field name** | **Traits** |
 | :--- | :--- |
 | `name` | `firstName` |
 | `Email` | `email` |
@@ -116,12 +124,12 @@ The corresponding mapping to the Marketo traits in case of the above event is sh
 | `phone` | `phone_number` |
 | `timestamp` | `createdAt` |
 
-RudderStack sends the following values to Marketo \(corresponding to the sample `identify` call above\):
+RudderStack then sends the following values to Marketo:
 
-`name`,`Email`,`birthday`,`phone`,`timestamp`
+```
+Name, name@surname.com, , , Thu Mar 24 2020 17:46:45 GMT+0000 (UTC)
+```
 
-`Name`,[`name@surname.com`](mailto:name@surname.com),,,`Thu Mar 24 2020 17:46:45 GMT+0000 (UTC)`
+## Contact us
 
-## Contact Us
-
-If you come across any issues while configuring or using Marketo Lead Import with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
