@@ -1643,9 +1643,9 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"rudderstack-dashboard",
-    "title":"Understanding the RudderStack Dashboard",
-    "link":"/user-guides/administrators-guide/rudderstack-dashboard/",
+    "key":"rudderstack-grafana-dashboard",
+    "title":"RudderStack Grafana Dashboard",
+    "link":"/user-guides/administrators-guide/rudderstack-grafana-dashboard/",
     "content":[]
  },
  {
