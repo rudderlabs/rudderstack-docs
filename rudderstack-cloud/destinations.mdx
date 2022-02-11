@@ -1,4 +1,5 @@
 ---
+# slug: "/docs/rudderstack-cloud/destinations"
 title: "Destinations"
 description: >-
   Detailed guide on adding destinations in RudderStack Cloud.
@@ -10,10 +11,10 @@ A **destination** is a cloud tool or platform where you want to send the data vi
 
 <div class="successBlock">
 
-RudderStack currently supports over 100 <a href="https://rudderstack.com/docs/destinations/">destinations</a>. These include <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a>, <a href="https://rudderstack.com/docs/destinations/crm/">CRMs</a>, <a href="https://rudderstack.com/docs/destinations/analytics/">analytics</a> and <a href="https://rudderstack.com/docs/destinations/marketing/">marketing</a> platforms, and more.
+RudderStack currently supports over a hundered <a href="https://rudderstack.com/docs/destinations/">destinations</a>. These include <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a>, <a href="https://rudderstack.com/docs/destinations/crm/">CRMs</a>, <a href="https://rudderstack.com/docs/destinations/analytics/">analytics</a> and <a href="https://rudderstack.com/docs/destinations/marketing/">marketing</a> platforms, and more.
 </div>
 
-RudderStack Cloud provides **Destinations** option in the left navigation bar that allows you to view all the configured destinations in your RudderStack dashboard:
+RudderStack Cloud provides **Destinations** option in the left navigation bar that allows you to view all the configured destinations in the RudderStack dashboard:
 
 <img src="../assets/general/rudderstack-destinations.png" alt="RudderStack destinations" />
 
@@ -25,42 +26,28 @@ Follow these steps to add a destination in RudderStack:
 1. Log in to the **RudderStack dashboard**.
 
 <img src="../assets/1 (26).png" alt="RudderStack Dashboard" />
-<span class="imageTitle"></span>
 
-2. Click **Destinations** in the left navigation bar and then click on **New Destination**. 
+2. Click on **New Destination** and select the destination you want to set up in RudderStack.
 
+<img src="../assets/general/directory-destination.png" alt="RudderStack destinations" />
+ 
+3. Assign a name to the destination and click on **Next**.
+4. Click on **Add Source** to connect a source with this destination. Refer to the detailed steps for [Adding a source](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source).
 
-<img src="../assets/1 (27).png" alt="Add Destination" />
-<span class="imageTitle"></span>
+<img src="../assets/general/add-source-destination.png" alt="RudderStack destinations" />
 
-<div class="infoBlock">
-Alternatively, you can add a destination directly connected to your source from the source details window as shown:
-
-<img
-  src="../assets/latest-1.png"
-  alt="Connect your source to a destination"
-/>
-<span class="imageTitle"></span>
-</div>
-
-3. Click on the destination you want to set up in RudderStack. 
-4. Assign a name to the destination and click on **Next**.
-5. Click on **Add Source** to add a new source to be connected with this destination. Refer to the detailed steps for [Adding a source]().
-
-Alternatively, you can select an existing source (if any) for this destination and click on **Next**.
-
+Alternatively, you can select an existing source (if any) for this destination and click on Next.
 <img
   src="../assets/screen-shot-2021-05-19-at-4.54.30-pm.png"
   alt="Select the data source"
 />
-<span class="imageTitle"></span>
 
-6. Configure the destination with the relevant connection settings. Refer to the specific [**destination documentation**](https://rudderstack.com/docs/destinations/) for more details on these settings.
+5. Configure the destination with the relevant connection settings. Refer to the specific [**destination documentation**](https://rudderstack.com/docs/destinations/) for more details on these settings.
 
 <img src="../assets/ga1 (1).png" alt="Configure the destination" />
 <span class="imageTitle"></span>
 
-7. Click on the **CREATE NEW TRANSFORMATION** option if you want to add a [**transformation**](https://rudderstack.com/docs/transformations/). Otherwise, click on **Next**.
+6. Click on **CREATE NEW TRANSFORMATION** if you want to add a [**transformation**](https://rudderstack.com/docs/transformations/). Otherwise, click on **Next**.
 
 <img
   src="../assets/screen-shot-2021-05-19-at-5.01.56-pm (1).png"
@@ -68,7 +55,7 @@ Alternatively, you can select an existing source (if any) for this destination a
 />
 <span class="imageTitle"></span>
 
-Your destination should be configured successfully.
+The destination should be configured successfully.
 
 <img src="../assets/latest23.png" alt="Configuration successful" />
 
@@ -80,7 +67,7 @@ To get details about a configured destination, click on it to see following view
 
 These options can be explained as follows:
 
-- **Rename**: Click on the edit icon next to the destination name to rename the destination:
+- **Rename**: Lets you rename the destination by clicking the edit icon next to the destination's name.
 
 <img
   src="../assets/screen-shot-2021-08-25-at-11.18.08-am.png"
@@ -88,24 +75,24 @@ These options can be explained as follows:
 />
 <span class="imageTitle"></span>
 
-- **Sources**: It displays all the sources connected to a destination and their status (enabled/disabled). You can also connect a new source by clicking on the **Add source** button.
+- **Sources**: Displays all the sources connected to a destination and their status (enabled/disabled). You can also connect a new source by clicking on the **Add source** button.
 
-- **Transformation**: You can add an existing transformation to the destination via this option.
+- **Transformation**: Lets you add an existing transformation to the destination via this option.
 
 <div class="infoBlock">
 
 To add a new transformation, go to the <strong>Transformations</strong> option in the left navigation bar and click on <strong>New Transformation</strong>.
 </div>
 
-- **Events**: You can get all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by source and time period.
+- **Events**: Displays all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by source and time period.
 
-- **Configuration**: This option lets you change the existing configuration of a destination.
+- **Configuration**: Lets you change the existing configuration of a destination.
 
-- **Settings**: This option gives you additional destination-related details, such as:
+- **Settings**: This option provides additional destination-related details, such as:
   
-  - **Enabled**: You can enable or disable sending data to the destination via this option.
-  - **Destination ID**: This is the unique identifier associated with your destination.
-  - **Permanently delete destination**: You can delete the destination by clicking on the **Delete** button.
+  - **Enabled**: Lets you enable or disable sending data to the destination via this option.
+  - **Destination ID**: Unique identifier associated with your destination.
+  - **Permanently delete destination**: Lets you delete the destination by clicking on the **Delete** button.
 
 <div class="warningBlock">
 
@@ -114,9 +101,9 @@ Before you delete a destination, make sure there are no sources connected to it.
 
 ### Cloning a destination
 
-You can duplicate an existing destination with the same settings by following these steps:
+You can duplicate an existing destination by following these steps:
 
-1. Click on the **Duplication Destination** option in the **Destination Details** page:
+1. Click on the **Duplication Destination** option in the **Destination Details** page.
 
 <img src="../assets/general/duplicate-destination-1.png" alt="Duplicate a destination" />
 
@@ -124,7 +111,7 @@ You can duplicate an existing destination with the same settings by following th
 
 <img src="../assets/general/duplicate-destination-2.png" alt="Assigning a name to the duplicate destination" />
 
-3. Connect the destination to a source:
+3. Connect the destination to a source.
 
 <img src="../assets/general/duplicate-destination-3.png" alt="Connecting a new source to duplicate destination" />
 
