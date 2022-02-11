@@ -82,7 +82,7 @@ The `page` call lets you record your website's page views with any additional re
     <TabPanels>
       <TabPanel>
         <div class="warningBlock">
-        RudderStack does not support sending the <code class="inline-code">page</code> to HubSpot via the cloud mode.
+        RudderStack does not support sending the <code class="inline-code">page</code> calls to HubSpot via the cloud mode.
         </div>
       </TabPanel>
       <TabPanel>
@@ -170,7 +170,7 @@ A `track` call lets you record various user actions and any properties associate
 
 To associate a `track` call with a user, you need to specify the user's `email` under `context.traits` . Additionally, RudderStack associates the `track` events with the same user after an `identify` request is successfully made.
 
-A sample `track` event is as shown below:
+A sample `track` event is as shown:
 
 ```javascript
 rudderanalytics.track(
