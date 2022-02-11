@@ -65,7 +65,9 @@ Make sure you add the source write key as query parameter to the URL. This is re
 
 ## Supported events
 
-The following sections list the Customer.io event types supported by RudderStack. 
+The following sections list the Customer.io event types supported by RudderStack.
+
+### Common data mappings
 
 The common data mappings for each of the supported event types is listed in the following table:
 
@@ -94,7 +96,7 @@ RudderStack supports the following Customer.io email events:
 | `Sent`           | The email was successfully sent to the recipient.                                           |
 | `Drafted`        | The sender created an email draft.                                                          |
 
-The supported property mappings are as follows:
+The supported property mappings in addition to the [common mappings](#common-data-mappings) listed above are as follows:
 
 | Customer.io property    | RudderStack property        |
 | :-----------------------| :---------------------------|
@@ -109,9 +111,6 @@ The supported property mappings are as follows:
 | `data.campaign_id`      | `properties.campaignId`     |
 | `data.content_id`       | `properties.contentId`      |
 | `data.newsletter_id`    | `properties.newsletterId`   |
-| `data.customer_id`      | `userId`                    |
-| `data.event_id`         | `properties.eventId`        |
-| `data.identifiers.id`   | `userId`                    |
 
 ### Customer events
 
@@ -122,14 +121,11 @@ RudderStack supports the following Customer.io customer events:
 | `Subscribed`              |  The customer was subscribed to a campaign.         |
 | `Unsubscribed`            |  The customer was unsubscribed from a campaign.     |
 
-The supported property mappings are as follows:
+The supported property mappings in addition to the [common mappings](#common-data-mappings) listed above is shown:
 
 | Customer.io property | RudderStack property    |
 | :--------------------| :-----------------------|
 | `data.email_address` | `context.traits.email`  |
-| `data.customer_id`   | `userId`                |
-| `data.event_id`      | `properties.eventId`    |
-| `data.identifiers.id`| `userId`                |
 
 ### SMS events
 
@@ -146,7 +142,7 @@ RudderStack supports the following Customer.io SMS events:
 | `Converted`       | The conversion goal attributed to the SMS was matched.                                   |
 | `Bounced`         | The delivery provider's report that it was unable to deliver the SMS to the recipient.   |
 
-The supported property mappings are as follows:
+The supported property mappings in addition to the [common mappings](#common-data-mappings) listed above are as follows:
 
 | Customer.io property   | RudderStack property      |
 | :----------------------| :-------------------------|
@@ -157,9 +153,6 @@ The supported property mappings are as follows:
 | `data.recipient`       | `context.traits.email`    |
 | `data.failure_message` | `properties.reason`       |
 | `data.campaign_id`     | `properties.campaignId`   |
-| `data.customer_id`     | `userId`                  |
-| `data.event_id`        | `properties.eventId`      |
-| `data.identifiers.id`  | `userId`                  |
 
 ### Push notification events
 
@@ -177,14 +170,12 @@ RudderStack supports the following Customer.io push notification events:
 | `Bounced`        | An invalid device token was reported by the delivery provider.                      |
 | `Dropped`        | The push notification was not sent to the recipient as the device token bounced.    |
 
-The supported property mappings are as follows:
+The supported property mappings in addition to the [common mappings](#common-data-mappings) listed above are as follows:
 
 | Customer.io property              | RudderStack property            |
 | :---------------------------------| :-------------------------------|
 | `data.action_id`                  | `properties.actionId`           |
 | `data.broadcast_id`               | `properties.broadcastId`        |
-| `data.customer_id`                | `userId`                        |
-| `data.identifiers.id`             | `userId`                        |
 | `data.delivery_id`                | `properties.deliveryId`         |
 | `data.href`                       | `properties.link.url`           |
 | `data.link.id`                    | `properties.link.id`            |
@@ -194,7 +185,6 @@ The supported property mappings are as follows:
 | `data.recipients.failure_message` | `properties.reason`             |
 | `data.campaign_id`                | `properties.campaignId`         |
 | `data.device_platform`            | `properties.devicePlatform`     |
-| `data.event_id`                   | `properties.eventId`            |
 
 ### Webhook events
 
@@ -208,20 +198,17 @@ RudderStack supports the following Customer.io webhook events:
 | `Attempted`        | A webhook event was attempted unsuccessfully and would be retried. |
 | `Drafted`          | A webhook draft was created by the sender.                         |
 
-The supported property mappings are as follows:
+The supported property mappings in addition to the [common mappings](#common-data-mappings) listed above are as follows:
 
 | Customer.io property    | RudderStack property     |
 | :-----------------------| :------------------------|
 | `data.action_id`        | `properties.actionId`    |
 | `data.broadcast_id`     | `properties.broadcastId` |
-| `data.customer_id`      | `userId`                 |
-| `data.identifiers.id`   | `userId`                 |
 | `data.delivery_id`      | `properties.deliveryId`  |
 | `data.href`             | `properties.link.url`    |
 | `data.link.id`          | `properties.link.id`     |
 | `data.recipient`        | `context.traits.email`   |
 | `data.failure_message`  | `properties.reason`      |
-| `data.event_id`         | `properties.eventId`     |
 
  ### Slack events
 
@@ -235,20 +222,17 @@ RudderStack supports the following Customer.io Slack events:
 | `Attempted`       |  A Slack message was attempted unsuccessfully and would be retried. |
 | `Drafted`         |  A Slack message was drafted by the sender.                         |
 
-The supported property mappings are as follows:
+The supported property mappings in addition to the [common mappings](#common-data-mappings) listed above are as follows:
 
 | Customer.io property    | RudderStack property     |
 | :-----------------------| :------------------------|
 | `data.action_id`        | `properties.actionId`    |
 | `data.broadcast_id`     | `properties.broadcastId` |
-| `data.customer_id`      | `userId`                 |
-| `data.identifiers.id`   | `userId`                 |
 | `data.delivery_id`      | `properties.deliveryId`  |
 | `data.href`             | `properties.link.url`    |
 | `data.link.id`          | `properties.link.id`     |
 | `data.recipient`        | `context.traits.email`   |
 | `data.failure_message`  | `properties.reason`      |
-| `data.event_id`         | `properties.eventId`     |
 
 The following image highlights the setup in the Customer.io dashboard:
 
