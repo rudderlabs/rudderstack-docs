@@ -6,40 +6,38 @@ description: Step-by-step guide to add Snowflake as a destination in RudderStack
 
 # Snowflake
 
-Snowflake is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the features of a modern data warehouse, including scalability, ease of use, secure access to your data, accelerated analytics capabilities, and much more.
+Snowflake is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the modern data warehouse features like scalability, ease of use, secure access to your data, advanced analytics capabilities, and more.
 
-RudderStack allows you to configure Snowflake as a destination to dump your event data seamlessly.
+RudderStack lets you configure Snowflake as a destination to seamlessly store your event data.
 
 <div class="infoBlock">
 
-Please check our <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide to know how events are mapped to the tables in Snowflake.
-
+Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for information on how the events are mapped to the Snowflake tables.
 </div>
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snowflake">GitHub repo</a>.**
+<strong>Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snowflake">RudderStack GitHub</a> repo.</strong>
 </div>
 
-## Snowflake User Setup
+## Setting up a user in Snowflake
 
-To enable RudderStack access, please make sure you have an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS`.
+To enable RudderStack access, make sure you have an `ACCOUNTADMIN`, or an account that has the `MANAGE GRANTS` privilege.
 
-The following sections illustrate how to create a virtual warehouse, a database, a role, and an user in Snowflake:
+The following sections illustrate how to set up a virtual warehouse, a database, a role, and an user in Snowflake:
 
-### Creating a Virtual Warehouse
+### Creating a virtual warehouse
 
-Create a `X-Small warehouse`by following the wizard on Snowflake's website as shown in the screenshot below:
+In your Snowflake console, create a `X-Small` warehouse:
 
-<img src="../assets/screenshot-2020-03-31-at-11.56.32-am.png" /><span class="imageTitle">creating x-small warehouse screenshot</span>
+<img src="../assets/dw-integrations/snowflake-create-warehouse.png" />
 
 <div class="infoBlock">
 
-You can set your data warehouse size as per your future data volume.
-
+Set your data warehouse size as per your data volume requirements.
 </div>
 
-Alternatively, you can also use SQL to create a warehouse, as shown:
+Alternatively, you can create a new warehouse by running the following SQL commands:
 
 ```sql
 CREATE WAREHOUSE "RUDDER_WAREHOUSE"
@@ -51,45 +49,43 @@ CREATE WAREHOUSE "RUDDER_WAREHOUSE"
 
 <div class="infoBlock">
 
-It is recommended that you set <code class="inline-code">AUTO_SUSPEND</code> to ~10 mins, and enable <code class="inline-code">AUTO_RESUME</code> to avoid any extra costs.
-
+We recommend that you set <code class="inline-code">AUTO_SUSPEND</code> to ~10 mins and enable <code class="inline-code">AUTO_RESUME</code> to avoid any extra costs.
 </div>
 
-### Creating a Database
+### Creating a database
 
 <div class="warningBlock">
 
-Please create a new database to avoid conflicts with your existing data, as RudderStack creates its own tables.
-
+Create a new database to avoid conflicts with your existing data, as RudderStack creates its own tables while storing your events.
 </div>
 
-The following screenshot demonstrates the **Create Database** option in Snowflake.
+The following image demonstrates the **Create Database** option in Snowflake.
 
-<img src="../assets/screenshot-2020-02-27-at-5.33.31-pm.png" /><span class="imageTitle">Creating a database in Snowflake</span>
+<img src="../assets/dw-integrations/snowflake-create-database.png" />
 
-Alternatively, you can also use SQL to create a database, as shown:
+Alternatively, you can create a new database by running the following SQL command:
 
 ```sql
 CREATE DATABASE "RUDDER_EVENTS";
 ```
 
-### Creating a Role for RudderStack
+### Creating a role for RudderStack
 
-Please execute the following SQL commands to create a new role with the required permissions to load your data into the warehouse:
+Run the following SQL commands to create a new role with the required permissions to load your data into the newly-created warehouse:
 
-- Create a new role
+1. Create a new role called `RUDDER`:
 
 ```sql
 CREATE ROLE "RUDDER";
 ```
 
-- Grant access to the virtual warehouse
+2. Grant access to the warehouse `RUDDER_WAREHOUSE`:
 
 ```sql
 GRANT USAGE ON WAREHOUSE "RUDDER_WAREHOUSE" TO ROLE "RUDDER";
 ```
 
-- Grant access to the database
+3. Grant access to the database `RUDDER_EVENTS`:
 
 ```sql
 GRANT USAGE ON DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
@@ -97,11 +93,11 @@ GRANT CREATE SCHEMA ON DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
 GRANT ALL ON ALL SCHEMAS IN DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
 ```
 
-### Creating a User
+### Creating a user
 
-Finally, please create a user to connect RudderStack to the previously created Snowflake warehouse, as shown:
+Finally, create a user to connect RudderStack to the newly-created Snowflake warehouse, as shown:
 
-<img src="../assets/screenshot-2020-02-27-at-5.34.41-pm.png" /><span class="imageTitle">Creating a user in Snowflake</span>
+<img src="../assets/dw-integrations/snowflake-create-user.png" alt="New Snowflake user" />
 
 Alternatively, you can use SQL to create a user in Snowflake, as shown:
 
@@ -109,62 +105,77 @@ Alternatively, you can use SQL to create a user in Snowflake, as shown:
 CREATE USER "RUDDER_USER"
   MUST_CHANGE_PASSWORD = FALSE
   DEFAULT_ROLE = "RUDDER"
-  PASSWORD = "strong_unique_password";
+  PASSWORD = "<your_password>";
 GRANT ROLE "RUDDER" TO USER "RUDDER_USER";
 ```
 
-## Configuring Snowflake in RudderStack
+## Configuring Snowflake destination in RudderStack
 
-In order to enable dumping data to Snowflake, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Snowflake.
+To start sending data to Snowflake, you will first need to add it as a destination in RudderStack and connect it to a data source. Once the destination is enabled, the events will automatically start flowing to your Snowflake instance.
 
-To do so, please follow these steps:
+Follow these steps to configure your Azure data lake as a destination in RudderStack:
 
-- Choose a source to which you would like to add Snowflake as a destination. You can also simply create a destination and connect it to a source later.
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), configure the data source. Then, select **Snowflake** from the list of destinations.
 
 <div class="infoBlock">
 
-Please follow our <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination</a> guide to know how to add a source in RudderStack.
-
+Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack//">Adding a Source and Destination in RudderStack</a> guide for more information.
 </div>
 
-- After choosing a source, select **Snowflake** from the list of destinations.
-- Give your destination a name and then click on **Next**. You should then see the following screen:
-<img src="../assets/4 (3) (2) (2) (1) (2).png" /><span class="imageTitle">Connection Settings for configuring Snowflake as a Destination</span>
+* Assign a name to your destination and click on **Next**. You should then see the following screen:
 
-<img src="../assets/5 (2).png" /><span class="imageTitle">Connection Settings for configuring Snowflake as a Destination</span>
+<img src="../assets/dw-integrations/snowflake-connection-settings.png" alt="Snowflake destination settings in RudderStack" />
+<img src="../assets/dw-integrations/snowflake-connection-settings-1.png" alt="Snowflake destination settings in RudderStack" />
 
-- Add the required credentials in the **Connection Settings** as described below:
+### Connection settings
 
-  - **Account** - This is the account ID of your warehouse. Account ID is part of the Snowflake URL. The following examples illustrate the slight differences in the account ID for various cloud providers**.**
+Add the following credentials to set up the Snowflake destination:
 
-  | Account ID sample           | Snowflake URL                                                    | Snowflake cloud provider                                        |
+  - **Account**: Enter the account ID of your Snowflake warehouse. This account ID is part of the Snowflake URL. 
+  
+  The following examples illustrate the slight differences in the account ID for various cloud providers:
+
+  | Account ID example            | Corresponding Snowflake URL                                                    | Snowflake cloud provider                                        |
   | :-------------------------- | :--------------------------------------------------------------- | :-------------------------------------------------------------- |
-  | **qya56091.us-east-1**      | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`      | Amazon Web Services \(AWS\)                                     |
-  | **rx18795.east-us-2.azure** | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure \(Azure[\)](https://azure.microsoft.com/en-us/) |
-  | **ah76025.us-central1.gcp** | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform \(GCP\) _\*\*_                            |
+  | `qya56091.us-east-1`         | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`      | AWS                                   |
+  | `rx18795.east-us-2.azure` | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure  |
+  | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
 
-  - **Database** - The name of the database, as created in the [Creating a Database](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-database) section
-  - **Warehouse** - The name of the warehouse, as created in the [Creating a Virtual Warehouse](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-virtual-warehouse) section
-  - **User** - This is the username, as created in [Creating a User](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-user) section.
-  - **Password** - This is the password, as created in [Creating a User](https://rudderstack.com/docs/data-warehouse-integrations/snowflake#creating-a-user) section.
+  - **Database**: Enter the name of the database created in the [**Creating a database**](#creating-a-database) section above.
 
-- The following settings are applicable if you are using an Amazon S3 bucket for object storage:
-  - **S3 bucket name** - This is your unique S3 bucket name.
-  - **AWS Access Key ID** - This can be obtained from the AWS Console.
-  - **AWS Secret Access Key** - This can be obtained from AWS Console. Please refer to the [Setting Up Amazon S3](https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#setting-up-amazon-s3) section for more details.
-- Please grant the following permissions to the IAM user:
+  - **Warehouse**: Enter the name of the warehouse created in the [**Creating a virtual warehouse**](#creating-a-virtual-warehouse) section above.
 
-```javascript
-"Effect": "Allow",
-"Action": [
-  "s3:GetObject",
-  "s3:PutObject",
-  "s3:PutObjectAcl",
-  "s3:ListBucket"
-]
-```
+  - **User**: Enter the name of the user created in the [**Creating a user**](#creating-a-user) section above.
 
-## Configuring Snowflake Integration
+  - **Password**: Enter the password you set for the above user.
+
+  - **Namespace**: Enter the schema name for the warehouse where RudderStack will create all the tables.
+
+  <div class="infoBlock">
+
+  If you don't specify any namespace, RudderStack will set this to the source name by default.
+  </div>
+
+  - **Sync Frequency**:  Specify how often RudderStack should sync the data to your Snowflake warehouse.
+
+  - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+
+  - **Exclude Window**: This optional setting lets you set a time window when RudderStack **will not** sync the data to the warehouse.
+
+  ### Configuring the object storage
+
+  RudderStack lets you configure the following object storage configuration settings while setting up your Snowflake destination:
+
+  - **Use RudderStack-managed Object Storage**: Enable this setting to use RudderStack-managed buckets for object storage.
+
+   <div class="warningBlock">
+
+  This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
+  </div>
+
+  - **Choose your Cloud**: Select the cloud provider for your Snowflake instance.
+
+Refer to the following settings depending on your cloud provider:
 
 <Tabs>
   <TabList>
@@ -174,18 +185,44 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
   </TabList>
   <TabPanels>
     <TabPanel>
+    <ul>
+      <li><strong>Staging S3 Storage Bucket Name</strong>: Specify the name of your S3 bucket where RudderStack will store the data before loading it into Snowflake.</li>
+      <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>AWS Access Key ID</strong>: Enter your AWS access key ID obtained from the AWS console.</li>
+      <li><strong>AWS Secret Access Key</strong>:  Enter the AWS secret access key.  Refer to this <a href="https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#setting-up-amazon-s3">Permissions</a> section for more information. </li>
+      <li><strong>Enable Server-side Encryption for S3</strong>: Toggle on this setting to enable server-side encryption for your S3 bucket.</li>
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li><strong>Staging Azure Blob Storage Container Name</strong>: Specify the name of your Azure container where RudderStack will store the data before loading it into Snowflake.</li>
+      <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Azure Blob Storage Account Name</strong>: Enter the account name for the Azure container.</li>
+      <li><strong>Azure Blob Storage Account Key</strong>:  Enter the account key for your Azure container.  Refer to the <a href="https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage">Blob Storage setup</a> section for more information. </li>
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li><strong>Staging GCS Object Storage Bucket Name</strong>: Specify the name of your GCS bucket where RudderStack will store the data before loading it into Snowflake.</li>
+      <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Credentials</strong>: Paste the contents of your GCP service account credentials JSON. The service account should have a role with <code class="inline-code">storage.objectCreator</code> access. </li>
+    </ul>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
-        If you have Amazon Web Services (AWS) as your cloud provider and want to leverage S3 as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration.
+## Configuring cloud storage integration with Snowflake
 
-Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration">here</a>
+This section lists the steps required to configure the **Storage Integration** setting specified in the [**Configuring the object storage**](#configuring-the-object-storage) section above, depending on your cloud provider.
 
-**Configuring snowflake integration with AWS **
+### AWS
 
-<ol>
-<li>Create a policy in AWS:</li>
+If you have Amazon Web Services (AWS) as your cloud provider and want to use S3 as your object storage, you will need to follow a few more steps to configure your cloud storage integration with Snowflake. You can find the detailed instructions in this [**Snowflake documentation**](https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration).
 
-Replace <code class="inline-code">&lt;bucket&gt;</code> and <code class="inline-code">&lt;prefix&gt;</code> with your values in the JSON below. And create the policy with a name of your choice.
-<span>
+1. **Create a policy in AWS**: In the following JSON, replace `<bucket_name>` and `<prefix>` with the name of your S3 bucket and the prefix set in the [**Configuring the object storage**](#configuring-the-object-storage) section above, and create the policy with a name of your choice.
 
 ```javascript
 {
@@ -200,12 +237,12 @@ Replace <code class="inline-code">&lt;bucket&gt;</code> and <code class="inline-
         "s3:DeleteObject",
         "s3:DeleteObjectVersion"
       ],
-      "Resource": "arn:aws:s3:::<bucket>/<prefix>/*"
+      "Resource": "arn:aws:s3:::<bucket_name>/<prefix>/*"
     },
     {
       "Effect": "Allow",
       "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3:::<bucket>",
+      "Resource": "arn:aws:s3:::<bucket_name>",
       "Condition": {
         "StringLike": {
           "s3:prefix": ["<prefix>/*"]
@@ -215,18 +252,20 @@ Replace <code class="inline-code">&lt;bucket&gt;</code> and <code class="inline-
   ]
 }
 ```
-</span>
-<li>
-  Create a role and attach the above policy in AWS: - Create role of type <strong>
-    Another AWS account
-  </strong> - Enter your AWS account ID and enable <strong>
-    Require External ID
-  </strong> - For external ID enter a dummy ID such as 0000. We will modify this
-  later on. - And attach the policy created in Step 1. - Give your role a name and
-  keep the role ARN handy for the next step.
-</li>
-<li> Create cloud storage integration in Snowflake </li>
-<span>
+
+2. **Create a role and attach the above policy in AWS**: Follow the steps listed below:
+
+    1. Create a role of type **Another AWS account**.
+    2. Enter your AWS account ID and enable the **Require External ID** option.
+    3. For external ID, you can add a dummy value like 0000. This can be modified later.
+    4. Attach the policy created in Step 1. Assign a name to this role and keep the role ARN handy for the next step.
+
+<div class="infoBlock">
+
+Keep this role ARN handy for the next step.
+</div>
+
+3. **Create the cloud storage integration in Snowflake**: Replace `<integration_name>` with the name of your choice and `<iam_role>` with the role ARN obtained in Step 2 and run the following command:
 
 ```sql
 CREATE STORAGE INTEGRATION <integration_name>
@@ -234,35 +273,25 @@ CREATE STORAGE INTEGRATION <integration_name>
   STORAGE_PROVIDER = S3
   ENABLED = TRUE
   STORAGE_AWS_ROLE_ARN = '<iam_role>'
-  STORAGE_ALLOWED_LOCATIONS = ('s3://<bucket>/<path>/', 's3://<bucket>/<path>/')
-  [ STORAGE_BLOCKED_LOCATIONS = ('s3://<bucket>/<path>/', 's3://<bucket>/<path>/') ]
+  STORAGE_ALLOWED_LOCATIONS = ('s3://<bucket_name>/<path>/', 's3://<bucket_name>/<path>/')
+  [ STORAGE_BLOCKED_LOCATIONS = ('s3://<bucket_name>/<path>/', 's3://<bucket_name>/<path>/') ]
 ```
-</span>
-<code class="inline-code">&lt;integration_name&gt;</code> with an integration
-name of your choice.
-<code class="inline-code">&lt;iam_role&gt;</code> with the role ARN from the
-previous step.
 
-Record the values: <code class="inline-code">&lt;integration_name&gt;</code>.
+<div class="infoBlock">
 
-<li> Retrieve the AWS IAM user for your Snowflake account as shown:</li>
-<span>
+Record the value for <code class="inline-code">&lt;integration_name&gt;</code>.
+</div>
 
-```sql
+4. Retrieve the AWS IAM user for your Snowflake account as shown:
+
+```
+Copy
 DESC INTEGRATION <integration_name>;
 ```
-</span>
-<code class="inline-code">&lt;integration_name&gt;</code> - The integration name
-used in the previous step.
 
-Record the values - <code class="inline-code">STORAGE_AWS_ROLE_ARN</code> and <code class="inline-code">STORAGE_AWS_EXTERNAL_ID</code> .
+5. Grant the IAM user permissions to access the bucket objects in AWS. Choose the role you created in Step 2 and edit the trust relationship as shown in the following JSON:
 
-<li> Grant IAM user permission to access bucket objects in AWS </li>
-Choose the role created in Step 2 and edit the trust relationship with the following
-JSON.
-<span>
-
-```javascript
+```JSON
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -282,39 +311,21 @@ JSON.
   ]
 }
 ```
-</span>
-<code class="inline-code">&lt;snowflake_user_arn&gt;</code> is the <code class="inline-code">
-  STORAGE_AWS_ROLE_ARN
-</code> in the previous step.
-<code class="inline-code">&lt;snowflake_external_id&gt;</code> is the <code class="inline-code">
-  STORAGE_AWS_EXTERNAL_ID
-</code> in the previous step.
+Note that `<snowflake_user_arn>` is the `STORAGE_AWS_ROLE_ARN` option seen in Step 4, whereas `<snowflake_external_id>` is the `STORAGE_AWS_EXTERNAL_ID`.
 
-<li> Grant integration access to role in Snowflake:</li>
-<span>
+6. Grant integration access to the Snowflake role you created in the [**Creating a role for RudderStack**](#creating-a-role-for-rudderStack) section by running the following command:
 
 ```sql
-grant usage on integration <integration_name> to role <sf_role>
+GRANT usage ON integration <integration_name> TO ROLE "RUDDER"
 ```
-</span>
-  <code class="inline-code">&lt;integration_name&gt;</code> is the integration created in the Step 3.
-  <code class="inline-code">&lt;sf_role&gt;</code> is the role in Snowflake you want to grant access to.
-</ol>
-      </TabPanel>
-      <TabPanel>
-        If you have Microsoft Azure as your cloud provider and want to leverage Azure Blob Storage as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration.
+Here, `<integration_name>` is the integration created in the Step 3.
 
-Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-guide/data-load-azure-config.html#option-1-configuring-a-snowflake-storage-integration">here</a>.
+### Azure
 
-**Configuring snowflake integration with Azure **
-<ol>
-<li>Create a storage account in Azure.</li>
-<li>
+If you have Microsoft Azure as your cloud provider and want to leverage Azure Blob Storage as your object storage, you will need to follow a few more steps to configure your storage integration with Snowflake. You can find the detailed instructions in this [**Snowflake documentation**](https://docs.snowflake.com/en/user-guide/data-load-azure-config.html#option-1-configuring-a-snowflake-storage-integration).
 
-Create a container in the storage account created above by navigating to **&lt;storage_account&gt;** - **Storage Explorer** - **Blob Containers** - **Create a Blob Container**.
-</li>
-<li>Create cloud storage integration in Snowflake:
-<span>
+1. **Create a storage account and container in Azure**:  First, create a storage account in Azure. Then, navigate to **Storage Explorer** > **Blob Containers** > **Create a Blob Container**.
+2. Run the following commands to create a cloud storage integration in Snowflake:
 
 ```sql
 CREATE STORAGE INTEGRATION <integration_name>
@@ -325,65 +336,39 @@ AZURE_TENANT_ID = '<tenant_id>'
 STORAGE_ALLOWED_LOCATIONS = ('azure://<account>.blob.core.windows.net/<container>/<path>/', 'azure://<account>.blob.core.windows.net/<container>/<path>/')
 [ STORAGE_BLOCKED_LOCATIONS = ('azure://<account>.blob.core.windows.net/<container>/<path>/', 'azure://<account>.blob.core.windows.net/<container>/<path>/') ]
 ```
-</span>
-<code class="inline-code">&lt;tenant_id&gt;</code> - Get your tenant id by
-navigating to <strong>Azure Active Directory</strong> - <strong>
-  Properties.
-</strong> The tenant ID is displayed in the <strong>Directory ID</strong> field.
-<strong>&lt;account&gt;</strong> - <strong>&lt;storage_account&gt;</strong> - <strong>
-  Access keys
-</strong> - &lt;<code class="inline-code">storageAccountName</code>&gt;
 
-</li>
-<li> Grant Snowflake access to the storage locations </li>
+You can get your `<tenant_id>` by navigating to **Azure Active Directory** > **Properties** > **Directory ID**.
 
-Replace <code class="inline-code">&lt;integration_name&gt;</code> with the integration name created in the previous step.
-<span>
+3. **Grant Snowflake access to the storage locations**: Run the following command and replace `<integration_name>` with the integration name created in Step 2.
 
 ```sql
 DESC INTEGRATION <integration_name>;
 ```
-</span>
-And record the values <code class="inline-code">AZURE_CONSENT_URL</code> and <code class="inline-code">AZURE_MULTI_TENANT_APP_NAME</code> .
-<li>
-  Navigate to the URL in the <code class="inline-code">
-    AZURE_CONSENT_URL
-  </code> obtained in the previous step and accept.
-</li>
-<li>
+<div class="infoBlock">
 
-  Grant snowflake access to the container created in Step 2: - Navigate to
-  <strong>Azure Services</strong> - <strong>Storage Accounts</strong> and select
-  the storage account created in Step 1. - Add role : Navigate to
-  <strong>Access Control (IAM)</strong> - <strong>Add Role Assignment</strong>
-  and select either <strong>Storage Blob Data Reader(Read Access)</strong> or
-  <strong>Storage Blob Data Contributor (Read and Write Access)</strong> - Add
-  <strong>Assign Access</strong> : Add <strong>Service Principal</strong> as the
-  type of security principal to assign the role to. And search for
-  <code class="inline-code">AZURE_MULTI_TENANT_APP_NAME</code> obtained in step
-  4.
-</li>
-<li>Grant integration access to role in Snowflake:</li>
-<span>
+Record the values for <code class="inline-code">AZURE_CONSENT_URL</code> and <code class="inline-code">AZURE_MULTI_TENANT_APP_NAME</code>.
+</div>
+
+4. Go to the URL obtained in `AZURE_CONSENT_URL` and accept the consent requirements.
+
+5. **Grant Snowflake access to the container**: Navigate to **Azure Services** > **Storage Accounts** and select the storage account created in Step 1. 
+
+6. **Add the role**: Navigate to **Access Control (IAM)** > **Add Role Assignment**. Select either **Storage Blob Data Reader** with **Read** access, or **Storage Blob Data Contributor** with **Read and Write** access.
+
+7. **Add Assign Access**: Add **Service Principal** as the security principal type for the role. Search for `AZURE_MULTI_TENANT_APP_NAME` that you obtained in Step 3.
+
+8. Grant integration access to the Snowflake role you created in the [**Creating a role for RudderStack**](#creating-a-role-for-rudderStack) section by running the following command:
 
 ```sql
-grant usage on integration <integration_name> to role <sf_role>;
+GRANT USAGE ON integration <integration_name> to role "RUDDER";
 ```
-</span>
-  <code class="inline-code">&lt;integration_name&gt;</code> is the integration created in the Step 4.
-  <code class="inline-code">&lt;sf_role&gt;</code> is the role in Snowflake you want to grant access to.
-</ol>
-      </TabPanel>
-      <TabPanel>
-        If you have Google Cloud Platform (GCP) as your cloud provider and want to leverage Google Cloud Storage as your object storage, you will need to follow a few more steps to configure your Snowflake destination with a snowflake integration.
+Here, `<integration_name>` is the integration you created in Step 2.
 
-Detailed instructions can be found <a href="https://docs.snowflake.com/en/user-guide/data-load-gcs-config.html#configuring-an-integration-for-google-cloud-storage">here</a>.
+### GCP
 
-**Configuring Snowflake Integration with Google Cloud Platform **
+If you have Google Cloud Platform as your cloud provider and want to leverage Google Cloud Storage as your object storage, you will need to follow a few more steps to configure your storage integration with Snowflake. You can find the detailed instructions in this [**Snowflake documentation**](https://docs.snowflake.com/en/user-guide/data-load-gcs-config.html#configuring-an-integration-for-google-cloud-storage).
 
-<ol>
-<li>Create a Cloud Storage integration in Snowflake.</li>
-<span>
+1. **Create a Cloud Storage integration in Snowflake**: Run the following command:
 
 ```sql
 CREATE STORAGE INTEGRATION <integration_name>
@@ -392,123 +377,85 @@ CREATE STORAGE INTEGRATION <integration_name>
   ENABLED = TRUE
   STORAGE_ALLOWED_LOCATIONS = ('gcs://<bucket>/<path>/', 'gcs://<bucket>/<path>/')
 ```
-</span>
-<ul>
-  <li>
-    <code class="inline-code">&lt;integration_name&gt;</code> is the name of the
-    new integration being created
-  </li>
-  <li>
-    <code class="inline-code">&lt;bucket&gt;</code> is the name of the Cloud
-    Storage bucket that you created
-    <a href="https://rudderstack.com/docs/data-warehouse-integrations/snowflake/#configuring-snowflake-in-rudderstack">
-      above
-    </a>
-  </li>
-  <li>
-    <code class="inline-code">&lt;path&gt;</code> is an optional path that can
-    be used to provide granular control over objects in the bucket
-  </li>
-</ul>
-<li>
-  Retrieve the Cloud Storage Service Account for your Snowflake account. The
-  following <code class="inline-code">DESCRIBE</code> command will retrieve the
-  ID for the Cloud Storage service account that was created for your Snowflake
-  account.
-</li>
-<span>
+
+Replace `<integration_name` with the name of your Cloud Storage integration, `<bucket>` with **Staging GCS Object Storage Bucket Name**, and `<path>` with the prefix set in the [**Configuring the object storage**](#configuring-the-object-storage) section above.
+
+2. The following command retrieves the Cloud Storage service account ID created for your Snowflake account, where `<integration_name>` is the integration name you specified in Step 1.
 
 ```sql
 DESC STORAGE INTEGRATION <integration_name>;
 ```
-</span>
-<ul>
-  <li>
-    Where <code class="inline-code">&lt;integration_name&gt;</code> is the name
-    of the integration you specified above in step 1.
-  </li>
-  <li>
-    The output will be a table that has a property called
-    <code class="inline-code">STORAGE_GCP_SERVICE_ACCOUNT</code>. Retrieve that
-    property value.
-  </li>
-  <li>
-    The value that should be retrieved will have the following format:
-    <code class="inline-code">
-      service-account-id@&lt;unique_string&gt;.iam.gserviceaccount.com
-    </code>
-  </li>
-</ul>
-<li> Grant the Service Account Permissions to Access Bucket Objects</li>
-<ul>
-  <li>
-    Create a custom IAM role that has the permissions required to access the
-    bucket and get objects.
-  </li>
-</ul>
 
-     1. Log into the Google Cloud Platform Console as a project editor
-     2. From the home dashboard, choose IAM & admin » Roles.
-     3. Click Create Role.
-     4. Enter a name, and description for the custom role.
-     5. Click Add Permissions.
-     6. Filter the list of permissions, and add the following from the list below:
-        | Permission Property Name |
-        | :----------------------- |
-        | <code class="inline-code">storage.buckets.get</code>    |
-        | <code class="inline-code">storage.objects.get</code>    |
-        | <code class="inline-code">storage.object.list</code>    |
-        | <code class="inline-code">storage.objects.create</code> |
-     7. Click Create
+<div class="infoBlock">
 
-<li> Assigning the Custom Role to the Cloud Storage Service Account</li>
+The output of this command will have a property named as <code class="inline-code">STORAGE_GCP_SERVICE_ACCOUNT</code>. Retrieve this property value. It should be of the format <code class="inline-code">service-account-id@UNIQUE_STRING.iam.gserviceaccount.com</code>.
+</div>
 
-  <ul>
-   <li>Log into the Google Cloud Platform Console as a project editor.</li>
-   <li>From the home dashboard, choose Cloud Storage » Browser:</li>
-   <li>Select the checkbox of the bucket you would like to configure for access.</li>
-   <li>Click SHOW INFO PANEL in the upper-right corner. The information panel for the bucket will slide out from the right.</li>
-   <li>In the Add members field, search for the service account name from the DESCRIBE INTEGRATION output in Step 2: Retrieve the Cloud Storage Service Account for your Snowflake Account (in this topic).</li>
-   <li>From the Select a role dropdown, select Storage » Custom » <code class="inline-code">&lt;role&gt;</code>, where <code class="inline-code">&lt;role&gt;</code> is the custom Cloud Storage role you created in Creating a Custom IAM Role (in this topic).</li>
-   <li>Click the Add button. The service account name is added to the Storage Object Viewer role dropdown in the information panel.</li>
-  </ul>
+3. **Grant service account permissions to access the bucket objects**: Create a custom IAM role with the required permissions to access the bucket and fetch the objects by following these steps:
 
-  <li> Grant usage to an external (i.e. Cloud Storage) stage that references the integration you created.
-<span>
+    1. Log into the GCP console as a Project Editor.
+    2. From the dashboard, go to **IAM & Admin** > **Roles**.
+    3. Click on **CREATE ROLE**.
+    4. Enter the title and description for the custom role.
+    5. Click on **ADD PERMISSIONS**.
+    6. Filter the following permissions in the **Enter property name or value** and add them to the list:
+
+
+   | Permission name |
+   | :-----------------|
+   | `storage.buckets.get` |
+   | `storage.objects.get` |
+   | `storage.objects.list` |
+   | `storage.objects.create` |
+
+    7. Click on **ADD**.
+
+4. **Assign the custom role to the Cloud Storage service account**:
+
+   1. In your GCP console dashboard, go to **Cloud Storage** > **Browser**.
+   2. Select the bucket to configure the access.
+   3. Select **SHOW INFO PANEL** in the upper right corner. The information panel for the bucket will pop out.
+   4. In the **Add Members** section, get the service account name from the `DESC` command run in Step 2. 
+   5. From the **Select a role** dropdown, select **Storage** > **Custom** > `<role>`, where `<role>` is the custom Cloud Storage role.
+   6. Click on the **ADD** button. The service account name will be added to the **Storage Object Viewer** role dropdown in the information panel.
+
+5. Grant integration access to the Snowflake role you created in the [**Creating a role for RudderStack**](#creating-a-role-for-rudderStack) section by running the following command:
 
 ```sql
 GRANT USAGE ON INTEGRATION <integration_name> TO ROLE "RUDDER";
 ```
-</span>
-</li>
-</ol>
-        <div class="infoBlock">
-        <ul>
-            <li>
-              <code class="inline-code">"RUDDER"</code> is the name of the role that you
-              created above <a href="https://rudderstack.com/docs/data-warehouse-integrations/snowflake/#creating-a-role-for-rudderstack">
-                here
-              </a>
-            </li>
-            <li>
-              <code class="inline-code">&lt;integration_name&gt;</code> is the name of
-              the integration that you set above in step 1
-            </li>
-          </ul>
-        </div>
-    </TabPanel>
-  </TabPanels>
-</Tabs>
+Here, `<integration_name>` is the integration name you set up in Step 1.
 
-## Setting Up the Network Access
+## Setting up network access
 
-You will need to whitelist the RudderStack IPs to enable network access to it.
+You will need to whitelist the following RudderStack IPs to enable network access:
+
+- 3.216.35.97
+- 34.198.90.241
+- 54.147.40.62
+- 23.20.96.9
+- 18.214.35.254
+- 35.83.226.133
+- 52.41.61.208
+- 44.227.140.138
+- 54.245.141.180
+- 3.66.99.198
+- 3.64.201.167
 
 <div class="infoBlock">
 
-**The IPs to be whitelisted are : <code class="inline-code">3.216.35.97</code>, <code class="inline-code">34.198.90.241</code> , <code class="inline-code">54.147.40.62</code> , <code class="inline-code">23.20.96.9</code>, and <code class="inline-code">18.214.35.254</code>.**
+If you have your deployment in the EU region, you can whitelist only the following two IPs:
+  <ul>
+    <li>3.66.99.198</li>
+    <li>3.64.201.167</li>
+  </ul>
 </div>
 
-## Contact Us
+<div class="infoBlock">
 
-If you come across any issues while configuring Snowflake with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+All the outbound traffic is routed through these RudderStack IPs.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
