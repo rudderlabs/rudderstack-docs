@@ -125,6 +125,24 @@ RudderTraits traits = new RudderTraits().PutEmail("some@example.com");
 rudderClient.Identify("some_user_id", traits, identifyMessage);
 ```
 
+## Screen
+
+The `screen` method lets you record your website's page views via user on their mobile screen. It also includes any additional relevant information about the screen.
+
+A sample `screen` event is as shown:
+
+```csharp
+// create screen properties
+Dictionary < string, object > screenProperties = new Dictionary < string, object > ();
+screenProperties.Add("key_1", "value_1");
+screenProperties.Add("key_2", "value_2");
+
+RudderMessageBuilder screenBuilder = new RudderMessageBuilder();
+screenBuilder.WithEventName("Home Screen");
+screenBuilder.WithEventProperties(screenProperties);
+rudderClient.Screen(screenBuilder.Build());
+```
+
 ## Reset
 
 The `reset` method clears all the persisted traits of the previously identified user.
