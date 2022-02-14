@@ -226,7 +226,7 @@ rudder_analytics.flush()
 
 <div class="warningBlock">
 
-This method blocks any new events until all the messages are flushed from the queue. Hence, you should avoid using it as a part of your request lifecycle.
+The SDK blocks the calling thread until all the messages are flushed from the queue. Hence, you should avoid using it as a part of your request lifecycle.
 </div>
 
 ## Error handling
