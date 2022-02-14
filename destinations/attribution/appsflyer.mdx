@@ -26,7 +26,7 @@ Before configuring AppsFlyer as a destination in RudderStack, verify if the sour
 
 <div class="infoBlock">
 
-To know more about the difference between the cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+To know more about the difference between the cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to AppsFlyer, perform the steps below:
@@ -35,7 +35,7 @@ Once you have confirmed that the platform supports sending events to AppsFlyer, 
 
 <div class="infoBlock">
 
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+Follow our guide on <a href="https://rudderstack.com/docs/rudderstack-cloud/connections/">Connections</a> for more information.
 </div>
 
 - Assign a name to the destination and click on **Next**. You should then see the following screen:
@@ -305,7 +305,7 @@ The `identify` call sets `userId` through `AppsFlyerLib`'s `setCustomerUserId` m
 
 <div class="infoBlock">
 
-  RudderStack supports the <code class="inline-code">identify</code> calls only in the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode">device mode</a>.
+  RudderStack supports the <code class="inline-code">identify</code> calls only in the <a href="https://rudderstack.com/docs/rudderstack-connection-modes/#device-mode">device mode</a>.
 </div>
 
 RudderStack sets `email` from event traits to AppsFlyer using the native SDK's `setUserEmails` method, as shown:
@@ -453,7 +453,7 @@ const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId()
 
 <div class="infoBlock">
 
-This works only if your source has a <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">device mode connection</a> with AppsFlyer i.e the AppsFlyer native SDK is loaded through RudderStack.
+This works only if your source has a <a href="https://rudderstack.com/docs/rudderstack-connection-modes/">device mode connection</a> with AppsFlyer i.e the AppsFlyer native SDK is loaded through RudderStack.
 </div>
 
 ## Contact us

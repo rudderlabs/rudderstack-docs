@@ -33,7 +33,7 @@ Make sure you have [**Node.js**](https://nodejs.org/en/download/) installed befo
 
 After adding the required sources and destinations in the dashboard, you can export your workspace configuration by simply clicking the **EXPORT** button. The configuration is then exported and saved as a JSON file. This workspace configuration is required to start the RudderStack server.
 
-For more information on adding sources and destinations in RudderStack, refer to the [**How to Add a Source and Destination in RudderStack**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack) guide.
+For more information on adding sources and destinations in RudderStack, refer to the [**How to Add a Source and Destination in RudderStack**](https://rudderstack.com/docs/rudderstack-cloud/connections/adding-source-and-destination-rudderstack) guide.
 
 ## Starting RudderStack With the Workspace Configuration File
 
@@ -153,7 +153,7 @@ cp config/sample.env .env
 
 <div class="infoBlock">
 
-To know more about the difference between **Cloud mode** and **Device mode** in RudderStack, read the [**RudderStack connection modes**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/) guide.
+To know more about the difference between **Cloud mode** and **Device mode** in RudderStack, read the [**RudderStack connection modes**](https://rudderstack.com/docs/rudderstack-connection-modes/) guide.
 </div>
 
 RudderStack's [**web**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk), [**Android**](https://app.gitbook.com/@rudderlabs/s/rudderlabs-1/~/drafts/-MJRY7Fz5shtM06WXlym/rudderstack-sdk-integration-guides/rudderstack-android-sdk) and [**iOS**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) SDKs expect the source configurations and the associated device mode destination configurations for initialization. If you are self-hosting the Control Plane, you will need to host these configurations on your own server such that the source configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
