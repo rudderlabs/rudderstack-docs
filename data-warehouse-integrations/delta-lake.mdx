@@ -288,7 +288,6 @@ To grant Databricks access to your GCS bucket, follow these steps:
 * Then, add the following Spark configuration to your Databricks cluster:
 
 ```text
-spark.hadoop.google.cloud.auth.service.account.enable true
 spark.hadoop.fs.gs.auth.service.account.email <client_email>
 spark.hadoop.fs.gs.project.id <project_id>
 spark.hadoop.fs.gs.auth.service.account.private.key <private_key>
@@ -309,7 +308,7 @@ To grant Databricks access to your Azure Blob Storage container, follow these st
 * Add the following Spark configuration to your Databricks cluster. 
 
 ```text
-fs.azure.account.key.<storage-account-name>.blob.core.windows.net <storage-account-access-key>
+spark.hadoop.fs.azure.account.key.<storage-account-name>.blob.core.windows.net <storage-account-access-key>
 ```
 <div class="infoBlock">
 
