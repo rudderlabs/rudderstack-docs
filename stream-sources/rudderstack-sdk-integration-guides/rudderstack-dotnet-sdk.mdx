@@ -247,6 +247,22 @@ The `options` object contains the following fields:
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
 | `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
 
+## Flushing events
+
+To flush your events on demand and make sure no events are left in the queue, you can use the SDK's `flush()` method.
+
+A sample flush call is shown below:
+
+```csharp
+
+RudderAnalytics.Client.Flush();
+```
+
+<div class="warningBlock">
+
+This method blocks any new events until all the messages are flushed from the queue. Hence, you should avoid using it as a part of your request lifecycle.
+</div>
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

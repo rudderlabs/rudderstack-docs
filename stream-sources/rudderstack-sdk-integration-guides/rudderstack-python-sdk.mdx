@@ -3,7 +3,7 @@
 title: "Python"
 description: >-
   Detailed technical documentation on using RudderStack’s Python SDK to send
-  events to various destinations
+  events to various destinations.
 ---
 
 # Python
@@ -212,6 +212,21 @@ The `alias` method parameters are as mentioned below:
 <div class="infoBlock">
 
 For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
+</div>
+
+## Flushing events
+
+To flush your events on demand and make sure no events are left in the queue, you can use the SDK's `flush()` method.
+
+A sample flush call is shown below:
+
+```python
+rudder_analytics.flush()
+```
+
+<div class="warningBlock">
+
+This method blocks any new events until all the messages are flushed from the queue. Hence, you should avoid using it as a part of your request lifecycle.
 </div>
 
 ## Error handling
