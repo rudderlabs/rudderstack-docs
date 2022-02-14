@@ -260,7 +260,7 @@ RudderAnalytics.Client.Flush();
 
 <div class="warningBlock">
 
-This method blocks any new events until all the messages are flushed from the queue. Hence, you should avoid using it as a part of your request lifecycle.
+Calling flush() again is blocked until all the messages are flushed from the queue.
 </div>
 
 ## Contact us
