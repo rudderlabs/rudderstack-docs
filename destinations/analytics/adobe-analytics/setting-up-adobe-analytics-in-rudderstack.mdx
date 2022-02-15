@@ -75,7 +75,6 @@ For more information on this setting, refer to the <a href="https://experiencele
 
 - **Marketing Cloud Organization ID**: If you want to use `visitorAPI.js`, enter this field. For example: `99887766ABC@AdobeOrg`.
 - **Drop Visitor ID**: If enabled, RudderStack does not assign the `userId` to `visitorID`.
-- **Enable pageName for Track Events**: When enabled, RudderStack only tracks events by sending a `pageName`.
 
 <div class="infoBlock">
 
@@ -83,8 +82,6 @@ For more information on this setting, refer to the <a href="https://experiencele
 </div>
 
 ### Timestamps
-
-<img src="../../../assets/timestamp-adobe-analytics.png" />
 
 - **Timestamp Option**: Adobe Analytics has Report Suites that accepts timestamped, non-timestamped or hybrid data. Note that `window.s.timestamp` will be affected. Also depending on this value, `visitorID` will be set if the drop visitor id is off.
 
@@ -113,6 +110,15 @@ For more information on this setting, refer to the <a href="https://experiencele
   </ul>
 </div>
 
+- **Send Both Timestamp and VisitorID for Timestamp Optional Reporting Suites**: This setting lets you choose whether to send both timestamp and the visitorID when sending events to server-side, in case you have Timestamp Optional Reporting Suite.
+
+<div class="warningBlock">
+
+Enabling this setting might lead to an out of order data. Hence, it is not recommended by Adobe. In order to make it work, you need to have optional timestamp setting enabled in the reporting suites.
+</div>
+
+- **No Fallbacks for Visitor ID**: Enabling this setting removes the fallbacks. However, this setting is applicable only for the server-Side when the **Drop Visitor ID** setting is disabled and a marketingCloudId is sent in the Adobe Analytics integration object. The default behavior is to set the Adobe Analytics visitorID based on the destination specific setting for visitorId, falling back to userId then anonymousId.
+
 - **Prefer Visitor ID**: Adobe does not allow sending both `visitorID` and timestamp. Hence, this option is used when the timestamp option is set as hybrid. Also, note that if this option is enabled, `visitorID` will be set. If disabled, the timestamp value will be set.
 
 <div class="infoBlock">
@@ -120,14 +126,7 @@ For more information on this setting, refer to the <a href="https://experiencele
 For more information on this setting, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/timestamp.html?lang=en">Adobe Analytics documentation</a>.
 </div>
 
-- **Send Both Timestamp and VisitorID for Timestamp Optional Reporting Suites**: One can choose to send both timestamp and the visitorID when sending events to server-side, in case they have Timestamp Optional Reporting Suite.
-
-<div class="warningBlock">
-
-This may lead the data to be out of order. That is why it is not recommended by Adobe. In order to make this setting work, one needs to have optional timestamp setting enabled in the reporting suites.
-</div>
-
-- **No Fallbacks for Visitor ID**: This setting is for Server-Side only, and only applies when the Drop Visitor ID setting is disabled and you send a marketingCloudId in the Adobe Analytics integration object.Segment’s default behavior is to set the Adobe Analytics visitorID based on the destination specific setting for visitorId, falling back to userId then anonymousId. This setting removes the fallbacks.
+- **Enable pageName for Track Events**: When enabled, RudderStack only tracks events by sending a `pageName`.
 
 
 ### Mappings
