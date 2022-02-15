@@ -216,7 +216,16 @@ For a detailed explanation of the <code class="inline-code">alias</code> call, r
 
 ## Flushing events
 
-To make sure no events are left in the queue, you can flush the events explicitly by using the SDK's `flush()` method.
+The Python SDK batches the events and flushes them in the background, for faster and more efficient operation. By default, the SDK flushes a batch of 100 events every 0.5 seconds since the last flush.
+
+You can control the event flushing by tweaking the following parameters:
+
+| Parameter        | Description                                | Default value |
+| :----------------| :------------------------------------------| :-------------|
+| `max_queue_size` | Defines the maximum queue size             | 100           |
+| `flush_interval` | Time interval between two flush activities | 0.5s          |
+
+You can also flush the events explicitly by using the SDK's `flush()` method to make sure no events are left in the queue.
 
 A sample flush call is shown below:
 
