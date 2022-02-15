@@ -2,21 +2,23 @@
 # slug: "/docs/data-warehouse-integrations/warehouse-schemas"
 title: "Warehouse Schemas"
 description: >-
-  Detailed technical description of the various tables created when sending
-  events to the data warehouse.
+  Detailed technical description of the tables created by RudderStack when sending
+  events to the warehouse destination.
 ---
 
 # Warehouse Schemas
 
-When sending your events to a data warehouse via RudderStack, you don't need to define a schema for the event data before sending it from your source. Instead, RudderStack automatically does that for you by following a predefined warehouse schema.
+When sending your events to a data warehouse via RudderStack, you don't need to define a schema for your event data. RudderStack automatically does that for you by following a predefined warehouse schema.
 
-This guide details the structure of this warehouse schema and the columns created in different tables based on different events.
+This guide details the structure of this warehouse schema and the columns created in various tables based on different event types.
 
 ## Schema
 
-RudderStack uses the source name \(**written in snake case**, for example, `source_name`\) to create a schema in your data warehouse \(also called a dataset, in the case of Google BigQuery\).
+RudderStack uses the source name (written in snake case, e.g., `source_name`) to create a schema in your data warehouse (dataset, in the case of Google BigQuery).
 
-The following is a list of tables created for each RudderStack source that is connected to the warehouse:
+The following tables are created for each RudderStack source connected to your warehouse destination:
+
+| Name  | Data Type  | Presence  | Description |
 
 <table>
   <thead>
