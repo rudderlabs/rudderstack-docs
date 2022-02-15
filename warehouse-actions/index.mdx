@@ -1,12 +1,12 @@
 ---
-#slug: "/docs/warehouse-actions"
-title: "Warehouse Actions Sources"
+#slug: "/docs/reverse-etl"
+title: "Reverse ETL Sources"
 description: >-
-  Detailed technical description of RudderStack's Warehouse Actions feature,
+  Detailed technical description of RudderStack's Reverse ETL feature,
   with step-by-step instructions for configuration.
 ---
 
-# Warehouse Actions Sources
+# Reverse ETL Sources
 
 ## What are Sources in RudderStack?
 
@@ -21,15 +21,15 @@ With this feature, you can configure your data warehouse as a source in the [**R
   <a href="https://rudderstack.com/docs/connections/">Connections guide</a>.
 </div>
 
-## RudderStack Warehouse Actions
+## RudderStack Reverse ETL
 
-With RudderStack **Warehouse Actions**, you can leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations.
+With RudderStack **Reverse ETL**, you can leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations.
 
 With this feature, you can configure your data warehouse as a source on the <a href="https://app.rudderlabs.com/signup?type=freetrial">RudderStack dashboard</a>, select the right data and then sync this data to all the supported destinations.
 
 <div class="warningBlock">
 
-**You can connect only one destination to a Warehouse Actions source**. Also, note that this destination **should not be connected to any other source** \(including [**Event Stream**](https://rudderstack.com/docs/stream-sources/) sources.\)
+**You can connect only one destination to a Reverse ETL source**. Also, note that this destination **should not be connected to any other source** \(including [**Event Stream**](https://rudderstack.com/docs/stream-sources/) sources.\)
 </div>
 
 <div class="infoBlock">
@@ -40,11 +40,11 @@ If you want to send data from a warehouse source to multiple destinations, we re
 
 <div class="dangerBlock">
 
-**You cannot connect a Warehouse Actions source to a warehouse destination in RudderStack.**
+**You cannot connect a Reverse ETL source to a warehouse destination in RudderStack.**
 
 </div>
 
-Here's a detailed walkthrough of the Warehouse Actions feature:
+Here's a detailed walkthrough of the Reverse ETL feature:
 
 <!--https://www.youtube.com/watch?v=krFbHHjX-AU-->
 
@@ -53,13 +53,13 @@ Here's a detailed walkthrough of the Warehouse Actions feature:
   opts={{playerVars: {rel: 0}}}
 />
 
-## Configuring Warehouse Actions on RudderStack
+## Configuring Reverse ETL on RudderStack
 
 <div class="warningBlock">
 
-**The** **Warehouse Actions** **feature supports only source-driven configuration of your data pipeline**. 
+**The** **Reverse ETL** **feature supports only source-driven configuration of your data pipeline**. 
 
-So, you need to configure a Warehouse Actions source in RudderStack first, and then connect it to a new or existing destination \(the existing destination should not be connected to any other source\), as shown below.
+So, you need to configure a Reverse ETL source in RudderStack first, and then connect it to a new or existing destination \(the existing destination should not be connected to any other source\), as shown below.
 </div>
 
 <!--![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am.png)-->
@@ -141,13 +141,13 @@ Currently all events sent to RudderStack via warehouse as a source will be <code
 
 Now you can connect this source to any RudderStack destination of your choice. RudderStack will collect the enriched customer data from the specified table columns in your warehouse source and send it to the destination for your activation use-cases.
 
-## Warehouse Actions Constants
+## Reverse ETL constants
 
-Constants give you the ability to add new fields to each event with a pre-defined value. The **key** of a Warehouse Actions constant has the same functionality as modifying an existing column, and is in the format \(**test.value, test.value\[0\]**\).
+Constants give you the ability to add new fields to each event with a pre-defined value. The **key** of a Reverse ETL constant has the same functionality as modifying an existing column, and is in the format \(**test.value, test.value\[0\]**\).
 
-### How to add a Warehouse Actions constant
+### How to add a Reverse ETL constant
 
-Adding a new constant when configuring a Warehouse Actions source is very easy:
+Adding a new constant when configuring a Reverse ETL source is very easy:
 
 - Click on the **Add Constant** button as shown below, while [mapping your table](https://rudderstack.com/docs/warehouse-actions#specifying-warehouse-schema-and-table):
 
@@ -171,21 +171,21 @@ Adding a new constant when configuring a Warehouse Actions source is very easy:
 
 ## FAQs
 
-### I cannot add a Warehouse Actions source to an already configured destination. Why?
+### I cannot add a Reverse ETL source to an already configured destination. Why?
 
-Warehouse Actions supports only source-driven configuration of your pipeline. So you need to configure a Warehouse Actions source in RudderStack and then connect it an existing, **free** destination \(this destination should not be connected to any other source\), as shown:
+Reverse ETL supports only source-driven configuration of your pipeline. So you need to configure a Reverse ETL source in RudderStack and then connect it an existing, **free** destination \(this destination should not be connected to any other source\), as shown:
 
 <!--![](../.gitbook/assets/screenshot-2021-09-02-at-11.03.55-am%20%281%29.png)-->
 
 <img src="../assets/screenshot-2021-09-02-at-11.03.55-am (1).png" alt="Free destination" />
 
-### Can I connect a Warehouse Actions source to multiple destinations?
+### Can I connect a Reverse ETL source to multiple destinations?
 
-We recommend creating a separate Warehouse Actions source with the same settings for each destination where you want to send the data.
+We recommend creating a separate Reverse ETL source with the same settings for each destination where you want to send the data.
 
-### What type of events are supported by the RudderStack Warehouse Actions?
+### What type of events are supported by the RudderStack Reverse ETL?
 
-Currently all events from the RudderStack warehouse actions are `identify()` events.
+Currently all events from the RudderStack Reverse ETL are `identify()` events.
 
 ## Popular Sources
 
@@ -341,4 +341,4 @@ Currently all events from the RudderStack warehouse actions are `identify()` eve
 
 ## Contact Us
 
-To know more about RudderStack's Warehouse Actions feature, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+To know more about RudderStack's Reverse ETL feature, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
