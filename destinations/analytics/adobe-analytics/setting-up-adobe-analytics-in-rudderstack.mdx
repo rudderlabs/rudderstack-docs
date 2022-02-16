@@ -37,6 +37,7 @@ Follow the guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 This section lists all the relevant connection settings to successfully set up Adobe Analytics as a destination in RudderStack.
 
 <img src="../../../assets/adobe-1.png" />
+<img src="../../../assets/adobe-2.png" />
 
 - **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. Eg: If url is [`http://abc.a.b`](http://abc.a.b) ,the tracking server URL will be `abc.a.b`.
 
@@ -72,6 +73,7 @@ For more information on this setting, refer to the <a href="https://experiencele
 ### Identity Resolution
 
 <img src="../../../assets/image (110).png" />
+<img src="../../../assets/adobe-3.png" />
 
 - **Marketing Cloud Organization ID**: If you want to use `visitorAPI.js`, enter this field. For example: `99887766ABC@AdobeOrg`.
 - **Drop Visitor ID**: If enabled, RudderStack does not assign the `userId` to `visitorID`.
@@ -132,6 +134,7 @@ For more information on this setting, refer to the <a href="https://experiencele
 ### Mappings
 
 <img src="../../../assets/image (111).png" />
+<img src="../../../assets/mapping-adobe.png" />
 
 - **Map Rudder Events to Adobe Custom Events**: This setting allows you to add one or multiple custom Adobe events separated by comma.
 - **Map Rudder Context data to Adobe Context Data**: Context data variables allow you to you define custom variables on each page that the processing rules apply and can read. Instead of explicitly assigning values to the analytics variables, you can send your data in via these context data variables. The processing rules take the values from the context data variables and pass them into the respective analytics variables.
