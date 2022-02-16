@@ -112,14 +112,14 @@ For more information on this setting, refer to the <a href="https://experiencele
   </ul>
 </div>
 
-- **Send Both Timestamp and VisitorID for Timestamp Optional Reporting Suites**: This setting lets you choose whether to send both timestamp and the visitorID when sending events to server-side, in case you have Timestamp Optional Reporting Suite.
+- **Send Both Timestamp and VisitorID for Timestamp Optional Reporting Suites**: This setting lets you choose whether to send both, the timestamp and the visitorID when sending events to the server-side, in case you have Timestamp Optional Reporting Suite.
 
 <div class="warningBlock">
 
-Enabling this setting might lead to an out of order data. Hence, it is not recommended by Adobe. In order to make it work, you need to have optional timestamp setting enabled in the reporting suites.
+Enabling this setting might lead the data to be out of order. Hence, it is not recommended by Adobe. In order to make it work, you need to enable the <strong>Optional Timestamp</strong> setting in the <strong>Reporting Suites</strong>.
 </div>
 
-- **No Fallbacks for Visitor ID**: Enabling this setting removes the fallbacks. However, this setting is applicable only for the server-Side when the **Drop Visitor ID** setting is disabled and a marketingCloudId is sent in the Adobe Analytics integration object. The default behavior is to set the Adobe Analytics visitorID based on the destination specific setting for visitorId, falling back to userId then anonymousId.
+- **No Fallbacks for Visitor ID**: Enabling this setting removes the fallbacks. However, it is applicable only for the server-side when the **Drop Visitor ID**  is disabled and **marketingCloudId** is sent in the Adobe Analytics integration object. The default behavior is to set the Adobe Analytics visitorID based on the destination specific setting for visitorId, falling back to userId then anonymousId.
 
 - **Prefer Visitor ID**: Adobe does not allow sending both `visitorID` and timestamp. Hence, this option is used when the timestamp option is set as hybrid. Also, note that if this option is enabled, `visitorID` will be set. If disabled, the timestamp value will be set.
 
