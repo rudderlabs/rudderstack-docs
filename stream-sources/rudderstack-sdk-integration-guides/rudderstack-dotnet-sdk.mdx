@@ -247,6 +247,33 @@ The `options` object contains the following fields:
 | `timestamp` | Date | Optional | The timestamp of the message's arrival. |
 | `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
 
+## Logging
+
+The RudderStack .NET SDK supports detailed logging. You can enable this feature as shown:
+
+```csharp
+using RudderStack;
+
+Logger.Handlers += LoggingHandler;
+
+static void LoggingHandler(Logger.Level level, string message, IDictionary<string, object> args)
+{
+    if (args != null)
+    {
+        foreach (string key in args.Keys)
+        {
+            message += String.Format(" {0}: {1},", "" + key, "" + args[key]);
+        }
+    }
+    Console.WriteLine(String.Format("[RudderAnalytics] [{0}] {1}", level, message));
+}
+```
+
+<div class="infoBlock">
+
+The logger must be on a minimum version of .NET Core 2.1.
+</div>
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
