@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Pard
 
 # Pardot
 
-[**Pardot**](https://www.pardot.com/) is a marketing automation solution that helps companies create meaningful connections, generate more pipeline, and empower sales to close more deals.
+[**Pardot**](https://www.pardot.com/) is a Salesforce product which generates and nurtures the leads as well as empowers sales to close more deals. It is a marketing automation solution that enables organizations to track and measure the effectiveness of their communications, gain insight into user behavior, and personalize content across campaigns based on any specific criteria.
 
 RudderStack supports Pardot as a destination to which you can seamlessly send your event data.
 
@@ -79,17 +79,7 @@ In case <code class="inline-code">userId</code> is absent, RudderStack uses <cod
 
 ## Identify
 
-<div class="infoBlock">
-
-RudderStack supports only <code class="inline-code">identify</code> event type for this destination.
-</div>
-
-The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack Events Specification</a> guide.
-</div>
+The `identify` call lets you capture the details of a visiting user along with any associated traits such as their name, email address, etc.
 
 A sample `identify` call is as shown:
 
@@ -101,9 +91,9 @@ A sample `identify` call is as shown:
       "property-2": "def",
       ..........
       ..........
-      "id": "test id",
-      "fid": "test fid",
-      "email": "testEmail@example.com"
+      "id": "01",
+      "fid": "f_01",
+      "email": "alex@example.com"
 
     }
   }
@@ -112,14 +102,147 @@ A sample `identify` call is as shown:
 ## FAQ
 
 ### Why we do not support custom look up fields like Segment?
+We can create custom field in Pardot and create prospects with the same, but while querying it is not working unless only the specified fields are used .
+Sample Query Call :
+```JSON
+GET https://pi.pardot.com/api/prospect/version/4/do/query?score_equal_to=0&format=json&first_name=User_two&created_after=2021-11-29 17:00:00
+
+Content-Type: application/x-www-form-urlencoded
+Authorization:00D2v000003QBAi!AQMAQNgnQ1A3J_.nUZOauDTOrZ5FEiEKGAa4sfN1fn.t862D.uA4GJnwdwCK1g_hOAGlvLFtqfFa9S7UgKr5jViMVtl1oZ4P
+Pardot-Business-Unit-Id: 0Uv2v000000k9tHCAQ
+```
 
 ### Why we do not support userId as lookup field like Segment?
+
+We have thought of getting information about which is field will be mapped to userId via webapp. But, still the problem remains regarding information retrieval using the query API. For details, see the previous answer.
+
 ### Why we are not asking for the prospect account id like segment?
+
+1. prospect account id is same accross all the campaigns inside a specific account.
+2.  When we are sending using prospect_account_id we are getting the following error :
+```JSON
+{
+  "@attributes": {
+    "stat": "fail",
+    "version": 1,
+    "err_code": 59
+  },
+  "err": "A CRM connector was detected"
+}
+
+Which means:
+
+  https: //developer.salesforce.com/docs/marketing/pardot/guide/error-codes.html
+
+  We need to take note: prospect_account_id or piAId is same accross all the campaigns as we checked inside the account provided to us.
+  ```
+  We still have not got scope to test with an account where the CRM connector is not present
 ### Why we are not checking if prospects with same email id is existing and updating each of them, rather creating new prospect each time?
+As, we were planning, if more than one prospect exists with the same email address, we will be updating all of them. Now, update query with email address does not work. It shows :
+```JSON
+{
+  "@attributes": {
+    "stat": "fail",
+    "version": 1,
+    "err_code": 2
+  },
+  "err": "Invalid action: Updating by email address is not supported. You may query by email address to get record IDs and update by them."
+}
+```
+That means, what we can do is, from the read query we can take id of every prospect and update them by calling update API with id for all of them. Not sure about the ideal scenario, but if a huge number of prospects are existing against the same email id, it will cost a lot of computation time. Implementation wise it was possible though.
+
 ### How to find the campaign id?
+
+The Campaign ID (or piCId) can be located under **Marketing** > **Campaigns** in your Pardot account. After selecting your desired website campaign, press **View Tracking Code**.
+
 ### How to find the business-unit-id?
-### How to update a prospect data ?
-### What are invalid ways of sending `externalId` in `context` property for update to rudderstack ?
+
+You need to find your Business Unit ID in Salesforce. 
+1. Go to Setup and search for **Pardot**. 
+2. Click on **Pardot Account Setup**.
+Your Pardot Business Unit ID is the 18 character long string that starts with `0Uv`
+
+### How to update a prospect data?
+
+To update the prospect data, you need to send a payload that contains `externalId` in `context` property of the payload. An example snippet of the payload is shown below:
+```javascript
+// Sample payload with `id` data for update
+{
+  ...
+  "context": {
+    ....
+    "externalId": {
+      "type": "PardotId",
+      "id": "12334"
+    },
+    ...
+  }
+  ...
+}
+```
+The `type` field can contain either of the below mentioned values:
+- Pardot Id with field name as `pardotid`
+- CRM FID with field name as `crmfid`
+The `id` field contains the actual value
+
+### What are invalid ways of sending `externalId` in `context` property for update to RudderStack?
+
+Invalid ways:
+- `type` is a string which is not equal to `pardotid` or `crmfid`
+```javascript
+// Sample payload with `id` data for update
+{
+	...
+	"context": {
+		....
+		"externalId": {
+			"type": "randomId"
+		},
+		...
+	}
+	...
+}
+```
+- Only `id` is present
+```javascript
+{
+  ...
+  "context": {
+    ....
+    "externalId": {
+      "id": ""
+    },
+    ...
+  }
+  ...
+}
+```
+- Empty object or any other data-type
+```javascript
+{
+  ...
+  "context": {
+    ....
+    "externalId": {},
+    ...
+  }
+  ...
+}
+```
+- `externalId` is not present in `context` property
+```javascript
+{
+  ...
+  "context": {
+    ...
+  }
+  "externalId": {
+    "type": "crmfid",
+    "id": "Ouvkjandiuyoij7t2shfk"
+  },
+}
+```
+Rudderstack uses prospect `upsert` API to carry on with updates. In case `externalId` is not sent in the expected way, Rudderstack would **create with email by default**.
 
 ## Contact us
 
