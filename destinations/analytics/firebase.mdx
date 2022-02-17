@@ -10,7 +10,15 @@ description: Step-by-step guide to send your event data from RudderStack to Fire
 
 Firebase is tightly integrated with Google Analytics and offers unlimited reporting for up to 500 events defined using the Firebase SDK. You can check the Firebase destination code on [**GitHub**](https://github.com/firebase/) for Android and iOS platforms.
 
-RudderStack lets you send your event data from your mobile apps to Firebase through its Android, iOS, Unity, and ReactNative SDKs. This guide will help you set up, configure, and use Firebase for your project.
+RudderStack lets you send your event data from your mobile apps to Firebase through its Android, iOS, Unity, and React Native SDKs.
+
+<div class="warningBlock">
+  
+  If you're using the RudderStack 
+
+  If you happen to use Rudder-Firebase iOS Device Mode Version (1.0.2), Can you please update to the latest version of @rudderstack/rudder-integration-firebase-react-native (1.0.7) and this would grab the latest version of Android and iOS Rudder-Firebase Device modes.
+</div>
+  
 
 ## Getting started
 
@@ -54,6 +62,9 @@ Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and
   </TabList>
     <TabPanels>
       <TabPanel>
+        <div class="infoBlock">
+          Use the <a href="https://search.maven.org/artifact/com.rudderstack.android.integration/firebase">latest version</a> of the Firebase Android device mode to get the latest updates, bug fixes, and performance enhancements.
+        </div>
         Follow these steps to add Firebase to your Android project:
 <ul>
 <li>Register your mobile application in the <a href="https://console.firebase.google.com/">Firebase console</a>.</li>
@@ -133,6 +144,9 @@ val rudderClient = RudderClient.getInstance(
 </ul>
       </TabPanel>
       <TabPanel>
+        <div class="infoBlock">
+          If you’re using the Firebase iOS device mode v1.0.2, update to the <a href="https://cocoapods.org/pods/Rudder-Firebase">latest version</a> of the iOS device mode to get the latest updates, bug fixes, and performance enhancements.
+        </div>
         Follow these steps to add Firebase to your iOS project:
 <ul>
 <li>Register your app to the <a href="https://console.firebase.google.com">Firebase console</a>. It will then prompt you to download the <code class="inline-code">GoogleServices-Info.plist</code> file.</li>
@@ -203,6 +217,9 @@ RudderClient rudderClient = RudderClient.GetInstance(
 </ul>
     </TabPanel>
     <TabPanel>
+      <div class="infoBlock">
+           Use the <a href="https://cocoapods.org/pods/Rudder-Firebase">latest version</a> of the Firebase React Native device mode to get the latest updates and performance enhancements.
+      </div>
         Follow these steps to add Firebase to your React Native project:
 <ul>
 <li>Register your Android and iOS applications in the <a href="https://console.firebase.google.com/">Firebase console</a>.</li>
