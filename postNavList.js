@@ -425,12 +425,6 @@ export const postNavList = [
    "content":[]
    },
    {
-      "key":"stripe",
-      "title":"Stripe",
-      "link":"/cloud-extract-sources/stripe/",
-      "content":[]
-   },
-   {
       "key":"xero",
       "title":"Xero",
       "link":"/cloud-extract-sources/xero/",
