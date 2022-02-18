@@ -75,6 +75,28 @@ RudderClient rudderClient = RudderClient.GetInstance(
 If you are building an iOS project, <code class="inline-code">RudderClient.SerializeSqlite()</code> is important to handle races with SQLite.
 </div>
 
+## Identify
+
+The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once the SDK identifies the user, it persists and passes the user information to the subsequent calls. 
+
+To reset the user identification, you can use the `reset` method.
+
+A sample `identify` event is as shown:
+
+```csharp
+RudderMessage identifyMessage = new RudderMessageBuilder().Build();
+RudderTraits traits = new RudderTraits().PutEmail("some@example.com");
+rudderClient.Identify("some_user_id", traits, identifyMessage);
+```
+
+### Overriding the anonymousId using setAnonymousId
+
+ You can explicitly set the `anonymousId` for all the future events using the `setAnonymousId()` method, as shown:
+ 
+ ```csharp
+rudderClient.setAnonymousId("anonymousID1");
+ ```
+
 ## Track
 
 You can record the users' in-game activity through the `track` method. Every user action is called an **event**.
@@ -111,18 +133,6 @@ builder.WithEventProperty("foo", "bar");
 builder.WithUserProperty("foo1", "bar1");
 
 rudderClient.Track(builder.Build());
-```
-
-## Identify
-
-The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once the SDK identifies the user, it persists and passes the user information to the subsequent `track` calls. To reset the user identification, you can use the `reset` method.
-
-A sample `identify` event is as shown:
-
-```csharp
-RudderMessage identifyMessage = new RudderMessageBuilder().Build();
-RudderTraits traits = new RudderTraits().PutEmail("some@example.com");
-rudderClient.Identify("some_user_id", traits, identifyMessage);
 ```
 
 ## Screen
