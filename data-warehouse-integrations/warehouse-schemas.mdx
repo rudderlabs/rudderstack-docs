@@ -310,11 +310,11 @@ The <code class="inline-code">users</code> table has the properties from the lat
   the <code class="inline-block">user_id</code> column.
 </div>
 
-### Page & Screen
+### Page/Screen
 
-RudderStack creates a record in the `pages` or `screen` table for every `page`/`screen` call.
+RudderStack creates a record in the `pages` or `screens` table for every `page`/`screen` call.
 
-A sample `page` event is as shown below:
+A sample `page` event is shown below:
 
 ```javascript
 rudderanalytics.page(
@@ -338,39 +338,37 @@ The corresponding schema created for the `pages` table is as shown:
 
 #### **Table: `pages/screens`**
 
-| Column               | Type             | Value                                                          | Note                                                                       |
+| Column               | Type             | Example value                                                  | Note                                                                        |
 | :------------------- | :--------------- | :------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| `id`                 | String           | e.g. `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                    | -                                                                          |
+| `id`                 | String           | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                         | -                                                                          |
 | `anonymous_id`       | String           | `59b703e3-467a-4a1d-9fe6-da27ed319619`                         | -                                                                          |
-| `received_at`        | Timestamp        | e.g. `2020-04-26 07:00:45.558`                                 | -                                                                          |
-| `sent_at`            | Timestamp        | e.g. `2020-04-26 07:00:45.124`                                 | -                                                                          |
-| `original_timestamp` | Timestamp        | e.g. `2020-04-26 07:00:43.400`                                 | -                                                                          |
-| `timestamp`          | Timestamp        | e.g. `2020-04-26 07:00:44.834`                                 | -                                                                          |
+| `received_at`        | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                          |
+| `sent_at`            | Timestamp        | `2020-04-26 07:00:45.124`                                      | -                                                                          |
+| `original_timestamp` | Timestamp        | `2020-04-26 07:00:43.400`                                      | -                                                                          |
+| `timestamp`          | Timestamp        | `2020-04-26 07:00:44.834`                                      | -                                                                          |
 | `context_ip`         | String           | `0.0.0.0`                                                      | -                                                                          |
-| `context_<prop>`     | e.g. String, Int | e.g. `context_app_version: 1.2.3`, `context_screen_density: 2` | -                                                                          |
-| `name`               | String           | `Cart Viewed`                                                  | The page name.                                                             |
-| `category`           | String           | `Cart`                                                         | The page category.                                                         |
+| `context_<prop>`     | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                          |
+| `name`               | String           | `Cart Viewed`                                                  | The page name.                                                              |
+| `category`           | String           | `Cart`                                                         | The page category.                                                          |
 | `path`               | String           | `/cart`                                                        | -                                                                          |
 | `title`              | String           | `Shopping Cart`                                                | -                                                                          |
-| `url`                | String           | [`https://rudderstack.com`](https://rudderstack.com)\`\`       | -                                                                          |
-| `uuid_ts`            | Timestamp        | eg. `2020-04-26 07:31:54:735`                                  | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
+| `url`                | String           | `https://rudderstack.com`                                      | -                                                                          |
+| `uuid_ts`            | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
 
 ### Group
 
 RudderStack creates a record in the `groups` table for every `group` call.
 
-A sample `group` call is as shown below:
+A sample `group` call is shown below:
 
 ```javascript
 rudderanalytics.group(
-  "DevOps",
-  {
-    email: "john@rudderstack.com",
-    first_name: "John",
-    last_name: "Doe",
+  "DevOps", {
+    email: "alex@keener.com",
+    first_name: "Alex",
+    last_name: "Keener",
     age: 35,
-  },
-  {
+  }, {
     context: {
       ip: "0.0.0.0",
     },
@@ -383,22 +381,22 @@ The corresponding schemas created for the `groups` table is as shown:
 
 #### **Table: `groups`**
 
-| Column               | Type             | Value                                                          | Note                                                                       |
+| Column               | Type             | Example value                                                  | Note                                                                        |
 | :------------------- | :--------------- | :------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| `id`                 | String           | e.g. `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                    | The group ID associated with the current user.                             |
+| `id`                 | String           | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                         | The group ID associated with the current user.                              |
 | `anonymous_id`       | String           | `59b703e3-467a-4a1d-9fe6-da27ed319619`                         | -                                                                          |
 | `group_id`           | String           | `DevOps`                                                       | -                                                                          |
-| `received_at`        | Timestamp        | e.g. `2020-04-26 07:00:45.558`                                 | -                                                                          |
-| `sent_at`            | Timestamp        | e.g. `2020-04-26 07:00:45.124`                                 | -                                                                          |
-| `original_timestamp` | Timestamp        | e.g. `2020-04-26 07:00:43.400`                                 | -                                                                          |
-| `timestamp`          | Timestamp        | e.g. `2020-04-26 07:00:44.834`                                 | -                                                                          |
+| `received_at`        | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                          |
+| `sent_at`            | Timestamp        | `2020-04-26 07:00:45.124`                                      | -                                                                          |
+| `original_timestamp` | Timestamp        | `2020-04-26 07:00:43.400`                                      | -                                                                          |
+| `timestamp`          | Timestamp        | `2020-04-26 07:00:44.834`                                      | -                                                                          |
 | `context_ip`         | String           | `0.0.0.0`                                                      | -                                                                          |
-| `context_<prop>`     | e.g. String, Int | e.g. `context_app_version: 1.2.3`, `context_screen_density: 2` | -                                                                          |
-| `uuid_ts`            | Timestamp        | e.g. `2020-04-26 07:31:54:735`                                 | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
+| `context_<prop>`     | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                          |
+| `uuid_ts`            | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
 
-## Accepted Timestamp Formats
+## Accepted timestamp formats
 
-RudderStack only recognizes a subset of the ISO 8601 timestamp formats as a timestamp. Listed below are the accepted timestamp formats:
+RudderStack recognizes only the following subsets of the ISO 8601 timestamp format:
 
 - `2019-09-26`
 - `2009-05-19 14:39:22`
@@ -409,20 +407,19 @@ RudderStack only recognizes a subset of the ISO 8601 timestamp formats as a time
 
 <div class="warningBlock">
 
-RudderStack **does not recognize** any other timestamp format apart from the formats mentioned above.
-
+  RudderStack <strong>does not recognize</strong> any other timestamp format apart from the ones mentioned above.
 </div>
 
-## Reserved Keywords
+## Reserved keywords
 
-Note that there are some limitations when it comes to using the reserved words in a schema, table, or column names. If these words are used in the event names, traits or properties, RudderStack automatically prefixes an underscore(`_`) when creating the tables or columns for them in your schema.
+There are some limitations when it comes to using the reserved words in a schema, table, or column names. If these words are used in the event names, traits or properties, RudderStack automatically prefixes an underscore(`_`) when creating the tables or columns for them in your schema.
 
 <div class="warningBlock">
   
-Integers are not allowed at the start of the schema or table name. Such schema, column, or table names will be prefixed with an underscore. For instance, <code class="inline-code">25dollarpurchase</code> will be changed to <code class="inline-code">_25dollarpurchase</code>.
+Integers are not allowed at the start of the schema or table name. Such schema, column, or table names will be prefixed with an underscore. For e.g., <code class="inline-code">25dollarpurchase</code> will be changed to <code class="inline-code">_25dollarpurchase</code>.
 </div>
 
-Find more details about the list of reserved keywords in the following warehouse-specific documentation:
+The following table lists the warehouse-specific documentation references for reserved keywords:
 
 | Warehouse       | Reference                                                                                                   |
 | :-------------- | :---------------------------------------------------------------------------------------------------------- |
