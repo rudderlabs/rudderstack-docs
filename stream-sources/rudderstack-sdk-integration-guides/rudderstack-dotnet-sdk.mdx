@@ -249,9 +249,7 @@ The `options` object contains the following fields:
 
 ## Flushing events
 
-To make sure no events are left in the queue, you can flush the events explicitly by using the SDK's `flush()` method.
-
-A sample flush call is shown below:
+To make sure no events are left in the queue, you can flush the events explicitly by using the SDK's `flush()` method, as shown:
 
 ```csharp
 
@@ -260,7 +258,7 @@ RudderAnalytics.Client.Flush();
 
 <div class="warningBlock">
 
-Calling flush() again is blocked until all the messages are flushed from the queue.
+  Calling <code class="inline-code">flush()</code> again is blocked until all the messages are flushed from the queue.
 </div>
 
 ## Logging
