@@ -69,15 +69,18 @@ Follow <a href="https://rudderstack.com/docs/get-started/installing-and-setting-
 ## Event transformation
 
 The Shopify source supports both [**cloud mode**](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) and [**device mode**](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode) tracking.
-
-For cloud mode tracking, RudderStack uses the Shopify-provided webhooks, whereas for device mode tracking, RudderStack inserts a JavaScript tracking code into every page of the respective Shopify store.
-
+ 
 <div class="infoBlock">
 
 RudderStack enables both cloud mode and device mode tracking simultaneously.
 </div>
 
 ### Supported cloud mode events
+
+<div class="infoBlock">
+
+RudderStack uses the Shopify-provided webhooks for tracking events in cloud mode. 
+</div>
 
 - RudderStack supports and maps Shopify's `customer_create` and `customer_update` events as `identify` events.
 - RudderStack also supports the `checkout_created` and `order_update` events as the [E-commerce events](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/).
@@ -109,18 +112,23 @@ Any other events flowing through RudderStack except the <code class="inline-code
 
 ### Supported device mode events
 
-- RudderStack supports the `Page Viewed` event for every page visited on the Shopify store.
-- It also supports the `Registration Viewed` as a generic `track` event whenever the user visits their account or the registration page.
-- RudderStack supports the following E-commerce events in device mode:
+<div class="infoBlock">
 
-| Event name |
-| :------------|
-| Cart Viewed |
-| Checkout Started |
-| Product Added |
-| Product Clicked |
-| Product List Viewed |
-| Product Viewed |
+For device mode tracking, RudderStack inserts a JavaScript tracking code into every page of the respective Shopify store.
+</div>
+
+- RudderStack supports the [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) event for every page visited on the Shopify store.
+- It also supports the `Registration Viewed` as a generic [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) event whenever the user views their account or registration page.
+- The following [E-commerce events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) are also supported in device mode:
+
+| Event name             | Description                                |
+| :----------------------| :------------------------------------------|
+| `Cart Viewed`          | User viewed the cart page.                 |
+| `Checkout Started`     | User clicked on the buy button.            |
+| `Product Added`        | User added the product to the cart.        |
+| `Product Clicked`      | User clicked on a product.                 |
+| `Product List Viewed`  | User viewed the product collections page.  |
+| `Product Viewed`       | User viewed a product page.                |
 
 ## FAQ
 
