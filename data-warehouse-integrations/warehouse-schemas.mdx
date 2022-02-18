@@ -48,14 +48,18 @@ RudderStack sets the following standard properties on all the above-mentioned ta
 | `sent_at`            | Captures the time when the event was sent from the client to RudderStack. Conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`.     |
 | `received_at`        | Timestamp registered by RudderStack when the event was ingested (received). Conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`.     |
 | `original_timestamp` | Timestamp registered by the RudderStack SDK when the event call was invoked (event was emitted in the SDK).                     |
-| `timestamp`          | **If not already specified in the payload**, RudderStack calculates this field to account for the client clock skew. The formula used is `timestamp` = `receivedAt` - (`sentAt` -`originalTimestamp`). Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.     |
+| `timestamp`          | **If not already specified in the payload**, RudderStack calculates this field to account for the client clock skew. The formula used is `timestamp` = `received_at` - (`sent_at` -`original_timestamp`). Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.     |
 | `event_text`         | The name of the event mapped from the `event` key in the `track` event payload.                                                 |
 | `event`              | The name of the event table in case of the `track` calls.                                                                       |
 
+<div class="infoBlock">
+
+RudderStack automatically converts the property names from camel case to snake case. For more information on the properties captured at the API level, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/">RudderStack Event Specification</a>.
+</div>
+
 <div class="warningBlock">
 
-RudderStack reserves the above-mentioned standard properties. In the case of any conflict, RudderStack automatically discards the properties set by the user.
-
+RudderStack reserves the above-mentioned standard properties. In case of any conflict, RudderStack automatically discards the properties set by the user.
 </div>
 
 ### Clock skew considerations
@@ -64,8 +68,7 @@ RudderStack considers the time at its end to be absolute and assumes any differe
 
 <div class="infoBlock">
 
-<code class="inline-code">sentAt</code> &gt; <code class="inline-code">original_timestamp</code> is <strong>always true</strong>. However, <code class="inline-code">timestamp</code> can be more or less than the <code class="inline-code">original_timestamp</code>. Refer to the examples below for more details.
-
+<code class="inline-code">sentAt</code> &gt; <code class="inline-code">original_timestamp</code> is <strong>always true</strong>. However, <code class="inline-code">timestamp</code> can be more or less than the <code class="inline-code">original_timestamp</code>.
 </div>
 
 Here's an example of `original_timestamp` &lt; `received_at`\(The client-side time is less than the server-side time\):
