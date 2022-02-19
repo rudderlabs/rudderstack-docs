@@ -24,7 +24,7 @@ The following table lists all the common fields with their detailed description:
 | `integrations`      | Object   | Optional | You can specify the destinations for which you want to enable/disable sending events. |
 | `messageId`         | String   | Optional | Unique identification for the event.                                                  |
 | `properties`        | Object   | Optional | Passes all the relevant information associated with the event.                        |
-| `originalTimestamp` | DateTime | Required | Records the time when the event was emitted in the SDK. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.                                                                            |
+| `originalTimestamp` | DateTime | Required | Records the actual time when the event occurred. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.                                                                            |
 | `type`              | String   | Required | Captures the type of API. Values can be either `track`, `screen`, `identify`, `page`. |
 | `sentAt`            | DateTime | Required | Captures the time when the event was sent from the client to RudderStack. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.                                                       |
 
@@ -39,7 +39,7 @@ If not specified in the payload explicitly, RudderStack calculates <code class="
 
 <div class="infoBlock">
 
-<code class="inline-code">sentAat</code> &gt; <code class="inline-code">originalTimestamp</code> is <strong>always true</strong>. However, <code class="inline-code">timestamp</code> can be more or less than the <code class="inline-code">originalTimestamp</code>.
+<code class="inline-code">sentAt</code> &gt; <code class="inline-code">originalTimestamp</code> is <strong>always true</strong>. However, <code class="inline-code">timestamp</code> can be more or less than the <code class="inline-code">originalTimestamp</code>.
 </div>
 
 ### `originalTimestamp` < `receivedAt`
