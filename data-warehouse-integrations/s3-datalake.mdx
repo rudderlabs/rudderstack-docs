@@ -41,7 +41,13 @@ Add the following credentials in the **Connection Settings**:
 For more information on registering your schema in AWS Glue, refer to the AWS Glue <a href="https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html">documentation</a>.
 </div>
 
+<div class="infoBlock">
+
+For more information on managing partitions in AWS Glue, refer to the AWS Glue Managing Partitions <a href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-partitions.html">documentation</a>.
+</div>
+
 * **AWS Glue Region**: Specify your AWS Glue region. For example, for N.Virginia, it would be **`us-east-1`**. 
+* **AWS Glue TimeWindowFormat**: Specify your `key=val` pair by which you want to partition tables. AWS Glue can use these partitions to filter data by partition value without having to read all the underlying data from S3. For example, **`dt=2006-02-01`** sets partition name to dt and partitions table to current day
 * **S3 Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. 
 * **Namespace**: If specified, all the data for the destination will be pushed to `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>`. If AWS Glue is enabled, all the table definitions are created in a database with the name set to this namespace.
 
@@ -96,6 +102,15 @@ RudderStack will convert these events into Parquet files and dump them into the 
 | :--- | :--- |
 | `Product Purchased` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` |
 | `Cart Viewed` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09` |
+
+If AWS Glue is enabled and `timeWindowFormat` is set to `dt=2006-01-02-15`, Parquet files will be dumped into the following folders:
+
+| **Event Name** | **Folder Location** |
+| :--- | :--- |
+| `Product Purchased` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/dt=2019-10-12-08` |
+| `Cart Viewed` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/dt=2019-11-12-09` |
+
+For more information on date time layout options and layout formatting to current date, please refer to Time package <a href="https://pkg.go.dev/time#Time.Format">documentation</a>
 
 <div class="infoBlock">
 
