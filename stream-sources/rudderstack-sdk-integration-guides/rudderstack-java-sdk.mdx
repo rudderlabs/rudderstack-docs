@@ -36,11 +36,17 @@ To install the RudderStack Java SDK, add the following lines of code to `pom.xml
 
 ```markup
 <dependency>
-   <groupId>com.rudderstack.sdk.java</groupId>
-     <artifactId>rudderanalytics-client</artifactId>
-   <version>1.0.1</version>
+   <groupId>com.rudderstack.sdk.java.analytics</groupId>
+     <artifactId>analytics</artifactId>
+   <version>2.0.0</version>
 </dependency>
 ```
+
+If you're using Gradle, add the below to your dependencies:
+```markup
+implementation 'com.rudderstack.sdk.java.analytics:analytics:2.0.0'
+```
+
 
 ## Initializing the RudderStack client
 
@@ -271,10 +277,21 @@ RudderAnalytics analytics = RudderAnalytics.builder(
         WRITE_KEY,
         DATA_PLANE_URL
 )
-// optional (default : false).
-// It is required to block further method invocation until the flush completes.
-.synchronize(true)
-.plugin(new PluginLog()) // optional. Used for Logging
+// optional (default : false)
+// Required to block further method invocation until the flush completes.
+.synchronize(true);
+
+// optional. Used for Logging
+.plugin(new PluginLog());
+
+// optional. Available from 2.0.0
+//Sets the queue size at which flushes should be triggered.
+.maximumQueueSizeInBytes(100); //maximum queue size
+
+// optional. Available from 2.0.0
+//Sets how many retries should happen before getting exhausted.
+.retries(10); //number of retries
+
 .build();
 
 // ...YOUR CODE...
