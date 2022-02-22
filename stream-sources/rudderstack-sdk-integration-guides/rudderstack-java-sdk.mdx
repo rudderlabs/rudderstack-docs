@@ -277,10 +277,21 @@ RudderAnalytics analytics = RudderAnalytics.builder(
         WRITE_KEY,
         DATA_PLANE_URL
 )
-// optional (default : false).
-// It is required to block further method invocation until the flush completes.
-.synchronize(true)
-.plugin(new PluginLog()) // optional. Used for Logging
+// optional (default : false)
+// Required to block further method invocation until the flush completes.
+.synchronize(true);
+
+// optional. Used for Logging
+.plugin(new PluginLog());
+
+// optional. Available from 2.0.0
+//Sets the queue size at which flushes should be triggered.
+.maximumQueueSizeInBytes(100); 
+
+// optional. Available from 2.0.0
+//Sets how many retries should happen before getting exhausted.
+.retries(); 
+
 .build();
 
 // ...YOUR CODE...
