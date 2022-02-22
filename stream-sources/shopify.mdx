@@ -1,5 +1,5 @@
 ---
-# slug: "/docs/stream-sources/appcenter"
+# slug: "/docs/stream-sources/shopify"
 title: "Shopify"
 description: Step-by-step guide to ingest your event data from Shopify into RudderStack.
 ---
@@ -85,11 +85,11 @@ Follow <a href="https://rudderstack.com/docs/get-started/installing-and-setting-
 
 The Shopify source supports both [**cloud mode**](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) and [**device mode**](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode) tracking. RudderStack enables simultaneous tracking of user events via these modes.
 
-### Supported cloud mode events
+### Supported server-side events
 
 <div class="infoBlock">
 
-RudderStack uses the Shopify-provided webhooks for tracking events in cloud mode. 
+RudderStack uses the Shopify-provided webhooks for tracking events on the server-side. 
 </div>
 
 The following table details the supported Shopify events and their corresponding [topic](https://shopify.dev/api/admin-rest/2022-01/resources/webhook#:~:text=a%20custom%20storefront.-,Mandatory%20webhooks,-You%20don%27t%20create) mapping for `identify` calls:
@@ -137,7 +137,7 @@ The RudderStack app requires the following [scopes](https://shopify.dev/api/usag
 ```text
 read_checkouts, read_orders, read_customers, read_fulfillments, write_script_tags
 ```
-The below is an example of cloud mode event transformed by RudderStack:
+The below is an example of server-side event transformed by RudderStack:
 ```json
 {
   "anonymousId": "bb35ad42-d59b-405c-b311-2daf98671c9c",
@@ -228,16 +228,16 @@ The below is an example of cloud mode event transformed by RudderStack:
 }
 ```
 
-### Supported device mode events
+### Supported client-side events
 
 <div class="infoBlock">
 
-For device mode tracking, RudderStack inserts a JavaScript tracking code into every page of the respective Shopify store.
+For client-side tracking, RudderStack inserts a JavaScript tracking code into every page of the respective Shopify store.
 </div>
 
 - RudderStack supports the [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) event for every page visited on the Shopify store.
 - It also supports the `Registration Viewed` as a generic [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) event whenever the user views their account or registration page.
-- The following [E-commerce events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) are also supported in device mode:
+- The following [E-commerce events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) are also supported on client-side:
 
 | Event name             | Description                                |
 | :----------------------| :------------------------------------------|
@@ -248,7 +248,7 @@ For device mode tracking, RudderStack inserts a JavaScript tracking code into ev
 | `Product List Viewed`  | User viewed the product collections page.  |
 | `Product Viewed`       | User viewed a product page.                |
 
-The below is an example of device mode event transformed by RudderStack:
+The below is an example of client-side event transformed by RudderStack:
 ```yaml
 {
   "channel": "web",
