@@ -67,7 +67,7 @@ rudderanalytics.alias("12345")
 When instrumenting a website with the JavaScript SDK, making the <code class="inline-code">alias</code> call via the client-side is important as the <code class="inline-code">anonymousId</code> is generated via the browser. Similarly, if you're using a server-side SDK, the <code class="inline-code">alias</code> call must be made from the server-side as the session ID is set as the <code class="inline-code">anonymousId</code>.
 </div>
 
-## Page fields
+## Alias fields
 
 In addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/), the `alias` call accepts the following fields:
 
@@ -89,15 +89,7 @@ In addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">previousId</code>
-      </td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">Required</td>
-      <td style="text-align:left">The user's previous identifier.</td>
-    </tr>
-    <tr>
+      <tr>
       <td style="text-align:left">
         <code class="inline-code">userId</code>
       </td>
@@ -108,6 +100,14 @@ In addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-
       <td style="text-align:left">
         <p>The user's identifier in your database. Either <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> should be present.</p>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">previousId</code>
+      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">Required</td>
+      <td style="text-align:left">The user's previous identifier.</td>
     </tr>
   </tbody>
 </table>
