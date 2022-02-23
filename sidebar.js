@@ -373,6 +373,14 @@ export const jsonData = [
            ]
         },
         {
+           "key":"shopify",
+           "title":"Shopify",
+           "link":"/stream-sources/shopify/",
+           "content":[
+              
+           ]
+        },
+        {
            "key":"segment",
            "title":"Segment",
            "link":"/stream-sources/segment/",
