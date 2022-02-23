@@ -93,33 +93,31 @@ type=subscribe&fired_at=2021-07-28+08%3A06%3A59&data%5Bid%5D=e2ff089583&data%5Be
 RudderStack receives this data and creates the following payload:
 
 ```javascript
-;[
   {
-    type: "track",
-    event: "webhook_source_event",
-    rudderId: "044448e2-a674-426c-ba61-8341262babcc",
-    messageId: "4379907d-689a-4e3a-a2f7-477e29a02299",
-    properties: {
-      type: ["subscribe"],
-      "data[id]": ["e2ff089583"],
-      fired_at: ["2021-07-28 08:06:59"],
-      "data[email]": ["[name@rudderlabs.com](mailto:name@rudderlabs.com)"],
-      "data[ip_opt]": ["115.187.35.152"],
-      "data[web_id]": ["161912900"],
-      "data[list_id]": ["ec4689c266"],
-      "data[email_type]": ["html"],
-      "data[merges][EMAIL]": [
-        "[name@rudderlabs.com](mailto:name@rudderlabs.com)",
-      ],
-      "data[merges][FNAME]": ["Name"],
-      "data[merges][LNAME]": ["Surname"],
-      "data[merges][PHONE]": [""],
-      "data[merges][ADDRESS]": [""],
-      "data[merges][BIRTHDAY]": [""],
-    },
-    anonymousId: "d6597ba2-54db-4bd7-8769-86ac067b4178",
+  type: "track",
+  event: "webhook_source_event",
+  rudderId: "044448e2-a674-426c-ba61-8341262babcc",
+  messageId: "4379907d-689a-4e3a-a2f7-477e29a02299",
+  properties: {
+    type: ["subscribe"],
+    "data[id]": ["e2ff089583"],
+    fired_at: ["2021-07-28 08:06:59"],
+    "data[email]": ["[name@rudderlabs.com](mailto:name@rudderlabs.com)"],
+    "data[ip_opt]": ["115.187.35.152"],
+    "data[web_id]": ["161912900"],
+    "data[list_id]": ["ec4689c266"],
+    "data[email_type]": ["html"],
+    "data[merges][EMAIL]": [
+      "[name@rudderlabs.com](mailto:name@rudderlabs.com)",
+    ],
+    "data[merges][FNAME]": ["Name"],
+    "data[merges][LNAME]": ["Surname"],
+    "data[merges][PHONE]": [""],
+    "data[merges][ADDRESS]": [""],
+    "data[merges][BIRTHDAY]": [""],
   },
-]
+  anonymousId: "d6597ba2-54db-4bd7-8769-86ac067b4178",
+}
 ```
 
 You can then transform this payload according to the desired destination with the help of RudderStack's [**Transformations**](https://rudderstack.com/docs/transformations) feature.
