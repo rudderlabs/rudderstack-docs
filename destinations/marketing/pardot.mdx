@@ -38,44 +38,23 @@ Once you have confirmed that the source platform supports sending events to Pard
 Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-<img src="../../assets/event-stream-destinations/pardot-connection-settings.png" alt="Pardot connection settings"/>
+
 
 ## Connection settings
 
 To successfully configure Pardot as a destination, you will need to configure the following settings:
 
-- **Public API Key**: Your Public API Key is the unique key generated against your Klaviyo account. It can be found in your Klaviyo dashboard in the **Account** section under **Settings**.
+<img src="../../assets/event-stream-destinations/pardot-connection-settings3.png" alt="Pardot connection settings"/>
 
-- **Private API Key**: Your Private API key can be generated for your account in the **Account** section under **Settings**. This key allows you to add users to a list or subscribe them using personalised emails/SMS.
+- **Business Unit Id**: You can find the Business Unit ID by logging in into Salesforce. 
+1. Go to Setup at the top right corner and click on **Pardot** option. 
+2. Click on **Pardot Account Setup**.
+You can locate the Business Unit ID, which is the 18 character long string starting with `0Uv`ˇ
 
-- **Enforce Email as Primary Identifier**: If this option is enabled, RudderStack will never set `$id` field to your `userId` when you send the events. Instead, RudderStack will only set a custom attribute `_id` and `$email` as the primary identifier with your `traits.email` or `properties.email`. 
+- **Campaign Id**: You can find the Campaign ID (or piCId) under **Marketing** > **Campaigns** in your Pardot account. After selecting the desired website campaign, press **View Tracking Code**.
 
-<div class="warningBlock">
+Alternatively, you can go to the [Pardot campaigns](https://pi.pardot.com/campaign) and select the desired campaign from the list. The last 5 digits in the campaign Url is your campaign Id. For example, 12345 is the campaign Id in URL: https://pi.pardot.com/campaign/read/id/12345. 
 
-This setting should be enabled only if you are experiencing any issues with duplicate profiles created in your Klaviyo account.
-</div>
-
-- **List Id**: Enter your default list ID to which you want to add or subscribe your identified users.
-
-- **Consent**: If you are a GDPR-compliant business, you will need to include `consent` in your API call. 
-
-<div class="infoBlock">
-
-<code class="inline-code">consent</code> is a Klaviyo-specific property and only accepts these values: <code class="inline-code">email</code>, <code class="inline-code">web</code>, <code class="inline-code">sms</code>, <code class="inline-code">directmail</code>, and <code class="inline-code">mobile</code>. 
-</div>
-
-- **SMS Consent**: If you are updating the consent for a phone number, or would like to send an opt-in SMS to the profile \(for double opt-in lists\), then enable this option. Alternatively, you can also include an `smsConsent` key in the properties with a value of `true` or `false`.
-
-- **Send Page As Track**: Enable this option if you wish send `page` events as `track` events along with the event `name` and `category`.
-
-- **Additional Page info**: If you are sending `page` events as `track` events, you can also choose to send in additional properties for the event by enabling this field.
-
-- **Use Native SDK to send Events**: Enable this option if you want to send events using the web device mode.
-
-<div class="infoBlock">
-
-In case <code class="inline-code">userId</code> is absent, RudderStack uses <code class="inline-code">anonymousId</code> for mapping the user with an unique identifier. In case both <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code> are absent, then <code class="inline-code">email</code> or <code class="inline-code">phone</code> will be considered as the user's primary identifier.
-</div>
 
 ## Identify
 
@@ -84,83 +63,62 @@ The `identify` call lets you capture the details of a visiting user along with a
 A sample `identify` call is as shown:
 
 ```javascript
-{
-  "message": {
-    "traits": {
-      "property-1": "abc",
-      "property-2": "def",
-      ..........
-      ..........
-      "id": "01",
-      "fid": "f_01",
-      "email": "alex@example.com"
-
-    }
-  }
-}
+rudderanalytics.identify("userId", {
+  "active_seats": 6,
+  "salutation": "Mrs",
+  "firstName": "Angela",
+  "lastName": "Rudder",
+  "email": "angela@rudder.com",
+  "website": "https://app.rudderstack.com",
+  "score": 16,
+  "company": "Rudderstack",
+  "job_title": "dev",
+  "department": "accounting",
+  "country": "IN",
+  "address": {
+    "street": "dwight",
+    "city": "schrute",
+    "state": "Bihar",
+    "zip": "123456"
+  },
+  "phone": "+911234567890",
+  "annual_revenue": "100001",
+  "employees": "100001",
+  "industry": "people",
+  "notes": "take notes",
+  "address_two": "address two of angela differnet secrets",
+  "fax": "fax321",
+  "years_in_business": 13,
+  "comments": "good",
+  "is_do_not_email": "false",
+  "opted_out": "false",
+  "is_reviewed": "false",
+  "is_starred": "true",
+  "territory": "territory",
+  "campaign_id": 41775
+}, {
+  externalId: [{
+    type: "crmfid", // can be pardotid for sending pardot ID
+    id: "crmFidUser",
+  }]
+});
 ```
+
+
+in above example if email and crmfid both are absent error will be thrown.
+If email is absent but either pardotid or crmfid is present update API will be performed. ( Note that if pardotid and crmfid is not already linked to prospect then pardot will throw error)
+If only email is present then we will always create new prospect. Even if that email is already present, pardot will create new prospect.
+if no email is present and prospect id or crm fid is wrongly input error will be thrown from destination end
+If only email address is provided, and even if Pardot already contains more than one prospect with the same email id, a new prospect will be created as Pardot does not allow write operation on email addresses.
+
+
 ## FAQ
 
-### Why we do not support custom look up fields like Segment?
-We can create custom field in Pardot and create prospects with the same, but while querying it is not working unless only the specified fields are used .
-Sample Query Call :
-```JSON
-GET https://pi.pardot.com/api/prospect/version/4/do/query?score_equal_to=0&format=json&first_name=User_two&created_after=2021-11-29 17:00:00
+### How to find crmfid (used for upsert operation)?
 
-Content-Type: application/x-www-form-urlencoded
-Authorization:00D2v000003QBAi!AQMAQNgnQ1A3J_.nUZOauDTOrZ5FEiEKGAa4sfN1fn.t862D.uA4GJnwdwCK1g_hOAGlvLFtqfFa9S7UgKr5jViMVtl1oZ4P
-Pardot-Business-Unit-Id: 0Uv2v000000k9tHCAQ
-```
+<img src="../../assets/event-stream-destinations/Pardot-crmfid1.png" alt="Pardot connection settings"/>
 
-### Why we do not support userId as lookup field like Segment?
-
-We have thought of getting information about which is field will be mapped to userId via webapp. But, still the problem remains regarding information retrieval using the query API. For details, see the previous answer.
-
-### Why we are not asking for the prospect account id like segment?
-
-1. prospect account id is same accross all the campaigns inside a specific account.
-2.  When we are sending using prospect_account_id we are getting the following error :
-```JSON
-{
-  "@attributes": {
-    "stat": "fail",
-    "version": 1,
-    "err_code": 59
-  },
-  "err": "A CRM connector was detected"
-}
-
-Which means:
-
-  https: //developer.salesforce.com/docs/marketing/pardot/guide/error-codes.html
-
-  We need to take note: prospect_account_id or piAId is same accross all the campaigns as we checked inside the account provided to us.
-  ```
-  We still have not got scope to test with an account where the CRM connector is not present
-### Why we are not checking if prospects with same email id is existing and updating each of them, rather creating new prospect each time?
-As, we were planning, if more than one prospect exists with the same email address, we will be updating all of them. Now, update query with email address does not work. It shows :
-```JSON
-{
-  "@attributes": {
-    "stat": "fail",
-    "version": 1,
-    "err_code": 2
-  },
-  "err": "Invalid action: Updating by email address is not supported. You may query by email address to get record IDs and update by them."
-}
-```
-That means, what we can do is, from the read query we can take id of every prospect and update them by calling update API with id for all of them. Not sure about the ideal scenario, but if a huge number of prospects are existing against the same email id, it will cost a lot of computation time. Implementation wise it was possible though.
-
-### How to find the campaign id?
-
-The Campaign ID (or piCId) can be located under **Marketing** > **Campaigns** in your Pardot account. After selecting your desired website campaign, press **View Tracking Code**.
-
-### How to find the business-unit-id?
-
-You need to find your Business Unit ID in Salesforce. 
-1. Go to Setup and search for **Pardot**. 
-2. Click on **Pardot Account Setup**.
-Your Pardot Business Unit ID is the 18 character long string that starts with `0Uv`
+<img src="../../assets/event-stream-destinations/Pardot-crmfid2.png" alt="Pardot connection settings"/>
 
 ### How to update a prospect data?
 
@@ -168,16 +126,10 @@ To update the prospect data, you need to send a payload that contains `externalI
 ```javascript
 // Sample payload with `id` data for update
 {
-  ...
-  "context": {
-    ....
-    "externalId": {
-      "type": "PardotId",
-      "id": "12334"
-    },
-    ...
-  }
-  ...
+  "externalId": [{
+    "type": "PardotId",
+    "id": "12345",
+  }]
 }
 ```
 The `type` field can contain either of the below mentioned values:
@@ -185,64 +137,7 @@ The `type` field can contain either of the below mentioned values:
 - CRM FID with field name as `crmfid`
 The `id` field contains the actual value
 
-### What are invalid ways of sending `externalId` in `context` property for update to RudderStack?
-
-Invalid ways:
-- `type` is a string which is not equal to `pardotid` or `crmfid`
-```javascript
-// Sample payload with `id` data for update
-{
-	...
-	"context": {
-		....
-		"externalId": {
-			"type": "randomId"
-		},
-		...
-	}
-	...
-}
-```
-- Only `id` is present
-```javascript
-{
-  ...
-  "context": {
-    ....
-    "externalId": {
-      "id": ""
-    },
-    ...
-  }
-  ...
-}
-```
-- Empty object or any other data-type
-```javascript
-{
-  ...
-  "context": {
-    ....
-    "externalId": {},
-    ...
-  }
-  ...
-}
-```
-- `externalId` is not present in `context` property
-```javascript
-{
-  ...
-  "context": {
-    ...
-  }
-  "externalId": {
-    "type": "crmfid",
-    "id": "Ouvkjandiuyoij7t2shfk"
-  },
-}
-```
-Rudderstack uses prospect `upsert` API to carry on with updates. In case `externalId` is not sent in the expected way, Rudderstack would **create with email by default**.
+### How to update a prospect data?
 
 ## Contact us
 
