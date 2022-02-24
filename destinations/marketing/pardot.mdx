@@ -44,7 +44,7 @@ To successfully configure Pardot as a destination, you will need to configure th
 
 <img src="../../assets/event-stream-destinations/pardot-connection-settings3.png" alt="Pardot connection settings"/>
 
-- **Business Unit Id**: Your **Business Unit ID** is the 18 character long string starting with `0Uv`. You can find it in your Salesforce account by following the below steps:
+- **Business Unit Id**: Your **Business Unit ID** is the 18 character long string starting with `0Uv`. You can find it in your **Salesforce** account by following the below steps:
   1. Go to **Setup** at the top right corner and click on **Pardot** option. 
   2. Click on **Pardot Account Setup** to locate the Business Unit ID.
 
@@ -105,7 +105,7 @@ rudderanalytics.identify("userId", {
   }]
 });
 ```
-You can note the following behavior:
+You can notice the following behavior:
 * An error is thrown if both the `email` and `crmfid` fields are absent.
 * An update API call is performed if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to a prospect, an error is thrown.
 * An error is thrown if `email` is absent and `prospectid` or `crmfid` is entered incorrectly.
