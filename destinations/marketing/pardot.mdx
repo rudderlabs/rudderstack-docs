@@ -38,8 +38,6 @@ Once you have confirmed that the source platform supports sending events to Pard
 Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-
-
 ## Connection settings
 
 To successfully configure Pardot as a destination, you will need to configure the following settings:
@@ -49,6 +47,8 @@ To successfully configure Pardot as a destination, you will need to configure th
 - **Business Unit Id**: Your **Business Unit ID** is the 18 character long string starting with `0Uv`. You can find it in your Salesforce account by following the below steps:
   1. Go to **Setup** at the top right corner and click on **Pardot** option. 
   2. Click on **Pardot Account Setup** to locate the Business Unit ID.
+
+<img src="../../assets/event-stream-destinations/pardot-business-unit-id.png" alt="Pardot Business Unit Id"/>
 
 - **Campaign Id**: You can find the Campaign ID (or piCId) under **Marketing** > **Campaigns** in your Pardot account. After selecting the desired website campaign, press **View Tracking Code**.
 
@@ -105,7 +105,7 @@ rudderanalytics.identify("userId", {
 Please note the following behavior:
 * An error is thrown if both the `email` and `crmfid` are absent.
 * The update API call is performed if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to the prospect, error is thrown.
-* An error is thrown if `email` is absent and `prospect id` or `crm fid` is entered incorrectly.
+* An error is thrown if `email` is absent and `prospectid` or `crmfid` is entered incorrectly.
 * If only `email` is present or Pardot already contains more than one prospect with the same email id, a new prospect is created as Pardot does not allow write operation on email addresses.
 * Only the first `externalId` is considered in case of multiple `externalIds`.
 
@@ -113,14 +113,15 @@ Please note the following behavior:
 ## FAQ
 
 ### How to find crmfid (used for upsert operation)?
+You can find the crmfid (CRM Lead ID) under any Prospect by clicking on **Sync with CRM** as shown below:
 
-<img src="../../assets/event-stream-destinations/Pardot-crmfid1.png" alt="Pardot connection settings"/>
+<img src="../../assets/event-stream-destinations/Pardot-crmfid1.png" alt="Pardot CRM Lead ID"/>
 
-<img src="../../assets/event-stream-destinations/Pardot-crmfid2.png" alt="Pardot connection settings"/>
+<img src="../../assets/event-stream-destinations/Pardot-crmfid2.png" alt="Pardot CRM Lead ID"/>
 
 ### How to update a prospect data?
 
-To update the prospect data, you need to send a payload that contains `externalId` in `context` property of the payload. An example snippet of the payload is shown below:
+To update the prospect data, you need to send a payload that contains `externalId` in the payload as shown below:
 ```javascript
 // Sample payload with `id` data for update
 {
