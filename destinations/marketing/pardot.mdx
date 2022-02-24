@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Pard
 
 # Pardot
 
-[**Pardot**](https://www.pardot.com/) is a Salesforce product which generates and nurtures the leads as well as empowers sales to close more deals. It is a marketing automation solution that enables organizations to track and measure the effectiveness of their communications, gain insight into user behavior, and personalize content across campaigns based on any specific criteria.
+[Pardot](https://www.pardot.com/) is a Salesforce product which generates and nurtures the leads as well as empowers sales to close more deals. It is a marketing automation solution that enables organizations to track and measure the effectiveness of their communications, gain insight into user behavior, and personalize content across campaigns based on any specific criteria.
 
 RudderStack supports Pardot as a destination to which you can seamlessly send your event data.
 
@@ -52,8 +52,11 @@ To successfully configure Pardot as a destination, you will need to configure th
 
 - **Campaign Id**: You can find the Campaign ID (or piCId) under **Marketing** > **Campaigns** in your Pardot account. After selecting the desired website campaign, press **View Tracking Code**.
 
-Alternatively, you can go to the [Pardot campaigns](https://pi.pardot.com/campaign) and select the desired campaign from the list. The last 5 digits of the campaign Url is your campaign Id. For example, 12345 is the campaign Id for https://pi.pardot.com/campaign/read/id/12345 campaign Url.
+<div class="infoBlock">
+  
+Alternatively, you can go to the <a href="https://pi.pardot.com/campaign">Pardot campaigns</a> and select the desired campaign from the list. The last 5 digits of the campaign URL is your campaign Id. For example, 12345 is the campaign Id for https://pi.pardot.com/campaign/read/id/12345 campaign URL.
 
+</div>
 
 ## Identify
 
@@ -103,20 +106,20 @@ rudderanalytics.identify("userId", {
 });
 ```
 Please note the following behavior:
-* An error is thrown if both the `email` and `crmfid` are absent.
-* The update API call is performed if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to the prospect, error is thrown.
+* An error is thrown if both the `email` and `crmfid` fields are absent.
+* An update API call is performed if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to a prospect, an error is thrown.
 * An error is thrown if `email` is absent and `prospectid` or `crmfid` is entered incorrectly.
-* If only `email` is present or Pardot already contains more than one prospect with the same email id, a new prospect is created as Pardot does not allow write operation on email addresses.
+* If only `email` is present or Pardot already contains more than one prospect with the same email id, a new prospect is created as Pardot does not allow write operation on email ids.
 * Only the first `externalId` is considered in case of multiple `externalIds`.
 
 
 ## FAQ
 
 ### How to find crmfid (used for upsert operation)?
-You can find the crmfid (CRM Lead ID) under any Prospect by clicking on **Sync with CRM** as shown below:
+You can find the crmfid (CRM Lead ID) under any **Prospect** by clicking on **Sync with CRM** as shown below:
 
 <img src="../../assets/event-stream-destinations/Pardot-crmfid1.png" alt="Pardot CRM Lead ID"/>
-
+The CRM Lead ID can be located here:
 <img src="../../assets/event-stream-destinations/Pardot-crmfid2.png" alt="Pardot CRM Lead ID"/>
 
 ### How to update a prospect data?
@@ -126,7 +129,7 @@ To update the prospect data, you need to send a payload that contains `externalI
 // Sample payload with `id` data for update
 {
   "externalId": [{
-    "type": "PardotId",
+    "type": "pardotid
     "id": "12345",
   }]
 }
