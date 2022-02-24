@@ -105,7 +105,7 @@ rudderanalytics.identify("userId", {
   }]
 });
 ```
-Please note the following behavior:
+You can note the following behavior:
 * An error is thrown if both the `email` and `crmfid` fields are absent.
 * An update API call is performed if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to a prospect, an error is thrown.
 * An error is thrown if `email` is absent and `prospectid` or `crmfid` is entered incorrectly.
