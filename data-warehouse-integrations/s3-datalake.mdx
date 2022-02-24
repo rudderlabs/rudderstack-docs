@@ -103,12 +103,12 @@ RudderStack will convert these events into Parquet files and dump them into the 
 | `Product Purchased` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` |
 | `Cart Viewed` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09` |
 
-If AWS Glue is enabled and `timeWindowFormat` is set to `dt=2006-01-02-15`, the Parquet files will be dumped into the following folders:
+If AWS Glue is enabled and `timeWindowFormat` is set to `dt=2006-01-02`, the Parquet files will be dumped into the following folders:
 
 | **Event Name** | **Folder Location** |
 | :--- | :--- |
-| `Product Purchased` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/dt=2019-10-12-08` |
-| `Cart Viewed` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/dt=2019-11-12-09` |
+| `Product Purchased` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/dt=2019-10-12` |
+| `Cart Viewed` | `s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/dt=2019-11-12` |
 
 <div class="infoBlock">
 For more information on date time layout options and layout formatting to current date, refer to the <a href="https://pkg.go.dev/time#Time.Format">Time package documentation</a>
