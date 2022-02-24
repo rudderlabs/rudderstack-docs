@@ -13,10 +13,10 @@ RudderStack supports Google Adwords Remarketing Lists as a destination to which 
 
 Before configuring Google Adwords Remarketing Lists as a destination in RudderStack, verify if the source platform is supported by referring to the table below:
 
-| **Connection Mode** | **Web**       | **Mobile**  | **Server**            |
-| :-------------------- | :-------------- | :----------- | :------------------|
-| **Device mode**      | -                        | -                   | -                              |
-| **Cloud mode**       | -                         | -                   |  **Supported**    |
+| **Connection Mode** | **Web**         | **Mobile**   | **Server**        |
+| :-------------------| :-------------- | :----------- | :-----------------|
+| **Device mode**     | -               | -            | -                 |
+| **Cloud mode**      | -               | -            |  **Supported**    |
 
 <div class="infoBlock">
 
@@ -52,13 +52,6 @@ For more information on obtaining the customer ID, refer to the <a href="https:/
 <div class="warningBlock">
 
 Do not include the dash(-) between the numbers in your customer ID. For example, if your customer ID is <code class="inline-code">123-456-7890</code>, then enter <code class="inline-code">1234567890</code> in this field.
-</div>
-
-- **Developer Token**: Enter the developer token required to connect your app to the Google Ads API. 
-
-<div class="infoBlock">
-
-To get the developer token, you need to sign in to your <a href="https://ads.google.com/home/tools/manager-accounts">manager account</a>. For more information on obtaining the developer token, refer to the <a href="https://developers.google.com/google-ads/api/docs/first-call/dev-token">Google Ads</a> documentation.
 </div>
 
 - **Subaccount**: Enable or disable this setting if you are using a Google Ads subaccount.
@@ -154,20 +147,9 @@ The following table details the mapping of the schema fields specified in the Ru
 | `country` | `countryCode` | Use the ISO two-letter/three-letter [country codes](https://developers.google.com/google-ads/api/reference/data/codes-formats#expandable-16). Include the country code even if all your users belong to the same country. | 
 | `postalCode` | `postalCode` | Both the US and international zip and postal codes are allowed. For the US, 5 digit codes followed by 4 digit extensions are also allowed. For the rest of the countries, do not include the postal code extensions.
 | `mobileId` | `mobileId` | Only include the mobile device ID. No other data types are accepted.
-| `thirdPartyUserId` | `thirdPartyUserID` | - |
+| `thirdPartyUserId` | `thirdPartyUserID` | Do not include any numbers. Only a string is accepted. |
 
 ## FAQs
-
-### Where can I find the Google Adwords developer token?
-
-To obtain your developer token, sign in to your [manager account](). Then, navigate to **Tools & settings** > **Setup** > **API Center**. You will find the token under the **API Access** section, as shown:
-
-<img src="../../assets/event-stream-destinations/google-adwords-remarketing-lists-developer-token.png" alt="Google Adwords Remarketing Lists (Customer Match) connection settings" />
-
-<div class="infoBlock">
-
-This option appears only for the manager accounts in Google Ads.
-</div>
 
 ### Where can I find my Google Adwords customer ID?
 
