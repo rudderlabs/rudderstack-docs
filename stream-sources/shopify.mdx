@@ -94,12 +94,12 @@ RudderStack uses the Shopify-provided webhooks for tracking events on the server
 
 The following table details the supported Shopify events and their corresponding [topic](https://shopify.dev/api/admin-rest/2022-01/resources/webhook#:~:text=a%20custom%20storefront.-,Mandatory%20webhooks,-You%20don%27t%20create) mapping for `identify` calls:
 
-| Identify event name            | Description                 | Subscribed Shopify topic        | 
-| :-----------------------------| :---------------------------| :-----------------------------|
-| `customers_create`            | Customer is created.        | `customers/create`           | 
-| `customers_update`            | Customer is updated.        | `customers/update`            | 
-| `customers_disabled`          | Customer is disabled.       | `customers/disable`           | 
-| `customers_enable`            | Customer is enabled.        | `customers/enable`            | 
+| Identify event name            | Description                 | Subscribed Shopify topic      | 
+| :-----------------------------| :---------------------------| :------------------------------|
+| `customers_create`            | Customer was created.        | `customers/create`            | 
+| `customers_update`            | Customer was updated.        | `customers/update`            | 
+| `customers_disabled`          | Customer was disabled.       | `customers/disable`           | 
+| `customers_enable`            | Customer was enabled.        | `customers/enable`            | 
 
 The following table details the supported Shopify events and their corresponding [topic](https://shopify.dev/api/admin-rest/2022-01/resources/webhook#:~:text=a%20custom%20storefront.-,Mandatory%20webhooks,-You%20don%27t%20create) mapping for `track` calls:
 
@@ -112,7 +112,7 @@ The following table details the supported Shopify events and their corresponding
 | `fulfillments_create`         | Fulfillment was created.    | `fulfillments/create`         | 
 | `fulfillments_update`         | Fulfillment was updated.    | `fulfillments/update`         |
 | `orders_create`               | Order was created.          | `orders/create`               | 
-| `orders_delete`               | Order was delted.           | `orders/delete`               |
+| `orders_delete`               | Order was deleted.           | `orders/delete`               |
 | `orders_cancelled`            | Order was cancelled.        | `orders/cancelled`            |
 | `orders_fulfilled`            | Order was fulfilled.        | `orders/fulfilled`            | 
 | `orders_paid`                 | Order was paid.             | `orders/paid`                 | 
@@ -120,9 +120,9 @@ The following table details the supported Shopify events and their corresponding
 
 RudderStack also supports the following [E-commerce events](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/):
 
-| E-commerce event name            | Description                 | Subscribed Shopify topic        |
-| :-----------------------------| :---------------------------| :-----------------------------|
-| `Checkout Started`            | A new checkout was created. | `checkouts/create`            |
+| E-commerce event name          | Description                 | Subscribed Shopify topic      |
+| :----------------------------- | :---------------------------| :-----------------------------|
+| `Checkout Started`             | A new checkout was created. | `checkouts/create`            |
 | `Order Updated`                | Order was updated.          | `orders/updated`              |
 
 <div class="warningBlock">
