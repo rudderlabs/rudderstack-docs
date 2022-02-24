@@ -1,0 +1,103 @@
+---
+# slug: "/docs/event-replay"
+title: "Event Replay"
+description: >-
+  Detailed technical description of the events backup and replay feature.
+---
+
+# Event Replay 
+
+RudderStack's **Event Replay** feature lets you backup your event data and replay it in case of any failures.
+
+<div class="infoBlock">
+
+Event Replay is an enterprise-only feature. For more information on the features included in this plan, refer to the RudderStack <a href="https://www.rudderstack.com/pricing/">pricing</a> page.
+
+</div>
+
+RudderStack can store the following types of event data and replay it to the specified destinations: 
+- Raw events captured by RudderStack through various sources (stored in batches of 100,000 events).
+- Event payloads sent by RudderStack in case of delivery failures along with the errors (stored approximately every 30 seconds).
+
+## Data storage options
+
+You can choose any of the the below-mentioned options:
+
+- **No Data Retention**: No event data is stored and hence cannot be replayed.
+- **RudderStack S3 Storage** (default): Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis.
+- **Choose your Object Storage**: Event data is stored in your Amazon S3, Google Cloud Storage, Azure Blob Storage, or MinIO bucket. 
+
+The below section provides more details on how to set up your object storage.
+
+### Object storage setup
+
+Refer to the following settings depending on your cloud provider:
+
+<Tabs>
+  <TabList>
+    <Tab>Amazon S3</Tab>
+    <Tab>Google Cloud Storage</Tab>
+    <Tab>Azure Blob Storage</Tab>
+    <Tab>MinIO</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+    <ul>
+      <li>Create a <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html">bucket</a></li>.
+      <li>Configure relevant <a href="https://www.rudderstack.com/docs/user-guides/administrators-guide/bucket-configuration-settings/#permissions-for-amazon-s3">permissions</a></li>.
+      <li>Share your `bucket name`, `access key ID`, and `secret access key` by creating an <strong>Amazon S3</strong> destination named “Event Backup” on the RudderStack dashboard.</li>
+
+<div class="infoBlock">
+The destination should be connected to a source on RudderStack dashboard. Hence, you can create an HTTP source connected to the Amazon S3 destination.
+</div>
+
+Once done, <a href="mailto:%20docs@rudderstack.com">contact us</a> so that RudderStack engineering team makes further configurations.
+
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li>Create a <a href="https://cloud.google.com/storage/docs/creating-buckets">bucket</a></li>.
+      <li>Configure relevant <a href="https://rudderstack.com/docs/user-guides/administrators-guide/bucket-configuration-settings/#permissions-for-gcs">permissions</a></li>.
+      <li>Share your `bucket name` and credentials JSON by creating a <strong>Google Cloud Storage</strong> destination named “Event Backup” on the RudderStack dashboard.</li>
+
+<div class="infoBlock">
+The destination should be connected to a source on RudderStack dashboard. Hence, you can create an HTTP source connected to the Google Cloud Storage destination.
+</div>
+
+Once done, <a href="mailto:%20docs@rudderstack.com">contact us</a> so that RudderStack engineering team does further configurations.
+
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li>Login to the <a href="https://portal.azure.com/">Azure portal</a> and create a <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal">storage account</a></li>.
+      <li>Click on <strong>Containers</strong> under <strong>Blob service</strong> and create a new container. </li>
+      <li>Share your `account` name, `container` and `access key` by creating a <strong>Azure Blob Storage</strong> destination named “Event Backup” on the RudderStack dashboard.</li>
+
+<div class="infoBlock">
+The destination should be connected to a source on RudderStack dashboard. Hence, you can create an HTTP source connected to the Azure Blob Storage destination.
+</div>
+
+Once done, <a href="mailto:%20docs@rudderstack.com">contact us</a> so that RudderStack engineering team makes further configurations.
+
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li>Login to your MinIO service and create a bucket</a></li>.
+      <li>Share your `access key ID` and `secret access key` by creating a <strong>MinIO</strong> destination named “Event Backup” on the RudderStack dashboard.</li>
+
+<div class="infoBlock">
+The destination should be connected to a source on RudderStack dashboard. Hence, you can create an HTTP source connected to the MinIO destination.
+</div>
+
+Once done, <a href="mailto:%20docs@rudderstack.com">contact us</a> so that RudderStack engineering team makes further configurations.
+    </ul>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+
+## Contact us
+
+To know more about the event backup and replay feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
