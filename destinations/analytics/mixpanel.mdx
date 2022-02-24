@@ -89,38 +89,10 @@ The following event mapping setting is applicable only if you are sending events
    `$first_name : "John"`
  
    `$last_name : "Keener"`
-
-## Page
-
-RudderStack passes all the page properties that you provide via the `page` call to Mixpanel, along with the other default properties. RudderStack sets the event name as **Page** for a `page` call and **Screen** for a `screen` call. 
-
-A sample `page` call is shown below:
-
-```javascript
-rudderanalytics.page();
-```
-
-### Page web device mode settings
-
-Rudderstack will send 1 event to Mixpanel per `page` call.
-
-For device mode, RudderStack offers the following three options for `page` calls:
-
-- **Track All Pages with a Consolidated Event Name**: This setting is enabled by default. RudderStack sends all the `page` and `screen` calls with the name `Loaded a Page` with the corresponding properties of the call. This lets you leverage Mixpanel's reporting capabilities for page/screen analytics in the best possible way.
-
-- **Track Categorized Pages to Mixpanel**: RudderStack tracks the categorized pages to Mixpanel. If you enable this setting in the dashboard, RudderStack sends a `Viewed [<category>] Page` event to Mixpanel. If the page name is also present in the event, then RudderStack sends a `Viewed [<category> <page_name>] Page` event.
-
-- **Track Named Pages to Mixpanel**: RudderStack also tracks the named pages to Mixpanel. If you enable this setting in the dashboard, RudderStack will send a `Viewed [page_name] Page` event. Note that this option has the least precedence and comes to effect only if the above two options are disabled in the RudderStack dashboard.
-
+   
 <div class="infoBlock">
-
-RudderStack gives the highest precedence to the <strong>Track All Pages with a Consolidated Event Name</strong> option even if <strong>Track Categorized Pages to Mixpanel</strong> and 
-<strong>Track Named Pages to Mixpanel</strong> are enabled in the dashboard.
-</div>
-
-<div class="warningBlock">
-
-RudderStack expects atleast one of the three options listed above to be enabled for sending the <code class="inline-code">page</code> events to Mixpanel using device mode.
+ 
+Rudderstack lets you pass null and empty values as properties to Mixpanel.
 </div>
 
 ## Identify
@@ -181,9 +153,42 @@ rudderanalytics.identify({
 Currently, RudderStack supports this feature only for the web device mode.
 </div>
 
+## Page
+
+RudderStack passes all the page properties that you provide via the `page` call to Mixpanel, along with the other default properties. RudderStack sets the event name as **Page** for a `page` call and **Screen** for a `screen` call. 
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page();
+```
+
+### Page web device mode settings
+
+Rudderstack will send 1 event to Mixpanel per `page` call.
+
+For device mode, RudderStack offers the following three options for `page` calls:
+
+- **Track All Pages with a Consolidated Event Name**: This setting is enabled by default. RudderStack sends all the `page` and `screen` calls with the name `Loaded a Page` with the corresponding properties of the call. This lets you leverage Mixpanel's reporting capabilities for page/screen analytics in the best possible way.
+
+- **Track Categorized Pages to Mixpanel**: RudderStack tracks the categorized pages to Mixpanel. If you enable this setting in the dashboard, RudderStack sends a `Viewed [<category>] Page` event to Mixpanel. If the page name is also present in the event, then RudderStack sends a `Viewed [<category> <page_name>] Page` event.
+
+- **Track Named Pages to Mixpanel**: RudderStack also tracks the named pages to Mixpanel. If you enable this setting in the dashboard, RudderStack will send a `Viewed [page_name] Page` event. Note that this option has the least precedence and comes to effect only if the above two options are disabled in the RudderStack dashboard.
+
+<div class="infoBlock">
+
+RudderStack gives the highest precedence to the <strong>Track All Pages with a Consolidated Event Name</strong> option even if <strong>Track Categorized Pages to Mixpanel</strong> and 
+<strong>Track Named Pages to Mixpanel</strong> are enabled in the dashboard.
+</div>
+
+<div class="warningBlock">
+
+RudderStack expects atleast one of the three options listed above to be enabled for sending the <code class="inline-code">page</code> events to Mixpanel using device mode.
+</div>
+
 ## Track
 
-To track user events, use the `track` method with the event name and the associated properties. 
+To track user events, use the `track` method with the event name and the associated properties.
 
 A sample `track` call is as shown:
 
@@ -367,6 +372,12 @@ This feature is available in the web device mode only.
 - **Cross Subdomain Cookie**: This option will let you persist the Mixpanel cookie between different pages of your application.
 - **Persistence Type**: This option lets you choose the persistence type for your Mixpanel cookies.
 - **Secure Cookie**: Enabling this option will mark the Mixpanel cookie as secure, i.e., it will only transmit over HTTPs.
+
+## FAQ
+
+### Can I pass null and empty values as properties?
+
+Yes, RudderStack supports passing empty/null values as properties to Mixpanel.
 
 ## Contact us
 
