@@ -46,47 +46,46 @@ To successfully configure Pardot as a destination, you will need to configure th
 
 <img src="../../assets/event-stream-destinations/pardot-connection-settings3.png" alt="Pardot connection settings"/>
 
-- **Business Unit Id**: You can find the Business Unit ID by logging in into Salesforce. 
-1. Go to Setup at the top right corner and click on **Pardot** option. 
-2. Click on **Pardot Account Setup**.
-You can locate the Business Unit ID, which is the 18 character long string starting with `0Uv`ˇ
+- **Business Unit Id**: Your **Business Unit ID** is the 18 character long string starting with `0Uv`. You can find it in your Salesforce account by following the below steps:
+  1. Go to **Setup** at the top right corner and click on **Pardot** option. 
+  2. Click on **Pardot Account Setup** to locate the Business Unit ID.
 
 - **Campaign Id**: You can find the Campaign ID (or piCId) under **Marketing** > **Campaigns** in your Pardot account. After selecting the desired website campaign, press **View Tracking Code**.
 
-Alternatively, you can go to the [Pardot campaigns](https://pi.pardot.com/campaign) and select the desired campaign from the list. The last 5 digits in the campaign Url is your campaign Id. For example, 12345 is the campaign Id in URL: https://pi.pardot.com/campaign/read/id/12345. 
+Alternatively, you can go to the [Pardot campaigns](https://pi.pardot.com/campaign) and select the desired campaign from the list. The last 5 digits of the campaign Url is your campaign Id. For example, 12345 is the campaign Id for https://pi.pardot.com/campaign/read/id/12345 campaign Url.
 
 
 ## Identify
 
 The `identify` call lets you capture the details of a visiting user along with any associated traits such as their name, email address, etc.
 
-A sample `identify` call is as shown:
+A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify("userId", {
   "active_seats": 6,
-  "salutation": "Mrs",
-  "firstName": "Angela",
-  "lastName": "Rudder",
-  "email": "angela@rudder.com",
-  "website": "https://app.rudderstack.com",
+  "salutation": "Mr",
+  "firstName": "Alex",
+  "lastName": "Keener",
+  "email": "alex@example.com",
+  "website": "https://www.example.com",
   "score": 16,
-  "company": "Rudderstack",
-  "job_title": "dev",
-  "department": "accounting",
-  "country": "IN",
+  "company": "Example Organization",
+  "job_title": "Sales Executive",
+  "department": "Sales",
+  "country": "USA",
   "address": {
-    "street": "dwight",
-    "city": "schrute",
-    "state": "Bihar",
-    "zip": "123456"
+    "street": "6649 N Blue Gum Street",
+    "city": "New Orleans",
+    "state": "LA",
+    "zip": "00000"
   },
-  "phone": "+911234567890",
-  "annual_revenue": "100001",
-  "employees": "100001",
-  "industry": "people",
-  "notes": "take notes",
-  "address_two": "address two of angela differnet secrets",
+  "phone": "8005550100",
+  "annual_revenue": "100000",
+  "employees": "100",
+  "industry": "Technology sector",
+  "notes": "example notes",
+  "address_two": "example address",
   "fax": "fax321",
   "years_in_business": 13,
   "comments": "good",
@@ -103,13 +102,12 @@ rudderanalytics.identify("userId", {
   }]
 });
 ```
-
-
-in above example if email and crmfid both are absent error will be thrown.
-If email is absent but either pardotid or crmfid is present update API will be performed. ( Note that if pardotid and crmfid is not already linked to prospect then pardot will throw error)
-If only email is present then we will always create new prospect. Even if that email is already present, pardot will create new prospect.
-if no email is present and prospect id or crm fid is wrongly input error will be thrown from destination end
-If only email address is provided, and even if Pardot already contains more than one prospect with the same email id, a new prospect will be created as Pardot does not allow write operation on email addresses.
+Please note the following behavior:
+* An error is thrown if both the `email` and `crmfid` are absent.
+* The update API call is performed if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to the prospect, error is thrown.
+* An error is thrown if `email` is absent and `prospect id` or `crm fid` is entered incorrectly.
+* If only `email` is present or Pardot already contains more than one prospect with the same email id, a new prospect is created as Pardot does not allow write operation on email addresses.
+* Only the first `externalId` is considered in case of multiple `externalIds`.
 
 
 ## FAQ
@@ -132,12 +130,10 @@ To update the prospect data, you need to send a payload that contains `externalI
   }]
 }
 ```
-The `type` field can contain either of the below mentioned values:
-- Pardot Id with field name as `pardotid`
-- CRM FID with field name as `crmfid`
-The `id` field contains the actual value
-
-### How to update a prospect data?
+- `type` field can contain either of the below:
+  - Pardot Id with field name as `pardotid`
+  - CRM FID with field name as `crmfid`
+- `id` field contains the actual value
 
 ## Contact us
 
