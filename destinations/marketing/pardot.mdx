@@ -105,7 +105,8 @@ rudderanalytics.identify("userId", {
   }]
 });
 ```
-The following behavior can be observed whenever an `Identify` call is made through RudderStack:
+The following behavior can be observed whenever an `identify` call is made through RudderStack:
+
 * RudderStack throws an error if either `email` or `externalId` (`crmfid`/`pardotid`) is absent.
 * RudderStack calls the update API if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to a prospect, it throws an error.
 * RudderStack throws an error if `email` is absent and `prospectid` or `crmfid` is entered incorrectly.
