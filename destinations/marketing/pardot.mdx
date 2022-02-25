@@ -110,7 +110,7 @@ The following behavior can be observed whenever an `Identify` call is made throu
 * RudderStack calls the update API if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to a prospect, it throws an error.
 * RudderStack throws an error if `email` is absent and `prospectid` or `crmfid` is entered incorrectly.
 * If only `email` is present, or Pardot already contains more than one prospect with the same email ID, a new prospect is created as Pardot does not allow write operation on email IDs.
-* Only the first `externalId` is considered in case of multiple `externalIds`.
+* RudderStack considers only the first `externalId` in case of multiple `externalId`.
 
 
 ## FAQ
