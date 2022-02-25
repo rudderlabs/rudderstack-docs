@@ -116,15 +116,16 @@ The following behavior can be observed whenever an `Identify` call is made throu
 ## FAQ
 
 ### How do I find the crmfid (used for upsert operation)?
-You can find the crmfid (CRM Lead ID) under any **Prospect** by clicking on **Sync with CRM** as shown below:
+You can find the `crmfid` (CRM Lead ID) under any **Prospect** by clicking on **Sync with CRM** as shown below:
 
 <img src="../../assets/event-stream-destinations/Pardot-crmfid1.png" alt="Pardot CRM Lead ID"/>
 The CRM Lead ID can be located here:
 <img src="../../assets/event-stream-destinations/Pardot-crmfid2.png" alt="Pardot CRM Lead ID"/>
 
-### How do I update a prospect's data?
+### How do I update the prospect data?
 
 To update the prospect data, you need to send a payload that contains `externalId` in the payload as shown below:
+
 ```javascript
 // Sample payload with `id` data for update
 {
@@ -134,10 +135,11 @@ To update the prospect data, you need to send a payload that contains `externalI
   }]
 }
 ```
+
 - `type` can contain either of the following fields:
-  - Pardot ID with field name as `pardotid`
-  - CRM FID with field name as `crmfid`
-- `id` field contains the actual value
+  - Pardot ID with field name as `pardotid`.
+  - CRM FID with field name as `crmfid`.
+- `id` field contains the actual value.
 
 ### Can I send the event data to Pardot's Sandbox environment?
 
