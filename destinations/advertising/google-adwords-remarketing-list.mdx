@@ -43,7 +43,7 @@ To successfully configure Google Adwords Remarketing Lists as a destination, fol
 
 <img src="../../assets/event-stream-destinations/google-adwords-remarketing-lists-connection-settings.png" alt="Google Adwords Remarketing Lists (Customer Match) connection settings" />
 
-- **List ID**: To get your Google Ads list ID, go to your Google Ads account and navigate to **Tools & settings** > **Audience Manager**.
+- **ListId**: To get your Google Ads list ID, go to your Google Ads account and navigate to **Tools & settings** > **Audience Manager**.
 - **Customer ID**: Enter the ID associated with your Google Ads account. You can find it by clicking on the **Help** option in your dashboard.
 
 <div class="infoBlock">
@@ -70,20 +70,20 @@ For more information on subaccounts, refer to the <a href="https://support.googl
 This field is required only when you want to send data to a customer list of a subaccount.
 </div>
 
-- **Type of List**: Select the type of list that you want to create.
+- **Type of List**: Select the type of list you want to create.
 
 <div class="infoBlock">
 
 You can create three types of list via this setting:
 <ul>
-<li><strong>General</strong>: You can send email, phone number, and address information in this list. RudderStack will hash this data and send it to Google Adwords Remarketing Lists depending on the <strong>Hash Required</strong> setting.</li>
+<li><strong>General</strong>: You can send email, phone number, and address information in this list. RudderStack will hash this data and send it to Google Adwords Remarketing Lists depending on the <strong>Hash Required</strong> setting (enabled by default).</li>
 <li><strong>UserId</strong>: You can send third party user IDs in this list.</li>
 <li><strong>Mobile Device ID</strong>: You can send mobile device IDs in this list.</li>
 </ul>
 </div>
 
-- **Hash Required**: If enabled, RudderStack will hash the `email`, `phone`, `firstName`, and `lastName` fields in the SHA-256 format.
-- **Schema Fields**: If you have select **General** as the list type, you will need to choose your schema fields (at least one) from the available options. The options are `hashedEmail`, `hashedPhoneNumber`, and `addressInfo`.
+- **Hash Required**: This setting is enabled by default and hashes the `email`, `phone`, `firstName`, and `lastName` fields in the SHA-256 format.
+- **Schema Fields**: If you have selected **General** as the list type, you will need to choose your schema fields (at least one) from the available options. The options are `hashedEmail`, `hashedPhoneNumber`, and `addressInfo`.
 
 <div class="warningBlock">
 
@@ -113,12 +113,12 @@ The following code snippet shows a sample `audienceList` call:
     "properties": {
         "listData": {
             "create": [{
-                    "email": "alex@company.com",
-                    "phone": "9876543210"
+                    "email": "alex@example.com",
+                    "phone": "1234567890"
                 },
                 {
-                    "email": "emily@company.com",
-                    "phone": "9786543210"
+                    "email": "emily@example.com",
+                    "phone": "1234567890"
                 },
             ]
         },
