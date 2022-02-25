@@ -1016,6 +1016,14 @@ export const jsonData = [
                ]
             },
             {
+               "key":"pardot",
+               "title":"Pardot",
+               "link":"/destinations/marketing/pardot/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"ometria",
                "title":"Ometria",
                "link":"/destinations/marketing/ometria/",
