@@ -107,7 +107,7 @@ rudderanalytics.identify("userId", {
 ```
 The following behavior can be observed whenever an `Identify` call is made through RudderStack:
 * RudderStack throws an error if either `email` or `externalId` (`crmfid`/`pardotid`) is absent.
-* An update API call is performed if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to a prospect, an error is thrown.
+* RudderStack calls the update API if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to a prospect, it throws an error.
 * An error is thrown if `email` is absent and `prospectid` or `crmfid` is entered incorrectly.
 * If only `email` is present or Pardot already contains more than one prospect with the same email id, a new prospect is created as Pardot does not allow write operation on email ids.
 * Only the first `externalId` is considered in case of multiple `externalIds`.
