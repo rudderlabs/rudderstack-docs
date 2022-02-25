@@ -785,6 +785,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"pardot",
+   "title":"Pardot",
+   "link":"/destinations/marketing/pardot/",
+   "content":[]
+},
+{
    "key":"ometria",
    "title":"Ometria",
    "link":"/destinations/marketing/ometria/",
