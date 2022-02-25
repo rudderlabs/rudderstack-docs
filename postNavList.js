@@ -1007,6 +1007,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"google-adwords-remarketing-list",
+   "title":"Google Adwords Remarketing List(Customer Match)",
+   "link":"/destinations/advertising/google-adwords-remarketing-list/",
+   "content":[]
+},
+{
    "key":"lotame",
    "title":"Lotame",
    "link":"/destinations/advertising/lotame/",
