@@ -106,7 +106,7 @@ rudderanalytics.identify("userId", {
 });
 ```
 The following behavior can be observed:
-* An error is thrown if both the `email` and `crmfid`/`pardotid` fields are absent.
+* An error is thrown if either `email` or externalId (`crmfid`/`pardotid`) is absent.
 * An update API call is performed if `email` is absent but either `pardotid` or `crmfid` is present. However, if `pardotid` and `crmfid` are not already linked to a prospect, an error is thrown.
 * An error is thrown if `email` is absent and `prospectid` or `crmfid` is entered incorrectly.
 * If only `email` is present or Pardot already contains more than one prospect with the same email id, a new prospect is created as Pardot does not allow write operation on email ids.
@@ -138,6 +138,10 @@ To update the prospect data, you need to send a payload that contains `externalI
   - Pardot Id with field name as `pardotid`
   - CRM FID with field name as `crmfid`
 - `id` field contains the actual value
+
+### Can I send event data to Pardot's Sandbox environment?
+
+Unfortunately, you can currently send data only to Pardot's **Production** environment and not **Sandbox**.
 
 ## Contact us
 
