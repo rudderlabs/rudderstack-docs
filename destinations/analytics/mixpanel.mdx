@@ -92,7 +92,7 @@ The following event mapping setting is applicable only if you are sending events
    
 <div class="infoBlock">
  
-Rudderstack lets you pass null and empty values as properties to Mixpanel.
+ Rudderstack lets you pass empty and <code class="inline-code">null</code> values for the properties sent to Mixpanel.
 </div>
 
 ## Identify
@@ -274,37 +274,37 @@ RudderStack maps the following properties to the Mixpanel properties before send
 RudderStack maps these fields only in the <code class="inline-code">identify</code> requests.
 </div>
 
-| Mixpanel property | RudderStack property |
-| :--------------------- | :------------------------ |
-| `$created`             | `traits.createdAt`        |
-| `$email`               | `traits.email`            |
-| `$firstName`           | `traits.firstName`        |
-| `$lastName`            | `traits.lastName`         |
-| `$name`                | `traits.name`             |
-| `$username`            | `traits.username`         |
-| `$phone`               | `traits.phone`            |
-| `$avator`              | `traits.avator`           |
-| `ip` or `$ip`          | `context.ip`              |
-| `campaign_id`          | `context.campaign.name`   |
-| `$current_url`         | `context.page.url`        |
-| `$os`                  | `context.os.name`         |
-| `$referrer`            | `context.page.referrer`   |
-| `$carrier`             | `context.network.carrier` |
-| `$city`                | `address.city`            |
-| `$country_code`        | `address.country`         |
-| `$region`              | `address.region`          |
-| `$latitude`            | `context.location.latitude`|
-| `$longitude`           | `context.location.longitude`|
-| `$manufacturer`        | `context.page.manufacturer`|
-| `$model`               | `context.device.model`     |
-| `$screen_width`        | `context.screen.width`     |
-| `$screen_height`       | `context.screen.height`    |
-| `$wifi`                | `context.network.wifi`     |
-| `$geoSource`           | `context.location.geoSource`|
-| `$unsubscribed`        | `context.traits.unsubscribed`|
-| `$unsubscribed`        | `traits.unsubscribed`|
-| `$unsubscribed`        | `properties.unsubscribed` |
-| `$timezone`            | `context.location.timezone` |
+| RudderStack property         | Mixpanel property      | 
+| :--------------------------- | :--------------------- |
+| `traits.createdAt`           | `$created`             |         
+| `traits.email`               | `$email`               |             
+| `traits.firstName`           | `$firstName`           |         
+| `traits.lastName`            | `$lastName`            |          
+| `traits.name`                | `$name`                |            
+| `traits.username`            | `$username`            |          
+| `traits.phone`               | `$phone`               |             
+| `traits.avator`              | `$avator`              |            
+| `context.ip`                 | `ip` or `$ip`          |               
+| `context.campaign.name`      | `campaign_id`          |    
+| `context.page.url`           | `$current_url`         |         
+| `context.os.name`            | `$os`                  |          
+| `context.page.referrer`      | `$referrer`            |    
+| `context.network.carrier`    | `$carrier`             |  
+| `address.city`               | `$city`                |             
+| `address.country`            | `$country_code`        |          
+| `address.region`             | `$region`              |           
+| `context.location.latitude`  | `$latitude`            | 
+| `context.location.longitude` | `$longitude`           | 
+| `context.page.manufacturer`  | `$manufacturer`        | 
+| `context.device.model`       | `$model`               |      
+| `context.screen.width`       | `$screen_width`        |      
+| `context.screen.height`      | `$screen_height`       |    
+| `context.network.wifi`       | `$wifi`                |      
+| `context.location.geoSource` | `$geoSource`           | 
+| `context.traits.unsubscribed`| `$unsubscribed`        | 
+| `traits.unsubscribed`        | `$unsubscribed`        | 
+| `properties.unsubscribed`    | `$unsubscribed`        |  
+| `context.location.timezone`  | `$timezone`            |  
 
 ## Explicitly setting People Properties and Super Properties
 
@@ -328,19 +328,19 @@ This feature is available in the web device mode only.
 
 The following table lists all the properties that RudderStack sends to Mixpanel as special traits:
 
-| Mixpanel Properties | RudderStack Properties |
-| :------------------ | :--------------------- |
-| `$created`           | `created`             |
-| `$email`             | `email`               |
-| `$first_name`        | `firstName`           |
-| `$last_name`         | `lastName`            |
-| `$last_seen`         | `lastSeen`            |
-| `$name`              | `name`                |
-| `$username`          | `username`            |
-| `$phone`             | `phone`               |
-| `$city`              | `city` / `address.city`     |
-| `$region`            | `region` / `address.state`  |
-| `$country_code`      | `country` / `address.country`|
+| RudderStack Properties     | Mixpanel Properties  |
+| :------------------------- | :------------------- |
+| `created`                  | `$created`           |
+| `email`                    | `$email`             | 
+| `firstName`                | `$first_name`        |
+| `lastName`                 | `$last_name`         |
+| `lastSeen`                 | `$last_seen`         |
+| `name`                     | `$name`              |
+| `username`                 | `$username`          |
+| `phone`                    | `$phone`             |
+| `city`/`address.city`      | `$city`              |
+| `region`/`address.state`   | `$region`            |
+| `country`/`address.country`| `$country_code`      |
 
 ## Incrementing events in Mixpanel People
 
@@ -375,9 +375,9 @@ This feature is available in the web device mode only.
 
 ## FAQ
 
-### Can I pass null and empty values as properties?
+### Can I pass `null` and empty values for the properties?
 
-Yes, RudderStack supports passing empty/null values as properties to Mixpanel.
+Yes, RudderStack supports passing empty/`null` values for the properties sent to Mixpanel.
 
 ## Contact us
 
