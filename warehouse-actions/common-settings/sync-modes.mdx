@@ -6,25 +6,29 @@ Detailed technical description of the upsert and mirror sync modes for the Wareh
 
 # Sync Modes
 
-All the Warehouse Actions sources currently support two modes - **Upsert** and **Mirror mode** - that let you define how you want to sync your data.
+All the Warehouse Actions sources currently support two modes that let you define how you want to sync your data. These are **Upsert** and **Mirror mode**.
+
+The following sections explain these data sync modes in detail.
 
 ## Upsert
 
-In this mode, RudderStack supports only insertion of new records as well as updating existing records, while syncing data to the destination.
+In this mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination.
 
 <div class="infoBlock">
 
-A full sync is run whenever column mapping is changed for the data sync.
+A full sync is run whenever the column mapping is changed.
 </div>
 
 ## Mirror mode
 
 <div class="infoBlock">
 
-This mode is supported only for the <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a> destination.
+This mode is currently supported only for the <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a> destination.
 </div>
 
-In this mode, RudderStack supports inserts, updates, and deletion of records while syncing data to the destination.
+In this mode, RudderStack supports insertion, updates, and deletion of records while syncing data to the destination.
+
+<img src="../../assets/warehouse-actions-sources/sync-mirror-mode.png" alt="Mirror mode" />
 
 <div class="infoBlock">
 
