@@ -39,35 +39,37 @@ Once a model is created, you can use it to send the data from a warehouse source
 4. Name the source and select the **Model** option while configuring its settings.
 <img src="../assets/select-model-option.png" />
 
-4. Once the source is set up, you can connect it to an existing or a new destination by using the **Add Destination** button.  
+5. Once the source is set up, you can connect it to an existing or a new destination by using the **Add Destination** button.  
 <img src="../assets/add-destination.png" />
 
-5. Select the required destination and configure its connection settings.
+6. Select the required destination and configure its connection settings.
 
-6. Next, select the required model from the dropdown list.
+7. Next, select the required model from the dropdown list.
 
 <div class="infoBlock">
   
 The dropdown will only display the list of models corresponding to the Warehouse Actions source you have configured. For example, only the BigQuery models will be listed in the dropdown for a BigQuery warehouse source. Also, you need to use the same credentials for the source and the model.
 </div>
 
-7.Select the **Sync mode** and at least one user identifier (**user_id/anonymous_id**) from the dropdown list.
+8. Select the **Sync mode** and at least one user identifier (**user_id/anonymous_id**) from the dropdown list.
 
 <img src="../assets/configure-model.png" />
 
 <div class="infoBlock">
+  
 You can preview the data snippet which will be sent to the destination. All the table columns are selected by default. However, you can choose to keep the desired table columns by searching and selecting/deselecting them. The resultant JSON can be previewed on the right.
 <img src="../assets/models-data-snippet.png" />
 </div>
 
 <div class="infoBlock">
+  
 As can be observed, the JSON payload carries the <strong>user_id</strong> and <strong>anonymous_id</strong> from the table columns selected in the <strong>Choose user identifier</strong> section. Further, the traits are used from the selected columns in the <strong>Table Column</strong> section.
 </div>
 
 You can use the **Add Constant** option to add a constant key and value pair which is always sent in the JSON payload.
 <img src="../assets/add-constant.png" />
 
-7. Click on **Continue** to configure the model successfully with the source and destination.
+9. Click on **Continue** to configure the model successfully with the source and destination.
 
 ### Setting the data update schedule
 
