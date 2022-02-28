@@ -6,7 +6,12 @@ Detailed technical description of the upsert and mirror sync modes for the Wareh
 
 # Sync Modes
 
-All the Warehouse Actions sources currently support two modes that let you define how you want to sync your data. These are **Upsert** and **Mirror mode**.
+The Warehouse Actions sources currently support two modes (available based on the source and the chosen destination) that let you define how you want to sync your data. These are **Upsert** and **Mirror mode**.
+
+<div class="infoBlock">
+
+By default, both these modes sync the data incrementally, meaning they sync only the new data. However, you also have the option to run a full sync manually.
+</div>
 
 The following sections explain these data sync modes in detail.
 
@@ -16,7 +21,7 @@ In this mode, RudderStack supports insertion of new records and updates to the e
 
 <div class="infoBlock">
 
-A full sync is run whenever the column mapping is changed.
+Whenever the columns mapping is changed, RudderStack runs a full sync the next time.
 </div>
 
 ## Mirror mode
@@ -26,7 +31,12 @@ A full sync is run whenever the column mapping is changed.
 This mode is currently supported only for the <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a> destination.
 </div>
 
-In this mode, RudderStack supports insertion, updates, and deletion of records while syncing data to the destination.
+In this mode, RudderStack 'mirrors' the source by keeping the destination data the same as the source data. It performs insertion, updates, and deletion of records while syncing data to the destination. 
+
+<div class="infoBlock">
+
+Whenever the columns mapping is changed, RudderStack runs a full sync the next time.
+</div>
 
 <img src="../../assets/warehouse-actions-sources/sync-mirror-mode.png" alt="Mirror mode" />
 
@@ -34,6 +44,12 @@ In this mode, RudderStack supports insertion, updates, and deletion of records w
 
 When performing a full sync in the mirror mode, RudderStack first deletes all the existing records. Then, it syncs the records as per the latest column mappings.
 </div>
+
+## FAQ
+
+### What happens to the records that have not been successfully sent to the destination in the previous sync?
+
+In case of an unsuccessful delivery, RudderStack retries sending the events in the next sync.
 
 ## Contact us
 
