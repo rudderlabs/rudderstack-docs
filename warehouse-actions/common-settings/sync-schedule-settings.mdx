@@ -24,6 +24,10 @@ This schedule type lets you run the data syncs on a set interval. You can specif
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-basic.png" alt="Basic sync schedule" />
 
+The following image highlights the different sync frequency options when the schedule type is set to **Basic**:
+
+<img src="../../assets/warehouse-actions-sources/sync-schedule-basic-options.png" alt="Basic sync schedule frequency options" />
+
 ## CRON schedule
 
 This schedule type lets you define a custom CRON expression and runs the data syncs based on this setting. 
@@ -35,6 +39,13 @@ You can use the <a href="https://crontab.guru/">CRON schedule utility</a> to spe
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-cron.png" alt="CRON schedule" />
 
+<div class="warningBlock">
+
+The sync frequency needs to be greater than or equal to 15 minutes. Otherwise, you will encounter an error as seen below.
+</div>
+
+<img src="../../assets/warehouse-actions-sources/sync-schedule-cron-error.png" alt="CRON schedule error" />
+
 ## Manual syncs
 
 This schedule type lets you run your data syncs manually. RudderStack won't sync your data until you explicitly trigger it.
@@ -42,6 +53,11 @@ This schedule type lets you run your data syncs manually. RudderStack won't sync
 To trigger a sync manually, go to the **Syncs** tab in your Warehouse Actions source details page and click on **Sync Now**, as shown:
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-manual.png" alt="Manual sync schedule" />
+
+<div class="infoBlock">
+
+To manually schedule and trigger a sync from outside RudderStack, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/airflow-provider/">RudderStack Airflow Provider</a> documentation.
+</div>
 
 ## FAQ
 
@@ -57,7 +73,7 @@ Yes, you can.
 
 Alternatively, you can also go to the **Settings** tab and click on the **Edit sync schedule** button to define your new schedule type.
 
-### I'm unable to run a manual sync and get the message "Your pipeline is paused. Make sure that the source and at least one destination is enabled". What do I do?
+### I'm unable to run a sync manually and get the message "Your pipeline is paused. Make sure that the source and at least one destination is enabled". What do I do?
 
 This message appears when either your Warehouse Actions source, the connected destination, or both are disabled. Go to the **Settings** tab to verify if the source and destination are enabled for data syncs.
 
