@@ -59,6 +59,22 @@ To trigger a sync manually, go to the **Syncs** tab in your Warehouse Actions so
 To manually schedule and trigger a sync from outside RudderStack, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/airflow-provider/">RudderStack Airflow Provider</a> documentation.
 </div>
 
+## Sync schedule considerations
+
+The following considerations must be kept in mind while setting a sync schedule in RudderStack, depending on the sync modes:
+
+### Upsert mode
+
+For [upsert mode](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/#upsert), you can trigger a new sync anytime by pressing the **Sync Now** button. 
+
+RudderStack takes a snapshot of the data and syncs it at a later point once the pending syncs are completed.
+
+### Mirror mode
+
+For [mirror mode](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/#mirror-mode), you can run only one sync at any given point of time. 
+
+Suppose you have a sync scheduled for every 30 minutes. If there is a sync running for more than 30 minutes, then the next scheduled sync will be skipped.
+
 ## FAQ
 
 ### Can I change my sync schedule type?
