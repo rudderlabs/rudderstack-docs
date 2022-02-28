@@ -1,51 +1,54 @@
 ---
 # slug: "/docs/warehouse-actions/custom-sql-models"
 title: "Custom SQL Models"
-description: Detailed technical description of how to use the custom SQL Models feature to send the resultant data from pre-defined SQL query to the specified destinations.
+description: Detailed technical description on how to use the custom SQL models feature to send the data to the specified destinations.
 ---
 
 # Custom SQL Models
 
-The **Custom SQL Models** feature provides the capability to define custom SQL queries over the existing tables in Warehouse Actions sources and execute them to send the resultant data to the specified destinations. You can also define the sync schedule to sync the data to destinations as required.
+The **custom SQL models** feature provides the capability to define custom SQL queries over the schema of Warehouse Actions sources and execute them to send the resultant data to the specified destinations. You can also define the **sync schedule** to sync the data to the destinations as required.
 
-Some of the salient features of custom SQL Models are:
-* Manage the view of all **Models** synced to different destinations at one place
-* Reuse existing **Models** in multiple connections
-* Build complex **Models** using an intuitive UI (RudderStack dashboard)
+Some salient features of custom SQL models are:
+* Manage the view of all models synced to different destinations at one place
+* Reuse existing models in multiple connections
+* Build complex models using an intuitive UI (RudderStack dashboard)
 
 <div class="infoBlock">
 
-  Currently, the <strong>Custom SQL Models</strong> are supported for <a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a>, and <a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a> Warehouse Actions sources only.
+  Currently, the <strong>custom SQL models</strong> are supported for <a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a>, and <a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a> Warehouse Actions sources only.
 </div>
 
 <div class="infoBlock">
 
-The Warehouse Actions source being used must have the necessary permissions to be integrated with RudderStack. For more information on these permissions, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/">Granting Permissions</a> section of the relevant Warehouse Actions source.
+While using this feature, the Warehouse Actions source must have the necessary permissions to be integrated with RudderStack. For more information on these permissions, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/">Granting Permissions</a> section of the relevant Warehouse Actions source.
 </div>
 
-## How to use Custom SQL Models? 
+## How to use custom SQL models? 
 
 <div class="infoBlock">
-You can create a **Model** in RudderStack dashboard and use it while creating a connection between Warehouse Actions source and destination. For detailed steps on how to create a model, refer to <a href="https://www.rudderstack.com/docs/rudderstack-cloud/models/">Models</a>.
+You can create a model in the RudderStack dashboard and use it while creating a connection between a Warehouse Actions source and destination. For detailed steps on how to create a model, refer to <a href="https://www.rudderstack.com/docs/connections/models/">Models</a>.
 </div>
 
-Once a Model is created, you can use it to send the customized data to a specified destination from a warehouse source. Follow the steps listed below to achieve the same:
+Once a model is created, you can use it to send the data from a warehouse source to a specified destination. Follow the steps listed below to achieve the same:
 
 1. Log in to the **RudderStack dashboard**.
-2. Select **Sources** from the left navigation bar and click on **New Source**.
-3. Select **Warehouse Actions** and choose any supported source as highlighted below: 
+2. Select **Sources** from the left navigation bar and click on **New source**.
+3. Select **Warehouse Actions** and choose any supported source from the ones highlighted below: 
 <img src="../assets/warehouse-action-sources.png" />
 
 4. Name the source and select the **Model** option while configuring its settings.
 <img src="../assets/select-model-option.png" />
 
-4. Once the source is set up, you can connect it to an existing or new destination by using the **Add Destination** button.  
+4. Once the source is set up, you can connect it to an existing or a new destination by using the **Add Destination** button.  
 <img src="../assets/add-destination.png" />
+
 5. Select the required destination and configure its connection settings.
-6. Next, select the desired **Model** from the dropdown list.
+
+6. Next, select the required model from the dropdown list.
 
 <div class="infoBlock">
-The dropdown will only display the list of <strong>Models</strong> corresponding to the source you have configured. For example, only the BigQuery Models will be listed in the dropdown for a BigQuery warehouse source. Also, you need to use the same credentials for the source and the model.
+  
+The dropdown will only display the list of models corresponding to the Warehouse Actions source you have configured. For example, only the BigQuery models will be listed in the dropdown for a BigQuery warehouse source. Also, you need to use the same credentials for the source and the model.
 </div>
 
 7.Select the **Sync mode** and at least one user identifier (**user_id/anonymous_id**) from the dropdown list.
@@ -58,7 +61,7 @@ You can preview the data snippet which will be sent to the destination. All the 
 </div>
 
 <div class="infoBlock">
-As can be observed, the JSON payload carries the <strong>user_id</strong> and <strong>anonymous_id</strong> from the table columns selected in the <strong>Choose user identifier</strong> section. The traits are further used from the selected columns in the 'Table Column' section.
+As can be observed, the JSON payload carries the <strong>user_id</strong> and <strong>anonymous_id</strong> from the table columns selected in the <strong>Choose user identifier</strong> section. Further, the traits are used from the selected columns in the <strong>Table Column</strong> section.
 </div>
 
 You can use the **Add Constant** option to add a constant key and value pair which is always sent in the JSON payload.
@@ -68,13 +71,13 @@ You can use the **Add Constant** option to add a constant key and value pair whi
 
 ### Setting the data update schedule
 
-You can click on the **Source** and select the **Syncs** tab to schedule the event data sync. To know more, refer to [Syncs]() 
+You can click on the source and select the **Syncs** tab to schedule the event data sync. To know more, refer to [Syncs]().
 
 ### Update the selection of table columns  
 
 You can update the selection of table columns used to send data to the specified destinations. 
 
-1. Click on the Source and select the **Schema** tab.
+1. Click on the source and select the **Schema** tab.
 2. Click on **Update** button.
 <img src="../assets/update-table-selection.png" />
 
@@ -107,4 +110,4 @@ If this option gives an error, verify if you have successfully created the `rudd
 
 ## Contact us
 
-If you come across any issues while configuring custom SQL Models, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+If you come across any issues while configuring custom SQL models, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
