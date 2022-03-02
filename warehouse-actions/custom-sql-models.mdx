@@ -90,31 +90,6 @@ You can update the selection of columns used to send data to the specified desti
 
 3. Update your selection of columns and click on **Save** button.
 
-## FAQ
-
-### What do the three validations under Verifying Credentials imply?
-
-When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
-
-<img src="../assets/validations.png" />
-
-These options are explained below:
-
-* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
-
-<div class="warningBlock">
-
-If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
-</div>
-
-* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/google-bigquery#granting-permissions) section. 
-
-<div class="warningBlock">
-
-If this option gives an error, verify if you have successfully created the `rudderstack_` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://rudderstack.com/docs/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
-</div>
-
 ## Contact us
 
 For more information on the custom SQL models, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
