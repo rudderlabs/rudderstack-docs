@@ -24,18 +24,18 @@ The following sections highlight the steps required to set up the JavaScript SDK
 
 Follow these steps to configure OneTrust for your web app:
 
-- Create a OneTrust account. Make sure it has access to the **Cookie Compliance** app.
+1. Create a OneTrust account. Make sure it has access to the **Cookie Compliance** app.
 
-- Then, add your website and scan it.
+2. Then, add your website and scan it.
 
-- Next, go to the **Categorizations** section. Here, define the new categories or modify the existing ones, as per your requirement.
+3. Next, go to the **Categorizations** section. Here, define the new categories or modify the existing ones, as per your requirement.
 
 <div class="infoBlock">
  
 The categories should be associated with/attached to at least one cookie for them to be displayed in the OneTrust modal on your web app. You can use one of the RudderStack cookies as a workaround.
 </div>
 
-- Finally, go to the **Scripts** section and publish this script.
+4. Finally, go to the **Scripts** section and publish this script.
 
 ### Step 2: Specifying the OneTrust Cookie Categories in RudderStack
 
@@ -62,9 +62,35 @@ Before following the steps in this section, load the OneTrust script that you pu
 <!-- OneTrust Cookies Consent Notice end for samplewebsite.com -->
 ```
 
-- **Important**: **Load the JavaScript SDK after the user provides the consent.**
+1. Once the user provides the consent, load the JavaScript SDK. To do so, modify the `OptanonWrapper()` callback function provided by OneTrust as shown:
 
-- Then, add the `cookieConsentManager` option in the `load()` call as shown in the following snippet:
+```javascript
+function OptanonWrapper() {
+  if (window.OneTrust.IsAlertBoxClosed()) {
+    // Load the SDK
+    rudderanalytics.load( <
+      WRITE_KEY > , <
+      DATA_PLANE_URL > , {
+        cookieConsentManager: {
+          oneTrust: {
+            enabled: true
+          }
+        },
+        ...otherOptions //optional
+      }
+    );
+  }
+}
+```
+
+<div class="infoBlock">
+ 
+If the consent is updated, you need to refresh the page to load the SDK.
+
+</div>
+
+
+2. Then, add the `cookieConsentManager` option in the `load()` call as shown in the following snippet:
 
 ```javascript
 rudderanalytics.load(
