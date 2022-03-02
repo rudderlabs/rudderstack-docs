@@ -649,21 +649,51 @@ export const jsonData = [
            ]
         },
         {
-           "key":"airflow-provider",
-           "title":"Airflow Provider",
-           "link":"/warehouse-actions/airflow-provider/",
+           "key":"features",
+           "title":"Features",
+           "link":"/warehouse-actions/features/",
            "content":[
-              
+             {
+                 "key":"airflow-provider",
+                 "title":"RudderStack Airflow Provider",
+                 "link":"/warehouse-actions/features/airflow-provider/",
+                 "content":[
+                    
+                 ]
+              },
+             {
+                 "key":"",
+                 "title":"visual-data-mapper",
+                 "link":"/warehouse-actions/features/visual-data-mapper/",
+                 "content":[
+                    
+                 ]
+              }
            ]
         },
         {
-           "key":"visual-data-mapper",
-           "title":"Visual Data Mapper",
-           "link":"/warehouse-actions/visual-data-mapper/",
+           "key":"common-settings",
+           "title":"Common Settings",
+           "link":"/warehouse-actions/common-settings/",
            "content":[
-              
+             {
+                 "key":"sync-modes",
+                 "title":"Sync Modes",
+                 "link":"/warehouse-actions/common-settings/sync-modes/",
+                 "content":[
+                    
+                 ]
+              },
+             {
+                 "key":"sync-schedule-settings",
+                 "title":"Sync Schedule Settings",
+                 "link":"/warehouse-actions/common-settings/sync-modes/sync-schedule-settings/",
+                 "content":[
+                    
+                 ]
+              }
            ]
-        }
+        },
      ]
   },
   {
