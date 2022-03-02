@@ -24,9 +24,20 @@ This schedule type lets you run the data syncs on a set interval. You can specif
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-basic.png" alt="Basic sync schedule" />
 
-The following image highlights the different sync frequency options when the schedule type is set to **Basic**:
+You get the following sync frequency options when the schedule type is set to **Basic**:
 
-<img src="../../assets/warehouse-actions-sources/sync-schedule-basic-options.png" alt="Basic sync schedule frequency options" />
+- 30 minutes
+- 1 hour
+- 3 hours
+- 6 hours
+- 12 hours
+- 24 hours
+
+### What happens if I don't set the Sync Starting At time?
+
+RudderStack considers strict 1-hour time windows(00:00, 01:00, and so on) to schedule syncs if you do not explicitly set the time under **Sync Starting At**.
+
+Suppose you create a source at 12:30 hrs UTC, specify the **Frequency** as 3 hours, and do not specify any time under **Sync Starting At**. In this case, as the time falls in the 12:00-13:00 time window, RudderStack will run the next sync at 15:00 hrs UTC.
 
 ## CRON schedule
 
