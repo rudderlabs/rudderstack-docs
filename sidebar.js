@@ -655,15 +655,15 @@ export const jsonData = [
            "content":[
              {
                  "key":"airflow-provider",
-                 "title":"RudderStack Airflow Provider",
+                 "title":"Airflow Provider",
                  "link":"/warehouse-actions/features/airflow-provider/",
                  "content":[
                     
                  ]
               },
              {
-                 "key":"",
-                 "title":"visual-data-mapper",
+                 "key":"visual-data-mapper",
+                 "title":"Visual Data Mapper",
                  "link":"/warehouse-actions/features/visual-data-mapper/",
                  "content":[
                     
