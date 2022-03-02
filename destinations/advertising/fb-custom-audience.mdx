@@ -82,27 +82,10 @@ RudderStack will ignore any user information which does not adhere to the schema
 Some other important settings include:
 
 - **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
-
 - **Is The Data Raw**: As RudderStack does not support combinational schema fields, this field will be ignored if not enabled.
-
-<div class="warningBlock">
-
-When this option is enabled, Facebook will not support the following schema fields:
-  
-  <ul>
-    <li><code class="inline-code">EMAIL_SHA256</code></li>
-    <li><code class="inline-code">PHONE_SHA256</code></li>
-  </ul>
-  
-Even when disabled, Facebook does not accept any other schema fields coupled with the above fields.
-</div>
-
 - **Audience Batch Size**: Specify the size of data you want RudderStack to send to Facebook in a single event. For example, if you want to send a total 1000 user records to Facebook and set the batch size to 50, then Rudderstack will send 20 events to Facebook with 50 user records in each event.
-
 - **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
-
 - **Type**: Specify the type of the custom audience here. This field will be ignored if left as `NA`.
-
 - **Sub Type**: This is the sub-type of the custom audience. This field will be ignored if left as `NA`.
 
 ## `audiencelist` event structure to send user data to Custom Audience
@@ -110,6 +93,11 @@ Even when disabled, Facebook does not accept any other schema fields coupled wit
 <div class="warningBlock">
 
 <strong>The Facebook Custom Audience destination supports only <code class="inline-code">audiencelist</code> calls.</strong>
+</div>
+
+<div class="infoBlock">
+  
+  Note that the custom audience should have edit permissions. Otherwise, RudderStack will not be able to add or remove users from the list.
 </div>
 
 The `add` and `remove` arrays containing the user data objects are expected inside the properties field of the `audiencelist` event. These arrays are wrapped inside the object `listData`.
@@ -124,11 +112,8 @@ The following table details the mapping of the schema fields specified in the [*
 | **Dashboard Field Name** | **Marketing API Schema Field \(Rudderstack Supported Field Name\)** | **Field Guidelines**                                                                                                                                                         |
 | :----------------------- | :------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `EMAIL`                  | `EMAIL`                                                             | Trim any leading or trailing whitespaces and convert all the characters to lower case.                                                                                       |
-| `EMAIL_SHA256`           | `EMAIL_SHA256`                                                      | In case you are already hashing your emails, they will be double-hashed and sent to Facebook if the **Enable Hashing** option is enabled in the RudderStack dashboard.       |
 | `PHONE`                  | `PHONE`                                                             | Remove symbols, letters, and any leading zeroes. The country code is needed as a prefix, if the `COUNTRY` field is not specified in the dashboard.                           |
-| `PHONE_SHA256`           | `PHONE_SHA256`                                                      | In case you are already hashing the phone numbers, they will be double-hashed and sent to Facebook if the **Enable Hashing** option is enabled in the RudderStack dashboard. |
 | `GENDER`                 | `GEN`                                                               | Use these values: `m` or `male` for male and `f` or `female` for female.                                                                                                     |
-| `MOBILE ADVERTISER ID`   | `MOBILE_ADVERTISER_ID`                                              | Use lowercase and keep the hyphens. This information will not be hashed.                                                                                                     |
 | `MADID`                  | `MADID`                                                             | Use lowercase and keep the hyphens. This information will not be hashed.                                                                                                     |
 | `EXTERN_ID`              | `EXTERN_ID`                                                         | This information will not be hashed.                                                                                                                                         |
 | `DOB YEAR (YYYY)`        | `DOBY`                                                              | Use the YYYY format from `1900` to the current year.                                                                                                                         |
@@ -241,6 +226,36 @@ The event payload must include <code class="inline-code">add</code> or <code cla
 
 ### FAQs
 
+### How do I create a new audience list?
+
+1. Go to the **Audiences** option in your [Facebook Ad Manager account](https://www.facebook.com/adsmanager/audiences?act=1546877239033017&tool=AUDIENCES).
+2. Select **Customer list** as your Custom Audience source and click on **Next**.
+
+<img src="../../assets/event-stream-destinations/fb-custom-audience-source.png" alt="Audience source" /> 
+
+3. If your list includes a column for customer value, then select the **Yes** option, else select **No** and click on **Next**.
+
+<img src="../../assets/event-stream-destinations/fb-custom-audience-customer-value.png" alt="Customer value" /> 
+
+4. Add the list that you want to use for your new Custom Audience and give it a name. You can upload either a CSV or a text file.
+5. Prepare your customer list by selecting and mapping the identifiers.
+6. Once your list is added and ready for use, click on **Upload and Create**.
+
+<div class="infoBlock">
+Make sure you have enough identifiers before uploading the list.
+</div>
+
+<div class="warningBlock">
+  
+  The custom audience you create should have edit permissions. Otherwise, RudderStack will not be able to add or remove users from the list. 
+</div>
+
+### How do I check if the custom audience has edit permissions?
+
+To check if the audience has edit permissions enabled, go to the **Audiences** tab, select your custom audience, and check the **Actions** dropdown. You should see the **Edit** option as seen below:
+
+<img src="../../assets/event-stream-destinations/fb-custom-audience-edit-permissions.png" alt="Customer audience edit permissions" />
+
 ### Where can I find the Custom Audience ID?
 
 - To get your Custom Audience ID, go to your Facebook Ads Manager account. On the left navigation bar, select **Audiences** and choose the Ad account you have created the custom audience for.
@@ -256,26 +271,24 @@ The event payload must include <code class="inline-code">add</code> or <code cla
 
 To use the Facebook Marketing API, you need to generate a user access token. Follow these steps to generate a user access token using your [**Facebook Developer account**](https://developers.facebook.com/):
 
-- Log into your Facebook Developer account.
-- If you haven't created an app already, do so with the type **Business**, as shown:
+1. Log into your [Facebook Developer account](https://developers.facebook.com/).
+2. If you haven't created an app already, do so with the type **Business**, as shown:
 
 <img src="https://user-images.githubusercontent.com/59817155/123803294-cc45ed80-d909-11eb-9ff6-9839c29005fa.png" />
 
-- Set your app up with the **Marketing API** as the product, as shown:
+3. Set your app up with the **Marketing API** as the product, as shown:
 
 <img src="https://user-images.githubusercontent.com/59817155/123803479-f697ab00-d909-11eb-8df9-d003c0803d7e.png" />
 
-- Next, click on the **Tools** tab , followed by the **View All Tools** link.
+4. Next, in the left navigation click bar, click on the **Tools** option under **Marketing API** , as shown:
 
-<img src="https://user-images.githubusercontent.com/59817155/123803114-9f91d600-d909-11eb-82cc-271469d3f27b.png" />
+<img src="../../assets/event-stream-destinations/fb-custom-audience-api-tools.png" alt="Marketing API tools" /> 
 
-- Then, click on the **Access Token Tool** as shown:
+5. Under **Get Access Token**, select **ads_management** and **ads_read** as the token permissions and click on **Get Token**:
 
-<img src="https://user-images.githubusercontent.com/59817155/123789885-4622aa80-d8fb-11eb-9488-20e7d4c5414c.png" />
+<img src="../../assets/event-stream-destinations/fb-custom-audience-access-token.png" alt="Access token" />
 
-- Find your app and click on the **need to grant permissions** link in the **User Token** row. This will generate the user access token, as shown:
-
-<img src="https://user-images.githubusercontent.com/59817155/123802258-c00d6080-d908-11eb-8edf-72211dd39cfd.png" />
+6. Copy this access token. Note that this access token will expire after a specified time and hence should not be hardcoded into your app.
 
 <div class="infoBlock">
 
