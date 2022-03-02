@@ -6,9 +6,9 @@ description: >-
 
 # Sync Schedule Settings
 
-RudderStack lets you schedule data imports from your Warehouse Actions sources while setting them up in your dashboard. It lets you specify the schedule type that define how and when the syncs will run.
+RudderStack lets you schedule data imports from your Warehouse Actions sources while setting them up in your dashboard. It lets you specify the schedule type that defines how and when the syncs will run.
 
-The three schedule types are listed in the following table:
+RudderStack supports the following three schedule types:
 
 | Schedule type      | Description                                               |
 | :------------------| :---------------------------------------------------------|
@@ -16,11 +16,11 @@ The three schedule types are listed in the following table:
 | CRON               | Run syncs based on a CRON expression defined by the user. |
 | Manual             | Run syncs manually.                                       |  
 
-The guide explains these sync schedule settings in detail.
+This guide explains the above sync schedule settings in detail.
 
 ## Basic schedule
 
-This schedule type lets you run the data syncs on a set interval. You can specify the sync frequency as well as the time(in UTC) you want the sync to start.
+This schedule type lets you run the data syncs at a set interval. You can specify the sync frequency as well as the time(in UTC) when you want the sync to start.
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-basic.png" alt="Basic sync schedule" />
 
@@ -45,7 +45,7 @@ This schedule type lets you define a custom CRON expression and runs the data sy
 
 <div class="infoBlock">
 
-You can use the <a href="https://crontab.guru/">CRON schedule utility</a> to specify your sync schedule.
+You can use the <a href="https://crontab.guru/">CRON scheduler utility</a> to specify your sync schedule.
 </div>
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-cron.png" alt="CRON schedule" />
