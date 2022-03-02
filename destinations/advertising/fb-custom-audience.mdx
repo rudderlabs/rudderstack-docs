@@ -50,16 +50,15 @@ Once you have confirmed that the platform supports sending events to Custom Audi
 Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-- Assign a name to the destination and click on **Next**. You will then see the following screen:
-
+- Assign a name to the destination and click on **Next**. 
 
 
 ### Connection settings
 
 To add Custom Audience as a destination in RudderStack, you will need to configure the following settings:
 
-<img src="../assets/event-stream-destinations/Fb-custom-audience-connection-settings-1.png" /><span class="imageTitle">Facebook Custom Audience Setup</span>
-<img src="../assets/event-stream-destinations/Fb-custom-audience-connection-settings-2.png" /><span class="imageTitle">Facebook Custom Audience Setup</span>
+<img src="../../assets/event-stream-destinations/Fb-custom-audience-connection-settings-1.png" />
+<img src="../../assets/event-stream-destinations/Fb-custom-audience-connection-settings-2.png" /><span class="imageTitle">Facebook Custom Audience Setup</span>
 
 
 - **Access Token**: Enter the access token of your business application set up for accessing the Facebook Marketing API.
@@ -106,9 +105,9 @@ Even when disabled, Facebook does not accept any other schema fields coupled wit
 - **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
 
 - **Skip Verify**: The following behavior can be observed depending on the setting:
-    - When false, no impact
-    - When true, the null values are replaced by empty string “”, hashed and sent
-    - When true and **Enable Hashing** is false, Facebook throws an error as it does not take null values
+    - Disabled: No impact
+    - Enabled and **Enable Hashing** setting is enabled: Null values are replaced by an empty string `“”` , hashed and sent.
+    - Enabled and **Enable Hashing** setting is disabled: Facebook throws an error as it does not take null values.
 
 - **Type**: Specify the type of the custom audience here. This field will be ignored if left as `NA`.
 
