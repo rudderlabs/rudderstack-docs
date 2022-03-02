@@ -687,7 +687,7 @@ export const jsonData = [
              {
                  "key":"sync-schedule-settings",
                  "title":"Sync Schedule Settings",
-                 "link":"/warehouse-actions/common-settings/sync-modes/sync-schedule-settings/",
+                 "link":"/warehouse-actions/common-settings/sync-schedule-settings/",
                  "content":[
                     
                  ]
