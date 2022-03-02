@@ -1,7 +1,7 @@
 ---
 # slug: "/docs/warehouse-actions/models-configuration"
 title: "Setting Connections using Models"
-description: Detailed technical description on how to use the SQL models to send the data to the specified destinations.
+description: Detailed technical description on how to use the SQL models to set up connections and send the data to the specified destinations.
 ---
 
 # Custom SQL Models
@@ -60,8 +60,16 @@ You can preview the data snippet which will be sent to the destination. All the 
 
 <div class="infoBlock">
   
+Alternatively, you can map the columns using the Visual Data Mapper feature. For more information, refer to <a href="https://www.rudderstack.com/docs/warehouse-actions/visual-data-mapper/#choosing-the-identifier">Choosing the identifier</a> section.
+  
+</div>
+
+<div class="infoBlock">
+  
 As can be observed, the JSON payload carries the <strong>user_id</strong> and <strong>anonymous_id</strong> from the columns selected in the <strong>Choose user identifier</strong> section. Further, the traits are used from the selected columns in the <strong>Column</strong> section.
 </div>
+
+
 
 You can use the **Add Constant** option to add a constant key and value pair which is always sent in the JSON payload.
 <img src="../assets/warehouse-actions-sources/add-constant.png" />
@@ -82,7 +90,7 @@ You can update the selection of columns used to send data to the specified desti
 
 3. Update your selection of columns and click on **Save** button.
 
-## FAQs
+## FAQ
 
 ### What do the three validations under Verifying Credentials imply?
 
