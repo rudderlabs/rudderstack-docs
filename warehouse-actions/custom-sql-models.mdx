@@ -1,29 +1,24 @@
 ---
-# slug: "/docs/warehouse-actions/custom-sql-models"
-title: "Custom SQL Models"
-description: Detailed technical description on how to use the custom SQL models feature to send the data to the specified destinations.
+# slug: "/docs/warehouse-actions/models-configuration"
+title: "Setting Connections using Models"
+description: Detailed technical description on how to use the SQL models to send the data to the specified destinations.
 ---
 
 # Custom SQL Models
 
-The **custom SQL models** feature provides the capability to define custom SQL queries over the schema of Warehouse Actions sources and execute them to send the resultant data to the specified destinations. You can also define the **sync schedule** to sync the data to the destinations as required.
+The **custom SQL models** feature provides the capability to define custom SQL queries over the warehouse and execute them to send the resultant data to the specified destinations. You can also define the **sync schedule** to sync the data to the destinations as required.
 
 Some salient features of custom SQL models are:
-* Manage the view of all models synced to different destinations at one place
-* Reuse existing models in multiple connections
-* Build complex models using an intuitive UI (RudderStack dashboard)
+* Manage the view of all models synced to different destinations at one place.
+* Reuse existing models in multiple connections.
+* Build models with complex SQL queries using an intuitive UI (RudderStack dashboard).
 
 <div class="infoBlock">
 
   Currently, the <strong>custom SQL models</strong> are supported for <a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a>, and <a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a> Warehouse Actions sources only.
 </div>
 
-<div class="infoBlock">
-
-While using this feature, the Warehouse Actions source must have the necessary permissions to be integrated with RudderStack. For more information on these permissions, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/">Granting Permissions</a> section of the relevant Warehouse Actions source.
-</div>
-
-## How to use custom SQL models? 
+## Setting connections using models
 
 <div class="infoBlock">
 You can create a model in the RudderStack dashboard and use it while creating a connection between a Warehouse Actions source and destination. For detailed steps on how to create a model, refer to <a href="https://www.rudderstack.com/docs/connections/models/">Models</a>.
@@ -33,57 +28,59 @@ Once a model is created, you can use it to send the data from a warehouse source
 
 1. Log in to the **RudderStack dashboard**.
 2. Select **Sources** from the left navigation bar and click on **New source**.
-3. Select **Warehouse Actions** and choose any supported source from the ones highlighted below: 
+3. Select **Warehouse Actions** and choose any supported warehouse from the ones highlighted below: 
 <img src="../assets/warehouse-actions-sources/warehouse-action-sources.png" />
 
-4. Name the source and select the **Model** option while configuring its settings.
+4. Name the source and select the **Model** option.
 <img src="../assets/warehouse-actions-sources/select-model-option.png" />
 
-5. Once the source is set up, you can connect it to an existing or a new destination by using the **Add Destination** button.  
+5. Next, set the **schedule type** and **run settings** to schedule the data import from your warehouse to RudderStack.
+
+6. Once the source is set up, you can connect it to an existing or a new destination by using the **Add Destination** button.  
 <img src="../assets/warehouse-actions-sources/add-destination.png" />
 
-6. Select the required destination and configure its connection settings.
+7. Select the required destination and configure its connection settings.
 
-7. Next, select the required model from the dropdown list.
+8. Next, select the required model from the dropdown list.
 
 <div class="infoBlock">
   
-The dropdown will only display the list of models corresponding to the Warehouse Actions source you have configured. For example, only the BigQuery models will be listed in the dropdown for a BigQuery warehouse source. Also, you need to use the same credentials for the source and the model.
+The dropdown will only display the list of models corresponding to the Warehouse Actions source you have configured. For example, only the BigQuery models will be listed in the dropdown for a BigQuery warehouse source.
 </div>
 
-8. Select the **Sync mode** and at least one user identifier (**user_id/anonymous_id**) from the dropdown list.
+9. Select the **Sync mode** and at least one user identifier (**user_id/anonymous_id**) from the dropdown list.
 
 <img src="../assets/warehouse-actions-sources/configure-model.png" />
 
 <div class="infoBlock">
   
-You can preview the data snippet which will be sent to the destination. All the table columns are selected by default. However, you can choose to keep the desired table columns by searching and selecting/deselecting them. The resultant JSON can be previewed on the right.
+You can preview the data snippet which will be sent to the destination. All the resultant columns from the model's query are selected by default. However, you can choose to keep the desired columns by searching and selecting/deselecting them. The resultant JSON can be previewed on the right.
 <img src="../assets/warehouse-actions-sources/models-data-snippet.png" />
 </div>
 
 <div class="infoBlock">
   
-As can be observed, the JSON payload carries the <strong>user_id</strong> and <strong>anonymous_id</strong> from the table columns selected in the <strong>Choose user identifier</strong> section. Further, the traits are used from the selected columns in the <strong>Table Column</strong> section.
+As can be observed, the JSON payload carries the <strong>user_id</strong> and <strong>anonymous_id</strong> from the columns selected in the <strong>Choose user identifier</strong> section. Further, the traits are used from the selected columns in the <strong>Column</strong> section.
 </div>
 
 You can use the **Add Constant** option to add a constant key and value pair which is always sent in the JSON payload.
 <img src="../assets/warehouse-actions-sources/add-constant.png" />
 
-9. Click on **Continue** to configure the model successfully with the source and destination.
+10. Click on **Continue** to configure the model successfully with the source and destination.
 
 ### Setting the data update schedule
 
 You can click on the source and select the **Syncs** tab to schedule the event data sync. To know more, refer to [Syncs]().
 
-### Update the selection of table columns  
+### Update the selection of columns  
 
-You can update the selection of table columns used to send data to the specified destinations. 
+You can update the selection of columns used to send data to the specified destinations. 
 
 1. Click on the source and select the **Schema** tab.
 2. Click on **Update** button.
 <img src="../assets/warehouse-actions-sources/update-table-selection.png" />
 
-3. Update your selection of table columns and click on **Save** button.
+3. Update your selection of columns and click on **Save** button.
 
 ## FAQs
 
