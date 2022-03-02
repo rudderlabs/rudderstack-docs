@@ -7,7 +7,7 @@ description: >-
 
 # Models
 
-The **Models** feature lets you create models by defining custom SQL queries. These queries can then be executed over the Warehouse sources schema to send the resultant data to the specified destinations. You can create as many models and reuse them with their corresponding Warehouse Actions sources.
+The **Models** feature lets you create models by defining custom SQL queries. These queries can then be executed over your warehouse to send the resultant data to the specified destinations. You can create as many models and reuse them with their corresponding Warehouse Actions sources.
 
 <div class="infoBlock">
 
@@ -28,24 +28,31 @@ Follow these steps to create a model:
 
 <img src="../assets/warehouse-actions-sources/models-dashboard.png" alt="RudderStack Models"/>
 
-3. Select a source for the model and click **Next**.
+3. Select the type of warehouse action for the model and click **Next**.
 
 <img src="../assets/warehouse-actions-sources/select-source-model.png" alt="Add Model"/>
 
-4. Configure the model with relevant source settings and click **Next**. For more information on these settings, refer [Warehouse Actions Sources](https://www.rudderstack.com/docs/warehouse-actions/).
+4. Provide a name for the model.
+5. Select from the existing credentials or create a new warehouse account.
+ 
+<div class="infoBlock">
+
+The Warehouse Actions source must have the necessary permissions to be integrated with RudderStack. For more information on these permissions, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/">Granting Permissions</a> section of the relevant Warehouse Actions source.
+  
+</div>
 
 <img src="../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
 
-5. Enter the **Description** and custom SQL **Query**. Click on **Run Query** to **Preview** the result.
+6. Enter the **Description** and custom SQL **Query**. Click on **Run Query** to **Preview** the result.
 
 <img src="../assets/warehouse-actions-sources/sample-sql-query.png" alt="Sample SQL query" />
 
 <div class="infoBlock">
 
-The <strong>Preview</strong> section displays the preview of the first 50 resultant rows in a paginated format.
+The <strong>Preview</strong> section displays the preview of the 50 resultant rows in a paginated format.
 </div>
 
-6. Click **Next** to configure the model succesfully.
+7. Click **Next** to configure the model succesfully.
 
 ## Update model
 
@@ -64,7 +71,7 @@ To get details about an existing model, you can click on it to see the options l
 
 - **Rename**: Lets you rename the model by clicking on the edit icon next to the model's name.
 
-<img src="../assets/warehouse-actions-sources/model-rename.png" alt="Rename source" />
+<img src="../assets/warehouse-actions-sources/model-rename.png" alt="Rename model" />
 
 - **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to [Custom SQL Models](https://www.rudderstack.com/docs/warehouse-actions/custom-sql-models/).
 
@@ -72,9 +79,9 @@ To get details about an existing model, you can click on it to see the options l
 
 - **Settings**: This option provides additional model-related details, such as:  
 
-  - **Credentials**: Lets you edit the credentials used for the source.
+  - **Credentials**: Lets you edit the credentials used for the model.
 
-  - **Permanently delete the model**: Lets you delete the model by clicking on the **Delete** button. The **Delete** button is only enabled when no source is connected to the model.
+  - **Permanently delete the model**: Lets you delete the model by clicking on the **Delete** button. The **Delete** button is only enabled when no source is using the model.
 
 ## Contact us
 
