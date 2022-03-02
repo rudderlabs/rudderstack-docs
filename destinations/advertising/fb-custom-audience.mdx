@@ -95,6 +95,11 @@ Some other important settings include:
 <strong>The Facebook Custom Audience destination supports only <code class="inline-code">audiencelist</code> calls.</strong>
 </div>
 
+<div class="infoBlock">
+  
+  Note that the custom audience should have edit permissions. Otherwise, RudderStack will not be able to add or remove users from the list.
+</div>
+
 The `add` and `remove` arrays containing the user data objects are expected inside the properties field of the `audiencelist` event. These arrays are wrapped inside the object `listData`.
 
 - **add**: This array refers to the user information that needs to be added to Custom Audience.
@@ -224,7 +229,6 @@ The event payload must include <code class="inline-code">add</code> or <code cla
 ### How do I create a new audience list?
 
 1. Go to the **Audiences** option in your [Facebook Ad Manager account](https://www.facebook.com/adsmanager/audiences?act=1546877239033017&tool=AUDIENCES).
-
 2. Select **Customer list** as your Custom Audience source and click on **Next**.
 
 <img src="../../assets/event-stream-destinations/fb-custom-audience-source.png" alt="Audience source" /> 
@@ -240,6 +244,17 @@ The event payload must include <code class="inline-code">add</code> or <code cla
 <div class="infoBlock">
 Make sure you have enough identifiers before uploading the list.
 </div>
+
+<div class="warningBlock">
+  
+  The custom audience you create should have edit permissions. Otherwise, RudderStack will not be able to add or remove users from the list. 
+</div>
+
+### How do I check if the custom audience has edit permissions?
+
+To check if the audience has edit permissions enabled, go to the **Audiences** tab, select your custom audience, and check the **Actions** dropdown. You should see the **Edit** option as seen below:
+
+<img src="../../assets/event-stream-destinations/fb-custom-audience-edit-permissions.png" alt="Customer audience edit permissions" />
 
 ### Where can I find the Custom Audience ID?
 
