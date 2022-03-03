@@ -50,13 +50,16 @@ Once you have confirmed that the platform supports sending events to Custom Audi
 Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-- Assign a name to the destination and click on **Next**. You will then see the following screen:
+- Assign a name to the destination and click on **Next**. 
 
-<img src="https://user-images.githubusercontent.com/59817155/127313498-87e59fca-8420-486a-a930-2b76f5181e6c.png" /><span class="imageTitle">Facebook Custom Audience Setup</span>
 
 ### Connection settings
 
 To add Custom Audience as a destination in RudderStack, you will need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/Fb-custom-audience-connection-settings-1.png" />
+<img src="../../assets/event-stream-destinations/Fb-custom-audience-connection-settings-2.png" /><span class="imageTitle">Facebook Custom Audience Setup</span>
+
 
 - **Access Token**: Enter the access token of your business application set up for accessing the Facebook Marketing API.
 
@@ -85,6 +88,10 @@ Some other important settings include:
 - **Is The Data Raw**: As RudderStack does not support combinational schema fields, this field will be ignored if not enabled.
 - **Audience Batch Size**: Specify the size of data you want RudderStack to send to Facebook in a single event. For example, if you want to send a total 1000 user records to Facebook and set the batch size to 50, then Rudderstack will send 20 events to Facebook with 50 user records in each event.
 - **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
+- **Skip Verify**: This option lets Rudderstack handle all the null/undefined user properties before uploading them to Facebook Custom Audience.
+    - When disabled, RudderStack discards the entire batch of events if any of the user attributes are `null`, according to the schema fields.
+    - When this option is enabled along with the **Enable Hashing** setting, the null values are replaced by an empty string `“”` , hashed, and then sent to Custom Audience.
+    - When this option is enabled and the **Enable Hashing** setting is disabled, Facebook throws an error as it does not take null values.
 - **Type**: Specify the type of the custom audience here. This field will be ignored if left as `NA`.
 - **Sub Type**: This is the sub-type of the custom audience. This field will be ignored if left as `NA`.
 
