@@ -68,10 +68,24 @@ RudderStack considers the time at its end to be absolute and assumes any differe
 
 <div class="infoBlock">
 
-<code class="inline-code">sent_at</code> &gt; <code class="inline-code">original_timestamp</code> is <strong>always true</strong>. However, <code class="inline-code">timestamp</code> can be more or less than the <code class="inline-code">original_timestamp</code>.
+If not specified in the payload explicitly, RudderStack calculates <code class="inline-code">timestamp</code> based on <code class="inline-code">originalTimestamp</code> and <code class="inline-code">sentAt</code> to account for the client clock skew.
 </div>
 
-### `original_timestamp` < `received_at`
+As mentioned in the above section:
+
+| Field                | Description                                                                                                                    |
+| :--------------------| :------------------------------------------------------------------------------------------------------------------------------|
+| `original_timestamp` | Records the actual time when the event occurred at the source.                                                                 |
+| `sent_at`            | Captures the time when the event was sent from the client to RudderStack.                                                      |
+| `received_at`        | The timestamp when the event is received(ingested) by the RudderStack server.                                                  |
+| `timestamp`          | Calculated by RudderStack to account for the client clock skew, **IF** the user does not explicitly specify it in the payload. |
+
+<div class="infoBlock">
+
+<code class="inline-code">sent_at</code> &gt; <code class="inline-code">original_timestamp</code> is <strong>always true</strong>. However, <code class="inline-code">timestamp</code> can be more or less than the <code class="inline-code">original_timestamp</code>. Refer to the cases below for more details.
+</div>
+
+### Case 1: `original_timestamp` < `received_at`
 
 The following table demonstrates an example of `original_timestamp` < `received_at`(when the client-side time is less than the time registered by RudderStack):
 
@@ -81,7 +95,7 @@ The following table demonstrates an example of `original_timestamp` < `received_
 
 In this case, `timestamp` will be **greater** than `original_timestamp`.
 
-### `original_timestamp` > `received_at`
+### Case 2: `original_timestamp` > `received_at`
 
 The following table demonstrates an example of `original_timestamp` > `received_at`(when the client-side time is more than the time registered by RudderStack):
 
