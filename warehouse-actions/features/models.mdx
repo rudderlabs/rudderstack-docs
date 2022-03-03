@@ -30,10 +30,10 @@ Once a model is created, you can use it to send the data from a warehouse source
 1. Log in to the [**RudderStack dashboard**](https://app.rudderstack.com/).
 2. Select **Sources** from the left navigation bar and click on **New source**.
 3. Select **Warehouse Actions** and choose any supported warehouse from the ones highlighted below: 
-<img src="../assets/warehouse-actions-sources/warehouse-action-sources.png" />
+<img src="../../assets/warehouse-actions-sources/warehouse-action-sources.png" />
 
 4. Name the source and select the **Model** option.
-<img src="../assets/warehouse-actions-sources/select-model-option.png" />
+<img src="../../assets/warehouse-actions-sources/select-model-option.png" />
 
 <div class="infoBlock">
   
@@ -41,8 +41,9 @@ Be sure whether you want to configure the source with the <strong>Model</strong>
 </div>
 
 5. Next, set the [**Schedule Settings**](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/) to schedule the data import from your warehouse to RudderStack.
-6. Once the source is set up, you can connect it to an existing or a new destination by using the **Add Destination** button.  
-<img src="../assets/warehouse-actions-sources/add-destination.png" />
+6. Once the source is set up, you can connect it to an existing or a new destination by using the **Add Destination** button.
+  
+<img src="../../assets/warehouse-actions-sources/add-destination.png" />
 
 7. Select the required destination and configure its connection settings.
 8. Next, select the required model from the dropdown list.
@@ -54,11 +55,11 @@ The dropdown will only display the list of models corresponding to the Warehouse
 
 9. Select the [**Sync mode**](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/) and at least one user identifier (**user_id/anonymous_id**) from the dropdown list.
 
-<img src="../assets/warehouse-actions-sources/configure-model.png" />
+<img src="../../assets/warehouse-actions-sources/configure-model.png" />
 
 You can also preview the data snippet which RudderStack will send to the destination. All the resulting columns from running the model's query are selected by default. However, you can choose to retain specific columns by searching and selecting them. You can then preview the resulting JSON on the right, as shown:
 
-<img src="../assets/warehouse-actions-sources/models-data-snippet.png" />
+<img src="../../assets/warehouse-actions-sources/models-data-snippet.png" />
 
 <div class="infoBlock">
   
@@ -75,7 +76,7 @@ The JSON payload carries the <code class="inline-code">user_id</code> and <code 
 You can use the <strong>Add Constant</strong> option to add a constant key and value pair which is always sent in the JSON payload.
 </div>
 
-<img src="../assets/warehouse-actions-sources/add-constant.png" />
+<img src="../../assets/warehouse-actions-sources/add-constant.png" />
 
 10. Click on **Continue** to successfully configure the model with the source and destination.
 
@@ -90,7 +91,7 @@ You can update the selection of columns from which RudderStack sends data to the
 1. Click on the source and select the **Schema** tab.
 2. Then, click on the **Update** button, as shown:
 
-<img src="../assets/warehouse-actions-sources/update-table-selection.png" />
+<img src="../../assets/warehouse-actions-sources/update-table-selection.png" />
 
 3. Update your column selection and click on the **Save** button.
 
@@ -100,7 +101,7 @@ You can update the selection of columns from which RudderStack sends data to the
 
 When creating a new Warehouse Actions source, you are presented with the following two options from which RudderStack will sync the data:
 
-<img src="../assets/warehouse-actions-sources/table-model-options.png" />
+<img src="../../assets/warehouse-actions-sources/table-model-options.png" />
 
 - When you choose **Table**, RudderStack imports all the data associated with the specified table during the sync.
 - When you choose **Model**, RudderStack imports the data by running the query specified in the connected model, during the sync.
