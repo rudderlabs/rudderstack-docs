@@ -44,6 +44,14 @@ export const jsonData = [
             ]
          },
          {
+            "key":"models",
+            "title":"Models",
+            "link":"/connections/models/",
+            "content":[
+               
+            ]
+         },
+         {
            "key":"adding-source-and-destination-rudderstack",
            "title":"How to Add a Source and Destination in RudderStack",
            "link":"/connections/adding-source-and-destination-rudderstack/",
@@ -653,6 +661,14 @@ export const jsonData = [
            "title":"Features",
            "link":"/warehouse-actions/features/",
            "content":[
+            {
+               "key":"setting-connections-using-models",
+               "title":"Models",
+               "link":"/warehouse-actions/features/models/",
+               "content":[
+                  
+               ]
+            },
              {
                  "key":"airflow-provider",
                  "title":"Airflow Provider",

@@ -46,15 +46,18 @@ Follow these steps to create a model:
 4. Enter a name for the model.
 5. Select your existing warehouse credentials or click on **Create Credentials from Scratch** and enter the warehouse-specific details.
  
-<div class="infoBlock">
+<div class="warningBlock">
 
 Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <a href="https://www.rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> source.
-  
 </div>
 
 <img src="../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
 
-6. Enter the **Description** for the model. Then, add your custom SQL query in the **Query** section. 
+<div class="infoBlock">
+Once you select or add your warehouse credentials and click on <strong>Next</strong>, RudderStack will validate them before you can proceed with the setup. For more information on these validations, refer to the <a href="#FAQ">FAQ</a> section below.
+</div>
+
+6. Next, enter the **Description** for the model. Then, add your custom SQL query in the **Query** section. 
 7. Click on **Run Query** to preview the result.
 
 <img src="../assets/warehouse-actions-sources/sample-sql-query.png" alt="Sample SQL query" />
@@ -64,7 +67,7 @@ Your warehouse account must have the necessary user permissions for RudderStack 
 The <strong>Preview</strong> section displays the preview of the 50 resultant rows in a paginated format.
 </div>
 
-8. Click on **Next** to create the model successfully.
+8. Click on **Next** to create the model.
 
 <div class="infoBlock">
 Once a model is created, you can use it to send the data from a warehouse source to a specified destination. For more information and detailed steps, refer to <a href="https://www.rudderstack.com/docs/warehouse-actions/setting-connections-using-models/">Setting Connections using Models</a>.
@@ -75,8 +78,8 @@ Once a model is created, you can use it to send the data from a warehouse source
 Follow these steps to update an existing model:
 
 1. Click the model you want to update and select the **Configuration** tab.
-2. Click on **Edit Configuration** and make the required changes in  **Description** and/or **Query**.
-3. If you have edited the **Query**, click on **Run Query** to see if the new query generates the desired result.
+2. Click on **Edit Configuration** and make the required changes in  **Description** and **Query**.
+3. If you have edited the query, click on **Run Query** to see if the new query generates the desired result.
 4. Finally, click on **Finish** to save your changes.
 
 <img src="../assets/warehouse-actions-sources/edit-model-configuration.png" alt="Edit existing Model configuration" />
@@ -95,9 +98,7 @@ To get details about an existing model, you can click on it to see the options l
 <img src="../assets/warehouse-actions-sources/model-rename.png" alt="Rename model" />
 
 - **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to [Setting Connections using Models](https://www.rudderstack.com/docs/warehouse-actions/setting-connections-using-models/).
-
 - **Configuration**: Displays and lets you edit the SQL **Query** and **Description**.
-
 - **Settings**: This option contains the following two settings:
 
    - **Permanently delete the model**: Lets you delete the model by clicking on the **Delete** button. The **Delete** button is only enabled when no source is using the model.
@@ -113,8 +114,6 @@ After editing the credentials, it is recommended to validate the query by runnin
 ### What do the three validations under Verifying Credentials imply?
 
 When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
-
-<!--![](../.gitbook/assets/validations.png)-->
 
 <img src="../assets/validations.png" alt="Verifying Credentials" />
 
