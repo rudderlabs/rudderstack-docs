@@ -11,7 +11,7 @@ The **Models** feature lets you create models by defining custom SQL queries. Th
 
 <div class="infoBlock">
 
-  Currently, the <strong>Models</strong> feature is supported for <a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a>, and <a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a> Warehouse Actions sources only.
+Currently, the <strong>Models</strong> feature is supported for <a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a>, and <a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a> Warehouse Actions sources only.
 </div>
 
 The RudderStack dashboard provides **Models** option in the left navigation bar that allows you to view all the existing models:
@@ -37,7 +37,7 @@ Follow these steps to create a model:
  
 <div class="infoBlock">
 
-The warehouse account must have the necessary permissions to be integrated with RudderStack. For more information on these permissions, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/">Granting Permissions</a> section of the relevant Warehouse Actions source.
+The warehouse account must have the necessary permissions to be integrated with RudderStack. For more information on these permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <a href="https://www.rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> source.
   
 </div>
 
@@ -52,7 +52,11 @@ The warehouse account must have the necessary permissions to be integrated with 
 The <strong>Preview</strong> section displays the preview of the 50 resultant rows in a paginated format.
 </div>
 
-7. Click **Next** to configure the model succesfully.
+7. Click **Next** to create the model succesfully.
+
+<div class="infoBlock">
+Once a model is created, you can use it to send the data from a warehouse source to a specified destination. For more information and detailed steps, refer to <a href="https://www.rudderstack.com/docs/warehouse-actions/setting-connections-using-models/">Setting Connections using Models</a>.
+</div>
 
 ## Update model
 
@@ -67,7 +71,7 @@ Follow these steps to update an existing model:
 
 <div class="infoBlock">
   
-If you update a model's <strong>Query</strong>, you also need to check or update the <a href="https://www.rudderstack.com/docs/warehouse-actions/visual-data-mapper/">Visual Data Mapper</a> mapping to trigger the full sync and validate a sync by manually triggering it.
+If you update a model's <strong>Query</strong>, you also need to check or update the JSON and <a href="https://www.rudderstack.com/docs/warehouse-actions/visual-data-mapper/">Visual Data Mapper</a> mapping to trigger the full sync and validate a sync by manually triggering it.
 </div>
 
 ## Model details
@@ -78,7 +82,7 @@ To get details about an existing model, you can click on it to see the options l
 
 <img src="../assets/warehouse-actions-sources/model-rename.png" alt="Rename model" />
 
-- **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to [Custom SQL Models](https://www.rudderstack.com/docs/warehouse-actions/custom-sql-models/).
+- **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to [Setting Connections using Models](https://www.rudderstack.com/docs/warehouse-actions/setting-connections-using-models/).
 
 - **Configuration**: Displays and lets you edit the SQL **Query** and **Description**.
 
