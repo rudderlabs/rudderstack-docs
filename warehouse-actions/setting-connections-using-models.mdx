@@ -1,21 +1,21 @@
 ---
-# slug: "/docs/warehouse-actions/models-configuration"
+# slug: "/docs/warehouse-actions/setting-connections-using-models"
 title: "Setting Connections using Models"
 description: Detailed technical description on how to use the SQL models to set up connections and send the data to the specified destinations.
 ---
 
-# Custom SQL Models
+# Models
 
-The **custom SQL models** feature provides the capability to define custom SQL queries over the warehouse and execute them to send the resultant data to the specified destinations. You can also define the **sync schedule** to sync the data to the destinations as required.
+The **Models** feature provides the capability to define custom SQL queries over the warehouse and execute them to send the resultant data to the specified destinations. You can also define the **sync schedule** to sync the data to the destinations as required.
 
-Some salient features of custom SQL models are:
+Some salient features of models are:
 * Manage the view of all models synced to different destinations at one place.
 * Reuse existing models in multiple connections.
 * Build models with complex SQL queries using an intuitive UI (RudderStack dashboard).
 
 <div class="infoBlock">
 
-  Currently, the <strong>custom SQL models</strong> are supported for <a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a>, and <a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a> Warehouse Actions sources only.
+Currently, the <strong>Models</strong> feature is supported for <a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a>, <a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a>, and <a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a> Warehouse Actions sources only.
 </div>
 
 ## Setting connections using models
@@ -33,6 +33,12 @@ Once a model is created, you can use it to send the data from a warehouse source
 
 4. Name the source and select the **Model** option.
 <img src="../assets/warehouse-actions-sources/select-model-option.png" />
+
+<div class="infoBlock">
+  
+Be sure whether to configure the source with the <strong>Model</strong> or <strong>Table</strong> option. Once configured, it cannot be switched to the other one.
+</div>
+
 
 5. Next, set the **schedule type** and **run settings** to schedule the data import from your warehouse to RudderStack.
 
