@@ -58,26 +58,23 @@ The dropdown will only display the list of models corresponding to the Warehouse
 
 <img src="../assets/warehouse-actions-sources/configure-model.png" />
 
-<div class="infoBlock">
-  
-You can preview the data snippet which will be sent to the destination. All the resultant columns from the model's query are selected by default. However, you can choose to keep the desired columns by searching and selecting/deselecting them. The resultant JSON can be previewed on the right.
+You can also preview the data snippet which RudderStack will send to the destination. All the resulting columns from running the model's query are selected by default. However, you can choose to retain specific columns by searching and selecting them. You can then preview the resulting JSON on the right, as shown:
+
 <img src="../assets/warehouse-actions-sources/models-data-snippet.png" />
+
+<div class="infoBlock">
+  
+  Alternatively, you can map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. For more information, refer to <a href="https://www.rudderstack.com/docs/warehouse-actions/visual-data-mapper/#choosing-the-identifier">Choosing the identifier</a> section.
+  
 </div>
 
 <div class="infoBlock">
   
-Alternatively, you can map the columns using the Visual Data Mapper feature. For more information, refer to <a href="https://www.rudderstack.com/docs/warehouse-actions/visual-data-mapper/#choosing-the-identifier">Choosing the identifier</a> section.
-  
+The JSON payload carries the <code class="inline-code">user_id</code> and <code class="inline-code">anonymous_id</code> from the columns selected in the <strong>Choose user identifier</strong> section. Moreover, the traits are used from the columns selected in the <strong>Column</strong> section.
 </div>
-
-<div class="infoBlock">
-  
-As can be observed, the JSON payload carries the <strong>user_id</strong> and <strong>anonymous_id</strong> from the columns selected in the <strong>Choose user identifier</strong> section. Further, the traits are used from the selected columns in the <strong>Column</strong> section.
-</div>
-
-
 
 You can use the **Add Constant** option to add a constant key and value pair which is always sent in the JSON payload.
+
 <img src="../assets/warehouse-actions-sources/add-constant.png" />
 
 10. Click on **Continue** to configure the model successfully with the source and destination.
@@ -86,15 +83,27 @@ You can use the **Add Constant** option to add a constant key and value pair whi
 
 You can click on the source and select the **Syncs** tab to schedule the event data sync. To know more, refer to [Sync Schedule Settings](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/).
 
-### Update the selection of columns  
+### Updating the columns selection  
 
-You can update the selection of columns used to send data to the specified destinations. 
+You can update the selection of columns from which RudderStack sends data to the specified destinations. Follow these steps:
 
 1. Click on the source and select the **Schema** tab.
-2. Click on **Update** button.
+2. Then, click on the **Update** button, as shown:
+
 <img src="../assets/warehouse-actions-sources/update-table-selection.png" />
 
-3. Update your selection of columns and click on **Save** button.
+3. Update your column selection and click on the **Save** button.
+
+## FAQ
+
+### What is the difference between the Table and Model options when creating a Warehouse Actions source?
+
+When creating a new Warehouse Actions source, you are presented with the following two options from which RudderStack will sync the data:
+
+<img src="../assets/warehouse-actions-sources/table-model-options.png" />
+
+- When you choose **Table**, RudderStack imports all the data associated with the specified table during the sync.
+- When you choose **Model**, RudderStack imports the data by running the query specified in the connected model, during the sync.
 
 ## Contact us
 
