@@ -38,6 +38,12 @@ export const postNavList = [
     "link":"/get-started/live-events/",
     "content":[]
  },
+ {
+   "key":"models",
+   "title":"Models",
+   "link":"/connections/models/",
+   "content":[]
+},
 {
     "key":"adding-source-and-destination-rudderstack",
     "title":"How to Add a Source and Destination in RudderStack",
@@ -507,7 +513,13 @@ export const postNavList = [
     "title":"Features",
     "link":"/warehouse-actions/features/",
     "content":[]
- },  
+ },
+ {
+   "key":"setting-connections-using-models",
+   "title":"Models",
+   "link":"/warehouse-actions/features/models/",
+   "content":[]
+},  
  {
     "key":"airflow-provider",
     "title":"AirFlow Provider",
@@ -529,13 +541,13 @@ export const postNavList = [
  {
     "key":"sync-modes",
     "title":"Sync Modes",
-    "link":"/warehouse-actions/features/sync-modes/",
+    "link":"/warehouse-actions/common-settings/sync-modes/",
     "content":[]
  },
  {
     "key":"sync-schedule-settings",
     "title":"Sync Schedule Settings",
-    "link":"/warehouse-actions/features/sync-schedule-settings/",
+    "link":"/warehouse-actions/common-settings/sync-schedule-settings/",
     "content":[]
  },
  {

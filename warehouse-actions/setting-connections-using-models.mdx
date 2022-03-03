@@ -37,17 +37,14 @@ Once a model is created, you can use it to send the data from a warehouse source
 
 <div class="infoBlock">
   
-Be sure whether you want to configure the source with the <strong>Model</strong> or <strong>Table</strong> option. Once configured, this setting cannot be changed.
+Be sure whether you want to configure the source with the <strong>Model</strong> or <strong>Table</strong> option. Once configured, this setting cannot be changed. For more information on these options, refer to the <a href="#FAQ">FAQ</a> section below.
 </div>
 
-
 5. Next, set the [**Schedule Settings**](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/) to schedule the data import from your warehouse to RudderStack.
-
 6. Once the source is set up, you can connect it to an existing or a new destination by using the **Add Destination** button.  
 <img src="../assets/warehouse-actions-sources/add-destination.png" />
 
 7. Select the required destination and configure its connection settings.
-
 8. Next, select the required model from the dropdown list.
 
 <div class="infoBlock">
@@ -74,11 +71,13 @@ You can also preview the data snippet which RudderStack will send to the destina
 The JSON payload carries the <code class="inline-code">user_id</code> and <code class="inline-code">anonymous_id</code> from the columns selected in the <strong>Choose user identifier</strong> section. Moreover, the traits are used from the columns selected in the <strong>Column</strong> section.
 </div>
 
-You can use the **Add Constant** option to add a constant key and value pair which is always sent in the JSON payload.
+<div class="infoBlock">
+You can use the <strong>Add Constant</strong> option to add a constant key and value pair which is always sent in the JSON payload.
+</div>
 
 <img src="../assets/warehouse-actions-sources/add-constant.png" />
 
-10. Click on **Continue** to configure the model successfully with the source and destination.
+10. Click on **Continue** to successfully configure the model with the source and destination.
 
 ### Setting the data update schedule
 
