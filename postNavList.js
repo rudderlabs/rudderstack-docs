@@ -515,7 +515,7 @@ export const postNavList = [
     "content":[]
  },
  {
-   "key":"setting-connections-using-models",
+   "key":"models",
    "title":"Models",
    "link":"/warehouse-actions/features/models/",
    "content":[]
