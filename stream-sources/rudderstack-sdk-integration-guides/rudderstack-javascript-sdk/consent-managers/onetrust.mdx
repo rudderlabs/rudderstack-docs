@@ -25,9 +25,7 @@ The following sections highlight the steps required to set up the JavaScript SDK
 Follow these steps to configure OneTrust for your web app:
 
 1. Create a OneTrust account. Make sure it has access to the **Cookie Compliance** app.
-
 2. Then, add your website and scan it.
-
 3. Next, go to the **Categorizations** section. Here, define the new categories or modify the existing ones, as per your requirement.
 
 <div class="infoBlock">
@@ -61,9 +59,9 @@ Before following the steps in this section, load the OneTrust script that you pu
 </script>
 <!-- OneTrust Cookies Consent Notice end for samplewebsite.com -->
 ```
-- **Important**: **Load the JavaScript SDK after the user provides the consent.**
+1. **Important**: **Load the JavaScript SDK only after the user provides the consent.** 
 
-One way to load the JavaScript SDK after the user provides the consent is to modify the `OptanonWrapper()` callback function provided by OneTrust as shown:
+One way to load the JavaScript SDK after the user provides the consent is to modify the `OptanonWrapper()` callback function provided by OneTrust, as shown:
 
 ```javascript
 function OptanonWrapper() {
@@ -82,11 +80,9 @@ function OptanonWrapper() {
 <div class="infoBlock">
  
 If the consent is updated, you need to refresh the page to load the SDK.
-
 </div>
 
-
-- Then, add the `cookieConsentManager` option in the `load()` call as shown in the following snippet:
+2. Then, add the `cookieConsentManager` option in the `load()` call as shown in the following snippet:
 
 ```javascript
 rudderanalytics.load(
@@ -96,7 +92,8 @@ rudderanalytics.load(
       oneTrust: {
         enabled: true
       }
-    }
+    },
+    ...otherOptions //optional
   }
 );
 ```
