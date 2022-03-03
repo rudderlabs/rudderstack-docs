@@ -105,7 +105,7 @@ Even when disabled, Facebook does not accept any other schema fields coupled wit
 - **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
 
 - **Skip Verify**: This option lets Rudderstack handle all the null/undefined user properties before uploading them to Facebook Custom Audience.
-    - When disabled, there is no impact.
+    - When disabled, the entire batch of events is discarded if any of the user attributes are null according to the schema fields.
     - When enabled and **Enable Hashing** setting is enabled, the null values are replaced by an empty string `“”` , hashed and sent.
     - When enabled and **Enable Hashing** setting is disabled, Facebook throws an error as it does not take null values.
 
