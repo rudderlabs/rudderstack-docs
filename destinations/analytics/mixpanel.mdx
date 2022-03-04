@@ -113,7 +113,7 @@ rudderanalytics.identify("12345", {
 })
 ```
 
-In server-side calls, you can prevent the updation of `$last_seen` attribute with incorrect times by setting `active` to false in the `context` object. It sets the `$ignore_time` attribute as true for Mixpanel.
+In cloud mode, you can prevent the updation of `$last_seen` attribute with incorrect times by setting `active` to false in the `context` object. It sets the `$ignore_time` attribute as true for Mixpanel.
 
 A sample `identify` call with `active` as false is as shown:
 
