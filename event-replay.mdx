@@ -7,18 +7,21 @@ description: >-
 
 # Event Replay 
 
-RudderStack's **event replay** feature lets you backup your event data and replay it in case of any failures.
+RudderStack's **event replay** feature lets you backup your event data and replay it in case of any failures. Some scenarios where you can leverage this functionality include:
+
+- Replay failed events from a particular date to a destination, maybe due to some misconfiguration.
+- Replay all the events for a particular source, from a particular date, to a new event stream or warehouse destination.
 
 <a href="https://www.rudderstack.com/enterprise-quote/">
-<img src="https://img.shields.io/badge/Plan-Enterprise-blueviolet" class="githubBadge" alt="Audit Logs" />
+<img src="https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge" class="githubBadge" alt="Event Replay" />
 </a>
-
 
 ## Supported event types for replay
 
-RudderStack can store the following types of event data and replay it to the specified destinations: 
-- Raw events captured by RudderStack through various sources (stored in batches of 100,000 events).
-- Event payloads sent by RudderStack in case of delivery failures along with the errors (stored approximately every 30 seconds).
+RudderStack can store the following types of event data and replay it to the specified destinations:
+
+- Raw events captured through various sources. RudderStack stores these events in batches of 100,000 events.
+- Event payloads sent by RudderStack in case of delivery failures along with the errors(stored approximately every 30 seconds).
 
 ## Data storage options
 
@@ -72,9 +75,6 @@ If you choose to set up your own object storage for backing up and replaying the
   </TabPanels>
 </Tabs>
 
-
 ## Contact us
 
-For more information on the event backup and replay feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
-
-
+For more information on the event replay feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
