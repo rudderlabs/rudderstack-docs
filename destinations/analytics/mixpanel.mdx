@@ -113,6 +113,25 @@ rudderanalytics.identify("12345", {
 })
 ```
 
+When sending events via the cloud mode, you can prevent the `$last_seen` attribute getting updated with incorrect times by setting `active` to `false` in the `context` object, as shown in the following snippet:
+
+```javascript
+rudderanalytics.identify("12345", {
+  firstname: "Alex",
+  city: "New Orleans",
+  country: "USA"
+}, {
+  context: {
+    active: false
+  }
+})
+```
+
+<div class="infoBlock">
+ 
+ Setting <code class="inline-code">active</code> to <code class="inline-code">false</code> sets Mixpanel's <code class="inline-code">$ignore_time</code> attribute to <code class="inline-code">true</code>. This way, you can bypass the “Last Seen” date property.
+</div>
+
 ### Reserved Mixpanel properties
 
 Mixpanel has some reserved properties:
