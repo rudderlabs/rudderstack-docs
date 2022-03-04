@@ -6,22 +6,21 @@ description: Step-by-step guide to send event data from RudderStack to Facebook 
 
 # Facebook Pixel
 
-[Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics. It allows you to measure and rudder audiences to build effective marketing and advertising campaigns.
+[Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics required to build effective marketing and advertising campaigns.
 
-This destination also supports the [**Conversions API**](https://developers.facebook.com/docs/marketing-api/conversions-api/) for sending server side events.
+<div class="infoBlock">
 
-You can now send your event data directly to Facebook Pixel through RudderStack.
+RudderStack leverages the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/">Conversions API</a> for sending server-side events to this destination.
+</div>
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/facebook_pixel">GitHub repo</a>.**
+  Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/facebook_pixel">GitHub repository</a>.
 </div>
 
 ## Getting started
 
-To enable sending your event data to Facebook Pixel, you will first need to add it as a destination to the source from which you are sending your event data.
-
-Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Facebook Pixel, by referring to the table below:
+Before configuring Facebook Pixel as a destination in RudderStack, verify if the source platform is supported by Facebook Pixel, by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -30,67 +29,77 @@ Before configuring your source and destination on the RudderStack, please verify
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
-Once you have confirmed that the platform supports sending events to Facebook, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Google Adwords Remarketing Lists, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Facebook Pixel**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Facebook Pixel**.
 
 <div class="infoBlock">
 
-Please follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">How to Add a Source and Destination in RudderStack</a> to add a source and destination in RudderStack.
-
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-- Give a name to the destination and click on **Next**. You should then see the following screen:
+2. Assign a name to your destination and click on **Next**.
 
-<img src="../../assets/screen-shot-2021-03-03-at-1.09.06-pm.png" />
+### Connection settings
 
-<img src="../../assets/screen-shot-2021-03-03-at-1.09.38-pm.png" />
+To successfully configure Facebook Pixel as a destination, you will need to configure the following settings:
 
-<img src="../../assets/screen-shot-2021-06-23-at-9.15.42-am (2) (2) (2).png" />
+<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-1.png" alt="Facebook Pixel connection settings" />
 
-The connection settings are:
+The following sections explain these settings in more detail.
 
-- Enter your **Facebook Pixel ID** \(Required for both Device Mode and Cloud Mode\) If you have a **Business Access Token \(**required for Cloud Mode\), enter that as well.
+- **Facebook Pixel ID**: Enter your Facebook Pixel ID. This is required for sending events via both cloud and device modes. 
+- **Business Access Token**: Enter your Facebook business access token required to send the events via the cloud mode.
 
 <div class="infoBlock">
 
-More information on how to find your Facebook Pixel ID and Business Access Token can be found in our FAQs below.
-
+For more information on obtaining your Facebook Pixel ID and Business Access Token, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- Some other important settings are:
+### Event settings
 
-  - **Value Field Identifier**: You can set this field to `properties.price` or `properties.value` and will be assigned to the value field of the Facebook payload.
-  - **Blacklist PII Properties**: The PII properties mentioned in this field will not be sent to Facebook if **Blacklist PII Hash Property** is not enabled. If it is enabled, the property will be hashed by SHA256 and sent to Facebook. The properties listed below are the default blacklisted properties. If you would still like to send one of these properties but instead hashed by SHA256, you will need to enter the property name in the field and enable the **Blacklist PII Hash Property** toggle.
+<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-1.png" alt="Facebook Pixel connection settings" />
 
-  ```
-  Default Blacklisted PII
-  -----------------------
-  "email",
-  "firstName",
-  "lastName",
-  "firstname",
-  "lastname",
-  "first_name",
-  "last_name",
-  "gender",
-  "city",
-  "country",
-  "phone",
-  "state",
-  "zip",
-  "birthday"
-  ```
+- **Map Categories to Facebook Content Types**: This option lets you specify the category fields to specific Facebook content type.
+- **Enable Standard Event (PageView) for all Page and Screen Calls**: If this setting is enabled, RudderStack sets `pageview` as a standard event for all the `page` and `screen` calls.
+- **Map your events with Facebook Standard Events**: This option lets you map your events to the standard events defined by Facebook.
+- **Standard Events custom properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, mention those properties in this field.
+- **Value Field Identifier**: You can set this field to `properties.price` or `properties.value`. RudderStack will then assign this to the value field of the Facebook payload.
 
-  - **Whitelist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. This is only necessary for properties that match the **Default Blacklisted PII** properties above.
-  - **Standard Events Custom Properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, those properties should be mentioned in this setting.
-  - **Use as Test Destination:** If you will be using this destination for testing purposes, toggle this switch on. Then, enter the `Test Event Code` below. This code can be found on your Facebook Pixel dashboard and is required if the Test Destination flag is turned on.
+### PII properties settings
 
-  - **Limited Data Usage**: If enabled, RudderStack will take the data processing information from the payload and send it to Facebook. The data in the RudderStack payload should be as follows:
+- **Blacklist PII Properties**: The PII properties mentioned in this field will not be sent to Facebook if **Blacklist PII Hash Property** is not enabled. If it is enabled, the properties will be SHA256-hashed and sent to Facebook. The properties listed below are the **default blacklisted properties**. 
+
+| Default blacklisted PII |
+| :---------------------|
+| `email` |
+| `firstName` |
+| `lastName` |
+| `firstname` |
+| `lastname` |
+| `first_name` |
+| `last_name` |
+| `gender` |
+| `city` |
+| `country` |
+| `phone` |
+| `state` |
+| `zip` |
+| `birthday` |
+
+<div class="infoBlock">
+
+If you want to send any of the above properties hashed by SHA256, you need to enter the property name in the <strong>Blacklist PII Properties</strong> field and enable the <strong>Blacklist PII Hash Property</strong> toggle.
+</div>
+
+- **Whitelist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. This is only necessary for properties that match the **Default Blacklisted PII** properties listed above.
+
+### Other settings
+
+- **Limited Data Usage**: If enabled, RudderStack will take the data processing information from the payload and send it to Facebook. The data in the RudderStack payload should be as shown below:
 
 ```javascript
 "context": {
@@ -112,7 +121,7 @@ More information on how to find your Facebook Pixel ID and Business Access Token
     "name": "xiaomi"
   },
   "network": {
-    "carrier": "Banglalink"
+    "carrier": "AirCarrier"
   },
   "os": {
     "name": "android",
@@ -123,17 +132,68 @@ More information on how to find your Facebook Pixel ID and Business Access Token
     "density": 50
   },
   "traits": {
-    "email": "abc@gmail.com",
+    "email": "john@example.com",
     "anonymousId": "c82cbdff-e5be-4009-ac78-cdeea09ab4b1"
   }
 }
 ```
 
+- **Use as Test Destination:** Enable this setting if you are using this destination for testing purposes and enter the **Test Event Code**. This code can be found in your Facebook Pixel dashboard.
+
 <div class="infoBlock">
 
-  The <code class="inline-code">context.dataProcessingOptions</code> will be mapped to
-  ** <code class="inline-code">data_processing_options</code> ** in Facebook as is mentioned in the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event#data-processing-options">Facebook developer docs</a>.
+  The <code class="inline-code">context.dataProcessingOptions</code> will be mapped to <code class="inline-code">data_processing_options</code> in Facebook as is mentioned in the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event#data-processing-options">Facebook developer docs</a>.
 </div>
+
+### Native SDK settings
+
+- **Use Updated Mapping**: If this setting is disabled, RudderStack will send the `identify` traits as received. If this setting is enabled, RudderStack takes the following example `identify` traits:
+
+```JSON
+{
+  firstName: "Alex",
+  lastName: "Keener",
+  email: "alex@example.com",
+  phone: "12345678910",
+  gender: "Male",
+  birthday: "01012001",
+  city: "New Orleans",
+  country: "USA",
+  zip: "90009",
+  state: "Louisiana",
+  foo: "bar",
+}
+```
+
+RudderStack then changes the traits as shown below, before sending them to Facebook:
+
+```JSON
+{
+		fn: "Alex",
+		ln: "Keener",
+		em: "alex@example.com",
+		ph: "12345678910",
+		ge: "Male",
+		db: "01012001",
+		ct: "New Orleans",
+		country: "USA",
+		zp: "90009",
+		state: "Louisiana",
+		foo: "bar"
+}
+```
+
+### Client-side event filtering
+
+<div class="infoBlock">
+
+RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via the device mode. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> documentation.
+</div>
+
+### Web SDK settings
+
+- **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via the device mode.
+- **Use device-mode to send events**: Enable this setting to send events from the web SDK to Facebook Pixel via the device mode.
 
 - Finally, click on **Next** to complete the configuration.
 
@@ -203,8 +263,7 @@ In the dashboard, you have the option to **map your events to standard Facebook 
 
 <div class="infoBlock">
 
-Please go through our guide on <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">E-Commerce Event Specifications</a> for more information
-
+Refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">E-Commerce Event Specifications</a> guide for more information.
 </div>
 
 The mapping is done as follows in RudderStack:
@@ -246,7 +305,6 @@ In the dashboard, the legacy conversion Pixel IDs can be filled. The events whic
 <div class="infoBlock">
 
 This is only available for device mode.
-
 </div>
 
 ## Custom events
@@ -260,7 +318,6 @@ Facebook Pixel allows you to send events via your web browser and your server vi
 <div class="infoBlock">
 
 For more information on Facebook Deduplication, you can refer to <a href="https://www.facebook.com/business/help/823677331451951?id=1205376682832142">this article</a>.
-
 </div>
 
 #### `event_id` method \(Recommended\)
@@ -295,7 +352,6 @@ RudderStack maps the `event_name` from whatever the name of the event that is be
 <div class="infoBlock">
 
 For more information regarding the logic behind the <code class="inline-code">fbp</code> and <code class="inline-code">external_id</code> deduplication, read <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/#fbp-or-external-id">this article</a>.
-
 </div>
 
 ## Timestamps
@@ -356,4 +412,3 @@ The `integrations` object with these key-values will tell RudderStack not to has
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
-
