@@ -119,7 +119,7 @@ For more information on this setting, refer to the <a href="https://experiencele
 Enabling this setting might lead the data to be out of order. Hence, it is not recommended by Adobe. In order to make it work, you need to enable the <strong>Optional Timestamp</strong> setting in <strong>Reporting Suites</strong>.
 </div>
 
-- **No Fallbacks for Visitor ID**: Enabling this setting removes the fallbacks. However, it is applicable only for the server-side when the **Drop Visitor ID** setting  is disabled and **marketingCloudId** is sent in the Adobe Analytics integration object. The default behavior is to set the Adobe Analytics `visitorID` based on the destination-specific setting for `visitorId`, falling back to `userId` then `anonymousId`.
+- **No Fallbacks for Visitor ID**: Enabling this setting removes the fallbacks. However, it is applicable only for the server-side when the **Drop Visitor ID** setting  is disabled and **marketingCloudId** is sent in the Adobe Analytics integration object. The priority order of setting the Adobe Analytics visitor ID is the destination-specific setting for `visitorId`, followed by `userId`, then `anonymousId`.
 
 - **Prefer Visitor ID**: Adobe does not allow sending both `visitorID` and timestamp. Hence, this option is used when the timestamp option is set as hybrid. Also, note that if this option is enabled, `visitorID` will be set. If disabled, the timestamp value will be set.
 
