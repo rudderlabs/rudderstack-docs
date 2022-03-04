@@ -13,7 +13,7 @@ Before configuring Adobe Analytics as a destination, verify if the source platfo
 | **Connection Mode** | **Web**       | **Mobile**    | **Server** |
 | :------------------ | :------------ | :---------    | :--------- |
 | **Device Mode**     | **Supported** | **Supported** | **-**      |
-| **Cloud Mode**      | **-**         | **-**         | **-**      |
+| **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
 
@@ -37,6 +37,7 @@ Follow the guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 This section lists all the relevant connection settings to successfully set up Adobe Analytics as a destination in RudderStack.
 
 <img src="../../../assets/adobe-1.png" />
+<img src="../../../assets/adobe-2.png" />
 
 - **Tracking Server URL**: The `trackingServer` variable determines the location an image request is sent. Eg: If url is [`http://abc.a.b`](http://abc.a.b) ,the tracking server URL will be `abc.a.b`.
 
@@ -72,6 +73,7 @@ For more information on this setting, refer to the <a href="https://experiencele
 ### Identity Resolution
 
 <img src="../../../assets/image (110).png" />
+<img src="../../../assets/adobe-3.png" />
 
 - **Marketing Cloud Organization ID**: If you want to use `visitorAPI.js`, enter this field. For example: `99887766ABC@AdobeOrg`.
 - **Drop Visitor ID**: If enabled, RudderStack does not assign the `userId` to `visitorID`.
@@ -110,6 +112,15 @@ For more information on this setting, refer to the <a href="https://experiencele
   </ul>
 </div>
 
+- **Send Both Timestamp and VisitorID for Timestamp Optional Reporting Suites**: This setting lets you choose whether to send both the timestamp and the visitor ID when sending server-side events, in case you are using the [Timestamps Optional Reporting Suite](https://experienceleague.adobe.com/docs/analytics/admin/admin-tools/timestamp-optional.html?lang=en).
+
+<div class="warningBlock">
+
+Enabling this setting might lead the data to be out of order. Hence, it is not recommended by Adobe. In order to make it work, you need to enable the <strong>Optional Timestamp</strong> setting in <strong>Reporting Suites</strong>.
+</div>
+
+- **No Fallbacks for Visitor ID**: Enabling this setting removes the fallbacks. However, it is applicable only for the server-side events when the **Drop Visitor ID** setting  is disabled and **marketingCloudId** is sent in the Adobe Analytics integration object. The priority order of setting the Adobe Analytics visitor ID is the destination-specific setting for `visitorId`, followed by `userId`, then `anonymousId`.
+
 - **Prefer Visitor ID**: Adobe does not allow sending both `visitorID` and timestamp. Hence, this option is used when the timestamp option is set as hybrid. Also, note that if this option is enabled, `visitorID` will be set. If disabled, the timestamp value will be set.
 
 <div class="infoBlock">
@@ -119,9 +130,11 @@ For more information on this setting, refer to the <a href="https://experiencele
 
 - **Enable pageName for Track Events**: When enabled, RudderStack only tracks events by sending a `pageName`.
 
+
 ### Mappings
 
 <img src="../../../assets/image (111).png" />
+<img src="../../../assets/mapping-adobe.png" />
 
 - **Map Rudder Events to Adobe Custom Events**: This setting allows you to add one or multiple custom Adobe events separated by comma.
 - **Map Rudder Context data to Adobe Context Data**: Context data variables allow you to you define custom variables on each page that the processing rules apply and can read. Instead of explicitly assigning values to the analytics variables, you can send your data in via these context data variables. The processing rules take the values from the context data variables and pass them into the respective analytics variables.
