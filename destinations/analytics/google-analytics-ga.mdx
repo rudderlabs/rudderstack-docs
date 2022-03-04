@@ -13,7 +13,6 @@ Google Analytics is the world's most popular analytics service that lets you tra
 RudderStack supports Google Analytics as a destination and makes requests to its endpoints through the [Google Analytics Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1).
 
 <div class="successBlock">
-
  Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga">GitHub repository</a>.
 </div>
 
@@ -27,7 +26,6 @@ Before configuring Google Analytics as a destination in RudderStack, verify if t
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
 To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
@@ -36,7 +34,6 @@ Once you have confirmed that the source platform supports sending events to Goog
 1.  From your [RudderStack dashboard](https://app.rudderstack.com), add the source. Then, from the list of destinations, select **Google Analytics**.
 
 <div class="infoBlock">
-
 Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
@@ -65,7 +62,7 @@ From our JavaScript libraries, we automatically collect the following page prope
 - `search`
 - `referrer`
 
-For a page loaded at `http://localhost/test_browser.html?param1=true` with title "Page Load":
+> For a page loaded at `http://localhost/test_browser.html?param1=true` with title "Page Load"
 
 | Property   | Value                                                                                            |
 | :--------- | :----------------------------------------------------------------------------------------------- |
@@ -88,7 +85,6 @@ rudderanalytics.page({
 ```
 
 <div class="warningBlock">
-
 It is important to send a <code class="inline-code">path</code> or <code class="inline-code">url</code> property with page call, otherwise Google Analytics will reject the event.
 </div>
 
@@ -115,9 +111,7 @@ rudderanalytics.page("home", {
 ```
 
 <div class="infoBlock">
-
 For a server-side page call, the application name is passed from RudderStack's <code class="inline-code">context.app.name</code> as <code class="inline-code">an</code>, otherwise the event will be rejected by GA.
-
 If the <strong>Include the Querystring in Page Views</strong> option is enabled in the RudderStack destination settings, then the entire URL with the querystring will be sent as <code class="inline-code">dp</code> (Document Path). Otherwise, the querystring will be removed from the URL.
 </div>
 
@@ -125,7 +119,7 @@ If the <strong>Include the Querystring in Page Views</strong> option is enabled 
 
 Personally Identifiable Information \(PII\) cannot be sent to the Google Analytics reporting interface. Thus nothing is passed to Google unless specifically directed.
 
-Google Analytics' universal tracking allows you to set a user ID to the identified visitors if **Send User ID to GA** is enabled in the destination settings by the user. Also, the `userid` property must be enabled in Google Analytics, and user-id view needs to be created.
+Google Analytics' universal tracking allows you to set a user ID to the identified visitors if **Send User ID** **to GA** is enabled in the destination settings by the user. Also, the `userid` property must be enabled in Google Analytics, and user-id view needs to be created.
 
 A sample `identify` call is as shown:
 
@@ -184,7 +178,6 @@ This will send the following `Event Category` and `Event Action` :
 | Event Action   | `Track me` |
 
 <div class="infoBlock">
-
 We do not populate the <code class="inline-code">Event Category</code> field by default. If you face such a requirement, use our custom transformations to populate the event payload with a <code class="inline-code">category</code> property.
 </div>
 
@@ -274,7 +267,6 @@ rudderanalytics.track('checkout step completed', {
 ```
 
 <div class="infoBlock">
-
 For more information, please check our guide on the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">RudderStack E-Commerce Events Specification</a>.
 </div>
 
@@ -470,11 +462,9 @@ RudderStack takes the `clientId` in the following **decreasing** order of priori
 3. From `anonymousId`, if present.
 
 <div class="infoBlock">
-
-If the <strong>Disable MD5 encryption from Client ID</strong> setting is disabled in the dashboard, RudderStack passes the <code class="inline-code">userId</code> as the <code class="inline-code">clientId</code> in the MD5-hashed format.
-</div>
-
+If the <strong>Disable MD5 encryption from Client ID</strong> setting is disabled in the dashboard, RudderStack passes the <code class="inline-code">userId</code> as the <code class="inline-code">clientId</code> in the MD5-hashed format.
 <img src="../../assets/event-stream-destinations/ga-md5-encryption-disabled.png" alt="MD5 disabled" />
+</div>
 
 ## User Agent
 
@@ -564,7 +554,6 @@ If the query is `abc.com/s=xyz`the setting should be as follows:
 Add your **Optimize Container ID** in the destination settings.
 
 <div class="infoBlock">
-
 If the container ID is specified in the destination settings and Optimize is linked to your Google Analytics property, then it will be automatically enabled the next time <code class="inline-code">analytics.js</code> is loaded. <strong>Note that this is applicable only if you are using the integration in the web device mode</strong>.
 </div>
 
@@ -597,9 +586,9 @@ If enabled, the `identify` calls will be made only from the server-side.
 
 ### Server-side Identification Event Action and Category.
 
-If any action is specified, it will go as `ea` otherwise it will default to `User Enriched`.
+If any action is specified, it will go as `ea` otherwise it will default to `User Enriched`
 
-If any category is specified, it will go as `ec` otherwise it will default to `All`.
+If any category is specified, it will go as `ec` otherwise it will default to `All`
 
 ### AMP Client ID
 
