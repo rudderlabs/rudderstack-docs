@@ -178,24 +178,24 @@ For the minified version of the above script, refer to the <a href="https://www.
       <ul>
       <li>Change your .NET project's <strong>Dependencies</strong> to include the <code class="inline-code">RudderAnalytics</code> package via <a href="https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-powershell">NuGet</a></li>
       <li>Then, initialize the RudderStack client by running the following code snippet. Replace <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained above.
-      <span>
+<span>
 
-      ```csharp
-      using RudderStack;
+```csharp
+using RudderStack;
 
-      RudderAnalytics.Initialize(
-          <WRITE_KEY>,
-          new RudderConfig(dataPlaneUrl: <DATA_PLANE_URL>)
-      );
-      ```
-      </span>
-      <div class="successBlock">
+RudderAnalytics.Initialize(
+     <WRITE_KEY>,
+     new RudderConfig(dataPlaneUrl: <DATA_PLANE_URL>)
+);
+```
+</span>
+<div class="successBlock">
 
-      You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
-      </div>
-      </li>
-      </ul>
-      </TabPanel>
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
+</div>
+</li>
+</ul>
+    </TabPanel>
     </TabPanels>
 </Tabs>
 
