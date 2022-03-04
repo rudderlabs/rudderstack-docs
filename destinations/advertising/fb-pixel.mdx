@@ -61,7 +61,7 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 
 ### Event settings
 
-<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-1.png" alt="Facebook Pixel connection settings" />
+<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-2.png" alt="Facebook Pixel connection settings" />
 
 - **Map Categories to Facebook Content Types**: This option lets you specify the category fields to specific Facebook content type.
 - **Enable Standard Event (PageView) for all Page and Screen Calls**: If this setting is enabled, RudderStack sets `pageview` as a standard event for all the `page` and `screen` calls.
@@ -70,6 +70,8 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 - **Value Field Identifier**: You can set this field to `properties.price` or `properties.value`. RudderStack will then assign this to the value field of the Facebook payload.
 
 ### PII properties settings
+
+<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-3.png" alt="Facebook Pixel connection settings" />
 
 - **Blacklist PII Properties**: The PII properties mentioned in this field will not be sent to Facebook if **Blacklist PII Hash Property** is not enabled. If it is enabled, the properties will be SHA256-hashed and sent to Facebook. The properties listed below are the **default blacklisted properties**. 
 
@@ -98,6 +100,8 @@ If you want to send any of the above properties hashed by SHA256, you need to en
 - **Whitelist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. This is only necessary for properties that match the **Default Blacklisted PII** properties listed above.
 
 ### Other settings
+
+<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-4.png" alt="Facebook Pixel connection settings" />
 
 - **Limited Data Usage**: If enabled, RudderStack will take the data processing information from the payload and send it to Facebook. The data in the RudderStack payload should be as shown below:
 
@@ -191,6 +195,8 @@ RudderStack supports specifying which events should be discarded or allowed to f
 </div>
 
 ### Web SDK settings
+
+<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-5.png" alt="Facebook Pixel connection settings" />
 
 - **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via the device mode.
 - **Use device-mode to send events**: Enable this setting to send events from the web SDK to Facebook Pixel via the device mode.
