@@ -119,13 +119,16 @@ A sample `identify` call with `active` as false is as shown:
 
 ```javascript
 rudderanalytics.identify("12345", {
-    firstname: "Alex",
-    city: "New Orleans",
-    country: "USA"
-  }
-  context {
-    active: false
-  })
+     firstname: "Alex",
+     city: "New Orleans",
+     country: "USA"
+     },
+     {
+     context: {
+           active: false
+           }
+     }
+)
 ```
 
 ### Reserved Mixpanel properties
