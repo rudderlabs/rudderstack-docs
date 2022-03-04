@@ -65,7 +65,7 @@ From our JavaScript libraries, we automatically collect the following page prope
 - `search`
 - `referrer`
 
-> For a page loaded at `http://localhost/test_browser.html?param1=true` with title "Page Load"
+For a page loaded at `http://localhost/test_browser.html?param1=true` with title "Page Load":
 
 | Property   | Value                                                                                            |
 | :--------- | :----------------------------------------------------------------------------------------------- |
@@ -125,7 +125,7 @@ If the <strong>Include the Querystring in Page Views</strong> option is enabled 
 
 Personally Identifiable Information \(PII\) cannot be sent to the Google Analytics reporting interface. Thus nothing is passed to Google unless specifically directed.
 
-Google Analytics' universal tracking allows you to set a user ID to the identified visitors if **Send User ID** **to GA** is enabled in the destination settings by the user. Also, the `userid` property must be enabled in Google Analytics, and user-id view needs to be created.
+Google Analytics' universal tracking allows you to set a user ID to the identified visitors if **Send User ID to GA** is enabled in the destination settings by the user. Also, the `userid` property must be enabled in Google Analytics, and user-id view needs to be created.
 
 A sample `identify` call is as shown:
 
@@ -472,9 +472,9 @@ RudderStack takes the `clientId` in the following **decreasing** order of priori
 <div class="infoBlock">
 
 If the <strong>Disable MD5 encryption from Client ID</strong> setting is disabled in the dashboard, RudderStack passes the <code class="inline-code">userId</code> as the <code class="inline-code">clientId</code> in the MD5-hashed format.
+</div>
 
 <img src="../../assets/event-stream-destinations/ga-md5-encryption-disabled.png" alt="MD5 disabled" />
-</div>
 
 ## User Agent
 
@@ -597,9 +597,9 @@ If enabled, the `identify` calls will be made only from the server-side.
 
 ### Server-side Identification Event Action and Category.
 
-If any action is specified, it will go as `ea` otherwise it will default to `User Enriched`
+If any action is specified, it will go as `ea` otherwise it will default to `User Enriched`.
 
-If any category is specified, it will go as `ec` otherwise it will default to `All`
+If any category is specified, it will go as `ec` otherwise it will default to `All`.
 
 ### AMP Client ID
 
