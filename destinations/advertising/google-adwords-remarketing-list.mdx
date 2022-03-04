@@ -106,35 +106,33 @@ The following code snippet shows a sample `audienceList` call:
 
 ```json
 {
-    "userId": "user1",
-    "anonymousId": "anon-id-new",
-    "event": "event1",
-    "type": "audienceList",
-    "properties": {
-        "listData": {
-            "create": [{
-                    "email": "alex@example.com",
-                    "phone": "1234567890"
-                },
-                {
-                    "email": "emily@example.com",
-                    "phone": "1234567890"
-                },
-            ]
+  "userId": "user1",
+  "anonymousId": "anon-id-new",
+  "event": "event1",
+  "type": "audienceList",
+  "properties": {
+    "listData": {
+      "create": [{
+          "email": "alex@example.com",
+          "phone": "1234567890"
         },
-        "enablePartialFailure": true
+        {
+          "email": "emily@example.com",
+          "phone": "1234567890"
+        },
+      ]
     },
-    "context": {
-        "ip": "1.2.3.40",
-        "library": {
-            "name": "http"
-        }
-    },
-    "timestamp": "2020-02-02T00:23:09.544Z"
+    "enablePartialFailure": true
+  },
+  "context": {
+    "ip": "1.2.3.40",
+    "library": {
+      "name": "http"
+    }
+  },
+  "timestamp": "2020-02-02T00:23:09.544Z"
 }
 ```
-
-
 
 ### Supported schema mapping
 
