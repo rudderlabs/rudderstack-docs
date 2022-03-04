@@ -516,7 +516,7 @@ export const postNavList = [
  },
  {
    "key":"setting-up-connections-using-models",
-   "title":"Setting up Connections using Models",
+   "title":"Setting up Connections Using Models",
    "link":"/warehouse-actions/features/setting-up-connections-using-models/",
    "content":[]
 },  
