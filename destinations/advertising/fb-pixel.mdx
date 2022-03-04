@@ -149,7 +149,16 @@ If you want to send any of the above properties hashed by SHA256, you need to en
   The <code class="inline-code">context.dataProcessingOptions</code> will be mapped to <code class="inline-code">data_processing_options</code> in Facebook as is mentioned in the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event#data-processing-options">Facebook developer docs</a>.
 </div>
 
-### Native SDK settings
+### Client-side event filtering
+
+<div class="infoBlock">
+
+RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via the device mode. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> documentation.
+</div>
+
+### Web SDK settings
+
+<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-5.png" alt="Facebook Pixel connection settings" />
 
 - **Use Updated Mapping**: If this setting is disabled, RudderStack will send the `identify` traits as received. If this setting is enabled, RudderStack takes the following example `identify` traits:
 
@@ -186,17 +195,6 @@ RudderStack then changes the traits as shown below, before sending them to Faceb
   foo: "bar"
 }
 ```
-
-### Client-side event filtering
-
-<div class="infoBlock">
-
-RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via the device mode. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> documentation.
-</div>
-
-### Web SDK settings
-
-<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-5.png" alt="Facebook Pixel connection settings" />
 
 - **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via the device mode.
 - **Use device-mode to send events**: Enable this setting to send events from the web SDK to Facebook Pixel via the device mode.
