@@ -54,8 +54,6 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 Once the destination is set up, events from RudderStack will automatically start flowing to Google Analytics. You can see the events in Google Analytics' real-time view.
 
-
-
 ## Page
 
 RudderStack sends a `pageview` hit to Google Analytics whenever you make a **`page()`** call using the SDK.
@@ -92,8 +90,7 @@ rudderanalytics.page({
 
 <div class="warningBlock">
 
-It is important to send a <code class="inline-code">path</code> or <code class="inline-code">url</code> property with page call, otherwise Google Analytics will silently reject the event.
-
+It is important to send a <code class="inline-code">path</code> or <code class="inline-code">url</code> property with page call, otherwise Google Analytics will reject the event.
 </div>
 
 There are other variants of the `page()` call that you can send, which involve giving your page's `name` and `category` :
@@ -120,15 +117,14 @@ rudderanalytics.page("home", {
 
 <div class="infoBlock">
 
-For a server-side screen call, the application name is passed from RudderStack's <code class="inline-code">context.app.name</code> as <code class="inline-code">an</code>, otherwise the event will be rejected by GA.
+For a server-side page call, the application name is passed from RudderStack's <code class="inline-code">context.app.name</code> as <code class="inline-code">an</code>, otherwise the event will be rejected by GA.
 
-  If <strong>Include the Querystring in Page Views</strong> option is enabled in the RudderStack destination settings, then the entire URL with the querystring will be sent as <code class="inline-code">dp</code> (Document Path). Otherwise, the querystring will be removed from the URL.
-
+If the <strong>Include the Querystring in Page Views</strong> option is enabled in the RudderStack destination settings, then the entire URL with the querystring will be sent as <code class="inline-code">dp</code> (Document Path). Otherwise, the querystring will be removed from the URL.
 </div>
 
 ## Identify
 
-Personally Identifiable Information \(PII\) cannot be sent to the Google Analytics reporting interface. Thus nothing is passed to Google unless specifically told.
+Personally Identifiable Information \(PII\) cannot be sent to the Google Analytics reporting interface. Thus nothing is passed to Google unless specifically directed.
 
 Google Analytics' universal tracking allows you to set a user ID to the identified visitors if **Send User ID** **to GA** is enabled in the destination settings by the user. Also, the `userid` property must be enabled in Google Analytics, and user-id view needs to be created.
 
@@ -136,9 +132,9 @@ A sample `identify` call is as shown:
 
 ```javascript
 rudderanalytics.identify("user123", {
-        name: "Alex Keener",
-        email: "alex@example.com"
-      });
+  name: "Alex Keener",
+  email: "alex@example.com"
+});
 ```
 
 In the above snippet, the `userid` will be set to `user123` for Google Analytics, but the name and email will not be shared with Google. Traits along with custom dimensions, metrics, and content groupings can be set in the SDK.
@@ -157,15 +153,15 @@ A custom dimension should be set as `dimension{index}` . For example, `dimension
 
 Similar activity is to be done for metrics.
 
-<img src="../../assets/image (59).png" /><span class="imageTitle">Custom Dimensions and Metrics Settings in RudderStack</span>
+<img src="../../assets/image (59).png" />
 
-<img src="../../assets/image (36).png" /><span class="imageTitle">Custom Dimensions Settings in Google Analytics</span>
+<img src="../../assets/image (36).png" />
 
 An `identify` call with custom dimensions will be recorded after the next `track` or `page` call.
 
 ```javascript
 rudderanalytics.identify({
-Gender: 'Female'
+  Gender: 'Female'
 });
 
 rudderanalytics.track('Viewed History');
@@ -173,7 +169,7 @@ rudderanalytics.track('Viewed History');
 
 ## Track
 
-We send an `event` hit when a **`track()`** call is made from our SDKs.
+RudderStack captures any user activity whenever a **`track()`** call is made.
 
 A simple `track` call is as shown:
 
@@ -191,17 +187,16 @@ This will send the following `Event Category` and `Event Action` :
 <div class="infoBlock">
 
 We do not populate the <code class="inline-code">Event Category</code> field by default. If you face such a requirement, use our custom transformations to populate the event payload with a <code class="inline-code">category</code> property.
-
 </div>
 
-A more verbose `track` call that you can make is as shown:
+A more verbose `track` call is shown:
 
 ```javascript
 rudderanalytics.track("Track me", {
-        category: "category",
-        label: "label",
-        value: "value"
- });
+  category: "category",
+  label: "label",
+  value: "value"
+});
 ```
 
 The following properties are sent to the Google Analytics event:
@@ -583,11 +578,11 @@ You can set the content group mapping in the RudderStack dashboard and Google An
 
 <img src="../../assets/image (26).png" /><span class="imageTitle">Content Grouping Settings in Google Analytics</span>
 
-When you use `rudderanalytics.page(name, properties)` with the custom properties, RudderStack will use the value of the property you designate as the value of the specified content grouping.
+When you send a `page` call with the custom properties, RudderStack will use the value of the property you designate as the value of the specified content grouping.
 
 <div class="infoBlock">
 
-For more information on content grouping, please refer to this <a href="https://support.google.com/analytics/answer/2853423?hl=en#:~:text=Content%20Grouping%20lets%20you%20group,page%20title%2C%20or%20screen%20name">guide</a>.
+For more information on content grouping, refer to this <a href="https://support.google.com/analytics/answer/2853423?hl=en#:~:text=Content%20Grouping%20lets%20you%20group,page%20title%2C%20or%20screen%20name">guide</a>.
 </div>
 
 ### Sample Rate
