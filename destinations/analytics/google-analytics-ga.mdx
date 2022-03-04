@@ -120,9 +120,9 @@ rudderanalytics.page("home", {
 
 <div class="infoBlock">
 
-For a server-side screen call, the application name is passed from RudderStack's <code class="inline-code">context.app.name</code> as **<code class="inline-code">an</code>**, otherwise the event will be rejected by GA.
+For a server-side screen call, the application name is passed from RudderStack's <code class="inline-code">context.app.name</code> as <code class="inline-code">an</code>, otherwise the event will be rejected by GA.
 
-If **Include the Querystring in Page Views** option is turned on under Advanced options of RudderStack destination settings (please refer to the settings in the Getting Started section above), then the whole URL with query string will be sent as **<code class="inline-code">dp</code>** (Document Path). Otherwise, the query string will be removed from the URL.
+  If <strong>Include the Querystring in Page Views</strong> option is enabled in the RudderStack destination settings, then the entire URL with the querystring will be sent as <code class="inline-code">dp</code> (Document Path). Otherwise, the querystring will be removed from the URL.
 
 </div>
 
@@ -155,7 +155,8 @@ There are multiple scopes for custom dimensions, such as `hits`, `session`, `use
 
 A custom dimension should be set as `dimension{index}` . For example, `dimension1` and it will map accordingly when the user sets the dimension in GA settings as shown below.
 
-Similar activity is to be done for metrics.A
+Similar activity is to be done for metrics.
+
 <img src="../../assets/image (59).png" /><span class="imageTitle">Custom Dimensions and Metrics Settings in RudderStack</span>
 
 <img src="../../assets/image (36).png" /><span class="imageTitle">Custom Dimensions Settings in Google Analytics</span>
@@ -502,10 +503,9 @@ There are some other important features associated with Google Analytics integra
 
 ### Named Tracker
 
-If you turn on the named tracker in RudderStack destination setting under the **Other Settings** option, Rudder will push the events to a GA tracker named as `rudderGATracker` instead of the default tracker.  
-For more information on creating trackers please follow:
+If you turn on the named tracker in RudderStack destination setting under the **Other Settings** option, Rudder will push the events to a GA tracker named as `rudderGATracker` instead of the default tracker.
 
-[https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers)
+For more information on creating trackers follow [this guide](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers).
 
 If it is turned off default tracker which is internally given the name `t0` will be set.
 
@@ -588,7 +588,6 @@ When you use `rudderanalytics.page(name, properties)` with the custom properties
 <div class="infoBlock">
 
 For more information on content grouping, please refer to this <a href="https://support.google.com/analytics/answer/2853423?hl=en#:~:text=Content%20Grouping%20lets%20you%20group,page%20title%2C%20or%20screen%20name">guide</a>.
-
 </div>
 
 ### Sample Rate
@@ -639,19 +638,19 @@ Please refer to the [Getting Started](https://rudderstack.com/docs/destinations/
 
 Yes. In the **Property Setup**, please change the website URL from HTTP \(default\) to HTTPS as shown:
 
-<img src="../../assets/image (49).png" /><span class="imageTitle">Changing the website URL from HTTP to HTTPS</span>
+<img src="../../assets/image (49).png" />
 
 ### Can I view real-time reports of my event data?
 
 Yes, you can. Please check the Real-time reports in Google Analytics. A sample dashboard is as shown:
 
-<img src="../../assets/faq2.png" /><span class="imageTitle">Real-time event data report</span>
+<img src="../../assets/faq2.png" />
 
 ### How do I view the already processed events for a particular day?
 
 Please adjust the Google Analytics' default reporting time frame from a month ago to **the required date**, in order to view the processed events of that day.
 
-<img src="../../assets/faq1.png" /><span class="imageTitle">Changing the website URL from HTTP to HTTPS</span>
+<img src="../../assets/faq1.png" />
 
 ### Why are my page views in Google Analytics different when sent from device mode as against the cloud mode?
 
