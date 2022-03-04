@@ -141,7 +141,7 @@ rudderanalytics.identify("user123", {
       });
 ```
 
-In the above snippet, the `userid` will be set to `abc123` for Google Analytics, but the name and email will not be shared with Google. Traits along with custom dimensions, metrics, and content groupings can be set in the SDK.
+In the above snippet, the `userid` will be set to `user123` for Google Analytics, but the name and email will not be shared with Google. Traits along with custom dimensions, metrics, and content groupings can be set in the SDK.
 
 For server-side, Google Analytics needs a customer identifier for each call to be made. RudderStack passes an internally generated ID as the `cid` parameter for Google Analytics to understand every unique user. Traits are not mapped to custom dimensions, metrics and content grouping yet from our side in server-side.
 
