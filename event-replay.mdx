@@ -1,0 +1,80 @@
+---
+# slug: "/docs/event-replay"
+title: "Event Replay"
+description: >-
+  Detailed technical description of RudderStack's events backup and replay feature.
+---
+
+# Event Replay 
+
+RudderStack's **event replay** feature lets you backup your event data and replay it in case of any failures. Some scenarios where you can leverage this functionality include:
+
+- Replay failed events from a particular date to a destination, maybe due to some misconfiguration.
+- Replay all the events for a particular source, from a particular date, to a new event stream or warehouse destination.
+
+<a href="https://www.rudderstack.com/enterprise-quote/">
+<img src="https://img.shields.io/static/v1?label=PLAN&message=ENTERPRISE&color=blueviolet&style=for-the-badge" class="githubBadge" alt="Event Replay" />
+</a>
+
+## Supported event types for replay
+
+RudderStack can store the following types of event data and replay it to the specified destinations:
+
+- Raw events captured through various sources. RudderStack stores these events in batches of 100,000 events.
+- Event payloads sent by RudderStack in case of delivery failures along with the errors(stored approximately every 30 seconds).
+
+## Data storage options
+
+RudderStack offers the following data storage options for the event replay functionality:
+
+- **No data retention**: RudderStack does not store any event data and hence it cannot be replayed.
+- **RudderStack S3 Storage** (default): Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis, i.e., RudderStack deletes the event data 30 days after it was stored.
+- **Choose your object storage**: Event data is stored in your object storage. RudderStack currently supports Amazon S3, Google Cloud Storage, Azure Blob Storage, and MinIO as the object storage options. 
+
+The following section provides more details on how to set up your object storage.
+
+### Object storage setup
+
+If you choose to set up your own object storage for backing up and replaying the events, follow the steps below depending on your cloud provider:
+
+<Tabs>
+  <TabList>
+   <Tab>Amazon S3</Tab>
+    <Tab>Google Cloud Storage</Tab>
+    <Tab>Azure Blob Storage</Tab>
+    <Tab>MinIO</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+    <ul>
+      <li>Create your <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html">object storage bucket</a>.</li>
+      <li>Configure the relevant <a href="https://www.rudderstack.com/docs/user-guides/administrators-guide/bucket-configuration-settings/#permissions-for-amazon-s3">permissions</a> for your bucket.</li>
+      <li><a href="mailto:%20support@rudderstack.com">Contact our customer success team</a> to share your S3 bucket name, <strong>AWS access key ID</strong>, and <strong>AWS secret access key</strong>.</li>      
+      </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li>Create your <a href="https://cloud.google.com/storage/docs/creating-buckets">object storage bucket</a>.</li>
+      <li>Configure the relevant <a href="https://rudderstack.com/docs/user-guides/administrators-guide/bucket-configuration-settings/#permissions-for-gcs">permissions</a> for your bucket.</li>
+      <li><a href="mailto:%20support@rudderstack.com">Contact our customer success team</a> to share your bucket name and the credentials JSON.</li>
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li>Login to the <a href="https://portal.azure.com/">Azure portal</a> and create a <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal">storage account</a>.</li>
+      <li>Click on <strong>Containers</strong> under <strong>Blob service</strong> and create a new container.</li>
+      <li><a href="mailto:%20support@rudderstack.com">Contact our customer success team</a> to share your account name, <strong>container</strong>, and <strong>access key</strong>.</li>
+    </ul>
+    </TabPanel>
+    <TabPanel>
+    <ul>
+      <li>Login to your MinIO service and create a bucket</a>.</li>
+      <li><a href="mailto:%20support@rudderstack.com">Contact our customer success team</a> to share your <strong>access key ID</strong>, and <strong>secret access key</strong>.</li>
+    </ul>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+
+## Contact us
+
+For more information on the event replay feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
