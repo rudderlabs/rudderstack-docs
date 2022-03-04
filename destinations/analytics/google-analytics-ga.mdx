@@ -52,13 +52,13 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 <img src="../../assets/screenshot-2020-09-14-at-5.56.58-pm.png" />
 
-Once the destination is enabled, events from RudderStack will automatically start flowing to Google Analytics. You can see the events in Google Analytics' real-time view.
+Once the destination is set up, events from RudderStack will automatically start flowing to Google Analytics. You can see the events in Google Analytics' real-time view.
 
 
 
 ## Page
 
-We send a `pageview` hit to Google Analytics whenever you make a **`page()`** call from our SDKs.
+RudderStack sends a `pageview` hit to Google Analytics whenever you make a **`page()`** call using the SDK.
 
 From our JavaScript libraries, we automatically collect the following page properties with the **`page()`** call just after the **`load()`** call:
 
@@ -135,9 +135,9 @@ Google Analytics' universal tracking allows you to set a user ID to the identifi
 A sample `identify` call is as shown:
 
 ```javascript
-rudderanalytics.identify("abc123", {
-        name: "Ruchira Moitra",
-        email: "ruchira@gmail.com"
+rudderanalytics.identify("user123", {
+        name: "Alex Keener",
+        email: "alex@example.com"
       });
 ```
 
@@ -455,13 +455,13 @@ ga(function (tracker) {
 });
 ```
 
-On the server-side, if `clientId` is passed manually by sending `anonymousId`. If the **Send User ID** setting is enabled in the destination settings along with `cid` , `uid` will be sent where `userId` will be passed.
+For server-side calls, if `clientId` is passed manually by sending `anonymousId` and if the **Send User ID** setting is enabled in the destination settings along with `cid`, then RudderStack passes the `userId` as the `uid`.
 
 ### How RudderStack takes the `clientId`
 
 RudderStack takes the `clientId` in the following **decreasing** order of priority:
 
-1. If `clientId` is passed in the `integrations` object while initializing the SDK, as shown:
+1. From the `integrations` object while initializing the SDK, as shown:
 
 ```javascript
 "integrations": {
@@ -472,8 +472,8 @@ RudderStack takes the `clientId` in the following **decreasing** order of priori
 },
 ```
 
-2. Sets `gaExternalId` as the `clientId` if it is specified in the payload.
-3. If `anonymousId` is present.
+2. From the `gaExternalId` by setting it as the `clientId`, if specified in the payload.
+3. From `anonymousId`, if present.
 
 <div class="infoBlock">
 
