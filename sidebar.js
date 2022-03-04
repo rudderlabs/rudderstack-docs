@@ -2230,6 +2230,14 @@ export const jsonData = [
                  ]
               },
               {
+               "key":"event-replay",
+               "title":"Event Replay",
+               "link":"/user-guides/administrators-guide/event-replay/",
+               "content":[
+                  
+               ]
+            },
+              {
                  "key":"bucket-configuration-settings",
                  "title":"Bucket Configuration Settings for Event Backups",
                  "link":"/user-guides/administrators-guide/bucket-configuration-settings/",
