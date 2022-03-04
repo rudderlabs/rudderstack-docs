@@ -14,7 +14,7 @@ RudderStack supports Google Analytics as a destination and makes requests to its
 
 <div class="successBlock">
 
- **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga">GitHub repository</a>.**
+ Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -41,7 +41,6 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 </div>
 
 2. Assign a name to the destination and click on **Next**.
-
 3. In the **Connection Settings**, **Tracking ID**  is a required field to set up the destination and start sending events. Other inputs as shown below can be set as per your preferences:
 
 <img src="../../assets/screenshot-2020-09-14-at-5.58.13-pm.png" />
@@ -56,7 +55,7 @@ Once the destination is set up, events from RudderStack will automatically start
 
 ## Page
 
-RudderStack sends a `pageview` hit to Google Analytics whenever you make a **`page()`** call using the SDK.
+RudderStack sends a `pageview` hit to Google Analytics whenever you make a `page()` call using the SDK.
 
 From our JavaScript libraries, we automatically collect the following page properties with the **`page()`** call just after the **`load()`** call:
 
@@ -169,7 +168,7 @@ rudderanalytics.track('Viewed History');
 
 ## Track
 
-RudderStack captures any user activity whenever a **`track()`** call is made.
+RudderStack captures any user activity whenever a `track()` call is made.
 
 A simple `track` call is as shown:
 
@@ -255,7 +254,7 @@ You can configure the checkout funnel in the Google Analytics admin interface as
 
 <img src="../../assets/image (21).png" />
 
-The checkout flow can be implemented by calling `track` with **`checkout step viewed`** and **`checkout step completed`** for the steps you have added in Google Analytics.
+The checkout flow can be implemented by calling `track` with `checkout step viewed` and `checkout step completed` for the steps you have added in Google Analytics.
 
 An example of this is as shown:
 
@@ -277,7 +276,6 @@ rudderanalytics.track('checkout step completed', {
 <div class="infoBlock">
 
 For more information, please check our guide on the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">RudderStack E-Commerce Events Specification</a>.
-
 </div>
 
 ### Measuring Promotions
