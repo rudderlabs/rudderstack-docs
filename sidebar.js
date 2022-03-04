@@ -662,9 +662,9 @@ export const jsonData = [
            "link":"/warehouse-actions/features/",
            "content":[
             {
-               "key":"models",
-               "title":"Models",
-               "link":"/warehouse-actions/features/models/",
+               "key":"setting-up-connections-using-models",
+               "title":"Setting up Connections Using Models",
+               "link":"/warehouse-actions/features/setting-up-connections-using-models/",
                "content":[
                   
                ]
