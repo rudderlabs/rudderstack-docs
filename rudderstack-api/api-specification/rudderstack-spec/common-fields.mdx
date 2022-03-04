@@ -1,13 +1,12 @@
 ---
 title: "Common Fields"
 description: >-
-  Detailed technical description of the common fields that define the core event
-  data structure.
+  Detailed technical description of the common fields that define the core event data structure.
 ---
 
 # Common Fields
 
-The common fields define the core event data structure in RudderStack. These fields also describe the user identity and other vital information about your app or website.
+The common fields define the core event data structure in RudderStack. These fields also contain vital information about the event and the source platform.
 
 <div class="successBlock">
 
@@ -16,18 +15,65 @@ Every RudderStack API call shares the same common fields.
 
 The following table lists all the common fields with their detailed description:
 
-| Name | Data Type | Presence | Description |
-| :--- | :--- | :--- | :--- |
-| `anonymousId` | `String` | Required | Unique identification for the user. This is the same as the `deviceId`. |
-| `channel` | `String` | Required | Identifies the source of the event. Permitted values are `mobile`, `web`, `server`. |
-| `context` | `Object` | Required | Contains all the additional user information. The RudderStack SDKs populate this information automatically. |
-| `event` | `String` | Optional | Captures the user action that you want to record. |
-| `integrations` | `Object` | Optional | You can specify the destinations for which you want to enable/disable sending events. |
-| `messageId` | `String` | Optional | Unique identification for the event. |
-| `properties` | `Object` | Optional | Passes all the relevant information associated with the event. |
-| `originalTimestamp` | `Timestamp` | Required | Records the actual time when the event occurred. |
-| `type` | `String` | Required | Captures the type of API. Values can be either `track`, `screen`, `identify`, `page`. |
-| `sentAt` | `Timestamp` | Required | Captures the time when the event was sent to RudderStack from the client. |
+| Name                | Data type| Presence | Description                                                                             |
+| :------------------ | :------- | :------- | :-------------------------------------------------------------------------------------- |
+| `anonymousId`       | String   | Required | Unique identification for the user. This is the same as the `deviceId`.                 |
+| `channel`           | String   | Required | Identifies the source of the event. Permitted values are `mobile`, `web`, `server`.     |
+| `context`           | Object   | Required | Contains all the additional user information. The RudderStack SDKs populate this information automatically. |
+| `event`             | String   | Optional | Captures the user action that you want to record.                                       |
+| `type`              | String   | Required | Captures the type of event. Values can be either `track`, `screen`, `identify`, `page`. |
+| `integrations`      | Object   | Optional | You can specify the destinations for which you want to enable/disable sending events.   |
+| `messageId`         | String   | Optional | Unique identification for the event.                                                    |
+| `properties`        | Object   | Optional | Passes all the relevant information associated with the event.                          |
+| `originalTimestamp` | DateTime | Required | Records the actual time when the event occurred. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.                                                                              |
+| `sentAt`            | DateTime | Required | Captures the time when the event was sent from the client to RudderStack. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.                                                         |
+
+<div class="infoBlock">
+  Upon receving the event, RudderStack also sets <code class="inline-code">receivedAt</code> - the timestamp when the event is ingested(received). You need not set this field explicitly when sending the events to RudderStack.
+</div>
+
+## Clock skew considerations
+
+RudderStack considers the time at its end to be absolute and assumes any difference on the client-side. Thus, the client clock skew is relative.
+
+<div class="infoBlock">
+  
+If not specified in the payload explicitly, RudderStack calculates <code class="inline-code">timestamp</code> based on <code class="inline-code">originalTimestamp</code> and <code class="inline-code">sentAt</code> to account for the client clock skew.
+</div>
+
+As mentioned in the above section:
+
+| Field               | Description                                                                                                                    |
+| :-------------------| :------------------------------------------------------------------------------------------------------------------------------|
+| `originalTimestamp` | Records the actual time when the event occurred at the source.                                                                 |
+| `sentAt`            | Captures the time when the event was sent from the client to RudderStack.                                                      |
+| `receivedAt`        | The timestamp when the event is received(ingested) by the RudderStack server.                                                  |
+| `timestamp`         | Calculated by RudderStack to account for the client clock skew, **IF** the user does not explicitly specify it in the payload. |
+
+<div class="infoBlock">
+
+<code class="inline-code">sentAt</code> &gt; <code class="inline-code">originalTimestamp</code> is <strong>always true</strong>. However, <code class="inline-code">timestamp</code> can be more or less than the <code class="inline-code">originalTimestamp</code>. Refer to the cases below for more details.
+</div>
+
+### Case 1: `originalTimestamp` < `receivedAt`
+
+The following table demonstrates an example of `originalTimestamp` < `receivedAt`(when the client-side time is less than the time registered by RudderStack):
+
+| originalTimestamp       | sentAt                  | receivedAt              | timestamp = receivedAt - (sentAt - originalTimestamp)    |
+| :-----------------------| :-----------------------| :-----------------------| :--------------------------------------------------------|
+| 2020-04-26 07:00:43.400 | 2020-04-26 07:00:45.124 | 2020-04-26 07:00:45.558 | 2020-04-26 07:00:44.834                                  |
+
+In this case, `timestamp` will be **greater** than `originalTimestamp`.
+
+### Case 2: `originalTimestamp` > `receivedAt`
+
+The following table demonstrates an example of `originalTimestamp` > `receivedAt`(when the client-side time is more than the time registered by RudderStack):
+
+| originalTimestamp       | sentAt                  | receivedAt              | timestamp = receivedAt - (sentAt - originalTimestamp)    |
+| :-----------------------| :-----------------------| :-----------------------| :--------------------------------------------------------|
+| 2020-04-26 07:00:45.558 | 2020-04-26 07:00:46.124 | 2020-04-26 07:00:43.400 | 2020-04-26 07:00:43.965                                  |
+
+In this case, `timestamp` will be **less** than `originalTimestamp`.
 
 ## Contextual fields
 
@@ -35,20 +81,20 @@ The contextual fields give additional useful context about a particular event.
 
 The following table lists all the contextual fields with their detailed description:
 
-| Name | Data Type | Description |
+| Name | Data type | Description |
 | :--- | :--- | :--- |
-| `app` | `Object` | Gives detailed information related to your app, like `build`, `name`, `namespace` and `version`. |
-| `device` | `Object` | Information about the device from which you are capturing the event. It contains `deviceId`, `manufacturer`, `model`, `name` and `type`. |
-| `library` | `Object` | Details about the RudderStack SDK you are using, like `name` and `version`. |
-| `locale` | `String` | Captures the language of the device. |
-| `ip` | `String` | The user's IP address. |
-| `network` | `Object` | Contains information about the reachability of the device. Also, it gives you the status of the device's `bluetooth`, `wifi`, `cellular` network and `carrier` name. |
-| `os` | `Object` | Captures the operating system details of the device you are tracking. |
-| `screen` | `Object` | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density`. |
-| `timezone` | `String` | Captures the timezone of the user you are tracking. |
-| `traits` | `Object` | Captures any additional relevant information about the user. RudderStack fills in the `anonymousId` for you. You can also associate the   [**traits**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#identify-traits) from the previously-made `identify` call from the SDK. |
-| `userAgent` | `String` | The user agent of the device that you are tracking. |
-| `campaign` | `Object` | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
+| `app` | Object | Gives detailed information related to your app, like `build`, `name`, `namespace` and `version`. |
+| `device` | Object | Information about the device from which you are capturing the event. It contains `deviceId`, `manufacturer`, `model`, `name` and `type`. |
+| `library` | Object | Details about the RudderStack SDK you are using, like `name` and `version`. |
+| `locale` | String | Captures the language of the device. |
+| `ip` | String | The user's IP address. |
+| `network` | Object | Contains information about the reachability of the device. Also, it gives you the status of the device's `bluetooth`, `wifi`, `cellular` network and `carrier` name. |
+| `os` | Object | Captures the operating system details of the device you are tracking. |
+| `screen` | Object | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density`. |
+| `timezone` | String | Captures the timezone of the user you are tracking. |
+| `traits` | Object | Captures any additional relevant information about the user. RudderStack fills in the `anonymousId` for you. You can also associate the   [**traits**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#identify-traits) from the previously-made `identify` call from the SDK. |
+| `userAgent` | String | The user agent of the device that you are tracking. |
+| `campaign` | Object | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
 
 <div class="warningBlock">
 

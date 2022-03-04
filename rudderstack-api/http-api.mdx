@@ -112,22 +112,6 @@ The `identify` call lets you associate a visiting user to their actions and reco
 
 ### 5.2. Usage
 
-<!--{% tabs %}
-{% tab title="CURL" %}
-```bash
-curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/identify \
--d @identify.json \
---header "Content-Type: application/json" 
-```
-{% endtab %}
-
-{% tab title="HTTPie" %}
-```bash
-http -a <source_write_key>: <DATA_PLANE_URL>/v1/identify < identify.json
-```
-{% endtab %}
-{% endtabs %}-->
-
 <Tabs>
   <TabList>
     <Tab>CURL</Tab>
@@ -205,22 +189,6 @@ The `track` call lets you record the customer events, i.e. the actions that they
 ```
 
 ### 6.2. Usage
-
-<!--{% tabs %}
-{% tab title="CURL" %}
-```bash
-curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/track \
--d @track.json \
---header "Content-Type: application/json" 
-```
-{% endtab %}
-
-{% tab title="HTTPie" %}
-```bash
-http -a <source_write_key>: <DATA_PLANE_URL>/v1/track < track.json
-```
-{% endtab %}
-{% endtabs %}-->
 
 <Tabs>
   <TabList>
@@ -300,22 +268,6 @@ The `page` call lets you record your website's page views with any additional re
 ```
 
 ### 7.2. Usage
-
-<!--{% tabs %}
-{% tab title="CURL" %}
-```bash
-curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/page \
--d @page.json \
---header "Content-Type: application/json" 
-```
-{% endtab %}
-
-{% tab title="HTTPie" %}
-```bash
-http -a <your_write_key>: <DATA_PLANE_URL>/v1/page < page.json
-```
-{% endtab %}
-{% endtabs %}-->
 
 <Tabs>
   <TabList>
@@ -400,22 +352,6 @@ The `screen` call is the mobile equivalent of the `page` call.
 
 ### 8.2. Usage
 
-<!--{% tabs %}
-{% tab title="CURL" %}
-```bash
-curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/screen \
--d @screen.json \
---header "Content-Type: application/json" 
-```
-{% endtab %}
-
-{% tab title="HTTPie" %}
-```bash
-http -a <source_write_key>: <DATA_PLANE_URL>/v1/screen < screen.json
-```
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>CURL</Tab>
@@ -497,22 +433,6 @@ The `group` call lets you link an identified user with a group such as a company
 ```
 
 ### 9.2. Usage
-
-<!--{% tabs %}
-{% tab title="CURL" %}
-```bash
-curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/group \
--d @group.json \
---header "Content-Type: application/json" 
-```
-{% endtab %}
-
-{% tab title="HTTPie" %}
-```bash
-http -a <source_write_key>: <DATA_PLANE_URL>/v1/group < group.json
-```
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -606,22 +526,6 @@ The following destinations support the `alias` call:
 
 
 ### 10.2. Usage
-
-<!--{% tabs %}
-{% tab title="CURL" %}
-```bash
-curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/alias \
--d @alias.json \
---header "Content-Type: application/json" 
-```
-{% endtab %}
-
-{% tab title="HTTPie" %}
-```bash
-http -a <source_write_key>: <DATA_PLANE_URL>/v1/alias < alias.json
-```
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -791,22 +695,6 @@ As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch reque
 
 
 ### 11.2. Usage
-
-<!--{% tabs %}
-{% tab title="CURL" %}
-```bash
-curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/batch \
--d @batch.json \
---header "Content-Type: application/json" 
-```
-{% endtab %}
-
-{% tab title="HTTPie" %}
-```bash
-http -a <source_write_key>: <DATA_PLANE_URL>/v1/batch < batch.json
-```
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
