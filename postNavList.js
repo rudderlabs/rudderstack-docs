@@ -731,6 +731,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"singular",
+    "title":"Singular",
+    "link":"/destinations/analytics/singular/",
+    "content":[]
+ },
+ {
     "key":"crm",
     "title":"CRM",
     "link":"/destinations/crm/",
