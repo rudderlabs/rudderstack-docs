@@ -943,6 +943,14 @@ export const jsonData = [
                  "content":[
                     
                  ]
+              },
+              {
+                 "key":"singular",
+                 "title":"Singular",
+                 "link":"/destinations/analytics/singular/",
+                 "content":[
+                    
+                 ]
               }
            ]
         },
