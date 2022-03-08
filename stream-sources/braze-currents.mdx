@@ -41,35 +41,35 @@ The following table lists all the Braze events supported by RudderStack:
 
 | **Event Name** | **Event Description** |
 | :-----------------| :----------------|
-| Application Uninstalled | When the user uninstalls the application. |
-| Campaign Converted | When the user performs the primary conversion events for a Campaign within its conversion window. |
-| Canvas Converted | When the user performs the primary conversion event for a Canvas within its conversion window. | 
-| Canvas Entered | When the user is entered into a Canvas. |
-| Campaign Control Group Entered | When the user enrolls in a Campaign control group. |
-| Email Sent | When an email is successfully sent to the user. | 
-| Email Delivered | When an email is successfully delivered to the user. |
-| Email Opened | When the user opens an email. |
-| Email Link Clicked | When the user clicks a link within an email. Note that the email click tracking feature must be enabled. |
-| Email Bounced | Triggered when Braze attempts to send an email but the receipients email server does not accept it. |
-| Email Soft Bounced | When Braze attempts to send an email but the recepient's email server bounces it temporarily because of reasons such as full inbox, email server down, etc. |
-| Email Marked As Spam | When the user marks an email as spam. |
-| Email Unsubscribed | When the user clicks on the unsubscribe link within an email. | 
-| Subscription Group State Changed | When the user's subscription group status changes to `Subscribed` or `Unsubscribed`. |
-| Push Notification Sent | When a push notification is successfully sent to the user. | 
-| Push Notification Tapped | When a user taps on a push notification. | 
-| iOS Foreground Push Opened | When the user receives an iOS push notificaiton while the app is open. | 
-| In-App Message Viewed | When the user views an in-app message. | 
-| News Feed Viewed | When the user views the Braze News Feed. |
-| News Feed Card Viewed | When the user views a Card within the Braze News Feed. | 
-| News Feed Card Clicked | When the user taps or clicks on Braze News Feed Card. | 
-| Webhook Sent | When a webhook message is sent. |
+| Application Uninstalled | The user uninstalled the application. |
+| Campaign Converted | The user performed the primary conversion events for a Campaign within its conversion window. |
+| Canvas Converted | The user performed the primary conversion event for a Canvas within its conversion window. | 
+| Canvas Entered | The user was entered into a Canvas. |
+| Campaign Control Group Entered | The user was enrolled in a Campaign control group. |
+| Email Sent | An email was successfully sent to the user. | 
+| Email Delivered | An email was successfully delivered to the user. |
+| Email Opened | The user opened an email. |
+| Email Link Clicked | The user clicked a link within an email. Note that the email click tracking feature must be enabled. |
+| Email Bounced | Triggered when Braze attempts to send an email but the receipient's email server does not accept it. |
+| Email Soft Bounced | Triggered when Braze attempts to send an email but the recepient's email server bounces it temporarily because of reasons like full inbox, email server down, etc. |
+| Email Marked As Spam | The user marked an email as spam. |
+| Email Unsubscribed | The user clicked on the unsubscribe link within an email. | 
+| Subscription Group State Changed | The user's subscription group status changed to `Subscribed` or `Unsubscribed`. |
+| Push Notification Sent | A push notification was successfully sent to the user. | 
+| Push Notification Tapped | The user tapped on a push notification. | 
+| iOS Foreground Push Opened | The user received an iOS push notification while the app was open. | 
+| In-App Message Viewed |The user viewed an in-app message. | 
+| News Feed Viewed | The user viewed the Braze News Feed. |
+| News Feed Card Viewed | The user viewed a card within the Braze News Feed. | 
+| News Feed Card Clicked | The user tapped or clicked on Braze News Feed card. | 
+| Webhook Sent | A webhook message was sent. |
 
 The following table lists the properties included in the events mentioned above:
 
-| **Property Name** | **Property Type** | **Description** |
-| :-----------------| :----------------|| :-----------------|
-| `app_id` | String | Refers to the API identifier of the app on which the user receives a message/notification or performs some action. |
-| `send_id` | String | Refers to the message ID if specified for a particular campaign, if applicable. |
+| Property name | Property type | Description |
+| :-----------------| :----------------| :-----------------|
+| `app_id` | String | Refers to the app's API identifier on which the user receives a message/notification or performs some action. |
+| `send_id` | String | Refers to the message ID specified for a particular campaign, if applicable. |
 | `campaign_id` | String | Refers to the API identifier of the campaign associated with the event, if applicable. |
 | `canvas_id` | String | Refers to the API identifier of the Canvas associated with the event, if applicable. |
 | `canvas_variation_id` | String | Refers to the API identifier of the Canvas Variation associated with the event, if applicable. |
