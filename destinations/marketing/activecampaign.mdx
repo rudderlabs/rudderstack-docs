@@ -67,11 +67,16 @@ rudderanalytics.identify(
   })
 ```
 
-In the above snippet, RudderStack captures relevant information about the user such as the `userId` as well as the associated traits such as `email`, `phone`, and the name (`firstName` and `lastName`) of that user.
+In the above snippet, RudderStack captures relevant information about the user like the `userId`, as well as the associated traits such as `email`, `phone`, and the name (`firstName` and `lastName`) of that user.
+
+<div class="warningBlock">
+
+The <code class="inline-code">email</code> trait is a mandatory trait for mapping a user to ActiveCampaign.
+</div>
 
 <div class="infoBlock">
-
-The <code class="inline-code">email</code> trait is a mandatory trait for mapping a user to ActiveCampaign. If a user already exists, the new values will be updated for that user.
+  
+  If a user already exists in ActiveCampaign, RudderStack will update the user with the new event values. Otherwise, a new user is created.
 </div>
 
 ### Custom tags
