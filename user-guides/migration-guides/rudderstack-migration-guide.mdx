@@ -223,8 +223,8 @@ import rudderClient from "@rudderstack/rudder-sdk-react-native"
 <span>
 
 ```typescript
-await rudderClient.setup(WRITE_KEY, {
-  dataPlaneUrl: DATA_PLANE_URL,
+await rudderClient.setup(<WRITE_KEY>, {
+  dataPlaneUrl: <DATA_PLANE_URL>,
   trackLifecycleEvents: true,
   recordScreenViews: true,
 })
