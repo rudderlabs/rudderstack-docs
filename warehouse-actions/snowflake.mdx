@@ -68,37 +68,37 @@ GRANT ALL PRIVILEGES ON SCHEMA "<YOUR_DATABASE>"."_RUDDERSTACK" TO ROLE RUDDER_R
 
 ### Step 3: Granting permissions on the warehouse, database, schema, and the table
 
-1. To enable the user `RUDDER` to perform all the operations allowed for the role `RUDDER_ROLE` (via the access privileges granted to it), run the following command:
+1. Enable the user `RUDDER` to perform all the operations allowed for the role `RUDDER_ROLE`(via the access privileges granted to it), as shown:
 
 ```sql
 GRANT ROLE RUDDER_ROLE TO USER RUDDER;
 ```
 
-2. To allow the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>`, run the following command. **Remember to replace `<YOUR_WAREHOUSE>` with the exact name of your Snowflake data warehouse**.
+2. Allow the role `RUDDER_ROLE` to look up the objects within the warehouse `<YOUR_WAREHOUSE>` by running the following command. **Remember to replace `<YOUR_WAREHOUSE>` with the exact name of your Snowflake data warehouse**.
 
 ```sql
 GRANT USAGE ON WAREHOUSE "<YOUR_WAREHOUSE>" TO ROLE RUDDER_ROLE;
 ```
 
-3. To allow the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`, run the following command. **Remember to replace `<YOUR_DATABASE>` with the exact name of your Snowflake database**.
+3. Next, allow the role `RUDDER_ROLE` to look up objects within the database `<YOUR_DATABASE>`. **Remember to replace `<YOUR_DATABASE>` with the exact name of your Snowflake database**.
 
 ```sql
 GRANT USAGE ON DATABASE "<YOUR_DATABASE>" TO ROLE RUDDER_ROLE;
 ```
 
-4. To allow the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`. **Remember to replace `<YOUR_DATABASE>` and `<YOUR_SCHEMA>` with the exact Snowflake database and the schema names**.
+4. To allow the role `RUDDER_ROLE` look up objects within the schema `<YOUR_SCHEMA>`, run the following command. **Remember to replace `<YOUR_DATABASE>` and `<YOUR_SCHEMA>` with the exact Snowflake database and the schema names**.
 
 ```sql
 GRANT USAGE ON SCHEMA "<YOUR_DATABASE>"."<YOUR_SCHEMA>" TO ROLE RUDDER_ROLE;
 ```
 
-5. To allow the role `RUDDER_ROLE` to read the data from the specified table `<YOUR_TABLE>`. **Remember to replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact Snowflake database, schema, and table names**.
+5. Allow the role `RUDDER_ROLE` to read the data from the specified table `<YOUR_TABLE>`, as shown below. **Remember to replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_TABLE>` with the exact Snowflake database, schema, and table names**.
 
 ```sql
 GRANT SELECT ON TABLE "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_TABLE>" TO ROLE  RUDDER_ROLE;
 ```
 
-6. The following command allows the role `RUDDER_ROLE` to read the data from the specified view `<YOUR_VIEW>`. Replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_VIEW>` with the exact database, schema, and view names in Snowflake.
+6. The following command allows the role `RUDDER_ROLE` to read the data from the specified view `<YOUR_VIEW>`. **Remember to replace `<YOUR_DATABASE>`, `<YOUR_SCHEMA>`, and `<YOUR_VIEW>` with the exact database, schema, and view names in Snowflake**.
 
 ```sql
 GRANT SELECT ON VIEW "<YOUR_DATABASE>"."<YOUR_SCHEMA>"."<YOUR_VIEW>" TO ROLE  RUDDER_ROLE;
