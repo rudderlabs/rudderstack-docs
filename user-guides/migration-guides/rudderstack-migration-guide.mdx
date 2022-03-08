@@ -196,6 +196,48 @@ You can use the rest of your code without any changes as the RudderStack API is 
 </li>
 </ul>
     </TabPanel>
+    <TabPanel>
+      <ul>
+      <li>Uninstall the Segment React Native SDK by running the following command:
+<span>
+
+```bash
+// npm
+npm install @rudderstack/rudder-sdk-react-native --save
+// yarn
+yarn add @rudderstack/rudder-sdk-react-native
+// navigate to iOS folder and run pod install
+pod install
+```
+</span>
+      </li>
+      <li>Import the Rudderstack React Native SDK as shown below:
+<span>
+
+```typescript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+```
+</span>
+	</li>
+	<li>Change the SDK initialization as shown in the following snippet. Replace <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained above.
+<span>
+
+```typescript
+await rudderClient.setup(WRITE_KEY, {
+  dataPlaneUrl: DATA_PLANE_URL,
+  trackLifecycleEvents: true,
+  recordScreenViews: true,
+})
+```
+</span>
+</li>
+<li>Update the references to the <code class="inline-code">analytics</code> keyword in your application code with <code class="inline-code">rudderClient</code>.</li>
+<div class="successBlock">
+
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
+</div>
+</ul>
+    </TabPanel>
   </TabPanels>
 </Tabs>
 
