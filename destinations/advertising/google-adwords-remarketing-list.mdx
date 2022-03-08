@@ -51,11 +51,6 @@ To successfully configure Google Adwords Remarketing Lists as a destination, fol
 For more information on obtaining the customer ID, refer to the <a href="https://support.google.com/google-ads/answer/1704344?hl=en">Google Ads Help Center</a> page.
 </div>
 
-<div class="warningBlock">
-
-Do not include the dash(-) between the numbers in your customer ID. For example, if your customer ID is <code class="inline-code">123-456-7890</code>, then enter <code class="inline-code">1234567890</code> in this field.
-</div>
-
 - **Subaccount**: Enable this setting if you are using a Google Ads subaccount.
 
 <div class="infoBlock">
@@ -97,9 +92,9 @@ RudderStack expects the user events to consist of all the schema fields listed h
 The Google Adwords Remarketing Lists destination supports only <code class="inline-code">audiencelist</code> calls. You can send up to 100000 user records in one call.
 </div>
 
-<div class="warningBlock">
+<div class="infoBlock">
 
-RudderStack currently supports only addition into a user list.
+RudderStack supports both additions and deletions to a user list.
 </div>
 
 The following code snippet shows a sample `audienceList` call:
@@ -109,23 +104,39 @@ The following code snippet shows a sample `audienceList` call:
   "userId": "user1",
   "anonymousId": "anon-id-new",
   "event": "event1",
-  "type": "audienceList",
+  "type": "audiencelist",
   "properties": {
     "listData": {
       "add": [{
           "email": "alex@example.com",
-          "phone": "1234567890"
+          "phone": "1234567890",
+          "firstName": "Alex",
+          "lastName": "Keener",
+          "country": "USA",
+          "postalCode": "90001"
         },
         {
           "email": "emily@example.com",
-          "phone": "1234567890"
-        },
-      ]
+          "phone": "8015550101",
+          "firstName": "Emily",
+          "lastName": "Wallace",
+          "country": "USA",
+          "postalCode": "90009"
+        }
+      ],
+      "remove": [{
+        "email": "john@example.com",
+        "phone": "8015550102",
+        "firstName": "John",
+        "lastName": "Doe",
+        "country": "USA",
+        "postalCode": "90002"
+      }]
     },
     "enablePartialFailure": true
   },
   "context": {
-    "ip": "1.2.3.40",
+    "ip": "14.5.67.21",
     "library": {
       "name": "http"
     }
