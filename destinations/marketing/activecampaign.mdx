@@ -53,7 +53,7 @@ To successfully configure ActiveCampaign as a destination, you will need to conf
 
 ## Identify
 
-The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as name, email address, etc.
+The `identify` call lets you associate a user with their actions and captures all the relevant traits about them. This information includes unique `userid` as well as any optional information such as name, email address, etc.
 
 A sample `identify` call is shown below:
 
@@ -118,7 +118,7 @@ rudderanalytics.identify(
 
 <div class="infoBlock">
 
-The <code class="inline-code">fieldInfo</code> property contains the value of the field information that you want to store for that contact. For using this feature, you have to create the fields from your ActiveCampaign dashboard \(For example - Interest, Country\) before passing the values for the given user.
+The <code class="inline-code">fieldInfo</code> trait contains the value of the custom field that you want to store for that contact. For using this feature, you have to create the custom fields from your ActiveCampaign dashboard \(For example - Interest, Country\) before passing the values for the given user.
 </div>
 
 <div class="infoBlock">
@@ -162,7 +162,7 @@ For associating a contact to any field, you need to create the list from ActiveC
 
 ## Page
 
-The `page` call allows you to record information whenever a user sees a web page, along with the associated optional properties of that page. This method must be called at least once per page load.
+The `page` call lets you record information whenever a user sees a web page, along with the associated optional properties of that page. This method must be called at least once per page load.
 
 When you call `page`, RudderStack will send that event to ActiveCampaign as a `site tracking event`. This will add your domain to whitelist for tracking purposes.
 
@@ -187,7 +187,7 @@ A <code class="inline-code">page</code> call will only work if <strong>Site Trac
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
+The `screen` method lets you record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
 
 A sample `screen` call looks like the following code snippet:
 
@@ -230,7 +230,7 @@ If you want to set a value for the <code class="inline-code">screen</code> and <
 
 ### Can I use special characters in my `screen` and `track` event names?
 
-No, your `screen` and `track` event names must contain only alphanumeric characters. ActiveCampaign prescribes that the `screen` and `track` event names must contain only alphabets and numbers, and does not allow any special characters to be used.
+No, your `screen` and `track` event names must contain only alphanumeric characters. ActiveCampaign prescribes that the `screen` and `track` event names must contain only alphabets and numbers, and does not allow the usage of any special characters.
 
 ## Contact us
 
