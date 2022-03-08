@@ -76,7 +76,7 @@ The <code class="inline-code">email</code> trait is a mandatory trait for mappin
 
 <div class="infoBlock">
   
-  If a user already exists in ActiveCampaign, RudderStack will update the user with the new event values. Otherwise, a new user is created.
+  If a user already exists in ActiveCampaign, RudderStack will update the user with the latest values.
 </div>
 
 ### Custom tags
@@ -96,7 +96,7 @@ rudderanalytics.identify(
 
 <div class="infoBlock">
 
-The <code class="inline-code">tags</code> property should contain an array of tags which you want to associate with the user. If any tag is already created in the destination previously, RudderStack will automatically skip the creation of that tag.
+The <code class="inline-code">tags</code> property should contain an array of tags which you want to associate with the user. If any tag is already created in ActiveCampaign previously, RudderStack will automatically skip creating that tag.
 </div>
 
 ### Custom fields
@@ -123,7 +123,7 @@ rudderanalytics.identify(
 
 <div class="infoBlock">
 
-The <code class="inline-code">fieldInfo</code> trait contains the value of the custom field that you want to store for that contact. For using this feature, you have to create the custom fields from your ActiveCampaign dashboard \(For example - Interest, Country\) before passing the values for the given user.
+The <code class="inline-code">fieldInfo</code> trait contains the value of the custom field that you want to store for that contact. For using this feature, you need to create the custom fields from your ActiveCampaign dashboard \(e.g. - Interest, Country\) before passing the values for the given user.
 </div>
 
 <div class="infoBlock">
