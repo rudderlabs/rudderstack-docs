@@ -101,9 +101,11 @@ The <code class="inline-code">tags</code> property should contain an array of ta
 
 ### Custom fields
 
-RudderStack also lets you update a contact’s custom fields in ActiveCampaign, with this integration.
+RudderStack also lets you update a contact’s custom fields in ActiveCampaign.
 
-To send custom fields to ActiveCampaign, you will need to first create the custom fields in ActiveCampaign for each custom field that you want to send. Then, when you call `identify` with the keys matching those traits, the custom fields for that contact will be automatically updated. You can use the `fieldInfo` trait to set values to the custom fields, as shown in the following snippet:
+To send custom fields to ActiveCampaign, you will need to first create the [custom fields](https://www.activecampaign.com/learn/guides/what-are-custom-fields) in ActiveCampaign for each custom field that you want to send. Then, when you call `identify` with the keys matching those traits, the custom fields for that contact will be automatically updated.
+
+You can use the `fieldInfo` trait to set values for the custom fields, as shown in the following snippet:
 
 ```javascript
 rudderanalytics.identify(
