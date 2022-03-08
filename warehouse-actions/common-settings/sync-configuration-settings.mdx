@@ -24,17 +24,11 @@ The settings are listed below:
 - **Schema**: Specify the warehouse schema from which you want RudderStack to import the data.
 - **Table**: Specify the table residing within the above schema.
 - **Choose user identifier**: Select the columns which RudderStack should use as the `user_id` and/or `anonymous_id`.
-
-<div class="warningBlock">
-
-Your table must include one of the following columns: <code class="inline-code">email</code>, <code class="inline-code">user_id</code>, or <code class="inline-code">anonymous_id</code>.
-</div>
-
 - Once you specify the table, you can select the sync mode that RudderStack uses to sync your data.
 
 <div class="infoBlock">
 
-RudderStack currently supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror mode</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/">Sync Modes</a> guide.
+RudderStack currently supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/">Sync Modes</a> guide.
 </div>
 
 - You will also be able to preview a snippet of your data, as shown:
@@ -56,6 +50,18 @@ Once you have finalized the configuration, click on **Save**.
 To update an existing configuration, go to the **Schema** tab of your configured source and click on the **Update** button on the top right, as shown:
 
 <img src="../../assets/warehouse-actions-sources/update-table-selection.png" />
+
+<div class="warningBlock">
+
+When updating an existing configuration, you can only change the existing JSON mappings. The <strong>Schema</strong>, <strong>Table</strong>, and the <strong>Choose user identifier</strong> fields are not editable. 
+
+Note that this is applicable for <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapping</a> as well, where <strong>Object</strong> along with the above-mentioned fields cannot be changed.
+</div>
+
+<div class="infoBlock">
+
+After updating the configuration, the next sync will be a full sync.
+</div>
 
 ## Contact us
 
