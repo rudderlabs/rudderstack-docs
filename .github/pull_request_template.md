@@ -1,10 +1,4 @@
----
-# slug: "Doc_Path"
-title: "PR template"
-description: RudderStack PR template.
----
-
-# Description of the change
+## Description of the change
 
 > Describe the changes you are proposing in this PR.
 
