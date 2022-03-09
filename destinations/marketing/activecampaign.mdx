@@ -202,7 +202,7 @@ A sample `screen` call looks like the following code snippet:
 [[RSClient sharedInstance] screen:@"Sample Screen Viewed" properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-In the above snippet, RudderStack captures information related to the screen being viewed, along with any additional info on that screen view event.
+In the above snippet, RudderStack captures information related to the screen being viewed, along with any additional information related to the event.
 
 <div class="warningBlock">
 
@@ -221,7 +221,7 @@ rudderanalytics.track("Product Purchased", {
 })
 ```
 
-In the above snippet, RudderStack captures the information related to the `Product Purchased` event, along with any additional information about that event - in this case the name of the product.
+In the above snippet, RudderStack captures the information related to the `Product Purchased` event, along with any additional information about that event - in this case the product `name`.
 
 <div class="warningBlock">
 
