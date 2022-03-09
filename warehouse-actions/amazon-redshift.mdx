@@ -5,77 +5,81 @@ description: Step-by-step guide to ingest your data from Amazon Redshift into Ru
 
 # Amazon Redshift
 
-[Amazon Redshift](https://aws.amazon.com/redshift/) is the world's fastest cloud data warehouse. It allows you to handle large analytical workloads with best-in-class performance, speed, and efficiency. With Redshift, you don't have to worry about the scale of your data or the cost of running queries on them.
+[Amazon Redshift](https://aws.amazon.com/redshift/) is one of the fastest cloud data warehouse services. It allows you to handle large analytical workloads with best-in-class performance, speed, and efficiency.
 
-This guide will help you configure Redshift as a source from which you can route event data to your desired destinations through RudderStack.
+RudderStack supports Amazon Redshift as a source from which you can ingest enriched user information and route it to your desired downstream destinations.
 
 ## Granting Permissions
 
-Run the SQL queries below in the **exact** order to grant the necessary permissions for the Warehouse Actions source:
+RudderStack requires certain permissions on your warehouse to access data from it successfully. 
 
-### Creating the user
+The below-mentioned SQL queries can be executed on the **Amazon Redshift Console** in the **exact** order to grant these necessary permissions:
 
-* The following command creates a new user `rudder` with password `<strong_unique_password>` in Redshift.
+### Step 1: Creating a new user
 
-```
+1. Create a new user `rudder` and specify the actual password in `<strong_unique_password>`:
+
+```sql
 CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
 ```
 
 #### Password considerations for Redshift
 
-The password you set in the above command must meet the following conditions:
+The password set in the above command must meet the following conditions:
 
-* It should be **8-64** characters in length
-* It must contain atleast one upper case, one lower case, and one number
+* It should be **8-64** characters in length.
+* It must contain atleast one upper case, one lower case, and one number.
 * It can contain any ASCII characters with the ASCII codes 33-126, with the exception of `'` \(single quotation mark\), `"` \(double quotation mark\), `\`, `/`, and `@`.
 
 <div class="infoBlock">
 
-For more information on the password rules, refer to the [**Amazon Redshift documentation**](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html#r_CREATE_USER-parameters).
+For more information on the password rules, refer to [**Amazon Redshift documentation**](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html#r_CREATE_USER-parameters).
 </div>
 
-### Creating the RudderStack schema and granting permissions
+### Step 2: Creating the RudderStack schema and granting permissions
 
-* The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
+1. Create a dedicated schema `_rudderstack` for storing the state of each data sync.
 
-```
+```sql
 CREATE SCHEMA "_rudderstack";
 ```
 
 <div class="warningBlock">
 
-The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed.
+The `_rudderstack` schema is meant to be used by RudderStack. Hence,  its name **should not** be changed.
 </div>
 
-* The following command allows the user `rudder` to have full access to the schema `_rudderstack`.
+2. Grant full access to the `rudder` user over the `_rudderstack` schema.
 
-```
+```sql
 GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
 ```
 
-* The following command allows the user `rudder` to have full access to all the objects that exist in the schema `_rudderstack`.
+3. Grant full access to the `rudder` user over all the `_rudderstack` schema objects.
 
-```
+```sql
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 ```
 
-### Granting permissions on your schema and table
+### Step 3: Granting permissions on your schema and table
 
-* The following command allows the user `rudder` to look up objects within the schema `<YOUR_SCHEMA>`. Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema.
+1. Grant access to the `rudder` user to look up the objects within your schema `<YOUR_SCHEMA>`. **Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema**. 
 
-```
+```sql
 GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
-* The following command allows the user `rudder` to read the data from specified table `<YOUR_TABLE>`. Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your Redshift schema and table.
+2. Grant access to the `rudder` user to read data from required table `<YOUR_TABLE>`. **Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your Redshift schema and table**.
 
-```
+```sql
 GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
 ```
 
-* The following **optional** command allows the user `rudder` to view and read the data from all the tables present in the schema `<YOUR_SCHEMA>`:
+#### Optional commands
 
-```
+* The following command grants access to the `rudder` user to view and read data from all the tables present in the schema `<YOUR_SCHEMA>`. **Replace `<YOUR_SCHEMA>` with the exact names of your Redshift schema**:
+
+```sql
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
@@ -84,9 +88,9 @@ GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 Run the above command only if you're okay with RudderStack being able to access the data in all the tables residing within your specified schema.
 </div>
 
-* The following **optional** command allows the user `rudder` to read the data from all the future tables in the schema `<YOUR_SCHEMA>`:
+* The following command grants access to the `rudder` user to read data from all the future tables in the schema `<YOUR_SCHEMA>`. **Replace `<YOUR_SCHEMA>` with the exact names of your Redshift schema**:
 
-```
+```sql
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
 ```
 
@@ -95,93 +99,75 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rud
 Run the above command only if you're okay with RudderStack being able to access the data in all the future tables residing within your specified schema.
 </div>
 
-## Setting Up the Source
+## Setting up Redshift as source
 
-To set up Amazon Redshift as a source in RudderStack, follow these steps:
+The below section explains the detailed steps to set up Redshift as a source in RudderStack.
 
-* Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-* From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
+### Step 1: Naming the source
 
-<!--![](../.gitbook/assets/image%20%2897%29%20%281%29%20%281%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%283%29%20%282%29.png)-->
+1. Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 
-<img src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (2).png" alt="Add Source" />
+2. Select **Sources** from the left panel. Then, click on **New source**, as shown:
 
-* Scroll down to the **Warehouse Sources** and select **Redshift**. Then, click on **Next**.
+<img src="../assets/warehouse-actions-sources/new-source.png" />
 
-<!--![](../.gitbook/assets/screen-shot-2021-01-06-at-4.03.08-pm.png)-->
+3. Click on the **Warehouse Actions** and select **Redshift**.
 
-<img src="../assets/screen-shot-2021-01-06-at-4.03.08-pm.png" alt="Redshift" />
+<img src="../assets/warehouse-actions-sources/warehouse-source-redshift.png" />
 
-### Setting Up the Connection
+4. Assign a name to the source and click on **Continue**.
 
-* Assign a name to your source, and click on **Create Credentials from Scratch**. Then, click on **Next**.
+<img src="../assets/warehouse-actions-sources/source-name.png" />
 
-<!--![](../.gitbook/assets/screen-shot-2021-01-06-at-3.54.12-pm.png)-->
+### Step 2: Configuring the source credentials
 
-<img src="../assets/screen-shot-2021-01-06-at-3.54.12-pm.png" alt="Create Credentials from Scratch" />
-
-<div class="successBlock">
-
-If you've already configured Redshift as a source before, your existing credentials will automatically appear under **Use Existing Credentials**.
-</div>
-
-* Next, enter the relevant connection details in the **Connection Credentials** as shown below:
-
-<!--![](../.gitbook/assets/screen-shot-2021-01-06-at-3.59.08-pm.png)-->
-
-<img src="../assets/screen-shot-2021-01-06-at-3.59.08-pm.png" alt="Connection Credentials" />
-
-* The required settings are:
-  * **Host -** The host name of your Redshift service.
-  * **Database -** The database name in your Redshift instance where the data is loaded.
-  * **User** - The username which has the required read/write access to the above database.
-  * **Password** - The password for the above user should be specified here.
-  * **Port** - The port number of your Redshift service should be specified here.
-
-### Specifying the Data to Import
-
-* Next, select the **Schema** and the **Table** from which you want RudderStack to import the data.
-
-<!--![](../.gitbook/assets/screen-shot-2021-01-06-at-3.58.07-pm.png)-->
-
-<img src="../assets/screen-shot-2021-01-06-at-3.58.07-pm.png" alt="Schema" />
-
-<div class="warningBlock">
-
-Your table must include one of the following columns - `email`, `user_id`, or `anonymous_id`.
-</div>
-
-* Once you specify the table containing the required columns, you will be able to preview a snippet of your data, as shown below:
-
-<!--![](../.gitbook/assets/screen-shot-2021-01-05-at-3.21.38-pm.png)-->
-
-<img src="../assets/screen-shot-2021-01-05-at-3.21.38-pm.png" alt="Preview a snippet" />
-
-* Here, you can select all or only a few specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**, as shown below. You can also preview the resultant JSON on the right. Once you've select the required table columns to import the data from, click on **Next**.
-
-<!--![](../.gitbook/assets/screen-shot-2021-01-05-at-3.22.09-pm.png)-->
-
-<img src="../assets/screen-shot-2021-01-05-at-3.22.09-pm.png" alt="JSON Trait Key" />
-
-### Setting the Data Update Schedule
-
-* Next, you will be required to set the **Run Frequency** to schedule the data import from your Redshift instance to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option. Then, click on **Next**.
-
-<!--![](../.gitbook/assets/screen-shot-2021-01-06-at-4.05.51-pm (1) (1) (1) (1) (2) (2) (3) (2) (1).png)-->
-
-<img src="../assets/screen-shot-2021-01-06-at-4.05.51-pm (1) (1) (1) (1) (2) (2) (3) (2) (1).png" alt="JSON Trait Key" />
-
-That's it! Redshift is now successfully configured as a source on your RudderStack dashboard.
-
-RudderStack will start importing data from your Redshift instance as per the specified frequency. You can further connect this source to your preferred destination by clicking on **Connect Destinations** or **Add Destinations**, as shown:
-
-<!--![](../.gitbook/assets/screen-shot-2021-01-06-at-4.06.07-pm.png)-->
-
-<img src="../assets/screen-shot-2021-01-06-at-4.06.07-pm.png" alt="Connect Destinations" />
+1. Choose the relevant option from **Table** or **Model** to use the source to sync either a table or a model.
 
 <div class="infoBlock">
 
-If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
+For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Warehouse Actions source, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+2. Click on **Create Credentials from Scratch** and enter the relevant details in the **Connection Credentials**:
+
+<img src="../assets/warehouse-actions-sources/redshift-connection-settings.png" />
+
+- **Host** - Host name of your Redshift service.
+- **Port** - Port number of your Redshift service.
+- **Database -** Database name in your Redshift instance where the data is loaded.
+- **User** - Username which has the required read/write access to the above database.
+- **Password** - Password for the above user.
+
+<div class="successBlock">
+
+  If you've configured Redshift as a source before, you can select the existing
+  credentials from <strong>Use existing credentials</strong>, as shown:
+
+<img src="../assets/warehouse-actions-sources/use-existing-creds.png" />
+
+</div>
+
+2. Click on **Continue** to verify your credentials. For more information, refer to [FAQ section](https://www.rudderstack.com/docs/warehouse-actions/clickhouse/#faq). Once verified, click on **Continue** again.
+
+### Step 3: Setting the data update schedule
+
+1. Specify the **Schedule Settings** to schedule the data import from your ClickHouse instance to RudderStack. 
+
+<div class="infoBlock">
+
+For more information on these settings, refer to <a href = "https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a>.
+</div>
+
+<img src="../assets/warehouse-actions-sources/schedule-settings.png" />
+
+2. Click on **Continue** to configure the source successfully.
+
+<div class="infoBlock">
+
+ You can further connect the source to your preferred destination by clicking on <strong>Add Destination</strong>, as shown:
+
+<img src="../assets/warehouse-actions-sources/add-destination-redshift.png" />
+
 </div>
 
 ## FAQ
@@ -189,8 +175,6 @@ If you have already configured a destination on the RudderStack platform, choose
 ### What do the three validations under Verifying Credentials imply?
 
 When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
-
-<!--![](../.gitbook/assets/validations.png)-->
 
 <img src="../assets/validations.png" alt="Verifying Credentials" />
 
@@ -211,6 +195,49 @@ If this option gives an error, it means that one or more fields specified in the
 If this option gives an error, verify if you have successfully created the `_rudderstack` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://rudderstack.com/docs/warehouse-actions/amazon-redshift#creating-the-rudderstack-schema-and-granting-permissions).
 </div>
 
-## Contact Us
+## FAQ
 
-If you come across any issues while configuring Amazon Redshift as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+### What do the three validations under Verifying Credentials imply?
+
+When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+
+<img src="../assets/warehouse-actions-sources/validations.png" alt="Validations" />
+
+These options are explained below:
+
+* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
+
+<div class="warningBlock">
+
+If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
+</div>
+
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/snowflake#granting-permissions) section. 
+
+<div class="warningBlock">
+
+If this option gives an error, verify if you have successfully created the <code class="inline-code">_RUDDERSTACK</code> schema and given RudderStack the required permissions to access it. For more information, refer to [this section](https://rudderstack.com/docs/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
+</div>
+
+<div class="infoBlock">
+
+If you are trying to reuse the credentials for Warehouse Actions sources from before September 2021, you may run into the following permissions error:
+
+<img src="../assets/warehouse-actions-sources/permissions-error.png" alt="Permissions error" />
+
+As mentioned above, you will need to update your Snowflake account permissions by following the commands in [this section](https://rudderstack.com/docs/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
+</div>
+
+### What is the difference between the Table and Model options when creating a Warehouse Actions source?
+
+When creating a new Warehouse Actions source, you are presented with the following two options from which RudderStack will sync the data:
+
+<img src="../assets/warehouse-actions-sources/table-model-options.png" />
+
+- When you choose **Table**, RudderStack imports all the data associated with the specified table during the sync.
+- When you choose **Model**, RudderStack imports the data by running the query specified in the connected model, during the sync.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
