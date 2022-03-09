@@ -8,32 +8,25 @@ description: Step-by-step guide to ingest your data from ClickHouse into RudderS
 
 [ClickHouse](https://clickhouse.tech/) is an open-source, column-oriented database management system mainly used for online analytical processing \(OLAP\). It lets you generate analytical reports that are updated in real-time using SQL queries. ClickHouse is highly scalable, fast, and built for high performance.
 
-RudderStack supports ClickHouse as a source from which you can ingest enriched user information and route it to your desired downstream destinations.
+RudderStack supports ClickHouse as a source from which you can ingest data and route it to your desired downstream destinations.
 
-## Setting up ClickHouse as source
+## Setting up ClickHouse as source in RudderStack
 
-The below section explains the detailed steps to set up ClickHouse as a source in RudderStack.
+To set up ClickHouse as a source in RudderStack, follow these steps:
 
-### Step 1: Naming the source
+### Naming the source
 
 1. Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
 
-2. Select **Sources** from the left panel. Then, click on **New source**, as shown:
+2. From the left navigation bar, go to **Source** > **New Source** > **Warehouse Actions**.  Then, select **ClickHouse**, as shown:
 
-<img src="../assets/warehouse-actions-sources/new-source.png" />
+<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select warehouse source in RudderStack" />
 
-3. Click on the **Warehouse Actions** and select **ClickHouse**.
+3. Assign a name to your source.
 
-<img src="../assets/warehouse-actions-sources/warehouse-source-clickhouse.png" />
+### Step 2: Configuring the connection credentials
 
-4. Assign a name to the source and click on **Continue**.
-
-<img src="../assets/warehouse-actions-sources/source-name-clickhouse.png" />
-
-
-### Step 2: Configuring the source credentials
-
-1. Click on **Create Credentials from Scratch** and enter the relevant details in the **Connection Credentials**:
+1. Enter the relevant settings in the **Connection Credentials** section as listed below:
 
 <img src="../assets/warehouse-actions-sources/clickhouse-connection-settings.png" />
 
@@ -51,69 +44,64 @@ The below section explains the detailed steps to set up ClickHouse as a source i
 
 <div class="successBlock">
 
-  If you've configured ClickHouse as a source before, you can select the existing
-  credentials from <strong>Use existing credentials</strong>, as shown:
-
-<img src="../assets/warehouse-actions-sources/use-existing-creds.png" />
-
+If you've configured ClickHouse as a source before, you can select the existing credentials from <strong>Use existing credentials</strong> option.
 </div>
 
-2. Click on **Continue** to verify your credentials. For more information, refer to [FAQ section](https://www.rudderstack.com/docs/warehouse-actions/clickhouse/#faq). Once verified, click on **Continue** again.
-
-### Step 3: Setting the data update schedule
-
-1. Specify the **Schedule Settings** to schedule the data import from your ClickHouse instance to RudderStack. 
+2. Click on **Continue** to verify your credentials. RudderStack will then verify and validate your credentials. 
 
 <div class="infoBlock">
 
-For more information on these settings, refer to <a href = "https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a>.
+For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section. 
 </div>
 
-<img src="../assets/warehouse-actions-sources/schedule-settings.png" />
+3. Once verified, click on **Continue** to proceed.
 
-2. Click on **Continue** to configure the source successfully.
+### Schedule settings
+
+1. Specify the **Schedule Settings** to schedule the data syncs from your ClickHouse instance.
+
+RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run.
 
 <div class="infoBlock">
 
- You can further connect the source to your preferred destination by clicking on <strong>Add Destination</strong>, as shown:
+For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+</div>
 
-<img src="../assets/warehouse-actions-sources/add-destination-clickhouse.png" />
+2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
 
+ClickHouse is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destinations** button, as shown:
+
+<img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
+
+## Specifying the data to import
+
+To connect a destination to your Warehouse Actions source, you can select either of the below-mentioned options:
+
+* **Use Existing Destination** - Redirects you to the `Schema` tab within the source settings where you can configure a model
+* **Create New Destination** - Redirects you to the configuration settings of the destination before configuring a model
+
+Here, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature to map your warehouse columns to specific destination fields.
+
+<div class="infoBlock">
+
+Based on the option (Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
+
+<ul>
+<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
+<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
+</ul>
 </div>
 
 ## FAQ
 
-### What do the three validations under Verifying Credentials imply?
+### What is the difference between the Table and Model options when creating a Warehouse Actions source?
 
-When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+When creating a new Warehouse Actions source, you are presented with the following two options from which RudderStack will sync the data:
 
-<img src="../assets/warehouse-actions-sources/validations.png" alt="Validations" />
+<img src="../assets/warehouse-actions-sources/table-model-options.png" />
 
-These options are explained below:
-
-* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
-
-<div class="warningBlock">
-
-If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
-</div>
-
-* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/snowflake#granting-permissions) section. 
-
-<div class="warningBlock">
-
-If this option gives an error, verify if you have successfully created the <code class="inline-code">_RUDDERSTACK</code> schema and given RudderStack the required permissions to access it. For more information, refer to [this section](https://rudderstack.com/docs/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
-</div>
-
-<div class="infoBlock">
-
-If you are trying to reuse the credentials for Warehouse Actions sources from before September 2021, you may run into the following permissions error:
-
-<img src="../assets/warehouse-actions-sources/permissions-error.png" alt="Permissions error" />
-
-As mentioned above, you will need to update your Snowflake account permissions by following the commands in [this section](https://rudderstack.com/docs/warehouse-actions/snowflake#creating-the-rudderstack-schema-and-granting-permissions).
-</div>
+- When you choose **Table**, RudderStack imports all the data associated with the specified table during the sync.
+- When you choose **Model**, RudderStack imports the data by running the query specified in the connected model, during the sync.
 
 ## Contact Us
 
