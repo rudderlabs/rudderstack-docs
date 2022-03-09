@@ -4,47 +4,40 @@ title: "Importing Data using Models"
 description: Detailed technical description on importing data using RudderStack’s Models feature.
 ---
 
-# Setting up Connections Using Models
+# Importing Data using Models
 
-RudderStack's **Models** feature lets you define and run custom SQL queries on your warehouse data and send the results to your specified destinations. You can also define a schedule to sync the data to the destinations as required.
-
-<div class="infoBlock">
-
-Currently, this feature is supported for the following Warehouse Actions sources:
-<ul>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a></li> 
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a></li>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a> </li>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a></li>
-</ul>
-</div>
+RudderStack's **Models** feature lets you define and run custom SQL queries on your warehouse data and send the results to your specified destinations.
 
 <div class="infoBlock">
-You can create a model in the RudderStack dashboard and use it while creating a connection between a Warehouse Actions source and destination. For detailed steps on how to create a model, refer to the <a href="https://www.rudderstack.com/docs/connections/models/">Models</a> guide.
+
+You can create a model in the RudderStack dashboard and use it while connecting a Warehouse Actions source to a destination. For detailed steps on how to create a model, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/models/">Models</a> guide.
 </div>
 
-Once a model is created, you can use it to send the data from a warehouse source to a specified destination.
-
-When you add a destination to your Warehouse Actions source, you will either be redirected to:
-* `Schema` tab within the source settings if you select **Use Existing Destination** to configure a model.
+While adding a destination to your Warehouse Actions source, you will either be redirected to:
+* On selecting **Use Existing Destination**, 
+* The `Schema` tab within the source settings if you select **Use Existing Destination** to configure a model.
 * Or configuring the destination settings if you select **Create New Destination** to configure the destination settings. 
 
-Further, you will need to configure a model as shown below:
+
+You can select either of the below-mentioned options while adding a destination to your Warehouse Actions source:
+
+* **Use Existing Destination** which will redirect to the `Schema` tab within the source settings where you can configure a model.
+* **Create New Destination** which will redirect to the configuration settings of the destination before configuring a model.
+
+Next, you can configure a model by following these steps:
+
+1. Select the required model from the dropdown list.
 
 <img src="../../assets/warehouse-actions-sources/models-name-enter.png" />
-
-Select the required model from the dropdown list.
 
 <div class="infoBlock">
   
 The dropdown will only display the list of models corresponding to the Warehouse Actions source you have configured. For example, only the BigQuery models will be listed in the dropdown for a BigQuery warehouse source.
 </div>
 
+2. Select the [**Sync mode**](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/) and at least one user identifier (**user_id/anonymous_id**) from the dropdown list.
+
 <img src="../../assets/warehouse-actions-sources/models-settings-configure.png" />
-
-Select the [**Sync mode**](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/) and at least one user identifier (**user_id/anonymous_id**) from the dropdown list.
-
-<img src="../../assets/warehouse-actions-sources/configure-model.png" />
 
 You can also preview the data snippet which RudderStack will send to the destination. All the resulting columns from running the model's query are selected by default. However, you can choose to retain specific columns by searching and selecting them. You can then preview the resulting JSON on the right, as shown:
 
@@ -61,15 +54,15 @@ You can also preview the data snippet which RudderStack will send to the destina
 The JSON payload carries the <code class="inline-code">user_id</code> and <code class="inline-code">anonymous_id</code> from the columns selected in the <strong>Choose user identifier</strong> section. Moreover, the traits are used from the columns selected in the <strong>Column</strong> section.
 </div>
 
-<div class="infoBlock">
-You can use the <strong>Add Constant</strong> option to add a constant key and value pair which is always sent in the JSON payload.
-</div>
+## Add Constant
+
+You can also use the **Add Constant** option that lets you add a constant key-value pair which is always sent in the JSON payload, as shown:
 
 <img src="../../assets/warehouse-actions-sources/add-constant.png" />
 
-10. Click on **Continue** to successfully configure the model with the source and destination.
+Once you have finalized the configuration, click on **Save**.
 
-### Updating the columns selection  
+## Updating the columns selection  
 
 You can update the selection of columns from which RudderStack sends data to the specified destinations by following these steps:
 
