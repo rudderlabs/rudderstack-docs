@@ -21,7 +21,12 @@ Before configuring Singular as a destination in RudderStack, verify if the sourc
 
 <div class="infoBlock">
 
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+This destination supports sending events via only the Android and iOS device modes.
+</div>
+
+<div class="infoBlock">
+
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/" target="_blank">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Singular, follow these steps:
@@ -30,25 +35,33 @@ Once you have confirmed that the source platform supports sending events to Sing
 
 <div class="infoBlock">
 
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/" target="_blank">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
 2. Assign a name to your destination and click on **Next**.
 
 ### Connection settings
 
-To successfully configure Singular as a destination, you will need to configure the following settings:
+To successfully configure Singular as a destination, you need to configure the following settings:
 
 <img src="../../assets/event-stream-destinations/singular-connection-settings.png" alt="Singular connection settings" />
 
-- **API Key**: To obtain the API key, log into your Singular dashboard and navigate to **Settings** > **SDK Keys**.
-- **Secret**: To obtain your Singular secret, log into your Singular dashboard and navigate to **Settings** > **SDK Keys**. This is required for device-mode integrations with the RudderStack iOS and Android SDKs.
-- **Client-side Events Filtering**: RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via the device mode. For more information, refer to the [Client-side Event Filtering](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/) documentation.
-- **Use device mode to send events**: As this is a device mode-only destination, this setting is enabled by default.
+- **API Key**: Enter your Singular API key here. This is a mandatory field. 
+- **Secret**: Enter your Singular secret. This is a mandatory field and is required for the device mode integrations with the RudderStack iOS and Android SDKs.
+
+<div class="infoBlock">
+
+For more information on obtaining the Singular API key and secret, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+<div class="successBlock">
+
+When sending events via the device mode, RudderStack also lets you specify which events should be discarded or allowed to flow through. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/"  target="_blank">Client-side Event Filtering</a>.
+</div>
 
 ## Adding device mode integration
 
-To add Singular to your project, follow the steps below depending on your platform of integration.
+To add Singular to your application, follow the steps below depending on your platform of integration.
 
 <Tabs>
   <TabList>
@@ -57,7 +70,7 @@ To add Singular to your project, follow the steps below depending on your platfo
   </TabList>
     <TabPanels>
       <TabPanel>
-        To add Singular to your iOS project, follow these steps:
+        To add Singular to your iOS app, follow these steps:
 <ul>
 <li>In your <code class="inline-code">Podfile</code>, add the following dependencies:
 <span>
@@ -91,12 +104,12 @@ RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder bu
 
 <div class="infoBlock">
 
-For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037950591-iOS-SDK-Basic-Integration?navigation_side_bar=true">Singular iOS documentation</a>.
+For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037950591-iOS-SDK-Basic-Integration?navigation_side_bar=true" target="_blank">Singular iOS documentation</a>.
 </div>
 </ul>
       </TabPanel>
       <TabPanel>
-        To add Singular to your Android Project, follow these steps :
+        To add Singular to your Android app, follow these steps :
 <ul>
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: <code class="inline-code">app</code>) file, and add the following under the <code class="inline-code">dependencies</code> section :
 <span>
@@ -133,7 +146,7 @@ allprojects {
 ```
 </span>
 </li>
-<li>Add the following permissions - if not added already - to your <code class="inline-code">AndroidManifest.xml</code>:
+<li>Add the following permissions(if not present already) to your <code class="inline-code">AndroidManifest.xml</code>:
 <span>
 
 ```markup
@@ -161,7 +174,7 @@ val rudderClient = RudderClient.getInstance(
 
 <div class="infoBlock">
 
-For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration?navigation_side_bar=true">Singular Android documentation</a>.
+For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration?navigation_side_bar=true"  target="_blank">Singular Android documentation</a>.
 </div>
 </ul>
       </TabPanel>
@@ -170,12 +183,7 @@ For more information, refer to the <a href="https://support.singular.net/hc/en-u
 
 ## Implementing SKAdNetwork (SKAN) support
 
-<div class="infoBlock">
-
-For more details, refer to the <a href="https://support.singular.net/hc/en-us/articles/360047454611">iOS SDK: Adding SKAdNetwork Support</a> section of the Singular documentation.
-</div>
-
-To give Singular the control to your SKAdNetwork integration, you need to add the following code before the initialization of the iOS SDK:
+To give Singular the control to your SKAdNetwork integration, add the following code before the initialization of the iOS SDK:
 
 ```objectivec
 [RudderSingularIntegration setSKANOptions:YES
@@ -186,6 +194,11 @@ withWaitForTrackingAuthorizationWithTimeoutInterval:@0
     NSLog(@"SKAN handler %ld",conversionValue);
 }];
 ```
+
+<div class="infoBlock">
+
+For more details, refer to the <a href="https://support.singular.net/hc/en-us/articles/360047454611" target="_blank">iOS SDK: Adding SKAdNetwork Support</a> section of the Singular documentation.
+</div>
 
 ## Identify
 
@@ -285,6 +298,14 @@ RudderClient.getInstance()?.reset();
       </TabPanel>
     </TabPanels>
 </Tabs>
+
+## FAQ
+
+### Where can I find the Singular API key and secret?
+
+To obtain your Singular API key and secret, log into your Singular dashboard and navigate to **Settings** > **SDK Keys**, as shown:
+
+<img src="../../assets/event-stream-destinations/singular-api-key.png" alt="Singular API key" />
 
 ## Contact us
 
