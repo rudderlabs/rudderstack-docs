@@ -77,7 +77,7 @@ GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
 
 #### Optional commands
 
-* The following command grants access to the `rudder` user to view and read data from all the tables present in the schema `<YOUR_SCHEMA>`. **Replace `<YOUR_SCHEMA>` with the exact names of your Redshift schema**:
+* The following command grants access to the `rudder` user to view and read data from all the tables present in the schema `<YOUR_SCHEMA>`. **Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema**:
 
 ```sql
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
@@ -88,7 +88,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 Run the above command only if you're okay with RudderStack being able to access the data in all the tables residing within your specified schema.
 </div>
 
-* The following command grants access to the `rudder` user to read data from all the future tables in the schema `<YOUR_SCHEMA>`. **Replace `<YOUR_SCHEMA>` with the exact names of your Redshift schema**:
+* The following command grants access to the `rudder` user to read data from all the future tables in the schema `<YOUR_SCHEMA>`. **Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema**:
 
 ```sql
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
@@ -168,31 +168,6 @@ For more information on these settings, refer to <a href = "https://www.rudderst
 
 <img src="../assets/warehouse-actions-sources/add-destination-redshift.png" />
 
-</div>
-
-## FAQ
-
-### What do the three validations under Verifying Credentials imply?
-
-When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
-
-<img src="../assets/validations.png" alt="Verifying Credentials" />
-
-These options are explained below:
-
-* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
-
-<div class="warningBlock">
-
-If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
-</div>
-
-* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema that you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/amazon-redshift#creating-the-rudderstack-schema-and-granting-permissions) section. 
-
-<div class="warningBlock">
-
-If this option gives an error, verify if you have successfully created the `_rudderstack` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://rudderstack.com/docs/warehouse-actions/amazon-redshift#creating-the-rudderstack-schema-and-granting-permissions).
 </div>
 
 ## FAQ
