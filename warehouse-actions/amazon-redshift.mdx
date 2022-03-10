@@ -153,18 +153,34 @@ For more information on these validation steps, refer to the <a href="#faq">FAQ<
 
 1. Specify the **Schedule Settings** to schedule the data syncs from your Redsift instance.
 
-RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run.
-
 <div class="infoBlock">
 
-For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
 </div>
 
 2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
 
-Redshift is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destinations** button, as shown:
+Redshift is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
 
 <img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
+<div class="infoBlock">
+
+If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destination</strong> option which will take you to the `Schema` tab within the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the configuration settings of the destination.
+</div>
+
+## Specifying the data to import
+
+While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature to map the warehouse columns to your destination fields.
+
+<div class="infoBlock">
+
+Based on the option (Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
+
+<ul>
+<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
+<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
+</ul>
+</div>
 
 ## FAQ
 
