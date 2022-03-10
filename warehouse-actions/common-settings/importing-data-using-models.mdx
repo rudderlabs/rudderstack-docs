@@ -55,11 +55,23 @@ Alternatively, you can map the columns using the <a href="https://www.rudderstac
 The JSON payload carries the <code class="inline-code">user_id</code> and <code class="inline-code">anonymous_id</code> from the columns selected in the <strong>Choose user identifier</strong> section. Moreover, the traits are used from the columns selected in the <strong>Column</strong> section.
 </div>
 
+## Warehouse Actions Constants
+
+Constants give you the ability to add new fields to each event with a pre-defined value. The **key** of a Warehouse Actions constant has the same functionality as modifying an existing column, and is in the format \(**test.value, test.value\[0\]**\).
+
 ## Add Constant
 
 You can also use the **Add Constant** option that lets you add a constant key-value pair which is always sent in the JSON payload, as shown:
 
 <img src="../../assets/warehouse-actions-sources/add-constant.png" />
+
+The new constant appears in the table and also in the JSON preview inside the traits, as shown:
+
+<img src="../../assets/screenshot_2021-03-18_at_3.51.11_pm.png" />
+
+You can also use dot notation to define a Warehouse Actions constant, as shown below:
+
+<img src="../../assets/warehouse-actions-sources/dot-notation-constant.png" />
 
 Once you have finalized the configuration, click on **Save**.
 
