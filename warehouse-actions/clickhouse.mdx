@@ -24,7 +24,7 @@ To set up ClickHouse as a source in RudderStack, follow these steps:
 
 3. Assign a name to your source.
 
-### Step 2: Configuring the connection credentials
+### Configuring the connection credentials
 
 1. Enter the relevant settings in the **Connection Credentials** section as listed below:
 
@@ -35,11 +35,11 @@ To set up ClickHouse as a source in RudderStack, follow these steps:
 - **Database -** Database name in your ClickHouse instance where the data is loaded.
 - **User** - Username which has the required read/write access to the above database.
 - **Password** - Password for the above user.
-- **Secure** - Enabling this setting establishes a secure connection and displays the additional settings:
+- **Secure** - Enabling this setting establishes a secure connection and displays additional settings as mentioned below:
 
 <img src="../assets/warehouse-actions-sources/clickhouse-additional-settings.png" />
 
-  - **Skip Verify** - Skips certificate verification. If you are using self-signed certificates, set this field to `true`.
+  - **Skip Verify** - Skips certificate verification. Set this field to `true` if you are using self-signed certificates.
   - **CA certificate** -  Certificate contents of the certificate which needs to be verified while establishing a secure connection.
 
 <div class="successBlock">
@@ -60,10 +60,9 @@ For more information on these validation steps, refer to the <a href="#faq">FAQ<
 
 1. Specify the **Schedule Settings** to schedule the data syncs from your ClickHouse instance.
 
-RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run.
-
 <div class="infoBlock">
 
+RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run.
 For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
 </div>
 
@@ -73,14 +72,14 @@ ClickHouse is now successfully configured as a source in your RudderStack dashbo
 
 <img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
 
+<div class="infoBlock">
+
+If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destinations</strong> option which will take you to the `Schema` tab within the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the configuration settings of the destination.
+</div>
+
 ## Specifying the data to import
 
-To connect a destination to your Warehouse Actions source, you can select either of the below-mentioned options:
-
-* **Use Existing Destination** - Redirects you to the `Schema` tab within the source settings where you can configure a model
-* **Create New Destination** - Redirects you to the configuration settings of the destination before configuring a model
-
-Here, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature to map your warehouse columns to specific destination fields.
+While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature to map the warehouse columns to your destination fields.
 
 <div class="infoBlock">
 
