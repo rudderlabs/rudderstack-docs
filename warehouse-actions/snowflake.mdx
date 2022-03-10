@@ -14,7 +14,7 @@ RudderStack supports Snowflake as a source from which you can ingest data and ro
 
 RudderStack requires you to grant certain user permissions on your Snowflake warehouse to successfully access data from it.
 
-Run the queries listed in the following sections in the  **exact order** to grant the necessary permissions:
+Run the queries listed in the following sections in the  **exact order** to grant these permissions:
 
 <div class="warningBlock">
 
@@ -238,14 +238,14 @@ If this option gives an error, it means that one or more fields specified in the
 
 <div class="warningBlock">
 
-If this option gives an error, verify if you have successfully created the <code class="inline-code">_RUDDERSTACK</code> schema and given RudderStack the required permissions to access it. For more information, refer to the <a href="#step-2-creating-the-rudderstack-schema-and-granting-permissions-to-the-role">Creating the RudderStack schema and granting permissions to the role</a> section.
+If this option gives an error, verify if you have successfully created the <code class="inline-code">_RUDDERSTACK</code> schema and given RudderStack the required permissions to access it. For more information, refer to the <a href="#step-2-creating-the-rudderstack-schema-and-granting-permissions-to-the-role">Creating the RudderStack schema and granting permissions</a> section.
 </div>
 
 If you are trying to reuse the credentials for your Warehouse Actions sources set up before September 2021, you may run into the following permissions error:
 
 <img src="../assets/warehouse-actions-sources/permissions-error.png" alt="Permissions error" />
 
-As mentioned above, you will need to update your Snowflake account permissions by following the commands in [Creating the RudderStack schema and granting permissions to the role](##step-2-creating-the-rudderstack-schema-and-granting-permissions-to-the-role) section.
+As mentioned above, you will need to update your Snowflake account permissions by following the commands in [Creating the RudderStack schema and granting permissions to the role](#step-2-creating-the-rudderstack-schema-and-granting-permissions-to-the-role) section.
 
 ## Contact us
 
