@@ -255,6 +255,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"braze-currents",
+    "title":"Braze Currents",
+    "link":"/stream-sources/braze-currents/",
+    "content":[]
+ },
+ {
     "key":"appcenter",
     "title":"App Center",
     "link":"/stream-sources/appcenter/",
