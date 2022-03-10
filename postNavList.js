@@ -256,7 +256,7 @@ export const postNavList = [
  },
  {
     "key":"braze-currents",
-    "title":"Braze Currents",
+    "title":"Braze",
     "link":"/stream-sources/braze-currents/",
     "content":[]
  },
