@@ -326,7 +326,7 @@ export const jsonData = [
         },
         {
            "key":"braze-currents",
-           "title":"Braze Currents",
+           "title":"Braze",
            "link":"/stream-sources/braze-currents/",
            "content":[
               
