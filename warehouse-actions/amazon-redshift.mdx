@@ -10,11 +10,11 @@ description: Step-by-step guide to ingest your data from Amazon Redshift into Ru
 
 RudderStack supports Amazon Redshift as a source from which you can ingest data and route it to your desired downstream destinations.
 
-## Granting Permissions
+## Granting permissions
 
 RudderStack requires you to grant certain user permissions on your Amazon Redshift warehouse to successfully access data from it.
 
-Run the below-mentioned SQL queries on the **Amazon Redshift Console** in the **exact** order to grant these necessary permissions:
+Run the queries listed in the following sections on **Amazon Redshift Console** in the **exact** order to grant these permissions:
 
 ### Step 1: Creating a new user in Redshift
 
@@ -47,7 +47,7 @@ CREATE SCHEMA "_rudderstack";
 
 <div class="warningBlock">
 
-The `_rudderstack` schema is meant to be used by RudderStack. Hence,  its name **should not** be changed.
+The <code class="inline-code">_rudderstack</code> schema is used by RudderStack. Hence,  its name <strong>should not</strong> be changed.
 </div>
 
 2. Grant full access to the `rudder` user over the `_rudderstack` schema.
@@ -56,7 +56,7 @@ The `_rudderstack` schema is meant to be used by RudderStack. Hence,  its name *
 GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
 ```
 
-3. Grant full access to the `rudder` user over all the `_rudderstack` schema objects.
+3. Grant full access to the user `rudder` over all the `_rudderstack` schema objects.
 
 ```sql
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
@@ -64,13 +64,13 @@ GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
 
 ### Step 3: Granting permissions on your schema and table
 
-1. Grant access to the `rudder` user to look up the objects within your schema `<YOUR_SCHEMA>`.
+1. Grant access to the user `rudder` to look up the objects within your schema `<YOUR_SCHEMA>`.
 
 ```sql
 GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
 ```
 
-2. Grant access to the `rudder` user to read data from required table `<YOUR_TABLE>`.
+2. Grant access to the user `rudder` to read data from required table `<YOUR_TABLE>`.
 
 ```sql
 GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
@@ -80,7 +80,7 @@ GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
 
 #### Optional commands
 
-* The following command grants access to the `rudder` user to view and read data from all the tables present in the schema `<YOUR_SCHEMA>`.
+* The following command grants access to the user `rudder` to view and read data from **all** the tables present in the schema `<YOUR_SCHEMA>`:
 
 ```sql
 GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
@@ -91,7 +91,8 @@ GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
 Run the above command only if you're okay with RudderStack being able to access the data in all the tables residing within your specified schema.
 </div>
 
-* The following command grants access to the `rudder` user to read data from all the future tables in the schema `<YOUR_SCHEMA>`. 
+* The following command grants access to the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`:
+ 
 ```sql
 ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
 ```
@@ -103,17 +104,18 @@ Run the above command only if you're okay with RudderStack being able to access 
 
 **Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema.**
 
-## Setting up Redshift as source in RudderStack
+## Setting up the Redshift source in RudderStack
 
 To set up Redshift as a source in RudderStack, follow these steps:
 
 ### Naming the source
 
 1. Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-
 2. From the left navigation bar, go to **Source** > **New Source** > **Warehouse Actions**. Then, select **Redshift**, as shown:
 
 <img src="../assets/warehouse-actions-sources/select-source.png" alt="Select warehouse source in RudderStack" />
+
+3. Assign a name to the source.
 
 ### Configuring the connection credentials
 
@@ -136,8 +138,7 @@ For more information on the difference between the <strong>Table</strong> and <s
 
 <div class="successBlock">
 
-If you've configured Redshift as a source before, you can select the existing credentials from <strong>Use existing credentials</strong> option.
-
+If you've configured Redshift as a source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
 </div>
 
 3. Click on **Continue** to verify your credentials. RudderStack will then verify and validate your credentials. 
@@ -151,7 +152,7 @@ For more information on these validation steps, refer to the <a href="#faq">FAQ<
 
 ### Schedule settings
 
-1. Specify the **Schedule Settings** to schedule the data syncs from your Redsift instance.
+1. Specify the **Schedule Settings** to schedule the data syncs from your Redshift instance.
 
 <div class="infoBlock">
 
@@ -175,7 +176,7 @@ While connecting a destination to your Warehouse Actions source, you can use the
 
 <div class="infoBlock">
 
-Based on the option (Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
+Based on the option(Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
 
 <ul>
 <li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
@@ -201,11 +202,11 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/#creating-the-rudderstack-schema-and-granting-permissionss) section. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/#step-2-creating-the-rudderstack-schema-and-granting-permissionss) section. 
 
 <div class="warningBlock">
 
-If this option gives an error, verify if you have successfully created the <code class="inline-code">_RUDDERSTACK</code> schema and given RudderStack the required permissions to access it. For more information, refer to [this section](https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/#creating-the-rudderstack-schema-and-granting-permissions).
+If this option gives an error, verify if you have successfully created the <code class="inline-code">_RUDDERSTACK</code> schema and given RudderStack the required permissions to access it. For more information, refer to <a href="#step-2-creating-the-rudderstack-schema-and-granting-permissions">Creating the RudderStack schema and granting permissions</a> section.
 </div>
 
 ### What is the difference between the Table and Model options when creating a Warehouse Actions source?
