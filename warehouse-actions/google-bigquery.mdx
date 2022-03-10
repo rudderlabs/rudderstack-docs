@@ -24,7 +24,7 @@ Run the below-mentioned SQL queries on the **BigQuery Console** in the **exact**
 
 2. Fill in the details as shown:
 
-<img src="../assets/warehouse-actions-sources/image1.png" />
+<img src="../assets/image1.png" />
 
 3. Click on **ADD PERMISSIONS** and add the permissions as listed in the following image:
 
@@ -80,9 +80,9 @@ Note down the **Service account ID**. This ID is required while creating the Rud
 
 3. Select **JSON** and click on **CREATE**.
 
-<img src="../assets/warehouse-actions-sources/create-new-key.png" />
+<img src="../assets/create-new-key.png" />
 
-A JSON file will be downloaded on your system. This file is required while creating a BigQuery warehouse source in RudderStack, explained in the next section.
+A JSON file will be downloaded on your system. This file is required while creating a BigQuery warehouse source in RudderStack, explained further in this document.
 
 ### Creating the RudderStack schema and granting permissions
 
@@ -148,11 +148,9 @@ For more information on these validation steps, refer to the <a href="#faq">FAQ<
 
 1. Specify the **Schedule Settings** to schedule the data syncs from your Snowflake instance.
 
-RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run.
-
 <div class="infoBlock">
 
-For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
 </div>
 
 2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
@@ -161,14 +159,14 @@ BigQuery is now successfully configured as a source in your RudderStack dashboar
 
 <img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
 
+<div class="infoBlock">
+
+If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destination</strong> option which will take you to the `Schema` tab within the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the configuration settings of the destination.
+</div>
+
 ## Specifying the data to import
 
-To connect a destination to your Warehouse Actions source, you can select either of the below-mentioned options:
-
-* **Use Existing Destination** - Redirects you to the `Schema` tab within the source settings where you can configure a model
-* **Create New Destination** - Redirects you to the configuration settings of the destination before configuring a model
-
-Here, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature to map your warehouse columns to specific destination fields.
+While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature to map the warehouse columns to your destination fields.
 
 <div class="infoBlock">
 
@@ -179,7 +177,7 @@ Based on the option (Table/Model) you chose while setting up the Warehouse Actio
 <li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
 </ul>
 </div>
-
+     
 ## FAQ
 
 ### What is the difference between the Table and Model options when creating a Warehouse Actions source?
