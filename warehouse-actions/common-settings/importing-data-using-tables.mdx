@@ -1,21 +1,19 @@
 ---
-title: "Sync Configuration Settings"
+title: "Importing Data using Tables"
 description: >-
- Detailed technical description of the various data import configuration settings for the Warehouse Actions sources.
+ Detailed technical description on the various configuration settings to sync data from your warehouse tables.
 ---
 
-# Sync Configuration Settings
+# Importing Data using Tables
 
-This guide lists the settings required by RudderStack to import and sync the warehouse data to your specified destination.
+This guide lists the settings required to import and sync data from your warehouse table to the specified destination.
 
 <div class="infoBlock">
 
-This guide is applicable for Warehouse Actions sources configured using a <strong>warehouse table</strong>. For steps on setting up the Warehouse Actions source using a model, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/setting-up-connections-using-models/">Setting up Connections Using Models</a> guide.
+This guide is applicable for Warehouse Actions sources configured using the <strong>Table</strong> option. For more information on the data import settings for models, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/setting-up-connections-using-models/">Importing Data using Models</a> guide.
 </div>
 
 ## Data import settings
-
-Once you connect a destination to your Warehouse Actions source, you will automatically be redirected to the **Schema** tab within the source settings, as shown:
 
 <img src="../../assets/warehouse-actions-sources/schema-tab-options.png" alt="Schema tab options in RudderStack" />
 
@@ -23,19 +21,24 @@ The settings are listed below:
 
 - **Schema**: Specify the warehouse schema from which you want RudderStack to import the data.
 - **Table**: Specify the table residing within the above schema.
-- **Choose user identifier**: Select the columns which RudderStack should use as the `user_id` and/or `anonymous_id`.
-- Once you specify the table, you can select the sync mode that RudderStack uses to sync your data.
+- **Sync mode**: Select the sync mode that RudderStack uses to sync your data.
 
 <div class="infoBlock">
 
 RudderStack currently supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/">Sync Modes</a> guide.
 </div>
 
+- **Choose user identifier**: Choose atleast one user identifier from `user_id` and `anonymous_id` from the dropdown.
 - You will also be able to preview a snippet of your data, as shown:
 
 <img src="../../assets/warehouse-actions-sources/models-data-snippet.png" alt="Schema tab options in RudderStack" />
 
 - Here, you can select all or only specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**. You can also preview the resulting JSON on the right.
+
+<div class="infoBlock">
+
+You can also map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
+</div>
 
 ## Add Constant
 
@@ -53,9 +56,7 @@ To update an existing configuration, go to the **Schema** tab of your configured
 
 <div class="warningBlock">
 
-When updating an existing configuration, you can only change the existing JSON mappings. The <strong>Schema</strong>, <strong>Table</strong>, and the <strong>Choose user identifier</strong> fields are not editable. 
-
-Note that this is applicable for <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapping</a> as well, where <strong>Object</strong> along with the above-mentioned fields cannot be changed.
+When updating an existing configuration, you can only change the existing mappings. The <strong>Schema</strong>, <strong>Table</strong>, and the <strong>Choose user identifier</strong> fields are not editable. 
 </div>
 
 <div class="infoBlock">
