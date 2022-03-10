@@ -15,12 +15,12 @@ This guide is applicable for Warehouse Actions sources configured using the <str
 
 ## Data import settings
 
+The settings to import and sync data from your warehouse table are listed below:
+
 <img src="../../assets/warehouse-actions-sources/schema-tab-options.png" alt="Schema tab options in RudderStack" />
 
-The settings are listed below:
-
-- **Schema**: Specify the warehouse schema from which you want RudderStack to import the data.
-- **Table**: Specify the table residing within the above schema.
+- **Schema**: Specify your warehouse schema.
+- **Table**: Specify the table residing within the above schema from which you want RudderStack to import the data.
 - **Sync mode**: Select the sync mode that RudderStack uses to sync your data.
 
 <div class="infoBlock">
@@ -37,12 +37,12 @@ RudderStack currently supports two modes for syncing your data - <strong>Upsert<
 
 <div class="infoBlock">
 
-You can also map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
+Alternatively, you can map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
 </div>
 
 ## Add Constant
 
-You can also use the **Add Constant** option that lets you add a constant key-value pair which is always sent in the JSON payload, as shown:
+You can also use the **Add Constant** option to add a constant key-value pair which is always sent in the JSON payload, as shown:
 
 <img src="../../assets/warehouse-actions-sources/add-constant.png" />
 
@@ -50,14 +50,21 @@ Once you have finalized the configuration, click on **Save**.
 
 ## Updating an existing configuration
 
-To update an existing configuration, go to the **Schema** tab of your configured source and click on the **Update** button on the top right, as shown:
+To update an existing configuration, follow these steps:
+
+1. Go to the **Schema** tab of your configured source.
+2. Click on the **Update** button on the top right, as shown:
 
 <img src="../../assets/warehouse-actions-sources/update-table-selection.png" />
 
+3. Update your column selection.
+
 <div class="warningBlock">
 
-When updating an existing configuration, you can only change the existing mappings. The <strong>Schema</strong>, <strong>Table</strong>, and the <strong>Choose user identifier</strong> fields are not editable. 
+When updating the configuration, you can only change the existing mappings. The <strong>Schema</strong>, <strong>Table</strong>, <strong>Sync mode</strong>, and the <strong>User identifier</strong> fields are not editable.
 </div>
+
+4. Finally, click on the **Save** button.
 
 <div class="infoBlock">
 
