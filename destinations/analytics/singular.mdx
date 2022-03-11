@@ -21,11 +21,6 @@ Before configuring Singular as a destination in RudderStack, verify if the sourc
 
 <div class="infoBlock">
 
-This destination supports sending events via only the Android and iOS device modes.
-</div>
-
-<div class="infoBlock">
-
 To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/" target="_blank">RudderStack Connection Modes</a> guide.
 </div>
 
@@ -67,6 +62,8 @@ To add Singular to your application, follow the steps below depending on your pl
   <TabList>
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
+    <Tab>React Native</Tab>
+    <Tab>Cordova</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -95,9 +92,9 @@ pod 'Rudder-Singular', '1.0.0'
 
 ```objectivec
 RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
-[configBuilder withDataPlaneUrl:dataPlaneUrl];
+[configBuilder withDataPlaneUrl:<DATA_PLANE_URL>];
 [configBuilder withFactory:[RudderSingularFactory instance]];
-RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder build]];
+RSClient *rudderClient = [RSClient getInstance:<WRITE_KEY> config:[configBuilder build]];
 ```
 </span>
 </li>
@@ -162,9 +159,9 @@ allprojects {
 // initializing Rudder SDK
 val rudderClient = RudderClient.getInstance(
   this,
-  WRITE_KEY,
+  <WRITE_KEY>,
   RudderConfig.Builder()
-          .withDataPlaneUrl(DATA_PLANE_URL)
+          .withDataPlaneUrl(<DATA_PLANE_URL>)
           .withFactory(SingularIntegrationFactory.FACTORY)
           .build()
   )
@@ -175,6 +172,81 @@ val rudderClient = RudderClient.getInstance(
 <div class="infoBlock">
 
 For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration?navigation_side_bar=true"  target="_blank">Singular Android documentation</a>.
+</div>
+</ul>
+      </TabPanel>
+      <TabPanel>
+        To add Singular to your React Native app, follow these steps:
+<ul>
+<li>Add the RudderStack-Singular module to your app by running the following command:
+<span>
+
+```bash
+npm install @rudderstack/rudder-integration-singular-react-native
+// OR //
+yarn add @rudderstack/rudder-integration-singular-react-native
+```
+</span>
+</li>
+<li>Then, import the above module and add it to your SDK initialization, as shown:
+<span>
+
+```typescript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+import singular from "@rudderstack/rudder-integration-singular-react-native"
+const config = {
+	dataPlaneUrl: <DATA_PLANE_URL>,
+	trackAppLifecycleEvents: true,
+	withFactories: [singular],
+}
+rudderClient.setup(<WRITE_KEY>, config)
+```
+</span>
+</li>
+</ul>
+      </TabPanel>
+      <TabPanel>
+        To add Singular to your Cordova app, follow these steps:
+<ul>
+<li>Navigate to the root folder of your application and run the following command:
+<span>
+
+```bash
+cordova plugin add rudder-integration-singular-cordova
+```
+</span>
+</li>
+<li>Add the platforms you want to target for your app:
+<span>
+
+```bash
+cordova platform add ios
+cordova platform add android
+```
+</span>
+</li>
+<li>Run the following command to build the app for all the platforms:
+<span>
+
+```bash
+cordova build
+```
+</span>
+</li>
+<li>Finally, add the following code in the <code class="inline-code">onDeviceReady()</code> function of your app's home page to initialize the SDK, as shown:
+<span>
+
+```bash
+RudderClient.initialize(<WRITE_KEY>, {
+  dataPlaneUrl: <DATA_PLANE_URL>,
+  factories: [RudderSingularFactory]
+})
+```
+</span>
+</li>
+<div class="infoBlock">
+
+Make sure you use the <code class="inline-code">await</code> keyword with the <code class="inline-code">initialize</code> call.
 </div>
 </ul>
       </TabPanel>
@@ -251,7 +323,7 @@ RudderClient.getInstance()?.track("Order Completed",
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but exclusive to your mobile device.
+The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call for the web applications but exclusive to your mobile device.
 
 A sample `screen` call looks like the following code snippet:
 
