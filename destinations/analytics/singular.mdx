@@ -216,24 +216,7 @@ cordova plugin add rudder-integration-singular-cordova
 ```
 </span>
 </li>
-<li>Add the platforms you want to target for your app:
-<span>
-
-```bash
-cordova platform add ios
-cordova platform add android
-```
-</span>
-</li>
-<li>Run the following command to build the app for all the platforms:
-<span>
-
-```bash
-cordova build
-```
-</span>
-</li>
-<li>Finally, add the following code in the <code class="inline-code">onDeviceReady()</code> function of your app's home page to initialize the SDK, as shown:
+<li>Then, add the following code in the <code class="inline-code">onDeviceReady()</code> function of your app's home page to initialize the SDK, as shown:
 <span>
 
 ```bash
@@ -274,37 +257,80 @@ For more details, refer to the <a href="https://support.singular.net/hc/en-us/ar
 
 ## Identify
 
-For device mode destinations, the Singular SDK uses the `identify` method to map the RudderStack user ID to their custom user ID.
+For device mode destinations, the Singular SDK uses the [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) method to map the RudderStack user ID to their custom user ID. RudderStack uses Singular's [`setCustomUserId`](https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration#Optional_Setting_the_User_ID) method to forward the identified user ID to Singular.
 
-A sample `identify` call is shown below:
+A sample `identify` call for both the Android and iOS SDKs is shown below:
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient getInstance] identify:@"1hKOmRA4el9Zt1WSfVJIVo4GRlm"];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
 ```kotlin
-RudderClient.getInstance()?.identify("User123")
+RudderClient.getInstance()?.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm")
 ```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ## Track
 
-The `track` call lets you capture any user actions and the properties associated with them. Each user action is considered to be an event.
+The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture any user actions and the properties associated with them. Each user action is considered to be an event.
 
 ### Tracking custom events
 
 A custom `track` call lets you track custom events as they occur in your apps. RudderStack sends these calls to Singular where they are processed as custom post-install events and are made available in the relevant reports.
 
-A sample custom `track` call is shown in the following snippet:
+A sample custom `track` call for both the Android and iOS SDKs is shown below:
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+"[[RSClient getInstance] track:@""Product Reviewed"" properties:@{
+        @""product_id"" : @""345676543"",
+        @""review_id"" : @""123454387""
+    }];"
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
 ```kotlin
-RudderClient.getInstance()?.track("Order Completed",
+RudderClient.getInstance()?.track("Product Reviewed",
     RudderProperty()
-        .putValue("affiliation", "affiliation_1")
-        .putValue("delivery", "123")
-        .putValue("taxation", "456")
-        .putValue("order_id", "789")
+        .putValue("product_id", "345676543")
+        .putValue("review_id", "123454387")
 )
 ```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ### Tracking revenue
 
-Singular supports tracking revenue events. It receives revenue tracking whenever an event containing the `revenue` property is sent(including a zero value). Optionally, you can also pass the `currency` field as an ISO3 code. 
+Singular supports tracking revenue events. It receives revenue tracking whenever an event containing the `revenue` property is sent(including a zero value). Optionally, you can also pass the `currency` field as an [ISO code](https://www.iso.org/iso-4217-currency-codes.html). 
 
 <div class="infoBlock">
 
@@ -313,6 +339,26 @@ The default currency is set to <code class="inline-code">USD</code>.
 
 A sample `revenue` track call is shown below:
 
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient getInstance] track:@"Order Completed" properties:@{
+        @"revenue" : @1251,
+        @"currency" : @"INR"
+    }];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
 ```kotlin
 RudderClient.getInstance()?.track("Order Completed",
     RudderProperty()
@@ -320,29 +366,59 @@ RudderClient.getInstance()?.track("Order Completed",
         .putValue("currency", "INR")
 )
 ```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call for the web applications but exclusive to your mobile device.
+The [`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call for the web applications but exclusive to your mobile device.
 
-A sample `screen` call looks like the following code snippet:
+A sample `screen` call for both the Android and iOS SDKs is shown below:
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient sharedInstance] screen:@"Home" properties:@{
+    @"category" : @"launcher"
+}];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
 ```kotlin
-RudderClient.getInstance()?.screen("Sample Screen Name",
-            RudderProperty()
-                .putValue("prop_key","prop_value"));
+RudderClient.getInstance()?.screen("Home",
+    RudderProperty()
+        .putValue("category", "launcher")
+)
 ```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
-In the above snippet, RudderStack captures all the information related to the viewed screen, along with any additional info associated with that event.
+In the above snippet, RudderStack captures all the information related to the viewed screen, along with any additional info about the screen.
 
 <div class="infoBlock">
 
-RudderStack sends the <code class="inline-code">screen</code> to Singular as a custom event.
+RudderStack sends the <code class="inline-code">screen</code> event to Singular as a custom event.
 </div>
 
 ## Reset
 
-The `reset` method calls will release the identity of the current user and create a new anonymous session. It should be called when the users log out.
+The `reset` method resets the current user's identity and creates a new anonymous session. It should be called when the users log out.
+
+RudderStack calls Singular's [`unsetCustomUserId`](https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration#Optional_Setting_the_User_ID) method to reset a user's identity.
 
 A sample `reset` call for both the Android and iOS SDKs is shown below:
 
