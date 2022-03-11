@@ -10,7 +10,7 @@ This guide lists the settings required to import and sync data from your warehou
 
 <div class="infoBlock">
 
-This guide is applicable for Warehouse Actions sources configured using the <strong>Table</strong> option. For more information on the data import settings for models, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/setting-up-connections-using-models/">Importing Data using Models</a> guide.
+This guide is applicable for Warehouse Actions sources configured using the <strong>Table</strong> option. If you have configured your Warehouse Actions source using the <strong>Model</strong> option, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
 </div>
 
 ## Data import settings
@@ -40,11 +40,24 @@ RudderStack currently supports two modes for syncing your data - <strong>Upsert<
 Alternatively, you can map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
 </div>
 
+<div class="infoBlock">
+  
+The JSON payload carries the <code class="inline-code">user_id</code> and <code class="inline-code">anonymous_id</code> from the columns selected in the <strong>Choose user identifier</strong> section. Moreover, the traits are used from the columns selected in the <strong>Column</strong> section.
+</div>
+
 ## Add Constant
 
 You can also use the **Add Constant** option to add a constant key-value pair which is always sent in the JSON payload, as shown:
 
 <img src="../../assets/warehouse-actions-sources/add-constant.png" />
+
+The new constant will appear in the table and also in the JSON preview inside the traits, as shown:
+
+<img src="../../assets/warehouse-actions-sources/add-constant-in-json.png" />
+
+You can also use the dot notation to define a Warehouse Actions constant, as shown:
+
+<img src="../../assets/warehouse-actions-sources/dot-notation-constant.png" />
 
 Once you have finalized the configuration, click on **Save**.
 
