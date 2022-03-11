@@ -39,7 +39,7 @@ For more information on the password rules, refer to [**Amazon Redshift document
 
 ### Step 2: Creating the RudderStack schema and granting permissions
 
-1. Create a dedicated schema `_rudderstack` for storing the state of each data sync.
+1. Create a dedicated schema `_rudderstack`.
 
 ```sql
 CREATE SCHEMA "_rudderstack";
@@ -47,10 +47,10 @@ CREATE SCHEMA "_rudderstack";
 
 <div class="warningBlock">
 
-The <code class="inline-code">_rudderstack</code> schema is used by RudderStack. Hence,  its name <strong>should not</strong> be changed.
+The <code class="inline-code">_rudderstack</code> schema is used by RudderStack for storing the state of each data sync. Hence,  its name <strong>should not</strong> be changed.
 </div>
 
-2. Grant full access to the `rudder` user over the `_rudderstack` schema.
+2. Grant full access to schema `_rudderstack` for the user `rudder`.
 
 ```sql
 GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
@@ -119,7 +119,7 @@ To set up Redshift as a source in RudderStack, follow these steps:
 
 ### Configuring the connection credentials
 
-1. Choose the relevant option from **Table** or **Model** to use the source to sync either a table or a model.
+1. Choose the relevant option from **Table** or **Model** to use the source to sync data from either a warehouse table or a model.
 
 <div class="infoBlock">
 
