@@ -1,5 +1,5 @@
 ---
-# slug: "/docs/warehouse-actions/visual-data-mapper"
+# slug: "/docs/warehouse-actions/features/visual-data-mapper"
 title: "Visual Data Mapper"
 description: >-
  Detailed technical description of how to use the Visual Data Mapping feature
@@ -8,7 +8,7 @@ description: >-
 
 # Visual Data Mapper
 
-The **Visual Data Mapper** \(VDM\) offers an intuitive UI to easily map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination without any second-guessing.
+The **Visual Data Mapper** \(VDM\) offers an intuitive UI to map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination.
 
 <div class="infoBlock">
 
@@ -27,49 +27,37 @@ The **Visual Data Mapper** \(VDM\) offers an intuitive UI to easily map your war
 
 <div class="successBlock">
 
-To use this feature, you can use an existing <a href="https://rudderstack.com/docs/warehouse-actions/">warehouse source</a> and then connect it to a VDM-supported destination.
-</div>
-
-<div class="infoBlock">
-
-You can connect only one destination to a Warehouse Actions source. If you want to send data from a warehouse source to multiple destinations, we recommend creating a new warehouse source with the same settings for each destination.
+To use this feature, you can use a <a href="https://rudderstack.com/docs/warehouse-actions/">warehouse source</a> and then connect it to a VDM-supported destination.
 </div>
 
 ## Using the Visual Data Mapper
 
 To use the Visual Data Mapper, follow these steps:
 
-- Set up a [**Warehouse Actions**](https://rudderstack.com/docs/warehouse-actions/) source. Then, connect it to a destination.
+1. Set up a [Warehouse Actions](https://rudderstack.com/docs/warehouse-actions/) source. Then, connect it to a destination.
 
 <div class="infoBlock">
 
 Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-As mentioned above, RudderStack currently supports the visual data mapping feature for [**Customer.io**](https://rudderstack.com/docs/destinations/marketing/customer.io/), [**HubSpot**](https://rudderstack.com/docs/destinations/crm/hubspot/), [**Salesforce**](https://rudderstack.com/docs/destinations/crm/salesforce/), [**Mailchimp**](https://rudderstack.com/docs/destinations/marketing/mailchimp/), [**Iterable**](https://rudderstack.com/docs/destinations/marketing/iterable/), [**Braze**](https://rudderstack.com/docs/destinations/marketing/braze/), [**Intercom**](https://rudderstack.com/docs/destinations/business-messaging/intercom/), and [**Klaviyo**](https://rudderstack.com/docs/destinations/marketing/klaviyo/). 
-
-- Configure the required destination with the relevant settings and click on **Next**. You should then see the following screen:
+2. Configure the required destination with the relevant settings and click on **Next**. You should see the following screen:
   
-<img src="../../assets/vdm-1.png" />
+<img src="../../assets/warehouse-actions-sources/vdm-object.png" />
 
-<div class="successBlock">
+<div class="infoBlock">
 
-The Visual Data Mapper option is enabled for the supported destinations by default. 
+By default, Visual Data Mapper is enabled for the supported destinations. However, clicking on **Map with JSON** switches from Visual Data Mapper to JSON mapping so that you can configure the data via JSON.
 </div>
 
-<div class="warningBlock">
-
-Clicking on **Map with JSON** will cause the Visual Data Mapper to be disabled. You can then configure the data via JSON.
-</div>
-
-* Choose the source warehouse **Schema** and **Table** from where you want to sync the data.
+3. Choose the source warehouse **Schema** and **Table** from where you want to sync the data.
 
 <div class="successBlock">
 
 RudderStack automatically loads all the relevant warehouse schemas and tables. If you have added a new schema or table during this configuration process, click on <strong>Reload schemas and tables</strong> to get all the latest schemas and tables.
 </div>
 
-* Also, select the destination **Object** where you want to sync the data. An example in case of the [**HubSpot**](https://rudderstack.com/docs/destinations/crm/hubspot/) destination is as shown:
+4. Also, select the destination **Object** where you want to sync the data. An example in case of [HubSpot](https://rudderstack.com/docs/destinations/crm/hubspot/) destination is as shown:
 
 <img src="../../assets/vdm-2.png" />
 
