@@ -14,7 +14,7 @@ RudderStack supports Google BigQuery as a source from which you can ingest data 
 
 RudderStack requires you to grant certain user permissions on your Snowflake warehouse to successfully access data from it.
 
-Run the below-mentioned SQL queries on the **BigQuery Console** in the **exact** order to grant these necessary permissions:
+Perform the following steps in the **exact** order to grant these necessary permissions:
 
 ### Step 1: Creating a role and granting permissions
 
@@ -121,13 +121,17 @@ To set up BigQuery as a source in RudderStack, follow these steps:
 For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Warehouse Actions source, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
+<div class=“infoBlock”>
+If you have chosen the <strong>Model</strong> option, skip the next steps and refer to the <a href=“#schedule-settings”>Schedule settings</a> section directly.
+</div>
+
 2. Enter the relevant settings in the **Connection Credentials** section as listed below:
 
 <img src="../assets/warehouse-actions-sources/bigquery-connection-settings.png" />
 
 - **Credentials** - Enter the GCP Service Account credentials JSON.
-- **Project ID** - Enter the GCP Project ID where your BigQuery database is located.
-- **Service account** - Enter the service account ID.
+- **Project ID** - Enter the `project_id` from the GCP Service Account credentials JSON.
+- **Service account** - Enter the `client_email` from the GCP Service Account credentials JSON.
 
 <div class="successBlock">
 
@@ -155,7 +159,7 @@ RudderStack lets you schedule data syncs for your Warehouse Actions sources and 
 
 2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
 
-BigQuery is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destinations** button, as shown:
+BigQuery is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
 
 <img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
 
@@ -166,7 +170,7 @@ If you have already configured a destination in RudderStack, choose the <strong>
 
 ## Specifying the data to import
 
-While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature to map the warehouse columns to your destination fields.
+While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature.
 
 <div class="infoBlock">
 
