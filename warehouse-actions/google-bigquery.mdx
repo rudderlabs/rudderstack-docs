@@ -12,9 +12,9 @@ RudderStack supports Google BigQuery as a source from which you can ingest data 
 
 ## Granting permissions
 
-RudderStack requires you to grant certain user permissions on your Snowflake warehouse to successfully access data from it.
+RudderStack requires you to grant certain user permissions on your BigQuery warehouse to successfully access data from it.
 
-Perform the following steps in the **exact** order to grant these necessary permissions:
+Perform the following steps in the **exact** order to grant these permissions:
 
 ### Step 1: Creating a role and granting permissions
 
@@ -24,13 +24,9 @@ Perform the following steps in the **exact** order to grant these necessary perm
 
 2. Fill in the details as shown:
 
-<img src="../assets/image1.png" />
+<img src="../assets/warehouse-actions-sources/gcp-role-details.png" alt="GCP role details" />
 
-3. Click on **ADD PERMISSIONS** and add the permissions as listed in the following image:
-
-<img src="../assets/image3.png" />
-
-The permissions are as shown below:
+3. Click on **ADD PERMISSIONS** and add the following permissions:
 
 ```
 bigquery.datasets.get
@@ -46,37 +42,37 @@ bigquery.tables.updateData
 
 4. Finally, click on **CREATE**.
 
-### Creating a service account & attaching the role to it
+### Step 2: Creating a service account and attaching the role to it
 
 1. Go to [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts) and select the project which has the dataset or the table that you want to use.
 2. Click on **CREATE SERVICE ACCOUNT**.
 
-<img src="../assets/warehouse-actions-sources/GCP-service-account.png" />
+<img src="../assets/warehouse-actions-sources/gcp-create-service-account.png" alt="Create service account in GCP" />
 
 3. Fill in the **Service Account details** as shown below, and click on **CREATE AND CONTINUE**:
 
-<img src="../assets/warehouse-actions-sources/image2.png" />
+<img src="../assets/warehouse-actions-sources/gcp-service-account-details.png" />
 
 <div class="infoBlock">
 
-Note down the **Service account ID**. This ID is required while creating the RudderStack schema and granting the required permissions to it.
+Note down the <strong>Service account ID</strong>. This ID is required while creating the RudderStack schema and granting the required permissions to it.
 </div>
 
-4. Fill in the Role details as shown below, and click on **CONTINUE**:
+4. Fill in the **Role** details as shown below, and click on **CONTINUE**:
 
-<img src="../assets/warehouse-actions-sources/image4.png" />
+<img src="../assets/warehouse-actions-sources/gcp-service-account-role-details.png" alt="Service account role details" />
 
 5. Click on **DONE** to move to the list of service accounts.
 
-### Creating and downloading the JSON key
+### Step 3: Creating and downloading the JSON key
 
 1. Click on the three dots icon under **Actions** in the service account that you just created and select **Manage keys**, as shown:
 
-<img src="../assets/warehouse-actions-sources/manage-keys.png" />
+<img src="../assets/warehouse-actions-sources/manage-keys.png" alt="Managing keys in GCP" />
 
 2. Click on **ADD KEY**, followed by **Create new key**, as shown:
 
-<img src="https://user-images.githubusercontent.com/59817155/133751255-356dab76-a795-4428-8e72-9c46b0031d79.png" />
+<img src="../assets/warehouse-actions-sources/gcp-add-key.png" alt="GCP Adding a new key" />
 
 3. Select **JSON** and click on **CREATE**.
 
@@ -84,22 +80,27 @@ Note down the **Service account ID**. This ID is required while creating the Rud
 
 A JSON file will be downloaded on your system. This file is required while creating a BigQuery warehouse source in RudderStack, explained further in this document.
 
-### Creating the RudderStack schema and granting permissions
+### Step 4: Creating the RudderStack schema and granting permissions
 
-1. Go to the [BigQuery SQL workspace](https://console.cloud.google.com/bigquery) and run the following command to create a dedicated schema `rudderstack_` for storing the state of each data sync.
+1. From your [BigQuery SQL workspace](https://console.cloud.google.com/bigquery), run the following command to create a dedicated schema `rudderstack_`.
 
 ```sql
 create schema rudderstack_;
 ```
 
-2. Grant full access to the `rudderstack_` \(used by RudderStack\) schema over the `Rudderstack` service account.
+<div class="warningBlock">
+
+The <code class="inline-code">rudderstack_</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
+</div>
+
+2. Grant full access to the `rudderstack_` schema for the RudderStack service account you created above. Replace `<SERVICE_ACCOUNT_ID>` with the service account ID you specified in [Step 2: Creating a service account and attaching role to it](#step-2-creating-a-service-account-and-attaching-the-role-to-it).
 
 ```sql
 GRANT `roles/bigquery.dataOwner`
      ON SCHEMA rudderstack_
      TO "serviceAccount:<SERVICE_ACCOUNT_ID>";
 ```
-## Setting up BigQuery as source in RudderStack
+## Setting up the BigQuery source in RudderStack
 
 To set up BigQuery as a source in RudderStack, follow these steps:
 
@@ -121,8 +122,8 @@ To set up BigQuery as a source in RudderStack, follow these steps:
 For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Warehouse Actions source, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-<div class=“infoBlock”>
-If you have chosen the <strong>Model</strong> option, skip the next steps and refer to the <a href=“#schedule-settings”>Schedule settings</a> section directly.
+<div class="infoBlock">
+If you have chosen the <strong>Model</strong> option, skip the next steps and refer to the <a href="#schedule-settings">Schedule settings</a> section directly.
 </div>
 
 2. Enter the relevant settings in the **Connection Credentials** section as listed below:
@@ -135,8 +136,7 @@ If you have chosen the <strong>Model</strong> option, skip the next steps and re
 
 <div class="successBlock">
 
-If you've configured BigQuery as a source before, you can select the existing credentials from <strong>Use existing credentials</strong> option.
-
+If you've configured BigQuery as a source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
 </div>
 
 3. Click on **Continue** to verify your credentials. RudderStack will then verify and validate your credentials. 
@@ -150,7 +150,7 @@ For more information on these validation steps, refer to the <a href="#faq">FAQ<
 
 ### Schedule settings
 
-1. Specify the **Schedule Settings** to schedule the data syncs from your Snowflake instance.
+1. Specify the **Schedule Settings** to schedule the data syncs from your BigQuery instance.
 
 <div class="infoBlock">
 
@@ -163,7 +163,7 @@ BigQuery is now successfully configured as a source in your RudderStack dashboar
 
 <img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
 
-<div class=“infoBlock”>
+<div class="infoBlock">
      
 If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destination</strong> option which will take you to the <strong>Schema</strong> tab in the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.
 </div>
@@ -174,7 +174,7 @@ While connecting a destination to your Warehouse Actions source, you can use the
 
 <div class="infoBlock">
 
-Based on the option (Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
+Based on the option(Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
 
 <ul>
 <li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
@@ -209,13 +209,12 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/google-bigquery#granting-permissions) section. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**Creating the RudderStack schema and granting permissions**](#step-4-creating-the-rudderstack-schema-and-granting-permissions) section. 
 
 <div class="warningBlock">
 
-If this option gives an error, verify if you have successfully created the `rudderstack_` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://rudderstack.com/docs/warehouse-actions/google-bigquery#creating-the-rudderstack-schema-and-granting-permissions).
+If this option gives an error, verify if you have successfully created the <code class="inline-code">rudderstack_</code> schema and given RudderStack the required permissions to access it. For more information, refer to <a href="#step-4-creating-the-rudderstack-schema-and-granting-permissions">Creating the RudderStack schema and granting permissions</a> section.
 </div>
-
 
 ## Contact us
 
