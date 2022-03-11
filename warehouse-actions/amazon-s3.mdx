@@ -75,14 +75,14 @@ If you have already configured a destination in RudderStack, choose the <strong>
 
 This section lists the bucket configuration settings needed for RudderStack to import the data and sync it to the connected destination. 
 
-- **S3 Bucket Name**:  Enter the name of the S3 bucket from which you want RudderStack to import the data.
-- **Prefix**: Enter the prefix associated with the above S3 bucket.
+- **S3 Bucket Name**:  Enter the name of the S3 bucket.
+- **Prefix**:  Prefix refers to the path within your S3 bucket from where RudderStack will import the data. For example, if **Prefix** is set to `RUDDER`, then RudderStack will import the data stored in the location `<your_s3_bucket>/RUDDER`.
 
 <img src="../assets/warehouse-actions-sources/s3-bucket-settings" alt="Bucket configuration settings" />
 
 <div class="warningBlock">
 
-Your S3 bucket should consist of Apache Parquet files only. Currently, Rudderstack can extract only Parquet files.
+Your S3 bucket(with the prefix, if specified above) should consist of Apache Parquet files only. Currently, Rudderstack can extract only Parquet files.
 </div>
 
 - **Choose user identifier**: Choose atleast one user identifier from `user_id` and `anonymous_id` from the dropdown.
