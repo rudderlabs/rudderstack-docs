@@ -15,19 +15,18 @@ You can create a model in the RudderStack dashboard and use it while connecting 
 
 <div class="infoBlock">
   
-This guide is applicable for Warehouse Actions sources configured using the Models option. If you have configured your Warehouse Actions source using the Tables option, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/importing-data-using-tables/">Importing Data using Tables</a> guide.
+  This guide is applicable for Warehouse Actions sources configured using the <strong>Model</strong> option. If you have configured your Warehouse Actions source using the <strong>Table</strong> option, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a> guide.
 </div>
 
-Next, follow these steps to specify the data which needs to be imported using a model:
+The settings to import and sync data from your model are listed below:
 
-1. While configuring the destination, select the required model from the dropdown list.
+1. Select the required model from the dropdown list.
 
 <img src="../../assets/warehouse-actions-sources/models-name-enter.png" />
 
-
 <div class="infoBlock">
   
-The dropdown will only display the list of models corresponding to the Warehouse Actions source you have configured. For example, only the BigQuery models will be listed in the dropdown for a BigQuery warehouse source.
+The dropdown will only display the list of models corresponding to the Warehouse Actions source you have configured. For example, only the BigQuery models will be listed for a BigQuery warehouse source.
 </div>
 
 2. Select the **Sync mode** that RudderStack will use to sync your data.
@@ -58,15 +57,15 @@ The JSON payload carries the <code class="inline-code">user_id</code> and <code 
 
 ## Add Constant
 
-You can also use the **Add Constant** option that lets you add a constant key-value pair which is always sent in the JSON payload, as shown:
+You can also use the **Add Constant** option to add a constant key-value pair which is always sent in the JSON payload, as shown:
 
 <img src="../../assets/warehouse-actions-sources/add-constant.png" />
 
-The new constant appears in the table and also in the JSON preview inside the traits, as shown:
+The new constant will appear in the table and also in the JSON preview inside the traits, as shown:
 
-<img src="../../assets/screenshot_2021-03-18_at_3.51.11_pm.png" />
+<img src="../../assets/warehouse-actions-sources/add-constant-in-json.png" />
 
-You can also use dot notation to define a Warehouse Actions constant, as shown below:
+You can also use the dot notation to define a Warehouse Actions constant, as shown:
 
 <img src="../../assets/warehouse-actions-sources/dot-notation-constant.png" />
 
@@ -81,28 +80,19 @@ You can update the selection of columns from which RudderStack sends data to the
 
 <img src="../../assets/warehouse-actions-sources/update-table-selection.png" />
 
-3. Update your column selection and click on the **Save** button.
+3. Update your column selection.
 
 <div class="warningBlock">
 
-When updating an existing configuration, you can only change the existing mappings. The <strong>Models</strong>, <strong>Sync mode</strong>, and the <strong>Choose user identifier</strong> fields are not editable. 
+When updating an existing configuration, you can only change the existing mappings. The <strong>Model</strong>, <strong>Sync mode</strong>, and the <strong>Choose user identifier</strong> fields are not editable. 
 </div>
+
+4. Finally, click on the **Save** button.
 
 <div class="infoBlock">
 
 After updating the configuration, the next sync will be a full sync.
 </div>
-
-## FAQ
-
-### What is the difference between the Table and Model options when creating a Warehouse Actions source?
-
-When creating a new Warehouse Actions source, you are presented with the following two options from which RudderStack will sync the data:
-
-<img src="../../assets/warehouse-actions-sources/table-model-options.png" />
-
-- When you choose **Table**, RudderStack imports all the data associated with the specified table during the sync.
-- When you choose **Model**, RudderStack imports the data by running the query specified in the connected model, during the sync.
 
 ## Contact us
 
