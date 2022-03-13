@@ -563,6 +563,12 @@ export const postNavList = [
     "content":[]
  },
  {
+   "key":"faq",
+   "title":"FAQ",
+   "link":"/warehouse-actions/faq/",
+   "content":[]
+},
+ {
     "key":"destinations",
     "title":"Destinations",
     "link":"/destinations/",

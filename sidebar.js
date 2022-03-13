@@ -734,6 +734,14 @@ export const jsonData = [
               }
            ]
         },
+        {
+         "key":"faq",
+         "title":"FAQ",
+         "link":"/warehouse-actions/faq/",
+         "content":[
+            
+         ]
+      }
      ]
   },
   {
