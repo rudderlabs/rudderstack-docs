@@ -1,0 +1,89 @@
+---
+title: "Importing Data using Tables"
+description: >-
+ Detailed technical description on the various configuration settings to sync data from your warehouse tables.
+---
+
+# Importing Data using Tables
+
+This guide lists the settings required to import and sync data from your warehouse table to the specified destination.
+
+<div class="infoBlock">
+
+This guide is applicable for Warehouse Actions sources configured using the <strong>Table</strong> option. If you have configured your Warehouse Actions source using the <strong>Model</strong> option, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
+</div>
+
+## Data import settings
+
+The settings to import and sync data from your warehouse table are listed below:
+
+<img src="../../assets/warehouse-actions-sources/schema-tab-options.png" alt="Schema tab options in RudderStack" />
+
+- **Schema**: Specify your warehouse schema.
+- **Table**: Specify the table residing within the above schema from which you want RudderStack to import the data.
+- **Sync mode**: Select the sync mode that RudderStack uses to sync your data.
+
+<div class="infoBlock">
+
+RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/">Sync Modes</a> guide.
+</div>
+
+- **Choose user identifier**: Choose atleast one user identifier from `user_id` and `anonymous_id` from the dropdown.
+- You will also be able to preview a snippet of your data, as shown:
+
+<img src="../../assets/warehouse-actions-sources/models-data-snippet.png" alt="Schema tab options in RudderStack" />
+
+- Here, you can select all or only specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**. You can also preview the resulting JSON on the right.
+
+<div class="infoBlock">
+
+Alternatively, you can map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
+</div>
+
+<div class="infoBlock">
+  
+The JSON payload carries the <code class="inline-code">user_id</code> and <code class="inline-code">anonymous_id</code> from the columns selected in the <strong>Choose user identifier</strong> section. Moreover, the traits are used from the columns selected in the <strong>Column</strong> section.
+</div>
+
+## Add Constant
+
+You can also use the **Add Constant** option to add a constant key-value pair which is always sent in the JSON payload, as shown:
+
+<img src="../../assets/warehouse-actions-sources/add-constant.png" />
+
+The new constant will appear in the table and also in the JSON preview inside the traits, as shown:
+
+<img src="../../assets/warehouse-actions-sources/add-constant-in-json.png" />
+
+You can also use the dot notation to define a Warehouse Actions constant, as shown:
+
+<img src="../../assets/warehouse-actions-sources/dot-notation-constant.png" />
+
+Once you have finalized the configuration, click on **Save**.
+
+## Updating an existing configuration
+
+To update an existing configuration, follow these steps:
+
+1. Go to the **Schema** tab of your configured source.
+2. Click on the **Update** button on the top right, as shown:
+
+<img src="../../assets/warehouse-actions-sources/update-table-selection.png" />
+
+3. Update your column selection.
+
+<div class="warningBlock">
+
+When updating the configuration, you can only change the existing mappings. The <strong>Schema</strong>, <strong>Table</strong>, <strong>Sync mode</strong>, and the <strong>User identifier</strong> fields are not editable.
+</div>
+
+4. Finally, click on the **Save** button.
+
+<div class="infoBlock">
+
+After updating the configuration, the next sync will be a full sync.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
