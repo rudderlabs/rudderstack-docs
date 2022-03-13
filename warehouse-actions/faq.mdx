@@ -1,0 +1,78 @@
+---
+#slug: "/docs/warehouse-actions"
+title: "FAQ"
+description: >-
+  Answers to some of the commonly asked questions related to RudderStack's Warehouse Actions feature.
+---
+
+# FAQ
+
+### How do I use the Warehouse Actions feature?
+
+RudderStack's Warehouse Actions feature lets you set up your data warehouse as a source in RudderStack and route the data residing in it to your preferred destination.
+
+To use this feature, follow these steps:
+
+1. Set up a Warehouse Actions source in RudderStack.
+2. Connect it to a new or existing destination.
+3. Specify the warehouse data you want to sync to that destination.
+
+### Can I connect a Warehouse Actions source to multiple destinations?
+
+This feature does not support connecting one source to multiple destinations currently.
+
+Therefore, if you want to send data from a Warehouse Actions source to multiple destinations, it is recommended to create multiple copies of the warehouse source with the same settings and connect them with each of the destinations.
+
+### Can I connect a Warehouse Actions source to a warehouse destination in RudderStack?
+
+No, RudderStack currently does not support this functionality.
+
+### What event types are currently supported by this feature?
+
+Currently, the Warehouse Actions sources support only `identify()` events.
+
+### What is the difference between the Table and Model options when creating a Warehouse Actions source?
+
+When creating a new Warehouse Actions source, you are presented with the following two options from which RudderStack will sync the data:
+
+<img src="../../assets/warehouse-actions-sources/table-model-options.png" />
+
+- When you choose **Table**, RudderStack imports all the data associated with the specified warehouse table during the sync.
+- When you choose **Model**, RudderStack imports the data by running the query specified in the connected model during the sync.
+
+### What is the difference between Basic, CRON, and Manual schedule settings?
+
+When creating a new Warehouse Actions source, RudderStack lets you schedule your data imports and define how and when the data syncs will run.
+
+RudderStack defines the following three sync schedule types:
+
+| Schedule type | Description |
+| :--------------| :------------|
+| Basic | Runs syncs at a user-specified time and interval. | 
+| CRON | Runs syncs based on a user-defined CRON expression. |
+| Manual | User triggers the data syncs manually. |
+
+<div class="infoBlock">
+
+For more information, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/" target="_blank">Sync Schedule Settings</a> guide.
+</div>
+
+### What is the difference between Upsert and Mirror mode when syncing data?
+
+RudderStack supports two modes (available based on the source and the chosen destination) that let you define how you want to sync your data. These are **Upsert** and **Mirror** mode.
+
+- In the **Upsert** mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination.
+- In the **Mirror** mode, RudderStack 'mirrors' the source by keeping the destination data the same as the source data. It performs insertion, updates, and deletion of records while syncing data to the destination.
+
+<div class="infoBlock">
+
+For more information, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/" target="_blank">Sync Modes</a> guide.
+</div>
+
+### I'm unable to run a sync manually and get the message "Your pipeline is paused. Make sure that the source and at least one destination is enabled". What do I do?
+
+This message appears when either your Warehouse Actions source, the connected destination, or both are disabled. Go to the **Settings** tab to verify if the source and destination are enabled for data syncs.
+
+## Contact us
+
+For more information on the Warehouse Actions feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
