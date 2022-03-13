@@ -7,16 +7,21 @@ description: >-
 
 # Airflow Provider
 
-RudderStack's Airflow Provider lets you schedule and trigger your [**Warehouse Actions**](https://rudderstack.com/docs/warehouse-actions/) syncs from outside RudderStack and integrate them with your existing Airflow workflows.
+RudderStack's Airflow Provider lets you programmatically schedule and trigger your [Warehouse Actions](https://rudderstack.com/docs/warehouse-actions/) syncs from outside RudderStack and integrate them with your existing Airflow workflows.
 
-## Using the RudderStack Airflow Provider
+<div class="successBlock">
+
+For more information on the codebase and sample implementation, refer to our <a href="https://github.com/rudderlabs/rudder-airflow-provider">GitHub Repository</a>.
+</div>
+
+## Using the Airflow Provider
 
 <div class="infoBlock">
 
-To use the RudderStack Airflow Provider, you must have a working Apache Airflow installation. For more information, refer to the <a href="https://airflow.apache.org/docs/apache-airflow/stable/installation/index.html">Airflow documentation</a>.
+To use the Airflow Provider, you must have a working Apache Airflow installation. For more information, refer to the <a href="https://airflow.apache.org/docs/apache-airflow/stable/installation/index.html">Airflow documentation</a>.
 </div>
 
-To use the RudderStack Airflow Provider, follow the steps listed in the sections below:
+ Follow the steps in the below sections to use the RudderStack Airflow Provider:
 
 ### Running Airflow
 
@@ -28,12 +33,12 @@ airflow standalone
 
 <div class="warningBlock">
  
-The Airflow standalone server is not meant for use in production. We highly recommend using alternate methods to install and run Airflow in a production environment.
+The Airflow standalone server is not meant for use in production. It is highly recommended using alternate methods to install and run Airflow in a production environment.
 </div>
 
 ### Installing Airflow Provider
 
-Install the RudderStack Airflow Provider by running the following commands:
+Install the RudderStack Airflow Provider by running the following command:
 
 ```bash
 pip install rudderstack-airflow-provider
@@ -43,21 +48,19 @@ pip install rudderstack-airflow-provider
 
 To create a new Airflow connection, follow these steps:
 
-- Go to your Airflow dashboard and in the **Admin** tab, select **Connections**:
+1. In your Airflow dashboard, go to **Admin** > **Connections**, as shown:
 
 <img src="../../assets/warehouse-actions-sources/airflow-provider-1.png" alt="Airflow dashboard Connections option" />
 
-- Add a new connection by configuring the following details:
+2. Add a new connection by configuring the following details:
+
+<img src="../../assets/warehouse-actions-sources/airflow-provider-2.png" alt="Airflow dashboard edit connection" />
 
    - **Connection ID**: Specify a unique connection name. `RudderstackOperator` will pick the connection with the name `rudderstack_default` by default. If you have created a connection with a different name, make sure that name is passed as a parameter to `RudderstackOperator`.
 
    - **Connection Type**: For this field, select **HTTP** from the list.
-
    - **Host**: Set the value for this field to `https://api.rudderstack.com`.
-
    - **Password**: Enter your Personal Access Token here.
-
-<img src="../../assets/warehouse-actions-sources/airflow-provider-2.png" alt="Airflow dashboard edit connection" />
 
 <div class="infoBlock">
 
@@ -66,9 +69,14 @@ For more information on obtaining the Personal Access Token, refer to <a href="h
 
 ### Defining a DAG
 
-The next step is to define a DAG with any number of tasks as per your requirement. 
+Next, define a DAG with the tasks as per your requirement. 
 
 The following code snippet highlights an Airflow DAG with one task named `rs_trigger_sync` for the source ID `20dQV6yuUDUw31peWA8f7xxgHdN`:
+
+<div class="infoBlock">
+
+For more information on obtaining the source ID, refer to the <a href="#faq">FAQ</a> section below.
+</div>
 
 ```python
 from datetime import datetime, timedelta
@@ -122,6 +130,16 @@ cp rudderstack_dag.py $AIRFLOW_HOME/dags
 
 You can trigger a DAG by clicking on the play button on the right as seen above, and selecting <strong>Trigger DAG</strong>. Note that <strong>stopping the DAG will not cancel the ongoing sync</strong>.
 </div>
+
+## FAQ
+
+### Where can I find the source ID for my warehouse source?
+
+The source ID is a unique identifier for any source set up in RudderStack. 
+
+To obtain the source ID, go to the configured Warehouse Actions source in your RudderStack dashboard and navigate to the **Settings** tab.
+
+<img src="../../assets/warehouse-actions-sources/source-id.png" alt="Source ID for warehouse sources" />
 
 ## Contact us
 
