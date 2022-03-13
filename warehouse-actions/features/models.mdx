@@ -17,7 +17,7 @@ With this feature, you can:
 
 <div class="successBlock">
   
-Models is a <a href="https://www.rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> feature. For more information on setting up your Warehouse Actions sources using models, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/setting-up-connections-using-models/">Setting Up Connections Using RudderStack Models</a> guide.
+Models is a <a href="https://www.rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> feature. For more information on setting up your Warehouse Actions sources using models, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
 </div>
 
 <div class="infoBlock">
@@ -33,7 +33,7 @@ Currently, RudderStack supports this feature for the following Warehouse Actions
 
 You can find the **Models** option in the left navigation bar of the RudderStack dashboard that lets you view all the existing models, as shown:
 
-<img src="../assets/warehouse-actions-sources/models-view-dashboard.png" alt="RudderStack Models" />
+<img src="../../assets/warehouse-actions-sources/models-view-dashboard.png" alt="RudderStack Models" />
 
 ## Creating a new model
 
@@ -43,11 +43,11 @@ Follow these steps to create a model:
 
 2. Click on **Models** in the left navigation bar and select **New model**.
 
-<img src="../assets/warehouse-actions-sources/models-dashboard.png" alt="RudderStack Models"/>
+<img src="../../assets/warehouse-actions-sources/models-dashboard.png" alt="RudderStack Models"/>
 
 3. Select the Warehouse Actions source for the model and click on **Next**.
 
-<img src="../assets/warehouse-actions-sources/select-source-model.png" alt="Add Model"/>
+<img src="../../assets/warehouse-actions-sources/select-source-model.png" alt="Add Model"/>
 
 4. Enter a name for the model.
 5. Select your existing warehouse credentials or click on **Create Credentials from Scratch** and enter the warehouse-specific details.
@@ -57,7 +57,7 @@ Follow these steps to create a model:
 Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <a href="https://www.rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> source.
 </div>
 
-<img src="../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
+<img src="../../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
 
 <div class="infoBlock">
 Once you select or add your warehouse credentials and click on <strong>Next</strong>, RudderStack will validate them before you can proceed with the setup. For more information on these validations, refer to the <a href="#faq">FAQ</a> section below.
@@ -66,7 +66,7 @@ Once you select or add your warehouse credentials and click on <strong>Next</str
 6. Next, enter the **Description** for the model. Then, add your custom SQL query in the **Query** section. 
 7. Click on **Run Query** to preview the result.
 
-<img src="../assets/warehouse-actions-sources/sample-sql-query.png" alt="Sample SQL query" />
+<img src="../../assets/warehouse-actions-sources/sample-sql-query.png" alt="Sample SQL query" />
 
 <div class="infoBlock">
 
@@ -76,7 +76,7 @@ The <strong>Preview</strong> section displays the preview of the 50 resultant ro
 8. Click on **Next** to create the model.
 
 <div class="infoBlock">
-Once a model is created, you can use it to send the data from a warehouse source to a specified destination. For more information and detailed steps, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/setting-up-connections-using-models/">Setting Up Connections Using Models</a> guide.
+Once a model is created, you can use it to send the data from a warehouse source to a specified destination. For more information and detailed steps, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
 </div>
 
 ## Updating an existing model
@@ -88,7 +88,7 @@ Follow these steps to update an existing model:
 3. If you have edited the query, click on **Run Query** to see if the new query generates the desired result.
 4. Finally, click on **Finish** to save your changes.
 
-<img src="../assets/warehouse-actions-sources/edit-model-configuration.png" alt="Edit existing Model configuration" />
+<img src="../../assets/warehouse-actions-sources/edit-model-configuration.png" alt="Edit existing Model configuration" />
 
 <div class="infoBlock">
   
@@ -101,7 +101,7 @@ To get details about an existing model, you can click on it to see the options l
 
 - **Rename**: Lets you rename the model by clicking on the edit icon next to the model's name.
 
-<img src="../assets/warehouse-actions-sources/model-rename.png" alt="Rename model" />
+<img src="../../assets/warehouse-actions-sources/model-rename.png" alt="Rename model" />
 
 - **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to [Setting Up Connections Using Models](https://www.rudderstack.com/docs/warehouse-actions/features/setting-up-connections-using-models/).
 - **Configuration**: Displays and lets you edit the SQL **Query** and **Description**.
@@ -121,7 +121,7 @@ After editing the credentials, it is recommended to validate the query by runnin
 
 When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
-<img src="../assets/validations.png" alt="Verifying Credentials" />
+<img src="../../assets/validations.png" alt="Verifying Credentials" />
 
 These options are explained below:
 
@@ -133,11 +133,11 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema that you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/amazon-redshift#creating-the-rudderstack-schema-and-granting-permissions) section. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema that you have created by successfully running the commands in the **User Permissions** section of the relevant [Warehouse Actions source](https://www.rudderstack.com/docs/warehouse-actions/). 
 
 <div class="warningBlock">
 
-If this option gives an error, verify if you have successfully created the `_rudderstack` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://rudderstack.com/docs/warehouse-actions/amazon-redshift#creating-the-rudderstack-schema-and-granting-permissions).
+If this option gives an error, verify if you have successfully created the RudderStack schema and given RudderStack the required permissions to access it.
 </div>
 
 ## Contact us
