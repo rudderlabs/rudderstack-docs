@@ -6,112 +6,139 @@ description: Step-by-step guide to ingest your data from Amazon S3 bucket into R
 
 # Amazon S3
 
-[Amazon S3](https://aws.amazon.com/s3/) \(Simple Storage Service\) is a cloud-based object storage service that allows customers and businesses to store their data securely, and at scale. With an easy to use interface and management features, S3 allows for effortless organizing of data to meet the business-specific requirements.
+[Amazon S3](https://aws.amazon.com/s3/)\(Simple Storage Service\) is a cloud-based object storage service that lets businesses securely store their data at scale.
 
-This guide will help you configure Amazon S3 as a source from which you can route event data to your desired destinations through RudderStack.
+RudderStack supports S3 as a source from which you can ingest data and route it to your desired downstream destinations.
 
-## Getting Started
+## Setting up the S3 source in RudderStack
 
 To set up Amazon S3 as a source in RudderStack, follow these steps:
 
-- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-- From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
+### Naming the source
 
-<img src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3).png" />
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com).
+2. From the left panel, select go to **Source** > **New Source** > **Warehouse Actions**. Then, select **S3**, as shown:
 
-- Scroll down to the **Warehouse Sources** and select **Amazon S3**. Then, click on **Next**.
+<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select S3 source in RudderStack" />
 
-<img src="../assets/screen-shot-2021-01-12-at-12.23.01-pm.png" />
+3. Assign a name to your source.
 
-### Setting Up the Connection
+### Configuring the connection credentials
 
-- Assign a name to your source, and click on **Create Credentials from Scratch**. Then, click on **Next**.
+1. Enter the relevant settings in the **Connection Credentials** sections as shown below:
+   - **Account Name** - Enter the name you wish to assign to this connection account.
+   - **AWS Access Key ID** - Enter your AWS access key ID.
+   - **AWS Secret Access Key** - Enter your AWS secret access key.
 
-<img src="../assets/screen-shot-2021-01-12-at-12.23.37-pm.png" />
+<div class="infoBlock">
+
+To get the <strong>AWS Access Key ID</strong> and the <strong>AWS Secret Access Key</strong>, sign into your AWS Management Console as <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page">the root user</a>. Then, in the navigation bar on the upper right corner, choose your account name and select <strong>My Security Credentials</strong>.
+
+For more information on getting these AWS credentials, refer to the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">AWS documentation</a>.
+</div>
 
 <div class="successBlock">
 
-  If you've already configured S3 as a source before, your existing credentials
-  will automatically appear under **Use existing credentials**.
+  If you've already configured S3 as a source before, your existing credentials will automatically appear under <strong>Use Existing Credentials</strong>.
 </div>
 
-- Next, enter the relevant connection details in the **Connection Credentials** as shown below:
+- The minimum S3 actions that need to be attached to the above access keys are listed below:
 
-<img src="../assets/screen-shot-2021-01-12-at-12.23.55-pm.png" />
-
-- The required settings are:
-  - **Account Name** - Enter the name you wish to assign to this connection account.
-  - **AWS Access Key ID** - Your AWS Access Key ID goes here.
-  - **AWS Secret Access Key** - Your AWS secret access key should be entered here.
-- A list of the minimal S3 actions that need to be attached to the above access keys is as below:
-
-```javascript
+```text
 "Action": [
                 "s3:GetObject",
                 "s3:ListBucket"
             ],
 ```
 
-<div class="infoBlock">
+### Schedule settings
 
-To get the **AWS Access Key ID** and the **Secret Access Key**, you can sign into your AWS Management Console as <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page">the root user</a>. Then, in the navigation bar on the upper right corner, choose your account name and select **My Security Credentials**.
-
-For more information on understanding and getting these AWS credentials, refer to their <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">guide</a>.
-
-</div>
-
-### Specifying the Data to Import
-
-- Next, enter the name of the S3 bucket from which you want RudderStack to import the data. Any **Prefix** associated with that bucket should be mentioned as well, as shown:
-
-<img src="../assets/screen-shot-2021-01-13-at-10.58.18-am.png" />
-
-<div class="warningBlock">
-
-The files in your bucket should consists of Apache Parquet files only. As of now, Rudderstack can only extract Parquet files.
-
-</div>
-
-<div class="warningBlock">
-
-Your table must include one of the following columns - <code class="inline-code">email</code>, <code class="inline-code">user_id</code>, or <code class="inline-code">anonymous_id</code>.
-
-</div>
-
-- Once you specify the table containing the required columns, you will be able to preview a snippet of your data, as shown below:
-
-<img src="../assets/screen-shot-2021-01-05-at-3.21.38-pm.png" />
-
-- Here, you can select all or only a few specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**, as shown below. You can also preview the resultant JSON on the right. Once you've select the required table columns to import the data from, click on **Next**.
-
-<img src="../assets/screen-shot-2021-01-05-at-3.22.09-pm.png" />
-
-### Setting the Data Update Schedule
-
-- Next, you will be required to set the **Run Frequency** to schedule the data import from your S3 bucket to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option. Then, click on **Next**.
-
-<img src="../assets/screen-shot-2021-01-13-at-11.00.29-am.png" />
-
-That's it! Amazon S3 is now successfully configured as a source on your RudderStack dashboard.
-
-RudderStack will start importing data from your S3 bucket as per the specified frequency. You can further connect this source to your preferred destination by clicking on **Connect Destinations** or **Add Destinations**, as shown:
-
-<img src="../assets/screen-shot-2021-01-13-at-11.06.08-am.png" />
+1. Specify the **Schedule Settings** to schedule the data syncs from your S3 source.
 
 <div class="infoBlock">
 
-If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
+RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+</div>
 
+2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
+
+S3 is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
+
+<img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
+
+<div class="infoBlock">
+
+If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destination</strong> option which will take you to the <strong>Schema</strong> tab in the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.
+</div>
+
+## Specifying the data to import
+
+This section lists the bucket configuration settings needed for RudderStack to import the data and sync it to the connected destination. 
+
+- **S3 Bucket Name**:  Enter the name of the S3 bucket.
+- **Prefix**:  Prefix refers to the path within your S3 bucket from where RudderStack will import the data. For example, if **Prefix** is set to `RUDDER`, then RudderStack will import the data stored in the location `<your_s3_bucket>/RUDDER`.
+
+<img src="../assets/warehouse-actions-sources/s3-bucket-settings" alt="Bucket configuration settings" />
+
+<div class="warningBlock">
+
+Your S3 bucket(with the prefix, if specified above) should consist of Apache Parquet files only. Currently, Rudderstack can extract only Parquet files.
+</div>
+
+- **Choose user identifier**: Choose atleast one user identifier from `user_id` and `anonymous_id` from the dropdown.
+- Once you specify the above settings, you will be able to preview a snippet of your data, as shown below:
+
+<img src="../assets/warehouse-actions-sources/models-data-snippet.png" alt="Data snippet preview" />
+
+- Here, you can select all or only specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**. You can also preview the resulting JSON on the right.
+- **Add Constant**: You can use this option to add a constant key-value pair which is always sent in the JSON payload, as shown:
+
+<img src="../assets/warehouse-actions-sources/add-constant.png" alt="Add constant option in RudderStack dashboard" />
+
+<div class="infoBlock">
+
+For more information on this option, refer to the <a href="https://rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables#add-constant">Add Constant</a> section.
+</div>
+
+<div class="infoBlock">
+
+As an alternative to JSON mapping, you can map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
+</div>
+
+## Updating an existing configuration
+
+To update an existing configuration, follow these steps:
+
+1. Go to the **Schema** tab of your configured source.
+2. Click on the **Update** button on the top right.
+3. Then, update your column selection.
+
+<div class="warningBlock">
+
+When updating the configuration, you can only change the existing mappings. The <strong>S3 Bucket Name</strong>, <strong>Prefix</strong>, and <strong>User Identifier</strong> fields are not editable.
+</div>
+
+4. Finally, click on the **Save** button.
+
+<div class="infoBlock">
+
+After updating the configuration, the next sync will be a full sync.
 </div>
 
 ## FAQs
 
-### Where do I get the AWS Access Key ID and the AWS Secret Access Key?
+### Where can I obtain the AWS Access Key ID and the AWS Secret Access Key?
 
-To get the **AWS Access Key ID** and the **Secret Access Key**, sign into your AWS Management Console as [the root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page). Then, in the navigation bar on the upper right corner, choose your account name and select **My Security Credentials**.
+To get the **AWS Access Key ID** and the **Secret Access Key**, follow these steps:
 
-For more information on understanding and getting these AWS credentials, refer to their [guide](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html).
+1. Sign into your AWS Management Console as the [root user](https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page).
+2. Then, in the navigation bar on the upper right corner, choose your account name and select **My Security Credentials**.
 
-## Contact Us
+<div class="infoBlock">
 
-If you come across any issues while configuring Amazon S3 as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For more information on getting these AWS credentials, refer to the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">AWS documentation</a>.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
