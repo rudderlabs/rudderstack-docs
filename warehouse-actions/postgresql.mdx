@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest your data from PostgreSQL into RudderS
 
 # PostgreSQL
 
-PostgreSQL is an enterprise-grade, open source database management system. Many companies in the market use PostgreSQL as their low-cost data warehousing solution to deliver efficient analytics and user insights.
+PostgreSQL is an enterprise-grade, open source database management system. Many companies use PostgreSQL as a low-cost data warehousing solution to deliver efficient analytics and user insights.
 
 RudderStack supports PostgreSQL as a source from which you can ingest data and route it to your desired downstream destinations.
 
@@ -57,7 +57,7 @@ GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO RUDDER;
 GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO RUDDER;
 ```
 
-2. Allow the user `RUDDER` to read data from the table `<YOUR_TABLE>`, as shown:
+2. Grant access to the user `RUDDER` to read data from the table `<YOUR_TABLE>`.
 
 ```sql
 GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO RUDDER;
