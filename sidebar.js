@@ -670,9 +670,9 @@ export const jsonData = [
            "link":"/warehouse-actions/features/",
            "content":[
             {
-               "key":"setting-up-connections-using-models",
-               "title":"Setting up Connections Using Models",
-               "link":"/warehouse-actions/features/setting-up-connections-using-models/",
+               "key":"models",
+               "title":"Models",
+               "link":"/warehouse-actions/features/models/",
                "content":[
                   
                ]
@@ -712,6 +712,22 @@ export const jsonData = [
                  "key":"sync-schedule-settings",
                  "title":"Sync Schedule Settings",
                  "link":"/warehouse-actions/common-settings/sync-schedule-settings/",
+                 "content":[
+                    
+                 ]
+              },
+             {
+                 "key":"importing-data-using-tables",
+                 "title":"Importing Data using Tables",
+                 "link":"/warehouse-actions/common-settings/importing-data-using-tables/",
+                 "content":[
+                    
+                 ]
+              },
+             {
+                 "key":"importing-data-using-models",
+                 "title":"Importing Data using Models",
+                 "link":"/warehouse-actions/common-settings/importing-data-using-models/",
                  "content":[
                     
                  ]
