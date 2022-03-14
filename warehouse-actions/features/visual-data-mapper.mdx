@@ -12,7 +12,7 @@ The **Visual Data Mapper** \(VDM\) offers an intuitive UI to map your warehouse 
 
 <div class="infoBlock">
 
-  This feature is currently available for the following destinations:
+  Visual Data Mapper is currently available for the following destinations:
  <ul>
   <li><a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a></li>
   <li><a href="https://rudderstack.com/docs/destinations/crm/hubspot/">HubSpot</a></li>
@@ -34,30 +34,30 @@ To use this feature, you can use a <a href="https://rudderstack.com/docs/warehou
 
 To use the Visual Data Mapper, follow these steps:
 
-1. Set up a [Warehouse Actions](https://rudderstack.com/docs/warehouse-actions/) source. Then, connect it to a destination.
-
-<div class="infoBlock">
-
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
-</div>
-
-2. Configure the required destination with the relevant settings and click on **Next**. You should see the following screen:
+1. Set up a [Warehouse Actions](https://rudderstack.com/docs/warehouse-actions/) source and connect it to a destination. You should then see the following screen:
   
 <img src="../../assets/warehouse-actions-sources/vdm-object.png" />
 
 <div class="infoBlock">
 
-By default, Visual Data Mapper is enabled for the supported destinations. However, clicking on **Map with JSON** switches from Visual Data Mapper to JSON mapping so that you can configure the data via JSON.
+ If you have set up the source using the <strong>Model</strong> option, the <strong>Schema</strong> and <strong>Table</strong> fields are replaced by the <strong>Model</strong> field, as shown:
+ 
+ <img src="../../assets/warehouse-actions-sources/vdm-model.png" alt="VDM model options" />
 </div>
 
-3. Choose the source warehouse **Schema** and **Table** from where you want to sync the data.
+<div class="infoBlock">
+
+By default, Visual Data Mapping is enabled for all the VDM-supported destinations. To configure the data via JSON, click on the **Map with JSON** button.
+</div>
+
+3. Choose the source **Model** / **Schema** + **Table** from where you want RudderStack to import and sync the data.
 
 <div class="successBlock">
 
-RudderStack automatically loads all the relevant warehouse schemas and tables. If you have added a new schema or table during this configuration process, click on <strong>Reload schemas and tables</strong> to get all the latest schemas and tables.
+Upon selection, RudderStack automatically loads the relevant resources. If you have added a new model or warehouse table during this configuration process, click on <strong>Reload models</strong>/<strong>Reload schemas and tables</strong> to fetch the latest resources.
 </div>
 
-4. Also, select the destination **Object** where you want to sync the data. An example in case of [Customer.io](https://www.rudderstack.com/docs/stream-sources/customerio/#customerio) destination is as shown:
+4. Then, select the destination **Object** where you want to sync the data. An example in case of [Customer.io](https://www.rudderstack.com/docs/stream-sources/customerio/#customerio) destination is shown below:
 
 <img src="../../assets/warehouse-actions-sources/vdm-2.png" />
 
@@ -66,14 +66,14 @@ RudderStack automatically loads all the relevant warehouse schemas and tables. I
 RudderStack automatically loads all the relevant destination objects. If you have added a new destination object during this configuration process, click on <strong>Reload objects</strong> to get all the latest objects.
 </div>
 
-<div class="warningBlock">
+<div class="dangerBlock">
 
 <strong>RudderStack does not support objects that do not have any fields or a unique user identifier.</strong>
 </div>
 
 ### Choosing the identifier
 
-In the **Choose Identifier** section, specify the warehouse column to be used as the user identifier \(`user_id`\) and mapped to the destination field. An example is shown below:
+In the **Choose Identifier** section, specify the column to be used as the user identifier(`user_id`) and mapped to the destination field. An example is shown below:
 
 <img src="../../assets/warehouse-actions-sources/vdm-3.png" />
 
