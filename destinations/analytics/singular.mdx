@@ -238,7 +238,7 @@ Make sure you use the <code class="inline-code">await</code> keyword with the <c
 
 ## Implementing SKAdNetwork (SKAN) support
 
-To give Singular the control to your SKAdNetwork integration, add the following code before the initialization of the iOS SDK:
+Add the following code before the initialization of the iOS SDK to give the control to Singular for your SKAdNetwork integration:
 
 ```objectivec
 [RudderSingularIntegration setSKANOptions:YES
@@ -416,7 +416,7 @@ RudderStack sends the <code class="inline-code">screen</code> event to Singular 
 
 ## Reset
 
-The `reset` method resets the current user's identity and creates a new anonymous session. It should be called when the users log out.
+The `reset` method resets the current user's identity and creates a new anonymous session. It should be called when a user logs out.
 
 RudderStack calls Singular's [`unsetCustomUserId`](https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration#Optional_Setting_the_User_ID) method to reset a user's identity.
 
