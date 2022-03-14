@@ -179,11 +179,52 @@ Alternatively, you can use the following method signature:
 | `property`   | Object | No       | Extra property object to pass along with the `screen` call. |
 | `option`     | Object | No       | Extra options passed along with `screen` event.                     |
 
-<div class="infoBlock">
 
-You can also enable automatic recording of screen views by passing <code class="inline-code">recordScreenViews</code> as <code class="inline-code">true</code> while initializing the <code class="inline-code">rudderClient</code>.  
-The default value for <code class="inline-code">recordScreenViews</code> is <code class="inline-code">false</code>.
-</div>
+You can also enable the automatic recording of screen views by passing <code class="inline-code">recordScreenViews</code> as <code class="inline-code">true</code> while initializing the <code class="inline-code">rudderClient</code>.  
+The default value for <code class="inline-code">recordScreenViews</code> is <code class="inline-code">false</code>. 
+
+To track the screen views in React Native SDK, you can use the following code snippet: 
+
+```javascript
+import analytics from '@react-native-firebase/analytics';
+import {
+  NavigationContainer
+} from '@react-navigation/native';
+
+const App = () => {
+  const routeNameRef = React.useRef();
+  const navigationRef = React.useRef();
+  return ( <
+    NavigationContainer ref = {
+      navigationRef
+    }
+    onReady = {
+      () => {
+        routeNameRef.current = navigationRef.current.getCurrentRoute().name;
+      }
+    }
+    onStateChange = {
+      async () => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+        if (previousRouteName !== currentRouteName) {
+          await analytics().logScreenView({
+            screen_name: currentRouteName,
+            screen_class: currentRouteName,
+          });
+        }
+        routeNameRef.current = currentRouteName;
+      }
+    } >
+    ...
+    <
+    /NavigationContainer>
+  );
+};
+
+export default App;
+```
 
 ## Group
 
