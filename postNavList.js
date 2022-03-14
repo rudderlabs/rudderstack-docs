@@ -468,7 +468,7 @@ export const postNavList = [
    },
  {
     "key":"warehouse-actions",
-    "title":"Warehouse Actions Sources",
+    "title":"Warehouse Actions",
     "link":"/warehouse-actions/",
     "content":[]
  },
