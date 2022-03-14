@@ -267,7 +267,7 @@ If this setting is disabled(default case), RudderStack sends the group traits to
 }
 ```
 
-However, if this setting is enabled, RudderStack sends the group traits as event properties to PostHog, as shown below:
+With the updated group mapping setting enabled, RudderStack sends the group traits as event properties to PostHog, as shown:
 
 ```json
 {
@@ -309,7 +309,7 @@ The mapping is as shown:
 | :---------| :------| :--------|
 | `groupId` | `groupId` | `$group_key` |
 | `groupType` | `groupType`| `$group_type` |
-| `traits.value` | `traits.value` | `$group_set.value` |
+| `traits` | `traits` | `$group_set` |
 
 ## Alias
 
