@@ -21,7 +21,7 @@ Before configuring Singular as a destination in RudderStack, verify if the sourc
 
 <div class="infoBlock">
 
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/" target="_blank">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Singular, follow these steps:
@@ -30,35 +30,45 @@ Once you have confirmed that the source platform supports sending events to Sing
 
 <div class="infoBlock">
 
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/" target="_blank">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
 2. Assign a name to your destination and click on **Next**.
 
 ### Connection settings
 
-To successfully configure Singular as a destination, you will need to configure the following settings:
+To successfully configure Singular as a destination, you need to configure the following settings:
 
 <img src="../../assets/event-stream-destinations/singular-connection-settings.png" alt="Singular connection settings" />
 
-- **API Key**: To obtain the API key, log into your Singular dashboard and navigate to **Settings** > **SDK Keys**.
-- **Secret**: To obtain your Singular secret, log into your Singular dashboard and navigate to **Settings** > **SDK Keys**. This is required for device-mode integrations with the RudderStack iOS and Android SDKs.
-- **Client-side Events Filtering**: RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via the device mode. For more information, refer to the [Client-side Event Filtering](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/) documentation.
-- **Use device mode to send events**: As this is a device mode-only destination, this setting is enabled by default.
+- **API Key**: Enter your Singular API key here. This is a mandatory field. 
+- **Secret**: Enter your Singular secret. This is a mandatory field and is required for the device mode integrations with the RudderStack iOS and Android SDKs.
+
+<div class="infoBlock">
+
+For more information on obtaining the Singular API key and secret, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+<div class="successBlock">
+
+When sending events via the device mode, RudderStack also lets you specify which events should be discarded or allowed to flow through. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/"  target="_blank">Client-side Event Filtering</a>.
+</div>
 
 ## Adding device mode integration
 
-To add Singular to your project, follow the steps below depending on your platform of integration.
+To add Singular to your application, follow the steps below depending on your platform of integration.
 
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
+    <Tab>React Native</Tab>
+    <Tab>Cordova</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
-        To add Singular to your iOS project, follow these steps:
-<ul>
+        To add Singular to your iOS app, follow these steps:
+<ol>
 <li>In your <code class="inline-code">Podfile</code>, add the following dependencies:
 <span>
 
@@ -82,22 +92,22 @@ pod 'Rudder-Singular', '1.0.0'
 
 ```objectivec
 RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
-[configBuilder withDataPlaneUrl:dataPlaneUrl];
+[configBuilder withDataPlaneUrl:<DATA_PLANE_URL>];
 [configBuilder withFactory:[RudderSingularFactory instance]];
-RSClient *rudderClient = [RSClient getInstance:writeKey config:[configBuilder build]];
+RSClient *rudderClient = [RSClient getInstance:<WRITE_KEY> config:[configBuilder build]];
 ```
 </span>
 </li>
 
 <div class="infoBlock">
 
-For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037950591-iOS-SDK-Basic-Integration?navigation_side_bar=true">Singular iOS documentation</a>.
+For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037950591-iOS-SDK-Basic-Integration?navigation_side_bar=true" target="_blank">Singular iOS documentation</a>.
 </div>
-</ul>
+</ol>
       </TabPanel>
       <TabPanel>
-        To add Singular to your Android Project, follow these steps :
-<ul>
+        To add Singular to your Android app, follow these steps :
+<ol>
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: <code class="inline-code">app</code>) file, and add the following under the <code class="inline-code">dependencies</code> section :
 <span>
 
@@ -133,7 +143,7 @@ allprojects {
 ```
 </span>
 </li>
-<li>Add the following permissions - if not added already - to your <code class="inline-code">AndroidManifest.xml</code>:
+<li>Add the following permissions(if not present already) to your <code class="inline-code">AndroidManifest.xml</code>:
 <span>
 
 ```markup
@@ -149,9 +159,9 @@ allprojects {
 // initializing Rudder SDK
 val rudderClient = RudderClient.getInstance(
   this,
-  WRITE_KEY,
+  <WRITE_KEY>,
   RudderConfig.Builder()
-          .withDataPlaneUrl(DATA_PLANE_URL)
+          .withDataPlaneUrl(<DATA_PLANE_URL>)
           .withFactory(SingularIntegrationFactory.FACTORY)
           .build()
   )
@@ -161,21 +171,74 @@ val rudderClient = RudderClient.getInstance(
 
 <div class="infoBlock">
 
-For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration?navigation_side_bar=true">Singular Android documentation</a>.
+For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration?navigation_side_bar=true"  target="_blank">Singular Android documentation</a>.
 </div>
-</ul>
+</ol>
+      </TabPanel>
+      <TabPanel>
+        To add Singular to your React Native app, follow these steps:
+<ol>
+<li>Add the RudderStack-Singular module to your app by running the following command:
+<span>
+
+```bash
+npm install @rudderstack/rudder-integration-singular-react-native
+// OR //
+yarn add @rudderstack/rudder-integration-singular-react-native
+```
+</span>
+</li>
+<li>Then, import the above module and add it to your SDK initialization, as shown:
+<span>
+
+```typescript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+import singular from "@rudderstack/rudder-integration-singular-react-native"
+const config = {
+	dataPlaneUrl: <DATA_PLANE_URL>,
+	trackAppLifecycleEvents: true,
+	withFactories: [singular],
+}
+rudderClient.setup(<WRITE_KEY>, config)
+```
+</span>
+</li>
+</ol>
+      </TabPanel>
+      <TabPanel>
+        To add Singular to your Cordova app, follow these steps:
+<ol>
+<li>Navigate to the root folder of your application and run the following command:
+<span>
+
+```bash
+cordova plugin add rudder-integration-singular-cordova
+```
+</span>
+</li>
+<li>Then, add the following code in the <code class="inline-code">onDeviceReady()</code> function of your app's home page to initialize the SDK, as shown:
+<span>
+
+```bash
+RudderClient.initialize(<WRITE_KEY>, {
+  dataPlaneUrl: <DATA_PLANE_URL>,
+  factories: [RudderSingularFactory]
+})
+```
+</span>
+</li>
+<div class="infoBlock">
+
+Make sure you use the <code class="inline-code">await</code> keyword with the <code class="inline-code">initialize</code> call.
+</div>
+</ol>
       </TabPanel>
     </TabPanels>
 </Tabs>
 
 ## Implementing SKAdNetwork (SKAN) support
 
-<div class="infoBlock">
-
-For more details, refer to the <a href="https://support.singular.net/hc/en-us/articles/360047454611">iOS SDK: Adding SKAdNetwork Support</a> section of the Singular documentation.
-</div>
-
-To give Singular the control to your SKAdNetwork integration, you need to add the following code before the initialization of the iOS SDK:
+Add the following code before the initialization of the iOS SDK to give the control to Singular for your SKAdNetwork integration:
 
 ```objectivec
 [RudderSingularIntegration setSKANOptions:YES
@@ -187,39 +250,87 @@ withWaitForTrackingAuthorizationWithTimeoutInterval:@0
 }];
 ```
 
+<div class="infoBlock">
+
+For more details, refer to the <a href="https://support.singular.net/hc/en-us/articles/360047454611" target="_blank">iOS SDK: Adding SKAdNetwork Support</a> section of the Singular documentation.
+</div>
+
 ## Identify
 
-For device mode destinations, the Singular SDK uses the `identify` method to map the RudderStack user ID to their custom user ID.
+For device mode destinations, the Singular SDK uses the [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) method to map the RudderStack user ID to their custom user ID. RudderStack uses Singular's [`setCustomUserId`](https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration#Optional_Setting_the_User_ID) method to forward the identified user ID to Singular.
 
-A sample `identify` call is shown below:
+A sample `identify` call for both the Android and iOS SDKs is shown below:
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient getInstance] identify:@"1hKOmRA4el9Zt1WSfVJIVo4GRlm"];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
 ```kotlin
-RudderClient.getInstance()?.identify("User123")
+RudderClient.getInstance()?.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm")
 ```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ## Track
 
-The `track` call lets you capture any user actions and the properties associated with them. Each user action is considered to be an event.
+The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture any user actions and the properties associated with them. Each user action is considered to be an event.
 
 ### Tracking custom events
 
 A custom `track` call lets you track custom events as they occur in your apps. RudderStack sends these calls to Singular where they are processed as custom post-install events and are made available in the relevant reports.
 
-A sample custom `track` call is shown in the following snippet:
+A sample custom `track` call for both the Android and iOS SDKs is shown below:
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient getInstance] track:@"Product Reviewed" properties:@{
+        @"product_id" : @"345676543",
+        @"review_id" : @"123454387"
+    }];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
 ```kotlin
-RudderClient.getInstance()?.track("Order Completed",
+RudderClient.getInstance()?.track("Product Reviewed",
     RudderProperty()
-        .putValue("affiliation", "affiliation_1")
-        .putValue("delivery", "123")
-        .putValue("taxation", "456")
-        .putValue("order_id", "789")
+        .putValue("product_id", "345676543")
+        .putValue("review_id", "123454387")
 )
 ```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ### Tracking revenue
 
-Singular supports tracking revenue events. It receives revenue tracking whenever an event containing the `revenue` property is sent(including a zero value). Optionally, you can also pass the `currency` field as an ISO3 code. 
+Singular supports tracking revenue events. It implements revenue tracking whenever an event containing the `revenue` property is sent(including a zero value). Optionally, you can also pass the `currency` field as an [ISO code](https://www.iso.org/iso-4217-currency-codes.html). 
 
 <div class="infoBlock">
 
@@ -228,6 +339,26 @@ The default currency is set to <code class="inline-code">USD</code>.
 
 A sample `revenue` track call is shown below:
 
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient getInstance] track:@"Order Completed" properties:@{
+        @"revenue" : @1251,
+        @"currency" : @"INR"
+    }];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
 ```kotlin
 RudderClient.getInstance()?.track("Order Completed",
     RudderProperty()
@@ -235,29 +366,59 @@ RudderClient.getInstance()?.track("Order Completed",
         .putValue("currency", "INR")
 )
 ```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but exclusive to your mobile device.
+The [`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call for the web applications but exclusive to your mobile device.
 
-A sample `screen` call looks like the following code snippet:
+A sample `screen` call for both the Android and iOS SDKs is shown below:
+
+<Tabs>
+  <TabList>
+    <Tab>iOS</Tab>
+    <Tab>Android</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient sharedInstance] screen:@"Home" properties:@{
+    @"category" : @"launcher"
+}];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
 ```kotlin
-RudderClient.getInstance()?.screen("Sample Screen Name",
-            RudderProperty()
-                .putValue("prop_key","prop_value"));
+RudderClient.getInstance()?.screen("Home",
+    RudderProperty()
+        .putValue("category", "launcher")
+)
 ```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
-In the above snippet, RudderStack captures all the information related to the viewed screen, along with any additional info associated with that event.
+In the above snippet, RudderStack captures all the information related to the viewed screen, along with any additional info about the screen.
 
 <div class="infoBlock">
 
-RudderStack sends the <code class="inline-code">screen</code> to Singular as a custom event.
+RudderStack sends the <code class="inline-code">screen</code> event to Singular as a custom event.
 </div>
 
 ## Reset
 
-The `reset` method calls will release the identity of the current user and create a new anonymous session. It should be called when the users log out.
+The `reset` method resets the current user's identity and creates a new anonymous session. It should be called when a user logs out.
+
+RudderStack calls Singular's [`unsetCustomUserId`](https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration#Optional_Setting_the_User_ID) method to reset a user's identity.
 
 A sample `reset` call for both the Android and iOS SDKs is shown below:
 
@@ -285,6 +446,14 @@ RudderClient.getInstance()?.reset();
       </TabPanel>
     </TabPanels>
 </Tabs>
+
+## FAQ
+
+### Where can I find the Singular API key and secret?
+
+To obtain your Singular API key and secret, log into your Singular dashboard and navigate to **Settings** > **SDK Keys**, as shown:
+
+<img src="../../assets/event-stream-destinations/singular-api-key.png" alt="Singular API key" />
 
 ## Contact us
 
