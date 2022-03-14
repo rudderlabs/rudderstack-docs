@@ -613,7 +613,7 @@ export const jsonData = [
   },
   {
      "key":"warehouse-actions",
-     "title":"Warehouse Actions",
+     "title":"Reverse ETL",
      "link":"/warehouse-actions/",
      "content":[
         {

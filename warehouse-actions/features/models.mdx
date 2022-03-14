@@ -7,7 +7,7 @@ description: >-
 
 # Models
 
-RudderStack's **Models** feature lets you create models by defining custom SQL queries. You can then run these queries on your warehouse and send the resulting data to specific destinations. You can create as many models and reuse them with their corresponding Warehouse Actions sources.
+RudderStack's **Models** feature lets you create models by defining custom SQL queries. You can then run these queries on your warehouse and send the resulting data to specific destinations. You can create as many models and reuse them with their corresponding Reverse ETL sources.
 
 With this feature, you can:
 
@@ -17,12 +17,12 @@ With this feature, you can:
 
 <div class="successBlock">
   
-Models is a <a href="https://www.rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> feature. For more information on setting up your Warehouse Actions sources using models, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
+Models is a <a href="https://www.rudderstack.com/docs/warehouse-actions/">Reverse ETL</a> feature. For more information on setting up your Reverse ETL sources using models, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
 </div>
 
 <div class="infoBlock">
 
-Currently, RudderStack supports this feature for the following Warehouse Actions sources:
+Currently, RudderStack supports this feature for the following Reverse ETL sources:
 <ul>
 <li><a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a></li> 
 <li><a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a></li>
@@ -45,7 +45,7 @@ Follow these steps to create a model:
 
 <img src="../../assets/warehouse-actions-sources/models-dashboard.png" alt="RudderStack Models"/>
 
-3. Select the Warehouse Actions source for the model and click on **Next**.
+3. Select the Reverse ETL source for the model and click on **Next**.
 
 <img src="../../assets/warehouse-actions-sources/select-source-model.png" alt="Add Model"/>
 
@@ -54,7 +54,7 @@ Follow these steps to create a model:
  
 <div class="warningBlock">
 
-Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <a href="https://www.rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> source.
+Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <a href="https://www.rudderstack.com/docs/warehouse-actions/">Reverse ETL</a> source.
 </div>
 
 <img src="../../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
@@ -119,7 +119,7 @@ After editing the credentials, it is recommended to validate the query by runnin
 
 ### What do the three validations under Verifying Credentials imply?
 
-When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
 <img src="../../assets/validations.png" alt="Verifying Credentials" />
 
@@ -133,7 +133,7 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema that you have created by successfully running the commands in the **User Permissions** section of the relevant [Warehouse Actions source](https://www.rudderstack.com/docs/warehouse-actions/). 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema that you have created by successfully running the commands in the **User Permissions** section of the relevant [Reverse ETL source](https://www.rudderstack.com/docs/warehouse-actions/). 
 
 <div class="warningBlock">
 

@@ -15,17 +15,8 @@ Transformations is one of RudderStack's key features. It gives you the ability t
 - Implementing external actions on the events using an API.
 
 <div class="successBlock">
-  Transformations can be used across your <a href="https://rudderstack.com/docs/stream-sources/">Event Stream</a>, <a href="https://rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a> and <a href="https://rudderstack.com/docs/cloud-extract-sources/">Cloud Extract</a> pipelines.
+  Transformations can be used across your <a href="https://rudderstack.com/docs/stream-sources/">Event Stream</a>, <a href="https://rudderstack.com/docs/warehouse-actions/">Reverse ETL</a> and <a href="https://rudderstack.com/docs/cloud-extract-sources/">Cloud Extract</a> pipelines.
 </div>
-
-Here's a quick 2-minute walkthrough of this feature:
-
-<!--https://www.youtube.com/watch?v=-1F4YeJCXU8-->
-
-<YouTube 
-  videoId={'-1F4YeJCXU8'}
-  opts={{playerVars: {rel: 0}}}
-/>
 
 <div class="successBlock">
 
@@ -34,7 +25,7 @@ Here's a quick 2-minute walkthrough of this feature:
 
 <div class="warningBlock">
 
-**Transformations only work for the Cloud mode destinations.**
+Transformations only work for the Cloud mode destinations.
 
 To know more about the Cloud mode in RudderStack, check out the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes">RudderStack Connection Modes</a> guide.
 
@@ -45,21 +36,15 @@ To know more about the Cloud mode in RudderStack, check out the <a href="https:/
 - Log into your [**RudderStack dashboard**](https://app.rudderstack.com/).
 - Click on the [**Transformations**](https://app.rudderstack.com/transformations) link from the left panel in the dashboard, as shown:
 
-<!--<img src="../../../images/assets/image (90).png" />-->
-
 <img src="../assets/image (90).png" alt="Adding a Transformation" />
 <span class="imageTitle"></span>
 
 - Click on the **Create New** option as shown:
 
-<!--<img src="../../../images/assets/image (92).png" />-->
-
 <img src="../assets/image (92).png" alt="Create New Transformation" />
 <span class="imageTitle"></span>
 
 - Next, assign a name for this new transformation. Enter the transformation function's code in the **Transformation** window, as shown:
-
-<!--<img src="../../../images/assets/image (100).png" />-->
 
 <img
   src="../assets/image (100).png"
@@ -68,8 +53,6 @@ To know more about the Cloud mode in RudderStack, check out the <a href="https:/
 <span class="imageTitle"></span>
 
 - Add your transformation code within the `transformEvent` function in the **Transformation** window. You can also add other functions and call them from within `transformEvent`.
-
-<!--<img src="../../../images/assets/image (99).png" />-->
 
 <img src="../assets/image (99).png" alt="transformEvent function" />
 <span class="imageTitle"></span>
@@ -90,10 +73,7 @@ You can copy-paste the entire code of any of the functions present in this repos
 
 - RudderStack also gives you the ability to test your transformation function with the **Run Test** option as shown:
 
-<!--<img src="../../../images/assets/image (97).png" />-->
-
 <img src="../assets/image (97).png" alt="Run Test" />
-<span class="imageTitle"></span>
 
 - In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` function, as shown:
 
@@ -105,13 +85,13 @@ export function transformBatch(events, metadata) {
 
 <div class="dangerBlock">
 
-**Disclaimer for using <code class="inline-code">transformBatch</code>**
+Disclaimer for using <code class="inline-code">transformBatch</code>:
 
-Make sure you pass on the <code class="inline-code">messageId</code> from the input event onto the output event. If the <code class="inline-code">messageId</code> is passed on, the order of delivery of events is preserved. **Without it, this order may not be maintained**.
-
-It is highly recommended to use <code class="inline-code">transformEvent</code> in every possible case as it ensures event ordering in all cases.
-
-In case a <code class="inline-code">transformBatch</code> is required and event ordering is important, make sure to pass on the <code class="inline-code">messageId</code>.
+<ul>
+<li>Make sure you pass on the <code class="inline-code">messageId</code> from the input event onto the output event. If the <code class="inline-code">messageId</code> is passed on, the order of delivery of events is preserved. <strong>Without it, this order may not be maintained</strong>.</li>
+<li>It is highly recommended to use <code class="inline-code">transformEvent</code> in every possible case as it ensures event ordering in all cases.</li>
+<li>In case a <code class="inline-code">transformBatch</code> is required and event ordering is important, make sure to pass on the <code class="inline-code">messageId</code>.</li>
+</ul>
 </div>
 
 ## Libraries
@@ -122,13 +102,9 @@ To create a library, follow these steps:
 
 - Click on the [**Transformations**](https://app.rudderstack.com/transformations) link in the left nav bar and go to the **Libraries** section. Click on the **Create New** option to add new libraries, as shown:
 
-<!--<img src="../../../images/assets/image (89).png" />-->
-
 <img src="../assets/image (89).png" alt="Create new library" />
 
 - Add the library's **Name**, an optional **Description**, and include the custom functions that you need to reuse across all other transformations.
-
-<!--<img src="../../../images/assets/image (91).png" />-->
 
 <img
   src="../assets/image (91).png"
@@ -137,8 +113,6 @@ To create a library, follow these steps:
 
 - You can add multiple functions to a single library, as shown:
 
-<!--<img src="../../../images/assets/image (95).png" />-->
-
 <img
   src="../assets/image (95).png"
   alt="Add more functions under a single library"
@@ -146,9 +120,7 @@ To create a library, follow these steps:
 
 <div class="warningBlock">
 
-**RudderStack does not support the deletion of libraries as of now.**
-
-This is to ensure that you don't break any existing transformations that use the library that you might be trying to delete.
+RudderStack does not support the deletion of libraries as of now. This is to ensure that you don't break any existing transformations that use the library that you might be trying to delete.
 </div>
 
 ## Using libraries in transformations
@@ -157,12 +129,7 @@ To use the libraries in your existing transformation, simply take the name of yo
 
 For example, if your library name is **`is rudder email`**, then the library handle would be **`isRudderEmail`**.
 
-<!--<img src="../../../images/assets/image (101).png" />-->
-
-<img
-  src="../assets/image (101).png"
-  alt="Using libraries in transformations"
-/>
+<img src="../assets/image (101).png" alt="Using libraries in transformations" />
 
 Let's say you want to import a function called **`rudderEmail`**, which returns `true` for the emails from a specific domain \(e.g. RudderStack\) and `false` otherwise, from the **`is rudder email`** library. Also, you want to use this function to filter the events that don't have the email address of the specified domain.
 
@@ -182,12 +149,7 @@ export function transformEvent(event) {
 
 On running a test, an example event not having the specified email domain is filtered out, as shown:
 
-<!--<img src="../../../images/assets/image (86).png" />-->
-
-<img
-  src="../assets/image (86).png"
-  alt="Event filtered out without specifying email domain"
-/>
+<img src="../assets/image (86).png" alt="Event filtered out without specifying email domain" />
 
 ### Importing multiple functions from a single library
 
@@ -196,7 +158,7 @@ When importing a single function or multiple functions from a library, it is imp
 The following snippets highlight how to properly import functions from a library:
 
 ```javascript
-// Correct Way ✅
+// Correct Way
 // ---------------
 import { getLoss } from "getFinanceData";
 
@@ -222,7 +184,7 @@ import * as GFD from "getFinanceData";
 ```
 
 ```javascript
-// Incorrect Way ❌
+// Incorrect Way
 // -----------------
 import * from "getFinanceData";
 
@@ -238,8 +200,7 @@ RudderStack injects a function `metadata(event)` into your transformations as an
 
 <div class="infoBlock">
 
-  <code class="inline-code">metadata()</code> takes the event as input and
-  returns the metadata of the event.
+<code class="inline-code">metadata()</code> takes the event as input and returns the metadata of the event.
 </div>
 
 The following properties, if available, are present in the metadata response:
@@ -251,12 +212,8 @@ The following properties, if available, are present in the metadata response:
 | `messageId`     | Corresponds to the unique ID for each event.                                                                                                                                   |
 | `sessionId`     | If sessions are enabled, this corresponds to the value of the session ID.                                                                                                      |
 
-<!--<img src="../../../images/assets/image (98).png" /><span class="imageTitle">Source ID</span> -->
-
 <img src="../assets/image (98).png" alt="Source ID" />
 <span class="imageTitle">Source ID</span>
-
-<!--<img src="../../../images/assets/image (120) (1) (1).png" />-->
 
 <img src="../assets/image (120) (1) (1).png" alt="Source ID" />
 
@@ -356,8 +313,6 @@ export function transformEvent(event, metadata) {
 ```
 
 On running a test on the above code, you can see the logs in the **Logs** section of the dashboard, as shown:
-
-<!--<img src="../../../images/assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png" />-->
 
 <img
   src="../assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png"

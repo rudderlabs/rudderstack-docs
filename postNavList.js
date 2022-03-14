@@ -468,7 +468,7 @@ export const postNavList = [
    },
  {
     "key":"warehouse-actions",
-    "title":"Warehouse Actions",
+    "title":"Reverse ETL",
     "link":"/warehouse-actions/",
     "content":[]
  },

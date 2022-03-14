@@ -17,7 +17,7 @@ To set up ClickHouse as a source in RudderStack, follow these steps:
 ### Naming the source
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
-2. From the left panel, go to **Source** > **New Source** > **Warehouse Actions**.  Then, select **ClickHouse**, as shown:
+2. From the left panel, go to **Source** > **New Source** > **Reverse ETL**.  Then, select **ClickHouse**, as shown:
 
 <img src="../assets/warehouse-actions-sources/select-source.png" alt="Select warehouse source in RudderStack" />
 
@@ -52,7 +52,7 @@ If you've configured ClickHouse as a source before, you can select the existing 
 
 <div class="infoBlock">
 
-RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
 </div>
 
 2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
@@ -68,7 +68,7 @@ If you have already configured a destination in RudderStack, choose the <strong>
 
 ## Specifying the data to import
 
-While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature.
+While connecting a destination to your Reverse ETL source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature.
 
 <div class="infoBlock">
 

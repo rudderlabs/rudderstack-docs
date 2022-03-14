@@ -111,7 +111,7 @@ To set up Redshift as a source in RudderStack, follow these steps:
 ### Naming the source
 
 1. Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-2. From the left navigation bar, go to **Source** > **New Source** > **Warehouse Actions**. Then, select **Redshift**, as shown:
+2. From the left navigation bar, go to **Source** > **New Source** > **Reverse ETL**. Then, select **Redshift**, as shown:
 
 <img src="../assets/warehouse-actions-sources/select-source.png" alt="Select warehouse source in RudderStack" />
 
@@ -123,7 +123,7 @@ To set up Redshift as a source in RudderStack, follow these steps:
 
 <div class="infoBlock">
 
-For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Warehouse Actions source, refer to the <a href="#faq">FAQ</a> section below.
+For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Reverse ETL source, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 <div class="infoBlock">
@@ -161,7 +161,7 @@ For more information on these validation steps, refer to the <a href="#faq">FAQ<
 
 <div class="infoBlock">
 
-RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
 </div>
 
 2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
@@ -177,11 +177,11 @@ If you have already configured a destination in RudderStack, choose the <strong>
 
 ## Specifying the data to import
 
-While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature.
+While connecting a destination to your Reverse ETL source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature.
 
 <div class="infoBlock">
 
-Based on the option(Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
+Based on the option(Table/Model) you chose while setting up the Reverse ETL source, follow the relevant guide for detailed steps:
 
 <ul>
 <li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
@@ -193,7 +193,7 @@ Based on the option(Table/Model) you chose while setting up the Warehouse Action
 
 ### What do the three validations under Verifying Credentials imply?
 
-When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
 <img src="../assets/warehouse-actions-sources/validations.png" alt="Validations" />
 
@@ -214,9 +214,9 @@ If this option gives an error, it means that one or more fields specified in the
 If this option gives an error, verify if you have successfully created the <code class="inline-code">_RUDDERSTACK</code> schema and given RudderStack the required permissions to access it. For more information, refer to <a href="#step-2-creating-the-rudderstack-schema-and-granting-permissions">Creating the RudderStack schema and granting permissions</a> section.
 </div>
 
-### What is the difference between the Table and Model options when creating a Warehouse Actions source?
+### What is the difference between the Table and Model options when creating a Reverse ETL source?
 
-When creating a new Warehouse Actions source, you are presented with the following two options from which RudderStack will sync the data:
+When creating a new Reverse ETL source, you are presented with the following two options from which RudderStack will sync the data:
 
 <img src="../assets/warehouse-actions-sources/table-model-options.png" />
 
