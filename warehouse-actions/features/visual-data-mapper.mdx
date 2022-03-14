@@ -2,18 +2,17 @@
 # slug: "/docs/warehouse-actions/features/visual-data-mapper"
 title: "Visual Data Mapper"
 description: >-
- Detailed technical description of how to use the Visual Data Mapping feature
-  for Warehouse Actions sources.
+  Detailed technical description of how to use the Visual Data Mapping feature for Warehouse Actions sources.
 ---
 
 # Visual Data Mapper
 
-The **Visual Data Mapper** \(VDM\) offers an intuitive UI to map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination.
+The **Visual Data Mapper**(VDM) offers an intuitive UI to map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination.
 
 <div class="infoBlock">
 
-  Visual Data Mapper is currently available for the following destinations:
- <ul>
+Visual Data Mapper is currently available for the following destinations:
+<ul>
   <li><a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a></li>
   <li><a href="https://rudderstack.com/docs/destinations/crm/hubspot/">HubSpot</a></li>
   <li><a href="https://rudderstack.com/docs/destinations/crm/salesforce/">Salesforce</a></li>
@@ -22,7 +21,7 @@ The **Visual Data Mapper** \(VDM\) offers an intuitive UI to map your warehouse 
   <li><a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
   <li><a href="https://rudderstack.com/docs/destinations/business-messaging/intercom/">Intercom</a></li>
   <li><a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/">Klaviyo</a></li>
- </ul>
+</ul>
 </div>
 
 <div class="successBlock">
@@ -40,14 +39,14 @@ To use the Visual Data Mapper, follow these steps:
 
 <div class="infoBlock">
 
- If you have set up the source using the <strong>Model</strong> option, the <strong>Schema</strong> and <strong>Table</strong> fields are replaced by the <strong>Model</strong> field, as shown:
- 
- <img src="../../assets/warehouse-actions-sources/vdm-model.png" alt="VDM model options" />
+If you have set up the source using the <strong>Model</strong> option, the <strong>Schema</strong> and <strong>Table</strong> fields are replaced by the <strong>Model</strong> field, as shown:
+
+<img src="../../assets/warehouse-actions-sources/vdm-model.png" alt="VDM model options" />
 </div>
 
 <div class="infoBlock">
 
-By default, Visual Data Mapping is enabled for all the VDM-supported destinations. To configure the data via JSON, click on the **Map with JSON** button.
+By default, Visual Data Mapping is enabled for all the VDM-supported destinations. To configure the data via JSON, click on the <strong>Map with JSON</strong> button.
 </div>
 
 3. Choose the source **Model** or **Schema** + **Table** from where you want RudderStack to import and sync the data.
@@ -107,8 +106,7 @@ For example, RudderStack lets you map the warehouse column `Phone` of type `stri
 ### Creating a custom destination field
 
 <div class="warningBlock">
-
- This feature is currently available only for the <a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a> destination.
+This feature is currently available only for the <a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a> destination.
 </div>
 
 RudderStack lets you create a custom destination field and map it to a warehouse column by following the below steps:
@@ -118,7 +116,7 @@ RudderStack lets you create a custom destination field and map it to a warehouse
 
 <img src="../../assets/warehouse-actions-sources/vdm-7.png" alt="Map another field" />
 
-3. Finally, click on **Create `<custom_field_name>`**.
+3. Finally, click on **Create**.
 
 Once you have mapped all the source columns to the destination fields, click on **Next** to complete the destination configuration.
 
