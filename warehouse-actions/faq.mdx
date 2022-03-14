@@ -23,6 +23,10 @@ This feature does not support connecting one source to multiple destinations cur
 
 Therefore, if you want to send data from a Warehouse Actions source to multiple destinations, it is recommended to create multiple copies of the warehouse source with the same settings and connect them with each of the destinations.
 
+### I cannot add a Warehouse Actions source to an already configured destination. Why?
+
+The Warehouse Actions feature supports only source-driven configuration of your pipeline. So, you need to configure a Warehouse Actions source in RudderStack and then connect it to an existing destination. This destination should not be connected to any other source.
+
 ### Can I connect a Warehouse Actions source to a warehouse destination in RudderStack?
 
 No, RudderStack currently does not support this functionality.
@@ -35,7 +39,7 @@ Currently, the Warehouse Actions sources support only `identify()` events.
 
 When creating a new Warehouse Actions source, you are presented with the following two options from which RudderStack will sync the data:
 
-<img src="../../assets/warehouse-actions-sources/table-model-options.png" />
+<img src="../assets/warehouse-actions-sources/table-model-options.png" />
 
 - When you choose **Table**, RudderStack imports all the data associated with the specified warehouse table during the sync.
 - When you choose **Model**, RudderStack imports the data by running the query specified in the connected model during the sync.
