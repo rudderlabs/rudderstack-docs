@@ -67,7 +67,7 @@ To trigger a sync manually, go to the **Syncs** tab in your Reverse ETL source d
 
 <div class="infoBlock">
 
-To programmatically schedule and trigger a sync from outside RudderStack, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/airflow-provider/">RudderStack Airflow Provider</a> documentation.
+To programmatically schedule and trigger a sync from outside RudderStack, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/features/airflow-provider/">RudderStack Airflow Provider</a> documentation.
 </div>
 
 ## Sync schedule considerations
@@ -76,13 +76,13 @@ The following considerations must be kept in mind while setting a sync schedule 
 
 ### Upsert mode
 
-For [upsert mode](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/#upsert), you can trigger a new sync anytime by pressing the **Sync Now** button. 
+For [upsert mode](https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/#upsert), you can trigger a new sync anytime by pressing the **Sync Now** button. 
 
 RudderStack takes a snapshot of the data and syncs it at a later point once the pending syncs are completed.
 
 ### Mirror mode
 
-For [mirror mode](https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/#mirror-mode), you can run only one sync at any given point of time. 
+For [mirror mode](https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/#mirror-mode), you can run only one sync at any given point of time. 
 
 Suppose you have a sync scheduled for every 30 minutes. If there is a sync running for more than 30 minutes, then the next scheduled sync will be skipped.
 

@@ -17,17 +17,17 @@ With this feature, you can:
 
 <div class="successBlock">
   
-Models is a <a href="https://www.rudderstack.com/docs/warehouse-actions/">Reverse ETL</a> feature. For more information on setting up your Reverse ETL sources using models, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
+Models is a <a href="https://www.rudderstack.com/docs/reverse-etl/">Reverse ETL</a> feature. For more information on setting up your Reverse ETL sources using models, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
 </div>
 
 <div class="infoBlock">
 
 Currently, RudderStack supports this feature for the following Reverse ETL sources:
 <ul>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/amazon-redshift/">Amazon Redshift</a></li> 
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/google-bigquery/">Google BigQuery</a></li>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/postgresql/">PostgreSQL</a> </li>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/snowflake/">Snowflake</a></li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/amazon-redshift/">Amazon Redshift</a></li> 
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/google-bigquery/">Google BigQuery</a></li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/postgresql/">PostgreSQL</a> </li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/snowflake/">Snowflake</a></li>
 </ul>
 </div>
 
@@ -54,7 +54,7 @@ Follow these steps to create a model:
  
 <div class="warningBlock">
 
-Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <a href="https://www.rudderstack.com/docs/warehouse-actions/">Reverse ETL</a> source.
+Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <a href="https://www.rudderstack.com/docs/reverse-etl/">Reverse ETL</a> source.
 </div>
 
 <img src="../../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
@@ -76,7 +76,7 @@ The <strong>Preview</strong> section displays the preview of the 50 resultant ro
 8. Click on **Next** to create the model.
 
 <div class="infoBlock">
-Once a model is created, you can use it to send the data from a warehouse source to a specified destination. For more information and detailed steps, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
+Once a model is created, you can use it to send the data from a warehouse source to a specified destination. For more information and detailed steps, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
 </div>
 
 ## Updating an existing model
@@ -92,7 +92,7 @@ Follow these steps to update an existing model:
 
 <div class="infoBlock">
   
-If you update a model's query, you also need to check and update the relevant JSON mapping or <a href="https://www.rudderstack.com/docs/warehouse-actions/visual-data-mapper/">Visual Data Mapping</a>. To validate if the query is running fine, you can manually trigger a full sync.
+If you update a model's query, you also need to check and update the relevant JSON mapping or <a href="https://www.rudderstack.com/docs/reverse-etl/features/visual-data-mapper/">Visual Data Mapping</a>. To validate if the query is running fine, you can manually trigger a full sync.
 </div>
 
 ## Model details
@@ -103,7 +103,7 @@ To get details about an existing model, you can click on it to see the options l
 
 <img src="../../assets/warehouse-actions-sources/model-rename.png" alt="Rename model" />
 
-- **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to [Setting Up Connections Using Models](https://www.rudderstack.com/docs/warehouse-actions/features/setting-up-connections-using-models/).
+- **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to the [Setting Up Connections Using Models](https://www.rudderstack.com/docs/reverse-etl/features/models/) guide.
 - **Configuration**: Displays and lets you edit the SQL **Query** and **Description**.
 - **Settings**: This option contains the following two settings:
 
@@ -112,7 +112,7 @@ To get details about an existing model, you can click on it to see the options l
 
 <div class="infoBlock">
 
-After editing the credentials, it is recommended to validate the query by running it and fetching the preview via the <strong>Configuration</strong> tab as explained in the <a href="https://www.rudderstack.com/docs/connections/models/#updating-an-existing-model">Updating an existing model</a> section above.
+After editing the credentials, it is recommended to validate the query by running it and fetching the preview via the <strong>Configuration</strong> tab as explained in the <a href="https://www.rudderstack.com/docs/reverse-etl/features/models/#updating-an-existing-model">Updating an existing model</a> section above.
 </div>
 
 ## FAQ
@@ -133,7 +133,7 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema that you have created by successfully running the commands in the **User Permissions** section of the relevant [Reverse ETL source](https://www.rudderstack.com/docs/warehouse-actions/). 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema that you have created by successfully running the commands in the **User Permissions** section of the relevant [Reverse ETL source](https://www.rudderstack.com/docs/reverse-etl/). 
 
 <div class="warningBlock">
 

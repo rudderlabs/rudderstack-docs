@@ -1,5 +1,5 @@
 ---
-# slug: "/docs/warehouse-actions/Snowflake"
+# slug: "/docs/reverse-etl/Snowflake"
 title: "Snowflake"
 description: Step-by-step guide to ingest your data from Snowflake into RudderStack.
 ---
@@ -183,7 +183,7 @@ For more information on these validation steps, refer to the <a href="#faq">FAQ<
 
 <div class="infoBlock">
 
-RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
 </div>
 
 2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
@@ -199,15 +199,15 @@ If you have already configured a destination in RudderStack, choose the <strong>
 
 ## Specifying the data to import
 
-While connecting a destination to your Reverse ETL source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature.
+While connecting a destination to your Reverse ETL source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/reverse-etl/features/visual-data-mapper/) feature.
 
 <div class="infoBlock">
 
 Based on the option(Table/Model) you chose while setting up the Reverse ETL source, follow the relevant guide for detailed steps:
 
 <ul>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
 </ul>
 </div>
 
@@ -238,7 +238,7 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/snowflake#granting-permissions) section. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_RUDDERSTACK` schema you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/reverse-etl/snowflake#granting-permissions) section. 
 
 <div class="warningBlock">
 

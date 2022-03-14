@@ -1,5 +1,5 @@
 ---
-# slug: "/docs/warehouse-actions/importing-data-using-models"
+# slug: "/docs/reverse-etl/importing-data-using-models"
 title: "Importing Data using Models"
 description: Detailed technical description on importing data using RudderStack’s Models feature.
 ---
@@ -10,12 +10,12 @@ RudderStack's **Models** feature lets you define and run custom SQL queries on y
 
 <div class="infoBlock">
 
-You can create a model in the RudderStack dashboard and use it while connecting a Reverse ETL source to a destination. For detailed steps on how to create a model, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/models/">Models</a> guide.
+You can create a model in the RudderStack dashboard and use it while connecting a Reverse ETL source to a destination. For detailed steps on how to create a model, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/features/models/">Models</a> guide.
 </div>
 
 <div class="infoBlock">
   
-  This guide is applicable for Reverse ETL sources configured using the <strong>Model</strong> option. If you have configured your Reverse ETL source using the <strong>Table</strong> option, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a> guide.
+  This guide is applicable for Reverse ETL sources configured using the <strong>Model</strong> option. If you have configured your Reverse ETL source using the <strong>Table</strong> option, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</a> guide.
 </div>
 
 The settings to import and sync data from your model are listed below:
@@ -33,7 +33,7 @@ The dropdown will only display the list of models corresponding to the Reverse E
 
 <div class="infoBlock">
 
-RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-modes/">Sync Modes</a> guide.
+RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/">Sync Modes</a> guide.
 </div>   
 
 3. Select least one user identifier (**user_id/anonymous_id**) from the dropdown list.
@@ -46,7 +46,7 @@ You can also preview the data snippet which RudderStack will send to the destina
 
 <div class="infoBlock">
   
-Alternatively, you can map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
+Alternatively, you can map the columns using the <a href="https://www.rudderstack.com/docs/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
   
 </div>
 
