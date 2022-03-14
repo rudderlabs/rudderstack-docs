@@ -231,6 +231,8 @@ rudderanalytics.group("sample_group_id", {
 
 RudderStack lets you use the updated mapping feature for the `group` calls where it maps the group traits as event properties before sending them to PostHog. To use this feature, enable the **Use Updated Mapping for Group calls** setting in the RudderStack dashboard, as shown:
 
+<img src="../../assets/event-stream-destinations/posthog-updated-group-mapping.png" alt="PostHog group mapping setting" />
+
 If this setting is disabled(default case), RudderStack sends the group traits to PostHog as received without any modifications, as shown in the following snippet:
 
 ```json
