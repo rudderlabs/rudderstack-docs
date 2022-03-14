@@ -6,148 +6,166 @@ description: Step-by-step guide to ingest your data from PostgreSQL into RudderS
 
 # PostgreSQL
 
-PostgreSQL is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution to deliver efficient analytics and user insights. A myriad of other analytical tools in the market also integrate seamlessly with PostgreSQL. In fact, Amazon Redshift's design is inspired from PostgreSQL.
+PostgreSQL is an enterprise-grade, open source database management system. Many companies use PostgreSQL as a low-cost data warehousing solution to deliver efficient analytics and user insights.
 
-This guide will help you configure PostgreSQL as a source from which you can route event data to your desired destinations through RudderStack.
+RudderStack supports PostgreSQL as a source from which you can ingest data and route it to your desired downstream destinations.
 
-## Granting User Permissions
+## Granting permissions
 
-Run the SQL queries below in the **exact order** to grant the necessary permissions for the Warehouse Actions source:
+RudderStack requires you to grant certain user permissions on your PostgreSQL warehouse to successfully access data from it.
 
-### Creating the user
+Run the SQL queries listed in the following sections in the  **exact order** to grant these permissions:
 
-* The following command creates a new user `rudder` with password `<strong_unique_password>` in PostgreSQL.
+### Step 1: Creating the user
 
+- Create a new user `RUDDER` with a password `<strong_unique_password>` in PostgreSQL, as shown:
+
+```sql
+CREATE USER RUDDER WITH PASSWORD '<strong_unique_password>';
 ```
-CREATE USER rudder WITH PASSWORD '<strong_unique_password>';
-```
 
-### Creating the RudderStack schema and granting permissions
+### Step 2: Creating the RudderStack schema and granting permissions
 
-* The following command creates a dedicated schema `_rudderstack` used by RudderStack for storing the state of each data sync.
+1. Create a dedicated schema `_rudderstack`.
 
-```
+```sql
 CREATE SCHEMA "_rudderstack";
 ```
 
 <div class="warningBlock">
 
-The `_rudderstack` schema is used by RudderStack. Its name **should not** be changed.
+The <code class="inline-code">_rudderstack</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
 </div>
 
-* This command allows the user `rudder` to have full access to the schema `_rudderstack`:
+2. Grant full access to the schema `_rudderstack` for the user `RUDDER`.
 
-```
-GRANT ALL ON SCHEMA "_rudderstack" TO rudder;
-```
-
-* This command lets the user `rudder` to have full access to all the objects in the schema `_rudderstack`.
-
-```
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO rudder;
+```sql
+GRANT ALL ON SCHEMA "_rudderstack" TO RUDDER;
 ```
 
-### Granting permissions on your schema & table
+3. Grant full access to all the objects in the schema `_rudderstack` for the user `RUDDER`.
 
-* This command lets the user `rudder` look up objects within the schema `<YOUR_SCHEMA>`. Replace  with the exact name of your PostgreSQL database schema.
-
-```
-GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO rudder;
+```sql
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO RUDDER;
 ```
 
-* This command allows the user `rudder` to read data from the table `<YOUR_TABLE>`. Replace  and  with the exact name of your database schema and table names in PostgreSQL.
+### Step 3: Granting permissions on your schema and table
 
-```
-GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO rudder;
+1. To let the user `RUDDER` look up objects within the schema `<YOUR_SCHEMA>`, run the command below.
+
+```sql
+GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO RUDDER;
 ```
 
-* The following **optional** command lets the user `rudder` to read data from all the tables in the schema "":
+2. Grant access to the user `RUDDER` to read data from the table `<YOUR_TABLE>`.
 
+```sql
+GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO RUDDER;
 ```
-GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO rudder;
-```
+
+**Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your PostgreSQL schema and table, respectively**.
+
+#### Optional commands
 
 <div class="warningBlock">
 
-Run the above command only if you're okay with RudderStack being able to access the data in all the tables residing within your specified schema.
+Run the following commands only if you're okay with RudderStack being able to access the data in all the current or future tables residing within your specified schema.
 </div>
 
-* The following **optional** command allows the user `rudder` to read data from all the future tables in the schema `<YOUR_SCHEMA>`:
+* To allow the user `RUDDER` read the data from **all** the tables in the schema `<YOUR_SCHEMA>`:
 
+```sql
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO RUDDER;
 ```
-ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO rudder;
+
+* To allow the user `RUDDER` to read data from all the future tables in the schema `<YOUR_SCHEMA>`:
+
+```sql
+ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO RUDDER;
 ```
 
-<div class="warningBlock">
+**Replace `<YOUR_SCHEMA>` with the exact name of your PostgreSQL schema**.
 
-Run the above command only if you're okay with RudderStack being able to access the data in all the future tables residing within your specified schema.
-</div>
-
-## Setting Up the Source
+## Setting up the PostgreSQL source in RudderStack
 
 To set up PostgreSQL as a source in RudderStack, follow these steps:
 
-* Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-* From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
+### Naming the source
 
-<img src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3).png" />
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. From the left navigation bar, go to **Source** > **New Source** > **Warehouse Actions**.  Then, select **PostgreSQL**, as shown:
 
-* Scroll down to the **Warehouse Sources** and select **PostgreSQL**. Then, click on **Next**.
+<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select warehouse source in RudderStack" />
 
-<img src="../assets/screen-shot-2021-01-05-at-3.18.17-pm (1) (1) (1) (2) (2) (3) (3) (3) (3) (3) (3) (3) (3) (2) (3) (3) (3) (3) (3) (1).png" />
+3. Assign a name to your source.
 
-### Setting Up the Connection
+### Configuring the connection credentials
 
-* Assign a name to your source, and enter the **Connection Credentials**, as mentioned below. Then, click on **Next**.
-
-<img src="../assets/screen-shot-2021-01-05-at-3.19.33-pm.png" />
-
-<div class="successBlock">
-
-If you've already configured PostgreSQL as a source before, your existing credentials will automatically appear under **Use Existing Credentials**.
-</div>
-
-* The connection credentials are as follows:
-  * **Host -** The host name of your PostgreSQL service.
-  * **Database -** The database name in your PostgreSQL instance where the data is loaded.
-  * **User** - The username which has the required read/write access to the above database.
-  * **Password** - The password for the above user should be specified here.
-  * **Port** - The port number of your PostgreSQL service.
-
-### Specifying the Data to Import
-
-* Next, select the **Schema** and the **Table** from which you want RudderStack to import the data.
-
-<img src="../assets/screen-shot-2021-01-05-at-3.21.18-pm.png" />
-
-<div class="warningBlock">
-
-Your table must include one of the following columns - `email`, `user_id`, or `anonymous_id`.
-</div>
-
-* Once you specify the table containing the required columns, you will be able to preview a snippet of your data, as shown below:
-
-<img src="../assets/screen-shot-2021-01-05-at-3.21.38-pm.png" />
-
-* Here, you can select all or only a few specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**, as shown below. You can also preview the resultant JSON on the right. Once you've select the required table columns to import the data from, click on **Next**.
-
-<img src="../assets/screen-shot-2021-01-05-at-3.22.09-pm.png" />
-
-### Setting the Data Update Schedule
-
-* Next, you will be required to set the **Run Frequency** to schedule the data import from your PostgreSQL database to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option. Then, click on **Next**.
-
-<img src="../assets/screen-shot-2021-01-05-at-3.22.52-pm.png" />
-
-That's it! PostgreSQL is now successfully configured as a source on your RudderStack dashboard.
-
-RudderStack will start importing data from your PostgreSQL database as per the specified frequency. You can further connect this source to your preferred destinations by clicking on **Connect Destinations** or **Add Destinations**, as shown:
-
-<img src="../assets/screen-shot-2021-01-05-at-3.23.18-pm.png" />
+1. Choose the relevant option from **Table** or **Model** to use the source to sync data from either a warehouse table or a model.
 
 <div class="infoBlock">
 
-If you have already configured a destination on the RudderStack platform, choose the **Connect Destinations** option. To add a new destination from scratch, you can select the **Add Destination** option.
+For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Warehouse Actions source, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+<div class="infoBlock">
+If you have chosen the <strong>Model</strong> option, skip the next steps and refer to the <a href="#schedule-settings">Schedule settings</a> section directly.
+</div>
+
+2. Enter the relevant connection details in the **Connection Credentials** as listed below:
+
+    * **Host**: Enter the host name of your PostgreSQL service.
+    * **Database**: Enter the database name in your PostgreSQL instance where the data is loaded.
+    * **User**: Specify the username which has the required read/write access to the above database.
+    * **Password**: Enter the password for the above user.
+    * **Port**: Enter the port number of your PostgreSQL service.
+
+<div class="infoBlock">
+
+If you've configured a PostgreSQL source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
+</div>
+
+3. Click on **Continue**. RudderStack will then verify and validate your credentials. 
+
+<div class="infoBlock">
+
+For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section. 
+</div>
+
+4. Once verified, click on **Continue** to proceed.
+
+### Schedule settings
+
+1. Specify the **Schedule Settings** to schedule the data syncs from your PostgreSQL instance.
+
+<div class="infoBlock">
+
+RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+</div>
+
+2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
+
+PostgreSQL is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
+
+<img src="../assets/warehouse-actions-sources/add-destination.png" alt="Add destination in RudderStack" />
+
+<div class="infoBlock">
+
+If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destinations</strong> option which will take you to the <strong>Schema</strong> tab in the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.
+</div>
+
+## Specifying the data to import
+
+While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature.
+
+<div class="infoBlock">
+
+Based on the option(Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
+
+<ul>
+<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
+<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
+</ul>
 </div>
 
 ## FAQ
@@ -156,7 +174,7 @@ If you have already configured a destination on the RudderStack platform, choose
 
 When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
-<img src="../assets/validations.png" />
+<img src="../assets/warehouse-actions-sources/validations.png" alt="Validations" />
 
 These options are explained below:
 
@@ -168,13 +186,13 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema you have created by successfully running all the commands in the [**User Permissions**](https://rudderstack.com/docs/warehouse-actions/postgresql#creating-the-rudderstack-schema-and-granting-permissions) section. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema you have created by successfully running all the commands in the [User Permissions](#step-2-creating-the-rudderstack-schema-and-granting-permissions) section. 
 
 <div class="warningBlock">
 
-If this option gives an error, verify if you have successfully created the `_rudderstack` schema and given RudderStack the required permissions to access it. For more information, refer to [**this section**](https://rudderstack.com/docs/warehouse-actions/postgresql#creating-the-rudderstack-schema-and-granting-permissions).
+If this option gives an error, verify if you have successfully created the `_rudderstack` schema and given RudderStack the required permissions to access it. For more information, refer to the <a href="#step-2-creating-the-rudderstack-schema-and-granting-permissions">User Permissions</a> sections.
 </div>
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring PostgreSQL as a source on the RudderStack dashboard, please feel free to [contact us](mailto: docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
