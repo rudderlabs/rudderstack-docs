@@ -188,6 +188,15 @@ yarn add @rudderstack/rudder-integration-singular-react-native
 ```
 </span>
 </li>
+<li>Open your project-level <code class="inline-code">android/build.gradle</code> file and and add the following snippet:
+<span>
+```groovy
+repositories {
+  maven { url "https://maven.singular.net/" }
+}
+```
+</span>
+</li>
 <li>Then, import the above module and add it to your SDK initialization, as shown:
 <span>
 
