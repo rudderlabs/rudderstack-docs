@@ -303,6 +303,14 @@ However, if this setting is enabled, RudderStack sends the group traits as event
 }
 ```
 
+The mapping is as shown:
+
+| Group trait | Updated group mapping disabled | Updated group mapping enabled |
+| :---------| :------| :--------|
+| `groupId` | `groupId` | `$group_key` |
+| `groupType` | `groupType`| `$group_type` |
+| `traits.value` | `traits.value` | `$group_set.value` |
+
 ## Alias
 
 Calling `alias()` passes an `alias`call with `userId` and `previousId` to the PostHog queue.
