@@ -6,7 +6,7 @@ description: Step-by-step guide to send event data from RudderStack to PostHog.
 
 # PostHog
 
-[**PostHog**](https://posthog.com/) is a complete product analytics stack built for data analysts and managers. It gives you easy access to scalable product analytics with full control over all your user data.
+[PostHog](https://posthog.com/) is a complete product analytics stack built for data analysts and managers. It gives you easy access to scalable product analytics with full control over all your user data.
 
 RudderStack supports PostHog as a destination to which you can seamlessly send your event data for analytics.
 
@@ -62,7 +62,7 @@ For more information on obtaining your PostHog Team API Key, refer to the <a hre
 If you’re hosting your own PostHog instance, add the URL of your instance without the trailing slash. So, the URL will look something like <code class="inline-code">https://[your-instance].com</code>.
 </div>
 
-**Use updated mapping for Group calls**: This setting is disabled by default. When enabled, RudderStack sends the `group` traits as event properties to PostHog.
+- **Use updated mapping for Group calls**: This setting is disabled by default. When enabled, RudderStack sends the `group` traits as event properties to PostHog.
 
 ### Web SDK settings
 
@@ -86,80 +86,89 @@ For more information on PostHog's session recording feature, refer to the <a hre
 
 ## Identify
 
-To identify a user to PostHog, you need to call the `identify` API.
+To identify a user in PostHog, you need to call RudderStack's `identify` API.
 
 <div class="infoBlock">
 
-For information on the <code class="inline-code">identify</code> call, please refer to our <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a> guide.
-
+For information on the <code class="inline-code">identify</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
 </div>
 
 A sample `identify` call is as shown below:
 
 ```javascript
-rudderanalytics.identify("name123", {
-  name: "Name Surname",
-  first_name: "Name",
-  last_name: "Surname",
-  email: "name@surname.com",
-  createdAt: "Thu Mar 24 2020 17:46:45 GMT+0000 (UTC)",
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  name: "Alex Keener",
+  first_name: "Alex",
+  last_name: "Keener",
+  email: "alex@example.com",
+  createdAt: "2019-07-23T23:45:56.000Z",
 })
 ```
 
-We pass the user traits passed along with the `identify` call to PostHog under the `$set` key according to the [PostHog Identify API](https://posthog.com/docs/api/post-only-endpoints#identify) .
+<div class="infoBlock">
+
+RudderStack passes the user traits within the <code class="inline-code">identify</code> call to PostHog under the <code class="inline-code">$set</code> key according to the <a href="https://posthog.com/docs/api/post-only-endpoints#identify" target="_blank">PostHog Identify API</a>.
+</div>
 
 ## Page
 
-The `page` call allows you to record information whenever a user sees a web page, along with the associated optional properties of that page.
+The `page` call lets you record your app's page views with any additional relevant information about the viewed page.
+
+<div class="infoBlock">
+
+For information on the <code class="inline-code">page</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
+</div>
 
 ```javascript
 rudderanalytics.page({
-  path: "path",
-  url: "url",
-  title: "title",
-  search: "search",
-  referrer: "referrer",
+  path: "/best-seller/1",
+  url: "https://www.estore.com/best-seller/1",
+  title: "EStore Bestsellers",
+  search: "estore bestseller",
+  referrer: "https://www.google.com/search?q=estore+bestseller",
 })
 ```
 
+In the above example, RudderStack captures information related to the viewed page such as its path, URL, referrer, etc.
+
 <div class="infoBlock">
 
-For the <code class="inline-code">page</code> call, we send <code class="inline-code">$pageview</code> as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#page">PostHog Page API</a>.
-
+For the <code class="inline-code">page</code> call, RudderStack sends <code class="inline-code">$pageview</code> as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#page" target="_blank">PostHog Page API</a>.
 </div>
-
-In the above sample, we capture information related to the page being viewed such as the category of the page \(`Category`\), as well as the name of the page \(`Sample`\) along with the unique user ID.
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties.
+The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the screen.
 
 <div class="infoBlock">
 
-The <code class="inline-code">screen</code> call is similar to the <code class="inline-code">page</code> call, but it is exclusive to your mobile device.
-
+For information on the <code class="inline-code">screen</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack API Specification</a> guide.
 </div>
 
-A sample `screen` call using RudderStack's iOS SDK is as shown:
+A sample `screen` call using RudderStack's iOS SDK is shown below:
 
 ```javascript
-[[RudderClient sharedInstance] screen:@"Main"
-            properties:@{@"prop_key" : @"prop_value"}];
+[[RudderClient sharedInstance] screen:@"Home Screen"
+            properties:@{@"category" : @"launcher"}];
 ```
+
+In the above snippet, RudderStack captures information related to the viewed screen such as its name and category.
 
 <div class="infoBlock">
 
-For screen call we send <code class="inline-code">$screen</code> as an event to PostHog according to <a href="https://posthog.com/docs/api/post-only-endpoints#screen">PostHog Screen API</a>.
-
+For the <code class="inline-code">screen</code> call, RudderStack sends <code class="inline-code">$screen</code> as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#screen" target="_blank">PostHog Screen API</a>.
 </div>
-
-In the above snippet, we capture information related to the screen being viewed, such as the name and category.
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, along with the properties that are associated with that action. Each action is considered to be an event.
+The `track` call allows you to capture any user actions along with the properties that are associated with those actions. Each action is considered to be an event.
 
-A sample `track` call looks like the following:
+<div class="infoBlock">
+
+For information on the <code class="inline-code">track</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
+</div>
+
+A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track("Order Completed", {
@@ -193,30 +202,29 @@ rudderanalytics.track("Order Completed", {
 
 <div class="infoBlock">
 
-PostHog support <code class="inline-code">track</code> call as type<code class="inline-code">capture.</code> It sends the user behavior/action as an event. This information is sent to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#capture">PostHog Capture API</a>.
-
+PostHog supports the RudderStack <code class="inline-code">track</code> call as type<code class="inline-code">capture.</code> and sends the user action as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#capture" target="_blank">PostHog Capture API</a>.
 </div>
 
 ## Alias
 
-Calling `rudderanalytics.alias()` passes an `alias`call with `userId` and `previousId` to the PostHog queue.
-
-The following code snippet shows a sample `alias` call in RudderStack:
-
-```javascript
-rudderanalytics.alias("newUserId")
-```
+Calling `alias()` passes an `alias`call with `userId` and `previousId` to the PostHog queue.
 
 <div class="infoBlock">
 
-For alias call, we send $create_alias as an event to PostHog according to <a href="https://posthog.com/docs/api/post-only-endpoints#alias">PostHog Alias API</a>.
-
+For information on the <code class="inline-code">alias</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
 </div>
 
+A sample `alias` call in RudderStack is as shown:
+
+```javascript
+rudderanalytics.alias("user01", "previous01")
+```
+
+In the above example, `previous01` gets mapped to `distinct id` in PostHog, while `user01` gets mapped to `alias` in PostHog.
+
 <div class="infoBlock">
 
-Here, <code class="inline-code">previousUserId</code> gets mapped to _distinct id_ and <code class="inline-code">newUserId</code> to _alias_ in PostHog.
-
+For the <code class="inline-code">alias</code> call, RudderStack sends <code class="inline-code">$create_alias</code> as an event to PostHog according to <a href="https://posthog.com/docs/api/post-only-endpoints#alias" target="_blank">PostHog Alias API</a>.
 </div>
 
 ## Group
@@ -236,12 +244,13 @@ rudderanalytics.group("sample_group_id", {
 })
 ```
 
-## Super Properties in Web
+## Passing super properties in the PostHog web SDK
 
-To pass [super properties](https://posthog.com/docs/integrations/js-integration#super-properties) to PostHog JavaScript SDK, pass the key-value pairs as below:
+To pass [super properties](https://posthog.com/docs/integrations/js-integration#super-properties) to the PostHog JavaScript SDK, you can pass the key-value pairs as shown:
+
+- The following example will set `superKey1: "value1", superKey2: "value2"` as super properties to the PostHog web SDK:
 
 ```javascript
-// This will set {superKey1: "value1", superKey2: "value2"} as super properties to PostHog SDK
 rudderanalytics.track("event", {prop: "value"}, {
   integrations: {
     POSTHOG: {
@@ -253,6 +262,8 @@ rudderanalytics.track("event", {prop: "value"}, {
   }
 })
 ```
+
+- The following example will set `superKey3: "value3"` as super properties just once and pass on to the PostHog web SDK:
 
 ```javascript
 // This will set {superKey3: "value3"} as set once super properties to PostHog SDK
@@ -266,6 +277,8 @@ rudderanalytics.track("event", {prop: "value"}, {
   }
 })
 ```
+
+- The following example unsets the previously set super properties:
 
 ```javascript
 // This will unset super properties superKey1, superKey2, superKey3 to PostHog SDK
@@ -284,15 +297,14 @@ rudderanalytics.track("event", {prop: "value"}, {
 
 <div class="infoBlock">
 
-Super properties related info can be passed to any of <code class="inline-code">track</code>, <code class="inline-code">page</code> and <code class="inline-code">identify</code> calls to the RudderStack JavaScript SDK.
-
+The super properties can be passed to any of <code class="inline-code">track</code>, <code class="inline-code">page</code>, or <code class="inline-code">identify</code> calls of the RudderStack JavaScript SDK.
 </div>
 
-## Property Mapping
+## Property mapping
 
-RudderStack maps the following `properties` sent to Posthog standard contextual properties:
+RudderStack maps the following `properties` sent to the Posthog standard contextual properties:
 
-| Standard Rudder Field           | Standard Posthog Field |
+| RudderStack field           | PostHog field |
 | :------------------------------ | :--------------------- |
 | `context.os.name`               | `$os`                  |
 | `context.page.url`              | `$current_url`         |
@@ -324,18 +336,19 @@ RudderStack maps the following `properties` sent to Posthog standard contextual 
 
 <div class="warningBlock">
 
-**Note**: Posthog has a property **$insert_id** which is auto generated by posthog sdk when using device-mode. But when using RudderStack cloud-mode we do not map any value to this property.
-
+The PostHog SDK autogenerates the property <code class="inline-code">$insert_id</code> when you send event via the RudderStack device mode. However, when sending the events via the cloud mode, RudderStack does not map any value to this property.
 </div>
 
 ## FAQs
 
-### **How do you get the PostHog Team API Key?**
+### How do I obtain the PostHog Team API Key?
 
-- Login to PostHog dashboard.
-- Go to the **Settings** tab under the **Project** section on the left sidebar.
-- You will find your key written as **Project API Key** or **Team API Key**.
+To get your PostHog Project API Key or Team API Key, follow the steps below:
 
-## Contact Us
+1. Login to your PostHog dashboard.
+2. Go to the **Settings** tab under the **Project** section in the left sidebar.
+3. Find your key under **Project API Key** or **Team API Key**.
 
-If you come across any issues while configuring PostHog with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
