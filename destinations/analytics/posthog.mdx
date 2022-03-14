@@ -64,6 +64,11 @@ If you’re hosting your own PostHog instance, add the URL of your instance with
 
 - **Use updated mapping for Group calls**: This setting is disabled by default. When enabled, RudderStack sends the `group` traits as event properties to PostHog.
 
+<div class="infoBlock">
+
+For more information, refer to the <a href="#updating-group-mapping">Updated group mapping</a> section below.
+</div>
+
 ### Web SDK settings
 
 This section lists some of the other configurable settings while setting up the PostHog destination in RudderStack.
@@ -205,6 +210,97 @@ rudderanalytics.track("Order Completed", {
 PostHog supports the RudderStack <code class="inline-code">track</code> call as type<code class="inline-code">capture.</code> and sends the user action as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#capture" target="_blank">PostHog Capture API</a>.
 </div>
 
+## Group
+
+The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
+
+<div class="infoBlock">
+
+The group call sends <code class="inline-code">$group</code> as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#group">PostHog Group API</a>.
+
+</div>
+
+```javascript
+rudderanalytics.group("sample_group_id", {
+  name: "CompanyA",
+  location: "USA",
+})
+```
+
+### Updated group mapping
+
+RudderStack lets you use the updated mapping feature for the `group` calls where it maps the group traits as event properties before sending them to PostHog. To use this feature, enable the **Use Updated Mapping for Group calls** setting in the RudderStack dashboard, as shown:
+
+If this setting is disabled(default case), RudderStack sends the group traits to PostHog as received without any modifications, as shown in the following snippet:
+
+```json
+{
+  "version": "1",
+  "type": "REST",
+  "method": "POST",
+  "endpoint": "https://app.posthog.com/batch",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "params": {},
+  "body": {
+    "JSON": {
+      "groupId": "groupId27",
+      "distinct_id": "sampleusrRudder7",
+      "traits": {
+        "groupType": "company",
+        "KEY_3": {
+          "CHILD_KEY_92": "value_95",
+          "CHILD_KEY_102": "value_103"
+        },
+        "name_trait": "Company",
+        "value_trait": "Company-ABC"
+      },
+      "messageId": "e5034df0-a404-47b4-a463-76df99934fea",
+      "event": "$group",
+      "api_key": "LNDs0JGdwbknNGolFc4HdoAE",
+      "type": "group"
+    },
+  },
+}
+```
+
+However, if this setting is enabled, RudderStack sends the group traits as event properties to PostHog, as shown below:
+
+```json
+{
+  "version": "1",
+  "type": "REST",
+  "method": "POST",
+  "endpoint": "https://app.posthog.com/batch",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "params": {},
+  "body": {
+    "JSON": {
+      "distinct_id": "sampleusrRudder7",
+      "messageId": "e5034df0-a404-47b4-a463-76df99934fea",
+      "properties": {
+        "$group_key": "groupId27",
+        "$group_type": "company",
+        "$group_set": {
+          "KEY_3": {
+            "CHILD_KEY_92": "value_95",
+            "CHILD_KEY_102": "value_103"
+          },
+          "name_trait": "Company",
+          "value_trait": "Comapny-ABC"
+        },
+      },
+      "event": "$group",
+      "api_key": "LNDs0JGdwbknNGolFc4HdoAE",
+      "type": "group"
+    },
+  },
+}
+```
+
 ## Alias
 
 Calling `alias()` passes an `alias`call with `userId` and `previousId` to the PostHog queue.
@@ -226,23 +322,6 @@ In the above example, `previous01` gets mapped to `distinct id` in PostHog, whil
 
 For the <code class="inline-code">alias</code> call, RudderStack sends <code class="inline-code">$create_alias</code> as an event to PostHog according to <a href="https://posthog.com/docs/api/post-only-endpoints#alias" target="_blank">PostHog Alias API</a>.
 </div>
-
-## Group
-
-The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
-
-<div class="infoBlock">
-
-The group call sends <code class="inline-code">$group</code> as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#group">PostHog Group API</a>.
-
-</div>
-
-```javascript
-rudderanalytics.group("sample_group_id", {
-  name: "CompanyA",
-  location: "USA",
-})
-```
 
 ## Passing super properties in the PostHog web SDK
 
