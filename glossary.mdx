@@ -11,13 +11,13 @@ This guide lists the definitions of the RudderStack-related terms that you are l
 
 The RudderStack API Spec helps you plan your event data and provides various options for tracking your events across all the RudderStack SDKs and APIs. As RudderStack has a unified event semantic for different destination platforms, you can easily translate your event data to different downstream tools by following this spec.
 
-For more information on the RudderStack API Specification, refer to our [docs](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/).
+For more information on the RudderStack API Specification, refer to [API spec](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
 
 ## Audit logs
 
 Audit Logs is RudderStack's enterprise feature that gives you a detailed log of the user activities happening within your RudderStack workspace. These activities include the various user operations related to sources, destinations, transformations, and more.
 
-For more information on the audit logs feature, refer to the <a href="https://rudderstack.com/docs/get-started/dashboard-overview/audit-logs/">Audit Logs</a> guide.
+For more information on the audit logs feature, refer to the [Audit Logs](https://rudderstack.com/docs/get-started/dashboard-overview/audit-logs/) guide.
 
 ## Cloud Extract
 
@@ -120,7 +120,7 @@ Check out the [RudderStack blog post](https://rudderstack.com/blog/clickstream-a
 
 RudderStack's [Event Stream](https://rudderstack.com/docs/stream-sources/) feature lets you collect your event data from all of your web and mobile apps and route it to a wide array of customer tools and data warehouses via RudderStack.
 
-For more information on the various Event Stream sources supported by RudderStack, check out the [docs](https://rudderstack.com/docs/stream-sources/).
+For more information on the various Event Stream sources supported by RudderStack, refer to the [Event Stream](https://rudderstack.com/docs/stream-sources/) guide.
 
 ## Live Events
 
@@ -131,11 +131,11 @@ Broadly speaking, this feature can be further classified into two categories:
 * [Source Live Events](https://rudderstack.com/docs/get-started/live-events#source-live-events): This feature gives you real-time visibility into the source events collected by RudderStack. This way, you can confirm if your source is configured correctly and is collecting & sending data as expected. 
 * [Destination Live Events](https://rudderstack.com/docs/get-started/live-events#destination-live-events): When routing events to a destination, sometimes events don't show up in your destination. This feature gives you real-time visibility into the destination's responses and helps you troubleshoot the problem.
 
-For more information on this feature, check out our [docs](https://rudderstack.com/docs/get-started/live-events/).
+For more information on this feature, refer to the [Live Events](https://rudderstack.com/docs/get-started/live-events/) guide.
 
 ## Reverse ETL
 
-Reverse ETL is the process of routing the enriched data residing in your data warehouse to various downstream tools within your customer data stack. This includes various SaaS marketing, analytics, sales, and customer support tools.
+Reverse ETL is the process of routing the data residing in your data warehouse to various downstream tools within your customer data stack. This includes various SaaS marketing, analytics, sales, and customer support tools.
 
 Check out our [blog](https://rudderstack.com/blog/reverse-etl-is-just-another-data-pipeline) to read more about Reverse ETL and how RudderStack facilitates it via the [Reverse ETL](https://rudderstack.com/docs/reverse-etl/) feature.
 
@@ -151,19 +151,19 @@ Refer to the [SDK documentation](https://rudderstack.com/docs/stream-sources/rud
 
 A source is a platform or an application \(web, mobile, server-side, or a third-party cloud app\) from where RudderStack tracks and collects your event data. We highly recommend creating a source for every unique data source that you want to track.
 
-For more information on RudderStack sources, check out our [documentation](https://rudderstack.com/docs/connections/#sources).
+For more information on RudderStack sources, refer to the [documentation](https://rudderstack.com/docs/connections/#sources).
 
 ## Visual Data Mapper
 
-The Visual Data Mapper(VDM) is a Reverse ETL functionality. It offers an intuitive UI to map your data warehouse columns to specific destination fields without any second-guessing.
+The Visual Data Mapper(VDM) is a Reverse ETL feature. It offers an intuitive UI to map your data warehouse columns to specific destination fields without any second-guessing.
 
-For more information on RudderStack sources, check out our [documentation](https://rudderstack.com/docs/reverse-etl/features/visual-data-mapper/).
+For more information on RudderStack sources, refer to the [documentation](https://rudderstack.com/docs/reverse-etl/features/visual-data-mapper/).
 
 ## Teammates
 
 RudderStack's Teammates feature enables you to add and manage other users in your current RudderStack workspace. It facilitates easier collaboration between you and other team members of your organization in using RudderStack effectively.
 
-For more information on the Teammates feature, check out our [documentation](https://rudderstack.com/docs/get-started/dashboard-overview/user-management/).
+For more information on the Teammates feature, refer to the [documentation](https://rudderstack.com/docs/get-started/dashboard-overview/user-management/).
 
 ## Transformations
 
@@ -173,19 +173,19 @@ RudderStack's [Transformations](https://www.rudderstack.com/docs/transformations
   * Implementing a static logic to enrich your events
   * Removing any sensitive PII information from your customer events, and a lot more.
 
-For more details on this feature and how to use it, check out our [Transformations](https://rudderstack.com/docs/transformations/) docs.
+For more details on this feature and how to use it, refer to the [Transformations](https://rudderstack.com/docs/transformations/) guide.
 
 ## User suppression
 
 [User Suppression](https://rudderstack.com/docs/rudderstack-api/user-suppression/) is RudderStack's enterprise feature that lets you programmatically suppress user data identified by a user ID. With this feature, you can block all the user data for all the sources and destinations in RudderStack.
 
-Refer to the [RudderStack User Suppression API](https://rudderstack.com/docs/rudderstack-api/user-suppression/) reference for more information.
+Refer to the [RudderStack User Suppression API](https://rudderstack.com/docs/rudderstack-api/user-suppression/) guide for more information.
 
 ## Reverse ETL
 
 [Reverse ETL](https://rudderstack.com/docs/reverse-etl/) is RudderStack's Reverse-ETL feature. It allows you to leverage the already processed customer data residing in your data warehouse and route this enriched information to your desired destinations, including SaaS marketing, analytics, sales, and customer support tools.
 
-For more information on the various Reverse ETL sources and how to set them up in RudderStack, check out the [docs](https://rudderstack.com/docs/reverse-etl/).
+For more information on the various Reverse ETL sources and how to set them up in RudderStack, refer to the [docs](https://rudderstack.com/docs/reverse-etl/).
 
 ## Warehouse destination
 
@@ -193,7 +193,7 @@ RudderStack supports sending events to your data warehouse. These are called the
 
 Currently, RudderStack supports integration with all the leading data warehouses like Amazon Redshift, Azure Synapse, Google BigQuery, Snowflake, PostgreSQL, ClickHouse, and Microsoft SQL Server.
 
-For more information on how to use these warehouse destinations, check out our [Data Warehouse Integration](https://rudderstack.com/docs/data-warehouse-integrations) guides.
+For more information on how to use these warehouse destinations, refer to the [Data Warehouse Integration](https://rudderstack.com/docs/data-warehouse-integrations) guides.
 
 ## Warehouse schema
 
