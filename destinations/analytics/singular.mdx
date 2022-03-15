@@ -236,7 +236,7 @@ cordova plugin add rudder-integration-singular-cordova
 <li>Then, add the following code in the <code class="inline-code">onDeviceReady()</code> function of your app's home page to initialize the SDK, as shown:
 <span>
 
-```bash
+```javascript
 RudderClient.initialize(<WRITE_KEY>, {
   dataPlaneUrl: <DATA_PLANE_URL>,
   factories: [RudderSingularFactory]
