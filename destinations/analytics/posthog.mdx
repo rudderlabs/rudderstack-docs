@@ -62,7 +62,7 @@ For more information on obtaining your PostHog Team API Key, refer to the <a hre
 If you’re hosting your own PostHog instance, add the URL of your instance without the trailing slash. So, the URL will look something like <code class="inline-code">https://[your-instance].com</code>.
 </div>
 
-- **Use updated mapping for Group calls**: This setting is disabled by default. When enabled, RudderStack sends the `group` traits as event properties to PostHog.
+- **Use updated mapping for Group calls**: Enable this setting to send the `group` traits as event properties to PostHog.
 
 <div class="infoBlock">
 
@@ -166,7 +166,7 @@ For the <code class="inline-code">screen</code> call, RudderStack sends <code cl
 
 ## Track
 
-The `track` call allows you to capture any user actions along with the properties that are associated with those actions. Each action is considered to be an event.
+The track call lets you capture user events along with the properties associated with them.
 
 <div class="infoBlock">
 
@@ -233,7 +233,7 @@ RudderStack lets you use the updated mapping feature for the `group` calls where
 
 <img src="../../assets/event-stream-destinations/posthog-updated-group-mapping.png" alt="PostHog group mapping setting" />
 
-If this setting is disabled(default case), RudderStack sends the group traits to PostHog as received without any modifications, as shown in the following snippet:
+When disabled (default), RudderStack sends the group traits to PostHog as received without any modifications, as shown in the following snippet:
 
 ```json
 {
@@ -267,7 +267,7 @@ If this setting is disabled(default case), RudderStack sends the group traits to
 }
 ```
 
-With the updated group mapping setting enabled, RudderStack sends the group traits as event properties to PostHog, as shown:
+When enabled, RudderStack sends the group traits as event properties to PostHog, as shown:
 
 ```json
 {
