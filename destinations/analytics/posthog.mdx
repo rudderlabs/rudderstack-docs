@@ -46,14 +46,14 @@ To successfully configure PostHog as a destination, you will need to configure t
 
 <img src="../../assets/event-stream-destinations/posthog-connection-settings.png" alt="PostHog connection settings" />
 
-The settings are listed below:
-
 - **Team API Key**: Enter your PostHog team API key. This is a mandatory field.
 
 <div class="infoBlock">
 
 For more information on obtaining your PostHog Team API Key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
+
+The settings are listed below:
 
 - **Instance URL**: Enter your PostHog instance URL.
 
@@ -62,11 +62,7 @@ For more information on obtaining your PostHog Team API Key, refer to the <a hre
 If you’re hosting your own PostHog instance, add the URL of your instance without the trailing slash. So, the URL will look something like <code class="inline-code">https://[your-instance].com</code>.
 </div>
 
-### Additional settings
-
-This section lists some of the other configurable settings while setting up the PostHog destination in RudderStack.
-
-<img src="../../assets/event-stream-destinations/posthog-additional-settings.png" alt="PostHog additional connection settings" />
+<img src="../../assets/event-stream-destinations/posthog-updated-group-mapping.png" alt="PostHog updated group mapping settings" />
 
 - **Use updated mapping for Group calls**: Enable this setting to send the `group` traits as event properties to PostHog.
 
@@ -74,6 +70,12 @@ This section lists some of the other configurable settings while setting up the 
 
 For more information, refer to the <a href="#updated-group-mapping">Updated group mapping</a> section below.
 </div>
+
+### Web SDK settings
+
+This section lists some of the other configurable settings when sending events to PostHog via the web device mode.
+
+<img src="../../assets/event-stream-destinations/posthog-web-sdk-settings.png" alt="PostHog web SDK settings" />
 
 - **Use device mode to send events**: If enabled, RudderStack will send the events to PostHog via the [device mode](https://www.rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).
 - **Enable Local Storage for Persistence**: Enable this option to reduce the amount of data stored in the cookies by storing it locally instead.
