@@ -71,22 +71,69 @@ This field is required only when you want to send data to a customer list of a s
 
 ### Event settings
 
-
+**List of Conversion**: Enter the list of events on which you want to perform enhanced conversions. RudderStack will discard any events that are not specified in this list.
 
 ## Track
 
+The `track` call lets you record the conversion events along with any properties associated with them.
 
+<div class="infoBlock">
 
-### Supported schema mapping
+For information on the <code class="inline-code">track</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
+</div>
 
-The following table details the mapping of the schema fields specified in the RudderStack dashboard and Google AdWords Enhanced Conversions, along with the relevant guidelines:
+A sample `track` call is shown below:
 
-| RudderStack schema field | Google AdWords Enhanced Conversions field | Guidelines |
+```javascript
+rudderanalytics.track("Order Completed", {
+  checkout_id: "12345",
+  order_id: "123",
+  affiliation: "Apple Store",
+  total: 20,
+  revenue: 15.0,
+  shipping: 22,
+  tax: 1,
+  discount: 1.5,
+  coupon: "SAVE45",
+  currency: "USD",
+  products: [
+    {
+      product_id: "FS247",
+      sku: "G-32",
+      name: "Monopoly",
+      price: 14,
+      quantity: 1,
+      category: "Games",
+      url: "https://www.estore.com/product/funskool-monopoly",
+    },
+  ],
+})
+```
+
+<div class="warningBlock">
+
+RudderStack will discard any <code class="inline-code">track</code> call where <code class="inline-code">orderId</code> is not present. This is because <code class="inline-code">orderId</code> is a required field for enhancement.
+</div>
+
+### Supported mapping
+
+The following table details the mapping of the fields specified in the RudderStack dashboard and Google AdWords Enhanced Conversions, along with the relevant guidelines:
+
+| RudderStack field | Google AdWords Enhanced Conversions field | Guidelines |
 | :-----| :--------| :------|
+| `properties.gclid` | `gclid` | This is the Google click ID associated with the original conversion. |
+| `properties.conversionDateTime`  | `conversionDateTime` | The datetime at which the conversion for the adjustment occurred. You must specify the timezone in the format `yyyy-mm-dd hh:mm:ss+|-hh:mm`, e.g. `2022-03-14 12:32:45-03:14`. |
+| `properties.adjustedValue` | `adjustedValue` | The value of the conversion after restatement. To change the value of a conversion from `100` to `75`, for example, you should report an adjusted value of `75`. |  
+| `properties.currencyCode` | `currencyCode` |  Use the ISO 4217 3-character currency code, e.g. `USD`/`EUR`. |
+| `properties.orderId` | `orderId` | If a conversion was reported with a specific order ID, then that order ID must be used as the identifier. |
+| `adjustmentDateTime` | `adjustmentDateTime` | The datetime at which the adjustment occurred. You must specify the timezone in the format `yyyy-mm-dd hh:mm:ss+|-hh:mm`, e.g. `2022-03-14 12:32:45-03:14`. |
+| `properties.userAgent` | `userAgent` | User agent should only be specified in enhancements with the user identifiers and it should match the user agent of the request that sent the original conversion. This is so that the conversion and the enhancement both are either attributed as same or cross-device. |
 | `email` | `hashedEmail` | Include a domain name for all the email addresses. Remove any spaces in between the addresses. |
 | `phone` | `hashedPhone` | Format the phone number using the [E.164 format](https://en.wikipedia.org/wiki/E.164). Include the country code as well. |
 | `firstName` | `hashedFirstName` | Do not include any prefixes (e.g., `Mrs.`). | 
 | `lastName` | `hashedLastName` | Do not include any suffixes (e.g., `Sr.`). |
+| `city` | `city` | 
+| `state` | `state` |
 | `country` | `countryCode` | Use the ISO two-letter/three-letter [country codes](https://developers.google.com/google-ads/api/reference/data/codes-formats#expandable-16). Include the country code even if all your users belong to the same country. | 
 | `postalCode` | `postalCode` | Both the US and international zip and postal codes are allowed. For the US, 5 digit codes followed by 4 digit extensions are also allowed. For the rest of the countries, do not include the postal code extensions.
 | `mobileId` | `mobileId` | Only include the mobile device ID. No other data types are accepted.
