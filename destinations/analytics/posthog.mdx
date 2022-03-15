@@ -62,18 +62,18 @@ For more information on obtaining your PostHog Team API Key, refer to the <a hre
 If you’re hosting your own PostHog instance, add the URL of your instance without the trailing slash. So, the URL will look something like <code class="inline-code">https://[your-instance].com</code>.
 </div>
 
+### Additional settings
+
+This section lists some of the other configurable settings while setting up the PostHog destination in RudderStack.
+
+<img src="../../assets/event-stream-destinations/posthog-additional-settings.png" alt="PostHog additional connection settings" />
+
 - **Use updated mapping for Group calls**: Enable this setting to send the `group` traits as event properties to PostHog.
 
 <div class="infoBlock">
 
 For more information, refer to the <a href="#updated-group-mapping">Updated group mapping</a> section below.
 </div>
-
-### Web SDK settings
-
-This section lists some of the other configurable settings while setting up the PostHog destination in RudderStack.
-
-<img src="../../assets/event-stream-destinations/posthog-additional-settings.png" alt="PostHog additional connection settings" />
 
 - **Use device mode to send events**: If enabled, RudderStack will send the events to PostHog via the [device mode](https://www.rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).
 - **Enable Local Storage for Persistence**: Enable this option to reduce the amount of data stored in the cookies by storing it locally instead.
