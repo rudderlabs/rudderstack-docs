@@ -1441,7 +1441,7 @@ export const postNavList = [
  {
     "key":"tracking-plan-spreadsheet",
     "title":"Tracking Plan Spreadsheet",
-    "link":"/data-governance/tracking-plan-spreadsheet/",
+    "link":"/data-governance/tracking-plans/tracking-plan-spreadsheet/",
     "content":[]
  },
  {
