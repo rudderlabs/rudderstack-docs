@@ -467,105 +467,105 @@ export const postNavList = [
     "content":[]
    },
  {
-    "key":"warehouse-actions",
-    "title":"Warehouse Actions",
-    "link":"/warehouse-actions/",
+    "key":"reverse-etl",
+    "title":"Reverse ETL",
+    "link":"/reverse-etl/",
     "content":[]
  },
  {
     "key":"amazon-redshift",
     "title":"Amazon Redshift",
-    "link":"/warehouse-actions/amazon-redshift/",
+    "link":"/reverse-etl/amazon-redshift/",
     "content":[]
  },
  {
     "key":"amazon-s3",
     "title":"Amazon S3",
-    "link":"/warehouse-actions/amazon-s3/",
+    "link":"/reverse-etl/amazon-s3/",
     "content":[]
  },
  {
     "key":"clickhouse",
     "title":"ClickHouse",
-    "link":"/warehouse-actions/clickhouse/",
+    "link":"/reverse-etl/clickhouse/",
     "content":[]
  },
  {
     "key":"google-bigquery",
     "title":"Google BigQuery",
-    "link":"/warehouse-actions/google-bigquery/",
+    "link":"/reverse-etl/google-bigquery/",
     "content":[]
  },
  {
     "key":"postgresql",
     "title":"PostgreSQL",
-    "link":"/warehouse-actions/postgresql/",
+    "link":"/reverse-etl/postgresql/",
     "content":[]
  },
  {
     "key":"snowflake",
     "title":"Snowflake",
-    "link":"/warehouse-actions/snowflake/",
+    "link":"/reverse-etl/snowflake/",
     "content":[]
  },
  {
     "key":"features",
     "title":"Features",
-    "link":"/warehouse-actions/features/",
+    "link":"/reverse-etl/features/",
     "content":[]
  },
  {
    "key":"models",
    "title":"Models",
-   "link":"/warehouse-actions/features/models/",
+   "link":"/reverse-etl/features/models/",
    "content":[]
 },  
  {
     "key":"airflow-provider",
     "title":"AirFlow Provider",
-    "link":"/warehouse-actions/features/airflow-provider/",
+    "link":"/reverse-etl/features/airflow-provider/",
     "content":[]
  },
  {
     "key":"visual-data-mapper",
     "title":"Visual Data Mapper",
-    "link":"/warehouse-actions/features/visual-data-mapper/",
+    "link":"/reverse-etl/features/visual-data-mapper/",
     "content":[]
  },
  {
     "key":"common-settings",
     "title":"Common Settings",
-    "link":"/warehouse-actions/common-settings/",
+    "link":"/reverse-etl/common-settings/",
     "content":[]
  },
  {
     "key":"sync-modes",
     "title":"Sync Modes",
-    "link":"/warehouse-actions/common-settings/sync-modes/",
+    "link":"/reverse-etl/common-settings/sync-modes/",
     "content":[]
  },
  {
     "key":"sync-schedule-settings",
     "title":"Sync Schedule Settings",
-    "link":"/warehouse-actions/common-settings/sync-schedule-settings/",
+    "link":"/reverse-etl/common-settings/sync-schedule-settings/",
     "content":[]
  },
  {
     "key":"importing-data-using-tables",
     "title":"Importing Data using Tables",
-    "link":"/warehouse-actions/common-settings/importing-data-using-tables/",
+    "link":"/reverse-etl/common-settings/importing-data-using-tables/",
     "content":[]
  },
  {
     "key":"importing-data-using-models",
     "title":"Importing Data using Models",
-    "link":"/warehouse-actions/common-settings/importing-data-using-models/",
+    "link":"/reverse-etl/common-settings/importing-data-using-models/",
     "content":[]
  },
  {
    "key":"faq",
    "title":"FAQ",
-   "link":"/warehouse-actions/faq/",
+   "link":"/reverse-etl/faq/",
    "content":[]
 },
  {

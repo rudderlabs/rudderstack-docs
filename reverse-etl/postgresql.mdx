@@ -1,5 +1,5 @@
 ---
-# slug: "/docs/warehouse-actions/postgresql"
+# slug: "/docs/reverse-etl/postgresql"
 title: "PostgreSQL"
 description: Step-by-step guide to ingest your data from PostgreSQL into RudderStack.
 ---
@@ -93,9 +93,9 @@ To set up PostgreSQL as a source in RudderStack, follow these steps:
 ### Naming the source
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
-2. From the left navigation bar, go to **Source** > **New Source** > **Warehouse Actions**.  Then, select **PostgreSQL**, as shown:
+2. From the left navigation bar, go to **Source** > **New Source** > **Reverse ETL**.  Then, select **PostgreSQL**, as shown:
 
-<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select warehouse source in RudderStack" />
+<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select Reverse ETL source in RudderStack" />
 
 3. Assign a name to your source.
 
@@ -105,7 +105,7 @@ To set up PostgreSQL as a source in RudderStack, follow these steps:
 
 <div class="infoBlock">
 
-For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Warehouse Actions source, refer to the <a href="#faq">FAQ</a> section below.
+For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Reverse ETL source, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 <div class="infoBlock">
@@ -140,7 +140,7 @@ For more information on these validation steps, refer to the <a href="#faq">FAQ<
 
 <div class="infoBlock">
 
-RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
 </div>
 
 2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
@@ -156,15 +156,15 @@ If you have already configured a destination in RudderStack, choose the <strong>
 
 ## Specifying the data to import
 
-While connecting a destination to your Warehouse Actions source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/) feature.
+While connecting a destination to your Reverse ETL source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/reverse-etl/features/visual-data-mapper/) feature.
 
 <div class="infoBlock">
 
-Based on the option(Table/Model) you chose while setting up the Warehouse Actions source, follow the relevant guide for detailed steps:
+Based on the option(Table/Model) you chose while setting up the Reverse ETL source, follow the relevant guide for detailed steps:
 
 <ul>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
-<li><a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
 </ul>
 </div>
 
@@ -172,7 +172,7 @@ Based on the option(Table/Model) you chose while setting up the Warehouse Action
 
 ### What do the three validations under Verifying Credentials imply?
 
-When setting up a Warehouse Actions source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
 <img src="../assets/warehouse-actions-sources/validations.png" alt="Validations" />
 

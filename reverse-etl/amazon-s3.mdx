@@ -1,5 +1,5 @@
 ---
-# slug: "/docs/warehouse-actions/amazon-s3"
+# slug: "/docs/reverse-etl/amazon-s3"
 title: "Amazon S3"
 description: Step-by-step guide to ingest your data from Amazon S3 bucket into RudderStack.
 ---
@@ -17,7 +17,7 @@ To set up Amazon S3 as a source in RudderStack, follow these steps:
 ### Naming the source
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com).
-2. From the left panel, select go to **Source** > **New Source** > **Warehouse Actions**. Then, select **S3**, as shown:
+2. From the left panel, select go to **Source** > **New Source** > **Reverse ETL**. Then, select **S3**, as shown:
 
 <img src="../assets/warehouse-actions-sources/select-source.png" alt="Select S3 source in RudderStack" />
 
@@ -57,7 +57,7 @@ For more information on getting these AWS credentials, refer to the <a href="htt
 
 <div class="infoBlock">
 
-RudderStack lets you schedule data syncs for your Warehouse Actions sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/warehouse-actions/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
 </div>
 
 2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
@@ -97,12 +97,12 @@ Your S3 bucket(with the prefix, if specified above) should consist of Apache Par
 
 <div class="infoBlock">
 
-For more information on this option, refer to the <a href="https://rudderstack.com/docs/warehouse-actions/common-settings/importing-data-using-tables#add-constant">Add Constant</a> section.
+For more information on this option, refer to the <a href="https://rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-tables#add-constant">Add Constant</a> section.
 </div>
 
 <div class="infoBlock">
 
-As an alternative to JSON mapping, you can map the columns using the <a href="https://www.rudderstack.com/docs/warehouse-actions/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
+As an alternative to JSON mapping, you can map the columns using the <a href="https://www.rudderstack.com/docs/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
 </div>
 
 ## Updating an existing configuration
