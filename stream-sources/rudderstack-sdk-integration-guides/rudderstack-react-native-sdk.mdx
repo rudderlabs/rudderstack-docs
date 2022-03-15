@@ -180,13 +180,12 @@ Alternatively, you can use the following method signature:
 | `option`     | Object | No       | Extra options passed along with `screen` event.                     |
 
 
-You can also enable the automatic recording of screen views by passing <code class="inline-code">recordScreenViews</code> as <code class="inline-code">true</code> while initializing the <code class="inline-code">rudderClient</code>.  
-The default value for <code class="inline-code">recordScreenViews</code> is <code class="inline-code">false</code>. 
+You can also enable the automatic recording of screen views by passing `recordScreenViews` as `true` while initializing the `rudderClient`. It automatically sends a `screen` call for every screen that a user views/visits. The default value for `recordScreenViews` is `false`. 
 
-To track the screen views in React Native SDK, you can use the following code snippet: 
+The `recordScreenViews` parameter records the screen views by the native Android Activities or iOS View Controllers only and not by the React Native. To track the screen views by React Native, you can use the following code snippet:
 
 ```javascript
-import analytics from '@react-native-firebase/analytics';
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
 import {
   NavigationContainer
 } from '@react-navigation/native';
@@ -209,10 +208,7 @@ const App = () => {
         const currentRouteName = navigationRef.current.getCurrentRoute().name;
 
         if (previousRouteName !== currentRouteName) {
-          await analytics().logScreenView({
-            screen_name: currentRouteName,
-            screen_class: currentRouteName,
-          });
+          rudderClient.screen(currentRouteName);
         }
         routeNameRef.current = currentRouteName;
       }
