@@ -52,7 +52,7 @@ export const postNavList = [
  },
  {
     "key":"stream-sources",
-    "title":"Event Stream Sources",
+    "title":"Event Streams",
     "link":"/stream-sources/",
     "content":[]
  },
@@ -310,7 +310,7 @@ export const postNavList = [
  },
  {
     "key":"cloud-extract-sources",
-    "title":"Cloud Extract Sources",
+    "title":"Cloud Extract",
     "link":"/cloud-extract-sources/",
     "content":[]
  },
