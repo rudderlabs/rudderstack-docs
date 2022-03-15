@@ -124,6 +124,8 @@ The `page` call lets you record your app's page views with any additional releva
 For information on the <code class="inline-code">page</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
 </div>
 
+A sample `page` call is shown below:
+
 ```javascript
 rudderanalytics.page({
   path: "/best-seller/1",
@@ -216,9 +218,10 @@ The `group` call lets you associate a particular identified user with a group, s
 
 <div class="infoBlock">
 
-The group call sends <code class="inline-code">$group</code> as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#group">PostHog Group API</a>.
-
+For information on the <code class="inline-code">group</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
 </div>
+
+A sample `group` call is shown below:
 
 ```javascript
 rudderanalytics.group("sample_group_id", {
@@ -226,6 +229,11 @@ rudderanalytics.group("sample_group_id", {
   location: "USA",
 })
 ```
+
+<div class="infoBlock">
+
+The group call sends <code class="inline-code">$group</code> as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#group">PostHog Group API</a>.
+</div>
 
 ### Updated group mapping
 
@@ -313,7 +321,7 @@ The mapping is as shown:
 
 ## Alias
 
-Calling `alias()` passes an `alias`call with `userId` and `previousId` to the PostHog queue.
+Calling `alias()` passes `userId` and `previousId` to the PostHog queue.
 
 <div class="infoBlock">
 
