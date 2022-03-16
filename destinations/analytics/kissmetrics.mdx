@@ -6,13 +6,13 @@ description: Step-by-step guide to send event data from RudderStack to Kissmetri
 
 # Kissmetrics
 
-[Kissmetrics](https://www.kissmetricshq.com/) is a product analytics platform to help you increase conversion, as well as drive customer engagement and retention.
+[Kissmetrics](https://www.kissmetrics.io/) is a product analytics platform to help you increase conversion, as well as drive customer engagement and retention.
 
 RudderStack supports sending your events from cloud mode S2S \(Server to Server\) and Web Native SDKs by calling our APIs.
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kissmetrics">GitHub repo</a>.**
+Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kissmetrics">GitHub repo</a>.
 </div>
 
 ## Getting Started
@@ -29,7 +29,6 @@ Before configuring Kissmetrics as a destination in RudderStack, please make sure
 <div class="infoBlock">
 
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
 </div>
 
 Once you have confirmed that Kissmetrics supports the source type, perform the steps below:
@@ -55,7 +54,6 @@ Enabling this setting will add the event name to all the properties of the event
 <div class="infoBlock">
 
 You will need to enable this setting while building reports in Kissmetrics.
-
 </div>
 
 - Once you have finalized the settings, click on **Next** to complete the configuration and add Kissmetrics as a destination in RudderStack.
@@ -95,7 +93,6 @@ will pass the following to the `_kmq kissmetrics` object.
 <div class="infoBlock">
 
 Nested objects are flattened as <code class="inline-code">a.b.c</code> for input data <code class="inline-code">&#123;a:&#123;b:c&#125;&#125;</code> before sending the data to Kissmetrics, as it is unable to parse nested objects.
-
 </div>
 
 ## Page
@@ -129,8 +126,7 @@ The above snippet will pass the following to the `_kmq kissmetrics` object:
 
 <div class="infoBlock">
 
-Automatically-tracked Kissmetrics events such as **Visited a site**, etc. will function as and when integrated with RudderStack. Stay tuned!
-
+ Automatically-tracked Kissmetrics events such as <strong>Visited a site</strong>, etc. will function as and when integrated with RudderStack. Stay tuned!
 </div>
 
 ## Track
@@ -163,8 +159,7 @@ An event sent to RudderStack with a property called `revenue` , is passed on to 
 
 <div class="infoBlock">
 
-In order to send eCommerce events that have a product array as one of their <code class="inline-code">track</code> properties, RudderStack sends each product property to the <code class="inline-code">/s</code> endpoint from the cloud mode, or pushes it as <code class="inline-code">['set', &#123;id:, sku: ...&#125;]</code> from the native SDK.
-
+In order to send E-commerce events that have a product array as one of their <code class="inline-code">track</code> properties, RudderStack sends each product property to the <code class="inline-code">/s</code> endpoint from the cloud mode, or pushes it as <code class="inline-code">['set', &#123;id:, sku: ...&#125;]</code> from the native SDK.
 </div>
 
 ## Alias
