@@ -75,7 +75,7 @@ This field is required only when you want to send data to a customer list of a s
 
 ## Track
 
-The `track` call lets you record the conversion events along with any properties associated with them.
+The `track` call lets you record and send the conversion events along with any properties associated with them. 
 
 <div class="infoBlock">
 
@@ -115,6 +115,11 @@ rudderanalytics.track("Order Completed", {
 })
 ```
 
+<div class="infoBlock">
+
+RudderStack uses the <code class="inline-code"><a href="https://developers.google.com/google-ads/api/rest/reference/rest/v9/customers/uploadConversionAdjustments" target="_blank">ConversionAdjustment</a></code> method to send these events to Google Ads.
+</div>
+
 <div class="warningBlock">
 
 RudderStack will discard any <code class="inline-code">track</code> call where <code class="inline-code">orderId</code> is not present. This is because <code class="inline-code">orderId</code> is a required field for enhancement.
@@ -137,8 +142,8 @@ The following table details the mapping of the fields specified in the RudderSta
 | `phone` | `hashedPhone` | Format the phone number using the [E.164 format](https://en.wikipedia.org/wiki/E.164). Include the country code as well. |
 | `firstName` | `hashedFirstName` | Do not include any prefixes (e.g., `Mrs.`). | 
 | `lastName` | `hashedLastName` | Do not include any suffixes (e.g., `Sr.`). |
-| `city` | `city` | - |
-| `state` | `state` | - |
+| `city` | `city` | This field accepts any string. |
+| `state` | `state` | This field accepts any string. |
 | `country` / `countryCode` | `countryCode` | Use the ISO two-letter/three-letter [country codes](https://developers.google.com/google-ads/api/reference/data/codes-formats#expandable-16). Include the country code even if all your users belong to the same country. |
 | `postalCode` | `postalCode` | Both the US and international zip and postal codes are allowed. For the US, 5 digit codes followed by 4 digit extensions are also allowed. For the rest of the countries, do not include the postal code extensions. |
 
