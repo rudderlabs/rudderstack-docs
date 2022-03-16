@@ -87,8 +87,13 @@ A sample `track` call is shown below:
 ```javascript
 rudderanalytics.track("Order Completed", {
   checkout_id: "12345",
-  order_id: "123",
+  orderId: "123",
   affiliation: "Apple Store",
+  gclid: "abcd1234",
+  conversionDateTime: "2019-01-01 12:32:45-08:00",
+  adjustedValue: 100,
+  currencyCode: "INR",
+  adjustmentDateTime: "2019-01-01 12:32:45-08:00",
   total: 20,
   revenue: 15.0,
   shipping: 22,
@@ -108,7 +113,6 @@ rudderanalytics.track("Order Completed", {
     },
   ],
 })
-```
 
 <div class="warningBlock">
 
