@@ -97,7 +97,7 @@ When the `identify` method is called, RudderStack checks if the lead already exi
 
 <div class="infoBlock">
   
-  If a lead is already converted into a contact, RudderStack will map the user ID to <code class="inline-code">contactId</code>. Otherwise, the user ID will be mapped to the <code class="inline-code">leadId</code>.
+  When you make an <code class="inline-code">identify</code> call with a set of user traits, RudderStack will update the appropriate record in Salesforce depending on whether it is a lead or a contact using its lead or contact ID respectively.
 </div>
 
 <div class="warningBlock">
