@@ -1,14 +1,12 @@
 ---
 # slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flush-events-periodically-in-your-android-application"
 title: "How to Flush Events Periodically in Your Android App"
-description: Detailed steps to flush events periodically from the SDK’s internal DB to Rudder Server.
+description: Detailed steps to flush events periodically from the RudderStack SDK’s internal database to Rudder Server.
 ---
 
 # How to Flush Events Periodically in Your Android App
 
-RudderStack supports periodic flushing of events from the SDK’s internal DB to Rudder Server irrespective of whether the app is opened or not. 
-
-This ensures that the events which are triggered just before closing the application are sent from the device even though the Application is not opened by the user for a long time.
+RudderStack supports periodic flushing of events from the RudderStack SDK’s internal database to the Rudder server, irrespective of whether the app is opened or not. This ensures that the events triggered just before closing the application are sent from the device even if the application is not opened by the user for a long time.
 
 To use this feature, follow these steps:
 
@@ -18,7 +16,7 @@ To use this feature, follow these steps:
 implementation 'androidx.work:work-runtime:2.7.1'
 ```
 
-2. Use `withFlushPeriodically()` API while passing the `RudderConfig` object to the `getInstance()` API, as shown below:
+2. Use `withFlushPeriodically()` function while passing the `RudderConfig` object to the `getInstance()` API, as shown below:
 
 ```kotlin
 rudderClient = RudderClient.getInstance(
@@ -26,23 +24,23 @@ rudderClient = RudderClient.getInstance(
   WRITE_KEY,
   RudderConfig.Builder()
   .withDataPlaneUrl(DATA_PLANE_URL)
-  // enabling Periodical Flush of events in the DB with a repeat Interval of 15 minutes
+  // enabling periodical flush of events in the DB with a repeat interval of 15 minutes
   .withFlushPeriodically(15, TimeUnit.MINUTES)
   .build()
 )
 ```
 ## `withFlushPeriodically` Parameters
 
-The `withFlushPeriodically` can take 2 parameters:
+The `withFlushPeriodically` function takes two parameters:
 
-* The first parameter is the repeat interval in which you want the periodic flush worker to be repeated
+* The first parameter is the time interval for the periodic flush worker to be repeated.
 * The second parameter is the time unit of the repeat interval. It can be Minutes, Hours or Days. The minimum value of the repeat interval is 15 minutes.
 
 ## Initializing WorkManager on demand
 
-The WorkManager is initialized on the startup of the application. However, you can defer it to initialize only on demand by following the below steps:
+By default, the WorkManager is initialized on the startup of the application. However, you can initialize it only on demand by following the below steps:
 
-1. Add the below provider to the application tag of your application’s AndroidManifest.xml.
+1. Add the below `provider` to the application tag of your application’s `AndroidManifest.xml`.
 
 ```xml
 <provider
@@ -58,7 +56,7 @@ The WorkManager is initialized on the startup of the application. However, you c
  </provider>
  ```
 
-2. Implement Configuration.Provider and define the function getWorkManagerConfiguration() in your application class as shown below:
+2. Implement `Configuration.Provider` and define the function `getWorkManagerConfiguration()` in your application class as shown below:
 
 ```kotlin
 class MyApplication(): Application(), Configuration.Provider {
@@ -70,6 +68,6 @@ class MyApplication(): Application(), Configuration.Provider {
 }
 ```
 
-## Contact Us
+## Contact us
 
-In case of any queries, you can always [contact us](mailto:%20docs@rudderstack.com), or feel free to open an issue on our [GitHub Issues](https://github.com/rudderlabs/rudder-sdk-android/issues) page if you come across any error or discrepancy.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
