@@ -95,6 +95,11 @@ This snippet identifies a unique user based on the `userid` and the associated t
 
 When the `identify` method is called, RudderStack checks if the lead already exists using the `email` property. If yes, the lead is updated with the traits passed in the `identify` call. If no lead exists, a new lead is created in Salesforce.
 
+<div class="infoBlock">
+  
+  If a lead is already converted into a contact, RudderStack will map the user ID to <code class="inline-code">contactId</a>. Otherwise, the user ID will be mapped to the <code class="inline-code">leadId</a>.
+</div>
+
 <div class="warningBlock">
 
 It is mandatory to include `'Salesforce':true` in every Salesforce integration object. As Salesforce has strict API limits, this is required in order to prevent the users from hitting their limits. By default, RudderStack does not send `identify` calls to Salesforce. Hence, any `identify` call that does not include `'Salesforce':true` in its payload will be ignored.
