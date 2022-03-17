@@ -21,6 +21,8 @@ Visual Data Mapper is currently available for the following destinations:
   <li><a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
   <li><a href="https://rudderstack.com/docs/destinations/business-messaging/intercom/">Intercom</a></li>
   <li><a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/">Klaviyo</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/">Google Analytics</a></li>
 </ul>
 </div>
 
@@ -70,7 +72,9 @@ RudderStack automatically loads all the relevant destination objects. If you hav
 
 ### Choosing the identifier
 
-In the **Choose Identifier** section, specify the column to be used as the user identifier(`user_id`) and mapped to the destination field. An example is shown below:
+In the **Choose Identifier** section, choose a warehouse column and destination field to map your records from the source to the destination. The field options in the dopdown are unique identifiers from which you can chose any column which is the unique identifier. An example is shown below:
+
+In the **Choose Identifier** section, choose a warehouse column and destination field to map your records from the source to the destination. You can choose any column from the dropdown which will act as a unique identifier. An example is shown below:
 
 <img src="../../assets/warehouse-actions-sources/vdm-3.png" />
 
@@ -104,7 +108,16 @@ For example, RudderStack lets you map the warehouse column `Phone` of type `stri
 ### Creating a custom destination field
 
 <div class="warningBlock">
-This feature is currently available only for the <a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a> destination.
+ 
+This feature is currently available for the following  destinations:
+<ul>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/iterable/">Iterable</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/">Klaviyo</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/">Google Analytics</a></li>
+</ul>
 </div>
 
 RudderStack lets you create a custom destination field and map it to a warehouse column by following the below steps:
