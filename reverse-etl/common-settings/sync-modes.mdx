@@ -6,7 +6,11 @@ description: >-
 
 # Sync Modes
 
-The Reverse ETL sources support **Upsert** and **Mirror** modes that let you define how you want to sync your data to the destination. You can choose a sync mode while configuring a destination with your Reverse ETL source.
+The Reverse ETL sources support two sync modes that let you define how to sync your data to the destination:
+* Upsert mode
+* Mirror mode
+
+The sync mode can be configured while connecting a destination with your Reverse ETL source.
 
 <div class="infoBlock">
 
@@ -21,7 +25,9 @@ The following sections explain these data sync modes in detail.
 
 ## Upsert mode
 
-In this mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination. The Upsert sync mode is supported for all the destinations which can be configured with your Reverse ETL source except <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a>.
+In this mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination. This mode is supported for all destinations configured with the Reverse ETL sources mentioned above except <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a>.
+
+<img src="../../assets/warehouse-actions-sources/upsert-mode.png" alt="Upsert mode" />
 
 <div class="infoBlock">
 
@@ -30,27 +36,14 @@ Whenever the columns mapping is changed, RudderStack runs a full sync the next t
 
 ## Mirror mode
 
-<div class="infoBlock">
+In this mode, RudderStack 'mirrors' the source by keeping the destination data the same as the source data. It performs insertion, updates, and deletion of records while syncing data to the destination. This mode is supported only for the <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a> destination configured with the Reverse ETL sources mentioned above.
 
-Mirror mode is supported only for the <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a> destination.
-</div>
-
-In this mode, RudderStack 'mirrors' the source by keeping the destination data the same as the source data. It performs insertion, updates, and deletion of records while syncing data to the destination. 
+<img src="../../assets/warehouse-actions-sources/mirror-mode.png" alt="Mirror mode" />
 
 <div class="infoBlock">
 
-Whenever the columns mapping is changed, RudderStack runs a full sync the next time.
+Whenever the columns mapping is changed, RudderStack runs a full sync the next time. While performing a full sync, it deletes all the existing records and then syncs the records as per the latest column mappings.
 </div>
-
-<img src="../../assets/warehouse-actions-sources/sync-mirror-mode.png" alt="Mirror mode" />
-
-<div class="infoBlock">
-
-When performing a full sync in the mirror mode, RudderStack first deletes all the existing records. Then, it syncs the records as per the latest column mappings.
-</div>
-
-
-The user_id/anonymouns_id (in Map with JSON) or identifier (in Map with Visualizer) needs to have unique field values in order to successfully sync the data. For example, if you have chosen `name` field as the user_id and there are more than one names with 'Alex', the data sync will fail for this column.
 
 ## FAQ
 
