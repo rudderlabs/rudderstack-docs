@@ -78,6 +78,11 @@ In the **Choose Identifier** section, choose a warehouse column and destination 
 
 <img src="../../assets/warehouse-actions-sources/vdm-3.png" />
 
+<div class="infoBlock">
+
+The <strong>identifier</strong> (Map with Visualizer) or <strong>user_id/anonymous_id</strong> (Map with JSON) fields must have unique values in order to successfully sync the data to the destination. For example, if you have chosen <code class="inline-code">name</code> as the <strong>identifier</strong> and it contains more than one values as 'Alex', the data sync will fail for the duplicate value.
+</div>
+
 ### Mapping the fields
 
 In the **Map Fields** section, you can configure the source-destination field mappings by following these steps:
