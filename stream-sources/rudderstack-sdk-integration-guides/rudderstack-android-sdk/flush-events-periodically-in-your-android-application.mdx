@@ -21,7 +21,7 @@ implementation 'androidx.work:work-runtime:2.7.1'
 ```kotlin
 rudderClient = RudderClient.getInstance(
   this,
-  WRITE_KEY,
+  <WRITE_KEY>,
   RudderConfig.Builder()
   .withDataPlaneUrl(DATA_PLANE_URL)
   // enabling periodical flush of events in the DB with a repeat interval of 15 minutes
