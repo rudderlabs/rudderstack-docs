@@ -21,11 +21,9 @@ By default, these modes sync the data incrementally, meaning they only sync the 
 Currently <a href = "https://www.rudderstack.com/docs/reverse-etl/amazon-redshift/">Redshift</a>, <a href = "https://www.rudderstack.com/docs/reverse-etl/postgresql/">PostgreSQL</a>, <a href = "https://www.rudderstack.com/docs/reverse-etl/snowflake/">Snowflake</a>, and <a href = "https://www.rudderstack.com/docs/reverse-etl/google-bigquery/">BigQuery</a> sources support syncing data via these sync modes.
 </div>
 
-The following sections explain these data sync modes in detail.
-
 ## Upsert mode
 
-In this mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination. This mode is supported for all destinations configured with the Reverse ETL sources mentioned above except <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a>.
+In this mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination. This mode is supported for any destination configured with the Reverse ETL sources mentioned above, except <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a>.
 
 <img src="../../assets/warehouse-actions-sources/upsert-mode.png" alt="Upsert mode" />
 
