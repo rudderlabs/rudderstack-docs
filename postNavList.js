@@ -552,7 +552,7 @@ export const postNavList = [
  },
  {
     "key":"sync-schedule-settings",
-    "title":"Sync Schedule Settings",
+    "title":"Sync Schedule",
     "link":"/reverse-etl/common-settings/sync-schedule-settings/",
     "content":[]
  },
@@ -1082,6 +1082,12 @@ export const postNavList = [
    "key":"google-adwords-remarketing-list",
    "title":"Google Adwords Remarketing List(Customer Match)",
    "link":"/destinations/advertising/google-adwords-remarketing-list/",
+   "content":[]
+},
+{
+   "key":"google-adwords-enhanced-conversions",
+   "title":"Google Adwords Enhanced Conversions",
+   "link":"/destinations/advertising/google-adwords-enhanced-conversions/",
    "content":[]
 },
 {
