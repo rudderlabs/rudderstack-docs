@@ -156,8 +156,16 @@ export const jsonData = [
                  "content":[
                     {
                        "key":"add-an-application-class-to-you-android-application",
-                       "title":"How to Add an Application Class to Your Android App",
+                       "title":"Adding Application Class",
                        "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/",
+                       "content":[
+                          
+                       ]
+                    },
+                    {
+                       "key":"flushing-events-periodically",
+                       "title":"Flushing Events Periodically",
+                       "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/",
                        "content":[
                           
                        ]
