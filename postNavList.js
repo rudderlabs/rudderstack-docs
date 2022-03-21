@@ -436,6 +436,12 @@ export const postNavList = [
    "link":"/cloud-extract-sources/salesforce-pardot/",
    "content":[]
    },
+  {
+   "key":"stripe",
+   "title":"Stripe",
+   "link":"/cloud-extract-sources/stripe/",
+   "content":[]
+   },
    {
       "key":"xero",
       "title":"Xero",
