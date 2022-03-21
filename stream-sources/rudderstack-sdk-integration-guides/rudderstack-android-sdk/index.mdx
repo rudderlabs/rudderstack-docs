@@ -587,11 +587,25 @@ You can configure your client based on the following parameters using `RudderCon
 | `dataPlaneUrl`          | `string`  | Your data plane URL.                                                             | `https://hosted.rudderlabs.com` |
 | `flushQueueSize`        | `int`     | Number of events in a batch request to the server.                                                                                                                                                                                                | `30`                                                     |
 | `dbThresholdCount`      | `int`     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                                                                                                                           | `10000`                                                  |
-| `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server.                                                                                                                                                                                           | `10 seconds`                                             |
+| `sleepcount`          | `int`     | Minimum waiting time to flush the events to the server. The minimum value can be set to 1 second.                                                                                                                                                                                          | `10 seconds`                                             |
 | `configRefreshInterval` | `int`     | It will fetch the config from `dashboard` after the specified time                                                                                                                                                                                 | `2 hours`                                                      |
 | `trackLifecycleEvents`  | `boolean` | Whether SDK will capture application life cycle events automatically.                                                                                                                                                                             | `true`                                                   |
 | `recordScreenViews`     | `boolean` | Whether SDK will capture screen view events automatically.                                                                                                                                                                                        | `false`                                                  |
 | `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+
+A sample code snippet to configure your client using `RudderConfig.Builder` is shown below:
+
+```kotlin
+rudderClient = RudderClient.getInstance(
+  this,
+  <WRITE_KEY>,
+  RudderConfig.Builder()
+  .withDataPlaneUrl(<DATA_PLANE_URL>)
+  .withSleepCount(1)
+  .withLogLevel(RudderLogger.RudderLogLevel.VERBOSE)
+  .build()
+)
+```
 
 ### Self-hosted control plane
 

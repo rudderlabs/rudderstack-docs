@@ -1,0 +1,73 @@
+---
+# slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically"
+title: "Flushing Events Periodically"
+description: Detailed steps to flush events periodically from the RudderStack SDK’s internal database to Rudder Server.
+---
+
+# Flushing Events Periodically
+
+RudderStack supports periodic flushing of events from the Android SDK to RudderStack, irrespective of whether your app is opened or not. This ensures that the events that are triggered just before closing the app are sent from the device - even if the app is not opened by the user for a long time.
+
+To use this feature, follow these steps:
+
+1. Open your `app/build.gradle` and add the [WorkManager](https://developer.android.com/jetpack/androidx/releases/work) dependency under `dependencies` as shown below:
+
+```groovy
+implementation 'androidx.work:work-runtime:2.7.1'
+```
+
+2. Use `withFlushPeriodically()` function while passing the `RudderConfig` object to the `getInstance()` API, as shown below:
+
+```kotlin
+rudderClient = RudderClient.getInstance(
+  this,
+  <WRITE_KEY>,
+  RudderConfig.Builder()
+  .withDataPlaneUrl(<DATA_PLANE_URL>)
+  // enabling periodical flush of events in the DB with a repeat interval of 15 minutes
+  .withFlushPeriodically(15, TimeUnit.MINUTES)
+  .build()
+)
+```
+## `withFlushPeriodically` parameters
+
+The `withFlushPeriodically` function takes two parameters:
+
+* The first parameter is the number representing the time interval for the flushing to be repeated.
+* The second parameter is the time unit of the repeat interval. It can be **Minutes**, **Hours**, or **Days**. The minimum value of the repeat interval is **15 minutes**.
+
+## Initializing WorkManager on demand
+
+By default, the WorkManager is initialized on the startup of the application. However, you can initialize it only on demand by following the below steps:
+
+1. Add the below `provider` to the application tag of your application’s `AndroidManifest.xml`.
+
+```xml
+<provider
+    android:name="androidx.startup.InitializationProvider"
+    android:authorities="${applicationId}.androidx-startup"
+    android:exported="false"
+    tools:node="merge">
+    <!-- If you are using androidx.startup to initialize other components -->
+    <meta-data
+        android:name="androidx.work.WorkManagerInitializer"
+        android:value="androidx.startup"
+        tools:node="remove" />
+ </provider>
+ ```
+
+2. Implement `Configuration.Provider` and define the function `getWorkManagerConfiguration()` in your application class as shown below:
+
+```kotlin
+class MyApplication(): Application(), Configuration.Provider {
+
+  override fun getWorkManagerConfiguration() =
+    Configuration.Builder()
+    .setMinimumLoggingLevel(android.util.Log.INFO)
+    .build()
+}
+```
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
