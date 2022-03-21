@@ -72,15 +72,13 @@ RudderStack automatically loads all the relevant destination objects. If you hav
 
 ### Choosing the identifier
 
-In the **Choose Identifier** section, choose a warehouse column and destination field to map your records from the source to the destination. The field options in the dopdown are unique identifiers from which you can chose any column which is the unique identifier. An example is shown below:
-
 In the **Choose Identifier** section, choose a warehouse column and destination field to map your records from the source to the destination. You can choose any column from the dropdown which will act as a unique identifier. An example is shown below:
 
 <img src="../../assets/warehouse-actions-sources/vdm-3.png" />
 
 <div class="infoBlock">
 
-The <strong>identifier</strong> (Map with Visualizer) or <strong>user_id/anonymous_id</strong> (Map with JSON) fields must have unique values in order to successfully sync the data to the destination. For example, if you have chosen <code class="inline-code">name</code> as the <strong>identifier</strong> and it contains more than one values as 'Alex', the data sync will fail for the duplicate value.
+The <strong>identifier</strong> (Map with Visualizer) or <strong>user_id/anonymous_id</strong> (Map with JSON) fields must have unique values in order to successfully sync the data to the destination. The records containing duplicate identifier values will fail to sync. For example, if you have chosen <code class="inline-code">name</code> as the <strong>identifier</strong> and it contains more than one values as 'Alex', the duplicate record will fail to sync.
 </div>
 
 ### Mapping the fields
