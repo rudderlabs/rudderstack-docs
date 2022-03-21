@@ -11,99 +11,46 @@ RudderStack's user management feature lets you add and manage other users in you
 <div class="infoBlock">
 
 You can invite up to 3 users in your <a href="https://app.rudderlabs.com/signup?type=freetrial">RudderStack Cloud Free</a> plan. You can increase this limit by upgrading to a Pro or Enterprise plan.
-
 </div>
 
 Refer to the table below for specifics on the number of teammates you can add to your current workspace in each plan:
 
-| **Plan**                         | **Number of Teammates** |
+| Plan                      | Number of Teammates |
 | :------------------------------- | :---------------------- |
-| **RudderStack Cloud Free**       | 3                       |
-| **RudderStack Cloud Pro**        | 10                      |
-| **RudderStack Cloud Enterprise** | Unlimited               |
+| RudderStack Cloud Free       | 3                       |
+| RudderStack Cloud Pro        | 10                      |
+| RudderStack Cloud Enterprise | Unlimited               |
 
 <div class="successBlock">
 
-  Check our <a href="https://rudderstack.com/pricing/">pricing</a> page for a
-  complete list of the supported features or <a href="http://app.rudderstack.com/upgrade">log in</a> to upgrade now.
+Refer to the <a href="https://rudderstack.com/pricing/">RudderStack Pricing</a> page for the complete list of the supported features or <a href="http://app.rudderstack.com/upgrade">log in</a> to upgrade now.
 </div>
 
-## How to Invite a User
+## Inviting a user in the workspace
 
 To invite a user in your current workspace, follow these steps:
 
-- Click on the **Teammates** option on the left nav bar and click on **Invite Teammate**, as shown:
-
-<!-- <img src="../../assets/image (82).png" /> -->
+- Click on the **Teammates** option in the left navigation bar and click on **Invite Teammate**, as shown:
 
 <img src="../../assets/image (82).png" />
 
 - Enter the email address of the user you want to invite and select the privileges you want to assign to them. Then, click on **Invite**.
 
-<!-- <img src="../../assets/team-2.png" /> -->
-
 <img src="../../assets/team-2.png" />
 
-## User Permissions
+## User permissions
 
 An invited user can be assigned one of the following three roles:
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Role</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <b>View-only</b>
-      </td>
-      <td style="text-align:left">
-        <p></p>
-        <p>
-          This user has read-only access to
-          <br />
-          all the options in the workspace.
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <b>Read-write</b>
-      </td>
-      <td style="text-align:left">
-        <p></p>
-        <p>
-          This user has complete access to all the RudderStack workspace options
-          <br />
-          included in the plan except team management
-          <br />
-          (adding / removing users and modifying user permissions).
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <b>Admin</b>
-      </td>
-      <td style="text-align:left">
-        <p></p>
-        <p>
-          This user has complete access to all the RudderStack features and
-          options
-          <br />
-          as a part of the plan, including team management.
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Role | Description |
+| :----| :-----------|
+| View-only | This user has read-only access to all the options in the workspace. |
+| Read-write | This user has complete access to all the RudderStack workspace options included in the plan except team management (adding / removing users and modifying user permissions). |
+| Admin | This user has complete access to all the RudderStack features and options as a part of the plan, including team management. |
 
 The detailed permissions for each of the above roles are listed in the following sections.
 
-### View-only User
+### View-only user
 
 A user with this role has read-only access to all the RudderStack workspace features.
 
@@ -113,7 +60,7 @@ This role has the following permissions:
 
 <div class="successBlock">
 
-See the following guides to learn more about these features:
+Refer to the following guides to learn more about these features:
 <li>
 <a href="https://rudderstack.com/docs/connections/">Connections</a>
 </li>
@@ -130,7 +77,6 @@ See the following guides to learn more about these features:
 <div class="warningBlock">
 
 Users with this role can view the settings of all the destinations. However, secrets like access keys are hidden from them.
-
 </div>
 
 | Option          | View | Add | Modify | Delete |
@@ -141,24 +87,22 @@ Users with this role can view the settings of all the destinations. However, sec
 <div class="warningBlock">
 
 View-only users can run tests on existing transformations but they cannot add, modify, or delete transformations. They can also view any secrets, like API keys in the transformation code.
-
 </div>
 
 Other permissions for this role include:
 
-#### Live Events
+#### Live events
 
 - Can view live events at both the source and destination level.
 
 <div class="warningBlock">
 
 View-only users can look at events that might contain sensitive information, like the PII of users. In some cases, they can also view the API keys and other API secrets of the destinations.
-
 </div>
 
 #### Syncs
 
-- Cannot sync the Cloud Extract and Warehouse Actions sources
+- Cannot sync the Cloud Extract and Reverse ETL sources
 - Can view all the details related to the sync, including the history of the syncs.
 
 #### Audit Logs
@@ -185,13 +129,9 @@ A user with the read-write role has all the permissions associated with a view-o
 
 <div class="successBlock">
 
-See the following guides for more information on these options:
-<li>
-<a href="https://rudderstack.com/docs/connections/">Connections</a>
-</li>
-<li>
-<a href="https://rudderstack.com/docs/transformations/">Transformations</a>
-</li>  
+Refer to the following guides for more information on these options:
+<li><a href="https://rudderstack.com/docs/connections/">Connections</a></li>
+<li><a href="https://rudderstack.com/docs/transformations/">Transformations</a></li>  
 </div>
 
 Other permissions for this role include:
@@ -202,7 +142,7 @@ Other permissions for this role include:
 
 #### Syncs
 
-- Can sync the Cloud Extract and Warehouse Actions sources
+- Can sync the Cloud Extract and Reverse ETL sources
 - Can view all the details related to the sync, including the history of the syncs.
 
 #### Audit Logs
@@ -216,8 +156,7 @@ Other permissions for this role include:
 
 <div class="infoBlock">
 
-The user with the read-write role has all the permissions as an admin, except the team management options. Refer to the **Admin** section below to know more about these features.
-
+The user with the read-write role has all the permissions as an admin, except the team management options. Refer to the <strong>Admin</strong> section below to know more about these features.
 </div>
 
 ### Admin
@@ -238,24 +177,20 @@ The permissions for this role are as listed below:
 <div class="successBlock">
 
 See the following guides for more information on these options:
-<li>
-<a href="https://rudderstack.com/docs/connections/">Connections</a>
-</li>
-<li>
-<a href="https://rudderstack.com/docs/transformations/">Transformations</a>
-</li>
+<li><a href="https://rudderstack.com/docs/connections/">Connections</a></li>
+<li><a href="https://rudderstack.com/docs/transformations/">Transformations</a></li>
 </div>
 
-#### Live Events
+#### Live events
 
 - Can view live events at both the source and destination level.
 
 #### Syncs
 
-- Can sync the Cloud Extract and Warehouse Actions sources.
+- Can sync the Cloud Extract and Reverse ETL sources.
 - Can view all the details related to the sync, including the history of the syncs.
 
-#### Audit Logs
+#### Audit logs
 
 - Can view all the audit logs.
 
@@ -268,6 +203,6 @@ See the following guides for more information on these options:
 - Can modify the roles of all the members \(including other admins\).
 - Can remove any member from the workspace.
 
-## Contact Us
+## Contact us
 
-For more information on this feature, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also talk to us in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community, we will be happy to help you.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

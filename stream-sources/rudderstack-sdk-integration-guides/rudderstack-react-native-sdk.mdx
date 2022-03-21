@@ -179,11 +179,54 @@ Alternatively, you can use the following method signature:
 | `property`   | Object | No       | Extra property object to pass along with the `screen` call. |
 | `option`     | Object | No       | Extra options passed along with `screen` event.                     |
 
+### Automatic screen recording
+
+You can enable the automatic recording of screen views by passing `recordScreenViews` as `true` while initializing the `rudderClient`. This automatically sends a `screen` call for every screen that a user views. By default, `recordScreenViews` is set to `false`. 
+
 <div class="infoBlock">
 
-You can also enable automatic recording of screen views by passing <code class="inline-code">recordScreenViews</code> as <code class="inline-code">true</code> while initializing the <code class="inline-code">rudderClient</code>.  
-The default value for <code class="inline-code">recordScreenViews</code> is <code class="inline-code">false</code>.
-</div>
+The <code class="inline-code">recordScreenViews</code> parameter records the screen views of the native Android <a href="https://developer.android.com/guide/components/activities/intro-activities" target="_blank">Activities</a> or the iOS <a href="https://developer.apple.com/documentation/uikit/view_controllers" target="_blank">Views</a> only and <strong>not</strong> by the React Native Views. 
+</div>  
+
+To track the screen views of the React Native Screens, you can use the following code snippet:
+
+```javascript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+import {
+  NavigationContainer
+} from '@react-navigation/native';
+
+const App = () => {
+  const routeNameRef = React.useRef();
+  const navigationRef = React.useRef();
+  return ( <
+    NavigationContainer ref = {
+      navigationRef
+    }
+    onReady = {
+      () => {
+        routeNameRef.current = navigationRef.current.getCurrentRoute().name;
+      }
+    }
+    onStateChange = {
+      async () => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+        if (previousRouteName !== currentRouteName) {
+          rudderClient.screen(currentRouteName);
+        }
+        routeNameRef.current = currentRouteName;
+      }
+    } >
+    ...
+    <
+    /NavigationContainer>
+  );
+};
+
+export default App;
+```
 
 ## Group
 
@@ -201,11 +244,11 @@ rudderClient.group("company123", {
 
 The `group` call has the following method signature:
 
-| Name         | Data Type     | Required | Description                                                               |
-| :----------- | :------------ | :------- | :------------------------------------ |
-| `groupId` | String      | Yes      | Your group's unique identifier                                               |
+| Name         | Data Type     | Required | Description                              |
+| :----------- | :------------ | :------- | :--------------------------------------- |
+| `groupId` | String      | Yes      | Your group's unique identifier                |
 | `traits`   | Object | No       | The group's traits |
-| `option`     | Object | No       | Extra options passed along with `group` event.                     |
+| `option`     | Object | No       | Extra options passed along with `group` event.  |
 
 ## Alias
 

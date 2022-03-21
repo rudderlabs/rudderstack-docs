@@ -1,0 +1,60 @@
+---
+title: "Sync Modes"
+description: >-
+ Detailed technical description of the upsert and mirror sync modes for the Reverse ETL sources.
+---
+
+# Sync Modes
+
+The Reverse ETL sources support two modes(available based on the source and the chosen destination) that let you define how you want to sync your data. These are **Upsert** and **Mirror** mode.
+
+<div class="infoBlock">
+
+By default, both these modes sync the data incrementally, meaning they sync only the new data. However, you also have the option to manually run a full sync.
+</div>
+
+<div class="infoBlock">
+Currently only Redshift, PostgreSQL, Snowflake, and BigQuery sources support syncing data via the upsert and mirror mode.
+</div>
+
+The following sections explain these data sync modes in detail.
+
+## Upsert
+
+In this mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination.
+
+<div class="infoBlock">
+
+Whenever the columns mapping is changed, RudderStack runs a full sync the next time.
+</div>
+
+## Mirror mode
+
+<div class="infoBlock">
+
+This mode is currently supported only for the <a href="https://www.rudderstack.com/docs/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</a> destination.
+</div>
+
+In this mode, RudderStack 'mirrors' the source by keeping the destination data the same as the source data. It performs insertion, updates, and deletion of records while syncing data to the destination. 
+
+<div class="infoBlock">
+
+Whenever the columns mapping is changed, RudderStack runs a full sync the next time.
+</div>
+
+<img src="../../assets/warehouse-actions-sources/sync-mirror-mode.png" alt="Mirror mode" />
+
+<div class="infoBlock">
+
+When performing a full sync in the mirror mode, RudderStack first deletes all the existing records. Then, it syncs the records as per the latest column mappings.
+</div>
+
+## FAQ
+
+### What happens to the records that have not been successfully sent to the destination in the previous sync?
+
+In case of an unsuccessful delivery, RudderStack retries sending the events in the next sync.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

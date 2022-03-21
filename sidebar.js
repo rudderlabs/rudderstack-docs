@@ -71,7 +71,7 @@ export const jsonData = [
   },
   {
      "key":"stream-sources",
-     "title":"Event Stream Sources",
+     "title":"Event Streams",
      "link":"/stream-sources/",
      "content":[
         {
@@ -325,6 +325,14 @@ export const jsonData = [
            ]
         },
         {
+           "key":"braze-currents",
+           "title":"Braze",
+           "link":"/stream-sources/braze-currents/",
+           "content":[
+              
+           ]
+        },
+        {
            "key":"appcenter",
            "title":"App Center",
            "link":"/stream-sources/appcenter/",
@@ -400,7 +408,7 @@ export const jsonData = [
   },
   {
      "key":"cloud-extract-sources",
-     "title":"Cloud Extract Sources",
+     "title":"Cloud Extract",
      "link":"/cloud-extract-sources/",
      "content":[
         {
@@ -562,6 +570,14 @@ export const jsonData = [
             ]
          },
          {
+         "key":"stripe",
+         "title":"Stripe",
+         "link":"/cloud-extract-sources/stripe/",
+         "content":[
+            
+            ]
+         },
+         {
             "key":"xero",
             "title":"Xero",
             "link":"/cloud-extract-sources/xero/",
@@ -604,14 +620,14 @@ export const jsonData = [
      ]
   },
   {
-     "key":"warehouse-actions",
-     "title":"Warehouse Actions Sources",
-     "link":"/warehouse-actions/",
+     "key":"reverse-etl",
+     "title":"Reverse ETL",
+     "link":"/reverse-etl/",
      "content":[
         {
            "key":"amazon-redshift",
            "title":"Amazon Redshift",
-           "link":"/warehouse-actions/amazon-redshift/",
+           "link":"/reverse-etl/amazon-redshift/",
            "content":[
               
            ]
@@ -619,7 +635,7 @@ export const jsonData = [
         {
            "key":"amazon-s3",
            "title":"Amazon S3",
-           "link":"/warehouse-actions/amazon-s3/",
+           "link":"/reverse-etl/amazon-s3/",
            "content":[
               
            ]
@@ -627,7 +643,7 @@ export const jsonData = [
         {
            "key":"clickhouse",
            "title":"ClickHouse",
-           "link":"/warehouse-actions/clickhouse/",
+           "link":"/reverse-etl/clickhouse/",
            "content":[
               
            ]
@@ -635,7 +651,7 @@ export const jsonData = [
         {
            "key":"google-bigquery",
            "title":"Google BigQuery",
-           "link":"/warehouse-actions/google-bigquery/",
+           "link":"/reverse-etl/google-bigquery/",
            "content":[
               
            ]
@@ -643,7 +659,7 @@ export const jsonData = [
         {
            "key":"postgresql",
            "title":"PostgreSQL",
-           "link":"/warehouse-actions/postgresql/",
+           "link":"/reverse-etl/postgresql/",
            "content":[
               
            ]
@@ -651,7 +667,7 @@ export const jsonData = [
         {
            "key":"snowflake",
            "title":"Snowflake",
-           "link":"/warehouse-actions/snowflake/",
+           "link":"/reverse-etl/snowflake/",
            "content":[
               
            ]
@@ -659,12 +675,12 @@ export const jsonData = [
         {
            "key":"features",
            "title":"Features",
-           "link":"/warehouse-actions/features/",
+           "link":"/reverse-etl/features/",
            "content":[
             {
-               "key":"setting-up-connections-using-models",
-               "title":"Setting up Connections Using Models",
-               "link":"/warehouse-actions/features/setting-up-connections-using-models/",
+               "key":"models",
+               "title":"Models",
+               "link":"/reverse-etl/features/models/",
                "content":[
                   
                ]
@@ -672,7 +688,7 @@ export const jsonData = [
              {
                  "key":"airflow-provider",
                  "title":"Airflow Provider",
-                 "link":"/warehouse-actions/features/airflow-provider/",
+                 "link":"/reverse-etl/features/airflow-provider/",
                  "content":[
                     
                  ]
@@ -680,7 +696,7 @@ export const jsonData = [
              {
                  "key":"visual-data-mapper",
                  "title":"Visual Data Mapper",
-                 "link":"/warehouse-actions/features/visual-data-mapper/",
+                 "link":"/reverse-etl/features/visual-data-mapper/",
                  "content":[
                     
                  ]
@@ -690,12 +706,12 @@ export const jsonData = [
         {
            "key":"common-settings",
            "title":"Common Settings",
-           "link":"/warehouse-actions/common-settings/",
+           "link":"/reverse-etl/common-settings/",
            "content":[
              {
                  "key":"sync-modes",
                  "title":"Sync Modes",
-                 "link":"/warehouse-actions/common-settings/sync-modes/",
+                 "link":"/reverse-etl/common-settings/sync-modes/",
                  "content":[
                     
                  ]
@@ -703,13 +719,37 @@ export const jsonData = [
              {
                  "key":"sync-schedule-settings",
                  "title":"Sync Schedule Settings",
-                 "link":"/warehouse-actions/common-settings/sync-schedule-settings/",
+                 "link":"/reverse-etl/common-settings/sync-schedule-settings/",
+                 "content":[
+                    
+                 ]
+              },
+             {
+                 "key":"importing-data-using-tables",
+                 "title":"Importing Data using Tables",
+                 "link":"/reverse-etl/common-settings/importing-data-using-tables/",
+                 "content":[
+                    
+                 ]
+              },
+             {
+                 "key":"importing-data-using-models",
+                 "title":"Importing Data using Models",
+                 "link":"/reverse-etl/common-settings/importing-data-using-models/",
                  "content":[
                     
                  ]
               }
            ]
         },
+        {
+         "key":"faq",
+         "title":"FAQ",
+         "link":"/reverse-etl/faq/",
+         "content":[
+            
+         ]
+      }
      ]
   },
   {
@@ -940,6 +980,14 @@ export const jsonData = [
                  "key":"lytics",
                  "title":"Lytics",
                  "link":"/destinations/analytics/lytics/",
+                 "content":[
+                    
+                 ]
+              },
+              {
+                 "key":"singular",
+                 "title":"Singular",
+                 "link":"/destinations/analytics/singular/",
                  "content":[
                     
                  ]

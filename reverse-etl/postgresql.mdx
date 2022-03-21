@@ -1,0 +1,198 @@
+---
+# slug: "/docs/reverse-etl/postgresql"
+title: "PostgreSQL"
+description: Step-by-step guide to ingest your data from PostgreSQL into RudderStack.
+---
+
+# PostgreSQL
+
+PostgreSQL is an enterprise-grade, open source database management system. Many companies use PostgreSQL as a low-cost data warehousing solution to deliver efficient analytics and user insights.
+
+RudderStack supports PostgreSQL as a source from which you can ingest data and route it to your desired downstream destinations.
+
+## Granting permissions
+
+RudderStack requires you to grant certain user permissions on your PostgreSQL warehouse to successfully access data from it.
+
+Run the SQL queries listed in the following sections in the  **exact order** to grant these permissions:
+
+### Step 1: Creating the user
+
+- Create a new user `RUDDER` with a password `<strong_unique_password>` in PostgreSQL, as shown:
+
+```sql
+CREATE USER RUDDER WITH PASSWORD '<strong_unique_password>';
+```
+
+### Step 2: Creating the RudderStack schema and granting permissions
+
+1. Create a dedicated schema `_rudderstack`.
+
+```sql
+CREATE SCHEMA "_rudderstack";
+```
+
+<div class="warningBlock">
+
+The <code class="inline-code">_rudderstack</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
+</div>
+
+2. Grant full access to the schema `_rudderstack` for the user `RUDDER`.
+
+```sql
+GRANT ALL ON SCHEMA "_rudderstack" TO RUDDER;
+```
+
+3. Grant full access to all the objects in the schema `_rudderstack` for the user `RUDDER`.
+
+```sql
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "_rudderstack" TO RUDDER;
+```
+
+### Step 3: Granting permissions on your schema and table
+
+1. To let the user `RUDDER` look up objects within the schema `<YOUR_SCHEMA>`, run the command below.
+
+```sql
+GRANT USAGE ON SCHEMA "<YOUR_SCHEMA>" TO RUDDER;
+```
+
+2. Grant access to the user `RUDDER` to read data from the table `<YOUR_TABLE>`.
+
+```sql
+GRANT SELECT ON TABLE "<YOUR_SCHEMA>"."<YOUR_TABLE>" TO RUDDER;
+```
+
+**Replace `<YOUR_SCHEMA>` and `<YOUR_TABLE>` with the exact names of your PostgreSQL schema and table, respectively**.
+
+#### Optional commands
+
+<div class="warningBlock">
+
+Run the following commands only if you're okay with RudderStack being able to access the data in all the current or future tables residing within your specified schema.
+</div>
+
+* To allow the user `RUDDER` read the data from **all** the tables in the schema `<YOUR_SCHEMA>`:
+
+```sql
+GRANT SELECT ON ALL TABLES IN SCHEMA "<YOUR_SCHEMA>" TO RUDDER;
+```
+
+* To allow the user `RUDDER` to read data from all the future tables in the schema `<YOUR_SCHEMA>`:
+
+```sql
+ALTER DEFAULT PRIVILEGES IN SCHEMA "<YOUR_SCHEMA>" GRANT SELECT ON TABLES TO RUDDER;
+```
+
+**Replace `<YOUR_SCHEMA>` with the exact name of your PostgreSQL schema**.
+
+## Setting up the PostgreSQL source in RudderStack
+
+To set up PostgreSQL as a source in RudderStack, follow these steps:
+
+### Naming the source
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. From the left navigation bar, go to **Source** > **New Source** > **Reverse ETL**.  Then, select **PostgreSQL**, as shown:
+
+<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select Reverse ETL source in RudderStack" />
+
+3. Assign a name to your source.
+
+### Configuring the connection credentials
+
+1. Choose the relevant option from **Table** or **Model** to use the source to sync data from either a warehouse table or a model.
+
+<div class="infoBlock">
+
+For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Reverse ETL source, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+<div class="infoBlock">
+If you have chosen the <strong>Model</strong> option, skip the next steps and refer to the <a href="#schedule-settings">Schedule settings</a> section directly.
+</div>
+
+2. Enter the relevant connection details in the **Connection Credentials** as listed below:
+
+    * **Host**: Enter the host name of your PostgreSQL service.
+    * **Database**: Enter the database name in your PostgreSQL instance where the data is loaded.
+    * **User**: Specify the username which has the required read/write access to the above database.
+    * **Password**: Enter the password for the above user.
+    * **Port**: Enter the port number of your PostgreSQL service.
+
+<div class="infoBlock">
+
+If you've configured a PostgreSQL source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
+</div>
+
+3. Click on **Continue**. RudderStack will then verify and validate your credentials. 
+
+<div class="infoBlock">
+
+For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section. 
+</div>
+
+4. Once verified, click on **Continue** to proceed.
+
+### Schedule settings
+
+1. Specify the **Schedule Settings** to schedule the data syncs from your PostgreSQL instance.
+
+<div class="infoBlock">
+
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+</div>
+
+2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
+
+PostgreSQL is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
+
+<img src="../assets/warehouse-actions-sources/add-destination.png" alt="Add destination in RudderStack" />
+
+<div class="infoBlock">
+
+If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destinations</strong> option which will take you to the <strong>Schema</strong> tab in the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.
+</div>
+
+## Specifying the data to import
+
+While connecting a destination to your Reverse ETL source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/reverse-etl/features/visual-data-mapper/) feature.
+
+<div class="infoBlock">
+
+Based on the option(Table/Model) you chose while setting up the Reverse ETL source, follow the relevant guide for detailed steps:
+
+<ul>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
+</ul>
+</div>
+
+## FAQ
+
+### What do the three validations under Verifying Credentials imply?
+
+When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+
+<img src="../assets/warehouse-actions-sources/validations.png" alt="Validations" />
+
+These options are explained below:
+
+* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
+
+<div class="warningBlock">
+
+If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
+</div>
+
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema you have created by successfully running all the commands in the [User Permissions](#step-2-creating-the-rudderstack-schema-and-granting-permissions) section. 
+
+<div class="warningBlock">
+
+If this option gives an error, verify if you have successfully created the `_rudderstack` schema and given RudderStack the required permissions to access it. For more information, refer to the <a href="#step-2-creating-the-rudderstack-schema-and-granting-permissions">User Permissions</a> sections.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -1,0 +1,123 @@
+---
+# slug: "/docs/reverse-etl/features/visual-data-mapper"
+title: "Visual Data Mapper"
+description: >-
+ Detailed technical description of how to use the Visual Data Mapping feature for Reverse ETL sources.
+---
+
+# Visual Data Mapper
+
+The **Visual Data Mapper** (VDM) offers an intuitive UI to map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination.
+
+<div class="infoBlock">
+
+Visual Data Mapper is currently available for the following destinations:
+<ul>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/crm/hubspot/">HubSpot</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/crm/salesforce/">Salesforce</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/mailchimp/">Mailchimp</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/iterable/">Iterable</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/business-messaging/intercom/">Intercom</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/">Klaviyo</a></li>
+</ul>
+</div>
+
+<div class="successBlock">
+
+To use this feature, you can use a <a href="https://rudderstack.com/docs/reverse-etl/">Reverse ETL source</a> and then connect it to a VDM-supported destination.
+</div>
+
+## Using the Visual Data Mapper
+
+To use the Visual Data Mapper, follow these steps:
+
+1. Set up a [Reverse ETL](https://rudderstack.com/docs/reverse-etl/) source and connect it to a destination. You should then see the following screen:
+  
+<img src="../../assets/warehouse-actions-sources/vdm-object.png" />
+
+<div class="infoBlock">
+If you have set up the source using the <strong>Model</strong> option, the <strong>Schema</strong> and <strong>Table</strong> fields are replaced by the <strong>Model</strong> field, as shown:
+<img src="../../assets/warehouse-actions-sources/vdm-model.png" alt="VDM model options" />
+</div>
+
+<div class="infoBlock">
+
+By default, Visual Data Mapping is enabled for all the VDM-supported destinations. To configure the data via JSON, click on the <strong>Map with JSON</strong> button.
+</div>
+
+3. Choose the source **Model** or **Schema** + **Table** from where you want RudderStack to import and sync the data.
+
+<div class="successBlock">
+
+Upon selection, RudderStack automatically loads the relevant resources. If you have added a new model or warehouse table during this configuration process, click on <strong>Reload models</strong>/<strong>Reload schemas and tables</strong> to fetch the latest resources.
+</div>
+
+4. Then, select the destination **Object** where you want to sync the data. An example in case of [Customer.io](https://www.rudderstack.com/docs/stream-sources/customerio/#customerio) destination is shown below:
+
+<img src="../../assets/warehouse-actions-sources/vdm-2.png" />
+
+<div class="successBlock">
+
+RudderStack automatically loads all the relevant destination objects. If you have added a new destination object during this configuration process, click on <strong>Reload objects</strong> to get all the latest objects.
+</div>
+
+<div class="dangerBlock">
+
+<strong>RudderStack does not support objects that do not have any fields or a unique user identifier.</strong>
+</div>
+
+### Choosing the identifier
+
+In the **Choose Identifier** section, specify the column to be used as the user identifier(`user_id`) and mapped to the destination field. An example is shown below:
+
+<img src="../../assets/warehouse-actions-sources/vdm-3.png" />
+
+### Mapping the fields
+
+In the **Map Fields** section, you can configure the source-destination field mappings by following these steps:
+
+1. Click on the **Map another field** option. Select the **Destination field** from the dropdown. Then, select the **Warehouse column** to map this field.
+
+<img src="../../assets/warehouse-actions-sources/vdm-4.png" />
+
+<div class="successBlock">
+
+RudderStack gives you full visibility into the name and type of the fields that you are mapping. 
+</div>
+
+#### Mandatory mappings
+
+When sending events to some objects, there are some required fields that need to be mapped. These fields cannot be removed from the mappings. For example, in case of the Salesforce **Account** object, **Account Name** is a required field, as seen in the following image:
+
+<img src="../../assets/warehouse-actions-sources/vdm-5.png" />
+
+#### Mapping fields of different type/format
+
+In case you are mapping fields with different data types or formats, you can use the [**Transformations**](https://rudderstack.com/docs/transformations/) feature to do type conversion before sending the events data. 
+
+For example, RudderStack lets you map the warehouse column `Phone` of type `string` to a destination field `Company ID` of type `float` . You can then add a transformation at the destination end to do this type conversion to ensure there is no mismatch.
+
+<img src="../../assets/warehouse-actions-sources/vdm-6.png" />
+
+### Creating a custom destination field
+
+<div class="warningBlock">
+This feature is currently available only for the <a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a> destination.
+</div>
+
+RudderStack lets you create a custom destination field and map it to a warehouse column by following the below steps:
+
+1. Click on the **Map another field** option. 
+2. Type the name of the custom destination field that you want to create, as shown:
+
+<img src="../../assets/warehouse-actions-sources/vdm-7.png" alt="Map another field" />
+
+3. Finally, click on **Create**.
+
+Once you have mapped all the source columns to the destination fields, click on **Next** to complete the destination configuration.
+
+## Contact us
+
+For any questions or issues on the Visual Data Mapper feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

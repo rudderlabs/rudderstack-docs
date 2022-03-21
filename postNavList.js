@@ -32,17 +32,11 @@ export const postNavList = [
    "link":"/get-started/dashboard-overview/audit-logs/",
    "content":[]
 },
- {
+{
     "key":"live-events",
     "title":"Live Events",
     "link":"/get-started/live-events/",
     "content":[]
- },
- {
-   "key":"models",
-   "title":"Models",
-   "link":"/connections/models/",
-   "content":[]
 },
 {
     "key":"adding-source-and-destination-rudderstack",
@@ -58,7 +52,7 @@ export const postNavList = [
  },
  {
     "key":"stream-sources",
-    "title":"Event Stream Sources",
+    "title":"Event Streams",
     "link":"/stream-sources/",
     "content":[]
  },
@@ -255,6 +249,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"braze-currents",
+    "title":"Braze",
+    "link":"/stream-sources/braze-currents/",
+    "content":[]
+ },
+ {
     "key":"appcenter",
     "title":"App Center",
     "link":"/stream-sources/appcenter/",
@@ -310,7 +310,7 @@ export const postNavList = [
  },
  {
     "key":"cloud-extract-sources",
-    "title":"Cloud Extract Sources",
+    "title":"Cloud Extract",
     "link":"/cloud-extract-sources/",
     "content":[]
  },
@@ -436,6 +436,12 @@ export const postNavList = [
    "link":"/cloud-extract-sources/salesforce-pardot/",
    "content":[]
    },
+  {
+   "key":"stripe",
+   "title":"Stripe",
+   "link":"/cloud-extract-sources/stripe/",
+   "content":[]
+   },
    {
       "key":"xero",
       "title":"Xero",
@@ -467,89 +473,107 @@ export const postNavList = [
     "content":[]
    },
  {
-    "key":"warehouse-actions",
-    "title":"Warehouse Actions Sources",
-    "link":"/warehouse-actions/",
+    "key":"reverse-etl",
+    "title":"Reverse ETL",
+    "link":"/reverse-etl/",
     "content":[]
  },
  {
     "key":"amazon-redshift",
     "title":"Amazon Redshift",
-    "link":"/warehouse-actions/amazon-redshift/",
+    "link":"/reverse-etl/amazon-redshift/",
     "content":[]
  },
  {
     "key":"amazon-s3",
     "title":"Amazon S3",
-    "link":"/warehouse-actions/amazon-s3/",
+    "link":"/reverse-etl/amazon-s3/",
     "content":[]
  },
  {
     "key":"clickhouse",
     "title":"ClickHouse",
-    "link":"/warehouse-actions/clickhouse/",
+    "link":"/reverse-etl/clickhouse/",
     "content":[]
  },
  {
     "key":"google-bigquery",
     "title":"Google BigQuery",
-    "link":"/warehouse-actions/google-bigquery/",
+    "link":"/reverse-etl/google-bigquery/",
     "content":[]
  },
  {
     "key":"postgresql",
     "title":"PostgreSQL",
-    "link":"/warehouse-actions/postgresql/",
+    "link":"/reverse-etl/postgresql/",
     "content":[]
  },
  {
     "key":"snowflake",
     "title":"Snowflake",
-    "link":"/warehouse-actions/snowflake/",
+    "link":"/reverse-etl/snowflake/",
     "content":[]
  },
  {
     "key":"features",
     "title":"Features",
-    "link":"/warehouse-actions/features/",
+    "link":"/reverse-etl/features/",
     "content":[]
  },
  {
-   "key":"setting-up-connections-using-models",
-   "title":"Setting up Connections Using Models",
-   "link":"/warehouse-actions/features/setting-up-connections-using-models/",
+   "key":"models",
+   "title":"Models",
+   "link":"/reverse-etl/features/models/",
    "content":[]
 },  
  {
     "key":"airflow-provider",
     "title":"AirFlow Provider",
-    "link":"/warehouse-actions/features/airflow-provider/",
+    "link":"/reverse-etl/features/airflow-provider/",
     "content":[]
  },
  {
     "key":"visual-data-mapper",
     "title":"Visual Data Mapper",
-    "link":"/warehouse-actions/features/visual-data-mapper/",
+    "link":"/reverse-etl/features/visual-data-mapper/",
     "content":[]
  },
  {
     "key":"common-settings",
     "title":"Common Settings",
-    "link":"/warehouse-actions/common-settings/",
+    "link":"/reverse-etl/common-settings/",
     "content":[]
  },
  {
     "key":"sync-modes",
     "title":"Sync Modes",
-    "link":"/warehouse-actions/common-settings/sync-modes/",
+    "link":"/reverse-etl/common-settings/sync-modes/",
     "content":[]
  },
  {
     "key":"sync-schedule-settings",
     "title":"Sync Schedule Settings",
-    "link":"/warehouse-actions/common-settings/sync-schedule-settings/",
+    "link":"/reverse-etl/common-settings/sync-schedule-settings/",
     "content":[]
  },
+ {
+    "key":"importing-data-using-tables",
+    "title":"Importing Data using Tables",
+    "link":"/reverse-etl/common-settings/importing-data-using-tables/",
+    "content":[]
+ },
+ {
+    "key":"importing-data-using-models",
+    "title":"Importing Data using Models",
+    "link":"/reverse-etl/common-settings/importing-data-using-models/",
+    "content":[]
+ },
+ {
+   "key":"faq",
+   "title":"FAQ",
+   "link":"/reverse-etl/faq/",
+   "content":[]
+},
  {
     "key":"destinations",
     "title":"Destinations",
@@ -728,6 +752,12 @@ export const postNavList = [
     "key":"lytics",
     "title":"Lytics",
     "link":"/destinations/analytics/lytics/",
+    "content":[]
+ },
+ {
+    "key":"singular",
+    "title":"Singular",
+    "link":"/destinations/analytics/singular/",
     "content":[]
  },
  {
@@ -1417,7 +1447,7 @@ export const postNavList = [
  {
     "key":"tracking-plan-spreadsheet",
     "title":"Tracking Plan Spreadsheet",
-    "link":"/data-governance/tracking-plan-spreadsheet/",
+    "link":"/data-governance/tracking-plans/tracking-plan-spreadsheet/",
     "content":[]
  },
  {
