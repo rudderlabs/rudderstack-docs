@@ -1,0 +1,76 @@
+---
+title: "Data Storage"
+description: >-
+  Detailed technical documentation on data storage in cookies or local storage by the RudderStack’s JavaScript SDK.
+---
+
+# Data Storage
+
+RudderStack JavaScript SDK, by default, stores persistent user data in cookies (if cookie support is not available, then local storage is preferred).
+
+By default, all the cookies are stored on the top-level domain. This approach helps in identifying the users from other sites that are hosted under a sub-domain.
+
+For example, if you include the RudderStack JavaScript SDK in both [admin.samplewebsite.com](http://admin.samplewebsite.com/) and [app.samplewebsite.com](http://app.samplewebsite.com/), the SDK will store the cookie in the top-level domain [samplewebsite.com](http://samplewebsite.com/).
+
+However, you can configure the domain via the `setCookieDomain` parameter in the `load` API options.
+
+```javascript
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
+  setCookieDomain: "samplewebsite.com",
+});
+```
+Below is a detailed description of all the user data stored by the SDK in cookies.
+
+### Notes
+
+1. All the cookie names are prefixed with **rl_** and the values are prefixed with **RudderEncrypt:**
+2. All the cookie values are stored as encrypted, and the data length is directly proportional to the values provided to the SDK.*
+
+## List of cookies set by the SDK
+
+
+
+It includes the following details:
+
+| Name             | Description       | Example    | Clearing Mechanism  |
+| :-------------------- | :---------------------------------- | :-------------------------------- |:---------------------------------- |
+|  `rl_user_id`         |Stores the user ID set via the identify API method. All the subsequent event payloads would contain this data unless overridden. | "4578", "USER_001" etc.   | `rudderanalytics.reset()`  |
+|  `rl_trait`       | Stores the user traits object set via the identify API method. All the subsequent event payloads would contain this data unless overridden. |                   |`rudderanalytics.reset()` |
+|  `rl_anonymous_id`          | Stores the anonymous ID. By default, it would the SDK auto-generated unique ID for each visitor unless overridden via setAnonymousId API method. All the subsequent event payloads would contain this data unless overridden. | `rudderanalytics.reset(true)`  |
+|  `rl_group_id`          | Stores the user group ID set via the group API method.        |        | `rudderanalytics.reset()` |
+|  `rl_group_trait`    | Stores the user group traits object set via the group API method.   |                          |  `rudderanalytics.reset()` |
+| `rl_page_init_referrer`        | Stores the initial referrer of the page when a user visits the site for the first time. All the subsequent event payloads would contain this data.    | | Cannot be cleared via SDK.|
+| `rl_page_init_referring_domain`      | Stores the initial referring domain of the page when a user visits the site for the first time. All the subsequent event payloads would contain this data.  |   |Cannot be cleared via SDK.|
+
+
+## List of local storage cookies set by the SDK
+
+These are used by the SDK to keep track of sending the events to the RudderStack backend.
+
+| Name             | Description       | Example    |
+| :------------- |:---------- | :----------- | 
+|  `ack`     | A timer for any other browser tabs to claim control of the retry queue     | |
+|  `reclaimStart`      |To determine if a tab takes over the queue from another tab  |   |
+|  `reclaimEnd`     | To determine if a tab takes over the queue from another tab   | |
+|  `inProgress`    | To keep track of the events in progress | |
+|  `queue`    | To keep track of the events that are in queue to be processed   | |
+
+
+### Notes
+
+1. All the above local storage cookie names are prefixed with “`rudder.<uuid>.`".
+    
+    Example:
+    
+    `rudder.2dc2aee6-2836-4273-be69-79c90c04ddec.reclaimEnd`
+
+
+## FAQs
+
+Refer to the [**FAQs**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.
+
+## Contact us
+
+For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+
+If you come across any issues while using this SDK, feel free to submit them on our [**GitHub issues page**](https://github.com/rudderlabs/rudder-sdk-js/issues).
