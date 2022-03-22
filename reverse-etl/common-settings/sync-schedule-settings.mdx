@@ -1,10 +1,10 @@
 ---
-title: "Sync Schedule Settings"
+title: "Sync Schedule"
 description: >-
  Detailed technical description of the different sync schedule settings for the Reverse ETL sources.
 ---
 
-# Sync Schedule Settings
+# Sync Schedule
 
 RudderStack lets you set a schedule for importing data from your Reverse ETL sources while setting them up in your dashboard. It lets you specify the schedule type that defines how and when the syncs will run.
 
@@ -14,7 +14,7 @@ RudderStack supports the following three schedule types:
 | :------------------| :---------------------------------------------------------|
 | Basic              | Run syncs at a given time interval and specified time.    |
 | CRON               | Run syncs based on a CRON expression defined by the user. |
-| Manual             | Run syncs manually.                                       |  
+| Manual             | Run syncs manually.                                       |
 
 ## Basic
 
@@ -22,7 +22,7 @@ This schedule type lets you run the data syncs at a set interval. You can specif
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-basic.png" alt="Basic sync schedule" />
 
-- **Frequency** - Data sync frequency can be chosen from the following options:
+- **Frequency** - You can choose the data sync frequency from the following options:
   - 30 minutes
   - 1 hour
   - 3 hours
@@ -66,7 +66,7 @@ To programmatically schedule and trigger a sync from outside RudderStack, refer 
 
 ## Sync modes behavior
 
-When a sync schedule is set in RudderStack, the behavior of sync modes can be explained as below:
+The following sections explain the behavior of the two sync modes(Upsert and Mirror) when a sync schedule is set in RudderStack.
 
 ### Upsert mode
 
@@ -78,7 +78,7 @@ RudderStack takes a snapshot of the data and syncs it at a later point once the 
 
 For [mirror mode](https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/#mirror-mode), you can run only one sync at any given point of time. A new sync starts only after the previous one is completed.
 
-However, suppose you have a sync scheduled for every 30 minutes. If there is a sync running for more than 30 minutes, then the next scheduled sync will be skipped.
+Suppose you have a sync scheduled for every 30 minutes. If there is a sync running for more than 30 minutes, then the next scheduled sync will be skipped when using the mirror mode.
 
 ## FAQ
 
@@ -100,7 +100,7 @@ This message appears when either your Reverse ETL source, the connected destinat
 
 ### What happens if I don't set the Sync Starting At time?
 
-RudderStack considers strict 1-hour time windows(00:00, 01:00, and so on) to schedule syncs if you do not explicitly set the time under **Sync Starting At**.
+RudderStack considers strict time windows to schedule syncs if you do not explicitly set the time under **Sync Starting At**.
 
 Suppose you create a source at 12:30 hrs UTC, specify the **Frequency** as 3 hours, and do not specify any time under **Sync Starting At**. In this case, as the time falls in the 12:00-13:00 time window, RudderStack will run the next sync at 15:00 hrs UTC (12:00 + 03:00 = 15:00 hrs).
 
