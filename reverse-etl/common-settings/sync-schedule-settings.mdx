@@ -6,7 +6,7 @@ description: >-
 
 # Sync Schedule
 
-RudderStack lets you schedule data imports from your Reverse ETL sources while setting them up in your dashboard. It lets you specify the schedule type that defines how and when the syncs will run.
+RudderStack lets you set a schedule for importing data from your Reverse ETL sources while setting them up in your dashboard. It lets you specify the schedule type that defines how and when the syncs will run.
 
 RudderStack supports the following three schedule types:
 
@@ -14,32 +14,25 @@ RudderStack supports the following three schedule types:
 | :------------------| :---------------------------------------------------------|
 | Basic              | Run syncs at a given time interval and specified time.    |
 | CRON               | Run syncs based on a CRON expression defined by the user. |
-| Manual             | Run syncs manually.                                       |  
+| Manual             | Run syncs manually.                                       |
 
-This guide explains the above sync schedule settings in detail.
-
-## Basic schedule
+## Basic
 
 This schedule type lets you run the data syncs at a set interval. You can specify the sync frequency as well as the time(in UTC) when you want the sync to start.
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-basic.png" alt="Basic sync schedule" />
 
-You get the following sync frequency options when the schedule type is set to **Basic**:
+- **Frequency** - You can choose the data sync frequency from the following options:
+  - 30 minutes
+  - 1 hour
+  - 3 hours
+  - 6 hours
+  - 12 hours
+  - 24 hours
 
-- 30 minutes
-- 1 hour
-- 3 hours
-- 6 hours
-- 12 hours
-- 24 hours
+- **Sync Starting At** - Specify the time at which the data sync should start.
 
-### What happens if I don't set the Sync Starting At time?
-
-RudderStack considers strict 1-hour time windows(00:00, 01:00, and so on) to schedule syncs if you do not explicitly set the time under **Sync Starting At**.
-
-Suppose you create a source at 12:30 hrs UTC, specify the **Frequency** as 3 hours, and do not specify any time under **Sync Starting At**. In this case, as the time falls in the 12:00-13:00 time window, RudderStack will run the next sync at 15:00 hrs UTC.
-
-## CRON schedule
+## CRON 
 
 This schedule type lets you define a custom CRON expression and runs the data syncs based on this setting. 
 
@@ -52,14 +45,15 @@ You can use the <a href="https://crontab.guru/">CRON scheduler utility</a> to sp
 
 <div class="warningBlock">
 
-The sync frequency needs to be greater than or equal to 15 minutes. Otherwise, you will encounter an error as seen below.
-</div>
+The sync frequency specified under <strong>Run Settings</strong> needs to be greater than or equal to 15 minutes. Otherwise, you will encounter an error as shown below:
 
 <img src="../../assets/warehouse-actions-sources/sync-schedule-cron-error.png" alt="CRON schedule error" />
+ 
+ </div>
 
-## Manual syncs
+## Manual 
 
-This schedule type lets you run your data syncs manually. RudderStack won't sync your data until you explicitly trigger it.
+This schedule type lets you run your data syncs manually. RudderStack won't sync the data until you explicitly trigger it.
 
 To trigger a sync manually, go to the **Syncs** tab in your Reverse ETL source details page and click on **Sync Now**, as shown:
 
@@ -70,21 +64,21 @@ To trigger a sync manually, go to the **Syncs** tab in your Reverse ETL source d
 To programmatically schedule and trigger a sync from outside RudderStack, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/features/airflow-provider/">RudderStack Airflow Provider</a> documentation.
 </div>
 
-## Sync schedule considerations
+## Sync modes behavior
 
-The following considerations must be kept in mind while setting a sync schedule in RudderStack, depending on the sync modes:
+The following sections explain the behavior of the two sync modes(Upsert and Mirror) when a sync schedule is set in RudderStack.
 
 ### Upsert mode
 
-For [upsert mode](https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/#upsert), you can trigger a new sync anytime by pressing the **Sync Now** button. 
+For [upsert mode](https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/#upsert), you can trigger a new sync anytime by pressing the **Sync Now** button. Multiple syncs can run simultaneously.
 
 RudderStack takes a snapshot of the data and syncs it at a later point once the pending syncs are completed.
 
 ### Mirror mode
 
-For [mirror mode](https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/#mirror-mode), you can run only one sync at any given point of time. 
+For [mirror mode](https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/#mirror-mode), you can run only one sync at any given point of time. A new sync starts only after the previous one is completed.
 
-Suppose you have a sync scheduled for every 30 minutes. If there is a sync running for more than 30 minutes, then the next scheduled sync will be skipped.
+Suppose you have a sync scheduled for every 30 minutes. If there is a sync running for more than 30 minutes, then the next scheduled sync will be skipped when using the mirror mode.
 
 ## FAQ
 
@@ -103,6 +97,12 @@ Alternatively, you can also go to the **Settings** tab and click on the **Edit s
 ### I'm unable to run a sync manually and get the message "Your pipeline is paused. Make sure that the source and at least one destination is enabled". What do I do?
 
 This message appears when either your Reverse ETL source, the connected destination, or both are disabled. Go to the **Settings** tab to verify if the source and destination are enabled for data syncs.
+
+### What happens if I don't set the Sync Starting At time?
+
+RudderStack considers strict time windows to schedule syncs if you do not explicitly set the time under **Sync Starting At**.
+
+Suppose you create a source at 12:30 hrs UTC, specify the **Frequency** as 3 hours, and do not specify any time under **Sync Starting At**. In this case, as the time falls in the 12:00-13:00 time window, RudderStack will run the next sync at 15:00 hrs UTC (12:00 + 03:00 = 15:00 hrs).
 
 ## Contact us
 
