@@ -527,6 +527,33 @@ rudderClient.reset()
 
 </div>
 
+
+## Supported mappings
+
+RudderStack maps the following properties to the MoEngage properties before sending them over MoEngage's HTTP API.
+
+| RudderStack property         | MoEngage property      | 
+| :--------------------------- | :--------------------- |
+| `pushPreference`           | `push_preference`             |         
+| `active`               | `active`               |             
+| `userId`           | `customer_id`           |         
+| `name`            | `name`            |          
+| `firstname`/`first_name`/`firstName`                | `first_name`                |            
+| `lastname`/`last_name`/`lastName`            | `last_name`            |          
+| `email`               | `email`               |             
+| `age`              | `age`              |            
+| `gender`                 | `gender`          |               
+| `mobile`      | `mobile`          |    
+| `source`           | `source`         |         
+| `createdAt`            | `created_time`                  |          
+| `last_seen`/`lastSeen`      | `last_seen`            |    
+| `transactions`    | `transactions`             |  
+| `revenue`               | `revenue`                |             
+| `moe_unsubscribe`/`moeUnsubscribe`            | `moe_unsubscribe`        |          
+| `event`             | `action`              |           
+| `properties`  | `attributes`            | 
+
+
 ## Configuring Push Notifications
 
 <!--{% tabs %}
