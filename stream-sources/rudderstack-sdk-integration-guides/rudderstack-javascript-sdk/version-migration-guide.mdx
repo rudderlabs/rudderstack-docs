@@ -89,6 +89,11 @@ If you have cloned RudderStack's JavaScript SDK and are self-hosting it via your
 2. Download all the destination SDKs listed [here](#rudderstack-destination-sdks).
 3. Move all the downloaded files to your preferred location.
 
+<div class="warningBlock">
+
+The destination SDKs name should not be changed as the custom names are not supported.
+</div>
+
 We recommend maintaining the following structure:
 
 <img src="../../../assets/js-sdk-version-migration.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
@@ -167,7 +172,9 @@ The device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-
 
 If you want to load the device-mode destinations from a different path, follow the below steps: 
 
-1. Use `destSDKBaseURL` option in the load call the like below:
+1. Download the destination SDKs listed [here](#rudderstack-destination-sdks).
+2. Move all the downloaded files to your preferred location.
+3. Use `destSDKBaseURL` option in the load call the like below:
 
 ```javascript
 rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
@@ -175,8 +182,6 @@ rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
   ...otherOptions
 });
 ```
-2. Download the destination SDKs listed [here](#rudderstack-destination-sdks).
-3. Move all the downloaded files to your preferred location.
 
 <div class="warningBlock">
 
