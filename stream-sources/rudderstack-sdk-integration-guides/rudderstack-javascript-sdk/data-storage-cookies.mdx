@@ -18,7 +18,7 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 
 ## Cookies
 
-The list of cookies used by JavaScript SDK can be observed below:
+The list of cookies used by JavaScript SDK to store persistent user data is mentioned below:
 
 | Name             | Description       | Example    | Clearing Mechanism using SDK |
 | :-------------------- | :---------------------------------- | :-------------------------------- |:---------------------------------- |
@@ -43,24 +43,21 @@ The local storage cookies are used by the JavaScript SDK to keep track of the ev
 | Name             | Description       | Example    |
 | :------------- |:---------- | :----------- | 
 |  `ack`     | Timer for other browser tabs to claim control of the retry queue     | `1639734070124` |
-|  `reclaimStart`      |Determines if a tab takes over the queue from another tab  | `2dc2aee6-2836-4273-be69-79c90c04ddec`  |
-|  `reclaimEnd`     | Determines if a tab takes over the queue from another tab   | `2dc2aee6-2836-4273-be69-79c90c04ddec` |
+|  `reclaimStart`/`reclaimEnd`      |Determines if a tab takes over the queue from another tab  | `2dc2aee6-2836-4273-be69-79c90c04ddec`  |
 |  `inProgress`    | Keeps track of the events in progress | <pre>{<br> "d89d7fb5-945e-4378-bda5-492e4b596fb4": {<br>  "item": {<br>   "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br>    "headers": {<br>    "Content-Type": "application/json",<br>    ...<br> },<br> "message": { <br>   ...<br> }<br>  "attemptNumber": 1,<br>  "time": 1639734792773,<br>  "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br> }<br> }<br>}<br></pre> |
 |  `queue`    | Keeps track of the events that are in queue to be processed   | <pre>[<br>  {<br>   "item": {<br>    "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br>     "headers": {<br>     "Content-Type": "application/json",<br>    ...<br> },<br> "message": { <br>   ...<br> }<br>  "attemptNumber": 0,<br>  "time": 1639734792773,<br>  "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br> }<br>]<br></pre> |
 
 <div class="infoBlock">
 
-All the local storage cookie names are prefixed with <strong>rudder.&lt;uuid&gt;.</strong> For example,
+All the local storage cookie names are prefixed with <code class="inline-code">rudder.&lt;uuid&gt;.</code> For example,
 <code class="inline-code">rudder.2dc2aee6-2836-4273-be69-79c90c04ddec.reclaimEnd</code>.
 </div>
 
 
 ## FAQ
 
-Refer to the [**FAQ**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.
+Refer to the [FAQ](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.
 
 ## Contact us
 
-For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
-
-If you come across any issues while using this SDK, feel free to submit them on our [**GitHub issues page**](https://github.com/rudderlabs/rudder-sdk-js/issues).
+For more information or queries on this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
