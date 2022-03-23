@@ -5,13 +5,11 @@ description: Step-by-step guide on migrating from the RudderStack JavaScript SDK
 
 # Version Migration Guide
 
-The **JavaScript SDK  v1.1** is a lightweight, more efficient, and optimized version of the [**RudderStack JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/).
-
-The JavaScript SDK v1.1 offers the following features:
+The **JavaScript SDK  v1.1** is a lightweight, more efficient, and optimized version of the [RudderStack JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) and offers the following features:
 
 * The size of the SDK is reduced by approximately **70%**, considerably reducing its loading time.
 * The destination SDKs are separated from the core JavaScript SDK. They are now published as individual plugins.
-* The [**device mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode) destinations are loaded dynamically as per your specified dashboard configurations.
+* The [device mode](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode) destinations are loaded dynamically as per your specified dashboard configurations.
 
 ## JavaScript SDK v1 vs. v1.1
 
@@ -177,7 +175,7 @@ rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
   ...otherOptions
 });
 ```
-2. Download all the destination SDKs listed [here](#rudderstack-destination-sdks).
+2. Download the destination SDKs listed [here](#rudderstack-destination-sdks).
 3. Move all the downloaded files to your preferred location.
 
 <div class="warningBlock">
