@@ -168,7 +168,7 @@ npm install rudder-sdk-js@2.x.x
 ```
 ### Load device mode destinations
 
-By default, the device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ in 2.x.x, depending on the dashboard settings. However you can also choose any of the below ways to load the device mode destinations:
+The device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ in 2.x.x, depending on the dashboard settings. However you can also choose to load them by using any of the below-mentioned ways:
 
 #### Forwarding/proxying the RudderStack CDN
 
@@ -194,7 +194,7 @@ Refer to our guide on <a href="https://rudderstack.com/docs/user-guides/how-to-g
 This step is required to ensure that both the core SDK and destination SDKs are forwarded properly.
 </div>
 
-4. Finally, use `destSDKBaseURL` option in the load call like below
+4. Finally, use `destSDKBaseURL` option in the load call as shown:
 
 ```javascript
 rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
@@ -209,7 +209,7 @@ If you have cloned RudderStack's JavaScript SDK and are self-hosting it, follow 
 
 1. Download the destination SDKs listed [here](#rudderstack-destination-sdks).
 2. Move all the downloaded files to your preferred location.
-3. Use `destSDKBaseURL` option in the load call like below
+3. Use `destSDKBaseURL` option in the load call as shown:
 
 ```javascript
 rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
