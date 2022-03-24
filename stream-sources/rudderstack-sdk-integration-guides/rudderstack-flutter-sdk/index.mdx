@@ -112,7 +112,7 @@ You can configure your client based on the following parameters by passing them 
 | :---------- | :-------- | :--------- | :----------------- |
 | `dataPlaneUrl`           | String  | Your data plane URL.     | `https://hosted.rudderlabs.com` |
 | `flushQueueSize`        | Integer     | Number of events in a batch request to the server.    | `30`                                                     |
-| `isDebug` |  |  |  |
+| `isDebug` | Boolean | When enabled, sets the log level as `debug`. For more information, refer to the [Debugging](#debugging) section below.  | `false`  |
 | `logLevel`  | Integer     | Controls the logs you want to see from the Flutter SDK.        | `RudderLogger.RudderLogLevel.NONE`                       |
 | `mobileConfig` | Object | Refer to the [`mobileConfig` parameters](#mobileconfig-parameters) section below. | - |
 | `webConfig` | Object | Refer to the [`webConfig` parameters](#webconfig-parameters) section below. | - |
@@ -128,7 +128,7 @@ You can configure your client based on the following parameters by passing them 
 | `sleepTimeout`          | Integer     | Minimum waiting time to flush the events to the server.          | `10 seconds`                      |
 | `configRefreshInterval` | Integer     | Fetches the config from the dashboard after this specified time.                              | `2`                                                      |
 | `trackLifecycleEvents`  | Boolean | Determines if the SDK will capture application life cycle events automatically.                   | `true`                                                   |
-| `recordScreenViews` |  | | |
+| `recordScreenViews` | Boolean | When enabled, the SDK automatically records the screens viewed by the user. | `false` |
 
 ### webConfig parameters
 
@@ -140,9 +140,9 @@ You can configure your client based on the following parameters by passing them 
 | `useBeacon` | Boolean | If enabled, the SDK sends the event payloads via the `navigator.sendBeacon()` utility | `False` |
 | `secureCookie` | Boolean | If enabled, the SDK sends the cookie to the storage backend via HTTPS. | `False` |
 | `loadIntegration` | Boolean | If disabled, the destination SDKs are not fetched by the SDK. | `True` |
-| `cookieConsentManagers` | Object |  |  |
-| `beaconFlushQueueInterval` | | | |
-| `maxBeaconItems` | | | |
+| `cookieConsentManagers` | Object | Refer to the [cookieConsentManager](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#cookieconsentmanager) section for more information. | - |
+| `beaconFlushQueueInterval` | Integer | The SDK flushes the queue after this time interval (in milliseconds). | 600000 | 
+| `maxBeaconItems` | Integer | The SDK flushes the queue when this number of events is reached. | 10 |
 | `maxItems` | Integer | Maximum number of events kept in the storage. | 100 |
 | `maxAttempts` | Integer | Maximum number of attempts the SDK makes to send the event to the destination. | 10 |
 | `backoffFactor` | Integer | Refers to the exponential base. | 2 |
@@ -194,7 +194,7 @@ The `identify` method has the following signature:
 
 | Name      | Data Type      | Required | Description                                     |
 | :-------- | :------------- | :------- | :---------------------------------------------- |
-| `userId`  | `String`       | Yes      | Includes the developer identity for the user.    |
+| `userId`  | String      | Yes      | Includes the developer identity for the user.    |
 | `traits`  | `RudderTraits` | No       | Contains information related to the user traits. |
 | `options` | `RudderOption` | No       | Extra options for the `identify` event.         |
 
@@ -231,7 +231,7 @@ The `track` method has the following signature:
 
 | Name         | Data Type        | Required | Description                                                              |
 | :----------- | :--------------- | :------- | :----------------------------------------------------------------------- |
-| `name`       | `String`         | Yes      | Contains the name of the event you want to track.                         |
+| `name`       | String        | Yes      | Contains the name of the event you want to track.                         |
 | `properties` | `RudderProperty` | No       | Contains the extra data properties you want to send along with the event. |
 | `options`    | `RudderOption`   | No       | Contains the extra event options.                                        |
 
@@ -269,8 +269,8 @@ The `screen` method has the following signature:
 
 | Name         | Data Type        | Required | Description                                                               |
 | :----------- | :--------------- | :------- | :------------------------------------------------------------------------ |
-| `screenName` | `String`         | Yes      | Name of the screen viewed by the user.                                                |
-| `category` | `String` | - | Defines the page(web) or screen(mobile) category. |
+| `screenName` | String        | Yes      | Name of the screen viewed by the user.                                                |
+| `category` | String | - | Defines the page(web) or screen(mobile) category. |
 | `properties` | `RudderProperty` | No       | Extra property object that you want to pass along with the `screen` call. |
 | `options`    | `RudderOption`   | No       | Extra options to be passed along with `screen` event.                     |
 
@@ -292,7 +292,7 @@ The `group` method has the following signature:
 
 | Name          | Data Type      | Required | Description                                                                        |
 | :------------ | :------------- | :------- | :--------------------------------------------------------------------------------- |
-| `groupId`     | `String`       | Yes      | The ID of the organization with which you want to associate your user.               |
+| `groupId`     | String      | Yes      | The ID of the organization with which you want to associate your user.               |
 | `groupTraits` | `RudderTraits` | No       | Any other organization traits you want to pass along with the `group` call. |
 | `options`     | `RudderOption` | No       | Extra options to be passed along with `group` event.                               |
 
@@ -325,7 +325,7 @@ The `alias` method has the following signature:
 
 | Name      | Data Type      | Required | Description                                          |
 | :-------- | :------------- | :------- | :--------------------------------------------------- |
-| `newId`   | `String`       | Yes      | The new `userId` you want to assign to the user.      |
+| `newId`   | String      | Yes      | The new `userId` you want to assign to the user.      |
 | `options` | `RudderOption` | No       | Extra options to be passed along with `alias` event. |
 
 <div class="infoBlock">
