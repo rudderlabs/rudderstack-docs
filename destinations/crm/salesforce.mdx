@@ -18,7 +18,7 @@ Find the open-source transformer code for this destination in the <a href="https
 
 <div class="infoBlock">
 
-It is recommended that you create a new Salesforce account to use it with RudderStack. This will protect any confidential information present in your existing Salesforce account. However, this is <strong>entirely optional</strong>. You can also use your existing account to configure Salesforce as a destination.
+It is recommended that you create a new Salesforce account to use with RudderStack. This will protect any confidential information present in your existing Salesforce account. However, this is <strong>entirely optional</strong>. You can also use your existing account to configure Salesforce as a destination.
 
 To create a new account, go to <strong>Setup</strong> > <strong>Administration Setup</strong> > <strong>Users</strong> > <strong>New User</strong> and select <strong>System Administrator</strong> as the profile type. This should give RudderStack the required permissions to access the API.
 </div>
@@ -73,7 +73,7 @@ For more information on the Salesforce Sandbox mode, refer to the <a href="https
 
 ## Identify
 
-RudderStack lets you get your leads from your website or mobile app into Salesforce through the [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call.
+RudderStack lets you get the leads from your website or mobile app into Salesforce through the [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call.
 
 ### Identifying a potential lead
 
@@ -85,7 +85,7 @@ rudderanalytics.identify('userid', {
   title: 'Mr.',
   email: 'alex@example.com',
   company: 'Google Inc.',
-  phone: '1234567890',
+  phone: '+1-202-555-0146',
   rating: 'Hot',
   city: 'New Orleans',
   postalCode: '90002',
@@ -117,7 +117,7 @@ It is mandatory to include <code class="inline-code">'Salesforce':true</code> in
 
 <div class="infoBlock">
 
-If you wish to update custom fields in Salesforce using RudderStack, make sure that you first create those lead fields in Salesforce before sending the data through RudderStack. For more information, refer to the <a href="https://help.salesforce.com/articleView?id=sf.adding_fields.htm&type=5" target="_blank">Salesforce Help</a> guide.
+If you wish to update custom fields in Salesforce using RudderStack, make sure that you first create those fields in Salesforce before sending the data through RudderStack. For more information, refer to the <a href="https://help.salesforce.com/articleView?id=sf.adding_fields.htm&type=5" target="_blank">Salesforce Help</a> guide.
 </div>
 
 As the [Salesforce Leads API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_lead.htm) requires`lastName` and `company` to be present, absence of either of these fields will result in RudderStack automatically appending the `'n/a'` to both the fields - even if they have been specified in some previous request.
@@ -133,7 +133,7 @@ For example, if you want to collect a custom trait in RudderStack named `newProp
 
 You can create or update any [Salesforce object](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_list.htm) using the `identify` event. To specify the object type, follow the schema below.
 
-RudderStack will look for the key `externalId` under `context` and determine the Salesforce object type by removing the part `Salesforce-` from the field `type`. It will then make a `PATCH` request if there is an `id` present in the request to update the record. Otherwise, a new record will be created.
+RudderStack looks for the key `externalId` under `context` and determines the Salesforce object type by removing the part `Salesforce-` from the field `type`. Further, it makes a `PATCH` request if there is an `id` present in the request to update the record. Otherwise, a new record is created.
 
 You can pass multiple object types in a single request and RudderStack will create that many requests to Salesforce.
 
@@ -219,7 +219,7 @@ RudderStack supports and maps the event properties to several standard fields in
 | `title` | `Title` |
 | `website` | `Website` |
 
-## FAQs
+## FAQ
 
 ### Which Salesforce Edition should I use to access the API?
 
@@ -233,7 +233,7 @@ You can find your security token under **Setup** > **Personal Setup** > **My Per
 
 ### How do I check the number of Salesforce API calls left for the day?
 
-To check the number of Salesforce API calls, go to **Setup** > **Administration Setup** > **Company Profile** > **Company Information**. You should then be able to see a field called **API Requests, Last 24 Hours**, which contains the number of APIs calls left for the day.
+To check the number of Salesforce API calls, go to **Setup** > **Administration Setup** > **Company Profile** > **Company Information**. You should then be able to see a field called **API Requests, Last 24 Hours**, which contains the number of API calls left for the day.
 
 ### What if I don't include `'Salesforce': true` in my `identify` call?
 
