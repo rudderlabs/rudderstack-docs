@@ -5,18 +5,25 @@ description: Step-by-step guide to set up Salesforce as a destination in RudderS
 
 # Salesforce
 
-[**Salesforce**](https://www.salesforce.com/in/?ir=1) is an industry leader in enterprise CRM. It offers a suite of enterprise applications revolving around marketing automation, customer engagement and support, application development as well as analytics.
+[Salesforce](https://www.salesforce.com/) is an industry leader in enterprise CRM. It offers a suite of enterprise applications revolving around marketing automation, customer engagement and support, application development as well as analytics.
 
 RudderStack lets you identify your leads in Salesforce without having to use the REST APIs.
 
 <div class="successBlock">
 
-**Find the open-source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/salesforce)**.**
+Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/salesforce" target="_blank">GitHub repository</a> .
 </div>
 
-## Getting Started
+## Getting started
 
-Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Salesforce by referring to the table below:
+<div class="infoBlock">
+
+It is recommended that you create a new Salesforce account to use with RudderStack. This will protect any confidential information present in your existing Salesforce account. However, this is <strong>entirely optional</strong>. You can also use your existing account to configure Salesforce as a destination.
+
+To create a new account, go to <strong>Setup</strong> > <strong>Administration Setup</strong> > <strong>Users</strong> > <strong>New User</strong> and select <strong>System Administrator</strong> as the profile type. This should give RudderStack the required permissions to access the API.
+</div>
+
+Before configuring Salesforce as a destination in RudderStack, verify if the source platform is supported by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -25,65 +32,66 @@ Before configuring your source and destination on the RudderStack, please verify
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/) guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
-Once you have confirmed that the source supports sending events to Salesforce, follow these steps:
+Once you have confirmed that the source platform supports sending events to Salesforce, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Salesforce**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Salesforce**.
 
 <div class="infoBlock">
 
-Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) to add a source and destination in RudderStack.
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-* Give a name to the destination and click on **Next**. You should then see the following screen:
+2. Assign a name to your destination and click on **Next**.
 
-<!--![Salesforce Connection Settings](https://user-images.githubusercontent.com/59817155/125079748-9a8b0e80-e0e1-11eb-8d58-eda8f773afcf.png)-->
+### Connection settings
 
-<img src="https://user-images.githubusercontent.com/59817155/125079748-9a8b0e80-e0e1-11eb-8d58-eda8f773afcf.png" alt="Salesforce Connection Settings" />
-<span class="imageTitle">Salesforce Connection Settings</span>
+To configure Salesforce as a destination in RudderStack, you need to specify the following settings:
 
-* Provide your Salesforce username and password here along with the access token.
-* If you are using a Sandbox environment for integration, enable the **Sandbox Mode** option. Then, click on **Next**. Salesforce will now be enabled as a destination in RudderStack.
+<img src="../../assets/event-stream-destinations/salesforce-connection-settings.png" alt="Salesforce connection settings" />
+
+- **User Name**: Enter your Salesforce username in this field.
+- **Password**: Enter the password associated with the Salesforce account.
+- **Security Token**: Enter your Salesforce security token.
 
 <div class="infoBlock">
 
-To know more about Salesforce Sandbox, click [**here**](https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm&type=5).
+For more information on the Salesforce security token, refer to the <a href="https://help.salesforce.com/s/articleView?id=sf.user_security_token.htm&language=en_US&r=https%3A%2F%2Fwww.google.com%2F&type=5" target="_blank">Salesforce Help</a> guide.
 </div>
+
+- **Map Rudder Properties to Salesforce Properties**: This setting is enabled by default and allows you to map the RudderStack event properties to the corresponding Salesforce fields.
+- **Sandbox mode**: Enable this setting if you are using a Sandbox environment for the integration.
 
 <div class="infoBlock">
 
-We **recommend** that you create a new Salesforce account to use it with RudderStack. This will protect any confidential information present in your existing Salesforce account. However, this is **entirely optional**. You can also use your existing Salesforce account.
+For more information on the Salesforce Sandbox mode, refer to the <a href="https://help.salesforce.com/articleView?id=sf.deploy_sandboxes_parent.htm&type=5" target="_blank">Salesforce Help</a> guide.
 </div>
 
-<div class="infoBlock">
-
-To create a new account, go to **Setup** - **Administration Setup** - **Users** - **New User** and create a **System Administrator** profile. This should give RudderStack the required permissions to access the API.
-</div>
+- **Use contact ID for converted leads**: Enable this setting if both the lead and contact field mappings are the same. 
 
 ## Identify
 
-RudderStack makes it very easy for you to get your leads from your website or mobile app into Salesforce through the `identify` call.
+RudderStack lets you get the leads from your website or mobile app into Salesforce through the [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call.
 
-### Identifying a Potential Lead
+### Identifying a potential lead
 
 The following code snippet demonstrates a sample `identify` call in RudderStack:
 
 ```javascript
 rudderanalytics.identify('userid', {
-  name: 'John Doe',
-  title: 'CEO',
-  email: 'name.surname@domain.com',
-  company: 'Company123',
-  phone: '123-456-7890',
-  state: 'Texas',
+  name: 'Alex Keener',
+  title: 'Mr.',
+  email: 'alex@example.com',
+  company: 'Google Inc.',
+  phone: '+1-202-555-0146',
   rating: 'Hot',
-  city: 'Austin',
-  postalCode: '12345',
+  city: 'New Orleans',
+  postalCode: '90002',
   country: 'US',
-  street: 'Sample Address',
-  state: 'TX'
+  street: 'Blue Gum Street',
+  state: 'LA'
 }, {
   'integrations': {
     'Salesforce': true
@@ -102,30 +110,30 @@ When the `identify` method is called, RudderStack checks if the lead already exi
 
 <div class="warningBlock">
 
-It is mandatory to include `'Salesforce':true` in every Salesforce integration object. As Salesforce has strict API limits, this is required in order to prevent the users from hitting their limits. By default, RudderStack does not send `identify` calls to Salesforce. Hence, any `identify` call that does not include `'Salesforce':true` in its payload will be ignored.
+It is mandatory to include <code class="inline-code">'Salesforce':true</code> in every Salesforce integration object. As Salesforce has strict API limits, this is required in order to prevent the users from hitting their limits. By default, RudderStack does not send <code class="inline-code">identify</code> calls to Salesforce. Hence, any <code class="inline-code">identify</code> call that does not include <code class="inline-code">'Salesforce':true</code> in its payload will be ignored.
 </div>
 
-### Updating Custom Fields in Salesforce
+### Updating custom fields in Salesforce
 
 <div class="infoBlock">
 
-If you wish to update custom fields in Salesforce using RudderStack, make sure that you first create those lead fields in Salesforce before sending the data through RudderStack. For more information on how to do this, check out the [**Salesforce docs**](https://help.salesforce.com/articleView?id=sf.adding_fields.htm&type=5).
+If you wish to update custom fields in Salesforce using RudderStack, make sure that you first create those fields in Salesforce before sending the data through RudderStack. For more information, refer to the <a href="https://help.salesforce.com/articleView?id=sf.adding_fields.htm&type=5" target="_blank">Salesforce Help</a> guide.
 </div>
 
-As `lastName` and `company` are needed by the [**Salesforce Leads API**](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_lead.htm), the absence of either of these fields will result in RudderStack automatically appending the `'n/a'`string to both the fields - even if they have been specified in some previous request.
+As the [Salesforce Leads API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_lead.htm) requires`lastName` and `company` to be present, absence of either of these fields will result in RudderStack automatically appending the `'n/a'` to both the fields - even if they have been specified in some previous request.
 
-For example, if you wish to collect a custom trait in RudderStack named `newProp`, create a field label named `newProp`. This will generate an API name as `newProp__c`. RudderStack automatically appends the `__c` to any custom trait.
+For example, if you want to collect a custom trait in RudderStack named `newProp`, create a field label named `newProp`. This will generate an API name as `newProp__c`. RudderStack automatically appends the `__c` to any custom trait.
 
-<div class="infoBlock">
+<div class="warningBlock">
 
-**Make sure you are consistent with your casing**. If the custom fields are created in camelCase, make sure sure that you send the traits to RudderStack in camelCase. If you're creating custom fields in snake\_case, make sure you send the traits in the same format.
+<strong>Make sure the casing is consistent </strong>. For example, if the custom fields are created in the camel case, then the traits must be sent to RudderStack in the camel case only.
 </div>
 
-## Updating Salesforce Objects
+## Updating Salesforce objects
 
-You can create or update any [**Salesforce Object**](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_list.htm) using the `identify` event. To specify the object type, follow the schema below.
+You can create or update any [Salesforce object](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_list.htm) using the `identify` event. To specify the object type, follow the schema below.
 
-RudderStack will look for the key `externalId` under `context` and determine the Salesforce Object type by removing the part `Salesforce-` from the field `type`. It will then make a `PATCH` request if there is an `id` present in the request to update the record. Otherwise, a new record will be created.
+RudderStack looks for the key `externalId` under `context` and determines the Salesforce object type by removing the part `Salesforce-` from the field `type`. Further, it makes a `PATCH` request if there is an `id` present in the request to update the record. Otherwise, a new record is created.
 
 You can pass multiple object types in a single request and RudderStack will create that many requests to Salesforce.
 
@@ -146,51 +154,31 @@ rudderanalytics.identify('123456',
     });
 ```
 
-In the example above, RudderStack updates the `Contact` object in Salesforce with `id` as `sf-contact-id` and send the `traits` object to Salesforce.
+In the example above, RudderStack updates the `Contact` object in Salesforce with `id` as `sf-contact-id` and sends the `traits` object to Salesforce.
 
 <div class="infoBlock">
 
-By default, RudderStack creates a `Lead` object in Salesforce and maps the `traits` to it, as mentioned above. For other objects, RudderStack does not modify the `traits`; they are sent to Salesforce as it is.
+By default, RudderStack creates a <code class="inline-code">Lead</code> object in Salesforce and maps the <code class="inline-code">traits</code> to it, as mentioned above. For other objects, RudderStack does not modify the <code class="inline-code">traits</code>; they are sent to Salesforce as it is.
 </div>
 
-## FAQs
+## Supported mappings
 
-### Which Salesforce Edition should I use to access the API?
+RudderStack supports and maps the event properties to several standard fields in Salesforce, as listed in the following table:
 
-Before connecting to the Salesforce API with RudderStack, make sure you are using the right edition of Salesforce. You can follow [**this guide**](https://help.salesforce.com/articleView?id=000326486&type=1&mode=1) to know more about the supported editions with the API access. You must have either the **Enterprise**, **Unlimited**, **Developer** or **Performance** editions to access the API.
-
-### Where do I get the Security Token?
-
-You can find your Security Token under **Setup** - **Personal Setup** - **My Personal Information** - [**Reset My Security Token**](https://na15.salesforce.com/_ui/system/security/ResetApiTokenEdit).
-
-If you still face any issues, feel free to contact us.
-
-### How to check the number of Salesforce API calls left for the day?
-
-To check the number of Salesforce API calls, go to **Setup** - **Administration Setup** - **Company Profile** - **Company Information**. You should be able to see a field called **API Requests, Last 24 Hours**, which contains the number of APIs calls left for the day.
-
-### What if I don't include `'Salesforce': true` in my `identify` call?
-
-Salesforce has a very strict API limit. Moreover, RudderStack by default does not send `identify` calls to Salesforce. If you don't include `'Salesforce':true` in your `identify` call payload, the call will be simply ignored.
-
-### What are the Salesforce Standard Fields that RudderStack supports?
-
-RudderStack supports several standard fields in Salesforce. Below is the mapping of the fields, where the left column represent the field name within the properties object, and the right column represents what RudderStack will map the field name to.
-
-| RudderStack Property Field Name | Salesforce Standard Field |
+| RudderStack property | Salesforce standard field |
 | :--- | :--- |
-| `address.accuracy` or `accuracy` | `Accuracy` |
+| `address.accuracy` / `accuracy` | `Accuracy` |
 | `company.annualRevenue` | `AnnualRevenue` |
-| `address.city` or `city` | `City` |
-| `company.name` or `company` | `Company` |
-| `address.country` or `country` | `Country` |
-| `address.countryCode` or `countryCode` | `CountryCode` |
+| `address.city` / `city` | `City` |
+| `company.name` / `company` | `Company` |
+| `address.country` / `country` | `Country` |
+| `address.countryCode` / `countryCode` | `CountryCode` |
 | `convertedAccountId` | `ConvertedAccountId` |
 | `convertedContactId` | `ConvertedContactId` |
 | `convertedDate` | `ConvertedDate` |
 | `convertedOpportunityId` | `ConvertedOpportunityId` |
 | `createdById` | `CreatedById` |
-| `createdAt` or `createddate` | `CreatedDate` |
+| `createdAt` / `createddate` | `CreatedDate` |
 | `description` | `Description` |
 | `email` | `Email` |
 | `emailBouncedDate` | `EmailBouncedDate` |
@@ -211,26 +199,46 @@ RudderStack supports several standard fields in Salesforce. Below is the mapping
 | `lastName` | `LastName` |
 | `lastReferencedDate` | `LastReferencedDate` |
 | `lastViewedDate` | `LastViewedDate` |
-| `address.latitude` or `latitude` | `Latitude` |
+| `address.latitude` / `latitude` | `Latitude` |
 | `LeadSource` | `LeadSource` |
-| `address.longitude` or `longitude` | `Longitude` |
+| `address.longitude` / `longitude` | `Longitude` |
 | `masterRecordId` | `MasterRecordId` |
 | `name` | `Name` |
 | `company.employee_count` | `NumberOfEmployees` |
 | `ownerId` | `OwnerId` |
 | `phone` | `Phone` |
 | `photoUrl` | `PhotoUrl` |
-| `address.postalCode` or `postalCode` | `PostalCode` |
+| `address.postalCode` / `postalCode` | `PostalCode` |
 | `rating` | `Rating` |
 | `salutation` | `Salutation` |
-| `address.state` or `state` | `State` |
-| `address.stateCode` or `stateCode` | `StateCode` |
+| `address.state` / `state` | `State` |
+| `address.stateCode` / `stateCode` | `StateCode` |
 | `status` | `Status` |
-| `address.street` or `street` | `Street` |
+| `address.street` / `street` | `Street` |
 | `systemModstamp` | `SystemModstamp` |
 | `title` | `Title` |
 | `website` | `Website` |
 
-## Contact Us
+## FAQ
 
-If you come across any issues while configuring Salesforce with RudderStack, please feel free to [**contact us**](mailto:%20contact@rudderstack.com). You can also start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+### Which Salesforce Edition should I use to access the API?
+
+Before connecting to the Salesforce API with RudderStack, make sure you are using the right Salesforce edition. You must have either the **Enterprise**, **Unlimited**, **Developer**, or **Performance** editions to access the API.
+
+Follow this [Salesforce help article](https://help.salesforce.com/articleView?id=000326486&type=1&mode=1) for more information.
+
+### Where do I obtain the Security Token?
+
+You can find your security token under **Setup** > **Personal Setup** > **My Personal Information** > [Reset My Security Token](https://na15.salesforce.com/_ui/system/security/ResetApiTokenEdit).
+
+### How do I check the number of Salesforce API calls left for the day?
+
+To check the number of Salesforce API calls, go to **Setup** > **Administration Setup** > **Company Profile** > **Company Information**. You should then be able to see a field called **API Requests, Last 24 Hours**, which contains the number of API calls left for the day.
+
+### What if I don't include `'Salesforce': true` in my `identify` call?
+
+Salesforce has a very strict API limit. Moreover, RudderStack does not send any `identify` calls to Salesforce by default. If you don't include `'Salesforce':true` in your `identify` call payload, the call will be simply ignored.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
