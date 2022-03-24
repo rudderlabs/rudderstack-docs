@@ -24,6 +24,11 @@ RudderStack also offers three plans as a part of <a href="https://app.rudderstac
 | [Control plane setup](https://www.rudderstack.com/docs/get-started/control-plane-lite/) in your own environment  |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [web app](https://app.rudderstack.com/) to manage to your connections. |
 | Customize the data plane [config parameters](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) | ✕ |  ✓ |  - |
 
+<div class="infoBlock">
+
+For more information on the data plane and control plane setup options in RudderStack Cloud and Open Source, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
 ### Events-related features
 
 | Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
@@ -37,6 +42,7 @@ RudderStack also offers three plans as a part of <a href="https://app.rudderstac
 | [Transformations](https://www.rudderstack.com/docs/transformations/) |  ✓ |  ✓ | <ul><li>In case of Open Source, this feature is only applicable for the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) and users are limited to <strong>3 transformations</strong>.</li><li>In case of <a href="https://app.rudderstack.com/signup?type=freetrial" target="_blank">RudderStack Cloud Free</a>, users are limited to <strong>3 transformations</strong>.</li><li>Pro and Enterprise users can set up unlimited transformations.</li><li>It can be used only for [cloud mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) destinations.</li></ul> |
 
 ### ETL and Reverse ETL
+
 | Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
 | :--------| :-------------------| :--------------------------| :-----| 
 | [Cloud Extract (ETL)](https://www.rudderstack.com/docs/cloud-extract-sources/) | ✓ |  ✕  | [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up only 1 Cloud Extract source. Pro and Enterprise users can set up unlimited sources.  | 
@@ -73,6 +79,30 @@ RudderStack also offers three plans as a part of <a href="https://app.rudderstac
 | :--------| :-------------------| :--------------------------| :-----| 
 | Ability to add other team members in the workspace | ✓ |  ✕  |  You can invite 3 members in your workspace in case of  [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial), whereas Pro users can invite upto 10 members. There is no limit in case of Enterprise users. | 
 | Audit logs | ✓ |  ✕  |  This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
+
+## FAQ
+
+### What is the data plane and control plane in RudderStack? How do I set them up?
+
+The data plane is RudderStack's core engine responsible for receiving the event data, transforming it into the required destination format, before relaying those events to the destination.
+
+The control plane manages the configuration of your sources and destinations in RudderStack.
+
+<div class="infoBlock">
+
+For more information on the data plane and control plane in RudderStack, refer to the <a href="https://www.rudderstack.com/docs/get-started/rudderstack-architecture/">Architecture</a> guide.
+</div>
+
+In case of **RudderStack Cloud**, RudderStack self-hosts the data plane and the control plane so you don't have to worry about their setup.
+
+For **RudderStack Open Source**, you get the following data plane and control plane setup options:
+- You need to [set up the data plane](https://www.rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/) in your own environment. **RudderStack will not host it for you**.
+- For the control plane, you can either use the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) or [set up your own control plane](https://www.rudderstack.com/docs/get-started/control-plane-lite/).
+
+<div class="warningBlock">
+
+Features like <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> and <a href="https://www.rudderstack.com/docs/get-started/live-events/">Live Events</a> are not available if you self-host the control plane.
+</div>
 
 ## Contact us
 
