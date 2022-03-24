@@ -20,8 +20,8 @@ RudderStack also offers three plans as a part of <a href="https://app.rudderstac
 
 | Feature |  RudderStack Cloud | RudderStack Open Source | Comments | 
 | :--------| :-------------------| :--------------------------| :-----|
-| [Data plane setup](https://www.rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/) in your own environment |  ✕ |  ✓ | Cloud uses a RudderStack-hosted [data plane](https://www.rudderstack.com/docs/glossary/#data-plane). | 
-| [Control plane setup](https://www.rudderstack.com/docs/get-started/control-plane-lite/) in your own environment  |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [web app](https://app.rudderstack.com/) to manage to your connections. |
+| [Data plane setup](https://www.rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/) in your own environment |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [data plane](https://www.rudderstack.com/docs/glossary/#data-plane). | 
+| [Control plane setup](https://www.rudderstack.com/docs/get-started/control-plane-lite/) in your own environment  |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [web app](https://app.rudderstack.com/) to manage your connections. |
 | Customize the data plane [config parameters](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) | ✕ |  ✓ |  - |
 
 <div class="infoBlock">
@@ -34,12 +34,12 @@ For more information on the data plane and control plane setup options in Rudder
 | Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
 | :--------| :-------------------| :--------------------------| :-----| 
 | Event-related metrics | ✓ |  ✓ | Get information on the number of events ingested during a specified timeframe. | 
-| [Event backups in your own bucket](https://www.rudderstack.com/docs/user-guides/administrators-guide/bucket-configuration-settings/) |  ✓ |  ✓ | RudderStack can manage it for you as a part of the [Enterprise plan](https://www.rudderstack.com/enterprise-quote/). | 
+| [Event backup in your own bucket](https://www.rudderstack.com/docs/user-guides/administrators-guide/bucket-configuration-settings/) |  ✓ |  ✓ | RudderStack can manage it for you as a part of the [Enterprise plan](https://www.rudderstack.com/enterprise-quote/). | 
 | [Live events](https://www.rudderstack.com/docs/get-started/live-events/) |  ✓ | ✕ | This feature is applicable only for [cloud mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) destinations. | 
 | RudderStack-hosted object storage | ✓ |  ✕ | You can use the RudderStack-hosted bucket to temporarily store your events before forwarding them to your warehouse destination. |
 | [Event Replay](https://www.rudderstack.com/docs/user-guides/administrators-guide/event-replay/) | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. | 
 | Maintaining events ordering | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
-| [Transformations](https://www.rudderstack.com/docs/transformations/) |  ✓ |  ✓ | <ul><li>In case of Open Source, this feature is only applicable for the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) and users are limited to <strong>3 transformations</strong>.</li><li>In case of <a href="https://app.rudderstack.com/signup?type=freetrial" target="_blank">RudderStack Cloud Free</a>, users are limited to <strong>3 transformations</strong>.</li><li>Pro and Enterprise users can set up unlimited transformations.</li><li>It can be used only for [cloud mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) destinations.</li></ul> |
+| [Transformations](https://www.rudderstack.com/docs/transformations/) |  ✓ |  ✓ | <ul><li>In case of Open Source, this feature is only applicable for the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) and users can set upto <strong>3 transformations</strong>.</li><li>In case of <a href="https://app.rudderstack.com/signup?type=freetrial" target="_blank">RudderStack Cloud Free</a>, users can set upto <strong>3 transformations</strong>.</li><li>Pro and Enterprise users can set up unlimited transformations.</li><li>It can be used only for [cloud mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) destinations.</li></ul> |
 
 ### ETL and Reverse ETL
 
@@ -48,7 +48,7 @@ For more information on the data plane and control plane setup options in Rudder
 | [Cloud Extract (ETL)](https://www.rudderstack.com/docs/cloud-extract-sources/) | ✓ |  ✕  | [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up only 1 Cloud Extract source. Pro and Enterprise users can set up unlimited sources.  | 
 | [Reverse ETL](https://www.rudderstack.com/docs/reverse-etl/) | ✓ |  ✕ |  [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up only 1 Reverse ETL source. Pro and Enterprise users can set up unlimited sources.  | 
 | Data syncs scheduling | ✓ |  ✕  |  - |
-| [Model](https://www.rudderstack.com/docs/reverse-etl/features/models/) as a source | ✓ |  ✕  | Models let you define and run custom SQL queries on your warehouse and send the resulting data to specific destinations. |
+| [Models](https://www.rudderstack.com/docs/reverse-etl/features/models/) | ✓ |  ✕  | Models let you define and run custom SQL queries on your warehouse and send the resulting data to specific destinations. |
 
 ### Data governance
 
@@ -77,7 +77,7 @@ For more information on the data plane and control plane setup options in Rudder
 
 | Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
 | :--------| :-------------------| :--------------------------| :-----| 
-| Ability to add other team members in the workspace | ✓ |  ✕  |  You can invite 3 members in your workspace in case of  [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial), whereas Pro users can invite upto 10 members. There is no limit in case of Enterprise users. | 
+| Ability to add other team members in the workspace | ✓ |  ✕  |  You can invite upto 3 members in your workspace in [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial), upto 10 members in Pro, and unlimited members in the Enterprise plan. | 
 | Audit logs | ✓ |  ✕  |  This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
 
 ## FAQ
