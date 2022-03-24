@@ -48,7 +48,7 @@ For **v1.1**:
 If you are forwarding or proxying RudderStack's CDN, follow these steps:
 
 1. Log into your CDN provider account.
-2. Go to the distribution whose origin is set to RudderStack's CDN. Ensure that the entire domain (`https://cdn.rudderlabs.com`) is set as the origin.
+2. Go to the distribution and set the origin to RudderStack's CDN. Ensure that the entire domain (`https://cdn.rudderlabs.com`) is set as the origin.
 
 <div class="infoBlock">
 
@@ -168,13 +168,48 @@ npm install rudder-sdk-js@2.x.x
 ```
 ### Load device mode destinations
 
-The device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ in 2.x.x, depending on the dashboard settings. This path can be used **for proxy** as well and should **not be configured to be blocked** in any way. 
+By default, the device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ in 2.x.x, depending on the dashboard settings. However you can also choose any of the below ways to load the device mode destinations:
 
-If you want to load the device-mode destinations from a different path, follow the below steps: 
+#### Forwarding/proxying the RudderStack CDN
+
+If you are forwarding or proxying RudderStack's CDN, follow these steps:
+
+1. Log into your CDN provider account.
+2. Go to the distribution and set the origin to RudderStack's CDN. Ensure that the entire domain (`https://cdn.rudderlabs.com`) is set as the origin.
+
+<div class="infoBlock">
+
+We highly recommend forwarding the entire CDN path <code class="inline-code">https://cdn.rudderlabs.com</code> so that you don't miss any files/directories that might be added in the future.
+</div>
+
+<div class="successBlock">
+
+Refer to our guide on <a href="https://rudderstack.com/docs/user-guides/how-to-guides/custom-domains/">using custom domains</a> for more information CDN forwarding/proxying.
+</div>
+
+3. Then, go to **Behaviors**, and check that the sub-path `/v1.1/js-integrations/*` is **not configured to be blocked** in any way.
+
+<div class="warningBlock">
+
+This step is required to ensure that both the core SDK and destination SDKs are forwarded properly.
+</div>
+
+4. Finally, use `destSDKBaseURL` option in the load call like below
+
+```javascript
+rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
+  destSDKBaseURL: "<your-custom-path-for-device-mode-destination>", // ex: "https://cdn.<yourdomain>.com/js-integrations"
+  ...otherOptions
+});
+```
+
+#### Self-hosting RudderStack's device mode SDKs
+
+If you have cloned RudderStack's JavaScript SDK and are self-hosting it, follow the below steps:
 
 1. Download the destination SDKs listed [here](#rudderstack-destination-sdks).
 2. Move all the downloaded files to your preferred location.
-3. Use `destSDKBaseURL` option in the load call the like below:
+3. Use `destSDKBaseURL` option in the load call like below
 
 ```javascript
 rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
@@ -184,9 +219,9 @@ rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
 ```
 
 <div class="warningBlock">
+
 The destination SDKs name should not be changed as the custom names are not supported.
 </div>
-
 
 ## RudderStack destination SDKs
 
@@ -198,7 +233,7 @@ The destination SDKs name should not be changed as the custom names are not supp
 | Google Ads           | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleAds.min.js          |
 | VWO                  | https://cdn.rudderlabs.com/v1.1/js-integrations/VWO.min.js                |
 | Google Tag Manager   | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleTagManager.min.js   |
-| Braze                | https://cdn.rudderlabs.com/v1.1/js-integrations/Braze.min.js                |
+| Braze                | https://cdn.rudderlabs.com/v1.1/js-integrations/Braze.min.js              |
 | Intercom             | https://cdn.rudderlabs.com/v1.1/js-integrations/INTERCOM.min.js           |
 | Keen.io              | https://cdn.rudderlabs.com/v1.1/js-integrations/Keen.min.js               |
 | Kissmetrics          | https://cdn.rudderlabs.com/v1.1/js-integrations/Kissmetrics.min.js        |
@@ -230,6 +265,13 @@ The destination SDKs name should not be changed as the custom names are not supp
 | Criteo               | https://cdn.rudderlabs.com/v1.1/js-integrations/Criteo.min.js             |
 | Mixpanel             | https://cdn.rudderlabs.com/v1.1/js-integrations/Mixpanel.min.js           |
 | Qualtrics            | https://cdn.rudderlabs.com/v1.1/js-integrations/Qualtrics.min.js          |
+| Quantum Metric       | https://cdn.rudderlabs.com/v1.1/js-integrations/QuantumMetric.min.js      |
+| ProfitWell           | https://cdn.rudderlabs.com/v1.1/js-integrations/ProfitWell.min.js         |
+| Sentry               | https://cdn.rudderlabs.com/v1.1/js-integrations/Sentry.min.js             |
+| Google Optimize      | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleOptimize.min.js     |
+| Post Affiliate Pro   | https://cdn.rudderlabs.com/v1.1/js-integrations/PostAffiliatePro.min.js   |
+| LaunchDarkly         | https://cdn.rudderlabs.com/v1.1/js-integrations/LaunchDarkly.min.js       |
+| Google Analytics 360 | https://cdn.rudderlabs.com/v1.1/js-integrations/GA360.min.js              |
 
 ## FAQ
 
