@@ -52,7 +52,7 @@ If you are forwarding or proxying RudderStack's CDN, follow these steps:
 
 <div class="infoBlock">
 
-We highly recommend forwarding the entire CDN path <code class="inline-code">https://cdn.rudderlabs.com</code> so that you don't miss any files/directories that might be added in the future.
+It is highly recommended to forward the entire CDN path <code class="inline-code">https://cdn.rudderlabs.com</code> so that you don't miss any files/directories that might be added in the future.
 </div>
 
 <div class="successBlock">
@@ -60,7 +60,7 @@ We highly recommend forwarding the entire CDN path <code class="inline-code">htt
   Refer to our guide on <a href="https://rudderstack.com/docs/user-guides/how-to-guides/custom-domains/">using custom domains</a> for more information CDN forwarding/proxying.
 </div>
 
-3. Then, go to **Behaviors**, and check that the sub-path `/v1.1/*` is **not configured to be blocked** in any way.
+3.  Then, go to **Behaviors** and verify that the sub-path `/v1.1/*` is **not configured to be blocked** in any way.
 
 <div class="warningBlock">
 
@@ -209,7 +209,7 @@ If you have cloned RudderStack's JavaScript SDK and are self-hosting it, follow 
 
 1. Download the destination SDKs listed [here](#rudderstack-destination-sdks).
 2. Move all the downloaded files to your preferred location.
-3. Use `destSDKBaseURL` option in the load call as shown:
+3. Use `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
 ```javascript
 rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
