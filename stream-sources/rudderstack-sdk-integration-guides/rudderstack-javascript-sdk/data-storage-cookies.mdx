@@ -6,7 +6,7 @@ description: >-
 
 # Data Storage in Cookies
 
-RudderStack's JavaScript SDK stores persistent user data in cookies by default. In case the cookies are not supported, local storage is considered for the same. 
+By default, the RudderStack JavaScript SDK stores persistent user data in the cookies. If the cookies are not supported, local storage is used instead. 
 
 All the cookies are stored in the top-level domain by default. It helps to identify the users visiting from websites that are hosted under a sub-domain. For example, if you include the RudderStack JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can configure where you want to store the cookie by using the `setCookieDomain` parameter in the `load` API options as shown:
 
