@@ -194,7 +194,7 @@ For more information on CDN forwarding/proxying, refer to the <a href="https://r
 This step is required to ensure that both the core SDK and destination SDKs are forwarded properly.
 </div>
 
-4. Finally, use `destSDKBaseURL` option in the load call as shown:
+4. Finally, use `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
 ```javascript
 rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
