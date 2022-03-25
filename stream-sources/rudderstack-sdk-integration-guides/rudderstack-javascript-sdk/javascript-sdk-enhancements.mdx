@@ -11,7 +11,7 @@ The following sections cover the finer technical details of the improvements in 
 
 ## `sendBeacon` as a transport mechanism
 
-The JavaScript SDK hosted at [**https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js**](https://cdn.rudderlabs.com/v1/rudder-analytics.min.js) sends the event payload using the **XHR** \(XMLHttpRequest\) API. 
+The JavaScript SDK hosted at [**https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js**](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) sends the event payload using the **XHR** \(XMLHttpRequest\) API. 
 
 RudderStack now also supports sending the event payload using the [**`navigator.sendBeacon`**](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) browser utility, which asynchronously sends a small amount of data over HTTP to the RudderStack server. The JavaScript SDK supports a new Boolean field, `useBeacon`, in the [**`load()`**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter) call options. When set to `true`, the SDK sends events using the **`navigator.sendBeacon`** utility.
 

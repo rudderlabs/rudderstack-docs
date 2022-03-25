@@ -242,7 +242,7 @@ browserify rudderTyperClient.js --standalone rudderTyper >  rudderTyperBundle.js
     rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL);
     rudderanalytics.page();
   </script>
-  <script src="https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"></script>
+  <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
   <script src="./rudderTyperBundle.js"></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -259,6 +259,12 @@ browserify rudderTyperClient.js --standalone rudderTyper >  rudderTyperBundle.js
   })
 </script>
 ```
+
+<div class="infoBlock">
+
+If you are using an older version of JavaScript SDK (v1), refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</a> to migrate from v1 to v1.1.
+</div>
+
 
 ### RudderStack Node.js SDK
 
