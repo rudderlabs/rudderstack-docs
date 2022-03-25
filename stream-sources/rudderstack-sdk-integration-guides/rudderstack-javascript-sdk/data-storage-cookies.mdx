@@ -20,7 +20,7 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 
 The list of cookies used by the JavaScript SDK to store persistent user data is mentioned below:
 
-| Name             | Description       | Example    | Clearing Mechanism using SDK |
+| Name             | Description       | Example    | Clearing mechanism using the SDK |
 | :-------------------- | :---------------------------------- | :-------------------------------- |:---------------------------------- |
 |  `rl_user_id`         |Stores the user ID set via the `identify` API method. All the subsequent event payloads will contain this data unless cleared from the storage. | `4578`, `USER_001` | `rudderanalytics.reset()`  |
 |  `rl_trait`       | Stores the user traits object set via the `identify` API method. All the subsequent event payloads will contain this data unless cleared from the storage. |  <pre>{<br>  email: "alex@example.com",<br>  accountType: "pro",<br>  country: "US",<br>  someObj: {<br>    key1: val1,<br>    key2: val2,<br>  }<br>}</pre>         |`rudderanalytics.reset()` |
