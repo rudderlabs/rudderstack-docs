@@ -45,7 +45,7 @@ The local storage cookies are used by the JavaScript SDK to keep track of the ev
 |  `ack`     | Timer for other browser tabs to claim control of the retry queue.     | `1639734070124` |
 |  `reclaimStart` and `reclaimEnd`      |Determines if a tab takes over the queue from another tab.  | `2dc2aee6-2836-4273-be69-79c90c04ddec`  |
 |  `inProgress`    | Keeps track of the events in progress. | <pre>{<br>  "d89d7fb5-945e-4378-bda5-492e4b596fb4": {<br>   "item": {<br>    "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br>    "headers": {<br>     "Content-Type": "application/json",<br>      ...<br>    },<br>    "message": { <br>     ...<br>    }<br>    "attemptNumber": 1,<br>    "time": 1639734792773,<br>    "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br>   }<br>  }<br>}<br></pre> |
-|  `queue`    | Keeps track of the events that are in queue to be processed   | <pre>[<br>  {<br>   "item": {<br>    "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br>    "headers": {<br>     "Content-Type": "application/json",<br>      ...<br>    },<br>    "message": { <br>     ...<br>    }<br>    "attemptNumber": 0,<br>    "time": 1639734792773,<br>    "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br>   }<br>  }<br>]<br></pre> |
+|  `queue`    | Keeps track of the events that are in queue to be processed.   | <pre>[<br>  {<br>   "item": {<br>    "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br>    "headers": {<br>     "Content-Type": "application/json",<br>      ...<br>    },<br>    "message": { <br>     ...<br>    }<br>    "attemptNumber": 0,<br>    "time": 1639734792773,<br>    "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br>   }<br>  }<br>]<br></pre> |
 
 <div class="infoBlock">
 
