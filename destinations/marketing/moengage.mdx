@@ -59,121 +59,17 @@ By turning on the native SDK switch under Android SDK Settings on the RudderStac
 
 ## Adding Device Mode Integration
 
-<!--{% tabs %}
-{% tab title="iOS" %}
-Follow these steps to add MoEngage to your iOS project:
-
-- Go your `Podfile` and add the `Rudder-Moengage` extension
-
-```ruby
-pod 'Rudder-Moengage'
-```
-
-- After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
-
-```objectivec
-#import "RudderMoengageFactory.h"
-```
-
-- Finally, change the initialization of your `RudderClient` as shown:
-
-```objectivec
-RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
-[builder withDataPlaneUrl:DATA_PLANE_URL];
-[builder withFactory:[RudderMoengageFactory instance]];
-[RudderClient getInstance:WRITE_KEY config:[builder build]];
-```
-
-{% endtab %}
-
-{% tab title="Android" %}
-
-## Adding Dependencies
-
-To add MoEngage to your Android Project and enable its full functionality like push notifications, please follow these steps :
-
-- Open your `app/build.gradle` \(Module: app\) file, and add the following:
-
-```groovy
-repositories {
-    mavenCentral()
-}
-```
-
-- and add the following under the dependencies section
-
-```groovy
-implementation 'com.rudderstack.android.sdk:core:1.+'
-implementation 'com.rudderstack.android.integration:moengage:1.0.0'
-api 'com.moengage:moe-android-sdk:10.5.00'
-
-//jet pack library required by moengage
-implementation 'androidx.core:core-ktx:1.3.2'
-implementation 'androidx.appcompat:appcompat:1.2.0'
-implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
-
-//firebase messaging dependency
-implementation 'com.google.firebase:firebase-messaging:21.0.0'
-
-// if you don't have Gson included already
-implementation 'com.google.code.gson:gson:2.8.6'
-```
-
-- Also, add the below plugin after `buildscript`
-
-```groovy
-// For Push Notification
-apply plugin: 'com.google.gms.google-services'
-```
-
-- Open your `build.gradle` \(Module: Project\) file and add the following in `buildscript` dependencies
-
-```groovy
-// For Push Notification
-buildscript {
-    dependencies {
-        classpath 'com.google.gms:google-services:4.3.4'
-    }
-}
-```
-
-- Initialize the Rudder SDK in the `Application` class's `onCreate()` method as following:
-
-```kotlin
-// initializing Rudder SDK
-val rudderClient = RudderClient.getInstance(
-    this,
-    WRITE_KEY,
-    RudderConfig.Builder()
-        .withDataPlaneUrl(DATA_PLANE_URL)
-        .withFactory(MoengageIntegrationFactory.FACTORY)
-        .build()
-)
-```
-
-- Also, Initialize the MoEngage SDK in the Application class's onCreate\(\) method as following:
-
-```kotlin
-// this is the instance of the application class
-// and "XXXXXXXXXXX" is the APP ID from the dashboard.
-val moEngage = MoEngage.Builder(this, "XXXXXXXXXXX")
-        .build()
-MoEngage.initialise(moEngage)
-```
-
-{% endtab %}
-{% endtabs %}-->
-
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
+    <Tab>React Native</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
         Follow these steps to add MoEngage to your iOS project:
-<ul>
-<li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Moengage</code> extension
+<ol>
+<li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Moengage</code> extension:
 <span>
 
 ```ruby
@@ -200,12 +96,11 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 ```
 </span>
 </li>
-</ul>
+</ol>
       </TabPanel>
       <TabPanel>
-        <h2>Adding Dependencies</h2>
-To add MoEngage to your Android Project and enable its full functionality like push notifications, please follow these steps :
-<ul>
+Follow these steps to add MoEngage to your Android project and enable its full functionality, like push notifications:
+<ol>
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: app) file, and add the following:
 <span>
 
@@ -216,7 +111,7 @@ repositories {
 ```
 </span>
 </li>
-<li>and add the following under the dependencies section
+<li>Add the following under the dependencies section:
 <span>
 
 ```groovy
@@ -237,7 +132,7 @@ implementation 'com.google.code.gson:gson:2.8.6'
 ```
 </span>
 </li>
-<li>Also, add the below plugin after <code class="inline-code">buildscript</code>
+<li>Also, add the below plugin after <code class="inline-code">buildscript</code>:
 <span>
 
 ```groovy
@@ -246,7 +141,7 @@ apply plugin: 'com.google.gms.google-services'
 ```
 </span>
 </li>
-<li>Open your <code class="inline-code">build.gradle</code> (Module: Project) file and add the following in <code class="inline-code">buildscript</code> dependencies
+<li>Open your <code class="inline-code">build.gradle</code> (Module: Project) file and add the following in <code class="inline-code">buildscript</code> dependencies:
 <span>
 
 ```groovy
@@ -275,7 +170,7 @@ val rudderClient = RudderClient.getInstance(
 ```
 </span>
 </li>
-<li>Also, Initialize the MoEngage SDK in the Application class's onCreate() method as following:
+<li>Initialize the MoEngage SDK in the Application class's <code class="inline-code">onCreate()</code> method as following:
 <span>
 
 ```kotlin
@@ -287,8 +182,106 @@ MoEngage.initialise(moEngage)
 ```
 </span>
 </li>
-</ul>
-      </TabPanel>
+</ol>
+      </TabPanel>     
+     <TabPanel>
+Follow these steps to add MoEngage to your React Native project:
+<ol>
+<li>Add the RudderStack-MoEngage module to your app by running the following command:
+<span>
+
+```bash
+npm install @rudderstack/rudder-integration-moengage-react-native
+// OR //
+yarn add @rudderstack/rudder-integration-moengage-react-native
+```
+</span>
+</li>
+<li>Add the following under the dependencies section:
+<span>
+
+```groovy
+implementation 'com.rudderstack.android.sdk:core:1.+'
+implementation 'com.rudderstack.android.integration:moengage:1.0.0'
+implementation 'com.moengage:moe-android-sdk:10.5.00'
+
+//jet pack library required by moengage
+implementation 'androidx.core:core-ktx:1.3.2'
+implementation 'androidx.appcompat:appcompat:1.2.0'
+implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
+
+//firebase messaging dependency
+implementation 'com.google.firebase:firebase-messaging:21.0.0'
+
+// if you don't have Gson included already
+implementation 'com.google.code.gson:gson:2.8.6'
+```
+</span>
+</li>
+<li>Open your <code class="inline-code">app/build.gradle</code> (Module: Project) file and add the following:
+<span>
+
+```groovy
+repositories {
+  mavenCentral()
+}
+```
+</span>
+</li>
+ <li>Also, add the below plugin after <code class="inline-code">buildscript</code>:
+<span>
+
+```groovy
+// For Push Notification
+apply plugin: 'com.google.gms.google-services'
+```
+</span>
+</li>
+ <li>Open your <code class="inline-code">build.gradle</code> (Module: Project) file and add the following in <code class="inline-code">buildscript</code> dependencies:
+<span>
+
+```groovy
+// For Push Notification
+buildscript {
+  dependencies {
+    classpath 'com.google.gms:google-services:4.3.4'
+  }
+}
+```
+</span>
+</li>
+<li>Initialize the Rudder SDK in the <code class="inline-code">Application</code> class's <code class="inline-code">onCreate()</code> method as following:
+<span>
+
+```java
+// MoEngage SDK initialisation: Replace "xxxxxxx" with your APP ID.
+MoEngage moEngage = new MoEngage
+  .Builder(MainActivity.this.getApplication(), "xxxxxxx")
+  .setNotificationSmallIcon(R.drawable.ic_launcher_background)
+  .setNotificationLargeIcon(R.drawable.ic_launcher_background)
+  .enableLogs(LogLevel.VERBOSE)
+  .build();
+MoEngage.initialise(moEngage);
+```
+</span>
+</li>
+<li>Import the above module and add it to your SDK initialization, as shown:
+<span>
+
+```javascript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+import moengage from "@rudderstack/rudder-integration-moengage-react-native"
+const config = {
+  dataPlaneUrl: <DATA_PLANE_URL> ,
+  trackAppLifecycleEvents: true,
+  withFactories: [moengage],
+}
+rudderClient.setup( <WRITE_KEY> , config)
+```
+</span>
+</li>
+</ol>
+ </TabPanel>
     </TabPanels>
 </Tabs>
 
