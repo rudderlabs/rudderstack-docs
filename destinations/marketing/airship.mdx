@@ -64,16 +64,45 @@ If you're unsure which data center you are on, reach out to <a href="mailto:%20d
 
 ## Identify
 
-
+The `identify` call lets you uniquely identify a user and record any associated traits about them like their name, email, etc.
 
 <div class="infoBlock">
 
 For information on the <code class="inline-code">identify</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
 </div>
 
+A sample `identify` call is shown below:
+
+```javascript
+
+```
+
+Airship assigns tags to the [named users](https://docs.airship.com/guides/messaging/user-guide/audience/segmentation/named-users/) based on the incoming RudderStack `identify` calls. 
+
+<div class="warningBlock">
+
+To successfully assign tags to Airship using the RudderStack <code class="inline-code">identify</code> events, you must create a tag group with the group key set to <code class="inline-code">rudderstack-integration</code> in Airship. For more information on creating a tag group in Airship, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+### Attribute mapping
+
+RudderStack maps the following reserved traits to the predefined Airship attributes:
+
+| RudderStack trait | Airship attribute |
+| :-----------------| :-----------------|
+| `address.city` | `city` |
+| `address.country` | `country` |
+| `address.postalcode` | `zipcode` |
+| `address.state` | `region` |
+| `createdAt` | `account_creation` |
+| `firstName` | `first_name` |
+| `lastName` | `last_name` |
+| `name` | `full_name` |
+| `phone` | `mobile_phone` |
+
 ## Track
 
-The `track` call lets you record and send the conversion events along with any properties associated with them. 
+The `track` call lets you record the user's actions along with any associated properties. Each user action is called an event. 
 
 <div class="infoBlock">
 
@@ -86,15 +115,43 @@ A sample `track` call is shown below:
 
 ```
 
+RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
 
+### Supported mappings
 
+RudderStack maps the following event properties to the Airship properties before sending them over to Airship.
+
+| RudderStack property          | Airship property      | Presence |
+| :--------------------------- | :--------------------- | :------|
+| `event` | `name` | Required |
+| `userId` | `named_user_id` | Required |
+| `properties` | `properties` | Optional |
+| `value` | `value` | Optional |
+| `interactionId` | `interaction_id` | Optional |
+| `interactionType` | `interaction_type` | Optional |
+| `sessionId` | `session_id` | Optional |
+| `transaction` | `transaction` | Optional |
+| `timestamp` | `occurred` | Optional |
+
+<div class="warningBlock">
+
+The <code class="inline-code">name</code> value must not contain any upper case characters. Otherwise, 
+</div>
 
 ## Group
+
+The `group` call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, e.g., company name, number of employees, etc.
 
 <div class="infoBlock">
 
 For information on the <code class="inline-code">group</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
 </div>
+
+A sample `group` call is shown below:
+
+```javascript
+
+```
 
 
 ## FAQs
@@ -124,6 +181,18 @@ To obtain your Airship project's app key and secret, follow these steps:
 You will find your project's app key listed here. To obtain the app secret, click on on **Click to reveal**, as shown:
 
 <img src="../../assets/event-stream-destinations/airship-app-key-secret.png" alt="Airship project app key and secret" />
+
+### How do I create a custom tag group in Airship?
+
+To create a tag group in Airship, follow these steps:
+
+1. Go to **Settings** > **Project configuration** > **Tag Groups** and click on **Manage**.
+2. Click on **Create Tag Group** and enter the following settings:
+    - **Name**: Enter the name for the tag group. 
+    - **Description**: Set additional information about the tag group in this field. 
+    - **Group Key**: Assign a unique ID for the tag group in this field. For example, to assign tags using the RudderStack `identify` events, you can set this to `rudderstack-integration`. For assigning tags using the `group` events, set this to `rudderstack-integration-group`.
+
+For more information, refer to the [Airship documentation](https://docs.airship.com/guides/messaging/user-guide/audience/segmentation/tags/#creating-custom-tag-groups).
 
 ## Contact us
 
