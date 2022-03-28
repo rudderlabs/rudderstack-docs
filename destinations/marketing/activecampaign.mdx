@@ -223,7 +223,7 @@ rudderanalytics.track("Product Purchased", {
 
 In the above snippet, RudderStack captures the information related to the `Product Purchased` event, along with any additional information about that event - in this case the product `name`.
 
-RudderStack also maps `properties.eventData` present within the `track` event properties to ActiveCampaign's `eventdata` field, as shown:
+RudderStack also maps `eventData` present within the `track` event properties to ActiveCampaign's `eventdata` field, as shown:
 
 ```javascript
 rudderanalytics.track("Product Purchased", {
