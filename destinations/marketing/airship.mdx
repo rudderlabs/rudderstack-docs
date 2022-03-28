@@ -1,0 +1,118 @@
+---
+title: "Airship"
+description: Step-by-step guide to send event data from RudderStack to Airship.
+---
+
+# Airship
+
+[Airship](https://www.airship.com/) is an app experience platform that lets you create and deliver powerful in-app experiences with the help of engaging, personalized content and actionable customer insights.
+
+RudderStack supports Airship as a destination to which you can seamlessly send your event data.
+
+## Getting started
+
+Before configuring Airship as a destination in RudderStack, verify if the source platform is supported by referring to the table below:
+
+| **Connection Mode** | **Web**         | **Mobile**   | **Server**        |
+| :-------------------| :-------------- | :----------- | :-----------------|
+| **Device mode**     | -               | -            | -                 |
+| **Cloud mode**      | **Supported**               | **Supported**           |  **Supported**    |
+
+<div class="infoBlock">
+
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to Airship, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Airship**.
+
+<div class="infoBlock">
+
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
+</div>
+
+2. Assign a name to your destination and click on **Next**.
+
+### Connection settings
+
+To successfully configure Airship as a destination, you will need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/airship-connection-settings.png" alt="Airship connection settings" />
+
+- **API Key**: 
+
+<div class="infoBlock">
+
+For more information on obtaining the Airship API key, refer to the <a href="https://support.google.com/google-ads/answer/1704344?hl=en">FAQ</a> section.
+</div>
+
+- **App Key**: 
+
+<div class="infoBlock">
+
+For more information on subaccounts, refer to the <a href="https://support.google.com/campaignmanager/answer/2829448?hl=en#zippy=%2Cwhat-are-subaccounts">Google Ads Help Center</a> page.
+</div>
+
+- **App Secret**: 
+
+<div class="infoBlock">
+
+This field is required only when you want to send data to a customer list of a subaccount.
+</div>
+
+- **EU data center**: Enable this setting if you've implemented your app in Airship's European data center.
+
+<div class="infoBlock">
+
+If you're unsure which data center you are on, reach out to <a href="mailto:%20docs@rudderstack.com" target="_blank">Airship support</a>
+</div>
+
+## Identify
+
+
+
+<div class="infoBlock">
+
+For information on the <code class="inline-code">identify</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
+</div>
+
+## Track
+
+The `track` call lets you record and send the conversion events along with any properties associated with them. 
+
+<div class="infoBlock">
+
+For information on the <code class="inline-code">track</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+
+```
+
+
+
+
+## Group
+
+<div class="infoBlock">
+
+For information on the <code class="inline-code">group</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
+</div>
+
+
+## FAQs
+
+### Where can I obtain the Airship API key?
+
+
+
+### Where can I obtain the Airship App Key and App Secret?
+
+
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
