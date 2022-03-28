@@ -63,11 +63,11 @@ flutter pub get
 
 ### Installing the SDK for the web
 
-To install and use the Flutter SDK in your web app, you need to [add the RudderStack script](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-rudderstack-javascript-sdk) in the `<head>` section of your web page.
+To install and use the Flutter SDK in your web app, follow the above steps to add the Flutter SDK. Additionally, you need to [install the RudderStack script](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-rudderstack-javascript-sdk) in the `<head>` section of your web page.
 
 <div class="warningBlock">
 
-Not all the APIs provided in the Flutter SDK are applicable for the web. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section for more information.
+Not all the APIs provided in the Flutter SDK are applicable for the web. Refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section for more information.
 </div>
 
 ## Initializing the RudderStack client
@@ -345,7 +345,7 @@ rudderClient.reset();
 
 <div class="infoBlock">
 
-This functionality is not available for the web. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
+This functionality is not available for the web. For more information, refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
 </div>
 
 RudderStack gives the users \(for example, an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
@@ -453,7 +453,7 @@ rudderClient.putAnonymousId(<ANONYMOUS_ID>);
 
 <div class="infoBlock">
 
-This functionality is not available for the web. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
+This functionality is not available for the web. For more information, refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
 </div>
 
 You can use the `putAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `putAdvertisingId` method accepts a string argument as described below:
@@ -475,7 +475,7 @@ rudderClient.putAdvertisingId(<ADVERTISING_ID>);
 
 <div class="infoBlock">
 
-This functionality is not available for the web. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
+This functionality is not available for the web. For more information, refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
 </div>
 
 You can pass your device token for push notifications to be passed to the destinations which support the Push Notification feature. RudderStack sets the token under `context.device.token`.
