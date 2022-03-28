@@ -40,25 +40,19 @@ To successfully configure Airship as a destination, you will need to configure t
 
 <img src="../../assets/event-stream-destinations/airship-connection-settings.png" alt="Airship connection settings" />
 
-- **API Key**: 
+- **API Key**: Enter your Airship token here. This is a mandatory field required by RudderStack to communicate with your Airship project.
 
 <div class="infoBlock">
 
-For more information on obtaining the Airship API key, refer to the <a href="https://support.google.com/google-ads/answer/1704344?hl=en">FAQ</a> section.
+For detailed steps on obtaining the API key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **App Key**: 
+- **App Key**: Enter your Airship project's app key by going to **Settings** > **Project Details**.
+- **App Secret**: Enter your Airship project's app secret by going to **Settings** > **Project Details**.
 
 <div class="infoBlock">
 
-For more information on subaccounts, refer to the <a href="https://support.google.com/campaignmanager/answer/2829448?hl=en#zippy=%2Cwhat-are-subaccounts">Google Ads Help Center</a> page.
-</div>
-
-- **App Secret**: 
-
-<div class="infoBlock">
-
-This field is required only when you want to send data to a customer list of a subaccount.
+For detailed steps on obtaining the Airship app key and secret, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 - **EU data center**: Enable this setting if you've implemented your app in Airship's European data center.
@@ -107,11 +101,29 @@ For information on the <code class="inline-code">group</code> call, refer to the
 
 ### Where can I obtain the Airship API key?
 
+The Airship API key is required so that RudderStack can communicate with your Airship project. This is a mandatory field to set up the integration.
 
+To obtain your Airship project's API key, follow these steps:
+
+1. In your Airship dashboard, go to **Settings**.
+2. In the **Project configuration** window, go to **Tokens** and click on **Manage**.
+3. Then, click on **Create token**.
+4. Assign a name for your token. Under **Role**, select **All access** from the dropdown, as shown:
+
+<img src="../../assets/event-stream-destinations/airship-create-new-token.png" alt="Airship project token" />
+
+5. Once the token is created, copy and secure the credentials and click on **Got it**.
 
 ### Where can I obtain the Airship App Key and App Secret?
 
+To obtain your Airship project's app key and secret, follow these steps:
 
+1. In your Airship dashboard, go to **Settings**.
+2. In the **Project configuration** window, look for the **Project Details** pane on the right side.
+
+You will find your project's app key listed here. To obtain the app secret, click on on **Click to reveal**, as shown:
+
+<img src="../../assets/event-stream-destinations/airship-app-key-secret.png" alt="Airship project app key and secret" />
 
 ## Contact us
 
