@@ -244,7 +244,7 @@ RudderStack automatically tracks the following optional events:
 <li><code class="inline-code">Application Opened</code></li>
 <li><code class="inline-code">Application Backgrounded</code></li>
 </ol>
-You can disable these events by calling <code class="inline-code">withTrackLifeCycleEvents(false)</code> on the <code class="inline-code">RudderConfigBuilder</code> object while initializing the RudderStack client. However, we highly recommend keeping them enabled.
+You can disable these events by calling <code class="inline-code">withTrackLifeCycleEvents(false)</code> on the <code class="inline-code">RudderConfigBuilder</code> object while initializing the RudderStack client. However, it is highly recommended to keep them enabled.
 </div>
 
 ## Screen
@@ -341,14 +341,14 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 rudderClient.reset();
 ```
 
-## Enabling/disabling user tracking via the `optOut` API(GDPR support)
+## Enabling/disabling user tracking (GDPR support)
 
 <div class="infoBlock">
 
 This functionality is not available for the web. For more information, refer to the <a href="#flutter-sdk-api-not-available-for-web">Flutter SDK API not available for the web</a> section below.
 </div>
 
-RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+RudderStack gives the users \(for example, an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
 
 The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
 
@@ -495,7 +495,7 @@ If you are using a device mode destination like Adjust, Firebase, etc., the Flut
 You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are using the open-source <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to set up your own control plane.
 </div>
 
-## Flutter SDK API not available for web
+## SDK API unavailable for web
 
 The following Flutter SDK API are not available/applicable for the web:
 
