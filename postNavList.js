@@ -177,6 +177,12 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"flutter-v2",
+    "title":"Flutter SDK v2",
+    "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/",
+    "content":[]
+ },
+ {
     "key":"flutter-v1",
     "title":"Flutter SDK v1",
     "link":"/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/",
