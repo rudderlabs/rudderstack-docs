@@ -5,7 +5,7 @@ description: >-
   Detailed technical documentation on the RudderStack Flutter SDK to send events from your Flutter applications to various destinations.
 ---
 
-# Flutter
+# Flutter v2
 
 The **RudderStack Flutter SDK** lets you track event data from your Flutter applications and send it to your specified destinations via RudderStack.
 
@@ -69,14 +69,14 @@ Not all the APIs provided in the Flutter SDK are applicable for the web. Refer t
 
 After adding the SDK as a dependency, you need to set up the SDK.
 
-- To import the SDK, use the following snippet:
+1. To import the SDK, use the following snippet:
 
 ```dart
 import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
 import 'package:rudder_sdk_flutter/RudderController.dart';
 ```
 
-- Then, add the following code snippet in your application:
+2. Then, add the following code snippet in your application:
 
 ```dart
 final RudderController rudderClient = RudderController.instance;
@@ -111,7 +111,7 @@ You can configure your client based on the following parameters by passing them 
 | `logLevel`  | Integer     | Controls the logs you want to see from the Flutter SDK.        | `RudderLogger.RudderLogLevel.NONE`                       |
 | `mobileConfig` | Object | Refer to the [`mobileConfig` parameters](#mobileconfig-parameters) section below. | - |
 | `webConfig` | Object | Refer to the [`webConfig` parameters](#webconfig-parameters) section below. | - |
-| `controlPlaneUrl`       | String | This parameter should be changed **only if** you are self-hosting the control plane. Check the section [**Self-hosted Control Plane**](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | `https://api.rudderlabs.com` |
+| `controlPlaneUrl`       | String | This parameter should be changed **only if** you are self-hosting the control plane. Check the section [Self-hosted control plane](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | `https://api.rudderlabs.com` |
 
 ### mobileConfig parameters
 
@@ -146,7 +146,12 @@ You can configure your client based on the following parameters by passing them 
 
 ## Identify
 
-RudderStack captures `deviceId` and uses that as the `anonymousId` for identifying the user. This helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method. 
+RudderStack captures `deviceId` and uses that as the `anonymousId` for identifying the user. This helps to track the users across the application installation. To attach more information to the user, you can use the `identify` method.
+
+<div class="infoBlock">
+
+For a detailed explanation of the <code class="inline-code">identify</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
+</div>
 
 Once a user is identified, the SDK persists all the user information and passes it to the successive  `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
@@ -156,7 +161,8 @@ On the Android devices, the <code class="inline-code">deviceId</code> is assigne
 </div>
 
 <div class="infoBlock">
-According to the Apple <a href="https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor">documentation</a>, if the iOS device has multiple apps from the same vendor, all the apps will be assigned the same <code class="inline-code">deviceId</code>. If all the applications from a vendor are uninstalled and then reinstalled, then they will be assigned a new <code class="inline-code">deviceId</code>.
+
+According to the <a href="https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor">Apple documentation</a>, if the iOS device has multiple apps from the same vendor, all the apps will be assigned the same <code class="inline-code">deviceId</code>. If all the applications from a vendor are uninstalled and then reinstalled, then they will be assigned a new <code class="inline-code">deviceId</code>.
 </div>
 
 A sample `identify` event is as shown:
@@ -211,6 +217,11 @@ For web apps, the <code class="inline-code">getRudderContext</code> API returns 
 
 You can record the users' activity through the `track` method. Each user action is called an event.
 
+<div class="infoBlock">
+
+For a detailed explanation of the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
+</div>
+
 A sample `track` event is shown below:
 
 ```dart
@@ -224,10 +235,10 @@ rudderClient.track("test_track_event", properties: property);
 
 The `track` method has the following signature:
 
-| Name         | Data Type        | Presence | Description                                                              |
+| Name         | Type        | Presence | Description        |
 | :----------- | :--------------- | :------- | :----------------------------------------------------------------------- |
 | `name`       | String        | Required      | Contains the name of the event you want to track.                         |
-| `properties` | `RudderProperty` | Optional       | Contains the extra data properties you want to send along with the event. |
+| `properties` | `RudderProperty` | Optional       | Contains the extra properties you want to send along with the event. |
 | `options`    | `RudderOption`   | Optional       | Contains the extra event options.                                        |
 
 <div class="infoBlock">
@@ -239,12 +250,17 @@ RudderStack automatically tracks the following optional events:
 <li><code class="inline-code">Application Opened</code></li>
 <li><code class="inline-code">Application Backgrounded</code></li>
 </ol>
-You can disable these events by calling <code class="inline-code">withTrackLifeCycleEvents(false)</code> on the <code class="inline-code">RudderConfigBuilder</code> object while initializing the RudderStack client. However, it is highly recommended to keep them enabled.
+You can disable these events by calling <code class="inline-code">withTrackLifeCycleEvents(false)</code> in the <code class="inline-code">RudderConfigBuilder</code> object while initializing the RudderStack client. However, it is highly recommended to keep them enabled.
 </div>
 
 ## Screen
 
-You can use the `screen` call to record whenever the user views a screen on their mobile device. You can also send some extra properties along with this event.
+You can use the `screen` call to record whenever the user views a screen on their mobile device along with the properties associated with that event.
+
+<div class="infoBlock">
+
+For a detailed explanation of the <code class="inline-code">screen</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack API Specification</a> guide.
+</div>
 
 <div class="infoBlock">
 
@@ -262,16 +278,21 @@ rudderClient.screen("Main Activity",
 
 The `screen` method has the following signature:
 
-| Name         | Data Type        | Required | Description                                                               |
+| Name         | Data Type        | Presence | Description                                                               |
 | :----------- | :--------------- | :------- | :------------------------------------------------------------------------ |
-| `screenName` | String        | Yes      | Name of the screen viewed by the user.                                                |
+| `screenName` | String        | Required      | Name of the screen viewed by the user.                                                |
 | `category` | String | - | Defines the page(web) or screen(mobile) category. |
-| `properties` | `RudderProperty` | No       | Extra property object that you want to pass along with the `screen` call. |
-| `options`    | `RudderOption`   | No       | Extra options to be passed along with `screen` event.                     |
+| `properties` | `RudderProperty` | Optional       | Extra property object that you want to pass along with the `screen` call. |
+| `options`    | `RudderOption`   | Optional       | Extra options to be passed along with `screen` event.                     |
 
 ## Group
 
 The `group` call associates a user to a specific organization.
+
+<div class="infoBlock">
+
+For a detailed explanation of the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
+</div>
 
 A sample `group` event is shown below:
 
@@ -285,11 +306,11 @@ rudderClient.group("sample_group_id",
 
 The `group` method has the following signature:
 
-| Name          | Data Type      | Required | Description                                                                        |
-| :------------ | :------------- | :------- | :--------------------------------------------------------------------------------- |
-| `groupId`     | String      | Yes      | The ID of the organization with which you want to associate your user.               |
-| `groupTraits` | `RudderTraits` | No       | Any other organization traits you want to pass along with the `group` call. |
-| `options`     | `RudderOption` | No       | Extra options to be passed along with `group` event.                               |
+| Name          | Type      | Presence | Description         |
+| :------------ | :------------- | :------- | :------------------------- |
+| `groupId`     | String      | Required      | The ID of the organization with which you want to associate your user.               |
+| `groupTraits` | `RudderTraits` | Optional       | Any other organization traits you want to pass along with the `group` call. |
+| `options`     | `RudderOption` | Optional       | Extra options to be passed along with `group` event.                               |
 
 <div class="infoBlock">
 
@@ -318,10 +339,10 @@ rudderClient.alias("new_user_id", options: null);
 
 The `alias` method has the following signature:
 
-| Name      | Data Type      | Required | Description                                          |
+| Name      | Data Type      | Presence | Description                                          |
 | :-------- | :------------- | :------- | :--------------------------------------------------- |
-| `newId`   | String      | Yes      | The new `userId` you want to assign to the user.      |
-| `options` | `RudderOption` | No       | Extra options to be passed along with `alias` event. |
+| `newId`   | String      | Required      | The new `userId` you want to assign to the user.      |
+| `options` | `RudderOption` | Optional       | Extra options to be passed along with `alias` event. |
 
 <div class="infoBlock">
 
@@ -361,18 +382,17 @@ rudderClient.optOut(false);
 
 <div class="infoBlock">
 
-The `optOut` API is available in the Flutter SDK starting from version `1.0.6`.
+The <code class="inline-code">optOut</code> API is available in the Flutter SDK starting from version `1.0.6`.
 </div>
 
 ## Filtering events
 
-When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them.
+When sending events to a destination via the [device mode](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode), you can explicitly specify the events to be discarded or allowed to flow through by whitelisting or blacklisting them.
 
 <div class="infoBlock">
 
 Refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
 </div>
-
 
 ## Enabling/disabling events for specific destinations
 
@@ -395,23 +415,23 @@ The keyword <code class="inline-code">All</code> in the above snippet represents
 
 <div class="infoBlock">
 
-Make sure the destination names that you pass while specifying the destinations should exactly match the names as listed <a href="https://app.rudderstack.com/directory">here</a>.
+Make sure the destination names that you pass while specifying the destinations exactly match the names as listed in the <a href="https://app.rudderstack.com/directory">RudderStack dashboard</a>.
 </div>
 
 You can pass the destinations to the SDK in the following two ways:
 
-### Passing destinations while initializing the SDK
+### Method 1. Passing destinations while initializing the SDK
 
 This is helpful when you want to enable/disable sending the events across all the event calls made using the SDK to the specified destination\(s\).
 
 ```dart
-rudderClient.initialize(WRITE_KEY,
+rudderClient.initialize(<WRITE_KEY>,
                     config: builder.build(),options: options);
 ```
 
-### Passing destinations while making event calls
+### Method 2. Passing destinations while making event calls
 
-This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\), or if you want to override the specified destinations passed with the SDK initialization for a particular event.
+This approach is helpful when you want to enable/disable sending only a particular event to the specified destination\(s\) or if you want to override the specified destinations passed with the SDK initialization for a particular event.
 
 ```dart
 RudderProperty property = RudderProperty();
@@ -419,7 +439,7 @@ property.put("test_key_1", "test_key_1");
 rudderClient.track("test_track_event", properties: property, options: options);
 ```
 
-<div class="infoBlock">
+<div class="warningBlock">
 
 If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
 </div>
@@ -436,15 +456,15 @@ option.putExternalId("externalId", "some_external_id_1");
 rudderClient.identify("testUserId", options: option);
 ```
 
-## Anonymous ID
+## Setting your own `anonymousId` using `putAnonymousId`
 
-By default, RudderStack uses `deviceId` as `anonymousId`. You can use the following method to override and set your own `anonymousId` with the SDK:
+By default, RudderStack uses `deviceId` as `anonymousId`. You can use the following method to override and set your own `anonymousId` with the SDK, as shown:
 
 ```dart
 rudderClient.putAnonymousId(<ANONYMOUS_ID>);
 ```
 
-## Advertising ID
+## Passing your Android/iOS advertising ID
 
 <div class="infoBlock">
 
@@ -483,9 +503,9 @@ rudderClient.putDeviceToken(<DEVICE_TOKEN>);
 
 ## Self-hosted control plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the Flutter SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own control plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your `RudderConfig.Builder` that points to your hosted source configuration file.
+In case you are using a device mode destination like Adjust, Firebase, etc., the Flutter SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own control plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your [`RudderConfig.Builder`](#configuring-your-rudderstack-client) that points to your hosted source configuration file.
 
-<div class="warningBlock">
+<div class="dangerBlock">
 
 You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are using the open-source <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to set up your own control plane.
 </div>
@@ -505,15 +525,15 @@ Calling these API in your web app will have no effect.
 
 ## Debugging
 
-If you run into any issues regarding the Flutter SDK, you can turn on the `VERBOSE` or `DEBUG` logging to determine the issue. To do so, follow these steps:
+If you run into any issues when using the Flutter SDK, you can turn on the `VERBOSE` or `DEBUG` logging to determine the issue. To do so, follow these steps:
 
-- First, make sure you import `RudderLogger` by running the following command:
+1. First, make sure you import `RudderLogger` by running the following command:
 
 ```dart
 import 'package:rudder_sdk_flutter/RudderLogger.dart';
 ```
 
-- Then, to turn on the logging, change your `rudderClient` initialization to the following:
+2. Then, turn on the logging by changing your `rudderClient` initialization as shown:
 
 ```dart
 RudderConfigBuilder builder = RudderConfigBuilder();
@@ -523,14 +543,14 @@ rudderClient.initialize(WRITE_KEY,
                           config: builder.build());
 ```
 
-- You can set the log level to one of the following values:
+You can set the log level to one of the following values:
 
-1. `NONE`
-2. `ERROR`
-3. `WARN`
-4. `INFO`
-5. `DEBUG`
-6. `VERBOSE`
+- `NONE`
+- `ERROR`
+- `WARN`
+- `INFO`
+- `DEBUG`
+- `VERBOSE`
 
 ## FAQs
 
@@ -550,6 +570,6 @@ For web apps, the <code class="inline-code">getRudderContext</code> API returns 
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
 
-If you come across any issues while using the Flutter SDK, you can also open an issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-flutter/issues).
+If you come across any issues while using the Flutter SDK, you can also open an issue on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-flutter/issues).
