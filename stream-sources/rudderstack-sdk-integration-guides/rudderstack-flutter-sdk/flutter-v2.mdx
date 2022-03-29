@@ -5,21 +5,16 @@ description: >-
   Detailed technical documentation on the RudderStack Flutter SDK to send events from your Flutter applications to various destinations.
 ---
 
-# Flutter
+# Flutter v2
 
 The **RudderStack Flutter SDK** lets you track event data from your Flutter applications and send it to your specified destinations via RudderStack.
 
-Refer to the [Flutter SDK GitHub Repository](https://github.com/rudderlabs/rudder-sdk-flutter) to get a more hands-on understanding of the SDK and the related codebase.
-
 <div class="successBlock">
 
-We've released a new, beta version of the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/" target="_blank">Flutter SDK (v2)</a> with an enhanced architecture that also supports the <strong>web</strong>.
+Refer to the <a href="https://github.com/rudderlabs/rudder-sdk-flutter" target="_blank">Flutter GitHub Repository</a> to get a more hands-on understanding of the SDK and the related codebase.
 </div>
 
-<div class="infoBlock">
-
-If you are using an older version of the Flutter SDK (<1.2.0), then refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/">SDK v1</a> guide. <strong>Note that this SDK version will soon be deprecated.</strong>
-</div>
+<img src="https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github" alt="Github Badge" class="githubBadge" />
 
 ## SDK setup requirements
 
@@ -54,7 +49,7 @@ Follow the steps below to add the SDK as a dependency:
 
 ```yaml
 dependencies:
-  rudder_sdk_flutter: ^1.2.0
+  rudder_sdk_flutter: ^2.0.1
 ```
 
 2. Navigate to your application's root folder and install all the required dependencies with the following command:
@@ -63,6 +58,15 @@ dependencies:
 flutter pub get
 ```
 
+### Installing the SDK for the web
+
+To install and use the Flutter SDK in your web app, follow the above steps to add the Flutter SDK. Additionally, you need to [install the RudderStack script](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-rudderstack-javascript-sdk) in the `<head>` section of your web page.
+
+<div class="warningBlock">
+
+Not all the APIs provided in the Flutter SDK are applicable for the web. Refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section for more information.
+</div>
+
 ## Initializing the RudderStack client
 
 After adding the SDK as a dependency, you need to set up the SDK.
@@ -70,9 +74,8 @@ After adding the SDK as a dependency, you need to set up the SDK.
 1. To import the SDK, use the following snippet:
 
 ```dart
-import 'package:rudder_sdk_flutter/RudderClient.dart';
-import 'package:rudder_sdk_flutter/RudderConfig.dart';
-import 'package:rudder_sdk_flutter/RudderLogger.dart';
+import 'package:rudder_sdk_flutter_platform_interface/platform.dart';
+import 'package:rudder_sdk_flutter/RudderController.dart';
 ```
 
 2. Then, add the following code snippet in your application:
@@ -91,27 +94,57 @@ The `initialize` method has the following signature:
 | Name       | Type      | Presence | Description                                   |
 | :--------- | :------------- | :------- | :-------------------------------------------- |
 | `writeKey` | String       | Required      | Your Flutter source write key.                       |
-| `config`   | `RudderConfig` | Optional       | Contains the RudderStack client configuration |
+| `config`   | `RudderConfig` | Optional       | Contains the RudderStack client configuration. |
 
 <div class="infoBlock">
 
-Check the <a href="#configuring-your-rudderstack-client">Configuring your RudderStack client</a>  section below for a complete list of the configurable parameters.
+Refer to the <a href="#configuring-the-rudderstack-client">Configuring your RudderStack client</a>  section below for a complete list of the configurable parameters.
 </div>
 
-## Configuring your RudderStack Client
+## Configuring your RudderStack client
 
 You can configure your client based on the following parameters by passing them in the `RudderConfigBuilder` object of your `rudderClient.initialize()` call.
 
 | Parameter  | Type      | Description      | Default value   |
 | :---------- | :-------- | :--------- | :----------------- |
-| `logLevel`              | Integer     | Controls how much of the log you want to see from the Flutter SDK.                                                                                                                                                                                | `RudderLogger.RudderLogLevel.NONE`                       |
-| `dataPlaneUrl`           | String  | Your data plane URL.                                                                                                                                                              | `https://hosted.rudderlabs.com` |
-| `flushQueueSize`        | Integer     | Number of events in a batch request to the server.                                                                                                                                                                                                | `30`                                                     |
-| `dbThresholdCount`      | Integer     | Number of events to be saved in the SQLite database. Once this limit is reached, the older events are deleted from the database.        | `10000`                                                  |
-| `sleepTimeout`          | Integer     | Minimum waiting time to flush the events to the server.                                                                                                                                                                                           | `10 seconds`                                             |
-| `configRefreshInterval` | Integer     | Fetches the config from the dashboard after this specified time.                                                      | `2`                                                      |
-| `trackLifecycleEvents`  | Boolean | Determines if the SDK will capture application life cycle events automatically.                                     | `true`                                                   |
-| `controlPlaneUrl`       | String  | This parameter should be changed **only if** you are self-hosting the control plane. Check the section [Self-hosted control plane](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | `https://api.rudderlabs.com` |
+| `dataPlaneUrl`           | String  | Your data plane URL.     | `https://hosted.rudderlabs.com` |
+| `flushQueueSize`        | Integer     | Number of events in a batch request to the server.    | `30`                                                     |
+| `isDebug` | Boolean | When enabled, sets the log level as `debug`. For more information, refer to the [Debugging](#debugging) section below.  | `false`  |
+| `logLevel`  | Integer     | Controls the logs you want to see from the Flutter SDK.        | `RudderLogger.RudderLogLevel.NONE`                       |
+| `mobileConfig` | Object | Refer to the [`mobileConfig` parameters](#mobileconfig-parameters) section below. | - |
+| `webConfig` | Object | Refer to the [`webConfig` parameters](#webconfig-parameters) section below. | - |
+| `controlPlaneUrl`       | String | This parameter should be changed **only if** you are self-hosting the control plane. Check the section [Self-hosted control plane](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | `https://api.rudderlabs.com` |
+
+### mobileConfig parameters
+
+`mobileConfig` contains only the mobile-specific configuration parameters for the Flutter SDK.
+
+| Parameter               | Type      | Description     | Default value                                            |
+| :------------------| :-------- | :------------ | :--------------------------------------- |
+| `dbThresholdCount`  | Integer    | Number of events to be saved in the SQLite database. Once this limit is reached, the older events are deleted from the database.            | `10000`                                        |
+| `sleepTimeout`          | Integer     | Minimum waiting time to flush the events to the server.          | `10 seconds`                      |
+| `configRefreshInterval` | Integer     | Fetches the config from the dashboard after this specified time.                              | `2`                                                      |
+| `trackLifecycleEvents`  | Boolean | Determines if the SDK will capture application life cycle events automatically.                   | `true`                                                   |
+| `recordScreenViews` | Boolean | When enabled, the SDK automatically records the screens viewed by the user. | `false` |
+
+### webConfig parameters
+
+`webConfig` holds the configuration parameters for using the SDK in the Flutter web applications.
+
+| Parameter               | Type      | Description     | Default value                                            |
+| :------------------| :-------- | :------------ | :--------------------------------------- |
+| `destSDKBaseURL` | String | The SDK loads the integration from this path. |  |
+| `useBeacon` | Boolean | If enabled, the SDK sends the event payloads via the `navigator.sendBeacon()` utility | `False` |
+| `secureCookie` | Boolean | If enabled, the SDK sends the cookie to the storage backend via HTTPS. | `False` |
+| `loadIntegration` | Boolean | If disabled, the destination SDKs are not fetched by the SDK. | `True` |
+| `cookieConsentManagers` | Object | Refer to the [cookieConsentManager](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#cookieconsentmanager) section for more information. | - |
+| `beaconFlushQueueInterval` | Integer | The SDK flushes the queue after this time interval (in milliseconds). | 600000 | 
+| `maxBeaconItems` | Integer | The SDK flushes the queue when this number of events is reached. | 10 |
+| `maxItems` | Integer | Maximum number of events kept in the storage. | 100 |
+| `maxAttempts` | Integer | Maximum number of attempts the SDK makes to send the event to the destination. | 10 |
+| `backoffFactor` | Integer | Refers to the exponential base. | 2 |
+| `minRetryDelay` | Integer | The minimum delay expected before the SDK retries sending an event (in ms) | 1000 |
+| `maxRetryDelay` | Integer | The upper limit on the maximum delay for retrying an event (in ms) | 360000 |
 
 ## Identify
 
@@ -140,13 +173,13 @@ A sample `identify` event is as shown:
 RudderTraits traits = RudderTraits();
 traits.putBirthdayDate(new DateTime.now());
 traits.putEmail("abc@123.com");
-traits.putFirstName("Alex");
-traits.putLastName("Keener");
-traits.putGender("M");
-traits.putPhone("1234567890");
+traits.putFirstName("First");
+traits.putLastName("Last");
+traits.putGender("m");
+traits.putPhone("5555555555");
 
 Address address = Address();
-address.putCity("New Orleans");
+address.putCity("City");
 address.putCountry("USA");
 traits.putAddress(address);
 
@@ -177,6 +210,11 @@ Map context = await rudderClient.getRudderContext();
 print(context["traits"]);
 ```
 
+<div class="infoBlock">
+
+For web apps, the <code class="inline-code">getRudderContext</code> API returns the user traits and anonymous ID only.
+</div>
+
 ## Track
 
 You can record the users' activity through the `track` method. Each user action is called an event.
@@ -199,9 +237,9 @@ rudderClient.track("test_track_event", properties: property);
 
 The `track` method has the following signature:
 
-| Name         | Type        | Presence  | Description   |
+| Name         | Type        | Presence | Description        |
 | :----------- | :--------------- | :------- | :----------------------------------------------------------------------- |
-| `name`       | String         | Required      | Contains the name of the event you want to track.                         |
+| `name`       | String        | Required      | Contains the name of the event you want to track.                         |
 | `properties` | `RudderProperty` | Optional       | Contains the extra properties you want to send along with the event. |
 | `options`    | `RudderOption`   | Optional       | Contains the extra event options.                                        |
 
@@ -226,6 +264,11 @@ You can use the `screen` call to record whenever the user views a screen on thei
 For a detailed explanation of the <code class="inline-code">screen</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack API Specification</a> guide.
 </div>
 
+<div class="infoBlock">
+
+For web apps, the SDK internally calls the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">page</a> API with the provided parameters.
+</div>
+
 A sample `screen` event is as shown:
 
 ```dart
@@ -237,9 +280,10 @@ rudderClient.screen("Main Activity",
 
 The `screen` method has the following signature:
 
-| Name         | Type        | Presence | Description  |
+| Name         | Data Type        | Presence | Description                                                               |
 | :----------- | :--------------- | :------- | :------------------------------------------------------------------------ |
 | `screenName` | String        | Required      | Name of the screen viewed by the user.                                                |
+| `category` | String | - | Defines the page(web) or screen(mobile) category. |
 | `properties` | `RudderProperty` | Optional       | Extra property object that you want to pass along with the `screen` call. |
 | `options`    | `RudderOption`   | Optional       | Extra options to be passed along with `screen` event.                     |
 
@@ -266,7 +310,7 @@ The `group` method has the following signature:
 
 | Name          | Type      | Presence | Description         |
 | :------------ | :------------- | :------- | :------------------------- |
-| `groupId`     | `String`       | Required      | The ID of the organization with which you want to associate your user.               |
+| `groupId`     | String      | Required      | The ID of the organization with which you want to associate your user.               |
 | `groupTraits` | `RudderTraits` | Optional       | Any other organization traits you want to pass along with the `group` call. |
 | `options`     | `RudderOption` | Optional       | Extra options to be passed along with `group` event.                               |
 
@@ -299,7 +343,7 @@ The `alias` method has the following signature:
 
 | Name      | Data Type      | Presence | Description                                          |
 | :-------- | :------------- | :------- | :--------------------------------------------------- |
-| `newId`   | String       | Required      | The new `userId` you want to assign to the user.      |
+| `newId`   | String      | Required      | The new `userId` you want to assign to the user.      |
 | `options` | `RudderOption` | Optional       | Extra options to be passed along with `alias` event. |
 
 <div class="infoBlock">
@@ -315,7 +359,12 @@ You can use the `reset` method to clear the persisted `traits` for the `identify
 rudderClient.reset();
 ```
 
-## Enabling/disabling user tracking via the `optOut` API(GDPR support)
+## Enabling/disabling user tracking (GDPR support)
+
+<div class="infoBlock">
+
+This functionality is not available for the web. For more information, refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
+</div>
 
 RudderStack gives the users \(for example, an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
 
@@ -419,6 +468,11 @@ rudderClient.putAnonymousId(<ANONYMOUS_ID>);
 
 ## Passing your Android/iOS advertising ID
 
+<div class="infoBlock">
+
+This functionality is not available for the web. For more information, refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
+</div>
+
 You can use the `putAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `putAdvertisingId` method accepts a string argument as described below:
 
 - `id` : Your Android `advertisingId` \(AAID\) \(or\) your iOS `advertisingId` \(IDFA\).
@@ -436,6 +490,11 @@ rudderClient.putAdvertisingId(<ADVERTISING_ID>);
 
 ## Setting the device token
 
+<div class="infoBlock">
+
+This functionality is not available for the web. For more information, refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
+</div>
+
 You can pass your device token for push notifications to be passed to the destinations which support the Push Notification feature. RudderStack sets the token under `context.device.token`.
 
 An example of setting the device token is as shown below:
@@ -444,13 +503,26 @@ An example of setting the device token is as shown below:
 rudderClient.putDeviceToken(<DEVICE_TOKEN>);
 ```
 
-### Self-hosted control plane
+## Self-hosted control plane
 
 In case you are using a device mode destination like Adjust, Firebase, etc., the Flutter SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own control plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your [`RudderConfig.Builder`](#configuring-your-rudderstack-client) that points to your hosted source configuration file.
 
 <div class="dangerBlock">
 
 You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are using the open-source <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to set up your own control plane.
+</div>
+
+## SDK API unavailable for web
+
+The following Flutter SDK API are not available/applicable for the web:
+
+- [`optOut`](#enablingdisabling-user-tracking-gdpr-support)
+- [`putDeviceToken`](##setting-the-device-token)
+- [`putAdvertisingId`](#advertising-id)
+
+<div class="warningBlock">
+
+Calling these API in your web app will have no effect.
 </div>
 
 ## Debugging
@@ -492,6 +564,11 @@ You can get the user traits after making an `identify` call in the following way
 Map context = await rudderClient.getRudderContext();
 print(context["traits"]);
 ```
+
+<div class="infoBlock">
+
+For web apps, the <code class="inline-code">getRudderContext</code> API returns the user traits and anonymous ID only.
+</div>
 
 ## Contact us
 
