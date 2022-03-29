@@ -29,7 +29,7 @@ RudderStack also offers three plans as a part of <a href="https://app.rudderstac
 For more information on the data plane and control plane setup options in RudderStack Cloud and Open Source, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-### Events-related features
+### Event-related features
 
 | Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
 | :--------| :-------------------| :--------------------------| :-----| 
@@ -38,7 +38,7 @@ For more information on the data plane and control plane setup options in Rudder
 | [Live events](https://www.rudderstack.com/docs/get-started/live-events/) |  ✓ | ✕ | This feature is applicable only for [cloud mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) destinations. | 
 | RudderStack-hosted object storage | ✓ |  ✕ | You can use the RudderStack-hosted bucket to temporarily store your events before forwarding them to your warehouse destination. |
 | [Event Replay](https://www.rudderstack.com/docs/user-guides/administrators-guide/event-replay/) | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. | 
-| Maintaining events ordering | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
+| Maintaining event ordering | ✓ |  ✓ | <ul><li>For Cloud, this is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature.</li><li>In an open source, multi-node setup, event ordering is supported but **not guaranteed**.</li></ul> |
 | [Transformations](https://www.rudderstack.com/docs/transformations/) |  ✓ |  ✓ | <ul><li>In case of Open Source, this feature is only applicable for the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) and users can set upto <strong>3 transformations</strong>.</li><li>In case of <a href="https://app.rudderstack.com/signup?type=freetrial" target="_blank">RudderStack Cloud Free</a>, users can set upto <strong>3 transformations</strong>.</li><li>Pro and Enterprise users can set up unlimited transformations.</li><li>It can be used only for [cloud mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) destinations.</li></ul> |
 
 ### ETL and Reverse ETL
