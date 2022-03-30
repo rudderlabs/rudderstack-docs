@@ -272,18 +272,21 @@ For web apps, the SDK internally calls the <a href="https://www.rudderstack.com/
 A sample `screen` event is as shown:
 
 ```dart
-RudderProperty screenProperty = new RudderProperty();
-screenProperty.put("foo", "bar");
-rudderClient.screen("Main Activity",
-    properties: screenProperty, options: null);
+RudderProperty screenProperty = RudderProperty();
+  screenProperty.put("browser", "Chrome");
+  screenProperty.put("device", "Macbook Pro");
+  rudderClient.screen("Walmart Cart",
+      category: "home",
+      properties: screenProperty,
+      options: null);
 ```
 
 The `screen` method has the following signature:
 
-| Name         | Data Type        | Presence | Description                                                               |
+| Name         | Type        | Presence | Description                                                               |
 | :----------- | :--------------- | :------- | :------------------------------------------------------------------------ |
 | `screenName` | String        | Required      | Name of the screen viewed by the user.                                                |
-| `category` | String | - | Defines the page(web) or screen(mobile) category. |
+| `category` | String | Optional | Defines the page(web) or screen(mobile) category. |
 | `properties` | `RudderProperty` | Optional       | Extra property object that you want to pass along with the `screen` call. |
 | `options`    | `RudderOption`   | Optional       | Extra options to be passed along with `screen` event.                     |
 
@@ -341,7 +344,7 @@ rudderClient.alias("new_user_id", options: null);
 
 The `alias` method has the following signature:
 
-| Name      | Data Type      | Presence | Description                                          |
+| Name      | Type      | Presence | Description                                          |
 | :-------- | :------------- | :------- | :--------------------------------------------------- |
 | `newId`   | String      | Required      | The new `userId` you want to assign to the user.      |
 | `options` | `RudderOption` | Optional       | Extra options to be passed along with `alias` event. |
