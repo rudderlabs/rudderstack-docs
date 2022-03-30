@@ -1,0 +1,76 @@
+---
+title: "Identity Resolution"
+description: >-
+  Detailed technical description of RudderStack's identity resolution feature to create comprehensive, unified user profiles.
+---
+
+# Identity Resolution
+
+Across a user's product journey, multiple identifiers get associated with them, for example, email ID, phone number, device IDs, anonymous ID, account usernames, and more. **Identity resolution** is the process of matching these different identifiers across multiple devices and digital touchpoints to build a cohesive and omnichannel customer profile. A unified customer view enables businesses to deliver relevant messaging and enhance the user's customer journey.
+
+<div class="successBlock">
+
+With RudderStack's warehouse-first architecture, you can send all your cross-platform data to your warehouse and perform identity resolution on it.
+</div>
+
+This guide walks you through RudderStack's identity resolution feature in detail.
+
+## How identity resolution works
+
+Identity resolution involves using an **identity graph** - a database that houses and brings together all the different user identifiers and various aspects of their customer journeys into a single customer view. The identity graph collects and continually updates the customer profile with different identifiers mentioned above, like email, phone number, device IDs, etc.
+
+The identity resolution process can be summarized by the following three steps:
+
+1. Collect the user identifiers across various touchpoints (device IDs, email addresses, cookies, etc.)
+2. Connect these identifiers to an identity graph to build a unified user profile.
+3. Activate this profile by connecting it to various analytics, marketing, CRM tools as per the business requirement.
+
+## Identity resolution in RudderStack
+
+In modern businesses, the identity graph used for cross-device identity stitching can be quite large, sometimes consisting of hundreds of millions of nodes. However, as you gather more data, this number scales rapidly. In such a scenario, storing the identity graph in your data warehouse makes a lot of sense from a storage and scalability perspective.
+
+With RudderStack, you can build an identity graph on top of your enriched warehouse data. You can then store this graph in your warehouse as a table. RudderStack then creates a unique virtual ID (`RUDDER_ID`), associates it with all the relevant user identifiers, and updates it continuously as new data comes into your warehouse.
+
+### Use case 
+
+This use case gives a quick walkthrough of a user's product journey on an e-Commerce app integrated with RudderStack. You will see how their different identities are tracked and merged to build a unified profile using RudderStack.
+
+1. The user **anonymously** searches for a particular product on their mobile app - in this case, an iPhone. Here, RudderStack identifies the user with `anonymous_id_1` and the device with `device_id_1`.
+2. After browsing through the app, the user adds a product in their cart and then **logs in** using their email. Here, RudderStack then generates an `identify` type of event and associates `anonymous_id_1` with the user's email ID `email` (user's unique identifier). Note that RudderStack also generates a `track` call with the details around the browsing activity and updates to the cart.
+
+Then, for some reason, the user does not not proceed with the purchase and drops off.
+
+3. Later, the same user fires up their laptop and browses through the website of the e-Commerce brand **anonymously**. Again, RudderStack generates an `anonymous_id_2` corresponding to the user and a device ID `device_id_2`.
+4. The user then **logs in** with their email and password. RudderStack then generates an `identify` call associating the same `email` with `anonymous_id_2`. The user then proceeds to complete the purchase. A `track` call is then generated with the details around the purchase.
+
+The above workflow is visually represented in the following image:
+
+<img src="../assets/identity-resolution/identity-resolution-workflow.png" alt="Identity Resolution workfow" />
+
+RudderStack has a `merge` API that you can leverage to connect and merge these different user identities in the warehouse. As the user logs into more devices and different identifiers are associated, RudderStack can easily track and merge them into the same virtual ID (`RUDDER_ID`) in the warehouse, as seen below:
+
+<img src="../assets/identity-resolution/rudder-id.png" alt="Identity graph Rudder ID" />
+
+<div class="successBlock">
+
+You can also leverage RudderStack's <a href="#user-transformations">Transformations</a> feature to merge different user identifiers before sending the data to the warehouse.
+</div>
+
+## Merging identifiers with RudderStack
+
+As mentioned above, RudderStack gives you the following two options to merge user identifiers.
+
+- Using the Merge API
+- By leveraging user transformations
+
+### `merge` API
+
+
+
+### User transformations
+
+https://www.rudderstack.com/docs/transformations/
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
