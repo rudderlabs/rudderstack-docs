@@ -74,31 +74,26 @@ For information on the <code class="inline-code">identify</code> call, refer to 
 A sample `identify` call is shown below:
 
 ```javascript
-
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  "firstName": true,
+  "lastName": true,
+  "tags3": true,
+  "favorite_color": "purple",
+  "attribute": "value"
+});
 ```
 
-Airship assigns tags to the [named users](https://docs.airship.com/guides/messaging/user-guide/audience/segmentation/named-users/) based on the incoming RudderStack `identify` calls. 
+In the above code snippet, RudderStack sends the Boolean values to Airship as [tags](https://docs.airship.com/api/ua/#operation-api-named_users-tags-post), whereas the non-Boolean values are sent as [attributes](https://docs.airship.com/api/ua/#operation-api-named_users-named_user_id-attributes-post).
 
 <div class="warningBlock">
 
-To successfully assign tags to Airship using the RudderStack <code class="inline-code">identify</code> events, you must create a tag group with the group key set to <code class="inline-code">rudderstack-integration</code> in Airship. For more information on creating a tag group in Airship, refer to the <a href="#faq">FAQ</a> section below.
+To successfully assign tags to Airship using the RudderStack <code class="inline-code">identify</code> events, you must create a tag group with the group key set to <code class="inline-code">rudderstack_integration</code> in Airship. For more information on creating a tag group in Airship, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-### Attribute mapping
+<div class="infoBlock">
 
-RudderStack maps the following reserved traits to the predefined Airship attributes:
-
-| RudderStack trait | Airship attribute |
-| :-----------------| :-----------------|
-| `address.city` | `city` |
-| `address.country` | `country` |
-| `address.postalcode` | `zipcode` |
-| `address.state` | `region` |
-| `createdAt` | `account_creation` |
-| `firstName` | `first_name` |
-| `lastName` | `last_name` |
-| `name` | `full_name` |
-| `phone` | `mobile_phone` |
+RudderStack maps some reserved traits to the predefined Airship attributes. Refer to the <a href="#traits-mapping">Traits mapping</a> section below for more information.
+</div>
 
 ## Track
 
@@ -112,30 +107,43 @@ For information on the <code class="inline-code">track</code> call, refer to the
 A sample `track` call is shown below:
 
 ```javascript
-
+rudderanalytics.track("product clicked", {
+  description: "Shoes viewed",
+  brand: "Sneakers",
+  colors: ["red", "blue"],
+  items: [{
+      text: "New Balance Sneakers",
+      price: "$69.95",
+    },
+    {
+      text: "G.I. Joe Sneakers",
+      price: "$99.95",
+    },
+  ],
+  name: "Alex Keener",
+  userLocation: {
+    state: "Louisiana",
+    zip: "90009",
+  },
+});
+}
 ```
-
-RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
-
-### Supported mappings
-
-RudderStack maps the following event properties to the Airship properties before sending them over to Airship.
-
-| RudderStack property          | Airship property      | Presence |
-| :--------------------------- | :--------------------- | :------|
-| `event` | `name` | Required |
-| `userId` | `named_user_id` | Required |
-| `properties` | `properties` | Optional |
-| `value` | `value` | Optional |
-| `interactionId` | `interaction_id` | Optional |
-| `interactionType` | `interaction_type` | Optional |
-| `sessionId` | `session_id` | Optional |
-| `transaction` | `transaction` | Optional |
-| `timestamp` | `occurred` | Optional |
 
 <div class="warningBlock">
 
-The <code class="inline-code">name</code> value must not contain any upper case characters. Otherwise, 
+The event name must not contain any upper case characters. Otherwise, the event will be rejected with a <code class="inline-code">400</code> status code.
+</div>
+
+RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
+
+<div class="warningBlock">
+
+The event requests are rate limited to 500 events/sec per app.
+</div>
+
+<div class="infoBlock">
+
+RudderStack also maps some event properties to the Airship properties before sending them over to Airship. For more information, refer to the <a href="#supported-mapping">Supported mappings</a> section below.
 </div>
 
 ## Group
@@ -150,9 +158,51 @@ For information on the <code class="inline-code">group</code> call, refer to the
 A sample `group` call is shown below:
 
 ```javascript
-
+rudderanalytics.group("group01", {
+  "firstName": true,
+  "lastName": true,
+  "tags3": true,
+  "favorite_color": "purple",
+  "attribute": "value"
+});
 ```
 
+In the above code snippet, RudderStack sends the Boolean values to Airship as [tags](https://docs.airship.com/api/ua/#operation-api-named_users-tags-post), whereas the non-Boolean values are sent as [attributes](https://docs.airship.com/api/ua/#operation-api-named_users-named_user_id-attributes-post).
+
+<div class="warningBlock">
+
+To successfully assign tags to Airship using the RudderStack <code class="inline-code">group</code> events, you must create a tag group with the group key set to <code class="inline-code">rudderstack_integration_group</code> in Airship. For more information on creating a tag group in Airship, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+## Supported mappings
+
+RudderStack maps the following event properties to the Airship properties before sending them over to Airship.
+
+| RudderStack property          | Airship property      | Presence |
+| :--------------------------- | :--------------------- | :------|
+| `userId` | `named_user_id` | Required |
+| `event` | `name` | Required |
+| `properties` | `properties` | Optional |
+| `value` | `value` | Optional |
+| `interactionId` | `interaction_id` | Optional |
+| `interactionType` | `interaction_type` | Optional |
+| `sessionId` | `session_id` | Optional |
+| `transaction` | `transaction` | Optional |
+| `timestamp` | `occurred` | Optional |
+
+### Traits mapping
+
+| RudderStack trait | Airship attribute |
+| :-----------------| :-----------------|
+| `address.city` | `city` |
+| `address.country` | `country` |
+| `address.postalcode` | `zipcode` |
+| `address.state` | `region` |
+| `createdAt` | `account_creation` |
+| `firstName` | `first_name` |
+| `lastName` | `last_name` |
+| `name` | `full_name` |
+| `phone` | `mobile_phone` |
 
 ## FAQs
 
