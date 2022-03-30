@@ -197,7 +197,22 @@ yarn add @rudderstack/rudder-integration-moengage-react-native
 ```
 </span>
 </li>
-<li>Add the following under the dependencies section:
+ <li>Import the above module and add it to your SDK initialization, as shown:
+<span>
+
+```javascript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+import moengage from "@rudderstack/rudder-integration-moengage-react-native"
+const config = {
+  dataPlaneUrl: <DATA_PLANE_URL> ,
+  trackAppLifecycleEvents: true,
+  withFactories: [moengage],
+}
+rudderClient.setup( <WRITE_KEY> , config)
+```
+</span>
+</li>
+<li>Add the following under the dependencies section of the <code class="inline-code">app/build.gradle</code> (Module: Project) file in the Android folder of your React Native project:
 <span>
 
 ```groovy
@@ -218,7 +233,7 @@ implementation 'com.google.code.gson:gson:2.8.6'
 ```
 </span>
 </li>
-<li>Open your <code class="inline-code">app/build.gradle</code> (Module: Project) file and add the following:
+<li>In the <code class="inline-code">app/build.gradle</code> (Module: Project) file, add the following:
 <span>
 
 ```groovy
@@ -237,7 +252,7 @@ apply plugin: 'com.google.gms.google-services'
 ```
 </span>
 </li>
- <li>Open your <code class="inline-code">build.gradle</code> (Module: Project) file and add the following in <code class="inline-code">buildscript</code> dependencies:
+ <li>Add the following in <code class="inline-code">buildscript</code> dependencies in <code class="inline-code">build.gradle</code> (Module: Project) file:
 <span>
 
 ```groovy
@@ -257,26 +272,9 @@ buildscript {
 // MoEngage SDK initialisation: Replace "xxxxxxx" with your APP ID.
 MoEngage moEngage = new MoEngage
   .Builder(MainActivity.this.getApplication(), "xxxxxxx")
-  .setNotificationSmallIcon(R.drawable.ic_launcher_background)
-  .setNotificationLargeIcon(R.drawable.ic_launcher_background)
   .enableLogs(LogLevel.VERBOSE)
   .build();
 MoEngage.initialise(moEngage);
-```
-</span>
-</li>
-<li>Import the above module and add it to your SDK initialization, as shown:
-<span>
-
-```javascript
-import rudderClient from "@rudderstack/rudder-sdk-react-native"
-import moengage from "@rudderstack/rudder-integration-moengage-react-native"
-const config = {
-  dataPlaneUrl: <DATA_PLANE_URL> ,
-  trackAppLifecycleEvents: true,
-  withFactories: [moengage],
-}
-rudderClient.setup( <WRITE_KEY> , config)
 ```
 </span>
 </li>
@@ -684,6 +682,7 @@ For more details please follow the [guidelines from MoEngage](https://docs.moeng
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
     <Tab>Web</Tab>
+    <Tab>React Native</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -806,9 +805,14 @@ For more details please follow the <a href="https://docs.moengage.com/docs/setti
 </li>
 </ul>
       </TabPanel>
+      <TabPanel>
+        <ul>
+       <li>Open <code class="inline-code">android</code> folder of your React Native app and do follow all the steps mentioned in <code class="inline-code">Android</code> tab of <a href="#configuring-push-notifications">Configuring Push Notifications</a></li>
+<li>Open <code class="inline-code">ios</code> folder of your React Native app and do follow all the steps mentioned in <code class="inline-code">iOS</code> tab of <a href="#configuring-push-notifications">Configuring Push Notifications</a></li>
+  </ul>
+      </TabPanel>
     </TabPanels>
 </Tabs>
-
 
 ## Debugging in Web SDK
 
