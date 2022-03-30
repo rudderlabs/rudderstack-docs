@@ -40,7 +40,7 @@ To successfully configure Airship as a destination, you will need to configure t
 
 <img src="../../assets/event-stream-destinations/airship-connection-settings.png" alt="Airship connection settings" />
 
-- **API Key**: Enter your Airship token here. This is a mandatory field required by RudderStack to communicate with your Airship project.
+- **API Key**: Enter your Airship token required by RudderStack to communicate with your Airship project.
 
 <div class="infoBlock">
 
@@ -85,29 +85,46 @@ rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
 
 In the above code snippet, RudderStack sends the Boolean values to Airship as [tags](https://docs.airship.com/api/ua/#operation-api-named_users-tags-post), whereas the non-Boolean values are sent as [attributes](https://docs.airship.com/api/ua/#operation-api-named_users-named_user_id-attributes-post).
 
-<div class="warningBlock">
-
-To successfully assign tags to Airship using the RudderStack <code class="inline-code">identify</code> events, you must create a tag group with the group key set to <code class="inline-code">rudderstack_integration</code> in Airship. For more information on creating a tag group in Airship, refer to the <a href="#faq">FAQ</a> section below.
-</div>
-
 <div class="infoBlock">
 
 RudderStack maps some reserved traits to the predefined Airship attributes. Refer to the <a href="#traits-mapping">Traits mapping</a> section below for more information.
 </div>
 
-## Track
+### Tags
 
-The `track` call lets you record the user's actions along with any associated properties. Each user action is called an event. 
+To successfully assign tags to Airship using the RudderStack `identify` events, you must create a tag group with the group key set to `rudderstack_integration` in Airship. 
 
 <div class="infoBlock">
 
-For information on the <code class="inline-code">track</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
+For more information on creating a tag group in Airship, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+This integration supports `identify` traits of type Boolean only. Airship adds tags for the traits that are set to `true` and removes tags for the traits set to `false`.
+
+### Attributes
+
+For `identify` traits that are not mapped to any predefined or custom-defined Airship attributes, you must create and enable those attributes in the Airship dashboard. 
+
+<div class="infoBlock">
+
+Refer to the <a href="#faq">FAQ</a> section below for more information on creating and enabling attributes in Airship.
+</div>
+
+## Track
+
+The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the user's actions along with any associated properties. Each user action is called an event.
+
+RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
+
+<div class="warningBlock">
+
+The event requests are rate limited to 500 events/sec per app.
 </div>
 
 A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track("product clicked", {
+rudderanalytics.track("Product Clicked", {
   description: "Shoes viewed",
   brand: "Sneakers",
   colors: ["red", "blue"],
@@ -129,17 +146,9 @@ rudderanalytics.track("product clicked", {
 }
 ```
 
-<div class="warningBlock">
+The event name sent to Airship must not contain any upper case characters. Otherwise, it is rejected with a `400` status code. RudderStack handles this by converting any upper case characters to lower case and replacing any spaces with an underscore(`_`). 
 
-The event name must not contain any upper case characters. Otherwise, the event will be rejected with a <code class="inline-code">400</code> status code.
-</div>
-
-RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
-
-<div class="warningBlock">
-
-The event requests are rate limited to 500 events/sec per app.
-</div>
+In the snippet above, the event name `Product Clicked` is automatically converted to `product_clicked` before sending to Airship.
 
 <div class="infoBlock">
 
@@ -148,12 +157,7 @@ RudderStack also maps some event properties to the Airship properties before sen
 
 ## Group
 
-The `group` call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, e.g., company name, number of employees, etc.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">group</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
-</div>
+The [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, e.g., company name, number of employees, etc.
 
 A sample `group` call is shown below:
 
@@ -169,9 +173,16 @@ rudderanalytics.group("group01", {
 
 In the above code snippet, RudderStack sends the Boolean values to Airship as [tags](https://docs.airship.com/api/ua/#operation-api-named_users-tags-post), whereas the non-Boolean values are sent as [attributes](https://docs.airship.com/api/ua/#operation-api-named_users-named_user_id-attributes-post).
 
+This integration supports `group` traits of type Boolean only. Airship adds tags for the traits that are set to `true` and removes tags for the traits set to `false`.
+
 <div class="warningBlock">
 
-To successfully assign tags to Airship using the RudderStack <code class="inline-code">group</code> events, you must create a tag group with the group key set to <code class="inline-code">rudderstack_integration_group</code> in Airship. For more information on creating a tag group in Airship, refer to the <a href="#faq">FAQ</a> section below.
+To successfully assign tags to Airship using the RudderStack <code class="inline-code">group</code> events, you must create a tag group with the group key set to <code class="inline-code">rudderstack_integration_group</code> in Airship. Similarly, you need to create the relevant attribute identifiers in Airship to set the attributes on the named users.
+</div>
+
+<div class="infoBlock">
+
+For more information on creating a tag group or attributes in Airship, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 ## Supported mappings
@@ -243,6 +254,18 @@ To create a tag group in Airship, follow these steps:
     - **Group Key**: Assign a unique ID for the tag group in this field. For example, to assign tags using the RudderStack `identify` events, you can set this to `rudderstack-integration`. For assigning tags using the `group` events, set this to `rudderstack-integration-group`.
 
 For more information, refer to the [Airship documentation](https://docs.airship.com/guides/messaging/user-guide/audience/segmentation/tags/#creating-custom-tag-groups).
+
+### How do I create and enable attributes in Airship?
+
+For `identify` traits that are not mapped to any predefined or custom-defined Airship attributes, you must create and enable those attributes in the Airship dashboard. To do so, follow these steps:
+
+1. Go to your Airship dashboard.
+2. Navigate to **Audience** > **Attributes**.
+3. Click on **Create Attribute**.
+4. Enter the **Attribute ID**, **Name**, and select the attribute **Type**.
+5. Finally, click on **Add**.
+
+<img src="../../assets/event-stream-destinations/new-attribute-airship.png" alt="Airship project app key and secret" />
 
 ## Contact us
 
