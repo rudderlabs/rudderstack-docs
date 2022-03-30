@@ -243,15 +243,6 @@ repositories {
 ```
 </span>
 </li>
-<li>Also, add the below plugin to the top of the <code class="inline-code">android/app/build.gradle</code> (Module: app) :
-<span>
-
-```groovy
-// For Push Notification
-apply plugin: 'com.google.gms.google-services'
-```
-</span>
-</li>
  <li>Add the following in <code class="inline-code">buildscript</code> dependencies in <code class="inline-code">android/build.gradle</code> (Module: Project) file:
 <span>
 
@@ -262,6 +253,15 @@ buildscript {
     classpath 'com.google.gms:google-services:4.3.4'
   }
 }
+```
+</span>
+</li>
+ <li>Also, add the below plugin to the top of the <code class="inline-code">android/app/build.gradle</code> (Module: app) :
+<span>
+
+```groovy
+// For Push Notification
+apply plugin: 'com.google.gms.google-services'
 ```
 </span>
 </li>
