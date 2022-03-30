@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Blue
 
 # Blueshift
 
-[Blueshift's](https://blueshift.com/) SmartHub customer data platform helps consumer brands intelligently scale customer engagement on every channel. It helps to increase the customer engagement frequency with your brand and brings it closer to the customer. 
+[Blueshift's](https://blueshift.com/) SmartHub customer data platform helps consumer brands to intelligently scale customer engagement on every channel. It enables marketers to unify their siloed data and use real-time customer insights and interactions to shape customer experiences.
 
 RudderStack supports Blueshift as a destination to which you can seamlessly send your event data.
 
@@ -44,19 +44,19 @@ To successfully configure Blueshift as a destination, you will need to configure
 
 <img src="../../assets/event-stream-destinations/blueshift-connection-settings.png" alt="Blueshift connection settings"/>
 
-- **Event API Key**: Your Event API Key generated against your Blueshift account. It can be found in your Blueshift dashboard in the **Account Settings** section under **API Keys**.
+- **Event API Key**: The Event API Key generated against your Blueshift account. It can be found in your Blueshift dashboard in the **Account Settings** section under **API Keys**.
 
 <div class="infoBlock">
   
 For more information on obtaining the Event API Key, refer to the <a href="#faq">FAQ</a>.
 </div>
 
-- **Users API Key**: Your Users API Key generated for your Blueshift account in the **Account Settings** section under **API Keys**.
-- **Blueshift EU data center**: Enable this option to send data to the EU servers. When enabled, the base URL for EU region turns out to be: `https://api.eu.getblueshift.com`
+- **Users API Key**: The Users API Key generated for your Blueshift account in the **Account Settings** section under **API Keys**.
+- **Blueshift EU data center**: Enable this option to send data to the EU servers. When enabled, the base URL for EU region converts to: `https://api.eu.getblueshift.com`
 
 ## Identify
 
-The `identify` call lets you create new or update the existing customers. It also lets you record the traits about them like their name, email address, etc. It is recommended to limit the `identify` calls to 50 per second.
+The `identify` call lets you create new or update existing customers. It also lets you record the traits about them like their name, email address, etc. It is recommended to limit the `identify` calls to 50 per second.
 
 A sample `identify` call is shown below:
 
@@ -71,21 +71,21 @@ rudderanalytics.identify("sampleusrRudder8", {
 
 ### Supported mappings
 
-The following table details the mapping of the fields specified in the RudderStack and Blueshift, along with the relevant guidelines:
+The following table details the mapping between RudderStack and Blueshift fields:
 
-| RudderStack field | Blueshift field | Type | Presence |
-| :-----| :--------| :------|:------|
-| `email` | `email` | String |Required |
-| `userId`  | `customer_id` | String | Required |
-| `event` | `event` | String |Optional |  
-| `phone` | `phone_number` | String |  Optional |
-| `firstName` | `firstname` | String | Optional |
-| `lastName` | `lastname` | String | Optional |
-| `traits.gender`/`context.traits.gender`|`gender`| String | Optional |
+| RudderStack field | Blueshift field | Presence |
+| :-----| :--------| :------|
+| `email` | `email` | Required |
+| `userId`  | `customer_id` | Required |
+| `event` | `event` | Optional |  
+| `phone` | `phone_number`  |  Optional |
+| `firstName` | `firstname`  | Optional |
+| `lastName` | `lastname` | Optional |
+| `traits.gender`/`context.traits.gender`|`gender`| Optional |
 
 <div class="infoBlock">
 
-BLueshift supports receiving custom attributes about your site's customers. For more information on these attributes, refer to the <a href ="https://developer.blueshift.com/docs/customer-related-data#attributes">Blueshift Custom Attributes</a>
+Blueshift supports custom attributes from your site's customers. For more information on these attributes, refer to the <a href ="https://developer.blueshift.com/docs/customer-related-data#attributes">Blueshift Custom Attributes</a>.
 </div>
 
 
@@ -109,14 +109,9 @@ rudderanalytics.track(
 
 ### Supported mappings
 
-RudderStack maps the following properties to the Blueshift properties before sending them over Blueshift's HTTP API.
+RudderStack maps the following events to the Blueshift events in the `track` call before sending them over Blueshift's HTTP API.
 
-<div class="infoBlock">
-
-RudderStack maps these fields only in the <code class="inline-code">track</code> requests.
-</div>
-
-| RudderStack property         | Blueshift property      | 
+| RudderStack event         | Blueshift event      | 
 | :--------------------------- | :---------------------  |
 | `Product Viewed`             |  `view`                |         
 | `Product Added`               | `add_to_cart`               |             
@@ -131,10 +126,10 @@ RudderStack maps these fields only in the <code class="inline-code">track</code>
 
 <div class="infoBlock">
 
-BLueshift supports custom events to track any custom user action on your site or app. For more information, refer to the <a href ="https://developer.blueshift.com/docs/your-sites-event-data#custom-event">Blueshift Custom Event</a>.
+Blueshift supports custom events to track any custom user action on your site or app. For more information, refer to the <a href ="https://developer.blueshift.com/docs/your-sites-event-data#custom-event">Blueshift Custom Event</a>.
 </div>
 
-The following table details the mapping of the fields specified in RudderStack and Blueshift:
+The following table details the mapping between RudderStack and Blueshift fields:
 
 | RudderStack field | Blueshift field | Presence |
 | :-----| :--------| :-------------|
@@ -155,21 +150,19 @@ The following table details the mapping of the fields specified in RudderStack a
 | `messageId` |  `event_uuid`| Optional|
 | `properties.cookie` | `cookie` | Optional|
 
-Ensure that you specify values for at least one of these fields, namely, `customer_id`, `event`, `device_id`, `cookie` or `email`. Also, specify the value of the `cookie` property for anonymous users.
-
 <div class="infoBlock">
-
-BLueshift supports receiving custom attributes about your site's customers. For more information on these attributes, refer to the <a href ="https://developer.blueshift.com/docs/customer-related-data#attributes">Blueshift Custom Attributes</a>
+  
+The <code class="inline-code">event</code> name is a required field and should <strong>not</strong> contain period (.), numeric value, or more than 64 characters. A space is automatically converted  to underscore (_).
 </div>
 
 <div class="infoBlock">
-  
-The <code class="inline-code">event</code> name should <strong>not</strong> contain period (.), numeric value, or more than 64 characters. The spaces are automatically converted  to underscore (_).
+
+Blueshift supports receiving custom attributes about your site's customers. For more information on these attributes, refer to the <a href ="https://developer.blueshift.com/docs/customer-related-data#attributes">Blueshift Custom Attributes</a>.
 </div>
 
 ## Group
 
-You can use the `group` call to assign users to a list. To create an empty user list, use the [userList](https://developer.blueshift.com/reference/post_api-v1-custom-user-lists-create) API of Blueshift.
+You can use the `group` call to assign users to a list. To create an empty user list, you can use the [userList](https://developer.blueshift.com/reference/post_api-v1-custom-user-lists-create) API of Blueshift.
 
 A sample `group` call is shown below:
 
@@ -184,9 +177,9 @@ rudderanalytics.group("12345", {
 });
 ```
 
-## Supported mappings
+### Supported mappings
 
-The following table details the mapping of the fields specified in RudderStack and Blueshift:
+The following table details the mapping between RudderStack and Blueshift fields:
 
 | RudderStack field | Blueshift field | Presence |
 | :-----| :--------| :-------------|
