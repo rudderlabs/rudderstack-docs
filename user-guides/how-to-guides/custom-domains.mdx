@@ -40,54 +40,100 @@ For each endpoint, you will need to create a CDN distribution and add a CNAME re
 
 ## Setup for serving the SDK
 
-To serve the JavaScript SDK, start by creating a new distribution. The following screenshots highlight the required distribution settings:
+To serve the JavaScript SDK, start by creating a new distribution. The following sections highlight the required distribution settings.
+
+### Origin
 
 <img src="../../assets/user-guides/custom-domains/custom-domains-1.png" alt="Custom domains distribution settings" />
-<img src="../../assets/user-guides/custom-domains/custom-domains-2.png" alt="Custom domains distribution settings" />
-<img src="../../assets/user-guides/custom-domains/custom-domains-3.png" alt="Custom domains distribution settings" />
-
-Some of the important settings are listed below:
 
 | Field                  | Setting              |
 | :--------------------- | :------------------- |
 | Origin domain     | `cdn.rudderlabs.com` |
 | Protocol | HTTPS Only           |
+| HTTPS port | 443 |
+| Minimum origin SSL protocol | TLSv1 |
+| Name | `cdn.rudderlabs.com` |
+| Enable Origin Shield | No |
 
 ### Default cache behavior settings
 
+<img src="../../assets/user-guides/custom-domains/custom-domains-2.png" alt="Custom domains distribution settings" />
+
 | Field     | Setting                 |
 | :---------- | :---------------------- |
+| Compress objects automatically | Yes |
 | Viewer protocol policy              | Redirect HTTP to HTTPS                                     |
 | Allowed HTTP methods                | `GET`, `HEAD`, `OPTIONS`, `PUT`, `POST`, `PATCH`, `DELETE` |
-| Cache and origin request settings   | Use legacy cache settings                                  |
-| Forward Cookies                     | All                                                        |
-| Query String Forwarding and Caching | Forward all, cache based on all                            |
+| Restrict viewer access | No |
+
+### Cache key and origin requests
+
+| Field     | Setting                 |
+| :---------- | :---------------------- |
+| Cache and origin request settings   | Cache policy and origin request policy    |
+| Cache policy | CachingOptimized |
+
+<div class="infoBlock">
+
+Click on <strong>Create policy</strong> and refer to the settings in the <a href="#create-cache-policy">Create policy</a> section below.
+</div>.
 
 ### Additional distribution settings
 
+<img src="../../assets/user-guides/custom-domains/custom-domains-3.png" alt="Custom domains distribution settings" />
+
 | Field       | Setting                              |
 | :------- | :------------------- |
-| Alternate domain name \(CNAME\) | `<subdomain.yourdomain.com>`         |
-| SSL Certificate                   | Custom SSL Certificate \(more info\) |
-| Custom SSL Client Support         | Clients that support SNI             |
+| Price class | Use all edge locations(best performance) |
+| Alternate domain name(CNAME) | `<subdomain.yourdomain.com>`         |
+| SSL Certificate                   | Add your custom SSL Certificate. Refer to the [Using custom SSL certificates](#using-custom-ssl-certificates) section below for more information. |
+| Supported HTTP versions | HTTP/2 |
+| Standard logging | Off |
+| IPv6 | On |
 
-Finally, click on **Create distribution** and wait for CloudFront to be deployed.
+Finally, click on **Create distribution** and wait for CloudFront to be deployed, as shown:
 
-<img src="../../assets/screen-shot-2021-02-16-at-3.00.43-pm.png" />
+<img src="../../assets/user-guides/custom-domains/custom-domains-5.png" alt="CloudFront deployment" />
 
-### Add CNAME Record to DNS
+## Create cache policy settings
 
-Once your distribution is deployed, you’ll need to create a CNAME record on your domain for the subdomain you wish to use and the distribution url.
+<img src="../../assets/user-guides/custom-domains/custom-domains-4.png" alt="Custom domains create policy settings" />
 
-| **Name**                                                                                                                                                                                                                    | Value                                                                           |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| Subdomain you wish to use \(which was used in the creation of the distribution\). This will vary based on your DNS provider but will typically be just the subdomain. Example: for `cdn.yourdomain.com` you would use `cdn` | The CDN URL for the distribution created. Example: `d3jlkfchu4u.cloudfront.net` |
+| Field     | Setting                 |
+| :---------- | :---------------------- |
+| Name   | <YOUR_CACHE_POLICY_NAME>          |
+| Description | <CACHE_POLICY_DESCRIPTION> |
 
-<img src="../../assets/screen-shot-2021-02-19-at-12.31.51-pm.png" />
+### TTL settings
 
-### Serving the SDK
+| Field       | Setting                              |
+| :------- | :------------------- |
+| Minimum TTL | 1 |
+| Maxmimum TTL | 31536000 |
+| Default TTL | 86400 |
 
-Once setup and DNS propagation has completed, you’ll be able to change the URL for the SDK.
+### Cache key settings
+
+| Field       | Setting                     |
+| :------- | :------------------- |
+| Headers | Include the following headers |
+| Add header | Select `Authorization` from the dropdown list. |
+| Query strings | None |
+| Cookies | None |
+
+## Adding CNAME Record to DNS
+
+Once your distribution is deployed, you will need to create a CNAME record in your domain for the subdomain you wish to use, along with the distribution URL.
+
+| Name       | Value                        |
+| :--------------- | :--------------------- |
+| Subdomain you wish to use \(used in the creation of the distribution\). This will vary based on your DNS provider but will typically be just the subdomain. For example: for `cdn.yourdomain.com` you would use `cdn`. | The CDN URL for the created distribution created. Example: `d3jlkfchu4u.cloudfront.net` |
+
+<img src="../../assets/user-guides/custom-domains/custom-domains-6.png" alt="CDN distribution URL" />
+
+## Serving the SDK
+
+Once setup and DNS propagation is completed, you will be able to change the SDK URL, as shown:
 
 Before:
 
@@ -106,32 +152,32 @@ After:
 If you are using an older version of the JavaScript SDK (v1), refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</a> to migrate to v1.1.
 </div>
 
-## Setup for Sending Events
+## Setup for sending events
 
-Normally all events are sent to your data plane url `<your_data_plane_url>`. To have events routed through your own domain, you’ll need to setup a proxy to that and then use your own url for `DATA_PLANE_URL` when initializing the SDK.
+Normally, all the tracked events are sent to RudderStack via your data plane URL. To have events routed through your own domain, you will need to setup a proxy to that and then use your own URL as the data plane URL when initializing the SDK.
 
-### Settings
+### Required settings
 
-The settings for sending events will be the same as the settings for serving the JavaScript SDK except for the following:
+The settings for sending the events will be the same as the settings for serving the JavaScript SDK, except for the following:
 
 | Field                             | Setting                      |
 | :-------------------------------- | :--------------------------- |
-| Origin Domain Name                | `<your_data_plane_url>`      |
+| Origin Domain Name                | `<DATA_PLANE_URL>`      |
 | Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
 
-### **Add CNAME Record to DNS**
+### Adding CNAME record to DNS
 
-The settings for the CNAME record will be the same as the settings for serving the JavaScript SDK. You'll need to use the newly created distribution domain and the subdomain you set for it.
+The settings for the CNAME record will be the same as the settings for serving the JavaScript SDK. You will need to use the newly created distribution domain and the subdomain you set for it.
 
-### **Sending Events**
+### Sending events
 
-Once setup and DNS propagation has completed, you’ll want to use the newly created url as your `DATA_PLANE_URL` when initiating the sdk.
+Once the setup and DNS propagation is completed, you can use the newly created URL as the data plane URL when initializing the SDK, as shown:
 
 Before:
 
 ```javascript
-rudderanalytics.load(
-  "1iYTYFYkfteuXxTj3eEt5CmeLvO",
+rudderanalytics.load( 
+  <WRITE_KEY> ,
   "https://hosted.rudderlabs.com"
 )
 ```
@@ -140,20 +186,28 @@ After:
 
 ```javascript
 rudderanalytics.load(
-  "1iYTYFYkfteuXxTj3eEt5CmeLvO",
+  <WRITE_KEY>,
   "https://subdomain.yourdomain.com"
 )
 ```
 
-You should be able to confirm in the network tab of your browser console that events going to `/track`, `/identify` and `/page` are being routed through your own domain and not the rudderstack.com domain.
+You should be able to confirm that the events are routed through your own domain and not the `rudderstack.com` domain in the network tab of your browser console.
 
-## **Setup for fetching sourceConfig**
+<div class="infoBlock">
 
-When the javascript SDK is loaded, it uses the `writeKey` for your selected source to fetch the Source Configuration from RudderStack. This determines which native sdks may be needed and which destinations are used.
+Refer to this <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/#how-to-check-if-the-data-is-being-transmitted-to-the-desired-destinations">JavaScript SDK FAQ</a> for more information on verifying the flow of events.
+</div>
 
-The call to fetch the sourceConfig is sent to `api.rudderstack.com` with the `writeKey` for your source used an authorization header. For this reason, this distribution will be slightly different as we will need to explicitly whitelist the Authorization header to make sure it is sent along with each request.
+## Setup for fetching source configuration
 
-### **Settings**
+When the JavaScript SDK is loaded, it uses the source write key to fetch the required configuration from RudderStack. This determines which native SDKs may be needed and which destinations are used.
+
+<div class="infoBlock">
+
+The call to fetch the source configuration is sent to <code class="inline-code">api.rudderstack.com</code> with the source <code class="inline-code">WRITE_KEY</code> used as an authorization header. For this reason, this distribution will be slightly different as you will need to explicitly whitelist the Authorization header to make sure it is sent along with each request.
+</div>
+
+### Required settings
 
 The settings for sending events will be the same as the settings for serving the JavaScript SDK except for the following:
 
@@ -162,31 +216,24 @@ The settings for sending events will be the same as the settings for serving the
 | Origin Domain Name                | `api.rudderlabs.com`         |
 | Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
 
-We also need to add a Whitelisting for the Authorization headers in **Default Cache Behavior Settings**.
+You will also need to whitelist the **Authorization** header in **Cache key settings** by following the steps below:
 
-As with serving the JavaScript SDK and Sending events, you'll choose Use legacy cache settings
+1. Under **Headers**, choose **Include the following headers** from the dropdown.
+2. In the **Add header** field, select **Authorization** from the list of options.
 
-<img src="../../assets/screen-shot-2021-02-16-at-3.04.25-pm.png" />
+<img src="../../assets/user-guides/custom-domains/custom-domains-7.png" alt="Whitelist authorization header" />
 
-Under Cache Based on Selected Request Headers, you'll choose Whitelist.
+### Adding CNAME record to DNS
 
-<img src="../../assets/screen-shot-2021-02-16-at-3.04.55-pm.png" />
+The settings for the CNAME record will be the same as the settings for serving the JavaScript SDK. You will need to use the newly created distribution domain and the subdomain you set for it.
 
-Choose Authorization and Add &gt;&gt; to whitelist the Authorization Header
+### Fetching the source configuration
 
-<img src="../../assets/screen-shot-2021-02-16-at-3.05.09-pm.png" />
-
-### Add CNAME Record to DNS
-
-The settings for the CNAME record will be the same as the settings for serving the JavaScript SDK. You'll need to use the newly created distribution domain and the subdomain you set for it.
-
-### Fetching the sourceConfig
-
-To use a custom URL to fetch the sourceConfig, we need to add it as an option when loading the JavaScript SDK.
+To use a custom URL to fetch the source configuration, add it as an option when loading the JavaScript SDK, as shown:
 
 ```javascript
 rudderanalytics.load(
-  "1iYTYFYkfteuXxTj3eEt5CmeLvO",
+  <SOURCE_WRITE_KEY>,
   "https://hosted.rudderlabs.com",
   {
     configUrl: "https://subdomain.yourdomain.com",
@@ -194,17 +241,23 @@ rudderanalytics.load(
 )
 ```
 
-## Custom SSL certificates
+## Using custom SSL certificates
 
-To use your own domain, you'll need to Request or Import a certificate with your CDN provider. The following are the steps to use AWS Certificate Manager with CloudFront:
+To use your own domain, you can request or import a SSL certificate with your CDN provider. Note that this is an optional setting.
 
-When choosing your SSL certificate on CloudFront, you'll be given the option to do so:
+To use the AWS Certificate Manager with CloudFront, choose the relevant ACM/IAM certificate in the **Custom SSL certificate** field, as shown:
 
-<img src="../../assets/screen-shot-2021-02-19-at-3.56.01-pm.png" />
+<img src="../../assets/user-guides/custom-domains/custom-domains-8.png" alt="Custom SSL certificate" />
 
-From there you'll choose your subdomain or use a wildcard domain \(`*.yourdomain.com`\) to be able to setup multiple subdomains.
+<div class="infoBlock">
 
-ACM will guide you through verifying by email or DNS TXT records and you'll be able to choose your own domain for SSL certificates once verified.
+You can choose your subdomain or use a wildcard domain <code class="inline-code">*.yourdomain.com</code> to set up multiple subdomains.
+</div>
+
+<div class="successBlock">
+
+The AWS Certificate Manager will guide you through the verification by email or DNS TXT records. You will be able to choose your own domain for SSL certificates once verified.
+</div>
 
 ## Contact us
 
