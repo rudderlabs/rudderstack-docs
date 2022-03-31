@@ -210,12 +210,13 @@ The following table details the mapping between RudderStack and Blueshift fields
 | RudderStack field | Blueshift field | Presence |
 | :-----| :--------| :-------------|
 | `groupId` | `list_id` | Required |
-| `customer_id` | `identifier_key` | Required |
 | `userId` | `identifier_value` | Required |
 | `name`  | `name` | Optional|
 | `traits.description`/`context.traits.description` | `description` | Optional|
 | `traits.isSeedList`/`context.traits.isSeedList` | `is_seed_list` | Optional|
 | `traits.source`/`context.traits.source` | `source` | Optional|
+
+Rudderstack automatically maps the <code class="inline-code">identifier_key</code> to <code class="inline-code">customer_id</code> when <code class="inline-code">userId</code> is provided in the <code class="inline-code">group</code> call.
 
 <div class="infoBlock">
   
