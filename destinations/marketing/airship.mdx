@@ -132,13 +132,7 @@ rudderanalytics.track("Product Clicked", {
       price: "$99.95",
     },
   ],
-  name: "Alex Keener",
-  userLocation: {
-    state: "Louisiana",
-    zip: "90009",
-  },
 });
-}
 ```
 
 The event name sent to Airship must not contain any upper case characters. Otherwise, it is rejected with a `400` status code. RudderStack handles this by converting any upper case characters to lower case and replacing any spaces with an underscore(`_`). 
@@ -158,6 +152,7 @@ A sample `group` call is shown below:
 
 ```javascript
 rudderanalytics.group("group01", {
+  "userId": "1hKOmRA4el9Zt1WSfVJIVo4GRlm"
   "firstName": true,
   "lastName": true,
   "tags3": true,
