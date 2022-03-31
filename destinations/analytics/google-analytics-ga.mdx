@@ -484,6 +484,34 @@ The UTM parameters need to be passed manually to the server.
 
 UTM parameters are passed in the context object in `context.campaign`. `campaign.name` and `campaign.mediums` must be sent together to show up in the report. Also, `campaign.term` and `campaign.content` are optional.
 
+## Measurement protocol parameters
+
+You can also send data to Google Analytics using the measurement protocol. It provides parameters which are automatically collected by the device-mode Google Universal Analytics tracker. You can collect the value of the parameter as a RudderStack trait or property when sending server-side events to Google Universal Analytics.
+
+RudderStack supports the following measurement protocol parameters:
+
+| Parameters       | Mapping value    |
+| :------------- | :--------- |
+| [`sr`](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#sr) | `context.screen.width x context.screen.height` |
+| [`vp`](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#vp)   | `context.screen.innerWidth x context.screen.innerHeight` |
+| [`ci`](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#ci)   | `context.campaign.campaignId`    |
+| [`gclid`](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#gclid)   | from externalID  `googleAdsId`   |
+| [`dclid`](https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#dclid)    | from externalID `googleDisplayAdsId` |
+
+The sample code below shows how to send `gclid` and `dclid` using `externalID`:
+
+```javascript
+"externalId": [{
+    "type": "googleAdsId",
+    "id": "gclid_value"
+  },
+  {
+    "type": "googleDisplayAdsId",
+    "id": "dclid_value"
+  }
+]
+```
+
 ## Additional Features
 
 There are some other important features associated with Google Analytics integration, as described in the sections below:
