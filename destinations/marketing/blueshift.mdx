@@ -81,7 +81,7 @@ The following table details the mapping between RudderStack and Blueshift fields
 | `phone` | `phone_number`  |  Optional |
 | `firstName` | `firstname`  | Optional |
 | `lastName` | `lastname` | Optional |
-| `traits.gender`/`context.traits.gender`|`gender`| Optional |
+| `gender`|`gender`| Optional |
 
 <div class="infoBlock">
 
@@ -99,8 +99,35 @@ A sample `track` call is shown below:
 rudderanalytics.track(
   "Product Viewed", {
     cookie: "1234abcd-efghijkj-1234kfjadslk-34iu123",
+    checkout_id: "C324532",
+    order_id: "T1230",
+    value: 15.98,
+    revenue: 16.98,
+    shipping: 3.0,
+    coupon: "FY21",
+    currency: "USD",
+    products: [{
+      product_id: "product-mixedfruit-jam",
+      sku: "sku-1",
+      category: "Food",
+      name: "Food/Drink",
+      brand: "Sample",
+      variant: "None",
+      price: 10.0,
+      quantity: 2,
+      currency: "USD",
+      position: 1,
+      value: 6.0,
+      typeOfProduct: "Food",
+      url: "https://www.example.com/product/mixedfruit-jam",
+      image_url: "https://www.example.com/product/mixedfruit-jam.jpg",
+    }, ],
   }, {
     context: {
+      device: {
+        id: "7e32188a4dab669f",
+        manufacturer: "Google",
+      },
       ip: "14.5.67.21",
     },
   }
@@ -121,8 +148,7 @@ RudderStack maps the following events to the Blueshift events in the `track` cal
 | `Unsubscribe Interest`            | `unsubscribe_interest `            |          
 | `Checkout Step Viewed`               | `checkout `               |             
 | ` Product Removed`              | `remove_from_cart`              |            
-| `Identify`                 | `identify`          |               
-| `context.campaign.name`      | `campaign_id`          |    
+| `Identify`                 | `identify`          |                
 
 <div class="infoBlock">
 
