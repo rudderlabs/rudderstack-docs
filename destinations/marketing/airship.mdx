@@ -40,15 +40,15 @@ To successfully configure Airship as a destination, you will need to configure t
 
 <img src="../../assets/event-stream-destinations/airship-connection-settings.png" alt="Airship connection settings" />
 
-- **API Key**: Enter your Airship token required by RudderStack to communicate with your Airship project.
+- **API Key**: Enter your Airship token which is required by RudderStack to communicate with your Airship project.
 
 <div class="infoBlock">
 
 For detailed steps on obtaining the API key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **App Key**: Enter your Airship project's app key by going to **Settings** > **Project Details**.
-- **App Secret**: Enter your Airship project's app secret by going to **Settings** > **Project Details**.
+- **App Key**: Enter your Airship project's app key by going to **Settings** > **Project Details** in the Airship dashboard.
+- **App Secret**: Enter your Airship project's app secret by going to **Settings** > **Project Details** in the Airship dashboard.
 
 <div class="infoBlock">
 
@@ -59,7 +59,7 @@ For detailed steps on obtaining the Airship app key and secret, refer to the <a 
 
 <div class="infoBlock">
 
-If you're unsure which data center you are on, reach out to <a href="mailto:%20docs@rudderstack.com" target="_blank">Airship support</a>
+If you're unsure which data center you are on, reach out to <a href="mailto:%20docs@rudderstack.com" target="_blank">Airship support</a>.
 </div>
 
 ## Identify
@@ -110,7 +110,7 @@ Refer to the <a href="#faq">FAQ</a> section below for more information on creati
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the user's actions along with any associated properties. Each user action is called an event.
+The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
 
 RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
 
@@ -151,7 +151,7 @@ A sample `group` call is shown below:
 ```javascript
 rudderanalytics.group(
   {
-  userId: "1hKOmRA4el9Zt1WSfVJIVo4GRlm"
+  userId: "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
   likes_movies: true,
   age: 13,
   }
@@ -226,7 +226,7 @@ To obtain your Airship project's app key and secret, follow these steps:
 1. In your Airship dashboard, go to **Settings**.
 2. In the **Project configuration** window, look for the **Project Details** pane on the right side.
 
-You will find your project's app key listed here. To obtain the app secret, click on on **Click to reveal**, as shown:
+You will find your project's app key listed here. To obtain the app secret, click on **Click to reveal**, as shown:
 
 <img src="../../assets/event-stream-destinations/airship-app-key-secret.png" alt="Airship project app key and secret" />
 
