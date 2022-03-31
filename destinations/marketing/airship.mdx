@@ -75,11 +75,9 @@ A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-  "firstName": true,
-  "lastName": true,
-  "tags3": true,
+  "likes_movies": true,
   "favorite_color": "purple",
-  "attribute": "value"
+  "age": 13
 });
 ```
 
@@ -151,14 +149,13 @@ The [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification
 A sample `group` call is shown below:
 
 ```javascript
-rudderanalytics.group("group01", {
+rudderanalytics.group(
+  {
   "userId": "1hKOmRA4el9Zt1WSfVJIVo4GRlm"
-  "firstName": true,
-  "lastName": true,
-  "tags3": true,
-  "favorite_color": "purple",
-  "attribute": "value"
-});
+  "likes_movies": true,
+  age: 13,
+  }
+);
 ```
 
 In the above code snippet, RudderStack sends the Boolean values to Airship as [tags](https://docs.airship.com/api/ua/#operation-api-named_users-tags-post), whereas the non-Boolean values are sent as [attributes](https://docs.airship.com/api/ua/#operation-api-named_users-named_user_id-attributes-post).
