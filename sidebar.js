@@ -1095,6 +1095,14 @@ export const jsonData = [
                ]
             },
             {
+               "key":"blueshift",
+               "title":"Blueshift",
+               "link":"/destinations/marketing/blueshift/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"drip",
                "title":"Drip",
                "link":"/destinations/marketing/drip/",

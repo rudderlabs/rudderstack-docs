@@ -833,6 +833,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"blueshift",
+   "title":"Blueshift",
+   "link":"/destinations/marketing/blueshift/",
+   "content":[]
+},
+{
    "key":"marketo-lead-import",
    "title":"Marketo Lead Import",
    "link":"/destinations/marketing/marketo-lead-import/",
