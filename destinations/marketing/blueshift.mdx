@@ -126,32 +126,29 @@ rudderanalytics.track(
       url: "https://www.example.com/product/mixedfruit-jam",
       image_url: "https://www.example.com/product/mixedfruit-jam.jpg",
     }, ],
-  }, {
-    context: {
-      device: {
-        id: "7e32188a4dab669f",
-        manufacturer: "Google",
-      },
-      ip: "14.5.67.21",
-    },
-  }
+  },
 );
 ```
 
 ### Supported mappings
 
-RudderStack maps the following events to the Blueshift events in the `track` call before sending them over Blueshift's HTTP API.
+RudderStack maps the following [e-Commerce events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) to the Blueshift events in the `track` call before sending them over Blueshift's HTTP API.
 
 | RudderStack event         | Blueshift event      | 
 | :--------------------------- | :---------------------  |
 | `Product Viewed`             |  `view`                |         
 | `Product Added`               | `add_to_cart`               |             
 | `Order Completed`           | `purchase`           |         
-| `Products Searched`            | `search`            |          
+| `Products Searched`            | `search`            |    
+| `Checkout Step Viewed`               | `checkout `               |    
+| ` Product Removed`              | `remove_from_cart`              | 
+
+The other generic event mappings are listed below:
+
+| RudderStack event         | Blueshift event      | 
+| :--------------------------- | :---------------------  |
 | `Subscribe Interest`                | `subscribe_interest `                |            
-| `Unsubscribe Interest`            | `unsubscribe_interest `            |          
-| `Checkout Step Viewed`               | `checkout `               |             
-| ` Product Removed`              | `remove_from_cart`              |            
+| `Unsubscribe Interest`            | `unsubscribe_interest `            |            
 | `Identify`                 | `identify`          |                
 
 <div class="infoBlock">
