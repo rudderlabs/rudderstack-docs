@@ -827,6 +827,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"airship",
+   "title":"Airship",
+   "link":"/destinations/marketing/airship/",
+   "content":[]
+},
+{
    "key":"marketo-lead-import",
    "title":"Marketo Lead Import",
    "link":"/destinations/marketing/marketo-lead-import/",
