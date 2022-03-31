@@ -182,7 +182,9 @@ The following table details the mapping between RudderStack and Blueshift fields
 
 <div class="infoBlock">
   
-The <code class="inline-code">event</code> name is a required field and should <strong>not</strong> contain period (.), numeric value, or be more than 64 characters. RudderStack automatically converts a space into an underscore (_).
+The <code class="inline-code">event</code> name is a required field and should <strong>not</strong> contain a period (.), a numeric value, or be more than 64 characters. Otherwise, RudderStack will reject the event and throw an error.
+
+Also, RudderStack automatically converts a space in the event name to an underscore (_). So, an event name like <code class="inline-code">custom events</code> will be converted to <code class="inline-code">custom_events</code> before sending it to Blueshift.
 </div>
 
 <div class="infoBlock">
