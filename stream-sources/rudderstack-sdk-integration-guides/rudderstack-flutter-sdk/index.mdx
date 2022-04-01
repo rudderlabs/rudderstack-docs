@@ -111,7 +111,7 @@ You can configure your client based on the following parameters by passing them 
 | `sleepTimeout`          | Integer     | Minimum waiting time to flush the events to the server.                                                                                                                                                                                           | `10 seconds`                                             |
 | `configRefreshInterval` | Integer     | Fetches the config from the dashboard after this specified time.                                                      | `2`                                                      |
 | `trackLifecycleEvents`  | Boolean | Determines if the SDK will capture application life cycle events automatically.                                     | `true`                                                   |
-| `autoCollectAdvertId` | Boolean | Determines if the SDK will collect the advertising ID. | `false` |
+| `autoCollectAdvertId` | Boolean | Determines if the SDK will collect the advertisement ID. | `false` |
 | `controlPlaneUrl`       | String  | This parameter should be changed **only if** you are self-hosting the control plane. Check the section [Self-hosted control plane](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | `https://api.rudderlabs.com` |
 
 ## Identify
@@ -436,7 +436,7 @@ You can use the `putAdvertisingId` method to pass your Android and iOS AAID and 
 
 The `putAdvertisingId` method accepts a string argument as listed below:
 
-- `id` : Your Android `advertisingId` \(AAID\) \(or\) your iOS `advertisingId` \(IDFA\).
+- `id` : Your Android advertisement ID (AAID) or your iOS advertisement ID (IDFA).
 
 The following snippet highlights the use of `putAdvertisingId()`:
 
@@ -446,7 +446,7 @@ rudderClient.putAdvertisingId(<ADVERTISING_ID>);
 
 <div class="infoBlock">
 
-  The <code class="inline-code">id</code> parameter that you pass in the <code class="inline-code">putAdvertisingId</code> method is assigned as the AAID if you are on an Android device, and as the IDFA if you are on an iOS device.
+  The <code class="inline-code">id</code> parameter that you pass in the <code class="inline-code">putAdvertisingId</code> method is assigned as the AAID (for Android) or as the IDFA (for iOS).
 </div>
 
 ## Setting the device token
@@ -484,8 +484,7 @@ import 'package:rudder_sdk_flutter/RudderLogger.dart';
 RudderConfigBuilder builder = RudderConfigBuilder();
 builder.withDataPlaneUrl(DATA_PLANE_URL);
 builder.withLogLevel(RudderLogger.VERBOSE);
-rudderClient.initialize(WRITE_KEY,
-                          config: builder.build());
+rudderClient.initialize(WRITE_KEY,config: builder.build());
 ```
 
 You can set the log level to one of the following values:

@@ -219,6 +219,20 @@ You can configure your client based on the following parameters by passing them 
     </tr>
     <tr>
       <td style="text-align:left">
+        <code class="inline-code">autoCollectAdvertId</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">Boolean</code>
+      </td>
+      <td style="text-align:left">
+        Determines if the SDK will collect the advertisement ID.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">false</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
         <code class="inline-code">recordScreenViews</code>
       </td>
       <td style="text-align:left">
@@ -508,13 +522,11 @@ const options = {
 <div class="infoBlock">
 
 The keyword <code class="inline-code">All</code> in the above snippet represents all the destinations the source is connected to. Its value is set to <code class="inline-code">true</code> by default.
-
 </div>
 
 <div class="infoBlock">
 
 Make sure the destination names that you pass while specifying the destinations should exactly match the names listed <a href="https://app.rudderstack.com/directory">here</a>.
-
 </div>
 
 There are two methods in which you can pass the destinations specified in the above snippet to the SDK:
@@ -599,7 +611,7 @@ You can set the log level to one of the following values:
 5. `DEBUG`
 6. `VERBOSE`
 
-## Advertising ID
+## Setting the advertisement ID using `putAdvertisingId`
 
 RudderStack collects the advertisement ID **only** if `autoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
 
@@ -617,7 +629,7 @@ You can use the `putAdvertisingId` method to pass your Android and iOS AAID and 
 - `androidId` : Your Android `advertisingId` \(AAID\)
 - `iOSId` : Your iOS `advertisingId` \(IDFA\)
 
-Example Usage:
+A sample snippet highlighting the use of `putAdvertisingId` is shown below:
 
 ```typescript
 rudderClient.putAdvertisingId(AAID, IDFA)

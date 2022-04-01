@@ -67,14 +67,8 @@ The `setup` method has the following signature:
 
 <div class="infoBlock">
 <ul>
-<li>
-
-Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-the-rudderstack-client">Configuring the RudderStack Client</a> section below for detailed information on the parameters you can send in the <code class="inline-code">configuration</code> object.
-</li>
-<li>
-
-Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#configuring-your-options-object">Configuring the options object</a> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.
-</li>
+<li>Check the <a href="#configuring-the-rudderstack-client">Configuring the RudderStack Client</a> section below for detailed information on the parameters you can send in the <code class="inline-code">configuration</code> object.</li>
+<li>Check the <a href="#configuring-the-options-object">Configuring the options object</a> section below for detailed information on the parameters you can send in the <code class="inline-code">options</code> object.</li>
 </ul>
 </div>
 
@@ -90,10 +84,8 @@ You can configure your RudderStack client by passing the following parameters in
 | `dbThresholdCount` | Integer | The number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database. | `10000` |
 | `sleepTimeout` | Integer | Minimum waiting time to flush the events to the server. | `10 seconds` |
 | `configRefreshInterval` | Integer | RudderStack fetches the config after this time interval. | `2` |
-| `autoCollectAdvertId` | Boolean | Determines if the SDK will collect the advertising ID. | `false` |
-| `trackLifecycleEvents` | Boolean | Determines if the SDK should capture the application life cycle events automatically. | `true` |
-
-
+| `autoCollectAdvertId` | Boolean | Determines if the SDK will collect the advertisement ID. | `false` |
+| `trackLifecycleEvents` | Boolean | Determines if the SDK should capture the application lifecycle events automatically. | `true` |
 
 ## Identify
 

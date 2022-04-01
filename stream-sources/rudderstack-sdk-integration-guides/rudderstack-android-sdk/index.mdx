@@ -587,11 +587,11 @@ You can configure your client based on the following parameters using `RudderCon
 | `dataPlaneUrl`          | String  | Your data plane URL.                                                             | `https://hosted.rudderlabs.com` |
 | `flushQueueSize`        | Integer     | Number of events in a batch request to the RudderStack server.              | `30`                                                     |
 | `dbThresholdCount`      | Integer     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database.                          | `10000`                                                  |
-| `sleepcount`          | Integer     | Minimum waiting time to flush the events to the RudderStack server. The minimum value can be set to 1 second.      | `10 seconds`                                             |
-| `configRefreshInterval` | Integer     | It will fetch the config from `dashboard` after the specified time          | `2 hours`       |
-| `trackLifecycleEvents`  | Boolean | Whether SDK will capture application life cycle events automatically.                     | `true`                                                   |
-| `recordScreenViews`     | Boolean | Whether SDK will capture screen view events automatically.                   | `false`            |
-| `autoCollectAdvertId`  | Boolean | Whether the SDK will collect the advertising ID.  | `false` |
+| `sleepcount`          | Integer     | Minimum waiting time to flush the events to the RudderStack server. The minimum value can be set to `1 second`.      | `10 seconds`                                             |
+| `configRefreshInterval` | Integer     | The SDK will fetch the config from `dashboard` after the specified time          | `2 hours`       |
+| `trackLifecycleEvents`  | Boolean | Determines if the SDK will automatically capture the application lifecycle events.                     | `true`                                                   |
+| `recordScreenViews`     | Boolean | Determines if the SDK will automatically capture the screen view events.                   | `false`            |
+| `autoCollectAdvertId`  | Boolean | Determines if the SDK will collect the advertisement ID.  | `false` |
 | `controlPlaneUrl`       | String  | Change this parameter **only if** you are self-hosting the control plane. Check the [Self-hosted control plane](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the source configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 
 A sample code snippet to configure your client using `RudderConfig.Builder` is shown below:
@@ -648,9 +648,11 @@ RudderClient.putDeviceToken("your_device_token");
     </TabPanels>
 </Tabs>
 
-## Setting the advertising ID using `putAdvertisingId`
+## Setting the advertisement ID using `putAdvertisingId`
 
-By default, RudderStack collects the advertisement ID **only** if `withAutoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
+By default, RudderStack collects the advertisement ID **only** if the following three conditions are met:
+
+- `withAutoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
 
 ```kotlin
 val rudderClient = RudderClient.getInstance(
@@ -664,17 +666,10 @@ val rudderClient = RudderClient.getInstance(
         .build()
 )
 ```
+- `com.google.android.gms.ads.identifier.AdvertisingIdClient` is present in your application's class path.
+- `limitAdTracking`is not enabled for your device.
 
-<div class="warningBlock">
-
-  For RudderStack to collect the advertisement ID, the following conditions must also be met:
-  <ul>
-    <li><code class="inline-code">com.google.android.gms.ads.identifier.AdvertisingIdClient</code> must be present in your application's class path.</li>
-    <li><code class="inline-code">limitAdTracking</code> must not be enabled for your device.</li>
-  </ul>
-</div>
-
-To set your own advertising ID, you can use the `putAdvertisingId` method and pass the advertising ID, as shown:
+To set your own advertisement ID, you can use the `putAdvertisingId` method, as shown:
 
 ```java
 RudderClient.putAdvertisingId(<ADVERTISING_ID>);
