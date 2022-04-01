@@ -62,6 +62,7 @@ RudderClient.SerializeSqlite();
 // Build your config
 RudderConfigBuilder configBuilder = new RudderConfigBuilder()
     .WithDataPlaneUrl(DATA_PLANE_URL);
+    .WithLogLevel(RudderLogLevel.VERBOSE)
 
 // get instance for RudderClient
 RudderClient rudderClient = RudderClient.GetInstance(
@@ -169,6 +170,17 @@ You can find the following files in the **Plugins** folder for the SDK:
 
 - `Plugins/Android/unity-plugin-release.aar`
 - `Plugins/iOS/RudderSDKUnity`
+
+## Advertisement ID 
+
+RudderStack collects the advertisement ID **only** if `withAutoCollectAdvertId` is explicitly set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
+
+```csharp
+RudderConfigBuilder configBuilder = new RudderConfigBuilder()
+    .WithDataPlaneUrl(DATA_PLANE_URL);
+    .WithLogLevel(RudderLogLevel.VERBOSE)
+    .withAutoCollectAdvertId(true);
+```
 
 ## Contact us
 

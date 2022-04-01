@@ -47,7 +47,8 @@ A sample Cordova SDK initialization is as shown:
 
 ```javascript
 RudderClient.initialize(WRITE_KEY , {
-  dataPlaneUrl: DATA_PLANE_URL
+  dataPlaneUrl: DATA_PLANE_URL,
+  loglevel: RudderClient.LogLevel.VERBOSE,
 })
 ```
 
@@ -76,6 +77,23 @@ Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-i
 </li>
 </ul>
 </div>
+
+## Configuring the RudderStack client
+
+You can configure your RudderStack client by passing the following parameters in the `configuration` object of your `RudderClient.initialize()` call:
+
+| Parameter | Type | Description | Default Value |
+| :--- | :--- | :--- | :--- |
+| `logLevel` | `RudderClient.LogLevel` | Controls how much of the log you want to see from the Cordova SDK. | `RudderClient.LogLevel.None` |
+| `dataPlaneUrl` | String | Your RudderStack Data Plane URL. | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com) |
+| `flushQueueSize` | Integer | The number of events included in a batch request to the server. | `30` |
+| `dbThresholdCount` | Integer | The number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database. | `10000` |
+| `sleepTimeout` | Integer | Minimum waiting time to flush the events to the server. | `10 seconds` |
+| `configRefreshInterval` | Integer | RudderStack fetches the config after this time interval. | `2` |
+| `autoCollectAdvertId` | Boolean | Determines if the SDK will collect the advertising ID. | `false` |
+| `trackLifecycleEvents` | Boolean | Determines if the SDK should capture the application life cycle events automatically. | `true` |
+
+
 
 ## Identify
 
@@ -277,6 +295,25 @@ A sample `reset` call is as shown:
 RudderClient.reset()
 ```
 
+## Configuring the `options` object
+
+A sample `options` object that can be sent along with all the above-mentioned API calls is as shown:
+
+```javascript
+{
+  "externalIds": {
+    "brazeExternalId": "externalId1"
+  }
+}
+```
+
+The `options` object has the following signature:
+
+| Name | Data Type | Presence | Description |
+| :--- | :--- | :--- | :--- |
+| `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
+| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the [**Enabling/disabling events for specific destinations**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#enablingdisabling-events-for-specific-destinations) section below. |
+
 ## Enabling/disabling user tracking via the optOut API \(GDPR support\)
 
 RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
@@ -299,39 +336,6 @@ RudderClient.optOut(false);
   
  The <code class="inline-code">optOut</code> API is available in the Cordova SDK starting from version <code class="inline-code">1.0.1</code>. 
 </div>
-
-## Configuring the RudderStack client
-
-You can configure your RudderStack client by passing the following parameters in the `configuration` object of your `RudderClient.initialize()` call:
-
-| Parameter | Type | Description | Default Value |
-| :--- | :--- | :--- | :--- |
-| `logLevel` | `RudderClient.LogLevel` | Controls how much of the log you want to see from the Cordova SDK. | `RudderClient.LogLevel.None` |
-| `dataPlaneUrl` | `string` | Your RudderStack Data Plane URL. | [**https://hosted.rudderlabs.com**](https://hosted.rudderlabs.com) |
-| `flushQueueSize` | `int` | The number of events included in a batch request to the server. | `30` |
-| `dbThresholdCount` | `int` | The number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database. | `10000` |
-| `sleepTimeout` | `int` | Minimum waiting time to flush the events to the server. | `10 seconds` |
-| `configRefreshInterval` | `int` | RudderStack fetches the config after this time interval. | `2` |
-| `trackLifecycleEvents` | `boolean` | Determines if the SDK should capture the application life cycle events automatically. | `true` |
-
-## Configuring the `options` object
-
-A sample `options` object that can be sent along with all the above-mentioned API calls is as shown:
-
-```javascript
-{
-  "externalIds": {
-    "brazeExternalId": "externalId1"
-  }
-}
-```
-
-The `options` object has the following signature:
-
-| Name | Data Type | Presence | Description |
-| :--- | :--- | :--- | :--- |
-| `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
-| `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the [**Enabling/disabling events for specific destinations**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#enablingdisabling-events-for-specific-destinations) section below. |
 
 ## Filtering events
 
@@ -402,14 +406,24 @@ RudderClient.putAnonymousId("CustomAnonymousId");
 
 ## Advertisement ID
 
-RudderStack collects the advertisement ID if it is enabled by the user. To set the advertising ID yourself, you can use the `putAdvertisingId` method as shown:
+RudderStack collects the advertisement ID **only** if `autoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
+
+```javascript
+RudderClient.initialize(WRITE_KEY , {
+  dataPlaneUrl: DATA_PLANE_URL,
+  loglevel: RudderClient.LogLevel.VERBOSE,
+  autoCollectAdvertId: true,
+})
+```
+
+To set the advertising ID yourself, you can use the `putAdvertisingId` method as shown:
 
 ```javascript
 RudderClient.putAdvertisingId("SampleAdvertisingId")
 ```
 <div class="warningBlock">
 
-On iOS, you need to call the <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">initialize</code>.
+In iOS, you need to call the <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">initialize</code>.
 </div>
 
 ## Setting the device token

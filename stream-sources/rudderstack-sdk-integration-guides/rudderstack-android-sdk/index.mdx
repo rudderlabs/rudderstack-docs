@@ -159,7 +159,6 @@ val rudderClient = RudderClient.getInstance(
         .withDataPlaneUrl(DATA_PLANE_URL)
         .withTrackLifecycleEvents(true)
         .withRecordScreenViews(true)
-        .withAutoCollectAdvertId(false)
         .build()
 )
 ```
@@ -650,9 +649,22 @@ RudderClient.putDeviceToken("your_device_token");
     </TabPanels>
 </Tabs>
 
-## Advertisement ID
+## Setting the advertising ID using `putAdvertisingId`
 
-RudderStack collects the advertisement ID **only** if `withAutoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client).
+By default, RudderStack collects the advertisement ID **only** if `withAutoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
+
+```kotlin
+val rudderClient = RudderClient.getInstance(
+    this,
+    WRITE_KEY,
+    RudderConfig.Builder()
+        .withDataPlaneUrl(DATA_PLANE_URL)
+        .withTrackLifecycleEvents(true)
+        .withRecordScreenViews(true)
+        .withAutoCollectAdvertId(true)
+        .build()
+)
+```
 
 <div class="warningBlock">
 
@@ -663,15 +675,13 @@ RudderStack collects the advertisement ID **only** if `withAutoCollectAdvertId` 
   </ul>
 </div>
 
-RudderStack sets `gaid` under `context.device.advertisementId`.
-
-### Setting the advertising ID using `putAdvertisingId`
-
 To set your own advertising ID, you can use the `putAdvertisingId` method and pass the advertising ID, as shown:
 
 ```java
 RudderClient.putAdvertisingId(<ADVERTISING_ID>);
 ```
+
+RudderStack sets `gaid` under `context.device.advertisementId`.
 
 ## Anonymous ID
 
