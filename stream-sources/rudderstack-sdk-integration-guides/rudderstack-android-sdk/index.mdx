@@ -583,17 +583,18 @@ rudderClient.reset();
 
 You can configure your client based on the following parameters using `RudderConfig.Builder`:
 
-| Parameter               | Type      | Description                                                                                                                                                                                                                                       | Default Value                                            |
-| :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------- |
-| `logLevel`              | `int`     | Controls how much of the log you want to see from the SDK.           | `RudderLogger.RudderLogLevel.NONE`                       |
-| `dataPlaneUrl`          | `string`  | Your data plane URL.                                                             | `https://hosted.rudderlabs.com` |
-| `flushQueueSize`        | `int`     | Number of events in a batch request to the server.              | `30`                                                     |
-| `dbThresholdCount`      | `int`     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the DB.                          | `10000`                                                  |
-| `sleepcount`          | `int`     | Minimum waiting time to flush the events to the server. The minimum value can be set to 1 second.      | `10 seconds`                                             |
-| `configRefreshInterval` | `int`     | It will fetch the config from `dashboard` after the specified time          | `2 hours`       |
-| `trackLifecycleEvents`  | `boolean` | Whether SDK will capture application life cycle events automatically.                                                                                                                                                                             | `true`                                                   |
-| `recordScreenViews`     | `boolean` | Whether SDK will capture screen view events automatically.                   | `false`            |
-| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the Control Plane. Check the section **Self-Hosted Control Plane** below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+| Parameter               | Type      | Description                | Default value                                            |
+| :---------------------- | :-------- | :--------------------- | :------------------------------- |
+| `logLevel`              | Integer     | Controls how much of the log you want to see from the SDK.           | `RudderLogger.RudderLogLevel.NONE`                       |
+| `dataPlaneUrl`          | String  | Your data plane URL.                                                             | `https://hosted.rudderlabs.com` |
+| `flushQueueSize`        | Integer     | Number of events in a batch request to the RudderStack server.              | `30`                                                     |
+| `dbThresholdCount`      | Integer     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database.                          | `10000`                                                  |
+| `sleepcount`          | Integer     | Minimum waiting time to flush the events to the RudderStack server. The minimum value can be set to 1 second.      | `10 seconds`                                             |
+| `configRefreshInterval` | Integer     | It will fetch the config from `dashboard` after the specified time          | `2 hours`       |
+| `trackLifecycleEvents`  | Boolean | Whether SDK will capture application life cycle events automatically.                     | `true`                                                   |
+| `recordScreenViews`     | Boolean | Whether SDK will capture screen view events automatically.                   | `false`            |
+| `autoCollectAdvertId`  | Boolean | Whether the SDK will collect the advertising ID.  | `false` |
+| `controlPlaneUrl`       | String  | Change this parameter **only if** you are self-hosting the control plane. Check the [Self-hosted control plane](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the source configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
 
 A sample code snippet to configure your client using `RudderConfig.Builder` is shown below:
 
