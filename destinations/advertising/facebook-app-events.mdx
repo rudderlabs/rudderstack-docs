@@ -416,6 +416,22 @@ If <code class="inline-code">currency</code> is absent in the event properties R
 
 </div>
 
+## Page
+
+The `page` method lets you record your website's page views with any additional relevant information about the viewed page. You need not pass the event name as RudderStack automatically sets it to `Viewed Page`.
+
+A sample `page` call using the RudderStack Android SDK is as shown:
+
+```javascript
+rudderanalytics.page();
+```
+
+<div class="infoBlock">
+
+The <code class="inline-code">page</code> call is directly passed on to Facebook as a <code class="inline-code">track</code> event via its <code class="inline-code">logEvent</code> API, with the event name as <code class="inline-code">Viewed Page</code> along with the the associated properties.
+</div>
+
+
 ## Screen
 
 The `screen` method lets you record your users' screen views on their devices, along with any associated properties. This call is similar to the `page` call, but is exclusive to your mobile device.
