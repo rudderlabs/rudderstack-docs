@@ -2,154 +2,109 @@
 # slug: "/docs/get-started/installing-and-setting-up-rudderstack/sending-test-events"
 title: "Sending Test Events"
 description: >-
-  Step-by-step guide on sending test events to verify your RudderStack
-  installation.
+  Step by step guide on sending test events to verify your RudderStack installation.
 ---
 
 # Sending Test Events
 
 <div class="infoBlock">
 
-This guide assumes you have already <a href="/docs/get-started/installing-and-setting-up-rudderstack">installed and set up RudderStack</a>.
-
+This guide assumes that you have already <a href="/docs/get-started/installing-and-setting-up-rudderstack">installed and set up RudderStack</a> in your preferred environment.
 </div>
 
-There are two ways in which you can send test events to verify your RudderStack installation:
+This guide details the following two approaches that you can use to send test events and verify your RudderStack installation:
 
 - Using the bundled shell script
 - Using RudderStack's HTTP API
 
 ## Bundled Shell Script
 
-In our [**GitHub repository**](https://github.com/rudderlabs/rudder-server), we have bundled a shell script that generates test events. Follow the steps below:
-
-### Clone the Repository
-
-Before sending test events to verify your RudderStack installation, clone the RudderStack [**GitHub repository**](https://github.com/rudderlabs/rudder-server) by running the following command:
+The [RudderStack GitHub repository](https://github.com/rudderlabs/rudder-server) contains a bundled shell script that generates test events. Clone the [repository](https://github.com/rudderlabs/rudder-server) by running the following command:
 
 ```bash
 git clone https://github.com/rudderlabs/rudder-server.git
 ```
 
-Then, follow the sections below to send events to test your RudderStack installation.
+Then, follow the sections below to send test events.
 
-### Get the Source Write Key
+### Step 1: Getting the source write key
 
-#### **Option 1: If you have signed up for** [**RudderStack Cloud**](https://app.rudderstack.com/)**, follow these steps to get your source write key:**
+#### RudderStack Cloud
 
-- Set up a source and a destination in RudderStack by following this [**guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).
-- You can find the write key in the dashboard, as shown:
+If you have signed up for [RudderStack Cloud](https://app.rudderstack.com/), follow these steps to get the source write key:
 
-<img src="../../assets/screen-shot-2021-07-01-at-5.27.53-pm.png" />
+1. Set up a source and a destination in RudderStack. For more information, follow the [Adding a Source and Destination in RudderStack](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) guide.
+2. You can find the write key in the source details page, as shown:
 
-<!-- <img src="../../assets/screen-shot-2021-07-01-at-5.27.53-pm.png" /> -->
+<img src="../../assets/rudderstack-open-source/source-write-key.png" alt="RudderStack source write key" />
 
-<span class="imageTitle"></span>
+Note that the write key is different from your workspace token. The write key is associated with the source, while the workspace token is associated with your RudderStack workspace, as seen below:
 
-<div class="warningBlock">
+<img src="../../assets/rudderstack-open-source/write-key-vs-workspace-token.png" alt="Write key vs. workspace token" />
 
-The **write key** is different from your **workspace token**. The write key is associated with the source, while the workspace token is associated with your RudderStack workspace.
+#### Self-hosted control plane
 
-</div>
+If you are self-hosting RudderStack and have set up the control plane using the [Control Plane Lite](https://rudderstack.com/docs/get-started/control-plane-lite/) utility, you can obtain the source write key by following these steps:
 
-<img src="../../assets/screen-shot-2021-07-01-at-5.29.03-pm.png" />
+1. Set up a source and a destination. For more information, follow the [Adding a Source and Destination in RudderStack](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) guide.
+2. You can find the write key associated with the source in the dashboard as shown:
 
-#### **Option 2: If you are self-hosting RudderStack and have set up the control plane using the** [**Control Plane Lite**](https://rudderstack.com/docs/get-started/control-plane-lite/)**, you can find the source write key by following these steps:**
+<img src="../../assets/rudderstack-open-source/control-plane-lite-source-write-key" alt="Control plane lite source write Key" />
 
-- Set up a source and a destination by following this [**guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).
-- You can find the write key associated with the source in the dashboard as shown:
+### Step 2: Sending test events
 
-<!-- <img src="../../assets/writekey.jpg)-->
+#### RudderStack Cloud
 
-<img src="../../assets/writekey.jpg" alt="Write Key" />
+To send the test events, follow these steps:
 
-### Send Test Events
-
-#### Option 1: If you're using RudderStack Cloud, follow these steps:
-
-- In your terminal, navigate to the folder where RudderStack is installed.
-- Then, run the following command after replacing `<YOUR_WRITE_KEY>` with the source write key obtained in the previous section:
+1. Navigate to the folder where RudderStack is installed.
+2. Then, run the following command after replacing `<YOUR_WRITE_KEY>` with the source write key obtained in the previous section:
 
 ```bash
 ./scripts/generate-event <YOUR_WRITE_KEY> https://hosted.rudderlabs.com/v1/batch
 ```
 
-- You can then check your destination to verify that events are delivered. You can also view the live events via RudderStack's [**Live Events**](https://rudderstack.com/docs/user-guides/how-to-guides/live-destination-event-debugger/) tab.
+You can then check your destination to verify that events are delivered. You can also view the live events via RudderStack's [Live Events](https://www.rudderstack.com/docs/get-started/live-events/) debugger.
 
-#### Option 2: If you have set up open-source RudderStack in your environment, follow these steps:
+#### Self-hosted RudderStack with [RudderStack Open Source dashboard](https://app.rudderstack.com/signup?type=opensource)
 
-- In your terminal, navigate to the folder where RudderStack is installed.
-- Then, run the following command after replacing `<YOUR_WRITE_KEY>` with the source write key obtained in the previous section, and `<DATA_PLANE_URL>` with your Data Plane URL.
+If you have set up open source RudderStack in your environment with the [RudderStack Open Source dashboard](https://app.rudderstack.com/signup?type=opensource), follow these steps to send the test events:
+
+1. Navigate to the folder where RudderStack is installed.
+2. Then, run the following command after replacing `<YOUR_WRITE_KEY>` with the source write key obtained in the previous section, and `<DATA_PLANE_URL>` with your [data plane URL](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
 
 ```bash
 ./scripts/generate-event <YOUR_WRITE_KEY> <DATA_PLANE_URL>/v1/batch
 ```
 
-An example is as shown:
+An example is shown below:
 
-<!-- <img src="../../assets/test-event%20%281%29.jpg" /> -->
+<img src="../../assets/rudderstack-open-source/test-event.png" alt="Test Event" />
 
-<img src="../../assets/test-event (1).jpg" alt="Test Event" />
-
-- You can then check your destination to verify that the events are delivered.
+You can then check your destination to verify that the events are delivered.
 
 <div class="infoBlock">
 
-Note that unlike RudderStack Cloud, the Control Plane set up using the open-source <a href="https://rudderstack.com/docs/get-started/control-plane-lite/">Control Plane Lite</a> does not let you view live events.
-
+Note that unlike RudderStack Open Source, the control set up using the <a href="https://rudderstack.com/docs/get-started/control-plane-lite/">Control Plane Lite</a> utility does not let you view live events.
 </div>
 
-If you supply an invalid source write key or Data Plane URL, you will get the following error:
+If you supply an invalid source write key or data plane URL, you will get the following error:
 
-<img src="../../assets/error.jpg" />
+<img src="../../assets/rudderstack-open-source/test-event-error.png" alt="Test Event error" />
 
 ## Using the HTTP API
 
-- Import this [**Postman collection**](https://www.getpostman.com/collections/480307c55ad2b9dd4e27). 
-- Edit the variables `source_write_key` and `data_plane_url` in this collection with your source write key and your RudderStack Data Plane URL.
-- RudderStack uses Basic Authentication for authenticating all the HTTP requests. The HTTP Basic Authentication requires a user name and password where:
+To send test events via the [RudderStack HTTP API](https://www.rudderstack.com/docs/rudderstack-api/http-api/), follow these steps:
+
+1. Import this [Postman collection](https://www.getpostman.com/collections/480307c55ad2b9dd4e27). 
+2. Edit the variables `source_write_key` and `data_plane_url` in this collection with your source write key and your [data plane URL](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
+
+RudderStack uses **Basic Authentication** for authenticating all the HTTP requests. The HTTP Basic Authentication requires a user name and password where:
   - The user name is the `source_write_key`
   - The password is an empty string \(`""`\)
-- Now you can test all the supported requests.
 
-### Getting the Source Write Key
+Now you can send test API requests and verify if your installation is working as expected.
 
-#### **If you have signed up for** [**RudderStack Cloud**](https://app.rudderstack.com/)**, follow these steps to get your source write key:**
+## Contact us
 
-- Set up a source in RudderStack by following this [**guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).
-- You can find the write key in the dashboard, as shown:
-
-<img src="../../assets/screen-shot-2021-07-01-at-5.27.53-pm.png" />
-
-<span class="imageTitle"></span>
-
-<div class="warningBlock">
-
-The **write key** is different from your **workspace token**. The write key is associated with the source, while the workspace token is associated with your RudderStack workspace.
-
-</div>
-
-<img src="../../assets/screen-shot-2021-07-01-at-5.29.03-pm.png" />
-
-#### **If you are self-hosting RudderStack and have set up the control plane using the** [**Control Plane Lite**](https://rudderstack.com/docs/get-started/control-plane-lite/) **utility, you can find the source write key by following these steps:**
-
-- Set up a source by following this [**guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).
-- You can find the write key associated with the source in the dashboard as shown:
-
-<img src="../../assets/writekey.jpg" />
-
-### Getting the Data Plane URL
-
-<div class="infoBlock">
-
-Follow <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this section</a> for details on how to get your Data Plane URL.
-
-</div>
-<div class="successBlock">
-Refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api/">HTTP API
-guide</a> for more information on the supported calls.
-</div>
-
-## Contact Us
-
-If you come across any issues while sending test events to verify your RudderStack installation, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+If you come across any issues while sending test events to verify your RudderStack installation, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
