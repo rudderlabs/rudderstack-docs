@@ -27,7 +27,7 @@ The following three steps summarize the identity resolution process:
 
 ## Identity resolution in RudderStack
 
-In modern businesses, the identity graph used for cross-device identity stitching can be quite large, sometimes consisting of hundreds of millions of nodes. However, as you gather more data, this number scales rapidly. In such a scenario, storing the identity graph in your data warehouse makes a lot of sense from a storage and scalability perspective.
+In modern businesses, the identity graph used for cross-device identity stitching can be quite large, sometimes consisting of hundreds of millions of nodes. As you gather more data, this number scales rapidly. In such a scenario, storing the identity graph in your data warehouse makes a lot of sense from a storage and scalability perspective.
 
 With RudderStack, you can build an identity graph on top of your enriched warehouse data. You can then store this graph in your warehouse as a table. RudderStack then creates a unique virtual ID (`RUDDER_ID`), associates it with all the relevant user identifiers, and updates it continuously as new data comes into your warehouse.
 
