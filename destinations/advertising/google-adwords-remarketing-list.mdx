@@ -183,9 +183,23 @@ To create a customer list in Google Ads, follow these steps:
 
 ### What are the account permissions required for this integration?
 
-For the integration to be successful, make sure the account used for OAuth verification has **Standard** or higher (**Administrative**) access levels in Google Ads. 
+For the integration to be successful, make sure the customer account used for OAuth verification adheres to Google's [Customer Match policy](https://support.google.com/google-ads/answer/6299717) and has **Standard** or higher (**Administrative**) access level permissions. For more information on the access level permissions, refer to this [Google Ads support page](https://support.google.com/google-ads/answer/9978556?visit_id=637611563637058259-4176462731&rd=1).
 
-For more information, refer to this [Google Ads support page](https://support.google.com/google-ads/answer/9978556?visit_id=637611563637058259-4176462731&rd=1).
+To set the access level, follow these steps:
+
+1. Sign into to your Google Ads account and go to **TOOLS AND SETTINGS** > **Access and security**, as shown:
+
+<img src="../../assets/event-stream-destinations/gads-access-security.png" alt="Access and Security option in Google Ads dashboard" />
+
+2. Enter the email address of the account and from the list of permissions, select **Standard** or **Administrative**. Then, click on **SEND INVITATION**, as shown:
+
+<img src="../../assets/event-stream-destinations/gads-specify-access-level.png" alt="Specifying access levels" />
+
+The account will have the access level permissions once they accept the invitation.
+
+### I am getting a 400 Bad Request error message. What should I do?
+
+If you get a 400 Bad Request error while configuring the destination, make sure your customer account is allow-listed and configured to have **Standard** or **Administrative** access levels in Google Ads. Refer to the above [FAQ](#what-are-the-account-permissions-required-for-this-integration) for steps on setting the access level permissions for the account.
 
 ## Contact us
 
