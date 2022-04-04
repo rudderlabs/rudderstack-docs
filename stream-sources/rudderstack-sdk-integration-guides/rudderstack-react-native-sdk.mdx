@@ -97,7 +97,197 @@ The `setup` method has the following signature:
 | `writeKey`      | String     | Yes      | Your React Native source write key                  |
 | `configuration` | Object | No       | Contains the RudderStack client configuration |
 
-Check the [**Configuring your RudderStack client**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/#configuring-your-rudderstack-client) section below for a full list of configurable parameters.
+Check the [Configuring your RudderStack client](#configuring-your-rudderstack-client) section below for a full list of configurable parameters.
+
+## Configuring your RudderStack client
+
+You can configure your client based on the following parameters by passing them in the `configuration` object of your `setup` call.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left">Type</th>
+      <th style="text-align:left">Description</th>
+      <th style="text-align:left">Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">logLevel</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        <p>Controls how much of the log you want to see from the SDK.</p>
+        <p>
+          Refer to the <a href="#debugging">Debugging</a> section to get a list of all supported values.
+        </p>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">RUDDER_LOG_LEVEL.ERROR</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">dataPlaneUrl</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">string</code>
+      </td>
+      <td style="text-align:left">
+        URL of your <code class="inline-code">data-plane</code>. Please refer above to see how to
+        fetch the data plane URL.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">https://hosted.rudderlabs.com</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">flushQueueSize</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        Number of events in a batch request to the server.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">30</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">dbThresholdCount</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        The number of events to be saved in the <code class="inline-code">SQLite</code> database.
+        Once the limit is reached, older events are deleted from the DB.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">10000</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">sleepTimeout</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        Minimum waiting time to flush the events to the server.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">10 seconds</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">configRefreshInterval</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        It will fetch the config from <code class="inline-code">dashboard</code> after this many
+        hours.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">2</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">trackLifecycleEvents</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">boolean</code>
+      </td>
+      <td style="text-align:left">
+        Whether SDK will capture application life cycle events automatically.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">true</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">autoCollectAdvertId</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">Boolean</code>
+      </td>
+      <td style="text-align:left">
+        Determines if the SDK will collect the advertisement ID.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">false</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">recordScreenViews</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">boolean</code>
+      </td>
+      <td style="text-align:left">
+        Whether SDK will capture screen view events automatically.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">false</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">controlPlaneUrl</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">string</code>
+      </td>
+      <td style="text-align:left">
+        If you are using our open-source <a href="https://rudderstack.com/docs/get-started/control-plane-lite/"><b>Control Plane Lite</b></a> utility, use this option to
+        point to your hosted <code class="inline-code">sourceConfig</code>. SDK will add
+        <code class="inline-code">/sourceConfig</code> along with this URL
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">https://api.rudderlabs.com</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Identify
+
+RudderStack captures the `deviceId` and uses it as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, the SDK persists the user information and passes it to the subsequent `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+
+A sample `identify` event is as shown:
+
+```typescript
+rudderClient.identify(
+  "test_userId",
+  {
+    email: "testuser@example.com",
+    location: "UK",
+  },
+  null
+)
+```
+
+The `identify` method has the following signature:
+
+| Name     | Data Type     | Required | Description                            |
+| :------- | :------------ | :------- | :------------------------------------- |
+| `userId` | String    | Yes      | The user's unique identifier        |
+| `traits` | Object | No       | Traits information for the user            |
+| `option` | Object | No       | Extra options for the `identify` event |
 
 ## Track
 
@@ -133,31 +323,6 @@ RudderStack automatically tracks the following optional events:
 </ol>
 You can disable these events by passing <code class="inline-code">trackLifecycleEvents</code> as <code class="inline-code">false</code> in the configuration object. However, we recommend keeping them enabled.
 </div>
-
-## Identify
-
-RudderStack captures the `deviceId` and uses it as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, the SDK persists the user information and passes it to the subsequent `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
-
-A sample `identify` event is as shown:
-
-```typescript
-rudderClient.identify(
-  "test_userId",
-  {
-    email: "testuser@example.com",
-    location: "UK",
-  },
-  null
-)
-```
-
-The `identify` method has the following signature:
-
-| Name     | Data Type     | Required | Description                            |
-| :------- | :------------ | :------- | :------------------------------------- |
-| `userId` | String    | Yes      | The user's unique identifier        |
-| `traits` | Object | No       | Traits information for the user            |
-| `option` | Object | No       | Extra options for the `identify` event |
 
 ## Screen
 
@@ -357,13 +522,11 @@ const options = {
 <div class="infoBlock">
 
 The keyword <code class="inline-code">All</code> in the above snippet represents all the destinations the source is connected to. Its value is set to <code class="inline-code">true</code> by default.
-
 </div>
 
 <div class="infoBlock">
 
 Make sure the destination names that you pass while specifying the destinations should exactly match the names listed <a href="https://app.rudderstack.com/directory">here</a>.
-
 </div>
 
 There are two methods in which you can pass the destinations specified in the above snippet to the SDK:
@@ -418,157 +581,6 @@ rudderClient.identify(
 )
 ```
 
-## Configuring your RudderStack client
-
-You can configure your client based on the following parameters by passing them in the `configuration` object of your `setup` call.
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Parameter</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-      <th style="text-align:left">Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">logLevel</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">int</code>
-      </td>
-      <td style="text-align:left">
-        <p>Controls how much of the log you want to see from the SDK.</p>
-        <p>
-          Refer to the Debugging section to get a list of all supported values.
-        </p>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">RUDDER_LOG_LEVEL.ERROR</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">dataPlaneUrl</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">string</code>
-      </td>
-      <td style="text-align:left">
-        URL of your <code class="inline-code">data-plane</code>. Please refer above to see how to
-        fetch the data plane URL.
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">https://hosted.rudderlabs.com</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">flushQueueSize</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">int</code>
-      </td>
-      <td style="text-align:left">
-        Number of events in a batch request to the server.
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">30</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">dbThresholdCount</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">int</code>
-      </td>
-      <td style="text-align:left">
-        The number of events to be saved in the <code class="inline-code">SQLite</code> database.
-        Once the limit is reached, older events are deleted from the DB.
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">10000</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">sleepTimeout</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">int</code>
-      </td>
-      <td style="text-align:left">
-        Minimum waiting time to flush the events to the server.
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">10 seconds</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">configRefreshInterval</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">int</code>
-      </td>
-      <td style="text-align:left">
-        It will fetch the config from <code class="inline-code">dashboard</code> after this many
-        hours.
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">2</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">trackLifecycleEvents</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">boolean</code>
-      </td>
-      <td style="text-align:left">
-        Whether SDK will capture application life cycle events automatically.
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">true</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">recordScreenViews</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">boolean</code>
-      </td>
-      <td style="text-align:left">
-        Whether SDK will capture screen view events automatically.
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">false</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">controlPlaneUrl</code>
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">string</code>
-      </td>
-      <td style="text-align:left">
-        If you are using our open-source <a href="https://rudderstack.com/docs/get-started/control-plane-lite/"><b>Control Plane Lite</b></a> utility, use this option to
-        point to your hosted <code class="inline-code">sourceConfig</code>. SDK will add
-        <code class="inline-code">/sourceConfig</code> along with this URL
-      </td>
-      <td style="text-align:left">
-        <code class="inline-code">https://api.rudderlabs.com</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
 ## Debugging
 
 If you run into any issues regarding the RudderStack React Native SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
@@ -599,14 +611,25 @@ You can set the log level to one of the following values:
 5. `DEBUG`
 6. `VERBOSE`
 
-## Advertising ID
+## Setting the advertisement ID
+
+RudderStack collects the advertisement ID **only** if `autoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
+
+```typescript
+await rudderClient.setup(WRITE_KEY, {
+  dataPlaneUrl: DATA_PLANE_URL,
+  trackLifecycleEvents: true,
+  autoCollectAdvertId: true,
+  recordScreenViews: true,
+})
+```
 
 You can use the `putAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `putAdvertisingId` method accepts two `string` arguments :
 
 - `androidId` : Your Android `advertisingId` \(AAID\)
 - `iOSId` : Your iOS `advertisingId` \(IDFA\)
 
-Example Usage:
+A sample snippet highlighting the use of `putAdvertisingId` is shown below:
 
 ```typescript
 rudderClient.putAdvertisingId(AAID, IDFA)

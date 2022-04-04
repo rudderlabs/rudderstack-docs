@@ -125,6 +125,7 @@ You can configure your client based on the following parameters by passing them 
 | `sleepTimeout`          | Integer     | Minimum waiting time to flush the events to the server.          | `10 seconds`                      |
 | `configRefreshInterval` | Integer     | Fetches the config from the dashboard after this specified time.                              | `2`                                                      |
 | `trackLifecycleEvents`  | Boolean | Determines if the SDK will capture application life cycle events automatically.                   | `true`                                                   |
+| `autoCollectAdvertId` | Boolean | Determines if the SDK will collect the advertisement ID. | `false` |
 | `recordScreenViews` | Boolean | When enabled, the SDK automatically records the screens viewed by the user. | `false` |
 
 ### webConfig parameters
@@ -469,12 +470,24 @@ By default, RudderStack uses `deviceId` as `anonymousId`. You can use the follow
 rudderClient.putAnonymousId(<ANONYMOUS_ID>);
 ```
 
-## Passing your Android/iOS advertising ID
+## Setting the advertisement ID
 
 <div class="infoBlock">
 
 This functionality is not available for the web. For more information, refer to the <a href="#sdk-api-unavailable-for-web">SDK API unavailable for web</a> section below.
 </div>
+
+RudderStack collects the advertisement ID **only** if `autoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
+
+```dart
+final RudderController rudderClient = RudderController.instance;
+MobileConfig mobileConfig = MobileConfig(autoCollectAdvertId: true);
+RudderLogger.init(RudderLogger.VERBOSE);
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withDataPlaneUrl(<DATA_PLANE_URL>);
+builder.withTrackLifecycleEvents(true);
+rudderClient.initialize(<WRITE_KEY>,config: builder.build());
+```
 
 You can use the `putAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `putAdvertisingId` method accepts a string argument as described below:
 
