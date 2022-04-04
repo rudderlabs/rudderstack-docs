@@ -1,0 +1,234 @@
+---
+#slug: "/docs/get-started/installing-and-setting-up-rudderstack/kubernetes"
+title: "Kubernetes"
+description: Step-by-step instructions for deploying RudderStack on Kubernetes.
+---
+
+# Kubernetes
+
+You can deploy RudderStack on your Kubernetes cluster using the [**Helm**](https://helm.sh) package manager.
+
+The repository for this Helm chart can be found [**here**](https://github.com/rudderlabs/rudderstack-helm).
+
+<div class="infoBlock">
+
+  If you are planning to use RudderStack in production, we strongly recommend
+  using the Kubernetes Helm charts.
+</div>
+
+## Quick overview
+
+<div class="infoBlock">
+
+  <code class="inline-code">helm install</code> deploys RudderStack on the
+  Kubernetes cluster configured with <code class="inline-code">kubectl</code>
+</div>
+
+The commands are listed below:
+
+```bash
+git clone git@github.com:rudderlabs/rudderstack-helm.git
+cd rudderstack-helm/
+
+# If you're using the RudderStack-hosted control plane:
+
+helm install my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
+
+# If you're using the self-hosted control plane:
+
+helm install my-release ./ --set backend.controlPlaneJSON=true
+```
+
+## Introduction
+
+Installing and setting up RudderStack involves two key steps:
+
+- Control plane setup
+- Data plane setup
+
+<div class="infoBlock">
+
+  Refer to the <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/">**RudderStack architecture**</a> to know
+  more about the RudderStack control plane and data plane.
+</div>
+
+## Control plane setup
+
+There are two ways you can set up the control plane. This section lists the steps involved in each of them.
+
+### Using the RudderStack-hosted control plane
+
+- Sign up and log into the [**RudderStack dashboard**](https://app.rudderlabs.com/signup).
+
+<div class="infoBlock">
+
+**Why do I need to sign up for RudderStack?**
+
+RudderStack's dashboard lets you easily set up your data pipelines by configuring your sources and destinations. It is fully hosted by RudderStack and is free for the users. You also get access to some important features like <a href="https://rudderstack.com/docs/transformations/">**Transformations**</a>
+and a <a href="https://rudderstack.com/docs/user-guides/how-to-guides/live-destination-event-debugger/">**Live Events**</a> tab.
+</div>
+
+- Note and copy your workspace **Token** from the top of the page, as shown below. This will be required for setting up the data plane.
+
+<img
+  src="../../assets/tempImage (1).png"
+  alt="RudderStack-Hosted Control Plane"
+/>
+
+### Self-host the control plane
+
+<div class="warningBlock">
+
+  Use this option if you don't wish to sign up for RudderStack.
+</div>
+
+You can self-host your own control plane using the open-source [**Control Plane Lite**](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/) utility.
+
+<div class="dangerBlock">
+
+  Note that the control plane set up using the <a href="https://rudderstack.com/docs/get-started/control-plane-lite/">**Control Plane Lite**</a> utility lacks certain features like <a href="https://rudderstack.com/docs/transformations/">**Transformations**</a> and <a href="https://rudderstack.com/docs/user-guides/how-to-guides/live-destination-event-debugger/">**Live Events**</a> tab.
+</div>
+
+## Data plane setup
+
+This section lists the steps to set up the RudderStack Data Plane in your Kubernetes environment.
+
+### Prerequisites
+
+- [**Kubectl**](https://kubernetes.io/docs/tasks/tools/) installed and connected to your Kubernetes cluster
+- [**Helm**](https://helm.sh/) installed
+
+### For **RudderStack-hosted control plane**
+
+- Clone the [**repository**](https://github.com/rudderlabs/rudderstack-helm) containing the RudderStack Helm chart by running the following command:
+
+  ```bash
+  git clone git@github.com:rudderlabs/rudderstack-helm.git
+  ```
+
+- Navigate to the folder containing the Helm chart.
+
+  ```bash
+  cd rudderstack-helm
+  ```
+
+- To install the chart with the release name `my-release`, run the following command after replacing `<your_workspace_token>` with the workspace token copied from the RudderStack dashboard.
+
+```bash
+helm install my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
+```
+
+The above command deploys RudderStack on your default Kubernetes cluster configured with `kubectl`.
+
+<div class="infoBlock">
+
+  Refer to the <a href="#configuration">**Configuration**</a> section below for information on the parameters that can be configured during deployment.
+</div>
+
+- Once you have successfully followed the steps above, [**send test events**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/sending-test-events/) to verify the installation.
+
+### For the self-hosted control plane
+
+If you have self-hosted the control plane using the open-source [**Control Plane Lite**](https://rudderstack.com/docs/get-started/control-plane-lite/) utility, follow [**these**](https://rudderstack.com/docs/get-started/control-plane-lite/#kubernetes) instructions to set up the RudderStack data plane in your Kubernetes cluster.
+
+Once you have successfully followed the steps above, [**send test events**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/sending-test-events/) to verify the installation.
+
+## Upgrading the chart
+
+### For RudderStack-hosted control plane
+
+Update the configuration or version of the images and run the following command:
+
+```bash
+helm upgrade my-release ./ --set rudderWorkspaceToken="<your_workspace_token>"
+```
+
+### For self-hosted control plane
+
+Update the configuration or version of the images and run the following command:
+
+```bash
+helm upgrade my-release ./ --set backend.controlPlaneJSON=true
+```
+
+## Uninstalling the chart
+
+To uninstall or delete the `my-release` deployment, run the following command:
+
+```bash
+helm uninstall my-release
+```
+
+This removes all the components created by the chart.
+
+## Configuration
+
+The following table lists the configurable parameters of the RudderStack chart and their default values:
+
+| Parameter                           | Description                                                                                                                                        | Default                      |
+| :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------- |
+| `rudderWorkspaceToken`              | Workspace token from the dashboard                                                                                                                 | `-`                          |
+| `backend.image.repository`          | Container image repository for the backend                                                                                                         | `rudderlabs/rudder-server`   |
+| `backend.image.version`             | Container image tag for the backend. Check the [**Available versions**](https://hub.docker.com/r/rudderlabs/rudder-server/tags)                    | `0.1.9`                      |
+| `backend.image.pullPolicy`          | Container image pull policy for the backend image                                                                                                  | `Always`                     |
+| `transformer.image.repository`      | Container image repository for the transformer                                                                                                     | `rudderlabs/transformer`     |
+| `transformer.image.version`         | Container image tag for the transformer. Check the [**Available versions**](https://hub.docker.com/r/rudderlabs/rudder-transformer/tags)           | `0.1.4`                      |
+| `transformer.image.imagePullPolicy` | Container image pull policy for the transformer image                                                                                              | `Always`                     |
+| `backend.extraEnvVars`              | Extra environments variables to be used by the backend in the deployments                                                                          | Refer the `values.yaml` file |
+| `backend.controlPlaneJSON`          | Set this to `true` for the Data Plane to read the configuration from the `workspaceConfig.json` file in case you have a self-hosted Control Plane. | `false`                      |
+
+Each of these parameters can be changed in `values.yaml`. You can also specify each parameter using the `--set key=value[,key=value]` argument while running the `helm install` command.
+
+For example:
+
+```bash
+helm install --name my-release \
+  --set backend.image.version=v0.1.6 \
+  ./
+```
+
+<div class="infoBlock">
+
+  Note that:
+  <ul>
+    <li>
+      The configuration specific to the data plane can be edited in <a href="https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml">
+        <code class="inline-code">config.yaml</code>
+      </a>.
+    </li>
+    <li>
+      The configuration specific to PostgreSQL can be configured in <code class="inline-code">
+        pg_hba.conf
+      </code> and <code class="inline-code">postgresql.conf</code>.
+    </li>
+  </ul>
+</div>
+
+## Instructions for GCP
+
+Make sure you replace the contents of the file [**rudder-google-application-credentials.json**](https://github.com/rudderlabs/rudderstack-helm/blob/master/rudder-google-application-credentials.json) in the repository with the details of your Google service account if you are using Google Cloud Storage or BigQuery for the following cases:
+
+- [**Google Cloud Storage**](https://rudderstack.com/docs/destinations/storage-platforms/google-cloud-storage/) as a destination
+- Google Cloud Storage for dumping jobs
+- [**BigQuery**](https://rudderstack.com/docs/data-warehouse-integrations/google-bigquery/) as a warehouse destination
+
+## Components
+
+Installing this Helm chart will deploy the following pods and containers in the configured cluster:
+
+**POD - {Release name}-rudderstack-0 :**
+
+- `rudderstack-backend`
+- `rudderstack-telegraf-sidecar`
+
+**POD - {Release name}-rudderstack-postgresql-0 :**
+
+- `{Release name}-rudderstack-postgresql`
+
+**POD - {Release name}-rudderstack-transformer-xxxxxxxxxx-xxxxx:**
+
+- `transformer`
+
+## Contact us
+
+If you come across any issues while setting up RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
