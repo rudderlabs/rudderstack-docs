@@ -289,22 +289,54 @@ RudderClient.reset()
 
 ## Configuring the `options` object
 
-A sample `options` object that can be sent along with all the above-mentioned API calls is as shown:
-
-```javascript
-{
-  "externalIds": {
-    "brazeExternalId": "externalId1"
-  }
-}
-```
-
-The `options` object has the following signature:
+The `options` object can be sent along with all the above-mentioned API calls. It has the following signature:
 
 | Name | Data Type | Presence | Description |
 | :--- | :--- | :--- | :--- |
 | `externalIds` | `JSON Object` | Optional | Each key within `externalIds` object should define the type of external ID, and its value should be a `String` or `Integer`. |
 | `integrations` | `JSON Object` | Optional | Each key within the `integrations` object should hold the display name of your desired destination. Its value should be a `boolean` indicating whether you want to send that event or not. For more details check the [**Enabling/disabling events for specific destinations**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/#enablingdisabling-events-for-specific-destinations) section below. |
+
+A sample `options` object for an `identify` event is as shown:
+
+```javascript
+RudderClient.identify("1hKOmRA4el9Ztm", {
+  "address": {
+    "city": "New Orleans",
+    "country": "USA",
+    "state": "Louisiana",
+  },
+  "birthday": "01/24/1984",
+  "company": {
+    "name": "Apple Inc.",
+    "id": "1hKOmRA4el9Ztm",
+    "industry": "IT"
+  },
+  "email": "alex@example.com",
+  "firstName": "Alex",
+}, {
+  "externalIds": {
+    "brazeExternalId": "externalId1"
+  },
+  "integrations": {
+    "MixPanel": false,
+    "Amplitude": true
+  }
+})
+```
+
+In the above snippet, the `options` object is as follows:
+
+```javascript
+{
+  "externalIds": {
+    "brazeExternalId": "externalId1"
+  },
+  "integrations": {
+    "MixPanel": false,
+    "Amplitude": true
+  }
+}
+```
 
 ## Enabling/disabling user tracking via the optOut API \(GDPR support\)
 
