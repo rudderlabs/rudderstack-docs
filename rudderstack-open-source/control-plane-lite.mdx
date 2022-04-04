@@ -1,11 +1,10 @@
 ---
-title: "Control Plane Lite"
+title: "Control Plane Setup"
 description: >-
-  Step-by-step guide to set up your self-hosted control plane using
-  RudderStack's Control Plane Lite utility.
+  Step-by-step guide on setting up your self-hosted control plane using the Control Plane Lite utility.
 ---
 
-# Control Plane Lite
+# Control Plane Setup
 
 RudderStack's control plane manages the configuration of your sources and destinations.
 
@@ -24,7 +23,7 @@ To set up your self-hosted control plane using the Control Plane Lite utility, f
 
 <div class="infoBlock">
 
-  Make sure you have <a href="https://nodejs.org/en/download/">Node.js</a> installed before setting up your self-hosted control plane.
+Make sure you have <a href="https://nodejs.org/en/download/">Node.js</a> installed before setting up your self-hosted control plane.
 </div>
 
 1. Clone the [RudderStack Control Plane Lite](https://github.com/rudderlabs/config-generator) repository. 
@@ -105,11 +104,8 @@ cd rudderstack-helm/
 ```
 
 3. Open the `values.yaml` file.
-
 4. Set the parameter `controlPlaneJSON` to `true`.
-
 5. Export the workspace configuration from the dashboard by following the steps in the [Exporting workspace configuration](https://rudderstack.com/docs/get-started/control-plane-lite/#exporting-workspace-configuration) section above.
-
 6. Finally, run the following command:
 
 ```bash
