@@ -189,43 +189,6 @@ Also, RudderStack automatically converts a space in the event name to an undersc
 Blueshift supports receiving custom attributes about your site's customers. For more information on these attributes, refer to the <a href ="https://developer.blueshift.com/docs/customer-related-data#attributes">Blueshift Custom Attributes</a>.
 </div>
 
-## Group
-
-You can use the `group` call to assign users to a list. To create an empty user list, you can use the [userList](https://developer.blueshift.com/reference/post_api-v1-custom-user-lists-create) API of Blueshift.
-
-A sample `group` call is shown below:
-
-```javascript
-rudderanalytics.group("12345", {
-  userId: "35428",
-  name: "SF1 user list",
-  description: "The list of users who are based in San Francisco.",
-  email: "alex@example.com",
-  isSeedList: true,
-  source: "email",
-});
-```
-
-### Supported mappings
-
-The following table details the mapping between RudderStack and Blueshift fields:
-
-| RudderStack field | Blueshift field | Presence |
-| :-----| :--------| :-------------|
-| `groupId` | `list_id` | Required |
-| `userId` | `identifier_value` | Required |
-| `name`  | `name` | Optional|
-| `traits.description`/`context.traits.description` | `description` | Optional|
-| `traits.isSeedList`/`context.traits.isSeedList` | `is_seed_list` | Optional|
-| `traits.source`/`context.traits.source` | `source` | Optional|
-
-Rudderstack automatically maps the <code class="inline-code">identifier_key</code> to <code class="inline-code">customer_id</code> when <code class="inline-code">userId</code> is provided in the <code class="inline-code">group</code> call.
-
-<div class="infoBlock">
-  
-If a <code class="inline-code">list_id</code> already exists, the user is added to the list. Otherwise, a new empty user list is created and the user is added to that list.
-</div>
-
 ## FAQ
 
 ### How do I obtain the Blueshift API keys?
