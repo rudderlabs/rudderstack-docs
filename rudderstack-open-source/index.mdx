@@ -108,6 +108,40 @@ Installing and setting up open source RudderStack involves the following steps:
   </div>
 </a>
 
+## FAQ
+
+### Do I need to sign up for an account to set up open source RudderStack?
+
+Signing up for the [RudderStack-hosted web app](https://app.rudderstack.com/signup?type=opensource) is the easiest way to set up and manage your data pipelines. The web app is only used for source/destination configuration and does not have access to your data. It also provides a [Live Events](https://rudderstack.com/docs/get-started/live-events/) feature for debugging purposes, only for a limited time. 
+
+**RudderStack does not persist any of your data**.
+
+However, if you do not wish to sign up for RudderStack and want to self-host the source/destination configurations, you can use the open source [Control Plane Lite](https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility. To set up the RudderStack server (backend) in your own environment, follow the steps listed in the [Setup instructions](#setup-instructions) section for your preferred platform.
+
+<div class="warningBlock">
+
+The control plane set up using Control Plane Lite does not have features like <a href="https://rudderstack.com/docs/transformations">Transformations</a> and the ability to view <a href="https://rudderstack.com/docs/get-started/live-events/">live events</a>.
+</div>
+
+### What is a data plane URL? Where do I get it?
+
+For routing and processing the events to the RudderStack backend, a **data plane URL** is required.
+
+- If you're using open source RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](#setup-instructions) in your preferred environment.
+
+<div class="infoBlock">
+
+An open source RudderStack data plane URL typically looks like <code class="inline-code">http:localhost:8080</code>, where <code class="inline-code">8080</code> is the port where your RudderStack data plane is hosted.
+</div>
+
+- If you're using [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial), the data plane URL is provided in the dashboard.
+- If you're using the [pro/enterprise](https://rudderstack.com/pricing) version of RudderStack, [contact us](mailto:%20support@rudderstack.com) for the data plane URL with the email ID you used to sign up for RudderStack.
+
+<div class="infoBlock">
+
+  Refer to the <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture">RudderStack Architecture</a> guide for more information the RudderStack data plane.
+</div>
+
 ## Contact us
 
 For more information on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
