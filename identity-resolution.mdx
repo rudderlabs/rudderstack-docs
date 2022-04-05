@@ -17,7 +17,7 @@ This guide walks you through RudderStack's identity resolution feature in detail
 
 ## How identity resolution works
 
-Identity resolution involves using an **identity graph** - a database that houses and brings together all the different user identifiers and various aspects of their customer journeys into a single customer view. The identity graph collects and continually updates the customer profile with multiple identifiers mentioned above, like email, phone number, device IDs, etc.
+Identity resolution involves the usage of an **identity graph** - a database that houses and brings together all the different user identifiers throughout their journey into a single customer view. The identity graph collects and continually updates the customer profile with multiple identifiers mentioned above, like email, phone number, device IDs, etc.
 
 The following three steps summarize the identity resolution process:
 
@@ -31,44 +31,35 @@ In modern businesses, the identity graph used for cross-device identity stitchin
 
 With RudderStack, you can build an identity graph on top of your enriched warehouse data. You can then store this graph in your warehouse as a table. RudderStack then creates a unique virtual ID (`RUDDER_ID`), associates it with all the relevant user identifiers, and updates it continuously as new data comes into your warehouse.
 
-### Use case 
+<img src="./assets/identity-resolution/rudder-id.png" alt="Identity graph Rudder ID" />
+
+## Use case 
 
 This use case gives a quick walkthrough of a user's product journey on an e-commerce app integrated with RudderStack. You will see how RudderStack can be used to track and merge different user identifiers to build a unified customer profile.
 
 1. The user **anonymously** searches for a particular product on their mobile app - in this case, an iPhone. Here, RudderStack identifies the user with `anonymous_id_1` and the device with `device_id_1`.
 2. After browsing through the app, the user adds a product to their cart and **logs in** using their email. Here, RudderStack generates an `identify` event and associates `anonymous_id_1` with the user's email ID `email` (user's unique identifier). Note that RudderStack also generates a `track` call with the details around the browsing activity and updates to the cart.
-
-Then, the user does not proceed with the purchase and drops off, for some reason.
-
-3. Later, the same user uses a laptop and browses through the e-commerce website **anonymously**. Again, RudderStack generates an `anonymous_id_2` corresponding to the user and a device ID `device_id_2`.
-4. The user then **logs in** with their email and password. RudderStack then generates an `identify` call associating the same `email` with `anonymous_id_2`. The user then proceeds to complete the purchase. A `track` call is then generated with the details around the purchase.
+3. For some reason, the user does not proceed with the purchase and drops off.
+4. Later, the same user uses a laptop and browses through the e-commerce website **anonymously**. Again, RudderStack generates an `anonymous_id_2` corresponding to the user and a device ID `device_id_2`.
+5. The user then **logs in** with their email and password. RudderStack then generates an `identify` call associating the same `email` with `anonymous_id_2`. The user then proceeds to complete the purchase. A `track` call is then generated with the details around the purchase.
 
 The above workflow is visually represented in the following image:
 
 <img src="./assets/identity-resolution/identity-resolution-workflow.png" alt="Identity Resolution workfow" />
 
-RudderStack has a `merge` API that you can leverage to connect and merge these different user identities in the warehouse and associate them to a single customer profile:
-
-<img src="./assets/identity-resolution/rudder-id.png" alt="Identity graph Rudder ID" />
-
-<div class="successBlock">
-
-You can also leverage RudderStack's <a href="#user-transformations">Transformations</a> feature to merge different identifiers before sending the data to the warehouse.
-</div>
+RudderStack then applies the [identity merges](#merging-identifiers-with-rudderstack) on all the events and generates a [`RUDDER_IDENTITY_MAPPINGS`](#what-happens-in-the-warehouse-after-merging-the-identifiers) table that includes all the identity mappings associated with the user. It also assigns a unique `RUDDER_ID` for all the merged identities.
 
 ## Merging identifiers with RudderStack
 
-RudderStack gives you two options to merge user identifiers and build an identity graph:
+RudderStack has a `merge` API that you can leverage to connect and merge these different user identities in the warehouse and associate them to a single customer profile. You can also leverage RudderStack's [Transformations](#user-transformations) feature to merge different identifiers before sending the data to the warehouse.
 
-- Using the Merge API
-- Leveraging user transformations
+### Using the `merge` API
 
-### Using the`merge` API
-
-As discussed in the use case above, RudderStack provides the `merge` API to connect and merge these different user identities in the warehouse.
+As mentioned above, RudderStack provides a `merge` API to connect and merge different user identifiers in the warehouse.
 
 The `merge` event structure is as shown:
 
+```json
 {
     "type": "merge",
     "mergeProperties": [
@@ -82,12 +73,13 @@ The `merge` event structure is as shown:
         }
     ]
 }
+```
 
-Here, `"type": "merge_property_type_*"` corresponds to a unique user identifier like email address, phone number, device ID, anonymous ID, etc. that can be merged and connected to a given user profile. 
+Here, `"type": "merge_property_type_*"` corresponds to a unique user identifier like email address, phone number, device ID, anonymous ID, etc. that can be merged and connected to a given user profile.
 
 ### User transformations
 
-Alternatively, you can use [custom transformations](https://www.rudderstack.com/docs/transformations/) to merge user identifiers in your event data before sending it to the warehouse destination.
+Alternatively, you can use [RuddderStack Transformations](https://www.rudderstack.com/docs/transformations/) to merge user identifiers in your event data before sending it to the warehouse destination.
 
 A sample transformation is as shown:
 
@@ -116,15 +108,20 @@ function transform(events) {
 }
 ```
 
-### What happens in the warehouse?
+### What happens in the warehouse after merging the identifiers?
 
-Once you call the `merge` API or leverage the user transformations to merge the user identifiers and send the data to the warehouse destination, RudderStack creates the following two tables in your warehouse.
+Once you call the `merge` API or leverage the user transformations to merge the user identifiers and send the data to the warehouse destination, RudderStack creates the following two tables in your warehouse:
 
-The `RUDDER_IDENTITY_MAPPINGS` table contains the nodes (user identifiers and their values) associated with a given identity graph (customer profile). Each node has a  `RUDDER_ID` associated with it, as shown:
+| Table | Description |
+| :----| :-------|
+| `RUDDER_IDENTITY_MAPPINGS` | Contains the nodes (user properties and their values) associated with a given identity graph (customer profile). Each node has a  `RUDDER_ID` associated with it. |
+| `RUDDER_IDENTITY_MERGE_RULES` | Contains all the edges that connect two different identifiers (nodes). |
+
+The `RUDDER_IDENTITY_MAPPINGS` table in the context of the above [use case](#use-case) that highlights the different identifiers associated with the user is shown below:
 
 <img src="./assets/identity-resolution/identity-mappings-table.png" alt="Identity Mappings table in warehouse" />
 
-On the other hand, the `RUDDER_IDENTITY_MERGE_RULES` table contains all the edges that connect two different identifiers (nodes).
+The `RUDDER_IDENTITY_MERGE_RULES` table that connects different user identifiers is as shown:
 
 <img src="./assets/identity-resolution/identity-merge-rules.png" alt="Identity merge rules table in the warehouse" />
 
@@ -136,4 +133,4 @@ This allows you to enrich the user profile with more information across various 
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel.
