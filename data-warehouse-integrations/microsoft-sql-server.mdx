@@ -71,9 +71,12 @@ To configure SQL Server as a destination, please follow these steps:
 </div>
 
 - After choosing a source, click on the **Add Destination** button and select **SQL Server** from the list of destinations.
-- Assign a name to your destination and then click on **Next**. You should then see the following screen:
+- Assign a name to your destination and then click on **Next**. 
 
-<img src="../assets/mssqlconnection.png" />
+### Connection Settings
+
+<img src="../assets/dw-integrations/mssqlconnection.png" />
+<img src="../assets/dw-integrations/mssqlconnection2.png" />
 
 - Enter the following credentials in the **Connection Settings**:
   - **Host -** The host name of your SQL Server service.
@@ -86,11 +89,29 @@ To configure SQL Server as a destination, please follow these steps:
 
 <div class="successBlock">
 
-  You can also set the **Sync Frequency** to set the frequency of
+  You can also set the <strong>Sync Frequency</strong> to set the frequency of
   the data import into your SQL Server database. Optionally, you can also
   specify the time when you want this synchronization to start, by choosing the
-  time under the **Sync Starting At** option.
+  time under the <strong>Sync Starting At</strong> option.
 </div>
+
+### Configuring the object storage
+
+RudderStack lets you configure the following object storage configuration settings while setting up your Microsoft SQL Server destination:
+
+  - **Use RudderStack-managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage.
+
+<div class="warningBlock">
+
+This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
+</div>
+
+ - **Choose your storage provider**: If **Use RudderStack-managed object storage** is disabled in the dashboard, you can select the cloud provider for your object storage and enter the relevant settings.
+
+   - [Amazon S3 bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/amazon-s3/#setting-up-amazon-s3)
+   - [Azure Blob Storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage)
+   - [Google Cloud Storage bucket settings](https://www.rudderstack.com/docs/destinations/storage-platforms/google-cloud-storage/#setting-up-google-cloud-storage)
+   - [MinIO bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/minio/#setting-up-minio)
 
 ## Setting up network access
 
