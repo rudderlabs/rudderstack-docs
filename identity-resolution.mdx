@@ -145,6 +145,17 @@ As the user logs in using more devices, different identifiers are associated wit
 
 This allows you to enrich the user profile with more information across various digital touchpoints without worrying about the size or the scale. You can use this information to deliver personalized product and user experiences.
 
+## FAQ
+
+### Does RudderStack auto-merge any user identifiers?
+
+Yes,  RudderStack auto-merges the following user identifiers by default so you don't need to call the`merge` API or leverage user transformations to merge them:
+
+- `userId` and `previousId` for the [`alias`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/) calls
+- `userId` and `anonymousId` for the [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/), [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/), and [`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) calls.
+
+For merging other user identifiers like device ID, phone number, email ID, etc. RudderStack provides a <a href="#using-the-merge-api"><code class="inline-code">merge</code</a> API. Alternatively, you can use the [Transformations](https://www.rudderstack.com/docs/transformations/) feature to merge these identifiers.
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel.
