@@ -27,9 +27,9 @@ The following three steps summarize the identity resolution process:
 
 ## Identity resolution in RudderStack
 
-In modern businesses, the identity graph used for cross-device identity stitching can be quite large, sometimes consisting of hundreds of millions of nodes. As you gather more data, this number scales rapidly. In such a scenario, storing the identity graph in your data warehouse makes a lot of sense from a storage and scalability perspective.
+In modern businesses, the identity graph used for cross-device identity stitching can be quite large, sometimes consisting of hundreds of millions of nodes. As you gather more data, this number increases rapidly. In such a scenario, storing the identity graph in your data warehouse makes a lot of sense from a storage and scalability perspective.
 
-With RudderStack, you can build an identity graph on top of your enriched warehouse data. You can then store this graph in your warehouse as a table. RudderStack then creates a unique virtual ID (`RUDDER_ID`), associates it with all the relevant user identifiers, and updates it continuously as new data comes into your warehouse.
+With RudderStack, you can build an identity graph on top of your enriched warehouse data and store it in your warehouse as a table. RudderStack associates a unique virtual ID (`RUDDER_ID`)with all the mapped user identifiers and updates it continuously as new data comes into your warehouse.
 
 <img src="./assets/identity-resolution/rudder-id.png" alt="Identity graph Rudder ID" />
 
@@ -51,7 +51,21 @@ RudderStack then applies the [identity merges](#merging-identifiers-with-rudders
 
 ## Merging identifiers with RudderStack
 
-RudderStack has a `merge` API that you can leverage to connect and merge these different user identities in the warehouse and associate them to a single customer profile. You can also leverage RudderStack's [Transformations](#user-transformations) feature to merge different identifiers before sending the data to the warehouse.
+RudderStack has a `merge` API that you can use to send and merge different user identities and associate them to a single customer profile. You can also leverage RudderStack's [Transformations](#user-transformations) feature to merge different identifiers before sending the data to the warehouse.
+
+<div class="infoBlock">
+
+  RudderStack auto-merges the following user identifiers by default so you don't need to call the <code class="inline-code">merge</code> API for them or merge them via transformations:
+  <ul>
+    <li><code class="inline-code">userId</code> and <code class="inline-code">previousId</code> for <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/"><code class="inline-code">alias</code></a> calls</li>
+    <li> <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code> for <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/"><code class="inline-code">track</code></a>, <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/"><code class="inline-code">page</code></a>, <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/"><code class="inline-code">group</code></a>, and <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/"><code class="inline-code">screen</code></a> calls</li>
+  </ul>
+</div>
+
+<div class="successBlock">
+
+  You can merge other user identifiers like device ID, phone number, email ID, etc. by calling the <code class="inline-code">merge</code> API or via user transformations.
+</div>
 
 ### Using the `merge` API
 
@@ -110,18 +124,18 @@ function transform(events) {
 
 ### What happens in the warehouse after merging the identifiers?
 
-Once you call the `merge` API or leverage the user transformations to merge the user identifiers and send the data to the warehouse destination, RudderStack creates the following two tables in your warehouse:
+Once you call the `merge` API or leverage the user transformations to merge the user identifiers, RudderStack creates the following two tables in your warehouse:
 
 | Table | Description |
 | :----| :-------|
 | `RUDDER_IDENTITY_MAPPINGS` | Contains the nodes (user properties and their values) associated with a given identity graph (customer profile). Each node has a  `RUDDER_ID` associated with it. |
 | `RUDDER_IDENTITY_MERGE_RULES` | Contains all the edges that connect two different identifiers (nodes). |
 
-The `RUDDER_IDENTITY_MAPPINGS` table in the context of the above [use case](#use-case) that highlights the different identifiers associated with the user is shown below:
+In the context of the above [use case](#use-case), the `RUDDER_IDENTITY_MAPPINGS` table highlighting the different identifiers associated with the user is as shown:
 
 <img src="./assets/identity-resolution/identity-mappings-table.png" alt="Identity Mappings table in warehouse" />
 
-The `RUDDER_IDENTITY_MERGE_RULES` table that connects different user identifiers is as shown:
+The `RUDDER_IDENTITY_MERGE_RULES` table that connects different user identifiers is shown below:
 
 <img src="./assets/identity-resolution/identity-merge-rules.png" alt="Identity merge rules table in the warehouse" />
 
