@@ -10,7 +10,7 @@ RudderStack's control plane manages the configuration of your sources and destin
 
 <div class="infoBlock">
 
-  For more information on the control plane, refer to RudderStack's <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/#control-plane">architecture</a>.
+  For more information on the control plane, refer to RudderStack's <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/#control-plane">Architecture</a>.
 </div>
 
 The easiest way to manage these configurations is through RudderStack's [self-hosted control plane](https://app.rudderstack.com/). It is free, requires no setup, and has some useful features like [Live Events](https://rudderstack.com/docs/user-guides/how-to-guides/live-destination-event-debugger/) and [Transformations](https://rudderstack.com/docs/transformations/).
@@ -68,7 +68,6 @@ For RudderStack to pick up the exported workspace configuration file, follow the
 ```
 
 3. Then, replace `<workspace_config_filepath_in_container>`  in the above line with your container file path. By default, you can set it to `/etc/rudderstack/workspaceConfig.json`.
-
 4. In the `volumes` section under the `backend` service, uncomment the following line:
 
 ```yaml
