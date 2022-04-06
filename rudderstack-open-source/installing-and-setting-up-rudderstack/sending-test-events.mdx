@@ -12,10 +12,10 @@ description: >-
 This guide assumes that you have already <a href="/docs/get-started/installing-and-setting-up-rudderstack">installed and set up RudderStack</a> in your preferred environment.
 </div>
 
-This guide details the following two approaches that you can use to send test events and verify your RudderStack installation:
+You can follow any of the two approaches to send test events and verify your RudderStack installation:
 
-- Using the bundled shell script
-- Using RudderStack's HTTP API
+- Bundled shell script
+- RudderStack's HTTP API
 
 ## Bundled Shell Script
 
@@ -25,7 +25,7 @@ The [RudderStack GitHub repository](https://github.com/rudderlabs/rudder-server)
 git clone https://github.com/rudderlabs/rudder-server.git
 ```
 
-Then, follow the sections below to send test events.
+Then, follow the steps below to send test events.
 
 ### Step 1: Getting the source write key
 
@@ -47,7 +47,7 @@ Note that the write key is different from your workspace token. The write key is
 If you are self-hosting RudderStack and have set up the control plane using the [Control Plane Lite](https://rudderstack.com/docs/get-started/control-plane-lite/) utility, you can obtain the source write key by following these steps:
 
 1. Set up a source and a destination. For more information, follow the [Adding a Source and Destination in RudderStack](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) guide.
-2. You can find the write key associated with the source in the dashboard as shown:
+2. Note the write key associated with the source in the dashboard as shown:
 
 <img src="../../assets/rudderstack-open-source/control-plane-lite-source-writekey.png" alt="Control plane lite source write Key" />
 
@@ -70,7 +70,7 @@ You can then check your destination to verify that the events are delivered.
 
 <div class="infoBlock">
 
-Note that unlike RudderStack Open Source, the control set up using the <a href="https://rudderstack.com/docs/get-started/control-plane-lite/">Control Plane Lite</a> utility does not let you view live events.
+Note that unlike RudderStack Open Source, the control plane set up using the <a href="https://rudderstack.com/docs/get-started/control-plane-lite/">Control Plane Lite</a> utility does not let you view live events.
 </div>
 
 If you supply an invalid source write key or data plane URL, you will get the following error:
@@ -86,7 +86,7 @@ To send test events via the [RudderStack HTTP API](https://www.rudderstack.com/d
 
 RudderStack uses **Basic Authentication** for authenticating all the HTTP requests. The HTTP Basic Authentication requires a user name and password where:
   - The user name is the `source_write_key`
-  - The password is an empty string (`" "`)
+  - The password is an empty string (`""`)
 
 Now you can send test API requests and verify if your installation is working as expected.
 
