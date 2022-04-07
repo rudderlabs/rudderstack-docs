@@ -7,33 +7,33 @@ description: >-
 
 # Sources
 
-In RudderStack, a **source** refers to a platform or an application (web, mobile, server-side, or a third-party cloud app) from where RudderStack can track and collect your event data.
+In RudderStack, a **source** refers to a platform or an application (web, mobile, server-side, or a third-party cloud app) from where RudderStack can track and collect the event data.
 
 <div class="infoBlock">
 
   You can configure a source for every unique source of data. Also, you can also create multiple sources for each website or application from where you want to track the data.
 </div>
 
-RudderStack Cloud provides **Sources** option in the left navigation bar that allows you to view all the configured sources in the RudderStack dashboard:
+The **Sources** option is povided in the left navigation bar in the RudderStack dashboard and allows you to view all the configured sources, as shown:
 
-<img src="../assets/general/rudderstack-sources.png" alt="RudderStack sources" />
+<img src="../assets/rs-cloud/rudderstack-sources.png" alt="RudderStack sources" />
 
 ## Adding a source
 
 Follow these steps to add an event data source in RudderStack:
 
-1. Log in to the **RudderStack dashboard**.
+1. Log into the [RudderStack dashboard](https://app.rudderstack.com/).
 
-<img src="../assets/general/connections-dashboard.png" alt="RudderStack Dashboard" />
+<img src="../assets/rs-cloud/connections-dashboard.png" alt="RudderStack Dashboard" />
 
 2. Click on **New Source** and select the source you want to set up in RudderStack.
 
-<img src="../assets/2 (30).png" alt="Add Source" />
+<img src="../assets/rs-cloud/add-source.png" alt="Add Source" />
 
 <div class="successBlock">
 
-  RudderStack sources are classified into the following three
-  categories. Refer to their respective documentation for more information:
+  RudderStack classifies its sources into the following
+  categories:
   <ul>
     <li>
       <a href="https://rudderstack.com/docs/stream-sources/">Event Streams</a>
@@ -42,7 +42,7 @@ Follow these steps to add an event data source in RudderStack:
       <a href="https://rudderstack.com/docs/cloud-extract-sources/">Cloud Extract</a>
     </li>
     <li>
-      <a href="https://rudderstack.com/docs/warehouse-actions/">Warehouse Actions</a>
+      <a href="https://rudderstack.com/docs/reverse-etl/">Reverse ETL</a>
     </li>
   </ul>
 </div>
@@ -50,39 +50,38 @@ Follow these steps to add an event data source in RudderStack:
 3. Assign a name to the source, and click **Next**.
 4. Configure the source with relevant connection settings.
 
-<img src="../assets/general/source-configure.png" alt="Source configuration" />
+<img src="../assets/rs-cloud/source-configure.png" alt="Source configuration" />
 
 <div class="warningBlock">
 
-  Setting up a data source to ingest data from cloud apps might require
+  Setting up a data source to ingest data from the cloud apps might require
   additional configuration. Refer to the relevant source documentation for
   more details.
 </div>
 
 <div class="infoBlock">
-  Note the source <strong>Write Key</strong>. It is required while configuring the RudderStack SDK to track and collect events from the source platform.
-</div>
 
-<img src="../assets/latest.png" alt="Write Key" />
+  Note the source <strong>Write Key</strong> in the above image. It is required while configuring the RudderStack SDK to track and collect events from the source platform.
+</div>
 
 ## Source details
 
 To get details about a configured source, click on it to see following view on the dashboard:
 
-<img src="../assets/general/rudderstack-source-details.png" alt="RudderStack source details" />
+<img src="../assets/rs-cloud/rudderstack-source-details.png" alt="RudderStack source details" />
 
 These options can be explained as follows:
 
 - **Rename**: Lets you rename the source by clicking the edit icon next to the source's name.
 
-<img src="../assets/general/rename-source.png" alt="Rename source" />
+<img src="../assets/rs-cloud/rename-source.png" alt="Rename source" />
 
 - **Write Key**: It is required to send the data from your source.
 
-For example, you can load [**RudderStack's JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your website to track and collect the events by running the following snippet:
+For example, you can load the [RudderStack's JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your website to track and collect the events by running the following snippet:
 
 ```javascript
-  rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, options);
+  rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, options);
 ```
 
 - **Add Destination**: Lets you add a new destination connected to this source.
