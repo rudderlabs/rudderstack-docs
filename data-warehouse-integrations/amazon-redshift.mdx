@@ -192,20 +192,41 @@ Please follow our <a href="https://rudderstack.com/docs/connections/adding-sourc
 
 </div>
 
-- Once you have set up the source, select **Redshift** from the list of destinations. Give your destination a name, and then click on **Next**. You will then see the following **Connection Credentials** screen:
+- Once you have set up the source, select **Redshift** from the list of destinations. Give your destination a name, and then click on **Next**.
 
-<img src="../assets/14.png" alt="Select Redshift" /><span class="imageTitle">Connection Settings for adding Redshift as a destination in RudderStack</span>
+### Connection Settings
 
-- Enter the details of the cluster you have created in the [Setting Up a Redshift Cluster](https://rudderstack.com/docs/data-warehouse-integrations/amazon-redshift/#setting-up-a-redshift-cluster) section. You will also need to create a S3 bucket to which the data will be dumped.
-- You will also need to enter the AWS Access Key ID and AWS Secret Access Key. you can avoid this by setting up permission for your S3 bucket by following [this guide](https://rudderstack.com/docs/data-warehouse-integrations/amazon-redshift/#s3-permissions).
+<img src="../assets/dw-integrations/redshift-connection-settings.png" alt="Redshift connection settings" />
+<img src="../assets/dw-integrations/redshift-connection-settings2.png" alt="Redshift connection settings" />
 
-<div class="infoBlock">
+- Enter the following credentials in the **Connection Settings**:
+  - **Host -** Enter the host name of your Redshift service.
+  - **Port** - Enter the port number associated with the Redshift database instance.
+  - **Database -** The database name in your Redshift instance where the data is to be sent goes here.
+  - **User** - Enter the user name which has the required read/write access to the above database.
+  - **Password** - The password for the above user goes here.
 
-You can read more about creating a S3 bucket in <a href="https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html">this article</a>.
+<div class="successBlock">
 
+  You can also set the <strong>Sync Frequency</strong> to set the frequency of
+  the data import into your SQL Server database. Optionally, you can also
+  specify the time when you want this synchronization to start, by choosing the
+  time under the <strong>Sync Starting At</strong> option.
 </div>
 
-That's it! You have successfully added Redshift as a destination in RudderStack. Once you start sending events from your source, RudderStack will dump them into the specified S3 bucket periodically.
+### Configuring the object storage
+
+RudderStack lets you configure the following object storage configuration settings while setting up your Azure Synapse destination:
+
+  - **Use RudderStack-managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage.
+
+<div class="warningBlock">
+
+This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
+</div>
+
+ - **Choose your storage provider**: If **Use RudderStack-managed object storage** is disabled in the dashboard, you can enter the relevant [Amazon S3 bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/amazon-s3/#setting-up-amazon-s3).
+ 
 
 ## S3 Permissions
 
