@@ -1,0 +1,162 @@
+---
+# slug: "/docs/rudderstack-api/api-specification/video-specification"
+title: "Application Lifecycle Events Specification"
+description: >-
+  Detailed technical description of the various application lifecycle events tracked by the RudderStack SDKs.
+---
+
+# Application Lifecycle Events Specification
+
+RudderStack lets you track various application lifecycle events across the mobile SDKs and get insights into app-related metrics like installs, opens, etc. This guide provides the details and semantic definitions of these events and the associated properties.
+
+## Supported lifecycle events
+
+RudderStack **automatically tracks** the following application lifecycle events:
+
+- [Application Installed](#application-installed)
+- [Application Opened](#application-opened)
+- [Application Updated](#application-updated)
+- [Application Backgrounded](#application-backgrounded)
+
+<div class="infoBlock">
+
+To disable the auto-tracking of these events, set the <code class="inline-code">withTrackLifecycleEvents</code> parameter to <code class="inline-code">false</code> while initializing the SDK.
+</div>
+
+## Application Installed
+
+This event is fired when a user opens an application for the first time after installation.
+
+<div class="warningBlock">
+
+RudderStack does not collect this event if the user does not open the app after installation.
+</div>
+
+A sample payload is shown below:
+
+```json
+{
+  "userId": "1hKOmRA4el9Z",
+  "type": "track",
+  "event": "Application Installed",
+  "properties": {
+    "version": "11.1.7"
+  }
+}
+```
+
+RudderStack tracks the following properties for this event:
+
+| Property | Type | Description |
+| :--------| :-----| :------------|
+| `version` | String | The version of the installed application. |
+
+## Application Opened
+
+This event is fired when a user launches an application after the first launch and subsequently every time the app is reopened after it is closed or backgrounded.
+
+A sample payload is shown below:
+
+```json
+{
+  "userId": "1hKOmRA4el9Z",
+  "type": "track",
+  "event": "Application Opened",
+  "properties": {
+    "from_background": false,
+    "referring_application": "Whatsapp",
+    "url": "https://www.estore.com/best-seller/1",
+    "version": "11.1.7"
+  }
+}
+```
+
+RudderStack tracks the following properties for this event:
+
+| Property | Type | Description |
+| :--------| :-----| :------------|
+| `from_background` | Boolean | Determines if the app was backgrounded initially or if it is a fresh open.  |
+| `url`* | String | The deep linking URL with which the user was directed into the app. |
+| `referring_application`* | String | The external application from which the user was referred to the app. |
+| `version`* | String | The version of the installed application. |
+
+There are some differences in the way the RudderStack SDKs handle the above event properties:
+
+### Android SDK
+
+- The properties marked with an asterisk (`url`, `referring_application`, `version`) are tracked and sent only if they are available on the first launch of the application.
+- RudderStack also sends all the query parameters received as a part of the deep linking URL as key-value pairs in the `Application Opened` event properties.
+
+### iOS SDK
+
+- The properties marked with an asterisk (`url`, `referring_application`, `version`) are tracked and sent only if they are available on every application launch.
+
+### React Native SDK
+
+| Platform | Expected behavior |
+| :--------| :---|
+| Android | RudderStack **does not track** the properties marked with an asterisk (`url`, `referring_application`, `version`). | 
+| iOS | The properties marked with an asterisk are tracked only if they are available on every application launch. |
+
+### Flutter SDK
+
+| Platform | Expected behavior |
+| :--------| :---|
+| Android | **No properties** are tracked. | 
+| iOS | The properties marked with an asterisk (`url`, `referring_application`, `version`)  are tracked only if they are available on every application launch. |
+
+### Cordova SDK
+
+| Platform | Expected behavior |
+| :--------| :---|
+| Android | Same behavior as the [Android SDK](#android-sdk). | 
+| iOS | Same behavior as the [iOS SDK](#ios-sdk). |
+
+## Application Updated
+
+This event is fired when a user updates their application.
+
+A sample payload is shown below:
+
+```json
+{
+  "userId": "1hKOmRA4el9Z",
+  "type": "track",
+  "event": "Application Updated",
+  "properties": {
+    "previous_version": "11.1.7",
+    "version": "12.0.1"
+  }
+}
+```
+
+RudderStack tracks the following properties for this event:
+
+| Property | Type | Description |
+| :--------| :-----| :------------|
+| `previous_version` | String | The application version before it was updated.  |
+| `version` | String | The current version of the application after it is updated. |
+
+## Application Backgrounded
+
+This event is fired when the user backgrounds the application.
+
+A sample payload is shown below:
+
+```json
+{
+  "userId": "1hKOmRA4el9Z",
+  "type": "track",
+  "event": "Application Backgrounded",
+  "properties": {}
+}
+```
+
+<div class="infoBlock">
+
+RudderStack does not track any properties for this event.
+</div>
+
+## Contact us
+
+For more information on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
