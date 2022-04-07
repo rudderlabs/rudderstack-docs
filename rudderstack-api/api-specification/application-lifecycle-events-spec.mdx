@@ -20,7 +20,7 @@ RudderStack **automatically tracks** the following application lifecycle events:
 
 <div class="infoBlock">
 
-To disable the auto-tracking of these events, set the <code class="inline-code">withTrackLifecycleEvents</code> parameter to <code class="inline-code">false</code> while initializing the SDK.
+To disable the auto-tracking of these events, set the <code class="inline-code">withTrackLifecycleEvents</code> parameter to <code class="inline-code">false</code> while initializing the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#initializing-the-rudderstack-client">Android</a> / <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#initializing-the-rudderstack-client">iOS</a> SDK.
 </div>
 
 ## Application Installed
@@ -36,7 +36,6 @@ A sample payload is shown below:
 
 ```json
 {
-  "userId": "1hKOmRA4el9Z",
   "type": "track",
   "event": "Application Installed",
   "properties": {
@@ -71,6 +70,12 @@ A sample payload is shown below:
 }
 ```
 
+
+<div class="infoBlock">
+  
+  <code class="inline-code">userId</code> will be present only if the user is logged into the application, i.e. an <code class="inline-code">identify</code> call is made previously.
+</div>
+
 RudderStack tracks the following properties for this event:
 
 | Property | Type | Description |
@@ -90,6 +95,13 @@ There are some differences in the way the RudderStack SDKs handle the above even
 ### iOS SDK
 
 - The properties marked with an asterisk (`url`, `referring_application`, `version`) are tracked and sent only if they are available on every application launch.
+
+### Unity SDK
+
+| Platform | Expected behavior |
+| :--------| :---|
+| Android | Same behavior as the [Android SDK](#android-sdk). | 
+| iOS | Same behavior as the [iOS SDK](#ios-sdk). |
 
 ### React Native SDK
 
@@ -156,6 +168,16 @@ A sample payload is shown below:
 
 RudderStack does not track any properties for this event.
 </div>
+
+## FAQ
+
+### Do the application lifecycle events follow the standard timestamping format?
+
+Yes, the lifecycle events follow the timestamp format in accordance with the [RudderStack API Spec](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/).
+
+### Do the lifecycle events include the user traits or `context` objects?
+
+The application lifecycle events include the `context` objects. Note that `userId` would be present only if the user is logged into the application, i.e. an `identify` call is made previously.
 
 ## Contact us
 
