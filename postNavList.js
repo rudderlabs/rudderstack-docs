@@ -1631,6 +1631,12 @@ export const postNavList = [
     "content":[]
  },
  {
+   "key":"application-lifecycle-events-spec",
+   "title":"Application Lifecycle Events",
+   "link":"/rudderstack-api/api-specification/application-lifecycle-events-spec/",
+   "content":[]
+},
+ {
     "key":"video-specification",
     "title":"Video Events",
     "link":"/rudderstack-api/api-specification/video-specification/",
