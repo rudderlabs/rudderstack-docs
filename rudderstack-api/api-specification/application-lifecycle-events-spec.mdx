@@ -7,11 +7,11 @@ description: >-
 
 # Application Lifecycle Events Specification
 
-RudderStack lets you track and capture various application lifecycle events across the mobile SDKs and get insights into various app-related metrics like installs, opens, etc. This guide provides the details and semantic definitions of these events and the associated properties.
+RudderStack lets you track various application lifecycle events across the mobile SDKs and get insights into different app-related metrics like installs, opens, etc. This guide provides the details and semantic definitions of these events and the associated properties.
 
 ## Supported lifecycle events
 
-RudderStack supports and **automatically tracks** the following application lifecycle events:
+RudderStack **automatically tracks** the following application lifecycle events:
 
 - [Application Installed](#application-installed)
 - [Application Opened](#application-opened)
@@ -20,12 +20,12 @@ RudderStack supports and **automatically tracks** the following application life
 
 <div class="infoBlock">
 
-To disable autotracking these events, set the <code class="inline-code">withTrackLifecycleEvents</code> parameter to <code class="inline-code">false</code> while initializing the SDK.
+To disable the auto-tracking of these events, set the <code class="inline-code">withTrackLifecycleEvents</code> parameter to <code class="inline-code">false</code> while initializing the SDK.
 </div>
 
 ## Application Installed
 
-This event is fired when the user opens the application for the first time after installation.
+This event is fired when the user opens an application for the first time after installation.
 
 <div class="warningBlock">
 
@@ -53,7 +53,7 @@ RudderStack tracks the following properties for this event:
 
 ## Application Opened
 
-This event is fired when the user launches the application after the first open and subsequently when the app is reopened every time after it is closed.
+This event is fired when a user launches an application after the first launch and subsequently every time the app is reopened after it is closed or backgrounded.
 
 A sample payload is shown below:
 
@@ -114,7 +114,7 @@ There are some differences in the way the RudderStack SDKs handle the above even
 
 ## Application Updated
 
-This event is fired when the user updates their application. 
+This event is fired when a user updates their application.
 
 A sample payload is shown below:
 
@@ -135,7 +135,7 @@ RudderStack tracks the following properties for this event:
 | Property | Type | Description |
 | :--------| :-----| :------------|
 | `previous_version` | String | The application version before it was updated.  |
-| `version` | String | The current version of the application after it was updated. |
+| `version` | String | The current version of the application after it is updated. |
 
 ## Application Backgrounded
 
