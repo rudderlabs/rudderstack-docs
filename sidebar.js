@@ -2183,14 +2183,14 @@ export const jsonData = [
      ]
   },
   {
-     "key":"get-started",
+     "key":"rudderstack-open-source",
      "title":"RudderStack Open Source",
-     "link":"/get-started/",
+     "link":"/rudderstack-open-source/",
      "content":[
         {
          "key":"control-plane-lite",
          "title":"Control Plane Setup",
-         "link":"/get-started/control-plane-lite/",
+         "link":"/rudderstack-open-source/control-plane-lite/",
          "content":[
             
          ]
@@ -2198,12 +2198,12 @@ export const jsonData = [
         {
            "key":"installing-and-setting-up-rudderstack",
            "title":"Data Plane Setup",
-           "link":"/get-started/installing-and-setting-up-rudderstack/",
+           "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/",
            "content":[
               {
                  "key":"docker",
                  "title":"Docker",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
+                 "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
                  "content":[
                     
                  ]
@@ -2211,7 +2211,7 @@ export const jsonData = [
               {
                  "key":"kubernetes",
                  "title":"Kubernetes",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
+                 "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
                  "content":[
                     
                  ]
@@ -2219,7 +2219,7 @@ export const jsonData = [
               {
                  "key":"developer-machine-setup",
                  "title":"Developer Machine Setup",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
+                 "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
                  "content":[
                     
                  ]
@@ -2227,7 +2227,7 @@ export const jsonData = [
               {
                  "key":"sending-test-events",
                  "title":"Sending Test Events",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
+                 "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
                  "content":[
                     
                  ]
