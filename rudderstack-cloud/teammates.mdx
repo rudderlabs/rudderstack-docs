@@ -6,7 +6,7 @@ description: Detailed description of the Teammates option in RudderStack Cloud.
 
 # Teammates
 
-Teammates feature lets you add and manage other users in your current workspace. It also enables easier collaboration between you and other members of your team or organization.
+The **Teammates** feature lets you add and manage other users in the current workspace of RudderStack dashboard. It also enables easier collaboration between you and other members of your team or organization.
 
 The below table specifies the number of teammates you can add to your workspace in different RudderStack Cloud plans:
 
@@ -19,26 +19,27 @@ The below table specifies the number of teammates you can add to your workspace 
 <div class="successBlock">
 
   Check <a href="https://rudderstack.com/pricing/">RudderStack pricing plans</a> for a
-  complete list of the supported features or upgrade the <a href="https://app.rudderstack.com/profile/billing">free plan</a>.
+  complete list of the supported features or to upgrade the <a href="https://app.rudderstack.com/profile/billing">free plan</a>.
 </div>
 
 ## Invite user
 
 To invite a user in your current workspace, follow these steps:
 
-1. Click on the **Teammates** option in the left navigation bar and click on **Invite Teammate** button:
+1. Click on the **Settings** option in the left navigation bar. 
+2. Select **Teammates** and click on **Invite Teammate**.
 
-<img src="../assets/general/invite-teammates.png" />
+<img src="../assets/rs-cloud/invite-teammates.png" />
 
 2. Enter the email address and select a privilege you want to assign to the invited user. Then, click on **Invite**.
 
-<img src="../assets/general/teammate-details.png" />
+<img src="../assets/rs-cloud/teammate-details.png" />
 
 ## User permissions
 
 An invited user can be assigned any of the following three roles:
 
-### View-only
+### Read-Only
 
 This user role has the following permissions:
 
@@ -65,9 +66,9 @@ View-only users can run tests on existing transformations but they cannot add, m
 </div>
 
 
-### Read-write
+### Read-Write
 
-A read-write user has all the permissions of a view-only user. Additionally, (s)he has permissions for different workspace features and options, as mentioned below:
+A read-write user has all the permissions as a read-only user. Additionally, they have permissions for different workspace features and options, as mentioned below:
 
 
 | Option          | View | Add | Modify | Delete |
@@ -100,20 +101,20 @@ These user roles have specific permissions on other RudderStack features, as exp
 
 #### Live Events
 
-| Option  | View-only | Read-write | Admin |
+| Option  | Read-Only | Read-Write | Admin |
 | :-------| :---------| :----------| :------|
 | View live events at source and destination level | Yes  | Yes | Yes  |
 
 <div class="warningBlock">
 
-View-only users can look at events that might contain sensitive information, like the PII of users. In some cases, they can also view the API keys and other API secrets of the destinations.
+Read-Only users can view the events that might contain sensitive information, like the PII of users. In some cases, they can also view the API keys and other API secrets of the destinations.
 
 </div>
 
 
 #### Syncs
 
-| Option  | View-only | Read-write | Admin |
+| Option  | Read-Only | Read-Write | Admin |
 | :-------| :---------| :----------| :------|
 | Sync Cloud Extract and Warehouse Actions sources | No  | Yes | Yes  |
 | View sync and history details | Yes  | Yes | Yes  |
@@ -121,14 +122,14 @@ View-only users can look at events that might contain sensitive information, lik
 
 #### Audit logs
 
-| Option  | View-only | Read-write | Admin |
+| Option  | Read-Only | Read-Write | Admin |
 | :-------| :---------| :----------| :------|
 | View audit logs | No  | Yes | Yes  |
 
 
 #### Team
 
-| Option  | View-only | Read-write | Admin |
+| Option  | Read-Only | Read-Write | Admin |
 | :-------| :---------| :----------| :------|
 | View team member and role | Yes  | Yes | Yes  |
 | Invite new user | No  | No | Yes  |
@@ -139,4 +140,4 @@ View-only users can look at events that might contain sensitive information, lik
 
 ## Contact Us
 
-For more information on this feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on this feature, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
