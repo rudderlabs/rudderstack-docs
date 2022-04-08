@@ -47,7 +47,7 @@ Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-sou
 
 To successfully configure Facebook Pixel as a destination, you will need to configure the following settings:
 
-<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-1.png" alt="Facebook Pixel connection settings" />
+<img src="../../assets/event-stream-destinations/fbp-connection-settings-1.png" alt="Connection settings" />
 
 The following sections explain these settings in more detail.
 
@@ -61,7 +61,7 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 
 ### Event settings
 
-<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-2.png" alt="Facebook Pixel connection settings" />
+<img src="../../assets/event-stream-destinations/fbp-connection-settings-2.png" alt="Connection settings" />
 
 - **Map Categories to Facebook Content Types**: This option lets you specify the category fields to specific Facebook content type.
 - **Enable Standard Event (PageView) for all Page and Screen Calls**: If this setting is enabled, RudderStack sets `pageview` as a standard event for all the `page` and `screen` calls.
@@ -71,7 +71,7 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 
 ### PII properties settings
 
-<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-3.png" alt="Facebook Pixel connection settings" />
+<img src="../../assets/event-stream-destinations/fbp-connection-settings-3.png" alt="Connection settings" />
 
 - **Blacklist PII Properties**: The PII properties mentioned in this field will not be sent to Facebook if **Blacklist PII Hash Property** is not enabled. If it is enabled, the properties will be SHA256-hashed and sent to Facebook. The properties listed below are the **default blacklisted properties**. 
 
@@ -101,7 +101,7 @@ If you want to send any of the above properties hashed by SHA256, you need to en
 
 ### Other settings
 
-<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-4.png" alt="Facebook Pixel connection settings" />
+<img src="../../assets/event-stream-destinations/fbp-connection-settings-4.png" alt="Connection settings" />
 
 - **Limited Data Usage**: If enabled, RudderStack will take the data processing information from the payload and send it to Facebook. The data in the RudderStack payload should be as shown below:
 
@@ -158,7 +158,7 @@ RudderStack supports specifying which events should be discarded or allowed to f
 
 ### Web SDK settings
 
-<img src="../../assets/event-stream-destinations/fb-pixel-connection-settings-5.png" alt="Facebook Pixel connection settings" />
+<img src="../../assets/event-stream-destinations/fbp-connection-settings-5.png" alt="Connection settings" />
 
 - **Use Updated Mapping**: If this setting is disabled, RudderStack will send the `identify` traits as received. If this setting is enabled, RudderStack takes the following example `identify` traits:
 
