@@ -82,7 +82,9 @@ The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for ide
 
 To reset the user identification, you can use the `reset` method.
 
-RudderStack provides some pre-defined API's for building the RudderTraits object, like `PutEmail()`, `PutAge()` etc. These can be used to set the values of standard traits by directly passing them as parameters. For the custom traits which do not have any pre-defined API, you can use the `Put()` method and pass a key-value pair of the trait as shown in the sample `identify` event below:
+RudderStack provides some pre-defined APIs for building the `RudderTraits` object like `PutEmail()`, `PutAge()`, etc. These APIs can be used to set the values of the standard traits by directly passing them as parameters. 
+
+For the custom traits which do not have any pre-defined API, you can use the `Put()` method and pass a key-value pair of the trait, as shown in the sample `identify` event below:
 
 ```csharp
 RudderMessage identifyMessage = new RudderMessageBuilder().Build();
