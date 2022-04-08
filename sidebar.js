@@ -2397,14 +2397,6 @@ export const jsonData = [
            "link":"/user-guides/how-to-guides/",
            "content":[
               {
-                 "key":"rudderstack-control-plane-lite",
-                 "title":"How to Use the RudderStack Control Plane Lite",
-                 "link":"/user-guides/how-to-guides/rudderstack-control-plane-lite/",
-                 "content":[
-                    
-                 ]
-              },
-              {
                  "key":"dynamic-destination-configuration",
                  "title":"How to Configure a Destination via the Event Payload",
                  "link":"/user-guides/how-to-guides/dynamic-destination-configuration/",
