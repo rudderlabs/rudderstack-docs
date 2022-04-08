@@ -613,7 +613,7 @@ rudderClient = RudderClient.getInstance(
 
 ### Self-hosted control plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then follow [this guide](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
 
 <div class="warningBlock">
 You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using the dashboard from <a href="https://app.rudderstack.com">RudderStack Cloud Dashboard</a>. This parameter is supported only if you are using our open-source <a href="https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> to self-host your Control Plane.
