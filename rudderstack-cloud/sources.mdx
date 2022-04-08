@@ -7,7 +7,7 @@ description: >-
 
 # Sources
 
-In RudderStack, a **source** refers to a platform or an application (web, mobile, server-side, or a third-party cloud app) from where RudderStack can track and collect the event data.
+A **source** refers to a platform or an application (web, mobile, server-side, or a third-party cloud app) from where RudderStack can track and collect the event data.
 
 <div class="infoBlock">
 
@@ -26,13 +26,13 @@ Follow these steps to add an event data source in RudderStack:
 
 <img src="../assets/rs-cloud/connections-dashboard.png" alt="RudderStack Dashboard" />
 
-2. Click on **New Source** and select the source you want to set up in RudderStack.
+2. Click on **Add Source** and select the source you want to set up in RudderStack.
 
 <img src="../assets/rs-cloud/add-source.png" alt="Add Source" />
 
 <div class="successBlock">
 
-  RudderStack classifies its sources into the following
+  RudderStack classifies the sources into following
   categories:
   <ul>
     <li>
@@ -47,8 +47,7 @@ Follow these steps to add an event data source in RudderStack:
   </ul>
 </div>
 
-3. Assign a name to the source, and click **Next**.
-4. Configure the source with relevant connection settings.
+3. Assign a name to the source, and click **Next** to configure the source successfully.
 
 <img src="../assets/rs-cloud/source-configure.png" alt="Source configuration" />
 
@@ -66,17 +65,15 @@ Follow these steps to add an event data source in RudderStack:
 
 ## Source details
 
-To get details about a configured source, click on it to see following view on the dashboard:
-
-<img src="../assets/rs-cloud/rudderstack-source-details.png" alt="RudderStack source details" />
-
-These options can be explained as follows:
+To get details about a configured source, click on it to see the following options:
 
 - **Rename**: Lets you rename the source by clicking the edit icon next to the source's name.
 
 <img src="../assets/rs-cloud/rename-source.png" alt="Rename source" />
 
-- **Write Key**: It is required to send the data from your source.
+- **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) for more information.
+
+- **Write Key**: Required to send the data from your source.
 
 For example, you can load the [RudderStack's JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your website to track and collect the events by running the following snippet:
 
@@ -91,11 +88,9 @@ For example, you can load the [RudderStack's JavaScript SDK](https://rudderstack
 If you have already configured a destination in RudderStack, you can also use it by clicking on **Add Destination** > **Use Existing Destination**.
 </div>
 
-- **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) for more information.
+- **Events**: The Events tab displays all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by time period.
 
-- **Events**: Displays all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by time period.
-
-- **Settings**: This option provides additional source-related details, such as:  
+- **Settings**: The Settings tab provides additional source-related details, such as:  
 
   - **Enabled**: Lets you enable or disable syncing data from this source.
 
@@ -107,6 +102,8 @@ If you have already configured a destination in RudderStack, you can also use it
 
 Before deleting a source, make sure there are no destinations connected to it.
 </div>
+
+- **Tracking Plans**: The Tracking Plans tab lets you link a [tracking plan](https://www.rudderstack.com/docs/data-governance/tracking-plans/#tracking-plans) with the source. 
 
 ## Contact us
 
