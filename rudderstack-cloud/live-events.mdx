@@ -20,9 +20,9 @@ This feature is available only in <a href="https://app.rudderstack.com/signup">R
 You can view the live events for cloud mode destinations only. For more information, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/connections/connection-modes">Connection Modes</a> guide.
 </div>
 
-## Source Live Events
+## Source live events
 
-The **Live Events** feature gives you real-time visibility into the source events collected by RudderStack. The key information includes:
+The **Live Events** feature provides you with the real-time visibility into the source events collected by RudderStack. The key information includes:
 
 - **Name** of the event
 - **Type** of the event collected from the source
@@ -35,7 +35,7 @@ The **Live Events** feature gives you real-time visibility into the source event
   correctly on your website.
 </div>
 
-### View source Live Events
+### View source live events
 
 To view the live events collected from your source in real-time, follow these steps:‌
 
@@ -44,7 +44,7 @@ To view the live events collected from your source in real-time, follow these st
 <img src="../assets/image (119).png" alt="Sources" />
 <span class="imageTitle"></span>
 
-2. Click on the **Live Events** button present at the top right.
+2. Click on **Live Events**.
 
 <img src="../assets/image (123).png" alt="Live Events" />
 <span class="imageTitle"></span>
@@ -53,7 +53,7 @@ To view the live events collected from your source in real-time, follow these st
 
 <img src="../assets/image (115).png" alt="Ingest Data" />
 
-## Destination Live Events
+## Destination live events
 
 When routing events to a destination, it can be frustrating if the sent events do not show up in the destination and not knowing the reason for failure only makes it worse.
 
@@ -87,7 +87,7 @@ To view the live events sent to your destination in real-time, follow these step
 />
 <span class="imageTitle"></span>
 
-2. Click on the **Live Events** button present at the top right.
+2. Click on the **Live Events**.
 
 <img src="../assets/image (124) (1).png" alt="Live Events" />
 <span class="imageTitle"></span>
@@ -99,7 +99,7 @@ To view the live events sent to your destination in real-time, follow these step
   alt="Events sent to the destination"
 />
 
-## View Live Events with transformations 
+## View live events with transformations 
 
 You can also view the **Live Events** in case a <a href="https://rudderstack.com/docs/transformations/#adding-a-transformation">**transformation**</a> is associated with a destination. RudderStack lets you view the **Live Events** before and after a transformation is applied.
 
@@ -118,7 +118,7 @@ RudderStack also notifies you about any dropped events or errors during the tran
 
 ## Use-case
 
-Consider a scenario where some events are sent to [Facebook Custom Audience](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) platform but they are not delivered. Upon checking the **Live Events** tab for the **Facebook Custom Audience** destination, the following error is observed:
+Consider a scenario where some events are sent to the [Facebook Custom Audience](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) platform but they are not delivered. Upon checking the **Live Events** tab for the **Facebook Custom Audience** destination, the following error is observed:
 
 <img
   src="../assets/image (116).png"
@@ -132,11 +132,11 @@ Clicking on **See full error** option displays the following error response:
   alt="See full error"
 />
 
-As can be observed, an `identify` event is being sent to the **Facebook Custom Audience** platform, which is not supported. The [**Custom Audience documentation**](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) mentions that only `track` events are supported. As a result, when RudderStack tries sending the `identify` event to the destination, an error is thrown. RudderStack tries sending this event several times before marking it as aborted.
+As can be observed, an `identify` event is being sent to the **Facebook Custom Audience** platform, which is not supported. The [Custom Audience documentation](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) mentions that only `track` events are supported. As a result, when RudderStack tries sending the `identify` event to the destination, an error is thrown. RudderStack tries sending this event several times before marking it as aborted.
 
 <div class="warningBlock">
 
-Live events are shown for all the destinations. However, the **payload of the events** is not shown for some destinations like the <a href="https://rudderstack.com/docs/destinations/storage-platforms/">object storage platforms</a> and the <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a> supported by RudderStack.
+Live events are shown for all the destinations. However, the <strong>payload of the events</strong> is not shown for some destinations like the <a href="https://rudderstack.com/docs/destinations/storage-platforms/">object storage platforms</a> and the <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a>.
 
 </div>
 
@@ -149,4 +149,4 @@ Routing events to a destination can fail for various reasons. Often, it is due t
 
 ## Contact us
 
-To know more about the Live Events feature, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+To know more about the Live Events feature, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
