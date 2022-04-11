@@ -9,7 +9,7 @@ The [DCM Floodlight]() is the conversion tracking system for Google Marketing�
 
 <div class="successBlock">
 
-  Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/dcm_floodlight">GitHub repo</a>.
+Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/dcm_floodlight">GitHub repo</a>.
 </div>
 
 
@@ -40,11 +40,17 @@ Follow our guide on [**How to Add a Source and Destination in RudderStack**](htt
 
 To successfully configure DCM Floodlight as a destination, you will need to configure the following settings:
 
-<img src="../../assets/SnapPixel-2.png" alt="Setup Pixel" />
+<img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings.png" alt="DCM Floodlight connection settings"/>
+<img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings2.png" alt="DCM Floodlight connection settings"/>
 
-- **Snap Pixel ID:** Enter your Snap Pixel ID here. To get your Snap Pixel ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**. You can find the Pixel ID under **Pixel Code**, as shown:
-- 
-**Hashing Method:** Snap Pixel lets you pass a user parameter \(email or phone number\) in both hashed and non-hashed format during intialization. If **SHA-256** is chosen as an option, RudderStack will hash-encode the provided user parameter.
+- **DoubleClick Advertiser ID:** Enter your Floodlight advertiser ID by going to the Campaigns or Activities tab in your dashboard.
+- **Activity Tag:** Use this setting to define the same parameter value across all the conversion events. Alternatively, you can define this value for each conversion event mapping in the Floodlight Activity Tag field below.
+- **Group Tag:** Use this setting to define the same parameter value across all the group conversion events. Alternatively, you can define this value for each conversion event in the Floodlight Group Tag field below.
+- **RudderStack Event Name:** This integration lets you map the RudderStack event name to the Floodlight tags.
+- **Floodlight Activity Tag:** This should be the `cat` of your tag string. If left blank, RudderStack will pick the value defined in the Activity Tag field above.
+- **Floodlight Group Tag:** This should be the `type` of your tag string. If left blank, RudderStack will pick the value defined in the Group Tag field above.
+- **Fire as Sales Tag:** Enable this toggle if the tag is a Sales tag. Keep it disabled if the tag is a Counter tag.
+- **Custom Floodlight variables:** Use this section to map the RudderStack event properties to custom Floodlight variables.
 
 ## Identify
 
@@ -81,28 +87,11 @@ Either or both of the user parameters should be passed in the `identify` call. T
 | `email` | `user_email` |
 | `phone` | `user_phone_number` |
 
-## Page
 
-When the `page` call is made, RudderStack sends the following:
-
-`snaptr("track", "PAGE_VIEW")`.
-
-You can make the `page` call with or without the event payload.
-
-<div class="infoBlock">
-
-For more information on the `page` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/).
-</div>
-
-A sample `page` call is as shown:
-
-```javascript
-    rudderanalytics.page();
-```
 
 ## Track
 
-The `track` call lets you send Snap Pixel events.
+The `track` call lets you capture user events along with the properties associated with them.
 
 <div class="infoBlock">
 
@@ -136,26 +125,24 @@ You can also send the following RudderStack E-Commerce Events:
 For more information on the Snap Pixel events, visit this [**Snapchat page**](https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US)
 </div>
 
-Snap Pixel supports upto 5 custom events. They are listed in the table below:
+## Group
 
-| **Custom Events** |
-| :--- |
-| `CUSTOM_EVENT_1` |
-| `CUSTOM_EVENT_2` |
-| `CUSTOM_EVENT_3` |
-| `CUSTOM_EVENT_4` |
-| `CUSTOM_EVENT_5` |
+The group call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
+
+A sample `group` call is as shown:
+
+```javascript
+    rudderanalytics.page();
+```
 
 ## FAQs
 
-**Where can I find the Snap Pixel ID?**
+### Where can I find the Advertiser ID?
 
-To get your Snap Pixel ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**. You can find the Pixel ID under **Pixel Code**, as shown:
-
-<!--![](../../.gitbook/assets/SnapPixel-2.png)-->
+To get your Advertiser ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**. You can find the Pixel ID under **Pixel Code**, as shown:
 
 <img src="../../assets/SnapPixel-2.png" alt="Pixel Code" />
 
 ## Contact Us
 
-In case of any issues while configuring or using Snap Pixel with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can, [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
