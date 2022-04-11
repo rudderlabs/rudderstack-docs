@@ -5,7 +5,7 @@ description: Step-by-step guide to send your event data from RudderStack to DCM 
 
 # DCM Floodlight
 
-The [DCM Floodlight]() is the conversion tracking system for Google Marketing Platform. Like other conversion tracking systems, it consists of tags that track the activity on your site, along with reporting features for adding conversion data to your reports. It uses a cookie to recognize repeat visits from a specific browser.
+**DCM Floodlight** is a conversion tracking system for [Google Marketing Platform](https://marketingplatform.google.com/about/). It lets you track the users' activity on your site, compiles their list, adds conversion data to your reports, and then targets those users by subsequent campaigns.
 
 <div class="successBlock">
 
@@ -23,8 +23,8 @@ Before configuring DCM Floodlight as a destination in RudderStack, verify if the
 | **Cloud mode** | **Supported**  | - | - |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, refer to the [**RudderStack connection modes**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/) guide.
+    
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to DCM Floodlight, follow these steps:
@@ -33,7 +33,7 @@ Once you have confirmed that the source platform supports sending events to DCM 
 
 <div class="infoBlock">
 
-Follow our guide on [**How to Add a Source and Destination in RudderStack**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) for more information.
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
 ### Connection Settings
@@ -44,13 +44,13 @@ To successfully configure DCM Floodlight as a destination, you will need to conf
 <img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings2.png" alt="DCM Floodlight connection settings"/>
 
 - **DoubleClick Advertiser ID:** Enter your Floodlight advertiser ID by going to the Campaigns or Activities tab in your dashboard.
-- **Activity Tag:** Use this setting to define the same parameter value across all the conversion events. Alternatively, you can define this value for each conversion event mapping in the Floodlight Activity Tag field below.
-- **Group Tag:** Use this setting to define the same parameter value across all the group conversion events. Alternatively, you can define this value for each conversion event in the Floodlight Group Tag field below.
-- **RudderStack Event Name:** This integration lets you map the RudderStack event name to the Floodlight tags.
-- **Floodlight Activity Tag:** This should be the `cat` of your tag string. If left blank, RudderStack will pick the value defined in the Activity Tag field above.
-- **Floodlight Group Tag:** This should be the `type` of your tag string. If left blank, RudderStack will pick the value defined in the Group Tag field above.
-- **Fire as Sales Tag:** Enable this toggle if the tag is a Sales tag. Keep it disabled if the tag is a Counter tag.
-- **Custom Floodlight variables:** Use this section to map the RudderStack event properties to custom Floodlight variables.
+- **Activity Tag:** This setting lets you define the same parameter value across all the conversion events. Alternatively, you can define this value for each conversion event mapping in the **Floodlight Activity Tag** field below.
+- **Group Tag:** This setting lets you define the same parameter value across all the group conversion events. Alternatively, you can define this value for each conversion event in the **Floodlight Group Tag** field below.
+- **RudderStack Event Name:** Enter your RudderStack event name which will be mapped to the Floodlight tag.
+- **Floodlight Activity Tag:** Enter the `cat` of your tag string. If left blank, RudderStack will pick the value defined in the **Activity Tag** field above.
+- - **Floodlight Group Tag:** Enter the `type` of your tag string. If left blank, RudderStack will pick the value defined in the **Group Tag** field above.
+- **Fire as Sales Tag:** Enable the toggle button if the tag is a Sales tag. Keep it disabled in case of a Counter tag.
+- **Custom Floodlight variables:** Enter the custom Floodlight variables which will be mapped to the RudderStack event properties.
 
 ## Identify
 
@@ -142,6 +142,8 @@ A sample `group` call is as shown:
 To get your Advertiser ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**. You can find the Pixel ID under **Pixel Code**, as shown:
 
 <img src="../../assets/SnapPixel-2.png" alt="Pixel Code" />
+
+### Where can I find the Floodlight activity ID?
 
 ## Contact Us
 
