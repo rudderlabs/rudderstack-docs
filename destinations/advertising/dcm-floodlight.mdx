@@ -50,43 +50,16 @@ To successfully configure DCM Floodlight as a destination, you will need to conf
 - **Floodlight Activity Tag:** Enter the `cat` of your tag string. If left blank, RudderStack will pick the value defined in the **Activity Tag** field above.
 - **Floodlight Group Tag:** Enter the `type` of your tag string. If left blank, RudderStack will pick the value defined in the **Group Tag** field above.
 - **Fire as Sales Tag:** Enable the toggle button if the tag is a Sales tag. Keep it disabled in case of a Counter tag.
+
+<div class="infoBlock">
+    
+There are two types of tags as explained below:
+<ul>
+<li>Counter tag - Used to count the number of conversions.</li>
+<li>Sales Tag - Same as counter tag except it is supposed to be placed on the confirmation page after a sale with information about the sale like <code class="inline-code">cost</code>,class="inline-code">qty</code> , class="inline-code">ord</code> passed to the tag.</li>
+</div>
+
 - **Custom Floodlight variables:** Enter the custom Floodlight variables which will be mapped to the RudderStack event properties.
-
-## Identify
-
-<div class="warningBlock">
-
-The Snap Pixel will not be initialized unless the `identify` call is fired.
-</div>
-
-<div class="infoBlock">
-
-RudderStacks checks the cookies for the user parameter \(email or phone number\) before loading the Snap Pixel snippet. If found, the snippet is loaded. Otherwise, an `identify` call with the user's email or phone number is required to load the snippet.
-</div>
-
-In Snap Pixel, the `identify` call initializes the Snap Pixel code.
-
-<div class="infoBlock">
-
-For more information on the `identify` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/).
-</div>
-
-A sample `identify` call is as shown:
-
-```javascript
-    rudderanalytics.identify({
-        email: "sample@sample.com",
-        phone: "8787857564"
-    });
-```
-
-Either or both of the user parameters should be passed in the `identify` call. The following table lists the parameters along with the relative mapping to the Snap Pixel parameters:
-
-| **RudderStack User Parameter** | **Snap Pixel User Parameter** |
-| :--- | :--- |
-| `email` | `user_email` |
-| `phone` | `user_phone_number` |
-
 
 
 ## Track
@@ -107,42 +80,26 @@ A sample `track` call is as shown below:
         'transaction_id': '11111111'
     });
 ```
+Accepted names for Integrations object:
 
-You can also send the following RudderStack E-Commerce Events:
+The following table details the mapping between RudderStack and DCM Floodlight properties:
 
-| **RudderStack Event Name** | **Snap Pixel Standard Event** |
+| **RudderStack Property Name** | **DCM Floodlight Property** | **Presence**|
 | :--- | :--- |
-| `Order Completed` | `PURCHASE` |
-| `Checkout Started` | `START_CHECKOUT` |
-| `Product Added` | `ADD_CART` |
-| `Payment Info Entered` | `ADD_BILLING` |
-| `Promotion Clicked` | `AD_CLICK` |
-| `Promotion Viewed` | `AD_VIEW` |
-| `Product Added To Wishlist` | `ADD_TO_WISHLIST` |
+| `context.device.advertisingId` | `dc_rdid` | Required |
+| `properties.orderId` | `ord` | Optional |
+| `properties.quantity` | `qty` | Optional |
+| `properties.revenue` | `cost` | Optional | 
+| `context.device.adTrackingEnabled` | `dc_lat` | Optional |
 
-<div class="warningBlock">
 
-For more information on the Snap Pixel events, visit this [**Snapchat page**](https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US)
-</div>
-
-## Group
-
-The group call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
-
-A sample `group` call is as shown:
-
-```javascript
-    rudderanalytics.page();
-```
-
-## FAQs
+## FAQ
 
 ### Where can I find the Advertiser ID?
 
-To get your Advertiser ID, go to your [**Snap Ads Manager**](https://ads.snapchat.com/) account. Under **Events Manager**, select **View Pixel Details** then **Setup Pixel**. You can find the Pixel ID under **Pixel Code**, as shown:
+To get the Advertiser ID, go to your [Campaign Manager 360](https://campaignmanager.google.com/) account and navigate to the **Campaigns** or **Activities** tab in your dashboard to obtain the `Advertiser ID`:
 
 <img src="../../assets/event-stream-destinations/advertiser-id-dcm-floodlight.png" alt="DCM Floodlight connection settings"/>
-
 
 ## Contact Us
 
