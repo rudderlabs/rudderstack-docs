@@ -1,29 +1,30 @@
 ---
 # slug: "/docs/data-warehouse-integrations/clickhouse"
 title: "ClickHouse"
-description: Step-by-step guide to set up ClickHouse as a destination in RudderStack
+description: Step-by-step guide on setting up ClickHouse as a destination in RudderStack
 ---
 
 # ClickHouse
 
-[ClickHouse](https://clickhouse.tech/) is an open-source, column-oriented database management system mainly used for online analytical processing \(OLAP\). It is fast, and allows for real-time analysis of your data. ClickHouse was originally developed by Yandex, the Russian IT company, for the Yandex Metrica web analytics service. ClickHouse is highly scalable, and built for high performance.
+[ClickHouse](https://clickhouse.tech/) is an open-source, column-oriented database management system mainly used for online analytical processing (OLAP). It is fast, and allows for real-time analysis of your data.
 
-You can now integrate RudderStack with ClickHouse seamlessly and store your customer event data into it, from the source of your choice.
+RudderStack lets you configure ClickHouse as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 
-Please check our <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide to know how events are mapped to the tables in ClickHouse.
-
+Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for more information on how the events are mapped to the tables in ClickHouse.
 </div>
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clickhouse">GitHub repo</a>.**
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clickhouse">GitHub repository</a>.
 </div>
 
-## Setting ClickHouse Permissions
+## Setting user permissions in ClickHouse
 
-You to need to set `date_time_input_format` to `best_effort` for ClickHouse to parse all the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time formats. For example, `'2018-06-08T01:02:03.000Z'`.
+Make sure your ClickHouse user has read access to `system.columns` table for fetching the table schemas.
+
+You also to need to set `date_time_input_format` to `best_effort` for ClickHouse to parse all the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time formats, as shown:
 
 ```bash
 set date_time_input_format = 'best_effort';
@@ -31,84 +32,67 @@ set date_time_input_format = 'best_effort';
 
 <div class="infoBlock">
 
-We use <code class="inline-code">UInt8</code> datatype to set Boolean values and map <code class="inline-code">UInt8</code>to Boolean internally. So when we fetch schema from ClickHouse, we treat <code class="inline-code">UInt8</code> as Boolean.
-
-</div>
-
-<div class="infoBlock">
-
-Make sure your ClickHouse User has read access to <code class="inline-code">system.columns</code> table for fetching table schema's
-
+RudderStack uses the <code class="inline-code">UInt8</code> datatype to set Boolean values and map <code class="inline-code">UInt8</code>to Boolean internally. So when a schema is fetched from ClickHouse, RudderStack treats <code class="inline-code">UInt8</code> as Boolean.
 </div>
 
 <div class="warningBlock">
 
-If you are creating tables in the same database where RudderStack loads, we highly recommend not using <code class="inline-code">UInt8</code>as a datatype except for boolean values (0,1).
-
+If you are creating tables in the same database where RudderStack loads, it is highly recommend to not use <code class="inline-code">UInt8</code>as a datatype except for Boolean values (0,1).
 </div>
 
 ## Configuring ClickHouse in RudderStack
 
-In order to enable dumping data to ClickHouse, you will first need to add it as a destination to the source from which you are sending the event data. Once the destination is enabled, events from RudderStack will automatically start to flow to ClickHouse.
+To send event data to ClickHouse, you first need to add it as a destination in RudderStack and connect it to your data source. Once the destination is enabled, events will automatically start flowing to ClickHouse via RudderStack.
 
-To configure ClickHouse as a destination, please follow these steps:
+To configure ClickHouse as a destination in RudderStack, follow these steps:
 
-- Choose a source to which you would like to add ClickHouse as a destination. You can also simply create a destination and connect it to a source later.
+1. In your [RudderStack dashboard](https://app.rudderstack.com), set up the data source. Then, select **ClickHouse** from the list of destinations.
 
 <div class="infoBlock">
 
-Please follow our <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination</a> guide to know how to add a source in RudderStack.
-
+Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> guide for more information.
 </div>
 
-- After choosing a source, select **ClickHouse** from the list of destinations.
-- Give your destination a name and then click on **Next**.
+2. Assign a name to your destination and then click on **Next**.
 
 ### Connection Settings
 
 <img src="../assets/clickhouse-connection-settings.png" alt="ClickHouse connection settings" />
 <img src="../assets/clickhouse-connection-settings2.png" alt="ClickHouse connection settings" />
 
-Add the required credentials in the **Connection Settings** as mentioned below:
-  - **Host** - The host name of your ClickHouse Database.
-  - **Port** - The TCP port of your ClickHouse Host. ex: 9000. if you want the connection to be secure use TCP secure port 9440. [reference](https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/#server_configuration_parameters-tcp_port)
-  - **Database -** The database name in your ClickHouse instance where the data gets loaded.
-  - **Cluster** - The name of your ClickHouse cluster _**Please note: Leave this blank if you are running a single host ClickHouse Cluster**_
-  - **User** - The username which has the required read/write access to the above database.
-  - **Password** - The password for the above user.
-  - **Secure** - To establish secure connection.
-  - **Skip verify** - To skip certificate verification. if you are using self-signed certificates, set this field `true`
-  - **CA certificate** - Certificate which needs to be verified while establishing a secure connection. Add the certificate contents to the text input
-
-<div class="successBlock">
-
-  You can also set the <strong>Sync Frequency</strong> to set the frequency of
-  the data import into your SQL Server database. Optionally, you can also
-  specify the time when you want this synchronization to start, by choosing the
-  time under the <strong>Sync Starting At</strong> option.
-</div>
+Enter the following credentials in the **Connection Credentials** page:
+  - **Host**: The host name of your ClickHouse database.
+  - **Port**: The TCP port of your ClickHouse host. If you want the connection to be secure, use the secure TCP port `9440`. Refer to the [ClickHouse guide](https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/#server_configuration_parameters-tcp_port) for more information.
+  - **Database**: The database name in your ClickHouse instance where the data gets loaded.
+  - **Cluster**: The name of your ClickHouse cluster. **If you are running a single host ClickHouse cluster, leave this field blank.**
+  - **User**: The name of the user with the required read/write access to the above database.
+  - **Password**: The password for the above user.
+  - **Secure**: Enable this setting to establish a secure connection.
+  - **Sync Frequency**: Specify how often RudderStack should sync the data to your ClickHouse database.
+  - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+  - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
 
 ### Configuring the object storage
 
 RudderStack lets you configure the following object storage configuration settings while setting up your ClickHouse destination:
 
-  - **Use RudderStack-managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage.
+- **Use RudderStack-managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage.
 
 <div class="warningBlock">
 
 This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
 </div>
 
- - **Choose your storage provider**: If **Use RudderStack-managed object storage** is disabled in the dashboard, you can select the cloud provider for your object storage and enter the relevant settings.
+- **Choose your storage provider**: If **Use RudderStack-managed object storage** is **disabled** in the dashboard, select the cloud provider for your object storage and enter the relevant settings:
 
    - [Amazon S3 bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/amazon-s3/#setting-up-amazon-s3)
    - [Azure Blob Storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage)
    - [Google Cloud Storage bucket settings](https://www.rudderstack.com/docs/destinations/storage-platforms/google-cloud-storage/#setting-up-google-cloud-storage)
    - [MinIO bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/minio/#setting-up-minio)
 
-## Setting up network access
+## IPs to be whitelisted
 
-You will need to whitelist the following RudderStack IPs to enable network access:
+To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -137,20 +121,20 @@ All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
 
-## FAQs
+## FAQ
 
-### **How do we de-dupe events that are loaded into the warehouse?**
+### How does RudderStack de-duplicate the events that are loaded into the warehouse?
 
-We create tables with engine `ReplacingMergeTree order by (received_at, id)` and column `dataType` as `Nullable(dataType)`.[`ReplacingMergeTree`](https://clickhouse.tech/docs/en/engines/table-engines/mergetree-family/replacingmergetree/) replaces the latest event which has the same `received_at, id` while merging. `Nullable` is not applicable for `sortKeys`.
+RudderStack creates tables with the engine `ReplacingMergeTree order by (received_at, id)` and column `dataType` as `Nullable(dataType)`.[`ReplacingMergeTree`](https://clickhouse.tech/docs/en/engines/table-engines/mergetree-family/replacingmergetree/) replaces the latest event which has the same `received_at, id` while merging. Note that `Nullable` is not applicable for `sortKeys`.
 
-### How do we merge user properties in the user's table?
+### How does RudderStack merge the user properties in the user's table?
 
-For the user's table, we create a table with an engine `AggregatingMergeTree` order by `id` and column `dataType` as `SimpleAggregateFunction(anyLast, Nullable(dataType))`. Merging the columns with the same`id`picks the last value which is not null. `Nullable` is not applicable for `sortKeys`.
+For the user's table, RudderStack creates a table with an engine `AggregatingMergeTree` ordered by `id` and a column `dataType` as `SimpleAggregateFunction(anyLast, Nullable(dataType))`. Merging the columns with the same`id`picks the last value which is not null. Note that `Nullable` is not applicable for `sortKeys`.
 
 ### How does RudderStack handle cases when loading data into ClickHouse?
 
 RudderStack converts the event keys into the lower case before exporting the data into ClickHouse. This is so that it does not create two tables in case the event name has two different cases.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring ClickHouse with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

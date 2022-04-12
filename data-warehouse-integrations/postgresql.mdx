@@ -1,28 +1,28 @@
 ---
 # slug: "/docs/data-warehouse-integrations/postgresql"
 title: "PostgreSQL"
-description: Step-by-step guide to set up PostgreSQL as a destination in RudderStack
+description: Step-by-step guide on setting up PostgreSQL as a destination in RudderStack
 ---
 
 # PostgreSQL
 
-PostgreSQL is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution in order to deliver efficient analytics and user insights.
+[PostgreSQL](https://www.postgresql.org/) is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution in order to deliver efficient analytics and user insights.
 
 RudderStack lets you configure PostgreSQL as a destination to which you can seamlessly send your event data.
 
 <div class="infoBlock">
 
-Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide to know how events are mapped to your PostgreSQL tables.
+Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for more information on how the events are mapped to the PostgreSQL tables.
 </div>
 
 <div class="successBlock">
 
-Find the open-source transformer code for this destination in this <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/postgres">GitHub repo</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/postgres">GitHub repository</a>.
 </div>
 
 ## Setting user permissions in PostgreSQL
 
-After setting up your PostgreSQL database, you need to create a new user. This user should have the required permissions for RudderStack to create schemas and temporary tables in the specified database.
+After setting up your PostgreSQL database, create a user with the necessary privileges to create schemas and temporary tables in this database.
 
 Run the following query to create a new user in PostgreSQL:
 
@@ -41,87 +41,51 @@ GRANT CREATE, TEMPORARY ON DATABASE <databasename> TO <username>;
 You must grant the <code class="inline-code">CREATE, TEMPORARY</code> privileges to the user. Otherwise, RudderStack will not be able to export the events to PostgreSQL.
 </div>
 
-## Setting up network access
-
-You will need to whitelist the following RudderStack IPs to enable network access:
-
-- 3.216.35.97
-- 34.198.90.241
-- 54.147.40.62
-- 23.20.96.9
-- 18.214.35.254
-- 35.83.226.133
-- 52.41.61.208
-- 44.227.140.138
-- 54.245.141.180
-- 3.66.99.198
-- 3.64.201.167
-
-<div class="infoBlock">
-
-If your deployment is in the EU region, you can whitelist only the following two IPs:
-<ul>
-<li>3.66.99.198</li>
-<li>3.64.201.167</li>
-</ul>
-</div>
-
-<div class="infoBlock">
-
-All the outbound traffic is routed through these RudderStack IPs.
-</div>
-
 ## Configuring PostgreSQL destination in RudderStack
 
-To start sending data to PostgreSQL, you will first need to add it as a destination in RudderStack and connect it to a data source. Once the destination is enabled, the events will automatically start flowing to PostgreSQL.
+To send event data to PostgreSQL, you first need to add it as a destination in RudderStack and connect it to your data source. Once the destination is enabled, events will automatically start flowing to PostgreSQL via RudderStack.
 
-Follow these steps to configure PostgreSQL as a destination in RudderStack:
+To configure PostgreSQL as a destination in RudderStack, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com), configure the data source. Then, select **PostgreSQL** from the list of destinations.
+1. In your [RudderStack dashboard](https://app.rudderstack.com), set up the data source. Then, select **PostgreSQL** from the list of destinations.
 
 <div class="infoBlock">
 
 Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> guide for more information.
 </div>
 
-- Assign a name to your destination and click on **Next**. You should then see the following screen:
+2. Assign a name to your destination and click on **Next**.
+
+### Connection settings
 
 <img src="../assets/dw-integrations/postgresql-connection-settings-1.png" alt="PostgreSQL connection settings" />
 <img src="../assets/dw-integrations/postgresql-connection-settings-2.png" alt="PostgreSQL connection settings" />
 
-### Connection settings
-
-Add the following credentials to set up the PostgreSQL destination:
+Enter the following credentials in the **Connection Credentials** page:
 
   - **Host**: Enter the host name of your PostgreSQL service.
   - **Database**: Enter your PostgreSQL database name where RudderStack will load the data.
   - **User**: Enter the name of the user created in the [Setting user permissions in PostgreSQL](#setting-user-permissions-in-postgresql) section above.
   - **Password**: Enter the password you set for the above user.
   - **Port**: Enter the port number associated with your PostgreSQL instance.
-  - **Namespace**: Enter the schema name where RudderStack will create all the tables.
-
-  <div class="infoBlock">
-  
-  If you don't specify any namespace, RudderStack will set this to the source name by default.
-  </div>
-
+  - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
   - **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your PostgreSQL instance. RudderStack provides three options - **disable**, **require**, and **verify-ca**. For more information on these options, refer to the [SSL Modes](#ssl-modes) section below.
   - **Sync Frequency**: Specify how often RudderStack should sync the data to your PostgreSQL database.
   - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
-  - **Exclude Window**: This optional setting lets you set a time window when RudderStack will not sync the data to your database.
+  - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
 
 ### Configuring the object storage
 
 RudderStack lets you configure the following object storage configuration settings while setting up your PostgreSQL destination:
 
-  - **Use RudderStack-managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage.
+- **Use RudderStack-managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage.
 
 <div class="warningBlock">
 
 This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
 </div>
 
- - **Choose your storage provider**: If **Use RudderStack-managed object storage** is disabled in the dashboard, you can select the cloud provider for your object storage and enter the relevant settings.
+- **Choose your storage provider**: If **Use RudderStack-managed object storage** is **disabled** in the dashboard, select the cloud provider for your object storage and enter the relevant settings:
 
    - [Amazon S3 bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/amazon-s3/#setting-up-amazon-s3)
    - [Azure Blob Storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage)
@@ -130,7 +94,7 @@ This option is applicable only for RudderStack-hosted data planes. For self-host
 
  ## SSL modes
 
- RudderStack lets you specify the SSL mode through which you can send the data to PostgreSQL, based on your security preferences.
+Based on your security preferences, RudderStack lets you specify the SSL mode through which you can send the data to PostgreSQL.
 
 RudderStack supports the following three SSL modes defined by PostgreSQL:
 
@@ -176,13 +140,43 @@ The following steps demonstrate how you can create a new SSL certificate in [Goo
 For other cloud providers, this procedure might vary slightly.
 </div>
 
-## FAQs
+## IPs to be whitelisted
+
+To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
+
+- 3.216.35.97
+- 34.198.90.241
+- 54.147.40.62
+- 23.20.96.9
+- 18.214.35.254
+- 35.83.226.133
+- 52.41.61.208
+- 44.227.140.138
+- 54.245.141.180
+- 3.66.99.198
+- 3.64.201.167
+
+<div class="infoBlock">
+
+If your deployment is in the EU region, you can whitelist only the following two IPs:
+<ul>
+<li>3.66.99.198</li>
+<li>3.64.201.167</li>
+</ul>
+</div>
+
+<div class="infoBlock">
+
+All the outbound traffic is routed through these RudderStack IPs.
+</div>
+
+## FAQ
 
 ### RudderStack does not create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
 
 - Firstly, check the status of your data sync in the [RudderStack dashboard](https://app.rudderstack.com/syncs).
-- Make sure you have set up the [required user permissions](https://rudderstack.com/docs/data-warehouse-integrations/postgresql#setting-postgresql-user-permissions) for your PostgreSQL instance.
-- Check if your database is accessible to RudderStack by [whitelisting the RudderStack IPs](#setting-up-network-access).
+- Make sure you have set up the [required user permissions](https://rudderstack.com/docs/data-warehouse-integrations/postgresql#setting-user-permissions-in-postgresql) for your PostgreSQL instance.
+- Check if your database is accessible to RudderStack by [whitelisting the RudderStack IPs](#ips-to-be-whitelisted).
 - Ensure that all the security group policies are appropriately set.
 
 ### How does RudderStack handle reserved words?
@@ -199,4 +193,4 @@ RudderStack converts the event keys into the lower case before exporting the dat
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
