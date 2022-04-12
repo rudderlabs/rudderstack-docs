@@ -45,14 +45,14 @@ To successfully configure Airship as a destination, you will need to configure t
 
 <img src="../../assets/event-stream-destinations/airship-connection-settings.png" alt="Airship connection settings" />
 
-- **API Key**: Enter your Airship token required by RudderStack to communicate with your Airship project.
+- **API Key**: Enter your Airship token which is required by RudderStack to communicate with your Airship project and authenticate all the supported event calls, i.e.[`identify`](#identify), [`track`](#track), and [`group`](#group).
 
 <div class="infoBlock">
 
 For detailed steps on obtaining the API key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **App Key**: Enter your Airship project's app key by going to **Settings** > **Project Details** in the Airship dashboard.
+- **App Key**: Enter your Airship project's app key which is required for the [`track`](#track) calls. You can obtain the app key by going to **Settings** > **Project Details** in your Airship dashboard.
 
 <div class="infoBlock">
 
@@ -117,6 +117,11 @@ Refer to the <a href="#faq">FAQ</a> section below for more information on creati
 The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
 
 RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
+
+<div class="infoBlock">
+
+Your Airship project's <strong>App Key</strong> is required for authenticating the <code class="inline-code">track</code> calls.
+</div>
 
 A sample `track` call is shown below:
 
