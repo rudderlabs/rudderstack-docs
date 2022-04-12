@@ -15,7 +15,7 @@ Find the open-source transformer code for this destination in our <a href="https
 
 ## Getting Started
 
-Before configuring DCM Floodlight as a destination in RudderStack, verify if the source platform is supported by DCM Floodlight by referring to the table below: ̦
+Before configuring DCM Floodlight as a destination in RudderStack, verify if the source platform is supported by DCM Floodlight by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ To know more about the difference between cloud mode and device mode in RudderSt
 
 Once you have confirmed that the source platform supports sending events to DCM Floodlight, follow these steps:
 
-- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **DCM Floodlight**.
+- From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **DCM Floodlight**.
 
 <div class="infoBlock">
 
@@ -43,24 +43,23 @@ To successfully configure DCM Floodlight as a destination, you will need to conf
 <img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings.png" alt="DCM Floodlight connection settings"/>
 <img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings2.png" alt="DCM Floodlight connection settings"/>
 
-- **DoubleClick Advertiser ID:** Enter your Floodlight advertiser ID by going to the Campaigns or Activities tab in your dashboard.
-- **Activity Tag:** Enter the `cat` of your tag string to define the same parameter value across all the conversion events. Alternatively, you can define this value for each conversion event mapping in the **Floodlight Activity Tag** field below.
-- **Group Tag:** Enter the `type` of your tag string to define the same parameter value across all the group conversion events. Alternatively, you can define this value for each conversion event in the **Floodlight Group Tag** field below.
-- **RudderStack Event Name:** Enter your RudderStack event name which will be mapped to the Floodlight tag.
-- **Floodlight Activity Tag:** Enter the `cat` of your tag string. If left blank, RudderStack will pick the value defined in the **Activity Tag** field above.
-- **Floodlight Group Tag:** Enter the `type` of your tag string. If left blank, RudderStack will pick the value defined in the **Group Tag** field above.
-- **Fire as Sales Tag:** Enable the toggle button if the tag is a Sales tag. Keep it disabled in case of a Counter tag.
+- **DoubleClick Advertiser ID:** Enter your Advertiser ID visible in the **Campaigns** or **Activities** tab in your dashboard.
 
 <div class="infoBlock">
     
-There are two types of tags as explained below:
-<ul>
-<li>Counter tag - Used to count the number of conversions.</li>
-<li>Sales Tag - Same as counter tag except it is supposed to be placed on the confirmation page after a sale with information about the sale like <code class="inline-code">cost</code>,class="inline-code">qty</code> , class="inline-code">ord</code> passed to the tag.</li>
+Refer to the <a href="faq">FAQ</a> section to know more on how to obtain the Advertiser ID.
 </div>
 
-- **Custom Floodlight variables:** Enter the custom Floodlight variables which will be mapped to the RudderStack event properties.
+- **Activity Tag:** Enter the `cat` of your tag string to define the same parameter value across all the conversion events. Alternatively, you can define this value for each conversion event mapping in the **Floodlight Activity Tag** field below.
+- **Group Tag:** Enter the `type` of your tag string to define the same parameter value across all the group conversion events. Alternatively, you can define this value for each conversion event in the **Floodlight Group Tag** field below.
+- **RudderStack Event Name:** Enter your RudderStack event name which will be mapped to the Floodlight tag.
+- **Floodlight Activity Tag:** Enter the `cat` of your tag string. If left blank, RudderStack will pick the value from the **Activity Tag** field mentioned above.
+- **Floodlight Group Tag:** Enter the `type` of your tag string. If left blank, RudderStack will pick the value from the **Group Tag** field mentioned above.
+- **Fire as Sales Tag:** There are two types of tags:
+    - **Counter tag**: Used to count the number of conversions. Keep the toggle button disabled in this case.
+    - **Sales tag**: Same as counter tag except it is supposed to be placed on the confirmation page after a sale with information about the sales, like `cost`,`qty`,`ord` passed to the tag. Enable the toggle button if it is a Sales tag.
 
+- **Custom Floodlight variables:** Enter the custom Floodlight variables which will be mapped to the RudderStack event properties.
 
 ## Track
 
