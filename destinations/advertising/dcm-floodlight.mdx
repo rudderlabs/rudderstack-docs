@@ -65,21 +65,33 @@ Refer to the <a href="faq">FAQ</a> section to know more on how to obtain the Adv
 
 The `track` call lets you capture user events along with the properties associated with them.
 
-<div class="infoBlock">
-
-For more information on the `track` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/).
-</div>
-
 A sample `track` call is as shown below:
 
 ```javascript
-    rudderanalytics.track('PURCHASE', {
-        'currency': 'USD',
-        'price': 333.33,
-        'transaction_id': '11111111'
-    });
+client.track({
+  userId: "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
+  event: "Checkout Started",
+  properties: {
+    orderId: 1234,
+    quantity: 45,
+    revenue: 800,
+  },
+  context: {
+    device: {
+      advertisingId: "2a3e36d172-5e28-45a1-9eda-ce22a3e36d1a",
+    },
+    userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
+  },
+  integrations: {
+    All: true,
+    "DCM Floodlight": {
+      COPPA: "false",
+      GDPR: "1",
+      npa: "true",
+    },
+  },
+});
 ```
-Accepted names for Integrations object:
 
 The following table details the mapping between RudderStack and DCM Floodlight properties:
 
@@ -102,4 +114,4 @@ To get the Advertiser ID, go to your [Campaign Manager 360](https://campaignmana
 
 ## Contact Us
 
-For queries on any of the sections covered in this guide, you can, [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can, [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
