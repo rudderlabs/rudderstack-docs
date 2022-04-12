@@ -10,14 +10,48 @@ Once you [sign up](https://app.rudderstack.com/signup) for RudderStack Cloud, yo
 
 ## Connections
 
-This option lets you configure and connect different sources and destinations to build efficient data pipelines across your entire customer data stack.
+This option lets you configure and connect different sources and destinations to build efficient data pipelines across your entire customer data stack. You can add a source and destination by clicking on the respective buttons as shown:
 
-<img src="../../assets/rs-cloud/connections-dashboard.png" alt="RudderStack Dashboard" />
+<img src="../assets/rs-cloud/connections-dashboard.png" alt="RudderStack Dashboard" />
 
 <div class="infoBlock">
 
   Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/connections/">Connections</a> guide for more details
   on setting up your data pipelines in RudderStack.
+</div>
+
+You can also observe the **Token** and **Data Plane URL** in the RudderStack dashboard which are explained in detail below:
+
+### Token
+
+A token is a unique identifier associated with your current RudderStack workspace. It is useful when you want to install and set up open-source RudderStack or accessing various RudderStack API.
+
+<div class="infoBlock">
+
+See the <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/">Install and Set up RudderStack</a> guide for steps on installing open-source RudderStack in your preferred development environment.
+
+See the <a href="https://rudderstack.com/docs/rudderstack-api">RudderStack API</a> guide for details on various available RudderStack API and how to use them.
+
+</div>
+
+### Data Plane URL
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/">RudderStack Architecture</a> guide for more information the RudderStack Data Plane.
+</div>
+
+For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. 
+
+Here's how to get the Data Plane URL:
+
+* If you're using [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
+* If you're using the [**pro or enterprise**](https://rudderstack.com/pricing) version of RudderStack, [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for the Data Plane URL with the email ID you used to sign up for RudderStack.
+* If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [**installing and setting up RudderStack**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
+
+<div class="successBlock">
+
+An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.  
 </div>
 
 ## Sources
@@ -45,6 +79,10 @@ Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/connections
 </div>
 
 ## Syncs
+
+This option provides the detailed metrics of events data synced to warehouse destinations. The **Created**, **Succeeded**, **Failed**, **Aborted** and **All** tabs provides information about the events with respective status. You can also filter the event data based on a specific source or destination by using the filter option in the header or sync the data manually by using the **Sync Now** button.
+
+<img src="../assets/rs-cloud/syncs-dashboard.png" alt="RudderStack Syncs" />
 
 ## Models
 
@@ -89,6 +127,7 @@ Refer to the <a href="rudderstack.com/docs/data-governance/tracking-plans/">Trac
 
 ## Settings
 
+
 ## Teammates
 
 This option lets you invite your teammates to collaborate on the current RudderStack workspace.
@@ -110,41 +149,6 @@ See the <a href="https://rudderstack.com/docs/rudderstack-cloud/teammates/">User
   Enterprise plan. Check out our <a href="https://rudderstack.com/pricing/">pricing page</a> for details on
   these plans, or <a href="http://app.rudderstack.com/upgrade">log in</a> to upgrade now.
 </div>
-
-Your RudderStack workspace also includes other important details like:
-
-## Workspace Token
-
-A workspace token is a unique identifier associated with your current RudderStack workspace. It is useful when you want to install and set up open-source RudderStack or accessing various RudderStack API.
-
-<div class="infoBlock">
-
-See the <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/">Install and Set up RudderStack</a> guide for steps on installing open-source RudderStack in your preferred development environment.
-
-See the <a href="https://rudderstack.com/docs/rudderstack-api">RudderStack API</a> guide for details on various available RudderStack API and how to use them.
-
-</div>
-
-## Data Plane URL
-
-<div class="infoBlock">
-
-Refer to the [**RudderStack Architecture**](https://rudderstack.com/docs/get-started/rudderstack-architecture/) guide for more information the RudderStack Data Plane.
-</div>
-
-For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. 
-
-Here's how to get the Data Plane URL:
-
-* If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [**installing and setting up RudderStack**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
-
-<div class="successBlock">
-
-An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.  
-</div>
-
-* If you're using [**RudderStack Cloud Free**](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard. 
-* If you're using the [**pro or enterprise**](https://rudderstack.com/pricing) version of RudderStack, [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for the Data Plane URL with the email ID you used to sign up for RudderStack.
 
 ## Contact Us
 
