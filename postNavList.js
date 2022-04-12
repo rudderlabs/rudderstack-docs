@@ -1385,12 +1385,6 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"identity-resolution-in-rudderstack",
-    "title":"Identity Resolution",
-    "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
-    "content":[]
- },
- {
     "key":"warehouse-schemas",
     "title":"Warehouse Schemas",
     "link":"/data-warehouse-integrations/warehouse-schemas/",
@@ -1498,6 +1492,12 @@ export const postNavList = [
     "link":"/data-governance/rudderstack-data-governance-api/",
     "content":[]
  },
+ {
+   "key":"identity-resolution",
+   "title":"Identity Resolution",
+   "link":"/identity-resolution/",
+   "content":[]
+},
  {
     "key":"transformations",
     "title":"Transformations",

@@ -1908,17 +1908,40 @@ export const jsonData = [
            ]
         },
         {
-           "key":"identity-resolution-in-rudderstack",
-           "title":"Identity Resolution",
-           "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
+           "key":"warehouse-faqs",
+           "title":"Warehouse FAQs",
+           "link":"/data-warehouse-integrations/warehouse-faqs/",
+           "content":[
+              
+           ]
+        }
+     ]
+  },
+  {
+     "key":"transformations",
+     "title":"Transformations",
+     "link":"/transformations/",
+     "content":[
+        {
+           "key":"api-access-token",
+           "title":"Access Token",
+           "link":"/transformations/api-access-token/",
            "content":[
               
            ]
         },
         {
-           "key":"warehouse-faqs",
-           "title":"Warehouse FAQs",
-           "link":"/data-warehouse-integrations/warehouse-faqs/",
+           "key":"rudderstack-transformation-api",
+           "title":"Transformations API",
+           "link":"/transformations/rudderstack-transformation-api/",
+           "content":[
+              
+           ]
+        },
+        {
+           "key":"faq",
+           "title":"FAQ",
+           "link":"/transformations/faq/",
            "content":[
               
            ]
@@ -1964,34 +1987,11 @@ export const jsonData = [
      ]
   },
   {
-     "key":"transformations",
-     "title":"Transformations",
-     "link":"/transformations/",
+     "key":"identity-resolution",
+     "title":"Identity Resolution",
+     "link":"/identity-resolution/",
      "content":[
-        {
-           "key":"api-access-token",
-           "title":"Access Token",
-           "link":"/transformations/api-access-token/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"rudderstack-transformation-api",
-           "title":"Transformations API",
-           "link":"/transformations/rudderstack-transformation-api/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"faq",
-           "title":"FAQ",
-           "link":"/transformations/faq/",
-           "content":[
-              
-           ]
-        }
+        
      ]
   },
   {
