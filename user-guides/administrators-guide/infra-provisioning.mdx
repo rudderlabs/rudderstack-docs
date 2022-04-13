@@ -9,7 +9,7 @@ description: >-
 
 # Infrastructure Provisioning
 
-This is a brief overview of the stats that we captured by running Backend on different AWS machine configurations that we hope gives a rough idea for users in making the decisions to provision infrastructure to host Rudder. All numbers capture below are by using metrics described in [Monitoring and Metrics](https://docs.rudderlabs.com/administrators-guide/monitoring-and-metrics#available-metrics) . Load is generated using [genload.go script](https://github.com/rudderlabs/rudder-server/blob/master/tests/load/genload.go) by varying number of users flag in it.
+This is a brief overview of the stats that we captured by running Backend on different AWS machine configurations that we hope gives a rough idea for users in making the decisions to provision infrastructure to host Rudder. All numbers capture below are by using metrics described in [Monitoring and Metrics](https://www.rudderstack.com/docs/user-guides/administrators-guide/monitoring-and-metrics/#available-metrics).
 
 ## Load Test Results
 
@@ -101,13 +101,6 @@ All tests are done using db.m4.xlarge Amazon RDS instance for hosting the postgr
 <div class="infoBlock">
 
 Backend migrates and drops tables that have a threshold of jobs processed. Gateway tables are backed up to object storage (S3, MinIO etc.) if configured by user. Dangling tables indicate tables are ready for drop at a rate greater than the rate at which tables are backed up to object storage. Concurrent uploads to object storage is in the roadmap for upcoming versions of Backend.
-
-</div>
-
-<div class="infoBlock">
-
-Load is an approximation since it depends on the maching configuration where the <a href="https://github.com/rudderlabs/rudder-server/blob/master/tests/load/genload.go">genload.go script</a> is run from. We ran it on a m5ad.xLarge machine with the approxiamtion that input of 50 users (50 go routines) gives a input load of 2.5K/s
-
 </div>
 
 ### Transformer
@@ -285,7 +278,7 @@ Rudder reads the data back from the database at a constant rate. A sudden spike 
 
 Rudder does not cache aggressively and hence does not need huge amount of memory. Load tests were performed on 4 GB and 8 GB memory instances.
 
-Rudder caches active user events by default to form configurable user sessions server side. The length of any user session can be configured with `sessionThresholdInS` and `sessionThresholdEvents`. Once a user's session is formed, that user events are cleared from the cache. If you don't need sessions, this can be disabled by setting `processSessions` to _false_.
+Rudder caches active user events by default to form configurable user sessions server side. The length of any user session can be configured with `sessionThresholdInS` and `sessionThresholdEvents`. Once a user's session is formed, that user events are cleared from the cache. If you don't need sessions, this can be disabled by setting `processSessions` to `false`.
 
 | Variable                | Description                                                                             | Sample data |
 | :---------------------- | :-------------------------------------------------------------------------------------- | :---------- |
