@@ -1,7 +1,7 @@
 ---
 # slug: "/docs/data-warehouse-integrations/snowflake"
 title: "Snowflake"
-description: Step-by-step guide to add Snowflake as a destination in RudderStack
+description: Step-by-step guide on setting up Snowflake as a destination in RudderStack.
 ---
 
 # Snowflake
@@ -20,7 +20,7 @@ Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/w
 <strong>Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snowflake">RudderStack GitHub</a> repo.</strong>
 </div>
 
-## Setting up a user in Snowflake
+## Setting user permissions in Snowflake
 
 To enable RudderStack access, make sure you have an `ACCOUNTADMIN`, or an account that has the `MANAGE GRANTS` privilege.
 
@@ -122,52 +122,52 @@ Follow these steps to configure your Azure data lake as a destination in RudderS
 Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack//">Adding a Source and Destination in RudderStack</a> guide for more information.
 </div>
 
-2. Assign a name to your destination and click on **Next**. You should then see the following screen:
+2. Assign a name to your destination and click on **Next**.
+
+### Connection settings
 
 <img src="../assets/dw-integrations/snowflake-connection-settings.png" alt="Snowflake destination settings in RudderStack" />
 <img src="../assets/dw-integrations/snowflake-connection-settings-1.png" alt="Snowflake destination settings in RudderStack" />
 
-### Connection settings
+Enter the following credentials in the **Connection Credentials** page:
 
-Add the following credentials to set up the Snowflake destination:
-
-  - **Account**: Enter the account ID of your Snowflake warehouse. This account ID is part of the Snowflake URL. 
+- **Account**: Enter the account ID of your Snowflake warehouse. This account ID is part of the Snowflake URL. 
   
-  The following examples illustrate the slight differences in the account ID for various cloud providers:
+The following examples illustrate the slight differences in the account ID for various cloud providers:
 
-  | Account ID example            | Corresponding Snowflake URL                                                    | Snowflake cloud provider                                        |
-  | :-------------------------- | :--------------------------------------------------------------- | :-------------------------------------------------------------- |
-  | `qya56091.us-east-1`         | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`      | AWS                                   |
-  | `rx18795.east-us-2.azure` | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure  |
-  | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
+| Account ID example            | Corresponding Snowflake URL                                                    | Snowflake cloud provider                                        |
+| :-------------------------- | :--------------------------------------------------------------- | :-------------------------------------------------------------- |
+| `qya56091.us-east-1`         | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`      | AWS                                   |
+| `rx18795.east-us-2.azure` | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure  |
+| `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
 
-  - **Database**: Enter the name of the database created in the [Creating a database](#creating-a-database) section above.
-  - **Warehouse**: Enter the name of the warehouse created in the [Creating a virtual warehouse](#creating-a-virtual-warehouse) section above.
-  - **User**: Enter the name of the user created in the [Creating a user](#creating-a-user) section above.
-  - **Password**: Enter the password you set for the above user.
-  - **Namespace**: Enter the schema name for the warehouse where RudderStack will create all the tables.
+- **Database**: Enter the name of the database created in the [Creating a database](#creating-a-database) section above.
+- **Warehouse**: Enter the name of the warehouse created in the [Creating a virtual warehouse](#creating-a-virtual-warehouse) section above.
+- **User**: Enter the name of the user created in the [Creating a user](#creating-a-user) section above.
+- **Password**: Enter the password you set for the above user.
+- **Namespace**: Enter the schema name for the warehouse where RudderStack will create all the tables.
 
-  <div class="infoBlock">
+<div class="infoBlock">
 
-  If you don't specify any namespace, RudderStack will set this to the source name by default.
-  </div>
+If you don't specify any namespace, RudderStack will set this to the source name by default.
+</div>
 
-  - **Sync Frequency**:  Specify how often RudderStack should sync the data to your Snowflake warehouse.
-  - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
-  - **Exclude Window**: This optional setting lets you set a time window when RudderStack **will not** sync the data to the warehouse.
+- **Sync Frequency**:  Specify how often RudderStack should sync the data to your Snowflake warehouse.
+- **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+- **Exclude Window**: This optional setting lets you set a time window when RudderStack **will not** sync the data to the warehouse.
 
 ### Configuring the object storage
 
 RudderStack lets you configure the following object storage configuration settings while setting up your Snowflake destination:
 
-  - **Use RudderStack-managed Object Storage**: Enable this setting to use RudderStack-managed buckets for object storage.
+- **Use RudderStack-managed Object Storage**: Enable this setting to use RudderStack-managed buckets for object storage.
 
-   <div class="warningBlock">
+<div class="warningBlock">
 
-  This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
-  </div>
+This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
+</div>
 
-  - **Choose your Cloud**: Select the cloud provider for your Snowflake instance.
+- **Choose your Cloud**: Select the cloud provider for your Snowflake instance.
 
 Refer to the following settings depending on your cloud provider:
 
@@ -414,9 +414,9 @@ GRANT USAGE ON INTEGRATION <integration_name> TO ROLE "RUDDER";
 ```
 Here, `<integration_name>` is the integration name you set up in Step 1.
 
-## Setting up network access
+## IPs to be whitelisted
 
-You will need to whitelist the following RudderStack IPs to enable network access:
+To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -446,4 +446,4 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

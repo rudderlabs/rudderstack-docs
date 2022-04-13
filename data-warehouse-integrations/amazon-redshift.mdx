@@ -1,100 +1,95 @@
 ---
 # slug: "/docs/data-warehouse-integrations/amazon-redshift"
 title: "Amazon Redshift"
-description: Step-by-step guide to set up Amazon Redshift as a destination in RudderStack.
+description: Step-by-step guide on setting up Amazon Redshift as a destination in RudderStack.
 ---
 
 # Amazon Redshift
 
-Amazon Redshift is the world's fastest cloud data warehouse. It allows you to handle large analytical workloads with best-in-class performance, speed, and efficiency. With Redshift, you don't have to worry about the scale of your data or the cost of running queries on them.
+[Amazon Redshift](https://aws.amazon.com/redshift/) is the world's fastest cloud data warehouse. It allows you to handle large analytical workloads with best-in-class performance, speed, and efficiency. With Redshift, you don't have to worry about the scale of your data or the cost of running queries on them.
 
-You can integrate RudderStack with Redshift seamlessly and store your customer event data into it, from the source of your choice.
+RudderStack lets you configure Redshift as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 
-Please check our <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas">Warehouse Schemas</a> guide to know how events are mapped to the tables in Redshift.
-
+Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for more information on how the events are mapped to the tables in Redshift.
 </div>
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/rs">GitHub repo</a>.**
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/rs">GitHub repository</a>.
 </div>
 
-## Setting Up a Redshift Cluster
+## Setting up a Redshift cluster
 
-Before adding Redshift as a destination in RudderStack, it is recommended that you create a new Redshift cluster depending on the type of instance needed. The following sections give you step-by-step instructions on how to do so.
+Before adding Redshift as a destination in RudderStack, it is recommended that you create a new Redshift cluster depending on the type of instance needed. 
 
-### Choosing the type of Redshift instance
+The following sections contain step-by-step instructions on setting up a Redshift cluster.
 
-Amazon Redshift provides two types of clusters: **Dense Compute** and **Dense Storage** clusters
+### Choosing the Redshift instance type
 
-- **Dense Compute** clusters maximize CPU usage, resulting in an increase in query performance. However, there is a trade-off with respect to the storage.
+Amazon Redshift provides two types of clusters: **Dense Compute** and **Dense Storage** clusters.
+
+- **Dense Compute** clusters maximize CPU usage, resulting in an increased query performance. However, there is a trade-off with respect to the storage.
 - **Dense Storage** clusters maximize storage for customers with hundreds of millions of rows of data. However, there is a trade-off in the CPU usage, resulting in a lower query performance.
 
 <div class="infoBlock">
 
-Please refer to <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#working-with-clusters-overview">this article</a> to read more about the cluster and node types in Amazon Redshift.
-
+Refer to this <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#working-with-clusters-overview">Redshift guide</a> for more information on the cluster and node types in Redshift.
 </div>
 
 ### Creating a new Redshift cluster
 
-Please follow the steps below in order to create a new Redshift cluster:
+Follow the steps below to create a new Redshift cluster:
 
-- Open the Redshift Console as shown:
+1. Open the Redshift Console as shown:
 
 <img src="../assets/1 (3).png" alt="Redshift Console" /><span class="imageTitle">Redshift Console</span>
 
-- Click on the **Create Cluster** option as shown:
+2. Click on the **Create Cluster** option, as shown:
 
 <img src="../assets/2 (5).png" alt="Create Cluster" />
 
-- Enter the cluster details**.** First, fill in the **Cluster identifier** and choose the instance type as shown:
+3. Enter the cluster details. First, fill in the **Cluster identifier** and choose the instance type, as shown:
 
 <img src="../assets/3 (4) (1) (1).png" alt="Cluster Identifier" /><span class="imageTitle">Redshift cluster configuration settings</span>
 
-- Enter the number of nodes for your cluster. This will primarily depend on the amount of data you expect to work with.
+4. Enter the number of nodes for your cluster. This will primarily depend on the amount of data you expect to work with.
 
 <img src="../assets/4 (1) (1).png" alt="Enter the number of nodes" />
 
-- Enter the database name, and create the admin user with the name of your choice.
+5. Enter the database name, and create the admin user with the name of your choice.
 
 <img src="../assets/5 (7).png" alt="Add Source" />
 
 <div class="warningBlock">
 
-For security purposes, we recommend that you choose a strong password.
-
+For security purposes, it is recommended that you choose a strong password.
 </div>
 
-- Finish creating the cluster by allowing the default options for **Additional Configurations**.
+6. Finish creating the cluster by allowing the default options for **Additional Configurations**.
 
 <div class="infoBlock">
 
-As a part of this setup, we will also have to edit the VPC network and configure the security settings. We will cover these aspects in the <a href="https://rudderstack.com/docs/data-warehouse-integrations/amazon-redshift">Connecting RudderStack to Redshift</a> section.
-
+As a part of this setup, you also need to edit the VPC network and configure the security settings. More information on these aspects in available in the following sections.
 </div>
 
-With the Redshift cluster now created and ready to use, the next section covers the necessary steps to configure Redshift as a destination in RudderStack.
+With the Redshift cluster now created and ready to use, the next sections cover the necessary steps to set up the necessary user permissions and set up Redshift as a destination in RudderStack.
 
-## Connecting RudderStack to Redshift
+## Setting user permissions in Redshift
 
-The following sections describe creating a database user, setting up the network and security, as well as configuring Redshift in the RudderStack dashboard.
+This section contains the steps to create a new user to access the Redshift cluster and create temporary tables in it.
 
-### Creating a Database User
+<div class="warningBlock">
 
-<div class="infoBlock">
-
-The username and password we provided earlier while creating the Redshift cluster should be strictly used for administration purposes. We will create a different user to enable RudderStack access to Redshift. This also helps us keep the queries separate as well as maintain an audit log.
-
+The username and password provided earlier while creating the Redshift cluster should be strictly used for administration purposes. RudderStack will create a different user to enable access to Redshift. This also helps RudderStack keep the queries separate as well as maintain an audit log.
 </div>
 
-- Click on the **Editor** option visible in the left pane. You can run the queries to create a new user to access the Redshift cluster in the **Query editor**, as shown in the image below:
+1. Click on the **Editor** option in the left pane. You can run the queries to create a new user to access the Redshift cluster in the **Query editor**, as shown:
 
 <img src="../assets/6 (1).png" alt="Query editor" />
 
-- The queries to create a new user are:
+2. The queries to create a new user are listed below:
 
 ```sql
 -- create a user named "rudder" RudderStack can use to access Redshift
@@ -104,23 +99,23 @@ CREATE USER rudder PASSWORD '<password goes here>';
 GRANT CREATE ON DATABASE "<database name goes here>" TO "rudder";
 ```
 
-- Log into the Redshift cluster with the newly created user credentials.
+3. Log into the Redshift cluster with the newly created user credentials.
 
 <div class="infoBlock">
 
-The newly created user credentials should be used while configuring Redshift as a destination, in the RudderStack dashboard.
-
+Use the newly-created user credentials while configuring Redshift as a destination in the RudderStack dashboard.
 </div>
 
-### Setting up network and security access
+## Setting up network and security access
 
-The Redshift cluster needs to whitelist the RudderStack IPs to enable network access to it.
 <div class="successBlock">
 
-This section is listed for **EC2-VPC**. However, **EC2-Classic** works similarly.
+This section is listed for EC2-VPC. However, EC2-Classic works similarly.
 </div>
 
-The IPs to be whitelisted are listed below:
+### IPs to be whitelisted
+
+To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -148,70 +143,92 @@ If you have your deployment in the EU region, you can whitelist only the followi
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
+### Adding a security group
+
 Follow these steps to add a security group and assign it to your Redshift cluster:
 
-- Go to EC2 from the services on AWS console, as shown:
+1. Go to EC2 from the services on your AWS console, as shown:
 
 <img src="../assets/7 (3).png" alt="Go to EC2" />
 
-- Go to **Security Groups** under **Network & Security** and click on **Create Security Group**.
+2. Go to **Security Groups** under **Network & Security**, followed by **Create Security Group**.
 
 <img src="../assets/8 (1) (1).png" alt="Create Security Group" />
 
-- Enter the details of the security group. The **Security group name** will be used to select the group later.
+3. Enter the details of the security group. The **Security group name** will be used to select the group later.
 
 <img src="../assets/9 (1).png" alt="Security group name" />
 
-- Add an **Inbound rule** with IPs listed above, and enter the Redshift port as `5439` in the **Port range** field, as shown:
+4. Add an **Inbound rule** with IPs listed above, and enter the Redshift port as `5439` in the **Port range** field, as shown:
 
 <img src="../assets/10.png" alt="Port range" />
 
-- Next, go to the Redshift cluster and select **Properties**, where you can modify the network and security rules of the cluster.
+5. Next, go to the Redshift cluster and select **Properties**, where you can modify the network and security rules of the cluster.
 
 <img src="../assets/11.png" alt="Properties" />
 
-- Edit the **Network and security** option, and choose the VPC security group you selected earlier.
+6. Edit the **Network and security** option and choose the VPC security group that you selected earlier.
 
 <img src="../assets/12.png" alt="Network and security" />
 
-- Click on **Modify cluster** to finish the **Network and Security** setup.
+7. Finally, click on **Modify cluster** to finish the **Network and Security** setup.
 
 <img src="../assets/13.png" alt="Modify cluster" />
 
-### Configuring Redshift as a destination in RudderStack
+<div class="infoBlock">
 
-In order to enable RudderStack to send data to Redshift, you will first need to add Redshift as a destination to the source from which you are sending the events.
+The Redshift cluster needs to be publicly accessible. Refer to this <a href="https://aws.amazon.com/premiumsupport/knowledge-center/redshift-cluster-private-public/">Redshift guide</a> for more information on how to set this property.
+</div>
 
-To do so, please follow these steps:
+## Configuring Redshift destination in RudderStack
 
-- Choose a source to which you would like to add Redshift as a destination. You can also simply create the destination and connect it to a source later.
+To send event data to Redshift, you first need to add it as a destination in RudderStack and connect it to your data source. Once the destination is enabled, events will automatically start flowing to Redshift via RudderStack.
+
+To configure Redshift as a destination in RudderStack, follow these steps:
+
+1. In your [RudderStack dashboard](https://app.rudderstack.com), set up the data source. Then, select **Redshift** from the list of destinations.
 
 <div class="infoBlock">
 
-Please follow our <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination</a> guide to know how to add a source in RudderStack.
-
+Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> guide for more information.
 </div>
 
-- Once you have set up the source, select **Redshift** from the list of destinations. Give your destination a name, and then click on **Next**. You will then see the following **Connection Credentials** screen:
+2. Assign a name to your destination and then click on **Next**.
 
-<img src="../assets/14.png" alt="Select Redshift" /><span class="imageTitle">Connection Settings for adding Redshift as a destination in RudderStack</span>
+### Connection Settings
 
-- Enter the details of the cluster you have created in the [Setting Up a Redshift Cluster](https://rudderstack.com/docs/data-warehouse-integrations/amazon-redshift/#setting-up-a-redshift-cluster) section. You will also need to create a S3 bucket to which the data will be dumped.
-- You will also need to enter the AWS Access Key ID and AWS Secret Access Key. you can avoid this by setting up permission for your S3 bucket by following [this guide](https://rudderstack.com/docs/data-warehouse-integrations/amazon-redshift/#s3-permissions).
+<img src="../assets/dw-integrations/redshift-connection-settings.png" alt="Redshift connection settings" />
+<img src="../assets/dw-integrations/redshift-connection-settings2.png" alt="Redshift connection settings" />
 
-<div class="infoBlock">
+Enter the following credentials in the **Connection Credentials** page:
+  - **Host**: The host name of your Redshift service.
+  - **Port**: The port number associated with the Redshift database instance.
+  - **Database**: The database name in your Redshift instance where the data will be sent.
+  - **User**: The name of the user with the required read/write access to the above database.
+  - **Password**: The password for the above user.
+  - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
+  - **Sync Frequency**: Specify how often RudderStack should sync the data to your Redshift database.
+  - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+  - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
 
-You can read more about creating a S3 bucket in <a href="https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html">this article</a>.
+### Configuring the object storage
 
+RudderStack lets you configure the following object storage configuration settings while setting up your Azure Synapse destination:
+
+  - **Use RudderStack-managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage.
+
+<div class="warningBlock">
+
+This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
 </div>
 
-That's it! You have successfully added Redshift as a destination in RudderStack. Once you start sending events from your source, RudderStack will dump them into the specified S3 bucket periodically.
+ - **Choose your storage provider**: If **Use RudderStack-managed object storage** is disabled in the dashboard, you can enter the relevant [Amazon S3 bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/amazon-s3/#setting-up-amazon-s3).
 
 ## S3 Permissions
 
-The alternative to providing AWS credentials for S3 access, is to set up permissions on your bucket as per the below steps
+The alternative to providing AWS credentials for S3 access, is to set up permissions for your bucket as specified in the following section:
 
-### RudderStack-hosted Data Plane
+### RudderStack-hosted data plane
 
 You need to edit your bucket policy to allow RudderStack to write to your bucket with the following JSON:
 
@@ -239,7 +256,7 @@ You need to edit your bucket policy to allow RudderStack to write to your bucket
 }
 ```
 
-### Self-hosted Data Plane
+### Self-hosted data plane
 
 1. Create an IAM policy with the following JSON:
 
@@ -257,7 +274,6 @@ You need to edit your bucket policy to allow RudderStack to write to your bucket
 ```
 
 2. Create an IAM user with programmatic access keys and attach the above created IAM policy. Copy the ARN of this user.
-
 3. Edit your bucket policy to allow the data plane to write to your bucket with the following JSON. Make sure you edit the account id and user ARN with your AWS Account ID and the above created user ARN:
 
 ```javascript
@@ -284,20 +300,22 @@ You need to edit your bucket policy to allow RudderStack to write to your bucket
 }
 ```
 
-4. Add the programmatic access credentials to the environment of your data plane.
+4. Finally, add the programmatic access credentials to the environment of your data plane, as shown:
 
 ```bash
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<above created user access key>
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY=<above created user access key secret>
 ```
 
-## Column Compression Encoding
+## Column compression encoding
 
-Compression encoding specifies the type of compression that is applied to a column of data values as rows are added to a table. Redshift automatically assigns [compression encoding](https://docs.aws.amazon.com/redshift/latest/dg/c_Compression_encodings.html) if not specified. We explicitly set [runlength](https://docs.aws.amazon.com/redshift/latest/dg/c_Runlength_encoding.html) encoding for boolean columns.
+Compression encoding specifies the type of compression applied to a column of data values as rows are added to a table. 
 
-## FAQs
+If not specified, Redshift automatically assigns [compression encoding](https://docs.aws.amazon.com/redshift/latest/dg/c_Compression_encodings.html). RudderStack explicitly sets the [runlength](https://docs.aws.amazon.com/redshift/latest/dg/c_Runlength_encoding.html) encoding for Boolean columns.
 
-### How are reserved words handled?
+## FAQ
+
+### How are reserved words handled by RudderStack?
 
 There are some limitations when it comes to using [reserved words](http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html) in a schema, table, or column names. If such words are used in event names, traits or properties, they will be prefixed with a `_`when RudderStack creates tables or columns for them in your schema.
 
@@ -305,6 +323,6 @@ Besides, integers are not allowed at the start of the schema or table name. Henc
 
 For instance, `'25dollarpurchase`' will be changed to `'_25dollarpurchase`'.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Redshift with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
