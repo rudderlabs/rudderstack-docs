@@ -55,9 +55,15 @@ Refer to the <a href="faq">FAQ</a> section to know more on how to obtain the Adv
 - **RudderStack Event Name:** Enter your RudderStack event name which will be mapped to the Floodlight tag.
 - **Floodlight Activity Tag:** Enter the `cat` of your tag string. If left blank, RudderStack will pick the value from the **Activity Tag** field mentioned above.
 - **Floodlight Group Tag:** Enter the `type` of your tag string. If left blank, RudderStack will pick the value from the **Group Tag** field mentioned above.
-- **Fire as Sales Tag:** There are two types of tags:
-    - **Counter tag**: Used to count the number of conversions. Keep the toggle button disabled in this case.
-    - **Sales tag**: Same as counter tag except it is supposed to be placed on the confirmation page after a sale with information about the sales, like `cost`,`qty`,`ord` passed to the tag. Enable the toggle button if it is a Sales tag.
+- **Fire as Sales Tag:** Enable the toggle button for Sales tag. Keep it disabled if it is a Counter tag.
+ 
+<div class="infoBlock">
+There are two types of tags:
+    <ul>
+    <li> <strong>Counter tag</strong>: Used to count the number of conversions. It is supposed to be placed on the confirmation page after a sale with information about the `ord` property passed to the tag. </li> 
+    <li><strong>Sales tag</strong>: Used to count the number of conversions. It is supposed to be placed on the confirmation page after a sale with information about the sales, like `cost`,`qty`, or `ord` properties passed to the tag.</li> 
+        </ul>
+</div>
 
 - **Custom Floodlight variables:** Enter the custom Floodlight variables which will be mapped to the RudderStack event properties.
 
@@ -92,16 +98,24 @@ client.track({
   },
 });
 ```
+The following table details the mapping of `integrations` object (in the above code snippet), for DCM Floodlight:
+
+| **RudderStack Property** | **DCM Floodlight Property** |
+| :--- | :--- |
+| `COPPA`| `tag_for_child_directed_treatment`  |
+| `GDPR` | `tfua` | 
+| `npa` | `npa` | 
 
 The following table details the mapping between RudderStack and DCM Floodlight properties:
 
-| **RudderStack Property Name** | **DCM Floodlight Property** | **Presence**|
-| :--- | :--- |
-| `context.device.advertisingId` | `dc_rdid` | Required |
-| `properties.orderId` | `ord` | Optional |
-| `properties.quantity` | `qty` | Optional |
-| `properties.revenue` | `cost` | Optional | 
-| `context.device.adTrackingEnabled` | `dc_lat` | Optional |
+| **RudderStack Property** | **DCM Floodlight Property** | **Presence**| **Tag**|
+| :--- | :--- |:--- |:--- |
+| `context.device.advertisingId` | `dc_rdid` | Required | Counter/Sales|
+| `properties.orderId` | `ord` | Optional | Sales |
+| `messageId` | `ord` | Optional | Counter |
+| `properties.quantity` | `qty` | Optional | Sales |
+| `properties.revenue` | `cost` | Optional | Sales |
+| `context.device.adTrackingEnabled` | `dc_lat` | Optional |Counter/Sales|
 
 
 ## FAQ
