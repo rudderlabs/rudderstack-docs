@@ -340,7 +340,12 @@ Facebook's \(and RudderStack's\) recommended form of deduplication is to leverag
   - The `event_id` must be unique to that specific event and the same for both of the events coming from the Pixel and Conversion API
   - For example: the `event_id` could be the purchase order number etc.
 
-You can set the `event_id` in `traits` , `context.traits` or `properties` object as an unique identifier. It works for cloud as well as device mode. If you don't set the `event_id`, RudderStack will use the `messageId` to map to Facebook's `eventId`.
+You can set the `event_id` in `traits` , `context.traits` or `properties` object as a unique identifier. This works for the [cloud mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) as well as [device mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode). 
+
+<div class="infoBlock">
+
+If you don't set the <code class="inline-code">event_id</code>, RudderStack will use <code class="inline-code">messageId</code> to map to Facebook's <code class="inline-code">eventId</code>.
+</div>
 
 The `event_name` will be picked up from the name of the event.
 
