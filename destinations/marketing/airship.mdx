@@ -45,19 +45,18 @@ To successfully configure Airship as a destination, you will need to configure t
 
 <img src="../../assets/event-stream-destinations/airship-connection-settings.png" alt="Airship connection settings" />
 
-- **API Key**: Enter your Airship token which is required by RudderStack to communicate with your Airship project.
+- **API Key**: Enter your Airship token which is required by RudderStack to communicate with your Airship project and authenticate all the supported event calls, that is, [`identify`](#identify), [`track`](#track), and [`group`](#group).
 
 <div class="infoBlock">
 
 For detailed steps on obtaining the API key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **App Key**: Enter your Airship project's app key by going to **Settings** > **Project Details** in the Airship dashboard.
-- **App Secret**: Enter your Airship project's app secret by going to **Settings** > **Project Details** in the Airship dashboard.
+- **App Key**: Enter your Airship project's app key which is required for the [`track`](#track) calls. You can obtain the app key by going to **Settings** > **Project Details** in your Airship dashboard.
 
 <div class="infoBlock">
 
-For detailed steps on obtaining the Airship app key and secret, refer to the <a href="#faq">FAQ</a> section below.
+For detailed steps on obtaining the Airship app key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 - **EU data center**: Enable this setting if you've implemented your app in Airship's European data center.
@@ -118,6 +117,11 @@ Refer to the <a href="#faq">FAQ</a> section below for more information on creati
 The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
 
 RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
+
+<div class="infoBlock">
+
+Your Airship project's <strong>App Key</strong> is required for authenticating the <code class="inline-code">track</code> calls.
+</div>
 
 A sample `track` call is shown below:
 
@@ -224,16 +228,14 @@ To obtain your Airship project's API key, follow these steps:
 
 5. Once the token is created, copy and secure the credentials and click on **Got it**.
 
-### Where can I obtain the Airship App Key and App Secret?
+### Where can I obtain the Airship App Key?
 
-To obtain your Airship project's app key and secret, follow these steps:
+To obtain your Airship project's app key, follow these steps:
 
 1. In your Airship dashboard, go to **Settings**.
 2. In the **Project configuration** window, look for the **Project Details** pane on the right side.
 
-You will find your project's app key listed here. To obtain the app secret, click on **Click to reveal**, as shown:
-
-<img src="../../assets/event-stream-destinations/airship-app-key-secret.png" alt="Airship project app key and secret" />
+You will find your project's app key listed here.
 
 ### How do I create a custom tag group in Airship?
 
@@ -257,7 +259,7 @@ For `identify` traits that are not mapped to any predefined or custom-defined Ai
 4. Enter the **Attribute ID**, **Name**, and select the attribute **Type**.
 5. Finally, click on **Add**.
 
-<img src="../../assets/event-stream-destinations/new-attribute-airship.png" alt="Airship project app key and secret" />
+<img src="../../assets/event-stream-destinations/new-attribute-airship.png" alt="Airship new attributes" />
 
 ## Contact us
 

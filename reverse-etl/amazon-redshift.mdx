@@ -140,6 +140,7 @@ If you have chosen the <strong>Model</strong> option, skip the next steps and re
 - **Database -** Database name in your Redshift instance where the data is loaded.
 - **User** - Username which has the required read/write access to the above database.
 - **Password** - Password for the above user.
+- **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your Redshift instance. RudderStack provides two options - **disable** and **require**. For more information on these options, refer to the [FAQ](#faq) section below.
 
 <div class="successBlock">
 
@@ -190,6 +191,13 @@ Based on the option(Table/Model) you chose while setting up the Reverse ETL sour
 </div>
 
 ## FAQ
+
+### What are the SSL mode options when setting up the Redshift source in RudderStack?
+
+When setting up a Redshift source, RudderStack provides the following two SSL options:
+
+- **disable**: SSL mode is disabled when you select this option. Use it in cases where security is not an issue and you don't want any encryption overhead.
+- **require**: When you select this option, your data is encrypted and sent to RudderStack. Use it in cases where security is important and you can deal with the resulting encryption overhead.
 
 ### What do the three validations under Verifying Credentials imply?
 

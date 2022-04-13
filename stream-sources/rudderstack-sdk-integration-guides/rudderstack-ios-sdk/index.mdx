@@ -17,7 +17,9 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-ios
   Starting from version <strong>1.1.0</strong>, the iOS SDK supports the <strong>tvOS</strong> platform. RudderStack also supports the <strong>watchOS</strong> platform starting from version <strong>1.3.1</strong>. You can now integrate the iOS SDK with your tvOS and watchOS apps and seamlessly track user events without the need for any additional configuration.
 </div>
 
-<img src="https://img.shields.io/cocoapods/v/Rudder.svg?style=flat)(https://cocoapods.org/pods/Rudder" alt="Github Badge" class="githubBadge" />
+ <a href="https://cocoapods.org/pods/Rudder">
+    <img src="https://img.shields.io/cocoapods/v/Rudder.svg?style=flat?style=flat" alt="Github Badge" class="githubBadge" />
+ </a>
 
 ## SDK setup requirements
 
@@ -28,7 +30,7 @@ To set up the RudderStack iOS SDK, the following prerequisites must be met:
 
 <img src="../../../assets/event-stream-sources/ios-sdk-1.png" alt="iOS source write key" />
 
-- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
 - Finally, you will need a Mac with the latest version of [**Xcode**](https://developer.apple.com/xcode/).
 
@@ -530,11 +532,11 @@ You can configure your client based on the following parameters using `RudderCon
 
 ### Self-hosted control plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the iOS SDK needs to fetch the required configuration from the control plane. If you are using the [**Control Plane Lite**](https://rudderstack.com/docs/get-started/control-plane-lite/) utility to host your own control plane, then follow [**this guide**](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in `RudderConfigBuilder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the iOS SDK needs to fetch the required configuration from the control plane. If you are using the [**Control Plane Lite**](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility to host your own control plane, then follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url) and specify `controlPlaneUrl` in `RudderConfigBuilder` that points to your hosted source configuration file.
 
 <div class="warningBlock">
 
-You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are using our open-source <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to self-host your control plane.
+You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are using our open-source <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to self-host your control plane.
 </div>
 
 ## Setting the device token

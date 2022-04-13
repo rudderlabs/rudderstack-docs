@@ -9,12 +9,15 @@ description: >-
 
 The **RudderStack Flutter SDK** lets you track event data from your Flutter applications and send it to your specified destinations via RudderStack.
 
+<a href="https://pub.dev/packages/rudder_sdk_flutter" target ="_blank">
+<img src="https://img.shields.io/pub/v/rudder_sdk_flutter.svg?style=flat" alt="Github Badge" class="githubBadge" />
+<img src="https://img.shields.io/badge/stability-beta-blue" alt="Github Badge" class="githubBadge" />
+</a>
+
 <div class="successBlock">
 
 Refer to the <a href="https://github.com/rudderlabs/rudder-sdk-flutter" target="_blank">Flutter GitHub Repository</a> to get a more hands-on understanding of the SDK and the related codebase.
 </div>
-
-<img src="https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github" alt="Github Badge" class="githubBadge" />
 
 ## SDK setup requirements
 
@@ -521,11 +524,11 @@ rudderClient.putDeviceToken(<DEVICE_TOKEN>);
 
 ## Self-hosted control plane
 
-In case you are using a device mode destination like Adjust, Firebase, etc., the Flutter SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own control plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your [`RudderConfig.Builder`](#configuring-your-rudderstack-client) that points to your hosted source configuration file.
+In case you are using a device mode destination like Adjust, Firebase, etc., the Flutter SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own control plane, then follow [this guide](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url) and specify `controlPlaneUrl` in your [`RudderConfig.Builder`](#configuring-your-rudderstack-client) that points to your hosted source configuration file.
 
 <div class="dangerBlock">
 
-You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are using the open-source <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to set up your own control plane.
+You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are using the open-source <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to set up your own control plane.
 </div>
 
 ## SDK API unavailable for web

@@ -8,6 +8,10 @@ description: >-
 
 RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to track your customer event data from your websites and send it to your specified destinations via RudderStack.
 
+<a href="https://www.npmjs.com/package/rudder-sdk-js" target="_blank">
+<img src="https://img.shields.io/npm/v/rudder-sdk-js.svg?style=flat" alt="Github Badge" class="githubBadge" />
+</a>
+
 <div class="successBlock">
 
   We have released <strong>JavaScript SDK v1.1</strong> - a more lightweight, efficient, and optimized version of the RudderStack JavaScript SDK v1. Read more about this new, high-performance JavaScript SDK in our <a href="https://rudderstack.com/blog/rudderstacks-new-high-performance-javascript-sdk/">blog</a>. 
@@ -55,9 +59,9 @@ You need to replace the <code class="inline-code">WRITE_KEY</code> with the sour
 
 To integrate and initialize the JavaScript SDK, you need the source write key and the data plane URL.
 
-* To get the source write key, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack/sending-test-events#get-the-source-write-key).
+* To get the source write key, follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/#step-1-getting-the-source-write-key).
 
-* To get the data plane URL, follow [**this guide**](https://docs.rudderstack.com/get-started/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it).
+* To get the data plane URL, follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
 
 ### The `options` parameter
 
@@ -106,7 +110,7 @@ The JavaScript SDK supports a new Boolean field, `useBeacon`, in the `load()` ca
 
 ### Loading the SDK for self-hosted control plane
 
-If you are self-hosting the control plane using the [**RudderStack Control Plane Lite**](https://docs.rudderstack.com/get-started/control-plane-lite#what-is-the-control-plane-url) utility, your `load` call will look like the following:
+If you are self-hosting the control plane using the [**RudderStack Control Plane Lite**](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, your `load` call will look like the following:
 
 ```javascript
 rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
@@ -116,7 +120,7 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 
 <div class="infoBlock">
 
-  More information on how to get the <code class="inline-code">CONTROL_PLANE_URL</code> can be found <a href="https://docs.rudderstack.com/get-started/control-plane-lite/#what-is-the-control-plane-url">here</a>.
+  More information on how to get the <code class="inline-code">CONTROL_PLANE_URL</code> can be found <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url">here</a>.
 </div>
 
 ### Loading selective destinations

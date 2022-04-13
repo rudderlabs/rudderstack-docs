@@ -13,7 +13,9 @@ The **RudderStack Android SDK** lets you track event data from your Android appl
 
 You can check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-android) to get more a hands-on understanding of the SDK and its architecture.
 
-<img src="https://img.shields.io/maven-central/v/com.rudderstack.android.sdk/core.svg?label=Maven%20Central" alt="Github Badge" class="githubBadge"/>
+<a href="https://search.maven.org/search?q=g:%22com.rudderstack.android.sdk%22%20AND%20a:%22core%22">
+    <img src="https://img.shields.io/maven-central/v/com.rudderstack.android.sdk/core.svg?label=Maven%20Central" alt="Github Badge" class="githubBadge" />
+</a>
 
 ## SDK setup requirements
 
@@ -24,7 +26,7 @@ To set up the RudderStack Android SDK, the following prerequisites must be met:
 
 <img src="../../../assets/event-stream-sources/android-sdk-1.png" alt="Android source write key" />
 
-- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
 
 - Finally, you will also need to install [**Android Studio**](https://developer.android.com/studio) on your system.
 
@@ -611,10 +613,10 @@ rudderClient = RudderClient.getInstance(
 
 ### Self-hosted control plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then follow [this guide](https://rudderstack.com/docs/user-guides/how-to-guides/rudderstack-control-plane-lite/#what-is-the-control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the Android SDK needs to fetch the required configuration from the Control Plane. If you are using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then follow [this guide](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url) and specify `controlPlaneUrl` in your`RudderConfig.Builder` that points to your hosted source configuration file.
 
 <div class="warningBlock">
-You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using the dashboard from <a href="https://app.rudderstack.com">RudderStack Cloud Dashboard</a>. This parameter is supported only if you are using our open-source <a href="https://rudderstack.com/docs/get-started/control-plane-lite/">Control Plane Lite</a> to self-host your Control Plane.
+You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using the dashboard from <a href="https://app.rudderstack.com">RudderStack Cloud Dashboard</a>. This parameter is supported only if you are using our open-source <a href="https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> to self-host your Control Plane.
 
 </div>
 

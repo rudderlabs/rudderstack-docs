@@ -1908,17 +1908,40 @@ export const jsonData = [
            ]
         },
         {
-           "key":"identity-resolution-in-rudderstack",
-           "title":"Identity Resolution",
-           "link":"/data-warehouse-integrations/identity-resolution-in-rudderstack/",
+           "key":"warehouse-faqs",
+           "title":"Warehouse FAQs",
+           "link":"/data-warehouse-integrations/warehouse-faqs/",
+           "content":[
+              
+           ]
+        }
+     ]
+  },
+  {
+     "key":"transformations",
+     "title":"Transformations",
+     "link":"/transformations/",
+     "content":[
+        {
+           "key":"api-access-token",
+           "title":"Access Token",
+           "link":"/transformations/api-access-token/",
            "content":[
               
            ]
         },
         {
-           "key":"warehouse-faqs",
-           "title":"Warehouse FAQs",
-           "link":"/data-warehouse-integrations/warehouse-faqs/",
+           "key":"rudderstack-transformation-api",
+           "title":"Transformations API",
+           "link":"/transformations/rudderstack-transformation-api/",
+           "content":[
+              
+           ]
+        },
+        {
+           "key":"faq",
+           "title":"FAQ",
+           "link":"/transformations/faq/",
            "content":[
               
            ]
@@ -1964,34 +1987,11 @@ export const jsonData = [
      ]
   },
   {
-     "key":"transformations",
-     "title":"Transformations",
-     "link":"/transformations/",
+     "key":"identity-resolution",
+     "title":"Identity Resolution",
+     "link":"/identity-resolution/",
      "content":[
-        {
-           "key":"api-access-token",
-           "title":"Access Token",
-           "link":"/transformations/api-access-token/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"rudderstack-transformation-api",
-           "title":"Transformations API",
-           "link":"/transformations/rudderstack-transformation-api/",
-           "content":[
-              
-           ]
-        },
-        {
-           "key":"faq",
-           "title":"FAQ",
-           "link":"/transformations/faq/",
-           "content":[
-              
-           ]
-        }
+        
      ]
   },
   {
@@ -2131,6 +2131,14 @@ export const jsonData = [
                  ]
               },
               {
+                 "key":"application-lifecycle-events-spec",
+                 "title":"Application Lifecycle Events",
+                 "link":"/rudderstack-api/api-specification/application-lifecycle-events-spec/",
+                 "content":[
+                    
+                 ]
+              },
+              {
                  "key":"video-specification",
                  "title":"Video Events",
                  "link":"/rudderstack-api/api-specification/video-specification/",
@@ -2175,14 +2183,14 @@ export const jsonData = [
      ]
   },
   {
-     "key":"get-started",
+     "key":"rudderstack-open-source",
      "title":"RudderStack Open Source",
-     "link":"/get-started/",
+     "link":"/rudderstack-open-source/",
      "content":[
         {
          "key":"control-plane-lite",
          "title":"Control Plane Setup",
-         "link":"/get-started/control-plane-lite/",
+         "link":"/rudderstack-open-source/control-plane-lite/",
          "content":[
             
          ]
@@ -2190,12 +2198,12 @@ export const jsonData = [
         {
            "key":"installing-and-setting-up-rudderstack",
            "title":"Data Plane Setup",
-           "link":"/get-started/installing-and-setting-up-rudderstack/",
+           "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/",
            "content":[
               {
                  "key":"docker",
                  "title":"Docker",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/docker/",
+                 "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
                  "content":[
                     
                  ]
@@ -2203,7 +2211,7 @@ export const jsonData = [
               {
                  "key":"kubernetes",
                  "title":"Kubernetes",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/kubernetes/",
+                 "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
                  "content":[
                     
                  ]
@@ -2211,7 +2219,7 @@ export const jsonData = [
               {
                  "key":"developer-machine-setup",
                  "title":"Developer Machine Setup",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/",
+                 "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
                  "content":[
                     
                  ]
@@ -2219,7 +2227,7 @@ export const jsonData = [
               {
                  "key":"sending-test-events",
                  "title":"Sending Test Events",
-                 "link":"/get-started/installing-and-setting-up-rudderstack/sending-test-events/",
+                 "link":"/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
                  "content":[
                     
                  ]
@@ -2388,14 +2396,6 @@ export const jsonData = [
            "title":"How-to Guides",
            "link":"/user-guides/how-to-guides/",
            "content":[
-              {
-                 "key":"rudderstack-control-plane-lite",
-                 "title":"How to Use the RudderStack Control Plane Lite",
-                 "link":"/user-guides/how-to-guides/rudderstack-control-plane-lite/",
-                 "content":[
-                    
-                 ]
-              },
               {
                  "key":"dynamic-destination-configuration",
                  "title":"How to Configure a Destination via the Event Payload",
