@@ -103,6 +103,8 @@ To set up PostgreSQL as a source in RudderStack, follow these steps:
 
 1. Choose the relevant option from **Table** or **Model** to use the source to sync data from either a warehouse table or a model.
 
+<img src="../assets/warehouse-actions-sources/table-model-options.png" />
+
 <div class="infoBlock">
 
 For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Reverse ETL source, refer to the <a href="#faq">FAQ</a> section below.
@@ -112,14 +114,16 @@ For more information on the difference between the <strong>Table</strong> and <s
 If you have chosen the <strong>Model</strong> option, skip the next steps and refer to the <a href="#schedule-settings">Schedule settings</a> section directly.
 </div>
 
-2. Enter the relevant connection details in the **Connection Credentials** as listed below:
+2. Enter the relevant connection details in the **Connection Credentials**, as shown:
 
-    * **Host**: Enter the host name of your PostgreSQL service.
-    * **Database**: Enter the database name in your PostgreSQL instance where the data is loaded.
-    * **User**: Specify the username which has the required read/write access to the above database.
-    * **Password**: Enter the password for the above user.
-    * **Port**: Enter the port number of your PostgreSQL service.
-    * **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your PostgreSQL instance. RudderStack provides two options - **disable** and **require**. For more information on these options, refer to the [FAQ](#faq) section below.
+<img src="../assets/warehouse-actions-sources/postgresql-connection-settings.png" />
+
+* **Host**: Enter the host name of your PostgreSQL service.
+* **Database**: Enter the database name in your PostgreSQL instance where the data is loaded.
+* **User**: Specify the username which has the required read/write access to the above database.
+* **Password**: Enter the password for the above user.
+* **Port**: Enter the port number of your PostgreSQL service.
+* **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your PostgreSQL instance. RudderStack provides two options - **disable** and **require**. For more information on these options, refer to the [FAQ](#faq) section below.
 
 <div class="infoBlock">
 
