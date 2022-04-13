@@ -113,7 +113,9 @@ Use the newly-created user credentials while configuring Redshift as a destinati
 This section is listed for EC2-VPC. However, EC2-Classic works similarly.
 </div>
 
-The Redshift cluster needs to whitelist the following RudderStack IPs to enable network access to it:
+### IPs to be whitelisted
+
+To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -140,6 +142,8 @@ If you have your deployment in the EU region, you can whitelist only the followi
 
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
+
+### Adding a security group
 
 Follow these steps to add a security group and assign it to your Redshift cluster:
 

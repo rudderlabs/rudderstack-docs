@@ -2,79 +2,14 @@
 #slug: "/docs/data-warehouse-integrations"
 title: "Warehouse Destinations"
 description: >-
-  Detailed technical documentation on sending your event data from RudderStack
-  to your specified data warehouse platforms
+  Detailed technical documentation on sending your event data from RudderStack to your specified data warehouse platforms.
 ---
 
 # Warehouse Destinations
 
-RudderStack currently supports data warehouse integrations for Snowflake, Redshift, Google BigQuery, and PostgreSQL.
+RudderStack supports integration with all the leading data warehouses. Now you can set up these warehouses as destinations in RudderStack and send all your event data from your preferred sources.
 
-This section gives you detailed guidance on how to integrate RudderStack with these destination platforms. Although there are detailed FAQs provided at the end of each of these guides, feel free to [contact us](https://rudderstack.com/contact/) or talk to us on [Slack](https://rudderstack.com/join-rudderstack-slack-community), in case you have any questions or concerns regarding their integration or use.
-
-## Useful Data Warehouse Integrations
-
-<!--{% page-ref page="warehouse-schemas.md" %}-->
-
-<a class="pageRef" href="warehouse-schemas/">
-  <div class="pageRefInner">
-    <span class="pageRefArrow">
-      <svg
-        preserveAspectRatio="xMidYMid meet"
-        height="1em"
-        width="1em"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        stroke="currentColor"
-        class="rightRefArrow"
-      >
-        <g>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </g>
-      </svg>
-    </span>
-    <span class="mainRefText">
-      Warehouse Schemas
-    </span>
-  </div>
-</a>
-
-<!--{% page-ref page="google-bigquery.md" %}-->
-
-<a class="pageRef" href="google-bigquery/">
-  <div class="pageRefInner">
-    <span class="pageRefArrow">
-      <svg
-        preserveAspectRatio="xMidYMid meet"
-        height="1em"
-        width="1em"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        stroke="currentColor"
-        class="rightRefArrow"
-      >
-        <g>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </g>
-      </svg>
-    </span>
-    <span class="mainRefText">
-      Google BigQuery
-    </span>
-  </div>
-</a>
-
-<!--{% page-ref page="amazon-redshift.md" %}-->
+## Supported warehouse destinations
 
 <a class="pageRef" href="amazon-redshift/">
   <div class="pageRefInner">
@@ -104,7 +39,33 @@ This section gives you detailed guidance on how to integrate RudderStack with th
   </div>
 </a>
 
-<!--{% page-ref page="snowflake.md" %}-->
+<a class="pageRef" href="google-bigquery/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Google BigQuery
+    </span>
+  </div>
+</a>
 
 <a class="pageRef" href="snowflake/">
   <div class="pageRefInner">
@@ -134,8 +95,6 @@ This section gives you detailed guidance on how to integrate RudderStack with th
   </div>
 </a>
 
-<!--{% page-ref page="postgresql.md" %}-->
-
 <a class="pageRef" href="postgresql/">
   <div class="pageRefInner">
     <span class="pageRefArrow">
@@ -164,7 +123,33 @@ This section gives you detailed guidance on how to integrate RudderStack with th
   </div>
 </a>
 
-<!--{% page-ref page="clickhouse.md" %}-->
+<a class="pageRef" href="microsoft-sql-server/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      SQL Server
+    </span>
+  </div>
+</a>
 
 <a class="pageRef" href="clickhouse/">
   <div class="pageRefInner">
@@ -194,6 +179,184 @@ This section gives you detailed guidance on how to integrate RudderStack with th
   </div>
 </a>
 
-## Contact Us
+<a class="pageRef" href="azure-synapse/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Azure Synapse
+    </span>
+  </div>
+</a>
 
-For more information on the supported data warehouse integrations or the RudderStack platform in general, feel free to [contact us](mailto:%20contact@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to talk to you.
+## Supported data lakes
+
+<a class="pageRef" href="azure-datalake/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Azure Data Lake
+    </span>
+  </div>
+</a>
+
+<a class="pageRef" href="delta-lake/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Databricks Delta Lake
+    </span>
+  </div>
+</a>
+
+<a class="pageRef" href="gcs-datalake/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Google Cloud Storage Data Lake
+    </span>
+  </div>
+</a>
+
+<a class="pageRef" href="s3-datalake/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      S3 Data Lake
+    </span>
+  </div>
+</a>
+
+## Warehouse schema
+
+When sending your events to a data warehouse via RudderStack, you don't need to define a schema for your event data - RudderStack automatically does that for you by following a predefined warehouse schema.
+
+<a class="pageRef" href="warehouse-schemas/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Warehouse Schema
+    </span>
+  </div>
+</a>
+
+## FAQ
+
+Refer to the comprehensive [FAQ](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-faqs/) guide for the solutions to some of the commonly-asked questions around the RudderStack warehouse integrations.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
