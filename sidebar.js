@@ -1813,7 +1813,7 @@ export const jsonData = [
      "content":[
         {
            "key":"warehouse-schemas",
-           "title":"Warehouse Schemas",
+           "title":"Warehouse Schema",
            "link":"/data-warehouse-integrations/warehouse-schemas/",
            "content":[
               
@@ -1909,7 +1909,7 @@ export const jsonData = [
         },
         {
            "key":"warehouse-faqs",
-           "title":"Warehouse FAQs",
+           "title":"FAQ",
            "link":"/data-warehouse-integrations/warehouse-faqs/",
            "content":[
               
