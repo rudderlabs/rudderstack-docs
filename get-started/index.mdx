@@ -7,11 +7,11 @@ description: >-
 
 # Get Started
 
-[RudderStack](https://rudderstack.com/) is a **customer data platform** for developers. It captures, processes, and syncs your event, product, and warehouse data to all the tools across your customer data stack. It is an enterprise-ready solution and also provides powerful transformations to customize your event data on the fly.
+The easiest way to get started with RudderStack is to set up a source, connect it to a destination, and see your event data flow in no time.
 
 ## Quick start
 
-The easiest way to get started with RudderStack is to set up a source, connect it to a destination, and see your event data flow in no time.
+Follow these steps to set up a connection in RudderStack:
 
 1. Sign up for [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial).
 2. You can then access the dashboard for setting up your data pipelines:
@@ -31,16 +31,25 @@ For more information on sources in RudderStack, check out the <a href="https://r
     - [Cloud Extract](https://rudderstack.com/docs/cloud-extract-sources/): Build ELT pipelines from cloud apps to your data warehouse.
     - [Reverse ETL](https://rudderstack.com/docs/reverse-etl/): Leverage your warehouse as a data source for your entire customer data stack.
 
-5. Once you have configured the data source, add a destination in RudderStack by clicking on the **Add Destination** button.
+5. Once you have configured the data source, you will see the following source details page.
 
-<img src="../assets/get-started/source-configure.png" alt="Connections Dashboard" />
+<img src="../assets/get-started/source-details.png" alt="Source details" />
 
-6. From the list of destinations, choose the destination you want to configure for the source. RudderStack currently supports over 150 destinations, including [event stream](https://www.rudderstack.com/docs/destinations/) and [warehouse](https://www.rudderstack.com/docs/data-warehouse-integrations/) destinations.
-7. Configure the destination by entering the relevant connection settings. For detailed information on the required settings, refer to that destination's [documentation](https://rudderstack.com/docs/destinations/).
+<div class="infoBlock">
+
+Note the source <strong>Write key</strong>. This is required for integrating the RudderStack SDK with your source app.
+</div>
+
+6. Then, add a destination by clicking on the **Add Destination** button and selecting **Create new destination**.
+
+<img src="../assets/get-started/adding-new-destination.png" alt="Adding a new destination" />
+
+7. From the list of destinations, select the destination you want to configure for the source. RudderStack currently supports **over 150** destinations, including [event stream](https://www.rudderstack.com/docs/destinations/) and [warehouse](https://www.rudderstack.com/docs/data-warehouse-integrations/) destinations.
+8. Configure the destination by entering the relevant connection settings. For detailed information on these settings, refer to the destination-specific [documentation](https://rudderstack.com/docs/destinations/).
 
 <div class="successBlock">
 
-You can transform your events in RudderStack before sending them to the specified destinations. Read the <a href="https://rudderstack.com/docs/transformations/">Transformations</a> guide for more information on this feature.
+You can also transform your events in RudderStack before sending them to the destinations. Read the <a href="https://rudderstack.com/docs/transformations/">Transformations</a> guide for more information on this feature.
 </div>
 
 ## In this section
