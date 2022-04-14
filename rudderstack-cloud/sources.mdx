@@ -7,23 +7,22 @@ description: >-
 
 # Sources
 
-A **source** is a platform or an application (web, mobile, server-side, or a third-party cloud app) from where RudderStack can track and collect the event data.
+A **source** is a platform or an application (web, mobile, server-side, or a third-party cloud app) from where RudderStack tracks and collects the event data.
 
 <div class="infoBlock">
 
-  You can configure a source for every unique source of data. Also, you can also create multiple sources for each website or application from where you want to track the data.
+You can configure a source for every unique source of data.You can also create multiple sources for each website or application from where you want to track the data.
 </div>
 
-The **Sources** option is povided in the left navigation bar in the RudderStack dashboard and allows you to view all the configured sources, as shown:
+The **Sources** option is povided in the left navigation bar in the RudderStack dashboard and lets you view all your configured sources, as shown:
 
 <img src="../assets/rs-cloud/rudderstack-sources.png" alt="RudderStack sources" />
 
 ## Adding a source
 
-Follow these steps to add an event data source in RudderStack:
+Follow these steps to add a source in RudderStack:
 
-1. Log into the [RudderStack dashboard](https://app.rudderstack.com/).
-
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. Click on **Add Source** and select the source you want to set up in RudderStack.
 
 <img src="../assets/rs-cloud/add-source.png" alt="Add Source" />
@@ -49,16 +48,14 @@ Follow these steps to add an event data source in RudderStack:
 
 <img src="../assets/rs-cloud/source-configure.png" alt="Source configuration" />
 
-<div class="warningBlock">
-
-  Setting up a data source to ingest data from the cloud apps might require
-  additional configuration. Refer to the relevant source documentation for
-  more details.
-</div>
-
 <div class="infoBlock">
 
-  Note the source <strong>Write Key</strong> in the above image. It is required while configuring the RudderStack SDK to track and collect events from the source platform.
+Note the source <strong>Write Key</strong> in the above image. It is required while configuring the RudderStack SDK to track and collect events from the source platform.
+</div>
+
+<div class="warningBlock">
+
+Setting up Cloud Extract or Reverse ETL sources require some additional configuration. Refer to the relevant source-specific documentation for details.
 </div>
 
 ## Source details
@@ -71,9 +68,7 @@ To get details about a configured source, click on it to see the following optio
 
 - **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) for more information.
 
-- **Write Key**: Required to send the data from your source.
-
-For example, you can load the [RudderStack's JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your website to track and collect the events by running the following snippet:
+- **Write Key**: Required to send the data from your source. For example, you can load the [RudderStack's JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your website to track and collect the events by running the following snippet:
 
 ```javascript
   rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, options);
@@ -86,14 +81,10 @@ For example, you can load the [RudderStack's JavaScript SDK](https://rudderstack
 If you have already configured a destination in RudderStack, you can also use it by clicking on **Add Destination** > **Use Existing Destination**.
 </div>
 
-- **Events**: The Events tab displays all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by time period.
-
-- **Settings**: The Settings tab provides additional source-related details, such as:  
-
+- **Events**: Displays all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by the time period (past 1 day, 7 days, or 30 days).
+- **Settings**: Provides additional source-related details, such as:
   - **Enabled**: Lets you enable or disable syncing data from this source.
-
   - **Source ID**: Unique identifier associated with your source.
-
   - **Permanently delete source**: Lets you delete a source by clicking on the **Delete** button.
 
 <div class="warningBlock">
@@ -101,16 +92,14 @@ If you have already configured a destination in RudderStack, you can also use it
 Before deleting a source, make sure there are no destinations connected to it.
 </div>
 
-- **Tracking Plans**: The Tracking Plans tab lets you link a [tracking plan](https://www.rudderstack.com/docs/data-governance/tracking-plans/#tracking-plans) with the source. 
-
+- **Tracking Plans**: Lets you link a [tracking plan](https://www.rudderstack.com/docs/data-governance/tracking-plans/#tracking-plans) with the source.
 
 ## FAQ
 
-### What is a write key and how is it used?
+### What is a write key? Why is it required?
 
-The write key (also referred to as the source write key) is a unique identifier for your source. You can click on a source and view it in the **Overview** section. It is used to send events from a source to a specified destination via RudderStack.
-
+The write key (also referred to as the source write key) is used to integrate the RudderStack SDK with your application before tracking events from it. You can click on a source and view it in the **Overview** section.
 
 ## Contact us
 
-For more information on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
