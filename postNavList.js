@@ -1079,6 +1079,12 @@ export const postNavList = [
    "content":[]
 },
 {
+   "key":"dcm-floodlight",
+   "title":"DCM Floodlight",
+   "link":"/destinations/advertising/dcm-floodlight/",
+   "content":[]
+},
+{
    "key":"linkedin-insight-tag",
    "title":"LinkedIn Insight Tag",
    "link":"/destinations/advertising/linkedin-insight-tag/",
