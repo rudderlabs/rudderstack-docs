@@ -8,99 +8,88 @@ description: Detailed walkthrough of the RudderStack dashboard.
 
 Once you [sign up](https://app.rudderstack.com/signup) for RudderStack Cloud, you are presented with a dashboard that lets you set up and manage all your event data sources, destinations, and connections through an easy-to-use, intuitive UI.
 
+This guide walks you through all the dashboard options to get started with RudderStack Cloud in no time.
+
 ## Connections
 
-This option lets you configure and connect different sources and destinations to build efficient data pipelines across your entire customer data stack. You can add a source and destination by clicking on the respective buttons as shown:
+This option lets you set up your data pipelines by connecting different sources and destinations across your entire customer data stack.
 
 <img src="../assets/rs-cloud/connections-dashboard.png" alt="RudderStack Dashboard" />
 
-The **Token** and **Data Plane URL** options observed in the above image are explained below:
+The **Token** and **Data Plane URL** options are explained below:
 
 ### Token
 
-A token is a unique identifier associated with your current RudderStack workspace. It is useful when you want to install and set up open-source RudderStack or accessing various RudderStack API.
+A token (also referred to as a **workspace token**) is a unique identifier associated with your current RudderStack workspace.
+
+### Data plane URL
+
+For routing and processing the events to the RudderStack backend, a **data plane URL** is required.
 
 <div class="infoBlock">
 
-See the <a href="https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/">Install and Set up RudderStack</a> guide for steps on installing open-source RudderStack in your preferred development environment.
-
-See the <a href="https://rudderstack.com/docs/rudderstack-api">RudderStack API</a> guide for details on various available RudderStack API and how to use them.
-
+Refer to the <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/">RudderStack Architecture</a> guide for more information the RudderStack data plane.
 </div>
-
-### Data Plane URL
-
-<div class="infoBlock">
-
-Refer to the <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/">RudderStack Architecture</a> guide for more information the RudderStack Data Plane.
-</div>
-
-For routing and processing the events to the RudderStack backend, a **Data Plane URL** is required. 
 
 Here's how to get the Data Plane URL:
 
 * If you're using [RudderStack Cloud Free](https://app.rudderlabs.com/signup?type=freetrial), the data plane URL is provided in the dashboard itself. 
-* If you're using the [pro or enterprise](https://rudderstack.com/pricing) version of RudderStack, [**contact us**](https://rudderstack.com/join-rudderstack-slack-community) for the Data Plane URL with the email ID you used to sign up for RudderStack.
-* If you're using the **open-source** version of RudderStack, you are required to set up your own Data Plane by [installing and setting up RudderStack](https://rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/) in your preferred environment. 
+* If you're using the [pro or enterprise](https://rudderstack.com/pricing) version of RudderStack, [contact us](https://rudderstack.com/join-rudderstack-slack-community) for the data plane URL with the email ID you used to sign up for RudderStack.
+* If you're using [**RudderStack Open Source**](https://app.rudderstack.com/signup?type=opensource), you are required to set up your own data plane by [installing and setting up RudderStack](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your preferred environment. 
 
 <div class="successBlock">
 
-An open-source Data Plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack Data Plane is hosted.  
+An open source data plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack data plane is hosted.
 </div>
 
 ## Sources
 
-This option lists all your configured sources. You can also add a new source by clicking on the **New Source** button.
+This option lists all the configured sources in your workspace. You can add a new source by clicking on the **New Source** button, as shown:
 
 <img src="../assets/rs-cloud/rudderstack-sources.png" alt="RudderStack sources" />
 
 <div class="infoBlock">
 
-  Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/connections/">Sources</a> guide for more details
-  on setting up sources in RudderStack.
+Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/connections/">Sources</a> guide for more details on setting up a source in RudderStack.
 </div>
 
 ## Destinations
 
-This option lists all the configured destinations where you can send your event data. You can also add a new destination by clicking on the **New Destination** button.
+This option lists all the configured destinations where you can send your event data. You can add a new destination by clicking on the **New Destination** button, as shown:
 
 <img src="../assets/rs-cloud/destinations.png" alt="RudderStack destinations" />
 
 <div class="infoBlock">
 
-Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/connections/">Destinations</a> guide for more details on destinations and how to set up a new destination in RudderStack.
-
+Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/connections/">Destinations</a> guide for more details on setting up a destination in RudderStack.
 </div>
 
 ## Syncs
 
-This option provides the detailed metrics of events data synced to warehouse destinations. You can also filter the event data based on a specific source or destination by using the filter option in the header or sync the data manually by using the **Sync Now** button.
+This option provides detailed metrics on the events synced to the warehouse destinations. You can also filter the event data based on a specific source or destination by using the filter option in the header or sync the data manually by using the **Sync Now** button.
 
 <img src="../assets/rs-cloud/syncs-dashboard.png" alt="RudderStack Syncs" />
 
 ## Models
 
-The **Models** feature lets you define custom SQL queries which can be executed on your warehouse to send the resulting data to specific destinations.
+This feature lets you define custom SQL queries which can be executed on your warehouse. You can then use RudderStack to send the resulting data to specific destinations.
 
 <img src="../assets/warehouse-actions-sources/models-view-dashboard.png" alt="RudderStack Models" />
 
 <div class="infoBlock">
 
-Refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/features/models/">Models</a> guide for more details on models and how to set up a new model in RudderStack.
-
+Refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/features/models/">Models</a> guide for more details on setting up a new model in RudderStack.
 </div>
 
 ## Directory
 
-**Directory** acts as a catalogue for all the source ([Event Streams](https://rudderstack.com/docs/stream-sources/), [Cloud Extract](https://rudderstack.com/docs/cloud-extract-sources/) and [Reverse ETL](https://www.rudderstack.com/docs/reverse-etl/)) and destination (**Warehouse** and **Cloud**) platforms supported by RudderStack.
-
-You can also use this option to directly add a source or destination by clicking on it and configuring its settings.
+**Directory** acts as a catalogue for all the sources ([Event Stream](https://rudderstack.com/docs/stream-sources/), [Cloud Extract](https://rudderstack.com/docs/cloud-extract-sources/) and [Reverse ETL](https://www.rudderstack.com/docs/reverse-etl/)) and destinations ([Warehouse](https://www.rudderstack.com/docs/data-warehouse-integrations/) and [Event Stream](https://www.rudderstack.com/docs/destinations/)) supported by RudderStack.
 
 <img src="../assets/rs-cloud/directory.png" alt="Directory in RudderStack Dashboard" />
 
 ## Transformations
 
-With this option, you can write your own JavaScript functions to transform your events in a destination-specific format. You can also create your own **Libraries** to reuse a transformation's code for other transformations.
+With this option, you can write your own JavaScript functions to transform your events. You can also create your own **Libraries** to reuse a transformation's code for other transformations.
 
 <img src="../assets/rs-cloud/transformations-dashboard.png" alt="Transformations" />
 
@@ -111,7 +100,7 @@ Refer to the <a href="https://rudderstack.com/docs/transformations/">Transformat
 
 ## Audit Logs
 
-This option can be used to track the user activities within your RudderStack workspace and is available only for the [Enterprise plan](https://www.rudderstack.com/pricing/) users.
+Audit logs can be used to track the user activities within your RudderStack workspace. It is available only for the [Enterprise users](https://www.rudderstack.com/pricing/).
 
 <img src="../assets/rs-cloud/audit-logs-dashboard.png" alt="Audit Logs" />
 
@@ -122,12 +111,11 @@ Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/audit-logs/
 
 ## Tracking Plans
 
-**Tracking Plans** feature lets you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on the predefined plans. It ensures data quality and validates your expected events against the live events that are delivered to RudderStack with real-time validation.
+**Tracking Plans** is an **enterprise-only feature** lets you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on the predefined plans. It ensures data quality and validates your expected events against the live events that are delivered to RudderStack with real-time validation.
 
 <div class="infoBlock">
 
-Refer to the <a href="rudderstack.com/docs/data-governance/tracking-plans/">Tracking Plans</a> guide for more details on how to create and use tracking plans in RudderStack.
-
+Refer to the <a href="rudderstack.com/docs/data-governance/tracking-plans/">Tracking Plans</a> guide for more information on creating and using tracking plans in RudderStack.
 </div>
 
 ## Settings
@@ -151,10 +139,7 @@ Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/teammates/"
 
 <div class="successBlock">
 
-  RudderStack Cloud Free allows you to invite up to 3 members in your workspace.
-  To increase this limit, you will be required to upgrade to the Pro or
-  Enterprise plan. Check out our <a href="https://rudderstack.com/pricing/">pricing page</a> for details on
-  these plans, or <a href="http://app.rudderstack.com/upgrade">log in</a> to upgrade now.
+RudderStack Cloud Free allows you to invite up to 3 members in your workspace. To increase this limit, you will be required to upgrade to the Pro or Enterprise plan. Refer to the <a href="https://rudderstack.com/pricing/">RudderStack Pricing Page</a> for details on these plans.
 </div>
 
 ### Billing
@@ -167,17 +152,17 @@ This option lets you set up 2-Factor authentication to receive verification code
 
 ### Personal access token
 
-This option lets you generate a personal access token associated with your account. It is required to use all the public RudderStack APIs.
+This option lets you generate a personal access token associated with your account. It is required to use all the RudderStack APIs.
 
 <div class="infoBlock">
 
-Refer to the <a href="https://www.rudderstack.com/docs/transformations/api-access-token/">Access Token</a> guide for more details on this option.
+Refer to the <a href="https://www.rudderstack.com/docs/transformations/api-access-token/">Personal Access Token</a> guide for more details on this option.
 </div>
 
 ### Company
 
 It lets you view and edit your workspace and company name associated with RudderStack.
 
-## Contact Us
+## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
