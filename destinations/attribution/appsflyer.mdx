@@ -188,11 +188,11 @@ val rudderClient: RudderClient = RudderClient.getInstance(
 ```
 </span>
 </li>
-<li>Starting from AppsFlyer Android device mode version <code class="inline-code">2.0.0</code>, you need to add the following lines in your <code class="inline-code">MainApplication()</code> class:
+<li>If you are using AppsFlyer Android device mode version <code class="inline-code">2.0.0</code> or above, add the following lines of code in your <code class="inline-code">MainApplication()</code> class:
 <span>
 
 ```java
-import com.appsflyer.AppsFlyerLib
+import com.appsflyer.AppsFlyerLib;
 import com.appsflyer.AFLogger;
 
 AppsFlyerLib.getInstance().init(DEV_KEY, null, this);
@@ -231,7 +231,7 @@ rudderClient.setup(WRITE_KEY, config)
 ```
 </span>
 </li>
-<li>Starting from version <code class="inline-code">1.1.0</code> of the AppsFlyer React Native device mode, you need to initialize the AppsFlyer SDK as shown:
+<li>If you are using the AppsFlyer React Native device mode version <code class="inline-code">1.1.0</code> or above, initialize the AppsFlyer SDK as shown:
 <span>
 
 ```typescript
@@ -320,7 +320,7 @@ var onDeepLinkCanceller = onDeepLink((data) => {
 </span>
 As seen above, each of the listeners returns a function that - whenever called - removes those listeners.
 </li>
-<li>Depending on the React Native components you are using, trigger the <code class="inline-code">remove()</code> methods in <code class="inline-code">componentWillUnMount()</code> in case of a class-based component. or in <code class="inline-code">useEffect()</code> hook if it's a functional component, as shown:
+<li>Depending on the React Native components you are using, trigger the <code class="inline-code">remove()</code> methods in <code class="inline-code">componentWillUnMount()</code> in case of a class-based component, as shown:
 <span>
 
 ```typescript
