@@ -31,7 +31,7 @@ To know more about the difference between cloud mode and device mode in RudderSt
 
 Once you have confirmed that the source platform supports sending events to Blueshift, follow these steps:
 
-- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Blueshift**.
+- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Blueshift**.
 
 <div class="infoBlock">
 
@@ -53,7 +53,7 @@ For more information on obtaining the Event and Users API Key, refer to the <a h
 </div>
 
 - **Data Center**: Select the data center where you want to send the data:
-  -  Standard: Default option. The base URL is https://api.getblueshift.com 
+  -  Standard (Default): The base URL is https://api.getblueshift.com 
   -  EU: The base URL is https://api.eu.getblueshift.com
 
 ## Identify
@@ -227,13 +227,6 @@ The following table details the mapping between RudderStack and Blueshift fields
 | `context.address.latitude`, `context.location.latitude` | `latitude` | Optional|
 | `context.address.longitude`, `context.location.longitude` | `longitude` | Optional|
 | `messageId` | `event_uuid` | Optional|
-
-Rudderstack automatically maps the <code class="inline-code">identifier_key</code> to <code class="inline-code">customer_id</code> when <code class="inline-code">userId</code> is provided in the <code class="inline-code">group</code> call.
-
-<div class="infoBlock">
-
-If a <code class="inline-code">list_id</code> already exists, the user is added to the list. Otherwise, a new empty user list is created and the user is added to that list.
-</div>
 
 ## FAQ
 
