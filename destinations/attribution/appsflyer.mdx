@@ -6,7 +6,7 @@ description: Step-by-step guide to send event data from RudderStack to AppsFlyer
 
 # AppsFlyer
 
-[**AppsFlyer**](https://www.appsflyer.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers intuitive dashboards, real-time data reports, and a unique deep linking technology to understand your customers better. 
+[AppsFlyer](https://www.appsflyer.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers intuitive dashboards, real-time data reports, and a unique deep linking technology to understand your customers better. 
 
 RudderStack supports AppsFlyer as a destination to which you can seamlessly send your customer data.
 
@@ -31,7 +31,7 @@ To know more about the difference between the cloud mode and device mode in Rudd
 
 <div class="successBlock">
 
-We recommend using the the cloud mode to send events to AppsFlyer in the following scenarios:
+It is recommended to use the the cloud mode to send events to AppsFlyer in the following scenarios:
 <ul>
 <li>If you want to use RudderStack's <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> feature</li> 
 <li>If you want to send server-side events</li>
@@ -40,14 +40,14 @@ We recommend using the the cloud mode to send events to AppsFlyer in the followi
 
 Once you have confirmed that the platform supports sending events to AppsFlyer, perform the steps below:
 
-- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **AppsFlyer**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. From the list of destinations, select **AppsFlyer**.
 
 <div class="infoBlock">
 
 Refer to the <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> guide for more information.
 </div>
 
-- Assign a name to the destination and click on **Next**. You should then see the following screen:
+2. Assign a name to the destination and click on **Next**. You should then see the following screen:
 
 <img src="../../assets/event-stream-destinations/appsflyer-connection-settings-final.png" alt="AppsFlyer connection settings in RudderStack" />
 
@@ -101,7 +101,7 @@ This setting is not applicable for the JavaScript (web) source as RudderStack do
 
 ## Adding AppsFlyer to your project
 
-Depending on your integration platform , follow the steps to add AppsFlyer to your project:
+Depending on your integration platform, follow the steps to add AppsFlyer to your project:
 
 <Tabs>
   <TabList>
@@ -188,6 +188,19 @@ val rudderClient: RudderClient = RudderClient.getInstance(
 ```
 </span>
 </li>
+<li>Starting from AppsFlyer Android device mode version <code class="inline-code">2.0.0</code>, you need to add the following lines in your <code class="inline-code">MainApplication()</code> class:
+<span>
+
+```java
+import com.appsflyer.AppsFlyerLib
+import com.appsflyer.AFLogger;
+
+AppsFlyerLib.getInstance().init(<DEV_KEY>, null, this);
+AppsFlyerLib.getInstance().setLogLevel(AFLogger.LogLevel.DEBUG);
+AppsFlyerLib.getInstance().start(this);
+```
+</span>
+</li>
 </ul>
       </TabPanel>
       <TabPanel>
@@ -217,6 +230,227 @@ const config = {
 rudderClient.setup(WRITE_KEY, config)
 ```
 </span>
+</li>
+<li>Starting from version <code class="inline-code">1.1.0</code> of the AppsFlyer React Native device mode, you need to initialize the AppsFlyer SDK as shown:
+<span>
+
+```typescript
+import rc from '@rudderstack/rudder-sdk-react-native';
+import appsflyer from 'rudder-integration-appsflyer-react-native'
+import {
+    setOptions
+} from 'rudder-integration-appsflyer-react-native/src/appsflyer';
+
+// Setting options for initializing the appsflyer sdk
+setOptions({
+    // dev key from the appsflyer dashboard
+    "devKey": "tZGiwrAUq8xLuNYb99q2VT",
+    // whether we want to run the appsflyer SDK in the debug mode
+    "isDebug": true,
+    // whether we want to register for the listeners which would return the conversion data
+    "onInstallConversionDataListener": true,
+    // whether we want to register for the listeners which would return the deeplink data
+    "onDeepLinkListener": true
+})
+
+// Configuration object to be passed while initializing the Rudder React Native // SDK
+const config = {
+    dataPlaneUrl: <DATA_PLANE_URL>
+        trackAppLifecycleEvents: true,
+    // Passing appsflyer factory here, since we want to run appsflyer as a device 
+    // mode destination.
+    withFactories: [appsflyer]
+};
+
+// Finally, initializing the Rudder React Native SDK
+await rc.setup( <WRITE_KEY> , config);
+```
+</span>
+</li>
+<li>To get access to the conversion as well as the attribution data, set the properties <code class="inline-code">onInstallConversionDataListener</code> and <code class="inline-code">onDeepLinkListener</code> to <code class="inline-code">true</code> in the <code class="inline-code">setOptions</code> API as shown in the above snippet.
+</li>
+<li>Then, register the callbacks with the listeners, as shown:
+<span>
+
+```typescript
+import {
+    onAppOpenAttribution,
+    onAttributionFailure,
+    onDeepLink,
+    onInstallConversionData,
+    onInstallConversionFailure
+} from 'rudder-integration-appsflyer-react-native/src/appsflyer';
+
+var onInstallConversionDataCanceller = onInstallConversionData((data) => {
+    console.log("On Install Conversion Success data is ", data);
+    if (JSON.parse(res.data.is_first_launch) == true) {
+        if (res.data.af_status === 'Non-organic') {
+            var media_source = res.data.media_source;
+            var campaign = res.data.campaign;
+            console.log('This is first launch and a Non-Organic install. Media source: ' + media_source + ' Campaign: ' + campaign);
+        } else if (res.data.af_status === 'Organic') {
+            console.log('This is first launch and a Organic Install');
+        }
+    } else {
+        console.log('This is not first launch');
+    }
+
+})
+
+var onAppOpenAttributionCanceller = onAppOpenAttribution((data) => {
+    console.log("On App Open Attribution Success and the data is ", data);
+    // write your own custom logic here
+})
+
+var onAttributionFailureCanceller = onAttributionFailure((data) => {
+    console.log("On App Attribution Failure and the data is ", data);
+    // write your own custom logic here
+})
+
+var onInstallConversionFailureCanceller = onInstallConversionFailure((data) => {
+    console.log("On Install Conversion Failure data is ", data);
+    // write your own custom logic here
+})
+
+var onDeepLinkCanceller = onDeepLink((data) => {
+    console.log("On Deeplink data is ", data);
+    // write your own custom logic here
+})
+```
+</span>
+
+As seen above, each of the listeners returns a function that - whenever called - removes those listeners.
+</li>
+<li>Depending on the React Native components you are using, trigger the <code class="inline-code">remove()</code> methods in <code class="inline-code">componentWillUnMount()</code> in case of a class-based component. or in <code class="inline-code">useEffect()</code> hook if it's a functional component, as shown:
+
+<span>
+
+```typescript
+import React, {
+    Component
+} from 'react';
+import {
+    AppState,
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    Button
+} from 'react-native';
+import appsFlyer from 'react-native-appsflyer';
+
+const options = {
+    devKey: "********",
+    isDebug: true,
+    onInstallConversionData: true
+};
+
+if (Platform.OS === 'ios') {
+    options.appId = "123456789";
+}
+this.onInstallConversionDataCanceller = appsFlyer.onInstallConversionData(
+    data => {
+        console.log("GCD");
+        console.log(data);
+
+    }
+);
+
+this.onAppOpenAttributionCanceller = appsFlyer.onAppOpenAttribution(
+    data => {
+        console.log("OAOA");
+        console.log(data);
+    }
+);
+appsFlyer.initSdk(options, (result) => {
+    console.log(result);
+}, (error) => {
+    console.error(error);
+});
+type Props = {};
+export default class App extends Component < Props > {
+
+        componentWillUnmount() {
+            if (onInstallConversionDataCanceller) {
+                onInstallConversionDataCanceller();
+                console.log('unregister onInstallConversionDataCanceller');
+                onInstallConversionDataCanceller = null;
+            }
+            if (onAppOpenAttributionCanceller) {
+                onAppOpenAttributionCanceller();
+                console.log('unregister onAppOpenAttributionCanceller');
+                onAppOpenAttributionCanceller = null;
+            }
+```
+</span>
+</li>
+<li>If it's a functional component, you can trigger the <code class="inline-code">useEffect()</code> hook, as shown:
+<span>
+
+```typescript
+import React, {useEffect, useState} from 'react';
+import {AppState, SafeAreaView, Text, View} from 'react-native';
+import appsFlyer from 'react-native-appsflyer';
+
+var onInstallConversionDataCanceller = appsFlyer.onInstallConversionData(
+    (res) => {
+        if (JSON.parse(res.data.is_first_launch) == true) {
+            if (res.data.af_status === 'Non-organic') {
+                var media_source = res.data.media_source;
+                var campaign = res.data.campaign;
+                console.log('This is first launch and a Non-Organic install. Media source: ' + media_source + ' Campaign: ' + campaign);
+            } else if (res.data.af_status === 'Organic') {
+                console.log('This is first launch and a Organic Install');
+            }
+        } else {
+            console.log('This is not first launch');
+        }
+    },
+);
+
+var onAppOpenAttributionCanceller = appsFlyer.onAppOpenAttribution((res) => {
+    console.log(res);
+});
+
+
+appsFlyer.initSdk(
+    {
+        devKey: 'K2a*********99',
+        isDebug: false,
+        appId: '41******5',
+    },
+    (result) => {
+        console.log(result);
+    },
+    (error) => {
+        console.error(error);
+    },
+);
+
+const Home = (props) => {
+
+    useEffect(() => {
+        return () => {
+            // Optionaly remove listeners for deep link data if you no longer need them after componentWillUnmount
+            if (onInstallConversionDataCanceller) {
+              onInstallConversionDataCanceller();
+              console.log('unregister onInstallConversionDataCanceller');
+              onInstallConversionDataCanceller = null;
+            }
+            if (onAppOpenAttributionCanceller) {
+              onAppOpenAttributionCanceller();
+              console.log('unregister onAppOpenAttributionCanceller');
+              onAppOpenAttributionCanceller = null;
+            }
+        };
+    });
+
+    return (                   
+                {'App'}        
+    );
+};
+```
+</span>  
 </li>
 </ul>
       </TabPanel>
