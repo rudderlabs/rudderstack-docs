@@ -73,8 +73,8 @@ A sample `identify` call is as shown:
 
 ```javascript
     rudderanalytics.identify({
-        email: "sample@sample.com",
-        phone: "8787857564"
+        email: "alex@example.com",
+        phone: "+1-202-555-0146"
     });
 ```
 
@@ -123,9 +123,9 @@ A sample `track` call is as shown below:
     });
 ```
 
-You can also send the following RudderStack E-Commerce Events:
+You can also send the following RudderStack e-commerce events:
 
-| **RudderStack Event Name** | **Snap Pixel Standard Event** |
+| **RudderStack event** | **Snap Pixel event** |
 | :--- | :--- |
 | `Order Completed` | `PURCHASE` |
 | `Checkout Started` | `START_CHECKOUT` |
@@ -134,10 +134,13 @@ You can also send the following RudderStack E-Commerce Events:
 | `Promotion Clicked` | `AD_CLICK` |
 | `Promotion Viewed` | `AD_VIEW` |
 | `Product Added To Wishlist` | `ADD_TO_WISHLIST` |
+| `Product Viewed` | `VIEW_CONTENT` |
+| `Product List Viewed` | `VIEW_CONTENT` |
+| `Product Searched` | `SEARCH` |
 
-<div class="warningBlock">
+<div class="infoBlock">
 
-For more information on the Snap Pixel events, visit this [**Snapchat page**](https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US)
+For more information on the Snap Pixel events, visit this [Snapchat page](https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US).
 </div>
 
 Snap Pixel supports upto 5 custom events. They are listed in the table below:
