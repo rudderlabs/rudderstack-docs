@@ -193,7 +193,7 @@ Blueshift supports receiving custom attributes about your site's customers. For 
 
 ## Group
 
-The `group` call lets you associate a user with a group. For each `group` call, the `event` API is triggered and an `identify` event is sent with the `groupId`. It then creates a group and adds that user to the group.
+The `group` call lets you associate a user with a group. For each `group` call, RudderStack triggers Blueshift's `event` API and sends an `identify` event along with the `groupId`. Blueshift then creates a group and adds the user to it.
 
 A sample `group` call is shown below:
 
