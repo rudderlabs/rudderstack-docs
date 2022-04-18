@@ -74,12 +74,14 @@ For some destinations, you can use the [RudderStack web SDK](https://rudderstack
 
 <img src="../assets/rs-cloud/web-device-mode-settings.png" alt="RudderStack web SDK settings" />
 
-## Which connection mode should I choose?
+## FAQ
+
+### Which connection mode should I choose?
 
 - Use the cloud mode if you wish to use the [Transformations](https://www.rudderstack.com/docs/transformations/) feature to transform your events before sending them to the destination.
 - If you are planning to work with the destinations that record information directly on your users' devices, you should send the events via the device mode. There is a possibility that these destinations might not function correctly if they are not loaded directly on the device.
 
-## How to check which connection mode is supported by the destination?
+### How to check which connection mode is supported by the destination?
 
 The easiest way to check the connection mode supported by the destination is to go refer to the individual destination's [documentation](https://rudderstack.com/docs/destinations/).
 
@@ -88,6 +90,10 @@ The supported connection modes are mentioned for every destination in the **Gett
 <img src="../assets/rs-cloud/getting-started-connection-modes.png" alt="Getting Started section in destination docs" />
 
 Some RudderStack destinations support sending events via both the cloud and device mode. [Google Analytics](https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/), [HubSpot](https://rudderstack.com/docs/destinations/crm/hubspot/), [Intercom](https://rudderstack.com/docs/destinations/business-messaging/intercom/), [Kissmetrics](https://rudderstack.com/docs/destinations/analytics/kissmetrics/), [Branch](https://rudderstack.com/docs/destinations/attribution/branchio/), [Braze](https://rudderstack.com/docs/destinations/marketing/braze/), [Customer.io](https://rudderstack.com/docs/destinations/marketing/customer.io/), and [Facebook App Events](https://rudderstack.com/docs/destinations/advertising/facebook-app-events/) are some popular examples.
+
+### What are the benefits of using the cloud mode to send events to the destination?
+
+In the cloud mode, the event data is sent from the sources directly to the RudderStack server. RudderStack takes care of the event transformation and ensuring the format matches the destination's requirements. Since this transformation happens in the RudderStack server itself, your page size as well as the load times are not affected at all.
 
 ## Contact us
 
