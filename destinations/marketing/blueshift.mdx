@@ -52,7 +52,9 @@ To successfully configure Blueshift as a destination, you will need to configure
 For more information on obtaining the Event and Users API Key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **Blueshift EU data center**: Enable this option to send data to the EU servers. When enabled, the base URL for EU region converts to `https://api.eu.getblueshift.com`
+- **Data Center**: Select the data center where you want to send the data:
+  -  Standard: Default option. The base URL is https://api.getblueshift.com 
+  -  EU: The base URL is https://api.eu.getblueshift.com
 
 ## Identify
 
@@ -187,6 +189,50 @@ Also, RudderStack automatically converts a space in the event name to an undersc
 <div class="infoBlock">
 
 Blueshift supports receiving custom attributes about your site's customers. For more information on these attributes, refer to the <a href ="https://developer.blueshift.com/docs/customer-related-data#attributes">Blueshift Custom Attributes</a>.
+</div>
+
+## Group
+
+The `group` call lets you associate a user with a group. For each `group` call, the `event` API is triggered and an `identify` event is sent with the `groupId`. It then creates a group and adds that user to the group.
+
+A sample `group` call is shown below:
+
+```javascript
+rudderanalytics.group("ruddersample", {
+  name: "Alex Keener",
+  email: "alex@example.com",
+  userId: "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
+  phone: "+1-202-555-0146",
+});
+```
+
+### Supported mappings
+
+The following table details the mapping between RudderStack and Blueshift fields:
+
+| RudderStack field | Blueshift field | Presence |
+| :-----| :--------| :-------------|
+| `groupId` | `group_id` | Required |
+| `userId` | `customer_id` | Required |
+| `email`  | `email` | Optional|
+| `context.device.type` | `device_type` | Optional|
+| `context.device.token` | `device_token` | Optional|
+| `context.device.id` | `device_id` | Optional|
+| `context.idfa`/`context.device.advertisingId` | `device_idfa` | Optional|
+| `context.idfv`/`context.device.id` | `device_idfv` | Optional|
+| `context.device.manufacturer` | `device_manufacturer` | Optional|
+| `context.os.name` | `os_name` | Optional|
+| `context.network.carrier` | `network_carrier` | Optional|
+| `context.ip`, `request_ip` | `ip` | Optional|
+| `context.address.latitude`, `context.location.latitude` | `latitude` | Optional|
+| `context.address.longitude`, `context.location.longitude` | `longitude` | Optional|
+| `messageId` | `event_uuid` | Optional|
+
+Rudderstack automatically maps the <code class="inline-code">identifier_key</code> to <code class="inline-code">customer_id</code> when <code class="inline-code">userId</code> is provided in the <code class="inline-code">group</code> call.
+
+<div class="infoBlock">
+
+If a <code class="inline-code">list_id</code> already exists, the user is added to the list. Otherwise, a new empty user list is created and the user is added to that list.
 </div>
 
 ## FAQ
