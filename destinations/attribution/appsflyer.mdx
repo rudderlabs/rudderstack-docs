@@ -195,7 +195,7 @@ val rudderClient: RudderClient = RudderClient.getInstance(
 import com.appsflyer.AppsFlyerLib
 import com.appsflyer.AFLogger;
 
-AppsFlyerLib.getInstance().init(<DEV_KEY>, null, this);
+AppsFlyerLib.getInstance().init(DEV_KEY, null, this);
 AppsFlyerLib.getInstance().setLogLevel(AFLogger.LogLevel.DEBUG);
 AppsFlyerLib.getInstance().start(this);
 ```
@@ -255,7 +255,7 @@ setOptions({
 
 // Configuration object to be passed while initializing the Rudder React Native // SDK
 const config = {
-    dataPlaneUrl: <DATA_PLANE_URL>
+    dataPlaneUrl: DATA_PLANE_URL
         trackAppLifecycleEvents: true,
     // Passing appsflyer factory here, since we want to run appsflyer as a device 
     // mode destination.
@@ -263,7 +263,7 @@ const config = {
 };
 
 // Finally, initializing the Rudder React Native SDK
-await rc.setup( <WRITE_KEY> , config);
+await rc.setup( WRITE_KEY , config);
 ```
 </span>
 </li>
@@ -318,11 +318,9 @@ var onDeepLinkCanceller = onDeepLink((data) => {
 })
 ```
 </span>
-
 As seen above, each of the listeners returns a function that - whenever called - removes those listeners.
 </li>
 <li>Depending on the React Native components you are using, trigger the <code class="inline-code">remove()</code> methods in <code class="inline-code">componentWillUnMount()</code> in case of a class-based component. or in <code class="inline-code">useEffect()</code> hook if it's a functional component, as shown:
-
 <span>
 
 ```typescript
