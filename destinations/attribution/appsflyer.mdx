@@ -188,7 +188,7 @@ val rudderClient: RudderClient = RudderClient.getInstance(
 ```
 </span>
 </li>
-<li>If you are using AppsFlyer Android device mode version <code class="inline-code">2.0.0</code> or above, add the following lines of code in your <code class="inline-code">MainApplication()</code> class:
+<li><strong>If you are using AppsFlyer Android device mode version <code class="inline-code">2.0.0</code> or above</strong>, add the following lines of code in your <code class="inline-code">MainApplication()</code> class:
 <span>
 
 ```java
@@ -216,7 +216,7 @@ yarn add @rudderstack/rudder-integration-appsflyer-react-native
 ```
 </span>
 </li>
-<li>Then, import the module you added above and add it to your SDK initialization code as shown:
+<li>If you are using the AppsFlyer React Native device mode version <strong>less than</strong> <code class="inline-code">1.1.0</code>, import the module and add it to your SDK initialization code, as shown:
 <span>
 
 ```typescript
@@ -231,7 +231,7 @@ rudderClient.setup(WRITE_KEY, config)
 ```
 </span>
 </li>
-<li>If you are using the AppsFlyer React Native device mode version <code class="inline-code">1.1.0</code> or above, initialize the AppsFlyer SDK as shown:
+<li>If you are using the AppsFlyer React Native device mode version <strong><code class="inline-code">1.1.0</code> or above</strong>, initialize the AppsFlyer SDK as shown:
 <span>
 
 ```typescript
@@ -266,8 +266,7 @@ const config = {
 await rc.setup( WRITE_KEY , config);
 ```
 </span>
-</li>
-<li>To get access to the conversion as well as the attribution data, set the properties <code class="inline-code">onInstallConversionDataListener</code> and <code class="inline-code">onDeepLinkListener</code> to <code class="inline-code">true</code> in the <code class="inline-code">setOptions</code> API as shown in the above snippet.
+To get access to the conversion as well as the attribution data, set the properties <code class="inline-code">onInstallConversionDataListener</code> and <code class="inline-code">onDeepLinkListener</code> to <code class="inline-code">true</code> in the <code class="inline-code">setOptions</code> API, as shown in the above snippet.
 </li>
 <li>Then, register the callbacks with the listeners, as shown:
 <span>
@@ -320,7 +319,9 @@ var onDeepLinkCanceller = onDeepLink((data) => {
 </span>
 As seen above, each of the listeners returns a function that - whenever called - removes those listeners.
 </li>
-<li>Depending on the React Native components you are using, trigger the <code class="inline-code">remove()</code> methods in <code class="inline-code">componentWillUnMount()</code> in case of a class-based component, as shown:
+<li>Depending on the React Native components you are using, you can trigger the appropriate method, as shown:
+    <ul>
+    <li>Trigger the <code class="inline-code">remove()</code> method in <code class="inline-code">componentWillUnMount()</code> in case of a class-based component, as shown:
 <span>
 
 ```typescript
@@ -449,6 +450,8 @@ const Home = (props) => {
 };
 ```
 </span>  
+</li>
+</ul>
 </li>
 </ul>
       </TabPanel>
