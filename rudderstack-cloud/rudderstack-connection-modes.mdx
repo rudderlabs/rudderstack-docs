@@ -30,8 +30,8 @@ When you send events via the cloud mode, you also get the flexibility to use <a 
 ### How cloud mode works
 
 1. The SDK sends the event data directly to the RudderStack server (backend).
-2. RudderStack transforms this data into a destination-specific format.
-3. The transformed data is then routed to the destination.
+2. RudderStack transforms the events into a destination-specific format.
+3. The transformed events are then routed to the destination.
 
 Suppose you want to analyze your website data in Google Analytics. To do so, you can use RudderStack's [JavaScript](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) SDK.
 
@@ -41,7 +41,7 @@ Then, enable event tracking on your website by [adding the JavaScript SDK snippe
 
 The SDK will automatically track and send the events to RudderStack. RudderStack then transforms this data into the format required by Google Analytics and then sends it over.
 
-<img src="../assets/image (9).png" alt="RudderStack SDKs" />
+<img src="../assets/rs-cloud/rudderstack-cloud-mode.png" alt="RudderStack Cloud Mode" />
 
 <div class="warningBlock">
 
@@ -68,11 +68,11 @@ Suppose you want to send your event data from your mobile app to Firebase via th
 
 The RudderStack SDK will first download the Firebase SDK, transform the events natively, and then send them over to Firebase.
 
-<img src="../assets/image (29).png" alt="SDK will transform the events" /><span class="imageTitle">RudderStack Device Mode</span>
+<img src="../assets/rs-cloud/rudderstack-device-mode.png" alt="RudderStack device mode" />
 
 For some destinations, you can use the [RudderStack web SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) to send the events via the device mode. To do so, enable the **Use native SDK to send events** option under the destination-specific connection settings in the RudderStack dashboard, as shown:
 
-<img src="../assets/screen-shot-2021-06-07-at-4.17.14-pm.png" alt="RudderStack web SDK" />
+<img src="../assets/rs-cloud/web-device-mode-settings.png" alt="RudderStack web SDK settings" />
 
 ## Which connection mode should I choose?
 
@@ -85,7 +85,7 @@ The easiest way to check the connection mode supported by the destination is to 
 
 The supported connection modes are mentioned for every destination in the **Getting Started** section of their respective documentation, as seen below:
 
-<img src="../assets/screen-shot-2021-06-07-at-4.24.51-pm.png" alt="Getting Started" />
+<img src="../assets/rs-cloud/getting-started-connection-modes.png" alt="Getting Started section in destination docs" />
 
 Some RudderStack destinations support sending events via both the cloud and device mode. [Google Analytics](https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/), [HubSpot](https://rudderstack.com/docs/destinations/crm/hubspot/), [Intercom](https://rudderstack.com/docs/destinations/business-messaging/intercom/), [Kissmetrics](https://rudderstack.com/docs/destinations/analytics/kissmetrics/), [Branch](https://rudderstack.com/docs/destinations/attribution/branchio/), [Braze](https://rudderstack.com/docs/destinations/marketing/braze/), [Customer.io](https://rudderstack.com/docs/destinations/marketing/customer.io/), and [Facebook App Events](https://rudderstack.com/docs/destinations/advertising/facebook-app-events/) are some popular examples.
 
