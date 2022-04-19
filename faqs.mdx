@@ -414,9 +414,8 @@ Sometimes, the downstream destination can be unavailable or send a failure code 
 
 | Failure Code | Retry Behavior |
 | :--- | :--- |
-| 5XX | Retry for a time window of 3 hours with exponential backoff and a minimum of 3 times. |
-| 429 | Retry for a time window of 3 hours with exponential backoff and a minimum of 3 times. |
-| 4XX | Retry for a minimum of 3 times without any backoff . |
+| `5XX`, `429` | Retry for a time window of 3 hours with exponential backoff and a minimum of 3 times. |
+| `4XX` | Retry for a minimum of 3 times without any backoff . |
 
 The above behavior is configurable via config variables in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml).
 
