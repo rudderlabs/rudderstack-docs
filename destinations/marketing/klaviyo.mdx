@@ -28,7 +28,7 @@ Before configuring Klaviyo as a destination in RudderStack, verify if the source
 
 <div class="infoBlock">
 
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Klaviyo, follow these steps:
@@ -99,7 +99,7 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 
 <div class="infoBlock">
 
-The <code class="inline-code">page</code> calls are only supported in the RudderStack device mode. For more information on the RudderStack device mode, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+The <code class="inline-code">page</code> calls are only supported in the RudderStack device mode. For more information on the RudderStack device mode, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 
 </div>
 
@@ -122,7 +122,7 @@ In the above snippet, RudderStack captures all the information related to the vi
 
 <div class="infoBlock">
 
-The <code class="inline-code">screen</code> calls are only supported in the RudderStack cloud mode. To know more about the RudderStack cloud mode, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+The <code class="inline-code">screen</code> calls are only supported in the RudderStack cloud mode. To know more about the RudderStack cloud mode, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 ## Track
@@ -378,7 +378,7 @@ To map a user in Klaviyo, you need either the <code class="inline-code">userId</
 
 <div class="infoBlock">
 
-Adding or subscribing users to a specific list is only available in cloud mode integration. To know more about the RudderStack cloud mode, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+Adding or subscribing users to a specific list is only available in cloud mode integration. To know more about the RudderStack cloud mode, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
 </div>
 
 You can add a user to a Klaviyo list if the **List ID** is specified in the RudderStack dashboard. Alternatively, you can add `listId` within the event `properties`.
@@ -397,7 +397,7 @@ You can also subscribe the user to a list by setting <code class="inline-code">s
 
 <div class="infoBlock">
 
-Adding or subscribing users to a specific list via the <code class="inline-code">group</code> event is only available in cloud mode integration. To know more about the RudderStack cloud mode, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+Adding or subscribing users to a specific list via the <code class="inline-code">group</code> event is only available in cloud mode integration. To know more about the RudderStack cloud mode, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
 </div>
 
 The `group` call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
