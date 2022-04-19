@@ -130,7 +130,7 @@ Enter the following credentials in the **Connection Credentials** page:
   - **Project**: The GCP project ID where the BigQuery database is located.
   - **Location**: The GCP region for your dataset.
   - **Staging GCS Storage Bucket Name**: The name of the storage bucket as specified in the [Setting up the BigQuery Project](https://rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#setting-up-the-bigquery-project) section.
-  - **Prefix**: 
+  - **Prefix**: If specified, RudderStack creates a folder in the bucket with this prefix and pushes all the data within that folder.
   - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
   - **Credentials**: Your GCP service account credentials JSON as created in the [Setting up the service account for RudderStack](#setting-up-the-service-account-for-rudderstack) section.
   - **Sync Frequency**: Specify how often RudderStack should sync the data to your BigQuery dataset.
