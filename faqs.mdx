@@ -1,7 +1,7 @@
 ---
 title: "FAQ"
 description: >-
-  Answers to the generally asked questions about RudderStack - including the core functionality, setup, features, and more.
+  Answers to the frequently asked questions about RudderStack - including the core functionality, setup, features, and more.
 ---
 
 # FAQ
@@ -28,17 +28,17 @@ For routing and processing the events to the RudderStack backend, a data plane U
 Refer to the [RudderStack Architecture](https://rudderstack.com/docs/get-started/rudderstack-architecture/) guide for more information the RudderStack Data Plane.
 </div>
 
-To get the data plane URL depending on your RudderStack plan:
+You can get the data plane URL depending on your RudderStack plan:
 
-* If you're using **RudderStack Open Source**, you are required to set up your own data plane by [installing and setting up RudderStack](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your preferred environment. 
+* **RudderStack Open Source** - Set up your own data plane by [installing and setting up RudderStack](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your preferred environment. 
 
 <div class="successBlock">
 
 An open source data plane URL looks like `http:localhost:8080` where `8080` is typically the port where your data plane is hosted.  
 </div>
 
-* If you're using [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial), the data plane URL is provided in the dashboard at the top of the **Connections** page.
-* If you're using [RudderStack Pro/Enterprise](https://rudderstack.com/pricing), [contact us](https://rudderstack.com/join-rudderstack-slack-community) for the data plane URL with the email ID you used to sign up for RudderStack.
+* [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) - The data plane URL is provided in the dashboard at the top of the **Connections** page.
+* [RudderStack Pro/Enterprise](https://rudderstack.com/pricing) - [Contact us](https://rudderstack.com/join-rudderstack-slack-community) for the data plane URL with the email ID you used to sign up for RudderStack.
 
 #### To get started with RudderStack on my local machine, is it mandatory to get the workspace token from RudderStack dashboard?
 
@@ -103,7 +103,7 @@ CURL https://hosted.rudderlabs.com/health
 
 #### How many events can a single RudderStack node handle?
 
-The number of events that a single RudderStack node can handle will depend on the destinations that you are sending the event data to. It also depends on the transformations that you are running.
+The number of events a single RudderStack node can handle depends on the destinations that you are sending the event data to. It also depends on the transformations that you are running.
 
 Here are some ballpark figures:
 
@@ -191,11 +191,11 @@ This solution assumes that you have already set up the RudderStack data plane (b
 
 #### How do I add user transformations in RudderStack?
 
-RudderStack lets you implement your own custom transformations that leverage the event data to implement specific use-cases based on your business requirements. To add transformations in RudderStack, follow this [guide](https://rudderstack.com/docs/transformations/#adding-a-transformation).
+RudderStack lets you implement your own custom transformations that leverage the event data to implement specific use-cases based on your business requirements. Refer to the [Adding a transformation](https://rudderstack.com/docs/transformations/#adding-a-transformation) section to add transformations in RudderStack. 
 
 #### Can I apply a transformation to a source configured in RudderStack?
 
-Currently, transformations can only be configured and used for destinations. If you want to write some custom logic specific to the source, you can get the [source ID](https://rudderstack.com/docs/rudderstack-cloud/sources/) in the transformation function and use it to include the logic. For more information, refer to this [section](https://rudderstack.com/docs/transformations#accessing-metadata).
+Currently, transformations can only be configured and used for destinations. If you want to write some custom logic specific to the source, you can get the [source ID](https://rudderstack.com/docs/rudderstack-cloud/sources/) in the transformation function and use it to include the logic. Refer to the [Accessing metadata](https://rudderstack.com/docs/transformations#accessing-metadata) section for more information.
 
 ## RudderStack Cloud
 
@@ -227,7 +227,7 @@ The personal access token is a unique token associated with your RudderStack acc
 
 <div class="infoBlock">
 
-For more information, refer to the <a href="https://www.rudderstack.com/docs/transformations/api-access-token/">Personal Access Tokens</a> guide.
+For more information on where to find it, refer to the <a href="https://www.rudderstack.com/docs/transformations/api-access-token/">Personal Access Tokens</a> guide.
 </div>
 
 ## Integrations
@@ -265,7 +265,7 @@ Yes, you can use the same destination without any problem.
 
 #### How do I see the logs or the data that is sent to my destination?
 
-To view the data or events that are sent to your destination, you can use the **Live Events** tab on your destination page.
+To view the data or events that are sent to your destination, you can use the [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) tab on your destination page.
 
 #### I would like to send events to Mixpanel via RudderStack. However, I would like to set a filtering condition on the source events before routing them to Mixpanel. How do I go about doing this?
 
@@ -354,7 +354,7 @@ Adding a new node requires a bit of downtime. However, RudderStack is built in a
 
 When a new node is added, the users need to be rebalanced across nodes \(to keep event ordering\). While the re-balancing takes place \(can take a few minutes\), RudderStack does not send events to downstream destinations, but continues to receive events so that your SDKs don't see any failures \(ignoring the small ELB switch over time\). 
 
-Also, the SDKs have a built-in local caching and retries capability. So even if there is a failure, no events are lost.
+Also, the SDKs have a built-in local caching and retrying capability. So even if there is a failure, no events are lost.
 
 ## Whitelisting
 
@@ -446,7 +446,7 @@ Some downstream destinations have limits on the number of events they accept at 
 
 Some examples are:
 
-* [Customer.io](https://customer.io/docs/api/#api-documentationlimits): 
+* [Customer.io](https://customer.io/docs/api/#api-documentationlimits)
 * [Amplitude upload limit ](https://help.amplitude.com/hc/en-us/articles/360032842391-HTTP-API-V2#upload-limit)
 
 These limits can also be configured using config variables in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) or using environment variables as described in comments [here](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml#L1-L32).
