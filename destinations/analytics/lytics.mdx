@@ -61,11 +61,14 @@ To get the API token, go to your Lytics dashboard and navigate to <strong>Accoun
 Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this setting.
 </div>
 
-If you are using the native web SDK to send the events to Lytics, enter the following settings:
+If you are using the JavaScript SDK to send the events to Lytics, enter the following settings:
+
+<img src="../../assets/event-stream-destinations/lytics-connection-settings-2.png" alt="Lytics connection settings" />
 
 - **Account ID**: Enter the the Lytics account ID obtained from your Lytics dashboard. For more information on obtaining the account ID, refer to the [Lytics support page](https://support.lytics.com/hc/en-us/articles/115001231351-How-do-I-find-my-Lytics-account-ID-). **This is a mandatory field**.
 - **Allow UID Sharing Across Multiple Domains**: When enabled, this option lets you identify users across domains.
 - **Ensure Entity**: When this option is enabled, RudderStack gets your most updated audience membership and profile data, before sending it to Lytics.
+- **Use native SDK to send events**: Enable this setting if you are sending events via the device mode, that is, via the native web SDK.
 
 ## Identify
 
