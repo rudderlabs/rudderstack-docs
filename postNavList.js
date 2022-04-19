@@ -1745,12 +1745,6 @@ export const postNavList = [
     "content":[]
  },
  {
-   "key":"architecture",
-   "title":"Architecture",
-   "link":"/get-started/rudderstack-architecture/",
-   "content":[]
- },
- {
     "key":"user-guides",
     "title":"User Guides",
     "link":"/user-guides/",
