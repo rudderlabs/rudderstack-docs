@@ -9,54 +9,84 @@ export const postNavList = [
     "content":[]
 },
 {
-   "key":"connections",
-   "title":"RudderStack Cloud",
-   "link":"/connections/",
+   "key":"get-started",
+   "title":"Get Started",
+   "link":"/get-started/",
    "content":[]
 },
- {
+{
+   "key":"rudderstack-architecture",
+   "title":"Architecture",
+   "link":"/get-started/rudderstack-architecture/",
+   "content":[]
+},
+{
+   "key":"glossary",
+   "title":"Glossary",
+   "link":"/get-started/glossary/",
+   "content":[]
+},
+{
+   "key":"cloud-vs-open-source",
+   "title":"RudderStack Cloud vs. RudderStack Open Source",
+   "link":"/get-started/cloud-vs-open-source/",
+   "content":[]
+},
+{
+   "key":"rudderstack-cloud",
+   "title":"RudderStack Cloud",
+   "link":"/rudderstack-cloud/",
+   "content":[]
+},
+{
     "key":"dashboard-overview",
     "title":"Dashboard Overview",
-    "link":"/get-started/dashboard-overview/",
+    "link":"/rudderstack-cloud/dashboard-overview/",
     "content":[]
  },
  {
-    "key":"user-management",
-    "title":"User Management",
-    "link":"/get-started/dashboard-overview/user-management/",
+   "key":"sources",
+   "title":"Sources",
+   "link":"/rudderstack-cloud/sources/",
+   "content":[]
+},
+{
+   "key":"destinations",
+   "title":"Destinations",
+   "link":"/rudderstack-cloud/destinations/",
+   "content":[]
+},
+{
+   "key":"live-events",
+   "title":"Live Events",
+   "link":"/rudderstack-cloud/live-events/",
+   "content":[]
+},
+{
+   "key":"rudderstack-connection-modes",
+   "title":"Connection Modes: Cloud Mode vs Device Mode",
+   "link":"/rudderstack-cloud/rudderstack-connection-modes/",
+   "content":[]
+},
+ {
+    "key":"teammates",
+    "title":"Teammates (User Management)",
+    "link":"/rudderstack-cloud/teammates/",
     "content":[]
  },
  {
    "key":"audit-logs",
    "title":"Audit Logs",
-   "link":"/get-started/dashboard-overview/audit-logs/",
+   "link":"/rudderstack-cloud/audit-logs/",
    "content":[]
 },
 {
-    "key":"live-events",
-    "title":"Live Events",
-    "link":"/get-started/live-events/",
-    "content":[]
-},
-{
-    "key":"adding-source-and-destination-rudderstack",
-    "title":"How to Add a Source and Destination in RudderStack",
-    "link":"/connections/adding-source-and-destination-rudderstack/",
-    "content":[]
- },
- {
-    "key":"rudderstack-connection-modes",
-    "title":"Connection Modes: Cloud Mode vs Device Mode",
-    "link":"/connections/rudderstack-connection-modes/",
-    "content":[]
- },
- {
     "key":"stream-sources",
     "title":"Event Streams",
     "link":"/stream-sources/",
     "content":[]
  },
- {
+{
     "key":"rudderstack-sdk-integration-guides",
     "title":"SDKs",
     "link":"/stream-sources/rudderstack-sdk-integration-guides/",
@@ -1976,12 +2006,6 @@ export const postNavList = [
     "key":"rudderstack-vue-integration",
     "title":"Vue",
     "link":"/user-guides/how-to-guides/rudderstack-vue-integration/",
-    "content":[]
- },
- {
-    "key":"glossary",
-    "title":"Glossary",
-    "link":"/glossary/",
     "content":[]
  },
  {
