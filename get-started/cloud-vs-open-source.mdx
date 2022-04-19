@@ -1,13 +1,13 @@
 ---
 #slug: "/docs/get-started"
-title: "RudderStack Features: Cloud vs. Open Source"
+title: "RudderStack Cloud vs. Open Source"
 description: >-
   Detailed guide comparing features available in RudderStack's two offerings - Cloud and Open Source.
 ---
 
-# RudderStack Features: Cloud vs. Open Source
+# RudderStack Cloud vs. RudderStack Open Source
 
-This guide compares the features available in [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) and [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource). It will help you in choosing the best option suited to your requirements.
+This guide compares the features present in the two primary [RudderStack](https://rudderstack.com/) offerings - [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) and [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource). It will help you in choosing the best option suited to your requirements.
 
 <div class="infoBlock">
 
@@ -20,7 +20,7 @@ RudderStack also offers three plans as a part of <a href="https://app.rudderstac
 
 | Feature |  RudderStack Cloud | RudderStack Open Source | Comments | 
 | :--------| :-------------------| :--------------------------| :-----|
-| [Data plane setup](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your own environment |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [data plane](https://www.rudderstack.com/docs/glossary/#data-plane). | 
+| [Data plane setup](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your own environment |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [data plane](https://www.rudderstack.com/docs/get-started/rudderstack-architecture/). | 
 | [Control plane setup](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) in your own environment  |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [web app](https://app.rudderstack.com/) to manage your connections. |
 | Customize the data plane [config parameters](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) | ✕ |  ✓ |  - |
 
@@ -35,7 +35,7 @@ For more information on the data plane and control plane setup options in Rudder
 | :--------| :-------------------| :--------------------------| :-----| 
 | Event-related metrics | ✓ |  ✓ | Get information on the number of events ingested during a specified timeframe. | 
 | [Event backup in your own bucket](https://www.rudderstack.com/docs/user-guides/administrators-guide/bucket-configuration-settings/) |  ✓ |  ✓ | RudderStack can manage it for you as a part of the [Enterprise plan](https://www.rudderstack.com/enterprise-quote/). | 
-| [Live events](https://www.rudderstack.com/docs/get-started/live-events/) |  ✓ | ✕ | This feature is applicable only for [cloud mode](https://www.rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode) destinations. | 
+| [Live events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) |  ✓ | ✕ | This feature is applicable only for [cloud mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode) destinations. | 
 | RudderStack-hosted object storage | ✓ |  ✕ | You can use the RudderStack-hosted bucket to temporarily store your events before forwarding them to your warehouse destination. |
 | [Event Replay](https://www.rudderstack.com/docs/user-guides/administrators-guide/event-replay/) | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. | 
 | Maintaining event ordering | ✓ |  ✓ | <ul><li>For Cloud, this is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature.</li><li>Event ordering is supported in an open source setup but **not guaranteed**.</li></ul> |
@@ -93,17 +93,17 @@ The control plane manages the configuration of your sources and destinations in 
 For more information on the data plane and control plane in RudderStack, refer to the <a href="https://www.rudderstack.com/docs/get-started/rudderstack-architecture/">Architecture</a> guide.
 </div>
 
-In case of **RudderStack Cloud**, RudderStack self-hosts the data plane and the control plane so you don't have to worry about their setup.
+In case of [RudderStack Cloud](https://rudderstack.com/docs/rudderstack-cloud/), RudderStack self-hosts the data plane and the control plane so you don't have to worry about their setup.
 
-For **RudderStack Open Source**, you get the following data plane and control plane setup options:
+For [RudderStack Open Source](https://rudderstack.com/docs/rudderstack-open-source/), you get the following data plane and control plane setup options:
 - You need to [set up the data plane](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your own environment. **RudderStack will not host it for you**.
 - For the control plane, you can either use the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) or [set up your own control plane](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/).
 
 <div class="warningBlock">
 
-Features like <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> and <a href="https://www.rudderstack.com/docs/get-started/live-events/">Live Events</a> are not available if you self-host the control plane.
+Features like <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> and <a href="https://www.rudderstack.com/docs/rudderstack-cloud/live-events/">Live Events</a> are not available if you self-host the control plane.
 </div>
 
 ## Contact us
 
-For more information or queries on this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information or queries on this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

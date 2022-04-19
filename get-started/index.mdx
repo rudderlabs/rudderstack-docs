@@ -2,87 +2,152 @@
 #slug: "/docs/get-started"
 title: "Get Started"
 description: >-
-  Get started with RudderStack - the customer data pipeline for collecting,
-  storing and routing your customer event data securely.
+  Get started with RudderStack - the warehouse-first customer data platform for developers.
 ---
 
 # Get Started
 
-[RudderStack](https://rudderstack.com/) is a **customer data platform** to capture, process, and sync all of your event, product, and warehouse data to all the tools across your customer data stack.
+The easiest way to get started with RudderStack is to set up a source, connect it to a destination, and see your event data flow in no time.
 
-RudderStack's backend is written in Go, with a simple, user-friendly UI written in React.js.
+## Quick start
 
-RudderStack is enterprise-ready and provides a powerful transformation framework to process your event data on the fly.
+Follow these steps to set up a connection in RudderStack:
 
-<div class="successBlock">
+1. Sign up for [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial).
+2. You can then access the dashboard for setting up your data pipelines:
 
-Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your marketing and analytics stack. Sign up for <a href="https://app.rudderstack.com/signup?type=freetrial">RudderStack Cloud Free</a> today.
-</div>
+<img src="../assets/get-started/connections-dashboard.png" alt="Connections Dashboard" />
 
-<div class="infoBlock">
-
-Do you have any questions about RudderStack? Join our <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack community</a> and start a conversation today.
-</div>
-
-## Why RudderStack?
-
-- **Segment API-compatible**: RudderStack is fully compatible with the Segment API. So you don't need to change your app if you are using Segment. Simply integrate the RudderStack SDKs into your app and your events will keep flowing as before \(including your data warehouse\).
-- **Processing Flexibility**: With RudderStack's powerful JavaScript-based event transformation framework, you can enhance or transform your event data by combining it with your other internal data.
-- **Stand-alone System**: RudderStack runs as a single Go binary with the dependencies being on a PostgreSQL server and a Node.js service. There is no other dependency required to run RudderStack.
-- **Platform-independent**: RudderStack is Kubernetes-native and can run on any Kubernetes cluster with our Helm charts. RudderStack is cloud-agnostic and can run on stand-alone machines in all popular cloud platforms, namely AWS, Microsoft Azure, GCP, and others.
-- **High Performance**: On a single m4.2xlarge AWS EC2 instance, RudderStack can process 3000 events/second.
-- **Enhanced Telemetry**: To help us improve RudderStack, we collect performance and diagnostic metrics about how you use RudderStack, and how it is working. **No customer data is present in the metrics**. For more technical details, please check out our GitHub wiki page on [Telemetry](https://github.com/rudderlabs/rudder-server/wiki/RudderStack-Telemetry).
-- **Unlimited Events**: Event volume-based pricing of most of the commercial systems is broken. With RudderStack, you are able to collect as much data as possible without worrying about overrunning event budgets.
-
-## RudderStack in 5 Minutes
-
-Get up and running with RudderStack in no time by following these steps:
-
-- Sign up for [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial).
-- You will then get access to this dashboard for setting up your data pipelines:
-
-<img src="../assets/1 (22).png" alt="Connections Dashboard" />
-
-- Click on **Add Source** to set up a data source.
+3. Click on **Add Source** to set up a data source.
 
 <div class="infoBlock">
 
-  For more information on sources in RudderStack, check out the <a href="https://rudderstack.com/docs/connections/">Connections</a> guide.
+For more information on sources in RudderStack, check out the <a href="https://rudderstack.com/docs/rudderstack-cloud/sources/">Sources</a> guide.
 </div>
 
-- Choose the data source from the list of available sources. RudderStack supports the following three types of sources:
-  - [Event Streams](https://rudderstack.com/docs/stream-sources/): With these sources, you can collect your event data from all of your web, mobile, and server-side apps and route it to a wide array of customer tools and data warehouses.
-  - [Cloud Extract](https://rudderstack.com/docs/cloud-extract-sources/): With these sources, you can build ELT pipelines from cloud apps to your data warehouse.
-  - [Reverse ETL](https://rudderstack.com/docs/reverse-etl/): With this option, you can leverage the enriched data residing in your data warehouse as a data source for your whole customer data stack.
+4. Choose the data source from the list of available sources. RudderStack supports the following three types of sources:
 
-<img src="../assets/screen-shot-2021-06-01-at-1.53.46-pm.png" alt="RudderStack Sources" />
+    - [Event Streams](https://rudderstack.com/docs/stream-sources/): Collect your event data from all the web, mobile, and server-side apps, then route it to a wide array of customer tools and data warehouses.
+    - [Cloud Extract](https://rudderstack.com/docs/cloud-extract-sources/): Build ELT pipelines from cloud apps to your data warehouse.
+    - [Reverse ETL](https://rudderstack.com/docs/reverse-etl/): Leverage your warehouse as a data source for your entire customer data stack.
 
-- Once you have configured the data source, add a destination in RudderStack by clicking on the **Add Destination** button.
+5. Once you have configured the data source, you will see the following source details page.
 
-<img src="../assets/screen-shot-2021-06-01-at-2.02.10-pm.png" alt="Destination Configuration Button" />
+<img src="../assets/get-started/source-details.png" alt="Source details" />
 
-- From the list of destinations, choose the destination you want to configure for the source.
-- Configure the destination by entering the relevant connection settings. For detailed information on the required settings, refer to that destination's [documentation](https://rudderstack.com/docs/destinations/).
+<div class="infoBlock">
+
+Note the source <strong>Write key</strong>. This is required for integrating the RudderStack SDK with your source app.
+</div>
+
+6. Then, add a destination by clicking on the **Add Destination** button and selecting **Create new destination**.
+
+<img src="../assets/get-started/adding-new-destination.png" alt="Adding a new destination" />
+
+7. From the list of destinations, select the destination you want to configure for the source. RudderStack currently supports **over 150** destinations, including [event stream](https://www.rudderstack.com/docs/destinations/) and [warehouse](https://www.rudderstack.com/docs/data-warehouse-integrations/) destinations.
+8. Configure the destination by entering the relevant connection settings. For detailed information on these settings, refer to the destination-specific [documentation](https://rudderstack.com/docs/destinations/).
 
 <div class="successBlock">
 
-You can transform your events in RudderStack before sending them to the specified destinations. Read the <a href="https://rudderstack.com/docs/transformations/">Transformations</a> guide for more information on this feature.
+You can also transform your events in RudderStack before sending them to the destinations. Read the <a href="https://rudderstack.com/docs/transformations/">Transformations</a> guide for more information on this feature.
 </div>
 
-Here's a quick walkthrough on how to send data from your website to various cloud tools via RudderStack:
+## In this section
 
-<YouTube 
-  videoId={'BEQltd_5A_k'}
-  opts={{playerVars: {rel: 0}}}
-/>
+<a class="pageRef" href="rudderstack-architecture/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      RudderStack Architecture
+    </span>
+  </div>
+</a>
 
-## Useful links
+<a class="pageRef" href="cloud-vs-open-source/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      RudderStack Cloud vs RudderStack Open Source
+    </span>
+  </div>
+</a>
 
-- Check out some [sample applications](https://github.com/rudderlabs/rudder-samples/) that demonstrate various RudderStack use-cases.
-- Read more about RudderStack's underlying [architecture](https://www.rudderstack.com/docs/get-started/rudderstack-architecture/) and familiarize yourself with RudderStack's backend.
-- You can [set up open-source RudderStack](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) on the platform of your choice, in your own development environment.
-- Learn about RudderStack's [data governance](https://www.rudderstack.com/docs/data-governance/) capabilities.
+<a class="pageRef" href="glossary/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Glossary
+    </span>
+  </div>
+</a>
+
+## See also
+
+- [RudderStack Cloud](https://rudderstack.com/docs/rudderstack-cloud/): Familiarize yourself with RudderStack. Know more about sources, destinations, and connections.
+- [Glossary](https://rudderstack.com/docs/get-started/glossary/): Understand the definitions of the different terms that you are likely to encounter while using RudderStack.
+- [Sources](https://rudderstack.com/docs/rudderstack-cloud/sources/): Start tracking your event data by integrating RudderStack with your web, mobile, and server-side apps.
+- [Destinations](https://rudderstack.com/docs/rudderstack-cloud/destinations/): Send your event data to over 150 tool and warehouse destinations.
+- [Transformations](https://rudderstack.com/docs/transformations) : Customize the event data before routing it to your preferred destinations.
+- [Event spec](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/): Plan your event data and explore various options for tracking your events across all the RudderStack SDKs and APIs.
+- [RudderStack API](https://www.rudderstack.com/docs/rudderstack-api/): Work with different RudderStack API depending on your use-case.
 
 ## Contact us
 
-To know more about RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. You can also see [RudderStack in action](https://app.rudderstack.com/signup?type=freetrial) to check out all the cool features the platform has to offer.
+For more information on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
