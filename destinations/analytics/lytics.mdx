@@ -6,20 +6,18 @@ description: Step-by-step guide to send your event data from RudderStack to Lyti
 
 # Lytics
 
-[Lytics](https://www.lytics.com/) is a popular customer data platform, built for marketers. It allows you to efficiently leverage your first-party customer data to deliver tailored customer journeys. With Lytics, you can better engage with your customers through personalized messages and automated, AI-driven marketing campaigns.
+[Lytics](https://www.lytics.com/) is a popular customer data platform built for marketers. It allows you to efficiently leverage your first-party customer data to deliver tailored customer journeys.
 
-RudderStack supports Lytics as a destination to which you can send your event data in real-time.
+RudderStack supports Lytics as a destination to which you can seamlessly send your event data.
 
 <div class="successBlock">
 
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/lytics">GitHub repo</a>.**
+Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/lytics">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
-To enable sending data to Lytics, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Lytics.
-
-Before configuring your source and destination on the RudderStack, verify if the source platform is supported by Lytics, by referring to the table below:
+Before configuring Lytics as a destination in RudderStack, verify if the source platform is supported by Lytics, by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -28,38 +26,64 @@ Before configuring your source and destination on the RudderStack, verify if the
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
-Once you have confirmed that the platform supports sending events to Lytics, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Singular, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/signup?type=freetrial), add the source. Then, from the list of destinations, select Lytics**.**
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Singular**.
 
 <div class="infoBlock">
 
-Follow our <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination</a> guide to add a source and destination in RudderStack.
-
+Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/" target="_blank">Adding a Source and Destination in RudderStack</a> for more information.
 </div>
 
-- Give a name to the destination and click on **Next**. You should then see the following screen:
+2. Assign a name to your destination and click on **Next**.
 
-<img src="../../assets/lytics.png" /><span class="imageTitle">Lytics Destination Settings on the RudderStack dashboard</span>
+### Connection settings
 
-The connection settings are explained in more detail as follows:
+To successfully configure Singular as a destination, you need to configure the following settings:
 
-- **Account ID**: Enter the the Lytics account ID obtained from your Lytics dashboard. For more information, check out the [**Lytics support page**](https://support.lytics.com/hc/en-us/articles/115001231351-How-do-I-find-my-Lytics-account-ID-).
-- **API Key**: Create an API key from Lytics dashboard and enter the details here.
+<img src="../../assets/event-stream-destinations/lytics-connection-settings.png" alt="Lytics connection settings" />
+
+- **API Token**: Create an API token in your Lytics dashboard and enter the details here.
 
 <div class="infoBlock">
 
-To get the API Key, go to your Lytics dashboard, and navigate to **Account** - **Manage Accounts** - **Account Settings** - **API Token**. You can create an API token here and use this information to configure Lytics as a destination.
-
+To get the API token, go to your Lytics dashboard and navigate to <strong>Account</strong> &gt; <strong>Account Settings</strong> &gt; <strong>API Token</strong>. You can create an API token here and use this information to configure Lytics as a destination.
 </div>
 
-- **Stream**: Assign a name for the stream where you want to send your data.
-- **Ensure Entity\(Block Load\)**: When this option is enabled, RudderStack gets your most updated audience membership and profile data, before sending it to Lytics.
-- **Allow UID Sharing Across Multiple Domains\(Load ID\)**: When enabled, this option lets you identify users across domains.
+- **Stream Name**: Enter the name of the Lytics stream where you want to send the events.
+- **Client-side Event Filtering**: This setting is applicable **only if** you are sending events to Lytics via the device mode. 
+
+<div class="infoBlock">
+  
+Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this setting.
+</div>
+
+If you are using the native web SDK to send the events to Lytics, enter the following settings:
+
+- **Account ID**: Enter the the Lytics account ID obtained from your Lytics dashboard. For more information on obtaining the account ID, refer to the [Lytics support page](https://support.lytics.com/hc/en-us/articles/115001231351-How-do-I-find-my-Lytics-account-ID-). **This is a mandatory field**.
+- **Allow UID Sharing Across Multiple Domains**: When enabled, this option lets you identify users across domains.
+- **Ensure Entity**: When this option is enabled, RudderStack gets your most updated audience membership and profile data, before sending it to Lytics.
+
+## Identify
+
+The `identify` call captures the relevant details about the visiting user.
+
+<div class="infoBlock">
+
+For more information on the <code class="inline-code">identify</code> method, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
+</div>
+
+A sample `identify` payload is as shown in the snippet below:
+
+```javascript
+rudderanalytics.identify("1hKOm4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
+})
+```
 
 ## Page
 
@@ -67,37 +91,24 @@ With the `page` method, RudderStack makes a call to Lytics to record a page view
 
 <div class="infoBlock">
 
-For more information on the <code class="inline-code">page</code> method, refer to our guide on <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page">RudderStack API Specification</a>.
-
+For more information on the <code class="inline-code">page</code> method, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
 </div>
 
 A sample `page` call is as shown:
 
 ```javascript
-rudderanalytics.page("new category", "page name", {
-  url: "url",
-  path: "/path",
+rudderanalytics.page("Popular", "Bestseller", {
+  url: "https://www.estore.com/search/best-seller/1",
+  path: "/best-seller/1",
 })
 ```
 
-Similarly, we can also make `screen` calls. However, this is supported only in the cloud-mode.
-
-<div class="infoBlock">
-
-To know more about how the <code class="inline-code">screen</code> call works, refer to our guide on <a href="https://rudderstack.com/docs/rudderstack-api/http-api#9-screen">RudderStack API Specification</a>.
-
-</div>
-
-<div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
-</div>
+Similarly, you can also make [`screen`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) calls. However, this is supported only in the [cloud mode](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#cloud-mode).
 
 A sample screen call is as shown:
 
 ```objectivec
-[[RSClient sharedInstance] screen:@"Main"];
+[[RSClient sharedInstance] screen:@"Home"];
 ```
 
 ## Track
@@ -106,8 +117,7 @@ With the `track` API, RudderStack makes a call to Lytics to track user actions a
 
 <div class="infoBlock">
 
-For more information on the <code class="inline-code">track</code> method, refer to our guide on <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a>.
-
+For more information on the <code class="inline-code">track</code> method, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
 </div>
 
 A sample `track` call is as shown:
@@ -123,31 +133,25 @@ rudderanalytics.track("Order Completed", {
 })
 ```
 
-## Identify
-
-The `identify` call captures the relevant details about the visiting user.
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> method, refer to our guide on <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a>.
-
-</div>
-
-A sample `identify` payload is as shown in the snippet below:
-
-```javascript
-rudderanalytics.identify("abc123", {
-  name: "FirstName LastName",
-  email: "example@gmail.com",
-})
-```
-
 ## FAQs
 
-### Where do I get the Lytics API Key?
+### How do I obtain the Lytics API token?
 
-Go to your Lytics dashboard, and navigate to **Account** - **Manage Accounts** - **Account Settings** - **API Token**. You can create an API token here, which can be used to configure the destination on the RudderStack dashboard.
+Go to your Lytics dashboard, and navigate to **Account** > **Account Settings** > **API Token**. You can create an API token here, which can be used to configure the destination on the RudderStack dashboard.
 
-## Contact Us
+For more information, refer to the [Lytics documentation](https://learn.lytics.com/documentation/product/features/account-management/managing-api-tokens#managing-api-tokens).
 
-To know more about the Lytics integration and how to use it, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community, and we will be happy to help you.
+### How do I obtain the Lytics account ID?
+
+To obtain your Lytics account ID, follow these steps:
+
+1. Log into your Lytics dashboard.
+2. Click on the account name on the top right and go to **Manage Accounts**.
+
+Here, you will see the account ID associated with your Lytics account.
+
+For more information, refer to this [Lytics support page](https://support.lytics.com/hc/en-us/articles/115001231351-How-do-I-find-my-Lytics-account-ID-).
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
