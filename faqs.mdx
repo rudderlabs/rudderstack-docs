@@ -126,7 +126,7 @@ There is a [config variable](https://github.com/rudderlabs/rudder-server/blob/ma
 
 Go to the **Events** tab in the destination's page to see the event-related metrics, as shown below:
 
-<img src="/assets/general/destination-event-metrics.png" alt="Destination event metrics" />
+<img src="./assets/general/destination-event-metrics.png" alt="Destination event metrics" />
 
 <div class="warningBlock">
 
@@ -178,7 +178,7 @@ To use the control plane URL to initialize your SDKs, follow these steps:
 1. Set up the control plane using the Control Plane Lite utility.
 2. Go to dashboard, configure the source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button as shown:
 
-<img src="../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
+<img src="./assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
 
 3. Host the exported file on your own server such that the configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
 
@@ -207,7 +207,7 @@ Unfortunately, your workspace name is not changeable currently. We are planning 
 
 The write key is different from your workspace token. The write key is associated with the source, while the workspace token is associated with your RudderStack workspace, as shown:
 
-<img src="../../assets/rudderstack-open-source/write-key-vs-workspace-token.png" alt="Write key vs. workspace token" />
+<img src="./assets/rudderstack-open-source/write-key-vs-workspace-token.png" alt="Write key vs. workspace token" />
 
 #### I see a few events that show up in the live stream but do not reach the destination. How do I see the logs or data that is sent to my destination?
 
@@ -281,7 +281,7 @@ For example, Salesforce only supports `identify` events. Therefore, if a `track`
 
 #### How to force RudderStack to push all the data to a data warehouse in real-time with no delay? During the implementation, it would be better to see how the data is collected in real-time, rather than 30 minutes later.
 
-You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` to true in [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or `config.toml`, in case you have an older RudderStack deployment\). You can set your desired frequency by changing the `uploadFreqInS` parameter.
+You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` to true in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or `config.toml`, in case you have an older RudderStack deployment\). You can set your desired frequency by changing the `uploadFreqInS` parameter.
 
 #### I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
 
@@ -296,31 +296,31 @@ By default, RudderStack sends the data to the table / dataset based on the sourc
 
 You can override this by setting a **Namespace** in the destination settings as shown:
 
-<img src="assets/mssqlconnection (1).png" alt="Set namespace in the destination settings" />
+<img src="./assets/mssqlconnection (1).png" alt="Set namespace in the destination settings" />
 
 #### I am trying to set `warehouseSyncFreqIgnore = true` to have a real-time sync with BigQuery but I can't find the `config.yaml` file. How can I do this using the Docker setup?
 
-You can do so by setting this value via the following ENV variables:
+You can do so by setting this value via the following `.env` variables:
 
 * `RSERVER_WAREHOUSE_WAREHOUSE_SYNC_FREQ_IGNORE`
 * `RSERVER_WAREHOUSE_UPLOAD_FREQ_IN_S`
 
 #### I'm looking to send data to my data warehouse through RudderStack and I'm trying to understand what data is populated in each column. How do I go about this?
 
-You can refer to the [Warehouse Schema](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/) guide for details on how RudderStack generates the schemas in the warehouse.
+Refer to the [Warehouse Schema](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/) guide for details on how RudderStack generates the schemas in the warehouse.
 
 #### I am trying to load data into my BigQuery destination and I get this error:
 
-```c
+```
 backend_1 | {Location: “”; Message: “Cannot read and write in different locations: 
 source: US, destination: us-central1""; Reason: “invalid”}"
 ```
 
-Make sure that both your BigQuery dataset and the bucket have the same region. For more information, refer to the [**BigQuery documentation**](https://cloud.google.com/bigquery/docs/locations#data-locations).
+Make sure that both your BigQuery dataset and the bucket have the same region. For more information, refer to the [BigQuery documentation](https://cloud.google.com/bigquery/docs/locations#data-locations).
 
-#### When piping data to a BigQuery destination, I can set the bucket but not a folder within the bucket. Is there a way to put Rudderstack data in a specific bucket folder?
+#### When sending data to BigQuery, I can set the bucket but not a folder within the bucket. Is there a way to put Rudderstack data in a specific bucket folder?
 
-Yes, you can set the desired folder name in the **Prefix** input field while configuring your BigQuery destination.
+Yes, you can set the desired folder name in the **Prefix** input field while configuring your BigQuery destination. For more information, refer to the [BigQuery setup guide](https://www.rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#configuring-google-bigquery-destination-in-rudderstack).
 
 ## RudderStack Pro/Enterprise
 
@@ -334,9 +334,9 @@ Suppose you are configuring Amazon S3 as a destination but you don't want to ent
 
 #### What cloud infrastructure is the RudderStack hosted solution running on? Do you have failover to alternate availability zones?
 
-RudderStack's hosted solution is running on AWS EKS with the cluster spanning 3 availability zones \(east-1a, east-1b, east-1c\).
+RudderStack's hosted solution is running on AWS EKS with the cluster spanning 3 availability zones (`east-1a`, `east-1b`, `east-1c`).
 
-#### What sort of hardening is in place to ensure up-times with a single RudderStack node?
+#### How does RudderStack ensure uptime with a single node?
 
 * At the infrastructure layer, RudderStack runs on a multi-availability zone EKS cluster. So hardware failures, if any, are handled by Kubernetes by relocating pods.
 * At an application level, RudderStack operates in either of the following 3 modes:
@@ -346,11 +346,15 @@ RudderStack's hosted solution is running on AWS EKS with the cluster spanning 3 
 * All of RudderStack's SDKs also have failure handling. They can store events in local storage and retry on failure.
 * RudderStack provides isolation between the data and control planes. For example, if the control plane \(where you manage the source and destination configurations\) goes offline, the data plane continues to operate.
 
-All this is done to ensure that RudderStack can always receive events, and no events are lost.
+All this is done to ensure that RudderStack can always receive events and no events are lost.
 
 #### Would adding an additional node to RudderStack cause an outage, and if so what is the expected downtime? How long would it take to recover from backup?
 
-Adding a new node requires a bit of downtime. However, we have built RudderStack it to minimize this downtime as much as possible. When a new node is added, we need to re-balance users across nodes \(to keep event ordering\). While the re-balancing is happening \(can take a few minutes\), RudderStack does not send events to downstream destinations, but continues to receive events so that your SDKs won't see any failures \(ignoring the small ELB switch over time\). Also, the SDKs have local caching capability & retries built-in. So even if they see a failure, no events are lost.
+Adding a new node requires a bit of downtime. However, RudderStack is built in a way that minimizes this downtime as much as possible. 
+
+When a new node is added, the users need to be rebalanced across nodes \(to keep event ordering\). While the re-balancing takes place \(can take a few minutes\), RudderStack does not send events to downstream destinations, but continues to receive events so that your SDKs don't see any failures \(ignoring the small ELB switch over time\). 
+
+Also, the SDKs have a built-in local caching and retries capability. So even if there is a failure, no events are lost.
 
 ## Whitelisting
 
