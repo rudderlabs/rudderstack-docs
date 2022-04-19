@@ -9,7 +9,7 @@ This guide lists the definitions of the RudderStack-related terms that you are l
 
 ## Audit logs
 
-Audit Logs is RudderStack's [enterprise]( https://rudderstack.com/pricing/)feature that gives you a detailed log of the user activities happening within your RudderStack workspace. These activities include the various user operations related to sources, destinations, transformations, and more.
+Audit Logs is RudderStack's [enterprise]( https://rudderstack.com/pricing/) feature that gives you a detailed log of the user activities happening within your RudderStack workspace. These activities include the various user operations related to sources, destinations, transformations, and more.
 
 For more information on the audit logs feature, refer to the [Audit Logs](https://rudderstack.com/docs/rudderstack-cloud/audit-logs/) guide.
 
@@ -46,7 +46,7 @@ For more information, refer to the [RudderStack connection modes](https://rudder
 
 The control plane manages the configuration of your sources and destinations. The interface for the control plane is the [RudderStack web app](https://app.rudderstack.com/).
 
-For more information on the control plane, refer to the [RudderStack architecture](https://rudderstack.com/docs/get-started/rudderstack-architecture/) guide.
+For more information on the control plane, refer to the [Architecture](https://rudderstack.com/docs/get-started/rudderstack-architecture/) guide.
 
 ## Control Plane Lite
 
@@ -72,7 +72,7 @@ The data plane is RudderStack's core engine responsible for:
 * Transforming the events into the required destination format
 * Relaying the events to the destination
 
-For more information on the data plane, refer to the [RudderStack architecture](https://rudderstack.com/docs/get-started/rudderstack-architecture/) guide.
+For more information on the data plane, refer to the [Architecture](https://rudderstack.com/docs/get-started/rudderstack-architecture/) guide.
 
 The data plane is intentionally separated from the control plane to give you complete ownership of your data. Depending on how RudderStack is deployed, you can set up your control plane and data plane via one of the following approaches:
 
@@ -125,9 +125,9 @@ For more information on the various Event Stream sources supported by RudderStac
 
 ## Live Events
 
-RudderStack's [Live Events](https://rudderstack.com/docs/rudderstack-cloud/live-events) feature offers a debugger that shows the live events collected from your sources and sent to the connected destinations in real-time. With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
+RudderStack's [Live Events](https://rudderstack.com/docs/rudderstack-cloud/live-events/) feature offers a debugger that shows the live events collected from your sources and sent to the connected destinations in real-time. With this feature, you can easily debug any errors in the failing events at a destination level and reduce your troubleshooting time and efforts.
 
-Broadly speaking, this feature can be further classified into two categories:
+Broadly speaking, this feature can be further classified into two major categories:
 
 * [Source Live Events](https://rudderstack.com/docs/rudderstack-cloud/live-events#source-live-events): This feature gives you real-time visibility into the source events collected by RudderStack. This way, you can confirm if your source is configured correctly and is collecting & sending data as expected. 
 * [Destination Live Events](https://rudderstack.com/docs/rudderstack-cloud/live-events#destination-live-events): When routing events to a destination, sometimes events don't show up in your destination. This feature gives you real-time visibility into the destination's responses and helps you troubleshoot the problem.
@@ -148,11 +148,11 @@ Refer to the [SDK documentation](https://rudderstack.com/docs/stream-sources/rud
 
 A source is a platform or an application \(web, mobile, server-side, or a third-party cloud app\) from where RudderStack tracks and collects your event data.
 
-For more information on RudderStack sources, refer to the [Sources](https://rudderstack.com/docs/rudderstack-cloud/sources) guide.
+For more information on RudderStack sources, refer to the [Sources](https://rudderstack.com/docs/rudderstack-cloud/sources/) guide.
 
 ## Visual Data Mapper
 
-The Visual Data Mapper(VDM) is a Reverse ETL feature. It offers an intuitive UI to map your data warehouse columns to specific destination fields without any second-guessing.
+The Visual Data Mapper (VDM) is a Reverse ETL feature. It offers an intuitive UI to map your data warehouse columns to specific destination fields without any second-guessing.
 
 For more information on RudderStack sources, refer to the [Visual Data Mapper](https://rudderstack.com/docs/reverse-etl/features/visual-data-mapper/) guide.
 
@@ -182,7 +182,7 @@ For more information on how to set up these warehouse destinations, refer to the
 
 When sending your events to a data warehouse via RudderStack, you need not define a schema for the event data before sending it from your source. Instead, RudderStack automatically does that for you by following a predefined warehouse schema. This schema defines the different tables and columns created based on different events.
 
-Refer to the [Warehouse Schema documentation](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/) for more details.
+Refer to the [Warehouse Schema](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/) guide for more details.
 
 ## Token
 

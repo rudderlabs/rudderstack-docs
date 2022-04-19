@@ -14,7 +14,7 @@ export const jsonData = [
    "content":[
       {
        "key":"rudderstack-architecture",
-       "title":"RudderStack Architecture",
+       "title":"Architecture",
        "link":"/get-started/rudderstack-architecture/",
        "content":[
 
@@ -94,7 +94,7 @@ export const jsonData = [
       {
          "key":"rudderstack-connection-modes",
          "title":"Connection Modes: Cloud Mode vs. Device Mode",
-         "link":"/rudderstack-cloud/destinations/",
+         "link":"/rudderstack-cloud/rudderstack-connection-modes/",
          "content":[
             
          ]

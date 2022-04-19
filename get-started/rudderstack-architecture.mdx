@@ -103,8 +103,8 @@ The following steps detail the RudderStack data plane workflow:
 
 1. The gateway module receives the event data from the source.
 2. The gateway then:
-   i. Stores the event data to the router database \(PostgreSQL\).
-   ii. Sends an **HTTP 200** status acknowledging receipt of the data.
+    - Stores the event data to the router database \(PostgreSQL\).
+    - Sends an **HTTP 200** status acknowledging receipt of the data.
 3. The processor module picks the data from the gateway and forwards it to the transformation module.
 4. The transformation module transforms the event and sends it back to the processor.
 5. The processor forwards the transformed event to the router. This event is then deleted from the gateway store.
