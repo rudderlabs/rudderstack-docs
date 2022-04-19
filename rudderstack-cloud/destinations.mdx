@@ -1,0 +1,84 @@
+---
+# slug: "/docs/rudderstack-cloud/destinations"
+title: "Destinations"
+description: >-
+  Step-by-step guide on adding a destination in RudderStack Cloud.
+---
+
+# Destinations
+
+A **destination** is a cloud tool or a platform where you want to send the data via RudderStack.
+
+<div class="successBlock">
+
+RudderStack currently supports over 150 destinations. These include <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a>, <a href="https://rudderstack.com/docs/destinations/crm/">CRMs</a>, <a href="https://rudderstack.com/docs/destinations/analytics/">analytics</a> and <a href="https://rudderstack.com/docs/destinations/marketing/">marketing</a> platforms, and more.
+</div>
+
+The **Destinations** option is povided in the left navigation bar in the RudderStack dashboard. It lets you view all your configured destinations, as shown:
+
+<img src="../assets/rs-cloud/destinations.png" alt="RudderStack destinations" />
+
+## Adding a destination
+
+Follow these steps to add a destination in RudderStack:
+
+1. Log into the [RudderStack dashboard](https://app.rudderstack.com/).
+
+2. Click on **Add Destination** and select the destination you want to set up in RudderStack.
+3. Assign a name to the destination and click on **Continue**.
+4. Click on **Add Source** to connect a source with this destination. Refer to the detailed steps for [Adding a source](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source).
+
+<img src="../assets/rs-cloud/add-source-destination.png" alt="RudderStack destinations" />
+
+Alternatively, you can select an existing source (if any) for this destination and click on **Next**.
+
+<img src="../assets/rs-cloud/select-source.png" alt="Select the data source" />
+
+5. Configure the destination with the relevant connection settings. Refer to the [destination documentation](https://rudderstack.com/docs/destinations/) for more details on these settings.
+6. Click on **Create New Transformation** if you want to add a [transformation](https://rudderstack.com/docs/transformations/). Otherwise, click on **Continue** to configure the destination successfully.
+
+<img src="../assets/rs-cloud/destination-configuration.png" alt="Configuration successful" />
+
+### Destination details
+
+To get details about a configured destination, click on it to see the following options:
+
+- **Rename**: Lets you rename the destination by clicking the edit icon next to the destination's name.
+
+<img src="../assets/rs-cloud/rename-destination.png" alt="Rename a destination" />
+
+- **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) for more information.
+- **Sources**: Displays all the sources connected to a destination and their status (enabled/disabled). You can also connect a new source by clicking on the **Add source** button.
+- **Transformation**: Lets you connect an existing user transformation to your destination.
+
+<div class="infoBlock">
+
+To add a new transformation, go to the <strong>Transformations</strong> option in the left navigation bar and click on <strong>New Transformation</strong>.
+</div>
+
+- **Events**: Displays all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by the source and the time period.
+- **Configuration**: Lets you edit the connection settings of the destination.
+- **Settings**: Provides additional destination-related details, such as:
+  - **Enabled**: Lets you enable or disable sending data to the destination.
+  - **Destination ID**: Unique identifier associated with your destination.
+  - **Permanently delete destination**: Lets you delete the destination by clicking on the **Delete** button.
+
+<div class="warningBlock">
+
+Before you delete a destination, make sure there are no sources connected to it.
+</div>
+
+### Cloning a destination
+
+You can duplicate an existing destination by following these steps:
+
+1. Click on the **Duplicate Destination** option in the **Destination Details** page.
+
+<img src="../assets/rs-cloud/duplicate-destination.png" alt="Duplicate a destination" />
+
+2. Assign a name to the new destination and click on **Continue**.
+3. Connect the destination to a source to successfully configure it.
+
+## Contact us
+
+For more information on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
