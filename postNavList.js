@@ -2010,7 +2010,7 @@ export const postNavList = [
  },
  {
     "key":"faqs",
-    "title":"FAQs",
+    "title":"FAQ",
     "link":"/faqs/",
     "content":[]
  }

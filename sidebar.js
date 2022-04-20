@@ -2528,7 +2528,7 @@ export const jsonData = [
   },
   {
      "key":"faqs",
-     "title":"FAQs",
+     "title":"FAQ",
      "link":"/faqs/",
      "content":[
         
