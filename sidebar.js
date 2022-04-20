@@ -484,6 +484,14 @@ export const jsonData = [
            ]
         },
         {
+            "key":"chargebee",
+            "title":"Chargebee",
+            "link":"/cloud-extract-sources/chargebee/",
+            "content":[
+               
+            ]
+         },
+        {
            "key":"facebook-ads",
            "title":"Facebook Ads",
            "link":"/cloud-extract-sources/facebook-ads/",
@@ -554,6 +562,14 @@ export const jsonData = [
               
            ]
         },
+        {
+            "key":"intercom-v2",
+            "title":"Intercom v2",
+            "link":"/cloud-extract-sources/intercom-v2/",
+            "content":[
+               
+            ]
+         },
         {
            "key":"mailchimp",
            "title":"Mailchimp",
@@ -653,22 +669,6 @@ export const jsonData = [
             "key":"zendesk-chat",
             "title":"Zendesk Chat",
             "link":"/cloud-extract-sources/zendesk-chat/",
-            "content":[
-               
-            ]
-         },
-         {
-            "key":"intercom-v2",
-            "title":"Intercom v2",
-            "link":"/cloud-extract-sources/intercom-v2/",
-            "content":[
-               
-            ]
-         },
-         {
-            "key":"chargebee",
-            "title":"Chargebee",
-            "link":"/cloud-extract-sources/chargebee/",
             "content":[
                
             ]
@@ -818,7 +818,94 @@ export const jsonData = [
            "title":"Analytics",
            "link":"/destinations/analytics/",
            "content":[
-              {
+            {
+               "key":"adobe-analytics",
+               "title":"Adobe Analytics",
+               "link":"/destinations/analytics/adobe-analytics/",
+               "content":[
+                  {
+                     "key":"setting-up-adobe-analytics-in-rudderstack",
+                     "title":"Setting Up Adobe Analytics in RudderStack",
+                     "link":"/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/",
+                     "content":[
+                        
+                     ]
+                  },
+                  {
+                     "key":"adobe-analytics-web-device-mode",
+                     "title":"Web Device Mode Settings",
+                     "link":"/destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode/",
+                     "content":[
+                        
+                     ]
+                  },
+                  {
+                     "key":"adobe-analytics-mobile-device-mode",
+                     "title":"Mobile Device Mode Settings",
+                     "link":"/destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode/",
+                     "content":[
+                        
+                     ]
+                  },
+                  {
+                     "key":"adobe-analytics-heartbeat",
+                     "title":"Adobe Analytics Heartbeat Measurement",
+                     "link":"/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat/",
+                     "content":[
+                        
+                     ]
+                  },
+                  {
+                     "key":"e-commerce-events",
+                     "title":"E-commerce Events",
+                     "link":"/destinations/analytics/adobe-analytics/e-commerce-events/",
+                     "content":[
+                        
+                     ]
+                  }
+               ]
+            },
+            {
+               "key":"amplitude",
+               "title":"Amplitude",
+               "link":"/destinations/analytics/amplitude/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"aws-personalize",
+               "title":"AWS Personalize",
+               "link":"/destinations/analytics/aws-personalize/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"chartbeat",
+               "title":"Chartbeat",
+               "link":"/destinations/analytics/chartbeat/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"firebase",
+               "title":"Firebase",
+               "link":"/destinations/analytics/firebase/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"fullstory",
+               "title":"FullStory",
+               "link":"/destinations/analytics/fullstory/",
+               "content":[
+                  
+               ]
+            },
+            {
                  "key":"google-analytics-ga",
                  "title":"Google Analytics",
                  "link":"/destinations/analytics/google-analytics-ga/",
@@ -843,56 +930,9 @@ export const jsonData = [
                  ]
               },
               {
-                 "key":"adobe-analytics",
-                 "title":"Adobe Analytics",
-                 "link":"/destinations/analytics/adobe-analytics/",
-                 "content":[
-                    {
-                       "key":"setting-up-adobe-analytics-in-rudderstack",
-                       "title":"Setting Up Adobe Analytics in RudderStack",
-                       "link":"/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/",
-                       "content":[
-                          
-                       ]
-                    },
-                    {
-                       "key":"adobe-analytics-web-device-mode",
-                       "title":"Web Device Mode Settings",
-                       "link":"/destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode/",
-                       "content":[
-                          
-                       ]
-                    },
-                    {
-                       "key":"adobe-analytics-mobile-device-mode",
-                       "title":"Mobile Device Mode Settings",
-                       "link":"/destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode/",
-                       "content":[
-                          
-                       ]
-                    },
-                    {
-                       "key":"adobe-analytics-heartbeat",
-                       "title":"Adobe Analytics Heartbeat Measurement",
-                       "link":"/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat/",
-                       "content":[
-                          
-                       ]
-                    },
-                    {
-                       "key":"e-commerce-events",
-                       "title":"E-commerce Events",
-                       "link":"/destinations/analytics/adobe-analytics/e-commerce-events/",
-                       "content":[
-                          
-                       ]
-                    }
-                 ]
-              },
-              {
-                 "key":"amplitude",
-                 "title":"Amplitude",
-                 "link":"/destinations/analytics/amplitude/",
+                 "key":"heap.io",
+                 "title":"Heap.io",
+                 "link":"/destinations/analytics/heap.io/",
                  "content":[
                     
                  ]
@@ -906,65 +946,25 @@ export const jsonData = [
                  ]
               },
               {
-                 "key":"chartbeat",
-                 "title":"Chartbeat",
-                 "link":"/destinations/analytics/chartbeat/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"fullstory",
-                 "title":"FullStory",
-                 "link":"/destinations/analytics/fullstory/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"mixpanel",
-                 "title":"Mixpanel",
-                 "link":"/destinations/analytics/mixpanel/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-               "key":"quantummetric",
-               "title":"Quantum Metric",
-               "link":"/destinations/analytics/quantummetric/",
-               "content":[
-                  
-               ]
-            },
-              {
-               "key":"firebase",
-               "title":"Firebase",
-               "link":"/destinations/analytics/firebase/",
-               "content":[
-                  
-               ]
-            },
-              {
-                 "key":"kissmetrics",
-                 "title":"Kissmetrics",
-                 "link":"/destinations/analytics/kissmetrics/",
-                 "content":[
-                    
-                 ]
-              },
-              {
-                 "key":"heap.io",
-                 "title":"Heap.io",
-                 "link":"/destinations/analytics/heap.io/",
+                 "key":"indicative",
+                 "title":"Indicative",
+                 "link":"/destinations/analytics/indicative/",
                  "content":[
                     
                  ]
               },
               {
                  "key":"keen",
-                 "title":"Keen",
+                 "title":"Keen.io",
                  "link":"/destinations/analytics/keen/",
+                 "content":[
+                    
+                 ]
+              },
+              {
+                 "key":"kissmetrics",
+                 "title":"Kissmetrics",
+                 "link":"/destinations/analytics/kissmetrics/",
                  "content":[
                     
                  ]
@@ -978,17 +978,17 @@ export const jsonData = [
                  ]
               },
               {
-                 "key":"aws-personalize",
-                 "title":"AWS Personalize",
-                 "link":"/destinations/analytics/aws-personalize/",
+                 "key":"lytics",
+                 "title":"Lytics",
+                 "link":"/destinations/analytics/lytics/",
                  "content":[
                     
                  ]
               },
               {
-                 "key":"indicative",
-                 "title":"Indicative",
-                 "link":"/destinations/analytics/indicative/",
+                 "key":"mixpanel",
+                 "title":"Mixpanel",
+                 "link":"/destinations/analytics/mixpanel/",
                  "content":[
                     
                  ]
@@ -1033,21 +1033,21 @@ export const jsonData = [
                  ]
               },
               {
-                 "key":"lytics",
-                 "title":"Lytics",
-                 "link":"/destinations/analytics/lytics/",
-                 "content":[
-                    
-                 ]
-              },
-              {
+               "key":"quantummetric",
+               "title":"Quantum Metric",
+               "link":"/destinations/analytics/quantummetric/",
+               "content":[
+                  
+               ]
+            },
+            {
                  "key":"singular",
                  "title":"Singular",
                  "link":"/destinations/analytics/singular/",
                  "content":[
                     
                  ]
-              }
+             }
            ]
         },
         {
@@ -1056,9 +1056,9 @@ export const jsonData = [
            "link":"/destinations/crm/",
            "content":[
             {
-               "key":"salesforce",
-               "title":"Salesforce",
-               "link":"/destinations/crm/salesforce/",
+               "key":"delighted",
+               "title":"Delighted",
+               "link":"/destinations/crm/delighted/",
                "content":[
                   
                ]
@@ -1067,6 +1067,14 @@ export const jsonData = [
                "key":"hubspot",
                "title":"HubSpot",
                "link":"/destinations/crm/hubspot/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"salesforce",
+               "title":"Salesforce",
+               "link":"/destinations/crm/salesforce/",
                "content":[
                   
                ]
@@ -1087,14 +1095,6 @@ export const jsonData = [
                   
                ]
             },
-            {
-               "key":"delighted",
-               "title":"Delighted",
-               "link":"/destinations/crm/delighted/",
-               "content":[
-                  
-               ]
-            },
            ]
         },
         {
@@ -1103,17 +1103,9 @@ export const jsonData = [
            "link":"/destinations/marketing/",
            "content":[
             {
-               "key":"marketo",
-               "title":"Marketo",
-               "link":"/destinations/marketing/marketo/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"marketo-lead-import",
-               "title":"Marketo Lead Import",
-               "link":"/destinations/marketing/marketo-lead-import/",
+               "key":"activecampaign",
+               "title":"ActiveCampaign",
+               "link":"/destinations/marketing/activecampaign/",
                "content":[
                   
                ]
@@ -1127,9 +1119,49 @@ export const jsonData = [
                ]
             },
             {
+               "key":"appcues",
+               "title":"Appcues",
+               "link":"/destinations/marketing/appcues/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"autopilot",
+               "title":"Autopilot",
+               "link":"/destinations/marketing/autopilot/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"blueshift",
                "title":"Blueshift",
                "link":"/destinations/marketing/blueshift/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"braze",
+               "title":"Braze",
+               "link":"/destinations/marketing/braze/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"clevertap",
+               "title":"CleverTap",
+               "link":"/destinations/marketing/clevertap/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"customer.io",
+               "title":"Customer.io",
+               "link":"/destinations/marketing/customer.io/",
                "content":[
                   
                ]
@@ -1166,6 +1198,94 @@ export const jsonData = [
                ]
             },
             {
+               "key":"gainsight",
+               "title":"Gainsight",
+               "link":"/destinations/marketing/gainsight/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"gainsight-px",
+               "title":"Gainsight PX",
+               "link":"/destinations/marketing/gainsight-px/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"iterable",
+               "title":"Iterable",
+               "link":"/destinations/marketing/iterable/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"klaviyo",
+               "title":"Klaviyo",
+               "link":"/destinations/marketing/klaviyo/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"leanplum",
+               "title":"Leanplum",
+               "link":"/destinations/marketing/leanplum/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"mailchimp",
+               "title":"Mailchimp",
+               "link":"/destinations/marketing/mailchimp/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"marketo",
+               "title":"Marketo",
+               "link":"/destinations/marketing/marketo/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"marketo-lead-import",
+               "title":"Marketo Lead Import",
+               "link":"/destinations/marketing/marketo-lead-import/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"moengage",
+               "title":"MoEngage",
+               "link":"/destinations/marketing/moengage/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"ometria",
+               "title":"Ometria",
+               "link":"/destinations/marketing/ometria/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"post-affiliate-pro",
+               "title":"Post Affiliate Pro",
+               "link":"/destinations/marketing/post-affiliate-pro/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"qualtrics",
                "title":"Qualtrics",
                "link":"/destinations/marketing/qualtrics/",
@@ -1183,72 +1303,8 @@ export const jsonData = [
             },
             {
                "key":"pardot",
-               "title":"Pardot",
+               "title":"Salesforce Pardot",
                "link":"/destinations/marketing/pardot/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"ometria",
-               "title":"Ometria",
-               "link":"/destinations/marketing/ometria/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"clevertap",
-               "title":"CleverTap",
-               "link":"/destinations/marketing/clevertap/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"braze",
-               "title":"Braze",
-               "link":"/destinations/marketing/braze/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"customer.io",
-               "title":"Customer.io",
-               "link":"/destinations/marketing/customer.io/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"post-affiliate-pro",
-               "title":"Post Affiliate Pro",
-               "link":"/destinations/marketing/post-affiliate-pro/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"mailchimp",
-               "title":"Mailchimp",
-               "link":"/destinations/marketing/mailchimp/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"moengage",
-               "title":"MoEngage",
-               "link":"/destinations/marketing/moengage/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"autopilot",
-               "title":"Autopilot",
-               "link":"/destinations/marketing/autopilot/",
                "content":[
                   
                ]
@@ -1262,69 +1318,13 @@ export const jsonData = [
                ]
             }, 
             {
-               "key":"gainsight",
-               "title":"Gainsight",
-               "link":"/destinations/marketing/gainsight/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"gainsight-px",
-               "title":"Gainsight PX",
-               "link":"/destinations/marketing/gainsight-px/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"leanplum",
-               "title":"Leanplum",
-               "link":"/destinations/marketing/leanplum/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"iterable",
-               "title":"Iterable",
-               "link":"/destinations/marketing/iterable/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"appcues",
-               "title":"Appcues",
-               "link":"/destinations/marketing/appcues/",
-               "content":[
-                  
-               ]
-            },
-            {
                "key":"userlist",
                "title":"Userlist",
                "link":"/destinations/marketing/userlist/",
                "content":[
                   
                ]
-            },
-            {
-               "key":"activecampaign",
-               "title":"ActiveCampaign",
-               "link":"/destinations/marketing/activecampaign/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"klaviyo",
-               "title":"Klaviyo",
-               "link":"/destinations/marketing/klaviyo/",
-               "content":[
-                  
-               ]
-            },
+            }
            ]
         },
         {
@@ -1336,6 +1336,14 @@ export const jsonData = [
                "key":"adjust",
                "title":"Adjust",
                "link":"/destinations/attribution/adjust/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"appsflyer",
+               "title":"AppsFlyer",
+               "link":"/destinations/attribution/appsflyer/",
                "content":[
                   
                ]
@@ -1363,15 +1371,7 @@ export const jsonData = [
                "content":[
                   
                ]
-            },
-            {
-               "key":"appsflyer",
-               "title":"AppsFlyer",
-               "link":"/destinations/attribution/appsflyer/",
-               "content":[
-                  
-               ]
-            },
+            }
            ]
         },
         {
@@ -1396,17 +1396,17 @@ export const jsonData = [
                ]
             },
             {
-               "key":"slack",
-               "title":"Slack",
-               "link":"/destinations/business-messaging/slack/",
+               "key":"kustomer",
+               "title":"Kustomer",
+               "link":"/destinations/business-messaging/kustomer/",
                "content":[
                   
                ]
             },
             {
-               "key":"kustomer",
-               "title":"Kustomer",
-               "link":"/destinations/business-messaging/kustomer/",
+               "key":"slack",
+               "title":"Slack",
+               "link":"/destinations/business-messaging/slack/",
                "content":[
                   
                ]
@@ -1418,7 +1418,7 @@ export const jsonData = [
                "content":[
                   
                ]
-            },
+            }
            ]
         },
         {
@@ -1569,22 +1569,6 @@ export const jsonData = [
            "link":"/destinations/streaming-platforms/",
            "content":[
             {
-               "key":"biquery-stream",
-               "title":"BigQuery Stream",
-               "link":"/destinations/streaming-platforms/bigquery-stream/",
-               "content":[
-                  
-               ]
-            },
-             {
-               "key":"kafka",
-               "title":"Apache Kafka",
-               "link":"/destinations/streaming-platforms/kafka/",
-               "content":[
-                  
-               ]
-            },
-            {
                "key":"amazon-eventbridge",
                "title":"Amazon EventBridge",
                "link":"/destinations/streaming-platforms/amazon-eventbridge/",
@@ -1609,9 +1593,25 @@ export const jsonData = [
                ]
             },
             {
+               "key":"kafka",
+               "title":"Apache Kafka",
+               "link":"/destinations/streaming-platforms/kafka/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"azure-event-hubs",
                "title":"Azure Event Hubs",
                "link":"/destinations/streaming-platforms/azure-event-hubs/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"biquery-stream",
+               "title":"BigQuery Stream",
+               "link":"/destinations/streaming-platforms/bigquery-stream/",
                "content":[
                   
                ]
@@ -1648,6 +1648,30 @@ export const jsonData = [
                ]
             },
             {
+               "key":"microsoft-azure-blob-storage",
+               "title":"Azure Blob Storage",
+               "link":"/destinations/storage-platforms/microsoft-azure-blob-storage/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"digitalocean-spaces",
+               "title":"DigitalOcean Spaces",
+               "link":"/destinations/storage-platforms/digitalocean-spaces/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"google-cloud-storage",
+               "title":"Google Cloud Storage",
+               "link":"/destinations/storage-platforms/google-cloud-storage/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"minio",
                "title":"MinIO",
                "link":"/destinations/storage-platforms/minio/",
@@ -1662,31 +1686,7 @@ export const jsonData = [
                "content":[
                   
                ]
-            },
-            {
-               "key":"google-cloud-storage",
-               "title":"Google Cloud Storage",
-               "link":"/destinations/storage-platforms/google-cloud-storage/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"digitalocean-spaces",
-               "title":"DigitalOcean Spaces",
-               "link":"/destinations/storage-platforms/digitalocean-spaces/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"microsoft-azure-blob-storage",
-               "title":"Azure Blob Storage",
-               "link":"/destinations/storage-platforms/microsoft-azure-blob-storage/",
-               "content":[
-                  
-               ]
-            },
+            }
            ]
         },
         {
@@ -1710,14 +1710,6 @@ export const jsonData = [
            "link":"/destinations/testing-and-personalization/",
            "content":[
             {
-               "key":"splitio",
-               "title":"Split.io",
-               "link":"/destinations/testing-and-personalization/splitio/",
-               "content":[
-                  
-               ]
-            },
-            {
                "key":"algolia-insights",
                "title":"Algolia Insights",
                "link":"/destinations/testing-and-personalization/algolia-insights/",
@@ -1726,17 +1718,9 @@ export const jsonData = [
                ]
             },
             {
-               "key":"statsig",
-               "title":"Statsig",
-               "link":"/destinations/testing-and-personalization/statsig/",
-               "content":[
-                  
-               ]
-            },
-            {
-               "key":"launchdarkly",
-               "title":"LaunchDarkly",
-               "link":"/destinations/testing-and-personalization/launchdarkly/",
+               "key":"candu",
+               "title":"Candu",
+               "link":"/destinations/testing-and-personalization/candu/",
                "content":[
                   
                ]
@@ -1750,6 +1734,14 @@ export const jsonData = [
                ]
             },
             {
+               "key":"launchdarkly",
+               "title":"LaunchDarkly",
+               "link":"/destinations/testing-and-personalization/launchdarkly/",
+               "content":[
+                  
+               ]
+            },
+            {
                "key":"monetate",
                "title":"Monetate",
                "link":"/destinations/testing-and-personalization/monetate/",
@@ -1758,9 +1750,9 @@ export const jsonData = [
                ]
             },
             {
-               "key":"vwo-beta-visual-website-optimizer",
-               "title":"VWO (Visual Website Optimizer)",
-               "link":"/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/",
+               "key":"optimizely-full-stack",
+               "title":"Optimizely Full Stack",
+               "link":"/destinations/testing-and-personalization/optimizely-full-stack/",
                "content":[
                   
                ]
@@ -1774,17 +1766,25 @@ export const jsonData = [
                ]
             },
             {
-               "key":"optimizely-full-stack",
-               "title":"Optimizely Full Stack",
-               "link":"/destinations/testing-and-personalization/optimizely-full-stack/",
+               "key":"splitio",
+               "title":"Split.io",
+               "link":"/destinations/testing-and-personalization/splitio/",
                "content":[
                   
                ]
             },
-             {
-               "key":"candu",
-               "title":"Candu",
-               "link":"/destinations/testing-and-personalization/candu/",
+            {
+               "key":"statsig",
+               "title":"Statsig",
+               "link":"/destinations/testing-and-personalization/statsig/",
+               "content":[
+                  
+               ]
+            },
+            {
+               "key":"vwo-beta-visual-website-optimizer",
+               "title":"VWO (Visual Website Optimizer)",
+               "link":"/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/",
                "content":[
                   
                ]
@@ -1851,14 +1851,6 @@ export const jsonData = [
      "title":"Warehouse Destinations",
      "link":"/data-warehouse-integrations/",
      "content":[
-        {
-           "key":"warehouse-schemas",
-           "title":"Warehouse Schema",
-           "link":"/data-warehouse-integrations/warehouse-schemas/",
-           "content":[
-              
-           ]
-        },
         {
            "key":"amazon-redshift",
            "title":"Amazon Redshift",
@@ -1948,13 +1940,21 @@ export const jsonData = [
            ]
         },
         {
+         "key":"warehouse-schemas",
+         "title":"Warehouse Schema",
+         "link":"/data-warehouse-integrations/warehouse-schemas/",
+         "content":[
+            
+         ]
+      },
+      {
            "key":"warehouse-faqs",
            "title":"FAQ",
            "link":"/data-warehouse-integrations/warehouse-faqs/",
            "content":[
               
            ]
-        }
+      }
      ]
   },
   {
@@ -2002,6 +2002,14 @@ export const jsonData = [
            ]
         },
         {
+           "key":"ruddertyper",
+           "title":"RudderTyper",
+           "link":"/data-governance/ruddertyper/",
+           "content":[
+              
+           ]
+        },
+        {
            "key":"tracking-plans",
            "title":"Tracking Plans",
            "link":"/data-governance/tracking-plans/",
@@ -2014,14 +2022,6 @@ export const jsonData = [
                   
                ]
             }
-           ]
-        },
-        {
-           "key":"ruddertyper",
-           "title":"RudderTyper",
-           "link":"/data-governance/ruddertyper/",
-           "content":[
-              
            ]
         }
      ]
@@ -2189,19 +2189,19 @@ export const jsonData = [
            ]
         },
         {
-           "key":"http-api",
-           "title":"HTTP API",
-           "link":"/rudderstack-api/http-api/",
+           "key":"data-regulation-api",
+           "title":"Data Regulation API",
+           "link":"/rudderstack-api/data-regulation-api/",
            "content":[
               
            ]
         },
         {
-           "key":"test-api",
-           "title":"Test API",
-           "link":"/rudderstack-api/test-api/",
+           "key":"http-api",
+           "title":"HTTP API",
+           "link":"/rudderstack-api/http-api/",
            "content":[
-
+              
            ]
         },
         {
@@ -2213,11 +2213,11 @@ export const jsonData = [
            ]
         },
         {
-           "key":"data-regulation-api",
-           "title":"Data Regulation API",
-           "link":"/rudderstack-api/data-regulation-api/",
+           "key":"test-api",
+           "title":"Test API",
+           "link":"/rudderstack-api/test-api/",
            "content":[
-              
+
            ]
         }
      ]
