@@ -12,6 +12,7 @@ description: Step-by-step guide to send your event data from RudderStack to DCM 
 Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/blob/master/cdk/dcm_floodlight/transform.js">GitHub repository</a>.
 </div>
 
+
 ## Getting started
 
 Before configuring DCM Floodlight as a destination in RudderStack, verify if the source platform is supported by DCM Floodlight by referring to the table below:
@@ -132,6 +133,12 @@ The following table details the mapping between RudderStack and DCM Floodlight p
 | `properties.orderId` | `ord` | Optional | Sales |
 | `properties.quantity` | `qty` | Optional | Sales |
 | `properties.revenue` | `cost` | Optional | Sales |
+
+
+<div class="infoBlock">
+    
+You must send the device-specific information for DCM Floodlight, such as the <code class="inline-code">IDFA</code> or the <code class="inline-code">advertisingId</code> . This can be done using the RudderStack's mobile SDK as it collects this information automatically. However, in case you use any server-side SDK, the <code class="inline-code">advertisingId</code> needs to be included manually.
+</div>
 
 The following table gives some more context on the above DCM Floodlight properties:
 
