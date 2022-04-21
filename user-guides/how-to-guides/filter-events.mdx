@@ -20,7 +20,7 @@ You can create a user transformation to filter out on certain event names, or ty
 Refer to the <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> guide for more information.
 </div>
 
-## Integrations Object on “rudderanalytics.load()”
+## Integrations Object on "rudderanalytics.load()"
 
 You can stop certain device mode integrations from loading. This isn’t necessarily filtering events, but by default no events will be sent to this destination if it is filtered out in this integrations object.
 
@@ -30,7 +30,7 @@ Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstac
 </div>
 
 
-## Integrations Object on rudderanalytics calls i.e. “rudderanalytics.track()”
+## Integrations Object on rudderanalytics calls i.e. "rudderanalytics.track()"
 
 You can stop certain events from being sent to certain destination by adding the integrations object and respective booleans for certain event calls.
 
@@ -49,6 +49,18 @@ This tool lets you select a blacklist or whitelist for certain track calls based
 
 Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side event filtering</a> guide for more information.
 </div>
+
+
+| Method   | Description        | Support | Applicable |
+| :--------- | :----------- | :----------- |:----------- |
+| [User Transformations](https://www.rudderstack.com/docs/transformations/) | You can create a user transformation to filter out on certain event names, or types, or anything else you want to distinguish | Cloud mode |  [Event Stream](https://www.rudderstack.com/docs/stream-sources/) [Reverse ETL](https://www.rudderstack.com/docs/reverse-etl/) [Cloud Extract](https://www.rudderstack.com/docs/cloud-extract-sources/) |
+| [Event Filtering tool](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/)     | This tool lets you select a blacklist or whitelist for certain track calls based on the event name, all from the UI. Based on these settings, device mode events will either be sent or ignored to the respective destinations.  | Device mode | [All SDKs](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/) |
+| [Integrations Object on rudderanalytics calls i.e. "rudderanalytics.track()"](https://www.rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/)   | You can stop certain events from being sent to certain destination by adding the integrations object and respective booleans for certain event calls.  | Cloud and Device mode | [JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) |
+| [Integrations Object on "rudderanalytics.load()"](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#loading-selective-destinations)    | You can stop certain device mode integrations from loading. This isn’t necessarily filtering events, but by default no events will be sent to this destination if it is filtered out in this integrations object.|Device mode | [JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) |
+
+
+
+
 
 ## Contact us
 
