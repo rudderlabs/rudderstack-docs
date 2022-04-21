@@ -38,31 +38,26 @@ Once you have confirmed that the platform supports sending events to Slack, perf
 
 ### Connection settings
 
+To successfully configure Slack as a destination, you will need to configure the following settings:
+
 #### Event Channels
 
 <img src="/assets/event-stream-destinations/slack-settings.png" alt="Slack connection settings" />
 
-
-
-There are three settings to configure.
-
-| Name             | Description                                                                     |
-| :--------------- | :------------------------------------------------------------------------------ |
-| `Event Name`     | The event name or regex expression to match the rudder event name.              |
-| `Event Channel`  | The slack channel to send the event to, specify `#channel_name` or `@user_name` |
-| `Regex Matching` | Enable it if the event name is a regex in the first parameter.                  |
+- **Event Name:** The event name or regex expression to match the rudder event name.
+- **Event Channel:**  The slack channel to send the event to, specify `#channel_name` or `@user_name`.
+- **Regex Matching:**  Enable this setting if the event name is a regex in the first parameter.                 
 
 <div class="warningBlock">
 
-Add the regex expression without the global\(`g`\) parameter. It is added by Rudder implicitly.
-
+RudderStack adds the global\(`g`\) parameter implicitly. Hence, you need not add it with the regex expression.
 </div>
 
 #### Identify Template
 
 <img src="/assets/event-stream-destinations/slack-settings4.png" alt="Slack connection settings" />
 
-Provide the template that you want the identify event to be transformed to when sent to slack. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is,`Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`
+- **Identify Template:** Provide the template that you want the `identify` event to be transformed to when sent to Slack. RudderStack supports [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is,`Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`
 where the traits key and value are the key-value pairs in the traits object of [Identify](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#sample-payload) payload. The `name` field in the template is determined from either of the following:
 
 1. `traits.name`
@@ -75,27 +70,22 @@ where the traits key and value are the key-value pairs in the traits object of [
 
 <div class="infoBlock">
 
-The **whitelisted traits** list is given priority when building the identify template. Only the traits there will be part of the template, else all the traits will be sent to Slack.
-
+The <strong>whitelisted traits</strong> list is given priority when building the identify template. Only the traits there will be part of the template, else all the traits will be sent to Slack.
 </div>
 
 #### Event Templates
 
 <img src="/assets/event-stream-destinations/slack-settings2.png" alt="Slack connection settings" />
 
-There are three settings to configure.
-
-| Name             | Description                                                                                                                                                                                                                                                |
-| :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Event Name`     | The event name or regex expression to match the rudder event name                                                                                                                                                                                          |
-| `Event Template` | The template for the above event name/names matching the regex. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is `{{name}} did {{event}}` . `name` is determined by the same criteria as above. |
-| `Regex Matching` | Enable it, if the event name is a regex                                                                                                                                                                                                                    |
+- **Event Name:** The event name or regex expression to match the rudder event name.                                                                     
+- **Event Template:** The template for the above event name/names matching the regex. RudderStack supports [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is `{{name}} did {{event}}` . `name` is determined by the same criteria as above.
+- **Regex Matching:**  Enable this setting if the event name is a regex in the first parameter.
 
 #### Webhook URL
 
 <img src="/assets/event-stream-destinations/slack-settings3.png" alt="Slack connection settings" />
 
-  Add your slack's incoming [Webhook URL](https://my.slack.com/services/new/incoming-webhook/).
+- **Webhook URL:** Add your slack's incoming [Webhook URL](https://my.slack.com/services/new/incoming-webhook/).
 
 ## Handlebar Expression
 
