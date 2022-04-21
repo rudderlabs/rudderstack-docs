@@ -6,11 +6,25 @@ description: >-
 
 # Destination Settings
 
-## Table Prefix
+This guide details the common destination settings to be configured while setting up your Cloud Extract sources.
 
+These settings are:
 
+- Table prefix
+- Sync schedule settings
 
-## Sync Schedule
+<img src="../assets/cloud-extract-sources/sendgrid-connection-settings-2.png" alt="Sendgrid destination settings" />
+
+## Table prefix
+
+RudderStack uses your specified table prefix to create a table in your data warehouse and load all your Sendgrid data into it.
+
+<div class="infoBlock">
+
+If you do not specify this field, RudderStack sets the source name as the table name, by default.
+</div>
+
+## Sync schedule
 
 RudderStack lets you set a schedule for importing data from your Cloud Extract sources while setting them up in your dashboard. It lets you specify the schedule type that defines how and when the syncs will run.
 
@@ -26,7 +40,7 @@ RudderStack supports the following three schedule types:
 
 This schedule type lets you run the data syncs at a set interval. You can specify the sync frequency as well as the time(in UTC) when you want the sync to start.
 
-<img src="../../assets/warehouse-actions-sources/sync-schedule-basic.png" alt="Basic sync schedule" />
+<img src="../assets/warehouse-actions-sources/sync-schedule-basic.png" alt="Basic sync schedule" />
 
 - **Frequency**: You can choose the data sync frequency from the following options:
   - 30 minutes
@@ -47,14 +61,14 @@ This schedule type lets you define a custom CRON expression and runs the data sy
 You can use the <a href="https://crontab.guru/">CRON scheduler utility</a> to specify your sync schedule.
 </div>
 
-<img src="../../assets/warehouse-actions-sources/sync-schedule-cron.png" alt="CRON schedule" />
+<img src="../assets/warehouse-actions-sources/sync-schedule-cron.png" alt="CRON schedule" />
 
 <div class="warningBlock">
 
 The sync frequency specified under <strong>Run Settings</strong> needs to be greater than or equal to 15 minutes. Otherwise, you will encounter an error as shown below:
 </div>
 
-<img src="../../assets/warehouse-actions-sources/sync-schedule-cron-error.png" alt="CRON schedule error" />
+<img src="../assets/warehouse-actions-sources/sync-schedule-cron-error.png" alt="CRON schedule error" />
 
 ### Manual 
 
@@ -62,7 +76,7 @@ This schedule type lets you run your data syncs manually. RudderStack won't sync
 
 To trigger a sync manually, go to the **Syncs** tab in your Cloud Extract source details page and click on **Sync Now**, as shown:
 
-<img src="../../assets/cloud-extract-sources/sync-schedule-manual.png" alt="Manual sync schedule" />
+<img src="../assets/cloud-extract-sources/sync-schedule-manual.png" alt="Manual sync schedule" />
 
 ## FAQ
 
@@ -70,15 +84,11 @@ To trigger a sync manually, go to the **Syncs** tab in your Cloud Extract source
 
 Yes, you can. 
 
-1. Go to the **Settings** tab in your Cloud Extract source details page and click on **Edit Sync Schedule** option, as shown:
+1. Go to the **Settings** tab in your Cloud Extract source details page and click on **Edit sync schedule** option, as shown:
 
-<img src="../../assets/cloud-extract-sources/sync-schedule-settings-change.png" alt="Syncs schedule settings change" />
+<img src="../assets/cloud-extract-sources/sync-schedule-settings-change.png" alt="Syncs schedule settings change" />
 
 2. Then, select your new sync schedule type.
-
-### I'm unable to run a sync manually and get the message "Your pipeline is paused. Make sure that the source and at least one destination is enabled". What do I do?
-
-This message appears when either your Cloud Extract source, the connected destination, or both are disabled. Go to the **Settings** tab to verify if the source and destination are enabled for data syncs.
 
 ### What happens if I don't set the Sync Starting At time?
 
