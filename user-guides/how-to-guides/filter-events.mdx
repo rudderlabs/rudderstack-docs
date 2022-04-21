@@ -1,0 +1,55 @@
+---
+# slug: "/docs/user-guides/how-to-guides/how-to-filter-events"
+title: "Methods to Filter Events"
+description: An easy-to-follow guide on the different methods to filter event data while sending it to destinations
+ in RudderStack
+---
+
+# How to Filter Events
+
+RudderStack lets you filter the event data before sending it to the intended destinations. 
+
+## User Transformations
+
+**Applicable for Cloud mode**
+
+You can create a user transformation to filter out on certain event names, or types, or anything else you want to distinguish
+
+<div class="infoBlock">
+
+Refer to the <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> guide for more information.
+</div>
+
+## Integrations Object on “rudderanalytics.load()”
+
+You can stop certain device mode integrations from loading. This isn’t necessarily filtering events, but by default no events will be sent to this destination if it is filtered out in this integrations object.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#loading-selective-destinations">Loading selective destinations</a> guide for more information.
+</div>
+
+
+## Integrations Object on rudderanalytics calls i.e. “rudderanalytics.track()”
+
+You can stop certain events from being sent to certain destination by adding the integrations object and respective booleans for certain event calls.
+
+For the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), you can do this by passing an `integrations` object in the `options` parameter of the event method. For most of the other SDKs, you can use the `integrations` object parameter for the associated event. 
+
+<div class="infoBlock">
+
+Refer to the <a href="https://www.rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/">How to Filter Selective Destinations</a> guide for more information.
+</div>
+
+## Event Filtering tool
+
+This tool lets you select a blacklist or whitelist for certain track calls based on the event name, all from the UI. Based on these settings, device mode events will either be sent or ignored to the respective destinations.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side event filtering</a> guide for more information.
+</div>
+
+## Contact us
+
+For more information on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
