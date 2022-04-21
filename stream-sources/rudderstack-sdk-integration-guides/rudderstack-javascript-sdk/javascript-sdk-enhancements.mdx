@@ -77,31 +77,6 @@ This section highlights some important considerations before you opt to use `sen
 Currently, the RudderStack queue handles approximately 500 hits per 30ms and ensures eventual successful delivery of events after retries to Beacon. A similar comparison on Google Analytics’ <code class="inline-code">analytics.js</code> shows a hit rate of 2 hits/sec.
 </div>
 
-## Capture the anonymous ID automatically 
-
-The JavaScript SDK provides `anonymousIdOptions` object in the [`load()`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter) call options. It automatically captures the anonymous ID from a source and sets it as Rudderstack’s anonymous ID.
-
-The structure of `anonymousIdOptions` object is shown below:
-
-```javascript
-anonymousIdOptions: {
-  autoCapture: {
-    enabled: true,
-    source: "segment",
-  }
-}
-```
-
-| Parameter  | Type  | Description    |   
-| :--------| :---- | :----------------| 
-| `enabled` | Boolean  | Identifies if the auto-capturing of anonymous ID is enabled. | 
-| `source`  | String   | Identifies the external source of the anonymous ID. | 
-
-<div class="infoBlock">
-  
-  If Rudderstack’s anonymous ID is already set in your browser, <code class="inline-code">anonymousIdOptions</code> will not take effect.
-</div>
-
 ## Reduced core SDK size by calling `requireIntegration`
 
 <div class="warningBlock">
