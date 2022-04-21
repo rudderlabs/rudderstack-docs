@@ -38,9 +38,11 @@ Once you have confirmed that the platform supports sending events to Slack, perf
 
 ### Connection settings
 
-<img src="../../assets/slack-settings.png" /><span class="imageTitle">Add Slack as destination</span>
+#### Event Channels
 
-- Event Channels
+<img src="/assets/event-stream-destinations/slack-settings.png" alt="Slack connection settings" />
+
+
 
 There are three settings to configure.
 
@@ -56,7 +58,9 @@ Add the regex expression without the global\(`g`\) parameter. It is added by Rud
 
 </div>
 
-- Identify Template
+#### Identify Template
+
+<img src="/assets/event-stream-destinations/slack-settings4.png" alt="Slack connection settings" />
 
 Provide the template that you want the identify event to be transformed to when sent to slack. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is,`Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`
 where the traits key and value are the key-value pairs in the traits object of [Identify](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#sample-payload) payload. The `name` field in the template is determined from either of the following:
@@ -75,7 +79,9 @@ The **whitelisted traits** list is given priority when building the identify tem
 
 </div>
 
-- Event Templates
+#### Event Templates
+
+<img src="/assets/event-stream-destinations/slack-settings2.png" alt="Slack connection settings" />
 
 There are three settings to configure.
 
@@ -85,7 +91,9 @@ There are three settings to configure.
 | `Event Template` | The template for the above event name/names matching the regex. We support [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is `{{name}} did {{event}}` . `name` is determined by the same criteria as above. |
 | `Regex Matching` | Enable it, if the event name is a regex                                                                                                                                                                                                                    |
 
-- Webhook URL
+#### Webhook URL
+
+<img src="/assets/event-stream-destinations/slack-settings3.png" alt="Slack connection settings" />
 
   Add your slack's incoming [Webhook URL](https://my.slack.com/services/new/incoming-webhook/).
 
