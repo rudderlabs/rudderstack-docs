@@ -129,6 +129,13 @@ The following table details the mapping between RudderStack and DCM Floodlight p
 | `properties.quantity` | `qty` | Optional | Sales |
 | `properties.revenue` | `cost` | Optional | Sales |
 
+<div class="infoBlock">
+    
+You must send the device-specific information for DCM Floodlight like <code class="inline-code">IDFA</code> or <code class="inline-code">advertisingId</code>, which are mapped to the <code class="inline-code">context.device.advertisingId</code>. You can do this using RudderStack's mobile SDKs as they collect this information automatically.
+    
+However, in case you are using a RudderStack server-side SDK, the <code class="inline-code">advertisingId</code> needs to be included manually.
+</div>
+
 The following table gives some more context on the above DCM Floodlight properties:
 
 | DCM Floodlight property | Description |
