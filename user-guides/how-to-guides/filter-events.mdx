@@ -1,65 +1,20 @@
 ---
-# slug: "/docs/user-guides/how-to-guides/how-to-filter-events"
-title: "Methods to Filter Events"
-description: An easy-to-follow guide on the different methods to filter event data while sending it to destinations
- in RudderStack
+# slug: "/docs/user-guides/how-to-guides/how-to-filter-events-using-different-methods"
+title: "How to Filter Events using Different Methods"
+description: An easy-to-follow guide on different methods to filter out events before sending them to the specified destinations
+ in RudderStack.
 ---
 
-# How to Filter Events
+# How to Filter Events using Different Methods
 
-RudderStack lets you filter the event data before sending it to the intended destinations. 
+RudderStack provides different methods to filter out events before sending them to the specified destinations. The below table explains these methods in detail:
 
-## User Transformations
-
-**Applicable for Cloud mode**
-
-You can create a user transformation to filter out on certain event names, or types, or anything else you want to distinguish
-
-<div class="infoBlock">
-
-Refer to the <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> guide for more information.
-</div>
-
-## Integrations Object on "rudderanalytics.load()"
-
-You can stop certain device mode integrations from loading. This isn’t necessarily filtering events, but by default no events will be sent to this destination if it is filtered out in this integrations object.
-
-<div class="infoBlock">
-
-Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#loading-selective-destinations">Loading selective destinations</a> guide for more information.
-</div>
-
-
-## Integrations Object on rudderanalytics calls i.e. "rudderanalytics.track()"
-
-You can stop certain events from being sent to certain destination by adding the integrations object and respective booleans for certain event calls.
-
-For the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), you can do this by passing an `integrations` object in the `options` parameter of the event method. For most of the other SDKs, you can use the `integrations` object parameter for the associated event. 
-
-<div class="infoBlock">
-
-Refer to the <a href="https://www.rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/">How to Filter Selective Destinations</a> guide for more information.
-</div>
-
-## Event Filtering tool
-
-This tool lets you select a blacklist or whitelist for certain track calls based on the event name, all from the UI. Based on these settings, device mode events will either be sent or ignored to the respective destinations.
-
-<div class="infoBlock">
-
-Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side event filtering</a> guide for more information.
-</div>
-
-
-| Method   | Description        | Support | Applicable |
+| Method   | Description        | Supported mode | Applicable |
 | :--------- | :----------- | :----------- |:----------- |
-| [User Transformations](https://www.rudderstack.com/docs/transformations/) | You can create a user transformation to filter out on certain event names, or types, or anything else you want to distinguish | Cloud mode |  [Event Stream](https://www.rudderstack.com/docs/stream-sources/) [Reverse ETL](https://www.rudderstack.com/docs/reverse-etl/) [Cloud Extract](https://www.rudderstack.com/docs/cloud-extract-sources/) |
-| [Event Filtering tool](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/)     | This tool lets you select a blacklist or whitelist for certain track calls based on the event name, all from the UI. Based on these settings, device mode events will either be sent or ignored to the respective destinations.  | Device mode | [All SDKs](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/) |
-| [Integrations Object on rudderanalytics calls i.e. "rudderanalytics.track()"](https://www.rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/)   | You can stop certain events from being sent to certain destination by adding the integrations object and respective booleans for certain event calls.  | Cloud and Device mode | [JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) |
-| [Integrations Object on "rudderanalytics.load()"](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#loading-selective-destinations)    | You can stop certain device mode integrations from loading. This isn’t necessarily filtering events, but by default no events will be sent to this destination if it is filtered out in this integrations object.|Device mode | [JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) |
-
-
-
+| [User transformations](https://www.rudderstack.com/docs/transformations/) | Create transformations to filter out certain event names, types, or any distinguishing factor among them. | Cloud mode |  [Event Stream](https://www.rudderstack.com/docs/stream-sources/), [Reverse ETL](https://www.rudderstack.com/docs/reverse-etl/) and [Cloud Extract](https://www.rudderstack.com/docs/cloud-extract-sources/) |
+| [Event filtering tool](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/) | Specify which events should be discarded or allowed to flow through, by whitelisting or blacklisting them from the UI. | Device mode | [All SDKs](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/) |
+| [Send events to selective destinations](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#loading-selective-destinations) | Send your event data only to the selective destinations. |Device mode | [JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) |
+| [Filter out selective destinations](https://www.rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/)   | Filter out specific destinations while sending your event data. | Cloud and Device mode | [JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) |
 
 
 ## Contact us
