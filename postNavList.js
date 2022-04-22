@@ -484,6 +484,12 @@ export const postNavList = [
    "link":"/cloud-extract-sources/salesforce-pardot/",
    "content":[]
    },
+    {
+   "key":"sendgrid",
+   "title":"Sendgrid",
+   "link":"/cloud-extract-sources/sendgrid/",
+   "content":[]
+   },
   {
    "key":"stripe",
    "title":"Stripe",
@@ -518,6 +524,12 @@ export const postNavList = [
     "key":"chargebee",
     "title":"Chargebee",
     "link":"/cloud-extract-sources/chargebee/",
+    "content":[]
+   },
+   {
+    "key":"common-settings",
+    "title":"Common Settings",
+    "link":"/cloud-extract-sources/common-settings/",
     "content":[]
    },
  {

@@ -642,6 +642,14 @@ export const jsonData = [
             ]
          },
          {
+         "key":"sendgrid",
+         "title":"Sendgrid",
+         "link":"/cloud-extract-sources/sendgrid/",
+         "content":[
+            
+            ]
+         },
+         {
          "key":"stripe",
          "title":"Stripe",
          "link":"/cloud-extract-sources/stripe/",
@@ -672,7 +680,15 @@ export const jsonData = [
             "content":[
                
             ]
-         }
+         },
+         {
+         "key":"common-settings",
+         "title":"Common Settings",
+         "link":"/cloud-extract-sources/common-settings/",
+         "content":[
+            
+            ]
+         },
      ]
   },
   {
