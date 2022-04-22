@@ -20,12 +20,6 @@ Since we can predictably and reliably upgrade all the backend services, switchin
 
 Create a new warehouse destination and set the namespace to be the same as the schema that Segment is writing to. RudderStack will then write to the same set of tables as Segment.
 
-<div class="infoBlock">
-
-Please follow our <a href="https://www.rudderstack.com/docs/rudderstack-cloud/destinations/#adding-a-destination">Adding a Destination</a> guide to know how to add a destination in RudderStack.
-
-</div>
-
 ### **Step 2: Route new events to RudderStack**
 
 Follow these steps:
@@ -65,12 +59,6 @@ Follow the below steps to easily migrate to RudderStack and storing the event da
 - Create a new webhook destination to the source where your data warehouse is connected.
 - Configure the webhook URL in the webhook settings.
 - Once the sync intervals are configured, as mentioned in the **Step 4** below, the webhook destination should be enabled.
-
-<div class="infoBlock">
-
-Please follow our <a href="https://www.rudderstack.com/docs/rudderstack-cloud/destinations/#adding-a-destination">Adding a Destination</a> guide to know how to add a destination in RudderStack.
-
-</div>
 
 ### **Step 4:** **Configure Warehouse Sync Interval in RudderStack**
 
