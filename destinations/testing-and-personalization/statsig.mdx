@@ -81,12 +81,12 @@ rudderanalytics.getAnonymousId();
 
 <div class="warningBlock">
 
-If the value of <code class="inline-code">anonymousId</code> is <code class="inline-code">null</code> in the SDK, calling the above function will lead to RudderStack automatically setting a new <code class="inline-code">anonymousId</code>.
+If the value of <code class="inline-code">anonymousId</code> is <code class="inline-code">null</code> in the SDK, calling the above function will automatically set a new <code class="inline-code">anonymousId</code> in RudderStack.
 </div>
 
 ## Page
 
-The [`page`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page. Many destinations require the `page` events to be called at least once every page load.
+The [`page`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
 
 A sample `page` call is shown below:
 
@@ -96,7 +96,7 @@ rudderanalytics.page("Home")
 
 ## Track
 
-The [`track`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the user events, i.e. the actions your users perform, along with any properties associated with these actions.
+The [`track`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the user events, that is, the actions your users perform, along with any properties associated with these actions.
 
 A sample `track` call is as shown:
 
@@ -122,7 +122,7 @@ A sample `screen` call sent via the [RudderStack iOS SDK](https://rudderstack.co
 
 ## Group
 
-The [`group`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, e.g. the name of the company, number of employees, etc.
+The [`group`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, for example, the name of the company, number of employees, etc.
 
 A sample `group` call is shown below:
 
