@@ -11,7 +11,7 @@ Statsig helps companies safely A/B test features in production before rolling th
 
 <div class="successBlock">
 
-  <strong>Read more about Statsig on their <a href="https://statsig.com/">website</a>. For more information on the Statsig-supported data connectors, refer to their <a href="https://docs.statsig.com/integrations/data-connectors">documentation</a></strong>.
+Read more about Statsig on their <a href="https://statsig.com/">website</a>. For more information on the Statsig-supported data connectors, refer to the <a href="https://docs.statsig.com/">Statsig Documentation</a>.
 </div>
 
 RudderStack supports Statsig as a destination to which you can send real-time event data for efficient A/B testing.
@@ -55,9 +55,9 @@ The [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/
 A sample `identify` call is as shown:
 
 ```javascript
-rudderanalytics.identify("userId", {
-  name: "Name Surname",
-  email: "name@domain.com",
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
 })
 ```
 
@@ -104,8 +104,8 @@ A sample `track` call is as shown:
 rudderanalytics.track("Product Reviewed", {
   review_id: "12345",
   product_id: "123",
-  rating: 3.0,
-  review_body: "Average product, expected much more."
+  rating: 4.0,
+  review_body: "Good product."
 })
 ```
 
