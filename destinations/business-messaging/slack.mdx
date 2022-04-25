@@ -44,8 +44,8 @@ To successfully configure Slack as a destination, you will need to configure the
 
 <img src="/assets/event-stream-destinations/slack-settings.png" alt="Slack connection settings" />
 
-- **Event Name:** The event name or regex expression to match the rudder event name.
-- **Event Channel:**  The slack channel to send the event to, specify `#channel_name` or `@user_name`.
+- **Event Name:** Event name or regex expression to match the rudder event name.
+- **Event Channel:**  Slack channel to send the event to, specify `#channel_name` or `@user_name`.
 - **Regex Matching:**  Enable this setting if the event name is a regex in the first parameter.                 
 
 <div class="warningBlock">
@@ -77,8 +77,8 @@ The <strong>whitelisted traits</strong> list is given priority when building the
 
 <img src="/assets/event-stream-destinations/slack-settings2.png" alt="Slack connection settings" />
 
-- **Event Name:** The event name or regex expression to match the rudder event name.                                                                     
-- **Event Template:** The template for the above event name/names matching the regex. RudderStack supports [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is `{{name}} did {{event}}` . `name` is determined by the same criteria as above.
+- **Event Name:** Event name or regex expression to match the rudder event name.                                                                     
+- **Event Template:** Template for the above event name/names matching the regex. RudderStack supports [Handlebar expression](https://handlebarsjs.com/guide/expressions.html). The default template is `{{name}} did {{event}}` . `name` is determined by the same criteria as above.
 - **Regex Matching:**  Enable this setting if the event name is a regex in the first parameter.
 
 #### Webhook URL
@@ -86,6 +86,18 @@ The <strong>whitelisted traits</strong> list is given priority when building the
 <img src="/assets/event-stream-destinations/slack-settings3.png" alt="Slack connection settings" />
 
 - **Webhook URL:** Add your slack's incoming [Webhook URL](https://my.slack.com/services/new/incoming-webhook/).
+
+To obtain the Webhook URL, follow the below steps in Slack:
+
+1. Click on your Slack workspace name, then go to **Administration** > **Manage Apps**.
+2. Search for **Incoming webhooks** in the Slack app directory and add it to Slack by clicking on **Add to Slack**
+3. Select a channel where you want to post the messages forwarded by webhook and click on **Add Incoming webhooks integration**.
+
+<img src="/assets/event-stream-destinations/choose-channel-slack.png" alt="Slack connection settings" />
+
+5. Copy the webhook URL as shown below and enter it in the RudderStack dashboard.
+
+<img src="/assets/event-stream-destinations/webhook-url-slack.png" alt="Slack connection settings" />
 
 ## Handlebar Expression
 
