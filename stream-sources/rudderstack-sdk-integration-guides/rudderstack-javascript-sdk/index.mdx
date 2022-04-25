@@ -603,9 +603,15 @@ The structure of `anonymousIdOptions` object is shown below:
 
 <div class="infoBlock">
   
-  If the RudderStack `anonymousId` is already set in your browser, then <code class="inline-code">anonymousIdOptions</code> will not take effect.
+  If the RudderStack <code class="inline-code">anonymousId</code> is already set in your browser, then <code class="inline-code">anonymousIdOptions</code> will not take effect.
 </div>
 
+<div class="infoBlock">
+  
+  You can use the <strong>Reset</strong> method to generate a new <code class="inline-code">anonymousId</code> whether the <code class="inline-code">anonymousIdOptions</code> object is enabled or not.
+  
+  However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and you reset the <code class="inline-code">anonymousId</code> and then reload the page, Rudderstack <code class="inline-code">anonymousId</code> will be set as the provided source's <code class="inline-code">anonymousId</code>.
+  </div>
 
 ## Adding callbacks to standard methods
 
