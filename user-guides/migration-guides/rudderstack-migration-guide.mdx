@@ -245,10 +245,14 @@ You can use the rest of your code without any changes as the RudderStack API is 
 ## Backfilling Segment anonymous IDs
 
 When migrating from Segment or a similar analytics tool, you might already have some anonymous traffic that has not yet been identified. When Segment and RudderStack track events for non-identified users, both assign a random UUID as an `anonymousId`. This ID is used to track an unknown user until they are identified. It also allows RudderStack to track user behavior, journeys, and first-touch attribution before and after the users are identified.
+	     
+## Capturing Segment `anonymousId` automatically
 
-<div class="successBlock">
-
-RudderStack deploys the JavaScript SDK and reads Segment's <code class="inline-code">anonymousId</code> from your local storage (<code class="inline-code">localStorage</code>) or the Segment cookie and sets it accordingly. So you don't need to run both the RudderStack and Segment SDKs.
+You can automatically capture the Segment `anonymousId` and set it as Rudderstack `anonymousId` using the JavaScript SDK's `anonymousIdOptions` object. When enabled, it reads the Segment `anonymousId` from your local storage (`localStorage`) or the Segment cookie and sets it accordingly.
+	      
+<div class="infoBlock">
+  
+For more information on how to enable the <code class="inline-code">anonymousIdOptions</code> object, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#capturing-anonymousid-automatically">Capturing anonymousId automatically</a> section.
 </div>
 
 ## Contact us
