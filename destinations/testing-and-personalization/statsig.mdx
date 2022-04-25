@@ -46,11 +46,11 @@ To configure Statsig as a destination in RudderStack, enter the **Server Secret 
 
 3. Finally, click on **API Keys**. You should find the **Server Secret Key** here.
 
-<img src="../../assets/event-stream-destinations/statsig-api-key.png" alt="Statsig API key" />
+<img src="../../assets/event-stream-destinations/statsig-api-keys.png" alt="Statsig API key" />
 
 ## Identify
 
-The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+The [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
 A sample `identify` call is as shown:
 
@@ -60,11 +60,6 @@ rudderanalytics.identify("userId", {
   email: "name@domain.com",
 })
 ```
-
-<div class="infoBlock">
- 
-  For more information on the <code class="inline-code">identify</code> event, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack Event Specification</a> guide.
-</div>
 
 ### Retrieving the `userId`
 
@@ -91,12 +86,7 @@ If the value of <code class="inline-code">anonymousId</code> is <code class="inl
 
 ## Page
 
-The `page` call lets you record your website's page views with any additional relevant information about the viewed page. Many destinations require the `page` events to be called at least once every page load.
-
-<div class="infoBlock">
- 
-For more information on the <code class="inline-code">page</code> event, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack Event Specification</a> guide.
-</div>
+The [`page`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page. Many destinations require the `page` events to be called at least once every page load.
 
 A sample `page` call is shown below:
 
@@ -106,12 +96,7 @@ rudderanalytics.page("Home")
 
 ## Track
 
-The `track` call lets you record the user events, i.e. the actions your users perform, along with any properties associated with these actions.
-
-<div class="infoBlock">
- 
-For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack Event Specification</a> guide.
-</div>
+The [`track`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the user events, i.e. the actions your users perform, along with any properties associated with these actions.
 
 A sample `track` call is as shown:
 
@@ -126,14 +111,9 @@ rudderanalytics.track("Product Reviewed", {
 
 ## Screen
 
-The `screen` call lets you record whenever a user views their mobile screen, with any additional relevant information about the viewed screen.
+The [`screen`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) call lets you record whenever a user views their mobile screen, with any additional relevant information about the viewed screen.
 
-<div class="infoBlock">
- 
-For more information on the <code class="inline-code">screen</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack Event Specification</a> guide.
-</div>
-
-A sample `screen` call sent via the [**RudderStack iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) is shown below:
+A sample `screen` call sent via the [RudderStack iOS SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) is shown below:
 
 ```objectivec
 [[RSClient sharedInstance] screen:@"Main"
@@ -142,12 +122,7 @@ A sample `screen` call sent via the [**RudderStack iOS SDK**](https://rudderstac
 
 ## Group
 
-The `group` call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, e.g. the name of the company, number of employees, etc.
-
-<div class="infoBlock">
- 
-For more information on the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack Event Specification</a> guide.
-</div>
+The [`group`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, e.g. the name of the company, number of employees, etc.
 
 A sample `group` call is shown below:
 
@@ -162,12 +137,7 @@ rudderanalytics.group("12345", {
 
 ## Alias
 
-The `alias` call lets you merge different identities of a known user.
-
-<div class="infoBlock">
- 
-For more information on the <code class="inline-code">alias</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack Event Specification</a> guide.
-</div>
+The [`alias`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/) call lets you merge different identities of a known user.
 
 <div class="successBlock">
 
