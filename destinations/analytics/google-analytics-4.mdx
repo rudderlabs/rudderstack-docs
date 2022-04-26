@@ -37,13 +37,39 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
 <img src="/assets/event-stream-destinations/google-analytics-4-connection-settings.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
 <img src="/assets/event-stream-destinations/google-analytics-4-connection-settings2.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
 
-- **API Secret**: Enter the API Secret generated through the Google Analytics UI.
-- **Measuremt Id**: 
+- **API Secret**: Enter the API Secret generated through the Google Analytics UI. It can be created in the Google Analytics dashboard under **Admin > Data Streams > choose your stream > Measurement Protocol > Create**.
+  
+- **Measurement Id**: Enter the Measurement Id which is the identidier for a data stream. It can be found in Google Analytics dashboard under **Admin > Data Streams > choose your stream > Measurement ID**.
 
 <div class="infoBlock">
   
- Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the Measurement Id.
+ Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the API Secret and Measurement Id.
   </div>
+
+### Client-side events filtering
+
+<div class="infoBlock">
+
+This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+</div>
+
+### Web SDK settings
+
+- **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
+- **Block a Page View Event**: Enable this setting to disable sending `page_view` events on load. However, you can explicitly send a `page_view` event by calling the `page()` API.
+- **Extend Page View Property**: Enable this setting to send the following properties along with any other custom property passed to the `page` call of the RudderStack SDK:
+  - `url`
+  - `search`
+ 
+<div class="infoBlock">
+  
+Google Analytics 4 has a limit on the number of unique properties per event name. The default `page_view` event supports the properties mentioned in <a href="https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484">Automatically collected events</a>() guide.
+  </div>
+  
+- **Send userId to GA**: Enabling or disabling this setting exhibits the following behavior:
+  - If enabled, user ID is set to the identified visitors and sent according to [Cookies and user identification](https://developers.google.com/tag-platform/devguides/cookies#set_user_id) document.
+  - If disabled, userId is not sent. Instead, Rudderstack only sends user traits set as `user_properties` to Google Analytics. The user properties are set on the `gtag` client according to [Set user properties](https://developers.google.com/analytics/devguides/collection/ga4/user-properties?technology=websites) guide.
+
 
 ## Identify
 
@@ -56,8 +82,6 @@ The [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/
 
 User-ID is an advanced feature that lets GA4 present a cross-device, cross-platform view of your customers' behavior. Google Analytics 4 uses `userId` and `deviceId` \(GA's `cid` value from Universal Analytics terminology\) to identify users.
 
-Google Analytics 4 also allows you to set a user ID to the identified visitors if **Send User ID to GA** is enabled in the destination settings page in the RudderStack app. RudderStack will send the identified `userId` according to [this guide](https://developers.google.com/analytics/devguides/collection/ga4/cookies-user-id#set_user_id).
-
 A sample `identify` call is as shown:
 
 ```javascript
@@ -69,8 +93,6 @@ rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
 
 In the above snippet, the `userId` will be set to `1hKOmRA4el9Zt1WSfVJIVo4GRlm` for Google Analytics and the name and email will be set as `user_properties`.
 
-If **Send User ID to GA** is disabled then we do not set `userId` . Instead, we only send user traits to be set as `user_properties` in Google Analytics. The user properties are set on the `gtag` client according to [this](https://developers.google.com/analytics/devguides/collection/ga4/user-properties) guide.
-
 ## Page
 
 <div class="infoBlock">
@@ -78,11 +100,11 @@ If **Send User ID to GA** is disabled then we do not set `userId` . Instead, we 
   The <code class="inline-code">page</code> call is only supported for device mode.
   </div>
   
- The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
+The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
 
 Google Analytics 4 `gtag` sends a `page_view` event to Google Analytics by default every-time it is loaded. You can also send `page_view` event to Google Analytics whenever you make an explicit `page()` call to RudderStack SDK.
 
-RudderStack send the following properties by default:
+RudderStack sends the following properties by default:
 
 - `path` mapped to `page_location`
 - `title` mapped to `page_title`
@@ -100,17 +122,6 @@ rudderanalytics.page({
 })
 ```
 
-### Extend Page View Property
-
-Google Analytics 4 has a limit on the number of unique properties per event name. The default `page_view` event supports the above properties as mentioned [in this guide](https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484). If the **Extend Page View Property** config is enabled, then RudderStack sends the following properties along with any other custom property passed to `page` call of the RudderStack SDK:
-
-- `url`
-- `search`
-
-### Block Page View Event
-
-When this config is enabled we disable sending Google Analytics 4 `page_view` events on load, instead you can explicitly send a `page_view` event by calling Rudder SDK **page\(\)** API.
-
 ## Track (Device mode)
 
 The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
@@ -121,7 +132,7 @@ A sample `track` call is as shown:
 rudderanalytics.track("Track me")
 ```
 
-RudderStack's SDK will send the track event name and any properties as custom properties to Google Analytics 4.
+RudderStack SDK sends the track event name and any properties as custom properties to Google Analytics 4.
 
 <div class="infoBlock">
 
@@ -166,16 +177,6 @@ rudderanalytics.track('product list viewed', {
   }]
 });
 ```
-The following table details the mapping between RudderStack and Blueshift fields:
-
-| RudderStack field    | Google Analytics 4 field |
-| :------------------------ | :---------------------------- |
-| PromotionId        | `promotion_id`                      |
-| PromotionName      | `promotion_name`              |
-| Search          | `search_term`              |
-| ProductId          | `item_id`                 |
-| ProductName | `item_name`             |
-
 
 ## E-commerce
 
@@ -208,7 +209,7 @@ For each product in the order, there must be an <code class="inline-code">id</co
 1. Login to Google Analytics dashboard.
 2. Go to the **Admin** section from the left sidebar.
 3. Select the account and then property from the drop down for which you wish to get the id.
-4. Now click on data streams and select the stream for which you wish to get the id.
+4. Now click on **Data Streams** and select the stream for which you wish to get the id.
 5. Copy the measurement id by clicking on copy to clipboard icon.
 
 ### How do I obtain the API Secret?
@@ -216,10 +217,12 @@ For each product in the order, there must be an <code class="inline-code">id</co
 - Login to Google Analytics dashboard.
 - Go to the **Admin** section from the left sidebar.
 - Select the account and then property from the drop down for which you wish to get the id.
-- Now click on data streams and select the stream for which you wish to get the id.
+- Now click on **Data Streams** and select the stream for which you wish to get the id.
 - Copy the measurement id by clicking on copy to clipboard icon.
 
 ### What reserved names does GA 4 has?
+
+Google nalytics 4 has a few events names which are reserved and cannot be used. Refer to the [Reserved Names](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#reserved_names) for more information on such event names.
 
 ## Contact us
 
