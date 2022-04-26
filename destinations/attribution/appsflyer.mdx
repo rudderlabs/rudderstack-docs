@@ -139,6 +139,21 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [RSClient getInstance:WRITE_KEY config:[builder build]];
 ```
 </span>
+<div class="infoBlock">
+   
+<strong>If you are using AppsFlyer iOS device mode version <code class="inline-code">2.0.0</code> or above</strong>, initialize the Appsflyer SDK before the Rudder SDK as shown below:
+<span>
+
+```objectivec
+#import <AppsFlyerLib/AppsFlyerLib.h>
+
+[[AppsFlyerLib shared] setAppsFlyerDevKey:<devKey>];
+[[AppsFlyerLib shared] setAppleAppID:<appleAppId>];
+[AppsFlyerLib shared].isDebug = YES;
+[[AppsFlyerLib shared] start];
+```
+</span>
+</div>
 </li>
 </ol>
       </TabPanel>
@@ -183,7 +198,7 @@ val rudderClient: RudderClient = RudderClient.getInstance(
 </span>
 <div class="infoBlock">
    
-<strong>If you are using AppsFlyer Android device mode version <code class="inline-code">2.0.0</code> or above</strong>, also add the following lines of code in your <code class="inline-code">MainApplication()</code> class:
+<strong>If you are using AppsFlyer Android device mode version <code class="inline-code">2.0.0</code> or above</strong>, also add the following lines of code in your <code class="inline-code">MainApplication()</code> class before initializing the Rudder SDK:
 <span>
 
 ```java
