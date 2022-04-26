@@ -69,6 +69,12 @@ Below are some examples of the track event names that are passed to Google Analy
 | Checkout Started          | `begin_checkout`              |
 | Order Completed           | `purchase`                    |
 
+
+| Event mapping (RudderStack -> GA4)    | Property mapping (RudderStack -> GA4)  |
+| :------------------------ | :---------------------------- |
+|      Products Searched ->  <code class=“inline-code”>search</code>  |  <code class=“inline-code”>query</code> -> <code class=“inline-code”>search_term</code>        |
+|  <li>Product List Viewed -> <code class=“inline-code”>view_item_list</code></li><li>Product Clicked -> <code class=“inline-code”>select_item</code></li>            | <li><code class=“inline-code”>list_id</code> -> <code class=“inline-code”>item_list_id</code></li><li><code class=“inline-code”>category</code> -> <code class=“inline-code”>item_list_name</code></li>|
+
 <div class="infoBlock">
 
 For each product in the order, there must be an <code class="inline-code">id</code> and <code class="inline-code">name</code> associated. More info on Google Analytics 4 e-commerce event and corresponding properties can be found <a href="https://developers.google.com/gtagjs/reference/ga4-events#view_item_list">here</a>.
