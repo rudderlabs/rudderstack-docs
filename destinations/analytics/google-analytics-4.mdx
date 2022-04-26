@@ -10,11 +10,9 @@ description: Step-by-step guide to send event data from RudderStack to Google An
 
 RudderStack supports the `gtag` way of tagging in websites.
 
-## Getting Started
+## Getting started
 
-To enable sending data to **Google Analytics 4**, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to Google Analytics 4.
-
-Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Google Analytics 4, by referring to the table below:
+Before configuring Google Analytics 4 as a destination in RudderStack, verify if the source platform is supported by Google Analytics 4, by referring to the table below:
 
 | **Connection Mode** | Web           | Mobile | Server |
 | :------------------ | :------------ | :----- | :----- |
@@ -27,17 +25,29 @@ To know more about the difference between Cloud mode and Device mode in RudderSt
 
 </div>
 
-Once you have confirmed that the platform supports sending events to Google Analytics 4, please perform the steps below:
+Once you have confirmed that the source platform supports sending events to Google Analytics 4, follow these steps:
 
-- Choose a source to which you would like to add Google Analytics 4 as a destination.
-- Select the destination as **Google Analytics 4** to your source. Give your destination a name and then click on **Next**.
-- On the **Connection Settings** page, fill all the fields with the relevant information and click **Next**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Google Analytics 4**.
+2. Assign a name to your destination and click on Next.
 
-<img src="../../assets/ga4.png" /><span class="imageTitle">Google Analytics 4 Connection Settings in RudderStack</span>
+## Connection settings
 
-- In the **Connection Settings**, please enter your **Measurement Id** as shown above.
+To successfully configure Google Analytics 4 as a destination, configure the following settings:
+
+<img src="/assets/event-stream-destinations/google-analytics-4-connection-settings.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
+<img src="/assets/event-stream-destinations/google-analytics-4-connection-settings2.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
+
+- **API Secret**
+- **Measuremt Id** 
 
 ## Identify
+
+<div class="infoBlock">
+  
+  The <code class="inline-code">identify</code> call is only supported for device mode.
+  </div>
+
+The [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
 User-ID is an advanced feature that lets GA4 present a cross-device, cross-platform view of your customers' behavior. Google Analytics 4 uses `userId` and `deviceId` \(GA's `cid` value from Universal Analytics terminology\) to identify users.
 
@@ -46,21 +56,28 @@ Google Analytics 4 also allows you to set a user ID to the identified visitors i
 A sample `identify` call is as shown:
 
 ```javascript
-rudderanalytics.identify("sample_user_id", {
-  name: "Test name",
-  email: "test@emai.com",
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
 })
 ```
 
-In the above snippet, the `userId` will be set to `sample_user_id` for Google Analytics and the name and email will be set as `user_properties`.
+In the above snippet, the `userId` will be set to `1hKOmRA4el9Zt1WSfVJIVo4GRlm` for Google Analytics and the name and email will be set as `user_properties`.
 
 If **Send User ID to GA** is disabled then we do not set `userId` . Instead, we only send user traits to be set as `user_properties` in Google Analytics. The user properties are set on the `gtag` client according to [this](https://developers.google.com/analytics/devguides/collection/ga4/user-properties) guide.
 
 ## Page
 
-Google Analytics 4 `gtag` sends a `page_view` event to Google Analytics by default every-time it is loaded. You can also send `page_view` event to google analytics whenever you make an explicit `page()` call to RudderStack SDK.
+<div class="infoBlock">
+  
+  The <code class="inline-code">page</code> call is only supported for device mode.
+  </div>
+  
+ The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
 
-We send following properties by default:
+Google Analytics 4 `gtag` sends a `page_view` event to Google Analytics by default every-time it is loaded. You can also send `page_view` event to Google Analytics whenever you make an explicit `page()` call to RudderStack SDK.
+
+RudderStack send the following properties by default:
 
 - `path` mapped to `page_location`
 - `title` mapped to `page_title`
@@ -91,9 +108,9 @@ When this config is enabled we disable sending Google Analytics 4 `page_view` ev
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, along with the properties that are associated with that action. Each action is considered to be an event.
+The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
 
-A sample `track` call looks like the following:
+A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track("Track me")
@@ -103,20 +120,19 @@ RudderStack's SDK will send the track event name and any properties as custom pr
 
 <div class="infoBlock">
 
-For properties that are nested and not a standard Google Analytics 4 property, RudderStack SDK will flatten them before sending to Google Analytics.
-
+RudderStack SDK flattens the properties that are nested and not standard Google Analytics 4 properties before sending them to Google Analytics.
 </div>
 
 <div class="infoBlock">
 
-There are limits on the number of custom properties per event that can be sent to Google Analytics 4. The RudderStack SDK <code class="inline-code">**does not drop**</code> the payload based on these limits. If the events are don't show up in the debug view or in the Google Analytics dashboard reports, refer to <a href="https://support.google.com/analytics/answer/9267744?hl=en">**this Google support page**</a> to know more about the collection limits.
+There are limits on the number of custom properties per event that can be sent to Google Analytics 4. The RudderStack SDK <code class="inline-code">**does not drop**</code> the payload based on these limits. If the events are don't show up in the debug view or in the Google Analytics dashboard reports, refer to <a href="https://support.google.com/analytics/answer/9267744?hl=en">this Google support page</a> to know more about the collection limits.
 </div>
 
-## eCommerce
+## E-commerce
 
-RudderStack supports eCommerce tracking for Google Analytics 4. Use the [RudderStack eCommerce spec](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) for sending events while instrumenting your site with the RudderStack SDK.
+RudderStack supports e-commerce tracking for Google Analytics 4. Use the [RudderStack eCommerce spec](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) for sending events while instrumenting your site with the RudderStack SDK.
 
-Below are some examples of the track event names that are passed to Google Analytics 4-specific eCommerce event name:
+Below are some examples of the track event names that are passed to Google Analytics 4-specific e-commerce event name:
 
 | RudderStack event name    | Google Analytics 4 event name |
 | :------------------------ | :---------------------------- |
@@ -136,9 +152,9 @@ For each product in the order, there must be an <code class="inline-code">id</co
 
 </div>
 
-## FAQs
+## FAQ
 
-### **How do you get the Google Analytics 4 Measurement Id?**
+### How do you get the Google Analytics 4 Measurement Id?
 
 - Login to Google Analytics dashboard.
 - Go to the **Admin** section from the left sidebar.
@@ -146,6 +162,6 @@ For each product in the order, there must be an <code class="inline-code">id</co
 - Now click on data streams and select the stream for which you wish to get the id.
 - Copy the measurement id by clicking on copy to clipboard icon.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Google Analytics 4 with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
