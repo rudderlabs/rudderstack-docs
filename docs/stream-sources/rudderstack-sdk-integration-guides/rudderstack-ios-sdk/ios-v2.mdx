@@ -142,7 +142,7 @@ RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
 [config trackLifecycleEvents:YES];
 [config recordScreenViews:YES];
 
-RSClient *client = [[RSClient alloc] initWithConfig:config];
+[[RSClient sharedInstance] configureWith:config]
 ```
 </span>
 
@@ -157,7 +157,7 @@ let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
                   .trackLifecycleEvents(true)
                   .recordScreenViews(true)
         
-let client = RSClient(config: config)
+RSClient.sharedInstance().configure(with: config)
 ```
 </span>
 
@@ -234,7 +234,7 @@ An sample `identify` call is shown below:
 <span>
 
 ```objectivec
-[client identify:@"user_id" traits:@{@"email": @"alex@example.com"}];
+[[RSClient sharedInstance] identify:@"user_id" traits:@{@"email": @"alex@example.com"}];
 ```
 </span>
       </TabPanel>
@@ -242,7 +242,7 @@ An sample `identify` call is shown below:
 <span>
 
 ```swift
-client.identify("user_id", traits: ["email": "alex@example.com"])
+RSClient.sharedInstance().identify("user_id", traits: ["email": "alex@example.com"])
 ```
 </span>
       </TabPanel>
@@ -279,7 +279,7 @@ By default, RudderStack uses the `deviceId` as `anonymousId`. To set your own `a
 <span>
 
 ```swift
-client.setAnonymousId("new_anonymous_id")
+RSClient.sharedInstance().setAnonymousId("new_anonymous_id")
 ```
 </span>
       </TabPanel>
@@ -305,7 +305,7 @@ The following code snippet highlights how you can add `externalId` to your `iden
 RSOption *eventOption = [[RSOption alloc] init];
 [eventOption putExternalId:@"brazeExternalId" withId:@"some_external_id_1"];
     
-[client identify:@"user_id" traits:@{@"email": @"alex@example.com"} option:eventOption];
+[[RSClient sharedInstance] identify:@"user_id" traits:@{@"email": @"alex@example.com"} option:eventOption];
 ```
 </span>
       </TabPanel>
@@ -316,7 +316,7 @@ RSOption *eventOption = [[RSOption alloc] init];
 let messageOption = RSOption()
 messageOption.putExternalId("brazeExternalId", withId: "some_external_id_1")
 
-client.identify("user_id", traits: ["email": "alex@example.com"], option: messageOption)
+RSClient.sharedInstance().identify("user_id", traits: ["email": "alex@example.com"], option: messageOption)
 ```
 </span>
       </TabPanel>
@@ -339,7 +339,7 @@ A sample `track` event is shown below:
 <span>
 
 ```objectivec
-[client track:@"sample_track_event" properties:@{
+[[RSClient sharedInstance] track:@"sample_track_event" properties:@{
     @"key_1": @"value_1",
     @"key_2": @"value_2"
 }];
@@ -350,7 +350,7 @@ A sample `track` event is shown below:
 <span>
 
 ```swift
-client.track("sample_track_event", properties: [
+RSClient.sharedInstance().track("sample_track_event", properties: [
     "key_1": "value_1",
     "key_2": "value_2"
 ])
@@ -385,7 +385,7 @@ A sample `screen` event is as shown:
 <span>
 
 ```objectivec
-[client screen:@"ViewController" category:NULL properties:@{
+[[RSClient sharedInstance] screen:@"ViewController" category:NULL properties:@{
   @"key_1": @"value_1",
   @"key_2": @"value_2"
 } 
@@ -397,7 +397,7 @@ options:NULL];
 <span>
 
 ```swift
-client.screen("ViewController", properties: [
+RSClient.sharedInstance().screen("ViewController", properties: [
     "key_1": "value_1",
     "key_2": "value_2"
 ])
@@ -431,7 +431,7 @@ A sample `group` call is shown below:
 <span>
 
 ```objectivec
-[client group:@"sample_group_id" traits:@{
+[[RSClient sharedInstance] group:@"sample_group_id" traits:@{
   @"key_1": @"value_1",
   @"key_2": @"value_2"
 } 
@@ -443,7 +443,7 @@ options:NULL];
 <span>
 
 ```swift
-client.group("sample_group_id", traits: [
+RSClient.sharedInstance().group("sample_group_id", traits: [
   "key_1": "value_1",
   "key_2": "value_2"
 ])
@@ -480,7 +480,7 @@ The [`alias`](https://www.rudderstack.com/docs/rudderstack-api/api-specification
 <span>
 
 ```objectivec
-[client alias:@"new_user_id" options:NULL];
+[[RSClient sharedInstance] alias:@"new_user_id" options:NULL];
 ```
 </span>
       </TabPanel>
@@ -488,7 +488,7 @@ The [`alias`](https://www.rudderstack.com/docs/rudderstack-api/api-specification
 <span>
 
 ```swift
-client.alias("new_user_id")
+RSClient.sharedInstance().alias("new_user_id")
 ```
 </span>
       </TabPanel>
@@ -521,7 +521,7 @@ You can use the `reset` method to clear the persisted user traits for the `ident
 <span>
 
 ```objectivec
-[client reset];
+[[RSClient sharedInstance] reset];
 ```
 </span>
       </TabPanel>
@@ -529,7 +529,7 @@ You can use the `reset` method to clear the persisted user traits for the `ident
 <span>
 
 ```swift
-client.reset()
+RSClient.sharedInstance().reset()
 ```
 </span>
       </TabPanel>
@@ -559,7 +559,7 @@ The following snippet highlights the use of the `optOut` API to disable user tra
 <span>
 
 ```objectivec
-[client setOptOutStatus:YES];
+[[RSClient sharedInstance] setOptOutStatus:YES];
 ```
 </span>
       </TabPanel>
@@ -567,7 +567,7 @@ The following snippet highlights the use of the `optOut` API to disable user tra
 <span>
 
 ```swift
-client.setOptOutStatus(true)
+RSClient.sharedInstance().setOptOutStatus(true)
 ```
 </span>
       </TabPanel>
@@ -586,7 +586,7 @@ Once the user grants their consent, you can enable user tracking once again by u
 <span>
 
 ```objectivec
-[client setOptOutStatus:NO];
+[[RSClient sharedInstance] setOptOutStatus:NO];
 ```
 </span>
       </TabPanel>
@@ -594,7 +594,7 @@ Once the user grants their consent, you can enable user tracking once again by u
 <span>
 
 ```swift
-client.setOptOutStatus(false)
+RSClient.sharedInstance().setOptOutStatus(false)
 ```
 </span>
       </TabPanel>
@@ -620,7 +620,7 @@ To pass push notifications to the destinations that support it, you can pass you
 <span>
 
 ```objectivec
-[client setDeviceToken:@"example_device_token"];
+[[RSClient sharedInstance] setDeviceToken:@"example_device_token"];
 ```
 </span>
       </TabPanel>
@@ -628,7 +628,7 @@ To pass push notifications to the destinations that support it, you can pass you
 <span>
 
 ```swift
-client.setDeviceToken("example_device_token")
+RSClient.sharedInstance().setDeviceToken("example_device_token")
 ```
 </span>
       </TabPanel>
@@ -656,7 +656,7 @@ You can pass the IDFA to the `setAdvertisementId` method to set it under `contex
 <span>
 
 ```objectivec
-[client setAdvertisingId:[self getIDFA]];
+[[RSClient sharedInstance] setAdvertisingId:[self getIDFA]];
 
 - (NSString*)getIDFA {
     return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
@@ -668,7 +668,7 @@ You can pass the IDFA to the `setAdvertisementId` method to set it under `contex
 <span>
 
 ```swift
-client.setAdvertisingId(getIDFA())
+RSClient.sharedInstance().setAdvertisingId(getIDFA())
 
 func getIDFA() -> String {
 		return ASIdentifierManager.shared().advertisingIdentifier.uuidString
@@ -695,7 +695,7 @@ For example, AppsFlyer accepts this parameter for the attribution to work in the
 <span>
 
 ```objectivec
-[client setAppTrackingConsent:RSAppTrackingConsentAuthorize];
+[[RSClient sharedInstance] setAppTrackingConsent:RSAppTrackingConsentAuthorize];
 ```
 </span>
       </TabPanel>
@@ -703,7 +703,7 @@ For example, AppsFlyer accepts this parameter for the attribution to work in the
 <span>
 
 ```swift
-client.setAppTrackingConsent(.authorize)
+RSClient.sharedInstance().setAppTrackingConsent(.authorize)
 ```
 </span>
       </TabPanel>
@@ -745,10 +745,10 @@ RSOption *option = [[RSOption alloc]init];
 [option putIntegration:@"All" isEnabled:YES];
 // specifying destination by its display name
 [option putIntegration:@"Amplitude" isEnabled:YES];
-[option putIntegration:@"&lt;destination display name&gt;" isEnabled:&lt;BOOL&gt;];
+[option putIntegration:@"<DESTINATION_DISPLAY_NAME>" isEnabled:<BOOLEAN>];
 // specifying destination by its Factory instance
 [option putIntegrationWithFactory:[RudderMoengageFactory instance] isEnabled:NO];
-[option putIntegrationWithFactory:[&lt;RudderIntegrationFactory&gt; instance] isEnabled:&lt;BOOL&gt;];
+[option putIntegrationWithFactory:[<RudderIntegrationFactory> instance] isEnabled:<BOOLEAN>];
 ```
 </span>
       </TabPanel>
@@ -761,10 +761,10 @@ let option:RSOption = RSOption();
 option.putIntegration("All", isEnabled:true)
 // specifying destination by its display name
 option.putIntegration("Amplitude", isEnabled:true)
-option.putIntegration(&lt;DESTINATION DISPLAY NAME&gt;, isEnabled:&lt;BOOL&gt;)
+option.putIntegration(<DESTINATION_DISPLAY_NAME>, isEnabled:<BOOLEAN>)
 // specifying destination by its Factory instance
 option.putIntegration(with: RudderMoengageFactory.instance(), isEnabled: true);
-option.putIntegration(with: &lt;RudderIntegrationFactory&gt;.instance(), isEnabled:&lt;BOOL&gt;);
+option.putIntegration(with: <RudderIntegrationFactory>.instance(), isEnabled:<BOOLEAN>);
 ```
 </span>
       </TabPanel>
@@ -800,7 +800,7 @@ This approach is helpful when you want to enable/disable sending the events to t
 RSOption *defaultOption = [[RSOption alloc] init];
 [defaultOption putIntegration:@"Amplitude" isEnabled:YES];
 
-[client setOption:defaultOption];
+[[RSClient sharedInstance] setOption:defaultOption];
 ```
 </span>
       </TabPanel>
@@ -811,7 +811,7 @@ RSOption *defaultOption = [[RSOption alloc] init];
 let defaultOption = RSOption()
 defaultOption.putIntegration("Amplitude", isEnabled: true)
 
-client.setOption(defaultOption)
+RSClient.sharedInstance().setOption(defaultOption)
 ```
 </span>
       </TabPanel>
@@ -835,7 +835,7 @@ This approach is helpful when you want to enable/disable sending only specific e
 RSOption *eventOption = [[RSOption alloc] init];
 [eventOption putIntegration:@"Amplitude" isEnabled:YES];
 
-[client track:@"sample_track" properties:@{@"key_1": @"value_1", @"key_2": @"value_2"} option:eventOption];
+[[RSClient sharedInstance] track:@"sample_track" properties:@{@"key_1": @"value_1", @"key_2": @"value_2"} option:eventOption];
 ```
 </span>
       </TabPanel>
@@ -846,7 +846,7 @@ RSOption *eventOption = [[RSOption alloc] init];
 let eventOption = RSOption()
 eventOption.putIntegration("MoEngage", isEnabled: true)
 
-client.track("sample_track", option: eventOption)
+RSClient.sharedInstance().track("sample_track", option: eventOption)
 ```
 </span>
       </TabPanel>
@@ -878,7 +878,7 @@ RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
 [config dataPlaneURL:DATA_PLANE_URL];
 [config loglevel:RSLogLevelDebug];
 
-RSClient *client = [[RSClient alloc] initWithConfig:config];
+[[RSClient sharedInstance] configureWith:config];
 ```
 </span>
       </TabPanel>
@@ -890,7 +890,7 @@ let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
             .dataPlaneURL(DATA_PLANE_URL)
             .loglevel(.debug)
         
-let client = RSClient(config: config)
+RSClient.sharedInstance().configure(with: config)
 ```
 </span>
       </TabPanel>
@@ -927,7 +927,7 @@ class RSCustomDestination: RSDestinationPlugin {
     var key: String = "Custom"
     var controller = RSController()
     var type: PluginType = .destination
-    var client: RSClient?
+    var RSClient.sharedInstance(): RSClient?
     
     func update(serverConfig: RSServerConfig, type: UpdateType) {
         guard type == .initial else { return }
@@ -996,7 +996,7 @@ class CustomDestination: RudderDestination {
 <span>
 
 ```swift
-client.addDestination(CustomDestination())
+RSClient.sharedInstance().addDestination(CustomDestination())
 ```
 </span>
       </TabPanel>
@@ -1004,7 +1004,7 @@ client.addDestination(CustomDestination())
 <span>
 
 ```objectivec
-#import "&lt;PROJECT_MODULE_NAME&gt;-Swift.h"
+#import "<PROJECT_MODULE_NAME>-Swift.h"
 
 [client addDestination:[[CustomDestination alloc] init]];
 ```
@@ -1072,7 +1072,7 @@ You can get the user traits after making an `identify` call in the following way
 <span>
 
 ```swift
-let traits = client.traits
+let traits = RSClient.sharedInstance().traits
 ```
 </span>
       </TabPanel>
