@@ -16,7 +16,6 @@ For more information on sending events via the Cloud mode, refer to the <a href=
 Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repo</a>.
 </div>
 
-
 ## Track
 
 The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
@@ -57,31 +56,6 @@ RudderStack supports e-commerce tracking for Google Analytics 4. Use the [Rudder
 
 Below are some examples of the track event names that are passed to Google Analytics 4-specific e-commerce event name:
 
-| RudderStack event name    | Google Analytics 4 event name |
-| :------------------------ | :---------------------------- |
-| Products Searched         | `search`                      |
-| Product List Viewed       | `view_item_list`              |
-| Promotion Viewed          | `view_promotion`              |
-| Product Clicked           | `select_item`                 |
-| Product Added To Wishlist | `add_to_wishlist`             |
-| Product Added             | `add_to_cart`                 |
-| Cart Shared               | `share`                       |
-| Checkout Started          | `begin_checkout`              |
-| Order Completed           | `purchase`                    |
-
-
-| Event mapping (RudderStack -> GA4)    | Property mapping (RudderStack -> GA4)  |
-| :------------------------ | :---------------------------- |
-|      <li> Products Searched ->  <code class=“inline-code”>search</code></li>  | <li> <code class=“inline-code”>query</code> -> <code class=“inline-code”>search_term</code>  </li>      |
-|  <li>Product List Viewed -> <code class=“inline-code”>view_item_list</code></li><li>Product Clicked -> <code class=“inline-code”>select_item</code></li>            | <li><code class=“inline-code”>list_id</code> -> <code class=“inline-code”>item_list_id</code></li><li><code class=“inline-code”>category</code> -> <code class=“inline-code”>item_list_name</code></li>|
-|      <li>Promotion Viewed -> <code class=“inline-code”>view_promotion</code></li><li>Promotion Clicked -> <code class=“inline-code”>select_promotion</code></li>  |  <li><code class=“inline-code”>position</code> -> <code class=“inline-code”>location_id</code> </li>       |
-|  <li>Product Viewed -> <code class=“inline-code”>view_item</code></li><li>Product Added -> <code class=“inline-code”>ADD_CART</code></li> <li>Product Removed -> <code class=“inline-code”>remove_from_cart</code></li> <li>Cart Viewed -> <code class=“inline-code”>view_cart</code></li> <li>Checkout Started -> <code class=“inline-code”>START_CHECKOUT</code></li> <li>Product Added to Wishlist -> <code class=“inline-code”>add_to_wishlist</code></li>| <li><code class=“inline-code”>total</code> -> <code class=“inline-code”>value</code></li>|
-|  <li>Payment Info Entered -> <code class=“inline-code”>add_payment_info</code></li> | <li><code class=“inline-code”>payment_method</code> -> <code class=“inline-code”>payment_type</code></li> |
-|  <li>Order Completed -> <code class=“inline-code”>PURCHASE</code></li><li>Order Refunded -> <code class=“inline-code”>refund</code></li>            | <li><code class=“inline-code”>order_id</code> -> <code class=“inline-code”>transaction_id</code></li><li><code class=“inline-code”>total</code> -> <code class=“inline-code”>value</code></li>|
-| <li> Product Shared -> <code class=“inline-code”>share</code></li> | <li><code class=“inline-code”>share_via</code> -> <code class=“inline-code”>method</code> </li><li><code class=“inline-code”>product_id</code> -> <code class=“inline-code”>content_id</code></li>|
-|  <li>Cart Shared -> <code class=“inline-code”>share</code></li> | <li><code class=“inline-code”>content_type</code> -> <code class=“inline-code”>cart</code></li> |
-|  <li>Group -> <code class=“inline-code”>join_group</code> </li>|  |
-
 <table>
   <tr>
     <th colspan="2">Event Mapping</th>
@@ -102,18 +76,72 @@ Below are some examples of the track event names that are passed to Google Analy
   <tr>
     <td>Product List Viewed</td>
     <td><code class=“inline-code”>view_item_list</code></td>
-    <td rowspan="2"><code class=“inline-code”>list_id</code></br><code class=“inline-code”>category</code></</td>
+    <td rowspan="2"><code class=“inline-code”>list_id</code></br><code class=“inline-code”>category</code></td>
     <td rowspan="2"><code class=“inline-code”>item_list_id</code></br><code class=“inline-code”>item_list_name</code></td>
   </tr>
   <tr>
    <td>Product Clicked</td>
     <td><code class=“inline-code”>select_item</code></td>
-   
+  </tr>
+  <tr>
+    <td>Promotion Viewed</br>Promotion Clicked</td>
+    <td><code class=“inline-code”>view_promotion</code></br><code class=“inline-code”>select_promotion</code></td>
+    <td><code class=“inline-code”>position</code></td>
+    <td><code class=“inline-code”>location_id</code></td>
+  </tr>
+   <tr>
+    <td>Product Viewed</br>Product Added</br>Product Removed</br>Cart Viewed</br>Checkout Started</br>Product Added to Wishlist</td>
+    <td><code class=“inline-code”>view_item</code></br><code class=“inline-code”>add_cart</code></br><code class=“inline-code”>remove_from_cart</code></br><code class=“inline-code”>view_cart</code></br><code class=“inline-code”>start_checkout</code></br><code class=“inline-code”>add_to_wishlist</code></td>
+    <td><code class=“inline-code”>total</code></td>
+    <td><code class=“inline-code”>value</code></td>
+  </tr>
+   <tr>
+    <td>Payment Info Entered</td>
+    <td><code class=“inline-code”>add_payment_info</code></td>
+    <td><code class=“inline-code”>payment_method</code></td>
+    <td><code class=“inline-code”>payment_type</code></td>
+  </tr>
+   <tr>
+    <td>Order Completed</td>
+    <td><code class=“inline-code”>purchase</code></td>
+    <td rowspan="2"><code class=“inline-code”>order_id</code></br><code class=“inline-code”>total</code></td>
+    <td rowspan="2"><code class=“inline-code”>transaction_id</code></br><code class=“inline-code”>value</code></td>
+  </tr>
+  <tr>
+   <td>Order Refunded</td>
+    <td><code class=“inline-code”>refund</code></td>
+  </tr>
+    <tr>
+    <td>Product Shared</td>
+    <td><code class=“inline-code”>share</code></td>
+    <td><code class=“inline-code”>share_via</code></br><code class=“inline-code”>product_id</code></td>
+    <td><code class=“inline-code”>method</code></br><code class=“inline-code”>content_id</code></td>
+  </tr>
+  <tr>
+    <td>Cart Shared</td>
+    <td><code class=“inline-code”>share</code></td>
+    <td><code class=“inline-code”>content_type</code></td>
+    <td><code class=“inline-code”>cart</code></td>
+  </tr>
+   <tr>
+    <td>Group</td>
+    <td><code class=“inline-code”>join_group</code></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
+Many of the above events have [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an Item array. The below table details out the mapping of Items array in Google ANalytics 4 to RudderStack properties:
 
-
+| RudderStack    | Google Analytics 4  |
+| :-------------| :-----------------|
+| product_id         | `item_id`        |
+| name               | `item_name`      |
+| price              | `price`          |
+| position           | `index`          |
+| category           | `item_category`  |
+| list_id            | `item_list_id`   |
+| category           | `item_list_name` |
 
 
 <div class="infoBlock">
@@ -122,11 +150,27 @@ For each product in the order, there must be an <code class="inline-code">id</co
 
 </div>
 
+### Rules for naming events
+
+You need to follow the below rules while choosing a name for your new events:
+
+- Event names are case sensitive. For example, `my_event` and `My_Event` are two distinct events.
+- Event names must start with a letter. Use only letters, numbers, and underscores. **DO NOT** use spaces.
+- Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to know more about the reserved event names and prefixes.
+
 ## FAQ
 
-### What reserved names does GA 4 has?
+### What might be the reason for an error message from Google Analytics?
 
-Google nalytics 4 has a few events names which are reserved and cannot be used. Refer to the [Reserved Names](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#reserved_names) for more information on such event names.
+Google Analytics 4 has some reserved prefixes and events names which cannot be used. The list of such Prefixes:
+
+- _ (underscore)
+- firebase_
+- ga_
+- google_
+- gtag.
+
+To know about reserved event names, refer to the [Reserved Names](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#reserved_names) document.
 
 ## Contact us
 
