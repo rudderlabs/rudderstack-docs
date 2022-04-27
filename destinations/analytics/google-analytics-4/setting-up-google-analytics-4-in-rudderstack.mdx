@@ -1,12 +1,12 @@
 ---
 # slug: "/docs/destinations/analytics/setting-up-google-analytics-4-in-rudderstack"
-title: "Setting up Google Analytics 4 "
+title: "Setting up Google Analytics 4"
 description: Step-by-step guide to set up Google Analytics 4 as a destination in RudderStack.
 ---
 
 # Setting up Google Analytics 4
 
-Before configuring Google Analytics 4 as a destination in RudderStack, verify if the source platform is supported by Google Analytics 4, by referring to the table below:
+Before configuring Google Analytics 4 as a destination in RudderStack, verify if the source platform is supported by Google Analytics 4 by referring to the table below:
 
 | **Connection Mode** | **Web**           | **Mobile** | **Server** |
 | :------------------ | :------------ | :----- | :----- |
@@ -28,9 +28,8 @@ Once you have confirmed that the source platform supports sending events to Goog
 To successfully configure Google Analytics 4 as a destination, configure the following settings:
 
 <img src="/assets/event-stream-destinations/google-analytics-4-connection-settings.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
-<img src="/assets/event-stream-destinations/google-analytics-4-connection-settings2.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
 
-- **API Secret**: This field is only required for cloud mode setup and needs you to enter the API Secret generated through the Google Analytics dashboard. It can be created in the Google Analytics dashboard under **Admin > Data Streams > choose your stream > Measurement Protocol > Create**.
+- **API Secret**: This field is required only for the cloud mode setup where you can enter the API Secret generated through the Google Analytics dashboard. It can be created in the Google Analytics dashboard under **Admin > Data Streams > choose your stream > Measurement Protocol > Create**.
   
 - **Measurement Id**: Enter the Measurement Id which is the identifier for a data stream. It can be found in Google Analytics dashboard under **Admin > Data Streams > choose your stream > Measurement ID**.
 
@@ -45,18 +44,8 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
   
  If you are using the <code class="inline-code">gtag</code>, <strong>API Secret</strong> and <strong>Measurement Id</strong> are the required fields. However, if you are using the Firebase app, <strong>Firebase App Id</strong> and <strong>API Secret</strong> are the required fields.
   </div>
-
-### Client-side events filtering
-
-<div class="infoBlock">
-
-This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
-</div>
-
-### Web SDK settings
-
-- **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
-- **Block a Page View Event**: Enable this setting to disable sending `page_view` events on load. However, you can explicitly send a `page_view` event by calling the `page()` API.
+  
+  - **Block a Page View Event**: Enable this setting to disable sending `page_view` events on load. However, you can explicitly send a `page_view` event by calling the `page()` API.
 - **Extend Page View Property**: Enable this setting to send the following properties along with any other custom property passed to the `page` call of the RudderStack SDK:
   - `url`
   - `search`
@@ -69,6 +58,21 @@ Google Analytics 4 has a limit on the number of unique properties per event name
 - **Send userId to GA**: Enabling or disabling this setting exhibits the following behavior:
   - If enabled, user ID is set to the identified visitors and sent according to [Cookies and user identification](https://developers.google.com/tag-platform/devguides/cookies#set_user_id) document.
   - If disabled, userId is not sent. Instead, Rudderstack only sends user traits set as `user_properties` to Google Analytics. The user properties are set on the `gtag` client according to [Set user properties](https://developers.google.com/analytics/devguides/collection/ga4/user-properties?technology=websites) guide.
+
+### Client-side events filtering
+
+<img src="/assets/event-stream-destinations/google-analytics-4-connection-settings2.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
+
+<div class="infoBlock">
+
+This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+</div>
+
+### Web SDK settings
+
+<img src="/assets/event-stream-destinations/google-analytics-4-connection-settings3.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
+
+- **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
 
 Finally, click on Next. Google Analytics 4 is now enabled as a destination in Rudderstack.
 
