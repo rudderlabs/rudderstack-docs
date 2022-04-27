@@ -58,7 +58,7 @@ For more information on obtaining the your Intercom app ID,  refer to the <a hre
 </div>
 
 - **Android API Key** / **iOS API Key**: This is required for sending events from your mobile apps to Intercom. You can get it from your Intercom dashboard by going to **Settings** > **Installation** and selecting the relevant platform.
-- **Include Context with Identify Calls**: Enable this option to send the user context details to Intercom in the [`identify`](#identify) calls.
+- **Include Context with Identify Calls**: Enable this option to send the user context details to Intercom in the [`identify`](#collecting-identify-context) calls.
 - **Send AnonymousId as Secondary UserId**: Enable this option to send `anonymousId` as the user ID to Intercom when the `userId` is absent from the event payload.
 
 <div class="successBlock">
@@ -187,9 +187,9 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 })
 ```
 
-### How RudderStack uses `identify` to send data to Intercom
+### Using `identify` calls
 
-You can use the `identify` call to:
+You can use the `identify` call to create or update user information in Intercom, as explained below:
 
 - **Create/update a user**: When you make an`identify` call, RudderStack creates or updates the user in Intercom using their [Users API](https://developers.intercom.com/reference#users).
 - **Remove users from a company**: To remove users from a company, you can pass `remove: true` inside the `company` object, as shown:
@@ -279,7 +279,7 @@ The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/
 
 <div class="warningBlock">
 
-The <code class="inline-code">page</code> call is supported only for the <strong>web device mode</strong> and is not supported for the other sources. It works by triggering Intercom's <code class="inline-code">update</code> method, which looks for a list of new open conversations to be displayed to the current user.
+The <code class="inline-code">page</code> call is supported only for the <strong><a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">JavaScript SDK</a></strong> when sending events via the <strong><a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a></strong>. It works by triggering Intercom's <code class="inline-code">update</code> method, which looks for a list of new open conversations to be displayed to the current user.
 </div>
 
 A sample `page` call looks like the following code snippet:
@@ -323,26 +323,13 @@ rudderClient.reset();
     </TabPanels>
   </Tabs>
 
-## Implementing push notifications and deep linking
-
-None of the RudderStack SDKs support push notifications currently. Refer to the [Intercom documentation](https://developers.intercom.com/installing-intercom/docs) for more information on configuring these features for your project.
-
 ## FAQ
 
-### Where can I find the Intercom API access token?
+### Does RudderStack support Intercom's push notification and deep linking features?
 
-You can obtain the token by going to your Intercom dashboard and navigating to **Settings** > **Developers** > **Developer Hub**. Then, select your app and go to **Configure** > **Authentication**.
+Unfortunately, none of the RudderStack SDKs support push notifications and deep linking features currently. Refer to the [Intercom documentation](https://developers.intercom.com/installing-intercom/docs) for more information on configuring these features for your project.
 
-<div class="infoBlock">
- 
-For more information, refer to the <a href="https://help-desk-migration.com/help/get-intercom-api-access-token/">Intercom Knowledge Base</a>.
-</div>
-
-### Where can I find the Intercom app ID?
-
-The Intercom app ID is required for the sending events via the web and mobile SDKs. You can get this ID from your Intercom dashboard by going to **Settings** > **Installation** and selecting the relevant platform.
-
-#### What happens if both `userId` or `email` are missing in the `identify` / `track` calls sent to Intercom?
+### What happens if both `userId` or `email` are missing in the `identify` / `track` calls sent to Intercom?
 
 For both `identify` and `track` calls, either `userId` or `email` is a mandatory field. In case both these fields are missing, RudderStack will drop the event.
 
