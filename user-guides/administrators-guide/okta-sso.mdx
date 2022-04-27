@@ -55,12 +55,17 @@ In the **Attribute Statements** section, you need to enter the following setting
 
 <img src="../../assets/user-guides/okta-sso-5.png" />
 
-| Name              | Name format \(optional\) | Value            | Description |
+| Name              | Name format (optional) | Default value            | Comments |
 | :---------------- | :----------------------- | :--------------- | :-----|
-| Email         | Unspecified              | `user.email` | This needs to be the user's email. |
+| Email         | Unspecified              | `user.email` | Set the value that corresponds to **your organization's** user email. |
 | LastName          | Unspecified              | `user.lastName`  |  Although `user.lastName` is recommended, you can provide any other value here. | 
 
-- In the next page, select the **I'm an Okta customer adding an internal app** option and click on **Finish**.
+<div class="infoBlock">
+
+As long as the attributes you set match the <strong>Email</strong> and <strong>LastName</strong> fields, your SSO should work without any issues.
+</div>
+
+In the next page, select the **I'm an Okta customer adding an internal app** option and click on **Finish**.
 
 The RudderStack Single Sign-On app is now created and you will be directed to the app's page.
 
