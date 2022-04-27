@@ -50,7 +50,7 @@ To successfully configure Intercom as a destination, you will need to configure 
 For more information on obtaining the Intercom API access token, refer to the <a href="https://help-desk-migration.com/help/get-intercom-api-access-token/">Intercom Knowledge Base</a>.
 </div>
 
-- **App ID**: The Intercom app ID is required for the sending events via the web and mobile SDKs. You can get this ID from your Intercom dashboard by going to **Settings** > **Installation** and selecting the relevant platform.
+- **App ID**: The Intercom app ID is required for sending events via the web and mobile SDKs. You can get this ID from your Intercom dashboard by going to **Settings** > **Installation** and selecting the relevant platform.
 
 <div class="infoBlock">
  
@@ -77,7 +77,7 @@ Depending on your platform of integration, follow the steps below to add Interco
   </TabList>
     <TabPanels>
       <TabPanel>
-        If this is the first time you are integrating our RudderStack Android SDK to your project, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/">Android SDK</a> documentation for more information.<br/><br/>
+        If this is the first time you are integrating the RudderStack Android SDK to your project, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/">Android SDK</a> documentation for more information.<br/><br/>
        
 Your Android app must be on <strong>version 5.0 (API level 21) or higher</strong> for RudderStack to be able to send events to Intercom.<br/><br/>
 
@@ -132,7 +132,7 @@ val rudderClient:RudderClient = RudderClient.getInstance(
 </ol>
       </TabPanel>
       <TabPanel>
-        If this is the first time you are integrating our RudderStack iOS SDK to your project, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk">iOS SDK</a> documentation for more information.<br/><br/>
+        If this is the first time you are integrating the RudderStack iOS SDK to your project, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk">iOS SDK</a> documentation for more information.<br/><br/>
 
 To add the RudderStack iOS SDK to your project, follow these steps:
 <ol>
@@ -207,7 +207,7 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 })
 ```
 
-- **Unsubscribe users**: To unsubscribe users from emails, pass `unsubscribedFromEmails: true` inside the `context` object, as shown:
+- **Unsubscribe users**: To unsubscribe users from emails, you can pass `unsubscribedFromEmails: true` inside the `context` object, as shown:
 
 ```javascript
 rudderanalytics.identify("1hKOmRA4GRlm", {
@@ -224,7 +224,7 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 
 <div class="infoBlock">
 
-RudderStack currently does not support Intercom's <strong>Last Seen</strong> feature yet.
+RudderStack does not support Intercom's <strong>Last Seen</strong> feature currently.
 </div>
 
 ### Traits mapping
@@ -254,7 +254,7 @@ If you enable the **Include Context with Identify Calls** option in the RudderSt
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with them.
+The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the customer events, that is, the actions they perform, along with any properties associated with them.
 
 A sample `track` call is shown below:
 
@@ -299,7 +299,7 @@ The `reset` method resets the previously identified user and any related informa
   </TabList>
     <TabPanels>
       <TabPanel>
-        To reset a user identification in your Android app, run the following command:
+        To reset user identification in your Android app, run the following command:
 
 <span>
 
@@ -310,7 +310,7 @@ rudderClient.reset();
 
       </TabPanel>
       <TabPanel>
-        To reset a user identification in your iOS app, run the following command:
+        To reset user identification in your iOS app, run the following command:
 
 <span>
 
@@ -325,7 +325,7 @@ rudderClient.reset();
 
 ## Implementing push notifications and deep linking
 
-None of the RudderStack SDKs support push notifications at this point. Refer to the [Intercom Documentation](https://developers.intercom.com/installing-intercom/docs) for more information on configuration these features for your project.
+None of the RudderStack SDKs support push notifications currently. Refer to the [Intercom documentation](https://developers.intercom.com/installing-intercom/docs) for more information on configuring these features for your project.
 
 ## FAQ
 
