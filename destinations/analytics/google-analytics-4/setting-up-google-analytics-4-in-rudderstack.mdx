@@ -46,7 +46,7 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
   </div>
   
   - **Block a Page View Event**: Enable this setting to disable sending `page_view` events on load. However, you can explicitly send a `page_view` event by calling the `page()` API.
-- **Extend Page View Property**: Enable this setting to send the following properties along with any other custom property passed to the `page` call of the RudderStack SDK:
+- **Extend Page View Property**: Enable this setting to send the following properties along with any other custom property to the `page` call of the RudderStack SDK:
   - `url`
   - `search`
  
@@ -55,26 +55,23 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
 Google Analytics 4 has a limit on the number of unique properties per event name. The default `page_view` event supports the properties mentioned in <a href="https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484">Automatically collected events</a> guide.
   </div>
   
-- **Send userId to GA**: Enabling or disabling this setting exhibits the following behavior:
-  - If enabled, user ID is set to the identified visitors and sent according to [Cookies and user identification](https://developers.google.com/tag-platform/devguides/cookies#set_user_id) document.
-  - If disabled, userId is not sent. Instead, Rudderstack only sends user traits set as `user_properties` to Google Analytics. The user properties are set on the `gtag` client according to [Set user properties](https://developers.google.com/analytics/devguides/collection/ga4/user-properties?technology=websites) guide.
+- **Send userId to GA**: This setting exhibits the following behavior:
+  - If enabled, user ID is set to the identified visitors and sent as explained in the [Cookies and user identification](https://developers.google.com/tag-platform/devguides/cookies#set_user_id) guide.
+  - If disabled, userId is not sent and Rudderstack only sends the user traits set as `user_properties` to Google Analytics. The user properties are set on the `gtag` client as explained in the [Set user properties](https://developers.google.com/analytics/devguides/collection/ga4/user-properties?technology=websites) guide.
 
 ### Client-side events filtering
 
 <img src="/assets/event-stream-destinations/google-analytics-4-connection-settings2.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
 
-<div class="infoBlock">
-
 This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
-</div>
 
 ### Web SDK settings
 
 <img src="/assets/event-stream-destinations/google-analytics-4-connection-settings3.png" alt="Google Analytics 4 Connection Settings in RudderStack"/>
 
-- **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
+**Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
 
-Finally, click on Next. Google Analytics 4 is now enabled as a destination in Rudderstack.
+Finally, click on **Next** to enable Google Analytics 4 as a destination in Rudderstack.
 
 ## FAQ
 
