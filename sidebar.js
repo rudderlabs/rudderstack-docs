@@ -2468,6 +2468,14 @@ export const jsonData = [
                     
                  ]
               },
+             {
+                 "key":"filter-events",
+                 "title":"How to Filter Events using Different Methods",
+                 "link":"/user-guides/how-to-guides/filter-events/",
+                 "content":[
+                    
+                 ]
+              },
               {
                  "key":"how-to-filter-selective-destinations",
                  "title":"How to Filter Selective Destinations",
