@@ -6,6 +6,8 @@ description:  Detailed technical documentation on sending events to Google Analy
 
 # Cloud Mode
 
+RudderStack lets you send your event data to Google Analytics 4 via the Cloud mode.
+
 <div class="infoBlock">
 
 For more information on sending events via the Cloud mode, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">RudderStack Connection Modes</a> guide.
@@ -52,9 +54,9 @@ rudderanalytics.track('product list viewed', {
 
 ## E-commerce
 
-RudderStack supports e-commerce tracking for Google Analytics 4. Use the [RudderStack eCommerce spec](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) for sending events while instrumenting your site with the RudderStack SDK.
+RudderStack supports e-commerce tracking for Google Analytics 4. You can use the [RudderStack e-commerce specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) for sending events while instrumenting your site with the RudderStack SDK.
 
-Below are some examples of the track event names that are passed to Google Analytics 4-specific e-commerce event name:
+The below table lists the mappings of the `track` events and properties that are passed to Google Analytics 4 e-commerce events and properties:
 
 <table>
   <tr>
@@ -131,7 +133,13 @@ Below are some examples of the track event names that are passed to Google Analy
   </tr>
 </table>
 
-Many of the above events have [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an Item array. The below table details out the mapping of Items array in Google ANalytics 4 to RudderStack properties:
+
+<div class="infoBlock">
+
+There must be an <code class="inline-code">id</code> and <code class="inline-code">name</code> associated for each product in the order. Refer to the <a href="https://developers.google.com/gtagjs/reference/ga4-events#view_item_list">Item list</a> for more information on Google Analytics 4 e-commerce events and corresponding properties.
+</div>
+
+Most of the above mentioned events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. The below table details out the mappings for `Items` array:
 
 | RudderStack    | Google Analytics 4  |
 | :-------------| :-----------------|
@@ -144,25 +152,20 @@ Many of the above events have [`items`](https://developers.google.com/analytics/
 | category           | `item_list_name` |
 
 
-<div class="infoBlock">
-
-For each product in the order, there must be an <code class="inline-code">id</code> and <code class="inline-code">name</code> associated. More info on Google Analytics 4 e-commerce event and corresponding properties can be found <a href="https://developers.google.com/gtagjs/reference/ga4-events#view_item_list">here</a>.
-
-</div>
 
 ### Rules for naming events
 
-You need to follow the below rules while choosing a name for your new events:
+You must follow the below rules while choosing a name for the new events:
 
 - Event names are case sensitive. For example, `my_event` and `My_Event` are two distinct events.
-- Event names must start with a letter. Use only letters, numbers, and underscores. **DO NOT** use spaces.
+- Event names must start with a letter. Only letters, numbers, and underscores are permitted. **DO NOT** use spaces.
 - Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to know more about the reserved event names and prefixes.
 
 ## FAQ
 
 ### What might be the reason for an error message from Google Analytics?
 
-Google Analytics 4 has some reserved prefixes and events names which cannot be used. The list of such Prefixes:
+Google Analytics 4 has some reserved prefixes and events names which cannot be used. The list of such prefixes is mentioned below:
 
 - _ (underscore)
 - firebase_
@@ -170,7 +173,7 @@ Google Analytics 4 has some reserved prefixes and events names which cannot be u
 - google_
 - gtag.
 
-To know about reserved event names, refer to the [Reserved Names](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#reserved_names) document.
+For the list of reserved event names, refer to the [Reserved Names](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#reserved_names) guide.
 
 ## Contact us
 
