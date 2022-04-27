@@ -99,23 +99,121 @@ RudderStack supports e-commerce tracking for Google Analytics 4. Use the [Rudder
 
 Below are some examples of the track event names that are passed to Google Analytics 4-specific e-commerce event name:
 
-| RudderStack event name    | Google Analytics 4 event name |
-| :------------------------ | :---------------------------- |
-| Products Searched         | `search`                      |
-| Product List Viewed       | `view_item_list`              |
-| Promotion Viewed          | `view_promotion`              |
-| Product Clicked           | `select_item`                 |
-| Product Added To Wishlist | `add_to_wishlist`             |
-| Product Added             | `add_to_cart`                 |
-| Cart Shared               | `share`                       |
-| Checkout Started          | `begin_checkout`              |
-| Order Completed           | `purchase`                    |
+<table>
+  <tr>
+    <th colspan="2">Event Mapping</th>
+    <th colspan="2">Property Mapping</th>
+  </tr>
+  <tr>
+    <th>RudderStack</th>
+    <th>Google Analytics 4</th>
+    <th>RudderStack</th>
+    <th>Google Analytics 4</th>
+  </tr>
+  <tr>
+    <td>Products Searched</td>
+    <td><code class=“inline-code”>search</code></td>
+    <td><code class=“inline-code”>query</code></td>
+    <td><code class=“inline-code”>search_term</code></td>
+  </tr>
+  <tr>
+    <td>Product List Viewed</td>
+    <td><code class=“inline-code”>view_item_list</code></td>
+    <td rowspan="2"><code class=“inline-code”>list_id</code></br><code class=“inline-code”>category</code></td>
+    <td rowspan="2"><code class=“inline-code”>item_list_id</code></br><code class=“inline-code”>item_list_name</code></td>
+  </tr>
+  <tr>
+   <td>Product Clicked</td>
+    <td><code class=“inline-code”>select_item</code></td>
+  </tr>
+  <tr>
+    <td>Promotion Viewed</br>Promotion Clicked</td>
+    <td><code class=“inline-code”>view_promotion</code></br><code class=“inline-code”>select_promotion</code></td>
+    <td><code class=“inline-code”>position</code></td>
+    <td><code class=“inline-code”>location_id</code></td>
+  </tr>
+   <tr>
+    <td>Product Viewed</br>Product Added</br>Product Removed</br>Cart Viewed</br>Checkout Started</br>Product Added to Wishlist</td>
+    <td><code class=“inline-code”>view_item</code></br><code class=“inline-code”>add_cart</code></br><code class=“inline-code”>remove_from_cart</code></br><code class=“inline-code”>view_cart</code></br><code class=“inline-code”>start_checkout</code></br><code class=“inline-code”>add_to_wishlist</code></td>
+    <td><code class=“inline-code”>total</code></td>
+    <td><code class=“inline-code”>value</code></td>
+  </tr>
+   <tr>
+    <td>Payment Info Entered</td>
+    <td><code class=“inline-code”>add_payment_info</code></td>
+    <td><code class=“inline-code”>payment_method</code></td>
+    <td><code class=“inline-code”>payment_type</code></td>
+  </tr>
+   <tr>
+    <td>Order Completed</td>
+    <td><code class=“inline-code”>purchase</code></td>
+    <td rowspan="2"><code class=“inline-code”>order_id</code></br><code class=“inline-code”>total</code></td>
+    <td rowspan="2"><code class=“inline-code”>transaction_id</code></br><code class=“inline-code”>value</code></td>
+  </tr>
+  <tr>
+   <td>Order Refunded</td>
+    <td><code class=“inline-code”>refund</code></td>
+  </tr>
+    <tr>
+    <td>Product Shared</td>
+    <td><code class=“inline-code”>share</code></td>
+    <td><code class=“inline-code”>share_via</code></br><code class=“inline-code”>product_id</code></td>
+    <td><code class=“inline-code”>method</code></br><code class=“inline-code”>content_id</code></td>
+  </tr>
+  <tr>
+    <td>Cart Shared</td>
+    <td><code class=“inline-code”>share</code></td>
+    <td><code class=“inline-code”>content_type</code></td>
+    <td><code class=“inline-code”>cart</code></td>
+  </tr>
+   <tr>
+    <td>Group</td>
+    <td><code class=“inline-code”>join_group</code></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+Many of the above events have [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an Item array. The below table details out the mapping of Items array in Google ANalytics 4 to RudderStack properties:
+
+| RudderStack    | Google Analytics 4  |
+| :-------------| :-----------------|
+| product_id         | `item_id`        |
+| name               | `item_name`      |
+| price              | `price`          |
+| position           | `index`          |
+| category           | `item_category`  |
+| list_id            | `item_list_id`   |
+| category           | `item_list_name` |
+
 
 <div class="infoBlock">
 
 For each product in the order, there must be an <code class="inline-code">id</code> and <code class="inline-code">name</code> associated. More info on Google Analytics 4 e-commerce event and corresponding properties can be found <a href="https://developers.google.com/gtagjs/reference/ga4-events#view_item_list">here</a>.
 
 </div>
+
+### Rules for naming events
+
+You need to follow the below rules while choosing a name for your new events:
+
+- Event names are case sensitive. For example, `my_event` and `My_Event` are two distinct events.
+- Event names must start with a letter. Use only letters, numbers, and underscores. **DO NOT** use spaces.
+- Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to know more about the reserved event names and prefixes.
+
+## FAQ
+
+### What might be the reason for an error message from Google Analytics?
+
+Google Analytics 4 has some reserved prefixes and events names which cannot be used. The list of such Prefixes:
+
+- _ (underscore)
+- firebase_
+- ga_
+- google_
+- gtag.
+
+To know about reserved event names, refer to the [Reserved Names](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#reserved_names) document.
 
 ## Contact us
 
