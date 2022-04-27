@@ -2478,7 +2478,7 @@ export const jsonData = [
               },
               {
                  "key":"how-to-filter-selective-destinations",
-                 "title":"How to Filter Selective Destinations",
+                 "title":"How to Filter Selective Destinations using JavaScript SDK",
                  "link":"/user-guides/how-to-guides/how-to-filter-selective-destinations/",
                  "content":[
                     
