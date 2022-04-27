@@ -72,8 +72,49 @@ Below are some examples of the track event names that are passed to Google Analy
 
 | Event mapping (RudderStack -> GA4)    | Property mapping (RudderStack -> GA4)  |
 | :------------------------ | :---------------------------- |
-|      Products Searched ->  <code class=“inline-code”>search</code>  |  <code class=“inline-code”>query</code> -> <code class=“inline-code”>search_term</code>        |
+|      <li> Products Searched ->  <code class=“inline-code”>search</code></li>  | <li> <code class=“inline-code”>query</code> -> <code class=“inline-code”>search_term</code>  </li>      |
 |  <li>Product List Viewed -> <code class=“inline-code”>view_item_list</code></li><li>Product Clicked -> <code class=“inline-code”>select_item</code></li>            | <li><code class=“inline-code”>list_id</code> -> <code class=“inline-code”>item_list_id</code></li><li><code class=“inline-code”>category</code> -> <code class=“inline-code”>item_list_name</code></li>|
+|      <li>Promotion Viewed -> <code class=“inline-code”>view_promotion</code></li><li>Promotion Clicked -> <code class=“inline-code”>select_promotion</code></li>  |  <li><code class=“inline-code”>position</code> -> <code class=“inline-code”>location_id</code> </li>       |
+|  <li>Product Viewed -> <code class=“inline-code”>view_item</code></li><li>Product Added -> <code class=“inline-code”>ADD_CART</code></li> <li>Product Removed -> <code class=“inline-code”>remove_from_cart</code></li> <li>Cart Viewed -> <code class=“inline-code”>view_cart</code></li> <li>Checkout Started -> <code class=“inline-code”>START_CHECKOUT</code></li> <li>Product Added to Wishlist -> <code class=“inline-code”>add_to_wishlist</code></li>| <li><code class=“inline-code”>total</code> -> <code class=“inline-code”>value</code></li>|
+|  <li>Payment Info Entered -> <code class=“inline-code”>add_payment_info</code></li> | <li><code class=“inline-code”>payment_method</code> -> <code class=“inline-code”>payment_type</code></li> |
+|  <li>Order Completed -> <code class=“inline-code”>PURCHASE</code></li><li>Order Refunded -> <code class=“inline-code”>refund</code></li>            | <li><code class=“inline-code”>order_id</code> -> <code class=“inline-code”>transaction_id</code></li><li><code class=“inline-code”>total</code> -> <code class=“inline-code”>value</code></li>|
+| <li> Product Shared -> <code class=“inline-code”>share</code></li> | <li><code class=“inline-code”>share_via</code> -> <code class=“inline-code”>method</code> </li><li><code class=“inline-code”>product_id</code> -> <code class=“inline-code”>content_id</code></li>|
+|  <li>Cart Shared -> <code class=“inline-code”>share</code></li> | <li><code class=“inline-code”>content_type</code> -> <code class=“inline-code”>cart</code></li> |
+|  <li>Group -> <code class=“inline-code”>join_group</code> </li>|  |
+
+<table>
+  <tr>
+    <th colspan="2">Event Mapping</th>
+    <th colspan="2">Property Mapping</th>
+  </tr>
+  <tr>
+    <th>RudderStack</th>
+    <th>Google Analytics 4</th>
+    <th>RudderStack</th>
+    <th>Google Analytics 4</th>
+  </tr>
+  <tr>
+    <td>Products Searched</td>
+    <td><code class=“inline-code”>search</code></td>
+    <td><code class=“inline-code”>query</code></td>
+    <td><code class=“inline-code”>search_term</code></td>
+  </tr>
+  <tr>
+    <td>Product List Viewed</td>
+    <td><code class=“inline-code”>view_item_list</code></td>
+    <td rowspan="2"><code class=“inline-code”>list_id</code></br><code class=“inline-code”>category</code></</td>
+    <td rowspan="2"><code class=“inline-code”>item_list_id</code></br><code class=“inline-code”>item_list_name</code></td>
+  </tr>
+  <tr>
+   <td>Product Clicked</td>
+    <td><code class=“inline-code”>select_item</code></td>
+   
+  </tr>
+</table>
+
+
+
+
 
 <div class="infoBlock">
 
