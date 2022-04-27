@@ -98,12 +98,6 @@ The below table lists the mappings of the `track` events and properties that are
     <td><code class=“inline-code”>value</code></td>
   </tr>
    <tr>
-    <td>Payment Info Entered</td>
-    <td><code class=“inline-code”>add_payment_info</code></td>
-    <td><code class=“inline-code”>payment_method</code></td>
-    <td><code class=“inline-code”>payment_type</code></td>
-  </tr>
-   <tr>
     <td>Order Completed</td>
     <td><code class=“inline-code”>purchase</code></td>
     <td rowspan="2"><code class=“inline-code”>order_id</code></br><code class=“inline-code”>total</code></td>
@@ -128,11 +122,31 @@ The below table lists the mappings of the `track` events and properties that are
    <tr>
     <td>Group</td>
     <td><code class=“inline-code”>join_group</code></td>
-    <td></td>
-    <td></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>Payment Info Entered</td>
+    <td><code class=“inline-code”>add_payment_info</code></td>
+    <td><code class=“inline-code”>payment_method</code></td>
+    <td><code class=“inline-code”>payment_type</code></td>
+  </tr>
+  <tr>
+    <td>Payment Info Entered</td>
+    <td><code class=“inline-code”>add_shipping_info</code></td>
+    <td><code class=“inline-code”>shipping_method</code></td>
+    <td><code class=“inline-code”>shipping_tier</code></td>
   </tr>
 </table>
 
+<div class="infoBlock">
+
+The <strong>Payment Info Entered</strong> event is mapped on the basis of parameters passed to it:
+<ul>
+  <li>If <code class=“inline-code”>payment_method</code> is passed along with the other fields, it maps to <code class=“inline-code”>add_payment_info</code></li> event.
+ <li>If <code class=“inline-code”>shipping_method</code> is passed along with the other fields, it maps to <code class=“inline-code”>add_shipping_info</code></li> event.
+  </ul>
+</div>
 
 <div class="infoBlock">
 
