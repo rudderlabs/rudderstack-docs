@@ -6,13 +6,13 @@ description: Step-by-step guide to set up Slack as a destination in RudderStack
 
 # Slack
 
-[Slack](https://slack.com/intl/en-in/) is a popular business communication platform that allows you to organize all your business-related chats by specific topics, groups or direct/personal messaging.
+[Slack](https://slack.com/intl/en-in/) is a popular business communication platform that lets you organize all your business-related chats by specific topics, groups, or direct messaging.
 
 RudderStack supports Slack as a destination where you can send your event data seamlessly.
 
 <div class="successBlock">
 
- Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/slack">GitHub repo</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/slack">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -31,35 +31,37 @@ To know more about the difference between cloud mode and device mode in RudderSt
 
 Once you have confirmed that the platform supports sending events to Slack, perform the steps below:
 
-1. From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. Then, from the list of destinations, select **Slack**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Slack**.
 2. Assign a name to the destination and click on **Next**.
 
 ### Connection settings
 
 To successfully configure Slack as a destination, you will need to configure the following settings:
 
-<img src="/assets/event-stream-destinations/slack-settings.png" alt="Slack connection settings" />
-
 #### Event Channels
 
-- **Event Name**: Enter the event name or regex expression to match the RudderStack event name.
-- **Event Channel**: Slack channel where the event will be sent. You can specify a `#channel_name` or `@user_name`.
-- **Regex Matching**: Enable this setting if the event name is a regex in the first parameter.                 
+<img src="../../assets/event-stream-destinations/slack-settings.png" alt="Slack connection settings" />
+
+- **Event Name**: Enter the event name or the regex to match the RudderStack event name.
+- **Event Channel**: Enter the name of the Slack channel where the event will be sent. You can specify `#channel_name` or `@user_name`.
+- **Regex Matching**: Enable this setting if the event name in the first parameter is a regular expression.
 
 <div class="warningBlock">
 
-RudderStack adds the global \(`g`\) parameter implicitly. Hence, you need not add it with the regex expression.
+RudderStack adds the global <code class="inline-code">g</code> parameter implicitly. Hence, you need not add it with the regex.
 </div>
 
 #### Identify Template
 
-<img src="/assets/event-stream-destinations/slack-settings4.png" alt="Slack connection settings" />
+<img src="../../assets/event-stream-destinations/slack-settings4.png" alt="Slack connection settings" />
 
-**Identify Template:** Provide the template that you want the `identify` event to be transformed to when sent to Slack. The default template is:
+**Identify Template**: Specify the template that you want the `identify` event to be transformed to before it is sent to Slack. The default template is shown below:
 
-`Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....`
+```
+Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....
+```
 
-Here, the traits key and value are the key-value pairs in the traits object of [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#sample-payload) payload. 
+Here, the traits key and value are the key-value pairs in the `traits` object of the [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#sample-payload) event payload. 
 
 The `name` field in the template is determined from either of the following:
 
@@ -71,49 +73,50 @@ The `name` field in the template is determined from either of the following:
   - `User userId`
   - `Anonymous user anonymousId`
 
-<div class="infoBlock">
-
-Only the traits listed in the <strong>Whitelisted Traits</strong> section are considered to be a part of the identify template. The rest of them are sent to Slack.
+Note that only the traits listed in the **Whitelisted Traits** section are considered to be a part of the identify template. The rest of them are sent to Slack.
  
- <img src="/assets/event-stream-destinations/traits-slack.png" alt="Slack connection settings" />
-
-</div>
+<img src="../../assets/event-stream-destinations/traits-slack.png" alt="Whitelisted traits" />
 
 #### Event Templates
 
-<img src="/assets/event-stream-destinations/slack-settings2.png" alt="Slack connection settings" />
+<img src="../../assets/event-stream-destinations/slack-settings2.png" alt="Event templates settings" />
 
-- **Event Name:** Event name or regex expression to match the rudder event name.                                                                     
-- **Event Template:** Template for the above event name/names matching the regex. The default template is:
+- **Event Name**: Enter the event name or the regex to match the RudderStack event name.                                                                     
+- **Event Template**: Specify the template for the above event names matching the regex. The default template is as shown:
  
-   `{{name}} did {{event}}` 
+```
+{{name}} did {{event}}
+```
 
-   Here, the `name` is determined in the same way as above.
-- **Regex Matching:**  Enable this setting if the event name is a regex in the first parameter.
+Here, `name` is determined in the same way as described in the [Identify Template](#identify-template) section above.
+
+- **Regex Matching**:  Enable this setting if the event name is a regex in the first parameter.
 
 #### Webhook URL
 
-<img src="/assets/event-stream-destinations/slack-settings3.png" alt="Slack connection settings" />
+<img src="../../assets/event-stream-destinations/slack-settings3.png" alt="Slack connection settings" />
 
-**Webhook URL:** Mention the Slack's incoming [Webhook URL](https://my.slack.com/services/new/incoming-webhook/). To obtain the Webhook URL, follow the below steps:
+**Webhook URL:** Enter your Slack's [incoming webhook URL](https://my.slack.com/services/new/incoming-webhook/). 
+
+To obtain the webhook URL, follow the below steps:
 
 1. Click on your Slack workspace name, then go to **Administration** > **Manage Apps**.
 2. Search for **Incoming webhooks** in the Slack app directory and add it to Slack by clicking on **Add to Slack**.
-3. Select a channel where you want to post the messages forwarded by webhook and click on **Add Incoming webhooks integration**.
+3. Select a channel where you want to post the messages forwarded by the webhook and click on **Add Incoming webhooks integration**.
 
-<img src="/assets/event-stream-destinations/choose-channel-slack.png" alt="Slack connection settings" />
+<img src="../../assets/event-stream-destinations/choose-channel-slack.png" alt="Slack connection settings" />
 
-4. Copy the webhook URL and enter it in the RudderStack dashboard.
+4. Finally, copy the webhook URL and enter it in the RudderStack dashboard.
 
-<img src="/assets/event-stream-destinations/webhook-url-slack.png" alt="Slack connection settings" />
+<img src="../../assets/event-stream-destinations/webhook-url-slack.png" alt="Slack connection settings" />
 
-## Handlebar Expression
+## Handlebar expressions
 
-RudderStack supports [Handlebar expression](https://handlebarsjs.com/guide/expressions.html) by leveraging the handlebars.js library for including the variables into your dynamic Slack messages.
+RudderStack supports [Handlebar expression](https://handlebarsjs.com/guide/expressions.html) by leveraging the `handlebars.js` library for including the variables into your dynamic Slack messages.
 
-#### Accessible Variables
+### Accessible Variables
 
-The below table lists the variables you can select in your template messages:
+The following table lists the variables you can select in your template messages:
 
 | Handlebar Expression                     | Output                                                                  |
 | :--------------------------------------- | :---------------------------------------------------------------------- |
@@ -124,9 +127,9 @@ The below table lists the variables you can select in your template messages:
 | `{{traits}}`                             | JSON stringified version of your traits object.     |
 | `{{traitsList.<key_1>}}`                 | Any of the trait values from the event's traits object.                  |
 
-#### Escaped Content
+### Escaped content
 
-The values returned by the `{{variable}}` are HTML-escaped. For example, if a `variable` has a `&` in its value then it will be returned as `&amp;`. To avoid this behavior, you can use the triple "curly-brackets" instead of double, like `{{{variable}}}` instead of `{{variable}}`. This will stop Handlebars from escaping a value if there is one, for example:
+The values returned by the `{{variable}}` are HTML-escaped. For example, if a `variable` has a `&` in its value then it will be returned as `&amp;`. To avoid this behavior, you can use the **triple curly braces** instead of double, like `{{{variable}}}` instead of `{{variable}}`. This will stop the handlebars from escaping a value if there is one, as shown in the following example:
 
 | Expression       | Variable         | Result               |
 | :--------------- | :--------------- | :------------------- |
@@ -135,7 +138,7 @@ The values returned by the `{{variable}}` are HTML-escaped. For example, if a `v
 
 <div class="infoBlock">
  
- Refer to the <a href="https://handlebarsjs.com/guide/expressions.html#html-escaping">Handlebar document</a> for more information regarding the escaped content.
+Refer to the <a href="https://handlebarsjs.com/guide/expressions.html#html-escaping">Handlebar document</a> for more information on the escaped content.
 </div>
 
 ## Identify
@@ -145,14 +148,14 @@ The [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/
 A sample `identify` call for a template, like `Identified {{name}} with {{traits}}`, is as shown:
 
 ```javascript
-window.rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
   name: "Alex Keener",
   email: "alex@example.com",
   country: "USA",
 });
 ```
 
-You will see this message `Identified Alex Keener with name: Alex Keener email: alex@example.com country: USA` in the Slack channel configured by you.
+As a result, you will see this message `Identified Alex Keener with name: Alex Keener email: alex@example.com country: USA` in your configured Slack channel.
 
 ## Track
 
@@ -161,14 +164,14 @@ The [`track`](https://rudderstack.com/docs/rudderstack-api/api-specification/rud
 A sample `track` call for a template, like `{{name}} performed {{event}} with {{properties.key1}} {{properties.key2}}` and the following track call, after being identified as above:
 
 ```javascript
-window.rudderanalytics.track("test_event", {
+rudderanalytics.track("test_event", {
   "key1": "test_val1",
   "key2": "test_val2",
   "key3": "test_val3"
 })
 ```
 
-You will see this message `Alex Keener performed test_event with test_val1 test_val2 test_val3` in the Slack channel configured by you.
+As a result, you will see the message `Alex Keener performed test_event with test_val1 test_val2 test_val3` in your configured Slack channel.
 
 ## Contact us
 
