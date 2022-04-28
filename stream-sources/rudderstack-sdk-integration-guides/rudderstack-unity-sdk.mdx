@@ -76,6 +76,33 @@ RudderClient rudderClient = RudderClient.GetInstance(
 If you are building an iOS project, <code class="inline-code">RudderClient.SerializeSqlite()</code> is important to handle races with SQLite.
 </div>
 
+## Configuring your RudderStack client
+
+You can configure your client based on the following parameters using `RudderConfigBuilder`:
+
+| Parameter               | Type      | Description                | Default value                                            |
+| :---------------------- | :-------- | :--------------------- | :------------------------------- |
+| `logLevel`              | Integer     | Controls how much of the log you want to see from the SDK.           | `RudderLogLevel.INFO`                       |
+| `dataPlaneUrl`          | String  | Your data plane URL.                                                             | `https://hosted.rudderlabs.com` |
+| `flushQueueSize`        | Integer     | Number of events in a batch request to the RudderStack server.              | `30`                                                     |
+| `dbThresholdCount`      | Integer     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database.                          | `10000`                                                  |
+| `sleepcount`          | Integer     | Minimum waiting time to flush the events to the RudderStack server. The minimum value can be set to `1 second`.      | `10 seconds`                                             |
+| `configRefreshInterval` | Integer     | The SDK will fetch the config from `dashboard` after the specified time.          | `2 hours`       |
+| `trackLifecycleEvents`  | Boolean | Determines if the SDK will automatically capture the application lifecycle events.                     | `true`                                                   |
+| `recordScreenViews`     | Boolean | Determines if the SDK will automatically capture the screen view events.                   | `false`            |
+| `autoCollectAdvertId`  | Boolean | Determines if the SDK will collect the advertisement ID.  | `false` |
+| `controlPlaneUrl`       | String  | Change this parameter **only if** you are self-hosting the control plane. Check the [Self-hosted control plane](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the source configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+
+
+### Self-hosted control plane
+
+If you are using a device mode destination like Adjust, Firebase, etc., the Unity SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then specify `controlPlaneUrl` in your`RudderConfigBuilder` that points to your hosted source configuration file.
+
+<div class="warningBlock">
+  
+You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using the <a href="https://app.rudderstack.com">RudderStack Cloud dashboard</a>. This parameter is supported only if you are using the open source <a href="https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to self-host your control plane.
+</div>
+
 ## Identify
 
 The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once the SDK identifies the user, it persists and passes the user information to the subsequent calls. 
@@ -191,28 +218,30 @@ RudderConfigBuilder configBuilder = new RudderConfigBuilder()
     .withAutoCollectAdvertId(true);
 ```
 
-## Tracking application lifecycle events for Android platform
+## Tracking application lifecycle events on the Android platform
 
-The Unity SDK automatically tracks the [application lifecycle events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/) to get insights into the app metrics like installs, opens, updates, etc. However, you can disable the automatic tracking, as shown:
+The Unity SDK automatically tracks the [Application Lifecycle Events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/) to get insights into the app metrics like installs, opens, updates, etc. However, you can disable the automatic tracking, as shown:
 
 ```csharp
 RudderConfig config = new RudderConfigBuilder()
   .WithTrackLifecycleEvents(false)
 ```
-In order to track the application life cycle events on the Android platform, you need to add the `RudderPreferbs.prefab` file from the path `Assets/Rudder/RudderPreferbs.prefab` to every scene in your Unity app. Also, ensure that the `RudderPreferbs.prefab` is linked to the `RudderClient.cs` script.
 
-Unity SDK depends on the life cycle method `onApplicationFocus` of the [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html) to determine the **Application Opened** and **Application Backgrounded** events on the Android platform. Hence, when an application is brought to focus, an **Application Opened** event is sent and 
-when the application is moved out of focus, an **Application Backgrounded** event is sent. 
+To track the application life cycle events on the Android platform, you need to add the `RudderPreferbs.prefab` file from the path `Assets/Rudder/RudderPreferbs.prefab` to every scene in your Unity app. Also, ensure that the `RudderPreferbs.prefab` is linked to the `RudderClient.cs` script.
 
-So, these events might be triggered even before the Rudder SDK gets initialized so as to create actions and execute them once the SDK is initialized.
+<div class="infoBlock">
 
-## Trigger Application Updated lifecycle event
+The Unity SDK depends on the lifecycle method <code class="inline-code">onApplicationFocus</code> of the <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.html"><code class="inline-code">MonoBehaviour</code> class</a> to determine the <strong>Application Opened</strong> and <strong>Application Backgrounded</strong> events on the Android platform.
+  
+Hence, when an application is brought to focus, an <code class="inline-code">Application Opened</code> event is sent, and when the application is moved out of focus, an <code class="inline-code">Application Backgrounded</code> event is sent. So, these events might be triggered even before the RudderStack SDK gets initialized to create the actions and execute them once the SDK is initialized.
+</div>
 
-The following requirements must be met to ensure that the Application Updated lifecycle event is triggered:
+## Triggering Application Updated lifecycle event
 
-**For iOS:** - Make sure the `Bundle version` in the `Info.plist` file of your application is incremented. If the `Bundle version` of your `target` is pointing to the `Bundle version` of your `project`, then increment it.
+The following requirements must be met to ensure that the **Application Updated** lifecycle event is triggered:
 
-**For Android:** - Make sure the `versionCode` in the `defaultConfig` object nested in the `android` object of your application's `build.gradle` is incremented.
+- **For iOS**: Make sure the `Bundle version` in the `Info.plist` file of your application is incremented. If the `Bundle version` of your `target` points to the `Bundle version` of your `project`, then increment it.
+- **For Android**: Make sure the `versionCode` in the `defaultConfig` object nested in the `android` object of your app's `build.gradle` is incremented.
 
 <div class="infoBlock">
 
