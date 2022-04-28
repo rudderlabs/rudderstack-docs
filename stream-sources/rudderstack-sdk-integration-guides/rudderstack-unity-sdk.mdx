@@ -12,11 +12,6 @@ The **RudderStack Unity SDK** is a wrapper for the RudderStack [**Android SDK**]
 
 Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-unity) to get a more hands-on understanding of the SDK.
 
-<div class="warningBlock">
-
-The Unity SDK currently does not support tracking the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/">application lifecycle events</a> on the Android platform.
-</div>
-
 ## SDK setup requirements
 
 To configure the Unity SDK, you will need the following:
@@ -195,6 +190,59 @@ RudderConfigBuilder configBuilder = new RudderConfigBuilder()
     .WithLogLevel(RudderLogLevel.VERBOSE)
     .withAutoCollectAdvertId(true);
 ```
+
+## Tracking application lifecycle events for Android platform
+
+The Unity SDK tracks and sends the application lifecycle events to get insights into the app-related metrics like installs, opens, updates, etc. However, in order to track the application life cycle events on the Android platform, you need to add the `RudderPreferbs.prefab` file in the `Assets/Rudder/RudderPreferbs.prefab` path to each and every scene in your Unity app. Also, make sure that the `RudderPreferbs.prefab` is linked to the `RudderClient.cs` script.
+
+```csharp
+void OnApplicationFocus(bool focus) {
+  Action action;
+
+  if (trackLifeCycleEvents) {
+    if (focus) {
+      action = () => {
+        RudderLogger.LogDebug("Tracking event Application Opened");
+        Dictionary < string, object > eventProperties = new Dictionary < string, object > ();
+        eventProperties.Add("from_background", fromBackGround);
+        RudderMessage message = new RudderMessageBuilder().WithEventName("Application Opened").WithEventProperties(eventProperties).Build();
+        _instance.Track(message);
+
+      };
+    } else {
+      fromBackGround = true;
+      action = () => {
+        RudderLogger.LogDebug("Tracking event Application Backgrounded");
+        RudderMessage message = new RudderMessageBuilder().WithEventName("Application Backgrounded").Build();
+        _instance.Track(message);
+
+      };
+    }
+
+    if (isSDKInitialized) {
+      RudderLogger.LogDebug("SDK Already initialized, executing the actions directly");
+      action();
+    } else {
+      RudderLogger.LogDebug("SDK not initialized yet, adding the actions to the list");
+      actionsList.Add(action);
+    }
+  }
+}
+```
+
+
+## Trigger Application Updated lifecycle event
+
+The following requirements must be met to ensure that the Application Updated lifecycle event is triggered:
+
+**For iOS:** - Make sure the `Bundle version` in the `Info.plist` file of your application is incremented. If the `Bundle version` of your `target` is pointing to the `Bundle version` of your `project`, then increment it.
+
+**For Android:** - Make sure the `versionCode` in the `defaultConfig` object nested in the `android` object of your application's `build.gradle` is incremented.
+
+<div class="infoBlock">
+
+Refer to the <a href ="https://www.rudderstack.com/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/#application-updated">Application Lifecycle Events Specification</a> guide for more information.
+</div>
 
 ## Contact us
 
