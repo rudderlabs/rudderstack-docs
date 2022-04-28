@@ -484,6 +484,12 @@ export const postNavList = [
    "link":"/cloud-extract-sources/salesforce-pardot/",
    "content":[]
    },
+    {
+   "key":"sendgrid",
+   "title":"Sendgrid",
+   "link":"/cloud-extract-sources/sendgrid/",
+   "content":[]
+   },
   {
    "key":"stripe",
    "title":"Stripe",
@@ -518,6 +524,12 @@ export const postNavList = [
     "key":"chargebee",
     "title":"Chargebee",
     "link":"/cloud-extract-sources/chargebee/",
+    "content":[]
+   },
+   {
+    "key":"common-settings",
+    "title":"Common Settings",
+    "link":"/cloud-extract-sources/common-settings/",
     "content":[]
    },
  {
@@ -1745,12 +1757,6 @@ export const postNavList = [
     "content":[]
  },
  {
-   "key":"architecture",
-   "title":"Architecture",
-   "link":"/get-started/rudderstack-architecture/",
-   "content":[]
- },
- {
     "key":"user-guides",
     "title":"User Guides",
     "link":"/user-guides/",
@@ -1901,8 +1907,14 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"filter-events",
+    "title":"How to Filter Events using Different Methods",
+    "link":"/user-guides/how-to-guides/filter-events/",
+    "content":[]
+ },
+ {
     "key":"how-to-filter-selective-destinations",
-    "title":"How to Filter Selective Destinations",
+    "title":"How to Filter Selective Destinations using JavaScript SDK",
     "link":"/user-guides/how-to-guides/how-to-filter-selective-destinations/",
     "content":[]
  },

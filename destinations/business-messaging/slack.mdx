@@ -26,27 +26,25 @@ Before configuring Slack as a destination in RudderStack, verify if the source p
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Slack, perform the steps below:
 
 1. From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. Then, from the list of destinations, select **Slack**.
-
 2. Assign a name to the destination and click on **Next**.
 
 ### Connection settings
 
 To successfully configure Slack as a destination, you will need to configure the following settings:
 
-#### Event Channels
-
 <img src="/assets/event-stream-destinations/slack-settings.png" alt="Slack connection settings" />
 
-- **Event Name:** Event name or regex expression to match the rudder event name.
-- **Event Channel:**  Slack channel where the event will be sent. You can specify a `#channel_name` or `@user_name`.
-- **Regex Matching:**  Enable this setting if the event name is a regex in the first parameter.                 
+#### Event Channels
+
+- **Event Name**: Enter the event name or regex expression to match the RudderStack event name.
+- **Event Channel**: Slack channel where the event will be sent. You can specify a `#channel_name` or `@user_name`.
+- **Regex Matching**: Enable this setting if the event name is a regex in the first parameter.                 
 
 <div class="warningBlock">
 

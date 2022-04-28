@@ -23,17 +23,13 @@ Before configuring DCM Floodlight as a destination in RudderStack, verify if the
 
 <div class="infoBlock">
     
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to DCM Floodlight, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **DCM Floodlight**.
-
-<div class="infoBlock">
-
-Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
-</div>
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **DCM Floodlight**.
+2. Assign a name to the destination and click on **Next**.
 
 ### Connection settings
 
@@ -132,6 +128,13 @@ The following table details the mapping between RudderStack and DCM Floodlight p
 | `properties.orderId` | `ord` | Optional | Sales |
 | `properties.quantity` | `qty` | Optional | Sales |
 | `properties.revenue` | `cost` | Optional | Sales |
+
+<div class="infoBlock">
+    
+You must send the device-specific information for DCM Floodlight like <code class="inline-code">IDFA</code> or <code class="inline-code">advertisingId</code>, which are mapped to the <code class="inline-code">context.device.advertisingId</code>. You can do this using RudderStack's mobile SDKs as they collect this information automatically.
+    
+However, in case you are using a RudderStack server-side SDK, the <code class="inline-code">advertisingId</code> needs to be included manually.
+</div>
 
 The following table gives some more context on the above DCM Floodlight properties:
 

@@ -642,6 +642,14 @@ export const jsonData = [
             ]
          },
          {
+         "key":"sendgrid",
+         "title":"Sendgrid",
+         "link":"/cloud-extract-sources/sendgrid/",
+         "content":[
+            
+            ]
+         },
+         {
          "key":"stripe",
          "title":"Stripe",
          "link":"/cloud-extract-sources/stripe/",
@@ -672,7 +680,15 @@ export const jsonData = [
             "content":[
                
             ]
-         }
+         },
+         {
+         "key":"common-settings",
+         "title":"Common Settings",
+         "link":"/cloud-extract-sources/common-settings/",
+         "content":[
+            
+            ]
+         },
      ]
   },
   {
@@ -2468,9 +2484,17 @@ export const jsonData = [
                     
                  ]
               },
+             {
+                 "key":"filter-events",
+                 "title":"How to Filter Events using Different Methods",
+                 "link":"/user-guides/how-to-guides/filter-events/",
+                 "content":[
+                    
+                 ]
+              },
               {
                  "key":"how-to-filter-selective-destinations",
-                 "title":"How to Filter Selective Destinations",
+                 "title":"How to Filter Selective Destinations using JavaScript SDK",
                  "link":"/user-guides/how-to-guides/how-to-filter-selective-destinations/",
                  "content":[
                     

@@ -78,7 +78,8 @@ The `options` parameter in the above `load` call looks like the following:
   destSDKBaseURL: string, // defaults to https://cdn.rudderlabs.com/v1.1/js-integrations
   useBeacon: boolean, // defaults to false.
   beaconQueueOptions: BeaconQueueOpts,
-  cookieConsentManager: cookieConsentManager
+  cookieConsentManager: cookieConsentManager,
+  anonymousIdOptions: AnonymousIdOptions
 }
 ```
 
@@ -96,6 +97,7 @@ It includes the following details:
 | `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  `navigator.sendBeacon()` utility. |
 | `beaconQueueOptions`  | [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) section. |
 | `cookieConsentManager` | Object       |  Refer to the [`cookieConsentManager`](#cookieconsentmanager) section for more information. |
+| `anonymousIdOptions` | Object       |  Refer to the [Capturing `anonymousId` automatically](#capturing-anonymousid-automatically) section for more information. |
 
 For more details, refer to the [**`options`**](#options) parameter section.
 
@@ -555,7 +557,7 @@ The following table describes each of the above parameters in detail:
 | `minRetryDelay` | Integer | The minimum delay expected before sending an event (in ms)           | 1000              |
 | `backoffFactor` | Integer | Refers to the exponential base.                                      | 2                 |
 | `maxAttempts`   | Integer | Maximum number of attempts to send the event to the destination.     | 10                |
-| `maxItems`      | Integer | Maximum number of events kept in the storage.                        |    100            |
+| `maxItems`      | Integer | Maximum number of events kept in the storage.                        | 100               |
 
 #### cookieConsentManager
 
@@ -578,6 +580,38 @@ rudderanalytics.load(
   
 For more information on the consent managers supported by RudderStack, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/">this section</a>.
 </div>
+
+#### Capturing `anonymousId` automatically 
+
+The JavaScript SDK provides `anonymousIdOptions` object in the [`load()`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter) call options. It automatically captures the anonymous ID from a source and sets it as Rudderstack’s `anonymousId`.
+
+The structure of `anonymousIdOptions` object is shown below:
+
+```javascript
+{
+  autoCapture: {
+    enabled: true,
+    source: "segment",
+  }
+}
+```
+
+| Parameter  | Type  | Description    |   
+| :--------| :---- | :----------------| 
+| `enabled` | Boolean  | Identifies if the auto-capturing of anonymous ID is enabled. | 
+| `source`  | String   | Identifies the external source of the anonymous ID. | 
+
+<div class="infoBlock">
+  
+  If the RudderStack <code class="inline-code">anonymousId</code> is already set in your browser, then <code class="inline-code">anonymousIdOptions</code> will not take effect.
+</div>
+
+<div class="infoBlock">
+  
+  You can use the <strong>Reset</strong> method to generate a new <code class="inline-code">anonymousId</code> whether the <code class="inline-code">anonymousIdOptions</code> object is enabled or not.
+  
+  However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and you reset the <code class="inline-code">anonymousId</code> and then reload the page, Rudderstack <code class="inline-code">anonymousId</code> will be set as the provided source's <code class="inline-code">anonymousId</code>.
+  </div>
 
 ## Adding callbacks to standard methods
 

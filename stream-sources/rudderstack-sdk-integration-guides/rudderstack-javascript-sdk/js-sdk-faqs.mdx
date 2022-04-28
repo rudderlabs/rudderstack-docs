@@ -62,7 +62,10 @@ The size limit on requests is 32KB per message and 4MB per batch request.
 
 ## Can I send the event data to specific destinations only?
 
-Yes, you can. Refer to the [**Filtering Selective Destinations**](https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#filtering-selective-destinations) section in the SDK guide for more information.
+Yes, you can follow any one of the following methods to send your event data to specific destinations:
+
+- [Sending events to selective destinations](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#loading-selective-destinations): You can send your events only to the selective destinations by stopping the SDK from loading the other [device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode)integrations.
+- [Filtering out selective destinations](https://www.rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/): With this approach, you can stop RudderStack from delivering certain events to the specified destinations.
 
 ## What is an anonymous ID? How do I retrieve it?
 

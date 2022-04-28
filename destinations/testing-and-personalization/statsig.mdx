@@ -2,7 +2,7 @@
 # slug: "/docs/destinations/analytics/statsig"
 title: "Statsig"
 description: >-
-  Step-by-step guide to send your event data from RudderStack to Statsig.
+  Step-by-step guide on sending your event data from RudderStack to Statsig.
 ---
 
 # Statsig
@@ -11,7 +11,7 @@ Statsig helps companies safely A/B test features in production before rolling th
 
 <div class="successBlock">
 
-  <strong>Read more about Statsig on their <a href="https://statsig.com/">website</a>. For more information on the Statsig-supported data connectors, refer to their <a href="https://docs.statsig.com/integrations/data-connectors">product documentation</a></strong>.
+Read more about Statsig on their <a href="https://statsig.com/">website</a>. For more information on the Statsig-supported data connectors, refer to the <a href="https://docs.statsig.com/">Statsig Documentation</a>.
 </div>
 
 RudderStack supports Statsig as a destination to which you can send real-time event data for efficient A/B testing.
@@ -27,57 +27,66 @@ Before configuring Statsig as a destination in RudderStack, verify if the source
 
 <div class="infoBlock">
  
- To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+ To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
 </div>
 
 Once you have confirmed that your source platform supports sending events to Statsig, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Statsig**.
-
-<div class="infoBlock">
- 
- Follow our guide on <a href="https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/">Adding a Source and Destination in RudderStack</a> for more information.
-</div>
-
-* Assign a name to the destination and click on **Next**. You should then see the following screen:
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Statsig**.
+2. Assign a name to the destination and click on **Next**.
 
 ### Connection settings
 
-The connection settings required to configure Statsig as a destination in RudderStack are listed below:
+To configure Statsig as a destination in RudderStack, enter the **Server Secret Key** associated with your project. To obtain the server secret key, follow these steps:
 
-- **Server Secret Key**: Enter your server secret key for your project here. To obtain the server secret key, follow these steps:
+1. Log into your [Statsig console](https://console.statsig.com).
+2. Go to your project and click on the **Settings** icon on the top right, as shown:
 
-  - Go to your [**Statsig console**](https://console.statsig.com).
+<img src="../../assets/event-stream-destinations/statsig-settings.png" alt="Statsig settings" />
 
-  - Then, go to your project and click on the **Settings** icon on the top right, as shown:
-  
-  ![statsigs-project-settings](https://user-images.githubusercontent.com/59817155/148930736-70d5d1d4-ac54-4bbb-bfce-10a8939247f2.png)
+3. Finally, click on **API Keys**. You should find the **Server Secret Key** here.
 
-  - Finally, click on **API Keys**. You should find the **Server Secret Key** here.
-
-  ![statsig-api-keys](https://user-images.githubusercontent.com/59817155/148930921-5855f1be-cf90-4922-b6f1-db5e04198892.png)
+<img src="../../assets/event-stream-destinations/statsig-api-keys.png" alt="Statsig API key" />
 
 ## Identify
 
-The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+The [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
 A sample `identify` call is as shown:
 
 ```javascript
-rudderanalytics.identify("userId", {
-  name: "Name Surname",
-  email: "name@domain.com",
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
 })
 ```
 
-<div class="infoBlock">
- 
-  For more information on the <code class="inline-code">identify</code> event, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack Event Specification</a> guide.
+### Retrieving the `userId`
+
+To get the `userId` associated with an identified user, you can use the `getUserId()` method as shown:
+
+```javascript
+rudderanalytics.getUserId();
+```
+
+### Retrieving the `anonymousId`
+
+An anonymous ID (`anonymousId`) is an autogenerated UUID (Universally Unique Identifier) that is assigned to each unique, unidentified visitor coming to your website.
+
+You can retrieve the `anonymousId` of any visitor by running the `getAnonymousId()` method, as shown:
+
+```javascript
+rudderanalytics.getAnonymousId();
+```
+
+<div class="warningBlock">
+
+If the value of <code class="inline-code">anonymousId</code> is <code class="inline-code">null</code> in the SDK, calling the above function will automatically set a new <code class="inline-code">anonymousId</code> in RudderStack.
 </div>
 
 ## Page
 
-The `page` call lets you record your website's page views with any additional relevant information about the viewed page. Many destinations require the `page` events to be called at least once every page load.
+The [`page`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
 
 A sample `page` call is shown below:
 
@@ -85,14 +94,9 @@ A sample `page` call is shown below:
 rudderanalytics.page("Home")
 ```
 
-<div class="infoBlock">
- 
-  For more information on the <code class="inline-code">page</code> event, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack Event Specification</a> guide.
-</div>
-
 ## Track
 
-The `track` call lets you record the user events, i.e. the actions your users perform, along with any properties associated with these actions.
+The [`track`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the user events, that is, the actions your users perform, along with any properties associated with these actions.
 
 A sample `track` call is as shown:
 
@@ -100,35 +104,25 @@ A sample `track` call is as shown:
 rudderanalytics.track("Product Reviewed", {
   review_id: "12345",
   product_id: "123",
-  rating: 3.0,
-  review_body: "Average product, expected much more."
+  rating: 4.0,
+  review_body: "Good product."
 })
 ```
 
-<div class="infoBlock">
- 
-  For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack Event Specification</a> guide.
-</div>
-
 ## Screen
 
-The `screen` call lets you record whenever a user views their mobile screen, with any additional relevant information about the viewed screen.
+The [`screen`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) call lets you record whenever a user views their mobile screen, with any additional relevant information about the viewed screen.
 
-A sample `screen` call sent via the [**RudderStack iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) is shown below:
+A sample `screen` call sent via the [RudderStack iOS SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) is shown below:
 
 ```objectivec
 [[RSClient sharedInstance] screen:@"Main"
                 properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-<div class="infoBlock">
- 
-  For more information on the <code class="inline-code">screen</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack Event Specification</a> guide.
-</div>
-
 ## Group
 
-The `group` call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, e.g. the name of the company, number of employees, etc.
+The [`group`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, for example, the name of the company, number of employees, etc.
 
 A sample `group` call is shown below:
 
@@ -141,16 +135,11 @@ rudderanalytics.group("12345", {
 })
 ```
 
-<div class="infoBlock">
- 
-  For more information on the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack Event Specification</a> guide.
-</div>
-
 ## Alias
 
-The `alias` call lets you merge different identities of a known user.
+The [`alias`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/) call lets you merge different identities of a known user.
 
-<div class="infoBlock">
+<div class="successBlock">
 
 <code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
 </div>
@@ -161,11 +150,6 @@ A sample `alias` call is as shown:
 rudderanalytics.alias("12345")
 ```
 
-<div class="infoBlock">
- 
-  For more information on the <code class="inline-code">alias</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack Event Specification</a> guide.
-</div>
-
 ## Contact us
 
-**This integration has been built and maintained by Statsig**. For any queries, you can [**contact the Statsig team**](https://statsig.com/contact) or start a conversation in their [**Slack**](https://statsigcommunity.slack.com/) community. You can also [**get in touch**](mailto:%20docs@rudderstack.com) with us.
+**This integration has been built and maintained by Statsig**. For any queries, [contact the Statsig team](https://statsig.com/contact) or start a conversation in their [Slack](https://statsigcommunity.slack.com/) community.

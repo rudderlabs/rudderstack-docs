@@ -9,6 +9,11 @@ description: >-
 
 RudderStack lets you track various application lifecycle events across the mobile SDKs and get insights into app-related metrics like installs, opens, etc. This guide provides the details and semantic definitions of these events and the associated properties.
 
+<div class="warningBlock">
+
+The Unity SDK currently does not support tracking the application lifecycle events on the Android platform.
+</div>
+
 ## Supported lifecycle events
 
 RudderStack **automatically tracks** the following application lifecycle events:
@@ -100,7 +105,7 @@ There are some differences in the way the RudderStack SDKs handle the above even
 
 | Platform | Expected behavior |
 | :--------| :---|
-| Android | Same behavior as the [Android SDK](#android-sdk). | 
+| Android | **Currently not supported**. | 
 | iOS | Same behavior as the [iOS SDK](#ios-sdk). |
 
 ### React Native SDK

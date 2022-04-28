@@ -22,7 +22,7 @@ You can check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk
 To set up the RudderStack Android SDK, the following prerequisites must be met:
 
 - You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up an Android source in the dashboard. For more information, follow [**this guide**](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/).  You should then see a **Write Key** for this source, as shown below:
+- Once signed up, set up an Android source in the dashboard. For more information, follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source).  You should then see a **Write Key** for this source, as shown below:
 
 <img src="../../../assets/event-stream-sources/android-sdk-1.png" alt="Android source write key" />
 
@@ -704,7 +704,7 @@ The method <code class="inline-code">getAnonymousId</code> is available from v1.
 
 ## Filtering events
 
-When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them.
+When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them.
 
 <div class="infoBlock">
 
@@ -923,7 +923,7 @@ You can easily develop a device mode destination in case RudderStack doesn't sup
 
 <div class="infoBlock">
 
-More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes//">RudderStack Connection Modes</a> guide.
+More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 - Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) , as shown:
