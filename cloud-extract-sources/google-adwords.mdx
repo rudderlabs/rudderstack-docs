@@ -52,11 +52,18 @@ For more information on obtaining the customer ID, refer to the <a href="#faq">F
 The <strong>Start Date</strong> setting is valid only for the first (historical) sync.
 </div>
 
-- **Custom GAQL Queries**: Enter the custom GAQL query you used for building the report. 
-    - **Custom Query**: Enter your custom GAQL query here.
-    - **Destination Table Name**: Specify the table name in your warehouse destination where the results for the above query will be sent.
 - **Login Customer ID for Managed Accounts**: This is a required field **if** you are using a Google Ads manager account to set up the source. Enter your 10 digit manager account customer ID **without the dashes**.
 - **Conversion Window**: Enter the [Google Ads conversion window](https://support.google.com/google-ads/answer/3123169?hl=en) duration.
+
+<img src="../assets/cloud-extract-sources/g-ads-connection-settings-3.png" alt="Connection settings" />
+
+- - **Custom GAQL Queries**: This widget lets you create custom GAQL query for building a report. 
+    - **Select resource**: Select the Google Ads API resource from the dropdown.
+    - **Select**: Select the relevant attributes, segments and metrics from the dropdown.
+    You can observe your custom GAQL query displayed in the query box as you select the relevant options from the dropdown. You can also use the **Reset** and **Edit query** buttons to reset the query or change the query respectively.
+    - **Destination Table Name**: Specify the table name in your warehouse destination where the results for the above query will be sent.
+
+<img src="../assets/cloud-extract-sources/g-ads-connection-settings-4.png" alt="Connection settings" />
 
 <div class="infoBlock">
 
