@@ -9,10 +9,12 @@ description: >-
 
 RudderStack lets you track various application lifecycle events across the mobile SDKs and get insights into app-related metrics like installs, opens, etc. This guide provides the details and semantic definitions of these events and the associated properties.
 
-<div class="warningBlock">
-
-The Unity SDK currently does not support tracking the application lifecycle events on the Android platform.
+<div class="infoBlock">
+  
+To track the application lifecycle events on Android platform using the Unity SDK, you need to perform some additional steps. For more information on these steps, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/#tracking-application-lifecycle-events-for-android-platform">Tracking application lifecycle events for Android platform</a> section.
 </div>
+
+
 
 ## Supported lifecycle events
 
@@ -103,10 +105,7 @@ There are some differences in the way the RudderStack SDKs handle the above even
 
 ### Unity SDK
 
-| Platform | Expected behavior |
-| :--------| :---|
-| Android | **Currently not supported**. | 
-| iOS | Same behavior as the [iOS SDK](#ios-sdk). |
+- The properties marked with an asterisk (`url`, `referring_application`, `version`) are not tracked either for Android or iOS.
 
 ### React Native SDK
 
@@ -153,6 +152,13 @@ RudderStack tracks the following properties for this event:
 | :--------| :-----| :------------|
 | `previous_version` | String | The application version before it was updated.  |
 | `version` | String | The current version of the application after it is updated. |
+
+
+<div class="infoBlock">
+
+For Unity SDK, you need to perform the required steps for Android and iOS platforms to trigger the Application Updated lifecycle event. For more information on these steps, refer to the 
+ <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/#trigger-application-updated-lifecycle-event">Trigger Application Updated lifecycle event</a> section.
+</div>
 
 ## Application Backgrounded
 
