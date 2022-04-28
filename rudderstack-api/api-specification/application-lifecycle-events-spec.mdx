@@ -25,18 +25,10 @@ RudderStack **automatically tracks** the following application lifecycle events:
 - [Application Updated](#application-updated)
 - [Application Backgrounded](#application-backgrounded)
 
-The RudderStack SDKs automatically track the application lifecycle events. However, you can disable the automatic tracking by using the following code:
+<div class="infoBlock">
 
-```csharp
-{
-RudderConfig config = new RudderConfigBuilder()
-  .WithTrackLifecycleEvents(false)
-  .WithDataPlaneUrl("https://70a1-175-101-36-93.ngrok.io")
-  .WithLogLevel(RudderLogLevel.VERBOSE)
-  .Build();
-rudderClient = RudderClient.GetInstance("1yOKUAJ5a6PzEOyECgOFXIUVHN0", config);
-}
-```
+To disable the auto-tracking of these events, set the <code class="inline-code">withTrackLifecycleEvents</code> parameter to <code class="inline-code">false</code> while initializing the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#initializing-the-rudderstack-client">Android</a> / <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#initializing-the-rudderstack-client">iOS</a> SDK.
+</div>
 
 ## Application Installed
 
