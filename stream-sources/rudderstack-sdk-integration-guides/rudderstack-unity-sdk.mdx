@@ -193,7 +193,7 @@ RudderConfigBuilder configBuilder = new RudderConfigBuilder()
 
 ## Tracking application lifecycle events for Android platform
 
-The Unity SDK tracks and sends the application lifecycle events to get insights into the app-related metrics like installs, opens, updates, etc. However, in order to track the application life cycle events on the Android platform, you need to add the `RudderPreferbs.prefab` file in the `Assets/Rudder/RudderPreferbs.prefab` path to each and every scene in your Unity app. Also, make sure that the `RudderPreferbs.prefab` is linked to the `RudderClient.cs` script.
+The Unity SDK tracks and sends the [application lifecycle events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/) to get insights into the app-related metrics like installs, opens, updates, etc. However, in order to track the application life cycle events on the Android platform, you need to add the `RudderPreferbs.prefab` file in the `Assets/Rudder/RudderPreferbs.prefab` path to each and every scene in your Unity app. Also, make sure that the `RudderPreferbs.prefab` is linked to the `RudderClient.cs` script.
 
 Unity SDK depends on the life cycle method `onApplicationFocus` of the MonoBehaviour to determine the **Application Opened** and **Application Backgrounded** events on the Android platform. Hence, when an application is brought to focus, an **Application Opened** event is sent and 
 when the application is moved out of focus, an **Application Backgrounded** event is sent. 
