@@ -483,10 +483,17 @@ The following snippet shows an example of the `reset()` method:
 rudderanalytics.reset();
 ```
 
+You can also reset the `anonymousId` along with the details mentioned above by passing `true` to the `reset()` method, as shown:
+
+```javascript
+rudderanalytics.reset(true);
+```
+
 <div class="warningBlock">
   
 The <code class="inline-code">reset()</code> method only clears the cookies and local storage set by RudderStack. It does not clear the information stored by the integrated destinations. To completely clear the user session, refer to the destination-specific documentation.
 </div>
+
 
 ## Parameter definitions
 
