@@ -475,12 +475,18 @@ rudderanalytics.group("sample_group_id", {
 
 ## Reset
 
-The `reset` method resets the `userId` and the associated user traits and properties.
+The `reset` method resets the ID and traits of both the user and the group.
 
 The following snippet shows an example of the `reset()` method:
 
 ```javascript
 rudderanalytics.reset();
+```
+
+You can also reset the `anonymousId` along with the details mentioned above by passing `true` to the `reset()` method, as shown:
+
+```javascript
+rudderanalytics.reset(true);
 ```
 
 <div class="warningBlock">
