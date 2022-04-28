@@ -20,7 +20,7 @@ This guide lists the steps to configure and enable Okta SSO for your organizatio
 
 <img src="../../assets/user-guides/okta-sso-1.png" alt="Create App Integration" />
 
-3. Select **SAML 2.0** as the sign-in method, as shown:
+3. Select **SAML 2.0** sign-in method, as shown:
 
 <img src="../../assets/user-guides/okta-sso-2.png" alt="SAML 2.0" />
 
@@ -34,8 +34,6 @@ Enter the following settings in the **Configure SAML** section:
 
 <img src="../../assets/user-guides/okta-sso-4.png" alt="Enter the settings" />
 
-The settings are as follows:
-
 - **Single sign on URL**: Set this to `https://auth2.rudderstack.com/saml2/idpresponse`. 
 
 <div class="infoBlock">
@@ -45,9 +43,9 @@ Make sure you also enable the <strong>Use this for Recipient URL and Destination
 
 - **Audience URI (SP Entity ID)**: Set this to `urn:amazon:cognito:sp:us-east-1_ABZiTjXia`.
 - **Default RelayState**: Leave this field blank.
-- **Name ID format**: From the dropdown, select **Unspecified**.
-- **Application username**: From the dropdown, select **Okta username**.
-- **Update application username on**: From the dropdown, select **Create and update**.
+- **Name ID format**: Select **Unspecified** from the dropdown.
+- **Application username**: Select **Okta username** from the dropdown.
+- **Update application username on**: Select **Create and update** from the dropdown.
 
 ### Attribute Statements settings
 
@@ -57,7 +55,7 @@ In the **Attribute Statements** section, you need to enter the following setting
 
 | Name              | Name format (optional) | Default value            | Comments |
 | :---------------- | :----------------------- | :--------------- | :-----|
-| Email         | Unspecified              | `user.email` | Set the value that corresponds to **your organization's** user email. |
+| Email         | Unspecified              | `user.email` | Set the value corresponding to **your organization's** user email. |
 | LastName          | Unspecified              | `user.lastName`  |  Although `user.lastName` is recommended, you can provide any other value here. | 
 
 <div class="infoBlock">
