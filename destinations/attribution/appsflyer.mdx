@@ -117,7 +117,7 @@ pod 'Rudder-Appsflyer'
 ```
 </span>
 </li>
-<li>After adding the dependency, you must register the <code class="inline-code">RudderAppsflyerFactory</code> with your <code class="inline-code">RudderClient</code> initialization as a <code class="inline-code">factory</code> of <code class="inline-code">RudderConfig</code>. To do this, run the following command to import the <code class="inline-code">RudderAppsflyerFactory.h</code> file in your <code class="inline-code">AppDelegate.m</code> file:
+<li>After adding the dependency, you need to register the <code class="inline-code">RudderAppsflyerFactory</code> with your <code class="inline-code">RudderClient</code> initialization as a <code class="inline-code">factory</code> of <code class="inline-code">RudderConfig</code>. To do this, run the following command to import the <code class="inline-code">RudderAppsflyerFactory.h</code> file in your <code class="inline-code">AppDelegate.m</code> file:
 
 <span>
 
@@ -126,7 +126,20 @@ pod 'Rudder-Appsflyer'
 ```
 </span>
 </li>
-<li>Then, change the SDK initialization to the following:
+<li>Starting from AppsFlyer iOS device mode version <code class="inline-code">2.0.0</code> and above</strong>, the RudderStack SDK <strong>does not</strong> automatically initialize the AppsFlyer SDK. You need to initialize the AppsFlyer SDK as shown:
+<span>
+
+```objectivec
+#import <AppsFlyerLib/AppsFlyerLib.h>
+
+[[AppsFlyerLib shared] setAppsFlyerDevKey:<devKey>];
+[[AppsFlyerLib shared] setAppleAppID:<appleAppId>];
+[AppsFlyerLib shared].isDebug = YES;
+[[AppsFlyerLib shared] start];
+```
+</span>
+</li>
+<li>Then, change the iOS SDK initialization to the following:
 <span>
 
 ```objectivec
@@ -145,7 +158,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
       <TabPanel>
         To add AppsFlyer to your Android project:
 <ol>
-<li>Add the repository as shown:
+<li>Add the <code class="inline-code">mavenCentral()</code> repository, as shown:
 <span>
 
 ```groovy
@@ -155,7 +168,7 @@ repositories {
 ```
 </span>
 </li>
-<li>Then, add the following line to your <code class="inline-code">app/build.gradle</code> file under <code class="inline-code">dependencies</code> section:
+<li>Then, add the following lines to your <code class="inline-code">app/build.gradle</code> file under <code class="inline-code">dependencies</code>:
 <span>
 
 ```groovy
@@ -167,7 +180,20 @@ implementation 'com.android.installreferrer:installreferrer:2.+'
 ```
 </span>
 </li>
-<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> in your <code class="inline-code">Application</code> class, as shown:
+<li>Starting from AppsFlyer Android device mode version <code class="inline-code">2.0.0</code> and above</strong>, the RudderStack SDK <strong>does not</strong> automatically initialize the AppsFlyer SDK. You need to initialize the AppsFlyer SDK as shown:
+<span>
+
+```java
+import com.appsflyer.AppsFlyerLib;
+import com.appsflyer.AFLogger;
+
+AppsFlyerLib.getInstance().init(DEV_KEY, null, this);
+AppsFlyerLib.getInstance().setLogLevel(AFLogger.LogLevel.DEBUG);
+AppsFlyerLib.getInstance().start(this);
+```
+</span>
+</li>
+<li>Finally, change the SDK initialization in your <code class="inline-code">Application</code> class, as shown:
 <span>
 
 ```kotlin
@@ -181,21 +207,6 @@ val rudderClient: RudderClient = RudderClient.getInstance(
 )
 ```
 </span>
-<div class="infoBlock">
-   
-<strong>If you are using AppsFlyer Android device mode version <code class="inline-code">2.0.0</code> or above</strong>, also add the following lines of code in your <code class="inline-code">MainApplication()</code> class:
-<span>
-
-```java
-import com.appsflyer.AppsFlyerLib;
-import com.appsflyer.AFLogger;
-
-AppsFlyerLib.getInstance().init(DEV_KEY, null, this);
-AppsFlyerLib.getInstance().setLogLevel(AFLogger.LogLevel.DEBUG);
-AppsFlyerLib.getInstance().start(this);
-```
-</span>
-</div>
 </li>
 </ol>
       </TabPanel>
@@ -212,7 +223,7 @@ yarn add @rudderstack/rudder-integration-appsflyer-react-native
 ```
 </span>
 </li>
-  <strong>For AppsFlyer React Native device mode version less than 1.1.0, follow the below step:</strong>
+<strong>For AppsFlyer React Native device mode version less than 1.1.0, follow the below step:</strong>
 <li>Import the module and add it to your SDK initialization code, as shown:
 <span>
 
@@ -230,7 +241,7 @@ rudderClient.setup(WRITE_KEY, config)
 </li>
   </ol>
         <ol start="2">
-  <strong>For AppsFlyer React Native device mode version 1.1.0 or above, follow the subsequent steps:</strong>
+  <strong>For AppsFlyer React Native device mode version 1.1.0 or above, follow these steps:</strong>
 <li>Initialize the AppsFlyer SDK as shown:
 <span>
 
@@ -244,11 +255,13 @@ import {
 // Setting options for initializing the appsflyer sdk
 setOptions({
     // dev key from the appsflyer dashboard
-    "devKey": "tZGiwrAUq8xLuNYb99q2VT",
+    "devKey": "<dev_key>",
     // whether we want to run the appsflyer SDK in the debug mode
     "isDebug": true,
     // whether we want to register for the listeners which would return the conversion data
     "onInstallConversionDataListener": true,
+    // ID assigned by the Apple app store for any app which is either published or in the process of getting published
+    "appleAppId": "<apple_app_id>",
     // whether we want to register for the listeners which would return the deeplink data
     "onDeepLinkListener": true
 })
@@ -262,7 +275,7 @@ const config = {
     withFactories: [appsflyer]
 };
 
-// Finally, initializing the Rudder React Native SDK
+// Finally, initializing the RudderStack React Native SDK
 await rc.setup( WRITE_KEY , config);
 ```
 </span>
@@ -317,7 +330,6 @@ var onDeepLinkCanceller = onDeepLink((data) => {
 })
 ```
 </span>
-As seen above, each of the listeners returns a function that - whenever called - removes those listeners.
 </li>
 <li>Depending on the React Native components you are using, you can trigger an appropriate method, for example:
     <ul>
@@ -452,6 +464,31 @@ const Home = (props) => {
 </span>  
 </li>
 </ul>
+</li>
+<li>Finally, open <code class="inline-code">AppDelegate.m</code> in the <code class="inline-code">ios</code> folder of your app and include the following snippet:
+<span>
+
+```objectivec
+#import "RudderIntegrationAppsflyerReactNative.h"
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary *) options {
+  [[AppsFlyerAttribution shared] handleOpenUrl:url options:options];
+    return YES;
+}
+
+// Open URI-scheme for iOS 8 and below
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation {
+  [[AppsFlyerAttribution shared] handleOpenUrl:url sourceApplication:sourceApplication annotation:annotation];
+  return YES;
+}
+
+// Open Universal Links
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
+    [[AppsFlyerAttribution shared] continueUserActivity:userActivity restorationHandler:restorationHandler];
+    return YES;
+}
+```
+</span>
 </li>
 </ol>
       </TabPanel>
