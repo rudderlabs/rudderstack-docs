@@ -96,11 +96,11 @@ You can configure your client based on the following parameters using `RudderCon
 
 ### Self-hosted control plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the Unity SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then specify `controlPlaneUrl` in your`RudderConfigBuilder` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the Unity SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then specify `controlPlaneUrl` in your `RudderConfigBuilder` that points to your hosted source configuration file.
 
 <div class="warningBlock">
   
-You shouldn't pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using the <a href="https://app.rudderstack.com">RudderStack Cloud dashboard</a>. This parameter is supported only if you are using the open source <a href="https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to self-host your control plane.
+You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during the SDK initialization if you are using the <a href="https://app.rudderstack.com">RudderStack Cloud dashboard</a>. This parameter is supported only if you are using the open source <a href="https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to self-host your control plane.
 </div>
 
 ## Identify
