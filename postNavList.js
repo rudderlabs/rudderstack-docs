@@ -659,6 +659,24 @@ export const postNavList = [
     "content":[]
  },
  {
+    "key":"setting-up-google-analytics-4-in-rudderstack",
+    "title":"Setting up Google Analytics 4",
+    "link":"/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/",
+    "content":[]
+ },
+ {
+    "key":"google-analytics-4-cloud-mode",
+    "title":"Cloud Mode",
+    "link":"/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/",
+    "content":[]
+ },
+ {
+    "key":"google-analytics-4-device-mode",
+    "title":"Device Mode",
+    "link":"/destinations/analytics/google-analytics-4/google-analytics-4-device-mode/",
+    "content":[]
+ },
+ {
     "key":"google-analytics-360",
     "title":"Google Analytics 360",
     "link":"/destinations/analytics/google-analytics-360/",
