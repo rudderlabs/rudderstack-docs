@@ -145,6 +145,83 @@ The <strong>Payment Info Entered</strong> event is mapped on the basis of parame
 There must be an <code class="inline-code">id</code> and <code class="inline-code">name</code> associated for each product in the order. Refer to the <a href="https://developers.google.com/gtagjs/reference/ga4-events#view_item_list">Item list</a> for more information on Google Analytics 4 e-commerce events and corresponding properties.
 </div>
 
+Most of the above mentioned events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. The below table details out the common mappings for `Items` array:
+
+| RudderStack    | Google Analytics 4  |
+| :-------------| :-----------------|
+| product_id         | `item_id`        |
+| name               | `item_name`      |
+| coupon               | `coupon`      |
+| price              | `price`          |
+| position           | `index`          |
+| category           | `item_category`  |
+| brand           | `item_brand`  |
+| variant           | `item_variant`  |
+| quantity           | `quantity`  |
+
+
+The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. 
+
+| RudderStack    | Presence of `items` parameter |
+| :-------------| :-----------------|
+| Product List Viewed         | Required        |
+| Product Clicked         | Optional      |
+| Product Viewed              | Required      |
+| Product Added              | Required         |
+| Product removed           | Required          |
+| Cart Viewed           | Required  |
+| Checkout Started           | Required  |
+| Payment Info entered           | Required  |
+| Order Completed           | Required  |
+| Order Refunded           | Optional  |
+| Product Added to Wishlist           | Required  |
+| View Search Result           | Optional  |
+
+The following are the `Items` array parameters:
+
+```text
+{
+  "affiliation": "Google Merchandise Store",
+  "currency": "USD",
+  "discount": 2.22,
+  "item_category2": "Adult",
+  "item_category3": "Shirts",
+  "item_category4": "Crew",
+  "item_category5": "Short sleeve",
+  "item_list_id": "related_products",
+  "item_list_name": "Related Products",
+  "location_id": "L_12345",
+}
+```
+
+The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array.
+
+| RudderStack    | Presence of `items` parameter |
+| :-------------| :-----------------|
+| Promotion Viewed          | Required        |
+| Promotion Clicked      | Optional     |
+
+The following are the `Items` array parameters:
+
+```text
+{
+  "affiliation": "Google Merchandise Store",
+  "creative_name": "summer_banner2",
+  "creative_slot": "featured_app_1",
+  "currency": "USD",
+  "discount": 2.22,
+  "item_category2": "Adult",
+  "item_category3": "Shirts",
+  "item_category4": "Crew",
+  "item_category5": "Short sleeve",
+  "item_list_id": "related_products",
+  "item_list_name": "Related Products",
+  "location_id": "L_12345",
+  "promotion_id": "P_12345",
+  "promotion_name": "Summer Sale",
+}
+```
+
 ### Non e-commerce events
 
 The below table lists the mappings of the non e-commerce `track` events and properties that are passed to Google Analytics 4 events and properties:
@@ -233,83 +310,6 @@ The below table lists the mappings of the non e-commerce `track` events and prop
     <td><code class=“inline-code”>search_term</code></td>
   </tr>
 </table>
-
-Most of the above mentioned events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. The below table details out the common mappings for `Items` array:
-
-| RudderStack    | Google Analytics 4  |
-| :-------------| :-----------------|
-| product_id         | `item_id`        |
-| name               | `item_name`      |
-| coupon               | `coupon`      |
-| price              | `price`          |
-| position           | `index`          |
-| category           | `item_category`  |
-| brand           | `item_brand`  |
-| variant           | `item_variant`  |
-| quantity           | `quantity`  |
-
-
-The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. 
-
-| RudderStack    | Presence of `items` parameter |
-| :-------------| :-----------------|
-| Product List Viewed         | Required        |
-| Product Clicked         | Optional      |
-| Product Viewed              | Required      |
-| Product Added              | Required         |
-| Product removed           | Required          |
-| Cart Viewed           | Required  |
-| Checkout Started           | Required  |
-| Payment Info entered           | Required  |
-| Order Completed           | Required  |
-| Order Refunded           | Optional  |
-| Product Added to Wishlist           | Required  |
-| View Search Result           | Optional  |
-
-The following are the `Items` array parameters:
-
-```text
-{
-  "affiliation": "Google Merchandise Store",
-  "currency": "USD",
-  "discount": 2.22,
-  "item_category2": "Adult",
-  "item_category3": "Shirts",
-  "item_category4": "Crew",
-  "item_category5": "Short sleeve",
-  "item_list_id": "related_products",
-  "item_list_name": "Related Products",
-  "location_id": "L_12345",
-}
-```
-
-The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array.
-
-| RudderStack    | Presence of `items` parameter |
-| :-------------| :-----------------|
-| Promotion Viewed          | Required        |
-| Promotion Clicked      | Optional     |
-
-The following are the `Items` array parameters:
-
-```text
-{
-  "affiliation": "Google Merchandise Store",
-  "creative_name": "summer_banner2",
-  "creative_slot": "featured_app_1",
-  "currency": "USD",
-  "discount": 2.22,
-  "item_category2": "Adult",
-  "item_category3": "Shirts",
-  "item_category4": "Crew",
-  "item_category5": "Short sleeve",
-  "item_list_id": "related_products",
-  "item_list_name": "Related Products",
-  "location_id": "L_12345",
-  "promotion_id": "P_12345",
-  "promotion_name": "Summer Sale",
-}
-```
 
 ### Rules for naming custom events
 
