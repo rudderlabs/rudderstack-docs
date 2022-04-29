@@ -107,66 +107,58 @@ The below table lists the mappings of the `track` events and properties that are
     <td><code class=“inline-code”>search_term</code></td>
   </tr>
   <tr>
-    <td>Product List Viewed</td>
-    <td><code class=“inline-code”>view_item_list</code></td>
-    <td rowspan="2"><code class=“inline-code”>list_id</code></br><code class=“inline-code”>category</code></td>
-    <td rowspan="2"><code class=“inline-code”>item_list_id</code></br><code class=“inline-code”>item_list_name</code></td>
-  </tr>
-  <tr>
-   <td>Product Clicked</td>
-    <td><code class=“inline-code”>select_item</code></td>
+    <td>Product List Viewed</br>Product Clicked</td>
+    <td><code class=“inline-code”>view_item_list</code></br><code class=“inline-code”>select_item</code></td>
+    <td><code class=“inline-code”>properties.list_id</code></br><code class=“inline-code”>properties.category</code></td>
+    <td><code class=“inline-code”>item_list_id</code></br><code class=“inline-code”>item_list_name</code></td>
   </tr>
   <tr>
     <td>Promotion Viewed</br>Promotion Clicked</td>
     <td><code class=“inline-code”>view_promotion</code></br><code class=“inline-code”>select_promotion</code></td>
-    <td><code class=“inline-code”>position</code></td>
-    <td><code class=“inline-code”>location_id</code></td>
+    <td><code class=“inline-code”>properties.position</code></br><code class=“inline-code”>properties.creative_name</code></br><code class=“inline-code”>properties.creative_slot</code></br><code class=“inline-code”>properties.promotion_id</code></br><code class=“inline-code”>properties.promotion_name</code></td>
+    <td><code class=“inline-code”>location_id</code></br><code class=“inline-code”>creative_name</code></br><code class=“inline-code”>creative_slot</code></br><code class=“inline-code”>promotion_id</code></br><code class=“inline-code”>promotion_name</code></td>
   </tr>
    <tr>
-    <td>Product Viewed</br>Product Added</br>Product Removed</br>Cart Viewed</br>Checkout Started</br>Product Added to Wishlist</td>
-    <td><code class=“inline-code”>view_item</code></br><code class=“inline-code”>add_cart</code></br><code class=“inline-code”>remove_from_cart</code></br><code class=“inline-code”>view_cart</code></br><code class=“inline-code”>start_checkout</code></br><code class=“inline-code”>add_to_wishlist</code></td>
-    <td><code class=“inline-code”>total</code></td>
-    <td><code class=“inline-code”>value</code></td>
+    <td>Product Viewed</br>Product Added</br>Product Removed</br>Cart Viewed</br>Product Added to Wishlist</td>
+    <td><code class=“inline-code”>view_item</code></br><code class=“inline-code”>add_cart</code></br><code class=“inline-code”>remove_from_cart</code></br><code class=“inline-code”>view_cart</code></br><code class=“inline-code”>add_to_wishlist</code></td>
+    <td><code class=“inline-code”>properties.total</code></br><code class=“inline-code”>properties.currency</code></td>
+    <td><code class=“inline-code”>value</code></br><code class=“inline-code”>currency</code></td>
   </tr>
    <tr>
-    <td>Order Completed</td>
-    <td><code class=“inline-code”>purchase</code></td>
-    <td rowspan="2"><code class=“inline-code”>order_id</code></br><code class=“inline-code”>total</code></td>
-    <td rowspan="2"><code class=“inline-code”>transaction_id</code></br><code class=“inline-code”>value</code></td>
+    <td>Checkout Started</td>
+    <td><code class=“inline-code”>start_checkout</code></td>
+    <td><code class=“inline-code”>properties.total</code></br><code class=“inline-code”>properties.currency</code></br><code class=“inline-code”>properties.coupon</code></td>
+    <td><code class=“inline-code”>value</code></br><code class=“inline-code”>currency</code></br><code class=“inline-code”>coupon</code></td>
   </tr>
-  <tr>
-   <td>Order Refunded</td>
-    <td><code class=“inline-code”>refund</code></td>
+   <tr>
+    <td>Order Completed<br/>Order Refunded</td>
+    <td><code class=“inline-code”>purchase</code></br><code class=“inline-code”>refund</code></td>
+    <td><code class=“inline-code”>properties.currency</code></br><code class=“inline-code”>properties.order_id</code></br><code class=“inline-code”>properties.total</code></br><code class=“inline-code”>properties.affiliation</code></br><code class=“inline-code”>properties.coupon</code></br><code class=“inline-code”>properties.shipping</code></br><code class=“inline-code”>properties.tax</code></td>
+    <td><code class=“inline-code”>currency</code></br><code class=“inline-code”>transaction_id</code></br><code class=“inline-code”>value</code></br><code class=“inline-code”>affiliation</code></br><code class=“inline-code”>coupon</code></br><code class=“inline-code”>shipping</code></br><code class=“inline-code”>tax</code></td>
   </tr>
     <tr>
-    <td>Product Shared</td>
+    <td>Product Shared<br/>Cart Shared</td>
     <td><code class=“inline-code”>share</code></td>
-    <td><code class=“inline-code”>share_via</code></br><code class=“inline-code”>product_id</code></td>
-    <td><code class=“inline-code”>method</code></br><code class=“inline-code”>content_id</code></td>
-  </tr>
-  <tr>
-    <td>Cart Shared</td>
-    <td><code class=“inline-code”>share</code></td>
-    <td><code class=“inline-code”>content_type</code></td>
-    <td><code class=“inline-code”>cart</code></td>
+    <td><code class=“inline-code”>properties.share_via</code></br><code class=“inline-code”>properties.content_type</code></br><code class=“inline-code”>properties.item_id</code></td>
+    <td><code class=“inline-code”>method</code></br><code class=“inline-code”>content_type</code></br><code class=“inline-code”>item_id</code></td>
   </tr>
    <tr>
     <td>Group</td>
     <td><code class=“inline-code”>join_group</code></td>
-    <td>-</td>
-    <td>-</td>
+    <td><code class=“inline-code”>groupId</code></br><code class=“inline-code”>properties.groupId</code></br><code class=“inline-code”>properties.group_id</code></td>
+    <td><code class=“inline-code”>group_id</code></td>
   </tr>
   <tr>
     <td>Payment Info Entered</td>
     <td><code class=“inline-code”>add_payment_info</code></td>
-    <td><code class=“inline-code”>payment_method</code></td>
-    <td><code class=“inline-code”>payment_type</code></td>
+    <td><code class=“inline-code”>properties.payment_method</code></br><code class=“inline-code”>properties.coupon</code></br><code class=“inline-code”>properties.value</code></br><code class=“inline-code”>properties.currency</code></td>
+    <td><code class=“inline-code”>payment_type</code></br><code class=“inline-code”>coupon</code></br><code class=“inline-code”>value</code></br><code class=“inline-code”>properties.currency</code></td>
   </tr>
   <tr>
     <td>Payment Info Entered</td>
     <td><code class=“inline-code”>add_shipping_info</code></td>
-    <td><code class=“inline-code”>shipping_method</code></td>
-    <td><code class=“inline-code”>shipping_tier</code></td>
+    <td><code class=“inline-code”>shipping_method</code></br><code class=“inline-code”>properties.coupon</code></br><code class=“inline-code”>properties.value</code></br><code class=“inline-code”>properties.currency</code></td>
+    <td><code class=“inline-code”>shipping_tier</code></br><code class=“inline-code”>coupon</code></br><code class=“inline-code”>value</code></br><code class=“inline-code”>properties.currency</code></td>
   </tr>
 </table>
 
@@ -183,6 +175,93 @@ The <strong>Payment Info Entered</strong> event is mapped on the basis of parame
 
 There must be an <code class="inline-code">id</code> and <code class="inline-code">name</code> associated for each product in the order. Refer to the <a href="https://developers.google.com/gtagjs/reference/ga4-events#view_item_list">Item list</a> for more information on Google Analytics 4 e-commerce events and corresponding properties.
 </div>
+
+### Non e-commerce events
+
+<table>
+  <tr>
+    <th colspan="2">Event Mapping</th>
+    <th colspan="2">Property Mapping</th>
+  </tr>
+  <tr>
+    <th>RudderStack</th>
+    <th>Google Analytics 4</th>
+    <th>RudderStack</th>
+    <th>Google Analytics 4</th>
+  </tr>
+  <tr>
+    <td>earn_virtual_currency </td>
+    <td><code class=“inline-code”>earn_virtual_currency </code></td>
+    <td><code class=“inline-code”>properties.virtual_currency_name</code></br><code class=“inline-code”>properties.value</code></td>
+    <td><code class=“inline-code”>virtual_currency_name</code></br><code class=“inline-code”>value</code></td>
+  </tr>
+  <tr>
+    <td>generate_lead</td>
+    <td><code class=“inline-code”>generate_lead</code></td>
+    <td><code class=“inline-code”>properties.currency</code></br><code class=“inline-code”>properties.value</code></td>
+    <td><code class=“inline-code”>currency</code></br><code class=“inline-code”>value</code></td>
+  </tr>
+  <tr>
+    <td>level_up</td>
+    <td><code class=“inline-code”>level_up</code></td>
+    <td><code class=“inline-code”>properties.level</code></br><code class=“inline-code”>properties.character</code></td>
+    <td><code class=“inline-code”>level</code></br><code class=“inline-code”>character</code></td>
+  </tr>
+    <tr>
+    <td>login</td>
+    <td><code class=“inline-code”>login</code></td>
+    <td><code class=“inline-code”>properties.method</code></td>
+    <td><code class=“inline-code”>method</code></td>
+  </tr>
+    <tr>
+    <td>post_score</td>
+    <td><code class=“inline-code”>post_score</code></td>
+     <td><code class=“inline-code”>properties.level</code></br><code class=“inline-code”>properties.score</code></br><code class=“inline-code”>properties.character</code></td>
+    <td><code class=“inline-code”>level</code></br><code class=“inline-code”>properties.score</code></br><code class=“inline-code”>character</code></td>
+  </tr>
+    <tr>
+    <td>select_content</td>
+    <td><code class=“inline-code”>select_content</code></td>
+    <td><code class=“inline-code”>properties.content_type</code></br><code class=“inline-code”>properties.item_id</code></td>
+    <td><code class=“inline-code”>content_type</code></br><code class=“inline-code”>item_id</code></td>
+  </tr>
+    <tr>
+    <td>sign_up</td>
+    <td><code class=“inline-code”>sign_up</code></td>
+    <td><code class=“inline-code”>properties.method</code></td>
+    <td><code class=“inline-code”>method</code></td>
+  </tr>
+    <tr>
+    <td>spend_virtual_currency</td>
+    <td><code class=“inline-code”>spend_virtual_currency</code></td>
+    <td><code class=“inline-code”>properties.value</code></br><code class=“inline-code”>properties.virtual_currency_name</code></br><code class=“inline-code”>properties.item_name</code></td>
+    <td><code class=“inline-code”>value</code></br><code class=“inline-code”>virtual_currency_name</code></br><code class=“inline-code”>properties.item_name</code></td>
+  </tr>
+    <tr>
+    <td>tutorial_begin</td>
+    <td><code class=“inline-code”>tutorial_begin</code></td>
+    <td><code class=“inline-code”></code></br><code class=“inline-code”></code></td>
+    <td><code class=“inline-code”></code></br><code class=“inline-code”></code></td>
+  </tr>
+      <tr>
+    <td>tutorial_complete</td>
+    <td><code class=“inline-code”>tutorial_complete</code></td>
+    <td><code class=“inline-code”></code></br><code class=“inline-code”></code></td>
+    <td><code class=“inline-code”></code></br><code class=“inline-code”></code></td>
+  </tr>
+    <tr>
+    <td>unlock_achievement</td>
+    <td><code class=“inline-code”>unlock_achievement</code></td>
+    <td><code class=“inline-code”>properties.achievement_id</code></td>
+    <td><code class=“inline-code”>achievement_id</code></td>
+  </tr>
+    <tr>
+    <td>view_search_results</td>
+    <td><code class=“inline-code”>view_search_results</code></td>
+    <td><code class=“inline-code”>properties.search_term</code></td>
+    <td><code class=“inline-code”>search_term</code></td>
+  </tr>
+</table>
 
 Most of the above mentioned events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. The below table details out the mappings for `Items` array:
 
