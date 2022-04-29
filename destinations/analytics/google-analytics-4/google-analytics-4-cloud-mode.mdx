@@ -165,7 +165,7 @@ The below mentioned e-commerce events include [`items`](https://developers.googl
 | RudderStack    | Presence of `items` parameter |
 | :-------------| :-----------------|
 | Product List Viewed         | Required        |
-| Product Clicked         | Optional      |
+| Product Clicked         | Required      |
 | Product Viewed              | Required      |
 | Product Added              | Required         |
 | Product removed           | Required          |
@@ -175,24 +175,22 @@ The below mentioned e-commerce events include [`items`](https://developers.googl
 | Order Completed           | Required  |
 | Order Refunded           | Optional  |
 | Product Added to Wishlist           | Required  |
-| View Search Result           | Optional  |
+| View Search Results           | Optional  |
 
-The following are the `Items` array parameters:
+The below table details out the common mappings for `Items` array:
 
-```text
-{
-  "affiliation": "Google Merchandise Store",
-  "currency": "USD",
-  "discount": 2.22,
-  "item_category2": "Adult",
-  "item_category3": "Shirts",
-  "item_category4": "Crew",
-  "item_category5": "Short sleeve",
-  "item_list_id": "related_products",
-  "item_list_name": "Related Products",
-  "location_id": "L_12345",
-}
-```
+| RudderStack    | Google Analytics 4  |
+| :-------------| :-----------------|
+| affiliation         | `affiliation`        |
+| currency               | `currency`      |
+| discount               | `discount`      |
+| item_category2              | `item_category2`          |
+| item_category3           | `item_category3`          |
+| item_category4          | `item_category4`  |
+| item_category5           | `item_category5`  |
+| item_list_id           | `item_list_id`  |
+| item_list_name           | `item_list_name`  |
+| location_id           | `location_id`  |
 
 The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array.
 
@@ -201,26 +199,24 @@ The below mentioned e-commerce events include [`items`](https://developers.googl
 | Promotion Viewed          | Required        |
 | Promotion Clicked      | Optional     |
 
-The following are the `Items` array parameters:
+The below table details out the common mappings for `Items` array:
 
-```text
-{
-  "affiliation": "Google Merchandise Store",
-  "creative_name": "summer_banner2",
-  "creative_slot": "featured_app_1",
-  "currency": "USD",
-  "discount": 2.22,
-  "item_category2": "Adult",
-  "item_category3": "Shirts",
-  "item_category4": "Crew",
-  "item_category5": "Short sleeve",
-  "item_list_id": "related_products",
-  "item_list_name": "Related Products",
-  "location_id": "L_12345",
-  "promotion_id": "P_12345",
-  "promotion_name": "Summer Sale",
-}
-```
+| RudderStack    | Google Analytics 4  |
+| :-------------| :-----------------|
+| affiliation         | `affiliation`        |
+| creative_name         | `creative_name`        |
+| creative_slot         | `creative_slot`        |
+| currency               | `currency`      |
+| discount               | `discount`      |
+| item_category2              | `item_category2`          |
+| item_category3           | `item_category3`          |
+| item_category4          | `item_category4`  |
+| item_category5           | `item_category5`  |
+| item_list_id           | `item_list_id`  |
+| item_list_name           | `item_list_name`  |
+| location_id           | `location_id`  |
+| promotion_id           | `promotion_id`  |
+| promotion_name           | `promotion_name`  |
 
 ### Non e-commerce events
 
