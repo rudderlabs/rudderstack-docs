@@ -87,7 +87,7 @@ There are limits on the number of custom properties per event that can be sent t
 
 RudderStack supports e-commerce tracking for Google Analytics 4. You can use the [RudderStack e-commerce specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) for sending events while instrumenting your site with the RudderStack SDK.
 
-The below table lists the mappings of the `track` events and properties that are passed to Google Analytics 4 e-commerce events and properties:
+The below table lists the mappings of the `track` events and properties that are passed to Google Analytics 4 events and properties:
 
 <table>
   <tr>
@@ -178,6 +178,8 @@ There must be an <code class="inline-code">id</code> and <code class="inline-cod
 
 ### Non e-commerce events
 
+The below table lists the mappings of the non e-commerce `track` events and properties that are passed to Google Analytics 4 events and properties:
+
 <table>
   <tr>
     <th colspan="2">Event Mapping</th>
@@ -240,14 +242,14 @@ There must be an <code class="inline-code">id</code> and <code class="inline-cod
     <tr>
     <td>tutorial_begin</td>
     <td><code class=“inline-code”>tutorial_begin</code></td>
-    <td><code class=“inline-code”></code></br><code class=“inline-code”></code></td>
-    <td><code class=“inline-code”></code></br><code class=“inline-code”></code></td>
+    <td>-</td>
+    <td>-</td>
   </tr>
       <tr>
     <td>tutorial_complete</td>
     <td><code class=“inline-code”>tutorial_complete</code></td>
-    <td><code class=“inline-code”></code></br><code class=“inline-code”></code></td>
-    <td><code class=“inline-code”></code></br><code class=“inline-code”></code></td>
+     <td>-</td>
+     <td>-</td>
   </tr>
     <tr>
     <td>unlock_achievement</td>
