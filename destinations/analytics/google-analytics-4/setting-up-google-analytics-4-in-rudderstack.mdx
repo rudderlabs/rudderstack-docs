@@ -29,7 +29,7 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
-- **API Secret**: This field is required only for the cloud mode setup where you can enter the API Secret generated through the Google Analytics dashboard. It can be created in the Google Analytics dashboard under **Admin > Data Streams > choose your stream > Measurement Protocol > Create**.
+- **API Secret**: This field is required only for the cloud mode setup where you can enter the API Secret generated through the Google Analytics dashboard. It can be created in the Google Analytics dashboard under **Admin > Data Streams > Choose your stream > Measurement Protocol > Create**.
 
 - **Client Type**: Select the client type as `gtag` or `Firebase` from the dropdown:
   - **`gtag`** - Supported for the cloud and device mode both. If you select `gtag`, enter the below:
@@ -47,10 +47,10 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
 
 <div class="infoBlock">
   
- All the settings mentioned below are applicable only for the device mode.
-  </div>
+All the settings mentioned below are applicable only for the device mode.
+</div>
   
-  - **Block a Page View Event**: Enable this setting to disable sending `page_view` events on load. However, you can explicitly send a `page_view` event by calling the `page()` API.
+- **Block a Page View Event**: Enable this setting to disable sending `page_view` events on load. However, you can explicitly send a `page_view` event by calling the `page()` API.
 - **Extend Page View Property**: Enable this setting to send the following properties along with any other custom property to the `page` call of the RudderStack SDK:
   - `url`
   - `search`
@@ -58,7 +58,7 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
 <div class="infoBlock">
   
 Google Analytics 4 has a limit on the number of unique properties per event name. The default `page_view` event supports the properties mentioned in <a href="https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484">Automatically collected events</a> guide.
-  </div>
+</div>
   
 - **Send userId to GA**: This setting exhibits the following behavior:
   - If enabled, user ID is set to the identified visitors and sent as explained in the [Cookies and user identification](https://developers.google.com/tag-platform/devguides/cookies#set_user_id) guide.
