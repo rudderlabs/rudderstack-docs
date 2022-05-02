@@ -6,9 +6,7 @@ description: Step-by-step guide to ingest your event data from Iterable into Rud
 
 # Iterable
 
-[Iterable](https://iterable.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers exciting features to understand your customers better through intuitive dashboards, real-time data reports, and a unique deep linking technology.
-
-You can send your AppsFlyer events to RudderStack by adding an endpoint that points to RudderStack, with AppsFlyer's **Push API** option. This way, you can capture all the relevant AppsFlyer events related to re-engagement, reattribution, in-app install events, etc. and send them to RudderStack.
+[Iterable](https://iterable.com/) is a cross-channel growth marketing platform that provides unified customer experiences. It also empowers the marketers to create, optimize and measure every interaction taking place throughout the customer journey by using email, push and in-app notifications, SMS and other sources to interact with users.
 
 This guide will help you set up Iterable as a source in RudderStack.
 
@@ -16,77 +14,134 @@ This guide will help you set up Iterable as a source in RudderStack.
 
 Follow these steps to set up your Iterable source in the RudderStack dashboard:
 
-- Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Iterable** from the list of **Event Stream** sources, as shown:
+1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Iterable** from the list of **Event Stream** sources.
 
-<img src="../assets/event-stream-sources/iterable-1.png" alt="AppsFlyer source in RudderStack" />
+2. Assign a name to your source and click on **Next**.
 
-- Assign a name to your source and click on **Next**.
+3. Your Iterable source is now configured. Note the source **Webhook URL** in the Settings tab.
 
-- Your Iterable source is now configured. Note the source **Write key** - this will be required to configure the endpoint URL in the later steps.
+///////Note the source **Write key** - this will be required to configure the endpoint URL in the later steps.
 
-<img src="../assets/event-stream-sources/iterable-2.png" alt="AppsFlyer source write key" />
+<img src="../assets/event-stream-sources/iterable-2.png" alt="Iterable source webhook URL" />
 
-- Head over to your Iterable account and navigate to the **API Access** section under **Integration** from the sidebar. Look for the **Push API** section, as shown:
+4. Head over to your Iterable account and navigate to **Integrations** > **System Webhooks**. 
 
 <img src="../assets/event-stream-sources/iterable-3.png" alt="AppsFlyer dashboard" />
 
-- Add the **Endpoint URL** pointing to RudderStack in the following format:
-
-`<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>`
+5. Click on **Create Webhook** and enter the **Webhook URL**. Finally, click on **Create Webhook**. 
 
 <div class="infoBlock">
 
-For more information on the data plane URL, refer to <a href="https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it">this</a> section.
+For more information, refer to <a href="https://support.iterable.com/hc/en-us/articles/208013936-System-Webhooks-">Setting up a system webhook</a> guide.
 </div>
-
-<div class="warningBlock">
-
-Make sure you add the source write key as query parameter to the URL. This is required to prevent the webhook from failing because of an invalid write key.
-</div>
-
-A sample endpoint URL is shown below:
-
-```http
-https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
-```
-
-<div class="infoBlock">
-
-We highly recommend validating the endpoint using the **Send Test** button.
-</div>
-
-<img src="../assets/event-stream-sources/appsflyer-4.png" alt="Send Test button" />
-
-- Finally, save the endpoint.
 
 ## Event transformation
 
-The AppsFlyer Push events are ingested into RudderStack after converting them into the RudderStack event format. For example, RudderStack converts the `customer_user_id` property set by AppsFlyer into `userId`.
+The Iterable events are ingested into RudderStack after converting them into the RudderStack event format. 
 
-RudderStack populates the following properties from AppsFlyer event payload into the RudderStack event:
+RudderStack populates the following properties from Iterable event payload into the RudderStack event:
 
-| AppsFlyer Property  | RudderStack Property                                       |
+| Iterable Property  | RudderStack Property                                       |
 | :------------------ | :--------------------------------------------------------- |
-| `customer_user_id`  | `userId`, `context.traits.userId`                          |
-| `event_name`        | `event`                                                    |
-| `event_time`        | `timestamp`, `originalTimestamp`                           |
-| `ip`                | `context.ip`                                               |
-| `selected_timezone` | `context.timezone`                                         |
-| `user_agent`        | `context.userAgent`                                        |
-| `bundle_id`         | `context.app.namespace`                                    |
-| `app_version`       | `context.app.version`                                      |
-| `app_name`          | `context.app.name`                                         |
-| `device_type`       | `context.device.model`                                     |
-| `wifi`              | `context.network.wifi`                                     |
-| `carrier`           | `context.network.carrier`                                  |
-| `platform`          | `platform`, `context.os.name`                              |
-| `idfa`              | `context.device.advertisingId` (for iOS)                     |
-| `android_id`        | `context.device.advertisingId` (for Android)                 |
-| `appsflyer_id`      | `context.externalId[0].value`                              |
-| `os_version`        | `context.os.version`                                       |
-| `city`              | `traits.address.city`, `context.traits.address.city`       |
-| `postal_code`       | `traits.address.zip`, `context.traits.address.zip`         |
-| `country_code`      | `traits.address.country`, `context.traits.address.country` |
+| `email`  | `userId`, `context.traits.email`                          |
+| `user_id`        | `user_id`                                                    |
+| `dataFields`        | `properties`                           |
+| `eventName`                | `event`                                               |
+
+<div class="infoBlock">
+
+Here, `userId` is the unique identifier of the output payload. If `userId` is not provided then Rudderstack creates a unique `userId` using `email`.
+</div>
+
+## Payload creation
+
+Generic format of payload sent by iterable:
+
+```json
+{
+  "email": "docs@iterable.com",
+  "userId": "1",
+  "eventName": "hostedUnsubscribeClick",
+  "dataFields": {
+    "country": "United States",
+    "city": "San Jose",
+    "campaignId": 1074721,
+    "ip": "192.168.0.1",
+    "userAgentDevice": "Mac",
+    "messageId": "ceb3d4d929fc406ca93b28a0ef1efff1",
+    "emailId": "c1074721:t1506266:docs@iterable.com",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
+    "workflowName": "My workflow",
+    "locale": null,
+    "templateId": 1506266,
+    "emailSubject": "My email subject",
+    "url": "https://iterable.com",
+    "labels": [],
+    "createdAt": "2020-03-21 00:24:08 +00:00",
+    "templateName": "My email template",
+    "messageTypeId": 13406,
+    "experimentId": null,
+    "region": "CA",
+    "campaignName": "My email campaign",
+    "workflowId": 60102,
+    "email": "docs@iterable.com",
+    "channelId": 12466
+  }
+}
+```
+
+
+Generic format of the payload after transformation:
+
+```json
+{
+  "userId": "1",
+  "context": {
+    "integration": {
+      "name": "Iterable",
+      "version": "1.0.0"
+    },
+    "library": {
+      "name": "unknown",
+      "version": "unknown"
+    },
+    "traits": {
+      "email": "docs@iterable.com"
+    }
+  },
+  "event": "hostedUnsubscribeClick",
+  "integrations": {
+    "Iterable": false
+  },
+  "properties": {
+    "country": "United States",
+    "city": "San Jose",
+    "campaignId": 1074721,
+    "ip": "192.168.0.1",
+    "userAgentDevice": "Mac",
+    "messageId": "ceb3d4d929fc406ca93b28a0ef1efff1",
+    "emailId": "c1074721:t1506266:docs@iterable.com",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
+    "workflowName": "My workflow",
+    "locale": null,
+    "templateId": 1506266,
+    "emailSubject": "My email subject",
+    "url": "https://iterable.com",
+    "labels": [],
+    "createdAt": "2020-03-21 00:24:08 +00:00",
+    "templateName": "My email template",
+    "messageTypeId": 13406,
+    "experimentId": null,
+    "region": "CA",
+    "campaignName": "My email campaign",
+    "workflowId": 60102,
+    "channelId": 12466
+  },
+  "receivedAt": "2020-03-21T00:24:08.000Z",
+  "timestamp": "2020-03-21T00:24:08.000Z",
+  "type": "track"
+}
+```
 
 ## Contact us
 
