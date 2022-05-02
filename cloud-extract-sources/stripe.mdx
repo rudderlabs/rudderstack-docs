@@ -1,88 +1,80 @@
 ---
-title: "Stripe"
+title: "Stripe Source"
 description: >-
-  Step-by-step guide to ingest your payment data from your Stripe account into
-  RudderStack.
+  Step-by-step guide on ingesting data from Stripe into RudderStack.
 ---
 
-# Stripe
+# Stripe Source
 
 [Stripe](https://stripe.com/) is an online payment processing system for businesses. It offers cutting-edge software and APIs that allows thousands of businesses to manage their business payments online. Retailers, subscription businesses, software platforms, and online marketplaces all use Stripe for online payment.
 
-This document guides you in setting up Stripe as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Stripe data, which can then be routed to your data warehouse destination supported by RudderStack.
+This document guides you in setting up Stripe as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Stripe data, which can then be routed to your RudderStack-supported data warehouse destination.
+
+<div class="warningBlock">
+
+All the Cloud Extract sources support sending data only to a <a href="https://www.rudderstack.com/docs/data-warehouse-integrations/">data warehouse destination</a>.
+</div>
+
+## Getting started
+
+To set up Stripe as a source in RudderStack, follow these steps:
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Stripe** from the list of sources.
+3. Assign a name to your source and click on **Next**.
+
+### Connection settings
+
+1. Click on **Connect with Stripe** and give RudderStack the required access to your Stripe account.
+2. **Stripe Version**: Under **Source Settings**, select the default API version associated with your Stripe account.
 
 <div class="infoBlock">
 
-**All the Cloud Extract sources support sending data only to a data warehouse destination.**
-
+For more information on the Stripe API version and where to find it in your account, refer to the <a href="https://stripe.com/docs/upgrades">Stripe Documentation</a>.
 </div>
 
-## Getting Started
+<img src="../assets/cloud-extract-sources/stripe-source-settings.png" alt="Specifying the Stripe API version" />
 
-To add Stripe as a source in RudderStack, follow these steps:
+### Destination settings
 
-- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-- From the left panel, select **Directory**. Then, click on **Cloud Extract** under **Sources**, as shown below. Then, choose **Stripe** from the list of sources.
+The following settings specify how RudderStack sends the data ingested from Stripe to the connected warehouse destination:
 
-<img src="https://gblobscdn.gitbook.com/assets%2F-Lq5Ea6fHVg3dSxMCgyQ%2F-MX0sNJ2Es2LZZMWwJZl%2F-MX0saF9wz8gHe-pPffd%2F1.png?alt=media&token=ca33550d-ad92-472e-abf4-38224b0bd978" alt="Choose Stripe" />
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Stripe data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Stripe:
+    - **Basic**: Runs the syncs at the specified time interval. 
+    - **CRON**: Runs the syncs based on the user-defined CRON expression.
+    - **Manual**: You are required to run the syncs manually.
 
-- Assign a name to your source, and click on **Next**.
+<div class="infoBlock">
 
-<img src="../assets/2 (17).png" alt="Assign a name" />
+For more information on the schedule types, refer to the <a href="https://www.rudderstack.com/docs/cloud-extract-sources/common-settings/">Common Settings</a> guide.
+</div>
 
-### Setting Up the Connection
+### Selecting the data to import
 
-- Under **Create new account**, click on **Connect with Stripe** and grant RudderStack the access to your Stripe account.
+Choose the Stripe data that you wish to ingest via RudderStack. You can either select all the data or choose specific Stripe data attributes as per your requirement.
 
-<img src="../assets/2.1.png" alt="Connect with Stripe" />
+<img src="../assets/cloud-extract-sources/sendgrid-connection-settings.png" alt="Selecting the data to import" />
+
+Stripe is now configured as a source. RudderStack will start ingesting data from Stripe as per your specified schedule and frequency.
+
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
 
 <div class="successBlock">
 
-  If you have already connected RudderStack to your Stripe account, your
-  credentials should appear automatically under
-  **Use existing credentials**.
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
-### Setting the Data Update Schedule
+## FAQ
 
-- Next, you will be required to set the **Run Frequency** to schedule the data import from your Stripe account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option, as shown:
-
-<img src="../assets/3 (14) (1).png" alt="Sync Starting At" />
-
-<div class="successBlock">
-
-  You can also set a **Table Prefix** for the warehouse table where
-  you want to send this data.
-</div>
-
-### Selecting the Data to Import
-
-- In the next screen, choose the data you want to import from Stripe. To import all the data, click on **Select All**, as shown:
-
-<img src="../assets/4 (14).png" alt="Select All" />
-
-That's it! Stripe is now successfully configured as a source on your RudderStack dashboard.
-
-RudderStack will start importing data from your Stripe source as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
-
-<img src="../assets/5 (14).png" alt="Add Destination" />
-
-<div class="successBlock">
-
-  Use the **Connect Destinations** option if you have already
-  configured a data warehouse destination in RudderStack. To configure a data
-  warehouse destination from scratch, click on the
-  **Add Destination** button.
-</div>
-
-## FAQs
-
-#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
 
-We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Stripe as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you
+If you come across any issues while configuring Stripe as a source in RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
