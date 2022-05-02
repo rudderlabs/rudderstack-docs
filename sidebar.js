@@ -509,7 +509,7 @@ export const jsonData = [
         },
         {
            "key":"google-adwords",
-           "title":"Google AdWords",
+           "title":"Google AdWords (Ads)",
            "link":"/cloud-extract-sources/google-adwords/",
            "content":[
               
