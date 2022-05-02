@@ -26,6 +26,11 @@ RudderStack supports both the `gtag` and `firebase` ways for tagging in websites
 - If you use `gtag`, passing the `client_id` parameter becomes mandatory.
 - If you use `firebase`, passing the `app_instance_id` parameter becomes mandatory.
 
+<div class="infoBlock">
+  
+Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Measurement Protocol (Google Analytics 4)</a> guide for more information.
+  </div>
+
 The mappings for the above parameters are listed below:
 
 | Parameters    | Mapping value  |
@@ -68,7 +73,7 @@ rudderanalytics.track('Product List Viewed', {
 A sample `track` call when `firebase` is used is shown below:
 
 ```javascript
-rudderanalytics.track('product list viewed', {
+rudderanalytics.track('Product List Viewed', {
   list_id: "related_products",
   category: "Related_products",
   products: [{
