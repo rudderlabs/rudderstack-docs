@@ -6,54 +6,55 @@ description: Step-by-step guide to ingest your event data from Iterable into Rud
 
 # Iterable
 
-[Iterable](https://iterable.com/) is a cross-channel growth marketing platform that provides unified customer experiences. It also empowers the marketers to create, optimize and measure every interaction taking place throughout the customer journey by using email, push and in-app notifications, SMS and other sources to interact with users.
+[Iterable](https://iterable.com/) is a cross-channel growth marketing platform that provides unified customer experiences. It also empowers the marketers to create, optimize and measure every interaction taking place throughout the customer journey by using email, push and in-app notifications, SMS and other sources.
 
 This guide will help you set up Iterable as a source in RudderStack.
 
 ## Getting started
 
-Follow these steps to set up your Iterable source in the RudderStack dashboard:
+Follow these steps to set up Iterable source in the RudderStack dashboard:
 
-1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Iterable** from the list of **Event Stream** sources.
+1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Iterable** from the list of **Event Stream** sources, as shown:
 
 <img src="../assets/event-stream-sources/iterable-1.png" alt="Iterable source" />
 
 2. Assign a name to your source and click on **Next**.
 
-3. Your Iterable source is now configured. Note the source **Webhook URL** in the Settings tab.
+3. The Iterable source is now configured. Note the **Webhook URL** in the **Settings** tab.
 
 <img src="../assets/event-stream-sources/iterable-2.png" alt="Iterable source webhook URL" />
 
-4. Head over to your Iterable account and navigate to **Integrations** > **System Webhooks**. 
+4. Go to your Iterable account and navigate to **Integrations** > **System Webhooks**. 
 
-5. Click on **Create Webhook** and enter the **Webhook URL**. Finally, click on **Create Webhook**. 
+5. Click on **Create Webhook** and enter the **Webhook URL** in **Endpoint URL**, as shown:
 
-<div class="infoBlock">
+<img src="../assets/event-stream-sources/webhook-url-iterable.png" alt="Iterable source webhook URL" />
 
-For more information, refer to <a href="https://support.iterable.com/hc/en-us/articles/208013936-System-Webhooks-">Setting up a system webhook</a> guide.
-</div>
+6. Finally, click on **Create**. 
 
 ## Event transformation
 
-The Iterable events are ingested into RudderStack after converting them into the RudderStack event format. 
+The Iterable events are ingested into RudderStack after being converted into the RudderStack event format. 
 
 RudderStack populates the following properties from Iterable event payload into the RudderStack event:
 
-| Iterable Property  | RudderStack Property                                       |
-| :------------------ | :--------------------------------------------------------- |
-| `email`  | `userId`, `context.traits.email`                          |
-| `user_id`        | `user_id`                                                    |
-| `dataFields`        | `properties`                           |
-| `eventName`                | `event`                                               |
+| Iterable property  | RudderStack property|
+| :------------------ | :------------- |
+| `email`  | `context.traits.email`    |
+| `userId`        | `userId`        |
+| `dataFields`    | `properties`  |
+| `eventName`     | `event`   |
 
 <div class="infoBlock">
 
-Here, `userId` is the unique identifier of the output payload. If `userId` is not provided then Rudderstack creates a unique `userId` using `email`.
+The `userId` is the unique identifier in the output payload. If not provided, Rudderstack creates a unique `userId` using `email`.
 </div>
 
 ## Payload creation
 
-Generic format of payload sent by iterable:
+This section details how RudderStack receives the data from the Iterable source platform and creates the resulting payload.
+
+A sample payload sent by Iterable is, as shown:
 
 ```json
 {
@@ -88,8 +89,7 @@ Generic format of payload sent by iterable:
 }
 ```
 
-
-Generic format of the payload after transformation:
+The transformed payload is shown below:
 
 ```json
 {
