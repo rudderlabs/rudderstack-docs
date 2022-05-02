@@ -1,31 +1,29 @@
 ---
 # slug: "/docs/stream-sources/iterable"
 title: "Iterable"
-description: Step-by-step guide to ingest your event data from Iterable into RudderStack.
+description: Step-by-step guide on ingesting your event data from Iterable into RudderStack.
 ---
 
 # Iterable
 
-[Iterable](https://iterable.com/) is a cross-channel growth marketing platform that provides unified customer experiences. It also empowers the marketers to create, optimize and measure every interaction taking place throughout the customer journey by using email, push and in-app notifications, SMS and other sources.
+[Iterable](https://iterable.com/) is a popular growth marketing platform that lets you maximize customer interaction and improve your customers' overall LTV (Life Time Value).
 
 This guide will help you set up Iterable as a source in RudderStack.
 
 ## Getting started
 
-Follow these steps to set up Iterable source in the RudderStack dashboard:
+Follow these steps to set up Iterable as a source in the RudderStack dashboard:
 
 1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click on **Add Source**. Then, select **Iterable** from the list of **Event Stream** sources, as shown:
 
 <img src="../assets/event-stream-sources/iterable-1.png" alt="Iterable source" />
 
 2. Assign a name to your source and click on **Next**.
-
 3. The Iterable source is now configured. Note the **Webhook URL** in the **Settings** tab.
 
 <img src="../assets/event-stream-sources/iterable-2.png" alt="Iterable source webhook URL" />
 
 4. Go to your Iterable account and navigate to **Integrations** > **System Webhooks**. 
-
 5. Click on **Create Webhook** and enter the **Webhook URL** in **Endpoint URL**, as shown:
 
 <img src="../assets/event-stream-sources/webhook-url-iterable.png" alt="Iterable source webhook URL" />
@@ -34,9 +32,7 @@ Follow these steps to set up Iterable source in the RudderStack dashboard:
 
 ## Event transformation
 
-The Iterable events are ingested into RudderStack after being converted into the RudderStack event format. 
-
-RudderStack populates the following properties from Iterable event payload into the RudderStack event:
+The Iterable events are ingested into RudderStack ingests the events from Iterable after converting them into the RudderStack event format. It also populates the following properties from the Iterable event payload into the RudderStack event:
 
 | Iterable property  | RudderStack property|
 | :------------------ | :------------- |
@@ -47,10 +43,10 @@ RudderStack populates the following properties from Iterable event payload into 
 
 <div class="infoBlock">
 
-The `userId` is a unique identifier in the output payload. If not provided, Rudderstack creates a unique `userId` using `email`.
+The <code class="inline-code">userId</code> is a unique identifier in the output payload. If not provided, Rudderstack creates a unique <code class="inline-code">userId</code> using <code class="inline-code">email</code>.
 </div>
 
-The below is the list of events that Iterable supports:
+Iterable supports the following events list:
 - Blast Send
 - Email Bounce
 - Email Click
@@ -80,16 +76,14 @@ The below is the list of events that Iterable supports:
 
 <div class="infoBlock">
 
-Refer to the list of <a href="https://support.iterable.com/hc/en-us/articles/208013936-System-Webhooks-#webhook-examples">Supported webhook events</a> for more information.
+Refer to the complete list of the <a href="https://support.iterable.com/hc/en-us/articles/208013936-System-Webhooks-#webhook-examples">supported webhook events</a> for more information.
 </div>
 
-
-
-## Payload creation
+## How RudderStack creates the event payload
 
 This section details how RudderStack receives the data from the Iterable source platform and creates the resulting payload.
 
-A sample payload sent by Iterable is, as shown:
+A sample payload sent by Iterable is shown below:
 
 ```json
 {
@@ -124,7 +118,7 @@ A sample payload sent by Iterable is, as shown:
 }
 ```
 
-The transformed payload is shown below:
+RudderStack transforms the above payload into the following payload:
 
 ```json
 {
