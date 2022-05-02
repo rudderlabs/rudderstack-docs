@@ -39,26 +39,26 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
  
 <div class="infoBlock">
   
- Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the API Secret, Measurement Id and Firebase App Id.
-  </div>
-  
+Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the API Secret, Measurement Id and Firebase App ID.
+</div>
 
 ### Native SDK
 
 <div class="infoBlock">
-  
+
 All the settings mentioned below are applicable only for the device mode.
 </div>
-  
+
 - **Block a Page View Event**: Enable this setting to disable sending `page_view` events on load. However, you can explicitly send a `page_view` event by calling the `page()` API.
 - **Extend Page View Property**: Enable this setting to send the following properties along with any other custom property to the `page` call of the RudderStack SDK:
     - `url`
     - `search`
  
- <div class="infoBlock">
-  
+<div class="infoBlock">
+
 Google Analytics 4 has a limit on the number of unique properties per event name. The default <code class="inline-code">page_view</code> event supports the properties mentioned in the <a href="https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484">Automatically collected events in Google Analytics 4</a> guide.
 </div>
+
   
 - **Send userId to GA**: This setting exhibits the following behavior:
     - If enabled, the user ID is set to the identified visitors and sent as explained in the [Cookies and user identification](https://developers.google.com/tag-platform/devguides/cookies#set_user_id) guide.
@@ -86,6 +86,7 @@ Finally, click on **Next** to enable Google Analytics 4 as a destination in Rudd
 2. Go to the **Admin** section in the left sidebar.
 3. Select the relevant account and property.
 4. Click on **Data Streams** and select the stream to get the Measurement Id as shown:
+
 <img src="../../../assets/event-stream-destinations/measurement-id.png" />
 
 ### How do I obtain the API Secret?
@@ -95,8 +96,8 @@ Finally, click on **Next** to enable Google Analytics 4 as a destination in Rudd
 3. Select the relevant account and property.
 4. Click on **Data Streams** and select the stream.
 5. Click on **Measurement Protocol API secrets** to get the API Secret as shown:
-<img src="../../../assets/event-stream-destinations/api-secret.png" />
 
+<img src="../../../assets/event-stream-destinations/api-secret.png" />
 
 ### How do I obtain the Firebase App ID?
 
