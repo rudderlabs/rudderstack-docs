@@ -12,9 +12,9 @@ This guide lists the steps required to set up the RudderStack data plane (backen
 
 To set up RudderStack, you will need to set up and install the following tools:
 
-- [Go 1.13](https://golang.org/dl/) or above.
-- [Node.js 10.6](https://nodejs.org/en/download/) or above.
-- [PostgreSQL 10](https://www.postgresql.org/download/) or above
+- [Go 1.17](https://golang.org/dl/) or above.
+- [Node.js 14.17](https://nodejs.org/en/download/) or above.
+- [PostgreSQL 11](https://www.postgresql.org/download/) or above
 
 ## RudderStack-hosted control plane
 
@@ -69,7 +69,7 @@ cp config/sample.env .env
 11. Finally, run the RudderStack server using the following command:
 
 ```bash
-go run -mod=vendor main.go
+go run main.go
 ```
 
 ## Self-hosted control plane

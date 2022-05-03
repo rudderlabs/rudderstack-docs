@@ -55,16 +55,25 @@ If you are self-hosting RudderStack and have set up the control plane using the 
 
 Follow these steps to send the test events:
 
-1. Navigate to the folder where RudderStack is installed.
-2. Then, run the following command after replacing `<WRITE_KEY>` with the source write key obtained in the previous section, and `<DATA_PLANE_URL>` with your [data plane URL](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
+* For bare local setup: 
+    1. Navigate to the folder where RudderStack is installed.
+    2. Then, run the following command after replacing `<WRITE_KEY>` with the source write key obtained in the previous section, and `<DATA_PLANE_URL>` with your [data plane URL](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
 
-```bash
-./scripts/generate-event <WRITE_KEY> <DATA_PLANE_URL>/v1/batch
-```
+    ```bash
+    ./scripts/generate-event <WRITE_KEY> <DATA_PLANE_URL>/v1/batch
+    ```
 
-An example is shown below:
+    An example is shown below:
 
-<img src="../../assets/rudderstack-open-source/test-event.png" alt="Test Event" />
+    <img src="../../assets/rudderstack-open-source/test-event.png" alt="Test Event" />
+
+* For a dockerized setup just run the following:
+  
+  ```bash
+  docker exec -ti \
+      <rudder-server-running-container-id> \
+      ./scripts/generate-event <WRITE_KEY> <DATA_PLANE_URL>/v1/batch
+  ```
 
 You can then check your destination to verify that the events are delivered.
 
