@@ -17,7 +17,7 @@ You can follow any of the two approaches to send test events and verify your Rud
 - Bundled shell script
 - RudderStack's HTTP API
 
-## Bundled Shell Script
+## Bundled shell script
 
 The [RudderStack GitHub repository](https://github.com/rudderlabs/rudder-server) contains a bundled shell script that generates test events. Clone the [repository](https://github.com/rudderlabs/rudder-server) by running the following command:
 
@@ -29,7 +29,7 @@ Then, follow the steps below to send test events.
 
 ### Step 1: Getting the source write key
 
-#### RudderStack Open Source  dashboard
+#### RudderStack Open Source dashboard
 
 If you have signed up for [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource), follow these steps to get the source write key:
 
@@ -53,7 +53,9 @@ If you are self-hosting RudderStack and have set up the control plane using the 
 
 ### Step 2: Sending test events
 
-Follow these steps to send the test events:
+To send the test events, follow the steps listed in the sections below depending on your preferred setup choice:
+
+### For local setup
 
 1. Navigate to the folder where RudderStack is installed.
 2. Then, run the following command after replacing `<WRITE_KEY>` with the source write key obtained in the previous section, and `<DATA_PLANE_URL>` with your [data plane URL](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
@@ -61,10 +63,19 @@ Follow these steps to send the test events:
 ```bash
 ./scripts/generate-event <WRITE_KEY> <DATA_PLANE_URL>/v1/batch
 ```
-
 An example is shown below:
 
 <img src="../../assets/rudderstack-open-source/test-event.png" alt="Test Event" />
+
+### For Docker setup
+
+For a Dockerized setup, run the following command:
+  
+```bash
+docker exec -ti \
+    <rudder-server-running-container-id> \
+    ./scripts/generate-event <WRITE_KEY> <DATA_PLANE_URL>/v1/batch
+```
 
 You can then check your destination to verify that the events are delivered.
 
