@@ -68,6 +68,22 @@ The EU cluster IPs are listed below:
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
+### How do I avoid lags in data syncs while heavy loads are running on my data warehouse?
+
+You can use either of the following approaches to avoid data sync lags in your warehouse:
+
+- **Approach 1**: In the warehouse destination connection settings, set an **exclusion window** which lets you set a start and end time when Rudderstack will not sync data to your warehouse. You can run heavy loads during this time interval.
+
+<img src="../assets/warehouse-destinations/exclusion-window.png" />
+
+- **Approach 2**: In the warehouse destination connection settings, your can increase the **sync frequency** interval so that there are lesser number of warehouse syncs throughout the day. You can also run the data syncs during the non-peak hours by setting the **Sync Starting At** time interval.
+
+<img src="../assets/warehouse-destinations/sync-frequency.png" />
+
+- **Approach 3**: If you are performing only writes/updates on your data warehouse, you can set up a read replica of your database and connect it to your load generation tool. Connect the read/write replica to RudderStack, as shown:
+
+<img src="../assets/warehouse-destinations/read-write-database.png" />
+
 ### How can I speed-up my warehouse uploads?
 
 | Parameter | Description | Tip | Default value |
