@@ -11,6 +11,11 @@ RudderStack's Data Regulation API lets you specify regulations to suspend data c
 
 This guide covers the data regulation feature in detail and details the Data Regulation API endpoints.
 
+<div class="warningBlock">
+
+The Data Regulation API is applicable only for the destinations configured to sent events using the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">RudderStack cloud mode</a>.
+</div>
+
 <a href="https://rudderstack.com/enterprise-quote" target="_blank">
 <img src="https://img.shields.io/static/v1?label=Plan&message=Enterprise&color=blueviolet" alt="Github Badge" class="githubBadge" />
 </a>
@@ -92,6 +97,18 @@ https://api.rudderstack.com/v2/regulations
   }]
 }
 ```
+
+<div class="infoBlock">
+
+RudderStack supports the <code class="inline-code">suppress_with_delete</code> request for the following destinations:
+<ul>
+  <li><a href="https://www.rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a></li>
+  <li><a href="https://www.rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
+  <li><a href="https://www.rudderstack.com/docs/destinations/business-messaging/intercom/">Intercom</a></li>
+  <li><a href="https://www.rudderstack.com/docs/destinations/storage-platforms/amazon-s3/">S3</a></li>
+  <li><a href="https://www.rudderstack.com/docs/destinations/storage-platforms/redis/">Redis</a></li>
+</ul>
+</div>
 
 ### `regulationType`
 
