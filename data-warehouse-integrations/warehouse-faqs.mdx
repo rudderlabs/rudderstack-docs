@@ -70,13 +70,13 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 ### How to avoid lags in data sync while running heavy load on a warehouse?
 
-You can use either of the following ways to avoid lags in warehouse syncs while running a heavy load:
+You can use either of the following ways to avoid lags in warehouse data sync while running a heavy load:
 
-- Set an **exclusion window** which lets you set a start and end time when Rudderstack will not sync the data to the warehouse. You can run heavy loads during this time interval.
+- In the warehouse destination connection settings, set an **exclusion window** which lets you set a start and end time when Rudderstack will not sync data to the warehouse. You can run heavy loads during this time interval.
 
 <img src="../assets/warehouse-destinations/exclusion-window.png" />
 
-- Increase the **Sync frequency** interval so that there are lesser number of warehouse syncs throughout the day. You can run them during the non peak load interval by setting the **Sync Starting At** time interval.
+- In the warehouse destination connection settings, increase the **Sync frequency** interval so that there are lesser number of warehouse syncs throughout the day. You can run the data syncs during the non peak hours by setting the **Sync Starting At** time interval.
 
 <img src="../assets/warehouse-destinations/sync-frequency.png" />
 
