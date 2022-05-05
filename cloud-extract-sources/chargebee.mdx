@@ -15,7 +15,7 @@ This document guides you in setting up Chargebee as a source in RudderStack. Onc
 All the Cloud Extract sources support sending data only to a <a href="https://www.rudderstack.com/docs/data-warehouse-integrations/">data warehouse destination</a>.
 </div>
 
-<img src="https://img.shields.io/badge/stability-beta-blueviolet?style=for-the-badge&logo=github" alt="Github Badge" class="githubBadge" />
+<img src="https://img.shields.io/badge/Stability-Beta-blueviolet" alt="Github Badge" class="githubBadge" />
 
 ## Getting started
 
@@ -38,7 +38,7 @@ Enter the following connection credentials to authenticate your Chargebee accoun
 
 <div class="warningBlock">
 
-Currently, RudderStack does not support changing the <strong>Product Catalog</strong> version once you have successfully set up the source.
+RudderStack does not support changing the <strong>Product Catalog</strong> version once you have successfully set up the source.
 </div>
 
 ### Destination settings
@@ -73,7 +73,13 @@ You can further connect this source to your data warehouse by clicking on **Add 
 Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
-## FAQs
+## FAQ
+
+### How do I obtain the Chargebee API key?
+
+The Chargebee API key is required to authenticate your app and regulate its access to the Chargebee API. To obtain the API key, log into your Chargebee dashboard and go to **Settings** > **Configure Chargebee** > **API Keys and Webhooks**. Then, click on the **API Keys** tab. Your API key should be listed here.
+
+For more information, refer to the [Chargebee documentation](https://www.chargebee.com/docs/2.0/api_keys.html).
 
 ### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
