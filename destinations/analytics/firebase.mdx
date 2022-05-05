@@ -6,15 +6,18 @@ description: Step-by-step guide to send your event data from RudderStack to Fire
 
 # Firebase
 
-[**Firebase**](https://firebase.google.com/) is a popular mobile platform powered by Google. It helps you to quickly develop high-quality, enterprise-grade applications and grow your business.
+[Firebase](https://firebase.google.com/) is a popular mobile platform powered by Google. It helps you to quickly develop high-quality, enterprise-grade applications and grow your business.
 
-Firebase is tightly integrated with Google Analytics and offers unlimited reporting for up to 500 events defined using the Firebase SDK. You can check the Firebase destination code on [**GitHub**](https://github.com/firebase/) for Android and iOS platforms.
+RudderStack supports Firebase as a [device mode destination](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode) to which you can seamlessly send your customer data for analytics.
 
-RudderStack lets you send your event data from your mobile apps to Firebase through its Android, iOS, Unity, and React Native SDKs.
+<div class="dangerBlock">
+
+Firebase device mode support is not available for the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/">Cordova</a> and <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/">Flutter</a> SDKs.
+</div>
 
 ## Getting started
 
-Before configuring Firebase as a destination in RudderStack, verify if the source platform is supported by Firebase, by referring to the following table:
+Before configuring Firebase as a destination in RudderStack, verify if the source platform is supported by Firebase by referring to the table below:
 
 | **Connection Mode** | **Web** | **Mobile**    | **Server** |
 | :------------------ | :------ | :------------ | :--------- |
@@ -23,21 +26,25 @@ Before configuring Firebase as a destination in RudderStack, verify if the sourc
 
 <div class="warningBlock">
 
-  Firebase is a device-mode only integration. To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+Firebase is a device mode-only integration. To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
-Once you have confirmed that the source platform supports sending events to Firebase, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Firebase, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com), add the source. From the list of destinations, select **Firebase**.
-* Assign a name to your destination and click on **Next**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Firebase**.
+2. Assign a name to the destination and click on **Next**.
 
-* Then, connect this destination to your Android/iOS/Unity/React Native source. You should then see the following screen:
+### Connection settings
 
-<img src="../../assets/firebase-connection-settings.png" alt="Firebase connection settings" />
+1. Connect this destination to your Android/iOS/Unity/React Native source. You should then see the following screen:
 
-* As this is a device mode-only integration, click on **Next** to complete the destination setup.
+<img src="../../assets/event-stream-destinations/firebase-connection-settings.png" alt="Firebase connection settings" />
 
-* Next, depending on your platform of integration follow the steps below to enable Firebase in your project:
+2. As this is a device mode-only integration, click on **Next** to complete the destination setup.
+
+### Adding device mode integration
+
+Depending on your platform of integration, follow the steps below to add Firebase to your project:
 
 <Tabs>
   <TabList>
@@ -290,7 +297,7 @@ RudderClient rudderClient = RudderClient.GetInstance(
 
 ## Identify
 
-The `identify` call sets the `userId` through the `setUserId` method from `FirebaseAnalytics`. RudderStack sets the other user properties from `RudderTraits` to Firebase using the `setUserProperty` method. RudderStack ignores `age`, `gender` and `interest` as these are reserved by Google.
+The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call sets the `userId` through the `setUserId` method from `FirebaseAnalytics`. RudderStack sets the other user properties from `RudderTraits` to Firebase using the `setUserProperty` method. RudderStack ignores `age`, `gender` and `interest` as these are reserved by Google.
 
 ```objectivec
 [[RSClient sharedInstance] identify:@"test_user_id"
@@ -305,7 +312,9 @@ The `identify` call sets the `userId` through the `setUserId` method from `Fireb
 
 ## Track
 
-The `track` call from RudderStack is mapped to the standard events of Firebase wherever possible. RudderStack maps the events as per the following table:
+RudderStack's [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) is mapped to the standard Firebase events wherever possible. 
+
+The following table lists the event mapping:
 
 | RudderStack Event           | Firebase Event       |
 | :-------------------------- | :------------------- |
@@ -327,7 +336,7 @@ The `track` call from RudderStack is mapped to the standard events of Firebase w
 | `Promotion Clicked`         | `select_promotion`   |
 | `Cart Viewed`               | `view_cart`          |
 
-Apart from the above-mentioned events, the following Firebase standard events are not mapped to any RudderStack event. You can mention the exact names from the following list to be perceived as a standard event in Firebase.
+Apart from the above-mentioned events, the following standard Firebase events are not mapped to any RudderStack event. You can mention the exact event names from the following list to be sent as a standard event in Firebase.
 
 - `number_of_nights`
 - `number_of_rooms`
@@ -345,12 +354,12 @@ Apart from the above-mentioned events, the following Firebase standard events ar
 
 <div class="infoBlock">
 
-  RudderStack passes all the `properties` from the event to Firebase. The nested value in the properties is converted to JSON using <a href="https://github.com/google/gson">GSON</a>.
+RudderStack passes all the properties from the event to Firebase. The nested value in the properties is converted to JSON using <a href="https://github.com/google/gson">GSON</a>.
 </div>
 
-RudderStack modifies the event property parameter names as per the following table:
+RudderStack maps the following event properties to the standard Firebase properties:
 
-| Standard RudderStack Name        | Standard Firebase Name   |
+| RudderStack property        | Firebase property   |
 | :------------------------------- | :---------------------   |
 | `category`                       | `item_category`          |
 | `cart_id`,`product_id`           | `item_id`                |
@@ -370,15 +379,17 @@ RudderStack modifies the event property parameter names as per the following tab
 | `creative`                       | `creative_name`          |
 | `affiliation`                    | `affiliation`            |
 
+<div class="infoBlock">
 
-Along with the above list of the standard property names, RudderStack does the following in case of an Android source:
+Firebase enforces a key value of length less than 100. RudderStack takes the substring of length 100 from the beginning if the length exceeds this permitted value.
+</div>
 
-- Converts the names to lower case.
-- Trims the white spaces from the start and the end.
-- Replaces `space` with `underscore`.
-- If the length of the key is more than 40, takes the substring of length 40 from the beginning.
+Along with the above list of the standard property names, RudderStack does the following in case of an **Android** source:
 
-Firebase enforces to have the value of length less than 100. RudderStack takes the substring of length 100 from the beginning if the length exceeds the permitted value.
+- Converts the event names to the lower case.
+- Trims the whitespaces at the start and the end.
+- Replaces a space with an underscore.
+- If the length of the key is more than 40, RudderStack takes the substring of length 40 from the beginning.
 
 A sample `track` call from the iOS SDK is shown below:
 
@@ -391,7 +402,7 @@ A sample `track` call from the iOS SDK is shown below:
 
 ## Screen
 
-The `screen` method allows you to record whenever a user sees the mobile screen along with any optional properties.
+The [`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) method lets you record whenever a user sees their mobile screen along with any optional properties about the viewed screen.
 
 A sample `screen` call looks like the following:
 
@@ -404,7 +415,7 @@ A sample `screen` call looks like the following:
 
 ## Reset
 
-The `reset` method removes the user ID.
+The `reset` method resets the user identification.
 
 A sample `reset` call is shown in the following snippets:
 
@@ -423,7 +434,7 @@ MainApplication.rudderClient.reset()
 
 ## Debugging
 
-You can check the events and the properties along with it in the Firebase Debug View. To enable it for Android, fire the command below from your terminal:
+You can check the events and their properties along in the [Firebase DebugView](https://firebase.google.com/docs/analytics/debugview). To enable it for Android, run the following command from your terminal:
 
 ```bash
 $ adb shell setprop debug.firebase.analytics.app <your_package_name>
@@ -435,20 +446,20 @@ For iOS, specify the following in your command line argument in XCode:
 -FIRAnalyticsDebugEnabled
 ```
 
-## FAQs
+## FAQ
 
-### How do I disable automatic screen tracking while using this SDK?
+### How do I disable automatic screen tracking while using the RudderStack SDKs?
 
-* For Android, nest the following setting within the `<application>` tag of the `AndroidManifest.xml` file:
+* For Android, nest the following setting within the `<application>` tag of your `AndroidManifest.xml` file:
 
 ```xml
 <meta-data android:name="google_analytics_automatic_screen_reporting_enabled" android:value="false" />
 ```
 
-* In case of iOS, set `FirebaseAutomaticScreenReportingEnabled` to `NO` (Boolean) in the `Info.plist`.
+* For iOS, set `FirebaseAutomaticScreenReportingEnabled` to `NO` (Boolean) in your `Info.plist`.
 
-For more information, visit the [**Firebase docs**](https://firebase.google.com/docs/analytics/screenviews#automatically_track_screens) on this topic.
+For more information, refer to the [Firebase documentation](https://firebase.google.com/docs/analytics/screenviews#automatically_track_screens).
 
 ## Contact us
 
-If you come across any issues while configuring Firebase with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
