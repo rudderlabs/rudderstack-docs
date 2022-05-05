@@ -29,7 +29,7 @@ The list of cookies used by the JavaScript SDK to store persistent user data is 
 |  `rl_group_trait`    | Stores the user group traits object set via the `group` API. All the subsequent group event payloads will contain this data unless cleared from the storage.   |    <pre>{<br />  location: "New Orleans",<br />  nationality: "US",<br />  someObj: {<br />    key1: val1,<br />    key2: val2,<br />  }<br />}</pre>                      |  `rudderanalytics.reset()` |
 | `rl_page_init_referrer`        | Stores the initial referrer of the page when a user visits a site for the first time. All the subsequent event payloads will contain this data.    | `https://www.google.com/` | Cannot be cleared using SDK. |
 | `rl_page_init_referring_domain`      | Stores the initial referring domain of the page when a user visits a site for the first time. All the subsequent event payloads will contain this data.  |  `google.com` | Cannot be cleared using SDK. |
-| `test_rudder_cookie`      | Checks whether the cookie can be accessed or not. Once checked, the cookie is removed immediately.  |  `test_rudder_cookie:true` | Cleared automatically. |
+| `test_rudder_cookie`      | Checks whether the cookie can be accessed or not. Once checked, this cookie is removed immediately.  |  `test_rudder_cookie:true` | Cleared automatically. |
 
 <div class="infoBlock">
 
