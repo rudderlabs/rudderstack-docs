@@ -1,44 +1,33 @@
 ---
 #slug: "/docs/cloud-extract-sources/activecampaign"
 title: "ActiveCampaign"
-description: Step-by-step guide to ingest your ActiveCampaign data into RudderStack.
+description: Step-by-step guide on ingesting data from ActiveCampaign into RudderStack.
 ---
 
 # ActiveCampaign Source
 
-[**ActiveCampaign**](https://www.activecampaign.com/) is a popular marketing automation and CRM platform that lets you drive effective customer engagement and retention. With ActiveCampaign's all-in-one email marketing and growth platform, you can easily monitor your customers' product behavior and use the insights to design and drive highly personalized customer experiences.
+[ActiveCampaign](https://www.activecampaign.com/) is a popular marketing automation and CRM platform that lets you drive effective customer engagement and retention. With ActiveCampaign's all-in-one email marketing and growth platform, you can easily monitor your customers' product behavior and use the insights to design and drive highly personalized customer experiences.
 
-This document guides you in setting up ActiveCampaign as a source in RudderStack. Once configured, RudderStack automatically ingests your specified ActiveCampaign data, which can then be routed to your data warehouse destination supported by RudderStack.
+This document guides you in setting up ActiveCampaign as a source in RudderStack. Once configured, RudderStack automatically ingests your specified ActiveCampaign data, which can then be routed to your RudderStack-supported data warehouse destination.
 
-<div class="infoBlock">
+<div class="warningBlock">
 
-**All the Cloud Extract sources support sending data only to a data warehouse destination.**
-
+All the Cloud Extract sources support sending data only to a <a href="https://www.rudderstack.com/docs/data-warehouse-integrations/">data warehouse destination</a>.
 </div>
 
-## Getting Started
+## Getting started
 
-To set up ActiveCampaign as a source on the RudderStack dashboard, follow these steps:
+To set up ActiveCampaign as a source in RudderStack, follow these steps:
 
-- Log into your [**RudderStack dashboard**](https://app.rudderlabs.com/signup?type=freetrial).
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **ActiveCampaign** from the list of sources.
+3. Assign a name to your source and click on **Next**.
 
-<!--<img src="../assets/1 (15) (1) (1).png" />-->
+### Connection settings
 
-<img src="../assets/1 (15) (1) (1).png" alt="RudderStack Dashboard" />
+1. Click on **Create Credentials from Scratch**. You will then see the following screen:
 
-- Then, click on the **Directory** option on the left navigation bar and go to **Cloud Extract** under **Sources**. From the list of sources, click on **ActiveCampaign**.
-
-<!--<img src="../assets/2 (28).png" />-->
-
-<img src="../assets/2 (28).png" alt="Directory" />
-
-- Assign a name to your source, and click on **Next**.
-
-<!--<img src="../assets/3 (25).png" />-->
-
-<img src="../assets/3 (25).png" alt="Assign a name" />
-
-### Specifying Connection Credentials
+2. Enter the following connection credentials to authenticate your ActiveCampaign account with RudderStack:
 
 - Next, click on the **Create Credentials from Scratch** option, as shown:
 
@@ -112,14 +101,14 @@ RudderStack will start ingesting data from ActiveCampaign as per the specified f
   **Add Destination** button.
 </div>
 
-## FAQs
+## FAQ
 
-#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
 
-We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring ActiveCampaign as a source on the RudderStack dashboard, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+If you come across any issues while configuring Sendgrid as a source in RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
