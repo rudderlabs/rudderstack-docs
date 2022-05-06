@@ -114,7 +114,9 @@ rudderanalytics.track('Product List Viewed', {
 
 The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page. 
 
-RudderStack maps the `page` call to a `page_view` event (by default) and passes it to Google Analytics 4 as a custom event. As mentioned above, the cloud mode supports both the `gtag` and `firebase` ways for tagging in websites. 
+RudderStack maps the `page` call to a `page_view` event by default, and passes it to Google Analytics 4 as a custom event. 
+
+As mentioned in the [`track`](#track) section above, the RudderStack cloud mode supports both the `gtag` and `firebase` methods for tagging in websites. 
 
 A sample `page` call when `gtag` is used is shown below:
 
