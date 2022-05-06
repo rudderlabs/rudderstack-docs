@@ -131,7 +131,7 @@ Enter the following credentials in the **Connection Credentials** page:
   - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to BigQuery.
   - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
 
-## Schema, partitioned tables, and views
+## Schema, partitioned tables, views, and deduplication
 
 RudderStack uses the source name (written in snake case, for example, `source_name`) to create a dataset in BigQuery.
 
@@ -140,14 +140,33 @@ RudderStack uses the source name (written in snake case, for example, `source_na
 For more details on the tables and columns created by RudderStack, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</a> guide.
 </div>
 
+RudderStack supports two modes by which data is ingested into BigQuery, driven by the configuration variable `warehouse.bigquery.isDedupEnabled`:
+
+| Ingestion method | `isDedupEnabled`  |
+| :-----------------| :-------------------|
+| Partition (default) | `False` |
+| Deduplication | `True` |
+
+<div class="infoBlock">
+
+By default, deduplication is disabled by RudderStack.
+</div>
+
+### Partitioned tables and views
+
 RudderStack creates ingestion-time partition tables based on the load date, so you can take advantage of it to query a subset of data.
 
 <div class="infoBlock">
 
-More details on the BigQuery partitioned tables can be found in this <a href="https://cloud.google.com/bigquery/docs/partitioned-tables">BigQuery documentation</a>. Information on how RudderStack creates these tables on load can be found in <a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables#creating_an_ingestion-time_partitioned_table_when_loading_data">this section</a>.
+More details on the BigQuery partitioned tables can be found in this <a href="https://cloud.google.com/bigquery/docs/partitioned-tables">BigQuery documentation</a>. More information on how RudderStack creates these tables on load can be found in <a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables#creating_an_ingestion-time_partitioned_table_when_loading_data">this section</a>.
 </div>
 
-In addition to tables, a **view** \(`<table_name>_view`\) is created for every table for de-duplication purposes.
+<div class="warningBlock">
+
+Duplicate data is <strong>not</strong> discarded when loading it into BigQuery.
+</div>
+
+In addition to tables, RudderStack creates a **view** \(`<table_name>_view`\) for every table for de-duplication purposes.
 
 <div class="infoBlock">
 
@@ -160,6 +179,25 @@ It is highly recommended that you use the corresponding view \(containing the ev
 
 Users can modify the view query to change the time window of the view. The default value is set to <strong>60 days</strong>.
 </div>
+
+### Deduplication method
+
+In this method, RudderStack automatically discards any duplicate events while loading them into the BigQuery tables.
+
+<div class="warningBlock">
+
+Views will not be created for the tables if you choose the deduplication method.
+</div>
+
+### Switching from deduplication to partitioned tables
+
+You can easily switch from using the deduplication method to ingest your data in BigQuery to the partitioned tables by setting the config parameter `warehouse.bigquery.isDedupEnabled` to `false`.
+
+RudderStack then does the following:
+
+- Creates `users_view` while loading the `users` table.
+- Creates the views for the new `track` events.
+- All the skipped views will be untouched, that is, left as is. You can either create those views or [contact us](mailto:%20support@rudderstack.com).
 
 ## FAQs
 
