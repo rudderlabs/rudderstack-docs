@@ -6,7 +6,7 @@ description: Step-by-step guide on ingesting data from ActiveCampaign into Rudde
 
 # ActiveCampaign Source
 
-[ActiveCampaign](https://www.activecampaign.com/) is a popular marketing automation and CRM platform that lets you drive effective customer engagement and retention. With ActiveCampaign's all-in-one email marketing and growth platform, you can easily monitor your customers' product behavior and use the insights to design and drive highly personalized customer experiences.
+[ActiveCampaign](https://www.activecampaign.com/) is a popular marketing automation and CRM platform that lets you drive effective customer engagement and retention.
 
 This document guides you in setting up ActiveCampaign as a source in RudderStack. Once configured, RudderStack automatically ingests your specified ActiveCampaign data, which can then be routed to your RudderStack-supported data warehouse destination.
 
@@ -30,9 +30,14 @@ To set up ActiveCampaign as a source in RudderStack, follow these steps:
 <img src="../assets/cloud-extract-sources/activecampaign-connection-settings.png" alt="ActiveCampaign credentials" />
 
 2. Enter the following connection credentials to authenticate your ActiveCampaign account with RudderStack:
-  - **Account Name**: Enter your ActiveCampaign account name. It can be found in your ActiveCampaign dashboard under **Settings** > **Account**.
-  - **URL**: Enter your ActiveCampaign API access URL. It can be found in your ActiveCampaign dashboard under **Settings** > **Developer**.
-  - **API Key**: Enter your ActiveCampaign API key in this field. It can be found in your ActiveCampaign dashboard under **Settings** > **Developer**.
+  - **Account Name**: Enter your ActiveCampaign account name. It can be found in your ActiveCampaign dashboard under **Settings** > **Account** section.
+  - **URL**: Enter your ActiveCampaign API access URL. It can be found in your ActiveCampaign dashboard under **Settings** > **Developer** section.
+  - **API Key**: Enter your ActiveCampaign API key. It can be found in your ActiveCampaign dashboard under **Settings** > **Developer** section.
+
+<div class="infoBlock">
+
+For more information on obtaining the account name, URL, and API key, refer to the <a href="#faq">FAQ</a> section below.
+</div>
 
 ### Destination settings
 
@@ -70,9 +75,16 @@ Use the <strong>Use Existing Destination</strong> option if you have an already-
 
 ### How do I obtain the ActiveCampaign account name?
 
-<img src="../assets/cloud-extract-sources/activecampaign-connection-settings-3.png" alt="Adding a destination" />
+Go to your ActiveCampaign dashboard and locate it under **Settings** > **Account**, as shown:
+
+<img src="../assets/cloud-extract-sources/activecampaign-connection-settings-4.png" alt="ActiveCampaign account name" />
+
 ### How do I obtain the ActiveCampaign API key and URL?
-<img src="../assets/cloud-extract-sources/activecampaign-connection-settings-4.png" alt="Adding a destination" />
+
+Go to your ActiveCampaign dashboard and locate these under **Settings** > **Developer**, as shown:
+
+<img src="../assets/cloud-extract-sources/activecampaign-connection-settings-3.png" alt="ActiveCampaign API key and URL" />
+
 ### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
@@ -81,4 +93,4 @@ RudderStack associates a table prefix for every Cloud Extract source writing to 
 
 ## Contact us
 
-If you come across any issues while configuring Sendgrid as a source in RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+If you come across any issues while configuring ActiveCampaign as a source in RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
