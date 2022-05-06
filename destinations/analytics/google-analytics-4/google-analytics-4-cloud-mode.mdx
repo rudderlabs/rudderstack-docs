@@ -6,39 +6,40 @@ description:  Detailed technical documentation on sending events to Google Analy
 
 # Cloud Mode
 
-RudderStack lets you send your event data to Google Analytics 4 via the cloud mode.
-
-<div class="infoBlock">
-
-For more information on sending events via the cloud mode, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">RudderStack Connection Modes</a> guide.
-</div>
+RudderStack lets you send your event data to Google Analytics 4 via the [cloud mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode).
 
 <div class="successBlock">
 
-Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repo</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
 </div>
 
 ## Track
 
 The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
 
-RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However:
-- If you use `gtag`, passing the `client_id` parameter becomes mandatory.
-- If you use `firebase`, passing the `app_instance_id` parameter becomes mandatory.
+RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
+
+- If you use `gtag`, passing the `client_id` parameter is mandatory.
+- If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
 
 <div class="infoBlock">
-  
-Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Measurement Protocol (Google Analytics 4)</a> guide for more information.
-  </div>
 
-The mappings for the above parameters are listed below:
+Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
+</div>
+
+The mappings for the above parameters are listed in the following table:
 
 | Parameters    | Mapping value  |
 | :-------------| :-----------------|
-| client_id         |  `context.client_id`  or `messageId` |
-| app_instance_id   |  from externalID `ga4AppInstanceId`  |
+| `client_id`         |  `context.client_id`  or `messageId` |
+| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  |
 
-A sample `track` call when `gtag` is used is as shown:
+<div class="infoBlock">
+  
+Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
+</div>
+
+A sample `track` call using `gtag` is shown below:
 
 ```javascript
 rudderanalytics.track('Product List Viewed', {
@@ -70,7 +71,7 @@ rudderanalytics.track('Product List Viewed', {
 });
 ```
 
-A sample `track` call when `firebase` is used is shown below:
+A sample `track` call using `firebase` is shown below:
 
 ```javascript
 rudderanalytics.track('Product List Viewed', {
@@ -105,6 +106,30 @@ rudderanalytics.track('Product List Viewed', {
 });
 ```
 
+## Page
+
+The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page. 
+
+RudderStack maps the `page` call to a `page_view` event by default, and passes it to Google Analytics 4 as a custom event. 
+
+As mentioned in the [`track`](#track) section above, the RudderStack cloud mode supports both the `gtag` and `firebase` methods for tagging in websites.
+
+A sample `page` call using `gtag` is shown below:
+
+```javascript
+rudderanalytics.page();
+```
+
+A sample `page` call using `firebase` is shown below:
+
+```javascript
+rudderanalytics.page({}, {
+  externalId: [{
+    type: "ga4AppInstanceId",
+    id: "f0dd99b6f979fb551ce583373900f937"
+  }],
+});
+```
 
 ## E-commerce
 
@@ -421,6 +446,17 @@ Refer to the [GA4 document](https://support.google.com/analytics/answer/10085872
 ### What are the reserved event, parameter, and user property names in Google Analytics 4?
 
 Google Analytics 4 has some reserved event, parameter, and user property names that cannot be used. Refer to the [Measurement Protocol (Google Analytics 4)](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#reserved_names) guide for a complete list of reserved names.
+
+### How do I obtain the `app_instance_id`?
+
+You can retrieve the `app_instance_id` through the Firebase SDK depending on the platform where the SDK is installed: 
+
+- [Android: `getAppInstanceId()`](https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics#public-taskstring-getappinstanceid)
+- [Kotlin: `getAppInstanceId()`](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics#getappinstanceid)
+- [Swift: `appInstanceID()`](https://firebase.google.com/docs/reference/swift/firebaseanalytics/api/reference/Classes/Analytics#appinstanceid)
+- [Objective-C: `appInstanceID`](https://firebase.google.com/docs/reference/ios/firebaseanalytics/api/reference/Classes/FIRAnalytics#+appinstanceid)
+- [C++: `GetAnalyticsInstanceId()`](https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#getanalyticsinstanceid)
+- [Unity: `GetAnalyticsInstanceIdAsync()`](https://firebase.google.com/docs/reference/unity/class/firebase/analytics/firebase-analytics#getanalyticsinstanceidasync)
 
 ## Contact us
 
