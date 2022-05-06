@@ -1,14 +1,19 @@
 ---
 # slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-your-android-application"
 title: "OneTrust"
-description: Detailed technical documentation on the RudderStack integration with the OneTrust consent management platform.
+description: Detailed technical documentation on integrating the OneTrust consent management platform with RudderStack.
 ---
 
 # OneTrust
 
-[**OneTrust**](https://www.onetrust.com/) is a popular platform that provides data governance, privacy management, and security solutions to thousands of businesses around the world. Its consent management solutions are used by many digital marketing and engineering teams for implementing cookie compliance and consent management on various martech systems.
+[OneTrust](https://www.onetrust.com/) is a popular platform that provides data governance, privacy management, and security solutions to thousands of businesses around the world. Its consent management solutions are used by many digital marketing and engineering teams for implementing cookie compliance and consent management on various martech systems.
 
 The JavaScript SDK integrates seamlessly with the OneTrust SDK and lets you map OneTrust cookie/consent groups to RudderStack's consent purposes. RudderStack, in turn, uses this consent information to enable/disable tracking and sending the data.
+
+<div class="warningBlock">
+
+The OneTrust integration with the JavaScript SDK is applicable only for the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a> connections.
+</div>
 
 ## How the integration works
 
@@ -43,9 +48,10 @@ This step involves enabling OneTrust for a given JavaScript source. To do so, sp
 
 ### Step 3: Setting up your website/web app
 
-Before following the steps in this section, load the OneTrust script that you published in your web app in [**Step 1**](). A sample script is shown below:
+Before following the steps in this section, load the OneTrust script that you published in your web app in [Step 1](#step-1-configuring-onetrust). A sample script is shown below:
 
 ```javascript
+
 <!-- OneTrust Cookies Consent Notice start for samplewebsite.com -->
 <script
         src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
@@ -59,6 +65,7 @@ Before following the steps in this section, load the OneTrust script that you pu
 </script>
 <!-- OneTrust Cookies Consent Notice end for samplewebsite.com -->
 ```
+
 1. **Important**: **Load the JavaScript SDK only after the user provides the consent.** 
 
 One way to load the JavaScript SDK after the user provides the consent is to modify the `OptanonWrapper()` callback function provided by OneTrust, as shown:
@@ -102,4 +109,4 @@ Once you complete these steps, RudderStack reads the consented categories and fi
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
