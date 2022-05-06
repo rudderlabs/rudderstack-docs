@@ -8,7 +8,7 @@ description: Step-by-step guide to send your event data from RudderStack to Fire
 
 [Firebase](https://firebase.google.com/) is a popular mobile platform powered by Google. It helps you to quickly develop high-quality, enterprise-grade applications and grow your business.
 
-RudderStack supports Firebase as a [device mode destination](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode) to which you can seamlessly send your customer data for analytics.
+RudderStack supports Firebase as a [mobile device mode destination](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode) to which you can seamlessly send your customer data for analytics.
 
 <div class="dangerBlock">
 
@@ -148,10 +148,14 @@ val rudderClient = RudderClient.getInstance(
 <span>
 
 ```ruby
-pod 'Rudder-Firebase', '>=2.0.4'
+pod 'Rudder-Firebase', '~> 2.0.5'
 ```
 </span>
 </li>
+<div class="infoBlock">
+
+<code class="inline-code">Rudder-Firebase</code> version <code class="inline-code">2.0.5</code> is tested and fully compatible with <code class="inline-code">Firebase/Analytics</code> version <code class="inline-code">8.15.0</code>.
+</div>
 <li>After adding the dependency followed by the <code class="inline-code">pod install</code> command, you can add the imports to your <code class="inline-code">AppDelegate.m</code> file, as shown:
 <span>
 
@@ -173,10 +177,6 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 </span>
 </li>
 </ol>
-<div class="successBlock">
-
-RudderStack bundles <code class="inline-code">Firebase/Core</code> and <code class="inline-code">FirebaseAnalytics</code> by default with the <code class="inline-code">Rudder-Firebase</code> pod.
-</div>
     </TabPanel>
     <TabPanel>
         Follow these steps to add Firebase to your Unity project:
@@ -388,16 +388,16 @@ RudderStack maps the following event properties to the standard Firebase propert
 | `creative`                       | `creative_name`          |
 | `affiliation`                    | `affiliation`            |
 
-<div class="infoBlock">
-
-Firebase enforces a <a href="https://firebase.google.com/docs/reference/cpp/group/event-names#summary">strict event name length limit</a>of up to 40 characters. RudderStack takes a substring of 40 characters (from the beginning) if the event names exceed this permitted value.
-</div>
-
 Along with mapping the above list of the standard property names, RudderStack exhibits the following behavior:
 
 - Converts the event names to the lower case.
 - Trims the whitespaces at the start and the end.
 - Replaces a space with an underscore.
+
+<div class="infoBlock">
+
+Firebase enforces a <a href="https://firebase.google.com/docs/reference/cpp/group/event-names#summary">strict event name length limit</a> of 40 characters. RudderStack takes a substring of 40 characters (from the beginning) if the event names exceed this permitted value.
+</div>
 
 A sample `track` call sent from the iOS SDK is shown below:
 
@@ -445,7 +445,7 @@ A sample `reset` call is shown below:
 <span>
 
 ```kotlin
-MainApplication.rudderClient.reset()
+RudderClient.getInstance()?.reset()
 ```
 </span>
       </TabPanel>
