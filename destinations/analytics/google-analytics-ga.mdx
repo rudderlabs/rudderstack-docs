@@ -143,6 +143,21 @@ For a server-side page call, the application name is passed from RudderStack's <
 If the <strong>Include the Querystring in Page Views</strong> option is enabled in the RudderStack destination settings, then the entire URL with the querystring will be sent as <code class="inline-code">dp</code> (Document Path). Otherwise, the querystring will be removed from the URL.
 </div>
 
+#### Page title in device mode
+
+Depending on the presence of `message.properties.category` and `message.name` properties, the page title is set as one of the following in the device mode: 
+
+| `message.properties.category`  | `message.name`        | Page title|
+| :--------- | :------------ | :------------ |
+| Absent  | Absent     |  `pageTitle` = `message.properties.title`|
+| Absent  | Present     |  `pageTitle` = `message.name`|
+| Present  | Absent     |  `pageTitle` = `message.properties.category`|
+| Present  | Present     |  `pageTitle` = `${rudderElement.message.properties.category} ${rudderElement.message.name}`|
+
+#### Page title in cloud mode
+
+The page title is set as the `properties.title` or ` context.page.title` in the cloud mode.
+
 ## Identify
 
 Personally Identifiable Information \(PII\) cannot be sent to the Google Analytics reporting interface. Thus nothing is passed to Google unless specifically directed.
