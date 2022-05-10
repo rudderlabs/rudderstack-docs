@@ -140,17 +140,22 @@ RudderStack uses the source name (written in snake case, for example, `source_na
 For more details on the tables and columns created by RudderStack, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</a> guide.
 </div>
 
-RudderStack supports two modes by which data is ingested into BigQuery. If you are using [open source RudderStack](https://rudderstack.com/docs/rudderstack-open-source), you can manage this via the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`:
+RudderStack supports two modes by which data is ingested into BigQuery:
 
-| Ingestion method | `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`  |
-| :-----------------| :-------------------|
-| Partitioned tables (default) | `false` |
-| Deduplication | `true` |
+- Partitioned tables (default method)
+- Deduplication
 
 <div class="infoBlock">
 
 By default, RudderStack uses the partitioned tables method to ingest data into BigQuery. Deduplication is disabled.
 </div>
+
+If you are using [open source RudderStack](https://rudderstack.com/docs/rudderstack-open-source), you can manage these modes via the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`, as shown in the following table:
+
+| Ingestion method | `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`  |
+| :-----------------| :-------------------|
+| Partitioned tables | `false` |
+| Deduplication | `true` |
 
 ### Partitioned tables and views
 
