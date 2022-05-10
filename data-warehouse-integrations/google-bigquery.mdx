@@ -163,7 +163,7 @@ RudderStack creates ingestion-time partition tables based on the load date, so y
 
 <div class="infoBlock">
 
-More details on the BigQuery partitioned tables can be found in this <a href="https://cloud.google.com/bigquery/docs/partitioned-tables">BigQuery documentation</a>. More information on how RudderStack creates these tables on load can be found in <a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables#creating_an_ingestion-time_partitioned_table_when_loading_data">this section</a>.
+You can find more details on the BigQuery partitioned tables in <a href="https://cloud.google.com/bigquery/docs/partitioned-tables">BigQuery documentation</a>. For information on how RudderStack creates these tables on load, refer to the <a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables#creating_an_ingestion-time_partitioned_table_when_loading_data">Creating partitioned tables</a> section of the BigQuery documentation.
 </div>
 
 <div class="warningBlock">
@@ -196,7 +196,7 @@ Views will not be created for the tables if you choose the deduplication method.
 
 <div class="warningBlock">
 
-Note that the <strong>querying cost will increase</strong> if you choose this method, as RudderStack removes the duplicates from the tables through sequential scans that happen on every warehouse upload. For example, if your warehouse upload frequency is set to  every 30 minutes, RudderStack performs a full scan on the <code class="inline-code">tracks</code> table every 30mins to upload any new events.
+Note that the <strong>querying cost will increase</strong> if you choose this method, as RudderStack removes the duplicates from the tables through sequential scans that happen on every warehouse upload. For example, if your warehouse upload frequency is set to  every 30 minutes, RudderStack performs a full scan on the <code class="inline-code">tracks</code> table every 30 minutes to upload any new events.
 </div>
 
 ### Switching from deduplication to partitioned tables
@@ -207,7 +207,7 @@ RudderStack then does the following:
 
 - Creates `users_view` while loading the `users` table, **if not already present**.
 - Creates the views for the new `track` events.
-- All the other skipped views are not regenerated. You can either manually create those views or [contact us](mailto:%20support@rudderstack.com).
+- All the other skipped views are not regenerated. You can either manually create those views or [contact us](mailto:%20support@rudderstack.com) to get them created.
 
 ## FAQs
 
