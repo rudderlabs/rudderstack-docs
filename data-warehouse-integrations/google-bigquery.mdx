@@ -140,16 +140,16 @@ RudderStack uses the source name (written in snake case, for example, `source_na
 For more details on the tables and columns created by RudderStack, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</a> guide.
 </div>
 
-RudderStack supports two modes by which data is ingested into BigQuery, driven by the configuration variable `warehouse.bigquery.isDedupEnabled`:
+RudderStack supports two modes by which data is ingested into BigQuery. If you are using [open source RudderStack](https://rudderstack.com/docs/rudderstack-open-source), you can manage this via the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`:
 
-| Ingestion method | `isDedupEnabled`  |
+| Ingestion method | `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`  |
 | :-----------------| :-------------------|
-| Partition (default) | `False` |
-| Deduplication | `True` |
+| Partitioned tables (default) | `false` |
+| Deduplication | `true` |
 
 <div class="infoBlock">
 
-By default, deduplication is disabled by RudderStack.
+By default, RudderStack uses the partitioned tables method to ingest data into BigQuery. Deduplication is disabled.
 </div>
 
 ### Partitioned tables and views
@@ -182,22 +182,27 @@ Users can modify the view query to change the time window of the view. The defau
 
 ### Deduplication method
 
-In this method, RudderStack automatically discards any duplicate events while loading them into the BigQuery tables.
+In this method, RudderStack automatically discards any duplicate events while loading them into the BigQuery tables. To enable this method, set the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED` in your open source RudderStack setup to `true`.
 
 <div class="warningBlock">
 
 Views will not be created for the tables if you choose the deduplication method.
 </div>
 
+<div class="warningBlock">
+
+Note that the <strong>querying cost will increase</strong> if you choose this method, as RudderStack removes the duplicates from the tables through sequential scans that happen on every warehouse upload. For example, if your warehouse upload frequency is set to  every 30 minutes, RudderStack performs a full scan on the <code class="inline-code">tracks</code> table every 30mins to upload any new events.
+</div>
+
 ### Switching from deduplication to partitioned tables
 
-You can easily switch from using the deduplication method to ingest your data in BigQuery to the partitioned tables by setting the config parameter `warehouse.bigquery.isDedupEnabled` to `false`.
+You can easily switch from using the deduplication method to ingest your data in BigQuery to the partitioned tables by setting the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED` in your open source RudderStack setup to `false`.
 
 RudderStack then does the following:
 
-- Creates `users_view` while loading the `users` table.
+- Creates `users_view` while loading the `users` table, **if not already present**.
 - Creates the views for the new `track` events.
-- All the skipped views will be untouched, that is, left as is. You can either create those views or [contact us](mailto:%20support@rudderstack.com).
+- All the other skipped views are not regenerated. You can either manually create those views or [contact us](mailto:%20support@rudderstack.com).
 
 ## FAQs
 
