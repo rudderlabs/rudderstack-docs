@@ -1577,9 +1577,9 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"api-access-token",
+    "key":"personal-access-tokens",
     "title":"Access Token",
-    "link":"/transformations/api-access-token/",
+    "link":"/transformations/personal-access-tokens/",
     "content":[]
  },
  {
