@@ -3,6 +3,7 @@ require("dotenv").config({
 });
 
 module.exports = {
+  assetPrefix: `/docs-assets`,
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
     FAST_DEV: true,
