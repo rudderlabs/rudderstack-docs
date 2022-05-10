@@ -1578,8 +1578,8 @@ export const postNavList = [
  },
  {
     "key":"personal-access-tokens",
-    "title":"Access Token",
-    "link":"/transformations/personal-access-tokens/",
+    "title":"Personal Access Tokens",
+    "link":"/rudderstack-api/personal-access-tokens/",
     "content":[]
  },
  {
