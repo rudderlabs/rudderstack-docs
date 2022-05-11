@@ -6,7 +6,7 @@ description: Detailed technical documentation on sending events to DCM Floodligh
 
 # Device Mode
 
-RudderStack lets you send your event data to DCM Floodlight destination via the device mode using the native web SDK. 
+RudderStack lets you send your event data to DCM Floodlight destination via the device mode using the native web SDK. It is recommended to use `gtag` instead of `iframe` or `img` tag. RudderStack uses global site tagging in device mode.
 
 <div class="successBlock">
 
@@ -17,10 +17,10 @@ Find the open-source transformer code for this destination in the <a href="https
 
 The mappings for the above parameters are listed in the following table:
 
-| Parameters    | Mapping value  |
-| :-------------| :-----------------|
-| `google_nid`  |  from `externalId` `googleNetworkId` |
-| `google_hm`   |  `anonymousId` (Converts it to Base64-encoded ASCII string)  |
+| Parameters    | Description | Mapping value  |
+| :-------------| :-----------------|:-----------------|
+| `google_nid`  | Network ID (NID) for the bidder account | from `externalId` `googleNetworkId` |
+| `google_hm`   | Contains data that the bidder wants to store in a Google-hosted match table | `anonymousId` (Converts it to Base64-encoded ASCII string)  |
 
 
 ## Track
