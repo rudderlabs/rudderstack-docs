@@ -1,18 +1,19 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 export const OuterWrapper = styled.div`
-border-left: 1px solid rgb(222, 226, 231);
-position:relative;
-@media (max-width: 1200px) {
-  border:none
-}
-`
+  border-left: 1px solid rgb(222, 226, 231);
+  position: sticky;
+  top: 168px;
+  @media (max-width: 1200px) {
+    border: none;
+  }
+`;
 export const Wrapper = styled.div`
   position: sticky;
   top: 60px;
 
   margin-top: 52px;
-  max-height: calc(100vh - 72px);
+  max-height: calc(100vh - 170px);
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
@@ -29,7 +30,7 @@ export const Wrapper = styled.div`
     padding-left: 0px;
     border: none;
   }
-`
+`;
 
 export const Container = styled.div`
   h2 {
@@ -70,4 +71,4 @@ export const Container = styled.div`
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(120, 117, 122, 0.2);
   } */
-`
+`;

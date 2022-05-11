@@ -1,9 +1,9 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 80px auto 0;
   padding: 0 24px;
 
   display: grid;
@@ -25,7 +25,7 @@ export const Container = styled.div`
   @media only screen and (max-width: 500px) {
     padding: 0px 12px;
   }
-`
+`;
 
 export const Main = styled.main`
   height: 100%;
@@ -43,17 +43,17 @@ export const Main = styled.main`
   @media (max-width: 780px) {
     padding-top: 0;
   }
-  .table-outer{
-    position:relative;
-    min-width:210px;
-    padding-bottom:120px;
+  .table-outer {
+    position: relative;
+    min-width: 210px;
+    padding-bottom: 120px;
   }
   @media (max-width: 1200px) {
-    .table-outer{
+    .table-outer {
       display: none;
     }
   }
-`
+`;
 
 export const Children = styled.div`
   width: 100%;
@@ -70,10 +70,11 @@ export const Children = styled.div`
     overflow-wrap: break-word;
     margin: 24px 0px 16px 0px;
   }
-  h2{
+  h2 {
     position: relative;
   }
-  h2, h3{
+  h2,
+  h3 {
     margin: 45px 0 16px 0;
   }
   h4,
@@ -86,9 +87,9 @@ export const Children = styled.div`
   a {
     font-weight: bold;
     text-decoration: underline;
-    color: rgb(78,59,151);
+    color: rgb(78, 59, 151);
     &:hover {
-      color: rgb(23,23,110);
+      color: rgb(23, 23, 110);
       text-decoration: none;
     }
   }
@@ -113,12 +114,12 @@ export const Children = styled.div`
   strong {
     font-weight: bold;
   }
-.tocMob{
-  display: none;
-}
-@media (max-width: 1200px) {
-  .tocMob{
-    display: block;
+  .tocMob {
+    display: none;
   }
-}
-`
+  @media (max-width: 1200px) {
+    .tocMob {
+      display: block;
+    }
+  }
+`;

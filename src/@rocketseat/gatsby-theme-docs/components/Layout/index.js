@@ -12,6 +12,7 @@ import tailwindConfig from "../../../../../tailwind.config";
 import "../../../../css/docs-critical.css";
 import "../../../../css/tailwind.css";
 import "../../../../css/docs.css";
+import "../../../../css/cookies.css";
 
 import CookiesConsent from "../../../../components/cookiesConsent";
 import ScriptContentHead from "../../../../components/ScriptContentHead";
@@ -118,8 +119,8 @@ export default function Layout({ children, title, headings, description }) {
             />
           </div>
         </Main>
-        <CookiesConsent />
       </Container>
+      <CookiesConsent />
       {data.allSanitySiteSettings.edges[0].node._rawWebsiteScripts.map(
         (script) => {
           return (

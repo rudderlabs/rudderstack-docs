@@ -363,7 +363,7 @@ pre[class~="language-rust"]::before {
   @apply z-20;
 }
 .headerNav {
-  @apply border-b border-grayColor-lightBorder shadow-md relative z-10;
+  @apply border-b border-grayColor-lightBorder shadow-md fixed top-0 left-0 right-0 bg-white z-10;
 }
 .headerContainer {
   @apply px-6 mx-auto grid grid-flow-row gap-10;
@@ -398,12 +398,14 @@ pre[class~="language-rust"]::before {
 }
 .sidebarOverlay {
   @apply fixed top-0 left-0 right-0 bottom-0 z-10;
+  max-height: 100vh !important;
 }
 .tocOverlay {
   @apply fixed top-0 left-0 right-0 bottom-0 z-10;
 }
 .sidebar-nav-content {
-  @apply border-r border-grayColor-lightBorder sticky top-0 h-screen max-h-screen overflow-y-auto py-16;
+  max-height: calc(100vh - 80px);
+  @apply border-r border-grayColor-lightBorder sticky top-0 overflow-y-auto py-16 top-20;
 }
 
 .sidebar-nav-content .accordion {
@@ -1160,6 +1162,11 @@ a.pageRef:hover .rightRefArrow {
 @media screen and (max-width: 1200px) {
   .feedback-container {
     display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sidebar-nav-content {
+    max-height: 100vh !important;
   }
 }
 /* feedback component-ENDS */
