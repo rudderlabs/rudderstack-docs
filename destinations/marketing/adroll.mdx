@@ -5,7 +5,7 @@ description: Step-by-step guide on sending your event data from RudderStack to A
 
 # AdRoll
 
-**AdRoll** is a digital and growth marketing platform that lets you display relevant ads, engage with your customers, and grow your revenue.
+[AdRoll](https://www.adroll.com/) is a digital and growth marketing platform that lets you display relevant ads, engage with your customers, and grow your revenue.
 
 RudderStack supports AdRoll as a destination to which you can seamlessly send your event data.
 
@@ -69,7 +69,12 @@ rudderanalytics.identify("1hKOmRA4GRlm",{
 })
 ```
 
-RudderStack uses the `identify` call to set a `userId` which is passed to AdRoll every time a subsequent `track` call is made. If the `email` trait is present in the `identify` call, RudderStack maps it to AdRoll's `window._adroll_email` property.
+RudderStack uses the `identify` call to set a `userId` which is passed to AdRoll every time a subsequent `track` call is made. 
+
+<div class="infoBlock">
+
+<code class="inline-code">email</code> is a required attribute for successfully making an <code class="inline-code">identify</code> call. RudderStack maps <code class="inline-code">email</code> to AdRoll's <code class="inline-code">window._adroll_email</code> property.
+</div>
 
 <div class="infoBlock">
 
