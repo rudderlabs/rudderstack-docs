@@ -1,3 +1,6 @@
+/* import {jsonData} from '../../../../../docsconfig/sidebar';
+import { flattenDeep } from 'lodash-es'; */
+
 export const postNavList = [
   {
     key: "home",
@@ -927,6 +930,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "adroll",
+    title: "AdRoll",
+    link: "/destinations/marketing/adroll/",
+    content: [],
+  },
+  {
     key: "airship",
     title: "Airship",
     link: "/destinations/marketing/airship/",
@@ -1612,9 +1621,9 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "api-access-token",
-    title: "Access Token",
-    link: "/transformations/api-access-token/",
+    key: "personal-access-tokens",
+    title: "Personal Access Tokens",
+    link: "/rudderstack-api/personal-access-tokens/",
     content: [],
   },
   {
@@ -2105,3 +2114,6 @@ export const postNavList = [
     content: [],
   },
 ];
+
+/* export const postNav = flattenDeep(jsonData);
+  console.log('Post nav', postNav); */
