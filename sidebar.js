@@ -2010,14 +2010,6 @@ export const jsonData = [
      "link":"/transformations/",
      "content":[
         {
-           "key":"api-access-token",
-           "title":"Access Token",
-           "link":"/transformations/api-access-token/",
-           "content":[
-              
-           ]
-        },
-        {
            "key":"rudderstack-transformation-api",
            "title":"Transformations API",
            "link":"/transformations/rudderstack-transformation-api/",
@@ -2086,6 +2078,14 @@ export const jsonData = [
      "title":"RudderStack API",
      "link":"/rudderstack-api/",
      "content":[
+        {
+           "key":"personal-access-tokens",
+           "title":"Personal Access Tokens",
+           "link":"/rudderstack-api/personal-access-tokens/",
+           "content":[
+              
+           ]
+        },
         {
            "key":"api-specification",
            "title":"API Specification",

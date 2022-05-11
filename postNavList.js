@@ -1577,9 +1577,9 @@ export const postNavList = [
     "content":[]
  },
  {
-    "key":"api-access-token",
-    "title":"Access Token",
-    "link":"/transformations/api-access-token/",
+    "key":"personal-access-tokens",
+    "title":"Personal Access Tokens",
+    "link":"/rudderstack-api/personal-access-tokens/",
     "content":[]
  },
  {
