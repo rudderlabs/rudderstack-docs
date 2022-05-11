@@ -1,0 +1,591 @@
+---
+- key: home
+  label: Home
+  link: "/home"
+- key: get-started
+  label: Get Started
+  link: "/get-started"
+  items:
+  - key: installing-and-setting-up-rudderstack
+    label: Install and Set Up RudderStack
+    link: "/get-started/installing-and-setting-up-rudderstack"
+    items:
+    - key: docker
+      label: Docker
+      link: "/get-started/installing-and-setting-up-rudderstack/docker"
+    - key: kubernetes
+      label: Kubernetes
+      link: "/get-started/installing-and-setting-up-rudderstack/kubernetes"
+    - key: developer-machine-setup
+      label: Developer Machine Setup
+      link: "/get-started/installing-and-setting-up-rudderstack/developer-machine-setup"
+    - key: sending-test-events
+      label: Sending Test Events
+      link: "/get-started/installing-and-setting-up-rudderstack/sending-test-events"
+  - key: dashboard-overview
+    label: Dashboard Overview
+    link: "/get-started/dashboard-overview"
+    items:
+    - key: user-management
+      label: User Management
+      link: "/get-started/dashboard-overview/user-management"
+  - key: config-generator
+    label: Config Generator
+    link: "/get-started/config-generator"
+  - key: live-events
+    label: Live Events
+    link: "/get-started/live-events"
+  - key: architecture
+    label: Architecture
+    link: "/get-started/rudderstack-architecture"
+- key: connections
+  label: Connections
+  link: "/connections"
+  items:
+  - key: adding-source-and-destination-rudderstack
+    label: Adding a Destination
+    link: "/connections/adding-source-and-destination-rudderstack"
+  - key: rudderstack-connection-modes
+    label: 'RudderStack Connection Modes: Cloud Mode vs Device Mode'
+    link: "/rudderstack-cloud/rudderstack-connection-modes"
+- key: stream-sources
+  label: Event Stream Sources
+  link: "/stream-sources"
+  items:
+  - key: rudderstack-sdk-integration-guides
+    label: SDKs
+    link: "/stream-sources/rudderstack-sdk-integration-guides"
+    items:
+    - key: rudderstack-javascript-sdk
+      label: JavaScript
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk"
+      items:
+      - key: javascript-sdk-enhancements
+        label: JavaScript SDK Enhancements
+        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements"
+    - key: rudderstack-android-sdk
+      label: Android
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk"
+      items:
+      - key: add-an-application-class-to-you-android-application
+        label: How to Add an Application Class to Your Android App
+        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application"
+    - key: rudderstack-ios-sdk
+      label: iOS
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk"
+    - key: getting-started-with-unity-sdk
+      label: Unity
+      link: "/stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity-sdk"
+    - key: rudderstack-react-native-sdk
+      label: React Native
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk"
+    - key: rudderstack-flutter-sdk
+      label: Flutter
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk"
+    - key: amp-analytics
+      label: AMP Analytics
+      link: "/stream-sources/rudderstack-sdk-integration-guides/amp-analytics"
+    - key: rudderstack-java-sdk
+      label: Java
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk"
+    - key: rudderstack-python-sdk
+      label: Python
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk"
+    - key: rudderstack-node-sdk
+      label: Node
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk"
+    - key: rudderstack-go-sdk
+      label: Go
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk"
+    - key: rudderstack-ruby-sdk
+      label: Ruby
+      link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk"
+    - key: ".net"
+      label: ".NET"
+      link: "/stream-sources/rudderstack-sdk-integration-guides/.net"
+    - key: php
+      label: PHP
+      link: "/stream-sources/rudderstack-sdk-integration-guides/php"
+    - key: sdk-faqs
+      label: SDK FAQs
+      link: "/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs"
+  - key: webhook-source
+    label: Webhook Source
+    link: "/stream-sources/webhook-source"
+  - key: appcenter
+    label: App Center
+    link: "/stream-sources/appcenter"
+  - key: appsflyer
+    label: AppsFlyer
+    link: "/stream-sources/appsflyer"
+  - key: auth0
+    label: Auth0
+    link: "/stream-sources/auth0"
+  - key: customerio
+    label: Customer.io
+    link: "/stream-sources/customerio"
+  - key: extole
+    label: Extole
+    link: "/stream-sources/extole"
+  - key: looker
+    label: Looker
+    link: "/stream-sources/looker"
+  - key: posthog
+    label: PostHog
+    link: "/stream-sources/posthog"
+  - key: segment
+    label: Segment
+    link: "/stream-sources/segment"
+- key: cloud-extract-sources
+  label: Cloud Extract Sources
+  link: "/cloud-extract-sources"
+  items:
+  - key: activecampaign
+    label: ActiveCampaign
+    link: "/cloud-extract-sources/activecampaign"
+  - key: bing-ads
+    label: Bing Ads
+    link: "/cloud-extract-sources/bing-ads"
+  - key: facebook-ads
+    label: Facebook Ads
+    link: "/cloud-extract-sources/facebook-ads"
+  - key: freshdesk
+    label: Freshdesk
+    link: "/cloud-extract-sources/freshdesk"
+  - key: google-adwords
+    label: Google AdWords
+    link: "/cloud-extract-sources/google-adwords"
+  - key: google-analytics
+    label: Google Analytics
+    link: "/cloud-extract-sources/google-analytics"
+    
+  - key: google-search-console
+    label: Google Search Console
+    link: "/cloud-extract-sources/google-search-console"
+  - key: google-sheets
+    label: Google Sheets
+    link: "/cloud-extract-sources/google-sheets"
+  - key: hubspot
+    label: HubSpot
+    link: "/cloud-extract-sources/hubspot"
+  - key: intercom
+    label: Intercom
+    link: "/cloud-extract-sources/intercom"
+  - key: mailchimp
+    label: Mailchimp
+    link: "/cloud-extract-sources/mailchimp"
+  - key: mixpanel
+    label: Mixpanel
+    link: "/cloud-extract-sources/mixpanel"
+  - key: marketo
+    label: Marketo
+    link: "/cloud-extract-sources/marketo"
+  - key: netsuite
+    label: Netsuite
+    link: "/cloud-extract-sources/netsuite"
+  - key: pipedrive
+    label: Pipedrive
+    link: "/cloud-extract-sources/pipedrive"
+  - key: quickbooks
+    label: QuickBooks
+    link: "/cloud-extract-sources/quickbooks"
+  - key: salesforce
+    label: Salesforce
+    link: "/cloud-extract-sources/salesforce"
+    items:
+    - key: schema-comparison-rudderstack-vs-segment
+      label: Schema Comparison Rudderstack Vs Segment
+      link: "/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment"
+- key: warehouse-actions
+  label: Warehouse Actions Sources
+  link: "/warehouse-actions"
+  items:
+  - key: amazon-redshift
+    label: Amazon Redshift
+    link: "/warehouse-actions/amazon-redshift"
+  - key: amazon-s3
+    label: Amazon S3
+    link: "/warehouse-actions/amazon-s3"
+  - key: clickhouse
+    label: ClickHouse
+    link: "/warehouse-actions/clickhouse"
+  - key: google-bigquery
+    label: Google BigQuery
+    link: "/warehouse-actions/google-bigquery"
+  - key: postgresql
+    label: PostgreSQL
+    link: "/warehouse-actions/postgresql"
+  - key: snowflake
+    label: Snowflake
+    link: "/warehouse-actions/snowflake"
+  - key: visual-data-mapper
+    label: Visual Data Mapper
+    link: "/warehouse-actions/visual-data-mapper"
+- key: destinations
+  label: Destinations
+  link: "/destinations"
+  items:
+  - key: analytics
+    label: Analytics
+    link: "/destinations/analytics"
+    items:
+    - key: google-analytics
+      label: Google Analytics
+      link: "/destinations/analytics/google-analytics"
+    - key: google-analytics-4
+      label: Google Analytics 4
+      link: "/destinations/analytics/google-analytics-4"
+    - key: google-analytics-360
+      label: Google Analytics 360
+      link: "/destinations/analytics/google-analytics-360"
+    - key: adobe-analytics
+      label: Adobe Analytics
+      link: "/destinations/analytics/adobe-analytics"
+      items:
+      - key: setting-up-adobe-analytics-in-rudderstack
+        label: Setting Up Adobe Analytics in RudderStack
+        link: "/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack"
+      - key: adobe-analytics-web-device-mode
+        label: Web Device Mode Settings
+        link: "/destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode"
+      - key: adobe-analytics-mobile-device-mode
+        label: Mobile Device Mode Settings
+        link: "/destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode"
+      - key: adobe-analytics-heartbeat
+        label: Adobe Analytics Heartbeat Measurement
+        link: "/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat"
+      - key: e-commerce-events
+        label: E-commerce Events
+        link: "/destinations/analytics/adobe-analytics/e-commerce-events"
+    - key: amplitude
+      label: Amplitude
+      link: "/destinations/analytics/amplitude"
+    - key: hotjar
+      label: Hotjar
+      link: "/destinations/analytics/hotjar"
+    - key: chartbeat
+      label: Chartbeat
+      link: "/destinations/analytics/chartbeat"
+    - key: fullstory
+      label: FullStory
+      link: "/destinations/analytics/fullstory"
+    - key: mixpanel
+      label: Mixpanel
+      link: "/destinations/analytics/mixpanel"
+    - key: mixpanel
+      label: Mixpanel
+      link: "/destinations/analytics/mixpanel"
+    - key: kissmetrics
+      label: Kissmetrics
+      link: "/destinations/analytics/kissmetrics"
+    - key: heap.io
+      label: Heap.io
+      link: "/destinations/analytics/heap.io"
+    - key: keen
+      label: Keen
+      link: "/destinations/analytics/keen"
+    - key: kubit
+      label: Kubit
+      link: "/destinations/analytics/kubit"
+    - key: aws-personalize
+      label: AWS Personalize
+      link: "/destinations/analytics/aws-personalize"
+    - key: indicative
+      label: Indicative
+      link: "/destinations/analytics/indicative"
+    - key: pendo
+      label: Pendo
+      link: "/destinations/analytics/pendo"
+    - key: posthog
+      label: PostHog
+      link: "/destinations/analytics/posthog"
+    - key: profitwell
+      label: Profitwell
+      link: "/destinations/analytics/profitwell"
+      items:
+      - key: profitwell-cloud-mode
+        label: Cloud Mode
+        link: "/destinations/analytics/profitwell/profitwell-cloud-mode"
+      - key: profitwell-web-device-mode
+        label: Device Mode
+        link: "/destinations/analytics/profitwell/profitwell-web-device-mode"
+    - key: lytics
+      label: Lytics
+      link: "/destinations/analytics/lytics"
+  - key: crm
+    label: CRM
+    link: "/destinations/crm"
+  - key: marketing
+    label: Marketing
+    link: "/destinations/marketing"
+  - key: attribution
+    label: Attribution
+    link: "/destinations/attribution"
+  - key: webhooks
+    label: Webhooks
+    link: "/destinations/webhooks"
+  - key: business-messaging
+    label: Business Messaging
+    link: "/destinations/business-messaging"
+  - key: advertising
+    label: Advertising
+    link: "/destinations/advertising"
+  - key: customer-data-platform
+    label: Customer Data Platform
+    link: "/destinations/customer-data-platform"
+  - key: data-ingestion
+    label: Data Ingestion
+    link: "/destinations/data-ingestion"
+  - key: storage-platforms
+    label: Storage Platforms
+    link: "/destinations/storage-platforms"
+  - key: tag-managers
+    label: Tag Managers
+    link: "/destinations/tag-managers"
+  - key: testing-and-personalization
+    label: A/B Testing & Personalization
+    link: "/destinations/testing-and-personalization"
+  - key: productivity
+    label: Productivity
+    link: "/destinations/productivity"
+  - key: error-reporting
+    label: Error Reporting
+    link: "/destinations/error-reporting"
+  - key: continuous-integration
+    label: Continuous Integration
+    link: "/destinations/continuous-integration"
+- key: data-warehouse-integrations
+  label: Warehouse Destinations
+  link: "/data-warehouse-integrations"
+  items:
+  - key: amazon-redshift
+    label: Amazon Redshift
+    link: "/data-warehouse-integrations/amazon-redshift"
+  - key: identity-resolution-in-rudderstack
+    label: Identity Resolution
+    link: "/data-warehouse-integrations/identity-resolution-in-rudderstack"
+  - key: clickhouse
+    label: ClickHouse
+    link: "/data-warehouse-integrations/clickhouse"
+  - key: google-bigquery
+    label: Google BigQuery
+    link: "/data-warehouse-integrations/google-bigquery"
+  - key: postgresql
+    label: PostgreSQL
+    link: "/data-warehouse-integrations/postgresql"
+  - key: snowflake
+    label: Snowflake
+    link: "/data-warehouse-integrations/snowflake"
+  - key: warehouse-faqs
+    label: Warehouse FAQs
+    link: "/data-warehouse-integrations/warehouse-faqs"
+  - key: warehouse-schemas
+    label: Warehouse Schemas
+    link: "/data-warehouse-integrations/warehouse-schemas"
+  - key: azure-synapse
+    label: Azure Synapse
+    link: "/data-warehouse-integrations/azure-synapse"
+  - key: microsoft-sql-server
+    label: Microsoft SQL Server
+    link: "/data-warehouse-integrations/microsoft-sql-server"
+  - key: s3-datalake
+    label: Amazon S3 Data Lake
+    link: "/data-warehouse-integrations/s3-datalake"
+- key: data-governance
+  label: Data Governance
+  link: "/data-governance"
+  items:
+  - key: rudder-typer
+    label: Rudder typer
+    link: "/data-governance/rudder-typer"
+  - key: rudderstack-data-governance-api
+    label: Data Governance API
+    link: "/data-governance/rudderstack-data-governance-api"
+- key: adding-a-new-user-transformation-in-rudderstack
+  label: Transformations
+  link: "/adding-a-new-user-transformation-in-rudderstack"
+  items:
+  - key: personal-access-tokens
+    label: Access Token
+    link: "/adding-a-new-user-transformation-in-rudderstack/personal-access-tokens"
+  - key: rudderstack-transformation-api
+    label: Transformations API
+    link: "/adding-a-new-user-transformation-in-rudderstack/rudderstack-transformation-api"
+  - key: faq
+    label: FAQ
+    link: "/adding-a-new-user-transformation-in-rudderstack/faq"
+- key: rudderstack-api
+  label: RudderStack API
+  link: "/rudderstack-api"
+  items:
+  - key: api-specification
+    label: API Specification
+    link: "/rudderstack-api/api-specification"
+    items:
+    - key: rudderstack-events-specification
+      label: RudderStack Events Specification
+      link: "/rudderstack-api/api-specification/rudderstack-spec"
+      items:
+      - key: identify
+        label: Identify
+        link: "/rudderstack-api/api-specification/rudderstack-spec/identify"
+      - key: page
+        label: Page
+        link: "/rudderstack-api/api-specification/rudderstack-spec/page"
+      - key: screen
+        label: Screen
+        link: "/rudderstack-api/api-specification/rudderstack-spec/screen"
+      - key: track
+        label: Track
+        link: "/rudderstack-api/api-specification/rudderstack-spec/track"
+      - key: group
+        label: Group
+        link: "/rudderstack-api/api-specification/rudderstack-spec/group"
+      - key: alias
+        label: Alias
+        link: "/rudderstack-api/api-specification/rudderstack-spec/alias"
+      - key: common-fields
+        label: Common Fields
+        link: "/rudderstack-api/api-specification/rudderstack-spec/common-fields"
+    - key: rudderstack-ecommerce-events-specification
+      label: E-commerce Events
+      link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification"
+      items:
+      - key: browsing
+        label: Browsing
+        link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing"
+      - key: promotions
+        label: Promotions
+        link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/promotions"
+      - key: ordering
+        label: Ordering
+        link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering"
+      - key: coupons
+        label: Coupons
+        link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/coupons"
+      - key: wishlisting
+        label: Wishlist
+        link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/wishlisting"
+      - key: sharing
+        label: Sharing
+        link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/sharing"
+      - key: reviewing
+        label: Reviewing
+        link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/reviewing"
+    - key: video-specification
+      label: Video Events
+      link: "/rudderstack-api/api-specification/video-specification"
+  - key: http-api-specification
+    label: HTTP API
+    link: "/rudderstack-api/http-api-specification"
+  - key: pixel-api
+    label: Pixel API
+    link: "/rudderstack-api/pixel-api"
+  - key: user-suppression
+    label: User Suppression API
+    link: "/rudderstack-api/user-suppression"
+- key: user-guides
+  label: User Guides
+  link: "/user-guides"
+  items:
+  - key: migration-guides
+    label: Migration Guides
+    link: "/user-guides/migration-guides"
+    items:
+    - key: blendo-rudderstack-migration
+      label: Migrating from Blendo to RudderStack
+      link: "/user-guides/migration-guides/blendo-rudderstack-migration"
+    - key: rudderstack-migration-guide
+      label: Migrating from Segment to RudderStack
+      link: "/user-guides/migration-guides/rudderstack-migration-guide"
+    - key: how-to-migrate-warehouse-destination-from-segment-to-rudderstack
+      label: Migrating Your Warehouse Destination from Segment to RudderStack
+      link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack"
+  - key: administrators-guide
+    label: Administator's Guides
+    link: "/user-guides/administrators-guide"
+    items:
+    - key: onelogin-sso
+      label: OneLogin SSO Setup
+      link: "/user-guides/administrators-guide/onelogin-sso"
+    - key: okta-sso
+      label: Okta SSO Setup
+      link: "/user-guides/administrators-guide/okta-sso"
+    - key: rudderstack-dashboard
+      label: Understanding the RudderStack Dashboard
+      link: "/user-guides/administrators-guide/rudderstack-dashboard"
+    - key: software-releases
+      label: Software Releases
+      link: "/user-guides/administrators-guide/software-releases"
+    - key: high-availability
+      label: High Availability
+      link: "/user-guides/administrators-guide/high-availability"
+    - key: horizontal-scaling-1
+      label: Horizontal Scaling
+      link: "/user-guides/administrators-guide/horizontal-scaling-1"
+    - key: bucket-configuration-settings
+      label: Bucket Configuration Settings
+      link: "/user-guides/administrators-guide/bucket-configuration-settings"
+    - key: alerting
+      label: Alerting Guide
+      link: "/user-guides/administrators-guide/alerting"
+    - key: infra-provisioning
+      label: Infrastructure Provisioning
+      link: "/user-guides/administrators-guide/infra-provisioning"
+    - key: monitoring-and-metrics
+      label: Monitoring and Metrics
+      link: "/user-guides/administrators-guide/monitoring-and-metrics"
+    - key: config-parameters
+      label: Configuration Parameters
+      link: "/user-guides/administrators-guide/config-parameters"
+    - key: admin-troubleshooting-guide
+      label: Troubleshooting Guide
+      link: "/user-guides/administrators-guide/admin-troubleshooting-guide"
+  - key: how-to-guides
+    label: How-to Guides
+    link: "/user-guides/how-to-guides"
+    items:
+    - key: rudderstack-control-plane-lite
+      label: How to Use the RudderStack Control Plane Lite
+      link: "/user-guides/how-to-guides/rudderstack-control-plane-lite"
+    - key: how-to-submit-an-integration-pull-request
+      label: How to Submit an Integration Pull Request
+      link: "/user-guides/how-to-guides/how-to-submit-an-integration-pull-request"
+    - key: custom-domains
+      label: How to Use Custom Domains
+      link: "/user-guides/how-to-guides/custom-domains"
+    - key: using-aws-lambda-functions-with-rudderstack
+      label: How to Use AWS Lambda Functions with RudderStack
+      link: "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack"
+    - key: live-destination-event-debugger
+      label: How to Debug Live Destination Events
+      link: "/user-guides/how-to-guides/live-destination-event-debugger"
+    - key: how-to-filter-selective-destinations
+      label: How to Filter Selective Destinations
+      link: "/user-guides/how-to-guides/how-to-filter-selective-destinations"
+    - key: create-a-new-destination-transformer-for-rudder
+      label: How to Create a New Destination Transformation for RudderStack
+      link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder"
+      items:
+      - key: best-practices-for-coding-transformation-functions-in-javascript
+        label: Best Practices for Coding Transformation Functions in JavaScript
+        link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript"
+    - key: implement-native-js-sdk-integration
+      label: How to Implement a Native JavaScript SDK Integration
+      link: "/user-guides/how-to-guides/implement-native-js-sdk-integration"
+      items:
+      - key: add-device-mode-sdk-to-js
+        label: How to Add a Device Mode SDK to RudderStack JavaScript SDK
+        link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js"
+    - key: developing-integrations-for-rudderstack
+      label: How to Develop Integrations for RudderStack
+      link: "/user-guides/how-to-guides/developing-integrations-for-rudderstack"
+    - key: how-to-integrate-rudderstack-with-a-gatsby-website
+      label: How to Integrate RudderStack with a Gatsby Website
+      link: "/user-guides/how-to-guides/how-to-integrate-rudderstack-with-a-gatsby-website"
+- key: glossary
+  label: Glossary
+  link: "/glossary"
+- key: faqs
+  label: FAQs
+  link: "/faqs"

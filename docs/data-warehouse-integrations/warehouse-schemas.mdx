@@ -14,16 +14,16 @@ This guide details the structure of this warehouse schema and the columns create
 
 ## Schema
 
-RudderStack uses the source name (written in snake case, e.g., `source_name`) to create a schema in your data warehouse (dataset, in the case of BigQuery).
+RudderStack uses the source name (written in snake case, for example, `source_name`) to create a schema in your data warehouse.
 
-The following tables are created for each RudderStack source connected to your warehouse destination:
+The following tables are created in your data warehouse for each RudderStack source connected to it:
 
 | Name                                | Description                                                                                                           |
 | :-----------------------------------| :---------------------------------------------------------------------------------------------------------------------|
+| `<source_name>.identifies`          | Every `identify` call sent from the source is stored in this table, including the properties passed as `traits`.      |
+| `<source_name>.users`               | RudderStack stores all the unique users in this table. Only the latest properties used to identify a user are stored, including the latest `anonymousId`.    |
 | `<source_name>.tracks`              | Every `track` call sent from the source is stored in this table. It **does not include** the custom properties present in the event's `properties` but has some standard properties (listed in the [Standard properties](#standard-rudderstack-properties) section below such as `received_at`, `anonymous_id`, `context_device_info`, etc.                                                                                                    |
 | `<source_name>.<track_event_name>`  | All the standard properties and the custom properties for a `track` event are stored in this table. The table name is the event name specified in the `track` call, e.g., `Added to Cart`.                                                                                              |
-| `<source_name>.identifies`          | Every `identify` call sent from the source is stored in this table, including the properties passed as `traits`.      |
-| `<source_name>.users`               | RudderStack stores all the unique users in this table. Only the latest properties used to identify a user are stored, including the latest `anonymousId`.                                                                                                                           |
 | `<source_name>.pages`               | Every `page` call sent from the source is stored in this table, including the associated event properties.            |
 | `<source_name>.screens`             | Every `screen` call sent from the source is stored in this table, including the associated event properties.          |
 | `<source_name>.groups`              | Every `group` call sent from the source is stored in this table, including the associated event properties.           |
@@ -32,18 +32,18 @@ The following tables are created for each RudderStack source connected to your w
 
 <div class="infoBlock">
 
-All the event properties are stored as top-level columns in the corresponding table. The nested properties will be prefixed with the parent key. For example, an event with properties <code class="inline-code">&#123; product: &#123; name: iPhone, version: 11 &#125;&#125;</code>
-will result in the columns <code class="inline-code">product_name</code> and <code class="inline-code">product_version</code>.
+All the event properties are stored as top-level columns in the corresponding table. The nested properties are prefixed with the parent key. For example, an event with properties <code class="inline-code">&#123; product: &#123; name: iPhone, version: 11 &#125;&#125;</code>
+will result in RudderStack creating the columns <code class="inline-code">product_name</code> and <code class="inline-code">product_version</code>.
 </div>
 
 ## Standard RudderStack properties
 
 RudderStack sets the following standard properties on all the above-mentioned tables:
 
-| Name                 | Description                                                                                                                     |
-| :--------------------| :-------------------------------------------------------------------------------------------------------------------------------|
-| `anonymous_id`       | The user's anonymous ID.                                                                                                        |
-| `context_<prop>`     | The context properties set in the event.                                                                                        |
+| Name                 | Description                              |
+| :--------------------| :---------------------------------------------------------------------------------------------|
+| `anonymous_id`       | The user's anonymous ID.               |
+| `context_<prop>`     | The context properties set in the event.      |
 | `id`                 | The unique message ID of the event. Not applicable for the `users` table, as the field be set to the user ID in that case.      |
 | `sent_at`            | Captures the time when the event was sent from the client to RudderStack. Conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`.     |
 | `received_at`        | Timestamp registered by RudderStack when the event was ingested (received). Conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`.     |
@@ -61,6 +61,253 @@ RudderStack automatically converts the property names from camel case to snake c
 
 RudderStack reserves the above-mentioned standard properties. In case of any conflict, RudderStack automatically discards the properties set by the user.
 </div>
+
+## Identify
+
+For every [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call, RudderStack creates a record in the `identifies` table and upserts the records in the `users` table based on the `userId`.
+
+<div class="successBlock">
+
+In case of Google BigQuery, you can use the views created over the tables to query for unique users in the dataset. Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#schema-partitioned-tables-and-views">BigQuery documentation</a> for more details.
+</div>
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify(
+  "userId",
+  {
+    email: "alex@company.com",
+    first_name: "Alex",
+    last_name: "Keener",
+    age: 35,
+  },
+  {
+    context: {
+      ip: "0.0.0.0",
+    },
+    anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619",
+  }
+)
+```
+
+The corresponding schemas created for the `identifies` and `users` tables are shown in the following sections:
+
+### Table: `identifies`
+
+| Column               | Type        | Example value                                                  | Note                                                                            |
+| :------------------- | :---------- | :------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| `id`                 | String      | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                         | Unique `messageId` generated by RudderStack.                                    |  
+| `user_id`            | String      | `userId`                  | The `userId` in the `identify` call.                                            |
+| `anonymous_id`       | String      | `59b703e3-467a-4a1d-9fe6-da27ed319619`                         | -                                                                                |
+| `received_at`        | Timestamp   | `2020-04-26 07:00:45.558`                                      | -                                                                                |
+| `sent_at`            | Timestamp   | `2020-04-26 07:00:45.124`                                      | -                                                                                |
+| `original_timestamp` | Timestamp   | `2020-04-26 07:00:43.400`                                      | -                                                                                |
+| `timestamp`          | Timestamp   | `2020-04-26 07:00:44.834`                                      | -                                                                                |
+| `context_ip`         | String      | `0.0.0.0`                                                      | -                                                                                |
+| `context_<prop>`     | String, Int | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                                |
+| `email`              | String      | `alex@company.com`                                             | -                                                                                |
+| `first_name`         | String      | `Alex`                                                         | -                                                                                |
+| `last_name`          | String      | `Keener`                                                       | -                                                                                |
+| `age`                | Int         | `35`                                                           | -                                                                                |
+| `uuid_ts`            | Timestamp   | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
+
+### Table: `users`
+
+| Column              | Type             | Value                                                          | Note                                                                       |
+| :------------------ | :--------------- | :------------------------------------------------------------- | :--------------------------------------------------------------------------|
+| `id`                | String           | `userId`                                                       | The unique user ID.                                                         |
+| `received_at`       | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                           |
+| `context_ip`        | String           | `0.0.0.0`                                                      | -                                                                           |
+| `context_<prop>`    | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                           |
+| `email`             | String           | `alex@company.com`                                             | -                                                                           |
+| `first_name`        | String           | `Alex`                                                         | -                                                                           |
+| `last_name`         | String           | `Keener`                                                       | -                                                                           |
+| `age`               | Int              | `35`                                                           | -                                                                           |
+| `uuid_ts`           | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics.|
+
+<div class="infoBlock">
+
+The <code class="inline-code">users</code> table contains the properties from the latest <code class="inline-code">identify</code> call made for an user. It only has the <code class="inline-code">id</code> column (same as <code class="inline-code">user_id</code> in the <code class="inline-code">identifies</code> table) and does not have the <code class="inline-code">anonymous_id</code> column.
+</div>
+
+<div class="successBlock">
+
+To obtain a user’s <code class="inline-block">anonymous_id</code>, you can query the <code class="inline-block">identifies</code> table by grouping on the <code class="inline-block">user_id</code> column.
+</div>
+
+## Track
+
+For every [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call, RudderStack creates a record in both the `tracks` and `<event_name>` tables.
+
+A sample `track` event named `Add to Cart` is shown below:
+
+```javascript
+rudderanalytics.track(
+  "Add to Cart", {
+    price: 5,
+    currency: "USD",
+    product_id: "P12345",
+    product_name: "N95 Mask",
+  }, {
+    context: {
+      ip: "0.0.0.0",
+    },
+    anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619",
+  }
+)
+```
+
+The corresponding schemas created for the `tracks` and `add_to_cart` tables are as shown:
+
+### Table: `tracks`
+
+| Column               | Type        | Example value                                                       | Description                                                                                                                                        |
+| :------------------- | :---------- | :-------------------------------------------------------| :------------------------------------------------------------------------------------  |
+| `id`                 | String      | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                  | Unique `messageId` generated by RudderStack.                                            |
+| `anonymous_id`       | String      | `59b703e3-467a-4a1d-9fe6-da27ed319619`                  | The anonymous ID of the user.                                                          |
+| `received_at`        | Timestamp   | `2020-04-26 07:00:45.558`                               | Timestamp registered by RudderStack when the event was ingested \(received\).          |
+| `sent_at`            | Timestamp   | `2020-04-26 07:00:45.124`                               | Timestamp set by the SDK when the event was sent from the client to RudderStack.        |
+| `original_timestamp` | Timestamp   | `2020-04-26 07:00:43.400`                               | Timestamp registered by the SDK when the event was invoked \(event was emitted in the SDK\).                                                               |
+| `timestamp`          | Timestamp   | `2020-04-26 07:00:44.834`                               | Calculated by RudderStack to account for the client clock skew. The formula used is: `timestamp` = `received_at` - \(`sent_at` - `original_timestamp`\).       |
+| `context_ip`         | String      | `0.0.0.0`                                               | -                                                                                      |
+| `context_<prop>`     | String, Integer | `context_app_version: 1.2.3, context_screen_density: 2` | -                                                                                  |
+| `event`              | String      | `add_to_cart`                                           | The name of the corresponding event table.                                              |
+| `event_text`         | String      | `Add to Cart`                                           | The name of the event.                                                                  |
+| `uuid_ts`            | Timestamp   | `2020-04-26 07:31:54:735`                               | Added by RudderStack for debugging purposes. Can be ignored for analytics.             |
+
+### Table: `add_to_cart`
+
+| Column               | Type        | Example value                                           | Note                                                                                    |
+| :------------------- | :---------- | :------------------------------------------------------ | :---------------------------------------------------------------------------------     |
+| `id`                 | String      | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                  | Unique `messageId`generated by RudderStack.                                            |
+| `anonymous_id`       | String      | `59b703e3-467a-4a1d-9fe6-da27ed319619`                  | -                                                                                      |
+| `received_at`        | Timestamp   | `2020-04-26 07:00:45.558`                               | -                                                                                      |
+| `sent_at`            | Timestamp   | `2020-04-26 07:00:45.124`                               | -                                                                                      |
+| `original_timestamp` | Timestamp   | `2020-04-26 07:00:43.400`                               | -                                                                                      |
+| `timestamp`          | Timestamp   | `2020-04-26 07:00:44.834`                               | -                                                                                      |
+| `context_ip`         | String      | `0.0.0.0`                                               | -                                                                                      |
+| `context_<prop>`     | String, Int | `context_app_version: 1.2.3, context_screen_density: 2` | -                                                                                      |
+| `event`              | String      | `add_to_cart`                                           | The name of the event table.                                                            |  
+| `event_text`         | String      | `Add to Cart`                                           | The name of the event.                                                                  |
+| `price`              | Int         | `5`                                                     | -                                                                                      |
+| `currency`           | String      | `USD`                                                   | -                                                                                      |
+| `product_id`         | String      | `P12345`                                                | -                                                                                      |
+| `product_name`       | String      | `N95 Mask`                                              | -                                                                                      |
+| `uuid_ts`            | Timestamp   | `2020-04-26 07:31:54:735`                               | Added by RudderStack for debugging purposes. Can be ignored for analytics.             |
+
+<div class="infoBlock">
+
+The event table <code class="inline-code">add_to_cart</code> has the same columns as the <code class="inline-code">tracks</code> table. It also has the properties set by the user via the <code class="inline-code">properties</code> key.
+</div>
+
+## Page/Screen
+
+For every [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/)/[`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) call, RudderStack creates a record in the corresponding `pages` or `screens` table.
+
+A sample `page` event is shown below:
+
+```javascript
+rudderanalytics.page(
+  "Cart",
+  "Cart Viewed",
+  {
+    path: "/cart",
+    title: "Shopping Cart",
+    url: "https://rudderstack.com",
+  },
+  {
+    context: {
+      ip: "0.0.0.0",
+    },
+    anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619",
+  }
+)
+```
+
+The corresponding schema created for the `pages`/`screens` table is as shown:
+
+### Table: `pages`/`screens`
+
+| Column               | Type             | Example value                                                  | Note                                                                        |
+| :------------------- | :--------------- | :------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| `id`                 | String           | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                         | -                                                                          |
+| `anonymous_id`       | String           | `59b703e3-467a-4a1d-9fe6-da27ed319619`                         | -                                                                          |
+| `received_at`        | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                          |
+| `sent_at`            | Timestamp        | `2020-04-26 07:00:45.124`                                      | -                                                                          |
+| `original_timestamp` | Timestamp        | `2020-04-26 07:00:43.400`                                      | -                                                                          |
+| `timestamp`          | Timestamp        | `2020-04-26 07:00:44.834`                                      | -                                                                          |
+| `context_ip`         | String           | `0.0.0.0`                                                      | -                                                                          |
+| `context_<prop>`     | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                          |
+| `name`               | String           | `Cart Viewed`                                                  | The page name.                                                              |
+| `category`           | String           | `Cart`                                                         | The page category.                                                          |
+| `path`               | String           | `/cart`                                                        | -                                                                          |
+| `title`              | String           | `Shopping Cart`                                                | -                                                                          |
+| `url`                | String           | `https://rudderstack.com`                                      | -                                                                          |
+| `uuid_ts`            | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
+
+## Group
+
+For every [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call, RudderStack creates a record in the corresponding `groups` table.
+
+A sample `group` call is shown below:
+
+```javascript
+rudderanalytics.group(
+  "groupId", {
+    email: "alex@keener.com",
+    first_name: "Alex",
+    last_name: "Keener",
+    age: 35,
+  }, {
+    context: {
+      ip: "0.0.0.0",
+    },
+    anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619",
+  }
+)
+```
+
+The corresponding schema created for the `groups` table is as shown:
+
+### Table: `groups`
+
+| Column               | Type             | Example value                                                  | Note                                                                        |
+| :------------------- | :--------------- | :------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| `id`                 | String           | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                         | The group ID associated with the current user.                              |
+| `anonymous_id`       | String           | `59b703e3-467a-4a1d-9fe6-da27ed319619`                         | -                                                                          |
+| `group_id`           | String           | `groupId`                                                       | -                                                                          |
+| `received_at`        | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                          |
+| `sent_at`            | Timestamp        | `2020-04-26 07:00:45.124`                                      | -                                                                          |
+| `original_timestamp` | Timestamp        | `2020-04-26 07:00:43.400`                                      | -                                                                          |
+| `timestamp`          | Timestamp        | `2020-04-26 07:00:44.834`                                      | -                                                                          |
+| `context_ip`         | String           | `0.0.0.0`                                                      | -                                                                          |
+| `context_<prop>`     | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                          |
+| `uuid_ts`            | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
+
+## Alias
+
+For every [`alias`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/)/[`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) call, RudderStack creates a record in the corresponding `aliases` table.
+
+A sample `alias` call is shown below:
+
+```javascript
+rudderanalytics.alias("9bb5d4c2", "e6ab2c5e")
+```
+
+### Table: `aliases`
+
+| Column               | Type             | Example value                                                  | Note                                                                        |
+| :------------------- | :--------------- | :------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| `user_id`                 | String           | `9bb5d4c2`                         | The new ID associated with the user.                              |
+| `previous_id`       | String           | `e6ab2c5e`                         | The previous ID associated with the user.                                                                         |
+| `received_at`        | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                          |
+| `sent_at`            | Timestamp        | `2020-04-26 07:00:45.124`                                      | -                                                                          |
+| `original_timestamp` | Timestamp        | `2020-04-26 07:00:43.400`                                      | -                                                                          |
+| `timestamp`          | Timestamp        | `2020-04-26 07:00:44.834`                                      | -                                                                          |
+| `context_ip`         | String           | `0.0.0.0`                                                      | -                                                                          |
+| `context_<prop>`     | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                          |
+| `uuid_ts`            | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
 
 ## Clock skew considerations
 
@@ -104,234 +351,6 @@ The following table demonstrates an example of `original_timestamp` > `received_
 | 2020-04-26 07:00:45.558 | 2020-04-26 07:00:46.124 | 2020-04-26 07:00:43.400 | 2020-04-26 07:00:43.965                                  |
 
 In this case, `timestamp` will be **less** than `original_timestamp`.
-
-## Table schemas
-
-This section covers the major table schemas for different event types.
-
-### Track
-
-RudderStack creates a record in both the `tracks` and `<event_name>` tables for every `track` call.
-
-A sample `track` event named `Add to Cart` is shown below:
-
-```javascript
-rudderanalytics.track(
-  "Add to Cart", {
-    price: 5,
-    currency: "USD",
-    product_id: "P12345",
-    product_name: "N95 Mask",
-  }, {
-    context: {
-      ip: "0.0.0.0",
-    },
-    anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619",
-  }
-)
-```
-
-The corresponding schemas created for the `tracks` and `add_to_cart` tables is as shown:
-
-#### Table: `tracks`
-
-| Column               | Type        | Example value                                                       | Description                                                                                                                                        |
-| :------------------- | :---------- | :-------------------------------------------------------| :------------------------------------------------------------------------------------  |
-| `id`                 | String      | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                  | Unique `messageId` generated by RudderStack.                                            |
-| `anonymous_id`       | String      | `59b703e3-467a-4a1d-9fe6-da27ed319619`                  | The anonymous ID of the user.                                                          |
-| `received_at`        | Timestamp   | `2020-04-26 07:00:45.558`                               | Timestamp registered by RudderStack when the event was ingested \(received\).          |
-| `sent_at`            | Timestamp   | `2020-04-26 07:00:45.124`                               | Timestamp set by the SDK when the event was sent from the client to RudderStack.        |
-| `original_timestamp` | Timestamp   | `2020-04-26 07:00:43.400`                               | Timestamp registered by the SDK when the event was invoked \(event was emitted in the SDK\).                                                               |
-| `timestamp`          | Timestamp   | `2020-04-26 07:00:44.834`                               | Calculated by RudderStack to account for the client clock skew. The formula used is: `timestamp` = `received_at` - \(`sent_at` - `original_timestamp`\).       |
-| `context_ip`         | String      | `0.0.0.0`                                               | -                                                                                      |
-| `context_<prop>`     | String, Integer | `context_app_version: 1.2.3, context_screen_density: 2` | -                                                                                  |
-| `event`              | String      | `add_to_cart`                                           | The name of the corresponding event table.                                              |
-| `event_text`         | String      | `Add to Cart`                                           | The name of the event.                                                                  |
-| `uuid_ts`            | Timestamp   | `2020-04-26 07:31:54:735`                               | Added by RudderStack for debugging purposes. Can be ignored for analytics.             |
-
-#### Table: `add_to_cart`
-
-| Column               | Type        | Example value                                           | Note                                                                                    |
-| :------------------- | :---------- | :------------------------------------------------------ | :---------------------------------------------------------------------------------     |
-| `id`                 | String      | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                  | Unique `messageId`generated by RudderStack.                                            |
-| `anonymous_id`       | String      | `59b703e3-467a-4a1d-9fe6-da27ed319619`                  | -                                                                                      |
-| `received_at`        | Timestamp   | `2020-04-26 07:00:45.558`                               | -                                                                                      |
-| `sent_at`            | Timestamp   | `2020-04-26 07:00:45.124`                               | -                                                                                      |
-| `original_timestamp` | Timestamp   | `2020-04-26 07:00:43.400`                               | -                                                                                      |
-| `timestamp`          | Timestamp   | `2020-04-26 07:00:44.834`                               | -                                                                                      |
-| `context_ip`         | String      | `0.0.0.0`                                               | -                                                                                      |
-| `context_<prop>`     | String, Int | `context_app_version: 1.2.3, context_screen_density: 2` | -                                                                                      |
-| `event`              | String      | `add_to_cart`                                           | The name of the event table.                                                            |  
-| `event_text`         | String      | `Add to Cart`                                           | The name of the event.                                                                  |
-| `price`              | Int         | `5`                                                     | -                                                                                      |
-| `currency`           | String      | `USD`                                                   | -                                                                                      |
-| `product_id`         | String      | `P12345`                                                | -                                                                                      |
-| `product_name`       | String      | `N95 Mask`                                              | -                                                                                      |
-| `uuid_ts`            | Timestamp   | `2020-04-26 07:31:54:735`                               | Added by RudderStack for debugging purposes. Can be ignored for analytics.             |
-
-<div class="infoBlock">
-
-The event table <code class="inline-code">add_to_cart</code> has the same columns as the <code class="inline-code">tracks</code> table. It also has the properties set by the user in the <code class="inline-code">properties</code> key.
-</div>
-
-### Identify
-
-RudderStack creates a record in the `identifies` table and upserts the records in the `users` table for every `identify` call, based on `userId`.
-
-<div class="successBlock">
-
-  In case of Google BigQuery, you can use the views created over the tables to query for unique users in the dataset. Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#schema-partitioned-tables-and-views">BigQuery documentation</a> for more details.
-</div>
-
-A sample `identify` call is shown below:
-
-```javascript
-rudderanalytics.identify(
-  "userId",
-  {
-    email: "alex@company.com",
-    first_name: "Alex",
-    last_name: "Keener",
-    age: 35,
-  },
-  {
-    context: {
-      ip: "0.0.0.0",
-    },
-    anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619",
-  }
-)
-```
-
-The corresponding schemas created for the `identifies` and `users` tables are shown in the following sections:
-
-#### Table: `identifies`
-
-| Column               | Type        | Example value                                                  | Note                                                                            |
-| :------------------- | :---------- | :------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| `id`                 | String      | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                         | Unique `messageId` generated by RudderStack.                                    |  
-| `user_id`            | String      | `userId`                                                       | The `userId` in the `identify` call.                                            |
-| `anonymous_id`       | String      | `59b703e3-467a-4a1d-9fe6-da27ed319619`                         | -                                                                                |
-| `received_at`        | Timestamp   | `2020-04-26 07:00:45.558`                                      | -                                                                                |
-| `sent_at`            | Timestamp   | `2020-04-26 07:00:45.124`                                      | -                                                                                |
-| `original_timestamp` | Timestamp   | `2020-04-26 07:00:43.400`                                      | -                                                                                |
-| `timestamp`          | Timestamp   | `2020-04-26 07:00:44.834`                                      | -                                                                                |
-| `context_ip`         | String      | `0.0.0.0`                                                      | -                                                                                |
-| `context_<prop>`     | String, Int | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                                |
-| `email`              | String      | `alex@company.com`                                             | -                                                                                |
-| `first_name`         | String      | `Alex`                                                         | -                                                                                |
-| `last_name`          | String      | `Keener`                                                       | -                                                                                |
-| `age`                | Int         | `35`                                                           | -                                                                                |
-| `uuid_ts`            | Timestamp   | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
-
-#### Table: `users`
-
-| Column              | Type             | Value                                                          | Note                                                                       |
-| :------------------ | :--------------- | :------------------------------------------------------------- | :--------------------------------------------------------------------------|
-| `id`                | String           | `userId`                                                       | The unique user ID.                                                         |
-| `received_at`       | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                           |
-| `context_ip`        | String           | `0.0.0.0`                                                      | -                                                                           |
-| `context_<prop>`    | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                           |
-| `email`             | String           | `alex@company.com`                                             | -                                                                           |
-| `first_name`        | String           | `Alex`                                                         | -                                                                           |
-| `last_name`         | String           | `Keener`                                                       | -                                                                           |
-| `age`               | Int              | `35`                                                           | -                                                                           |
-| `uuid_ts`           | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics.|
-
-<div class="infoBlock">
-
-The <code class="inline-code">users</code> table contains the properties from the latest <code class="inline-code">identify</code> call made for an user. It only has the <code class="inline-code">id</code> column (same as <code class="inline-code">user_id</code> in the <code class="inline-code">identifies</code> table) and does not have the <code class="inline-code">anonymous_id</code> column.
-
-</div>
-
-<div class="successBlock">
-
-  To obtain a user’s <code class="inline-block">anonymous_id</code>, you can query the <code class="inline-block">identifies</code> table by grouping on the <code class="inline-block">user_id</code> column.
-</div>
-
-### Page/Screen
-
-RudderStack creates a record in the `pages` or `screens` table for every `page`/`screen` call.
-
-A sample `page` event is shown below:
-
-```javascript
-rudderanalytics.page(
-  "Cart",
-  "Cart Viewed",
-  {
-    path: "/cart",
-    title: "Shopping Cart",
-    url: "https://rudderstack.com",
-  },
-  {
-    context: {
-      ip: "0.0.0.0",
-    },
-    anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619",
-  }
-)
-```
-
-The corresponding schema created for the `pages` table is as shown:
-
-#### Table: `pages`/`screens`
-
-| Column               | Type             | Example value                                                  | Note                                                                        |
-| :------------------- | :--------------- | :------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| `id`                 | String           | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                         | -                                                                          |
-| `anonymous_id`       | String           | `59b703e3-467a-4a1d-9fe6-da27ed319619`                         | -                                                                          |
-| `received_at`        | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                          |
-| `sent_at`            | Timestamp        | `2020-04-26 07:00:45.124`                                      | -                                                                          |
-| `original_timestamp` | Timestamp        | `2020-04-26 07:00:43.400`                                      | -                                                                          |
-| `timestamp`          | Timestamp        | `2020-04-26 07:00:44.834`                                      | -                                                                          |
-| `context_ip`         | String           | `0.0.0.0`                                                      | -                                                                          |
-| `context_<prop>`     | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                          |
-| `name`               | String           | `Cart Viewed`                                                  | The page name.                                                              |
-| `category`           | String           | `Cart`                                                         | The page category.                                                          |
-| `path`               | String           | `/cart`                                                        | -                                                                          |
-| `title`              | String           | `Shopping Cart`                                                | -                                                                          |
-| `url`                | String           | `https://rudderstack.com`                                      | -                                                                          |
-| `uuid_ts`            | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
-
-### Group
-
-RudderStack creates a record in the `groups` table for every `group` call.
-
-A sample `group` call is shown below:
-
-```javascript
-rudderanalytics.group(
-  "DevOps", {
-    email: "alex@keener.com",
-    first_name: "Alex",
-    last_name: "Keener",
-    age: 35,
-  }, {
-    context: {
-      ip: "0.0.0.0",
-    },
-    anonymousId: "59b703e3-467a-4a1d-9fe6-da27ed319619",
-  }
-)
-```
-
-The corresponding schemas created for the `groups` table is as shown:
-
-#### Table: `groups`
-
-| Column               | Type             | Example value                                                  | Note                                                                        |
-| :------------------- | :--------------- | :------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| `id`                 | String           | `4d5a7681-e596-40ea-a81c-bf69f9b297f1`                         | The group ID associated with the current user.                              |
-| `anonymous_id`       | String           | `59b703e3-467a-4a1d-9fe6-da27ed319619`                         | -                                                                          |
-| `group_id`           | String           | `DevOps`                                                       | -                                                                          |
-| `received_at`        | Timestamp        | `2020-04-26 07:00:45.558`                                      | -                                                                          |
-| `sent_at`            | Timestamp        | `2020-04-26 07:00:45.124`                                      | -                                                                          |
-| `original_timestamp` | Timestamp        | `2020-04-26 07:00:43.400`                                      | -                                                                          |
-| `timestamp`          | Timestamp        | `2020-04-26 07:00:44.834`                                      | -                                                                          |
-| `context_ip`         | String           | `0.0.0.0`                                                      | -                                                                          |
-| `context_<prop>`     | String, Integer  | `context_app_version: 1.2.3`, `context_screen_density: 2`      | -                                                                          |
-| `uuid_ts`            | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics. |
 
 ## Accepted timestamp formats
 
