@@ -28,7 +28,7 @@ export default function Docs({ mdx, pageContext }) {
   const { slug } = mdx.fields;
 
   let tmpSlug = slug.replace(/^\/|\/$/g, "");
-  let docsBasePath = "";
+  const docsBasePath = process.env.GATSBY_DOCS_BASE_PATH || "";
 
   let currentPageIndex = findIndex(postNavList, (o) =>
     tmpSlug === "docs" ? true : slug === docsBasePath + o.link

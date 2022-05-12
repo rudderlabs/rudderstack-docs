@@ -13,7 +13,7 @@ const NestedAccordion = (props) => {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
 
-  const docsBasePath = "";
+  const docsBasePath = process.env.GATSBY_DOCS_BASE_PATH || "";
 
   useEffect(() => {
     const returnMenuItem = (item, i) => {

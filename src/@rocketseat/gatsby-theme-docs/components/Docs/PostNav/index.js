@@ -6,7 +6,7 @@ import { rudderslabTrackOnClickDocs } from "../../../../../utils/common";
 import { Container, Post } from "./styles";
 
 export default function Docs({ prev, next, current }) {
-  let docsBasePath = "";
+  const docsBasePath = process.env.GATSBY_DOCS_BASE_PATH || "";
 
   return current ? (
     <Container
