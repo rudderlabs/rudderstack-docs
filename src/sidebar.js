@@ -93,61 +93,61 @@ export const jsonData = [
             key: "rudderstack-javascript-sdk",
             title: "JavaScript",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/",
             content: [
               {
                 key: "quick-start-guide",
                 title: "Quick Start Guide",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/",
                 content: [],
               },
               {
                 key: "javascript-sdk-enhancements",
                 title: "JavaScript SDK Enhancements",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
                 content: [],
               },
               {
                 key: "data-storage-cookies",
                 title: "Data Storage in Cookies",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/",
                 content: [],
               },
               {
                 key: "querystring-api",
                 title: "Querystring API",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/",
                 content: [],
               },
               {
                 key: "detecting-adblocked-pages",
                 title: "Detecting Ad-blocked Pages",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/",
                 content: [],
               },
               {
                 key: "version-migration-guide",
                 title: "Version Migration Guide",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/",
                 content: [],
               },
               {
                 key: "consent-managers",
                 title: "Consent Managers",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/",
                 content: [
                   {
                     key: "onetrust",
                     title: "OneTrust",
                     link:
-                      "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/",
+                      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/",
                     content: [],
                   },
                 ],
@@ -156,7 +156,7 @@ export const jsonData = [
                 key: "js-sdk-faqs",
                 title: "JavaScript SDK FAQs",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
                 content: [],
               },
             ],
@@ -165,20 +165,20 @@ export const jsonData = [
             key: "rudderstack-android-sdk",
             title: "Android",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/",
             content: [
               {
                 key: "add-an-application-class-to-you-android-application",
                 title: "Adding Application Class",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/",
                 content: [],
               },
               {
                 key: "flushing-events-periodically",
                 title: "Flushing Events Periodically",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/",
                 content: [],
               },
             ],
@@ -187,20 +187,20 @@ export const jsonData = [
             key: "rudderstack-ios-sdk",
             title: "iOS",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/",
             content: [
               {
                 key: "tvOS",
                 title: "tvOS",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/",
                 content: [],
               },
               {
                 key: "watchOS",
                 title: "watchOS",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/",
                 content: [],
               },
             ],
@@ -209,34 +209,34 @@ export const jsonData = [
             key: "rudderstack-unity-sdk",
             title: "Unity",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/",
             content: [],
           },
           {
             key: "rudderstack-react-native-sdk",
             title: "React Native",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/",
             content: [],
           },
           {
             key: "rudderstack-flutter-sdk",
             title: "Flutter",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/",
             content: [
               {
                 key: "flutter-v2",
                 title: "Flutter SDK v2",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/",
                 content: [],
               },
               {
                 key: "flutter-v1",
                 title: "Flutter SDK v1",
                 link:
-                  "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/",
                 content: [],
               },
             ],
@@ -245,84 +245,84 @@ export const jsonData = [
             key: "rudderstack-cordova-sdk",
             title: "Cordova",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/",
             content: [],
           },
           {
             key: "rudderstack-amp-analytics",
             title: "AMP Analytics",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/",
             content: [],
           },
           {
             key: "rudderstack-java-sdk",
             title: "Java",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/",
             content: [],
           },
           {
             key: "rudderstack-python-sdk",
             title: "Python",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/",
             content: [],
           },
           {
             key: "rudderstack-rust-sdk",
             title: "Rust",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk/",
             content: [],
           },
           {
             key: "rudderstack-node-sdk",
             title: "Node.js",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/",
             content: [],
           },
           {
             key: "rudderstack-go-sdk",
             title: "Go",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/",
             content: [],
           },
           {
             key: "rudderstack-ruby-sdk",
             title: "Ruby",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/",
             content: [],
           },
           {
             key: "rudderstack-dotnet-sdk",
             title: ".NET",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/",
             content: [],
           },
           {
             key: "rudderstack-php-sdk",
             title: "PHP",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/",
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/",
             content: [],
           },
           {
             key: "event-filtering",
             title: "Client-side Event Filtering",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/",
+              "/stream-sources/rudderstack-sdk-integration-guides/event-filtering/",
             content: [],
           },
           {
             key: "sdk-faqs",
             title: "SDK FAQs",
             link:
-              "/docs/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/",
+              "/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/",
             content: [],
           },
         ],
@@ -469,7 +469,7 @@ export const jsonData = [
             key: "hubspot-data-model-and-schema-information",
             title: "HubSpot Data Model and Schema Information",
             link:
-              "/docs/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/",
+              "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/",
             content: [],
           },
         ],
@@ -531,7 +531,7 @@ export const jsonData = [
             key: "schema-comparison-rudderstack-vs-segment",
             title: "Schema Comparison: Rudderstack Vs Segment",
             link:
-              "/docs/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/",
+              "/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/",
             content: [],
           },
         ],
@@ -666,15 +666,13 @@ export const jsonData = [
           {
             key: "importing-data-using-tables",
             title: "Importing Data using Tables",
-            link:
-              "/docs/reverse-etl/common-settings/importing-data-using-tables/",
+            link: "/reverse-etl/common-settings/importing-data-using-tables/",
             content: [],
           },
           {
             key: "importing-data-using-models",
             title: "Importing Data using Models",
-            link:
-              "/docs/reverse-etl/common-settings/importing-data-using-models/",
+            link: "/reverse-etl/common-settings/importing-data-using-models/",
             content: [],
           },
         ],
@@ -706,35 +704,35 @@ export const jsonData = [
                 key: "setting-up-adobe-analytics-in-rudderstack",
                 title: "Setting Up Adobe Analytics in RudderStack",
                 link:
-                  "/docs/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/",
+                  "/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/",
                 content: [],
               },
               {
                 key: "adobe-analytics-web-device-mode",
                 title: "Web Device Mode Settings",
                 link:
-                  "/docs/destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode/",
+                  "/destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode/",
                 content: [],
               },
               {
                 key: "adobe-analytics-mobile-device-mode",
                 title: "Mobile Device Mode Settings",
                 link:
-                  "/docs/destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode/",
+                  "/destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode/",
                 content: [],
               },
               {
                 key: "adobe-analytics-heartbeat",
                 title: "Adobe Analytics Heartbeat Measurement",
                 link:
-                  "/docs/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat/",
+                  "/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat/",
                 content: [],
               },
               {
                 key: "e-commerce-events",
                 title: "E-commerce Events",
                 link:
-                  "/docs/destinations/analytics/adobe-analytics/e-commerce-events/",
+                  "/destinations/analytics/adobe-analytics/e-commerce-events/",
                 content: [],
               },
             ],
@@ -784,21 +782,21 @@ export const jsonData = [
                 key: "setting-up-google-analytics-4-in-rudderstack",
                 title: "Setting up Google Analytics 4",
                 link:
-                  "/docs/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/",
+                  "/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/",
                 content: [],
               },
               {
                 key: "google-analytics-4-cloud-mode",
                 title: "Cloud Mode",
                 link:
-                  "/docs/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/",
+                  "/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/",
                 content: [],
               },
               {
                 key: "google-analytics-4-device-mode",
                 title: "Device Mode",
                 link:
-                  "/docs/destinations/analytics/google-analytics-4/google-analytics-4-device-mode/",
+                  "/destinations/analytics/google-analytics-4/google-analytics-4-device-mode/",
                 content: [],
               },
             ],
@@ -878,14 +876,14 @@ export const jsonData = [
                 key: "profitwell-cloud-mode",
                 title: "Cloud Mode",
                 link:
-                  "/docs/destinations/analytics/profitwell/profitwell-cloud-mode/",
+                  "/destinations/analytics/profitwell/profitwell-cloud-mode/",
                 content: [],
               },
               {
                 key: "profitwell-web-device-mode",
                 title: "Device Mode",
                 link:
-                  "/docs/destinations/analytics/profitwell/profitwell-web-device-mode/",
+                  "/destinations/analytics/profitwell/profitwell-web-device-mode/",
                 content: [],
               },
             ],
@@ -1009,7 +1007,7 @@ export const jsonData = [
                 key: "setting-up-drip-in-rudderstack",
                 title: "Setting Up Drip in RudderStack",
                 link:
-                  "/docs/destinations/marketing/drip/setting-up-drip-in-rudderstack/",
+                  "/destinations/marketing/drip/setting-up-drip-in-rudderstack/",
                 content: [],
               },
               {
@@ -1249,14 +1247,13 @@ export const jsonData = [
             key: "google-adwords-enhanced-conversions",
             title: "Google Ads Enhanced Conversions",
             link:
-              "/docs/destinations/advertising/google-adwords-enhanced-conversions/",
+              "/destinations/advertising/google-adwords-enhanced-conversions/",
             content: [],
           },
           {
             key: "google-adwords-remarketing-list",
             title: "Google Ads Remarketing Lists (Customer Match)",
-            link:
-              "/docs/destinations/advertising/google-adwords-remarketing-list/",
+            link: "/destinations/advertising/google-adwords-remarketing-list/",
             content: [],
           },
           {
@@ -1330,8 +1327,7 @@ export const jsonData = [
           {
             key: "amazon-kinesis-firehose",
             title: "Amazon Firehose",
-            link:
-              "/docs/destinations/streaming-platforms/amazon-kinesis-firehose/",
+            link: "/destinations/streaming-platforms/amazon-kinesis-firehose/",
             content: [],
           },
           {
@@ -1381,7 +1377,7 @@ export const jsonData = [
             key: "microsoft-azure-blob-storage",
             title: "Azure Blob Storage",
             link:
-              "/docs/destinations/storage-platforms/microsoft-azure-blob-storage/",
+              "/destinations/storage-platforms/microsoft-azure-blob-storage/",
             content: [],
           },
           {
@@ -1431,8 +1427,7 @@ export const jsonData = [
           {
             key: "algolia-insights",
             title: "Algolia Insights",
-            link:
-              "/docs/destinations/testing-and-personalization/algolia-insights/",
+            link: "/destinations/testing-and-personalization/algolia-insights/",
             content: [],
           },
           {
@@ -1444,15 +1439,13 @@ export const jsonData = [
           {
             key: "google-optimize",
             title: "Google Optimize",
-            link:
-              "/docs/destinations/testing-and-personalization/google-optimize/",
+            link: "/destinations/testing-and-personalization/google-optimize/",
             content: [],
           },
           {
             key: "launchdarkly",
             title: "LaunchDarkly",
-            link:
-              "/docs/destinations/testing-and-personalization/launchdarkly/",
+            link: "/destinations/testing-and-personalization/launchdarkly/",
             content: [],
           },
           {
@@ -1465,14 +1458,13 @@ export const jsonData = [
             key: "optimizely-full-stack",
             title: "Optimizely Full Stack",
             link:
-              "/docs/destinations/testing-and-personalization/optimizely-full-stack/",
+              "/destinations/testing-and-personalization/optimizely-full-stack/",
             content: [],
           },
           {
             key: "optimizely-web",
             title: "Optimizely Web",
-            link:
-              "/docs/destinations/testing-and-personalization/optimizely-web/",
+            link: "/destinations/testing-and-personalization/optimizely-web/",
             content: [],
           },
           {
@@ -1491,7 +1483,7 @@ export const jsonData = [
             key: "vwo-beta-visual-website-optimizer",
             title: "VWO (Visual Website Optimizer)",
             link:
-              "/docs/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/",
+              "/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/",
             content: [],
           },
         ],
@@ -1672,8 +1664,7 @@ export const jsonData = [
           {
             key: "tracking-plan-spreadsheet",
             title: "Tracking Plan Spreadsheet",
-            link:
-              "/docs/data-governance/tracking-plans/tracking-plan-spreadsheet/",
+            link: "/data-governance/tracking-plans/tracking-plan-spreadsheet/",
             content: [],
           },
         ],
@@ -1711,49 +1702,49 @@ export const jsonData = [
                 key: "identify",
                 title: "Identify",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-spec/identify/",
+                  "/rudderstack-api/api-specification/rudderstack-spec/identify/",
                 content: [],
               },
               {
                 key: "page",
                 title: "Page",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-spec/page/",
+                  "/rudderstack-api/api-specification/rudderstack-spec/page/",
                 content: [],
               },
               {
                 key: "screen",
                 title: "Screen",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-spec/screen/",
+                  "/rudderstack-api/api-specification/rudderstack-spec/screen/",
                 content: [],
               },
               {
                 key: "track",
                 title: "Track",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-spec/track/",
+                  "/rudderstack-api/api-specification/rudderstack-spec/track/",
                 content: [],
               },
               {
                 key: "group",
                 title: "Group",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-spec/group/",
+                  "/rudderstack-api/api-specification/rudderstack-spec/group/",
                 content: [],
               },
               {
                 key: "alias",
                 title: "Alias",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-spec/alias/",
+                  "/rudderstack-api/api-specification/rudderstack-spec/alias/",
                 content: [],
               },
               {
                 key: "common-fields",
                 title: "Common Fields",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/",
+                  "/rudderstack-api/api-specification/rudderstack-spec/common-fields/",
                 content: [],
               },
             ],
@@ -1762,55 +1753,55 @@ export const jsonData = [
             key: "rudderstack-ecommerce-events-specification",
             title: "E-commerce Events",
             link:
-              "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/",
+              "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/",
             content: [
               {
                 key: "browsing",
                 title: "Browsing",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing/",
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing/",
                 content: [],
               },
               {
                 key: "promotions",
                 title: "Promotions",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/promotions/",
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/promotions/",
                 content: [],
               },
               {
                 key: "ordering",
                 title: "Ordering",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering/",
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering/",
                 content: [],
               },
               {
                 key: "coupons",
                 title: "Coupons",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/coupons/",
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/coupons/",
                 content: [],
               },
               {
                 key: "wishlisting",
                 title: "Wishlist",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/wishlisting/",
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/wishlisting/",
                 content: [],
               },
               {
                 key: "sharing",
                 title: "Sharing",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/sharing/",
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/sharing/",
                 content: [],
               },
               {
                 key: "reviewing",
                 title: "Reviewing",
                 link:
-                  "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/reviewing/",
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/reviewing/",
                 content: [],
               },
             ],
@@ -1819,14 +1810,13 @@ export const jsonData = [
             key: "application-lifecycle-events-spec",
             title: "Application Lifecycle Events",
             link:
-              "/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/",
+              "/rudderstack-api/api-specification/application-lifecycle-events-spec/",
             content: [],
           },
           {
             key: "video-specification",
             title: "Video Events",
-            link:
-              "/docs/rudderstack-api/api-specification/video-specification/",
+            link: "/rudderstack-api/api-specification/video-specification/",
             content: [],
           },
         ],
@@ -1871,35 +1861,34 @@ export const jsonData = [
       {
         key: "installing-and-setting-up-rudderstack",
         title: "Data Plane Setup",
-        link:
-          "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/",
+        link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/",
         content: [
           {
             key: "docker",
             title: "Docker",
             link:
-              "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
+              "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
             content: [],
           },
           {
             key: "kubernetes",
             title: "Kubernetes",
             link:
-              "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
+              "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
             content: [],
           },
           {
             key: "developer-machine-setup",
             title: "Developer Machine Setup",
             link:
-              "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
+              "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
             content: [],
           },
           {
             key: "sending-test-events",
             title: "Sending Test Events",
             link:
-              "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
+              "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
             content: [],
           },
         ],
@@ -1919,15 +1908,13 @@ export const jsonData = [
           {
             key: "blendo-rudderstack-migration",
             title: "Migrating from Blendo to RudderStack",
-            link:
-              "/docs/user-guides/migration-guides/blendo-rudderstack-migration/",
+            link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
             content: [],
           },
           {
             key: "rudderstack-migration-guide",
             title: "Migrating from Segment to RudderStack",
-            link:
-              "/docs/user-guides/migration-guides/rudderstack-migration-guide/",
+            link: "/user-guides/migration-guides/rudderstack-migration-guide/",
             content: [],
           },
           {
@@ -1936,7 +1923,7 @@ export const jsonData = [
             title:
               "Migrating Your Warehouse Destination from Segment to RudderStack",
             link:
-              "/docs/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
+              "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
             content: [],
           },
         ],
@@ -1962,7 +1949,7 @@ export const jsonData = [
             key: "rudderstack-grafana-dashboard",
             title: "RudderStack Grafana Dashboard",
             link:
-              "/docs/user-guides/administrators-guide/rudderstack-grafana-dashboard/",
+              "/user-guides/administrators-guide/rudderstack-grafana-dashboard/",
             content: [],
           },
           {
@@ -1980,8 +1967,7 @@ export const jsonData = [
           {
             key: "horizontal-scaling-1",
             title: "Horizontal Scaling",
-            link:
-              "/docs/user-guides/administrators-guide/horizontal-scaling-1/",
+            link: "/user-guides/administrators-guide/horizontal-scaling-1/",
             content: [],
           },
           {
@@ -1994,7 +1980,7 @@ export const jsonData = [
             key: "bucket-configuration-settings",
             title: "Bucket Configuration Settings for Event Backups",
             link:
-              "/docs/user-guides/administrators-guide/bucket-configuration-settings/",
+              "/user-guides/administrators-guide/bucket-configuration-settings/",
             content: [],
           },
           {
@@ -2012,8 +1998,7 @@ export const jsonData = [
           {
             key: "monitoring-and-metrics",
             title: "Monitoring and Metrics",
-            link:
-              "/docs/user-guides/administrators-guide/monitoring-and-metrics/",
+            link: "/user-guides/administrators-guide/monitoring-and-metrics/",
             content: [],
           },
           {
@@ -2026,7 +2011,7 @@ export const jsonData = [
             key: "admin-troubleshooting-guide",
             title: "Troubleshooting Guide",
             link:
-              "/docs/user-guides/administrators-guide/admin-troubleshooting-guide/",
+              "/user-guides/administrators-guide/admin-troubleshooting-guide/",
             content: [],
           },
         ],
@@ -2040,14 +2025,14 @@ export const jsonData = [
             key: "dynamic-destination-configuration",
             title: "How to Configure a Destination via the Event Payload",
             link:
-              "/docs/user-guides/how-to-guides/dynamic-destination-configuration/",
+              "/user-guides/how-to-guides/dynamic-destination-configuration/",
             content: [],
           },
           {
             key: "how-to-submit-an-integration-pull-request",
             title: "How to Submit an Integration Pull Request",
             link:
-              "/docs/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/",
+              "/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/",
             content: [],
           },
           {
@@ -2060,14 +2045,13 @@ export const jsonData = [
             key: "using-aws-lambda-functions-with-rudderstack",
             title: "How to Use AWS Lambda Functions with RudderStack",
             link:
-              "/docs/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
+              "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
             content: [],
           },
           {
             key: "live-destination-event-debugger",
             title: "How to Debug Live Destination Events",
-            link:
-              "/docs/user-guides/how-to-guides/live-destination-event-debugger/",
+            link: "/user-guides/how-to-guides/live-destination-event-debugger/",
             content: [],
           },
           {
@@ -2080,7 +2064,7 @@ export const jsonData = [
             key: "how-to-filter-selective-destinations",
             title: "How to Filter Selective Destinations using JavaScript SDK",
             link:
-              "/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/",
+              "/user-guides/how-to-guides/how-to-filter-selective-destinations/",
             content: [],
           },
           {
@@ -2088,7 +2072,7 @@ export const jsonData = [
             title:
               "How to Create a New Destination Transformation for RudderStack",
             link:
-              "/docs/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/",
+              "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/",
             content: [
               {
                 key:
@@ -2096,7 +2080,7 @@ export const jsonData = [
                 title:
                   "Best Practices for Coding Transformation Functions in JavaScript",
                 link:
-                  "/docs/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/",
+                  "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/",
                 content: [],
               },
             ],
@@ -2105,14 +2089,14 @@ export const jsonData = [
             key: "implement-native-js-sdk-integration",
             title: "How to Implement a Native JavaScript SDK Integration",
             link:
-              "/docs/user-guides/how-to-guides/implement-native-js-sdk-integration/",
+              "/user-guides/how-to-guides/implement-native-js-sdk-integration/",
             content: [
               {
                 key: "add-device-mode-sdk-to-js",
                 title:
                   "How to Add a Device Mode SDK to RudderStack JavaScript SDK",
                 link:
-                  "/docs/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js/",
+                  "/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js/",
                 content: [],
               },
             ],
@@ -2121,14 +2105,14 @@ export const jsonData = [
             key: "developing-integrations-for-rudderstack",
             title: "How to Develop Integrations for RudderStack",
             link:
-              "/docs/user-guides/how-to-guides/developing-integrations-for-rudderstack/",
+              "/user-guides/how-to-guides/developing-integrations-for-rudderstack/",
             content: [],
           },
           {
             key: "rudderstack-jamstack-integration",
             title: "How to Integrate RudderStack with Your JAMstack Site",
             link:
-              "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/",
+              "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
             content: [],
           },
         ],
