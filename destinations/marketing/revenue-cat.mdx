@@ -57,11 +57,61 @@ rudderanalytics.identify("1hKOmRA4GRlm",{
 })
 ```
 
+### Traits mapping
+
+RudderStack maps the following `identify` traits to the corresponding Revenue Cat attributes:
+
+| RudderStack trait | Revenue Cat attribute | Comments |
+| :-------| :--------|  :-----| 
+| `userId` (Required) | `app_user_id` | - |
+| `name` | `$displayName` |  - |
+| `email` | `$email` | - |
+| `phone` | `$phoneNumber` | - |
+| `apnsTokens` | `$apnsTokens` | - |
+| `fcmTokens` | `$fcmTokens` | - |
+| `idfa`/ `advertisingId` | `$idfa` | Must be sent only once. |
+| `idfv`/ `device.id` | `$idfv` | - |
+| `gpsAdId` | `$gpsAdId` | Must be sent only once. |
+| `advertisingId` | `$androidId` | Must be sent only once. |
+| `campaign.name` | `$campaign` | Must be sent only once. | 
+| `context.ip`, `request_ip` | `$ip` | - |
+| `creative` | `$creative` | Must be sent only once. |
+| `keyword` | `$keyword` | Must be sent only once. |
+| `mediaSource` | `$mediaSource` | Must be sent only once. | 
+| `ad` | `$ad` | Must be sent only once. | 
+| `addGroup` | `$adGroup` | Must be sent only once. | 
+| `adjustId` | `$adjustId` | Must be sent only once. | 
+| `appsflyerId` | `$appsflyerId` | - |
+| `fbAnonId` | `$fbAnonId` | Must be sent only once. | 
+| `iterableUserId` | `$iterableUserId` | - |
+| `iterableCampaignId` | `$iterableCampaignId` | Must be sent only once. |
+| `iterableTemplateId` | `$iterableTemplateId` | Must be sent only once. | 
+| `mixpanelDistinctId` | `$mixpanelDistinctId` | Must be sent only once. | 
+| `mparticleId` | `$mparticleId` | - |
+| `onesignalId` | `$onesignalId` | - |
+| `airshipChannelId` | `$airshipChannelId` | - |
+| `amazonAdId` | `$amazonAdId` | - |
+| `clevertapId` | `$clevertapId` | - |
+
+<div class="warningBlock">
+
+Revenue Cat <strong>cannot</strong> modify some attributes. So, you must send them <strong>only once</strong>.
+</div>
+
+<div class="warningBlock">
+
+The values for <code class="inline-code">iterableCampaignId</code> and <code class="inline-code">iterableTemplateId</code> must be valid non-negative, non-decimal integers. Otherwise, RudderStack will reject and skip these fields.
+</div>
+
 ## Track
 
 The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) method lets you capture user events along with the properties associated with them.
 
+A sample `track` call is shown below:
 
+### Event mapping
+
+RudderStack maps the `Order Completed` event to Revenue Cat's `Purchase` event before sending it across via the [`receipts`](https://docs.revenuecat.com/reference/receipts) API. To do so, RudderStack requires the `userId` (mapped to `app_user_id`) and `fetch_token` properties to be present in the event.
 
 ### Property mapping
 
@@ -69,7 +119,15 @@ RudderStack maps the following event properties to the corresponding Revenue Cat
 
 | RudderStack property | Revenue Cat attribute | Comments |
 | :-----| :------| :-------|
-
+| `userId` (Required) | `app_user_id` | - |
+| `fetch_token` | `fetch_token` | This must be a Base64 encoded **receipt file** for iOS, **receipt token** for Android, **receipt** for Amazon, and **subscription token** in case of Stripe. |
+| `currency` | `currency`  | - |
+| `payment_mode` | `payment_mode`  | - |
+| `product_id`, `products.product_id` | `product_id`  | This is required for Google and should be the Apple, Google, or Amazon SKU or product identifier. |
+| `price` | `price`  | - |
+| `introductory_price` | `introductory_price`  | - |
+| `is_restore` | `is_restore`  | - |
+| `presented_offering_identifier` | `presented_offering_identifier`  | - |
 
 ## FAQ
 
