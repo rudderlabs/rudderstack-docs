@@ -107,6 +107,18 @@ rudderanalytics.track("Order Completed", {
 })
 ```
 
+RudderStack checks the `eventConversionType`event property to determine the type of event to send to Snap Conversion (web, mobile, or offline). If it is not found, RudderStack checks if `channel` is present. If `channel` is absent too, RudderStack automatically sets `eventConversionType` to `OFFLINE`.
+
+An example highlighting the use of `eventConversionType` is shown below:
+
+```javascript
+
+rudderanalytics.track("Products Searched", {
+query: "HDMI cable",
+eventConversionType: "MOBILE_APP"
+});
+```
+
 RudderStack tracks the following e-commerce events and the corresponding platform-specific properties:
 
 #### Browsing
