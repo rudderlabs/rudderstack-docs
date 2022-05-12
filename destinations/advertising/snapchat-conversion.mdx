@@ -212,6 +212,23 @@ RudderStack maps the following e-commerce events to the corresponding Snapchat C
 | Order Completed | `PURCHASE` |
 | Product Added to Wishlist | `ADD_TO_WISHLIST` |
 
+RudderStack **does not map** the following events and passes their properties as is, without any modification:
+
+- `SIGN_UP`
+- `OPEN_APP`
+- `SAVE`
+- `SUBSCRIBE`
+- `COMPLETE_TUTORIAL`
+- `INVITE`
+- `LOGIN`
+- `SHARE`
+- `RESERVE`
+- `ACHIEVEMENT_UNLOCKED`
+- `SPENT_CREDITS`
+- `RATE`
+- `START_TRIAL`
+- `LIST_VIEW`
+
 ### Property mapping
 
 RudderStack maps the following event properties to the Snapchat Conversion properties based on specific events:
@@ -232,7 +249,7 @@ RudderStack maps the following event properties to the Snapchat Conversion prope
     <td><code class="inline-code">currency</code></td>
     <td><code class="inline-code">currency</code></td>
   </tr>
-   </table>
+</table>
 
 ## FAQ
 
