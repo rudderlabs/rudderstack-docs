@@ -6,7 +6,7 @@ description: Detailed technical documentation on sending events to DCM Floodligh
 
 # Device Mode
 
-RudderStack lets you send your event data to DCM Floodlight destination via the device mode using the native web SDK. It is recommended to use `gtag` instead of `iframe` or `img` tag. RudderStack uses global site tagging in device mode.
+RudderStack lets you send your event data to DCM Floodlight destination via the device mode using the native web SDK. RudderStack uses global site tagging in device mode.
 
 <div class="successBlock">
 
@@ -19,7 +19,6 @@ The mappings for the above parameters are listed in the following table:
 
 | Parameters    | Description | Mapping value  |
 | :-------------| :-----------------|:-----------------|
-| `google_nid`  | Network ID (NID) for the bidder account | from `externalId` `googleNetworkId` |
 | `google_hm`   | Contains data that the bidder wants to store in a Google-hosted match table | `anonymousId` (Converts it to Base64-encoded ASCII string)  |
 
 
@@ -55,11 +54,6 @@ client.track({
 });
 ```
 
-<div class="warningBlock">
-
-<code class="inline-code">userAgent</code> is a required field and must be passed. Otherwise, you will get an error.
-</div>
-
 The following table details the mapping of `integrations` object (as seen in the above code snippet) for DCM Floodlight:
 
 | **RudderStack property** | **DCM Floodlight property** | **Description** |
@@ -72,7 +66,7 @@ The following table details the mapping between RudderStack and DCM Floodlight p
 
 | **RudderStack property** | **DCM Floodlight property** | **Presence**| **Tag**|
 | :--- | :--- |:--- |:--- |
-| `context.device.advertisingId` | `dc_rdid` | Required | Counter/Sales|
+| `context.device.advertisingId` | `dc_rdid` | Optional | Counter/Sales|
 | `context.device.adTrackingEnabled` | `dc_lat` | Optional |Counter/Sales|
 | `messageId` | `ord` | Optional | Counter |
 | `properties.orderId` | `ord` | Optional | Sales |
@@ -99,6 +93,8 @@ The following table gives some more context on the above DCM Floodlight properti
 ## Page
 
 The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
+
+if category and name is passed in page we have to slightly modify the event name in webapp config. i.e Instead of Viewed PAGE NAME Page which we pass for normal page call, enter it as: Viewed CATEGORY NAME PAGE NAME **Page
 
 
 ## Contact us
