@@ -61,7 +61,10 @@ For more information on getting your Snap Pixel ID, refer to the <a href="#faq">
 
 - **Snap App ID**: Enter your Snapchat App ID. This is required for sending the app events.
 
+<div class="infoBlock">
+
 Refer to the <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Generate your Snap App ID</a> guide for more information on generating the Snap App ID.
+</div>
 
 - **App ID**: Enter the unique ID associated with your application. This is required for sending the app events.
 
@@ -117,7 +120,7 @@ Make sure to pass at least one of the required fields from the below:
 </div>
 
 
-RudderStack checks the `eventConversionType`event property to determine the type of event to send to Snap Conversion (web, mobile, or offline) as specified below:
+RudderStack checks the `eventConversionType` event property to determine the type of event to send to Snap Conversion (web, mobile, or offline) as specified below:
 
 ```
 web: "WEB",
@@ -147,8 +150,8 @@ RudderStack tracks the following properties and maps them to the corresponding S
 
 | **RudderStack property** | **Snapchat Conversion property** |
 |:--------------------------------|:--------------------------|
-| `properties.order_id`,`properties.checkout_id` | `transaction_id` |
-| `context.page.url`,`properties.url` | `page_url` |
+| `properties.order_id`<br />`properties.checkout_id` | `transaction_id` |
+| `context.page.url`<br />`properties.url` | `page_url` |
 | `properties.event` | `event_type` |
 | `properties.event_tag` | `event_tag` |
 | `properties.eventConversionType` | `event_conversion_type` |
@@ -156,9 +159,9 @@ RudderStack tracks the following properties and maps them to the corresponding S
 | `properties.currency` | `currency` |
 | `properties.category` | `category` |
 | `properties.query` | `search_string` |
-| `properties.products.price`,`properties.price`, `properties.value`, `properties.revenue` | `price` |
-| `properties.product_id`, `properties.products.product_id` | `item_ids` |
-| `properties.SignUpMethod`,`properties.sign_up_method` | `sign_up_method` |
+| `properties.products.price`<br />`properties.price`<br />`properties.value`<br />`properties.revenue` | `price` |
+| `properties.product_id`<br />`properties.products.product_id` | `item_ids` |
+| `properties.SignUpMethod`<br />`properties.sign_up_method` | `sign_up_method` |
 | `properties.client_dedup_id` | `client_dedup_id` |
 
 
