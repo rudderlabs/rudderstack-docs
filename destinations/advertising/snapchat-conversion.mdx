@@ -52,11 +52,9 @@ To successfully configure Snapchat Conversion as a destination, configure the fo
 For more information on getting your API token, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **Pixel ID**: Enter your Snap Pixel ID.
+- **Pixel ID**: Enter your Snap Pixel ID. This is required for sending the web and offline events.
 
 <div class="infoBlock">
-
-<strong>The Snap Pixel ID is required for sending the web and offline events. </strong>
 
 For more information on getting your Snap Pixel ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
@@ -65,11 +63,11 @@ For more information on getting your Snap Pixel ID, refer to the <a href="#faq">
 
 Refer to the <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Generate your Snap App ID</a> guide for more information on generating the Snap App ID.
 
-- **App ID**: Enter the unique ID associated with your application. This is required for sending your app events.
+- **App ID**: Enter the unique ID associated with your application. This is required for sending the app events.
 
 <div class="warningBlock">
 
-Your <strong>App ID</strong> is different from the <strong>Snap App ID</strong>. It should be numeric for iOS and in the human-interpretable string format in case of Android.
+The <strong>App ID</strong> is different from <strong>Snap App ID</strong>. It should be numeric for iOS and in the human-interpretable string format in case of Android.
 
 For more information, refer to the <a href="https://marketingapi.snapchat.com/docs/conversion.html#conversion-parameters">Conversions API reference</a>.
 </div>
@@ -168,7 +166,7 @@ RudderStack tracks the following e-commerce events and the corresponding platfor
     <th>Offline parameters</th>
   </tr>
   <tr>
-  <td><ul><li>Promotion Viewed</li><li>Promotion Clicked</li></ul></td>
+  <td>Promotion Viewed<br />Promotion Clicked</td>
     <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code></td>
     <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)</td>
     <td><code class="inline-code">pixel_id</code>(Required)</td>
@@ -185,7 +183,7 @@ RudderStack tracks the following e-commerce events and the corresponding platfor
     <th>Offline parameters</th>
   </tr>
   <tr>
-  <td><ul><li>Product Viewed</li><li>Checkout Started</li><li>Payment Info Entered</li></ul></td>
+  <td>Product Viewed<br />Checkout Started<br />Payment Info Entered</td>
     <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code></td>
     <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)</td>
     <td><code class="inline-code">pixel_id</code>(Required)</td>
