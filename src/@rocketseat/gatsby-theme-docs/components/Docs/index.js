@@ -8,6 +8,7 @@ import mediumZoom from "medium-zoom";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
 import "@reach/tabs/styles.css";
 import Layout from "../Layout";
+import { Link } from "gatsby";
 import SEO from "../SEO";
 import PostNav from "./PostNav";
 import EditGithub from "@rocketseat/gatsby-theme-docs/src/components/Docs/EditGithub";
@@ -52,6 +53,7 @@ export default function Docs({ mdx, pageContext }) {
 
       return <pre {...preProps} />;
     },
+    Link,
     Tabs,
     TabList,
     Tab,
