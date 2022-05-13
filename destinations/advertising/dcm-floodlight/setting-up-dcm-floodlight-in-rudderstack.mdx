@@ -79,6 +79,11 @@ This option is applicable only if you're sending events to DCM Floodloght via th
 
 ### Web SDK settings
 
+<div class="infoBlock">
+
+All the settings mentioned below are applicable only for the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a>.
+</div>
+
 <img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings4.png" alt="DCM Floodlight connection settings"/>
 
 - **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
@@ -90,8 +95,8 @@ You can change the setting to enable or disable device mode to send events at an
 
 - **Conversion Linker**: Enabled by default, it sets the first-party cookies on your site’s domain.
 - **Allow ad personalization signals**: Enabled by default, it lets the global site tag to collect remarketing data.
-- **DoubleClick Id**:
-- **Google Network Id**: Network ID (NID) for the bidder account.
+- **DoubleClick Id**: Enable this setting if you want to use the Google’s cookie matching functionality. Also, provide the below:
+    - **Google Network Id**: Enter the Google Network ID (NID) for the bidder account.
 
 Finally, click on **Next** to enable DCM Floodlight as a destination in Rudderstack.
 
