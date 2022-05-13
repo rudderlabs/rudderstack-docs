@@ -59,7 +59,7 @@ For more information on getting your API token, refer to the <a href="#faq">FAQ<
 For more information on getting your Snap Pixel ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **Snap App ID**: Enter your Snapchat App ID. 
+- **Snap App ID**: Enter your Snapchat App ID. This is required for sending the app events.
 
 Refer to the <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Generate your Snap App ID</a> guide for more information on generating the Snap App ID.
 
@@ -105,6 +105,8 @@ rudderanalytics.track("Order Completed", {
 })
 ```
 
+At least email OR phone OR idfa OR (ip and userAgent) is required
+
 RudderStack checks the `eventConversionType`event property to determine the type of event to send to Snap Conversion (web, mobile, or offline) as specified below:
 
 ```
@@ -133,91 +135,16 @@ eventConversionType: "MOBILE_APP"
 
 RudderStack tracks the following e-commerce events and the corresponding platform-specific properties:
 
-#### Browsing
+| **RudderStack property** | **Snapchat Conversion property** |
+|:--------------------------------|:--------------------------|
+| `properties.order_id`,`properties.checkout_id` | `transaction_id` |
+| Product List Viewed | `VIEW_CONTENT` |
+| Promotion Viewed | `AD_VIEW` |
+| Promotion Clicked | `AD_CLICK` |
+| Product Viewed | `VIEW_CONTENT` |
+| Product Added | `ADD_CART` |
+| Checkout Started | `START_CHECKOUT` |
 
-<table>
-  <tr>
-    <th>RudderStack event</th>
-    <th>Web parameters</th>
-    <th>Mobile app parameters</th>
-    <th>Offline parameters</th>
-  </tr>
-  <tr>
-    <td>Products Searched</td>
-    <td><code class="inline-code">search_string</code><br /><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code></td>
-    <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)<br /><code class="inline-code">search_string</code></td>
-    <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">search_string</code></td>
-  </tr>
-  <tr>
-  <td>Product List Viewed</td>
-    <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code></td>
-    <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)</td>
-    <td><code class="inline-code">pixel_id</code>(Required)</td>
-  </tr>
-</table>
-
-#### Promotions
-
-<table>
-  <tr>
-    <th>RudderStack event</th>
-    <th>Web parameters</th>
-    <th>Mobile app parameters</th>
-    <th>Offline parameters</th>
-  </tr>
-  <tr>
-  <td>Promotion Viewed<br />Promotion Clicked</td>
-    <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code></td>
-    <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)</td>
-    <td><code class="inline-code">pixel_id</code>(Required)</td>
-    </tr>
-</table>
-
-#### Ordering
-
-<table>
-  <tr>
-    <th>RudderStack event</th>
-    <th>Web parameters</th>
-    <th>Mobile app parameters</th>
-    <th>Offline parameters</th>
-  </tr>
-  <tr>
-  <td>Product Viewed<br />Checkout Started<br />Payment Info Entered</td>
-    <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code></td>
-    <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)</td>
-    <td><code class="inline-code">pixel_id</code>(Required)</td>
-    </tr>
-    <tr>
-    <td>Product Added</td>
-   <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code><br /><code class="inline-code">item_category</code><br /><code class="inline-code">item_ids</code><br /><code class="inline-code">number_items</code><br /><code class="inline-code">price</code><code class="inline-code">currency</code></td>
-     <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)<br /><code class="inline-code">item_category</code><br /><code class="inline-code">item_ids</code><br /><code class="inline-code">number_items</code><br /><code class="inline-code">price</code></td>
-    <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">item_category</code><br /><code class="inline-code">item_ids</code><br /><code class="inline-code">number_items</code><br /><code class="inline-code">price</code>, <br /><code class="inline-code">currency</code></td>
-  </tr>
-   <tr>
-    <td>Order Completed</td>
-  <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code><br /><code class="inline-code">transaction_id</code><br /><code class="inline-code">item_category</code><br /><code class="inline-code">item_ids</code><br /><code class="inline-code">number_items</code><br /><code class="inline-code">price</code><code class="inline-code">currency</code></td>
-     <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)<br /><code class="inline-code">transaction_id</code><br /><code class="inline-code">item_category</code><br /><code class="inline-code">item_ids</code><br /><code class="inline-code">number_items</code><br /><code class="inline-code">price</code></td>
-    <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code><br /><code class="inline-code">transaction_id</code><code class="inline-code">item_category</code><br /><code class="inline-code">item_ids</code><br /><code class="inline-code">number_items</code><br /><code class="inline-code">price</code>, <br /><code class="inline-code">currency</code></td>
-  </tr>
-</table>
-
-#### Wishlisting
-
-<table>
-  <tr>
-    <th>RudderStack event</th>
-    <th>Web parameters</th>
-    <th>Mobile app parameters</th>
-    <th>Offline parameters</th>
-  </tr>
-  <tr>
-  <td>Product Added to Wishlist</td>
-   <td><code class="inline-code">pixel_id</code>(Required)<br /><code class="inline-code">page_url</code></td>
-  <td><code class="inline-code">snap_app_id</code>(Required)<br /><code class="inline-code">app_id</code>(Required)</td>
-    <td><code class="inline-code">pixel_id</code>(Required)</td>
-    </tr>
-</table>
 
 ### Event mapping
 
@@ -239,7 +166,7 @@ RudderStack maps the following e-commerce events to the corresponding Snapchat C
 RudderStack **does not map** the following events and passes their properties as is, without any modification:
 
 - `SIGN_UP`
-- `OPEN_APP`
+- `APP_OPEN`
 - `SAVE`
 - `SUBSCRIBE`
 - `COMPLETE_TUTORIAL`
@@ -252,6 +179,8 @@ RudderStack **does not map** the following events and passes their properties as
 - `RATE`
 - `START_TRIAL`
 - `LIST_VIEW`
+- `PAGE_VIEW`
+- `APP_INSTALL`
 
 ### Property mapping
 
