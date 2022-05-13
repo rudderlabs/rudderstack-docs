@@ -499,6 +499,26 @@ In order to use the Amplitude groups feature with RudderStack you need to define
 Even if you are not having an enterprise account or groups add-on, RudderStack would add `groups`as a `User Property` on a user's profile with `Group name trait` as its type and `Group value trait` as its value.
 
 Let' say you had defined `Group name trait` as `company_id` and `Group value trait` as `company_name` and made the above call then the user would be associated with a Group name : `RS` and a Group Value : `RudderStack` and you can also see that a user property with type `RS` and value `RudderStack` on user's profile.
+  
+## Send `event_id` in device mode
+
+RudderStack supports sending `event_id` to Amplitude in the device mode. It can be added under the `integrations` object and is supported for all the above mentioned API calls, namely, `identify`, `track`, `page`, `screen`, and `group`.
+  
+A sample `identify` call with `event_id` looks like the following:
+
+```javascript
+rudderanalytics.identify(
+  "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    name: "Alex Keener"
+  }, {
+    integrations: {
+      Amplitude: {
+        event_id: 1234
+      }
+    }
+  }
+);
+```
 
 ## Alias
 
