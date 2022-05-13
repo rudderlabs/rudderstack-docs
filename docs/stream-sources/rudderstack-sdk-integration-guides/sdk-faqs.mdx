@@ -1,0 +1,154 @@
+---
+# slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs"
+title: "SDK FAQs"
+description: Answers to the generally asked questions related to the RudderStack SDKs
+---
+
+# SDK FAQs
+
+## FAQs
+
+### How does RudderStack handle **`anonymousId` ?**
+
+The following are the different ways in which RudderStack handles **`anonymousId`** across different SDKs:
+
+#### **For the JavaScript SDK**
+
+The RudderStack JavaScript SDK automatically generates one unique `anonymousId` to identify a user uniquely. It then stores it in a cookie named `rl_anonymous_id` and attaches it to every subsequent event. This helps in identifying the users from other sites that are hosted under a sub-domain.
+
+<div class="infoBlock">
+
+If <code class="inline-code">anonymousId</code> is explicitly provided by the user using the **<code class="inline-code">setAnonymousId</code>** method, the user-specified <code class="inline-code">anonymousId</code> overrides the SDK-generated one.
+
+</div>
+
+<div class="successBlock">
+
+  For more information on how RudderStack handles overriding <code class="inline-code">anonymousId</code>, please refer to our <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#322-overriding-anonymousid-in-the-options-parameter">docs</a>.
+</div>
+
+**For the Android SDK**
+
+RudderStack captures your `deviceId` and uses that as `anonymousId` for identifying the user. It is used to track the users across the application installation. To attach more information to the user, you can use the `identify` method.
+
+You can use the `setAnonymousId` method to override and use your own `anonymousId` with the SDK.
+
+<div class="infoBlock">
+
+On the Android devices, the <code class="inline-code">deviceId</code> is assigned during the first boot. It remains consistent across the applications and installs. It changes only after a factory reset.
+
+</div>
+
+<div class="successBlock">
+
+  For more information on how RudderStack handles <code class="inline-code">anonymousId</code> in the iOS SDK, please refer to our <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#anonymous-id">docs</a>.
+</div>
+
+**For the iOS SDK**
+
+RudderStack captures `deviceId` and uses that as `anonymousId` for identifying the user. To attach more information to the user, you can use the `identify` method.
+
+You can use the `setAnonymousId` method to override and use your own `anonymousId` with the SDK.
+
+<div class="infoBlock">
+
+According to the Apple <a href="https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor">documentation</a>, if the device has multiple apps from the same vendor, all those apps will be assigned the same <code class="inline-code">deviceId</code>. If all these apps are uninstalled, then on the next install, the apps will be assigned a new <code class="inline-code">deviceId</code>.
+
+</div>
+
+<div class="successBlock">
+
+  For more information on how RudderStack handles<code class="inline-code">anonymousId</code> in the iOS SDK, please refer to our <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#anonymous-id">docs</a>.
+</div>
+
+### How do I identify anonymous users across client-side and server-side?
+
+To identify anonymous users across both client-side and server-side, **it is advisable to use a separate, new cookie at your end**.
+
+During the user's first visit, your server generates a new `anonymousId` to make the event calls using the server-side SDKs and sends the `set_cookie` response to the browser to set the `visitor_id` cookie.
+
+- If the RudderStack JavaScript SDK is **not blocked**, you can use the `setAnonymousId` method to set the same value as the `visitor_id`.
+- In case the RudderStack JavaScript SDK **is blocked**, still the next requests to the server will have the `visitor_id` cookie which can be used by the server-side events for `anonymousId`.
+
+<div class="infoBlock">
+
+The RudderStack JavaScript SDK generates a unique <code class="inline-code">anonymousId</code> for every unique user visit. It then stores this value in a cookie named <code class="inline-code">rl_anonymous_id</code> and attaches it to every subsequent event.
+
+Users sometimes try to directly use the browser APIs to get or set the value for this cookie. However, this is not advisable since the RudderStack cookies are encrypted, and the cookie may not be present altogether (if the SDK is blocked).
+
+It is, therefore, always advisable to use RudderStack's <code class="inline-code">getAnonymousId</code> and <code class="inline-code">setAnonymousId</code> methods to update the cookie value.
+
+</div>
+
+To set `anonymousId`, use the `setAnonymousId` call after the SDK snippet as below:
+
+```
+rudderanalytics.setAnonymousId("my-anon-id");
+```
+
+To get the `anonymousId` stored in a RudderStack cookie, use the `getAnonymousId` call inside the `ready` callback - this ensures that the method is available and returns the previously set `anonymousId` value.
+
+```
+rudderanalytics.ready(
+	() => {
+	  var anonId = window.rudderanalytics.getAnonymousId();
+		console.log(anonId);
+	}
+);
+```
+
+### What is the RudderStack retry and backoff logic after the connection fails?
+
+When the dataplane gets disconnected from the SDK and events are no longer able to be sent to Rudder Server, then some of the SDK's will store events and retry sending them to Rudder Server with a certain backoff logic.
+
+<div class="warningBlock">
+
+**NOTE:** The retry of failed events is not supported by all SDKs. Please see table below for support.
+
+</div>
+
+#### General Support and Logic
+
+| SDK            | Supported | Event Storage               | Retry limit |
+| :------------- | :-------- | :-------------------------- | :---------- |
+| JavaScript SDK | Yes       | 100 events in Local Storage | 10 times    |
+| Android SDK    | Yes       | 10k events in sqlite db     | Infinity    |
+| iOS SDK        | Yes       | 10k events in sqlite db     | Infinity    |
+| Node SDK       | Yes       | 20k events in-memory        | 10 times    |
+| All Other SDKs | No        | N/A                         | N/A         |
+
+#### JavaScript SDK
+
+This SDK can be configured to match your requirements for retry and backoff logic. By default, if the dataplane goes down and the JS SDK cannot send events to the Rudder Server, up to 100 events will be stored. While still disconnected from the dataplane, the JS SDK will try to resend the stored events to the Rudder Server. However, for each retry, the delay duration will grow. The equation to get the duration of delay is as follows
+
+
+<BlockMath>dt = md * (F^n)</BlockMath>
+
+
+Where, <InlineMath>dt</InlineMath> is the delay time in ms, <InlineMath>md</InlineMath> is the `minRetryDelay` \(configurable; default is 1000 ms\), <InlineMath>F</InlineMath> is the `backoffFactor` \(configurable; default is 2\), and <InlineMath>n</InlineMath> is the current retry attempt. The SDK will retry until the attempts surpass the `maxAttempts` value. This is by default set to 10 attempts but is configurable. Each retry attempt, the delay time grows exponentially. However, it will max out at whatever the `maxRetryDelay` is. By default, this value is set at 360000 ms, but it is configurable.
+
+#### iOS SDK and Android SDK
+
+Both the iOS and Android SDKs share similar retry and backoff logic for when the dataplane connection fails. If the dataplane goes down, up to 10,000 events will be stored. There is no limit to how many times the SDK will try to send failed events. However, the delay duration in between the attempts will grow by 1 second after each retry. For example, after the first failed attempt, there will be a delay of 1 second. After the second failed attempt, the SDK will wait 2 seconds before it retries. The third failed attempt will cause a delay of 3 seconds, and this behavior will repeat until the connection is re-established.
+
+#### Node SDK
+
+Currently the Node SDK is the only server-side SDK that supports event retry and backoff logic. The logic is quite similar to the JavaScript SDK. If the connection fails, up to 20,000 events will be stored. However, this is in-memory storage and can result in data loss. The SDK will retry a maximum of 10 times, by default. For each retry the delay duration between retries will grow and can be calculated using the following equation.
+
+<BlockMath>dt = 1000 * (2^n)</BlockMath>
+
+Where, <InlineMath>dt</InlineMath> is the delay time in ms and <InlineMath>n</InlineMath> is the current retry attempt. The SDK will retry until the attempts surpass the `maxAttempts` value which is set to 10 attempts. With each retry attempt, the delay time will grow exponentially. However, it will never be greater than the maximum delay duration which is 30 seconds.
+
+<div class="infoBlock">
+
+The Node SDK does have a feature to persist the event data in Redis for more event storage and better guarantees of failed event delivery. Instructions on how to configure the Redis solution can be found <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/#data-persistence-in-node-js-sdk">here</a>.
+
+</div>
+
+## Can I filter and selectively send the event data to certain destinations?
+
+Yes, you can use RudderStack's [Client-side Event Filtering](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/) feature to specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them in the RudderStack dashboard while setting up your destination. This method is useful if you are sending the events via the [device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
+
+## Contact Us
+
+For more information on the RudderStack SDKs, you can [contact us](mailto:%20docs@rudderstack.com). You can also talk to us in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community - we will be happy to help you!

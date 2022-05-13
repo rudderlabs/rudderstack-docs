@@ -1,0 +1,255 @@
+---
+# slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/getting-started-with-unity"
+title: "Unity"
+description: >-
+  Detailed technical documentation on the RudderStack Unity SDK to send event
+  data from your games to various destinations.
+---
+
+# Unity
+
+The **RudderStack Unity SDK** is a wrapper for the RudderStack [**Android SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) and [**iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) and is used for tracking game event data. After integrating this SDK with your game, you will be able to track your game event data and send it to your specified destinations via RudderStack.
+
+Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-unity) to get a more hands-on understanding of the SDK.
+
+## SDK setup requirements
+
+To configure the Unity SDK, you will need the following:
+
+- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
+- Once signed up, set up a Unity source in the dashboard. For more information, follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source).  You should then see a **Write Key** for this source, as shown below:
+
+<img src="../../assets/event-stream-sources/unity-sdk-1.png" alt="Unity source write key" />
+
+- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+
+- Finally, you will need the [**Unity development kit**](https://store.unity.com/download).
+
+## Installing the Unity SDK
+
+Follow these steps to integrate the RudderStack Unity SDK with your project:
+
+- Download `rudder-sdk-unity.unitypackage` from our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-unity/raw/master/SDK/rudder-sdk-unity.unitypackage).
+- Import the downloaded package to your project. From the **Assets** menu, go to **Import Package** - **Custom Package...** as shown:
+
+<img src="../../assets/event-stream-sources/unity-sdk-2.png" alt="Importing the downloaded package" />
+
+- Select `rudder-sdk-unity.unitypackage` from the downloaded location and click on **Open**, as shown:
+
+<img src="../../assets/event-stream-sources/unity-sdk-3.png" alt="Selecting the Unity package for integration" />
+
+- Click on `Import` in the import popup as shown:
+
+<img src="../../assets/event-stream-sources/unity-sdk-4.png" alt="Importing the Unity package" />
+
+## Initializing the RudderStack client
+
+To initialize the RudderStack client, follow these steps:
+
+- Add the `import` to all the files where you wish to use `RudderClient` .
+
+```csharp
+using RudderStack;
+```
+
+- Then, add the following code in the `Awake` method of your main `GameObject` Script:
+
+```csharp
+// Critical for iOS Applications where multiple components are using SQLite
+// This has no effect for Android, but can be added as a safety check
+RudderClient.SerializeSqlite();
+
+// Build your config
+RudderConfigBuilder configBuilder = new RudderConfigBuilder()
+    .WithDataPlaneUrl(DATA_PLANE_URL);
+    .WithLogLevel(RudderLogLevel.VERBOSE)
+
+// get instance for RudderClient
+RudderClient rudderClient = RudderClient.GetInstance(
+    WRITE_KEY,
+    configBuilder.Build()
+);
+```
+
+<div class="warningBlock">
+
+If you are building an iOS project, <code class="inline-code">RudderClient.SerializeSqlite()</code> is important to handle races with SQLite.
+</div>
+
+## Configuring your RudderStack client
+
+You can configure your client based on the following parameters using `RudderConfigBuilder`:
+
+| Parameter               | Type      | Description                | Default value                                            |
+| :---------------------- | :-------- | :--------------------- | :------------------------------- |
+| `logLevel`              | Integer     | Controls how much of the log you want to see from the SDK.           | `RudderLogLevel.INFO`                       |
+| `dataPlaneUrl`          | String  | Your data plane URL.                                                             | `https://hosted.rudderlabs.com` |
+| `flushQueueSize`        | Integer     | Number of events in a batch request to the RudderStack server.              | `30`                                                     |
+| `dbThresholdCount`      | Integer     | Number of events to be saved in the `SQLite` database. Once the limit is reached, older events are deleted from the database.                          | `10000`                                                  |
+| `sleepcount`          | Integer     | Minimum waiting time to flush the events to the RudderStack server. The minimum value can be set to `1 second`.      | `10 seconds`                                             |
+| `configRefreshInterval` | Integer     | The SDK will fetch the config from `dashboard` after the specified time.          | `2 hours`       |
+| `trackLifecycleEvents`  | Boolean | Determines if the SDK will automatically capture the application lifecycle events.                     | `true`                                                   |
+| `recordScreenViews`     | Boolean | Determines if the SDK will automatically capture the screen view events.                   | `false`            |
+| `autoCollectAdvertId`  | Boolean | Determines if the SDK will collect the advertisement ID.  | `false` |
+| `controlPlaneUrl`       | String  | Change this parameter **only if** you are self-hosting the control plane. Check the [Self-hosted control plane](#self-hosted-control-plane) section below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the source configuration. | [https://api.rudderlabs.com](https://api.rudderlabs.com) |
+
+
+### Self-hosted control plane
+
+If you are using a device mode destination like Adjust, Firebase, etc., the Unity SDK needs to fetch the required configuration from the control plane. If you are using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own Control Plane, then specify `controlPlaneUrl` in your `RudderConfigBuilder` that points to your hosted source configuration file.
+
+<div class="warningBlock">
+  
+You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during the SDK initialization if you are using the <a href="https://app.rudderstack.com">RudderStack Cloud dashboard</a>. This parameter is supported only if you are using the open source <a href="https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to self-host your control plane.
+</div>
+
+## Identify
+
+The Unity SDK captures the `deviceId` and uses that as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once the SDK identifies the user, it persists and passes the user information to the subsequent calls. 
+
+To reset the user identification, you can use the `reset` method.
+
+RudderStack provides some pre-defined APIs for building the `RudderTraits` object like `PutEmail()`, `PutAge()`, etc. These APIs can be used to set the values of the standard traits by directly passing them as parameters. 
+
+For the custom traits which do not have any pre-defined API, you can use the `Put()` method and pass a key-value pair of the trait, as shown in the sample `identify` event below:
+
+```csharp
+RudderMessage identifyMessage = new RudderMessageBuilder().Build();
+RudderTraits traits = new RudderTraits();
+//pre-defined API's for inserting standard traits
+traits.PutEmail("alex@example.com");
+traits.PutAge("40");
+//Put API to insert custom traits
+traits.Put("location", "New Orleans");
+traits.Put("gender", "Male");
+traits.Put("consent", "Granted");
+rudderClient.Identify("some_user_id", traits, identifyMessage);
+```
+
+### Overriding `anonymousId` using `setAnonymousId`
+
+ You can explicitly set the `anonymousId` for all the future events using the `setAnonymousId()` method, as shown:
+ 
+ ```csharp
+rudderClient.setAnonymousId("anonymousID1");
+ ```
+
+## Track
+
+You can record the users' in-game activity through the `track` method. Every user action is called an **event**.
+
+A sample `track` event is as shown:
+
+```csharp
+// create event properties
+Dictionary<string, object> eventProperties = new Dictionary<string, object>();
+eventProperties.Add("test_key_1", "test_value_1");
+eventProperties.Add("test_key_2", "test_value_2");
+
+// create user properties
+Dictionary<string, object> userProperties = new Dictionary<string, object>();
+userProperties.Add("test_u_key_1", "test_u_value_1");
+userProperties.Add("test_u_key_2", "test_u_value_2");
+
+// create message to track
+RudderMessageBuilder builder = new RudderMessageBuilder();
+builder.WithEventName("test_event_name");
+builder.WithUserId("test_user_id");
+builder.WithEventProperties(eventProperties);
+builder.WithUserProperties(userProperties);
+
+rudderClient.Track(builder.Build());
+```
+
+```csharp
+// create message to track
+RudderMessageBuilder builder = new RudderMessageBuilder();
+builder.WithEventName("test_event_name");
+builder.WithUserId("test_user_id");
+builder.WithEventProperty("foo", "bar");
+builder.WithUserProperty("foo1", "bar1");
+
+rudderClient.Track(builder.Build());
+```
+
+## Screen
+
+The `screen` call lets you record the user activities on their mobile screen with any additional relevant information about the viewed screen.
+
+A sample `screen` event is as shown:
+
+```csharp
+// create screen properties
+Dictionary < string, object > screenProperties = new Dictionary < string, object > ();
+screenProperties.Add("key_1", "value_1");
+screenProperties.Add("key_2", "value_2");
+
+RudderMessageBuilder screenBuilder = new RudderMessageBuilder();
+screenBuilder.WithEventName("Home Screen");
+screenBuilder.WithEventProperties(screenProperties);
+rudderClient.Screen(screenBuilder.Build());
+```
+
+## Reset
+
+The `reset` method clears all the persisted traits of the previously identified user.
+
+```csharp
+rudderClient.Reset();
+```
+
+## Upgrading the SDK
+
+To upgrade the SDK, remove all the files related to the SDK from the `Plugins` folder. Also, remove the `Rudder` folder completely before importing a newer version of the SDK.
+
+You can find the following files in the **Plugins** folder for the SDK:
+
+- `Plugins/Android/unity-plugin-release.aar`
+- `Plugins/iOS/RudderSDKUnity`
+
+## Advertisement ID 
+
+RudderStack collects the advertisement ID **only** if `withAutoCollectAdvertId` is explicitly set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
+
+```csharp
+RudderConfigBuilder configBuilder = new RudderConfigBuilder()
+    .WithDataPlaneUrl(DATA_PLANE_URL);
+    .WithLogLevel(RudderLogLevel.VERBOSE)
+    .withAutoCollectAdvertId(true);
+```
+
+## Tracking application lifecycle events on the Android platform
+
+The Unity SDK automatically tracks the [Application Lifecycle Events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/) to get insights into the app metrics like installs, opens, updates, etc. However, you can disable the automatic tracking by setting the `withTrackLifecycleEvents` parameter to `false`, as shown:
+
+```csharp
+RudderConfig config = new RudderConfigBuilder()
+  .WithTrackLifecycleEvents(false)
+```
+
+To track the application life cycle events on the Android platform, you need to add the `RudderPreferbs.prefab` file from the path `Assets/Rudder/RudderPreferbs.prefab` to every scene in your Unity app. Also, ensure that the `RudderPreferbs.prefab` is linked to the `RudderClient.cs` script.
+
+<div class="infoBlock">
+
+The Unity SDK depends on the lifecycle method <code class="inline-code">onApplicationFocus</code> of the <a href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.html"><code class="inline-code">MonoBehaviour</code> class</a> to determine the <strong>Application Opened</strong> and <strong>Application Backgrounded</strong> events on the Android platform.
+  
+Hence, when an application is brought to focus, an <code class="inline-code">Application Opened</code> event is sent, and when the application is moved out of focus, an <code class="inline-code">Application Backgrounded</code> event is sent. So, these events might be triggered even before the RudderStack SDK gets initialized to create the actions and execute them once the SDK is initialized.
+</div>
+
+## Triggering Application Updated lifecycle event
+
+The following requirements must be met to ensure that the **Application Updated** lifecycle event is triggered:
+
+- **For iOS**: Make sure the `Bundle version` in the `Info.plist` file of your application is incremented. If the `Bundle version` of your `target` points to the `Bundle version` of your `project`, then increment it.
+- **For Android**: Make sure the `versionCode` in the `defaultConfig` object nested in the `android` object of your app's `build.gradle` is incremented.
+
+<div class="infoBlock">
+
+Refer to the <a href ="https://www.rudderstack.com/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/#application-updated">Application Lifecycle Events Specification</a> guide for more information.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+
+If you come across any issues while using the Unity SDK, you can also open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-unity/issues/new).

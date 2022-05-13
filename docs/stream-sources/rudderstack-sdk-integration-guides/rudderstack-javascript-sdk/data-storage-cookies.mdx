@@ -1,0 +1,64 @@
+---
+title: "Data Storage in Cookies"
+description: >-
+  Detailed technical documentation on persistent user data stored in cookies or local storage by the RudderStack’s JavaScript SDK.
+---
+
+# Data Storage in Cookies
+
+By default, the RudderStack JavaScript SDK stores persistent user data in the cookies. If the cookies are not supported, local storage is used instead. 
+
+All the cookies are stored in the top-level domain by default. It helps you to identify the users visiting from websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can configure where you want to store the cookie by using the `setCookieDomain` parameter in the `load` API options as shown:
+
+```javascript
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
+  setCookieDomain: "samplewebsite.com",
+});
+```
+
+## Cookies
+
+The list of cookies used by the JavaScript SDK to store persistent user data is mentioned below:
+
+| Name             | Description       | Example    | Clearing mechanism using the SDK |
+| :-------------------- | :---------------------------------- | :-------------------------------- |:---------------------------------- |
+|  `rl_user_id`         |Stores the user ID set via the `identify` API. All the subsequent event payloads will contain this data unless cleared from the storage. | `4578`, `USER_001` | `rudderanalytics.reset()`  |
+|  `rl_trait`       | Stores the user traits object set via the `identify` API. All the subsequent event payloads will contain this data unless cleared from the storage. |  <pre>{<br />  email: "alex@example.com",<br />  accountType: "pro",<br />  country: "US",<br />  someObj: {<br />    key1: val1,<br />    key2: val2,<br />  }<br />}</pre>         |`rudderanalytics.reset()` |
+|  `rl_anonymous_id`          | Stores the anonymous ID. By default, it would be the auto-generated unique ID by SDK for each visitor unless overridden via `setAnonymousId` API. All the subsequent event payloads will contain this data unless cleared from the storage. | `5bfe258f-bd2f-49cf-bddd-8b844f74ab4b`, `customAnonId`  | `rudderanalytics.reset(true)` |
+|  `rl_group_id`          | Stores the user group ID set via the `group` API. All the subsequent group event payloads will contain this data unless cleared from the storage.        | `GRP_3`, `98` | `rudderanalytics.reset()` |
+|  `rl_group_trait`    | Stores the user group traits object set via the `group` API. All the subsequent group event payloads will contain this data unless cleared from the storage.   |    <pre>{<br />  location: "New Orleans",<br />  nationality: "US",<br />  someObj: {<br />    key1: val1,<br />    key2: val2,<br />  }<br />}</pre>                      |  `rudderanalytics.reset()` |
+| `rl_page_init_referrer`        | Stores the initial referrer of the page when a user visits a site for the first time. All the subsequent event payloads will contain this data.    | `https://www.google.com/` | Cannot be cleared using SDK. |
+| `rl_page_init_referring_domain`      | Stores the initial referring domain of the page when a user visits a site for the first time. All the subsequent event payloads will contain this data.  |  `google.com` | Cannot be cleared using SDK. |
+| `test_rudder_cookie`      | Checks whether the cookie storage of a browser is accessible or not. Once checked, this cookie is removed immediately.  |  `test_rudder_cookie:true` | Cleared automatically. |
+
+<div class="infoBlock">
+
+The cookie values are encrypted and their length is directly proportional to the values provided to the SDK. Also, all the cookie names are prefixed with <code class="inline-code">rl_</code> and the values are prefixed with <code class="inline-code">RudderEncrypt:</code>. For example, <code class="inline-code">rl_user_id —> RudderEncrypt:U2FsdGVkX1+UKmiooYoGmKdNws7sgmWgGfHe</code>.
+</div>
+
+
+## Local storage cookies
+
+The local storage cookies are used by the JavaScript SDK to keep track of the events sent to the RudderStack backend. They are listed in the table below:
+
+| Name             | Description       | Example    |
+| :------------- |:---------- | :----------- | 
+|  `ack`     | Timer for other browser tabs to claim control of the retry queue.     | `1639734070124` |
+|  `reclaimStart` and `reclaimEnd`      |Determines if a tab takes over the queue from another tab.  | `2dc2aee6-2836-4273-be69-79c90c04ddec`  |
+|  `inProgress`    | Keeps track of the events in progress. | <pre>{<br />  "d89d7fb5-945e-4378-bda5-492e4b596fb4": {<br />   "item": {<br />    "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br />    "headers": {<br />     "Content-Type": "application/json",<br />      ...<br />    },<br />    "message": { <br />     ...<br />    }<br />    "attemptNumber": 1,<br />    "time": 1639734792773,<br />    "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br />   }<br />  }<br />}<br /></pre> |
+|  `queue`    | Keeps track of the events that are in queue to be processed.   | <pre>[<br />  {<br />   "item": {<br />    "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br />    "headers": {<br />     "Content-Type": "application/json",<br />      ...<br />    },<br />    "message": { <br />     ...<br />    }<br />    "attemptNumber": 0,<br />    "time": 1639734792773,<br />    "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br />   }<br />  }<br />]<br /></pre> |
+
+<div class="infoBlock">
+
+All the local storage cookie names are prefixed with <code class="inline-code">rudder.&lt;uuid&gt;.</code> For example,
+<code class="inline-code">rudder.2dc2aee6-2836-4273-be69-79c90c04ddec.reclaimEnd</code>.
+</div>
+
+
+## FAQ
+
+Refer to the [FAQ](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.
+
+## Contact us
+
+For more information or queries on this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

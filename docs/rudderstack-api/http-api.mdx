@@ -1,0 +1,743 @@
+---
+title: "HTTP API"
+description: >-
+  Detailed technical description of the RudderStack HTTP API for sending your
+  event data from your sources to the specified destinations.
+---
+
+# HTTP API
+
+<div class="infoBlock">
+
+We recommend using the [**RudderStack SDKs**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/) for tracking and routing user events from your sources. The SDKs also offer automatic tagging of user context, event batching, and a retry functionality during delivery failure.
+</div>
+
+RudderStack offers an easy-to-use **HTTP API** that you can use to send your events if you cannot use the SDKs.
+
+<div class="successBlock">
+
+The RudderStack HTTP API is fully Segment-compatible.
+</div>
+
+This document details various aspects of the HTTP API.
+
+## 1. Prerequisites
+
+The following prerequisites must be met to send events via the HTTP API:
+
+* The RudderStack HTTP server must be accessible from your HTTP client. Refer to [**this guide**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) to install and set up RudderStack in your preferred environment. 
+* Set up a source and destination in RudderStack by following the steps from [Adding a Source](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source) and [Adding a Destination](https://www.rudderstack.com/docs/rudderstack-cloud/destinations/#adding-a-destination) guides.
+* Import the Postman collection using using this [**URL**](https://www.getpostman.com/collections/480307c55ad2b9dd4e27) and edit the variables `source_write_key` and `data_plane_url`with the [**source write key**](https://www.rudderstack.com/docs/rudderstack-cloud/sources/) and the [**Data Plane URL**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
+
+<div class="successBlock">
+
+If you are using RudderStack Cloud, set the Data Plane URL to [**`https://hosted.rudderlabs.com`**](https://hosted.rudderlabs.com).
+
+</div>
+
+## 2. API Authorization
+
+RudderStack uses Basic Authentication for authenticating all the HTTP requests.
+
+<div class="successBlock">
+
+All the popular HTTP clients \(e.g. CURL, Postman, HTTPie\) have default support for Basic Authentication.
+</div>
+
+The Basic Authentication for this API requires a username and password where:
+
+* The username is the **source write key**
+* The password is an empty string \(`""`\)
+
+For example, if the source write key is `1Xk5DChfJAol3xtW7qNnK1apo5p`, your HTTP request must have the following HTTP header `Authorization: Basic MVhrNURDaGZKQW9sM3h0VzdxTm5LMWFwbzVwOg==`
+
+<div class="successBlock">
+
+You can use this [**Basic Authentication Header Generator**](https://www.blitter.se/utils/basic-authentication-header-generator/) to generate the HTTP header.
+</div>
+
+<div class="warningBlock">
+
+**Important**: To send the events via the RudderStack HTTP API, the **Content-Type** header must be set to **`application/json`**.
+</div>
+
+## 3. HTTP Responses
+
+* The HTTP API returns a `200` response for successful API requests.  
+* The API returns a `400` response for invalid requests with an appropriate error message in the response. Some possible invalid requests include: 
+  * Request size too large
+  * Invalid JSON
+  * Missing Authorization Header
+  * Invalid Authorization Header
+
+<div class="infoBlock">
+
+In case of the Invalid Authorization Header error, verify if the source write key and the Basic Auth Header is valid.
+</div>
+
+## 4. Maximum Allowed Request Size
+
+RudderStack allows messages with a maximum size of `32 KB` per call. The [**`batch`**](https://rudderstack.com/docs/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB` per batch, and `32 KB` per call. RudderStack responds with a `400 Bad Request` if these limits are exceeded.
+
+## 5. Identify
+
+The `identify` call lets you associate a visiting user to their actions and record any associated traits.
+
+* Request Type: **POST**
+* Request Format**:** 
+
+```javascript
+<DATA_PLANE_URL>/v1/identify
+```
+
+### **5**.1. Sample Payload
+
+
+```javascript title="identify.json"
+{
+  "userId": "identified user id",
+  "anonymousId":"anon-id-new",
+  "context": {
+    "traits": {
+       "trait1": "new-val"  
+    },
+    "ip": "14.5.67.21",
+    "library": {
+        "name": "http"
+    }
+  },
+  "timestamp": "2020-02-02T00:23:09.544Z"
+}
+```
+
+### 5.2. Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/identify \
+-d @identify.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+http -a <source_write_key>: <DATA_PLANE_URL>/v1/identify < identify.json
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### 5.3. Accepted Fields
+
+| **Field** | **Type** | **Presence** | **Description** |
+| :--- | :--- | :--- | :--- |
+| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId` | String | Required, if `anonymousId` is not present. | Unique identifier for a particular user in your database. |
+| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
+| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z`|
+| `traits` | Object | Optional | Dictionary of the traits associated with the user, such as `name`or `email` |
+
+<div class="successBlock">
+
+For more details on the `identify` call, refer to the [**RudderStack Events Specification**](../api-specification/rudderstack-spec/)**.**
+</div>
+
+## 6. Track
+
+The `track` call lets you record the customer events, i.e. the actions that they perform, along with any properties associated with them.
+
+* Request Type: **POST**
+* Request Format**:** 
+
+```javascript
+<DATA_PLANE_URL>/v1/track
+```
+
+### 6.1. Sample Payload
+
+
+```javascript title="track.json"
+{
+  "userId": "identified user id",
+  "anonymousId":"anon-id-new",
+  "event": "Product Purchased new",
+  "properties": {
+    "name": "Shirt",
+    "revenue": 4.99
+  },
+  "context": {
+    "ip": "14.5.67.21",
+    "library": {
+        "name": "http"
+    }
+  },
+  "timestamp": "2020-02-02T00:23:09.544Z"
+}
+```
+
+### 6.2. Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/track \
+-d @track.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+http -a <source_write_key>: <DATA_PLANE_URL>/v1/track < track.json
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### 6.3. Accepted fields
+
+| **Field** | **Type** | **Presence** | **Description** |
+| :--- | :--- | :--- | :--- |
+| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId` | String | Required, if `anonymousId` is not present. | Unique identifier for a particular user in your database. |
+| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
+| `event` | String | Required | Name of the event being performed by the user |
+| `properties` | Object | Optional | Dictionary of the properties associated with a particular event. |
+| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+
+<div class="successBlock">
+
+For more details on the `track` call, refer to the [**RudderStack Events Specification**](../api-specification/rudderstack-spec/)**.**
+</div>
+
+## 7. Page
+
+The `page` call lets you record your website's page views with any additional relevant information about the viewed page.
+
+* Request Type: **POST**
+* Request Format**:** 
+
+```javascript
+<DATA_PLANE_URL>/v1/page
+```
+
+### 7.1. Sample Payload
+
+
+```javascript title="page.json"
+{
+  "userId": "identified user id",
+  "anonymousId":"anon-id-new",
+  "name": "Page View",
+  "properties": {
+    "title": "Home",
+    "path": "/"
+  },
+  "context": {
+    "ip": "14.5.67.21",
+    "library": {
+        "name": "http"
+    }
+  },
+  "timestamp": "2020-02-02T00:23:09.544Z"
+}
+```
+
+### 7.2. Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/page \
+-d @page.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+http -a <your_write_key>: <DATA_PLANE_URL>/v1/page < page.json
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### 7.3. Accepted Fields
+
+| **Field** | **Type** | **Presence** | **Description** |
+| :--- | :--- | :--- | :--- |
+| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId` | String | Required, if `anonymousId` is  not present. | Unique identifier for a particular user in your database. |
+| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
+| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
+| `name` | String | Required | Name of the page being viewed. |
+| `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer` |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+
+<div class="successBlock">
+
+For more details on the `page` call, refer to the [**RudderStack Events Specification**](../api-specification/rudderstack-spec/)**.**
+</div>
+
+## 8. Screen
+
+The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the screen. 
+
+<div class="successBlock">
+
+The `screen` call is the mobile equivalent of the `page` call.
+</div>
+
+* Request Type: **POST**
+* Request Format**:** 
+
+```javascript
+<DATA_PLANE_URL>/v1/screen
+```
+
+### 8.1. Sample Payload
+
+
+```javascript title="screen.json"
+{
+  "userId": "identified user id",
+  "anonymousId":"anon-id-new",
+  "name": "Screen View",
+  "properties": {
+    "prop1": "5"
+  },
+  "context": {
+    "ip": "14.5.67.21",
+    "library": {
+        "name": "http"
+    }
+  },
+  "timestamp": "2020-02-02T00:23:09.544Z"
+}
+```
+
+### 8.2. Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/screen \
+-d @screen.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+http -a <source_write_key>: <DATA_PLANE_URL>/v1/screen < screen.json
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### 8.3. Accepted Fields
+
+| **Field** | **Type** | **Presence** | **Description** |
+| :--- | :--- | :--- | :--- |
+| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId` | String | Required, if `anonymousId` is  not present. | Unique identifier for a particular user in your database. |
+| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
+| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
+| `name` | String | Required | Name of the screen being viewed. |
+| `properties` | Object | Optional | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer` |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+
+<div class="successBlock">
+
+For more details on the `screen` call, refer to the [**RudderStack Events Specification**](../api-specification/rudderstack-spec/).
+</div>
+
+## 9. Group
+
+The `group` call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group, like the name of the company, the number of employees, etc.
+
+* Request Type: **POST**
+* Request Format**:** 
+
+```javascript
+<DATA_PLANE_URL>/v1/group
+```
+
+### 9.1. Sample Payload
+
+
+```javascript title="group.json"
+{
+  "userId": "user123",
+  "groupId": "group1",
+  "traits": {
+    "name": "Company",
+    "industry": "Industry",
+    "employees": 123
+  },
+  "context": {
+    "traits": {
+       "trait1": "new-val"  
+    },
+    "ip": "14.5.67.21",
+    "library": {
+        "name": "http"
+    }
+  },
+  "timestamp": "2020-01-21T00:21:34.208Z"
+}
+```
+
+### 9.2. Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/group \
+-d @group.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+http -a <source_write_key>: <DATA_PLANE_URL>/v1/group < group.json
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### 9.3. Accepted Fields
+
+| **Field** | **Type** | **Presence** | **Description** |
+| :--- | :--- | :--- | :--- |
+| `anonymousId` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
+| `userId` | String | Required, if `anonymousId` is  not present. | Unique identifier for a particular user in your database. |
+| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
+| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
+| `groupId` | String | Required | Unique identifier of the group, as present in your database. |
+| `traits` | Object | Optional | Dictionary of the properties or traits associated with the group, such as `email` or `name`. |
+| `timestamp` | DateTime | Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+
+<div class="successBlock">
+
+For more details on the `group` call, refer to the [**RudderStack Events Specification**](../api-specification/rudderstack-spec/)**.**
+</div>
+
+## 10. Alias
+
+The `alias` call lets you merge different identities of a known user.
+
+<div class="infoBlock">
+
+`alias` is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+</div>
+
+<div class="successBlock">
+
+The following destinations support the `alias` call:
+
+* [**MoEngage**](https://rudderstack.com/docs/destinations/marketing/moengage/)
+* [**Kissmetrics**](https://rudderstack.com/docs/destinations/analytics/kissmetrics/)
+* [**Amplitude**](https://rudderstack.com/docs/destinations/analytics/amplitude/) (only supported by the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) via [**Cloud Mode**](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode)\)
+
+</div>
+
+* Request Type: **POST**
+* Request Format**:** 
+
+```javascript
+<DATA_PLANE_URL>/v1/alias
+```
+
+### 10.1. Sample Payload
+
+
+```javascript title="alias.json"
+{
+  "userId": "user123",
+  "previousId": "previd1",
+  "context": {
+    "traits": {
+       "trait1": "new-val"  
+    },
+    "ip": "14.5.67.21",
+    "library": {
+        "name": "http"
+    }
+  },
+  "timestamp": "2020-01-21T00:21:34.208Z"
+}
+```
+
+
+### 10.2. Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/alias \
+-d @alias.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+http -a <source_write_key>: <DATA_PLANE_URL>/v1/alias < alias.json
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### 10.3. Accepted Fields
+
+| **Field** | **Type** | **Presence** | **Description** |
+| :--- | :--- | :--- | :--- |
+| `userId` | String | Required, if `anonymousId` is  not present. | Unique identifier for a particular user in your database. |
+| `context` | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
+| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled. |
+| `previousId` | String | Required | The previous unique identifier of the user. |
+| `traits` | Object | Optional | Dictionary of the properties or traits associated with the group, such as `email` or `name`. |
+| `timestamp` | DateTime| Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
+
+<div class="successBlock">
+
+For more details on the `alias` call, refer to the [**RudderStack Events Specification**](../api-specification/rudderstack-spec/).
+</div>
+
+## 11. Batch
+
+The `batch` call allows you to send a series of `identify`, `track`, `page`, `group` and `screen` requests in a single batch. This call helps you minimize the number of outbound requests, thus enabling better performance.
+
+As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch request and `32 KB` per call.
+
+* Request Type: **POST**
+* Request Format**:** 
+
+```javascript
+<DATA_PLANE_URL>/v1/batch
+```
+
+### 11.1. Sample Payload
+
+
+```javascript title="batch.json"
+{
+    "batch": [{
+            "userId": "identified user id",
+            "anonymousId": "anon-id-new",
+            "type": "identify",
+            "context": {
+                "traits": {
+                    "trait1": "new-val"
+                },
+                "ip": "14.5.67.21",
+                "library": {
+                    "name": "http"
+                }
+            },
+            "timestamp": "2020-02-02T00:23:09.544Z"
+        },
+        {
+            "userId": "identified user id",
+            "anonymousId": "anon-id-new",
+            "event": "Product Purchased new",
+            "type": "track",
+            "properties": {
+                "name": "Shirt",
+                "revenue": 4.99
+            },
+            "context": {
+                "ip": "14.5.67.21",
+                "library": {
+                    "name": "http"
+                }
+            },
+            "timestamp": "2020-02-02T00:23:09.544Z"
+        },
+        {
+            "userId": "identified user id",
+            "anonymousId": "anon-id-new",
+            "name": "Page View",
+            "type": "page",
+            "properties": {
+                "title": "Home",
+                "path": "/"
+            },
+            "context": {
+                "ip": "14.5.67.21",
+                "library": {
+                    "name": "http"
+                }
+            },
+            "timestamp": "2020-02-02T00:23:09.544Z"
+        },
+        {
+            "userId": "identified user id",
+            "anonymousId": "anon-id-new",
+            "name": "Screen View",
+            "type": "screen",
+            "properties": {
+                "prop1": "5"
+            },
+            "context": {
+                "ip": "14.5.67.21",
+                "library": {
+                    "name": "http"
+                }
+            },
+            "timestamp": "2020-02-02T00:23:09.544Z"
+        },
+        {
+            "userId": "user123",
+            "type": "group",
+            "groupId": "group1",
+            "traits": {
+                "name": "Company",
+                "industry": "Industry",
+                "employees": 123
+            },
+            "context": {
+                "traits": {
+                    "trait1": "new-val"
+                },
+                "ip": "14.5.67.21",
+                "library": {
+                    "name": "http"
+                }
+            },
+            "timestamp": "2020-01-21T00:21:34.208Z"
+        },
+        {
+            "userId": "user123",
+            "previousId": "previd1",
+            "type":"alias",
+            "context": {
+                "traits": {
+                    "trait1": "new-val"
+                },
+                "ip": "14.5.67.21",
+                "library": {
+                    "name": "http"
+                }
+            },
+            "timestamp": "2020-01-21T00:21:34.208Z"
+        }
+
+    ]
+}
+```
+
+
+### 11.2. Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/batch \
+-d @batch.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+http -a <source_write_key>: <DATA_PLANE_URL>/v1/batch < batch.json
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### 11.3. Accepted Fields
+
+| **Field** | **Type** | **Presence** | **Description** |
+| :--- | :--- | :--- | :--- |
+| `batch` | Array | Required | An array of `identify`, `track`, `page`, `group` and `screen` calls. Each call must have a `type` property and a valid method name. |
+
+## 12. Historical Imports
+
+RudderStack lets you import any historical data by simply adding the `timestamp` argument to any of your API calls. However, this can be done only for the destinations that accept historical time-stamped data, like Amplitude, Mixpanel, etc. 
+
+<div class="infoBlock">
+
+If you are tracking current events, leave out the `timestamp` field. RudderStack will automatically add the timestamps to the event requests.
+</div>
+
+## Contact Us
+
+For more information on the HTTP API, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

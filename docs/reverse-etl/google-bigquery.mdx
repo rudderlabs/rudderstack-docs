@@ -1,0 +1,223 @@
+---
+# slug: "/docs/reverse-etl/google-bigquery"
+title: "Google BigQuery"
+description: Step-by-step guide to ingest your data from Google BigQuery into RudderStack.
+aliases: ["bigquery source", "google bigquery source", "bigquery as a source", "bigquery as source"]
+---
+
+# Google BigQuery
+
+[Google BigQuery](https://cloud.google.com/bigquery) is an industry-leading, fully-managed cloud data warehouse that lets you store and analyze petabytes of data in no time.
+
+RudderStack supports Google BigQuery as a source from which you can ingest data and route it to your desired downstream destinations.
+
+## Granting permissions
+
+RudderStack requires you to grant certain user permissions on your BigQuery warehouse to successfully access data from it.
+
+Perform the following steps in the **exact** order to grant these permissions:
+
+### Step 1: Creating a role and granting permissions
+
+1. Go to the [Roles](https://console.cloud.google.com/iam-admin/roles) section of Google Cloud Platform dashboard and click on **CREATE ROLE**.
+
+<img src="../assets/warehouse-actions-sources/GCP-create-role.png" alt="Google Cloud Platform dashboard create role" />
+
+2. Fill in the details as shown:
+
+<img src="../assets/warehouse-actions-sources/gcp-role-details.png" alt="GCP role details" />
+
+3. Click on **ADD PERMISSIONS** and add the following permissions:
+
+```
+bigquery.datasets.get
+bigquery.jobs.create
+bigquery.jobs.list
+bigquery.tables.create
+bigquery.tables.get
+bigquery.tables.getData
+bigquery.tables.list
+bigquery.tables.update
+bigquery.tables.updateData
+```
+
+4. Finally, click on **CREATE**.
+
+### Step 2: Creating a service account and attaching the role to it
+
+1. Go to [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts) and select the project which has the dataset or the table that you want to use.
+2. Click on **CREATE SERVICE ACCOUNT**.
+
+<img src="../assets/warehouse-actions-sources/gcp-create-service-account.png" alt="Create service account in GCP" />
+
+3. Fill in the **Service Account details** as shown below, and click on **CREATE AND CONTINUE**:
+
+<img src="../assets/warehouse-actions-sources/gcp-service-account-details.png" />
+
+<div class="infoBlock">
+
+Note down the <strong>Service account ID</strong>. This ID is required while creating the RudderStack schema and granting the required permissions to it.
+</div>
+
+4. Fill in the **Role** details as shown below, and click on **CONTINUE**:
+
+<img src="../assets/warehouse-actions-sources/gcp-service-account-role-details.png" alt="Service account role details" />
+
+5. Click on **DONE** to move to the list of service accounts.
+
+### Step 3: Creating and downloading the JSON key
+
+1. Click on the three dots icon under **Actions** in the service account that you just created and select **Manage keys**, as shown:
+
+<img src="../assets/warehouse-actions-sources/manage-keys.png" alt="Managing keys in GCP" />
+
+2. Click on **ADD KEY**, followed by **Create new key**, as shown:
+
+<img src="../assets/warehouse-actions-sources/gcp-add-key.png" alt="GCP Adding a new key" />
+
+3. Select **JSON** and click on **CREATE**.
+
+<img src="../assets/warehouse-actions-sources/create-new-key.png" />
+
+A JSON file will be downloaded on your system. This file is required while creating a BigQuery warehouse source in RudderStack, explained further in this document.
+
+### Step 4: Creating the RudderStack schema and granting permissions
+
+1. From your [BigQuery SQL workspace](https://console.cloud.google.com/bigquery), run the following command to create a dedicated schema `rudderstack_`.
+
+```sql
+create schema rudderstack_;
+```
+
+<div class="warningBlock">
+
+The <code class="inline-code">rudderstack_</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
+</div>
+
+2. Grant full access to the `rudderstack_` schema for the RudderStack service account you created above. Replace `<SERVICE_ACCOUNT_ID>` with the service account ID you specified in [Step 2: Creating a service account and attaching role to it](#step-2-creating-a-service-account-and-attaching-the-role-to-it).
+
+```sql
+GRANT `roles/bigquery.dataOwner`
+     ON SCHEMA rudderstack_
+     TO "serviceAccount:<SERVICE_ACCOUNT_ID>";
+```
+## Setting up the BigQuery source in RudderStack
+
+To set up BigQuery as a source in RudderStack, follow these steps:
+
+### Naming the source
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. From the left navigation bar, go to **Source** > **New Source** > **Reverse ETL**.  Then, select **BigQuery**, as shown:
+
+<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select Reverse ETL source in RudderStack" />
+
+3. Assign a name to your source.
+
+### Configuring the connection credentials
+
+1. Choose the relevant option from **Table** or **Model** to use the source to sync data from either a warehouse table or a model.
+
+<div class="infoBlock">
+
+For more information on the difference between the <strong>Table</strong> and <strong>Model</strong> options when creating a Reverse ETL source, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+<div class="infoBlock">
+If you have chosen the <strong>Model</strong> option, skip the next steps and refer to the <a href="#schedule-settings">Schedule settings</a> section directly.
+</div>
+
+2. Enter the relevant settings in the **Connection Credentials** section as listed below:
+
+<img src="../assets/warehouse-actions-sources/bigquery-connection-settings.png" />
+
+- **Credentials** - Enter the GCP Service Account credentials JSON.
+- **Project ID** - Enter the `project_id` from the GCP Service Account credentials JSON.
+- **Service account** - Enter the `client_email` from the GCP Service Account credentials JSON.
+
+<div class="successBlock">
+
+If you've configured BigQuery as a source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
+</div>
+
+3. Click on **Continue** to verify your credentials. RudderStack will then verify and validate your credentials. 
+
+<div class="infoBlock">
+
+For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section. 
+</div>
+
+4. Once verified, click on **Continue** to proceed.
+
+### Schedule settings
+
+1. Specify the **Schedule Settings** to schedule the data syncs from your BigQuery instance.
+
+<div class="infoBlock">
+
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+</div>
+
+2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
+
+BigQuery is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
+
+<img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
+
+<div class="infoBlock">
+     
+If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destination</strong> option which will take you to the <strong>Schema</strong> tab in the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.
+</div>
+
+## Specifying the data to import
+
+While connecting a destination to your Reverse ETL source, you can use the default JSON mapping or the [Visual Data Mapping](https://www.rudderstack.com/docs/reverse-etl/features/visual-data-mapper/) feature.
+
+<div class="infoBlock">
+
+Based on the option(Table/Model) you chose while setting up the Reverse ETL source, follow the relevant guide for detailed steps:
+
+<ul>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</a></li>
+<li><a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a></li>
+</ul>
+</div>
+
+     
+## FAQ
+
+### What is the difference between the Table and Model options when creating a Reverse ETL source?
+
+When creating a new Reverse ETL source, you are presented with the following two options from which RudderStack will sync the data:
+
+<img src="../assets/warehouse-actions-sources/table-model-options.png" />
+
+- When you choose **Table**, RudderStack imports all the data associated with the specified table during the sync.
+- When you choose **Model**, RudderStack imports the data by running the query specified in the connected model, during the sync.
+
+### What do the three validations under Verifying Credentials imply?
+
+When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+
+<img src="../assets/validations.png" />
+
+These options are explained below:
+
+* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
+
+<div class="warningBlock">
+
+If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
+</div>
+
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `rudderstack_` schema that you have created by successfully running all the commands in the [**Creating the RudderStack schema and granting permissions**](#step-4-creating-the-rudderstack-schema-and-granting-permissions) section. 
+
+<div class="warningBlock">
+
+If this option gives an error, verify if you have successfully created the <code class="inline-code">rudderstack_</code> schema and given RudderStack the required permissions to access it. For more information, refer to <a href="#step-4-creating-the-rudderstack-schema-and-granting-permissions">Creating the RudderStack schema and granting permissions</a> section.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -1,0 +1,20 @@
+---
+# slug: "/docs/user-guides/how-to-guides/how-to-filter-events-using-different-methods"
+title: "How to Filter Events using Different Methods"
+description: An easy-to-follow guide on filtering the events before sending them to your specified destinations in RudderStack.
+---
+
+# How to Filter Events using Different Methods
+
+RudderStack provides different filtering methods before sending the events to your specified destinations. The following table explains these methods in detail:
+
+| Method     | Description    | Connection mode | Applicable |
+| :--------- | :----------- | :----------- |:----------- |
+| [User Transformations](https://www.rudderstack.com/docs/transformations/) | Create transformations to filter out certain event names, types, or any distinguishing factors among them. | Cloud mode | <ul><li><a href="https://www.rudderstack.com/docs/stream-sources/">Event Stream</a></li><li><a href="https://www.rudderstack.com/docs/reverse-etl/">Reverse ETL</a></li><li><a href="https://www.rudderstack.com/docs/cloud-extract-sources/">Cloud Extract</a></li></ul> |
+| [Client-side Event Filtering](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/) | Specify which events should be discarded or allowed to flow through by whitelisting or blacklisting them in the RudderStack dashboard, while setting up the destination. | Device mode | [All SDKs](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/) |
+| [Sending events to selective destinations](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#loading-selective-destinations) | Send your events only to the selective destinations by stopping the SDK from loading other device mode integrations. |Device mode | [JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) |
+| [Filtering selective destinations](https://www.rudderstack.com/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/)   | Filter out selective destinations by stopping RudderStack from sending certain events to them. | Cloud mode and device mode | <ul><li><a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#filtering-selective-destinations">JavaScript SDK</a></li><li><a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#enablingdisabling-events-for-specific-destinations">Android SDK</a></li><li><a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#enablingdisabling-events-for-specific-destinations">iOS SDK</a></li></ul> |
+
+## Contact us
+
+For more information on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

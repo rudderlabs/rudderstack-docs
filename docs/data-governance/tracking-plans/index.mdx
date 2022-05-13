@@ -1,0 +1,90 @@
+---
+# slug: "/docs/rudderstack-api/api-specification"
+title: "Tracking Plans"
+description: >-
+  Detailed technical description of the Tracking Plans feature to plan and monitor your event data.
+---
+
+# Tracking Plans
+
+Tracking Plans let you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
+
+<div class="warningBlock">
+  
+
+The Tracking Plans currently support only the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/"><code class="inline-code">track</code></a> events sent to the <strong>warehouse destinations</strong>.
+</div>
+
+## Tracking Plan features
+
+With the help of a Tracking Plan, you can:
+
+* Define specific event names and properties for each of your `track`, `group`, and `identify` calls.
+* Specify whether a property/attribute is required and assign a particular data type.
+* Have better control of your data streaming by supporting a versioning system.
+* Use the [Data Governance API](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/) to evaluate your inbound events and metadata, and compare them with your plans.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/blog/dogfooding-at-rudderstack-tracking-plans-part-1/">RudderStack Tracking Plans</a> blog post for more information on Tracking Plans and how to use them effectively.
+</div>
+
+## Quickstart
+
+To start using the Tracking Plans, follow these steps:
+
+1. Generate a [personal access token](https://www.rudderstack.com/docs/rudderstack-api/personal-access-tokens/) in the RudderStack dashboard.
+2. Make a copy of the [RudderStack Tracking Plan Spreadsheet](https://docs.google.com/spreadsheets/d/1QnCY3dbzyz2InB68W3AGIJshsuY3Zu8WA3AfMMxIzAQ/edit#gid=1810167975) to create or update your tracking plans.
+3. Connect your Tracking Plan to a source. For more information, refer to the [Tracking Plan Spreadsheet](https://www.rudderstack.com/docs/data-governance/tracking-plans/tracking-plan-spreadsheet/#linking-tracking-plan-to-a-source) documentation.
+4. (Optional) Use [RudderTyper](https://www.rudderstack.com/docs/data-governance/ruddertyper/) for autocomplete and linting.
+
+## Tracking Plan API
+
+The [Tracking Plan API](https://documenter.getpostman.com/view/16242548/TzeWFT6D#3b19ae74-4a42-4078-b9f8-4aa006817c63) lets you build applications or scripts on top of RudderStack's Tracking Plan capabilities. This includes a simple CI/CD pipeline, integrations with other Tracking Plan systems such as Amplitude, Mixpanel, Avo, and many other creative use-cases.
+
+### Using the Tracking Plan API
+
+To use the Tracking Plan API, follow these steps:
+
+1. Generate a [personal access token](https://www.rudderstack.com/docs/rudderstack-api/personal-access-tokens/) in the RudderStack dashboard.
+2. Refer to the [Tracking API documentation](https://documenter.getpostman.com/view/16242548/TzeWFT6D#7df289e7-8758-4ec0-a86e-3aa08bd3260e) in Postman.
+
+<div class="successBlock">
+
+You can also refer to the <a href="https://www.rudderstack.com/docs/data-governance/rudderstack-data-governance-api/">RudderStack Data Governance API</a> that gives you insights into your current schemas and data volumes going through RudderStack.
+</div>
+
+We also have the Data Governance API, which is a descriptive API that tells you your current schemas and data volumes going through Rudderstack.
+
+## Useful links
+
+The Tracking Plans documentation is divided into the following sections:
+
+<div class="pageRefWrapper">
+    <a href="tracking-plan-spreadsheet/">
+        <div class="pageRefBlock">
+            <h3>Tracking Plan Spreadsheet</h3>
+            <p>Detailed technical description of the Tracking Plan spreadsheet for configuring your Tracking Plan.</p>
+        </div>
+    </a>
+    <a href="https://www.rudderstack.com/docs/data-governance/ruddertyper/">
+        <div class="pageRefBlock">
+            <h3>RudderTyper</h3>
+            <p>Detailed technical description of the RudderTyper utility for generating strongly-typed library wrappers based on your Tracking Plan spec.</p>
+        </div>
+    </a>
+</div>
+
+## FAQ
+
+### Which calls are supported for the RudderStack Tracking Plans?
+
+The Tracking Plans feature currently supports only [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) events.
+
+### Are the Tracking Plans supported for all the destinations?
+
+No - the Tracking Plans feature is currently supported only for the [warehouse destinations](https://rudderstack.com/docs/data-warehouse-integrations/).
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or get in touch with your Account Manager.
