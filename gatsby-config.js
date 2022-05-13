@@ -36,11 +36,6 @@ module.exports = {
         printRejected: true, // Print removed selectors and processed file names
         develop: true, // Enable while using `gatsby develop`
         tailwind: true, // Enable tailwindcss support
-        ignore: [
-          "src/css/docs.css",
-          "src/css/tailwind.css",
-          "/node_modules/katex/dist/katex.min.css",
-        ],
       },
     },
     `gatsby-plugin-image`,
