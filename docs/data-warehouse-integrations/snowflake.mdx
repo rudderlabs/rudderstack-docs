@@ -131,9 +131,14 @@ The following examples illustrate the slight differences in the account ID for v
 
 | Account ID example            | Corresponding Snowflake URL                                                    | Snowflake cloud provider                                        |
 | :-------------------------- | :--------------------------------------------------------------- | :-------------------------------------------------------------- |
-| `qya56091.us-east-1`         | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`      | AWS                                   |
+| `qya56091.us-east-1`<br /><br />  `qya56091.us-east-2.aws`        | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`  <br /><br />  `https://`**`qya56091.us-east-2.aws`**`.snowflakecomputing.com`   | AWS                                   |
 | `rx18795.east-us-2.azure` | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure  |
 | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
+
+<div class="warningBlock">
+
+In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region accounts and hence must be included in the <strong>Account</strong> field above. <br /><br />For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
+</div>
 
 - **Database**: Enter the name of the database created in the [Creating a database](#creating-a-database) section above.
 - **Warehouse**: Enter the name of the warehouse created in the [Creating a virtual warehouse](#creating-a-virtual-warehouse) section above.
