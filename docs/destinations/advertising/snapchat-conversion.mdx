@@ -105,7 +105,17 @@ rudderanalytics.track("Order Completed", {
 })
 ```
 
-At least email OR phone OR idfa OR (ip and userAgent) is required
+<div class="infoBlock">
+
+Make sure to pass at least one of the required fields from the below:
+<ul>
+  <li><code class="inline-code">email</code></li>
+  <li><code class="inline-code">phone</code></li>
+  <li><code class="inline-code">idfa</code></li>
+  <li><code class="inline-code">ip</code> and <code class="inline-code">userAgent</code></li>
+  </ul>
+</div>
+
 
 RudderStack checks the `eventConversionType`event property to determine the type of event to send to Snap Conversion (web, mobile, or offline) as specified below:
 
@@ -133,7 +143,7 @@ eventConversionType: "MOBILE_APP"
 });
 ```
 
-RudderStack tracks the following e-commerce events and the corresponding platform-specific properties:
+RudderStack tracks the following properties and maps them to the corresponding Snapchat Conversion properties:
 
 | **RudderStack property** | **Snapchat Conversion property** |
 |:--------------------------------|:--------------------------|
@@ -173,6 +183,7 @@ RudderStack **does not map** the following events and passes their properties as
 
 - `SIGN_UP`
 - `APP_OPEN`
+- `APP_INSTALL`
 - `SAVE`
 - `SUBSCRIBE`
 - `COMPLETE_TUTORIAL`
@@ -186,29 +197,6 @@ RudderStack **does not map** the following events and passes their properties as
 - `START_TRIAL`
 - `LIST_VIEW`
 - `PAGE_VIEW`
-- `APP_INSTALL`
-
-### Property mapping
-
-RudderStack maps the following event properties to the Snapchat Conversion properties based on specific events:
-
-<table>
-  <tr>
-    <th>RudderStack event</th>
-    <th>RudderStack property</th>
-    <th>Snapchat Conversion property</th>
-  </tr>
-  <tr>
-    <td>Products Searched</td>
-    <td><code class="inline-code">query</code></td>
-    <td><code class="inline-code">search_string</code></td>
-  </tr>
-  <tr>
-    <td>Product Added<br/>Order Completed</td>
-    <td><code class="inline-code">currency</code></td>
-    <td><code class="inline-code">currency</code></td>
-  </tr>
-</table>
 
 ## FAQ
 
