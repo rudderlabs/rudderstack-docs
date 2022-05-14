@@ -15,9 +15,9 @@ If you come across any issue not listed in this guide, feel free to start a conv
 
 ## Installation and setup
 
-#### How do I quickly get started with RudderStack?
+#### How do I get started with RudderStack?
 
-To quickly [get started](https://rudderstack.com/docs/get-started/), you can [sign up for RudderStack](https://app.rudderstack.com/). Here, you can configure your sources and destinations and start building your data pipelines in no time.
+Head over to our <Link to="/get-started">Getting Started with RudderStack Cloud</Link> guide to configure your sources and destinations and start building your data pipelines.
 
 #### What is a data plane URL? Where do I get it?
 
@@ -25,30 +25,30 @@ For routing and processing the events to the RudderStack backend, a data plane U
 
 <div class="infoBlock">
 
-Refer to the [RudderStack Architecture](https://rudderstack.com/docs/get-started/rudderstack-architecture/) guide for more information the RudderStack Data Plane.
+Refer to the <Link to="/get-started/rudderstack-architecture/">RudderStack Architecture</Link> guide for more information the RudderStack Data Plane.
 </div>
 
-You can get the data plane URL depending on your RudderStack plan:
+The location of your data plane URL depends on your RudderStack plan:
 
-* **RudderStack Open Source** - Set up your own data plane by [installing and setting up RudderStack](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your preferred environment. 
+* **RudderStack Open Source** - Set up your own data plane by <Link to="/rudderstack-open-source/installing-and-setting-up-rudderstack/">installing and setting up RudderStack</Link> in your preferred environment. 
 
 <div class="successBlock">
 
 An open source data plane URL looks like `http:localhost:8080` where `8080` is typically the port where your data plane is hosted.  
 </div>
 
-* [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) - The data plane URL is provided in the dashboard at the top of the **Connections** page.
-* [RudderStack Pro/Enterprise](https://rudderstack.com/pricing) - [Contact us](https://rudderstack.com/join-rudderstack-slack-community) for the data plane URL with the email ID you used to sign up for RudderStack.
+* **RudderStack Cloud** - The data plane URL is provided in the dashboard at the top of the **Connections** page.
+* **RudderStack Pro/Enterprise** - [Contact us](https://rudderstack.com/join-rudderstack-slack-community) for the data plane URL with the email ID you used to sign up for RudderStack.
 
 #### To get started with RudderStack on my local machine, is it mandatory to get the workspace token from RudderStack dashboard?
 
-The token (also referred to as the workspace token) is required if you are installing RudderStack in your own environment and wish to use the RudderStack-hosted control plane. It is a unique identifier for your configuration settings which the RudderStack can fetch to track your instrumentations. 
+The token (also referred to as the workspace token) is required if you are installing RudderStack in your own environment and wish to use the RudderStack-hosted control plane. It is a unique identifier for your configuration settings which RudderStack can fetch to track your instrumentations. 
 
-If you are [self-hosting your control plane](https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/), this token is not required.
+If you are <Link to="/rudderstack-open-source/control-plane-lite/">self-hosting your control plane</Link>, this token is not required.
 
 #### Can I self-host the RudderStack control plane?
 
-Yes. Use the open source [Control Plane Lite](https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility to self-host the control plane and configure your sources and destinations. Refer to the **Control Plane Lite** section below for more information.
+Yes. Use the open source <Link to="/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility to self-host the control plane and configure your sources and destinations. Refer to the **Control Plane Lite** section below for more information.
 
 #### While running `git submodule update`, I get this error:
 
@@ -65,7 +65,7 @@ Verify if the SSH keys are correctly set in your GitHub account as they are used
 
 #### How do I verify my RudderStack installation?
 
-You can verify your RudderStack installation by sending some test events and checking if they are delivered correctly. For more information, refer to the [Sending Test Events](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/) guide.
+You can verify your RudderStack installation by sending test events and checking if they are delivered correctly. For more information, refer to the <Link to="/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/">Sending Test Events</Link> guide.
 
 #### My open source RudderStack setup keeps creating a new database automatically. What could be the reason?
 
@@ -85,7 +85,7 @@ sh -c '/wait-for db:5432 -- /rudder-server'
 
 This message indicates that the RudderStack server is waiting on the PostgreSQL database dependency to be up and running. Verify if your PostgreSQL container is up.
 
-## RudderStack backend (server)
+## RudderStack Back End (server)
 
 #### How do I check the status of the RudderStack data plane?
 
@@ -103,7 +103,7 @@ CURL https://hosted.rudderlabs.com/health
 
 #### How many events can a single RudderStack node handle?
 
-The number of events a single RudderStack node can handle depends on the destinations that you are sending the event data to. It also depends on the transformations that you are running.
+The number of events a single RudderStack node can handle depends on the destinations that you are sending the event data to. It also depends on the transformations you are running.
 
 Here are some ballpark figures:
 
@@ -115,7 +115,7 @@ Here are some ballpark figures:
 
 <div class="warningBlock">
 
-These are conservative numbers. A single RudderStack node can handle close to 5x event load at the peak - just that those events get cached locally and are drained as per the regular throughput.
+These are conservative numbers. A single RudderStack node can handle close to 5x event load at the peak— just that those events get cached locally and are drained as per the regular throughput.
 </div>
 
 #### How can I speed up the number of events sent to a destination?
@@ -126,11 +126,11 @@ There is a [config variable](https://github.com/rudderlabs/rudder-server/blob/ma
 
 Go to the **Events** tab of the destination page to see the event-related metrics, as shown below:
 
-<img src="./assets/general/destination-event-metrics.png" alt="Destination event metrics" />
+<img src="/assets/general/destination-event-metrics.png" alt="Destination event metrics" />
 
 <div class="warningBlock">
 
-Events sent through the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a> are not visible in this option. 
+Events sent through <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link> are not visible in this option. 
 </div>
 
 #### Do I need to change the data plane URL associated with the RudderStack Cloud to my self-hosted data plane?
@@ -160,7 +160,7 @@ Note that this utility will only generate the source-destination configurations 
 
 <div class="warningBlock">
 
-The self-hosted control plane set up using Control Plane Lite does not support features like <a href="https://rudderstack.com/docs/transformations/">Transformations</a> and <a href="https://rudderstack.com/docs/rudderstack-cloud/live-events/">Live Events Debugger</a>, which are included in the [RudderStack-hosted control plane](https://app.rudderstack.com).
+The self-hosted control plane setup using Control Plane Lite does not support features like <Link to="/transformations/">Transformations</Link> and <Link to="/rudderstack-cloud/live-events/">Live Events Debugger</Link>, which are included in the [RudderStack-hosted control plane](https://app.rudderstack.com).
 </div>
 
 #### I am using the Control Plane Lite to generate the `workspaceConfig.json` file. But when I import this file, I get this error:
