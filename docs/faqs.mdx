@@ -191,11 +191,11 @@ This solution assumes that you have already set up the RudderStack data plane (b
 
 #### How do I add user transformations in RudderStack?
 
-RudderStack lets you implement your own custom transformations that leverage the event data to implement specific use-cases based on your business requirements. Refer to the [Adding a transformation](https://rudderstack.com/docs/transformations/#adding-a-transformation) section to add transformations in RudderStack. 
+RudderStack lets you implement your own custom transformations that leverage the event data to implement specific use-cases based on your business requirements. Refer to the <Link to="/transformations/#adding-a-transformation">Adding a transformation</Link> section to add transformations in RudderStack. 
 
 #### Can I apply a transformation to a source configured in RudderStack?
 
-Currently, transformations can only be configured and used for destinations. If you want to write some custom logic specific to the source, you can get the [source ID](https://rudderstack.com/docs/rudderstack-cloud/sources/) in the transformation function and use it to include the logic. Refer to the [Accessing metadata](https://rudderstack.com/docs/transformations#accessing-metadata) section for more information.
+Currently, transformations can only be configured and used for destinations. If you want to write custom logic specific to the source, you can get the <Link to="/docs/rudderstack-cloud/sources/">source ID</Link> in the transformation function and use it to include the logic. Refer to the <Link to="/transformations#accessing-metadata">Accessing metadata</Link> section for more information.
 
 ## RudderStack Cloud
 
@@ -207,11 +207,11 @@ Unfortunately, your workspace name is not changeable currently. We are planning 
 
 The write key is different from your workspace token. The write key is associated with the source, while the workspace token is associated with your RudderStack workspace, as shown:
 
-<img src="./assets/rudderstack-open-source/write-key-vs-workspace-token.png" alt="Write key vs. workspace token" />
+<img src="/assets/rudderstack-open-source/write-key-vs-workspace-token.png" alt="Write key vs. workspace token" />
 
 #### I see a few events that show up in the live stream but do not reach the destination. How do I see the logs or data that is sent to my destination?
 
-To view the data or events that are sent to your destination, you can use the [Live Events](https://rudderstack.com/docs/rudderstack-cloud/live-events/) tab in your destination's page.
+To view the data or events that are sent to your destination, you can use the <Link to="/rudderstack-cloud/live-events/">Live Events</Link> tab in your destination's page.
 
 #### Do I need to change the data plane URL associated with the cloud-hosted RudderStack to my self-hosted data plane?
 
@@ -227,20 +227,20 @@ The personal access token is a unique token associated with your RudderStack acc
 
 <div class="infoBlock">
 
-For more information on generating a personal access token, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/personal-access-tokens/">Personal Access Tokens</a> guide.
+For more information on generating a personal access token, refer to the <Link to="/rudderstack-api/personal-access-tokens/">Personal Access Tokens</Link> guide.
 </div>
 
 ## Integrations
 
 ### SDKs
 
-#### I want to use the RudderStack JavaScript SDK to track impressions in an eCommerce site. How can I send the impression data in batches? I could not find the `batch` method in the SDK.
+#### I want to use the RudderStack JavaScript SDK to track impressions in an ecommerce site. How can I send the impression data in batches? I could not find the `batch` method in the SDK.
 
-You should use the `track` method instead. For JavaScript SDK's `track` method parameters specific to e-commerce, you can refer to the [E-commerce Events Spec](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/).
+You should use the `track` method instead. For the JavaScript SDK's `track` method parameters specific to e-commerce, you can refer to the <Link to="/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">Ecommerce Events Spec</Link>.
 
 #### Is Shopify compatible as a data source for Rudderstack?
 
-Yes, Shopify is compatible as an event stream data source. For more information, refer to [Shopify](https://www.rudderstack.com/docs/stream-sources/shopify/). We also have users that integrate the JavaScript SDK into their Shopify sites. In some cases, they even do it through Google Tag Manager.
+Yes, Shopify is compatible as an event stream data source. For more information, refer to <Link to="/stream-sources/shopify/">Shopify</Link>. We also have users that integrate the JavaScript SDK into their Shopify sites. In some cases, they even do it through Google Tag Manager.
 However, we strongly recommend using the Shopify source integration for better tracking.
 
 ### Cloud Extract sources
@@ -255,44 +255,44 @@ If you encounter this error, it is most likely because of faulty permissions. Tr
 
 #### When syncing data from Cloud Extract sources, how does RudderStack determine the new events? Is this data kept in RudderStack or S3?
 
-RudderStack does not persist any data on its own. Rather, it fetches the data from the source based on the last timestamp till it was extracted.
+RudderStack does not persist any data on its own. Rather, it fetches the data from the source based on the last timestamp it was extracted.
 
 ### Destinations
 
 #### Would a destination connected with a source work if it is connected to a new source?
 
-Yes, you can use the same destination without any problem.
+Yes, you can connect a destination to multiple sources with no issues.
 
 #### How do I see the logs or the data that is sent to my destination?
 
-To view the data or events that are sent to your destination, you can use the [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) tab on your destination page.
+To view the data or events that are sent to your destination, you can use the <Link to="/rudderstack-cloud/live-events/">Live Events</Link> tab on your destination page.
 
-#### I would like to send events to Mixpanel via RudderStack. However, I would like to set a filtering condition on the source events before routing them to Mixpanel. How do I go about doing this?
+#### I would like to send events to Mixpanel via RudderStack. However, I would like to set a filtering condition on the source events before routing them to Mixpanel. How do I do this?
 
-You can use  [Transformations](https://rudderstack.com/docs/transformations/) to set custom logic on your events before sending them to Mixpanel.
+You can use <Link to="/transformations/">Transformations</Link> to set custom logic on your events before sending them to Mixpanel.
 
 #### I am seeing a `Message type not supported` error. What does this mean?
 
-This error is being returned from the RudderStack backend. It means that a particular destination does not support the event you are trying to send.
+This error is being returned from the RudderStack back end. It means that a particular destination does not support the event you are trying to send.
 
 For example, Salesforce only supports `identify` events. Therefore, if a `track` call is sent to Salesforce, the `Message type not supported` error will be returned. This error does not affect any other events and is harmless. However, a simple user transformation can be written to filter out these events so you will no longer see this error.
 
 ### Warehouse destinations
 
-#### How to force RudderStack to push all the data to a data warehouse in real-time with no delay? During the implementation, it would be better to see how the data is collected in real-time, rather than 30 minutes later.
+#### How can I force RudderStack to push all the data to a data warehouse in real-time with no delay? During the implementation, it would be better to see how the data is collected in real-time, rather than 30 minutes later.
 
-You can override the UI set sync frequency by setting `warehouseSyncFreqIgnore` to true in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or `config.toml`, in case you have an older RudderStack deployment\). You can set your desired frequency by changing the `uploadFreqInS` parameter.
+You can override the UI-set sync frequency by setting `warehouseSyncFreqIgnore` to true in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or `config.toml`, in case you have an older RudderStack deployment\). You can set your desired frequency by changing the `uploadFreqInS` parameter.
 
-#### I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
+#### I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I click 'sync'. What do I do?
 
-1. Firstly, make sure you have set up the required [user permissions](https://www.rudderstack.com/docs/data-warehouse-integrations/postgresql/#setting-user-permissions-in-postgresql) for PostgreSQL.
+1. Firstly, make sure you have set up the required <Link to="/data-warehouse-integrations/postgresql/#setting-user-permissions-in-postgresql">user permissions</Link> for PostgreSQL.
 2. Then, check the status of the sync in the [RudderStack dashboard](https://app.rudderstack.com/syncs).
-3. Check if the database is accessible by whitelisting all the RudderStack IPs listed [here](https://www.rudderstack.com/docs/data-warehouse-integrations/warehouse-faqs/#which-ips-should-be-whitelisted).
-4. Ensure that all the security group policies for S3 are set as specified [here](https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#permissions).
+3. Check if the database is accessible by allowlisting all the RudderStack IPs listed <Link to="/data-warehouse-integrations/warehouse-faqs/#which-ips-should-be-whitelisted">here</Link>.
+4. Ensure that all the security group policies for S3 are set as specified <Link to="/destinations/storage-platforms/amazon-s3#permissions">here</Link>.
 
 #### When sending data into a data warehouse, how can I change the table where this data is sent?
 
-By default, RudderStack sends the data to the table / dataset based on the source it is connected to. For example, if the source is Google Tag Manager, RudderStack sets the schema name as **`gtm_*`**.
+By default, RudderStack sends the data to the table/dataset based on the source it is connected to. For example, if the source is Google Tag Manager, RudderStack sets the schema name as **`gtm_*`**.
 
 You can override this by setting a **Namespace** in the destination settings as shown:
 
@@ -307,7 +307,7 @@ You can do so by setting this value via the following `.env` variables:
 
 #### I'm looking to send data to my data warehouse through RudderStack and I'm trying to understand what data is populated in each column. How do I go about this?
 
-Refer to the [Warehouse Schema](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/) guide for details on how RudderStack generates the schemas in the warehouse.
+Refer to the <Link to="/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</Link> guide for details on how RudderStack generates the schemas in the warehouse.
 
 #### I am trying to load data into my BigQuery destination and I get this error:
 
@@ -320,7 +320,7 @@ Make sure that both your BigQuery dataset and the bucket have the same region. F
 
 #### When sending data to BigQuery, I can set the bucket but not a folder within the bucket. Is there a way to put Rudderstack data in a specific bucket folder?
 
-Yes, you can set the desired folder name in the **Prefix** input field while configuring your BigQuery destination. For more information, refer to the [BigQuery setup guide](https://www.rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#configuring-google-bigquery-destination-in-rudderstack).
+Yes, you can set the desired folder name in the **Prefix** input field while configuring your BigQuery destination. For more information, refer to the <Link to="/data-warehouse-integrations/google-bigquery/#configuring-google-bigquery-destination-in-rudderstack">BigQuery setup guide</Link>.
 
 ## RudderStack Pro/Enterprise
 
@@ -339,12 +339,12 @@ RudderStack's hosted solution is running on AWS EKS with the cluster spanning 3 
 #### How does RudderStack ensure uptime with a single node?
 
 * At the infrastructure layer, RudderStack runs on a multi-availability zone EKS cluster. So hardware failures, if any, are handled by Kubernetes by relocating pods.
-* At an application level, RudderStack operates in either of the following 3 modes:
-  * **Normal** mode, where everything is normal and there are no issues.
-  * If for some reason the system fails \(e.g. because of a bug\), it enters the **Degraded** mode, where RudderStack processes incoming requests but doesn't send it to destinations. 
-  * If the system continues to fail to process the data \(e.g. internal database corruption\), it enters the **Maintenance** mode where we save the previous state \(which can be debugged and processed\) and start from scratch - still receiving requests. 
+* At an application level, RudderStack operates in one of the following 3 modes:
+  * **Normal** mode: everything is normal and there are no issues.
+  * If for some reason the system fails \(e.g. because of a bug\), it enters the **Degraded** mode, where RudderStack processes incoming requests but doesn't send them to destinations. 
+  * If the system continues to fail to process the data, e.g., internal database corruption, it enters **Maintenance** mode. In this mode we save the previous state (which can be debugged and processed) and start from scratch— still receiving requests. 
 * All of RudderStack's SDKs also have failure handling. They can store events in local storage and retry on failure.
-* RudderStack provides isolation between the data and control planes. For example, if the control plane \(where you manage the source and destination configurations\) goes offline, the data plane continues to operate.
+* RudderStack provides isolation between the data and control planes. For example, if the control plane (where you manage the source and destination configurations) goes offline, the data plane continues to operate.
 
 All this is done to ensure that RudderStack can always receive events and no events are lost.
 
@@ -352,9 +352,9 @@ All this is done to ensure that RudderStack can always receive events and no eve
 
 Adding a new node requires a bit of downtime. However, RudderStack is built in a way that minimizes this downtime as much as possible. 
 
-When a new node is added, the users need to be rebalanced across nodes \(to keep event ordering\). While the re-balancing takes place \(can take a few minutes\), RudderStack does not send events to downstream destinations, but continues to receive events so that your SDKs don't see any failures \(ignoring the small ELB switch over time\). 
+When a new node is added, the users need to be rebalanced across nodes to keep event ordering in place. While the rebalancing takes place (can take a few minutes), RudderStack does not send events to downstream destinations, but continues to receive events so that your SDKs don't see any failures, ignoring the small ELB switch over time. 
 
-Also, the SDKs have a built-in local caching and retrying capability. So even if there is a failure, no events are lost.
+Additionally, the SDKs have a built-in local caching and retrying capability. So even if there is a failure, no events are lost.
 
 ## Whitelisting
 
@@ -392,10 +392,11 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 For a content security policy, the following URLs should be whitelisted:
 
-- **Control plane**
+**Control plane**
   - `https://api.rudderstack.com`
   - `https://api.rudderlabs.com`
-- **Data plane**
+
+**Data plane**
   - `DATA_PLANE_URL`
 
 <div class="infoBlock">
@@ -403,14 +404,14 @@ For a content security policy, the following URLs should be whitelisted:
 Refer to this [FAQ](#what-is-a-data-plane-url-where-do-i-get-it) for more information on obtaining your data plane URL.
 </div>
 
-- **SDK**
+**SDK**
   - `https://cdn.rudderlabs.com`
 
 ## Retry behavior
 
 #### How does RudderStack handle retries for failed events in case of destination failure?
 
-Sometimes, the downstream destination can be unavailable or send a failure code for a variety of reasons. RudderStack retries sending the events depending on the type of failure:
+Sometimes the downstream destination can be unavailable or send a failure code for a variety of reasons. RudderStack retries sending the events depending on the type of failure:
 
 | Failure Code | Retry Behavior |
 | :--- | :--- |
@@ -429,12 +430,12 @@ maxFailedCountForJob = 8
 
 <div class="warningBlock">
 
-If a user event fails, the other events are not sent until the failed event is successfully sent or aborted \(as per above behavior\). This is to ensure event ordering for all events of a single user.
+If a user event fails, the other events are not sent until the failed event is successfully sent or aborted, as per above behavior. This is to ensure event ordering for all events from a single user.
 </div>
 
 <div class="infoBlock">
 
-For more information on the SDK-specific retry and backoff logic, refer to the [SDK FAQ](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/#what-is-the-rudderstack-retry-and-backoff-logic-after-the-connection-fails) guide.
+For more information on the SDK-specific retry and backoff logic, refer to the <Link to="/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs#what-is-the-rudderstack-retry-and-backoff-logic-after-the-connection-fails">SDK FAQ</Link> guide.
 </div>
 
 ## Throttling behavior
