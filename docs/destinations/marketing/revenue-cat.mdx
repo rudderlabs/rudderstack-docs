@@ -139,7 +139,7 @@ RudderStack maps the following event properties to the corresponding Revenue Cat
 | RudderStack property | Revenue Cat attribute | Comments |
 | :-----| :------| :-------|
 | `userId` (Required) | `app_user_id` | - |
-| `fetch_token` | `fetch_token` | This must be a Base64 encoded **receipt file** for iOS, **receipt token** for Android, **receipt** for Amazon, and **subscription token** in case of Stripe. |
+| `fetch_token` (Required) | `fetch_token` | This must be a Base64 encoded **receipt file** for iOS, **receipt token** for Android, **receipt** for Amazon, and **subscription token** in case of Stripe. |
 | `currency` | `currency`  | - |
 | `payment_mode` | `payment_mode`  | - |
 | `product_id`, `products.product_id` | `product_id`  | This is required for Google and should be the Apple, Google, or Amazon SKU or product identifier. |
