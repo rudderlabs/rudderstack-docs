@@ -1140,6 +1140,12 @@ export const jsonData = [
             content: [],
           },
           {
+            key: "attribution",
+            title: "Attribution",
+            link: "/destinations/attribution/attribution/",
+            content: [],
+          },
+          {
             key: "branchio",
             title: "Branch",
             link: "/destinations/attribution/branchio/",
