@@ -9,6 +9,11 @@ description: Step-by-step guide on sending your event data from RudderStack to R
 
 RudderStack supports Revenue Cat as a destination to which you can seamlessly send your event data.
 
+<div class="successBlock">
+
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/revenue_cat">GitHub repository</a>.
+</div>
+
 ## Getting started
 
 Before configuring Revenue Cat as a destination in RudderStack, verify if the source platform is supported by Revenue Cat by referring to the table below:
@@ -26,7 +31,7 @@ To know more about the difference between cloud mode and device mode in RudderSt
 Once you have confirmed that the source platform supports sending events to Revenue Cat, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Revenue Cat**.
-2. Assign a name to the destination and click on **Next**.
+2. Assign a name to the destination and click on **Continue**.
 
 ### Connection settings
 
@@ -47,7 +52,7 @@ For more information on getting your Revenue Cat public API key, refer to the <a
 
 The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
-RudderStack uses the `identify` call to create or update new subscribers in Revenue Cat. It maps `userId` to Revenue Cat's `app_user_id` before sending the data via the [`subscribers`](https://docs.revenuecat.com/reference/subscribers) API.
+RudderStack uses the `identify` call to create or update new subscribers in Revenue Cat. It maps `userId` (a required trait in every event) to Revenue Cat's `app_user_id` before sending the data via the [`subscribers`](https://docs.revenuecat.com/reference/subscribers) API.
 
 A sample `identify` call is shown below:
 
@@ -62,42 +67,47 @@ rudderanalytics.identify("1hKOmRA4GRlm",{
 
 RudderStack maps the following `identify` traits to the corresponding Revenue Cat attributes:
 
-| RudderStack trait | Revenue Cat attribute | Comments |
-| :-------| :--------|  :-----| 
-| `userId` (Required) | `app_user_id` | - |
-| `name` | `$displayName` |  - |
-| `email` | `$email` | - |
-| `phone` | `$phoneNumber` | - |
-| `apnsTokens` | `$apnsTokens` | - |
-| `fcmTokens` | `$fcmTokens` | - |
-| `idfa`/ `advertisingId` | `$idfa` | Must be sent only once. |
-| `idfv`/ `device.id` | `$idfv` | Must be sent only once. |
-| `gpsAdId` | `$gpsAdId` | Must be sent only once. |
-| `advertisingId` | `$androidId` | Must be sent only once. |
-| `campaign.name` | `$campaign` | Must be sent only once. | 
-| `context.ip`, `request_ip` | `$ip` | - |
-| `creative` | `$creative` | Must be sent only once. |
-| `keyword` | `$keyword` | Must be sent only once. |
-| `mediaSource` | `$mediaSource` | Must be sent only once. | 
-| `ad` | `$ad` | Must be sent only once. | 
-| `addGroup` | `$adGroup` | Must be sent only once. | 
-| `adjustId` | `$adjustId` | Must be sent only once. | 
-| `appsflyerId` | `$appsflyerId` | - |
-| `fbAnonId` | `$fbAnonId` | Must be sent only once. | 
-| `iterableUserId` | `$iterableUserId` | - |
-| `iterableCampaignId` | `$iterableCampaignId` | Must be sent only once. |
-| `iterableTemplateId` | `$iterableTemplateId` | Must be sent only once. | 
-| `mixpanelDistinctId` | `$mixpanelDistinctId` | Must be sent only once. | 
-| `mparticleId` | `$mparticleId` | - |
-| `onesignalId` | `$onesignalId` | - |
-| `airshipChannelId` | `$airshipChannelId` | - |
-| `amazonAdId` | `$amazonAdId` | Must be sent only once. |
-| `clevertapId` | `$clevertapId` | - |
+| RudderStack trait | Revenue Cat attribute |
+| :-------| :--------|
+| `userId` (Required) | `app_user_id` |
+| `name` | `$displayName` |
+| `email` | `$email` |
+| `phone` | `$phoneNumber` |
+| `apnsTokens` | `$apnsTokens` |
+| `fcmTokens` | `$fcmTokens` |
+| `context.ip`, `request_ip` | `$ip` |
+| `appsflyerId` | `$appsflyerId` |
+| `iterableUserId` | `$iterableUserId` |
+| `mparticleId` | `$mparticleId` |
+| `onesignalId` | `$onesignalId` |
+| `airshipChannelId` | `$airshipChannelId` |
+| `clevertapId` | `$clevertapId` |
+
+The following `identify` traits are also mapped to the corresponding Revenue Cat attributes: 
 
 <div class="warningBlock">
 
-Revenue Cat <strong>cannot</strong> modify some attributes. So, you must send them <strong>only once</strong>.
+Revenue Cat <strong>cannot modify</strong> these attributes so you must send them <strong>only once</strong>.
 </div>
+
+| RudderStack trait | Revenue Cat attribute |
+| :-------| :--------|
+| `idfa`/ `advertisingId` | `$idfa`|
+| `idfv`/ `device.id` | `$idfv`|
+| `gpsAdId` | `$gpsAdId`|
+| `advertisingId` | `$androidId`|
+| `campaign.name` | `$campaign`|
+| `creative` | `$creative`|
+| `keyword` | `$keyword`|
+| `mediaSource` | `$mediaSource`| 
+| `ad` | `$ad`| 
+| `addGroup` | `$adGroup`| 
+| `adjustId` | `$adjustId`| 
+| `fbAnonId` | `$fbAnonId`|
+| `iterableCampaignId` | `$iterableCampaignId`|
+| `iterableTemplateId` | `$iterableTemplateId`| 
+| `mixpanelDistinctId` | `$mixpanelDistinctId`|
+| `amazonAdId` | `$amazonAdId`|
 
 <div class="warningBlock">
 
