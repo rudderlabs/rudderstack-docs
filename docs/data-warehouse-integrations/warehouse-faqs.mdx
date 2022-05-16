@@ -97,37 +97,37 @@ You can speed-up your warehouse uploads by using the following parameters:
 
 <table>
   <tr>
-    <th width="300">Parameter</th>
+    <th style="width: 50%;">Parameter</th>
     <th>Description</th>
      <th>Tip</th>
     <th>Default value</th>
   </tr>
   <tr>
-    <td width="300"><code class="inline-code">RSERVER_WAREHOUSE_REDSHIFT_MAX_PARALLEL_LOADS</code></td>
+    <td style="width: 50%;"><code class="inline-code">RSERVER_WAREHOUSE_REDSHIFT_MAX_PARALLEL_LOADS</code></td>
     <td>Defines the number of concurrent tables that are synced to redshift in a given upload.</td>
     <td>Increase this as per your infra capability.</td>
     <td><code class="inline-code">3</code></td>
   </tr>
   <tr>
-    <td width="300"><code class="inline-code">RSERVER_WAREHOUSE_STAGING_FILES_BATCH_SIZE</code></td>
+    <td style="width: 50%;"><code class="inline-code">RSERVER_WAREHOUSE_STAGING_FILES_BATCH_SIZE</code></td>
     <td>Defines the number of staging files that are batched and synced in a single upload.</td>
     <td>Increase this to batch together more files and reduce the number of uploads needed for a given volume of data.</td>
     <td><code class="inline-code">960</code></td>
   </tr>
   <tr>
-    <td width="300"><code class="inline-code">RSERVER_WAREHOUSE_NO_OF_WORKERS</code></td>
+    <td style="width: 50%;"><code class="inline-code">RSERVER_WAREHOUSE_NO_OF_WORKERS</code></td>
     <td>Number of concurrent uploads to a warehouse. For example, 8 uploads to different schemas in Redshift can be done simultaneously.</td>
     <td>-</td>
     <td><code class="inline-code">8</code></td>
   </tr>
    <tr>
-    <td width="300"><code class="inline-code">warehouse_slave.replicaCount</code></td>
+    <td style="width: 50%;"><code class="inline-code">warehouse_slave.replicaCount</code></td>
     <td>Number of warehouse slaves (responsible for load file generation) when the warehouse is run as separate service in Kubernetes.</td>
     <td>Increase this for speeding up the load file generation step of the upload.</td>
     <td><code class="inline-code">2</code></td>
   </tr>
    <tr>
-    <td width="300"><code class="inline-code">RSERVER_WAREHOUSE_NO_OF_SLAVE_WORKER_ROUTINES</code></td>
+    <td style="width: 50%;"><code class="inline-code">RSERVER_WAREHOUSE_NO_OF_SLAVE_WORKER_ROUTINES</code></td>
     <td>Number of go-routines creating load files in a warehouse slave process.</td>
     <td>Increase or decrease this as per memory allocated to the warehouse slave pod.</td>
     <td><code class="inline-code">4</code></td>
