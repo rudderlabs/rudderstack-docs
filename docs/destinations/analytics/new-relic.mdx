@@ -70,16 +70,24 @@ A sample `track` call is shown below:
 ```javascript
 rudderanalytics.track(
   "Email Opened", {
-    "subject": "Resume validation",
-    "sendtime": "2022-01-01",
-    "sendlocation": "alex@example.com"
+    subject: "Resume validation",
+    sendtime: "2022-01-01",
+    sendlocation: "alex@example.com"
   }, {
-    traits: {
-      email: "alex@example.com"
+    context: {
+      traits: {
+        email: "alex@example.com"
+      }
     }
   }
 );
 ```
+
+RudderStack applies the following rules to the event properties before sending them to New Relic:
+
+- Booleans are transformed into strings.
+- NRQL words are wrapped with backticks. [Reference](https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/data-requirements-limits-custom-event-data/#:~:text=to%20the%20logs.-,NRQL%20syntax%20terms,-If%20you%20need).
+- Reserved words are removed. [Reference](https://docs.newrelic.com/docs/data-apis/custom-data/custom-events/data-requirements-limits-custom-event-data/#reserved-words).
 
 ## FAQ
 
