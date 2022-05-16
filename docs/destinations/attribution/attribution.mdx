@@ -52,13 +52,13 @@ A sample `identify` call is as shown:
 
 ```javascript
 rudderanalytics.identify("userid", {
-  name: "Name Surname",
-  email: "name@website.com",
-  phone: "phone",
-  birthday: "birthday",
-  gender: "M",
-  avatar: "link to image",
-  title: "Owner",
+  name: "Alex Keener",
+  email: "alex@example.com",
+  phone: "+1-202-555-0146",
+  birthday: "01/24/1982",
+  gender: "Male",
+  avatar: "https://www.gravatar.com/avatar/alex",
+  title: "Mr",
 })
 ```
 
@@ -75,8 +75,8 @@ The `track` call allows you to record the customer events, i.e. the actions that
 A sample `track` call is as shown:
 
 ```javascript
-rudderanalytics.track("Event Name", {
-  Plan: "plan value",
+rudderanalytics.track("Order Completed", {
+  revenue: 77.6,
 })
 ```
 
