@@ -856,6 +856,12 @@ export const jsonData = [
             content: [],
           },
           {
+            key: "new-relic",
+            title: "New Relic",
+            link: "/destinations/analytics/new-relic/",
+            content: [],
+          },
+          {
             key: "pendo",
             title: "Pendo",
             link: "/destinations/analytics/pendo/",
@@ -1097,6 +1103,12 @@ export const jsonData = [
             content: [],
           },
           {
+            key: "revenue-cat",
+            title: "Revenue Cat",
+            link: "/destinations/marketing/revenue-cat/",
+            content: [],
+          },
+          {
             key: "sfmc",
             title: "Salesforce Marketing Cloud",
             link: "/destinations/marketing/sfmc/",
@@ -1278,6 +1290,12 @@ export const jsonData = [
             key: "reddit-pixel",
             title: "Reddit Pixel",
             link: "/destinations/advertising/reddit-pixel/",
+            content: [],
+          },
+          {
+            key: "snapchat-conversion",
+            title: "Snapchat Conversion",
+            link: "/destinations/advertising/snapchat-conversion/",
             content: [],
           },
           {

@@ -792,6 +792,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "new-relic",
+    title: "New Relic",
+    link: "/destinations/analytics/new-relic/",
+    content: [],
+  },
+  {
     key: "quantummetric",
     title: "Quantum Metric",
     link: "/destinations/analytics/quantummetric/",
@@ -1014,6 +1020,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "revenue-cat",
+    title: "Revenue Cat",
+    link: "/destinations/advertising/revenue-cat/",
+    content: [],
+  },
+  {
     key: "customer.io",
     title: "Customer.io",
     link: "/destinations/marketing/customer.io/",
@@ -1215,6 +1227,12 @@ export const postNavList = [
     key: "snap-pixel",
     title: "Snap Pixel",
     link: "/destinations/advertising/snap-pixel/",
+    content: [],
+  },
+  {
+    key: "snapchat-conversion",
+    title: "Snapchat Conversion",
+    link: "/destinations/advertising/snapchat-conversion/",
     content: [],
   },
   {
