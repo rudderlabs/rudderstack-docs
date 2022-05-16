@@ -134,6 +134,137 @@ You can speed-up your warehouse uploads by using the following parameters:
   </tr>
 </table>
 
+### How namespace get’s populated for WareHouse?
+
+ Namespace + Database configuration is present
+
+- For clickhouse destination, we pick the database configuration.
+- For other destinations, if namespace is specified we pick it up.
+
+RSERVER_WAREHOUSE_(**DEST_TYPE**)_CUSTOM_DATA_SET_PREFIX
+
+- If this is present, we provide the namespace as (DEST_TYPE)_(CUSTOM_DATA_SET_PREFIX)_(SOURCE_NAME)
+- Examples:
+
+```
+Environment:
+RSERVER_WAREHOUSE_RS_CUSTOM_DATA_SET_PREFIX=”<some_random_value>”
+RSERVER_WAREHOUSE_SNOWFLAKE_CUSTOM_DATA_SET_PREFIX=”<some_random_value>”
+
+Output:
+RS_<some_random_value>_<source_name>
+SNOWFLAKE_<some_random_value>_<source_name>
+```
+
+IF NOTHING IS SPECIFIED
+
+- On first sync execution, we persist the namespace for the given connection (source,destination) and for subsequent syncs, we continue using the same namespace.
+- We pick the source name if no namespace is configured.
+
+
+### How Rudderstack configures table names and column names?
+
+Table names
+
+```json
+{
+  "userId": "user123",
+  "event": "Product Purchased",
+  "properties": {
+    "name": "Rubik's Cube",
+    "revenue": 4.99
+  },
+  "context": {
+    "ip": "14.5.67.21"
+  },
+  "timestamp": "2020-02-02T00:23:09.544Z"
+}
+```
+- Table names follow’s snake case convention. Here in this particular case, it get’s converted to **product_purchased.**
+
+Truncation logic:
+
+- For DataLake (**S3 DATALAKE, GCS DATALAKE, AZURE DATALAKE**) destinationS, there is not limit being set.
+- For **postgres destination,** it is limited to 63 characters.
+- For **others destination**, it is limited to 127 characters.
+
+column names
+### How RudderStack normalizes Arrays and Complex event properties in the warehouse schema?
+
+RudderStack flattens event properties and converts to snake case convention and each of these event properties will act as a columns for the warehouse.
+
+1. Normal properties
+
+Input
+
+```json
+{
+  product: {
+    name: "iPhone",
+    version: 11
+  }
+}
+```
+
+
+Output
+
+```json
+1. product_name : "iPhone"
+2. product_version : 11
+```
+
+2. Array properties
+
+Input
+
+```json
+{
+  products: [
+    {
+      name: "iPhone",
+      version: 11
+    },
+    {
+      name: "Android",
+      version: 16
+    }
+  ]
+}
+```
+
+
+Output
+
+```json
+1. products: "[{ \"name\": \"iPhone\", \"version\": 11  },  { \"name\": \"Android\", \"version\": 16  }]"
+```
+
+3. Complex properties
+
+Input
+
+```json
+{
+  products: {
+    iPhone: {
+      version: 11
+    },
+    Android: {
+      version: 16
+    }
+  }
+}
+```
+
+
+Output
+
+```json
+1. products_i_phone_version : 11
+2. products_android_version : 16
+```
+
 ## Contact us
 
 For any other queries on the RudderStack warehouse integrations, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
