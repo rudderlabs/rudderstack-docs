@@ -1,0 +1,249 @@
+---
+# slug: "/docs/destinations/advertising/snapchat-conversion"
+title: "Snapchat Conversion"
+description: Step-by-step guide on sending your event data from RudderStack to Snapchat via its Conversions API.
+---
+
+# Snapchat Conversion
+
+Snapchat's [Conversions API](https://businesshelp.snapchat.com/s/article/conversions-api?language=en_US) lets you send your web, mobile, and offline events to Snapchat via a S2S (server-to-server) integration. You can then leverage this data to optimize your Snapchat ad campaigns and measure user conversions effectively.
+
+RudderStack supports Snapchat Conversion as a destination where you can send your event data seamlessly.
+
+<div class="warningBlock">
+
+The events should be generated at least 28 days before to be eligible for reporting via the Conversions API.
+</div>
+
+<div class="successBlock">
+
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/">GitHub repository</a>.
+</div>
+
+## Getting started
+
+Before configuring Snapchat Conversion as a destination in RudderStack, verify if the source platform is supported by referring to the table below:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     |  -            | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
+<div class="infoBlock">
+
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to Snapchat Conversion, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Snapchat Conversion**.
+2. Assign a name to your destination and click on **Next**.
+
+## Connection settings
+
+To successfully configure Snapchat Conversion as a destination, configure the following settings:
+
+<img src="../../assets/event-stream-destinations/snapchat-conversion-connection-settings.png" alt="Snapchat Conversion connection settings"/>
+
+- **API Token**: Enter your API token generated from your Snapchat dashboard.
+
+<div class="infoBlock">
+
+For more information on getting your API token, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+- **Pixel ID**: Enter your Snap Pixel ID. This is required for sending the web and offline events.
+
+<div class="infoBlock">
+
+For more information on getting your Snap Pixel ID, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+- **Snap App ID**: Enter your Snapchat App ID. This is required for sending the app events.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Generate your Snap App ID</a> guide for more information on generating the Snap App ID.
+</div>
+
+- **App ID**: Enter the unique ID associated with your application. This is required for sending the app events.
+
+<div class="warningBlock">
+
+The <strong>App ID</strong> is different from <strong>Snap App ID</strong>. It should be numeric for iOS and in the human-interpretable string format in case of Android.
+
+For more information, refer to the <a href="https://marketingapi.snapchat.com/docs/conversion.html#conversion-parameters">Conversions API reference</a>.
+</div>
+
+## Track
+
+The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) event lets you capture user events along with the properties associated with them.
+
+RudderStack tracks and sends the web, mobile, and offline events to Snapchat via the [`conversion`](https://tr.snapchat.com/v2/conversion) endpoint.
+
+<div class="warningBlock">
+
+RudderStack uses Bearer authentication leveraging the Snap API token for authenticating all the requests. OAuth is not supported currently.
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Order Completed", {
+  order_id: "1234",
+  currency: "USD",
+  products: [{
+      product_id: "345676543",
+      price: 7.99
+    },
+  ],
+}, {
+  context: {
+    traits: {
+      email: "alex@example.com",
+      phone: "+1-202-555-0146"
+
+    }
+  }
+})
+```
+
+<div class="infoBlock">
+
+Make sure to pass at least one of the required fields from the below:
+<ul>
+  <li><code class="inline-code">email</code></li>
+  <li><code class="inline-code">phone</code></li>
+  <li><code class="inline-code">idfa</code></li>
+  <li><code class="inline-code">ip</code> and <code class="inline-code">userAgent</code></li>
+  </ul>
+</div>
+
+
+RudderStack checks the `eventConversionType` event property to determine the type of event to send to Snap Conversion (web, mobile, or offline) as specified below:
+
+```
+web -> "WEB",
+mobile -> "MOBILE_APP",
+mobile_app -> "MOBILE_APP",
+offline -> "OFFLINE"
+```
+
+<div class="infoBlock">
+
+Make sure you specify the values in the exact format.
+</div>
+
+If `eventConversionType` is not found in the event, RudderStack checks if `channel` is present. If `channel` is absent too, RudderStack automatically sets `eventConversionType` to `OFFLINE`.
+
+An example highlighting the use of `eventConversionType` is shown below:
+
+```javascript
+
+rudderanalytics.track("Products Searched", {
+query: "HDMI cable",
+eventConversionType: "mobile"
+});
+```
+
+RudderStack tracks the following properties and maps them to the corresponding Snapchat Conversion properties:
+
+| **RudderStack property** | **Snapchat Conversion property** |
+|:--------------------------------|:--------------------------|
+| `properties.order_id`<br />`properties.checkout_id` | `transaction_id` |
+| `context.page.url`<br />`properties.url` | `page_url` |
+| `properties.event` | `event_type` |
+| `properties.event_tag` | `event_tag` |
+| `properties.eventConversionType` | `event_conversion_type` |
+| `properties.quantity` | `number_items` |
+| `properties.currency` | `currency` |
+| `properties.category` | `category` |
+| `properties.query` | `search_string` |
+| `properties.products.price`<br />`properties.price`<br />`properties.value`<br />`properties.revenue` | `price` |
+| `properties.product_id`<br />`properties.products.product_id` | `item_ids` |
+| `properties.SignUpMethod`<br />`properties.sign_up_method` | `sign_up_method` |
+| `properties.client_dedup_id` | `client_dedup_id` |
+
+
+### Event mapping
+
+RudderStack maps the following e-commerce events to the corresponding Snapchat Conversion events:
+
+| **RudderStack event** | **Snapchat Conversion event** |
+|:--------------------------------|:--------------------------|
+| Products Searched | `SEARCH` |
+| Product List Viewed | `VIEW_CONTENT` |
+| Promotion Viewed | `AD_VIEW` |
+| Promotion Clicked | `AD_CLICK` |
+| Product Viewed | `VIEW_CONTENT` |
+| Product Added | `ADD_CART` |
+| Checkout Started | `START_CHECKOUT` |
+| Payment Info Entered | `ADD_BILLING` |
+| Order Completed | `PURCHASE` |
+| Product Added to Wishlist | `ADD_TO_WISHLIST` |
+
+RudderStack **does not map** the following events and passes their properties as is, without any modification:
+
+- `SIGN_UP`
+- `APP_OPEN`
+- `APP_INSTALL`
+- `SAVE`
+- `SUBSCRIBE`
+- `COMPLETE_TUTORIAL`
+- `INVITE`
+- `LOGIN`
+- `SHARE`
+- `RESERVE`
+- `ACHIEVEMENT_UNLOCKED`
+- `SPENT_CREDITS`
+- `RATE`
+- `START_TRIAL`
+- `LIST_VIEW`
+- `PAGE_VIEW`
+
+## FAQ
+
+### Where can I find the Conversions API token?
+
+To get your Snap Conversions API token, follow these steps:
+
+1. Go to your [Snap Ads Manager](https://ads.snapchat.com/) account.
+2. Click on **Create Ads** option in the top left section of the dashboard and go to **Business Details** > **Conversions API Tokens**. You will find all the API tokens associated with your account listed here.
+3. To generate a new Conversions API token, click on **Generate Token**.
+
+<img src="../../assets/event-stream-destinations/snap-conversions-api-token.png" alt="Snap Conversions API token" />
+
+### Where can I find the Pixel ID associated with my account?
+
+To get your Snap Conversions Pixel ID, follow these steps:
+
+1. Go to your [Snap Ads Manager](https://ads.snapchat.com/) account.
+2. Click on **Create Ads** option in the top left section of the dashboard and go to **Events Manager**.
+3. Then, click on **Setup Snap Pixel**. You will see the following options:
+
+<img src="../../assets/event-stream-destinations/snap-conversions-setup-pixel.png" alt="Snap Conversions set up Pixel" />
+
+4. Select **Pixel Code** and click on **Continue**.
+5. You will see the Snap Pixel ID at the top left of the resulting window, as shown:
+
+<img src="../../assets/event-stream-destinations/snap-conversions-pixel-id.png" alt="Snap Conversions Pixel ID" />
+
+### Where can I find the App ID associated with my application?
+
+To get your Snap Conversions Pixel ID, follow these steps:
+
+1. Go to your [Snap Ads Manager](https://ads.snapchat.com/) account.
+2. Click on **Create Ads** option in the top left section of the dashboard and go to **Apps**. You will find the **App ID** associated with all your apps listed here.
+
+To add a new app, follow these steps:
+
+1. Click on **Add an App**. 
+2. You can either create a new Snap App ID or importing an existing App ID. 
+3. Then, enter your **App Name** and the relevant app ID/URL depending on your app's platform.
+4. Finally, add any postbacks and click on **Continue** to finish the setup.
+
+<img src="../../assets/event-stream-destinations/snap-conversions-add-new-app.png" alt="Snap Conversions add new app" />
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
