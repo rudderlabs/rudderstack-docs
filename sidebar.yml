@@ -118,9 +118,6 @@
   - key: appsflyer
     label: AppsFlyer
     link: "/stream-sources/appsflyer"
-  - key: attribution
-    label: Attribution
-    link: "/stream-sources/attribution"
   - key: auth0
     label: Auth0
     link: "/stream-sources/auth0"
@@ -324,6 +321,9 @@
   - key: attribution
     label: Attribution
     link: "/destinations/attribution"
+    - key: attribution
+      label: Attribution
+      link: "/destinations/attribution/attribution"
   - key: webhooks
     label: Webhooks
     link: "/destinations/webhooks"
