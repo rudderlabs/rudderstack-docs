@@ -16,7 +16,7 @@ You will need access to your domain’s DNS settings as well as your CDN setting
 
 <div class="infoBlock">
 
-The examples in this guide use CloudFront. However, the settings should be similar regardless of your CDN.
+The examples in this guide use AWS CloudFront. However, the settings should be similar regardless of your CDN.
 </div>
 
 ## Endpoint details
@@ -258,6 +258,14 @@ You can choose your subdomain or use a wildcard domain <code class="inline-code"
 
 The AWS Certificate Manager will guide you through the verification by email or DNS TXT records. You will be able to choose your own domain for SSL certificates once verified.
 </div>
+
+## Settings for GCP
+
+If you're setting up a custom domain using the [GCP External HTTPS Load Balancer](https://cloud.google.com/load-balancing/docs/https), make sure you [add a custom request header](https://cloud.google.com/load-balancing/docs/https/custom-headers#working-with-request) in your backend service config, as shown:
+
+| Header name | Value |
+| :-------------| :------|
+| `Host` | `cdn.rudderlabs.com` |
 
 ## Contact us
 
