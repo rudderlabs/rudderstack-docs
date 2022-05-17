@@ -181,7 +181,7 @@ Refer to the following settings depending on your cloud provider:
     <ul>
       <li><strong>Staging S3 Storage Bucket Name</strong>: Specify the name of your S3 bucket where RudderStack will store the data before loading it into Snowflake.</li>
       <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
-      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-cloud-storage-integration-with-snowflake">Configuring cloud storage integration with Snowflake</a> section for details.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
       <li><strong>AWS Access Key ID</strong>: Enter your AWS access key ID obtained from the AWS console.</li>
       <li><strong>AWS Secret Access Key</strong>:  Enter the AWS secret access key.  Refer to this <a href="https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#setting-up-amazon-s3">Permissions</a> section for more information. </li>
       <li><strong>Enable Server-side Encryption for S3</strong>: Toggle on this setting to enable server-side encryption for your S3 bucket.</li>
@@ -277,7 +277,8 @@ Record the value for <code class="inline-code">&lt;integration_name&gt;</code>.
 
 4. Retrieve the AWS IAM user for your Snowflake account as shown:
 
-```sql
+```
+Copy
 DESC INTEGRATION <integration_name>;
 ```
 
