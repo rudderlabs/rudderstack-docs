@@ -134,37 +134,38 @@ You can speed-up your warehouse uploads by using the following parameters:
   </tr>
 </table>
 
-### How namespace get’s populated for WareHouse?
+### How is the Namespace field populated for a WareHouse destination?
 
- Namespace + Database configuration is present
+The Namespace field is populated based on the presence of following:
 
-- For clickhouse destination, we pick the database configuration.
-- For other destinations, if namespace is specified we pick it up.
+- If the Namespace and Database fields are present:
+  - Database field is picked up for Clickhouse destination.
+  - Namespace field is picked up for all the other destinations.
 
-RSERVER_WAREHOUSE_(**DEST_TYPE**)_CUSTOM_DATA_SET_PREFIX
-
-- If this is present, we provide the namespace as (DEST_TYPE)_(CUSTOM_DATA_SET_PREFIX)_(SOURCE_NAME)
-- Examples:
+- If `RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX` parameter is present, the namespace is picked up as (DEST_TYPE)_(CUSTOM_DATA_SET_PREFIX)_(SOURCE_NAME). For example:
 
 ```
 Environment:
-RSERVER_WAREHOUSE_RS_CUSTOM_DATA_SET_PREFIX=”<some_random_value>”
-RSERVER_WAREHOUSE_SNOWFLAKE_CUSTOM_DATA_SET_PREFIX=”<some_random_value>”
+RSERVER_WAREHOUSE_RS_CUSTOM_DATA_SET_PREFIX="<random_value>"
+RSERVER_WAREHOUSE_SNOWFLAKE_CUSTOM_DATA_SET_PREFIX="<random_value>"
 
 Output:
-RS_<some_random_value>_<source_name>
-SNOWFLAKE_<some_random_value>_<source_name>
+RS_<random_value>_<source_name>
+SNOWFLAKE_<random_value>_<source_name>
 ```
 
-IF NOTHING IS SPECIFIED
+- If none of the above are specified:
+  - On first sync execution, we persist the namespace for the given connection (source,destination) and for subsequent syncs, we continue using the same namespace.
+  - The source name is picked if no namespace is configured.
 
-- On first sync execution, we persist the namespace for the given connection (source,destination) and for subsequent syncs, we continue using the same namespace.
-- We pick the source name if no namespace is configured.
 
+### How does Rudderstack configure table names and column names?
 
-### How Rudderstack configures table names and column names?
+**Table names**
 
-Table names
+The table names are picked up from the event names and are modified to follow the snake case convention (for example, source name -> source_name). 
+
+For the following sample snippet, the table name is set as **product_purchased**.
 
 ```json
 {
@@ -180,24 +181,26 @@ Table names
   "timestamp": "2020-02-02T00:23:09.544Z"
 }
 ```
-- Table names follow’s snake case convention. Here in this particular case, it get’s converted to **product_purchased.**
 
-Truncation logic:
+The table name truncation logic is as follows:
 
-- For DataLake (**S3 DATALAKE, GCS DATALAKE, AZURE DATALAKE**) destinationS, there is not limit being set.
-- For **postgres destination,** it is limited to 63 characters.
-- For **others destination**, it is limited to 127 characters.
+- For **PostgreSQL**, the table name is truncated after 63 characters.
+- For **Data Lake** destinations (**S3 Data Lake, GCS Data Lake, Azure Data Lake**), there is no set limit.
+- For **other** destinations, the table name is truncated after 127 characters.
 
-column names
-### How RudderStack normalizes Arrays and Complex event properties in the warehouse schema?
+**Column names**
 
-RudderStack flattens event properties and converts to snake case convention and each of these event properties will act as a columns for the warehouse.
+The column names are picked up from the event properties and are modified to follow the snake case convention. The following FAQ explains how the column names are configured based on normal, array and complex event properties.
 
-1. Normal properties
+### How does RudderStack normalize arrays and complex event properties in the warehouse schema?
+
+RudderStack flattens out the event properties and converts them to snake case (for example, source name -> source_name). Further, each of these event properties act as a column for the warehouse.
+
+1. The below example shows how the normal properties are normalized:
 
 Input
 
-```json
+```javascript
 {
   product: {
     name: "iPhone",
@@ -206,19 +209,18 @@ Input
 }
 ```
 
-
 Output
 
-```json
-1. product_name : "iPhone"
-2. product_version : 11
+```javascript
+product_name : "iPhone"
+product_version : 11
 ```
 
-2. Array properties
+2. The below example shows how the array properties are normalized:
 
 Input
 
-```json
+```javascript
 {
   products: [
     {
@@ -233,18 +235,17 @@ Input
 }
 ```
 
-
 Output
 
-```json
-1. products: "[{ \"name\": \"iPhone\", \"version\": 11  },  { \"name\": \"Android\", \"version\": 16  }]"
+```javascript
+products: "[{ \"name\": \"iPhone\", \"version\": 11  },  { \"name\": \"Android\", \"version\": 16  }]"
 ```
 
-3. Complex properties
+3. The below example shows how the complex properties are normalized:
 
 Input
 
-```json
+```javascript
 {
   products: {
     iPhone: {
@@ -257,12 +258,11 @@ Input
 }
 ```
 
-
 Output
 
-```json
-1. products_i_phone_version : 11
-2. products_android_version : 16
+```javascript
+products_i_phone_version : 11
+products_android_version : 16
 ```
 
 ## Contact us
