@@ -2129,9 +2129,97 @@ export const jsonData = [
           {
             key: "rudderstack-jamstack-integration",
             title: "How to Integrate RudderStack with Your JAMstack Site",
-            link:
-              "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
-            content: [],
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
+            content: [
+              {
+                key: "rudderstack-angular-integration",
+                title: "Angular",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-angular-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-astro-integration",
+                title: "Astro.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-astro-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-eleventy-integration",
+                title: "Eleventy",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-eleventy-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-ember-integration",
+                title: "Ember.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-ember-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-gatsby-integration",
+                title: "Gatsby",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-gatsby-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-hugo-integration",
+                title: "Hugo",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-hugo-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-jekyll-integration",
+                title: "Jekyll",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-jekyll-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-nextjs-integration",
+                title: "Next.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-nuxtjs-integration",
+                title: "Nuxt.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nuxtjs-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-svelte-integration",
+                title: "Svelte",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-svelte-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-vue-integration",
+                title: "Vue.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-vue-integration/",
+                content: [
+
+                ],
+              },
+            ],
           },
         ],
       },
