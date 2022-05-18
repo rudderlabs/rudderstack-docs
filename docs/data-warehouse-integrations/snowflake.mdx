@@ -308,9 +308,15 @@ Note that `<snowflake_user_arn>` is the `STORAGE_AWS_ROLE_ARN` option seen in St
 6. Grant integration access to the Snowflake role you created in the [Creating a role for RudderStack](#creating-a-role-for-rudderStack) section by running the following command:
 
 ```sql
-GRANT usage ON integration <integration_name> TO ROLE "RUDDER"
+GRANT usage ON integration <integration_name> TO ROLE "RUDDER";
 ```
-Here, `<integration_name>` is the integration created in the Step 3.
+Here, `<integration_name>` is the name of the integration created in the Step 3.
+
+Note that while sending the data to Snowflake, RudderStack uses an external location instead of a stage in its queries. Hence, the following command listed in the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-6-create-an-external-stage) is **not required**:
+
+```sql
+GRANT CREATE STAGE ON SCHEMA PUBLIC public to role myrole;
+```
 
 ### Azure
 
