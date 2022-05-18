@@ -448,6 +448,31 @@ If you have your deployment in the EU region, you can whitelist only the followi
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
+## FAQ
+
+### While configuring the Snowflake destination, what should I enter in the Account field?
+
+While configuring Snowflake as a destination in RudderStack, you need to enter your <Link to="/data-warehouse-integrations/snowflake/#connection-settings">Snowflake connection credentials</Link> which includes the **Account** field, as shown below:
+
+<img src="../assets/dw-integrations/snowflake-account-id-example.png" alt="Snowflake account ID example" />
+
+The **Account** field corresponds to the account ID of your Snowflake warehouse and is a part of the Snowflake URL.
+
+The following examples illustrate the slight differences in the Snowflake account ID for various cloud providers:
+
+| Account ID example            | Corresponding Snowflake URL                                                    | Snowflake cloud provider                                        |
+| :-------------------------- | :--------------------------------------------------------------- | :-------------------------------------------------------------- |
+| `qya56091.us-east-1`<br /><br />  `qya56091.us-east-2.aws`        | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`  <br /><br />  `https://`**`qya56091.us-east-2.aws`**`.snowflakecomputing.com`   | AWS                                   |
+| `rx18795.east-us-2.azure` | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure  |
+| `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
+
+<div class="warningBlock">
+
+In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region accounts and hence must be included in the <strong>Account</strong> field above. 
+
+For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
+</div>
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
