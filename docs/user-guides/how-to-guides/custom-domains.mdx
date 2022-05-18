@@ -259,6 +259,19 @@ You can choose your subdomain or use a wildcard domain <code class="inline-code"
 The AWS Certificate Manager will guide you through the verification by email or DNS TXT records. You will be able to choose your own domain for SSL certificates once verified.
 </div>
 
+## FAQ
+
+### While accessing the custom domain URL for JavaScript SDK, I am getting the Access Denied error. What does this mean?
+
+The **Access Denied** error might be encountered on accessing the parent folder for JavaScript SDK without appending the required device-mode SDK URL to it, such as:
+
+<script src="https://subdomain.yourdomain.com/v1.1/js-integrations"></script>
+
+To overcome this, append the URL for required device-mode destination. For example, if you want to access Google Analytics, the custom URL should be:
+
+<script src="https://subdomain.yourdomain.com/v1.1/js-integrations/GA.min.js"></script>
+
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
