@@ -134,34 +134,30 @@ You can speed-up your warehouse uploads by using the following parameters:
   </tr>
 </table>
 
-### How is the Namespace field populated for a WareHouse destination?
+### How is the Namespace field populated for a Warehouse destination?
 
-The Namespace field is populated based on the presence of following:
+The Namespace field depends on the following attributes:
 
 - If the Namespace and Database fields are present:
-  - Database field is picked up for Clickhouse destination.
-  - Namespace field is picked up for all the other destinations.
+  - For Clickhouse destination, the Database field is populated as Namespace.
+  - For all the other destinations, the Namespace field is populated as it is.
 
-- If `RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX` parameter is present, the namespace is picked up as (DEST_TYPE)_(CUSTOM_DATA_SET_PREFIX)_(SOURCE_NAME). For example:
+- If `RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX` parameter is present, the Namespace is populated as `(DEST_TYPE)_(CUSTOM_DATA_SET_PREFIX)_(SOURCE_NAME)`. For example:
 
 ```
-Environment:
+Parameter value:
 RSERVER_WAREHOUSE_RS_CUSTOM_DATA_SET_PREFIX="<random_value>"
 RSERVER_WAREHOUSE_SNOWFLAKE_CUSTOM_DATA_SET_PREFIX="<random_value>"
 
-Output:
+Namespace:
 RS_<random_value>_<source_name>
 SNOWFLAKE_<random_value>_<source_name>
 ```
 
-- If none of the above are specified:
-  - On first sync execution, we persist the namespace for the given connection (source,destination) and for subsequent syncs, we continue using the same namespace.
-  - The source name is picked if no namespace is configured.
+- If none of the above are specified, the source name is populated as Namespace for the first sync and picked up from cache for the subsequent syncs. In case the source name is changed, the Namespace still remains the same as it is picked from cache. In order to update the Namespace as the new source name, you need to configure a new source.
 
 
-### How does Rudderstack configure table names and column names?
-
-**Table names**
+### How does Rudderstack configure table names?
 
 The table names are picked up from the event names and are modified to follow the snake case convention (for example, source name -> source_name). 
 
@@ -188,17 +184,11 @@ The table name truncation logic is as follows:
 - For **Data Lake** destinations (**S3 Data Lake, GCS Data Lake, Azure Data Lake**), there is no set limit.
 - For **other** destinations, the table name is truncated after 127 characters.
 
-**Column names**
-
-The column names are picked up from the event properties and are modified to follow the snake case convention. The following FAQ explains how the column names are configured based on normal, array and complex event properties.
-
-### How does RudderStack normalize arrays and complex event properties in the warehouse schema?
+### How does Rudderstack configure the column names? / How does RudderStack normalize arrays and complex event properties in the warehouse schema? 
 
 RudderStack flattens out the event properties and converts them to snake case (for example, source name -> source_name). Further, each of these event properties act as a column for the warehouse.
 
 1. The below example shows how the normal properties are normalized:
-
-Input
 
 ```javascript
 {
@@ -209,7 +199,7 @@ Input
 }
 ```
 
-Output
+Normalized properties (Column names)
 
 ```javascript
 product_name : "iPhone"
@@ -217,8 +207,6 @@ product_version : 11
 ```
 
 2. The below example shows how the array properties are normalized:
-
-Input
 
 ```javascript
 {
@@ -235,15 +223,13 @@ Input
 }
 ```
 
-Output
+Normalized property (Column name)
 
 ```javascript
 products: "[{ \"name\": \"iPhone\", \"version\": 11  },  { \"name\": \"Android\", \"version\": 16  }]"
 ```
 
 3. The below example shows how the complex properties are normalized:
-
-Input
 
 ```javascript
 {
@@ -258,7 +244,7 @@ Input
 }
 ```
 
-Output
+Normalized properties (Column names)
 
 ```javascript
 products_i_phone_version : 11
