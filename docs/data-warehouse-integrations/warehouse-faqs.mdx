@@ -16,10 +16,8 @@ Rudderstack lets you choose when to sync the latest data into the warehouse. The
 Yes, there is - you can configure the below values in your `config.yaml` file:
 
 ```
-#If set to true this will ignore syncFrequency and syncStartingAt values which are configured in UI. By default this is false.
-warehouseSyncFreqIgnore = true 
-#This field lets you control syncPeriod if the above field set to true.
-uploadFreqInS=1800 
+warehouseSyncFreqIgnore = true #if set true this will ignore syncFrequency and syncStartingAt values which are configured in UI. By default this is false
+uploadFreqInS=1800 #This field lets you control syncPeriod if above field set to true 
 ```
 
 ### Where can I view the status of my data load?
