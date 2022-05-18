@@ -9,17 +9,18 @@ description: >-
 
 Tracking Plans let you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
 
-<div class="warningBlock">
+<div class="infoBlock">
   
-
-The Tracking Plans currently support only the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/"><code class="inline-code">track</code></a> events sent to the <strong>warehouse destinations</strong>.
+Currently, RudderStack propagates any context related to the tracking plan violation <strong>only to the data warehouses</strong> and not all the destinations. You can use this context in the transformations for filtering or modifying the events before they reach the destination.
+<br /><br />
+If you have defined the <Link to="/data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">global settings</Link> to <strong>drop unplanned events</strong>, the events that are explicitly dropped via the tracking plan will not reach any destination.
 </div>
 
 ## Tracking Plan features
 
 With the help of a Tracking Plan, you can:
 
-* Define specific event names and properties for each of your `track`, `group`, and `identify` calls.
+* Define specific event names and properties for your `track` calls.
 * Specify whether a property/attribute is required and assign a particular data type.
 * Have better control of your data streaming by supporting a versioning system.
 * Use the [Data Governance API](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/) to evaluate your inbound events and metadata, and compare them with your plans.
@@ -29,7 +30,7 @@ With the help of a Tracking Plan, you can:
 Refer to the <a href="https://rudderstack.com/blog/dogfooding-at-rudderstack-tracking-plans-part-1/">RudderStack Tracking Plans</a> blog post for more information on Tracking Plans and how to use them effectively.
 </div>
 
-## Quickstart
+## Quick start
 
 To start using the Tracking Plans, follow these steps:
 
@@ -77,14 +78,16 @@ The Tracking Plans documentation is divided into the following sections:
 
 ## FAQ
 
-### Which calls are supported for the RudderStack Tracking Plans?
+### Which calls are supported by the tracking plans?
 
 The Tracking Plans feature currently supports only [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) events.
 
-### Are the Tracking Plans supported for all the destinations?
+### Does RudderStack propagate the context related to any tracking plan violations?
 
-No - the Tracking Plans feature is currently supported only for the [warehouse destinations](https://rudderstack.com/docs/data-warehouse-integrations/).
+Currently, RudderStack propagates any context related to the tracking plan violation to the <strong>data warehouses</strong> and not all the destinations.
+
+You can use this context in the transformations for filtering or modifying the events before they reach the destination. If you have defined the <Link to="data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or get in touch with your Account Manager.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or get in touch with your Account Manager.
