@@ -475,6 +475,12 @@ export const jsonData = [
         ],
       },
       {
+        key: "hubspot-v2",
+        title: "HubSpot v2",
+        link: "/cloud-extract-sources/hubspot-v2/",
+        content: [],
+      },
+      {
         key: "intercom",
         title: "Intercom",
         link: "/cloud-extract-sources/intercom/",
