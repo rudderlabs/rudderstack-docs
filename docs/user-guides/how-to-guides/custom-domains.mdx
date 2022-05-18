@@ -267,6 +267,28 @@ If you're setting up a custom domain using the [GCP External HTTPS Load Balancer
 | :-------------| :------|
 | `Host` | `cdn.rudderlabs.com` |
 
+## FAQ
+
+### I am getting the Access Denied error on using a custom domain URL for JavaScript SDK. What might be the reason?
+
+The **Access Denied** error is encountered if a custom domain URL accesses the JavaScript SDK's parent folder, as below:
+
+```markup
+<script src="https://subdomain.yourdomain.com/v1.1/js-integrations"></script>
+```
+
+The correct custom domain URL to access the JavaScript SDK should be in the following format:
+
+```markup
+<script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
+```
+
+The correct custom domain URL to access any device-mode SDK (for example, Google Analytics) should be in the following format: 
+
+```markup
+<script src="https://subdomain.yourdomain.com/v1.1/js-integrations/GA.min.js"></script>
+```
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
