@@ -9,12 +9,9 @@ description: >-
 
 Tracking Plans let you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
 
-<div class="infoBlock">
-  
-Currently, RudderStack propagates any context related to the tracking plan violation <strong>only to the data warehouses</strong> and not all the destinations. You can use this context in the transformations for filtering or modifying the events before they reach the destination.
-<br /><br />
-If you have defined the <Link to="/data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">global settings</Link> to <strong>drop unplanned events</strong>, the events that are explicitly dropped via the tracking plan will not reach any destination.
-</div>
+<a href="https://rudderstack.com/enterprise-quote" target="_blank">
+<img src="https://img.shields.io/static/v1?label=Plan&message=Enterprise&color=blueviolet" alt="Github Badge" class="githubBadge" />
+</a>
 
 ## Tracking Plan features
 
@@ -57,6 +54,12 @@ You can also refer to the <a href="https://www.rudderstack.com/docs/data-governa
 
 We also have the Data Governance API, which is a descriptive API that tells you your current schemas and data volumes going through Rudderstack.
 
+## How RudderStack propagates context related to tracking plan violations
+  
+Currently, RudderStack propagates any context related to the tracking plan violations **only to the data warehouses** but not all the destinations. You can use this context in your <Link to="/transformations">Transformations</Link> for filtering or modifying the events before they reach the destination.
+
+If you have defined the <Link to="/data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">tracking plan global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
+
 ## Useful links
 
 The Tracking Plans documentation is divided into the following sections:
@@ -81,12 +84,6 @@ The Tracking Plans documentation is divided into the following sections:
 ### Which calls are supported by the tracking plans?
 
 The Tracking Plans feature currently supports only [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) events.
-
-### Does RudderStack propagate the context related to any tracking plan violations?
-
-Currently, RudderStack propagates any context related to the tracking plan violation to the <strong>data warehouses</strong> and not all the destinations.
-
-You can use this context in the transformations for filtering or modifying the events before they reach the destination. If you have defined the <Link to="data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
 
 ## Contact us
 

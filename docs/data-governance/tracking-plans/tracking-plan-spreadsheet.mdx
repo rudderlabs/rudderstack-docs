@@ -228,7 +228,7 @@ These columns will then propagate to both your data warehouse as well as cloud d
 
 ### Does RudderStack propagate the context related to any tracking plan violations?
 
-Yes. Currently, RudderStack propagates any context related to the tracking plan violation to the <strong>data warehouses</strong> and not all the destinations.
+Currently, RudderStack propagates any context related to the tracking plan violation to the <strong>data warehouses</strong> and not all the destinations.
 
 You can use this context in the transformations for filtering or modifying the events before they reach the destination. If you have defined the <Link to="data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
 
