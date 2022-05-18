@@ -118,9 +118,9 @@ The Tracking Plans feature currently supports only [`track`](https://www.rudders
 
 ### Does RudderStack propagate the context related to any tracking plan violations?
 
-Currently, RudderStack propagates any context related to the tracking plan violation to the <strong>data warehouses</strong> and not all the destinations.
+Currently, RudderStack propagates any context related to the tracking plan violations **only to the data warehouses** but not all the destinations. You can use this context in your <Link to="/transformations">Transformations</Link> for filtering or modifying the events before they reach the destination.
 
-You can use this context in the transformations for filtering or modifying the events before they reach the destination. If you have defined the <Link to="data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
+If you have defined the <Link to="/data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">tracking plan global settings</Link> such that **Allow unplanned events** is set to `FALSE`, the events that are explicitly dropped via the tracking plan will not reach any destination.
 
 ## Contact us
 
