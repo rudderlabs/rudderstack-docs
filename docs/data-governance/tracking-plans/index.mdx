@@ -9,10 +9,6 @@ description: >-
 
 Tracking Plans let you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
 
-<a href="https://rudderstack.com/enterprise-quote" target="_blank">
-<img src="https://img.shields.io/static/v1?label=Plan&message=Enterprise&color=blueviolet" alt="Github Badge" class="githubBadge" />
-</a>
-
 ## Tracking Plan features
 
 With the help of a Tracking Plan, you can:
@@ -54,36 +50,77 @@ You can also refer to the <a href="https://www.rudderstack.com/docs/data-governa
 
 We also have the Data Governance API, which is a descriptive API that tells you your current schemas and data volumes going through Rudderstack.
 
-## How RudderStack propagates context related to tracking plan violations
-  
-Currently, RudderStack propagates any context related to the tracking plan violations **only to the data warehouses** but not all the destinations. You can use this context in your <Link to="/transformations">Transformations</Link> for filtering or modifying the events before they reach the destination.
-
-If you have defined the <Link to="/data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">tracking plan global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
-
 ## Useful links
 
 The Tracking Plans documentation is divided into the following sections:
 
-<div class="pageRefWrapper">
-    <a href="tracking-plan-spreadsheet/">
-        <div class="pageRefBlock">
-            <h3>Tracking Plan Spreadsheet</h3>
-            <p>Detailed technical description of the Tracking Plan spreadsheet for configuring your Tracking Plan.</p>
-        </div>
-    </a>
-    <a href="https://www.rudderstack.com/docs/data-governance/ruddertyper/">
-        <div class="pageRefBlock">
-            <h3>RudderTyper</h3>
-            <p>Detailed technical description of the RudderTyper utility for generating strongly-typed library wrappers based on your Tracking Plan spec.</p>
-        </div>
-    </a>
-</div>
+<a class="pageRef" href="https://www.rudderstack.com/docs/data-governance/tracking-plans/tracking-plan-spreadsheet/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Tracking Plan Spreadsheet
+    </span>
+  </div>
+</a>
+
+<a class="pageRef" href="https://www.rudderstack.com/docs/data-governance/ruddertyper/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      RudderTyper
+    </span>
+  </div>
+</a>
 
 ## FAQ
 
 ### Which calls are supported by the tracking plans?
 
 The Tracking Plans feature currently supports only [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) events.
+
+### Does RudderStack propagate the context related to any tracking plan violations?
+
+Currently, RudderStack propagates any context related to the tracking plan violation to the <strong>data warehouses</strong> and not all the destinations.
+
+You can use this context in the transformations for filtering or modifying the events before they reach the destination. If you have defined the <Link to="data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
 
 ## Contact us
 

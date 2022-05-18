@@ -224,13 +224,11 @@ The  validation adds two new columns for each table and each row that specify:
 
 These columns will then propagate to both your data warehouse as well as cloud destinations. This lets you monitor the state of your violations and choose to act on them through manual operations or through the transformations.
 
-## FAQ
+## How RudderStack propagates context related to tracking plan violations
+  
+Currently, RudderStack propagates any context related to the tracking plan violations **only to the data warehouses** but not all the destinations. You can use this context in your <Link to="/transformations">Transformations</Link> for filtering or modifying the events before they reach the destination.
 
-### Does RudderStack propagate the context related to any tracking plan violations?
-
-Currently, RudderStack propagates any context related to the tracking plan violation to the <strong>data warehouses</strong> and not all the destinations.
-
-You can use this context in the transformations for filtering or modifying the events before they reach the destination. If you have defined the <Link to="data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
+If you have defined the <Link to="/data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">tracking plan global settings</Link> to **drop unplanned events**, the events that are explicitly dropped via the tracking plan will not reach any destination.
 
 ## Contact us
 
