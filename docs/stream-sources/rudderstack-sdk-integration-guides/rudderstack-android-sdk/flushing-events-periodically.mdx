@@ -1,10 +1,19 @@
 ---
 # slug: "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically"
-title: "Flushing Events Periodically"
-description: Detailed steps to flush events periodically from the RudderStack SDK’s internal database to Rudder Server.
+title: "Flushing Events"
+description: Detailed steps to flush events from the RudderStack SDK’s internal database to Rudder Server.
 ---
+# Flushing Events
 
-# Flushing Events Periodically
+Android SDK supports flushing events using the `flush()` API. It retrieves all the messages present in the database, divides them into individual batches and flushes them away to the Rudder Server.
+
+For example, if the `flushQueueSize` is 30 and there are 180 events in the database when the `flush()` method is called, the Android SDK will retrieve all those events and divide them into batches of 30 messages each, that is, total 6 batches. 
+
+If a batch fails for some reason, the remaining batches are dropped as well to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the server even after 3 retries. 
+
+ In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if exists). 
+
+## Flushing Events Periodically
 
 RudderStack supports periodic flushing of events from the Android SDK to RudderStack, irrespective of whether your app is opened or not. This ensures that the events that are triggered just before closing the app are sent from the device - even if the app is not opened by the user for a long time.
 
