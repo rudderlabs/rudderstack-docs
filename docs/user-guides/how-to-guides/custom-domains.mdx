@@ -133,7 +133,7 @@ Once your distribution is deployed, you will need to create a CNAME record in yo
 
 ## Serving the SDK
 
-Once the setup and DNS propagation is completed, you will be able to change the SDK URL, as shown:
+Once the setup and DNS propagation is completed, you can change the SDK URL, as shown:
 
 Before:
 
@@ -145,6 +145,16 @@ After:
 
 ```markup
 <script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
+```
+
+To <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link> (for example, Google Analytics), you can use the following URL: 
+
+```html
+<script>
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    destSDKBaseURL: "https://subdomain.yourdomain.com/v1.1/js-integrations/GA.min.js"
+});
+</script>
 ```
 
 <div class="infoBlock">
@@ -283,11 +293,16 @@ The correct custom domain URL to access the JavaScript SDK should be in the foll
 <script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
 ```
 
-The correct custom domain URL to access any device-mode SDK (for example, Google Analytics) should be in the following format: 
+The correct custom domain URL to <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link> (for example, Google Analytics) should be in the following format: 
 
-```markup
-<script src="https://subdomain.yourdomain.com/v1.1/js-integrations/GA.min.js"></script>
+```html
+<script>
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    destSDKBaseURL: "https://subdomain.yourdomain.com/v1.1/js-integrations/GA.min.js"
+});
+</script>
 ```
+
 
 ## Contact us
 
