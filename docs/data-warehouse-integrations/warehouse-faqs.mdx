@@ -134,7 +134,7 @@ You can speed-up your warehouse uploads by using the following parameters:
 
 ### How is the Namespace field populated for a Warehouse destination?
 
-The Namespace field depends on the following attributes:
+RudderStack sets the **Namespace** field depending on the following conditions:
 
 - If the Namespace and Database fields are present:
   - For Clickhouse destination, the Database field is populated as Namespace.
