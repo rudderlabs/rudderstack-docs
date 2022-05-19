@@ -26,9 +26,9 @@ macOS will be supported from the SDK version <strong>2.0.0</strong>.
 To set up the RudderStack Swift SDK, the following prerequisites must be met:
 
 - You will need to set up a [RudderStack account](https://app.rudderstack.com).
-- Set up an iOS source in the dashboard. For more information, follow the [Adding a Source and Destination in RudderStack](https://rudderstack.com/docs/connections/adding-source-and-destination-rudderstack/) guide.  You should then see a **Write Key** for this source, as shown:
+- Set up an iOS source in the dashboard. For more information, refer to the <Link to="/rudderstack-cloud/sources/">Sources</Link> guide.  You should then see a **Write Key** for this source, as shown:
 
-<img src="../../../assets/event-stream-sources/ios-sdk-1.png" alt="iOS source write key" />
+<img src="../../assets/event-stream-sources/ios-sdk-1.png" alt="iOS source write key" />
 
 - You also need a data plane URL. Follow <Link to="/rudderstack-cloud/dashboard-overview/#data-plane-url">Data plane URL</Link> section for more information on the data plane URL and where to get it.
 - Finally, you will need a Mac with the latest version of [Xcode](https://developer.apple.com/xcode/).
@@ -135,7 +135,7 @@ To initialize the RudderStack client, place the following code in your `AppDeleg
     <Tab>Swift</Tab>
   </TabList>
     <TabPanels>
-    <TabPanel>
+      <TabPanel>
 <span>
 
 ```objectivec
@@ -147,10 +147,9 @@ RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
 [[RSClient sharedInstance] configureWith:config];
 ```
 </span>
-
-A shared instance of <code class="inline-code">RSClient</code> is accessible after the initialization by <code class="inline-code">[RSClient sharedInstance]</code>.
-    </TabPanel>
-    <TabPanel>
+A shared instance of <code class="inline-code">RSClient</code> is accessible after the initialization via <code class="inline-code">[RSClient sharedInstance]</code>.
+      </TabPanel>
+      <TabPanel>
 <span>
 
 ```swift
@@ -162,24 +161,21 @@ let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
 RSClient.sharedInstance().configure(with: config)
 ```
 </span>
-
-A shared instance of <code class="inline-code">RSClient</code> is accesible after the initialization by <code class="inline-code">RSClient.sharedInstance()</code>.
-    </TabPanel>
+A shared instance of <code class="inline-code">RSClient</code> is accesible after the initialization via <code class="inline-code">RSClient.sharedInstance()</code>
+      </TabPanel>
     </TabPanels>
 </Tabs>
 
-
 <div class="infoBlock">
 
-RudderStack automatically tracks the following <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/">application lifecycle events</a>:
+RudderStack automatically tracks the following <Link to="/rudderstack-api/api-specification/application-lifecycle-events-spec">application lifecycle events</Link>:
 <ul>
 <li><code class="inline-code">Application Installed</code></li>
 <li><code class="inline-code">Application Updated</code></li>
 <li><code class="inline-code">Application Opened</code></li>
 <li><code class="inline-code">Application Backgrounded</code></li>
 </ul>
-
-You can disable these events using the <code class="inline-code">trackLifecycleEvents</code> method of <code class="inline-code">RSConfig</code> and passing <code class="inline-code">false</code>. However, it is highly recommended to keep them enabled.
+You can disable these events using the <code class="inline-code">trackLifecycleEvents</code> method of <code class="inline-code">RSConfig</code> by passing <code class="inline-code">false</code>. However, it is highly recommended to keep them enabled.
 </div>
 
 ## Configuring the RudderStack client
@@ -200,11 +196,11 @@ You can configure your client based on the following parameters using `RSConfig`
 
 ### Self-hosted control plane
 
-If you are using a device mode destination like Adjust, Firebase, etc., the SDK needs to fetch the required configuration from the control plane. If you are using the [Control Plane Lite](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility to host your own control plane, then follow [this section](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url) to specify `controlPlaneUrl` in `RSConfig` that points to your hosted source configuration file.
+If you are using a device mode destination like Adjust, Firebase, etc., the SDK needs to fetch the required configuration from the control plane. If you are using the <Link to="/rudderstack-open-source/control-plane-lite">Control Plane Lite</Link> utility to host your own control plane, then follow <Link to="/rudderstack-open-source/control-plane-lite/#control-plane-url">this section</Link> to specify `controlPlaneUrl` in `RSConfig` that points to your hosted source configuration file.
 
 <div class="warningBlock">
 
-You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during the SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are self-hosting the control plane using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility.
+You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during the SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported only if you are self-hosting the control plane using the <Link to="/rudderstack-open-source/control-plane-lite">Control Plane Lite</Link> utility.
 </div>
 
 ## Supported API calls
@@ -213,7 +209,7 @@ The Swift SDK supports all the API calls specified in the <Link to="/rudderstack
 
 ## Identify
 
-The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc. Once you identify the user, the SDK persists all the user information and passes it on to the subsequent `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify"><code class="inline-code">identify</code></Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc. Once you identify the user, the SDK persists all the user information and passes it on to the subsequent `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
 
 <div class="infoBlock">
 
@@ -328,7 +324,7 @@ RSClient.sharedInstance().identify("user_id", traits: ["email": "alex@example.co
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the user events along with any properties associated with them.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track"><code class="inline-code">track</code></Link> call lets you record the user events along with any properties associated with them.
 
 A sample `track` event is shown below:
 
@@ -374,7 +370,7 @@ The `track` method accepts the following parameters:
 
 ## Screen
 
-The [`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) call lets you record whenever a user views their mobile screen, with any additional relevant information about the screen.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/screen"><code class="inline-code">screen</code></Link> call lets you record whenever a user views their mobile screen, with any additional relevant information about the screen.
 
 A sample `screen` event is as shown:
 
@@ -420,7 +416,7 @@ The `screen` method accepts the following parameters:
 
 ## Group
 
-The [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call lets you link an identified user with a group like a company, organization, or an account. It also lets you record any traits associated with that group, like the name of the company, number of employees, etc.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/group"><code class="inline-code">group</code></Link> call lets you link an identified user with a group like a company, organization, or an account. It also lets you record any traits associated with that group, like the name of the company, number of employees, etc.
 
 A sample `group` call is shown below:
 
@@ -471,7 +467,7 @@ The iOS SDK does not persist the group traits across the sessions.
 
 ## Alias
 
-The [`alias`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/) call associates the user with a new identification. A sample `alias` call for the API is below:
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias"><code class="inline-code">alias</code></Link> call associates the user with a new identification. A sample `alias` call for the API is below:
 
 <Tabs>
   <TabList>
@@ -722,11 +718,11 @@ You can pass the following options to the `setAppTrackingConsent` method to set 
 
 ## Filtering device mode events
 
-When sending events to a destination via the [device mode](https://rudderstack.com/docs/connections/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them.
+When sending events to a destination via the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link>, you can explicitly specify which events should be discarded or allowed to flow through - by whitelisting or blacklisting them.
 
 <div class="infoBlock">
 
-Refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+Refer to the <Link to="stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 </div>
 
 ## Enabling/disabling events for specific destinations
@@ -920,10 +916,10 @@ This section details the steps required to develop a device mode destination in 
 
 <div class="infoBlock">
 
-More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/connections/rudderstack-connection-modes//">RudderStack Connection Modes</a> guide.
+More information on the RudderStack device mode can be found in the <Link to="/rudderstack-cloud/rudderstack-connection-modes">Connection Modes</Link> guide.
 </div>
 
-- Create a `RSCustomDestination.swift` file by extending `RSDestinationPlugin`, as shown:
+1. Create a `RSCustomDestination.swift` file by extending `RSDestinationPlugin`, as shown:
 
 ```swift
 class RSCustomDestination: RSDestinationPlugin {
@@ -972,7 +968,7 @@ class RSCustomDestination: RSDestinationPlugin {
 }
 ```
 
-- Then, create a `CustomDetination` class file by extending `RudderDestination` and initialize `RSCustomDestination` inside `init()`, as shown:
+2. Then, create a `CustomDetination` class file by extending `RudderDestination` and initialize `RSCustomDestination` inside `init()`, as shown:
 
 ```swift
 class CustomDestination: RudderDestination {
@@ -983,11 +979,11 @@ class CustomDestination: RudderDestination {
 }
 ```
 
-- For Objective-C projects, a dialog box will appear while creating the Swift file - asking you to create a bridging header if it does not exist already. In this case, choose **Create Bridging Header**. This creates a `<PROJECT_MODULE_NAME>-Bridging-Header.h` file. 
+3. For Objective-C projects, a dialog box will appear while creating the Swift file - asking you to create a bridging header if it does not exist already. In this case, choose **Create Bridging Header**. This creates a `<PROJECT_MODULE_NAME>-Bridging-Header.h` file. 
 
-- After creating the Bridging Header, search **Objective-C Generated Interface Header Name** in **Build Settings** and keep the header name handy. This should be something like `<PROJECT_MODULE_NAME>-Swift.h`. 
+4. After creating the Bridging Header, search **Objective-C Generated Interface Header Name** in **Build Settings** and keep the header name handy. This should be something like `<PROJECT_MODULE_NAME>-Swift.h`. 
 
-- Finally, add the `CustomDestination` with the RudderStack iOS SDK after its initialization, as shown:
+5. Finally, add the `CustomDestination` with the RudderStack iOS SDK after its initialization, as shown:
 
 <Tabs>
   <TabList>
@@ -1111,7 +1107,7 @@ RudderStack does not integrate with SKAdNetwork. However, SKAdNetwork can be dir
 
 ### Can I disable event tracking until the user gives their consent?
 
-Yes, you can. Refer to the [Enabling/disabling user tracking via the `setOptOutStatus` API](#enablingdisabling-user-tracking-via-the-setoptoutstatus-api-gdpr-support) section for more information.
+Yes, you can. Refer to the <Link to="#enablingdisabling-user-tracking-via-the-setoptoutstatus-api-gdpr-support">Enabling/disabling user tracking via the `setOptOutStatus` API</Link> section for more information.
 
 ## Contact us
 
