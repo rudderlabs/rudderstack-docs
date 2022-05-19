@@ -138,7 +138,7 @@ RudderStack sets the **Namespace** field depending on the following conditions:
 
 - If the **Namespace** and **Database** fields are present in your warehouse configuration:
   - For ClickHouse destination, the **Database** field is set as the namespace.
-  - For all the other destinations, the Namespace field is populated as it is.
+  - For all the other destinations, the **Namespace** field is populated as it is.
 
 - If `RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX` parameter is present, the Namespace is populated as `(DEST_TYPE)_(CUSTOM_DATA_SET_PREFIX)_(SOURCE_NAME)`. For example:
 
