@@ -259,15 +259,15 @@ You can choose your subdomain or use a wildcard domain <code class="inline-code"
 The AWS Certificate Manager will guide you through the verification by email or DNS TXT records. You will be able to choose your own domain for SSL certificates once verified.
 </div>
 
-## Settings for GCP
+## FAQ
+
+### I am using GCP External HTTP(S)  Load Balancer to set up my custom domain. However any requests from `xyz.mydomain.com` to `cdn.rudderlabs.com` result in a 403. What should I do?
 
 If you're setting up a custom domain using the [GCP External HTTPS Load Balancer](https://cloud.google.com/load-balancing/docs/https), make sure you [add a custom request header](https://cloud.google.com/load-balancing/docs/https/custom-headers#working-with-request) in your backend service config, as shown:
 
 | Header name | Value |
 | :-------------| :------|
 | `Host` | `cdn.rudderlabs.com` |
-
-## FAQ
 
 ### I am getting the Access Denied error on using a custom domain URL for JavaScript SDK. What might be the reason?
 
