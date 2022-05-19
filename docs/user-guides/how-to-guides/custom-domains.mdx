@@ -147,12 +147,12 @@ After:
 <script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
 ```
 
-To <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link> (for example, Google Analytics), you can use the following URL: 
+To <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link>, you can use the following URL: 
 
 ```html
 <script>
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    destSDKBaseURL: "https://subdomain.yourdomain.com/v1.1/js-integrations/GA.min.js"
+    destSDKBaseURL: "https://subdomain.yourdomain.com/v1.1/js-integrations"
 });
 </script>
 ```
@@ -293,12 +293,12 @@ The correct custom domain URL to access the JavaScript SDK should be in the foll
 <script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
 ```
 
-The correct custom domain URL to <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link> (for example, Google Analytics) should be in the following format: 
+The correct custom domain URL to <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link> should be in the following format: 
 
 ```html
 <script>
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    destSDKBaseURL: "https://subdomain.yourdomain.com/v1.1/js-integrations/GA.min.js"
+    destSDKBaseURL: "https://subdomain.yourdomain.com/v1.1/js-integrations"
 });
 </script>
 ```
