@@ -955,6 +955,22 @@ Some pointers to keep in mind:
 [[RSClient sharedInstance] flush];
 ```
 
+## Support for `flush` API
+
+iOS SDK supports the `flush()` API. It retrieves all the messages present in the database, divides them into individual batches and flushes them away to the Rudder Server.
+
+For example, if the `flushQueueSize` is 30 and there are 180 events in the database when the `flush()` method is called, the iOS SDK will retrieve all those events and divide them into batches of 30 messages each, that is, total 6 batches. 
+
+If a batch fails for some reason, the remaining batches are dropped as well to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the server even after 3 retries. 
+
+In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if exists). 
+
+For every `flush()` call made via the iOS SDK, the `flush()` method of the `CustomFactory` class is also triggered, which can be used to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown:
+
+```objectivec
+[[RSClient sharedInstance] flush];
+```
+
 ## FAQs
 
 ### I'm facing issues building with Carthage on XCode 12. What should I do?
@@ -1048,24 +1064,6 @@ This SDK feature relies on the background mode capability offered by the iOS. Th
 ### How can I get the user `traits` after making the `identify` call?
 
 You can get the user traits after making an `identify` call in the following way:
-
-<!--{% tabs %}
-{% tab title="Swift" %}
-
-```swift
- let traits = RSClient.sharedInstance()?.getContext().traits
-```
-
-{% endtab %}
-
-{% tab title="Objective-C" %}
-
-```
- NSDictionary* traits = [[RSClient sharedInstance] getContext].traits;
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
