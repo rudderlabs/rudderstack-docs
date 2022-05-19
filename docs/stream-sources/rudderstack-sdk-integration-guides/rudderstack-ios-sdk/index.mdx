@@ -949,17 +949,12 @@ Some pointers to keep in mind:
 - RudderStack's iOS SDK dumps every event it receives to the `dump()` method of the `CustomFIntegration` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination.
 - The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset logic.
 - Make sure you do not duplicate the value of `KEY` present inside `CustomFactory`, across multiple `CustomFactory` that you develop.
-- RudderStack's iOS SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK, which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown:
 
-```objectivec
-[[RSClient sharedInstance] flush];
-```
+## `flush` API
 
-## Support for `flush` API
+iOS SDK supports the `flush()` API. It retrieves all the messages present in the database, divides them into individual batches and flushes them to the Rudder Server.
 
-iOS SDK supports the `flush()` API. It retrieves all the messages present in the database, divides them into individual batches and flushes them away to the Rudder Server.
-
-For example, if the `flushQueueSize` is 30 and there are 180 events in the database when the `flush()` method is called, the iOS SDK will retrieve all those events and divide them into batches of 30 messages each, that is, total 6 batches. 
+For example, if the `flushQueueSize` is 30 and there are 180 events in the database advanced the `flush()` API is called, the iOS SDK will retrieve all those events and divide them into batches of 30 messages each, that is, total 6 batches. 
 
 If a batch fails for some reason, the remaining batches are dropped as well to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the server even after 3 retries. 
 

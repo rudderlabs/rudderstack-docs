@@ -655,11 +655,11 @@ An example of this method's usage is as shown:
 rudderClient.putAnonymousId(ANONYMOUS_ID)
 ```
 
-## Support for `flush` API
+## `flush` API
 
-React Native SDK supports the `flush()` API. It retrieves all the messages present in the database, divides them into individual batches and flushes them away to the Rudder Server.
+React Native SDK supports the `flush()` API. It retrieves all the messages present in the database, divides them into individual batches and flushes them to the Rudder Server.
 
-For example, if the `flushQueueSize` is 30 and there are 180 events in the database when the `flush()` method is called, the React Native SDK will retrieve all those events and divide them into batches of 30 messages each, that is, total 6 batches. 
+For example, if the `flushQueueSize` is 30 and there are 180 events in the database advanced the `flush()` API is called, the React Native SDK will retrieve all those events and divide them into batches of 30 messages each, that is, total 6 batches. 
 
 If a batch fails for some reason, the remaining batches are dropped as well to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the server even after 3 retries. 
 
