@@ -47,7 +47,7 @@ This will ensure that the mappings are on the consistent namespace and only one 
 
 RudderStack loads all the events configured with your warehouse into staging buckets. You can set a retention policy to delete these files from the staging bucket after a certain time. If you do not set any retention policy, the files will keep on accumulating.
 
-Make sure that the duration of retention policy is longer than the warehouse sync frequency duration. The reason being that RudderStack can re-run event uploads for a longer time, if required. It is recommeded to set the retention policy duration to **30 days/1 month**. 
+Make sure that the retention policy duration is longer than the warehouse sync frequency duration so that RudderStack can re-run event uploads for a longer time, if required. It is recommended to set the retention policy duration to **30 days/1 month**. 
 
 ### Which RudderStack IPs should I whitelist?
 
