@@ -91,7 +91,7 @@ You can use either of the following approaches to avoid data sync lags in your w
 
 ### How can I speed-up my warehouse uploads?
 
-You can speed-up your warehouse uploads by using the following parameters:
+You can speed up your warehouse uploads by configuring the following parameters in the `config.yaml` file in your RudderStack setup:
 
 <table style="width:100%">
   <tr>
@@ -129,6 +129,23 @@ You can speed-up your warehouse uploads by using the following parameters:
     <td>Number of go-routines creating load files in a warehouse slave process.</td>
     <td>Increase or decrease this as per memory allocated to the warehouse slave pod.</td>
     <td><code class="inline-code">4</code></td>
+  </tr>
+</table>
+
+The following parameter can be configured in the `rudderstack_deployment.yaml` file to serve the same purpose:
+
+<table style="width:100%">
+  <tr>
+    <th style="width:300px">Parameter</th>
+    <th>Description</th>
+     <th>Tip</th>
+    <th>Default value</th>
+  </tr>
+   <tr>
+    <td style="width:300px"><code class="inline-code">warehouse_slave.replicaCount</code></td>
+    <td>Number of warehouse slaves (responsible for load file generation) when the warehouse is run as separate service in Kubernetes.</td>
+    <td>Increase this for speeding up the load file generation step of the upload.</td>
+    <td><code class="inline-code">2</code></td>
   </tr>
 </table>
 
