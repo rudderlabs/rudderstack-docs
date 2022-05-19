@@ -26,7 +26,8 @@ Before configuring Attribution as a destination in RudderStack, verify if the so
 
 <div class="infoBlock">
 
-To know more about the difference between the cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To learn more about the difference between the cloud mode and device mode in RudderStack, refer to the <Link to="/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+
 </div>
 
 Once you have confirmed that the source platform supports sending events to Attribution, follow these steps:
@@ -38,17 +39,17 @@ Once you have confirmed that the source platform supports sending events to Attr
 
 <div class="infoBlock">
 
-For more information on getting your Attribution project key, refer to the <a href="#faq">FAQ</a> section below.
+For more information on getting your Attribution project key, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 Your Attribution destination is now configured and enabled in RudderStack.
 
 ## Identify
 
-The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call lets you associate a visiting user to their actions. It also lets you record the traits about them like their name, email address, etc.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify">`identify`</Link> call lets you associate a visiting user to their actions. It also lets you record the traits about them like their name, email address, etc.
 
 <div class="infoBlock">
 
-As a best practice, make sure that the <code class="inline-code">identify</code> call is made at the start of every session or page load for logged-in users. This will ensure all the latest user traits are captured.
+As a best practice, make sure that the `identify` call is made at the start of every session or page load for logged-in users. This will ensure all the latest user traits are captured.
 
 </div>
 
@@ -71,7 +72,7 @@ rudderanalytics.identify("userid", {
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 A sample `track` call is as shown:
 
@@ -83,13 +84,13 @@ rudderanalytics.track("Order Completed", {
 
 <div class="infoBlock">
 
-For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
+For more information on the `track` call, refer to the <Link to="/rudderstack-api/http-api">RudderStack HTTP API Specification</Link>.
 
 </div>
 
 ## Page
 
-The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
 A sample `page` call is as shown:
 
@@ -105,13 +106,13 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 
 <div class="infoBlock">
 
-For more information on the <code class="inline-code">page</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
+For more information on the `page` call, refer to the <Link to="/rudderstack-api/http-api">RudderStack HTTP API Specification</Link>.
 
 </div>
 
 ## Group
 
-The [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group like the name of the company, number of employees, etc.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/group">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group like the name of the company, number of employees, etc.
 
 A sample `group` call is as shown:
 
@@ -131,7 +132,7 @@ For more information on the <code class="inline-code">group</code> call, refer t
 
 ## Alias
 
-The [`alias`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/) lets you merge different identities of a known user.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias">`alias`</Link> call lets you merge different identities of a known user.
 
 A sample `alias` call is as shown:
 
