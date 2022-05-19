@@ -95,11 +95,7 @@ GRANT ALL ON ALL SCHEMAS IN DATABASE "RUDDER_EVENTS" TO ROLE "RUDDER";
 
 ### Creating a user
 
-Finally, create a user to connect RudderStack to the newly-created Snowflake warehouse, as shown:
-
-<img src="../assets/dw-integrations/snowflake-create-user.png" alt="New Snowflake user" />
-
-Alternatively, you can use SQL to create a user in Snowflake, as shown:
+Finally, create a user to connect RudderStack to the newly-created Snowflake warehouse using the following SQL query:
 
 ```sql
 CREATE USER "RUDDER_USER"
