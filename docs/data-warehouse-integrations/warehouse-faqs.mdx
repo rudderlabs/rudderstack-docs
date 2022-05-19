@@ -152,7 +152,12 @@ RS_<random_value>_<source_name>
 SNOWFLAKE_<random_value>_<source_name>
 ```
 
-- If none of the above are specified, the source name is populated as Namespace for the first sync and picked up from cache for the subsequent syncs. In case the source name is changed, the Namespace still remains the same as it is picked from cache. In order to update the Namespace as the new source name, you need to configure a new source.
+- If none of the above fields are specified in the warehouse configuration settings, the source name is populated as the namespace for the first sync and picked up from the cache for all the subsequent syncs. In case the source name is changed, the namespace still remains the same as it is picked from cache. 
+
+<div class="infoBlock">
+
+To update the namespace as the new source name, you need to configure a new source.
+</div>
 
 
 ### How does Rudderstack configure table names?
