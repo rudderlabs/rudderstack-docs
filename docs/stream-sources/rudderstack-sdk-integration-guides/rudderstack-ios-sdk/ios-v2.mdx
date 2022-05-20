@@ -752,9 +752,6 @@ RSOption *option = [[RSOption alloc]init];
 // specifying destination by its display name
 [option putIntegration:@"Amplitude" isEnabled:YES];
 [option putIntegration:@"<DESTINATION_DISPLAY_NAME>" isEnabled:<BOOLEAN>];
-// specifying destination by its Factory instance
-[option putIntegrationWithFactory:[RudderMoengageFactory instance] isEnabled:NO];
-[option putIntegrationWithFactory:[<RudderIntegrationFactory> instance] isEnabled:<BOOLEAN>];
 ```
 </span>
       </TabPanel>
@@ -768,9 +765,6 @@ option.putIntegration("All", isEnabled:true)
 // specifying destination by its display name
 option.putIntegration("Amplitude", isEnabled:true)
 option.putIntegration(<DESTINATION_DISPLAY_NAME>, isEnabled:<BOOLEAN>)
-// specifying destination by its Factory instance
-option.putIntegration(with: RudderMoengageFactory.instance(), isEnabled: true);
-option.putIntegration(with: <RudderIntegrationFactory>.instance(), isEnabled:<BOOLEAN>);
 ```
 </span>
       </TabPanel>
