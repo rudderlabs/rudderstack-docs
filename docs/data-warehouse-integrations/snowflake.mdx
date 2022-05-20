@@ -191,7 +191,7 @@ Refer to the following settings depending on your cloud provider:
     <ul>
       <li><strong>Staging Azure Blob Storage Container Name</strong>: Specify the name of your Azure container where RudderStack will store the data before loading it into Snowflake.</li>
       <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
-      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-cloud-storage-integration-with-snowflake">Configuring cloud storage integration with Snowflake</a> section for details.</li>
       <li><strong>Azure Blob Storage Account Name</strong>: Enter the account name for the Azure container.</li>
       <li><strong>Azure Blob Storage Account Key</strong>:  Enter the account key for your Azure container.  Refer to the <a href="https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage">Blob Storage setup</a> section for more information. </li>
     </ul>
@@ -200,7 +200,7 @@ Refer to the following settings depending on your cloud provider:
     <ul>
       <li><strong>Staging GCS Object Storage Bucket Name</strong>: Specify the name of your GCS bucket where RudderStack will store the data before loading it into Snowflake.</li>
       <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
-      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-cloud-storage-integration-with-snowflake">Configuring cloud storage integration with Snowflake</a> section for details.</li>
       <li><strong>Credentials</strong>: Paste the contents of your GCP service account credentials JSON. The service account should have a role with <code class="inline-code">storage.objectCreator</code> access. </li>
     </ul>
     </TabPanel>
@@ -452,7 +452,7 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 ### While configuring the Snowflake destination, what should I enter in the Account field?
 
-While configuring Snowflake as a destination in RudderStack, you need to enter your <Link to="/data-warehouse-integrations/snowflake/#connection-settings">Snowflake connection credentials</Link> which includes the **Account** field, as shown below:
+While configuring Snowflake as a destination in RudderStack, you need to enter your <Link to="/data-warehouse-integrations/snowflake/#connection-settings">Snowflake connection credentials</Link> which include the **Account** field, as shown below:
 
 <img src="../assets/dw-integrations/snowflake-account-id-example.png" alt="Snowflake account ID example" />
 
@@ -468,7 +468,7 @@ The following examples illustrate the slight differences in the Snowflake accoun
 
 <div class="warningBlock">
 
-In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region accounts and hence must be included in the <strong>Account</strong> field above. 
+In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region's accounts and must be included in the <strong>Account</strong> field above. 
 
 For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
 </div>
