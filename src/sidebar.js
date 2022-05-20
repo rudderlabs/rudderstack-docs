@@ -691,6 +691,179 @@ export const jsonData = [
     link: "/destinations/",
     content: [
       {
+        key: "testing-and-personalization",
+        title: "A/B Testing & Personalization",
+        link: "/destinations/testing-and-personalization/",
+        content: [
+          {
+            key: "algolia-insights",
+            title: "Algolia Insights",
+            link: "/destinations/testing-and-personalization/algolia-insights/",
+            content: [],
+          },
+          {
+            key: "candu",
+            title: "Candu",
+            link: "/destinations/testing-and-personalization/candu/",
+            content: [],
+          },
+          {
+            key: "google-optimize",
+            title: "Google Optimize",
+            link: "/destinations/testing-and-personalization/google-optimize/",
+            content: [],
+          },
+          {
+            key: "launchdarkly",
+            title: "LaunchDarkly",
+            link: "/destinations/testing-and-personalization/launchdarkly/",
+            content: [],
+          },
+          {
+            key: "monetate",
+            title: "Monetate",
+            link: "/destinations/testing-and-personalization/monetate/",
+            content: [],
+          },
+          {
+            key: "optimizely-full-stack",
+            title: "Optimizely Full Stack",
+            link:
+              "/destinations/testing-and-personalization/optimizely-full-stack/",
+            content: [],
+          },
+          {
+            key: "optimizely-web",
+            title: "Optimizely Web",
+            link: "/destinations/testing-and-personalization/optimizely-web/",
+            content: [],
+          },
+          {
+            key: "splitio",
+            title: "Split.io",
+            link: "/destinations/testing-and-personalization/splitio/",
+            content: [],
+          },
+          {
+            key: "statsig",
+            title: "Statsig",
+            link: "/destinations/testing-and-personalization/statsig/",
+            content: [],
+          },
+          {
+            key: "vwo-beta-visual-website-optimizer",
+            title: "VWO (Visual Website Optimizer)",
+            link:
+              "/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "advertising",
+        title: "Advertising",
+        link: "/destinations/advertising/",
+        content: [
+          {
+            key: "bingads",
+            title: "Bing Ads",
+            link: "/destinations/advertising/bingads/",
+            content: [],
+          },
+          {
+            key: "criteo",
+            title: "Criteo",
+            link: "/destinations/advertising/criteo/",
+            content: [],
+          },
+          {
+            key: "dcm-floodlight",
+            title: "DCM Floodlight",
+            link: "/destinations/advertising/dcm-floodlight/",
+            content: [],
+          },
+          {
+            key: "facebook-app-events",
+            title: "Facebook App Events",
+            link: "/destinations/advertising/facebook-app-events/",
+            content: [],
+          },
+          {
+            key: "fb-custom-audience",
+            title: "Facebook Custom Audience",
+            link: "/destinations/advertising/fb-custom-audience/",
+            content: [],
+          },
+          {
+            key: "fb-pixel",
+            title: "Facebook Pixel",
+            link: "/destinations/advertising/fb-pixel/",
+            content: [],
+          },
+          {
+            key: "g-ads-gtag",
+            title: "Google Ads (gtag.js)",
+            link: "/destinations/advertising/g-ads-gtag/",
+            content: [],
+          },
+          {
+            key: "google-adwords-enhanced-conversions",
+            title: "Google Ads Enhanced Conversions",
+            link:
+              "/destinations/advertising/google-adwords-enhanced-conversions/",
+            content: [],
+          },
+          {
+            key: "google-adwords-remarketing-list",
+            title: "Google Ads Remarketing Lists (Customer Match)",
+            link: "/destinations/advertising/google-adwords-remarketing-list/",
+            content: [],
+          },
+          {
+            key: "linkedin-insight-tag",
+            title: "LinkedIn Insight Tag",
+            link: "/destinations/advertising/linkedin-insight-tag/",
+            content: [],
+          },
+          {
+            key: "lotame",
+            title: "Lotame",
+            link: "/destinations/advertising/lotame/",
+            content: [],
+          },
+          {
+            key: "pinterest-ads",
+            title: "Pinterest Tag",
+            link: "/destinations/advertising/pinterest-ads/",
+            content: [],
+          },
+          {
+            key: "reddit-pixel",
+            title: "Reddit Pixel",
+            link: "/destinations/advertising/reddit-pixel/",
+            content: [],
+          },
+          {
+            key: "snapchat-conversion",
+            title: "Snapchat Conversion",
+            link: "/destinations/advertising/snapchat-conversion/",
+            content: [],
+          },
+          {
+            key: "snap-pixel",
+            title: "Snap Pixel",
+            link: "/destinations/advertising/snap-pixel/",
+            content: [],
+          },
+          {
+            key: "tiktok-ads",
+            title: "TikTok Ads",
+            link: "/destinations/advertising/tiktok-ads/",
+            content: [],
+          },
+        ],
+      },
+      {
         key: "analytics",
         title: "Analytics",
         link: "/destinations/analytics/",
@@ -909,6 +1082,93 @@ export const jsonData = [
         ],
       },
       {
+        key: "attribution",
+        title: "Attribution",
+        link: "/destinations/attribution/",
+        content: [
+          {
+            key: "adjust",
+            title: "Adjust",
+            link: "/destinations/attribution/adjust/",
+            content: [],
+          },
+          {
+            key: "appsflyer",
+            title: "AppsFlyer",
+            link: "/destinations/attribution/appsflyer/",
+            content: [],
+          },
+          {
+            key: "attribution",
+            title: "Attribution",
+            link: "/destinations/attribution/attribution/",
+            content: [],
+          },
+          {
+            key: "branchio",
+            title: "Branch",
+            link: "/destinations/attribution/branchio/",
+            content: [],
+          },
+          {
+            key: "kochava",
+            title: "Kochava",
+            link: "/destinations/attribution/kochava/",
+            content: [],
+          },
+          {
+            key: "tvsquared",
+            title: "TVSquared",
+            link: "/destinations/attribution/tvsquared/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "business-messaging",
+        title: "Business Messaging",
+        link: "/destinations/business-messaging/",
+        content: [
+          {
+            key: "intercom",
+            title: "Intercom",
+            link: "/destinations/business-messaging/intercom/",
+            content: [],
+          },
+          {
+            key: "kustomer",
+            title: "Kustomer",
+            link: "/destinations/business-messaging/kustomer/",
+            content: [],
+          },
+          {
+            key: "slack",
+            title: "Slack",
+            link: "/destinations/business-messaging/slack/",
+            content: [],
+          },
+          {
+            key: "trengo",
+            title: "Trengo",
+            link: "/destinations/business-messaging/trengo/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "continuous-integration",
+        title: "Continuous Integration",
+        link: "/destinations/continuous-integration/",
+        content: [
+          {
+            key: "appcenter",
+            title: "Visual Studio App Center",
+            link: "/destinations/continuous-integration/appcenter/",
+            content: [],
+          },
+        ],
+      },
+      {
         key: "crm",
         title: "CRM",
         link: "/destinations/crm/",
@@ -941,6 +1201,38 @@ export const jsonData = [
             key: "zendesk",
             title: "Zendesk",
             link: "/destinations/crm/zendesk/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "customer-data-platform",
+        title: "Customer Data Platforms",
+        link: "/destinations/customer-data-platform/",
+        content: [
+          {
+            key: "segment",
+            title: "Segment",
+            link: "/destinations/customer-data-platform/segment/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "error-reporting",
+        title: "Error Reporting",
+        link: "/destinations/error-reporting/",
+        content: [
+          {
+            key: "bugsnag",
+            title: "Bugsnag",
+            link: "/destinations/error-reporting/bugsnag/",
+            content: [],
+          },
+          {
+            key: "sentry",
+            title: "Sentry",
+            link: "/destinations/error-reporting/sentry/",
             content: [],
           },
         ],
@@ -1135,198 +1427,58 @@ export const jsonData = [
         ],
       },
       {
-        key: "attribution",
-        title: "Attribution",
-        link: "/destinations/attribution/",
+        key: "productivity",
+        title: "Productivity",
+        link: "/destinations/productivity/",
         content: [
           {
-            key: "adjust",
-            title: "Adjust",
-            link: "/destinations/attribution/adjust/",
-            content: [],
-          },
-          {
-            key: "appsflyer",
-            title: "AppsFlyer",
-            link: "/destinations/attribution/appsflyer/",
-            content: [],
-          },
-          {
-            key: "attribution",
-            title: "Attribution",
-            link: "/destinations/attribution/attribution/",
-            content: [],
-          },
-          {
-            key: "branchio",
-            title: "Branch",
-            link: "/destinations/attribution/branchio/",
-            content: [],
-          },
-          {
-            key: "kochava",
-            title: "Kochava",
-            link: "/destinations/attribution/kochava/",
-            content: [],
-          },
-          {
-            key: "tvsquared",
-            title: "TVSquared",
-            link: "/destinations/attribution/tvsquared/",
+            key: "google-sheets",
+            title: "Google Sheets",
+            link: "/destinations/productivity/google-sheets/",
             content: [],
           },
         ],
       },
       {
-        key: "webhooks",
-        title: "Webhooks",
-        link: "/destinations/webhooks/",
-        content: [],
-      },
-      {
-        key: "business-messaging",
-        title: "Business Messaging",
-        link: "/destinations/business-messaging/",
+        key: "storage-platforms",
+        title: "Storage Platforms",
+        link: "/destinations/storage-platforms/",
         content: [
           {
-            key: "intercom",
-            title: "Intercom",
-            link: "/destinations/business-messaging/intercom/",
+            key: "amazon-s3",
+            title: "Amazon S3",
+            link: "/destinations/storage-platforms/amazon-s3/",
             content: [],
           },
           {
-            key: "kustomer",
-            title: "Kustomer",
-            link: "/destinations/business-messaging/kustomer/",
-            content: [],
-          },
-          {
-            key: "slack",
-            title: "Slack",
-            link: "/destinations/business-messaging/slack/",
-            content: [],
-          },
-          {
-            key: "trengo",
-            title: "Trengo",
-            link: "/destinations/business-messaging/trengo/",
-            content: [],
-          },
-        ],
-      },
-      {
-        key: "advertising",
-        title: "Advertising",
-        link: "/destinations/advertising/",
-        content: [
-          {
-            key: "bingads",
-            title: "Bing Ads",
-            link: "/destinations/advertising/bingads/",
-            content: [],
-          },
-          {
-            key: "criteo",
-            title: "Criteo",
-            link: "/destinations/advertising/criteo/",
-            content: [],
-          },
-          {
-            key: "dcm-floodlight",
-            title: "DCM Floodlight",
-            link: "/destinations/advertising/dcm-floodlight/",
-            content: [],
-          },
-          {
-            key: "facebook-app-events",
-            title: "Facebook App Events",
-            link: "/destinations/advertising/facebook-app-events/",
-            content: [],
-          },
-          {
-            key: "fb-custom-audience",
-            title: "Facebook Custom Audience",
-            link: "/destinations/advertising/fb-custom-audience/",
-            content: [],
-          },
-          {
-            key: "fb-pixel",
-            title: "Facebook Pixel",
-            link: "/destinations/advertising/fb-pixel/",
-            content: [],
-          },
-          {
-            key: "g-ads-gtag",
-            title: "Google Ads (gtag.js)",
-            link: "/destinations/advertising/g-ads-gtag/",
-            content: [],
-          },
-          {
-            key: "google-adwords-enhanced-conversions",
-            title: "Google Ads Enhanced Conversions",
+            key: "microsoft-azure-blob-storage",
+            title: "Azure Blob Storage",
             link:
-              "/destinations/advertising/google-adwords-enhanced-conversions/",
+              "/destinations/storage-platforms/microsoft-azure-blob-storage/",
             content: [],
           },
           {
-            key: "google-adwords-remarketing-list",
-            title: "Google Ads Remarketing Lists (Customer Match)",
-            link: "/destinations/advertising/google-adwords-remarketing-list/",
+            key: "digitalocean-spaces",
+            title: "DigitalOcean Spaces",
+            link: "/destinations/storage-platforms/digitalocean-spaces/",
             content: [],
           },
           {
-            key: "linkedin-insight-tag",
-            title: "LinkedIn Insight Tag",
-            link: "/destinations/advertising/linkedin-insight-tag/",
+            key: "google-cloud-storage",
+            title: "Google Cloud Storage",
+            link: "/destinations/storage-platforms/google-cloud-storage/",
             content: [],
           },
           {
-            key: "lotame",
-            title: "Lotame",
-            link: "/destinations/advertising/lotame/",
+            key: "minio",
+            title: "MinIO",
+            link: "/destinations/storage-platforms/minio/",
             content: [],
           },
           {
-            key: "pinterest-ads",
-            title: "Pinterest Tag",
-            link: "/destinations/advertising/pinterest-ads/",
-            content: [],
-          },
-          {
-            key: "reddit-pixel",
-            title: "Reddit Pixel",
-            link: "/destinations/advertising/reddit-pixel/",
-            content: [],
-          },
-          {
-            key: "snapchat-conversion",
-            title: "Snapchat Conversion",
-            link: "/destinations/advertising/snapchat-conversion/",
-            content: [],
-          },
-          {
-            key: "snap-pixel",
-            title: "Snap Pixel",
-            link: "/destinations/advertising/snap-pixel/",
-            content: [],
-          },
-          {
-            key: "tiktok-ads",
-            title: "TikTok Ads",
-            link: "/destinations/advertising/tiktok-ads/",
-            content: [],
-          },
-        ],
-      },
-      {
-        key: "customer-data-platform",
-        title: "Customer Data Platform",
-        link: "/destinations/customer-data-platform/",
-        content: [
-          {
-            key: "segment",
-            title: "Segment",
-            link: "/destinations/customer-data-platform/segment/",
+            key: "redis",
+            title: "Redis",
+            link: "/destinations/storage-platforms/redis/",
             content: [],
           },
         ],
@@ -1387,50 +1539,6 @@ export const jsonData = [
         ],
       },
       {
-        key: "storage-platforms",
-        title: "Storage Platforms",
-        link: "/destinations/storage-platforms/",
-        content: [
-          {
-            key: "amazon-s3",
-            title: "Amazon S3",
-            link: "/destinations/storage-platforms/amazon-s3/",
-            content: [],
-          },
-          {
-            key: "microsoft-azure-blob-storage",
-            title: "Azure Blob Storage",
-            link:
-              "/destinations/storage-platforms/microsoft-azure-blob-storage/",
-            content: [],
-          },
-          {
-            key: "digitalocean-spaces",
-            title: "DigitalOcean Spaces",
-            link: "/destinations/storage-platforms/digitalocean-spaces/",
-            content: [],
-          },
-          {
-            key: "google-cloud-storage",
-            title: "Google Cloud Storage",
-            link: "/destinations/storage-platforms/google-cloud-storage/",
-            content: [],
-          },
-          {
-            key: "minio",
-            title: "MinIO",
-            link: "/destinations/storage-platforms/minio/",
-            content: [],
-          },
-          {
-            key: "redis",
-            title: "Redis",
-            link: "/destinations/storage-platforms/redis/",
-            content: [],
-          },
-        ],
-      },
-      {
         key: "tag-managers",
         title: "Tag Managers",
         link: "/destinations/tag-managers/",
@@ -1444,118 +1552,10 @@ export const jsonData = [
         ],
       },
       {
-        key: "testing-and-personalization",
-        title: "A/B Testing & Personalization",
-        link: "/destinations/testing-and-personalization/",
-        content: [
-          {
-            key: "algolia-insights",
-            title: "Algolia Insights",
-            link: "/destinations/testing-and-personalization/algolia-insights/",
-            content: [],
-          },
-          {
-            key: "candu",
-            title: "Candu",
-            link: "/destinations/testing-and-personalization/candu/",
-            content: [],
-          },
-          {
-            key: "google-optimize",
-            title: "Google Optimize",
-            link: "/destinations/testing-and-personalization/google-optimize/",
-            content: [],
-          },
-          {
-            key: "launchdarkly",
-            title: "LaunchDarkly",
-            link: "/destinations/testing-and-personalization/launchdarkly/",
-            content: [],
-          },
-          {
-            key: "monetate",
-            title: "Monetate",
-            link: "/destinations/testing-and-personalization/monetate/",
-            content: [],
-          },
-          {
-            key: "optimizely-full-stack",
-            title: "Optimizely Full Stack",
-            link:
-              "/destinations/testing-and-personalization/optimizely-full-stack/",
-            content: [],
-          },
-          {
-            key: "optimizely-web",
-            title: "Optimizely Web",
-            link: "/destinations/testing-and-personalization/optimizely-web/",
-            content: [],
-          },
-          {
-            key: "splitio",
-            title: "Split.io",
-            link: "/destinations/testing-and-personalization/splitio/",
-            content: [],
-          },
-          {
-            key: "statsig",
-            title: "Statsig",
-            link: "/destinations/testing-and-personalization/statsig/",
-            content: [],
-          },
-          {
-            key: "vwo-beta-visual-website-optimizer",
-            title: "VWO (Visual Website Optimizer)",
-            link:
-              "/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/",
-            content: [],
-          },
-        ],
-      },
-      {
-        key: "productivity",
-        title: "Productivity",
-        link: "/destinations/productivity/",
-        content: [
-          {
-            key: "google-sheets",
-            title: "Google Sheets",
-            link: "/destinations/productivity/google-sheets/",
-            content: [],
-          },
-        ],
-      },
-      {
-        key: "error-reporting",
-        title: "Error Reporting",
-        link: "/destinations/error-reporting/",
-        content: [
-          {
-            key: "bugsnag",
-            title: "Bugsnag",
-            link: "/destinations/error-reporting/bugsnag/",
-            content: [],
-          },
-          {
-            key: "sentry",
-            title: "Sentry",
-            link: "/destinations/error-reporting/sentry/",
-            content: [],
-          },
-        ],
-      },
-      {
-        key: "continuous-integration",
-        title: "Continuous Integration",
-        link: "/destinations/continuous-integration/",
-        content: [
-          {
-            key: "appcenter",
-            title: "Visual Studio App Center",
-            link: "/destinations/continuous-integration/appcenter/",
-            content: [],
-          },
-        ],
+        key: "webhooks",
+        title: "Webhooks",
+        link: "/destinations/webhooks/",
+        content: [],
       },
     ],
   },
@@ -2135,9 +2135,97 @@ export const jsonData = [
           {
             key: "rudderstack-jamstack-integration",
             title: "How to Integrate RudderStack with Your JAMstack Site",
-            link:
-              "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
-            content: [],
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
+            content: [
+              {
+                key: "rudderstack-angular-integration",
+                title: "Angular",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-angular-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-astro-integration",
+                title: "Astro.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-astro-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-eleventy-integration",
+                title: "Eleventy",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-eleventy-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-ember-integration",
+                title: "Ember.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-ember-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-gatsby-integration",
+                title: "Gatsby",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-gatsby-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-hugo-integration",
+                title: "Hugo",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-hugo-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-jekyll-integration",
+                title: "Jekyll",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-jekyll-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-nextjs-integration",
+                title: "Next.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-nuxtjs-integration",
+                title: "Nuxt.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nuxtjs-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-svelte-integration",
+                title: "Svelte",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-svelte-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-vue-integration",
+                title: "Vue.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-vue-integration/",
+                content: [
+
+                ],
+              },
+            ],
           },
         ],
       },

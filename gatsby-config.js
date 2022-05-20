@@ -112,5 +112,29 @@ module.exports = {
         plugins: [`gatsby-remark-autolink-headers`, `gatsby-remark-images`],
       },
     },
+    ...(process.env.RS_GATSBY_ALGOLIA_APIKEY
+      ? [
+          {
+            resolve: `gatsby-plugin-algolia`,
+            options: {
+              appId: process.env.GATSBY_ALGOLIA_APP_ID,
+              apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
+              indexName:
+                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs",
+              queries: require("./src/utils/docs-algolia"),
+              enablePartialUpdates: true,
+              matchFields: [
+                "pageSlug",
+                "pageTitle",
+                "sectionTitle",
+                "sectionId",
+                "sectionContent",
+                "searchAlias",
+                "idx",
+              ],
+            },
+          },
+        ]
+      : []),
   ],
 };

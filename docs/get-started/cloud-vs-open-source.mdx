@@ -7,101 +7,101 @@ description: >-
 
 # RudderStack Cloud vs. RudderStack Open Source
 
-This guide compares the features present in the two primary [RudderStack](https://rudderstack.com/) offerings - [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) and [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource). It will help you in choosing the best option suited to your requirements.
+This guide compares the features in the two primary RudderStack offerings— [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) and [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource). It will help you choose the option that best suits your requirements.
 
 <div class="infoBlock">
 
-RudderStack also offers three plans as a part of <a href="https://app.rudderstack.com/signup?type=freetrial">RudderStack Cloud</a> : Free, Pro, and Enterprise. Refer to the  <a href="https://www.rudderstack.com/pricing/">Pricing</a> page for detailed comparison and additional information on these plans.
+RudderStack offers three plans as a part of [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial): *Free*, *Pro*, and *Enterprise*. Refer to the  [Pricing](https://www.rudderstack.com/pricing) page for a detailed comparison and additional information on these plans.
 </div>
 
 ## Feature comparison
 
 ### Setup and customizability
 
-| Feature |  RudderStack Cloud | RudderStack Open Source | Comments | 
+| Feature |  RudderStack Cloud | RudderStack Open Source | Notes | 
 | :--------| :-------------------| :--------------------------| :-----|
-| [Data plane setup](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your own environment |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [data plane](https://www.rudderstack.com/docs/get-started/rudderstack-architecture/). | 
-| [Control plane setup](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) in your own environment  |  ✕ |  ✓ | Cloud uses the RudderStack-hosted [web app](https://app.rudderstack.com/) to manage your connections. |
-| Customize the data plane [config parameters](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) | ✕ |  ✓ |  - |
+| <Link to="/rudderstack-open-source/installing-and-setting-up-rudderstack">Data plane setup</Link> in your own environment |  ❌ |  ✅ | Cloud uses the RudderStack-hosted <Link to="/get-started/rudderstack-architecture">data plane</Link>. | 
+| <Link to="/rudderstack-open-source/control-plane-lite">Control plane setup</Link> in your own environment  |  ❌ |  ✅ | Cloud uses the RudderStack-hosted [web app](https://app.rudderstack.com/) to manage your connections. |
+| Customize the data plane [config parameters](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) | ❌ |  ✅ |  - |
 
 <div class="infoBlock">
 
-For more information on the data plane and control plane setup options in RudderStack Cloud and Open Source, refer to the <a href="#faq">FAQ</a> section below.
+For more information on the data plane and control plane setup options in RudderStack Cloud and Open Source, refer to the <Link to="/#faq">FAQ</Link> section below.
 </div>
 
 ### Event-related features
 
-| Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
+| Feature |  RudderStack Cloud | RudderStack Open Source | Notes |
 | :--------| :-------------------| :--------------------------| :-----| 
-| Event-related metrics | ✓ |  ✓ | Get information on the number of events ingested during a specified timeframe. | 
-| [Event backup in your own bucket](https://www.rudderstack.com/docs/user-guides/administrators-guide/bucket-configuration-settings/) |  ✓ |  ✓ | RudderStack can manage it for you as a part of the [Enterprise plan](https://www.rudderstack.com/enterprise-quote/). | 
-| [Live events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) |  ✓ | ✕ | This feature is applicable only for [cloud mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode) destinations. | 
-| RudderStack-hosted object storage | ✓ |  ✕ | You can use the RudderStack-hosted bucket to temporarily store your events before forwarding them to your warehouse destination. |
-| [Event Replay](https://www.rudderstack.com/docs/user-guides/administrators-guide/event-replay/) | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. | 
-| Maintaining event ordering | ✓ |  ✓ | <ul><li>For Cloud, this is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature.</li><li>Event ordering is supported in an open source setup but **not guaranteed**.</li></ul> |
-| [Transformations](https://www.rudderstack.com/docs/transformations/) |  ✓ |  ✓ | <ul><li>In case of Open Source, this feature is only applicable for the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) and users can set upto <strong>3 transformations</strong>.</li><li>In case of <a href="https://app.rudderstack.com/signup?type=freetrial" target="_blank">RudderStack Cloud Free</a>, users can set upto <strong>3 transformations</strong>.</li><li>Pro and Enterprise users can set up unlimited transformations.</li><li>It can be used only for [cloud mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode) destinations.</li></ul> |
+| Event-related metrics | ✅ |  ✅ | Get information on the number of events ingested during a specified timeframe. | 
+| <Link to="/user-guides/administrators-guide/bucket-configuration-settings">Event backup in your own bucket</Link> |  ✅ |  ✅ | RudderStack can manage it for you as a part of the [Enterprise plan](https://www.rudderstack.com/enterprise-quote/). | 
+| <Link to="/rudderstack-cloud/live-events">Live events</Link> |  ✅ | ❌  | This feature is applicable only for <Link to="/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> destinations. | 
+| RudderStack-hosted object storage | ✅ |  ❌  | You can use the RudderStack-hosted bucket to temporarily store your events before forwarding them to your warehouse destination. |
+| <Link to="/user-guides/administrators-guide/event-replay/">Event Replay</Link>| ✅ |  ❌  | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. | 
+| Maintaining event ordering | ✅ |  ✅ | <ul><li>For Cloud, this is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature.</li><li>Event ordering is supported in an open source setup but **not guaranteed**.</li></ul> |
+| <Link to="/transformations">Transformations</Link> (cloud mode only) |  ✅ |  ✅ | <ul><li>For Open Source users, transformations are applicable only for the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) and users can set up to **3 transformations**.</li><li>[RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up to **3 transformations**.</li><li>Pro and Enterprise users can create unlimited transformations.</li></ul> |
 
 ### ETL and Reverse ETL
 
-| Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
+| Feature |  RudderStack Cloud | RudderStack Open Source | Notes |
 | :--------| :-------------------| :--------------------------| :-----| 
-| [Cloud Extract (ETL)](https://www.rudderstack.com/docs/cloud-extract-sources/) | ✓ |  ✕  | [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up only 1 Cloud Extract source. Pro and Enterprise users can set up unlimited sources.  | 
-| [Reverse ETL](https://www.rudderstack.com/docs/reverse-etl/) | ✓ |  ✕ |  [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up only 1 Reverse ETL source. Pro and Enterprise users can set up unlimited sources.  | 
-| Data syncs scheduling | ✓ |  ✕  |  - |
-| [Models](https://www.rudderstack.com/docs/reverse-etl/features/models/) | ✓ |  ✕  | Models let you define and run custom SQL queries on your warehouse and send the resulting data to specific destinations. |
+| <Link to="/cloud-extract-sources">Cloud Extract (ETL)</Link> | ✅ |  ❌   | [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up 1 Cloud Extract source. Pro and Enterprise users can set up unlimited sources.  | 
+| <Link to="/reverse-etl">Reverse ETL</Link> | ✅ |  ❌  |  [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up 1 Reverse ETL source. Pro and Enterprise users can set up unlimited sources.  | 
+| Data syncs scheduling | ✅ |  ❌   |  - |
+| <Link to="/reverse-etl/features/models">Models</Link> | ✅ |  ❌   | Models let you define and run custom SQL queries on your warehouse and send the resulting data to specific destinations. |
 
 ### Data governance
 
-| Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
+| Feature |  RudderStack Cloud | RudderStack Open Source | Notes |
 | :--------| :-------------------| :--------------------------| :-----| 
-| [Data governance](https://www.rudderstack.com/docs/data-governance/) | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
-| [Tracking plans](https://www.rudderstack.com/docs/data-governance/tracking-plans/) | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
-| [Data regulation and suppression](https://www.rudderstack.com/docs/rudderstack-api/data-regulation-api/) | ✓ |  ✕ | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
+| <Link to="/data-governance">Data governance</Link> | ✅ |  ❌  | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
+| <Link to="/data-governance/tracking-plans">Tracking plans</Link> | ✅ |  ❌  | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
+| <Link to="/rudderstack-api/data-regulation-api">Data regulation and suppression</Link> | ✅ |  ❌  | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
 
 ### Deployment and security
 
-| Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
+| Feature |  RudderStack Cloud | RudderStack Open Source | Notes |
 | :--------| :-------------------| :--------------------------| :-----|
-| Multi-node scaling | ✓ |  ✕  | Available for Pro and Enterprise users. |
-| Single sign-on(SSO) | ✓ |  ✕  | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
-| VPC deployment | ✓ |  ✕  | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
+| Multi-node scaling | ✅ |  ❌   | Available for Pro and Enterprise users. |
+| Single sign-on(SSO) | ✅ |  ❌   | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
+| VPC deployment | ✅ |  ❌   | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
 
 ### Monitoring and observability
 
-| Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
+| Feature |  RudderStack Cloud | RudderStack Open Source | Notes |
 | :--------| :-------------------| :--------------------------| :-----| 
-| Grafana dashboards for monitoring | ✓ |  ✕  |  Available for Pro and Enterprise users. |
-| Alerting and error notifications | ✓ |  ✕  |  This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature.  |
+| Grafana dashboards for monitoring | ✅ |  ❌   |  Available for Pro and Enterprise users. |
+| Alerting and error notifications | ✅ |  ❌   |  This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature.  |
 
 ### Auditing and user management
 
-| Feature |  RudderStack Cloud | RudderStack Open Source | Comments |
+| Feature |  RudderStack Cloud | RudderStack Open Source | Notes |
 | :--------| :-------------------| :--------------------------| :-----| 
-| Ability to add other team members in the workspace | ✓ |  ✕  |  You can invite upto 3 members in your workspace in [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial), upto 10 members in Pro, and unlimited members in the Enterprise plan. | 
-| Audit logs | ✓ |  ✕  |  This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
+| Ability to add other team members in the workspace | ✅ |  ❌   |  You can invite up to 3 members to your workspace in [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial), up to 10 members in Pro, and unlimited members in the Enterprise plan. | 
+| Audit logs | ✅ |  ❌   |  This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
 
 ## FAQ
 
 ### What is the data plane and control plane in RudderStack? How do I set them up?
 
-The data plane is RudderStack's core engine responsible for receiving the event data, transforming it into the required destination format, before relaying those events to the destination.
+The data plane is RudderStack's core engine responsible for receiving event data and transforming it into the required destination format before relaying events to the destination.
 
-The control plane manages the configuration of your sources and destinations in RudderStack.
+The control plane is the front-end web application where you manage the configuration of your sources and destinations in RudderStack.
 
 <div class="infoBlock">
 
-For more information on the data plane and control plane in RudderStack, refer to the <a href="https://www.rudderstack.com/docs/get-started/rudderstack-architecture/">Architecture</a> guide.
+For more information on the data plane and control plane in RudderStack, refer to the <Link to="/get-started/rudderstack-architecture">Architecture</Link> guide.
 </div>
 
-In case of [RudderStack Cloud](https://rudderstack.com/docs/rudderstack-cloud/), RudderStack self-hosts the data plane and the control plane so you don't have to worry about their setup.
+In <Link to="/rudderstack-cloud">RudderStack Cloud</Link>, we host the data plane and the control plane so you don't have to worry about their setup.
 
-For [RudderStack Open Source](https://rudderstack.com/docs/rudderstack-open-source/), you get the following data plane and control plane setup options:
-- You need to [set up the data plane](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/) in your own environment. **RudderStack will not host it for you**.
-- For the control plane, you can either use the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) or [set up your own control plane](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/).
+For <Link to="/rudderstack-open-source">RudderStack Open Source</Link> you have the following data plane and control plane setup options:
+- <Link to="/rudderstack-open-source/installing-and-setting-up-rudderstack">Set up the data plane</Link> in your own environment. <strong>RudderStack will not host it for you</strong>.
+- For the control plane, you can either use the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) or <Link to="/rudderstack-open-source/control-plane-lite">set up your own control plane</Link>.
 
 <div class="warningBlock">
 
-Features like <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> and <a href="https://www.rudderstack.com/docs/rudderstack-cloud/live-events/">Live Events</a> are not available if you self-host the control plane.
+Features like <Link to="/transformations/">Transformations</Link> and <Link to="/rudderstack-cloud/live-events/">Live Events</Link> are not available if you self-host the control plane.
 </div>
 
 ## Contact us

@@ -2,12 +2,12 @@
 #slug: "/docs/get-started"
 title: "Get Started"
 description: >-
-  Get started with RudderStack - the warehouse-first customer data platform for developers.
+  Get started with RudderStack - set up a connection and see your events flow in no time.
 ---
 
 # Get Started
 
-The easiest way to get started with RudderStack is to set up a source, connect it to a destination, and see your event data flow in no time.
+The easiest way to get started with RudderStack is to set up a source-destination connection in the RudderStack dashboard.
 
 ## Quick start
 
@@ -22,14 +22,14 @@ Follow these steps to set up a connection in RudderStack:
 
 <div class="infoBlock">
 
-For more information on sources in RudderStack, check out the <a href="https://rudderstack.com/docs/rudderstack-cloud/sources/">Sources</a> guide.
+For more information on sources in RudderStack, refer to the <Link to="/rudderstack-cloud/sources">Sources</Link> guide.
 </div>
 
 4. Choose the data source from the list of available sources. RudderStack supports the following three types of sources:
 
-    - [Event Streams](https://rudderstack.com/docs/stream-sources/): Collect your event data from all the web, mobile, and server-side apps, then route it to a wide array of customer tools and data warehouses.
-    - [Cloud Extract](https://rudderstack.com/docs/cloud-extract-sources/): Build ELT pipelines from cloud apps to your data warehouse.
-    - [Reverse ETL](https://rudderstack.com/docs/reverse-etl/): Leverage your warehouse as a data source for your entire customer data stack.
+    - <Link to="/stream-sources">Event Streams</Link>: Collect your event data from all the web, mobile, and server-side apps, then route it to a wide array of customer tools and data warehouses.
+    - <Link to="/cloud-extract-sources">Cloud Extract</Link>: Build ELT pipelines from cloud apps to your data warehouse.
+    - <Link to="/reverse-etl">Reverse ETL</Link>: Leverage your warehouse as a data source for your entire customer data stack.
 
 5. Once you have configured the data source, you will see the following source details page.
 
@@ -44,12 +44,12 @@ Note the source <strong>Write key</strong>. This is required for integrating the
 
 <img src="../assets/get-started/adding-new-destination.png" alt="Adding a new destination" />
 
-7. From the list of destinations, select the destination you want to configure for the source. RudderStack currently supports **over 150** destinations, including [event stream](https://www.rudderstack.com/docs/destinations/) and [warehouse](https://www.rudderstack.com/docs/data-warehouse-integrations/) destinations.
-8. Configure the destination by entering the relevant connection settings. For detailed information on these settings, refer to the destination-specific [documentation](https://rudderstack.com/docs/destinations/).
+7. From the list of destinations, select the destination you want to configure for the source. RudderStack currently supports **over 150** destinations, including <Link to="/destinations">Event Stream</Link> and <Link to="/data-warehouse-integrations">Warehouse</Link> destinations.
+8. Configure the destination by entering the relevant connection settings. For detailed information on these settings, refer to the <Link to="/destinations">destination-specific documentation</Link>.
 
 <div class="successBlock">
 
-You can also transform your events in RudderStack before sending them to the destinations. Read the <a href="https://rudderstack.com/docs/transformations/">Transformations</a> guide for more information on this feature.
+You can also transform your events in RudderStack before sending them to the destinations. Read the <Link to="/transformations/">Transformations</Link> guide for more information on this feature.
 </div>
 
 ## Guides in this section
@@ -140,13 +140,13 @@ You can also transform your events in RudderStack before sending them to the des
 
 ## See also
 
-- [RudderStack Cloud](https://rudderstack.com/docs/rudderstack-cloud/): Familiarize yourself with RudderStack. Know more about sources, destinations, and connections.
-- [Glossary](https://rudderstack.com/docs/get-started/glossary/): Understand the definitions of the different terms that you are likely to encounter while using RudderStack.
-- [Sources](https://rudderstack.com/docs/rudderstack-cloud/sources/): Start tracking your event data by integrating RudderStack with your web, mobile, and server-side apps.
-- [Destinations](https://rudderstack.com/docs/rudderstack-cloud/destinations/): Send your event data to over 150 tool and warehouse destinations.
-- [Transformations](https://rudderstack.com/docs/transformations) : Customize the event data before routing it to your preferred destinations.
-- [Event spec](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/): Plan your event data and explore various options for tracking your events across all the RudderStack SDKs and APIs.
-- [RudderStack API](https://www.rudderstack.com/docs/rudderstack-api/): Work with different RudderStack API depending on your use-case.
+- <Link to="/rudderstack-cloud">RudderStack Cloud</Link>: Familiarize yourself with RudderStack. Know more about sources, destinations, and connections.
+- <Link to="/get-started/glossary">Glossary</Link>: Understand the definitions of the different terms that you are likely to encounter while using RudderStack.
+- <Link to="/rudderstack-cloud/sources">Sources</Link>: Start tracking your event data by integrating RudderStack with your web, mobile, and server-side apps.
+- <Link to="/rudderstack-cloud/destinations">Destinations</Link>: Send your event data to over 150 tool and warehouse destinations.
+- <Link to="/transformations">Transformations</Link>: Customize the event data before routing it to your preferred destinations.
+- <Link to="/rudderstack-api/api-specification/rudderstack-spec/">RudderStack Event Spec</Link>: Plan your event data and explore various options for tracking your events across all the RudderStack SDKs and APIs.
+- <Link to="/rudderstack-api/">RudderStack API</Link>: Work with different RudderStack API depending on your use-case.
 
 ## Contact us
 
