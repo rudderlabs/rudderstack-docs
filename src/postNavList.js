@@ -198,17 +198,24 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "tvOS",
+    key: "tvos",
     title: "tvOS",
     link:
-      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/",
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvos/",
     content: [],
   },
   {
-    key: "watchOS",
+    key: "macos",
+    title: "macOS",
+    link:
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/",
+    content: [],
+  },
+  {
+    key: "watchos",
     title: "watchOS",
     link:
-      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/",
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchos/",
     content: [],
   },
   {

@@ -204,6 +204,13 @@ export const jsonData = [
                 content: [],
               },
               {
+                key: "macos",
+                title: "macOS",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/",
+                content: [],
+              },
+              {
                 key: "watchOS",
                 title: "watchOS",
                 link:
