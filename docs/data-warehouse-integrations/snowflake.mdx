@@ -181,7 +181,7 @@ Refer to the following settings depending on your cloud provider:
     <ul>
       <li><strong>Staging S3 Storage Bucket Name</strong>: Specify the name of your S3 bucket where RudderStack will store the data before loading it into Snowflake.</li>
       <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
-      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-cloud-storage-integration-with-snowflake">Configuring cloud storage integration with Snowflake</a> section for details.</li>
       <li><strong>AWS Access Key ID</strong>: Enter your AWS access key ID obtained from the AWS console.</li>
       <li><strong>AWS Secret Access Key</strong>:  Enter the AWS secret access key.  Refer to this <a href="https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3#setting-up-amazon-s3">Permissions</a> section for more information. </li>
       <li><strong>Enable Server-side Encryption for S3</strong>: Toggle on this setting to enable server-side encryption for your S3 bucket.</li>
@@ -191,7 +191,7 @@ Refer to the following settings depending on your cloud provider:
     <ul>
       <li><strong>Staging Azure Blob Storage Container Name</strong>: Specify the name of your Azure container where RudderStack will store the data before loading it into Snowflake.</li>
       <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
-      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-cloud-storage-integration-with-snowflake">Configuring cloud storage integration with Snowflake</a> section for details.</li>
       <li><strong>Azure Blob Storage Account Name</strong>: Enter the account name for the Azure container.</li>
       <li><strong>Azure Blob Storage Account Key</strong>:  Enter the account key for your Azure container.  Refer to the <a href="https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage">Blob Storage setup</a> section for more information. </li>
     </ul>
@@ -200,7 +200,7 @@ Refer to the following settings depending on your cloud provider:
     <ul>
       <li><strong>Staging GCS Object Storage Bucket Name</strong>: Specify the name of your GCS bucket where RudderStack will store the data before loading it into Snowflake.</li>
       <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
-      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-snowflake-integration">Configuring Snowflake integration</a> section for details.</li>
+      <li><strong>Storage Integration</strong>: Refer to the <a href="#configuring-cloud-storage-integration-with-snowflake">Configuring cloud storage integration with Snowflake</a> section for details.</li>
       <li><strong>Credentials</strong>: Paste the contents of your GCP service account credentials JSON. The service account should have a role with <code class="inline-code">storage.objectCreator</code> access. </li>
     </ul>
     </TabPanel>
@@ -277,8 +277,7 @@ Record the value for <code class="inline-code">&lt;integration_name&gt;</code>.
 
 4. Retrieve the AWS IAM user for your Snowflake account as shown:
 
-```
-Copy
+```sql
 DESC INTEGRATION <integration_name>;
 ```
 
@@ -309,9 +308,15 @@ Note that `<snowflake_user_arn>` is the `STORAGE_AWS_ROLE_ARN` option seen in St
 6. Grant integration access to the Snowflake role you created in the [Creating a role for RudderStack](#creating-a-role-for-rudderStack) section by running the following command:
 
 ```sql
-GRANT usage ON integration <integration_name> TO ROLE "RUDDER"
+GRANT usage ON integration <integration_name> TO ROLE "RUDDER";
 ```
-Here, `<integration_name>` is the integration created in the Step 3.
+Here, `<integration_name>` is the name of the integration created in the Step 3.
+
+Note that while sending the data to Snowflake, RudderStack uses an external location instead of a stage in its queries. Hence, the following command listed in the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-s3-config-storage-integration.html#step-6-create-an-external-stage) is **not required**:
+
+```sql
+GRANT CREATE STAGE ON SCHEMA PUBLIC public to role myrole;
+```
 
 ### Azure
 
@@ -441,6 +446,31 @@ If you have your deployment in the EU region, you can whitelist only the followi
 <div class="infoBlock">
 
 All the outbound traffic is routed through these RudderStack IPs.
+</div>
+
+## FAQ
+
+### While configuring the Snowflake destination, what should I enter in the Account field?
+
+While configuring Snowflake as a destination in RudderStack, you need to enter your <Link to="/data-warehouse-integrations/snowflake/#connection-settings">Snowflake connection credentials</Link> which include the **Account** field, as shown below:
+
+<img src="../assets/dw-integrations/snowflake-account-id-example.png" alt="Snowflake account ID example" />
+
+The **Account** field corresponds to the account ID of your Snowflake warehouse and is a part of the Snowflake URL.
+
+The following examples illustrate the slight differences in the Snowflake account ID for various cloud providers:
+
+| Account ID example            | Corresponding Snowflake URL                                                    | Snowflake cloud provider                                        |
+| :-------------------------- | :--------------------------------------------------------------- | :-------------------------------------------------------------- |
+| `qya56091.us-east-1`<br /><br />  `qya56091.us-east-2.aws`        | `https://`**`qya56091.us-east-1`**`.snowflakecomputing.com`  <br /><br />  `https://`**`qya56091.us-east-2.aws`**`.snowflakecomputing.com`   | AWS                                   |
+| `rx18795.east-us-2.azure` | `https://`**`rx18795.east-us-2.azure`**`.snowflakecomputing.com` | Microsoft Azure  |
+| `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
+
+<div class="warningBlock">
+
+In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region's accounts and must be included in the <strong>Account</strong> field above. 
+
+For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
 </div>
 
 ## Contact us
