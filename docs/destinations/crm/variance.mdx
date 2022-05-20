@@ -130,6 +130,22 @@ For more information on the <code class="inline-code">group</code> call, refer t
 
 </div>
 
+## Alias
+
+Many destination platforms need an explicit alias call for mapping the already identified users to a new identifier that you may want to use, to track them in the future. The alias call lets you implement this functionality.
+
+A sample `alias` call is as shown:
+
+```javascript
+rudderanalytics.alias("new_user_id");
+```
+
+<div class="infoBlock">
+
+For more information on the <code class="inline-code">alias</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
+
+</div>
+
 ## Account Mapping
 
 Variance offers a few different ways of mapping your users to accounts/companies. Here's an overview:
