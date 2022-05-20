@@ -126,7 +126,8 @@ Refer to the <a href="#server-side-validation">Server-side validation</a> sectio
 
 To link a Tracking Plan to a source, follow these steps:
 
-1. In the **Additional Features** tab, go to the **Link Tracking Plan to Source** and enter the following settings:
+1. In the **Additional Features** tab, go to the **Link Tracking Plan to Source**.
+2. Then, enter the following settings:
 
     - **Tracking Plan ID**: Enter the Tracking Plan ID. Refer to the [Getting the Tracking Plans](#getting-the-tracking-plans) section for more information.
     - **Source ID**: Enter your source ID.  The following image highlights the source ID's location in the RudderStack dashboard:
@@ -138,7 +139,9 @@ To link a Tracking Plan to a source, follow these steps:
 A source ID uniquely identifies a RudderStack source. It is different to the source write key which is used by RudderStack to send events from the source to your specified destinations.
 </div>
 
-2. Specify the following settings under **Global Settings** (applicable for **all** events):
+### Global settings
+
+1. Specify the following settings under **Global Settings** (applicable for **all** events):
 
     - **Allow unplanned events**: This setting has the following options:
 
@@ -174,7 +177,7 @@ A source ID uniquely identifies a RudderStack source. It is different to the sou
 You can use <strong>Settings for track</strong> to explicitly define the Tracking Plan rules for <code class="inline-code">track</code> events.
 </div>
 
-3. After finalizing the settings, go to **RudderStack Tracking Plan** > **Link Tracking Plan to Source** in the top bar.
+2. After finalizing the settings, go to **RudderStack Tracking Plan** > **Link Tracking Plan to Source** in the top bar.
 
 ## Other spreadsheet settings
 
@@ -221,6 +224,12 @@ The  validation adds two new columns for each table and each row that specify:
 
 These columns will then propagate to both your data warehouse as well as cloud destinations. This lets you monitor the state of your violations and choose to act on them through manual operations or through the transformations.
 
+## How RudderStack propagates context related to tracking plan violations
+
+Currently, RudderStack propagates any context related to the tracking plan violations **only to the data warehouses** but not all the destinations. You can use this context in your <Link to="/transformations">Transformations</Link> for filtering or modifying the events before they reach the destination.
+
+If you have defined the <Link to="/data-governance/tracking-plans/tracking-plan-spreadsheet/#global-settings">tracking plan global settings</Link> such that **Allow unplanned events** is set to `FALSE`, the events that are explicitly dropped via the tracking plan will not reach any destination.
+
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or get in touch with your Account Manager.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or get in touch with your Account Manager.
