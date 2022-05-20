@@ -190,17 +190,31 @@ export const jsonData = [
               "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/",
             content: [
               {
-                key: "tvOS",
-                title: "tvOS",
+                key: "ios-v2",
+                title: "iOS v2",
                 link:
-                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/",
                 content: [],
               },
               {
-                key: "watchOS",
+                key: "tvos",
+                title: "tvOS",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvos/",
+                content: [],
+              },
+              {
+                key: "macos",
+                title: "macOS",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/",
+                content: [],
+              },
+              {
+                key: "watchos",
                 title: "watchOS",
                 link:
-                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchos/",
                 content: [],
               },
             ],
