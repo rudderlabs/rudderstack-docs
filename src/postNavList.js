@@ -191,6 +191,13 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "ios-v2",
+    title: "iOS v2",
+    link:
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/",
+    content: [],
+  },
+  {
     key: "tvOS",
     title: "tvOS",
     link:
