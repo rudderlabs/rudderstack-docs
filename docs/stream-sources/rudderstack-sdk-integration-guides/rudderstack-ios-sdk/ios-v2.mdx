@@ -134,7 +134,7 @@ RudderStack uses <a href="https://sqlite.org/index.html">SQLite</a> to temporari
 
 ## Initializing the RudderStack client
 
-To initialize the RudderStack client, place the following code in your `AppDelegate.m` file under the `didFinishLaunchingWithOptions` method:
+To initialize the RudderStack client, place the following code in your `AppDelegate` file under the `didFinishLaunchingWithOptions` method:
 
 <Tabs>
   <TabList>
@@ -263,7 +263,7 @@ The `identify` method accepts the following parameters:
 | `traits`  | `NSDictionary` | Optional       | Information on the user traits. Use the `dict` method of `RudderTraits` to convert to `NSDictionary` easily. |
 | `option` | `RSOption` | Optional       | Extra options for the `identify` event.      |
 
-### Setting your own `anonymousId`
+### Setting your own anonymous ID
 
 By default, RudderStack uses the `deviceId` as `anonymousId`. To set your own `anonymousId`, you can use the `setAnonymousId` method as shown:
 
@@ -394,8 +394,7 @@ A sample `screen` event is as shown:
 [[RSClient sharedInstance] screen:@"ViewController" category:NULL properties:@{
   @"key_1": @"value_1",
   @"key_2": @"value_2"
-} 
-options:NULL];
+} ];
 ```
 </span>
       </TabPanel>
@@ -440,8 +439,7 @@ A sample `group` call is shown below:
 [[RSClient sharedInstance] group:@"sample_group_id" traits:@{
   @"key_1": @"value_1",
   @"key_2": @"value_2"
-} 
-options:NULL];
+} ];
 ```
 </span>
       </TabPanel>
@@ -486,7 +484,7 @@ The <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias"><code c
 <span>
 
 ```objectivec
-[[RSClient sharedInstance] alias:@"new_user_id" options:NULL];
+[[RSClient sharedInstance] alias:@"new_user_id"];
 ```
 </span>
       </TabPanel>
@@ -1002,7 +1000,7 @@ RSClient.sharedInstance().addDestination(CustomDestination())
 ```objectivec
 #import "<PROJECT_MODULE_NAME>-Swift.h"
 
-[client addDestination:[[CustomDestination alloc] init]];
+[[RSClient sharedInstance] addDestination:[[CustomDestination alloc] init]];
 ```
 </span>
       </TabPanel>
@@ -1057,9 +1055,9 @@ let traits = RSClient.sharedInstance().traits
 <span>
 
 ```objectivec
-NSDictionary *traits = client.traits;
+NSDictionary *traits = [RSClient sharedInstance].traits;
 // or
-NSDictionary *traits = [client traits];
+NSDictionary *traits = [[RSClient sharedInstance] traits];
 ```
 </span>
       </TabPanel>
