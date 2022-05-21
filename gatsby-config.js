@@ -120,7 +120,7 @@ module.exports = {
               appId: process.env.GATSBY_ALGOLIA_APP_ID,
               apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
               indexName: "pfd",
-              queries: require("./src/utils/algolia-queries"),
+              queries: require("./src/utils/docs-algolia"),
               enablePartialUpdates: false,
               matchFields: [
                 "pageSlug",

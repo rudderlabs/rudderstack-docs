@@ -1,152 +1,46 @@
+const indexName = `pfd`
 const docsQuery = `{
     docs: allMdx {
       edges {
         node {
-          slug
+          id
+          frontmatter {
+            aliases
+            title
+            tags
+          }
           headings(depth: h2) {
             value
           }
-          tableOfContents(maxDepth: 1)
-          excerpt(pruneLength: 50000)
-        }
-      }
-    }
-  
-    allSanityDocsSearchAlias {
-      edges {
-        node {
-          search_alias
-          search_text
-          id
-        }
-      }
-    }
-  }`;
-
-function convertToSlug(pData) {
-  return pData
-    .toLowerCase()
-    .replace(" ", "-")
-    .replace(/ /g, "-")
-    .replace(".", "")
-    .replace("?", "")
-    .replace(/[^\w-]+/g, "");
-}
-
-const queries = [
-  {
-    query: docsQuery,
-    transformer: ({ data }) => {
-      let tmpData = [];
-      let ignorePaths = [
-        "LICENSE",
-        "contributing",
-        ".github/pull_request_template",
-      ];
-      data.docs.edges.map((row) => {
-        const parsedSlug = row.node.slug.replace("docs/", "");
-        let tmpString = row.node.excerpt;
-        let strPos =
-          ignorePaths.indexOf(parsedSlug) === -1 &&
-          row.node.tableOfContents !== {}
-            ? tmpString.indexOf(row.node.tableOfContents.items[0].title)
-            : "";
-        let endPos = tmpString.indexOf(
-          row.node.headings.length > 0 ? row.node.headings[0].value : ""
-        );
-
-        let content = tmpString.substring(strPos, endPos - 1);
-
-        let tttmp = data.allSanityDocsSearchAlias.edges.find(
-          (kk) =>
-            kk.node.search_alias ===
-            convertToSlug(
-              ignorePaths.indexOf(parsedSlug) === -1
-                ? row.node.tableOfContents.items[0].title
-                : ignorePaths[ignorePaths.indexOf(parsedSlug)]
-            )
-        );
-
-        let searchAlias = "";
-        if (tttmp) {
-          searchAlias = tttmp.node.search_text;
-        }
-
-        tmpString = tmpString.replace(content, "");
-        tmpData.push({
-          objectID:
-            parsedSlug +
-            "-" +
-            convertToSlug(
-              ignorePaths.indexOf(parsedSlug) === -1
-                ? row.node.tableOfContents.items[0].title
-                : "0"
-            ),
-          pageSlug: parsedSlug,
-          pageTitle:
-            ignorePaths.indexOf(parsedSlug) === -1
-              ? row.node.tableOfContents.items[0].title
-              : ignorePaths[ignorePaths.indexOf(parsedSlug)],
-          sectionId: convertToSlug(
-            ignorePaths.indexOf(parsedSlug) === -1
-              ? row.node.tableOfContents.items[0].title
-              : ignorePaths[ignorePaths.indexOf(parsedSlug)]
-          ),
-          SectionTitle: convertToSlug(
-            ignorePaths.indexOf(parsedSlug) === -1
-              ? row.node.tableOfContents.items[0].title
-              : ignorePaths[ignorePaths.indexOf(parsedSlug)]
-          ),
-          sectionContent: content,
-          searchAlias: searchAlias,
-          idx: 1,
-        });
-
-        for (var i = 0; i <= row.node.headings.length - 1; i += 1) {
-          strPos = 0;
-          endPos = 0;
-          content = "";
-
-          strPos = tmpString.indexOf(row.node.headings[i].value);
-
-          endPos =
-            i === row.node.headings.length - 1
-              ? tmpString.length
-              : tmpString.indexOf(row.node.headings[i + 1].value);
-
-          content = tmpString.substring(strPos, endPos - 1);
-          tmpString = tmpString.replace(content, "");
-
-          let tttmp = data.allSanityDocsSearchAlias.edges.find(
-            (kk) => kk.node.search_alias === row.node.headings[i].value
-          );
-
-          let searchAlias = "";
-          if (tttmp) {
-            searchAlias = tttmp.node.search_text;
+          fields {
+            slug
           }
-
-          tmpData.push({
-            objectID:
-              parsedSlug + "-" + convertToSlug(row.node.headings[i].value),
-            pageSlug: parsedSlug,
-            pageTitle:
-              ignorePaths.indexOf(parsedSlug) === -1
-                ? row.node.tableOfContents.items[0].title
-                : ignorePaths[ignorePaths.indexOf(parsedSlug)],
-            sectionId: convertToSlug(row.node.headings[i].value),
-            SectionTitle: row.node.headings[i].value,
-            sectionContent: content,
-            searchAlias: searchAlias,
-            idx: i + 2,
-          });
+          tableOfContents(maxDepth: 1)
+          excerpt(pruneLength: 200)
         }
-      });
-      return tmpData;
+      }
+    }
+  }`
+function pageToAlgoliaRecord({ node: { id, frontmatter, headings, fields, tableOfContents, excerpt } }) {
+    return {
+        objectID: id,
+        title: frontmatter.title,
+        slug: fields.slug,
+        tableOfContents,
+        excerpt,
+        tags: frontmatter.tags,
+        alias: frontmatter.aliases,
+        headings,
+        // SectionTitle: tableOfContents.items[0].title
+        SectionTitle: tableOfContents.items[0].title, // we should use frontmatter title instead
+    }
+}
+const queries = [
+    {
+        query: docsQuery,
+        transformer: ({ data }) => data.docs.edges.map(pageToAlgoliaRecord),
+        indexName,
+        settings: { attributesToSnippet: [`excerpt:20`] },
     },
-    indexName: process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs",
-    settings: {},
-  },
-];
-
-module.exports = queries;
+]
+module.exports = queries
