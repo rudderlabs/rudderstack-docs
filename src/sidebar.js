@@ -204,10 +204,10 @@ export const jsonData = [
                 content: [],
               },
               {
-                key: "macOS",
+                key: "macos",
                 title: "macOS",
                 link:
-                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macOS/",
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/",
                 content: [],
               },
               {
