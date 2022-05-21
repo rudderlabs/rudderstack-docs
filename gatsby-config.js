@@ -119,13 +119,13 @@ module.exports = {
             options: {
               appId: process.env.GATSBY_ALGOLIA_APP_ID,
               apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
-              indexName:
-                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs",
-              queries: require("./src/utils/docs-algolia"),
-              enablePartialUpdates: true,
+              indexName: "pfd",
+              queries: require("./src/utils/algolia-queries"),
+              enablePartialUpdates: false,
               matchFields: [
                 "pageSlug",
                 "pageTitle",
+                "title",
                 "sectionTitle",
                 "sectionId",
                 "sectionContent",
