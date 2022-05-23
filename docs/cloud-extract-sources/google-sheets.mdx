@@ -1,35 +1,39 @@
 ---
 #slug: "/docs/cloud-extract-sources/google-sheets"
 title: "Google Sheets"
-description: Step-by-step guide to ingest data from Google Sheets into RudderStack
+description: Step-by-step guide on ingesting data from Google Sheets into RudderStack.
 ---
 
 # Google Sheets
 
-[Google Sheets](https://www.google.com/sheets/about/) is a popular spreadsheet program that is bundled as a part of the free, cloud-based office suite offered by Google. With Google Sheets you can seamlessly create spreadsheets that update and save automatically and are easy to access from your Google Drive.
+[Google Sheets](https://www.google.com/sheets/about/) is a popular spreadsheet program that lets you seamlessly create spreadsheets which are updated and saved automatically.
 
-With the RudderStack-Google Sheets integration, you can send your spreadsheet data residing within Google Sheets to your preferred data warehouse destination supported by RudderStack.
+This document guides you in setting up Google Sheets as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google Sheets data, which can then be routed to your RudderStack-supported data warehouse destination.
+
+<div class="warningBlock">
+
+All the Cloud Extract sources support sending data only to a <a href="https://www.rudderstack.com/docs/data-warehouse-integrations/">data warehouse destination</a>.
+</div>
+
+## Getting started
+
+To set up Google Sheets as a source in RudderStack, follow these steps:
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Google Sheets** from the list of sources.
+3. Assign a name to your source and click on **Next**.
+
+### Connection settings
+
+1. Click **Connect with Google Sheets** and grant RudderStack the necessary permissions to access your Google Sheets data.
 
 <div class="infoBlock">
 
-**All the Cloud Extract sources support sending data only to a data warehouse destination.**
-
+Your Google Sheets account and the related details will then automatically appear under <strong>Choose an account</strong>.
 </div>
 
-## Getting Started
-
-Setting up the Google Sheet integration with RudderStack involves three major steps:
-
-1. Specifying the connection credentials to integrate Google Sheets with RudderStack
-2. Defining the Google Sheet and the workbook which will act as the source of data
-3. Setting the data update schedule
-
-To set up Google Sheets as a source on the RudderStack dashboard, follow these steps:
-
-- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-- From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
-
-<!--<img src="../../../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3) (3).png" />-->
+2. Click on **Continue**
+3.  choose the Google Spreadsheet and the worksheet to be used as the data source. You will also need to specify the Header row. This is the row that contains the sheet’s headers and column names.
 
 <img
   src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3).png"
