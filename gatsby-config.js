@@ -112,6 +112,13 @@ module.exports = {
         plugins: [`gatsby-remark-autolink-headers`, `gatsby-remark-images`],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: `src/images/favicon.png`,
+        icons: []
+      }
+    },
     ...(process.env.RS_GATSBY_ALGOLIA_APIKEY
       ? [
           {
