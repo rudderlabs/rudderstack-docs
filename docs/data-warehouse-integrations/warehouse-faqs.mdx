@@ -195,8 +195,7 @@ The table name truncation logic is as follows:
 - For **Data Lake** destinations (**S3 Data Lake, GCS Data Lake, Azure Data Lake**), there is no set limit.
 - For **other** destinations, the table name is truncated after 127 characters.
 
-### How does Rudderstack configure the column names? OR
-### How does RudderStack normalize arrays and complex event properties in the warehouse schema? 
+### How does Rudderstack configure the column names? / How does RudderStack normalize arrays and complex event properties in the warehouse schema?
 
 RudderStack flattens the event properties and converts them into snake case (for example, `source name` -> `source_name`). Further, each of these event properties acts as a warehouse column.
 
