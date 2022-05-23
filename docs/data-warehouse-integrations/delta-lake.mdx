@@ -71,6 +71,11 @@ For more information on obtaining the HTTP path, refer to the <a href="https://r
 For more information on generating the access token, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#generating-the-databricks-access-token">Generating the Databricks access token</a> section below.
 </div>
 
+* **Enable delta tables creation in an external location**: If enabled Rudderstack will create the delta tables at `{externalLocation}/ {schema}/{table}` location.
+- If not enabled Rudderstack will create delta tables at default storage location for non-external Hive tables.
+
+
+
 * **Namespace**: Enter the the name of the schema where RudderStack will create the tables. If you don't specify a namespace in the dashboard settings, RudderStack will set it to the source name, by default.
 * **Sync Frequency**: Specify how often RudderStack should sync the data to your Delta Lake instance.
 * **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the Delta Lake instance.
@@ -402,7 +407,7 @@ If you have your deployment in the EU region, you can whitelist only the followi
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
-## FAQs
+## FAQ
 
 ### What are the reserved keys for Delta Lake?
 
@@ -413,6 +418,76 @@ Refer to this [documentation](https://docs.microsoft.com/bs-cyrl-ba/azure/databr
 There are some limitations when it comes to using reserved words as a schema, table, or column name. If such words are used in event names, traits or properties, they will be prefixed with a `_` when RudderStack creates tables or columns for them in your schema.
 
 Also, integers are **not** allowed at the start of a schema or table name. Hence, such schema, column, or table names will be prefixed with a `_`. For example, `'25dollarpurchase'` will be changed to `'_25dollarpurchase'`.
+
+### How to modify existing tables to partitioned tables?
+
+1. Set exclusion window so that RudderStack don't process anything during the below changes.
+2. Make necessary changes in Rudderstack WareHouse configurations.
+3. Rename the already existing tables with _temp suffix.
+4. Add column event_data to the _temp table.
+5. Back fill the data back into the original table.
+
+```sql
+ALTER TABLE x RENAME TO x_temp;
+ALTER TABLE x_temp ADD COLUMN TO event_date DATE;
+INSERT INTO x SELECT * FROM x_temp;
+```
+
+Meanwhile, Rudderstack will create the new tables with the partition support. Later, they can backfill the data.
+
+### How to convert existing unmanaged table at location 'A' to an unmanaged table at location 'B'?
+
+1. Set exclusion window so that RudderStack don't process anything during the below changes.
+2. Create a temporary table using location 'B'.
+3. Drop temporary table.
+4. Drop original table.
+5. Update external location and remove exclusion window as well.
+6. Make necessary changes in Rudderstack WareHouse configurations.
+7. RudderStack will create the table again during the next syncs.
+
+```sql
+CREATE OR REPLACE TABLE namespace.x_temp DEEP CLONE namespace.x LOCATION '/path/to/new/location/namespace/x';
+// where namespace represents the namespace attached to the destination in RudderStack.
+// where x represents the original table created by RudderStack.
+
+DROP TABLE namespace.x_temp;
+DROP TABLE namespace.x;
+```
+
+### How to convert existing managed table to an unmanaged table at location 'A'?
+
+1. Set exclusion window so that RudderStack don't process anything during the below changes.
+2. Create a temporary table using location 'A'.
+3. Drop temporary table.
+4. Drop original table.
+5. Enable external location support in Rudderstack WareHouse configurations and update the location. Remove exclusion window as well.
+6. RudderStack will create the table again during the next syncs.
+
+```sql
+CREATE OR REPLACE TABLE namespace.x_temp DEEP CLONE namespace.x LOCATION '/path/to/new/location/namespace/x';
+// where namespace represents the namespace attached to the destination in RudderStack.
+// where x represents the original table created by RudderStack.
+
+DROP TABLE namespace.x_temp;
+DROP TABLE namespace.x;
+```
+
+### How to convert existing unmanaged table at location 'A' to managed table?
+
+1. Set exclusion window so that RudderStack don't process anything during the below changes.
+2. Create a temporary table.
+3. Drop original table.
+4. Rename temporary table to original table.
+5. Disable external location support in Rudderstack WareHouse configurations. Remove exclusion window as well.
+
+```sql
+CREATE TABLE IF NOT EXISTS namespace.x_temp DEEP CLONE namespace.x;
+// where namespace represents the namespace attached to the destination in RudderStack.
+// where x represents the original table created by RudderStack.
+
+DROP TABLE namespace.x;
+ALTER TABLE namespace.x_temp RENAME TO namespace.x;
+```
 
 ## Contact us
 
