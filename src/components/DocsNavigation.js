@@ -1,21 +1,20 @@
-import React, { useState } from "react"
-import RsLogo from "../images/rudderstack-logo-v2.svg"
-import { InstantSearch, Configure } from "react-instantsearch-dom"
-import algoliasearch from "algoliasearch/lite"
-import DocsSearchBox from "./DocsSearchBox"
-import DocSearchContentWrapper from "./DocSearchContentWrapper"
-import {rudderslabTrackOnClickDocs} from '../utils/common'
+import React, { useState } from "react";
+import RsLogo from "../images/rudderstack-logo-v2.svg";
+import { InstantSearch, Configure } from "react-instantsearch-dom";
+import algoliasearch from "algoliasearch/lite";
+import DocsSearchBox from "./DocsSearchBox";
+import DocSearchContentWrapper from "./DocSearchContentWrapper";
+import { rudderslabTrackOnClickDocs } from "../utils/common";
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
   process.env.GATSBY_ALGOLIA_SEARCH_APIKEY
-)
+);
 
-
-const DocsNavigation = ({ isMenuOpen, handleMenuOpen}) => {
-  const [isSearchOpen, setSearchOpen] = useState(false)
-  const [currentSearchText, setCurrentSearchText] = useState("")
-  const [currentRefineHitsCount, setCurrentRefineHitsCount] = useState(0)
+const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
+  const [isSearchOpen, setSearchOpen] = useState(false);
+  const [currentSearchText, setCurrentSearchText] = useState("");
+  const [currentRefineHitsCount, setCurrentRefineHitsCount] = useState(0);
 
   return (
     <div className="headerNav">
@@ -37,23 +36,54 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen}) => {
           </svg>
         </div>
         <div className="docsLogo flex items-center">
-          <a href="https://www.rudderstack.com/" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>
+          <a
+            href="https://www.rudderstack.com/"
+            onClick={(e) =>
+              rudderslabTrackOnClickDocs("navigation", null, e, true)
+            }
+          >
             <img src={RsLogo} alt="RudderStack" className="mainLogo" />
           </a>
         </div>
         <nav className="docsNav">
           <ul className="docsNavList">
             <li>
-              <a href="/" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>Home</a>
+              <a
+                href="/"
+                onClick={(e) =>
+                  rudderslabTrackOnClickDocs("navigation", null, e, true)
+                }
+              >
+                Home
+              </a>
             </li>
             <li>
-              <a href="https://github.com/rudderlabs/rudder-server" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>GitHub</a>
+              <a
+                href="https://github.com/rudderlabs/rudder-server"
+                onClick={(e) =>
+                  rudderslabTrackOnClickDocs("navigation", null, e, true)
+                }
+              >
+                GitHub
+              </a>
             </li>
             <li>
-              <a href="https://www.rudderstack.com/pricing" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>Pricing</a>
+              <a
+                href="https://www.rudderstack.com/pricing"
+                onClick={(e) =>
+                  rudderslabTrackOnClickDocs("navigation", null, e, true)
+                }
+              >
+                Pricing
+              </a>
             </li>
             <li>
-              <a href="https://app.rudderstack.com/signup?type=freetrial" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>
+              <a
+                href="https://app.rudderstack.com/signup?type=freetrial"
+                onClick={(e) =>
+                  rudderslabTrackOnClickDocs("navigation", null, e, true)
+                }
+              >
                 Try for Free
               </a>
             </li>
@@ -80,44 +110,57 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen}) => {
               </g>
             </svg>
           </span>
-          <input type="text" placeholder="Search..." className="docsSearchbar" onClickCapture={(e) => {setSearchOpen(true); e.target.blur();}} />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="docsSearchbar"
+            onClickCapture={(e) => {
+              setSearchOpen(true);
+              e.target.blur();
+            }}
+          />
         </div>
-        
+
         <div className="searchWrapper">
-          <div className={`searchOverlay ${isSearchOpen ? 'active' : ''}`} onClick={() => setSearchOpen(false)}></div>
-          <div className={`instantSearchWrapper ${isSearchOpen ? 'active' : ''}`}>
-              <InstantSearch
-                searchClient={searchClient}
-                indexName={process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs"}
-              >
-                <Configure hitsPerPage={10} />
-                <div className="docsSearchWrapper">
-                  <DocsSearchBox
-                    onRefineTextChange={val => {
-                      setCurrentSearchText(val);
-                    }}
+          <div
+            className={`searchOverlay ${isSearchOpen ? "active" : ""}`}
+            onClick={() => setSearchOpen(false)}
+          ></div>
+          <div
+            className={`instantSearchWrapper ${isSearchOpen ? "active" : ""}`}
+          >
+            <InstantSearch
+              searchClient={searchClient}
+              indexName={process.env.GATSBY_ALGOLIA_INDEX}
+            >
+              <Configure hitsPerPage={10} />
+              <div className="docsSearchWrapper">
+                <DocsSearchBox
+                  onRefineTextChange={(val) => {
+                    setCurrentSearchText(val);
+                  }}
+                  isSearchOpen={isSearchOpen}
+                  currentSearchText={currentSearchText}
+                  setSearchOpen={setSearchOpen}
+                />
+              </div>
+              <div id="docsSearchHitsContainer">
+                <div data-reactroot>
+                  <DocSearchContentWrapper
                     isSearchOpen={isSearchOpen}
+                    onRefineHitsCountChange={setCurrentRefineHitsCount}
                     currentSearchText={currentSearchText}
                     setSearchOpen={setSearchOpen}
+                    currentRefineHitsCount={currentRefineHitsCount}
                   />
                 </div>
-                <div id="docsSearchHitsContainer">
-                  <div data-reactroot>
-                    <DocSearchContentWrapper
-                      isSearchOpen={isSearchOpen}
-                      onRefineHitsCountChange={setCurrentRefineHitsCount}
-                      currentSearchText={currentSearchText}
-                      setSearchOpen={setSearchOpen}
-                      currentRefineHitsCount={currentRefineHitsCount}
-                    />
-                  </div>
-                </div>
-              </InstantSearch>
-            </div>
+              </div>
+            </InstantSearch>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DocsNavigation
+export default DocsNavigation;
