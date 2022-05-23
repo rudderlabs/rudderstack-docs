@@ -132,22 +132,13 @@ You can speed up your warehouse uploads by configuring the following parameters 
   </tr>
 </table>
 
-The following parameter can be configured in the `rudderstack_deployment.yaml` file to serve the same purpose:
+You can also configure the number of warehouse slaves (responsible for load file generation) when the warehouse is run as separate service in Kubernetes. In the docker-compose.yaml, configure the following:
 
-<table style="width:100%">
-  <tr>
-    <th style="width:300px">Parameter</th>
-    <th>Description</th>
-     <th>Tip</th>
-    <th>Default value</th>
-  </tr>
-   <tr>
-    <td style="width:300px"><code class="inline-code">warehouse_slave.replicaCount</code></td>
-    <td>Number of warehouse slaves (responsible for load file generation) when the warehouse is run as separate service in Kubernetes.</td>
-    <td>Increase this for speeding up the load file generation step of the upload.</td>
-    <td><code class="inline-code">2</code></td>
-  </tr>
-</table>
+```yaml
+deploy:
+  replicas: <count>
+```
+The <count> can be increased for speeding up the load file generation step of the upload. Its default value is 2.
 
 ### How is the Namespace field populated for a Warehouse destination?
 
@@ -204,7 +195,7 @@ The table name truncation logic is as follows:
 - For **Data Lake** destinations (**S3 Data Lake, GCS Data Lake, Azure Data Lake**), there is no set limit.
 - For **other** destinations, the table name is truncated after 127 characters.
 
-### How does Rudderstack configure the column names? / How does RudderStack normalize arrays and complex event properties in the warehouse schema? 
+### How does Rudderstack configure the column names?/How does RudderStack normalize arrays and complex event properties in the warehouse schema? 
 
 RudderStack flattens the event properties and converts them into snake case (for example, `source name` -> `source_name`). Further, each of these event properties acts as a warehouse column.
 
