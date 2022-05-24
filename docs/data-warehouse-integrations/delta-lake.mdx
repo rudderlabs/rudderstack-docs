@@ -452,7 +452,7 @@ RudderStack will create the new tables with partition support. Refer to the [Dat
 1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process any data while performing the below changes.
 2. Run the following queries in the Databricks Cluster/SQL endpoints to:
    - Create a temporary table using the new location.
-   - Drop temporary table.
+   - Drop the temporary table.
    - Drop original table.
 
 ```sql
