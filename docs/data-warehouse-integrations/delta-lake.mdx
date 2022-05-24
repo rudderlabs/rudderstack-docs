@@ -450,7 +450,7 @@ RudderStack will create the new tables with partition support. Refer to the [Dat
 ### How do I convert an existing unmanaged table at a location to an unmanaged table at a new location? / How do I convert an existing managed table to an unmanaged table at a new location?
 
 1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process any data while performing the below changes.
-2. Run the following queries in the Databricks Cluster/SQL Endpoints to:
+2. Run the following queries in the Databricks Cluster/SQL endpoints to:
    - Create a temporary table using new location.
    - Drop temporary table.
    - Drop original table.
