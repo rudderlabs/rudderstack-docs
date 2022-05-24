@@ -431,7 +431,9 @@ Also, integers are **not** allowed at the start of a schema or table name. Hence
 
 ### How can I modify an existing table to a partitioned table?
 
-1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process anything while performing the below changes.
+To modify an existing table to a partitioned table, follow these steps:
+
+1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process any data while performing the below changes.
 2. Make the required changes in Rudderstack Warehouse configurations.
 3. Run the following queries in the Databricks Cluster/SQL endpoints to:
     - Rename the existing table with `_temp` suffix.
