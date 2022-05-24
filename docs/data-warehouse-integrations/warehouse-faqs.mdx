@@ -119,26 +119,12 @@ You can speed up your warehouse uploads by configuring the following parameters 
     <td><code class="inline-code">8</code></td>
   </tr>
    <tr>
-    <td style="width:300px"><code class="inline-code">warehouse_slave.replicaCount</code></td>
-    <td>Number of warehouse slaves (responsible for load file generation) when the warehouse is run as separate service in Kubernetes.</td>
-    <td>Increase this for speeding up the load file generation step of the upload.</td>
-    <td><code class="inline-code">2</code></td>
-  </tr>
-   <tr>
     <td style="width:300px"><code class="inline-code">RSERVER_WAREHOUSE_NO_OF_SLAVE_WORKER_ROUTINES</code></td>
     <td>Number of go-routines creating load files in a warehouse slave process.</td>
     <td>Increase or decrease this as per memory allocated to the warehouse slave pod.</td>
     <td><code class="inline-code">4</code></td>
   </tr>
 </table>
-
-You can also configure the number of warehouse slaves (responsible for load file generation) when the warehouse is run as a separate service in Kubernetes. To do so, configure the following in docker-compose.yaml:
-
-```yaml
-deploy:
-  replicas: <count>
-```
-The `<count>` can be increased for speeding up the load file generation step of the upload. Its default value is 2.
 
 ### How is the Namespace field populated for a Warehouse destination?
 
