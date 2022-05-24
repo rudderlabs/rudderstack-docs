@@ -8,6 +8,23 @@ description: Answers to the generally asked questions related to the RudderStack
 
 ## FAQs
 
+### What is the maximum event size supported by the RudderStack SDKs?
+
+#### Client-side SDKs
+
+In case of client-side SDKs, RudderStack allows events with a maximum size of `32 KB` per call. The [**`batch`**](https://rudderstack.com/docs/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB` per batch and `32 KB` per call. 
+
+RudderStack responds with a `400 Bad Request` if these limits are exceeded.
+
+#### Server-side SDKs
+
+In case of server-side SDKs, RudderStack supports a maximum event size of `4 MB`. Also, the [**`batch`**](https://rudderstack.com/docs/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB`.
+
+<div class="infoBlock">
+
+You can use the server-side SDKs to send a single event of 4 MB or batch multiple events as long as the total `batch` call size is less than or equal to 4 MB. The 4 MB limit must not be breached, otherwise RudderStack responds with a <code class="inline-code">400 Bad Request</code> error.
+</div>
+
 ### How does RudderStack handle **`anonymousId` ?**
 
 The following are the different ways in which RudderStack handles **`anonymousId`** across different SDKs:

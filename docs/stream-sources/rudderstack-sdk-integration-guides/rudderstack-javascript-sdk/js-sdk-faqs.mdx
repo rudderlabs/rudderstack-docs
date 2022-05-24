@@ -58,7 +58,9 @@ To check if data is being transmitted to the specified destinations, go to the *
 
 ## What is the size limit on the requests?
 
-The size limit on requests is 32KB per message and 4MB per batch request.
+RudderStack allows events with a maximum size of `32 KB` per call. The [**`batch`**](https://rudderstack.com/docs/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB` per batch and `32 KB` per call. 
+
+RudderStack responds with a `400 Bad Request` if these limits are exceeded.
 
 ## Can I send the event data to specific destinations only?
 

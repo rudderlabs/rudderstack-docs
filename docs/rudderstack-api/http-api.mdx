@@ -77,7 +77,20 @@ In case of the Invalid Authorization Header error, verify if the source write ke
 
 ## 4. Maximum Allowed Request Size
 
-RudderStack allows messages with a maximum size of `32 KB` per call. The [**`batch`**](https://rudderstack.com/docs/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB` per batch, and `32 KB` per call. RudderStack responds with a `400 Bad Request` if these limits are exceeded.
+### Client-side SDKs
+
+In case of client-side SDKs, RudderStack allows events with a maximum size of `32 KB` per call. The [**`batch`**](https://rudderstack.com/docs/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB` per batch and `32 KB` per call. 
+
+RudderStack responds with a `400 Bad Request` if these limits are exceeded.
+
+### Server-side SDKs
+
+In case of server-side SDKs, RudderStack supports maximum event size `4 MB`. Also, the [**`batch`**](https://rudderstack.com/docs/rudderstack-api/http-api#11-batch) endpoint accepts a maximum call size of `4 MB`.
+
+<div class="infoBlock">
+
+You can use the server-side SDKs to send a single event of 4 MB or batch multiple events as long as the total `batch` call size is less than or equal to 4 MB. The 4 MB limit must not be breached, otherwise RudderStack responds with a <code class="inline-code">400 Bad Request</code> error.
+</div>
 
 ## 5. Identify
 
@@ -574,7 +587,7 @@ For more details on the `alias` call, refer to the [**RudderStack Events Specifi
 
 The `batch` call allows you to send a series of `identify`, `track`, `page`, `group` and `screen` requests in a single batch. This call helps you minimize the number of outbound requests, thus enabling better performance.
 
-As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch request and `32 KB` per call.
+RudderStack sets a maximum limit of `4 MB` per `batch` request and `32 KB` per call in case of client-side SDKs, whereas the server-side SDKs support a maximum limit of `4 MB` per call or `batch` request.
 
 * Request Type: **POST**
 * Request Format**:** 
