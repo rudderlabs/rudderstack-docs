@@ -25,102 +25,60 @@ To set up Google Sheets as a source in RudderStack, follow these steps:
 
 ### Connection settings
 
-1. Click **Connect with Google Sheets** and grant RudderStack the necessary permissions to access your Google Sheets data.
+1. Click on **Connect with Google Sheets** and grant RudderStack the necessary permissions to access your Google Sheets data.
+
+<img src="../assets/cloud-extract-sources/google-sheets-connection-settings-2.png" alt="Sendgrid credentials" />
 
 <div class="infoBlock">
 
 Your Google Sheets account and the related details will then automatically appear under <strong>Choose an account</strong>.
 </div>
 
-2. Click on **Continue**
-3.  choose the Google Spreadsheet and the worksheet to be used as the data source. You will also need to specify the Header row. This is the row that contains the sheet’s headers and column names.
-
-<img
-  src="../assets/image (97) (1) (1) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (2) (3).png"
-  alt="Add Source"
-/>
-
-- Next, select **Google Sheets**, and click on **Next**.
-
-<!-- <img src="../../../images/1 (7).png" />-->
-
-<img src="../assets/1 (7).png" alt="Google Sheets" />
-
-- Assign a name to your source, and click on **Next**.
-
-<!--<img src="../../../assets/2 (2).png" />-->
-
-<img src="../assets/2 (2).png" alt="Assign a name" />
-
-### Specifying Connection Credentials
-
-- Next, click on **Connect with Google Sheets**. Choose your Google account and give RudderStack the required permissions to access Google Sheets.
-
 <div class="infoBlock">
 
 If you've already configured Google Sheets as a source before, you can choose the Google account under the **Use existing credentials** tab.
-
 </div>
 
-### Defining the Data Source
+2. Click on **Continue**
+3. Choose the Google Spreadsheet and the worksheet to be used as the data source. You will also need to specify the Header row. This is the row that contains the sheet's headers and column names.
 
-- Next, choose the Google Spreadsheet and the worksheet to be used as the data source. You will also need to specify the **Header row**. This is the row that contains the sheet’s headers and column names.
+<img src="../assets/cloud-extract-sources/google-sheets-connection-settings-2.png" alt="Sendgrid credentials" />
+
+
+### Destination settings
+
+The following settings specify how RudderStack sends the data ingested from Google Sheets to the connected warehouse destination:
+
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Google Sheets data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Google Sheets:
+    - **Basic**: Runs the syncs at the specified time interval. 
+    - **CRON**: Runs the syncs based on the user-defined CRON expression.
+    - **Manual**: You are required to run the syncs manually.
 
 <div class="infoBlock">
 
-By default, RudderStack uses the first row of the sheet as the header row.
-
+For more information on the schedule types, refer to the <a href="https://www.rudderstack.com/docs/cloud-extract-sources/common-settings/">Common Settings</a> guide.
 </div>
 
-<!--<img src="../../../assets/4.png" />-->
+Google Sheets is now configured as a source. RudderStack will start ingesting data from Google Sheets as per your specified schedule and frequency.
 
-<img src="../assets/4.png" alt="First data row" />
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
 
-- You will also need to specify the **First data row**. This is the row where the sheet’s data begins. Then, click on **Next** to proceed.
-
-<div class="infoBlock">
-
-By default, RudderStack uses the row that follows the header as the first data row.
-
-</div>
-
-- RudderStack will automatically verify if the sheet is valid and contains any data. If the specified worksheet is empty, RudderStack will flag this automatically, as shown:
-
-<!--<img src="../assets/7 (1).png" />-->
-
-<img src="../assets/7 (1).png" alt="Verifying the data" />
-
-### Setting the Data Update Schedule
-
-- As the final step, you will be required to set the **Run Frequency** to schedule the data import from your Google Sheet to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
-
-<!--<img src="../assets/5 (4).png" />-->
-
-<img src="../assets/5 (4).png" alt="Run Frequency" />
-
-That's it! Your Google Sheet is now successfully configured as a source.
-
-RudderStack will start ingesting data from your Google Sheets source as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
-
-<!--<img src="../assets/6 (5).png" />-->
-
-<img src="../assets/6 (5).png" alt="Connect Destinations" />
+<img src="../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
 
 <div class="successBlock">
 
-  Use the **Connect Destinations** option if you have already
-  configured a data warehouse destination in RudderStack. To configure a data
-  warehouse destination from scratch, click on the **Add Destination** button.
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
-## FAQs
+## FAQ
 
-#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
 
-We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Google Sheets as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+If you come across any issues while configuring Sendgrid as a source in RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
