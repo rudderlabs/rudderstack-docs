@@ -663,7 +663,7 @@ For example, if the `flushQueueSize` is 30 and there are 180 events in the datab
 
 If a batch fails for some reason, the remaining batches are dropped as well to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the server even after 3 retries. 
 
-In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if exists).  
+In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if applicable).  
 
 ## FAQs
 
