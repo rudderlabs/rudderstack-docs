@@ -434,7 +434,7 @@ Also, integers are **not** allowed at the start of a schema or table name. Hence
 To modify an existing table to a partitioned table, follow these steps:
 
 1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process any data while performing the below changes.
-2. Make the required changes in Rudderstack Warehouse configurations.
+2. Make the required changes in connection settings of the configured Delta Lake destination.
 3. Run the following queries in the Databricks Cluster/SQL endpoints to:
     - Rename the existing table with `_temp` suffix.
     - Add `event_date` column to the `_temp` table.
@@ -452,7 +452,7 @@ RudderStack will create the new tables with partition support. Refer to the [Dat
 
 </div>
 
-### How do I convert an existing unmanaged table at a location to an unmanaged table at a new location? / How do I convert an existing managed table to an unmanaged table at a new location?
+### How can I convert an existing managed or unmanaged table at a location to an unmanaged table at a new location?
 
 1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process any data while performing the below changes.
 2. Run the following queries in the Databricks Cluster/SQL endpoints to:
@@ -470,7 +470,7 @@ DROP TABLE namespace.x;
 ```
 
 3. Enable the **Enable delta tables creation in an external location** setting in RudderStack dashboard and update the location.
-4. Remove the exclusion window and make the required changes in Rudderstack Warehouse configurations.
+4. Remove the exclusion window and make the required changes in connection settings of the configured Delta Lake destination.
 
 RudderStack will create the table again during the subsequent data syncs.
 
@@ -479,7 +479,7 @@ RudderStack will create the table again during the subsequent data syncs.
 Refer to the [Databricks documentation on managed and unmanaged tables](https://docs.databricks.com/data/tables.html#managed-and-unmanaged-tables) for more information.
 </div>
 
-### How do I convert an existing unmanaged table at a specific location to a managed table?
+### How do I convert an existing unmanaged table at a specific location to a managed table (at default location)?
 
 1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process anything while performing the below changes.
 2. Run the following queries in the Databricks Cluster/SQL Endpoints to:
