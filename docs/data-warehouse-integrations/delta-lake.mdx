@@ -71,7 +71,7 @@ For more information on obtaining the HTTP path, refer to the <a href="https://r
 For more information on generating the access token, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#generating-the-databricks-access-token">Generating the Databricks access token</a> section below.
 </div>
 
-* **Enable delta tables creation in an external location**: Disabled by default, Rudderstack creates delta tables at a default storage location for non-external Hive tables.
+* **Enable delta tables creation in an external location**: Enable this setting to specify the external location to create the delta tables. By default, RudderStack creates the delta tables at a default storage location for the non-external Apache Hive tables.
   When enabled, it lets you specify the external location to create delta tables: 
 
 <img  src="../assets/dw-integrations/delta-lake-connection-settings-13.png" alt="Delta Lake destination settings in RudderStack"/>
