@@ -6,7 +6,7 @@ description: Step-by-step guide on ingesting data from Google Sheets into Rudder
 
 # Google Sheets
 
-[Google Sheets](https://www.google.com/sheets/about/) is a popular spreadsheet program that lets you seamlessly create spreadsheets which are updated and saved automatically.
+[Google Sheets](https://www.google.com/sheets/about/) is a popular spreadsheet program that lets you create spreadsheets which are updated and saved automatically.
 
 This document guides you in setting up Google Sheets as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Google Sheets data, which can then be routed to your RudderStack-supported data warehouse destination.
 
@@ -25,25 +25,21 @@ To set up Google Sheets as a source in RudderStack, follow these steps:
 
 ### Connection settings
 
-1. Click on **Connect with Google Sheets** and grant RudderStack the necessary permissions to access your Google Sheets data.
+* **Connect with Google Sheets**: Click **Connect with Google Sheets** and grant RudderStack the necessary permissions to access your Google Sheets data.
 
-<img src="../assets/cloud-extract-sources/google-sheets-connection-settings-2.png" alt="Sendgrid credentials" />
+<img src="../assets/cloud-extract-sources/google-sheets-connection-settings-1.png" alt="Google Sheets credentials" />
 
 <div class="infoBlock">
 
 Your Google Sheets account and the related details will then automatically appear under <strong>Choose an account</strong>.
 </div>
 
-<div class="infoBlock">
+<img src="../assets/cloud-extract-sources/google-sheets-connection-settings-2.png" alt="Google Sheets credentials" />
 
-If you've already configured Google Sheets as a source before, you can choose the Google account under the **Use existing credentials** tab.
-</div>
-
-2. Click on **Continue**
-3. Choose the Google Spreadsheet and the worksheet to be used as the data source. You will also need to specify the Header row. This is the row that contains the sheet's headers and column names.
-
-<img src="../assets/cloud-extract-sources/google-sheets-connection-settings-2.png" alt="Sendgrid credentials" />
-
+* **SpreadSheet**: Choose the Google spreadsheet you want to use as a data source.
+* **Worksheet**: Choose a worksheet present in the above spreadsheet.
+* **Header row**: Specify the header row in the worksheet.
+* **First data row**: Specify the first row from where data should be picked.
 
 ### Destination settings
 
