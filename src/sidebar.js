@@ -176,7 +176,7 @@ export const jsonData = [
               },
               {
                 key: "flushing-events-periodically",
-                title: "Flushing Events Periodically",
+                title: "Flushing Events",
                 link:
                   "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/",
                 content: [],

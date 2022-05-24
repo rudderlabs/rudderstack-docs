@@ -965,7 +965,18 @@ Some pointers to keep in mind:
 - RudderStack's iOS SDK dumps every event it receives to the `dump()` method of the `CustomFIntegration` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination.
 - The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset logic.
 - Make sure you do not duplicate the value of `KEY` present inside `CustomFactory`, across multiple `CustomFactory` that you develop.
-- RudderStack's iOS SDK also triggers the `flush()` method of the `CustomFactory` class on every `flush()` call made via the SDK, which you can use to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown:
+
+## `flush` API
+
+The iOS SDK supports the `flush()` API. RudderStack retrieves all the messages present in the database, divides them into individual batches based on the specified queue size, and flushes them to the RudderStack server/backend.
+
+For example, if the `flushQueueSize` is 30 and there are 180 events in the database when the `flush()` API is called, the SDK will retrieve all those events and divide them into batches of 30 messages each, that is, into 6 batches. 
+
+If a batch fails for some reason, RudderStack drops the remaining batches to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the RudderStack server after 3 retries. 
+
+In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if applicable). 
+
+For every `flush()` call made via the iOS SDK, the `flush()` method of the `CustomFactory` class is also triggered, which can be used to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown:
 
 ```objectivec
 [[RSClient sharedInstance] flush];
@@ -1064,24 +1075,6 @@ This SDK feature relies on the background mode capability offered by the iOS. Th
 ### How can I get the user `traits` after making the `identify` call?
 
 You can get the user traits after making an `identify` call in the following way:
-
-<!--{% tabs %}
-{% tab title="Swift" %}
-
-```swift
- let traits = RSClient.sharedInstance()?.getContext().traits
-```
-
-{% endtab %}
-
-{% tab title="Objective-C" %}
-
-```
- NSDictionary* traits = [[RSClient sharedInstance] getContext].traits;
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
