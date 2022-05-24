@@ -14,7 +14,7 @@ If a batch fails for some reason, RudderStack drops the remaining batches to mai
 In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if applicable).  
  
 
-## Flushing Events Periodically
+## Flushing events periodically
 
 RudderStack supports periodic flushing of events from the Android SDK to RudderStack, irrespective of whether your app is opened or not. This ensures that the events that are triggered just before closing the app are sent from the device - even if the app is not opened by the user for a long time.
 
