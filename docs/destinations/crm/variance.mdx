@@ -43,7 +43,7 @@ That's it! Your Variance destination is now configured and enabled.
 
 ## Identify
 
-The `identify` call lets you associate a visiting user to their actions as well as record their traits.
+The [`identify`][identify] call lets you associate a visiting user to their actions as well as record their traits.
 
 <div class="infoBlock">
 
@@ -51,7 +51,7 @@ As a best practice, make sure that the <code class="inline-code">identify</code>
 
 </div>
 
-A sample `identify` call is as shown:
+A sample [`identify`][identify] call is as shown:
 
 ```javascript
 rudderanalytics.identify("userid", {
@@ -64,17 +64,11 @@ rudderanalytics.identify("userid", {
 })
 ```
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api/">RudderStack HTTP API Specification</a> guide.
-
-</div>
-
 ## Track
 
-The `track` call allows you to record the customer events, i.e. the actions that they perform, along with their associated properties.
+The [`track`][track] call allows you to record the customer events, i.e. the actions that they perform, along with their associated properties.
 
-A sample `track` call is as shown:
+A sample [`track`][track] call is as shown:
 
 ```javascript
 rudderanalytics.track("Event Name", {
@@ -82,17 +76,11 @@ rudderanalytics.track("Event Name", {
 })
 ```
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
-
 ## Page
 
-The `page` call lets you record your website's page views, with any additional relevant information about the viewed page.
+The [`page`][page] call lets you record your website's page views, with any additional relevant information about the viewed page.
 
-A sample `page` call is as shown:
+A sample [`page`][page] call is as shown:
 
 ```javascript
 rudderanalytics.page("Cart", "Cart Viewed", {
@@ -104,17 +92,11 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 })
 ```
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">page</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
-
 ## Group
 
-The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account. It also lets you record the custom traits associated with that group, such as the name of the group, number of employees, etc.
+The [`group`][group] call lets you associate a particular identified user with a group, such as a company, organization, or an account. It also lets you record the custom traits associated with that group, such as the name of the group, number of employees, etc.
 
-A sample `group` call is as shown:
+A sample [`group`][group] call is as shown:
 
 ```javascript
 rudderanalytics.group("sample-group-id", {
@@ -124,27 +106,15 @@ rudderanalytics.group("sample-group-id", {
 })
 ```
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
-
 ## Alias
 
-Many destination platforms need an explicit alias call for mapping the already identified users to a new identifier that you may want to use, to track them in the future. The alias call lets you implement this functionality.
+Many destination platforms need an explicit [`alias`][alias] call for mapping the already identified users to a new user identifier that you may want to use, to track them in the future. The [`alias`][alias] call lets you implement this functionality.
 
-A sample `alias` call is as shown:
+A sample [`alias`][alias] call is as shown:
 
 ```javascript
 rudderanalytics.alias("new_user_id");
 ```
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">alias</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
 
 ## Account Mapping
 
@@ -152,11 +122,11 @@ Variance offers a few different ways of mapping your users to accounts/companies
 
 ### **Group**
 
-If you already use the `group` call to indicate the Account, then you don’t need to fill in anything. Variance will extract the Account automatically, and you’re good to go.
+If you already use the [`group`][group] call to indicate the Account, then you don’t need to fill in anything. Variance will extract the Account automatically, and you’re good to go.
 
 ### **Identify** **with Custom Traits** \(ex. `company.id` and `company.name`\):
 
-Choose this option if you include some information about the Account/Company/Organization as a trait in each `identify` call. When you choose this option you'll need to let Variance know the name of the trait you use.
+Choose this option if you include some information about the Account/Company/Organization as a trait in each [`identify`][identify] call. When you choose this option you'll need to let Variance know the name of the trait you use.
 
 For instance, if you pass something like `{'company':{'id':1,'name':'Awesome Inc.'}}` , you could add `company.id` as the **Account ID** trait and `company.name` as the **Account Name** trait.
 
@@ -179,3 +149,9 @@ Head to the **Integrations** - **Rudderstack** page in Variance and then add a R
 ## Contact Us
 
 If you come across any issues while configuring or using Variance with RudderStack, feel free to [**contact the Variance team**](mailto:support@variance.com) or [**get in touch**](mailto:%20docs@rudderstack.com) with us. You can also start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+
+[alias]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/
+[group]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/
+[identify]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/
+[page]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/
+[track]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/
