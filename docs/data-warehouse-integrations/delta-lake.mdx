@@ -453,7 +453,7 @@ RudderStack will create the new tables with partition support. Refer to the [Dat
 2. Run the following queries in the Databricks Cluster/SQL endpoints to:
    - Create a temporary table using the new location.
    - Drop the temporary table.
-   - Drop original table.
+   - Drop the original table.
 
 ```sql
 CREATE OR REPLACE TABLE namespace.x_temp DEEP CLONE namespace.x LOCATION '/path/to/new/location/namespace/x';
