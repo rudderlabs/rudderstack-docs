@@ -71,6 +71,21 @@ For more information on obtaining the HTTP path, refer to the <a href="https://r
 For more information on generating the access token, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#generating-the-databricks-access-token">Generating the Databricks access token</a> section below.
 </div>
 
+* **Enable delta tables creation in an external location**: Enable this setting to specify the external location to create the delta tables. By default, RudderStack creates the delta tables at a default storage location for the non-external Apache Hive tables.
+  When enabled, it lets you specify the external location to create delta tables: 
+
+<img  src="../assets/dw-integrations/delta-lake-connection-settings-13.png" alt="Delta Lake destination settings in RudderStack"/>
+
+<div class="infoBlock">
+
+The delta tables can be accessed at <code class="inline-code">{externalLocation}/{schema}/{table}</code>.
+</div>
+
+  <div class="warningBlock">
+
+  This feature is currently in beta.
+  </div>
+
 * **Namespace**: Enter the the name of the schema where RudderStack will create the tables. If you don't specify a namespace in the dashboard settings, RudderStack will set it to the source name, by default.
 * **Sync Frequency**: Specify how often RudderStack should sync the data to your Delta Lake instance.
 * **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the Delta Lake instance.
@@ -402,7 +417,7 @@ If you have your deployment in the EU region, you can whitelist only the followi
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
-## FAQs
+## FAQ
 
 ### What are the reserved keys for Delta Lake?
 
@@ -413,6 +428,76 @@ Refer to this [documentation](https://docs.microsoft.com/bs-cyrl-ba/azure/databr
 There are some limitations when it comes to using reserved words as a schema, table, or column name. If such words are used in event names, traits or properties, they will be prefixed with a `_` when RudderStack creates tables or columns for them in your schema.
 
 Also, integers are **not** allowed at the start of a schema or table name. Hence, such schema, column, or table names will be prefixed with a `_`. For example, `'25dollarpurchase'` will be changed to `'_25dollarpurchase'`.
+
+### How can I modify an existing table to a partitioned table?
+
+To modify an existing table to a partitioned table, follow these steps:
+
+1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process any data while performing the below changes.
+2. Make the required changes in connection settings of the configured Delta Lake destination.
+3. Run the following queries in the Databricks Cluster/SQL endpoints to:
+    - Rename the existing table with `_temp` suffix.
+    - Add `event_date` column to the `_temp` table.
+    - Backfill the data into original table.
+
+```sql
+ALTER TABLE x RENAME TO x_temp;
+ALTER TABLE x_temp ADD COLUMN TO event_date DATE;
+INSERT INTO x SELECT * FROM x_temp;
+```
+
+<div class="infoBlock">
+
+RudderStack will create the new tables with partition support. Refer to the [Databricks documentation on partitions](https://docs.databricks.com/sql/language-manual/sql-ref-partition.html) for more information.
+
+</div>
+
+### How can I convert an existing managed or unmanaged table at a location to an unmanaged table at a new location?
+
+1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process any data while performing the below changes.
+2. Run the following queries in the Databricks Cluster/SQL endpoints to:
+   - Create a temporary table using the new location.
+   - Drop the temporary table.
+   - Drop the original table.
+
+```sql
+CREATE OR REPLACE TABLE namespace.x_temp DEEP CLONE namespace.x LOCATION '/path/to/new/location/namespace/x';
+// where namespace represents the namespace attached to the destination in RudderStack.
+// where x represents the original table created by RudderStack.
+
+DROP TABLE namespace.x_temp;
+DROP TABLE namespace.x;
+```
+
+3. Enable the **Enable delta tables creation in an external location** setting in RudderStack dashboard and update the location.
+4. Remove the exclusion window and make the required changes in connection settings of the configured Delta Lake destination.
+
+RudderStack will create the table again during the subsequent data syncs.
+
+<div class="infoBlock">
+
+Refer to the [Databricks documentation on managed and unmanaged tables](https://docs.databricks.com/data/tables.html#managed-and-unmanaged-tables) for more information.
+</div>
+
+### How do I convert an existing unmanaged table at a specific location to a managed table (at default location)?
+
+1. Set an exclusion window (using the **Exclude window** connection setting) so that RudderStack does not process anything while performing the below changes.
+2. Run the following queries in the Databricks Cluster/SQL Endpoints to:
+    - Create a temporary table.
+    - Drop original table.
+    - Rename temporary table to original table.
+
+```sql
+CREATE TABLE IF NOT EXISTS namespace.x_temp DEEP CLONE namespace.x;
+// where namespace represents the namespace attached to the destination in RudderStack.
+// where x represents the original table created by RudderStack.
+
+DROP TABLE namespace.x;
+ALTER TABLE namespace.x_temp RENAME TO namespace.x;
+```
+3. Remove the exclusion window and make sure the **Enable delta tables creation in an external location** setting is disabled in the RudderStack dashboard.
+
+RudderStack will create the table again during the subsequent data syncs.
 
 ## Contact us
 
