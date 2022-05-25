@@ -97,7 +97,7 @@ val rudderClient = RudderClient.getInstance(
       <TabPanel>
         Follow these steps to add Bugsnag to your iOS project:
 <ol>
-<li>Go to <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Bugsnag</code> extension
+<li>Go to <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Bugsnag</code> extension:
 <span>
 
 ```ruby
@@ -126,13 +126,13 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 </li>
 </ol>
       </TabPanel>
-            <TabPanel>
-              <div class="warningBlock">
+       <TabPanel>
+          <div class="warningBlock">
           This device mode integration is supported for Bugsnag v8.15.0 and above.
         </div>
         Follow these steps to add Bugsnag to your iOS v2 project:
 <ol>
-<li>Go to <code class="inline-code">Podfile</code> and add the <code class="inline-code">RudderBugsnag</code> extension
+<li>Go to <code class="inline-code">Podfile</code> and add the <code class="inline-code">RudderBugsnag</code> extension:
 <span>
 
 ```ruby
@@ -148,6 +148,7 @@ import RudderBugsnag
 ```
 </span>
 <span>
+
 ```objectivec
 @import RudderBugsnag;
 ```
@@ -165,6 +166,7 @@ RSClient.sharedInstance().addDestination(RudderBugsnagDestination())
 ```
 </span>
 <span>
+
 ```objectivec
 RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
 [config dataPlaneURL:DATA_PLANE_URL];
