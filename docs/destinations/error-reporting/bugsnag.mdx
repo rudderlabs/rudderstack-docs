@@ -6,13 +6,13 @@ description: Step-by-step guide to send your app event data from RudderStack to 
 
 # Bugsnag
 
-Bugsnag provides error reporting libraries for [every major software platform](https://docs.bugsnag.com/platforms/) which automatically detect and report errors in your applications, and capture diagnostic data required to help you reproduce and fix each error.
+[Bugsnag](https://www.bugsnag.com/) provides error reporting libraries for [major software platforms](https://docs.bugsnag.com/platforms/) which automatically detect and report errors in your applications, and capture diagnostic data required to help you reproduce and fix each error.
 
-Bugsnag monitors application stability so you can make data-driven decisions on whether you should be building new features, or fixing bugs.
+RudderStack supports Bugsnag as a destination to which you can seamlessly send your event data.
 
-## Getting Started
+## Getting started
 
-To enable sending data when application crashes to Bugsnag, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Bugsnag.
+Before configuring Bugsnag as a destination in RudderStack, verify if the source platform is supported by Bugsnag by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server** |
 | :------------------ | :------------ | :------------ | :--------- |
@@ -22,90 +22,42 @@ To enable sending data when application crashes to Bugsnag, you will first need 
 <div class="infoBlock">
 
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
 </div>
 
-Once you have confirmed that the platform supports sending events to Bugsnag, perform the steps below:
+Once you have confirmed that the platform supports sending events to Bugsnag, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source. From the list of destinations, select **Bugsnag**.
-- Give a name to the destination and click on **Next**. You should then see the following screen:
-<img src="../../assets/bugsnag.png" /><span class="imageTitle">Connection settings for Bugsnag</span>
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Bugsnag**.
+2. Assign a name to the destination and click on **Next**.
 
-- Add your API key to your connection settings. You can find your API key in your Bugsnag dashboard under “Settings”, which is located in the upper left-hand corner.
-- Click on **Next** to complete the configuration. Bugsnag should now be added and enabled as a destination in RudderStack.
+### Connection settings
 
-## Adding Bugsnag to your Mobile project
+To successfully configure Bugsnag as a destination, you will need to configure the following settings:
 
-<!--{% tabs %}
-{% tab title="Android" %}
-Please follow the steps below to add Bugsnag to your Android Project:
+<img src="../../assets/event-stream-destinations/bugsnag-connection-settings.png" />
 
-- Add the following `repository` to your `app/build.gradle` file.
+* **BugSnag Api Key**: Enter your BugSnag API key. You can find the API key in your Bugsnag dashboard under **Settings**>**Project Settings**.
 
-```groovy
-repositories {
-    mavenCentral()
-}
-```
+<div class="infoBlock">
 
-- After that, add the following `dependencies` in the same file:
+For more information on getting your BugSnag Api Key, refer to the <a href="#faq">FAQ</a> section below.
+</div>
 
-```groovy
-implementation 'com.rudderstack.android.sdk:core:1.0.1-beta.1'
-implementation 'com.rudderstack.android.integration:bugsnag:0.1.0-beta.1'
-```
+* **Use device-mode to send events**: As this is a device mode-only destination, this setting is enabled by default and cannot be disabled.
+* **Release Stage**: Enable this setting to define the release stage
+* **SSL**:
 
-- Finally, change the initialization of your `RudderClient` in your `Application` class
-
-```kotlin
-val rudderClient = RudderClient.getInstance(
-    this,
-    <YOUT_WRITE_KEY>,
-    RudderConfig.Builder()
-        .withDataPlaneUrl(<YOUR_DATA_PLANE_URL>)
-        .withFactory(BugsnagIntegrationFactory.FACTORY)
-        .build()
-)
-```
-
-{% endtab %}
-
-{% tab title="IOS" %}
-Follow these steps to add Bugsnag to your iOS project:
-
-- Go your `Podfile` and add the `Rudder-Bugsnag` extension
-
-```ruby
-pod 'Rudder-Bugsnag', '0.1.0-beta.1'
-```
-
-- After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
-
-```objectivec
-#import "RudderBugsnagFactory.h"
-```
-
-- Finally, change the initialization of your `RudderClient` as shown:
-
-```objectivec
-RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
-[builder withDataPlaneUrl:<YOUR_DATA_PLANE_URL>];
-[builder withFactory:[RudderBugsnagFactory instance]];
-[RudderClient getInstance:<YOUR_WRITE_KEY> config:[builder build]];
-```
-
-{% endtab %}
-{% endtabs %}-->
+## Adding Bugsnag to mobile project
 
 <Tabs>
   <TabList>
     <Tab>Android</Tab>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
         Please follow the steps below to add Bugsnag to your Android Project:
-<ul>
+<ol>
 <li>Add the following <code class="inline-code">repository</code> to your <code class="inline-code">app/build.gradle</code> file.
 <span>
 
@@ -140,12 +92,12 @@ val rudderClient = RudderClient.getInstance(
 ```
 </span>
 </li>
-</ul>
+</ol>
       </TabPanel>
       <TabPanel>
         Follow these steps to add Bugsnag to your iOS project:
-<ul>
-<li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Bugsnag</code> extension
+<ol>
+<li>Go to <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Bugsnag</code> extension
 <span>
 
 ```ruby
@@ -172,44 +124,98 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 ```
 </span>
 </li>
-</ul>
+</ol>
+      </TabPanel>
+            <TabPanel>
+              <div class="warningBlock">
+          This device mode integration is supported for Bugsnag v8.15.0 and above.
+        </div>
+        Follow these steps to add Bugsnag to your iOS v2 project:
+<ol>
+<li>Go to <code class="inline-code">Podfile</code> and add the <code class="inline-code">RudderBugsnag</code> extension
+<span>
+
+```ruby
+pod 'RudderBugsnag', '~> 1.0.0'
+```
+</span>
+</li>
+<li>After adding the dependency followed by <code class="inline-code">pod install</code> , you can add the imports to the <code class="inline-code">AppDelegate.m</code> file depending on your preferred platform:
+<span>
+
+```swift
+import RudderBugsnag
+```
+</span>
+<span>
+```objectivec
+@import RudderBugsnag;
+```
+</span>
+</li>
+<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
+<span>
+
+```swift
+let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
+            .dataPlaneURL(DATA_PLANE_URL)
+        
+RSClient.sharedInstance().configure(with: config)
+RSClient.sharedInstance().addDestination(RudderBugsnagDestination())
+```
+</span>
+<span>
+```objectivec
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+
+[[RSClient sharedInstance] configureWith:config];
+[[RSClient sharedInstance] addDestination:[[RudderBugsnagDestination alloc] init]];
+```
+</span>
+</li>
+</ol>
       </TabPanel>
     </TabPanels>
 </Tabs>
 
 ## Identify
 
-The `identify` call lets you associate a user to their actions and capture all the relevant traits about them. This information includes a unique `userid` as well as any optional information such as name, email address, etc.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
-An example `identify` call from our JS source looks like this:
+A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("abc123", {
-  name: "Foo Bar",
-  email: "foo@bar.com",
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
 });
 ```
 
-Bugsnag will show you the `userId` and `traits` in the Users tab of each error.
+Bugsnag will show the `userId` and `traits` in the Users tab of each error.
 
 ## Error Reporting
 
-Along with user-specific information, you can also use Bugsnag to track handled exceptions data to your dashboard using Bugsnag’s native methods. You can find the documentation for these functions [on their website](https://docs.bugsnag.com/platforms/browsers/#reporting-handled-exceptions).
+Along with user-specific information, you can also use Bugsnag to track handled exceptions data to your dashboard using Bugsnag's native methods. For more information on these functions, refer to the [Bugsnag documentation](https://docs.bugsnag.com/platforms/browsers/#reporting-handled-exceptions).
 
 ## FAQ
 
-#### Where do I find the API Key?
+### Where can I find the Bugsnag API Key?
 
-You can find your API Key on your Bugsnag [Project Settings page](https://bugsnag.com/dashboard).
+1. Log into your [Bugsnag dashboard](https://app.bugsnag.com/).
+2. Click on **Settings** at the top right corner.
+3. Click on **Project Settings** to find the API key as shown:
 
-#### What is meant by Release Stage?
+<img src="../../assets/event-stream-destinations/bugsnag-api-key.png" />
 
-You can distinguish errors that happen in different stages of your app’s release process e.g `production`, `development`, etc.
+### What is meant by Release Stage?
 
-#### Do I need to use SSL?
+You can distinguish errors that happen in different stages of your app's release process, for example, `production`, `development`, etc.
+
+### Do I need to use SSL?
 
 You should definitely use SSL When Sending Data to Bugsnag specifically from JS source.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Bugsnag with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
