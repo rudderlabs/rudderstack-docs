@@ -1,17 +1,18 @@
 ---
 title: "Cordova"
 description: >-
-  Detailed technical documentation on RudderStack’s Cordova SDK to send events
+  Detailed technical documentation on using the RudderStack Cordova SDK to send events
   from your Cordova apps to various destinations.
 ---
 
 # Cordova
 
-[**Apache Cordova**](https://cordova.apache.org/) is an open-source, cross-platform application development framework. 
+The **RudderStack Cordova SDK** lets you track event data from your [Apache Cordova](https://cordova.apache.org/) applications and send it to your specified destinations via RudderStack.
 
-The **RudderStack Cordova SDK** lets you track event data from your Cordova applications and send it to your specified destinations via RudderStack.
+<div class="infoBlock">
 
-Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-cordova) and the [**sample implementation**](https://github.com/rudderlabs/rudder-sdk-cordova/blob/master/sample-cordova/www/js/index.js) to get a more hands-on understanding of the SDK.
+Refer to the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-cordova) and the [sample implementation](https://github.com/rudderlabs/rudder-sdk-cordova/blob/master/sample-cordova/www/js/index.js) to get a more hands-on understanding of the SDK.
+</div>
 
 <a href="https://www.npmjs.com/package/rudder-sdk-cordova/" target ="_blank">
 <img src="https://img.shields.io/npm/v/rudder-sdk-cordova.svg?style=flat" alt="Github Badge" class="githubBadge" />
@@ -21,8 +22,8 @@ Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-cordova
 
 To set up the Cordova SDK, follow these steps:
 
-- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up a Cordova source in the dashboard. For more information, follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source).  You should then see a **Write Key** for this source, as shown below:
+- You will need to set up a [RudderStack account](https://app.rudderstack.com).
+- Once signed up, set up a Cordova source in the dashboard. For more information, follow [this guide](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source).  You should then see a **Write Key** for this source, as shown below:
 
 <img src="../../assets/event-stream-sources/cordova-sdk-1.png" alt="Cordova source write key" />
 
@@ -58,7 +59,7 @@ RudderClient.initialize(WRITE_KEY , {
 
 <div class="infoBlock">
 
-  Make sure you use the <code class="inline-code">await</code> keyword with the <code class="inline-code">initialize</code> call.
+Make sure you use the <code class="inline-code">await</code> keyword with the <code class="inline-code">initialize</code> call.
 </div>
 
 The `setup` method has the following signature:
@@ -188,14 +189,16 @@ Check the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-i
 
 <div class="successBlock">
 
-RudderStack automatically tracks the following optional events:
+RudderStack automatically tracks the following <Link to="/rudderstack-api/api-specification/application-lifecycle-events-spec/">application lifecycle events</Link>:
 
 <ul>
-<li><code class="inline-code">Application Installed</code></li>
-<li><code class="inline-code">Application Opened</code></li>
+<li><Link to="/rudderstack-api/api-specification/application-lifecycle-events-spec/#application-installed">Application Installed</Link></li>
+<li><Link to="/rudderstack-api/api-specification/application-lifecycle-events-spec/#application-opened">Application Opened</Link></li>
+<li><Link to="/rudderstack-api/api-specification/application-lifecycle-events-spec/#application-updated">Application Updated</Link></li>
+<li><Link to="/rudderstack-api/api-specification/application-lifecycle-events-spec/#application-backgrounded">Application Backgrounded</Link></li>
 </ul>
 
-You can disable these events by sending the property <code class="inline-code">trackLifecycleEvents</code> as <code class="inline-code">false</code> within the <code class="inline-code">configuration</code> object while initializing the RudderStack client. However, we highly recommend keeping them enabled.
+You can disable these events while initializing the SDK, by setting the property <code class="inline-code">trackLifecycleEvents</code> within the <code class="inline-code">configuration</code> object to <code class="inline-code">false</code>. However, it is highly recommended to enable tracking these events.
 </div>
 
 ## Group
