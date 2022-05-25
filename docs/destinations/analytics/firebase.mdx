@@ -52,6 +52,7 @@ Depending on your platform of integration, follow the steps below to add Firebas
   <TabList>
     <Tab>Android</Tab>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
     <Tab>Unity</Tab>
     <Tab>React Native</Tab>
   </TabList>
@@ -175,6 +176,61 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withFactory:[RudderFirebaseFactory instance]];
 [builder withLoglevel:RSLogLevelDebug];
 [RSClient getInstance:<WRITE_KEY> config:[builder build]];
+```
+</span>
+</li>
+</ol>
+    </TabPanel>
+    <TabPanel>
+        <div class="warningBlock">
+          This device mode integration is supported for Firebase v8.15.0 and above.
+        </div>
+        Follow these steps to add Firebase to your iOS project:
+<ol>
+<li>Add Firebase as a destination in the <a href="https://app.rudderstack.com">RudderStack dashboard</a>.</li>
+<li>Register your app in the <a href="https://console.firebase.google.com">Firebase console</a>. It will then prompt you to download the <code class="inline-code">GoogleServices-Info.plist</code> file.</li>
+<li>Download and place this file in your project.</li>
+<li>Install <code class="inline-code">RudderFirebase</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
+<span>
+
+```ruby
+pod 'RudderFirebase', '~> 1.0.0'
+```
+</span>
+</li>
+<li>Run the <code class="inline-code">pod install</code> command.</li>
+<li>Then, import the SDK depending on your preferred platform:
+<span>
+
+```swift
+import RudderFirebase
+```
+</span>
+<span>
+
+```objectivec
+@import RudderFirebase;
+```
+</span>
+</li>
+<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under the <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
+<br /><br />
+<span>
+
+```objectivec
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+[[RSClient sharedInstance] configureWith:config];
+[[RSClient sharedInstance] addDestination:[[RudderFirebaseDestination alloc] init]];
+```
+</span>
+<span>
+
+```swift
+let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
+            .dataPlaneURL(DATA_PLANE_URL)
+RSClient.sharedInstance().configure(with: config)
+RSClient.sharedInstance().addDestination(RudderFirebaseDestination())
 ```
 </span>
 </li>
