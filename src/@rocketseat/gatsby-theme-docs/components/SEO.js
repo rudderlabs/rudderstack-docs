@@ -1,8 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import urljoin from "url-join"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import urljoin from "url-join";
+import { useStaticQuery, graphql } from "gatsby";
 
 export default function SEO({ description, title, slug, image, children }) {
   const { site } = useStaticQuery(
@@ -22,7 +22,7 @@ export default function SEO({ description, title, slug, image, children }) {
         }
       }
     `
-  )
+  );
 
   const {
     siteTitle,
@@ -31,35 +31,73 @@ export default function SEO({ description, title, slug, image, children }) {
     siteImage,
     siteLanguage,
     siteAuthor,
-    siteIcon,
-  } = site.siteMetadata
+    siteIcon
+  } = site.siteMetadata;
 
-   //const metaTitle = title ? `${title} - ${siteTitle}` : defaultTitle
+  //const metaTitle = title ? `${title} - ${siteTitle}` : defaultTitle
   // const metaDescription = description || siteDescription
   const metaTitle =
-    title !== "Home" 
+    title !== "Home"
       ? `${title} | RudderStack Docs `
-      : "RudderStack Technical Documentation and Guides | RudderStack Docs"
+      : "RudderStack Technical Documentation and Guides | RudderStack Docs";
   const metaDescription =
-    title !== "Home" 
+    title !== "Home"
       ? `Read detailed technical documentation on ${title} in RudderStack Docs.`
-      : "Check out our technical documentation and learn how to use RudderStack features, SDKs, and destination and source integrations."
-  const metaUrl = urljoin(siteUrl, slug)
-  const metaImage = urljoin(siteUrl, image || siteImage)
+      : "Check out our technical documentation and learn how to use RudderStack features, SDKs, and destination and source integrations.";
+  const metaUrl = urljoin(siteUrl, slug);
+  const metaImage = urljoin(siteUrl, image || siteImage);
 
   const schemaOrgJSONLD = [
     {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org",
       "@type": "WebSite",
+      name: "RudderStack",
+      url: "https://www.rudderstack.com/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      name: "About RudderStack | Rudderstack.com",
+      url: "https://www.rudderstack.com/about/",
+      mainContentOfPage:
+        "RudderStack Built for Engineers & Data Scientists We have been data engineers and data scientists in our past jobs, understand their challenges and pain points, and are building the best product for them."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      url: "https://www.rudderstack.com/",
+      name: "RudderStack",
+      description:
+        "RudderStack is the easiest way to stream data from your website or warehouse. With RudderStack, you can easily collect customer data from every platform.",
+      sameAs: [
+        "https://twitter.com/RudderStack",
+        "https://www.linkedin.com/company/rudderstack/",
+        "https://www.youtube.com/channel/UCgV-B77bV_-LOmKYHw8jvBw"
+      ],
+      logo: [
+        {
+          "@type": "ImageObject",
+          url:
+            "https://cdn.sanity.io/images/97bpcflt/production/dc6a0b7ddbd8dec31dfd07a80f178e1e288c047d-148x16.png",
+          height: "16",
+          width: "148",
+          accessibilityHazard: ["noFlashingHazard", "noMotionSimulationHazard"],
+          accessMode: ["textual", "visual"]
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
       url: metaUrl,
       name: title,
-      alternateName: siteTitleShort,
-    },
-  ]
+      description
+    }
+  ];
   return (
     <Helmet
       htmlAttributes={{
-        lang: siteLanguage,
+        lang: siteLanguage
       }}
       title={metaTitle}
     >
@@ -97,12 +135,13 @@ export default function SEO({ description, title, slug, image, children }) {
       <meta name="twitter:image:width" content="1200" />
       <meta name="twitter:image:height" content="630" />
 
-      <script type="application/ld+json">
-        {JSON.stringify(schemaOrgJSONLD)}
-      </script>
+      {schemaOrgJSONLD.map((item) => (
+        <script type="application/ld+json">{JSON.stringify(item)}</script>
+      ))}
+
       {children}
     </Helmet>
-  )
+  );
 }
 
 SEO.propTypes = {
@@ -112,14 +151,14 @@ SEO.propTypes = {
   image: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
-    PropTypes.node,
-  ]),
-}
+    PropTypes.node
+  ])
+};
 
 SEO.defaultProps = {
   title: "",
   description: "",
   slug: "",
   image: "",
-  children: "",
-}
+  children: ""
+};
