@@ -226,10 +226,14 @@ rudderanalytics.track("Product Purchased", {
 })
 ```
 
-<div class="warningBlock">
+### Event name considerations
 
-The <code class="inline-code">track</code> event name must contain only alphanumeric characters. ActiveCampaign rejects events with any special characters in the name.
-</div>
+ActiveCampaign sets certain restrictions in the way you can set your `track` event names:
+
+- The event name must contain only alphanumeric characters. ActiveCampaign rejects any event containing special characters in the name.
+- The event name should not be more than 32 characters. ActiveCampaign automatically truncates event names that are longer than 32 characters. For example, if you send a `track` event with the name `Product Viewed After Opening The Browser`, ActiveCampaign will automatically truncate it to `Product Viewed After Opening The`, as seen below:
+
+<img src="../../assets/event-stream-destinations/activecampaign-eventname-truncation.png" alt="ActiveCampaign truncating event names" />
 
 ## FAQ
 
