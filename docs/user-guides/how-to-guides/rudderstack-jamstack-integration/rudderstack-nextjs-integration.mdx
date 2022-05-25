@@ -100,24 +100,24 @@ export default function Home() {
 
 <div class="infoBlock">
 
-Refer to the sample Next.js app in the [RudderStack Sample Applications](https://github.com/rudderlabs/rudder-samples/tree/master/javascript/sample-next-app) repository for more information.
+Refer to the sample Next.js app in the <a href="https://github.com/rudderlabs/rudder-samples/tree/master/javascript/sample-next-app">RudderStack Sample Applications</a> repository for more information.
 </div>
 
 ### Method 2: Installing and configuring the JavaScript SDK using NPM package in your Next.js app
 
 Alternatively, you can integrate RudderStack with your Next.js app and set up the tracking code by following the steps below:
 
-1. In your Next.js project folder, go to the `pages` folder and create a new `rudderInitialize.js` file with the following code: 
+1. In your Next.js project, go to the `pages` folder and create a new `rudderInitialize.js` file with the following code: 
 
 ```jsx
 export async function rudderInitialize() {
   window.rudderanalytics = await import("rudder-sdk-js");
 
-  window.rudderanalytics.load("<WRITE-KEY>", "<DATA-PLANE-URL>", {
+  rudderanalytics.load("<WRITE_KEY>", "<DATA_PLANE_URL>", {
     integrations: { All: true }, // load call options
   });
 
-  window.rudderanalytics.ready(() => {
+  rudderanalytics.ready(() => {
     console.log("All set!");
   });
 }
@@ -129,7 +129,7 @@ If you are using an older version of the JavaScript SDK (v1), refer to the <Link
 </div>
 
 2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL>` with your JavaScript source write key and the data plane URL obtained in the <Link to="/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/#creating-a-javascript-source-in-rudderstack">Creating a JavaScript source in RudderStack</Link> section above.
-2. In the same `pages` folder, open the `index.js` file and add the following code snippet:
+3. In the `pages` folder, open the `index.js` file and add the following code snippet:
 
 ```jsx
 import React from "react";
@@ -148,7 +148,7 @@ export default function Home() {
 
 <div class="infoBlock">
 
-Refer to the sample Next.js app in the [RudderStack Sample Applications](https://github.com/rudderlabs/rudder-analytics-next/tree/main/sample-next-app-npm) repository for more information.
+Refer to the sample Next.js app in the <a href="https://github.com/rudderlabs/rudder-samples/tree/master/javascript/sample-next-app">RudderStack Sample Applications</a> repository for more information.
 </div>
 
 ## Configuring a destination in RudderStack
