@@ -43,7 +43,7 @@ To successfully configure Intercom as a destination, you will need to configure 
 
 <img src="../../assets/event-stream-destinations/intercom-connection-settings.png" alt="Intercom connection settings"/>
 
-- **Access Token**: Enter your Intercom API access token. You can obtain the token by going to your Intercom dashboard and navigating to **Settings** > **Developers** > **Developer Hub**. Then, select your app and go to **Configure** > **Authentication**.
+- **Access Token**: Enter your Intercom API access token. You can obtain the token by going to your Intercom dashboard and navigating to **Settings** > **Apps & Integrations** > **Developer Hub**. Then, select your app and go to **Configure** > **Authentication**.
 
 <div class="infoBlock">
  
@@ -275,6 +275,16 @@ rudderanalytics.identify(
   }
 );
 ```
+
+<div class="warningBlock">
+
+The <code class="inline-code">user_hash</code> is a SHA256 hash of your Intercom API secret and the <code class="inline-code">userId</code>. Note that this hash is <strong>not</strong> based on the user's email.
+</div>
+
+<div class="infoBlock">
+
+To obtain your Intercom API secret, go to your Intercom dashboard and navigate to <strong>Settings</strong> > <strong>Apps & Integrations</strong> > <strong>Developer Hub</strong>. Then select your app and go to <strong>Configure</strong> > <strong>Basic information</strong>. You will find the API secret listed here under <strong>Client secret</strong>.
+</div>
 
 ## Track
 
