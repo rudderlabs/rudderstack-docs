@@ -49,7 +49,7 @@ const queries = [
         let strPos =
           ignorePaths.indexOf(parsedSlug) === -1 &&
           row.node.tableOfContents !== {}
-            ? tmpString.indexOf(row.node.tableOfContents.items[0].title)
+            ? tmpString.indexOf(row.node.tableOfContents.items[0].title) + row.node.tableOfContents.items[0].title.length + 1
             : "";
         let endPos = tmpString.indexOf(
           row.node.headings.length > 0 ? row.node.headings[0].value : ""
@@ -107,7 +107,7 @@ const queries = [
           endPos = 0;
           content = "";
 
-          strPos = tmpString.indexOf(row.node.headings[i].value);
+          strPos = tmpString.indexOf(row.node.headings[i].value) + row.node.headings[i].value.length + 1;
 
           endPos =
             i === row.node.headings.length - 1
@@ -144,7 +144,7 @@ const queries = [
       });
       return tmpData;
     },
-    indexName: process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs",
+    indexName: process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_heading_removed",
     settings: {},
   },
 ];

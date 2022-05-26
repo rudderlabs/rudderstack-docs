@@ -127,7 +127,7 @@ module.exports = {
               appId: process.env.GATSBY_ALGOLIA_APP_ID,
               apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
               indexName:
-                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs",
+                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_heading_removed",
               queries: require("./src/utils/docs-algolia"),
               enablePartialUpdates: true,
               matchFields: [
