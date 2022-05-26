@@ -313,6 +313,23 @@ The below is an example of client-side event transformed by RudderStack:
 }
 ```
 
+
+Best practice
+
+## Effect of login functionality in your store
+
+As we know that, Shopify provides a functionality where-in the store owner can make user login compulsory or allow guest checkout in their stores.
+
+
+In our rudder-tracking script, we utilize this functionality to fetch the user’s first name, last name and email to make an identify call. (link)
+
+The best practice is that if you provide login functionality, you will get much more device mode events
+if you really want more identified events, to make user journey.. then you need to have this login functionality
+if you do login we will provide more details
+
+Supported client side calls
+
+
 ## FAQ
 
 ### I'm getting a Registration Failed/Updated Failed error when I enter the data plane URL and the write key. What should I do?
@@ -343,12 +360,34 @@ You need to have the app installed and configured properly in each of the stores
 
 ### Do we have any documentation detailing all the fields that we are collecting from Shopify with descriptions for each field?
 
+
+| Data Points            | Shopify Webhooks                               |
+| :----------------------| :------------------------------------------|
+| `Cart Viewed`          | User viewed the cart page.                 |
+| `Checkout Started`     | User clicked on the buy button.            |
+| `Product Added`        | User added the product to the cart.        |
+| `Product Clicked`      | User clicked on a product.                 |
+| `Product List Viewed`  | User viewed the product collections page.  |
+| `Product Viewed`       | User viewed a product page.                |
+
+
 **For Shopify Cloud the anonymousId does not persist.**
 
 As Shopify servers push data to RudderStack over server to server APIs we don't have a way to persist anonymousId. For all the data that contains user identifiers from Shopify we are mapping all these user identifiers to traits and we are mapping Shopify customerId to RudderStack userId which will allow identity stitching in downstream destinations
 
 
 ### Is it possible to collect additional/custom fields from Shopify?
+Yes, possible 
+
+you use calls instead 
+other js file
+ruddersnalytics call already in window
+cant load again
+if want special, make identify , track calls
+
+### Anonymous ID does not seem to be persisting. How is it being set?
+does not persist, eventually keep changing
+customerid is fetched and used instead
 
 ### How are we differentiating between data collected from Shopify Cloud (Webhooks) and Shopify Device (Web Device Mode)?
 
