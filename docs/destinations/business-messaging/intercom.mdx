@@ -43,7 +43,7 @@ To successfully configure Intercom as a destination, you will need to configure 
 
 <img src="../../assets/event-stream-destinations/intercom-connection-settings.png" alt="Intercom connection settings"/>
 
-- **Access Token**: Enter your Intercom API access token. You can obtain the token by going to your Intercom dashboard and navigating to **Settings** > **Developers** > **Developer Hub**. Then, select your app and go to **Configure** > **Authentication**.
+- **Access Token**: Enter your Intercom API access token. You can obtain the token by going to your Intercom dashboard and navigating to **Settings** > **Apps & Integrations** > **Developer Hub**. Then, select your app and go to **Configure** > **Authentication**.
 
 <div class="infoBlock">
  
@@ -251,6 +251,40 @@ If you enable the **Include Context with Identify Calls** option in the RudderSt
 - `os.version`
 - `app.name` 
 - `app.version`
+
+### Identity verification
+
+Intercom's [identity verification](https://www.intercom.com/help/en/articles/183-enable-identity-verification-for-web-and-mobile) feature ensures the privacy of the conversations between you and your users. It also makes sure that one user cannot impersonate another.
+
+<div class="infoBlock">
+
+RudderStack supports the identity verification feature for the events sent through the <strong>web device mode</strong>.
+</div>
+
+To enable the identity verification feature for the web device mode, you can pass `user_hash` within the <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#integrationopts">integrations</Link> object, as shown in the following snippet:
+
+```javascript
+rudderanalytics.identify(
+  "1hKOmRA4GRlm", {
+    name: "Alex Keener",
+    country: "USA"
+  }, {
+    Intercom: {
+      user_hash: "9c56cc51b374c3ba189210d5b6d4bf57790d351c96c47c02190ecf1e430635ab",
+    },
+  }
+);
+```
+
+<div class="warningBlock">
+
+The <code class="inline-code">user_hash</code> is a SHA256 hash of your Intercom API secret and the <code class="inline-code">userId</code>. Note that this hash is <strong>not</strong> based on the user's email.
+</div>
+
+<div class="infoBlock">
+
+To obtain your Intercom API secret, go to your Intercom dashboard and navigate to <strong>Settings</strong> > <strong>Apps & Integrations</strong> > <strong>Developer Hub</strong>. Then select your app and go to <strong>Configure</strong> > <strong>Basic information</strong>. You will find the API secret listed here under <strong>Client secret</strong>.
+</div>
 
 ## Track
 
