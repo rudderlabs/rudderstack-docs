@@ -16,7 +16,7 @@ You will need access to your domain’s DNS settings as well as your CDN setting
 
 <div class="infoBlock">
 
-The examples in this guide use CloudFront. However, the settings should be similar regardless of your CDN.
+The examples in this guide use AWS CloudFront. However, the settings should be similar regardless of your CDN.
 </div>
 
 ## Endpoint details
@@ -133,7 +133,7 @@ Once your distribution is deployed, you will need to create a CNAME record in yo
 
 ## Serving the SDK
 
-Once the setup and DNS propagation is completed, you will be able to change the SDK URL, as shown:
+Once the setup and DNS propagation is completed, you can change the SDK URL, as shown:
 
 Before:
 
@@ -145,6 +145,16 @@ After:
 
 ```markup
 <script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
+```
+
+To <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link>, you can use the following URL: 
+
+```html
+<script>
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    destSDKBaseURL: "https://subdomain.yourdomain.com/v1.1/js-integrations"
+});
+</script>
 ```
 
 <div class="infoBlock">
@@ -258,6 +268,41 @@ You can choose your subdomain or use a wildcard domain <code class="inline-code"
 
 The AWS Certificate Manager will guide you through the verification by email or DNS TXT records. You will be able to choose your own domain for SSL certificates once verified.
 </div>
+
+## FAQ
+
+### I am using GCP External HTTP(S) Load Balancer to set up my custom domain. However any requests from `xyz.mydomain.com` to `cdn.rudderlabs.com` result in a 403. What should I do?
+
+If you're setting up a custom domain using the [GCP External HTTPS Load Balancer](https://cloud.google.com/load-balancing/docs/https), make sure you [add a custom request header](https://cloud.google.com/load-balancing/docs/https/custom-headers#working-with-request) in your backend service config, as shown:
+
+| Header name | Value |
+| :-------------| :------|
+| `Host` | `cdn.rudderlabs.com` |
+
+### I am getting the Access Denied error on using a custom domain URL for JavaScript SDK. What might be the reason?
+
+The **Access Denied** error is encountered if a custom domain URL accesses the JavaScript SDK's parent folder, as below:
+
+```markup
+<script src="https://subdomain.yourdomain.com/v1.1/js-integrations"></script>
+```
+
+The correct custom domain URL to access the JavaScript SDK should be in the following format:
+
+```markup
+<script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
+```
+
+The correct custom domain URL to <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link> should be in the following format: 
+
+```html
+<script>
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    destSDKBaseURL: "https://subdomain.yourdomain.com/v1.1/js-integrations"
+});
+</script>
+```
+
 
 ## Contact us
 
