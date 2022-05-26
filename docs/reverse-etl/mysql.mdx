@@ -21,7 +21,7 @@ Run the SQL queries listed in the following sections in the  **exact order** to 
 - Create a new user `RUDDER` with a password `<strong_unique_password>` in MySQL, as shown:
 
 ```sql
-CREATE USER RUDDER IDENTIFIED BY 'password';
+CREATE USER RUDDER IDENTIFIED BY '<strong_unique_password>';
 ```
 
 <div class="warningBlock">
@@ -34,7 +34,7 @@ Set a strong, unique password for creating the user in MySQL.
 1. Create a dedicated schema `_rudderstack`.
 
 ```sql
-CREATE SCHEMA "_rudderstack";
+CREATE SCHEMA _rudderstack;
 ```
 
 <div class="warningBlock">
