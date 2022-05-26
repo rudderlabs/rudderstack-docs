@@ -164,6 +164,21 @@ rudderanalytics.track("Track me", {
 For anonymous users, Customer.io does not allow an event name of size more than 100 Bytes. RudderStack will automatically trim the event names in such a scenario.
 </div>
 
+## Alias
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias/">`alias`</Link> call can be used to merge the attributes of a secondary person to the attributes of a primary person. The attributes of the primary person are retained and the additional attributes present in the secondary person are merged to the main profile.
+
+A sample `alias` call is as shown below:
+
+```javascript
+rudderanalytics.alias("test_new_id", "old_user_id");
+```
+
+<div class="infoBlock">
+
+Same email cannot be used to make consecutive <code class="inline-code">identify</code> calls with different <code class="inline-code">userId</code>.
+</div>
+
 ## Device token registration
 
 RudderStack registers the device token to Customer.io for the following application lifecycle events:
