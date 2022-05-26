@@ -620,6 +620,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "mysql",
+    title: "MySQL",
+    link: "/reverse-etl/mysql/",
+    content: [],
+  },
+  {
     key: "snowflake",
     title: "Snowflake",
     link: "/reverse-etl/snowflake/",
