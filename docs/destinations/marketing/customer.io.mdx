@@ -95,6 +95,11 @@ rudderanalytics.identify("userId", {
 
 As `createdAt` is not present in the above call, RudderStack will append the current timestamp value and send the field to Customer.io.
 
+<div class="infoBlock">
+
+Same <code class="inline-code">email</code> cannot be used to make consecutive <code class="inline-code">identify</code> calls with different <code class="inline-code">userId</code>.
+</div>
+
 ### Unsubscribing users
 
 You can pass `unsubscribed: true` in the `identify` call to unsubscribe a user in Customer.io, as shown in the following snippet:
@@ -166,18 +171,13 @@ For anonymous users, Customer.io does not allow an event name of size more than 
 
 ## Alias
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias/">`alias`</Link> call can be used to merge the attributes of a secondary person to the attributes of a primary person. The attributes of the primary person are retained and the additional attributes present in the secondary person are merged to the main profile.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias/">`alias`</Link> call lets you merge different identities of a known user. The attributes of both identities are merged together by retaining the attributes of primary identity and merging the additional attributes of secondary identity.
 
 A sample `alias` call is as shown below:
 
 ```javascript
 rudderanalytics.alias("test_new_id", "old_user_id");
 ```
-
-<div class="infoBlock">
-
-Same email cannot be used to make consecutive <code class="inline-code">identify</code> calls with different <code class="inline-code">userId</code>.
-</div>
 
 ## Device token registration
 
@@ -255,7 +255,7 @@ rudderClient!!.track("device_token_registered")
     </TabPanels>
 </Tabs>
 
-## FAQs
+## FAQ
 
 ### Where do I find the API Key and Site ID for configuring Customer.io in RudderStack?
 
