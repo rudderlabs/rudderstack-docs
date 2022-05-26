@@ -252,6 +252,30 @@ If you enable the **Include Context with Identify Calls** option in the RudderSt
 - `app.name` 
 - `app.version`
 
+### Identity verification
+
+Intercom's [identity verification](https://www.intercom.com/help/en/articles/183-enable-identity-verification-for-web-and-mobile) feature ensures the privacy of the conversations between you and your users. It also makes sure that one user cannot impersonate another.
+
+<div class="infoBlock">
+
+RudderStack supports the identity verification feature for the events sent through the <strong>web device mode</strong>.
+</div>
+
+To enable the identity verification feature for the web device mode, you can pass `user_hash` within the `integrations` object, as shown in the following snippet:
+
+```javascript
+rudderanalytics.identify(
+  "1hKOmRA4GRlm", {
+    name: "Alex Keener",
+    country: "USA"
+  }, {
+    Intercom: {
+      user_hash: "9c56cc51b374c3ba189210d5b6d4bf57790d351c96c47c02190ecf1e430635ab",
+    },
+  }
+);
+```
+
 ## Track
 
 The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the customer events, that is, the actions they perform, along with any properties associated with them.
