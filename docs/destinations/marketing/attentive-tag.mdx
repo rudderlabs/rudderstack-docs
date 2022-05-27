@@ -252,14 +252,14 @@ As mentioned above, RudderStack maps the `Product List Viewed` event to `product
 |:--------------------------------|:--------------------------|:--------------------------|
 | `properties.products.product_id` | `productId` | Required |
 | `properties.products.price` | `value` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
+| `traits.phone` | `phone` | Required |
+| `externalId` | `externalIdentifiers` | Required |
+| `properties.products.variant` | `productVariantId` | Required |
 | `properties.products.price` | `currency` | Optional |
 | `properties.products.name` | `name` | Optional |
-| `properties.products.variant` | `productVariantId` | Required |
 | `properties.products.url` | `productUrl` | Optional |
 | `properties.products.image_url` | `productImage` | Optional |
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Optional |
-| `traits.phone` | `phone` | Optional |
-| `externalId` | `externalIdentifiers` | Optional |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
 
@@ -271,14 +271,14 @@ As mentioned above, RudderStack maps the `Product Viewed` and `Product Added` ev
 |:--------------------------------|:--------------------------|:--------------------------|
 | `properties.products.product_id` | `productId` | Required |
 | `properties.products.price` | `value` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
+| `traits.phone` | `phone` | Required |
+| `externalId` | `externalIdentifiers` | Required |
+| `properties.products.variant` | `productVariantId` | Required |
 | `properties.products.currency` | `currency` | Optional |
 | `properties.products.name` | `name` | Optional |
-| `properties.products.variant` | `productVariantId` | Required |
 | `properties.products.url` | `productUrl` | Optional |
 | `properties.products.image_url` | `productImage` | Optional |
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Optional |
-| `traits.phone` | `phone` | Optional |
-| `externalId` | `externalIdentifiers` | Optional |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
 #### Order Completed
@@ -289,15 +289,14 @@ As mentioned above, RudderStack maps the `Order Completed` event to `purchase` e
 |:--------------------------------|:--------------------------|:--------------------------|
 | `properties.products.product_id` | `productId` | Required |
 | `properties.products.price` | `value` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
+| `properties.products.variant` | `productVariantId` |  Required |
+| `traits.phone` | `phone` | Required |
+| `externalId` | `externalIdentifiers` | Required |
 | `properties.products.price` | `currency` | Optional |
 | `properties.products.name` | `name` | Optional |
-| `properties.products.variant` | `productVariantId` |  Required |
 | `properties.products.url` | `productUrl` | Optional |
 | `properties.products.image_url` | `productImage` | Optional |
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Optional |
-| `traits.phone` | `phone` | Optional |
-| `externalId` | `externalIdentifiers` | Optional |
-
 
 A sample `track` call containing the above e-commerce event parameters is shown below:
 
