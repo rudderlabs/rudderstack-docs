@@ -21,7 +21,7 @@ Before configuring Bugsnag as a destination in RudderStack, verify if the source
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Bugsnag, follow these steps:
@@ -35,7 +35,7 @@ To successfully configure Bugsnag as a destination, you will need to configure t
 
 <img src="../../assets/event-stream-destinations/bugsnag-connection-settings.png" />
 
-* **BugSnag Api Key**: Enter your BugSnag API key. You can find the API key in your Bugsnag dashboard under **Settings**>**Project Settings**.
+* **BugSnag Api Key**: Enter your BugSnag API key. You can find the API key in your Bugsnag dashboard under **Settings** > **Project Settings**.
 
 <div class="infoBlock">
 
@@ -43,8 +43,10 @@ For more information on getting your BugSnag Api Key, refer to the <a href="#faq
 </div>
 
 * **Use device-mode to send events**: As this is a device mode-only destination, this setting is enabled by default and cannot be disabled.
-* **Release Stage**: Enable this setting to define the release stage
-* **SSL**:
+* **Release Stage**: Use this setting to specify the release stage of your app:
+   - Enable it for Development stage. 
+   - Keep it dsabled for Production stage.
+* **SSL**: Enabled by default, this option uses SSL while sending data to Bugsnag.
 
 ## Adding Bugsnag to mobile project
 
@@ -198,7 +200,7 @@ Bugsnag will show the `userId` and `traits` in the Users tab of each error.
 
 ## Error Reporting
 
-Along with user-specific information, you can also use Bugsnag to track handled exceptions data to your dashboard using Bugsnag's native methods. For more information on these functions, refer to the [Bugsnag documentation](https://docs.bugsnag.com/platforms/browsers/#reporting-handled-exceptions).
+Along with user-specific information, you can also use Bugsnag to track handled exceptions data to your dashboard using Bugsnag's native methods. For more information on these functions, refer to [Bugsnag documentation](https://docs.bugsnag.com/platforms/browsers/#reporting-handled-exceptions).
 
 ## FAQ
 
@@ -216,7 +218,7 @@ You can distinguish errors that happen in different stages of your app's release
 
 ### Do I need to use SSL?
 
-You should definitely use SSL When Sending Data to Bugsnag specifically from JS source.
+You should use SSL while sending data to Bugsnag in web device mode.
 
 ## Contact us
 
