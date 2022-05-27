@@ -148,7 +148,7 @@ RudderStack internally transforms the `page` call into a `track` call before sen
 For example, consider the following `page` call:
 
 ```javascript
-rudderanalytics.page("Cart Viewed", {
+rudderanalytics.page("Cart", "Cart Viewed", {
   path: "/best-seller/1",
   referrer: "https://www.google.com/search?q=estore+bestseller",
   search: "estore bestseller",
