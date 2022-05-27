@@ -81,17 +81,22 @@ RudderStack maps the following `identify` traits to the corresponding WebEngage 
 | `emailOptIn` | `emailOptIn` | Optional | The user's email subscription preference. |
 | `smsOptIn` | `smsOptIn` | Optional | The user's SMS subscription preference. |
 | `whatsappOptIn` | `whatsappOptIn` | Optional | The user's WhatsApp subscription preference. |
-| `company` | `company` | Optional | The user's company. |
+| `company.name` | `company` | Optional | The user's company. |
 | `hashedEmail` | `hashedEmail` | Optional | The user's hashed email for email services. |
 | `hashedPhone` | `hashedPhone` | Optional | The user's encrypted phone number for SMS services. |
-| `postalcode` / `address.postalCode` | `gender` | Optional | The user's postal code. |
+| `postalcode` / `address.postalCode` | `postalCode` | Optional | The user's postal code. |
+| `region` / `address.region` | `region` | Optional | The user's region. |
+| `locality` / `address.locality` | `locality` | Optional | The user's locality. |
+| `city` / `address.city` | `city` | Optional | The user's city. |
+| `country` / `address.country` | `country` | Optional | The user's country. |
 | `attributes` | `attributes` | Optional | The user's custom attributes as key-value pairs. |
 
 ### Identify traits considerations
 
 Note the following when sending `identify` traits to WebEngage:
 
-- Either `userId` or `anonymousId` must be present in the `identify` call. If both these fields are present, RudderStack ignores `anonymousId` and sends `userId` to WebEngage.
+- Either `userId` or `anonymousId` must be present in the `identify` call. 
+- If both `userId` and `anonymousId` are present in the `identify` call, RudderStack ignores `anonymousId`.
 - WebEngage prioritizes `hashedEmail` over `email`. Hence, you once you set `hashedEmail`, it can then be updated only through a new `hashedEmail`.
 - WebEngage prioritizes `hashedPhone` over `phone`. Hence, you once you set `hashedPhone`, it can then be updated only through a new `hashedPhone`.
 
@@ -113,8 +118,10 @@ rudderanalytics.track("Order Completed", {
 ```
 
 <div class="warningBlock">
-
-Either <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> must be present in the <code class="inline-code">track</code> call. In case both are present, RudderStack will ignore <code class="inline-code">anonymousId</code> and send <code class="inline-code">userId</code> to WebEngage.
+<ul>
+  <li>Either <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> must be present in the <code class="inline-code">track</code> call.</li> 
+  <li>If both <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code>are present, RudderStack will ignore <code class="inline-code">anonymousId</code>.</li>
+  </ul>
 </div>
 
 ### Property mapping
@@ -143,7 +150,7 @@ WebEngage lets you send custom attributes as key-value pairs in the `attributes`
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-RudderStack internally transforms the `page` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the format `Viewed ${event} ${name} ${category} ${page}`.
+RudderStack internally transforms the `page` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the format `Viewed ${name} ${category} ${page}`.
 
 For example, consider the following `page` call:
 
@@ -159,11 +166,16 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 
 RudderStack transforms the above event into a `track` call named `Viewed Cart Viewed page` and sends it to WebEngage as a custom event.
 
+<div class="infoBlock">
+
+RudderStack sends the <code class="inline-code">page</code> event properties to WebEngage similar to the <code class="inline-code">track</code> event properties.
+</div>
+
 ## Screen
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/screen"><code class="inline-code">screen</code></Link> method lets you record whenever your user views their mobile screen with any additional relevant information about the screen. It is the mobile equivalent of a <Link to="#page"><code class="inline-code">page</code></Link> call.
 
-RudderStack internally transforms the `screen` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the format `Viewed ${event} ${name} ${category} ${screen}`.
+RudderStack internally transforms the `screen` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the format `Viewed ${name} ${category} ${screen}`.
 
 For example, consider the following `screen` call:
 
@@ -177,6 +189,11 @@ rudderClient.screen(
 ```
 
 RudderStack transforms the above event into a `track` call named `Viewed home Games screen` and sends it to WebEngage as a custom event.
+
+<div class="infoBlock">
+
+RudderStack sends the <code class="inline-code">screen</code> event properties to WebEngage similar to the <code class="inline-code">track</code> event properties.
+</div>
 
 ## FAQ
 
