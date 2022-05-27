@@ -111,6 +111,37 @@ Below are some examples of the track event names that are passed to Google Analy
 For each product in the order, there must be an <code class="inline-code">id</code> and <code class="inline-code">name</code> associated. More info on Google Analytics 4 e-commerce event and corresponding properties can be found <a href="https://developers.google.com/gtagjs/reference/ga4-events#view_item_list">here</a>.
 </div>
 
+## FAQ
+
+### How can I enable Google Signals in GA4?
+
+[Google Signals](https://support.google.com/analytics/answer/9445345?hl=en#zippy=%2Cin-this-article) helps you understand the interaction of users with your website across multiple devices and sessions. To enable Google Signals and capture user data, the following conditions must be met:
+- A user must be signed in to their Google Account on the website or app.
+- Ad Personalization must be enabled for their account.
+
+<div class="infoBlock">
+
+The Google Signals feature is available in the web <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link> only.
+</div>
+
+To enable Google Signals in GA4 and reflect the collected user data in your reports, follow the steps below:
+
+1. Log into your [Google Analytics dashboard](https://analytics.google.com/). 
+2. Open the Admin panel by clicking on the gear icon at the bottom left.
+<img src="../../../assets/event-stream-destinations/Google-signals-1.png" alt="Google Signals" />
+
+3. Select the property for which you want to enable Google Signals. Then, go to **Data Settings** > **Data Collection**.
+4. Click **Get Started** in the **Google signals data collection** section, as shown:
+<img src="../../../assets/event-stream-destinations/Google-signals-2.png" alt="Google Signals" />
+
+6. Click **Continue**.
+<img src="../../../assets/event-stream-destinations/Google-signals-3.png" alt="Google Signals" />
+
+7. Read the additional information and click on **Activate**.
+<img src="../../../assets/event-stream-destinations/Google-signals-4.png" alt="Google Signals" />
+
+Google Signals is now enabled. You will be able to see the **Age**, **Gender**, and other relevant data in GA4 Demographics reports after 24 hours.
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
