@@ -85,7 +85,7 @@ RudderStack maps the following `identify` traits to the corresponding WebEngage 
 | `hashedEmail` | `hashedEmail` | Optional | The user's hashed email for email services. |
 | `hashedPhone` | `hashedPhone` | Optional | The user's encrypted phone number for SMS services. |
 | `postalcode` / `address.postalCode` | `gender` | Optional | The user's postal code. |
-| `attributes` | `email` | Optional | The user's custom attributes as key-value pairs. |
+| `attributes` | `attributes` | Optional | The user's custom attributes as key-value pairs. |
 
 ### Identify traits considerations
 
@@ -127,7 +127,7 @@ RudderStack maps the following event properties to the corresponding WebEngage a
 | `anonymousId` | `anonymousId` | Required if `userId` is not present. | `anonymousId` cannot exceed 100 characters. |
 | `eventName` | `event` | Required | The event name. |
 | `timestamp`/`originalTimestamp` | `eventTime` | Optional | The date and time of the event in ISO format: `yyyy-MM-ddTHH:mm:ss±hhmm`. |
-| `properties` | `attributes` | Optional | The custom event attributes as key-value pairs. |
+| `properties` | `eventData` | Optional | The custom event attributes as key-value pairs. |
 
 ### Setting custom attributes
 
