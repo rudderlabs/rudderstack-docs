@@ -41,9 +41,9 @@ To successfully configure Attentive Tag as a destination, you will need to confi
 <img src="../../assets/event-stream-destinations/attentive-tag-connection-settings.png" alt="Attentive Tag Connection Settings"/>
 
 
-- **API Key**: Your API Key is the unique key generated against your Attentive Tag account. It can be found in your Attentive Tag dashboard in the **Account** section under **Settings**.
+- **API Key**:
 
-- **Sign Up Source Id**: Your Sign Up Source Id can be generated for your account in the **Account** section under **Settings**. This key allows you to add users to a list or subscribe them using personalised emails/SMS.
+- **Sign Up Source Id**:
 
 <div class="infoBlock">
 
@@ -55,21 +55,6 @@ For more information on getting the API Key and Sign Up Source Id, refer to the 
 You can choose to subscribe or unsubscribe a user from an Attentive Tag list using the <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call.
 
 The default behavior of `identify` call is to subscribe a user. In order to unsubscribe, the`identifyOperation` needs to be passed as `unsubscribe` in the <code class="inline-code">integrations</code> object.
-
-```javascript
-"integrations": {
-  "attentive_tag": {
-    "identifyOperation": "unsubscribe",
-  },
-  "subscriptions": [{
-    "type": "MARKETING",
-    "channel": "TEXT"
-  }],
-  "notification": {
-    "language": "en-US"
-  }
-},
-```
 
 ### Subscribe user
 
@@ -85,12 +70,12 @@ RudderStack maps the following properties to the Attentive Tag properties while 
 
 <div class="infoBlock">
 
-The <code class="inline-code">externalIdentifiers</code> property can be an array of objects - any identifier other than the specified ones, like <code class="inline-code">clientUserId</code>, <code class="inline-code">shopifyId</code>, <code class="inline-code">klaviyoId</code> and <code class="inline-code">customIdentifiers</code>
+The <code class="inline-code">externalIdentifiers</code> property can be an array of objects - any identifier other than the specified ones, like <code class="inline-code">clientUserId</code>, <code class="inline-code">shopifyId</code>, <code class="inline-code">klaviyoId</code> and <code class="inline-code">customIdentifiers</code>.
 </div>
 
 <div class="infoBlock">
 
-The <code class="inline-code">signUpSourceId</code> provided in the <code class="inline-code">integrations</code> object is given the highest priority in the destination definition.
+The <code class="inline-code">signUpSourceId</code> property is given the highest priority in the destination definition.
 </div>
 
 A sample `identify` call to subscribe a user is shown below:
@@ -128,7 +113,7 @@ A sample `identify` call to subscribe a user is shown below:
 
 ### Unsubscribe user
 
-The `identifyOperation` should be passed as `unsubscribe` in the `integrations` to unsubscribe a user, as shown:
+The `identifyOperation` should be passed as `unsubscribe` in the `integrations` object to unsubscribe a user, as shown:
 
 ```javascript
 "integrations": {
@@ -158,7 +143,7 @@ A user can unsubscribe from any specific channel by passing it inside the `subsc
 
 <div class="infoBlock">
 
-Currently, only <code class="inline-code">en-US</code> and <code class="inline-code">fr-CA</code> are supported as notification languages and these are case sensitive.
+Currently, only <code class="inline-code">en-US</code> and <code class="inline-code">fr-CA</code> are supported as notification languages and are case sensitive.
 </div>
 
 A sample `identify` call to specify subscription channels and notification language is shown below:
@@ -216,7 +201,7 @@ A sample `track` call is shown below:
 
 ### Property mapping
 
-RudderStack maps the following properties to the Attentive Tag properties:
+RudderStack maps the following `track` call properties to the Attentive Tag properties:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
@@ -231,7 +216,7 @@ RudderStack maps the following properties to the Attentive Tag properties:
 
 <div class="infoBlock">
 
-The timestamps should be in ISO 8601 format.
+Make sure that the timestamp is in ISO 8601 format.
 </div>
 
 ### E-Commerce events
@@ -298,7 +283,7 @@ As mentioned above, RudderStack maps the `Order Completed` event to `purchase` e
 | `properties.products.url` | `productUrl` | Optional |
 | `properties.products.image_url` | `productImage` | Optional |
 
-A sample `track` call containing the above e-commerce event parameters is shown below:
+A sample `track` call for the above e-commerce event parameters is shown below:
 
 ```javascript
 {
