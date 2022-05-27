@@ -12,7 +12,7 @@ RudderStack supports Attentive Tag as a destination to which you can seamlessly 
 
 <div class="successBlock">
 
-Find the open-source transformer code for this destination in our [GitHub repository](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/klaviyo).
+Find the open-source transformer code for this destination in our [GitHub repository](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/).
 </div>
 
 ## Getting started
@@ -40,7 +40,8 @@ To successfully configure Attentive Tag as a destination, you will need to confi
 
 <img src="../../assets/event-stream-destinations/attentive-tag-connection-settings.png" alt="Attentive Tag Connection Settings"/>
 
-- **API Key**: Your API Key is the unique key generated against your Klaviyo account. It can be found in your Klaviyo dashboard in the **Account** section under **Settings**.
+
+- **API Key**: Your API Key is the unique key generated against your Attentive Tag account. It can be found in your Attentive Tag dashboard in the **Account** section under **Settings**.
 
 - **Sign Up Source Id**: Your Sign Up Source Id can be generated for your account in the **Account** section under **Settings**. This key allows you to add users to a list or subscribe them using personalised emails/SMS.
 
@@ -51,36 +52,45 @@ For more information on getting the API Key and Sign Up Source Id, refer to the 
 
 ## Identify
 
-The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+You can choose to subscribe or unsubscribe a user from an Attentive Tag list using the <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call.
 
-You can choose to  the user can be subscribed or unsubscribed from an Attentive Tag list using the identify call?
+The default behavior of `identify` call is to subscribe a user. In order to unsubscribe, the`identifyOperation` needs to be passed as `unsubscribe` in the <code class="inline-code">integrations</code> object.
 
-Subscribe will be the default operation for identify and for unsubscribe, user needs to provide identifyOperation as unsubscribe in the integrations object
-
-A sample `identify` call is shown below:
-
-
+```javascript
+"integrations": {
+  "attentive_tag": {
+    "identifyOperation": "unsubscribe",
+  },
+  "subscriptions": [{
+    "type": "MARKETING",
+    "channel": "TEXT"
+  }],
+  "notification": {
+    "language": "en-US"
+  }
+},
+```
 
 ### Subscribe user
 
-Property mapping
+RudderStack maps the following properties to the Attentive Tag properties while subscribing a user:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Optional |
-| `traits.phone` | `phone` | Optional |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
+| `traits.phone` | `phone` | Required  |
 | `externalId` | `externalIdentifiers` | Required |
 | `integrations.attentive_tag.signUpsourceId` | `signUpSourceId` | Required |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
 <div class="infoBlock">
 
-externalIdentifiers can be clientUserId, shopifyId, klaviyoId and customIdentifiers(Array of objects  - any other Identifier other than specified ones)
+The <code class="inline-code">externalIdentifiers</code> property can be an array of objects - any identifier other than the specified ones, like <code class="inline-code">clientUserId</code>, <code class="inline-code">shopifyId</code>, <code class="inline-code">klaviyoId</code> and <code class="inline-code">customIdentifiers</code>
 </div>
 
 <div class="infoBlock">
 
-signUpSourceId provided in integrations object will be prioritized over from destination definition.
+The <code class="inline-code">signUpSourceId</code> provided in the <code class="inline-code">integrations</code> object is given the highest priority in the destination definition.
 </div>
 
 A sample `identify` call to subscribe a user is shown below:
@@ -118,17 +128,40 @@ A sample `identify` call to subscribe a user is shown below:
 
 ### Unsubscribe user
 
-Property mapping
+The `identifyOperation` should be passed as `unsubscribe` in the `integrations` to unsubscribe a user, as shown:
 
-| RudderStack Property | Attentive Tag Property | Presence | Notes |
-|:--------------------------------|:--------------------------|:--------------------------|:--------------------------|
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Optional |
-| `traits.phone` | `phone` | Optional |
-| `integrations.attentive_tag.subscriptions` | `subscriptions` | Optional | contains the specific type of channels the user wants to unsubscribe from |
-| `integrations.attentive_tag.notification` | `notification` | Optional | contains the notification language|
+```javascript
+"integrations": {
+  "attentive_tag": {
+    "identifyOperation": "unsubscribe",
+  },
+  "subscriptions": [{
+    "type": "MARKETING",
+    "channel": "TEXT"
+  }],
+  "notification": {
+    "language": "en-US"
+  }
+},
+```
 
+RudderStack maps the following properties to the Attentive Tag properties while unsubscribing a user:
 
-A sample `identify` call to unsubscribe a user is shown below:
+| RudderStack Property | Attentive Tag Property | Presence |
+|:--------------------------------|:--------------------------|:--------------------------|
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
+| `traits.phone` | `phone` | Required |
+| `integrations.attentive_tag.subscriptions` | `subscriptions` | Optional |
+| `integrations.attentive_tag.notification` | `notification` | Optional |
+
+A user can unsubscribe from any specific channel by passing it inside the `subscriptions` in the `integrations` object. Also, they can provide the `language` in the `notification` inside the `integrations` object to change the notification language. 
+
+<div class="infoBlock">
+
+Currently, only <code class="inline-code">en-US</code> and <code class="inline-code">fr-CA</code> are supported as notification languages and these are case sensitive.
+</div>
+
+A sample `identify` call to specify subscription channels and notification language is shown below:
 
 ```javascript
 {
@@ -145,11 +178,11 @@ A sample `identify` call to unsubscribe a user is shown below:
   }
 }
 ```
+<div class="infoBlock">
 
-- For unsubscribe operation, user needs to provide identifyOperation as unsubscribe in the integrations object.
-- Passing in an email does not locate, nor unsubscribe, a user from any sms subscriptions. Similarly, passing in a phone does not locate, nor unsubscribe, a user from any email subscriptions.
-- For unsubscribe operation, user can unsubscribe from some specific type or channels by providing it inside the subscriptions in the integrations object.
-- For unsubscribe operation, user can provide the `language` in the `notification` inside the integrations object. Currently only supports `en-US` and `fr-CA` as language. Case sensitive, must match exactly.
+Passing the <code class="inline-code">email</code> attribute does not locate or unsubscribe a user from any SMS subscription. Similarly, passing the <code class="inline-code">phone</code> attribute does not locate or unsubscribe a user from any email subscription.
+</div>
+
 
 ## Track
 
@@ -183,15 +216,17 @@ A sample `track` call is shown below:
 
 ### Property mapping
 
+RudderStack maps the following properties to the Attentive Tag properties:
+
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `event` | `type` | Required |
 | `properties` | `properties` | Optional |
 | `properties.timestamp` | `occuredAt` | Optional |
 | `properties.eventId` | `externalEventId` | Optional |
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Optional |
-| `traits.phone` | `phone` | Optional |
-| `externalId` | `externalIdentifiers` | Optional |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
+| `traits.phone` | `phone` | Required |
+| `externalId` | `externalIdentifiers` | Required |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
 <div class="infoBlock">
@@ -201,19 +236,17 @@ The timestamps should be in ISO 8601 format.
 
 ### E-Commerce events
 
-RudderStack converts the following E-Commerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
+RudderStack converts the following e-commerce events to the corresponding Attentive Tag events:
 
 | RudderStack event | Attentive Tag event |
 |:--------------------------------|:--------------------------|
-| Product List Viewed <br />OR<br /> Product Viewed | `product-view` |
+| Product List Viewed <br /> Product Viewed | `product-view` |
 | Product Added | `add-to-cart` |
 | Order Completed | `purchase` |
 
-The following table lists the RudderStack and Attentive Tag properties mappings based on the specific RudderStack events:
-
 #### Product List Viewed
 
-As mentioned in the table above, RudderStack converts the `Product List Viewed` event to `product-view`. The event properties are also mapped to the Attentive Tag properties, as shown:
+As mentioned above, RudderStack maps the `Product List Viewed` event to `product-view` event in Attentive Tag. The event properties are also mapped to the corresponding Attentive Tag properties, as shown:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
@@ -232,7 +265,7 @@ As mentioned in the table above, RudderStack converts the `Product List Viewed` 
 
 #### Product Viewed/Product Added
 
-As mentioned in the table above, RudderStack converts the `Product Viewed` and `Product Added` event to `product-view` and `add-to-cart` respectively. The event properties are also mapped to the Attentive Tag properties, as shown:
+As mentioned above, RudderStack maps the `Product Viewed` and `Product Added` events to `product-view` and `add-to-cart` events in Attentive Tag respectively. The event properties are also mapped to the corresponding Attentive Tag properties, as shown:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
@@ -250,7 +283,7 @@ As mentioned in the table above, RudderStack converts the `Product Viewed` and `
 
 #### Order Completed
 
-As mentioned in the table above, RudderStack converts the `Order Completed` event name to `purchase`. The event properties are also mapped to the Attentive Tag properties, as shown:
+As mentioned above, RudderStack maps the `Order Completed` event to `purchase` event in Attentive Tag. The event properties are also mapped to the corresponding Attentive Tag properties, as shown:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
@@ -301,19 +334,11 @@ A sample `track` call containing the above e-commerce event parameters is shown 
 
 ### Where can I find the Attentive Tag API Key?
 
-To find the AdRoll advertiser ID and pixel ID, follow these steps:
-
-1. Log into your [AdRoll dashboard](https://app.adroll.com/).
-2. In the left sidebar, go to **Website** under **Audiences**.
-3. Under the **AdRoll Pixel** section, click on **View Pixel**, as shown:
-
-<img src="../../assets/event-stream-destinations/adroll-pixel.png" alt="AdRoll view Pixel"/>
-
-4. In the resulting pop-up, you can find your AdRoll advertiser ID associated with the `adroll_adv_id` parameter. You can also find the AdRoll pixel ID associated with the `adroll_pix_id` parameter, as shown:
-
-<img src="../../assets/event-stream-destinations/adroll-details.png" alt="AdRoll advertiser ID and Pixel ID"/>
+To find the Attentive Tag API Key, follow these steps:
 
 ### Where can I find the Attentive Tag Sign Up Source Id?
+
+To find the Attentive Tag Sign Up Source Id, follow these steps:
 
 ## Contact us
 
