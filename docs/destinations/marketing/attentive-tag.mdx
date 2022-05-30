@@ -6,7 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Atte
 
 # Attentive Tag
 
-[Attentive](https://www.attentivemobile.com/) is a personalized mobile messaging platform that helps consumers and companies to communicate with each other. It manages user subscriptions, triggers messages related to user actions, saves subscriber attributes, and sends personalized text messages. To utilize all the Attentive features, you need to add [Attentive Tag](https://docs.attentivemobile.com/pages/developer-guides/tag-management/the-attentive-tag/) to your website.
+[Attentive](https://www.attentivemobile.com/) is a mobile messaging platform that helps consumers and companies to communicate with each other by sending personalized text messages. It also provides [Attentive Tag](https://docs.attentivemobile.com/pages/developer-guides/tag-management/the-attentive-tag/) which can be added to your website to utilize Attentive features like capturing behaviorial data, triggering events, tracking revenue, etc.
 
 RudderStack supports Attentive Tag as a destination to which you can seamlessly send your event data.
 
@@ -41,7 +41,7 @@ To successfully configure Attentive Tag as a destination, you will need to confi
 <img src="../../assets/event-stream-destinations/attentive-tag-connection-settings.png" alt="Attentive Tag Connection Settings"/>
 
 
-- **API Key**: Enter the API key present in the app created by you in Attentive dashboard.
+- **API Key**: Enter the API key present in the app you have created in the Attentive dashboard.
 - **Sign Up Source Id**: Enter the Sign-up method's ID present in the **Sign-up Units** option in the Attentive dashboard.
 
 <div class="infoBlock">
@@ -53,7 +53,7 @@ For more information on getting the API Key and Sign Up Source Id, refer to the 
 
 You can choose to subscribe or unsubscribe a user from an Attentive Tag list using the <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call.
 
-The default behavior of `identify` call is to subscribe a user. In order to unsubscribe, the`identifyOperation` needs to be passed as `unsubscribe` in the <code class="inline-code">integrations</code> object.
+The default behavior of `identify` call is to subscribe a user. To unsubscribe, you can pass `identifyOperation` as `unsubscribe` in the <code class="inline-code">integrations</code> object.
 
 ### Subscribe user
 
@@ -112,7 +112,7 @@ A sample `identify` call to subscribe a user is shown below:
 
 ### Unsubscribe user
 
-The `identifyOperation` should be passed as `unsubscribe` in the `integrations` object to unsubscribe a user, as shown:
+You can pass `identifyOperation` as `unsubscribe` in the <code class="inline-code">integrations</code> object to unsubscribe a user, as shown:
 
 ```javascript
 "integrations": {
@@ -164,7 +164,7 @@ A sample `identify` call to specify subscription channels and notification langu
 ```
 <div class="infoBlock">
 
-Passing the <code class="inline-code">email</code> attribute does not locate or unsubscribe a user from any SMS subscription. Similarly, passing the <code class="inline-code">phone</code> attribute does not locate or unsubscribe a user from any email subscription.
+Passing an <code class="inline-code">email</code> attribute does not locate or unsubscribe a user from SMS subscription. Similarly, passing the <code class="inline-code">phone</code> attribute does not locate or unsubscribe a user from email subscription.
 </div>
 
 
@@ -205,17 +205,17 @@ RudderStack maps the following `track` call properties to the Attentive Tag prop
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `event` | `type` | Required |
-| `properties` | `properties` | Optional |
-| `properties.timestamp` | `occuredAt` | Optional |
-| `properties.eventId` | `externalEventId` | Optional |
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
 | `traits.phone` | `phone` | Required |
 | `externalId` | `externalIdentifiers` | Required |
+| `properties` | `properties` | Optional |
+| `properties.timestamp` | `occuredAt` | Optional |
+| `properties.eventId` | `externalEventId` | Optional |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
 <div class="infoBlock">
 
-Make sure that the timestamp is in ISO 8601 format.
+Make sure to pass the timestamp in ISO 8601 format.
 </div>
 
 ### E-Commerce events
@@ -230,7 +230,7 @@ RudderStack converts the following e-commerce events to the corresponding Attent
 
 #### Product List Viewed
 
-As mentioned above, RudderStack maps the `Product List Viewed` event to `product-view` event in Attentive Tag. The event properties are also mapped to the corresponding Attentive Tag properties, as shown:
+The `Product List Viewed` event properties are mapped to the following Attentive Tag properties:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
@@ -249,7 +249,7 @@ As mentioned above, RudderStack maps the `Product List Viewed` event to `product
 
 #### Product Viewed/Product Added
 
-As mentioned above, RudderStack maps the `Product Viewed` and `Product Added` events to `product-view` and `add-to-cart` events in Attentive Tag respectively. The event properties are also mapped to the corresponding Attentive Tag properties, as shown:
+The `Product Viewed` and `Product Added` event properties are mapped to the following Attentive Tag properties:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
@@ -267,7 +267,7 @@ As mentioned above, RudderStack maps the `Product Viewed` and `Product Added` ev
 
 #### Order Completed
 
-As mentioned above, RudderStack maps the `Order Completed` event to `purchase` event in Attentive Tag. The event properties are also mapped to the corresponding Attentive Tag properties, as shown:
+The `Order Completed` event properties are mapped to the following Attentive Tag properties:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
@@ -327,9 +327,9 @@ To obtain the Attentive Tag API Key, follow these steps:
 
 ### Where can I find the Attentive Tag Sign Up Source Id?
 
-To obtain the Attentive Tag Sign Up Source Id, go to **Sign-up Units** option in the Attentive dashboard. You will be able to locate the ID across Sign-up method, as shown:
+Go to the **Sign-up Units** option in the Attentive dashboard where you will be able to locate the ID across Sign-up method, as shown:
 
-<img src="../../assets/event-stream-destinations/attentive-tag-connection-settings-1.png" alt="Attentive Tag Connection Settings"/>
+<img src="../../assets/event-stream-destinations/attentive-tag-connection-settings-2.png" alt="Attentive Tag Connection Settings"/>
 
 ## Contact us
 
