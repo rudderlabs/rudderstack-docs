@@ -48,7 +48,7 @@ To successfully configure Attentive Tag as a destination, you will need to confi
 
 For more information on getting the API Key and Sign Up Source Id, refer to the <a href="#faq">FAQ</a> section below.
 </div>
-
+  
 ## Identify
 
 You can choose to subscribe or unsubscribe a user from an Attentive Tag list using the <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call.
@@ -155,6 +155,11 @@ Passing an <code class="inline-code">email</code> attribute does not locate or u
 
 ## Track
 
+<div class="warningBlock">
+  
+An event is not triggered if the timestamp is older than 12 hours.
+</div>
+
 The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call allows you to capture user actions along with the properties associated with these actions. 
 
 ### Property mapping
@@ -175,6 +180,11 @@ RudderStack maps the following `track` call properties to the Attentive Tag prop
 <div class="infoBlock">
 
 Make sure to pass the timestamp in ISO 8601 format.
+</div>
+
+<div class="infoBlock">
+
+The event type is case sensitive. For example, `Order shipped` and `Order Shipped` would be considered as different event types. Also, the keys of properties object should not contain characters, such as [`'`, `"`, `{`, `}`, `[`, `]`, \ , `,`]
 </div>
 
 ### E-Commerce events
