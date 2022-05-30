@@ -61,9 +61,9 @@ RudderStack maps the following properties to the Attentive Tag properties while 
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
-| `traits.phone` | `phone` | Required  |
-| `externalId` | `externalIdentifiers` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided|
+| `traits.phone` | `phone` | Required if `email` is not provided |
+| `externalId` | `externalIdentifiers` | Optional |
 | `integrations.attentive_tag.signUpsourceId` | `signUpSourceId` | Required |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
@@ -74,7 +74,7 @@ The <code class="inline-code">externalIdentifiers</code> property can be an arra
 
 <div class="infoBlock">
 
-The <code class="inline-code">signUpSourceId</code> property is given the highest priority in the destination definition.
+The <code class="inline-code">signUpSourceId</code> property in the <code class="inline-code">integrations</code> object is given a higher priority than in the destination definition.
 </div>
 
 A sample `identify` call to subscribe a user is shown below:
@@ -115,26 +115,31 @@ A sample `identify` call to subscribe a user is shown below:
 You can pass `identifyOperation` as `unsubscribe` in the <code class="inline-code">integrations</code> object to unsubscribe a user, as shown:
 
 ```javascript
-"integrations": {
-  "attentive_tag": {
-    "identifyOperation": "unsubscribe",
-  },
-  "subscriptions": [{
-    "type": "MARKETING",
-    "channel": "TEXT"
-  }],
-  "notification": {
-    "language": "en-US"
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  "email": "alex@example.com",
+  "phone": "+1-202-555-0146",
+}, {
+  "integrations": {
+    "attentive_tag": {
+      "identifyOperation": "unsubscribe",
+    },
+    "subscriptions": [{
+      "type": "MARKETING",
+      "channel": "TEXT"
+    }],
+    "notification": {
+      "language": "en-US"
+    }
   }
-},
+});
 ```
 
 RudderStack maps the following properties to the Attentive Tag properties while unsubscribing a user:
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
-| `traits.phone` | `phone` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
+| `traits.phone` | `phone` | Required if `email` is not provided|
 | `integrations.attentive_tag.subscriptions` | `subscriptions` | Optional |
 | `integrations.attentive_tag.notification` | `notification` | Optional |
 
@@ -145,23 +150,6 @@ A user can unsubscribe from any specific channel by passing it inside the `subsc
 Currently, only <code class="inline-code">en-US</code> and <code class="inline-code">fr-CA</code> are supported as notification languages and are case sensitive.
 </div>
 
-A sample `identify` call to specify subscription channels and notification language is shown below:
-
-```javascript
-{
-  "user": {
-    "phone": "+13115552368",
-    "email": "test@gmail.com"
-  },
-  "subscriptions": [{
-    "type": "MARKETING",
-    "channel": "TEXT"
-  }],
-  "notification": {
-    "language": "string"
-  }
-}
-```
 <div class="infoBlock">
 
 Passing an <code class="inline-code">email</code> attribute does not locate or unsubscribe a user from SMS subscription. Similarly, passing the <code class="inline-code">phone</code> attribute does not locate or unsubscribe a user from email subscription.
