@@ -41,6 +41,19 @@ The mappings for the above parameters are listed in the following table:
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
 </div>
 
+The mappings for common parameters across `gtag` and `firebase` are listed in the following table:
+
+| Optional Parameters    | Mapping value  | Description |
+| :-------------| :-----------------|:-----------------|
+| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know that two devices/browsers belong to the same user.|
+| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Unix timestamp (in microseconds) to associate the time with an event.|
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Set to `true` to indicate that these events should not be used for personalized ads.|
+
+<div class="infoBlock">
+  
+Google Analytics 4 Measurement Protocol supports events only with timestamps of 72 hours into the past and 15 minutes into the future. Any event with timestamps out of this time range will throw an error.
+</div>
+
 A sample `track` call using `gtag` is shown below:
 
 ```javascript
@@ -149,15 +162,39 @@ The following table lists the mappings between the RudderStack and Google Analyt
     <td><code class="inline-code">search</code></td>
   </tr>
   <tr>
-    <td>Product List Viewed<br />Product Clicked</td>
+    <td>Product List Viewed</td>
+    <td><code class="inline-code">view_item_list</code><br /><code class="inline-code">select_item</code></td>
+  </tr>
+   <tr>
+    <td>Product Clicked</td>
     <td><code class="inline-code">view_item_list</code><br /><code class="inline-code">select_item</code></td>
   </tr>
   <tr>
-    <td>Promotion Viewed<br />Promotion Clicked</td>
+    <td>Promotion Viewed</td>
+    <td><code class="inline-code">view_promotion</code><br /><code class="inline-code">select_promotion</code></td>
+  </tr>
+    <tr>
+    <td>Promotion Clicked</td>
     <td><code class="inline-code">view_promotion</code><br /><code class="inline-code">select_promotion</code></td>
   </tr>
    <tr>
-    <td>Product Viewed<br />Product Added<br />Product Removed<br />Cart Viewed<br />Product Added to Wishlist</td>
+    <td>Product Viewed</td>
+    <td><code class="inline-code">view_item</code><br /><code class="inline-code">add_to_cart</code><br /><code class="inline-code">remove_from_cart</code><br /><code class="inline-code">view_cart</code><br /><code class="inline-code">add_to_wishlist</code></td>
+  </tr>
+     <tr>
+    <td>Product Added</td>
+    <td><code class="inline-code">view_item</code><br /><code class="inline-code">add_to_cart</code><br /><code class="inline-code">remove_from_cart</code><br /><code class="inline-code">view_cart</code><br /><code class="inline-code">add_to_wishlist</code></td>
+  </tr>
+     <tr>
+    <td>Product Removed</td>
+    <td><code class="inline-code">view_item</code><br /><code class="inline-code">add_to_cart</code><br /><code class="inline-code">remove_from_cart</code><br /><code class="inline-code">view_cart</code><br /><code class="inline-code">add_to_wishlist</code></td>
+  </tr>
+     <tr>
+    <td>Cart Viewed</td>
+    <td><code class="inline-code">view_item</code><br /><code class="inline-code">add_to_cart</code><br /><code class="inline-code">remove_from_cart</code><br /><code class="inline-code">view_cart</code><br /><code class="inline-code">add_to_wishlist</code></td>
+  </tr>
+     <tr>
+    <td>Product Added to Wishlist</td>
     <td><code class="inline-code">view_item</code><br /><code class="inline-code">add_to_cart</code><br /><code class="inline-code">remove_from_cart</code><br /><code class="inline-code">view_cart</code><br /><code class="inline-code">add_to_wishlist</code></td>
   </tr>
    <tr>
@@ -165,11 +202,19 @@ The following table lists the mappings between the RudderStack and Google Analyt
     <td><code class="inline-code">begin_checkout</code></td>
   </tr>
    <tr>
-    <td>Order Completed<br/>Order Refunded</td>
+    <td>Order Completed</td>
+    <td><code class="inline-code">purchase</code><br /><code class="inline-code">refund</code></td>
+  </tr>
+     <tr>
+    <td>Order Refunded</td>
     <td><code class="inline-code">purchase</code><br /><code class="inline-code">refund</code></td>
   </tr>
     <tr>
-    <td>Product Shared<br/>Cart Shared</td>
+    <td>Product Shared</td>
+    <td><code class="inline-code">share</code></td>
+  </tr>
+      <tr>
+    <td>Cart Shared</td>
     <td><code class="inline-code">share</code></td>
   </tr>
    <tr>
