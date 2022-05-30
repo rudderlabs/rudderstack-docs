@@ -21,7 +21,7 @@ The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification
 
 RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
 
-- If you use `gtag`, passing the `client_id` parameter is mandatory.
+- If you use `gtag`, passing the `client_id` parameter is mandatory. The `client_id` uniquely identifies a user instance of a web client. Google Analytics uses it as an identifier to distinguish the site visitors.
 - If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
 
 <div class="infoBlock">
@@ -34,7 +34,7 @@ The mappings for the above parameters are listed in the following table:
 | Parameters    | Mapping value  |
 | :-------------| :-----------------|
 | `client_id`         |  `context.client_id`  or `messageId` |
-| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  |
+| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
 
 <div class="infoBlock">
   
