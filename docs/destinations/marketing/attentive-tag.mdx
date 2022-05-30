@@ -80,9 +80,9 @@ The <code class="inline-code">signUpSourceId</code> property in the <code class=
 A sample `identify` call to subscribe a user is shown below:
 
 ```javascript
-rudderanalytics.identify("user001", {
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
   "email": "new-val",
-  "phone": "+13115552368",
+  "phone": "+1-202-555-0146",
   "customIdentifiers": [{
     "name": "string",
     "value": "string"
@@ -156,32 +156,6 @@ Passing an <code class="inline-code">email</code> attribute does not locate or u
 ## Track
 
 The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call allows you to capture user actions along with the properties associated with these actions. 
-
-A sample `track` call is shown below:
-
-```javascript
-{
-  "type": "Order Shipped",
-  "properties": {
-    "orderStatusURL": "example.com/orderstatus/54321",
-    "delivery_date": "May 10",
-    "Order Id": "54321"
-  },
-  "externalEventId": "37fb97a9-6cfd-4983-bd65-68d104d53b70",
-  "occurredAt": "2021-03-30T14:38:29+0000",
-  "user": {
-    "phone": "+13115552368",
-    "email": "test@gmail.com",
-    "externalIdentifiers": {
-      "clientUserId": "string",
-      "customIdentifiers": [{
-        "name": "string",
-        "value": "string"
-      }]
-    }
-  }
-}
-```
 
 ### Property mapping
 
@@ -270,32 +244,36 @@ The `Order Completed` event properties are mapped to the following Attentive Tag
 A sample `track` call for the above e-commerce event parameters is shown below:
 
 ```javascript
-{
-  "items": [{
-    "productId": "AB12345",
-    "productVariantId": "CD12345",
-    "productImage": "http://my.cdn.com/products/new-product.png",
-    "productUrl": "http://my-store.com/products/shirts/my-shirt",
-    "name": "T-Shirt",
-    "price": [{
-      "value": 19.99,
-      "currency": "USD"
-    }],
-    "quantity": 1
-  }],
-  "occurredAt": "2021-03-30T14:38:29+0000",
-  "user": {
-    "phone": "+13115552368",
-    "email": "test@gmail.com",
-    "externalIdentifiers": {
-      "clientUserId": "string",
-      "customIdentifiers": [{
-        "name": "string",
-        "value": "string"
-      }]
+rudderanalytics.track("Order Completed", {
+  "products": [{
+    "product_id": "507f1f77bcf86cd799439011",
+    "name": "MOBILE",
+    "variant": "green",
+    "price": "19",
+    "image_url": "image.com",
+    "url": "url.com",
+    "quantity": "2",
+    "currency": "USD"
+  }]
+}, {
+  "traits": {
+    "email": "test@email.com",
+    "phone": "+13115552368"
+  },
+  "externalId": [{
+      "type": "clientUserId",
+      "id": "144"
+    },
+    {
+      "type": "shopifyId",
+      "id": "224"
+    },
+    {
+      "type": "klaviyoId",
+      "id": "132"
     }
-  }
-}
+  ]
+});
 ```
 
 ## FAQ
