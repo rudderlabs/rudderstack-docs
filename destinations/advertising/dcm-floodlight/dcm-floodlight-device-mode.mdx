@@ -29,28 +29,10 @@ The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification
 A sample `track` call is as shown below:
 
 ```javascript
-client.track({
-  userId: "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
-  event: "Checkout Started",
-  properties: {
-    orderId: 1234,
-    quantity: 45,
-    revenue: 800,
-  },
-  context: {
-    device: {
-      advertisingId: "2a3e36d172-5e28-45a1-9eda-ce22a3e36d1a",
-    },
-    userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
-  },
-  integrations: {
-    All: true,
-    "DCM Floodlight": {
-      COPPA: "false",
-      GDPR: "1",
-      npa: "true",
-    },
-  },
+rudderanalytics.track('tshirt', {
+  countingMethod: "transactions",
+  revenue: "2605846",
+  orderId: "2605847"
 });
 ```
 
@@ -95,6 +77,14 @@ The following table gives some more context on the above DCM Floodlight properti
 The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
 
 If the `category` and `name` fields are passed in the `page` call, it is passed as - Viewed CATEGORY NAME PAGE NAME Page
+
+A sample `page` call is as shown below:
+
+```javascript
+rudderanalytics.page('landing', {
+  countingMethod: "standard"
+});
+```
 
 ## Contact us
 
