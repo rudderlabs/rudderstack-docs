@@ -80,34 +80,31 @@ The <code class="inline-code">signUpSourceId</code> property in the <code class=
 A sample `identify` call to subscribe a user is shown below:
 
 ```javascript
-{
-  "context": {
-    "traits": {
-      "email": "new-val",
-      "phone": "+13115552368",
-      "customIdentifiers": [{
-        "name": "string",
-        "value": "string"
-      }]
+rudderanalytics.identify("user001", {
+  "email": "new-val",
+  "phone": "+13115552368",
+  "customIdentifiers": [{
+    "name": "string",
+    "value": "string"
+  }]
+}, {
+  "externalId": [{
+      "type": "clientUserId",
+      "id": "144"
     },
-    "externalId": [{
-        "type": "clientUserId",
-        "id": "144"
-      },
-      {
-        "type": "shopifyId",
-        "id": "224"
-      },
-      {
-        "type": "klaviyoId",
-        "id": "132"
-      }
-    ]
-  },
+    {
+      "type": "shopifyId",
+      "id": "224"
+    },
+    {
+      "type": "klaviyoId",
+      "id": "132"
+    }
+  ],
   "integrations": {
     "signUpSourceId": "347393"
   }
-}
+});
 ```
 
 ### Unsubscribe user
@@ -115,9 +112,9 @@ A sample `identify` call to subscribe a user is shown below:
 You can pass `identifyOperation` as `unsubscribe` in the <code class="inline-code">integrations</code> object to unsubscribe a user, as shown:
 
 ```javascript
-rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-  "email": "alex@example.com",
-  "phone": "+1-202-555-0146",
+rudderanalytics.identify("user001", {
+  "email": "test@email.com",
+  "phone": "+13115552368",
 }, {
   "integrations": {
     "attentive_tag": {
@@ -193,9 +190,9 @@ RudderStack maps the following `track` call properties to the Attentive Tag prop
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `event` | `type` | Required |
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
-| `traits.phone` | `phone` | Required |
-| `externalId` | `externalIdentifiers` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
+| `traits.phone` | `phone` | Required if `email` is not provided |
+| `externalId` | `externalIdentifiers` | Optional |
 | `properties` | `properties` | Optional |
 | `properties.timestamp` | `occuredAt` | Optional |
 | `properties.eventId` | `externalEventId` | Optional |
@@ -224,9 +221,9 @@ The `Product List Viewed` event properties are mapped to the following Attentive
 |:--------------------------------|:--------------------------|:--------------------------|
 | `properties.products.product_id` | `productId` | Required |
 | `properties.products.price` | `value` | Required |
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
-| `traits.phone` | `phone` | Required |
-| `externalId` | `externalIdentifiers` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
+| `traits.phone` | `phone` | Required if `email` is not provided |
+| `externalId` | `externalIdentifiers` | Optional |
 | `properties.products.variant` | `productVariantId` | Required |
 | `properties.products.price` | `currency` | Optional |
 | `properties.products.name` | `name` | Optional |
@@ -243,9 +240,9 @@ The `Product Viewed` and `Product Added` event properties are mapped to the foll
 |:--------------------------------|:--------------------------|:--------------------------|
 | `properties.products.product_id` | `productId` | Required |
 | `properties.products.price` | `value` | Required |
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
-| `traits.phone` | `phone` | Required |
-| `externalId` | `externalIdentifiers` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
+| `traits.phone` | `phone` | Required if `email` is not provided |
+| `externalId` | `externalIdentifiers` | Optional |
 | `properties.products.variant` | `productVariantId` | Required |
 | `properties.products.currency` | `currency` | Optional |
 | `properties.products.name` | `name` | Optional |
@@ -261,10 +258,10 @@ The `Order Completed` event properties are mapped to the following Attentive Tag
 |:--------------------------------|:--------------------------|:--------------------------|
 | `properties.products.product_id` | `productId` | Required |
 | `properties.products.price` | `value` | Required |
-| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
+| `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
+| `traits.phone` | `phone` | Required if `email` is not provided |
 | `properties.products.variant` | `productVariantId` |  Required |
-| `traits.phone` | `phone` | Required |
-| `externalId` | `externalIdentifiers` | Required |
+| `externalId` | `externalIdentifiers` | Optional |
 | `properties.products.price` | `currency` | Optional |
 | `properties.products.name` | `name` | Optional |
 | `properties.products.url` | `productUrl` | Optional |
