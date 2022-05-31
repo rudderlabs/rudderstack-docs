@@ -136,7 +136,7 @@ RudderStack maps the following event properties to the corresponding WebEngage a
 
 ### Setting custom attributes
 
-WebEngage lets you send custom attributes as key-value pairs in the `attributes` parameter as described in the <Link to="#property-mapping">above section</Link>. However, there are a few things you should keep in mind:
+WebEngage lets you send custom attributes as key-value pairs in the `eventData` parameter as described in the <Link to="#property-mapping">above section</Link>. However, there are a few things you should keep in mind:
 
 - WebEngage ignores any custom attributes starting with `we_` as these are reserved for internal use.
 - User attribute names must be less than 50 characters, while the `string` attribute values cannot exceed 1000 characters. WebEngage automatically truncates any additional characters.
