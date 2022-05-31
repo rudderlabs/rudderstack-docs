@@ -21,7 +21,7 @@ The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification
 
 RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
 
-- If you use `gtag`, passing the `client_id` parameter is mandatory. The `client_id` uniquely identifies a user instance of a web client. Google Analytics uses it as an identifier to distinguish the site visitors.
+- If you use `gtag`, passing the `client_id` parameter is mandatory.
 - If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
 
 <div class="infoBlock">
@@ -29,7 +29,7 @@ RudderStack supports both the `gtag` and `firebase` ways for tagging in websites
 Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
 </div>
 
-The mappings for the above parameters are listed in the following table:
+The mappings for the above-mentioned mandatory parameters are listed in the following table:
 
 | Parameters    | Mapping value  |
 | :-------------| :-----------------|
@@ -41,17 +41,17 @@ The mappings for the above parameters are listed in the following table:
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
 </div>
 
-The mappings for common parameters across `gtag` and `firebase` are listed in the following table:
+The mappings for the optional parameters (common for `gtag` and `firebase` both) are listed in the following table:
 
 | Optional Parameters    | Mapping value  | Description |
 | :-------------| :-----------------|:-----------------|
-| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know that two devices/browsers belong to the same user.|
+| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
 | `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Unix timestamp (in microseconds) to associate the time with an event.|
-| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Set to `true` to indicate that these events should not be used for personalized ads.|
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. Set to `true` if they should not be used for personalized ads.|
 
 <div class="infoBlock">
   
-Google Analytics 4 Measurement Protocol supports events only with timestamps of 72 hours into the past and 15 minutes into the future. Any event with timestamps out of this time range will throw an error.
+Google Analytics 4 Measurement Protocol supports events only with timestamps 72 hours into the past and 15 minutes into the future. Any event with timestamps out of this range will throw an error.
 </div>
 
 A sample `track` call using `gtag` is shown below:
