@@ -1,0 +1,144 @@
+---
+# slug: "/docs/destinations/analytics/setting-up-dcm-floodlight-in-rudderstack"
+title: "Setting up DCM Floodlight"
+description: Step-by-step guide on setting up DCM Floodlight as a destination in RudderStack.
+---
+
+# Setting up DCM Floodlight
+
+Before configuring DCM Floodlight as a destination in RudderStack, verify if the source platform is supported by DCM Floodlight by referring to the table below:
+
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | - | **Supported** | - |
+| **Cloud mode** | -  | **Supported** | **Supported** |
+
+<div class="infoBlock">
+    
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to DCM Floodlight, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **DCM Floodlight**.
+2. Assign a name to the destination and click on **Next**.
+
+## Connection settings
+
+To successfully configure DCM Floodlight as a destination, you will need to configure the following settings:
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings.png" alt="DCM Floodlight connection settings"/>
+
+- **DoubleClick Advertiser ID:** Enter your Advertiser ID visible in the **Campaigns** or **Activities** tab in your dashboard.
+
+<div class="infoBlock">
+    
+Refer to the <a href="faq">FAQ</a> section to know more on how to obtain the Advertiser ID.
+</div>
+
+- **Activity Tag:** Enter the Floodlight Activity Tag (`cat`) to define the same parameter value across all the conversion events. Alternatively, you can define this value for each conversion event mapping in the **Floodlight Activity Tag** field below.
+- **Group Tag:** Enter the Floodlight Group Tag (`type`) to define the same parameter value across all the group conversion events. Alternatively, you can define this value for each conversion event in the **Floodlight Group Tag** field below.
+
+<div class="infoBlock">
+
+For more information on finding <code class="inline-code">cat</code> and <code class="inline-code">type</code> in your Campaign Manager dashboard, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+### Conversion events
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings2.png" alt="DCM Floodlight connection settings"/>
+
+- **RudderStack Event Name:** Enter your RudderStack event name which will be mapped to the Floodlight tag.
+- **Floodlight Activity Tag:** Enter the `cat` of your tag string. If left blank, RudderStack will pick the value from the **Activity Tag** field mentioned above.
+- **Floodlight Group Tag:** Enter the `type` of your tag string. If left blank, RudderStack will pick the value from the **Group Tag** field mentioned above.
+- **Fire as Sales Tag:** Enable the toggle button for Sales tag. Keep it disabled if it is a Counter tag.
+ 
+<div class="infoBlock">
+
+<ul>
+<li><strong>Counter tag</strong>: Used to count the number of conversions. It is supposed to be placed on the confirmation page after a sale with information about the <code class="inline-code">ord</code> property passed to the tag. </li> 
+<li><strong>Sales tag</strong>: Used to count the number of conversions, the total number of sales that take place, and the total associated revenue. It is supposed to be placed on the confirmation page after a sale with information about the sales, like <code class="inline-code">cost</code>, <code class="inline-code">qty</code>, or <code class="inline-code">ord</code> properties passed to the tag.</li>
+</ul>
+</div>
+
+- **Custom Floodlight variables:** Enter the custom Floodlight variables to capture additional reporting data beyond the usual metrics (like visits and revenue).
+
+<div class="infoBlock">
+
+For more information on finding the custom Floodlight variables, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+### Client-side events filtering
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings3.png" alt="DCM Floodlight connection settings"/>
+
+<div class="infoBlock">
+
+This option is applicable only if you're sending events to DCM Floodloght via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+</div>
+
+### Web SDK settings
+
+<div class="infoBlock">
+
+All the settings mentioned in this section are applicable only for the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a>.
+</div>
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings4.png" alt="DCM Floodlight connection settings"/>
+
+- **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
+
+<div class="infoBlock">
+
+You can change the setting to enable or disable device mode to send events at any point. However, note that you will need to refresh your web page for the changes to reflect.
+</div>
+
+- **Conversion Linker**: Enabled by default, it sets the first-party cookies on your site’s domain.
+- **Allow ad personalization signals**: Enabled by default, it lets the global site tag to collect remarketing data.
+- **DoubleClick Id**: Enable this setting if you want to use the Google’s cookie matching functionality. Also, provide the below:
+    - **Google Network Id**: Enter the Google Network ID (NID) for the bidder account.
+
+Finally, click on **Next** to enable DCM Floodlight as a destination in Rudderstack.
+
+## FAQ
+
+### Where can I find the activity tag string (cat) and group tag string (type)?
+
+In your Campaign Manager dashboard, go to **Floodlight** > **Activities**. Here you can see all the activity names along with their **Activity tag string** (`cat`) and Group tag string (`type`), as shown:
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-cat-vs-type.png" alt="DCM Floodlight cat and type strings"/>
+
+### Where can I find the Advertiser ID?
+
+To get the Advertiser ID, go to your [Campaign Manager 360](https://campaignmanager.google.com/) account and navigate to the **Campaigns** or **Activities** tab in your dashboard to obtain the `Advertiser ID`:
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-advertiser-id.png" alt="DCM Floodlight advertiser ID"/>
+
+### Where can I find the custom Floodlight variables?
+
+To create custom Floodlight variables, refer to this [Campaign Manager guide](https://support.google.com/campaignmanager/answer/2823222?hl=en).
+
+You can find the custom Floodlight variables for your activities by going to **Floodlight** > **Activities**. Then, click on any activity to view the custom variables associated with it, as shown:
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-custom-variables.png" alt="DCM Floodlight custom variables"/>
+
+### How can I get the reports of the events in DCM Floodlight?
+
+In your Campaign Manager dashboard, you get two reporting options under **Report Builder** - **Instant Reporting** and **Offline Reporting**, as shown:
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-report-builder.png" alt="DCM Floodlight report builder"/>
+
+To generate an offline report of the events, follow these steps:
+
+1. Go to **New** > **Floodlight**.
+2. Select the **Floodlight Configuration** and other fields like **Activities**, **Dimensions**, and **Metrics** as per your requirement.
+
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-report-settings.png" alt="DCM Floodlight report settings"/>
+
+### What are unattributed cookie conversions?
+
+A conversion is said to be unattributed if the user has a DoubleClick cookie but it is converted without any exposure. This means that the user did not click or view any ad from the advertiser within Floodlight, or the interaction happened outside the lookback window.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can, [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
