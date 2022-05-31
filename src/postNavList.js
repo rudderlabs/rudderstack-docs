@@ -1220,6 +1220,24 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "setting-up-dcm-floodlight-in-rudderstack",
+    title: "Setting up DCM Floodlight",
+    link: "/destinations/advertising/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/",
+    content: [],
+  },
+  {
+    key: "dcm-floodlight-device-mode",
+    title: "Device Mode",
+    link: "/destinations/advertising/dcm-floodlight/dcm-floodlight-device-mode",
+    content: [],
+  },
+  {
+    key: "dcm-floodlight-cloud-mode",
+    title: "Cloud Mode",
+    link: "/destinations/advertising/dcm-floodlight/dcm-floodlight-cloud-mode",
+    content: [],
+  },
+  {
     key: "linkedin-insight-tag",
     title: "LinkedIn Insight Tag",
     link: "/destinations/advertising/linkedin-insight-tag/",
