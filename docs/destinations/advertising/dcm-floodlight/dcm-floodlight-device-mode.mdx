@@ -6,25 +6,16 @@ description: Detailed technical documentation on sending events to DCM Floodligh
 
 # Device Mode
 
-RudderStack lets you send your event data to DCM Floodlight destination via the device mode using the native web SDK. RudderStack uses global site tagging in device mode.
+RudderStack lets you send your event data to DCM Floodlight destination via the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode"><code class="inline-code">device mode</code></Link> using the native web SDK. RudderStack uses global site tagging in device mode.
 
 <div class="successBlock">
 
-Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/dcm_floodlight/">GitHub repository</a>.
+Find the open-source transformer code for this destination in the [GitHub repository](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/dcm_floodlight/)</a>.
 </div>
-
-
-
-The mappings for the above parameters are listed in the following table:
-
-| Parameters    | Description | Mapping value  |
-| :-------------| :-----------------|:-----------------|
-| `google_hm`   | Contains data that the bidder wants to store in a Google-hosted match table | `anonymousId` (Converts it to Base64-encoded ASCII string)  |
-
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track"><code class="inline-code">track</code></Link> call lets you capture user events along with the properties associated with them.
 
 A sample `track` call is as shown below:
 
@@ -36,7 +27,7 @@ rudderanalytics.track('tshirt', {
 });
 ```
 
-The following table details the mapping of `integrations` object (as seen in the above code snippet) for DCM Floodlight:
+The following table details the mapping of `integrations` object for DCM Floodlight:
 
 | **RudderStack property** | **DCM Floodlight property** | **Description** |
 | :--- | :--- | :---|
@@ -74,9 +65,9 @@ The following table gives some more context on the above DCM Floodlight properti
 
 ## Page
 
-The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-If the `category` and `name` fields are passed in the `page` call, it is passed as - Viewed CATEGORY NAME PAGE NAME Page
+When you pass the `category` and `name` fields in the `page` call, they are transformed in the `Viewed CATEGORY NAME PAGE NAME` format.
 
 A sample `page` call is as shown below:
 
