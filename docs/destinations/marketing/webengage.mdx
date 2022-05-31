@@ -148,7 +148,7 @@ WebEngage lets you send custom attributes as key-value pairs in the `eventData` 
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-RudderStack internally transforms the `page` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the `Viewed ${name} ${category} page` format.
+RudderStack internally transforms the `page` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the `Viewed ${category} ${name} page` format.
 
 For example, consider the following `page` call:
 
@@ -162,7 +162,7 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 });
 ```
 
-RudderStack transforms the above event into a `track` call named `Viewed Cart Viewed page` and sends it to WebEngage as a custom event.
+RudderStack transforms the above event into a `track` call named `Viewed Cart Cart Viewed page` and sends it to WebEngage as a custom event.
 
 <div class="infoBlock">
 
@@ -173,20 +173,20 @@ RudderStack sends the <code class="inline-code">page</code> event properties to 
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/screen"><code class="inline-code">screen</code></Link> method lets you record whenever your user views their mobile screen with any additional relevant information about the screen. It is the mobile equivalent of a <Link to="#page"><code class="inline-code">page</code></Link> call.
 
-RudderStack internally transforms the `screen` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the `Viewed ${name} ${category} screen` format.
+RudderStack internally transforms the `screen` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the `Viewed ${category} ${name} screen` format.
 
 For example, consider the following `screen` call:
 
 ```kotlin
 rudderClient.screen(
-    "home",
     "Games",
+    "home",
     RudderProperty().putValue("foo", "bar"),
     null
 )
 ```
 
-RudderStack transforms the above event into a `track` call named `Viewed home Games screen` and sends it to WebEngage as a custom event.
+RudderStack transforms the above event into a `track` call named `Viewed Games home screen` and sends it to WebEngage as a custom event.
 
 <div class="infoBlock">
 
