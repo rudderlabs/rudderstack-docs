@@ -70,11 +70,11 @@ RudderStack maps the following `identify` traits to the corresponding WebEngage 
 
 | RudderStack trait | WebEngage attribute | Presence | Notes |
 | :-------| :--------| :------| :------|
-| `userId` | `userIdOnly` | Required if `anonymousId` is not present. | `userId` cannot exceed 100 characters. |
+| `userId` | `userId` | Required if `anonymousId` is not present. | `userId` cannot exceed 100 characters. |
 | `anonymousId` | `anonymousId` | Required if `userId` is not present. | `anonymousId` cannot exceed 100 characters. |
 | `firstName` | `firstName` | Optional | The user's first name. |
 | `lastName` | `lastName` | Optional | The user's last name. |
-| `dateOfBirth`/`dateofbirth`/`birthday`/`dob`/`DOB` | `birthDate` | Optional | User's birth date in the ISO format: `yyyy-MM ddTHH:mm:ss±hhmm`. |
+| `dateOfBirth`/`dateofbirth`/`birthday`/`dob`/`DOB` | `birthDate` | Optional | The user's birth date in the ISO format: `yyyy-MM ddTHH:mm:ss±hhmm`. |
 | `gender` | `gender` | Optional | The user's gender. |
 | `email` | `email` | Optional | The user's email. |
 | `phone` | `phone` | Optional | The user's phone. |
@@ -97,8 +97,8 @@ Note the following when sending `identify` traits to WebEngage:
 
 - Either `userId` or `anonymousId` must be present in the `identify` call. 
 - If both `userId` and `anonymousId` are present in the `identify` call, RudderStack ignores `anonymousId`.
-- WebEngage prioritizes `hashedEmail` over `email`. Hence, you once you set `hashedEmail`, it can then be updated only through a new `hashedEmail`.
-- WebEngage prioritizes `hashedPhone` over `phone`. Hence, you once you set `hashedPhone`, it can then be updated only through a new `hashedPhone`.
+- WebEngage prioritizes `hashedEmail` over `email`. Hence, once you set `hashedEmail`, it can then be updated only through a new `hashedEmail`.
+- WebEngage prioritizes `hashedPhone` over `phone`. Hence, once you set `hashedPhone`, it can then be updated only through a new `hashedPhone`.
 
 ## Track
 
@@ -110,18 +110,16 @@ A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track("Order Completed", {
-  userId: "1hKOmRA4GRlm",
   timestamp: "2022-05-05T14:58:10.000Z",
   currency: "USD",
   checkout_id: "X23441",
+  order_id: "ORD00123"
 });
 ```
 
 <div class="warningBlock">
-<ul>
-  <li>Either <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> must be present in the <code class="inline-code">track</code> call.</li> 
-  <li>If both <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code>are present, RudderStack will ignore <code class="inline-code">anonymousId</code>.</li>
-  </ul>
+
+Make sure you call <code class="inline-code">identify</code> before <code class="inline-code">track</code> for RudderStack to include the <code class="inline-code">userId</code> in the <code class="inline-code">track</code> events. Otherwise, RudderStack will send the <code class="inline-code">track</code> calls to WebEngage with an <code class="inline-code">anonymousId</code>.
 </div>
 
 ### Property mapping
@@ -130,7 +128,7 @@ RudderStack maps the following event properties to the corresponding WebEngage a
 
 | RudderStack trait | WebEngage attribute | Presence | Notes |
 | :-------| :--------| :------| :------|
-| `userId` | `userIdOnly` | Required if `anonymousId` is not present. | `userId` cannot exceed 100 characters. |
+| `userId` | `userId` | Required if `anonymousId` is not present. | `userId` cannot exceed 100 characters. |
 | `anonymousId` | `anonymousId` | Required if `userId` is not present. | `anonymousId` cannot exceed 100 characters. |
 | `eventName` | `event` | Required | The event name. |
 | `timestamp`/`originalTimestamp` | `eventTime` | Optional | The date and time of the event in ISO format: `yyyy-MM-ddTHH:mm:ss±hhmm`. |
@@ -150,7 +148,7 @@ WebEngage lets you send custom attributes as key-value pairs in the `attributes`
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-RudderStack internally transforms the `page` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the format `Viewed ${name} ${category} ${page}`.
+RudderStack internally transforms the `page` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the `Viewed ${name} ${category} page` format.
 
 For example, consider the following `page` call:
 
@@ -175,7 +173,7 @@ RudderStack sends the <code class="inline-code">page</code> event properties to 
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/screen"><code class="inline-code">screen</code></Link> method lets you record whenever your user views their mobile screen with any additional relevant information about the screen. It is the mobile equivalent of a <Link to="#page"><code class="inline-code">page</code></Link> call.
 
-RudderStack internally transforms the `screen` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the format `Viewed ${name} ${category} ${screen}`.
+RudderStack internally transforms the `screen` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the `Viewed ${name} ${category} screen` format.
 
 For example, consider the following `screen` call:
 
@@ -199,7 +197,7 @@ RudderStack sends the <code class="inline-code">screen</code> event properties t
 
 ### Where can I find the WebEngage License Code and API key?
 
-To get your WebEngage public API key, follow these steps:
+To get your WebEngage License Code and API key, follow these steps:
 
 1. Log into your [WebEngage dashboard](https://dashboard.webengage.com/).
 2. Go to **Data Platform** > **Integrations** > **REST API**.
