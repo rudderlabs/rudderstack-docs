@@ -130,7 +130,7 @@ Any other events flowing through RudderStack except the <code class="inline-code
 
 <div class="infoBlock">
 
-The user-related information is mapped into the <code class="inline-code">traits</code> object in RudderStack payload. The products information present in the above resources in line_items is mapped to the <code class="inline-code">products</code> array in RudderStack payload. Refer to the <Link to="/rudderstack-api/api-specification/rudderstack-spec/">Event Specification</Link> and <Link to="/rudderstack-api/api-specification/rudderstack-spec/common-fields/">Common Fields</Link> to understand more about RudderStack payload nomenclature.
+The user-related information is mapped into the <code class="inline-code">traits</code> object in RudderStack payload. The products information present in the above resources in <code class="inline-code">line_items</code> is mapped to the <code class="inline-code">products</code> array in RudderStack payload. Refer to the <Link to="/rudderstack-api/api-specification/rudderstack-spec/">Event Specification</Link> and <Link to="/rudderstack-api/api-specification/rudderstack-spec/common-fields/">Common Fields</Link> to understand more about RudderStack payload nomenclature.
 </div>
 
 
@@ -324,21 +324,23 @@ The below is an example of client-side event transformed by RudderStack:
 
 ### Provide login functionality
 
-1. Shopify provides the store owners with a capability to make user login compulsory or allow guest checkout in their stores. However, if you prompt  users to login on your platform, RudderStack fetches the user details to provide you with more meaningful events corresponding to the user's journey on your platform.
+Shopify provides store owners with the capability to either make user login compulsory or allow guest checkout in their stores. However, it is a best practice to prompt  users to login on your platform. That ways, RudderStack fetches the user details to provide you with meaningful event data corresponding to the user's journey on your platform.
 
-### Supported client side calls
+### Support for client side calls
 
-It is recommended **NOT** to make any drastic changes to your store structure to preserve data integrity. If done, RudderStack may lead to incorrect or missing calls owing to the disparity between URL and triggered event. 
+It is recommended **NOT** to make any drastic changes to your store structure in order to preserve data integrity. If done, RudderStack may lead to incorrect or missing calls owing to the disparity between URL and triggered event. 
 
 Refer to the following additional details for e-commerce events:
 
-- **Cart Viewed**: The URL is recommended to be of the `[store-url]/cart` format.
-- **Checkout Started**: This event is triggered when the Checkout button is clicked on the `[store-url]/cart` page. It can also be triggered from the product description pages by clicking on **Buy it Now**. Another way to trigger it is using the pop-ups when adding a product.
-- **Product Added**: This event is triggered when **Add to Cart** button is clicked on a product description page with `[store-url]/products/product_name` URL format.
+- **Cart Viewed**: It is recommended to keep the URL in `[store-url]/cart` format.
+- **Checkout Started**: This event can be triggered in any of the following ways:
+  - When **Checkout** button is clicked on the `[store-url]/cart` page.
+  - When **Buy it Now** button is clicked on the product description page. 
+  - Using the pop-ups when adding a product.
+- **Product Added**: This event is triggered when the **Add to Cart** button is clicked on a product description page with `[store-url]/products/product_name` format.
 - **Product Clicked**: This event is triggered when you click on a product entry on any page in the store.
 - **Product List Viewed**: This event is triggered when the store’s catalog or collections page is viewed and all the products are listed in `[store-url]/collections/all` format.
-- **Product Viewed**: This event is triggered when a product’s description page with the `[store-url]/products/product_name` URL format is opened. It is an indicative of the product listing page being viewed.
-
+- **Product Viewed**: This event is triggered when a product’s description page in `[store-url]/products/product_name` format is opened. It is an indicative of the product listing page being viewed.
 
 ## FAQ
 
