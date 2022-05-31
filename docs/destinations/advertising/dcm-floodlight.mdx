@@ -18,7 +18,7 @@ Before configuring DCM Floodlight as a destination in RudderStack, verify if the
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
-| **Device mode** | - | - | - |
+| **Device mode** | - | **Supported** | - |
 | **Cloud mode** | -  | **Supported** | **Supported** |
 
 <div class="infoBlock">
@@ -31,12 +31,11 @@ Once you have confirmed that the source platform supports sending events to DCM 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **DCM Floodlight**.
 2. Assign a name to the destination and click on **Next**.
 
-### Connection settings
+## Connection settings
 
 To successfully configure DCM Floodlight as a destination, you will need to configure the following settings:
 
 <img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings.png" alt="DCM Floodlight connection settings"/>
-<img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings2.png" alt="DCM Floodlight connection settings"/>
 
 - **DoubleClick Advertiser ID:** Enter your Advertiser ID visible in the **Campaigns** or **Activities** tab in your dashboard.
 
@@ -52,6 +51,10 @@ Refer to the <a href="faq">FAQ</a> section to know more on how to obtain the Adv
 
 For more information on finding <code class="inline-code">cat</code> and <code class="inline-code">type</code> in your Campaign Manager dashboard, refer to the <a href="#faq">FAQ</a> section below.
 </div>
+
+### Conversion events
+
+<img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings2.png" alt="DCM Floodlight connection settings"/>
 
 - **RudderStack Event Name:** Enter your RudderStack event name which will be mapped to the Floodlight tag.
 - **Floodlight Activity Tag:** Enter the `cat` of your tag string. If left blank, RudderStack will pick the value from the **Activity Tag** field mentioned above.
@@ -72,6 +75,40 @@ For more information on finding <code class="inline-code">cat</code> and <code c
 
 For more information on finding the custom Floodlight variables, refer to the <a href="#faq">FAQ</a> section below.
 </div>
+
+### Client-side events filtering
+
+<img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings3.png" alt="DCM Floodlight connection settings"/>
+
+<div class="infoBlock">
+
+This option is applicable only if you're sending events to HubSpot via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+</div>
+
+### Web SDK settings
+
+<img src="../../assets/event-stream-destinations/dcm-floodlight-connection-settings4.png" alt="DCM Floodlight connection settings"/>
+
+- **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
+
+<div class="infoBlock">
+
+You can change the setting to enable or disable device mode to send events at any point. However, note that you will need to refresh your web page for the changes to reflect.
+</div>
+
+- **Conversion Linker**: 
+- **Allow ad personalization signals**:
+- **DoubleClick Id**:
+- **Google Network Id**:
+
+
+The mappings for the above parameters are listed in the following table:
+
+| Parameters    | Mapping value  |
+| :-------------| :-----------------|
+| `google_nid`  |  from `externalId` `googleNetworkId` |
+| `google_hm`   |  `anonymousId` (Converts it to Base64-encoded ASCII string)  |
+
 
 ## Track
 
