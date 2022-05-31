@@ -46,8 +46,8 @@ The mappings for the optional parameters (common for `gtag` and `firebase` both)
 | Optional Parameters    | Mapping value  | Description |
 | :-------------| :-----------------|:-----------------|
 | `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
-| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Unix timestamp (in microseconds) to associate the time with an event.|
-| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. Set to `true` if they should not be used for personalized ads.|
+| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads.|
 
 <div class="infoBlock">
   
@@ -210,7 +210,11 @@ The following table lists the mappings between the RudderStack and Google Analyt
     <td><code class="inline-code">refund</code></td>
   </tr>
     <tr>
-    <td>Product Shared<br />Cart Shared</td>
+    <td>Product Shared</td>
+    <td><code class="inline-code">share</code></td>
+  </tr>
+  <tr>
+    <td>Cart Shared</td>
     <td><code class="inline-code">share</code></td>
   </tr>
    <tr>
