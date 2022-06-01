@@ -53,7 +53,10 @@ For more information on getting the API Key and Sign Up Source Id, refer to the 
 
 You can choose to subscribe or unsubscribe a user from an Attentive Tag list using the <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call.
 
+<div class="infoBlock">
+  
 The default behavior of `identify` call is to subscribe a user. To unsubscribe, you can pass `identifyOperation` as `unsubscribe` in the <code class="inline-code">integrations</code> object.
+</div>
 
 ### Subscribe user
 
@@ -64,12 +67,12 @@ RudderStack maps the following properties to the Attentive Tag properties while 
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided|
 | `traits.phone` | `phone` | Required if `email` is not provided |
 | `externalId` | `externalIdentifiers` | Optional |
-| `integrations.attentive_tag.signUpsourceId` | `signUpSourceId` | Required |
+| `integrations.attentive_tag.signUpsourceId` | `signUpSourceId` | Required if not passed in the RudderStack dashboard |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
 <div class="infoBlock">
 
-The <code class="inline-code">externalIdentifiers</code> property can be an array of objects - any identifier other than the specified ones, like <code class="inline-code">clientUserId</code>, <code class="inline-code">shopifyId</code>, <code class="inline-code">klaviyoId</code> and <code class="inline-code">customIdentifiers</code>.
+The <code class="inline-code">externalIdentifiers</code> property can be an array of objects containing identifiers like <code class="inline-code">clientUserId</code>, <code class="inline-code">shopifyId</code>, <code class="inline-code">klaviyoId</code> and <code class="inline-code">customIdentifiers</code>.
 </div>
 
 <div class="infoBlock">
@@ -81,7 +84,7 @@ A sample `identify` call to subscribe a user is shown below:
 
 ```javascript
 rudderanalytics.identify("jbu3471", {
-  "email": "new-val",
+  "email": "alex@example.com",
   "phone": "+1-202-555-0146",
   "customIdentifiers": [{
     "name": "string",
@@ -203,16 +206,16 @@ The `Product List Viewed` event properties are mapped to the following Attentive
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
-| `properties.products.product_id` | `productId` | Required |
-| `properties.products.price` | `value` | Required |
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
 | `traits.phone` | `phone` | Required if `email` is not provided |
 | `externalId` | `externalIdentifiers` | Optional |
-| `properties.products.variant` | `productVariantId` | Required |
-| `properties.products.price` | `currency` | Optional |
-| `properties.products.name` | `name` | Optional |
-| `properties.products.url` | `productUrl` | Optional |
-| `properties.products.image_url` | `productImage` | Optional |
+| `properties.products.$.product_id` | `productId` | Required |
+| `properties.products.$.price` | `value` | Required |
+| `properties.products.$.variant` | `productVariantId` | Required |
+| `properties.products.$.price` | `currency` | Optional |
+| `properties.products.$.name` | `name` | Optional |
+| `properties.products.$.url` | `productUrl` | Optional |
+| `properties.products.$.image_url` | `productImage` | Optional |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
 
@@ -222,16 +225,9 @@ The `Product Viewed` and `Product Added` event properties are mapped to the foll
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
-| `properties.products.product_id` | `productId` | Required |
-| `properties.products.price` | `value` | Required |
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
 | `traits.phone` | `phone` | Required if `email` is not provided |
 | `externalId` | `externalIdentifiers` | Optional |
-| `properties.products.variant` | `productVariantId` | Required |
-| `properties.products.currency` | `currency` | Optional |
-| `properties.products.name` | `name` | Optional |
-| `properties.products.url` | `productUrl` | Optional |
-| `properties.products.image_url` | `productImage` | Optional |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
 #### Order Completed
@@ -240,16 +236,16 @@ The `Order Completed` event properties are mapped to the following Attentive Tag
 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
-| `properties.products.product_id` | `productId` | Required |
-| `properties.products.price` | `value` | Required |
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
 | `traits.phone` | `phone` | Required if `email` is not provided |
-| `properties.products.variant` | `productVariantId` |  Required |
 | `externalId` | `externalIdentifiers` | Optional |
-| `properties.products.price` | `currency` | Optional |
-| `properties.products.name` | `name` | Optional |
-| `properties.products.url` | `productUrl` | Optional |
-| `properties.products.image_url` | `productImage` | Optional |
+| `properties.products.$.variant` | `productVariantId` |  Required |
+| `properties.products.$.product_id` | `productId` | Required |
+| `properties.products.$.price` | `value` | Required |
+| `properties.products.$.price` | `currency` | Optional |
+| `properties.products.$.name` | `name` | Optional |
+| `properties.products.$.url` | `productUrl` | Optional |
+| `properties.products.$.image_url` | `productImage` | Optional |
 
 A sample `track` call for the above e-commerce event parameters is shown below:
 
