@@ -30,3 +30,219 @@ status = 301
 from = "/docs/get-started/rudderstack-connection-modes"
 to = "/docs/connections/rudderstack-connection-modes/"
 status = 301 
+[[redirects]]
+from = "/docs/get-started/installing-and-setting-up-rudderstack/kubernetes"
+to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/"
+status = 301 
+[[redirects]]
+from = "/docs/integration/amazon-personalize/"
+to = "/integration/amazon-personalize/"
+status = 301 
+[[redirects]]
+from = "/docs/destinations/hotjar/"
+to = "/docs/destinations/analytics/hotjar/"
+status = 301 
+[[redirects]]
+from = "/docs/cloud-extract-sources/auth0/"
+to = "/docs/stream-sources/auth0/"
+status = 301 
+[[redirects]]
+from = "/docs/rudderstack-api/rudderstack-spec/common-fields/"
+to = "/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/google-bigquery/"
+to = "/docs/reverse-etl/google-bigquery/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/postgresql/"
+to = "/docs/reverse-etl/postgresql/"
+status = 301 
+[[redirects]]
+from = "/docs/rudderstack-sdk-integration-guides/rudderstack-go-sdk/"
+to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/snowflake/"
+to = "/docs/reverse-etl/snowflake/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/features/"
+to = "/docs/reverse-etl/features/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/features/airflow-provider/"
+to = "/docs/reverse-etl/features/airflow-provider/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/features/models/"
+to = "/docs/reverse-etl/features/models/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/features/visual-data-mapper/"
+to = "/docs/reverse-etl/features/visual-data-mapper/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/common-settings/"
+to = "/docs/reverse-etl/common-settings/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/common-settings/sync-schedule-settings/"
+to = "/docs/reverse-etl/common-settings/sync-schedule-settings/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/common-settings/sync-modes/"
+to = "/docs/reverse-etl/common-settings/sync-modes/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/common-settings/importing-data-using-models/"
+to = "/docs/reverse-etl/common-settings/importing-data-using-models/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/common-settings/importing-data-using-tables/"
+to = "/docs/reverse-etl/common-settings/importing-data-using-tables/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/faq/"
+to = "/docs/reverse-etl/faq/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/amazon-redshift/"
+to = "/docs/reverse-etl/amazon-redshift/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/"
+to = "/docs/reverse-etl/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/amazon-s3/"
+to = "/docs/reverse-etl/amazon-s3/"
+status = 301 
+[[redirects]]
+from = "/docs/warehouse-actions/clickhouse/"
+to = "/docs/reverse-etl/clickhouse/"
+status = 301 
+[[redirects]]
+from = "/docs/installing-and-setting-up-rudderstack/native-installation/"
+to = "/docs/get-started/installing-and-setting-up-rudderstack/"
+status = 301 
+[[redirects]]
+from = "/docs/destinations/marketing/qualtrics-website-feedback"
+to = "/integration/qualtrics-website-feedback/"
+status = 301 
+[[redirects]]
+from = "/docs/destinations/aws-personalize"
+to = "/integration/amazon-personalize/"
+status = 301 
+[[redirects]]
+from = "/docs/integration/qualtrics-website-feedback/"
+to = "/integration/qualtrics-website-feedback/"
+status = 301 
+[[redirects]]
+from = "/docs/contributors-guide/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/"
+to = "/docs/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/"
+status = 301 
+[[redirects]]
+from = "/docs/destinations/salesforce/"
+to = "/integration/salesforce/"
+status = 301 
+[[redirects]]
+from = "/docs/contributors-guide/developing-integrations-for-rudderstack/"
+to = "/docs/user-guides/how-to-guides/developing-integrations-for-rudderstack/"
+status = 301 
+[[redirects]]
+from = "/docs/contributors-guide/implement-native-js-sdk-integration"
+to = "/docs/user-guides/how-to-guides/implement-native-js-sdk-integration/"
+status = 301 
+[[redirects]]
+from = "/docs/destinations/branchio/"
+to = "/docs/destinations/attribution/branchio/"
+status = 301 
+[[redirects]]
+from = "/docs/user-guides/data-warehouse-integrations/warehouse-schemas/"
+to = "/docs/data-warehouse-integrations/warehouse-schemas/"
+status = 301 
+[[redirects]]
+from = "/docs/how-to-guides/adding-source-and-destination-rudderstack/"
+to = "/docs/connections/adding-source-and-destination-rudderstack/"
+status = 301 
+[[redirects]]
+from = "/docs/rudderstack-sdk-integration-guides"
+to = "/docs/stream-sources/rudderstack-sdk-integration-guides/"
+status = 301 
+[[redirects]]
+from = "/docs/adding-a-new-user-transformation-in-rudderstack/"
+to = "/"
+status = 301 
+[[redirects]]
+from = "/docs/administrators-guide/alerting"
+to = "/docs/user-guides/administrators-guide/alerting/"
+status = 301 
+[[redirects]]
+from = "/docs/integration/minio/"
+to = "/integration/minio/"
+status = 301 
+[[redirects]]
+from = "/docs/destinations/data-ingestion/connections/adding-source-and-destination-rudderstack/"
+to = "/docs/connections/adding-source-and-destination-rudderstack/"
+status = 301 
+[[redirects]]
+from = "/docs/user-guides/administrators-guides/"
+to = "/docs/user-guides/administrators-guide/"
+status = 301 
+[[redirects]]
+from = "/docs/rudderstack-enterprise/user-suppression/"
+to = "/docs/rudderstack-api/user-suppression/"
+status = 301 
+[[redirects]]
+from = "/docs/rudderstack-api-spec/rudderstack-ecommerce-events-specification/"
+to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/"
+status = 301 
+[[redirects]]
+from = "/docs/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk"
+to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/"
+status = 301 
+[[redirects]]
+from = "/docs/data-warehouse-integration-guides/snowflake/"
+to = "/docs/data-warehouse-integrations/snowflake/"
+status = 301 
+[[redirects]]
+from = "/docs/getting-started/installing-and-setting-up-rudderstack/developer-machine-setup"
+to = "/docs/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/"
+status = 301 
+[[redirects]]
+from = "/docs/user-guides/how-to-guides/dynamic-destination-config/"
+to = "/docs/destinations/webhooks/"
+status = 301 
+[[redirects]]
+from = "/docs/get-started/live-events"
+to = "/docs/rudderstack-cloud/live-events"
+status = 301 
+[[redirects]]
+from = "/docs/glossary"
+to = "/docs/get-started/glossary"
+status = 301 
+[[redirects]]
+from = "/docs/connections/models/"
+to = "/docs/reverse-etl/features/models/"
+status = 301 
+[[redirects]]
+from = "/docs/sources/appsflyer"
+to = "/docs/stream-sources/appsflyer/"
+status = 301 
+[[redirects]]
+from = "/docs/destinations/marketing/qualtrics-website-feedback/"
+to = "/integration/qualtrics-website-feedback/"
+status = 301 
+[[redirects]]
+from = "/docs/stream-sources/rudderstack-event-streams/customerio/"
+to = "/docs/destinations/marketing/customer.io/"
+status = 301 
+[[redirects]]
+from = "/docs/destinations/minio/"
+to = "/integration/minio/"
+status = 301 
+[[redirects]]
+from = "/docs/rudderstack-warehouse-actions/amazon-redshift/"
+to = "/docs/data-warehouse-integrations/amazon-redshift/"
+status = 301 
