@@ -109,12 +109,14 @@ rudderanalytics.identify("jbu3471", {
   }
 });
 ```
-
-all these are case sensitive and for correct mapping we expect the external ids in the above format
+<div class="infoBlock">
+  
+The  <code class="inline-code">externalId</code>'s are case sensitive and are expected to be in the above format for correct mapping.
+</div>
 
 ### Unsubscribe user
 
-You can pass `identifyOperation` as `unsubscribe` in the <code class="inline-code">integrations</code> object to unsubscribe a user, as shown:
+You can pass `identifyOperation` as `unsubscribe` in the `integrations` object to unsubscribe a user, as shown:
 
 ```javascript
 rudderanalytics.identify("jbu3471", {
