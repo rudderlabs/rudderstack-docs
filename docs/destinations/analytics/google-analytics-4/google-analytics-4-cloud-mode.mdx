@@ -51,7 +51,7 @@ The mappings for the optional parameters (common for `gtag` and `firebase` both)
 
 <div class="infoBlock">
   
-Google Analytics 4 Measurement Protocol supports events only with timestamps 72 hours into the past and 15 minutes into the future. Any event with timestamps out of this range will throw an error.
+Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
 </div>
 
 A sample `track` call using `gtag` is shown below:
