@@ -1,12 +1,12 @@
 ---
 # slug: "/docs/destinations/marketing/attentive-tag"
 title: "Attentive Tag"
-description: Step-by-step guide to send your event data from RudderStack to Attentive Tag.
+description: Step-by-step guide on sending your event data from RudderStack to Attentive Tag.
 ---
 
 # Attentive Tag
 
-[Attentive](https://www.attentivemobile.com/) is a mobile messaging platform that helps consumers and companies to communicate with each other by sending personalized text messages. It also provides [Attentive Tag](https://docs.attentivemobile.com/pages/developer-guides/tag-management/the-attentive-tag/) which can be added to your website to utilize Attentive features like capturing behaviorial data, triggering events, tracking revenue, etc.
+[Attentive](https://www.attentivemobile.com/) is a mobile messaging platform that helps consumers and companies to communicate with each other through personalized text messages. It also provides [Attentive Tag](https://docs.attentivemobile.com/pages/developer-guides/tag-management/the-attentive-tag/) which can be added to your website to utilize Attentive features like capturing behaviorial data, triggering events, tracking revenue, etc.
 
 RudderStack supports Attentive Tag as a destination to which you can seamlessly send your event data.
 
@@ -42,11 +42,11 @@ To successfully configure Attentive Tag as a destination, you will need to confi
 
 
 - **API Key**: Enter the API key present in the app you have created in the Attentive dashboard.
-- **Sign Up Source Id**: Enter the Sign-up method's ID present in the **Sign-up Units** option in the Attentive dashboard.
+- **Sign Up Source Id**: Enter the signup method's ID present in the **Sign-up Units** option in the Attentive dashboard.
 
 <div class="infoBlock">
 
-For more information on getting the API Key and Sign Up Source Id, refer to the <a href="#faq">FAQ</a> section below.
+For more information on getting the API Key and Sign Up Source ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
   
 ## Identify
@@ -58,11 +58,11 @@ You can choose to subscribe or unsubscribe a user from an Attentive Tag list usi
 The default behavior of <code class="inline-code">identify</code> call is to subscribe a user. To unsubscribe, you can pass <code class="inline-code">identifyOperation</code> as <code class="inline-code">unsubscribe</code> in the <code class="inline-code">integrations</code> object.
 </div>
 
-### Subscribe user
+### Subscribing users
 
-RudderStack maps the following properties to the Attentive Tag properties while subscribing a user:
+RudderStack maps the following traits to the Attentive Tag properties while subscribing a user:
 
-| RudderStack Property | Attentive Tag Property | Presence |
+| RudderStack Trait | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided|
 | `traits.phone`/`context.traits.phone`/`properties.phone` | `phone` | Required if `email` is not provided |
@@ -114,9 +114,9 @@ rudderanalytics.identify("jbu3471", {
 The  <code class="inline-code">externalId</code>'s are case sensitive and are expected to be in the above format for correct mapping.
 </div>
 
-### Unsubscribe user
+### Unsubscribing users
 
-You can pass `identifyOperation` as `unsubscribe` in the `integrations` object to unsubscribe a user, as shown:
+You can set `identifyOperation` to `unsubscribe` in the `integrations` object to unsubscribe a user, as shown below:
 
 ```javascript
 rudderanalytics.identify("jbu3471", {
@@ -138,9 +138,9 @@ rudderanalytics.identify("jbu3471", {
 });
 ```
 
-RudderStack maps the following properties to the Attentive Tag properties while unsubscribing a user:
+RudderStack maps the following traits to the Attentive Tag properties while unsubscribing a user:
 
-| RudderStack Property | Attentive Tag Property | Presence |
+| RudderStack Trait | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
 | `traits.phone`/`context.traits.phone`/`properties.phone` | `phone` | Required if `email` is not provided|
@@ -156,11 +156,11 @@ A user can unsubscribe from any specific channel by passing it inside the `subsc
   }
 ```
 
-Also, they can provide the `language` in the `notification` inside the `integrations` object to change the notification language. 
+You can also provide the `language` in the `notification` inside the `integrations` object to change the notification language. 
 
 <div class="infoBlock">
 
-Currently, only <code class="inline-code">en-US</code> and <code class="inline-code">fr-CA</code> are supported as notification languages and are case sensitive. 
+Currently, RudderStack supports only <code class="inline-code">en-US</code> and <code class="inline-code">fr-CA</code> as the notification languages and these are case sensitive. 
 </div>
 
 <div class="infoBlock">
@@ -195,7 +195,7 @@ RudderStack maps the following `track` call properties to the Attentive Tag prop
 
 <div class="warningBlock">
 
-Make sure to pass the timestamp in ISO 8601 format.
+Make sure you pass the timestamp in the ISO 8601 format.
 </div>
 
 <div class="warningBlock">
