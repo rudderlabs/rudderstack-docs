@@ -1165,6 +1165,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "attribution",
+    title: "Attribution",
+    link: "/destinations/attribution/attribution/",
+    content: [],
+  },
+  {
     key: "webhooks",
     title: "Webhooks",
     link: "/destinations/webhooks/",
