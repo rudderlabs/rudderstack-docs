@@ -1438,6 +1438,12 @@ export const jsonData = [
             link: "/destinations/marketing/userlist/",
             content: [],
           },
+           {
+            key: "webengage",
+            title: "WebEngage",
+            link: "/destinations/marketing/webengage/",
+            content: [],
+          },
         ],
       },
       {
