@@ -10,15 +10,12 @@ description: Step-by-step guide on ingesting data from HubSpot into RudderStack.
 
 This document guides you in setting up HubSpot as a source in RudderStack. Once configured, RudderStack automatically ingests your specified HubSpot data and routes it to your data warehouse.
 
-<div class="dangerBlock">
-
-This version of the HubSpot source will be deprecated soon. Refer to the <a href="https://www.rudderstack.com/docs/cloud-extract-sources/hubspot-v2/">HubSpot v2</a> guide for the latest documentation.
-</div>
-
 <div class="warningBlock">
 
 All the Cloud Extract sources support sending data only to a <a href="https://www.rudderstack.com/docs/data-warehouse-integrations/">data warehouse destination</a>.
 </div>
+
+<img src="https://img.shields.io/badge/Stability-Beta-blueviolet" alt="Github Badge" class="githubBadge" />
 
 ## Getting started
 
@@ -30,17 +27,20 @@ To set up HubSpot as a source in RudderStack, follow these steps:
 
 ### Connection settings
 
-* **HubSpot software**: Select the appropriate HubSpot software from the dropdown, as shown:
+* **HubSpot Credentials**: Click **Connect with HubSpot** and grant RudderStack the necessary permissions to access your HubSpot data.
 
-<img src="../../assets/cloud-extract-sources/hubspot-blendo-connection-settings-1.png" alt="HubSpot connection settings" />
-
-* **Choose an account**: Click **Connect with HubSpot** and grant RudderStack the necessary permissions to access your HubSpot data.
-
-<img src="../../assets/cloud-extract-sources/hubspot-blendo-connection-settings-2.png" alt="HubSpot connection settings" />
+<img src="../assets/cloud-extract-sources/hubspot-connection-settings-1.png" alt="HubSpot connection settings" />
 
 <div class="infoBlock">
 
 Your HubSpot account and the related details will then automatically appear under <strong>Choose an account</strong>.
+</div>
+
+* **Start Date**: Select the date from when RudderStack should ingest your HubSpot data.
+
+<div class="warningBlock">
+
+RudderStack will not replicate any data before this date.
 </div>
 
 ### Destination settings
@@ -62,13 +62,13 @@ For more information on the schedule types, refer to the <a href="https://www.ru
 
 Choose the HubSpot data that you wish to ingest via RudderStack. You can either select all the data or choose specific HubSpot data attributes as per your requirement.
 
-<img src="../../assets/cloud-extract-sources/hubspot-blendo-connection-settings-3.png" alt="Selecting the data to import" />
+<img src="../assets/cloud-extract-sources/hubspot-connection-settings-2.png" alt="Selecting the data to import" />
 
 HubSpot is now configured as a source. RudderStack will start ingesting data from HubSpot as per your specified schedule and frequency.
 
 You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
 
-<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
+<img src="../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
 
 <div class="successBlock">
 

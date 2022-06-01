@@ -462,16 +462,9 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "hubspot",
+    key: "hubspot-v2",
     title: "HubSpot",
-    link: "/cloud-extract-sources/hubspot/",
-    content: [],
-  },
-  {
-    key: "hubspot-data-model-and-schema-information",
-    title: "HubSpot Data Model and Schema Information",
-    link:
-      "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/",
+    link: "/cloud-extract-sources/hubspot-v2/",
     content: [],
   },
   {
