@@ -1105,10 +1105,22 @@ export const postNavList = [
     link: "/destinations/marketing/appcues/",
     content: [],
   },
+   {
+    key: "attentive-tag",
+    title: "Attentive Tag",
+    link: "/destinations/marketing/attentive-tag/",
+    content: [],
+  },
   {
     key: "userlist",
     title: "Userlist",
     link: "/destinations/marketing/userlist/",
+    content: [],
+  },
+   {
+    key: "webengage",
+    title: "WebEngage",
+    link: "/destinations/marketing/webengage/",
     content: [],
   },
   {
