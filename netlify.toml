@@ -1,11 +1,3 @@
-[[plugins]]
-package = "netlify-plugin-cypress"
-  # let's run tests against the built site
-  [plugins.inputs]
-    record = true
-  [plugins.inputs.postBuild]
-    enable = true
-    
 [build.environment]
 GATSBY_BRANCH = "main"
 # cache Cypress binary in local "node_modules" folder
@@ -13,16 +5,6 @@ GATSBY_BRANCH = "main"
 CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
 # set TERM variable for terminal output
 TERM = "xterm"
-
-[[redirects]]
-from = "/docs/*"
-to = "https://rudderstack-docs-to-proxy.netlify.app/:splat"
-status = 200 
-
-[[redirects]]
-from = "/docs-assets/*"
-to = "https://rudderstack-docs-to-proxy.netlify.app/:splat"
-status = 200 
 
 [[redirects]]
 from = "/docs/get-started/installing-and-setting-up-rudderstack/docker"
