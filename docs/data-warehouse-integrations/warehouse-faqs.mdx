@@ -134,16 +134,14 @@ RudderStack sets the **Namespace** field depending on the following conditions:
   - For ClickHouse destination, the **Database** field is set as the namespace.
   - For all the other destinations, the **Namespace** field is populated as it is.
 
-- If `RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX` parameter is present, the Namespace is populated as `(DEST_TYPE)_(CUSTOM_DATA_SET_PREFIX)_(SOURCE_NAME)`. For example:
+- If `RSERVER_WAREHOUSE_CUSTOM_DATA_SET_PREFIX` parameter is present, the Namespace is populated as `(CUSTOM_DATA_SET_PREFIX)_(SOURCE_NAME)`. For example:
 
 ```
 Parameter value:
-RSERVER_WAREHOUSE_RS_CUSTOM_DATA_SET_PREFIX="<random_value>"
-RSERVER_WAREHOUSE_SNOWFLAKE_CUSTOM_DATA_SET_PREFIX="<random_value>"
+RSERVER_WAREHOUSE_SNOWFLAKE_CUSTOM_DATA_SET_PREFIX="<some_value>"
 
 Namespace:
-RS_<random_value>_<source_name>
-SNOWFLAKE_<random_value>_<source_name>
+SNOWFLAKE_<some_value>_<source_name>
 ```
 
 - If none of the above fields are specified in the warehouse configuration settings, the source name is populated as the namespace for the first sync and picked up from the cache for all the subsequent syncs. In case the source name is changed, the namespace still remains the same as it is picked from cache. 
