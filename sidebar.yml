@@ -158,7 +158,7 @@
   - key: google-analytics
     label: Google Analytics
     link: "/cloud-extract-sources/google-analytics"
-    
+
   - key: google-search-console
     label: Google Search Console
     link: "/cloud-extract-sources/google-search-console"
@@ -321,6 +321,9 @@
   - key: attribution
     label: Attribution
     link: "/destinations/attribution"
+    - key: attribution
+      label: Attribution
+      link: "/destinations/attribution/attribution"
   - key: webhooks
     label: Webhooks
     link: "/destinations/webhooks"

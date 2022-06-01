@@ -1,0 +1,168 @@
+---
+# slug: "/docs/destinations/attribution/attribution"
+title: "Attribution"
+description: Step-by-step guide on sending your event data from RudderStack to Attribution.
+---
+
+# Attribution
+
+[Attribution](https://attributionapp.com) is a marketing analytics platform that provides single and multi-touch attribution. It offers the ability to view your true marketing ROI, understand your marketing funnel and view your full customer paths. Additionally, Attribution offers a [Data Export](https://www.attributionapp.com/dataexporttool/) feature to let you export all the raw data related to campaigns and visitors for your Data Science team to analyze and unlock trends.
+
+RudderStack supports Attribution as a destination to which you can seamlessly send your customer data.
+
+<div class="successBlock">
+
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/attribution">GitHub repository</a>.
+</div>
+
+## Getting started
+
+Before configuring Attribution as a destination in RudderStack, verify if the source platform is supported by Attribution by referring to the table below:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device Mode**     | -         | -         | -         |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
+<div class="infoBlock">
+
+To learn more about the difference between the cloud mode and device mode in RudderStack, refer to the <Link to="/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+
+</div>
+
+Once you have confirmed that the source platform supports sending events to Attribution, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Attribution**.
+2. Assign a name to the destination and click on **Continue**.
+3. Select the data source and click on **Next**.
+4. Enter your Attribution Project key to configure the destination.
+
+<div class="infoBlock">
+
+For more information on getting your Attribution project key, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+Your Attribution destination is now configured and enabled in RudderStack.
+
+## Identify
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify">`identify`</Link> call lets you associate a visiting user to their actions. It also lets you record the traits about them like their name, email address, etc.
+
+<div class="infoBlock">
+
+As a best practice, make sure that the `identify` call is made at the start of every session or page load for logged-in users. This will ensure all the latest user traits are captured.
+
+</div>
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify("userid", {
+  name: "Alex Keener",
+  email: "alex@example.com",
+  phone: "+1-202-555-0146",
+  birthday: "01/24/1982",
+  gender: "Male",
+  avatar: "https://www.gravatar.com/avatar/alex",
+  title: "Mr",
+})
+```
+
+
+
+
+## Track
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+
+A sample `track` call is as shown:
+
+```javascript
+rudderanalytics.track("Order Completed", {
+  revenue: 77.6,
+})
+```
+
+<div class="infoBlock">
+
+For more information on the `track` call, refer to the <Link to="/rudderstack-api/http-api">RudderStack HTTP API Specification</Link>.
+
+</div>
+
+## Page
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+A sample `page` call is as shown:
+
+```javascript
+rudderanalytics.page("Cart", "Cart Viewed", {
+  path: "/cart",
+  referrer: "test.com",
+  search: "term",
+  title: "test_item",
+  url: "http://test.in",
+})
+```
+
+<div class="infoBlock">
+
+For more information on the `page` call, refer to the <Link to="/rudderstack-api/http-api">RudderStack HTTP API Specification</Link>.
+
+</div>
+
+## Group
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/group">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group like the name of the company, number of employees, etc.
+
+A sample `group` call is as shown:
+
+```javascript
+rudderanalytics.group("sample-group-id", {
+  name: "Example Company",
+  employees: 1000,
+  industry: "Software",
+});
+```
+
+<div class="infoBlock">
+
+For more information on the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
+
+</div>
+
+## Alias
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias">`alias`</Link> call lets you merge different identities of a known user.
+
+A sample `alias` call is as shown:
+
+```javascript
+rudderanalytics.alias("to", "from", options, callback)
+```
+
+The above `alias` call has the following parameters:
+
+| **Parameter**  | **Presence** | **Description**                                                                                                                                                                                          |
+| :------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`to`**       | Required     | Denotes the new identifier                                                                                                                                                                               |
+| **`from`**     | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
+| **`options`**  | Optional     | This dictionary provides additional context to the event payload.                                                                                                                                        |
+| **`callback`** | Optional     | This function gets executed after successful execution of the **`alias()`** method.                                                                                                                      |
+
+<div class="infoBlock">
+
+For more information on the `alias` call, refer to the [**RudderStack HTTP API Specification**](https://rudderstack.com/docs/rudderstack-api/http-api/) guide.
+
+</div>
+
+## FAQ
+
+### How do I get the Attribution Project Key?
+
+To get the Attribution Project Key, follow these steps:
+1. Go to your [Attribution dashboard](https://dashboard.attributionapp.com).
+2. Navigate to **Settings** and copy the **Attribution Project ID** associated with your project.
+
+## Contact us
+
+**This integration has been built and maintained by Attribution**. For any queries, [contact the Attribution team](mailto:support@attributionapp.com). You can also [contact us](mailto:contact@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community).
