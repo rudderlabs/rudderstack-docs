@@ -55,25 +55,32 @@ https://hosted.rudderlabs.com/v1/webhook?writeKey=1bCenS7ynqHh8ETX8s5Crjh22J
 Follow our guide on <a href="https://rudderstack.com/docs/rudderstack-cloud/destinations/#adding-a-destination">Adding a Destination</a> for more details.
 </div>
 
-- Next, add the webhook URL to your desired source platform. **Remember that you can configure webhook sources only for the source platforms that support webhooks**. The following image shows the webhook URL added in Mailchimp:
+- Next, add the webhook URL to your desired source platform - in this case, **Mailchimp**. 
 
-<img src="../assets/event-stream-sources/webhook-3.png" alt="Adding the webhook to an event source" />
+<div class="warningBlock">
+  
+You can configure the webhooks as event sources only for the platforms that support them.
+</div> 
+
+The following image shows the webhook URL added in Mailchimp:
+
+<img src="../assets/event-stream-sources/webhook-5.png" alt="Adding the webhook to an event source" />
 
 <div class="warningBlock">
 
-Remember to add and test your webhook URL.
+Add and test your webhook URL. You can use the <Link to="/rudderstack-cloud/live-events/#source-live-events">Live Events</Link> functionality to view the events tracked in real time.
 </div>
 
 - When your users perform any action that is configured in the source, the source platform will automatically send the generated events to the webhook URL.
 
-In this example, Mailchimp sends the updates under **What type of updates should we send?** \(seen in the image above\) as user events to the webhook URL with the content type `application/x-www-form-urlencoded`.
+In this example, Mailchimp sends the updates under **Trigger on Events** \(seen in the image above\) as user events to the webhook URL with the content type `application/x-www-form-urlencoded`.
 
 <div class="infoBlock">
 
 The content type can vary in case of other webhook sources.
 </div>
 
-- RudderStack then takes the data, creates the payload and sends it to Google Analytics.
+- RudderStack then takes the data, creates the payload and sends it to the destinations connected to the webhook source - Google Analytics in this case.
 
 <div class="warningBlock">
 
