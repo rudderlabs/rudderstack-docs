@@ -153,7 +153,7 @@ RudderStack internally transforms the `page` call into a `track` call before sen
 For example, consider the following `page` call:
 
 ```javascript
-rudderanalytics.page("Cart", "Cart Viewed", {
+rudderanalytics.page("Home", "Clothes", {
   path: "/best-seller/1",
   referrer: "https://www.google.com/search?q=estore+bestseller",
   search: "estore bestseller",
@@ -162,7 +162,7 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 });
 ```
 
-RudderStack transforms the above event into a `track` call named `Viewed Cart Cart Viewed page` and sends it to WebEngage as a custom event.
+RudderStack transforms the above event into a `track` call named `Viewed Home Clothes page` and sends it to WebEngage as a custom event.
 
 <div class="infoBlock">
 
