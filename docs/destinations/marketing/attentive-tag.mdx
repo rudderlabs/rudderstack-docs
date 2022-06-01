@@ -65,7 +65,7 @@ RudderStack maps the following properties to the Attentive Tag properties while 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided|
-| `traits.phone` | `phone` | Required if `email` is not provided |
+| `traits.phone`/`context.traits.phone`/`properties.phone` | `phone` | Required if `email` is not provided |
 | `externalId` | `externalIdentifiers` | Optional |
 | `integrations.attentive_tag.signUpsourceId` | `signUpSourceId` | Required if not passed in the RudderStack dashboard |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
@@ -110,12 +110,14 @@ rudderanalytics.identify("jbu3471", {
 });
 ```
 
+all these are case sensitive and for correct mapping we expect the external ids in the above format
+
 ### Unsubscribe user
 
 You can pass `identifyOperation` as `unsubscribe` in the <code class="inline-code">integrations</code> object to unsubscribe a user, as shown:
 
 ```javascript
-rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+rudderanalytics.identify("jbu3471", {
   "email": "alex@example.com",
   "phone": "+1-202-555-0146",
 }, {
@@ -139,15 +141,24 @@ RudderStack maps the following properties to the Attentive Tag properties while 
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
-| `traits.phone` | `phone` | Required if `email` is not provided|
+| `traits.phone`/`context.traits.phone`/`properties.phone` | `phone` | Required if `email` is not provided|
 | `integrations.attentive_tag.subscriptions` | `subscriptions` | Optional |
 | `integrations.attentive_tag.notification` | `notification` | Optional |
 
-A user can unsubscribe from any specific channel by passing it inside the `subscriptions` in the `integrations` object. Also, they can provide the `language` in the `notification` inside the `integrations` object to change the notification language. 
+A user can unsubscribe from any specific channel by passing it inside the `subscriptions` in the `integrations` object. The supported values for `subscriptions` are:
+
+```javascript
+"subscriptions": [{
+    "type": "MARKETING" || "TRANSACTIONAL" || "CHECKOUT_ABANDONED"
+    "channel": "TEXT" || "EMAIL"
+  }
+```
+
+Also, they can provide the `language` in the `notification` inside the `integrations` object to change the notification language. 
 
 <div class="infoBlock">
 
-Currently, only <code class="inline-code">en-US</code> and <code class="inline-code">fr-CA</code> are supported as notification languages and are case sensitive.
+Currently, only <code class="inline-code">en-US</code> and <code class="inline-code">fr-CA</code> are supported as notification languages and are case sensitive. 
 </div>
 
 <div class="infoBlock">
@@ -173,19 +184,19 @@ RudderStack maps the following `track` call properties to the Attentive Tag prop
 |:--------------------------------|:--------------------------|:--------------------------|
 | `event` | `type` | Required |
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
-| `traits.phone` | `phone` | Required if `email` is not provided |
+| `traits.phone`/`context.traits.phone`/`properties.phone` | `phone` | Required if `email` is not provided |
 | `externalId` | `externalIdentifiers` | Optional |
 | `properties` | `properties` | Optional |
-| `properties.timestamp` | `occuredAt` | Optional |
+| `originalTimestamp`/`timestamp` | `occuredAt` | Optional |
 | `properties.eventId` | `externalEventId` | Optional |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
-<div class="infoBlock">
+<div class="warningBlock">
 
 Make sure to pass the timestamp in ISO 8601 format.
 </div>
 
-<div class="infoBlock">
+<div class="warningBlock">
 
 The event type is case sensitive. For example, `Order shipped` and `Order Shipped` would be considered as different event types. Also, the keys of properties object should not contain characters, such as [`'`, `"`, `{`, `}`, `[`, `]`, \ , `,`]
 </div>
@@ -207,7 +218,7 @@ The `Product List Viewed` event properties are mapped to the following Attentive
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
-| `traits.phone` | `phone` | Required if `email` is not provided |
+| `traits.phone`/`context.traits.phone`/`properties.phone` | `phone` | Required if `email` is not provided |
 | `externalId` | `externalIdentifiers` | Optional |
 | `properties.products.$.product_id` | `productId` | Required |
 | `properties.products.$.price` | `value` | Required |
@@ -226,7 +237,7 @@ The `Product Viewed` and `Product Added` event properties are mapped to the foll
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
-| `traits.phone` | `phone` | Required if `email` is not provided |
+| `traits.phone`/`context.traits.phone`/`properties.phone` | `phone` | Required if `email` is not provided |
 | `externalId` | `externalIdentifiers` | Optional |
 | `context.traits.customIdentifiers`/`traits.customIdentifiers` | `customIdentifiers` | Optional |
 
@@ -237,7 +248,7 @@ The `Order Completed` event properties are mapped to the following Attentive Tag
 | RudderStack Property | Attentive Tag Property | Presence |
 |:--------------------------------|:--------------------------|:--------------------------|
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required if `phone` is not provided |
-| `traits.phone` | `phone` | Required if `email` is not provided |
+| `traits.phone`/`context.traits.phone`/`properties.phone` | `phone` | Required if `email` is not provided |
 | `externalId` | `externalIdentifiers` | Optional |
 | `properties.products.$.variant` | `productVariantId` |  Required |
 | `properties.products.$.product_id` | `productId` | Required |
