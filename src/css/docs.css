@@ -1159,6 +1159,35 @@ a.pageRef:hover .rightRefArrow {
   min-width: 152px;
   text-align: center;
 }
+.banner-404 {
+  background: url(../images/banner-404.jpg);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+}
+.frtxt-contnt p{
+  margin: 2rem 0px;
+  color: rgba(78,78,78,1);
+}
+.btn-primary-lg{
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  background-color: rgba(134,248,224,var(--tw-bg-opacity));
+  border-color: rgba(134,248,224,var(--tw-border-opacity));
+  border-radius: 0.5rem;
+  border-width: 1px;
+  display: block;
+  --tw-text-opacity: 1;
+  color: rgba(0,0,0,var(--tw-text-opacity));
+  font-size: 14px;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+.font-custom {
+  font-family: 'Basis Grotesque',sans-serif!important;
+}
 @media screen and (max-width: 1200px) {
   .feedback-container {
     display: none;

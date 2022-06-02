@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Link from "gatsby-link"
-import { rudderslabTrackOnClick } from "../utils/common"
 
 const Banner404 = props => {
   return (
@@ -15,15 +14,9 @@ const Banner404 = props => {
             <p>Page not found!</p>
           </div>
 
-          <div className="block sm:flex justify-center items-center -mt-4">
-            <Link to="/docs/" 
-                onClick={e =>
-                          rudderslabTrackOnClick(
-                            "button",
-                            "Page not found",
-                            e
-                          )
-            }>Go to home</Link>
+          <div className="block sm:flex justify-center items-center">
+            <Link className='btn-primary-lg border-none bg-darkScheme-btnPrimaryBg text-darkScheme-textPrimary sm:mr-4 md:mb-0 mb-4 px-16' to="/docs/" 
+                >Go to home</Link>
           </div>
         </div>
       </section>
