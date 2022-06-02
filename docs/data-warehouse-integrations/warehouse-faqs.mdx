@@ -24,15 +24,6 @@ uploadFreqInS=1800 #This field lets you control syncPeriod if above field set to
 
 You can view the warehouse upload status in the **Live Events** section of the destination in the RudderStack dashboard.
 
-### Can I change the namespace (schema name) of my data warehouse in RudderStack?
-
-Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse.
-
-<div class="infoBlock">
-
-Refer to the warehouse-specific destination settings to configure a namespace in the RudderStack dashboard.
-</div>
-
 ### How can I achieve identity resolution with multiple sources connected to one warehouse destination?
 
 The default namespace will be the source name with some modifications. This will cause issues while creating mappings for identity resolution across different sources, leading to multiple `RUDDER_ID` created for the same user.
@@ -150,6 +141,31 @@ Namespace:
 
 To update the namespace as the new source name, you need to configure a new source.
 </div>
+
+
+### Can I change the namespace (schema name) of my data warehouse in RudderStack?
+
+Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse.
+
+<div class="infoBlock">
+
+Refer to the warehouse-specific destination settings to configure a namespace in the RudderStack dashboard.
+</div>
+
+### How is the schema name configured in RudderStack?
+
+By default, the schema name is set as:
+- The Namespace field value in the RudderStack dashboard. OR
+- The Source name value in the RudderStack dashboard, if the above is not provided.
+
+However, the following scenarios with examples provide more details on how the schema name is configured bsed on the presence/absence of Namespace field:
+
+**Non-empty Namespace field**
+- If the Namespace field is set to "ABC" and the Source name is "X", the schema name would be "ABC". However, if you change the Namespace field to "DEF" later on, the schema name would become "DEF".
+
+**Empty Namespace field**
+- If the Source name is "X", the schema name would be "X". However, if you change the Source name to "Y" later on, the schema would still be "X" as it is picked from the existing syncs.
+- If the Source name is "X", the schema name would be "X". However, if you add the Namespace field as "Y" later on, the schema name would become "Y".
 
 
 ### How does Rudderstack configure table names?
