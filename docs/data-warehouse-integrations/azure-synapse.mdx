@@ -20,9 +20,15 @@ Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/w
 Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_synapse">GitHub repository</a>.
 </div>
 
-## Setting user permissions in Azure Synapse
+## Prerequisites
 
-To set up an Azure Synapse Analytics user, you require an Azure subscription for the SQL Data Warehouse. Additionally, you need to [create a schema (dedicated SQL pool)](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal) in Azure Synapse. 
+Before setting up Azure Synapse as a destination in RudderStack, make sure you have an Azure subscription for the SQL Data Warehouse. Additionally, you need a dedicated SQL pool created in Azure Synapse. If you do not have one, you can create it by following the [Azure Synapse documentation](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal).
+
+To create a user-defined schema on your dedicated SQL pool, run the following SQL command on your pool:
+
+```sql
+CREATE SCHEMA <schema-name>;
+```
 
 ## Configuring Azure Synapse destination in RudderStack
 
@@ -44,7 +50,7 @@ Enter the following credentials in the **Connection Credentials** page:
   - **User**: The name of the user with the required read/write access to the above database.
   - **Password**: The password for the above user.
   - **Port**: The port number associated with the Azure Synapse database instance.
-  - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
+  - **Namespace**: Enter the name of the schema created in the <Link to="#prerequisites">Prerequisites</Link> section, where RudderStack will create all the tables.
   - **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your Azure Synapse instance. RudderStack provides three options - **disable**, **true**, and **false**.
   - **Sync Frequency**: Specify how often RudderStack should sync the data to your PostgreSQL database.
   - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
