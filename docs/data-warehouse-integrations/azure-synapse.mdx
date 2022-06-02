@@ -22,12 +22,14 @@ Find the open-source transformer code for this destination in the <a href="https
 
 ## Prerequisites
 
-Before setting up Azure Synapse as a destination in RudderStack, make sure you have an Azure subscription for the SQL Data Warehouse. Additionally, you need a dedicated SQL pool created in Azure Synapse. If you do not have one, you can create it by following the [Azure Synapse documentation](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal).
+Before setting up Azure Synapse as a destination in RudderStack, make sure you have an [Azure subscription](https://azure.microsoft.com/en-in/get-started/synapse-analytics/) for the SQL Data Warehouse. 
+
+Additionally, you need a dedicated SQL pool created in Azure Synapse. If you do not have one, you can create it by following the [Azure Synapse documentation](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal).
 
 To create a user-defined schema on your dedicated SQL pool, run the following SQL command on your pool:
 
 ```sql
-CREATE SCHEMA <schema-name>;
+CREATE SCHEMA <schema_name>;
 ```
 
 ## Configuring Azure Synapse destination in RudderStack
