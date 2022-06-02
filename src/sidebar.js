@@ -802,18 +802,18 @@ export const jsonData = [
                   "/destinations/advertising/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/",
                 content: [],
               },
-               {
-                key: "dcm-floodlight-device-mode",
-                title: "Device Mode",
-                link:
-                  "/destinations/advertising/dcm-floodlight/dcm-floodlight-device-mode/",
-                content: [],
-              },
               {
                 key: "dcm-floodlight-cloud-mode",
                 title: "Cloud Mode",
                 link:
                   "/destinations/advertising/dcm-floodlight/dcm-floodlight-cloud-mode/",
+                content: [],
+              },
+               {
+                key: "dcm-floodlight-device-mode",
+                title: "Device Mode",
+                link:
+                  "/destinations/advertising/dcm-floodlight/dcm-floodlight-device-mode/",
                 content: [],
               },
             ],
