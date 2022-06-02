@@ -7,11 +7,11 @@ CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
 TERM = "xterm"
 
 [[redirects]]
-from = "/docs/get-started/installing-and-setting-up-rudderstack/docker"
+from = "https://www.rudderstack.com/docs/get-started/installing-and-setting-up-rudderstack/docker"
 to = "https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
 status = 301 
 [[redirects]]
-from = "/docs/rudderstack-api/user-suppression/"
+from = "https://rudderstack.com/docs/rudderstack-api/user-suppression/"
 to = "https://rudderstack.com/docs/rudderstack-api/data-regulation-api/"
 status = 301 
 
