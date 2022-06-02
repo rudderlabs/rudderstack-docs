@@ -1,6 +1,6 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
 
 module.exports = {
   pathPrefix: `/docs`,
@@ -13,18 +13,18 @@ module.exports = {
     title: `Rudderstack`,
     description: `RudderStack is the easiest way to stream data from your website or warehouse. With RudderStack, you can easily collect customer data from every platform.`,
     author: `@Rudderstack`,
-    siteUrl: "https://www.rudderstack.com",
-    siteTitle: "RudderStack",
-    defaultTitle: "RudderStack Docs",
-    siteTitleShort: "RudderStack",
-    siteAuthor: "RudderStack",
+    siteUrl: 'https://www.rudderstack.com',
+    siteTitle: 'RudderStack',
+    defaultTitle: 'RudderStack Docs',
+    siteTitleShort: 'RudderStack',
+    siteAuthor: 'RudderStack',
   },
   plugins: [
     `gatsby-plugin-postcss`,
     {
-      resolve: "gatsby-plugin-preconnect",
+      resolve: 'gatsby-plugin-preconnect',
       options: {
-        domains: ["https://rudderstack.com", "https://localhost:8000"],
+        domains: ['https://rudderstack.com', 'https://localhost:8000'],
       },
     },
     {
@@ -52,27 +52,25 @@ module.exports = {
         projectId: process.env.GATSBY_SANITY_PROJECTID,
         dataset: process.env.GATSBY_SANITY_DATASET,
         token: process.env.GATSBY_SANITY_TOKEN,
-        graphqlTag: "default",
+        graphqlTag: 'default',
       },
     },
     {
       resolve: `gatsby-plugin-rudderstack`,
       options: {
         prodKey: process.env.RS_PRODUCTION_WRITE_KEY,
-        //devKey: process.env.RS_PRODUCTION_WRITE_KEY,
-        //host: `https://rudderstack-dataplane.rudderstack.com`,
-        loadType: "defer",
+        loadType: 'defer',
         trackPage: false,
         loadAsync: true,
         delayLoad: true,
-        // trackPageDelay: 1000,
         delayLoadTime: 1000,
         useNewSDK: true,
+        sdkURL: 'https://cdn.rudderlabs.com/v1.1/beta/rudder-analytics.min.js',
         dataPlaneUrl: `https://rudderstack-dataplane.rudderstack.com`,
       },
     },
     `gatsby-transformer-csv`,
-    "gatsby-plugin-use-query-params",
+    'gatsby-plugin-use-query-params',
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
@@ -81,7 +79,7 @@ module.exports = {
       },
     },
     {
-      resolve: "@rocketseat/gatsby-theme-docs",
+      resolve: '@rocketseat/gatsby-theme-docs',
       options: {
         withMdx: false,
       },
@@ -113,8 +111,8 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         icon: `src/images/favicon.png`,
-        icons: []
-      }
+        icons: [],
+      },
     },
     ...(process.env.RS_GATSBY_ALGOLIA_APIKEY
       ? [
@@ -124,21 +122,21 @@ module.exports = {
               appId: process.env.GATSBY_ALGOLIA_APP_ID,
               apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
               indexName:
-                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs",
-              queries: require("./src/utils/docs-algolia"),
+                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + '_gatsby_docs',
+              queries: require('./src/utils/docs-algolia'),
               enablePartialUpdates: true,
               matchFields: [
-                "pageSlug",
-                "pageTitle",
-                "sectionTitle",
-                "sectionId",
-                "sectionContent",
-                "searchAlias",
-                "idx",
+                'pageSlug',
+                'pageTitle',
+                'sectionTitle',
+                'sectionId',
+                'sectionContent',
+                'searchAlias',
+                'idx',
               ],
             },
           },
         ]
       : []),
   ],
-};
+}
