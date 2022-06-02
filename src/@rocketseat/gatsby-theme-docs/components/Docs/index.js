@@ -86,10 +86,14 @@ export default function Docs({ mdx, pageContext }) {
     let descriptionSpan = `<p class="pgdescription">${
       description === null ? "" : description
     }</p>`;
-    let h1Tags = document.querySelectorAll("h1");
-    h1Tags.innerText = title;
+
+    let h1Tags = document.querySelectorAll("h1"); /* Remove this and the line below after removing h1 from mdx. Uncomment the bottom commented block */
     forEach(h1Tags, (o) => o.insertAdjacentHTML("afterend", descriptionSpan));
-    /* h1Tags.innerHTML = descriptionSpan; */
+
+    /* let h1Tags = document.createElement('h1');
+    h1Tags.innerText = title;
+    document.getElementsByClassName('childrenWrapper')[0].prepend(h1Tags);
+    forEach(h1Tags, (o) => o.insertAdjacentHTML("afterend", descriptionSpan)); */
 
     let ancTags = document.querySelectorAll(
       ".childrenWrapper a:not(.anchor, .next, .previous)"
