@@ -1,54 +1,68 @@
 ---
 # slug: "/docs/advertising/pinterest-ads"
 title: "Pinterest Tag"
-description: Step-by-step guide to send your event data from RudderStack to Pinterest.
+description: Step-by-step guide on sending your event data from RudderStack to Pinterest.
 ---
 
 # Pinterest Tag
 
-The [Pinterest Ads Tag](https://ads.pinterest.com/) is a piece of code that, when added to your website, allows Pinterest to track your visitors as well as their actions. It gives you a detailed conversion report related to any and all customer activities like signups or buying a product.
+[Pinterest Ads Tag](https://ads.pinterest.com/) is a piece of code that, when added to your website, allows Pinterest to track your visitors as well as their actions. It gives you a detailed conversion report related to any and all customer activities like signups or buying a product.
 
-RudderStack supports Pinterest as a destination to which you can send your customer events in real-time, through Pinterest's `pintrk` conversion tag.
+RudderStack supports Pinterest as a destination to which you can seamlessly send your event data, through Pinterest's `pintrk` conversion tag.
 
 <div class="infoBlock">
 
-Find the implementation of this integration on our <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/PinterestTag">GitHub</a>.
+Find the open source transformer code for this destination in the [GitHub repository](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/PinterestTag).
 
 </div>
 
-## Getting Started
+## Getting started
 
-To enable sending data to **Pinterest**, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to Pinterest.
+Before configuring Pinterest Tag as a destination in RudderStack, verify if the source platform is supported by New Relic by referring to the table below:
 
-Before configuring your source and destination on the RudderStack, please verify if the source platform is supported by Pinterest Tag, by referring to the table below:
-
-| **Connection Mode** | Web           | Mobile | Server |
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :------------------ | :------------ | :----- | :----- |
 | **Device Mode**     | **Supported** | **-**  | **-**  |
 | **Cloud Mode**      | **-**         | **-**  | **-**  |
 
 <div class="infoBlock">
 
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</Link> guide.
 </div>
 
-Once you have confirmed that the platform supports sending events to Pinterest, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Pinterest Tag, follow these steps:
 
-- Choose a source to which you would like to add Pinterest as a destination.
-- After configuring your source, select the destination as **Pinterest Tag**. Give this destination a name and then click on **Next**.
-- On the **Connection Settings** page, enter the relevant settings in the fields - including the **Pinterest Tag ID** - and then click on **Next**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Pinterest Tag**.
+2. Assign a name to the destination and click on **Continue**.
 
-<img src="../../assets/pinterest_tag.png" />
+### Connection settings
 
-## Enable Enhanced Match
+To successfully configure Pinterest Tag as a destination, you will need to configure the following settings:
 
-Rudderstack supports Pinterest Enhanced Match in the following two scenarios:
+<img src="../../assets/event-stream-destinations/pinterest_tag.png" />
 
-- Where a user is identified every time they visit your site.
-- When a user visits your site anonymously but is identified at some later point by making an `identify()` call.
+- **Pinterest Tag ID**: Enter your Pinterest Tag ID.
 
-To support Pinterest Enhanced Match, go to the Pinterest Tag destination settings in the RudderStack dashboard and turn on the **Enable Enhanced Match on Page Load** option.
+<div class="infoBlock">
+
+For more information on finding the Pinterest Tag ID, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+- **Custom Properties**: You can use this field to add any custom properties which should be sent to Pinterest.
+
+<div class="infoBlock">
+
+For more information on using the custom properties, refer to the <a href="#custom-properties">Custom properties</a> section below.
+</div>
+
+- **Map Your Events To Pinterest Events**: You can use this field to map your event to a specific Pinterest event.
+- **Use device-mode to send events**: As this is a device mode-only destination, this setting is enabled by default and cannot be disabled.
+
+### Enable Enhanced Match 
+
+Enable this setting to support Pinterest Enhanced Match. Rudderstack supports it when the following two scenarios are met:
+  - Where a user is identified every time they visit your site.
+  - When a user visits your site anonymously but is identified at some later stage by making an `identify()` call.
 
 ### Enable Enhanced Match on Page Load
 
@@ -60,18 +74,20 @@ If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Ma
 
 ## Identify
 
-When you make an `identify()` call with the user’s email address and traits, RudderStack triggers a Pinterest `set()` method. This saves the identification parameters to be sent with the next events, so it’s important to set the values as early as possible.
+The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you create new or update existing customers and record the traits about them like their name, email address, etc. 
 
-If you make an `identify` call without the email, then the identification parameter will not be set.
+When you make an `identify` call with a user’s email address and traits, RudderStack triggers the Pinterest `set()` method. This saves the identification parameters to be sent with the next events, so it is recommended to set the values as early as possible. If you make an `identify` call without `email`, the identification parameter will not be set.
+
+A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("sample_user_id", {
-  name: "Test name",
-  email: "test@email.com",
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
 })
 ```
 
-This call will set the identification parameters to `test@email.com` and any successive calls made will be an Enhanced Match.
+In the above example, the identification parameter will be set to `alex@example.com` and the successive calls will be an Enhanced Match.
 
 <div class="infoBlock">
 
@@ -81,40 +97,68 @@ Nothing appears in the network tab in your browser or in the tag helper extensio
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, along with any properties that are associated with that action. Each action is considered to be an event.
+The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call allows you to capture user actions along with the properties associated with these actions.
 
-A sample `track` call looks like the following:
+A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track("Track me")
+rudderanalytics.track("Order Completed")
 ```
 
-RudderStack's SDK will send the `track` event name and any properties as custom properties to Pinterest.
+RudderStack SDK sends the `track` event name and any properties as custom properties to Pinterest.
+
+## Page
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+Pinterest's `pintrk` conversion tag sends any one of the following events when you make a `page` call:
+
+- **`ViewCategory`**: RudderStack sends this event if both the `name` and `category` fields are present. The below sample event contains both and is mapped to Pinterest's `ViewCategory` event:
+
+```javascript
+rudderanalytics.page("Best Seller", "Games", {
+  path: "/best-seller/games/1",
+  url: "https://www.estore.com/best-seller/games/1",
+  title: "Best selling games offered by EStore",
+  search: "estore bestseller games",
+  referrer: "https://www.google.com/search?q=estore+bestseller",
+  testDimension: "true",
+})
+```
+- **`PageVisit`**: RudderStack sends this event if only `name` field is present. Any additional properties are dropped. The below sample event contains only `name` and is mapped to Pinterest's `PageVisit` event:
+
+```javascript
+rudderanalytics.page("Best Seller", {
+  path: "/best-seller/1",
+})
+```
 
 ## E-Commerce
 
-RudderStack supports E-Commerce conversion tracking for Pinterest. Use the [RudderStack eCommerce Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) for sending the events while instrumenting your site with the RudderStack SDK.
+RudderStack supports E-Commerce conversion tracking for Pinterest. You can use the <Link to="/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">RudderStack e-commerce specification</Link> for sending the events while instrumenting your site with the RudderStack SDK.
 
-Below are some examples of the `track` event names that are passed to the Pinterest event:
+The following table mentions sample `track` events passed to the Pinterest events:
 
-| RudderStack event name | Pinterest event name |
+| RudderStack event | Pinterest event  |
 | :--------------------- | :------------------- |
 | Order Completed        | `Checkout`           |
 | Product Added          | `AddToCart`          |
 | Products Searched      | `Search`             |
-| Product List Filtered    | `Search`             |
+| Product List Filtered    | `Search`           |
 
 You can also track a custom event that you want to include in your conversion reporting. This will get mapped to a custom Pinterest event. An example is as shown:
 
 ```javascript
 rudderanalytics.track("custom")
 ```
+<div class="infoBlock">
+  
+You can map your event to a specific Pinterest event by adding it in the <strong>Map Your Events To Pinterest Events</strong> section while configuring the Pinterest destination in RudderStack.
+</div>
 
-If you wish to map your event to a specific Pinterest event, you can do so by adding it in the **Map Your Events To Pinterest Events** section while configuring your Pinterest destination in RudderStack.
+### Standard Pinterest events
 
-### Map Your Events To Pinterest Events
-
-Pinterest supports following 9 standard events that one can map and track them for reporting.
+Pinterest supports the following nine standard events that can be mapped and tracked for reporting:
 
 - `Checkout`
 - `AddToCart`
@@ -126,13 +170,18 @@ Pinterest supports following 9 standard events that one can map and track them f
 - `ViewCategory`
 - `Custom`
 
-Apart from that if the event sent is not found in our list we pass those events and Pinterest treats them as user-defined events. Note, these events aren’t available for conversion reporting.
+<div class="infoBlock">
 
-## Properties Mapping
+These events aren’t available for conversion reporting.
+</div>
 
-Rudderstack automatically binds the following properties to the Pinterest event properties:
+Pinterest treats any event apart from the above as a user-defined event.
 
-| RudderStack property name | Pinterest property name |
+### Property mapping
+
+Rudderstack maps the following properties to the Pinterest properties:
+
+| RudderStack property | Pinterest property |
 | :------------------------ | :---------------------- |
 | query                     | `search_query`          |
 | value                     | `value`                 |
@@ -145,9 +194,9 @@ Rudderstack automatically binds the following properties to the Pinterest event 
 | lead_type                 | `lead_type`             |
 | coupon                    | `coupon`                |
 
-The following properties are nested within the E-Commerce products array:
+The following properties are nested within the e-commerce `products` array:
 
-| RudderStack Property Name | Pinterest Property Name |
+| RudderStack property  | Pinterest property  |
 | :------------------------ | :---------------------- |
 | product_id                | `product_id`            |
 | sku                       | `product_id`            |
@@ -158,18 +207,11 @@ The following properties are nested within the E-Commerce products array:
 | quantity                  | `product_quantity`      |
 | brand                     | `product_brand`         |
 
-<div class="successBlock">
+### Custom properties
 
-  If you wish to pass any extra properties other than what we support, you can
-  use our **Custom Properties** section while configuring your
-  Pinterest destination in RudderStack.
-</div>
+You can send the custom properties to Pinterest by adding them in the **Custom Properties** section while configuring the Pinterest destination in RudderStack.
 
-### Custom Properties
-
-If you wish to send your defined properties to Pinterest, you can do so by using the **Custom Properties** section. Just add those properties in the given field and you are good to go.
-
-Here is an example of how it all works:
+A sample snippet to send custom properties is shown below:
 
 ```javascript
 rudderanalytics.track("Event", {
@@ -180,49 +222,20 @@ rudderanalytics.track("Event", {
 })
 ```
 
-For streaming the above properties in Pinterest, you will need to add the following two properties:
-
+You need to add the following properties in **Custom Properties** section to send them to Pinterest:
 - `customProperty.customValue`
 - `someRandomMailId`
 
-## Page
+## FAQ
 
-Pinterest's `pintrk` sends any one following of two events every time you make a `page` call.
+### How do I get the Pinterest Tag ID?
 
-When making a `page` call you can provide the name, category, and any other additional properties. RudderStack sends the `ViewCategory` event if both the name and category fields are present. In case only name is present, RudderStack sends a `PageVisit` event and drops any additional properties.
+1. Login to your [Pinterest Ads dashboard](https://ads.pinterest.com/).
+2. Click on the **Ads** dropdown and go to **Conversions**. It will open the Pinterest Tag Manager.
+3. Click on **Get Started** and you will see your Tag ID, as shown:
 
-In case you want to send any additional properties to Pinterest, you need to mention them in the **Custom Properties** section while configuring the Pinterest destination in the RudderStack dashboard.
+<img src="../../assets/event-stream-destinations/tag-id-pinterest.png" />
 
-```javascript
-rudderanalytics.page("I am new page", "new page category", {
-  path: "path",
-  url: "url",
-  title: "title",
-  search: "search",
-  referrer: "referrer",
-  testDimension: "true",
-})
-```
+## Contact us
 
-This above example will map to Pinterest `ViewCategory` event.
-
-```javascript
-rudderanalytics.page("I am new page with no name", {
-  path: "path",
-})
-```
-
-The above example will map the event to Pinterest `PageVisit` event.
-
-## FAQs
-
-### **How do I get the Pinterest Tag ID?**
-
-- Login to your Pinterest Ads dashboard.
-- Click on the **Ads** dropdown and go to **Conversions**. It will open the Pinterest Tag Manager.
-- Now click on Generate Pinterest Tag and you will see your Tag ID.
-- This Tag ID should be 10-15 digit number.
-
-## Contact Us
-
-If you come across any issues while configuring Pinterest with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
