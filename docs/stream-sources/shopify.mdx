@@ -388,7 +388,7 @@ No, RudderStack does not persist the `anonymousId` - it keeps on changing as the
 
 You can differentiate between the data collected in cloud and device mode by looking at the signature in payload:
 
-- In the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">Connection Modes</Link>, RudderStack subscribes to the Shopify webhooks to consume data from Shopify. The data collected from Shopify web has the following signature in the payload:
+- In the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, RudderStack subscribes to the Shopify webhooks to consume data from Shopify. The data collected from Shopify cloud has the following signature in the payload:
 
 ```javascript
 context ": {....
@@ -398,7 +398,7 @@ context ": {....
 }
 }
 ```
-- In device mode, RudderStack loads its JavaScript SDK on every Shopify store page for web tracking. The data collected from the Shopify device mode has the following signature in the payload:
+- In <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link>, RudderStack loads its JavaScript SDK on every Shopify store page for web tracking. The data collected from the Shopify device mode has the following signature in the payload:
 
 ```javascript
 "context": {
