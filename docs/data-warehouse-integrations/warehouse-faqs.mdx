@@ -152,21 +152,20 @@ Yes, you can. Although the default namespace will be the source name with some m
 Refer to the warehouse-specific destination settings to configure a namespace in the RudderStack dashboard.
 </div>
 
-### How is the schema name configured in RudderStack?
+### How is the schema name configured for my data warehouse?
 
 By default, the schema name is set as:
-- The Namespace field value in the RudderStack dashboard. OR
+- The Namespace field value in the RudderStack dashboard. **OR**
 - The Source name value in the RudderStack dashboard, if the above is not provided.
 
-However, the following scenarios with examples provide more details on how the schema name is configured bsed on the presence/absence of Namespace field:
+However, the following scenarios with examples provide more details on how the schema name is configured based on the presence/absence of Namespace field:
 
-**Non-empty Namespace field**
-- If the Namespace field is set to "ABC" and the Source name is "X", the schema name would be "ABC". However, if you change the Namespace field to "DEF" later on, the schema name would become "DEF".
+**When Namespace field is present**
+- If the Namespace field is set as "ABC" and the Source name is "X", the schema name would be "ABC". However, if you change the Namespace field to "DEF" later on, the schema name would become "DEF".
 
-**Empty Namespace field**
+**When Namespace field is absent**
 - If the Source name is "X", the schema name would be "X". However, if you change the Source name to "Y" later on, the schema would still be "X" as it is picked from the existing syncs.
 - If the Source name is "X", the schema name would be "X". However, if you add the Namespace field as "Y" later on, the schema name would become "Y".
-
 
 ### How does Rudderstack configure table names?
 
