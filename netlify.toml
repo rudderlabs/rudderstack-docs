@@ -7,15 +7,19 @@ CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
 TERM = "xterm"
 
 [[redirects]]
-from = "/docs/get-started/installing-and-setting-up-rudderstack/docker"
+from = "/get-started/installing-and-setting-up-rudderstack/docker"
 to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
 status = 301 
 [[redirects]]
 from = "/docs/rudderstack-api/user-suppression/"
 to = "/docs/rudderstack-api/data-regulation-api/"
-status = 301 
+status = 301
 [[redirects]]
-from = "/docs/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/"
+from = "/connections/"
+to = "/docs/rudderstack-cloud/dashboard-overview/#connections"
+status = 301
+[[redirects]]
+from = "/get-started/installing-and-setting-up-rudderstack/developer-machine-setup/"
 to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/"
 status = 301 
 [[redirects]]
@@ -47,7 +51,7 @@ from = "/docs/cloud-extract-sources/auth0/"
 to = "/docs/stream-sources/auth0/"
 status = 301 
 [[redirects]]
-from = "/docs/rudderstack-api/rudderstack-spec/common-fields/"
+from = "/rudderstack-api/rudderstack-spec/common-fields/"
 to = "/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/"
 status = 301 
 [[redirects]]

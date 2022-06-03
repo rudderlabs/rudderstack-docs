@@ -150,17 +150,20 @@ This feature works only if the <strong>Track Referrer</strong> and <strong>Track
 
 ## Adding device mode integration
 
+Once you add Amplitude as a destination in the [RudderStack dashboard](https://app.rudderstack.com/), follow these steps to add it to your project depending on your integration platform:
+
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
         Follow these steps to add Amplitude to your iOS project:
-<ul>
-<li>In your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Amplitude</code> extension
+<ol>
+<li>In your <code class="inline-code">Podfile</code>, add the <code class="inline-code">Rudder-Amplitude</code> extension, as shown:
 <span>
 
 ```ruby
@@ -222,11 +225,65 @@ Make sure that you enable <code class="inline-code">use IDFA as device id</code>
 ```
 </span>
 </li>
-</ul>
+</ol>
+      </TabPanel>
+        <TabPanel>
+          <div class="warningBlock">
+          This device mode integration is supported for Amplitude v8.8.0 and above.
+        </div>
+        Follow these steps to add Amplitude to your iOS project:
+<ol>
+<li> Install <code class="inline-code">RudderAmplitude</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
+<span>
+
+```ruby
+pod 'RudderAmplitude', '~> 1.0.0'
+```
+</span>
+</li>
+<li>Run the <code class="inline-code">pod install</code> command.</li>
+<li>Then, import the SDK depending on your preferred platform:
+<span>
+
+```swift
+import RudderAmplitude
+```
+</span>
+<span>
+
+```objectivec
+@import RudderAmplitude;
+```
+</span>
+</li>
+<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under the <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
+<br /><br />
+<span>
+
+```swift
+let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
+            .dataPlaneURL(DATA_PLANE_URL)
+        
+RSClient.sharedInstance().configure(with: config)
+RSClient.sharedInstance().addDestination(RudderAmplitudeDestination())
+```
+</span>
+<span>
+
+```objectivec
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+
+[[RSClient sharedInstance] configureWith:config];
+[[RSClient sharedInstance] addDestination:[[RudderAmplitudeDestination alloc] init]];
+```
+</span>
+</li>
+</ol>
       </TabPanel>
       <TabPanel>
         To add Amplitude to your Android Project please follow these steps :
-<ul>
+<ol>
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: app) file, and add the following under the <code class="inline-code">dependencies</code> section :
 <span>
 
@@ -289,11 +346,11 @@ Make sure that you enable <code class="inline-code">Use Advertising ID for Devic
 </span>
 
 </li>
-</ul>
+</ol>
       </TabPanel>
       <TabPanel>
         To add Amplitude to your React Native project:
-<ul>
+<ol>
 <li>Add the RudderStack-Amplitude module to your app using :
 <span>
 
@@ -335,7 +392,7 @@ rudderClient.setup(WRITE_KEY, config)
 ```
 </span>
 </li>
-</ul>
+</ol>
       </TabPanel>
     </TabPanels>
 </Tabs>
