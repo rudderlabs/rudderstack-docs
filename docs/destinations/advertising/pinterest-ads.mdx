@@ -58,18 +58,18 @@ For more information on using the custom properties, refer to the <a href="#cust
 - **Map Your Events To Pinterest Events**: Use this field to map your event to a specific Pinterest event.
 - **Use device-mode to send events**: As this is a device mode-only destination, this setting is enabled by default and cannot be disabled.
 
-- **Enable Enhanced Match on Page Load**: This setting is enabled by default and attaches the hashed email address on the initial page load. Any further calls to Pinterest are an Enhanced Match.
+- **Enable Enhanced Match on Page Load**: This setting is enabled by default and attaches the hashed email address on the initial page load. Any further calls made to Pinterest will be an Enhanced Match.
 
-When disabled, all the visits made to your site become anonymous. However, you can still identify any user by making the `identify()` call.
+  When disabled, all the visits made to your site become anonymous. However, you can still identify any user by making the `identify()` call.
 
-#### Enhanced Match 
+  **Enhanced Match**
 
-Rudderstack supports [Pinterest Enhanced Match](https://help.pinterest.com/en/business/article/enhanced-match) when the following conditions are met:
+  Rudderstack supports [Pinterest Enhanced Match](https://help.pinterest.com/en/business/article/enhanced-match) when the following conditions are met:
 
-  - A user is identified every time they visit your site.
-  - A user visits your site anonymously but is identified at some later stage by making an `identify()` call.
+    - A user is identified every time they visit your site.
+    - A user visits your site anonymously but is identified at some later stage by making an `identify()` call.
 
-If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Match, you can only collect this information for successive events. Pinterest does not update the values for the past events retroactively.
+  If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Match, you can only collect this information for successive events. Pinterest does not update the values for the past events retroactively.
 
 ## Identify
 
@@ -92,7 +92,7 @@ In the above example, the identification parameter will be set to `alex@example.
 
 <div class="infoBlock">
 
-Nothing appears in the network tab in your browser or in the tag helper extension after <code class="inline-code">identify()</code> is called. However, a hashed value for an <code class="inline-code">em</code> parameter is added in the next event call, in a JSON object encoded in the URL.
+After an <code class="inline-code">identify</code> call is made, nothing appears in the network tab in your browser or in the tag helper extension. However, a hashed value for an <code class="inline-code">em</code> parameter is added in the next event call, in a JSON object encoded in the URL.
 
 </div>
 
@@ -160,7 +160,7 @@ You can map your event to a specific Pinterest event by adding it in the <strong
 
 ### Standard Pinterest events
 
-Pinterest supports the following nine standard events that can be mapped and tracked for reporting:
+Pinterest supports the following nine standard events that can be mapped and tracked for reporting. Any event apart from these is treated as a user-defined event.
 
 - `Checkout`
 - `AddToCart`
@@ -176,8 +176,6 @@ Pinterest supports the following nine standard events that can be mapped and tra
 
 These events aren’t available for conversion reporting.
 </div>
-
-Pinterest treats any event apart from the above as a user-defined event.
 
 ### Property mapping
 
@@ -213,7 +211,7 @@ The following properties are nested within the e-commerce `products` array:
 
 You can send the custom properties to Pinterest by adding them in the **Custom Properties** section while configuring the Pinterest destination in RudderStack.
 
-A sample snippet to send custom properties is shown below:
+A sample snippet with custom properties is shown below:
 
 ```javascript
 rudderanalytics.track("Event", {
@@ -224,7 +222,7 @@ rudderanalytics.track("Event", {
 })
 ```
 
-For the above example, the following properties must be added in the **Custom Properties** section:
+For the above snippet, the following properties must be added in the **Custom Properties** section:
 - `customProperty.customValue`
 - `someRandomMailId`
 
