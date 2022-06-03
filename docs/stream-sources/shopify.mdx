@@ -326,13 +326,13 @@ The below is an example of client-side event transformed by RudderStack:
 
 ### Provide login functionality
 
-Shopify provides store owners with the capability to either make user login compulsory or allow guest checkout in their stores. However, it is a best practice to prompt  users to login on your platform. That ways, RudderStack fetches the user details to provide you with meaningful event data corresponding to the user's journey on your platform.
+Shopify provides the store owners the capability to either make user login compulsory or allow guest checkout in their stores. However, it is a best practice to prompt users to log in onto your platform. That way, RudderStack can fetch the user details and provide you with meaningful event data corresponding to the user's journey on your platform.
 
-### Support for client side calls
+### Support for client-side calls
 
-It is recommended **NOT** to make any drastic changes to your store structure in order to preserve data integrity. If done, RudderStack may lead to incorrect or missing calls owing to the disparity between URL and triggered event. 
+It is highly recommended **not** to make any drastic changes to your store structure to preserve data integrity. If you do so, RudderStack may track incorrect calls or miss them entirely, owing to the disparity between URL and triggered event. 
 
-Refer to the following additional details for e-commerce events:
+Note the following additional details for e-commerce events tracked by RudderStack:
 
 - **Cart Viewed**: It is recommended to keep the URL in `[store-url]/cart` format.
 - **Checkout Started**: This event can be triggered in any of the following ways:
@@ -370,19 +370,19 @@ You need to have the app installed and configured properly in each of the stores
 
 ### What is the difference between `browser_ip` and `requestIP`?
 
-The `requestIP` is the IP address of Shopify backend server which pushes data to RudderStack while the `browser_ip` is the IP address of user's browser.
+The `requestIP` is the IP address of the Shopify backend server which pushes data to RudderStack, while `browser_ip` is the user's IP address.
 
 ### Is it possible to collect additional/custom fields from Shopify?
 
 Yes, it is possible to collect additional/custom fields from Shopify by using `identify` and `track` calls.
 
-Note that the `analytics` object of JS SDK (for example, `rudderanalytics.track()` or `rudderanalytics.identify()`) is already loaded on the `window` object of the store where the app is installed. Hence, the `analytics` object should not be loaded separately to collect additional/custom fields from Shopify.
+Note that the `rudderanalytics` object of JS SDK (for example, `rudderanalytics.track()` or `rudderanalytics.identify()`) is already loaded on the `window` object of the store where the app is installed. Hence, the `rudderanalytics` object should not be loaded separately to collect additional/custom fields from Shopify.
 
-### How does RudderStack set Anonymous ID and can it persist?
+### How does RudderStack set the `anonymousId`? Does RudderStack persist it for future calls?
 
-RudderStack fetches Shopify's `customerId` and uses it as `anonymousId` to allow identity stitching in downstream destinations.
+RudderStack fetches Shopify's `customerId` and uses it as `anonymousId` to allow identity stitching in the downstream destinations.
 
-No, the `anonymousId` does not persist and keeps on changing as the Shopify servers push data to RudderStack over server to server API's.
+No, RudderStack does not persist the `anonymousId` - it keeps on changing as the Shopify servers push data to RudderStack over the server-to-server APIs.
 
 ### How can I differentiate between data collected from Shopify Cloud (Webhooks) and Shopify Device (Web Device Mode)?
 
@@ -398,7 +398,7 @@ context ": {....
 }
 }
 ```
-- In device Mode, RudderStack loads its JavaScript SDK on every Shopify store page for web tracking. Data collected from Shopify device mode has the following signature in the payload:
+- In device mode, RudderStack loads its JavaScript SDK on every Shopify store page for web tracking. The data collected from the Shopify device mode has the following signature in the payload:
 
 ```javascript
 "context": {
