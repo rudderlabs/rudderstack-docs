@@ -167,6 +167,21 @@ However, the following scenarios with examples provide more details on how the s
 - If the Source name is "X", the schema name would be "X". However, if you change the Source name to "Y" later on, the schema would still be "X" as it is picked from the existing syncs.
 - If the Source name is "X", the schema name would be "X". However, if you add the Namespace field as "Y" later on, the schema name would become "Y".
 
+
+
+
+| Sync  | Destination config Namespace    | Warehouse.</destType/>.customDataset Prefix | Source Name | Final Winner|
+| :-------- | :------------ | :------- | :------- | :------- |
+| First upload sync   | ABC | XYZ | S | ABC |       
+| First upload sync   |  | XYZ | S | XYZ_S | 
+| First upload sync   |  |  | S | S | 
+| First upload sync   | ABC |  | S | ABC | 
+| Second upload onwards   | ABC | XYZ | S | ABC | 
+| Second upload onwards   |  | XYZ | S | XYZ_S | 
+| Second upload onwards   |  | XYZ | S | XYZ_S | 
+| Second upload onwards   | ABC |  | S | ABC |
+| Second upload onwards   |  |  | S | First upload namespace | 
+
 ### How does Rudderstack configure table names?
 
 RudderStack sets the table names by picking up the event names and modifying them to follow the snake case convention (for example, `source name` -> `source_name`). 
