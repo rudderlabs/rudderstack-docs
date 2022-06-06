@@ -1,0 +1,72 @@
+---
+#slug: "/docs/rudderstack-api/tracking-plan-api"
+title: "Tracking Plan API"
+description: >-
+  Detailed technical description of the Tracking Plan API to track and
+  capture event data efficiently.
+---
+
+# Tracking Plan API
+
+The **Tracking Plan API** lets you build applications or scripts on top of RudderStack's Tracking Plan capabilities. This includes a simple CI/CD pipeline, integrations with other Tracking Plan systems such as Amplitude, Mixpanel, Avo, and many other creative use-cases.
+
+This guide covers all the details related to Tracking Plan API usage.
+
+## Prerequisites
+
+The following prerequisites must be met to use the Tracking Plan API successfully:
+
+* Set up a source-destination connection in RudderStack. For more details, refer to <Link to="/get-started">Get Started</Link> guide.
+
+* Generate a <Link to="/rudderstack-api/personal-access-tokens">Personal Access Token</Link> in the RudderStack dashboard to authenticate the API successfully.
+
+## API Authorization
+
+RudderStack uses **Basic Authentication** for authenticating all the requests.
+
+<div class="successBlock">
+
+All the popular HTTP clients \(e.g. CURL, Postman, HTTPie\) have default support for Basic Authentication.
+</div>
+
+The Basic Authentication for this API requires a username and password, where:
+
+* The username is the **email address** you used to sign up for RudderStack.
+* The password is the **personal access token** generated previously.
+
+For example, if the email address is `name@surname.com` and the personal access token is `1zl4GJkLu0HsBdrDK88NgYZzY2E`, your request must have the following HTTP header:
+
+```bash
+Authorization: Basic bmFtZUBzdXJuYW1lLmNvbToxemw0R0prTHUwSHNCZHJESzg4TmdZWnpZMkU=
+```
+
+<div class="infoBlock">
+
+  In case of the <strong>Invalid Authorization Header</strong> error, verify if the email address and the personal access token are valid.
+</div>
+
+<div class="successBlock">
+
+  You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
+</div>
+
+
+## Tracking Plans
+
+### Create Tracking Plan
+
+### Update Tracking Plan
+
+### Upsert Tracking Plan
+
+## Tracking Plan rules
+
+### Create events in the user workspace
+
+## Source Tracking Plan connections
+
+### Create/Update source configuration 
+
+
+
+Refer to the [Tracking Plan API documentation](https://documenter.getpostman.com/view/16242548/TzeWFT6D#7df289e7-8758-4ec0-a86e-3aa08bd3260e) in Postman.
