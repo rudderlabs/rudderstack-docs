@@ -1,6 +1,7 @@
 import React from 'react';
 import DocsNavigation from '../components/DocsNavigation';
 import Link from "gatsby-link"
+import "../css/docs.css"
 
 const Banner404 = props => {
   return (
