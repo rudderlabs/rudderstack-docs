@@ -33,8 +33,8 @@ The following table details the mapping of `integrations` object for DCM Floodli
 | **RudderStack property** | **DCM Floodlight property** | **Description** |
 | :--- | :--- | :---|
 | `COPPA`| `tag_for_child_directed_treatment`  | Imposes requirements on the websites/online services operators directed to children under 13 years of age. [Reference](https://www.ftc.gov/tips-advice/business-center/privacy-and-security/children%27s-privacy). |
-| `GDPR` | `tfua` |  EU law on general data protection and privacy. [Reference](http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679). |
-| `npa` | `npa` | Law catering to users who wish to opt-out of remarketing. | 
+| `GDPR` | `tfua` |  The EU law on general data protection and privacy. [Reference](http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679). |
+| `npa` | `npa` | The law catering to users who wish to opt out of remarketing. | 
 
 The following table details the mapping between RudderStack and DCM Floodlight's (optional) properties:
 
@@ -61,7 +61,7 @@ The following table provides a brief description of the above DCM Floodlight pro
 
 ## Custom parameters
 
-You can also send custom data to DCM Floodlight using the custom fields as mentioned below:
+You can also send data to DCM Floodlight using the below-mentioned custom fields:
 
 | Custom field | Counting method| 
 | :--- | :--- |
@@ -77,11 +77,11 @@ You can also send custom data to DCM Floodlight using the custom fields as menti
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-When you pass the `name` field in the `page` call, it is transformed to the **Viewed `PAGE NAME` Page** format.
+When you pass the `name` field in the `page` call, RudderStack transforms it to the **Viewed `PAGE NAME` Page** format.
 
 ### Page with category
 
-When you pass the `category` and `name` fields in the `page` call, it is transformed to the **Viewed `CATEGORY NAME` `PAGE NAME` Page** format.
+When you pass the `category` and `name` fields in the `page` call, RudderStack transforms it to the **Viewed `CATEGORY NAME` `PAGE NAME` Page** format.
 
 A sample `page` call is as shown below:
 
@@ -94,11 +94,11 @@ rudderanalytics.page('landing', {
 
 ### What are the counting methods for sales and counter tag?
 
-For Sales tag, there are following counting methods:
+For the Sales tag, the counting methods are as shown:
 
 <img src="../../../assets/event-stream-destinations/sales-tag.png" alt="DCM Floodlight report builder"/>
 
-For Counter tag, there are following counting methods:
+For the Counter tag, the counting methods are shown below:
 <img src="../../../assets/event-stream-destinations/counter-tag.png" alt="DCM Floodlight report builder"/>
 
 ## Contact us
