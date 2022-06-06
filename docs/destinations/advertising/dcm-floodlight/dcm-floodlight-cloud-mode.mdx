@@ -20,28 +20,24 @@ The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track"><code c
 A sample `track` call is as shown below:
 
 ```javascript
-client.track({
-  userId: "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
-  event: "Checkout Started",
-  properties: {
+rudderanalytics.track("Checkout Started", {
+    countingMethod: "standard",
     orderId: 1234,
     quantity: 45,
     revenue: 800,
-  },
-  context: {
+}, {
     device: {
-      advertisingId: "2a3e36d172-5e28-45a1-9eda-ce22a3e36d1a",
+        advertisingId: "2a3e36d172-5e28-45a1-9eda-ce22a3e36d1a",
     },
     userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
-  },
-  integrations: {
-    All: true,
-    "DCM Floodlight": {
-      COPPA: "false",
-      GDPR: "1",
-      npa: "true",
-    },
-  },
+    integrations: {
+        All: true,
+        "DCM_Floodlight": {
+            COPPA: "false",
+            GDPR: "1",
+            npa: true
+        }
+    }
 });
 ```
 
