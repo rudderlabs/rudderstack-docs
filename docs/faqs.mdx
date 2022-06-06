@@ -225,11 +225,15 @@ Unfortunately, your workspace name is not changeable currently. We are planning 
 
 #### What is the difference between source write key and the workspace token?
 
-The write key is different from your workspace token. The write key is associated with the source, while the <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link> is associated with your RudderStack workspace, as shown:
+The write key is different from your workspace token. 
 
-<img src="../assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
+The write key is associated with the source and is used by RudderStack to track the events. 
 
-The workspace token is a unique identifier for your configuration settings which RudderStack uses to fetch and track your instrumentations.
+<img src="/assets/rudderstack-open-source/write-key.png" alt="Source Write Key" />
+
+On the other hand, the <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link> is a unique identifier for your configuration settings which RudderStack uses to fetch and track your instrumentations. It be obtained by navigating to **Settings** > **Company** in your RudderStack dashboard, as shown:
+
+<img src="/assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
 
 #### I see a few events that show up in the live stream but do not reach the destination. How do I see the logs or data that is sent to my destination?
 
