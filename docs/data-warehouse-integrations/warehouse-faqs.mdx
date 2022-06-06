@@ -145,7 +145,10 @@ To update the namespace as the new source name, you need to configure a new sour
 
 ### Can I change the namespace (schema name) of my data warehouse in RudderStack?
 
-Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse.
+Yes, you can. RudderStack sets the schema name as:
+- The Namespace field value in the dashboard. You can set the desired schema name here. <br />
+**OR**
+- By default, it sets the source name as the schema name with some modifications to it, if the Namespace is not provided.
 
 <div class="infoBlock">
 
@@ -154,33 +157,24 @@ Refer to the warehouse-specific destination settings to configure a namespace in
 
 ### How is the schema name configured for my data warehouse?
 
-By default, the schema name is set as:
-- The Namespace field value in the RudderStack dashboard. **OR**
-- The Source name value in the RudderStack dashboard, if the above is not provided.
+The schema name is configured based on the values mentioned in the below table. The columns in the table corresponds to the following:
 
-However, the following scenarios with examples provide more details on how the schema name is configured based on the presence/absence of Namespace field:
+- **Sync**: Indicates whether its the first data sync or subsequent syncs after the source is set up.
+- **Namespace**: Namespace field value in the RudderStack dashboard.
+- **Warehouse.&lt;destType&gt;.customDataset Prefix**: `RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX` parameter in the config.yaml file.
+- **Source name**: Name of the source connected to warehouse destination.
 
-**When Namespace field is present**
-- If the Namespace field is set as "ABC" and the Source name is "X", the schema name would be "ABC". However, if you change the Namespace field to "DEF" later on, the schema name would become "DEF".
-
-**When Namespace field is absent**
-- If the Source name is "X", the schema name would be "X". However, if you change the Source name to "Y" later on, the schema would still be "X" as it is picked from the existing syncs.
-- If the Source name is "X", the schema name would be "X". However, if you add the Namespace field as "Y" later on, the schema name would become "Y".
-
-
-
-
-| Sync  | Destination config Namespace    | Warehouse.</destType/>.customDataset Prefix | Source Name | Final Winner|
-| :-------- | :------------ | :------- | :------- | :------- |
-| First upload sync   | ABC | XYZ | S | ABC |       
-| First upload sync   |  | XYZ | S | XYZ_S | 
-| First upload sync   |  |  | S | S | 
-| First upload sync   | ABC |  | S | ABC | 
-| Second upload onwards   | ABC | XYZ | S | ABC | 
-| Second upload onwards   |  | XYZ | S | XYZ_S | 
-| Second upload onwards   |  | XYZ | S | XYZ_S | 
-| Second upload onwards   | ABC |  | S | ABC |
-| Second upload onwards   |  |  | S | First upload namespace | 
+| Sync  | Namespace    | Warehouse.&lt;destType&gt;.customDataset Prefix | Source name | Schema name| Notes|
+| :-------- | :------------ | :------- | :------- | :------- |:------- |
+| First sync   | AB | XY | S | AB | The namespace is given priority over all the other values. |    
+| First sync   |  | XY | S | XY_S | The customDataset prefix and source name are combined together if the namespace is absent.|
+| First sync   |  |  | S | S | The source name is set as the schema name if the namespace and customDataset prefix both are absent.|
+| First sync   | AB |  | S | AB |The namespace is given priority over the other values.| 
+| Second sync onwards   | ABC | XYZ | SS | ABC | The namespace, source name and customDataset prefix have been modified. The namespace is given priority and set as the schema name.|
+| Second sync onwards   |  | XYZ | S | XYZ_S | The customDataset prefix name has been modified. The customDataset prefix and source name are combined together and set as the schema name.|
+| Second sync onwards   |  | XYZ | SS | XYZ_SS | The source name and customDataset prefix have been modified and are combined together to be set as the schema name.|
+| Second sync onwards   | ABC |  | SS | ABC | The namespace and source names have been modified. The namespace is given priority and set as the schema name.|
+| Second sync onwards   |  |  | SS | Same as the first sync. | The source name has been modified. However, it does not impact the schema name from the second sync onwards. It will be retained the same as it was in the first sync.|
 
 ### How does Rudderstack configure table names?
 
