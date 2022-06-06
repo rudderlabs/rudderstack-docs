@@ -19,6 +19,19 @@ If you come across any issue not listed in this guide, feel free to start a conv
 
 Head over to our <Link to="/get-started">Getting Started with RudderStack Cloud</Link> guide to configure your sources and destinations and start building your data pipelines.
 
+#### What is a workspace token? Where do I get it?
+
+The workspace token is a unique identifier associated with your current RudderStack workspace. To obtain your workspace token, go to **Settings** > **Company**, as shown:
+
+<img src="/assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
+
+<div class="warningBlock">
+
+For security purposes, the workspace token is hidden, by default. You must have <Link to="/rudderstack-cloud/teammates/#admin">administrative privileges</Link> to access the token. 
+
+To view the workspace token, click on <strong>Reveal Token</strong> and enter the password associated with your RudderStack account.
+</div>
+
 #### What is a data plane URL? Where do I get it?
 
 For routing and processing the events to the RudderStack backend, a data plane URL is required.
@@ -42,7 +55,7 @@ An open source data plane URL looks like `http:localhost:8080` where `8080` is t
 
 #### To get started with RudderStack on my local machine, is it mandatory to get the workspace token from RudderStack dashboard?
 
-The token (also referred to as the workspace token) is required if you are installing RudderStack in your own environment and wish to use the RudderStack-hosted control plane. It is a unique identifier for your configuration settings which RudderStack can fetch to track your instrumentations. 
+The token (also referred to as the <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link>) is required if you are installing RudderStack in your own environment and wish to use the RudderStack-hosted control plane. It is a unique identifier for your configuration settings which RudderStack can fetch to track your instrumentations. 
 
 If you are <Link to="/rudderstack-open-source/control-plane-lite/">self-hosting your control plane</Link>, this token is not required.
 
@@ -69,7 +82,7 @@ You can verify your RudderStack installation by sending test events and checking
 
 #### My open source RudderStack setup keeps creating a new database automatically. What could be the reason?
 
-This can happen if you have changed your workspace token. Also, ensure that the RudderStack server is running on the latest version.
+This can happen if you have changed your <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link>. Also, ensure that the RudderStack server is running on the latest version.
 
 ### Docker
 
@@ -135,7 +148,7 @@ Events sent through <Link to="/rudderstack-cloud/rudderstack-connection-modes/#d
 
 #### Do I need to change the data plane URL associated with the RudderStack Cloud to my self-hosted data plane?
 
-No, you need not change the URL. As long as your self-hosted data plane has the same workspace token, the RudderStack-hosted control plane will use your data plane for processing events.
+No, you need not change the URL. As long as your self-hosted data plane has the same <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link>, the RudderStack-hosted control plane will use your data plane for processing events.
 
 #### While trying to start rudder-server, I get the following error:
 
@@ -205,9 +218,11 @@ Unfortunately, your workspace name is not changeable currently. We are planning 
 
 #### What is the difference between source write key and the workspace token?
 
-The write key is different from your workspace token. The write key is associated with the source, while the workspace token is associated with your RudderStack workspace, as shown:
+The write key is different from your workspace token. The write key is associated with the source, while the <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link> is associated with your RudderStack workspace, as shown:
 
-<img src="/assets/rudderstack-open-source/write-key-vs-workspace-token.png" alt="Write key vs. workspace token" />
+<img src="../assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
+
+The workspace token is a unique identifier for your configuration settings which RudderStack uses to fetch and track your instrumentations.
 
 #### I see a few events that show up in the live stream but do not reach the destination. How do I see the logs or data that is sent to my destination?
 
@@ -215,7 +230,7 @@ To view the data or events that are sent to your destination, you can use the <L
 
 #### Do I need to change the data plane URL associated with the cloud-hosted RudderStack to my self-hosted data plane?
 
-No, you need not change the URL. As long as your self-hosted data plane has the same workspace token, the RudderStack-hosted control plane will use your data plane for processing events.
+No, you need not change the URL. As long as your self-hosted data plane has the same <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link>, the RudderStack-hosted control plane will use your data plane for processing events.
 
 #### How can I switch from RudderStack Open Source to RudderStack Cloud and vice-versa?
 

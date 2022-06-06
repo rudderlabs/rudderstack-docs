@@ -204,18 +204,27 @@ When sending your events to a data warehouse via RudderStack, you don't need to 
 
 Refer to the <Link to="/data-warehouse-integrations/warehouse-schemas">Warehouse Schema</Link> guide for more details.
 
-## Token
+## Workspace Token
 
-The token (also referred to as the workspace token) is a unique identifier of your RudderStack workspace. You can find it by logging in to your [RudderStack dashboard](https://app.rudderstack.com/).
+The workspace token uniquely identifies your RudderStack workspace. You can find it by logging in to your [RudderStack dashboard](https://app.rudderstack.com/) and going to **Settings** > **Company**, as shown:
+
+<img src="../assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
+
+<div class="warningBlock">
+
+For security purposes, the workspace token is hidden, by default. You must have <Link to="/rudderstack-cloud/teammates/#admin">administrative privileges</Link> to access the token. 
+
+To view the workspace token, click on <strong>Reveal Token</strong> and enter the password associated with your RudderStack account.
+</div>
 
 ## Write key
 
 The write key (also referred to as the source write key) is a unique identifier for your source. It is used while sending events from a source to your specified destination via RudderStack.
 
-<img src="../assets/rudderstack-open-source/write-key-vs-workspace-token.png" alt="Workspace Token vs Source Write Key" />
+<img src="../assets/rudderstack-open-source/write-key.png" alt="Source Write Key" />
 <br /><br />
 
-For more information on finding the write key for your source, refer to the <Link to="/rudderstack-cloud/sources#faq">Sources</Link> guide.
+For more information on finding the source write key, refer to the <Link to="/rudderstack-cloud/sources#faq">Sources</Link> guide.
 
 ## Contact us
 
