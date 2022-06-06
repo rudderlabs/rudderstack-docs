@@ -103,7 +103,13 @@ The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification
 A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track("Order Completed")
+rudderanalytics.track("Order Completed", {
+    checkout_id: "C324532",
+    order_id: "T1230",
+    value: 15.98,
+    revenue: 16.98,
+    currency: "INR"
+})
 ```
 
 RudderStack SDK sends the `track` event and any properties as custom properties to Pinterest.
