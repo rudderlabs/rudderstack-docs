@@ -1,5 +1,5 @@
 // GraphQL query for getting data from mdx files.
-// Any attribute added in frontmatter in the files can be accessed by adding the key in frontmatter { ... } here. eg. title, aliases
+// Any attribute added in frontmatter in the files can be accessed by adding the key in frontmatter block { title, aliases, ... }. eg. title, aliases
 // mdxAST is a JSON Object containing all the elements of mdx file including headings, paragraphs, links, listItes, etc.
 // This is being used to extract headings alongwith the starting and ending positions of the following excerpt, in order to show the correct excerpt per heading.
 const docsQuery = `{
