@@ -1,152 +1,97 @@
+// GraphQL query for getting data from mdx files.
+// Any attribute added in frontmatter in the files can be accessed by adding the key in frontmatter { ... } here. eg. title, aliases
+// mdxAST is a JSON Object containing all the elements of mdx file including headings, paragraphs, links, listItes, etc.
+// This is being used to extract headings alongwith the starting and ending positions of the following excerpt, in order to show the correct excerpt per heading.
 const docsQuery = `{
-    docs: allMdx {
-      edges {
-        node {
+  docs: allMdx {
+    edges {
+      node {
+        id
+        frontmatter {
+          title
+          aliases
+        }
+        fields {
           slug
-          headings(depth: h2) {
-            value
-          }
-          tableOfContents(maxDepth: 1)
-          excerpt(pruneLength: 50000)
         }
+        mdxAST
       }
     }
-  
-    allSanityDocsSearchAlias {
-      edges {
-        node {
-          search_alias
-          search_text
-          id
-        }
-      }
-    }
-  }`;
+  }
+}`
 
-function convertToSlug(pData) {
-  return pData
-    .toLowerCase()
-    .replace(" ", "-")
-    .replace(/ /g, "-")
-    .replace(".", "")
-    .replace("?", "")
-    .replace(/[^\w-]+/g, "");
+// This funtion extracts the headings from mdxAST object alongwith the starting and ending position of the following excerpt.
+// Frontmatter title and mdxAST nodes are passed as input to this funtion.
+// Output is headings array with heading value, start and end indices, and full excerpt of the mdx file.
+function extractAttributes(title, children) {
+  let headings = [{ value: title, index: children.find(x => x.type === "heading" && x.depth === 1) ? 0 : -1 }]
+
+  // Adds heading & its index (in mdxAST object) to headings array.
+  // Add number in this array to extract the required heading. eg. [1, 2] extracts h1 & h2. Adding 3 will extract h3 also
+  children.filter(x => x.type === "heading" && [1, 2].includes(x.depth)).forEach(x => {
+    let index = children.findIndex(c => c === x)
+    if (x.depth > 1) headings.push({ value: x.children?.map(c => getAttributeValue(c)).join(x.type === "list" || x.type === "table" ? " " : ""), index })
+  })
+
+  let start = 0
+  let excerpt = []
+
+  // Iterate through the headings & extract the following excerpt. The start and end positions are calculated and assigned in headings array
+  for (let i = 0; i < headings.length; i++) {
+    let headingExcerpt = children.slice(headings[i].index + 1, i < headings.length - 1 ? headings[i + 1].index : children.length).map(x => x.children?.map(c => getAttributeValue(c)).join(x.type === "list" || x.type === "table" ? " " : ""))
+    headingExcerpt = headingExcerpt.filter(x => x).join(" ")
+
+    start += headings[i].value.length + 1
+    headings[i].start = start
+
+    start += headingExcerpt.length
+    headings[i].end = start
+
+    start += 1
+    delete headings[i].index
+
+    excerpt.push(headings[i].value)
+    excerpt.push(headingExcerpt)
+  }
+
+  return { headings, excerpt: excerpt.join(" ") }
+}
+
+// A helper funtion for extracting the text from different html elements
+function getAttributeValue(child) {
+  switch (child.type) {
+    case "text":
+    case "inlineCode":
+      return child.value
+    default:
+      return child.children?.map(x => getAttributeValue(x)).join(child.type === "tableRow" ? " " : "")
+  }
+
+}
+
+// Map GraphQL query results before sending to Algolia
+function pageToAlgoliaRecord({ node: { id, frontmatter, fields, mdxAST } }) {
+  // Headings & excerpt extracted using the extractAttributes funtion above.
+  let { headings, excerpt } = extractAttributes(frontmatter.title, mdxAST.children)
+
+  // Any attribute added in frontmatter in the files can be mapped here like title, aliases
+  return {
+    objectID: id,
+    title: frontmatter.title,
+    aliases: frontmatter.aliases || [],
+    slug: fields.slug,
+    headings,
+    excerpt
+  }
 }
 
 const queries = [
   {
     query: docsQuery,
-    transformer: ({ data }) => {
-      let tmpData = [];
-      let ignorePaths = [
-        "LICENSE",
-        "contributing",
-        ".github/pull_request_template",
-      ];
-      data.docs.edges.map((row) => {
-        const parsedSlug = row.node.slug.replace("docs/", "");
-        let tmpString = row.node.excerpt;
-        let strPos =
-          ignorePaths.indexOf(parsedSlug) === -1 &&
-          row.node.tableOfContents !== {}
-            ? tmpString.indexOf(row.node.tableOfContents.items[0].title)
-            : "";
-        let endPos = tmpString.indexOf(
-          row.node.headings.length > 0 ? row.node.headings[0].value : ""
-        );
+    transformer: ({ data }) => data.docs.edges.map(pageToAlgoliaRecord),
+    indexName: process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2",
+    settings: {}
+  }
+]
 
-        let content = tmpString.substring(strPos, endPos - 1);
-
-        let tttmp = data.allSanityDocsSearchAlias.edges.find(
-          (kk) =>
-            kk.node.search_alias ===
-            convertToSlug(
-              ignorePaths.indexOf(parsedSlug) === -1
-                ? row.node.tableOfContents.items[0].title
-                : ignorePaths[ignorePaths.indexOf(parsedSlug)]
-            )
-        );
-
-        let searchAlias = "";
-        if (tttmp) {
-          searchAlias = tttmp.node.search_text;
-        }
-
-        tmpString = tmpString.replace(content, "");
-        tmpData.push({
-          objectID:
-            parsedSlug +
-            "-" +
-            convertToSlug(
-              ignorePaths.indexOf(parsedSlug) === -1
-                ? row.node.tableOfContents.items[0].title
-                : "0"
-            ),
-          pageSlug: parsedSlug,
-          pageTitle:
-            ignorePaths.indexOf(parsedSlug) === -1
-              ? row.node.tableOfContents.items[0].title
-              : ignorePaths[ignorePaths.indexOf(parsedSlug)],
-          sectionId: convertToSlug(
-            ignorePaths.indexOf(parsedSlug) === -1
-              ? row.node.tableOfContents.items[0].title
-              : ignorePaths[ignorePaths.indexOf(parsedSlug)]
-          ),
-          SectionTitle: convertToSlug(
-            ignorePaths.indexOf(parsedSlug) === -1
-              ? row.node.tableOfContents.items[0].title
-              : ignorePaths[ignorePaths.indexOf(parsedSlug)]
-          ),
-          sectionContent: content,
-          searchAlias: searchAlias,
-          idx: 1,
-        });
-
-        for (var i = 0; i <= row.node.headings.length - 1; i += 1) {
-          strPos = 0;
-          endPos = 0;
-          content = "";
-
-          strPos = tmpString.indexOf(row.node.headings[i].value);
-
-          endPos =
-            i === row.node.headings.length - 1
-              ? tmpString.length
-              : tmpString.indexOf(row.node.headings[i + 1].value);
-
-          content = tmpString.substring(strPos, endPos - 1);
-          tmpString = tmpString.replace(content, "");
-
-          let tttmp = data.allSanityDocsSearchAlias.edges.find(
-            (kk) => kk.node.search_alias === row.node.headings[i].value
-          );
-
-          let searchAlias = "";
-          if (tttmp) {
-            searchAlias = tttmp.node.search_text;
-          }
-
-          tmpData.push({
-            objectID:
-              parsedSlug + "-" + convertToSlug(row.node.headings[i].value),
-            pageSlug: parsedSlug,
-            pageTitle:
-              ignorePaths.indexOf(parsedSlug) === -1
-                ? row.node.tableOfContents.items[0].title
-                : ignorePaths[ignorePaths.indexOf(parsedSlug)],
-            sectionId: convertToSlug(row.node.headings[i].value),
-            SectionTitle: row.node.headings[i].value,
-            sectionContent: content,
-            searchAlias: searchAlias,
-            idx: i + 2,
-          });
-        }
-      });
-      return tmpData;
-    },
-    indexName: process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs",
-    settings: {},
-  },
-];
-
-module.exports = queries;
+module.exports = queries
