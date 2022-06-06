@@ -6,7 +6,7 @@ description: Step-by-step guide on sending your event data from RudderStack to P
 
 # Pinterest Tag
 
-[Pinterest Ads Tag](https://ads.pinterest.com/) is a piece of code that, when added to your website, allows Pinterest to track your visitors as well as their actions. It gives you a detailed conversion report related to any and all customer activities like signups or buying a product.
+[Pinterest Ads Tag](https://ads.pinterest.com/) allows Pinterest to track your visitors as well as their actions. It gives you a detailed conversion report related to all the customer activities like product signups, purchases, and more.
 
 RudderStack supports Pinterest as a destination to which you can seamlessly send your event data using Pinterest's `pintrk` conversion tag.
 
@@ -66,10 +66,10 @@ For more information on using the custom properties, refer to the <a href="#cust
 
   Rudderstack supports [Pinterest Enhanced Match](https://help.pinterest.com/en/business/article/enhanced-match) when the following conditions are met:
 
-    - A user is identified every time they visit your site.
-    - A user visits your site anonymously but is identified at some later stage by making an `identify()` call.
+- A user is identified every time they visit your site.
+- A user visits your site anonymously but is identified at a later stage by making an `identify()` call.
 
-  If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Match, you can only collect this information for successive events. Pinterest does not update the values for the past events retroactively.
+If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Match, you can only collect this information for successive events. Pinterest does not retroactively update the values for the past events.
 
 ## Identify
 
