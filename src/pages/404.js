@@ -17,7 +17,7 @@ const Banner404 = props => {
           </div>
 
           <div className="block sm:flex justify-center items-center">
-            <Link className='btn-primary-lg border-none bg-darkScheme-btnPrimaryBg text-darkScheme-textPrimary sm:mr-4 md:mb-0 mb-4 px-16' to="/docs/" 
+            <Link className='btn-primary-lg border-none bg-darkScheme-btnPrimaryBg text-darkScheme-textPrimary sm:mr-4 md:mb-0 mb-4 px-16' to="/" 
                 >Go to home</Link>
           </div>
         </div>
