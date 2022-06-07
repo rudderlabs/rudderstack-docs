@@ -6,7 +6,7 @@ description: Detailed technical description of RudderStack's event filtering fea
 
 # Client-side Event Filtering
 
-RudderStack's client-side event filtering feature lets you specify which events should be discarded or allowed to flow through by whitelisting or blacklisting them.
+RudderStack's client-side event filtering feature lets you specify which events should be discarded or allowed to flow through by allowlisting or blacklisting them.
 
 <div class="successBlock">
 
@@ -47,20 +47,20 @@ You will see the following dropdown options under **Event Filtering**, in the **
 
 Event filtering will be disabled if you select this option from the dropdown. In this case, RudderStack will not filter any events and allow all events to flow through.
 
-### Whitelist
+### Allowlist
 
-Upon selecting the **Whitelist** option from the dropdown, you can specify the names of the events that you want RudderStack to **allow** or flow through to the destination. 
+Upon selecting the **Allowlist** option from the dropdown, you can specify the names of the events that you want RudderStack to **allow** or flow through to the destination. 
 
 <div class="infoBlock">
 
-If you choose the <strong>Whitelist</strong> option for event filtering, any events specified in the <strong>Blacklist</strong> field will be ignored.
+If you choose the <strong>Allowlist</strong> option for event filtering, any events specified in the <strong>Blacklist</strong> field will be ignored.
 </div>
 
-You can add as many events as you want to the whitelist by clicking on the **Add More** option.
+You can add as many events as you want to the allowlist by clicking on the **Add More** option.
 
 <div class="warningBlock">
 
-RudderStack will discard any event that is not specified in the whitelist. If you do not specify any events in the whitelist, <strong>all</strong> the calls will be discarded.
+RudderStack will discard any event that is not specified in the allowlist. If you do not specify any events in the allowlist, <strong>all</strong> the calls will be discarded.
 </div>
 
 ### Blacklist
@@ -69,7 +69,7 @@ Upon selecting the **Blacklist** option from the dropdown, you can specify the n
 
 <div class="infoBlock">
 
-If you choose the <strong>Blacklist</strong> option for event filtering, any events specified in the <strong>Whitelist</strong> field will be ignored.
+If you choose the <strong>Blacklist</strong> option for event filtering, any events specified in the <strong>Allowlist</strong> field will be ignored.
 </div>
 
 You can add as many events as you want to the blacklist by clicking on the **Add More** option.

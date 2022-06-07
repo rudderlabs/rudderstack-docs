@@ -382,11 +382,11 @@ When a new node is added, the users need to be rebalanced across nodes to keep e
 
 Additionally, the SDKs have a built-in local caching and retrying capability. So even if there is a failure, no events are lost.
 
-## Whitelisting
+## Allowlisting
 
-#### What are the IPs to be whitelisted?
+#### What are the IPs to be allowlisted?
 
-To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
+To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -402,7 +402,7 @@ To enable network access to RudderStack, you will need to whitelist the followin
 
 <div class="infoBlock">
 
-If you have your deployment in the EU region, you can whitelist only the following two IPs:
+If you have your deployment in the EU region, you can allowlist only the following two IPs:
   <ul>
     <li>3.66.99.198</li>
     <li>3.64.201.167</li>
@@ -414,9 +414,9 @@ If you have your deployment in the EU region, you can whitelist only the followi
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
-#### Which URLs should be whitelisted for a content security policy?
+#### Which URLs should be allowlisted for a content security policy?
 
-For a content security policy, the following URLs should be whitelisted:
+For a content security policy, the following URLs should be allowlisted:
 
 **Control plane**
   - `https://api.rudderstack.com`
