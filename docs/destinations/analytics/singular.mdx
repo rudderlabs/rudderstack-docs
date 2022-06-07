@@ -55,6 +55,7 @@ To add Singular to your application, follow the steps below depending on your pl
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
     <Tab>Cordova</Tab>
@@ -97,6 +98,76 @@ RSClient *rudderClient = [RSClient getInstance:<WRITE_KEY> config:[configBuilder
 
 For more information, refer to the <a href="https://support.singular.net/hc/en-us/articles/360037950591-iOS-SDK-Basic-Integration?navigation_side_bar=true" target="_blank">Singular iOS documentation</a>.
 </div>
+</ol>
+      </TabPanel>
+      <TabPanel>
+<div class="warningBlock">
+
+This device mode integration is supported for Singular v11.0.4 and above.
+</div>
+        To add Singular to your iOS app, follow these steps:
+<ol>
+<li><code class="inline-code">RudderSingular</code> is available through <a href="https://cocoapods.org/">CocoaPods</a>. To install it, add the following dependency in your <code class="inline-code">Podfile</code>:
+<span>
+
+```ruby
+pod 'RudderSingular', '~> 1.0.0'
+```
+</span>
+</li>
+<li>Then, run the <code class="inline-code">pod install</code> command. </li>
+<li>Add the following imports to your <code class="inline-code">AppDelegate</code> file:
+<span>
+
+```swift
+import RudderSingular
+```
+</span>
+
+<span>
+
+```objectivec
+@import RudderSingular;
+```
+</span>
+</li>
+<li>Then, initialize your RudderStack client <code class="inline-code">RSClient</code>, as shown:
+<span>
+
+```swift
+let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
+            .dataPlaneURL(DATA_PLANE_URL)        
+
+RSClient.sharedInstance().configure(with: config)
+let rudderSingularConfig = RudderSingularConfig()
+            .skAdNetworkEnabled(true)
+            .manualSkanConversionManagement(true)
+            .conversionValueUpdatedCallback({ value in
+                print("Your SKAN handler \(value)")
+            })
+            .waitForTrackingAuthorizationWithTimeoutInterval(0)
+RSClient.sharedInstance().addDestination(RudderSingularDestination(rudderSingularConfig: rudderSingularConfig))
+```
+</span>
+
+<span>
+
+```objectivec
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+
+[[RSClient sharedInstance] configureWith:config];
+RudderSingularConfig *rudderSingularConfig = [[RudderSingularConfig alloc] init];
+[rudderSingularConfig skAdNetworkEnabled:YES];
+[rudderSingularConfig manualSkanConversionManagement:YES];
+[rudderSingularConfig conversionValueUpdatedCallback:^(NSInteger value) {
+    printf("Your SKAN handler %ld", value);
+}];
+[rudderSingularConfig waitForTrackingAuthorizationWithTimeoutInterval:0];
+[[RSClient sharedInstance] addDestination:[[RudderSingularDestination alloc] initWithRudderSingularConfig:rudderSingularConfig]];
+```
+</span>
+</li>
 </ol>
       </TabPanel>
       <TabPanel>
