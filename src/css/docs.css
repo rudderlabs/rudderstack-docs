@@ -332,6 +332,13 @@ pre[class~="language-rust"]::before {
 .childrenWrapper img {
   @apply mb-4 mx-auto;
 }
+.childrenWrapper .githubBadgeLink {
+  width: fit-content;
+  display: block;
+}
+.childrenWrapper .githubBadgeLink.disabled {
+  cursor: default
+}
 .childrenWrapper .githubBadge {
   @apply ml-0 !important;
 }
