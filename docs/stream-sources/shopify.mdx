@@ -128,6 +128,14 @@ RudderStack also supports the following [E-commerce events](https://rudderstack.
 Any other events flowing through RudderStack except the <code class="inline-code">track</code>, <code class="inline-code">identify</code>, and the E-commerce events mentioned above will be <strong>discarded</strong>.
 </div>
 
+<div class="infoBlock">
+
+The user-related information is mapped into the <code class="inline-code">traits</code> object in the RudderStack payload. The product-specific information present in the above resources in <code class="inline-code">line_items</code> is mapped to the <code class="inline-code">products</code> array in the payload. 
+
+Refer to the <Link to="/rudderstack-api/api-specification/rudderstack-spec/">Event Specification</Link> and <Link to="/rudderstack-api/api-specification/rudderstack-spec/common-fields/">Common Fields</Link> guides to understand more about the RudderStack payload nomenclature.
+</div>
+
+
 #### Required scopes
 
 The RudderStack app requires the following [scopes](https://shopify.dev/api/usage/access-scopes) for tracking user events in the Shopify store:
@@ -313,6 +321,29 @@ The below is an example of client-side event transformed by RudderStack:
 }
 ```
 
+
+## Best practices
+
+### Provide login functionality
+
+Shopify provides the store owners the capability to either make user login compulsory or allow guest checkout in their stores. However, it is a best practice to prompt users to log in onto your platform. That way, RudderStack can fetch the user details and provide you with meaningful event data corresponding to the user's journey on your platform.
+
+### Support for client-side calls
+
+It is highly recommended **not** to make any drastic changes to your store structure to preserve data integrity. If you do so, RudderStack may track incorrect calls or miss them entirely, owing to the disparity between URL and triggered event. 
+
+Note the following additional details for e-commerce events tracked by RudderStack:
+
+- **Cart Viewed**: It is recommended to keep the URL in `[store-url]/cart` format.
+- **Checkout Started**: This event can be triggered in any of the following ways:
+  - When **Checkout** button is clicked on the `[store-url]/cart` page.
+  - When **Buy it Now** button is clicked on the product description page. 
+  - Using the pop-ups when adding a product.
+- **Product Added**: This event is triggered when the **Add to Cart** button is clicked on a product description page with `[store-url]/products/product_name` format.
+- **Product Clicked**: This event is triggered when you click on a product entry on any page in the store.
+- **Product List Viewed**: This event is triggered when the store’s catalog or collections page is viewed and all the products are listed in `[store-url]/collections/all` format.
+- **Product Viewed**: This event is triggered when a product’s description page in `[store-url]/products/product_name` format is opened. It is an indicative of the product listing page being viewed.
+
 ## FAQ
 
 ### I'm getting a Registration Failed/Updated Failed error when I enter the data plane URL and the write key. What should I do?
@@ -337,6 +368,48 @@ You can try deleting and reinstalling the app. If that does not work, please [co
 
 You need to have the app installed and configured properly in each of the stores.
 
+### What is the difference between `browser_ip` and `requestIP`?
+
+The `requestIP` is the IP address of the Shopify backend server which pushes data to RudderStack, while `browser_ip` is the user's IP address.
+
+### Is it possible to collect additional/custom fields from Shopify?
+
+Yes, it is possible to collect additional/custom fields from Shopify by using `identify` and `track` calls.
+
+Note that the `rudderanalytics` object of JS SDK (for example, `rudderanalytics.track()` or `rudderanalytics.identify()`) is already loaded on the `window` object of the store where the app is installed. Hence, the `rudderanalytics` object should not be loaded separately to collect additional/custom fields from Shopify.
+
+### How does RudderStack set the `anonymousId`? Does RudderStack persist it for future calls?
+
+RudderStack fetches Shopify's `customerId` and uses it as `anonymousId` to allow identity stitching in the downstream destinations.
+
+No, RudderStack does not persist the `anonymousId` - it keeps on changing as the Shopify servers push data to RudderStack over the server-to-server APIs.
+
+### How can I differentiate between the data collected from Shopify Cloud (Webhooks) and Shopify Device (web device mode)?
+
+You can differentiate between the data collected in cloud and device mode by looking at the signature in payload:
+
+- In the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, RudderStack subscribes to the Shopify webhooks to consume data from Shopify. The data collected from Shopify cloud has the following signature in the payload:
+
+```javascript
+context ": {....
+"library": {
+  "name": "RudderStack Shopify Cloud",
+  "version": "1.0.0"
+}
+}
+```
+- In <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link>, RudderStack loads its JavaScript SDK on every Shopify store page for web tracking. The data collected from the Shopify device mode has the following signature in the payload:
+
+```javascript
+"context": {
+  ....
+  "library": {
+    "name": "RudderLabs JavaScript SDK",
+    "version": "2.4.2"
+  }
+}
+```
+
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation on our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) channel.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation on our [Slack](https://rudderstack.com/join-rudderstack-slack-community) channel.

@@ -29,16 +29,29 @@ RudderStack supports both the `gtag` and `firebase` ways for tagging in websites
 Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
 </div>
 
-The mappings for the above parameters are listed in the following table:
+The mappings for the above-mentioned mandatory parameters are listed in the following table:
 
 | Parameters    | Mapping value  |
 | :-------------| :-----------------|
 | `client_id`         |  `context.client_id`  or `messageId` |
-| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  |
+| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
 
 <div class="infoBlock">
   
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
+</div>
+
+The mappings for the optional parameters (common for `gtag` and `firebase` both) are listed in the following table:
+
+| Optional Parameters    | Mapping value  | Description |
+| :-------------| :-----------------|:-----------------|
+| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
+| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads.|
+
+<div class="infoBlock">
+  
+Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
 </div>
 
 A sample `track` call using `gtag` is shown below:
@@ -149,27 +162,59 @@ The following table lists the mappings between the RudderStack and Google Analyt
     <td><code class="inline-code">search</code></td>
   </tr>
   <tr>
-    <td>Product List Viewed<br />Product Clicked</td>
-    <td><code class="inline-code">view_item_list</code><br /><code class="inline-code">select_item</code></td>
-  </tr>
-  <tr>
-    <td>Promotion Viewed<br />Promotion Clicked</td>
-    <td><code class="inline-code">view_promotion</code><br /><code class="inline-code">select_promotion</code></td>
+    <td>Product List Viewed</td>
+    <td><code class="inline-code">view_item_list</code></td>
   </tr>
    <tr>
-    <td>Product Viewed<br />Product Added<br />Product Removed<br />Cart Viewed<br />Product Added to Wishlist</td>
-    <td><code class="inline-code">view_item</code><br /><code class="inline-code">add_to_cart</code><br /><code class="inline-code">remove_from_cart</code><br /><code class="inline-code">view_cart</code><br /><code class="inline-code">add_to_wishlist</code></td>
+    <td>Product Clicked</td>
+    <td><code class="inline-code">select_item</code></td>
+  </tr>
+  <tr>
+    <td>Promotion Viewed</td>
+    <td><code class="inline-code">view_promotion</code></td>
+  </tr>
+    <tr>
+    <td>Promotion Clicked</td>
+    <td><code class="inline-code">select_promotion</code></td>
+  </tr>
+   <tr>
+    <td>Product Viewed</td>
+    <td><code class="inline-code">view_item</code></td>
+  </tr>
+     <tr>
+    <td>Product Added</td>
+    <td><code class="inline-code">add_to_cart</code></td>
+  </tr>
+     <tr>
+    <td>Product Removed</td>
+    <td><code class="inline-code">remove_from_cart</code></td>
+  </tr>
+     <tr>
+    <td>Cart Viewed</td>
+    <td><code class="inline-code">view_cart</code></td>
+  </tr>
+     <tr>
+    <td>Product Added to Wishlist</td>
+    <td><code class="inline-code">add_to_wishlist</code></td>
   </tr>
    <tr>
     <td>Checkout Started</td>
     <td><code class="inline-code">begin_checkout</code></td>
   </tr>
    <tr>
-    <td>Order Completed<br/>Order Refunded</td>
-    <td><code class="inline-code">purchase</code><br /><code class="inline-code">refund</code></td>
+    <td>Order Completed</td>
+    <td><code class="inline-code">purchase</code></td>
+  </tr>
+     <tr>
+    <td>Order Refunded</td>
+    <td><code class="inline-code">refund</code></td>
   </tr>
     <tr>
-    <td>Product Shared<br/>Cart Shared</td>
+    <td>Product Shared</td>
+    <td><code class="inline-code">share</code></td>
+  </tr>
+  <tr>
+    <td>Cart Shared</td>
     <td><code class="inline-code">share</code></td>
   </tr>
    <tr>
