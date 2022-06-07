@@ -142,7 +142,8 @@ This device mode integration is supported for App Center v4.4.1 and above.
 </div>
         Follow these steps to add App Center to your iOS project:
 <ol>
-<li>Go to your <code class="inline-code">Podfile</code> and add the <code class="inline-code">RudderAppCenter</code> extension:
+<li>Add App Center as a destination in the [RudderStack dashboard](https://app.rudderstack.com/).</li>
+<li>Install <code class="inline-code">RudderAppCenter</code> (available through <a href="https://cocoapods.org/">CocoaPods</a> by adding the following line to your <code class="inline-code">Podfile</code>:
 <span>
 
 ```ruby
@@ -150,8 +151,8 @@ pod 'RudderAppCenter', '~> 1.0.0'
 ```
 </span>
 </li>
-<li>Then, run the <code class="inline-code">pod install</code> command. </li>
-<li>Next, import the SDK as shown:
+<li>Run the <code class="inline-code">pod install</code> command. </li>
+<li>Next, import the SDK depending on your preferred platform:
 <span>
 
 ```objectivec
@@ -166,7 +167,7 @@ import RudderAppCenter
 ```
 </span>
 </li>
-<li>Finally, initialize the RudderStack client <code class="inline-code">RSClient</code>, as shown:
+<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
 <span>
 
 ```objectivec
