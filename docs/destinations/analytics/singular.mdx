@@ -107,7 +107,8 @@ This device mode integration is supported for Singular v11.0.4 and above.
 </div>
         To add Singular to your iOS app, follow these steps:
 <ol>
-<li><code class="inline-code">RudderSingular</code> is available through <a href="https://cocoapods.org/">CocoaPods</a>. To install it, add the following dependency in your <code class="inline-code">Podfile</code>:
+<li>Add Singular as a destination in the [RudderStack dashboard](https://app.rudderstack.com/).</li>
+<li>Install <code class="inline-code">RudderSingular</code> (available through <a href="https://cocoapods.org/">CocoaPods</a> by adding the following line to your <code class="inline-code">Podfile</code>:
 <span>
 
 ```ruby
@@ -115,8 +116,8 @@ pod 'RudderSingular', '~> 1.0.0'
 ```
 </span>
 </li>
-<li>Then, run the <code class="inline-code">pod install</code> command. </li>
-<li>Add the following imports to your <code class="inline-code">AppDelegate</code> file:
+<li>Run the <code class="inline-code">pod install</code> command. </li>
+<li>Next, import the SDK depending on your preferred platform:
 <span>
 
 ```swift
@@ -131,7 +132,7 @@ import RudderSingular
 ```
 </span>
 </li>
-<li>Then, initialize your RudderStack client <code class="inline-code">RSClient</code>, as shown:
+<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
 <span>
 
 ```swift
