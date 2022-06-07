@@ -67,9 +67,9 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 
 <img src="../../assets/event-stream-destinations/fbp-connection-settings-3.png" alt="Connection settings" />
 
-- **Blacklist PII Properties**: The PII properties mentioned in this field will not be sent to Facebook if **Blacklist PII Hash Property** is not enabled. If it is enabled, the properties will be SHA256-hashed and sent to Facebook. The properties listed below are the **default blacklisted properties**. 
+- **Denylist PII Properties**: The PII properties mentioned in this field will not be sent to Facebook if **Denylist PII Hash Property** is not enabled. If it is enabled, the properties will be SHA256-hashed and sent to Facebook. The properties listed below are the **default denylisted properties**. 
 
-| Default blacklisted PII |
+| Default denylisted PII |
 | :---------------------|
 | `email` |
 | `firstName` |
@@ -88,10 +88,10 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 
 <div class="infoBlock">
 
-If you want to send any of the above properties hashed by SHA256, you need to enter the property name in the <strong>Blacklist PII Properties</strong> field and enable the <strong>Blacklist PII Hash Property</strong> toggle.
+If you want to send any of the above properties hashed by SHA256, you need to enter the property name in the <strong>Denylist PII Properties</strong> field and enable the <strong>Denylist PII Hash Property</strong> toggle.
 </div>
 
-- **Allowlist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. This is only necessary for properties that match the **Default Blacklisted PII** properties listed above.
+- **Allowlist PII Properties**: The PII properties mentioned in this field will be sent to Facebook if they are present in the properties of the events. This is only necessary for properties that match the **Default Denylisted PII** properties listed above.
 
 ### Other settings
 
