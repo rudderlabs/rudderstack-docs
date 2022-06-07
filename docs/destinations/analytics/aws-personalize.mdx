@@ -73,12 +73,6 @@ You can use these actions based on the type of Personalize events you want to se
 * **Region**: Enter the region associated with your AWS account in this field.
 * **TrackingId**: Enter the Tracking ID generated in the first step.
 * **Dataset ARN**: Enter the dataset ARN of the dataset from the chosen dataset group.
-
-<div class="warningBlock">
-
-For <code class="inline-code">PutItems</code> and <code class="inline-code">PutEvents</code> operations, it is mandatory to specify the <code class="inline-code">Dataset ARN</code> and <code class="inline-code">Tracking ID</code> in the RudderStack dashboard.
-</div>
-
 * **Personalize Events**: Choose the type of Personalize event you want to avail.
 * **Map all the fields**: Enter the **Schema Field** you have used to create the schema in AWS Personalize (For example, `USER_ID`, `TIMESTAMP`, `ITEM_ID`, etc.). Also, enter the corresponding **Mapped Field** from which the value will be taken from your event payload.
 
@@ -92,7 +86,7 @@ For more information on creating a schema in Personalize, refer to the [Personal
 When using the <code class="inline-code">PutItems</code> operation, you need to provide the path to the corresponding <strong>Mapped Field</strong> corresponding to the <code class="inline-code">ITEM_ID</code> in your Personalize database schema.
 </div>
 
-* **Disable Stringifying Additional Properties**: Enable this setting to disable the conversion of additional properties to string data type in AWS Personalize.
+* **Disable Stringifying Additional Properties**: Disables the conversion of additional properties to string data type in AWS Personalize.
 
 ## Track
 
@@ -106,11 +100,6 @@ For <code class="inline-code">PutEvents</code>, RudderStack sends the value of t
 <div class="infoBlock">
 
 For <code class="inline-code">PutItems</code> and <code class="inline-code">PutEvents</code> operations, it is mandatory to specify the <code class="inline-code">Dataset ARN</code> and <code class="inline-code">Tracking ID</code> in the RudderStack dashboard.
-</div>
-
-<div class="infoBlock">
-
-To use the <code class="inline-code">PutUsers</code> and <code class="inline-code">PutItems</code> operations, use the latest images for [`rudder-server`](https://github.com/rudderlabs/rudder-server) and [`rudder-transformer`](https://github.com/rudderlabs/rudder-transformer) images.
 </div>
 
 The following snippet shows a sample `track` event with the mapped field specified in the [RudderStack dashboard](https://app.rudderstack.com/):
@@ -151,11 +140,6 @@ The following image shows an example of the dashboard configuration for `PutEven
 ## Identify
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify"><code class="inline-code">identify</code></Link> call lets you use `PutUsers` operation of AWS Personalize.
-
-<div class="infoBlock">
-
-To use <code class="inline-code">PutUsers</code> and <code class="inline-code">PutItems</code> for Personalize, use the latest images for [`rudder-server`](https://github.com/rudderlabs/rudder-server) and [`rudder-transformer`](https://github.com/rudderlabs/rudder-transformer) images.
-</div>
 
 <div class="infoBlock">
 
