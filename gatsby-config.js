@@ -89,7 +89,12 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              elements: [`h2`, `h3`, `h4`],
+            },
+          },
           `gatsby-remark-embedder`,
           {
             resolve: `gatsby-remark-images`,
