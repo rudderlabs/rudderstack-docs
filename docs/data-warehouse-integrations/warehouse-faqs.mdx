@@ -186,8 +186,8 @@ RudderStack configures the schema name based on the values mentioned in the belo
 <strong>Key takeaways</strong>:
 <ul>
   <li>The namespace set in the RudderStack dashboard always takes precedence when setting the schema name in the warehouse.</li>
-  <li>If the namespace is absent, RudderStack sets the source name as the schema name.</li>
   <li>If the <code class="inline-code">RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX</code> parameter is set in the <code class="inline-code">config.yaml</code> file of your RudderStack deployment, RudderStack sets the schema name in the <code class="inline-code">customDataset_sourcename</code> format, as noted in this <Link to="#how-is-the-namespace-field-populated-for-a-warehouse-destination">FAQ</Link>.</li>
+  <li>If the namespace and <code class="inline-code">RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX</code> parameter, both are absent, RudderStack sets the source name as the schema name.</li>
 </ul>
 </div>
 
