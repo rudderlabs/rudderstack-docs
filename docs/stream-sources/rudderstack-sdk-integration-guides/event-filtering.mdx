@@ -6,7 +6,7 @@ description: Detailed technical description of RudderStack's event filtering fea
 
 # Client-side Event Filtering
 
-RudderStack's client-side event filtering feature lets you specify which events should be discarded or allowed to flow through by whitelisting or blacklisting them.
+RudderStack's client-side event filtering feature lets you specify which events should be discarded or allowed to flow through by allowlisting or denylisting them.
 
 <div class="successBlock">
 
@@ -47,36 +47,36 @@ You will see the following dropdown options under **Event Filtering**, in the **
 
 Event filtering will be disabled if you select this option from the dropdown. In this case, RudderStack will not filter any events and allow all events to flow through.
 
-### Whitelist
+### Allowlist
 
-Upon selecting the **Whitelist** option from the dropdown, you can specify the names of the events that you want RudderStack to **allow** or flow through to the destination. 
-
-<div class="infoBlock">
-
-If you choose the <strong>Whitelist</strong> option for event filtering, any events specified in the <strong>Blacklist</strong> field will be ignored.
-</div>
-
-You can add as many events as you want to the whitelist by clicking on the **Add More** option.
-
-<div class="warningBlock">
-
-RudderStack will discard any event that is not specified in the whitelist. If you do not specify any events in the whitelist, <strong>all</strong> the calls will be discarded.
-</div>
-
-### Blacklist
-
-Upon selecting the **Blacklist** option from the dropdown, you can specify the names of the events that you want RudderStack to **discard**. These events will not be sent to the destination.
+Upon selecting the **Allowlist** option from the dropdown, you can specify the names of the events that you want RudderStack to **allow** or flow through to the destination. 
 
 <div class="infoBlock">
 
-If you choose the <strong>Blacklist</strong> option for event filtering, any events specified in the <strong>Whitelist</strong> field will be ignored.
+If you choose the <strong>Allowlist</strong> option for event filtering, any events specified in the <strong>Denylist</strong> field will be ignored.
 </div>
 
-You can add as many events as you want to the blacklist by clicking on the **Add More** option.
+You can add as many events as you want to the allowlist by clicking on the **Add More** option.
 
 <div class="warningBlock">
 
-RudderStack will only discard the events explicitly specified in the blacklist. If you do not specify any events in the blacklist, then <strong>all</strong> the calls will be allowed to go through.
+RudderStack will discard any event that is not specified in the allowlist. If you do not specify any events in the allowlist, <strong>all</strong> the calls will be discarded.
+</div>
+
+### Denylist
+
+Upon selecting the **Denylist** option from the dropdown, you can specify the names of the events that you want RudderStack to **discard**. These events will not be sent to the destination.
+
+<div class="infoBlock">
+
+If you choose the <strong>Denylist</strong> option for event filtering, any events specified in the <strong>Allowlist</strong> field will be ignored.
+</div>
+
+You can add as many events as you want to the denylist by clicking on the **Add More** option.
+
+<div class="warningBlock">
+
+RudderStack will only discard the events explicitly specified in the denylist. If you do not specify any events in the denylist, then <strong>all</strong> the calls will be allowed to go through.
 </div>
 
 ## Contact us
