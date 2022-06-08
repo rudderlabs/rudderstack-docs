@@ -93,6 +93,29 @@ When using the <code class="inline-code">PutItems</code> operation, you need to 
 This is an exclusive setting applicable only for the <code class="inline-code">putEvents</code> operation.
 </div>
 
+## Identify
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify"><code class="inline-code">identify</code></Link> call lets you use `PutUsers` operation of AWS Personalize.
+
+<div class="infoBlock">
+
+For the <code class="inline-code">PutUsers</code> operation, the value of the <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> field in the payload will be sent as <code class="inline-code">userId</code>.
+</div>
+
+<div class="infoBlock">
+
+For <code class="inline-code">PutUsers</code>, the <strong>Dataset ARN</strong> field in the RudderStack dashboard is required.
+</div>
+
+The following snippet highlights a sample `identify` event with the **Mapped Field** specified in the [RudderStack dashboard](https://app.rudderstack.com/):
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  name: "Alex",
+  email: "alex@example.com"
+  });
+```
+
 ## Track
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track"><code class="inline-code">track</code></Link> call lets you use [`PutEvents`](https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html) and [`PutItems`](https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutItems.html) operations of AWS Personalize.
@@ -141,29 +164,6 @@ The following image shows an example of the dashboard configuration for `PutItem
 The following image shows an example of the dashboard configuration for `PutEvents`:
 
 <img src="../../assets/putEvents.png" alt="Dashboard Configuration Based On The Above Example" />
-
-## Identify
-
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify"><code class="inline-code">identify</code></Link> call lets you use `PutUsers` operation of AWS Personalize.
-
-<div class="infoBlock">
-
-For the <code class="inline-code">PutUsers</code> operation, the value of the <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> field in the payload will be sent as <code class="inline-code">userId</code>.
-</div>
-
-<div class="infoBlock">
-
-For <code class="inline-code">PutUsers</code>, the <strong>Dataset ARN</strong> field in the RudderStack dashboard is required.
-</div>
-
-The following snippet highlights a sample `identify` event with the **Mapped Field** specified in the [RudderStack dashboard](https://app.rudderstack.com/):
-
-```javascript
-rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-  name: "Alex",
-  email: "alex@example.com"
-  });
-```
 
 ## Contact us
 
