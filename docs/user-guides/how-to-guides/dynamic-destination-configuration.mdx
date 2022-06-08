@@ -5,8 +5,6 @@ description: >-
   Step-by-step guide on dynamically configuring your destination in RudderStack via the event payload.
 ---
 
-# How to Configure a Destination via the Event Payload
-
 While setting a destination in RudderStack is quite straightforward, you might encounter a scenario where you need to configure multiple instances of a destination with different configurations for specific fields. RudderStack lets you pass these configuration values **via the event payload** dynamically.
 
 Simply pass the path of your event payload from which the configuration value will be fetched, along with a default value for the field, as shown below:
