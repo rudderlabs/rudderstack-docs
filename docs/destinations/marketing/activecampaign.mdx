@@ -165,7 +165,7 @@ For associating a contact to any field, you need to create the list from ActiveC
 
 The `page` call lets you record information whenever a user sees a web page, along with the associated optional properties of that page. This method must be called at least once per page load.
 
-When you call `page`, RudderStack will send that event to ActiveCampaign as a `site tracking event`. This will add your domain to whitelist for tracking purposes.
+When you call `page`, RudderStack will send that event to ActiveCampaign as a `site tracking event`. This will add your domain to allowlist for tracking purposes.
 
 A sample `page` call looks like the following:
 
@@ -179,7 +179,7 @@ rudderanalytics.page("home", {
 })
 ```
 
-In the above sample, RudderStack captures the information related to the page being viewed, the URL `property` is used to whiltelist the website in the destination.
+In the above sample, RudderStack captures the information related to the page being viewed, the URL `property` is used to allowlist the website in the destination.
 
 <div class="infoBlock">
 
