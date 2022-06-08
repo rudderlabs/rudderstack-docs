@@ -11,7 +11,7 @@ RudderStack supports AWS Personalize as a destination where you can send your ev
 
 <div class="successBlock">
 
-Find the open-source transformer code for this destination in our [GitHub repository](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/personalize).
+Find the open source transformer code for this destination in the [GitHub repository](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/personalize).
 </div>
 
 <div class="infoBlock">
@@ -37,17 +37,17 @@ Once you have confirmed that the source platform supports sending events to AWS 
 
 1. Generate a Tracking ID by following these [instructions](https://github.com/rudderlabs/rudder-transformer/tree/destination_personalize/v0/personalize/scripts).
 
-<div class="successBlock">
+<div class="infoBlock">
 
-Keep this Tracking ID handy. It is required to configure AWS Personalize as a destination.
+Keep the Tracking ID handy. It is required to configure AWS Personalize as a destination.
 </div>
 
 2. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **AWS Personalize**.
-3. Assign a name to your destination and click on **Next**.
+3. Assign a name to your destination and click on **Continue**.
 
 ### Connection settings
 
-To successfully configure AWS Personalize as a destination, configure the following settings:
+To successfully set up AWS Personalize as a destination, configure the following settings:
 
 <img src="../../assets/event-stream-destinations/personalize-1.png" alt="Destination Settings for AWS Personalize" />
 <img src="../../assets/event-stream-destinations/personalize-2.png" alt="Destination Settings for AWS Personalize" />
@@ -83,7 +83,7 @@ For more information on creating a schema in Personalize, refer to the [Personal
 
 <div class="infoBlock">
 
-When using the <code class="inline-code">PutItems</code> operation, you need to provide the path to the corresponding <strong>Mapped Field</strong> corresponding to the <code class="inline-code">ITEM_ID</code> in your Personalize database schema.
+When using the <code class="inline-code">PutItems</code> operation, you need to provide the path to the <strong>Mapped Field</strong> corresponding to the <code class="inline-code">ITEM_ID</code> present in your Personalize database schema.
 </div>
 
 * **Disable Stringifying Additional Properties**: Disables the conversion of additional properties to string data type in AWS Personalize. 
@@ -126,7 +126,7 @@ In the above example, if you map `ITEM_ID` to the payload field `X`, the corresp
 
 <div class="infoBlock">
 
-For any other <strong>Schema Field</strong> in your <code class="inline-code">ITEMS</code> dataset, it is <strong>NOT</strong> advised to specify the path - only the field name will be sufficient.
+For any other <strong>Schema Field</strong> in your <code class="inline-code">ITEMS</code> dataset, it is <strong>not</strong> recommended to specify the path - only the field name is sufficient.
 </div>
 
 <div class="warningBlock">
