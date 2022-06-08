@@ -2,9 +2,14 @@ import React from 'react';
 import DocsNavigation from '../components/DocsNavigation';
 import Link from "gatsby-link"
 import "../css/docs.css"
+import { Helmet } from 'react-helmet';
 
 const Banner404 = props => {
   return (
+    <>
+    <Helmet>
+      <title>Page Not Found</title>
+    </Helmet>
     <div className="mx-auto banner-404 pb-12 lg:pb-80">
         <DocsNavigation />
       <section className="overflow-auto ">
@@ -23,6 +28,7 @@ const Banner404 = props => {
         </div>
       </section>
     </div>
+    </>
   )
 }
 
