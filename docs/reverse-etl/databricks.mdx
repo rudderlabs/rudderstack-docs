@@ -6,7 +6,7 @@ description: Step-by-step guide to ingest your data from Databricks into RudderS
 
 # Databricks
 
-[Databricks](https://databricks.com/) provides a unified, open platform for all our data. It offers a simple collaborative environment to run interactive and scheduled data analysis workloads.
+[Azure Databricks](https://databricks.com/) is a data analytics platform that lets you easily integrate with open source libraries. It offers a simple collaborative environment to run interactive and scheduled data analysis workloads.
 
 RudderStack supports Databricks as a source from which you can ingest data and route it to your desired downstream destinations.
 
@@ -25,15 +25,15 @@ To set up Databricks as a source in RudderStack, follow these steps:
 
 ### Configuring the connection credentials
 
-1. Enter the relevant settings in the **Connection Credentials** sections as shown below:
-   - **Host** - Enter the Server Hostname of your Databricks service.
-   - **Port** - Enter the port number of your Databricks service.
-   - **Path** - Enter your HTTP Path of your Databricks service.
-   - **Token** - Enter the personal access token .
+1. Enter the relevant settings from Databricks in the **Connection Credentials** section as shown below:
+   - **Host** - Enter the server hostname.
+   - **Port** - Enter the port number.
+   - **Path** - Enter the HTTP path.
+   - **Token** - Enter the personal access token.
 
 <div class="infoBlock">
 
-Refer to the <Link to="#faq">FAQ</Link> section to know more about where to obtain these settings in Databricks.
+For more information on getting these settings in Databricks, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 <div class="successBlock">
@@ -74,20 +74,21 @@ For more information on the data import settings, refer to the <a href="https://
 
 ## FAQ
 
-### Where can I obtain the Host, Port, Path and Token for Databricks?
+### Where can I obtain the connection credentials for Databricks?
 
-To get the **Host**, **Path** and **Port**, follow these steps:
+To obtain the **Host**, **Path**, and **Port** number, follow these steps:
 
-1. Login to the Azure portal.
-2. Select the required Databricks resource and then click Launch Workspace.
-3. Go to Compute tab and select your databricks cluster.
-4. Click on Advanced options > JDBC/ODBC tab to find the details:
+1. Log into the [Azure portal](https://portal.azure.com/).
+2. Select the required Databricks resource and click **Launch Workspace**.
+3. Go to the **Compute** tab and select your Databricks cluster.
+4. Click on **Advanced options** > **JDBC/ODBC** tab to find the required settings:
 <img src="../assets/warehouse-actions-sources/connection-settings-databricks.png" alt="Select Databricks source in RudderStack" />
 
-To get the **Token**, follow these steps:
-1. Login to the Azure portal.
-2. Select the required Databricks resource and then click Launch Workspace.
-3. Go to Settings > User settings to generate persoinal access token:
+To obtain the **Token**, follow these steps:
+
+1. Log into the [Azure portal](https://portal.azure.com/).
+2. Select the required Databricks resource and click **Launch Workspace**.
+3. Go to **Settings** > **User Settings** to generate personal access token:
 <img src="../assets/warehouse-actions-sources/connection-settings-databricks-2.png" alt="Select Databricks source in RudderStack" />
 
 ## Contact us
