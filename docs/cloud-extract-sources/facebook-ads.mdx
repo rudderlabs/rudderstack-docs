@@ -40,12 +40,12 @@ Your Facebook Ads account and the related details will then automatically appear
 <img src="../assets/cloud-extract-sources/fb-ads-2.png" alt="Facebook Ads connection settings" />
 
 - **Page**: Enter the name of the Facebook page from where you want to ingest the Ads data.
-- **Historical data**: Specify the timeframe where RudderStack will fetch all the historical data during the first sync.
-- **Attribution window**: Specify the timeframe for any subsequent data syncs.
+- **Historical data**: Specify the timeframe for which RudderStack should fetch the historical data during the first sync.
+- **Attribution window**: Specify the [attribution window](https://www.facebook.com/business/help/2198119873776795?id=768381033531365), that is, the number of days between a person viewing/clicking your ad and subsequently taking an action. Facebook measures the ad actions based on the clicks and views of your ad.
 
 <div class="warningBlock">
 
-RudderStack will not sync the data older than the selected timeframes.
+RudderStack will not sync the data older than the selected timeframe for the historical data.
 </div>
 
 ### Destination settings
@@ -93,7 +93,7 @@ RudderStack associates a table prefix for every Cloud Extract source writing to 
 | Property         | Table name         | Description    |
 | :------------ | :------------- | :------------------ |
 | **Account Insights** | **`account_insights`** | This table contains insights, aggregated for the whole account. Insights include total impressions, CPP, CPC, Reach, and CPM.                                                 |
-| **Campaigns**        | **`campaigns`**        | This table holds information information about your campaigns. The columns of this table include: `name`, `objective`, `account_id`, and`status`.                             |
+| **Campaigns**        | **`campaigns`**        | This table holds information about your campaigns. The columns of this table include: `name`, `objective`, `account_id`, and`status`.                             |
 | **AdSets**           | **`adsets`**           | This tables has information about your Ad Sets. The columns of this table are: `bid_amount`,`updated_time`,`campaign_id`,`daily_budget`,`lifetime_budget`, and `pacing_type`. |
 | **Ads**              | **`ads`**              | This table contains information about your Facebook Ads.                                                                                                                      |
 | **Ad Creatives**     | **`ad_creatives`**     | This table contains the creative content for your Facebook Ads account that you can use in your ads.                                                                          |
