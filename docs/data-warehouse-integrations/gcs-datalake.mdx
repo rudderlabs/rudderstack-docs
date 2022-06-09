@@ -153,6 +153,16 @@ If you have your deployment in the EU region, you can allowlist only the followi
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
+## FAQ
+
+### Why am I observing files written in the location `<namespace>/rudder-warehouse-staging-logs/`?
+
+RudderStack collects all the unprocessed data flowing to the warehouse destinations as staging files. It stores these files in the object storage at the location `https://storage.googleapis.com/rudder-warehouse-staging-logs/`. 
+
+Once the staging files are processed, RudderStack separates them by the event name and sends them to the specified destination in the following format:
+
+`https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/<tableName>/<table_suffix>/YYYY/MM/DD/HH`.
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
