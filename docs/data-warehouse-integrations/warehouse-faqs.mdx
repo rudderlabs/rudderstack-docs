@@ -56,7 +56,7 @@ You can view the warehouse upload status in the **Live Events** section of the d
 
 ### Why am I observing files written in the location `<namespace>/rudder-warehouse-staging-logs/`?
 
-RudderStack collects all the unprocessed data flowing to the warehouse destinations as staging files. It stores these files in the object storage at the location `/rudder-warehouse-staging-logs/`. 
+RudderStack collects all the unprocessed data flowing to the warehouse destinations as staging files. It stores these files in the object storage at the location `<namespace>/rudder-warehouse-staging-logs/`. 
 
 Once the staging files are processed, RudderStack separates them by the event name and sends them to the specified destination.
 
