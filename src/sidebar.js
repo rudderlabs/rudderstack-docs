@@ -610,6 +610,12 @@ export const jsonData = [
         content: [],
       },
       {
+        key: "databricks",
+        title: "Databricks",
+        link: "/data-warehouse-integrations/databricks/",
+        content: [],
+      },
+      {
         key: "google-bigquery",
         title: "Google BigQuery",
         link: "/reverse-etl/google-bigquery/",
@@ -1632,12 +1638,6 @@ export const jsonData = [
         key: "clickhouse",
         title: "ClickHouse",
         link: "/data-warehouse-integrations/clickhouse/",
-        content: [],
-      },
-      {
-        key: "databricks",
-        title: "Databricks",
-        link: "/data-warehouse-integrations/databricks/",
         content: [],
       },
       {
