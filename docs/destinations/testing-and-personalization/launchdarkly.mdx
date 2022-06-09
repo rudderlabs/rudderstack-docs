@@ -24,7 +24,7 @@ Before configuring LaunchDarkly as a destination in RudderStack, verify if the s
 To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-Once you have confirmed that the source platform supports sending events to WebEngage, follow these steps:
+Once you have confirmed that the source platform supports sending events to LaunchDarkly, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **LaunchDarkly**.
 2. Assign a name to the destination and click **Continue**.
@@ -39,12 +39,12 @@ To successfully configure LaunchDarkly as a destination, you will need to config
 
 <div class="infoBlock">
  
-For more information on getting the LaunchDarkly client-side ID, refer to the <Link to="#faqs">FAQs</Link> section below.
+For more information on getting the LaunchDarkly client-side ID, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 ## Identify
 
-The `identify` call lets you create or update a user in LaunchDarkly.
+The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you create or update a user in LaunchDarkly.
 
 <div class="warningBlock">
 
@@ -107,7 +107,7 @@ If you have chosen to bucket the users by a specific attribute, the <code class=
 
 ## Track
 
-The `track` call lets you record user events and send them to LaunchDarkly as custom conversion metrics for your experiments.
+The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call lets you record user events and send them to LaunchDarkly as custom conversion metrics for your experiments.
 
 <div class="warningBlock">
 
