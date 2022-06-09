@@ -89,7 +89,12 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              elements: [`h2`, `h3`, `h4`],
+            },
+          },
           `gatsby-remark-embedder`,
           {
             resolve: `gatsby-remark-images`,
@@ -122,17 +127,16 @@ module.exports = {
               appId: process.env.GATSBY_ALGOLIA_APP_ID,
               apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
               indexName:
-                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + '_gatsby_docs',
-              queries: require('./src/utils/docs-algolia'),
+                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2",
+              queries: require("./src/utils/docs-algolia"),
               enablePartialUpdates: true,
               matchFields: [
-                'pageSlug',
-                'pageTitle',
-                'sectionTitle',
-                'sectionId',
-                'sectionContent',
-                'searchAlias',
-                'idx',
+                "objectID",
+                "title",
+                "aliases",
+                "slug",
+                "headings",
+                "excerpt" 
               ],
             },
           },

@@ -143,6 +143,7 @@ export const rudderslabTrackOnClickDocs = (
     if (!el) {
       //console.log('Entered if !el', e.target);
       el = document.getElementsByTagName("h1");
+      if (el && el.length > 0) el = el[0]?.innerText
     }
   }
 

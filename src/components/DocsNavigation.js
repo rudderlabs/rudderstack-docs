@@ -88,7 +88,7 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen}) => {
           <div className={`instantSearchWrapper ${isSearchOpen ? 'active' : ''}`}>
               <InstantSearch
                 searchClient={searchClient}
-                indexName={process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs"}
+                indexName={process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2"}
               >
                 <Configure hitsPerPage={10} />
                 <div className="docsSearchWrapper">
