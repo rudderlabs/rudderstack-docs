@@ -606,7 +606,7 @@ RSClient.sharedInstance().setOptOutStatus(false)
 
 ## Push notification support for device mode destinations
 
-With the iOS SDK v2, you need not call the individual destination's API in your app to implement the push notifications support; calling the SDK's push notification APIs is sufficient.
+With the iOS SDK, you need not call the individual destination's API in your app to implement the push notifications support; calling the SDK's push notification APIs is sufficient.
 
 <div class="warningBlock">
 
@@ -615,15 +615,42 @@ This feature is specific to RudderStack iOS SDK v2 and is <strong>not available<
 
 To enable push notifications for your device mode destinations, the SDK provides the following functions:
 
-```swift
-func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
 
-func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error)
+```objectivec
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 
-func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 
-func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler;
 ```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+- func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
+
+- func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error)
+
+- func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
+
+- func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 To implement these functions, go to your `AppDelegate` file and add the following lines:
 
@@ -659,19 +686,19 @@ To implement these functions, go to your `AppDelegate` file and add the followin
 <span>
 
 ```swift
-func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+- func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     RSClient.sharedInstance().application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
 }
 
-func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+- func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
     RSClient.sharedInstance().application(application, didFailToRegisterForRemoteNotificationsWithError: error)
 }
 
-func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+- func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
     RSClient.sharedInstance().userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
 }
 
-func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+- func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
     RSClient.sharedInstance().application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
 }
 ```
