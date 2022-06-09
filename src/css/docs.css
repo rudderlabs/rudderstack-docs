@@ -3,8 +3,9 @@
 .childrenWrapper h1 {
   font-size: 32px;
   font-weight: bold;
+  position: relative;
 }
-.pgdescription {
+.childrenWrapper p.pgdescription {
   --tw-text-opacity: 1;
   color: rgba(167, 167, 167, var(--tw-text-opacity));
   display: block !important;
