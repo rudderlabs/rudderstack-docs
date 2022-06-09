@@ -601,6 +601,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "databricks",
+    title: "Databricks",
+    link: "/reverse-etl/databricks/",
+    content: [],
+  },
+  {
     key: "google-bigquery",
     title: "Google BigQuery",
     link: "/reverse-etl/google-bigquery/",
