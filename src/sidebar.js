@@ -1635,6 +1635,12 @@ export const jsonData = [
         content: [],
       },
       {
+        key: "databricks",
+        title: "Databricks",
+        link: "/data-warehouse-integrations/databricks/",
+        content: [],
+      },
+      {
         key: "delta-lake",
         title: "Databricks Delta Lake",
         link: "/data-warehouse-integrations/delta-lake/",
