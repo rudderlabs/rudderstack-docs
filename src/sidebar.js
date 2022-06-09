@@ -612,7 +612,7 @@ export const jsonData = [
       {
         key: "databricks",
         title: "Databricks",
-        link: "/data-warehouse-integrations/databricks/",
+        link: "/reverse-etl/databricks/",
         content: [],
       },
       {
