@@ -616,6 +616,12 @@ export const jsonData = [
         content: [],
       },
       {
+        key: "mysql",
+        title: "MySQL",
+        link: "/reverse-etl/mysql/",
+        content: [],
+      },
+      {
         key: "postgresql",
         title: "PostgreSQL",
         link: "/reverse-etl/postgresql/",
