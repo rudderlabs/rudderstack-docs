@@ -5,8 +5,6 @@ description: >-
   Commonly-asked questions related to the RudderStack data warehouse destinations.
 ---
 
-# FAQ
-
 ## IP allowlist
 
 ### Which RudderStack IPs should I allowlist?
@@ -29,7 +27,6 @@ The EU cluster IPs are listed below:
 - 3.64.201.167
 
 <div class="infoBlock">
-
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
@@ -128,7 +125,6 @@ You can speed up your warehouse uploads by configuring the following parameters 
 Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse.
 
 <div class="infoBlock">
-
 Refer to the <Link to ="/data-warehouse-integrations/">warehouse-specific documentation</Link> for more information on configuring a namespace while setting up the destination in RudderStack.
 </div>
 
@@ -166,12 +162,10 @@ You can specify your desired schema name in the **Namespace** field while config
 <img src="../assets/dw-integrations/namespace-example.png" />
 
 <div class="infoBlock">
-
 Refer to the [warehouse-specific documentation](https://www.rudderstack.com/docs/data-warehouse-integrations/) for more information on configuring the namespace.
 </div>
 
 <div class="warningBlock">
-
 If you do not set the <strong>Namespace</strong> field, RudderStack sets the source name as the schema name, with some modifications.
 </div>
 
@@ -197,7 +191,6 @@ RudderStack configures the schema name based on the values mentioned in the belo
 | Second sync onwards   | Not set | Not set | SS | S | The source name has been modified. However, it does not impact the schema name and it remains the same as in the first sync. |
 
 <div class="infoBlock">
-
 <strong>Key takeaways</strong>:
 <ul>
   <li>The namespace set in the RudderStack dashboard always takes precedence when setting the schema name in the warehouse.</li>
@@ -251,12 +244,10 @@ export function transformEvent(event, metadata) {
 ```
 
 <div class="warningBlock">
-
 Note that this change is applicable to the subsequent events sent to the warehouse destination, after the transformation is applied.
 </div>
 
 <div class="successBlock">
-
 You can also migrate the previously created table data in the warehouse to the new table.
 </div>
 
@@ -329,7 +320,7 @@ products_android_version : 16
 
 ### How does RudderStack determine the column data type? Can I change an existing data type for a column?
 
-RudderStack determines the columns' data type based on the values contained in the event when it is uploaded.
+RudderStack determines the columns' data type based on the values contained in the first event when it is uploaded (during the first upload sync).
 
 For example, suppose `column_x` is received with the value as `1`. RudderStack then sets the data type of this column as `int` in the event table.
 
@@ -344,8 +335,9 @@ To set your preferred data type for a particular column, it is highly recommende
 3. Drop the original column.
 4. Rename the dummy column to the original column name.
 
-<div class="dangerBlock">
+<div class="warningBlock">
 During steps 3 and 4, the tables will be in a locked state. This might impact real-time data uploads/syncs.
+If the above steps take too long to complete, you can halt the warehouse operations in the interim. For more information, refer to this <Link to="#how-do-i-avoid-lags-in-data-syncs-while-heavy-loads-are-running-on-my-datawarehouse">FAQ</Link>.
 </div>
 
 ## Warehouse-specific
@@ -367,7 +359,6 @@ The following examples illustrate the slight differences in the Snowflake accoun
 | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
 
 <div class="warningBlock">
-
 In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region accounts and hence must be included in the <strong>Account</strong> field above. 
 
 For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
