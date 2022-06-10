@@ -83,12 +83,15 @@ export default function Docs({ mdx, pageContext }) {
       };
     })();
 
-    let descriptionSpan = `<h2 class="pgdescription">${
+    let descriptionSpan = `<p class="pgdescription">${
       description === null ? "" : description
-    }</h2>`;
-    let h1Tags = document.querySelectorAll("h1");
-    forEach(h1Tags, (o) => o.insertAdjacentHTML("afterend", descriptionSpan));
-    /* h1Tags.innerHTML = descriptionSpan; */
+    }</p>`;
+
+
+    let h1Tags = document.createElement('h1');
+    h1Tags.innerText = title;
+    document.getElementsByClassName('childrenWrapper')[0].prepend(h1Tags);
+    h1Tags.insertAdjacentHTML("afterend", descriptionSpan);
 
     let ancTags = document.querySelectorAll(
       ".childrenWrapper a:not(.anchor, .next, .previous)"

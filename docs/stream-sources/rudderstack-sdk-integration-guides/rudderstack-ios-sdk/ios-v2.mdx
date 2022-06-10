@@ -6,8 +6,6 @@ description: >-
   events from your iOS/macOS/tvOS/watchOS apps to various destinations.
 ---
 
-# iOS v2
-
 The **RudderStack iOS SDK** lets you track the customer event data from your iOS, macOS, tvOS, and watchOS applications and send it to the specified destinations via RudderStack.
 
 <div class="successBlock">
@@ -598,6 +596,109 @@ Once the user grants their consent, you can enable user tracking once again usin
 
 ```swift
 RSClient.sharedInstance().setOptOutStatus(false)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Push notification support for device mode destinations
+
+With the iOS SDK, you need not call the individual destination's API in your app to implement the push notifications support; calling the SDK's push notification APIs is sufficient.
+
+<div class="warningBlock">
+
+This feature is specific to RudderStack iOS SDK v2 and is <strong>not available</strong> in the earlier SDK versions. Also, it is only applicable for the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link> integrations.
+</div>
+
+To enable push notifications for your device mode destinations, the SDK provides the following functions:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler;
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+- func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
+
+- func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error)
+
+- func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
+
+- func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+To implement these functions, go to your `AppDelegate` file and add the following lines:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[RSClient sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [[RSClient sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler {
+    [[RSClient sharedInstance] userNotificationCenter:center didReceive:response withCompletionHandler:completionHandler];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [[RSClient sharedInstance] application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+}
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+- func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    RSClient.sharedInstance().application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+}
+
+- func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    RSClient.sharedInstance().application(application, didFailToRegisterForRemoteNotificationsWithError: error)
+}
+
+- func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    RSClient.sharedInstance().userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
+}
+
+- func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    RSClient.sharedInstance().application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
+}
 ```
 </span>
       </TabPanel>
