@@ -43,7 +43,8 @@ The following table details the mapping between RudderStack and DCM Floodlight's
 | `context.device.adTrackingEnabled` | `dc_lat` | Counter/Sales|
 | `properties.ord` | `ord` |Counter - `per_session` |
 | `properties.orderId` | `ord` |  Sales |
-| `properties.quantity` | `qty` | Sales - `items_sold` |
+| `properties.orderId` | `transaction_id` |  Sales |
+| `properties.quantity` | `quantity` | Sales - `items_sold` |
 | `properties.revenue` | `value` |  Sales |
 | `properties.matchId` | `matchId` |  Sales |
 | `properties.num` | `num` | Sales |
@@ -77,12 +78,9 @@ You can also send data to DCM Floodlight using the below-mentioned custom fields
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-* When you pass the `name` field in the `page` call, RudderStack transforms it to the **Viewed `PAGE NAME` Page** format.
 * When you do not pass the `name` field in the `page` call, RudderStack transforms it to the **Viewed Page** format.
-
-### Page with category
-
-When you pass the `category` and `name` fields in the `page` call, RudderStack transforms it to the **Viewed `CATEGORY NAME` `PAGE NAME` Page** format.
+* When you pass the `name` field in the `page` call, RudderStack transforms it to the **Viewed `PAGE NAME` Page** format.
+* When you pass the `category` and `name` fields in the `page` call, RudderStack transforms it to the **Viewed `CATEGORY NAME` `PAGE NAME` Page** format.
 
 A sample `page` call is as shown below:
 
