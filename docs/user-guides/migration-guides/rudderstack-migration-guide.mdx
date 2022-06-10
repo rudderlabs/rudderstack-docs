@@ -8,14 +8,13 @@ This document explains the step-by-step process of migrating from Segment to Rud
 
 ## Migrating the workspace
 
-After creating a [RudderStack](https://app.rudderstack.com/signup?type=freetrial) account, you will see the following dashboard containing your data plane URL:
+After creating a [RudderStack](https://app.rudderstack.com/signup?type=freetrial) account, you will see the following dashboard containing your <Link to="/get-started/glossary/#data-plane-url">data plane URL</Link>:
 
-<img src="../../assets/user-guides/rudderstack-dashboard.png" alt="RudderStack dashboard" />
+<img src="../../assets/user-guides/rudderstack-data-plane-url.png" alt="RudderStack data plane URL" />
 
 Similar to Segment, you will need to set up your source-destination connections in the dashboard and facilitate the event data flow.
 
 <div class="successBlock">
-
 Keep your source write key and the data plane URL handy.
 </div>
 
@@ -105,7 +104,6 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc]init];
 ```
 
 <div class="infoBlock">
-
 The instance of the <code class="inline-code">RudderClient</code> is available at <code class="inline-code">[RudderClient sharedInstance]</code> whereas the Segment Instance is available at <code class="inline-code">[Analytics sharedAnalytics]</code>
 </div>
 </li>
@@ -155,20 +153,17 @@ You can use the rest of your code without any changes as the RudderStack API is 
 ```
 </span>
 <div class="infoBlock">
-
 For the minified version of the above script, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/">RudderStack JavaScript SDK</a> guide. 
 </div>
 
 <div class="infoBlock">
-
 If you are using an older version of the JavaScript SDK (v1), refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</a> to migrate to v1.1.
 </div>
 </li>
 <li>Update the object. RudderStack uses <code class="inline-code">rudderanalytics</code> as the global object library as compared to Segment's <code class="inline-code">analytics</code> object.
 
 <div class="successBlock">
-
-  You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
 </div>
 </li>
 </ul>
@@ -189,7 +184,6 @@ RudderAnalytics.Initialize(
 ```
 </span>
 <div class="successBlock">
-
 You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
 </div>
 </li>
@@ -249,7 +243,6 @@ When migrating from Segment or a similar analytics tool, you might already have 
 You can automatically capture the Segment `anonymousId` and set it as Rudderstack `anonymousId` using the JavaScript SDK's `anonymousIdOptions` object. When enabled, it reads the Segment `anonymousId` from your local storage (`localStorage`) or the Segment cookie and sets it accordingly.
 	      
 <div class="infoBlock">
-  
 For more information on how to enable the <code class="inline-code">anonymousIdOptions</code> object, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#capturing-anonymousid-automatically">Capturing anonymousId automatically</a> section.
 </div>
 
