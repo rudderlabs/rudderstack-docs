@@ -4,8 +4,6 @@ title: "MySQL"
 description: Step-by-step guide to ingest your data from MySQL into RudderStack.
 ---
 
-# MySQL
-
 [MySQL](https://www.mysql.com/) is a popular open source relational DBMS.
 
 RudderStack supports MySQL as a source from which you can ingest data and route it to your desired downstream destinations.
@@ -25,7 +23,6 @@ CREATE USER RUDDER IDENTIFIED BY '<strong_unique_password>';
 ```
 
 <div class="warningBlock">
-
 Set a strong, unique password for creating the user in MySQL.
 </div>
 
@@ -38,7 +35,6 @@ CREATE SCHEMA _rudderstack;
 ```
 
 <div class="warningBlock">
-
 The <code class="inline-code">_rudderstack</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
 </div>
 
@@ -71,14 +67,12 @@ To set up MySQL as a source in RudderStack, follow these steps:
 * **Password**: Enter the password for the above user.
 
 <div class="infoBlock">
-
 If you've configured a MySQL source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
 </div>
 
 2. Click on **Continue**. RudderStack will then verify and validate your credentials. 
 
 <div class="infoBlock">
-
 For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section. 
 </div>
 
@@ -134,7 +128,6 @@ If this option gives an error, it means that one or more fields specified in the
 * **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema you have created by successfully running all the commands in the [User Permissions](#step-2-creating-the-rudderstack-schema-and-granting-permissions) section. 
 
 <div class="warningBlock">
-
 If this option gives an error, verify if you have successfully created the `_rudderstack` schema and given RudderStack the required permissions to access it. For more information, refer to the <a href="#step-2-creating-the-rudderstack-schema-and-granting-permissions">User Permissions</a> sections.
 </div>
 
