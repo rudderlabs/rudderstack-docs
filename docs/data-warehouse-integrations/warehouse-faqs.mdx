@@ -51,7 +51,7 @@ You can view the warehouse upload status in the **Live Events** section of the d
 
 ## Staging
 
-### Why am I observing files written in the location `<namespace>/rudder-warehouse-staging-logs/`?
+### What are the files written in the location `<namespace>/rudder-warehouse-staging-logs/`?
 
 RudderStack collects all the unprocessed data flowing to the warehouse destinations as staging files. It stores these files in the object storage at the location `<namespace>/rudder-warehouse-staging-logs/`. 
 
@@ -228,7 +228,7 @@ The table name truncation logic is as follows:
 
 ### Can I change the name of the table in which my events are synced?
 
-Yes, you can add a <Link to="">transformation</Link> to change the event name and, consequently, the name of the table in which the events are synced. 
+Yes, you can add a <Link to="/transformations/">transformation</Link> to change the event name and, consequently, the name of the table in which the events are synced. 
 
 As seen in the above <Link to="/#how-does-rudderstack-configure-the-table-names">FAQ</Link>, RudderStack sets the table names to the event names modified in the snake case.
 
@@ -320,7 +320,7 @@ products_android_version : 16
 
 ### How does RudderStack determine the column data type? Can I change an existing data type for a column?
 
-RudderStack determines the columns' data type based on the values contained in the first event when it is uploaded (during the first upload sync).
+RudderStack determines the data type of a column based on its value in the first event (during the first upload sync).
 
 For example, suppose `column_x` is received with the value as `1`. RudderStack then sets the data type of this column as `int` in the event table.
 
