@@ -48,11 +48,12 @@ By turning on the native SDK switch under Android SDK Settings on the RudderStac
   `IND`.
 </div>
 
-## Adding Device Mode Integration
+## Adding device mode integration
 
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
   </TabList>
@@ -89,6 +90,61 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 </li>
 </ol>
       </TabPanel>
+      <TabPanel>
+        <div class="warningBlock">
+          This device mode integration is supported for MoEngage v6.1.0 and above.
+        </div>
+        Follow these steps to add MoEngage to your iOS project:
+<ol>
+<li>Add MoEngage as a destination in the <a href="https://app.rudderstack.com">RudderStack dashboard</a>.</li>
+<li>Install <code class="inline-code">RudderMoEngage</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
+<span>
+
+```ruby
+pod 'RudderMoEngage', '~> 1.0.0'
+```
+</span>
+</li>
+<li>Run the <code class="inline-code">pod install</code> command.</li>
+<li>Then, import the SDK depending on your preferred platform:
+<span>
+
+```swift
+import RudderMoEngage
+```
+</span>
+<span>
+
+```objectivec
+@import RudderMoEngage;
+```
+</span>
+</li>
+<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under the <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
+<br /><br />
+<span>
+
+```swift
+let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
+            .dataPlaneURL(DATA_PLANE_URL)
+
+RSClient.sharedInstance().configure(with: config)
+RSClient.sharedInstance().addDestination(RudderMoEngageDestination())
+```
+</span>
+<span>
+
+```objectivec
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+
+[[RSClient sharedInstance] configureWith:config];
+[[RSClient sharedInstance] addDestination:[[RudderMoEngageDestination alloc] init]];
+```
+</span>
+</li>
+</ol>
+    </TabPanel>
       <TabPanel>
 Follow these steps to add MoEngage to your Android project:
 <ol>
@@ -538,146 +594,17 @@ RudderStack maps the following properties to the MoEngage properties before send
 
 ## Configuring Push Notifications
 
-<!--{% tabs %}
-{% tab title="iOS" %}
-
-- To send push notifications in iOS an APNS certificate needs to be created and has to be converted to `.pem` file.
-- This `.pem` file needs to be uploaded in the MoEngage dashboard.
-- In the target app turn on App Groups and enable one of the App group ids, in case if you don't have an App Group ID then create one. The name of your app group should be `group.{bundle id}.MoEngage`.
-- Turn on Background mode and set/enable Remote Notification.
-- Turn on push notification capabilities in your app.
-- Before initializing add `[MoEngage setAppGroupID:<your app group id>];`
-- In case if you would like to keep the notifications even after the App Launch then : `[MoEngage sharedInstance].disableBadgeReset = true;`
-
-<div class="infoBlock">
-
-For more detailed steps please follow [MoEngage guidelines here](https://docs.moengage.com/docs/push-notification-implementation).
-
-</div>
-
-### In-App messaging
-
-In-app messaging is a type of mobile messaging where the notification is displayed within the app. Some examples include popups, yes/no prompts, interstitials, and more. To implement this please follow this guide: [**InApp NATIV**](https://docs.moengage.com/docs/in-app-nativ)**.**
-{% endtab %}
-
-{% tab title="Android" %}
-Copy the Server Key from the FCM console and add it to the MoEngage Dashboard\(Not sure where to find the Server Key refer to [Getting FCM Server Key](https://docs.moengage.com/docs/getting-fcmgcm-server-key). To upload it, go to the [Settings Page](https://app.moengage.com/v3/#/settings/push/mobile) and add the Server Key and package name.
-**Please make sure you add the keys both in the Test and Live environment.**
-
-Before configuring MoEngage SDK for receiving push notifications please make you have configured Firebase in your application, if not done already refer to the [documentation](https://firebase.google.com/docs/android/setup) and complete setup.
-Also, make sure you have added the Firebase Messaging dependency in your application `build.gradle` file.
-
-### Adding meta for push notification
-
-To show push notifications you need to add the notification small icon and large icon along with the AppId to the `MoEngage.Builder`
-
-```kotlin
-val moEngage = MoEngage.Builder(this, "XXXXXXXX")
-        .setNotificationSmallIcon(R.drawable.icon)
-        .setNotificationLargeIcon(R.drawable.ic_launcher)
-        .build()
-MoEngage.initialise(moEngage)
-```
-
-For showing Push notifications there are 2 important things
-
-1. Registration for Push, i.e. generating push token.
-2. Receiving the Push payload from Firebase Cloud Messaging\(FCM\) service and showing the notification on the device. The above can either be handled by the application or MoEngage SDK. There is some configuration required based on whether the above-mentioned things are handled by the application or SDK.
-
-### Push Registration and Receiving handled by App
-
-By default, MoEngage SDK attempts to register for push token, since your application is handling push you need to opt-out of SDK's token registration.
-
-#### How to opt-out of MoEngage Registration?
-
-To opt-out of MoEngage's token registration mechanism call in the `optOutTokenRegistration()` on the `MoEngage.Builder` as shown below
-
-```kotlin
-val moEngage = MoEngage.Builder(this, "XXXXXXXX")
-        .setNotificationSmallIcon(R.drawable.icon)
-        .setNotificationLargeIcon(R.drawable.ic_launcher)
-        .configureFcm(FcmConfig(false))
-        .build()
-MoEngage.initialise(moEngage)
-```
-
-#### Pass the Push Token To MoEngage SDK
-
-The Application would need to pass the Push Token received from FCM to the MoEngage SDK for the MoEngage platform to send out push notifications to the device. Use the below API to pass the push token to the MoEngage SDK.
-
-```kotlin
-MoEFireBaseHelper.getInstance().passPushToken(applicationContext, token)
-```
-
-_Note:_ Please make sure token is passed to MoEngage SDK whenever push token is refreshed and on application update. Passing token on application update is important for migration to the MoEngage Platform.
-
-#### Passing the Push payload to the MoEngage SDK
-
-To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the Firebase receiver.
-Before passing the payload to the MoEngage SDK you should check if the payload is from the MoEngage platform using the helper API provided by the SDK.
-
-```java
-if (MoEPushHelper.getInstance().isFromMoEngagePlatform(remoteMessage.data)) {
-  MoEFireBaseHelper.getInstance().passPushPayload(
-    applicationContext,
-    remoteMessage.data
-  )
-} else {
-  // your app's business logic to show notification
-}
-```
-
-### Push Registration and Receiving handled by SDK
-
-Add the below code in your manifest file within the application tag
-
-```markup
-<service android:name="com.moengage.firebase.MoEFireBaseMessagingService">
-  <intent-filter>
-    <action android:name="com.google.firebase.MESSAGING_EVENT" />
-  </intent-filter>
-</service>
-```
-
-When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.
-An application can get this callback by implementing `FirebaseEventListener` and registering for a callback in the Application class' `onCreate()`using `MoEFireBaseHelper.getInstance().setEventListener()`
-
-### In-App messaging:
-
-In-app messaging is a type of mobile messaging where the notification is displayed within the app. Examples include popups, yes/no prompts, interstitials, and more. To implement this please follow: [ **InApp NATIV**](https://docs.moengage.com/docs/configuring-in-app-nativ)
-{% endtab %}
-
-{% tab title="Web" %}
-
-- Go to [Web Push Settings](http://app.moengage.com/v3/#/settings/4/0).
-- Under Web fill in the details as required.
-- For HTTPS Web Push to work, you need to host two files in the `root` directory of your web server.
-- After clicking **SAVE**, please proceed to download `serviceworker.js` file. Under [Web Push Settings](http://app.moengage.com/v3/#/settings/4/0).
-- In case you already have your own serviceworker.js add :
-
-```javascript
-importScripts(
-  "https://cdn.moengage.com/webpush/releases/serviceworker_cdn.min.latest.js"
-)
-```
-
-- HTTP : Select a sub-domain.
-
-For more details please follow the [guidelines from MoEngage](https://docs.moengage.com/docs/setting-up-chrome-push).
-{% endtab %}
-{% endtabs %} -->
-
-
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>Web</Tab>
     <Tab>React Native</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
-        <ul>
+        <ol>
           <li>To send push notifications in iOS an APNS certificate needs to be created and has to be converted to <code class="inline-code">.pem</code> file.</li>
           <li>This <code class="inline-code">.pem</code> file needs to be uploaded in the MoEngage dashboard.</li>
           <li>In the target app turn on App Groups and enable one of the App group ids, in case if you don't have an App Group ID then create one. The name of your app group should be <code class="inline-code">group.&#123;bundle id&#125;.MoEngage</code>.</li>
@@ -685,7 +612,7 @@ For more details please follow the [guidelines from MoEngage](https://docs.moeng
           <li>Turn on push notification capabilities in your app.</li>
           <li>Before initializing add <code class="inline-code">[MoEngage setAppGroupID:&lt;your app group id&gt;];</code></li>
           <li>In case if you would like to keep the notifications even after the App Launch then : <code class="inline-code">[MoEngage sharedInstance].disableBadgeReset = true;</code></li>
-        </ul>
+        </ol>
         <div class="infoBlock">
         For more detailed steps please follow <a href="https://docs.moengage.com/docs/push-notification-implementation">MoEngage guidelines here</a>.
         </div>
@@ -693,10 +620,60 @@ For more details please follow the [guidelines from MoEngage](https://docs.moeng
       In-app messaging is a type of mobile messaging where the notification is displayed within the app. Some examples include popups, yes/no prompts, interstitials, and more. To implement this please follow this guide: <a href="https://docs.moengage.com/docs/in-app-nativ">InApp NATIV</a>.
       </TabPanel>
       <TabPanel>
+        <ol>
+          <li>In your <code class="inline-code">plist</code> file, add the <code class="inline-code">MoEngageAppDelegateProxyEnabled</code> key and set it <code class="inline-code">false</code> to disable swizzling. </li>
+          <li>Then, generate the <code class="inline-code">.pem</code> file and upload it to MoEngage.</li>
+          <li>Finally, implement the following method:
+<span>
+
+```swift
+- func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    RSClient.sharedInstance().application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+}
+
+- func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    RSClient.sharedInstance().application(application, didFailToRegisterForRemoteNotificationsWithError: error)
+}
+
+- func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    RSClient.sharedInstance().userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
+}
+
+- func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    RSClient.sharedInstance().application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
+} 
+```
+</span>
+<br />
+<span>
+
+```objectivec
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [RSClient.sharedInstance application: application didRegisterForRemoteNotificationsWithDeviceToken: deviceToken];
+
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [RSClient.sharedInstance application: application didFailToRegisterForRemoteNotificationsWithError: error];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler {
+    [RSClient.sharedInstance userNotificationCenter: center didReceive: response withCompletionHandler: completionHandler];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [RSClient.sharedInstance application: application didReceiveRemoteNotification: userInfo fetchCompletionHandler: completionHandler];
+}
+```
+</span>
+  </li> 
+    </ol>
+      </TabPanel>
+      <TabPanel>
 Copy the Server Key from the FCM console and add it to the MoEngage Dashboard(Not sure where to find the Server Key refer to <a href="https://docs.moengage.com/docs/getting-fcmgcm-server-key">Getting FCM Server Key</a>. To upload it, go to the <a href="https://app.moengage.com/v3/#/settings/push/mobile">Settings Page</a> and add the Server Key and package name.
 **Please make sure you add the keys both in the Test and Live environment.**
-Before configuring MoEngage SDK for receiving push notifications please make you have configured Firebase in your application, if not done already refer to the <a href="https://firebase.google.com/docs/android/setup">documentation</a> and complete setup.
-Also, make sure you have added the Firebase Messaging dependency in your application <code class="inline-code">build.gradle</code> file.
+Before configuring MoEngage SDK for receiving push notifications please make you have configured MoEngage in your application, if not done already refer to the <a href="https://firebase.google.com/docs/android/setup">documentation</a> and complete setup.
+Also, make sure you have added the MoEngage Messaging dependency in your application <code class="inline-code">build.gradle</code> file.
 <h3>Adding meta for push notification</h3>
 To show push notifications you need to add the notification small icon and large icon along with the AppId to the <code class="inline-code">MoEngage.Builder</code>
 <span>
@@ -712,7 +689,7 @@ MoEngage.initialise(moEngage)
 For showing Push notifications there are 2 important things
 <ol>
 <li> Registration for Push, i.e. generating push token.</li>
-<li> Receiving the Push payload from Firebase Cloud Messaging(FCM) service and showing the notification on the device. The above can either be handled by the application or MoEngage SDK. There is some configuration required based on whether the above-mentioned things are handled by the application or SDK.
+<li> Receiving the Push payload from MoEngage Cloud Messaging(FCM) service and showing the notification on the device. The above can either be handled by the application or MoEngage SDK. There is some configuration required based on whether the above-mentioned things are handled by the application or SDK.
 </li>
 </ol>
 <h3>Push Registration and Receiving handled by App</h3>
@@ -743,7 +720,7 @@ MoEFireBaseHelper.getInstance().passPushToken(applicationContext, token)
 </span>
 _Note:_ Please make sure token is passed to MoEngage SDK whenever push token is refreshed and on application update. Passing token on application update is important for migration to the MoEngage Platform.
 <h4>Passing the Push payload to the MoEngage SDK</h4>
-To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the Firebase receiver.
+To pass the push payload to the MoEngage SDK call the MoEngage API from the `onMessageReceived()` from the MoEngage receiver.
 Before passing the payload to the MoEngage SDK you should check if the payload is from the MoEngage platform using the helper API provided by the SDK.
 <span>
 
@@ -771,7 +748,7 @@ Add the below code in your manifest file within the application tag
 ```
 </span>
 When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.
-An application can get this callback by implementing <code class="inline-code">FirebaseEventListener</code> and registering for a callback in the Application class' <code class="inline-code">onCreate()</code>using <code class="inline-code">MoEFireBaseHelper.getInstance().setEventListener()</code>
+An application can get this callback by implementing <code class="inline-code">MoEngageEventListener</code> and registering for a callback in the Application class' <code class="inline-code">onCreate()</code>using <code class="inline-code">MoEFireBaseHelper.getInstance().setEventListener()</code>
 <h3>In-App messaging:</h3>
 In-app messaging is a type of mobile messaging where the notification is displayed within the app. Examples include popups, yes/no prompts, interstitials, and more. To implement this please follow: <a href="https://docs.moengage.com/docs/configuring-in-app-nativ">InApp NATIV</a>
       </TabPanel>
