@@ -3,8 +3,6 @@ title: "NetSuite"
 description: Step-by-step guide to ingest data from NetSuite into RudderStack.
 ---
 
-# NetSuite
-
 [NetSuite](https://www.netsuite.com/portal/home.shtml) is a popular business management suite that delivers efficient ERP, CRM, and other e-commerce solutions to nearly 25000 customers worldwide.
 
 This document guides you in setting up NetSuite as a source in RudderStack. Once configured, RudderStack automatically ingests your specified NetSuite data, which can then be routed to your RudderStack-supported data warehouse destination.
@@ -18,9 +16,9 @@ All the Cloud Extract sources support sending data only to a <a href="https://ww
 
 Before you set up a Netsuite source in RudderStack, there are some RudderStack-specific configurations you need to do in your Netsuite account.
 
-### Whitelisting the IPs
+### Allowlisting the IPs
 
-Depending on the setup of your NetSuite organization, you will have to whitelist the following RudderStack IPs:
+Depending on the setup of your NetSuite organization, you will have to allowlist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -28,7 +26,7 @@ Depending on the setup of your NetSuite organization, you will have to whitelist
 - 23.20.96.9
 - 18.214.35.254
 
-To whitelist the IPs in NetSuite, follow these steps:
+To allowlist the IPs in NetSuite, follow these steps:
 
 1. Sign into your NetSuite account as an administrator.
 2. Go to **Setup** > **Company** > **Company Information**.

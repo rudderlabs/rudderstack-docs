@@ -2,91 +2,106 @@
 # slug: "/docs/user-guides/administrators-guide/onelogin-sso"
 title: "OneLogin SSO Setup"
 description: >-
-  Step-by-step guide to setting up the RudderStack SSO (Single Sign-On) feature
-  with OneLogin.
+  Step-by-step guide on setting up the RudderStack SSO (Single Sign-On) feature with OneLogin.
 ---
 
-# OneLogin SSO Setup
-
-This document lists the steps to follow in order to configure and enable SSO for your organization with OneLogin.
+This guide lists the steps to configure and enable OneLogin SSO for your organization.
 
 <a href="https://rudderstack.com/enterprise-quote" target="_blank">
 <img src="https://img.shields.io/static/v1?label=Plan&message=Enterprise&color=blueviolet" class="githubBadge" />
 </a>
 
-## Configuring SSO
+## Configuring the RudderStack SSO app
 
-- Navigate to your OneLogin administration page after logging in:
+1. Log into your [OneLogin portal](https://app.onelogin.com/login) and click **Administration** in the top menu, as shown:
 
-<img src="../../assets/1 (11).png" />
-<span class="imageTitle">OneLogin Administration Page</span>
+<img src="../../assets/user-guides/onelogin-1.png" alt="Administration option in OneLogin" />
 
+2. From the top menu, go to **Applications** > **Applications**, as shown:
 
-- From the top menu, choose **Applications** - **Applications**, as shown:
+<img src="../../assets/user-guides/onelogin-2.png" alt="Applications option" />
 
-<!--![Application Tab in OneLogin](../../.gitbook/assets/2 (6).png)-->
+3. Then, click **Add App**, as shown:
 
-<img src="../../assets/2 (6).png" alt="Application Tab in OneLogin" />
+<img src="../../assets/user-guides/onelogin-3.png" alt="Add App option" />
 
-<span class="imageTitle">Application Tab in OneLogin</span>
+4. In the resulting **Find Applications** page, search for **SAML Custom Connector (Advanced)**. From the search results, select the application, as shown:
 
-- Click the **Add App** button in the top-right hand corner, as shown:
+<img src="../../assets/user-guides/onelogin-4.png" alt="Select SAML Custom Connector option" />
 
+5. Name your SAML app and click on **Save**, as shown:
 
-<!--![Add App Option in OneLogin](../../.gitbook/assets/3 (2) (1).png)-->
+<img src="../../assets/user-guides/onelogin-5.png" alt="Select SAML app name" />
 
-<img src="../../assets/3 (2) (1).png" alt="Add App Option in OneLogin" />
-<span class="imageTitle">Add App Option in OneLogin</span>
+6. In the **Configuration** tab, enter the settings as shown in the following image:
 
-- Search and select **RudderStack**.
+<img src="../../assets/user-guides/onelogin-6.png" alt="SAML app configuration" />
 
-<!--![](../../.gitbook/assets/image (58).png)-->
+The settings to be configured are listed in the following table:
 
-<img src="../../assets/image (58).png" alt="Search and select RudderStack" />
+| Setting | Value |
+| :-------| :------|
+| Audience (EntityID) | `urn:amazon:cognito:sp:us-east-1_ABZiTjXia` |
+| Recipient | `https://auth2.rudderstack.com/saml2/idpresponse` |
+| ACS (Consumer) URL Validator | `^https:\/\/auth2\.rudderstack\.com\/saml2\/idpresponse\/\$` |
+| ACS (Consumer) URL | `https://auth2.rudderstack.com/saml2/idpresponse` |
+| Login URL | `https://app.rudderstack.com/sso?domain=[your-domain.com]` |
 
-- Then, click the **Save** button in the top-right corner, as shown:
+<div class="warningBlock">
 
-<!--![](../../.gitbook/assets/4 (4).png)-->
+Make sure you enter the correct domain name in the <strong>Login URL</strong> setting. For example, if your employee email is <code class="inline-code">john@example.com</code>, then your <strong>Login URL</strong> will be `https://app.rudderstack.com/sso?domain=example.com`.
+</div>
 
-<img src="../../assets/4 (4).png" alt="Save in the top right corner" />
+7. From the dropdown, select the **SAML initiator** and **SAML nameID format** fields as shown:
 
-- Choose **Configuration** from the menu on the left, as shown:
-
-<!--![Configuration Menu](../../.gitbook/assets/image (32).png)-->
-
-<img src="../../assets/image (32).png" alt="Configuration Menu" />
-
-<span class="imageTitle">Configuration Menu</span>
-
-- Provide a login URL in the following format:**`https://auth.rudderstack.com/v1/start_sso?domain=example.com`** . Here, replace **`example.com`** with the domain you use for your employee email addresses. For example, if your employee email address is **`john@mywebsite.com`**, enter **`mywebsite.com`**.
-- Click on **Save** in the top right corner as shown above.
-- Then, click on the **SSO** option in the menu on the left.
+<img src="../../assets/user-guides/onelogin-7.png" alt="SAML settings" />
 
 <div class="successBlock">
 
-  This **SSO** section contains information which you will be required to share
-  with us so that we can enable the SSO for your organization.
+Configure the other SAML settings related to the assertion validity, encryption method, etc. as per your organizational requirements.
 </div>
 
-- Retrieve the contents of the following two data fields:
-  - **Issuer URL**
-  - **SAML 2.0 Endpoint \(HTTP\)**
-- Now, look for the field **X.509 Certificate** and click on **View Details** underneath, as shown:
+8. Next, go to the **Parameters** tab and add the custom parameters as shown below:
 
+<img src="../../assets/user-guides/onelogin-8.png" alt="Custom parameters" />
 
-<!--![X.509 Certificate Option](../../.gitbook/assets/image (35).png)-->
+The custom parameters and their values are listed in the following table:
 
-<img src="../../assets/image (35).png" alt="X.509 Certificate Option" />
-<span class="imageTitle">X.509 Certificate Option</span>
+| Parameter | Value |
+| :-------| :------|
+| Email | `Email` |
+| LastName | `Name` |
+| NameID value | `Email` |
 
-- Retrieve the certificate by clicking on **Download**. It should start with **`-----BEGIN CERTIFICATE-----`** and end with **`-----END CERTIFICATE-----`** , as shown:
+<div class="infoBlock">
 
-<!--![](../../.gitbook/assets/5 (8) (1) (1).png)-->
+For the <strong>LastName</strong> custom attribute, you can specify a single field <code class="inline-code">Name</code> - which specifies how you would like to see your employees on the RudderStack web app.
+</div>
 
-<img src="../../assets/5 (8) (1) (1).png" alt="Download" />
+9. To add any other custom parameter, click the **+** button, enter the **Field name**, and select the value from the dropdown, as shown:
 
-- Please share the **Issuer URL**, **SAML 2.0 Endpoint \(HTTP\)** and **X.509 Certificate** with us. We will then enable SSO for your organization and get back to you.
+<img src="../../assets/user-guides/onelogin-9.png" alt="Custom parameter configuration" />
 
-## Contact Us
+<div class="warningBlock">
 
-If you need more clarity in following any of the steps in the guide, please feel free to [contact us](mailto:docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+Make sure you enable (tick) the <strong>Include in SAML assertion</strong> flag for each custom parameter.
+</div>
+
+10. Click on **Save** to save the configuration.
+
+## Enabling SSO
+
+Go to the **SSO** tab of your app and copy the **Issuer URL**, as shown:
+
+<img src="../../assets/user-guides/onelogin-10.png" alt="Issuer URL" />
+
+<div class="successBlock">
+
+The <strong>Issuer URL</strong> is the SAML metadata endpoint that contains the certificate and any other information required to enable SSO for your organization.
+</div>
+
+Share this **Issuer URL** with the RudderStack team.
+
+## Contact us
+
+For more information on any of the steps in the guide, you can [contact us](mailto:docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

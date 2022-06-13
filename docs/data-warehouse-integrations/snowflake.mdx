@@ -4,8 +4,6 @@ title: "Snowflake"
 description: Step-by-step guide on setting up Snowflake as a destination in RudderStack.
 ---
 
-# Snowflake
-
 [Snowflake](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the modern data warehouse features like scalability, ease of use, secure access to your data, advanced analytics capabilities, and more.
 
 RudderStack lets you configure Snowflake as a destination to seamlessly store your event data.
@@ -414,9 +412,9 @@ GRANT USAGE ON INTEGRATION <integration_name> TO ROLE "RUDDER";
 ```
 Here, `<integration_name>` is the integration name you set up in Step 1.
 
-## IPs to be whitelisted
+## IPs to be allowlisted
 
-To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
+To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -432,7 +430,7 @@ To enable network access to RudderStack, you will need to whitelist the followin
 
 <div class="infoBlock">
 
-If you have your deployment in the EU region, you can whitelist only the following two IPs:
+If you have your deployment in the EU region, you can allowlist only the following two IPs:
   <ul>
     <li>3.66.99.198</li>
     <li>3.64.201.167</li>

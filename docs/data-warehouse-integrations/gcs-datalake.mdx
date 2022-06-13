@@ -3,8 +3,6 @@ title: "Google Cloud Storage Data Lake"
 description: Step-by-step guide on setting up GCS Data Lake as a destination in RudderStack.
 ---
 
-# Google Cloud Storage Data Lake
-
 The [Google Cloud Storage (GCS) data lake](https://cloud.google.com/architecture/build-a-data-lake-on-gcp) leverages [Google Cloud Storage](https://cloud.google.com/storage) for storing and accessing your data in the GCP infrastructure. It offers state-of-the-art performance and scalability, along with ensuring the security and privacy of your data.
 
 RudderStack lets you configure GCS data lake as a destination to which you can send your event data seamlessly.
@@ -123,9 +121,9 @@ RudderStack then converts these events into Parquet files and dumps them into th
 | Product Purchased | `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` |
 | Cart Viewed             | `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09`              |
 
-## IPs to be whitelisted
+## IPs to be allowlisted
 
-To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
+To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -141,7 +139,7 @@ To enable network access to RudderStack, you will need to whitelist the followin
 
 <div class="infoBlock">
 
-If you have your deployment in the EU region, you can whitelist only the following two IPs:
+If you have your deployment in the EU region, you can allowlist only the following two IPs:
 <ul>
 <li>3.66.99.198</li>
 <li>3.64.201.167</li>

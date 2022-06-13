@@ -4,8 +4,6 @@ title: "Slack"
 description: Step-by-step guide to set up Slack as a destination in RudderStack
 ---
 
-# Slack
-
 [Slack](https://slack.com/intl/en-in/) is a popular business communication platform that lets you organize all your business-related chats by specific topics, groups, or direct messaging.
 
 RudderStack supports Slack as a destination where you can send your event data seamlessly.
@@ -73,9 +71,9 @@ The `name` field in the template is determined from either of the following:
   - `User userId`
   - `Anonymous user anonymousId`
 
-Note that only the traits listed in the **Whitelisted Traits** section are considered to be a part of the identify template. The rest of them are sent to Slack.
+Note that only the traits listed in the **Allowlisted Traits** section are considered to be a part of the identify template. The rest of them are sent to Slack.
  
-<img src="../../assets/event-stream-destinations/traits-slack.png" alt="Whitelisted traits" />
+<img src="../../assets/event-stream-destinations/traits-slack.png" alt="Allowlisted traits" />
 
 #### Event Templates
 

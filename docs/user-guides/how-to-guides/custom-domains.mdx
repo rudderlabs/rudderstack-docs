@@ -5,8 +5,6 @@ description: >-
   Use your own domain to serve the RudderStack Javascript SDK and send events to your own domain.
 ---
 
-# How to Use Custom Domains
-
 This guide contains the steps to use your own domain to route the events or proxy the [RudderStack JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) via your own CDN. 
 
 <div class="warningBlock">
@@ -214,7 +212,7 @@ When the JavaScript SDK is loaded, it uses the source write key to fetch the req
 
 <div class="infoBlock">
 
-The call to fetch the source configuration is sent to <code class="inline-code">api.rudderstack.com</code> with the source <code class="inline-code">WRITE_KEY</code> used as an authorization header. For this reason, this distribution will be slightly different as you will need to explicitly whitelist the Authorization header to make sure it is sent along with each request.
+The call to fetch the source configuration is sent to <code class="inline-code">api.rudderstack.com</code> with the source <code class="inline-code">WRITE_KEY</code> used as an authorization header. For this reason, this distribution will be slightly different as you will need to explicitly allowlist the Authorization header to make sure it is sent along with each request.
 </div>
 
 ### Required settings
@@ -226,12 +224,12 @@ The settings for sending events will be the same as the settings for serving the
 | Origin Domain Name                | `api.rudderlabs.com`         |
 | Alternate Domain Names \(CNAMEs\) | `<subdomain.yourdomain.com>` |
 
-You will also need to whitelist the **Authorization** header in **Cache key settings** by following the steps below:
+You will also need to allowlist the **Authorization** header in **Cache key settings** by following the steps below:
 
 1. Under **Headers**, choose **Include the following headers** from the dropdown.
 2. In the **Add header** field, select **Authorization** from the list of options.
 
-<img src="../../assets/user-guides/custom-domains/custom-domains-7.png" alt="Whitelist authorization header" />
+<img src="../../assets/user-guides/custom-domains/custom-domains-7.png" alt="Allowlist authorization header" />
 
 ### Adding CNAME record to DNS
 

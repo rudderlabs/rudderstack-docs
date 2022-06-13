@@ -4,8 +4,6 @@ title: "PostHog"
 description: Step-by-step guide to send event data from RudderStack to PostHog.
 ---
 
-# PostHog
-
 [PostHog](https://posthog.com/) is a complete product analytics stack built for data analysts and managers. It gives you easy access to scalable product analytics with full control over all your user data.
 
 RudderStack supports PostHog as a destination to which you can seamlessly send your event data for analytics.
@@ -83,7 +81,7 @@ For more information on PostHog's session recording feature, refer to the <a hre
 </div>
 
 - **Additional headers to pass with XHR requests to PostHog API**: Add a list of key-value pairs in this field. The RudderStack web SDK will then forward these headers on the event requests sent to PostHog.
-- **Property black list** - Add a list of traits or event properties that you want the PostHog SDK to filter.
+- **Property denylist** - Add a list of traits or event properties that you want the PostHog SDK to filter.
 
 ## Identify
 

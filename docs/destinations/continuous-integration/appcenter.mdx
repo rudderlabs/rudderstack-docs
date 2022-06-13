@@ -6,13 +6,11 @@ description: >-
   App Center
 ---
 
-# Visual Studio App Center
-
 [App Center](https://appcenter.ms/) is Microsoft's cross-platform build automation and management platform that lets you seamlessly manage your app's lifecycle. With App Center, you can easily manage and automate your builds, effectively test your apps in the cloud, and monitor their real-time usage with the help of crash data and analytics.
 
 RudderStack lets you send your event data to App Center via its native web SDKs.
 
-## Getting Started
+## Getting started
 
 Before configuring your source and destination on the RudderStack, check whether the platform you are sending the events from is supported by App Center. Refer the following table to do so:
 
@@ -38,10 +36,13 @@ Once you have confirmed that the platform supports sending events to App Center,
 
 ## Adding device mode integration
 
+Once you add App Center as a destination in the [RudderStack dashboard](https://app.rudderstack.com/), follow these steps to add it to your mobile project depending on your integration platform:
+
 <Tabs>
   <TabList>
     <Tab>Android</Tab>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
     <Tab>React Native</Tab>
     <Tab>Flutter</Tab>
     <Tab>Cordova</Tab>
@@ -51,7 +52,7 @@ Once you have confirmed that the platform supports sending events to App Center,
         Your Android project must be on <strong>version 5.0 (API level 21) or higher</strong> for RudderStack to be able to send events to App Center.<br/>
 
 Once confirmed, follow these steps to add App Center to your Android project:
-<ul>
+<ol>
 <li>Add the following <code class="inline-code">dependencies</code> to your <code class="inline-code">app/build.gradle</code> file as shown:
 <span>
 
@@ -96,11 +97,11 @@ val rudderClient = RudderClient.getInstance(
 ```
 </span>
 </li>
-</ul>
+</ol>
       </TabPanel>
       <TabPanel>
         Follow these steps to add App Center to your iOS project:
-<ul>
+<ol>
 <li>Go to your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-AppCenter</code> extension
 <span>
 
@@ -132,12 +133,67 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 To use App Center, your iOS project must be set up in Xcode 11 or later on macOS version 10.14.4 or later. Also, you must be targeting devices running on iOS 9.0 or later.
 </div>
 </li>
-</ul>
+</ol>
       </TabPanel>
       <TabPanel>
-        To add AppCenter to your React Native project:
+        <div class="warningBlock">
+          This device mode integration is supported for App Center v4.4.1 and above.
+        </div>
+        Follow these steps to add App Center to your iOS project:
+<ol>
+<li>Install <code class="inline-code">RudderAppCenter</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
+<span>
 
-Add the RudderStack-App Center module to your app as shown:
+```ruby
+pod 'RudderAppCenter', '~> 1.0.0'
+```
+</span>
+</li>
+<li>Run the <code class="inline-code">pod install</code> command. </li>
+<li>Next, import the SDK depending on your preferred platform:
+<span>
+
+```objectivec
+@import RudderAppCenter;
+```
+</span>
+
+<span>
+
+```swift
+import RudderAppCenter
+```
+</span>
+</li>
+<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
+<span>
+
+```objectivec
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+
+[[RSClient sharedInstance] configureWith:config];
+[[RSClient sharedInstance] addDestination:[[RudderAppCenterDestination alloc] init]];
+```
+</span>
+
+<span>
+
+```swift
+let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
+            .dataPlaneURL(DATA_PLANE_URL)
+        
+RSClient.sharedInstance().configure(with: config)
+RSClient.sharedInstance().addDestination(RudderAppCenterDestination())
+```
+</span>
+</li>
+</ol>
+      </TabPanel>
+      <TabPanel>
+        To add AppCenter to your React Native project, follow these steps:
+<ol>
+<li>Add the RudderStack-App Center module to your app as shown:
 <span>
 
 ```bash
@@ -146,32 +202,35 @@ npm install @rudderstack/rudder-integration-appcenter-react-native
 yarn add @rudderstack/rudder-integration-appcenter-react-native
 ```
 </span>
+</li>
 <div class="infoBlock">
 
 Make sure the <code class="inline-code">minSdkVersion</code> of your <code class="inline-code">build.gradle</code> in the root of <code class="inline-code">android</code> directory is atleast <code class="inline-code">21</code>
 </div>
 
-Run <code class="inline-code">pod install</code> inside the <code class="inline-code">ios</code> directory of your project adding <code class="inline-code">@rudderstack/rudder-integration-appcenter-react-native</code> to your project.
+<li>Run <code class="inline-code">pod install</code> inside the <code class="inline-code">ios</code> directory of your project adding <code class="inline-code">@rudderstack/rudder-integration-appcenter-react-native</code> to your project.</li>
 
-Import the module you added above and add it to your SDK initialization code as shown below:
+<li>Finally, import the module you added above and add it to your SDK initialization code, as shown:
 <span>
 
 ```typescript
 import rudderClient from "@rudderstack/rudder-sdk-react-native"
 import appcenter from "@rudderstack/rudder-integration-appcenter-react-native"
 
-const config = &#123;
+const config = {
   dataPlaneUrl: DATA_PLANE_URL,
   trackAppLifecycleEvents: true,
   withFactories: [appcenter],
-&#125;
+}
 rudderClient.setup(WRITE_KEY, config)
 ```
 </span>
+</li>
+</ol>
   </TabPanel>
   <TabPanel>
         To add AppCenter to your Flutter project, add the RudderStack-App Center module to your app by following these steps:
-<ul>
+<ol>
 <li>Open <code class="inline-code">pubspec.yaml</code> and add <code class="inline-code">rudder_integration_appcenter_flutter</code> under <code class="inline-code">dependencies</code> section:
 <span>
 
@@ -209,11 +268,11 @@ RudderClient.getInstance(WRITE_KEY,
 Make sure the <code class="inline-code">minSdkVersion</code> of your <code class="inline-code">build.gradle</code> in the root of <code class="inline-code">android</code> directory is atleast <code class="inline-code">21</code>.
 </div>
 </li>
-</ul>
+</ol>
      </TabPanel>
        <TabPanel>
         To add App Center to your Cordova project, follow these steps:
-<ul>
+<ol>
 <li>Navigate to the root folder of your application and run the following command::
 <span>
 
@@ -255,7 +314,7 @@ RudderClient.initialize(WRITE_KEY , {
 Make sure to use the <code class="inline-code">await</code> keyword with the <code class="inline-code">initialize</code> call.
 </div>
 </li>
-</ul>
+</ol>
      </TabPanel>
    </TabPanels>
   </Tabs>
@@ -425,4 +484,4 @@ The App Center SDK uploads logs in a batch of 50. If the SDK doesn't have 50 log
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

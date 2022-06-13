@@ -4,8 +4,6 @@ title: "PostgreSQL"
 description: Step-by-step guide on setting up PostgreSQL as a destination in RudderStack.
 ---
 
-# PostgreSQL
-
 [PostgreSQL](https://www.postgresql.org/) is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution in order to deliver efficient analytics and user insights.
 
 RudderStack lets you configure PostgreSQL as a destination to which you can seamlessly send your event data.
@@ -134,9 +132,9 @@ The following steps demonstrate how you can create a new SSL certificate in [Goo
 For other cloud providers, this procedure might vary slightly.
 </div>
 
-## IPs to be whitelisted
+## IPs to be allowlisted
 
-To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
+To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -152,7 +150,7 @@ To enable network access to RudderStack, you will need to whitelist the followin
 
 <div class="infoBlock">
 
-If your deployment is in the EU region, you can whitelist only the following two IPs:
+If your deployment is in the EU region, you can allowlist only the following two IPs:
 <ul>
 <li>3.66.99.198</li>
 <li>3.64.201.167</li>
@@ -170,7 +168,7 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 - Firstly, check the status of your data sync in the [RudderStack dashboard](https://app.rudderstack.com/syncs).
 - Make sure you have set up the [required user permissions](https://rudderstack.com/docs/data-warehouse-integrations/postgresql#setting-user-permissions-in-postgresql) for your PostgreSQL instance.
-- Check if your database is accessible to RudderStack by [whitelisting the RudderStack IPs](#ips-to-be-whitelisted).
+- Check if your database is accessible to RudderStack by [allowlisting the RudderStack IPs](#ips-to-be-allowlisted).
 - Ensure that all the security group policies are appropriately set.
 
 ### How does RudderStack handle reserved words?

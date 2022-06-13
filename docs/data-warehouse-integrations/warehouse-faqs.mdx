@@ -5,8 +5,6 @@ description: >-
   Commonly-asked questions for the RudderStack data warehouse integrations.
 ---
 
-# FAQ
-
 ### When does Rudderstack load data into the data warehouse(s)?
 
 RudderStack lets you choose how frequently it should sync the data into the data warehouse. The default time is 30 minutes. However, you can choose to extend this value up to 24 hours. You can also configure the time of the day when RudderStack loads the data.
@@ -49,9 +47,9 @@ RudderStack loads all the events configured with your warehouse into staging buc
 
 Make sure that the retention policy duration is longer than the warehouse sync frequency duration so that RudderStack can re-run event uploads for a longer time, if required. It is recommended to set the retention policy duration to **30 days/1 month**. 
 
-### Which RudderStack IPs should I whitelist?
+### Which RudderStack IPs should I allowlist?
 
-You will need to whitelist the following RudderStack IPs to enable network access:
+You will need to allowlist the following RudderStack IPs to enable network access:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -151,6 +149,54 @@ Namespace:
 To update the namespace as the new source name, you need to configure a new source.
 </div>
 
+### Can I change the namespace (schema name) of my data warehouse in RudderStack?
+
+Yes, you can. RudderStack lets you change the namespace (schema name) where it loads all the data in your warehouse.
+
+You can specify your desired schema name in the **Namespace** field while configuring your warehouse destination in RudderStack, as shown:
+
+<img src="../assets/dw-integrations/namespace-example.png" />
+
+<div class="infoBlock">
+
+Refer to the [warehouse-specific documentation](https://www.rudderstack.com/docs/data-warehouse-integrations/) for more information on configuring the namespace.
+</div>
+
+<div class="warningBlock">
+
+If you do not set the <strong>Namespace</strong> field, RudderStack sets the source name as the schema name, with some modifications.
+</div>
+
+### How does RudderStack configure the schema name before loading the data in the warehouse?
+
+RudderStack configures the schema name based on the values mentioned in the below table. The table columns are defined as follows:
+
+- **Sync**: Indicates whether RudderStack performs the first data sync after the source is set up or the subsequent syncs.
+- **Namespace**: The **Namespace** field set by the user while configuring the warehouse destination in the RudderStack dashboard.
+- **Warehouse.&lt;destType&gt;.customDataset Prefix**: The `RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX` parameter in the `config.yaml` file, in case the user has a RudderStack deployment locally/in their own environment.
+- **Source name**: Name of the source connected to the warehouse destination.
+
+| Sync  | Namespace    | `customDataset` Prefix | Source name | Schema name| Notes|
+| :-------- | :------------ | :------- | :------- | :------- |:------- |
+| First sync   | AB | XY | S | AB | The namespace is given priority over all the other values. |    
+| First sync   | Not set | XY | S | XY_S | RudderStack combines the `customDataset` prefix and the source name to set the schema name, if the namespace is absent.|
+| First sync   | Not set | Not set | S | S | RudderStack sets the source name as the schema name if the namespace and `customDataset` prefix are absent.|
+| First sync   | AB | Not set | S | AB |The namespace is given priority over the other values.|
+| Second sync onwards   | ABC | XYZ | SS | ABC | The namespace, source name and the `customDataset` prefix have all been modified. The new namespace is given priority and set as the schema name. <br /><br />All the data from the second sync will now be stored in the new schema (ABC) and the original schema (AB) will be left as is. |
+| Second sync onwards   | Not set | XYZ | S | XYZ_S | The `customDataset` prefix name has been modified. <br /><br />RudderStack combines the `customDataset` prefix and the source name to set the schema name. |
+| Second sync onwards   | Not set | XYZ | SS | XYZ_SS | The source name and `customDataset` prefix have been modified. <br /><br />RudderStack combines them together to set the schema name. |
+| Second sync onwards   | ABC | Not set | SS | ABC | The namespace and source names have been modified. <br /><br />The namespace is given priority and set as the schema name.|
+| Second sync onwards   | Not set | Not set | SS | S | The source name has been modified. However, it does not impact the schema name and it remains the same as in the first sync. |
+
+<div class="infoBlock">
+
+<strong>Key takeaways</strong>:
+<ul>
+  <li>The namespace set in the RudderStack dashboard always takes precedence when setting the schema name in the warehouse.</li>
+  <li>If the <code class="inline-code">RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX</code> parameter is set in the <code class="inline-code">config.yaml</code> file of your RudderStack deployment, RudderStack sets the schema name in the <code class="inline-code">customDataset_sourcename</code> format, as noted in this <Link to="#how-is-the-namespace-field-populated-for-a-warehouse-destination">FAQ</Link>.</li>
+  <li>If the namespace and <code class="inline-code">RSERVER_WAREHOUSE_(DEST_TYPE)_CUSTOM_DATA_SET_PREFIX</code> parameter, both are absent, RudderStack sets the source name as the schema name.</li>
+</ul>
+</div>
 
 ### How does Rudderstack configure table names?
 

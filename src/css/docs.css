@@ -3,8 +3,9 @@
 .childrenWrapper h1 {
   font-size: 32px;
   font-weight: bold;
+  position: relative;
 }
-.pgdescription {
+.childrenWrapper p.pgdescription {
   --tw-text-opacity: 1;
   color: rgba(167, 167, 167, var(--tw-text-opacity));
   display: block !important;
@@ -706,12 +707,23 @@ a.pageRef {
 .searchToggleIcon {
   @apply inline-block cursor-pointer;
 }
-.searchResultsWrapper .description {
-  @apply text-xs mb-0;
+.searchResultsWrapper .pageTitle {
+  @apply font-bold;
+  font-size: 17px;
 }
 .searchResultsWrapper .sectionTitle {
-  @apply font-semibold mb-3 leading-6;
-  font-size: 16px;
+  @apply font-semibold;
+  font-size: 15px;
+  margin-top: 5px;
+}
+.searchResultsWrapper .breadcrumb {
+  @apply text-xs;
+  color: #007BFF;
+  margin-top: 8px;
+}
+.searchResultsWrapper .description {
+  @apply text-xs mb-0;
+  margin-top: 8px;
 }
 .searchResultsWrapper em {
   @apply bg-blueNew-magenta text-whiteColor-custom not-italic;
@@ -723,7 +735,7 @@ a.pageRef {
   @apply border-b-0;
 }
 .instantSearchWrapper .docsSearch {
-  @apply border-none;
+  @apply w-full border-none pr-5;
 }
 .docsSearchWrapper {
   @apply flex items-center border-b border-grayColor-lightBorder bg-whiteColor-custom;
@@ -863,8 +875,8 @@ a.pageRef:hover .rightRefArrow {
 }
 .instantSearchWrapper {
   z-index: 31;
-  width: 320px;
-  transform: translateX(320px);
+  width: 430px;
+  transform: translateX(430px);
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .instantSearchWrapper.active {
@@ -1089,6 +1101,11 @@ a.pageRef:hover .rightRefArrow {
   .docsLogo {
     @apply justify-center;
   }
+
+  .instantSearchWrapper {
+    width: 85vw;
+    transform: translateX(85vw);
+  }
 }
 
 /* feedback component */
@@ -1165,6 +1182,35 @@ a.pageRef:hover .rightRefArrow {
 .feedback-container .inner-container {
   min-width: 152px;
   text-align: center;
+}
+.banner-404 {
+  background: url(../images/banner-404.jpg);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+}
+.frtxt-contnt p{
+  margin: 2rem 0px;
+  color: rgba(78,78,78,1);
+}
+.btn-primary-lg{
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  background-color: rgba(134,248,224,var(--tw-bg-opacity));
+  border-color: rgba(134,248,224,var(--tw-border-opacity));
+  border-radius: 0.5rem;
+  border-width: 1px;
+  display: block;
+  --tw-text-opacity: 1;
+  color: rgba(0,0,0,var(--tw-text-opacity));
+  font-size: 14px;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+.font-custom {
+  font-family: 'Basis Grotesque',sans-serif!important;
 }
 @media screen and (max-width: 1200px) {
   .feedback-container {

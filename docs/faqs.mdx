@@ -4,8 +4,6 @@ description: >-
   Answers to the frequently asked questions about RudderStack - including the core functionality, setup, features, and more.
 ---
 
-# FAQ
-
 This section aims to address the queries and issues you might encounter while using RudderStack.
 
 <div class="infoBlock">
@@ -313,7 +311,7 @@ You can override the UI-set sync frequency by setting `warehouseSyncFreqIgnore` 
 
 1. Firstly, make sure you have set up the required <Link to="/data-warehouse-integrations/postgresql/#setting-user-permissions-in-postgresql">user permissions</Link> for PostgreSQL.
 2. Then, check the status of the sync in the [RudderStack dashboard](https://app.rudderstack.com/syncs).
-3. Check if the database is accessible by allowlisting all the RudderStack IPs listed <Link to="/data-warehouse-integrations/warehouse-faqs/#which-ips-should-be-whitelisted">here</Link>.
+3. Check if the database is accessible by allowlisting all the RudderStack IPs listed <Link to="/data-warehouse-integrations/warehouse-faqs/#which-rudderstack-ips-should-i-allowlist">here</Link>.
 4. Ensure that all the security group policies for S3 are set as specified <Link to="/destinations/storage-platforms/amazon-s3#permissions">here</Link>.
 
 #### When sending data into a data warehouse, how can I change the table where this data is sent?
@@ -382,11 +380,11 @@ When a new node is added, the users need to be rebalanced across nodes to keep e
 
 Additionally, the SDKs have a built-in local caching and retrying capability. So even if there is a failure, no events are lost.
 
-## Whitelisting
+## Allowlisting
 
-#### What are the IPs to be whitelisted?
+#### What are the IPs to be allowlisted?
 
-To enable network access to RudderStack, you will need to whitelist the following RudderStack IPs:
+To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
 
 - 3.216.35.97
 - 34.198.90.241
@@ -402,7 +400,7 @@ To enable network access to RudderStack, you will need to whitelist the followin
 
 <div class="infoBlock">
 
-If you have your deployment in the EU region, you can whitelist only the following two IPs:
+If you have your deployment in the EU region, you can allowlist only the following two IPs:
   <ul>
     <li>3.66.99.198</li>
     <li>3.64.201.167</li>
@@ -414,9 +412,9 @@ If you have your deployment in the EU region, you can whitelist only the followi
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
-#### Which URLs should be whitelisted for a content security policy?
+#### Which URLs should be allowlisted for a content security policy?
 
-For a content security policy, the following URLs should be whitelisted:
+For a content security policy, the following URLs should be allowlisted:
 
 **Control plane**
   - `https://api.rudderstack.com`
