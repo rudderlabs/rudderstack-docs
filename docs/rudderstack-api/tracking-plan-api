@@ -2,8 +2,7 @@
 #slug: "/docs/rudderstack-api/tracking-plan-api"
 title: "Tracking Plan API"
 description: >-
-  Detailed technical description of the Tracking Plan API to track and
-  capture event data efficiently.
+  Detailed technical description of the Tracking Plan API to monitor your event data efficiently.
 ---
 
 # Tracking Plan API
@@ -53,20 +52,12 @@ Authorization: Basic bmFtZUBzdXJuYW1lLmNvbToxemw0R0prTHUwSHNCZHJESzg4TmdZWnpZMkU
 
 ## Tracking Plans
 
-### Create Tracking Plan
+This collection contains a list of the supporting Data Governance API calls and models with relevant examples.
 
-### Update Tracking Plan
+| Tracking Plan API | Description       | 
+| :------------------ | :------------ | 
+| [Tracking Plans](https://documenter.getpostman.com/view/16242548/TzeWFT6D#2a5b999c-b417-4622-ad13-d212e4e211d1)    |    This section demonstrates all the requests related to tracking plans, such as, create, update, upsert or fetch tracking plans.    | 
+| [Tracking Plan Rules](https://documenter.getpostman.com/view/16242548/TzeWFT6D#dfa3156f-216f-4399-bd5d-c57e077ba406)      |  This section demonstrates all the requests related to events, such as, create, update, link/unlink or fetch events. | 
+| [Source Tracking Plan Connections](https://documenter.getpostman.com/view/16242548/TzeWFT6D#4b74ffd2-de44-43c9-b2a4-2d65e4fb61c9)  | This section demonstrates the requests required to create/update, fetch, or connect a tracking plan configuration for a given source. You can also list or delete/remove source-tracking plan connections. | 
 
-### Upsert Tracking Plan
-
-## Tracking Plan rules
-
-### Create events in the user workspace
-
-## Source Tracking Plan connections
-
-### Create/Update source configuration 
-
-
-
-Refer to the [Tracking Plan API documentation](https://documenter.getpostman.com/view/16242548/TzeWFT6D#7df289e7-8758-4ec0-a86e-3aa08bd3260e) in Postman.
+Refer to the [Tracking Plan API documentation](https://documenter.getpostman.com/view/16242548/TzeWFT6D#7df289e7-8758-4ec0-a86e-3aa08bd3260e) in Postman for detailed information on the API methods.
