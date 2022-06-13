@@ -1817,6 +1817,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "tracking-plan-api",
+    title: "Tracking Plan API",
+    link: "/rudderstack-api/tracking-plan-api/",
+    content: [],
+  },
+  {
     key: "rudderstack-open-source",
     title: "RudderStack Open Source",
     link: "/rudderstack-open-source/",
