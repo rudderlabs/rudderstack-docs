@@ -623,50 +623,7 @@ RudderStack maps the following properties to the MoEngage properties before send
         <ol>
           <li>In your <code class="inline-code">plist</code> file, add the <code class="inline-code">MoEngageAppDelegateProxyEnabled</code> key and set it <code class="inline-code">false</code> to disable swizzling. </li>
           <li>Then, generate the <code class="inline-code">.pem</code> file and upload it to MoEngage.</li>
-          <li>Finally, implement the following method:
-<span>
-
-```swift
-- func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    RSClient.sharedInstance().application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
-}
-
-- func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-    RSClient.sharedInstance().application(application, didFailToRegisterForRemoteNotificationsWithError: error)
-}
-
-- func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    RSClient.sharedInstance().userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
-}
-
-- func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-    RSClient.sharedInstance().application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler)
-} 
-```
-</span>
-<br />
-<span>
-
-```objectivec
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [RSClient.sharedInstance application: application didRegisterForRemoteNotificationsWithDeviceToken: deviceToken];
-
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [RSClient.sharedInstance application: application didFailToRegisterForRemoteNotificationsWithError: error];
-}
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler {
-    [RSClient.sharedInstance userNotificationCenter: center didReceive: response withCompletionHandler: completionHandler];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    [RSClient.sharedInstance application: application didReceiveRemoteNotification: userInfo fetchCompletionHandler: completionHandler];
-}
-```
-</span>
-  </li> 
+          <li>Finally, implement the relevant methods in your <code class="inline-code">AppDelegate</code> file by referring to <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/#supporting-push-notifications-for-device-mode-destinations">this section</Link>.</li>
     </ol>
       </TabPanel>
       <TabPanel>
