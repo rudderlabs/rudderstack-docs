@@ -91,13 +91,14 @@ This setting is not applicable for the JavaScript (web) source as RudderStack do
 
 - Finally, click on **Next** to complete the configuration. AppsFlyer will be added and enabled as a destination in RudderStack.
 
-## Adding AppsFlyer to your project
+## Adding device mode integration
 
 Depending on your integration platform, follow the steps to add AppsFlyer to your project:
 
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
     <Tab>Cordova</Tab>
@@ -154,6 +155,61 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 </li>
 </ol>
       </TabPanel>
+      <TabPanel>
+        <div class="warningBlock">
+          This device mode integration is supported for AppsFlyer v6.5.4 and above.
+        </div>
+        Follow these steps to add AppsFlyer to your iOS project:
+<ol>
+<li>Add AppsFlyer as a destination in the <a href="https://app.rudderstack.com">RudderStack dashboard</a>.</li>
+<li>Install <code class="inline-code">RudderAppsFlyer</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
+<span>
+
+```ruby
+pod 'RudderAppsFlyer', '~> 1.0.0'
+```
+</span>
+</li>
+<li>Run the <code class="inline-code">pod install</code> command.</li>
+<li>Then, import the SDK depending on your preferred platform:
+<span>
+
+```swift
+import RudderAppsFlyer
+```
+</span>
+<span>
+
+```objectivec
+@import RudderAppsFlyer;
+```
+</span>
+</li>
+<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under the <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
+<br /><br />
+<span>
+
+```swift
+let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
+            .dataPlaneURL(DATA_PLANE_URL)
+        
+RSClient.sharedInstance().configure(with: config)
+client?.addDestination(RudderAppsFlyerDestination())
+```
+</span>
+<span>
+
+```objectivec
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+
+[[RSClient sharedInstance] configureWith:config];
+[[RSClient sharedInstance] addDestination:[[RudderAppsFlyerDestination alloc] init]];
+```
+</span>
+</li>
+</ol>
+    </TabPanel>
       <TabPanel>
         To add AppsFlyer to your Android project:
 <ol>
