@@ -50,6 +50,7 @@ By turning on the native SDK switch under Android SDK Settings on the RudderStac
 
 ## Adding device mode integration
 
+Once you add MoEngage as a destination in the [RudderStack dashboard](https://app.rudderstack.com/), follow these steps to add it to your project, depending on your integration platform:
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
@@ -96,7 +97,6 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
         </div>
         Follow these steps to add MoEngage to your iOS project:
 <ol>
-<li>Add MoEngage as a destination in the <a href="https://app.rudderstack.com">RudderStack dashboard</a>.</li>
 <li>Install <code class="inline-code">RudderMoEngage</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
 <span>
 
@@ -629,7 +629,7 @@ RudderStack maps the following properties to the MoEngage properties before send
       <TabPanel>
 Copy the Server Key from the FCM console and add it to the MoEngage Dashboard(Not sure where to find the Server Key refer to <a href="https://docs.moengage.com/docs/getting-fcmgcm-server-key">Getting FCM Server Key</a>. To upload it, go to the <a href="https://app.moengage.com/v3/#/settings/push/mobile">Settings Page</a> and add the Server Key and package name.
 **Please make sure you add the keys both in the Test and Live environment.**
-Before configuring MoEngage SDK for receiving push notifications please make you have configured MoEngage in your application, if not done already refer to the <a href="https://firebase.google.com/docs/android/setup">documentation</a> and complete setup.
+Before configuring the MoEngage SDK for receiving push notifications, make you have integrated MoEngage with your app.
 Also, make sure you have added the MoEngage Messaging dependency in your application <code class="inline-code">build.gradle</code> file.
 <h3>Adding meta for push notification</h3>
 To show push notifications you need to add the notification small icon and large icon along with the AppId to the <code class="inline-code">MoEngage.Builder</code>
