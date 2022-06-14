@@ -72,15 +72,25 @@ export default function Docs({ mdx, pageContext }) {
         {...props}
       />
     ),
-    GhBadge: (props) => (
-      <a className={`githubBadgeLink${props.url ? "" : " disabled"}`} href={props.url} target="_blank">
-        <img
-          src={`https://img.shields.io/static/v1?label=${props.label}&message=${props.message}&color=${props.color}${props.style ? "&style=" + props.style : ""}${props.logo ? "&logo=" + props.logo : ""}`}
-          alt="Github Badge"
-          className="githubBadge"
-        />
-      </a>
-    ),
+    GhBadge: (props) => {
+      let queryParams = [];
+      ["label", "message", "color", "style", "logo"].forEach(x => {
+        if (props[x]) queryParams.push(x + "=" + props[x])
+      })
+
+      let src = `https://img.shields.io/static/v1?${queryParams.join("&")}`
+      if (props.repo) src = `https://img.shields.io/${props.repo}${queryParams.length > 0 ? "?" : ""}${queryParams.join("&")}`
+
+      return (
+        <a className={`githubBadgeLink${props.url ? "" : " disabled"}`} href={props.url} target="_blank">
+          <img
+            src={src}
+            alt="Github Badge"
+            className="githubBadge"
+          />
+        </a>
+      )
+    },
   };
 
   useEffect(() => {
