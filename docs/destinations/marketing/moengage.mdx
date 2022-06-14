@@ -705,7 +705,7 @@ Add the below code in your manifest file within the application tag
 ```
 </span>
 When MoEngage SDK handles push registration it optionally provides a callback to the Application whenever a new token is registered or token is refreshed.
-An application can get this callback by implementing <code class="inline-code">MoEngageEventListener</code> and registering for a callback in the Application class' <code class="inline-code">onCreate()</code>using <code class="inline-code">MoEFireBaseHelper.getInstance().setEventListener()</code>
+An application can get this callback by implementing <code class="inline-code">FirebaseEventListener</code> and registering for a callback in the Application class' <code class="inline-code">onCreate()</code>using <code class="inline-code">MoEFireBaseHelper.getInstance().setEventListener()</code>
 <h3>In-App messaging:</h3>
 In-app messaging is a type of mobile messaging where the notification is displayed within the app. Examples include popups, yes/no prompts, interstitials, and more. To implement this please follow: <a href="https://docs.moengage.com/docs/configuring-in-app-nativ">InApp NATIV</a>
       </TabPanel>
