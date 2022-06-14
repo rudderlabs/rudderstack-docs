@@ -25,9 +25,7 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
 To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
 </div>
 
 Once you have confirmed that the platform supports sending events to MoEngage, perform the steps below:
@@ -42,10 +40,7 @@ In the Connection Settings on the RudderStack dashboard, please enter the MoEnga
 By turning on the native SDK switch under Android SDK Settings on the RudderStack dashboard you can enable Rudder Stack Device Mode for **Android** Sources. Similarly for **Web** Under Web SDK Settings and **IOS** under iOS SDK Settings.
 
 <div class="successBlock">
-
-  Choose `EU` in the `Region` field to send your event data to the MoEngage
-  Europe server. To send your event data to the MoEngage India server, choose
-  `IND`.
+Choose `EU` in the `Region` field to send your event data to the MoEngage Europe server. To send your event data to the MoEngage India server, choose `IND`.
 </div>
 
 ## Adding device mode integration
@@ -607,7 +602,7 @@ RudderStack maps the following properties to the MoEngage properties before send
         <ol>
           <li>To send push notifications in iOS an APNS certificate needs to be created and has to be converted to <code class="inline-code">.pem</code> file.</li>
           <li>This <code class="inline-code">.pem</code> file needs to be uploaded in the MoEngage dashboard.</li>
-          <li>In the target app turn on App Groups and enable one of the App group ids, in case if you don't have an App Group ID then create one. The name of your app group should be <code class="inline-code">group.&#123;bundle id&#125;.MoEngage</code>.</li>
+          <li>In the target app turn on App Groups and enable one of the App group ids, in case if you don't have an App Group ID then create one. The name of your app group should be <code class="inline-code">group.<bundle_id>.MoEngage</code>.</li>
           <li>Turn on Background mode and set/enable Remote Notification.</li>
           <li>Turn on push notification capabilities in your app.</li>
           <li>Before initializing add <code class="inline-code">[MoEngage setAppGroupID:&lt;your app group id&gt;];</code></li>
@@ -621,9 +616,28 @@ RudderStack maps the following properties to the MoEngage properties before send
       </TabPanel>
       <TabPanel>
         <ol>
-          <li>In your <code class="inline-code">plist</code> file, add the <code class="inline-code">MoEngageAppDelegateProxyEnabled</code> key and set it <code class="inline-code">false</code> to disable swizzling. </li>
-          <li>Then, generate the <code class="inline-code">.pem</code> file and upload it to MoEngage.</li>
+         <li>To send push notifications in iOS, an APNS certificate needs to be created and converted to a <code class="inline-code">.pem</code> file. This <code class="inline-code">.pem</code> file needs to be uploaded in the MoEngage dashboard.
+          <li>Then, in your <code class="inline-code">plist</code> file, add the <code class="inline-code">MoEngageAppDelegateProxyEnabled</code> key and set it to <code class="inline-code">false</code> to disable swizzling.</li>
           <li>Finally, implement the relevant methods in your <code class="inline-code">AppDelegate</code> file by referring to <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/#supporting-push-notifications-for-device-mode-destinations">this section</Link>.</li>
+         <li>To keep the push notifications even after app launch, you can call the below method:
+<span>
+
+```swift
+MoEngage.sharedInstance().setDisableBadgeReset(true)
+```
+</span>
+
+<span>
+
+```objectivec
+[[MoEngage sharedInstance] setDisableBadgeReset:true];
+```
+</span>
+</li>
+
+<div class="infoBlock">
+For more information, refer to the [MoEngage documentation](https://developers.moengage.com/hc/en-us/articles/4403943988756-Push-Notifications) on push notifications.
+</div>
     </ol>
       </TabPanel>
       <TabPanel>
