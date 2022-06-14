@@ -241,8 +241,10 @@ rudderClient!!.track("device_token_registered")
     </TabPanels>
 </Tabs>
 
-<div class="successBlock">
-RudderStack also supports the removal of the device (identified by <code class="inline-code">device_id</code>) whenever the <code class="inline-code">Application Uninstalled</code> lifecycle event is called.
+RudderStack also supports the removal of the device (identified by `device_id`) whenever a custom event `Application Uninstalled` is sent to Customer.io.
+
+<div class="warningBlock">
+Note that the above <code class="inline-code">Application Uninstalled</code> event is not the same as the <code class="inline-code">Application Uninstalled</code> <Link to="/rudderstack-api/api-specification/application-lifecycle-events-spec/">lifecycle event</Link>. The former is a custom event sent to Customer.io when you want to unregister a device, whereas the latter refers to the lifecycle event that RudderStack automatically captures upon uninstalling an application.
 </div>
 
 ## FAQ
