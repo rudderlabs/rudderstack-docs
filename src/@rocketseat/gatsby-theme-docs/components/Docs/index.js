@@ -72,11 +72,30 @@ export default function Docs({ mdx, pageContext }) {
         {...props}
       />
     ),
+    GhBadge: (props) => {
+      let queryParams = [];
+      ["label", "message", "color", "style", "logo"].forEach(x => {
+        if (props[x]) queryParams.push(x + "=" + props[x])
+      })
+
+      let src = `https://img.shields.io/static/v1?${queryParams.join("&")}`
+      if (props.repo) src = `https://img.shields.io/${props.repo}${queryParams.length > 0 ? "?" : ""}${queryParams.join("&")}`
+
+      return (
+        <a className={`githubBadgeLink${props.url ? "" : " disabled"}`} href={props.url} target="_blank">
+          <img
+            src={src}
+            alt="Github Badge"
+            className="githubBadge"
+          />
+        </a>
+      )
+    },
   };
 
   useEffect(() => {
     (function () {
-      const zoom = mediumZoom(document.querySelectorAll("img:not(.mainLogo)"));
+      const zoom = mediumZoom(document.querySelectorAll("img:not(.mainLogo, .githubBadge)"));
 
       return () => {
         zoom.detach();
