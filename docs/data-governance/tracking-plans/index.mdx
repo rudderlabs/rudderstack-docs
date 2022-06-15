@@ -5,8 +5,6 @@ description: >-
   Detailed technical description of the Tracking Plans feature to plan and monitor your event data.
 ---
 
-# Tracking Plans
-
 Tracking Plans let you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
 
 ## Tracking Plan features
@@ -16,10 +14,9 @@ With the help of a Tracking Plan, you can:
 * Define specific event names and properties for your `track` calls.
 * Specify whether a property/attribute is required and assign a particular data type.
 * Have better control of your data streaming by supporting a versioning system.
-* Use the [Data Governance API](https://rudderstack.com/docs/data-governance/rudderstack-data-governance-api/) to evaluate your inbound events and metadata, and compare them with your plans.
+* Use the <Link to="/data-governance/rudderstack-data-governance-api">Data Governance API</Link> to evaluate your inbound events and metadata, and compare them with your plans.
 
 <div class="infoBlock">
-
 Refer to the <a href="https://rudderstack.com/blog/dogfooding-at-rudderstack-tracking-plans-part-1/">RudderStack Tracking Plans</a> blog post for more information on Tracking Plans and how to use them effectively.
 </div>
 
@@ -27,14 +24,13 @@ Refer to the <a href="https://rudderstack.com/blog/dogfooding-at-rudderstack-tra
 
 To start using the Tracking Plans, follow these steps:
 
-1. Generate a [personal access token](https://www.rudderstack.com/docs/rudderstack-api/personal-access-tokens/) in the RudderStack dashboard.
+1. Generate a <Link to="/rudderstack-api/personal-access-tokens">personal access token</Link> in the RudderStack dashboard.
 2. Make a copy of the [RudderStack Tracking Plan Spreadsheet](https://docs.google.com/spreadsheets/d/1QnCY3dbzyz2InB68W3AGIJshsuY3Zu8WA3AfMMxIzAQ/edit#gid=1810167975) to create or update your tracking plans.
-3. Connect your Tracking Plan to a source. For more information, refer to the [Tracking Plan Spreadsheet](https://www.rudderstack.com/docs/data-governance/tracking-plans/tracking-plan-spreadsheet/#linking-tracking-plan-to-a-source) documentation.
-4. (Optional) Use [RudderTyper](https://www.rudderstack.com/docs/data-governance/ruddertyper/) for autocomplete and linting.
+3. Connect your Tracking Plan to a source. For more information, refer to the <Link to="/data-governance/tracking-plans/tracking-plan-spreadsheet/#linking-tracking-plan-to-a-source">Tracking Plan Spreadsheet</Link> documentation.
+4. (Optional) Use <Link to="/data-governance/ruddertyper">RudderTyper</Link> for autocomplete and linting.
 
 <div class="infoBlock">
-
-Refer to the <a href="https://www.rudderstack.com/docs/data-governance/rudderstack-data-governance-api/">Tracking Plan API</a> for detailed information on the Tracking Plan API methods.
+Refer to the <Link to="/rudderstack-api/tracking-plan-api">Tracking Plan API</Link>for detailed information on the Tracking Plan API methods.
 </div>
 
 ## Useful links
@@ -99,7 +95,7 @@ Refer to the <a href="https://www.rudderstack.com/docs/data-governance/ruddersta
 
 ### Which calls are supported by the tracking plans?
 
-The Tracking Plans feature currently supports only [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) events.
+The Tracking Plans feature currently supports only <Link to="/rudderstack-api/api-specification/rudderstack-spec/track">`track`</Link> events.
 
 ### Does RudderStack propagate the context related to any tracking plan violations?
 
