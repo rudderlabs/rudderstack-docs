@@ -51,18 +51,18 @@ The following table details the mapping between RudderStack and DCM Floodlight's
 | `properties.matchId` | `matchId` |  Sales |
 | `properties.quantity` | `quantity` | Sales - items_sold |
 
-
-
 The following table provides a brief description of the above DCM Floodlight properties:
 
 | DCM Floodlight property | Description |
 | :----| :-----|
 | `dc_lat` | Indicates if the user has enabled the **Limited Ad Tracking** option for IDFA/Android Advertising ID. |
-| `ord` | Used to make the Floodlight tag unique and prevent browser caching. |
-| `quantity` | Applicable for **Sales** tags only - RudderStack adds the quantity of all the products in the `products` array or refers to the top-level `quantity` property. |
-| `value` | Applicable for **Sales** tags only - RudderStack sends the `revenue` parameter to DCM Floodlight. |
-| `matchId` | Advertiser created identifier used to attribute offline conversions.   |
-| `num` | Used to control cache busting manually. |
+| `ord` | Makes the Floodlight tag unique and prevent browser caching. |
+| `quantity` | RudderStack adds the quantity of all the products in the `products` array or refers to the top-level `quantity` property. Applicable for **Sales** tags only. |
+| `value` | RudderStack sends the `revenue` parameter to DCM Floodlight. Applicable for **Sales** tags only. |
+| `matchId` | Identifier created by the advertiser to attribute offline conversions.   |
+| `num` | Controls cache busting manually. |
+| `session_id` | Inserts a unique session ID while using counter tags with a per session counting methodology.  |
+| `transaction_id` | Sets a unique identifier for a transaction. |
 
 ## Custom parameters
 
