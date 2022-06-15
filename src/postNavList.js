@@ -901,6 +901,24 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "setting-up-singular-in-rudderstack",
+    title: "Setting up Singular",
+    link: "/destinations/analytics/singular/setting-up-singular-in-rudderstack/",
+    content: [],
+  },
+  {
+    key: "singular-device-mode",
+    title: "Device Mode",
+    link: "/destinations/analytics/singular/singular-device-mode/",
+    content: [],
+  },
+  {
+    key: "singular-cloud-mode",
+    title: "Cloud Mode",
+    link: "/destinations/analytics/singular/singular-cloud-mode/",
+    content: [],
+  },
+  {
     key: "crm",
     title: "CRM",
     link: "/destinations/crm/",

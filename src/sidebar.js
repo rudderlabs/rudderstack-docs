@@ -1111,7 +1111,29 @@ export const jsonData = [
             key: "singular",
             title: "Singular",
             link: "/destinations/analytics/singular/",
-            content: [],
+            content: [
+              {
+                key: "setting-up-singular-in-rudderstack",
+                title: "Setting up Singular",
+                link:
+                  "/destinations/analytics/singular/setting-up-singular-in-rudderstack/",
+                content: [],
+              },
+              {
+                key: "singular-cloud-mode",
+                title: "Cloud Mode",
+                link:
+                  "/destinations/analytics/singular/singular-cloud-mode/",
+                content: [],
+              },
+              {
+                key: "singular-device-mode",
+                title: "Device Mode",
+                link:
+                  "/destinations/analytics/singular/singular-device-mode/",
+                content: [],
+              },
+            ],
           },
         ],
       },

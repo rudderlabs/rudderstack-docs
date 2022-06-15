@@ -1,0 +1,108 @@
+---
+# slug: "/docs/destinations/analytics/singluar"
+title: "Cloud Mode"
+description: Step-by-step guide on sending events from RudderStack to Singular via the cloud mode.
+---
+
+RudderStack supports server-to-server (S2S) API integration with Singular.
+
+<div class="infoBlock">
+Refer to the <a href="https://support.singular.net/hc/en-us/articles/360048588672-Server-to-Server-S2S-API-Endpoint-Reference">Singular documentation</a> for the Singular API endpoint reference.
+</div>
+
+RudderStack supports two types of <Link to="/rudderstack-api/api-specification/rudderstack-spec/track"><code class="inline-code">track</code></Link> events that you can send to Singular via the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>:
+
+- Session events
+- Custom events
+
+## Session events
+
+RudderStack lets you specify the event names to be used as session events in the dashboard settings, as shown:
+
+<img src="../../../assets/event-stream-destinations/singular-session-events.png" alt="Singular session events settings" />
+
+RudderStack sends the session events to Singular via its [`launch`](https://s2s.singular.net/api/v1/launch) API.
+
+<div class="warningBlock">
+RudderStack considers an event as a session event only if it is specified in the dashboard settings or if it one of the following three <Link to="/rudderstack-api/api-specification/application-lifecycle-events-spec/">lifecycle events</Link>:
+<ul>
+  <li>Application Installed</li>
+  <li>Application Opened</li>
+  <li>Application Updated</li>
+</ul>
+</div>
+
+<div class="infoBlock">
+RudderStack automatically tracks the above three lifecycle events if lifecycle event tracking is enabled.
+</div>
+
+### Supported mappings
+
+This section lists the mappings of the RudderStack event properties to the relevant Singular fields.
+
+The following table lists the mapping of the attributes **automatically captured** by RudderStack for the **mobile platforms** (Android and iOS):
+
+| RudderStack property | Singular attribute | Presence | Description |
+| :----| :----| :----| :----| 
+| `context.os.name` | `p` | Required | The source platform (Android or iOS). |
+| `context.app.namespace` | `i` | Required | The package name (Android) or bundle ID (iOS) of your app. |
+| `context.app.version` | `app_v` | Required | The app version. |
+| `requestIP` | `ip` | Required | The user's IP address. |
+| `context.os.version` | `ve` | Required | The device OS version at session time. |
+| `context.device.model` | `mo` | Required | The device model. This parameter must be used with the `ma` parameter. |
+| `context.device.manufacturer` | `mo` | Required | The make of the device hardware. This parameter must be used with the `mo` parameter. |
+| `context.locale` | `lc` | Required | The device's IETF local tag using two-lettered language and country code, separated by an underscore. |
+| `context.device.id` | `idfv` | Required | The raw [`IdentifierForVendor`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/occ/instp/UIDevice/identifierForVendor) in upper case with dashes. This is applicable for iOS apps only. |
+| `context.device.id` | `andi` | Required | The raw [`Android ID`](http://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID) in lower case. This is applicable for Android apps only. This is required only when Android Advertising ID is unavailable on the device. |
+| `context.app.build` | `bd` | Required | The device build (URL encoded). |
+| `context.device.adTrackingEnabled` | `dnt` | Required | Pass `1` if do not track is enabled, else pass `0`. This is automatically captured if you pass the advertising ID to the SDK. |
+| `context.app.name` | `n` | Optional | The human-readable app name as displayed in the UI. |
+| `timestamp` | `utime` | Optional | The session time (in UNIX time). |
+| `context.network.wifi` | `c` | Optional | The connection type (WiFi or carrier). |
+| `context.network.carrier` | `cn` | Optional | The carrier name of the internet provider. |
+
+The following table lists the mapping of the attributes **must be passed via the event properties**:
+
+<div class="warningBlock">
+These properties are not persisted in the SDK and must be passed with every event.
+</div>
+
+| RudderStack property | Singular attribute | Presence | Description |
+| :----| :----| :----| :----|
+| `install_ref` | `install_ref` | Required | The Google Install Referrer Information. |
+| `referring_application` | `install_source` | Required | The install source package name in Android. Use [`getInitiatingPackageName()`](https://developer.android.com/reference/android/content/pm/InstallSourceInfo#getInitiatingPackageName()) to retrieve this. |
+| `install_receipt` | `install_receipt` | Required | The receipt received from the install. To retreive this, follow the [iOS Install Receipt](https://support.singular.net/hc/en-us/articles/360037640812#Reference_Retrieving_the_iOS_Install_Receipt) guide. |
+| `asid` | `asid` | Required | The App Set ID for Android v12+ devices. |
+| `url` | `openui` | Required | If the app is opened via a deep link/universal link, the value of the encoded deep link URL. |
+| `context.device.attStatus` | `att_authorization_status` | Required | The [App Tracking Transparency authorization status](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus). |
+| `userId` | `custom_user_id` | Optional | The user ID passed through the `identify` call. |
+| `attribution_token` | `attribution_token` | Optional | Used to attribute Apple Search Ads for iOS 14.3 and above. More information [here](https://support.singular.net/hc/en-us/articles/360037640812#asa_adservices). |
+| `skan_conversion_value` | `skan_conversion_value` | Optional | The latest `SkAdNetwork` value at the time of the session notification. |
+| `skan_first_call_timestamp` | `skan_first_call_timestamp` | Optional | UNIX timestamp of the first call made to the `SkAdNetwork` API. |
+| `skan_last_call_timestamp` | `skan_last_call_timestamp` | Optional | UNIX timestamp of the last call made to the `SkAdNetwork` API at the time of the session notification. |
+| `install` | `install` | Optional | The install flag. Set to `true` on the first session after app install, or `false` otherwise. Required for reinstall tracking capability. |
+<br />
+
+The following table lists the mapping of the attributes **must be passed via the event properties just once**:
+
+<div class="infoBlock">
+These properties are persisted in the SDK and must be passed just once.
+</div>
+
+| RudderStack property | Singular attribute | Presence | Description |
+| :----| :----| :----| :----|
+| `context.device.token` | `fcm` | Optional | The Firebase Cloud Messaging Device Token. It is required for uninstall tracking in Android. |
+| `context.device.token` | `gcm` | Optional | The Google Cloud Messaging Device Token. It is required for uninstall tracking in Android (legacy devices). |
+| `context.device.token` | `apns_token` | Optional | The Apple Push Notification Service Device Token. It is required for uninstall tracking in iOS. |
+
+## Custom events
+
+RudderStack sends all the other events other than the session events as custom events via Singular's [`evt`](https://s2s.singular.net/api/v1/evt) endpoint.
+
+
+
+
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
