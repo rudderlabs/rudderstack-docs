@@ -65,8 +65,8 @@ The following table provides a brief description of the above DCM Floodlight pro
 
 You can also send data to DCM Floodlight using the below-mentioned custom fields:
 
-| RudderStack custom field | DCM property | Counting method| 
-| :--- | :--- |
+| RudderStack custom field | DCM Floodlight property | Counting method| 
+| :--- | :--- |:--- |
 | `properties.ord` | `ord` | All| 
 | `context.device.adTrackingEnabled` | `dc_lat`| All |
 | `COPPA` | `tag_for_child_directed_treatment` | All | 
@@ -79,7 +79,7 @@ You can also send data to DCM Floodlight using the below-mentioned custom fields
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-Based on the presence of `name` and `category` field in the `page` call, RudderStack transforms the event in the following format:
+Based on the presence of `name` and `category` fields in the `page` call, RudderStack transforms the event in the following format:
 
 | `name` field | `category` field | Transformed event | 
 | :--- | :--- |:--- |
