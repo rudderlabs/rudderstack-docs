@@ -40,15 +40,18 @@ The following table details the mapping between RudderStack and DCM Floodlight's
 
 | RudderStack property | DCM Floodlight property | Tag|
 | :--- | :--- |:--- |
-| `context.device.adTrackingEnabled` | `dc_lat` | Counter/Sales|
 | `properties.ord` | `ord` |Counter |
-| `properties.sessionId` | `ord` |Counter - `per_session` |
+| `properties.sessionId` | `ord` |Counter - per_session |
+| `properties.sessionId` | `session_id` | Counter - per_session |
+| `properties.num` | `num` | Counter - unique |
+| `context.device.adTrackingEnabled` | `dc_lat` | Counter/Sales|
 | `properties.orderId` | `ord` |  Sales |
 | `properties.orderId` | `transaction_id` |  Sales |
-| `properties.quantity` | `quantity` | Sales - `items_sold` |
 | `properties.revenue` | `value` |  Sales |
 | `properties.matchId` | `matchId` |  Sales |
-| `properties.num` | `num` | Counter - unique |
+| `properties.quantity` | `quantity` | Sales - items_sold |
+
+
 
 The following table provides a brief description of the above DCM Floodlight properties:
 
@@ -67,13 +70,14 @@ You can also send data to DCM Floodlight using the below-mentioned custom fields
 
 | RudderStack custom field | DCM Floodlight property | Counting method| 
 | :--- | :--- |:--- |
-| `properties.ord` | `ord` | All| 
+| `properties.ord`/`properties.orderId`/`properties.sessionId`/ | `ord` | All| 
 | `context.device.adTrackingEnabled` | `dc_lat`| All |
 | `COPPA` | `tag_for_child_directed_treatment` | All | 
 | `GDPR` | `tfua` | All | 
 | `npa` | `npa` | All | 
 | `properties.matchId` | `matchId` | All | 
 | `properties.num` | `num` | Counter - unique | 
+| `properties.sessionId` | `session_id` | Counter - per_session |
 
 ## Page
 
