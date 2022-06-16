@@ -28,6 +28,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
+      }
+    },
+    {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: true, // Print removed selectors and processed file names
@@ -121,26 +127,26 @@ module.exports = {
     },
     ...(process.env.RS_GATSBY_ALGOLIA_APIKEY
       ? [
-          {
-            resolve: `gatsby-plugin-algolia`,
-            options: {
-              appId: process.env.GATSBY_ALGOLIA_APP_ID,
-              apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
-              indexName:
-                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2",
-              queries: require("./src/utils/docs-algolia"),
-              enablePartialUpdates: true,
-              matchFields: [
-                "objectID",
-                "title",
-                "aliases",
-                "slug",
-                "headings",
-                "excerpt" 
-              ],
-            },
+        {
+          resolve: `gatsby-plugin-algolia`,
+          options: {
+            appId: process.env.GATSBY_ALGOLIA_APP_ID,
+            apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
+            indexName:
+              process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2",
+            queries: require("./src/utils/docs-algolia"),
+            enablePartialUpdates: true,
+            matchFields: [
+              "objectID",
+              "title",
+              "aliases",
+              "slug",
+              "headings",
+              "excerpt"
+            ],
           },
-        ]
+        },
+      ]
       : []),
   ],
 }
