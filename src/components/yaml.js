@@ -9,6 +9,7 @@ export default function Yaml({handleMenuOpen}) {
           edges {
             node {
               displayName
+              link
             }
           }
         }
@@ -16,12 +17,12 @@ export default function Yaml({handleMenuOpen}) {
     `,
   )
   return (
-    <table>
+    <div>
       {data.allSourcesYaml.edges.map(edge => (
-        <tr>
-          <td>{edge.node.displayName}</td>
-        </tr>
+        <ul><li>
+          {edge.node.displayName}
+        </li></ul>
       ))}
-    </table>
+    </div>
   )
 }
