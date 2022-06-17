@@ -1,5 +1,5 @@
 import React from 'react'
-import {useStaticQuery, graphql} from 'gatsby'
+import {useStaticQuery, graphql, Link} from 'gatsby'
 
 export default function Yaml({handleMenuOpen}) {
   const data = useStaticQuery(
@@ -17,12 +17,13 @@ export default function Yaml({handleMenuOpen}) {
     `,
   )
   return (
-    <div>
+    <ul class="columns">
       {data.allSourcesYaml.edges.map(edge => (
-        <ul><li>
-          {edge.node.displayName}
-        </li></ul>
+        <li>
+          <Link to={edge.node.link}>{edge.node.displayName}</Link>
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
+
