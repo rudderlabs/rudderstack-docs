@@ -8,6 +8,7 @@ export const jsonData = [
   {
     key: "get-started",
     title: "Get Started",
+    sectionTitle: "Section Title 1",
     link: `/get-started/`,
     content: [
       {
@@ -19,12 +20,14 @@ export const jsonData = [
       {
         key: "cloud-vs-open-source",
         title: "RudderStack Cloud vs. RudderStack Open Source",
+        sectionTitle: "Inner Section Title 1",
         link: "/get-started/cloud-vs-open-source/",
         content: [],
       },
       {
         key: "glossary",
         title: "Glossary",
+        sectionTitle: "Inner Section Title 2",
         link: "/get-started/glossary/",
         content: [],
       },
@@ -33,6 +36,7 @@ export const jsonData = [
   {
     key: "rudderstack-cloud",
     title: "RudderStack Cloud",
+    sectionTitle: "Section Title 2",
     link: "/rudderstack-cloud/",
     content: [
       {
@@ -82,6 +86,7 @@ export const jsonData = [
   {
     key: "stream-sources",
     title: "Event Streams",
+    sectionTitle: "Section Title",
     link: "/stream-sources/",
     content: [
       {
@@ -418,6 +423,7 @@ export const jsonData = [
   {
     key: "cloud-extract-sources",
     title: "Cloud Extract",
+    sectionTitle: "Section Title 3",
     link: "/cloud-extract-sources/",
     content: [
       {
@@ -589,6 +595,7 @@ export const jsonData = [
   {
     key: "reverse-etl",
     title: "Reverse ETL",
+    sectionTitle: "Section Title",
     link: "/reverse-etl/",
     content: [
       {
@@ -700,6 +707,7 @@ export const jsonData = [
   {
     key: "destinations",
     title: "Destinations",
+    sectionTitle: "Section Title",
     link: "/destinations/",
     content: [
       {
@@ -1608,6 +1616,7 @@ export const jsonData = [
   {
     key: "data-warehouse-integrations",
     title: "Warehouse Destinations",
+    sectionTitle: "Section Title",
     link: "/data-warehouse-integrations/",
     content: [
       {
@@ -1693,6 +1702,7 @@ export const jsonData = [
   {
     key: "transformations",
     title: "Transformations",
+    sectionTitle: "Section Title",
     link: "/transformations/",
     content: [
       {
@@ -1712,6 +1722,7 @@ export const jsonData = [
   {
     key: "data-governance",
     title: "Data Governance",
+    sectionTitle: "Section Title",
     link: "/data-governance/",
     content: [
       {
@@ -1744,12 +1755,14 @@ export const jsonData = [
   {
     key: "identity-resolution",
     title: "Identity Resolution",
+    sectionTitle: "",
     link: "/identity-resolution/",
     content: [],
   },
   {
     key: "rudderstack-api",
     title: "RudderStack API",
+    sectionTitle: "Section Title",
     link: "/rudderstack-api/",
     content: [
       {
@@ -1920,6 +1933,7 @@ export const jsonData = [
   {
     key: "rudderstack-open-source",
     title: "RudderStack Open Source",
+    sectionTitle: "Section Title",
     link: "/rudderstack-open-source/",
     content: [
       {
@@ -1968,6 +1982,7 @@ export const jsonData = [
   {
     key: "user-guides",
     title: "User Guides",
+    sectionTitle: "Section Title",
     link: "/user-guides/",
     content: [
       {
@@ -2280,6 +2295,7 @@ export const jsonData = [
   {
     key: "faqs",
     title: "FAQ",
+    sectionTitle: "",
     link: "/faqs/",
     content: [],
   },
