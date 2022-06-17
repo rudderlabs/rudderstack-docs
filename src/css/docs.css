@@ -4,6 +4,10 @@ ul.columns {
   column-count: 2;
 }
 
+.columns span.cap {
+  text-transform: capitalize;
+}
+
 /*! purgecss start ignore */
 .childrenWrapper h1 {
   font-size: 32px;

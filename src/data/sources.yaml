@@ -2,105 +2,119 @@
 - options:
   id: 1cD32rPRAgRxakAPoN8q1F4rnlO
   name: AMP
-  link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/"
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/
   displayName: AMP
-  category: ''
+  category: web
   createdAt: '2020-05-21T08:18:52.592Z'
   updatedAt: '2020-06-18T11:53:59.443Z'
 - options:
   id: 1QGzOQGVLM35GgtteFH1vYCE0WT
   name: Android
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/
   displayName: Android
-  category:
+  category: mobile
   createdAt: '2019-09-02T08:08:08.373Z'
   updatedAt: '2020-06-18T11:54:00.449Z'
 - options:
   id: 1cRofQ9LF9HLEKuIyYY4FMteELx
-  name: Customerio
-  displayName: Customerio
+  name: Customer.io
+  link: /stream-sources/customerio/
+  displayName: Customer.io
   category: webhook
   createdAt: '2020-05-26T13:47:49.528Z'
   updatedAt: '2020-06-18T11:54:01.456Z'
 - options:
   id: 1ZOGGKKNJDJ5K4Or2BnxYVCt5bA
   name: Go
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/
   displayName: Go
-  category:
+  category: server
   createdAt: '2020-03-20T11:10:29.305Z'
   updatedAt: '2020-06-18T11:54:02.491Z'
 - options:
   id: 1b6gJdqOPOCadT3cddw8eidV591
   name: HTTP
+  link: /rudderstack-api/http-api/
   displayName: HTTP
-  category:
+  category: API
   createdAt: '2020-04-27T03:24:46.787Z'
   updatedAt: '2020-06-18T11:54:03.600Z'
 - options:
   id: 1QGzOCoEznfENfRDG0gBuPlsdM4
   name: iOS
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/
   displayName: iOS
-  category:
+  category: mobile
   createdAt: '2019-09-02T08:08:06.943Z'
   updatedAt: '2020-06-18T11:54:05.105Z'
 - options:
   id: 1TW48i2bIzEl1HPf825cEznfIM8
   name: Javascript
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/
   displayName: Javascript
-  category:
+  category: web
   createdAt: '2019-11-12T12:39:19.885Z'
   updatedAt: '2020-06-18T11:54:06.114Z'
 - options:
   id: 1ZOGFkMltl5OmWdQiNRzNiN618P
-  name: Node
-  displayName: Node
-  category:
+  name: Node.js
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/
+  displayName: Node.js
+  category: server
   createdAt: '2020-03-20T11:10:24.613Z'
   updatedAt: '2020-06-18T11:54:07.132Z'
 - options:
   id: 1ar6mNtsvScWgjGzkIs9iLta8Yy
   name: Python
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/
   displayName: Python
-  category:
+  category: server
   createdAt: '2020-04-21T15:05:23.393Z'
   updatedAt: '2020-06-18T11:54:08.165Z'
 - options:
   id: 1acY4PznURHGvYZxzOI5VyRNTav
   name: ReactNative
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/
   displayName: React Native
-  category:
+  category: server
   createdAt: '2020-04-16T11:22:37.660Z'
   updatedAt: '2020-06-18T11:54:09.089Z'
 - options:
   id: 1ZOGFXJtyEeTgUEBLLTjra1oDQP
   name: Ruby
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/
   displayName: Ruby
-  category:
+  category: server
   createdAt: '2020-03-20T11:10:23.225Z'
   updatedAt: '2020-06-18T11:54:10.068Z'
 - options:
   id: 1YL4jDMoPIXvtoRyzAfcDssfyWE
   name: Unity
+  link:
   displayName: Unity
-  category:
+  category: mobile
   createdAt: '2020-02-26T09:17:53.767Z'
   updatedAt: '2020-06-18T11:54:11.068Z'
 - options:
   id: 1drwwPLMGMMo1YLM16u0UWgv3nx
   name: Looker
+  link:
   displayName: Looker
-  category: ''
+  category: cloud
   createdAt: '2020-06-26T18:39:17.406Z'
   updatedAt: '2020-06-26T18:39:17.406Z'
 - options:
   id: 1eB3UGPqUNS4L5tKWxchQUHJTPD
   name: Java
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/
   displayName: Java
-  category: ''
+  category: server
   createdAt: '2020-07-03T12:59:32.454Z'
   updatedAt: '2020-07-03T12:59:32.454Z'
 - options:
   id: 1eeJempKYrNptbb6EbYy3NH9jZK
   name: Auth0
+  link: /stream-sources/auth0/
   displayName: Auth0
   category: webhook
   createdAt: '2020-07-13T21:37:02.379Z'
@@ -108,6 +122,7 @@
 - options:
   id: 1eoDpOgZNFaSB20NvAcAbFTlBkJ
   name: Segment
+  link: /stream-sources/segment/
   displayName: Segment
   category: webhook
   createdAt: '2020-07-17T09:47:13.443Z'
@@ -115,62 +130,86 @@
 - options:
   id: 1jEXvN08pLwYAGPMJJOhvIyA3F3
   name: google_sheets
+  link: /cloud-extract-sources/google-sheets/
   displayName: Google Sheets
   category: cloud
+  type: extract
   createdAt: '2020-10-22T12:40:53.132Z'
   updatedAt: '2020-10-22T12:40:53.132Z'
 - options:
   id: 1jEXwajA1sUI7zkcsrByqLuXBSa
   name: salesforce
+  link: /cloud-extract-sources/salesforce/
   displayName: Salesforce
   category: cloud
+  type: extract
   createdAt: '2020-10-22T12:41:03.613Z'
   updatedAt: '2020-10-22T12:41:03.613Z'
 - options:
   id: 1k4TuOH726pC37bgJYkSCaeFcZ1
   name: DotNet
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/
   displayName: ".Net"
-  category: ''
+  category: server
   createdAt: '2020-11-09T21:58:05.520Z'
   updatedAt: '2020-11-09T21:58:05.520Z'
 - options:
   id: 1k7JZrvZQ7OPBAnHzogYIpansx2
   name: PHP
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/
   displayName: PHP
-  category: ''
+  category: server
   createdAt: '2020-11-10T22:02:34.476Z'
   updatedAt: '2020-11-10T22:02:34.476Z'
 - options:
   id: 1lKfk24evQm5USNDbZBzapoX1Wi
   name: google_analytics
+  link: /cloud-extract-sources/google-analytics/
   displayName: Google Analytics
   category: cloud
+  type: extract
+  createdAt: '2020-12-07T14:20:42.362Z'
+  updatedAt: '2020-12-07T14:20:42.362Z'
+- options:
+  id: 1lKfk24evQm5USNDbZBzapoX1Wi
+  name: google_ads
+  link: /cloud-extract-sources/google-adwords/
+  displayName: Google Ads
+  category: cloud
+  type: extract
   createdAt: '2020-12-07T14:20:42.362Z'
   updatedAt: '2020-12-07T14:20:42.362Z'
 - options:
   id: 1lKfkCdvCrfUdqRjLpfTVgHwaec
   name: google_search_console
+  link: /cloud-extract-sources/google-search-console/
   displayName: Google Search Console
   category: cloud
+  type: extract
   createdAt: '2020-12-07T14:20:43.699Z'
   updatedAt: '2020-12-07T14:20:43.699Z'
 - options:
   id: 1lKfmBSRPI0frNtiPKAWV0fVn2a
   name: zendesk
+  link: /cloud-extract-sources/zendesk/
   displayName: Zendesk
   category: cloud
+  type: extract
   createdAt: '2020-12-07T14:20:59.956Z'
   updatedAt: '2020-12-07T14:20:59.956Z'
 - options:
   id: 1mv4HioeTXCjsMxyN4b8lpcO7yj
   name: marketo
+  link: /cloud-extract-sources/marketo/
   displayName: Marketo
   category: cloud
+  type: extract
   createdAt: '2021-01-11T10:24:04.398Z'
   updatedAt: '2021-01-11T10:24:04.398Z'
 - options:
   id: 1n5ooFOf8mzxKwvoKUSVRGRwyCb
   name: appsflyer
+  link: /stream-sources/appsflyer/
   displayName: AppsFlyer
   category: webhook
   createdAt: '2021-01-15T05:44:45.439Z'
@@ -178,62 +217,78 @@
 - options:
   id: 1nO0FaUQ0vce2QtWHNbphk1z6eu
   name: bing_ads
+  link: /cloud-extract-sources/bing-ads/
   displayName: Bing ads
   category: cloud
+  type: extract
   createdAt: '2021-01-21T16:15:26.719Z'
   updatedAt: '2021-01-21T16:15:26.719Z'
 - options:
   id: 1nO0JbTGyWPVxkCs1GjHfSX0zFq
   name: netsuite
+  link: /cloud-extract-sources/netsuite/
   displayName: NetSuite
   category: cloud
+  type: extract
   createdAt: '2021-01-21T16:15:58.413Z'
   updatedAt: '2021-01-21T16:15:58.413Z'
 - options:
   id: 1nO0MDuAYGKfwdhgCpyLFR1lHti
   name: zendesk_chat
+  link: /cloud-extract-sources/zendesk-chat/
   displayName: Zendesk Chat
   category: cloud
+  type: extract
   createdAt: '2021-01-21T16:16:19.778Z'
   updatedAt: '2021-01-21T16:16:19.778Z'
 - options:
   id: 1nO0N6g2pILIDqsSPgRWCsDrYkU
   name: pipedrive
+  link: /cloud-extract-sources/pipedrive/
   displayName: Pipedrive
   category: cloud
+  type: extract
   createdAt: '2021-01-21T16:16:26.154Z'
   updatedAt: '2021-01-21T16:16:26.154Z'
 - options:
   id: 1nO1k57L7zUQjZA8D9sYKiKx3iS
   name: intercom
+  link: /cloud-extract-sources/intercom/
   displayName: Intercom
   category: cloud
+  type: extract
   createdAt: '2021-01-21T16:27:42.039Z'
   updatedAt: '2021-01-21T16:27:42.039Z'
 - options:
   id: 1ogo5AXQB6JnsHiqDXZ6jl5ZerJ
   name: Flutter
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/
   displayName: Flutter
-  category: ''
+  category: mobile
   createdAt: '2021-02-19T06:50:08.105Z'
   updatedAt: '2021-02-19T06:50:08.105Z'
 - options:
   id: 1ovmFVThz3asZ1YwBo5w351G2Co
   name: mailchimp
+  link: /cloud-extract-sources/mailchimp/
   displayName: Mailchimp
   category: cloud
+  type: extract
   createdAt: '2021-02-24T14:02:14.869Z'
   updatedAt: '2021-02-24T14:02:14.869Z'
 - options:
   id: 1ovmHPvWYIcC1xPS4sWcPPqZWJv
   name: mixpanel
+  link: /cloud-extract-sources/mixpanel/
   displayName: Mixpanel
   category: cloud
+  type: extract
   createdAt: '2021-02-24T14:02:29.942Z'
   updatedAt: '2021-02-24T14:02:29.942Z'
 - options:
   id: 1pD6vnvEtSbRDlkcQy551N1beKh
   name: POSTHOG
+  link: /stream-sources/posthog/
   displayName: PostHog
   category: ''
   createdAt: '2021-03-02T17:19:06.012Z'
@@ -241,6 +296,7 @@
 - options:
   id: 1pTcNPYFDAwN8JvQbxTZ3XSdR8I
   name: Appcenter
+  link: /stream-sources/appcenter/
   displayName: App Center
   category: webhook
   createdAt: '2021-03-08T13:34:39.694Z'
@@ -248,20 +304,25 @@
 - options:
   id: 1pf35z0NWXK9G5FdwF75DiCYfMn
   name: pardot
+  link: /cloud-extract-sources/salesforce-pardot/
   displayName: Pardot
   category: cloud
+  type: extract
   createdAt: '2021-03-12T14:42:17.834Z'
   updatedAt: '2021-03-12T14:42:17.834Z'
 - options:
   id: 1qD1jwa7OjnEwb4AJIwwGQdmFyg
   name: stripe
+  link: /cloud-extract-sources/stripe/
   displayName: Stripe
   category: cloud
+  type: extract
   createdAt: '2021-03-24T15:24:44.048Z'
   updatedAt: '2021-03-24T15:24:44.048Z'
 - options:
   id: 1qTXDy2DFNLHRqixzii5fuOikjG
   name: Extole
+  link: /stream-sources/extole/
   displayName: Extole
   category: webhook
   createdAt: '2021-03-30T11:40:37.306Z'
@@ -269,30 +330,38 @@
 - options:
   id: 1qu6ivu5iPasot1ZIK6mcb59j7t
   name: freshdesk
+  link: /cloud-extract-sources/freshdesk/
   displayName: Freshdesk
   category: cloud
+  type: extract
   createdAt: '2021-04-08T21:27:38.084Z'
   updatedAt: '2021-04-08T21:27:38.084Z'
 - options:
   id: 1qu6lpYiC3EnWGowQwxIn3zaixn
   name: quickbooks
+  link: /cloud-extract-sources/quickbooks/
   displayName: Quickbooks
   category: cloud
+  type: extract
   createdAt: '2021-04-08T21:28:01.764Z'
   updatedAt: '2021-04-08T21:28:01.764Z'
 - options:
   id: 1sl3ublVAB0JY2Pyb6Nnfb54k4v
   name: active_campaign
+  link: /cloud-extract-sources/activecampaign/
   displayName: Active campaign
   category: cloud
+  type: extract
   createdAt: '2021-05-19T14:12:52.696Z'
   updatedAt: '2021-05-19T14:12:52.696Z'
 - options:
     hidden: true
   id: 1qu6kGyHNkM4IjcaFXGIO7G0SGy
   name: hubspot
+  link: /cloud-extract-sources/hubspot-v2/
   displayName: Hubspot
   category: cloud
+  type: extract
   createdAt: '2021-04-08T21:27:48.518Z'
   updatedAt: '2021-04-08T21:27:48.518Z'
 - options:
@@ -302,8 +371,10 @@
     isSqlModelSupported: true
   id: 1lKfleR0YwloYiLdsrt8wbTyDxR
   name: redshift
+  link: /reverse-etl/amazon-redshift/
   displayName: Redshift
   category: warehouse
+  type: reverse ETL
   createdAt: '2020-12-07T14:20:55.300Z'
   updatedAt: '2022-02-25T10:58:35.004Z'
 - options:
@@ -313,6 +384,7 @@
     isSqlModelSupported: true
   id: 1lKfm47IlzXQNXD3C3pk6mZtb1S
   name: snowflake
+  link:
   displayName: Snowflake
   category: warehouse
   createdAt: '2020-12-07T14:20:58.237Z'
@@ -320,6 +392,7 @@
 - options:
   id: 1zEeCwCRwQqoKuXqz3VamLt0Mji
   name: Braze
+  link:
   displayName: Braze
   category: webhook
   createdAt: '2021-10-08T18:25:50.123Z'
@@ -329,6 +402,7 @@
     skipWarehouseSchemaConfig: true
   id: 1mv4J5uzCbh0iBoiUkENv9UL0WT
   name: s3
+  link:
   displayName: Amazon S3
   category: warehouse
   createdAt: '2021-01-11T10:24:15.034Z'
@@ -336,8 +410,9 @@
 - options:
   id: 208zXxTTxue5sSP4E4W1Hzf2XL4
   name: Rust
+  link:
   displayName: Rust
-  category: ''
+  category: server
   createdAt: '2021-10-28T17:10:45.675Z'
   updatedAt: '2021-10-28T17:10:45.675Z'
 - options:
@@ -346,6 +421,7 @@
     isBeta: false
   id: 1z2OTbrpUT0PFBhxQUxKVRVontJ
   name: singer-chargebee
+  link:
   displayName: Chargebee
   category: singer-protocol
   createdAt: '2021-12-21T14:33:08.868Z'
@@ -356,20 +432,25 @@
     isBeta: false
   id: 215k1PhlrONIAJFWJJnMQjfJbdQ
   name: singer-intercom
+  link: /cloud-extract-sources/intercom-v2/
   displayName: Intercom V2
   category: singer-protocol
+  type: extract
   createdAt: '2021-11-18T12:21:59.898Z'
   updatedAt: '2021-11-18T12:21:59.898Z'
 - options:
   id: 1w0YA2GAHu2uKlrXUBHfVsprYtI
   name: sendgrid
+  link: /cloud-extract-sources/sendgrid/
   displayName: SendGrid
   category: cloud
+  type: extract
   createdAt: '2021-07-29T22:13:45.682Z'
   updatedAt: '2021-07-29T22:13:45.682Z'
 - options:
   id: 1wJ48CjxXYRhxm83W8xFGTQygxt
   name: webhook
+  link: /stream-sources/webhook-source/
   displayName: Webhook
   category: webhook
   createdAt: '2021-08-05T11:33:15.688Z'
@@ -377,8 +458,9 @@
 - options:
   id: 1yOJu6S8oTXWcqQj8jaO4TJQkiP
   name: Cordova
+  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/
   displayName: Cordova
-  category: ''
+  category: mobile
   createdAt: '2021-09-20T05:48:40.106Z'
   updatedAt: '2021-09-20T05:48:40.106Z'
 - options:
@@ -388,8 +470,10 @@
     isSqlModelSupported: true
   id: 1lKfjBzuoNFJHfj35q2elruSN7C
   name: bigquery
+  link: /reverse-etl/google-bigquery/
   displayName: BigQuery
   category: warehouse
+  type: reverse ETL
   createdAt: '2020-12-07T14:20:35.804Z'
   updatedAt: '2022-02-25T10:58:33.824Z'
 - options:
@@ -399,14 +483,17 @@
     isSqlModelSupported: true
   id: 1lKflMWR2Ut7piaZepcFEsBVXQj
   name: postgres
+  link: /reverse-etl/postgresql/
   displayName: Postgres
   category: warehouse
+  type: reverse ETL
   createdAt: '2020-12-07T14:20:53.049Z'
   updatedAt: '2022-02-25T10:58:34.654Z'
 - options:
     isBeta: false
   id: 24uU1k8fCOXZ6fvjfFu64jZdM46
   name: Shopify
+  link: /stream-sources/shopify/
   displayName: Shopify
   category: webhook
   createdAt: '2022-02-10T07:55:51.460Z'
@@ -414,6 +501,7 @@
 - options: {}
   id: 28c9zKySvyIWoBAOXfiJp5PNXz1
   name: iterable
+  link: /stream-sources/iterable/
   displayName: Iterable
   category: webhook
   createdAt: '2022-05-02T15:27:47.763Z'
@@ -422,16 +510,20 @@
     hidden: true
   id: 1lKfjyEs7AQiAvpgbNc6qR44PiA
   name: google_adwords
+  link: /cloud-extract-sources/google-adwords/
   displayName: Google AdWords
   category: cloud
+  type: extract
   createdAt: '2020-12-07T14:20:41.140Z'
   updatedAt: '2020-12-07T14:20:41.140Z'
 - options:
     isCredentialsValidationSupported: true
   id: 1lKfjJOP1n2U0Y4hkAZcR4fLXek
   name: clickhouse
+  link: /reverse-etl/clickhouse/
   displayName: ClickHouse
   category: warehouse
+  type: reverse ETL
   createdAt: '2020-12-07T14:20:36.438Z'
   updatedAt: '2022-05-16T04:44:11.305Z'
 - options:
@@ -439,62 +531,70 @@
       provider: Xero
   id: 1nvBDW6Jpo28nQqcKzJjzRpcVSV
   name: xero
+  link: /cloud-extract-sources/xero/
   displayName: Xero
   category: cloud
+  type: extract
   createdAt: '2021-02-02T10:09:24.363Z'
   updatedAt: '2022-05-17T11:55:41.972Z'
-- options:
-    image: rudderstack/source-klaviyo:v1.1
-    digest: sha256:cf5f0ff0bb5fb23d5a2d37b3e6cb580faccd545b31383fe1a9193527f65346af
-    isBeta: false
-  id: 24VPFifQ0rEgLgrUzlM71Xeq0uw
-  name: singer-klaviyo
-  displayName: Klaviyo
-  category: singer-protocol
-  createdAt: '2022-02-01T10:51:18.705Z'
-  updatedAt: '2022-02-03T12:55:14.852Z'
+# - options:
+#     image: rudderstack/source-klaviyo:v1.1
+#     digest: sha256:cf5f0ff0bb5fb23d5a2d37b3e6cb580faccd545b31383fe1a9193527f65346af
+#     isBeta: false
+#   id: 24VPFifQ0rEgLgrUzlM71Xeq0uw
+#   name: singer-klaviyo
+#   link:
+#   displayName: Klaviyo
+#   category: singer-protocol
+#   createdAt: '2022-02-01T10:51:18.705Z'
+#   updatedAt: '2022-02-03T12:55:14.852Z'
 - options:
     hidden: false
   id: 1lKfjfhAW7WJPjD4RgXWnb8LfHI
   name: facebook_ads
+  link: /cloud-extract-sources/facebook-ads/
   displayName: Facebook Ads
   category: cloud
+  type: extract
   createdAt: '2020-12-07T14:20:39.120Z'
   updatedAt: '2020-12-07T14:20:39.120Z'
-- options:
-    auth:
-      oauthRole: hubspot
-    image: rudderstack/source-hubspot:v1
-    digest: sha256:a2ad38ee91f43df946efe459f8df548fc4b7687002e5c46dd3ab5997424c5f84
-    isBeta: false
-  id: 29HQaeEFbxGnpcA600tFtu9VJ9h
-  name: singer-hubspot
-  displayName: HubSpot
-  category: singer-protocol
-  createdAt: '2022-05-17T06:06:35.766Z'
-  updatedAt: '2022-05-17T06:06:35.766Z'
-- options:
-    auth:
-      provider: Google
-    image: rudderstack/source-google-ads:v2
-    digest: sha256:a4d4e611f188c01c58743052cda151bd90a16cf34a2f25e8cf8a4d401ecd40b1
-    isBeta: false
-  id: 27yRLqzHXjyi5KXx4qLDHM9AnbG
-  name: singer-google_adwords
-  displayName: Google ads
-  category: singer-protocol
-  createdAt: '2022-04-18T13:58:05.597Z'
-  updatedAt: '2022-04-18T13:58:05.597Z'
-- options:
-    image: rudderstack/source-iterable:v1.3
-    digest: sha256:adfd5a01f9aaa22668ac81dee54c308edd332e030524af0dfb59c1f7f18fd993
-    isBeta: false
-  id: 24bCCxQUN8sZgedSRGJM9Mr3S43
-  name: singer-iterable
-  displayName: Iterable
-  category: singer-protocol
-  createdAt: '2022-02-03T12:02:55.082Z'
-  updatedAt: '2022-02-25T15:52:49.251Z'
+# - options:
+#     auth:
+#       oauthRole: hubspot
+#     image: rudderstack/source-hubspot:v1
+#     digest: sha256:a2ad38ee91f43df946efe459f8df548fc4b7687002e5c46dd3ab5997424c5f84
+#     isBeta: false
+#   id: 29HQaeEFbxGnpcA600tFtu9VJ9h
+#   name: singer-hubspot
+#   link:
+#   displayName: HubSpot
+#   category: singer-protocol
+#   createdAt: '2022-05-17T06:06:35.766Z'
+#   updatedAt: '2022-05-17T06:06:35.766Z'
+# - options:
+#     auth:
+#       provider: Google
+#     image: rudderstack/source-google-ads:v2
+#     digest: sha256:a4d4e611f188c01c58743052cda151bd90a16cf34a2f25e8cf8a4d401ecd40b1
+#     isBeta: false
+#   id: 27yRLqzHXjyi5KXx4qLDHM9AnbG
+#   name: singer-google_adwords
+#   link:
+#   displayName: Google ads
+#   category: singer-protocol
+#   createdAt: '2022-04-18T13:58:05.597Z'
+#   updatedAt: '2022-04-18T13:58:05.597Z'
+# - options:
+#     image: rudderstack/source-iterable:v1.3
+#     digest: sha256:adfd5a01f9aaa22668ac81dee54c308edd332e030524af0dfb59c1f7f18fd993
+#     isBeta: false
+#   id: 24bCCxQUN8sZgedSRGJM9Mr3S43
+#   name: singer-iterable
+#   link:
+#   displayName: Iterable
+#   category: singer-protocol
+#   createdAt: '2022-02-03T12:02:55.082Z'
+#   updatedAt: '2022-02-25T15:52:49.251Z'
 - options:
     syncBehaviours:
     - upsert
@@ -502,7 +602,9 @@
     isSqlModelSupported: false
   id: 2ANLvHkKBYMDGzj8rU8KI4H3gpA
   name: mysql
+  link: /reverse-etl/mysql/
   displayName: MySql
   category: warehouse
+  type: reverse ETL
   createdAt: '2022-06-10T07:15:24.802Z'
   updatedAt: '2022-06-10T07:15:24.802Z'
