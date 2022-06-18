@@ -60,60 +60,65 @@ export const jsonData = [
     content: [],
   },
 
+// Dashboard guide section
+
   {
     key: "rudderstack-cloud",
-    title: "RudderStack Cloud",
-    sectionTitle: "Section Title 2",
+    title: "Overview",
+    sectionTitle: "Dashboard Guide",
     link: "/rudderstack-cloud/",
-    content: [
-      {
-        key: "dashboard-overview",
-        title: "Dashboard Overview",
-        link: "/rudderstack-cloud/dashboard-overview/",
-        content: [],
-      },
-      {
-        key: "sources",
-        title: "Sources",
-        link: "/rudderstack-cloud/sources/",
-        content: [],
-      },
-      {
-        key: "destinations",
-        title: "Destinations",
-        link: "/rudderstack-cloud/destinations/",
-        content: [],
-      },
-      {
-        key: "live-events",
-        title: "Live Events",
-        link: "/rudderstack-cloud/live-events/",
-        content: [],
-      },
-      {
-        key: "audit-logs",
-        title: "Audit Logs",
-        link: "/rudderstack-cloud/audit-logs/",
-        content: [],
-      },
-      {
-        key: "teammates",
-        title: "Teammates (User Management)",
-        link: "/rudderstack-cloud/teammates/",
-        content: [],
-      },
-      {
-        key: "rudderstack-connection-modes",
-        title: "Connection Modes: Cloud Mode vs. Device Mode",
-        link: "/rudderstack-cloud/rudderstack-connection-modes/",
-        content: [],
-      },
-    ],
+    content: [],
   },
+  {
+    key: "sources",
+    title: "Sources",
+    link: "/rudderstack-cloud/sources/",
+    content: [],
+  },
+  {
+    key: "destinations",
+    title: "Destinations",
+    link: "/rudderstack-cloud/destinations/",
+    content: [],
+  },
+  {
+    key: "live-events",
+    title: "Live Events",
+    link: "/rudderstack-cloud/live-events/",
+    content: [],
+  },
+  {
+    key: "audit-logs",
+    title: "Audit Logs",
+    link: "/rudderstack-cloud/audit-logs/",
+    content: [],
+  },
+  {
+    key: "teammates",
+    title: "Teammates (User Management)",
+    link: "/rudderstack-cloud/teammates/",
+    content: [],
+  },
+  {
+    key: "rudderstack-connection-modes",
+    title: "Connection Modes: Cloud Mode vs. Device Mode",
+    link: "/rudderstack-cloud/rudderstack-connection-modes/",
+    content: [],
+  },
+
+
+
+  {
+    key: "sources",
+    title: "Overview",
+    sectionTitle: "Sources",
+    link: "/sources/",
+    content: []
+  },
+
   {
     key: "stream-sources",
     title: "Event Streams",
-    sectionTitle: "Section Title",
     link: "/stream-sources/",
     content: [
       {
@@ -450,7 +455,6 @@ export const jsonData = [
   {
     key: "cloud-extract-sources",
     title: "Cloud Extract",
-    sectionTitle: "Section Title 3",
     link: "/cloud-extract-sources/",
     content: [
       {
@@ -622,7 +626,6 @@ export const jsonData = [
   {
     key: "reverse-etl",
     title: "Reverse ETL",
-    sectionTitle: "Section Title",
     link: "/reverse-etl/",
     content: [
       {
