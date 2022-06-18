@@ -1,38 +1,65 @@
 export const jsonData = [
+
+  // Home section (just a link actually)
+
   {
     key: "home",
     title: "Home",
     link: "/",
     content: [],
   },
+
+  // Getting Started section
+
   {
     key: "get-started",
-    title: "Get Started",
-    sectionTitle: "Section Title 1",
+    title: "What is RudderStack?",
+    sectionTitle: "Getting Started",
     link: `/get-started/`,
-    content: [
-      {
-        key: "rudderstack-architecture",
-        title: "Architecture",
-        link: "/get-started/rudderstack-architecture/",
-        content: [],
-      },
-      {
-        key: "cloud-vs-open-source",
-        title: "RudderStack Cloud vs. RudderStack Open Source",
-        sectionTitle: "Inner Section Title 1",
-        link: "/get-started/cloud-vs-open-source/",
-        content: [],
-      },
-      {
-        key: "glossary",
-        title: "Glossary",
-        sectionTitle: "Inner Section Title 2",
-        link: "/get-started/glossary/",
-        content: [],
-      },
-    ],
+    content: [],
   },
+  {
+    key: "cloud-vs-open-source",
+    title: "RudderStack Cloud vs. Open Source",
+    // sectionTitle: "Inner Section Title 1",
+    link: "/get-started/cloud-vs-open-source/",
+    content: [],
+  },
+  {
+    key: "get-started",
+    title: "Quickstart",
+    link: `/get-started/quickstart/`,
+    content: [],
+  },
+
+  // Resources section
+  {
+    key: "resources",
+    title: "Community",
+    sectionTitle: "Resources",
+    link: "/resources/",
+    content: [],
+  },
+  {
+    key: "faqs",
+    title: "FAQ",
+    link: "/resources/faqs/",
+    content: [],
+  },
+  {
+    key: "rudderstack-architecture",
+    title: "Architecture",
+    link: "/resources/rudderstack-architecture/",
+    content: [],
+  },
+  {
+    key: "glossary",
+    title: "Glossary",
+    // sectionTitle: "Inner Section Title 2",
+    link: "/resources/glossary/",
+    content: [],
+  },
+
   {
     key: "rudderstack-cloud",
     title: "RudderStack Cloud",
@@ -801,7 +828,7 @@ export const jsonData = [
             title: "DCM Floodlight",
             link: "/destinations/advertising/dcm-floodlight/",
             content: [
-            {
+              {
                 key: "setting-up-dcm-floodlight-in-rudderstack",
                 title: "Setting up DCM Floodlight",
                 link:
@@ -815,7 +842,7 @@ export const jsonData = [
                   "/destinations/advertising/dcm-floodlight/dcm-floodlight-cloud-mode/",
                 content: [],
               },
-               {
+              {
                 key: "dcm-floodlight-device-mode",
                 title: "Device Mode",
                 link:
@@ -1472,7 +1499,7 @@ export const jsonData = [
             link: "/destinations/marketing/userlist/",
             content: [],
           },
-           {
+          {
             key: "webengage",
             title: "WebEngage",
             link: "/destinations/marketing/webengage/",
@@ -2291,12 +2318,5 @@ export const jsonData = [
         ],
       },
     ],
-  },
-  {
-    key: "faqs",
-    title: "FAQ",
-    sectionTitle: "",
-    link: "/faqs/",
-    content: [],
   },
 ];
