@@ -32,30 +32,57 @@ export const jsonData = [
     content: []
   },
 
-  // Resources section
+
   {
-    key: "resources",
-    title: "Community",
-    sectionTitle: "Resources",
-    link: "/resources/",
-    content: []
-  }, {
-    key: "faqs",
-    title: "FAQ",
-    link: "/resources/faqs/",
-    content: []
-  }, {
-    key: "rudderstack-architecture",
-    title: "Architecture",
-    link: "/resources/rudderstack-architecture/",
-    content: []
-  }, {
-    key: "glossary",
-    title: "Glossary",
-    // sectionTitle: "Inner Section Title 2",
-    link: "/resources/glossary/",
-    content: []
+    key: "rudderstack-open-source",
+      title: "RudderStack Open Source",
+          link: "/rudderstack-open-source/",
+            content: [
+              {
+                key: "control-plane-lite",
+                title: "Control Plane Setup",
+                link: "/rudderstack-open-source/control-plane-lite/",
+                content: []
+              }, {
+                key: "installing-and-setting-up-rudderstack",
+                title: "Data Plane Setup",
+                link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/",
+                content: [
+                  {
+                    key: "docker",
+                    title: "Docker",
+                    link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
+                    content: []
+                  }, {
+                    key: "kubernetes",
+                    title: "Kubernetes",
+                    link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
+                    content: []
+                  }, {
+                    key: "developer-machine-setup",
+                    title: "Developer Machine Setup",
+                    link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
+                    content: []
+                  }, {
+                    key: "sending-test-events",
+                    title: "Sending Test Events",
+                    link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
+                    content: []
+                  },
+                ]
+              },
+            ]
   },
+
+
+
+
+
+
+
+
+
+
 
   // Dashboard guide section
 
@@ -1569,219 +1596,183 @@ export const jsonData = [
 
   {
     key: "rudderstack-api",
-    title: "RudderStack API",
-    sectionTitle: "Section Title",
+    title: "RudderStack API Overview",
+    sectionTitle: "API",
     link: "/rudderstack-api/",
+    content: []},
+      {
+    key: "personal-access-tokens",
+    title: "Personal Access Tokens",
+    link: "/rudderstack-api/personal-access-tokens/",
+    content: []
+  },
+  {
+    key: "api-specification",
+    title: "API Specification",
+    link: "/rudderstack-api/api-specification/",
     content: [
       {
-        key: "personal-access-tokens",
-        title: "Personal Access Tokens",
-        link: "/rudderstack-api/personal-access-tokens/",
-        content: []
-      },
-      {
-        key: "api-specification",
-        title: "API Specification",
-        link: "/rudderstack-api/api-specification/",
+        key: "rudderstack-events-specification",
+        title: "RudderStack Events Specification",
+        link: "/rudderstack-api/api-specification/rudderstack-spec/",
         content: [
           {
-            key: "rudderstack-events-specification",
-            title: "RudderStack Events Specification",
-            link: "/rudderstack-api/api-specification/rudderstack-spec/",
-            content: [
-              {
-                key: "identify",
-                title: "Identify",
-                link: "/rudderstack-api/api-specification/rudderstack-spec/identify/",
-                content: []
-              },
-              {
-                key: "page",
-                title: "Page",
-                link: "/rudderstack-api/api-specification/rudderstack-spec/page/",
-                content: []
-              },
-              {
-                key: "screen",
-                title: "Screen",
-                link: "/rudderstack-api/api-specification/rudderstack-spec/screen/",
-                content: []
-              },
-              {
-                key: "track",
-                title: "Track",
-                link: "/rudderstack-api/api-specification/rudderstack-spec/track/",
-                content: []
-              }, {
-                key: "group",
-                title: "Group",
-                link: "/rudderstack-api/api-specification/rudderstack-spec/group/",
-                content: []
-              }, {
-                key: "alias",
-                title: "Alias",
-                link: "/rudderstack-api/api-specification/rudderstack-spec/alias/",
-                content: []
-              }, {
-                key: "common-fields",
-                title: "Common Fields",
-                link: "/rudderstack-api/api-specification/rudderstack-spec/common-fields/",
-                content: []
-              },
-            ]
-          }, {
-            key: "rudderstack-ecommerce-events-specification",
-            title: "E-commerce Events",
-            link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/",
-            content: [
-              {
-                key: "browsing",
-                title: "Browsing",
-                link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing/",
-                content: []
-              },
-              {
-                key: "promotions",
-                title: "Promotions",
-                link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/promotions/",
-                content: []
-              },
-              {
-                key: "ordering",
-                title: "Ordering",
-                link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering/",
-                content: []
-              },
-              {
-                key: "coupons",
-                title: "Coupons",
-                link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/coupons/",
-                content: []
-              }, {
-                key: "wishlisting",
-                title: "Wishlist",
-                link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/wishlisting/",
-                content: []
-              }, {
-                key: "sharing",
-                title: "Sharing",
-                link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/sharing/",
-                content: []
-              }, {
-                key: "reviewing",
-                title: "Reviewing",
-                link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/reviewing/",
-                content: []
-              },
-            ]
-          }, {
-            key: "application-lifecycle-events-spec",
-            title: "Application Lifecycle Events",
-            link: "/rudderstack-api/api-specification/application-lifecycle-events-spec/",
+            key: "identify",
+            title: "Identify",
+            link: "/rudderstack-api/api-specification/rudderstack-spec/identify/",
+            content: []
+          },
+          {
+            key: "page",
+            title: "Page",
+            link: "/rudderstack-api/api-specification/rudderstack-spec/page/",
+            content: []
+          },
+          {
+            key: "screen",
+            title: "Screen",
+            link: "/rudderstack-api/api-specification/rudderstack-spec/screen/",
+            content: []
+          },
+          {
+            key: "track",
+            title: "Track",
+            link: "/rudderstack-api/api-specification/rudderstack-spec/track/",
             content: []
           }, {
-            key: "video-specification",
-            title: "Video Events",
-            link: "/rudderstack-api/api-specification/video-specification/",
+            key: "group",
+            title: "Group",
+            link: "/rudderstack-api/api-specification/rudderstack-spec/group/",
+            content: []
+          }, {
+            key: "alias",
+            title: "Alias",
+            link: "/rudderstack-api/api-specification/rudderstack-spec/alias/",
+            content: []
+          }, {
+            key: "common-fields",
+            title: "Common Fields",
+            link: "/rudderstack-api/api-specification/rudderstack-spec/common-fields/",
             content: []
           },
         ]
-      },
-      {
-        key: "data-regulation-api",
-        title: "Data Regulation API",
-        link: "/rudderstack-api/data-regulation-api/",
-        content: []
-      },
-      {
-        key: "http-api",
-        title: "HTTP API",
-        link: "/rudderstack-api/http-api/",
+      }, {
+        key: "rudderstack-ecommerce-events-specification",
+        title: "E-commerce Events",
+        link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/",
+        content: [
+          {
+            key: "browsing",
+            title: "Browsing",
+            link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing/",
+            content: []
+          },
+          {
+            key: "promotions",
+            title: "Promotions",
+            link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/promotions/",
+            content: []
+          },
+          {
+            key: "ordering",
+            title: "Ordering",
+            link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering/",
+            content: []
+          },
+          {
+            key: "coupons",
+            title: "Coupons",
+            link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/coupons/",
+            content: []
+          }, {
+            key: "wishlisting",
+            title: "Wishlist",
+            link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/wishlisting/",
+            content: []
+          }, {
+            key: "sharing",
+            title: "Sharing",
+            link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/sharing/",
+            content: []
+          }, {
+            key: "reviewing",
+            title: "Reviewing",
+            link: "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/reviewing/",
+            content: []
+          },
+        ]
+      }, {
+        key: "application-lifecycle-events-spec",
+        title: "Application Lifecycle Events",
+        link: "/rudderstack-api/api-specification/application-lifecycle-events-spec/",
         content: []
       }, {
-        key: "pixel-api-spec",
-        title: "Pixel API",
-        link: "/rudderstack-api/pixel-api-spec/",
-        content: []
-      }, {
-        key: "test-api",
-        title: "Test API",
-        link: "/rudderstack-api/test-api/",
+        key: "video-specification",
+        title: "Video Events",
+        link: "/rudderstack-api/api-specification/video-specification/",
         content: []
       },
     ]
+  },
+  {
+    key: "data-regulation-api",
+    title: "Data Regulation API",
+    link: "/rudderstack-api/data-regulation-api/",
+    content: []
+  },
+  {
+    key: "http-api",
+    title: "HTTP API",
+    link: "/rudderstack-api/http-api/",
+    content: []
   }, {
-    key: "rudderstack-open-source",
-    title: "RudderStack Open Source",
-    sectionTitle: "Section Title",
-    link: "/rudderstack-open-source/",
-    content: [
-      {
-        key: "control-plane-lite",
-        title: "Control Plane Setup",
-        link: "/rudderstack-open-source/control-plane-lite/",
-        content: []
-      }, {
-        key: "installing-and-setting-up-rudderstack",
-        title: "Data Plane Setup",
-        link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/",
-        content: [
-          {
-            key: "docker",
-            title: "Docker",
-            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
-            content: []
-          }, {
-            key: "kubernetes",
-            title: "Kubernetes",
-            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
-            content: []
-          }, {
-            key: "developer-machine-setup",
-            title: "Developer Machine Setup",
-            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
-            content: []
-          }, {
-            key: "sending-test-events",
-            title: "Sending Test Events",
-            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
-            content: []
-          },
-        ]
-      },
-    ]
-  }, 
-  
-  // Guides section
+    key: "pixel-api-spec",
+    title: "Pixel API",
+    link: "/rudderstack-api/pixel-api-spec/",
+    content: []
+  }, {
+    key: "test-api",
+    title: "Test API",
+    link: "/rudderstack-api/test-api/",
+    content: []
+  },
+    
   
 
-      {
-        key: "migration-guides",
-        title: "Migration Guides",
-        sectionTitle: "Guides",
+
+
+
+
+// Guides section
+
+
+{
+  key: "migration-guides",
+    title: "Migration Guides",
+      sectionTitle: "Guides",
         link: "/user-guides/migration-guides/",
-        content: [
-          {
-            key: "blendo-rudderstack-migration",
-            title: "Migrating from Blendo to RudderStack",
-            link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
-            content: []
-          }, {
-            key: "rudderstack-migration-guide",
-            title: "Migrating from Segment to RudderStack",
-            link: "/user-guides/migration-guides/rudderstack-migration-guide/",
-            content: []
-          }, {
-            key: "how-to-migrate-warehouse-destination-from-segment-to-rudderstack",
-            title: "Migrating Your Warehouse Destination from Segment to RudderStack",
-            link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
-            content: []
-          },
-        ]
-      }, {
-        key: "administrators-guide",
-        title: "Administator's Guides",
-        link: "/user-guides/administrators-guide/",
+          content: [
+            {
+              key: "blendo-rudderstack-migration",
+              title: "Migrating from Blendo to RudderStack",
+              link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
+              content: []
+            }, {
+              key: "rudderstack-migration-guide",
+              title: "Migrating from Segment to RudderStack",
+              link: "/user-guides/migration-guides/rudderstack-migration-guide/",
+              content: []
+            }, {
+              key: "how-to-migrate-warehouse-destination-from-segment-to-rudderstack",
+              title: "Migrating Your Warehouse Destination from Segment to RudderStack",
+              link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
+              content: []
+            },
+          ]
+}, {
+  key: "administrators-guide",
+    title: "Administator's Guides",
+      link: "/user-guides/administrators-guide/",
         content: [
           {
             key: "onelogin-sso",
@@ -1853,10 +1844,10 @@ export const jsonData = [
             content: []
           },
         ]
-      }, {
-        key: "how-to-guides",
-        title: "How-to Guides",
-        link: "/user-guides/how-to-guides/",
+}, {
+  key: "how-to-guides",
+    title: "How-to Guides",
+      link: "/user-guides/how-to-guides/",
         content: [
           {
             key: "dynamic-destination-configuration",
@@ -1992,7 +1983,33 @@ export const jsonData = [
             ]
           },
         ]
-      },
-    
+},
+
+
+  // Resources section
+  {
+    key: "resources",
+    title: "Community",
+    sectionTitle: "Resources",
+    link: "/resources/",
+    content: []
+  }, {
+    key: "faqs",
+    title: "FAQ",
+    link: "/resources/faqs/",
+    content: []
+  }, {
+    key: "rudderstack-architecture",
+    title: "Architecture",
+    link: "/resources/rudderstack-architecture/",
+    content: []
+  }, {
+    key: "glossary",
+    title: "Glossary",
+    // sectionTitle: "Inner Section Title 2",
+    link: "/resources/glossary/",
+    content: []
+  },
+
   
 ];
