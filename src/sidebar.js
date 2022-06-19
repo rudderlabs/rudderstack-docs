@@ -1750,15 +1750,15 @@ export const jsonData = [
         ]
       },
     ]
-  }, {
-    key: "user-guides",
-    title: "User Guides",
-    sectionTitle: "Section Title",
-    link: "/user-guides/",
-    content: [
+  }, 
+  
+  // Guides section
+  
+
       {
         key: "migration-guides",
         title: "Migration Guides",
+        sectionTitle: "Guides",
         link: "/user-guides/migration-guides/",
         content: [
           {
@@ -1993,6 +1993,6 @@ export const jsonData = [
           },
         ]
       },
-    ]
-  },
+    
+  
 ];
