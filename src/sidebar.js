@@ -624,10 +624,14 @@ export const jsonData = [
         content: []
       },
     ]
-  }, {
+  },
+
+  // Destinations section
+
+  {
     key: "destinations",
-    title: "Destinations",
-    sectionTitle: "Section Title",
+    title: "Streaming Destinations",
+    sectionTitle: "Destinations",
     link: "/destinations/",
     content: [
       {
@@ -1413,17 +1417,13 @@ export const jsonData = [
             content: []
           },
         ]
-      }, {
-        key: "webhooks",
-        title: "Webhooks",
-        link: "/destinations/webhooks/",
-        content: []
       },
     ]
-  }, {
+  },
+
+  {
     key: "data-warehouse-integrations",
     title: "Warehouse Destinations",
-    sectionTitle: "Section Title",
     link: "/data-warehouse-integrations/",
     content: [
       {
@@ -1496,10 +1496,23 @@ export const jsonData = [
         content: []
       },
     ]
-  }, {
+  },
+
+  {
+    key: "webhooks",
+    title: "Webhooks",
+    link: "/destinations/webhooks/",
+    content: []
+  },
+
+  // Features section
+
+
+
+  {
     key: "transformations",
     title: "Transformations",
-    sectionTitle: "Section Title",
+    sectionTitle: "Features",
     link: "/transformations/",
     content: [
       {
@@ -1514,10 +1527,10 @@ export const jsonData = [
         content: []
       },
     ]
-  }, {
+  },
+  {
     key: "data-governance",
     title: "Data Governance",
-    sectionTitle: "Section Title",
     link: "/data-governance/",
     content: [
       {
@@ -1547,10 +1560,14 @@ export const jsonData = [
   }, {
     key: "identity-resolution",
     title: "Identity Resolution",
-    sectionTitle: "",
     link: "/identity-resolution/",
     content: []
-  }, {
+  },
+
+
+  // API section
+
+  {
     key: "rudderstack-api",
     title: "RudderStack API",
     sectionTitle: "Section Title",
