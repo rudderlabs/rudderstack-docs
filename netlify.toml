@@ -9,7 +9,11 @@ TERM = "xterm"
 [[redirects]]
 from = "/get-started/installing-and-setting-up-rudderstack/docker"
 to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
-status = 301 
+status = 301
+[[redirects]]
+from = "/data-warehouse-integrations/identity-resolution-in-rudderstack/"
+to = "/docs/identity-resolution/"
+status = 301
 [[redirects]]
 from = "/rudderstack-api/user-suppression/"
 to = "/docs/rudderstack-api/data-regulation-api/"

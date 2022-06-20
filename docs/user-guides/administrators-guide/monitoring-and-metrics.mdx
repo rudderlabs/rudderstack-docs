@@ -6,8 +6,6 @@ description: >-
   the applications using them.
 ---
 
-# Monitoring and Metrics
-
 The backend uses [statsd](https://github.com/statsd/statsd) client to log stats. These stats can be collected by any statsd server such as Graphite, CloudWatch, etc. For example, [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html) can be used to collect stats to Amazon CloudWatch.
 
 Note that the collection of stats can be disabled using `enableStats` in [`config.yaml`](https://rudderstack.com/docs/user-guides/administrators-guide/config-parameters).

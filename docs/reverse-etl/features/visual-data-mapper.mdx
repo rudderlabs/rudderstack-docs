@@ -5,8 +5,6 @@ description: >-
  Detailed technical description of how to use the Visual Data Mapping feature for Reverse ETL sources.
 ---
 
-# Visual Data Mapper
-
 The **Visual Data Mapper** (VDM) offers an intuitive UI to map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination.
 
 <div class="infoBlock">
@@ -70,6 +68,13 @@ RudderStack automatically loads all the relevant destination objects. If you hav
 <div class="dangerBlock">
 
 <strong>RudderStack does not support objects that do not have any fields or a unique user identifier.</strong>
+</div>
+
+5. Next, select the sync mode that RudderStack uses to sync your data.
+
+<div class="infoBlock">
+
+RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/reverse-etl/common-settings/sync-modes/">Sync Modes</a> guide.
 </div>
 
 ### Choosing the identifier

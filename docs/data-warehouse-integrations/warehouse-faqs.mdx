@@ -2,52 +2,10 @@
 # slug: "/docs/data-warehouse-integrations/warehouse-faqs"
 title: "FAQ"
 description: >-
-  Commonly-asked questions for the RudderStack data warehouse integrations.
+  Commonly-asked questions related to the RudderStack data warehouse destinations.
 ---
 
-# FAQ
-
-### When does Rudderstack load data into the data warehouse(s)?
-
-RudderStack lets you choose how frequently it should sync the data into the data warehouse. The default time is 30 minutes. However, you can choose to extend this value up to 24 hours. You can also configure the time of the day when RudderStack loads the data.
-
-### Is there a way to force load my data into the warehouses?
-
-Yes, there is - you can configure the below values in your `config.yaml` file:
-
-```yaml
-warehouseSyncFreqIgnore = true #if set true this will ignore syncFrequency and syncStartingAt values which are configured in UI. By default this is false
-uploadFreqInS=1800 #This field lets you control syncPeriod if above field set to true 
-```
-
-### Where can I view the status of my data load?
-
-You can view the warehouse upload status in the **Live Events** section of the destination in the RudderStack dashboard.
-
-### Can I change the namespace (schema name) of my data warehouse in RudderStack?
-
-Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse.
-
-<div class="infoBlock">
-
-Refer to the warehouse-specific destination settings to configure a namespace in the RudderStack dashboard.
-</div>
-
-### How can I achieve identity resolution with multiple sources connected to one warehouse destination?
-
-The default namespace will be the source name with some modifications. This will cause issues while creating mappings for identity resolution across different sources, leading to multiple `RUDDER_ID` created for the same user.
-
-To avoid this, you can set the same namespace for each source.
-
-<img src="../assets/dw-integrations/namespace.png" />
-
-This will ensure that the mappings are on the consistent namespace and only one `RUDDER_ID` is created for each user - irrespective of the number of sources connected to your warehouse destination.
-
-### How can I delete the staging files in my buckets?
-
-RudderStack loads all the events configured with your warehouse into staging buckets. You can set a retention policy to delete these files from the staging bucket after a certain time. If you do not set any retention policy, the files will keep on accumulating.
-
-Make sure that the retention policy duration is longer than the warehouse sync frequency duration so that RudderStack can re-run event uploads for a longer time, if required. It is recommended to set the retention policy duration to **30 days/1 month**. 
+## IP allowlist
 
 ### Which RudderStack IPs should I allowlist?
 
@@ -69,9 +27,43 @@ The EU cluster IPs are listed below:
 - 3.64.201.167
 
 <div class="infoBlock">
-
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
+
+## Data loads
+
+### When does Rudderstack load data into the data warehouse(s)?
+
+RudderStack lets you choose how frequently it should sync the data into the data warehouse. The default time is 30 minutes. However, you can choose to extend this value up to 24 hours. You can also configure the time of the day when RudderStack loads the data.
+
+### Is there a way to force load my data into the warehouses?
+
+Yes, there is - you can configure the below values in your `config.yaml` file:
+
+```yaml
+warehouseSyncFreqIgnore = true #if set true this will ignore syncFrequency and syncStartingAt values which are configured in UI. By default this is false
+uploadFreqInS=1800 #This field lets you control syncPeriod if above field set to true 
+```
+
+### Where can I view the status of my data load?
+
+You can view the warehouse upload status in the **Live Events** section of the destination in the RudderStack dashboard.
+
+## Staging
+
+### What are the files written in the location `<namespace>/rudder-warehouse-staging-logs/`?
+
+RudderStack collects all the unprocessed data flowing to the warehouse destinations as staging files. It stores these files in the object storage at the location `<namespace>/rudder-warehouse-staging-logs/`. 
+
+Once the staging files are processed, RudderStack separates them by the event name and sends them to the specified destination.
+
+### How can I delete the staging files in my buckets?
+
+RudderStack loads all the events configured with your warehouse into staging buckets. You can set a retention policy to delete these files from the staging bucket after a certain time. If you do not set any retention policy, the files will keep on accumulating.
+
+Make sure that the retention policy duration is longer than the warehouse sync frequency duration so that RudderStack can re-run event uploads for a longer time, if required. It is recommended to set the retention policy duration to **30 days/1 month**.
+
+## Optimizing syncs
 
 ### How do I avoid lags in data syncs while heavy loads are running on my data warehouse?
 
@@ -89,7 +81,7 @@ You can use either of the following approaches to avoid data sync lags in your w
 
 <img src="../assets/warehouse-destinations/read-write-database.png" />
 
-### How can I speed-up my warehouse uploads?
+### How can I speed up my warehouse uploads?
 
 You can speed up your warehouse uploads by configuring the following parameters in the `config.yaml` file in your RudderStack setup:
 
@@ -126,7 +118,17 @@ You can speed up your warehouse uploads by configuring the following parameters 
   </tr>
 </table>
 
-### How is the Namespace field populated for a Warehouse destination?
+## Namespace and warehouse schema
+
+### Can I change the namespace (schema name) of my data warehouse in RudderStack?
+
+Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse.
+
+<div class="infoBlock">
+Refer to the <Link to ="/data-warehouse-integrations/">warehouse-specific documentation</Link> for more information on configuring a namespace while setting up the destination in RudderStack.
+</div>
+
+### How is the Namespace field populated for a warehouse destination?
 
 RudderStack sets the **Namespace** field depending on the following conditions:
 
@@ -160,12 +162,10 @@ You can specify your desired schema name in the **Namespace** field while config
 <img src="../assets/dw-integrations/namespace-example.png" />
 
 <div class="infoBlock">
-
 Refer to the [warehouse-specific documentation](https://www.rudderstack.com/docs/data-warehouse-integrations/) for more information on configuring the namespace.
 </div>
 
 <div class="warningBlock">
-
 If you do not set the <strong>Namespace</strong> field, RudderStack sets the source name as the schema name, with some modifications.
 </div>
 
@@ -191,7 +191,6 @@ RudderStack configures the schema name based on the values mentioned in the belo
 | Second sync onwards   | Not set | Not set | SS | S | The source name has been modified. However, it does not impact the schema name and it remains the same as in the first sync. |
 
 <div class="infoBlock">
-
 <strong>Key takeaways</strong>:
 <ul>
   <li>The namespace set in the RudderStack dashboard always takes precedence when setting the schema name in the warehouse.</li>
@@ -200,7 +199,7 @@ RudderStack configures the schema name based on the values mentioned in the belo
 </ul>
 </div>
 
-### How does Rudderstack configure table names?
+### How does Rudderstack configure the table names?
 
 RudderStack sets the table names by picking up the event names and modifying them to follow the snake case convention (for example, `source name` -> `source_name`). 
 
@@ -226,6 +225,31 @@ The table name truncation logic is as follows:
 - For **PostgreSQL**, the table name is truncated after 63 characters.
 - For **Data Lake** destinations (**S3 Data Lake, GCS Data Lake, Azure Data Lake**), there is no set limit.
 - For **other** destinations, the table name is truncated after 127 characters.
+
+### Can I change the name of the table in which my events are synced?
+
+Yes, you can add a <Link to="/transformations/">transformation</Link> to change the event name and, consequently, the name of the table in which the events are synced. 
+
+As seen in the above <Link to="/#how-does-rudderstack-configure-the-table-names">FAQ</Link>, RudderStack sets the table names to the event names modified in the snake case.
+
+A sample transformation used to change the event name is as shown:
+
+```javascript
+export function transformEvent(event, metadata) {    
+  if (event.event.toLowerCase() === '<old_event_name>') {
+      event.event = '<new_event_name>';
+  }
+  return event;
+}
+```
+
+<div class="warningBlock">
+Note that this change is applicable to the subsequent events sent to the warehouse destination, after the transformation is applied.
+</div>
+
+<div class="successBlock">
+You can also migrate the previously created table data in the warehouse to the new table.
+</div>
 
 ### How does Rudderstack configure the column names? / How does RudderStack normalize arrays and complex event properties in the warehouse schema?
 
@@ -294,6 +318,30 @@ products_i_phone_version : 11
 products_android_version : 16
 ```
 
+### How does RudderStack determine the column data type? Can I change an existing data type for a column?
+
+RudderStack determines the data type of a column based on its value in the first event (during the first upload sync).
+
+For example, suppose `column_x` is received with the value as `1`. RudderStack then sets the data type of this column as `int` in the event table.
+
+<div class="infoBlock">
+Although you can change the columns' data type in the warehouse any time, the changes will be applicable to the events from the next sync.
+</div>
+
+To set your preferred data type for a particular column, it is highly recommended to follow these steps:
+
+1. Create a column in the warehouse with a dummy name and the required data type.
+2. Cast the data from the original column and load it into the dummy column.
+3. Drop the original column.
+4. Rename the dummy column to the original column name.
+
+<div class="warningBlock">
+During steps 3 and 4, the tables will be in a locked state. This might impact real-time data uploads/syncs.
+If the above steps take too long to complete, you can halt the warehouse operations in the interim. For more information, refer to this <Link to="#how-do-i-avoid-lags-in-data-syncs-while-heavy-loads-are-running-on-my-datawarehouse">FAQ</Link>.
+</div>
+
+## Warehouse-specific
+
 ### While configuring the Snowflake destination, what should I enter in the Account field?
 
 While configuring Snowflake as a destination in RudderStack, you need to enter your <Link to="/data-warehouse-integrations/snowflake/#connection-settings">Snowflake connection credentials</Link> which includes the **Account** field, as shown below:
@@ -311,11 +359,22 @@ The following examples illustrate the slight differences in the Snowflake accoun
 | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
 
 <div class="warningBlock">
-
 In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region accounts and hence must be included in the <strong>Account</strong> field above. 
 
 For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
 </div>
+
+## Identity resolution
+
+### How can I achieve identity resolution with multiple sources connected to one warehouse destination?
+
+The default namespace will be the source name with some modifications. This will cause issues while creating mappings for <Link to ="/identity-resolution/">identity resolution</Link> across different sources, leading to multiple `RUDDER_ID` created for the same user.
+
+To avoid this, you can set the same namespace **for each source**, as shown:
+
+<img src="../assets/dw-integrations/namespace.png" />
+
+Setting a namespace ensures that the mappings are consistent and only one `RUDDER_ID` is created for each user - irrespective of the number of sources connected to your warehouse destination.
 
 ## Contact us
 

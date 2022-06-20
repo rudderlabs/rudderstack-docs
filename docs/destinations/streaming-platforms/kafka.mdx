@@ -4,8 +4,6 @@ title: "Apache Kafka"
 description: Step-by-step guide to send event data from RudderStack to Apache Kafka
 ---
 
-# Apache Kafka
-
 Apache Kafka is a popular distributed streaming platform. It allows you to handle large-scale workloads with high throughput and low latency. Apache Kafka is highly available and is used across the world for building real-time data pipelines and streaming applications.
 
 RudderStack allows you to configure Apache Kafka as a destination to which you can send your event data seamlessly.
@@ -182,8 +180,6 @@ A sample entry is as shown below:
 # here the INTERNAL listerner is your cluster kafka service host for kafka server
 # and the EXTERNAL is public loadbalancer for kafka server
 advertised.listeners=INTERNAL://kafka-0.kafka-headless.kafka-test-1.svc.cluster.local:9092,EXTERNAL://ab7e36e84991c11ea8a930ebf847c1ef-555780507.us-east-1.elb.amazonaws.com:19092
-
-# Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
 listener.security.protocol.map=INTERNAL:PLAINTEXT,EXTERNAL:SSL
 ```
 

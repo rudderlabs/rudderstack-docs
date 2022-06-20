@@ -72,23 +72,45 @@ export default function Docs({ mdx, pageContext }) {
         {...props}
       />
     ),
+    GhBadge: (props) => {
+      let queryParams = [];
+      ["label", "message", "color", "style", "logo"].forEach(x => {
+        if (props[x]) queryParams.push(x + "=" + props[x])
+      })
+
+      let src = `https://img.shields.io/static/v1?${queryParams.join("&")}`
+      if (props.repo) src = `https://img.shields.io/${props.repo}${queryParams.length > 0 ? "?" : ""}${queryParams.join("&")}`
+
+      return (
+        <a className={`githubBadgeLink${props.url ? "" : " disabled"}`} href={props.url} target="_blank">
+          <img
+            src={src}
+            alt="Github Badge"
+            className="githubBadge"
+          />
+        </a>
+      )
+    },
   };
 
   useEffect(() => {
     (function () {
-      const zoom = mediumZoom(document.querySelectorAll("img:not(.mainLogo)"));
+      const zoom = mediumZoom(document.querySelectorAll("img:not(.mainLogo, .githubBadge)"));
 
       return () => {
         zoom.detach();
       };
     })();
 
-    let descriptionSpan = `<h2 class="pgdescription">${
+    let descriptionSpan = `<p class="pgdescription">${
       description === null ? "" : description
-    }</h2>`;
-    let h1Tags = document.querySelectorAll("h1");
-    forEach(h1Tags, (o) => o.insertAdjacentHTML("afterend", descriptionSpan));
-    /* h1Tags.innerHTML = descriptionSpan; */
+    }</p>`;
+
+
+    let h1Tags = document.createElement('h1');
+    h1Tags.innerText = title;
+    document.getElementsByClassName('childrenWrapper')[0].prepend(h1Tags);
+    h1Tags.insertAdjacentHTML("afterend", descriptionSpan);
 
     let ancTags = document.querySelectorAll(
       ".childrenWrapper a:not(.anchor, .next, .previous)"

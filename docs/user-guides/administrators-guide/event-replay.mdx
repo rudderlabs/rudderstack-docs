@@ -5,16 +5,17 @@ description: >-
   Detailed technical description of RudderStack's events backup and replay feature.
 ---
 
-# Event Replay 
-
 RudderStack's **event replay** feature lets you backup your event data and replay it in case of any failures. Some scenarios where you can leverage this functionality include:
 
 - Replay failed events from a particular date to a destination, maybe due to some misconfiguration.
 - Replay all the events for a particular source, from a particular date, to a new event stream or warehouse destination.
 
-<a href="https://rudderstack.com/enterprise-quote" target="_blank">
-<img src="https://img.shields.io/static/v1?label=Plan&message=Enterprise&color=blueviolet" class="githubBadge" />
-</a>
+<GhBadge
+  url={'https://rudderstack.com/enterprise-quote'}
+  label={'Plan'}
+  message={'Enterprise'}
+  color={'blueviolet'}
+/>
 
 ## Supported event types for replay
 
@@ -27,8 +28,8 @@ RudderStack can store the following types of event data and replay it to the spe
 
 RudderStack offers the following data storage options for the event replay functionality:
 
-- **No data retention**: RudderStack does not store any event data and hence it cannot be replayed.
-- **RudderStack S3 Storage** (default): Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis, i.e., RudderStack deletes the event data 30 days after it was stored.
+- **No data retention** (default): RudderStack does not store any event data and hence it cannot be replayed.
+- **RudderStack S3 Storage**: Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis, i.e., RudderStack deletes the event data 30 days after it was stored.
 - **Choose your object storage**: Event data is stored in your object storage. RudderStack currently supports Amazon S3, Google Cloud Storage, Azure Blob Storage, and MinIO as the object storage options. 
 
 The following section provides more details on how to set up your object storage.
