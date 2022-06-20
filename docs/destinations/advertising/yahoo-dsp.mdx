@@ -23,7 +23,6 @@ Before configuring Yahoo DSP as a destination in RudderStack, verify if the sour
 | **Cloud mode**      |  -            | -             |  **Supported** |
 
 <div class="infoBlock">
-
 To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
@@ -60,7 +59,7 @@ Refer to the <a href="https://developer.yahooinc.com/dsp/api/docs/authentication
 Refer to the <Link to="#faq">FAQ</Link> section for more information on how to obtain Account ID and Audience ID.
 </div>
 
-- **Hash Required**: Enabled by default, this option hash encodes the user data. However, you can disable it to prevent hashing.
+- **Hash Required**: This setting hash-encodes the user data and is enabled by default. However, you can disable it to prevent hashing.
 
 ## `audiencelist` event structure
 
@@ -145,7 +144,7 @@ The Account ID in the connection settings is the Advertiser ID associted with yo
 To create an audience, follow these steps:
 
 1. Log into your [Yahoo DSP](https://id.b2b.yahooinc.com/identity/XUI/#login/&realm=%2Fdsp&goto=https%3A%2F%2Fid.b2b.yahooinc.com%2Fidentity%2Foauth2%2Fauthorize%3Frealm%3D%252Fdsp%26nonce%3Dm2uitpzW4R1xm6GezTdVpNRD%26state%3DZ5D6wc5CvqnlYm0pZsv4f8t5%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520email%26client_id%3Db743c250-2149-4c47-aed1-31a477359099%26redirect_uri%3Dhttps%253A%252F%252Fdeveloper.yahooinc.com%252Foidc%252Fredirect) account
-2. Select **Advertisers** and the relevant advertiser.
+2. Select **Advertisers** and choose the relevant advertiser.
 3. Select **Targeting Library** > **New Custom Audience** to create the required audience as shown:
 
 <img src="../../assets/event-stream-destinations/yahoo-dsp-3.png" alt="Yahoo DSP connection settings"/>
