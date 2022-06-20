@@ -120,14 +120,6 @@ You can speed up your warehouse uploads by configuring the following parameters 
 
 ## Namespace and warehouse schema
 
-### Can I change the namespace (schema name) of my data warehouse in RudderStack?
-
-Yes, you can. Although the default namespace will be the source name with some modifications to it, RudderStack also provides an option in the dashboard to explicitly set the namespace of the dataset in the warehouse.
-
-<div class="infoBlock">
-Refer to the <Link to ="/data-warehouse-integrations/">warehouse-specific documentation</Link> for more information on configuring a namespace while setting up the destination in RudderStack.
-</div>
-
 ### How is the Namespace field populated for a warehouse destination?
 
 RudderStack sets the **Namespace** field depending on the following conditions:
@@ -149,7 +141,6 @@ Namespace:
 - If none of the above fields are specified in the warehouse configuration settings, the source name is populated as the namespace for the first sync and picked up from the cache for all the subsequent syncs. In case the source name is changed, the namespace still remains the same as it is picked from cache. 
 
 <div class="infoBlock">
-
 To update the namespace as the new source name, you need to configure a new source.
 </div>
 
@@ -162,7 +153,7 @@ You can specify your desired schema name in the **Namespace** field while config
 <img src="../assets/dw-integrations/namespace-example.png" />
 
 <div class="infoBlock">
-Refer to the [warehouse-specific documentation](https://www.rudderstack.com/docs/data-warehouse-integrations/) for more information on configuring the namespace.
+Refer to the <Link to ="/data-warehouse-integrations/">warehouse-specific documentation</Link> for more information on configuring a namespace while setting up the destination in RudderStack.
 </div>
 
 <div class="warningBlock">
