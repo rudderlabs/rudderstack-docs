@@ -1898,6 +1898,12 @@ export const jsonData = [
         content: [],
       },
       {
+        key: "tracking-plan-api",
+        title: "Tracking Plan API",
+        link: "/rudderstack-api/tracking-plan-api/",
+        content: [],
+      },
+      {
         key: "http-api",
         title: "HTTP API",
         link: "/rudderstack-api/http-api/",
