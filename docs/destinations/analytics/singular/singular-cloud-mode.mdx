@@ -52,7 +52,9 @@ The following table lists the mapping of the attributes **automatically captured
 | `context.device.model` | `mo` | Required | The device model. This parameter must be used with the `ma` parameter. |
 | `context.device.manufacturer` | `mo` | Required | The make of the device hardware. This parameter must be used with the `mo` parameter. |
 | `context.locale` | `lc` | Required | The device's IETF local tag using two-lettered language and country code, separated by an underscore. |
+| `context.device.advertisingId` | `idfa` | Required | The raw [`IdentifierForVendor`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/occ/instp/UIDevice/identifierForVendor) in upper case with dashes. This is applicable for iOS apps only. |
 | `context.device.id` | `idfv` | Required | The raw [`IdentifierForVendor`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/occ/instp/UIDevice/identifierForVendor) in upper case with dashes. This is applicable for iOS apps only. |
+| `context.device.advertisingId`| `aifa` | Required | Applicable for Android apps only. This is the lower case raw [advertising ID](http://support.google.com/googleplay/android-developer/answer/6048248?hl=en) with dashes. |
 | `context.device.id` | `andi` | Required | The raw [`Android ID`](http://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID) in lower case. This is applicable for Android apps only. This is required only when Android Advertising ID is unavailable on the device. |
 | `context.app.build` | `bd` | Required | The device build (URL encoded). |
 | `context.device.adTrackingEnabled` | `dnt` | Required | Pass `1` if do not track is enabled, else pass `0`. This is automatically captured if you pass the advertising ID to the SDK. |
@@ -94,14 +96,58 @@ These properties are persisted in the SDK and must be passed just once.
 | `context.device.token` | `fcm` | Optional | The Firebase Cloud Messaging Device Token. It is required for uninstall tracking in Android. |
 | `context.device.token` | `gcm` | Optional | The Google Cloud Messaging Device Token. It is required for uninstall tracking in Android (legacy devices). |
 | `context.device.token` | `apns_token` | Optional | The Apple Push Notification Service Device Token. It is required for uninstall tracking in iOS. |
+| `context.device.advertisingId`| `aifa` | Required | Applicable for Android apps only. This is the lower case raw [advertising ID](http://support.google.com/googleplay/android-developer/answer/6048248?hl=en) with dashes. |
 
 ## Custom events
 
 RudderStack sends all the other events other than the session events as custom events via Singular's [`evt`](https://s2s.singular.net/api/v1/evt) endpoint.
 
+The following table lists the mapping of the attributes **automatically captured** by RudderStack for the **mobile platforms** (Android and iOS):
 
+| RudderStack property | Singular attribute | Presence | Description |
+| :----| :----| :----| :----| 
+| `context.os.name` | `p` | Required | The source platform (Android or iOS). |
+| `context.app.namespace` | `i` | Required | The package name (Android) or bundle ID (iOS) of your app. |
+| `requestIP` | `ip` | Required | The user's IP address. |
+| `context.device.advertisingId` | `idfa` | Required | The raw [`IdentifierForVendor`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/occ/instp/UIDevice/identifierForVendor) in upper case with dashes. This is applicable for iOS apps only. |
+| `context.device.id` | `idfv` | Required | The raw [`IdentifierForVendor`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/occ/instp/UIDevice/identifierForVendor) in upper case with dashes. This is applicable for iOS apps only. |
+| `context.device.advertisingId`| `aifa` | Required | Applicable for Android apps only. This is the lower case raw [advertising ID](http://support.google.com/googleplay/android-developer/answer/6048248?hl=en) with dashes. |
+| `context.device.id` | `andi` | Required | The raw [`Android ID`](http://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID) in lower case. This is applicable for Android apps only. This is required only when Android Advertising ID is unavailable on the device. |
+| `context.os.version` | `ve` | Required | The device OS version at session time. |
+| `timestamp` | `utime` | Optional | The session time (in UNIX time). |
 
+<div class="infoBlock">
+Singular prefers <code class="inline-code">aifa</code> over <code class="inline-code">andi</code> (in Android) and <code class="inline-code">idfa</code> over <code class="inline-code">idfv</code> (in iOS)
+</div>
 
+The following table lists the mapping of the attributes **must be passed via the event properties**:
+
+| RudderStack property | Singular attribute | Presence | Description |
+| :----| :----| :----| :----|
+| `event` | `n` | Required | The name of the event. **This is user-defined**. |
+| `context.device.attStatus` | `att_authorization_status` | Required | The [App Tracking Transparency authorization status](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus). |
+| `userId` | `custom_user_id` | Optional | The user ID passed through the `identify` call. |
+| `skan_conversion_value` | `skan_conversion_value` | Optional | The latest `SkAdNetwork` value at the time of the session notification. |
+| `skan_first_call_timestamp` | `skan_first_call_timestamp` | Optional | UNIX timestamp of the first call made to the `SkAdNetwork` API. |
+| `skan_last_call_timestamp` | `skan_last_call_timestamp` | Optional | UNIX timestamp of the last call made to the `SkAdNetwork` API at the time of the session notification. |
+| `eventAttributes` | `e` | Optional | The custom event attributes in JSON format. You need to pass these with every event as they are not persisted in the SDK. |
+| `is_revenue_event` | `is_revenue_event` | Optional | Determines if an event is a revenue event. You need to pass this through the properties with every event as it is not persisted in the SDK. |
+
+The following table lists the mapping of the user-defined attributes **specific to revenue events**:
+
+| RudderStack property | Singular attribute | Presence | Description |
+| :----| :----| :----| :----|
+| `price` | `amt` | Optional | The currency amount. |
+| `currency` | `cur` | Optional | The ISO 4217 three-lettered currency code. This should be in conjunction with the `amt` parameter. |
+| `purchase_receipt` | `purchase_receipt` | Optional | The receipt received from a purchase. |
+| `product_id`/`sku` | `purchase_product_id` | Optional | The product SKU identifier. |
+| `purchase_transaction_id` | `purchase_transaction_id` | Optional | The transaction identifier. |
+
+A few important considerations in case of custom events are listed below:
+
+- RudderStack takes the user agent from `context.userAgent` for Android and from the event properties in case of iOS.
+- RudderStack supports `fcm` over `gcm` (legacy) for mapping two values to one key.
+- RudderStack stores the extra attributes passed in the custom event in Singular's `e` field.
 
 ## Contact us
 
