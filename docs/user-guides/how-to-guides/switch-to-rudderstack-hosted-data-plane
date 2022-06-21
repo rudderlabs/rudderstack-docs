@@ -1,0 +1,24 @@
+---
+# slug: "/docs/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane"
+title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane"
+description: >-
+  Detailed technical description on switching from self-hosted to RudderStack-hosted data plane
+---
+
+AWS Lambda helps you leverage the full potential of **AWS Serverless Compute**, allowing you to run your code without having to manage or provision servers.
+
+## Key Features of AWS Lambda
+
+No need to migrate any data from self hosted data plane. Self-managed dataplane would keep delivering the events that it has received.
+Steps to switch:
+Change sdks to point to cloud hosted dataplane url.
+Verify self-hosted dataplane is not getting requests anymore.
+Verify all received events in their self-hosted dataplane are delivered. We can give them rudder-cli commands for this. Need to dig up.
+Shut down self-managed dataplane.
+Caveats:
+Usually change in sdks can be tricky if they are using mobile application, as the customers need to update their app. In such cases, they can just add an alias dns record for their dataplane url to point to our dataplane url (that we provide in their webapp)
+The above procedure can cause ordering guarantee to be lost, as events are sent both from cloud dataplane and their self managed dataplane at the same time for a while. Again, this might not be a huge problem. Especially if they are using warehouse destinations. We can ask them to choose a low traffic time to do this switch.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can, [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
