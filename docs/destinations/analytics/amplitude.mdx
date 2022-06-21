@@ -535,23 +535,25 @@ A sample dashboard after making the above `identify`, `page`, and `track` calls 
 
 ## Group
 
-<div class="infoBlock">
-
-This feature is currently supported by the RudderStack JavaScript SDK only.
-</div>
-
 <div class="warningBlock">
-
-Groups are an enterprise-only feature in Amplitude and you need to purchase the Accounts add-on to use them.
+<a href="https://developers.amplitude.com/docs/group-identify-api">Groups</a> are an enterprise-only feature in Amplitude and you need to purchase the <strong><a href="https://help.amplitude.com/hc/en-us/articles/115001765532">Accounts</a></strong> add-on to use them.
 </div>
 
 The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
 
-In order to use the Amplitude groups feature with RudderStack you need to define the `Group name trait` and `Group value trait` on the dashboard settings pane and you need to pass them as traits while making a group call.
+<div class="infoBlock">
+When sending events via the device mode, <code class="inline-code">group</code> is currently supported only by the RudderStack JavaScript SDK.
+</div>
 
-Even if you are not having an enterprise account or groups add-on, RudderStack would add `groups`as a `User Property` on a user's profile with `Group name trait` as its type and `Group value trait` as its value.
+To use the Amplitude Groups feature with RudderStack, you need to define the <strong>Group Name Trait</strong> and <strong>Group Value Trait</strong> in the dashboard settings and pass them as traits while making a `group` call.
 
-Let' say you had defined `Group name trait` as `company_id` and `Group value trait` as `company_name` and made the above call then the user would be associated with a Group name : `RS` and a Group Value : `RudderStack` and you can also see that a user property with type `RS` and value `RudderStack` on user's profile.
+<div class="warningBlock">
+RudderStack does not support associating a user to more than one group per <code class="inline-code">group</code> API call sent to Amplitude. To send more than one group per user, you need to call the <code class="inline-code">group</code> API multiple times with the relevant group information specified in the <Link to="#group-settings">group settings</Link>.
+</div>
+
+Even if you don't have an enterprise account or the Groups add-on, RudderStack adds `groups` as a user property in the user's profile with <strong>Group Name Trait</strong> as its type and <strong>Group Value Trait</strong> as its value.
+
+Suppose you defined <strong>Group Name Trait</strong> as `company_id` and <strong>Group Value Trait</strong> as `company_name` and made the `group` call. Then, the user would be associated with a Group name : `RS` and a Group Value : `RudderStack` and you can also see the user property with type `RS` and value `RudderStack` in the user profile.
   
 ## Send `event_id` in device mode
 
@@ -659,6 +661,10 @@ You can find the Amplitude API key in the [Amplitude Settings Page](https://anal
 
 Session tracking is only supported for the RudderStack [device mode](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode) because the integration loads Amplitude's SDK. 
 Events sent via the [cloud mode](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode) connections will have session IDs as `-1`.
+
+### Can I send more than one group per user to Amplitude?
+
+RudderStack does not support associating a user to more than one group per `group` API call sent to Amplitude. To send more than one group per user, you need to call the `group` API multiple times with the relevant group information specified in the <Link to="#group-settings">group settings</Link>.
 
 ## Contact us
 
