@@ -160,6 +160,9 @@ const NestedAccordion = (props) => {
       "accordion__button accActive"
     )[0];
     expandAcc(activeItem);
+
+    activeItem?.scrollIntoView({ block: "center" })
+    window.scrollTo(0, 0)
   }, [loading]);
 
   return <div className="nestedAccordion">{items}</div>;
