@@ -1,0 +1,81 @@
+## Filtering events
+
+When sending events to a destination via the **web device mode**, you can explicitly specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+</div>
+
+## Filtering selective destinations
+
+RudderStack lets you load or send your event data to only the destinations specified by you. You can do so by passing an [**integrations object**](#integrationopts) in the `options` parameter of the API methods. RudderStack then loads or sends events only to those destinations that are specified and enabled.
+
+The format of the `load` method with the integration names passed as arguments is as shown:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  integrations: {
+    All: false,
+    destination_name: true
+  }
+});
+```
+Here, `<destination_name>` is the name of the destination.
+
+### Examples
+
+* The format of the `track` method with the integration names passed as arguments is as shown below:
+
+```javascript
+rudderanalytics.track(
+  "test track event GA3",
+  {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345
+  },
+  {
+    integrations: {
+      All: false,
+      destination_name: true
+    }
+  }
+);
+```
+
+* The following example shows how to load only the Google Analytics and Intercom destinations:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  integrations: {
+    All: false,
+    "Google Analytics": true,
+    Intercom: true
+  }
+});
+```
+
+* The following example highlights how you can send the `track` type of events only to Google Analytics:
+
+```javascript
+rudderanalytics.track(
+  "test track event GA3",
+  {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345
+  },
+  {
+    integrations: {
+      All: false,
+      "Google Analytics": true
+    }
+  }
+);
+```
+
+<div class="infoBlock">
+
+You can refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#common-destination-names">Common destination names</a> for the naming conventions for the destinations.
+</div>
