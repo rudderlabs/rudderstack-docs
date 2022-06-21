@@ -100,17 +100,17 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "quick-start-guide",
-    title: "Quick Start Guide",
+    key: "quick-start",
+    title: "Quick Start",
     link:
-      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/",
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start/",
     content: [],
   },
   {
-    key: "javascript-sdk-enhancements",
-    title: "JavaScript SDK Enhancements",
+    key: "supported-api",
+    title: "Supported API",
     link:
-      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/supported-api/",
     content: [],
   },
   {
@@ -121,10 +121,31 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "querystring-api",
-    title: "Querystring API",
+    key: "version-migration",
+    title: "Version Migration",
     link:
-      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/",
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration/",
+    content: [],
+  },
+  {
+    key: "filtering",
+    title: "Filtering",
+    link:
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/filtering/",
+    content: [],
+  },
+  {
+    key: "common-destination-names",
+    title: "Common Destination Names",
+    link:
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/common-destination-names/",
+    content: [],
+  },
+  {
+    key: "onetrust-consent-manager",
+    title: "OneTrust Consent Manager",
+    link:
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/onetrust-consent-manager/",
     content: [],
   },
   {
@@ -135,29 +156,22 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "version-migration-guide",
-    title: "Version Migration Guide",
+    key: "context-traits",
+    title: "Context and Traits",
     link:
-      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/",
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/context-traits/",
     content: [],
   },
   {
-    key: "consent-managers",
-    title: "Consent Managers",
+    key: "javascript-sdk-best-practices",
+    title: "Best Practices",
     link:
-      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/",
-    content: [],
-  },
-  {
-    key: "onetrust",
-    title: "OneTrust",
-    link:
-      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/",
+      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-best-practices/",
     content: [],
   },
   {
     key: "js-sdk-faqs",
-    title: "JavaScript SDK FAQs",
+    title: "FAQ",
     link:
       "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
     content: [],
