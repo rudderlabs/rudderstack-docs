@@ -895,6 +895,12 @@ export const jsonData = [
             link: "/destinations/advertising/tiktok-ads/",
             content: [],
           },
+          {
+            key: "yahoo-dsp",
+            title: "Yahoo DSP",
+            link: "/destinations/advertising/yahoo-dsp/",
+            content: [],
+          },
         ],
       },
       {
