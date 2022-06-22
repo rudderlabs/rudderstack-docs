@@ -35,43 +35,43 @@ export const jsonData = [
 
   {
     key: "rudderstack-open-source",
-      title: "RudderStack Open Source",
-          link: "/rudderstack-open-source/",
-            content: [
-              {
-                key: "control-plane-lite",
-                title: "Control Plane Setup",
-                link: "/rudderstack-open-source/control-plane-lite/",
-                content: []
-              }, {
-                key: "installing-and-setting-up-rudderstack",
-                title: "Data Plane Setup",
-                link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/",
-                content: [
-                  {
-                    key: "docker",
-                    title: "Docker",
-                    link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
-                    content: []
-                  }, {
-                    key: "kubernetes",
-                    title: "Kubernetes",
-                    link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
-                    content: []
-                  }, {
-                    key: "developer-machine-setup",
-                    title: "Developer Machine Setup",
-                    link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
-                    content: []
-                  }, {
-                    key: "sending-test-events",
-                    title: "Sending Test Events",
-                    link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
-                    content: []
-                  },
-                ]
-              },
-            ]
+    title: "RudderStack Open Source",
+    link: "/rudderstack-open-source/",
+    content: [
+      {
+        key: "control-plane-lite",
+        title: "Control Plane Setup",
+        link: "/rudderstack-open-source/control-plane-lite/",
+        content: []
+      }, {
+        key: "installing-and-setting-up-rudderstack",
+        title: "Data Plane Setup",
+        link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/",
+        content: [
+          {
+            key: "docker",
+            title: "Docker",
+            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
+            content: []
+          }, {
+            key: "kubernetes",
+            title: "Kubernetes",
+            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
+            content: []
+          }, {
+            key: "developer-machine-setup",
+            title: "Developer Machine Setup",
+            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
+            content: []
+          }, {
+            key: "sending-test-events",
+            title: "Sending Test Events",
+            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
+            content: []
+          },
+        ]
+      },
+    ]
   },
 
 
@@ -828,7 +828,13 @@ export const jsonData = [
             link: "/destinations/advertising/tiktok-ads/",
             content: []
           },
-        ]
+          {
+            key: "yahoo-dsp",
+            title: "Yahoo DSP",
+            link: "/destinations/advertising/yahoo-dsp/",
+            content: [],
+          },
+        ],
       },
       {
         key: "analytics",
@@ -1599,8 +1605,9 @@ export const jsonData = [
     title: "RudderStack API Overview",
     sectionTitle: "API",
     link: "/rudderstack-api/",
-    content: []},
-      {
+    content: []
+  },
+  {
     key: "personal-access-tokens",
     title: "Personal Access Tokens",
     link: "/rudderstack-api/personal-access-tokens/",
@@ -1736,254 +1743,254 @@ export const jsonData = [
     link: "/rudderstack-api/test-api/",
     content: []
   },
-    
-  
 
 
 
 
 
-// Guides section
 
 
-{
-  key: "migration-guides",
+  // Guides section
+
+
+  {
+    key: "migration-guides",
     title: "Migration Guides",
-      sectionTitle: "Guides",
-        link: "/user-guides/migration-guides/",
-          content: [
-            {
-              key: "blendo-rudderstack-migration",
-              title: "Migrating from Blendo to RudderStack",
-              link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
-              content: []
-            }, {
-              key: "rudderstack-migration-guide",
-              title: "Migrating from Segment to RudderStack",
-              link: "/user-guides/migration-guides/rudderstack-migration-guide/",
-              content: []
-            }, {
-              key: "how-to-migrate-warehouse-destination-from-segment-to-rudderstack",
-              title: "Migrating Your Warehouse Destination from Segment to RudderStack",
-              link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
-              content: []
-            },
-          ]
-}, {
-  key: "administrators-guide",
+    sectionTitle: "Guides",
+    link: "/user-guides/migration-guides/",
+    content: [
+      {
+        key: "blendo-rudderstack-migration",
+        title: "Migrating from Blendo to RudderStack",
+        link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
+        content: []
+      }, {
+        key: "rudderstack-migration-guide",
+        title: "Migrating from Segment to RudderStack",
+        link: "/user-guides/migration-guides/rudderstack-migration-guide/",
+        content: []
+      }, {
+        key: "how-to-migrate-warehouse-destination-from-segment-to-rudderstack",
+        title: "Migrating Your Warehouse Destination from Segment to RudderStack",
+        link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
+        content: []
+      },
+    ]
+  }, {
+    key: "administrators-guide",
     title: "Administator's Guides",
-      link: "/user-guides/administrators-guide/",
-        content: [
-          {
-            key: "onelogin-sso",
-            title: "OneLogin SSO Setup",
-            link: "/user-guides/administrators-guide/onelogin-sso/",
-            content: []
-          },
-          {
-            key: "okta-sso",
-            title: "Okta SSO Setup",
-            link: "/user-guides/administrators-guide/okta-sso/",
-            content: []
-          },
-          {
-            key: "rudderstack-grafana-dashboard",
-            title: "RudderStack Grafana Dashboard",
-            link: "/user-guides/administrators-guide/rudderstack-grafana-dashboard/",
-            content: []
-          },
-          {
-            key: "software-releases",
-            title: "Software Releases",
-            link: "/user-guides/administrators-guide/software-releases/",
-            content: []
-          }, {
-            key: "high-availability",
-            title: "High Availability",
-            link: "/user-guides/administrators-guide/high-availability/",
-            content: []
-          }, {
-            key: "horizontal-scaling-1",
-            title: "Horizontal Scaling",
-            link: "/user-guides/administrators-guide/horizontal-scaling-1/",
-            content: []
-          }, {
-            key: "event-replay",
-            title: "Event Replay",
-            link: "/user-guides/administrators-guide/event-replay/",
-            content: []
-          }, {
-            key: "bucket-configuration-settings",
-            title: "Bucket Configuration Settings for Event Backups",
-            link: "/user-guides/administrators-guide/bucket-configuration-settings/",
-            content: []
-          }, {
-            key: "alerting",
-            title: "Alerting Guide",
-            link: "/user-guides/administrators-guide/alerting/",
-            content: []
-          }, {
-            key: "infra-provisioning",
-            title: "Infrastructure Provisioning",
-            link: "/user-guides/administrators-guide/infra-provisioning/",
-            content: []
-          }, {
-            key: "monitoring-and-metrics",
-            title: "Monitoring and Metrics",
-            link: "/user-guides/administrators-guide/monitoring-and-metrics/",
-            content: []
-          }, {
-            key: "config-parameters",
-            title: "Configuration Parameters",
-            link: "/user-guides/administrators-guide/config-parameters/",
-            content: []
-          }, {
-            key: "admin-troubleshooting-guide",
-            title: "Troubleshooting Guide",
-            link: "/user-guides/administrators-guide/admin-troubleshooting-guide/",
-            content: []
-          },
-        ]
-}, {
-  key: "how-to-guides",
+    link: "/user-guides/administrators-guide/",
+    content: [
+      {
+        key: "onelogin-sso",
+        title: "OneLogin SSO Setup",
+        link: "/user-guides/administrators-guide/onelogin-sso/",
+        content: []
+      },
+      {
+        key: "okta-sso",
+        title: "Okta SSO Setup",
+        link: "/user-guides/administrators-guide/okta-sso/",
+        content: []
+      },
+      {
+        key: "rudderstack-grafana-dashboard",
+        title: "RudderStack Grafana Dashboard",
+        link: "/user-guides/administrators-guide/rudderstack-grafana-dashboard/",
+        content: []
+      },
+      {
+        key: "software-releases",
+        title: "Software Releases",
+        link: "/user-guides/administrators-guide/software-releases/",
+        content: []
+      }, {
+        key: "high-availability",
+        title: "High Availability",
+        link: "/user-guides/administrators-guide/high-availability/",
+        content: []
+      }, {
+        key: "horizontal-scaling-1",
+        title: "Horizontal Scaling",
+        link: "/user-guides/administrators-guide/horizontal-scaling-1/",
+        content: []
+      }, {
+        key: "event-replay",
+        title: "Event Replay",
+        link: "/user-guides/administrators-guide/event-replay/",
+        content: []
+      }, {
+        key: "bucket-configuration-settings",
+        title: "Bucket Configuration Settings for Event Backups",
+        link: "/user-guides/administrators-guide/bucket-configuration-settings/",
+        content: []
+      }, {
+        key: "alerting",
+        title: "Alerting Guide",
+        link: "/user-guides/administrators-guide/alerting/",
+        content: []
+      }, {
+        key: "infra-provisioning",
+        title: "Infrastructure Provisioning",
+        link: "/user-guides/administrators-guide/infra-provisioning/",
+        content: []
+      }, {
+        key: "monitoring-and-metrics",
+        title: "Monitoring and Metrics",
+        link: "/user-guides/administrators-guide/monitoring-and-metrics/",
+        content: []
+      }, {
+        key: "config-parameters",
+        title: "Configuration Parameters",
+        link: "/user-guides/administrators-guide/config-parameters/",
+        content: []
+      }, {
+        key: "admin-troubleshooting-guide",
+        title: "Troubleshooting Guide",
+        link: "/user-guides/administrators-guide/admin-troubleshooting-guide/",
+        content: []
+      },
+    ]
+  }, {
+    key: "how-to-guides",
     title: "How-to Guides",
-      link: "/user-guides/how-to-guides/",
+    link: "/user-guides/how-to-guides/",
+    content: [
+      {
+        key: "dynamic-destination-configuration",
+        title: "How to Configure a Destination via the Event Payload",
+        link: "/user-guides/how-to-guides/dynamic-destination-configuration/",
+        content: []
+      },
+      {
+        key: "how-to-submit-an-integration-pull-request",
+        title: "How to Submit an Integration Pull Request",
+        link: "/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/",
+        content: []
+      },
+      {
+        key: "custom-domains",
+        title: "How to Use Custom Domains",
+        link: "/user-guides/how-to-guides/custom-domains/",
+        content: []
+      },
+      {
+        key: "using-aws-lambda-functions-with-rudderstack",
+        title: "How to Use AWS Lambda Functions with RudderStack",
+        link: "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
+        content: []
+      }, {
+        key: "live-destination-event-debugger",
+        title: "How to Debug Live Destination Events",
+        link: "/user-guides/how-to-guides/live-destination-event-debugger/",
+        content: []
+      }, {
+        key: "filter-events",
+        title: "How to Filter Events using Different Methods",
+        link: "/user-guides/how-to-guides/filter-events/",
+        content: []
+      }, {
+        key: "how-to-filter-selective-destinations",
+        title: "How to Filter Selective Destinations using JavaScript SDK",
+        link: "/user-guides/how-to-guides/how-to-filter-selective-destinations/",
+        content: []
+      }, {
+        key: "create-a-new-destination-transformer-for-rudder",
+        title: "How to Create a New Destination Transformation for RudderStack",
+        link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/",
         content: [
           {
-            key: "dynamic-destination-configuration",
-            title: "How to Configure a Destination via the Event Payload",
-            link: "/user-guides/how-to-guides/dynamic-destination-configuration/",
+            key: "best-practices-for-coding-transformation-functions-in-javascript",
+            title: "Best Practices for Coding Transformation Functions in JavaScript",
+            link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/",
             content: []
-          },
-          {
-            key: "how-to-submit-an-integration-pull-request",
-            title: "How to Submit an Integration Pull Request",
-            link: "/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/",
-            content: []
-          },
-          {
-            key: "custom-domains",
-            title: "How to Use Custom Domains",
-            link: "/user-guides/how-to-guides/custom-domains/",
-            content: []
-          },
-          {
-            key: "using-aws-lambda-functions-with-rudderstack",
-            title: "How to Use AWS Lambda Functions with RudderStack",
-            link: "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
-            content: []
-          }, {
-            key: "live-destination-event-debugger",
-            title: "How to Debug Live Destination Events",
-            link: "/user-guides/how-to-guides/live-destination-event-debugger/",
-            content: []
-          }, {
-            key: "filter-events",
-            title: "How to Filter Events using Different Methods",
-            link: "/user-guides/how-to-guides/filter-events/",
-            content: []
-          }, {
-            key: "how-to-filter-selective-destinations",
-            title: "How to Filter Selective Destinations using JavaScript SDK",
-            link: "/user-guides/how-to-guides/how-to-filter-selective-destinations/",
-            content: []
-          }, {
-            key: "create-a-new-destination-transformer-for-rudder",
-            title: "How to Create a New Destination Transformation for RudderStack",
-            link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/",
-            content: [
-              {
-                key: "best-practices-for-coding-transformation-functions-in-javascript",
-                title: "Best Practices for Coding Transformation Functions in JavaScript",
-                link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/",
-                content: []
-              },
-            ]
-          }, {
-            key: "implement-native-js-sdk-integration",
-            title: "How to Implement a Native JavaScript SDK Integration",
-            link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/",
-            content: [
-              {
-                key: "add-device-mode-sdk-to-js",
-                title: "How to Add a Device Mode SDK to RudderStack JavaScript SDK",
-                link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js/",
-                content: []
-              },
-            ]
-          }, {
-            key: "developing-integrations-for-rudderstack",
-            title: "How to Develop Integrations for RudderStack",
-            link: "/user-guides/how-to-guides/developing-integrations-for-rudderstack/",
-            content: []
-          }, {
-            key: "rudderstack-jamstack-integration",
-            title: "How to Integrate RudderStack with Your JAMstack Site",
-            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
-            content: [
-              {
-                key: "rudderstack-angular-integration",
-                title: "Angular",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-angular-integration/",
-                content: []
-              },
-              {
-                key: "rudderstack-astro-integration",
-                title: "Astro.js",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-astro-integration/",
-                content: []
-              },
-              {
-                key: "rudderstack-eleventy-integration",
-                title: "Eleventy",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-eleventy-integration/",
-                content: []
-              },
-              {
-                key: "rudderstack-ember-integration",
-                title: "Ember.js",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-ember-integration/",
-                content: []
-              }, {
-                key: "rudderstack-gatsby-integration",
-                title: "Gatsby",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-gatsby-integration/",
-                content: []
-              }, {
-                key: "rudderstack-hugo-integration",
-                title: "Hugo",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-hugo-integration/",
-                content: []
-              }, {
-                key: "rudderstack-jekyll-integration",
-                title: "Jekyll",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-jekyll-integration/",
-                content: []
-              }, {
-                key: "rudderstack-nextjs-integration",
-                title: "Next.js",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/",
-                content: []
-              }, {
-                key: "rudderstack-nuxtjs-integration",
-                title: "Nuxt.js",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nuxtjs-integration/",
-                content: []
-              }, {
-                key: "rudderstack-svelte-integration",
-                title: "Svelte",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-svelte-integration/",
-                content: []
-              }, {
-                key: "rudderstack-vue-integration",
-                title: "Vue.js",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-vue-integration/",
-                content: []
-              },
-            ]
           },
         ]
-},
+      }, {
+        key: "implement-native-js-sdk-integration",
+        title: "How to Implement a Native JavaScript SDK Integration",
+        link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/",
+        content: [
+          {
+            key: "add-device-mode-sdk-to-js",
+            title: "How to Add a Device Mode SDK to RudderStack JavaScript SDK",
+            link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js/",
+            content: []
+          },
+        ]
+      }, {
+        key: "developing-integrations-for-rudderstack",
+        title: "How to Develop Integrations for RudderStack",
+        link: "/user-guides/how-to-guides/developing-integrations-for-rudderstack/",
+        content: []
+      }, {
+        key: "rudderstack-jamstack-integration",
+        title: "How to Integrate RudderStack with Your JAMstack Site",
+        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
+        content: [
+          {
+            key: "rudderstack-angular-integration",
+            title: "Angular",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-angular-integration/",
+            content: []
+          },
+          {
+            key: "rudderstack-astro-integration",
+            title: "Astro.js",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-astro-integration/",
+            content: []
+          },
+          {
+            key: "rudderstack-eleventy-integration",
+            title: "Eleventy",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-eleventy-integration/",
+            content: []
+          },
+          {
+            key: "rudderstack-ember-integration",
+            title: "Ember.js",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-ember-integration/",
+            content: []
+          }, {
+            key: "rudderstack-gatsby-integration",
+            title: "Gatsby",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-gatsby-integration/",
+            content: []
+          }, {
+            key: "rudderstack-hugo-integration",
+            title: "Hugo",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-hugo-integration/",
+            content: []
+          }, {
+            key: "rudderstack-jekyll-integration",
+            title: "Jekyll",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-jekyll-integration/",
+            content: []
+          }, {
+            key: "rudderstack-nextjs-integration",
+            title: "Next.js",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/",
+            content: []
+          }, {
+            key: "rudderstack-nuxtjs-integration",
+            title: "Nuxt.js",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nuxtjs-integration/",
+            content: []
+          }, {
+            key: "rudderstack-svelte-integration",
+            title: "Svelte",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-svelte-integration/",
+            content: []
+          }, {
+            key: "rudderstack-vue-integration",
+            title: "Vue.js",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-vue-integration/",
+            content: []
+          },
+        ]
+      },
+    ]
+  },
 
 
   // Resources section
@@ -2011,5 +2018,5 @@ export const jsonData = [
     content: []
   },
 
-  
+
 ];

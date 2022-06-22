@@ -24,9 +24,9 @@ rudderanalytics.track('tshirt', {
   orderId: "2605847"
 });
 ```
-The `countingMethod` is a required property that specifies how to count the conversions for a Floodlight activity. The methods to count conversions depend on whether you  are creating or editing a [counter](https://support.google.com/campaignmanager/answer/7554821#zippy=%2Cfields-in-event-snippets-for-counter-tags) or [sales](https://support.google.com/campaignmanager/answer/7554821#zippy=%2Cfields-in-event-snippets-for-sales-tags) tag activity. Refer to the <Link to="/#faq">FAQ</Link> section for more information on counting methods for these tags.
+The `countingMethod` is a required property that specifies how to count the conversions for a Floodlight activity. The methods to count conversions depend on whether you  are creating or editing a [counter](https://support.google.com/campaignmanager/answer/7554821#zippy=%2Cfields-in-event-snippets-for-counter-tags) or [sales](https://support.google.com/campaignmanager/answer/7554821#zippy=%2Cfields-in-event-snippets-for-sales-tags) tag activity. Refer to the <Link to="#faq">FAQ</Link> section for more information on counting methods for these tags.
 
-The following table details the mapping of `integrations` object for DCM Floodlight:
+The following table details the `integrations` object mapping for DCM Floodlight:
 
 | **RudderStack property** | **DCM Floodlight property** | **Description** |
 | :--- | :--- | :---|
@@ -38,48 +38,59 @@ The following table details the mapping between RudderStack and DCM Floodlight's
 
 | RudderStack property | DCM Floodlight property | Tag|
 | :--- | :--- |:--- |
-| `context.device.adTrackingEnabled` | `dc_lat` | Counter/Sales|
 | `properties.ord` | `ord` |Counter |
+| `properties.sessionId` | `ord` |Counter - per_session |
+| `properties.sessionId` | `session_id` | Counter - per_session |
+| `properties.num` | `num` | Counter - unique |
+| `context.device.adTrackingEnabled` | `dc_lat` | Counter/Sales|
+| `properties.matchId` | `match_id` |  Counter/Sales |
 | `properties.orderId` | `ord` |  Sales |
-| `properties.quantity` | `qty` | Sales |
+| `properties.orderId` | `transaction_id` |  Sales |
 | `properties.revenue` | `value` |  Sales |
-| `properties.matchId` | `matchId` |  Sales |
-| `properties.num` | `num` | Sales |
+| `properties.quantity` | `quantity` | Sales - items_sold |
 
 The following table provides a brief description of the above DCM Floodlight properties:
 
 | DCM Floodlight property | Description |
 | :----| :-----|
 | `dc_lat` | Indicates if the user has enabled the **Limited Ad Tracking** option for IDFA/Android Advertising ID. |
-| `ord` | Used to make the Floodlight tag unique and prevent browser caching. |
-| `qty` | Applicable for **Sales** tags only - RudderStack adds the quantity of all the products in the `products` array or refers to the top-level `quantity` property. |
-| `value` | Applicable for **Sales** tags only - RudderStack sends the `revenue` parameter to DCM Floodlight. |
-| `matchId` | Advertiser created identifier used to attribute offline conversions.   |
-| `num` | Used to control cache busting manually. |
+| `ord` | Makes the Floodlight tag unique and prevents browser caching. |
+| `quantity` | RudderStack adds the quantity of all the products in the `products` array or refers to the top-level `quantity` property.|
+| `value` | RudderStack sends the `revenue` parameter to DCM Floodlight. |
+| `matchId` | Identifier created by the advertiser to attribute offline conversions.   |
+| `num` | Controls cache busting manually. |
+| `session_id` | Inserts a unique session ID while using counter tags with a per session counting methodology.  |
+| `transaction_id` | Sets a unique identifier for a transaction. |
 
 ## Custom parameters
 
 You can also send data to DCM Floodlight using the below-mentioned custom fields:
 
-| Custom field | Counting method| 
-| :--- | :--- |
-| `ord` | All| 
-| `dc_lat` | All |
-| `tag_for_child_directed_treatment` | All | 
-| `tfua` |  All | 
-| `npa` | All | 
-| `matchId` | All | 
-| `num` | Counter - unique | 
+| RudderStack custom field | DCM Floodlight property | [Counting method](https://support.google.com/campaignmanager/answer/2823400?hl=en)| 
+| :--- | :--- |:--- |
+| `properties.ord`/`properties.orderId`/`properties.sessionId`/ | `ord` | All| 
+| `context.device.adTrackingEnabled` | `dc_lat`| All |
+| `COPPA` | `tag_for_child_directed_treatment` | All | 
+| `GDPR` | `tfua` | All | 
+| `npa` | `npa` | All | 
+| `properties.matchId` | `match_id` | All | 
+| `properties.num` | `num` | Counter - unique | 
+
+<div class="infoBlock">
+For more information on the counting methods, refer to this <a href="https://support.google.com/campaignmanager/answer/2823400?hl=en">DCM Floodlight documentation</a>.
+</div>
 
 ## Page
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-When you pass the `name` field in the `page` call, RudderStack transforms it to the **Viewed `PAGE NAME` Page** format.
+Based on the presence of `name` and `category` fields in the `page` call, RudderStack transforms the event in the following format:
 
-### Page with category
-
-When you pass the `category` and `name` fields in the `page` call, RudderStack transforms it to the **Viewed `CATEGORY NAME` `PAGE NAME` Page** format.
+| `name` field | `category` field | Transformed event | 
+| :--- | :--- |:--- |
+| ❌ | ❌| Viewed Page |
+| ✅ |❌ | Viewed `PAGE NAME` Page |
+| ✅  | ✅  | Viewed `CATEGORY NAME` `PAGE NAME` Page |
 
 A sample `page` call is as shown below:
 
