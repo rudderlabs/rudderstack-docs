@@ -24,7 +24,7 @@ The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`id
 A sample `identify` call using `gtag` is shown below:
 
 ```javascript
-rudderanalytics.identify("1234", {
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
     firstLogin: true,
     method: "Google",
     value: 10,
@@ -35,7 +35,7 @@ rudderanalytics.identify("1234", {
 A sample `identify` call using `firebase` is shown below:
 
 ```javascript
-rudderanalytics.identify("1234", {
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
     firstLogin: true,
     method: "Google",
     value: 10,
@@ -49,7 +49,7 @@ rudderanalytics.identify("1234", {
 ```
 
 <div class="infoBlock">
-Refer to <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information on its dashboard settings.
+Refer to the <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information on its dashboard settings.
 </div>
 
 ## Track
@@ -193,7 +193,7 @@ The <Link to="/rudderstack-api/api-specification/rudderstack-spec/group/">`group
 A sample `group` call using `gtag` is shown below:
 
 ```javascript
-rudderanalytics.group("4444", {
+rudderanalytics.group("1hKOmRA4", {
     "custom1": 1234,
     "custom2": "custom2"
 });
@@ -202,7 +202,7 @@ rudderanalytics.group("4444", {
 A sample `group` call using `firebase` is shown below:
 
 ```javascript
-rudderanalytics.group("4444", {
+rudderanalytics.group("1hKOmRA4", {
     "custom1": 1234,
     "custom2": "custom2"
 }, {
