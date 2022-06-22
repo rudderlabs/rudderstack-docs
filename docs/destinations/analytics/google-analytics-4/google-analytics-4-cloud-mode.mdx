@@ -522,19 +522,19 @@ The below table lists the mappings of the non e-commerce `track` events and prop
   <tr>
     <td>generate_lead</td>
     <td><code class="inline-code">generate_lead</code></td>
-    <td><code class="inline-code">properties.currency</code><br /><code class="inline-code">properties.value</code></td>
+    <td><code class="inline-code">properties.${currency}</code><br /><code class="inline-code">properties.${value}</code></td>
     <td><code class="inline-code">currency</code><br /><code class="inline-code">value</code></td>
   </tr>
     <tr>
     <td>login</td>
     <td><code class="inline-code">login</code></td>
-    <td><code class="inline-code">properties.method</code></td>
+    <td><code class="inline-code">properties.${method}</code></td>
     <td><code class="inline-code">method</code></td>
   </tr>
     <tr>
     <td>sign_up</td>
     <td><code class="inline-code">sign_up</code></td>
-    <td><code class="inline-code">properties.method</code></td>
+    <td><code class="inline-code">properties.${method}</code></td>
     <td><code class="inline-code">method</code></td>
   </tr>
     <tr>
@@ -546,7 +546,11 @@ The below table lists the mappings of the non e-commerce `track` events and prop
 </table>
 
 <div class="infoBlock">
-  
+The <code class="inline-code">{currency}</code>, <code class="inline-code">{value}</code>, and <code class="inline-code">{method}</code> properties mentioned above are dynamic and their actual value depends on the key name passed in the dashboard. Refer to the <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information.
+</div>
+
+
+<div class="infoBlock">
 You can pass the custom user properties to any of the events by passing them as `properties.user_properties`. Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=gtag">Google Analytics 4 documentation</a> for more information.
 </div>
 
