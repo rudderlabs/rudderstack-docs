@@ -252,14 +252,21 @@ The following table lists the RudderStack and Google Analytics 4 properties mapp
     <td><code class="inline-code">item_list_id</code><br /><code class="inline-code">item_list_name</code></td>
   </tr>
   <tr>
-    <td>Promotion Viewed<br />Promotion Clicked</td>
-    <td><code class="inline-code">properties.position</code><br /><code class="inline-code">properties.creative_name</code><br /><code class="inline-code">properties.creative_slot</code><br /><code class="inline-code">properties.promotion_id</code><br /><code class="inline-code">properties.promotion_name</code></td>
-    <td><code class="inline-code">location_id</code><br /><code class="inline-code">creative_name</code><br /><code class="inline-code">creative_slot</code><br /><code class="inline-code">promotion_id</code><br /><code class="inline-code">promotion_name</code></td>
+    <td rowspan="4">Promotion Viewed<br />Promotion Clicked</td>
+   <td><code class="inline-code">properties.creative_name</code><br /><code class="inline-code">properties.creative</code></td>
+    <td><code class="inline-code">creative_name</code></td>
+    </tr>
+  <tr>
+    <td><code class="inline-code">properties.creative_slot</code><br /><code class="inline-code">properties.position</code></td>
+    <td><code class="inline-code">creative_slot</code></td>
   </tr>
-   <tr>
-    <td>Product Added<br />Product Removed<br />Product Added to Wishlist</td>
-    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.currency</code></td>
-    <td><code class="inline-code">value</code><br /><code class="inline-code">currency</code></td>
+  <tr>
+    <td><code class="inline-code">properties.location_id</code></td>
+    <td><code class="inline-code">location_id</code></td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">properties.promotion_name</code><br /><code class="inline-code">properties.name</code></td>
+    <td><code class="inline-code">promotion_name</code></td>
   </tr>
    <tr>
     <td>Product Added<br />Product Removed</td>
@@ -292,9 +299,21 @@ The following table lists the RudderStack and Google Analytics 4 properties mapp
     <td><code class="inline-code">group_id</code></td>
   </tr>
   <tr>
-    <td>Checkout Step Completed</td>
-    <td><code class="inline-code">properties.shipping_method</code><br /><code class="inline-code">properties.coupon</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.currency</code></td>
-    <td><code class="inline-code">shipping_tier</code><br /><code class="inline-code">coupon</code><br /><code class="inline-code">value</code><br /><code class="inline-code">currency</code></td>
+    <td rowspan="4">Checkout Step Completed</td>
+   <td><code class="inline-code">properties.currency</code></td>
+    <td><code class="inline-code">currency</code></td>
+    </tr>
+  <tr>
+   <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">value</code></td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">properties.coupon</code></td>
+    <td><code class="inline-code">coupon</code></td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">properties.shipping_method</code</td>
+    <td><code class="inline-code">shipping_tier</code></td>
   </tr>
 </table>
 
