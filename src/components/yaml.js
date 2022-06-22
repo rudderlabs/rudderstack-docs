@@ -22,7 +22,7 @@ export default function Yaml({handleMenuOpen}) {
     <ul class="columns">
       {data.allSourcesYaml.edges.map(edge => (
         <li>
-          <Link to={edge.node.link}>{edge.node.displayName}: </Link><span class="cap">{edge.node.category}:<strong>{edge.node.type}</strong></span>
+          <Link to={edge.node.link}>{edge.node.displayName}</Link>
         </li>
       ))}
     </ul>
