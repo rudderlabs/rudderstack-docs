@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
-export default function Yaml({ category }) {
+export default function Sources({ category }) {
   const data = useStaticQuery(
     graphql`
       query {

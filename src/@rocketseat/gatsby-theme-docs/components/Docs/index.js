@@ -21,7 +21,7 @@ import {
   rudderslabTrackOnYoutubeVideoPlaybackDocs,
 } from '../../../../utils/common'
 import YouTube from 'react-youtube'
-import Yaml from '../../../../components/yaml'
+import Sources from '../../../../components/sources'
 
 export default function Docs({mdx, pageContext}) {
   const {repositoryEditUrl, repositoryProvider} = pageContext
@@ -56,7 +56,7 @@ export default function Docs({mdx, pageContext}) {
     },
     Link,
     Tabs,
-    Yaml,
+    Sources,
     TabList,
     Tab,
     TabPanels,
