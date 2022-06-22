@@ -1333,6 +1333,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "yahoo-dsp",
+    title: "Yahoo DSP",
+    link: "/destinations/advertising/yahoo-dsp/",
+    content: [],
+  },
+  {
     key: "customer-data-platform",
     title: "Customer Data Platform",
     link: "/destinations/customer-data-platform/",
@@ -1856,6 +1862,12 @@ export const postNavList = [
     key: "data-regulation-api",
     title: "Data Regulation API",
     link: "/rudderstack-api/data-regulation-api/",
+    content: [],
+  },
+  {
+    key: "tracking-plan-api",
+    title: "Tracking Plan API",
+    link: "/rudderstack-api/tracking-plan-api/",
     content: [],
   },
   {
