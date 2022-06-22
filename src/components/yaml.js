@@ -1,7 +1,7 @@
 import React from 'react'
-import {useStaticQuery, graphql, Link} from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
-export default function Yaml({handleMenuOpen}) {
+export default function Yaml({ category }) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -18,9 +18,13 @@ export default function Yaml({handleMenuOpen}) {
       }
     `,
   )
+
+  let sources = data.allSourcesYaml.edges
+  if (category !== undefined) sources = sources.filter(x => x.node.category === category)
+
   return (
     <ul class="columns">
-      {data.allSourcesYaml.edges.map(edge => (
+      {sources.map(edge => (
         <li>
           <Link to={edge.node.link}>{edge.node.displayName}</Link>
         </li>
@@ -28,4 +32,3 @@ export default function Yaml({handleMenuOpen}) {
     </ul>
   )
 }
-
