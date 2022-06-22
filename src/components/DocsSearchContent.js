@@ -19,27 +19,21 @@ const generateBreadcrumb = slug => {
   let slugArray = slug.split("/").filter(x => x)
   let breadcrumb = []
 
-  // Get item by matching key. If no match found, link is used for matching the item
-  let key = jsonData.find(x => x.key === slugArray[0])
+  // Get item by matching parts of slug
   let link = "/" + slugArray[0]
+  let item = jsonData.find(x => x.link.startsWith(link))
 
-  if (key) {
-    breadcrumb.push(key.title)
+  if (item) {
+    breadcrumb.push(item.title)
 
     while (breadcrumb.length < slugArray.length) {
-      let tempKey = key.content.find(x => x.key === slugArray[breadcrumb.length])
+      link += "/" + slugArray[breadcrumb.length]
+      item = item.content.find(x => x.link.startsWith(link))
 
-      if (tempKey) {
-        link += "/" + slugArray[breadcrumb.length]
-        key = tempKey
-
-        breadcrumb.push(key.title)
+      if (item) {
+        breadcrumb.push(item.title)
       } else {
-        link += "/" + slugArray[breadcrumb.length]
-        key = key.content.find(x => x.link.startsWith(link))
-
-        if (key) breadcrumb.push(key.title)
-        else break
+        break
       }
     }
   }
