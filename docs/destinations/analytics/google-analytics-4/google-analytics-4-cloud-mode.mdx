@@ -17,9 +17,44 @@ Find the open source transformer code for this destination in the <a href="https
   color={'blueviolet'}
 />
 
+## Identify
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+
+A sample `identify` call using `gtag` is shown below:
+
+```javascript
+rudderanalytics.identify("1234", {
+    firstLogin: true,
+    method: "Google",
+    value: 10,
+    currency: "USD"
+});
+```
+
+A sample `identify` call using `firebase` is shown below:
+
+```javascript
+rudderanalytics.identify("1234", {
+    firstLogin: true,
+    method: "Google",
+    value: 10,
+    currency: "USD"
+}, {
+    externalId: [{
+        type: "ga4AppInstanceId",
+        id: "f0dd99b6f979fb551ce583373900f937"
+    }],
+});
+```
+
+<div class="infoBlock">
+Refer to <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information on its dashboard settings.
+</div>
+
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
 
@@ -60,31 +95,34 @@ A sample `track` call using `gtag` is shown below:
 
 ```javascript
 rudderanalytics.track('Product List Viewed', {
-  list_id: "related_products",
-  category: "Related_products",
-  products: [{
-    product_id: "507f1f77bcf86cd799439011",
-    name: "Monopoly: 3rd Edition",
-    coupon: "SUMMER_FUN",
-    category: "Apparel",
-    brand: "Google",
-    variant: "green",
-    price: "19",
-    quantity: "2",
-    position: "1",
-    affiliation: "Google Merchandise Store",
-    currency: "USD",
-    discount: 2.22,
-    item_category2: "Adult",
-    item_category3: "Shirts",
-    item_category4: "Crew",
-    item_category5: "Short sleeve",
-    item_list_id: "related_products",
-    item_list_name: "Related Products",
-    location_id: "L_12345"
-  }]
+    list_id: "related_products",
+    category: "Related_products",
+    products: [{
+        product_id: "507f1f77bcf86cd799439011",
+        name: "Monopoly: 3rd Edition",
+        coupon: "SUMMER_FUN",
+        category: "Apparel",
+        brand: "Google",
+        variant: "green",
+        price: "19",
+        quantity: "2",
+        position: "1",
+        affiliation: "Google Merchandise Store",
+        currency: "USD",
+        discount: 2.22,
+        item_category2: "Adult",
+        item_category3: "Shirts",
+        item_category4: "Crew",
+        item_category5: "Short sleeve",
+        item_list_id: "related_products",
+        item_list_name: "Related Products",
+        location_id: "L_12345"
+    }]
 }, {
-  client_id: "client_id"
+    externalId: [{
+        type: "ga4ClientId",
+        id: "client_id"
+    }],
 });
 ```
 
@@ -125,7 +163,7 @@ rudderanalytics.track('Product List Viewed', {
 
 ## Page
 
-The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page. 
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page. 
 
 RudderStack maps the `page` call to a `page_view` event by default, and passes it to Google Analytics 4 as a custom event. 
 
@@ -152,10 +190,27 @@ rudderanalytics.page({}, {
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/group/">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, for example, company name, number of employees, etc.
 
-A sample `group` call is shown below:
+A sample `group` call using `gtag` is shown below:
 
 ```javascript
+rudderanalytics.group("4444", {
+    "custom1": 1234,
+    "custom2": "custom2"
+});
+```
 
+A sample `group` call using `firebase` is shown below:
+
+```javascript
+rudderanalytics.group("4444", {
+    "custom1": 1234,
+    "custom2": "custom2"
+}, {
+    externalId: [{
+        type: "ga4AppInstanceId",
+        id: "f0dd99b6f979fb551ce583373900f937"
+    }],
+});
 ```
 
 ## E-commerce
