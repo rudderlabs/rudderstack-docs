@@ -44,13 +44,16 @@ Refer to the <a href="#faq">FAQ</a> section for more information on how to obtai
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-1.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
-- **Enable Server Side Identify**: Enable this setting to send an <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call.
-- **Trait to differentiate between new or existing user**: Enter a trait key traits to determine whether its a new or an existing user.
-- **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` call to a `sign_up` event in case of a new user or a `login` event in case of an existing user.
-- **Trait key for the 'method' parameter in Login or Signup event**: Enter the trait key for passing the `method` parameter for `login` and `sign_up` event.
-- **Send 'generate_lead' event for 'identify' event**: Enable this setting to send a `generate_lead` event based on a new or an existing user. Note that `generate_lead` will only be fired for new users and not for the existing ones. When enabled and a its new user, you also need to enter the following details:
-  - **Value - traits for lead generation**: Enter the key that will be retrieved from traits to determine **value** for Lead Generation.
-  - **Currency - traits for lead generation**: Enter the key that will be retrieved from traits to determine **currency** for Lead Generation.
+- **Enable Server Side Identify**: Enable this setting to fire an <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call.
+
+  If enabled, you can set the following:
+
+- **Trait to differentiate between new or existing user**: Enter a trait key to determine whether its a new or an existing user.
+- **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` event to a `login` event in case of an existing user or a `sign_up` event in case of a new user.
+- **Trait key for the 'method' parameter in Login or Signup event**: Enter the trait key to pass the `method` parameter in `login` or `sign_up` event.
+- **Send 'generate_lead' event for 'identify' event**: Enable this setting to send a `generate_lead` event for a new user. Note that `generate_lead` will only be fired for new users and not for the existing ones. When enabled and a its new user, you also need to enter the following details:
+  - **Value - traits for lead generation**: Enter the value key to pass the `value` parameter for `generate_lead` event. 
+  - **Currency - traits for lead generation**: Enter the currency key to pass the `currency` parameter for `generate_lead` event. 
 
 ### Native SDK
 
