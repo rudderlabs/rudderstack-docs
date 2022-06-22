@@ -257,19 +257,29 @@ The following table lists the RudderStack and Google Analytics 4 properties mapp
     <td><code class="inline-code">location_id</code><br /><code class="inline-code">creative_name</code><br /><code class="inline-code">creative_slot</code><br /><code class="inline-code">promotion_id</code><br /><code class="inline-code">promotion_name</code></td>
   </tr>
    <tr>
-    <td>Product Viewed<br />Product Added<br />Product Removed<br />Product Added to Wishlist</td>
+    <td>Product Added<br />Product Removed<br />Product Added to Wishlist</td>
     <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.currency</code></td>
     <td><code class="inline-code">value</code><br /><code class="inline-code">currency</code></td>
   </tr>
+   <tr>
+    <td>Product Added<br />Product Removed</td>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code><br /><code class="inline-code">properties.price X properties.quantity</code></td>
+    <td><code class="inline-code">value</code></td>
+  </tr>
+  <tr>
+    <td>Product Viewed<br />Product Added to Wishlist</td>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.price</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">value</code></td>
+  </tr>
     <tr>
     <td>Cart Viewed<br />Checkout Started<br />Generate Lead<br />Order Completed<br />Order Refunded<br />Payment Info Entered</td>
-    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
     <td><code class="inline-code">value</code></td>
   </tr>
     <tr>
     <td>Product Shared</td>
-    <td><code class="inline-code">properties.share_via</code><br /><code class="inline-code">properties.content_type</code><br /><code class="inline-code">properties.item_id</code></td>
-    <td><code class="inline-code">method</code><br /><code class="inline-code">content_type</code><br /><code class="inline-code">item_id</code></td>
+    <td><code class="inline-code">properties.product_id</code><br /><code class="inline-code">properties.sku</code><br /><code class="inline-code">properties.item_id</code></td>
+    <td><code class="inline-code">item_id</code></td>
   </tr>
    <tr>
     <td>Cart Shared</td>
