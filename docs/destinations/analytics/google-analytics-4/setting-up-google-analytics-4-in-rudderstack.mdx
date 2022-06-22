@@ -12,14 +12,13 @@ Before configuring Google Analytics 4 as a destination in RudderStack, verify if
 | **Cloud Mode**      | **Supported** | **Supported**  | **Supported**  |
 
 <div class="infoBlock">
-
 To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Google Analytics 4, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Google Analytics 4**.
-2. Assign a name to your destination and click on Next.
+2. Assign a name to your destination and click on **Continue**.
 
 ## Connection settings
 
@@ -36,7 +35,6 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
     - **Firebase App Id**: Enter the Firebase App ID which is the identifier for Firebase app. It can be found in the Firebase dashboard under **Project Settings > General**.
  
 <div class="infoBlock">
-  
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the API Secret, Measurement Id and Firebase App ID.
 </div>
 
@@ -56,7 +54,7 @@ Refer to the <a href="#faq">FAQ</a> section for more information on how to obtai
   - **Currency - traits for lead generation**: Enter the currency key to pass the `currency` parameter for `generate_lead` event. 
 
 <div class="infoBlock">
-Refer to <Link to="destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/#identify"><code class="inline-code">identify</code> call payload</Link> for more information.
+Refer to <Link to="/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/#identify"><code class="inline-code">identify</code> call payload</Link> for more information.
 </div>
 
 ### Native SDK
@@ -73,7 +71,6 @@ All the settings mentioned below are applicable only for the device mode.
     - `search`
  
 <div class="infoBlock">
-
 Google Analytics 4 has a limit on the number of unique properties per event name. The default <code class="inline-code">page_view</code> event supports the properties mentioned in the <a href="https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484">Automatically collected events in Google Analytics 4</a> guide.
 </div>
 
