@@ -3,6 +3,11 @@
 .sidebar-nav-content a {
   font-size: 14px;
 }
+
+ul.columns {
+  column-count: 2;
+  column-fill: auto;
+}
 /*! purgecss start ignore */
 .childrenWrapper h1 {
   font-size: 32px;
