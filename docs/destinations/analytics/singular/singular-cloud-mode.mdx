@@ -65,7 +65,7 @@ The following table lists the mapping of the attributes **automatically captured
 To anonymize your IP, you can send a dummy IP in the the <code class="inline-code">context.ip</code> field. RudderStack uses it as the IP address instead of capturing it automatically from the backend.
 </div>
 
-The following table lists the mapping of the attributes **must be passed via the event properties**:
+The following table lists the mapping of the attributes that **must be passed via the event properties**:
 
 <div class="warningBlock">
 These properties are not persisted in the SDK and must be passed with every event.
@@ -87,7 +87,7 @@ These properties are not persisted in the SDK and must be passed with every even
 | `properties.install` | `install` | Optional | The install flag. Set to `true` on the first session after app install, or `false` otherwise. Required for reinstall tracking capability. |
 <br />
 
-The following table lists the mapping of the attributes **must be passed via the event properties just once**:
+The following table lists the mapping of the attributes that **must be passed via the event properties just once**:
 
 <div class="infoBlock">
 These properties are persisted in the SDK and must be passed just once.
@@ -114,7 +114,7 @@ RudderStack supports only <code class="inline-code">fcm</code> for mapping two v
 
 ## Custom events
 
-RudderStack sends all the other events other than the session events as custom events via Singular's [`evt`](https://s2s.singular.net/api/v1/evt) endpoint.
+RudderStack sends all the events other than the session events as custom events via Singular's [`evt`](https://s2s.singular.net/api/v1/evt) endpoint.
 
 The following table lists the mapping of the attributes **automatically captured** by RudderStack for the **mobile platforms** (<Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/">Android</Link> and <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/">iOS</Link>):
 
@@ -131,10 +131,10 @@ The following table lists the mapping of the attributes **automatically captured
 | <Link to="/rudderstack-api/api-specification/rudderstack-spec/common-fields/#clock-skew-considerations"><code class="inline-code">timestamp</code></Link> | `utime` | Optional | The session time (in UNIX time). |
 
 <div class="infoBlock">
-Singular prefers <code class="inline-code">aifa</code> over <code class="inline-code">andi</code> (in Android) and <code class="inline-code">idfa</code> over <code class="inline-code">idfv</code> (in iOS)
+Singular prefers <code class="inline-code">aifa</code> over <code class="inline-code">andi</code> (in Android) and <code class="inline-code">idfa</code> over <code class="inline-code">idfv</code> (in iOS).
 </div>
 
-The following table lists the mapping of the attributes **must be passed via the event properties**:
+The following table lists the mapping of the attributes that **must be passed via the event properties**:
 
 | RudderStack property | Singular attribute | Presence | Description |
 | :----| :----| :----| :----|
