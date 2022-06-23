@@ -895,6 +895,12 @@ export const jsonData = [
             link: "/destinations/advertising/tiktok-ads/",
             content: [],
           },
+          {
+            key: "yahoo-dsp",
+            title: "Yahoo DSP",
+            link: "/destinations/advertising/yahoo-dsp/",
+            content: [],
+          },
         ],
       },
       {
@@ -1917,6 +1923,12 @@ export const jsonData = [
         key: "data-regulation-api",
         title: "Data Regulation API",
         link: "/rudderstack-api/data-regulation-api/",
+        content: [],
+      },
+      {
+        key: "tracking-plan-api",
+        title: "Tracking Plan API",
+        link: "/rudderstack-api/tracking-plan-api/",
         content: [],
       },
       {

@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/data-warehouse-integrations/google-bigquery"
 title: "Google BigQuery"
 description: Step-by-step guide on setting up Google BigQuery as a destination in RudderStack.
 ---
@@ -9,12 +8,10 @@ description: Step-by-step guide on setting up Google BigQuery as a destination i
 RudderStack lets you configure BigQuery as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-
 Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for more information on how the events are mapped to the tables in BigQuery.
 </div>
 
 <div class="successBlock">
-
 Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/bq">GitHub repository</a>.
 </div>
 
@@ -29,19 +26,16 @@ Before you set up BigQuery as a destination in RudderStack, follow these steps t
 <img src="../assets/screenshot-2020-04-08-at-11.36.30-am.png" alt="Copy the Project ID" />
 
 <div class="infoBlock">
-
 This project ID is required for configuring BigQuery as a destination in RudderStack.
 </div>
 
 <div class="infoBlock">
-
 To enable RudderStack to load data into your BigQuery cluster, make sure that <a href="https://cloud.google.com/billing/docs/how-to/modify-project">billing</a> is enabled for the project.
 </div>
 
 4. Create a new Google Cloud Storage \(**GCS**\) bucket or provide an existing one to store files before loading the data into your BigQuery instance.
 
 <div class="warningBlock">
-
 To make sure that the data loads from GCS to BigQuery, co-locate your GCS storage bucket with BigQuery. For more information, refer to the <a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage#data-locations">BigQuery documentation</a>.
 </div>
 
@@ -50,7 +44,6 @@ To make sure that the data loads from GCS to BigQuery, co-locate your GCS storag
 For RudderStack to successfully send events to your BigQuery instance, you also need to set up a service account with the necessary permissions. 
 
 <div class="warningBlock">
-
 Make sure that you create the service account for the same BigQuery project.
 </div>
 
@@ -62,7 +55,6 @@ Follow the steps below to set up a service account:
   - Add the `BigQuery Job User` and `BigQuery Data Owner` roles to the account.
 
 <div class="infoBlock">
-
 If a dataset name (configurable by the setting: <strong>Namespace</strong> in the RudderStack dashboard) already exists, the role of <strong>BigQuery Data Editor</strong> would suffice instead of <strong>BigQuery Data Owner</strong>.
 </div>
 
@@ -91,7 +83,6 @@ You will need to allowlist the following RudderStack IPs to enable network acces
 - 3.64.201.167
 
 <div class="infoBlock">
-
 If you have your deployment in the EU region, you can allowlist only the following two IPs:
 <ul>
 <li>3.66.99.198</li>
@@ -100,7 +91,6 @@ If you have your deployment in the EU region, you can allowlist only the followi
 </div>
 
 <div class="infoBlock">
-
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
@@ -134,7 +124,6 @@ Enter the following credentials in the **Connection Credentials** page:
 RudderStack uses the source name (written in snake case, for example, `source_name`) to create a dataset in BigQuery.
 
 <div class="infoBlock">
-
 For more details on the tables and columns created by RudderStack, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</a> guide.
 </div>
 
@@ -144,7 +133,6 @@ RudderStack supports two modes by which data is ingested into BigQuery:
 - Deduplication
 
 <div class="infoBlock">
-
 By default, RudderStack uses the partitioned tables method to ingest data into BigQuery. Deduplication is disabled.
 </div>
 
@@ -160,26 +148,22 @@ If you are using [open source RudderStack](https://rudderstack.com/docs/rudderst
 RudderStack creates ingestion-time partition tables based on the load date, so you can take advantage of it to query a subset of data.
 
 <div class="infoBlock">
-
 You can find more details on the BigQuery partitioned tables in <a href="https://cloud.google.com/bigquery/docs/partitioned-tables">BigQuery documentation</a>. For information on how RudderStack creates these tables on load, refer to the <a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables#creating_an_ingestion-time_partitioned_table_when_loading_data">Creating partitioned tables</a> section of the BigQuery documentation.
 </div>
 
 <div class="warningBlock">
-
 Duplicate data is <strong>not</strong> discarded when loading it into BigQuery.
 </div>
 
 In addition to tables, RudderStack creates a **view** \(`<table_name>_view`\) for every table for de-duplication purposes.
 
 <div class="infoBlock">
-
 More information on views can be found in this <a href="https://cloud.google.com/bigquery/docs/views-intro">BigQuery guide</a>.
 </div>
 
 It is highly recommended that you use the corresponding view \(containing the events from the last 60 days\) to avoid duplicate events in your query results. Since BigQuery [views](https://cloud.google.com/bigquery/docs/views-intro#view_pricing) are merely logical views and are not cached, you can create a native table from it to save money - by avoiding running the query that defines the view every time.
 
 <div class="successBlock">
-
 Users can modify the view query to change the time window of the view. The default value is set to <strong>60 days</strong>.
 </div>
 
@@ -187,13 +171,15 @@ Users can modify the view query to change the time window of the view. The defau
 
 In this method, RudderStack automatically discards any duplicate events while loading them into the BigQuery tables. To enable this method, set the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED` in your RudderStack data plane setup to `true`.
 
-<div class="warningBlock">
+<div class="successBlock">
+The RudderStack team handles this setting for the RudderStack Pro and Enterprise users.
+</div>
 
+<div class="warningBlock">
 Views will not be created for the tables if you choose the deduplication method.
 </div>
 
 <div class="warningBlock">
-
 Note that the <strong>querying cost will increase</strong> if you choose this method, as RudderStack removes the duplicates from the tables through sequential scans that happen on every warehouse upload. For example, if your warehouse upload frequency is set to  every 30 minutes, RudderStack performs a full scan on the <code class="inline-code">tracks</code> table every 30 minutes to upload any new events.
 </div>
 
@@ -264,4 +250,3 @@ RudderStack retries the failed syncs for up to 3 hours before aborting them. For
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
-

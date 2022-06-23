@@ -1,121 +1,146 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import { MDXProvider } from "@mdx-js/react";
-import { preToCodeBlock } from "mdx-utils";
-import Code from "../Code";
-import mediumZoom from "medium-zoom";
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
-import "@reach/tabs/styles.css";
-import Layout from "../Layout";
-import { Link } from "gatsby";
-import SEO from "../SEO";
-import PostNav from "./PostNav";
-import EditGithub from "@rocketseat/gatsby-theme-docs/src/components/Docs/EditGithub";
-import { forEach, findIndex } from "lodash";
-import { postNavList } from "../../../../postNavList";
-import { BlockMath, InlineMath } from "react-katex";
-import "katex/dist/katex.min.css";
+import React, {useEffect} from 'react'
+import PropTypes from 'prop-types'
+import {MDXRenderer} from 'gatsby-plugin-mdx'
+import {MDXProvider} from '@mdx-js/react'
+import {preToCodeBlock} from 'mdx-utils'
+import Code from '../Code'
+import mediumZoom from 'medium-zoom'
+import {Tabs, TabList, Tab, TabPanels, TabPanel} from '@reach/tabs'
+import '@reach/tabs/styles.css'
+import Layout from '../Layout'
+import {Link} from 'gatsby'
+import SEO from '../SEO'
+import PostNav from './PostNav'
+import EditGithub from '@rocketseat/gatsby-theme-docs/src/components/Docs/EditGithub'
+import {forEach, findIndex} from 'lodash'
+import {postNavList} from '../../../../postNavList'
+import {BlockMath, InlineMath} from 'react-katex'
+import 'katex/dist/katex.min.css'
 import {
   rudderslabTrackOnClickDocs,
   rudderslabTrackOnYoutubeVideoPlaybackDocs,
-} from "../../../../utils/common";
-import YouTube from "react-youtube";
+} from '../../../../utils/common'
+import YouTube from 'react-youtube'
+import Sources from '../../../../components/sources'
 
-export default function Docs({ mdx, pageContext }) {
-  const { repositoryEditUrl, repositoryProvider } = pageContext;
-  const { title, description } = mdx.frontmatter;
-  const { headings, body } = mdx;
-  const { slug } = mdx.fields;
+export default function Docs({mdx, pageContext}) {
+  const {repositoryEditUrl, repositoryProvider} = pageContext
+  const {title, description} = mdx.frontmatter
+  const {headings, body} = mdx
+  const {slug} = mdx.fields
 
-  let tmpSlug = slug.replace(/^\/|\/$/g, "");
-  const docsBasePath = process.env.GATSBY_DOCS_BASE_PATH || "";
+  let tmpSlug = slug.replace(/^\/|\/$/g, '')
+  const docsBasePath = process.env.GATSBY_DOCS_BASE_PATH || ''
 
-  let currentPageIndex = findIndex(postNavList, (o) =>
-    tmpSlug === "docs" ? true : slug === docsBasePath + o.link
-  );
-  let currentPageItem = postNavList[currentPageIndex];
+  let currentPageIndex = findIndex(postNavList, o =>
+    tmpSlug === 'docs' ? true : slug === docsBasePath + o.link,
+  )
+  let currentPageItem = postNavList[currentPageIndex]
   let nextPageIndex =
-    currentPageIndex + 1 === postNavList.length ? 0 : currentPageIndex + 1;
-  let nextPageItem = postNavList[nextPageIndex];
+    currentPageIndex + 1 === postNavList.length ? 0 : currentPageIndex + 1
+  let nextPageItem = postNavList[nextPageIndex]
   let prevPageIndex =
-    currentPageIndex - 1 < 0 ? postNavList.length - 1 : currentPageIndex - 1;
-  let prevPageItem = postNavList[prevPageIndex];
-  let disableTableOfContents = false;
+    currentPageIndex - 1 < 0 ? postNavList.length - 1 : currentPageIndex - 1
+  let prevPageItem = postNavList[prevPageIndex]
+  let disableTableOfContents = false
 
   const shortCodes = {
-    pre: (preProps) => {
-      const props = preToCodeBlock(preProps);
+    pre: preProps => {
+      const props = preToCodeBlock(preProps)
 
       if (props) {
-        return <Code {...props} />;
+        return <Code {...props} />
       }
 
-      return <pre {...preProps} />;
+      return <pre {...preProps} />
     },
     Link,
     Tabs,
+    Sources,
     TabList,
     Tab,
     TabPanels,
     TabPanel,
     BlockMath,
     InlineMath,
-    YouTube: (props) => (
+    YouTube: props => (
       <YouTube
-        onPlay={(event) => {
+        onPlay={event => {
           rudderslabTrackOnYoutubeVideoPlaybackDocs(
             event.target.playerInfo.videoData.title,
-            event
-          );
+            event,
+          )
         }}
         {...props}
       />
     ),
-  };
+    GhBadge: props => {
+      let queryParams = []
+      ;['label', 'message', 'color', 'style', 'logo'].forEach(x => {
+        if (props[x]) queryParams.push(x + '=' + props[x])
+      })
+
+      let src = `https://img.shields.io/static/v1?${queryParams.join('&')}`
+      if (props.repo)
+        src = `https://img.shields.io/${props.repo}${
+          queryParams.length > 0 ? '?' : ''
+        }${queryParams.join('&')}`
+
+      return (
+        <a
+          className={`githubBadgeLink${props.url ? '' : ' disabled'}`}
+          href={props.url}
+          target="_blank"
+        >
+          <img src={src} alt="Github Badge" className="githubBadge" />
+        </a>
+      )
+    },
+  }
 
   useEffect(() => {
-    (function () {
-      const zoom = mediumZoom(document.querySelectorAll("img:not(.mainLogo)"));
+    ;(function () {
+      const zoom = mediumZoom(
+        document.querySelectorAll('img:not(.mainLogo, .githubBadge)'),
+      )
 
       return () => {
-        zoom.detach();
-      };
-    })();
+        zoom.detach()
+      }
+    })()
 
     let descriptionSpan = `<p class="pgdescription">${
-      description === null ? "" : description
-    }</p>`;
+      description === null ? '' : description
+    }</p>`
 
-
-    let h1Tags = document.createElement('h1');
-    h1Tags.innerText = title;
-    document.getElementsByClassName('childrenWrapper')[0].prepend(h1Tags);
-    h1Tags.insertAdjacentHTML("afterend", descriptionSpan);
+    let h1Tags = document.createElement('h1')
+    h1Tags.innerText = title
+    document.getElementsByClassName('childrenWrapper')[0].prepend(h1Tags)
+    h1Tags.insertAdjacentHTML('afterend', descriptionSpan)
 
     let ancTags = document.querySelectorAll(
-      ".childrenWrapper a:not(.anchor, .next, .previous)"
-    );
-    forEach(ancTags, (o) => {
+      '.childrenWrapper a:not(.anchor, .next, .previous)',
+    )
+    forEach(ancTags, o => {
       o.addEventListener(
-        "click",
-        (e) => rudderslabTrackOnClickDocs("link", null, e, true),
-        { passive: true }
-      );
-      o.setAttribute("target", "_blank");
-    });
-
-    let sectionLinks = document.querySelectorAll(".childrenWrapper a.anchor");
-    forEach(sectionLinks, (o) =>
-      o.addEventListener(
-        "click",
-        (e) => {
-          rudderslabTrackOnClickDocs("sectionLink", null, e, true);
-        },
-        { passive: true }
+        'click',
+        e => rudderslabTrackOnClickDocs('link', null, e, true),
+        {passive: true},
       )
-    );
-  }, []);
+      o.setAttribute('target', '_blank')
+    })
+
+    let sectionLinks = document.querySelectorAll('.childrenWrapper a.anchor')
+    forEach(sectionLinks, o =>
+      o.addEventListener(
+        'click',
+        e => {
+          rudderslabTrackOnClickDocs('sectionLink', null, e, true)
+        },
+        {passive: true},
+      ),
+    )
+  }, [])
 
   return (
     <>
@@ -140,7 +165,7 @@ export default function Docs({ mdx, pageContext }) {
         />
       </Layout>
     </>
-  );
+  )
 }
 
 Docs.propTypes = {
@@ -161,4 +186,4 @@ Docs.propTypes = {
     repositoryEditUrl: PropTypes.string,
     repositoryProvider: PropTypes.string,
   }).isRequired,
-};
+}
