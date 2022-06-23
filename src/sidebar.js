@@ -655,15 +655,9 @@ export const jsonData = [
 
   // Destinations section
   {
-    key: "webhooks",
-    title: "Webhooks",
-    sectionTitle: "Destinations",
-    link: "/tmp-destinations/webhooks/",
-    content: []
-  },
-  {
     key: "destinations",
     title: "Streaming Destinations",
+    sectionTitle: "Destinations",
     link: "/tmp-destinations/streaming-destinations/",
     content: [
       {
@@ -1463,6 +1457,19 @@ export const jsonData = [
       },
     ]
   },
+  {
+    key: "webhooks",
+    title: "Webhooks",
+    link: "/tmp-destinations/webhooks/",
+    content: []
+  },
+  {
+    key: "rudderstack-connection-modes",
+    title: "Connection Modes: Cloud Mode vs. Device Mode",
+    link: "/tmp-destinations/rudderstack-connection-modes/",
+    content: []
+  },
+
 
   // Features section
   {
