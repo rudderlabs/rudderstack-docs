@@ -7,7 +7,6 @@ description:  Detailed technical documentation on sending events to Google Analy
 RudderStack lets you send your event data to Google Analytics 4 via the [cloud mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode).
 
 <div class="successBlock">
-
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
 </div>
 
@@ -62,7 +61,6 @@ RudderStack supports both the `gtag` and `firebase` ways for tagging in websites
 - If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
 
 <div class="infoBlock">
-
 Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
 </div>
 
@@ -74,7 +72,6 @@ The mappings for the above-mentioned mandatory parameters are listed in the foll
 | `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
 
 <div class="infoBlock">
-  
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
 </div>
 
@@ -87,7 +84,6 @@ The mappings for the optional parameters (common for `gtag` and `firebase` both)
 | `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`.|
 
 <div class="infoBlock">
-  
 Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
 </div>
 
@@ -522,19 +518,19 @@ The below table lists the mappings of the non e-commerce `track` events and prop
   <tr>
     <td>generate_lead</td>
     <td><code class="inline-code">generate_lead</code></td>
-    <td><code class="inline-code">properties.${currency}</code><br /><code class="inline-code">properties.${value}</code></td>
+    <td><code class="inline-code">properties.$&#123;currency&#125;</code><br /><code class="inline-code">properties.$&#123;value&#125;</code></td>
     <td><code class="inline-code">currency</code><br /><code class="inline-code">value</code></td>
-  </tr>
+  </tr>  
     <tr>
     <td>login</td>
     <td><code class="inline-code">login</code></td>
-    <td><code class="inline-code">properties.${method}</code></td>
+    <td><code class="inline-code">properties.$&#123;method&#125;</code></td>
     <td><code class="inline-code">method</code></td>
   </tr>
     <tr>
     <td>sign_up</td>
     <td><code class="inline-code">sign_up</code></td>
-    <td><code class="inline-code">properties.${method}</code></td>
+    <td><code class="inline-code">properties.$&#123;method&#125;</code></td>
     <td><code class="inline-code">method</code></td>
   </tr>
     <tr>
@@ -546,7 +542,7 @@ The below table lists the mappings of the non e-commerce `track` events and prop
 </table>
 
 <div class="infoBlock">
-The <code class="inline-code">{currency}</code>, <code class="inline-code">{value}</code>, and <code class="inline-code">{method}</code> properties mentioned above are dynamic and their actual value depends on the key name passed in the dashboard. Refer to the <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information.
+The <code class="inline-code">&#123;currency&#125;</code>, <code class="inline-code">&#123;value&#125;</code>, and <code class="inline-code">&#123;method&#125;</code> properties mentioned above are dynamic and their actual value depends on the key name passed in the dashboard. Refer to the <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information.
 </div>
 
 
