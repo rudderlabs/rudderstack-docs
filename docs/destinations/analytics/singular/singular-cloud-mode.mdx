@@ -55,7 +55,7 @@ The following table lists the mapping of the attributes **automatically captured
 | `context.device.id` | `idfv` | Required | The raw [`IdentifierForVendor`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/occ/instp/UIDevice/identifierForVendor) in upper case with dashes. **This is applicable for iOS apps only**. |
 | `context.device.id` | `andi` | Required | The raw [`Android ID`](http://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID) in lower case. **This is applicable for Android apps only** and is required only when the Android advertising ID is unavailable on the device. |
 | `context.app.build` | `bd` | Required | The device build (URL encoded). |
-| `context.device.adTrackingEnabled` | `dnt` | Required | Pass `true` if do not track is enabled, else pass `false`. This is automatically captured if you pass the advertising ID to the SDK. |
+| `context.device.adTrackingEnabled` | `dnt` | Required | Pass `true` if do not track(`dnt`) is disabled (`dnt=0`), else pass `false`(`dnt=1`). This is automatically captured if you pass the advertising ID to the SDK. |
 | `context.app.name` | `n` | Optional | The human-readable app name as displayed in the UI. |
 | <Link to="/rudderstack-api/api-specification/rudderstack-spec/common-fields/#clock-skew-considerations"><code class="inline-code">timestamp</code></Link> | `utime` | Optional | The session time (in UNIX time). |
 | `context.network.wifi` | `c` | Optional | The connection type (WiFi or carrier). |
