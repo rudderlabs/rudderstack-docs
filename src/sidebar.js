@@ -15,68 +15,68 @@ export const jsonData = [
     key: "get-started",
     title: "What is RudderStack?",
     sectionTitle: "Getting Started",
-    link: `/get-started/`,
+    link: `/tmp-get-started/`,
     content: []
   },
   {
-    key: "cloud-vs-open-source",
-    title: "RudderStack Cloud vs. Open Source",
-    // sectionTitle: "Inner Section Title 1",
-    link: "/get-started/cloud-vs-open-source/",
-    content: []
-  },
-  {
-    key: "get-started",
+    key: "quickstart",
     title: "Quickstart",
-    link: `/get-started/quickstart/`,
+    link: `/tmp-get-started/quickstart/`,
     content: []
   },
-
-
+  {
+    key: "rudderstack-cloud",
+    title: "RudderStack Cloud",
+    link: `/tmp-get-started/rudderstack-cloud/`,
+    content: []
+  },
   {
     key: "rudderstack-open-source",
     title: "RudderStack Open Source",
-    link: "/rudderstack-open-source/",
+    link: "/tmp-get-started/rudderstack-open-source/",
     content: [
       {
         key: "control-plane-lite",
         title: "Control Plane Setup",
-        link: "/rudderstack-open-source/control-plane-lite/",
+        link: "/tmp-get-started/rudderstack-open-source/control-plane-lite/",
         content: []
       }, {
-        key: "installing-and-setting-up-rudderstack",
+        key: "data-plane-setup",
         title: "Data Plane Setup",
-        link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/",
+        link: "/tmp-get-started/rudderstack-open-source/data-plane-setup/",
         content: [
           {
             key: "docker",
             title: "Docker",
-            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
+            link: "/tmp-get-started/rudderstack-open-source/data-plane-setup/docker/",
             content: []
           }, {
             key: "kubernetes",
             title: "Kubernetes",
-            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
+            link: "/tmp-get-started/rudderstack-open-source/data-plane-setup/kubernetes/",
             content: []
           }, {
             key: "developer-machine-setup",
             title: "Developer Machine Setup",
-            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
-            content: []
-          }, {
-            key: "sending-test-events",
-            title: "Sending Test Events",
-            link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
+            link: "/tmp-get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/",
             content: []
           },
-        ]
+        ] 
+      },
+      {
+        key: "sending-test-events",
+        title: "Sending Test Events",
+        link: "/tmp-get-started/rudderstack-open-source/sending-test-events/",
+        content: []
       },
     ]
   },
-
-
-
-
+  {
+    key: "cloud-vs-open-source",
+    title: "RudderStack Cloud vs. Open Source",
+    link: "/tmp-get-started/cloud-vs-open-source/",
+    content: []
+  },
 
 
 
