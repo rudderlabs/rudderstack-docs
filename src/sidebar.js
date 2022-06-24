@@ -649,15 +649,9 @@ export const jsonData = [
 
   // Destinations section
   {
-    key: "webhooks",
-    title: "Webhooks",
-    sectionTitle: "Destinations",
-    link: "/tmp-destinations/webhooks/",
-    content: []
-  },
-  {
     key: "destinations",
     title: "Streaming Destinations",
+    sectionTitle: "Destinations",
     link: "/tmp-destinations/streaming-destinations/",
     content: [
       {
@@ -1062,7 +1056,7 @@ export const jsonData = [
       {
         key: "appcenter",
         title: "Visual Studio App Center",
-        sectionTitle: "Continuos Integration",
+        sectionTitle: "Continuous Integration",
         link: "/tmp-destinations/streaming-destinations/continuous-integration/appcenter/",
         content: []
       },
@@ -1392,14 +1386,14 @@ export const jsonData = [
       {
         key: "warehouse-schemas",
         title: "FAQ",
-        link: "/tmp-destinations/warehouse-destinations/warehouse-schemas/",
+        link: "/tmp-destinations/warehouse-destinations/faq/",
         content: []
       },
       {
         key: "amazon-redshift",
         title: "Amazon Redshift",
         sectionTitle: "Warehouse Integrations",
-        link: "/tmp-destinations/warehouse-destinations/amazon-redshift/",
+        link: "/tmp-destinations/warehouse-destinations/redshift/",
         content: []
       },
       {
@@ -1432,7 +1426,7 @@ export const jsonData = [
       }, {
         key: "google-bigquery",
         title: "Google BigQuery",
-        link: "/tmp-destinations/warehouse-destinations/google-bigquery/",
+        link: "/tmp-destinations/warehouse-destinations/bigquery/",
         content: []
       }, {
         key: "gcs-datalake",
@@ -1442,7 +1436,7 @@ export const jsonData = [
       }, {
         key: "microsoft-sql-server",
         title: "Microsoft SQL Server",
-        link: "/tmp-destinations/warehouse-destinations/microsoft-sql-server/",
+        link: "/tmp-destinations/warehouse-destinations/sql-server/",
         content: []
       }, {
         key: "postgresql",
@@ -1457,6 +1451,19 @@ export const jsonData = [
       },
     ]
   },
+  {
+    key: "webhooks",
+    title: "Webhooks",
+    link: "/tmp-destinations/webhooks/",
+    content: []
+  },
+  {
+    key: "rudderstack-connection-modes",
+    title: "Connection Modes: Cloud Mode vs. Device Mode",
+    link: "/tmp-destinations/rudderstack-connection-modes/",
+    content: []
+  },
+
 
   // Features section
   {
