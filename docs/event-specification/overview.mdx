@@ -1,0 +1,137 @@
+---
+title: "Overview"
+description: >-
+  Detailed technical description and semantic definitions of the event data
+  captured by the various RudderStack APIs.
+---
+
+The **RudderStack API Spec** helps you plan your event data and provides various options for tracking your events across all the RudderStack SDKs and APIs.
+
+<div class="successBlock">
+
+  RudderStack has a unified event semantic for different destination platforms.
+  You can easily translate your event data to different downstream tools by
+  following this spec.
+</div>
+
+## Supported API Calls
+
+The RudderStack API Spec supports the following calls, each answering a pertinent question about the user:
+
+| **API Call**                                 | **Description**                                                                           |
+| :------------------------------------------- | :---------------------------------------------------------------------------------------- |
+| [**Identify**](identify/)  | Captures the details about the user.                                                      |
+| [**Page**](page/)          | Captures the details related to the web page that the user is currently on.               |
+| [**Screen**](screen/)      | Captures the details related to the app screen that the user is currently viewing.        |
+| [**Track**](track/)        | Captures information related to the user's actions.                                       |
+| [**Group**](group/)        | Captures the relevant details about the group or organization that the user is a part of. |
+| [**Alias**](alias/)        | Captures any relevant details about the user's alternate/past identity.                   |
+| **Reset**                                    | Resets the information related to the previously identified user.                         |
+
+## How the API Calls Work
+
+Here's a quick overview of how the API calls mentioned above work:
+
+1. When the user makes the API calls, the event data is sent to the RudderStack backend.
+2. RudderStack transforms this event data into a destination-specific format.
+3. The transformed data is then forwarded to the required destination.
+
+## Event Data Format
+
+The event data collected by RudderStack has a JSON structure, which has [**common fields**](common-fields/) and an API-specific payload.
+
+This section contains the following guides:
+
+<!--{% page-ref page="rudderstack-spec/" %}-->
+
+<a class="pageRef" href="rudderstack-spec/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      RudderStack Events Specification
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="rudderstack-ecommerce-events-specification/" %}-->
+
+<a class="pageRef" href="rudderstack-ecommerce-events-specification/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      E-Commerce Events
+    </span>
+  </div>
+</a>
+
+<!--{% page-ref page="video-specification.md" %}-->
+
+<a class="pageRef" href="video-specification/">
+  <div class="pageRefInner">
+    <span class="pageRefArrow">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        height="1em"
+        width="1em"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
+        class="rightRefArrow"
+      >
+        <g>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </g>
+      </svg>
+    </span>
+    <span class="mainRefText">
+      Video Events
+    </span>
+  </div>
+</a>
+
+## Contact Us
+
+For questions on any of the guides covered in this section, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
