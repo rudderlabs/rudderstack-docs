@@ -90,7 +90,7 @@ export const jsonData = [
     key: "dashboard-guide",
     title: "Overview",
     sectionTitle: "Dashboard Guide",
-    link: "/dashboard-guide/",
+    link: "/dashboard-guide/overview/",
     content: []
   }, {
     key: "sources",
