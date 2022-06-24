@@ -1,0 +1,114 @@
+---
+title: "Device Mode"
+description: Detailed technical documentation on sending events to DCM Floodlight using the RudderStack device mode.
+---
+
+RudderStack lets you send your event data to DCM Floodlight destination via the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK. RudderStack uses global site tagging in device mode.
+
+<div class="successBlock">
+
+Find the open-source transformer code for this destination in the [GitHub repository](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/DCMFloodlight/).
+</div>
+
+## Track
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+
+A sample `track` call is as shown below:
+
+```javascript
+rudderanalytics.track('tshirt', {
+  countingMethod: "transactions",
+  revenue: "2605846",
+  orderId: "2605847"
+});
+```
+The `countingMethod` is a required property that specifies how to count the conversions for a Floodlight activity. The methods to count conversions depend on whether you  are creating or editing a [counter](https://support.google.com/campaignmanager/answer/7554821#zippy=%2Cfields-in-event-snippets-for-counter-tags) or [sales](https://support.google.com/campaignmanager/answer/7554821#zippy=%2Cfields-in-event-snippets-for-sales-tags) tag activity. Refer to the <Link to="#faq">FAQ</Link> section for more information on counting methods for these tags.
+
+The following table details the `integrations` object mapping for DCM Floodlight:
+
+| **RudderStack property** | **DCM Floodlight property** | **Description** |
+| :--- | :--- | :---|
+| `COPPA`| `tag_for_child_directed_treatment`  | Imposes requirements on the websites/online services operators directed to children under 13 years of age. [Reference](https://www.ftc.gov/tips-advice/business-center/privacy-and-security/children%27s-privacy). |
+| `GDPR` | `tfua` |  The EU law on general data protection and privacy. [Reference](http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679). |
+| `npa` | `npa` | The law catering to users who wish to opt out of remarketing. | 
+
+The following table details the mapping between RudderStack and DCM Floodlight's (optional) properties:
+
+| RudderStack property | DCM Floodlight property | Tag|
+| :--- | :--- |:--- |
+| `properties.ord` | `ord` |Counter |
+| `properties.sessionId` | `ord` |Counter - per_session |
+| `properties.sessionId` | `session_id` | Counter - per_session |
+| `properties.num` | `num` | Counter - unique |
+| `context.device.adTrackingEnabled` | `dc_lat` | Counter/Sales|
+| `properties.matchId` | `match_id` |  Counter/Sales |
+| `properties.orderId` | `ord` |  Sales |
+| `properties.orderId` | `transaction_id` |  Sales |
+| `properties.revenue` | `value` |  Sales |
+| `properties.quantity` | `quantity` | Sales - items_sold |
+
+The following table provides a brief description of the above DCM Floodlight properties:
+
+| DCM Floodlight property | Description |
+| :----| :-----|
+| `dc_lat` | Indicates if the user has enabled the **Limited Ad Tracking** option for IDFA/Android Advertising ID. |
+| `ord` | Makes the Floodlight tag unique and prevents browser caching. |
+| `quantity` | RudderStack adds the quantity of all the products in the `products` array or refers to the top-level `quantity` property.|
+| `value` | RudderStack sends the `revenue` parameter to DCM Floodlight. |
+| `matchId` | Identifier created by the advertiser to attribute offline conversions.   |
+| `num` | Controls cache busting manually. |
+| `session_id` | Inserts a unique session ID while using counter tags with a per session counting methodology.  |
+| `transaction_id` | Sets a unique identifier for a transaction. |
+
+## Custom parameters
+
+You can also send data to DCM Floodlight using the below-mentioned custom fields:
+
+| RudderStack custom field | DCM Floodlight property | [Counting method](https://support.google.com/campaignmanager/answer/2823400?hl=en)| 
+| :--- | :--- |:--- |
+| `properties.ord`/`properties.orderId`/`properties.sessionId`/ | `ord` | All| 
+| `context.device.adTrackingEnabled` | `dc_lat`| All |
+| `COPPA` | `tag_for_child_directed_treatment` | All | 
+| `GDPR` | `tfua` | All | 
+| `npa` | `npa` | All | 
+| `properties.matchId` | `match_id` | All | 
+| `properties.num` | `num` | Counter - unique | 
+
+<div class="infoBlock">
+For more information on the counting methods, refer to this <a href="https://support.google.com/campaignmanager/answer/2823400?hl=en">DCM Floodlight documentation</a>.
+</div>
+
+## Page
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+Based on the presence of `name` and `category` fields in the `page` call, RudderStack transforms the event in the following format:
+
+| `name` field | `category` field | Transformed event | 
+| :--- | :--- |:--- |
+| ❌ | ❌| Viewed Page |
+| ✅ |❌ | Viewed `PAGE NAME` Page |
+| ✅  | ✅  | Viewed `CATEGORY NAME` `PAGE NAME` Page |
+
+A sample `page` call is as shown below:
+
+```javascript
+rudderanalytics.page('landing', {
+  countingMethod: "standard"
+});
+```
+## FAQ
+
+### What are the counting methods for sales and counter tag?
+
+For the Sales tag, the counting methods are as shown:
+
+<img src="../../../assets/event-stream-destinations/sales-tag.png" alt="DCM Floodlight report builder"/>
+
+For the Counter tag, the counting methods are shown below:
+<img src="../../../assets/event-stream-destinations/counter-tag.png" alt="DCM Floodlight report builder"/>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can, [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

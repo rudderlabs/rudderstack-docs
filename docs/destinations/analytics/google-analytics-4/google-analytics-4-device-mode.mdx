@@ -8,13 +8,10 @@ RudderStack lets you send your event data to Google Analytics 4 destination via 
 You need to select `gtag.js` as the **Client Type** and enable **Use device-mode to send events** in the Rudderstack dashboard to send events via the device mode. For more information on device mode settings in the Rudderstack dashboard, refer to the [Setting up Google Analytics 4](https://www.rudderstack.com/docs/destinations/analytics/google-analytics-4/#setting-up-google-analytics-4-in-rudderstack) guide. 
 
 <div class="infoBlock">
-
 For more information on sending events via the device mode, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
 </div>
 
 <div class="successBlock">
-
 Find the open-source JavaScript SDK code for this destination in our <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/GA4">GitHub repository</a>.
 </div>
 
@@ -35,8 +32,6 @@ rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
 ```
 
 In the above snippet, the `userId` will be set to `1hKOmRA4el9Zt1WSfVJIVo4GRlm` for Google Analytics and the name and email will be set as `user_properties`.
-
-
 
 ## Page
   
@@ -62,7 +57,6 @@ rudderanalytics.page({
 })
 ```
 
-
 ## Track
 
 The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
@@ -76,12 +70,10 @@ rudderanalytics.track("Track me")
 RudderStack SDK sends the track event name and any properties as custom properties to Google Analytics 4.
 
 <div class="infoBlock">
-
 RudderStack SDK flattens the properties that are nested and not standard Google Analytics 4 properties before sending them to Google Analytics.
 </div>
 
 <div class="infoBlock">
-
 There are limits on the number of custom properties per event that can be sent to Google Analytics 4. The RudderStack SDK <code class="inline-code">**does not drop**</code> the payload based on these limits. If the events are don't show up in the debug view or in the Google Analytics dashboard reports, refer to <a href="https://support.google.com/analytics/answer/9267744?hl=en">Google support page</a> to know more about the collection limits.
 </div>
 
@@ -104,7 +96,6 @@ Below are some examples of the track event names that are passed to Google Analy
 | Order Completed           | `purchase`                    |
 
 <div class="infoBlock">
-
 For each product in the order, there must be an <code class="inline-code">id</code> and <code class="inline-code">name</code> associated. More info on Google Analytics 4 e-commerce event and corresponding properties can be found <a href="https://developers.google.com/gtagjs/reference/ga4-events#view_item_list">here</a>.
 </div>
 
@@ -117,7 +108,6 @@ For each product in the order, there must be an <code class="inline-code">id</co
 - Ad Personalization must be enabled for their account.
 
 <div class="infoBlock">
-
 The Google Signals feature is available in the web <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link> only.
 </div>
 
