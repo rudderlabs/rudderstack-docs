@@ -403,147 +403,147 @@ export const jsonData = [
     }, {
         key: "cloud-extract-sources",
         title: "Cloud Extract",
-        link: "/cloud-extract-sources/",
+        link: "/sources/extract/",
         content: [
             {
                 key: "activecampaign",
                 title: "ActiveCampaign",
-                link: "/cloud-extract-sources/activecampaign/",
+                link: "/sources/extract/activecampaign/",
                 content: []
             },
             {
                 key: "bing-ads",
                 title: "Bing Ads",
-                link: "/cloud-extract-sources/bing-ads/",
+                link: "/sources/extract/bing-ads/",
                 content: []
             },
             {
                 key: "chargebee",
                 title: "Chargebee",
-                link: "/cloud-extract-sources/chargebee/",
+                link: "/sources/extract/chargebee/",
                 content: []
             },
             {
                 key: "facebook-ads",
                 title: "Facebook Ads",
-                link: "/cloud-extract-sources/facebook-ads/",
+                link: "/sources/extract/facebook-ads/",
                 content: []
             }, {
                 key: "freshdesk",
                 title: "Freshdesk",
-                link: "/cloud-extract-sources/freshdesk/",
+                link: "/sources/extract/freshdesk/",
                 content: []
             }, {
                 key: "google-adwords",
                 title: "Google Ads (Adwords)",
-                link: "/cloud-extract-sources/google-adwords/",
+                link: "/sources/extract/google-adwords/",
                 content: []
             }, {
                 key: "google-analytics",
                 title: "Google Analytics",
-                link: "/cloud-extract-sources/google-analytics/",
+                link: "/sources/extract/google-analytics/",
                 content: []
             }, {
                 key: "google-search-console",
                 title: "Google Search Console",
-                link: "/cloud-extract-sources/google-search-console/",
+                link: "/sources/extract/google-search-console/",
                 content: []
             }, {
                 key: "google-sheets",
                 title: "Google Sheets",
-                link: "/cloud-extract-sources/google-sheets/",
+                link: "/sources/extract/google-sheets/",
                 content: []
             }, {
                 key: "hubspot-v2",
                 title: "HubSpot",
-                link: "/cloud-extract-sources/hubspot-v2/",
+                link: "/sources/extract/hubspot-v2/",
                 content: []
             }, {
                 key: "intercom",
                 title: "Intercom",
-                link: "/cloud-extract-sources/intercom/",
+                link: "/sources/extract/intercom/",
                 content: []
             }, {
                 key: "intercom-v2",
                 title: "Intercom v2",
-                link: "/cloud-extract-sources/intercom-v2/",
+                link: "/sources/extract/intercom-v2/",
                 content: []
             }, {
                 key: "mailchimp",
                 title: "Mailchimp",
-                link: "/cloud-extract-sources/mailchimp/",
+                link: "/sources/extract/mailchimp/",
                 content: []
             }, {
                 key: "mixpanel",
                 title: "Mixpanel",
-                link: "/cloud-extract-sources/mixpanel/",
+                link: "/sources/extract/mixpanel/",
                 content: []
             }, {
                 key: "marketo",
                 title: "Marketo",
-                link: "/cloud-extract-sources/marketo/",
+                link: "/sources/extract/marketo/",
                 content: []
             }, {
                 key: "netsuite",
                 title: "NetSuite",
-                link: "/cloud-extract-sources/netsuite/",
+                link: "/sources/extract/netsuite/",
                 content: []
             }, {
                 key: "pipedrive",
                 title: "Pipedrive",
-                link: "/cloud-extract-sources/pipedrive/",
+                link: "/sources/extract/pipedrive/",
                 content: []
             }, {
                 key: "quickbooks",
                 title: "QuickBooks",
-                link: "/cloud-extract-sources/quickbooks/",
+                link: "/sources/extract/quickbooks/",
                 content: []
             }, {
                 key: "salesforce",
                 title: "Salesforce",
-                link: "/cloud-extract-sources/salesforce/",
+                link: "/sources/extract/salesforce/",
                 content: [
                     {
                         key: "schema-comparison-rudderstack-vs-segment",
                         title: "Schema Comparison: Rudderstack Vs Segment",
-                        link: "/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/",
+                        link: "/sources/extract/salesforce/schema-comparison-rudderstack-vs-segment/",
                         content: []
                     },
                 ]
             }, {
                 key: "salesforce-pardot",
                 title: "Salesforce Pardot",
-                link: "/cloud-extract-sources/salesforce-pardot/",
+                link: "/sources/extract/salesforce-pardot/",
                 content: []
             }, {
                 key: "sendgrid",
                 title: "Sendgrid",
-                link: "/cloud-extract-sources/sendgrid/",
+                link: "/sources/extract/sendgrid/",
                 content: []
             }, {
                 key: "stripe",
                 title: "Stripe",
-                link: "/cloud-extract-sources/stripe/",
+                link: "/sources/extract/stripe/",
                 content: []
             }, {
                 key: "xero",
                 title: "Xero",
-                link: "/cloud-extract-sources/xero/",
+                link: "/sources/extract/xero/",
                 content: []
             }, {
                 key: "zendesk",
                 title: "Zendesk",
-                link: "/cloud-extract-sources/zendesk/",
+                link: "/sources/extract/zendesk/",
                 content: []
             }, {
                 key: "zendesk-chat",
                 title: "Zendesk Chat",
-                link: "/cloud-extract-sources/zendesk-chat/",
+                link: "/sources/extract/zendesk-chat/",
                 content: []
             }, {
                 key: "common-settings",
                 title: "Common Settings",
-                link: "/cloud-extract-sources/common-settings/",
+                link: "/sources/extract/common-settings/",
                 content: []
             },
         ]
