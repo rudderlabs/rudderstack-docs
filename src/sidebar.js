@@ -333,70 +333,70 @@ export const jsonData = [
     {
         key: "cloud-apps",
         title: "Cloud Apps",
-        link: "/stream-sources/",
+        link: "/sources/cloud-apps/",
         content: [
             {
                 key: "webhook-source",
                 title: "Webhook Source",
-                link: "/stream-sources/webhook-source/",
+                link: "/sources/cloud-apps/webhook-source/",
                 content: []
             },
             {
                 key: "braze-currents",
                 title: "Braze",
-                link: "/stream-sources/braze-currents/",
+                link: "/sources/cloud-apps/braze-currents/",
                 content: []
             },
             {
                 key: "appcenter",
                 title: "App Center",
-                link: "/stream-sources/appcenter/",
+                link: "/sources/cloud-apps/appcenter/",
                 content: []
             },
             {
                 key: "appsflyer",
                 title: "AppsFlyer",
-                link: "/stream-sources/appsflyer/",
+                link: "/sources/cloud-apps/appsflyer/",
                 content: []
             }, {
                 key: "auth0",
                 title: "Auth0",
-                link: "/stream-sources/auth0/",
+                link: "/sources/cloud-apps/auth0/",
                 content: []
             }, {
                 key: "customerio",
                 title: "Customer.io",
-                link: "/stream-sources/customerio/",
+                link: "/sources/cloud-apps/customerio/",
                 content: []
             }, {
                 key: "extole",
                 title: "Extole",
-                link: "/stream-sources/extole/",
+                link: "/sources/cloud-apps/extole/",
                 content: []
             }, {
                 key: "iterable",
                 title: "Iterable",
-                link: "/stream-sources/iterable/",
+                link: "/sources/cloud-apps/iterable/",
                 content: []
             }, {
                 key: "looker",
                 title: "Looker",
-                link: "/stream-sources/looker/",
+                link: "/sources/cloud-apps/looker/",
                 content: []
             }, {
                 key: "posthog",
                 title: "PostHog",
-                link: "/stream-sources/posthog/",
+                link: "/sources/cloud-apps/posthog/",
                 content: []
             }, {
                 key: "shopify",
                 title: "Shopify",
-                link: "/stream-sources/shopify/",
+                link: "/sources/cloud-apps/shopify/",
                 content: []
             }, {
                 key: "segment",
                 title: "Segment",
-                link: "/stream-sources/segment/",
+                link: "/sources/cloud-apps/segment/",
                 content: []
             },
         ]
