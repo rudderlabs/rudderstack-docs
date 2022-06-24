@@ -40,7 +40,7 @@ Make sure you have <a href="https://nodejs.org/en/download/">Node.js</a> install
 
 3. Upon successful setup, you can access the dashboard at `http://localhost:3000` by default.
 
-<img src="../assets/rudderstack-open-source/control-plane-lite-dashboard.png" alt="Control Plane Lite dashboard" />
+<img src="../../assets/rudderstack-open-source/control-plane-lite-dashboard.png" alt="Control Plane Lite dashboard" />
 
 ## Exporting workspace configuration
 
@@ -76,7 +76,7 @@ For RudderStack to pick up the exported workspace configuration file, follow the
 
 6. At this stage, your `rudder-docker.yml` should look like the following:
 
-<img src="../assets/rudderstack-open-source/rudder-docker-yml-file.png" alt="Rudder Docker YML file" />
+<img src="../../assets/rudderstack-open-source/rudder-docker-yml-file.png" alt="Rudder Docker YML file" />
 
 7. Finally, navigate to the directory where you want to install RudderStack and run the following command:
 
@@ -152,7 +152,7 @@ cp config/sample.env .env
 9. Under `[BackendConfig]`, look for `configFromFile` and set it to `true`. 
 10. Also, change the value of `configJSONPath` to the local path of your `workspaceConfig.json`(where your workspace configuration file is saved locally), as shown:
 
-<img src="../assets/rudderstack-open-source/rudder-config-1.png" alt="RudderStack config JSON path" />
+<img src="../../assets/rudderstack-open-source/rudder-config-1.png" alt="RudderStack config JSON path" />
 
 11. Finally, run the RudderStack server using the following command:
 
@@ -183,7 +183,7 @@ Since the RudderStack SDKs need the source configuration and the backend/SDKs ar
 1. Set up your control plane using the Control Plane Lite utility. 
 2. Go to the dashboard, set up your source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button, as shown:
 
-<img src="../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
+<img src="../../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
 
 3. Host the exported file on your own server at `/sourceConfig`. Provide the base URL of your server that is serving this file in the SDK initialization code snippet. For more information, refer to the following sections in the respective SDK guides:
 
@@ -271,7 +271,7 @@ To use the control plane URL to initialize your SDKs, follow these steps:
 1. [Set up](#setting-up-the-control-plane) the control plane using the Control Plane Lite utility.
 2. Go to dashboard, configure the source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button as shown:
 
-<img src="../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
+<img src="../../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
 
 3. Host the exported file on your own server such that the configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
 
