@@ -11,7 +11,7 @@ export const jsonData = [
 
   // Getting Started section
 
-  {
+ {
     key: "get-started",
     title: "What is RudderStack?",
     sectionTitle: "Getting Started",
@@ -19,16 +19,15 @@ export const jsonData = [
     content: []
   },
   {
-    key: "cloud-vs-open-source",
-    title: "RudderStack Cloud vs. Open Source",
-    // sectionTitle: "Inner Section Title 1",
-    link: "/get-started/cloud-vs-open-source/",
+    key: "quickstart",
+    title: "Quickstart",
+    link: `/tmp-get-started/quickstart/`,
     content: []
   },
   {
-    key: "get-started",
-    title: "Quickstart",
-    link: `/get-started/quickstart/`,
+    key: "rudderstack-cloud",
+    title: "RudderStack Cloud",
+    link: `/tmp-get-started/rudderstack-cloud/`,
     content: []
   },
 
