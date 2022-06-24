@@ -20,7 +20,6 @@ There are two connection modes through which you can send your event data from y
 In this mode, the SDK sends the event data directly to the RudderStack server. RudderStack then transforms this data and routes it to the desired destination. This transformation is done in the RudderStack backend, using RudderStack's [Transformer](https://github.com/rudderlabs/rudder-transformer) module.
 
 <div class="successBlock">
-
 When you send events via the cloud mode, you also get the flexibility to use <a href="https://rudderstack.com/docs/transformations/">RudderStack Transformations</a> to implement custom logic on the events before forwarding them to the destinations.
 </div>
 
@@ -41,7 +40,6 @@ The SDK will automatically track and send the events to RudderStack. RudderStack
 <img src="../assets/rs-cloud/rudderstack-cloud-mode.png" alt="RudderStack Cloud Mode" />
 
 <div class="warningBlock">
-
 <ul>
   <li>RudderStack's <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouse destinations</a> support sending data only through the cloud mode.</li>
   <li>All the RudderStack server-side SDKs support sending events only through cloud mode. This is because the server-side SDKs operate in the RudderStack backend and cannot load any additional destination-specific SDKs.</li>
@@ -55,7 +53,6 @@ In the device mode, RudderStack sends the event data to the destinations directl
 The RudderStack SDKs first load the native client libraries on your website or mobile app. These libraries allow RudderStack to use the data you collect on your device to call the destination APIs - without sending it to the RudderStack servers first.
 
 <div class="warningBlock">
-
 You will not be able to use RudderStack's <a href="https://rudderstack.com/docs/transformations/">Transformations</a> feature when sending events via the device mode.
 </div>
 

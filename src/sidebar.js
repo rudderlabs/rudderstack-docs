@@ -1392,7 +1392,7 @@ export const jsonData = [
       {
         key: "warehouse-schemas",
         title: "FAQ",
-        link: "/tmp-destinations/warehouse-destinations/warehouse-schemas/",
+        link: "/tmp-destinations/warehouse-destinations/faq/",
         content: []
       },
       {
