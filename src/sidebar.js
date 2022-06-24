@@ -1062,7 +1062,7 @@ export const jsonData = [
       {
         key: "appcenter",
         title: "Visual Studio App Center",
-        sectionTitle: "Continuos Integration",
+        sectionTitle: "Continuous Integration",
         link: "/tmp-destinations/streaming-destinations/continuous-integration/appcenter/",
         content: []
       },
@@ -1399,7 +1399,7 @@ export const jsonData = [
         key: "amazon-redshift",
         title: "Amazon Redshift",
         sectionTitle: "Warehouse Integrations",
-        link: "/tmp-destinations/warehouse-destinations/amazon-redshift/",
+        link: "/tmp-destinations/warehouse-destinations/redshift/",
         content: []
       },
       {
@@ -1432,7 +1432,7 @@ export const jsonData = [
       }, {
         key: "google-bigquery",
         title: "Google BigQuery",
-        link: "/tmp-destinations/warehouse-destinations/google-bigquery/",
+        link: "/tmp-destinations/warehouse-destinations/bigquery/",
         content: []
       }, {
         key: "gcs-datalake",
@@ -1442,7 +1442,7 @@ export const jsonData = [
       }, {
         key: "microsoft-sql-server",
         title: "Microsoft SQL Server",
-        link: "/tmp-destinations/warehouse-destinations/microsoft-sql-server/",
+        link: "/tmp-destinations/warehouse-destinations/sql-server/",
         content: []
       }, {
         key: "postgresql",
