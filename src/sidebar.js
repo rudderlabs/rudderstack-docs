@@ -128,57 +128,57 @@ export const jsonData = [
                 key: "rudderstack-javascript-sdk",
                 title: "JavaScript",
                 sectionTitle: "Web",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/",
+                link: "/sources/sdks/rudderstack-javascript-sdk/",
                 content: [
                     {
                         key: "quick-start-guide",
                         title: "Quick Start Guide",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/",
                         content: []
                     },
                     {
                         key: "javascript-sdk-enhancements",
                         title: "JavaScript SDK Enhancements",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
                         content: []
                     },
                     {
                         key: "data-storage-cookies",
                         title: "Data Storage in Cookies",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
                         content: []
                     },
                     {
                         key: "querystring-api",
                         title: "Querystring API",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/querystring-api/",
                         content: []
                     }, {
                         key: "detecting-adblocked-pages",
                         title: "Detecting Ad-blocked Pages",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
                         content: []
                     }, {
                         key: "version-migration-guide",
                         title: "Version Migration Guide",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/",
                         content: []
                     }, {
                         key: "consent-managers",
                         title: "Consent Managers",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/consent-managers/",
                         content: [
                             {
                                 key: "onetrust",
                                 title: "OneTrust",
-                                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/",
+                                link: "/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
                                 content: []
                             },
                         ]
                     }, {
                         key: "js-sdk-faqs",
                         title: "JavaScript SDK FAQs",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/js-sdk-faqs/",
                         content: []
                     },
                 ]
@@ -189,17 +189,17 @@ export const jsonData = [
                 key: "rudderstack-android-sdk",
                 title: "Android",
                 sectionTitle: "Mobile",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/",
+                link: "/sources/sdks/rudderstack-android-sdk/",
                 content: [
                     {
                         key: "add-an-application-class-to-you-android-application",
                         title: "Adding Application Class",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/",
+                        link: "/sources/sdks/rudderstack-android-sdk/add-an-application-class-to-you-android-application/",
                         content: []
                     }, {
                         key: "flushing-events-periodically",
                         title: "Flushing Events",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/",
+                        link: "/sources/sdks/rudderstack-android-sdk/flushing-events-periodically/",
                         content: []
                     },
                 ]
@@ -208,27 +208,27 @@ export const jsonData = [
             {
                 key: "rudderstack-ios-sdk",
                 title: "iOS",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/",
+                link: "/sources/sdks/rudderstack-ios-sdk/",
                 content: [
                     {
                         key: "ios-v2",
                         title: "iOS v2",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/",
+                        link: "/sources/sdks/rudderstack-ios-sdk/ios-v2/",
                         content: []
                     }, {
                         key: "tvOS",
                         title: "tvOS",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/",
+                        link: "/sources/sdks/rudderstack-ios-sdk/tvOS/",
                         content: []
                     }, {
                         key: "macos",
                         title: "macOS",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/",
+                        link: "/sources/sdks/rudderstack-ios-sdk/macos/",
                         content: []
                     }, {
                         key: "watchOs",
                         title: "watchOS",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/",
+                        link: "/sources/sdks/rudderstack-ios-sdk/watchOS/",
                         content: []
                     },
                 ]
@@ -236,93 +236,93 @@ export const jsonData = [
             {
                 key: "rudderstack-unity-sdk",
                 title: "Unity",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/",
+                link: "/sources/sdks/rudderstack-unity-sdk/",
                 content: []
             }, {
                 key: "rudderstack-react-native-sdk",
                 title: "React Native",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/",
+                link: "/sources/sdks/rudderstack-react-native-sdk/",
                 content: []
             }, {
                 key: "rudderstack-flutter-sdk",
                 title: "Flutter",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/",
+                link: "/sources/sdks/rudderstack-flutter-sdk/",
                 content: [
                     {
                         key: "flutter-v2",
                         title: "Flutter SDK v2",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/",
+                        link: "/sources/sdks/rudderstack-flutter-sdk/flutter-v2/",
                         content: []
                     }, {
                         key: "flutter-v1",
                         title: "Flutter SDK v1",
-                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/",
+                        link: "/sources/sdks/rudderstack-flutter-sdk/flutter-v1/",
                         content: []
                     },
                 ]
             }, {
                 key: "rudderstack-cordova-sdk",
                 title: "Cordova",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/",
+                link: "/sources/sdks/rudderstack-cordova-sdk/",
                 content: []
             }, {
                 key: "rudderstack-amp-analytics",
                 title: "AMP Analytics",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/",
+                link: "/sources/sdks/rudderstack-amp-analytics/",
                 content: []
             }, {
                 key: "rudderstack-java-sdk",
                 title: "Java",
                 sectionTitle: "Server",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/",
+                link: "/sources/sdks/rudderstack-java-sdk/",
                 content: []
             }, {
                 key: "rudderstack-python-sdk",
                 title: "Python",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/",
+                link: "/sources/sdks/rudderstack-python-sdk/",
                 content: []
             }, {
                 key: "rudderstack-rust-sdk",
                 title: "Rust",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk/",
+                link: "/sources/sdks/rudderstack-rust-sdk/",
                 content: []
             }, {
                 key: "rudderstack-node-sdk",
                 title: "Node.js",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/",
+                link: "/sources/sdks/rudderstack-node-sdk/",
                 content: []
             }, {
                 key: "rudderstack-go-sdk",
                 title: "Go",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/",
+                link: "/sources/sdks/rudderstack-go-sdk/",
                 content: []
             }, {
                 key: "rudderstack-ruby-sdk",
                 title: "Ruby",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/",
+                link: "/sources/sdks/rudderstack-ruby-sdk/",
                 content: []
             }, {
                 key: "rudderstack-dotnet-sdk",
                 title: ".NET",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/",
+                link: "/sources/sdks/rudderstack-dotnet-sdk/",
                 content: []
             }, {
                 key: "rudderstack-php-sdk",
                 title: "PHP",
-                link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/",
+                link: "/sources/sdks/rudderstack-php-sdk/",
                 content: []
             },
             {
               key: "event-filtering",
               title: "Client-side Event Filtering",
               sectionTitle: "",
-              link: "/stream-sources/rudderstack-sdk-integration-guides/event-filtering/",
+              link: "/sources/sdks/event-filtering/",
               content: []
           },
           {
             key: "sdk-faqs",
             title: "SDK FAQs",
-            link: "/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/",
+            link: "/sources/sdks/sdk-faqs/",
             content: []
         },
 
