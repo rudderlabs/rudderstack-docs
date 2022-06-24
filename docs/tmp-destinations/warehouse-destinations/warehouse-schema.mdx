@@ -28,7 +28,6 @@ The following tables are created in your data warehouse for each RudderStack sou
 
 
 <div class="infoBlock">
-
 All the event properties are stored as top-level columns in the corresponding table. The nested properties are prefixed with the parent key. For example, an event with properties <code class="inline-code">&#123; product: &#123; name: iPhone, version: 11 &#125;&#125;</code>
 will result in RudderStack creating the columns <code class="inline-code">product_name</code> and <code class="inline-code">product_version</code>.
 </div>
@@ -50,12 +49,10 @@ RudderStack sets the following standard properties on all the above-mentioned ta
 | `event`              | The name of the event table in case of the `track` calls.                                                                       |
 
 <div class="infoBlock">
-
 RudderStack automatically converts the property names from camel case to snake case. For more information on the properties captured at the API level, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/">RudderStack Event Specification</a>.
 </div>
 
 <div class="warningBlock">
-
 RudderStack reserves the above-mentioned standard properties. In case of any conflict, RudderStack automatically discards the properties set by the user.
 </div>
 
@@ -64,7 +61,6 @@ RudderStack reserves the above-mentioned standard properties. In case of any con
 For every [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call, RudderStack creates a record in the `identifies` table and upserts the records in the `users` table based on the `userId`.
 
 <div class="successBlock">
-
 In case of Google BigQuery, you can use the views created over the tables to query for unique users in the dataset. Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#schema-partitioned-tables-and-views">BigQuery documentation</a> for more details.
 </div>
 
@@ -124,12 +120,10 @@ The corresponding schemas created for the `identifies` and `users` tables are sh
 | `uuid_ts`           | Timestamp        | `2020-04-26 07:31:54:735`                                      | Added by RudderStack for debugging purposes. Can be ignored for analytics.|
 
 <div class="infoBlock">
-
 The <code class="inline-code">users</code> table contains the properties from the latest <code class="inline-code">identify</code> call made for an user. It only has the <code class="inline-code">id</code> column (same as <code class="inline-code">user_id</code> in the <code class="inline-code">identifies</code> table) and does not have the <code class="inline-code">anonymous_id</code> column.
 </div>
 
 <div class="successBlock">
-
 To obtain a user’s <code class="inline-block">anonymous_id</code>, you can query the <code class="inline-block">identifies</code> table by grouping on the <code class="inline-block">user_id</code> column.
 </div>
 
@@ -194,7 +188,6 @@ The corresponding schemas created for the `tracks` and `add_to_cart` tables are 
 | `uuid_ts`            | Timestamp   | `2020-04-26 07:31:54:735`                               | Added by RudderStack for debugging purposes. Can be ignored for analytics.             |
 
 <div class="infoBlock">
-
 The event table <code class="inline-code">add_to_cart</code> has the same columns as the <code class="inline-code">tracks</code> table. It also has the properties set by the user via the <code class="inline-code">properties</code> key.
 </div>
 
@@ -361,8 +354,7 @@ RudderStack recognizes only the following subsets of the ISO 8601 timestamp form
 - `2019-09-26T06:30:12.984+05:30`
 
 <div class="warningBlock">
-
-  RudderStack <strong>does not recognize</strong> any other timestamp format apart from the ones mentioned above.
+RudderStack <strong>does not recognize</strong> any other timestamp format apart from the ones mentioned above.
 </div>
 
 ## Reserved keywords
@@ -370,7 +362,6 @@ RudderStack recognizes only the following subsets of the ISO 8601 timestamp form
 There are some limitations when it comes to using the reserved words in a schema, table, or column names. If these words are used in the event names, traits or properties, RudderStack automatically prefixes an underscore(`_`) when creating the tables or columns for them in your schema.
 
 <div class="warningBlock">
-  
 Integers are not allowed at the start of the schema or table name. Such schema, column, or table names will be prefixed with an underscore. For e.g., <code class="inline-code">25dollarpurchase</code> will be changed to <code class="inline-code">_25dollarpurchase</code>.
 </div>
 
@@ -387,7 +378,6 @@ The following table lists the warehouse-specific documentation references for re
 Once RudderStack recognizes and sets a data type for a table column, it will not accept any values for the column that cannot be cast to the specified data type.
 
 <div class="warningBlock">
-
 The values which cannot be cast are set as <code class="inline-block">NULL</code> in the table and stored in the <code class="inline-block">rudder_discards</code> table.
 </div>
 
@@ -401,7 +391,6 @@ The `rudder_discards` table schema is shown below:
 | `column_value`  | The discarded column value that caused the data type mismatch.                                              |
 
 <div class="infoBlock">
-
 <code class="inline-code">row_id</code> is the column which users can use to join with original table and update it as required. As mentioned in the above table, it is set to <code class="inline-code">messageId</code> for all tables except the <code class="inline-code">users</code> table, where it corresponds to <code class="inline-code">userId</code>.
 </div>
 

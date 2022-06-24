@@ -8,14 +8,12 @@ description: Step-by-step guide on setting up Databricks Delta Lake as a destina
 RudderStack lets you configure Delta Lake as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-
 Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/blob/master/v0/destinations/deltalake/transform.js">GitHub repository</a>.
 </div>
 
 ## Configuring Delta Lake destination in RudderStack
 
 <div class="infoBlock">
-
 Before configuring Delta Lake as a destination in RudderStack, it is highly recommended to go through the following sections to obtain the necessary configuration settings. These sections also contain the steps to grant RudderStack and Databricks the necessary permissions to your preferred storage bucket.
 
 <ul>
@@ -36,8 +34,8 @@ To configure Delta Lake as a destination in RudderStack, follow these steps:
 
 ### Connection settings
 
-<img src="../assets/dw-integrations/delta-lake-connection-settings-1.png" alt="Delta Lake destination settings in RudderStack" />
-<img src="../assets/dw-integrations/delta-lake-connection-settings-2.png" alt="Delta Lake destination settings in RudderStack" />
+<img src="../../assets/dw-integrations/delta-lake-connection-settings-1.png" alt="Delta Lake destination settings in RudderStack" />
+<img src="../../assets/dw-integrations/delta-lake-connection-settings-2.png" alt="Delta Lake destination settings in RudderStack" />
 
 Enter the following credentials in the **Connection Credentials** page:
 
@@ -51,38 +49,33 @@ For more information on where to find the server hostname, refer to the <a href=
 * **Port**: Enter the port number. 
 
 <div class="infoBlock">
-
 For more information on obtaining the port number, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbcodbc-configuration">Obtaining the JDBC/ODBC configuration</a> section below.
 </div>
 
 * **HTTP Path**: Enter the cluster's HTTP path.
 
 <div class="infoBlock">
-
 For more information on obtaining the HTTP path, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbcodbc-configuration">Obtaining the JDBC/ODBC configuration</a> section below.
 </div>
 
 * **Personal Access Token**: Enter your Databricks access token.
 
 <div class="infoBlock">
-
 For more information on generating the access token, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#generating-the-databricks-access-token">Generating the Databricks access token</a> section below.
 </div>
 
 * **Enable delta tables creation in an external location**: Enable this setting to specify the external location to create the delta tables. By default, RudderStack creates the delta tables at a default storage location for the non-external Apache Hive tables.
   When enabled, it lets you specify the external location to create delta tables: 
 
-<img  src="../assets/dw-integrations/delta-lake-connection-settings-13.png" alt="Delta Lake destination settings in RudderStack"/>
+<img  src="../../assets/dw-integrations/delta-lake-connection-settings-13.png" alt="Delta Lake destination settings in RudderStack"/>
 
 <div class="infoBlock">
-
-The delta tables can be accessed at <code class="inline-code">{externalLocation}/{schema}/{table}</code>.
+The delta tables can be accessed at <code class="inline-code">&#123; externalLocation &#125;/&#123;schema&#125;/&#123;table&#125;</code>.
 </div>
 
-  <div class="warningBlock">
-
-  This feature is currently in beta.
-  </div>
+<div class="warningBlock">
+This feature is currently in beta.
+</div>
 
 * **Namespace**: Enter the the name of the schema where RudderStack will create the tables. If you don't specify a namespace in the dashboard settings, RudderStack will set it to the source name, by default.
 * **Sync Frequency**: Specify how often RudderStack should sync the data to your Delta Lake instance.
@@ -94,7 +87,6 @@ The delta tables can be accessed at <code class="inline-code">{externalLocation}
     * **Azure Blob Storage**
 
 <div class="infoBlock">
-
 If you select S3 as your storage provider, RudderStack gives you the option to specify the AWS access key and secret access key in the dashboard itself, to grant Databricks access to your staging bucket. To do so, enable the <strong>Use STS Tokens to copy staging files</strong> setting in the dashboard. For more information, refer to the <a href="#case-2-use-sts-token-to-copy-staging-files-is-enabled-in-the-dashboard">Amazon S3 storage bucket settings</a> section below.
 </div>
 
@@ -109,7 +101,6 @@ Follow these steps to grant RudderStack access to your S3 bucket based on the fo
 #### Case 1: Use STS Token to copy staging files is disabled in the dashboard
 
 <div class="warningBlock">
-
 Follow the steps listed in this section if the <strong>Use STS Token to copy staging files</strong> option is disabled, i.e. you <strong>don't want to specify</strong> the AWS access key and secret access key while configuring your Delta Lake destination.
 </div>
 
@@ -140,7 +131,6 @@ If you are using RudderStack Cloud, edit your bucket policy using the following 
 ```
 
 <div class="infoBlock">
-
 Make sure you replace <code class="inline-code">YOUR_BUCKET_NAME</code> with the name of your S3 bucket.
 </div>
 
@@ -164,7 +154,6 @@ If you are  [self-hosting RudderStack](https://rudderstack.com/docs/rudderstack-
 2. Then, create an [IAM user with programmatic access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html). Attach the above IAM policy to this user. 
 
 <div class="infoBlock">
-
 Copy the ARN of this newly-created user. This is required in the next step.
 </div>
 
@@ -192,7 +181,6 @@ Copy the ARN of this newly-created user. This is required in the next step.
 }
 ```
 <div class="infoBlock">
-
 Make sure you replace <code class="inline-code">USER_ARN</code> with the ARN copied in the previous step. Also, replace <code class="inline-code">ACCOUNT_ID</code> with your AWS account ID and <code class="inline-code">YOUR_BUCKET_NAME</code> with the name of your S3 bucket.
 </div>
 
@@ -206,13 +194,12 @@ RUDDER_AWS_S3_COPY_USER_ACCESS_KEY=<user_access_key_secret>
 #### Case 2: Use STS Token to copy staging files is enabled in the dashboard
 
 <div class="infoBlock">
-
 Follow the steps listed in this section if the <strong>Use STS Token to copy staging files</strong> option is enabled in the dashboard.
 </div>
 
 You can provide the configuration directly while setting up the Delta Lake destination in RudderStack, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-connection-settings-3.png" alt="S3 settings in RudderStack dashboard" />
+<img src="../../assets/dw-integrations/delta-lake-connection-settings-3.png" alt="S3 settings in RudderStack dashboard" />
 
 ### Google Cloud Storage
 
@@ -233,7 +220,6 @@ Follow these steps to grant Databricks access to your S3 bucket depending on you
 #### Case 1: Use STS Token to copy staging files is disabled in the dashboard
 
 <div class="warningBlock">
-
 Follow the steps listed in this section if the <strong>Use STS Token to copy staging files</strong> option is disabled, i.e. you <strong>don't want to specify</strong> the AWS access key and secret access key while configuring your Delta Lake destination.
 </div>
 
@@ -250,7 +236,6 @@ Follow these steps in the exact order:
 #### Case 2: Use STS Token to copy staging files is enabled in the dashboard
 
 <div class="infoBlock">
-
 Follow the steps listed in this section if the <strong>Use STS Token to copy staging files</strong> option is enabled, i.e. you are specifying the AWS access key and secret access key in the dashboard while configuring your Delta Lake destination.
 </div>
 
@@ -266,7 +251,6 @@ spark.hadoop.fs.s3n.impl.disable.cache true
 ```
 
 <div class="infoBlock">
-
 For more information on adding custom Spark configuration properties in a Databricks cluster, refer to <a href="https://docs.databricks.com/clusters/configure.html#spark-configuration">Spark configuration guide</a>.
 </div>
 
@@ -285,7 +269,6 @@ spark.hadoop.fs.gs.auth.service.account.private.key.id <private_key_id>
 ```
 
 <div class="infoBlock">
-
 For more information on adding custom Spark configuration properties in a Databricks cluster, refer to <a href="https://docs.databricks.com/clusters/configure.html#spark-configuration">Spark configuration guide</a>.
 </div>
 
@@ -301,7 +284,6 @@ To grant Databricks access to your Azure Blob Storage container, follow these st
 spark.hadoop.fs.azure.account.key.<storage-account-name>.blob.core.windows.net <storage-account-access-key>
 ```
 <div class="infoBlock">
-
 For more information on adding custom Spark configuration properties in a Databricks cluster, refer to <a href="https://docs.databricks.com/clusters/configure.html#spark-configuration">Spark configuration guide</a>.
 </div>
 
@@ -313,33 +295,33 @@ To create a new Databricks cluster, follow these steps:
 
 1. Sign into your Databricks account. Then, click on the **Compute** option on the dashboard, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-1.png" alt="Delta Lake Compute option" />
+<img src="../../assets/dw-integrations/delta-lake-1.png" alt="Delta Lake Compute option" />
 
 2. Click on the **Create Cluster** option.
 3. Next, enter the cluster details. Fill in the **Cluster Name**, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-2.png" alt="Delta Lake Cluster name" />
+<img src="../../assets/dw-integrations/delta-lake-2.png" alt="Delta Lake Cluster name" />
 
 4. Select the **Cluster Mode** depending on your use-case. The following image highlights the three cluster modes:
 
-<img src="../assets/dw-integrations/delta-lake-3.png" alt="Delta Lake cluster modes" />
+<img src="../../assets/dw-integrations/delta-lake-3.png" alt="Delta Lake cluster modes" />
 
 5. Then, select the **Databricks Runtime Version** as **7.1** or higher, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-4.png" alt="Delta Lake runtime version" />
+<img src="../../assets/dw-integrations/delta-lake-4.png" alt="Delta Lake runtime version" />
 
 6. Configure the rest of the settings as per your requirement.
 7. In the **Advanced Options** section, configure the **Instances** field as shown in the following image:
 
-<img src="../assets/dw-integrations/delta-lake-5.png" alt="Delta Lake instances" />
+<img src="../../assets/dw-integrations/delta-lake-5.png" alt="Delta Lake instances" />
 
 8. In the **Instance Profile** dropdown menu, select the Databricks instance profile that you added to your account in the previous step.
 
-<img src="../assets/dw-integrations/delta-lake-6.png" alt="Delta Lake instances field" />
+<img src="../../assets/dw-integrations/delta-lake-6.png" alt="Delta Lake instances field" />
 
 9. Finally, click on the **Create Cluster** button to complete the configuration and create the Databricks cluster.
 
-<img src="../assets/dw-integrations/delta-lake-7.png" alt="Delta Lake create cluster option" />
+<img src="../../assets/dw-integrations/delta-lake-7.png" alt="Delta Lake create cluster option" />
 
 ## Obtaining the JDBC/ODBC configuration
 
@@ -347,18 +329,17 @@ Follow these steps to get the JDBC/ODBC configuration:
 
 1. In your Databricks dashboard, click on the **Compute** option, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-1.png" alt="Delta Lake Compute option" />
+<img src="../../assets/dw-integrations/delta-lake-1.png" alt="Delta Lake Compute option" />
 
 2. Then, select the cluster you created in the previous section.
 
-<img src="../assets/dw-integrations/delta-lake-8.png" alt="Delta Lake cluster" />
+<img src="../../assets/dw-integrations/delta-lake-8.png" alt="Delta Lake cluster" />
 
 3. In the **Advanced Options** section, select the **JDBC/ODBC** field and copy the **Server Hostname**, **Port**, and **HTTP Path** values, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-9.png" alt="Delta Lake JDBC/ODBC settings" />
+<img src="../../assets/dw-integrations/delta-lake-9.png" alt="Delta Lake JDBC/ODBC settings" />
 
 <div class="infoBlock">
-
 The <strong>Server Hostname</strong>, <strong>Port</strong>, and <strong>HTTP Path</strong> values are required to configure Delta Lake as a destination in RudderStack.
 </div>
 
@@ -368,18 +349,17 @@ To generate the Databricks access token, follow these steps:
 
 1. In your Databricks dashboard, go to **Settings** and click on **User Settings**, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-10.png" alt="Databricks user settings" />
+<img src="../../assets/dw-integrations/delta-lake-10.png" alt="Databricks user settings" />
 
 2. Then, go to the **Access Tokens** section and click on **Generate New Token**, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-11.png" alt="Access tokens" />
+<img src="../../assets/dw-integrations/delta-lake-11.png" alt="Access tokens" />
 
 3. Enter your comment in the **Comment** field and click on **Generate**, as shown:
 
-<img src="../assets/dw-integrations/delta-lake-12.png" alt="Databricks generating new token" />
+<img src="../../assets/dw-integrations/delta-lake-12.png" alt="Databricks generating new token" />
 
 <div class="warningBlock">
-
 Keep the <strong>Lifetime (days)</strong> field blank. If you enter a number, your access token will expire after that number of days.
 </div>
 
@@ -402,7 +382,6 @@ You will need to allowlist the following RudderStack IPs to enable network acces
 - 3.64.201.167
 
 <div class="infoBlock">
-
 If you have your deployment in the EU region, you can allowlist only the following two IPs:
 <ul>
 <li>3.66.99.198</li>
@@ -411,7 +390,6 @@ If you have your deployment in the EU region, you can allowlist only the followi
 </div>
 
 <div class="infoBlock">
-
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
@@ -445,9 +423,7 @@ INSERT INTO x SELECT * FROM x_temp;
 ```
 
 <div class="infoBlock">
-
-RudderStack will create the new tables with partition support. Refer to the [Databricks documentation on partitions](https://docs.databricks.com/sql/language-manual/sql-ref-partition.html) for more information.
-
+RudderStack will create the new tables with partition support. Refer to the <a href="https://docs.databricks.com/sql/language-manual/sql-ref-partition.html">Databricks documentation on partitions</a> for more information.
 </div>
 
 ### How can I convert an existing managed or unmanaged table at a location to an unmanaged table at a new location?
@@ -473,8 +449,7 @@ DROP TABLE namespace.x;
 RudderStack will create the table again during the subsequent data syncs.
 
 <div class="infoBlock">
-
-Refer to the [Databricks documentation on managed and unmanaged tables](https://docs.databricks.com/data/tables.html#managed-and-unmanaged-tables) for more information.
+Refer to the <a href="https://docs.databricks.com/data/tables.html#managed-and-unmanaged-tables">Databricks documentation on managed and unmanaged tables</a> for more information.
 </div>
 
 ### How do I convert an existing unmanaged table at a specific location to a managed table (at default location)?

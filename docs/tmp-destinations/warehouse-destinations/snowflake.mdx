@@ -8,12 +8,10 @@ description: Step-by-step guide on setting up Snowflake as a destination in Rudd
 RudderStack lets you configure Snowflake as a destination to seamlessly store your event data.
 
 <div class="infoBlock">
-
 Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for information on how the events are mapped to the Snowflake tables.
 </div>
 
 <div class="successBlock">
-
 <strong>Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snowflake">RudderStack GitHub</a> repo.</strong>
 </div>
 
@@ -27,10 +25,9 @@ The following sections illustrate how to set up a virtual warehouse, a database,
 
 In your Snowflake console, create a `X-Small` warehouse:
 
-<img src="../assets/dw-integrations/snowflake-create-warehouse.png" />
+<img src="../../assets/dw-integrations/snowflake-create-warehouse.png" />
 
 <div class="infoBlock">
-
 Set your data warehouse size as per your data volume requirements.
 </div>
 
@@ -45,7 +42,6 @@ CREATE WAREHOUSE "RUDDER_WAREHOUSE"
 ```
 
 <div class="infoBlock">
-
 You can set <code class="inline-code">AUTO_SUSPEND</code> to ~10 mins and enable <code class="inline-code">AUTO_RESUME</code> to avoid any extra costs.
 </div>
 
@@ -58,7 +54,7 @@ Create a new database to avoid conflicts with your existing data, as RudderStack
 
 The following image demonstrates the **Create Database** option in Snowflake.
 
-<img src="../assets/dw-integrations/snowflake-create-database.png" />
+<img src="../../assets/dw-integrations/snowflake-create-database.png" />
 
 Alternatively, you can create a new database by running the following SQL command:
 
@@ -113,8 +109,8 @@ Follow these steps to configure your Azure data lake as a destination in RudderS
 
 ### Connection settings
 
-<img src="../assets/dw-integrations/snowflake-connection-settings.png" alt="Snowflake destination settings in RudderStack" />
-<img src="../assets/dw-integrations/snowflake-connection-settings-1.png" alt="Snowflake destination settings in RudderStack" />
+<img src="../../assets/dw-integrations/snowflake-connection-settings.png" alt="Snowflake destination settings in RudderStack" />
+<img src="../../assets/dw-integrations/snowflake-connection-settings-1.png" alt="Snowflake destination settings in RudderStack" />
 
 Enter the following credentials in the **Connection Credentials** page:
 
@@ -129,7 +125,6 @@ The following examples illustrate the slight differences in the account ID for v
 | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
 
 <div class="warningBlock">
-
 In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region accounts and hence must be included in the <strong>Account</strong> field above. <br /><br />For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
 </div>
 
@@ -140,7 +135,6 @@ In case of AWS, <code class="inline-code">.aws</code> is present in the account 
 - **Namespace**: Enter the schema name for the warehouse where RudderStack will create all the tables.
 
 <div class="infoBlock">
-
 If you don't specify any namespace, RudderStack will set this to the source name by default.
 </div>
 
@@ -155,7 +149,6 @@ RudderStack lets you configure the following object storage configuration settin
 - **Use RudderStack-managed Object Storage**: Enable this setting to use RudderStack-managed buckets for object storage.
 
 <div class="warningBlock">
-
 This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
 </div>
 
@@ -264,7 +257,6 @@ CREATE STORAGE INTEGRATION <integration_name>
 ```
 
 <div class="infoBlock">
-
 Record the value for <code class="inline-code">&lt;integration_name&gt;</code>.
 </div>
 
@@ -336,7 +328,6 @@ You can get your `<tenant_id>` by navigating to **Azure Active Directory** > **P
 DESC INTEGRATION <integration_name>;
 ```
 <div class="infoBlock">
-
 Record the values for <code class="inline-code">AZURE_CONSENT_URL</code> and <code class="inline-code">AZURE_MULTI_TENANT_APP_NAME</code>.
 </div>
 
@@ -374,7 +365,6 @@ DESC STORAGE INTEGRATION <integration_name>;
 ```
 
 <div class="infoBlock">
-
 The output of this command will have a property named as <code class="inline-code">STORAGE_GCP_SERVICE_ACCOUNT</code>. Retrieve this property value. It should be of the format <code class="inline-code">service-account-id@UNIQUE_STRING.iam.gserviceaccount.com</code>.
 </div>
 
@@ -428,7 +418,6 @@ To enable network access to RudderStack, you will need to allowlist the followin
 - 3.64.201.167
 
 <div class="infoBlock">
-
 If you have your deployment in the EU region, you can allowlist only the following two IPs:
   <ul>
     <li>3.66.99.198</li>
@@ -437,7 +426,6 @@ If you have your deployment in the EU region, you can allowlist only the followi
 </div>
 
 <div class="infoBlock">
-
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
@@ -447,7 +435,7 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 While configuring Snowflake as a destination in RudderStack, you need to enter your <Link to="/data-warehouse-integrations/snowflake/#connection-settings">Snowflake connection credentials</Link> which include the **Account** field, as shown below:
 
-<img src="../assets/dw-integrations/snowflake-account-id-example.png" alt="Snowflake account ID example" />
+<img src="../../assets/dw-integrations/snowflake-account-id-example.png" alt="Snowflake account ID example" />
 
 The **Account** field corresponds to the account ID of your Snowflake warehouse and is a part of the Snowflake URL.
 
@@ -460,7 +448,6 @@ The following examples illustrate the slight differences in the Snowflake accoun
 | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
 
 <div class="warningBlock">
-
 In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region's accounts and must be included in the <strong>Account</strong> field above. 
 
 For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
