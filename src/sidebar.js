@@ -11,25 +11,28 @@ export const jsonData = [
 
   // Getting Started section
 
-{
+  {
     key: "get-started",
     title: "What is RudderStack?",
     sectionTitle: "Getting Started",
-    link: `/tmp-get-started/`,
+    link: `/get-started/`,
     content: []
   },
   {
-    key: "quickstart",
-    title: "Quickstart",
-    link: `/tmp-get-started/quickstart/`,
+    key: "cloud-vs-open-source",
+    title: "RudderStack Cloud vs. Open Source",
+    // sectionTitle: "Inner Section Title 1",
+    link: "/get-started/cloud-vs-open-source/",
     content: []
   },
   {
     key: "get-started",
-    title: "RudderStack Cloud",
-    link: `/tmp-get-started/rudderstack-cloud/`,
+    title: "Quickstart",
+    link: `/get-started/quickstart/`,
     content: []
   },
+
+
   {
     key: "rudderstack-open-source",
     title: "RudderStack Open Source",
@@ -70,12 +73,17 @@ export const jsonData = [
       },
     ]
   },
-  {
-    key: "cloud-vs-open-source",
-    title: "Feature Comparison: Cloud vs. Open Source",
-    link: `/tmp-get-started/cloud-vs-open-source/`,
-    content: []
-  },
+
+
+
+
+
+
+
+
+
+
+
   // Dashboard guide section
 
   {
