@@ -117,6 +117,11 @@ export const jsonData = [
     title: "Teammates (User Management)",
     link: "/dashboard-guide/teammates/",
     content: []
+  },{
+    key: "personal-access-token",
+    title: "Personal Access Token",
+    link: "/dashboard-guide/personal-access-token/",
+    content: []
   },
 
 
