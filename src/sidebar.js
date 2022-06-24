@@ -550,99 +550,99 @@ export const jsonData = [
     }, {
         key: "reverse-etl",
         title: "Reverse ETL",
-        link: "/reverse-etl/",
+        link: "/sources/reverse-etl/",
         content: [
             {
                 key: "amazon-redshift",
                 title: "Amazon Redshift",
-                link: "/reverse-etl/amazon-redshift/",
+                link: "/sources/reverse-etl/amazon-redshift/",
                 content: []
             },
             {
                 key: "amazon-s3",
                 title: "Amazon S3",
-                link: "/reverse-etl/amazon-s3/",
+                link: "/sources/reverse-etl/amazon-s3/",
                 content: []
             },
             {
                 key: "clickhouse",
                 title: "ClickHouse",
-                link: "/reverse-etl/clickhouse/",
+                link: "/sources/reverse-etl/clickhouse/",
                 content: []
             },
             {
                 key: "google-bigquery",
                 title: "Google BigQuery",
-                link: "/reverse-etl/google-bigquery/",
+                link: "/sources/reverse-etl/google-bigquery/",
                 content: []
             }, {
                 key: "mysql",
                 title: "MySQL",
-                link: "/reverse-etl/mysql/",
+                link: "/sources/reverse-etl/mysql/",
                 content: []
             }, {
                 key: "postgresql",
                 title: "PostgreSQL",
-                link: "/reverse-etl/postgresql/",
+                link: "/sources/reverse-etl/postgresql/",
                 content: []
             }, {
                 key: "snowflake",
                 title: "Snowflake",
-                link: "/reverse-etl/snowflake/",
+                link: "/sources/reverse-etl/snowflake/",
                 content: []
             }, {
                 key: "features",
                 title: "Features",
-                link: "/reverse-etl/features/",
+                link: "/sources/reverse-etl/features/",
                 content: [
                     {
                         key: "models",
                         title: "Models",
-                        link: "/reverse-etl/features/models/",
+                        link: "/sources/reverse-etl/features/models/",
                         content: []
                     }, {
                         key: "airflow-provider",
                         title: "Airflow Provider",
-                        link: "/reverse-etl/features/airflow-provider/",
+                        link: "/sources/reverse-etl/features/airflow-provider/",
                         content: []
                     }, {
                         key: "visual-data-mapper",
                         title: "Visual Data Mapper",
-                        link: "/reverse-etl/features/visual-data-mapper/",
+                        link: "/sources/reverse-etl/features/visual-data-mapper/",
                         content: []
                     },
                 ]
             }, {
                 key: "common-settings",
                 title: "Common Settings",
-                link: "/reverse-etl/common-settings/",
+                link: "/sources/reverse-etl/common-settings/",
                 content: [
                     {
                         key: "sync-modes",
                         title: "Sync Modes",
-                        link: "/reverse-etl/common-settings/sync-modes/",
+                        link: "/sources/reverse-etl/common-settings/sync-modes/",
                         content: []
                     }, {
                         key: "sync-schedule-settings",
                         title: "Sync Schedule",
-                        link: "/reverse-etl/common-settings/sync-schedule-settings/",
+                        link: "/sources/reverse-etl/common-settings/sync-schedule-settings/",
                         content: []
                     }, {
                         key: "importing-data-using-tables",
                         title: "Importing Data using Tables",
-                        link: "/reverse-etl/common-settings/importing-data-using-tables/",
+                        link: "/sources/reverse-etl/common-settings/importing-data-using-tables/",
                         content: []
                     }, {
                         key: "importing-data-using-models",
                         title: "Importing Data using Models",
-                        link: "/reverse-etl/common-settings/importing-data-using-models/",
+                        link: "/sources/reverse-etl/common-settings/importing-data-using-models/",
                         content: []
                     },
                 ]
             }, {
                 key: "faq",
                 title: "FAQ",
-                link: "/reverse-etl/faq/",
+                link: "/sources/reverse-etl/faq/",
                 content: []
             },
         ]
