@@ -15,7 +15,7 @@ export const jsonData = [
     key: "get-started",
     title: "What is RudderStack?",
     sectionTitle: "Getting Started",
-    link: `/get-started/`,
+    link: `/tmp-get-started/`,
     content: []
   },
   {
