@@ -41,7 +41,7 @@ In modern businesses, the identity graph used for cross-device identity stitchin
 
 With RudderStack, you can build an identity graph on top of your enriched warehouse data and store it in your warehouse as a table. RudderStack associates a unique virtual ID (`RUDDER_ID`)with all the mapped user identifiers and updates it continuously as new data comes into your warehouse.
 
-<img src="./assets/identity-resolution/rudder-id.png" alt="Identity graph Rudder ID" />
+<img src="../assets/identity-resolution/rudder-id.png" alt="Identity graph Rudder ID" />
 
 ## Use case 
 
@@ -55,7 +55,7 @@ This use case gives a quick walkthrough of a user's product journey on an e-comm
 
 The above workflow is visually represented in the following image:
 
-<img src="./assets/identity-resolution/identity-resolution-workflow.png" alt="Identity Resolution workfow" />
+<img src="../assets/identity-resolution/identity-resolution-workflow.png" alt="Identity Resolution workfow" />
 
 RudderStack then applies the [identity merges](#merging-identifiers-with-rudderstack) on all the events and generates a [`RUDDER_IDENTITY_MAPPINGS`](#what-happens-in-the-warehouse-after-merging-the-identifiers) table that includes all the identity mappings associated with the user. It also assigns a unique `RUDDER_ID` for all the merged identities.
 
@@ -143,11 +143,11 @@ Once you call the `merge` API or leverage the user transformations to merge the 
 
 In the context of the above [use case](#use-case), the `RUDDER_IDENTITY_MAPPINGS` table highlighting the different identifiers associated with the user is as shown:
 
-<img src="./assets/identity-resolution/identity-mappings-table.png" alt="Identity Mappings table in warehouse" />
+<img src="../assets/identity-resolution/identity-mappings-table.png" alt="Identity Mappings table in warehouse" />
 
 The `RUDDER_IDENTITY_MERGE_RULES` table that connects different user identifiers is shown below:
 
-<img src="./assets/identity-resolution/identity-merge-rules.png" alt="Identity merge rules table in the warehouse" />
+<img src="../assets/identity-resolution/identity-merge-rules.png" alt="Identity merge rules table in the warehouse" />
 
 ## Enriching the identity graph
 
