@@ -9,7 +9,7 @@ export const jsonData = [
     content: []
   },
 
-   // Getting Started section
+    // Getting Started section
 
   {
     key: "get-started",
@@ -76,6 +76,15 @@ export const jsonData = [
     link: "/get-started/cloud-vs-open-source/",
     content: []
   },
+
+
+
+
+
+
+
+
+
 
 
   // Dashboard guide section
@@ -994,7 +1003,29 @@ export const jsonData = [
         key: "singular",
         title: "Singular",
         link: "/tmp-destinations/streaming-destinations/analytics/singular/",
-        content: []
+        content: [
+              {
+                key: "setting-up-singular-in-rudderstack",
+                title: "Setting up Singular",
+                link:
+                  "/tmp-destinations/streaming-destinations/analytics/singular/setting-up-singular-in-rudderstack/",
+                content: [],
+              },
+              {
+                key: "singular-cloud-mode",
+                title: "Cloud Mode",
+                link:
+                  "/tmp-destinations/streaming-destinations/analytics/singular/singular-cloud-mode/",
+                content: [],
+              },
+              {
+                key: "singular-device-mode",
+                title: "Device Mode",
+                link:
+                  "/tmp-destinations/streaming-destinations/analytics/singular/singular-device-mode/",
+                content: [],
+              },
+        ]
       },
       {
         key: "adjust",
