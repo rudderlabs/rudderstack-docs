@@ -8,7 +8,7 @@ description: Step-by-step guide on setting up Google BigQuery as a destination i
 RudderStack lets you configure BigQuery as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for more information on how the events are mapped to the tables in BigQuery.
+Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</a> guide for more information on how the events are mapped to the tables in BigQuery.
 </div>
 
 <div class="successBlock">
@@ -23,7 +23,7 @@ Before you set up BigQuery as a destination in RudderStack, follow these steps t
 2. Enable the BigQuery API for your existing project if it's not done already. For more information, refer to this [BigQuery guide](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-web-ui).
 3. Log into your [BigQuery console](https://console.cloud.google.com/). Copy the project **ID** as shown in the following image:
 
-<img src="../assets/screenshot-2020-04-08-at-11.36.30-am.png" alt="Copy the Project ID" />
+<img src="../../assets/screenshot-2020-04-08-at-11.36.30-am.png" alt="Copy the Project ID" />
 
 <div class="infoBlock">
 This project ID is required for configuring BigQuery as a destination in RudderStack.
@@ -60,11 +60,11 @@ If a dataset name (configurable by the setting: <strong>Namespace</strong> in th
 
 3. Create a key for the service account with **JSON** as the type and store it.
 
-<img src="../assets/screenshot-2020-04-08-at-12.09.07-pm (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="Create a key" />
+<img src="../../assets/screenshot-2020-04-08-at-12.09.07-pm (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="Create a key" />
 
 4. Create and download the private JSON key required for configuring BigQuery as a destination in RudderStack, as shown:
 
-<img src="../assets/screenshot-2020-04-08-at-12.09.32-pm (1).png" alt="JSON key required for the RudderStack UI" />
+<img src="../../assets/screenshot-2020-04-08-at-12.09.32-pm (1).png" alt="JSON key required for the RudderStack UI" />
 
 ## IPs to be allowlisted
 
@@ -105,8 +105,8 @@ To configure SQL Server as a destination in RudderStack, follow these steps:
 
 ### Connection settings
 
-<img src="../assets/dw-integrations/bigquery-connection-settings-1.png" alt="BigQuery connection settings" />
-<img src="../assets/dw-integrations/bigquery-connection-settings-2.png" alt="BigQuery connection settings" />
+<img src="../../assets/dw-integrations/bigquery-connection-settings-1.png" alt="BigQuery connection settings" />
+<img src="../../assets/dw-integrations/bigquery-connection-settings-2.png" alt="BigQuery connection settings" />
 
 Enter the following credentials in the **Connection Credentials** page:
   - **Project**: The GCP project ID where the BigQuery database is located.
@@ -207,7 +207,7 @@ For instance, `'25dollarpurchase`' will be changed to `'_25dollarpurchase`'.
 
 By default, RudderStack sends the data to the table/dataset based on the source it is connected to. For example, if the source is Google Tag Manager, RudderStack sets the schema name as `gtm_*`. However, you can override this behavior by setting the **Namespace** field in the BigQuery destination settings, as shown:
 
-<img src="../assets/image (79).png" alt="Namespace" />
+<img src="../../assets/image (79).png" alt="Namespace" />
 
 ### I'm looking to send data to BigQuery through RudderStack and I'm trying to understand what data is populated in each column. How do I go about this?
 
