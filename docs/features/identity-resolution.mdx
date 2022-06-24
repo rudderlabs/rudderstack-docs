@@ -7,14 +7,12 @@ description: >-
 Across a user's product journey, multiple identifiers get associated with them. These include their email ID, phone number, device IDs, anonymous ID, account usernames, etc. **Identity resolution** is the process of matching these different identifiers across multiple devices and digital touchpoints to build a cohesive and omnichannel customer profile. A unified customer view enables businesses to deliver relevant messaging and enhance the user's customer journey.
 
 <div class="successBlock">
-
 With RudderStack's warehouse-first architecture, you can send all your cross-platform data to your warehouse and perform identity resolution on it.
 </div>
 
 This guide walks you through RudderStack's identity resolution feature in detail.
 
 <div class="infoBlock">
-
 Currently, RudderStack supports identity resolution only for the <Link to="data-warehouse-integrations/google-bigquery/">Google BigQuery</Link> and <Link to="https://www.rudderstack.com/docs/data-warehouse-integrations/snowflake/">Snowflake</Link> warehouse destinations.
 </div>
 
@@ -64,8 +62,7 @@ RudderStack then applies the [identity merges](#merging-identifiers-with-rudders
 RudderStack has a `merge` API that you can use to send and merge different user identities and associate them to a single customer profile. You can also leverage RudderStack's [Transformations](#user-transformations) feature to merge different identifiers before sending the data to the warehouse.
 
 <div class="infoBlock">
-
-  RudderStack auto-merges the following user identifiers by default so you don't need to call the <code class="inline-code">merge</code> API for them or merge them via transformations:
+RudderStack auto-merges the following user identifiers by default so you don't need to call the <code class="inline-code">merge</code> API for them or merge them via transformations:
   <ul>
     <li><code class="inline-code">userId</code> and <code class="inline-code">previousId</code> for <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/"><code class="inline-code">alias</code></a> calls</li>
     <li> <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code> for <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/"><code class="inline-code">track</code></a>, <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/"><code class="inline-code">page</code></a>, <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/"><code class="inline-code">group</code></a>, and <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/"><code class="inline-code">screen</code></a> calls</li>
@@ -73,8 +70,7 @@ RudderStack has a `merge` API that you can use to send and merge different user 
 </div>
 
 <div class="successBlock">
-
-  You can merge other user identifiers like device ID, phone number, email ID, etc. by calling the <code class="inline-code">merge</code> API or via user transformations.
+You can merge other user identifiers like device ID, phone number, email ID, etc. by calling the <code class="inline-code">merge</code> API or via user transformations.
 </div>
 
 ### Using the `merge` API

@@ -11,7 +11,6 @@ This guide details the various options and spreadsheet settings that let you con
 ##  Spreadsheet overview
 
 <div class="infoBlock">
-
 The Tracking Plan spreadsheet uses the Google Sheets' scripts functionality to integrate with the Rudderstack Tracking Plan API.
 </div>
 
@@ -20,12 +19,10 @@ The configuration settings for your Tracking Plan are listed in the **Homepage**
 <img src="../../../assets/data-governance/tracking-plan-menu.png" alt="Tracking Plan menu" />
 
 <div class="infoBlock">
-
 The Tracking Plan spreadsheet currently supports only simple datatypes (strings, numbers, Boolean, arrays, and objects).
 </div>
 
 <div class="successBlock">
-
 You can create, delete, or update the events or the properties within these events. Once you upload the changes, RudderStack creates a new version of the Tracking Plan to keep track of your changes.
 </div>
 
@@ -34,7 +31,6 @@ You can create, delete, or update the events or the properties within these even
 RudderStack lets you create a Tracking Plan from an existing event data source. This option uses the Data Governance API and the Tracking API features to generate an initial plan.
 
 <div class="successBlock">
-
 This is the easiest way to kickstart your Tracking Plan program without having to start from scratch.
 </div>
 
@@ -50,14 +46,12 @@ To create a Tracking Plan from an existing RudderStack source, follow these step
     - **Tracking Plan Name**: Assign a name to this Tracking Plan.
 
 <div class="warningBlock">
-
 The <strong>Username</strong> and <strong>Password</strong> are your Grafana dashboard credentials and not your RudderStack account credentials. If you are unsure, contact your Account Manager.
 </div>
 
 3. Click on the **RudderStack Tracking Plan** > **Create Tracking Plan from Existing Source Events** option in the top bar to create a new Tracking Plan.
 
 <div class="infoBlock">
-
 For the first time you use the Tracking Plan spreadsheet, you will be prompted with an approval request. Select <strong>Allow</strong> to permit Google Apps to execute the scripts. Refer to the <a href="#google-apps-permissions">Google Apps Permissions</a> section below for more information.
 </div>
 
@@ -85,7 +79,6 @@ This will create a new sheet with your Tracking Plan.
 ## Uploading a Tracking Plan to RudderStack
 
 <div class="successBlock">
-
 You can use this option to create or update a Tracking Plan.
 </div>
 
@@ -101,7 +94,6 @@ To upload a Tracking Plan to RudderStack, follow these steps:
     - **Tracking Plan name**: Enter the name of the Tracking Plan you want to upload to RudderStack. 
 
 <div class="infoBlock">
-
 RudderStack will create a new Tracking Plan if the name does not exist.
 </div>
 
@@ -112,12 +104,10 @@ RudderStack will create a new Tracking Plan if the name does not exist.
 When you link a Tracking Plan to a source, all the events will be processed in accordance with that plan. 
 
 <div class="infoBlock">
-
 This option lets you define the events that will be allowed to pass through or dropped by RudderStack, and the permissible errors in the event's context field.
 </div>
 
 <div class="infoBlock">
-
 Refer to the <a href="#server-side-validation">Server-side validation</a> section below for more information on how RudderStack enforces the Tracking Plans on your source events.
 </div>
 
@@ -132,7 +122,6 @@ To link a Tracking Plan to a source, follow these steps:
 <img src="../../../assets/data-governance/tracking-plan-source-id.png" alt="Source ID" />
 
 <div class="warningBlock">
-
 A source ID uniquely identifies a RudderStack source. It is different to the source write key which is used by RudderStack to send events from the source to your specified destinations.
 </div>
 
@@ -170,7 +159,6 @@ A source ID uniquely identifies a RudderStack source. It is different to the sou
     | **FALSE** | RudderStack will drop the event containing the validation errors. |
 
 <div class="infoBlock">
-
 You can use <strong>Settings for track</strong> to explicitly define the Tracking Plan rules for <code class="inline-code">track</code> events.
 </div>
 
@@ -187,7 +175,6 @@ This section contains the noteworthy spreadsheet settings required to interact w
 <img src="../../../assets/data-governance/personal-access-token.png" alt="Personal Access Token" />
 
 <div class="infoBlock">
-
 For more information, refer to the [Personal Access Token]() documentation.
 </div>
 
@@ -198,7 +185,6 @@ For more information, refer to the [Personal Access Token]() documentation.
 These settings define how RudderStack should pick the data (event/property values) from the Tracking Plan.
 
 <div class="warningBlock">
-
 Do not change these settings unless absolutely necessary as it may impact the entire Tracking Plan workflow.
 </div>
 
@@ -206,7 +192,7 @@ Do not change these settings unless absolutely necessary as it may impact the en
 
 When you run the **RudderStack Tracking Plan** menu options for the first time, Google Apps will prompt you to authorize the scripts using the Tracking Plan API.
 
-<img src="../../assets/data-governance/tracking-plans-permissions.png" alt="Google Apps permissions" />
+<img src="../../../assets/data-governance/tracking-plans-permissions.png" alt="Google Apps permissions" />
 
 Click on **Allow** to set the permissions required for the script to work.
 

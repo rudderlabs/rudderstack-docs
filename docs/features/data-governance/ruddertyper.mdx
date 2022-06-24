@@ -5,7 +5,7 @@ description: >-
   commands, configuration reference, and using it with your app.
 ---
 
-[**RudderTyper**](https://github.com/rudderlabs/rudder-typer) is a tool that lets you generate strongly-typed [**RudderStack**](https://rudderstack.com/) analytics library wrappers based on your [**Tracking Plan**](https://documenter.getpostman.com/view/16242548/TzeWFT6D) spec. <br /><br />
+[RudderTyper](https://github.com/rudderlabs/rudder-typer) is a tool that lets you generate strongly-typed RudderStack analytics library wrappers based on your [Tracking Plan](https://documenter.getpostman.com/view/16242548/TzeWFT6D) spec.
 
 Simply put, it uses an event from your specified tracking plan and generates an analytics call in the supported languages.
 
@@ -17,17 +17,7 @@ Simply put, it uses an event from your specified tracking plan and generates an 
 />
 
 <div class="successBlock">
-
-  RudderTyper currently generates native clients for the
-  <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk">
-    JavaScript
-  </a>, <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk">
-    Node.js
-  </a>, <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk">
-    Android
-  </a>, and <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk">
-    iOS
-  </a> SDKs
+RudderTyper currently generates native clients for the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk">JavaScript</a>, <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk">Node.js</a>, <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk">Android</a>, and <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk">iOS</a> SDKs.
 </div>
 
 <img src="../../assets/readme-example.gif" alt="Readme" />
@@ -41,9 +31,7 @@ Some key features of RudderTyper are:
 - It provides compile-time errors and warns you about any missing required properties, data mismatch, and any issues in the JSON schema configured in your tracking plan.
 
 <div class="infoBlock">
-
-**This feature is currently in a closed beta. If you're interested, please contact your account representative for more information.**
-
+This feature is currently in a closed beta. If you're interested, contact your account representative for more information.
 </div>
 
 <GhBadge
@@ -53,7 +41,7 @@ Some key features of RudderTyper are:
   logo={'github'}
 />
 
-## Get Started
+## Get started
 
 To fire up a quick start wizard to create a `ruddertyper.yml` and generate your first client with the specified configuration details, run the following command:
 
@@ -61,7 +49,7 @@ To fire up a quick start wizard to create a `ruddertyper.yml` and generate your 
 $ npx rudder-typer init | initialize | quickstart
 ```
 
-## Other Commands
+## Other commands
 
 ### Update
 
@@ -111,7 +99,7 @@ $ npx rudder-typer help
 
 This command prints the help message describing different commands available with RudderTyper.
 
-## CLI Arguments
+## CLI arguments
 
 | Argument  | Type      | Description                                                                        |
 | :-------- | :-------- | :--------------------------------------------------------------------------------- |
@@ -122,7 +110,7 @@ This command prints the help message describing different commands available wit
 | `help`    | `boolean` | Standard `--help` flag to print help on a command.                                 |
 | `h`       | `boolean` | Standard `-h` flag to print help on a command.                                     |
 
-## Configuration Reference
+## Configuration reference
 
 RudderTyper stores its configuration in a `ruddertyper.yml` file in the root of your repository.
 
@@ -163,7 +151,7 @@ trackingPlans:
     path: ./analytics
 ```
 
-## How to integrate RudderTyper-generated client with your app?
+## Integrating RudderTyper-generated client with your app
 
 This section includes steps to integrate your RudderTyper-generated client with your app across different RudderStack SDKs.
 
@@ -204,7 +192,7 @@ project, import the project as a group not a folder reference.
 
 ### RudderStack JavaScript SDK
 
-- Import the RudderTyper-generated client using `require()` and make the calls if your framework supports them. Otherwise, you can use [**Browserify**](https://browserify.org/) to generate a bundle that supports your implementation. The implementation for each of the alternatives mentioned above will be as shown:
+- Import the RudderTyper-generated client using `require()` and make the calls if your framework supports them. Otherwise, you can use [Browserify](https://browserify.org/) to generate a bundle that supports your implementation. The implementation for each of the alternatives mentioned above will be as shown:
 
 #### Using the `require()`method
 
@@ -269,7 +257,6 @@ browserify rudderTyperClient.js --standalone rudderTyper >  rudderTyperBundle.js
 </script>
 ```
 <div class="infoBlock">
-
 If you are using an older version of the JavaScript SDK (v1), refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</a> to migrate to v1.1.
 </div>
 
@@ -295,9 +282,9 @@ ruddertyper.orderCompleted({
 
 ## Contribute
 
-- To submit a bug report or feature request, file an issue [**here**](https://github.com/rudderlabs/rudder-server/issues).
-- To develop on `ruddertyper` or propose support for a new language, see our [**contributors documentation**](https://github.com/rudderlabs/rudder-server/blob/master/CONTRIBUTING.md).
+- To submit a bug report or feature request, file an issue [here](https://github.com/rudderlabs/rudder-server/issues).
+- To develop on `ruddertyper` or propose support for a new language, see our [contributors documentation](https://github.com/rudderlabs/rudder-server/blob/master/CONTRIBUTING.md).
 
 ## Contact us
 
-For queries on any of the sections in this guide, start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections in this guide, start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
