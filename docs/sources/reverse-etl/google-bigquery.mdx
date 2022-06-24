@@ -18,11 +18,11 @@ Perform the following steps in the **exact** order to grant these permissions:
 
 1. Go to the [Roles](https://console.cloud.google.com/iam-admin/roles) section of Google Cloud Platform dashboard and click on **CREATE ROLE**.
 
-<img src="../assets/warehouse-actions-sources/GCP-create-role.png" alt="Google Cloud Platform dashboard create role" />
+<img src="../../assets/warehouse-actions-sources/GCP-create-role.png" alt="Google Cloud Platform dashboard create role" />
 
 2. Fill in the details as shown:
 
-<img src="../assets/warehouse-actions-sources/gcp-role-details.png" alt="GCP role details" />
+<img src="../../assets/warehouse-actions-sources/gcp-role-details.png" alt="GCP role details" />
 
 3. Click on **ADD PERMISSIONS** and add the following permissions:
 
@@ -45,11 +45,11 @@ bigquery.tables.updateData
 1. Go to [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts) and select the project which has the dataset or the table that you want to use.
 2. Click on **CREATE SERVICE ACCOUNT**.
 
-<img src="../assets/warehouse-actions-sources/gcp-create-service-account.png" alt="Create service account in GCP" />
+<img src="../../assets/warehouse-actions-sources/gcp-create-service-account.png" alt="Create service account in GCP" />
 
 3. Fill in the **Service Account details** as shown below, and click on **CREATE AND CONTINUE**:
 
-<img src="../assets/warehouse-actions-sources/gcp-service-account-details.png" />
+<img src="../../assets/warehouse-actions-sources/gcp-service-account-details.png" />
 
 <div class="infoBlock">
 
@@ -58,7 +58,7 @@ Note down the <strong>Service account ID</strong>. This ID is required while cre
 
 4. Fill in the **Role** details as shown below, and click on **CONTINUE**:
 
-<img src="../assets/warehouse-actions-sources/gcp-service-account-role-details.png" alt="Service account role details" />
+<img src="../../assets/warehouse-actions-sources/gcp-service-account-role-details.png" alt="Service account role details" />
 
 5. Click on **DONE** to move to the list of service accounts.
 
@@ -66,15 +66,15 @@ Note down the <strong>Service account ID</strong>. This ID is required while cre
 
 1. Click on the three dots icon under **Actions** in the service account that you just created and select **Manage keys**, as shown:
 
-<img src="../assets/warehouse-actions-sources/manage-keys.png" alt="Managing keys in GCP" />
+<img src="../../assets/warehouse-actions-sources/manage-keys.png" alt="Managing keys in GCP" />
 
 2. Click on **ADD KEY**, followed by **Create new key**, as shown:
 
-<img src="../assets/warehouse-actions-sources/gcp-add-key.png" alt="GCP Adding a new key" />
+<img src="../../assets/warehouse-actions-sources/gcp-add-key.png" alt="GCP Adding a new key" />
 
 3. Select **JSON** and click on **CREATE**.
 
-<img src="../assets/warehouse-actions-sources/create-new-key.png" />
+<img src="../../assets/warehouse-actions-sources/create-new-key.png" />
 
 A JSON file will be downloaded on your system. This file is required while creating a BigQuery warehouse source in RudderStack, explained further in this document.
 
@@ -107,7 +107,7 @@ To set up BigQuery as a source in RudderStack, follow these steps:
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. From the left navigation bar, go to **Source** > **New Source** > **Reverse ETL**.  Then, select **BigQuery**, as shown:
 
-<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select Reverse ETL source in RudderStack" />
+<img src="../../assets/warehouse-actions-sources/select-source.png" alt="Select Reverse ETL source in RudderStack" />
 
 3. Assign a name to your source.
 
@@ -126,7 +126,7 @@ If you have chosen the <strong>Model</strong> option, skip the next steps and re
 
 2. Enter the relevant settings in the **Connection Credentials** section as listed below:
 
-<img src="../assets/warehouse-actions-sources/bigquery-connection-settings.png" />
+<img src="../../assets/warehouse-actions-sources/bigquery-connection-settings.png" />
 
 - **Credentials** - Enter the GCP Service Account credentials JSON.
 - **Project ID** - Enter the `project_id` from the GCP Service Account credentials JSON.
@@ -159,7 +159,7 @@ RudderStack lets you schedule data syncs for your Reverse ETL sources and specif
 
 BigQuery is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
 
-<img src="../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
+<img src="../../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
 
 <div class="infoBlock">
      
@@ -187,7 +187,7 @@ Based on the option(Table/Model) you chose while setting up the Reverse ETL sour
 
 When creating a new Reverse ETL source, you are presented with the following two options from which RudderStack will sync the data:
 
-<img src="../assets/warehouse-actions-sources/table-model-options.png" />
+<img src="../../assets/warehouse-actions-sources/table-model-options.png" />
 
 - When you choose **Table**, RudderStack imports all the data associated with the specified table during the sync.
 - When you choose **Model**, RudderStack imports the data by running the query specified in the connected model, during the sync.

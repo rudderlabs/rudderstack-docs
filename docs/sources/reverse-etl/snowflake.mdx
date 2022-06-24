@@ -18,7 +18,7 @@ Run the queries listed in the following sections in the  **exact order** to gran
 You must have the <strong>ACCOUNTADMIN</strong> role in order to grant these permissions.
 </div>
 
-<img src="../assets/warehouse-actions-sources/snowflake-accountadmin.png" alt="Snowflake account admin role" />
+<img src="../../assets/warehouse-actions-sources/snowflake-accountadmin.png" alt="Snowflake account admin role" />
 
 ### Step 1: Creating a new role and user in Snowflake
 
@@ -127,7 +127,7 @@ To set up Snowflake as a source in RudderStack, follow these steps:
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. From the left navigation bar, go to **Source** > **New Source** > **Reverse ETL**.  Then, select **Snowflake**, as shown:
 
-<img src="../assets/warehouse-actions-sources/select-source.png" alt="Select Reverse ETL source in RudderStack" />
+<img src="../../assets/warehouse-actions-sources/select-source.png" alt="Select Reverse ETL source in RudderStack" />
 
 3. Assign a name to your source.
 
@@ -187,7 +187,7 @@ RudderStack lets you schedule data syncs for your Reverse ETL sources and specif
 
 Snowflake is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
 
-<img src="../assets/warehouse-actions-sources/add-destination.png" alt="Add destination in RudderStack" />
+<img src="../../assets/warehouse-actions-sources/add-destination.png" alt="Add destination in RudderStack" />
 
 <div class="infoBlock">
 
@@ -214,7 +214,7 @@ Based on the option(Table/Model) you chose while setting up the Reverse ETL sour
 
 When creating a new Reverse ETL source, you are presented with the following two options from which RudderStack will sync the data:
 
-<img src="../assets/warehouse-actions-sources/table-model-options.png" />
+<img src="../../assets/warehouse-actions-sources/table-model-options.png" />
 
 - When you choose **Table**, RudderStack imports all the data associated with the specified table during the sync.
 - When you choose **Model**, RudderStack imports the data by running the query specified in the connected model, during the sync.
@@ -223,7 +223,7 @@ When creating a new Reverse ETL source, you are presented with the following two
 
 When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
-<img src="../assets/warehouse-actions-sources/validations.png" alt="Validations" />
+<img src="../../assets/warehouse-actions-sources/validations.png" alt="Validations" />
 
 These options are explained below:
 
@@ -244,7 +244,7 @@ If this option gives an error, verify if you have successfully created the <code
 
 If you are trying to reuse the credentials for your Reverse ETL sources set up before September 2021, you may run into the following permissions error:
 
-<img src="../assets/warehouse-actions-sources/permissions-error.png" alt="Permissions error" />
+<img src="../../assets/warehouse-actions-sources/permissions-error.png" alt="Permissions error" />
 
 As mentioned above, you will need to update your Snowflake account permissions by following the commands in [Creating the RudderStack schema and granting permissions to the role](#step-2-creating-the-rudderstack-schema-and-granting-permissions-to-the-role) section.
 
