@@ -87,40 +87,35 @@ export const jsonData = [
   // Dashboard guide section
 
   {
-    key: "rudderstack-cloud",
+    key: "dashboard-guide",
     title: "Overview",
     sectionTitle: "Dashboard Guide",
-    link: "/rudderstack-cloud/",
+    link: "/dashboard-guide/",
     content: []
   }, {
     key: "sources",
     title: "Sources",
-    link: "/rudderstack-cloud/sources/",
+    link: "/dashboard-guide/sources/",
     content: []
   }, {
     key: "destinations",
     title: "Destinations",
-    link: "/rudderstack-cloud/destinations/",
+    link: "/dashboard-guide/destinations/",
     content: []
   }, {
     key: "live-events",
     title: "Live Events",
-    link: "/rudderstack-cloud/live-events/",
+    link: "/dashboard-guide/live-events/",
     content: []
   }, {
     key: "audit-logs",
     title: "Audit Logs",
-    link: "/rudderstack-cloud/audit-logs/",
+    link: "/dashboard-guide/audit-logs/",
     content: []
   }, {
     key: "teammates",
     title: "Teammates (User Management)",
-    link: "/rudderstack-cloud/teammates/",
-    content: []
-  }, {
-    key: "rudderstack-connection-modes",
-    title: "Connection Modes: Cloud Mode vs. Device Mode",
-    link: "/rudderstack-cloud/rudderstack-connection-modes/",
+    link: "/dashboard-guide/teammates/",
     content: []
   },
 
