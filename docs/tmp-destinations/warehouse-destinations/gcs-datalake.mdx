@@ -16,12 +16,12 @@ To set up GCS data lake as a destination in RudderStack, you will need to create
 1. Go to the [Google Cloud IAM Admin console](https://console.cloud.google.com/iam-admin/roles) and click on **CREATE ROLE**.
 2. Then, fill in the details as shown:
 
-<img src="../assets/dw-integrations/gcs-datalake-2.png" alt="Role details" />
+<img src="../../assets/dw-integrations/gcs-datalake-2.png" alt="Role details" />
 
 3. Fill the details and click on **ADD PERMISSIONS**.
 4. Under **Filter permissions by role**, select **Storage Object Admin** and grant the required permissions:
 
-<img src="../assets/dw-integrations/gcs-datalake-3.png" alt="Setting permissions" />
+<img src="../../assets/dw-integrations/gcs-datalake-3.png" alt="Setting permissions" />
 
 5. The permission required to successfully use the GCS data lake destination is shown:
 
@@ -38,11 +38,11 @@ storage.object.get
 3. Next, click on **CREATE SERVICE ACCOUNT**.
 4. Fill in the details as shown below and click on **CREATE**.
 
-<img src="../assets/dw-integrations/gcs-datalake-4.png" alt="Service account details" />
+<img src="../../assets/dw-integrations/gcs-datalake-4.png" alt="Service account details" />
 
 5. Then, select the previously created role and click on **CONTINUE**.
 
-<img src="../assets/dw-integrations/gcs-datalake-5.png" alt="Role details" />
+<img src="../../assets/dw-integrations/gcs-datalake-5.png" alt="Role details" />
 
 6. Finally, click on **DONE**.
 
@@ -50,15 +50,15 @@ storage.object.get
 
 1. Click on the three dots under **Actions** in the service account that you just created and select **Manage keys**, as shown:
 
-<img src="../assets/dw-integrations/gcs-datalake-6.png" alt="Manage keys option" />
+<img src="../../assets/dw-integrations/gcs-datalake-6.png" alt="Manage keys option" />
 
 2. Click on **ADD KEY**, followed by **Create new key**, as shown:
 
-<img src="../assets/dw-integrations/gcs-datalake-7.png" alt="Creating new key" />
+<img src="../../assets/dw-integrations/gcs-datalake-7.png" alt="Creating new key" />
 
 3. In the resulting pop-up, select **JSON** and click on **CREATE**.
 
-<img src="../assets/dw-integrations/gcs-datalake-8.png" alt="Downloading JSON key" />
+<img src="../../assets/dw-integrations/gcs-datalake-8.png" alt="Downloading JSON key" />
 
 4. Finally, download this JSON file. This file is required while setting up the GCS data lake destination in RudderStack.
 
@@ -73,15 +73,16 @@ To configure GCS data lake as a destination in RudderStack, follow these steps:
 
 ### Connection settings
 
-<img src="../assets/dw-integrations/gcs-datalake-1.png" alt="GCS data lake destination settings in RudderStack" />
+<img src="../../assets/dw-integrations/gcs-datalake-1.png" alt="GCS data lake destination settings in RudderStack" />
 
 Enter the following credentials in the **Connection Credentials** page:
-    - **GCS Storage Bucket Name**: The name of the GCS bucket used to store data before loading it into the GCS data lake.
-    - **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. For example, `https://storage.googleapis.com/<bucketName>/<prefix>/`.
-    - **Namespace**: If specified, all the data for the destination will be pushed to `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>`. If you don't specify a namespace in the settings, RudderStack sets it to the source name, by default.
-    - **Credentials**: Enter the content of the downloaded credentials JSON file in this field.
-    - **Sync Frequency**: Specify how often RudderStack should sync the data to your GCS data lake.
-    - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the data lake.
+
+- **GCS Storage Bucket Name**: The name of the GCS bucket used to store data before loading it into the GCS data lake.
+- **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. For example, `https://storage.googleapis.com/<bucketName>/<prefix>/`.
+- **Namespace**: If specified, all the data for the destination will be pushed to `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>`. If you don't specify a namespace in the settings, RudderStack sets it to the source name, by default.
+- **Credentials**: Enter the content of the downloaded credentials JSON file in this field.
+- **Sync Frequency**: Specify how often RudderStack should sync the data to your GCS data lake.
+- **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the data lake.
 
 ## Finding your data in the GCS data lake
 
@@ -101,7 +102,6 @@ As specified in the [Connnection settings](#connection-settings) section above:
 * `YYYY`, `MM`, `DD`, and `HH` are replaced by the actual time values.
 
 <div class="infoBlock">
-
 A combination of the `YYYY`, `MM`, `DD`, and `HH` values represents the UTC time.
 </div>
 
@@ -138,7 +138,6 @@ To enable network access to RudderStack, you will need to allowlist the followin
 - 3.64.201.167
 
 <div class="infoBlock">
-
 If you have your deployment in the EU region, you can allowlist only the following two IPs:
 <ul>
 <li>3.66.99.198</li>
@@ -147,7 +146,6 @@ If you have your deployment in the EU region, you can allowlist only the followi
 </div>
 
 <div class="infoBlock">
-
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 

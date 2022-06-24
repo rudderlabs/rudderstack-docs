@@ -8,12 +8,10 @@ description: Step-by-step guide on setting up SQL Server as a destination in Rud
 RudderStack lets you configure Microsoft SQL Server as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-
 Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for more information on how the events are mapped to the tables in SQL Server.
 </div>
 
 <div class="successBlock">
-
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mssql">GitHub repository</a>.
 </div>
 
@@ -62,20 +60,20 @@ To configure SQL Server as a destination in RudderStack, follow these steps:
 
 ### Connection settings
 
-<img src="../assets/dw-integrations/mssqlconnection.png" />
-<img src="../assets/dw-integrations/mssqlconnection2.png" />
+<img src="../../assets/dw-integrations/mssqlconnection.png" />
+<img src="../../assets/dw-integrations/mssqlconnection2.png" />
 
 Enter the following credentials in the **Connection Credentials** page:
-  - **Host**: The host name of your SQL Server service.
-  - **Database**: The database name in your SQL Server instance where the data will be sent.
-  - **User**: The name of the user with the required read/write access to the above database.
-  - **Password**: The password for the above user.
-  - **Port**: The port number associated with the SQL Server database instance.
-  - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
-  - **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your SQL Server instance. RudderStack provides three options - **disable**, **true**, and **false**.
-  - **Sync Frequency**: Specify how often RudderStack should sync the data to your SQL Server database.
-  - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
-  - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
+
+- **Host**: The host name of your SQL Server service.
+- **Database**: The database name in your SQL Server instance where the data will be sent.
+- **User**: The name of the user with the required read/write access to the above database.
+- **Password**: The password for the above user.
+- **Port**: The port number associated with the SQL Server database instance.
+- **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
+- **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your SQL Server instance. RudderStack provides three options - **disable**, **true**, and **false**.
+- **Sync Frequency**: Specify how often RudderStack should sync the data to your SQL Server database.- **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+- **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
 
 ### Configuring the object storage
 
@@ -84,7 +82,6 @@ RudderStack lets you configure the following object storage configuration settin
 - **Use RudderStack-managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage.
 
 <div class="warningBlock">
-
 This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
 </div>
 
@@ -112,7 +109,6 @@ To enable network access to RudderStack, you will need to allowlist the followin
 - 3.64.201.167
 
 <div class="infoBlock">
-
 If you have your deployment in the EU region, you can allowlist only the following two IPs:
 <ul>
 <li>3.66.99.198</li>
@@ -121,7 +117,6 @@ If you have your deployment in the EU region, you can allowlist only the followi
 </div>
 
 <div class="infoBlock">
-
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
