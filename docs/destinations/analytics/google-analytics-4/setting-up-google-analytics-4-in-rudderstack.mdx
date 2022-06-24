@@ -11,14 +11,13 @@ Before configuring Google Analytics 4 as a destination in RudderStack, verify if
 | **Cloud Mode**      | **Supported** | **Supported**  | **Supported**  |
 
 <div class="infoBlock">
-
 To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Google Analytics 4, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Google Analytics 4**.
-2. Assign a name to your destination and click on Next.
+2. Assign a name to your destination and click on **Continue**.
 
 ## Connection settings
 
@@ -35,14 +34,39 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
     - **Firebase App Id**: Enter the Firebase App ID which is the identifier for Firebase app. It can be found in the Firebase dashboard under **Project Settings > General**.
  
 <div class="infoBlock">
-  
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the API Secret, Measurement Id and Firebase App ID.
+</div>
+
+### Identify
+
+<img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-1.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
+
+- **Enable Server Side Identify**: Enable this setting to make an <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call.
+
+If **Enable Server Side Identify** setting is enabled, you can also configure the following settings:
+
+- **Trait to differentiate between new or existing user**: Enter a trait key to determine whether a user is new or an existing user.
+- **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` event to a `login` event in case of an existing user or a `sign_up` event in case of a new user.
+- **Trait key for the 'method' parameter in Login or Signup event**: Enter the trait key to pass the `method` parameter in the `login` or `sign_up` event.
+- **Send 'generate_lead' event for 'identify' event**: Enable this setting to send a `generate_lead` event for a new user. 
+
+  <div class="infoBlock">
+  Note that the <code class="inline-code">generate_lead</code> event will only be fired for new users and not for the existing ones.
+  </div>
+  
+  When enabled and its a new user, you also need to enter the following details:
+  - **Value - traits for lead generation**: Enter the value key to pass the `value` parameter for the `generate_lead` event. 
+  - **Currency - traits for lead generation**: Enter the currency key to pass the `currency` parameter for the `generate_lead` event. 
+
+<div class="infoBlock">
+Refer to the <Link to="/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/#identify"><code class="inline-code">identify</code> call payload</Link> for more information on sending  the `identify` events to GA4 via the cloud mode.
 </div>
 
 ### Native SDK
 
-<div class="infoBlock">
+<img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-2.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
+<div class="infoBlock">
 All the settings mentioned below are applicable only for the device mode.
 </div>
 
@@ -52,7 +76,6 @@ All the settings mentioned below are applicable only for the device mode.
     - `search`
  
 <div class="infoBlock">
-
 Google Analytics 4 has a limit on the number of unique properties per event name. The default <code class="inline-code">page_view</code> event supports the properties mentioned in the <a href="https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484">Automatically collected events in Google Analytics 4</a> guide.
 </div>
 
@@ -63,13 +86,13 @@ Google Analytics 4 has a limit on the number of unique properties per event name
 
 ### Client-side events filtering
 
-<img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings2.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
+<img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-3.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
 This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
 
 ### Web SDK settings
 
-<img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings3.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
+<img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-4.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
 **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
 
