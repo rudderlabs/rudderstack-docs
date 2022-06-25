@@ -1,7 +1,7 @@
 export const jsonData = [
 
-    // Home section (just a link actually)
-
+  // Home section (just a link actually)
+  
     {
         key: "home",
         title: "Home",
