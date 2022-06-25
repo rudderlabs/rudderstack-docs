@@ -1712,7 +1712,7 @@ export const jsonData = [
     {
         key: "migration-guides",
         title: "Migration Guides",
-        sectionTitle: "Guides",
+        sectionTitle: "User Guides",
         link: "/user-guides/migration-guides/",
         content: [
             {
