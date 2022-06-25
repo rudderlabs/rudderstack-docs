@@ -2,7 +2,7 @@
 # slug: "/docs/get-started/rudderstack-architecture"
 title: "RudderStack Architecture"
 description: >-
-  Detailed technical description of the RudderStack architecture and its major components - the control plane and data plane.
+  Detailed technical description of RudderStack's architecture and key components - the control plane and data plane.
 ---
 
 RudderStack is a standalone system dependent only on a database (**PostgreSQL**). Its backend is written in Go, with a rich UI written in React.js.
@@ -33,7 +33,6 @@ The RudderStack data plane consists of three major components:
 - Standalone streaming database (PostgreSQL) for event data
 
 <div class="infoBlock">
-
 Refer to the <Link to="#data-plane-architecture">data plane architecture</Link> section below for more information on each of these components.
 </div>
 
@@ -54,7 +53,6 @@ The gateway module is primarily responsible for receiving event data from a sour
 It accepts event requests and sends an acknowledgment back to the source depending on the acceptance (HTTP 200 response) or rejection of the event data.
 
 <div class="infoBlock">
-
 The gateway rejects event data in case of the following scenarios:
 <ul>
 <li>Invalid JSON</li>
@@ -76,7 +74,6 @@ RudderStack's Transformations module transforms received event data into a suita
 RudderStack also supports **user transformations** that let you code custom JavaScript functions to implement specific use-cases on your event data. These include but are not limited to: event enrichment, filtering, removing sensitive PII information, etc.
 
 <div class="successBlock">
-
 Refer to the <Link to="/transformations">Transformations</Link> guide for more information on user transformations.
 </div>
 
@@ -91,7 +88,6 @@ The router module sends the processed and transformed event data to your desired
 The data plane uses PostgreSQL as a streaming database for the event data. RudderStack temporarily stores the events in the database so that it can retry sending them in case of delivery failures. The events are deleted once they are successfully delivered.
 
 <div class="infoBlock">
-  
 RudderStack does not persist any events or store any user information in the database.
 </div>
 
@@ -123,7 +119,6 @@ Although the default configuration works just fine for most use cases, RudderSta
 You can do so by editing the [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) file to suit your application's needs.
 
 <div class="infoBlock">
-
 Refer to the <Link to="/user-guides/administrators-guide/config-parameters">Configuration Parameters</Link> guide for more information on these configuration options.
 </div>
 

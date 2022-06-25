@@ -7,8 +7,7 @@ description: >-
 This section aims to address the queries and issues you might encounter while using RudderStack.
 
 <div class="infoBlock">
-
-If you come across any issue not listed in this guide, feel free to start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+If you come across any issue not listed in this guide, feel free to start a conversation in our <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack</a> community.
 </div>
 
 ## Installation and setup
@@ -22,16 +21,14 @@ Head over to our <Link to="/get-started">Getting Started with RudderStack Cloud<
 The workspace token is a unique identifier associated with your current RudderStack workspace. 
 
 <div class="warningBlock">
-
-The workspace token is not available for the [RudderStack Pro and Enterprise](https://www.rudderstack.com/pricing/) versions as the RudderStack team handles the deployment. 
+The workspace token is not available for the <a href="https://www.rudderstack.com/pricing/">RudderStack Pro and Enterprise</a> versions as the RudderStack team handles the deployment. 
 </div>
 
 To obtain your workspace token, go to **Settings** > **Company**, as shown:
 
-<img src="/assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
+<img src="../assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
 
 <div class="infoBlock">
-
 By default, the workspace token is hidden for security purposes. You must have <Link to="/rudderstack-cloud/teammates/#admin">administrative privileges</Link> to access the token.
 </div>
 
@@ -42,7 +39,6 @@ To view the workspace token, click on <strong>Reveal Token</strong> and enter th
 For routing and processing the events to the RudderStack backend, a data plane URL is required.
 
 <div class="infoBlock">
-
 Refer to the <Link to="/get-started/rudderstack-architecture/">RudderStack Architecture</Link> guide for more information the RudderStack Data Plane.
 </div>
 
@@ -51,8 +47,7 @@ The location of your data plane URL depends on your RudderStack plan:
 * **RudderStack Open Source** - Set up your own data plane by <Link to="/rudderstack-open-source/installing-and-setting-up-rudderstack/">installing and setting up RudderStack</Link> in your preferred environment. 
 
 <div class="successBlock">
-
-An open source data plane URL looks like `http:localhost:8080` where `8080` is typically the port where your data plane is hosted.  
+An open source data plane URL looks like <code class="inline-code">http:localhost:8080</code> where <code class="inline-code">8080</code> is typically the port where your data plane is hosted.  
 </div>
 
 * **RudderStack Cloud** - The data plane URL is provided in the dashboard at the top of the **Connections** page.
@@ -132,7 +127,6 @@ Here are some ballpark figures:
 | Dumping to warehouse and a few cloud destinations | Approx. 750 events/sec |
 
 <div class="warningBlock">
-
 These are conservative numbers. A single RudderStack node can handle close to 5x event load at the peak— just that those events get cached locally and are drained as per the regular throughput.
 </div>
 
@@ -144,10 +138,9 @@ There is a [config variable](https://github.com/rudderlabs/rudder-server/blob/ma
 
 Go to the **Events** tab of the destination page to see the event-related metrics, as shown below:
 
-<img src="/assets/general/destination-event-metrics.png" alt="Destination event metrics" />
+<img src="../assets/general/destination-event-metrics.png" alt="Destination event metrics" />
 
 <div class="warningBlock">
-
 Events sent through <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link> are not visible in this option. 
 </div>
 
@@ -177,8 +170,7 @@ For self-hosting the UI, you can use the [RudderStack Control Plane Lite](https:
 Note that this utility will only generate the source-destination configurations which are required by RudderStack.
 
 <div class="warningBlock">
-
-The self-hosted control plane setup using Control Plane Lite does not support features like <Link to="/transformations/">Transformations</Link> and <Link to="/rudderstack-cloud/live-events/">Live Events Debugger</Link>, which are included in the [RudderStack-hosted control plane](https://app.rudderstack.com).
+The self-hosted control plane setup using Control Plane Lite does not support features like <Link to="/transformations/">Transformations</Link> and <Link to="/rudderstack-cloud/live-events/">Live Events Debugger</Link>, which are included in the <a href="https://app.rudderstack.com">RudderStack-hosted control plane (web app)</a>.
 </div>
 
 #### I am using the Control Plane Lite to generate the `workspaceConfig.json` file. But when I import this file, I get this error:
@@ -196,12 +188,11 @@ To use the control plane URL to initialize your SDKs, follow these steps:
 1. Set up the control plane using the Control Plane Lite utility.
 2. Go to dashboard, configure the source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button as shown:
 
-<img src="./assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
+<img src="../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
 
 3. Host the exported file on your own server such that the configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
 
 <div class="infoBlock">
-
 This solution assumes that you have already set up the RudderStack data plane (backend) locally.
 </div>
 
@@ -227,11 +218,11 @@ The write key is different from your workspace token.
 
 The write key is associated with the source and is used by RudderStack to track the events. 
 
-<img src="/assets/rudderstack-open-source/write-key.png" alt="Source Write Key" />
+<img src="../assets/rudderstack-open-source/write-key.png" alt="Source Write Key" />
 
 On the other hand, the <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link> is a unique identifier for your configuration settings which RudderStack uses to fetch and track your instrumentations. It be obtained by navigating to **Settings** > **Company** in your RudderStack dashboard, as shown:
 
-<img src="/assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
+<img src="../assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
 
 #### I see a few events that show up in the live stream but do not reach the destination. How do I see the logs or data that is sent to my destination?
 
@@ -250,7 +241,6 @@ Switching between RudderStack Open Source and RudderStack Cloud is quite straigh
 The personal access token is a unique token associated with your RudderStack account. It is required to access and consume the RudderStack APIs.
 
 <div class="infoBlock">
-
 For more information on generating a personal access token, refer to the <Link to="/rudderstack-api/personal-access-tokens/">Personal Access Tokens</Link> guide.
 </div>
 
@@ -320,7 +310,7 @@ By default, RudderStack sends the data to the table/dataset based on the source 
 
 You can override this by setting a **Namespace** in the destination settings as shown:
 
-<img src="./assets/general/wh-destination-namespace.png" alt="Set namespace in the destination settings" />
+<img src="../assets/general/wh-destination-namespace.png" alt="Set namespace in the destination settings" />
 
 #### I am trying to set `warehouseSyncFreqIgnore = true` to have a real-time sync with BigQuery but I can't find the `config.yaml` file. How can I do this using the Docker setup?
 
@@ -399,7 +389,6 @@ To enable network access to RudderStack, you will need to allowlist the followin
 - 3.64.201.167
 
 <div class="infoBlock">
-
 If you have your deployment in the EU region, you can allowlist only the following two IPs:
   <ul>
     <li>3.66.99.198</li>
@@ -408,7 +397,6 @@ If you have your deployment in the EU region, you can allowlist only the followi
 </div>
 
 <div class="infoBlock">
-
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
@@ -424,8 +412,7 @@ For a content security policy, the following URLs should be allowlisted:
   - `DATA_PLANE_URL`
 
 <div class="infoBlock">
-
-Refer to this [FAQ](#what-is-a-data-plane-url-where-do-i-get-it) for more information on obtaining your data plane URL.
+Refer to this <Link to="#what-is-a-data-plane-url-where-do-i-get-it">FAQ</Link> for more information on obtaining your data plane URL.
 </div>
 
 **SDK**
@@ -453,12 +440,10 @@ maxFailedCountForJob = 8
 ```
 
 <div class="warningBlock">
-
 If a user event fails, the other events are not sent until the failed event is successfully sent or aborted, as per above behavior. This is to ensure event ordering for all events from a single user.
 </div>
 
 <div class="infoBlock">
-
 For more information on the SDK-specific retry and backoff logic, refer to the <Link to="/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs#what-is-the-rudderstack-retry-and-backoff-logic-after-the-connection-fails">SDK FAQ</Link> guide.
 </div>
 
