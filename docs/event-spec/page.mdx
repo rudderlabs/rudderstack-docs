@@ -1,0 +1,133 @@
+---
+title: "Page"
+description: Detailed technical description of the Page API call.
+---
+
+The `page` call lets you record your website's page views with any additional relevant information about the viewed page. Many destinations require the `page` events to be called at least once every page load.
+
+<div class="successBlock">
+
+  The <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</a> includes a <code class="inline-code">page</code> call in its snippet just after the <code class="inline-code">rudderanalytics.load</code> method.
+</div>
+
+## Sample payload
+
+A sample payload of a `page` call with most of the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) removed is as shown:
+
+```javascript
+{
+  "type": "page",
+  "name": "Home",
+  "properties": {
+    "title": "Home | RudderStack",
+    "url": "http://www.rudderstack.com"
+  }
+}
+```
+
+The corresponding event that generates the above payload via the JavaScript SDK is as shown:
+
+```javascript
+rudderanalytics.page("Home")
+```
+
+<div class="successBlock">
+
+  The SDK automatically gathers the page <code class="inline-code">name</code> and <code class="inline-code">url</code> and passes them into the event payload.
+</div>
+
+## Page fields
+
+Apart from the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/), the `page` call accepts the following fields:
+
+| **Field**    | **Type** | **Presence** | **Description**                                                                                                                            |
+| :----------- | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | String   | Optional     | The name of the page.                                                                                                                      |
+| `properties` | Object   | Optional     | Includes the properties of the page such as the `url`, `referrer`, etc. For more more information, check the [**Properties**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/#properties) section below. |
+
+## Properties
+
+Properties are additional information that describe the viewed page.
+
+RudderStack has reserved some standard properties listed in the following table and handles them in a special manner. For instance, `path` should always be the URL path of the page and `referrer` should be the URL of the previously viewed page.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">
+        <b>Property</b>
+      </th>
+      <th style="text-align:left">
+        <b>Type</b>
+      </th>
+      <th style="text-align:left">
+        <b>Description</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">name</code>
+      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">
+        <p>The page name. This is a reserved property for future use.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">path</code>
+      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">The path component of the page URL.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">url</code>
+      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">
+        <p>Full page URL. RudderStack first looks for the canonical URL. If it is not present, RudderStack uses the <code class="inline-code">location.href</code> component from the DOM API.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">title</code>
+      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">The page title.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">referrer</code>
+      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">
+        <p>The full URL of the previous page visited by the user.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">search</code>
+      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">
+        <p>The querystring component of the page URL.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">keywords</code>
+      </td>
+      <td style="text-align:left">Array</td>
+      <td style="text-align:left">
+        <p>A list or array of keywords describing the page. These keywords are similar to the keywords used for SEO purposes. This property is not automatically collected.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
