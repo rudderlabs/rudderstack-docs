@@ -240,7 +240,7 @@ In the settings config, you can set static headers for the webhook call. However
 }
 ```
 
-### Dynamically appending to endpoint URL
+## Dynamically appending to endpoint URL
 
 In the settings config, you will enter the endpoint that this webhook will be pointed to. There are some use-cases where depending on the event that is going to this destination, the endpoint may need to be changed. RudderStack allows you to append a dynamic string to your webhook endpoint using a top-level key named `appendPath`. This top-level key can be added using a [user transformation](https://rudderstack.com/docs/transformations/) and the following line of code `event.appendPath = 'some-path'`.
 
@@ -263,7 +263,7 @@ endpoint: 'https://www.google.com/search?q=cats'
 ### How do I check for any event delivery failures?
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com).
-2. Verify that you are sending the events in the **Live Events** tab of your source.
+2. Verify if your events are sent using the **Live Events** tab of your source.
 3. Check if there are any delivery failures in the **Live Events** tab of your destination. An example of an event failure is as shown:
 
 <img src="https://user-images.githubusercontent.com/59817155/125619804-64033117-16f6-44c7-8050-286059ab404d.png" />
