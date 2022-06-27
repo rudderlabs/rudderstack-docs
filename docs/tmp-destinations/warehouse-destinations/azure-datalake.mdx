@@ -8,7 +8,7 @@ description: Step-by-step guide on setting up Azure Data Lake as a destination i
 RudderStack lets you configure Azure data lake as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</a> guide for more information on how the events are mapped to the tables in the Azure data lake.
+Refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in the Azure data lake.
 </div>
 
 <div class="successBlock">
@@ -50,7 +50,7 @@ The folder structure is similar to the following format:
 
 `https://<account_name>.blob.core.windows.net/<prefix>/rudder-datalake/<namespace>/<tableName>/YYYY/MM/DD/HH`
 
-As specified in the [Connnection settings](#connection-settings) section above:
+As specified in the <Link to="#connection-settings">Connection settings</Link> section above:
 
 * `<prefix>` is the Azure prefix used while configuring the Azure data lake destination in RudderStack. If not specified, RudderStack will omit this value.
 * `<namespace>` is the namespace specified in the destination settings. If not specified, RudderStack sets it to the source name.

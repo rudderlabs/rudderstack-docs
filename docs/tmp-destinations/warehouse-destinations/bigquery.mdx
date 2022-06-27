@@ -8,7 +8,7 @@ description: Step-by-step guide on setting up Google BigQuery as a destination i
 RudderStack lets you configure BigQuery as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</a> guide for more information on how the events are mapped to the tables in BigQuery.
+Refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in BigQuery.
 </div>
 
 <div class="successBlock">
@@ -19,8 +19,8 @@ Find the open-source transformer code for this destination in the <a href="https
 
 Before you set up BigQuery as a destination in RudderStack, follow these steps to set up your BigQuery project:
 
-1. Create a Google Cloud Platform \(**GCP**\) project if you don't have one already. For more details, refer to this [guide](https://cloud.google.com/resource-manager/docs/creating-managing-projects?hl=en&ref_topic=6158848&visit_id=637219216155418807-3094012232&rd=1).
-2. Enable the BigQuery API for your existing project if it's not done already. For more information, refer to this [BigQuery guide](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-web-ui).
+1. Create a Google Cloud Platform \(**GCP**\) project if you don't have one already. For more details, refer to this [BigQuery documentation](https://cloud.google.com/resource-manager/docs/creating-managing-projects?hl=en&ref_topic=6158848&visit_id=637219216155418807-3094012232&rd=1).
+2. Enable the BigQuery API for your existing project if it's not done already. For more information, refer to this [BigQuery documentation](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-web-ui).
 3. Log into your [BigQuery console](https://console.cloud.google.com/). Copy the project **ID** as shown in the following image:
 
 <img src="../../assets/screenshot-2020-04-08-at-11.36.30-am.png" alt="Copy the Project ID" />
@@ -111,10 +111,10 @@ To configure SQL Server as a destination in RudderStack, follow these steps:
 Enter the following credentials in the **Connection Credentials** page:
   - **Project**: The GCP project ID where the BigQuery database is located.
   - **Location**: The GCP region for your dataset.
-  - **Staging GCS Storage Bucket Name**: The name of the storage bucket as specified in the [Setting up the BigQuery Project](https://rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#setting-up-the-bigquery-project) section.
+  - **Staging GCS Storage Bucket Name**: The name of the storage bucket as specified in the <Link to="#setting-up-the-bigquery-project">Setting up the BigQuery project</Link> section.
   - **Prefix**: If specified, RudderStack creates a folder in the bucket with this prefix and pushes all the data within that folder.
   - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
-  - **Credentials**: Your GCP service account credentials JSON as created in the [Setting up the service account for RudderStack](#setting-up-the-service-account-for-rudderstack) section.
+  - **Credentials**: Your GCP service account credentials JSON as created in the <Link to="#setting-up-the-service-account-for-rudderstack">Setting up the service account for RudderStack</Link> section.
   - **Sync Frequency**: Specify how often RudderStack should sync the data to your BigQuery dataset.
   - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to BigQuery.
   - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
@@ -124,7 +124,7 @@ Enter the following credentials in the **Connection Credentials** page:
 RudderStack uses the source name (written in snake case, for example, `source_name`) to create a dataset in BigQuery.
 
 <div class="infoBlock">
-For more details on the tables and columns created by RudderStack, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schema</a> guide.
+For more details on the tables and columns created by RudderStack, refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide.
 </div>
 
 RudderStack supports two modes by which data is ingested into BigQuery:
@@ -136,7 +136,7 @@ RudderStack supports two modes by which data is ingested into BigQuery:
 By default, RudderStack uses the partitioned tables method to ingest data into BigQuery. Deduplication is disabled.
 </div>
 
-If you are using [open source RudderStack](https://rudderstack.com/docs/rudderstack-open-source) or hosting the RudderStack data plane, you can manage these modes via the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`, as shown in the following table:
+If you are using <Link to="/tmp-get-started/rudderstack-open-source/">RudderStack Open Source</Link> or hosting the RudderStack data plane, you can manage these modes via the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`, as shown in the following table:
 
 | Ingestion method | `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`  |
 | :-----------------| :-------------------|
@@ -211,7 +211,7 @@ By default, RudderStack sends the data to the table/dataset based on the source 
 
 ### I'm looking to send data to BigQuery through RudderStack and I'm trying to understand what data is populated in each column. How do I go about this?
 
-Refer to the [RudderStack Warehouse Schema](https://www.rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/) documentation for details on how RudderStack generates the schema in the warehouse and populates the data in each column.
+Refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> documentation for details on how RudderStack generates the schema in the warehouse and populates the data in each column.
 
 ### I am trying to load data into my BigQuery destination and I get the error "Cannot read and write in different locations". What should I do?
 
@@ -227,9 +227,7 @@ The near-realtime BigQuery syncing feature is currently under development and is
 
 ### What is the current sync frequency for BigQuery?
 
-If you're using open source RudderStack, the minimum sync frequency is **30 minutes**. If you're self-hosting the data plane or using RudderStack Cloud Pro / Enterprise, you can tweak the config to set `uploadFreqInS` in `config.yaml` to `0` and determine the best possible value for near real-time sync.
-
-For more information, refer to this [**FAQ**](https://rudderstack.com/docs/data-warehouse-integrations/warehouse-faqs#is-there-a-way-to-force-my-data-load-into-the-warehouses).
+If you're using open source RudderStack, the minimum sync frequency is **30 minutes**. If you're self-hosting the data plane or using RudderStack Cloud Pro / Enterprise, you can tweak the config to set `uploadFreqInS` in `config.yaml` to `0` and determine the best possible value for near real-time sync. For more information, refer to this <Link to="/tmp-destinations/warehouse-destinations/faq/#is-there-a-way-to-force-load-my-data-into-the-warehouses">FAQ</Link>.
 
 ### Do I need to stop the running pipeline to change my sync frequency? Or will the new change be effective even without stopping the pipeline?
 
@@ -237,7 +235,7 @@ To change the sync frequency, you **need not** stop the pipeline.
 
 ### When configuring the BigQuery destination, where does Google use the credentials JSON from?
 
-BigQuery uses the credentials JSON from the dashboard configuration when setting up the destination. For more information, refer to the [Setting up the service account for RudderStack](#setting-up-the-service-account-for-rudderstack) section.
+BigQuery uses the credentials JSON from the dashboard configuration when setting up the destination. For more information, refer to the <Link to="#setting-up-the-service-account-for-rudderstack">Setting up the service account for RudderStack</Link> section.
 
 ### When configuring the BigQuery destination, should the user permissions be set for the specific dataset or the whole project?
 
@@ -245,7 +243,7 @@ You need to set the user permissions for the whole project. Otherwise, you may e
 
 ### How long are the failed syncs retried before being aborted?
 
-RudderStack retries the failed syncs for up to 3 hours before aborting them. For more information, refer to this  [FAQ](https://rudderstack.com/docs/faqs#1-how-does-rudderstack-handle-retries-for-failed-events-in-case-of-destination-failure).
+RudderStack retries the failed syncs for up to 3 hours before aborting them. For more information, refer to this <Link to="/resources/faq/#how-does-rudderstack-handle-retries-for-failed-events-in-case-of-destination-failure">FAQ</Link>.
 
 ## Contact us
 
