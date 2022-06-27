@@ -570,9 +570,18 @@ Follow the instructions below:
 
 ## Advertisement ID
 
-We have kept IDFA collection completely separate from the Core library so that the developer has better control over the same. You can pass the IDFA to `putAdvertisementId` method to set it under `context.device.advertisingId`
+The IDFA collection is kept separately from the Core library so that the developer has better control over the same. You can pass the IDFA to `putAdvertisementId` method to set it under `context.device.advertisingId`.
+
+<div class="warningBlock">
+From <strong>iOS 14</strong>, you need to request authorization to access the app-related data for tracking the user or the device using the <code class="inline-code">AppTrackingTransparency</code> framework.
+</div>
 
 Follow the instructions below:
+
+1. Set up [`NSUserTrackingUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nsusertrackingusagedescription) to display the necessary permissions alert request for your app installed on the user device.
+2. Call [`requestTrackingAuthorization(completionHandler:)`](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/3547037-requesttrackingauthorization) to present the required authorization request to the user.
+3. Use the [`trackingAuthorizationStatus`](https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/3547038-trackingauthorizationstatus) method to determine the permission status related to the app tracking.
+4. Then, use the `AdSupport` framework to retrieve an instance of the `ASIdentifierManager`, as shown:
 
 ```objectivec
 #import <AdSupport/ASIdentifierManager.h>
@@ -593,6 +602,12 @@ Follow the instructions below:
     return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 }
 ```
+
+5. You can use the `advertisingIdentifier` property obtained above to retrieve the UUID.
+
+<div class="infoBlock">
+For more information on getting the advertising identifier, refer to the <a href="https://developer.apple.com/documentation/adsupport">Apple documentation</a>.
+</div>
 
 ## ATTrackingManager authorization consent
 
