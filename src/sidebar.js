@@ -1510,9 +1510,9 @@ export const jsonData = [
     link: "/features/data-governance/",
     content: [
        {
-        key: "rudder-typer",
+        key: "ruddertyper",
         title: "RudderTyper",
-        link: "/features/data-governance/rudder-typer/",
+        link: "/features/data-governance/ruddertyper/",
         content: []
       }, {
         key: "tracking-plans",
