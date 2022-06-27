@@ -1539,51 +1539,51 @@ export const jsonData = [
 // Event Spec section
 
 {
-    key: "overview",
+    key: "standard-events",
     title: "Standard Events",
     sectionTitle: "Events Spec",
-    link: "/event-spec/overview/",
+    link: "/event-spec/standard-events/",
     content: [
       {
         key: "identify",
         title: "Identify",
-        link: "/event-spec/identify/",
+        link: "/event-spec/standard-events/identify/",
         content: []
       },
       {
         key: "page",
         title: "Page",
-        link: "/event-spec/page/",
+        link: "/event-spec/standard-events/page/",
         content: []
       },
       {
         key: "screen",
         title: "Screen",
-        link: "/event-spec/screen/",
+        link: "/event-spec/standard-events/screen/",
         content: []
       },
       {
         key: "track",
         title: "Track",
-        link: "/event-spec/track/",
+        link: "/event-spec/standard-events/track/",
         content: []
       },
       {
         key: "group",
         title: "Group",
-        link: "/event-spec/group/",
+        link: "/event-spec/standard-events/group/",
         content: []
       },
       {
         key: "alias",
         title: "Alias",
-        link: "/event-spec/alias/",
+        link: "/event-spec/standard-events/alias/",
         content: []
       },
       {
         key: "common-fields",
         title: "Common Fields",
-        link: "/event-spec/common-fields/",
+        link: "/event-spec/standard-events/common-fields/",
         content: []
       },
     ]
