@@ -8,10 +8,6 @@ description: Step-by-step guide to ingest data from your Databricks cluster into
 
 RudderStack supports Databricks as a source from which you can ingest data and route it to your desired downstream destinations.
 
-<div class="infoBlock">
-This document assumes the Databricks cluster is set up using <a href="https://docs.microsoft.com/en-us/azure/databricks/clusters/create">Azure</a>. The setup instructions for the other major cloud providers will be updated soon.
-</div>
-
 ## Setting up the Databricks source in RudderStack
 
 To set up Databricks as a source in RudderStack, follow these steps:
@@ -77,20 +73,18 @@ For more information on the data import settings, refer to the <a href="https://
 
 ### Where can I obtain the connection credentials for Databricks?
 
-To obtain the **Host**, **Path**, and **Port** number required to set up Databricks source in RudderStack, follow these steps:
+To obtain the **Host**, **Path**, and **Port** number, follow these steps in your Databricks account:
 
-1. Log into the [Azure portal](https://portal.azure.com/).
-2. Select the required Databricks resource and click **Launch Workspace**.
-3. Go to the **Compute** tab and select your Databricks cluster.
-4. Click on **Advanced options** > **JDBC/ODBC** tab to find the required settings:
+1. Go to the **Compute** tab and select your Databricks cluster.
+2. Click on **Advanced options** > **JDBC/ODBC** tab to find the required settings:
 <img src="../assets/warehouse-actions-sources/connection-settings-databricks.png" alt="Select Databricks source in RudderStack" />
 
-To obtain the **Token**, follow these steps:
-
-1. Log into the [Azure portal](https://portal.azure.com/).
-2. Select the required Databricks resource and click **Launch Workspace**.
-3. Go to **Settings** > **User Settings** to generate a new personal access token, as shown:
+To obtain the **Token**, go to the **Settings** > **User Settings** in your Databricks account and generate a new personal access token, as shown:
 <img src="../assets/warehouse-actions-sources/connection-settings-databricks-2.png" alt="Select Databricks source in RudderStack" />
+
+<div class="infoBlock">
+Refer to the <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html#generate-a-personal-access-token">Databricks documentation</a> for more details on generating a personal access token.
+</div>
 
 ## Contact us
 
