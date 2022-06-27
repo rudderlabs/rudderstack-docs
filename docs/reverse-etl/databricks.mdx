@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/reverse-etl/databricks"
 title: "Databricks"
 description: Step-by-step guide to ingest data from your Databricks cluster into RudderStack.
 ---
@@ -7,6 +6,35 @@ description: Step-by-step guide to ingest data from your Databricks cluster into
 [Databricks](https://databricks.com/) is a data analytics platform that lets you easily integrate with open source libraries. It offers a simple collaborative environment to run interactive and scheduled data analysis workloads.
 
 RudderStack supports Databricks as a source from which you can ingest data and route it to your desired downstream destinations.
+
+## Granting permissions
+
+RudderStack requires you to grant certain user permissions on Databricks to successfully access data from it.
+
+Run the SQL queries listed in the following sections in the  **exact order** to grant these permissions:
+
+### Step 1: Add a user
+
+- Add a new user (for example, user@example.com) by following the steps in the [Databricks documentation](https://docs.databricks.com/administration-guide/users-groups/users.html#add-a-user).
+
+### Step 2: Creating the RudderStack schema and granting permissions
+
+1. Create a dedicated schema `_rudderstack`.
+
+```sql
+CREATE SCHEMA _rudderstack;
+```
+
+<div class="warningBlock">
+The <code class="inline-code">_rudderstack</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
+</div>
+
+2. Grant full access to the schema `_rudderstack` for the user created above.
+
+```sql
+GRANT ALL PRIVILEGES ON SCHEMA `_rudderstack` TO `user@example.com`
+```
+
 
 ## Setting up the Databricks source in RudderStack
 
