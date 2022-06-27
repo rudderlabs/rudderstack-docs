@@ -55,11 +55,11 @@ These settings can be used for tracking via web and mobile device mode only.
   - **Track Named pages**: If this setting is enabled and the `name` is present in a `page` call, then an event named `Viewed {name} page` will be sent to Amplitude.
 
 <div class="infoBlock">
-If <code class="inline-code">name</code> is present in a <code class="inline-code">screen</code> call, then RudderStack sends the event name as <code class="inline-code">Viewed {name} Screen</code> to Amplitude. However, if <code class="inline-code">name</code> is absent, then the event is sent as <code class="inline-code">Loaded a Screen</code>.
+If <code class="inline-code">name</code> is present in a <code class="inline-code">screen</code> call, then RudderStack sends the event name as <code class="inline-code">Viewed &#123;name&#125; Screen</code> to Amplitude. However, if <code class="inline-code">name</code> is absent, then the event is sent as <code class="inline-code">Loaded a Screen</code>.
 </div>
 
 <div class="warningBlock">
-If multiple settings are enabled, then multiple events may be sent for a single <code class="inline-code">page/screen</code> call. For example, if both <strong>Track categorized page</strong> and <strong>Track named page</strong> settings are enabled, one <strong>Viewed {name} page</strong> / <strong>Viewed {name} Screen</strong> and one <strong>Viewed {category} page</strong> / <strong>Viewed {category} Screen</strong> events will be generated for a single <code class="inline-code">page/screen</code> call.
+If multiple settings are enabled, then multiple events may be sent for a single <code class="inline-code">page/screen</code> call. For example, if both <strong>Track categorized page</strong> and <strong>Track named page</strong> settings are enabled, one <strong>Viewed &#123;name&#125; page</strong> / <strong>Viewed &#123;name&#125; Screen</strong> and one <strong>Viewed &#123;category&#125; page</strong> / <strong>Viewed &#123;category&#125; Screen</strong> events will be generated for a single <code class="inline-code">page/screen</code> call.
 </div>
 
 ### Trait settings
@@ -77,7 +77,6 @@ This feature is not applicable for the web device mode integration.
 - **Traits to Prepend**: If this setting is enabled, the value of the corresponding trait will be prepended to the corresponding trait array at Amplitude. If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are prepended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value prepended.
 
 <div class="infoBlock">
-
 This feature is not applicable for the web device mode integration.
 </div>
 
@@ -88,14 +87,13 @@ This feature is not applicable for the web device mode integration.
 - **Version Name**: The value of this field is set as the `versionName` of the Amplitude SDK.
 
 <div class="infoBlock">
-
-This feature is applicable only for the web device mode integration.
+This feature is applicable <strong>only</strong> for the web device mode integration.
 </div>
 
 - **Map device brand**: Enable this setting for RudderStack to send the device brand information (`context.device.brand`) to Amplitude.
 
 <div class="infoBlock">
-Amplitude computes <code class="inline-code">device_family</code> as <code class="inline-code">device_family: {device_brand} {device_manufacturer} {device_model}</code>.
+Amplitude computes <code class="inline-code">device_family</code> as <code class="inline-code">device_family: &#123;device_brand&#125; &#123;device_manufacturer&#125; &#123;device_model&#125; </code>.
 </div>
 
 ### Client-side events filtering
@@ -313,7 +311,6 @@ val rudderClient = RudderClient.getInstance(
 <li>If you would like to send <code class="inline-code">Google Advertising Id</code> of the device as <code class="inline-code">device id</code> to the Amplitude then add the below code in the <code class="inline-code">AndroidManifest.xml</code> of your app under <code class="inline-code">&lt;application&gt;</code> tag:
 
 <div class="infoBlock">
-
 Make sure that you enable <code class="inline-code">Use Advertising ID for Device ID</code> under <code class="inline-code">Android SDK settings</code> on the <a href="https://app.rudderstack.com">dashboard</a>
 </div>
 
@@ -518,7 +515,7 @@ A sample dashboard after making the above `identify`, `page`, and `track` calls 
 The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
 
 <div class="infoBlock">
-RudderStack supports sending the <code class="inline-code">group</code> calls in the cloud mode. However, when sending events via the device mode, <code class="inline-code">group</code> is currently supported only by the web (JavaScript) SDK.
+RudderStack supports sending the <code class="inline-code">group</code> calls in the cloud mode. However, when sending events via the device mode, <code class="inline-code">group</code> is currently supported only by the JavaScript SDK.
 </div>
 
 To use the Amplitude Groups feature with RudderStack, you need to define the <strong>Group Name Trait</strong> and <strong>Group Value Trait</strong> in the dashboard settings and pass them as traits while making a `group` call.
@@ -529,7 +526,7 @@ RudderStack does not support associating a user to more than one group per <code
 
 Even if you don't have an enterprise account or the Groups add-on, RudderStack adds `groups` as a user property in the user's profile with <strong>Group Name Trait</strong> as its type and <strong>Group Value Trait</strong> as its value.
 
-Suppose you have defined the <strong>Group Name Trait</strong> as `RS` and <strong>Group Value Trait</strong> as `RudderStack` and made the `group` call, then the user would be associated with the Group name: `RS` and the Group Value: `RudderStack`.
+Suppose you have defined the <strong>Group Name Trait</strong> as `RS` and <strong>Group Value Trait</strong> as `RudderStack` and made the `group` call, then the user would be associated with the group name as `RS` and the group value as `RudderStack`.
   
 ## Send `event_id` in device mode
 
@@ -592,7 +589,7 @@ For more information on how the `alias` call works for Amplitude, visit [this li
 ## Reset
 
 <div class="infoBlock">
-This feature is currently available as a part of RudderStack Mobile SDK's only
+This feature is currently available as a part of RudderStack Mobile SDKs only.
 </div>
 
 The reset method resets the previously identified user and related information. For more information, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
