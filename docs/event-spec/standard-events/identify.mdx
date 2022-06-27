@@ -83,7 +83,7 @@ An anonymousId can be any identifier. For instance, you can use a session ID cor
 </div>
 
 <div class="successBlock">
-  RudderStack's web and mobile <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/">SDKs</a> automatically use anonymous IDs to track unknown users on your website or mobile apps, so you don't have to worry about including an <code class="inline-code">anonymousId</code> explicitly.
+  RudderStack's web and mobile <a href="https://rudderstack.com/docs/sources/sdks/">SDKs</a> automatically use anonymous IDs to track unknown users on your website or mobile apps, so you don't have to worry about including an <code class="inline-code">anonymousId</code> explicitly.
 </div>
 
 ## Identify traits
@@ -288,7 +288,7 @@ With RudderStack, you don't have to worry about these inconsistencies at all, as
 RudderStack lets you pass traits to an `identify` call. These traits will be stored in a cookie on your browser or mobile device and will be passed automatically to all the subsequent calls.
 
 An example of how you can pass traits to an `identify` call from our <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link>
-is shown in the following code snippet. You can check our other [**SDKs**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/) for more examples.
+is shown in the following code snippet. You can check our other [**SDKs**](https://rudderstack.com/docs/sources/sdks/) for more examples.
 
 ```javascript
 rudderanalytics.identify("user-id", {

@@ -74,7 +74,7 @@ Depending on your platform of integration, follow the steps below to add Interco
   </TabList>
     <TabPanels>
       <TabPanel>
-        If this is the first time you are integrating the RudderStack Android SDK to your project, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/">Android SDK</a> documentation for more information.<br/><br/>
+        If this is the first time you are integrating the RudderStack Android SDK to your project, refer to the <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-android-sdk/">Android SDK</a> documentation for more information.<br/><br/>
        
 Your Android app must be on <strong>version 5.0 (API level 21) or higher</strong> for RudderStack to be able to send events to Intercom.<br/><br/>
 
@@ -129,7 +129,7 @@ val rudderClient:RudderClient = RudderClient.getInstance(
 </ol>
       </TabPanel>
       <TabPanel>
-        If this is the first time you are integrating the RudderStack iOS SDK to your project, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk">iOS SDK</a> documentation for more information.<br/><br/>
+        If this is the first time you are integrating the RudderStack iOS SDK to your project, refer to the <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-ios-sdk">iOS SDK</a> documentation for more information.<br/><br/>
 
 To add the RudderStack iOS SDK to your project, follow these steps:
 <ol>
@@ -310,7 +310,7 @@ The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/
 
 <div class="warningBlock">
 
-The <code class="inline-code">page</code> call is supported <strong>only</strong> for the <strong><a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">JavaScript SDK</a></strong> when sending events via the <strong><a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a></strong>. It works by triggering Intercom's <code class="inline-code">update</code> method, which looks for a list of new open conversations to be displayed to the current user.
+The <code class="inline-code">page</code> call is supported <strong>only</strong> for the <strong><a href="https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</a></strong> when sending events via the <strong><a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a></strong>. It works by triggering Intercom's <code class="inline-code">update</code> method, which looks for a list of new open conversations to be displayed to the current user.
 </div>
 
 A sample `page` call looks like the following code snippet:
