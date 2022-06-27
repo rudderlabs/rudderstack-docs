@@ -1497,47 +1497,44 @@ export const jsonData = [
     },
 
     // Features section
-
-    {
-        key: "transformations",
-        title: "Transformations",
-        sectionTitle: "Features",
-        link: "/features/transformations/",
-        content: [
-        ]
-    }, 
-    {
-        key: "data-governance",
-        title: "Data Governance",
-        link: "/features/data-governance/",
-        content: [
-            {
-                key: "tracking-plans",
-                title: "Tracking Plans",
-                link: "/data-governance/tracking-plans/",
-                content: [
-                    {
-                        key: "tracking-plan-spreadsheet",
-                        title: "Tracking Plan Spreadsheet",
-                        link: "/data-governance/tracking-plans/tracking-plan-spreadsheet/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                key: "ruddertyper",
-                title: "RudderTyper",
-                link: "/data-governance/ruddertyper/",
-                content: []
-            }, 
-        ]
-    }, 
-    {
-        key: "identity-resolution",
-        title: "Identity Resolution",
-        link: "/identity-resolution/",
+  {
+    key: "transformations",
+    title: "Transformations",
+    sectionTitle: "Features",
+    link: "/features/transformations/",
+    content: []
+  },
+  {
+    key: "data-governance",
+    title: "Data Governance",
+    link: "/features/data-governance/",
+    content: [
+       {
+        key: "rudder-typer",
+        title: "RudderTyper",
+        link: "/features/data-governance/rudder-typer/",
         content: []
-    },
+      }, {
+        key: "tracking-plans",
+        title: "Tracking Plans",
+        link: "/features/data-governance/tracking-plans/",
+        content: [
+          {
+            key: "tracking-plan-spreadsheet",
+            title: "Tracking Plan Spreadsheet",
+            link: "/features/data-governance/tracking-plans/tracking-plan-spreadsheet/",
+            content: []
+          },
+        ]
+      },
+    ]
+  }, {
+    key: "identity-resolution",
+    title: "Identity Resolution",
+    link: "/features/identity-resolution/",
+    content: []
+  },
+
 
 // Event Spec section
 
@@ -1654,57 +1651,54 @@ export const jsonData = [
   },
 
 
-    // API section
+   // API section
 
-    {
-        key: "api",
-        title: "Overview",
-        sectionTitle: "API",
-        link: "/api/overview/",
-        content: []
-    },
-    {
-        key: "http-api",
-        title: "HTTP API",
-        link: "/api/http-api/",
-        content: []
-    },
-    {
-        key: "test-api",
-        title: "Test API",
-        link: "/api/test-api/",
-        content: []
-    },
-    {
-        key: "pixel-api",
-        title: "Pixel API",
-        link: "/api/pixel-api/",
-        content: []
-    },
-    {
-        key: "transformation-api",
-        title: "Transformation API",
-        link: "/api/transformation-api/",
-        content: []
-    },
-    {
-        key: "data-governance-api",
-        title: "Data Governance API",
-        link: "/api/data-governance-api/",
-        content: []
-    }, 
+  {
+    key: "api",
+    title: "Overview",
+    sectionTitle: "API",
+    link: "/api/overview/",
+    content: []
+  },
+  {
+    key: "http-api",
+    title: "HTTP API",
+    link: "/api/http-api/",
+    content: []
+  },
    {
-        key: "tracking-plan-api",
-        title: "Tracking Plan API",
-        link: "/api/tracking-plan-api/",
-        content: []
-    },
-    {
-        key: "data-regulation-api",
-        title: "Data Regulation API",
-        link: "/api/data-regulation-api/",
-        content: []
-    },
+    key: "pixel-api-spec",
+    title: "Pixel API",
+    link: "/api/pixel-api-spec/",
+    content: []
+  }, {
+    key: "tracking-plan-api",
+    title: "Tracking Plan API",
+    link: "/api/tracking-plan-api/",
+    content: []
+  }, {
+    key: "transformation-api",
+    title: "Transformation API",
+    link: "/api/transformation-api/",
+    content: []
+  }, {
+    key: "data-governance-api",
+    title: "Data Governance API",
+    link: "/api/data-governance-api/",
+    content: []
+  },
+  {
+    key: "data-regulation-api",
+    title: "Data Regulation API",
+    link: "/api/data-regulation-api/",
+    content: []
+  },
+  {
+    key: "test-api",
+    title: "Test API",
+    link: "/api/test-api/",
+    content: []
+  },
 
     // Guides section
 
@@ -1946,5 +1940,32 @@ export const jsonData = [
                 ]
             },
         ]
+    },
+    // Resources section
+
+    {
+        key: "rudderstack-architecture",
+        title: "RudderStack Architecture",
+        sectionTitle: "Resources",
+        link: "/resources/rudderstack-architecture/",
+        content: []
+    },
+    {
+        key: "glossary",
+        title: "Glossary",
+        link: "/resources/glossary/",
+        content: []
+    },
+    {
+        key: "faq",
+        title: "FAQ",
+        link: "/resources/faq/",
+        content: []
+    },
+    {
+        key: "community",
+        title: "Community",
+        link: "/resources/community/",
+        content: []
     },
 ];
