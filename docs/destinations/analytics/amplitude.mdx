@@ -519,7 +519,7 @@ A sample dashboard after making the above `identify`, `page`, and `track` calls 
 The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
 
 <div class="infoBlock">
-When sending events via the device mode, <code class="inline-code">group</code> is currently supported only by the RudderStack JavaScript SDK.
+RudderStack supports sending the <code class="inline-code">group</code> calls in the cloud mode. However, when sending events via the device mode, <code class="inline-code">group</code> is currently supported only by the web (JavaScript) SDK.
 </div>
 
 To use the Amplitude Groups feature with RudderStack, you need to define the <strong>Group Name Trait</strong> and <strong>Group Value Trait</strong> in the dashboard settings and pass them as traits while making a `group` call.
@@ -530,7 +530,7 @@ RudderStack does not support associating a user to more than one group per <code
 
 Even if you don't have an enterprise account or the Groups add-on, RudderStack adds `groups` as a user property in the user's profile with <strong>Group Name Trait</strong> as its type and <strong>Group Value Trait</strong> as its value.
 
-Suppose you defined <strong>Group Name Trait</strong> as `company_id` and <strong>Group Value Trait</strong> as `company_name` and made the `group` call. Then, the user would be associated with a Group name : `RS` and a Group Value : `RudderStack` and you can also see the user property with type `RS` and value `RudderStack` in the user profile.
+Suppose you defined <strong>Group Name Trait</strong> as `RS` and <strong>Group Value Trait</strong> as `RudderStack` and made the `group` call. Then, the user would be associated with a Group name : `RS` and a Group Value : `RudderStack`.
   
 ## Send `event_id` in device mode
 
