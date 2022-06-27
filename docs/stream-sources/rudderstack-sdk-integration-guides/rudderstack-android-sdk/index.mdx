@@ -668,8 +668,8 @@ val rudderClient = RudderClient.getInstance(
         .build()
 )
 ```
-- `com.google.android.gms.ads.identifier.AdvertisingIdClient` is present in your application's class path.
-- `limitAdTracking`is not enabled for your device.
+- The dependency `implementation com.google.android.gms:play-services-ads-identifier: 17.0.1` is added to your application's `build.gradle` file.
+- `limitAdTracking` is not enabled for your device.
 
 To set your own advertisement ID, you can use the `putAdvertisingId` method, as shown:
 
