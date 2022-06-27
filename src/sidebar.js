@@ -659,9 +659,15 @@ export const jsonData = [
 
     // Destinations section
     {
+        key: "overview",
+        title: "Overview",
+        sectionTitle: "Destinations",
+        link: "/tmp-destinations/overview/",
+        content: []
+    },
+    {
         key: "destinations",
         title: "Streaming Destinations",
-        sectionTitle: "Destinations",
         link: "/tmp-destinations/streaming-destinations/",
         content: [
             {
