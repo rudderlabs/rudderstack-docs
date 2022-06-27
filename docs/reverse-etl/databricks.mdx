@@ -22,19 +22,19 @@ Follow the steps listed in the following sections in the  **exact order** to gra
 1. Create a dedicated schema `_rudderstack`.
 
 ```sql
-CREATE SCHEMA _rudderstack;
+CREATE SCHEMA `_rudderstack`;
 ```
 
 <div class="warningBlock">
 The <code class="inline-code">_rudderstack</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
 </div>
 
-2. Grant full access to the schema `_rudderstack` for the user created above.
+2. Grant full access to the schema `_rudderstack` for the user created in step 1.
 
 ```sql
 GRANT ALL PRIVILEGES ON SCHEMA `_rudderstack` TO `user@example.com`
 ```
-
+**Replace `user@example.com` with the user created in step 1.**
 
 ## Setting up the Databricks source in RudderStack
 
