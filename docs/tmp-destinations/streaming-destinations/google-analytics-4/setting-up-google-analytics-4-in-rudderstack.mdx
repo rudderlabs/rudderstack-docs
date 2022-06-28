@@ -34,14 +34,12 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
     - **Firebase App Id**: Enter the Firebase App ID which is the identifier for Firebase app. It can be found in the Firebase dashboard under **Project Settings > General**.
  
 <div class="infoBlock">
-  
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the API Secret, Measurement Id and Firebase App ID.
 </div>
 
 ### Native SDK
 
 <div class="infoBlock">
-
 All the settings mentioned below are applicable only for the device mode.
 </div>
 
@@ -51,10 +49,8 @@ All the settings mentioned below are applicable only for the device mode.
     - `search`
  
 <div class="infoBlock">
-
 Google Analytics 4 has a limit on the number of unique properties per event name. The default <code class="inline-code">page_view</code> event supports the properties mentioned in the <a href="https://support.google.com/analytics/answer/9234069?hl=en&ref_topic=6317484">Automatically collected events in Google Analytics 4</a> guide.
 </div>
-
   
 - **Send userId to GA**: This setting exhibits the following behavior:
     - If enabled, the user ID is set to the identified visitors and sent as explained in the [Cookies and user identification](https://developers.google.com/tag-platform/devguides/cookies#set_user_id) guide.
@@ -64,13 +60,13 @@ Google Analytics 4 has a limit on the number of unique properties per event name
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings2.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
-This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
 ### Web SDK settings
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings3.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
-**Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
+**Use device mode to send events**: Enable this setting to send events via the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 Finally, click on **Next** to enable Google Analytics 4 as a destination in Rudderstack.
 
