@@ -58,12 +58,7 @@ If you're unsure which data center you are on, reach out to <a href="mailto:%20d
 
 ## Identify
 
-The `identify` call lets you uniquely identify a user and record any associated traits about them like their name, email, etc.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">identify</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
-</div>
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call lets you uniquely identify a user and record any associated traits about them like their name, email, etc.
 
 A sample `identify` call is shown below:
 
@@ -104,7 +99,7 @@ Refer to the <a href="#faq">FAQ</a> section below for more information on creati
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 RudderStack sends the `track` events to Airship via their [Custom Events API](https://docs.airship.com/api/ua/#operation-api-custom-events-post). You can use the event properties to personalize and trigger specific messages for your audience.
 
@@ -143,7 +138,7 @@ RudderStack also maps some event properties to the Airship properties before sen
 
 ## Group
 
-The [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, e.g., company name, number of employees, etc.
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, e.g., company name, number of employees, etc.
 
 A sample `group` call is shown below:
 

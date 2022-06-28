@@ -56,7 +56,7 @@ When sending events via the device mode, RudderStack lets you specify which even
 
 ## Identify 
 
-The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
 A sample `identify` call is shown below:
 
@@ -80,7 +80,7 @@ It is not mandatory to make an <code class="inline-code">identify</code> call ev
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) method lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> method lets you capture user events along with the properties associated with them.
 
 RudderStack uses `track` events to segment your users in AdRoll.
 
@@ -128,7 +128,7 @@ RudderStack maps the following event properties to the corresponding AdRoll attr
 
 ## Page
 
-The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) method lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page">`page`</Link> method lets you record your website's page views with any additional relevant information about the viewed page.
 
 RudderStack internally uses the `page` and `track` calls to segment your users.
 

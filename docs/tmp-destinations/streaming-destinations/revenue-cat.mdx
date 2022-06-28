@@ -46,7 +46,7 @@ For more information on getting your Revenue Cat public API key, refer to the <a
 
 ## Identify 
 
-The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
 RudderStack uses the `identify` call to create or update new subscribers in Revenue Cat. It maps `userId` (a required trait in every event) to Revenue Cat's `app_user_id` before sending the data via the [`subscribers`](https://docs.revenuecat.com/reference/subscribers) API.
 
@@ -112,7 +112,7 @@ The values for <code class="inline-code">iterableCampaignId</code> and <code cla
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) method lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> method lets you capture user events along with the properties associated with them.
 
 A sample `track` call is shown below:
 

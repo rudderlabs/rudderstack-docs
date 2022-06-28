@@ -17,7 +17,7 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
 
@@ -123,7 +123,7 @@ rudderanalytics.track('Product List Viewed', {
 
 ## Page
 
-The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page. 
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page. 
 
 RudderStack maps the `page` call to a `page_view` event by default, and passes it to Google Analytics 4 as a custom event. 
 

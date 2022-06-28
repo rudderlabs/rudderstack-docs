@@ -67,7 +67,7 @@ If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Ma
 
 ## Identify
 
-The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you create new or update existing customers and record the traits about them like their name, email address, etc. 
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call lets you create new or update existing customers and record the traits about them like their name, email address, etc. 
 
 When you make an `identify` call with a user’s email address and traits, RudderStack triggers the Pinterest `set()` method. This saves the identification parameters to be sent with the next events, so it is recommended to set the values as early as possible. 
 
@@ -92,7 +92,7 @@ After an <code class="inline-code">identify</code> call is made, nothing appears
 
 ## Track
 
-The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call allows you to capture user actions along with the properties associated with these actions.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call allows you to capture user actions along with the properties associated with these actions.
 
 A sample `track` call is shown below:
 

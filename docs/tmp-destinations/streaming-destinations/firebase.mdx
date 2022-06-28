@@ -351,7 +351,7 @@ Follow these steps to add Firebase to your React Native project:
 
 ## Identify
 
-The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call sets the `userId` through the `setUserId` method from `FirebaseAnalytics`. RudderStack sets the other user properties from `RudderTraits` to Firebase using the `setUserProperty` method. 
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call sets the `userId` through the `setUserId` method from `FirebaseAnalytics`. RudderStack sets the other user properties from `RudderTraits` to Firebase using the `setUserProperty` method. 
 
 <div class="infoBlock">
 
@@ -371,7 +371,7 @@ RudderStack ignores <code class="inline-code">age</code>, <code class="inline-co
 
 ## Track
 
-RudderStack's [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) events are mapped to the standard Firebase events wherever possible.
+RudderStack's <Link to="/event-spec/standard-events/track">`track`</Link> events are mapped to the standard Firebase events wherever possible.
 
 ### Event mapping
 
@@ -464,7 +464,7 @@ A sample `track` call sent from the iOS SDK is shown below:
 
 ## Screen
 
-The [`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) method lets you record whenever a user sees their mobile screen along with any optional properties about the viewed screen.
+The <Link to="/event-spec/standard-events/screen">`screen`</Link> method lets you record whenever a user sees their mobile screen along with any optional properties about the viewed screen.
 
 A sample `screen` call is as shown:
 

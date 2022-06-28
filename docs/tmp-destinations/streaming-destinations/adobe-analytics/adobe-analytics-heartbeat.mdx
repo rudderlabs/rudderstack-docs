@@ -5,18 +5,16 @@ description: >-
   with RudderStack for measuring streaming media.
 ---
 
-[**Adobe Analytics for Streaming Media**](https://experienceleague.adobe.com/docs/media-analytics/using/media-overview.html) is an add-on that offers measurement tools for different types of media such as audio, video, and advertisements.
+[Adobe Analytics for Streaming Media](https://experienceleague.adobe.com/docs/media-analytics/using/media-overview.html) is an add-on that offers measurement tools for different types of media such as audio, video, and advertisements.
 
 Adobe Analytics uses “heartbeats” to collect different metrics related to the video during playback. These heartbeats are sent to the Adobe heartbeat tracking server every ten seconds to measure the time the video is played.
 
 <div class="infoBlock">
-
 For sending the heartbeat events to Adobe Analytics, you will need the Heartbeat Tracking Server URL. To get this URL, contact your Adobe representative. Also, you will need to map your RudderStack events with the type of Adobe heartbeat event you want to send.
 </div>
 
 <div class="infoBlock">
-
-The <a href="https://rudderstack.com/docs/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/">RudderStack dashboard settings</a> also has a toggle for SSL which, if enabled, will send the Heartbeat Tracking URL in the HTTPS mode.
+The <Link to="/tmp-destinations/streaming-destinations/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/#connection-settings">RudderStack dashboard settings</Link> also has a toggle for SSL which, if enabled, will send the Heartbeat Tracking URL in the HTTPS mode.
 </div>
 
 ## Playback Head
@@ -54,8 +52,7 @@ RudderStack sends the Adobe heartbeat events as per the following categories:
 | `total_length`       | Sent for creating `MediaObject`.                                                      | 0             |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Video Start
@@ -83,8 +80,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `start_time`         | Sent for creating `createChapterObject`.                                              | 0                 |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Video Paused
@@ -108,8 +104,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `total_length`       | Sent for creating `MediaObject`.                                                      | 0             |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Video Complete
@@ -133,8 +128,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `total_length`       | Sent for creating `MediaObject`.                                                      | 0             |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Session End
@@ -158,8 +152,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `total_length`       | Sent for creating `MediaObject`.                                                      | 0             |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Ad Started
@@ -180,8 +173,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `content`            | Sent for `trackEvent`.                             | empty JSON    |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Ad Completed
@@ -201,8 +193,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `content`            | Sent for `trackEvent`.                             | empty JSON    |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Ad Skipped
@@ -222,8 +213,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `content`            | Sent for `trackEvent`.                             | empty JSON    |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Seek Started
@@ -247,8 +237,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `total_length`       | Sent for creating `MediaObject`.                                                      | 0             |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Seek Completed
@@ -272,8 +261,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `total_length`       | Sent for creating `MediaObject`.                                                      | 0             |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Buffer Started
@@ -297,8 +285,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `total_length`       | Sent for creating `MediaObject`.                                                      | 0             |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Buffer Completed
@@ -322,8 +309,7 @@ The properties mapped in the **Standard Video Metadata** section below will also
 | `total_length`       | Sent for creating `MediaObject`.                                                      | 0             |
 
 <div class="infoBlock">
-
-The properties mapped in the **Standard Video Metadata** section below will also be set.
+The properties mapped in the <Link to="#standard-video-metadata">Standard Video Metadata</Link> section below will also be set.
 </div>
 
 ## Heartbeat Quality Updated
@@ -369,4 +355,4 @@ The following RudderStack properties must also be sent for mapping to the standa
 
 ## Contact us
 
-For more information on any of the sections covered in this documentation, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

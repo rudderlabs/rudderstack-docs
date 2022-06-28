@@ -114,12 +114,10 @@ Enabling this setting might lead the data to be out of order. Hence, it is not r
 - **Prefer Visitor ID**: Adobe does not allow sending both `visitorID` and timestamp. Hence, this option is used when the timestamp option is set as hybrid. Also, note that if this option is enabled, `visitorID` will be set. If disabled, the timestamp value will be set.
 
 <div class="infoBlock">
-
 For more information on this setting, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/timestamp.html?lang=en">Adobe Analytics documentation</a>.
 </div>
 
 - **Enable pageName for Track Events**: When enabled, RudderStack only tracks events by sending a `pageName`.
-
 
 ### Mappings
 
@@ -155,12 +153,10 @@ For more information on this setting, refer to the <a href="https://experiencele
 This setting lets you map any RudderStack property with the eVar you want.
 
 <div class="infoBlock">
-
 Only enter the index number of the eVar you want to set.
 </div>
 
 <div class="infoBlock">
-
 For more information on this setting, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar.html?lang=en">Adobe Analytics documentation</a>.
 </div>
 
@@ -171,12 +167,10 @@ For more information on this setting, refer to the <a href="https://experiencele
 This setting lets you map any RudderStack property with the hierarchy variable you want.
 
 <div class="infoBlock">
-
 Only enter the index number of the hierarchy variable that you want to set.
 </div>
 
 <div class="infoBlock">
-
 For more information on this setting, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/hier.html?lang=en">Adobe Analytics documentation</a>.
 </div>
 
@@ -185,7 +179,6 @@ For more information on this setting, refer to the <a href="https://experiencele
 This setting lets you map any RudderStack property with the list you want.
 
 <div class="infoBlock">
-
 Enter only the index number of the list you want to set to. The list properties should be an array/string separated by commas. Otherwise, they will be dropped.
 
 For more information, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/list.html?lang=en">Adobe Analytics documentation</a>.
@@ -198,10 +191,7 @@ For more information, refer to the <a href="https://experienceleague.adobe.com/d
 - **Map Rudder Properties to Adobe Custom properties**: Props are custom variables that you can use as per your requirement. This setting lets you map any RudderStack property with the prop you want to set it to.
 
 <div class="infoBlock">
-
-Enter only the index number of the prop you want to set.
-
-For more information, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en">Adobe Analytics documentation</a>.
+Enter only the index number of the prop you want to set. For more information, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/prop.html?lang=en">Adobe Analytics documentation</a>.
 </div>
 
 - **Map Rudder Property with Delimiters for Adobe Custom properties**: The property variables need to be sent as a string. So if there is a list of properties, it needs to be delimited. RudderStack lets you set any of the delimiters from `, ; / : |`.
@@ -212,7 +202,6 @@ For more information, refer to the <a href="https://experienceleague.adobe.com/d
 - **Increment or Currency Properties to add to merchandise events at event level**: The RudderStack property that has a currency/counter value should be added here. This will then be used to create the event string like `purchase,event5=19.9`. RudderStack automatically sets the `currencyCode` value. \(The default value is USD\).
 
 <div class="infoBlock">
-
 For more information, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/events/events-overview.html?lang=en">Adobe Analytics documentation</a>.
 </div>
 
@@ -228,7 +217,6 @@ For more information, refer to the <a href="https://experienceleague.adobe.com/d
 - **Map Rudder Properties to eVars at product level**: Lets you map the RudderStack properties you want to set to eVars.
 
 <div class="infoBlock">
-
 Set only the index. The eVars will be appended with <code class="inline-code">|</code> and sent along with the product string.
 
 For more information, refer to the <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/evar-merchandising.html?lang=en">Adobe Analytics documentation</a>.
