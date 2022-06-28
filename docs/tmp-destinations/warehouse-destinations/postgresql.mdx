@@ -53,11 +53,11 @@ Enter the following credentials in the **Connection Credentials** page:
 
   - **Host**: Enter the host name of your PostgreSQL service.
   - **Database**: Enter your PostgreSQL database name where RudderStack will load the data.
-  - **User**: Enter the name of the user created in the [Setting user permissions in PostgreSQL](#setting-user-permissions-in-postgresql) section above.
+  - **User**: Enter the name of the user created in the <Link to="#setting-user-permissions-in-postgresql">Setting user permissions in PostgreSQL</Link> section above.
   - **Password**: Enter the password you set for the above user.
   - **Port**: Enter the port number associated with your PostgreSQL instance.
   - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
-  - **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your PostgreSQL instance. RudderStack provides three options - **disable**, **require**, and **verify-ca**. For more information on these options, refer to the [SSL Modes](#ssl-modes) section below.
+  - **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your PostgreSQL instance. RudderStack provides three options - **disable**, **require**, and **verify-ca**. For more information on these options, refer to the <Link to="#ssl-modes">SSL Modes</Link> section below.
   - **Sync Frequency**: Specify how often RudderStack should sync the data to your PostgreSQL database.
   - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
   - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
@@ -74,10 +74,10 @@ This option is applicable only for RudderStack-hosted data planes. For self-host
 
 - **Choose your storage provider**: If **Use RudderStack-managed object storage** is **disabled** in the dashboard, select the cloud provider for your object storage and enter the relevant settings:
 
-   - [Amazon S3 bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/amazon-s3/#setting-up-amazon-s3)
-   - [Azure Blob Storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage)
-   - [Google Cloud Storage bucket settings](https://www.rudderstack.com/docs/destinations/storage-platforms/google-cloud-storage/#setting-up-google-cloud-storage)
-   - [MinIO bucket storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/minio/#setting-up-minio)
+   - <Link to="/tmp-destinations/streaming-destinations/amazon-s3#setting-up-amazon-s3">Amazon S3 bucket storage settings</Link>
+   - <Link to="/tmp-destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>
+   - <Link to="/tmp-destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
+   - <Link to="/tmp-destinations/streaming-destinations/minio#setting-up-minio">MinIO bucket storage settings</Link>
 
  ## SSL modes
 
@@ -157,8 +157,8 @@ All the outbound traffic is routed through these RudderStack IPs.
 ### RudderStack does not create the corresponding PostgreSQL tables when I press on 'sync'. What do I do?
 
 - Firstly, check the status of your data sync in the [RudderStack dashboard](https://app.rudderstack.com/syncs).
-- Make sure you have set up the [required user permissions](https://rudderstack.com/docs/data-warehouse-integrations/postgresql#setting-user-permissions-in-postgresql) for your PostgreSQL instance.
-- Check if your database is accessible to RudderStack by [allowlisting the RudderStack IPs](#ips-to-be-allowlisted).
+- Make sure you have set up the <Link to="#setting-user-permissions-in-postgresql">user permissions</Link> for your PostgreSQL instance.
+- Check if your database is accessible to RudderStack by <Link to ="#ips-to-be-allowlisted">allowlisting the RudderStack IPs</Link>.
 - Ensure that all the security group policies are appropriately set.
 
 ### How does RudderStack handle reserved words?
