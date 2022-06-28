@@ -7,7 +7,7 @@ description: >-
 A **destination** is a cloud tool or a platform where you want to send the data via RudderStack.
 
 <div class="successBlock">
-RudderStack currently supports over 150 destinations. These include <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a>, <a href="https://rudderstack.com/docs/destinations/crm/">CRMs</a>, <a href="https://rudderstack.com/docs/destinations/analytics/">analytics</a> and <a href="https://rudderstack.com/docs/destinations/marketing/">marketing</a> platforms, and more.
+RudderStack currently supports over 150 destinations. These include various <Link to="/tmp-destinations/streaming-destinations/">Streaming Destinations</Link> and <Link to="/tmp-destinations/warehouse-destinations/">Warehouse Destinations</Link>.
 </div>
 
 The **Destinations** option is povided in the left navigation bar in the RudderStack dashboard. It lets you view all your configured destinations, as shown:
@@ -21,7 +21,7 @@ Follow these steps to add a destination in RudderStack:
 1. Log into the [RudderStack dashboard](https://app.rudderstack.com/).
 2. Click on **Add Destination** and select the destination you want to set up in RudderStack.
 3. Assign a name to the destination and click on **Continue**.
-4. Click on **Add Source** to connect a source with this destination. Refer to the detailed steps for [Adding a source](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source).
+4. Click on **Add Source** to connect a source with this destination. Refer to the detailed steps for <Link to="/sources/#adding-a-source">Adding a source</Link>.
 
 <img src="../assets/rs-cloud/add-source-destination.png" alt="RudderStack destinations" />
 
@@ -29,8 +29,8 @@ Alternatively, you can select an existing source (if any) for this destination a
 
 <img src="../assets/rs-cloud/select-source.png" alt="Select the data source" />
 
-5. Configure the destination with the relevant connection settings. Refer to the [destination documentation](https://rudderstack.com/docs/destinations/) for more details on these settings.
-6. Click on **Create New Transformation** if you want to add a [transformation](https://rudderstack.com/docs/transformations/). Otherwise, click on **Continue** to configure the destination successfully.
+5. Configure the destination with the relevant connection settings. Refer to the <Link to="/tmp-destinations/">destination documentation</Link> for more details on these settings.
+6. Click on **Create New Transformation** if you want to add a <Link to="/features/transformations/">transformation</Link>. Otherwise, click on **Continue** to configure the destination successfully.
 
 <img src="../assets/rs-cloud/destination-configuration.png" alt="Configuration successful" />
 
@@ -42,7 +42,7 @@ To get details about a configured destination, click on it to see the following 
 
 <img src="../assets/rs-cloud/rename-destination.png" align="left" alt="Rename a destination" />
 
-- **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) for more information.
+- **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to <Link to="/dashboard-guides/live-events/">Live Events</Link> for more information.
 - **Sources**: Displays all the sources connected to a destination and their status (enabled/disabled). You can also connect a new source by clicking on the **Add source** button.
 - **Transformation**: Lets you connect an existing user transformation to your destination.
 

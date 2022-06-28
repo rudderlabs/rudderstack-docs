@@ -28,13 +28,13 @@ RudderStack classifies the sources into following
   categories:
   <ul>
     <li>
-      <a href="https://rudderstack.com/docs/stream-sources/">Event Streams</a>
+      <Link to="/sources/cloud-apps/">Cloud Apps</Link>
     </li>
     <li>
-      <a href="https://rudderstack.com/docs/cloud-extract-sources/">Cloud Extract</a>
+      <Link to="/sources/extract/">Cloud Extract</Link>
     </li>
     <li>
-      <a href="https://rudderstack.com/docs/reverse-etl/">Reverse ETL</a>
+      <Link to="/sources/reverse-etl/">Reverse ETL</Link>
     </li>
   </ul>
 </div>
@@ -59,9 +59,9 @@ To get details about a configured source, click on it to see the following optio
 
 <img src="../assets/rs-cloud/rename-source.png" align="left" alt="Rename source" />
 
-- **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) for more information.
+- **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to <Link to="/dashboard-guides/live-events/">Live Events</Link> for more information.
 
-- **Write Key**: Required to send the data from your source. For example, you can load the [RudderStack's JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) on your website to track and collect the events by running the following snippet:
+- **Write Key**: Required to send the data from your source. For example, you can load the <Link to="/sources/sdks/rudderstack-javascript-sdk/">RudderStack's JavaScript SDK</Link> on your website to track and collect the events by running the following snippet:
 
 ```javascript
   rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, options);
@@ -83,7 +83,7 @@ If you have already configured a destination in RudderStack, you can also use it
 Before deleting a source, make sure there are no destinations connected to it.
 </div>
 
-- **Tracking Plans**: Lets you link a [tracking plan](https://www.rudderstack.com/docs/data-governance/tracking-plans/) with the source.
+- **Tracking Plans**: Lets you link a <Link to="/features/data-governance/tracking-plans/">tracking plan</Link> with the source.
 
 ## FAQ
 
