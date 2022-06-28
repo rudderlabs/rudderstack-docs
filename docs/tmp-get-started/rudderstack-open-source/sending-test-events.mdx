@@ -5,8 +5,7 @@ description: >-
 ---
 
 <div class="infoBlock">
-
-This guide assumes that you have already <a href="https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/">installed and set up RudderStack</a> in your preferred environment.
+This guide assumes that you have already <Link to="/tmp-get-started/rudderstack-open-source/data-plane-setup/">installed and set up RudderStack</Link> in your preferred environment.
 </div>
 
 You can follow any of the two approaches to send test events and verify your RudderStack installation:
@@ -36,13 +35,12 @@ If you have signed up for [RudderStack Open Source](https://app.rudderstack.com/
 <img src="../../assets/rudderstack-open-source/source-write-key.png" alt="RudderStack source write key" />
 
 <div class="warningBlock">
-
-The source write key is different from your <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link>. The write key is associated with the source, while the workspace token is associated with your RudderStack workspace.
+The source write key is different from your <Link to="/dashboard-guides/overview/#workspace-token">workspace token</Link>. The write key is associated with the source, while the workspace token is associated with your RudderStack workspace.
 </div>
 
 #### Self-hosted control plane
 
-If you are self-hosting RudderStack and have set up the control plane using the [Control Plane Lite](https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, you can obtain the source write key by following these steps:
+If you are self-hosting RudderStack and have set up the control plane using the <Link to="/tmp-get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility, you can obtain the source write key by following these steps:
 
 1. Set up a source and a destination.
 2. Note the write key associated with the source in the dashboard as shown:
@@ -56,7 +54,7 @@ To send the test events, follow the steps listed in the sections below depending
 ### For local setup
 
 1. Navigate to the folder where RudderStack is installed.
-2. Then, run the following command after replacing `<WRITE_KEY>` with the source write key obtained in the previous section, and `<DATA_PLANE_URL>` with your [data plane URL](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
+2. Then, run the following command after replacing `<WRITE_KEY>` with the source write key obtained in the previous section, and `<DATA_PLANE_URL>` with your <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link>.
 
 ```bash
 ./scripts/generate-event <WRITE_KEY> <DATA_PLANE_URL>/v1/batch
@@ -78,8 +76,7 @@ docker exec -ti \
 You can then check your destination to verify that the events are delivered.
 
 <div class="infoBlock">
-
-Note that unlike RudderStack Open Source, the control plane set up using the <a href="https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility does not let you view live events.
+Note that unlike RudderStack Open Source, the control plane set up using the <Link to="/tmp-get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility does not let you view live events.
 </div>
 
 If you supply an invalid source write key or data plane URL, you will get the following error:
@@ -88,10 +85,10 @@ If you supply an invalid source write key or data plane URL, you will get the fo
 
 ## Using the HTTP API
 
-To send test events via the [RudderStack HTTP API](https://www.rudderstack.com/docs/rudderstack-api/http-api/), follow these steps:
+To send test events via the <Link to="/api/http-api/">RudderStack HTTP API</Link>, follow these steps:
 
 1. Import this [Postman collection](https://www.getpostman.com/collections/480307c55ad2b9dd4e27). 
-2. Edit the variables `source_write_key` and `data_plane_url` in this collection with your source write key and your [data plane URL](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
+2. Edit the variables `source_write_key` and `data_plane_url` in this collection with your source write key and your <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link>.
 
 RudderStack uses **Basic Authentication** for authenticating all the HTTP requests. The HTTP Basic Authentication requires a user name and password where:
   - The user name is the `source_write_key`
