@@ -13,7 +13,7 @@ With RudderStack's warehouse-first architecture, you can send all your cross-pla
 This guide walks you through RudderStack's identity resolution feature in detail.
 
 <div class="infoBlock">
-Currently, RudderStack supports identity resolution only for the <Link to="data-warehouse-integrations/google-bigquery/">Google BigQuery</Link> and <Link to="https://www.rudderstack.com/docs/data-warehouse-integrations/snowflake/">Snowflake</Link> warehouse destinations.
+Currently, RudderStack supports identity resolution only for the <Link to="/tmp-destinations/warehouse-destinations/bigquery/">Google BigQuery</Link> and <Link to="/tmp-destinations/warehouse-destinations/snowflake/">Snowflake</Link> warehouse destinations.
 </div>
 
 <GhBadge
@@ -99,7 +99,7 @@ Here, `"type": "merge_property_type_*"` corresponds to a unique user identifier 
 
 ### User transformations
 
-Alternatively, you can use [RuddderStack Transformations](https://www.rudderstack.com/docs/transformations/) to merge user identifiers in your event data before sending it to the warehouse destination.
+Alternatively, you can use <Link to="/features/transformations/">RuddderStack Transformations</Link> to merge user identifiers in your event data before sending it to the warehouse destination.
 
 A sample transformation is as shown:
 
@@ -157,10 +157,10 @@ This allows you to enrich the user profile with more information across various 
 
 Yes,  RudderStack auto-merges the following user identifiers by default so you don't need to call the`merge` API or leverage user transformations to merge them:
 
-- `userId` and `previousId` for the [`alias`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/) calls
-- `userId` and `anonymousId` for the [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/), [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/), and [`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) calls.
+- `userId` and `previousId` for the <Link to="/event-spec/standard-events/alias/">`alias`</Link> calls
+- `userId` and `anonymousId` for the <Link to="/event-spec/standard-events/track/">`track`</Link>, <Link to="/event-spec/standard-events/group/">`group`</Link>, and <Link to="/event-spec/standard-events/screen/">`screen`</Link> calls.
 
-For merging other user identifiers like device ID, phone number, email ID, etc. RudderStack provides a <a href="#using-the-merge-api"><code class="inline-code">merge</code></a> API. Alternatively, you can use the [Transformations](https://www.rudderstack.com/docs/transformations/) feature to merge these identifiers.
+For merging other user identifiers like device ID, phone number, email ID, etc. RudderStack provides a <a href="#using-the-merge-api"><code class="inline-code">merge</code></a> API. Alternatively, you can use the <Link to="/features/transformations/">Transformations</Link> feature to merge these identifiers.
 
 ## Contact us
 
