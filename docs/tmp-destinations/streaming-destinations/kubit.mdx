@@ -6,11 +6,7 @@ description: Step-by-step guide to send your event data from RudderStack to Kubi
 [Kubit](https://www.kubit.ai/) is a self-service product analytics platform with no-code integration that facilitates efficient data discovery. With Kubit, you can better understand your users' behavior and use the insights to drive customer retention and your product growth.
 
 <div class="successBlock">
-
-Kubit can also consume data from your cloud data warehouse directly, so you don't have to configure it as a destination in RudderStack separately.
-
-For more information, check out the <a href="https://www.kubit.ai/doc">Kubit documentation</a>.
-
+Kubit can also consume data from your cloud data warehouse directly, so you don't have to configure it as a destination in RudderStack separately. For more information, check out the <a href="https://www.kubit.ai/doc">Kubit documentation</a>.
 </div>
 
 <img src="../../assets/image (104).png" />
@@ -24,9 +20,7 @@ Kubit currently supports only `identify` and `track` calls.
 The `identify` call lets you capture the actions of a visiting user. It also lets you record any traits associated with them such as their name, email address, etc.
 
 <div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api/">HTTP API Specification</a> guide.
-
+For more information on the <code class="inline-code">identify</code> call, refer to the <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
 </div>
 
 A sample `identify` call is as shown:
@@ -43,9 +37,7 @@ rudderanalytics.identify("userId", {
 The `track` call allows you to capture any user action along with the properties associated with that action.
 
 <div class="infoBlock">
-
-For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api/">HTTP API Specification</a> guide.
-
+For more information on the <code class="inline-code">track</code> call, refer to the <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
 </div>
 
 A sample `track` call is as shown:
@@ -58,6 +50,6 @@ rudderanalytics.track("Order Completed", {
 })
 ```
 
-## Contact Us
+## Contact us
 
 If you come across any issues while using the Kubit integration, please feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
