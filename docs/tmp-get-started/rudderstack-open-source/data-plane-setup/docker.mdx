@@ -7,7 +7,7 @@ This guide lists the steps required to set up the RudderStack server (backend) i
 
 <div class="successBlock">
 
-The Docker setup is the easiest and the fastest way to get up and running with RudderStack.
+The Docker etup is the easiest and the fastest way to get up and running with RudderStack.
 </div>
 
 ## RudderStack-hosted control plane
@@ -20,8 +20,7 @@ If you're using a RudderStack-hosted control plane, follow these steps to set up
 <img src="../../../assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
 
 <div class="infoBlock">
-
-The <Link to="/rudderstack-cloud/dashboard-overview/#workspace-token">workspace token</Link> is required for setting up the data plane.
+The <Link to="/dashboard-guides/overview/#workspace-token">workspace token</Link> is required for setting up the data plane.
 </div>
 
 3. Download the `rudder-docker.yml` [docker-compose](https://raw.githubusercontent.com/rudderlabs/rudder-server/master/rudder-docker.yml) file.
@@ -34,11 +33,11 @@ docker-compose -f rudder-docker.yml up
 
 ## Self-hosted control plane
 
-If you have self-hosted the control plane using the open-source [Control Plane Lite](https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, follow [Docker instructions](https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#docker) to set up the data plane.
+If you have self-hosted the control plane using the open-source <Link to="/tmp-get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility, follow <Link to="//tmp-get-started/rudderstack-open-source/control-plane-lite/#docker">Docker instructions</Link> to set up the data plane.
 
 ## Sending test events
 
-Once you have successfully performed the steps above, follow the [Sending Test Events](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/) guide to verify the installation.
+Once you have successfully performed the steps above, follow the <Link to="/tmp-get-started/rudderstack-open-source/sending-test-events/">Sending Test Events</Link> guide to verify the installation.
 
 ## Contact us
 
