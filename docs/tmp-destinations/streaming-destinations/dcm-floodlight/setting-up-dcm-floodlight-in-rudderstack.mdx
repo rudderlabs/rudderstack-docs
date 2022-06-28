@@ -36,7 +36,6 @@ Refer to the <a href="faq">FAQ</a> section to know more on how to obtain the Adv
 - **Group Tag:** Enter the Floodlight Group Tag (`type`) to define the same parameter value across all the group conversion events. Alternatively, you can define this value for each conversion event in the **Floodlight Group Tag** field below.
 
 <div class="infoBlock">
-
 For more information on finding <code class="inline-code">cat</code> and <code class="inline-code">type</code> in your Campaign Manager dashboard, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
@@ -50,7 +49,6 @@ For more information on finding <code class="inline-code">cat</code> and <code c
 - **Fire as Sales Tag:** Enable the toggle button for Sales tag. Keep it disabled if it is a Counter tag.
  
 <div class="infoBlock">
-
 <ul>
 <li><strong>Counter tag</strong>: Used to count the number of conversions. It is supposed to be placed on the confirmation page after a sale with information about the <code class="inline-code">ord</code> property passed to the tag. </li> 
 <li><strong>Sales tag</strong>: Used to count the number of conversions, the total number of sales that take place, and the total associated revenue. It is supposed to be placed on the confirmation page after a sale with information about the sales, like <code class="inline-code">cost</code>, <code class="inline-code">qty</code>, or <code class="inline-code">ord</code> properties passed to the tag.</li>
@@ -60,7 +58,6 @@ For more information on finding <code class="inline-code">cat</code> and <code c
 - **Custom Floodlight variables:** Enter the custom Floodlight variables to capture additional reporting data beyond the usual metrics (like visits and revenue).
 
 <div class="infoBlock">
-
 For more information on finding the custom Floodlight variables, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
@@ -69,23 +66,20 @@ For more information on finding the custom Floodlight variables, refer to the <a
 <img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings3.png" alt="DCM Floodlight connection settings"/>
 
 <div class="infoBlock">
-
-This option is applicable only if you're sending events to DCM Floodloght via the web device mode. Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+This option is applicable only if you're sending events to DCM Floodloght via the web device mode. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 </div>
 
 ### Web SDK settings
 
 <div class="infoBlock">
-
-All the settings mentioned in this section are applicable only for the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a>.
+All the settings mentioned in this section are applicable only for the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 </div>
 
 <img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings4.png" alt="DCM Floodlight connection settings"/>
 
-- **Use device mode to send events**: Enable this setting to send events via the [RudderStack device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
+- **Use device mode to send events**: Enable this setting to send events via the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">RudderStack device mode</Link>.
 
 <div class="infoBlock">
-
 You can change the setting to enable or disable device mode to send events at any point. However, it takes some time for the new changes to be reflected.
 </div>
 
