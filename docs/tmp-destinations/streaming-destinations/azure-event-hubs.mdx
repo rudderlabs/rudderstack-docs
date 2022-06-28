@@ -1,6 +1,6 @@
 ---
 title: "Azure Event Hubs"
-description: Step-by-step guide to set up Azure Event Hubs as a destination in RudderStack
+description: Step-by-step guide on sending your event data from RudderStack to Azure Event Hubs. as a destination in RudderStack
 ---
 
 [**Azure Event Hubs**](https://docs.microsoft.com/en-us/azure/event-hubs/) is a data streaming platform and an event ingestion service. It provides a Kafka endpoint which can be used by your existing Kafka-based applications as an alternative to running your own Kafka clusters.
@@ -14,12 +14,11 @@ RudderStack supports Azure Event Hubs as a destination to which you can seamless
 For more information, refer to the Event Hubs' [**pricing page**](https://azure.microsoft.com/en-us/pricing/details/event-hubs/#pricing).
 </div>
 
-<div class="successBlock">
-
-**Find the open source transformer code for this destination in our** [**GitHub repo**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_event_hub)**.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_event_hub">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
 To enable sending data to Azure Event Hubs, you need to add it as a destination in RudderStack. Once the destination is enabled, events from RudderStack will start to flow to Azure Event Hubs. 
 
@@ -90,6 +89,6 @@ Check whether you are using the proper Event Hubs connection string for the poli
 
 You need to create a policy to write to the Event Hub with a `Send` permission, and put the corresponding primary connection string in the destination settings, as described in the [**Getting Started**](https://rudderstack.com/docs/destinations/data-ingestion/azure-event-hubs#getting-started) section of this guide.
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring or using Azure Event Hubs with RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

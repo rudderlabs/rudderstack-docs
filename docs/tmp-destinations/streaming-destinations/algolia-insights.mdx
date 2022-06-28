@@ -1,13 +1,13 @@
 ---
 title: "Algolia Insights"
-description: Step-by-step guide to set up Algolia Insights as a destination in RudderStack.
+description: Step-by-step guide on sending your event data from RudderStack to Algolia Insights.
 ---
 
-[**Algolia**](https://www.algolia.com/) is a popular site search and discovery platform. It helps businesses build and optimize their users' product search and discovery experience, resulting in enhanced online engagement, increased conversion rates, and better user lifetime value.
+[Algolia](https://www.algolia.com/) is a popular site search and discovery platform. It helps businesses build and optimize their users' product search and discovery experience, resulting in enhanced online engagement, increased conversion rates, and better user lifetime value.
 
 RudderStack supports Algolia Insights as a destination to which you can seamlessly send your customer data.
 
-## Getting Started
+## Getting started
 
 Before configuring Algolia Insights as a destination in RudderStack, verify if the source platform is supported by Algolia by referring to the table below:
 
@@ -22,12 +22,12 @@ To know more about the difference between cloud mode and device mode in RudderSt
 
 Once you have confirmed that your source platform supports sending events to Algolia, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Algolia**.
+* From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. From the list of destinations, select **Algolia**.
 * Assign a name to the destination and click on **Next**. You should then see the following screen:
 
 <img src="../../assets/Algolia.png"/><span class="imageTitle">Algolia Connection Settings</span>
 
-### Connection Settings
+### Connection settings
 
 This section details the connection settings required to configure Algolia as a destination in RudderStack.
 
@@ -47,7 +47,7 @@ The `event`-`eventType` mapping passed via the `track` call **will get a higher 
 
 <div class="warningBlock">
 
-If the **Event** - **Event Type** mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be discarded.
+If the `event`-`eventType` mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be discarded.
 </div>
 
 * Finally, click on **Next**. Algolia will now be enabled as a destination in RudderStack.
@@ -121,9 +121,9 @@ For the `click` event type, if you pass `objectIds`, then you must pass either *
 Also, the length of `objectIds` and `positions` arrays should be equal. Otherwise, the event will be discarded.
 </div>
 
-### E-Commerce Events
+### E-commerce events
 
-For Algolia Insights, RudderStack supports the `products` array for two E-Commerce events [**`product list viewed`**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing#product-list-viewed) and [**`order completed`**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering#order-completed).
+For Algolia Insights, RudderStack supports the `products` array for two e-commerce events - <Link to="/event-spec/ecommerce-events-spec/browsing/#product-list-viewed">Product List Viewed</Link> and <Link to="/event-spec/ecommerce-events-spec/ordering/#order-completed">Order Completed</Link>.
 
 An example is shown below:
 
@@ -139,12 +139,12 @@ rudderanalytics.track("product list viewed", {
 });
 ```
 
-## FAQs
+## FAQ
 
 ### What happens if the Event Name - Event Type mapping is not specified in the dashboard as well as in the `track` call?
 
 If the **Event** - **Event Type** mapping is not specified in the dashboard and these fields are not passed in the `track` call as well, then the event will be discarded.
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring or using Algolia Insights with RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

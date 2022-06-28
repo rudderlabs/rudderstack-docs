@@ -1,20 +1,18 @@
 ---
 title: "Amazon EventBridge"
 description: >-
-  Step-by-step guide to set up Amazon EventBridge as a destination in
-  RudderStack.
+  Step-by-step guide on sending your event data from RudderStack to Amazon EventBridge.
 ---
 
 [Amazon EventBridge](https://aws.amazon.com/eventbridge/) is a serverless event bus that allows you to connect applications using data from your own apps, integrated SaaS applications, or AWS services. You can collect streams of real time data from a variety of event sources such as Zendesk, Pagerduty, and more, and route them to your preferred endpoints such as AWS Lambda. EventBridge also allows you to set up routing rules that determine where and how to send your data to your application, and how it reacts to the data sources in real-time.
 
 RudderStack allows you to configure Amazon EventBridge as a destination to which you can send your event data seamlessly.
 
-<div class="successBlock">
-
-  **Find the open source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/eventbridge">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/eventbridge">GitHub repository</a>.
 </div>
 
-## **Getting Started**
+## Getting started
 
 In order to enable dumping data to Amazon EventBridge, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon EventBridge. Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon EventBridge. Refer to the table below:
 
@@ -105,6 +103,6 @@ You can also check for any delivery failures in the **Live Events** tab of your 
 
 <img src="../../assets/dest.png" /><span class="imageTitle">Live Events in the Destination Details Page</span>
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring AWS EventBridge as a destination with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
