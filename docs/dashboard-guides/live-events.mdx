@@ -11,7 +11,7 @@ This feature is available only in <a href="https://app.rudderstack.com/signup">R
 </div>
 
 <div class="warningBlock">
-You can view the live events for cloud mode destinations only. For more information, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">Connection Modes</a> guide.
+You can view the live events for cloud mode destinations only. For more information, refer to the <Link to="destinations/rudderstack-connection-modes/">Connection Modes</Link> guide.
 </div>
 
 The three types of events you can view using this utility are listed in the following table:
@@ -61,7 +61,7 @@ The **destination live events** feature gives you real-time visibility into the 
 - **Error code** of the event in case of event failure. It gives the specific details related to an error including the error response and the date and time of the attempt made to send the event.
 
 <div class="warningBlock">
-Your destination should be configured in the cloud mode to view the live events.  Refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">Connection Modes</a> guide for more information on the cloud mode.
+Your destination should be configured in the cloud mode to view the live events.  Refer to the <Link to="destinations/rudderstack-connection-modes/">Connection Modes</Link> guide for more information on the cloud mode.
 </div>
 
 - The **Payload** sent to the destination can be seen by clicking on an event.
@@ -81,7 +81,7 @@ To view the live events sent to your destination in real-time, follow these step
 
 ### Use case
 
-Suppose that some events are sent to the [Facebook Custom Audience](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) platform but they are not delivered. Upon checking the **Live Events** tab for the **Facebook Custom Audience** destination, the following error is observed:
+Suppose that some events are sent to the <Link to="/tmp-destinations/streaming-destinations/fb-custom-audience/">Facebook Custom Audience</Link> platform but they are not delivered. Upon checking the **Live Events** tab for the **Facebook Custom Audience** destination, the following error is observed:
 
 <img src="../assets/rs-cloud/custom-audience-error.png" alt="Custom Audience destination error" />
 
@@ -89,15 +89,15 @@ Clicking on **See full error** option displays the following error response:
 
 <img src="../assets/rs-cloud/custom-audience-full-error.png" alt="Custom Audience full destination error" />
 
-As you can see, an `identify` event is sent to the **Facebook Custom Audience** destination which is not supported. The [Custom Audience documentation](https://rudderstack.com/docs/destinations/advertising/fb-custom-audience) mentions that only `track` events are supported. As a result, when RudderStack tries sending the `identify` event to the destination, an error is thrown. RudderStack tries sending this event several times before marking it as aborted.
+As you can see, an `identify` event is sent to the **Facebook Custom Audience** destination which is not supported. The <Link to="/tmp-destinations/streaming-destinations/fb-custom-audience/">Custom Audience documentation</Link> mentions that only `track` events are supported. As a result, when RudderStack tries sending the `identify` event to the destination, an error is thrown. RudderStack tries sending this event several times before marking it as aborted.
 
 <div class="warningBlock">
-Live events are shown for all the destinations. However, the <strong>event payload</strong> is not shown for some destinations like the <a href="https://rudderstack.com/docs/destinations/storage-platforms/">object storage platforms</a> and the <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouses</a>.
+Live events are shown for all the destinations. However, the <strong>event payload</strong> is not shown for some destinations like the <strong>object storage platforms</strong> and the <Link to="/tmp-destinations/warehouse-destinations/">data warehouses</Link>.
 </div>
 
 ## Transformations live events
 
-You can also view the live events in case a <a href="https://rudderstack.com/docs/transformations/#adding-a-transformation">**transformation**</a> is connected to a destination. RudderStack lets you view the events before and after a transformation is applied, as shown:
+You can also view the live events in case a <Link to="/features/transformations/">transformation</Link> is connected to a destination. RudderStack lets you view the events before and after a transformation is applied, as shown:
 
 <img src="../assets/rs-cloud/transformation-live-events-details.png" alt="Transformation live events" />
 
