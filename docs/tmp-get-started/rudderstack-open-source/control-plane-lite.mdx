@@ -7,16 +7,14 @@ description: >-
 RudderStack's control plane manages the configuration of your sources and destinations.
 
 <div class="infoBlock">
-
-  For more information on the control plane, refer to RudderStack's <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/#control-plane">Architecture</a>.
+For more information on the control plane, refer to <Link to="/resources/rudderstack-architecture/">RudderStack Architecture</Link>.
 </div>
 
-The easiest way to manage these configurations is through RudderStack's [self-hosted control plane](https://app.rudderstack.com/). It is free, requires no setup, and has some useful features like [Live Events](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) and [Transformations](https://rudderstack.com/docs/transformations/).
+The easiest way to manage these configurations is through RudderStack's [self-hosted control plane](https://app.rudderstack.com/). It is free, requires no setup, and has some useful features like <Link to="/dashboard-guides/live-events/">Live Events</Link> and <Link to="/features/transformations/">Transformations</Link>.
 
 If you don't wish to sign up for RudderStack and want to self-host these configurations instead, you can use the open-source **Control Plane Lite** utility to set up your own control plane. You can then manage the source and destination configurations locally by exporting or importing from a JSON file.
 
 <div class="warningBlock">
-
 The control plane set up using Control Plane Lite does not support Live Events and Transformations.
 </div>
 
@@ -70,7 +68,6 @@ For RudderStack to pick up the exported workspace configuration file, follow the
 5. Next, replace `<absolute_path_to_workspace_config>` with the local path of your `workspaceConfig.json`(where your workspace configuration file is saved locally). Also, replace  `<workspace_config_filepath_in_container>`  with the container file path that you set in **Step 3**.
 
 <div class="warningBlock">
-
   The value for <code class="inline-code">&lt;workspace_config_filepath_in_container&gt;</code> should be the same as the value provided for the  <code class="inline-code">RSERVER_BACKEND_CONFIG_CONFIG_JSONPATH</code> variable. Otherwise, your workspace configuration will not be loaded and you will get an error.
 </div>
 
@@ -84,7 +81,7 @@ For RudderStack to pick up the exported workspace configuration file, follow the
   docker-compose -f rudder-docker.yml up
 ```
 
-Once you have completed these steps above successfully, [send test events](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events) to verify your installation.
+Once you have completed these steps above successfully, <Link to="/tmp-get-started/rudderstack-open-source/sending-test-events/">send test events</Link>  to verify your installation.
 
 ### Kubernetes
 
@@ -110,11 +107,10 @@ helm install my-release ./ --set backend.controlPlaneJSON=true
 ```
 
 <div class="infoBlock">
-
-  Refer to the <a href="https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/#configuration">Configurable parameters</a> section for information on the parameters that can be configured during deployment.
+Refer to the <Link to="/tmp-get-started/rudderstack-open-source/data-plane-setup/kubernetes/#configuration">Configurable parameters</Link> section for information on the parameters that can be configured during deployment.
 </div>
 
-Once you have completed these steps above successfully, [send test events](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events) to verify your installation.
+Once you have completed these steps above successfully, <Link to="/tmp-get-started/rudderstack-open-source/sending-test-events/">send test events</Link> to verify your installation.
 
 ### Developer machine setup
 
@@ -160,7 +156,7 @@ cp config/sample.env .env
   go run main.go
   ```
 
-Once you have completed these steps above successfully, [send test events](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events) to verify the installation.
+Once you have completed these steps above successfully, <Link to="/tmp-get-started/rudderstack-open-source/sending-test-events/">send test events</Link> to verify the installation.
 
 ## Using hosted control plane for device mode destinations
 
@@ -168,12 +164,11 @@ RudderStack's web and mobile SDKs expect the source configurations and the assoc
 
 <div class="infoBlock">
 
-To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, read the <Link to="destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 <div class="infoBlock">
-
-  For RudderStack Cloud, the SDKs fetch this source configuration from <code class="inline code">https://api.rudderlabs.com/sourceConfig</code>.
+For RudderStack Cloud, the SDKs fetch this source configuration from <code class="inline code">https://api.rudderlabs.com/sourceConfig</code>.
 </div>
 
 ### Control plane URL
@@ -188,14 +183,13 @@ Since the RudderStack SDKs need the source configuration and the backend/SDKs ar
 3. Host the exported file on your own server at `/sourceConfig`. Provide the base URL of your server that is serving this file in the SDK initialization code snippet. For more information, refer to the following sections in the respective SDK guides:
 
   * [JavaScript SDK instructions](https://github.com/rudderlabs/rudder-sdk-js#self-hosted-control-plane)
-  * [Android SDK instructions](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#configuring-your-rudderstack-client)
-  * [iOS SDK instructions](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#configuring-the-rudderstack-client)
-  * [React Native SDK instructions](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/#configuring-your-rudderstack-client)
-  * [Flutter SDK instructions](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/#configuring-your-rudderstack-client)
+  * <Link to="/sources/sdks/rudderstack-android-sdk/#configuring-your-rudderstack-client">Android SDK instructions</Link>
+  * <Link to="/sources/sdks/rudderstack-ios-sdk/#configuring-the-rudderstack-client">iOS SDK instructions</Link>
+  * <Link to=/sources/sdks/rudderstack-react-native-sdk/>React Native SDK instructions</Link>
+  * <Link to="/sources/sdks/rudderstack-flutter-sdk/flutter-v1/#configuring-your-rudderstack-client">Flutter SDK instructions</Link>
 
 <div class="successBlock">
-
-  The RudderStack SDKs fetch the configuration by appending the <code class="inline-code">/sourceConfig</code> path to the base URL provided above.
+The RudderStack SDKs fetch the configuration by appending the <code class="inline-code">/sourceConfig</code> path to the base URL provided above.
 </div>
 
 The SDKs will then fetch the config from `<CONTROL_PLANE_URL>/sourceConfig`. A sample exported source configuration is shown below:
@@ -262,7 +256,7 @@ The SDKs will then fetch the config from `<CONTROL_PLANE_URL>/sourceConfig`. A s
 }
 ```
 
-## FAQs
+## FAQ
 
 ### For a self-hosted environment, how do I obtain the control plane URL?
 
@@ -276,7 +270,6 @@ To use the control plane URL to initialize your SDKs, follow these steps:
 3. Host the exported file on your own server such that the configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
 
 <div class="infoBlock">
-
 This solution assumes that you have already set up the RudderStack data plane (backend) locally.
 </div>
 
