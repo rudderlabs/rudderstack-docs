@@ -225,7 +225,7 @@ The required steps are:
 
 Enhanced E-Commerce allows you to derive insights on the E-Commerce events by combining impression data, product data, promotion data and action data. This is a necessity for product-scoped custom dimensions.
 
-Enhanced E-Commerce must be enabled in Google Analytics, and should follow RudderStack's [E-Commerce Tracking API](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/).
+Enhanced E-Commerce must be enabled in Google Analytics, and should follow RudderStack's <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link>.
 
 The required steps are:
 
@@ -263,7 +263,7 @@ rudderanalytics.track('checkout step completed', {
 ```
 
 <div class="infoBlock">
-For more information, please check our guide on the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">RudderStack E-Commerce Events Specification</a>.
+For more information, refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide.
 </div>
 
 ### Measuring Promotions
@@ -638,7 +638,7 @@ Navigate to your account and go to **Apps**. The tracking ID will be present the
 
 Metrics is for event properties having numeric data type while dimensions is for event properties having string data type. Both are used to track custom data properties in Google Analytics.
 
-Please refer to the [Getting Started](https://rudderstack.com/docs/destinations/analytics/google-analytics-ga#getting-started) section above in this document to know how to specify these fields on the RudderStack platform.
+Please refer to the [Getting Started](#getting-started) section above in this document to know how to specify these fields on the RudderStack platform.
 
 ### My website uses HTTPS. Do I need to change any settings for accurate Google Analytics tracking?
 
@@ -665,7 +665,7 @@ There could be 2 reasons for this:
 - There can be ad blockers enabled in the user's browser while visiting your site. This blocks the Google Analytics requests from being sent directly from the browser.
 - For the cloud mode, RudderStack is not blocked by ad blockers presently. If the events are sent to Google Analytics via the cloud mode, the actual number of events intended to be sent to Google Analytics are forwarded by the RudderStack server. So, the number of requests from the native mode or device mode is expected to be lower than cloud mode.
 
-The RudderStack JavaScript SDK provides a way of detecting how many page view requests are potentially being blocked by the ad blockers throughout your site pages. Please check the section on [Detecting Ad-blocked Pages](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#detecting-ad-blocked-pages) for more information.
+The RudderStack JavaScript SDK provides a way of detecting how many page view requests are potentially being blocked by the ad blockers throughout your site pages. Please check the section on [Detecting Ad-blocked Pages](https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#detecting-ad-blocked-pages) for more information.
 
 ## Contact us
 

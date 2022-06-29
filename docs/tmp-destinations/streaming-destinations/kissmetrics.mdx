@@ -48,7 +48,7 @@ You will need to enable this setting while building reports in Kissmetrics.
 
 ## Identify
 
-Calling `rudderanalytics.identify()` pushes an `identify` call with the `userId` and `set` with the `user-traits` to the Kissmetrics queue object while using the the Native SDK. For more information on the `identify` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+Calling `rudderanalytics.identify()` pushes an `identify` call with the `userId` and `set` with the `user-traits` to the Kissmetrics queue object while using the the Native SDK. For more information on the `identify` call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 For sending data through the API's cloud mode, we call the `http://trk.kissmetrics.com/s` end-point for registering users and their traits.
 
@@ -85,7 +85,7 @@ Nested objects are flattened as <code class="inline-code">a.b.c</code> for input
 
 ## Page
 
-Calling `rudderanalytics.page()` will record the page properties for event `Viewed <category> <name> page`. For more information on the `page` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+Calling `rudderanalytics.page()` will record the page properties for event `Viewed <category> <name> page`. For more information on the `page` call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 A sample page event is as shown:
 
@@ -119,7 +119,7 @@ The above snippet will pass the following to the `_kmq kissmetrics` object:
 
 ## Track
 
-Calling `rudderanalytics.track()` pushes a record with the event name and the associated properties \_\_when using the native SDK integration. For more information on the `track` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+Calling `rudderanalytics.track()` pushes a record with the event name and the associated properties \_\_when using the native SDK integration. For more information on the `track` call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 For sending data through the API's cloud mode, we call the [http://trk.kissmetrics.com/e](http://trk.kissmetrics.com/e) end-point for registering the event and its associated properties.
 
@@ -171,7 +171,7 @@ will pass the following to the `_kmq kissmetrics` object.
 
 ## Screen
 
-The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) or [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) SDK it will register in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
+The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/sources/sdks/rudderstack-ios-sdk/) or [Android](https://rudderstack.com/docs/sources/sdks/rudderstack-android-sdk/) SDK it will register in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
 
 Here is a sample `screen` call in using RudderStack iOS SDK:
 

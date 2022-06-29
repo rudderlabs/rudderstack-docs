@@ -73,12 +73,6 @@ rudderanalytics.identify("userid", {
 })
 ```
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
-
 ## Track
 
 The `track` call allows you to record the customer events, i.e. the actions that they perform, along with their associated properties.
@@ -90,12 +84,6 @@ rudderanalytics.track("Event Name", {
   Plan: "plan value",
 })
 ```
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
 
 ## Page
 
@@ -113,12 +101,6 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 })
 ```
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">page</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
-
 ## Group
 
 The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account. It also lets you record the custom traits associated with that group, such as the name of the group, number of employees, etc.
@@ -132,12 +114,6 @@ rudderanalytics.group("sample-group-id", {
   industry: "Software",
 });
 ```
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
 
 ## Alias
 
@@ -157,12 +133,6 @@ The above `alias` call has the following parameters:
 | **`from`**     | Optional     | Denotes the old identifier which will be an alias for the `to` parameter. If not provided, the SDK will populate this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
 | **`options`**  | Optional     | This dictionary provides additional context to the event payload.                                                                                                                                        |
 | **`callback`** | Optional     | This function gets executed after successful execution of the **`alias()`** method.                                                                                                                      |
-
-<div class="infoBlock">
-
-For more information on the `alias` call, refer to the [**RudderStack HTTP API Specification**](https://rudderstack.com/docs/rudderstack-api/http-api/) guide.
-
-</div>
 
 ## FAQs
 

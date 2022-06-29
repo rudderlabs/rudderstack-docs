@@ -4,11 +4,11 @@ title: "Device Mode"
 description: Step-by-step guide on sending events from RudderStack to Singular via the device mode.
 ---
 
-RudderStack lets you send your events to Singular via <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link> using the mobile SDKs.
+RudderStack lets you send your events to Singular via <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the mobile SDKs.
 
 ## Adding device mode integration
 
-After you <Link to="/destinations/analytics/singular/setting-up-singular-in-rudderstack/">set up Singular as a destination in RudderStack</Link>, follow these steps to add it to your project, depending on your platform of integration.
+After you <Link to="/tmp-destinations/streaming-destinations/singular/setting-up-singular-in-rudderstack/">set up Singular as a destination in RudderStack</Link>, follow these steps to add it to your project, depending on your platform of integration.
 
 <Tabs>
   <TabList>
@@ -275,7 +275,7 @@ Make sure you use the <code class="inline-code">await</code> keyword with the <c
 
 ## Identify
 
-For the device mode integrations, the Singular SDK uses RudderStack's <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify"><code class="inline-code">identify</code></Link> method to map the user ID to their custom user ID. RudderStack uses Singular's [`setCustomUserId`](https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration#Optional_Setting_the_User_ID) API to forward the identified user ID to Singular.
+For the device mode integrations, the Singular SDK uses RudderStack's <Link to="/event-spec/standard-events/identify">`identify`</Link> method to map the user ID to their custom user ID. RudderStack uses Singular's [`setCustomUserId`](https://support.singular.net/hc/en-us/articles/360037581952-Android-SDK-Basic-Integration#Optional_Setting_the_User_ID) API to forward the identified user ID to Singular.
 
 A sample `identify` call for both the Android and iOS SDKs is shown below:
 
@@ -306,7 +306,7 @@ RudderClient.getInstance()?.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm")
 
 ## Track
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track"><code class="inline-code">track</code></Link> call lets you capture any user actions and the properties associated with them. Each user action is considered to be an event.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture any user actions and the properties associated with them. Each user action is considered to be an event.
 
 ### Tracking custom events
 
@@ -390,7 +390,7 @@ RudderClient.getInstance()?.track("Order Completed",
 
 ## Screen
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/screen"><code class="inline-code">screen</code></Link> method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call for the web applications but exclusive to your mobile device.
+The <Link to="/event-spec/standard-events/screen">`screen`</Link> method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call for the web applications but exclusive to your mobile device.
 
 A sample `screen` call for both the Android and iOS SDKs is shown below:
 

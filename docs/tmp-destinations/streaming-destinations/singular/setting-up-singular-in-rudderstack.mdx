@@ -12,7 +12,7 @@ Before configuring Singular as a destination in RudderStack, verify if the sourc
 | **Cloud mode**      | **Supported**            | **Supported**             | **Supported**        |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Singular, follow these steps:
@@ -36,15 +36,15 @@ For more information on obtaining the Singular API key and secret, refer to the 
 - **Session Event Name**: Enter the event names to be used as session events. This setting is applicable only for sending events via the cloud mode.
 
 <div class="infoBlock">
-For more information on sending session events to Singular, refer to the <Link to="/destinations/analytics/singular/singular-cloud-mode/">Singular Cloud Mode</Link> guide.
+For more information on sending session events to Singular, refer to the <Link to="/tmp-destinations/streaming-destinations/singular/singular-cloud-mode/">Singular Cloud Mode</Link> guide.
 </div>
 
-- **Use device mode to send events**: When using the Android or iOS platforms, you can enable this setting to send events via the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link>. Then, follow the <Link to="/destinations/analytics/singular/singular-device-mode/">Singular Device Mode</Link> guide for steps on adding Singular to your project.
+- **Use device mode to send events**: When using the Android or iOS platforms, you can enable this setting to send events via the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. Then, follow the <Link to="/tmp-destinations/streaming-destinations/singular/singular-device-mode/">Singular Device Mode</Link> guide for steps on adding Singular to your project.
 
 <img src="../../../assets/event-stream-destinations/singular-connection-settings-2.png" alt="Singular connection settings" />
 
 <div class="successBlock">
-When sending events via the device mode, RudderStack also lets you specify which events should be discarded or allowed to flow through. For more information, refer to the <Link to="/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</Link> guide.
+When sending events via the device mode, RudderStack also lets you specify which events should be discarded or allowed to flow through. For more information, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide.
 </div>
 
 ## FAQ

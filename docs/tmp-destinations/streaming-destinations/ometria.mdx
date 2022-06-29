@@ -68,11 +68,6 @@ The `identify` call lets you add a new contact or update an already existing con
 Note that `listingId` and `email` fields are the mandatory fields for the `identify` call.
 </div>
 
-<div class="infoBlock">
-
-For more information on the `identify` call, refer to the [**RudderStack Events Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) guide.
-</div>
-
 You can set the values for the **Marketing Optin**, **Allow Marketing**, and **Allow Transactional** fields from RudderStack dashboard. You can also send these values using an `integrations` object in the `identify` event payload, **which will have higher precedence**. The SMS channel fields `dt_updated_marketing` and `dt_updated_transactional` can also be passed using this object.
 
 The `listingId` is the ID specific to a contact in a particular Ometria collection. Note that the `listingId` specified in the `integrations` object will have a higher precedence than the one present in the traits.

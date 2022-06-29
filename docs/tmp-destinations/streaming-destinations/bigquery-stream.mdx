@@ -32,9 +32,7 @@ Once you've confirmed that the source platform supports sending events to BigQue
 To configure BigQuery Stream as a destination in RudderStack, you will need to add the following fields in the dashboard:
 
 - **Project ID**: Enter your BigQuery project ID here.
-
 - **Dataset ID**: This is the ID of the project dataset for which you specified the **Project ID** above.
-
 - **Table ID**: Provide the ID of the table into which you want to stream the event data.
 
 <img src="../../assets/event-stream-destinations/bqstream-3.png" alt="BigQuery Stream connection settings" />
@@ -49,7 +47,6 @@ For more information on the <strong>Insert ID</strong>, refer to the <a href="#i
 - **Credentials**: Enter the contents of the credentials JSON you downloaded after [creating your service account](#creating-a-service-account).
 
 <div class="infoBlock">
-
 Create a service account in your GCP Project for RudderStack with the <strong>BigQuery User</strong> role, which has the required access to write to BigQuery.
 </div>
 
@@ -82,8 +79,7 @@ When sending an`Insert Product` event to BigQuery, the `productId` can be used t
 You can send only `track` events to BigQuery Stream via RudderStack. Also, RudderStack currently does not support batching these events.
 
 <div class="warningBlock">
-
- Make sure the <code class="inline-code">track</code> event payload format matches the table schema specified in the RudderStack dashboard.
+Make sure the <code class="inline-code">track</code> event payload format matches the table schema specified in the RudderStack dashboard.
 </div>
 
 <div class="infoBlock">
@@ -142,8 +138,7 @@ Your JSON key will be automatically downloaded. Copy and paste the contents of t
 ## Dynamically configuring `insertId` via the event payload
 
 <div class="infoBlock">
-
-Use this feature if you are <a href="https://rudderstack.com/docs/user-guides/how-to-guides/dynamic-destination-configuration/#how-to-configure-a-destination-via-the-event-payload">dynamically configuring BigQuery Stream via the event payload</a>.
+Use this feature if you are <Link to="/user-guides/how-to-guides/dynamic-destination-configuration/">dynamically configuring BigQuery Stream via the event payload</Link>.
 </div>
 
 If you want to dynamically configure `insertId` via the event payload, make sure that `insertId`is column name present in your schema (or in the `properties` object in the event payload) used to uniquely identify an event.

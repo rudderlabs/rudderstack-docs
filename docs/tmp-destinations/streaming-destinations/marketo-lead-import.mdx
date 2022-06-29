@@ -14,8 +14,7 @@ Find the open source transformer code for this destination in the <a href="https
 ## Getting started
 
 <div class="successBlock">
-
-This destination is ideal for your <a href="https://rudderstack.com/docs/reverse-etl/">Reverse ETL</a> sources, as it only accepts <code class="inline-code">identify</code> events.
+This destination is ideal for your <Link to="/sources/reverse-etl/">Reverse ETL</Link> sources, as it only accepts <code class="inline-code">identify</code> events.
 </div>
 
 Before configuring Marketo Lead Import as a destination in RudderStack, verify if the source platform is supported by referring to the table below:
@@ -81,16 +80,10 @@ You can find your columns' API names by following the [**Marketo documentation**
 ## Identify
 
 <div class="infoBlock">
-
 RudderStack supports only <code class="inline-code">identify</code> event type for this destination.
 </div>
 
-The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack Events Specification</a> guide.
-</div>
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
 A sample `identify` call is as shown:
 

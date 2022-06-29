@@ -1,6 +1,6 @@
 ---
 title: "Slack"
-description: Step-by-step guide on sending your event data from RudderStack to Slack. as a destination in RudderStack
+description: Step-by-step guide on sending your event data from RudderStack to Slack.
 ---
 
 [Slack](https://slack.com/intl/en-in/) is a popular business communication platform that lets you organize all your business-related chats by specific topics, groups, or direct messaging.
@@ -56,7 +56,7 @@ RudderStack adds the global <code class="inline-code">g</code> parameter implici
 Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....
 ```
 
-Here, the traits key and value are the key-value pairs in the `traits` object of the [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/#sample-payload) event payload. 
+Here, the traits key and value are the key-value pairs in the `traits` object of the <Link to="/event-spec/standard-events/identify">`identify`</Link> event payload. 
 
 The `name` field in the template is determined from either of the following:
 
@@ -138,7 +138,7 @@ Refer to the <a href="https://handlebarsjs.com/guide/expressions.html#html-escap
 
 ## Identify
 
-The [`identify`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
 A sample `identify` call for a template, like `Identified {{name}} with {{traits}}`, is as shown:
 
@@ -154,7 +154,7 @@ As a result, you will see this message `Identified Alex Keener with name: Alex K
 
 ## Track
 
-The [`track`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the user events, that is, the actions your users perform, along with any properties associated with these actions.
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user events, that is, the actions your users perform, along with any properties associated with these actions.
 
 A sample `track` call for a template, like `{{name}} performed {{event}} with {{properties.key1}} {{properties.key2}}` and the following track call, after being identified as above:
 

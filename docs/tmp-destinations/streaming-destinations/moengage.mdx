@@ -323,13 +323,7 @@ MoEngage.initialise(moEngage);
 
 ## Identify
 
-To identify a user to MoEngage, you need to call the `identify` API.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">identify</code> call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api">RudderStack API Specification</a> guide.
-
-</div>
+To identify a user to MoEngage, you need to call the <Link to="/event-spec/standard-events/identify">`identify`</Link> API.
 
 MoEngage needs a unique identifier to identify a user. So, if you provide `userId` in your `identify` call, RudderStack passes it as that `customer_id` . Otherwise, it sends an `anonymousId` if a `userId` is not present.
 
@@ -397,13 +391,7 @@ rudderanalytics.identify("name123", {
 
 ## Track
 
-To track your users' actions, you can use the RudderStack `track` API. You can call `track` with `eventname` and the associated properties.
-
-<div class="infoBlock">
-
-For information on the `track` call, refer to our <a href="https://rudderstack.com/docs/rudderstack-api">RudderStack API Specification</a> guide.
-
-</div>
+To track your users' actions, you can use the RudderStack <Link to="/event-spec/standard-events/track">`track`</Link> API. You can call `track` with `eventname` and the associated properties.
 
 A sample `track` call is as shown:
 
@@ -443,7 +431,7 @@ The Alias api is used to merge two different profiles of a same user into a sing
 
 Alias call can be done only through mobile sdks.
 
-For more information, refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+For more information, refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
 
 <Tabs>
   <TabList>
@@ -478,7 +466,7 @@ rudderClient.alias("newId")
 
 ## Reset
 
-The reset method resets the previously identified user and the related information. For more information, refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+The reset method resets the previously identified user and the related information. For more information, refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
 
 <Tabs>
   <TabList>
@@ -703,7 +691,7 @@ For more details follow the [guidelines from MoEngage](https://docs.moengage.com
          <li>To send push notifications in iOS, an APNS certificate needs to be created and converted to a <code class="inline-code">.pem</code> file. This <code class="inline-code">.pem</code> file needs to be uploaded in the MoEngage dashboard.</li>
          <li>Enable <strong>Background mode</strong> by navigating to <strong>Targets</strong> > <strong>Select Your App</strong> > <strong>Signing & Capabilities</strong> > <strong>Select Background Modes</strong>. Then, check <strong>Remote notifications</strong>.</li>
           <li>Then, in your <code class="inline-code">plist</code> file, add the <code class="inline-code">MoEngageAppDelegateProxyEnabled</code> key and set it to <code class="inline-code">false</code> to disable swizzling.</li>
-          <li>Finally, implement the relevant methods in your <code class="inline-code">AppDelegate</code> file by referring to <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/#supporting-push-notifications-for-device-mode-destinations">this section</Link>.</li>
+          <li>Finally, implement the relevant methods in your <code class="inline-code">AppDelegate</code> file by referring to <Link to="/sources/sdks/rudderstack-ios-sdk/ios-v2/#supporting-push-notifications-for-device-mode-destinations">this section</Link>.</li>
          <li>To keep the push notifications even after app launch, you can call the below method:
 <span>
 

@@ -61,12 +61,7 @@ If you are using the JavaScript SDK to send the events to Lytics, enter the foll
 
 ## Identify
 
-The `identify` call captures the relevant details about the visiting user.
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> method, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
-</div>
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call captures the relevant details about the visiting user.
 
 A sample `identify` payload is as shown in the snippet below:
 
@@ -79,12 +74,7 @@ rudderanalytics.identify("1hKOm4GRlm", {
 
 ## Page
 
-With the `page` method, RudderStack makes a call to Lytics to record a page view.
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">page</code> method, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
-</div>
+With the <Link to="/event-spec/standard-events/page">`page`</Link> method, RudderStack makes a call to Lytics to record a page view.
 
 A sample `page` call is as shown:
 
@@ -95,7 +85,7 @@ rudderanalytics.page("Popular", "Bestseller", {
 })
 ```
 
-Similarly, you can also make [`screen`](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) calls. However, this is supported only in the [cloud mode](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode).
+Similarly, you can also make <Link to="/event-spec/standard-events/screen/">`screen`</Link> calls. However, this is supported only in the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 
 A sample screen call is as shown:
 
@@ -105,12 +95,7 @@ A sample screen call is as shown:
 
 ## Track
 
-With the `track` API, RudderStack makes a call to Lytics to track user actions and their associated properties.
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">track</code> method, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
-</div>
+With the <Link to="/event-spec/standard-events/track">`track`</Link> API, RudderStack makes a call to Lytics to track user actions and their associated properties.
 
 A sample `track` call is as shown:
 

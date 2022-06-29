@@ -3,7 +3,7 @@ title: "Cloud Mode"
 description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack Cloud mode.
 ---
 
-RudderStack lets you send your event data to Google Analytics 4 via the [cloud mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode).
+RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
@@ -148,7 +148,7 @@ rudderanalytics.page({}, {
 
 ## E-commerce
 
-RudderStack supports e-commerce tracking for Google Analytics 4. You can refer to the [RudderStack E-commerce Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) guide for sending events while instrumenting your site with the RudderStack SDK.
+RudderStack supports e-commerce tracking for Google Analytics 4. You can refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for sending events while instrumenting your site with the RudderStack SDK.
 
 The following table lists the mappings between the RudderStack and Google Analytics 4 events:
 
@@ -229,7 +229,7 @@ The following table lists the mappings between the RudderStack and Google Analyt
 
 <div class="infoBlock">
 
-The mapping of the <strong>Payment Info Entered</strong> event to the <code class="inline-code">add_payment_info</code> or <code class="inline-code">add_shipping_info</code> event is determined on the basis of parameters passed to it as explained <a href="https://www.rudderstack.com/docs/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/#:~:text=currency-,The%20Payment%20Info%20Entered%20event%20is%20mapped%20on%20the%20basis,event.,-Most%20of%20the">here</a>.
+The mapping of the <strong>Payment Info Entered</strong> event to the <code class="inline-code">add_payment_info</code> or <code class="inline-code">add_shipping_info</code> event is determined on the basis of parameters passed to it.
 </div>
 
 The following table lists the RudderStack and Google Analytics 4 properties mappings based on the specific RudderStack events:

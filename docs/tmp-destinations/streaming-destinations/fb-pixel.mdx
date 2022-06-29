@@ -260,8 +260,7 @@ A string is the only valid data type for the <code class="inline-code">category<
 In the dashboard, you have the option to **map your events to standard Facebook events**. RudderStack maps the events in the code and sends them to Facebook pixel as the standard event as specified. The properties will be sent according to what the standard event requires.
 
 <div class="infoBlock">
-
-Refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/">E-Commerce Event Specifications</a> guide for more information.
+Refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for more information.
 </div>
 
 The mapping is done as follows in RudderStack:
@@ -329,7 +328,7 @@ Facebook's \(and RudderStack's\) recommended form of deduplication is to leverag
   - The `event_id` must be unique to that specific event and the same for both of the events coming from the Pixel and Conversion API
   - For example: the `event_id` could be the purchase order number etc.
 
-You can set the `event_id` in `traits` , `context.traits` or `properties` object as a unique identifier. This works for the [cloud mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode) as well as [device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode). 
+You can set the `event_id` in `traits` , `context.traits` or `properties` object as a unique identifier. This works for both the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> as well as the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="infoBlock">
 
