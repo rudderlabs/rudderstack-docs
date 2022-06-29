@@ -7,7 +7,7 @@ This document explains the step-by-step process of migrating from Segment to Rud
 
 ## Migrating the workspace
 
-After creating a [RudderStack](https://app.rudderstack.com/signup?type=freetrial) account, you will see the following dashboard containing your <Link to="/get-started/glossary/#data-plane-url">data plane URL</Link>:
+After creating a [RudderStack](https://app.rudderstack.com/signup?type=freetrial) account, you will see the following dashboard containing your <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link>:
 
 <img src="../../assets/user-guides/data-plane-url.png" alt="RudderStack data plane URL" />
 
@@ -82,8 +82,7 @@ RudderClient rudderClient = RudderClient.getInstance(
 </li>
 </ul>
 <div class="successBlock">
-
-  You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
 </div>
       </TabPanel>
       <TabPanel>
@@ -117,7 +116,6 @@ The instance of the <code class="inline-code">RudderClient</code> is available a
 </li>
 </ul>
 <div class="successBlock">
-
 You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
 </div>        
       </TabPanel>
@@ -152,11 +150,11 @@ You can use the rest of your code without any changes as the RudderStack API is 
 ```
 </span>
 <div class="infoBlock">
-For the minified version of the above script, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/">RudderStack JavaScript SDK</a> guide. 
+For the minified version of the above script, refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link> guide. 
 </div>
 
 <div class="infoBlock">
-If you are using an older version of the JavaScript SDK (v1), refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</a> to migrate to v1.1.
+If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</Link> to migrate to v1.1.
 </div>
 </li>
 <li>Update the object. RudderStack uses <code class="inline-code">rudderanalytics</code> as the global object library as compared to Segment's <code class="inline-code">analytics</code> object.
@@ -225,7 +223,6 @@ await rudderClient.setup(<WRITE_KEY>, {
 </li>
 <li>Update the references to the <code class="inline-code">analytics</code> keyword in your application code with <code class="inline-code">rudderClient</code>.</li>
 <div class="successBlock">
-
 You can use the rest of your code without any changes as the RudderStack API is fully compatible with Segment.
 </div>
 </ul>
@@ -242,9 +239,9 @@ When migrating from Segment or a similar analytics tool, you might already have 
 You can automatically capture the Segment `anonymousId` and set it as Rudderstack `anonymousId` using the JavaScript SDK's `anonymousIdOptions` object. When enabled, it reads the Segment `anonymousId` from your local storage (`localStorage`) or the Segment cookie and sets it accordingly.
 	      
 <div class="infoBlock">
-For more information on how to enable the <code class="inline-code">anonymousIdOptions</code> object, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#capturing-anonymousid-automatically">Capturing anonymousId automatically</a> section.
+For more information on how to enable the <code class="inline-code">anonymousIdOptions</code> object, refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/#capturing-anonymousid-automatically">Capturing anonymousId automatically</Link> section.
 </div>
 
 ## Contact us
 
-If you're stuck somewhere in the migration process, you can [contact us](mailto:%20support@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
