@@ -39,7 +39,6 @@ To successfully configure WebEngage as a destination, you will need to configure
 - **API Key**: Enter your WebEngage API key.
 
 <div class="infoBlock">
-
 To get your WebEngage license code and API key, log into your WebEngage dashboard and go to <strong>Data Platform</strong> > <strong>Integrations</strong> > <strong>REST API</strong>. For more information, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
@@ -47,7 +46,7 @@ To get your WebEngage license code and API key, log into your WebEngage dashboar
 
 ## Identify 
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify"><code class="inline-code">identify</code></Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
 RudderStack uses the `identify` call to create or update the customer information in WebEngage. It maps `userId` or `anonymousId` (`userId` is prioritized if both are present ) to WebEngage's `userId` before sending the data via the [`users`](https://docs.webengage.com/docs/rest-api-tracking-users#users) API.
 
@@ -98,7 +97,7 @@ Note the following when sending `identify` traits to WebEngage:
 
 ## Track
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track"><code class="inline-code">track</code></Link> method lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> method lets you capture user events along with the properties associated with them.
 
 RudderStack uses the `track` call to send the custom events to WebEngage via the [`events`](https://docs.webengage.com/docs/rest-api-tracking-events#events) API.
 
@@ -114,7 +113,6 @@ rudderanalytics.track("Order Completed", {
 ```
 
 <div class="warningBlock">
-
 Make sure you call <code class="inline-code">identify</code> before <code class="inline-code">track</code> for RudderStack to include the <code class="inline-code">userId</code> in the <code class="inline-code">track</code> events. Otherwise, RudderStack will send the <code class="inline-code">track</code> calls to WebEngage with an <code class="inline-code">anonymousId</code>.
 </div>
 
@@ -142,7 +140,7 @@ WebEngage lets you send custom attributes as key-value pairs in the `eventData` 
 
 ## Page
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
 RudderStack internally transforms the `page` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the `Viewed ${category} ${name} page` format.
 
@@ -161,13 +159,12 @@ rudderanalytics.page("Home", "Clothes", {
 RudderStack transforms the above event into a `track` call named `Viewed Home Clothes page` and sends it to WebEngage as a custom event.
 
 <div class="infoBlock">
-
 RudderStack sends the <code class="inline-code">page</code> event properties to WebEngage, similar to the <code class="inline-code">track</code> event properties.
 </div>
 
 ## Screen
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/screen"><code class="inline-code">screen</code></Link> method lets you record whenever your user views their mobile screen with any additional relevant information about the screen. It is the mobile equivalent of a <Link to="#page"><code class="inline-code">page</code></Link> call.
+The <Link to="/event-spec/standard-events/screen">`screen`</Link> method lets you record whenever your user views their mobile screen with any additional relevant information about the screen. It is the mobile equivalent of a <Link to="#page"><code class="inline-code">page</code></Link> call.
 
 RudderStack internally transforms the `screen` call into a `track` call before sending it as a custom event to WebEngage. It sends the event/category name by transforming it in the `Viewed ${category} ${name} screen` format.
 
@@ -185,7 +182,6 @@ rudderClient.screen(
 RudderStack transforms the above event into a `track` call named `Viewed Games home screen` and sends it to WebEngage as a custom event.
 
 <div class="infoBlock">
-
 RudderStack sends the <code class="inline-code">screen</code> event properties to WebEngage, similar to the <code class="inline-code">track</code> event properties.
 </div>
 
