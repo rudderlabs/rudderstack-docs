@@ -192,18 +192,23 @@ To configure Redshift as a destination in RudderStack, follow these steps:
 ### Connection Settings
 
 <img src="../assets/dw-integrations/redshift-connection-settings.png" alt="Redshift connection settings" />
-<img src="../assets/dw-integrations/redshift-connection-settings2.png" alt="Redshift connection settings" />
 
 Enter the following credentials in the **Connection Credentials** page:
-  - **Host**: The host name of your Redshift service.
-  - **Port**: The port number associated with the Redshift database instance.
-  - **Database**: The database name in your Redshift instance where the data will be sent.
-  - **User**: The name of the user with the required read/write access to the above database.
-  - **Password**: The password for the above user.
-  - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
-  - **Sync Frequency**: Specify how often RudderStack should sync the data to your Redshift database.
-  - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
-  - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
+
+- **Host**: The host name of your Redshift service.
+- **Port**: The port number associated with the Redshift database instance.
+- **Database**: The database name in your Redshift instance where the data will be sent.
+- **User**: The name of the user with the required read/write access to the above database.
+- **Password**: The password for the above user.
+- **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
+- **Sync Frequency**: Specify how often RudderStack should sync the data to your Redshift database.
+- **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+- **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
+- **JSON Columns**: Use this optional setting to specify the required JSON column paths in dot notation, separated by commas. **This option applies to all the incoming `track` events for this destination.**
+
+<div class="infoBlock">
+With JSON support, you can now ingest semi-structured event data not defined by a fixed schema. For more information on this feature, refer to the <Link to="/data-warehouse-integrations/json-column-support/">JSON Column Support</Link> guide.
+</div>
 
 ### Configuring the object storage
 
