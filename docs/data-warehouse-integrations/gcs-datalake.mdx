@@ -81,7 +81,7 @@ Enter the following credentials in the **Connection Credentials** page:
 - **GCS Storage Bucket Name**: The name of the GCS bucket used to store data before loading it into the GCS data lake.
 - **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. For example, `https://storage.googleapis.com/<bucketName>/<prefix>/`.
 - **Namespace**: If specified, all the data for the destination will be pushed to `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>`. If you don't specify a namespace in the settings, RudderStack sets it to the source name, by default.
-- **Table Suffix**: This optional setting lets you define a custom path under which your table data is stored. For example, if you set this field to `abcd`, your data will be pushed to `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/<tableName>/abcd`.
+- **Table Suffix**: This optional setting lets you define a custom path under which your table data is stored. For example, if you set this field to `rs`, your data will be pushed to `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/<tableName>/rs`.
 - **Choose time window layout**: This option lets you set the timestamp-defined layout structure under which the table data will be stored.
 
 For example, if you choose the option **Upto Hour (year=YYYY/month=MM/day=DD/hour=HH)** and an event called `Product Clicked` is received at `2022-08-06T17:30:00.000T`, then the data will be stored in the following location:
