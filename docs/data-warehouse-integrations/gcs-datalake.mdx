@@ -84,6 +84,8 @@ Enter the following credentials in the **Connection Credentials** page:
 - **Table Suffix**: This optional setting lets you define a custom path under which your table data is stored. For example, if you set this field to `rs`, your data will be pushed to `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/<tableName>/rs`.
 - **Choose time window layout**: This option lets you set the timestamp-defined layout structure under which the table data will be stored.
 
+<img src="../assets/dw-integrations/gcs-datalake-time-window-layout.png" alt="GCS data lake destination settings in RudderStack" />
+
 For example, if you choose the option **Upto Hour (year=YYYY/month=MM/day=DD/hour=HH)** and an event called `Product Clicked` is received at `2022-08-06T17:30:00.000T`, then the data will be stored in the following location:
 
 ```
