@@ -6,13 +6,12 @@ description: Detailed technical description of the Screen API call.
 The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the screen.
 
 <div class="successBlock">
-
-  The `screen` call is the mobile equivalent of the `page` call.
+The <code class="inline-code">screen</code> call is the mobile equivalent of the <code class="inline-code">page</code> call.
 </div>
 
 ## Sample Payload
 
-A sample payload of a `screen` call with most of the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) removed is as shown:
+A sample payload of a `screen` call with most of the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link> removed is as shown:
 
 ```javascript
 {
@@ -24,7 +23,7 @@ A sample payload of a `screen` call with most of the [**Common Fields**](https:/
 }
 ```
 
-The corresponding event that generates the above payload via the [**iOS SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) is as shown:
+The corresponding event that generates the above payload via the <Link to="/sources/sdks/rudderstack-ios-sdk/">iOS SDK</Link> is as shown:
 
 ```javascript
 [[RSClient sharedInstance] screen:@"Main"
@@ -33,12 +32,12 @@ The corresponding event that generates the above payload via the [**iOS SDK**](h
 
 ## Screen Fields
 
-Apart from the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/), the `screen` call accepts the following fields:
+Apart from the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link>, the `screen` call accepts the following fields:
 
 | **Field**    | **Type** | **Presence** | **Description**                                                                                                                              |
 | :----------- | :------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`       | String   | Optional     | The name of the screen.                                                                                                                      |
-| `properties` | Object   | Optional     | Includes the properties of the screen such as the `url`, `referrer`, etc. For more more information, check the [**Properties**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/#properties) section below. |
+| `properties` | Object   | Optional     | Includes the properties of the screen such as the `url`, `referrer`, etc. For more more information, check the <Link to="#properties">Properties</Link> section below. |
 
 ## Properties
 
@@ -52,4 +51,4 @@ RudderStack has reserved some standard properties listed in the table below and 
 
 ## Contact Us
 
-For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on any of the sections covered in this doc, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

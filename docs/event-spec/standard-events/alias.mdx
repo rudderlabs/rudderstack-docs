@@ -6,39 +6,32 @@ description: Detailed technical description of the Alias API call.
 The `alias` call lets you merge different identities of a known user.
 
 <div class="infoBlock">
-
 <code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
-
 </div>
 
 <div class="successBlock">
-
   The following destinations support the <code class="inline-code">alias</code>
   call:
   <ul>
     <li>
-      <a href="https://rudderstack.com/docs/destinations/marketing/moengage/">MoEngage</a>
+      <Link to="/tmp-destinations/streaming-destinations/moengage/">MoEngage</Link>
     </li>
     <li>
-      <a href="https://rudderstack.com/docs/destinations/analytics/kissmetrics/">Kissmetrics</a>
+      <Link to="/tmp-destinations/streaming-destinations/kissmetrics/">Kissmetrics</Link>
     </li>
     <li>
-      <a href="https://rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a> (only
-      supported by the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">
-        JavaScript SDK
-      </a> via <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">
-        Cloud Mode
-      </a>)
+      <Link to="/tmp-destinations/streaming-destinations/amplitude/">Amplitude</Link> (only
+      supported by the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> via <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>)
     </li>
     <li>
-      <a href="https://rudderstack.com/docs/destinations/analytics/mixpanel/">Mixpanel</a>
+      <Link to="/tmp-destinations/streaming-destinations/mixpanel/">Mixpanel</Link>
     </li>
   </ul>
 </div>
 
 ## Sample payload
 
-A sample payload of an `alias` call with most of the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) removed is shown below:
+A sample payload of an `alias` call with most of the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link> removed is shown below:
 
 ```javascript
 {
@@ -48,25 +41,23 @@ A sample payload of an `alias` call with most of the [**Common Fields**](https:/
 }
 ```
 
-The corresponding event that generates the above payload via the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) is as shown:
+The corresponding event that generates the above payload via the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> is as shown:
 
 ```javascript
 rudderanalytics.alias("12345")
 ```
 
 <div class="successBlock">
-
-  The RudderStack SDK automatically passes the user's <code class="inline-code">anonymousId</code> as <code class="inline-code">previousId</code> in the payload, as seen above.
+The RudderStack SDK automatically passes the user's <code class="inline-code">anonymousId</code> as <code class="inline-code">previousId</code> in the payload, as seen above.
 </div>
 
 <div class="warningBlock">
-
 When instrumenting a website with the JavaScript SDK, making the <code class="inline-code">alias</code> call via the client-side is important as the <code class="inline-code">anonymousId</code> is generated via the browser. Similarly, if you're using a server-side SDK, the <code class="inline-code">alias</code> call must be made from the server-side as the session ID is set as the <code class="inline-code">anonymousId</code>.
 </div>
 
 ## Alias fields
 
-In addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/), the `alias` call accepts the following fields:
+In addition to the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link>, the `alias` call accepts the following fields:
 
 <table>
   <thead>
@@ -118,4 +109,4 @@ In addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-
 
 ## Contact us
 
-For more information on any section covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on any section covered in this doc, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
