@@ -147,21 +147,15 @@ https://hosted.rudderlabs.com/pixel/v1/page?writeKey=${writeKey}&context.library
 ```
 
 <div class="warningBlock">
-
 For this endpoint, RudderStack expects that the basic page view properties like <code class="inline-code">path</code>, <code class="inline-code">url</code>, <code class="inline-code">referrer</code>, <code class="inline-code">title</code> be passed either with <code class="inline-code">context.page.&lt;page_basic_properties&gt;</code> or with <code class="inline-code">properties.&lt;page_basic_properties&gt;</code>.
-
 </div>
 
 <div class="infoBlock">
-
 The dot (<code class="inline-code">.</code>) separated query parameters are mapped by RudderStack to a familiar <a href="https://rudderstack.com/docs/rudderstack-api/http-api#81-page-payload"><code class="inline-code">page</code></a> payload before sending them to the destinations.
-
 </div>
 
 <div class="warningBlock">
-
 Note that for this endpoint, RudderStack does not currently support overriding the <code class="inline-code">integration</code> key for sending data to selective destinations.
-
 </div>
 
 ## Sending a `track` call to RudderStack
@@ -301,23 +295,17 @@ https://hosted.rudderlabs.com/pixel/v1/track?writeKey=${writeKey}&context.librar
 ```
 
 <div class="warningBlock">
-
 For this endpoint, RudderStack expects the basic <code class="inline-code">page</code> view properties like <code class="inline-code">path</code>, <code class="inline-code">url</code>, <code class="inline-code">referrer</code>, and <code class="inline-code">title</code> to be passed with <code class="inline-code">context.page.&lt;page_basic_properties&gt;</code>. The event-related properties should be sent as <code class="inline-code">properties.&lt;*key1*&gt;=$&#123;value&#125;</code>.
-
 </div>
 
 <div class="infoBlock">
-
-The dot (<code class="inline-code">.</code>) separated query parameters are mapped by RudderStack to a familiar <a href="https://rudderstack.com/docs/rudderstack-api/http-api#72-track-usage"><code class="inline-code">track</code></a> payload before being sent to destinations.
-
+The dot (<code class="inline-code">.</code>) separated query parameters are mapped by RudderStack to a familiar <Link to="/event-spec/standard-events/track/"><code class="inline-code">track</code></Link> payload before being sent to destinations.
 </div>
 
 <div class="warningBlock">
-
 Note that for this endpoint, RudderStack currently does not support overriding the <code class="inline-code">integration</code> key for sending the data to selective destination.
-
 </div>
 
-## Contact Us
+## Contact us
 
-To know more about the Pixel API spec, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -14,14 +14,11 @@ The Transformations API is authenticated via HTTP Basic Authentication.
 You can authenticate your account when using the API by including your **email address** in the username field and the secret **access token** in the password field in Authorization, if you're using POSTMAN.
 
 <div class="warningBlock">
-
-You need to generate a personal access token to make any API calls. For more information, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/personal-access-tokens/">Personal Access Tokens</a> guide.
+You need to generate a personal access token to make any API calls. For more information, refer to the <Link to="/dashboard-guides/personal-access-token/">Personal Access Token</Link> guide.
 </div>
 
 <div class="dangerBlock">
-
 Any API requests without the authentication will fail.
-
 </div>
 
 You can also pass your access token in the authorization headers, as shown:
@@ -43,9 +40,7 @@ Some examples are as shown:
 - Headers **- `Basic {Base64Encoded(myemailaddressis@gmail.com:1pHxUIA3jmxS2ip01zY696F80j7)}`**
 
 <div class="successBlock">
-
-  To make a successful request all of the upcoming endpoints should include this
-  header.
+To make a successful request all of the upcoming endpoints should include this header.
 </div>
 
 ## Transformations
@@ -53,10 +48,7 @@ Some examples are as shown:
 RudderStack transformations are responsible for converting the received event data into a suitable destination-specific format. All the transformation codes are written in JavaScript.
 
 <div class="successBlock">
-
-  We also support [user-specific
-  transformations](https://rudderstack.com/docs/transformations)
-  for real-time operations, such as aggregation and sampling.
+We also support <Link to="/features/transformations/">user-specific transformations</Link> for real-time operations, such as aggregation and sampling.
 </div>
 
 Transformations help you to create a user-defined code that allow you to route your events in a manner that is suitable for your destinations.
@@ -357,9 +349,7 @@ Creating a transformation can be done in one of the two ways:
 **`publish: false` -** In this case, we only create revisions for the transformation, which means you cannot connect any destinations to it. It cannot be used for any incoming event traffic. However, if you wish to publish some revisions of transformations you can do so using our **Publish API.**
 
 <div class="successBlock">
-
-  We will be using these two terms **Published** and **Revisions** for transformations and libraries throughout our
-  docs.
+We will be using these two terms <strong>Published</strong> and <strong>Revisions</strong> for transformations and libraries throughout our docs.
 </div>
 
 An example is as shown:
@@ -1581,8 +1571,7 @@ Description of the library goes here
 </Tabs>
 
 <div class="successBlock">
-
-  The <code class="inline-code">publish</code> flag for a library works in the same way as for destinations.
+The <code class="inline-code">publish</code> flag for a library works in the same way as for destinations.
 </div>
 
 <!--{% tabs %}
@@ -2691,7 +2680,6 @@ Content-Type:'application/json'
 </Tabs>
 
 <div class="infoBlock">
-
   A few things to note:
   <ul>
     <li>
@@ -2707,11 +2695,10 @@ Content-Type:'application/json'
 </div>
 
 <div class="warningBlock">
-
-Whenever you call the <code class="inline-code">publish</code> API , we run tests in our server to make sure you won't save any transformation/libraries code that can lead to any exceptions.
+Whenever you call the <code class="inline-code">publish</code> API, we run tests in our server to make sure you won't save any transformation/libraries code that can lead to any exceptions.
 In case if your publish is failing, make sure to check your transformation code and the libraries that it is referring to.
 </div>
 
 ## Contact us
 
-To know more about the Transformations API, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community, and we will be happy to help you.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

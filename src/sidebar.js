@@ -1660,15 +1660,9 @@ export const jsonData = [
    // API section
 
   {
-    key: "api",
-    title: "Overview",
-    sectionTitle: "API",
-    link: "/api/overview/",
-    content: []
-  },
-  {
     key: "http-api",
     title: "HTTP API",
+    sectionTitle: "API",
     link: "/api/http-api/",
     content: []
   },

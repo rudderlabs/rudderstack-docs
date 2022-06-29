@@ -10,8 +10,7 @@ RudderStack's Data Regulation API lets you specify regulations to suspend data c
 This guide covers the data regulation feature in detail and details the Data Regulation API endpoints.
 
 <div class="warningBlock">
-
-The Data Regulation API is applicable only for the destinations configured to sent events using the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">RudderStack cloud mode</a>.
+The Data Regulation API is applicable only for the destinations configured to sent events using the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 </div>
 
 <GhBadge
@@ -30,20 +29,18 @@ You can leverage RudderStack's data regulation feature to suppress any incoming 
 You can also use this feature to direct RudderStack to suppress any incoming events for a user and delete any collected data for a given destination.
 
 <div class="warningBlock">
-
 Once a user is suppressed, it is not possible to replay their events.
 </div>
 
 ## Prerequisites
 
-You need to generate a [personal access token](https://rudderstack.com/docs/rudderstack-api/personal-access-tokens/) to authenticate the Data Regulation API and use it successfully.
+You need to generate a <Link to="/dashboard-guides/personal-access-token/">Personal Access Token</Link> to authenticate the Data Regulation API and use it successfully.
 
 ## API authorization
 
 The Data Regulation API uses the **Bearer Token Authentication** for authenticating all the requests.
 
 <div class="infoBlock">
-
 The Personal Access Token should be used as the bearer token for authentication.
 </div>
 
@@ -103,11 +100,11 @@ https://api.rudderstack.com/v2/regulations
 
 RudderStack supports the <code class="inline-code">suppress_with_delete</code> request for the following destinations:
 <ul>
-  <li><a href="https://www.rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a></li>
-  <li><a href="https://www.rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
-  <li><a href="https://www.rudderstack.com/docs/destinations/business-messaging/intercom/">Intercom</a></li>
-  <li><a href="https://www.rudderstack.com/docs/destinations/storage-platforms/amazon-s3/">S3</a></li>
-  <li><a href="https://www.rudderstack.com/docs/destinations/storage-platforms/redis/">Redis</a></li>
+  <li><Link to="/tmp-destinations/streaming-destinations/amplitude/">Amplitude</Link></li>
+  <li><Link to="/tmp-destinations/streaming-destinations/braze/">Braze</Link></li>
+  <li><Link to="/tmp-destinations/streaming-destinations/intercom/">Intercom</Link></li>
+  <li><Link to="/tmp-destinations/streaming-destinations/amazon-s3/">S3</Link></li>
+  <li><Link to="/tmp-destinations/streaming-destinations/redis/">Redis</Link></li>
 </ul>
 </div>
 
@@ -145,13 +142,11 @@ Do not specify both <code class="inline-code">sourceIds</code> and <code class="
 The API lets you specify the users for whom you want to set the data regulation. These users can be identified either by their `userId`, `phone`, or `email`.
 
 <div class="infoBlock">
-
-  <strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. The other fields are optional as some destinations require phone number or email to associate a given user and do not strictly identify a user by their user ID.
+<strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. The other fields are optional as some destinations require phone number or email to associate a given user and do not strictly identify a user by their user ID.
 </div>
 
 <div class="warningBlock">
-
-We recommend that you provide the user's <code class="inline-code">phone</code> and <code class="inline-code">email</code> <strong>at your own discretion and only if it is required</strong>.
+It is recommended to provide the user's <code class="inline-code">phone</code> and <code class="inline-code">email</code> <strong>at your own discretion and only if it is required</strong>.
 </div>
 
 * **Sample suppression request**

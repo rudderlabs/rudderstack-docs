@@ -4,13 +4,12 @@ description: >-
   Detailed technical description of the RudderStack Test API to verify the event workflow for your configured sources and destinations.
 ---
 
-The **RudderStack Test API** offers two endpoints to verify successful event transformation and delivery for a given source-destination setup, without having to refer to the [**Live Events**](https://www.rudderstack.com/docs/rudderstack-cloud/live-events/) tab.
+The **RudderStack Test API** offers two endpoints to verify successful event transformation and delivery for a given source-destination setup, without having to refer to the <Link to="/dashboard-guides/live-events/">Live Events</Link> tab.
 
 <div class="warningBlock">
-
- The Test API is currently not supported for <strong>Open-source RudderStack</strong>.
+The Test API is currently not supported for <strong>Open-source RudderStack</strong>.
  
- Also, some destinations like Apache Kafka, Google Pub/Sub, Google Sheets, etc. are not supported by this API. For the complete list, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#faqs">FAQs</a> section below.
+Also, some destinations like Apache Kafka, Google Pub/Sub, Google Sheets, etc. are not supported by this API. For the complete list, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 This guide details the various endpoints of the Test API.
@@ -19,19 +18,17 @@ This guide details the various endpoints of the Test API.
 
 The following prerequisites must be met to use the Test API successfully:
 
-* You need to set up a source-destination connection in RudderStack. For more details, refer to [this guide](https://www.rudderstack.com/docs/get-started/).
+* Set up a source-destination connection in RudderStack. For more details, refer to <Link to="/tmp-get-started/quickstart/">Quickstart</Link> guide.
 
-* You need to generate a [personal access token](https://rudderstack.com/docs/rudderstack-api/personal-access-tokens/) to authenticate the API successfully.
+*  Generate a <Link to="/dashboard-guides/personal-access-token/">Personal Access Token</Link> in the RudderStack dashboard to authenticate the API successfully.
 
 ## API authorization
 
 The Test API uses **Basic Authentication** for authenticating all the requests.
 
 <div class="successBlock">
-
 Basic Authentication concatenates the username and password with a colon (<code class="inline-code">:</code>) in between and encodes it using Base64 encryption.
-
-All the popular HTTP clients (e.g., CURL, Postman, HTTPie) have default support for Basic Authentication.
+All the popular HTTP clients (for example, CURL, Postman, HTTPie) have default support for Basic Authentication.
 </div>
 
 The Basic Authentication for this API requires a username and password, where:
@@ -46,13 +43,11 @@ Authorization: Basic bmFtZUBzdXJuYW1lLmNvbToxemw0R0prTHUwSHNCZHJESzg4TmdZWnpZMkU
 ```
 
 <div class="infoBlock">
-
-  In case of the <strong>Invalid Authorization Header</strong> error, verify if the email address and the personal access token are valid.
+In case of the <strong>Invalid Authorization Header</strong> error, verify if the email address and the personal access token are valid.
 </div>
 
 <div class="successBlock">
-
-  You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
+You can use this <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
 </div>
 
 ## Verifying destination events
@@ -72,8 +67,7 @@ Here, `<destination_ID>` should be replaced with the ID associated with the dest
 <img src="../assets/test-api-1.png" alt="Destination ID" />
 
 <div class="infoBlock">
-
-  The <code class="inline-code">/testDestination</code> endpoint <strong>does not require</strong> a source to be connected to the destination.
+The <code class="inline-code">/testDestination</code> endpoint <strong>does not require</strong> a source to be connected to the destination.
 </div>
 
 * **Request body**:
@@ -92,8 +86,7 @@ Here, `<destination_ID>` should be replaced with the ID associated with the dest
 ```
 
 <div class="infoBlock">
-
-  To know more about the <code class="inline-code">stage</code> object, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#verification-stages">Verification stages</a> section below.
+To know more about the <code class="inline-code">stage</code> object, refer to the <Link to="#verification-stages">Verification stages</Link> section below.
 </div>
 
 * **Sample payload**:
@@ -113,8 +106,7 @@ Here, `<destination_ID>` should be replaced with the ID associated with the dest
 }
 ```
 <div class="infoBlock">
-
-  For more information on the message <code class="inline-code">type</code>, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types/">Supported message types</a> section below.
+For more information on the message <code class="inline-code">type</code>, refer to the <Link to="#supported-message-types">Supported message types</Link> section below.
 </div>
 
 
@@ -227,7 +219,6 @@ https://api.rudderstack.com/v0/testDestination/<destination_ID>?force=true
 You can also leverage the `/testDestination` endpoint to send your destination configuration as a part of the HTTP request body. This configuration overrides the existing destination configuration in RudderStack.
 
 <div class="warningBlock">
-
 To use this feature, you must have set up the destination in RudderStack.
 </div>
 
@@ -250,8 +241,7 @@ A sample request body highlighting this feature is shown below:
 ```
 
 <div class="warningBlock">
-
-  The <code class="inline-code">destinationConfig</code> field can be passed only for the <code class="inline-code">testDestination</code> endpoint.
+The <code class="inline-code">destinationConfig</code> field can be passed only for the <code class="inline-code">testDestination</code> endpoint.
 </div>
 
 #### Getting the destination definition variables
@@ -267,7 +257,6 @@ https://api.rudderstack.com/destination-definitions
 ```
 
 <div class="successBlock">
-
 This endpoint does not require any authentication.
 </div>
 
@@ -282,8 +271,7 @@ As seen in the above example, for the webhook destination, the configuration var
 To override the dashboard settings, provide the new values for the destination configuration variables in the request body of the `/testDestination` endpoint as seen in the [**Overriding existing destination configuration**](https://rudderstack.com/docs/rudderstack-api/test-api/#overriding-existing-destination-configuration) section above.
 
 <div class="successBlock">
-
-  For a detailed use-case on how to use this feature, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#faqs">FAQs</a> section below.
+For a detailed use-case on how to use this feature, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 ## Verifying source events
@@ -303,13 +291,11 @@ Here, `<source_ID>` should be replaced with the ID associated with the source co
 <img src="../assets/test-api-2.png" alt="Source ID" />
 
 <div class="infoBlock">
-
-  The <code class="inline-code">/testSource</code> endpoint requires the specified source to be connected to at least one destination.
+The <code class="inline-code">/testSource</code> endpoint requires the specified source to be connected to at least one destination.
 </div>
 
 <div class="successBlock">
-  
-  The <code class="inline-code">/testSource</code> endpoint essentially calls the <code class="inline-code">/testDestination</code> endpoint for each destination connected to that source and returns an array of responses.
+The <code class="inline-code">/testSource</code> endpoint essentially calls the <code class="inline-code">/testDestination</code> endpoint for each destination connected to that source and returns an array of responses.
 </div>
 
 * **Request body**:
@@ -327,8 +313,7 @@ Here, `<source_ID>` should be replaced with the ID associated with the source co
 }
 ```
 <div class="infoBlock">
-
-  To know more about the <code class="inline-code">stage</code> object, refer to the <strong>Verification stages</strong> section below.
+To know more about the <code class="inline-code">stage</code> object, refer to the <strong>Verification stages</strong> section below.
 </div>
 
 * **Sample payload**:
@@ -349,8 +334,7 @@ Here, `<source_ID>` should be replaced with the ID associated with the source co
 ```
 
 <div class="infoBlock">
-
-  For more information on the message <code class="inline-code">type</code>, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types/">Supported message types</a> section below.
+For more information on the message <code class="inline-code">type</code>, refer to the <Link to="#supported-message-types">Supported message types</Link> section below.
 </div>
 
 * **Sample request**:
@@ -643,8 +627,7 @@ The Test API supports the following message `type`:
 * `alias`
 
 <div class="infoBlock">
-
-  For more information on these message types, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/">RudderStack Events Specification</a> guide.
+For more information on these message types, refer to the <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
 </div>
 
 If you specify any other message `type` apart from the supported events mentioned in the above list, you will get the following error:
@@ -663,28 +646,32 @@ You will get the following error message if no message `type` is specified in th
 }
 ```
 
-## FAQs
+## FAQ
 
 ### Which destinations are not supported by the Test API?
 
-The Test API does not support the destinations that leverage the [**rudder-server**](https://github.com/rudderlabs/rudder-server) to send the test events. These destinations include:
+The Test API does not support the destinations that leverage the [rudder-server](https://github.com/rudderlabs/rudder-server) to send the test events. These destinations include:
 
-* [**Amazon Kinesis**](https://rudderstack.com/docs/destinations/streaming-platforms/amazon-kinesis/)
-* [**Apache Kafka**](https://rudderstack.com/docs/destinations/streaming-platforms/kafka/)
-* [**Azure Event Hub**](https://rudderstack.com/docs/destinations/streaming-platforms/azure-event-hubs/)
-* [**Amazon Kinesis Firehose**](https://rudderstack.com/docs/destinations/streaming-platforms/amazon-kinesis-firehose/)
-* [**Amazon EventBridge**](https://rudderstack.com/docs/destinations/streaming-platforms/amazon-eventbridge/)
-* [**Amazon Personalize**](https://rudderstack.com/docs/destinations/analytics/aws-personalize/)
-* [**Confluent Cloud**](https://rudderstack.com/docs/destinations/streaming-platforms/confluent-cloud/)
-* [**Google Pub/Sub**](https://rudderstack.com/docs/destinations/streaming-platforms/google-pub-sub/)
-* [**Google Sheets**](https://rudderstack.com/docs/destinations/productivity/google-sheets/)
-* [**Redis**](https://rudderstack.com/docs/destinations/storage-platforms/redis/)
-* [**BigQuery Stream**](https://rudderstack.com/docs/destinations/streaming-platforms/bigquery-stream/)
-* [**Object Storage Platforms**](https://rudderstack.com/docs/destinations/storage-platforms/)
+* <Link to="/tmp-destinations/streaming-destinations/amazon-kinesis/">Amazon Kinesis</Link>
+* <Link to="/tmp-destinations/streaming-destinations/kafka/">Apache Kafka</Link>
+* <Link to="/tmp-destinations/streaming-destinations/azure-event-hubs/">Azure Event Hub</Link>
+* <Link to="/tmp-destinations/streaming-destinations/amazon-kinesis-firehose/">Amazon Kinesis Firehose</Link>
+* <Link to="/tmp-destinations/streaming-destinations/amazon-eventbridge/">Amazon EventBridge</Link>
+* <Link to="/tmp-destinations/streaming-destinations/aws-personalize/">Amazon Personalize</Link>
+* <Link to="/tmp-destinations/streaming-destinations/confluent-cloud/">Confluent Cloud</Link>
+* <Link to="/tmp-destinations/streaming-destinations/google-pub-sub/">Google Pub/Sub</Link>
+* <Link to="/tmp-destinations/streaming-destinations/google-sheets/">Google Sheets</Link>
+* <Link to="/tmp-destinations/streaming-destinations/redis/">Redis</Link>
+* <Link to="/tmp-destinations/streaming-destinations/bigquery-stream/">BigQuery Stream</Link>
+* <Link to="/tmp-destinations/streaming-destinations/amazon-s3/">Amazon S3</Link>
+* <Link to="/tmp-destinations/streaming-destinations/microsoft-azure-blob-storage/">Azure Blob Storage</Link>
+* <Link to="/tmp-destinations/streaming-destinations/digitalocean-spaces/">DigitalOcean Spaces</Link>
+* <Link to="/tmp-destinations/streaming-destinations/google-cloud-storage/">Google Cloud Storage</Link>
+* <Link to="/tmp-destinations/streaming-destinations/minio/">MinIO</Link>
+
 
 <div class="warningBlock">
-  
-  The Test API also does not support the <a href="https://rudderstack.com/docs/data-warehouse-integrations/">data warehouse destinations</a>.
+The Test API also does not support the <Link to="/tmp-destinations/warehouse-destinations/">data warehouse destinations</Link>.
 </div>
 
 ### What happens if `type` is not included in the event payload?
@@ -707,7 +694,7 @@ Simply put, `type` refers to the event type in the payload.
 }
 ```
 
-For more information, refer to the [**Supported message types**](https://rudderstack.com/docs/rudderstack-api/test-api/#supported-message-types) section above.
+For more information, refer to the <Link to="#supported-message-types">supported message types</Link> section above.
 
 ### Can I disable a particular verification stage in the `stage` object?
 
@@ -740,8 +727,7 @@ To disable or a specific verification stage, you can set the value of that param
 ```
 
 <div class="infoBlock">
-
-  Refer to the <a href="https://rudderstack.com/docs/rudderstack-api/test-api/#verification-stages">Verification stages</a> section above for more information on each of the <code class="inline-code">stage</code> object parameters.
+Refer to the <Link to="#verification-stages">Verification stages</Link> section above for more information on each of the <code class="inline-code">stage</code> object parameters.
 </div>
 
 ### Can I override the destination settings specified in the RudderStack dashboard using this API?
@@ -752,7 +738,7 @@ Suppose you have configured a webhook destination in the RudderStack dashboard w
 
 <img src="../assets/test-api-5.png" alt="Dashboard settings for webhook destination" />
 
-You can leverage the [**`/testDestination`**](https://rudderstack.com/docs/rudderstack-api/test-api/#verifying-destination-events) endpoint to send the new configuration as a part of the HTTP request body. This configuration overrides the existing destination settings configured in RudderStack. 
+You can leverage the <Link to="#verifying-destination-events">`/testDestination`</Link> endpoint to send the new configuration as a part of the HTTP request body. This configuration overrides the existing destination settings configured in RudderStack. 
 
 Your HTTP request body should look like the following:
 
