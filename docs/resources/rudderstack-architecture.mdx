@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/get-started/rudderstack-architecture"
 title: "RudderStack Architecture"
 description: >-
   Detailed technical description of RudderStack's architecture and key components - the control plane and data plane.
@@ -74,7 +73,7 @@ RudderStack's Transformations module transforms received event data into a suita
 RudderStack also supports **user transformations** that let you code custom JavaScript functions to implement specific use-cases on your event data. These include but are not limited to: event enrichment, filtering, removing sensitive PII information, etc.
 
 <div class="successBlock">
-Refer to the <Link to="/transformations">Transformations</Link> guide for more information on user transformations.
+Refer to the <Link to="/features/transformations">Transformations</Link> guide for more information on user transformations.
 </div>
 
 Once events are transformed, the transformation module sends them back to the processor. The processor then forwards this data to the router, which in turn relays it to the desired destination.
