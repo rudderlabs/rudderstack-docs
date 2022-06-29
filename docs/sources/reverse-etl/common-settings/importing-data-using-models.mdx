@@ -7,19 +7,19 @@ RudderStack's **Models** feature lets you define and run custom SQL queries on y
 
 <div class="infoBlock">
 
-You can create a model in the RudderStack dashboard and use it while connecting a Reverse ETL source to a destination. For detailed steps on how to create a model, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/features/models/">Models</a> guide.
+You can create a model in the RudderStack dashboard and use it while connecting a Reverse ETL source to a destination. For detailed steps on how to create a model, refer to the <Link to="/sources/reverse-etl/features/models/">Models</Link> guide.
 </div>
 
 <div class="infoBlock">
   
-  This guide is applicable for Reverse ETL sources configured using the <strong>Model</strong> option. If you have configured your Reverse ETL source using the <strong>Table</strong> option, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</a> guide.
+  This guide is applicable for Reverse ETL sources configured using the <strong>Model</strong> option. If you have configured your Reverse ETL source using the <strong>Table</strong> option, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</Link> guide.
 </div>
 
 The settings to import and sync data from your model are listed below:
 
 1. Select the required model from the dropdown list.
 
-<img src="../../assets/warehouse-actions-sources/models-name-enter.png" />
+<img src="../../../assets/warehouse-actions-sources/models-name-enter.png" />
 
 <div class="infoBlock">
   
@@ -30,20 +30,20 @@ The dropdown will only display the list of models corresponding to the Reverse E
 
 <div class="infoBlock">
 
-RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</a> guide.
+RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <Link to="/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</Link> guide.
 </div>   
 
 3. Select least one user identifier (**user_id/anonymous_id**) from the dropdown list.
 
-<img src="../../assets/warehouse-actions-sources/models-settings-configure.png" />
+<img src="../../../assets/warehouse-actions-sources/models-settings-configure.png" />
 
 You can also preview the data snippet which RudderStack will send to the destination. All the resulting columns from running the model's query are selected by default. However, you can choose to retain specific columns by searching and selecting them. You can then preview the resulting JSON on the right, as shown:
 
-<img src="../../assets/warehouse-actions-sources/models-data-snippet.png" />
+<img src="../../../assets/warehouse-actions-sources/models-data-snippet.png" />
 
 <div class="infoBlock">
   
-Alternatively, you can map the columns using the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
+Alternatively, you can map the columns using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature. However, note that this feature is currently supported only for selective destinations.
   
 </div>
 
@@ -56,15 +56,15 @@ The JSON payload carries the <code class="inline-code">user_id</code> and <code 
 
 You can also use the **Add Constant** option to add a constant key-value pair which is always sent in the JSON payload, as shown:
 
-<img src="../../assets/warehouse-actions-sources/add-constant.png" />
+<img src="../../../assets/warehouse-actions-sources/add-constant.png" />
 
 The new constant will appear in the table and also in the JSON preview inside the traits, as shown:
 
-<img src="../../assets/warehouse-actions-sources/add-constant-in-json.png" />
+<img src="../../../assets/warehouse-actions-sources/add-constant-in-json.png" />
 
 You can also use the dot notation to define a constant, as shown:
 
-<img src="../../assets/warehouse-actions-sources/dot-notation-constant.png" />
+<img src="../../../assets/warehouse-actions-sources/dot-notation-constant.png" />
 
 Once you have finalized the configuration, click on **Save**.
 
@@ -75,7 +75,7 @@ You can update the selection of columns from which RudderStack sends data to the
 1. Click on the source and select the **Schema** tab.
 2. Then, click on the **Update** button, as shown:
 
-<img src="../../assets/warehouse-actions-sources/update-table-selection.png" />
+<img src="../../../assets/warehouse-actions-sources/update-table-selection.png" />
 
 3. Update your column selection.
 

@@ -14,23 +14,23 @@ With this feature, you can:
 
 <div class="successBlock">
   
-Models is a <a href="https://www.rudderstack.com/docs/sources/reverse-etl/">Reverse ETL</a> feature. For more information on setting up your Reverse ETL sources using models, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
+Models is a <a href="https://www.rudderstack.com/docs/sources/reverse-etl/">Reverse ETL</a> feature. For more information on setting up your Reverse ETL sources using models, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide.
 </div>
 
 <div class="infoBlock">
 
 Currently, RudderStack supports this feature for the following Reverse ETL sources:
 <ul>
-<li><a href="https://www.rudderstack.com/docs/sources/reverse-etl/amazon-redshift/">Amazon Redshift</a></li> 
-<li><a href="https://www.rudderstack.com/docs/sources/reverse-etl/google-bigquery/">Google BigQuery</a></li>
-<li><a href="https://www.rudderstack.com/docs/sources/reverse-etl/postgresql/">PostgreSQL</a> </li>
-<li><a href="https://www.rudderstack.com/docs/sources/reverse-etl/snowflake/">Snowflake</a></li>
+<li><Link to="/sources/reverse-etl/amazon-redshift/">Amazon Redshift</Link></li> 
+<li><Link to="/sources/reverse-etl/google-bigquery/">Google BigQuery</Link></li>
+<li><Link to="/sources/reverse-etl/postgresql/">PostgreSQL</Link></li>
+<li><Link to="/sources/reverse-etl/snowflake/">Snowflake</Link></li>
 </ul>
 </div>
 
 You can find the **Models** option in the left navigation bar of the RudderStack dashboard that lets you view all the existing models, as shown:
 
-<img src="../../assets/warehouse-actions-sources/models-view-dashboard.png" alt="RudderStack Models" />
+<img src="../../../assets/warehouse-actions-sources/models-view-dashboard.png" alt="RudderStack Models" />
 
 ## Creating a new model
 
@@ -40,21 +40,21 @@ Follow these steps to create a model:
 
 2. Click on **Models** in the left navigation bar and select **New model**.
 
-<img src="../../assets/warehouse-actions-sources/models-dashboard.png" alt="RudderStack Models"/>
+<img src="../../../assets/warehouse-actions-sources/models-dashboard.png" alt="RudderStack Models"/>
 
 3. Select the Reverse ETL source for the model and click on **Next**.
 
-<img src="../../assets/warehouse-actions-sources/select-source-model.png" alt="Add Model"/>
+<img src="../../../assets/warehouse-actions-sources/select-source-model.png" alt="Add Model"/>
 
 4. Enter a name for the model.
 5. Select your existing warehouse credentials or click on **Create Credentials from Scratch** and enter the warehouse-specific details.
  
 <div class="warningBlock">
 
-Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <a href="https://www.rudderstack.com/docs/sources/reverse-etl/">Reverse ETL</a> source.
+Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <Link to="/sources/reverse-etl/">Reverse ETL</Link> source.
 </div>
 
-<img src="../../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
+<img src="../../../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
 
 <div class="infoBlock">
 Once you select or add your warehouse credentials and click on <strong>Next</strong>, RudderStack will validate them before you can proceed with the setup. For more information on these validations, refer to the <a href="#faq">FAQ</a> section below.
@@ -63,7 +63,7 @@ Once you select or add your warehouse credentials and click on <strong>Next</str
 6. Next, enter the **Description** for the model. Then, add your custom SQL query in the **Query** section. 
 7. Click on **Run Query** to preview the result.
 
-<img src="../../assets/warehouse-actions-sources/sample-sql-query.png" alt="Sample SQL query" />
+<img src="../../../assets/warehouse-actions-sources/sample-sql-query.png" alt="Sample SQL query" />
 
 <div class="infoBlock">
 
@@ -73,7 +73,7 @@ The <strong>Preview</strong> section displays the preview of the 50 resultant ro
 8. Click on **Next** to create the model.
 
 <div class="infoBlock">
-Once a model is created, you can use it to send the data from a Reverse ETL source to a specified destination. For more information and detailed steps, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
+Once a model is created, you can use it to send the data from a Reverse ETL source to a specified destination. For more information and detailed steps, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide.
 </div>
 
 ## Updating an existing model
@@ -85,11 +85,11 @@ Follow these steps to update an existing model:
 3. If you have edited the query, click on **Run Query** to see if the new query generates the desired result.
 4. Finally, click on **Finish** to save your changes.
 
-<img src="../../assets/warehouse-actions-sources/edit-model-configuration.png" alt="Edit existing Model configuration" />
+<img src="../../../assets/warehouse-actions-sources/edit-model-configuration.png" alt="Edit existing Model configuration" />
 
 <div class="infoBlock">
   
-If you update a model's query, you also need to check and update the relevant JSON mapping or <a href="https://www.rudderstack.com/docs/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapping</a>. To validate if the query is running fine, you can manually trigger a full sync.
+If you update a model's query, you also need to check and update the relevant JSON mapping or <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapping</Link>. To validate if the query is running fine, you can manually trigger a full sync.
 </div>
 
 ## Model details
@@ -98,9 +98,9 @@ To get details about an existing model, you can click on it to see the options l
 
 - **Rename**: Lets you rename the model by clicking on the edit icon next to the model's name.
 
-<img src="../../assets/warehouse-actions-sources/model-rename.png" alt="Rename model" />
+<img src="../../../assets/warehouse-actions-sources/model-rename.png" alt="Rename model" />
 
-- **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to the [Setting Up Connections Using Models](https://www.rudderstack.com/docs/sources/reverse-etl/features/models/) guide.
+- **Sources**: Displays the sources associated with the model. To know more on how to use a model with a source, refer to the <Link to="/sources/reverse-etl/features/models/">Setting Up Connections Using Models</Link> guide.
 - **Configuration**: Displays and lets you edit the SQL **Query** and **Description**.
 - **Settings**: This option contains the following two settings:
 
@@ -109,7 +109,7 @@ To get details about an existing model, you can click on it to see the options l
 
 <div class="infoBlock">
 
-After editing the credentials, it is recommended to validate the query by running it and fetching the preview via the <strong>Configuration</strong> tab as explained in the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/features/models/#updating-an-existing-model">Updating an existing model</a> section above.
+After editing the credentials, it is recommended to validate the query by running it and fetching the preview via the <strong>Configuration</strong> tab as explained in the <Link to="/sources/reverse-etl/features/models/#updating-an-existing-model">Updating an existing model</Link>section above.
 </div>
 
 ## FAQ
@@ -118,7 +118,7 @@ After editing the credentials, it is recommended to validate the query by runnin
 
 When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
 
-<img src="../../assets/validations.png" alt="Verifying Credentials" />
+<img src="../../../assets/validations.png" alt="Verifying Credentials" />
 
 These options are explained below:
 
@@ -130,7 +130,7 @@ If this option gives an error, it means that one or more fields specified in the
 </div>
 
 * **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
-* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema that you have created by successfully running the commands in the **User Permissions** section of the relevant [Reverse ETL source](https://www.rudderstack.com/docs/sources/reverse-etl/). 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the RudderStack schema that you have created by successfully running the commands in the **User Permissions** section of the relevant <Link to="/sources/reverse-etl">Reverse ETL source</Link>. 
 
 <div class="warningBlock">
 

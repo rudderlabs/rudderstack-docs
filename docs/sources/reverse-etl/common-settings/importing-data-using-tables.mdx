@@ -8,14 +8,14 @@ This guide lists the settings required to import and sync data from your warehou
 
 <div class="infoBlock">
 
-This guide is applicable for Reverse ETL sources configured using the <strong>Table</strong> option. If you have configured your Reverse ETL source using the <strong>Model</strong> option, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</a> guide.
+This guide is applicable for Reverse ETL sources configured using the <strong>Table</strong> option. If you have configured your Reverse ETL source using the <strong>Model</strong> option, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide.
 </div>
 
 ## Data import settings
 
 The settings to import and sync data from your warehouse table are listed below:
 
-<img src="../../assets/warehouse-actions-sources/schema-tab-options.png" alt="Schema tab options in RudderStack" />
+<img src="../../../assets/warehouse-actions-sources/schema-tab-options.png" alt="Schema tab options in RudderStack" />
 
 - **Schema**: Specify your warehouse schema.
 - **Table**: Specify the table residing within the above schema from which you want RudderStack to import the data.
@@ -23,19 +23,19 @@ The settings to import and sync data from your warehouse table are listed below:
 
 <div class="infoBlock">
 
-RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</a> guide.
+RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <Link to="/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</Link> guide.
 </div>
 
 - **Choose user identifier**: Choose atleast one user identifier from `user_id` and `anonymous_id` from the dropdown.
 - You will also be able to preview a snippet of your data, as shown:
 
-<img src="../../assets/warehouse-actions-sources/models-data-snippet.png" alt="Schema tab options in RudderStack" />
+<img src="../../../assets/warehouse-actions-sources/models-data-snippet.png" alt="Schema tab options in RudderStack" />
 
 - Here, you can select all or only specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**. You can also preview the resulting JSON on the right.
 
 <div class="infoBlock">
 
-Alternatively, you can map the columns using the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</a> feature. However, note that this feature is currently supported only for selective destinations.
+Alternatively, you can map the columns using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature. However, note that this feature is currently supported only for selective destinations.
 </div>
 
 <div class="infoBlock">
@@ -47,15 +47,15 @@ The JSON payload carries the <code class="inline-code">user_id</code> and <code 
 
 You can also use the **Add Constant** option to add a constant key-value pair which is always sent in the JSON payload, as shown:
 
-<img src="../../assets/warehouse-actions-sources/add-constant.png" />
+<img src="../../../assets/warehouse-actions-sources/add-constant.png" />
 
 The new constant will appear in the table and also in the JSON preview inside the traits, as shown:
 
-<img src="../../assets/warehouse-actions-sources/add-constant-in-json.png" />
+<img src="../../../assets/warehouse-actions-sources/add-constant-in-json.png" />
 
 You can also use the dot notation to define a constant, as shown:
 
-<img src="../../assets/warehouse-actions-sources/dot-notation-constant.png" />
+<img src="../../../assets/warehouse-actions-sources/dot-notation-constant.png" />
 
 Once you have finalized the configuration, click on **Save**.
 
@@ -66,7 +66,7 @@ To update an existing configuration, follow these steps:
 1. Go to the **Schema** tab of your configured source.
 2. Click on the **Update** button on the top right, as shown:
 
-<img src="../../assets/warehouse-actions-sources/update-table-selection-wh.png" alt="Updating table selection" />
+<img src="../../../assets/warehouse-actions-sources/update-table-selection-wh.png" alt="Updating table selection" />
 
 3. Update your column selection.
 

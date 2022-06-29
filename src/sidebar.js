@@ -564,6 +564,7 @@ export const jsonData = [
             {
                 key: "amazon-redshift",
                 title: "Amazon Redshift",
+                sectionTitle: "Sources",
                 link: "/sources/reverse-etl/amazon-redshift/",
                 content: []
             },
@@ -599,58 +600,51 @@ export const jsonData = [
                 title: "Snowflake",
                 link: "/sources/reverse-etl/snowflake/",
                 content: []
+            },
+
+            {
+                key: "models",
+                title: "Models",
+                sectionTitle: "Features",
+                link: "/sources/reverse-etl/features/models/",
+                content: []
             }, {
-                key: "features",
-                title: "Features",
-                link: "/sources/reverse-etl/features/",
-                content: [
-                    {
-                        key: "models",
-                        title: "Models",
-                        link: "/sources/reverse-etl/features/models/",
-                        content: []
-                    }, {
-                        key: "airflow-provider",
-                        title: "Airflow Provider",
-                        link: "/sources/reverse-etl/features/airflow-provider/",
-                        content: []
-                    }, {
-                        key: "visual-data-mapper",
-                        title: "Visual Data Mapper",
-                        link: "/sources/reverse-etl/features/visual-data-mapper/",
-                        content: []
-                    },
-                ]
+                key: "airflow-provider",
+                title: "Airflow Provider",
+                link: "/sources/reverse-etl/features/airflow-provider/",
+                content: []
             }, {
-                key: "common-settings",
-                title: "Common Settings",
-                link: "/sources/reverse-etl/common-settings/",
-                content: [
-                    {
-                        key: "sync-modes",
-                        title: "Sync Modes",
-                        link: "/sources/reverse-etl/common-settings/sync-modes/",
-                        content: []
-                    }, {
-                        key: "sync-schedule-settings",
-                        title: "Sync Schedule",
-                        link: "/sources/reverse-etl/common-settings/sync-schedule-settings/",
-                        content: []
-                    }, {
-                        key: "importing-data-using-tables",
-                        title: "Importing Data using Tables",
-                        link: "/sources/reverse-etl/common-settings/importing-data-using-tables/",
-                        content: []
-                    }, {
-                        key: "importing-data-using-models",
-                        title: "Importing Data using Models",
-                        link: "/sources/reverse-etl/common-settings/importing-data-using-models/",
-                        content: []
-                    },
-                ]
+                key: "visual-data-mapper",
+                title: "Visual Data Mapper",
+                link: "/sources/reverse-etl/features/visual-data-mapper/",
+                content: []
+            },
+            {
+                key: "sync-modes",
+                title: "Sync Modes",
+                sectionTitle: "Common Settings",
+                link: "/sources/reverse-etl/common-settings/sync-modes/",
+                content: []
             }, {
+                key: "sync-schedule-settings",
+                title: "Sync Schedule",
+                link: "/sources/reverse-etl/common-settings/sync-schedule-settings/",
+                content: []
+            }, {
+                key: "importing-data-using-tables",
+                title: "Importing Data using Tables",
+                link: "/sources/reverse-etl/common-settings/importing-data-using-tables/",
+                content: []
+            }, {
+                key: "importing-data-using-models",
+                title: "Importing Data using Models",
+                link: "/sources/reverse-etl/common-settings/importing-data-using-models/",
+                content: []
+            },
+            {
                 key: "faq",
                 title: "FAQ",
+                sectionTitle: "",
                 link: "/sources/reverse-etl/faq/",
                 content: []
             },
