@@ -1,18 +1,17 @@
 ---
 title: "Kissmetrics"
-description: Step-by-step guide to send event data from RudderStack to Kissmetrics
+description: Step-by-step guide on sending your event data from RudderStack to Kissmetrics
 ---
 
 [Kissmetrics](https://www.kissmetrics.io/) is a product analytics platform to help you increase conversion, as well as drive customer engagement and retention.
 
 RudderStack supports sending your events from cloud mode S2S \(Server to Server\) and Web Native SDKs by calling our APIs.
 
-<div class="successBlock">
-
-Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kissmetrics">GitHub repo</a>.
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kissmetrics">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
 To enable sending data to Kissmetrics, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from our SDKs will start to flow to Kissmetrics.
 
@@ -24,8 +23,7 @@ Before configuring Kissmetrics as a destination in RudderStack, please make sure
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that Kissmetrics supports the source type, perform the steps below:
@@ -50,7 +48,7 @@ You will need to enable this setting while building reports in Kissmetrics.
 
 ## Identify
 
-Calling `rudderanalytics.identify()` pushes an `identify` call with the `userId` and `set` with the `user-traits` to the Kissmetrics queue object while using the the Native SDK. For more information on the `identify` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+Calling `rudderanalytics.identify()` pushes an `identify` call with the `userId` and `set` with the `user-traits` to the Kissmetrics queue object while using the the Native SDK. For more information on the `identify` call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 For sending data through the API's cloud mode, we call the `http://trk.kissmetrics.com/s` end-point for registering users and their traits.
 
@@ -87,7 +85,7 @@ Nested objects are flattened as <code class="inline-code">a.b.c</code> for input
 
 ## Page
 
-Calling `rudderanalytics.page()` will record the page properties for event `Viewed <category> <name> page`. For more information on the `page` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+Calling `rudderanalytics.page()` will record the page properties for event `Viewed <category> <name> page`. For more information on the `page` call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 A sample page event is as shown:
 
@@ -121,7 +119,7 @@ The above snippet will pass the following to the `_kmq kissmetrics` object:
 
 ## Track
 
-Calling `rudderanalytics.track()` pushes a record with the event name and the associated properties \_\_when using the native SDK integration. For more information on the `track` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+Calling `rudderanalytics.track()` pushes a record with the event name and the associated properties \_\_when using the native SDK integration. For more information on the `track` call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 For sending data through the API's cloud mode, we call the [http://trk.kissmetrics.com/e](http://trk.kissmetrics.com/e) end-point for registering the event and its associated properties.
 
@@ -173,7 +171,7 @@ will pass the following to the `_kmq kissmetrics` object.
 
 ## Screen
 
-The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) or [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) SDK it will register in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
+The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the <Link to="/sources/sdks/rudderstack-ios-sdk/">iOS</Link> or <Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> SDK it will register in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
 
 Here is a sample `screen` call in using RudderStack iOS SDK:
 
@@ -190,6 +188,6 @@ You can obtain the Kissmetrics API Key by logging into your Kissmetrics account,
 
 <img src="../../assets/image (13) (2).png" /><span class="imageTitle">Kissmetrics API Key</span>
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring Kissmetrics with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!

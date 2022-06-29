@@ -1,13 +1,13 @@
 ---
 title: "Google Tag Manager"
 description: >-
-  Step-by-step guide to send your event data from RudderStack to Google Tag
+  Step-by-step guide on sending your event data from RudderStack to Google Tag
   Manager
 ---
 
 [**Google Tag Manager**](https://support.google.com/tagmanager) is a popular tag management system that lets you update tags for your web or mobile applications. Once added to your project, you can configure, deploy, and measure your tags from a web-based UI without needing any additional code.
 
-RudderStack supports Google Tag Manager as a destination and enables you to send events to the **GTM dataLayer** using the [**JavaScript SDK**](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/).
+RudderStack supports Google Tag Manager as a destination and enables you to send events to the **GTM dataLayer** using the <Link to="/sources/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link>.
 
 ## Getting started
 
@@ -19,8 +19,7 @@ Before configuring Google Tag Manager (GTM) as a destination in RudderStack, ver
 | **Cloud mode**      | -             | -          | -          |
 
 <div class="infoBlock">
- 
- To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that your source platform supports sending events to Google Tag Manager, follow these steps:
@@ -109,7 +108,7 @@ The `track` call lets you record any user actions along with the properties asso
 You can use the RudderStack <code class="inline-code">track</code> events to populate the Google Tag Manager <code class="inline-code">dataLayer</code> once you have set up and enabled Google Tag Manager in RudderStack.
 </div>
 
-Calling the RudderStack SDK `track` method with the event and its properties similarly passes the data to GTM as seen in the [**Page**](https://www.rudderstack.com/docs/destinations/tag-managers/google-tag-manager/#page) section above.
+Calling the RudderStack SDK `track` method with the event and its properties similarly passes the data to GTM as seen in the <Link to="#page">`page`</Link> section above.
 
 ```javascript
 rudderanalytics.track("Track me", {
@@ -152,4 +151,4 @@ If you are getting a 404 error on the JavaScript console of your web page relate
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

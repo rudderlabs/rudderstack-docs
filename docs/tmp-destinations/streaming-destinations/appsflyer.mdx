@@ -1,15 +1,14 @@
 ---
 title: "AppsFlyer"
-description: Step-by-step guide to send event data from RudderStack to AppsFlyer
+description: Step-by-step guide on sending your event data from RudderStack to AppsFlyer
 ---
 
 [AppsFlyer](https://www.appsflyer.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers intuitive dashboards, real-time data reports, and a unique deep linking technology to understand your customers better. 
 
 RudderStack supports AppsFlyer as a destination to which you can seamlessly send your customer data.
 
-<div class="successBlock">
-
-  Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/af">GitHub repository</a>.
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/af">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -22,15 +21,14 @@ Before configuring AppsFlyer as a destination in RudderStack, verify if the sour
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between the cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 <div class="successBlock">
 
 It is recommended to use the the cloud mode to send events to AppsFlyer in the following scenarios:
 <ul>
-<li>If you want to use RudderStack's <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> feature</li> 
+<li>If you want to use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature</li> 
 <li>If you want to send server-side events</li>
 </ul>
 </div>
@@ -78,7 +76,7 @@ For more information on this field, refer to the <a href="https://support.appsfl
 
 <div class="infoBlock">
   
-Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> guide for more information on this setting.
+Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
 </div>
 
 - **Use native SDK to send events**: By default, this setting is enabled. To send events via the cloud mode or device mode, you can toggle this setting on or off.
@@ -632,9 +630,9 @@ export function transformEvent(event, metadata) {
 
 <div class="warningBlock">
 
-We recommend sending events to AppsFlyer via the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">cloud mode</a> only in the following two scenarios:
+We recommend sending events to AppsFlyer via the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> only in the following two scenarios:
 <ul>
-<li>To use RudderStack's <a href="https://www.rudderstack.com/docs/transformations/">Transformations</a> feature to transform your events</li> 
+<li>To use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature to transform your events</li> 
 <li>To send server-side events</li>
 </ul>
 </div>
@@ -714,8 +712,7 @@ const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId()
 The `identify` call sets `userId` through the `setCustomerUserId` method of `AppsFlyerLib`.
 
 <div class="infoBlock">
-
-  RudderStack supports the <code class="inline-code">identify</code> calls only in the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a>.
+RudderStack supports the <code class="inline-code">identify</code> calls only in the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 </div>
 
 RudderStack sets `email` from the event traits to AppsFlyer using the native SDK's `setUserEmails` method, as shown:
@@ -782,15 +779,15 @@ For the automatically recorded `screen` calls, RudderStack obtains a Boolean pro
 
 RudderStack utilizes the advertising ID for the AppsFlyer destination if it is set as per the following specifications:
 
-- For iOS: [**Advertisement ID documentation**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#advertisement-id)
+- For iOS: [**Advertisement ID documentation**](https://rudderstack.com/docs/sources/sdks/rudderstack-ios-sdk/#advertisement-id)
 
-- For Android: [**Advertisement ID documentation**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#advertisement-id)
+- For Android: [**Advertisement ID documentation**](https://rudderstack.com/docs/sources/sdks/rudderstack-android-sdk/#advertisement-id)
 
 You can find the advertising ID in your event's `context.device.advertisementId`.
 
 ## ATTrackingManager
 
-If the `ATTrackingManager.trackingAuthorizationStatus` is passed according to [**ATTrackingManager authorization consent**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#attrackingmanager-authorization-consent), RudderStack will utilize it for the AppsFlyer destination. 
+If the `ATTrackingManager.trackingAuthorizationStatus` is passed according to [**ATTrackingManager authorization consent**](https://rudderstack.com/docs/sources/sdks/rudderstack-ios-sdk/#attrackingmanager-authorization-consent), RudderStack will utilize it for the AppsFlyer destination. 
 
 You can find `trackingAuthorizationStatus` in your event's `context.device.attTrackingStatus`.
 
@@ -802,13 +799,13 @@ This section covers some of the possible error messages you may encounter while 
 
 This error occurs when either the `OS Name` or your respective App ID is not set. 
 
-You can set the **App ID** in your [**settings**](https://rudderstack.com/docs/destinations/attribution/appsflyer/#getting-started). 
+You can set the **App ID** in your [**settings**](#getting-started). 
 
 The SDK automatically sets the `OS Name` and it can be found in `context.os.name`.
 
 ### Appsflyer ID is not set. Rejecting the event.
 
-This error occurs when the `appsflyerExternalId` is not set. Refer to the [**Sending events via the RudderStack cloud mode**](https://rudderstack.com/docs/destinations/attribution/appsflyer/#sending-events-via-the-rudderstack-cloud-mode) section for more information on setting the `appsflyerExternalId`.
+This error occurs when the `appsflyerExternalId` is not set. Refer to the [**Sending events via the RudderStack cloud mode**](#sending-events-via-the-rudderstack-cloud-mode) section for more information on setting the `appsflyerExternalId`.
 
 ## Debugging
 
@@ -881,4 +878,4 @@ Once you obtain the AppsFlyer ID, you can send events via the cloud mode by by i
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

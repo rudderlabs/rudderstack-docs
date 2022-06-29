@@ -1,18 +1,17 @@
 ---
 title: "Kochava"
-description: Step-by-step guide to send event data from RudderStack to Kochava.
+description: Step-by-step guide on sending your event data from RudderStack to Kochava.
 ---
 
 [Kochava](https://www.kochava.com/) is a leading mobile measurement and app analytics platform that offers unique dynamic deep linking, audience segmenting and data accessibility features for your business.
 
 RudderStack allows you to send relevant events to Kochava through a S2S \(Server-to-Server\) integration with the platform.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kochava">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kochava">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Kochava. Refer the table below:
 
@@ -22,9 +21,7 @@ Before configuring your source and destination on the RudderStack app, please ch
 | **Cloud mode**      | -       | **Supported** | -          |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Kochava, perform the steps below:
@@ -235,7 +232,7 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 
 ## Track
 
-The `track` event captures information related to the actions performed by the user. For more information, refer to the the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+The `track` event captures information related to the actions performed by the user. For more information, refer to the the <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 RudderStack transforms the following events to Kochava's Standard Events, as shown in the table below:
 
@@ -505,6 +502,6 @@ To get your Kochava app GUID, please follow these steps:
 
 For more information, please check the [Kochava support guide](https://support.kochava.com/reference-information/locating-an-app-guid/).
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring Kochava with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!

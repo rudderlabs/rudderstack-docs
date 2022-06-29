@@ -1,14 +1,14 @@
 ---
 title: "Customer.io"
-description: Step-by-step guide to send your event data from RudderStack to Customer.io
+description: Step-by-step guide on sending your event data from RudderStack to Customer.io
 ---
 
 [Customer.io](https://customer.io/) is a popular platform for sending automated messages and emails to your customers, with a focus on security and privacy. With Customer.io, you get complete information about your customers in one place, and use it to create personalized messages and campaigns for them.
 
 RudderStack supports Customer.io as a destination to which you can seamlessly send your event data.
 
-<div class="successBlock">
-Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/customerio">GitHub repository</a>.
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/customerio">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -21,7 +21,7 @@ Before configuring Customer.io as a destination in RudderStack, verify if the so
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, read the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Customer.io, follow these steps:
@@ -39,7 +39,7 @@ The connection settings required to configure Customer.io as a destination in Ru
 - **API Key**: Enter your Customer.io API key. 
 
 <div class="infoBlock">
-For more information on obtaining your Customer.io site ID and API key, refer to the <a href="https://rudderstack.com/docs/destinations/marketing/customer.io/#where-do-i-find-the-api-key-and-site-id-for-configuring-customerio-in-rudderstack">FAQ</a> section below.
+For more information on obtaining your Customer.io site ID and API key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 - **Event sent after setting device token**: Enter the name of the event that is fired immediately after setting the device token.
@@ -55,14 +55,14 @@ Refer to the <a href="https://customer.io/docs/api/?region=eu#section/Overview">
 - **OneTrust Cookie Category**: Specify the OneTrust category name for mapping the OneTrust consent settings to RudderStack's consent purposes.
 
 <div class="infoBlock">
-For more information on this setting, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust Consent Manager</a> guide.
+For more information on this setting, refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust Consent Manager</Link> guide.
 </div>
 
 Finally, click on **Next** to complete the setup. Customer.io will now be enabled as a destination in RudderStack.
 
 ## Identify
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify"><code class="inline-code">identify</code></Link> call sends the event data to Customer.io along with the properties that you pass as the RudderStack traits.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call sends the event data to Customer.io along with the properties that you pass as the RudderStack traits.
 
 <div class="infoBlock">
 <code class="inline-code">userId</code> is a mandatory field for Customer.io. If it is not provided, RudderStack uses <code class="inline-code">anonymousId</code> instead.
@@ -104,7 +104,7 @@ rudderanalytics.identify("userId", {
 
 ## Page
 
-If you are using a native SDK, the Customer.io JavaScript snippet is loaded and captures the page view automatically. You can also call `rudderanalytics.page()` that sends the <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> event along with any associated properties that you want to pass along with the call.
+If you are using a native SDK, the Customer.io JavaScript snippet is loaded and captures the page view automatically. You can also call `rudderanalytics.page()` that sends the <Link to="/event-spec/standard-events/page">`page`</Link> event along with any associated properties that you want to pass along with the call.
 
 A sample `page` call is as shown below:
 
@@ -121,9 +121,9 @@ rudderanalytics.page("home", {
 
 ## Screen
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/screen"><code class="inline-code">screen</code></Link> call lets you record whenever your user views their mobile screen, with any additional relevant information about the screen. 
+The <Link to="/event-spec/standard-events/screen">`screen`</Link> call lets you record whenever your user views their mobile screen, with any additional relevant information about the screen. 
 
-If you have turned on the screen views in your app implementation from the [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk) or [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk) SDK, they will be registered as `Viewed <screen_name> Screen` under the **Activities** tab for the user. 
+If you have turned on the screen views in your app implementation from the <Link to="/sources/sdks/rudderstack-ios-sdk/">iOS</Link> or <Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> SDK, they will be registered as `Viewed <screen_name> Screen` under the **Activities** tab for the user. 
 
 RudderStack will also forward the event properties passed along with the `screen` call to Customer.io as they are received.
 
@@ -138,7 +138,7 @@ The above event will be transformed as `Viewed Main Screen` and sent to Customer
 
 ## Track
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track"><code class="inline-code">track</code></Link> call lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 A sample `track` call is as shown below:
 
@@ -156,7 +156,7 @@ For anonymous users, Customer.io does not allow an event name of size more than 
 
 ## Alias
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias/">`alias`</Link> call lets you merge different identities of a known user. RudderStack merges the attributes of both the user identities by retaining the attributes of the primary identity and merging the additional attributes of the secondary identity.
+The <Link to="/event-spec/standard-events/alias">`alias`</Link> call lets you merge different identities of a known user. RudderStack merges the attributes of both the user identities by retaining the attributes of the primary identity and merging the additional attributes of the secondary identity.
 
 A sample `alias` call is as shown below:
 

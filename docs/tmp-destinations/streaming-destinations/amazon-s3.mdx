@@ -1,15 +1,14 @@
 ---
 title: "Amazon S3"
-description: Step-by-step guide to set up Amazon S3 as a destination in RudderStack.
+description: Step-by-step guide on sending your event data from RudderStack to Amazon S3.
 ---
 
 [Amazon S3](https://aws.amazon.com/s3/) \(Simple Storage Service\) is a cloud-based object storage service that allows customers and businesses to store their data securely, and at scale. With an easy to use interface and management features, S3 allows for effortless organizing of data to meet the business-specific requirements.
 
 RudderStack allows you to configure Amazon S3 as a destination to which you can dump your event data seamlessly.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/s3">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/s3">GitHub repository</a>.
 </div>
 
 ## Setting up Amazon S3
@@ -128,11 +127,10 @@ To do so, please follow these steps:
 - Next, in the **Connection Settings**, fill all the fields with the relevant information \(please refer to the Setting up Amazon S3 section above\) and click on **Next**.
 
 <img src="../../assets/screenshot-2020-06-01-at-2.29.13-pm.png" />
-<span class="imageTitle">S3 Destination Settings</span>
 
 <div class="infoBlock">
 
-If the AWS credentials are already configured on your data plane's environment via [environment credentials](https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials) or by following the [below steps](https://rudderstack.com/docs/destinations/storage-platforms/amazon-s3/#permissions), you can skip adding the credentials in this step. Only the S3 Bucket Name is required.
+If the AWS credentials are already configured on your data plane's environment via [environment credentials](https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials) or by following these <Link to="/tmp-destinations/streaming-destinations/amazon-s3/#permissions">steps</Link>, you can skip adding the credentials in this step. Only the S3 Bucket Name is required.
 
 </div>
 
@@ -165,6 +163,6 @@ You can also set the Default Encryption property to `AES-256` for the bucket, by
 
 <img src="../../assets/screenshot-2020-06-01-at-2.58.08-pm.png" />
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring Amazon S3 with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!

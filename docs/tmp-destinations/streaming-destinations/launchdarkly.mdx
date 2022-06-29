@@ -4,8 +4,6 @@ description: >-
  Step-by-step guide on sending your event data from RudderStack to LaunchDarkly.
 ---
 
-# LaunchDarkly
-
 [LaunchDarkly](https://launchdarkly.com/) is a popular feature management platform that offers cutting-edge A/B testing and experimentation functionalities. It lets you efficiently automate and manage feature flags and improve overall product workflow and software quality.
 
 RudderStack supports LaunchDarkly as a destination to which you can seamlessly send your data for flag management.
@@ -20,8 +18,7 @@ Before configuring LaunchDarkly as a destination in RudderStack, verify if the s
 | **Cloud mode**      | - | -          | - |
 
 <div class="infoBlock">
-    
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to LaunchDarkly, follow these steps:
@@ -38,16 +35,14 @@ To successfully configure LaunchDarkly as a destination, you will need to config
 * **Client-side ID**: Enter the client-side ID of your LaunchDarkly project.
 
 <div class="infoBlock">
- 
 For more information on getting the LaunchDarkly client-side ID, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 ## Identify
 
-The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you create or update a user in LaunchDarkly.
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you create or update a user in LaunchDarkly.
 
 <div class="warningBlock">
-
 You must call <code class="inline-code">identify</code> before making any <code class="inline-code">track</code> or <code class="inline-code">alias</code> calls.
 </div>
 
@@ -101,17 +96,15 @@ The following table lists the supported fields for the `traits` object in the `i
 | `secondary` | String | Optional | User's secondary identifier. |
 
 <div class="infoBlock">
-
 If you have chosen to bucket the users by a specific attribute, the <code class="inline-code">secondary</code> field can be used to further distinguish the users who are otherwise identical as per that attribute. 
 </div>
 
 ## Track
 
-The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call lets you record user events and send them to LaunchDarkly as custom conversion metrics for your experiments.
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record user events and send them to LaunchDarkly as custom conversion metrics for your experiments.
 
 <div class="warningBlock">
-
-As mentioned above, you must call <code class="inline-code">identify</code> before making any <code class="inline-code">track</code> calls to LaunchDarkly.
+As mentioned above, you must call <code class="inline-code">identify</code> before sending any <code class="inline-code">track</code> events to LaunchDarkly.
 </div>
 
 A sample `track` call is as shown:
@@ -124,7 +117,7 @@ rudderanalytics.track("Test Event", {
 
 ## Alias
 
-The `alias` call lets you merge different identities of a known user. You can explicitly change the identity of a user via this call.
+The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you merge different identities of a known user. You can explicitly change the identity of a user via this call.
 
 A sample `alias` call is shown below:
 
@@ -138,7 +131,7 @@ rudderanalytics.alias("newUserId","userId");
 
 To get your LaunchDarkly client-side ID, follow these steps:
 
-1. Log into your [**LaunchDarkly dashboard**](https://app.launchdarkly.com/).
+1. Log into your [LaunchDarkly dashboard](https://app.launchdarkly.com/).
 2. Select your project, as shown:
 
 <img src="../../assets/event-stream-destinations/launchdarkly-projects.png" alt="LaunchDarkly projects" />

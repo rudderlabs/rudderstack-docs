@@ -8,8 +8,7 @@ description: >-
 This document covers the necessary settings and configurations to send events to Adobe Analytics via your mobile device mode.
 
 <div class="successBlock">
-
-  Mobile <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode"> device mode </a> refers to using the Android or iOS SDK to send your events directly to Adobe Analytics.
+Mobile <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link> refers to using the Android or iOS SDK to send your events directly to Adobe Analytics.
 </div>
 
 To configure Adobe Analytics via the mobile device mode, follow these steps:
@@ -42,72 +41,6 @@ In the File Inspector, add the JSON file to the `AdobeMobileSDK` target.
 Then, follow the instructions in the [**Adobe documentation**](https://experienceleague.adobe.com/docs/media-analytics/using/sdk-implement/setup/set-up-ios.html?lang=en#) to create the report suite.
 
 ## Adding Device Mode Integration
-
-<!--{% tabs %}
-{% tab title="iOS" %}
-Follow these steps to add Adobe Analytics to your iOS project:
-
-- In your `Podfile`, add the `Rudder-Adobe` extension:
-
-```ruby
-pod 'Rudder-Adobe'
-```
-
-- After adding the dependency followed by `pod install` , add the imports to your `AppDelegate.m` file as shown:
-
-```objectivec
-#import <Rudder/Rudder.h>
-#import <RudderAdobeFactory.h>
-```
-
-- Then, add the initialization of your `RSClient` as shown:
-
-```objectivec
-RSConfigBuilder *configBuilder = [[RSConfigBuilder alloc] init];
-[configBuilder withDataPlaneUrl:DATA_PLANE_URL];
-[configBuilder withFactory:[RudderAdobeFactory instance]];
-[RSClient getInstance:<YOUR_WRITE_KEY> config:[configBuilder build]];
-```
-
-{% endtab %}
-
-{% tab title="Android" %}
-To add Adobe Analytics to your Android project, follow these steps :
-
-- Open your `app/build.gradle` file and add the following under the `dependencies` section :
-
-```groovy
-implementation 'com.rudderstack.android.sdk:core:1.+'
-implementation 'com.google.code.gson:gson:2.8.6'
-implementation 'com.rudderstack.android.integration:adobe:1.0.0'
-
-// Adobe Analytics
-implementation 'com.adobe.mobile:adobeMobileLibrary:4.18.2'
-```
-
-- Initialize the RudderStack SDK in the `Application` class' `onCreate()` method as shown:
-
-```kotlin
-// initializing Rudder SDK
-val rudderClient = RudderClient.getInstance(
-    this,
-    WRITE_KEY,
-    RudderConfig.Builder()
-        .withDataPlaneUrl(DATA_PLANE_URL)
-        .withFactory(AdobeIntegrationFactory.FACTORY)
-        .build()
-)
-```
-
-- For Android, make sure you add these permissions to your `AndroidManifest.xml`:
-
-```groovy
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -210,8 +143,7 @@ Map all the events defined in the [**Adobe Mobile Services**](https://mobilemark
 Map all the properties defined at the [**Adobe Mobile Services**](https://mobilemarketing.adobe.com/) dashboard in the **Map Rudder Context data to Adobe Context Data** settings in the Rudderstack dashboard.
 
 <div class="warningBlock">
-
-For mobile device mode, RudderStack currently does not support the <a href="https://rudderstack.com/docs/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#initialize-heartbeat">Initialize Heartbeat</a> and <a href="https://rudderstack.com/docs/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat#heartbeat-playhead-update">Heartbeat Playhead Update</a> video events.
+For mobile device mode, RudderStack currently does not support the <Link to="/tmp-destinations/streaming-destinations/adobe-analytics/adobe-analytics-heartbeat/#initialize-heartbeat">Initialize Heartbeat</Link> and <Link to="/tmp-destinations/streaming-destinations/adobe-analytics/adobe-analytics-heartbeat/#heartbeat-playhead-update">Heartbeat Playhead Update</Link> video events.
 </div>
 
 ## Identify
@@ -219,24 +151,6 @@ For mobile device mode, RudderStack currently does not support the <a href="http
 When you make an `identify` call, RudderStack sets the Adobe `visitorId` to the value of the user’s RudderStack `userId`.
 
 A sample `identify` call looks like the following:
-
-<!--{% tabs %}
-{% tab title="iOS" %}
-
-```objectivec
-[[RSClient sharedInstance] identify:@"Adobe_iOS_user"];
-```
-
-{% endtab %}
-
-{% tab title="Android" %}
-
-```java
-MainApplication.rudderClient.identify("AdobeUser");
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -268,39 +182,6 @@ MainApplication.rudderClient.identify("AdobeUser");
 When you make a `track` call, RudderStack sends an Adobe `trackAction` event and passes your event name and any associated properties mapped to Adobe as context data values.
 
 A sample `track` call is as shown:
-
-<!--{% tabs %}
-{% tab title="iOS" %}
-
-```objectivec
-[[RSClient sharedInstance] track:@"Order Completed" properties:@{
-        @"orderId" : @2002,
-        @"category" : @"Cloths",
-        @"productId" : @"2200013",
-        @"name": @"Shirt",
-        @"price" : @10001,
-        @"quantity" : @12
-    }];
-```
-
-{% endtab %}
-
-{% tab title="Android" %}
-
-```java
-MainApplication.rudderClient.track("Order Completed",
-            RudderProperty()
-                .putValue("orderId", "12345")
-                .putValue("category", "category")
-                .putValue("revenue", 99.9)
-                .putValue("shipping", 13.99)
-                .putValue("tax", 20.99)
-                .putValue("promotion_id", "PROMO_1234")
-        );
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -348,30 +229,6 @@ When you make a `screen` call, RudderStack sends an Adobe `trackState` event and
 
 A sample `screen` call looks like the following:
 
-<!--{% tabs %}
-{% tab title="iOS" %}
-
-```objectivec
-[[RSClient sharedInstance] track:@"Home Screen"
-                              properties:@{
-                                  @"Width" : @"13"
-                              }];
-```
-
-{% endtab %}
-
-{% tab title="Android" %}
-
-```java
-MainApplication.rudderClient.screen("Home Screen",
-            RudderProperty()
-                .putValue("Width",12)
-        )
-```
-
-{% endtab %}
-{% endtabs %} -->
-
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
@@ -408,29 +265,10 @@ MainApplication.rudderClient.screen("Home Screen",
 Calling `reset` sets the user’s Adobe `visitorId` to `null`.
 
 <div class="infoBlock">
-
 The default value of Adobe's <code class="inline-code">visitorId</code> is <code class="inline-code">null</code> until you explicitly set it (by calling <code class="inline-code">identify</code>).
 </div>
 
 A sample `reset` call is as shown:
-
-<!--{% tabs %}
-{% tab title="iOS" %}
-
-```objectivec
-[[RSClient sharedInstance] reset];
-```
-
-{% endtab %}
-
-{% tab title="Android" %}
-
-```java
-MainApplication.rudderClient.reset()
-```
-
-{% endtab %}
-{% endtabs %} -->
 
 <Tabs>
   <TabList>
@@ -468,10 +306,9 @@ MainApplication.rudderClient.flush()
 ```
 
 <div class="infoBlock">
-
 The <code class="inline-code">flush</code> call is supported only in Android.
 </div>
 
-## Contact Us
+## Contact us
 
-For more information on any of the sections mentioned in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on any of the sections mentioned in this guide, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

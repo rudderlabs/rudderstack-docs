@@ -1,15 +1,14 @@
 ---
 title: "Amplitude"
-description: Step-by-step guide to send your event data from RudderStack to Amplitude
+description: Step-by-step guide on sending your event data from RudderStack to Amplitude
 ---
 
 [Amplitude](https://amplitude.com/) is a comprehensive product analytics platform for the web as well as mobile platforms. Over 12,000 companies use Amplitude to get useful marketing insights that drive product strategy and conversion and retention of their customers.
 
 RudderStack supports sending events from the RudderStack SDKs to Amplitude through our data plane and Web connection mode.
 
-<div class="successBlock">
-
-  <strong>Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/am">GitHub repo</a></strong>.
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/am">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -22,9 +21,7 @@ Before configuring Amplitude as a destination in RudderStack, verify if the sour
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Amplitude, follow these steps:
@@ -109,8 +106,7 @@ Amplitude computes <code class="inline-code">device_family</code> as <code class
 ### Client-side events filtering
 
 <div class="infoBlock">
-
-Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Events Filtering</a> guide for more information on this setting.
+Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
 </div>
 
 ### Web SDK settings
@@ -123,7 +119,7 @@ Refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstac
 
 <div class="infoBlock">
 
-For more information on explicitly setting the <code class="inline-code">anonymousId</code>, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#overriding-the-anonymousid-using-setanonymousid">JavaScript SDK</a> documentation.
+For more information on explicitly setting the <code class="inline-code">anonymousId</code>, refer to <Link to="/sources/sdks/rudderstack-javascript-sdk/#overriding-the-anonymousid-using-setanonymousid">RudderStack's JavaScript SDK</Link> documentation.
 </div>
 
 - **Set Device ID from the URL parameter**: If this setting is enabled, the Amplitude SDK will parse the URL parameter and set the Device ID from `amp_device_id`.
@@ -494,9 +490,7 @@ rudderanalytics.track("Order Completed", {
 The above call will generate one `Order Completed` event, 2 individual `Product purchased` events and 2 revenue events \(one with `$price` as `15` and `$quantity` as `2` and the other one with `$price` as `20` and `$quantity` as `1` \) at Amplitude, provided that in the destination settings dashboard: `Track revenue per product settings` is enabled. The two separate revenue events are generated for device mode. For cloud mode, revenue will be tracked along with the 2 `Product purchased` events.
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 <div class="infoBlock">
@@ -522,9 +516,9 @@ rudderanalytics.identify(
 
 A sample dashboard after making the above `identify`, `page`, and `track` calls is as follows:
 
-<img src="../../assets/screenshot-2020-02-17-at-5.41.41-pm.png" /><span class="imageTitle">Event dashboard</span>
+<img src="../../assets/screenshot-2020-02-17-at-5.41.41-pm.png" />
 
-<img src="../../assets/screenshot-2020-02-17-at-5.49.05-pm.png" /><span class="imageTitle">User properties dashboard</span>
+<img src="../../assets/screenshot-2020-02-17-at-5.49.05-pm.png" />
 
 <div class="infoBlock">
 
@@ -575,11 +569,10 @@ rudderanalytics.identify(
 ## Alias
 
 <div class="infoBlock">
-
 This feature is currently only available when sending events through the JavaScript SDK in the cloud mode.
 </div>
 
-Refer to the [JavaScript SDK documentation]](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#35-alias) for information and examples on how to call the `alias` event.
+Refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/#alias">JavaScript SDK documentation</Link> for information and examples on how to call the `alias` event.
 
 ### Mapping
 
@@ -616,12 +609,10 @@ For more information on how the `alias` call works for Amplitude, visit [this li
 ## Reset
 
 <div class="infoBlock">
-
-This feature is currently available as a part of RudderStack Mobile SDK's only
-
+This feature is currently available as a part of RudderStack Mobile SDKs only.
 </div>
 
-The reset method resets the previously identified user and related information. For more information, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+The `reset` method resets the previously identified user and related information.
 
 <Tabs>
   <TabList>
@@ -656,8 +647,8 @@ You can find the Amplitude API key in the [Amplitude Settings Page](https://anal
 
 ### Why are all my session IDs `-1` in Amplitude?
 
-Session tracking is only supported for the RudderStack [device mode](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode) because the integration loads Amplitude's SDK. 
-Events sent via the [cloud mode](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode) connections will have session IDs as `-1`.
+Session tracking is only supported for the RudderStack <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link> because the integration loads Amplitude's SDK. 
+Events sent via the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> connections will have session IDs as `-1`.
 
 ## Contact us
 

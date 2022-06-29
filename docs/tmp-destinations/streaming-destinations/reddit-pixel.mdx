@@ -1,13 +1,13 @@
 ---
 title: "Reddit Pixel"
-description: Step-by-step guide to send your event data from RudderStack to Reddit Pixel.
+description: Step-by-step guide on sending your event data from RudderStack to Reddit Pixel.
 ---
 
 [**Reddit Pixel**](https://ads.reddit.com/) is a JavaScript snippet that, once added to your website, lets you track user actions on your website after interacting with your ad on Reddit. You can also leverage Reddit Pixel to retarget your visitors and boost your conversions.
 
 You can now seamlessly send your event data to Reddit Pixel by adding it as a destination in RudderStack.
 
-## Getting Started
+## Getting started
 
 Before configuring Reddit Pixel as a destination in RudderStack, verify if the source platform is supported by Reddit Pixel by referring to the table below: ̦
 
@@ -17,9 +17,7 @@ Before configuring Reddit Pixel as a destination in RudderStack, verify if the s
 | **Cloud mode**      | -             | -          | -          |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source supports sending events to Reddit Pixel, perform the steps below:
@@ -39,9 +37,7 @@ For more information on how to find your Reddit Pixel Advertiser ID, refer to th
 
 ## Identify
 
-In Reddit Pixel, the `identify` call updates the Reddit Pixel with the user's signup information.
-
-For more information on the `identify` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/).
+In Reddit Pixel, the <Link to="/event-spec/standard-events/identify">`identify`</Link> call updates the Reddit Pixel with the user's signup information.
 
 A sample `identify` call is as shown:
 
@@ -51,9 +47,7 @@ rudderanalytics.identify()
 
 ## Page
 
-When the `page` call is made, the `track` event is sent as `PageVisit` to `rdt('track,'PageVisit')`. RudderStack ignores any parameter sent to `rudderanalytics.page()`.
-
-For more information on the `page` call, check out the [**RudderStack API spec**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page).
+When the <Link to="/event-spec/standard-events/page">`page`</Link> call is made, the `track` event is sent as `PageVisit` to `rdt('track,'PageVisit')`. RudderStack ignores any parameter sent to `rudderanalytics.page()`.
 
 A sample `page` call is as shown:
 
@@ -101,6 +95,6 @@ To get your Reddit Pixel Advertiser ID, go to your Reddit Ads Manager account. U
 
 <img src="../../assets/RedditPixel-2.png" />
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Reddit Pixel with RudderStack, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+If you come across any issues while configuring Reddit Pixel with RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

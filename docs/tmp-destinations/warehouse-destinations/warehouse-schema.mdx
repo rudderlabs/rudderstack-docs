@@ -19,7 +19,7 @@ The following tables are created in your data warehouse for each RudderStack sou
 | :-----------------------------------| :---------------------------------------------------------------------------------------------------------------------|
 | `<source_name>.identifies`          | Every `identify` call sent from the source is stored in this table, including the properties passed as `traits`.      |
 | `<source_name>.users`               | RudderStack stores all the unique users in this table. Only the latest properties used to identify a user are stored, including the latest `anonymousId`.    |
-| `<source_name>.tracks`              | Every `track` call sent from the source is stored in this table. It **does not include** the custom properties present in the event's `properties` but has some standard properties (listed in the [Standard properties](#standard-rudderstack-properties) section below such as `received_at`, `anonymous_id`, `context_device_info`, etc.                                                                                                    |
+| `<source_name>.tracks`              | Every `track` call sent from the source is stored in this table. It **does not include** the custom properties present in the event's `properties` but has some standard properties (listed in the <Link to="#standard-rudderstack-properties">Standard properties</Link> section below such as `received_at`, `anonymous_id`, `context_device_info`, etc.                                                                                                    |
 | `<source_name>.<track_event_name>`  | All the standard properties and the custom properties for a `track` event are stored in this table. The table name is the event name specified in the `track` call, e.g., `Added to Cart`.                                                                                              |
 | `<source_name>.pages`               | Every `page` call sent from the source is stored in this table, including the associated event properties.            |
 | `<source_name>.screens`             | Every `screen` call sent from the source is stored in this table, including the associated event properties.          |
@@ -49,7 +49,7 @@ RudderStack sets the following standard properties on all the above-mentioned ta
 | `event`              | The name of the event table in case of the `track` calls.                                                                       |
 
 <div class="infoBlock">
-RudderStack automatically converts the property names from camel case to snake case. For more information on the properties captured at the API level, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/">RudderStack Event Specification</a>.
+RudderStack automatically converts the property names from camel case to snake case. For more information on the properties captured at the API level, refer to the <Link to="/event-spec/standard-events/common-fields/">RudderStack Event Specification</Link> guide.
 </div>
 
 <div class="warningBlock">
@@ -58,10 +58,10 @@ RudderStack reserves the above-mentioned standard properties. In case of any con
 
 ## Identify
 
-For every [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call, RudderStack creates a record in the `identifies` table and upserts the records in the `users` table based on the `userId`.
+For every <Link to="/event-spec/standard-events/identify">Identify</Link> call, RudderStack creates a record in the `identifies` table and upserts the records in the `users` table based on the `userId`.
 
 <div class="successBlock">
-In case of Google BigQuery, you can use the views created over the tables to query for unique users in the dataset. Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/google-bigquery/#schema-partitioned-tables-and-views">BigQuery documentation</a> for more details.
+In case of Google BigQuery, you can use the views created over the tables to query for unique users in the dataset. Refer to the <Link to="/tmp-destinations/warehouse-destinations/bigquery#schema-partitioned-tables-views-and-deduplication">BigQuery documentation</Link> for more details.
 </div>
 
 A sample `identify` call is shown below:
@@ -129,7 +129,7 @@ To obtain a user’s <code class="inline-block">anonymous_id</code>, you can que
 
 ## Track
 
-For every [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call, RudderStack creates a record in both the `tracks` and `<event_name>` tables.
+For every <Link to="/event-spec/standard-events/track">`track`</Link> call, RudderStack creates a record in both the `tracks` and `<event_name>` tables.
 
 A sample `track` event named `Add to Cart` is shown below:
 
@@ -193,7 +193,7 @@ The event table <code class="inline-code">add_to_cart</code> has the same column
 
 ## Page/Screen
 
-For every [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/)/[`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) call, RudderStack creates a record in the corresponding `pages` or `screens` table.
+For every <Link to="/event-spec/standard-events/page">`page`</Link>/<Link to="/event-spec/standard-events/screen">`screen`</Link> call, RudderStack creates a record in the corresponding `pages` or `screens` table.
 
 A sample `page` event is shown below:
 
@@ -238,7 +238,7 @@ The corresponding schema created for the `pages`/`screens` table is as shown:
 
 ## Group
 
-For every [`group`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/) call, RudderStack creates a record in the corresponding `groups` table.
+For every <Link to="/event-spec/standard-events/group">`group`</Link> call, RudderStack creates a record in the corresponding `groups` table.
 
 A sample `group` call is shown below:
 
@@ -277,7 +277,7 @@ The corresponding schema created for the `groups` table is as shown:
 
 ## Alias
 
-For every [`alias`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/)/[`screen`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/) call, RudderStack creates a record in the corresponding `aliases` table.
+For every <Link to="/event-spec/standard-events/alias">`alias`</Link> call, RudderStack creates a record in the corresponding `aliases` table.
 
 A sample `alias` call is shown below:
 
@@ -304,7 +304,6 @@ rudderanalytics.alias("9bb5d4c2", "e6ab2c5e")
 RudderStack considers the time at its end to be absolute and assumes any difference on the client-side. Thus, the client clock skew is relative.
 
 <div class="infoBlock">
-
 If not specified in the payload explicitly, RudderStack calculates <code class="inline-code">timestamp</code> based on <code class="inline-code">originalTimestamp</code> and <code class="inline-code">sentAt</code> to account for the client clock skew.
 </div>
 
@@ -447,8 +446,8 @@ The subsequent records created in the `rudder_discards` table for the discarded 
 
 ### Can I change the namespace \(schema name\) of my data warehouse in RudderStack?
 
-Yes, you can. Although the default namespace will be the source name, RudderStack gives you the option to explicitly set the namespace while setting up your warehouse destination. For more information, refer to the [warehouse-specific destination settings](https://www.rudderstack.com/docs/data-warehouse-integrations/) for configuring the namespace in the RudderStack dashboard.
+Yes, you can. Although the default namespace will be the source name, RudderStack gives you the option to explicitly set the namespace while setting up your warehouse destination. For more information, refer to the <Link to="/tmp-destinations/warehouse-destinations/">warehouse-specific destination settings</Link> for configuring the namespace in the RudderStack dashboard.
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

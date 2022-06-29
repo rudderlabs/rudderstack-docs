@@ -1,13 +1,13 @@
 ---
 title: "TVSquared"
-description: Step-by-step guide to send event data from RudderStack to TVSquared.
+description: Step-by-step guide on sending your event data from RudderStack to TVSquared.
 ---
 
 [TVSquared](https://tvsquared.com/) is a television attribution platform that specializes in enterprise-scale cross-screen and multi-touch TV attribution and measurement. They empower the advertising companies to quantify and attribute responses generated across televisions everywhere, and deliver meaningful business insights from the linear and digital TV content.
 
 RudderStack supports TVSquared as a destination to which you can send your event data in real-time.
 
-## Getting Started
+## Getting started
 
 To enable sending data to TVSquared, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from the RudderStack SDK will automatically start flowing to TVSquared.
 
@@ -19,9 +19,7 @@ Before configuring your source and destination on the RudderStack, verify if the
 | **Cloud mode**      | **-**         | **-**      | **-**      |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to TVSquared, perform the steps below:
@@ -31,7 +29,7 @@ Once you have confirmed that the platform supports sending events to TVSquared, 
 
 <img src="../../assets/image (73).png" />
 
-<img src="../../assets/image (34).png" /><span class="imageTitle">TVSquared Connection Settings in the RudderStack Dashboard</span>
+<img src="../../assets/image (34).png" />
 
 - The above connection settings are explained in more detail below:
 
@@ -57,9 +55,7 @@ Once you have confirmed that the platform supports sending events to TVSquared, 
 
 ## Page
 
-When a `page` call occurs, RudderStack makes a call to TVSquared to record a page view.
-
-For more information on the `page` call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+When a <Link to="/event-spec/standard-events/page">`page`</Link> call occurs, RudderStack makes a call to TVSquared to record a page view.
 
 ```javascript
 rudderanalytics.page('new category',
@@ -72,9 +68,7 @@ rudderanalytics.page('new category',
 
 ## Track
 
-Calling the `track` method causes TVSquared's `Action Tracker` method to be triggered.
-
-For more information on how the `track` call works, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+Calling the <Link to="/event-spec/standard-events/track">`track`</Link> method causes TVSquared's `Action Tracker` method to be triggered.
 
 By default, TVSquared can take the following parameters:
 
@@ -84,9 +78,7 @@ By default, TVSquared can take the following parameters:
 - `promo (promotion_id)`
 
 <div class="infoBlock">
-
 All the mentioned parameters are optional. There is no requirement to add these to measure the uplift from TV. However, this data can be used for more detailed analysis as required. If there is no value to pass an empty string will be set by RudderStack.
-
 </div>
 
 A sample `track` call is as shown:
@@ -106,6 +98,6 @@ rudderanalytics.track('Order Completed',
 });
 ```
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring TVSquared with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

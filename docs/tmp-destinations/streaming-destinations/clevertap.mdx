@@ -1,15 +1,14 @@
 ---
 title: "CleverTap"
-description: Step-by-step guide to send your event data from RudderStack to CleverTap.
+description: Step-by-step guide on sending your event data from RudderStack to CleverTap.
 ---
 
 [CleverTap](https://clevertap.com/) is a popular customer engagement and retention platform. Its in-app analytics and marketing capabilities allow you to get real-time insights into your customers and build valuable, long-term relationships with them. With CleverTap, you can easily your users' actions and understand how they are using your product. You can also segment users based on their behavior and run targeted campaigns to boost your user engagement and retention metrics.
 
 You can now send your event data directly to CleverTap through RudderStack.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clevertap">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clevertap">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -22,9 +21,7 @@ Before configuring your source and destination on the RudderStack, please check 
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to CleverTap, perform the steps below:
@@ -671,7 +668,7 @@ Note: For <code class="inline-code">track</code>, <code class="inline-code">page
 
 ### Order Completed
 
-When you track an event with the name `Order Completed` using the using Rudderstack's [e-commerce](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering/#order-completed) tracking API , Rudderstack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
+When you track an event with the name `Order Completed` using the using the Rudderstack <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events</Link> tracking, Rudderstack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
 
 A number of Rudderstack's specific fields map to CleverTap’s standard `Charged` event fields
 
@@ -801,4 +798,4 @@ Example: To disable push notifications for a user, set <code class="inline-code"
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

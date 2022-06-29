@@ -1,13 +1,13 @@
 ---
 title: "Ometria"
-description: Step-by-step guide to set up Ometria as a destination in RudderStack.
+description: Step-by-step guide on sending your event data from RudderStack to Ometria.
 ---
 
 [**Ometria**](https://ometria.com/) is a customer data and marketing platform. It leverages AI-powered insights and cross-channel marketing to help you create personalized experiences for your customers throughout their product journey.
 
 RudderStack supports Ometria as a destination to which you can seamlessly send your customer data.
 
-## Getting Started
+## Getting started
 
 Before configuring Ometria as a destination in RudderStack, verify if the source platform is supported by Ometria by referring to the table below:
 
@@ -17,8 +17,7 @@ Before configuring Ometria as a destination in RudderStack, verify if the source
 | **Cloud** **mode** | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the [**RudderStack connection modes**](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/) guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that your source platform supports sending events to Ometria, follow these steps:
@@ -67,11 +66,6 @@ The `identify` call lets you add a new contact or update an already existing con
 <div class="warningBlock">
 
 Note that `listingId` and `email` fields are the mandatory fields for the `identify` call.
-</div>
-
-<div class="infoBlock">
-
-For more information on the `identify` call, refer to the [**RudderStack Events Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) guide.
 </div>
 
 You can set the values for the **Marketing Optin**, **Allow Marketing**, and **Allow Transactional** fields from RudderStack dashboard. You can also send these values using an `integrations` object in the `identify` event payload, **which will have higher precedence**. The SMS channel fields `dt_updated_marketing` and `dt_updated_transactional` can also be passed using this object.
@@ -303,6 +297,6 @@ Note that **`variant_options`** listed above is an array of objects. It is not a
 
 To get the Ometria API token, go to your your Ometria dashboard and navigate to **Settings** - **API Keys**. Then, click on **New API Key**.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring or using Ometria with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+If you come across any issues while configuring or using Ometria with RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

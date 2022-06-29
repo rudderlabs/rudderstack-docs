@@ -1,13 +1,13 @@
 ---
 title: "Variance"
-description: Step-by-step guide to send event data from RudderStack to Variance.
+description: Step-by-step guide on sending your event data from RudderStack to Variance.
 ---
 
-The [**Variance**](https://www.variance.com) customer growth platform makes your product, marketing, and sales data operational. It lets you to create, access, and manage intent-based signals across all stages of your customers' journey.
+The [Variance](https://www.variance.com) customer growth platform makes your product, marketing, and sales data operational. It lets you to create, access, and manage intent-based signals across all stages of your customers' journey.
 
 RudderStack lets you add Variance as a destination to which you can seamlessly send your event data.
 
-## Getting Started
+## Getting started
 
 To enable sending data to Variance, you will first need to add it as a destination in the RudderStack dashboard. Once the destination is configured and enabled, events from RudderStack will start flowing to Variance.
 
@@ -19,9 +19,7 @@ Before configuring Variance in RudderStack, verify if the source platform suppor
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform is supported by Variance, perform the steps below:
@@ -40,15 +38,13 @@ That's it! Your Variance destination is now configured and enabled.
 
 ## Identify
 
-The [`identify`][identify] call lets you associate a visiting user to their actions as well as record their traits.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call lets you associate a visiting user to their actions as well as record their traits.
 
 <div class="infoBlock">
-
 As a best practice, make sure that the <code class="inline-code">identify</code> call is made at the start of every session or page load for logged-in users, if possible. This will ensure all their latest traits are captured.
-
 </div>
 
-A sample [`identify`][identify] call is as shown:
+A sample `identify` call is as shown:
 
 ```javascript
 rudderanalytics.identify("userid", {
@@ -63,9 +59,9 @@ rudderanalytics.identify("userid", {
 
 ## Track
 
-The [`track`][track] call allows you to record the customer events, i.e. the actions that they perform, along with their associated properties.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call allows you to record the customer events, i.e. the actions that they perform, along with their associated properties.
 
-A sample [`track`][track] call is as shown:
+A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track("Event Name", {
@@ -75,9 +71,9 @@ rudderanalytics.track("Event Name", {
 
 ## Page
 
-The [`page`][page] call lets you record your website's page views, with any additional relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views, with any additional relevant information about the viewed page.
 
-A sample [`page`][page] call is as shown:
+A sample `page` call is as shown:
 
 ```javascript
 rudderanalytics.page("Cart", "Cart Viewed", {
@@ -91,9 +87,9 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 
 ## Group
 
-The [`group`][group] call lets you associate a particular identified user with a group, such as a company, organization, or an account. It also lets you record the custom traits associated with that group, such as the name of the group, number of employees, etc.
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you associate a particular identified user with a group, such as a company, organization, or an account. It also lets you record the custom traits associated with that group, such as the name of the group, number of employees, etc.
 
-A sample [`group`][group] call is as shown:
+A sample `group` call is as shown:
 
 ```javascript
 rudderanalytics.group("sample-group-id", {
@@ -105,50 +101,42 @@ rudderanalytics.group("sample-group-id", {
 
 ## Alias
 
-Many destination platforms need an explicit [`alias`][alias] call for mapping the already identified users to a new user identifier that you may want to use, to track them in the future. The [`alias`][alias] call lets you implement this functionality.
+Many destination platforms need an explicit <Link to="/event-spec/standard-events/alias">`alias`</Link> call for mapping the already identified users to a new user identifier that you may want to use, to track them in the future. The `alias` call lets you implement this functionality.
 
-A sample [`alias`][alias] call is as shown:
+A sample `alias` call is as shown:
 
 ```javascript
 rudderanalytics.alias("new_user_id");
 ```
 
-## Account Mapping
+## Account mapping
 
 Variance offers a few different ways of mapping your users to accounts/companies. Here's an overview:
 
-### **Group**
+### Group
 
-If you already use the [`group`][group] call to indicate the Account, then you don’t need to fill in anything. Variance will extract the Account automatically, and you’re good to go.
+If you already use the `group` call to indicate the Account, then you do not need to fill in anything. Variance will extract the Account automatically, and you’re good to go.
 
-### **Identify** **with Custom Traits** \(ex. `company.id` and `company.name`\):
+### Identify with custom traits
 
-Choose this option if you include some information about the Account/Company/Organization as a trait in each [`identify`][identify] call. When you choose this option you'll need to let Variance know the name of the trait you use.
+Choose this option if you include some information about the Account/Company/Organization as a trait in each `identify` call. When you choose this option you'll need to let Variance know the name of the trait you use.
 
 For instance, if you pass something like `{'company':{'id':1,'name':'Awesome Inc.'}}` , you could add `company.id` as the **Account ID** trait and `company.name` as the **Account Name** trait.
 
-### Identify Email Trait Domain Extraction \(Fallback\)
+### Identify email trait domain extraction (fallback)
 
 If you don't use either of the methods above, Variance can extract the domain from the `email` trait and use that as the Account name.
 
 <div class="infoBlock">
-
-If none of these methods work for your setup, <a href="mailto:support@variance.com">reach out to Variance support</a> to discuss alternatives.
-
+If none of these methods work for your setup, <a href="mailto:support@variance.com">reach out to Variance support</a> to discuss the alternatives.
 </div>
 
-## FAQs
+## FAQ
 
 ### How do I get the Variance Webhook URL/Authorization Header Value?
 
 Head to the **Integrations** - **Rudderstack** page in Variance and then add a Rudderstack connection. For more information, check the [**Variance docs for RudderStack**](https://www.variance.com/docs/rudderstack).
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring or using Variance with RudderStack, feel free to [**contact the Variance team**](mailto:support@variance.com) or [**get in touch**](mailto:%20docs@rudderstack.com) with us. You can also start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
-
-[alias]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/
-[group]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/
-[identify]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/
-[page]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/
-[track]: https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/
+If you come across any issues while configuring or using Variance with RudderStack, feel free to [contact the Variance team](mailto:support@variance.com) or [get in touch](mailto:%20docs@rudderstack.com) with us. You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

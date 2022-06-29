@@ -8,7 +8,7 @@ description: Step-by-step guide on setting up Databricks Delta Lake as a destina
 RudderStack lets you configure Delta Lake as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/blob/master/v0/destinations/deltalake/transform.js">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/blob/master/v0/destinations/deltalake/transform.js">GitHub repository</a>.
 </div>
 
 ## Configuring Delta Lake destination in RudderStack
@@ -17,11 +17,11 @@ Find the open-source transformer code for this destination in the <a href="https
 Before configuring Delta Lake as a destination in RudderStack, it is highly recommended to go through the following sections to obtain the necessary configuration settings. These sections also contain the steps to grant RudderStack and Databricks the necessary permissions to your preferred storage bucket.
 
 <ul>
-<li><a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#granting-rudderstack-access-to-your-storage-bucket">Granting RudderStack access to your storage bucket</a></li>
-<li><a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#granting-databricks-access-to-your-staging-bucket">Granting Databricks access to your storage bucket</a></li>
-<li><a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#creating-a-new-databricks-cluster">Creating a new Databricks cluster</a></li>
-<li><a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#generating-the-databricks-access-token">Generating the Databricks access token</a></li>
-<li><a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbcodbc-configuration">Obtaining the JDBC/ODBC configuration</a></li>
+<li><Link to="#granting-rudderstack-access-to-your-storage-bucket">Granting RudderStack access to your storage bucket</Link></li>
+<li><Link to="#granting-databricks-access-to-your-staging-bucket">Granting Databricks access to your storage bucket</Link></li>
+<li><Link to="#creating-a-new-databricks-cluster">Creating a new Databricks cluster</Link></li>
+<li><Link to="#generating-the-databricks-access-token">Generating the Databricks access token</Link></li>
+<li><Link to="#obtaining-the-jdbcodbc-configuration">Obtaining the JDBC/ODBC configuration</Link></li>
 </ul>
 </div>
 
@@ -40,28 +40,17 @@ To configure Delta Lake as a destination in RudderStack, follow these steps:
 Enter the following credentials in the **Connection Credentials** page:
 
 * **Host**: Enter your server hostname from the Databricks dashboard. 
-
-<div class="infoBlock">
-
-For more information on where to find the server hostname, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbcodbc-configuration">Obtaining the JDBC/ODBC configuration</a> section below.
-</div>
-
 * **Port**: Enter the port number. 
-
-<div class="infoBlock">
-For more information on obtaining the port number, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbcodbc-configuration">Obtaining the JDBC/ODBC configuration</a> section below.
-</div>
-
 * **HTTP Path**: Enter the cluster's HTTP path.
 
 <div class="infoBlock">
-For more information on obtaining the HTTP path, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#obtaining-the-jdbcodbc-configuration">Obtaining the JDBC/ODBC configuration</a> section below.
+For more information on obtaining the server hostname, port, and the cluster's HTTP path, refer to the <Link to="#obtaining-the-jdbcodbc-configuration">Obtaining the JDBC/ODBC configuration</Link> section below.
 </div>
 
 * **Personal Access Token**: Enter your Databricks access token.
 
 <div class="infoBlock">
-For more information on generating the access token, refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/delta-lake/#generating-the-databricks-access-token">Generating the Databricks access token</a> section below.
+For more information on generating the access token, refer to the <Link to="#generating-the-databricks-access-token">Generating the Databricks access token</Link> section below.
 </div>
 
 * **Enable delta tables creation in an external location**: Enable this setting to specify the external location to create the delta tables. By default, RudderStack creates the delta tables at a default storage location for the non-external Apache Hive tables.
@@ -87,7 +76,7 @@ This feature is currently in beta.
     * **Azure Blob Storage**
 
 <div class="infoBlock">
-If you select S3 as your storage provider, RudderStack gives you the option to specify the AWS access key and secret access key in the dashboard itself, to grant Databricks access to your staging bucket. To do so, enable the <strong>Use STS Tokens to copy staging files</strong> setting in the dashboard. For more information, refer to the <a href="#case-2-use-sts-token-to-copy-staging-files-is-enabled-in-the-dashboard">Amazon S3 storage bucket settings</a> section below.
+If you select S3 as your storage provider, RudderStack gives you the option to specify the AWS access key and secret access key in the dashboard itself, to grant Databricks access to your staging bucket. To do so, enable the <strong>Use STS Tokens to copy staging files</strong> setting in the dashboard. For more information, refer to the <Link to="#case-2-use-sts-token-to-copy-staging-files-is-enabled-in-the-dashboard">Amazon S3 storage bucket settings</Link> section below.
 </div>
 
 ## Granting RudderStack access to your storage bucket
@@ -136,7 +125,7 @@ Make sure you replace <code class="inline-code">YOUR_BUCKET_NAME</code> with the
 
 #### For self-hosted RudderStack
 
-If you are  [self-hosting RudderStack](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/), follow these steps:
+If you are <Link to="/get-started/rudderstack-open-source/">self-hosting RudderStack</Link>, follow these steps:
 
 1. Create an IAM policy with the following JSON:
 
@@ -203,11 +192,11 @@ You can provide the configuration directly while setting up the Delta Lake desti
 
 ### Google Cloud Storage
 
-You can provide the necessary GCS bucket configuration while setting up the Delta Lake destination in RudderStack. For more information, refer to the [Google Cloud Storage bucket settings](https://www.rudderstack.com/docs/destinations/storage-platforms/google-cloud-storage/#setting-up-google-cloud-storage).
+You can provide the necessary GCS bucket configuration while setting up the Delta Lake destination in RudderStack. For more information, refer to the <Link to="/tmp-destinations/streaming-destinations/google-cloud-storage/#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>.
 
 ### Azure Blob Storage
 
-You can provide the necessary Blob Storage container configuration while setting up the Delta Lake destination in RudderStack. For more information, refer to the [Azure Blob Storage settings](https://www.rudderstack.com/docs/destinations/storage-platforms/microsoft-azure-blob-storage/#setting-up-azure-blob-storage).
+You can provide the necessary Blob Storage container configuration while setting up the Delta Lake destination in RudderStack. For more information, refer to the <Link to="/tmp-destinations/streaming-destinations/microsoft-azure-blob-storage/#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>.
 
 ## Granting Databricks access to your staging bucket
 
@@ -258,7 +247,7 @@ For more information on adding custom Spark configuration properties in a Databr
 
 To grant Databricks access to your GCS bucket, follow these steps:
 
-1. Follow the steps listed in this [user permissions](https://rudderstack.com/docs/data-warehouse-integrations/gcs-datalake/#user-permissions-for-gcs-data-lake) section to set up the required role and user permissions.
+1. Follow the steps listed in this <Link to="/tmp-destinations/warehouse-destinations/gcs-datalake/#setting-user-permissions-in-gcs-data-lake">user permissions</Link> section to set up the required role and user permissions.
 2. Then, add the following Spark configuration to your Databricks cluster:
 
 ```

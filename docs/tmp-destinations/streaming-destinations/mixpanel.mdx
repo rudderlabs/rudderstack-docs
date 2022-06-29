@@ -1,15 +1,14 @@
 ---
 title: "Mixpanel"
-description: Step-by-step guide to set up Mixpanel as a destination in RudderStack.
+description: Step-by-step guide on sending your event data from RudderStack to Mixpanel.
 ---
 
 [**Mixpanel**](https://mixpanel.com/) is an analytics platform that lets you track user actions with your application. It offers features like in-app A/B testing, user survey forms, and custom reports to measure customer retention. It also provides specific tools for targeted business communication and engagement with your customers.
 
 RudderStack supports Mixpanel as a destination to which you can seamlessly send your event data.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mp">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mp">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -22,8 +21,7 @@ Before configuring your source and destination on the RudderStack, verify if the
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source supports sending events to Mixpanel, follow these steps:
@@ -55,17 +53,17 @@ For more information on obtaining the Mixpanel API Token and Secret, refer to th
 
 The following settings are applicable if you are using this destination via the web device mode:
 
-- **Use Mixpanel People**: This option sends all your `identify` calls to Mixpanel People. For more information, refer to the [**Mixpanel People**](https://rudderstack.com/docs/destinations/analytics/mixpanel#mixpanel-people) section below.
-- **Automatically set all Traits as Super Properties and People properties**: Refer to the [**Explicitly setting People Properties and Super Properties**](https://rudderstack.com/docs/destinations/analytics/mixpanel#explicitly-setting-people-properties-and-super-properties) section below.
+- **Use Mixpanel People**: This option sends all your `identify` calls to Mixpanel People. For more information, refer to the [**Mixpanel People**](#mixpanel-people) section below.
+- **Automatically set all Traits as Super Properties and People properties**: Refer to the [**Explicitly setting People Properties and Super Properties**](#explicitly-setting-people-properties-and-super-properties) section below.
 - **Events to increment in People**: Refer to the [**Incrementing events in Mixpanel People**](#incrementing-events-in-mixpanel-people) section below for more information on this field.
 - **Properties to increment in People**: Refer to the [**Incrementing properties in Mixpanel People**](#incrementing-properties-in-mixpanel-people) section below for more information on this field.
-- **Page Tracking Options**: For device mode, RudderStack offers three options for the `page` calls. Refer to the [**Page web device mode settings**](https://rudderstack.com/docs/destinations/analytics/mixpanel#page-web-device-mode-settings) section below for more information on these options.
+- **Page Tracking Options**: For device mode, RudderStack offers three options for the `page` calls. Refer to the [**Page web device mode settings**](#page-web-device-mode-settings) section below for more information on these options.
 - **Source Name**: If specified, RudderStack sends this source name to Mixpanel for every event/`page`/`screen` call.
 - **Cross Subdomain Cookie**: If enabled, this option lets the Mixpanel cookie to persist between different pages of your application.
 - **Persistence Type**: This option lets you choose the persistence type for your Mixpanel cookies.
 - **Secure Cookie**: Enabling this option will mark the Mixpanel cookie as secure, i.e., it will only transmit over HTTPS.
-- **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. For more information, refer to the [**Group**](https://rudderstack.com/docs/destinations/analytics/mixpanel#group) section below.
-- **Client-side Events Filtering**: Refer to the [**Client-side Events Filtering**](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/) guide for more information on this feature.
+- **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. For more information, refer to the <Link to="#group"> Group</Link> section below.
+- **Client-side Events Filtering**: Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
 The following event mapping setting is applicable only if you are sending events to Mixpanel via the cloud mode:
 
@@ -391,4 +389,4 @@ Yes, RudderStack supports passing empty/`null` values for the properties sent to
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

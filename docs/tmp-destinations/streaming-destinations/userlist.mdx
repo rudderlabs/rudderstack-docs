@@ -1,21 +1,21 @@
 ---
 title: "Userlist"
-description: Step-by-step guide to send your event data from RudderStack to Userlist
+description: Step-by-step guide on sending your event data from RudderStack to Userlist
 ---
 
-[Userlist](https://userlist.com) is a popular behavior-based messaging platform that lets you engage with your SaaS users effectively through targeted, behavior-based campaigns. It’s great for onboarding your users as well as nurturing them throughout their journey.
+[Userlist](https://userlist.com) is a popular behavior-based messaging platform that lets you engage with your SaaS users effectively through targeted, behavior-based campaigns.
 
-RudderStack supports sending your events to Userlist from the cloud mode S2S \(Server to Server\) by calling the relevant RudderStack APIs.
-
-<div class="successBlock">
-This destination is supported by the Userlist team. Feel free to contact Userlist via <a href="mailto:support@userlist.com">support@userlist.com</a>.
-</div>
+RudderStack supports sending your events to Userlist from the cloud mode S2S (Server to Server) by calling the relevant RudderStack APIs.
 
 <div class="successBlock">
-<strong>Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/userlist">GitHub repo</a>.</strong>
+This destination is supported by the Userlist team. You can contact the Userlist team via <a href="mailto:support@userlist.com">support@userlist.com</a>.
 </div>
 
-## Getting Started
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/userlist">GitHub repository</a>.
+</div>
+
+## Getting started
 
 Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported. You can refer the following table to do so:
 
@@ -25,8 +25,7 @@ Before configuring your source and destination on the RudderStack app, please ch
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Userlist, perform the steps below:
@@ -47,7 +46,7 @@ Userlist does not support tracking of anonymous users. So, make sure you call `i
 
 ## Identify
 
-The `identify` call sends the event data to Userlist along with the properties that you pass as the RudderStack traits. For more information on the `identify` call, please refer our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call sends the event data to Userlist along with the properties that you pass as the RudderStack traits.
 
 If the `userId` is already known, Userlist will update the user record. Otherwise, it’ll create a new one.
 
@@ -70,7 +69,7 @@ rudderanalytics.identify("test-user-id", {
 
 ## Group
 
-The `group` call is made to associate the user with a company in Userlist. For more information on the `group` call, please refer our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+The <Link to="/event-spec/standard-events/group">`group`</Link> call is made to associate the user with a company in Userlist.
 
 An example of a `group` call is as shown:
 
@@ -83,12 +82,10 @@ rudderanalytics.group("test-group-id", {
 ```
 
 <div class="infoBlock">
-
 Userlist supports adding properties to the relationship between user and group. As this isn't officially supported by RudderStack's message format, you can specify the relationship properties by providing additional data for Userlist specifically.
-
 </div>
 
-The following example will associate the currently identified user with the given group \(company\) and set their `role` for that particular group \(company\) to `owner`.
+The following example will associate the currently identified user with the given group (company) and set their `role` for that particular group (company) to `owner`.
 
 ```javascript
 rudderanalytics.group("test-group-id", {
@@ -111,7 +108,7 @@ rudderanalytics.group("test-group-id", {
 
 ## Track
 
-The `track` call will pass the event properties to Userlist. You may call `rudderanalytics.track()` with or without event properties. For more information on how `track` call works, please refer to our [RudderStack API specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call will pass the event properties to Userlist. You may call `rudderanalytics.track()` with or without event properties.
 
 The following code snippet shows how a sample `track` call is made in RudderStack:
 
@@ -140,6 +137,6 @@ rudderanalytics.track("Project created", {
 })
 ```
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Userlist with RudderStack, please feel free to [contact us](mailto:docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

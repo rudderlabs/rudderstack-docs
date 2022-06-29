@@ -3,16 +3,15 @@ title: "Device Mode"
 description: Detailed technical documentation on sending events to DCM Floodlight using the RudderStack device mode.
 ---
 
-RudderStack lets you send your event data to DCM Floodlight destination via the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK. RudderStack uses global site tagging in device mode.
+RudderStack lets you send your event data to DCM Floodlight destination via the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK. RudderStack uses global site tagging in device mode.
 
-<div class="successBlock">
-
-Find the open-source transformer code for this destination in the [GitHub repository](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/DCMFloodlight/).
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/DCMFloodlight/">GitHub repository</a>.
 </div>
 
 ## Track
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 A sample `track` call is as shown below:
 
@@ -81,7 +80,7 @@ For more information on the counting methods, refer to this <a href="https://sup
 
 ## Page
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page"><code class="inline-code">page</code></Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
 Based on the presence of `name` and `category` fields in the `page` call, RudderStack transforms the event in the following format:
 

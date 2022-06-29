@@ -1,13 +1,13 @@
 ---
 title: "Segment"
-description: Step-by-step guide to send event data from RudderStack to Segment.
+description: Step-by-step guide on sending your event data from RudderStack to Segment.
 ---
 
 [Segment](http://segment.com/) is a leading Customer Data Platform \(CDP\). It lets you track and collect your customer events from a variety of digital touchpoints and send them to the marketing and analytics platforms of your choice.
 
 With RudderStack, you can send your customer events to Segment in real-time.
 
-## Getting Started
+## Getting started
 
 To enable sending data to Segment, you will first need to add it as a destination in the RudderStack dashboard. Once the destination is configured and enabled, events from RudderStack will start flowing to Segment.
 
@@ -19,9 +19,7 @@ Before configuring Segment in RudderStack, verify if the source platform support
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Then, perform the steps below:
@@ -75,12 +73,6 @@ rudderanalytics.identify("userid", {
 })
 ```
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
-
 ## Track
 
 The `track` call allows you to record the customer events, i.e. the actions that they perform, along with their associated properties.
@@ -92,12 +84,6 @@ rudderanalytics.track("Event Name", {
   Plan: "plan value",
 })
 ```
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">track</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
 
 ## Page
 
@@ -115,12 +101,6 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 })
 ```
 
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">page</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
-
 ## Group
 
 The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account. It also lets you record the custom traits associated with that group, such as the name of the group, number of employees, etc.
@@ -134,12 +114,6 @@ rudderanalytics.group("sample-group-id", {
   industry: "Software",
 });
 ```
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">group</code> call, refer to the <a href="https://rudderstack.com/docs/rudderstack-api/http-api">RudderStack HTTP API Specification</a> guide.
-
-</div>
 
 ## Alias
 
@@ -160,12 +134,6 @@ The above `alias` call has the following parameters:
 | **`options`**  | Optional     | This dictionary provides additional context to the event payload.                                                                                                                                        |
 | **`callback`** | Optional     | This function gets executed after successful execution of the **`alias()`** method.                                                                                                                      |
 
-<div class="infoBlock">
-
-For more information on the `alias` call, refer to the [**RudderStack HTTP API Specification**](https://rudderstack.com/docs/rudderstack-api/http-api/) guide.
-
-</div>
-
 ## FAQs
 
 ### How do I get the Segment Write Key?
@@ -174,6 +142,6 @@ To get the Segment Write Key, you can create a HTTP source in your Segment dashb
 
 Once you create the source, you can copy the **Write Key** for that source and use it in RudderStack for sending the data.
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring or using Segment with RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!

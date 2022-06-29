@@ -1,6 +1,6 @@
 ---
 title: "Google AdWords Enhanced Conversions"
-description: Step-by-step guide to send event data from RudderStack to Google AdWords Enhanced Conversions.
+description: Step-by-step guide on sending your event data from RudderStack to Google AdWords Enhanced Conversions.
 ---
 
 [Google Adwords Enhanced Conversions](https://developers.google.com/google-ads/api/docs/conversions/enhance-conversions) lets you improve your conversion measurement accuracy by securely sending first-party conversion data from your website to Google.
@@ -25,8 +25,7 @@ Before configuring Google AdWords Enhanced Conversions as a destination in Rudde
 | **Cloud mode**      | **Supported**               | **Supported**           |  **Supported**    |
 
 <div class="infoBlock">
-
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Google AdWords Enhanced Conversions, follow these steps:
@@ -72,12 +71,7 @@ This field is required only when you want to send data to a customer list of a s
 
 ## Track
 
-The `track` call lets you record and send the conversion events along with any properties associated with them. 
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">track</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
-</div>
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you record and send the conversion events along with any properties associated with them. 
 
 A sample `track` call is shown below:
 

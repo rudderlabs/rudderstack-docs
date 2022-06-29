@@ -1,15 +1,14 @@
 ---
 title: "PostHog"
-description: Step-by-step guide to send event data from RudderStack to PostHog.
+description: Step-by-step guide on sending your event data from RudderStack to PostHog.
 ---
 
 [PostHog](https://posthog.com/) is a complete product analytics stack built for data analysts and managers. It gives you easy access to scalable product analytics with full control over all your user data.
 
 RudderStack supports PostHog as a destination to which you can seamlessly send your event data for analytics.
 
-<div class="successBlock">
-
-  <strong>Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/posthog">GitHub repository</a></strong>.
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/posthog">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -22,8 +21,7 @@ Before configuring PostHog as a destination in RudderStack, verify if the source
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to PostHog, follow these steps:
@@ -68,7 +66,7 @@ This section lists some of the other configurable settings when sending events t
 
 <img src="../../assets/event-stream-destinations/posthog-web-sdk-settings.png" alt="PostHog web SDK settings" />
 
-- **Use device mode to send events**: If enabled, RudderStack will send the events to PostHog via the [device mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode).
+- **Use device mode to send events**: If enabled, RudderStack will send the events to PostHog via the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 - **Enable Local Storage for Persistence**: Enable this option to reduce the amount of data stored in the cookies by storing it locally instead.
 - **Enable autocapture with PostHog**: Enable this option to allow PostHog to send [auto-captured](https://posthog.com/docs/integrations/js-integration#usage) events.
 - **Allow PostHog to automatically capture pageview events**: Enable this setting to allow the PostHog web SDK to send a page view event every time it is loaded on a page.
@@ -84,12 +82,7 @@ For more information on PostHog's session recording feature, refer to the <a hre
 
 ## Identify
 
-To identify a user in PostHog, you need to call RudderStack's `identify` API.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">identify</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">RudderStack API Specification</a> guide.
-</div>
+To identify a user in PostHog, you need to call RudderStack's <Link to="/event-spec/standard-events/identify">`identify`</Link> API.
 
 A sample `identify` call is as shown below:
 
@@ -110,12 +103,7 @@ RudderStack passes the user traits within the <code class="inline-code">identify
 
 ## Page
 
-The `page` call lets you record your app's page views with any additional relevant information about the viewed page.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">page</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/">RudderStack API Specification</a> guide.
-</div>
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your app's page views with any additional relevant information about the viewed page.
 
 A sample `page` call is shown below:
 
@@ -138,12 +126,7 @@ For the <code class="inline-code">page</code> call, RudderStack sends <code clas
 
 ## Screen
 
-The `screen` call lets you record whenever your user views their mobile screen with any additional relevant information about the screen.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">screen</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/screen/">RudderStack API Specification</a> guide.
-</div>
+The <Link to="/event-spec/standard-events/screen">`screen`</Link> call lets you record whenever your user views their mobile screen with any additional relevant information about the screen.
 
 A sample `screen` call using RudderStack's iOS SDK is shown below:
 
@@ -161,12 +144,7 @@ For the <code class="inline-code">screen</code> call, RudderStack sends <code cl
 
 ## Track
 
-The track call lets you capture user events along with the properties associated with them.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">track</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">RudderStack API Specification</a> guide.
-</div>
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 A sample `track` call is shown below:
 
@@ -207,12 +185,7 @@ PostHog supports the RudderStack <code class="inline-code">track</code> call as 
 
 ## Group
 
-The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">group</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/">RudderStack API Specification</a> guide.
-</div>
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you associate a particular identified user with a group, such as a company, organization, or an account.
 
 A sample `group` call is shown below:
 
@@ -314,12 +287,7 @@ The mapping is as shown:
 
 ## Alias
 
-Calling `alias()` passes `userId` and `previousId` to the PostHog queue.
-
-<div class="infoBlock">
-
-For information on the <code class="inline-code">alias</code> call, refer to the <a href="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/alias/">RudderStack API Specification</a> guide.
-</div>
+Calling <Link to="/event-spec/standard-events/alias">`alias`</Link> passes `userId` and `previousId` to the PostHog queue.
 
 A sample `alias` call in RudderStack is as shown:
 

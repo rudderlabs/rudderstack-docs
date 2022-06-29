@@ -17,8 +17,7 @@ Before configuring AdRoll as a destination in RudderStack, verify if the source 
 | **Cloud mode** | -  | - | - |
 
 <div class="infoBlock">
-    
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to AdRoll, follow these steps:
@@ -36,7 +35,6 @@ To successfully configure AdRoll as a destination, you will need to configure th
 - **Pixel ID**: Enter your AdRoll pixel ID here.
 
 <div class="infoBlock">
-
 For more information on getting your AdRoll advertiser ID and pixel ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
@@ -44,20 +42,18 @@ For more information on getting your AdRoll advertiser ID and pixel ID, refer to
 - **Mapping to trigger the AdRoll Segment ID for the resepective event name**: Enter the event names which you want to map to specific AdRoll audience segments. 
 
 <div class="infoBlock">
-
 For more information on creating new audiences in AdRoll and getting the audience segment ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 <div class="infoBlock">
-
-When sending events via the device mode, RudderStack lets you specify which events should be discarded or allowed to flow through. For more information, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/"  target="_blank">Client-side Event Filtering</a> guide.
+When sending events via the device mode, RudderStack lets you specify which events should be discarded or allowed to flow through. For more information, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide.
 </div>
 
 - **Use device mode to send events**: As this is a device mode-only destination, this setting is enabled by default and cannot be disabled.
 
 ## Identify 
 
-The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
 A sample `identify` call is shown below:
 
@@ -70,18 +66,16 @@ rudderanalytics.identify("1hKOmRA4GRlm",{
 RudderStack uses the `identify` call to set a `userId` which is passed to AdRoll every time a subsequent `track` call is made. 
 
 <div class="infoBlock">
-
 <code class="inline-code">email</code> is a required attribute for successfully making an <code class="inline-code">identify</code> call. RudderStack maps <code class="inline-code">email</code> to AdRoll's <code class="inline-code">window._adroll_email</code> property.
 </div>
 
 <div class="infoBlock">
-
 It is not mandatory to make an <code class="inline-code">identify</code> call every time before making a <code class="inline-code">track</code> call.
 </div>
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) method lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> method lets you capture user events along with the properties associated with them.
 
 RudderStack uses `track` events to segment your users in AdRoll.
 
@@ -109,7 +103,6 @@ To use the RudderStack `track` calls to segment users in AdRoll, you must first 
 <img src="../../assets/event-stream-destinations/adroll-event-mapping.png" alt="AdRoll event mapping to audience"/>
 
 <div class="infoBlock">
-
 For more information on creating an audience in AdRoll and mapping it to your events, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
@@ -129,12 +122,11 @@ RudderStack maps the following event properties to the corresponding AdRoll attr
 
 ## Page
 
-The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) method lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page">`page`</Link> method lets you record your website's page views with any additional relevant information about the viewed page.
 
 RudderStack internally uses the `page` and `track` calls to segment your users.
 
 <div class="warningBlock">
-
 For RudderStack to successfully send both <code class="inline-code">page</code> and <code class="inline-code">track</code> calls to AdRoll, the events must be mapped to the AdRoll audience segment ID in the RudderStack dashboard. 
 </div>
 
@@ -183,12 +175,10 @@ To create a new audience segment in AdRoll, follow these steps:
 4. Enter the name of the audience segment in the **Audience Name** field.
 
 <div class="infoBlock">
-
 Make sure you copy the ID before creating the audience by clicking the <strong>Copy ID to clipboard</strong> link.
 </div>
 
 <div class="warningBlock">
-
 RudderStack supports only the <strong>conversion audience</strong> type, so make sure you check the <strong>This is a conversion audience</strong> option.
 </div>
 

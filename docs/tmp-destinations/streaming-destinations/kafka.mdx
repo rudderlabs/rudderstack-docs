@@ -1,18 +1,17 @@
 ---
 title: "Apache Kafka"
-description: Step-by-step guide to send event data from RudderStack to Apache Kafka
+description: Step-by-step guide on sending your event data from RudderStack to Apache Kafka
 ---
 
 Apache Kafka is a popular distributed streaming platform. It allows you to handle large-scale workloads with high throughput and low latency. Apache Kafka is highly available and is used across the world for building real-time data pipelines and streaming applications.
 
 RudderStack allows you to configure Apache Kafka as a destination to which you can send your event data seamlessly.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kafka">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kafka">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
 In order to enable dumping data to Kafka, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start flowing to Kafka.
 
@@ -24,9 +23,7 @@ Before configuring your source and destination on the [dashboard](https://app.ru
 | **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Kafka, perform the steps below:
@@ -35,7 +32,7 @@ Once you have confirmed that the platform supports sending events to Kafka, perf
 - Select the destination as **Kafka** to your source. Give your destination a name and then click on **Next**.
 - Next, in the **Connection Settings**, **fill all the fields with the relevant information and click** Next\*\*
 
-<img src="../../assets/screenshot-2020-05-17-at-4.34.38-pm.png" /><span class="imageTitle">Kafka Connection Settings</span>
+<img src="../../assets/screenshot-2020-05-17-at-4.34.38-pm.png" />
 
 - **Host Name**: Your Kafka server broker's host name goes here.
 - **Port:** The port to connect to the broker goes here.
@@ -47,12 +44,10 @@ Once you have confirmed that the platform supports sending events to Kafka, perf
 - **Password**: Provide the password as configured in Kafka for authenticating clients with SASL.
 
 <div class="warningBlock">
-
 You need to enable SSL to use SASL authentication.
-
 </div>
 
-<img src="../../assets/kafka-sasl.png" /><span class="imageTitle">SASL Connection Settings</span>
+<img src="../../assets/kafka-sasl.png" />
 
 RudderStack currently supports the following SASL types:
 
@@ -63,7 +58,6 @@ RudderStack currently supports the following SASL types:
 <div class="infoBlock">
 
 For more information on the Apache Kafka SASL authentication, visit the [official documentation](https://kafka.apache.org/documentation/#security_sasl).
-
 </div>
 
 ## Partition Key
@@ -73,18 +67,17 @@ We use `userId` as the partition key of message.
 <div class="infoBlock">
 
 If `userId` is not present in payload, then `anonymousId` is used instead.
-
 </div>
 
 So, if you have a multi-partitioned topic, then the records of the same `userId` \(or `anonymousId` in absence of `userId`\) will always go to the same partition.
 
 ## FAQ
 
-### **Does my Kafka server require Client Authentication?**
+### Does my Kafka server require Client Authentication?
 
 If you have enabled 2-way SSL, i.e. your server requires client authentication, then you need to have our CA certificate and put that in the Truststore of your server.
 
-### **How can I enable the 2-way SSL in Kafka and connect to RudderStack?**
+### How can I enable the 2-way SSL in Kafka and connect to RudderStack?
 
 Please follow the steps below that make use of Java's **keytool** utility.
 
@@ -166,7 +159,7 @@ vWJxTpadFmHwCTtKNrfnm2PgokxX3pVtkFu7xQhl26+87RQ=
 -----END CERTIFICATE-----
 ```
 
-**How can you connect to RudderStack if your Kafka server is running in a Kubernetes cluster?**
+### How can I connect to RudderStack if my Kafka server is running in a Kubernetes cluster?
 
 You will need to expose one public address, to which RudderStack connects. We recommend using SSL for that. Please note that you should allow **only the authenticated clients** for this exposed address. If you use `PLAINTEXT` for your internal services within your cluster, you might have the same.
 
@@ -186,10 +179,10 @@ listener.security.protocol.map=INTERNAL:PLAINTEXT,EXTERNAL:SSL
 
 RudderStack does not support `SASL_PLAINTEXT` authentication. You can use `SASL_SSL` instead. The [official Kafka documentation](https://kafka.apache.org/documentation/#security_sasl) recommends using SASL with SSL in production.
 
-### Why the connection between Kafka and Zookeeper is failing for `SASL`?
+### Why is the connection between Kafka and Zookeeper is failing for `SASL`?
 
-You should configure your Zookeeper with `SASL_SSL`.
+Configure your Zookeeper with `SASL_SSL` to resolve this issue.
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring or using Kafka with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!

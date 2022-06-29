@@ -8,7 +8,7 @@ Amazon S3 is a popular object storage service used to store both structured and 
 RudderStack lets you configure S3 data lake as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-Refer to the <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">Warehouse Schemas</a> guide for more information on how the events are mapped to the tables in S3 data lake.
+Refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in S3 data lake.
 </div>
 
 <div class="successBlock">
@@ -72,7 +72,7 @@ The folder structure is shown below:
 s3://<bucketName>/<prefix>/rudder-datalake/<namespace>/<tableName>/YYYY/MM/DD/HH
 ```
 
-As mentioned in the [Connection Settings](#connection-settings) section:
+As mentioned in the <Link to="#connection-settings">Connection Settings</Link> section:
 
 * `prefix`: This is the S3 prefix in the destination settings. If not specified, RudderStack will omit this value. 
 * `namespace`: The namespace specified in the destination settings. If not specified, RudderStack sets this field to the source name by default.

@@ -1,18 +1,17 @@
 ---
 title: "Keen"
-description: Step-by-step guide to send event data from RudderStack to Keen.
+description: Step-by-step guide on sending your event data from RudderStack to Keen.
 ---
 
 [Keen](https://keen.io/) is a customer analytics platform that allows you to collect, analyze and get invaluable marketing insights from your customer event data.
 
 RudderStack supports S2S \(Server to Server\) cloud mode and Web Native SDK for integration with Keen. You can thus send event data attached to Keen collections using RudderStack APIs.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/keen">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/keen">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
 To enable sending data to Keen, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Keen.
 
@@ -24,9 +23,7 @@ Before configuring your source and destination on the RudderStack, please verify
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Keen, perform the steps below:
@@ -93,7 +90,7 @@ user: {
 
 ## Page
 
-Calling `rudderanalytics.page()` will pass the `page` properties to the Keen collection `Viewed <category> <name> page`. To know more about the `page`call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+Calling `rudderanalytics.page()` will pass the `page` properties to the Keen collection `Viewed <category> <name> page`. To know more about the `page`call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 A sample `page` call is as shown in the snippet below:
 
@@ -120,7 +117,7 @@ This will send the following properties to the Keen `Viewed Home Page` collectio
 
 ## Track
 
-Calling `rudderanalytics.track()` will pass the event properties to Keen on the collection `event-name`. To know more about the `track`call, please refer to our [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) documentation.
+Calling `rudderanalytics.track()` will pass the event properties to Keen on the collection `event-name`. To know more about the `track`call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 An example `track` call is as shown:
 
@@ -142,7 +139,7 @@ The above call will send the following properties to Keen's `Track me` collectio
 
 ## Screen
 
-The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [iOS](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) or [Android](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/) SDK it will be registered in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
+The `screen` call records the screen views of the user in your App. If you have turned on the screen views in your App implementation from the [<Link to="/sources/sdks/rudderstack-ios-sdk/">iOS</Link> or <Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> SDK it will be registered in your dashboard. We'll forward the `properties` you've passed along with the `screen` call as it is.
 
 Here is a sample `screen` call in using RudderStack iOS SDK.
 
@@ -157,6 +154,6 @@ Here is a sample `screen` call in using RudderStack iOS SDK.
 
 You will find the **Project ID** and **Write Key** by navigating to **Projects** - \(select your project\) - **Access** - **Project Details**.
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring Keen with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!

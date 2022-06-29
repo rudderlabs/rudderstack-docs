@@ -17,8 +17,7 @@ Before configuring Bugsnag as a destination in RudderStack, verify if the source
 | **Cloud mode**      | -             | -             | -          |
 
 <div class="infoBlock">
-
-To know more about the difference between cloud mode and device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Bugsnag, follow these steps:
@@ -186,7 +185,7 @@ RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
 
 ## Identify
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
 A sample `identify` call is shown below:
 

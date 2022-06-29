@@ -1,18 +1,17 @@
 ---
 title: "Braze"
-description: Step-by-step guide to send your event data from RudderStack to Braze
+description: Step-by-step guide on sending your event data from RudderStack to Braze
 ---
 
 Braze is an industry-leading customer engagement platform. It allows you to better understand your customers' in-app behavior and use the insights to improve your overall app experience, and increase engagement with them.
 
 With RudderStack's SDK for mobile and web platforms, you can send your in-app event data to Braze directly for contextual analysis.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/braze">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/braze">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
 Before getting started, please determine whether the platform you are sending your event data from is supported. Refer to the following table for the supported source types and connection modes:
 
@@ -22,9 +21,7 @@ Before getting started, please determine whether the platform you are sending yo
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Follow these steps once you have added a source in the RudderStack app:
@@ -218,7 +215,7 @@ Ideally, the `identify` method is called when the user registers to the app for 
 
 ## Track
 
-The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**. For more information on the `track` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**. For more information on the `track` call, please refer to the <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
 
 A sample `track` call looks like the following code snippet:
 
@@ -274,7 +271,7 @@ When you call the `track` method for an event with the name `Order Completed` us
 
 ## Page
 
-The `page` call allows you to record your website's page views, with the additional relevant information about the page being viewed. For more information on the `page` call, please refer to the [RudderStack API Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+The `page` call allows you to record your website's page views, with the additional relevant information about the page being viewed. For more information on the `page` call, please refer to the <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
 
 A sample`page` call is as shown below:
 
@@ -302,6 +299,6 @@ Once you send the `group` event, RudderStack will send a custom attribute to Bra
 
 For example, if the `groupId` is `test_group_id` then RudderStack will create a custom attribute to Braze with the name `ab_rudder_group_test_group_id` and set the value to `true`.
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring Braze with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!

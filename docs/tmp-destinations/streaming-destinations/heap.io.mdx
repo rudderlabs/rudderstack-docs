@@ -1,18 +1,17 @@
 ---
 title: "Heap.io"
-description: Step-by-step guide to send your event data from RudderStack to Heap.io.
+description: Step-by-step guide on sending your event data from RudderStack to Heap.io.
 ---
 
 [Heap.io](https://heap.io/) is a popular analytics platform built for marketers, product managers, and customer success teams. With Heap, you can track every clip, tap or screen swipe action of your customers. With this data, and combining Heap's cutting-edge analytics capabilities, you can segment your users based on their behavior, and offer them unique digital experiences. If boosting your conversion rates and customer engagement is your goal, then Heap.io is a great tool to have in your marketing stack.
 
 RudderStack supports Heap.io as a destination to which you can send your event data in real-time.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/heap">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/heap">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
 To enable sending data to Heap.io, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Heap.
 
@@ -24,9 +23,7 @@ Before configuring your source and destination on the RudderStack, verify if the
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Heap.io, perform the steps below:
@@ -47,13 +44,7 @@ The Heap destination currently supports only <code class="inline-code">track</co
 
 ## Identify
 
-RudderStack's `identify` method captures the relevant details about the visiting user.
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">identify</code> call, refer to our guide on <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a>.
-
-</div>
+RudderStack's <Link to="/event-spec/standard-events/identify">`identify`</Link> method captures the relevant details about the visiting user.
 
 A sample `identify` payload is as shown in the snippet below:
 
@@ -66,13 +57,7 @@ rudderanalytics.identify("user123", {
 
 ## Track
 
-With the `track` API, RudderStack makes a call to Heap.io to track your user actions as well as their associated properties.
-
-<div class="infoBlock">
-
-For more information on the <code class="inline-code">track</code> method, refer to our guide on <a href="https://rudderstack.com/docs/rudderstack-api/">RudderStack API Specification</a>.
-
-</div>
+With the <Link to="/event-spec/standard-events/track">`track`</Link> API, RudderStack makes a call to Heap.io to track your user actions as well as their associated properties.
 
 A sample `track` call is as shown:
 
@@ -93,6 +78,6 @@ rudderanalytics.track("Order Completed", {
 
 You can procure your Heap ID by logging into your Heap account and navigate to App - Settings - Projects, and copying the required development or production App ID. Click [here](https://heapanalytics.com/app/settings/projects) to go to your Heap dashboard and get the App ID.
 
-## Contact Us
+## Contact us
 
 To know more about the Heap.io integration and how to use it, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community, and we will be happy to help you.

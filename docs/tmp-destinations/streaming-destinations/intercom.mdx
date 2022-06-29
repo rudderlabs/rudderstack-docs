@@ -5,8 +5,7 @@ description: Step-by-step guide on sending your event data from RudderStack to I
 
 [Intercom](https://www.intercom.com/) is a real-time business messaging platform that lets you bring together and manage all your customer life cycle activities in a single platform.
 
-<div class="successBlock">
-
+<div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/intercom">GitHub repository</a>.
 </div>
 
@@ -25,8 +24,7 @@ Before configuring Intercom as a destination in RudderStack, verify if the sourc
 | **Cloud mode**      | **Supported** | **Supported** | **Supported**          |
 
 <div class="infoBlock">
-
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that your source platform supports sending events to Intercom, follow these steps:
@@ -74,7 +72,7 @@ Depending on your platform of integration, follow the steps below to add Interco
   </TabList>
     <TabPanels>
       <TabPanel>
-        If this is the first time you are integrating the RudderStack Android SDK to your project, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/">Android SDK</a> documentation for more information.<br/><br/>
+        If this is the first time you are integrating the RudderStack Android SDK to your project, refer to the <Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> documentation for more information.<br/><br/>
        
 Your Android app must be on <strong>version 5.0 (API level 21) or higher</strong> for RudderStack to be able to send events to Intercom.<br/><br/>
 
@@ -129,7 +127,7 @@ val rudderClient:RudderClient = RudderClient.getInstance(
 </ol>
       </TabPanel>
       <TabPanel>
-        If this is the first time you are integrating the RudderStack iOS SDK to your project, refer to the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk">iOS SDK</a> documentation for more information.<br/><br/>
+        If this is the first time you are integrating the RudderStack iOS SDK to your project, refer to the <Link to="/sources/sdks/rudderstack-ios-sdk/">iOS SDK</Link> documentation for more information.<br/><br/>
 
 To add the RudderStack iOS SDK to your project, follow these steps:
 <ol>
@@ -168,7 +166,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 
 ## Identify
 
-The [`identify`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/) call captures the details about a visiting user.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call captures the details about a visiting user.
 
 A sample`identify` call looks like the following code snippet:
 
@@ -258,7 +256,7 @@ Intercom's [identity verification](https://www.intercom.com/help/en/articles/183
 RudderStack supports the identity verification feature for the events sent through the <strong>web device mode</strong>.
 </div>
 
-To enable the identity verification feature for the web device mode, you can pass `user_hash` within the <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#integrationopts">integrations</Link> object, as shown in the following snippet:
+To enable the identity verification feature for the web device mode, you can pass `user_hash` within the <Link to="/sources/sdks/rudderstack-javascript-sdk/#integrationopts">integrations</Link> object, as shown in the following snippet:
 
 ```javascript
 rudderanalytics.identify(
@@ -285,7 +283,7 @@ To obtain your Intercom API secret, go to your Intercom dashboard and navigate t
 
 ## Track
 
-The [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) call lets you record the customer events, that is, the actions they perform, along with any properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you record the customer events, that is, the actions they perform, along with any properties associated with them.
 
 A sample `track` call is shown below:
 
@@ -306,11 +304,11 @@ RudderStack converts and sends all the <code class="inline-code">track</code> ev
 
 ## Page
 
-The [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) call lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
 <div class="warningBlock">
 
-The <code class="inline-code">page</code> call is supported <strong>only</strong> for the <strong><a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">JavaScript SDK</a></strong> when sending events via the <strong><a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a></strong>. It works by triggering Intercom's <code class="inline-code">update</code> method, which looks for a list of new open conversations to be displayed to the current user.
+The <code class="inline-code">page</code> call is supported <strong>only</strong> for the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> when sending events via the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. It works by triggering Intercom's <code class="inline-code">update</code> method, which looks for a list of new open conversations to be displayed to the current user.
 </div>
 
 A sample `page` call looks like the following code snippet:

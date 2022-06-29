@@ -152,7 +152,7 @@ You can specify your desired schema name in the **Namespace** field while config
 <img src="../../assets/dw-integrations/namespace-example.png" />
 
 <div class="infoBlock">
-Refer to the <Link to ="/data-warehouse-integrations/">warehouse-specific documentation</Link> for more information on configuring a namespace while setting up the destination in RudderStack.
+Refer to the <Link to ="/tmp-destinations/warehouse-destinations/">warehouse-specific documentation</Link> for more information on configuring a namespace while setting up the destination in RudderStack.
 </div>
 
 <div class="warningBlock">
@@ -218,9 +218,9 @@ The table name truncation logic is as follows:
 
 ### Can I change the name of the table in which my events are synced?
 
-Yes, you can add a <Link to="/transformations/">transformation</Link> to change the event name and, consequently, the name of the table in which the events are synced. 
+Yes, you can add a <Link to="/features/transformations/">transformation</Link> to change the event name and, consequently, the name of the table in which the events are synced. 
 
-As seen in the above <Link to="/#how-does-rudderstack-configure-the-table-names">FAQ</Link>, RudderStack sets the table names to the event names modified in the snake case.
+As seen in the above <Link to="#how-does-rudderstack-configure-the-table-names">FAQ</Link>, RudderStack sets the table names to the event names modified in the snake case.
 
 A sample transformation used to change the event name is as shown:
 
@@ -334,7 +334,7 @@ If the above steps take too long to complete, you can halt the warehouse operati
 
 ### While configuring the Snowflake destination, what should I enter in the Account field?
 
-While configuring Snowflake as a destination in RudderStack, you need to enter your <Link to="/data-warehouse-integrations/snowflake/#connection-settings">Snowflake connection credentials</Link> which includes the **Account** field, as shown below:
+While configuring Snowflake as a destination in RudderStack, you need to enter your <Link to="/tmp-destinations/warehouse-destinations/snowflake/#connection-settings">Snowflake connection credentials</Link> which includes the **Account** field, as shown below:
 
 <img src="../../assets/dw-integrations/snowflake-accountid-example.png" alt="Snowflake account ID example" />
 
@@ -358,7 +358,7 @@ For more information on the different account locator formats depending on your 
 
 ### How can I achieve identity resolution with multiple sources connected to one warehouse destination?
 
-The default namespace will be the source name with some modifications. This will cause issues while creating mappings for <Link to ="/identity-resolution/">identity resolution</Link> across different sources, leading to multiple `RUDDER_ID` created for the same user.
+The default namespace will be the source name with some modifications. This will cause issues while creating mappings for <Link to ="/features/identity-resolution/">identity resolution</Link> across different sources, leading to multiple `RUDDER_ID` created for the same user.
 
 To avoid this, you can set the same namespace **for each source**, as shown:
 

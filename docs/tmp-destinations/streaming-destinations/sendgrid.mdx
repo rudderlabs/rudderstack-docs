@@ -1,7 +1,7 @@
 ---
 title: "SendGrid"
 description: >-
- Step-by-step guide to send your event data from RudderStack to SendGrid.
+ Step-by-step guide on sending your event data from RudderStack to SendGrid.
 ---
 
 [**SendGrid**](https://sendgrid.com/) is a cloud-based email marketing platform built for marketers and developers. It helps businesses deliver billions of transactional and marketing emails every month.
@@ -18,8 +18,7 @@ Before configuring SendGrid as a destination in RudderStack, verify if the sourc
 | **Cloud mode**      | **Supported** | **Supported**          | **Supported** |
 
 <div class="infoBlock">
- 
- To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that your source platform supports sending events to SendGrid, follow these steps:
@@ -47,7 +46,7 @@ The connection settings required to configure SendGrid as a destination in Rudde
 
 <div class="infoBlock">
  
- You can also send the Email subject via the <code class="inline-code">subject</code> field in the <code class="inline-code">track</code> properties. For more information, refer to the <a href="https://rudderstack.com/docs/destinations/marketing/sendgrid/#track">Track</a> section below.
+ You can also send the Email subject via the <code class="inline-code">subject</code> field in the <code class="inline-code">track</code> properties. For more information, refer to the <Link to="#track">Track</Link> section below.
 </div>
 
 * Next, enter the **Template ID**. 
@@ -80,7 +79,7 @@ You can also send the email ID and name inside <code class="inline-code">replyTo
 
 <div class="infoBlock">
  
-For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the refer to the <a href="https://rudderstack.com/docs/destinations/marketing/sendgrid/#replyto">replyTo</a> section below.
+For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the refer to the <Link to="#replyto">replyTo</Link> section below.
 </div>
 
 * Next, enter the **IP Pool Name**.
@@ -387,4 +386,4 @@ Each object inside attachments array must at least contain the `content` and `fi
 
 ## Contact us
 
-If you come across any issues while configuring or using SendGrid with RudderStack, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+If you come across any issues while configuring or using SendGrid with RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
