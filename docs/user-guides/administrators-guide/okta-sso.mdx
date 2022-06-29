@@ -7,7 +7,6 @@ description: >-
 This guide lists the steps to configure and enable Okta SSO for your organization.
 
 <div class="infoBlock">
-
 RudderStack does not support IdP-initiated authentication. To use Okta SSO for your organization, you will have to log in through https://app.rudderstack.com/sso.
 </div>
 
@@ -42,7 +41,6 @@ Enter the following settings in the **Configure SAML** section:
 - **Single sign on URL**: Set this to `https://auth2.rudderstack.com/saml2/idpresponse`. 
 
 <div class="infoBlock">
-
 Make sure you also enable the <strong>Use this for Recipient URL and Destination URL</strong> option under this setting.
 </div>
 
@@ -64,7 +62,6 @@ In the **Attribute Statements** section, you need to enter the following setting
 | LastName          | Unspecified              | `user.lastName`  |  Although `user.lastName` is recommended, you can provide any other value here. | 
 
 <div class="infoBlock">
-
 As long as the attributes you set match the <strong>Email</strong> and <strong>LastName</strong> fields, your SSO should work without any issues.
 </div>
 
@@ -83,7 +80,6 @@ Share this URL with the RudderStack team to enable SSO for your organization.
 <img src="../../assets/user-guides/okta-sso-6.png" alt="Identity provider metadata" />
 
 <div class="infoBlock">
-
 The <strong>Identity Provider metadata</strong> URL ends with <code class="inline-code">/metadata</code>.
 </div>
 
