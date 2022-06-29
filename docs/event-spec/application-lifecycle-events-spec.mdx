@@ -7,24 +7,22 @@ description: >-
 RudderStack lets you track various application lifecycle events across the mobile SDKs and get insights into app-related metrics like installs, opens, etc. This guide provides the details and semantic definitions of these events and the associated properties.
 
 <div class="infoBlock">
-  
 To track the application lifecycle events on the Android platform using the Unity SDK, you need to perform some additional steps. For more information on these steps, refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/#tracking-application-lifecycle-events-on-the-android-platform">Tracking application lifecycle events on the Android platform</a> section.
+To track the application lifecycle events on the Android platform using the Unity SDK, you need to perform some additional steps. For more information on these steps, refer to the <Link to="/sources/sdks/rudderstack-unity-sdk/#tracking-application-lifecycle-events-on-the-android-platform">Tracking application lifecycle events on the Android platform</Link> section.
 </div>
-
 
 
 ## Supported lifecycle events
 
 RudderStack **automatically tracks** the following application lifecycle events:
 
-- [Application Installed](#application-installed)
-- [Application Opened](#application-opened)
-- [Application Updated](#application-updated)
-- [Application Backgrounded](#application-backgrounded)
+- <Link to="#application-installed">Application Installed</Link>
+- <Link to="#application-opened">Application Opened</Link>
+- <Link to="#application-updated">Application Updated</Link>
+- <Link to="#application-backgrounded">Application Backgrounded</Link>
 
 <div class="infoBlock">
-
-To disable the auto-tracking of these events, set the <code class="inline-code">withTrackLifecycleEvents</code> parameter to <code class="inline-code">false</code> while initializing the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#initializing-the-rudderstack-client">Android</a> / <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#initializing-the-rudderstack-client">iOS</a> SDK.
+To disable the auto-tracking of these events, set the <code class="inline-code">withTrackLifecycleEvents</code> parameter to <code class="inline-code">false</code> while initializing the <Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> / <Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> SDK.
 </div>
 
 ## Application Installed
@@ -32,7 +30,6 @@ To disable the auto-tracking of these events, set the <code class="inline-code">
 This event is fired when a user opens an application for the first time after installation.
 
 <div class="warningBlock">
-
 RudderStack does not collect this event if the user does not open the app after installation.
 </div>
 
@@ -74,10 +71,8 @@ A sample payload is shown below:
 }
 ```
 
-
 <div class="infoBlock">
-  
-  <code class="inline-code">userId</code> will be present only if the user is logged into the application, i.e. an <code class="inline-code">identify</code> call is made previously.
+<code class="inline-code">userId</code> will be present only if the user is logged into the application, that is, an <code class="inline-code">identify</code> call is made previously.
 </div>
 
 RudderStack tracks the following properties for this event:
@@ -122,8 +117,8 @@ There are some differences in the way the RudderStack SDKs handle the above even
 
 | Platform | Expected behavior |
 | :--------| :---|
-| Android | Same behavior as the [Android SDK](#android-sdk). | 
-| iOS | Same behavior as the [iOS SDK](#ios-sdk). |
+| Android | Same behavior as the <Link to="#android-sdk">Android SDK</Link>. | 
+| iOS | Same behavior as the <Link to="#ios-sdk">iOS SDK</Link>. |
 
 ## Application Updated
 
@@ -152,9 +147,7 @@ RudderStack tracks the following properties for this event:
 
 
 <div class="infoBlock">
-
-For the Unity SDK, you need to perform the required steps for the Android and iOS platforms to trigger the <strong>Application Updated</strong> lifecycle event. For more information on these steps, refer to the 
- <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/#triggering-application-updated-lifecycle-event">Triggering Application Updated lifecycle event</a> section.
+For the Unity SDK, you need to perform the required steps for the Android and iOS platforms to trigger the <strong>Application Updated</strong> lifecycle event. For more information on these steps, refer to the <Link to="/sources/sdks/rudderstack-unity-sdk/#triggering-application-updated-lifecycle-event">Triggering Application Updated lifecycle event</Link> section.
 </div>
 
 ## Application Backgrounded
@@ -181,7 +174,7 @@ RudderStack does not track any properties for this event.
 
 ### Do the application lifecycle events follow the standard timestamping format?
 
-Yes, the lifecycle events follow the timestamp format in accordance with the [RudderStack API Spec](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/).
+Yes, the lifecycle events follow the timestamp format in accordance with the <Link to="/event-spec/standard-events/common-fields/">RudderStack API Spec</Link>.
 
 ### Do the lifecycle events include the user traits or `context` objects?
 

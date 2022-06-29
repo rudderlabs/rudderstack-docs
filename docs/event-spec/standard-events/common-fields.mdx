@@ -7,7 +7,6 @@ description: >-
 The common fields define the core event data structure in RudderStack. These fields also contain vital information about the event and the source platform.
 
 <div class="successBlock">
-
 Every RudderStack API call shares the same common fields.
 </div>
 
@@ -27,7 +26,7 @@ The following table lists all the common fields with their detailed description:
 | `sentAt`            | DateTime | Required | Captures the time when the event was sent from the client to RudderStack. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.                                                         |
 
 <div class="infoBlock">
-  Upon receving the event, RudderStack also sets <code class="inline-code">receivedAt</code> - the timestamp when the event is ingested(received). You need not set this field explicitly when sending the events to RudderStack.
+Upon receving the event, RudderStack also sets <code class="inline-code">receivedAt</code> - the timestamp when the event is ingested(received). You need not set this field explicitly when sending the events to RudderStack.
 </div>
 
 ## Clock skew considerations
@@ -35,7 +34,6 @@ The following table lists all the common fields with their detailed description:
 RudderStack considers the time at its end to be absolute and assumes any difference on the client-side. Thus, the client clock skew is relative.
 
 <div class="infoBlock">
-  
 If not specified in the payload explicitly, RudderStack calculates <code class="inline-code">timestamp</code> based on <code class="inline-code">originalTimestamp</code> and <code class="inline-code">sentAt</code> to account for the client clock skew.
 </div>
 
@@ -49,7 +47,6 @@ As mentioned in the above section:
 | `timestamp`         | Calculated by RudderStack to account for the client clock skew, **IF** the user does not explicitly specify it in the payload. |
 
 <div class="infoBlock">
-
 <code class="inline-code">sentAt</code> &gt; <code class="inline-code">originalTimestamp</code> is <strong>always true</strong>. However, <code class="inline-code">timestamp</code> can be more or less than the <code class="inline-code">originalTimestamp</code>. Refer to the cases below for more details.
 </div>
 
@@ -95,8 +92,7 @@ The following table lists all the contextual fields with their detailed descript
 | `campaign` | Object | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
 
 <div class="warningBlock">
-
-**Not all of the above contextual fields are automatically collected by the RudderStack SDKs.** Refer to the following sections for more information on which SDK automatically populates what contextual fields.
+<strong>Not all of the above contextual fields are automatically collected by the RudderStack SDKs.</strong> Refer to the following sections for more information on which SDK automatically populates what contextual fields.
 </div>
 
 The following sections highlight all the contextual fields that are automatically collected and populated by each of the RudderStack SDKs:
@@ -288,4 +284,4 @@ The following sample payload highlights how the above common and contextual fiel
 
 ## Contact us
 
-For more information on the common fields, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on the common fields, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

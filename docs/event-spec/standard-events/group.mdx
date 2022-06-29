@@ -6,13 +6,12 @@ description: Detailed technical description of the Group API call.
 The `group` call allows you to link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group, such as the name of the company, the number of employees, etc.
 
 <div class="infoBlock">
-
 An identified user can be a part of more than one group.
 </div>
 
 ## Sample payload
 
-A sample payload for the `group` event after removing the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) is as shown:
+A sample payload for the `group` event after removing the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link> is as shown:
 
 ```javascript
 {
@@ -40,12 +39,12 @@ rudderanalytics.group("12345", {
 
 ## Group fields
 
-The `group` call has the following fields in addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/):
+The `group` call has the following fields in addition to the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link>:
 
 | **Field** | **Type** | **Presence** | **Description**                                                                                                                            |
 | :-------- | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
 | `groupId` | String   | Required     | Your group's unique identifier which lets you identify the group in your database.                                                         |
-| `traits`  | Object   | Optional     | Includes the traits of the group such as `name`, `email`, `employees`, etc. For more more information, check the [**Traits**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/group/#traits) section below. |
+| `traits`  | Object   | Optional     | Includes the traits of the group such as `name`, `email`, `employees`, etc. For more more information, check the <Link to="#traits">Traits</Link>) section below. |
 
 ## Traits
 
@@ -182,4 +181,4 @@ RudderStack has some reserved traits that it handles in special ways. These are 
 
 ## Contact us
 
-For more information on any of the sections covered in this doc, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on any of the sections covered in this doc, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -6,9 +6,7 @@ description: Detailed technical description of the Identify API call.
 The `identify` call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
 <div class="infoBlock">
-
 As a best practice, make sure <code class="inline-code">identify</code> is called at the start of every session or page load for logged-in users, if possible. This will ensure all their latest traits are captured.
-
 </div>
 
 ## When should I call `identify`?
@@ -22,7 +20,7 @@ Ideally, you should call `identify` in the following scenarios:
 
 ## Sample payload
 
-A sample payload for the `identify` event after removing the common fields mentioned in the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) section is as shown:
+A sample payload for the `identify` event after removing the common fields mentioned in the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link> section is as shown:
 
 ```javascript
 {
@@ -46,7 +44,7 @@ rudderanalytics.identify("hashed_user_id", {
 
 ## Identify fields
 
-The `identify` call has the following fields in addition to the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/):
+The `identify` call has the following fields in addition to the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link>:
 
 | **Field** | **Type** | **Presence**                           | **Description**                                                                                                                    |
 | :-------- | :------- | :------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,14 +60,11 @@ RudderStack requires every `identify` call to have either a `userId` or an `anon
 A user ID \(`userId`\) uniquely identifies your user present in your database. It is a permanent identifier of your customer which never changes - like a database ID.
 
 <div class="infoBlock">
-
 For <code class="inline-code">identify</code> calls, you should include a <code class="inline-code">userId</code> as often as possible to identify the most up to date traits of the customer.
-
 </div>
 
 <div class="successBlock">
-
-  We strongly recommend using a database ID as the <code class="inline-code">userId</code> instead of usernames or email addresses. This is because the user may update their username or email address at any point in the future. Instead, you can pass these attributes as <strong>traits</strong>.
+It is recommended to use a database ID as the <code class="inline-code">userId</code> instead of usernames or email addresses. This is because the user may update their username or email address at any point in the future. Instead, you can pass these attributes as <strong>traits</strong>.
 </div>
 
 ### Anonymous ID
@@ -77,13 +72,11 @@ For <code class="inline-code">identify</code> calls, you should include a <code 
 There are instances where you may get a visitor on your website/app who may or may not be your customer. Nonetheless, you still want to track their actions and tie them to various events, page views, and traits. In such cases, you should use an Anonymous ID \(`anonymousId`\) to identify this user.
 
 <div class="infoBlock">
-
 An anonymousId can be any identifier. For instance, you can use a session ID corresponding to the visitor's session. If you don't have a readily available identifier, we recommend generating a **UUID**.
-
 </div>
 
 <div class="successBlock">
-  RudderStack's web and mobile <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/">SDKs</a> automatically use anonymous IDs to track unknown users on your website or mobile apps, so you don't have to worry about including an <code class="inline-code">anonymousId</code> explicitly.
+RudderStack's web and mobile <Link to="/sources/sdks/">SDKs</Link> automatically use anonymous IDs to track unknown users on your website or mobile apps, so you don't have to worry about including an <code class="inline-code">anonymousId</code> explicitly.
 </div>
 
 ## Identify traits
@@ -276,18 +269,16 @@ RudderStack has some reserved traits that it handles in special ways. These are 
 </table>
 
 <div class="successBlock">
-
 Different destinations recognize some of the above traits differently. For example, Mixpanel recognizes <code class="inline-code">createdAt</code> as <code class="inline-code">$created</code>, while Intercom recognizes it as <code class="inline-code">created_at</code>.
 
 With RudderStack, you don't have to worry about these inconsistencies at all, as it handles these destination-specific conversions automatically.
-
 </div>
 
 ## Passing traits to an `identify` call
 
 RudderStack lets you pass traits to an `identify` call. These traits will be stored in a cookie on your browser or mobile device and will be passed automatically to all the subsequent calls.
 
-An example of how you can pass traits to an `identify` call from our [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) is shown in the following code snippet. You can check our other [**SDKs**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/) for more examples.
+An example of how you can pass traits to an `identify` call from our <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> is shown in the following code snippet. You can check our other <Link to="/sources/sdks/">SDKs</Link> for more examples.
 
 ```javascript
 rudderanalytics.identify("user-id", {
@@ -300,4 +291,4 @@ In the above example, `{name: "username", gender: "male"}` are the traits stored
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

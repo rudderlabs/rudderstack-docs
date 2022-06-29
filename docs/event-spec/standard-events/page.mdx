@@ -6,13 +6,12 @@ description: Detailed technical description of the Page API call.
 The `page` call lets you record your website's page views with any additional relevant information about the viewed page. Many destinations require the `page` events to be called at least once every page load.
 
 <div class="successBlock">
-
-  The <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</a> includes a <code class="inline-code">page</code> call in its snippet just after the <code class="inline-code">rudderanalytics.load</code> method.
+The <Link to="/sources/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link> includes a <code class="inline-code">page</code> call in its snippet just after the <code class="inline-code">rudderanalytics.load</code> method.
 </div>
 
 ## Sample payload
 
-A sample payload of a `page` call with most of the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/) removed is as shown:
+A sample payload of a `page` call with most of the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link> removed is as shown:
 
 ```javascript
 {
@@ -32,18 +31,17 @@ rudderanalytics.page("Home")
 ```
 
 <div class="successBlock">
-
-  The SDK automatically gathers the page <code class="inline-code">name</code> and <code class="inline-code">url</code> and passes them into the event payload.
+The SDK automatically gathers the page <code class="inline-code">name</code> and <code class="inline-code">url</code> and passes them into the event payload.
 </div>
 
 ## Page fields
 
-Apart from the [**Common Fields**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/), the `page` call accepts the following fields:
+Apart from the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link>, the `page` call accepts the following fields:
 
 | **Field**    | **Type** | **Presence** | **Description**                                                                                                                            |
 | :----------- | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`       | String   | Optional     | The name of the page.                                                                                                                      |
-| `properties` | Object   | Optional     | Includes the properties of the page such as the `url`, `referrer`, etc. For more more information, check the [**Properties**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/#properties) section below. |
+| `properties` | Object   | Optional     | Includes the properties of the page such as the `url`, `referrer`, etc. For more more information, check the <Link to="#properties">Properties</Link> section below. |
 
 ## Properties
 
@@ -130,4 +128,4 @@ RudderStack has reserved some standard properties listed in the following table 
 
 ## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -10,9 +10,7 @@ RudderStack's video specification lets you define how a customer engages with yo
 This documentation lists the conventions and best practices for sending events in case of video tracking videos. It will also clarify the overall structure and classification of these events.
 
 <div class="warningBlock">
-
 Not all RudderStack destinations support video tracking. Refer to the individual destination's documentation to check if it supports this feature.
-
 </div>
 
 This guide is organized into the following three event categories:
@@ -30,9 +28,7 @@ For example, when a customer plays a video on your app, a `Video Playback Starte
 Suppose if you have a web page with two video players, you would have two separate sessions and `session_id` associated with them. On the other hand, two separate videos played on the same video player would still constitute a single session with two contents associated with it.
 
 <div class="infoBlock">
-
 All the playback events are tracked and recorded at the session level.
-
 </div>
 
 ### Playback Events
@@ -40,9 +36,7 @@ All the playback events are tracked and recorded at the session level.
 This section details all the video playback events.
 
 <div class="infoBlock">
-
-For more information on each of the properties associated with these events, refer to the **Playback Event Properties** section.
-
+For more information on each of the properties associated with these events, refer to the <strong>Playback Event Properties</strong> section.
 </div>
 
 #### Video Playback Started
@@ -654,9 +648,7 @@ The flow is as follows:
 - User starts and completes the second content pod
 
 <div class="infoBlock">
-
 All of these events within the flow happen within one video playback.
-
 </div>
 
 ### Content Events
@@ -664,9 +656,7 @@ All of these events within the flow happen within one video playback.
 This section details all the video content events.
 
 <div class="infoBlock">
-
-For more information on each of the properties associated with these events, refer to the **Content Event Properties** section.
-
+For more information on each of the properties associated with these events, refer to the <strong>Content Event Properties</strong> section.
 </div>
 
 #### Video Content Started
@@ -988,9 +978,7 @@ The following table lists all the properties of this playback event object in de
 This section details all the ad events.
 
 <div class="infoBlock">
-
-For more information on each of the properties associated with these events, refer to the **Ad Event Properties** section.
-
+For more information on each of the properties associated with these events, refer to the <strong>Ad Event Properties</strong> section.
 </div>
 
 #### Video Ad Started
@@ -1479,7 +1467,7 @@ rudderanalytics.track("Video Playback Completed", {
 })
 ```
 
-## FAQs
+## FAQ
 
 #### What are pre-roll, mid-roll, and post-roll ads?
 
@@ -1491,4 +1479,4 @@ These ads can be a promotional video by the sponsors or a piece of content offer
 
 ## Contact Us
 
-For more information on the RudderStack video spec, feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on the RudderStack video spec, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
