@@ -47,11 +47,11 @@ To create a new Airflow connection, follow these steps:
 
 1. In your Airflow dashboard, go to **Admin** > **Connections**, as shown:
 
-<img src="../../assets/warehouse-actions-sources/airflow-provider-1.png" alt="Airflow dashboard Connections option" />
+<img src="../../../assets/warehouse-actions-sources/airflow-provider-1.png" alt="Airflow dashboard Connections option" />
 
 2. Add a new connection by configuring the following details:
 
-<img src="../../assets/warehouse-actions-sources/airflow-provider-2.png" alt="Airflow dashboard edit connection" />
+<img src="../../../assets/warehouse-actions-sources/airflow-provider-2.png" alt="Airflow dashboard edit connection" />
 
    - **Connection ID**: Specify a unique connection name. `RudderstackOperator` will pick the connection with the name `rudderstack_default` by default. If you have created a connection with a different name, make sure that name is passed as a parameter to `RudderstackOperator`.
 
@@ -121,7 +121,7 @@ cp rudderstack_dag.py $AIRFLOW_HOME/dags
 
 **Make sure the Airflow scheduler is running in the background**. Also, you must enable the DAG in the Airflow dashboard, as shown:
 
-<img src="../../assets/warehouse-actions-sources/airflow-provider-3.png" alt="enabling Airflow DAG in dashboard" />
+<img src="../../../assets/warehouse-actions-sources/airflow-provider-3.png" alt="enabling Airflow DAG in dashboard" />
 
 <div class="infoBlock">
 
@@ -136,7 +136,7 @@ The source ID is a unique identifier for any source set up in RudderStack.
 
 To obtain the source ID, go to the configured Reverse ETL source in your RudderStack dashboard and navigate to the **Settings** tab.
 
-<img src="../../assets/warehouse-actions-sources/source-id.png" alt="Source ID for Reverse ETL sources" />
+<img src="../../../assets/warehouse-actions-sources/source-id.png" alt="Source ID for Reverse ETL sources" />
 
 ## Contact us
 

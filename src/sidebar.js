@@ -1,7 +1,7 @@
 export const jsonData = [
 
-  // Home section (just a link actually)
-  
+    // Home section (just a link actually)
+
     {
         key: "home",
         title: "Home",
@@ -78,51 +78,51 @@ export const jsonData = [
         content: []
     },
 
-// Dashboard guides section
+    // Dashboard guides section
 
-{
-    key: "overview",
-    title: "Overview",
-    sectionTitle: "Dashboard Guides",
-    link: "/dashboard-guides/overview/",
-    content: []
-},
-{
-    key: "sources",
-    title: "Sources",
-    link: "/dashboard-guides/sources/",
-    content: []
-},
-{
-    key: "destinations",
-    title: "Destinations",
-    link: "/dashboard-guides/destinations/",
-    content: []
-},
-{
-    key: "live-events",
-    title: "Live Events",
-    link: "/dashboard-guides/live-events/",
-    content: []
-},
-{
-    key: "teammates",
-    title: "Teammates (User Management)",
-    link: "/dashboard-guides/teammates/",
-    content: []
-},
-{
-    key: "audit-logs",
-    title: "Audit Logs",
-    link: "/dashboard-guides/audit-logs/",
-    content: []
-},
-{
-    key: "personal-access-token",
-    title: "Personal Access Token",
-    link: "/dashboard-guides/personal-access-token/",
-    content: []
-},
+    {
+        key: "overview",
+        title: "Overview",
+        sectionTitle: "Dashboard Guides",
+        link: "/dashboard-guides/overview/",
+        content: []
+    },
+    {
+        key: "sources",
+        title: "Sources",
+        link: "/dashboard-guides/sources/",
+        content: []
+    },
+    {
+        key: "destinations",
+        title: "Destinations",
+        link: "/dashboard-guides/destinations/",
+        content: []
+    },
+    {
+        key: "live-events",
+        title: "Live Events",
+        link: "/dashboard-guides/live-events/",
+        content: []
+    },
+    {
+        key: "teammates",
+        title: "Teammates (User Management)",
+        link: "/dashboard-guides/teammates/",
+        content: []
+    },
+    {
+        key: "audit-logs",
+        title: "Audit Logs",
+        link: "/dashboard-guides/audit-logs/",
+        content: []
+    },
+    {
+        key: "personal-access-token",
+        title: "Personal Access Token",
+        link: "/dashboard-guides/personal-access-token/",
+        content: []
+    },
 
     // Sources section
     {
@@ -564,6 +564,7 @@ export const jsonData = [
             {
                 key: "amazon-redshift",
                 title: "Amazon Redshift",
+                sectionTitle: "Sources",
                 link: "/sources/reverse-etl/amazon-redshift/",
                 content: []
             },
@@ -599,58 +600,51 @@ export const jsonData = [
                 title: "Snowflake",
                 link: "/sources/reverse-etl/snowflake/",
                 content: []
+            },
+
+            {
+                key: "models",
+                title: "Models",
+                sectionTitle: "Features",
+                link: "/sources/reverse-etl/features/models/",
+                content: []
             }, {
-                key: "features",
-                title: "Features",
-                link: "/sources/reverse-etl/features/",
-                content: [
-                    {
-                        key: "models",
-                        title: "Models",
-                        link: "/sources/reverse-etl/features/models/",
-                        content: []
-                    }, {
-                        key: "airflow-provider",
-                        title: "Airflow Provider",
-                        link: "/sources/reverse-etl/features/airflow-provider/",
-                        content: []
-                    }, {
-                        key: "visual-data-mapper",
-                        title: "Visual Data Mapper",
-                        link: "/sources/reverse-etl/features/visual-data-mapper/",
-                        content: []
-                    },
-                ]
+                key: "airflow-provider",
+                title: "Airflow Provider",
+                link: "/sources/reverse-etl/features/airflow-provider/",
+                content: []
             }, {
-                key: "common-settings",
-                title: "Common Settings",
-                link: "/sources/reverse-etl/common-settings/",
-                content: [
-                    {
-                        key: "sync-modes",
-                        title: "Sync Modes",
-                        link: "/sources/reverse-etl/common-settings/sync-modes/",
-                        content: []
-                    }, {
-                        key: "sync-schedule-settings",
-                        title: "Sync Schedule",
-                        link: "/sources/reverse-etl/common-settings/sync-schedule-settings/",
-                        content: []
-                    }, {
-                        key: "importing-data-using-tables",
-                        title: "Importing Data using Tables",
-                        link: "/sources/reverse-etl/common-settings/importing-data-using-tables/",
-                        content: []
-                    }, {
-                        key: "importing-data-using-models",
-                        title: "Importing Data using Models",
-                        link: "/sources/reverse-etl/common-settings/importing-data-using-models/",
-                        content: []
-                    },
-                ]
+                key: "visual-data-mapper",
+                title: "Visual Data Mapper",
+                link: "/sources/reverse-etl/features/visual-data-mapper/",
+                content: []
+            },
+            {
+                key: "sync-modes",
+                title: "Sync Modes",
+                sectionTitle: "Common Settings",
+                link: "/sources/reverse-etl/common-settings/sync-modes/",
+                content: []
             }, {
+                key: "sync-schedule-settings",
+                title: "Sync Schedule",
+                link: "/sources/reverse-etl/common-settings/sync-schedule-settings/",
+                content: []
+            }, {
+                key: "importing-data-using-tables",
+                title: "Importing Data using Tables",
+                link: "/sources/reverse-etl/common-settings/importing-data-using-tables/",
+                content: []
+            }, {
+                key: "importing-data-using-models",
+                title: "Importing Data using Models",
+                link: "/sources/reverse-etl/common-settings/importing-data-using-models/",
+                content: []
+            },
+            {
                 key: "faq",
                 title: "FAQ",
+                sectionTitle: "",
                 link: "/sources/reverse-etl/faq/",
                 content: []
             },
@@ -1503,208 +1497,208 @@ export const jsonData = [
     },
 
     // Features section
-  {
-    key: "transformations",
-    title: "Transformations",
-    sectionTitle: "Features",
-    link: "/features/transformations/",
-    content: []
-  },
-  {
-    key: "data-governance",
-    title: "Data Governance",
-    link: "/features/data-governance/",
-    content: [
-       {
-        key: "ruddertyper",
-        title: "RudderTyper",
-        link: "/features/data-governance/ruddertyper/",
+    {
+        key: "transformations",
+        title: "Transformations",
+        sectionTitle: "Features",
+        link: "/features/transformations/",
         content: []
-      }, {
-        key: "tracking-plans",
-        title: "Tracking Plans",
-        link: "/features/data-governance/tracking-plans/",
+    },
+    {
+        key: "data-governance",
+        title: "Data Governance",
+        link: "/features/data-governance/",
         content: [
-          {
-            key: "tracking-plan-spreadsheet",
-            title: "Tracking Plan Spreadsheet",
-            link: "/features/data-governance/tracking-plans/tracking-plan-spreadsheet/",
-            content: []
-          },
+            {
+                key: "ruddertyper",
+                title: "RudderTyper",
+                link: "/features/data-governance/ruddertyper/",
+                content: []
+            }, {
+                key: "tracking-plans",
+                title: "Tracking Plans",
+                link: "/features/data-governance/tracking-plans/",
+                content: [
+                    {
+                        key: "tracking-plan-spreadsheet",
+                        title: "Tracking Plan Spreadsheet",
+                        link: "/features/data-governance/tracking-plans/tracking-plan-spreadsheet/",
+                        content: []
+                    },
+                ]
+            },
         ]
-      },
-    ]
-  }, {
-    key: "identity-resolution",
-    title: "Identity Resolution",
-    link: "/features/identity-resolution/",
-    content: []
-  },
+    }, {
+        key: "identity-resolution",
+        title: "Identity Resolution",
+        link: "/features/identity-resolution/",
+        content: []
+    },
 
 
-// Event Spec section
+    // Event Spec section
 
-{
-    key: "standard-events",
-    title: "Standard Events",
-    sectionTitle: "Events Spec",
-    link: "/event-spec/standard-events/",
-    content: [
-      {
-        key: "identify",
-        title: "Identify",
-        link: "/event-spec/standard-events/identify/",
+    {
+        key: "standard-events",
+        title: "Standard Events",
+        sectionTitle: "Events Spec",
+        link: "/event-spec/standard-events/",
+        content: [
+            {
+                key: "identify",
+                title: "Identify",
+                link: "/event-spec/standard-events/identify/",
+                content: []
+            },
+            {
+                key: "page",
+                title: "Page",
+                link: "/event-spec/standard-events/page/",
+                content: []
+            },
+            {
+                key: "screen",
+                title: "Screen",
+                link: "/event-spec/standard-events/screen/",
+                content: []
+            },
+            {
+                key: "track",
+                title: "Track",
+                link: "/event-spec/standard-events/track/",
+                content: []
+            },
+            {
+                key: "group",
+                title: "Group",
+                link: "/event-spec/standard-events/group/",
+                content: []
+            },
+            {
+                key: "alias",
+                title: "Alias",
+                link: "/event-spec/standard-events/alias/",
+                content: []
+            },
+            {
+                key: "common-fields",
+                title: "Common Fields",
+                link: "/event-spec/standard-events/common-fields/",
+                content: []
+            },
+        ]
+    },
+    {
+        key: "ecommerce-events-spec",
+        title: "E-commerce Events",
+        link: "/event-spec/ecommerce-events-spec/",
+        content: [
+            {
+                key: "browsing",
+                title: "Browsing",
+                link: "/event-spec/ecommerce-events-spec/browsing/",
+                content: []
+            },
+            {
+                key: "ordering",
+                title: "Ordering",
+                link: "/event-spec/ecommerce-events-spec/ordering/",
+                content: []
+            },
+            {
+                key: "wishlisting",
+                title: "Wishlisting",
+                link: "/event-spec/ecommerce-events-spec/wishlisting/",
+                content: []
+            },
+            {
+                key: "promotions",
+                title: "Promotions",
+                link: "/event-spec/ecommerce-events-spec/promotions/",
+                content: []
+            },
+            {
+                key: "coupons",
+                title: "Coupons",
+                link: "/event-spec/ecommerce-events-spec/coupons/",
+                content: []
+            },
+            {
+                key: "sharing",
+                title: "Sharing",
+                link: "/event-spec/ecommerce-events-spec/sharing/",
+                content: []
+            },
+            {
+                key: "reviewing",
+                title: "Reviewing",
+                link: "/event-spec/ecommerce-events-spec/reviewing/",
+                content: []
+            },
+        ]
+    },
+    {
+        key: "application-lifecycle-events-spec",
+        title: "Application Lifecycle Events",
+        link: "/event-spec/application-lifecycle-events-spec/",
         content: []
-      },
-      {
-        key: "page",
-        title: "Page",
-        link: "/event-spec/standard-events/page/",
+    },
+    {
+        key: "video-events-spec",
+        title: "Video Events",
+        link: "/event-spec/video-events-spec/",
         content: []
-      },
-      {
-        key: "screen",
-        title: "Screen",
-        link: "/event-spec/standard-events/screen/",
-        content: []
-      },
-      {
-        key: "track",
-        title: "Track",
-        link: "/event-spec/standard-events/track/",
-        content: []
-      },
-      {
-        key: "group",
-        title: "Group",
-        link: "/event-spec/standard-events/group/",
-        content: []
-      },
-      {
-        key: "alias",
-        title: "Alias",
-        link: "/event-spec/standard-events/alias/",
-        content: []
-      },
-      {
-        key: "common-fields",
-        title: "Common Fields",
-        link: "/event-spec/standard-events/common-fields/",
-        content: []
-      },
-    ]
-  },
-  {
-    key: "ecommerce-events-spec",
-    title: "E-commerce Events",
-    link: "/event-spec/ecommerce-events-spec/",
-    content: [
-      {
-        key: "browsing",
-        title: "Browsing",
-        link: "/event-spec/ecommerce-events-spec/browsing/",
-        content: []
-      },
-      {
-        key: "ordering",
-        title: "Ordering",
-        link: "/event-spec/ecommerce-events-spec/ordering/",
-        content: []
-      },
-      {
-        key: "wishlisting",
-        title: "Wishlisting",
-        link: "/event-spec/ecommerce-events-spec/wishlisting/",
-        content: []
-      },
-      {
-        key: "promotions",
-        title: "Promotions",
-        link: "/event-spec/ecommerce-events-spec/promotions/",
-        content: []
-      },
-      {
-        key: "coupons",
-        title: "Coupons",
-        link: "/event-spec/ecommerce-events-spec/coupons/",
-        content: []
-      },
-      {
-        key: "sharing",
-        title: "Sharing",
-        link: "/event-spec/ecommerce-events-spec/sharing/",
-        content: []
-      },
-      {
-        key: "reviewing",
-        title: "Reviewing",
-        link: "/event-spec/ecommerce-events-spec/reviewing/",
-        content: []
-      },
-    ]
-  },
-  {
-    key: "application-lifecycle-events-spec",
-    title: "Application Lifecycle Events",
-    link: "/event-spec/application-lifecycle-events-spec/",
-    content: []
-  },
-  {
-    key: "video-events-spec",
-    title: "Video Events",
-    link: "/event-spec/video-events-spec/",
-    content: []
-  },
+    },
 
 
-   // API section
+    // API section
 
-  {
-    key: "api",
-    title: "Overview",
-    sectionTitle: "API",
-    link: "/api/overview/",
-    content: []
-  },
-  {
-    key: "http-api",
-    title: "HTTP API",
-    link: "/api/http-api/",
-    content: []
-  },
-   {
-    key: "pixel-api-spec",
-    title: "Pixel API",
-    link: "/api/pixel-api-spec/",
-    content: []
-  }, {
-    key: "tracking-plan-api",
-    title: "Tracking Plan API",
-    link: "/api/tracking-plan-api/",
-    content: []
-  }, {
-    key: "transformation-api",
-    title: "Transformation API",
-    link: "/api/transformation-api/",
-    content: []
-  }, {
-    key: "data-governance-api",
-    title: "Data Governance API",
-    link: "/api/data-governance-api/",
-    content: []
-  },
-  {
-    key: "data-regulation-api",
-    title: "Data Regulation API",
-    link: "/api/data-regulation-api/",
-    content: []
-  },
-  {
-    key: "test-api",
-    title: "Test API",
-    link: "/api/test-api/",
-    content: []
-  },
+    {
+        key: "api",
+        title: "Overview",
+        sectionTitle: "API",
+        link: "/api/overview/",
+        content: []
+    },
+    {
+        key: "http-api",
+        title: "HTTP API",
+        link: "/api/http-api/",
+        content: []
+    },
+    {
+        key: "pixel-api-spec",
+        title: "Pixel API",
+        link: "/api/pixel-api-spec/",
+        content: []
+    }, {
+        key: "tracking-plan-api",
+        title: "Tracking Plan API",
+        link: "/api/tracking-plan-api/",
+        content: []
+    }, {
+        key: "transformation-api",
+        title: "Transformation API",
+        link: "/api/transformation-api/",
+        content: []
+    }, {
+        key: "data-governance-api",
+        title: "Data Governance API",
+        link: "/api/data-governance-api/",
+        content: []
+    },
+    {
+        key: "data-regulation-api",
+        title: "Data Regulation API",
+        link: "/api/data-regulation-api/",
+        content: []
+    },
+    {
+        key: "test-api",
+        title: "Test API",
+        link: "/api/test-api/",
+        content: []
+    },
 
     // Guides section
 
