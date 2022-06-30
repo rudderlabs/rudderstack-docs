@@ -5,11 +5,9 @@ description: >-
   Detailed technical description of the JSON column feature supported by the warehouse destinations.
 ---
 
-
-With JSON support, you can now ingest semi-structured event data not defined by a fixed schema. Also, you can directly store a nested event payload as a whole without worrying about the warehouse columns' length limit.
+With JSON column support, you can now ingest semi-structured event data not defined by a fixed schema. Also, you can directly store a nested event payload without worrying about the length limit in your warehouse columns.
 
 <div class="infoBlock">
-
 The JSON column feature is supported by the following warehouse destinations:
 <ul>
   <li><Link to="/data-warehouse-integrations/amazon-redshift/">Amazon Redshift</Link></li>
@@ -20,7 +18,6 @@ The JSON column feature is supported by the following warehouse destinations:
 </div>
 
 <div class="warningBlock">
-
 This feature is applicable only for the <Link to="/rudderstack-api/api-specification/rudderstack-spec/track/"><code class="inline-code">track</code></Link> events.
 </div>
 
@@ -56,14 +53,12 @@ Here, `nestedMap` is declared as a JSON and is in the following format:
 
 ```
 <div class="infoBlock">
-
 Make sure you configure the SDK to load the integration options by default. Refer to the following SDK guides for more context:
 <ul>
   <li><Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter">JavaScript</Link></li>
   <li><Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/#1-passing-destinations-while-initializing-the-sdk">Android</Link></li>
   <li><Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/#1-passing-destinations-while-initializing-the-sdk">iOS</Link></li>
 </ul>
-
 Then, include the column path from the event payload in the <code class="inline-code">destination_type.options.jsonPaths</code> list, as seen in the above code snippet.
 </div>
 
@@ -94,9 +89,19 @@ While configuring your warehouse destination settings in RudderStack, you can pa
 <img src="../assets/dw-integrations/json-column-dashboard-setting.png" alt="JSON column setting in RudderStack dashboard" />
 
 <div class="infoBlock">
-
 This option applies to all the <code class="inline-code">track</code> events sent to the warehouse destination.
 </div>
+
+## Semi-structured data usage and limitations
+
+For warehouse-specific information on working with semi-structured data and the associated limitations, refer to the following guides:
+
+| Warehouse | Reference |
+| :-----------| :----------|
+| Redshift | [Documentation](https://docs.aws.amazon.com/redshift/latest/dg/r_SUPER_type.html) |
+| BigQuery | <ul><li>[Documentation](https://cloud.google.com/bigquery/docs/reference/standard-sql/json_functions)</li><li><Link to="#how-can-i-use-the-json-column-feature-in-bigquery">FAQ</Link></li></ul> |
+| PostgreSQL | [Documentation](https://www.postgresql.org/docs/current/datatype-json.html) |
+| Snowflake | [Documentation](https://docs.snowflake.com/en/sql-reference/data-types-semistructured.html#variant) |
 
 ## FAQ
 
@@ -108,7 +113,7 @@ The JSON column feature supports only [`track`](https://www.rudderstack.com/docs
 
 The JSON data type includes String, Integers, Float, Arrays, Booleans, and Maps.
 
-### How can I use this feature in Google BigQuery?
+### How can I use the JSON column feature in BigQuery?
 
 Google BigQuery has released JSON support only as a preview feature. Hence, RudderStack will treat the JSON columns as strings and insert the JSON strings as the values. You can use the JSON functions to query the semi-structured data.
 
