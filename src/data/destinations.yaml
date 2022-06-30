@@ -1,646 +1,647 @@
 ---
-- options:
-  displayName: Ometria
-  category: cool
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/ometria/
-- options:
-  displayName: Segment
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/segment/
-- options:
-  displayName: Attentive Tag
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/attentive-tag/
-- options:
-  displayName: Kochava
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/kochava/
-- options:
-  displayName: Pardot
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/pardot/
-- options:
-  displayName: Google Tag Manager
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/gtm/
-- options:
-  displayName: AWS Personalize
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/personalize/
-- options:
-  displayName: Delighted
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/delighted/
-- options:
-  displayName: Twitter Ads
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/twitter-ads/
-- options:
-  displayName: Taplytics
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/taplytics/
-- options:
-  displayName: Drift
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/drift/
-- options:
-  displayName: MinIO
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/minio/
-- options:
-  displayName: Apache Kafka
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/kafka/
-- options:
-  displayName: Fullstory
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/fullstory/
-- options:
-  displayName: Chartbeat
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/chartbeat/
-- options:
-  displayName: Optimizely Fullstack
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/optimizely-fullstack/
-- options:
-  displayName: Google Pub/Sub
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/googlepubsub/
-- options:
-  displayName: Attribution
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/attribution/
-- options:
-  displayName: CleverTap
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/clevertap/
-- options:
-  displayName: Amazon Kinesis
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/kinesis/
-- options:
-  displayName: Indicative
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/indicative/
-- options:
-  displayName: Keen
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/keen/
-- options:
-  displayName: Zendesk
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/zendesk/
-- options:
-  displayName: New Relic
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/new-relic/
-- options:
-  displayName: Algolia
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/algolia/
-- options:
-  displayName: Yahoo DSP
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/yahoo-dsp/
-- options:
-  displayName: Firebase
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/firebase/
-- options:
-  displayName: Userlist
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/userlist/
-- options:
-  displayName: Azure Event Hubs
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/azure-event-hub/
-- options:
-  displayName: Azure Datalake
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/azure-datalake/
-- options:
-  displayName: Bing Ads
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/bingads/
-- options:
-  displayName: MoEngage
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/moengage/
-- options:
-  displayName: Snapchat Conversion
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/snapchat-conversion/
-- options:
-  displayName: Autopilot
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/autopilot/
-- options:
-  displayName: Iterable
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/iterable/
-- options:
-  displayName: Salesforce Marketing Cloud
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/sfmc/
-- options:
-  displayName: Heap.io
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/heap/
-- options:
-  displayName: BigQuery Stream
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/bqstream/
-- options:
-  displayName: Drip
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/drip/
-- options:
-  displayName: Gainsight PX
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/gainsight-px/
-- options:
-  displayName: Revenue Cat
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/revenue-cat/
-- options:
+- category: null
   displayName: AWS EventBridge
-  category:
-  type: streaming
   link: /tmp-destinations/streaming-destinations/eventbridge/
-- options:
-  displayName: Customer IO
-  category:
+  options: null
   type: streaming
-  link: /tmp-destinations/streaming-destinations/customerio/
-- options:
-  displayName: Google Analytics 360
-  category:
+- category: null
+  displayName: AWS Personalize
+  link: /tmp-destinations/streaming-destinations/personalize/
+  options: null
   type: streaming
-  link: /tmp-destinations/streaming-destinations/ga360/
-- options:
-  displayName: Bugsnag
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/bugsnag/
-- options:
-  displayName: Adjust
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/adj/
-- options:
-  displayName: Lotame Mobile
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/lotame-mobile/
-- options:
-  displayName: Kiss Metrics
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/kissmetrics/
-- options:
-  displayName: DigitalOcean Spaces
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/digital-ocean-spaces/
-- options:
-  displayName: Webhook
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/webhook/
-- options:
-  displayName: PostHog
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/posthog/
-- options:
-  displayName: Microsoft SQL Server
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/mssql/
-- options:
-  displayName: Kustomer
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/kustomer/
-- options:
-  displayName: VWO
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/vwo/
-- options:
+- category: null
   displayName: ActiveCampaign
-  category:
-  type: streaming
   link: /tmp-destinations/streaming-destinations/active-campaign/
-- options:
-  displayName: Candu
-  category:
+  options: null
   type: streaming
-  link: /tmp-destinations/streaming-destinations/candu/
-- options:
-  displayName: Monetate
-  category:
+- category: null
+  displayName: Adjust
+  link: /tmp-destinations/streaming-destinations/adj/
+  options: null
   type: streaming
-  link: /tmp-destinations/streaming-destinations/monetate/
-- options:
-  displayName: Pinterest Tag
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/pinterest-tag/
-- options:
-  displayName: Slack
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/slack/
-- options:
-  displayName: Amazon S3
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/s3/
-- options:
-  displayName: Google Sheets
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/googlesheets/
-- options:
-  displayName: Split.io
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/splitio/
-- options:
-  displayName: Databricks (Delta Lake)
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/deltalake/
-- options:
-  displayName: Postgres
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/postgres/
-- options:
-  displayName: Google Adwords Remarketing Lists (Customer Match)
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/google-adwords-remarketing-lists/
-- options:
-  displayName: Trengo
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/trengo/
-- options:
-  displayName: Sentry
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/sentry/
-- options:
-  displayName: TikTok Ads
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/tiktok-ads/
-- options:
-  displayName: ClickHouse
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/clickhouse/
-- options:
-  displayName: Reddit Pixel
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/reddit-pixel/
-- options:
-  displayName: Lytics
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/lytics/
-- options:
-  displayName: Google Adwords Enhanced Conversions
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/google-adwords-enhanced-conversions/
-- options:
-  displayName: AppsFlyer
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/af/
-- options:
-  displayName: Quantum Metric
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/quantummetric/
-- options:
-  displayName: Variance
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/variance/
-- options:
-  displayName: Confluent Cloud
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/confluent-cloud/
-- options:
-  displayName: Branch Metrics
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/branch/
-- options:
-  displayName: Pendo
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/pendo/
-- options:
-  displayName: Google Ads
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/googleads/
-- options:
-  displayName: ProfitWell
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/profitwell/
-- options:
-  displayName: Hotjar
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/hotjar/
-- options:
-  displayName: Blueshift
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/blueshift/
-- options:
-  displayName: Airship
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/airship/
-- options:
-  displayName: Mixpanel
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/mp/
-- options:
-  displayName: Optimizely Web
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/optimizely/
-- options:
-  displayName: Facebook Custom Audience
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/fb-custom-audience/
-- options:
-  displayName: Criteo
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/criteo/
-- options:
-  displayName: Intercom
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/intercom/
-- options:
-  displayName: Azure Blob Storage
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/azure-blob/
-- options:
-  displayName: Marketo
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/marketo/
-- options:
-  displayName: Facebook App Events
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/fb/
-- options:
-  displayName: Lotame
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/lotame/
-- options:
-  displayName: S3 Datalake
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/s3-datalake/
-- options:
-  displayName: Salesforce
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/salesforce/
-- options:
-  displayName: Amplitude
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/am/
-- options:
-  displayName: LaunchDarkly
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/launchdarkly/
-- options:
-  displayName: Marketo Lead Import
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/marketo-bulk-upload/
-- options:
-  displayName: Gainsight
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/gainsight/
-- options:
-  displayName: App Center
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/appcenter/
-- options:
-  displayName: HubSpot
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/hs/
-- options:
-  displayName: Sendgrid
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/sendgrid/
-- options:
-  displayName: Snap Pixel
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/snap-pixel/
-- options:
-  displayName: Klaviyo
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/klaviyo/
-- options:
-  displayName: Statsig
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/statsig/
-- options:
-  displayName: Appcues
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/appcues/
-- options:
-  displayName: Leanplum
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/leanplum/
-- options:
-  displayName: Google Optimize
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/google-optimize/
-- options:
-  displayName: Post Affiliate Pro
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/post-affiliate-pro/
-- options:
-  displayName: Azure Synapse
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/azure-synapse/
-- options:
-  displayName: TVSquared
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/tvsquared/
-- options:
-  displayName: Redshift
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/rs/
-- options:
-  displayName: Facebook Pixel
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/facebook-pixel/
-- options:
-  displayName: Redis
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/redis/
-- options:
-  displayName: BigQuery
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/bq/
-- options:
-  displayName: Qualtrics
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/qualtrics/
-- options:
-  displayName: Singular
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/singular/
-- options:
-  displayName: Mailchimp
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/mailchimp/
-- options:
-  displayName: Snowflake
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/snowflake/
-- options:
-  displayName: Amazon Kinesis Firehose
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/firehose/
-- options:
-  displayName: Google Cloud Storage
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/gcs/
-- options:
-  displayName: Braze
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/braze/
-- options:
+- category: null
   displayName: Adobe Analytics
-  category:
-  type: streaming
   link: /tmp-destinations/streaming-destinations/adobe-analytics/
-- options:
-  displayName: Linkedin Insight Tag
-  category:
+  options: null
   type: streaming
-  link: /tmp-destinations/streaming-destinations/linkedin-insight-tag/
-- options:
-  displayName: Google Cloud Storage Datalake
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/gcs-datalake/
-- options:
-  displayName: Google Analytics
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/ga/
-- options:
-  displayName: WebEngage
-  category:
-  type: streaming
-  link: /tmp-destinations/streaming-destinations/webengage/
-- options:
+- category: null
   displayName: Adroll
-  category:
-  type: streaming
   link: /tmp-destinations/streaming-destinations/adroll/
-- options:
+  options: null
+  type: streaming
+- category: null
+  displayName: Airship
+  link: /tmp-destinations/streaming-destinations/airship/
+  options: null
+  type: streaming
+- category: null
+  displayName: Algolia
+  link: /tmp-destinations/streaming-destinations/algolia/
+  options: null
+  type: streaming
+- category: null
+  displayName: Amazon Kinesis
+  link: /tmp-destinations/streaming-destinations/kinesis/
+  options: null
+  type: streaming
+- category: null
+  displayName: Amazon Kinesis Firehose
+  link: /tmp-destinations/streaming-destinations/firehose/
+  options: null
+  type: streaming
+- category: null
+  displayName: Amazon S3
+  link: /tmp-destinations/streaming-destinations/s3/
+  options: null
+  type: streaming
+- category: null
+  displayName: Amplitude
+  link: /tmp-destinations/streaming-destinations/am/
+  options: null
+  type: streaming
+- category: null
+  displayName: Apache Kafka
+  link: /tmp-destinations/streaming-destinations/kafka/
+  options: null
+  type: streaming
+- category: null
+  displayName: App Center
+  link: /tmp-destinations/streaming-destinations/appcenter/
+  options: null
+  type: streaming
+- category: null
+  displayName: Appcues
+  link: /tmp-destinations/streaming-destinations/appcues/
+  options: null
+  type: streaming
+- category: null
+  displayName: AppsFlyer
+  link: /tmp-destinations/streaming-destinations/af/
+  options: null
+  type: streaming
+- category: null
+  displayName: Attentive Tag
+  link: /tmp-destinations/streaming-destinations/attentive-tag/
+  options: null
+  type: streaming
+- category: null
+  displayName: Attribution
+  link: /tmp-destinations/streaming-destinations/attribution/
+  options: null
+  type: streaming
+- category: null
+  displayName: Autopilot
+  link: /tmp-destinations/streaming-destinations/autopilot/
+  options: null
+  type: streaming
+- category: null
+  displayName: Azure Blob Storage
+  link: /tmp-destinations/streaming-destinations/azure-blob/
+  options: null
+  type: streaming
+- category: null
+  displayName: Azure Datalake
+  link: /tmp-destinations/streaming-destinations/azure-datalake/
+  options: null
+  type: streaming
+- category: null
+  displayName: Azure Event Hubs
+  link: /tmp-destinations/streaming-destinations/azure-event-hub/
+  options: null
+  type: streaming
+- category: null
+  displayName: Azure Synapse
+  link: /tmp-destinations/streaming-destinations/azure-synapse/
+  options: null
+  type: streaming
+- category: null
+  displayName: BigQuery
+  link: /tmp-destinations/streaming-destinations/bq/
+  options: null
+  type: streaming
+- category: null
+  displayName: BigQuery Stream
+  link: /tmp-destinations/streaming-destinations/bqstream/
+  options: null
+  type: streaming
+- category: null
+  displayName: Bing Ads
+  link: /tmp-destinations/streaming-destinations/bingads/
+  options: null
+  type: streaming
+- category: null
+  displayName: Blueshift
+  link: /tmp-destinations/streaming-destinations/blueshift/
+  options: null
+  type: streaming
+- category: null
+  displayName: Branch Metrics
+  link: /tmp-destinations/streaming-destinations/branch/
+  options: null
+  type: streaming
+- category: null
+  displayName: Braze
+  link: /tmp-destinations/streaming-destinations/braze/
+  options: null
+  type: streaming
+- category: null
+  displayName: Bugsnag
+  link: /tmp-destinations/streaming-destinations/bugsnag/
+  options: null
+  type: streaming
+- category: null
+  displayName: Candu
+  link: /tmp-destinations/streaming-destinations/candu/
+  options: null
+  type: streaming
+- category: null
+  displayName: Chartbeat
+  link: /tmp-destinations/streaming-destinations/chartbeat/
+  options: null
+  type: streaming
+- category: null
+  displayName: CleverTap
+  link: /tmp-destinations/streaming-destinations/clevertap/
+  options: null
+  type: streaming
+- category: null
+  displayName: ClickHouse
+  link: /tmp-destinations/streaming-destinations/clickhouse/
+  options: null
+  type: streaming
+- category: null
+  displayName: Confluent Cloud
+  link: /tmp-destinations/streaming-destinations/confluent-cloud/
+  options: null
+  type: streaming
+- category: null
+  displayName: Criteo
+  link: /tmp-destinations/streaming-destinations/criteo/
+  options: null
+  type: streaming
+- category: null
+  displayName: Customer IO
+  link: /tmp-destinations/streaming-destinations/customerio/
+  options: null
+  type: streaming
+- category: null
   displayName: DCM Floodlight
-  category:
-  type: streaming
   link: /tmp-destinations/streaming-destinations/dcm-floodlight/
-- options:
-  displayName: Google Analytics 4
-  category:
+  options: null
   type: streaming
+- category: null
+  displayName: Databricks (Delta Lake)
+  link: /tmp-destinations/streaming-destinations/deltalake/
+  options: null
+  type: streaming
+- category: null
+  displayName: Delighted
+  link: /tmp-destinations/streaming-destinations/delighted/
+  options: null
+  type: streaming
+- category: null
+  displayName: DigitalOcean Spaces
+  link: /tmp-destinations/streaming-destinations/digital-ocean-spaces/
+  options: null
+  type: streaming
+- category: null
+  displayName: Drift
+  link: /tmp-destinations/streaming-destinations/drift/
+  options: null
+  type: streaming
+- category: null
+  displayName: Drip
+  link: /tmp-destinations/streaming-destinations/drip/
+  options: null
+  type: streaming
+- category: null
+  displayName: Facebook App Events
+  link: /tmp-destinations/streaming-destinations/fb/
+  options: null
+  type: streaming
+- category: null
+  displayName: Facebook Custom Audience
+  link: /tmp-destinations/streaming-destinations/fb-custom-audience/
+  options: null
+  type: streaming
+- category: null
+  displayName: Facebook Pixel
+  link: /tmp-destinations/streaming-destinations/facebook-pixel/
+  options: null
+  type: streaming
+- category: null
+  displayName: Firebase
+  link: /tmp-destinations/streaming-destinations/firebase/
+  options: null
+  type: streaming
+- category: null
+  displayName: Fullstory
+  link: /tmp-destinations/streaming-destinations/fullstory/
+  options: null
+  type: streaming
+- category: null
+  displayName: Gainsight
+  link: /tmp-destinations/streaming-destinations/gainsight/
+  options: null
+  type: streaming
+- category: null
+  displayName: Gainsight PX
+  link: /tmp-destinations/streaming-destinations/gainsight-px/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Ads
+  link: /tmp-destinations/streaming-destinations/googleads/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Adwords Enhanced Conversions
+  link: >-
+    /tmp-destinations/streaming-destinations/google-adwords-enhanced-conversions/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Adwords Remarketing Lists (Customer Match)
+  link: /tmp-destinations/streaming-destinations/google-adwords-remarketing-lists/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Analytics
+  link: /tmp-destinations/streaming-destinations/ga/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Analytics 360
+  link: /tmp-destinations/streaming-destinations/ga360/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Analytics 4
   link: /tmp-destinations/streaming-destinations/ga4/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Cloud Storage
+  link: /tmp-destinations/streaming-destinations/gcs/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Cloud Storage Datalake
+  link: /tmp-destinations/streaming-destinations/gcs-datalake/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Optimize
+  link: /tmp-destinations/streaming-destinations/google-optimize/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Pub/Sub
+  link: /tmp-destinations/streaming-destinations/googlepubsub/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Sheets
+  link: /tmp-destinations/streaming-destinations/googlesheets/
+  options: null
+  type: streaming
+- category: null
+  displayName: Google Tag Manager
+  link: /tmp-destinations/streaming-destinations/gtm/
+  options: null
+  type: streaming
+- category: null
+  displayName: Heap.io
+  link: /tmp-destinations/streaming-destinations/heap/
+  options: null
+  type: streaming
+- category: null
+  displayName: Hotjar
+  link: /tmp-destinations/streaming-destinations/hotjar/
+  options: null
+  type: streaming
+- category: null
+  displayName: HubSpot
+  link: /tmp-destinations/streaming-destinations/hs/
+  options: null
+  type: streaming
+- category: null
+  displayName: Indicative
+  link: /tmp-destinations/streaming-destinations/indicative/
+  options: null
+  type: streaming
+- category: null
+  displayName: Intercom
+  link: /tmp-destinations/streaming-destinations/intercom/
+  options: null
+  type: streaming
+- category: null
+  displayName: Iterable
+  link: /tmp-destinations/streaming-destinations/iterable/
+  options: null
+  type: streaming
+- category: null
+  displayName: Keen
+  link: /tmp-destinations/streaming-destinations/keen/
+  options: null
+  type: streaming
+- category: null
+  displayName: Kiss Metrics
+  link: /tmp-destinations/streaming-destinations/kissmetrics/
+  options: null
+  type: streaming
+- category: null
+  displayName: Klaviyo
+  link: /tmp-destinations/streaming-destinations/klaviyo/
+  options: null
+  type: streaming
+- category: null
+  displayName: Kochava
+  link: /tmp-destinations/streaming-destinations/kochava/
+  options: null
+  type: streaming
+- category: null
+  displayName: Kustomer
+  link: /tmp-destinations/streaming-destinations/kustomer/
+  options: null
+  type: streaming
+- category: null
+  displayName: LaunchDarkly
+  link: /tmp-destinations/streaming-destinations/launchdarkly/
+  options: null
+  type: streaming
+- category: null
+  displayName: Leanplum
+  link: /tmp-destinations/streaming-destinations/leanplum/
+  options: null
+  type: streaming
+- category: null
+  displayName: Linkedin Insight Tag
+  link: /tmp-destinations/streaming-destinations/linkedin-insight-tag/
+  options: null
+  type: streaming
+- category: null
+  displayName: Lotame
+  link: /tmp-destinations/streaming-destinations/lotame/
+  options: null
+  type: streaming
+- category: null
+  displayName: Lotame Mobile
+  link: /tmp-destinations/streaming-destinations/lotame-mobile/
+  options: null
+  type: streaming
+- category: null
+  displayName: Lytics
+  link: /tmp-destinations/streaming-destinations/lytics/
+  options: null
+  type: streaming
+- category: null
+  displayName: Mailchimp
+  link: /tmp-destinations/streaming-destinations/mailchimp/
+  options: null
+  type: streaming
+- category: null
+  displayName: Marketo
+  link: /tmp-destinations/streaming-destinations/marketo/
+  options: null
+  type: streaming
+- category: null
+  displayName: Marketo Lead Import
+  link: /tmp-destinations/streaming-destinations/marketo-bulk-upload/
+  options: null
+  type: streaming
+- category: null
+  displayName: Microsoft SQL Server
+  link: /tmp-destinations/streaming-destinations/mssql/
+  options: null
+  type: streaming
+- category: null
+  displayName: MinIO
+  link: /tmp-destinations/streaming-destinations/minio/
+  options: null
+  type: streaming
+- category: null
+  displayName: Mixpanel
+  link: /tmp-destinations/streaming-destinations/mp/
+  options: null
+  type: streaming
+- category: null
+  displayName: MoEngage
+  link: /tmp-destinations/streaming-destinations/moengage/
+  options: null
+  type: streaming
+- category: null
+  displayName: Monetate
+  link: /tmp-destinations/streaming-destinations/monetate/
+  options: null
+  type: streaming
+- category: null
+  displayName: New Relic
+  link: /tmp-destinations/streaming-destinations/new-relic/
+  options: null
+  type: streaming
+- category: cool
+  displayName: Ometria
+  link: /tmp-destinations/streaming-destinations/ometria/
+  options: null
+  type: streaming
+- category: null
+  displayName: Optimizely Fullstack
+  link: /tmp-destinations/streaming-destinations/optimizely-fullstack/
+  options: null
+  type: streaming
+- category: null
+  displayName: Optimizely Web
+  link: /tmp-destinations/streaming-destinations/optimizely/
+  options: null
+  type: streaming
+- category: null
+  displayName: Pardot
+  link: /tmp-destinations/streaming-destinations/pardot/
+  options: null
+  type: streaming
+- category: null
+  displayName: Pendo
+  link: /tmp-destinations/streaming-destinations/pendo/
+  options: null
+  type: streaming
+- category: null
+  displayName: Pinterest Tag
+  link: /tmp-destinations/streaming-destinations/pinterest-tag/
+  options: null
+  type: streaming
+- category: null
+  displayName: Post Affiliate Pro
+  link: /tmp-destinations/streaming-destinations/post-affiliate-pro/
+  options: null
+  type: streaming
+- category: null
+  displayName: PostHog
+  link: /tmp-destinations/streaming-destinations/posthog/
+  options: null
+  type: streaming
+- category: null
+  displayName: Postgres
+  link: /tmp-destinations/streaming-destinations/postgres/
+  options: null
+  type: streaming
+- category: null
+  displayName: ProfitWell
+  link: /tmp-destinations/streaming-destinations/profitwell/
+  options: null
+  type: streaming
+- category: null
+  displayName: Qualtrics
+  link: /tmp-destinations/streaming-destinations/qualtrics/
+  options: null
+  type: streaming
+- category: null
+  displayName: Quantum Metric
+  link: /tmp-destinations/streaming-destinations/quantummetric/
+  options: null
+  type: streaming
+- category: null
+  displayName: Reddit Pixel
+  link: /tmp-destinations/streaming-destinations/reddit-pixel/
+  options: null
+  type: streaming
+- category: null
+  displayName: Redis
+  link: /tmp-destinations/streaming-destinations/redis/
+  options: null
+  type: streaming
+- category: null
+  displayName: Redshift
+  link: /tmp-destinations/streaming-destinations/rs/
+  options: null
+  type: streaming
+- category: null
+  displayName: Revenue Cat
+  link: /tmp-destinations/streaming-destinations/revenue-cat/
+  options: null
+  type: streaming
+- category: null
+  displayName: S3 Datalake
+  link: /tmp-destinations/streaming-destinations/s3-datalake/
+  options: null
+  type: streaming
+- category: null
+  displayName: Salesforce
+  link: /tmp-destinations/streaming-destinations/salesforce/
+  options: null
+  type: streaming
+- category: null
+  displayName: Salesforce Marketing Cloud
+  link: /tmp-destinations/streaming-destinations/sfmc/
+  options: null
+  type: streaming
+- category: null
+  displayName: Segment
+  link: /tmp-destinations/streaming-destinations/segment/
+  options: null
+  type: streaming
+- category: null
+  displayName: Sendgrid
+  link: /tmp-destinations/streaming-destinations/sendgrid/
+  options: null
+  type: streaming
+- category: null
+  displayName: Sentry
+  link: /tmp-destinations/streaming-destinations/sentry/
+  options: null
+  type: streaming
+- category: null
+  displayName: Singular
+  link: /tmp-destinations/streaming-destinations/singular/
+  options: null
+  type: streaming
+- category: null
+  displayName: Slack
+  link: /tmp-destinations/streaming-destinations/slack/
+  options: null
+  type: streaming
+- category: null
+  displayName: Snap Pixel
+  link: /tmp-destinations/streaming-destinations/snap-pixel/
+  options: null
+  type: streaming
+- category: null
+  displayName: Snapchat Conversion
+  link: /tmp-destinations/streaming-destinations/snapchat-conversion/
+  options: null
+  type: streaming
+- category: null
+  displayName: Snowflake
+  link: /tmp-destinations/streaming-destinations/snowflake/
+  options: null
+  type: streaming
+- category: null
+  displayName: Split.io
+  link: /tmp-destinations/streaming-destinations/splitio/
+  options: null
+  type: streaming
+- category: null
+  displayName: Statsig
+  link: /tmp-destinations/streaming-destinations/statsig/
+  options: null
+  type: streaming
+- category: null
+  displayName: TVSquared
+  link: /tmp-destinations/streaming-destinations/tvsquared/
+  options: null
+  type: streaming
+- category: null
+  displayName: Taplytics
+  link: /tmp-destinations/streaming-destinations/taplytics/
+  options: null
+  type: streaming
+- category: null
+  displayName: TikTok Ads
+  link: /tmp-destinations/streaming-destinations/tiktok-ads/
+  options: null
+  type: streaming
+- category: null
+  displayName: Trengo
+  link: /tmp-destinations/streaming-destinations/trengo/
+  options: null
+  type: streaming
+- category: null
+  displayName: Twitter Ads
+  link: /tmp-destinations/streaming-destinations/twitter-ads/
+  options: null
+  type: streaming
+- category: null
+  displayName: Userlist
+  link: /tmp-destinations/streaming-destinations/userlist/
+  options: null
+  type: streaming
+- category: null
+  displayName: VWO
+  link: /tmp-destinations/streaming-destinations/vwo/
+  options: null
+  type: streaming
+- category: null
+  displayName: Variance
+  link: /tmp-destinations/streaming-destinations/variance/
+  options: null
+  type: streaming
+- category: null
+  displayName: WebEngage
+  link: /tmp-destinations/streaming-destinations/webengage/
+  options: null
+  type: streaming
+- category: null
+  displayName: Webhook
+  link: /tmp-destinations/streaming-destinations/webhook/
+  options: null
+  type: streaming
+- category: null
+  displayName: Yahoo DSP
+  link: /tmp-destinations/streaming-destinations/yahoo-dsp/
+  options: null
+  type: streaming
+- category: null
+  displayName: Zendesk
+  link: /tmp-destinations/streaming-destinations/zendesk/
+  options: null
+  type: streaming
