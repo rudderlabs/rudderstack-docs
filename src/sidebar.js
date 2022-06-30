@@ -187,9 +187,9 @@ export const jsonData = [
                             },
                         ]
                     }, {
-                        key: "js-sdk-faqs",
+                        key: "faq",
                         title: "JavaScript SDK FAQs",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/js-sdk-faqs/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/faq/",
                         content: []
                     },
                 ]
@@ -201,9 +201,9 @@ export const jsonData = [
                 link: "/sources/sdks/rudderstack-android-sdk/",
                 content: [
                     {
-                        key: "add-an-application-class-to-you-android-application",
+                        key: "adding-an-application-class",
                         title: "Adding Application Class",
-                        link: "/sources/sdks/rudderstack-android-sdk/add-an-application-class-to-you-android-application/",
+                        link: "/sources/sdks/rudderstack-android-sdk/adding-an-application-class/",
                         content: []
                     }, {
                         key: "flushing-events-periodically",
@@ -329,9 +329,9 @@ export const jsonData = [
                 content: []
             },
             {
-                key: "sdk-faqs",
+                key: "faq",
                 title: "SDK FAQs",
-                link: "/sources/sdks/sdk-faqs/",
+                link: "/sources/sdks/faq/",
                 content: []
             },
 
