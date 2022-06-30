@@ -39,7 +39,7 @@ You can use the SDK's `integrations: options` parameter to specify the JSON colu
   }
 ```
 
-Here, `nestedMap` is declared as a JSON and is in the following format:
+Here, `nestedMap` is declared as a JSON column and is in the following format:
 
 ```javascript
 {
@@ -82,7 +82,7 @@ export function transformEvent(event, metadata) {
 
 The above transformation applies the JSON column to only `product_clicked` type of `track` events coming from a particular `sourceId`.
 
-### Declaring JSON columns during destination configuration in RudderStack
+### Declaring JSON columns during destination configuration
 
 While configuring your warehouse destination settings in RudderStack, you can pass the required JSON column paths using the dot notation and separated by a comma in the **JSON columns** field as shown:
 
