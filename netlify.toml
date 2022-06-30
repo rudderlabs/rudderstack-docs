@@ -14,20 +14,20 @@ TERM = "xterm"
 # Resources section
 [[redirects]]
 from = "/get-started/rudderstack-architecture/"
-to = "/docs/get-started/rudderstack-architecture/"
+to = "/docs/resources/rudderstack-architecture/"
 status = 301
 [[redirects]]
 from = "/faqs/"
-to = "/docs/faqs/"
+to = "/docs/resources/faq/"
 status = 301
 [[redirects]]
 from = "/get-started/glossary/"
-to = "/docs/get-started/glossary/"
+to = "/docs/resources/glossary/"
 status = 301
 # Features section
 [[redirects]]
 from = "/identity-resolution/"
-to = "/docs/identity-resolution/"
+to = "/docs/features/identity-resolution/"
 status = 301
 # Guides section
 [[redirects]]
@@ -218,67 +218,67 @@ to = "/docs/transformations/faq/"
 status = 301
 [[redirects]]
 from = "/transformations/"
-to = "/docs/transformations/"
+to = "/docs/features/transformations/#faq"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/control-plane-lite/"
-to = "/docs/rudderstack-open-source/control-plane-lite/"
+to = "/docs/get-started/rudderstack-open-source/control-plane-lite/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/"
-to = "/docs/rudderstack-open-source/"
+to = "/docs/get-started/rudderstack-open-source/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/"
+to = "/docs/get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
+to = "/docs/get-started/rudderstack-open-source/data-plane-setup/docker/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/"
+to = "/docs/get-started/rudderstack-open-source/data-plane-setup/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/"
+to = "/docs/get-started/rudderstack-open-source/data-plane-setup/kubernetes/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/"
+to = "/docs/get-started/rudderstack-open-source/sending-test-events/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/dashboard-overview/"
-to = "/docs/rudderstack-cloud/dashboard-overview/"
+to = "/docs/dashboard-guides/overview/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/destinations/"
-to = "/docs/rudderstack-cloud/destinations/"
+to = "/docs/destinations/overview/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/live-events/"
-to = "/docs/rudderstack-cloud/live-events/"
+to = "/docs/dashboard-guides/live-events/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/sources/"
-to = "/docs/rudderstack-cloud/sources/"
+to = "/docs/sources/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/rudderstack-connection-modes/"
-to = "/docs/rudderstack-cloud/rudderstack-connection-modes/"
+to = "/docs/destinations/rudderstack-connection-modes/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/audit-logs/"
-to = "/docs/rudderstack-cloud/audit-logs/"
+to = "/docs/dashboard-guides/audit-logs/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/teammates/"
-to = "/docs/rudderstack-cloud/teammates/"
+to = "/docs/dashboard-guides/teammates/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/connections/"
-to = "/docs/rudderstack-cloud/connections/"
+to = "/docs/dashboard-guides/overview/#connections"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/connections/adding-source-and-destination-rudderstack/"
@@ -286,27 +286,27 @@ to = "/docs/rudderstack-cloud/connections/adding-source-and-destination-rudderst
 status = 301
 [[redirects]]
 from = "/rudderstack-api/data-regulation-api/"
-to = "/docs/rudderstack-api/data-regulation-api/"
+to = "/docs/api/data-regulation-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/personal-access-tokens/"
-to = "/docs/rudderstack-api/personal-access-tokens/"
+to = "/docs/dashboard-guides/personal-access-token/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/http-api/"
-to = "/docs/rudderstack-api/http-api/"
+to = "/docs/api/http-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/"
-to = "/docs/rudderstack-api/"
+to = "/docs/api/http-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/pixel-api-spec/"
-to = "/docs/rudderstack-api/pixel-api-spec/"
+to = "/docs/api/pixel-api-spec/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/tracking-plan-api/"
-to = "/docs/rudderstack-api/tracking-plan-api/"
+to = "/docs/api/tracking-plan-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/test-api/"
