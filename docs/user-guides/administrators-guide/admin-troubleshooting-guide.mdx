@@ -22,9 +22,7 @@ This section contains solutions to some of the commonly faced issues you are lik
 Check your internal firewall rules and edit if needed. You need access to outbound HTTP.
 
 <div class="successBlock">
-
-  If the control plane is accessible from your network but is down, we are
-  already working to fix it. Do leave us a note.
+If the control plane is accessible from your network but is down, we are already working to fix it. Do leave us a note.
 </div>
 
 ## All the destinations receive events except a few. What should I do?
@@ -44,11 +42,7 @@ Check your internal firewall rules and edit if needed. You need access to outbou
 When RudderStack enters "degraded" mode, it will only log the event and not process the event. If the issue why the server entered the degraded mode is temporary \(Transformer is down\), then fix the issue and restart the server in the normal mode.
 
 <div class="successBlock">
-
-  You can restart the server in the normal mode by updating the
-  <code class="inline-code">/data/rudderstack/recovery_data.json</code> or <code class="inline-code">
-    /tmp/recovery_data.json
-  </code>. Set Mode to "normal"
+You can restart the server in the normal mode by updating the <code class="inline-code">/data/rudderstack/recovery_data.json</code> or <code class="inline-code">/tmp/recovery_data.json</code> and setting the Mode to "normal".
 </div>
 
 ## RudderStack has entered the maintenance mode. What should I do?
@@ -85,9 +79,7 @@ LOG_LEVEL=DEBUG
 ```
 
 <div class="infoBlock">
-
 For any other issues that you might encounter, please feel free to <a href="https://rudderstack.com/contact/">contact us</a>.
-
 </div>
 
 ## How to fix the HTTP connection errors?

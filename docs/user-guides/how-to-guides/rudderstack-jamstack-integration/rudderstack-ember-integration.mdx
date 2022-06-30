@@ -4,7 +4,7 @@ description: >-
   Step-by-step guide to integrate RudderStack with your Ember.js app for event tracking.
 ---
 
-This guide will help you integrate RudderStack with your Ember.js app using the [JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
+This guide will help you integrate RudderStack with your Ember.js app using the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link>. On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
 
 To set up the event stream on your Ember.js app, you need to perform the following steps:
 
@@ -83,7 +83,6 @@ To integrate RudderStack with your Ember.js app and set up the tracking code, fo
 3. Replace `WRITE_KEY` and `DATA_PLANE_URL` with your JavaScript source write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above.
 
 <div class="infoBlock">
-
 Refer to the sample Ember.js app in the <a href="https://github.com/rudderlabs/rudder-samples">RudderStack Sample Applications</a> repository for more information.
 </div>
 
@@ -92,7 +91,6 @@ Refer to the sample Ember.js app in the <a href="https://github.com/rudderlabs/r
 This section details the steps required to set up a destination platform in RudderStack, where you can send all the events tracked by the JavaScript SDK.
 
 <div class="infoBlock">
-
 For this guide, Google Analytics is added as a destination.
 </div>
 
@@ -100,13 +98,12 @@ For this guide, Google Analytics is added as a destination.
 2. Choose **Google Analytics** from the list of destinations.
 3. Assign a name to your destination and click **Next**.
 4. Select the JavaScript source configured in the above section and click **Next**.
-5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the [Google Analytics documentation](https://www.rudderstack.com/docs/destinations/analytics/google-analytics-ga/).
+5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the <Link to="/tmp-destinations/streaming-destinations/google-analytics-ga/">Google Analytics documentation</Link>.
 
 <img src="../../../assets/user-guides/ga-settings.png" alt="Google Analytics destination configuration" />
 
 <div class="infoBlock">
-
-Optionally, you can add a <a href="https://rudderstack.com/docs/transformations/">user transformation</a> to this destination to transform your events before sending them to Google Analytics. 
+Optionally, you can add a <Link to="/features/transformations/">user transformations</Link> to this destination to transform your events before sending them to Google Analytics. 
 </div>
 
 Google Analytics is now configured as a destination. You should be able to see the connection in your RudderStack dashboard, as seen below:
@@ -114,7 +111,6 @@ Google Analytics is now configured as a destination. You should be able to see t
 <img src="../../../assets/user-guides/rudderstack-ga-connection.png" alt="Google Analytics connection" />
 
 <div class="successBlock">
-
 You can also set up a warehouse destination in RudderStack and send your tracked events to it.
 </div>
 
@@ -139,7 +135,6 @@ ember serve
 <img src="../../../assets/user-guides/live-events.png" alt="RudderStack live events tab" />
 
 <div class="infoBlock">
-
 You may face a minor delay before the events start showing up in your dashboard and destination.
 </div>
 

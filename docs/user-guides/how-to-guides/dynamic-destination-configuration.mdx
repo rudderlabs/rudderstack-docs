@@ -11,8 +11,7 @@ Simply pass the path of your event payload from which the configuration value wi
 <img src="../../assets/user-guides/dynamic-destination-configuration.png" />
 
 <div class="successBlock">
-  
-This feature is supported for all the destinations that support sending data via the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">cloud mode</a>, including <a href="https://rudderstack.com/docs/data-warehouse-integrations/">warehouse destinations</a>.
+This feature is supported for all the destinations that support sending data via the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, including <Link to="/tmp-destinations/warehouse-destinations/">warehouse destinations</Link>.
 </div>
 
 ## Supported format
@@ -32,8 +31,7 @@ You can also use this feature to dynamically configure complex input types like 
 Any value present in the path will be passed as a configuration value in the dashboard settings. If no value is present in the payload path, the default value will be used to configure the destination.
 
 <div class="infoBlock">
-  
-  You will need to add a transformation that populates the configuration values for the payload path. Refer to the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/dynamic-destination-configuration/#use-case">use-case</a> below for more information.
+You will need to add a transformation that populates the configuration values for the payload path. Refer to the <Link to="#use-case">use-case</Link> below for more information.
 </div>
 
 ### Default value format
@@ -41,7 +39,6 @@ Any value present in the path will be passed as a configuration value in the das
 You can set the default configuration value as per your requirement.
 
 <div class="infoBlock">
-
   <ul>
     <li> To set a number as the default value, set it as a string.</li>
     <li> In case of a multi-word string, we recommend setting the value within double quotes, e.g. <code class="inline-code">"default value"</code>.</li>
@@ -54,7 +51,7 @@ Suppose you want to send your event data to different Google Analytics instances
 
 ### Step 1: Add a transformation
 
-To populate the configuration values from the event payload, you need to [**add a transformation function**](https://rudderstack.com/docs/transformations/#adding-a-transformation). A sample function is shown below:
+To populate the configuration values from the event payload, you need to <Link to="/features/transformations/#adding-a-transformation">add a transformation function</Link>. A sample function is shown below:
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -90,8 +87,7 @@ For this transformation, the path that fetches the configuration values should b
 Once you have added a transformation, the next step is to add a Google Analytics destination in the RudderStack dashboard. 
 
 <div class="infoBlock">
-
-Follow our guide on <a href="https://rudderstack.com/docs/rudderstack-cloud/destinations/#adding-a-destination">Adding a Destination</a> guide for more information.
+Follow our guide on <Link to="/dashboard-guides/destinations/#adding-a-destination">Adding a Destination</Link> guide for more information.
 </div>
 
 In the **Connection Settings**, the **Tracking ID** field of the destination should be configured as shown:
@@ -217,7 +213,7 @@ This is because `Config.trackingId` will be set to `UA-1234567890`, which is the
 
 In case `properties.trackingId` does not have any value, then `Config.trackingId` will be set to `UA-1659942401` (the default value) and passed as the destination configuration value.
 
-## FAQs
+## FAQ
 
 ### How is this feature useful to me?
 
