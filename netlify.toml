@@ -12,6 +12,7 @@ TERM = "xterm"
 
 
 # Resources section
+
 [[redirects]]
 from = "/get-started/rudderstack-architecture/"
 to = "/docs/resources/rudderstack-architecture/"
@@ -24,12 +25,37 @@ status = 301
 from = "/get-started/glossary/"
 to = "/docs/resources/glossary/"
 status = 301
+
 # Features section
+
 [[redirects]]
 from = "/identity-resolution/"
 to = "/docs/features/identity-resolution/"
 status = 301
+[[redirects]]
+from = "/transformations/faq/"
+to = "/docs/features/transformations/"
+status = 301
+[[redirects]]
+from = "/transformations/"
+to = "/docs/features/transformations/"
+status = 301
+[[redirects]]
+from = "/data-governance/ruddertyper"
+to = "/docs/features/data-governance/ruddertyper/"
+status = 301
+[[redirects]]
+from = "/data-governance/tracking-plans/"
+to = "/docs/features/data-governance/tracking-plans/"
+status = 301
+[[redirects]]
+from = "/data-governance/tracking-plans/tracking-plan-spreadsheet/"
+to = "/docs/features/data-governance/tracking-plans/tracking-plan-spreadsheet/"
+status = 301
+
+
 # Guides section
+
 [[redirects]]
 from = "/user-guides/migration-guides/blendo-rudderstack-migration/"
 to = "/docs/user-guides/migration-guides/blendo-rudderstack-migration/"
@@ -40,7 +66,7 @@ to = "/docs/user-guides/migration-guides/how-to-migrate-warehouse-destination-fr
 status = 301
 [[redirects]]
 from = "/user-guides/"
-to = "/docs/user-guides/"
+to = "/docs/user-guides/how-to-guides/"
 status = 301
 [[redirects]]
 from = "/user-guides/migration-guides/"
@@ -210,15 +236,7 @@ status = 301
 
 [[redirects]]
 from = "/transformations/api-access-token/"
-to = "/docs/transformations/api-access-token/"
-status = 301
-[[redirects]]
-from = "/transformations/faq/"
-to = "/docs/transformations/faq/"
-status = 301
-[[redirects]]
-from = "/transformations/"
-to = "/docs/features/transformations/#faq"
+to = "/docs/dashboard-guides/personal-access-token/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/control-plane-lite/"
@@ -1653,7 +1671,7 @@ to = "/docs/stream-sources/rudderstack-sdk-integration-guides/"
 status = 301 
 [[redirects]]
 from = "/adding-a-new-user-transformation-in-rudderstack/"
-to = "/docs/transformations/"
+to = "/docs/features/transformations/"
 status = 301 
 [[redirects]]
 from = "/administrators-guide/alerting"
