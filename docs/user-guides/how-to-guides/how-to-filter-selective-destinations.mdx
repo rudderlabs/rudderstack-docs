@@ -1,14 +1,13 @@
 ---
 title: "How to Filter Selective Destinations"
 description: >-
-  An easy-to-follow guide on filtering selective destinations while sending
-  event data in RudderStack
+  Step-by-step guide on filtering selective destinations while sending your event data via RudderStack.
 ---
 
 RudderStack lets you send your event data only to certain intended destinations by filtering out the rest. For the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link>, you can do this by passing an `integrations` object in the `options` parameter of the event method. For most of the other SDKs, you can use the `integrations` object parameter for the associated event. 
 
 <div class="infoBlock">
-This feature is currently supported only for cloud mode integrations. For more information on the cloud mode, refer to the <Link to="destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+This feature is currently supported only for cloud mode integrations. For more information on the cloud mode, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 ## How it works
@@ -113,7 +112,7 @@ In the above examples, the <code class="inline-code">track</code> events will on
 
 ## Destination naming convention
 
-To filter the destinations, you need to specify the exact destination names. To get these names, you can go to the [**RudderStack directory**](https://app.rudderstack.com/directory). 
+To filter the destinations, you need to specify the exact destination names. To get these names, you can go to the [RudderStack directory](https://app.rudderstack.com/directory). 
 
 <div class="infoBlock">
 Note that the destination names are case sensitive.
