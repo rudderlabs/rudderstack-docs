@@ -1,12 +1,19 @@
 ---
-title: "Sources"
+title: "Sources Overview"
 description: >-
-  Sources landing page.
+  Choose one of the many types of event data sources available 
 ---
+
+RudderStack supports different types of sources for event data, including from the apps, websites or other
+In RudderStack parlance, sources are 
 
 TK - overview content on sources, explaining the different types of sources, SDK, Extract, Reverse ETL, etc.
 
 ## Mobile
+
+RudderStack provides mobile SDKs for all the cool frameworks and mobile operating systems.
+
+
 
 <Sources
   category={'mobile'}
@@ -14,11 +21,16 @@ TK - overview content on sources, explaining the different types of sources, SDK
 
 ## Cloud Extract
 
+With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as Facebook Ads, Google Analytics, Marketo, HubSpot, Stripe, and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
+
+For cloud apps that don't provide a streaming situation, do cloud extract.
+
 <Sources
   type={'extract'}
 />
 
 ## Server
+
 
 <Sources
   category={'server'}
@@ -26,9 +38,13 @@ TK - overview content on sources, explaining the different types of sources, SDK
 
 ## API
 
-If we don't have a library for your environment, you can send your data directly to the HTTP API. 
+If possible, we recommend you use a native SDK for tracking and routing user events from your sources. Our SDKs offer automatic tagging of user context, event batching, and retry functionality during delivery failure.
+
+If we don't offer a supported library for your environment, you can send your data directly to the RudderStack <Link to="/api/http-api/">HTTP API</Link>. 
 
 ## Web
+
+JavaSript, obviously.
 
 <Sources
   category={'web'}
