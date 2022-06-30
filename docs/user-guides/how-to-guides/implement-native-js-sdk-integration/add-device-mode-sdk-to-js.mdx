@@ -69,9 +69,7 @@ export { SampleIntegration }
 2. Import the above integration in [https://github.com/rudderlabs/rudder-sdk-js/blob/master/integrations/GA/index.js](https://github.com/rudderlabs/rudder-sdk-js/blob/master/integrations/GA/index.js) and add it to the exported list to be picked up by the base RudderStack SDK.
 
 <div class="warningBlock">
-
-The exported integration object must be under the **key name that matches the config-plane destination name.**
-
+The exported integration object must be under the <strong>key name that matches the config-plane destination name.</strong>
 </div>
 
 <img src="../../../assets/screenshot-2019-12-10-at-7.21.35-pm.png" />
@@ -194,9 +192,7 @@ export default process.browser ? GA : GANode
 ```
 
 <div class="infoBlock">
-
 You can ignore the Node counterpart as it's legacy. We have a separate <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk">Node.js SDK</a> for sending events to RudderStack (in the server-side connection mode)
-
 </div>
 
 The following is the code for adding the newly-added integration to the export list. The key name must be the same as the one configured in the config plane.
