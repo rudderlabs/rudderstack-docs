@@ -195,6 +195,12 @@ export const jsonData = [
                 ]
             },
             {
+                key: "rudderstack-amp-analytics",
+                title: "AMP Analytics",
+                link: "/sources/sdks/rudderstack-amp-analytics/",
+                content: []
+            }, 
+            {
                 key: "rudderstack-android-sdk",
                 title: "Android",
                 sectionTitle: "Mobile",
@@ -213,7 +219,6 @@ export const jsonData = [
                     },
                 ]
             },
-
             {
                 key: "rudderstack-ios-sdk",
                 title: "iOS",
@@ -275,11 +280,6 @@ export const jsonData = [
                 link: "/sources/sdks/rudderstack-cordova-sdk/",
                 content: []
             }, {
-                key: "rudderstack-amp-analytics",
-                title: "AMP Analytics",
-                link: "/sources/sdks/rudderstack-amp-analytics/",
-                content: []
-            }, {
                 key: "rudderstack-java-sdk",
                 title: "Java",
                 sectionTitle: "Server",
@@ -324,7 +324,6 @@ export const jsonData = [
             {
                 key: "event-filtering",
                 title: "Client-side Event Filtering",
-                sectionTitle: "",
                 link: "/sources/sdks/event-filtering/",
                 content: []
             },
