@@ -69,7 +69,8 @@ You can also declare the JSON columns using a custom transformation, as shown:
 ```javascript
 export function transformEvent(event, metadata) {
   const meta = metadata(event);
-  if (event.event === 'product_clicked' && meta.sourceId === "source_id" && meta.destinationType === "RS") { // ex: BQ, POSTGRES, SNOWFLAKE 
+  if (event.event === 'product_clicked' && meta.sourceId === "source_id" && meta.destinationType === "RS") { // ex: BQ, POSTGRES, SNOWFLAKE
+    if (!event.integrations) event.integrations = {};
     event.integrations["RS"] = {
       options: {
         jsonPaths: ["testArray", "testMap.nestedMap"]
