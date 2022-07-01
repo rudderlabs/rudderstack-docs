@@ -69,7 +69,8 @@ You can also declare the JSON columns using a custom transformation, as shown:
 ```javascript
 export function transformEvent(event, metadata) {
   const meta = metadata(event);
-  if (event.event === 'product_clicked' && meta.sourceId === "source_id" && meta.destinationType === "RS") { // ex: BQ, POSTGRES, SNOWFLAKE 
+  if (event.event === 'product_clicked' && meta.sourceId === "source_id" && meta.destinationType === "RS") { // ex: BQ, POSTGRES, SNOWFLAKE
+    if (!event.integrations) event.integrations = {};
     event.integrations["RS"] = {
       options: {
         jsonPaths: ["testArray", "testMap.nestedMap"]
@@ -81,6 +82,10 @@ export function transformEvent(event, metadata) {
 ```
 
 The above transformation applies the JSON column to only `product_clicked` type of `track` events coming from a particular `sourceId`.
+
+<div class="infoBlock">
+The JSON columns declared at the <Link to="#declaring-json-columns-at-the-event-level">event level</Link> can be overridden by the JSON columns declared using a custom transformation.
+</div>
 
 ### Declaring JSON columns during destination configuration
 
@@ -99,8 +104,8 @@ For warehouse-specific information on working with semi-structured data and the 
 | Warehouse | Data type | Reference |
 | :-----------| :----------| :----------|
 | Redshift | SUPER | [Documentation](https://docs.aws.amazon.com/redshift/latest/dg/r_SUPER_type.html) |
-| BigQuery | String <br /><br />(More information on how RudderStack treats the JSON columns as strings in this <Link to="#how-can-i-use-the-json-column-feature-in-bigquery">FAQ</Link>) | [Documentation](https://cloud.google.com/bigquery/docs/reference/standard-sql/json_functions) |
-| PostgreSQL | jsonb | [Documentation](https://www.postgresql.org/docs/current/datatype-json.html) |
+| BigQuery | STRING <br /><br />(More information on how RudderStack treats the JSON columns as strings in this <Link to="#how-can-i-use-the-json-column-feature-in-bigquery">FAQ</Link>) | [Documentation](https://cloud.google.com/bigquery/docs/reference/standard-sql/json_functions) |
+| PostgreSQL | JSONB | [Documentation](https://www.postgresql.org/docs/current/datatype-json.html) |
 | Snowflake | VARIANT | [Documentation](https://docs.snowflake.com/en/sql-reference/data-types-semistructured.html#variant) |
 
 ## FAQ
@@ -118,6 +123,28 @@ The JSON data type includes String, Integers, Float, Arrays, Booleans, and Maps.
 Google BigQuery has released JSON support only as a preview feature. Hence, RudderStack will treat the JSON columns as strings and insert the JSON strings as the values. You can use the JSON functions to query the semi-structured data.
 
 For more information, refer to the [BigQuery documentation](https://cloud.google.com/bigquery/docs/reference/standard-sql/json_functions).
+
+### How does RudderStack determine the column data type? Can I change an existing data type for a column?
+
+RudderStack determines the data type of a column based on its value in the first event (during the first upload sync).
+
+For example, suppose `column_x` is received with the value as `1`. RudderStack then sets the data type of this column as `int` in the event table.
+
+<div class="infoBlock">
+Although you can change the columns' data type in the warehouse any time, the changes will be applicable to the events from the next sync.
+</div>
+
+To set your preferred data type for a particular column, it is highly recommended to follow these steps:
+
+1. Create a column in the warehouse with a dummy name and the required data type.
+2. Cast the data from the original column and load it into the dummy column.
+3. Drop the original column.
+4. Rename the dummy column to the original column name.
+
+<div class="warningBlock">
+During steps 3 and 4, the tables will be in a locked state. This might impact real-time data uploads/syncs.
+If the above steps take too long to complete, you can halt the warehouse operations in the interim. For more information, refer to this <Link to="/data-warehouse-integrations/warehouse-faqs/#how-do-i-avoid-lags-in-data-syncs-while-heavy-loads-are-running-on-my-datawarehouse">FAQ</Link>.
+</div>
 
 ## Contact us
 
