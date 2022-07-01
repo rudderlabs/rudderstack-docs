@@ -113,8 +113,8 @@ Follow these steps to configure your Azure data lake as a destination in RudderS
 
 ### Connection settings
 
-<img src="../assets/dw-integrations/snowflake-connection-settings.png" alt="Snowflake destination settings in RudderStack" />
 <img src="../assets/dw-integrations/snowflake-connection-settings-1.png" alt="Snowflake destination settings in RudderStack" />
+<img src="../assets/dw-integrations/snowflake-connection-settings-2.png" alt="Snowflake destination settings in RudderStack" />
 
 Enter the following credentials in the **Connection Credentials** page:
 
@@ -129,7 +129,6 @@ The following examples illustrate the slight differences in the account ID for v
 | `ah76025.us-central1.gcp` | `https://`**`ah76025.us-central1.gcp`**`.snowflakecomputing.com` | Google Cloud Platform                          |
 
 <div class="warningBlock">
-
 In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region accounts and hence must be included in the <strong>Account</strong> field above. <br /><br />For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
 </div>
 
@@ -140,13 +139,17 @@ In case of AWS, <code class="inline-code">.aws</code> is present in the account 
 - **Namespace**: Enter the schema name for the warehouse where RudderStack will create all the tables.
 
 <div class="infoBlock">
-
 If you don't specify any namespace, RudderStack will set this to the source name by default.
 </div>
 
 - **Sync Frequency**:  Specify how often RudderStack should sync the data to your Snowflake warehouse.
 - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
 - **Exclude Window**: This optional setting lets you set a time window when RudderStack **will not** sync the data to the warehouse.
+- **JSON Columns**: Use this optional setting to specify the required JSON column paths in dot notation, separated by commas. **This option applies to all the incoming `track` events for this destination.**
+
+<div class="infoBlock">
+With the JSON columns feature, you can now ingest semi-structured event data not defined by a fixed schema. For more information on this feature, refer to the <Link to="/data-warehouse-integrations/json-column-support/">JSON Column Support</Link> guide.
+</div>
 
 ### Configuring the object storage
 
@@ -155,7 +158,6 @@ RudderStack lets you configure the following object storage configuration settin
 - **Use RudderStack-managed Object Storage**: Enable this setting to use RudderStack-managed buckets for object storage.
 
 <div class="warningBlock">
-
 This option is applicable only for RudderStack-hosted data planes. For self-hosted data planes, you will have to specify your own object storage configuration settings.
 </div>
 
