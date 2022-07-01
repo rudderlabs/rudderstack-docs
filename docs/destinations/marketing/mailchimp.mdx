@@ -33,15 +33,20 @@ Once you have confirmed that the source platform supports sending events to Mail
 
 To successfully configure Mailchimp as a destination, you will need to configure the following settings:
 
-<img src="../../assets/image (72).png" /><span class="imageTitle">Mailchimp Connection Settings screen</span>
+<img src="../../assets/event-stream-destinations/mailchimp-connection-settings.png" />
 
-- **Mailchimp API Key**: Enter your AdRoll advertiser ID here. 
-- **Mailchimp Audience ID**: Enter your AdRoll pixel ID here.
-- **Mailchimp DataCenter ID**: Enter your AdRoll advertiser ID here. 
-- **Event Map Setting**: Enter your AdRoll pixel ID here.
+- **Mailchimp API Key**: Enter your Mailchimp API Key. 
 
 <div class="infoBlock">
-It is recommended to create a new API key for the RudderStack destination. Mailchimp restricts each API key to a maximum of 10 concurrent requests. Hence, creating a dedicated key for RudderStack ensures maximum throughput for the outgoing calls. Refer to the [Mailchimp documentation](https://mailchimp.com/help/about-api-keys/) for more detaails about the API keys.
+It is recommended to create a new API key for the RudderStack destination. Mailchimp restricts each API key to a maximum of 10 concurrent requests. Hence, creating a dedicated key for RudderStack ensures maximum throughput for the outgoing calls. Refer to the <a href="https://mailchimp.com/help/about-api-keys/">Mailchimp documentation</a> for more detaails.
+</div>
+
+- **Mailchimp Audience ID**: Enter your Mailchimp Audience ID.
+- **Mailchimp DataCenter ID**: Enter your Mailchimp DataCenter ID. 
+- **Enable Merge fields**: Enable this setting if you want to add merge fields while updating a subscriber.
+
+<div class="infoBlock">
+Refer to the <a href="#faq">FAQ</a> section for more information on how to get the above details.
 </div>
 
 ## Identify
@@ -70,9 +75,23 @@ Every time an `identify` call is made including an email address, RudderStack pe
 <code class="inline-code">email</code> is a required field for the <code class="inline-code">identify</code> call. The rest of the fields must match the <strong>Merge Field</strong> tag in Mailchimp.
 </div>
 
-### Using custom merge fields in RudderStack
+### Capture custom user traits
 
-To send custom merge fields or user traits to Mailchimp, please follow these steps:
+You can capture the custom user traits in the Mailchimp list dashboard by <Link to="#creating-custom-merge-fields">creating a custom merge field</Link> in Mailchimp. 
+
+<div class="infoBlock">
+Mailchimp supports merge tags only up to 10 characters. Hence, every user trait sent inside the <code class="inline-code">identify</code> call is trimmed to the first 10 characters and converted to uppercase before being sent to Mailchimp. Also, the <code class="inline-code">Merge Tags</code> is created by taking the 10 characters (excluding whitespace/special characters) of its <code class="inline-code">Field Label</code>.
+<br/><br/>
+For example, if you set the <code class="inline-code">Field Label</code> as <code class="inline-code">Upto 10-Char</code>, the <code class="inline-code">Merge Tag</code> will be <code class="inline-code">UPTO10CHAR</code>. The <code class="inline-code">user.trait</code> inside your <code class="inline-code">identify</code> call, which is, <code class="inline-code">Upto 10-Char</code>, will be converted to <code class="inline-code">UPTO10CHAR</code> before being sent to Mailchimp.
+</div>
+
+### Creating custom merge fields
+
+<div class="infoBlock">
+Create custom merge fields only for the traits you want to see in your list view and not for all <code class="inline-code">user.traits</code>.
+</div>
+
+To create and send custom merge fields or user traits to Mailchimp, please follow these steps:
 
 - Create the merge field in Mailchimp for every trait you want sent to it.
 - When you make the `identify` call, the keys that match the traits above will automatically appear in your Mailchimp list.
