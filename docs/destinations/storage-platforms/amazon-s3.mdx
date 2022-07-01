@@ -20,7 +20,7 @@ Follow these steps to set up your S3 bucket before adding it as a destination in
 
 ## Permissions
 
-There are two ways to give RudderStack the relevant permissions for writing in your bucket. You can choose any one of them based on your internal security policies.
+There are three ways to give RudderStack the relevant permissions for writing in your bucket. You can choose any one of them based on your internal security policies.
 
 ### Option 1: Creating credentials for the IAM user
 
@@ -71,10 +71,10 @@ To allow the RudderStack user to write into your bucket, add the following JSON 
 Make sure you replace <code class="inline-code">YOUR_BUCKET_NAME</code> in the above JSON with your S3 bucket name.
 </div>
 
-By adding the above policy, the RudderStack user `arn:aws:iam::422074288268:user/s3-copy` has the permission to write into your bucket.
+By adding the above policy, the RudderStack user `arn:aws:iam::422074288268:user/s3-copy` will get the permission to write into your bucket.
 
 <div class="infoBlock">
-The above approach works <strong>only if</strong> you are using RudderStack Cloud. 
+The above approach works <strong>only if</strong> you are using the RudderStack Cloud (dashboard). 
 </div>
 
 ### Option 3: For self-hosting RudderStack
@@ -138,7 +138,7 @@ If you're using your S3 bucket as an **intermediary object storage** for the <Li
 
 Follow these steps to set up S3 as a destination in RudderStack:
 
-1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Attribution**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Amazon S3**.
 2. Assign a name to the destination and click on **Continue**.
 
 ### Connection settings
@@ -176,7 +176,7 @@ RudderStack can write to S3 buckets when the default encryption is set to AWS-KM
 
 Follow the steps below to enable encryption using the AWS KMS-managed keys:
 
-1. Create a new customer managed key in AWS Key Management Services (KMS) and add your IAM user in the **Key Usage Permission** section. This will allow the IAM user to use the key for the  cryptographic operations.
+1. Create a new customer-managed key in AWS Key Management Services (KMS) and add your IAM user in the **Key Usage Permission** section. This will allow the IAM user to use the key for the cryptographic operations.
 2. Select the above-created CMK when you set the AWS-KMS option in the default encryption property for the bucket, as seen above.
 
 <div class="infoBlock">
@@ -188,7 +188,7 @@ S3 supports only <a href="https://docs.aws.amazon.com/kms/latest/developerguide/
 When the **Enable Server Side Encryption** is enabled in the S3 destination settings, RudderStack adds a header `x-amz-server-side-encryption` with the value `AES256` to the `PutObject` request. S3 then encrypts the object with the AES256 encryption algorithm. 
 
 <div class="infoBlock">
-For more information on the Amazon S3 encryption, refer to this <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/SSEUsingRESTAPI.html">Amazon S3 documentation</a>.
+For more information on the Amazon S3 encryption, refer to the <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/SSEUsingRESTAPI.html">Amazon S3 documentation</a>.
 </div>
 
 You can set the default encryption property to `AES-256` for your bucket as seen in the <Link to="#encryption">Encryption</Link> section above.
