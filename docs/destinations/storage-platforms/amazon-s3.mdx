@@ -59,7 +59,7 @@ To allow the RudderStack user to write into your bucket, add the following JSON 
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::422074288268:user/s3"
+        "AWS": "arn:aws:iam::422074288268:user/s3-copy"
       },
       "Action": ["s3:PutObject", "s3:PutObjectAcl"],
       "Resource": ["arn:aws:s3:::YOUR_BUCKET_NAME/*"]
@@ -71,10 +71,10 @@ To allow the RudderStack user to write into your bucket, add the following JSON 
 Make sure you replace <code class="inline-code">YOUR_BUCKET_NAME</code> in the above JSON with your S3 bucket name.
 </div>
 
-By adding the above policy, the RudderStack user `arn:aws:iam::422074288268:user/s3` has the permission to write into your bucket.
+By adding the above policy, the RudderStack user `arn:aws:iam::422074288268:user/s3-copy` has the permission to write into your bucket.
 
 <div class="infoBlock">
-The above approach works <strong>only if</strong> you are using managed RudderStack
+The above approach works <strong>only if</strong> you are using RudderStack Cloud. 
 </div>
 
 ### Option 3: For self-hosting RudderStack
