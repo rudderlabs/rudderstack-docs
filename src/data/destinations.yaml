@@ -1,7 +1,8 @@
 ---
+# Streaming
 - category: null
   displayName: AWS EventBridge
-  link: /tmp-destinations/streaming-destinations/eventbridge/
+  link: /tmp-destinations/streaming-destinations/amazon-eventbridge/
   options: null
   type: streaming
 - category: null
@@ -36,27 +37,27 @@
   type: streaming
 - category: null
   displayName: Algolia
-  link: /tmp-destinations/streaming-destinations/algolia/
+  link: /tmp-destinations/streaming-destinations/algolia-insights/
   options: null
   type: streaming
 - category: null
   displayName: Amazon Kinesis
-  link: /tmp-destinations/streaming-destinations/kinesis/
+  link: /tmp-destinations/streaming-destinations/amazon-kinesis/
   options: null
   type: streaming
 - category: null
   displayName: Amazon Kinesis Firehose
-  link: /tmp-destinations/streaming-destinations/firehose/
+  link: /tmp-destinations/streaming-destinations/amazon-kinesis-firehose/
   options: null
   type: streaming
 - category: null
   displayName: Amazon S3
-  link: /tmp-destinations/streaming-destinations/s3/
+  link: /tmp-destinations/streaming-destinations/amazon-s3/
   options: null
   type: streaming
 - category: null
   displayName: Amplitude
-  link: /tmp-destinations/streaming-destinations/am/
+  link: /tmp-destinations/streaming-destinations/amplitude/
   options: null
   type: streaming
 - category: null
@@ -76,7 +77,7 @@
   type: streaming
 - category: null
   displayName: AppsFlyer
-  link: /tmp-destinations/streaming-destinations/af/
+  link: /tmp-destinations/streaming-destinations/appsflyer/
   options: null
   type: streaming
 - category: null
@@ -96,32 +97,17 @@
   type: streaming
 - category: null
   displayName: Azure Blob Storage
-  link: /tmp-destinations/streaming-destinations/azure-blob/
-  options: null
-  type: streaming
-- category: null
-  displayName: Azure Datalake
-  link: /tmp-destinations/streaming-destinations/azure-datalake/
+  link: /tmp-destinations/streaming-destinations/microsoft-azure-blob-storage/
   options: null
   type: streaming
 - category: null
   displayName: Azure Event Hubs
-  link: /tmp-destinations/streaming-destinations/azure-event-hub/
-  options: null
-  type: streaming
-- category: null
-  displayName: Azure Synapse
-  link: /tmp-destinations/streaming-destinations/azure-synapse/
-  options: null
-  type: streaming
-- category: null
-  displayName: BigQuery
-  link: /tmp-destinations/streaming-destinations/bq/
+  link: /tmp-destinations/streaming-destinations/azure-event-hubs/
   options: null
   type: streaming
 - category: null
   displayName: BigQuery Stream
-  link: /tmp-destinations/streaming-destinations/bqstream/
+  link: /tmp-destinations/streaming-destinations/bigquery-stream/
   options: null
   type: streaming
 - category: null
@@ -136,7 +122,7 @@
   type: streaming
 - category: null
   displayName: Branch Metrics
-  link: /tmp-destinations/streaming-destinations/branch/
+  link: /tmp-destinations/streaming-destinations/branch-metrics/
   options: null
   type: streaming
 - category: null
@@ -165,11 +151,6 @@
   options: null
   type: streaming
 - category: null
-  displayName: ClickHouse
-  link: /tmp-destinations/streaming-destinations/clickhouse/
-  options: null
-  type: streaming
-- category: null
   displayName: Confluent Cloud
   link: /tmp-destinations/streaming-destinations/confluent-cloud/
   options: null
@@ -181,17 +162,12 @@
   type: streaming
 - category: null
   displayName: Customer IO
-  link: /tmp-destinations/streaming-destinations/customerio/
+  link: /tmp-destinations/streaming-destinations/customer.io/
   options: null
   type: streaming
 - category: null
   displayName: DCM Floodlight
   link: /tmp-destinations/streaming-destinations/dcm-floodlight/
-  options: null
-  type: streaming
-- category: null
-  displayName: Databricks (Delta Lake)
-  link: /tmp-destinations/streaming-destinations/deltalake/
   options: null
   type: streaming
 - category: null
@@ -201,14 +177,14 @@
   type: streaming
 - category: null
   displayName: DigitalOcean Spaces
-  link: /tmp-destinations/streaming-destinations/digital-ocean-spaces/
+  link: /tmp-destinations/streaming-destinations/digitalocean-spaces/
   options: null
   type: streaming
-- category: null
-  displayName: Drift
-  link: /tmp-destinations/streaming-destinations/drift/
-  options: null
-  type: streaming
+# - category: null
+#   displayName: Drift
+#   link: /tmp-destinations/streaming-destinations/drift/
+#   options: null
+#   type: streaming
 - category: null
   displayName: Drip
   link: /tmp-destinations/streaming-destinations/drip/
@@ -216,7 +192,7 @@
   type: streaming
 - category: null
   displayName: Facebook App Events
-  link: /tmp-destinations/streaming-destinations/fb/
+  link: /tmp-destinations/streaming-destinations/facebook-app-events/
   options: null
   type: streaming
 - category: null
@@ -226,7 +202,7 @@
   type: streaming
 - category: null
   displayName: Facebook Pixel
-  link: /tmp-destinations/streaming-destinations/facebook-pixel/
+  link: /tmp-destinations/streaming-destinations/fb-pixel/
   options: null
   type: streaming
 - category: null
@@ -250,44 +226,38 @@
   options: null
   type: streaming
 - category: null
-  displayName: Google Ads
-  link: /tmp-destinations/streaming-destinations/googleads/
+  displayName: Google Ads (gtag.js)
+  link: /tmp-destinations/streaming-destinations/g-ads-gtag/
   options: null
   type: streaming
 - category: null
   displayName: Google Adwords Enhanced Conversions
-  link: >-
-    /tmp-destinations/streaming-destinations/google-adwords-enhanced-conversions/
+  link: /tmp-destinations/streaming-destinations/google-adwords-enhanced-conversions/
   options: null
   type: streaming
 - category: null
   displayName: Google Adwords Remarketing Lists (Customer Match)
-  link: /tmp-destinations/streaming-destinations/google-adwords-remarketing-lists/
+  link: /tmp-destinations/streaming-destinations/google-adwords-remarketing-list/
   options: null
   type: streaming
 - category: null
   displayName: Google Analytics
-  link: /tmp-destinations/streaming-destinations/ga/
+  link: /tmp-destinations/streaming-destinations/google-analytics-ga/
   options: null
   type: streaming
 - category: null
   displayName: Google Analytics 360
-  link: /tmp-destinations/streaming-destinations/ga360/
+  link: /tmp-destinations/streaming-destinations/google-analytics-360/
   options: null
   type: streaming
 - category: null
   displayName: Google Analytics 4
-  link: /tmp-destinations/streaming-destinations/ga4/
+  link: /tmp-destinations/streaming-destinations/google-analytics-4/
   options: null
   type: streaming
 - category: null
   displayName: Google Cloud Storage
-  link: /tmp-destinations/streaming-destinations/gcs/
-  options: null
-  type: streaming
-- category: null
-  displayName: Google Cloud Storage Datalake
-  link: /tmp-destinations/streaming-destinations/gcs-datalake/
+  link: /tmp-destinations/streaming-destinations/google-cloud-storage/
   options: null
   type: streaming
 - category: null
@@ -297,12 +267,12 @@
   type: streaming
 - category: null
   displayName: Google Pub/Sub
-  link: /tmp-destinations/streaming-destinations/googlepubsub/
+  link: /tmp-destinations/streaming-destinations/google-pub-sub/
   options: null
   type: streaming
 - category: null
   displayName: Google Sheets
-  link: /tmp-destinations/streaming-destinations/googlesheets/
+  link: /tmp-destinations/streaming-destinations/google-sheets/
   options: null
   type: streaming
 - category: null
@@ -411,11 +381,6 @@
   options: null
   type: streaming
 - category: null
-  displayName: Microsoft SQL Server
-  link: /tmp-destinations/streaming-destinations/mssql/
-  options: null
-  type: streaming
-- category: null
   displayName: MinIO
   link: /tmp-destinations/streaming-destinations/minio/
   options: null
@@ -481,11 +446,6 @@
   options: null
   type: streaming
 - category: null
-  displayName: Postgres
-  link: /tmp-destinations/streaming-destinations/postgres/
-  options: null
-  type: streaming
-- category: null
   displayName: ProfitWell
   link: /tmp-destinations/streaming-destinations/profitwell/
   options: null
@@ -511,18 +471,8 @@
   options: null
   type: streaming
 - category: null
-  displayName: Redshift
-  link: /tmp-destinations/streaming-destinations/rs/
-  options: null
-  type: streaming
-- category: null
   displayName: Revenue Cat
   link: /tmp-destinations/streaming-destinations/revenue-cat/
-  options: null
-  type: streaming
-- category: null
-  displayName: S3 Datalake
-  link: /tmp-destinations/streaming-destinations/s3-datalake/
   options: null
   type: streaming
 - category: null
@@ -568,11 +518,6 @@
 - category: null
   displayName: Snapchat Conversion
   link: /tmp-destinations/streaming-destinations/snapchat-conversion/
-  options: null
-  type: streaming
-- category: null
-  displayName: Snowflake
-  link: /tmp-destinations/streaming-destinations/snowflake/
   options: null
   type: streaming
 - category: null
@@ -645,3 +590,60 @@
   link: /tmp-destinations/streaming-destinations/zendesk/
   options: null
   type: streaming
+
+# Warehouse
+- category: null
+  displayName: Amazon Redshift
+  link: /tmp-destinations/warehouse-destinations/amazon-redshift/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Amazon S3 Datalake
+  link: /tmp-destinations/warehouse-destinations/s3-datalake/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Azure Synapse
+  link: /tmp-destinations/warehouse-destinations/azure-synapse/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Azure Datalake
+  link: /tmp-destinations/warehouse-destinations/azure-datalake/
+  options: null
+  type: warehouse
+- category: null
+  displayName: ClickHouse
+  link: /tmp-destinations/warehouse-destinations/clickhouse/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Databricks (Delta Lake)
+  link: /tmp-destinations/warehouse-destinations/delta-lake/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Google BigQuery
+  link: /tmp-destinations/warehouse-destinations/google-bigquery/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Google Cloud Storage Datalake
+  link: /tmp-destinations/warehouse-destinations/gcs-datalake/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Microsoft SQL Server
+  link: /tmp-destinations/warehouse-destinations/microsoft-sql-server/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Postgres
+  link: /tmp-destinations/warehouse-destinations/postgressql/
+  options: null
+  type: warehouse
+- category: null
+  displayName: Snowflake
+  link: /tmp-destinations/warehouse-destinations/snowflake/
+  options: null
+  type: warehouse
