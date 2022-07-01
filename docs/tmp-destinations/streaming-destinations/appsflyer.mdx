@@ -21,7 +21,7 @@ Before configuring AppsFlyer as a destination in RudderStack, verify if the sour
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 <div class="successBlock">
@@ -630,7 +630,7 @@ export function transformEvent(event, metadata) {
 
 <div class="warningBlock">
 
-We recommend sending events to AppsFlyer via the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> only in the following two scenarios:
+We recommend sending events to AppsFlyer via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> only in the following two scenarios:
 <ul>
 <li>To use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature to transform your events</li> 
 <li>To send server-side events</li>
@@ -712,7 +712,7 @@ const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId()
 The `identify` call sets `userId` through the `setCustomerUserId` method of `AppsFlyerLib`.
 
 <div class="infoBlock">
-RudderStack supports the <code class="inline-code">identify</code> calls only in the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+RudderStack supports the <code class="inline-code">identify</code> calls only in the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 </div>
 
 RudderStack sets `email` from the event traits to AppsFlyer using the native SDK's `setUserEmails` method, as shown:

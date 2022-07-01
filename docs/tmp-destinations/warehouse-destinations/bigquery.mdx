@@ -8,7 +8,7 @@ description: Step-by-step guide on setting up Google BigQuery as a destination i
 RudderStack lets you configure BigQuery as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-Refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in BigQuery.
+Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in BigQuery.
 </div>
 
 <div class="successBlock">
@@ -124,7 +124,7 @@ Enter the following credentials in the **Connection Credentials** page:
 RudderStack uses the source name (written in snake case, for example, `source_name`) to create a dataset in BigQuery.
 
 <div class="infoBlock">
-For more details on the tables and columns created by RudderStack, refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide.
+For more details on the tables and columns created by RudderStack, refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide.
 </div>
 
 RudderStack supports two modes by which data is ingested into BigQuery:
@@ -136,7 +136,7 @@ RudderStack supports two modes by which data is ingested into BigQuery:
 By default, RudderStack uses the partitioned tables method to ingest data into BigQuery. Deduplication is disabled.
 </div>
 
-If you are using <Link to="/tmp-get-started/rudderstack-open-source/">RudderStack Open Source</Link> or hosting the RudderStack data plane, you can manage these modes via the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`, as shown in the following table:
+If you are using <Link to="/get-started/rudderstack-open-source/">RudderStack Open Source</Link> or hosting the RudderStack data plane, you can manage these modes via the environment variable `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`, as shown in the following table:
 
 | Ingestion method | `RSERVER_WAREHOUSE_BIGQUERY_IS_DEDUP_ENABLED`  |
 | :-----------------| :-------------------|
@@ -211,7 +211,7 @@ By default, RudderStack sends the data to the table/dataset based on the source 
 
 ### I'm looking to send data to BigQuery through RudderStack and I'm trying to understand what data is populated in each column. How do I go about this?
 
-Refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> documentation for details on how RudderStack generates the schema in the warehouse and populates the data in each column.
+Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> documentation for details on how RudderStack generates the schema in the warehouse and populates the data in each column.
 
 ### I am trying to load data into my BigQuery destination and I get the error "Cannot read and write in different locations". What should I do?
 
@@ -227,7 +227,7 @@ The near-realtime BigQuery syncing feature is currently under development and is
 
 ### What is the current sync frequency for BigQuery?
 
-If you're using open source RudderStack, the minimum sync frequency is **30 minutes**. If you're self-hosting the data plane or using RudderStack Cloud Pro / Enterprise, you can tweak the config to set `uploadFreqInS` in `config.yaml` to `0` and determine the best possible value for near real-time sync. For more information, refer to this <Link to="/tmp-destinations/warehouse-destinations/faq/#is-there-a-way-to-force-load-my-data-into-the-warehouses">FAQ</Link>.
+If you're using open source RudderStack, the minimum sync frequency is **30 minutes**. If you're self-hosting the data plane or using RudderStack Cloud Pro / Enterprise, you can tweak the config to set `uploadFreqInS` in `config.yaml` to `0` and determine the best possible value for near real-time sync. For more information, refer to this <Link to="/destinations/warehouse-destinations/faq/#is-there-a-way-to-force-load-my-data-into-the-warehouses">FAQ</Link>.
 
 ### Do I need to stop the running pipeline to change my sync frequency? Or will the new change be effective even without stopping the pipeline?
 

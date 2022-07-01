@@ -24,7 +24,7 @@ Before configuring Intercom as a destination in RudderStack, verify if the sourc
 | **Cloud mode**      | **Supported** | **Supported** | **Supported**          |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that your source platform supports sending events to Intercom, follow these steps:
@@ -308,7 +308,7 @@ The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you reco
 
 <div class="warningBlock">
 
-The <code class="inline-code">page</code> call is supported <strong>only</strong> for the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> when sending events via the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. It works by triggering Intercom's <code class="inline-code">update</code> method, which looks for a list of new open conversations to be displayed to the current user.
+The <code class="inline-code">page</code> call is supported <strong>only</strong> for the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> when sending events via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. It works by triggering Intercom's <code class="inline-code">update</code> method, which looks for a list of new open conversations to be displayed to the current user.
 </div>
 
 A sample `page` call looks like the following code snippet:

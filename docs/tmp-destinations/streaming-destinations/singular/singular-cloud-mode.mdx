@@ -10,7 +10,7 @@ RudderStack supports server-to-server (S2S) API integration with Singular.
 Refer to the <a href="https://support.singular.net/hc/en-us/articles/360048588672-Server-to-Server-S2S-API-Endpoint-Reference">Singular documentation</a> for the Singular API endpoint reference.
 </div>
 
-RudderStack supports two types of <Link to="/event-spec/standard-events/track">`track`</Link> events that you can send to Singular via the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>:
+RudderStack supports two types of <Link to="/event-spec/standard-events/track">`track`</Link> events that you can send to Singular via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>:
 
 - Session events
 - Custom events
@@ -62,7 +62,7 @@ The following table lists the mapping of the attributes **automatically captured
 | `context.network.carrier` | `cn` | Optional | The carrier name of the internet provider. |
 
 <div class="successBlock">
-To anonymize your IP, you can send a dummy IP in the <code class="inline-code">context.ip</code> field. RudderStack uses it as the IP address instead of capturing it automatically from the backend. In case of mobile SDKs, you can leverage the <Link to="/transformations">Transformations</Link> feature to do this - when sending events via the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+To anonymize your IP, you can send a dummy IP in the <code class="inline-code">context.ip</code> field. RudderStack uses it as the IP address instead of capturing it automatically from the backend. In case of mobile SDKs, you can leverage the <Link to="/transformations">Transformations</Link> feature to do this - when sending events via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 </div>
 
 The following table lists the mapping of the attributes that **must be passed via the event properties**:
