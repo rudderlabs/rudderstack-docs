@@ -148,9 +148,9 @@ In the **Connection Settings** page, enter the following settings to configure t
 <img src="../../assets/event-stream-destinations/s3-connection-settings.png" alt="S3 connection settings" />
 
 - **S3 Bucket Name**: Enter your S3 bucket name.
-- **Prefix**: 
+- **Prefix**: If specified, RudderStack creates a folder in the bucket with this name and pushes all the data within that folder. For example, `s3://<bucket_name>/<prefix>/`
 - **AWS Access Key ID**: Enter the AWS access key ID associated with the IAM user with the programmatic access.
-- **AWS Secret Access Key**: Enter the AWS secret key key.
+- **AWS Secret Access Key**: Enter the AWS secret key.
 
 <div class="infoBlock">
 Refer to the <Link to="#permissions">Permissions</Link> section above for more information on obtaining the access key ID and secret access key.
