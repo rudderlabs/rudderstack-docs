@@ -1,0 +1,47 @@
+---
+title: "Cloud Mode"
+description: >-
+  Detailed technical documentation on sending events to Vero via the RudderStack cloud mode.
+---
+
+RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/drip">GitHub repository</a>.
+</div>
+
+## Identify
+
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+
+RudderStack sends the `identify` events to Vero via their [`users`](https://api.getvero.com/api/v2/users/track) endpoint to create, update, and manage your user records and their subscription status.
+
+A sample `identify` call is shown below:
+
+```javascript
+
+```
+
+### Supported mappings
+
+The following table shows the mapping of the RudderStack properties to the corresponding Vero fields:
+
+| RudderStack trait | Vero property | Presence |
+| :-----| :------| :-------|
+| `userId` | `id` | Required
+| `email` | `email` | Conditionally required |
+| `traits` | `data` |  Optional |
+| `context.os.name` | `channels.platform` | Optional |
+| `context.device.token` | `channels.address` | Optional |
+| `context.device.name` | `channels.device` | Optional |
+| `context.timezone` | `timezone` | Optional |
+| `context.locale`| `locale` | Optional |
+| `context.userAgent` | `userAgent` | Optional |
+
+## Track
+
+### Supported mappings
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
