@@ -1717,6 +1717,12 @@ export const jsonData = [
         content: [],
       },
       {
+        key: "json-column-support",
+        title: "JSON Column Support",
+        link: "/data-warehouse-integrations/json-column-support/",
+        content: [],
+      },
+      {
         key: "warehouse-faqs",
         title: "FAQ",
         link: "/data-warehouse-integrations/warehouse-faqs/",
