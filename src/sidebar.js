@@ -97,7 +97,7 @@ export const jsonData = [
             content: [
               {
                 key: "quick-start",
-                title: "Quick Start",
+                title: "Quickstart",
                 link:
                   "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start/",
                 content: [],
