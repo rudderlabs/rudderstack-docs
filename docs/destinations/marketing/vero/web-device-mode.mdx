@@ -29,7 +29,7 @@ The following table shows the mapping of the RudderStack properties to the corre
 | RudderStack trait | Vero property | Presence |
 | :-----| :------| :-------|
 | `userId`/`anonymousId` | `id` | Required |
-| `email` | `email` | Required, if `userId`/`anonymousId` is absent. |
+| `email` | `email` | Required, if `userId`/`anonymousId` is not present. |
 | `context.traits`/`traits` | `traits` |  Optional |
 
 <div class="infoBlock">
@@ -87,7 +87,7 @@ The following table shows the mapping of the RudderStack properties to the corre
 
 ## Adding and removing tags
 
-RudderStack supports adding and removing `tags` to all the above calls. An example snippet is shown below:
+RudderStack supports adding and removing `tags` to all the `identify` and `track` calls by passing them via the `integrations` object. An example snippet is shown below:
 
 ```javascript
 rudderanalytics.identify(

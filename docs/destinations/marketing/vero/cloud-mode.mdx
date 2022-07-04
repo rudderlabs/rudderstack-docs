@@ -33,7 +33,7 @@ The following table shows the mapping of the RudderStack properties to the corre
 | RudderStack trait | Vero property | Presence |
 | :-----| :------| :-------|
 | `userId` | `id` | Required
-| `email` | `email` | Conditionally required |
+| `email` | `email` | Required, if `id` is not present. |
 | `traits` | `data` |  Optional |
 | `context.os.name` | `channels.platform` | Optional |
 | `context.device.token` | `channels.address` | Optional |
@@ -103,7 +103,7 @@ The following table shows the mapping of the RudderStack properties to the corre
 
 ## Adding and removing tags
 
-RudderStack supports adding and removing `tags` to all the above calls. An example snippet is shown below:
+RudderStack supports adding and removing `tags` to all the `identify` and `track` calls by passing them via the `integrations` object. An example snippet is shown below:
 
 ```javascript
 rudderanalytics.identify(
