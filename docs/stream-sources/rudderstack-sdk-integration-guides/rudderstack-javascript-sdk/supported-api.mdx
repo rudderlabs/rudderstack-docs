@@ -1,11 +1,9 @@
 ---
 title: "Supported API"
-description: Detailed technical documentation on the supported API for RudderStack's JavaScript SDK.
+description: Detailed technical documentation on the JavaScript SDK API.
 ---
 
-The JavaScript SDK makes it very easy for you to send your event data to any destination without implementing a new API every time.
-
-The following sections detail all the API calls supported by RudderStack for this SDK.
+The JavaScript SDK lets you send your event data to any destination without implementing a new API every time.
 
 ## Load
 
@@ -16,21 +14,12 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [options]);
 ```
 
 <div class="infoBlock">
-
-You need to replace the <code class="inline-code">WRITE_KEY</code> with the source write key in the RudderStack dashboard and <code class="inline-code">DATA_PLANE_URL</code> with your data plane URL.
+You need to replace the <Link to="/get-started/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link>.
 </div>
 
-### Write key and data plane URL
+### Load options 
 
-To integrate and initialize the JavaScript SDK, you need the source write key and the data plane URL.
-
-* To get the source write key, follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/#step-1-getting-the-source-write-key).
-
-* To get the data plane URL, follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
-
-### The `options` parameter
-
-The `options` parameter in the above `load` call looks like the following:
+You can use the `options` parameter in the `load` call to specify different options while loading the JavaScript SDK. It includes the following parameters:
 
 ```javascript
 {
@@ -48,7 +37,7 @@ The `options` parameter in the above `load` call looks like the following:
 }
 ```
 
-It includes the following details:
+The parameter type and description is as follows:
 
 | Parameter             | Type                                | Description                                              |
 | :-------------------- | :---------------------------------- | :------------------------------------------------------- |
@@ -59,25 +48,16 @@ It includes the following details:
 |  `loadIntegration`    | Boolean                             | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                    |
 | `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS.|
 | `destSDKBaseURL`      | String                              | Defaults to `https://cdn.rudderlabs.com/v1.1/js-integrations`. The SDK will load the integrations from this path. You can also set your own integrations path using this field. For more information, refer to [**this section**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn).                                                    | 
-| `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  `navigator.sendBeacon()` utility. |
+| `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  `navigator.sendBeacon()` utility.  Refer to [Beacon transport mechanism](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism) for more details. |
 | `beaconQueueOptions`  | [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) section. |
 | `cookieConsentManager` | Object       |  Refer to the [`cookieConsentManager`](#cookieconsentmanager) section for more information. |
 | `anonymousIdOptions` | Object       |  Refer to the [Capturing `anonymousId` automatically](#capturing-anonymousid-automatically) section for more information. |
 
 For more details, refer to the [**`options`**](#options) parameter section.
 
-#### The useBeacon option
+### Loading SDK for self-hosted control plane
 
-The JavaScript SDK supports a new Boolean field, `useBeacon`, in the `load()` call options. When set to `true`, the SDK sends events using the [**`navigator.sendBeacon`**](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) utility.
-
-<div class="infoBlock">
-
-  Refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism">this section</a> for more details on using the Beacon transport mechanism.
-</div>
-
-### Loading the SDK for self-hosted control plane
-
-If you are self-hosting the control plane using the [**RudderStack Control Plane Lite**](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, your `load` call will look like the following:
+If you are self-hosting the control plane using the [Control Plane Lite](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, your `load` call should be as below:
 
 ```javascript
 rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
@@ -86,41 +66,14 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 ```
 
 <div class="infoBlock">
-
-  More information on how to get the <code class="inline-code">CONTROL_PLANE_URL</code> can be found <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url">here</a>.
-</div>
-
-### Loading selective destinations
-
-RudderStack lets you send your event data to selective destinations specified by you and disable sending events to the rest of the destinations. You can specify these destinations through the `load` call, as shown in the following snippet:
-
-```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
-  integrations: { All: false, destination_name: true },
-});
-```
-
-For more information, check the [**Filtering selective destinations**](#filtering-selective-destinations) section.
-
-## Chromecast
-
-[**Google Chromecast**](https://store.google.com/in/product/chromecast?hl=en-GB) is a device that plugs into your TV or monitor with an HDMI port, and can be used to stream content from your phone or computer.
-
-<div class="successBlock">
-
-RudderStack supports integrating the JavaScript SDK with your Cast app. Follow <a href="https://developers.google.com/cast/docs/web_sender">these instructions</a> to build your web sender app. Then, add the JavaScript SDK to it.
-</div>
-
-<div class="infoBlock">
-
-  Follow the <a href="https://developers.google.com/cast/docs/developers">Google Cast developer guide</a> for more details.
+Refer to the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url">Control plane URL section</a> to get the <code class="inline-code">CONTROL_PLANE_URL</code>.
 </div>
 
 ## Identify
 
-The `identify` method allows you to link the users and their actions to a specific `userid`. You can also add additional information as `traits` to a user. Once the `identify` call is made, the SDK persists the user information and passes it to the subsequent [**`track`**](#track) or [**`page`**](#page) calls.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify">`identify`</Link> method allows you to link the users and their actions to a specific `userid`. You can also add additional information as `traits` to a user. Once the `identify` call is made, the SDK persists the user information and passes it to the subsequent <Link to="#track">`track`</Link> or <Link to="#page">`page`</Link> calls.
 
-To reset the user identification, you can use the [**`reset`**](#reset) method.
+To reset the user identification, you can use the [`reset`](#reset) method.
 
 The SDK defines the `identify` method as shown below:
 
@@ -664,3 +617,18 @@ rudderanalytics.setAnonymousId("abcde");
 rudderanalytics.identify("12345", { name: "Firstname Lastname" });
 rudderanalytics.track("test event", { testProp: "prop1" });
 ```
+
+
+## Chromecast
+
+[**Google Chromecast**](https://store.google.com/in/product/chromecast?hl=en-GB) is a device that plugs into your TV or monitor with an HDMI port, and can be used to stream content from your phone or computer.
+
+<div class="successBlock">
+
+RudderStack supports integrating the JavaScript SDK with your Cast app. Follow <a href="https://developers.google.com/cast/docs/web_sender">these instructions</a> to build your web sender app. Then, add the JavaScript SDK to it.
+</div>
+
+<div class="infoBlock">
+
+  Follow the <a href="https://developers.google.com/cast/docs/developers">Google Cast developer guide</a> for more details.
+</div>
