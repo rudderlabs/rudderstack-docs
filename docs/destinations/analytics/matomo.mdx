@@ -1,0 +1,237 @@
+---
+title: "Matomo"
+description: Step-by-step guide on sending your event data from RudderStack to Matomo.
+---
+
+[Matomo](https://matomo.org/), formerly Piwik, is an open-source web analytics platform. It can be used to derive valuable insights into your website's visitors and marketing campaigns so as to optimize your strategy and online experience for your visitors.
+
+RudderStack supports Matomo as a destination to which you can seamlessly send your event data.
+
+<div class="successBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/">GitHub repository</a>.
+</div>
+
+## Getting started
+
+Before configuring Matomo as a destination in RudderStack, verify if the source platform is supported by Matomo by referring to the table below:
+
+| Connection Mode | Web | Mobile | Server |
+| :--- | :--- | :--- | :--- |
+| Device mode | Supported | - | - |
+| Cloud mode | -  | - | - |
+
+<div class="infoBlock">
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to Matomo, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Matomo**.
+2. Assign a name to the destination and click on **Continue**.
+
+## Connection settings
+
+To successfully configure Matomo as a destination, you will need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/matomo-connection-settings.png" alt="Matomo connection settings"/>
+
+- **Server URL**: Enter your server URL mentioned under the **JavaScript Tracking Code** section in Matomo dashboard.
+- **Site Id**: Enter your site Id mentioned under the **JavaScript Tracking Code** section in Matomo dashboard.
+
+<div class="infoBlock">
+Refer to the <Link to="#faq">FAQ</Link> section below for more information on finding the Server URL and Site Id.
+</div>
+
+### Event settings
+
+- **Mapping to trigger the Matomo Goal ID for the respective Events**: Enter the event name and the corresponding goal Id which needs to be mapped.
+- **Mapping to trigger the Matomo standard events for the respective Events**: Enter the event name and pick the corresponding standard event from the dropdown which needs to be mapped.
+- **Track All Content Impressions**: Enable this setting to scan the entire DOM for all content blocks and track all impressions, once the DOM ready event has been triggered.
+- **Track Visible Content Impressions**: Enable this setting to scan the entire DOM for all content blocks as soon as the page is loaded. It tracks an impression only if a content block is actually visible. If enabled, also enter the following:
+    - **Check on Scroll**:
+    - **Time interval in ms**:
+- **Log All Content Blocks On Page**: Enable this setting to log all the content blocks found within a page to the console. This is useful while debugging/testing the content tracking.
+- **Enable Heart Beat Timer**: Enable this setting to install a heart beat timer to send additional requests to Matomo to measure the time spent in the visit. These requests will be sent only when the user's tab is active and in focus and will not track additional actions or pageviews. If enabled, also enter the following:
+    - **Active Time in seconds**: Enter the time interval after which a ping request should be sent. The default value is 15 seconds, meaning that if a page is viewed for at least 15 seconds, only then a ping request will be sent.
+- **Enable Link Tracking**: Enable this setting to install link tracking on all the applicable link elements.
+- **Disable Performance Tracking**: Enable this setting to disable the page performance tracking.
+- **Enable Cross Domain Linking**: Enable this setting to enable cross domain linking. Refer to the [Matomo document](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=enableCrossDomainLinking) for more information.
+- **Set Cross Domain Linking Timeout**: Enable this setting to set the cross domain linking timeout (in seconds). If enabled, also enter the following:
+    - **Timeout**: Enter the timeout interval. By default, the two visits across domains are linked together when the link is clicked and the page is loaded within a 180 seconds timeout window.
+- **Get Cross Domain Linking Url Parameter**: Enable this setting to get the query parameter to append to links to handle cross domain linking. Refer to the [Matomo document](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=getCrossDomainLinkingUrlParameter) for more information.
+- **Disable Browser Feature Detection**: Enable this setting to disable the browser feature detection. Refer to the [Matomo document](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=disableBrowserFeatureDetection) for more information.
+
+### Web SDK settings
+
+- **Use device mode to send events**: As this is a device mode-only destination, this setting is enabled by default and cannot be disabled.
+
+## Identify
+
+The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you create new or update existing customers and record the traits about them like their name, email address, etc. 
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm");
+```
+
+The following table lists the RudderStack and Matomo property to set the `userId` in the `identify` call:
+
+| RudderStack property | Matomo property | Presence | Matomo Method |
+| :--- | :--- | :--- | :--- |
+| `userId`/`anonymousId` | `userId` | Required | _paq.push([”setUserId”,”user_id”]) |
+
+
+## Track
+
+The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> method lets you capture user events along with the properties associated with them.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.page("home","games");
+```
+
+RudderStack supports `track` calls for **standard** and **e-commerce** events as explained below: 
+
+### Standard events
+
+RudderStack supports the `trackEvent` event. The following table lists the property mappings between RudderStack and Matomo for `trackEvent`:
+
+| RudderStack property | Matomo property | Presence |
+|:----------------------|:--------------------|:----------------|
+| `properties.category` | `category` | Required |
+| `properties.action` | `action` | Required |
+| `event` | `name` | Optional |
+| `properties.value` | `value` | Optional |
+
+### E-commerce events
+
+RudderStack supports and maps the following e-commerce events to the corresponding Matomo events:
+
+| RudderStack Event | Matomo Event |
+|:--------------------------------|:--------------------------|
+| `Product Viewed` | `setEcommerceView` |
+| `Product Added` | `addEcommerceItem` |
+| `Product Removed` | `removeEcommerceItem` |
+| `Order Completed` | `trackEcommerceOrder` |
+| `Cart Cleared` | `clearEcommerceCart` |
+
+For the above-mentioned events, you can also send specific properties as mentioned in the following sections.
+
+#### Product Viewed
+
+RudderStack maps the `Product Viewed` event to `setEcommerceView`. The following event properties are mapped to the Matomo properties:
+
+| RudderStack property | Matomo property | Presence |
+|:---------------------|:-------------|:--------------|
+| `properties.sku`/`properties.product_id` | `productSKU` | Required |
+| `properties.name` | `productName` |Required |
+| `properties.category` | `categoryName` |Required |
+| `properties.price` (Multiplied by quantity) | `price` |Required |
+
+#### Product Added
+
+RudderStack maps the `Product Added` event name to `addEcommerceItem`. The following event properties are mapped to the Matomo properties:
+
+| RudderStack property | Matomo property | Presence |
+|:---------------------|:-------------|:--------------|
+| `properties.sku`/`properties.product_id` | `productSKU` | Required |
+| `properties.name` | `productName` |Optional |
+| `properties.category` | `categoryName` |Optional |
+| `properties.price` (Multiplied by quantity) | `price` |Optional |
+| `properties.quantity` | `quantity` |Optional |
+
+#### Product Removed
+
+RudderStack maps the `Product Removed` event name to `removeEcommerceItem`. The following event properties are mapped to the Matomo properties:
+
+| RudderStack property | Matomo property | Presence |
+|:---------------------|:-------------|:--------------|
+| `properties.sku`/`properties.product_id` | `productSKU` | Required |
+
+#### Order Completed
+
+RudderStack maps the `Order Completed` event name to `trackEcommerceOrder`. The following event properties are mapped to the Matomo properties:
+
+| RudderStack property | Matomo property | Presence |
+|:---------------------|:-------------|:--------------|
+| `properties.order_id`/`properties.orderId` | `orderId` | Required |
+| `properties.total`/`properties.revenue` | `grandTotal` |Required |
+| `properties.subtotal` | `subtotal` |Optional |
+| `properties.tax` | `tax` |Optional |
+| `properties.shipping` | `shipping` |Optional |
+| `properties.discount` | `discount` |Optional |
+
+<div class="infoBlock">
+<code class="inline-code">grandTotal</code> is not a default property in the <code class="inline-code">Order Completed</code> event and needs to be provided by the user. If not provided, RudderStack calculates it manually by iterating through the products array, as:
+
+```text
+grandTotal = products[0].price * products[0].quantity + …
+grandTotal += tax + shipping;
+```
+Similarly, <code class="inline-code">subtotal</code> is calculated as the total value of all sales, excluding shipping and tax.
+</div>
+
+## Page
+
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.track("Order Completed",{
+"category": "Orders",
+"action": "Pass",
+"value": 15
+});
+```
+
+<div class="infoBlock">
+RudderStack does not consider any parameters inside the  <code class="inline-code">page</code> call and simply calls the  <code class="inline-code">trackPageView</code> event for each  <code class="inline-code">page</code> call.
+</div>
+
+
+## Custom dimensions
+
+Custom dimensions can be used to track any information related to any action or visitors. RudderStack provides `customDimension` field which can be used inside the `integrations` object, as shown below:
+
+```javascript
+{
+    integrations: {
+        Matomo: {
+            customDimension: [{
+                    dimensionId: <dimensioned> ,
+                    dimensionValue: <dimensionValue>
+                },
+                {
+                    dimensionId: 1,
+                    dimensionValue: ENTERPRISE
+                }
+            ]
+        }
+    }
+}
+```
+
+<div class="infoBlock">
+Refer to <Link to="https://matomo.org/faq/reporting-tools/data-limits-for-custom-dimensions/">Data limits</Link> to know about the data limitations for custom dimensions.
+</div>
+
+## FAQ
+
+### Where can I find the Server URL and Site Id?
+
+To find the Matomo Server URL and Site Id:
+
+1. Log into your [Matomo dashboard](https://matomo.org/login). 
+2. Go to **Settings** > **Website** > **Tracking Code**.
+3. Under **JavaScript Tracking Code** section, you will find the below: 
+
+<img src="../../assets/event-stream-destinations/matomo-dashboard.png" alt="Matomo dashboard"/>
+
+Here, the server URL: `https://rudderstacktest.matomo.cloud/` and site Id: `1`
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
