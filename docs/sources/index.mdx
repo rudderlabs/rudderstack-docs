@@ -12,6 +12,8 @@ In the following sections we'll provide a bit more detail on the available sourc
 
 ## SDKs
 
+RudderStack supports open sources SDKs for web, mobile, and server applications.
+
 ### Web
 
 Use the `rudder-analytics.js` library to track your customer event data from your websites and send it to your specified destinations via RudderStack.
@@ -36,7 +38,9 @@ Track your customer event data from your backend applications and send the data 
   category={'server'}
 />
 
-## Cloud Extract
+## Cloud Apps
+
+### Extract
 
 With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as Facebook Ads, Google Analytics, Marketo, HubSpot, Stripe, and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
 
@@ -45,21 +49,13 @@ With RudderStack Cloud Extract, you can collect your raw events and data from di
 />
 
 
-## API
+### Streaming Sources
 
-If possible, we recommend you use a native SDK for tracking and routing user events from your sources. Our SDKs offer automatic tagging of user context, event batching, and retry functionality during delivery failure.
-
-If we don't offer a supported library for your environment, you can send your data directly to the RudderStack <Link to="/api/http-api/">HTTP API</Link>. 
-
-
-## Webhook
-
-These integrations rely on webhooks to track event data from user interactions.
+These integrations stream event data asynchronously via webhooks to track event data from user interactions.
 
 <Sources
   category={'webhook'}
 />
-
 
 
 ## Reverse ETL
@@ -69,3 +65,9 @@ Use your data warehouse as a data source! With our Reverse ETL capabilities, you
 <Sources
   type={'reverse ETL'}
 />
+
+## API
+
+If possible, we recommend you use a native SDK for tracking and routing user events from your sources. Our SDKs offer automatic tagging of user context, event batching, and retry functionality during delivery failure.
+
+If we don't offer a supported library for your environment, you can send your data directly to the RudderStack <Link to="/api/http-api/">HTTP API</Link>. 
