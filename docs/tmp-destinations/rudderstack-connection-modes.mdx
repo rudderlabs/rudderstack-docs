@@ -31,7 +31,7 @@ When you send events via the cloud mode, you also get the flexibility to use <Li
 
 Suppose you want to analyze your website data in Google Analytics. To do so, you can use RudderStack's <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link>.
 
-RudderStack defines a <Link to="/event-spec/standard-events/">fixed event structure</Link>. If you track your events in this format, RudderStack takes care of transforming the events as required by Google Analytics. You can start by <Link to="/dashboard-guides/sources/#adding-a-source">adding a JavaScript source</Link> and connecting it to the <Link to="/tmp-destinations/streaming-destinations/google-analytics-ga/">Google Analytics destination</Link> in your RudderStack dashboard.
+RudderStack defines a <Link to="/event-spec/standard-events/">fixed event structure</Link>. If you track your events in this format, RudderStack takes care of transforming the events as required by Google Analytics. You can start by <Link to="/dashboard-guides/sources/#adding-a-source">adding a JavaScript source</Link> and connecting it to the <Link to="/destinations/streaming-destinations/google-analytics-ga/">Google Analytics destination</Link> in your RudderStack dashboard.
 
 Then, enable event tracking on your website by <Link to="/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-rudderstack-javascript-sdk">adding the JavaScript SDK snippet</Link>.
 
@@ -41,7 +41,7 @@ The SDK will automatically track and send the events to RudderStack. RudderStack
 
 <div class="warningBlock">
 <ul>
-  <li>RudderStack's <Link to="/tmp-destinations/warehouse-destinations/">warehouse destinations</Link> support sending data only through the cloud mode.</li>
+  <li>RudderStack's <Link to="/destinations/warehouse-destinations/">warehouse destinations</Link> support sending data only through the cloud mode.</li>
   <li>All the RudderStack server-side SDKs support sending events only through cloud mode. This is because the server-side SDKs operate in the RudderStack backend and cannot load any additional destination-specific SDKs.</li>
 </ul>
 </div>
@@ -58,7 +58,7 @@ You will not be able to use RudderStack's <Link to="/features/transformations/">
 
 ### How device mode works
 
-Suppose you want to send your event data from your mobile app to Firebase via the RudderStack Android SDK (or any other mobile SDK). You can start by <Link to="/dashboard-guides/sources/#adding-a-source">adding an Android source</Link> and connecting it to the <Link to="/tmp-destinations/streaming-destinations/firebase/">Firebase destination</Link> in the RudderStack dashboard.
+Suppose you want to send your event data from your mobile app to Firebase via the RudderStack Android SDK (or any other mobile SDK). You can start by <Link to="/dashboard-guides/sources/#adding-a-source">adding an Android source</Link> and connecting it to the <Link to="/destinations/streaming-destinations/firebase/">Firebase destination</Link> in the RudderStack dashboard.
 
 The RudderStack SDK will first download the Firebase SDK, transform the events natively, and then send them over to Firebase.
 
@@ -77,21 +77,21 @@ For some destinations, you can use the <Link to="/sources/sdks/rudderstack-javas
 
 ### How to check which connection mode is supported by the destination?
 
-The easiest way to check the connection mode supported by the destination is to go refer to the individual destination's <Link to="/tmp-destinations/overview/">documentation</Link>.
+The easiest way to check the connection mode supported by the destination is to go refer to the individual destination's <Link to="/destinations/overview/">documentation</Link>.
 
 The supported connection modes are mentioned for every destination in the **Getting Started** section of their respective documentation, as seen below:
 
 <img src="../assets/rs-cloud/getting-started-connection-modes.png" alt="Getting Started section in destination docs" />
 
 Some RudderStack destinations support sending events via both the cloud and device mode. Some examples include:
-- <Link to="/tmp-destinations/streaming-destinations/google-analytics-ga/">Google Analytics</Link>
-- <Link to="/tmp-destinations/streaming-destinations/hubspot/">HubSpot</Link>
-- <Link to="/tmp-destinations/streaming-destinations/intercom/">Intercom</Link>
-- <Link to="/tmp-destinations/streaming-destinations/kissmetrics/">Kissmetrics</Link>
-- <Link to="/tmp-destinations/streaming-destinations/branchio/">Branch.io</Link>
-- <Link to="/tmp-destinations/streaming-destinations/braze/">Braze</Link>
-- <Link to="/tmp-destinations/streaming-destinations/customer.io/">Customer.io</Link>
-- <Link to="/tmp-destinations/streaming-destinations/facebook-app-events/">Facebook App Events</Link>
+- <Link to="/destinations/streaming-destinations/google-analytics-ga/">Google Analytics</Link>
+- <Link to="/destinations/streaming-destinations/hubspot/">HubSpot</Link>
+- <Link to="/destinations/streaming-destinations/intercom/">Intercom</Link>
+- <Link to="/destinations/streaming-destinations/kissmetrics/">Kissmetrics</Link>
+- <Link to="/destinations/streaming-destinations/branchio/">Branch.io</Link>
+- <Link to="/destinations/streaming-destinations/braze/">Braze</Link>
+- <Link to="/destinations/streaming-destinations/customer.io/">Customer.io</Link>
+- <Link to="/destinations/streaming-destinations/facebook-app-events/">Facebook App Events</Link>
 
 ### What are the benefits of using the cloud mode to send events to the destination?
 

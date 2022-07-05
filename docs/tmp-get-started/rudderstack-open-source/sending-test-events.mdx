@@ -5,7 +5,7 @@ description: >-
 ---
 
 <div class="infoBlock">
-This guide assumes that you have already <Link to="/tmp-get-started/rudderstack-open-source/data-plane-setup/">installed and set up RudderStack</Link> in your preferred environment.
+This guide assumes that you have already <Link to="/get-started/rudderstack-open-source/data-plane-setup/">installed and set up RudderStack</Link> in your preferred environment.
 </div>
 
 You can follow any of the two approaches to send test events and verify your RudderStack installation:
@@ -40,7 +40,7 @@ The source write key is different from your <Link to="/dashboard-guides/overview
 
 #### Self-hosted control plane
 
-If you are self-hosting RudderStack and have set up the control plane using the <Link to="/tmp-get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility, you can obtain the source write key by following these steps:
+If you are self-hosting RudderStack and have set up the control plane using the <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility, you can obtain the source write key by following these steps:
 
 1. Set up a source and a destination.
 2. Note the write key associated with the source in the dashboard as shown:
@@ -76,7 +76,7 @@ docker exec -ti \
 You can then check your destination to verify that the events are delivered.
 
 <div class="infoBlock">
-Note that unlike RudderStack Open Source, the control plane set up using the <Link to="/tmp-get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility does not let you view live events.
+Note that unlike RudderStack Open Source, the control plane set up using the <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility does not let you view live events.
 </div>
 
 If you supply an invalid source write key or data plane URL, you will get the following error:

@@ -81,7 +81,7 @@ To view the live events sent to your destination in real-time, follow these step
 
 ### Use case
 
-Suppose that some events are sent to the <Link to="/tmp-destinations/streaming-destinations/fb-custom-audience/">Facebook Custom Audience</Link> platform but they are not delivered. Upon checking the **Live Events** tab for the **Facebook Custom Audience** destination, the following error is observed:
+Suppose that some events are sent to the <Link to="/destinations/streaming-destinations/fb-custom-audience/">Facebook Custom Audience</Link> platform but they are not delivered. Upon checking the **Live Events** tab for the **Facebook Custom Audience** destination, the following error is observed:
 
 <img src="../assets/rs-cloud/custom-audience-error.png" alt="Custom Audience destination error" />
 
@@ -89,10 +89,10 @@ Clicking on **See full error** option displays the following error response:
 
 <img src="../assets/rs-cloud/custom-audience-full-error.png" alt="Custom Audience full destination error" />
 
-As you can see, an `identify` event is sent to the **Facebook Custom Audience** destination which is not supported. The <Link to="/tmp-destinations/streaming-destinations/fb-custom-audience/">Custom Audience documentation</Link> mentions that only `track` events are supported. As a result, when RudderStack tries sending the `identify` event to the destination, an error is thrown. RudderStack tries sending this event several times before marking it as aborted.
+As you can see, an `identify` event is sent to the **Facebook Custom Audience** destination which is not supported. The <Link to="/destinations/streaming-destinations/fb-custom-audience/">Custom Audience documentation</Link> mentions that only `track` events are supported. As a result, when RudderStack tries sending the `identify` event to the destination, an error is thrown. RudderStack tries sending this event several times before marking it as aborted.
 
 <div class="warningBlock">
-Live events are shown for all the destinations. However, the <strong>event payload</strong> is not shown for some destinations like the <strong>object storage platforms</strong> and the <Link to="/tmp-destinations/warehouse-destinations/">data warehouses</Link>.
+Live events are shown for all the destinations. However, the <strong>event payload</strong> is not shown for some destinations like the <strong>object storage platforms</strong> and the <Link to="/destinations/warehouse-destinations/">data warehouses</Link>.
 </div>
 
 ## Transformations live events

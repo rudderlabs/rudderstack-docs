@@ -15,50 +15,50 @@ export const jsonData = [
         key: "get-started",
         title: "What is RudderStack?",
         sectionTitle: "Getting Started",
-        link: `/tmp-get-started/what-is-rudderstack/`,
+        link: `/get-started/what-is-rudderstack/`,
         content: []
     },
     {
         key: "quickstart",
         title: "Quickstart",
-        link: `/tmp-get-started/quickstart/`,
+        link: `/get-started/quickstart/`,
         content: []
     },
     {
         key: "rudderstack-cloud",
         title: "RudderStack Cloud",
-        link: `/tmp-get-started/rudderstack-cloud/`,
+        link: `/get-started/rudderstack-cloud/`,
         content: []
     },
     {
         key: "rudderstack-open-source",
         title: "RudderStack Open Source",
-        link: "/tmp-get-started/rudderstack-open-source/",
+        link: "/get-started/rudderstack-open-source/",
         content: [
             {
                 key: "control-plane-lite",
                 title: "Control Plane Setup",
-                link: "/tmp-get-started/rudderstack-open-source/control-plane-lite/",
+                link: "/get-started/rudderstack-open-source/control-plane-lite/",
                 content: []
             }, {
                 key: "data-plane-setup",
                 title: "Data Plane Setup",
-                link: "/tmp-get-started/rudderstack-open-source/data-plane-setup/",
+                link: "/get-started/rudderstack-open-source/data-plane-setup/",
                 content: [
                     {
                         key: "docker",
                         title: "Docker",
-                        link: "/tmp-get-started/rudderstack-open-source/data-plane-setup/docker/",
+                        link: "/get-started/rudderstack-open-source/data-plane-setup/docker/",
                         content: []
                     }, {
                         key: "kubernetes",
                         title: "Kubernetes",
-                        link: "/tmp-get-started/rudderstack-open-source/data-plane-setup/kubernetes/",
+                        link: "/get-started/rudderstack-open-source/data-plane-setup/kubernetes/",
                         content: []
                     }, {
                         key: "developer-machine-setup",
                         title: "Developer Machine Setup",
-                        link: "/tmp-get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/",
+                        link: "/get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/",
                         content: []
                     },
                 ]
@@ -66,7 +66,7 @@ export const jsonData = [
             {
                 key: "sending-test-events",
                 title: "Sending Test Events",
-                link: "/tmp-get-started/rudderstack-open-source/sending-test-events/",
+                link: "/get-started/rudderstack-open-source/sending-test-events/",
                 content: []
             },
         ]
@@ -74,7 +74,7 @@ export const jsonData = [
     {
         key: "cloud-vs-open-source",
         title: "RudderStack Cloud vs. Open Source",
-        link: "/tmp-get-started/cloud-vs-open-source/",
+        link: "/get-started/cloud-vs-open-source/",
         content: []
     },
 
@@ -655,101 +655,101 @@ export const jsonData = [
         key: "overview",
         title: "Overview",
         sectionTitle: "Destinations",
-        link: "/tmp-destinations/overview/",
+        link: "/destinations/overview/",
         content: []
     },
     {
         key: "destinations",
         title: "Streaming Destinations",
-        link: "/tmp-destinations/streaming-destinations/",
+        link: "/destinations/streaming-destinations/",
         content: [
             {
                 key: "algolia-insights",
                 title: "Algolia Insights",
                 sectionTitle: "A/B Testing & Personalization",
-                link: "/tmp-destinations/streaming-destinations/algolia-insights/",
+                link: "/destinations/streaming-destinations/algolia-insights/",
                 content: []
             },
             {
                 key: "candu",
                 title: "Candu",
-                link: "/tmp-destinations/streaming-destinations/candu/",
+                link: "/destinations/streaming-destinations/candu/",
                 content: []
             },
             {
                 key: "google-optimize",
                 title: "Google Optimize",
-                link: "/tmp-destinations/streaming-destinations/google-optimize/",
+                link: "/destinations/streaming-destinations/google-optimize/",
                 content: []
             },
             {
                 key: "launchdarkly",
                 title: "LaunchDarkly",
-                link: "/tmp-destinations/streaming-destinations/launchdarkly/",
+                link: "/destinations/streaming-destinations/launchdarkly/",
                 content: []
             }, {
                 key: "monetate",
                 title: "Monetate",
-                link: "/tmp-destinations/streaming-destinations/monetate/",
+                link: "/destinations/streaming-destinations/monetate/",
                 content: []
             }, {
                 key: "optimizely-full-stack",
                 title: "Optimizely Full Stack",
-                link: "/tmp-destinations/streaming-destinations/optimizely-full-stack/",
+                link: "/destinations/streaming-destinations/optimizely-full-stack/",
                 content: []
             }, {
                 key: "optimizely-web",
                 title: "Optimizely Web",
-                link: "/tmp-destinations/streaming-destinations/optimizely-web/",
+                link: "/destinations/streaming-destinations/optimizely-web/",
                 content: []
             }, {
                 key: "splitio",
                 title: "Split.io",
-                link: "/tmp-destinations/streaming-destinations/splitio/",
+                link: "/destinations/streaming-destinations/splitio/",
                 content: []
             }, {
                 key: "statsig",
                 title: "Statsig",
-                link: "/tmp-destinations/streaming-destinations/statsig/",
+                link: "/destinations/streaming-destinations/statsig/",
                 content: []
             }, {
                 key: "vwo-beta-visual-website-optimizer",
                 title: "VWO (Visual Website Optimizer)",
-                link: "/tmp-destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
+                link: "/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
                 content: []
             },
             {
                 key: "bingads",
                 title: "Bing Ads",
                 sectionTitle: "Advertising",
-                link: "/tmp-destinations/streaming-destinations/bingads/",
+                link: "/destinations/streaming-destinations/bingads/",
                 content: []
             },
             {
                 key: "criteo",
                 title: "Criteo",
-                link: "/tmp-destinations/streaming-destinations/criteo/",
+                link: "/destinations/streaming-destinations/criteo/",
                 content: []
             },
             {
                 key: "dcm-floodlight",
                 title: "DCM Floodlight",
-                link: "/tmp-destinations/streaming-destinations/dcm-floodlight/",
+                link: "/destinations/streaming-destinations/dcm-floodlight/",
                 content: [
                     {
                         key: "setting-up-dcm-floodlight-in-rudderstack",
                         title: "Setting up DCM Floodlight",
-                        link: "/tmp-destinations/streaming-destinations/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/",
+                        link: "/destinations/streaming-destinations/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/",
                         content: []
                     }, {
                         key: "dcm-floodlight-cloud-mode",
                         title: "Cloud Mode",
-                        link: "/tmp-destinations/streaming-destinations/dcm-floodlight/dcm-floodlight-cloud-mode/",
+                        link: "/destinations/streaming-destinations/dcm-floodlight/dcm-floodlight-cloud-mode/",
                         content: []
                     }, {
                         key: "dcm-floodlight-device-mode",
                         title: "Device Mode",
-                        link: "/tmp-destinations/streaming-destinations/dcm-floodlight/dcm-floodlight-device-mode/",
+                        link: "/destinations/streaming-destinations/dcm-floodlight/dcm-floodlight-device-mode/",
                         content: []
                     },
                 ]
@@ -757,108 +757,108 @@ export const jsonData = [
             {
                 key: "facebook-app-events",
                 title: "Facebook App Events",
-                link: "/tmp-destinations/streaming-destinations/facebook-app-events/",
+                link: "/destinations/streaming-destinations/facebook-app-events/",
                 content: []
             }, {
                 key: "fb-custom-audience",
                 title: "Facebook Custom Audience",
-                link: "/tmp-destinations/streaming-destinations/fb-custom-audience/",
+                link: "/destinations/streaming-destinations/fb-custom-audience/",
                 content: []
             }, {
                 key: "fb-pixel",
                 title: "Facebook Pixel",
-                link: "/tmp-destinations/streaming-destinations/fb-pixel/",
+                link: "/destinations/streaming-destinations/fb-pixel/",
                 content: []
             }, {
                 key: "g-ads-gtag",
                 title: "Google Ads (gtag.js)",
-                link: "/tmp-destinations/streaming-destinations/g-ads-gtag/",
+                link: "/destinations/streaming-destinations/g-ads-gtag/",
                 content: []
             }, {
                 key: "google-adwords-enhanced-conversions",
                 title: "Google Ads Enhanced Conversions",
-                link: "/tmp-destinations/streaming-destinations/google-adwords-enhanced-conversions/",
+                link: "/destinations/streaming-destinations/google-adwords-enhanced-conversions/",
                 content: []
             }, {
                 key: "google-adwords-remarketing-list",
                 title: "Google Ads Remarketing Lists (Customer Match)",
-                link: "/tmp-destinations/streaming-destinations/google-adwords-remarketing-list/",
+                link: "/destinations/streaming-destinations/google-adwords-remarketing-list/",
                 content: []
             }, {
                 key: "linkedin-insight-tag",
                 title: "LinkedIn Insight Tag",
-                link: "/tmp-destinations/streaming-destinations/linkedin-insight-tag/",
+                link: "/destinations/streaming-destinations/linkedin-insight-tag/",
                 content: []
             }, {
                 key: "lotame",
                 title: "Lotame",
-                link: "/tmp-destinations/streaming-destinations/lotame/",
+                link: "/destinations/streaming-destinations/lotame/",
                 content: []
             }, {
                 key: "pinterest-ads",
                 title: "Pinterest Tag",
-                link: "/tmp-destinations/streaming-destinations/pinterest-ads/",
+                link: "/destinations/streaming-destinations/pinterest-ads/",
                 content: []
             }, {
                 key: "reddit-pixel",
                 title: "Reddit Pixel",
-                link: "/tmp-destinations/streaming-destinations/reddit-pixel/",
+                link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
             }, {
                 key: "snapchat-conversion",
                 title: "Snapchat Conversion",
-                link: "/tmp-destinations/streaming-destinations/snapchat-conversion/",
+                link: "/destinations/streaming-destinations/snapchat-conversion/",
                 content: []
             }, {
                 key: "snap-pixel",
                 title: "Snap Pixel",
-                link: "/tmp-destinations/streaming-destinations/snap-pixel/",
+                link: "/destinations/streaming-destinations/snap-pixel/",
                 content: []
             }, {
                 key: "tiktok-ads",
                 title: "TikTok Ads",
-                link: "/tmp-destinations/streaming-destinations/tiktok-ads/",
+                link: "/destinations/streaming-destinations/tiktok-ads/",
                 content: []
             },
             {
                 key: "yahoo-dsp",
                 title: "Yahoo DSP",
-                link: "/tmp-destinations/streaming-destinations/yahoo-dsp/",
+                link: "/destinations/streaming-destinations/yahoo-dsp/",
                 content: [],
             },
             {
                 key: "adobe-analytics",
                 title: "Adobe Analytics",
                 sectionTitle: "Analytics",
-                link: "/tmp-destinations/streaming-destinations/adobe-analytics/",
+                link: "/destinations/streaming-destinations/adobe-analytics/",
                 content: [
                     {
                         key: "setting-up-adobe-analytics-in-rudderstack",
                         title: "Setting Up Adobe Analytics in RudderStack",
-                        link: "/tmp-destinations/streaming-destinations/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/",
+                        link: "/destinations/streaming-destinations/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/",
                         content: []
                     },
                     {
                         key: "adobe-analytics-web-device-mode",
                         title: "Web Device Mode Settings",
-                        link: "/tmp-destinations/streaming-destinations/adobe-analytics/adobe-analytics-web-device-mode/",
+                        link: "/destinations/streaming-destinations/adobe-analytics/adobe-analytics-web-device-mode/",
                         content: []
                     },
                     {
                         key: "adobe-analytics-mobile-device-mode",
                         title: "Mobile Device Mode Settings",
-                        link: "/tmp-destinations/streaming-destinations/adobe-analytics/adobe-analytics-mobile-device-mode/",
+                        link: "/destinations/streaming-destinations/adobe-analytics/adobe-analytics-mobile-device-mode/",
                         content: []
                     },
                     {
                         key: "adobe-analytics-heartbeat",
                         title: "Adobe Analytics Heartbeat Measurement",
-                        link: "/tmp-destinations/streaming-destinations/adobe-analytics/adobe-analytics-heartbeat/",
+                        link: "/destinations/streaming-destinations/adobe-analytics/adobe-analytics-heartbeat/",
                         content: []
                     }, {
                         key: "e-commerce-events",
                         title: "E-commerce Events",
-                        link: "/tmp-destinations/streaming-destinations/adobe-analytics/e-commerce-events/",
+                        link: "/destinations/streaming-destinations/adobe-analytics/e-commerce-events/",
                         content: []
                     },
                 ]
@@ -866,163 +866,163 @@ export const jsonData = [
             {
                 key: "amplitude",
                 title: "Amplitude",
-                link: "/tmp-destinations/streaming-destinations/amplitude/",
+                link: "/destinations/streaming-destinations/amplitude/",
                 content: []
             },
             {
                 key: "aws-personalize",
                 title: "AWS Personalize",
-                link: "/tmp-destinations/streaming-destinations/aws-personalize/",
+                link: "/destinations/streaming-destinations/aws-personalize/",
                 content: []
             },
             {
                 key: "chartbeat",
                 title: "Chartbeat",
-                link: "/tmp-destinations/streaming-destinations/chartbeat/",
+                link: "/destinations/streaming-destinations/chartbeat/",
                 content: []
             }, {
                 key: "firebase",
                 title: "Firebase",
-                link: "/tmp-destinations/streaming-destinations/firebase/",
+                link: "/destinations/streaming-destinations/firebase/",
                 content: []
             }, {
                 key: "fullstory",
                 title: "FullStory",
-                link: "/tmp-destinations/streaming-destinations/fullstory/",
+                link: "/destinations/streaming-destinations/fullstory/",
                 content: []
             }, {
                 key: "google-analytics-ga",
                 title: "Google Analytics",
-                link: "/tmp-destinations/streaming-destinations/google-analytics-ga/",
+                link: "/destinations/streaming-destinations/google-analytics-ga/",
                 content: []
             }, {
                 key: "google-analytics-4",
                 title: "Google Analytics 4",
-                link: "/tmp-destinations/streaming-destinations/google-analytics-4/",
+                link: "/destinations/streaming-destinations/google-analytics-4/",
                 content: [
                     {
                         key: "setting-up-google-analytics-4-in-rudderstack",
                         title: "Setting up Google Analytics 4",
-                        link: "/tmp-destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/",
+                        link: "/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/",
                         content: []
                     }, {
                         key: "google-analytics-4-cloud-mode",
                         title: "Cloud Mode",
-                        link: "/tmp-destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/",
+                        link: "/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/",
                         content: []
                     }, {
                         key: "google-analytics-4-device-mode",
                         title: "Device Mode",
-                        link: "/tmp-destinations/streaming-destinations/google-analytics-4/google-analytics-4-device-mode/",
+                        link: "/destinations/streaming-destinations/google-analytics-4/google-analytics-4-device-mode/",
                         content: []
                     },
                 ]
             }, {
                 key: "google-analytics-360",
                 title: "Google Analytics 360",
-                link: "/tmp-destinations/streaming-destinations/google-analytics-360/",
+                link: "/destinations/streaming-destinations/google-analytics-360/",
                 content: []
             }, {
                 key: "heap.io",
                 title: "Heap.io",
-                link: "/tmp-destinations/streaming-destinations/heap.io/",
+                link: "/destinations/streaming-destinations/heap.io/",
                 content: []
             }, {
                 key: "hotjar",
                 title: "Hotjar",
-                link: "/tmp-destinations/streaming-destinations/hotjar/",
+                link: "/destinations/streaming-destinations/hotjar/",
                 content: []
             }, {
                 key: "indicative",
                 title: "Indicative",
-                link: "/tmp-destinations/streaming-destinations/indicative/",
+                link: "/destinations/streaming-destinations/indicative/",
                 content: []
             }, {
                 key: "keen",
                 title: "Keen.io",
-                link: "/tmp-destinations/streaming-destinations/keen/",
+                link: "/destinations/streaming-destinations/keen/",
                 content: []
             }, {
                 key: "kissmetrics",
                 title: "Kissmetrics",
-                link: "/tmp-destinations/streaming-destinations/kissmetrics/",
+                link: "/destinations/streaming-destinations/kissmetrics/",
                 content: []
             }, {
                 key: "kubit",
                 title: "Kubit",
-                link: "/tmp-destinations/streaming-destinations/kubit/",
+                link: "/destinations/streaming-destinations/kubit/",
                 content: []
             }, {
                 key: "lytics",
                 title: "Lytics",
-                link: "/tmp-destinations/streaming-destinations/lytics/",
+                link: "/destinations/streaming-destinations/lytics/",
                 content: []
             }, {
                 key: "mixpanel",
                 title: "Mixpanel",
-                link: "/tmp-destinations/streaming-destinations/mixpanel/",
+                link: "/destinations/streaming-destinations/mixpanel/",
                 content: []
             }, {
                 key: "new-relic",
                 title: "New Relic",
-                link: "/tmp-destinations/streaming-destinations/new-relic/",
+                link: "/destinations/streaming-destinations/new-relic/",
                 content: []
             }, {
                 key: "pendo",
                 title: "Pendo",
-                link: "/tmp-destinations/streaming-destinations/pendo/",
+                link: "/destinations/streaming-destinations/pendo/",
                 content: []
             }, {
                 key: "posthog",
                 title: "PostHog",
-                link: "/tmp-destinations/streaming-destinations/posthog/",
+                link: "/destinations/streaming-destinations/posthog/",
                 content: []
             }, {
                 key: "profitwell",
                 title: "Profitwell",
-                link: "/tmp-destinations/streaming-destinations/profitwell/",
+                link: "/destinations/streaming-destinations/profitwell/",
                 content: [
                     {
                         key: "profitwell-cloud-mode",
                         title: "Cloud Mode",
-                        link: "/tmp-destinations/streaming-destinations/profitwell/profitwell-cloud-mode/",
+                        link: "/destinations/streaming-destinations/profitwell/profitwell-cloud-mode/",
                         content: []
                     }, {
                         key: "profitwell-web-device-mode",
                         title: "Device Mode",
-                        link: "/tmp-destinations/streaming-destinations/profitwell/profitwell-web-device-mode/",
+                        link: "/destinations/streaming-destinations/profitwell/profitwell-web-device-mode/",
                         content: []
                     },
                 ]
             }, {
                 key: "quantummetric",
                 title: "Quantum Metric",
-                link: "/tmp-destinations/streaming-destinations/quantummetric/",
+                link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
             }, {
                 key: "singular",
                 title: "Singular",
-                link: "/tmp-destinations/streaming-destinations/singular/",
+                link: "/destinations/streaming-destinations/singular/",
                 content: [
                     {
                         key: "setting-up-singular-in-rudderstack",
                         title: "Setting up Singular",
                         link:
-                            "/tmp-destinations/streaming-destinations/singular/setting-up-singular-in-rudderstack/",
+                            "/destinations/streaming-destinations/singular/setting-up-singular-in-rudderstack/",
                         content: [],
                     },
                     {
                         key: "singular-cloud-mode",
                         title: "Cloud Mode",
                         link:
-                            "/tmp-destinations/streaming-destinations/singular/singular-cloud-mode/",
+                            "/destinations/streaming-destinations/singular/singular-cloud-mode/",
                         content: [],
                     },
                     {
                         key: "singular-device-mode",
                         title: "Device Mode",
                         link:
-                            "/tmp-destinations/streaming-destinations/singular/singular-device-mode/",
+                            "/destinations/streaming-destinations/singular/singular-device-mode/",
                         content: [],
                     },
                 ]
@@ -1031,374 +1031,374 @@ export const jsonData = [
                 key: "adjust",
                 title: "Adjust",
                 sectionTitle: "Attribution",
-                link: "/tmp-destinations/streaming-destinations/adjust/",
+                link: "/destinations/streaming-destinations/adjust/",
                 content: []
             },
             {
                 key: "appsflyer",
                 title: "AppsFlyer",
-                link: "/tmp-destinations/streaming-destinations/appsflyer/",
+                link: "/destinations/streaming-destinations/appsflyer/",
                 content: []
             },
             {
                 key: "attribution",
                 title: "Attribution",
-                link: "/tmp-destinations/streaming-destinations/attribution/",
+                link: "/destinations/streaming-destinations/attribution/",
                 content: []
             },
             {
                 key: "branchio",
                 title: "Branch",
-                link: "/tmp-destinations/streaming-destinations/branchio/",
+                link: "/destinations/streaming-destinations/branchio/",
                 content: []
             }, {
                 key: "kochava",
                 title: "Kochava",
-                link: "/tmp-destinations/streaming-destinations/kochava/",
+                link: "/destinations/streaming-destinations/kochava/",
                 content: []
             }, {
                 key: "tvsquared",
                 title: "TVSquared",
-                link: "/tmp-destinations/streaming-destinations/tvsquared/",
+                link: "/destinations/streaming-destinations/tvsquared/",
                 content: []
             },
             {
                 key: "intercom",
                 title: "Intercom",
                 sectionTitle: "Business Messaging",
-                link: "/tmp-destinations/streaming-destinations/intercom/",
+                link: "/destinations/streaming-destinations/intercom/",
                 content: []
             }, {
                 key: "kustomer",
                 title: "Kustomer",
-                link: "/tmp-destinations/streaming-destinations/kustomer/",
+                link: "/destinations/streaming-destinations/kustomer/",
                 content: []
             }, {
                 key: "slack",
                 title: "Slack",
-                link: "/tmp-destinations/streaming-destinations/slack/",
+                link: "/destinations/streaming-destinations/slack/",
                 content: []
             }, {
                 key: "trengo",
                 title: "Trengo",
-                link: "/tmp-destinations/streaming-destinations/trengo/",
+                link: "/destinations/streaming-destinations/trengo/",
                 content: []
             },
             {
                 key: "appcenter",
                 title: "Visual Studio App Center",
                 sectionTitle: "Continuous Integration",
-                link: "/tmp-destinations/streaming-destinations/appcenter/",
+                link: "/destinations/streaming-destinations/appcenter/",
                 content: []
             },
             {
                 key: "delighted",
                 title: "Delighted",
                 sectionTitle: "CRM",
-                link: "/tmp-destinations/streaming-destinations/delighted/",
+                link: "/destinations/streaming-destinations/delighted/",
                 content: []
             },
             {
                 key: "hubspot",
                 title: "HubSpot",
-                link: "/tmp-destinations/streaming-destinations/hubspot/",
+                link: "/destinations/streaming-destinations/hubspot/",
                 content: []
             },
             {
                 key: "salesforce",
                 title: "Salesforce",
-                link: "/tmp-destinations/streaming-destinations/salesforce/",
+                link: "/destinations/streaming-destinations/salesforce/",
                 content: []
             },
             {
                 key: "variance",
                 title: "Variance",
-                link: "/tmp-destinations/streaming-destinations/variance/",
+                link: "/destinations/streaming-destinations/variance/",
                 content: []
             }, {
                 key: "zendesk",
                 title: "Zendesk",
-                link: "/tmp-destinations/streaming-destinations/zendesk/",
+                link: "/destinations/streaming-destinations/zendesk/",
                 content: []
             },
             {
                 key: "segment",
                 title: "Segment",
                 sectionTitle: "Customer Data Platform",
-                link: "/tmp-destinations/streaming-destinations/segment/",
+                link: "/destinations/streaming-destinations/segment/",
                 content: []
             },
             {
                 key: "bugsnag",
                 title: "Bugsnag",
                 sectionTitle: "Error Reporting",
-                link: "/tmp-destinations/streaming-destinations/bugsnag/",
+                link: "/destinations/streaming-destinations/bugsnag/",
                 content: []
             }, {
                 key: "sentry",
                 title: "Sentry",
-                link: "/tmp-destinations/streaming-destinations/sentry/",
+                link: "/destinations/streaming-destinations/sentry/",
                 content: []
             },
             {
                 key: "activecampaign",
                 title: "ActiveCampaign",
                 sectionTitle: "Marketing",
-                link: "/tmp-destinations/streaming-destinations/activecampaign/",
+                link: "/destinations/streaming-destinations/activecampaign/",
                 content: []
             },
             {
                 key: "adroll",
                 title: "AdRoll",
-                link: "/tmp-destinations/streaming-destinations/adroll/",
+                link: "/destinations/streaming-destinations/adroll/",
                 content: []
             },
             {
                 key: "airship",
                 title: "Airship",
-                link: "/tmp-destinations/streaming-destinations/airship/",
+                link: "/destinations/streaming-destinations/airship/",
                 content: []
             },
             {
                 key: "appcues",
                 title: "Appcues",
-                link: "/tmp-destinations/streaming-destinations/appcues/",
+                link: "/destinations/streaming-destinations/appcues/",
                 content: []
             }, {
                 key: "attentive-tag",
                 title: "Attentive Tag",
-                link: "/tmp-destinations/streaming-destinations/attentive-tag/",
+                link: "/destinations/streaming-destinations/attentive-tag/",
                 content: []
             }, {
                 key: "autopilot",
                 title: "Autopilot",
-                link: "/tmp-destinations/streaming-destinations/autopilot/",
+                link: "/destinations/streaming-destinations/autopilot/",
                 content: []
             }, {
                 key: "blueshift",
                 title: "Blueshift",
-                link: "/tmp-destinations/streaming-destinations/blueshift/",
+                link: "/destinations/streaming-destinations/blueshift/",
                 content: []
             }, {
                 key: "braze",
                 title: "Braze",
-                link: "/tmp-destinations/streaming-destinations/braze/",
+                link: "/destinations/streaming-destinations/braze/",
                 content: []
             }, {
                 key: "clevertap",
                 title: "CleverTap",
-                link: "/tmp-destinations/streaming-destinations/clevertap/",
+                link: "/destinations/streaming-destinations/clevertap/",
                 content: []
             }, {
                 key: "customer.io",
                 title: "Customer.io",
-                link: "/tmp-destinations/streaming-destinations/customer.io/",
+                link: "/destinations/streaming-destinations/customer.io/",
                 content: []
             }, {
                 key: "drip",
                 title: "Drip",
-                link: "/tmp-destinations/streaming-destinations/drip/",
+                link: "/destinations/streaming-destinations/drip/",
                 content: [
                     {
                         key: "setting-up-drip-in-rudderstack",
                         title: "Setting Up Drip in RudderStack",
-                        link: "/tmp-destinations/streaming-destinations/drip/setting-up-drip-in-rudderstack/",
+                        link: "/destinations/streaming-destinations/drip/setting-up-drip-in-rudderstack/",
                         content: []
                     }, {
                         key: "cloud-mode",
                         title: "Cloud Mode",
-                        link: "/tmp-destinations/streaming-destinations/drip/drip-cloud-mode/",
+                        link: "/destinations/streaming-destinations/drip/drip-cloud-mode/",
                         content: []
                     }, {
                         key: "device-mode",
                         title: "Device Mode",
-                        link: "/tmp-destinations/streaming-destinations/drip/drip-web-device-mode/",
+                        link: "/destinations/streaming-destinations/drip/drip-web-device-mode/",
                         content: []
                     },
                 ]
             }, {
                 key: "gainsight",
                 title: "Gainsight",
-                link: "/tmp-destinations/streaming-destinations/gainsight/",
+                link: "/destinations/streaming-destinations/gainsight/",
                 content: []
             }, {
                 key: "gainsight-px",
                 title: "Gainsight PX",
-                link: "/tmp-destinations/streaming-destinations/gainsight-px/",
+                link: "/destinations/streaming-destinations/gainsight-px/",
                 content: []
             }, {
                 key: "iterable",
                 title: "Iterable",
-                link: "/tmp-destinations/streaming-destinations/iterable/",
+                link: "/destinations/streaming-destinations/iterable/",
                 content: []
             }, {
                 key: "klaviyo",
                 title: "Klaviyo",
-                link: "/tmp-destinations/streaming-destinations/klaviyo/",
+                link: "/destinations/streaming-destinations/klaviyo/",
                 content: []
             }, {
                 key: "leanplum",
                 title: "Leanplum",
-                link: "/tmp-destinations/streaming-destinations/leanplum/",
+                link: "/destinations/streaming-destinations/leanplum/",
                 content: []
             }, {
                 key: "mailchimp",
                 title: "Mailchimp",
-                link: "/tmp-destinations/streaming-destinations/mailchimp/",
+                link: "/destinations/streaming-destinations/mailchimp/",
                 content: []
             }, {
                 key: "marketo",
                 title: "Marketo",
-                link: "/tmp-destinations/streaming-destinations/marketo/",
+                link: "/destinations/streaming-destinations/marketo/",
                 content: []
             }, {
                 key: "marketo-lead-import",
                 title: "Marketo Lead Import",
-                link: "/tmp-destinations/streaming-destinations/marketo-lead-import/",
+                link: "/destinations/streaming-destinations/marketo-lead-import/",
                 content: []
             }, {
                 key: "moengage",
                 title: "MoEngage",
-                link: "/tmp-destinations/streaming-destinations/moengage/",
+                link: "/destinations/streaming-destinations/moengage/",
                 content: []
             }, {
                 key: "ometria",
                 title: "Ometria",
-                link: "/tmp-destinations/streaming-destinations/ometria/",
+                link: "/destinations/streaming-destinations/ometria/",
                 content: []
             }, {
                 key: "post-affiliate-pro",
                 title: "Post Affiliate Pro",
-                link: "/tmp-destinations/streaming-destinations/post-affiliate-pro/",
+                link: "/destinations/streaming-destinations/post-affiliate-pro/",
                 content: []
             }, {
                 key: "qualtrics",
                 title: "Qualtrics",
-                link: "/tmp-destinations/streaming-destinations/qualtrics/",
+                link: "/destinations/streaming-destinations/qualtrics/",
                 content: []
             }, {
                 key: "revenue-cat",
                 title: "Revenue Cat",
-                link: "/tmp-destinations/streaming-destinations/revenue-cat/",
+                link: "/destinations/streaming-destinations/revenue-cat/",
                 content: []
             }, {
                 key: "sfmc",
                 title: "Salesforce Marketing Cloud",
-                link: "/tmp-destinations/streaming-destinations/sfmc/",
+                link: "/destinations/streaming-destinations/sfmc/",
                 content: []
             }, {
                 key: "pardot",
                 title: "Salesforce Pardot",
-                link: "/tmp-destinations/streaming-destinations/pardot/",
+                link: "/destinations/streaming-destinations/pardot/",
                 content: []
             }, {
                 key: "sendgrid",
                 title: "SendGrid",
-                link: "/tmp-destinations/streaming-destinations/sendgrid/",
+                link: "/destinations/streaming-destinations/sendgrid/",
                 content: []
             }, {
                 key: "userlist",
                 title: "Userlist",
-                link: "/tmp-destinations/streaming-destinations/userlist/",
+                link: "/destinations/streaming-destinations/userlist/",
                 content: []
             }, {
                 key: "webengage",
                 title: "WebEngage",
-                link: "/tmp-destinations/streaming-destinations/webengage/",
+                link: "/destinations/streaming-destinations/webengage/",
                 content: []
             },
             {
                 key: "google-sheets",
                 title: "Google Sheets",
                 sectionTitle: "Productivity",
-                link: "/tmp-destinations/streaming-destinations/google-sheets/",
+                link: "/destinations/streaming-destinations/google-sheets/",
                 content: []
             },
             {
                 key: "amazon-s3",
                 title: "Amazon S3",
                 sectionTitle: "Storage Platforms",
-                link: "/tmp-destinations/streaming-destinations/amazon-s3/",
+                link: "/destinations/streaming-destinations/amazon-s3/",
                 content: []
             },
             {
                 key: "microsoft-azure-blob-storage",
                 title: "Azure Blob Storage",
-                link: "/tmp-destinations/streaming-destinations/microsoft-azure-blob-storage/",
+                link: "/destinations/streaming-destinations/microsoft-azure-blob-storage/",
                 content: []
             },
             {
                 key: "digitalocean-spaces",
                 title: "DigitalOcean Spaces",
-                link: "/tmp-destinations/streaming-destinations/digitalocean-spaces/",
+                link: "/destinations/streaming-destinations/digitalocean-spaces/",
                 content: []
             },
             {
                 key: "google-cloud-storage",
                 title: "Google Cloud Storage",
-                link: "/tmp-destinations/streaming-destinations/google-cloud-storage/",
+                link: "/destinations/streaming-destinations/google-cloud-storage/",
                 content: []
             }, {
                 key: "minio",
                 title: "MinIO",
-                link: "/tmp-destinations/streaming-destinations/minio/",
+                link: "/destinations/streaming-destinations/minio/",
                 content: []
             }, {
                 key: "redis",
                 title: "Redis",
-                link: "/tmp-destinations/streaming-destinations/redis/",
+                link: "/destinations/streaming-destinations/redis/",
                 content: []
             },
             {
                 key: "amazon-eventbridge",
                 title: "Amazon EventBridge",
                 sectionTitle: "Streaming Platforms",
-                link: "/tmp-destinations/streaming-destinations/amazon-eventbridge/",
+                link: "/destinations/streaming-destinations/amazon-eventbridge/",
                 content: []
             },
             {
                 key: "amazon-kinesis",
                 title: "Amazon Kinesis",
-                link: "/tmp-destinations/streaming-destinations/amazon-kinesis/",
+                link: "/destinations/streaming-destinations/amazon-kinesis/",
                 content: []
             },
             {
                 key: "amazon-kinesis-firehose",
                 title: "Amazon Firehose",
-                link: "/tmp-destinations/streaming-destinations/amazon-kinesis-firehose/",
+                link: "/destinations/streaming-destinations/amazon-kinesis-firehose/",
                 content: []
             },
             {
                 key: "kafka",
                 title: "Apache Kafka",
-                link: "/tmp-destinations/streaming-destinations/kafka/",
+                link: "/destinations/streaming-destinations/kafka/",
                 content: []
             }, {
                 key: "azure-event-hubs",
                 title: "Azure Event Hubs",
-                link: "/tmp-destinations/streaming-destinations/azure-event-hubs/",
+                link: "/destinations/streaming-destinations/azure-event-hubs/",
                 content: []
             }, {
                 key: "biquery-stream",
                 title: "BigQuery Stream",
-                link: "/tmp-destinations/streaming-destinations/bigquery-stream/",
+                link: "/destinations/streaming-destinations/bigquery-stream/",
                 content: []
             }, {
                 key: "confluent-cloud",
                 title: "Confluent Cloud",
-                link: "/tmp-destinations/streaming-destinations/confluent-cloud/",
+                link: "/destinations/streaming-destinations/confluent-cloud/",
                 content: []
             }, {
                 key: "google-pub-sub",
                 title: "Google Pub/Sub",
-                link: "/tmp-destinations/streaming-destinations/google-pub-sub/",
+                link: "/destinations/streaming-destinations/google-pub-sub/",
                 content: []
             },
             {
                 key: "google-tag-manager",
                 title: "Google Tag Manager",
                 sectionTitle: "Tag Managers",
-                link: "/tmp-destinations/streaming-destinations/google-tag-manager/",
+                link: "/destinations/streaming-destinations/google-tag-manager/",
                 content: []
             },
         ]
@@ -1406,78 +1406,78 @@ export const jsonData = [
     {
         key: "data-warehouse-integrations",
         title: "Warehouse Destinations",
-        link: "/tmp-destinations/warehouse-destinations/",
+        link: "/destinations/warehouse-destinations/",
         content: [
             {
                 key: "warehouse-schemas",
                 title: "Warehouse Schema",
-                link: "/tmp-destinations/warehouse-destinations/warehouse-schema/",
+                link: "/destinations/warehouse-destinations/warehouse-schema/",
                 content: []
             },
             {
                 key: "warehouse-schemas",
                 title: "FAQ",
-                link: "/tmp-destinations/warehouse-destinations/faq/",
+                link: "/destinations/warehouse-destinations/faq/",
                 content: []
             },
             {
                 key: "amazon-redshift",
                 title: "Amazon Redshift",
                 sectionTitle: "Warehouse Integrations",
-                link: "/tmp-destinations/warehouse-destinations/redshift/",
+                link: "/destinations/warehouse-destinations/redshift/",
                 content: []
             },
             {
                 key: "s3-datalake",
                 title: "Amazon S3 Data Lake",
-                link: "/tmp-destinations/warehouse-destinations/s3-datalake/",
+                link: "/destinations/warehouse-destinations/s3-datalake/",
                 content: []
             },
             {
                 key: "azure-synapse",
                 title: "Azure Synapse",
-                link: "/tmp-destinations/warehouse-destinations/azure-synapse/",
+                link: "/destinations/warehouse-destinations/azure-synapse/",
                 content: []
             },
             {
                 key: "azure-datalake",
                 title: "Azure Data Lake ",
-                link: "/tmp-destinations/warehouse-destinations/azure-datalake/",
+                link: "/destinations/warehouse-destinations/azure-datalake/",
                 content: []
             }, {
                 key: "clickhouse",
                 title: "ClickHouse",
-                link: "/tmp-destinations/warehouse-destinations/clickhouse/",
+                link: "/destinations/warehouse-destinations/clickhouse/",
                 content: []
             }, {
                 key: "delta-lake",
                 title: "Databricks Delta Lake",
-                link: "/tmp-destinations/warehouse-destinations/delta-lake/",
+                link: "/destinations/warehouse-destinations/delta-lake/",
                 content: []
             }, {
                 key: "google-bigquery",
                 title: "Google BigQuery",
-                link: "/tmp-destinations/warehouse-destinations/bigquery/",
+                link: "/destinations/warehouse-destinations/bigquery/",
                 content: []
             }, {
                 key: "gcs-datalake",
                 title: "Google Cloud Storage Data Lake ",
-                link: "/tmp-destinations/warehouse-destinations/gcs-datalake/",
+                link: "/destinations/warehouse-destinations/gcs-datalake/",
                 content: []
             }, {
                 key: "microsoft-sql-server",
                 title: "Microsoft SQL Server",
-                link: "/tmp-destinations/warehouse-destinations/sql-server/",
+                link: "/destinations/warehouse-destinations/sql-server/",
                 content: []
             }, {
                 key: "postgresql",
                 title: "PostgreSQL",
-                link: "/tmp-destinations/warehouse-destinations/postgresql/",
+                link: "/destinations/warehouse-destinations/postgresql/",
                 content: []
             }, {
                 key: "snowflake",
                 title: "Snowflake",
-                link: "/tmp-destinations/warehouse-destinations/snowflake/",
+                link: "/destinations/warehouse-destinations/snowflake/",
                 content: []
             },
         ]
@@ -1485,13 +1485,13 @@ export const jsonData = [
     {
         key: "webhooks",
         title: "Webhooks",
-        link: "/tmp-destinations/webhooks/",
+        link: "/destinations/webhooks/",
         content: []
     },
     {
         key: "rudderstack-connection-modes",
         title: "Connection Modes: Cloud Mode vs. Device Mode",
-        link: "/tmp-destinations/rudderstack-connection-modes/",
+        link: "/destinations/rudderstack-connection-modes/",
         content: []
     },
 

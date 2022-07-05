@@ -18,7 +18,7 @@ This guide details the various endpoints of the Test API.
 
 The following prerequisites must be met to use the Test API successfully:
 
-* Set up a source-destination connection in RudderStack. For more details, refer to <Link to="/tmp-get-started/quickstart/">Quickstart</Link> guide.
+* Set up a source-destination connection in RudderStack. For more details, refer to <Link to="/get-started/quickstart/">Quickstart</Link> guide.
 
 *  Generate a <Link to="/dashboard-guides/personal-access-token/">Personal Access Token</Link> in the RudderStack dashboard to authenticate the API successfully.
 
@@ -652,26 +652,26 @@ You will get the following error message if no message `type` is specified in th
 
 The Test API does not support the destinations that leverage the [rudder-server](https://github.com/rudderlabs/rudder-server) to send the test events. These destinations include:
 
-* <Link to="/tmp-destinations/streaming-destinations/amazon-kinesis/">Amazon Kinesis</Link>
-* <Link to="/tmp-destinations/streaming-destinations/kafka/">Apache Kafka</Link>
-* <Link to="/tmp-destinations/streaming-destinations/azure-event-hubs/">Azure Event Hub</Link>
-* <Link to="/tmp-destinations/streaming-destinations/amazon-kinesis-firehose/">Amazon Kinesis Firehose</Link>
-* <Link to="/tmp-destinations/streaming-destinations/amazon-eventbridge/">Amazon EventBridge</Link>
-* <Link to="/tmp-destinations/streaming-destinations/aws-personalize/">Amazon Personalize</Link>
-* <Link to="/tmp-destinations/streaming-destinations/confluent-cloud/">Confluent Cloud</Link>
-* <Link to="/tmp-destinations/streaming-destinations/google-pub-sub/">Google Pub/Sub</Link>
-* <Link to="/tmp-destinations/streaming-destinations/google-sheets/">Google Sheets</Link>
-* <Link to="/tmp-destinations/streaming-destinations/redis/">Redis</Link>
-* <Link to="/tmp-destinations/streaming-destinations/bigquery-stream/">BigQuery Stream</Link>
-* <Link to="/tmp-destinations/streaming-destinations/amazon-s3/">Amazon S3</Link>
-* <Link to="/tmp-destinations/streaming-destinations/microsoft-azure-blob-storage/">Azure Blob Storage</Link>
-* <Link to="/tmp-destinations/streaming-destinations/digitalocean-spaces/">DigitalOcean Spaces</Link>
-* <Link to="/tmp-destinations/streaming-destinations/google-cloud-storage/">Google Cloud Storage</Link>
-* <Link to="/tmp-destinations/streaming-destinations/minio/">MinIO</Link>
+* <Link to="/destinations/streaming-destinations/amazon-kinesis/">Amazon Kinesis</Link>
+* <Link to="/destinations/streaming-destinations/kafka/">Apache Kafka</Link>
+* <Link to="/destinations/streaming-destinations/azure-event-hubs/">Azure Event Hub</Link>
+* <Link to="/destinations/streaming-destinations/amazon-kinesis-firehose/">Amazon Kinesis Firehose</Link>
+* <Link to="/destinations/streaming-destinations/amazon-eventbridge/">Amazon EventBridge</Link>
+* <Link to="/destinations/streaming-destinations/aws-personalize/">Amazon Personalize</Link>
+* <Link to="/destinations/streaming-destinations/confluent-cloud/">Confluent Cloud</Link>
+* <Link to="/destinations/streaming-destinations/google-pub-sub/">Google Pub/Sub</Link>
+* <Link to="/destinations/streaming-destinations/google-sheets/">Google Sheets</Link>
+* <Link to="/destinations/streaming-destinations/redis/">Redis</Link>
+* <Link to="/destinations/streaming-destinations/bigquery-stream/">BigQuery Stream</Link>
+* <Link to="/destinations/streaming-destinations/amazon-s3/">Amazon S3</Link>
+* <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage/">Azure Blob Storage</Link>
+* <Link to="/destinations/streaming-destinations/digitalocean-spaces/">DigitalOcean Spaces</Link>
+* <Link to="/destinations/streaming-destinations/google-cloud-storage/">Google Cloud Storage</Link>
+* <Link to="/destinations/streaming-destinations/minio/">MinIO</Link>
 
 
 <div class="warningBlock">
-The Test API also does not support the <Link to="/tmp-destinations/warehouse-destinations/">data warehouse destinations</Link>.
+The Test API also does not support the <Link to="/destinations/warehouse-destinations/">data warehouse destinations</Link>.
 </div>
 
 ### What happens if `type` is not included in the event payload?

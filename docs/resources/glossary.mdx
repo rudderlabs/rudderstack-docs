@@ -52,7 +52,7 @@ RudderStack's control plane offers an intuitive UI to configure your event data 
 
 If you want to self-host these configurations, you can use the open source Control Plane Lite utility to set up your control plane. You can then manage the source and destination configurations locally by exporting to or importing them from a JSON file.
 
-For information on Control Plane Lite and how to use it, refer to the <Link to="/tmp-get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> guide.
+For information on Control Plane Lite and how to use it, refer to the <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> guide.
 
 ## Customer Data Platform
 
@@ -76,8 +76,8 @@ For more information on the data plane, refer to the <Link to="/resources/rudder
 
 The data plane is intentionally separated from the control plane to give you complete control and ownership of your data. Depending on how RudderStack is deployed, you can set up your control plane and data plane with one of the following approaches:
 
-* <Link to="/tmp-get-started/rudderstack-cloud/">RudderStack Cloud</Link>: RudderStack hosts both control plane and data plane
-* <Link to="/tmp-get-started/rudderstack-open-source/">RudderStack Open Source</Link>: RudderStack hosts the control plane and the user hosts the data plane. Alternatively, the user hosts both the control plane and the data plane.
+* <Link to="/get-started/rudderstack-cloud/">RudderStack Cloud</Link>: RudderStack hosts both control plane and data plane
+* <Link to="/get-started/rudderstack-open-source/">RudderStack Open Source</Link>: RudderStack hosts the control plane and the user hosts the data plane. Alternatively, the user hosts both the control plane and the data plane.
 
 ## Data plane URL 
 
@@ -89,7 +89,7 @@ Refer to the <Link to="/resources/rudderstack-architecture/">Architecture</Link>
 
 - If you're using [RudderStack Cloud Free](https://app.rudderstack.com/), the data plane URL is present in your dashboard itself.
 - If you're using [RudderStack Pro](https://rudderstack.com/pricing/) or [Enterprise](https://rudderstack.com/pricing/), [contact us](mailto:%20support@rudderstack.com) for the data plane URL with the email ID you used to sign up for RudderStack.
-- If you're using <Link to="/tmp-get-started/rudderstack-open-source/">RudderStack Open Source</Link>, you are required to <Link to="/tmp-get-started/rudderstack-open-source/data-plane-setup/">set up your own data plane</Link> in your preferred environment.
+- If you're using <Link to="/get-started/rudderstack-open-source/">RudderStack Open Source</Link>, you are required to <Link to="/get-started/rudderstack-open-source/data-plane-setup/">set up your own data plane</Link> in your preferred environment.
 
 <div class="infoBlock">
 An open source data plane URL typically looks like <code class="inline-code">http:localhost:8080</code> where <code class="inline-code">8080</code> is the port where your RudderStack data plane is hosted.
@@ -105,9 +105,9 @@ Refer to the <Link to="/api/data-regulation-api/">Data Regulation API</Link> gui
 
 A destination is a tool or application where you want to send the data via RudderStack.
 
-RudderStack currently supports over 150 destinations. These include various <Link to="/tmp-destinations/streaming-destinations/">Streaming Destinations</Link> and <Link to="/tmp-destinations/warehouse-destinations/">Warehouse Destinations</Link>.
+RudderStack currently supports over 150 destinations. These include various <Link to="/destinations/streaming-destinations/">Streaming Destinations</Link> and <Link to="/destinations/warehouse-destinations/">Warehouse Destinations</Link>.
 
-Refer to the <Link to="/tmp-destinations/overview/">Destinations</Link> guide for the complete list of the supported destinations.
+Refer to the <Link to="/destinations/overview/">Destinations</Link> guide for the complete list of the supported destinations.
 
 ## ELT (Extract, Load, Transform)
 
@@ -192,13 +192,13 @@ For more details on this feature and how to use it, refer to the <Link to="/feat
 
 RudderStack supports sending events to all the leading data warehouses like Redshift, Azure Synapse, BigQuery, Snowflake, PostgreSQL, ClickHouse, and SQL Server. These are called the warehouse destinations.
 
-For more information on how to set up these warehouse destinations, refer to the <Link to="/tmp-destinations/warehouse-destinations/">Warehouse Destinations</Link> guide.
+For more information on how to set up these warehouse destinations, refer to the <Link to="/destinations/warehouse-destinations/">Warehouse Destinations</Link> guide.
 
 ## Warehouse schema
 
 When sending your events to a data warehouse via RudderStack, you don't need to define a schema for your events before sending them from your source. RudderStack automatically does that for you by following a predefined warehouse schema. This schema defines the different tables and columns created based on different types of events.
 
-Refer to the <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more details.
+Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more details.
 
 ## Workspace Token
 

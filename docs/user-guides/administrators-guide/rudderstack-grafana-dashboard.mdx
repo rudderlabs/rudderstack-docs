@@ -194,11 +194,11 @@ This graph corresponds to the number of events delivered to the warehouse destin
 <span class="imageTitle">Synced Rows and Events Sync Lag Time</span>
 
 <div class="infoBlock">
-A <code class="inline-code">user_logged_in</code> event of <code class="inline-code">track</code> type will be synced to <code class="inline-code">tracks</code> and <code class="inline-code">user_logged_in</code> tables. Check out our <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/">RudderStack Warehouse Schema</Link> for more details. Similarly, the <code class="inline-code">identify</code> events are synced to the <code class="inline-code">identifies</code> and <code class="inline-code">users</code> tables. Since each event is being synced to two tables, number of synced rows is generally twice the number of events.
+A <code class="inline-code">user_logged_in</code> event of <code class="inline-code">track</code> type will be synced to <code class="inline-code">tracks</code> and <code class="inline-code">user_logged_in</code> tables. Check out our <Link to="/destinations/warehouse-destinations/warehouse-schema/">RudderStack Warehouse Schema</Link> for more details. Similarly, the <code class="inline-code">identify</code> events are synced to the <code class="inline-code">identifies</code> and <code class="inline-code">users</code> tables. Since each event is being synced to two tables, number of synced rows is generally twice the number of events.
 </div>
 
 <div class="infoBlock">
-If an event property does not match the data type in the corresponding table of warehouse, that column is not synced into the actual table but moved into <code class="inline-code">rudder_discards</code> table. Check <Link to="/tmp-destinations/warehouse-destinations/warehouse-schema/#how-rudderstack-handles-data-type-mismatch">this guide</Link> on how RudderStack handles data type mismatch, for more details.
+If an event property does not match the data type in the corresponding table of warehouse, that column is not synced into the actual table but moved into <code class="inline-code">rudder_discards</code> table. Check <Link to="/destinations/warehouse-destinations/warehouse-schema/#how-rudderstack-handles-data-type-mismatch">this guide</Link> on how RudderStack handles data type mismatch, for more details.
 </div>
 
 ### Synced Rows

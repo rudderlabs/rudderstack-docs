@@ -24,7 +24,7 @@ Before configuring Facebook Pixel as a destination in RudderStack, verify if the
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Facebook Pixel, follow these steps:
@@ -328,7 +328,7 @@ Facebook's \(and RudderStack's\) recommended form of deduplication is to leverag
   - The `event_id` must be unique to that specific event and the same for both of the events coming from the Pixel and Conversion API
   - For example: the `event_id` could be the purchase order number etc.
 
-You can set the `event_id` in `traits` , `context.traits` or `properties` object as a unique identifier. This works for both the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> as well as the <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+You can set the `event_id` in `traits` , `context.traits` or `properties` object as a unique identifier. This works for both the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> as well as the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="infoBlock">
 
