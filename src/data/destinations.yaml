@@ -7,17 +7,17 @@
   type: streaming
 - category: null
   displayName: AWS Personalize
-  link: /tmp-destinations/streaming-destinations/personalize/
+  link: /tmp-destinations/streaming-destinations/aws-personalize/
   options: null
   type: streaming
 - category: null
   displayName: ActiveCampaign
-  link: /tmp-destinations/streaming-destinations/active-campaign/
+  link: /tmp-destinations/streaming-destinations/activecampaign/
   options: null
   type: streaming
 - category: null
   displayName: Adjust
-  link: /tmp-destinations/streaming-destinations/adj/
+  link: /tmp-destinations/streaming-destinations/adjust/
   options: null
   type: streaming
 - category: null
@@ -122,7 +122,7 @@
   type: streaming
 - category: null
   displayName: Branch Metrics
-  link: /tmp-destinations/streaming-destinations/branch-metrics/
+  link: /tmp-destinations/streaming-destinations/branchio/
   options: null
   type: streaming
 - category: null
@@ -277,12 +277,12 @@
   type: streaming
 - category: null
   displayName: Google Tag Manager
-  link: /tmp-destinations/streaming-destinations/gtm/
+  link: /tmp-destinations/streaming-destinations/google-tag-manager/
   options: null
   type: streaming
 - category: null
   displayName: Heap.io
-  link: /tmp-destinations/streaming-destinations/heap/
+  link: /tmp-destinations/streaming-destinations/heap.io/
   options: null
   type: streaming
 - category: null
@@ -292,7 +292,7 @@
   type: streaming
 - category: null
   displayName: HubSpot
-  link: /tmp-destinations/streaming-destinations/hs/
+  link: /tmp-destinations/streaming-destinations/hubspot/
   options: null
   type: streaming
 - category: null
@@ -356,11 +356,6 @@
   options: null
   type: streaming
 - category: null
-  displayName: Lotame Mobile
-  link: /tmp-destinations/streaming-destinations/lotame-mobile/
-  options: null
-  type: streaming
-- category: null
   displayName: Lytics
   link: /tmp-destinations/streaming-destinations/lytics/
   options: null
@@ -377,7 +372,7 @@
   type: streaming
 - category: null
   displayName: Marketo Lead Import
-  link: /tmp-destinations/streaming-destinations/marketo-bulk-upload/
+  link: /tmp-destinations/streaming-destinations/marketo-lead-import/
   options: null
   type: streaming
 - category: null
@@ -387,7 +382,7 @@
   type: streaming
 - category: null
   displayName: Mixpanel
-  link: /tmp-destinations/streaming-destinations/mp/
+  link: /tmp-destinations/streaming-destinations/mixpanel/
   options: null
   type: streaming
 - category: null
@@ -412,12 +407,12 @@
   type: streaming
 - category: null
   displayName: Optimizely Fullstack
-  link: /tmp-destinations/streaming-destinations/optimizely-fullstack/
+  link: /tmp-destinations/streaming-destinations/optimizely-full-stack/
   options: null
   type: streaming
 - category: null
   displayName: Optimizely Web
-  link: /tmp-destinations/streaming-destinations/optimizely/
+  link: /tmp-destinations/streaming-destinations/optimizely-web/
   options: null
   type: streaming
 - category: null
@@ -432,7 +427,7 @@
   type: streaming
 - category: null
   displayName: Pinterest Tag
-  link: /tmp-destinations/streaming-destinations/pinterest-tag/
+  link: /tmp-destinations/streaming-destinations/pinterest-ads/
   options: null
   type: streaming
 - category: null
@@ -535,11 +530,11 @@
   link: /tmp-destinations/streaming-destinations/tvsquared/
   options: null
   type: streaming
-- category: null
-  displayName: Taplytics
-  link: /tmp-destinations/streaming-destinations/taplytics/
-  options: null
-  type: streaming
+# - category: null
+#   displayName: Taplytics
+#   link: /tmp-destinations/streaming-destinations/taplytics/
+#   options: null
+#   type: streaming
 - category: null
   displayName: TikTok Ads
   link: /tmp-destinations/streaming-destinations/tiktok-ads/
@@ -550,11 +545,11 @@
   link: /tmp-destinations/streaming-destinations/trengo/
   options: null
   type: streaming
-- category: null
-  displayName: Twitter Ads
-  link: /tmp-destinations/streaming-destinations/twitter-ads/
-  options: null
-  type: streaming
+# - category: null
+#   displayName: Twitter Ads
+#   link: /tmp-destinations/streaming-destinations/twitter-ads/
+#   options: null
+#   type: streaming
 - category: null
   displayName: Userlist
   link: /tmp-destinations/streaming-destinations/userlist/
@@ -562,7 +557,7 @@
   type: streaming
 - category: null
   displayName: VWO
-  link: /tmp-destinations/streaming-destinations/vwo/
+  link: /tmp-destinations/streaming-destinations/vwo-beta-visual-website-optimizer/
   options: null
   type: streaming
 - category: null
@@ -573,11 +568,6 @@
 - category: null
   displayName: WebEngage
   link: /tmp-destinations/streaming-destinations/webengage/
-  options: null
-  type: streaming
-- category: null
-  displayName: Webhook
-  link: /tmp-destinations/streaming-destinations/webhook/
   options: null
   type: streaming
 - category: null
@@ -647,3 +637,9 @@
   link: /tmp-destinations/warehouse-destinations/snowflake/
   options: null
   type: warehouse
+# Webhooks
+- category: null
+  displayName: Webhook
+  link: /tmp-destinations/streaming-destinations/webhooks/
+  options: null
+  type: webhook
