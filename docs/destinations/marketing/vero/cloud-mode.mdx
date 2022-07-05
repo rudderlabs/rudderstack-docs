@@ -33,7 +33,7 @@ The following table lists the mapping of the RudderStack traits to the correspon
 | RudderStack trait | Vero property | Presence |
 | :-----| :------| :-------|
 | `userId` | `id` | Required, if `email` is not present. |
-| `email` | `email` | Required, if `id` is not present. |
+| `email` | `email` | Required, if `userId` is not present. |
 | `traits` | `data` |  Optional |
 | `context.os.name` | `channels.platform` | Optional |
 | `context.device.token` | `channels.address` | Optional |
@@ -43,7 +43,7 @@ The following table lists the mapping of the RudderStack traits to the correspon
 | `context.userAgent` | `userAgent` | Optional |
 
 <div class="infoBlock">
-If the event includes <code class="inline-code">email</code> and no <code class="inline-code">id</code>, Vero will automatically use <code class="inline-code">email</code> as the <code class="inline-code">id</code>.
+If the event includes <code class="inline-code">email</code> and no <code class="inline-code">userId</code>, Vero will automatically use <code class="inline-code">email</code> as the <code class="inline-code">id</code>.
 </div>
 
 <div class="successBlock">
