@@ -22,6 +22,7 @@ import {
 } from '../../../../utils/common'
 import YouTube from 'react-youtube'
 import Sources from '../../../../components/sources'
+import Destinations from '../../../../components/destinations'
 
 export default function Docs({mdx, pageContext}) {
   const {repositoryEditUrl, repositoryProvider} = pageContext
@@ -57,6 +58,7 @@ export default function Docs({mdx, pageContext}) {
     Link,
     Tabs,
     Sources,
+    Destinations,
     TabList,
     Tab,
     TabPanels,
