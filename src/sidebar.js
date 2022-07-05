@@ -110,19 +110,20 @@ export const jsonData = [
                 content: [],
               },
               {
-                key: "data-storage-cookies",
-                title: "Data Storage in Cookies",
-                link:
-                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/",
-                content: [],
-              },
-              {
                 key: "version-migration",
                 title: "Version Migration",
                 link:
                   "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration/",
                 content: [],
               },
+              {
+                key: "data-storage-cookies",
+                title: "Data Storage",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/",
+                content: [],
+              },
+              
               {
                 key: "filtering",
                 title: "Filtering",

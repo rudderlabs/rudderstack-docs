@@ -3,22 +3,15 @@ title: "Version Migration Guide"
 description: Step-by-step guide on migrating from the RudderStack JavaScript SDK v1 to v1.1.
 ---
 
-The **JavaScript SDK  v1.1** is a lightweight, more efficient, and optimized version of the [RudderStack JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) and offers the following features:
+The latest version of **JavaScript SDK (v1.1)** is lightweight, efficient, and optimized when compared to v1:
 
-* The size of the SDK is reduced by approximately **70%**, considerably reducing its loading time.
-* The destination SDKs are separated from the core JavaScript SDK. They are now published as individual plugins.
-* The [device mode](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode) destinations are loaded dynamically as per your specified dashboard configurations.
-
-## JavaScript SDK v1 vs. v1.1
-
-|Parameter|v1|v1.1|
+|Features|v1.1|v1|
 |---------|--|----|
-|**Size**|114 KB<sup>*</sup>|34 KB<sup>*</sup>|
-|**Device mode destination SDKs**|All the device mode destination SDKs are bundled with the core SDK.|The device mode destination SDKs are dynamically loaded as per the source configuration in the dashboard.|
+|Size|34 KB<sup>*</sup>|114 KB<sup>*</sup>|
+|[Device mode]() destination SDKs|Loaded dynamically as per the source configuration in the dashboard.| Bundled with the core SDK.|
 
 <div class="infoBlock">
-
-The SDK size may vary in the future as we add more functionalities.
+The SDK size may vary in the future as more functionalities are added.
 </div>
 
 ## Migrating to v1.1

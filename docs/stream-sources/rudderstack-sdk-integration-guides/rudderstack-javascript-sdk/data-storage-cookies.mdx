@@ -1,12 +1,12 @@
 ---
-title: "Data Storage in Cookies"
+title: "Data Storage"
 description: >-
-  Detailed technical documentation on persistent user data stored in cookies or local storage by the RudderStack’s JavaScript SDK.
+  Detailed technical documentation on persistent user data stored in cookies or local storage by the JavaScript SDK.
 ---
 
-By default, the RudderStack JavaScript SDK stores persistent user data in the cookies. If the cookies are not supported, local storage is used instead. 
+The JavaScript SDK stores persistent user data in the cookies by default. However, if the cookies are not supported, local storage is used instead. 
 
-All the cookies are stored in the top-level domain by default. It helps you to identify the users visiting from websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can configure where you want to store the cookie by using the `setCookieDomain` parameter in the `load` API options as shown:
+All the cookies are stored in the top-level domain by default. It helps you to identify the users visiting from websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can specify the cookie storage location by using the `setCookieDomain` parameter in the `load` API options as shown:
 
 ```javascript
 rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
@@ -16,7 +16,7 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 
 ## Cookies
 
-The list of cookies used by the JavaScript SDK to store persistent user data is mentioned below:
+The following table lists the cookies used by the JavaScript SDK to store persistent user data:
 
 | Name             | Description       | Example    | Clearing mechanism using the SDK |
 | :-------------------- | :---------------------------------- | :-------------------------------- |:---------------------------------- |
@@ -35,9 +35,9 @@ The cookie values are encrypted and their length is directly proportional to the
 </div>
 
 
-## Local storage cookies
+## Local storage 
 
-The local storage cookies are used by the JavaScript SDK to keep track of the events sent to the RudderStack backend. They are listed in the table below:
+The local storage is used by the JavaScript SDK to keep track of the events sent to the RudderStack backend. They are listed in the below table:
 
 | Name             | Description       | Example    |
 | :------------- |:---------- | :----------- | 
@@ -47,15 +47,9 @@ The local storage cookies are used by the JavaScript SDK to keep track of the ev
 |  `queue`    | Keeps track of the events that are in queue to be processed.   | <pre>[<br />  {<br />   "item": {<br />    "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br />    "headers": {<br />     "Content-Type": "application/json",<br />      ...<br />    },<br />    "message": { <br />     ...<br />    }<br />    "attemptNumber": 0,<br />    "time": 1639734792773,<br />    "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br />   }<br />  }<br />]<br /></pre> |
 
 <div class="infoBlock">
-
 All the local storage cookie names are prefixed with <code class="inline-code">rudder.&lt;uuid&gt;.</code> For example,
 <code class="inline-code">rudder.2dc2aee6-2836-4273-be69-79c90c04ddec.reclaimEnd</code>.
 </div>
-
-
-## FAQ
-
-Refer to the [FAQ](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.
 
 ## Contact us
 
