@@ -10,8 +10,6 @@ RudderStack lets you send your event data to Vero via the <Link to="/rudderstack
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
-RudderStack sends the `identify` events to Vero via their [`users`](https://api.getvero.com/api/v2/users/track) endpoint to create, update, and manage your user records.
-
 A sample `identify` call is shown below:
 
 ```javascript
@@ -39,8 +37,6 @@ If the event includes <code class="inline-code">email</code> and no <code class=
 ## Track
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call lets you capture user events along with the properties associated with them.
-
-RudderStack sends the `track` events to Vero via their [`events`](https://api.getvero.com/api/v2/events/track) endpoint to track events for a specific user based on the actions they take.
 
 <div class="warningBlock">
 You need to first create a user by explicitly calling <code class="inline-code">identify</code> before making any <code class="inline-code">track</code> calls to Vero. Otherwise, the <code class="inline-code">track</code> calls will fail.
@@ -101,7 +97,7 @@ rudderanalytics.page(
 
 ## Alias
 
-RudderStack sends the <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias/">`alias`</Link> events to Vero via their [`users`](https://api.getvero.com/api/v2/users/reidentify) endpoint to change a user's identifier (`id`).
+RudderStack sends the <Link to="/rudderstack-api/api-specification/rudderstack-spec/alias/">`alias`</Link> events to change a user's identifier (`id`) in Vero.
 
 A sample `alias` call is shown below:
 
