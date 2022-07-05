@@ -48,8 +48,8 @@ Refer to the <Link to="#faq">FAQ</Link> section below for more information on fi
 - **Mapping to trigger the Matomo standard events for the respective Events**: Enter the event name and pick the corresponding standard event from the dropdown which needs to be mapped.
 - **Track All Content Impressions**: Enable this setting to scan the entire DOM for all content blocks and track all impressions, once the DOM ready event has been triggered.
 - **Track Visible Content Impressions**: Enable this setting to scan the entire DOM for all content blocks as soon as the page is loaded. It tracks an impression only if a content block is actually visible. If enabled, also enter the following:
-    - **Check on Scroll**:
-    - **Time interval in ms**:
+    - **Check on Scroll**: Checks whether the previously hidden content blocks became visible meanwhile after a scroll and if yes, then tracks the impression. It is enabled by default. 
+    - **Time interval in ms**: Enter the time to rescan the entire DOM for new content impressions. By default, the rescan is done every 750ms. To disable it, pass the value as 0.
 - **Log All Content Blocks On Page**: Enable this setting to log all the content blocks found within a page to the console. This is useful while debugging/testing the content tracking.
 - **Enable Heart Beat Timer**: Enable this setting to install a heart beat timer to send additional requests to Matomo to measure the time spent in the visit. These requests will be sent only when the user's tab is active and in focus and will not track additional actions or pageviews. If enabled, also enter the following:
     - **Active Time in seconds**: Enter the time interval after which a ping request should be sent. The default value is 15 seconds, meaning that if a page is viewed for at least 15 seconds, only then a ping request will be sent.
