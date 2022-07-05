@@ -95,7 +95,11 @@ The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification
 A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.page("home","games");
+rudderanalytics.track("Order Completed",{
+"category": "Orders",
+"action": "Pass",
+"value": 15
+});
 ```
 
 RudderStack supports `track` calls for **standard** and **e-commerce** events as explained below: 
@@ -186,11 +190,7 @@ The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page">`page`</
 A sample `page` call is shown below:
 
 ```javascript
-rudderanalytics.track("Order Completed",{
-"category": "Orders",
-"action": "Pass",
-"value": 15
-});
+rudderanalytics.page("home","games");
 ```
 
 <div class="infoBlock">
