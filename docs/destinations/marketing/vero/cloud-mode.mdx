@@ -28,7 +28,7 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 
 ### Supported mappings
 
-The following table shows the mapping of the RudderStack properties to the corresponding Vero fields:
+The following table lists the mapping of the RudderStack traits to the corresponding Vero properties:
 
 | RudderStack trait | Vero property | Presence |
 | :-----| :------| :-------|
@@ -47,7 +47,7 @@ If the event includes <code class="inline-code">email</code> and no <code class=
 </div>
 
 <div class="successBlock">
-You can add or update user records that you want as these properties are completely custom.
+You can add or update user records as required as these are the custom properties.
 </div>
 
 ## Track
@@ -68,12 +68,12 @@ rudderanalytics.track("Product Viewed", {
 ```
 
 <div class="infoBlock">
-Vero's API treats the capitalized or lower case letters, spaces, and underscores in the event names in the same way. For example, Vero will match <code class="inline-code">Purchased Item</code>, <code class="inline-code">purchased item</code>, and <code class="inline-code">purchased_item</code> as the same event.
+Vero does not differentiate between the upper or lower case letters, spaces, and underscores in the event names. For example, Vero matches the <code class="inline-code">Purchased Item</code>, <code class="inline-code">purchased item</code>, and <code class="inline-code">purchased_item</code> as the same event.
 </div>
 
 ### Supported mappings
 
-The following table shows the mapping of the RudderStack properties to the corresponding Vero fields:
+The following table lists the mapping of the RudderStack properties to the corresponding Vero properties:
 
 | RudderStack property | Vero property | Presence |
 | :-----| :------| :-------|
@@ -88,7 +88,7 @@ RudderStack supports [unsubscribing](https://developers.getvero.com/?bash#users-
 
 ```javascript
 rudderanalytics.track("unsubscribe", {
-  userId: "user01"
+  userId: "1hKOmRA4el9Zt1WSfVJIVo4GRlm"
 })
 ```
 
@@ -139,7 +139,7 @@ rudderanalytics.alias("userId", "previousId");
 
 ### Supported mappings
 
-The following table shows the mapping of the RudderStack properties to the corresponding Vero fields:
+The following table lists the mapping of the RudderStack properties to the corresponding Vero properties:
 
 | RudderStack property | Vero property | Presence |
 | :-----| :------| :-------|
