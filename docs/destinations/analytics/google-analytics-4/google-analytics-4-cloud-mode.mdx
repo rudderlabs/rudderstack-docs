@@ -181,6 +181,16 @@ rudderanalytics.page({}, {
 });
 ```
 
+The following table lists the property mappings between RudderStack and Google Analytics 4: 
+
+| RudderStack property    | Google Analytics 4 property  |
+| :-------------| :-----------------|
+| `context.page.path`/`properties.path`          | `path`        |
+| `context.page.referrer`/`properties.referrer`               | `referrer`      |
+| `context.page.search`/`properties.search`               | `search`      |
+| `context.page.title`/`properties.title`            | `title`          |
+| `context.page.url`/`properties.url`         | `url`          |
+
 ## Group
 
 The <Link to="/rudderstack-api/api-specification/rudderstack-spec/group/">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, for example, company name, number of employees, etc.
@@ -585,6 +595,8 @@ You can retrieve the `app_instance_id` through the Firebase SDK depending on the
 - [Objective-C: `appInstanceID`](https://firebase.google.com/docs/reference/ios/firebaseanalytics/api/reference/Classes/FIRAnalytics#+appinstanceid)
 - [C++: `GetAnalyticsInstanceId()`](https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#getanalyticsinstanceid)
 - [Unity: `GetAnalyticsInstanceIdAsync()`](https://firebase.google.com/docs/reference/unity/class/firebase/analytics/firebase-analytics#getanalyticsinstanceidasync)
+
+Refer to the [GA4 document](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=firebase#payload_post_body) for more information.
 
 ## Contact us
 
