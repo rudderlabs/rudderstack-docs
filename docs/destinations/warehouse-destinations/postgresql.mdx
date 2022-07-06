@@ -51,16 +51,21 @@ To configure PostgreSQL as a destination in RudderStack, follow these steps:
 
 Enter the following credentials in the **Connection Credentials** page:
 
-  - **Host**: Enter the host name of your PostgreSQL service.
-  - **Database**: Enter your PostgreSQL database name where RudderStack will load the data.
-  - **User**: Enter the name of the user created in the <Link to="#setting-user-permissions-in-postgresql">Setting user permissions in PostgreSQL</Link> section above.
-  - **Password**: Enter the password you set for the above user.
-  - **Port**: Enter the port number associated with your PostgreSQL instance.
-  - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
-  - **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your PostgreSQL instance. RudderStack provides three options - **disable**, **require**, and **verify-ca**. For more information on these options, refer to the <Link to="#ssl-modes">SSL Modes</Link> section below.
-  - **Sync Frequency**: Specify how often RudderStack should sync the data to your PostgreSQL database.
-  - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
-  - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
+- **Host**: Enter the host name of your PostgreSQL service.
+- **Database**: Enter your PostgreSQL database name where RudderStack will load the data.
+- **User**: Enter the name of the user created in the <Link to="#setting-user-permissions-in-postgresql">Setting user permissions in PostgreSQL</Link> section above.
+- **Password**: Enter the password you set for the above user.
+- **Port**: Enter the port number associated with your PostgreSQL instance.
+- **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
+- **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your PostgreSQL instance. RudderStack provides three options - **disable**, **require**, and **verify-ca**. For more information on these options, refer to the <Link to="#ssl-modes">SSL Modes</Link> section below.
+- **Sync Frequency**: Specify how often RudderStack should sync the data to your PostgreSQL database.
+- **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+- **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
+- **JSON Columns**: Use this optional setting to specify the required JSON column paths in dot notation, separated by commas. **This option applies to all the incoming `track` events for this destination.**
+
+<div class="infoBlock">
+With the JSON columns feature, you can now ingest semi-structured event data not defined by a fixed schema. For more information on this feature, refer to the <Link to="/destinations/warehouse-destinations/json-column-support/">JSON Column Support</Link> guide.
+</div>
 
 ### Configuring the object storage
 

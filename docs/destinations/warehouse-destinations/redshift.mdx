@@ -178,7 +178,6 @@ To configure Redshift as a destination in RudderStack, follow these steps:
 ### Connection Settings
 
 <img src="../../assets/dw-integrations/redshift-connection-settings.png" alt="Redshift connection settings" />
-<img src="../../assets/dw-integrations/redshift-connection-settings2.png" alt="Redshift connection settings" />
 
 Enter the following credentials in the **Connection Credentials** page:
 
@@ -191,6 +190,11 @@ Enter the following credentials in the **Connection Credentials** page:
 - **Sync Frequency**: Specify how often RudderStack should sync the data to your Redshift database.
 - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
 - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
+- **JSON Columns**: Use this optional setting to specify the required JSON column paths in dot notation, separated by commas. **This option applies to all the incoming `track` events for this destination.**
+
+<div class="infoBlock">
+With the JSON columns feature, you can now ingest semi-structured event data not defined by a fixed schema. For more information on this feature, refer to the <Link to="/destinations/warehouse-destinations/json-column-support/">JSON Column Support</Link> guide.
+</div>
 
 ### Configuring the object storage
 
