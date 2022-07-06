@@ -117,6 +117,13 @@ export const jsonData = [
                 content: [],
               },
               {
+                key: "send-event-payloads-beacon",
+                title: "Send Event Payloads using Beacon",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/send-event-payloads-beacon/",
+                content: [],
+              },
+              {
                 key: "data-storage-cookies",
                 title: "Data Storage",
                 link:
@@ -129,13 +136,6 @@ export const jsonData = [
                 title: "Filtering",
                 link:
                   "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/filtering/",
-                content: [],
-              },
-              {
-                key: "common-destination-names",
-                title: "Common Destination Names",
-                link:
-                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/common-destination-names/",
                 content: [],
               },
               {
@@ -157,13 +157,6 @@ export const jsonData = [
                 title: "Context and Traits",
                 link:
                   "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/context-traits/",
-                content: [],
-              },
-              {
-                key: "javascript-sdk-best-practices",
-                title: "Best Practices",
-                link:
-                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-best-practices/",
                 content: [],
               },
               {
