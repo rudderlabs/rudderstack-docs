@@ -1,27 +1,26 @@
 ---
 title: "Context and traits"
 description: >-
-  Detailed technical documentation on persistent user data stored in cookies or local storage by the RudderStack’s JavaScript SDK.
+  Detailed technical documentation on capturing event-specific and use-specific data using the context and trait dictionaries.
 ---
 
-RudderStack gives you the option to automatically capture certain event-specific and user-specific data, based on the type of the event.
+RudderStack provides you with the option to automatically capture certain event-specific and user-specific data, based on the type of the event.
 
-In this section, we cover two specific dictionaries within the [`options`](#options) parameter included in the supported API methods.
+The `context` and `traits` dictionaries are included in the [`options`](#options) parameter of the API methods.
 
-### Context
+## Context
 
 A context is a dictionary of additional information about a particular event data, such as a user’s locale.
 
 <div class="infoBlock">
-
 A context is a complete and specific piece of information. Any other information provided outside of this specification is ignored.
 </div>
 
-### Traits
+## Traits
 
 Traits is an optional dictionary included within [`context`](#context) which specifies the user's unique traits. This is a very useful field for linking the user's information from a previously made [`identify()`](#identify) call to the subsequent [`track()`](#track) or [`page()`](#page) calls.
 
-#### Use-case
+### Use-case
 
 To better understand how contexts and traits work, refer to the following `identify` event:
 
@@ -51,3 +50,7 @@ rudderanalytics.track(
 ```
 
 The above snippet will append `plan` as a trait to the `track` event. Note that the trait `email` will not be appended, as it was not specified in the `context.traits` field.
+
+## Contact us
+
+For queries on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
