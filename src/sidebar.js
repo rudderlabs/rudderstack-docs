@@ -150,7 +150,7 @@ export const jsonData = [
                     {
                         key: "supported-api",
                         title: "Supported API",
-                        link: "/sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/supported-api/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/supported-api/",
                         content: [],
                     },
                     {
@@ -162,7 +162,7 @@ export const jsonData = [
                     {
                         key: "send-event-payloads-beacon",
                         title: "Send Event Payloads using Beacon",
-                        link: "/sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/send-event-payloads-beacon/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/send-event-payloads-beacon/",
                         content: [],
                     },
                     {
@@ -174,13 +174,13 @@ export const jsonData = [
                     {
                         key: "filtering",
                         title: "Filtering",
-                        link: "/sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/filtering/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/filtering/",
                         content: [],
                     },
                     {
                         key: "onetrust-consent-manager",
                         title: "OneTrust Consent Manager",
-                        link: "/sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/onetrust-consent-manager/",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
                         content: [],
                     },
                     {
@@ -193,7 +193,7 @@ export const jsonData = [
                         key: "context-traits",
                         title: "Context and Traits",
                         link:
-                          "/sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/context-traits/",
+                          "/sources/sdks/rudderstack-javascript-sdk/context-traits/",
                         content: [],
                      },
                       {
