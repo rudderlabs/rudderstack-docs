@@ -1,0 +1,124 @@
+---
+title: "Filtering"
+description: Different types of filtering
+---
+This guide covers how to:
+* Filter events while sending them to the specified destinations.
+* Filter destinations where the event data should be sent.
+
+## Filtering events
+
+When sending events to a destination via the **web device mode**, you can explicitly specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them using the <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/">Client-side Event Filtering</a> feature.
+
+## Filtering destinations
+
+You can send the event data only to the selective destinations by passing an [integrations](#integrationopts)  object in the `options` parameter. RudderStack then loads or sends events only to the specified and enabled destinations.
+
+* A sample snippet to send event data only to the **Google Analytics** and **Intercom** destinations:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  integrations: {
+    All: false,
+    "Google Analytics": true,
+    Intercom: true
+  }
+});
+```
+
+* A sample `track` method to send event data only to the **Google Analytics** destination:
+
+```javascript
+rudderanalytics.track(
+  "test track event GA3",
+  {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345
+  },
+  {
+    integrations: {
+      All: false,
+      "Google Analytics": true
+    }
+  }
+);
+```
+The destinaton name inside the `integrations` object should be in the format as specified in the below table:
+
+| Destination          | Supported Names     |
+| :------------------- | :------------------------- |
+| Google Analytics     | `Google Analytics`         |
+|                      | `GoogleAnalytics`          |
+|                      | `GA`                       |
+| Google Analytics 4   | `Google Analytics 4`       |
+|                      | `GoogleAnalytics4`         |
+|                      | `GA4`                      |
+| Google Ads           | `Google Ads`               |
+|                      | `GoogleAds`                |
+|                      | `GOOGLEADS`                |
+| Braze                | `Braze`                    |
+|                      | `BRAZE`                    |
+| Chartbeat            | `Chartbeat`                |
+|                      | `CHARTBEAT`                |
+| Customer.io          | `Customer.io`              |
+|                      | `CUSTOMERIO`               |
+| Facebook Pixel       | `FB Pixel`                 |
+|                      | `Facebook Pixel`           |
+|                      | `FB_PIXEL`                 |
+| Google Tag Manager   | `Google Tag Manager`       |
+|                      | `GTM`                      |
+| Hotjar               | `Hotjar`                   |
+|                      | `HOTJAR`                   |
+| Hubspot              | `Hubspot`                  |
+|                      | `HUBSPOT`                  |
+| Intercom             | `Intercom`                 |
+|                      | `INTERCOM`                 |
+| Keen.IO              | `Keen`                     |
+|                      | `KEEN`                     |
+|                      | `Keen.io`                  |
+| Kissmetrics          | `Kissmetrics`              |
+|                      | `KISSMETRICS`              |
+| Lotame               | `Lotame`                   |
+|                      | `LOTAME`                   |
+| VWO                  | `Visual Website Optimizer` |
+|                      | `VWO`                      |
+| Optimizely           | `OPTIMIZELY`               |
+|                      | `Optimizely`               |
+| Amplitude            | `Amplitude`                |
+|                      | `AMPLITUDE`                |
+| Mixpanel             | `Mixpanel`                 |
+| Facebook App Events  | `Facebook App Events`      |
+| Amazon S3            | `Amazon S3`                |
+| MinIO                | `MinIO`                    |
+| Salesforce           | `Salesforce`               |
+| Autopilot            | `Autopilot`                |
+| Heap.io              | `Heap.io`                  |
+| Mailchimp            | `MailChimp`                |
+| Redshift             | `Redshift`                 |
+| BigQuery             | `BigQuery`                 |
+| Google Cloud Storage | `Google Cloud Storage`     |
+| Azure Blob Storage   | `Azure Blob Storage`       |
+| Branch Metrics       | `Branch Metrics`           |
+| Kochava              | `Kochava`                  |
+| Leanplum             | `Leanplum`                 |
+| Slack                | `Slack`                    |
+| Zendesk              | `Zendesk`                  |
+| AWS Personalize      | `AWS Personalize`          |
+| Amazon Kinesis       | `Amazon Kinesis`           |
+| CleverTap            | `CLEVERTAP`                |
+|                      | `Clevertap`                |
+| Adobe Analytics      | `Adobe Analytics`          |
+|                      | `AdobeAnalytics`           |
+|                      | `ADOBE_ANALYTICS`          |
+|                      | `adobeanalytics`           |
+| DCM Floodlight       | `dcm floodlight`           |
+|                      | `dcm_floodlight`           |
+|                      | `dcmfloodlight`            |
+|                      | `DCM Floodlight`           |
+|                      | `DCM_Floodlight`           |
+|                      | `DCMFloodlight`            |
+
+## Contact us
+
+For more information or queries on this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
