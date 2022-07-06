@@ -5,12 +5,23 @@ description: >-
   to your specified destination platforms.
 ---
 
-Destinations are the tools/platforms/applications where you can your event data via RudderStack.
+## What is a destination?
 
-RudderStack currently supports integration with over 150 popular destination platforms such as Google Analytics, Amplitude, Mixpanel, Salesforce, and more.
+A RudderStack destination is the target for your source event data, generally either a *streaming* destination or a *warehouse* destination. 
 
-This section provides detailed documentation on setting up these event stream destinations in RudderStack to send your event data in no time.
+* **Streaming destinations** consume your event data to complement their offering which may be related to marketing, analytics, CRM, etc.
+* **Warehouse destinations** are storage destinations such as Amazon Redshift, Snowflake, or Google BigQuery.
 
-<div class="successBlock">
-Although detailed FAQs are provided at the end of each of these guides, you can <a href="mailto:%20contact@rudderstack.com">contact us</a> for any questions related to the destinations' configuration or use. You can also start a conversation in our <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack</a> community.
-</div>
+RudderStack currently supports integration with over 150 popular destination platforms such as Google Analytics, Amplitude, Mixpanel, Salesforce, and more. This section provides detailed documentation on setting up these event stream destinations in RudderStack to send your event data in no time.
+
+## Warehouse Destinations
+
+<Destinations
+  type={'warehouse'}
+/>
+
+## Streaming Destinations
+
+<Destinations
+  type={'streaming'}
+/>
