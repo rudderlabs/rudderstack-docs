@@ -1,0 +1,44 @@
+---
+title: "Docker"
+description: Step by step guide on setting up RudderStack on Docker.
+---
+
+This guide lists the steps required to set up the RudderStack server (backend) in your Docker environment.
+
+<div class="successBlock">
+
+The Docker etup is the easiest and the fastest way to get up and running with RudderStack.
+</div>
+
+## RudderStack-hosted control plane
+
+If you're using a RudderStack-hosted control plane, follow these steps to set up the data plane in your Docker environment:
+
+1. Log into your [RudderStack Open Source dashboard](https://app.rudderstack.com/signup?type=opensource).
+2. Copy your workspace token from **Settings** > **Company**, as shown:
+
+<img src="../../../assets/rs-cloud/workspace-token.png" alt="Workspace Token" />
+
+<div class="infoBlock">
+The <Link to="/dashboard-guides/overview/#workspace-token">workspace token</Link> is required for setting up the data plane.
+</div>
+
+3. Download the `rudder-docker.yml` [docker-compose](https://raw.githubusercontent.com/rudderlabs/rudder-server/master/rudder-docker.yml) file.
+4. Replace `<your_workspace_token>` in this file with the workspace token copied above.
+5. Then, open your terminal, navigate to the directory where you want to install RudderStack, and run the following command:
+
+```bash
+docker-compose -f rudder-docker.yml up
+```
+
+## Self-hosted control plane
+
+If you have self-hosted the control plane using the open-source <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility, follow <Link to="//get-started/rudderstack-open-source/control-plane-lite/#docker">Docker instructions</Link> to set up the data plane.
+
+## Sending test events
+
+Once you have successfully performed the steps above, follow the <Link to="/get-started/rudderstack-open-source/sending-test-events/">Sending Test Events</Link> guide to verify the installation.
+
+## Contact us
+
+If you come across any issues while setting up RudderStack on Docker, you can [contact us](mailto:docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -1,16 +1,16 @@
 ---
 title: "How to Integrate Rudderstack with Your Next.js App"
 description: >-
-  Step-by-step guide to integrate RudderStack with your Next.js app for event tracking.
+  Step-by-step guide on integrating RudderStack with your Next.js app for event tracking.
 ---
 
-This guide will help you integrate RudderStack with your Next.js app using the [JavaScript SDK](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/). On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
+This guide will help you integrate RudderStack with your Next.js app using the <Link to="/sources/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link>. On successful integration, you can track and send real-time user events to your preferred destinations via RudderStack.
 
 To set up the event stream on your Next.js app, you need to perform the following steps:
 
-1. [Integrate the JavaScript SDK with your Next.js app and set up the tracking code](#integrating-the-javascript-sdk-with-your-nextjs-app)
-2. [Configure a destination in RudderStack](#configuring-a-destination-in-rudderstack)
-3. [Deploy your Next.js app and verify the events](#deploying-your-nextjs-app-and-verifying-the-event-stream)
+1. <Link to="#integrating-the-javascript-sdk-with-your-nextjs-app">Integrate the JavaScript SDK with your Next.js app and set up the tracking code</Link>
+2. <Link to="#configuring-a-destination-in-rudderstack">Configure a destination in RudderStack</Link>
+3. <Link to="#deploying-your-nextjs-app-and-verifying-the-event-stream">Deploy your Next.js app and verify the events</Link>
 
 ## Prerequisites
 
@@ -20,8 +20,8 @@ This guide assumes you have installed and set up your Next.js app. Refer to the 
 
 Integrating the JavaScript SDK with your Next.js app involves the following steps:
 
-1. [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) 
-2. [Installing and configuring the JavaScript SDK in your app](#installing-and-configuring-the-javascript-sdk-in-your-nextjs-app)
+1. <Link to="#creating-a-javascript-source-in-rudderstack">Creating a JavaScript source in RudderStack</Link> 
+2. <Link to="#installing-and-configuring-the-javascript-sdk-in-your-nextjs-app">Installing and configuring the JavaScript SDK in your app</Link>
 
 ### Creating a JavaScript source in RudderStack
 
@@ -81,11 +81,10 @@ export default class MyDocument extends Document {
 <img src="../../../assets/user-guides/document-next-app.png" alt="New document Next.js" />
 
 <div class="infoBlock">
-
-If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide">Version Migration Guide</Link> to migrate to v1.1.
+If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</Link> to migrate to v1.1.
 </div>
 
-2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL>` with your JavaScript source write key and the data plane URL obtained in the [Creating a JavaScript source in RudderStack](#creating-a-javascript-source-in-rudderstack) section above. 
+2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL>` with your JavaScript source write key and the data plane URL obtained in the <Link to="#creating-a-javascript-source-in-rudderstack">Creating a JavaScript source in RudderStack</Link> section above. 
 3. In the same `pages` folder, open the `index.js` file and add the following code snippet:
 
 ```javascript
@@ -120,11 +119,6 @@ export async function rudderInitialize() {
   });
 }
 ```
-
-<div class="infoBlock">
-
-If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide">Version Migration Guide</Link> to migrate to v1.1.
-</div>
 
 2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL>` with your JavaScript source write key and the data plane URL obtained in the <Link to="/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/#creating-a-javascript-source-in-rudderstack">Creating a JavaScript source in RudderStack</Link> section above.
 3. In the `pages` folder, open the `index.js` file and add the following code snippet:
@@ -162,13 +156,12 @@ For this guide, Google Analytics is added as a destination.
 2. Choose **Google Analytics** from the list of destinations.
 3. Assign a name to your destination and click **Next**.
 4. Select the JavaScript source configured in the above section and click **Next**.
-5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the [Google Analytics documentation](https://www.rudderstack.com/docs/destinations/analytics/google-analytics-ga/).
+5. Configure your Google Analytics destination with your Google Analytics **Tracking ID** in the **Connection Settings** page. For details on the other settings, refer to the <Link to="/destinations/streaming-destinations/google-analytics-ga/">Google Analytics documentation</Link>.
 
 <img src="../../../assets/user-guides/ga-settings.png" alt="Google Analytics destination configuration" />
 
 <div class="infoBlock">
-
-Optionally, you can add a <a href="https://rudderstack.com/docs/transformations/">user transformation</a> to this destination to transform your events before sending them to Google Analytics. 
+Optionally, you can add a <Link to="/features/transformations/">transformation</Link> to this destination to transform your events before sending them to Google Analytics. 
 </div>
 
 Google Analytics is now configured as a destination. You should be able to see the connection in your RudderStack dashboard, as seen below:

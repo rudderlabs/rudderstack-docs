@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/user-guides/administrators-guide/onelogin-sso"
 title: "OneLogin SSO Setup"
 description: >-
   Step-by-step guide on setting up the RudderStack SSO (Single Sign-On) feature with OneLogin.
@@ -51,7 +50,6 @@ The settings to be configured are listed in the following table:
 | Login URL | `https://app.rudderstack.com/sso?domain=[your-domain.com]` |
 
 <div class="warningBlock">
-
 Make sure you enter the correct domain name in the <strong>Login URL</strong> setting. For example, if your employee email is <code class="inline-code">john@example.com</code>, then your <strong>Login URL</strong> will be `https://app.rudderstack.com/sso?domain=example.com`.
 </div>
 
@@ -60,7 +58,6 @@ Make sure you enter the correct domain name in the <strong>Login URL</strong> se
 <img src="../../assets/user-guides/onelogin-7.png" alt="SAML settings" />
 
 <div class="successBlock">
-
 Configure the other SAML settings related to the assertion validity, encryption method, etc. as per your organizational requirements.
 </div>
 
@@ -77,7 +74,6 @@ The custom parameters and their values are listed in the following table:
 | NameID value | `Email` |
 
 <div class="infoBlock">
-
 For the <strong>LastName</strong> custom attribute, you can specify a single field <code class="inline-code">Name</code> - which specifies how you would like to see your employees on the RudderStack web app.
 </div>
 
@@ -86,7 +82,6 @@ For the <strong>LastName</strong> custom attribute, you can specify a single fie
 <img src="../../assets/user-guides/onelogin-9.png" alt="Custom parameter configuration" />
 
 <div class="warningBlock">
-
 Make sure you enable (tick) the <strong>Include in SAML assertion</strong> flag for each custom parameter.
 </div>
 
@@ -99,7 +94,6 @@ Go to the **SSO** tab of your app and copy the **Issuer URL**, as shown:
 <img src="../../assets/user-guides/onelogin-10.png" alt="Issuer URL" />
 
 <div class="successBlock">
-
 The <strong>Issuer URL</strong> is the SAML metadata endpoint that contains the certificate and any other information required to enable SSO for your organization.
 </div>
 

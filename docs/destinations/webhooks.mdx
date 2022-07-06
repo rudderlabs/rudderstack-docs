@@ -1,8 +1,7 @@
 ---
-# slug: "/docs/destinations/webhooks"
 title: "Webhooks"
 description: >-
-  Step-by-step guide to send your event data from RudderStack to your configured
+  Step-by-step guide on sending your event data from RudderStack to your configured
   webhook endpoint.
 ---
 
@@ -10,16 +9,13 @@ Webhooks allow you to send the events generated via the RudderStack SDK to your 
 
 Once webhooks are enabled as a destination in your dashboard, RudderStack forwards the SDK events to your configured webhook endpoint.
 
-<div class="successBlock">
-
-  **Find the open-source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/webhook">GitHub repo</a>.**
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/webhook">GitHub repository</a>.
 </div>
 
-## Getting Started
+## Getting started
 
-In order to collect your events at the webhook endpoint, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from [**RudderStack**](https://github.com/rudderlabs/rudder-server) will start to flow to the webhook endpoint.
-
-Before configuring your source and destination on the [**RudderStack dashboard**](https://app.rudderstack.com/), verify if the platform you are working on is supported by the webhook destination by referring to the table below:
+Before configuring your source and destination in the [RudderStack dashboard](https://app.rudderstack.com/), verify if the platform you are working on is supported by the webhook destination by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -27,23 +23,24 @@ Before configuring your source and destination on the [**RudderStack dashboard**
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-
-To know more about the difference between Cloud mode and Device mode in RudderStack, read the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack connection modes</a> guide.
-
+To know more about the difference between cloud mode and device mode in RudderStack, read the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that your platform supports sending events to webhooks, perform the steps below:
 
-- Choose a source to which you would like to add your webhook endpoint as a destination.
-- Select the destination as **Webhook** to your source. Give your destination a name and then click on **Next**.
-- Next, in the **Connection Settings** page, enter the relevant connection information and click on **Next**
+1. Choose a source to which you would like to add your webhook endpoint as a destination.
+2. Select the destination as **Webhook** to your source. Give your destination a name and then click on **Continue**.
 
-<img src="../assets/screenshot-2020-08-24-at-10.24.37-am.png" />
+### Connection settings
 
-The settings are:
+In the **Connection Settings** page, enter the relevant connection information and click on **Next** to complete the destination setup.
 
-- **Webhook URL**: This is the endpoint where [**RudderStack**](https://github.com/rudderlabs/rudder-server) will send the events. Both `http` and `https` are supported. For `https`, the **TLS cert** needs to be **valid** for a successful event delivery.
-- **URL Method**: This is the HTTP method of the request sent to the configured endpoint. Supported methods are `POST`, `PUT` and `GET`. By default, the `POST` method is used.
+<img src="../assets/event-stream-destinations/webhook-connection-settings.png" alt="Webhook connection settings" />
+
+The settings are listed below:
+
+- **Webhook URL**: This is the endpoint where RudderStack sends the events. Both `http` and `https` are supported. For `https`, **TLS cert** needs to be **valid** for a successful event delivery.
+- **URL Method**: This is the HTTP method of the request sent to the configured endpoint. Supported methods are `POST`, `PUT` and `GET`. By default, RudderStack uses the `POST` method to send the events.
 - **Headers**: Add custom headers for your events via this option. These headers will be added to the request made from RudderStack to your webhook. By default, RudderStack adds the following headers for the `POST` and `PUT` requests:
 
 | Key            | Value              |
@@ -52,20 +49,16 @@ The settings are:
 | `Content-Type` | `application/json` |
 
 <div class="infoBlock">
-
-RudderStack also supports adding a dynamic header for your events through user transformation. For more information, refer to our <a href="https://github.com/rudderlabs/sample-user-transformers/blob/master/AddDynamicHeader.js">user transformer code</a> in our GitHub repo.
-
+RudderStack also supports adding a dynamic header for your events through user transformation. For more information, refer to this <a href="https://github.com/rudderlabs/sample-user-transformers/blob/master/AddDynamicHeader.js">user transformation code</a>.
 </div>
 
 <div class="infoBlock">
-
-You can also add a dynamic path to your base URL. For more information on how to do this, refer to our <a href="https://github.com/rudderlabs/sample-user-transformers/blob/master/DynamicPathtoBaseURL.js">user transformer code</a> in our GitHub repo.
-
+You can also add a dynamic path to your base URL. For more information on how to do this, refer to this <a href="https://github.com/rudderlabs/sample-user-transformers/blob/master/DynamicPathtoBaseURL.js">user transformation code</a>.
 </div>
 
 ## Identify
 
-The `identify` call is used to associate a user to their actions. Apart from capturing a unique user ID, you can also send optional traits associated with that user, such as name, email, IP address, etc. using the RudderStack SDKs.
+The <Link to="/event-spec/standard-events/identify">`identify`</Link> call is used to associate a user to their actions. Apart from capturing a unique user ID, you can also send optional traits associated with that user, such as name, email, IP address, etc. using the RudderStack SDKs.
 
 A sample `identify` payload is as shown:
 
@@ -117,7 +110,7 @@ For each `identify` call, RudderStack sends the request in the following manner 
 
 ## Page
 
-The `page` call lets you record your website's page views, with any additional relevant information about the viewed page. For more information on the `page` call, refer to the [**RudderStack API Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views, with any additional relevant information about the viewed page.
 
 A sample `page` payload is as shown:
 
@@ -171,7 +164,7 @@ For each `page` call, RudderStack sends the request in the following manner\(dep
 
 ## Track
 
-The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered as an **event**. For more information on the `track` call, refer to the [**RudderStack API Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/) guide.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered as an **event**.
 
 A sample `track` payload is as shown:
 
@@ -223,7 +216,7 @@ A sample `track` payload is as shown:
 }
 ```
 
-To view the other events and detailed event structure for the types of events being sent, check out the [**RudderStack API Specification**](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/).
+To view the other events and detailed event structure for the types of events being sent, refer to the <Link to="/event-spec/standard-events/">RudderStack Event Spec</Link> guide.
 
 For each `track` call, RudderStack sends the request in the following manner\(depending on the URL method configured in the dashboard\):
 
@@ -231,11 +224,9 @@ For each `track` call, RudderStack sends the request in the following manner\(de
 - **`PUT`:** RudderStack sends the whole event payload \(as shown above\) as the JSON body of the `PUT` request.
 - **`GET`:** RudderStack sends the properties that you pass in the `track` call as query parameters of the `GET` request. If your properties contain nested values, RudderStack will flatten these values before sending them.
 
-## Features
+## Dynamic header support
 
-### Dynamic Header Support
-
-In the settings config, you can set static headers for the webhook call. However, in some cases you may want to dynamically change or add a header to the webhook. This can be done through a top-level object with a key of `header`. This top-level key can be added using a [user transformation](https://rudderstack.com/docs/transformations/) and the following line of code `event.header = { "Authorization": "some-auth" }`. Below is an example of a payload with this feature.
+In the settings config, you can set static headers for the webhook call. However, in some cases you may want to dynamically change or add a header to the webhook. This can be done through a top-level object with a key of `header`. This top-level key can be added using a <Link to="/features/transformations/">user transformation</Link> and the following line of code `event.header = { "Authorization": "some-auth" }`. Below is an example of a payload with this feature.
 
 ```javascript
 {
@@ -252,9 +243,9 @@ In the settings config, you can set static headers for the webhook call. However
 }
 ```
 
-### Dynamically Append to Endpoint URL
+## Dynamically appending to the endpoint URL
 
-In the settings config, you will enter the endpoint that this webhook will be pointed to. There are some use-cases where depending on the event that is going to this destination, the endpoint may need to be changed. RudderStack allows you to append a dynamic string to your webhook endpoint using a top-level key named `appendPath`. This top-level key can be added using a [user transformation](https://rudderstack.com/docs/transformations/) and the following line of code `event.appendPath = 'some-path'`.
+In the settings config, you will enter the endpoint that this webhook will be pointed to. There are some use-cases where depending on the event that is going to this destination, the endpoint may need to be changed. RudderStack allows you to append a dynamic string to your webhook endpoint using a top-level key named `appendPath`. This top-level key can be added using a <Link to="/features/transformations/">user transformation</Link> and the following line of code `event.appendPath = 'some-path'`.
 
 ```javascript
 Fixed Endpoint URL From Settings
@@ -270,20 +261,20 @@ Final Endpoint
 endpoint: 'https://www.google.com/search?q=cats'
 ```
 
-## FAQs
+## FAQ
 
-### How to check if there are any delivery failures for the events sent to the webhook?
+### How do I check if there are any event delivery failures?
 
-- Login to your account in [**RudderStack app**](https://app.rudderstack.com).
-- Verify that you are sending the events in the **Live Events** tab of your source.
-- Check if there are any delivery failures in the **Live Events** tab of your destination. An example of an event failure is as shown:
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com).
+2. Verify that you are sending the events in the **Live Events** tab of your source.
+3. Check if there are any delivery failures in the **Live Events** tab of your destination. An example of an event failure is as shown:
 
-<img src="https://user-images.githubusercontent.com/59817155/125619804-64033117-16f6-44c7-8050-286059ab404d.png" /><span class="imageTitle">Failed Event</span>
+<img src="https://user-images.githubusercontent.com/59817155/125619804-64033117-16f6-44c7-8050-286059ab404d.png" />
 
-- You can then check the **Error Response** to get more details about the error, including the reason of the failure, as shown:
+4. You can then check the **Error Response** to get more details about the error, including the reason of the failure, as shown:
 
-<img src="https://user-images.githubusercontent.com/59817155/125619922-c68b1c48-50aa-4ce9-8803-8381170e3cc9.png" /><span class="imageTitle">Error Response</span>
+<img src="https://user-images.githubusercontent.com/59817155/125619922-c68b1c48-50aa-4ce9-8803-8381170e3cc9.png" />
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring webhooks with RudderStack, please feel free to [**contact us**](mailto:%20docs@rudderstack.com). You can also start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

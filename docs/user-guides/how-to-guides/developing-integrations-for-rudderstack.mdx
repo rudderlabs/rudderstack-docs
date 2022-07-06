@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/user-guides/how-to-guides/developing-integrations-for-rudderstack"
 title: "How to Develop Integrations for RudderStack"
 description: >-
   Useful tips for developers who wish to send events to their own destination
@@ -7,11 +6,8 @@ description: >-
 ---
 
 <div class="successBlock">
-
-RudderStack currently supports over 80 [**destinations**](https://rudderstack.com/docs/destinations/).
-
-This guide is useful if you wish to send events to a target platform **not supported by us currently.**
-
+RudderStack currently supports over 150 <Link to="/destinations/overview/">destinations</Link>.
+This guide is useful if you wish to send events to a target platform <strong>not supported by us currently</strong>.
 </div>
 
 ## What is an integration?
@@ -20,9 +16,9 @@ This guide is useful if you wish to send events to a target platform **not suppo
 
 ## How does an integration work?
 
-The RudderStack [**SDKs**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/) help the developers capture business events within their enterprise systems and route them to RudderStack. The events sent from the SDKs to RudderStack follow a canonical model and are independent of the programming language or the source platform.
+The RudderStack <Link to="/sources/sdks/">SDKs</Link> help the developers capture business events within their enterprise systems and route them to RudderStack. The events sent from the SDKs to RudderStack follow a canonical model and are independent of the programming language or the source platform.
 
-The RudderStack engine is message-agnostic and performs resilient but optimized routing functions. The [**transformer**](https://github.com/rudderlabs/rudder-transformer) service is responsible for the final mapping from the canonical message to the destination-specific semantics.
+The RudderStack engine is message-agnostic and performs resilient but optimized routing functions. The [transformer](https://github.com/rudderlabs/rudder-transformer) service is responsible for the final mapping from the canonical message to the destination-specific semantics.
 
 ## Why not just develop the transformer, then?
 
@@ -51,8 +47,8 @@ Even after an integration component has been included in the build, you can cont
 
 ## Submitting an integration pull request
 
-When developing a new integration for RudderStack, you need to submit a pull request (PR) to a couple of RudderStack repositories. For more details on submitting these PRs, refer to our [**step-by-step guide**](https://rudderstack.com/docs/user-guides/how-to-guides/how-to-submit-an-integration-pull-request).
+When developing a new integration for RudderStack, you need to submit a pull request (PR) to a couple of RudderStack repositories. For more details on submitting these PRs, refer to our <Link to="/user-guides/how-to-guides/how-to-submit-an-integration-pull-request">step-by-step guide</Link>.
 
 ## Contact us
 
-For more information on any of the sections covered in this guide, feel free to [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on any of the sections covered in this guide, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

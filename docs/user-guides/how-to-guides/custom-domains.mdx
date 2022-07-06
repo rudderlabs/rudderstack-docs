@@ -1,19 +1,16 @@
 ---
-# slug: "/docs/user-guides/how-to-guides/custom-domains"
 title: "How to Use Custom Domains"
 description: >-
   Use your own domain to serve the RudderStack Javascript SDK and send events to your own domain.
 ---
 
-This guide contains the steps to use your own domain to route the events or proxy the [RudderStack JavaScript SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/) via your own CDN. 
+This guide contains the steps to use your own domain to route the events or proxy the <Link to="/sources/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link> via your own CDN. 
 
 <div class="warningBlock">
-
 You will need access to your domain’s DNS settings as well as your CDN settings.
 </div>
 
 <div class="infoBlock">
-
 The examples in this guide use AWS CloudFront. However, the settings should be similar regardless of your CDN.
 </div>
 
@@ -30,7 +27,6 @@ The following table lists the three endpoints to be proxied via your own CDN to 
 To use your own domain for these endpoints, you will need to route the traffic through your CDN. 
 
 <div class="warningBlock">
-
 You will incur CDN charges for this traffic if you choose to use your own domain.
 </div>
 
@@ -72,8 +68,7 @@ To serve the JavaScript SDK, start by creating a new distribution. The following
 | Cache policy | CachingOptimized |
 
 <div class="infoBlock">
-
-Click on <strong>Create policy</strong> and refer to the settings in the <a href="#create-cache-policy">Create policy</a> section below.
+Click on <strong>Create policy</strong> and refer to the settings in the <Link to="#create-cache-policy">Create policy</Link> section below.
 </div>
 
 ### Additional distribution settings
@@ -145,7 +140,7 @@ After:
 <script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
 ```
 
-To <Link to="/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link>, you can use the following URL: 
+To <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link>, you can use the following URL: 
 
 ```html
 <script>
@@ -156,8 +151,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 ```
 
 <div class="infoBlock">
-
-If you are using an older version of the JavaScript SDK (v1), refer to the <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</a> to migrate to v1.1.
+If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</Link> to migrate to v1.1.
 </div>
 
 ## Setup for sending events
@@ -202,8 +196,7 @@ rudderanalytics.load(
 You should be able to confirm that the events are routed through your own domain and not the `rudderstack.com` domain in the network tab of your browser console.
 
 <div class="infoBlock">
-
-Refer to this <a href="https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/#how-to-check-if-the-data-is-being-transmitted-to-the-desired-destinations">JavaScript SDK FAQ</a> for more information on verifying the flow of events.
+Refer to this <Link to="/sources/sdks/rudderstack-javascript-sdk/js-sdk-faqs/#how-to-check-if-the-data-is-being-transmitted-to-the-desired-destinations">JavaScript SDK FAQ</Link> for more information on verifying the flow of events.
 </div>
 
 ## Setup for fetching source configuration
@@ -211,7 +204,6 @@ Refer to this <a href="https://www.rudderstack.com/docs/stream-sources/ruddersta
 When the JavaScript SDK is loaded, it uses the source write key to fetch the required configuration from RudderStack. This determines which native SDKs may be needed and which destinations are used.
 
 <div class="infoBlock">
-
 The call to fetch the source configuration is sent to <code class="inline-code">api.rudderstack.com</code> with the source <code class="inline-code">WRITE_KEY</code> used as an authorization header. For this reason, this distribution will be slightly different as you will need to explicitly allowlist the Authorization header to make sure it is sent along with each request.
 </div>
 
@@ -258,12 +250,10 @@ To use the AWS Certificate Manager with CloudFront, choose the relevant ACM/IAM 
 <img src="../../assets/user-guides/custom-domains/custom-domains-8.png" alt="Custom SSL certificate" />
 
 <div class="infoBlock">
-
 You can choose your subdomain or use a wildcard domain <code class="inline-code">*.yourdomain.com</code> to set up multiple subdomains.
 </div>
 
 <div class="successBlock">
-
 The AWS Certificate Manager will guide you through the verification by email or DNS TXT records. You will be able to choose your own domain for SSL certificates once verified.
 </div>
 

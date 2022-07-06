@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/user-guides/administrators-guide/rudderstack-dashboard"
 title: "RudderStack Grafana Dashboard"
 description: Detailed technical description of the various RudderStack Grafana dashboard panels for better observability and performance monitoring.
 ---
@@ -11,9 +10,9 @@ All the performance metrics are stored in InfluxDB, where Grafana queries them a
 This guide is aimed at explaining these performance metrics and the various dashboard panels in detail.
 
 <GhBadge
-  url={'https://rudderstack.com/enterprise-quote'}
+  url={'https://rudderstack.com/pricing/'}
   label={'Plan'}
-  message={'Enterprise'}
+  message={'Pro / Enterprise'}
   color={'blueviolet'}
 />
 
@@ -99,6 +98,7 @@ This usually happens during a sudden surge in the traffic, but syncs over a peri
 
 <img src="../../assets/3.png" />
 <span class="imageTitle">Event Delivery</span>
+
 ### Events Delivered - Batch Router
 
 This section corresponds to the number of events delivered to the object storage destinations like Amazon S3, Google Cloud Storage, Azure Blob storage, MinIO, Digital Ocean Spaces, etc.
@@ -194,15 +194,11 @@ This graph corresponds to the number of events delivered to the warehouse destin
 <span class="imageTitle">Synced Rows and Events Sync Lag Time</span>
 
 <div class="infoBlock">
-
-A <code class="inline-code">user_logged_in</code> event of <code class="inline-code">track</code> type will be synced to <code class="inline-code">tracks</code> and <code class="inline-code">user_logged_in</code> tables. Check out our <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/">RudderStack Warehouse Schema</a> for more details. Similarly, the <code class="inline-code">identify</code> events are synced to the <code class="inline-code">identifies</code> and <code class="inline-code">users</code> tables. Since each event is being synced to two tables, number of synced rows is generally twice the number of events.
-
+A <code class="inline-code">user_logged_in</code> event of <code class="inline-code">track</code> type will be synced to <code class="inline-code">tracks</code> and <code class="inline-code">user_logged_in</code> tables. Check out our <Link to="/destinations/warehouse-destinations/warehouse-schema/">RudderStack Warehouse Schema</Link> for more details. Similarly, the <code class="inline-code">identify</code> events are synced to the <code class="inline-code">identifies</code> and <code class="inline-code">users</code> tables. Since each event is being synced to two tables, number of synced rows is generally twice the number of events.
 </div>
 
 <div class="infoBlock">
-
-If an event property does not match the data type in the corresponding table of warehouse, that column is not synced into the actual table but moved into <code class="inline-code">rudder_discards</code> table. Check <a href="https://rudderstack.com/docs/data-warehouse-integrations/warehouse-schemas/#data-type-mismatch-handling">this guide</a> on how RudderStack handles data type mismatch, for more details.
-
+If an event property does not match the data type in the corresponding table of warehouse, that column is not synced into the actual table but moved into <code class="inline-code">rudder_discards</code> table. Check <Link to="/destinations/warehouse-destinations/warehouse-schema/#how-rudderstack-handles-data-type-mismatch">this guide</Link> on how RudderStack handles data type mismatch, for more details.
 </div>
 
 ### Synced Rows
@@ -210,9 +206,7 @@ If an event property does not match the data type in the corresponding table of 
 Corresponds to the number of new rows created in the `grouped by` table during warehouse uploads. In the example above, if there are different event names \(eg. `user_logged_in`, `user_signed_up` \) they all are grouped under **`others`** in the metrics.
 
 <div class="warningBlock">
-
 If there are a lot of synced rows in <code class="inline-code">rudder_discards</code>, this implies that the data types are not consistent from your sources. It is recommended to check such entries and fix the issue.
-
 </div>
 
 ### Events Sync Lag Time - Warehouse
@@ -231,11 +225,9 @@ This is the size of internal queue that RudderStack maintains for routing the ev
 RudderStack processes events from these queues. If the size of the queue keeps increasing, it implies that the event outflow is less than inflow.
 
 <div class="warningBlock">
-
 For real-time deliveries, it is important to maintain queue size at 1 or 2.
-
 </div>
 
-## Contact Us
+## Contact us
 
-To get more information on any of the above metrics related to the RudderStack dashboards, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also talk to us in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community - we will be happy to help you!
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

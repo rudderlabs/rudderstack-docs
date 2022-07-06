@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/user-guides/administrators-guide/infra-provisioning"
 title: "Infrastructure Provisioning"
 description: >-
   Detailed overview of the various performance metrics captured by running
@@ -7,7 +6,7 @@ description: >-
   infrastructure provisioning
 ---
 
-This is a brief overview of the stats that we captured by running Backend on different AWS machine configurations that we hope gives a rough idea for users in making the decisions to provision infrastructure to host Rudder. All numbers capture below are by using metrics described in [Monitoring and Metrics](https://www.rudderstack.com/docs/user-guides/administrators-guide/monitoring-and-metrics/#available-metrics).
+This is a brief overview of the stats that we captured by running Backend on different AWS machine configurations that we hope gives a rough idea for users in making the decisions to provision infrastructure to host Rudder. All numbers capture below are by using metrics described in <Link to="/user-guides/administrators-guide/monitoring-and-metrics/#available-metrics">Monitoring and Metrics</Link>.
 
 ## Load Test Results
 
@@ -97,7 +96,6 @@ All tests are done using db.m4.xlarge Amazon RDS instance for hosting the postgr
 </table>
 
 <div class="infoBlock">
-
 Backend migrates and drops tables that have a threshold of jobs processed. Gateway tables are backed up to object storage (S3, MinIO etc.) if configured by user. Dangling tables indicate tables are ready for drop at a rate greater than the rate at which tables are backed up to object storage. Concurrent uploads to object storage is in the roadmap for upcoming versions of Backend.
 </div>
 
@@ -155,11 +153,7 @@ Backend migrates and drops tables that have a threshold of jobs processed. Gatew
 </table>
 
 <div class="warningBlock">
-
-  Transformer is a NodeJS/Koa server launced as cluster of node processes,
-  processses count equal to the number of cores of the machine. Choosing an
-  instance with lower number of core the number of cores in instance processor
-  might reduce the throughput of transformer.
+Transformer is a NodeJS/Koa server launced as cluster of node processes, processses count equal to the number of cores of the machine. Choosing an instance with lower number of core the number of cores in instance processor might reduce the throughput of transformer.
 </div>
 
 ### Batch Router - S3 Destination
@@ -257,13 +251,11 @@ In the above production example, after substituting the values, _totalStoragePer
 Sample your peak load in production to estimate the storage requirements and substitute your values to get an estimate of the storage needed per 1 hour of data.
 
 <div class="infoBlock">
-
 Event data and tables are ephemeral. In a happy path, we would have only a few minutes of event data being stored.
 
 We recommend at least 10 hours worth of event storage computed above to gracefully handle destinations going down for a few hours.
 
 If you want to prepare for a destination going for down for days, accommodate them into your storage capacity.
-
 </div>
 
 ### Estimating Connections
@@ -291,7 +283,9 @@ memoryNeeded = numActiveUsers * userEventsInThreshold * avgGwEventSize
 Memory required in the above example would be 840 MB.
 
 <div class="infoBlock">
-
 The memory estimate does not include the default RAM required for running the OS and the required processes.
-
 </div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

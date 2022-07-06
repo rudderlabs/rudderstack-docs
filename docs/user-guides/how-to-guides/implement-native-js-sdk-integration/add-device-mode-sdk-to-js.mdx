@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js"
 title: "How to Add a Device Mode SDK to RudderStack JavaScript SDK"
 description: >-
   Detailed documentation to add a native SDK to RudderStack JavaScript SDK to
@@ -70,9 +69,7 @@ export { SampleIntegration }
 2. Import the above integration in [https://github.com/rudderlabs/rudder-sdk-js/blob/master/integrations/GA/index.js](https://github.com/rudderlabs/rudder-sdk-js/blob/master/integrations/GA/index.js) and add it to the exported list to be picked up by the base RudderStack SDK.
 
 <div class="warningBlock">
-
-The exported integration object must be under the **key name that matches the config-plane destination name.**
-
+The exported integration object must be under the <strong>key name that matches the config-plane destination name.</strong>
 </div>
 
 <img src="../../../assets/screenshot-2019-12-10-at-7.21.35-pm.png" />
@@ -195,9 +192,7 @@ export default process.browser ? GA : GANode
 ```
 
 <div class="infoBlock">
-
-You can ignore the Node counterpart as it's legacy. We have a separate <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk">Node.js SDK</a> for sending events to RudderStack (in the server-side connection mode)
-
+You can ignore the Node counterpart as it's legacy. We have a separate <Link to="/sources/sdks/rudderstack-node-sdk/">Node.js SDK</Link> for sending events to RudderStack (in the server-side connection mode)
 </div>
 
 The following is the code for adding the newly-added integration to the export list. The key name must be the same as the one configured in the config plane.
@@ -241,6 +236,6 @@ RudderStack JavaScript SDK makes a call to the config plane to fetch all native 
 
 </div>
 
-## Contact Us
+## Contact us
 
-In case you come across any queries, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also [raise an issue](https://github.com/rudderlabs/rudder-sdk-js/issues) on our GitHub repository, if you come across any bugs.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

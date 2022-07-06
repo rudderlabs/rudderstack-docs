@@ -123,9 +123,7 @@ class CallToAction extends React.Component {
 In the above example, information such as the user ID, email along with contextual information such as IP address, `anonymousId`, etc. will be captured.
 
 <div class="infoBlock">
-
 There is no need to call <code class="inline-code">identify()</code> for anonymous visitors to your website. Such visitors are automatically assigned an <code class="inline-code">anonymousId</code>.
-
 </div>
 
 ### Step 3: Track your users' actions with the `track()` method
@@ -146,12 +144,10 @@ window.rudderanalytics.track(
 )
 ```
 
-In the above example, the method tracks the event ‘**test track event GA3**’, and information such as the revenue, currency, and anonymousId. You can use this method to track various other success metrics for your website, such as user signups, item purchases, article bookmarks, and much more.
+In the above example, the method tracks the event '**test track event GA3**', and information such as the revenue, currency, and anonymousId. You can use this method to track various other success metrics for your website, such as user signups, item purchases, article bookmarks, and much more.
 
 <div class="infoBlock">
-
 To override contextual information, for ex: anonymizing IP and other contextual fields like <code class="inline-code">page</code> properties, the following template can be used. Similarly, you can override the auto-generated <code class="inline-code">anonymousId</code> with the provided ID. For this, follow the snippet below:
-
 </div>
 
 ```javascript
@@ -181,7 +177,7 @@ exports.onRouteUpdate = () => {
 }
 ```
 
-You’ve now successfully installed `rudder-analytics.js` tracking. You can enable and use any event destination to send your event data via RudderStack.
+You've now successfully installed `rudder-analytics.js` tracking. You can enable and use any event destination to send your event data via RudderStack.
 
 ### Step 4: Check ready state
 
@@ -196,9 +192,7 @@ window.rudderanalytics.ready(() => {
 ```
 
 <div class="infoBlock">
-
-For detailed technical documentation and troubleshooting guide on the RudderStack’s JavaScript SDK, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk">JavaScript documentation</a>.
-
+For detailed technical documentation and troubleshooting guide on the RudderStack's JavaScript SDK, refer to <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link>.
 </div>
 
 ## Using the Querystring API
@@ -306,9 +300,7 @@ You may use the below parameters as a querystring parameter and trigger the corr
 You can also define callbacks to the common methods of the `rudderanalytics` object.
 
 <div class="infoBlock">
-
 Currently, the functionality is supported for <code class="inline-code">syncPixel</code> method which is called in the SDK when making sync calls in integrations for relevant destinations. For example, you can load <code class="inline-code">rudderanalytics</code> with callbacks in your Gatsby browser file as shown below:
-
 </div>
 
 ```javascript
@@ -322,9 +314,7 @@ window.rudderanalytics.syncPixelCallback = obj => {
 ```
 
 <div class="warningBlock">
-
 In order for this to work well, you must also set the <code class="inline-code">manualLoad</code> option to <code class="inline-code">true</code> in your Gatsby configuration, and load RudderStack in the browser's Gatsby file manually.
-
 </div>
 
 In the above example, we defined a `syncPixelCallback` on the `rudderanalytics` object before the call to load the SDK. This will lead to calling of this registered callback with the parameter `{destination: <destination_name>}` whenever a sync call is made from the SDK for relevant integrations like **Lotame**.
@@ -346,6 +336,6 @@ rudderanalytics.load(YOUR_WRITE_KEY, DATA_PLANE_URL, {
 
 This plugin is released under the [AGPLv3 License](https://www.gnu.org/licenses/agpl-3.0-standalone.html).
 
-## Contact Us
+## Contact us
 
-For more information on any of the sections in this guide, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community, or even see RudderStack [in action](https://rudderstack.com/request-a-demo/).
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudderstack/best-practices-for-coding-transformation-functions-in-javascript"
 title: "Best Practices for Coding Transformation Functions in JavaScript"
 description: Pointers for developers while coding their custom transformation functions
 ---
@@ -40,3 +39,7 @@ The following are some typical examples of transformations that developers might
 - If the enterprise generates a large number of events, and the target analytics platform charges by volume - then only a certain number of samples can be sent for the purpose of analytics. In such a case, we can resort to a sampling strategy where we include every `n`th message from the original set in the collection to be returned.
 - Do a user-wide aggregation of `total_payments` field from within messages in the batch received having type `track` and event as `spin` – and generate a single event with the summed up `total_payments` per user. Again, on a platform that charges by volume – such aggregation to find metrics such as average revenue per user can be handy.
 - For each Product included in a `track` message for event `Product List Viewed` – generate individual messages that might be flowing into, say, Google Analytics with the event action as `detail`. This is typically done when the target platform offers a high free volume threshold and at the same time sufficient ability for granular level analysis \(like Google Analytics\). These are situations where one input message can give rise to more than one messages.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

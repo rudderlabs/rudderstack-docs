@@ -1,16 +1,13 @@
 ---
-# slug: "/docs/user-guides/how-to-guides/how-to-filter-selective-destinations"
 title: "How to Filter Selective Destinations"
 description: >-
-  An easy-to-follow guide on filtering selective destinations while sending
-  event data in RudderStack
+  Step-by-step guide on filtering selective destinations while sending your event data via RudderStack.
 ---
 
-RudderStack lets you send your event data only to certain intended destinations by filtering out the rest. For the [**JavaScript SDK**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/), you can do this by passing an `integrations` object in the `options` parameter of the event method. For most of the other SDKs, you can use the `integrations` object parameter for the associated event. 
+RudderStack lets you send your event data only to certain intended destinations by filtering out the rest. For the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link>, you can do this by passing an `integrations` object in the `options` parameter of the event method. For most of the other SDKs, you can use the `integrations` object parameter for the associated event. 
 
 <div class="infoBlock">
-
-This feature is currently supported only for cloud mode integrations. For more information on the cloud mode, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+This feature is currently supported only for cloud mode integrations. For more information on the cloud mode, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 ## How it works
@@ -35,13 +32,11 @@ rudderanalytics.identify(
 ```
 
 <div class="successBlock">
-
 Unless explicitly defined otherwise, <code class="inline-code">All</code> is always set to <code class="inline-code">true</code>. This means that RudderStack sends the events to all destinations by default.
 </div>
 
 <div class="infoBlock">
-
-  The line <code class="inline-code">All: false</code> instructs RudderStack <strong>not</strong> to send the event data to any destinations <strong>by default</strong>, unless they are explicitly set to <code class="inline-code">true</code>.
+The line <code class="inline-code">All: false</code> instructs RudderStack <strong>not</strong> to send the event data to any destinations <strong>by default</strong>, unless they are explicitly set to <code class="inline-code">true</code>.
 </div>
 
 You can also disable sending event data to certain destinations. In this case, the event data is sent to **all the other destinations** except the specified ones. An example of how to do this is shown below:
@@ -63,7 +58,6 @@ rudderanalytics.identify(
 ```
 
 <div class="infoBlock">
-
 In the above code snippet, RudderStack will send the event data to all destinations <strong>except</strong> Google Analytics and Intercom.
 </div>
 
@@ -72,7 +66,6 @@ In the above code snippet, RudderStack will send the event data to all destinati
 The following are some examples of the `track()` call sent from a variety of SDKs.
 
 <div class="infoBlock">
-
 Note that ome of the SDKs follow their own convention that is different than the examples below. The notable SDKs with different convention are iOS and Android. Refer to the respective SDK documentation for the correct format of filtering selective destinations.
 </div>
 
@@ -114,19 +107,17 @@ rudder_analytics.track(
 ```
 
 <div class="infoBlock">
-
-  In the above examples, the <code class="inline-code">track</code> events will only be sent to the Amazon S3 and Heap.io destinations.
+In the above examples, the <code class="inline-code">track</code> events will only be sent to the Amazon S3 and Heap.io destinations.
 </div>
 
 ## Destination naming convention
 
-To filter the destinations, you need to specify the exact destination names. To get these names, you can go to the [**RudderStack directory**](https://app.rudderstack.com/directory). 
+To filter the destinations, you need to specify the exact destination names. To get these names, you can go to the [RudderStack directory](https://app.rudderstack.com/directory). 
 
 <div class="infoBlock">
-
 Note that the destination names are case sensitive.
 </div>
 
 ## Contact us
 
-For more information on any of the sections in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For more information on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

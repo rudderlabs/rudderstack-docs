@@ -16,7 +16,7 @@ const NestedAccordion = (props) => {
   const docsBasePath = process.env.GATSBY_DOCS_BASE_PATH || "";
 
   useEffect(() => {
-    const returnMenuItem = (item, i) => {
+    const returnMenuItem = (item, i, mainParent) => {
       let menuItem;
 
       if (item.content.length === 0) {
@@ -26,6 +26,18 @@ const NestedAccordion = (props) => {
             key={i}
             allowZeroExpanded={true}
           >
+            {item.sectionTitle !== undefined && (
+              <p
+                className={`
+                  section-title
+                  ${item.sectionTitle ? "" : "child"}
+                  ${mainParent ? "" : "child"}
+                  ${mainParent && i === 0 ? "pt-0" + (item.sectionTitle ? "" : " pb-0") : ""}
+                `}
+              >
+                {item.sectionTitle}
+              </p>
+            )}
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton
@@ -56,6 +68,17 @@ const NestedAccordion = (props) => {
         });
         menuItem = (
           <Accordion key={i} className="item" allowZeroExpanded={true}>
+            {item.sectionTitle !== undefined && (
+              <p
+                className={`section-title
+                  ${item.sectionTitle ? "" : "child"}
+                  ${mainParent ? "" : "child"}
+                  ${mainParent && i === 0 ? "pt-0" + (item.sectionTitle ? "" : " pb-0") : ""}
+                `}
+              >
+                {item.sectionTitle}
+              </p>
+            )}
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton
@@ -87,7 +110,7 @@ const NestedAccordion = (props) => {
     const load = async () => {
       setLoading(false);
       let menuItems = jsonData.map((item, i) => {
-        let menuItem = returnMenuItem(item, i);
+        let menuItem = returnMenuItem(item, i, true);
         return menuItem;
       });
       setItems(menuItems);
@@ -137,6 +160,9 @@ const NestedAccordion = (props) => {
       "accordion__button accActive"
     )[0];
     expandAcc(activeItem);
+
+    activeItem?.scrollIntoView({ block: "center" })
+    window.scrollTo(0, 0)
   }, [loading]);
 
   return <div className="nestedAccordion">{items}</div>;

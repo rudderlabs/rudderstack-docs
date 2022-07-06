@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack"
 title: "Migrating Your Warehouse Destination from Segment to RudderStack"
 description: >-
   A step-by-step guide on migrating your warehouse destination from Segment to
@@ -27,9 +26,7 @@ Follow these steps:
 3. RudderStack will then start routing new events into your warehouse
 
 <div class="infoBlock">
-
 If both Segment and RudderStack try to write to the same tables at the same time, it could result in Serializable isolation errors in some warehouses like Redshift. This is an intermittent issue, and would succeed on retrying.
-
 </div>
 
 ## Migrating Client-side Sources
@@ -37,8 +34,6 @@ If both Segment and RudderStack try to write to the same tables at the same time
 There could be a scenario where some clients which are still using the old version of your application \(e.g. Android / iOS\) and sending the events to Segment.
 
 Follow the below steps to easily migrate to RudderStack and storing the event data in the same tables as Segment.
-
-<!--![Migrating Warehouse Destinations from Segment to RudderStack](../../.gitbook/assets/warehouse-migration.png)-->
 
 <img src="../../assets/warehouse-migration.png" alt="Migrating Warehouse Destinations from Segment to RudderStack" />
 <span class="imageTitle">Migrating Warehouse Destinations from Segment to RudderStack</span>
@@ -66,9 +61,7 @@ Some important points to note here:
 - Configure RudderStack's warehouse destination such that it will start syncing your data **after** Segment's warehouse load completes. For example, if Segment is going to finish loading the latest batch at 10 PM, then RudderStack's warehouse loading should start after that. \(10.30 PM, or 11 PM, and so on\).
 
 <div class="infoBlock">
-
 If both Segment and RudderStack try to write to the same tables at the same time, it could result in Serializable isolation errors in some warehouses like Redshift. This is an intermittent issue, and should succeed after retrying.
-
 </div>
 
 ### **Step 5: Disable Warehouse Destination in Segment**
@@ -80,6 +73,6 @@ If both Segment and RudderStack try to write to the same tables at the same time
 
 - Once all clients are migrated over to RudderStack, you can disable the webhook destination in Segment.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while migrating your warehouse destinations from Segment to RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

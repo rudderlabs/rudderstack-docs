@@ -1,5 +1,4 @@
 ---
-# slug: "/docs/user-guides/administrators-guide/config-parameters"
 title: "Configuration Parameters"
 description: >-
   Various types of configuration parameters explained with their types,
@@ -9,16 +8,11 @@ description: >-
 This document describes the various configuration parameters for the [**`config.yaml`**](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) file. You can fine-tune them to suit your application's needs.
 
 <div class="infoBlock">
-
-These configuration parameters are also applicable for the **<code class="inline-code">config.toml</code>** file, in case you have an older RudderStack deployment.
-
+These configuration parameters are also applicable for the <code class="inline-code">config.toml</code> file, in case you have an older RudderStack deployment.
 </div>
 
 <div class="successBlock">
-  To best understand some of the terms covered in this guide, we recommend going
-  through the <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/">
-    RudderStack architecture
-  </a> first.
+To best understand some of the terms covered in this guide, we recommend going through the <Link to="/resources/rudderstack-architecture/">RudderStack Architecture</Link> first.
 </div>
 
 ## Global Parameters
@@ -33,9 +27,7 @@ These configuration parameters are also applicable for the **<code class="inline
 | `enableStats`       | Boolean | This variable enables or disables stats.                                                                                                                                                                                                 |    `true`     |
 
 <div class="infoBlock">
-
-For more information on the Processor, Gateway, and Router modules of the RudderStack backend, refer to the <a href="https://rudderstack.com/docs/get-started/rudderstack-architecture/">Architecture</a>.
-
+For more information on the Processor, Gateway, and Router modules of the RudderStack backend, refer to the <Link to="/resources/rudderstack-architecture/">RudderStack Architecture</Link>.
 </div>
 
 ## \[Gateway\]
@@ -200,9 +192,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
       </td>
       <td style="text-align:left">Boolean</td>
       <td style="text-align:left">
-        Enables or disables the backup. This is set to <code class="inline-code">false</code> in the <a href="https://rudderstack.com/docs/user-guides/administrators-guide/high-availability#rudderstack-server-running-modes">
-          Degraded
-        </a> mode.
+        Enables or disables the backup. This is set to <code class="inline-code">false</code> in the <Link to="/user-guides/administrators-guide/high-availability/#rudderstack-server-running-modes">Degraded</Link> mode.
       </td>
       <td style="text-align:center">
         <code class="inline-code">true</code>
@@ -243,9 +233,7 @@ For more information on the Processor, Gateway, and Router modules of the Rudder
 ## \[Warehouse\]
 
 <div class="infoBlock">
-
-You can ignore these settings if you don't have any <a href="https://rudderstack.com/docs/data-warehouse-integrations">warehouse destinations</a> configured in RudderStack.
-
+You can ignore these settings if you don't have any <Link to="/destinations/warehouse-destinations/">Warehouse Destinations</Link> configured in RudderStack.
 </div>
 
 | Parameter name          | Type   | Description                                                   |   Default value    |
@@ -309,6 +297,6 @@ You can ignore these settings if you don't have any <a href="https://rudderstack
 | `enableBatchRouterMetric`         | Boolean | Sends the Batch Router request metrics.                                                                                       |    `true`     |
 | `enableDestinationFailuresMetric` | Boolean | Sends the destination failures metrics.                                                                                       |    `true`     |
 
-## Contact Us
+## Contact us
 
-For more information on any of the configuration parameters discussed in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
