@@ -138,7 +138,6 @@ Once you add Amplitude as a destination in the [RudderStack dashboard](https://a
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
-    <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
   </TabList>
@@ -207,62 +206,8 @@ Make sure that you enable <code class="inline-code">use IDFA as device id</code>
 </li>
 </ol>
       </TabPanel>
-        <TabPanel>
-          <div class="warningBlock">
-          This device mode integration is supported for Amplitude v8.8.0 and above.
-        </div>
-        Follow these steps to add Amplitude to your iOS project:
-<ol>
-<li> Install <code class="inline-code">RudderAmplitude</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
-<span>
-
-```ruby
-pod 'RudderAmplitude', '~> 1.0.0'
-```
-</span>
-</li>
-<li>Run the <code class="inline-code">pod install</code> command.</li>
-<li>Then, import the SDK depending on your preferred platform:
-<span>
-
-```swift
-import RudderAmplitude
-```
-</span>
-<span>
-
-```objectivec
-@import RudderAmplitude;
-```
-</span>
-</li>
-<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under the <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
-<br /><br />
-<span>
-
-```swift
-let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
-            .dataPlaneURL(DATA_PLANE_URL)
-        
-RSClient.sharedInstance().configure(with: config)
-RSClient.sharedInstance().addDestination(RudderAmplitudeDestination())
-```
-</span>
-<span>
-
-```objectivec
-RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
-[config dataPlaneURL:DATA_PLANE_URL];
-
-[[RSClient sharedInstance] configureWith:config];
-[[RSClient sharedInstance] addDestination:[[RudderAmplitudeDestination alloc] init]];
-```
-</span>
-</li>
-</ol>
-      </TabPanel>
       <TabPanel>
-        To add Amplitude to your Android Project please follow these steps :
+        To add Amplitude to your Android project, follow these steps :
 <ol>
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: app) file, and add the following under the <code class="inline-code">dependencies</code> section :
 <span>

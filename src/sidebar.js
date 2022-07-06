@@ -414,8 +414,15 @@ export const jsonData = [
         link: "/sources/extract/",
         content: [
             {
+                key: "common-settings",
+                title: "Common Settings",
+                link: "/sources/extract/common-settings/",
+                content: []
+            },
+            {
                 key: "activecampaign",
                 title: "ActiveCampaign",
+                sectionTitle: "Sources",
                 link: "/sources/extract/activecampaign/",
                 content: []
             },
@@ -548,12 +555,7 @@ export const jsonData = [
                 title: "Zendesk Chat",
                 link: "/sources/extract/zendesk-chat/",
                 content: []
-            }, {
-                key: "common-settings",
-                title: "Common Settings",
-                link: "/sources/extract/common-settings/",
-                content: []
-            },
+            }, 
         ]
     }, {
         key: "reverse-etl",
@@ -1404,7 +1406,7 @@ export const jsonData = [
         ]
     },
     {
-        key: "data-warehouse-integrations",
+        key: "warehouse-destinations",
         title: "Warehouse Destinations",
         link: "/destinations/warehouse-destinations/",
         content: [
@@ -1496,6 +1498,7 @@ export const jsonData = [
     },
 
     // Features section
+
   {
     key: "transformations",
     title: "Transformations",

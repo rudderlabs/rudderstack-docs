@@ -1609,6 +1609,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "json-column-support",
+    title: "JSON Column Support",
+    link: "/data-warehouse-integrations/json-column-support/",
+    content: [],
+  },
+  {
     key: "data-governance",
     title: "Data Governance",
     link: "/features/data-governance/",
