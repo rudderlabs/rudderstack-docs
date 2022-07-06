@@ -1,0 +1,42 @@
+---
+title: "RudderStack Event Specification"
+description: >-
+  Detailed technical description and semantic definitions of the event data
+  captured by the various RudderStack APIs.
+---
+
+The **RudderStack Event Spec** helps you plan your event data and provides various options for tracking your events across all the RudderStack SDKs and APIs.
+
+<div class="successBlock">
+RudderStack has a unified event semantic for different destination platforms. You can easily translate your event data to different downstream tools by following this spec.
+</div>
+
+## Supported API calls
+
+The RudderStack API Spec supports the following calls, each answering a pertinent question about the user:
+
+| **API call**          |**Description**                          |
+| :-------------------- |:-------------------------- |
+| <Link to="/event-spec/standard-events/identify/">Identify</Link>  | Captures the details about the user.                                                      |
+| <Link to="/event-spec/standard-events/page/">Page</Link>  | Captures the details about the user.         | Captures the details related to the web page that the user is currently on.               |
+| <Link to="/event-spec/standard-events/screen/">Screen</Link>  | Captures the details about the user.     | Captures the details related to the app screen that the user is currently viewing.        |
+| <Link to="/event-spec/standard-events/track/">Track</Link>  | Captures the details about the user.      | Captures information related to the user's actions.                                       |
+| <Link to="/event-spec/standard-events/group/">Group</Link>  | Captures the details about the user.       | Captures the relevant details about the group or organization that the user is a part of. |
+| <Link to="/event-spec/standard-events/alias/">Alias</Link>  | Captures the details about the user.        | Captures any relevant details about the user's alternate/past identity.                   |
+| **Reset**              | Resets the information related to the previously identified user.                         |
+
+## How the API calls work
+
+Here's a quick overview of how the API calls mentioned above work:
+
+1. When the user makes the API calls, the event data is sent to the RudderStack backend.
+2. RudderStack transforms this event data into a destination-specific format.
+3. The transformed data is then forwarded to the required destination.
+
+## Event data format
+
+The event data collected by RudderStack has a JSON structure, which has the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link> and an API-specific payload.
+
+## Contact Us
+
+For more information on the RudderStack event spec, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

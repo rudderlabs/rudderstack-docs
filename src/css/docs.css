@@ -1,5 +1,9 @@
 /*=== Docs styles ===*/
 
+.sidebar-nav-content a {
+  font-size: 14px;
+}
+
 ul.columns {
   column-count: 2;
   column-fill: auto;
@@ -448,6 +452,22 @@ pre[class~="language-rust"]::before {
 .sidebar-nav-content a {
   @apply block pr-5 pl-2 py-1 font-medium;
   color: #6c6c80;
+}
+
+.sidebar-nav-content .section-title {
+  @apply font-semibold uppercase;
+  font-size: 13px;
+  color: #8899A8;
+  padding: 35px 1.25rem 10px 0.5rem;
+}
+
+.sidebar-nav-content .section-title.empty {
+  padding-top: 20px;
+}
+
+.sidebar-nav-content .section-title.child {
+  color: #555555;
+  padding-top: 25px;
 }
 
 .nestedAccordion .accordion__panel {
@@ -1007,6 +1027,13 @@ a.pageRef:hover .rightRefArrow {
   }
   .sidebar-nav-content.active {
     transform: translateX(0px);
+  }
+  .sidebar-nav-content .section-title {
+    padding-top: 30px;
+  }
+  
+  .sidebar-nav-content .section-title.empty {
+    padding-top: 15px;
   }
 
   .mobNavIconWrapper {

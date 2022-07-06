@@ -1,0 +1,90 @@
+---
+title: "Data Plane Setup"
+description: >-
+  Step by step guide on installing and setting up the RudderStack backend (data plane) in your preferred environment.
+---
+
+The data plane is RudderStack's core engine responsible for processing and routing the events.
+
+<div class="infoBlock">
+For more information on the data plane, refer to <Link to="/resources/rudderstack-architecture/">RudderStack Architecture</Link>.
+</div>
+
+## Setup instructions
+
+Based on the platform where you want to set up RudderStack, refer to the setup instructions:
+
+* <Link to="/get-started/rudderstack-open-source/data-plane-setup/docker/">Docker</Link>
+
+* <Link to="/get-started/rudderstack-open-source/data-plane-setup/kubernetes/">Kubernetes</Link>
+
+* <Link to="/get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/">Developer Machine Setup</Link>
+
+<div class="warningBlock">
+If you are planning to use RudderStack in production, it is strongly recommended to use the <a href="kubernetes/">Kubernetes</a> Helm charts. The Docker images are updated with the latest bug fixes more frequently than the <a href="https://github.com/rudderlabs/rudder-server">GitHub repository</a>.
+</div>
+
+## Sending test events
+
+Once you have installed RudderStack, follow the <Link to="/get-started/rudderstack-open-source/sending-test-events/">Sending Test Events</Link> guide to verify your installation.
+
+## FAQ
+
+### Do I need to sign up for an account to set up open source RudderStack?
+
+Signing up for [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource) is the easiest way to set up and manage your data pipelines. The web app is only used for source/destination configuration and does not have access to your data. It also provides a <Link to="/dashboard-guides/live-events/">Live Events</Link> feature for debugging purposes, only for a limited time. 
+
+**RudderStack does not persist any of your data**.
+
+However, if you do not wish to sign up for RudderStack and want to self-host the source/destination configurations, you can use the open source <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility. To set up the RudderStack server (backend) in your own environment, follow the steps listed in the [Setup instructions](#setup-instructions) section for your preferred platform.
+
+<div class="warningBlock">
+The control plane set up using Control Plane Lite does not have features like <Link to="/features/transformations/">Transformations</Link> and the ability to view <Link to="/dashboard-guides/live-events/">Live Events</Link>.
+</div>
+
+### What is a data plane URL? Where do I get it?
+
+For routing and processing the events to the RudderStack backend, a **data plane URL** is required.
+
+<div class="infoBlock">
+Refer to the <Link to="/resources/rudderstack-architecture/">RudderStack Architecture</Link> guide for more information the RudderStack data plane.
+</div>
+
+If you're using open source RudderStack, you are required to set up your own data plane by [installing and setting up RudderStack](#setup-instructions) in your preferred environment.
+
+<div class="infoBlock">
+An open source RudderStack data plane URL typically looks like <code class="inline-code">http:localhost:8080</code>, where <code class="inline-code">8080</code> is the port where your RudderStack data plane is hosted.
+</div>
+
+### How to check the status of the data plane?
+
+To check the status of your data plane, run the following command:
+
+```bash
+CURL <DATA_PLANE_URL>/health
+```
+
+A sample command is shown below:
+
+```bash
+CURL https://hosted.rudderlabs.com/health
+```
+
+You will see the following output:
+
+```
+{"server":"UP", "db":"UP","acceptingEvents":"TRUE","routingEvents":"TRUE","mode":"NORMAL","goroutines":"15364", "backendConfigMode": "API", "lastSync":"2020-12-01T04:20:33Z", "lastRegulationSync":"2020-11-30T21:40:27Z"}
+```
+
+The RudderStack server (backend) supports two running modes:
+
+- **Normal** (`"mode": "NORMAL"`): In this mode, the RudderStack server runs as expected and there are no issues.
+- **Degraded** (`"mode": "DEGRADED"`): RudderStack enters the degraded mode if it keeps crashing while processing the events after a threshold number of restarts is reached. RudderStack still receives and stores the events in this mode but does not process them and route them to your specified destinations.
+
+<div class="infoBlock">
+For more information on the supported running modes, refer to the <Link to="/user-guides/administrators-guide/high-availability/">RudderStack High Availability</Link>guide.
+</div>
+
+## Contact us
+
+For any questions on installing and setting up the RudderStack data plane, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

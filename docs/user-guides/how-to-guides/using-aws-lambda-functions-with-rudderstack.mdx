@@ -14,7 +14,7 @@ AWS Lambda helps you leverage the full potential of **AWS Serverless Compute**, 
 - Scale your code and make your applications highly available without requiring any additional configuration or cost
 - AWS Lambda offers high performance, regardless of the scale or complexity of your code
 
-RudderStack integrates seamlessly with AWS Lambda, allowing you to use any lambda function to transform your event streams and route them to the [destinations](https://rudderstack.com/docs/destinations#popular-destinations) of your choice.
+RudderStack integrates seamlessly with AWS Lambda, allowing you to use any lambda function to transform your event streams and route them to the <Link to="/destinations/overview/">destinations</Link> of your choice.
 
 ## Integrating AWS Lambda with RudderStack's Node SDK
 
@@ -25,9 +25,7 @@ The following steps are required for integrating the RudderStack Node SDK with t
 - Before getting started, make sure you have a Docker version of RudderStack server in an EC2 instance. More instructions on the setup can be found on our [GitHub page](https://github.com/rudderlabs/rudder-server#setup-instructions-docker)
 
 <div class="infoBlock">
-
-You also need to have <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">AWS CLI</a> installed in your development environment
-
+You also need to have <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">AWS CLI</a> installed in your development environment.
 </div>
 
 - Install the RudderStack Node SDK at the location where the lambda function artifacts are maintained in the development environment, as shown:
@@ -65,6 +63,6 @@ module.exports.helloWorld = (event, context, callback) => {
     };
 ```
 
-## Contact Us
+## Contact us
 
-To know more about how to use AWS lambda functions with RudderStack, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community. We will be happy to help you.
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

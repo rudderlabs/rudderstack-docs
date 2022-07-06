@@ -1,0 +1,54 @@
+---
+title: "RudderStack Open Source"
+description: >-
+  Overview of how to set up the open source RudderStack in your development environment.
+---
+
+Follow the guides in this section if you want to set up RudderStack in your preferred development environment.
+
+<div class="infoBlock">
+
+The <a href="https://github.com/rudderlabs/rudder-server">RudderStack backend</a> is written in Go, with a simple React.js UI to manage your sources, destinations, and the connections between them.
+</div>
+
+## Overview
+
+Installing and setting up open source RudderStack involves the following steps:
+
+* <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Setup</Link>: Setting up the control plane to manage your source and destination configurations.
+
+* <Link to="/get-started/rudderstack-open-source/data-plane-setup/">Data Plane Setup</Link>: Setting up the data plane(backend) for RudderStack to track, process, and route the events.
+
+* <Link to="/get-started/rudderstack-open-source/sending-test-events/">Sending Test Events</Link>: Sending test events to verify your RudderStack installation.
+
+## FAQ
+
+### Do I need to sign up for an account to set up open source RudderStack?
+
+Signing up for [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource) is the easiest way to set up and manage your data pipelines. The web app is only used for source/destination configuration and does not have access to your data. It also provides a <Link to="/dashboard-guides/live-events/">Live Events</Link> feature for debugging purposes, only for a limited time.
+
+**RudderStack does not persist any of your data**.
+
+However, if you do not wish to sign up for RudderStack and want to self-host the source/destination configurations, you can use the open source <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility. To set up the RudderStack server (backend) in your own environment, follow the steps listed in the <Link to="/get-started/rudderstack-open-source/data-plane-setup/">Data Plane Setup</Link> guide.
+
+<div class="warningBlock">
+The control plane set up using Control Plane Lite does not have features like <Link to="/features/transformations/">Transformations</Link> and <Link to="/dashboard-guides/live-events/">Live Events</Link>.
+</div>
+
+### What is a data plane URL? Where do I get it?
+
+For routing and processing the events to the RudderStack backend, a **data plane URL** is required.
+
+<div class="infoBlock">
+Refer to the <Link to="/resources/rudderstack-architecture/">RudderStack Architecture</Link> guide for more information the RudderStack data plane.
+</div>
+
+If you're using open source RudderStack, you are required to <Link to="/get-started/rudderstack-open-source/data-plane-setup/">set up your own data plane</Link> in the preferred environment.
+
+<div class="infoBlock">
+An open source RudderStack data plane URL typically looks like <code class="inline-code">http:localhost:8080</code>, where <code class="inline-code">8080</code> is the port where your RudderStack data plane is hosted.
+</div>
+
+## Contact us
+
+For more information on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

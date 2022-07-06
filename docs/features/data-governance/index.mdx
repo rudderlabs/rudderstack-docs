@@ -1,0 +1,58 @@
+---
+title: "Data Governance"
+description: Detailed technical description of RudderStack’s data governance feature to access your events and fix any inconsistencies programmatically.
+---
+
+Modern companies generate real-time events across their websites and applications. These events are mainly used by the product and marketing teams to better understand the customers' product interactions. They are captured in a specific format which generally includes the event name, properties, and the associated metadata.
+
+To effectively analyze customer behavior or drive high-value marketing campaigns and personalizations, teams rely on the consistency of the event data formats. Any inconsistency in the events can lower the quality of analytics significantly and requires a lot of time and engineering effort to clean up.
+
+In reality, however, as multiple stakeholders define and implement the event specifications differently, there are always some inconsistencies introduced in the event data. Some of the reasons for these inconsistencies include:
+
+- **Missing fields**
+- **Capitalization/Casing errors**: For example, one event sets the product name in the lower case, while another sets it in the upper case.
+- **Unit errors**: For example, one event tracks the revenue in pounds, while another tracks it in dollars.
+
+<GhBadge
+  url={'https://rudderstack.com/enterprise-quote'}
+  label={'Plan'}
+  message={'Enterprise'}
+  color={'blueviolet'}
+/>
+
+## Data Governance API
+
+RudderStack's <Link to="/api/data-governance-api/">Data Governance API</Link> gives you the ability to access all your events and their metadata programmatically. This includes vital information related to the event schema, event payload versions, data types, and more.
+
+By leveraging the Data Governance API, the data engineering team can narrow down the specific nature and source of any event data inconsistencies. With these insights, they can update the instrumentation or leverage RudderStack's <Link to="/features/transformations/">Transformations</Link> feature to clean the incoming events.
+
+The following video gives you a quick overview of the Data Governance API:
+
+<YouTube
+  videoId={'fs3Nkzm-NqY'}
+  opts={{playerVars: {start: 0, rel: 0}}}
+/>
+
+### Using the Data Governance API
+
+You can use the Data Governance API to investigate and troubleshoot any event data inconsistencies by following the steps listed below:
+
+1. Get all the event models into RudderStack using <Link to="/api/data-governance-api/#schemasevent-models">`schemas/event-models`</Link>.
+2. Identify the event models' source.
+3. Count the event models to determine the number for each event type.
+4. Identify the differences in the schema versions for a single event model using <Link to="/api/data-governance-api/#schemasevent-versions">`schemas/event-versions`</Link>.
+
+<div class="successBlock">
+The Data Governance API also lets you gather other useful diagnostics related to both the events as well as the individual event schema versions. You can use this information to find and fix issues in your events.
+</div>
+
+Once you have identified the inconsistencies, you can implement specific processes and set alerts for your data governance workflows. For example, you can create alerts for notifying any missing keys in your events, or use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature to validate your event schemas and transform the faulty incoming event payloads.
+
+## Tracking Plans
+
+The <Link to="/features/data-governance/tracking-plans/">Tracking plans</Link> feature lets you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on predefined plans. This can help you prevent or de-risk situations where missing or improperly configured event data can break your downstream destinations.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+

@@ -2,7 +2,7 @@
 - options:
   id: 1cD32rPRAgRxakAPoN8q1F4rnlO
   name: AMP
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/
+  link: /sources/sdks/rudderstack-amp-analytics/
   displayName: AMP
   category: web
   createdAt: '2020-05-21T08:18:52.592Z'
@@ -10,7 +10,7 @@
 - options:
   id: 1QGzOQGVLM35GgtteFH1vYCE0WT
   name: Android
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/
+  link: /sources/sdks/rudderstack-android-sdk/
   displayName: Android
   category: mobile
   createdAt: '2019-09-02T08:08:08.373Z'
@@ -18,7 +18,7 @@
 - options:
   id: 1cRofQ9LF9HLEKuIyYY4FMteELx
   name: Customer.io
-  link: /stream-sources/customerio/
+  link: /sources/cloud-apps/customerio/
   displayName: Customer.io
   category: webhook
   createdAt: '2020-05-26T13:47:49.528Z'
@@ -26,7 +26,7 @@
 - options:
   id: 1ZOGGKKNJDJ5K4Or2BnxYVCt5bA
   name: Go
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/
+  link: /sources/sdks/rudderstack-go-sdk/
   displayName: Go
   category: server
   createdAt: '2020-03-20T11:10:29.305Z'
@@ -42,23 +42,23 @@
 - options:
   id: 1QGzOCoEznfENfRDG0gBuPlsdM4
   name: iOS
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/
+  link: /sources/sdks/rudderstack-ios-sdk/
   displayName: iOS
   category: mobile
   createdAt: '2019-09-02T08:08:06.943Z'
   updatedAt: '2020-06-18T11:54:05.105Z'
 - options:
   id: 1TW48i2bIzEl1HPf825cEznfIM8
-  name: Javascript
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/
-  displayName: Javascript
+  name: JavaScript
+  link: /sources/sdks/rudderstack-javascript-sdk/
+  displayName: JavaScript
   category: web
   createdAt: '2019-11-12T12:39:19.885Z'
   updatedAt: '2020-06-18T11:54:06.114Z'
 - options:
   id: 1ZOGFkMltl5OmWdQiNRzNiN618P
   name: Node.js
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/
+  link: /sources/sdks/rudderstack-node-sdk/
   displayName: Node.js
   category: server
   createdAt: '2020-03-20T11:10:24.613Z'
@@ -66,7 +66,7 @@
 - options:
   id: 1ar6mNtsvScWgjGzkIs9iLta8Yy
   name: Python
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/
+  link: /sources/sdks/rudderstack-python-sdk/
   displayName: Python
   category: server
   createdAt: '2020-04-21T15:05:23.393Z'
@@ -74,7 +74,7 @@
 - options:
   id: 1acY4PznURHGvYZxzOI5VyRNTav
   name: ReactNative
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/
+  link: /sources/sdks/rudderstack-react-native-sdk/
   displayName: React Native
   category: server
   createdAt: '2020-04-16T11:22:37.660Z'
@@ -82,7 +82,7 @@
 - options:
   id: 1ZOGFXJtyEeTgUEBLLTjra1oDQP
   name: Ruby
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/
+  link: /sources/sdks/rudderstack-ruby-sdk/
   displayName: Ruby
   category: server
   createdAt: '2020-03-20T11:10:23.225Z'
@@ -90,7 +90,7 @@
 - options:
   id: 1YL4jDMoPIXvtoRyzAfcDssfyWE
   name: Unity
-  link:
+  link: /sources/sdks/rudderstack-unity-sdk/
   displayName: Unity
   category: mobile
   createdAt: '2020-02-26T09:17:53.767Z'
@@ -106,7 +106,7 @@
 - options:
   id: 1eB3UGPqUNS4L5tKWxchQUHJTPD
   name: Java
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/
+  link: /sources/sdks/rudderstack-java-sdk/
   displayName: Java
   category: server
   createdAt: '2020-07-03T12:59:32.454Z'
@@ -114,7 +114,7 @@
 - options:
   id: 1eeJempKYrNptbb6EbYy3NH9jZK
   name: Auth0
-  link: /stream-sources/auth0/
+  link: /sources/cloud-apps/auth0/
   displayName: Auth0
   category: webhook
   createdAt: '2020-07-13T21:37:02.379Z'
@@ -122,7 +122,7 @@
 - options:
   id: 1eoDpOgZNFaSB20NvAcAbFTlBkJ
   name: Segment
-  link: /stream-sources/segment/
+  link: /sources/cloud-apps/segment/
   displayName: Segment
   category: webhook
   createdAt: '2020-07-17T09:47:13.443Z'
@@ -130,7 +130,7 @@
 - options:
   id: 1jEXvN08pLwYAGPMJJOhvIyA3F3
   name: google_sheets
-  link: /cloud-extract-sources/google-sheets/
+  link: /sources/extract/google-sheets/
   displayName: Google Sheets
   category: cloud
   type: extract
@@ -139,7 +139,7 @@
 - options:
   id: 1jEXwajA1sUI7zkcsrByqLuXBSa
   name: salesforce
-  link: /cloud-extract-sources/salesforce/
+  link: /sources/extract/salesforce/
   displayName: Salesforce
   category: cloud
   type: extract
@@ -148,7 +148,7 @@
 - options:
   id: 1k4TuOH726pC37bgJYkSCaeFcZ1
   name: DotNet
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/
+  link: /sources/sdks/rudderstack-dotnet-sdk/
   displayName: ".Net"
   category: server
   createdAt: '2020-11-09T21:58:05.520Z'
@@ -156,7 +156,7 @@
 - options:
   id: 1k7JZrvZQ7OPBAnHzogYIpansx2
   name: PHP
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/
+  link: /sources/sdks/rudderstack-php-sdk/
   displayName: PHP
   category: server
   createdAt: '2020-11-10T22:02:34.476Z'
@@ -164,7 +164,7 @@
 - options:
   id: 1lKfk24evQm5USNDbZBzapoX1Wi
   name: google_analytics
-  link: /cloud-extract-sources/google-analytics/
+  link: /sources/extract/google-analytics/
   displayName: Google Analytics
   category: cloud
   type: extract
@@ -173,7 +173,7 @@
 - options:
   id: 1lKfk24evQm5USNDbZBzapoX1Wi
   name: google_ads
-  link: /cloud-extract-sources/google-adwords/
+  link: /sources/extract/google-adwords/
   displayName: Google Ads
   category: cloud
   type: extract
@@ -182,7 +182,7 @@
 - options:
   id: 1lKfkCdvCrfUdqRjLpfTVgHwaec
   name: google_search_console
-  link: /cloud-extract-sources/google-search-console/
+  link: /sources/extract/google-search-console/
   displayName: Google Search Console
   category: cloud
   type: extract
@@ -191,7 +191,7 @@
 - options:
   id: 1lKfmBSRPI0frNtiPKAWV0fVn2a
   name: zendesk
-  link: /cloud-extract-sources/zendesk/
+  link: /sources/extract/zendesk/
   displayName: Zendesk
   category: cloud
   type: extract
@@ -200,7 +200,7 @@
 - options:
   id: 1mv4HioeTXCjsMxyN4b8lpcO7yj
   name: marketo
-  link: /cloud-extract-sources/marketo/
+  link: /sources/extract/marketo/
   displayName: Marketo
   category: cloud
   type: extract
@@ -209,7 +209,7 @@
 - options:
   id: 1n5ooFOf8mzxKwvoKUSVRGRwyCb
   name: appsflyer
-  link: /stream-sources/appsflyer/
+  link: /sources/cloud-apps/appsflyer/
   displayName: AppsFlyer
   category: webhook
   createdAt: '2021-01-15T05:44:45.439Z'
@@ -217,7 +217,7 @@
 - options:
   id: 1nO0FaUQ0vce2QtWHNbphk1z6eu
   name: bing_ads
-  link: /cloud-extract-sources/bing-ads/
+  link: /sources/extract/bing-ads/
   displayName: Bing ads
   category: cloud
   type: extract
@@ -226,7 +226,7 @@
 - options:
   id: 1nO0JbTGyWPVxkCs1GjHfSX0zFq
   name: netsuite
-  link: /cloud-extract-sources/netsuite/
+  link: /sources/extract/netsuite/
   displayName: NetSuite
   category: cloud
   type: extract
@@ -235,7 +235,7 @@
 - options:
   id: 1nO0MDuAYGKfwdhgCpyLFR1lHti
   name: zendesk_chat
-  link: /cloud-extract-sources/zendesk-chat/
+  link: /sources/extract/zendesk-chat/
   displayName: Zendesk Chat
   category: cloud
   type: extract
@@ -244,7 +244,7 @@
 - options:
   id: 1nO0N6g2pILIDqsSPgRWCsDrYkU
   name: pipedrive
-  link: /cloud-extract-sources/pipedrive/
+  link: /sources/extract/pipedrive/
   displayName: Pipedrive
   category: cloud
   type: extract
@@ -253,7 +253,7 @@
 - options:
   id: 1nO1k57L7zUQjZA8D9sYKiKx3iS
   name: intercom
-  link: /cloud-extract-sources/intercom/
+  link: /sources/extract/intercom/
   displayName: Intercom
   category: cloud
   type: extract
@@ -262,7 +262,7 @@
 - options:
   id: 1ogo5AXQB6JnsHiqDXZ6jl5ZerJ
   name: Flutter
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/
+  link: /sources/sdks/rudderstack-flutter-sdk/
   displayName: Flutter
   category: mobile
   createdAt: '2021-02-19T06:50:08.105Z'
@@ -270,7 +270,7 @@
 - options:
   id: 1ovmFVThz3asZ1YwBo5w351G2Co
   name: mailchimp
-  link: /cloud-extract-sources/mailchimp/
+  link: /sources/extract/mailchimp/
   displayName: Mailchimp
   category: cloud
   type: extract
@@ -279,7 +279,7 @@
 - options:
   id: 1ovmHPvWYIcC1xPS4sWcPPqZWJv
   name: mixpanel
-  link: /cloud-extract-sources/mixpanel/
+  link: /sources/extract/mixpanel/
   displayName: Mixpanel
   category: cloud
   type: extract
@@ -288,7 +288,7 @@
 - options:
   id: 1pD6vnvEtSbRDlkcQy551N1beKh
   name: POSTHOG
-  link: /stream-sources/posthog/
+  link: /sources/posthog/
   displayName: PostHog
   category: ''
   createdAt: '2021-03-02T17:19:06.012Z'
@@ -296,7 +296,7 @@
 - options:
   id: 1pTcNPYFDAwN8JvQbxTZ3XSdR8I
   name: Appcenter
-  link: /stream-sources/appcenter/
+  link: /sources/cloud-apps/appcenter/
   displayName: App Center
   category: webhook
   createdAt: '2021-03-08T13:34:39.694Z'
@@ -304,7 +304,7 @@
 - options:
   id: 1pf35z0NWXK9G5FdwF75DiCYfMn
   name: pardot
-  link: /cloud-extract-sources/salesforce-pardot/
+  link: /sources/extract/salesforce-pardot/
   displayName: Pardot
   category: cloud
   type: extract
@@ -313,7 +313,7 @@
 - options:
   id: 1qD1jwa7OjnEwb4AJIwwGQdmFyg
   name: stripe
-  link: /cloud-extract-sources/stripe/
+  link: /sources/extract/stripe/
   displayName: Stripe
   category: cloud
   type: extract
@@ -322,7 +322,7 @@
 - options:
   id: 1qTXDy2DFNLHRqixzii5fuOikjG
   name: Extole
-  link: /stream-sources/extole/
+  link: /sources/cloud-apps/extole/
   displayName: Extole
   category: webhook
   createdAt: '2021-03-30T11:40:37.306Z'
@@ -330,7 +330,7 @@
 - options:
   id: 1qu6ivu5iPasot1ZIK6mcb59j7t
   name: freshdesk
-  link: /cloud-extract-sources/freshdesk/
+  link: /sources/extract/freshdesk/
   displayName: Freshdesk
   category: cloud
   type: extract
@@ -339,7 +339,7 @@
 - options:
   id: 1qu6lpYiC3EnWGowQwxIn3zaixn
   name: quickbooks
-  link: /cloud-extract-sources/quickbooks/
+  link: /sources/extract/quickbooks/
   displayName: Quickbooks
   category: cloud
   type: extract
@@ -348,7 +348,7 @@
 - options:
   id: 1sl3ublVAB0JY2Pyb6Nnfb54k4v
   name: active_campaign
-  link: /cloud-extract-sources/activecampaign/
+  link: /sources/extract/activecampaign/
   displayName: Active campaign
   category: cloud
   type: extract
@@ -358,7 +358,7 @@
     hidden: true
   id: 1qu6kGyHNkM4IjcaFXGIO7G0SGy
   name: hubspot
-  link: /cloud-extract-sources/hubspot-v2/
+  link: /sources/extract/hubspot-v2/
   displayName: Hubspot
   category: cloud
   type: extract
@@ -371,7 +371,7 @@
     isSqlModelSupported: true
   id: 1lKfleR0YwloYiLdsrt8wbTyDxR
   name: redshift
-  link: /reverse-etl/amazon-redshift/
+  link: /sources/reverse-etl/amazon-redshift/
   displayName: Redshift
   category: warehouse
   type: reverse ETL
@@ -392,7 +392,7 @@
 - options:
   id: 1zEeCwCRwQqoKuXqz3VamLt0Mji
   name: Braze
-  link:
+  link: /sources/cloud-apps/braze/
   displayName: Braze
   category: webhook
   createdAt: '2021-10-08T18:25:50.123Z'
@@ -410,7 +410,7 @@
 - options:
   id: 208zXxTTxue5sSP4E4W1Hzf2XL4
   name: Rust
-  link:
+  link: /sources/sdks/rudderstack-rust-sdk/
   displayName: Rust
   category: server
   createdAt: '2021-10-28T17:10:45.675Z'
@@ -432,7 +432,7 @@
     isBeta: false
   id: 215k1PhlrONIAJFWJJnMQjfJbdQ
   name: singer-intercom
-  link: /cloud-extract-sources/intercom-v2/
+  link: /sources/extract/intercom-v2/
   displayName: Intercom V2
   category: singer-protocol
   type: extract
@@ -441,7 +441,7 @@
 - options:
   id: 1w0YA2GAHu2uKlrXUBHfVsprYtI
   name: sendgrid
-  link: /cloud-extract-sources/sendgrid/
+  link: /sources/extract/sendgrid/
   displayName: SendGrid
   category: cloud
   type: extract
@@ -450,7 +450,7 @@
 - options:
   id: 1wJ48CjxXYRhxm83W8xFGTQygxt
   name: webhook
-  link: /stream-sources/webhook-source/
+  link: /sources/cloud-apps/webhook-source/
   displayName: Webhook
   category: webhook
   createdAt: '2021-08-05T11:33:15.688Z'
@@ -458,7 +458,7 @@
 - options:
   id: 1yOJu6S8oTXWcqQj8jaO4TJQkiP
   name: Cordova
-  link: /stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/
+  link: /sources/sdks/rudderstack-cordova-sdk/
   displayName: Cordova
   category: mobile
   createdAt: '2021-09-20T05:48:40.106Z'
@@ -470,7 +470,7 @@
     isSqlModelSupported: true
   id: 1lKfjBzuoNFJHfj35q2elruSN7C
   name: bigquery
-  link: /reverse-etl/google-bigquery/
+  link: /sources/reverse-etl/google-bigquery/
   displayName: BigQuery
   category: warehouse
   type: reverse ETL
@@ -483,7 +483,7 @@
     isSqlModelSupported: true
   id: 1lKflMWR2Ut7piaZepcFEsBVXQj
   name: postgres
-  link: /reverse-etl/postgresql/
+  link: /sources/reverse-etl/postgresql/
   displayName: Postgres
   category: warehouse
   type: reverse ETL
@@ -493,7 +493,7 @@
     isBeta: false
   id: 24uU1k8fCOXZ6fvjfFu64jZdM46
   name: Shopify
-  link: /stream-sources/shopify/
+  link: /sources/cloud-apps/shopify/
   displayName: Shopify
   category: webhook
   createdAt: '2022-02-10T07:55:51.460Z'
@@ -501,7 +501,7 @@
 - options: {}
   id: 28c9zKySvyIWoBAOXfiJp5PNXz1
   name: iterable
-  link: /stream-sources/iterable/
+  link: /sources/cloud-apps/iterable/
   displayName: Iterable
   category: webhook
   createdAt: '2022-05-02T15:27:47.763Z'
@@ -510,7 +510,7 @@
     hidden: true
   id: 1lKfjyEs7AQiAvpgbNc6qR44PiA
   name: google_adwords
-  link: /cloud-extract-sources/google-adwords/
+  link: /sources/extract/google-adwords/
   displayName: Google AdWords
   category: cloud
   type: extract
@@ -520,7 +520,7 @@
     isCredentialsValidationSupported: true
   id: 1lKfjJOP1n2U0Y4hkAZcR4fLXek
   name: clickhouse
-  link: /reverse-etl/clickhouse/
+  link: /sources/reverse-etl/clickhouse/
   displayName: ClickHouse
   category: warehouse
   type: reverse ETL
@@ -531,7 +531,7 @@
       provider: Xero
   id: 1nvBDW6Jpo28nQqcKzJjzRpcVSV
   name: xero
-  link: /cloud-extract-sources/xero/
+  link: /sources/extract/xero/
   displayName: Xero
   category: cloud
   type: extract
@@ -552,7 +552,7 @@
     hidden: false
   id: 1lKfjfhAW7WJPjD4RgXWnb8LfHI
   name: facebook_ads
-  link: /cloud-extract-sources/facebook-ads/
+  link: /sources/extract/facebook-ads/
   displayName: Facebook Ads
   category: cloud
   type: extract
@@ -602,7 +602,7 @@
     isSqlModelSupported: false
   id: 2ANLvHkKBYMDGzj8rU8KI4H3gpA
   name: mysql
-  link: /reverse-etl/mysql/
+  link: /sources/reverse-etl/mysql/
   displayName: MySql
   category: warehouse
   type: reverse ETL
