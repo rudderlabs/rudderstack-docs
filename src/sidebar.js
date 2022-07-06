@@ -143,52 +143,62 @@ export const jsonData = [
                 content: [
                     {
                         key: "quick-start-guide",
-                        title: "Quick Start Guide",
+                        title: "Quickstart",
                         link: "/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/",
                         content: []
                     },
                     {
-                        key: "javascript-sdk-enhancements",
-                        title: "JavaScript SDK Enhancements",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
+                        key: "supported-api",
+                        title: "Supported API",
+                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/supported-api/",
+                        content: [],
+                    },
+                    {
+                        key: "version-migration-guide",
+                        title: "Version Migration",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/",
                         content: []
                     },
                     {
+                        key: "send-event-payloads-beacon",
+                        title: "Send Event Payloads using Beacon",
+                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/send-event-payloads-beacon/",
+                        content: [],
+                    },
+                    {
                         key: "data-storage-cookies",
-                        title: "Data Storage in Cookies",
+                        title: "Data Storage",
                         link: "/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
                         content: []
                     },
                     {
-                        key: "querystring-api",
-                        title: "Querystring API",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/querystring-api/",
-                        content: []
-                    }, {
+                        key: "filtering",
+                        title: "Filtering",
+                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/filtering/",
+                        content: [],
+                    },
+                    {
+                        key: "onetrust-consent-manager",
+                        title: "OneTrust Consent Manager",
+                        link: "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/onetrust-consent-manager/",
+                        content: [],
+                    },
+                    {
                         key: "detecting-adblocked-pages",
                         title: "Detecting Ad-blocked Pages",
                         link: "/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
                         content: []
-                    }, {
-                        key: "version-migration-guide",
-                        title: "Version Migration Guide",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/",
-                        content: []
-                    }, {
-                        key: "consent-managers",
-                        title: "Consent Managers",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/consent-managers/",
-                        content: [
-                            {
-                                key: "onetrust",
-                                title: "OneTrust",
-                                link: "/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
-                                content: []
-                            },
-                        ]
-                    }, {
+                    },  
+                    {
+                        key: "context-traits",
+                        title: "Context and Traits",
+                        link:
+                          "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/context-traits/",
+                        content: [],
+                     },
+                      {
                         key: "faq",
-                        title: "JavaScript SDK FAQs",
+                        title: "FAQ",
                         link: "/sources/sdks/rudderstack-javascript-sdk/faq/",
                         content: []
                     },
