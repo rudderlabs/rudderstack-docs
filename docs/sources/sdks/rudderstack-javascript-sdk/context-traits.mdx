@@ -1,0 +1,56 @@
+---
+title: "Context and traits"
+description: >-
+  Detailed technical documentation on capturing event-specific and use-specific data using the context and trait dictionaries.
+---
+
+RudderStack provides you with the option to automatically capture certain event-specific and user-specific data, based on the type of the event.
+
+The `context` and `traits` dictionaries are included in the [`options`](#options) parameter of the API methods.
+
+## Context
+
+A context is a dictionary of additional information about a particular event data, such as a user’s locale.
+
+<div class="infoBlock">
+A context is a complete and specific piece of information. Any other information provided outside of this specification is ignored.
+</div>
+
+## Traits
+
+Traits is an optional dictionary included within [`context`](#context) which specifies the user's unique traits. This is a very useful field for linking the user's information from a previously made [`identify()`](#identify) call to the subsequent [`track()`](#track) or [`page()`](#page) calls.
+
+### Use-case
+
+To better understand how contexts and traits work, refer to the following `identify` event:
+
+```javascript
+rudderanalytics.identify("userId", {
+  plan: "Paid, Premium",
+  email: "name@surname.org"
+});
+```
+
+The trait in the above event is `plan`. If you wish to include this trait in a subsequent `track()` or `page()`event triggered by the user, you can establish the association by passing it in `context.traits` as shown:
+
+```javascript
+rudderanalytics.track(
+  "Subscribed",
+  {
+    campaign: "Subscribe"
+  },
+  {
+    context: {
+      traits: {
+        plan: "Paid, Premium"
+      }
+    }
+  }
+);
+```
+
+The above snippet will append `plan` as a trait to the `track` event. Note that the trait `email` will not be appended, as it was not specified in the `context.traits` field.
+
+## Contact us
+
+For queries on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
