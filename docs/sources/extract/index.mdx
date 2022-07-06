@@ -5,15 +5,6 @@ description: >-
   specified Cloud Extract sources into RudderStack.
 ---
 
-## What are Sources in RudderStack?
-
-Sources are the tools or platforms from which you can send event data to RudderStack. These events can then be routed \(with or without transformation\) into your data warehouse or third-party destinations for analytics and other activation use-cases.
-
-<div class="successBlock">
-
-For more information on sources in RudderStack, check out the <Link to="/rudderstack-cloud/sources/">Sources</Link> guide.
-</div>
-
 ## RudderStack Cloud Extract
 
 With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [**Facebook Ads**](https://www.facebook.com/business/ads), [**Google Analytics**](https://analytics.google.com/), [**Marketo**](https://www.marketo.com/), [**HubSpot**](https://www.hubspot.com/), [**Stripe**](stripe/), and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
@@ -38,6 +29,13 @@ Here's a quick 1-minute walkthrough of the Cloud Extract feature:
   videoId={'F9dIv5Pp0EE'}
 />
 
+## Supported Cloud Extract Sources
+
+
+<Sources
+  type={'extract'}
+/>
+
 ## FAQs
 
 #### Can I connect a Cloud Extract source to multiple data warehouse destinations?
@@ -49,15 +47,6 @@ You can connect **only one data warehouse destination per Cloud Extract source**
 Yes, it is.
 
 We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
-
-## Supported Cloud Extract Sources
-
-
-<Sources
-  type={'extract'}
-/>
-
-
 
 <div class="successBlock">
 

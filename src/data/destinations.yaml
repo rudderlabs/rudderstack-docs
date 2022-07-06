@@ -587,7 +587,7 @@
   link: /tmp-destinations/warehouse-destinations/redshift/
   options: null
   type: warehouse
-- category: null
+- category: data-lake
   displayName: Amazon S3 Datalake
   link: /tmp-destinations/warehouse-destinations/s3-datalake/
   options: null
@@ -597,7 +597,7 @@
   link: /tmp-destinations/warehouse-destinations/azure-synapse/
   options: null
   type: warehouse
-- category: null
+- category: data-lake
   displayName: Azure Datalake
   link: /tmp-destinations/warehouse-destinations/azure-datalake/
   options: null
@@ -607,7 +607,7 @@
   link: /tmp-destinations/warehouse-destinations/clickhouse/
   options: null
   type: warehouse
-- category: null
+- category: data-lake
   displayName: Databricks (Delta Lake)
   link: /tmp-destinations/warehouse-destinations/delta-lake/
   options: null
@@ -617,7 +617,7 @@
   link: /tmp-destinations/warehouse-destinations/bigquery/
   options: null
   type: warehouse
-- category: null
+- category: data-lake
   displayName: Google Cloud Storage Datalake
   link: /tmp-destinations/warehouse-destinations/gcs-datalake/
   options: null

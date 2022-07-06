@@ -1,44 +1,73 @@
 ---
-title: "Sources"
+title: "Sources Overview"
 description: >-
-  Sources landing page.
+  Learn about the different event source types in RudderStack, from SDKs to cloud sources to Reverse ETL.
 ---
 
-TK - overview content on sources, explaining the different types of sources, SDK, Extract, Reverse ETL, etc.
+## What is a source?
 
-## Mobile
+A *source* in RudderStack is the place from which your event data originates. The most common event sources are your apps and web properties, but can include third-party cloud apps, server integrations, and even your own data warehouse.
 
-<Sources
-  category={'mobile'}
-/>
+In the following sections we'll provide a bit more detail on the available source types, with links to the setup guides for each source. If you're new to RudderStack, we recommend going through our <Link to="/tmp-get-started/quickstart/">Quickstart</Link> guide to create your first source using our JavaScript SDK.
 
-## Cloud Extract
+## SDKs
 
-<Sources
-  type={'extract'}
-/>
+RudderStack supports open source SDKs for web, mobile, and server applications.
 
-## Server
+### Web
 
-<Sources
-  category={'server'}
-/>
-
-## API
-
-If we don't have a library for your environment, you can send your data directly to the HTTP API. 
-
-## Web
+Use the `rudder-analytics.js` library to track your customer event data from your websites and send it to your specified destinations via RudderStack.
 
 <Sources
   category={'web'}
 />
 
-## Webhook
+### Mobile
+
+RudderStack provides native mobile SDKs for all the top frameworks and mobile operating systems.
+
+<Sources
+  category={'mobile'}
+/>
+
+### Server
+
+Track your customer event data from your backend applications and send the data to your specified destinations using our supported server libraries.
+
+<Sources
+  category={'server'}
+/>
+
+## Cloud Apps
+
+### Extract
+
+With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as Facebook Ads, Google Analytics, Marketo, HubSpot, Stripe, and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
+
+<Sources
+  type={'extract'}
+/>
+
+
+### Streaming Sources
+
+These integrations stream event data asynchronously via webhooks to track event data from user interactions.
 
 <Sources
   category={'webhook'}
 />
 
 
+## Reverse ETL
 
+Use your data warehouse as a data source! With our Reverse ETL capabilities, you can tap into your warehouse data as a way to enrich data pipelines elsewhere in your stack, for enhanced customization, personalization, and targeting.
+
+<Sources
+  type={'reverse ETL'}
+/>
+
+## API
+
+If possible, we recommend you use a native SDK for tracking and routing user events from your sources. Our SDKs offer automatic tagging of user context, event batching, and retry functionality during delivery failure.
+
+If we don't offer a supported library for your environment, you can send your data directly to the RudderStack <Link to="/api/http-api/">HTTP API</Link>. 
