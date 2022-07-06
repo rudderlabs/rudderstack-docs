@@ -9,7 +9,7 @@ description: >-
 
 In this document, we dive deeper into the technical aspects of this feature.
 
-## **Destination Live Events**
+## Destination Live Events
 
 Routing event data to a destination can fail for various reasons. Often, it could be because of the incorrect configuration of the destination. Some other reasons could be a bad event structure, rate limiting by the destination, and so on. In some rare cases, the destination could be down too. It can be frustrating if the events sent do not show up in the destination and more so, not knowing the reason for failure only makes it worse.
 
@@ -34,31 +34,26 @@ As seen above, the Amplitude destination is configured with a wrong API key and 
 The responses received from the destination help in resolving the issues faster.
 
 <div class="warningBlock">
-
 Live events are shown for all the destinations. However, the **payload of live events** is not shown for some destinations such as the object storage platforms, which include Amazon S3, Google Cloud Storage, and Microsoft Azure Blob Storage. These also include the supported warehouse platforms such as Amazon Redshift, Google BigQuery, and Snowflake.
-
 </div>
 
-## **Viewing Destination Live Events**
+## Viewing Destination Live Events
 
 To view the destination live events, please follow these steps:
 
-- Log in to the [RudderStack dashboard](https://app.rudderstack.com/)
-- Click on the destination of your choice in the **Connections** page
-- The **Live Events** button can be found on the top right of your destination page
-- Click on the Live Events button and give your consent to stream the data for viewing purposes
+1. Log in to the [RudderStack dashboard](https://app.rudderstack.com/)
+2. Click on the destination of your choice in the **Connections** page
+3. The **Live Events** button can be found on the top right of your destination page
+4. Click on the Live Events button and give your consent to stream the data for viewing purposes
 
 <img src="../../assets/image (33).png" />
 
-- Ingest the data into RudderStack through a source connected to this destination. You should be able to see the destination responses in real-time.
+5. Ingest the data into RudderStack through a source connected to this destination. You should be able to see the destination responses in real-time.
 
 <div class="infoBlock">
-
-  Make sure your destination is configured in the cloud mode.
+Make sure your destination is configured in the cloud mode.
 </div>
 
-We hope that this Destination Live Events Debugger feature of RudderStack will reduce your overall troubleshooting time, and allow you to focus more on product development rather than debugging.
-
-## **Contact Us**
+## Contact Us
 
 If you want to know more about the features of RudderStack, [contact us](mailto:%20docs@rudderstack.com). To know more about the new features in the latest RudderStack release, talk to us in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

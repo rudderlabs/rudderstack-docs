@@ -21,7 +21,7 @@ Before configuring Amplitude as a destination in RudderStack, verify if the sour
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Amplitude, follow these steps:
@@ -490,7 +490,7 @@ rudderanalytics.track("Order Completed", {
 The above call will generate one `Order Completed` event, 2 individual `Product purchased` events and 2 revenue events \(one with `$price` as `15` and `$quantity` as `2` and the other one with `$price` as `20` and `$quantity` as `1` \) at Amplitude, provided that in the destination settings dashboard: `Track revenue per product settings` is enabled. The two separate revenue events are generated for device mode. For cloud mode, revenue will be tracked along with the 2 `Product purchased` events.
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/tmp-destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 <div class="infoBlock">
@@ -647,8 +647,8 @@ You can find the Amplitude API key in the [Amplitude Settings Page](https://anal
 
 ### Why are all my session IDs `-1` in Amplitude?
 
-Session tracking is only supported for the RudderStack <Link to="/tmp-destinations/rudderstack-connection-modes/#device-mode">device mode</Link> because the integration loads Amplitude's SDK. 
-Events sent via the <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> connections will have session IDs as `-1`.
+Session tracking is only supported for the RudderStack <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> because the integration loads Amplitude's SDK. 
+Events sent via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> connections will have session IDs as `-1`.
 
 ## Contact us
 

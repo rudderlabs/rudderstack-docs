@@ -8,25 +8,54 @@ TERM = "xterm"
 
 # Docs restructuring week of June 27 2022
 
+# Get started section
+
+
 # Resources section
+
 [[redirects]]
 from = "/get-started/rudderstack-architecture/"
-to = "/docs/get-started/rudderstack-architecture/"
+to = "/docs/resources/rudderstack-architecture/"
 status = 301
 [[redirects]]
 from = "/faqs/"
-to = "/docs/faqs/"
+to = "/docs/resources/faq/"
 status = 301
 [[redirects]]
 from = "/get-started/glossary/"
-to = "/docs/get-started/glossary/"
+to = "/docs/resources/glossary/"
 status = 301
+
 # Features section
+
 [[redirects]]
 from = "/identity-resolution/"
-to = "/docs/identity-resolution/"
+to = "/docs/features/identity-resolution/"
 status = 301
+[[redirects]]
+from = "/transformations/faq/"
+to = "/docs/features/transformations/#faq"
+status = 301
+[[redirects]]
+from = "/transformations/"
+to = "/docs/features/transformations/"
+status = 301
+[[redirects]]
+from = "/data-governance/ruddertyper/"
+to = "/docs/features/data-governance/ruddertyper/"
+status = 301
+[[redirects]]
+from = "/data-governance/tracking-plans/"
+to = "/docs/features/data-governance/tracking-plans/"
+status = 301
+[[redirects]]
+from = "/data-governance/tracking-plans/tracking-plan-spreadsheet/"
+to = "/docs/features/data-governance/tracking-plans/tracking-plan-spreadsheet/"
+status = 301
+
+
 # Guides section
+
 [[redirects]]
 from = "/user-guides/migration-guides/blendo-rudderstack-migration/"
 to = "/docs/user-guides/migration-guides/blendo-rudderstack-migration/"
@@ -37,7 +66,7 @@ to = "/docs/user-guides/migration-guides/how-to-migrate-warehouse-destination-fr
 status = 301
 [[redirects]]
 from = "/user-guides/"
-to = "/docs/user-guides/"
+to = "/docs/user-guides/how-to-guides/"
 status = 301
 [[redirects]]
 from = "/user-guides/migration-guides/"
@@ -207,183 +236,175 @@ status = 301
 
 [[redirects]]
 from = "/transformations/api-access-token/"
-to = "/docs/transformations/api-access-token/"
-status = 301
-[[redirects]]
-from = "/transformations/faq/"
-to = "/docs/transformations/faq/"
-status = 301
-[[redirects]]
-from = "/transformations/"
-to = "/docs/transformations/"
+to = "/docs/dashboard-guides/personal-access-token/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/control-plane-lite/"
-to = "/docs/rudderstack-open-source/control-plane-lite/"
+to = "/docs/get-started/rudderstack-open-source/control-plane-lite/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/"
-to = "/docs/rudderstack-open-source/"
+to = "/docs/get-started/rudderstack-open-source/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/"
+to = "/docs/get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
+to = "/docs/get-started/rudderstack-open-source/data-plane-setup/docker/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/"
+to = "/docs/get-started/rudderstack-open-source/data-plane-setup/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/"
+to = "/docs/get-started/rudderstack-open-source/data-plane-setup/kubernetes/"
 status = 301
 [[redirects]]
 from = "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/"
-to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/"
+to = "/docs/get-started/rudderstack-open-source/sending-test-events/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/dashboard-overview/"
-to = "/docs/rudderstack-cloud/dashboard-overview/"
+to = "/docs/dashboard-guides/overview/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/destinations/"
-to = "/docs/rudderstack-cloud/destinations/"
+to = "/docs/destinations/overview/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/live-events/"
-to = "/docs/rudderstack-cloud/live-events/"
+to = "/docs/dashboard-guides/live-events/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/sources/"
-to = "/docs/rudderstack-cloud/sources/"
+to = "/docs/sources/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/rudderstack-connection-modes/"
-to = "/docs/rudderstack-cloud/rudderstack-connection-modes/"
+to = "/docs/destinations/rudderstack-connection-modes/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/audit-logs/"
-to = "/docs/rudderstack-cloud/audit-logs/"
+to = "/docs/dashboard-guides/audit-logs/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/teammates/"
-to = "/docs/rudderstack-cloud/teammates/"
+to = "/docs/dashboard-guides/teammates/"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/connections/"
-to = "/docs/rudderstack-cloud/connections/"
+to = "/docs/dashboard-guides/overview/#connections"
 status = 301
 [[redirects]]
 from = "/rudderstack-cloud/connections/adding-source-and-destination-rudderstack/"
-to = "/docs/rudderstack-cloud/connections/adding-source-and-destination-rudderstack/"
+to = "/docs/get-started/quickstart/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/data-regulation-api/"
-to = "/docs/rudderstack-api/data-regulation-api/"
+to = "/docs/api/data-regulation-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/personal-access-tokens/"
-to = "/docs/rudderstack-api/personal-access-tokens/"
+to = "/docs/dashboard-guides/personal-access-token/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/http-api/"
-to = "/docs/rudderstack-api/http-api/"
+to = "/docs/api/http-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/"
-to = "/docs/rudderstack-api/"
+to = "/docs/api/http-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/pixel-api-spec/"
-to = "/docs/rudderstack-api/pixel-api-spec/"
+to = "/docs/api/pixel-api-spec/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/tracking-plan-api/"
-to = "/docs/rudderstack-api/tracking-plan-api/"
+to = "/docs/api/tracking-plan-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/test-api/"
-to = "/docs/rudderstack-api/test-api/"
+to = "/docs/api/test-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/video-specification/"
-to = "/docs/rudderstack-api/api-specification/video-specification/"
+to = "/docs/event-spec/video-events-spec/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/application-lifecycle-events-spec/"
-to = "/docs/rudderstack-api/api-specification/application-lifecycle-events-spec/"
+to = "/docs/event-spec/application-lifecycle-events-spec/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/"
-to = "/docs/rudderstack-api/api-specification/"
+to = "/docs/event-spec/standard-events/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-spec/alias/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-spec/alias/"
+to = "/docs/event-spec/standard-events/alias/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-spec/group/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-spec/group/"
+to = "/docs/event-spec/standard-events/group/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-spec/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-spec/"
+to = "/docs/event-spec/standard-events/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-spec/identify/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-spec/identify/"
+to = "/docs/event-spec/standard-events/identify/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-spec/screen/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-spec/screen/"
+to = "/docs/event-spec/standard-events/screen/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-spec/track/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-spec/track/"
+to = "/docs/event-spec/standard-events/track/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing/"
+to = "/docs/event-spec/ecommerce-events-spec/browsing/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/coupons/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/coupons/"
+to = "/docs/event-spec/ecommerce-events-spec/coupons/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/"
+to = "/docs/event-spec/ecommerce-events-spec/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/promotions/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/promotions/"
+to = "/docs/event-spec/ecommerce-events-spec/promotions/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering/"
+to = "/docs/event-spec/ecommerce-events-spec/ordering/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/reviewing/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/reviewing/"
+to = "/docs/event-spec/ecommerce-events-spec/reviewing/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/sharing/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/sharing/"
+to = "/docs/event-spec/ecommerce-events-spec/sharing/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-spec/common-fields/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-spec/common-fields/"
+to = "/docs/event-spec/standard-events/common-fields/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/wishlisting/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/wishlisting/"
+to = "/docs/event-spec/ecommerce-events-spec/wishlisting/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/rudderstack-spec/page/"
-to = "/docs/rudderstack-api/api-specification/rudderstack-spec/page/"
+to = "/docs/event-spec/standard-events/page/"
 status = 301
 [[redirects]]
 from = "/get-started/cloud-vs-open-source/"
@@ -391,7 +412,7 @@ to = "/docs/get-started/cloud-vs-open-source/"
 status = 301
 [[redirects]]
 from = "/get-started/"
-to = "/docs/get-started/"
+to = "/docs/get-started/what-is-rudderstack/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/algolia-insights/"
@@ -399,7 +420,7 @@ to = "/docs/destinations/testing-and-personalization/algolia-insights/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/candu/"
-to = "/docs/destinations/testing-and-personalization/candu/"
+to = "/docs/destinations/streaming-destinations/algolia-insights/"
 status = 301
 [[redirects]]
 from = "/destinations/"
@@ -407,1075 +428,1070 @@ to = "/docs/destinations/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/"
-to = "/docs/destinations/testing-and-personalization/"
+to = "/docs/destinations/streaming-destinations/algolia-insights/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/google-optimize/"
-to = "/docs/destinations/testing-and-personalization/google-optimize/"
+to = "/docs/destinations/streaming-destinations/google-optimize/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/monetate/"
-to = "/docs/destinations/testing-and-personalization/monetate/"
+to = "/docs/destinations/streaming-destinations/monetate/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/optimizely-web/"
-to = "/docs/destinations/testing-and-personalization/optimizely-web/"
+to = "/docs/destinations/streaming-destinations/optimizely-web/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/statsig/"
-to = "/docs/destinations/testing-and-personalization/statsig/"
+to = "/docs/destinations/streaming-destinations/statsig/"
 status = 301
 [[redirects]]
 from = "/destinations/tag-managers/google-tag-manager/"
-to = "/docs/destinations/tag-managers/google-tag-manager/"
+to = "/docs/destinations/streaming-destinations/google-tag-manager/"
 status = 301
 [[redirects]]
 from = "/destinations/tag-managers/"
-to = "/docs/destinations/tag-managers/"
+to = "/docs/destinations/streaming-destinations/google-tag-manager/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/"
-to = "/docs/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/"
+to = "/docs/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/optimizely-full-stack/"
-to = "/docs/destinations/testing-and-personalization/optimizely-full-stack/"
+to = "/docs/destinations/streaming-destinations/optimizely-full-stack/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/amazon-eventbridge/"
-to = "/docs/destinations/streaming-platforms/amazon-eventbridge/"
+to = "/docs/destinations/streaming-destinations/amazon-eventbridge/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/launchdarkly/"
-to = "/docs/destinations/testing-and-personalization/launchdarkly/"
+to = "/docs/destinations/streaming-destinations/launchdarkly/"
 status = 301
 [[redirects]]
 from = "/destinations/testing-and-personalization/splitio/"
-to = "/docs/destinations/testing-and-personalization/splitio/"
+to = "/docs/destinations/streaming-destinations/splitio/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/amazon-kinesis-firehose/"
-to = "/docs/destinations/streaming-platforms/amazon-kinesis-firehose/"
+to = "/docs/destinations/streaming-destinations/amazon-kinesis-firehose/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/amazon-kinesis/"
-to = "/docs/destinations/streaming-platforms/amazon-kinesis/"
+to = "/docs/destinations/streaming-destinations/amazon-kinesis/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/azure-event-hubs/"
-to = "/docs/destinations/streaming-platforms/azure-event-hubs/"
+to = "/docs/destinations/streaming-destinations/azure-event-hubs/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/bigquery-stream/"
-to = "/docs/destinations/streaming-platforms/bigquery-stream/"
+to = "/docs/destinations/streaming-destinations/bigquery-stream/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/confluent-cloud/"
-to = "/docs/destinations/streaming-platforms/confluent-cloud/"
+to = "/docs/destinations/streaming-destinations/confluent-cloud/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/google-pub-sub/"
-to = "/docs/destinations/streaming-platforms/google-pub-sub/"
+to = "/docs/destinations/streaming-destinations/google-pub-sub/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/"
-to = "/docs/destinations/streaming-platforms/"
+to = "/docs/destinations/streaming-destinations/amazon-eventbridge/"
 status = 301
 [[redirects]]
 from = "/destinations/storage-platforms/amazon-s3/"
-to = "/docs/destinations/storage-platforms/amazon-s3/"
+to = "/docs/destinations/streaming-destinations/amazon-s3/"
 status = 301
 [[redirects]]
 from = "/destinations/streaming-platforms/kafka/"
-to = "/docs/destinations/streaming-platforms/kafka/"
+to = "/docs/destinations/streaming-destinations/kafka/"
 status = 301
 [[redirects]]
 from = "/destinations/storage-platforms/digitalocean-spaces/"
-to = "/docs/destinations/storage-platforms/digitalocean-spaces/"
+to = "/docs/destinations/streaming-destinations/digitalocean-spaces/"
 status = 301
 [[redirects]]
 from = "/destinations/storage-platforms/google-cloud-storage/"
-to = "/docs/destinations/storage-platforms/google-cloud-storage/"
+to = "/docs/destinations/streaming-destinations/google-cloud-storage/"
 status = 301
 [[redirects]]
 from = "/destinations/storage-platforms/"
-to = "/docs/destinations/storage-platforms/"
+to = "/docs/destinations/streaming-destinations/amazon-s3/"
 status = 301
 [[redirects]]
 from = "/destinations/storage-platforms/redis/"
-to = "/docs/destinations/storage-platforms/redis/"
+to = "/docs/destinations/streaming-destinations/redis/"
 status = 301
 [[redirects]]
 from = "/destinations/storage-platforms/minio/"
-to = "/docs/destinations/storage-platforms/minio/"
+to = "/docs/destinations/streaming-destinations/minio/"
 status = 301
 [[redirects]]
 from = "/destinations/storage-platforms/microsoft-azure-blob-storage/"
-to = "/docs/destinations/storage-platforms/microsoft-azure-blob-storage/"
+to = "/docs/destinations/streaming-destinations/microsoft-azure-blob-storage/"
 status = 301
 [[redirects]]
 from = "/destinations/productivity/"
-to = "/docs/destinations/productivity/"
+to = "/docs/destinations/streaming-destinations/google-sheets/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/adroll/"
-to = "/docs/destinations/marketing/adroll/"
+to = "/docs/destinations/streaming-destinations/adroll/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/activecampaign/"
-to = "/docs/destinations/marketing/activecampaign/"
+to = "/docs/destinations/streaming-destinations/activecampaign/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/appcues/"
-to = "/docs/destinations/marketing/appcues/"
+to = "/docs/destinations/streaming-destinations/appcues/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/airship/"
-to = "/docs/destinations/marketing/airship/"
+to = "/docs/destinations/streaming-destinations/airship/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/attentive-tag/"
-to = "/docs/destinations/marketing/attentive-tag/"
+to = "/docs/destinations/streaming-destinations/attentive-tag/"
 status = 301
 [[redirects]]
 from = "/destinations/productivity/google-sheets/"
-to = "/docs/destinations/productivity/google-sheets/"
+to = "/docs/destinations/streaming-destinations/google-sheets/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/blueshift/"
-to = "/docs/destinations/marketing/blueshift/"
+to = "/docs/destinations/streaming-destinations/blueshift/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/braze/"
-to = "/docs/destinations/marketing/braze/"
+to = "/docs/destinations/streaming-destinations/braze/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/clevertap/"
-to = "/docs/destinations/marketing/clevertap/"
+to = "/docs/destinations/streaming-destinations/clevertap/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/customer.io/"
-to = "/docs/destinations/marketing/customer.io/"
+to = "/docs/destinations/streaming-destinations/customer.io/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/gainsight/"
-to = "/docs/destinations/marketing/gainsight/"
+to = "/docs/destinations/streaming-destinations/gainsight/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/"
-to = "/docs/destinations/marketing/"
+to = "/docs/destinations/streaming-destinations/activecampaign/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/gainsight-px/"
-to = "/docs/destinations/marketing/gainsight-px/"
+to = "/docs/destinations/streaming-destinations/gainsight-px/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/klaviyo/"
-to = "/docs/destinations/marketing/klaviyo/"
+to = "/docs/destinations/streaming-destinations/klaviyo/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/autopilot/"
-to = "/docs/destinations/marketing/autopilot/"
+to = "/docs/destinations/streaming-destinations/autopilot/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/iterable/"
-to = "/docs/destinations/marketing/iterable/"
+to = "/docs/destinations/streaming-destinations/iterable/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/mailchimp/"
-to = "/docs/destinations/marketing/mailchimp/"
+to = "/docs/destinations/streaming-destinations/mailchimp/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/leanplum/"
-to = "/docs/destinations/marketing/leanplum/"
+to = "/docs/destinations/streaming-destinations/leanplum/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/marketo/"
-to = "/docs/destinations/marketing/marketo/"
+to = "/docs/destinations/streaming-destinations/marketo/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/moengage/"
-to = "/docs/destinations/marketing/moengage/"
+to = "/docs/destinations/streaming-destinations/moengage/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/marketo-lead-import/"
-to = "/docs/destinations/marketing/marketo-lead-import/"
+to = "/docs/destinations/streaming-destinations/marketo-lead-import/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/pardot/"
-to = "/docs/destinations/marketing/pardot/"
+to = "/docs/destinations/streaming-destinations/pardot/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/ometria/"
-to = "/docs/destinations/marketing/ometria/"
+to = "/docs/destinations/streaming-destinations/ometria/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/post-affiliate-pro/"
-to = "/docs/destinations/marketing/post-affiliate-pro/"
+to = "/docs/destinations/streaming-destinations/post-affiliate-pro/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/qualtrics/"
-to = "/docs/destinations/marketing/qualtrics/"
+to = "/docs/destinations/streaming-destinations/qualtrics/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/revenue-cat/"
-to = "/docs/destinations/marketing/revenue-cat/"
+to = "/docs/destinations/streaming-destinations/revenue-cat/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/userlist/"
-to = "/docs/destinations/marketing/userlist/"
+to = "/docs/destinations/streaming-destinations/userlist/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/webengage/"
-to = "/docs/destinations/marketing/webengage/"
+to = "/docs/destinations/streaming-destinations/webengage/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/drip/drip-cloud-mode/"
-to = "/docs/destinations/marketing/drip/drip-cloud-mode/"
+to = "/docs/destinations/streaming-destinations/drip/drip-cloud-mode/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/drip/drip-web-device-mode/"
-to = "/docs/destinations/marketing/drip/drip-web-device-mode/"
+to = "/docs/destinations/streaming-destinations/drip/drip-web-device-mode/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/drip/setting-up-drip-in-rudderstack/"
-to = "/docs/destinations/marketing/drip/setting-up-drip-in-rudderstack/"
+to = "/docs/destinations/streaming-destinations/drip/setting-up-drip-in-rudderstack/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/sendgrid/"
-to = "/docs/destinations/marketing/sendgrid/"
+to = "/docs/destinations/streaming-destinations/sendgrid/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/drip/"
-to = "/docs/destinations/marketing/drip/"
+to = "/docs/destinations/streaming-destinations/drip/"
 status = 301
 [[redirects]]
 from = "/destinations/marketing/sfmc/"
-to = "/docs/destinations/marketing/sfmc/"
+to = "/docs/destinations/streaming-destinations/sfmc/"
 status = 301
 [[redirects]]
 from = "/destinations/error-reporting/"
-to = "/docs/destinations/error-reporting/"
+to = "/docs/destinations/streaming-destinations/bugsnag/"
 status = 301
 [[redirects]]
 from = "/destinations/error-reporting/bugsnag/"
-to = "/docs/destinations/error-reporting/bugsnag/"
+to = "/docs/destinations/streaming-destinations/bugsnag/"
 status = 301
 [[redirects]]
 from = "/destinations/customer-data-platform/"
-to = "/docs/destinations/customer-data-platform/"
+to = "/docs/destinations/streaming-destinations/segment/"
 status = 301
 [[redirects]]
 from = "/destinations/customer-data-platform/segment/"
-to = "/docs/destinations/customer-data-platform/segment/"
+to = "/docs/destinations/streaming-destinations/segment/"
 status = 301
 [[redirects]]
 from = "/destinations/crm/hubspot/"
-to = "/docs/destinations/crm/hubspot/"
+to = "/docs/destinations/streaming-destinations/hubspot/"
 status = 301
 [[redirects]]
 from = "/destinations/crm/"
-to = "/docs/destinations/crm/"
+to = "/docs/destinations/streaming-destinations/delighted/"
 status = 301
 [[redirects]]
 from = "/destinations/crm/delighted/"
-to = "/docs/destinations/crm/delighted/"
+to = "/docs/destinations/streaming-destinations/delighted/"
 status = 301
 [[redirects]]
 from = "/destinations/crm/salesforce/"
-to = "/docs/destinations/crm/salesforce/"
+to = "/docs/destinations/streaming-destinations/salesforce/"
 status = 301
 [[redirects]]
 from = "/destinations/crm/variance/"
-to = "/docs/destinations/crm/variance/"
+to = "/docs/destinations/streaming-destinations/variance/"
 status = 301
 [[redirects]]
 from = "/destinations/crm/zendesk/"
-to = "/docs/destinations/crm/zendesk/"
+to = "/docs/destinations/streaming-destinations/zendesk/"
 status = 301
 [[redirects]]
 from = "/destinations/error-reporting/sentry/"
-to = "/docs/destinations/error-reporting/sentry/"
+to = "/docs/destinations/streaming-destinations/sentry/"
 status = 301
 [[redirects]]
 from = "/destinations/continuous-integration/"
-to = "/docs/destinations/continuous-integration/"
+to = "/docs/destinations/streaming-destinations/appcenter/"
 status = 301
 [[redirects]]
 from = "/destinations/business-messaging/slack/"
-to = "/docs/destinations/business-messaging/slack/"
+to = "/docs/destinations/streaming-destinations/slack/"
 status = 301
 [[redirects]]
 from = "/destinations/business-messaging/"
-to = "/docs/destinations/business-messaging/"
+to = "/docs/destinations/streaming-destinations/intercom/"
 status = 301
 [[redirects]]
 from = "/destinations/business-messaging/intercom/"
-to = "/docs/destinations/business-messaging/intercom/"
+to = "/docs/destinations/streaming-destinations/intercom/"
 status = 301
 [[redirects]]
 from = "/destinations/business-messaging/trengo/"
-to = "/docs/destinations/business-messaging/trengo/"
+to = "/docs/destinations/streaming-destinations/trengo/"
 status = 301
 [[redirects]]
 from = "/destinations/continuous-integration/appcenter/"
-to = "/docs/destinations/continuous-integration/appcenter/"
+to = "/docs/destinations/streaming-destinations/appcenter/"
 status = 301
 [[redirects]]
 from = "/destinations/attribution/adjust/"
-to = "/docs/destinations/attribution/adjust/"
+to = "/docs/destinations/streaming-destinations/adjust/"
 status = 301
 [[redirects]]
 from = "/destinations/attribution/branchio/"
-to = "/docs/destinations/attribution/branchio/"
+to = "/docs/destinations/streaming-destinations/branchio/"
 status = 301
 [[redirects]]
 from = "/destinations/attribution/appsflyer/"
-to = "/docs/destinations/attribution/appsflyer/"
+to = "/docs/destinations/streaming-destinations/appsflyer/"
 status = 301
 [[redirects]]
 from = "/destinations/attribution/attribution/"
-to = "/docs/destinations/attribution/attribution/"
+to = "/docs/destinations/streaming-destinations/attribution/"
 status = 301
 [[redirects]]
 from = "/destinations/attribution/"
-to = "/docs/destinations/attribution/"
+to = "/docs/destinations/streaming-destinations/adjust/"
 status = 301
 [[redirects]]
 from = "/destinations/attribution/kochava/"
-to = "/docs/destinations/attribution/kochava/"
+to = "/docs/destinations/streaming-destinations/kochava/"
 status = 301
 [[redirects]]
 from = "/destinations/attribution/tvsquared/"
-to = "/docs/destinations/attribution/tvsquared/"
+to = "/docs/destinations/streaming-destinations/tvsquared/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/firebase/"
-to = "/docs/destinations/analytics/firebase/"
+to = "/docs/destinations/streaming-destinations/firebase/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/aws-personalize/"
-to = "/docs/destinations/analytics/aws-personalize/"
+to = "/docs/destinations/streaming-destinations/aws-personalize/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/chartbeat/"
-to = "/docs/destinations/analytics/chartbeat/"
+to = "/docs/destinations/streaming-destinations/chartbeat/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/fullstory/"
-to = "/docs/destinations/analytics/fullstory/"
+to = "/docs/destinations/streaming-destinations/fullstory/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/google-analytics-360/"
-to = "/docs/destinations/analytics/google-analytics-360/"
+to = "/docs/destinations/streaming-destinations/google-analytics-360/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/"
-to = "/docs/destinations/analytics/"
+to = "/docs/destinations/streaming-destinations/adobe-analytics/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/heap.io/"
-to = "/docs/destinations/analytics/heap.io/"
+to = "/docs/destinations/streaming-destinations/heap.io/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/indicative/"
-to = "/docs/destinations/analytics/indicative/"
+to = "/docs/destinations/streaming-destinations/indicative/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/keen/"
-to = "/docs/destinations/analytics/keen/"
+to = "/docs/destinations/streaming-destinations/keen/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/google-analytics-ga/"
-to = "/docs/destinations/analytics/google-analytics-ga/"
+to = "/docs/destinations/streaming-destinations/google-analytics-ga/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/hotjar/"
-to = "/docs/destinations/analytics/hotjar/"
+to = "/docs/destinations/streaming-destinations/hotjar/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/kissmetrics/"
-to = "/docs/destinations/analytics/kissmetrics/"
+to = "/docs/destinations/streaming-destinations/kissmetrics/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/kubit/"
-to = "/docs/destinations/analytics/kubit/"
+to = "/docs/destinations/streaming-destinations/kubit/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/pendo/"
-to = "/docs/destinations/analytics/pendo/"
+to = "/docs/destinations/streaming-destinations/pendo/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/posthog/"
-to = "/docs/destinations/analytics/posthog/"
+to = "/docs/destinations/streaming-destinations/posthog/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/new-relic/"
-to = "/docs/destinations/analytics/new-relic/"
+to = "/docs/destinations/streaming-destinations/new-relic/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/quantummetric/"
-to = "/docs/destinations/analytics/quantummetric/"
+to = "/docs/destinations/streaming-destinations/quantummetric/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/profitwell/"
-to = "/docs/destinations/analytics/profitwell/"
+to = "/docs/destinations/streaming-destinations/profitwell/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/lytics/"
-to = "/docs/destinations/analytics/lytics/"
+to = "/docs/destinations/streaming-destinations/lytics/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/profitwell/profitwell-cloud-mode/"
-to = "/docs/destinations/analytics/profitwell/profitwell-cloud-mode/"
+to = "/docs/destinations/streaming-destinations/profitwell/profitwell-cloud-mode/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/mixpanel/"
-to = "/docs/destinations/analytics/mixpanel/"
+to = "/docs/destinations/streaming-destinations/mixpanel/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/google-analytics-4/"
-to = "/docs/destinations/analytics/google-analytics-4/"
+to = "/docs/destinations/streaming-destinations/google-analytics-4/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/profitwell/profitwell-web-device-mode/"
-to = "/docs/destinations/analytics/profitwell/profitwell-web-device-mode/"
+to = "/docs/destinations/streaming-destinations/profitwell/profitwell-web-device-mode/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat/"
-to = "/docs/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat/"
+to = "/docs/destinations/streaming-destinations/adobe-analytics/adobe-analytics-heartbeat/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode/"
-to = "/docs/destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode/"
+to = "/docs/destinations/streaming-destinations/adobe-analytics/adobe-analytics-mobile-device-mode/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/"
-to = "/docs/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/"
+to = "/docs/destinations/streaming-destinations/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/adobe-analytics/e-commerce-events/"
-to = "/docs/destinations/analytics/adobe-analytics/e-commerce-events/"
+to = "/docs/destinations/streaming-destinations/adobe-analytics/e-commerce-events/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/adobe-analytics/"
-to = "/docs/destinations/analytics/adobe-analytics/"
+to = "/docs/destinations/streaming-destinations/adobe-analytics/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/fb-custom-audience/"
-to = "/docs/destinations/advertising/fb-custom-audience/"
+to = "/docs/destinations/streaming-destinations/fb-custom-audience/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/bingads/"
-to = "/docs/destinations/advertising/bingads/"
+to = "/docs/destinations/streaming-destinations/bingads/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/criteo/"
-to = "/docs/destinations/advertising/criteo/"
+to = "/docs/destinations/streaming-destinations/criteo/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/fb-pixel/"
-to = "/docs/destinations/advertising/fb-pixel/"
+to = "/docs/destinations/streaming-destinations/fb-pixel/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/facebook-app-events/"
-to = "/docs/destinations/advertising/facebook-app-events/"
+to = "/docs/destinations/streaming-destinations/facebook-app-events/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode/"
-to = "/docs/destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode/"
+to = "/docs/destinations/streaming-destinations/adobe-analytics/adobe-analytics-web-device-mode/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/g-ads-gtag/"
-to = "/docs/destinations/advertising/g-ads-gtag/"
+to = "/docs/destinations/streaming-destinations/g-ads-gtag/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/"
-to = "/docs/destinations/advertising/"
+to = "/docs/destinations/streaming-destinations/bingads/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/google-adwords-enhanced-conversions/"
-to = "/docs/destinations/advertising/google-adwords-enhanced-conversions/"
+to = "/docs/destinations/streaming-destinations/google-adwords-enhanced-conversions/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/pinterest-ads/"
-to = "/docs/destinations/advertising/pinterest-ads/"
+to = "/docs/destinations/streaming-destinations/pinterest-ads/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/linkedin-insight-tag/"
-to = "/docs/destinations/advertising/linkedin-insight-tag/"
+to = "/docs/destinations/streaming-destinations/linkedin-insight-tag/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/google-adwords-remarketing-list/"
-to = "/docs/destinations/advertising/google-adwords-remarketing-list/"
+to = "/docs/destinations/streaming-destinations/google-adwords-remarketing-list/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/lotame/"
-to = "/docs/destinations/advertising/lotame/"
+to = "/docs/destinations/streaming-destinations/lotame/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/reddit-pixel/"
-to = "/docs/destinations/advertising/reddit-pixel/"
+to = "/docs/destinations/streaming-destinations/reddit-pixel/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/snapchat-conversion/"
-to = "/docs/destinations/advertising/snapchat-conversion/"
+to = "/docs/destinations/streaming-destinations/snapchat-conversion/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/tiktok-ads/"
-to = "/docs/destinations/advertising/tiktok-ads/"
+to = "/docs/destinations/streaming-destinations/tiktok-ads/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/dcm-floodlight/dcm-floodlight-cloud-mode/"
-to = "/docs/destinations/advertising/dcm-floodlight/dcm-floodlight-cloud-mode/"
+to = "/docs/destinations/streaming-destinations/dcm-floodlight/dcm-floodlight-cloud-mode/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/"
-to = "/docs/destinations/advertising/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/"
+to = "/docs/destinations/streaming-destinations/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/snap-pixel/"
-to = "/docs/destinations/advertising/snap-pixel/"
+to = "/docs/destinations/streaming-destinations/snap-pixel/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/dcm-floodlight/"
-to = "/docs/destinations/advertising/dcm-floodlight/"
+to = "/docs/destinations/streaming-destinations/dcm-floodlight/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/clickhouse/"
-to = "/docs/data-warehouse-integrations/clickhouse/"
+to = "/docs/destinations/warehouse-destinations/clickhouse/"
 status = 301
 [[redirects]]
 from = "/destinations/advertising/dcm-floodlight/dcm-floodlight-device-mode/"
-to = "/docs/destinations/advertising/dcm-floodlight/dcm-floodlight-device-mode/"
+to = "/docs/destinations/streaming-destinations/dcm-floodlight/dcm-floodlight-device-mode/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/azure-synapse/"
-to = "/docs/data-warehouse-integrations/azure-synapse/"
+to = "/docs/destinations/warehouse-destinations/azure-synapse/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/amazon-redshift/"
-to = "/docs/data-warehouse-integrations/amazon-redshift/"
+to = "/docs/destinations/warehouse-destinations/redshift/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/google-bigquery/"
-to = "/docs/data-warehouse-integrations/google-bigquery/"
+to = "/docs/destinations/warehouse-destinations/bigquery/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/gcs-datalake/"
-to = "/docs/data-warehouse-integrations/gcs-datalake/"
+to = "/docs/destinations/warehouse-destinations/gcs-datalake/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/postgresql/"
-to = "/docs/data-warehouse-integrations/postgresql/"
+to = "/docs/destinations/warehouse-destinations/postgresql/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/microsoft-sql-server/"
-to = "/docs/data-warehouse-integrations/microsoft-sql-server/"
+to = "/docs/destinations/warehouse-destinations/sql-server/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/delta-lake/"
-to = "/docs/data-warehouse-integrations/delta-lake/"
+to = "/docs/destinations/warehouse-destinations/delta-lake/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/"
-to = "/docs/data-warehouse-integrations/"
+to = "/docs/destinations/warehouse-destinations/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/warehouse-schemas/"
-to = "/docs/data-warehouse-integrations/warehouse-schemas/"
+to = "/docs/destinations/warehouse-destinations/warehouse-schema/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/azure-datalake/"
-to = "/docs/data-warehouse-integrations/azure-datalake/"
+to = "/docs/destinations/warehouse-destinations/azure-datalake/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/warehouse-faqs/"
-to = "/docs/data-warehouse-integrations/warehouse-faqs/"
+to = "/docs/destinations/warehouse-destinations/faq/"
 status = 301
 [[redirects]]
 from = "/data-warehouse-integrations/s3-datalake/"
-to = "/docs/data-warehouse-integrations/s3-datalake/"
+to = "/docs/destinations/warehouse-destinations/s3-datalake/"
 status = 301
-[[redirects]]
-from = "/data-governance/rudderstack-data-governance-api/"
-to = "/docs/data-governance/rudderstack-data-governance-api/"
-status = 301
-[[redirects]]
-from = "/data-governance/"
-to = "/docs/data-governance/"
-status = 301
-[[redirects]]
-from = "/data-governance/rudder-typer/"
-to = "/docs/data-governance/rudder-typer/"
-status = 301
-[[redirects]]
-from = "/data-governance/ruddertyper/"
-to = "/docs/data-governance/ruddertyper/"
-status = 301
-[[redirects]]
-from = "/connections/rudderstack-connection-modes/"
-to = "/docs/connections/rudderstack-connection-modes/"
-status = 301
-[[redirects]]
-from = "/data-governance/tracking-plans/tracking-plan-spreadsheet/"
-to = "/docs/data-governance/tracking-plans/tracking-plan-spreadsheet/"
-status = 301
-[[redirects]]
-from = "/data-governance/tracking-plans/"
-to = "/docs/data-governance/tracking-plans/"
-status = 301
-[[redirects]]
-from = "/data-warehouse-integrations/snowflake/"
-to = "/docs/data-warehouse-integrations/snowflake/"
-status = 301
-[[redirects]]
-from = "/transformations/rudderstack-transformation-api/"
-to = "/docs/transformations/rudderstack-transformation-api/"
-status = 301
-[[redirects]]
-from = "/destinations/advertising/yahoo-dsp/"
-to = "/docs/destinations/advertising/yahoo-dsp/"
-status = 301
-[[redirects]]
-from = "/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/"
-to = "/docs/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/"
-status = 301
-[[redirects]]
-from = "/destinations/analytics/google-analytics-4/google-analytics-4-device-mode/"
-to = "/docs/destinations/analytics/google-analytics-4/google-analytics-4-device-mode/"
-status = 301
-[[redirects]]
-from = "/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/"
-to = "/docs/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/"
-status = 301
-[[redirects]]
-from = "/destinations/analytics/singular/"
-to = "/docs/destinations/analytics/singular/"
-status = 301
-[[redirects]]
-from = "/destinations/analytics/singular/setting-up-singular-in-rudderstack/"
-to = "/docs/destinations/analytics/singular/setting-up-singular-in-rudderstack/"
-status = 301
-[[redirects]]
-from = "/destinations/analytics/singular/singular-device-mode/"
-to = "/docs/destinations/analytics/singular/singular-device-mode/"
-status = 301
-[[redirects]]
-from = "/destinations/analytics/singular/singular-cloud-mode/"
-to = "/docs/destinations/analytics/singular/singular-cloud-mode/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/activecampaign/"
-to = "/docs/cloud-extract-sources/activecampaign/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/bing-ads/"
-to = "/docs/cloud-extract-sources/bing-ads/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/chargebee/"
-to = "/docs/cloud-extract-sources/chargebee/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/common-settings/"
-to = "/docs/cloud-extract-sources/common-settings/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/facebook-ads/"
-to = "/docs/cloud-extract-sources/facebook-ads/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/freshdesk/"
-to = "/docs/cloud-extract-sources/freshdesk/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/google-adwords/"
-to = "/docs/cloud-extract-sources/google-adwords/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/google-analytics/"
-to = "/docs/cloud-extract-sources/google-analytics/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/google-search-console/"
-to = "/docs/cloud-extract-sources/google-search-console/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/google-sheets/"
-to = "/docs/cloud-extract-sources/google-sheets/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot-v2/"
-to = "/docs/cloud-extract-sources/hubspot-v2/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/"
-to = "/docs/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot/"
-to = "/docs/cloud-extract-sources/hubspot/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/"
-to = "/docs/cloud-extract-sources/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/intercom-v2/"
-to = "/docs/cloud-extract-sources/intercom-v2/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/intercom/"
-to = "/docs/cloud-extract-sources/intercom/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/mailchimp/"
-to = "/docs/cloud-extract-sources/mailchimp/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/mixpanel/"
-to = "/docs/cloud-extract-sources/mixpanel/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/marketo/"
-to = "/docs/cloud-extract-sources/marketo/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/netsuite/"
-to = "/docs/cloud-extract-sources/netsuite/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/pipedrive/"
-to = "/docs/cloud-extract-sources/pipedrive/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/quickbooks/"
-to = "/docs/cloud-extract-sources/quickbooks/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/salesforce-pardot/"
-to = "/docs/cloud-extract-sources/salesforce-pardot/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/salesforce/"
-to = "/docs/cloud-extract-sources/salesforce/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/"
-to = "/docs/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/sendgrid/"
-to = "/docs/cloud-extract-sources/sendgrid/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/stripe/"
-to = "/docs/cloud-extract-sources/stripe/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/xero/"
-to = "/docs/cloud-extract-sources/xero/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/zendesk-chat/"
-to = "/docs/cloud-extract-sources/zendesk-chat/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/zendesk/"
-to = "/docs/cloud-extract-sources/zendesk/"
-status = 301
-[[redirects]]
-from = "/destinations/business-messaging/kustomer/"
-to = "/docs/destinations/business-messaging/kustomer/"
-status = 301
-[[redirects]]
-from = "/get-started/rudderstack-architecture/"
-to = "/docs/get-started/rudderstack-architecture/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/amazon-redshift/"
-to = "/docs/reverse-etl/amazon-redshift/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/amazon-s3/"
-to = "/docs/reverse-etl/amazon-s3/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/clickhouse/"
-to = "/docs/reverse-etl/clickhouse/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/common-settings/importing-data-using-models/"
-to = "/docs/reverse-etl/common-settings/importing-data-using-models/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/common-settings/importing-data-using-tables/"
-to = "/docs/reverse-etl/common-settings/importing-data-using-tables/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/common-settings/"
-to = "/docs/reverse-etl/common-settings/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/common-settings/sync-modes/"
-to = "/docs/reverse-etl/common-settings/sync-modes/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/common-settings/sync-schedule-settings/"
-to = "/docs/reverse-etl/common-settings/sync-schedule-settings/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/faq/"
-to = "/docs/reverse-etl/faq/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/features/airflow-provider/"
-to = "/docs/reverse-etl/features/airflow-provider/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/features/"
-to = "/docs/reverse-etl/features/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/features/models/"
-to = "/docs/reverse-etl/features/models/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/features/visual-data-mapper/"
-to = "/docs/reverse-etl/features/visual-data-mapper/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/google-bigquery/"
-to = "/docs/reverse-etl/google-bigquery/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/"
-to = "/docs/reverse-etl/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/mysql/"
-to = "/docs/reverse-etl/mysql/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/postgresql/"
-to = "/docs/reverse-etl/postgresql/"
-status = 301
-[[redirects]]
-from = "/reverse-etl/snowflake/"
-to = "/docs/reverse-etl/snowflake/"
-status = 301
+# Get started
+
 [[redirects]]
 from = "/rudderstack-cloud/"
-to = "/docs/rudderstack-cloud/"
+to = "/docs/get-started/rudderstack-cloud/"
+status = 301
+
+# SDK sources
+
+[[redirects]]
+from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/"
+to = "/docs/sources/sdks/rudderstack-android-sdk/"
 status = 301
 [[redirects]]
-from = "/stream-sources/appcenter/"
-to = "/docs/stream-sources/appcenter/"
+from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/"
+to = "/docs/sources/sdks/rudderstack-ios-sdk/"
 status = 301
 [[redirects]]
-from = "/stream-sources/appsflyer/"
-to = "/docs/stream-sources/appsflyer/"
-status = 301
-[[redirects]]
-from = "/stream-sources/auth0/"
-to = "/docs/stream-sources/auth0/"
-status = 301
-[[redirects]]
-from = "/stream-sources/braze-currents/"
-to = "/docs/stream-sources/braze-currents/"
-status = 301
-[[redirects]]
-from = "/stream-sources/customerio/"
-to = "/docs/stream-sources/customerio/"
-status = 301
-[[redirects]]
-from = "/stream-sources/extole/"
-to = "/docs/stream-sources/extole/"
-status = 301
-[[redirects]]
-from = "/stream-sources/"
-to = "/docs/stream-sources/"
-status = 301
-[[redirects]]
-from = "/stream-sources/iterable/"
-to = "/docs/stream-sources/iterable/"
-status = 301
-[[redirects]]
-from = "/stream-sources/looker/"
-to = "/docs/stream-sources/looker/"
-status = 301
-[[redirects]]
-from = "/stream-sources/posthog/"
-to = "/docs/stream-sources/posthog/"
+from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/"
+to = "/docs/sources/sdks/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/"
+to = "/docs/sources/sdks/rudderstack-amp-analytics/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/event-filtering/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/event-filtering/"
+to = "/docs/sources/sdks/event-filtering/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
+to = "/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/"
+to = "/docs/sources/sdks/rudderstack-android-sdk/flushing-events-periodically/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/"
+to = "/docs/sources/sdks/rudderstack-cordova-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/"
+to = "/docs/sources/sdks/rudderstack-dotnet-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/"
+to = "/docs/sources/sdks/rudderstack-flutter-sdk/flutter-v1/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/"
+to = "/docs/sources/sdks/rudderstack-flutter-sdk/flutter-v2/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/"
+to = "/docs/sources/sdks/rudderstack-flutter-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/"
+to = "/docs/sources/sdks/rudderstack-go-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/"
+to = "/docs/sources/sdks/rudderstack-ios-sdk/ios-v2/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/"
+to = "/docs/sources/sdks/rudderstack-ios-sdk/macos/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/"
+to = "/docs/sources/sdks/rudderstack-ios-sdk/tvOS/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/"
+to = "/docs/sources/sdks/rudderstack-ios-sdk/watchOS/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/"
+to = "/docs/sources/sdks/rudderstack-java-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/consent-managers/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/faq/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/querystring-api/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/"
+to = "/docs/sources/sdks/rudderstack-node-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/"
+to = "/docs/sources/sdks/rudderstack-php-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/"
+to = "/docs/sources/sdks/rudderstack-python-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/"
+to = "/docs/sources/sdks/rudderstack-ruby-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/"
+to = "/docs/sources/sdks/rudderstack-react-native-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk/"
+to = "/docs/sources/sdks/rudderstack-rust-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/"
+to = "/docs/sources/sdks/rudderstack-unity-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/"
+to = "/docs/sources/sdks/faq/"
 status = 301
+
+# Cloud Apps Sources
+
 [[redirects]]
 from = "/stream-sources/segment/"
-to = "/docs/stream-sources/segment/"
+to = "/docs/sources/cloud-apps/segment/"
 status = 301
 [[redirects]]
 from = "/stream-sources/webhook-source/"
-to = "/docs/stream-sources/webhook-source/"
+to = "/docs/sources/cloud-apps/webhook-source/"
 status = 301
 [[redirects]]
 from = "/stream-sources/shopify/"
-to = "/docs/stream-sources/shopify/"
+to = "/docs/sources/cloud-apps/shopify/"
+status = 301
+[[redirects]]
+from = "/stream-sources/appcenter/"
+to = "/docs/sources/cloud-apps/appcenter/"
+status = 301
+[[redirects]]
+from = "/stream-sources/appsflyer/"
+to = "/docs/sources/cloud-apps/appsflyer/"
+status = 301
+[[redirects]]
+from = "/stream-sources/auth0/"
+to = "/docs/sources/cloud-apps/auth0/"
+status = 301
+[[redirects]]
+from = "/stream-sources/braze-currents/"
+to = "/docs/sources/cloud-apps/braze-currents/"
+status = 301
+[[redirects]]
+from = "/stream-sources/customerio/"
+to = "/docs/sources/cloud-apps/customerio/"
+status = 301
+[[redirects]]
+from = "/stream-sources/extole/"
+to = "/docs/sources/cloud-apps/extole/"
+status = 301
+[[redirects]]
+from = "/stream-sources/"
+to = "/docs/sources/cloud-apps/"
+status = 301
+[[redirects]]
+from = "/stream-sources/iterable/"
+to = "/docs/sources/cloud-apps/iterable/"
+status = 301
+[[redirects]]
+from = "/stream-sources/looker/"
+to = "/docs/sources/cloud-apps/looker/"
+status = 301
+[[redirects]]
+from = "/stream-sources/posthog/"
+to = "/docs/sources/cloud-apps/posthog/"
+status = 301
+
+# Cloud Extract Sources
+
+[[redirects]]
+from = "/cloud-extract-sources/activecampaign/"
+to = "/docs/sources/extract/activecampaign/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/bing-ads/"
+to = "/docs/sources/extract/bing-ads/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/chargebee/"
+to = "/docs/sources/extract/chargebee/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/common-settings/"
+to = "/docs/sources/extract/common-settings/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/facebook-ads/"
+to = "/docs/sources/extract/facebook-ads/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/freshdesk/"
+to = "/docs/sources/extract/freshdesk/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/google-adwords/"
+to = "/docs/sources/extract/google-adwords/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/google-analytics/"
+to = "/docs/sources/extract/google-analytics/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/google-search-console/"
+to = "/docs/sources/extract/google-search-console/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/google-sheets/"
+to = "/docs/sources/extract/google-sheets/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/hubspot-v2/"
+to = "/docs/sources/extract/hubspot-v2/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/"
+to = "/docs/sources/extract/hubspot/hubspot-data-model-and-schema-information/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/hubspot/"
+to = "/docs/sources/extract/hubspot/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/"
+to = "/docs/sources/extract/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/intercom-v2/"
+to = "/docs/sources/extract/intercom-v2/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/intercom/"
+to = "/docs/sources/extract/intercom/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/mailchimp/"
+to = "/docs/sources/extract/mailchimp/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/mixpanel/"
+to = "/docs/sources/extract/mixpanel/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/marketo/"
+to = "/docs/sources/extract/marketo/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/netsuite/"
+to = "/docs/sources/extract/netsuite/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/pipedrive/"
+to = "/docs/sources/extract/pipedrive/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/quickbooks/"
+to = "/docs/sources/extract/quickbooks/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/salesforce-pardot/"
+to = "/docs/sources/extract/salesforce-pardot/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/salesforce/"
+to = "/docs/sources/extract/salesforce/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/"
+to = "/docs/sources/extract/salesforce/schema-comparison-rudderstack-vs-segment/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/sendgrid/"
+to = "/docs/sources/extract/sendgrid/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/stripe/"
+to = "/docs/sources/extract/stripe/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/xero/"
+to = "/docs/sources/extract/xero/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/zendesk-chat/"
+to = "/docs/sources/extract/zendesk-chat/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/zendesk/"
+to = "/docs/sources/extract/zendesk/"
+status = 301
+
+# Reverse ETL Sources
+
+[[redirects]]
+from = "/reverse-etl/databricks/"
+to = "/docs/sources/reverse-etl/databricks/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/amazon-redshift/"
+to = "/docs/sources/reverse-etl/amazon-redshift/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/amazon-s3/"
+to = "/docs/sources/reverse-etl/amazon-s3/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/clickhouse/"
+to = "/docs/sources/reverse-etl/clickhouse/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/common-settings/importing-data-using-models/"
+to = "/docs/sources/reverse-etl/common-settings/importing-data-using-models/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/common-settings/importing-data-using-tables/"
+to = "/docs/sources/reverse-etl/common-settings/importing-data-using-tables/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/common-settings/"
+to = "/docs/sources/reverse-etl/common-settings/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/common-settings/sync-modes/"
+to = "/docs/sources/reverse-etl/common-settings/sync-modes/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/common-settings/sync-schedule-settings/"
+to = "/docs/sources/reverse-etl/common-settings/sync-schedule-settings/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/faq/"
+to = "/docs/sources/reverse-etl/faq/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/features/airflow-provider/"
+to = "/docs/sources/reverse-etl/features/airflow-provider/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/features/"
+to = "/docs/sources/reverse-etl/features/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/features/models/"
+to = "/docs/sources/reverse-etl/features/models/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/features/visual-data-mapper/"
+to = "/docs/sources/reverse-etl/features/visual-data-mapper/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/google-bigquery/"
+to = "/docs/sources/reverse-etl/google-bigquery/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/"
+to = "/docs/sources/reverse-etl/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/mysql/"
+to = "/docs/sources/reverse-etl/mysql/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/postgresql/"
+to = "/docs/sources/reverse-etl/postgresql/"
+status = 301
+[[redirects]]
+from = "/reverse-etl/snowflake/"
+to = "/docs/sources/reverse-etl/snowflake/"
+status = 301
+
+# Destinations
+
+[[redirects]]
+from = "/destinations/advertising/yahoo-dsp/"
+to = "/docs/destinations/streaming-destinations/yahoo-dsp/"
+status = 301
+[[redirects]]
+from = "/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/"
+to = "/docs/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/"
+status = 301
+[[redirects]]
+from = "/destinations/analytics/google-analytics-4/google-analytics-4-device-mode/"
+to = "/docs/destinations/streaming-destinations/google-analytics-4/google-analytics-4-device-mode/"
+status = 301
+[[redirects]]
+from = "/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/"
+to = "/docs/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/"
+status = 301
+[[redirects]]
+from = "/destinations/analytics/singular/"
+to = "/docs/destinations/streaming-destinations/singular/"
+status = 301
+[[redirects]]
+from = "/destinations/analytics/singular/setting-up-singular-in-rudderstack/"
+to = "/docs/destinations/streaming-destinations/singular/setting-up-singular-in-rudderstack/"
+status = 301
+[[redirects]]
+from = "/destinations/analytics/singular/singular-device-mode/"
+to = "/docs/destinations/streaming-destinations/singular/singular-device-mode/"
+status = 301
+[[redirects]]
+from = "/destinations/analytics/singular/singular-cloud-mode/"
+to = "/docs/destinations/streaming-destinations/singular/singular-cloud-mode/"
+status = 301
+[[redirects]]
+from = "/destinations/business-messaging/kustomer/"
+to = "/docs/destinations/streaming-destinations/kustomer/"
 status = 301
 [[redirects]]
 from = "/destinations/analytics/amplitude/"
-to = "/docs/destinations/analytics/amplitude/"
+to = "/docs/destinations/streaming-destinations/amplitude/"
 status = 301
 [[redirects]]
 from = "/destinations/webhooks/"
 to = "/docs/destinations/webhooks/"
 status = 301
+
+# API
+
 [[redirects]]
-from = "/reverse-etl/databricks/"
-to = "/docs/reverse-etl/databricks/"
+from = "/data-governance/rudderstack-data-governance-api/"
+to = "/docs/api/data-governance-api/"
 status = 301
 [[redirects]]
-from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/"
+from = "/transformations/rudderstack-transformation-api/"
+to = "/docs/api/transformation-api/"
 status = 301
+
+# Resources
+
 [[redirects]]
-from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/"
-status = 301
-[[redirects]]
-from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/"
-to = "/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/"
+from = "/get-started/rudderstack-architecture/"
+to = "/docs/resources/rudderstack-architecture/"
 status = 301
 
 # End restructuring
@@ -1655,7 +1671,7 @@ to = "/docs/stream-sources/rudderstack-sdk-integration-guides/"
 status = 301 
 [[redirects]]
 from = "/adding-a-new-user-transformation-in-rudderstack/"
-to = "/docs/transformations/"
+to = "/docs/features/transformations/"
 status = 301 
 [[redirects]]
 from = "/administrators-guide/alerting"

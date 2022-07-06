@@ -55,11 +55,11 @@ Refer to the <a href="#configuration">Configuration</a> section below for more i
 
 ## Self-hosted control plane
 
-If you have self-hosted the control plane using the open-source <Link to="/tmp-get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility, follow <Link to="//tmp-get-started/rudderstack-open-source/control-plane-lite/#kubernetes">Kubernetes instructions</Link> to set up the data plane.
+If you have self-hosted the control plane using the open-source <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link> utility, follow <Link to="//get-started/rudderstack-open-source/control-plane-lite/#kubernetes">Kubernetes instructions</Link> to set up the data plane.
 
 ## Sending test events
 
-Once you have successfully performed the steps above, follow the <Link to="/tmp-get-started/rudderstack-open-source/sending-test-events/">Sending Test Events</Link> guide to verify the installation.
+Once you have successfully performed the steps above, follow the <Link to="/get-started/rudderstack-open-source/sending-test-events/">Sending Test Events</Link> guide to verify the installation.
 
 ## Upgrading the Helm chart
 
@@ -95,8 +95,8 @@ This removes all the components created by the chart.
 
 If you are using Google Cloud Storage or Google BigQuery for the following cases:
 
-- <Link to="/tmp-destinations/streaming-destinations/google-cloud-storage/">Google Cloud Storage</Link> as a destination for dumping jobs, or
-- <Link to="/tmp-destinations/warehouse-destinations/bigquery/">Google BigQuery</Link> as a warehouse destination
+- <Link to="/destinations/streaming-destinations/google-cloud-storage/">Google Cloud Storage</Link> as a destination for dumping jobs, or
+- <Link to="/destinations/warehouse-destinations/bigquery/">Google BigQuery</Link> as a warehouse destination
 
 Make sure you replace the contents of the file [rudder-google-application-credentials.json](https://github.com/rudderlabs/rudderstack-helm/blob/master/rudder-google-application-credentials.json) in the repository with the details of your Google service account.
 

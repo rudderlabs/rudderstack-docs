@@ -21,7 +21,7 @@ This document details various aspects of the HTTP API.
 
 The following prerequisites must be met to send events via the HTTP API:
 
-* The RudderStack HTTP server must be accessible from your HTTP client. Refer to the <Link to="/tmp-get-started/rudderstack-open-source/data-plane-setup/">Data Plane Setup</Link> guide.
+* The RudderStack HTTP server must be accessible from your HTTP client. Refer to the <Link to="/get-started/rudderstack-open-source/data-plane-setup/">Data Plane Setup</Link> guide.
 * Set up a source and destination in RudderStack by following the steps from <Link to="/dashboard-guides/sources/#adding-a-source">Adding a Source</Link> and <Link to="/dashboard-guides/destinations/#adding-a-destination">Adding a Destination</Link> guides.
 * Import the Postman collection using using this [**URL**](https://www.getpostman.com/collections/480307c55ad2b9dd4e27) and edit the variables `source_write_key` and `data_plane_url`with the <Link to="/dashboard-guides/sources/#what-is-a-write-key-why-is-it-required">source write key</Link> and the <Link to="/dashboard-guides/overview/#data-plane-url">Data Plane URL</Link>.
 
@@ -457,9 +457,9 @@ The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you m
 
 The following destinations support the <code class="inline-code">alias</code> call:
 
-* <Link to="/tmp-destinations/streaming-destinations/moengage/">MoEngage</Link>
-* <Link to="/tmp-destinations/streaming-destinations/kissmetrics/">Kissmetrics</Link>
-* <Link to="/tmp-destinations/streaming-destinations/amplitude/">Amplitude</Link> (only supported by the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> via <Link to="/tmp-destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+* <Link to="/destinations/streaming-destinations/moengage/">MoEngage</Link>
+* <Link to="/destinations/streaming-destinations/kissmetrics/">Kissmetrics</Link>
+* <Link to="/destinations/streaming-destinations/amplitude/">Amplitude</Link> (only supported by the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 
 </div>
 
