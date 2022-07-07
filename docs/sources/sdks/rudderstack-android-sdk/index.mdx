@@ -141,7 +141,7 @@ Add the following code to the `onCreate` method in your `Application` class:
 
 <div class="infoBlock">
 
-Follow our guide on <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-android-sdk/add-an-application-class-to-you-android-application">Adding an Application Class to Your Android Application</a> for more information.
+Follow our guide on <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class">Adding an Application Class to Your Android Application</a> for more information.
 </div>
 
 <Tabs>
@@ -703,7 +703,7 @@ The method <code class="inline-code">getAnonymousId</code> is available from v1.
 
 ## Filtering events
 
-When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them.
+When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them.
 
 <div class="infoBlock">
 
@@ -921,8 +921,7 @@ RudderClient rudderClient = RudderClient.getInstance(
 You can easily develop a device mode destination in case RudderStack doesn't support it already, by following the steps listed in this section.
 
 <div class="infoBlock">
-
-More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 - Create a `CustomFactory` class by extending [`RudderIntegration.java`](https://github.com/rudderlabs/rudder-sdk-android/blob/master/core/src/main/java/com/rudderstack/android/sdk/core/RudderIntegration.java) , as shown:
@@ -1057,7 +1056,7 @@ We currently support `API 14: Android 4.0 (IceCreamSandwich)` or higher.
 
 ### I don't have an `Application` class to initialize my RudderStack client. What do I do?
 
-Follow our guide on [How to Add an Application Class to Your Android App](https://rudderstack.com/docs/sources/sdks/rudderstack-android-sdk/add-an-application-class-to-you-android-application/) to add an `Application` class.
+Follow our guide on [How to Add an Application Class to Your Android App](https://rudderstack.com/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class/) to add an `Application` class.
 
 ### How do I set the Android permissions?
 
