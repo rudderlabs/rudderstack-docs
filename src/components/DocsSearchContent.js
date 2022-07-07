@@ -12,28 +12,62 @@ const formatHighlight = str => str.replace(new RegExp("<ais-highlight-0000000000
 
 const truncateExcerpt = str => str.substring(0, 150) + "..."
 
+// This function searches for the slug in sidebar.js
+const recursiveSearch = (object, key, value) => {
+  if (Array.isArray(object)) {
+    for (const obj of object) {
+      const result = recursiveSearch(obj, key, value)
+      if (result) return obj
+    }
+  } else {
+    if (object.hasOwnProperty(key) && object[key] === value) {
+      return object
+    }
+
+    for (const k of Object.keys(object)) {
+      if (typeof object[k] === "object") {
+        const o = recursiveSearch(object[k], key, value);
+        if (o !== null && typeof o !== "undefined") return o
+      }
+    }
+
+    return null
+  }
+}
+
 // sidebar.js file is used to generate breadcrumb from slug
 const generateBreadcrumb = slug => {
-  if (slug === "/") return jsonData.find(x => x.link === slug).title
-
-  let slugArray = slug.split("/").filter(x => x)
   let breadcrumb = []
+  let result = recursiveSearch(jsonData, "link", slug)
 
-  // Get item by matching parts of slug
-  let link = "/" + slugArray[0]
-  let item = jsonData.find(x => x.link.startsWith(link))
-
-  if (item) {
-    breadcrumb.push(item.title)
-
-    while (breadcrumb.length < slugArray.length) {
-      link += "/" + slugArray[breadcrumb.length]
-      item = item.content.find(x => x.link.startsWith(link))
-
-      if (item) {
-        breadcrumb.push(item.title)
-      } else {
+  if (result) {
+    // Get preceding sectionTitle
+    let index = jsonData.findIndex(x => x === result)
+    for (let i = index; i > 0; i--) {
+      if (jsonData[i].sectionTitle) {
+        breadcrumb.push(jsonData[i].sectionTitle)
         break
+      }
+    }
+
+    breadcrumb.push(result.title)
+
+    if (result.link !== slug) {
+      while (result.content.length > 0) {
+        let tempResult = result.content.find(x => x.link === slug)
+        if (tempResult) {
+          result = tempResult
+        } else {
+          tempResult = result.content.find(x => slug.startsWith(x.link))
+          if (tempResult) result = tempResult
+        }
+
+        if (result) {
+          breadcrumb.push(result.title)
+          if (result.link === slug) break
+        } else {
+          break
+        }
       }
     }
   }
