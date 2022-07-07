@@ -22,6 +22,10 @@ from = "/faqs/"
 to = "/docs/resources/faq/"
 status = 301
 [[redirects]]
+from = "/resources/faqs/"
+to = "/docs/resources/faq/"
+status = 301
+[[redirects]]
 from = "/get-started/glossary/"
 to = "/docs/resources/glossary/"
 status = 301
@@ -1011,6 +1015,10 @@ from = "/data-warehouse-integrations/warehouse-schemas/"
 to = "/docs/destinations/warehouse-destinations/warehouse-schema/"
 status = 301
 [[redirects]]
+from = "/destinations/warehouse-destinations/warehouse-schemas/"
+to = "/docs/destinations/warehouse-destinations/warehouse-schema/"
+status = 301
+[[redirects]]
 from = "/data-warehouse-integrations/azure-datalake/"
 to = "/docs/destinations/warehouse-destinations/azure-datalake/"
 status = 301
@@ -1062,6 +1070,10 @@ to = "/docs/sources/sdks/event-filtering/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
+to = "/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class/"
+status = 301
+[[redirects]]
+from = "/sources/sdks/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
 to = "/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class/"
 status = 301
 [[redirects]]
@@ -1134,6 +1146,10 @@ to = "/docs/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/faq/"
+status = 301
+[[redirects]]
+from = "/sources/sdks/rudderstack-javascript-sdk/js-sdk-faqs/"
 to = "/docs/sources/sdks/rudderstack-javascript-sdk/faq/"
 status = 301
 [[redirects]]
