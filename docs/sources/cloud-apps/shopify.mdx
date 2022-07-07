@@ -113,7 +113,7 @@ The following table details the supported Shopify events and their corresponding
 | `orders_paid`                 | Order was paid.             | `orders/paid`                 | 
 | `orders_partially_fullfilled` | Order was partly fulfilled. | `orders/partially_fulfilled`  |
 
-RudderStack also supports the following [E-commerce events](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/):
+RudderStack also supports the following [E-commerce events](https://https://www.rudderstack.com/docs/event-spec/ecommerce-events-spec/):
 
 | E-commerce event name          | Description                 | Subscribed Shopify topic      |
 | :----------------------------- | :---------------------------| :-----------------------------|
@@ -238,9 +238,9 @@ The below is an example of server-side event transformed by RudderStack:
 For tracking the client-side events, RudderStack inserts a JavaScript tracking code into every page of the respective Shopify store.
 </div>
 
-- RudderStack supports the [`page`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/page/) event for every page visited on the Shopify store.
-- It also supports the `Registration Viewed` as a generic [`track`](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/) event whenever the user views their account or registration page.
-- The following [E-commerce events](https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) are also supported on client-side:
+- RudderStack supports the [`page`](https://www.rudderstack.com/docs/event-spec/standard-events/page/) event for every page visited on the Shopify store.
+- It also supports the `Registration Viewed` as a generic [`track`](https://www.rudderstack.com/docs/event-spec/standard-events/track/) event whenever the user views their account or registration page.
+- The following [E-commerce events](https://www.rudderstack.com/docs/event-spec/ecommerce-events-spec/) are also supported on client-side:
 
 | Event name             | Description                                |
 | :----------------------| :------------------------------------------|
@@ -385,7 +385,7 @@ No, RudderStack does not persist the `anonymousId` - it keeps on changing as the
 
 You can differentiate between the data collected in cloud and device mode by looking at the signature in payload:
 
-- In the <Link to="/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, RudderStack subscribes to the Shopify webhooks to consume data from Shopify. The data collected from Shopify cloud has the following signature in the payload:
+- In the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, RudderStack subscribes to the Shopify webhooks to consume data from Shopify. The data collected from Shopify cloud has the following signature in the payload:
 
 ```javascript
 context ": {....
@@ -395,7 +395,7 @@ context ": {....
   }
 }
 ```
-- In <Link to="/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</Link>, RudderStack loads its JavaScript SDK on every Shopify store page for web tracking. The data collected from the Shopify device mode has the following signature in the payload:
+- In <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, RudderStack loads its JavaScript SDK on every Shopify store page for web tracking. The data collected from the Shopify device mode has the following signature in the payload:
 
 ```javascript
 "context": {
