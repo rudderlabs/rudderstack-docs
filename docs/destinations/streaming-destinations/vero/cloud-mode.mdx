@@ -32,7 +32,7 @@ The following table lists the mapping of the RudderStack traits to the correspon
 
 | RudderStack trait | Vero property | Presence |
 | :-----| :------| :-------|
-| `userId` or `anonymousId` | `id` | Required, if `email` is not present. |
+| `userId` or `anonymousId` | `id` | Required. |
 | `email` | `email` | Optional |
 | `traits` | `data` |  Optional |
 | `context.os.name` | `channels.platform` | Optional |
@@ -43,7 +43,11 @@ The following table lists the mapping of the RudderStack traits to the correspon
 | `context.userAgent` | `userAgent` | Optional |
 
 <div class="infoBlock">
-If the event includes <code class="inline-code">email</code> and no <code class="inline-code">userId</code>, Vero will automatically use <code class="inline-code">email</code> as the <code class="inline-code">id</code>.
+<code class="inline-code">email</code> is an optional field. However, if it is absent, Vero will not be able to send any emails to the user, so it is recommended to have this trait in the event.
+</div>
+
+<div class="infoBlock">
+If <code class="inline-code">userId</code> is absent, RudderStack maps <code class="inline-code">anonymousId</code> to Vero's <code class="inline-code">id</code> field to create or update the user.
 </div>
 
 <div class="successBlock">
