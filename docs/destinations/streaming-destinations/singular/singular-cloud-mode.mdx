@@ -62,7 +62,7 @@ The following table lists the mapping of the attributes **automatically captured
 | `context.network.carrier` | `cn` | Optional | The carrier name of the internet provider. |
 
 <div class="successBlock">
-To anonymize your IP, you can send a dummy IP in the <code class="inline-code">context.ip</code> field. RudderStack uses it as the IP address instead of capturing it automatically from the backend. In case of mobile SDKs, you can leverage the <Link to="/transformations">Transformations</Link> feature to do this - when sending events via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+To anonymize your IP, you can send a dummy IP in the <code class="inline-code">context.ip</code> field. RudderStack uses it as the IP address instead of capturing it automatically from the backend. In case of mobile SDKs, you can leverage the <Link to="/features/transformations">Transformations</Link> feature to do this - when sending events via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 </div>
 
 The following table lists the mapping of the attributes that **must be passed via the event properties**:
@@ -172,7 +172,7 @@ A few important considerations in case of custom events are listed below:
 
 ### How can I verify if the events are successfully delivered to Singular?
 
-To verify if the events are successfully delivered to Singular, you can use RudderStack's <Link to="/rudderstack-cloud/live-events/#destination-live-events">Destination live events</Link> feature.
+To verify if the events are successfully delivered to Singular, you can use RudderStack's <Link to="/dashboard-guides/live-events/#destination-live-events">Destination live events</Link> feature.
 
 You can also verify the event delivery by going to your [Singular dashboard](https://app.singular.net/login?redir=%2F#/) and following these steps:
 

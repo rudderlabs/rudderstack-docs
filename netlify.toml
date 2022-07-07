@@ -45,6 +45,10 @@ from = "/data-governance/ruddertyper/"
 to = "/docs/features/data-governance/ruddertyper/"
 status = 301
 [[redirects]]
+from = "/data-governance/rudder-typer/"
+to = "/docs/features/data-governance/ruddertyper/"
+status = 301
+[[redirects]]
 from = "/data-governance/tracking-plans/"
 to = "/docs/features/data-governance/tracking-plans/"
 status = 301
@@ -1018,6 +1022,11 @@ status = 301
 from = "/data-warehouse-integrations/s3-datalake/"
 to = "/docs/destinations/warehouse-destinations/s3-datalake/"
 status = 301
+[[redirects]]
+from = "/data-warehouse-integrations/json-column-support/"
+to = "/docs/destinations/warehouse-destinations/json-column-support/"
+status = 301
+
 # Get started
 
 [[redirects]]
@@ -1501,10 +1510,10 @@ status = 301
 from = "/get-started/installing-and-setting-up-rudderstack/docker"
 to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
 status = 301
-# [[redirects]]
-# from = "/data-warehouse-integrations/identity-resolution-in-rudderstack/"
-# to = "/docs/identity-resolution/"
-# status = 301
+[[redirects]]
+from = "/data-warehouse-integrations/identity-resolution-in-rudderstack/"
+to = "/docs/features/identity-resolution/"
+status = 301
 # [[redirects]]
 # from = "/rudderstack-api/user-suppression/"
 # to = "/docs/rudderstack-api/data-regulation-api/"

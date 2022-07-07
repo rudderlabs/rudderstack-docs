@@ -582,27 +582,35 @@ export const jsonData = [
                 content: []
             },
             {
+                key: "databricks",
+                title: "Databricks",
+                link: "/sources/reverse-etl/databricks/",
+                content: []
+            },
+            {
                 key: "google-bigquery",
                 title: "Google BigQuery",
                 link: "/sources/reverse-etl/google-bigquery/",
                 content: []
-            }, {
+            }, 
+            {
                 key: "mysql",
                 title: "MySQL",
                 link: "/sources/reverse-etl/mysql/",
                 content: []
-            }, {
+            }, 
+            {
                 key: "postgresql",
                 title: "PostgreSQL",
                 link: "/sources/reverse-etl/postgresql/",
                 content: []
-            }, {
+            }, 
+            {
                 key: "snowflake",
                 title: "Snowflake",
                 link: "/sources/reverse-etl/snowflake/",
                 content: []
             },
-
             {
                 key: "models",
                 title: "Models",
@@ -1414,6 +1422,12 @@ export const jsonData = [
                 key: "warehouse-schemas",
                 title: "Warehouse Schema",
                 link: "/destinations/warehouse-destinations/warehouse-schema/",
+                content: []
+            },
+            {
+                key: "json-column-support",
+                title: "JSON Column Support",
+                link: "/destinations/warehouse-destinations/json-column-support/",
                 content: []
             },
             {
