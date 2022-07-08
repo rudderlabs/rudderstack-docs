@@ -714,6 +714,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "matomo",
+    title: "Matomo",
+    link: "/destinations/streaming-destinations/matomo/",
+    content: [],
+  },
+  {
     key: "google-analytics-4",
     title: "Google Analytics 4",
     link: "/destinations/streaming-destinations/google-analytics-4/",

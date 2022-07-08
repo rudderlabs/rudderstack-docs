@@ -967,7 +967,14 @@ export const jsonData = [
                 title: "Lytics",
                 link: "/destinations/streaming-destinations/lytics/",
                 content: []
-            }, {
+            },
+            {
+                key: "matomo",
+                title: "Matomo",
+                link: "/destinations/streaming-destinations/matomo/",
+                content: [],
+            },
+            {
                 key: "mixpanel",
                 title: "Mixpanel",
                 link: "/destinations/streaming-destinations/mixpanel/",

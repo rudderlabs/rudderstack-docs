@@ -44,13 +44,13 @@ Refer to the <Link to="#faq">FAQ</Link> section below for more information on fi
 <img src="../../assets/event-stream-destinations/matomo-connection-settings-2.png" alt="Matomo connection settings"/>
 <img src="../../assets/event-stream-destinations/matomo-connection-settings-3.png" alt="Matomo connection settings"/>
 
-- **Mapping to trigger the Matomo Goal ID for the respective Events**: Enter the **Event Name** and the corresponding [**Goal Id**](https://developer.matomo.org/guides/tracking-javascript-guide#manually-trigger-goal-conversions) to be triggered when that event is called.
+- **Mapping to trigger the Matomo Goal ID for the respective Events**: Enter the **Event Name** and the [**Goal Id**](https://developer.matomo.org/guides/tracking-javascript-guide#manually-trigger-goal-conversions) to be triggered when that event is called.
 
 <div class="successBlock">
 You can specify multiple <strong>Goal Id</strong> for one <strong>Event Name</strong> and vice versa.
 </div>
 
-- **Mapping to trigger the Matomo standard events for the respective Events**: Enter the event name and pick the corresponding standard event from the dropdown to be triggered when that event is called.
+- **Mapping to trigger the Matomo standard events for the respective Events**: Enter the event name and pick the standard event from the dropdown to be triggered when that event is called.
 
 <div class="successBlock">
 You can specify multiple <strong>Standard Event</strong> for one <strong>Event Name</strong> and vice versa.
@@ -79,12 +79,12 @@ You can specify multiple <strong>Standard Event</strong> for one <strong>Event N
 
 ## Identify
 
-RudderStack sets the ID value in the cache to the `userId` or `anonymousId` present in the <Link to="">`identify`</Link> call. 
+RudderStack sets the ID value in the cache to the `userId` or `anonymousId` present in the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call. 
 
 A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm");
+rudderanalytics.identify("1hKOmRA4GRlm");
 ```
 
 The following table lists the RudderStack and Matomo property to set the `userId` in the `identify` call:
@@ -95,7 +95,7 @@ The following table lists the RudderStack and Matomo property to set the `userId
 
 ## Track
 
-The <Link to="">`track`</Link> method lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track/">`track`</Link> method lets you capture user events along with the properties associated with them.
 
 A sample `track` call is shown below:
 
@@ -107,11 +107,11 @@ rudderanalytics.track("Order Completed",{
 });
 ```
 
-RudderStack supports `track` calls for **standard** and **e-commerce** events as explained below: 
+### Generic events
 
-### Standard events
+RudderStack sends a generic `track` call which is a not a <Link to="#standard-event">standard event</Link> or an <Link to="#e-commerce-events">e-commerce event</Link> as a Matomo [`trackEvent`](https://developer.matomo.org/guides/tracking-javascript-guide#manually-trigger-events) event.
 
-RudderStack supports the `trackEvent` event. The following table lists the property mappings between RudderStack and Matomo for `trackEvent`:
+The following table lists the property mappings between RudderStack and Matomo for `trackEvent`:
 
 | RudderStack property | Matomo property | Presence |
 |:----------------------|:--------------------|:----------------|
@@ -120,9 +120,25 @@ RudderStack supports the `trackEvent` event. The following table lists the prope
 | `event` | `name` | Optional |
 | `properties.value` | `value` | Optional |
 
+### Standard events
+
+<div class="warningBlock">
+For RudderStack to send an event as a standard Matomo event, you need to specify the event mapping under the <strong>Mapping to trigger the Matomo standard events for the respective Events</strong> setting in the RudderStack dashboard. For more information, refer to the <Link to="#event-settings">Event settings</Link> section above.
+</div>
+
+RudderStack supports the following Matomo standard events:
+
+- [Ping](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=test%20content%20tracking.-,ping,-()%20%2D%20Send%20a)
+- [Track Content Impressions](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=trackContentImpression)
+- [Track Content Impressions Within Node](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=trackContentImpressionsWithinNode)
+- [Track Content Interaction](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=trackContentInteraction)
+- [Track Content Interaction Node](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=trackContentInteractionNode)
+- [Track Link](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=custom%20revenue%20customRevenue.-,trackLink,-(%20url%2C%20linkType%20))
+- [Track Site Search](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=optional%20numeric%20value.-,trackSiteSearch,-(keyword%2C%20%5Bcategory%5D%2C%20%5BresultsCount))
+
 ### E-commerce events
 
-RudderStack supports and maps the following e-commerce events to the corresponding Matomo events:
+RudderStack supports and maps the following <Link to="/event-spec/ecommerce-events-spec/">e-commerce events</Link> to the corresponding Matomo [e-commerce events](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=most%20recent%20referrer.-,Ecommerce,-Matomo%20provides%20ecommerce):
 
 | RudderStack Event | Matomo Event |
 |:--------------------------------|:--------------------------|
@@ -136,7 +152,7 @@ For the above-mentioned events, you can also send specific properties as mention
 
 #### Product Viewed
 
-RudderStack maps the `Product Viewed` event to `setEcommerceView`. The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Product Viewed` event to [`setEcommerceView`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=click%20here.-,setEcommerceView,-(%20productSKU%2C%20productName%2C%20categoryName). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -147,7 +163,7 @@ RudderStack maps the `Product Viewed` event to `setEcommerceView`. The following
 
 #### Product Added
 
-RudderStack maps the `Product Added` event name to `addEcommerceItem`. The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Product Added` event name to [`addEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=category%20page%20view.-,addEcommerceItem,-(%20productSKU%2C%20%5BproductName%5D%2C%20%5BproductCategory). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -159,7 +175,7 @@ RudderStack maps the `Product Added` event name to `addEcommerceItem`. The follo
 
 #### Product Removed
 
-RudderStack maps the `Product Removed` event name to `removeEcommerceItem`. The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Product Removed` event name to [`removeEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=in%20the%20order.-,removeEcommerceItem,-(%20productSKU%20)%20%2D%20Remove). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -167,7 +183,7 @@ RudderStack maps the `Product Removed` event name to `removeEcommerceItem`. The 
 
 #### Order Completed
 
-RudderStack maps the `Order Completed` event name to `trackEcommerceOrder`. The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Order Completed` event name to [`trackEcommerceOrder`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=from%20the%20cart.-,trackEcommerceOrder,-(%20orderId%2C%20grandTotal%2C%20%5BsubTotal). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -178,9 +194,21 @@ RudderStack maps the `Order Completed` event name to `trackEcommerceOrder`. The 
 | `properties.shipping` | `shipping` |Optional |
 | `properties.discount` | `discount` |Optional |
 
-<div class="infoBlock">
-<code class="inline-code">grandTotal</code> is not a default property in the <code class="inline-code">Order Completed</code> event and needs to be provided by the user. If not provided, RudderStack calculates it manually by iterating through the products array, as:
+#### Update Cart
 
+<div class="infoBlock">
+Although <code class="inline-code">Update Cart</code> is not a standard <Link to="/event-spec/ecommerce-events-spec/">RudderStack E-commerce Event</Link>, you can still send this event to update your cart and view the items that are currently present in it.
+</div>
+
+RudderStack also maps the `Update Cart` event name to [`trackEcommerceCartUpdate`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=trackEcommerceCartUpdate). The following event properties are mapped to the Matomo properties:
+
+| RudderStack property | Matomo property | Presence |
+|:---------------------|:-------------|:--------------|
+| `properties.total/properties.revenue` | `grandTotal` |
+
+<div class="infoBlock">
+<code class="inline-code">grandTotal</code> is not a default property in the <code class="inline-code">Order Completed</code> event and needs to be provided by the user. If not provided, RudderStack calculates it manually by iterating through the products array, as shown below:
+<br /><br/>
 ```text
 grandTotal = products[0].price * products[0].quantity + …
 grandTotal += tax + shipping;
@@ -190,7 +218,7 @@ Similarly, <code class="inline-code">subtotal</code> is calculated as the total 
 
 ## Page
 
-The <Link to="">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
 A sample `page` call is shown below:
 
@@ -217,8 +245,8 @@ RudderStack provides `customDimension` field which can be used inside the `integ
   integrations: {
     Matomo: {
       customDimension: [{
-          dimensionId: < dimensioned > ,
-          dimensionValue: < dimensionValue >
+          dimensionId: <dimension_ID>,
+          dimensionValue: <dimension_value>
         },
         {
           dimensionId: 1,
@@ -231,7 +259,7 @@ RudderStack provides `customDimension` field which can be used inside the `integ
 ```
 
 <div class="infoBlock">
-Refer to <a href="https://matomo.org/faq/reporting-tools/data-limits-for-custom-dimensions/">Data limits</a> to know about the data limitations for custom dimensions.
+Refer to the <a href="https://matomo.org/faq/reporting-tools/data-limits-for-custom-dimensions/">Matomo help guide</a> to know about the data limitations for custom dimensions in Matomo.
 </div>
 
 ## FAQ
