@@ -144,28 +144,84 @@ These properties should be present in the events for RudderStack to successfully
 
 #### Ping
 
+You can use this event to send a ping request.
 
-
-
+<div class="infoBlock">
+The ping requests do not track new actions. Matomo ignores these requests if they're sent after a standard visit length.
+</div>
 
 #### Track Content Impressions
 
+Use this event to track a content impression using the specified values.
+
+RudderStack maps the following event properties to the Matomo standard event properties:
+
+| RudderStack property | Matomo property | Description |
+|:---------------------|:-------------| :-----|
+| `properties.contentName` | `contentName` | Represents a content block visible in the reports. One name can represent different content pieces. |
+| `properties.contentPiece` | `contentPiece` | Actual displayed content, for example, path to a video, image, etc. |
+| `properties.contentTarget` | `contentTarget` | URL of the landing page where the user was directed to after interacting with the block. |
+
 #### Track Content Impressions Within Node
 
-#### Track Content Interaction
-
-#### Track Content Interaction Node
-
-#### Track Link
+Use this event to track content impressions for specific content blocks present in a given DOM node.
 
 RudderStack maps the following event properties to the Matomo standard event properties:
 
 | RudderStack property | Matomo property |
 |:---------------------|:-------------|
-| `properties.url`/ `message.context.page.url` | `url` |
-| `properties.linkType` | `linkType` |
+| `properties.domId`/ `properties.dom_id` | `url` |
+
+#### Track Content Interaction
+
+Use this event to track the interaction with a given DOM object.
+
+RudderStack maps the following event properties to the Matomo standard event properties:
+
+| RudderStack property | Matomo property |
+|:---------------------|:-------------|
+| `properties.contentInteraction`| `contentInteraction` |
+| `properties.contentName` | `contentName` |
+| `properties.contentPiece` | `contentPiece` |
+| `properties.contentTarget` | `contentTarget` |
+
+#### Track Content Interaction Node
+
+Use this event to track the interaction with a given DOM node or a content block.
+
+RudderStack maps the following event properties to the Matomo standard event properties:
+
+| RudderStack property | Matomo property |
+|:---------------------|:-------------|
+| `properties.domId`/ `properties.dom_id` | `url` |
+| `properties.contentInteraction`| `contentInteraction` |
+
+#### Track Link
+
+You can use this event to track a link whenever a user clicks on it.
+
+RudderStack maps the following event properties to the Matomo standard event properties:
+
+| RudderStack property | Matomo property | Description |
+|:---------------------|:-------------| :------------------| 
+| `properties.url`/ `message.context.page.url` | `url` | The full URL to be tracked as a click. |
+| `properties.linkType` | `linkType` | Defines the link type. Can either be `link` for an outlink or `download` for the download link type. |
+
+<div class="infoBlock">
+You can view the event in the <strong>Visitors</strong> profile in the Matomo dashboard or by going to <strong>Visitors</strong> > <strong>Visitors Log</strong>
+</div>
 
 #### Track Site Search
+
+You can use this event to track different keywords with category and the results count.
+
+RudderStack maps the following event properties to the Matomo standard event properties:
+
+| RudderStack property | Matomo property |
+|:---------------------|:-------------|
+| `properties.keyword`/ `message.context.page.search` | `keyword` |
+| `properties.category` | `category` |
+| `properties.resultsCount` | `resultsCount` |
 
 ### E-commerce events
 
@@ -226,6 +282,17 @@ RudderStack maps the `Order Completed` event name to [`trackEcommerceOrder`](htt
 | `properties.shipping` | `shipping` |Optional |
 | `properties.discount` | `discount` |Optional |
 
+<div class="infoBlock">
+
+<code class="inline-code">grandTotal</code> is not a default property in the <code class="inline-code">Order Completed</code> event and needs to be provided by the user. If not provided, RudderStack calculates it manually by iterating through the products array, as shown below:
+<br /><br/>
+```text
+grandTotal = products[0].price * products[0].quantity + …
+grandTotal += tax + shipping;
+```
+Similarly, <code class="inline-code">subtotal</code> is calculated as the total value of all sales, excluding shipping and tax.
+</div>
+
 #### Update Cart
 
 <div class="infoBlock">
@@ -236,17 +303,7 @@ RudderStack also maps the `Update Cart` event name to [`trackEcommerceCartUpdate
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
-| `properties.total/properties.revenue` | `grandTotal` |
-
-<div class="infoBlock">
-<code class="inline-code">grandTotal</code> is not a default property in the <code class="inline-code">Order Completed</code> event and needs to be provided by the user. If not provided, RudderStack calculates it manually by iterating through the products array, as shown below:
-<br /><br/>
-```text
-grandTotal = products[0].price * products[0].quantity + …
-grandTotal += tax + shipping;
-```
-Similarly, <code class="inline-code">subtotal</code> is calculated as the total value of all sales, excluding shipping and tax.
-</div>
+| `properties.total/properties.revenue` | `grandTotal` | Required | 
 
 ## Page
 
