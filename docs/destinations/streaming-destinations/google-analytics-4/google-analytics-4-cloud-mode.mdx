@@ -3,10 +3,14 @@ title: "Cloud Mode"
 description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack Cloud mode.
 ---
 
-RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
 
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
+</div>
+
+<div class="infoBlock">
+Note that Google Analytics 4 does not officially support a complete server-to-server integration. RudderStack monitors the GA4 Measurement Protocol API capabilities and accordingly sends a reasonable level of reporting data for the customers to Google Analytics 4.
 </div>
 
 <GhBadge
@@ -25,7 +29,6 @@ RudderStack supports both the `gtag` and `firebase` ways for tagging in websites
 - If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
 
 <div class="infoBlock">
-
 Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
 </div>
 
@@ -37,7 +40,6 @@ The mappings for the above-mentioned mandatory parameters are listed in the foll
 | `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
 
 <div class="infoBlock">
-  
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
 </div>
 
@@ -50,7 +52,6 @@ The mappings for the optional parameters (common for `gtag` and `firebase` both)
 | `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads.|
 
 <div class="infoBlock">
-  
 Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
 </div>
 
@@ -228,7 +229,6 @@ The following table lists the mappings between the RudderStack and Google Analyt
 </table>
 
 <div class="infoBlock">
-
 The mapping of the <strong>Payment Info Entered</strong> event to the <code class="inline-code">add_payment_info</code> or <code class="inline-code">add_shipping_info</code> event is determined on the basis of parameters passed to it.
 </div>
 
@@ -293,7 +293,6 @@ The following table lists the RudderStack and Google Analytics 4 properties mapp
 </table>
 
 <div class="infoBlock">
-
 The <strong>Payment Info Entered</strong> event is mapped on the basis of parameters passed to it:
 <ul>
   <li>If <code class="inline-code">payment_method</code> is passed along with the other fields, it maps to <code class="inline-code">add_payment_info</code> event.</li>
@@ -464,8 +463,7 @@ The below table lists the mappings of the non e-commerce `track` events and prop
 </table>
 
 <div class="infoBlock">
-  
-You can pass the custom user properties to any of the events by passing them as `properties.user_properties`. Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=gtag">Google Analytics 4 documentation</a> for more information.
+You can pass the custom user properties to any of the events by passing them as <code class="inline-code">properties.user_properties</code>. Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=gtag">Google Analytics 4 documentation</a> for more information.
 </div>
 
 ### Rules for naming custom events
@@ -478,6 +476,16 @@ You must follow the below rules while choosing a name for the custom events:
 
 ## FAQ
 
+### I’ve set up GA4 as a destination in RudderStack but I’m not seeing the expected data flow through in the GA4 dashboard. What should I do?
+
+To view the events sent to GA4, go to your [Google Analytics](https://analytics.google.com/) dashboard and navigate to **Reports** > **Realtime**.
+
+While the events typically show up within a few seconds, note that it can take GA4 up to 24 hours to process their data and appear on other reports. Also, not all types of data flow through to its realtime dashboard. It may be best to consult GA4’s FAQs for the most up-to-date information on its latest capabilities and limitations.
+
+<div class="infoBlock">
+For more information on checking the realtime view or verifying your implementation, refer to this <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/verify-implementation?client_type=gtag#realtime">GA4 documentation</a>. You can also refer to this <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting?client_type=gtag">Troubleshooting guide</a> for steps on fixing any implementation errors.
+</div>
+
 ### What are the reserved prefixes in Google Analytics 4?
 
 The reserved prefixes in Google Analytics 4 cannot be used for custom events. The list of such prefixes is mentioned below:
@@ -488,7 +496,7 @@ The reserved prefixes in Google Analytics 4 cannot be used for custom events. Th
 - google_
 - gtag.
 
-Refer to the [GA4 document](https://support.google.com/analytics/answer/10085872#zippy=%2Cweb%2Cin-this-article%2Creserved-prefixes-and-event-names) for more information.
+Refer to the [GA4 documentation](https://support.google.com/analytics/answer/10085872#zippy=%2Cweb%2Cin-this-article%2Creserved-prefixes-and-event-names) for more information.
 
 ### What are the reserved event, parameter, and user property names in Google Analytics 4?
 
