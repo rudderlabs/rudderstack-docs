@@ -164,17 +164,17 @@ RudderStack maps the following event properties to the Matomo standard event pro
 
 #### Track Content Impressions Within Node
 
-Use this event to track content impressions for specific content blocks present in a given DOM node.
+Use this event to scan a given DOM node and its associated children for content blocks and track impressions for them, if not done already.
 
 RudderStack maps the following event properties to the Matomo standard event properties:
 
 | RudderStack property | Matomo property |
 |:---------------------|:-------------|
-| `properties.domId`/ `properties.dom_id` | `url` |
+| `properties.domId`/ `properties.dom_id` | `domId` |
 
 #### Track Content Interaction
 
-Use this event to track the interaction with a given DOM object.
+Use this event to track a content interaction with the specified values.
 
 RudderStack maps the following event properties to the Matomo standard event properties:
 
@@ -193,12 +193,12 @@ RudderStack maps the following event properties to the Matomo standard event pro
 
 | RudderStack property | Matomo property |
 |:---------------------|:-------------|
-| `properties.domId`/ `properties.dom_id` | `url` |
+| `properties.domId`/ `properties.dom_id` | `domId` |
 | `properties.contentInteraction`| `contentInteraction` |
 
 #### Track Link
 
-You can use this event to track a link whenever a user clicks on it.
+Use this event to log a click from your code.
 
 RudderStack maps the following event properties to the Matomo standard event properties:
 
@@ -207,13 +207,9 @@ RudderStack maps the following event properties to the Matomo standard event pro
 | `properties.url`/ `message.context.page.url` | `url` | The full URL to be tracked as a click. |
 | `properties.linkType` | `linkType` | Defines the link type. Can either be `link` for an outlink or `download` for the download link type. |
 
-<div class="infoBlock">
-You can view the event in the <strong>Visitors</strong> profile in the Matomo dashboard or by going to <strong>Visitors</strong> > <strong>Visitors Log</strong>.
-</div>
-
 #### Track Site Search
 
-You can use this event to track different keywords with category and the results count.
+You can use this event to track an internal site search for a given keyword with an optional category and specifying the optional search results count in the page.
 
 RudderStack maps the following event properties to the Matomo standard event properties:
 
@@ -251,7 +247,7 @@ RudderStack maps the `Product Viewed` event to [`setEcommerceView`](https://deve
 
 #### Product Added
 
-RudderStack maps the `Product Added` event name to [`addEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=category%20page%20view.-,addEcommerceItem,-(%20productSKU%2C%20%5BproductName%5D%2C%20%5BproductCategory)). The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Product Added` event name to [`addEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=category%20page%20view.-,addEcommerceItem,-(%20productSKU%2C%20%5BproductName%5D%2C%20%5BproductCategory). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -263,7 +259,7 @@ RudderStack maps the `Product Added` event name to [`addEcommerceItem`](https://
 
 #### Product Removed
 
-RudderStack maps the `Product Removed` event name to [`removeEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=in%20the%20order.-,removeEcommerceItem,-(%20productSKU%20)%20%2D%20Remove)). The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Product Removed` event name to [`removeEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=in%20the%20order.-,removeEcommerceItem,-(%20productSKU%20)%20%2D%20Remove). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -271,7 +267,7 @@ RudderStack maps the `Product Removed` event name to [`removeEcommerceItem`](htt
 
 #### Order Completed
 
-RudderStack maps the `Order Completed` event name to [`trackEcommerceOrder`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=from%20the%20cart.-,trackEcommerceOrder,-(%20orderId%2C%20grandTotal%2C%20%5BsubTotal)). The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Order Completed` event name to <a href="https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=from%20the%20cart.-,trackEcommerceOrder,-(%20orderId%2C%20grandTotal%2C%20%5BsubTotal"><code class="inline-code">trackEcommerceOrder</code>. The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -285,10 +281,12 @@ RudderStack maps the `Order Completed` event name to [`trackEcommerceOrder`](htt
 <div class="infoBlock">
 
 <code class="inline-code">grandTotal</code> is not a default property in the <code class="inline-code">Order Completed</code> event and needs to be provided by the user. If not provided, RudderStack calculates it manually by iterating through the products array, as shown below:
+
 ```text
 grandTotal = products[0].price * products[0].quantity + …
 grandTotal += tax + shipping;
 ```
+
 Similarly, <code class="inline-code">subtotal</code> is calculated as the total value of all sales, excluding shipping and tax.
 
 </div>
@@ -349,6 +347,10 @@ RudderStack provides `customDimension` field which can be used inside the `integ
 
 <div class="infoBlock">
 Refer to the <a href="https://matomo.org/faq/reporting-tools/data-limits-for-custom-dimensions/">Matomo help guide</a> to know about the data limitations for custom dimensions in Matomo.
+</div>
+
+<div class="infoBlock">
+RudderStack does not support sending custom variables to Matomo. Matomo recommends using custom dimensions instead. For more information, refer to this <a href="https://plugins.matomo.org/CustomVariables#description:~:text=This%20feature%20used%20to%20be%20part%20of%20Matomo.%20However%2C%20we%20no%20longer%20plan%20to%20further%20develop%20custom%20variables%20and%20only%20fix%20important%20bugs%20or%20security%20issues%20and%20we%20might%20stop%20supporting%20Custom%20Variables%20in%20the%20future">Matomo page</a>.
 </div>
 
 ## FAQ
