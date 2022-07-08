@@ -17,7 +17,7 @@ Before configuring Matomo as a destination in RudderStack, verify if the source 
 | Cloud mode | -  | - | - |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Matomo, follow these steps:
@@ -44,8 +44,18 @@ Refer to the <Link to="#faq">FAQ</Link> section below for more information on fi
 <img src="../../assets/event-stream-destinations/matomo-connection-settings-2.png" alt="Matomo connection settings"/>
 <img src="../../assets/event-stream-destinations/matomo-connection-settings-3.png" alt="Matomo connection settings"/>
 
-- **Mapping to trigger the Matomo Goal ID for the respective Events**: Enter the event name and the corresponding goal Id which needs to be mapped.
-- **Mapping to trigger the Matomo standard events for the respective Events**: Enter the event name and pick the corresponding standard event from the dropdown which needs to be mapped.
+- **Mapping to trigger the Matomo Goal ID for the respective Events**: Enter the **Event Name** and the corresponding **Goal Id** to be triggered when that event is called.
+
+<div class="successBlock">
+You can specify multiple <strong>Goal Id</strong> for one <strong>Event Name</strong> and vice versa.
+</div>
+
+- **Mapping to trigger the Matomo standard events for the respective Events**: Enter the event name and pick the corresponding standard event from the dropdown to be triggered when that event is called.
+
+<div class="successBlock">
+You can specify multiple <strong>Standard Event</strong> for one <strong>Event Name</strong> and vice versa.
+</div>
+
 - **Track All Content Impressions**: Enable this setting to scan the entire DOM for all content blocks and track all impressions, once the DOM ready event has been triggered.
 - **Track Visible Content Impressions**: Enable this setting to scan the entire DOM for all content blocks as soon as the page is loaded. It tracks an impression only if a content block is actually visible. If enabled, also enter the following:
     - **Check on Scroll**: Checks whether the previously hidden content blocks became visible meanwhile after a scroll and if yes, then tracks the impression. It is enabled by default. 
