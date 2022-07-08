@@ -19,6 +19,37 @@ Note that Google Analytics 4 does not officially support a complete server-to-se
   color={'blueviolet'}
 />
 
+## Identify
+
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+
+A sample `identify` call using `gtag` is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    firstLogin: true,
+    method: "Google",
+    value: 10,
+    currency: "USD"
+});
+```
+
+A sample `identify` call using `firebase` is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    firstLogin: true,
+    method: "Google",
+    value: 10,
+    currency: "USD"
+}, {
+    externalId: [{
+        type: "ga4AppInstanceId",
+        id: "f0dd99b6f979fb551ce583373900f937"
+    }],
+});
+```
+
 ## Track
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
