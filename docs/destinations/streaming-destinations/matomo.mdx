@@ -267,7 +267,7 @@ RudderStack maps the `Product Removed` event name to [`removeEcommerceItem`](htt
 
 #### Order Completed
 
-RudderStack maps the `Order Completed` event name to <a href="https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=from%20the%20cart.-,trackEcommerceOrder,-(%20orderId%2C%20grandTotal%2C%20%5BsubTotal"><code class="inline-code">trackEcommerceOrder</code>. The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Order Completed` event name to <a href="https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=from%20the%20cart.-,trackEcommerceOrder,-(%20orderId%2C%20grandTotal%2C%20%5BsubTotal"><code class="inline-code">trackEcommerceOrder</code></a>. The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -279,14 +279,12 @@ RudderStack maps the `Order Completed` event name to <a href="https://developer.
 | `properties.discount` | `discount` |Optional |
 
 <div class="infoBlock">
-
 <code class="inline-code">grandTotal</code> is not a default property in the <code class="inline-code">Order Completed</code> event and needs to be provided by the user. If not provided, RudderStack calculates it manually by iterating through the products array, as shown below:
 
 ```text
 grandTotal = products[0].price * products[0].quantity + …
 grandTotal += tax + shipping;
 ```
-
 Similarly, <code class="inline-code">subtotal</code> is calculated as the total value of all sales, excluding shipping and tax.
 
 </div>
