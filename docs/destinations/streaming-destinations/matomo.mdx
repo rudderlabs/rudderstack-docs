@@ -136,6 +136,37 @@ RudderStack supports the following Matomo standard events:
 - [Track Link](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=custom%20revenue%20customRevenue.-,trackLink,-(%20url%2C%20linkType%20))
 - [Track Site Search](https://developer.matomo.org/api-reference/tracking-javascript#:~:text=optional%20numeric%20value.-,trackSiteSearch,-(keyword%2C%20%5Bcategory%5D%2C%20%5BresultsCount))
 
+RudderStack first verifies if an event is mapped to a standard Matomo event. If so, it sends the event to Matomo with some specific properties, as listed in the following sections.
+
+<div class="warningBlock">
+These properties should be present in the events for RudderStack to successfully send them to Matomo.
+</div>
+
+#### Ping
+
+
+
+
+
+#### Track Content Impressions
+
+#### Track Content Impressions Within Node
+
+#### Track Content Interaction
+
+#### Track Content Interaction Node
+
+#### Track Link
+
+RudderStack maps the following event properties to the Matomo standard event properties:
+
+| RudderStack property | Matomo property |
+|:---------------------|:-------------|
+| `properties.url`/ `message.context.page.url` | `url` |
+| `properties.linkType` | `linkType` |
+
+#### Track Site Search
+
 ### E-commerce events
 
 RudderStack supports and maps the following <Link to="/event-spec/ecommerce-events-spec/">e-commerce events</Link> to the corresponding Matomo [e-commerce events](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=most%20recent%20referrer.-,Ecommerce,-Matomo%20provides%20ecommerce):
@@ -147,12 +178,13 @@ RudderStack supports and maps the following <Link to="/event-spec/ecommerce-even
 | `Product Removed` | `removeEcommerceItem` |
 | `Order Completed` | `trackEcommerceOrder` |
 | `Cart Cleared` | `clearEcommerceCart` |
+| `Update Cart` | `trackEcommerceCartUpdate` |
 
 For the above-mentioned events, you can also send specific properties as mentioned in the following sections.
 
 #### Product Viewed
 
-RudderStack maps the `Product Viewed` event to [`setEcommerceView`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=click%20here.-,setEcommerceView,-(%20productSKU%2C%20productName%2C%20categoryName). The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Product Viewed` event to [`setEcommerceView`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=click%20here.-,setEcommerceView,-(%20productSKU%2C%20productName%2C%20categoryName)). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -163,7 +195,7 @@ RudderStack maps the `Product Viewed` event to [`setEcommerceView`](https://deve
 
 #### Product Added
 
-RudderStack maps the `Product Added` event name to [`addEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=category%20page%20view.-,addEcommerceItem,-(%20productSKU%2C%20%5BproductName%5D%2C%20%5BproductCategory). The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Product Added` event name to [`addEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=category%20page%20view.-,addEcommerceItem,-(%20productSKU%2C%20%5BproductName%5D%2C%20%5BproductCategory)). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -175,7 +207,7 @@ RudderStack maps the `Product Added` event name to [`addEcommerceItem`](https://
 
 #### Product Removed
 
-RudderStack maps the `Product Removed` event name to [`removeEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=in%20the%20order.-,removeEcommerceItem,-(%20productSKU%20)%20%2D%20Remove). The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Product Removed` event name to [`removeEcommerceItem`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=in%20the%20order.-,removeEcommerceItem,-(%20productSKU%20)%20%2D%20Remove)). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -183,7 +215,7 @@ RudderStack maps the `Product Removed` event name to [`removeEcommerceItem`](htt
 
 #### Order Completed
 
-RudderStack maps the `Order Completed` event name to [`trackEcommerceOrder`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=from%20the%20cart.-,trackEcommerceOrder,-(%20orderId%2C%20grandTotal%2C%20%5BsubTotal). The following event properties are mapped to the Matomo properties:
+RudderStack maps the `Order Completed` event name to [`trackEcommerceOrder`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=from%20the%20cart.-,trackEcommerceOrder,-(%20orderId%2C%20grandTotal%2C%20%5BsubTotal)). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
@@ -200,7 +232,7 @@ RudderStack maps the `Order Completed` event name to [`trackEcommerceOrder`](htt
 Although <code class="inline-code">Update Cart</code> is not a standard <Link to="/event-spec/ecommerce-events-spec/">RudderStack E-commerce Event</Link>, you can still send this event to update your cart and view the items that are currently present in it.
 </div>
 
-RudderStack also maps the `Update Cart` event name to [`trackEcommerceCartUpdate`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=trackEcommerceCartUpdate). The following event properties are mapped to the Matomo properties:
+RudderStack also maps the `Update Cart` event name to [`trackEcommerceCartUpdate`](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=trackEcommerceCartUpdate)). The following event properties are mapped to the Matomo properties:
 
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
