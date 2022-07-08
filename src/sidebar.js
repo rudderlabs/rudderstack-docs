@@ -106,10 +106,17 @@ export const jsonData = [
     content: []
 },
 {
-    key: "teammates",
-    title: "Teammates (User Management)",
-    link: "/dashboard-guides/teammates/",
-    content: []
+    key: "permissions-management",
+    title: "Permissions Management",
+    link: "/dashboard-guides/permissions-management/",
+    content: [
+        {
+            key: "permissions-matrix",
+            title: "Permissions Matrix",
+            link: "/dashboard-guides/permissions-management/permissions-matrix",
+            content: [],
+          },
+    ]
 },
 {
     key: "audit-logs",

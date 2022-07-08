@@ -1,0 +1,127 @@
+---
+title: "Permissions Matrix"
+description: Detailed role-specific permissions for Read-Only, Read-Write, and Admin roles.
+---
+
+This guide lists the detailed role-specific permissions for various RudderStack features and settings. 
+
+<div class="infoBlock">
+As mentioned in the <Link to="/dashboard-guides/permissions-management/">Permissions Management</Link> guide, you can assign any of the following three roles to the members in your RudderStack workspace:
+<ul>
+    <li>Read-Only</li>
+    <li>Read-Write</li>
+    <li>Admin</li>
+</ul>
+</div>
+
+### Sources
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View sources list | Yes | Yes | Yes | 
+| View source details | Yes | Yes | Yes | 
+| View tracking plans connected to source | Yes | Yes | Yes |
+| Add new source | No | Yes | Yes | 
+| Delete an existing source | No | Yes | Yes | 
+| Edit source sync schedule | No | Yes | Yes | 
+| Edit source schema | No | Yes | Yes | 
+| Edit source configuration | No | Yes | Yes | 
+| Edit source credentials | No | Yes | Yes | 
+| Edit resources | No | Yes | Yes |
+
+### Destinations
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View destinations list | Yes | Yes | Yes | 
+| View destination details | Yes | Yes | Yes | 
+| Add new destination | No | Yes | Yes | 
+| Delete an existing destination | No | Yes | Yes | 
+| Clone a destination | No | Yes | Yes | 
+| Edit destination configuration | No | Yes | Yes | 
+
+### Connections
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View connections | Yes | Yes | Yes | 
+| Create a new connection | No | Yes | Yes | 
+| Delete a connection | No | Yes | Yes | 
+
+### Live Events
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View source live events | Yes  | Yes | Yes  |
+| View destination live events | Yes  | Yes | Yes  |
+| View transformation live events | Yes  | Yes | Yes  |
+
+### Transformations and libraries
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View tranformations list | Yes | Yes | Yes |
+| Create new transformation | No | Yes | Yes | 
+| Delete existing transformation | No | Yes | Yes | 
+| View libraries list | Yes | Yes | Yes |
+| Create new library | No | Yes | Yes | 
+| Delete existing library | No | Yes | Yes |
+
+### Tracking plans
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View tracking plans list | Yes | Yes | Yes |
+| View sources connected to tracking plans | Yes | Yes | Yes |
+| Link source to a tracking plan | No | Yes | Yes |
+| Unlink source from a tracking plan | No | Yes | Yes |
+| Edit source tracking plan configuration | No | Yes | Yes | 
+
+### Models
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View models list | Yes | Yes | Yes |
+| View model details | Yes | Yes | Yes |
+| Create a new model | No | Yes | Yes |
+| Update an existing model | No | Yes | Yes |
+| Delete a model | No | Yes | Yes | 
+
+<div class="infoBlock">
+Read-Only users can view the events that might contain sensitive user information like PII. In some cases, they can also view the API keys and other API secrets of the destinations.
+</div>
+
+### Syncs
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View sync and history details | Yes  | Yes | Yes  |
+| Sync Extract and Reverse ETL sources | No  | Yes | Yes  |
+
+### Audit logs
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View audit logs | No  | Yes | Yes  |
+
+### Workspace settings
+
+| Permission  | Read-Only | Read-Write | Admin |
+| :-------| :---------| :----------| :------|
+| View team member and role | Yes  | Yes | Yes  |
+| Invite new user to workspace | No  | No | Yes  |
+| Modify user permissions | No  | No | Yes  |
+| Delete pending invitations | No  | No | Yes  |
+| Remove users from workspace | No  | No | Yes  |
+| Change billing plan | No | No | Yes | 
+| MFA | Yes | Yes | Yes |
+| Enforce MFA | No | No | Yes |
+| Edit company name | No | No | Yes |
+| Edit workspace name | No | No | Yes |
+| Create personal access token | Yes | Yes | Yes |
+| Delete personal access token | Yes | Yes | Yes |
+| Edit name and password | Yes | Yes | Yes |
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
