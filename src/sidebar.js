@@ -1419,7 +1419,7 @@ export const jsonData = [
         link: "/destinations/warehouse-destinations/",
         content: [
             {
-                key: "warehouse-schemas",
+                key: "warehouse-schema",
                 title: "Warehouse Schema",
                 link: "/destinations/warehouse-destinations/warehouse-schema/",
                 content: []
@@ -1431,7 +1431,7 @@ export const jsonData = [
                 content: []
             },
             {
-                key: "warehouse-schemas",
+                key: "warehouse-schema",
                 title: "FAQ",
                 link: "/destinations/warehouse-destinations/faq/",
                 content: []
