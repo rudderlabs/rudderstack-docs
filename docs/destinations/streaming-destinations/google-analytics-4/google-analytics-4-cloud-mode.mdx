@@ -1,6 +1,6 @@
 ---
 title: "Cloud Mode"
-description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack Cloud mode.
+description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack cloud mode.
 ---
 
 RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
@@ -10,7 +10,7 @@ Find the open source transformer code for this destination in the <a href="https
 </div>
 
 <div class="infoBlock">
-Note that Google Analytics 4 does not officially support a complete server-to-server integration. RudderStack monitors the GA4 Measurement Protocol API capabilities and accordingly sends a reasonable level of reporting data for the customers to Google Analytics 4.
+Google Analytics 4 does not officially support a complete server-to-server integration. RudderStack monitors the GA4 Measurement Protocol API capabilities and accordingly sends a reasonable level of reporting data for the customers to Google Analytics 4.
 </div>
 
 <GhBadge
@@ -502,7 +502,7 @@ The following table details the parameter mappings present in the `Items` array,
 | properties.products.$.promotion_id           | `promotion_id`  |
 | properties.products.$.promotion_name           | `promotion_name`  |
 
-### Non e-commerce events
+## Non e-commerce events tracking
 
 The below table lists the mappings of the non e-commerce `track` events and properties that are passed to Google Analytics 4 events and properties:
 
@@ -551,7 +551,7 @@ The <code class="inline-code">&#123;currency&#125;</code>, <code class="inline-c
 You can pass the custom user properties to any of the events by passing them as <code class="inline-code">properties.user_properties</code>. Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=gtag">Google Analytics 4 documentation</a> for more information.
 </div>
 
-### Rules for naming custom events
+## Rules for naming custom events
 
 You must follow the below rules while choosing a name for the custom events:
 
