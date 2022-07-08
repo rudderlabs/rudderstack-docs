@@ -208,7 +208,7 @@ RudderStack maps the following event properties to the Matomo standard event pro
 | `properties.linkType` | `linkType` | Defines the link type. Can either be `link` for an outlink or `download` for the download link type. |
 
 <div class="infoBlock">
-You can view the event in the <strong>Visitors</strong> profile in the Matomo dashboard or by going to <strong>Visitors</strong> > <strong>Visitors Log</strong>
+You can view the event in the <strong>Visitors</strong> profile in the Matomo dashboard or by going to <strong>Visitors</strong> > <strong>Visitors Log</strong>.
 </div>
 
 #### Track Site Search
@@ -285,12 +285,12 @@ RudderStack maps the `Order Completed` event name to [`trackEcommerceOrder`](htt
 <div class="infoBlock">
 
 <code class="inline-code">grandTotal</code> is not a default property in the <code class="inline-code">Order Completed</code> event and needs to be provided by the user. If not provided, RudderStack calculates it manually by iterating through the products array, as shown below:
-<br /><br/>
 ```text
 grandTotal = products[0].price * products[0].quantity + …
 grandTotal += tax + shipping;
 ```
 Similarly, <code class="inline-code">subtotal</code> is calculated as the total value of all sales, excluding shipping and tax.
+
 </div>
 
 #### Update Cart
