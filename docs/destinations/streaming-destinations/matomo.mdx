@@ -44,7 +44,7 @@ Refer to the <Link to="#faq">FAQ</Link> section below for more information on fi
 <img src="../../assets/event-stream-destinations/matomo-connection-settings-2.png" alt="Matomo connection settings"/>
 <img src="../../assets/event-stream-destinations/matomo-connection-settings-3.png" alt="Matomo connection settings"/>
 
-- **Mapping to trigger the Matomo Goal ID for the respective Events**: Enter the **Event Name** and the corresponding **Goal Id** to be triggered when that event is called.
+- **Mapping to trigger the Matomo Goal ID for the respective Events**: Enter the **Event Name** and the corresponding [**Goal Id**](https://developer.matomo.org/guides/tracking-javascript-guide#manually-trigger-goal-conversions) to be triggered when that event is called.
 
 <div class="successBlock">
 You can specify multiple <strong>Goal Id</strong> for one <strong>Event Name</strong> and vice versa.
@@ -79,7 +79,7 @@ You can specify multiple <strong>Standard Event</strong> for one <strong>Event N
 
 ## Identify
 
-The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you create new or update existing customers and record the traits about them like their name, email address, etc. 
+RudderStack sets the ID value in the cache to the `userId` or `anonymousId` present in the <Link to="">`identify`</Link> call. 
 
 A sample `identify` call is shown below:
 
@@ -93,10 +93,9 @@ The following table lists the RudderStack and Matomo property to set the `userId
 | :--- | :--- | :--- | :--- |
 | `userId`/`anonymousId` | `userId` | Required | `_paq.push(["setUserId","user_id"])` |
 
-
 ## Track
 
-The <Link to="https://www.rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> method lets you capture user events along with the properties associated with them.
+The <Link to="">`track`</Link> method lets you capture user events along with the properties associated with them.
 
 A sample `track` call is shown below:
 
@@ -191,7 +190,7 @@ Similarly, <code class="inline-code">subtotal</code> is calculated as the total 
 
 ## Page
 
-The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
 A sample `page` call is shown below:
 
@@ -203,31 +202,36 @@ rudderanalytics.page("home","games");
 RudderStack does not consider any parameters inside the  <code class="inline-code">page</code> call and simply calls the  <code class="inline-code">trackPageView</code> event for each  <code class="inline-code">page</code> call.
 </div>
 
-
 ## Custom dimensions
 
-Custom dimensions can be used to track any information related to any action or visitors. RudderStack provides `customDimension` field which can be used inside the `integrations` object, as shown below:
+Custom dimensions can be used to track any information related to any action or visitors.
+
+<div class="warningBlock">
+You can send the custom dimensions to Matomo only through the <code class="inline-code">track</code> calls.
+</div>
+
+RudderStack provides `customDimension` field which can be used inside the `integrations` object, as shown below:
 
 ```javascript
 {
-    integrations: {
-        Matomo: {
-            customDimension: [{
-                    dimensionId: <dimensioned> ,
-                    dimensionValue: <dimensionValue>
-                },
-                {
-                    dimensionId: 1,
-                    dimensionValue: ENTERPRISE
-                }
-            ]
+  integrations: {
+    Matomo: {
+      customDimension: [{
+          dimensionId: < dimensioned > ,
+          dimensionValue: < dimensionValue >
+        },
+        {
+          dimensionId: 1,
+          dimensionValue: ENTERPRISE
         }
+      ]
     }
+  }
 }
 ```
 
 <div class="infoBlock">
-Refer to <Link to="https://matomo.org/faq/reporting-tools/data-limits-for-custom-dimensions/">Data limits</Link> to know about the data limitations for custom dimensions.
+Refer to <a href="https://matomo.org/faq/reporting-tools/data-limits-for-custom-dimensions/">Data limits</a> to know about the data limitations for custom dimensions.
 </div>
 
 ## FAQ
