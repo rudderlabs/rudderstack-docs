@@ -1,11 +1,11 @@
 ---
 title: "Apache Kafka"
-description: Step-by-step guide on sending your event data from RudderStack to Apache Kafka
+description: Step-by-step guide on sending your event data from RudderStack to Apache Kafka.
 ---
 
-Apache Kafka is a popular distributed streaming platform. It allows you to handle large-scale workloads with high throughput and low latency. Apache Kafka is highly available and is used across the world for building real-time data pipelines and streaming applications.
+Apache Kafka is a popular distributed streaming platform used for building realtime data pipelines and streaming apps.
 
-RudderStack allows you to configure Apache Kafka as a destination to which you can send your event data seamlessly.
+RudderStack lets you configure Apache Kafka as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kafka">GitHub repository</a>.
@@ -13,9 +13,7 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-In order to enable dumping data to Kafka, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start flowing to Kafka.
-
-Before configuring your source and destination on the [dashboard](https://app.rudderstack.com), please check whether the platform you are working on is supported by Apache Kafka. Please refer to the table below:
+Before configuring Kafka as a destination in RudderStack, verify if the source platform is supported by Kafka, by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -26,78 +24,123 @@ Before configuring your source and destination on the [dashboard](https://app.ru
 To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-Once you have confirmed that the platform supports sending events to Kafka, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Kafka, follow these steps:
 
-- Choose a source to which you would like to add Kafka as a destination.
-- Select the destination as **Kafka** to your source. Give your destination a name and then click on **Next**.
-- Next, in the **Connection Settings**, **fill all the fields with the relevant information and click** Next\*\*
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Apache Kafka**.
+2. Assign a name to your destination and click on **Continue**.
 
-<img src="../../assets/screenshot-2020-05-17-at-4.34.38-pm.png" />
+### Connection settings
 
-- **Host Name**: Your Kafka server broker's host name goes here.
-- **Port:** The port to connect to the broker goes here.
-- **Topic Name**: Provide the topic name, to which you want to send data.
+To configure Kafka as a destination in RudderStack, you need to configure the following settings:
+
+<img src="../../assets/streaming-destinations/kafka-connection-settings" alt="Kafka connection settings" />
+
+- **Host Name**: Enter your Kafka server broker's host name.
+- **Port**: Enter the port number to connect to the broker.
+- **Topic Name**: Enter the Kafka topic name to which you want to send data.
 - **SSL Enabled**: Enable this option if you have enabled SSL to connect to your broker.
-- **CA Certificate**: If you have enabled SSL, provide the CA certificate in this field.
-- **Enable SASL with SSL**: If you have enabled SSL, you can optionally use SASL for client authentication.
-- **Username**: Provide the username as configured in Kafka for authenticating clients with SASL.
-- **Password**: Provide the password as configured in Kafka for authenticating clients with SASL.
+   - **CA Certificate**: If SSL is enabled, enter the CA certificate.
+- **Enable SASL with SSL**: If you have enabled SSL, you can use SASL for client authentication by enabling this option.
+   - **SASL Type**: Choose the SASL authentication type from **Plain**, **SCRAM SHA-512**, and **SCRAM SHA-256**.
+   - **Username**: Enter the username configured in Kafka for authenticating clients with SASL.
+   - **Password**: Enter the password configured in Kafka for authenticating clients with SASL.
 
 <div class="warningBlock">
 You need to enable SSL to use SASL authentication.
 </div>
 
-<img src="../../assets/kafka-sasl.png" />
-
-RudderStack currently supports the following SASL types:
-
-- **PLAIN**
-- **SCRAM SHA-256**
-- **SCRAM SHA-512**
-
 <div class="infoBlock">
-
-For more information on the Apache Kafka SASL authentication, visit the [official documentation](https://kafka.apache.org/documentation/#security_sasl).
+For more information on the SASL authentication, refer to the <a href="https://kafka.apache.org/documentation/#security_sasl">Apache Kafka documentation</a>.
 </div>
 
-## Partition Key
+## Partition key
 
-We use `userId` as the partition key of message.
+RudderStack uses the `userId` in the event as the partition key of the message.
 
 <div class="infoBlock">
-
-If `userId` is not present in payload, then `anonymousId` is used instead.
+If <code class="inline-code">userId</code> is not present in payload, then RudderStack uses <code class="inline-code">anonymousId</code> instead.
 </div>
 
 So, if you have a multi-partitioned topic, then the records of the same `userId` \(or `anonymousId` in absence of `userId`\) will always go to the same partition.
+
+## Serializing data using Avro
+
+RudderStack also lets you serialize your data using [Avro](https://www.ibm.com/in-en/topics/avro) and send it to a specific Kafka topic. To do so, it leverages the [goavro](https://pkg.go.dev/github.com/linkedin/goavro/v2) package.
+
+To use this feature, you need to pass the `schemaId` in your event's `integrations` object, as shown in the below event payload:
+
+```json
+{
+  "event": "Product Added",
+  "messageId": "4bb69e26-b5a6-446a-a140-dbb6263369c9",
+  "type": "track",
+  "anonymousId": "",
+  "context": {
+    "traits": {
+      "email": "alex@example.com"
+    },
+  },
+  "integrations": {
+    "KAFKA": {
+      "schemaId": "schema001"
+    }
+  },
+  "originalTimestamp": "2022-06-22T12:31:19.002+05:30",
+  "receivedAt": "2022-06-22T12:31:15.656+05:30",
+  "request_ip": "[::1]",
+  "sentAt": "2022-06-22T12:31:19.002+05:30",
+  "timestamp": "2022-06-22T12:31:15.655+05:30"
+}
+```
 
 ## FAQ
 
 ### Does my Kafka server require Client Authentication?
 
-If you have enabled 2-way SSL, i.e. your server requires client authentication, then you need to have our CA certificate and put that in the Truststore of your server.
+If you have enabled 2-way SSL, that is, your server requires client authentication, then you need to have the CA certificate and put that in the Truststore of your server.
 
 ### How can I enable the 2-way SSL in Kafka and connect to RudderStack?
 
-Please follow the steps below that make use of Java's **keytool** utility.
+Follow the below steps to make use of Java's **keytool** utility to enable two-way SSL in Kafka and connect to RudderStack:
 
-1. **Generate Key and Certificates:** `keytool -keystore kafka.server.keystore.jks -alias localhost -keyalg RSA -genkey`
-2. **Create your own CA**
-   1. Generate a CA that is simply a public-private key pair and certificate, and it is intended to sign other certificates. **You need to put this certificate at the RudderStack Web App as CA certificate**.
+1. **Generate Key and Certificates**: Run the following command:
 
 ```
-  `openssl req -new -x509 -keyout ca-key -out ca-cert -days {validity}`
+keytool -keystore kafka.server.keystore.jks -alias localhost -keyalg RSA -genkey
+```
+2. **Create your own CA**:
+
+   - Generate a CA that is a public-private key pair and a certificate. **Enter the contents of this certificate in the RudderStack dashboard under the CA certificate setting**.
+
+```
+openssl req -new -x509 -keyout ca-key -out ca-cert -days {validity}
 ```
 
-1. Add the generated CA to the **broker's truststore** so that the brokers can trust this CA.
+   - Add the generated CA to the **broker's truststore** so that the brokers can trust this CA.
 
-   `keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert` 3. **Sign the certificates**
+   ```
+   keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert
+   ```
+3. **Sign the certificates**:
 
-2. Export the certificate from the keystore, like so: `keytool -keystore kafka.server.keystore.jks -alias localhost -certreq -file cert-file`
-3. Sign it with the CA: `openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days {validity} -CAcreateserial -passin pass:{ca-password}`
-4. Import both the certificate of the CA and the signed certificate into the broker keystore: `1. keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert 2. keytool -keystore kafka.server.keystore.jks -alias localhost -import -file cert-signed`
+   - Export the certificate from the keystore, like so: 
+```
+keytool -keystore kafka.server.keystore.jks -alias localhost -certreq -file cert-file
+```
+   - Sign it with the CA, as shown:
+```
+openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days {validity} -CAcreateserial -passin pass:{ca-password}
+```
+   - Import both the certificate of the CA and the signed certificate into the broker keystore, as shown: 
 
-By following all the steps described above, the script to create the CA and broker and client truststores and keystores is as shown:
+```
+keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert 
+```
+```
+keytool -keystore kafka.server.keystore.jks -alias localhost -import -file cert-signed
+```
+
+By following all the steps described above, the script to create the CA and broker and client truststores and keystores is obtained, as shown:
 
 ```bash
 keytool -keystore kafka.server.keystore.jks -alias localhost -keyalg RSA -validity {validity} -genkey
@@ -109,7 +152,7 @@ keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert
 keytool -keystore kafka.server.keystore.jks -alias localhost -import -file cert-signed
 ```
 
-- Put the below parameters in your `server.properties`
+4. Enter the below parameters in your `server.properties`:
 
 ```markup
 ssl.keystore.location=<keystore location>
@@ -123,14 +166,14 @@ ssl.truststore.type=JKS
 ssl.keystore.type=JKS
 ```
 
-- You also need to put RudderStack's CA certificate to your truststore, as shown: _\*\*_
+5. You also need to put RudderStack's CA certificate to your truststore, as shown:
 
 ```bash
 keytool -keystore kafka.server.truststore.jks -alias CARootRudder -import -file ca-cert-rudder
 // here ca-cert-rudder is the rudder CA certificate
 ```
 
-Here is the CA certificate that you need to add to your trust store:
+The CA certificate that you need to add to your trust store is shown below:
 
 ```bash
 -----BEGIN CERTIFICATE-----
@@ -161,16 +204,18 @@ vWJxTpadFmHwCTtKNrfnm2PgokxX3pVtkFu7xQhl26+87RQ=
 
 ### How can I connect to RudderStack if my Kafka server is running in a Kubernetes cluster?
 
-You will need to expose one public address, to which RudderStack connects. We recommend using SSL for that. Please note that you should allow **only the authenticated clients** for this exposed address. If you use `PLAINTEXT` for your internal services within your cluster, you might have the same.
+You will need to expose one public address to which RudderStack can connect. It is recommended using SSL for that. 
 
-Open this address with SSL in addition to that. For that, you need to update `advertised.listeners` in your `server.properties`.
+<div class="warningBlock">
+You should allow <strong>only the authenticated clients</strong> for this exposed address.
+</div>
 
-A sample entry is as shown below:
+If you use `PLAINTEXT` for your internal services within your cluster, you might have the address. Open this address with SSL. You need to update `advertised.listeners` in your `server.properties`, as shown in the below example:
 
-```markup
+```
 # Hostname and port the broker will advertise to producers and consumers.
-# here the INTERNAL listerner is your cluster kafka service host for kafka server
-# and the EXTERNAL is public loadbalancer for kafka server
+# here the INTERNAL listener is your cluster kafka service host for kafka server
+# and the EXTERNAL listener is the public loadbalancer for kafka server
 advertised.listeners=INTERNAL://kafka-0.kafka-headless.kafka-test-1.svc.cluster.local:9092,EXTERNAL://ab7e36e84991c11ea8a930ebf847c1ef-555780507.us-east-1.elb.amazonaws.com:19092
 listener.security.protocol.map=INTERNAL:PLAINTEXT,EXTERNAL:SSL
 ```
@@ -185,4 +230,4 @@ Configure your Zookeeper with `SASL_SSL` to resolve this issue.
 
 ## Contact us
 
-If you come across any issues while configuring or using Kafka with RudderStack, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
